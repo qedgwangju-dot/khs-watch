@@ -16126,6 +16126,24 @@
       "telegram_core_fact": "상품외감귤은 크기와 당도 등 정해진 품질기준에 미치지 못해 '제주특별자치도 감귤 생산 및 유통에 관한 조례'에 따라 시장 출하가 금지된 감귤이다.",
       "title": "제주 벗어나도 못 피한다…상품외감귤 885㎏ 적발 | 연합뉴스"
     },
+    "core:3ed609d9018d7c4a1dab1e5d": {
+      "first_seen_kst": "2026-10-17T23:35:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T23:35:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.mk.co.kr/news/culture/12178428",
+      "source": "매일경제",
+      "source_body_digest": "72f10a172ad8ab1ab9f8408259da941c8fd4d62e197c49954f8638fbeecc62cf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-17T13:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "11월에 비행기 타기 무섭네…국제선 유류할증료 얼마나 오르길래 [항공+]",
+      "telegram_core_fact": "대한항공은 11월 1일부터 30일까지 한국 출발 국제선 항공권에 적용하는 유류할증료를 편도 기준 5만5600~40만8100원으로 책정했다고 16일 밝혔다. 국제 유가 상승 여파로 11월 국제선 유류할증료가 최대 17% 오른다.",
+      "title": "11월에 비행기 타기 무섭네…국제선 유류할증료 얼마나 오르길래 [항공+]"
+    },
     "core:3ef03d77db77ab578d326aa9": {
       "first_seen_kst": "2026-10-08T10:43:48+09:00",
       "lanes": {
@@ -35993,6 +36011,28 @@
       "source_title": "트럼프 '에너지 휴전' 발표에도 러 공습 계속…국제유가 2% 상승",
       "telegram_core_fact": "12일(현지 시간) NBC뉴스에 따르면 이날 국제유가 기준물인 브렌트유는 2% 상승해 배럴당 108달러에 육박했다.",
       "title": "트럼프 '에너지 휴전' 발표에도 러 공습 계속…국제유가 2% 상승"
+    },
+    "core:913ec423e0a92a411863cb16": {
+      "first_seen_kst": "2026-10-17T23:35:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T23:35:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003830149",
+      "source": "뉴시스",
+      "source_body_digest": "c514442c7e47098c881455c67c9eb6d4e8ffe97c82004b3ea74eb39bcf375400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:124ff2d58720e2fe57ca1ad70bd8fc5465ba512a3afb8ce18494c3db80b86276",
+      "source_fact_keys": [
+        "source_fact:v1:b1c34917e05e1221a7269b4099ca3220322f9e672fafab03cbe74452e388ec88",
+        "source_fact:v1:e1334268beeffe76e3cebb28806c56687b178aaee542f117c44517e1f0fe6c93",
+        "source_fact:v1:fa70a0bbccf56d614edeb50052fb0607afd1de9d6deccb744b4a09d5526dd87f"
+      ],
+      "source_published_kst": "2026-10-17T23:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\"",
+      "telegram_core_fact": "키이우인디펜던트와 키이우포스트 등에 따르면 젤렌스키 대통령은 이날 온라인 기자 문답에서 미국 측이 정상간 협상을 개최할 장소를 적극 검토하고 있다면서 후보지로 미국에서 열리는 차기 주요 20개국(G20) 정상회의와 중동 지역 또는 유럽 국가 등이 거론되고 있다고 밝혔다.",
+      "title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\""
     },
     "core:9148780dbf60dfb5bb84d50a": {
       "first_seen_kst": "2026-10-13T07:02:46+09:00",
@@ -74151,23 +74191,24 @@
     "event:ca14323d7fef0ad09b25214f": {
       "first_seen_kst": "2026-10-17T15:31:00+09:00",
       "lanes": {
-        "live": "2026-10-17T20:40:45+09:00"
+        "live": "2026-10-17T23:35:01+09:00"
       },
-      "last_seen_kst": "2026-10-17T20:40:45+09:00",
-      "link": "https://www.newsis.com/view/NISX20261017_0003829818",
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003830149",
       "source": "뉴시스",
-      "source_body_digest": "09440c3e45a30fef1bab671eeffafe22867c358a706b7bc84705b4b9356fe1f7",
+      "source_body_digest": "c514442c7e47098c881455c67c9eb6d4e8ffe97c82004b3ea74eb39bcf375400",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4e0dd069b2a4928d70022ccf41b301a048c20c94e66f0fdfbb601b3c89dc6b13",
+      "source_fact_identity": "source_facts:v1:124ff2d58720e2fe57ca1ad70bd8fc5465ba512a3afb8ce18494c3db80b86276",
       "source_fact_keys": [
-        "source_fact:v1:8c358b14548df9344cf9706f83be503d07d020a56562b9e7b72f6066617723f0",
-        "source_fact:v1:fab1283cf8e39f846b7e6f4726aa2517ca1e3f95f12485907c2806f25cb04d5b"
+        "source_fact:v1:b1c34917e05e1221a7269b4099ca3220322f9e672fafab03cbe74452e388ec88",
+        "source_fact:v1:e1334268beeffe76e3cebb28806c56687b178aaee542f117c44517e1f0fe6c93",
+        "source_fact:v1:fa70a0bbccf56d614edeb50052fb0607afd1de9d6deccb744b4a09d5526dd87f"
       ],
-      "source_published_kst": "2026-10-17T10:54+09:00",
+      "source_published_kst": "2026-10-17T23:31+09:00",
       "source_supply_terms": {},
-      "source_title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)",
-      "telegram_core_fact": "머스크는 지난 10일 트럼프 대통령이 우크라이나에 러시아 정유시설 공격을 중단하라고 촉구한 뒤 엑스에 \"젤렌스키가 도를 넘었다\"고 쓰기도 했다.",
-      "title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)"
+      "source_title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\"",
+      "telegram_core_fact": "키이우인디펜던트와 키이우포스트 등에 따르면 젤렌스키 대통령은 이날 온라인 기자 문답에서 미국 측이 정상간 협상을 개최할 장소를 적극 검토하고 있다면서 후보지로 미국에서 열리는 차기 주요 20개국(G20) 정상회의와 중동 지역 또는 유럽 국가 등이 거론되고 있다고 밝혔다.",
+      "title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\""
     },
     "event:ca5510beb04d02929a86011b": {
       "first_seen_kst": "2026-09-22T17:04:40+09:00",
@@ -126614,6 +126655,28 @@
       "source_published_kst": "2026-10-06T11:12+09:00",
       "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
     },
+    "fact:ab65bb930855d5361ca7c182": {
+      "first_seen_kst": "2026-10-17T23:35:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T23:35:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003830149",
+      "source": "뉴시스",
+      "source_body_digest": "c514442c7e47098c881455c67c9eb6d4e8ffe97c82004b3ea74eb39bcf375400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:124ff2d58720e2fe57ca1ad70bd8fc5465ba512a3afb8ce18494c3db80b86276",
+      "source_fact_keys": [
+        "source_fact:v1:b1c34917e05e1221a7269b4099ca3220322f9e672fafab03cbe74452e388ec88",
+        "source_fact:v1:e1334268beeffe76e3cebb28806c56687b178aaee542f117c44517e1f0fe6c93",
+        "source_fact:v1:fa70a0bbccf56d614edeb50052fb0607afd1de9d6deccb744b4a09d5526dd87f"
+      ],
+      "source_published_kst": "2026-10-17T23:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\"",
+      "telegram_core_fact": "키이우인디펜던트와 키이우포스트 등에 따르면 젤렌스키 대통령은 이날 온라인 기자 문답에서 미국 측이 정상간 협상을 개최할 장소를 적극 검토하고 있다면서 후보지로 미국에서 열리는 차기 주요 20개국(G20) 정상회의와 중동 지역 또는 유럽 국가 등이 거론되고 있다고 밝혔다.",
+      "title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\""
+    },
     "fact:ab6b290df542c1176f4d4468": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -165789,6 +165852,28 @@
       "source": "전자신문",
       "title": "보령, 中 이판제약과 '탁소텔' 3837억원 공급계약…역대 최대 규모"
     },
+    "link:245d418eb348129102120a2f": {
+      "first_seen_kst": "2026-10-17T23:35:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T23:35:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003830149",
+      "source": "뉴시스",
+      "source_body_digest": "c514442c7e47098c881455c67c9eb6d4e8ffe97c82004b3ea74eb39bcf375400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:124ff2d58720e2fe57ca1ad70bd8fc5465ba512a3afb8ce18494c3db80b86276",
+      "source_fact_keys": [
+        "source_fact:v1:b1c34917e05e1221a7269b4099ca3220322f9e672fafab03cbe74452e388ec88",
+        "source_fact:v1:e1334268beeffe76e3cebb28806c56687b178aaee542f117c44517e1f0fe6c93",
+        "source_fact:v1:fa70a0bbccf56d614edeb50052fb0607afd1de9d6deccb744b4a09d5526dd87f"
+      ],
+      "source_published_kst": "2026-10-17T23:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\"",
+      "telegram_core_fact": "키이우인디펜던트와 키이우포스트 등에 따르면 젤렌스키 대통령은 이날 온라인 기자 문답에서 미국 측이 정상간 협상을 개최할 장소를 적극 검토하고 있다면서 후보지로 미국에서 열리는 차기 주요 20개국(G20) 정상회의와 중동 지역 또는 유럽 국가 등이 거론되고 있다고 밝혔다.",
+      "title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\""
+    },
     "link:245e89408406f233ba893ad4": {
       "first_seen_kst": "2026-10-11T19:37:28+09:00",
       "lanes": {
@@ -179928,6 +180013,24 @@
       "source_title": "광주 팹 부지 찾은 최태원 회장 \"가장 빠르게…용수·전력 늦어도 착공\"",
       "telegram_core_fact": "최 회장은 이날 반도체 국가산단 후보지 광주군공항 내 탄약고 이전 대상부지에서 취재진과 만나 \"빠른 속도로 지금 (반도체) 수요가 늘기 때문에 그걸 쫓아가는 공급 속도를 더 빨리 당겨야 한다. 착공 시점은 답을 못하지만 '최대한 빨리 간다'고 이야기하고 싶다\"며 이같이 말했다.",
       "title": "광주 팹 부지 찾은 최태원 회장 \"가장 빠르게…용수·전력 늦어도 착공\""
+    },
+    "link:47d06f26a65f134a72032015": {
+      "first_seen_kst": "2026-10-17T23:35:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T23:35:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.mk.co.kr/news/culture/12178428",
+      "source": "매일경제",
+      "source_body_digest": "72f10a172ad8ab1ab9f8408259da941c8fd4d62e197c49954f8638fbeecc62cf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-17T13:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "11월에 비행기 타기 무섭네…국제선 유류할증료 얼마나 오르길래 [항공+]",
+      "telegram_core_fact": "대한항공은 11월 1일부터 30일까지 한국 출발 국제선 항공권에 적용하는 유류할증료를 편도 기준 5만5600~40만8100원으로 책정했다고 16일 밝혔다. 국제 유가 상승 여파로 11월 국제선 유류할증료가 최대 17% 오른다.",
+      "title": "11월에 비행기 타기 무섭네…국제선 유류할증료 얼마나 오르길래 [항공+]"
     },
     "link:47dc3d6ce233f161ce74056f": {
       "first_seen_kst": "2026-10-02T11:10:58+09:00",
@@ -296330,6 +296433,28 @@
       "source": "이데일리",
       "title": "美 인상 기대 꺾였지만 장기금리는 급등…환율 1350원대 공방[외환브리핑]"
     },
+    "original:75a37038396f557ea037134a": {
+      "first_seen_kst": "2026-10-17T23:35:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T23:35:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003830149",
+      "source": "뉴시스",
+      "source_body_digest": "c514442c7e47098c881455c67c9eb6d4e8ffe97c82004b3ea74eb39bcf375400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:124ff2d58720e2fe57ca1ad70bd8fc5465ba512a3afb8ce18494c3db80b86276",
+      "source_fact_keys": [
+        "source_fact:v1:b1c34917e05e1221a7269b4099ca3220322f9e672fafab03cbe74452e388ec88",
+        "source_fact:v1:e1334268beeffe76e3cebb28806c56687b178aaee542f117c44517e1f0fe6c93",
+        "source_fact:v1:fa70a0bbccf56d614edeb50052fb0607afd1de9d6deccb744b4a09d5526dd87f"
+      ],
+      "source_published_kst": "2026-10-17T23:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\"",
+      "telegram_core_fact": "키이우인디펜던트와 키이우포스트 등에 따르면 젤렌스키 대통령은 이날 온라인 기자 문답에서 미국 측이 정상간 협상을 개최할 장소를 적극 검토하고 있다면서 후보지로 미국에서 열리는 차기 주요 20개국(G20) 정상회의와 중동 지역 또는 유럽 국가 등이 거론되고 있다고 밝혔다.",
+      "title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\""
+    },
     "original:75b2362bc780a1f51d45cd13": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -304267,6 +304392,24 @@
       "link": "https://www.etnews.com/20260921000336",
       "source": "전자신문",
       "title": "강병준 전자신문 대표, 'KPCA 자랑스런 PCB 반도체 패키징 공로상' 수상"
+    },
+    "original:8ab7c793869e0e16f853eb44": {
+      "first_seen_kst": "2026-10-17T23:35:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T23:35:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.mk.co.kr/news/culture/12178428",
+      "source": "매일경제",
+      "source_body_digest": "72f10a172ad8ab1ab9f8408259da941c8fd4d62e197c49954f8638fbeecc62cf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-17T13:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "11월에 비행기 타기 무섭네…국제선 유류할증료 얼마나 오르길래 [항공+]",
+      "telegram_core_fact": "대한항공은 11월 1일부터 30일까지 한국 출발 국제선 항공권에 적용하는 유류할증료를 편도 기준 5만5600~40만8100원으로 책정했다고 16일 밝혔다. 국제 유가 상승 여파로 11월 국제선 유류할증료가 최대 17% 오른다.",
+      "title": "11월에 비행기 타기 무섭네…국제선 유류할증료 얼마나 오르길래 [항공+]"
     },
     "original:8ab8bdd99cb6eab3723f730c": {
       "first_seen_kst": "2026-10-11T21:07:10+09:00",
@@ -354065,6 +354208,28 @@
       "source_title": "[오늘의 증시]코스피, 낙폭 과대에 반등 시도 전망…6800선 회복 주목",
       "telegram_core_fact": "서 연구원은 \"AI 관련 콘퍼런스와 미국 소비자물가지수 발표, 본격적인 실적 시즌 등을 고려하면 추세적인 상승보다는 낙폭 과대에 따른 반등과 종목별 차별화가 진행될 것\"이라며 \"특히 반도체 업종의 변화와 외국인 수급이 중요하다\"고 짚었다.",
       "title": "[오늘의 증시]코스피, 낙폭 과대에 반등 시도 전망…6800선 회복 주목"
+    },
+    "source_fact:043e77fb788796d08c2c1937": {
+      "first_seen_kst": "2026-10-17T23:35:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T23:35:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003830149",
+      "source": "뉴시스",
+      "source_body_digest": "c514442c7e47098c881455c67c9eb6d4e8ffe97c82004b3ea74eb39bcf375400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:124ff2d58720e2fe57ca1ad70bd8fc5465ba512a3afb8ce18494c3db80b86276",
+      "source_fact_keys": [
+        "source_fact:v1:b1c34917e05e1221a7269b4099ca3220322f9e672fafab03cbe74452e388ec88",
+        "source_fact:v1:e1334268beeffe76e3cebb28806c56687b178aaee542f117c44517e1f0fe6c93",
+        "source_fact:v1:fa70a0bbccf56d614edeb50052fb0607afd1de9d6deccb744b4a09d5526dd87f"
+      ],
+      "source_published_kst": "2026-10-17T23:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\"",
+      "telegram_core_fact": "키이우인디펜던트와 키이우포스트 등에 따르면 젤렌스키 대통령은 이날 온라인 기자 문답에서 미국 측이 정상간 협상을 개최할 장소를 적극 검토하고 있다면서 후보지로 미국에서 열리는 차기 주요 20개국(G20) 정상회의와 중동 지역 또는 유럽 국가 등이 거론되고 있다고 밝혔다.",
+      "title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\""
     },
     "source_fact:04427bbaeaecc15545dae532": {
       "first_seen_kst": "2026-10-15T03:25:52+09:00",
@@ -573490,6 +573655,28 @@
       "telegram_core_fact": "시장조사업체 트렌드포스는 올해 4·4분기 모든 낸드 플래시 제품군의 계약 가격이 전 분기 대비 15~20% 상승할 것으로 예상했다.",
       "title": "삼전닉스 '낸드' 잭팟 터진다… 로봇용 D램도 기대감 솔솔"
     },
+    "source_fact:97178ffda5863df30c1f03d3": {
+      "first_seen_kst": "2026-10-17T23:35:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T23:35:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003830149",
+      "source": "뉴시스",
+      "source_body_digest": "c514442c7e47098c881455c67c9eb6d4e8ffe97c82004b3ea74eb39bcf375400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:124ff2d58720e2fe57ca1ad70bd8fc5465ba512a3afb8ce18494c3db80b86276",
+      "source_fact_keys": [
+        "source_fact:v1:b1c34917e05e1221a7269b4099ca3220322f9e672fafab03cbe74452e388ec88",
+        "source_fact:v1:e1334268beeffe76e3cebb28806c56687b178aaee542f117c44517e1f0fe6c93",
+        "source_fact:v1:fa70a0bbccf56d614edeb50052fb0607afd1de9d6deccb744b4a09d5526dd87f"
+      ],
+      "source_published_kst": "2026-10-17T23:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\"",
+      "telegram_core_fact": "키이우인디펜던트와 키이우포스트 등에 따르면 젤렌스키 대통령은 이날 온라인 기자 문답에서 미국 측이 정상간 협상을 개최할 장소를 적극 검토하고 있다면서 후보지로 미국에서 열리는 차기 주요 20개국(G20) 정상회의와 중동 지역 또는 유럽 국가 등이 거론되고 있다고 밝혔다.",
+      "title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\""
+    },
     "source_fact:971bd8b84682cdf5cb05da1d": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
       "lanes": {
@@ -725505,6 +725692,28 @@
       "telegram_core_fact": "결국 이날 반도체 시장에서는 ETF 리밸런싱에 따른 기계적인 수급 조정과 삼성전자 실적, 옵션 만기 및 외국인 매매가 동시에 맞물리면서 종목별 주가 차별화가 나타나는지가 주요 변수로 떠올랐다.",
       "title": "반도체 ETF 리밸런싱에 변동성 커져…삼성전자 2000억 팔고 소부장 더 담는다"
     },
+    "source_fact:fddfe4a6f7dcaaaef39994d4": {
+      "first_seen_kst": "2026-10-17T23:35:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T23:35:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003830149",
+      "source": "뉴시스",
+      "source_body_digest": "c514442c7e47098c881455c67c9eb6d4e8ffe97c82004b3ea74eb39bcf375400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:124ff2d58720e2fe57ca1ad70bd8fc5465ba512a3afb8ce18494c3db80b86276",
+      "source_fact_keys": [
+        "source_fact:v1:b1c34917e05e1221a7269b4099ca3220322f9e672fafab03cbe74452e388ec88",
+        "source_fact:v1:e1334268beeffe76e3cebb28806c56687b178aaee542f117c44517e1f0fe6c93",
+        "source_fact:v1:fa70a0bbccf56d614edeb50052fb0607afd1de9d6deccb744b4a09d5526dd87f"
+      ],
+      "source_published_kst": "2026-10-17T23:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\"",
+      "telegram_core_fact": "키이우인디펜던트와 키이우포스트 등에 따르면 젤렌스키 대통령은 이날 온라인 기자 문답에서 미국 측이 정상간 협상을 개최할 장소를 적극 검토하고 있다면서 후보지로 미국에서 열리는 차기 주요 20개국(G20) 정상회의와 중동 지역 또는 유럽 국가 등이 거론되고 있다고 밝혔다.",
+      "title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\""
+    },
     "source_fact:fde18b7ebd49628223c2c6fb": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
       "lanes": {
@@ -774143,6 +774352,28 @@
       "source": "이데일리",
       "title": "美 인상 기대 꺾였지만 장기금리는 급등…환율 1350원대 공방[외환브리핑]"
     },
+    "title:75a37038396f557ea037134a": {
+      "first_seen_kst": "2026-10-17T23:35:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T23:35:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003830149",
+      "source": "뉴시스",
+      "source_body_digest": "c514442c7e47098c881455c67c9eb6d4e8ffe97c82004b3ea74eb39bcf375400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:124ff2d58720e2fe57ca1ad70bd8fc5465ba512a3afb8ce18494c3db80b86276",
+      "source_fact_keys": [
+        "source_fact:v1:b1c34917e05e1221a7269b4099ca3220322f9e672fafab03cbe74452e388ec88",
+        "source_fact:v1:e1334268beeffe76e3cebb28806c56687b178aaee542f117c44517e1f0fe6c93",
+        "source_fact:v1:fa70a0bbccf56d614edeb50052fb0607afd1de9d6deccb744b4a09d5526dd87f"
+      ],
+      "source_published_kst": "2026-10-17T23:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\"",
+      "telegram_core_fact": "키이우인디펜던트와 키이우포스트 등에 따르면 젤렌스키 대통령은 이날 온라인 기자 문답에서 미국 측이 정상간 협상을 개최할 장소를 적극 검토하고 있다면서 후보지로 미국에서 열리는 차기 주요 20개국(G20) 정상회의와 중동 지역 또는 유럽 국가 등이 거론되고 있다고 밝혔다.",
+      "title": "젤렌스키 \"미·러·우크라 정상회담, G20 기간 열릴 수도…스타실드 제한은 계획된 것\""
+    },
     "title:75b2362bc780a1f51d45cd13": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -782248,6 +782479,24 @@
       "link": "https://www.etnews.com/20260921000336",
       "source": "전자신문",
       "title": "강병준 전자신문 대표, 'KPCA 자랑스런 PCB 반도체 패키징 공로상' 수상"
+    },
+    "title:8ab7c793869e0e16f853eb44": {
+      "first_seen_kst": "2026-10-17T23:35:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T23:35:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T23:35:01+09:00",
+      "link": "https://www.mk.co.kr/news/culture/12178428",
+      "source": "매일경제",
+      "source_body_digest": "72f10a172ad8ab1ab9f8408259da941c8fd4d62e197c49954f8638fbeecc62cf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-17T13:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "11월에 비행기 타기 무섭네…국제선 유류할증료 얼마나 오르길래 [항공+]",
+      "telegram_core_fact": "대한항공은 11월 1일부터 30일까지 한국 출발 국제선 항공권에 적용하는 유류할증료를 편도 기준 5만5600~40만8100원으로 책정했다고 16일 밝혔다. 국제 유가 상승 여파로 11월 국제선 유류할증료가 최대 17% 오른다.",
+      "title": "11월에 비행기 타기 무섭네…국제선 유류할증료 얼마나 오르길래 [항공+]"
     },
     "title:8ab8bdd99cb6eab3723f730c": {
       "first_seen_kst": "2026-10-11T21:07:10+09:00",
@@ -827481,5 +827730,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-17T22:48:00+09:00"
+  "updated_at_kst": "2026-10-17T23:35:01+09:00"
 }
