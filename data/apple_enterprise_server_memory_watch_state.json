@@ -206,6 +206,7 @@
     "71dcf008fc99934f1d38",
     "72b5fa70146f2a6cbae437a0",
     "730bd89fffdc69b324ea3324",
+    "741fe4b62c5a26e61a0f",
     "747619bfd5f95e15ae003481",
     "753d7058bfc371741087",
     "75a48ec9cf1bb1039b26",
@@ -454,7 +455,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-18T03:42:45+09:00",
+  "last_scan_kst": "2026-10-18T06:00:13+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -462,9 +463,6 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 10,
-  "fetch_errors": [
-    "bing_news \"Apple\" \"NVLink Fusion\": ParseError not well-formed (invalid token): line 1, column 41",
-    "bing_news 애플 M8 서버 엔비디아: ParseError not well-formed (invalid token): line 1, column 41"
-  ]
+  "fetch_ok": 12,
+  "fetch_errors": []
 }
