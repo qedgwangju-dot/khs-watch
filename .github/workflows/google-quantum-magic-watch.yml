@@ -56,7 +56,6 @@ jobs:
           fi
       - name: Send only approved route test or newly verified milestone
         if: >-
-          (github.event_name == 'push' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[google-qec-route-test]')) ||
           (github.event_name == 'workflow_dispatch' && inputs.send_test == true) ||
           ((github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.dry_run != true && inputs.send_test != true)) &&
            hashFiles('out/google_quantum_magic_alert.html') != '')
@@ -78,7 +77,7 @@ jobs:
           username=str((identity.get('result') or {}).get('username') or '').lower()
           if not identity.get('ok') or username!='khs88798879_bot':
               raise RuntimeError('Wrong quantum policy Telegram bot')
-          is_test=os.environ.get('GITHUB_EVENT_NAME')=='push' or os.environ.get('IS_MANUAL_TEST','').lower()=='true'
+          is_test=os.environ.get('IS_MANUAL_TEST','').lower()=='true'
           if is_test:
               body=('[Google Quantum AI 기술 감시] 경로 검증 테스트\n'
                     '기존 양자기술 Telegram 경로를 재사용합니다.\n'
