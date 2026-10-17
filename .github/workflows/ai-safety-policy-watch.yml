@@ -658,17 +658,6 @@ jobs:
               if statement_headline and source=="Axios":
                   return "statement", "us-sif-ai-incident-statement-2026-10-09"
 
-              # An adopted charter or commissioned PCAST assessment is
-              # reported governance activity, not a legally binding regulation.
-              charter_meeting=(
-                  "adopts charter" in text
-                  or "adopted its charter" in text
-                  or "charter adopted" in text
-                  or ("first official meeting" in text and "pcast" in text)
-              )
-              if charter_meeting:
-                  return "charter_adopted_reported","us-sif-charter-adopted-2026-10-15"
-
               # A promised/due report is not a released report.
               if any(x in text for x in (
                   "final report released","final report published","final report submitted",
@@ -776,6 +765,17 @@ jobs:
               if membership_action and membership_role:
                   return "membership","us-sif-membership-"+hashlib.sha1(title.encode()).hexdigest()[:10]
 
+              # An adopted charter or commissioned PCAST assessment is
+              # reported governance activity, not a legally binding regulation.
+              charter_meeting=(
+                  "adopts charter" in text
+                  or "adopted its charter" in text
+                  or "charter adopted" in text
+                  or ("first official meeting" in text and "pcast" in text)
+              )
+              if charter_meeting:
+                  return "charter_adopted_reported","us-sif-charter-adopted-2026-10-15"
+
               if any(x in text for x in (
                   "formation","formed","forms","created","creates","established","establishes",
                   "launched","launches","announced","announces","new federal ai task force","new federal task force",
@@ -792,6 +792,23 @@ jobs:
               "text":"white house super intelligence force adopts charter at first official meeting and commissions pcast risk study",
               "source":"Semafor",
           })==("charter_adopted_reported","us-sif-charter-adopted-2026-10-15")
+          # Later released reports, official charters and procurement must
+          # override a historical first-meeting reference in the same article.
+          assert stage({
+              "title":"Super Intelligence Force final report released",
+              "text":"super intelligence force final report released after first official meeting with pcast",
+              "source":"Reuters",
+          })[0]=="report"
+          assert stage({
+              "title":"Super Intelligence Force charter published",
+              "text":"super intelligence force charter published after first official meeting and pcast",
+              "source":"Reuters",
+          })[0]=="authority"
+          assert stage({
+              "title":"Super Intelligence Force request for proposals issued",
+              "text":"super intelligence force request for proposals issued after first official meeting and pcast",
+              "source":"Reuters",
+          })[0]=="procurement"
           assert stage({
               "title":"Exclusive: Anthropic breaches spark White House AI reporting mandate",
               "text":"the white house super intelligence force mandates incident notification and remediation without published penalties",
