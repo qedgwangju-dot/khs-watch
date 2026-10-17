@@ -125,6 +125,33 @@ class TreasuryLongEndQraTests(unittest.TestCase):
                  "official_url":"https://not-treasury.example/a.pdf"},
             )
 
+    def test_existing_dealer_message_edit_preserves_the_numbers_and_links(self):
+        import qra_dealer_link_repair
+        text=qra_dealer_link_repair.build_original_message()
+        self.assertIn("180억달러(약 23조9,778억원)",text)
+        self.assertIn("확정 단계",text)
+        self.assertIn('">미 재무부 공식 딜러 의제</a>',text)
+        self.assertIn('">Citi 시장 예상</a>',text)
+        self.assertEqual(text.count("<a href="),2)
+
+    def test_link_edit_ack_merges_without_resetting_dedup(self):
+        from qra_recurring_state_commit import choose_newer
+        prior={
+            "last_heading":"DOCUMENTS RELEASED at 12:00 PM Friday, October 16, 2026",
+            "last_sent_at_kst":"2026-10-17T01:54:54+09:00",
+            "telegram_message_id":297,
+            "bot_username":"hs8879887988798879_bot",
+        }
+        updated={**prior,
+            "dealer_links_edited_message_id":297,
+            "dealer_links_format":"html_v1",
+            "dealer_links_edited_at_kst":"2026-10-17T21:00:00+09:00",
+        }
+        merged=choose_newer(prior,updated)
+        self.assertEqual(merged["dealer_links_edited_message_id"],297)
+        self.assertEqual(merged["last_heading"],prior["last_heading"])
+        self.assertEqual(merged["telegram_message_id"],297)
+
     def test_scenario_is_not_a_government_announcement(self):
         compared=issuance.summarize_long_end_supply(
             issuance.nominal_long_end_table(sample_table()))
