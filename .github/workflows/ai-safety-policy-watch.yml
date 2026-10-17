@@ -430,6 +430,67 @@ jobs:
           print("ai_policy_trail_of_bits_mna_regression=PASS")
           PY
 
+      - name: Verify SoftBank security M&A and Anthropic bill stage guards
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_safety_policy_watch import (
+              MAX_ALERT_EVENTS, POLICY_EVENT_BASELINES, cluster_events,
+              detect_category, detect_entity, material, source_trusted,
+              tracked_policy_event_key, tracked_policy_event_stage,
+          )
+          def item(title, source="Reuters"):
+              return {
+                  "title": title, "description": title,
+                  "source": source, "url": "https://example.com/test"
+              }
+          initial = item("SoftBank in early talks to acquire Allied Universal")
+          assert tracked_policy_event_key(initial) == "softbank_allied:initial_talks_reported"
+          assert tracked_policy_event_key(initial) in POLICY_EVENT_BASELINES
+          assert material(initial)
+          assert "물리보안" in detect_category(initial["title"])
+          assert "SoftBank" in detect_entity(initial["title"])
+          assert tracked_policy_event_stage(item(
+              "SoftBank signs definitive agreement to acquire Allied Universal"
+          )) == ("softbank_allied", "signed_reported")
+          assert tracked_policy_event_stage(item(
+              "SoftBank closes acquisition of Allied Universal"
+          )) == ("softbank_allied", "closed_reported")
+          assert tracked_policy_event_stage(item(
+              "SoftBank and Allied Universal acquisition talks collapse"
+          )) == ("softbank_allied", "talks_ended_reported")
+          assert tracked_policy_event_stage(item(
+              "SoftBank could sign an agreement to acquire Allied Universal"
+          )) == ("softbank_allied", "initial_talks_reported")
+          assert tracked_policy_event_stage(item(
+              "Allied Universal wins data-center security contract"
+          )) is None
+          draft = item("Anthropic quietly pitches its own AI safety bill to lawmakers", "Politico")
+          assert source_trusted("Politico") and material(draft)
+          assert tracked_policy_event_key(draft) in POLICY_EVENT_BASELINES
+          assert tracked_policy_event_stage(item(
+              "Anthropic AI safety bill formally introduced in Congress"
+          )) == ("anthropic_frontier_bill", "introduced_reported")
+          assert tracked_policy_event_stage(item(
+              "House passes Anthropic AI safety bill"
+          )) == ("anthropic_frontier_bill", "passed_chamber_reported")
+          assert tracked_policy_event_stage(item(
+              "Anthropic AI safety bill signed into law"
+          )) == ("anthropic_frontier_bill", "enacted_reported")
+          assert tracked_policy_event_stage(item(
+              "Anthropic unveils Advanced AI Framework"
+          )) is None
+          assert not material(item("SoftBank signs definitive agreement to acquire Allied Universal", "Unknown Blog"))
+          items = [
+              {"entity": f"Vendor{i}", "category": "Unique", "title": f"Unique unrelated event {i}",
+               "official": False, "published_at": "2026-10-17", "fingerprint": str(i)}
+              for i in range(MAX_ALERT_EVENTS + 2)
+          ]
+          assert len(cluster_events(items)) == MAX_ALERT_EVENTS + 2
+          print("ai_policy_softbank_anthropic_stage_regression=PASS")
+          print("ai_policy_event_backlog_preservation=PASS")
+          PY
+
       - name: Run live policy watch
         run: |
           rm -f out/ai_safety_policy_watch_alert_title.txt out/ai_safety_policy_watch_alert.html out/ai_safety_policy_watch_telegram_confirmed.json

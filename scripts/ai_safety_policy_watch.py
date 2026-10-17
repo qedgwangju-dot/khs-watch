@@ -119,7 +119,27 @@ NEWS_QUERIES = [
     '(OpenAI OR Anthropic OR Google DeepMind OR xAI OR Meta) former White House cyber AI policy official national security hire',
     '"OpenAI" "Trail of Bits" (acquisition OR buy OR agreement OR deal OR talks OR completed OR withdrawn)',
     '("Patch the Planet" OR "Codex Security") "Trail of Bits" (paid OR customers OR subscription OR contract OR license OR expansion)',
+    # Separate reported physical-security M&A from cyber incidents.
+    '("SoftBank" "Allied Universal") (acquisition OR takeover OR negotiations OR agreement OR completion)',
+    '"SoftBank" "Allied Universal" (robots OR data center security) (contract OR deployment OR acquisition)',
+    # A private industry draft is not an introduced/enacted congressional bill.
+    '"Anthropic" "AI safety bill" (lawmakers OR Congress OR proposal OR introduced OR enacted)',
+    '"Anthropic" "frontier AI" (bill OR legislation) (Commerce OR Congress OR independent evaluators)',
 ]
+
+# Historical reports supplied and cross-checked on 2026-10-17.
+# These existing stages are silently seeded so syndicated reprints cannot
+# masquerade as a new agreement or an enacted rule.
+POLICY_EVENT_BASELINES = {
+    "softbank_allied:initial_talks_reported": {
+        "source_url": "https://www.ft.com/content/e44a17f9-5be0-4a78-89fb-41c4578838ca",
+        "status": "2026-10-17 FT / 2026-10-16 Bloomberg and Reuters early discussions; no signed deal",
+    },
+    "anthropic_frontier_bill:private_draft_reported": {
+        "source_url": "https://www.reuters.com/legal/litigation/anthropic-quietly-pitches-its-own-ai-safety-bill-lawmakers-politico-reports-2026-10-16/",
+        "status": "2026-10-16 Politico/Reuters private draft; not introduced or enacted",
+    },
+}
 
 OFFICIAL_SOURCE_HINTS = (
     "openai", "anthropic", "nipa", "과학기술정보통신부", "msit", "kisa", "한국인터넷진흥원",
@@ -134,7 +154,7 @@ OFFICIAL_SOURCE_HINTS = (
 )
 
 TRUSTED_SOURCE_HINTS = (
-    "reuters", "axios", "the information", "yonhap", "연합뉴스", "financial times", "bloomberg",
+    "reuters", "axios", "politico", "the information", "softbank group", "allied universal", "yonhap", "연합뉴스", "financial times", "bloomberg",
     "the information", "zdnet", "전자신문", "etnews", "파이낸셜뉴스",
     "매일경제", "한국경제", "머니투데이", "이데일리", "조선비즈",
     "서울경제", "디지털데일리", "디지털타임스", "the verge",
@@ -638,8 +658,133 @@ def trail_of_bits_mna_stage(item: dict) -> str | None:
     return "initial_talks"
 
 
+
+def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
+    """Classify a new *reported* milestone from the headline, never from a
+    speculative paragraph about what could happen. No issuer/legislative
+    confirmation is inferred from a syndicated RSS publisher label.
+    """
+    title = str(item.get("title") or "").lower()
+    context = f"{item.get('title','')} {item.get('description','')}".lower()
+
+    if "softbank" in context and "allied universal" in context:
+        if not any(x in context for x in (
+            "acquisition", "acquire", "takeover", "merger", "buy", "bid",
+            "deal", "인수", "robot deployment", "security robot deployment",
+        )):
+            return None
+        if any(x in title for x in (
+            "talks collapse", "talks collapsed", "talks end", "talks ended",
+            "calls off", "walks away", "abandoned acquisition",
+            "acquisition terminated", "deal terminated", "인수 협상 결렬",
+        )):
+            return ("softbank_allied", "talks_ended_reported")
+        if any(x in title for x in (
+            "completes acquisition", "completed acquisition",
+            "closes acquisition", "closed acquisition",
+            "acquisition completed", "acquisition closed", "deal closes",
+            "인수 완료", "인수 종결",
+        )):
+            return ("softbank_allied", "closed_reported")
+        if ("regulatory" in title or "antitrust" in title) and any(
+            x in title for x in ("approval", "clearance", "approved", "cleared")
+        ):
+            return ("softbank_allied", "regulatory_clearance_reported")
+        if any(x in title for x in (
+            "signs definitive", "signed definitive", "definitive agreement",
+            "agrees to buy", "agreed to buy", "agrees to acquire",
+            "agreed to acquire", "signed acquisition agreement",
+            "인수 본계약", "인수 계약 체결",
+        )) and not any(x in title for x in (
+            "could sign", "may sign", "expected to sign", "talks to sign",
+        )):
+            return ("softbank_allied", "signed_reported")
+        if any(x in title for x in (
+            "begins deploying security robots", "deploys security robots",
+            "launches robot security service", "begins robot patrols",
+            "로봇 보안서비스 상용화",
+        )) and any(x in context for x in ("customer", "security", "deployment", "contract", "고객", "배치")):
+            return ("softbank_allied", "operational_deployment_reported")
+        if any(x in title for x in (
+            "exclusive talks", "exclusive negotiations", "advanced talks",
+            "advanced negotiations", "enters exclusive", "독점 협상", "협상 진전",
+        )):
+            return ("softbank_allied", "advanced_talks_reported")
+        if any(x in context for x in (
+            "acquisition", "acquire", "takeover", "merger", "buy",
+            "bid", "deal", "인수",
+        )):
+            return ("softbank_allied", "initial_talks_reported")
+        return None
+
+    if "anthropic" in context and any(x in context for x in (
+        "ai safety bill", "frontier ai safety bill",
+        "frontier ai legislation", "ai safety legislation",
+        "인공지능 안전 법안", "ai 안전 법안",
+    )):
+        if any(x in title for x in (
+            "bill withdrawn", "withdraws safety bill", "bill abandoned",
+            "bill shelved", "법안 철회",
+        )):
+            return ("anthropic_frontier_bill", "withdrawn_reported")
+        if any(x in title for x in (
+            "signed into law", "enacted into law", "bill becomes law",
+            "bill enacted", "법률 공포", "법안 발효",
+        )):
+            return ("anthropic_frontier_bill", "enacted_reported")
+        if any(x in title for x in (
+            "passes congress", "clears congress",
+            "passes both chambers", "clears both chambers",
+        )):
+            return ("anthropic_frontier_bill", "passed_congress_reported")
+        if re.search(
+            r"(?:house|senate).{0,45}(?:passes|passed|approves|approved)"
+            r"|(?:passes|passed|approved).{0,45}(?:house|senate)",
+            title,
+        ):
+            return ("anthropic_frontier_bill", "passed_chamber_reported")
+        if "committee" in title and any(x in title for x in (
+            "advances", "advanced", "approves", "approved", "votes to",
+        )):
+            return ("anthropic_frontier_bill", "committee_advanced_reported")
+        if any(x in title for x in (
+            "introduced in congress", "introduced in the house",
+            "introduced in the senate", "formally introduced",
+            "bill filed in congress", "bill filed in the house",
+            "bill filed in the senate", "정식 발의", "법안 발의",
+        )):
+            return ("anthropic_frontier_bill", "introduced_reported")
+        if any(x in title for x in (
+            "releases draft text", "publishes draft bill",
+            "publishes bill text", "releases proposed bill text",
+            "법안 초안 전문 공개",
+        )):
+            return ("anthropic_frontier_bill", "draft_text_published_reported")
+        if any(x in title for x in (
+            "revises draft bill", "revises safety bill", "amends draft bill",
+            "updates safety bill proposal", "threshold revised",
+            "초안 수정", "법안 초안 수정",
+        )):
+            return ("anthropic_frontier_bill", "draft_revised_reported")
+        # Pitched proposals / repeats remain a historical baseline.
+        return ("anthropic_frontier_bill", "private_draft_reported")
+    return None
+
+
+def tracked_policy_event_key(item: dict) -> str | None:
+    stage = tracked_policy_event_stage(item)
+    return f"{stage[0]}:{stage[1]}" if stage else None
+
+
 def detect_category(text: str) -> str:
     low = text.lower()
+    if "softbank" in low and "allied universal" in low:
+        return "SoftBank–Allied Universal 물리보안·로봇 인수 단계"
+    if "anthropic" in low and any(x in low for x in (
+        "ai safety bill", "frontier ai safety bill", "frontier ai legislation",
+        "ai safety legislation", "인공지능 안전 법안", "ai 안전 법안",
+    )):
+        return "Anthropic 프런티어 AI 안전법안 입법 단계"
     if trail_of_bits_mna_stage({"title":text,"source":"The Information"}):
         return "OpenAI–Trail of Bits 인수·계약 단계"
     if "trail of bits" in low and "patch the planet" in low:
@@ -657,6 +802,13 @@ def detect_category(text: str) -> str:
 
 def detect_entity(text: str) -> str:
     low = text.lower()
+    if "softbank" in low and "allied universal" in low:
+        return "SoftBank–Allied Universal"
+    if "anthropic" in low and any(x in low for x in (
+        "ai safety bill", "frontier ai safety bill", "frontier ai legislation",
+        "ai safety legislation", "인공지능 안전 법안", "ai 안전 법안",
+    )):
+        return "Anthropic AI 안전법안"
     if "openai" in low and "trail of bits" in low:
         return "OpenAI–Trail of Bits"
     mapping = (
@@ -741,6 +893,8 @@ def material(item: dict) -> bool:
         return False
     if is_anthropic_mission_launch_baseline(item) or is_reported_si_original(item):
         return False
+    if tracked_policy_event_stage(item):
+        return source_trusted(item.get("source", ""))
     stage = trail_of_bits_mna_stage(item)
     if stage:
         # 2026-10-13 The Information initial talks are a historical,
@@ -861,7 +1015,7 @@ def cluster_events(items: list[dict]) -> list[list[dict]]:
                     break
         if not placed:
             clusters.append([item])
-    return clusters[:MAX_ALERT_EVENTS]
+    return clusters
 
 
 def source_label(source: str) -> str:
@@ -1147,7 +1301,19 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "OpenAI–Trail of Bits 인수·계약 단계":
+        if rep["category"] == "SoftBank–Allied Universal 물리보안·로봇 인수 단계":
+            stage = tracked_policy_event_stage(rep)
+            detail = stage[1].replace("_", " ") if stage else "추가 검증"
+            lines.append(f"• <b>신규 단계</b>: {html.escape(detail)} · 신뢰보도 단계이며 당사자 공식 확정과 구분")
+            lines.append("• <b>사업 구조</b>: 기존 Allied Universal의 데이터센터 현장 경비·출입통제·원격관제 및 로봇 서비스를 인수 협상과 분리. 미체결 거래를 연결매출로 인정하지 않음")
+            lines.append("• <b>다음 확인</b>: 본계약·차입과 승계부채·반독점 승인·거래종결·실제 로봇 배치·보안 인력 비용·반복 계약")
+        elif rep["category"] == "Anthropic 프런티어 AI 안전법안 입법 단계":
+            stage = tracked_policy_event_stage(rep)
+            detail = stage[1].replace("_", " ") if stage else "추가 검증"
+            lines.append(f"• <b>신규 단계</b>: {html.escape(detail)} · 보도 단계. 의회 법안번호·공식 발의·입법 및 시행과 분리")
+            lines.append("• <b>기존 초안</b>: 10월 16일 Politico 보도상 중대한 피해 기준·독립 평가·평가 후 72시간 이내 통지 제안. 확정 법률 아님")
+            lines.append("• <b>다음 확인</b>: Anthropic 초안 전문·의회 공식 법안번호·소관 위원회·찬반·통과·시행일·규제기관 권한")
+        elif rep["category"] == "OpenAI–Trail of Bits 인수·계약 단계":
             lines.append("• <b>계약 검증</b>: 초기 협상·독점 협상·언론의 계약 보도·발행사 본계약·거래종결·협상 결렬을 단계별로 분리. 공식 발표 없으면 계약 확정으로 표기 금지")
             lines.append("• <b>매출 경로</b>: 기존 Patch the Planet 공동 프로젝트와 향후 인수 후 유료 보안검사·취약점 검증·수정 서비스 수익을 구분. 인수가격·계약금액은 직접 확인된 경우에만 표시")
         elif rep["category"] == "OpenAI–Trail of Bits 취약점 수정 사업화":
@@ -1249,6 +1415,9 @@ def main() -> int:
 
     seen = prune_seen(dict(state.get("seen") or {}), now)
     trail_mna_seen = dict(state.get("trail_of_bits_mna_seen") or {})
+    tracked_stages = dict(state.get("tracked_policy_event_stages") or {})
+    for baseline_key, baseline_info in POLICY_EVENT_BASELINES.items():
+        tracked_stages.setdefault(baseline_key, dict(baseline_info))
     trail_mna_seen.setdefault("initial_talks", {
         "source_url": "https://www.theinformation.com/articles/openai-early-talks-buy-security-startup-trail-bits",
         "status": "The Information 2026-10-13 reported early talks; unconfirmed",
@@ -1260,6 +1429,12 @@ def main() -> int:
     new_items = []
     for item in current:
         if item["fingerprint"] in seen:
+            continue
+        tracked_key = tracked_policy_event_key(item)
+        if tracked_key:
+            if tracked_key in tracked_stages:
+                continue
+            new_items.append(item)
             continue
         stage = trail_of_bits_mna_stage(item)
         if stage:
@@ -1359,20 +1534,41 @@ def main() -> int:
     if baseline:
         new_items = []
 
+    all_events = cluster_events(new_items)
+    events = all_events[:MAX_ALERT_EVENTS]
+    deferred_fingerprints = {
+        item["fingerprint"]
+        for cluster in all_events[MAX_ALERT_EVENTS:]
+        for item in cluster
+    }
+    # Only a selected event becomes an acknowledged milestone. Deferred
+    # milestones are retried on the next run, without losing state.
+    for cluster in events:
+        for item in cluster:
+            tracked_key = tracked_policy_event_key(item)
+            if tracked_key:
+                tracked_stages.setdefault(tracked_key, {
+                    "source_url": item.get("url"),
+                    "source": item.get("source"),
+                    "first_seen_at": now.isoformat(),
+                    "status": "trusted_report_not_issuer_or_legislative_confirmation",
+                })
     first_seen = now.isoformat()
     for item in current:
+        if item["fingerprint"] in deferred_fingerprints:
+            continue
         seen.setdefault(item["fingerprint"], {
             "title":item["title"], "source":item["source"], "url":item["url"],
             "entity":item["entity"], "category":item["category"],
             "published_at":item.get("published_at"), "first_seen_at":first_seen,
         })
 
-    events = cluster_events(new_items)
     pending = {
         "initialized": True,
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen": seen,
         "trail_of_bits_mna_seen": trail_mna_seen,
+        "tracked_policy_event_stages": tracked_stages,
         "official_pages": official_pages,
         "official_snapshot_schema_version": OFFICIAL_SNAPSHOT_SCHEMA_VERSION,
         "openshell_telemetry": openshell_telemetry,
@@ -1381,6 +1577,7 @@ def main() -> int:
             "material_items":len(current),
             "new_articles":len(new_items),
             "new_events":len(events),
+            "deferred_events":len(all_events) - len(events),
             "official_page_skips":official_page_skips,
             "errors":errors,
         },
@@ -1401,6 +1598,7 @@ def main() -> int:
         f"- 중요 필터 통과: {len(current)}건",
         f"- OpenShell 텔레메트리 최신: {openshell_telemetry.get('name') or '확인 불가'}",
         f"- 신규 중요 사건: {len(events)}건",
+        f"- 한도 초과 다음 회차 이월 사건: {len(all_events) - len(events)}건",
         f"- 공식문서 접근 누락: {len(official_page_skips)}건",
         f"- 오류: {len(errors)}건",
     ]
