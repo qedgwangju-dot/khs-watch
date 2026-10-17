@@ -143,14 +143,23 @@ jobs:
 
           title = pathlib.Path("out/qra_recurring_alert_title.txt").read_text(encoding="utf-8").strip()
           body = pathlib.Path("out/qra_recurring_alert.md").read_text(encoding="utf-8").strip()
-          text = f"{title}\n\n{body}"
+          detail = json.loads(pathlib.Path("out/qra_recurring_alert.json").read_text(encoding="utf-8"))
+          dealer_message = detail.get("type") == "dealer_long_end_survey_official_document"
+          if dealer_message:
+              from scripts.qra_recurring_alert import dealer_telegram_html
+              text = dealer_telegram_html(title, body, detail)
+          else:
+              text = f"{title}\n\n{body}"
           if len(text) > 4096:
               raise RuntimeError("QRA 원문 누락 방지: Telegram 글자수 상한 초과")
-          payload = urllib.parse.urlencode({
+          fields = {
               "chat_id": chat_id,
               "text": text,
               "disable_web_page_preview": "true",
-          }).encode("utf-8")
+          }
+          if dealer_message:
+              fields["parse_mode"] = "HTML"
+          payload = urllib.parse.urlencode(fields).encode("utf-8")
           request = urllib.request.Request(
               f"https://api.telegram.org/bot{token}/sendMessage",
               data=payload,
