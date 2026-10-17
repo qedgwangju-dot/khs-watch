@@ -78,6 +78,13 @@ OPEC_WOO2026_ENERGY_GROWTH_PCT = 23
 OPEC_WOO2026_OIL_INVESTMENT_USD_TRILLION = 17.7
 EIA_REFINING_WEEKLY_URL = "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_w.htm"
 EIA_REFINING_SOURCE = "미국 에너지정보청(EIA)"
+EIA_STOCKS_URL = "https://www.eia.gov/dnav/pet/pet_stoc_wstk_dcu_NUS_W.htm"
+IEA_OCT15_URL = "https://www.iea.org/news/iea-governing-board-statement-on-energy-markets-and-security"
+DELEK_TYLER_TRANSCRIPT_URL = "https://rollcall.com/factbase/trump/transcript/donald-trump-speech-jd-vance-midterm-political-rally-tyler-texas-october-13-2026/"
+DELEK_DPA_MEMO_URL = "https://www.whitehouse.gov/presidential-actions/2026/04/presidential-determination-pursuant-to-section-303-of-the-defense-production-act-of-1950-as-amended-on-domestic-petroleum-production-refining-and-logistics-capacity/"
+EIA_STOCKS_SOURCE = "미국 에너지정보청(EIA) 주간재고"
+IEA_OCT15_SOURCE = "국제에너지기구(IEA) 이사회"
+DELEK_VANCE_SOURCE = "JD Vance 부통령 연설 속기록"
 # Only distinct weekly observations and material changes can trigger a message.
 EIA_REFINING_MIN_ABS_WEEKLY_MOVE_USD = 5.0
 EIA_REFINING_MIN_LEVEL_USD = 40.0
@@ -313,6 +320,9 @@ EVENT_LABELS = {
     "tankertrackers_7country_crude_mtd": "TankerTrackers 중동 7개국 월중 원유 수출 회복",
     "saudi_asia_osp_change": "사우디 아시아 원유 공식판매가격(OSP) 변화",
     "eia_refining_crack_watch": "미국 공식 현물 정제마진·가격 병목 변화",
+    "eia_weekly_stock_balance": "EIA 미국 원유·정제품·전략비축유 재고",
+    "iea_oct15_reserve_execution": "IEA 잔여 비축유·경유 방출 우선집행",
+    "delek_tyler_dpa": "Delek 타일러 정유공장 DPA 증설 발표",
     "east_west_pipeline_recovery": "사우디 East-West Pipeline 실물 회복",
     "saudi_bypass_investment": "사우디 호르무즈 우회 신규 송유관 투자 단계 변화",
     "regional_export_recovery": "중동 원유 수출 회복 단계 상향",
@@ -496,6 +506,12 @@ def _news_title_ko(row: NewsItem) -> str:
 
     if kind == "eia_refining_crack_watch":
         return "미국 에너지정보청, WTI·휘발유·경유 현물가격으로 계산한 정제마진 변화"
+    if kind == "eia_weekly_stock_balance":
+        return "미국 EIA 상업용 원유·휘발유·증류유·전략비축유 재고 변화"
+    if kind == "iea_oct15_reserve_execution":
+        return "IEA, 기존 3월 약정의 잔여 비축유 신속 방출과 경유 우선 집행"
+    if kind == "delek_tyler_dpa":
+        return "JD Vance, Delek 타일러 정유공장 DPA 활용 증설계획 발표"
 
     if kind == "crude_product_divergence":
         return "JP모건, 중동 원유 흐름은 전쟁 전 수준에 근접했지만 정제품 회복은 지연"
@@ -1912,6 +1928,165 @@ def _build_eia_refining_alert_body(
     return "\n".join(lines).strip() + "\n"
 
 
+def parse_delek_tyler_dpa_remarks(raw_html: str, current: dt.datetime) -> NewsItem:
+    low=normalize_text(_visible_text(raw_html))
+    if not ("delek" in low and "tyler" in low and "defense production act" in low
+            and ("expand the refinery" in low or "going to expand" in low)
+            and "military spec" in low):
+        raise RuntimeError("Delek 부통령 발언의 증설·법률·군수연료 직접 확인 실패")
+    stamp=dt.datetime(2026,10,13,20,tzinfo=UTC)
+    return NewsItem(
+        "Delek Tyler DPA announced October 13; exact budget, added daily capacity and commissioning unknown",
+        DELEK_VANCE_SOURCE, DELEK_TYLER_TRANSCRIPT_URL,
+        stamp.isoformat(),stamp.timestamp(),"delek_tyler_dpa"
+    )
+
+
+def parse_iea_oct15_statement(raw_html: str, current: dt.datetime) -> NewsItem:
+    low=normalize_text(_visible_text(raw_html))
+    markers=("15 october 2026","march 2026 collective action",
+             "330 million barrels","100 million barrels",
+             "20 million barrels of diesel","as soon as possible","400 million barrels")
+    if not all(v in low for v in markers):
+        raise RuntimeError("IEA 이사회 날짜·기존 3월약정·실행량·잔여량·경유량 검증 실패")
+    stamp=dt.datetime(2026,10,15,15,tzinfo=UTC)
+    return NewsItem(
+        "IEA official 15 October 2026: released approximately 330 million barrels; "
+        "remaining around 100 million barrels of March 2026 action to be accelerated; "
+        "over 20 million barrels diesel as soon as possible; not a new extra 100 million",
+        IEA_OCT15_SOURCE,IEA_OCT15_URL,stamp.isoformat(),stamp.timestamp(),"iea_oct15_reserve_execution"
+    )
+
+
+def _eia_stock_row(text: str, label: str, n: int=6) -> list[int]:
+    token=r"\d{1,3}(?:,\d{3})+"
+    pattern=rf"(?<![A-Za-z]){re.escape(label)}\s+((?:{token}\s+){{{n}}})"
+    match=re.search(pattern,text,flags=re.I)
+    if not match:
+        raise RuntimeError(f"EIA 주간 기준일과 행의 {n}개 수치 불일치: {label}")
+    result=[int(x.replace(",","")) for x in re.findall(token,match.group(1))]
+    if len(result)!=n: raise RuntimeError("EIA 주간 관측치 부족")
+    return result
+
+
+def parse_eia_weekly_stock_balance(raw_html: str, current: dt.datetime) -> NewsItem:
+    txt=_visible_text(raw_html)
+    anchor="Total Crude Oil and Petroleum Products (Incl. SPR)"
+    if anchor not in txt: raise RuntimeError("EIA 원유·정제품 공식표 식별 실패")
+    date_strings=re.findall(r"(?<!\d)\d{2}/\d{2}/\d{2}(?!\d)",txt.split(anchor,1)[0])
+    if len(date_strings)!=6: raise RuntimeError("EIA 기준일 열 6개 확인 실패")
+    dates=[dt.datetime.strptime(x,"%m/%d/%y").date() for x in date_strings]
+    if any((dates[i+1]-dates[i]).days!=7 for i in range(5)):
+        raise RuntimeError("EIA 발표 주간 날짜 간격 불일치")
+    age=(current.astimezone(UTC).date()-dates[-1]).days
+    if age<0 or age>12: raise RuntimeError(f"EIA 주간재고 자료 기간 초과: {age}일")
+    com=_eia_stock_row(txt,"Commercial Crude Oil (Excl. Lease Stock)")
+    sp=_eia_stock_row(txt,"SPR")
+    crude_total=_eia_stock_row(txt,"Crude Oil (Including SPR)")
+    gas=_eia_stock_row(txt,"Total Motor Gasoline")
+    dist=_eia_stock_row(txt,"Distillate Fuel Oil")
+    if any(com[i]+sp[i]!=crude_total[i] for i in (-1,-2)):
+        raise RuntimeError("EIA 상업용 원유·전략비축유 합계 검산 실패")
+    if not (200000<com[-1]<800000 and 100000<gas[-1]<500000
+            and 20000<dist[-1]<300000 and 0<sp[-1]<800000):
+        raise RuntimeError("EIA 주간재고 수치 범위 검산 실패")
+    if com[-1]-com[-2]>-5000 and dist[-1]-dist[-2]>-2000:
+        raise RuntimeError("EIA 재고 경보 변화 임계치 미충족")
+    title=(f"EIA stocks week {dates[-1].isoformat()} kbar;"
+           f" commercial {com[-1]} delta {com[-1]-com[-2]:+d};"
+           f" gasoline {gas[-1]} delta {gas[-1]-gas[-2]:+d};"
+           f" distillate {dist[-1]} delta {dist[-1]-dist[-2]:+d};"
+           f" SPR {sp[-1]} delta {sp[-1]-sp[-2]:+d}")
+    return NewsItem(title,EIA_STOCKS_SOURCE,EIA_STOCKS_URL,
+                    current.isoformat().replace("+00:00","Z"),current.timestamp(),"eia_weekly_stock_balance")
+
+
+def _eia_stock_metrics(rows: list[NewsItem]) -> dict[str,int|str] | None:
+    pat=(r"EIA stocks week (\d{4}-\d{2}-\d{2}) kbar;"
+         r" commercial (\d+) delta ([+-]\d+);"
+         r" gasoline (\d+) delta ([+-]\d+);"
+         r" distillate (\d+) delta ([+-]\d+);"
+         r" SPR (\d+) delta ([+-]\d+)")
+    for r in rows:
+        if r.source!=EIA_STOCKS_SOURCE or r.link!=EIA_STOCKS_URL: continue
+        match=re.fullmatch(pat,r.title)
+        if not match: continue
+        z=[int(match.group(i)) for i in range(2,10)]
+        if min(z[0],z[2],z[4],z[6])<0:continue
+        return dict(week=match.group(1),commercial=z[0],c_delta=z[1],
+                    gasoline=z[2],g_delta=z[3],distillate=z[4],d_delta=z[5],
+                    spr=z[6],spr_delta=z[7])
+    return None
+
+
+def _build_delek_dpa_body(rows: list[NewsItem], oil: Quote | None,
+                          current: dt.datetime, fx: Quote | None) -> str:
+    lines=[
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),"",
+        "[한눈에]","사업          Delek 타일러 정유공장, 명목 정제능력 7만5,000배럴/일",
+        "단계          부통령, 국방물자생산법(DPA)을 통한 증설계획 발표",
+        "미확정        증설예산·신규 용량·착공·완공·군수연료 공급계약",
+        "","[수익구조]","기존          휘발유·경유·항공유 판매 중",
+        "미래          실제 증설 처리량×제품가격과 정제마진·장기 정비수익",
+        "","[다음 확인]",
+        "정부          DPA 제303조 실제 지원금·정부 구매약정",
+        "기업          Delek 공시·증설 투자결정·환경 및 안전허가",
+        "공정          조달→건설→시운전→실제 상업생산·품질 검수",
+        "","[주의]",
+        "수백만 갤런이라는 발언에는 생산기간이 없어 일간 증산량으로 바꿀 수 없습니다.",
+        "국방물자생산법 활용 계획은 착공 완료 또는 국고지원금 지급과 다릅니다.",
+        "","[근거]",
+        f"부통령 발언 속기록 · 원문: {DELEK_TYLER_TRANSCRIPT_URL}",
+        f"백악관 DPA 제303조 · 원문: {DELEK_DPA_MEMO_URL}"
+    ]
+    return "\n".join(lines)+"\n"
+
+
+def _build_iea_reserve_body(rows: list[NewsItem], oil: Quote | None,
+                            current: dt.datetime, fx: Quote | None) -> str:
+    lines=[
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),"",
+        "[한눈에]","3월 기존 약정      총 4억 배럴(원래 계획)",
+        "기집행             약 3억3,000만 배럴",
+        "잔여               약 1억 배럴 · 신속 집행 합의",
+        "경유               2,000만 배럴 초과 · 조속히 공급",
+        "","[핵심]",
+        "이번 잔여 1억 배럴은 기존 3월 약정의 미방출 물량입니다.",
+        "경유 2,000만 배럴 초과를 별도 신규 2,000만 배럴로 더하지 않습니다.",
+        "일부 회원국의 기존 계획 초과 방출로 최종 합계는 4억 배럴을 넘어설 전망입니다.",
+        "","[다음 확인]",
+        "집행               IEA 국가별 방출 결정·실제 공급일·배정 물량",
+        "제품               경유 재고·유럽 경유 가격·아시아 정제마진",
+        "역풍               방출지연·연료규격·보험·운송 병목",
+        "","[근거]",f"IEA 이사회 공식 성명 · 원문: {IEA_OCT15_URL}"
+    ]
+    return "\n".join(lines)+"\n"
+
+
+def _build_eia_stock_body(rows: list[NewsItem], oil: Quote | None,
+                          current: dt.datetime, fx: Quote | None) -> str:
+    m=_eia_stock_metrics(rows)
+    if m is None: raise RuntimeError("EIA 원자료 검증 실패 · 알림 생성 중단")
+    def mm(k): return int(m[k])/1000.0
+    lines=[
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),"",
+        "[현재 숫자]",f"기준               {m['week']} · 단위 백만 배럴",
+        f"상업용 원유        {mm('commercial'):.3f} · 전주 {mm('c_delta'):+.3f}",
+        f"휘발유             {mm('gasoline'):.3f} · 전주 {mm('g_delta'):+.3f}",
+        f"증류유             {mm('distillate'):.3f} · 전주 {mm('d_delta'):+.3f}",
+        f"전략비축유         {mm('spr'):.3f} · 전주 {mm('spr_delta'):+.3f}",
+        "","[핵심]",
+        "상업용 원유 재고와 전략비축유는 다른 계정입니다. 증류유는 경유·난방유 포함.",
+        "상업용 원유 감소만으로 모든 정제품 부족을 확정하지 않습니다.",
+        "","[다음 확인]",
+        "본업               원유 생산·수입·정유시설 가동률·가공물량",
+        "정제품             경유·휘발유 재고와 제품별 정제마진",
+        "정부               실제 전략비축유 방출·IEA 집행량",
+        "","[근거]",f"EIA 주간 공식 재고 · 원문: {EIA_STOCKS_URL}"
+    ]
+    return "\n".join(lines)+"\n"
+
+
 def parse_kpler_sts_snapshot(raw_html: str, current: dt.datetime) -> NewsItem:
     text = _visible_text(raw_html)
     record = re.search(
@@ -2085,6 +2260,18 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
             items.extend(parse_rss(fetch_bytes(google_news_url(query)), current, max_age_hours))
         except Exception as exc:
             errors.append(str(exc))
+
+    extra_official=(
+        ("EIA 주간 원유·정제품 재고",EIA_STOCKS_URL,parse_eia_weekly_stock_balance),
+        ("IEA 10월 15일 비축유 집행",IEA_OCT15_URL,parse_iea_oct15_statement),
+        ("Delek 부통령 증설 발표",DELEK_TYLER_TRANSCRIPT_URL,parse_delek_tyler_dpa_remarks),
+    )
+    for desc,url,parser in extra_official:
+        try:
+            page=fetch_bytes(url,timeout=18,attempts=2).decode("utf-8",errors="replace")
+            items.append(parser(page,current))
+        except Exception as exc:
+            errors.append(f"{desc}: {type(exc).__name__}: {exc}")
 
     try:
         tanker_html = fetch_bytes(TANKERTRACKERS_PUBLIC_TELEGRAM_URL,timeout=12,attempts=1).decode("utf-8",errors="replace")
@@ -2268,6 +2455,15 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
         russian_ofac_primary=kind=="russia_diesel_supply_transition" and stage=="us_license_issued" and any(
             _russian_license_is_official(row) for row in selected
         )
+        new_official_primary=any(
+            kind == k and row.source == source and row.link == url
+            for row in selected
+            for k,source,url in (
+                ("eia_weekly_stock_balance",EIA_STOCKS_SOURCE,EIA_STOCKS_URL),
+                ("iea_oct15_reserve_execution",IEA_OCT15_SOURCE,IEA_OCT15_URL),
+                ("delek_tyler_dpa",DELEK_VANCE_SOURCE,DELEK_TYLER_TRANSCRIPT_URL),
+            )
+        )
         eia_primary = kind == "eia_refining_crack_watch" and any(
             row.source == EIA_REFINING_SOURCE
             and row.link == EIA_REFINING_WEEKLY_URL
@@ -2280,7 +2476,7 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             for row in selected
         )
 
-        if len(selected) >= minimum_sources or has_primary_data or regional_primary or tanker_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary or saudi_minister_direct or saudi_minister_report or saudi_official_advanced:
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or tanker_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary or saudi_minister_direct or saudi_minister_report or saudi_official_advanced or new_official_primary:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
 
     candidates.sort(key=lambda value: value[0], reverse=True)
@@ -2406,6 +2602,22 @@ def load_state(path: pathlib.Path = STATE_PATH) -> dict:
 
 def event_id(kind: str, rows: list[NewsItem]) -> str:
     combined = " ".join(normalize_text(row.title) for row in rows)
+
+    if kind in ("eia_weekly_stock_balance","iea_oct15_reserve_execution","delek_tyler_dpa"):
+        approved = {
+            "eia_weekly_stock_balance": (EIA_STOCKS_SOURCE,EIA_STOCKS_URL),
+            "iea_oct15_reserve_execution": (IEA_OCT15_SOURCE,IEA_OCT15_URL),
+            "delek_tyler_dpa": (DELEK_VANCE_SOURCE,DELEK_TYLER_TRANSCRIPT_URL),
+        }
+        source, url = approved[kind]
+        if not any(r.source==source and r.link==url for r in rows):
+            raise ValueError("공식 확인 출처가 없는 사건 ID 생성 거부")
+        if kind=="eia_weekly_stock_balance":
+            m=_eia_stock_metrics(rows)
+            if not m: raise ValueError("주간 원자료 누락")
+            return f"{kind}:{m['week']}"
+        return (f"{kind}:2026-10-15-330-100-20plus" if kind=="iea_oct15_reserve_execution"
+                else f"{kind}:2026-10-13-announcement")
 
     if kind == "saudi_bypass_investment":
         stages = {_saudi_bypass_stage(row.title) for row in rows}
@@ -2720,6 +2932,11 @@ def event_recently_alerted(
                 if previously_sent and (current.astimezone(KST) - previously_sent).total_seconds() < hours * 3600:
                     return True
 
+    if current_event_id.startswith((
+        "delek_tyler_dpa:", "iea_oct15_reserve_execution:", "eia_weekly_stock_balance:",
+    )):
+        return (current_event_id in (state.get("alerted_events") or {})
+                or state.get("last_event_id")==current_event_id)
     if state.get("last_event_id") == current_event_id:
         previous = _parse_kst_timestamp(state.get("last_alert_at_kst"))
         if previous is None:
@@ -2745,6 +2962,9 @@ def build_pending_state(
             stamp >= cutoff or str(key).startswith((
                 "russia_diesel_supply_transition:",
                 "saudi_bypass_investment:",
+                "delek_tyler_dpa:",
+                "iea_oct15_reserve_execution:",
+                "eia_weekly_stock_balance:",
             ))
         ):
             cleaned[str(key)] = stamp.isoformat(timespec="seconds")
@@ -4403,6 +4623,12 @@ def build_physical_flow_alert_body(
     metrics = _extract_kpler_sts_metrics(news_rows)
     if kind == "tankertrackers_7country_crude_mtd":
         return _build_tankertrackers_seven_country_alert_body(news_rows, oil, current, fx)
+    if kind == "eia_weekly_stock_balance":
+        return _build_eia_stock_body(news_rows,oil,current,fx)
+    if kind == "iea_oct15_reserve_execution":
+        return _build_iea_reserve_body(news_rows,oil,current,fx)
+    if kind == "delek_tyler_dpa":
+        return _build_delek_dpa_body(news_rows,oil,current,fx)
     if kind == "eia_refining_crack_watch":
         return _build_eia_refining_alert_body(news_rows, oil, current, fx)
     if kind == "russia_diesel_supply_transition":
@@ -4781,6 +5007,9 @@ def run_monitor(current: dt.datetime) -> int:
         "regional_export_recovery",
         "crude_product_divergence",
         "eia_refining_crack_watch",
+        "eia_weekly_stock_balance",
+        "iea_oct15_reserve_execution",
+        "delek_tyler_dpa",
         "g7_reserve_release_agreement",
         "eu_diesel_reserve_policy",
         "us_diesel_export_policy",
@@ -4805,6 +5034,12 @@ def run_monitor(current: dt.datetime) -> int:
             title = "중동 7개국 원유수출 월중 회복·정제품 병목"
         elif kind == "eia_refining_crack_watch":
             title = "미국 정제마진·정유사 이익 병목 변화"
+        elif kind == "eia_weekly_stock_balance":
+            title = "미국 EIA 상업용 원유·경유·휘발유 재고"
+        elif kind == "iea_oct15_reserve_execution":
+            title = "IEA 비축유 잔여 방출·경유 우선 집행"
+        elif kind == "delek_tyler_dpa":
+            title = "Delek 타일러 정유공장 DPA 증설 계획"
         elif kind == "crude_product_divergence":
             title = "중동 원유 회복·정제품 병목 변화"
         elif kind == "g7_reserve_release_agreement":
