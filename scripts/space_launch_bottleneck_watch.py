@@ -668,12 +668,16 @@ def main() -> int:
             if not source_is_trusted(item):
                 continue
             pub = dt.datetime.fromisoformat(item["published"]) if item.get("published") else None
-            if pub and NOW - pub > dt.timedelta(days=14):
+            # RSS articles older than 48h are not newly confirmed events.
+            # Official backfill is handled by separately verified notice IDs.
+            if not pub or not -dt.timedelta(minutes=20) <= NOW - pub <= dt.timedelta(hours=48):
                 continue
             item["_score"] = score
             item["_id"] = item_id(category.key, item)
             item["_verified"] = corroborated(category, item, peers)
             if item["_verified"]:
+                from space_launch_event_guard import semantic_id
+                item["_semantic_id"] = semantic_id(category.key, item)
                 candidates.append(item)
 
         candidates.sort(key=lambda x: (x.get("_score", 0), x.get("published") or ""), reverse=True)
@@ -688,14 +692,17 @@ def main() -> int:
                 selected.append((category, candidates[0]))
         else:
             for item in candidates:
-                if item["_id"] not in seen:
+                if item["_id"] not in seen and item["_semantic_id"] not in seen:
                     selected.append((category, item))
                     break
 
-        for item in peers:
-            iid = item_id(category.key, item)
-            if source_is_trusted(item) and signal_score(category, item) >= 0 and iid not in seen:
-                seen[iid] = NOW.isoformat()
+        # Preserve old event IDs and add a semantic key for genuinely verified
+        # same-event articles. Do not label unrelated topical coverage verified.
+        for item in candidates:
+            if item["_id"] not in seen:
+                seen[item["_id"]] = NOW.isoformat()
+            if item["_semantic_id"] not in seen:
+                seen[item["_semantic_id"]] = NOW.isoformat()
 
     if newly_initialized:
         initialized.extend(newly_initialized)
