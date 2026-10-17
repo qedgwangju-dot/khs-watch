@@ -36106,6 +36106,24 @@
       "telegram_core_fact": "감사위가 안성시 제출자료로 계산한 미부과 추정액은 69곳 7억5703만원, 116곳 2억637만3000원 등 185곳 9억6340만3000원이다.",
       "title": "안성시, 계약업체 아닌 곳에 '단톡방 공사 지시'…경기도 감사 79건 지적"
     },
+    "core:90d764e3a3a8babda23c6dc8": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/18/2026101612535039594",
+      "source": "머니투데이",
+      "source_body_digest": "5a5927d628d649dda57a134d945c27972d94d5b9b1e075e919bf8bdc5a13db2c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-18T07:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "메모리 오르니 \"가격 낮춰라\" 압박·사양 조절도..K디스플레이 기회?",
+      "telegram_core_fact": "유비리서치는 \"메모리는 공급이 빠듯해 세트(완제품) 업체가 가격을 협상할 여지가 거의 없는 반면 OLED 패널은 생산능력이 늘고 있어 단가 인하를 요구하기 쉽다\"고 밝혔다.",
+      "title": "메모리 오르니 \"가격 낮춰라\" 압박·사양 조절도..K디스플레이 기회?"
+    },
     "core:90fd0cb9709333fe01f59f1f": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
       "lanes": {
@@ -54224,6 +54242,39 @@
       "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
       "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
       "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
+    },
+    "core:ddaae003e41f6480e4314374": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
     },
     "core:ddb1677e5bcbb3c11957d176": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -73726,6 +73777,39 @@
       "source_published_kst": "2026-10-04T17:18+09:00",
       "title": "중간선거 패배 위기 … 트럼프, 대미투자·관세폭탄 투트랙 압박"
     },
+    "event:bb3a6fb2c44fc7700eef6853": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
+    },
     "event:bb3bccc2435c0575416c151c": {
       "first_seen_kst": "2026-10-14T15:54:32+09:00",
       "lanes": {
@@ -86085,6 +86169,39 @@
       ],
       "source_published_kst": "2026-10-07T09:48+09:00",
       "title": "러 북한에 제트 드론 기술 대거 이전 가능성"
+    },
+    "fact:1857f15c6d3d61cbd8ae48b3": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
     },
     "fact:1858a38980bf8f5379514911": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
@@ -157471,6 +157588,24 @@
       "source": "한국경제",
       "title": "“통신주 반등하나” 금리인상에도 기대감 고조"
     },
+    "link:0991dc0daabb7df7f9911b1d": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003830054",
+      "source": "뉴시스",
+      "source_body_digest": "4b0ef2313833860c0c163f2d982d17d10ce8d5e8af26b9dfc09e0817b5138b96",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-18T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "장애인 고용률 높여도 저임금·고용불안…\"질적 향상 필요\"",
+      "telegram_core_fact": "전체 장애인 고용률은 3.27%로 전년보다 0.06%포인트(p) 상승했다.",
+      "title": "장애인 고용률 높여도 저임금·고용불안…\"질적 향상 필요\""
+    },
     "link:0993ba321453022ac9e16cb7": {
       "first_seen_kst": "2026-10-15T05:17:25+09:00",
       "lanes": {
@@ -223265,6 +223400,39 @@
       "telegram_core_fact": "대웅제약[069620]은 경기 화성시 향남 대웅바이오 3공장에 마이크로니들(Microneedle) 제조 인프라를 구축한다고 14일 밝혔다. 대웅제약은 이번 생산 인프라 구축의 핵심은 마이크로니들 패치형 의약품의 특성을 반영한 무균 제조공정과 자동화 생산체계를 확립하는 것이라고 설명했다.",
       "title": "대웅제약, 마이크로니들 무균 제조소 구축한다 | 연합뉴스"
     },
+    "link:b1009d42f490564e8d18db06": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
+    },
     "link:b119cb77244698dda0e45dc3": {
       "first_seen_kst": "2026-10-05T15:12:23+09:00",
       "lanes": {
@@ -252431,6 +252599,24 @@
       "source_published_kst": "2026-10-06T19:08+09:00",
       "title": "국제약품 승계 속도…남영우 회장 지분 전량 3세 증여"
     },
+    "link:fdc6636a5e03782e5b747f9a": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/18/2026101612535039594",
+      "source": "머니투데이",
+      "source_body_digest": "5a5927d628d649dda57a134d945c27972d94d5b9b1e075e919bf8bdc5a13db2c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-18T07:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "메모리 오르니 \"가격 낮춰라\" 압박·사양 조절도..K디스플레이 기회?",
+      "telegram_core_fact": "유비리서치는 \"메모리는 공급이 빠듯해 세트(완제품) 업체가 가격을 협상할 여지가 거의 없는 반면 OLED 패널은 생산능력이 늘고 있어 단가 인하를 요구하기 쉽다\"고 밝혔다.",
+      "title": "메모리 오르니 \"가격 낮춰라\" 압박·사양 조절도..K디스플레이 기회?"
+    },
     "link:fdda44238ab7fa572a5665dd": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
       "lanes": {
@@ -256717,6 +256903,24 @@
       "source_title": "“제조 AX 구현 방법 제시” 이즈파크, 14일 개막 'THE NEXT AI' 참가",
       "telegram_core_fact": "이즈파크(대표 김갑산)는 14일부터 16일까지 창원컨벤션센터(CECO)에서 열리는 '2026 THE NEXT AI' 산업전에 참가해 생산계획부터 현장 실행, 디지털트윈, 제조 AI까지 연계하는 제조 AX 구축 역량과 실제 적용 사례를 선보인다고 13일 밝혔다.",
       "title": "“제조 AX 구현 방법 제시” 이즈파크, 14일 개막 'THE NEXT AI' 참가"
+    },
+    "original:08424d2ba925dafa8617240d": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/18/2026101612535039594",
+      "source": "머니투데이",
+      "source_body_digest": "5a5927d628d649dda57a134d945c27972d94d5b9b1e075e919bf8bdc5a13db2c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-18T07:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "메모리 오르니 \"가격 낮춰라\" 압박·사양 조절도..K디스플레이 기회?",
+      "telegram_core_fact": "유비리서치는 \"메모리는 공급이 빠듯해 세트(완제품) 업체가 가격을 협상할 여지가 거의 없는 반면 OLED 패널은 생산능력이 늘고 있어 단가 인하를 요구하기 쉽다\"고 밝혔다.",
+      "title": "메모리 오르니 \"가격 낮춰라\" 압박·사양 조절도..K디스플레이 기회?"
     },
     "original:085616fb98bac4caabb33b2b": {
       "first_seen_kst": "2026-10-12T23:57:10+09:00",
@@ -296866,6 +297070,24 @@
       "telegram_core_fact": "서울 주택 시장을 둘러싼 집값 상승 원인을 두고 규제 완화와 규제 강화의 팽팽한 공방이 이어지고 있다.",
       "title": "풀어서 올랐나, 조여서 올랐나…서울 집값 뒤흔든 ‘토허제 딜레마’, 향방은"
     },
+    "original:70f382b364b4d94c1defbc99": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003830054",
+      "source": "뉴시스",
+      "source_body_digest": "4b0ef2313833860c0c163f2d982d17d10ce8d5e8af26b9dfc09e0817b5138b96",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-18T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "장애인 고용률 높여도 저임금·고용불안…\"질적 향상 필요\"",
+      "telegram_core_fact": "전체 장애인 고용률은 3.27%로 전년보다 0.06%포인트(p) 상승했다.",
+      "title": "장애인 고용률 높여도 저임금·고용불안…\"질적 향상 필요\""
+    },
     "original:70f6ae5f3d938d1caca724d5": {
       "first_seen_kst": "2026-10-13T07:27:37+09:00",
       "lanes": {
@@ -302185,6 +302407,39 @@
       "source_title": "TI, AI 데이터센터 위한 나노초 수준 '아날로그-디지털 컨버터' 공개",
       "telegram_core_fact": "카르틱 바산트 TI 부사장은 “AI 작업량 증가로 실시간 상태 파악과 시스템 안정성이 중요해졌다”며 “전력 감시·보호와 정밀한 타이밍 기술로 데이터센터의 성능 향상을 지원하겠다”고 밝혔다.",
       "title": "TI, AI 데이터센터 위한 나노초 수준 '아날로그-디지털 컨버터' 공개"
+    },
+    "original:7eb4471915d4653da4eed33d": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
     },
     "original:7ec0df0193d5bda93e97c9d0": {
       "first_seen_kst": "2026-10-04T00:48:36+09:00",
@@ -360706,6 +360961,39 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "개미는 반도체 ‘팔자’…美 지수·파킹형에 몰린 돈 [ETF 지형도 변화]①"
     },
+    "source_fact:06840d27c6a6b7baf65e5e6e": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
+    },
     "source_fact:06858feb2e0de0d3d279918f": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
       "lanes": {
@@ -373436,6 +373724,39 @@
       "source_published_kst": "2026-10-06T07:46+09:00",
       "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
     },
+    "source_fact:0f36c6059904fafaaac71e8c": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
+    },
     "source_fact:0f38fe5de47bbe6ae3719469": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -377983,6 +378304,39 @@
       "source_title": "투자 고수들, '삼전닉스' 매수 줄였다…반도체 장비·배터리로 확산 [1% 고수의 선택]",
       "telegram_core_fact": "■반도체 온기, 부품·장비주로 확산 11일 키움증권이 제공하는 '수익률 상위 고객(직전 3개월 수익률 상위 2만5000명) 매매 상세 현황'에 따르면 수익률 상위 투자자들이 지난 6~8일 가장 많이 순매수한 종목은 SK하이닉스로, 순매수액은 572억원이었다.",
       "title": "투자 고수들, '삼전닉스' 매수 줄였다…반도체 장비·배터리로 확산 [1% 고수의 선택]"
+    },
+    "source_fact:11cb2fc954c993e3a1e60d87": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
     },
     "source_fact:11cc00ccff7e7a173552aab1": {
       "first_seen_kst": "2026-10-07T19:32:28+09:00",
@@ -454795,6 +455149,39 @@
       "telegram_core_fact": "이번 공격은 사우디가 지원하는 예멘 정부군이 후티가 장악한 홍해 연안의 전략 요충지를 탈환하기 위한 군사작전에 나선 가운데 발생했다.",
       "title": "사우디·후티 '전면전' 되돌림 양상…리야드 공항 등 3명 사망"
     },
+    "source_fact:44ad7c78a52f7ed8dcd17366": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
+    },
     "source_fact:44b7b1a314bd14dde78c9343": {
       "first_seen_kst": "2026-10-14T02:42:17+09:00",
       "lanes": {
@@ -486298,6 +486685,39 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
+    "source_fact:58915898ac565bc205ffb1c0": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
+    },
     "source_fact:5896e3de8588634372a5756e": {
       "first_seen_kst": "2026-10-15T07:56:16+09:00",
       "lanes": {
@@ -513563,6 +513983,39 @@
       "source_title": "구보성 엠비디 대표 “로봇팔까지 연결한 세포배양 자동화, 내년 상용화”",
       "telegram_core_fact": "이달 코스닥 상장을 추진 중인 엠비디는 3차원(3D) 세포배양 플랫폼 기술을 기반으로 정밀의료와 신약개발 지원 사업을 전개하는 기업이다.",
       "title": "구보성 엠비디 대표 “로봇팔까지 연결한 세포배양 자동화, 내년 상용화”"
+    },
+    "source_fact:6aa41b80f8f142b104f1cc59": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
     },
     "source_fact:6aa6a70ae8df7606254bdd6d": {
       "first_seen_kst": "2026-10-15T00:34:31+09:00",
@@ -571305,6 +571758,39 @@
       "telegram_core_fact": "유나이티드헬스 그룹(UNH)은 3분기 매출액이 1126억9400만 달러로 전년비 0.4% 감소했지만, 영업이익은 65억6300만 달러로 52.1% 늘고 GAAP 희석 주당순이익(EPS)은 4.56달러로 76.1% 증가했다고 10월 13일 발표했다.",
       "title": "유나이티드헬스 그룹, 3분기 희석 EPS 4.56달러..전년비 76% 증가"
     },
+    "source_fact:91e2675ad9825e2bbd8991bb": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
+    },
     "source_fact:91e4e2500e2e43f0aaf3ec87": {
       "first_seen_kst": "2026-10-15T02:55:21+09:00",
       "lanes": {
@@ -572093,6 +572579,39 @@
       "source_title": "피에스케이홀딩스, 첨단 패키징 증설 수혜 기대에 7%대 강세",
       "telegram_core_fact": "윤동욱 현대차증권 연구원은 \"내년 TSMC의 CoWoS 생산능력은 월당 19만장에 달할 것으로 보이지만 여전히 첨단 패키징 수요가 공급을 초과할 것\"이라며 \"이에 따라 주요 OSAT 업체들도 시설투자를 대폭 늘리고 있다\"고 설명했다.",
       "title": "피에스케이홀딩스, 첨단 패키징 증설 수혜 기대에 7%대 강세"
+    },
+    "source_fact:927fc77871baf2bbf8182cb6": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
     },
     "source_fact:928280fe90fc0cb71240309b": {
       "first_seen_kst": "2026-10-15T19:21:06+09:00",
@@ -596982,6 +597501,39 @@
       "telegram_core_fact": "노보 노디스크가 지난해 3분기 20억 덴마크 크로네(약 4013억원) 총 순 매출 혜택을 받으면서 해당 분기 보고 기준 매출은 307억 덴마크 크로네(약 6조1600억원)로 증가했다는 점도 이번 매출 감소세를 한층 부각할 것이라고 그는 지적했다.",
       "title": "[개장전특징주]엔비디아, 웨스턴디지털, 노보 노디스크"
     },
+    "source_fact:a332e1fa62ec23acf9ada2cd": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
+    },
     "source_fact:a339075a742ab355f02fbbd3": {
       "first_seen_kst": "2026-10-17T08:22:42+09:00",
       "lanes": {
@@ -598455,6 +599007,39 @@
       "source_title": "한화에어로스페이스 K9 자주포 제식명에 'XM1776'",
       "telegram_core_fact": "한화에어로스페이스는 올해 8월 미국 육군 기동전술화포(MTC) 사업의 K9MH 시제품 공급 계약을 체결 후 이달 시제 1호기를 납품했다.",
       "title": "한화에어로스페이스 K9 자주포 제식명에 'XM1776'"
+    },
+    "source_fact:a4215282a20e25f7d7a6f239": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
     },
     "source_fact:a4246e2385677198de2f28cd": {
       "first_seen_kst": "2026-10-15T17:49:30+09:00",
@@ -612197,6 +612782,39 @@
       "source_title": "[중화학ON]LG엔솔 3분기 영업익 7560억 '깜짝실적'…삼성SDI 흑자·SK온 적자 전망",
       "telegram_core_fact": "LG에너지솔루션이 8일 공시한 3분기 잠정실적에 따르면 매출은 9조6434억원, 영업이익은 7560억원이다.",
       "title": "[중화학ON]LG엔솔 3분기 영업익 7560억 '깜짝실적'…삼성SDI 흑자·SK온 적자 전망"
+    },
+    "source_fact:ad1d322802d6019f38577bbf": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
     },
     "source_fact:ad1f220010c774a34b234ee3": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
@@ -647956,6 +648574,39 @@
       "source_title": "펜스케오토모티브그룹, 비상장 전환 추진..주당 212달러 현금인수",
       "telegram_core_fact": "펜스케오토모티브그룹(PAG)이 최대주주인 펜스케코퍼레이션, 미쓰이물산과 기업가치 약 163억 달러 비상장 전환(Going Private) 합병 계약을 체결하고, 소액주주에게 주당 212달러를 현금으로 지급하기로 했다고 15일 발표했다.",
       "title": "펜스케오토모티브그룹, 비상장 전환 추진..주당 212달러 현금인수"
+    },
+    "source_fact:c53c7c6a9a4a171f535126da": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
     },
     "source_fact:c53d11917527b18f0522fb22": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
@@ -719227,6 +719878,39 @@
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
     },
+    "source_fact:f46f619d3f94caf302842bde": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
+    },
     "source_fact:f4753301be1b4802291f3a3d": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -735159,6 +735843,39 @@
       "telegram_core_fact": "삼성전자는 지난해 4분기 매출 93조8000억원, 영업익 20조1000억원으로 역대 최대 기록을 세운 이후 4개 분기 연속해 매출과 영업이익 신기록 행진을 이어가고 있다.",
       "title": "\"100조 벽 깼다\" 삼성전자 또 신기록…내년엔 130조 찍나"
     },
+    "source_fact:ffd01f9acf18f6e32eba57ed": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
+    },
     "source_fact:ffd0e070bb627b2bd1f68e62": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -738454,6 +739171,24 @@
       "source_title": "“제조 AX 구현 방법 제시” 이즈파크, 14일 개막 'THE NEXT AI' 참가",
       "telegram_core_fact": "이즈파크(대표 김갑산)는 14일부터 16일까지 창원컨벤션센터(CECO)에서 열리는 '2026 THE NEXT AI' 산업전에 참가해 생산계획부터 현장 실행, 디지털트윈, 제조 AI까지 연계하는 제조 AX 구축 역량과 실제 적용 사례를 선보인다고 13일 밝혔다.",
       "title": "“제조 AX 구현 방법 제시” 이즈파크, 14일 개막 'THE NEXT AI' 참가"
+    },
+    "title:08424d2ba925dafa8617240d": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/18/2026101612535039594",
+      "source": "머니투데이",
+      "source_body_digest": "5a5927d628d649dda57a134d945c27972d94d5b9b1e075e919bf8bdc5a13db2c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-18T07:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "메모리 오르니 \"가격 낮춰라\" 압박·사양 조절도..K디스플레이 기회?",
+      "telegram_core_fact": "유비리서치는 \"메모리는 공급이 빠듯해 세트(완제품) 업체가 가격을 협상할 여지가 거의 없는 반면 OLED 패널은 생산능력이 늘고 있어 단가 인하를 요구하기 쉽다\"고 밝혔다.",
+      "title": "메모리 오르니 \"가격 낮춰라\" 압박·사양 조절도..K디스플레이 기회?"
     },
     "title:085616fb98bac4caabb33b2b": {
       "first_seen_kst": "2026-10-12T23:57:10+09:00",
@@ -779453,6 +780188,24 @@
       "telegram_core_fact": "서울 주택 시장을 둘러싼 집값 상승 원인을 두고 규제 완화와 규제 강화의 팽팽한 공방이 이어지고 있다.",
       "title": "풀어서 올랐나, 조여서 올랐나…서울 집값 뒤흔든 ‘토허제 딜레마’, 향방은"
     },
+    "title:70f382b364b4d94c1defbc99": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003830054",
+      "source": "뉴시스",
+      "source_body_digest": "4b0ef2313833860c0c163f2d982d17d10ce8d5e8af26b9dfc09e0817b5138b96",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-18T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "장애인 고용률 높여도 저임금·고용불안…\"질적 향상 필요\"",
+      "telegram_core_fact": "전체 장애인 고용률은 3.27%로 전년보다 0.06%포인트(p) 상승했다.",
+      "title": "장애인 고용률 높여도 저임금·고용불안…\"질적 향상 필요\""
+    },
     "title:70f6ae5f3d938d1caca724d5": {
       "first_seen_kst": "2026-10-13T07:27:37+09:00",
       "lanes": {
@@ -784868,6 +785621,39 @@
       "source_title": "TI, AI 데이터센터 위한 나노초 수준 '아날로그-디지털 컨버터' 공개",
       "telegram_core_fact": "카르틱 바산트 TI 부사장은 “AI 작업량 증가로 실시간 상태 파악과 시스템 안정성이 중요해졌다”며 “전력 감시·보호와 정밀한 타이밍 기술로 데이터센터의 성능 향상을 지원하겠다”고 밝혔다.",
       "title": "TI, AI 데이터센터 위한 나노초 수준 '아날로그-디지털 컨버터' 공개"
+    },
+    "title:7eb4471915d4653da4eed33d": {
+      "first_seen_kst": "2026-10-18T08:07:27+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:07:27+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:07:27+09:00",
+      "link": "https://www.fnnews.com/news/202610180615415193",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "856506cc98bda9da927319df6c03d27f31e78786bd369f734bc6116fa9462196",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c812bfcb162a515b4546dd50830e95d462453f3452e7582622725c10fd9a2b1a",
+      "source_fact_keys": [
+        "source_fact:v1:09c66456a6137148edddcfe67d2ede6bfd42005925e5bd023582c685b7057848",
+        "source_fact:v1:28009407af6145351f9bcff432e375dae441ad6c74c2e274fe2c25063d3fd0cf",
+        "source_fact:v1:2e16ace8698f3e9dfb39f9c330ff66b7fe7d402bb2997b583c2314e3f71ba8de",
+        "source_fact:v1:3655ff6fc2f7e94ce782b2ba258ccea48bbb7d893610045686123bf11c0b5261",
+        "source_fact:v1:3c2cd2f02ee7468c44a6a1a36eee7d4f4e0c10a45229160ebab0f965655f5337",
+        "source_fact:v1:49f64998da5f6bee938e2eac40d579f4251dd3ab1eef4b733a518ba0ffa0f875",
+        "source_fact:v1:4b68d95c118fd150fd4adff23edc409a04640054e2e0961969ad673cfb46f2e8",
+        "source_fact:v1:543012dc6ea9423d90a538b039b3742debb6467f023725d5118aced0155ba77a",
+        "source_fact:v1:5e96f9478a703608fe808bc39c58fa0bea2cd5e240bbb6215782d99de25fd91b",
+        "source_fact:v1:8a0e0c9976418ae039b9723a2befcdb4a3ca612ef0ddca20955525185215b95e",
+        "source_fact:v1:98f74e21c6d35eacf29fbc6773b7864325ca9a89f6cbcd5957ed25698e91c3cc",
+        "source_fact:v1:9f224c86d03d58b1226e5c247513ccf2fb3f532e091b8039ce1803af05d12970",
+        "source_fact:v1:d8b986f370a98daae0833afade004fedc2e70c61da5b2ac8c44e97e0df59d760",
+        "source_fact:v1:e6797cd84e0633bf054e8b28e01fcda8d5f54a34938945894eec2a9320e6fb00"
+      ],
+      "source_published_kst": "2026-10-18T06:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'",
+      "telegram_core_fact": "일례로 'KDOEX 200타겟위클리커버드콜' 순설정액 증가액은 지난 13일 전체 ETF 중 가장 많은 1천370억원, 15일에는 7번째로 많은 722억원에 달했다.",
+      "title": "\"급락장 소나기 일단 피하자\"…'방어형' ETF, 이달 순설정액 '쑥'"
     },
     "title:7ec0df0193d5bda93e97c9d0": {
       "first_seen_kst": "2026-10-04T00:48:36+09:00",
@@ -835144,5 +835930,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-18T07:38:19+09:00"
+  "updated_at_kst": "2026-10-18T08:07:27+09:00"
 }
