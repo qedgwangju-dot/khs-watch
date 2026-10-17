@@ -66,6 +66,9 @@ def main():
     target=pathlib.Path(sys.argv[1])
     original=target.read_text(encoding="utf-8") if target.exists() else ""
     changed=clean_blocks(original,datetime.now(timezone.utc)) if original else ""
+    from space_launch_bottleneck_watch import PENDING_STATE_PATH,request_bytes,fetch_usdkrw,NOW,KST
+    pending=json.loads(PENDING_STATE_PATH.read_text(encoding='utf-8'))
+    notes,errors=correction_notices(pending['seen'],request_bytes,fetch_usdkrw())
     if changed:target.write_text(changed,encoding="utf-8")
     else:target.unlink(missing_ok=True)
     print("space_launch_alert_filter=ok alert="+str(bool(changed)))
