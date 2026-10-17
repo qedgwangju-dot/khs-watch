@@ -40,3 +40,10 @@ def clean_blocks(text,now):
               if "제목·공개요약에서 핵심 수치 미추출" not in x]
         if kept:output.append("\n".join(kept))
     return "\n\n".join(output).rstrip()+"\n" if len(output)>1 else ""
+
+def process(alert_path,pending_path,now,fetch,rate):
+    raw=alert_path.read_text(encoding='utf-8') if alert_path.exists() else ''
+    filtered=clean_blocks(raw,now) if raw else ''
+    state=json.loads(pending_path.read_text(encoding='utf-8'))
+    if not isinstance(state.get('seen'),dict):raise RuntimeError('State schema invalid')
+    notices,errors=correction_notices(state['seen'],fetch,rate)
