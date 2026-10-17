@@ -392,11 +392,11 @@ def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tup
         total = sum(amounts.values())
         amount_lines.append(f"• 3·10·30년물 환매차환 입찰 합계: {total:g}0억달러")
     amount_lines.append(expectation_comparison(supply))
-    amount_lines.append(
-        f"• Citi 미확정 시나리오(10/9): 20·30년물 각각 회당 "
-        f"30억달러({financing_krw(3, supply_fx)}) 축소, 3개월 총 "
-        f"180억달러({financing_krw(18, supply_fx)}) 장기채 감축·단기국채 대체 예상. "
-        "20년물 발행 중단은 추가 가능성으로 확정 결정이 아닙니다."
+    citi_scenario_line = (
+        f"• Citi 예상(10/9, 미확정): 20·30년물 각각 회당 "
+        f"30억달러({financing_krw(3, supply_fx)}) 축소. 3개월 6회 기준 "
+        f"장기채 총 180억달러({financing_krw(18, supply_fx)}) 감축분을 "
+        "단기국채로 대체하는 시나리오입니다. 20년물 발행 중단은 추가 가정입니다."
     )
 
     if current_word and previous_word and current_word != previous_word:
@@ -452,6 +452,10 @@ def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tup
         *(amount_lines or ["• 3·10·30년물 금액 자동 추출 보류 — 공식 발행표 직접 확인 필요"]),
         f"• 이표채·FRN 최소 몇 분기 유지: {'확인' if maintain else '재확인 필요'}",
         wording,
+        "",
+        "시장 예상 — 공식 결정과 분리",
+        citi_scenario_line,
+        "• 10월 16일 딜러 설문은 검토자료일 뿐 감축 시행 결정이 아닙니다.",
         "",
         "시장 해석",
         market,
