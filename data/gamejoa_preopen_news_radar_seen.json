@@ -28410,6 +28410,27 @@
       "telegram_core_fact": "코스피지수가 한 주간 10% 넘게 급락하자 국내 대체형 펀드와 머니마켓펀드(MMF)에서 약 8조원의 자금이 빠져나갔다. 하락장에서 수익을 내는 인버스 상장지수펀드(ETF)가 높은 수익률을 기록하면서 차익 실현에 나선 투자자들이 늘어난 것으로 풀이된다.",
       "title": "코스피 급락하자 8조원 이탈…스마트개미 갈아탄 '이곳'"
     },
+    "core:73cd98e2d4d441db0071daed": {
+      "first_seen_kst": "2026-10-17T20:40:45+09:00",
+      "lanes": {
+        "live": "2026-10-17T20:40:45+09:00"
+      },
+      "last_seen_kst": "2026-10-17T20:40:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829818",
+      "source": "뉴시스",
+      "source_body_digest": "09440c3e45a30fef1bab671eeffafe22867c358a706b7bc84705b4b9356fe1f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e0dd069b2a4928d70022ccf41b301a048c20c94e66f0fdfbb601b3c89dc6b13",
+      "source_fact_keys": [
+        "source_fact:v1:8c358b14548df9344cf9706f83be503d07d020a56562b9e7b72f6066617723f0",
+        "source_fact:v1:fab1283cf8e39f846b7e6f4726aa2517ca1e3f95f12485907c2806f25cb04d5b"
+      ],
+      "source_published_kst": "2026-10-17T10:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)",
+      "telegram_core_fact": "머스크는 지난 10일 트럼프 대통령이 우크라이나에 러시아 정유시설 공격을 중단하라고 촉구한 뒤 엑스에 \"젤렌스키가 도를 넘었다\"고 쓰기도 했다.",
+      "title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)"
+    },
     "core:742d7fecf6345b3ca0e49b1c": {
       "first_seen_kst": "2026-10-16T23:57:27+09:00",
       "lanes": {
@@ -74086,30 +74107,23 @@
     "event:ca14323d7fef0ad09b25214f": {
       "first_seen_kst": "2026-10-17T15:31:00+09:00",
       "lanes": {
-        "live": "2026-10-17T15:31:00+09:00"
+        "live": "2026-10-17T20:40:45+09:00"
       },
-      "last_seen_kst": "2026-10-17T15:31:00+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/17/2026101614384818385",
-      "source": "머니투데이",
-      "source_body_digest": "ffe4d747f2aec6739d6f1297eebb8ca145114667b6b425ce6c2a89a083ea0ae5",
+      "last_seen_kst": "2026-10-17T20:40:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829818",
+      "source": "뉴시스",
+      "source_body_digest": "09440c3e45a30fef1bab671eeffafe22867c358a706b7bc84705b4b9356fe1f7",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:15586572a8ecd607ec10ff0da9b7f9e4f40c0b095d6572269c2039107df706db",
+      "source_fact_identity": "source_facts:v1:4e0dd069b2a4928d70022ccf41b301a048c20c94e66f0fdfbb601b3c89dc6b13",
       "source_fact_keys": [
-        "source_fact:v1:0cdd7283219b673361c1511b7f8f93ecd027cef0062fca5b447413d280ba572b",
-        "source_fact:v1:1b79b858ed583a3fe4284943b03043a30ddfd92dbb06bc755e201faaf641e282",
-        "source_fact:v1:6c8de4c7e8f83233f142cd664784b724b8f849f6df04192321bdc166d424d564",
-        "source_fact:v1:9ebbe2f799c4697beeafb30f7c61d0a4ccc45af77b3939b211e5d8739892656a",
-        "source_fact:v1:a035b9bfba3d70b4c7664cab054388a0a5efb010795ed8419d20ef64c7ef2bf1",
-        "source_fact:v1:a38795bf87baabf090199c087c8baba47a166ec835fe713cf41a138d75bf9acc",
-        "source_fact:v1:a3bc2d15757221bf131d373b20708764e9fc0e92ad05cdb0a87d80c292fa781b",
-        "source_fact:v1:e0301a56591482c2065a3235ab06b54ae2c4e12544cfa49567ccafd8e632f636",
-        "source_fact:v1:e273f34d3445d6fb172418c5c5dd1b4155c3abf2877dc6427d6b7ed5fd6813c3"
+        "source_fact:v1:8c358b14548df9344cf9706f83be503d07d020a56562b9e7b72f6066617723f0",
+        "source_fact:v1:fab1283cf8e39f846b7e6f4726aa2517ca1e3f95f12485907c2806f25cb04d5b"
       ],
-      "source_published_kst": "2026-10-17T06:15+09:00",
+      "source_published_kst": "2026-10-17T10:54+09:00",
       "source_supply_terms": {},
-      "source_title": "\"젤렌스키 패트리엇 다 썼다\"…트럼프, 무기차단해 종전 압박할까",
-      "telegram_core_fact": "트럼프 미국 대통령이 우크라이나에 '에너지 휴전'을 압박하기 위해 무기 공급까지 차단할지 주목된다.",
-      "title": "\"젤렌스키 패트리엇 다 썼다\"…트럼프, 무기차단해 종전 압박할까"
+      "source_title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)",
+      "telegram_core_fact": "머스크는 지난 10일 트럼프 대통령이 우크라이나에 러시아 정유시설 공격을 중단하라고 촉구한 뒤 엑스에 \"젤렌스키가 도를 넘었다\"고 쓰기도 했다.",
+      "title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)"
     },
     "event:ca5510beb04d02929a86011b": {
       "first_seen_kst": "2026-09-22T17:04:40+09:00",
@@ -132183,6 +132197,27 @@
       ],
       "source_published_kst": "2026-10-06T11:38+09:00",
       "title": "금투협, 글로벌 펀드산업 현안 논의…日 자산운용협회와 협력"
+    },
+    "fact:bdb69241a66a089490bff635": {
+      "first_seen_kst": "2026-10-17T20:40:45+09:00",
+      "lanes": {
+        "live": "2026-10-17T20:40:45+09:00"
+      },
+      "last_seen_kst": "2026-10-17T20:40:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829818",
+      "source": "뉴시스",
+      "source_body_digest": "09440c3e45a30fef1bab671eeffafe22867c358a706b7bc84705b4b9356fe1f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e0dd069b2a4928d70022ccf41b301a048c20c94e66f0fdfbb601b3c89dc6b13",
+      "source_fact_keys": [
+        "source_fact:v1:8c358b14548df9344cf9706f83be503d07d020a56562b9e7b72f6066617723f0",
+        "source_fact:v1:fab1283cf8e39f846b7e6f4726aa2517ca1e3f95f12485907c2806f25cb04d5b"
+      ],
+      "source_published_kst": "2026-10-17T10:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)",
+      "telegram_core_fact": "머스크는 지난 10일 트럼프 대통령이 우크라이나에 러시아 정유시설 공격을 중단하라고 촉구한 뒤 엑스에 \"젤렌스키가 도를 넘었다\"고 쓰기도 했다.",
+      "title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)"
     },
     "fact:bdb72510da2ae96f6bb82cf7": {
       "first_seen_kst": "2026-10-11T06:07:21+09:00",
@@ -226403,6 +226438,27 @@
       "telegram_core_fact": "일본 NTT가 미국 앤스로픽을 위해 오사카 지역에 데이터센터를 건설하는 방향으로 최종 조율에 들어갔다고 니혼게이자이신문(닛케이)이 13일 보도했다.",
       "title": "“일본 NTT, 오사카에 앤스로픽 데이터센터 건설 조율 막바지”"
     },
+    "link:bddbf2925bc763f056879441": {
+      "first_seen_kst": "2026-10-17T20:40:45+09:00",
+      "lanes": {
+        "live": "2026-10-17T20:40:45+09:00"
+      },
+      "last_seen_kst": "2026-10-17T20:40:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829818",
+      "source": "뉴시스",
+      "source_body_digest": "09440c3e45a30fef1bab671eeffafe22867c358a706b7bc84705b4b9356fe1f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e0dd069b2a4928d70022ccf41b301a048c20c94e66f0fdfbb601b3c89dc6b13",
+      "source_fact_keys": [
+        "source_fact:v1:8c358b14548df9344cf9706f83be503d07d020a56562b9e7b72f6066617723f0",
+        "source_fact:v1:fab1283cf8e39f846b7e6f4726aa2517ca1e3f95f12485907c2806f25cb04d5b"
+      ],
+      "source_published_kst": "2026-10-17T10:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)",
+      "telegram_core_fact": "머스크는 지난 10일 트럼프 대통령이 우크라이나에 러시아 정유시설 공격을 중단하라고 촉구한 뒤 엑스에 \"젤렌스키가 도를 넘었다\"고 쓰기도 했다.",
+      "title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)"
+    },
     "link:bddcd54c3fb091fbf66a50cf": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
       "lanes": {
@@ -309933,6 +309989,27 @@
       ],
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
+    },
+    "original:9a2cc5e1aef4ee429a7f0c37": {
+      "first_seen_kst": "2026-10-17T20:40:45+09:00",
+      "lanes": {
+        "live": "2026-10-17T20:40:45+09:00"
+      },
+      "last_seen_kst": "2026-10-17T20:40:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829818",
+      "source": "뉴시스",
+      "source_body_digest": "09440c3e45a30fef1bab671eeffafe22867c358a706b7bc84705b4b9356fe1f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e0dd069b2a4928d70022ccf41b301a048c20c94e66f0fdfbb601b3c89dc6b13",
+      "source_fact_keys": [
+        "source_fact:v1:8c358b14548df9344cf9706f83be503d07d020a56562b9e7b72f6066617723f0",
+        "source_fact:v1:fab1283cf8e39f846b7e6f4726aa2517ca1e3f95f12485907c2806f25cb04d5b"
+      ],
+      "source_published_kst": "2026-10-17T10:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)",
+      "telegram_core_fact": "머스크는 지난 10일 트럼프 대통령이 우크라이나에 러시아 정유시설 공격을 중단하라고 촉구한 뒤 엑스에 \"젤렌스키가 도를 넘었다\"고 쓰기도 했다.",
+      "title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)"
     },
     "original:9a2e63c547442c1176f8bf79": {
       "first_seen_kst": "2026-10-15T08:51:43+09:00",
@@ -473040,6 +473117,27 @@
       "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
       "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
+    "source_fact:52f11c8d03e9cf981539aaca": {
+      "first_seen_kst": "2026-10-17T20:40:45+09:00",
+      "lanes": {
+        "live": "2026-10-17T20:40:45+09:00"
+      },
+      "last_seen_kst": "2026-10-17T20:40:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829818",
+      "source": "뉴시스",
+      "source_body_digest": "09440c3e45a30fef1bab671eeffafe22867c358a706b7bc84705b4b9356fe1f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e0dd069b2a4928d70022ccf41b301a048c20c94e66f0fdfbb601b3c89dc6b13",
+      "source_fact_keys": [
+        "source_fact:v1:8c358b14548df9344cf9706f83be503d07d020a56562b9e7b72f6066617723f0",
+        "source_fact:v1:fab1283cf8e39f846b7e6f4726aa2517ca1e3f95f12485907c2806f25cb04d5b"
+      ],
+      "source_published_kst": "2026-10-17T10:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)",
+      "telegram_core_fact": "머스크는 지난 10일 트럼프 대통령이 우크라이나에 러시아 정유시설 공격을 중단하라고 촉구한 뒤 엑스에 \"젤렌스키가 도를 넘었다\"고 쓰기도 했다.",
+      "title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)"
+    },
     "source_fact:52f308db68e35328615f775e": {
       "first_seen_kst": "2026-10-09T22:13:37+09:00",
       "lanes": {
@@ -476232,6 +476330,27 @@
       "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
       "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
       "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
+    },
+    "source_fact:5509503b6c81141d1f9704c1": {
+      "first_seen_kst": "2026-10-17T20:40:45+09:00",
+      "lanes": {
+        "live": "2026-10-17T20:40:45+09:00"
+      },
+      "last_seen_kst": "2026-10-17T20:40:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829818",
+      "source": "뉴시스",
+      "source_body_digest": "09440c3e45a30fef1bab671eeffafe22867c358a706b7bc84705b4b9356fe1f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e0dd069b2a4928d70022ccf41b301a048c20c94e66f0fdfbb601b3c89dc6b13",
+      "source_fact_keys": [
+        "source_fact:v1:8c358b14548df9344cf9706f83be503d07d020a56562b9e7b72f6066617723f0",
+        "source_fact:v1:fab1283cf8e39f846b7e6f4726aa2517ca1e3f95f12485907c2806f25cb04d5b"
+      ],
+      "source_published_kst": "2026-10-17T10:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)",
+      "telegram_core_fact": "머스크는 지난 10일 트럼프 대통령이 우크라이나에 러시아 정유시설 공격을 중단하라고 촉구한 뒤 엑스에 \"젤렌스키가 도를 넘었다\"고 쓰기도 했다.",
+      "title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)"
     },
     "source_fact:550ebbba21d316d75c1cc279": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -777432,6 +777551,27 @@
       "telegram_core_fact": "중수청은 인력 구성과 배당 사건 검토 등을 거쳐 1호 수사 대상을 선정할 것으로 관측된다.",
       "title": "'사건 배당' 일 시작한 중수청…수장·지휘부 공석 숙제"
     },
+    "title:8083d23495e3e42557c85383": {
+      "first_seen_kst": "2026-10-17T20:40:45+09:00",
+      "lanes": {
+        "live": "2026-10-17T20:40:45+09:00"
+      },
+      "last_seen_kst": "2026-10-17T20:40:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829818",
+      "source": "뉴시스",
+      "source_body_digest": "09440c3e45a30fef1bab671eeffafe22867c358a706b7bc84705b4b9356fe1f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e0dd069b2a4928d70022ccf41b301a048c20c94e66f0fdfbb601b3c89dc6b13",
+      "source_fact_keys": [
+        "source_fact:v1:8c358b14548df9344cf9706f83be503d07d020a56562b9e7b72f6066617723f0",
+        "source_fact:v1:fab1283cf8e39f846b7e6f4726aa2517ca1e3f95f12485907c2806f25cb04d5b"
+      ],
+      "source_published_kst": "2026-10-17T10:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)",
+      "telegram_core_fact": "머스크는 지난 10일 트럼프 대통령이 우크라이나에 러시아 정유시설 공격을 중단하라고 촉구한 뒤 엑스에 \"젤렌스키가 도를 넘었다\"고 쓰기도 했다.",
+      "title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)"
+    },
     "title:8087284a61c07ce17cfe6b99": {
       "first_seen_kst": "2026-09-22T18:08:28+09:00",
       "lanes": {
@@ -787469,6 +787609,27 @@
       ],
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
+    },
+    "title:9a2cc5e1aef4ee429a7f0c37": {
+      "first_seen_kst": "2026-10-17T20:40:45+09:00",
+      "lanes": {
+        "live": "2026-10-17T20:40:45+09:00"
+      },
+      "last_seen_kst": "2026-10-17T20:40:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829818",
+      "source": "뉴시스",
+      "source_body_digest": "09440c3e45a30fef1bab671eeffafe22867c358a706b7bc84705b4b9356fe1f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e0dd069b2a4928d70022ccf41b301a048c20c94e66f0fdfbb601b3c89dc6b13",
+      "source_fact_keys": [
+        "source_fact:v1:8c358b14548df9344cf9706f83be503d07d020a56562b9e7b72f6066617723f0",
+        "source_fact:v1:fab1283cf8e39f846b7e6f4726aa2517ca1e3f95f12485907c2806f25cb04d5b"
+      ],
+      "source_published_kst": "2026-10-17T10:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)",
+      "telegram_core_fact": "머스크는 지난 10일 트럼프 대통령이 우크라이나에 러시아 정유시설 공격을 중단하라고 촉구한 뒤 엑스에 \"젤렌스키가 도를 넘었다\"고 쓰기도 했다.",
+      "title": "트럼프 \"우크라 스타실드 제한, 내 지시 아냐\"(종합)"
     },
     "title:9a2e63c547442c1176f8bf79": {
       "first_seen_kst": "2026-10-15T08:51:43+09:00",
@@ -826682,5 +826843,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-17T20:19:17+09:00"
+  "updated_at_kst": "2026-10-17T20:40:45+09:00"
 }
