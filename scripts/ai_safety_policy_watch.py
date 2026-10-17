@@ -548,13 +548,36 @@ def official_page_snapshots(*, skipped: list[str] | None = None) -> dict[str, di
     return out
 
 def fetch_openshell_telemetry() -> dict:
-    api = "https://api.github.com/repos/NVIDIA/OpenShell/contents/telemetry?ref=main"
-    payload = json.loads(fetch_bytes(api).decode("utf-8"))
+    # The publisher's maintained report index is the primary discovery source.
+    # Avoid the unauthenticated GitHub contents API on every scheduled run:
+    # its shared rate limit can yield HTTP 403 while the raw files work.
+    index_url = "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/telemetry/README.md"
+    raw_base = "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/telemetry/"
     reports = []
-    for row in payload if isinstance(payload, list) else []:
-        name = str(row.get("name") or "")
-        if re.fullmatch(r"\d{4}-\d{2}-\d{2}\.md", name):
-            reports.append(row)
+    try:
+        index = fetch_bytes(index_url).decode("utf-8", "ignore")
+        names = re.findall(r"\]\(\s*(\d{4}-\d{2}-\d{2}\.md)\s*\)", index)
+        for name in set(names):
+            reports.append({
+                "name": name,
+                "download_url": raw_base + name,
+                "html_url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/" + name,
+            })
+        if not reports:
+            raise ValueError("No dated report links in publisher README")
+    except Exception as index_error:
+        # Preserve the old API path as a fallback rather than hiding failures.
+        try:
+            api = "https://api.github.com/repos/NVIDIA/OpenShell/contents/telemetry?ref=main"
+            payload = json.loads(fetch_bytes(api).decode("utf-8"))
+            for row in payload if isinstance(payload, list) else []:
+                name = str(row.get("name") or "")
+                if re.fullmatch(r"\d{4}-\d{2}-\d{2}\.md", name):
+                    reports.append(row)
+        except Exception as api_error:
+            raise RuntimeError(
+                f"OpenShell telemetry discovery failed: index={index_error}; api={api_error}"
+            ) from api_error
     if not reports:
         raise RuntimeError("OpenShell telemetry reports not found")
     latest = sorted(reports, key=lambda x: x["name"])[-1]
