@@ -72,6 +72,8 @@ def main():
     if notes:
         header="🚀 우주 발사 병목 웹감시\n기준: "+NOW.astimezone(KST).strftime("%Y-%m-%d %H:%M KST")
         changed=(changed.rstrip() if changed else header)+"\n\n"+"\n\n".join(text for _,text in notes)+"\n"
+        for key,_ in notes:pending['seen'][key]=NOW.isoformat()
+        PENDING_STATE_PATH.write_text(json.dumps(pending,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     if changed:target.write_text(changed,encoding="utf-8")
     else:target.unlink(missing_ok=True)
     print("space_launch_alert_filter=ok alert="+str(bool(changed)))
