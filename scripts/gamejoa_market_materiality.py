@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 136
+VERSION = 137
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -69,6 +69,18 @@ ROUTINE_FOREGROUND = re.compile(r"(?:상|어워드|어워즈).{0,12}수상|수�
 DIRECT_HEADLINE_CHANGE = re.compile(r"(?:매출|영업이익|순이익|가이던스).{0,20}(?:증가|감소|상향|하향|상회|하회)|(?:수주|계약).{0,20}(?:체결|확정|억|조)|(?:공장|생산능력).{0,20}(?:증설|착공|가동)|(?:지분|사업부).{0,20}(?:인수|매각|취득).{0,12}(?:결정|완료|확정)|earnings revision|contract signed", re.I)
 PHOTO_DESCRIPTION = re.compile(r"(?:기념촬영|사진촬영|촬영|시공|시연|발언|연설|질문에\s*답)(?:을|를)?\s*하고\s*있다|사진\s*확대", re.I)
 VIRAL_DEMONSTRATION = re.compile(r"이색적인\s*장면|패러디|이색\s*영상|바이럴\s*영상|parody|viral video", re.I)
+CULTURAL_AI_REENACTMENT = re.compile(
+    r"(?=.*(?:박물관|미술관|문화원|기념관|문화유산|문화재단))"
+    r"(?=.*(?:\bAI\b|인공지능))"
+    r"(?=.*(?:재현|재연|복원|재구성).{0,25}(?:영상|영화|방송|프로그램)|"
+    r"(?:영상|영화|방송|프로그램).{0,25}(?:재현|재연|복원|재구성))",
+    re.I,
+)
+CULTURAL_AI_MARKET_EXECUTION = re.compile(
+    r"공급\s*계약|납품\s*계약|수주|유료\s*(?:서비스|콘텐츠)|매출|영업이익|투자유치|"
+    r"라이선스.{0,25}계약|기술이전\s*계약|(?:투자|계약|매출).{0,30}\d[\d,.]*\s*(?:억|조)\s*원",
+    re.I,
+)
 SUPPORT_EVENT = re.compile(r"투자유치\s*(?:지원|가이드|프로그램)|기업설명회|투자자\s*미팅|투자\s*상담회|investment matchmaking|fundraising workshop", re.I)
 SPORTS_OWNERSHIP = re.compile(r"구단주|축구\s*구단|야구\s*구단|프로\s*(?:축구|야구)|football club|soccer club|club owner", re.I)
 LOCAL_CEREMONY = re.compile(r"나무\s*심기|식목|선포식|기념식|지역\s*축제|tree planting|proclamation ceremony", re.I)
@@ -215,7 +227,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("investor_flow", r"(?:외국인|기관|개인|연기금).{0,60}(?:순매수|순매도|팔아|사들|매수|매도|던졌)", r"외국인|기관|개인|연기금"),
     ("shareholder", r"자사주|자기주식|주주환원|배당", r"자사주|자기주식|주주환원|배당|(?:주식|지분).{0,30}(?:매수|취득|매입|처분)|buyback|dividend"),
     ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장|ETF.{0,15}(?:출시|상장)", r"기업공개|\bipo\b|상장(?!지수)|ETF.{0,80}출시"),
-    ("financing", r"자금.{0,12}(?:투입|조달|유입)|대출|전환사채|전환\s*(?:선순위)?\s*채권|회사채\s*발행|funding|financing|loan|convertible (?:bond|note|debt)", r"자금|외부\s*자본|대출|투자(?!자)|조달|전환사채|전환\s*(?:선순위)?\s*채권|출자|납입|증자|확정된\s*사항|funding|financing|loan|convertible (?:bond|note|debt)"),
+    ("financing", r"자금.{0,12}(?:투입|조달|유입)|대출|전환사채|전환\s*(?:선순위)?\s*채권|회사채\s*발행|funding|financing|loan|convertible (?:bond|note|debt)", r"자금|외부\s*자본|대출|투자(?!자)|조달|전환사채|전환\s*(?:선순위)?\s*채권|(?<![가-힣])출자|납입|증자|확정된\s*사항|funding|financing|loan|convertible (?:bond|note|debt)"),
     ("capital_spending", r"설비투자|capex|자본지출|capital expenditure|(?:AI|인공지능)\s*(?:인프라\s*)?투자", r"설비투자|capex|자본지출|capital expenditure|(?:컴퓨터|컴퓨팅|설비|장비|인프라).{0,35}투자"),
     ("industry_market_share", r"점유율|시장.{0,8}(?:\d위|순위)|AP\s*시장.{0,35}(?:역전|추격)", r"점유율|market share"),
     ("trade_threat", r"관세.{0,35}(?:위협|경고|두\s*배|2\s*배)|(?:두\s*배|2\s*배).{0,15}(?:청구|관세)|알래스카.{0,55}(?:청구|부담|압박)|tariff.{0,30}(?:threat|doubl)|doubl.{0,15}tariff", r"관세|청구|tariff|charge"),
@@ -3815,8 +3827,8 @@ RULES = (
      r"대출|전환사채|loan|convertible debt",
      r"받기로\s*합의|대출\s*(?:계약|약정).{0,15}(?:체결|서명)|대출.{0,20}(?:집행했다|승인했다)|agreed to (?:lend|borrow)|loan agreement.{0,20}(?:signed|executed)"),
     ("capital_or_shareholder_action", ("earnings", "timeline"),
-     r"투자(?=\s*(?:\d|를|한다|한다고|하는|하고|해|했다|할|하겠|금|액|규모|계획|협약|계약|자금|라운드)|.{0,12}유치)|전략투자|설비투자|capex|자본지출|(?<!대)출자|자금\s*조달|자본\s*조달|회사채|전환사채|전환\s*(?:선순위)?\s*채권|주주환원|배당|자사주|자기주식|지분|funding|financing|buyback|dividend|bond issuance|stake",
-     r"체결|유치|출자|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|협상|추진|계획|증가|감소|늘리|결정|확정|공시|발표|승인|투입|금융\s*종결|납입|집행|투자\s*라운드.{0,10}참여|raise|issu|buy|repurchas|sell|acquir|announc|consider|negotiat|approv|financing closed|funding disbursed"),
+     r"투자(?=\s*(?:\d|를|한다|한다고|하는|하고|해|했다|할|하겠|금|액|규모|계획|협약|계약|자금|라운드)|.{0,12}유치)|전략투자|설비투자|capex|자본지출|(?<![가-힣])출자|자금\s*조달|자본\s*조달|회사채|전환사채|전환\s*(?:선순위)?\s*채권|주주환원|배당|자사주|자기주식|지분|funding|financing|buyback|dividend|bond issuance|stake",
+     r"체결|유치|(?<![가-힣])출자|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|협상|추진|계획|증가|감소|늘리|결정|확정|공시|발표|승인|투입|금융\s*종결|납입|집행|투자\s*라운드.{0,10}참여|raise|issu|buy|repurchas|sell|acquir|announc|consider|negotiat|approv|financing closed|funding disbursed"),
     ("authorized_capital_proposal", ("flows", "timeline"),
      r"수권\s*(?:자본|주식)|authorized (?:capital|shares)", r"안건|상정|제안|표결|proposal|vote"),
     ("financing_infrastructure", ("earnings", "timeline"),
@@ -5719,6 +5731,14 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
     result = {"version": VERSION, "disposition": "review", "priority": 1, "axes": [], "evidence": []}
     if not title or not body:
         result["reason"] = "source_evidence_unavailable"
+        return result
+    cultural_ai_source = f"{title} {body[:2500]}"
+    if (CULTURAL_AI_REENACTMENT.search(cultural_ai_source)
+            and not CULTURAL_AI_MARKET_EXECUTION.search(cultural_ai_source)):
+        result.update(
+            disposition="exclude", priority=0,
+            reason="noncommercial_cultural_ai_reenactment",
+        )
         return result
     fisheries_source = f"{title} {body[:5000]}"
     fisheries_policy = re.search(r"연근해어업|어획량.{0,20}조업|\bTAC\b", fisheries_source, re.I)
