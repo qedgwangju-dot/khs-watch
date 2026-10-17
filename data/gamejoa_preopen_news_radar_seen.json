@@ -9419,6 +9419,28 @@
       "telegram_core_fact": "워딩턴 스틸(WS)은 2027 회계연도 1분기(2026년 6~8월) 계속사업 기준 매출액이 27억2660만 달러로 전년비 212% 증가했으며, 계속사업 기준 GAAP 희석 주당순손실은 0.14달러로 전년 동기 0.73달러 순이익에서 적자 전환했다고 10월 7일 발표했다.",
       "title": "워딩턴 스틸, 1분기 매출 27억 달러 212%↑..적자전환"
     },
+    "core:25910b7c88f8782e4c361895": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101774917",
+      "source": "한국경제",
+      "source_body_digest": "7ce78a8fd186ab5a48448c9d977796fb53caa9bf244fd3779ed6d5674034d42a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f93cd9003ab7050d71dd4dbf638c0c6f7c766a7eeca551018e4741300d37d8b",
+      "source_fact_keys": [
+        "source_fact:v1:25c2bc2506e0b9491346c75241693579817f99c5237599ead630f15a3e04af8a",
+        "source_fact:v1:bd21c500a9cd58c8ed9ffc51fa6018324e9ab91c1f54d864e65116564717f31a",
+        "source_fact:v1:f582affcaf561b0a53ca153010e3cdb401b525ca7615600863cc29007fc1eaf2"
+      ],
+      "source_published_kst": "2026-10-17T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령은 16일(현지시간) \"현대가 조지아주 웨스트포인트에 있는 공장을 확장하기 위해 5억6000만 달러(약 7486억원)를 투자하겠다고 방금 발표했다\"고 밝혔다.",
+      "title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리"
+    },
     "core:259c33c25ff6e461ff7b6114": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -23411,6 +23433,34 @@
       ],
       "source_published_kst": "2026-10-07T16:16+09:00",
       "title": "'선박왕' 권혁, 15년 만에 체납세금 3938억 완납 의사…1000억 우선 납부(종합)"
+    },
+    "core:6154d8ce9355d3956f97a002": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
     },
     "core:6159e7cf9f2bed7b8d51451f": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
@@ -54641,6 +54691,26 @@
       "telegram_core_fact": "LG에너지솔루션은 연결 기준 올해 3분기 영업이익이 지난해 동기보다 25.7% 증가한 7천560억원으로 잠정 집계됐다고 8일 공시했다.",
       "title": "LG엔솔, 3분기 영업익 7천560억원…분기 최대 매출 달성(종합) | 연합뉴스"
     },
+    "core:e3962e3640bcd7e3985d6ffa": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.dt.co.kr/article/12089556",
+      "source": "디지털타임스",
+      "source_body_digest": "b466a013ca9987980b8cc312693c569a32a58e88e819925212940f6d89f931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b3efd2e5ce58d7765b63f0be89274488c211d7f6565566e32c4fc39898d7c75",
+      "source_fact_keys": [
+        "source_fact:v1:2f80ac0167d40a57a2c16455c6d629047ab3687e74479a9fd894e6dc178ab1e5"
+      ],
+      "source_published_kst": "2026-10-17T15:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고",
+      "telegram_core_fact": "17일(현지시간) 중국 과창판일보 등에 따르면 CXMT는 전날 실적 예고를 통해 3분기 매출이 전년비 589∼619% 증가한 1147억∼1197억 위안(약 22조 9000억∼23조9000억원) 수준일 것으로 추정했다.",
+      "title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고"
+    },
     "core:e39c06007b197b6be1172892": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
       "lanes": {
@@ -65806,6 +65876,26 @@
       "source": "머니투데이",
       "title": "물가 상승, 수요보다 유가·환율 영향…김영환 \"추가 금리인상 신중해야\""
     },
+    "event:551907a314e78103dffdc49f": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.dt.co.kr/article/12089556",
+      "source": "디지털타임스",
+      "source_body_digest": "b466a013ca9987980b8cc312693c569a32a58e88e819925212940f6d89f931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b3efd2e5ce58d7765b63f0be89274488c211d7f6565566e32c4fc39898d7c75",
+      "source_fact_keys": [
+        "source_fact:v1:2f80ac0167d40a57a2c16455c6d629047ab3687e74479a9fd894e6dc178ab1e5"
+      ],
+      "source_published_kst": "2026-10-17T15:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고",
+      "telegram_core_fact": "17일(현지시간) 중국 과창판일보 등에 따르면 CXMT는 전날 실적 예고를 통해 3분기 매출이 전년비 589∼619% 증가한 1147억∼1197억 위안(약 22조 9000억∼23조9000억원) 수준일 것으로 추정했다.",
+      "title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고"
+    },
     "event:5530e2a55d5b2e699d1545d0": {
       "first_seen_kst": "2026-10-05T13:39:56+09:00",
       "lanes": {
@@ -74980,6 +75070,28 @@
       "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
       "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
       "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
+    },
+    "event:e33d00e2c7774767c5545452": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101774917",
+      "source": "한국경제",
+      "source_body_digest": "7ce78a8fd186ab5a48448c9d977796fb53caa9bf244fd3779ed6d5674034d42a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f93cd9003ab7050d71dd4dbf638c0c6f7c766a7eeca551018e4741300d37d8b",
+      "source_fact_keys": [
+        "source_fact:v1:25c2bc2506e0b9491346c75241693579817f99c5237599ead630f15a3e04af8a",
+        "source_fact:v1:bd21c500a9cd58c8ed9ffc51fa6018324e9ab91c1f54d864e65116564717f31a",
+        "source_fact:v1:f582affcaf561b0a53ca153010e3cdb401b525ca7615600863cc29007fc1eaf2"
+      ],
+      "source_published_kst": "2026-10-17T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령은 16일(현지시간) \"현대가 조지아주 웨스트포인트에 있는 공장을 확장하기 위해 5억6000만 달러(약 7486억원)를 투자하겠다고 방금 발표했다\"고 밝혔다.",
+      "title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리"
     },
     "event:e3567ec4f7a11f57551dc919": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
@@ -98170,6 +98282,26 @@
       "telegram_core_fact": "국내 우주기업 스페이스베이(SpaceBey Inc.)가 국내외 주요 고객사들과 총 약 1400만달러(약 200억 원) 발사 계약을 체결하며 글로벌 상업 발사 서비스 시장에서 본격적인 사업 확장에 나선다.",
       "title": "스페이스베이, 글로벌 위성 발사 서비스 계약 체결"
     },
+    "fact:4c702b96dac23f7f66828b66": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.dt.co.kr/article/12089556",
+      "source": "디지털타임스",
+      "source_body_digest": "b466a013ca9987980b8cc312693c569a32a58e88e819925212940f6d89f931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b3efd2e5ce58d7765b63f0be89274488c211d7f6565566e32c4fc39898d7c75",
+      "source_fact_keys": [
+        "source_fact:v1:2f80ac0167d40a57a2c16455c6d629047ab3687e74479a9fd894e6dc178ab1e5"
+      ],
+      "source_published_kst": "2026-10-17T15:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고",
+      "telegram_core_fact": "17일(현지시간) 중국 과창판일보 등에 따르면 CXMT는 전날 실적 예고를 통해 3분기 매출이 전년비 589∼619% 증가한 1147억∼1197억 위안(약 22조 9000억∼23조9000억원) 수준일 것으로 추정했다.",
+      "title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고"
+    },
     "fact:4c70e09fb52ad753975251bb": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -113263,6 +113395,28 @@
       "source_title": "헬머리치 & 페인, 4분기 직접마진 가이던스 상단 근접..국제 4500만 달러",
       "telegram_core_fact": "헬머리치 & 페인(HP)이 2026 회계연도 4분기(7~9월) 북미·국제·해상 솔루션 3개 부문의 직접마진(비GAAP 기준)이 기존 가이던스 범위 상단 또는 그 근처에 이를 것으로 예상하며, 국제 솔루션 부문 직접마진은 약 4500만 달러에 달할 전망이라고 10월 7일 발표했다.",
       "title": "헬머리치 & 페인, 4분기 직접마진 가이던스 상단 근접..국제 4500만 달러"
+    },
+    "fact:83c61a3dbd9f683ff52b6152": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101774917",
+      "source": "한국경제",
+      "source_body_digest": "7ce78a8fd186ab5a48448c9d977796fb53caa9bf244fd3779ed6d5674034d42a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f93cd9003ab7050d71dd4dbf638c0c6f7c766a7eeca551018e4741300d37d8b",
+      "source_fact_keys": [
+        "source_fact:v1:25c2bc2506e0b9491346c75241693579817f99c5237599ead630f15a3e04af8a",
+        "source_fact:v1:bd21c500a9cd58c8ed9ffc51fa6018324e9ab91c1f54d864e65116564717f31a",
+        "source_fact:v1:f582affcaf561b0a53ca153010e3cdb401b525ca7615600863cc29007fc1eaf2"
+      ],
+      "source_published_kst": "2026-10-17T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령은 16일(현지시간) \"현대가 조지아주 웨스트포인트에 있는 공장을 확장하기 위해 5억6000만 달러(약 7486억원)를 투자하겠다고 방금 발표했다\"고 밝혔다.",
+      "title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리"
     },
     "fact:83d6c59b26447372aaa0042f": {
       "first_seen_kst": "2026-10-14T14:29:29+09:00",
@@ -136502,6 +136656,34 @@
       "source_title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”",
       "telegram_core_fact": "은행 업종은 밸류업 프로그램 이후 총주주환원율이 과거 20%대에서 50%대로 높아졌고, 주가순자산비율(P/B) 역시 0.3~0.4배 수준에서 0.7~0.9배까지 상승했다.",
       "title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”"
+    },
+    "fact:cfe6469b838cfcefefa8bba6": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
     },
     "fact:cff662aeedacd489c935c092": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -167887,6 +168069,28 @@
       "telegram_core_fact": "IMF는 7월에 내놓은 보고서에서 한국의 올해 실질 국내총생산(GDP) 증가율 전망치를 석 달 전보다 0.7%포인트(p) 높인 2.6%로 수정했다.",
       "title": "[다음주 경제] 취업자 얼마나 늘었나…IMF, 韓성장률 전망 수정치 발표 | 연합뉴스"
     },
+    "link:2d21e3a064b44492e67c5dbb": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101774917",
+      "source": "한국경제",
+      "source_body_digest": "7ce78a8fd186ab5a48448c9d977796fb53caa9bf244fd3779ed6d5674034d42a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f93cd9003ab7050d71dd4dbf638c0c6f7c766a7eeca551018e4741300d37d8b",
+      "source_fact_keys": [
+        "source_fact:v1:25c2bc2506e0b9491346c75241693579817f99c5237599ead630f15a3e04af8a",
+        "source_fact:v1:bd21c500a9cd58c8ed9ffc51fa6018324e9ab91c1f54d864e65116564717f31a",
+        "source_fact:v1:f582affcaf561b0a53ca153010e3cdb401b525ca7615600863cc29007fc1eaf2"
+      ],
+      "source_published_kst": "2026-10-17T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령은 16일(현지시간) \"현대가 조지아주 웨스트포인트에 있는 공장을 확장하기 위해 5억6000만 달러(약 7486억원)를 투자하겠다고 방금 발표했다\"고 밝혔다.",
+      "title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리"
+    },
     "link:2d22e5898ec5a48b0dc2d569": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
       "lanes": {
@@ -188124,6 +188328,34 @@
       ],
       "source_published_kst": "2026-10-06T16:57+09:00",
       "title": "[BioS]알테오젠, 국민성장펀드 등 2000억 유치..\"新동력 확보\""
+    },
+    "link:6075808010d39fc920914f74": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
     },
     "link:607eea8396c2284bbdb38dfe": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -217483,6 +217715,26 @@
       "source_title": "레가토 머저 3, 오하이오서 무인 전기트럭 상용 운행 개시",
       "telegram_core_fact": "아인라이드 헨리크 그린 최고기술책임자(CTO)는 \"이번 배치는 무인 운행과 원격 감독을 결합해 실제 운영 환경에서 안전하게 운행할 수 있는 목적 설계형 자율주행 기술의 성숙도를 보여준다\"며 \"메리즈빌의 일일 운행은 회랑 전체와 그 너머로 자율주행 화물 운송을 계속 확대하는 데 필요한 검증 사례를 제공한다\"고 말했다.",
       "title": "레가토 머저 3, 오하이오서 무인 전기트럭 상용 운행 개시"
+    },
+    "link:ab764e1a8a2a13637bcb903b": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.dt.co.kr/article/12089556",
+      "source": "디지털타임스",
+      "source_body_digest": "b466a013ca9987980b8cc312693c569a32a58e88e819925212940f6d89f931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b3efd2e5ce58d7765b63f0be89274488c211d7f6565566e32c4fc39898d7c75",
+      "source_fact_keys": [
+        "source_fact:v1:2f80ac0167d40a57a2c16455c6d629047ab3687e74479a9fd894e6dc178ab1e5"
+      ],
+      "source_published_kst": "2026-10-17T15:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고",
+      "telegram_core_fact": "17일(현지시간) 중국 과창판일보 등에 따르면 CXMT는 전날 실적 예고를 통해 3분기 매출이 전년비 589∼619% 증가한 1147억∼1197억 위안(약 22조 9000억∼23조9000억원) 수준일 것으로 추정했다.",
+      "title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고"
     },
     "link:ab7c0ff66d364f3a50a1fdf9": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -287473,6 +287725,28 @@
       "telegram_core_fact": "신현송 한국은행 총재가 지난 7·8월 두 차례 연속 기준금리 인상으로 미국보다 선제적으로 대응해 경제적 비용을 줄였다고 평가했다.",
       "title": "신현송 \"선제 금리인상 적절…정부 예산안, 성장률 0.5%p 높여\""
     },
+    "original:636428a8fc86b08b15abf5bb": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101774917",
+      "source": "한국경제",
+      "source_body_digest": "7ce78a8fd186ab5a48448c9d977796fb53caa9bf244fd3779ed6d5674034d42a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f93cd9003ab7050d71dd4dbf638c0c6f7c766a7eeca551018e4741300d37d8b",
+      "source_fact_keys": [
+        "source_fact:v1:25c2bc2506e0b9491346c75241693579817f99c5237599ead630f15a3e04af8a",
+        "source_fact:v1:bd21c500a9cd58c8ed9ffc51fa6018324e9ab91c1f54d864e65116564717f31a",
+        "source_fact:v1:f582affcaf561b0a53ca153010e3cdb401b525ca7615600863cc29007fc1eaf2"
+      ],
+      "source_published_kst": "2026-10-17T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령은 16일(현지시간) \"현대가 조지아주 웨스트포인트에 있는 공장을 확장하기 위해 5억6000만 달러(약 7486억원)를 투자하겠다고 방금 발표했다\"고 밝혔다.",
+      "title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리"
+    },
     "original:63703aaa9da30b2baf0c12fe": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
       "lanes": {
@@ -297962,6 +298236,26 @@
       "source_title": "EU, 러 제재 대상 1600곳 무더기 추가… 단일 최대 규모",
       "telegram_core_fact": "하지만 회원국이 자국 경제 피해를 최소화할 제재 대상을 찾기 어려워지면서 대규모 추가 제재를 추진할 동력이 떨어지고 있다는 우려가 커지고 있다.",
       "title": "EU, 러 제재 대상 1600곳 무더기 추가… 단일 최대 규모"
+    },
+    "original:8075f354cf85e151f871d108": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.dt.co.kr/article/12089556",
+      "source": "디지털타임스",
+      "source_body_digest": "b466a013ca9987980b8cc312693c569a32a58e88e819925212940f6d89f931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b3efd2e5ce58d7765b63f0be89274488c211d7f6565566e32c4fc39898d7c75",
+      "source_fact_keys": [
+        "source_fact:v1:2f80ac0167d40a57a2c16455c6d629047ab3687e74479a9fd894e6dc178ab1e5"
+      ],
+      "source_published_kst": "2026-10-17T15:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고",
+      "telegram_core_fact": "17일(현지시간) 중국 과창판일보 등에 따르면 CXMT는 전날 실적 예고를 통해 3분기 매출이 전년비 589∼619% 증가한 1147억∼1197억 위안(약 22조 9000억∼23조9000억원) 수준일 것으로 추정했다.",
+      "title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고"
     },
     "original:807df298dc66aa63984d6d9c": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -314739,6 +315033,34 @@
       "source_title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스",
       "telegram_core_fact": "분기 기준 사상 최대 매출을 기록한 LG에너지솔루션[373220]이 8일 2%대 강세를 보였다.",
       "title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스"
+    },
+    "original:ac3d345cbf85d374dcab00f6": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
     },
     "original:ac3ea94222048294de166f3a": {
       "first_seen_kst": "2026-10-03T16:23:07+09:00",
@@ -348122,6 +348444,34 @@
       "source_published_kst": "2026-10-06T21:30+09:00",
       "title": "이번엔 권익위도 해킹 피해…청렴권익배움터 10만명 개인정보 유출"
     },
+    "source_fact:01e1d6d2af4d020b583cb616": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
+    },
     "source_fact:01e6d89d831ce80d4a1b7c2d": {
       "first_seen_kst": "2026-10-14T20:43:11+09:00",
       "lanes": {
@@ -357583,6 +357933,34 @@
       "source_title": "미·중 우주 AI데이터센터 경쟁 가속…우주청 \"2028년 조기 실증 노력\"",
       "telegram_core_fact": "우주 인공지능(AI) 데이터센터의 조기 실증 필요성에 여야가 한목소리를 냈다. 이처럼 글로벌 기업들이 우주 AI 데이터센터의 기술 실증과 상용화에 속도를 내는 사이 국내에서는 실제 우주 환경에서 기술을 검증하기 위한 준비가 부족하다고 지적했다.",
       "title": "미·중 우주 AI데이터센터 경쟁 가속…우주청 \"2028년 조기 실증 노력\""
+    },
+    "source_fact:0842151fec19f4c0a13d27b1": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
     },
     "source_fact:08435953f1a3e7a55f4e198f": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
@@ -372115,6 +372493,26 @@
       "source_title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\"",
       "telegram_core_fact": "김 본부장은 \"최근 내년 양사의 합산 영업이익이 1000조원(삼성전자 600조원, SK하이닉스 400조원)을 상회할 가능성이 높아지면서 실적 컨센서스의 상향 조정이 본격화되고 있다\"고 말했다.",
       "title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\""
+    },
+    "source_fact:11fdad3cfa5bc5e5dc36a1a5": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.dt.co.kr/article/12089556",
+      "source": "디지털타임스",
+      "source_body_digest": "b466a013ca9987980b8cc312693c569a32a58e88e819925212940f6d89f931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b3efd2e5ce58d7765b63f0be89274488c211d7f6565566e32c4fc39898d7c75",
+      "source_fact_keys": [
+        "source_fact:v1:2f80ac0167d40a57a2c16455c6d629047ab3687e74479a9fd894e6dc178ab1e5"
+      ],
+      "source_published_kst": "2026-10-17T15:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고",
+      "telegram_core_fact": "17일(현지시간) 중국 과창판일보 등에 따르면 CXMT는 전날 실적 예고를 통해 3분기 매출이 전년비 589∼619% 증가한 1147억∼1197억 위안(약 22조 9000억∼23조9000억원) 수준일 것으로 추정했다.",
+      "title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고"
     },
     "source_fact:120280abeafe8cbbbbc06559": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -438760,6 +439158,34 @@
       "source_title": "금융지주 상반기 순익 17.6조…증권 73% 뛰고 은행은 8% 감소",
       "telegram_core_fact": "국내 금융지주회사의 올해 상반기 순이익이 17조6000억원으로 전년비 13.7% 증가했다.",
       "title": "금융지주 상반기 순익 17.6조…증권 73% 뛰고 은행은 8% 감소"
+    },
+    "source_fact:3ece6823fac3685adc15aefa": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
     },
     "source_fact:3ed355efbc54d847364b05f3": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
@@ -505914,6 +506340,34 @@
       "telegram_core_fact": "외국인 투자자들이 올해 국내 주식시장에서 200조원 넘게 팔아치우는 동안 상장지수펀드(ETF)는 10조원 가까이 사들였다. 올해 들어 국내 상장 주식을 사들인 금액보다 팔아치운 금액이 200조원 이상 많았다는 의미다.",
       "title": "올해 韓 주식 200조 던진 외인…ETF는 10조 사들인 이유는?"
     },
+    "source_fact:6b2eccdcc00b7a53e038e8ac": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
+    },
     "source_fact:6b304f64e0760e987f292c6e": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
       "lanes": {
@@ -522486,6 +522940,34 @@
       "source_title": "제이케이시냅스, 반도체 공정 소재 부문 상반기 매출 50.3억",
       "telegram_core_fact": "제이케이시냅스는 올해 상반기 반도체 공정 소재 부문 누적 매출액이 50억 3118만원을 기록했다고 이날 밝혔다.",
       "title": "제이케이시냅스, 반도체 공정 소재 부문 상반기 매출 50.3억"
+    },
+    "source_fact:7667bc38be194f331cb1dee0": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
     },
     "source_fact:766aee60c0f07248a501ac89": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -608988,6 +609470,34 @@
       "telegram_core_fact": "브리티시 아메리칸 타바코(BTI)가 메릴린치인터내셔널(Merrill Lynch International)과 자사주 매입 계약을 체결하고, 10월 13일부터 12월 23일 영업 종료 시점까지 보통주를 매입해 전량 소각하기로 했다고 10월 7일 발표했다.",
       "title": "브리티시 아메리칸 타바코, 12월 23일까지 메릴린치 통한 자사주 매입"
     },
+    "source_fact:b192dc28fd10678ae4346c49": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
+    },
     "source_fact:b1aaf6b8bbd7207949badc7e": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
       "lanes": {
@@ -643773,6 +644283,34 @@
       "telegram_core_fact": "프랑스 정부 지원을 받는 공항 운영사의 해외 자회사가 유럽연합(EU)과 미국의 제재 대상인 러시아·이란 항공사들에 여전히 서비스를 제공하는 것으로 드러났다. TAV는 미국이 제재한 이란 항공사들에 대해 \"당사의 통제 범위 내에서 서비스 제공을 중단했다\"고 밝혔다.",
       "title": "프랑스 정부 지원 공항그룹, 러·이란 제재 항공사 지원 논란 | 연합뉴스"
     },
+    "source_fact:c95c8394c3d1d13c1c420326": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
+    },
     "source_fact:c95ee88a1d2ec46ddeb451a0": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -659958,6 +660496,28 @@
       "source_title": "‘고금리’를 극복하는 이익의 힘…현재가 90년대 버블과 다른 이유 [타짜봉선생의 미국주식수업]",
       "telegram_core_fact": "지난 9월 FOMC에서 현재의 기준금리 수준으로 2% 물가 상승률을 달성하지 못하였기 때문에 추가 상승을 통한 제약적 금리로 물가를 잡겠다고 했습니다.",
       "title": "‘고금리’를 극복하는 이익의 힘…현재가 90년대 버블과 다른 이유 [타짜봉선생의 미국주식수업]"
+    },
+    "source_fact:d4e45e4a351aba7a60ed773e": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101774917",
+      "source": "한국경제",
+      "source_body_digest": "7ce78a8fd186ab5a48448c9d977796fb53caa9bf244fd3779ed6d5674034d42a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f93cd9003ab7050d71dd4dbf638c0c6f7c766a7eeca551018e4741300d37d8b",
+      "source_fact_keys": [
+        "source_fact:v1:25c2bc2506e0b9491346c75241693579817f99c5237599ead630f15a3e04af8a",
+        "source_fact:v1:bd21c500a9cd58c8ed9ffc51fa6018324e9ab91c1f54d864e65116564717f31a",
+        "source_fact:v1:f582affcaf561b0a53ca153010e3cdb401b525ca7615600863cc29007fc1eaf2"
+      ],
+      "source_published_kst": "2026-10-17T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령은 16일(현지시간) \"현대가 조지아주 웨스트포인트에 있는 공장을 확장하기 위해 5억6000만 달러(약 7486억원)를 투자하겠다고 방금 발표했다\"고 밝혔다.",
+      "title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리"
     },
     "source_fact:d4e7d573fe01d901395eb97c": {
       "first_seen_kst": "2026-10-12T08:26:25+09:00",
@@ -677583,6 +678143,28 @@
       "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
       "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
+    "source_fact:e055da10fa874bbfd9b4ccfe": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101774917",
+      "source": "한국경제",
+      "source_body_digest": "7ce78a8fd186ab5a48448c9d977796fb53caa9bf244fd3779ed6d5674034d42a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f93cd9003ab7050d71dd4dbf638c0c6f7c766a7eeca551018e4741300d37d8b",
+      "source_fact_keys": [
+        "source_fact:v1:25c2bc2506e0b9491346c75241693579817f99c5237599ead630f15a3e04af8a",
+        "source_fact:v1:bd21c500a9cd58c8ed9ffc51fa6018324e9ab91c1f54d864e65116564717f31a",
+        "source_fact:v1:f582affcaf561b0a53ca153010e3cdb401b525ca7615600863cc29007fc1eaf2"
+      ],
+      "source_published_kst": "2026-10-17T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령은 16일(현지시간) \"현대가 조지아주 웨스트포인트에 있는 공장을 확장하기 위해 5억6000만 달러(약 7486억원)를 투자하겠다고 방금 발표했다\"고 밝혔다.",
+      "title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리"
+    },
     "source_fact:e05a87a6073a42bd1fe8951b": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
       "lanes": {
@@ -677829,6 +678411,34 @@
       "source_title": "제조업 고용 회복…청년은 여전히 '찬바람'",
       "telegram_core_fact": "고용노동부가 14일 발표한 ‘9월 고용행정통계로 본 노동시장 동향’에 따르면 지난달 제조업 고용보험 상시가입자는 385만 3000명으로 전년 동월 대비 8000명(0.2%) 증가했다.",
       "title": "제조업 고용 회복…청년은 여전히 '찬바람'"
+    },
+    "source_fact:e0809ec0aeec7b6c2b929865": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
     },
     "source_fact:e0883babe0ed1b49026fd6a0": {
       "first_seen_kst": "2026-10-12T08:26:25+09:00",
@@ -683370,6 +683980,28 @@
       "telegram_core_fact": "정부는 8일 한국이 러시아에 석유 제품을 공급했다는 영국 가디언의 보도와 관련해 수출통제 대상에 해당하지 않는 것은 물론 경유 등 한국산 연료의 수출여부도 확인된 사실이 아니라고 반박했다.",
       "title": "정부 \"석유정제제품 對러 수출통제 품목 아냐…전략물자 수출은 전면 불허\""
     },
+    "source_fact:e3d42331800613c68a33192b": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101774917",
+      "source": "한국경제",
+      "source_body_digest": "7ce78a8fd186ab5a48448c9d977796fb53caa9bf244fd3779ed6d5674034d42a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f93cd9003ab7050d71dd4dbf638c0c6f7c766a7eeca551018e4741300d37d8b",
+      "source_fact_keys": [
+        "source_fact:v1:25c2bc2506e0b9491346c75241693579817f99c5237599ead630f15a3e04af8a",
+        "source_fact:v1:bd21c500a9cd58c8ed9ffc51fa6018324e9ab91c1f54d864e65116564717f31a",
+        "source_fact:v1:f582affcaf561b0a53ca153010e3cdb401b525ca7615600863cc29007fc1eaf2"
+      ],
+      "source_published_kst": "2026-10-17T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령은 16일(현지시간) \"현대가 조지아주 웨스트포인트에 있는 공장을 확장하기 위해 5억6000만 달러(약 7486억원)를 투자하겠다고 방금 발표했다\"고 밝혔다.",
+      "title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리"
+    },
     "source_fact:e3e70ff26c8839ce471d1580": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
       "lanes": {
@@ -685207,6 +685839,34 @@
       "source_title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등",
       "telegram_core_fact": "트럼프 대통령의 발언이 나온 이후 유가 상승폭은 일부 줄었지만, 중동의 원유 공급 불안이 이어지면서 국제유가는 결국 4% 넘게 오른 채 거래를 마쳤다.",
       "title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등"
+    },
+    "source_fact:e523a0f753b6e2b1c417f779": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
     },
     "source_fact:e52b50f06fb1614ad7401eaf": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
@@ -761919,6 +762579,28 @@
       "telegram_core_fact": "신현송 한국은행 총재가 지난 7·8월 두 차례 연속 기준금리 인상으로 미국보다 선제적으로 대응해 경제적 비용을 줄였다고 평가했다.",
       "title": "신현송 \"선제 금리인상 적절…정부 예산안, 성장률 0.5%p 높여\""
     },
+    "title:636428a8fc86b08b15abf5bb": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101774917",
+      "source": "한국경제",
+      "source_body_digest": "7ce78a8fd186ab5a48448c9d977796fb53caa9bf244fd3779ed6d5674034d42a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f93cd9003ab7050d71dd4dbf638c0c6f7c766a7eeca551018e4741300d37d8b",
+      "source_fact_keys": [
+        "source_fact:v1:25c2bc2506e0b9491346c75241693579817f99c5237599ead630f15a3e04af8a",
+        "source_fact:v1:bd21c500a9cd58c8ed9ffc51fa6018324e9ab91c1f54d864e65116564717f31a",
+        "source_fact:v1:f582affcaf561b0a53ca153010e3cdb401b525ca7615600863cc29007fc1eaf2"
+      ],
+      "source_published_kst": "2026-10-17T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령은 16일(현지시간) \"현대가 조지아주 웨스트포인트에 있는 공장을 확장하기 위해 5억6000만 달러(약 7486억원)를 투자하겠다고 방금 발표했다\"고 밝혔다.",
+      "title": "트럼프 \"현대, 조지아주에 7486억 투자 발표\"…320개 일자리"
+    },
     "title:63703aaa9da30b2baf0c12fe": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
       "lanes": {
@@ -772584,6 +773266,26 @@
       "source_title": "EU, 러 제재 대상 1600곳 무더기 추가… 단일 최대 규모",
       "telegram_core_fact": "하지만 회원국이 자국 경제 피해를 최소화할 제재 대상을 찾기 어려워지면서 대규모 추가 제재를 추진할 동력이 떨어지고 있다는 우려가 커지고 있다.",
       "title": "EU, 러 제재 대상 1600곳 무더기 추가… 단일 최대 규모"
+    },
+    "title:8075f354cf85e151f871d108": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.dt.co.kr/article/12089556",
+      "source": "디지털타임스",
+      "source_body_digest": "b466a013ca9987980b8cc312693c569a32a58e88e819925212940f6d89f931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b3efd2e5ce58d7765b63f0be89274488c211d7f6565566e32c4fc39898d7c75",
+      "source_fact_keys": [
+        "source_fact:v1:2f80ac0167d40a57a2c16455c6d629047ab3687e74479a9fd894e6dc178ab1e5"
+      ],
+      "source_published_kst": "2026-10-17T15:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고",
+      "telegram_core_fact": "17일(현지시간) 중국 과창판일보 등에 따르면 CXMT는 전날 실적 예고를 통해 3분기 매출이 전년비 589∼619% 증가한 1147억∼1197억 위안(약 22조 9000억∼23조9000억원) 수준일 것으로 추정했다.",
+      "title": "‘삼전닉스’ 위협하는 中 CXMT, 3분기 매출 600%대 급증 예고"
     },
     "title:807df298dc66aa63984d6d9c": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -789820,6 +790522,34 @@
       "source_title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스",
       "telegram_core_fact": "분기 기준 사상 최대 매출을 기록한 LG에너지솔루션[373220]이 8일 2%대 강세를 보였다.",
       "title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스"
+    },
+    "title:ac3d345cbf85d374dcab00f6": {
+      "first_seen_kst": "2026-10-17T16:35:53+09:00",
+      "lanes": {
+        "live": "2026-10-17T16:35:53+09:00"
+      },
+      "last_seen_kst": "2026-10-17T16:35:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01220166645613904",
+      "source": "이데일리",
+      "source_body_digest": "a715d9e1440af5cd183fc0a9a85b482c371f519237c81328b1956046bb643f90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:128b600ea7b4bd256406383fcd85cdff46deb873ce9723539a3bbe491b718eb9",
+      "source_fact_keys": [
+        "source_fact:v1:537b7494ae714d27fb9f86dd51e576909612bf389b9c0743aa09f81dc7afa634",
+        "source_fact:v1:6b2b230ed735513c671d1f89e6a15bebe32963593d8c39df46184d8de4aa3fad",
+        "source_fact:v1:9eead1a23c2c7f99f3c386036992a73eea0f1d606c42c4101e38b26541f76aa6",
+        "source_fact:v1:aa79a7916bb32671a806fa44abd2cfefc4ee38b559e0e388598dd338e4408aa0",
+        "source_fact:v1:ae438b0eca607a98f8ea10c591e8ed1c380fa8499884add13a68319caea3c17a",
+        "source_fact:v1:c1b71f0004a40a4135682ac92427157c2ffc1899184a051a4249e0ce07132566",
+        "source_fact:v1:ca7965d8a12ab710f652e67ff8d738607ebbdcb79361fc337c5729142373c109",
+        "source_fact:v1:e43c52e8a84ab80e74b4c8f28dcb33d8622da1ad2d8f0ceb5040aa3dd5f96128",
+        "source_fact:v1:e5d5784790a8d942e3509a121ffe4d1c9aaf0060c01d12408bc170deb80f90fa"
+      ],
+      "source_published_kst": "2026-10-17T00:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
+      "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
+      "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
     },
     "title:ac3ea94222048294de166f3a": {
       "first_seen_kst": "2026-10-03T16:23:07+09:00",
@@ -821445,5 +822175,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-17T16:01:49+09:00"
+  "updated_at_kst": "2026-10-17T16:35:53+09:00"
 }
