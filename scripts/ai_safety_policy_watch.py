@@ -125,6 +125,9 @@ NEWS_QUERIES = [
     # A private industry draft is not an introduced/enacted congressional bill.
     '"Anthropic" "AI safety bill" (lawmakers OR Congress OR proposal OR introduced OR enacted)',
     '"Anthropic" "frontier AI" (bill OR legislation) (Commerce OR Congress OR independent evaluators)',
+    # FTC civil subpoenas are not findings of liability; follow real enforcement milestones.
+    '"FTC" ("OpenAI" OR "Anthropic") (subpoena OR complaint OR settlement OR consent order)',
+    '"FTC" ("OpenAI" OR "Anthropic") ("AI agents" OR "AI model") (enforcement OR investigation OR lawsuit)',
 ]
 
 # Historical reports supplied and cross-checked on 2026-10-17.
@@ -138,6 +141,13 @@ POLICY_EVENT_BASELINES = {
     "anthropic_frontier_bill:private_draft_reported": {
         "source_url": "https://www.reuters.com/legal/litigation/anthropic-quietly-pitches-its-own-ai-safety-bill-lawmakers-politico-reports-2026-10-16/",
         "status": "2026-10-16 Politico/Reuters private draft; not introduced or enacted",
+    },
+    **{
+        f"ftc_ai_safety_{subject}:subpoenas_reported": {
+            "source_url": "https://www.reuters.com/business/us-ftc-subpoenas-openai-anthropic-over-consumer-harms-axios-reports-2026-10-15/",
+            "status": "2026-10-15 Axios/Reuters civil subpoena reporting only; investigation is not a liability finding",
+        }
+        for subject in ("both", "openai", "anthropic")
     },
 }
 
@@ -698,6 +708,44 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     title = str(item.get("title") or "").lower()
     context = f"{item.get('title','')} {item.get('description','')}".lower()
 
+    # Separate existing civil subpoenas from a later formal complaint,
+    # consent order or closure. News attribution is never an FTC ruling.
+    if (
+        re.search(r"\bftc\b", context)
+        and ("openai" in title or "anthropic" in title)
+        and any(x in context for x in ("ai", "model", "agent", "consumer", "safety"))
+    ):
+        subject = (
+            "both" if "openai" in title and "anthropic" in title
+            else "openai" if "openai" in title else "anthropic"
+        )
+        event = f"ftc_ai_safety_{subject}"
+        if any(x in title for x in (
+            "probe closed", "investigation closed", "drops investigation",
+            "closes investigation", "dismisses complaint", "investigation ends",
+        )):
+            return event, "investigation_closed_reported"
+        if any(x in title for x in (
+            "consent order", "consent decree", "settles", "settlement",
+            "agrees to pay fine", "agrees to pay penalty",
+        )):
+            return event, "settlement_reported"
+        if any(x in title for x in (
+            "ftc sues", "ftc files complaint", "ftc charges",
+            "ftc formally charges", "ftc brings lawsuit",
+        )):
+            return event, "formal_complaint_reported"
+        if any(x in title for x in (
+            "subpoena", "civil investigative demand",
+        )):
+            if any(x in title for x in (
+                "could subpoena", "may subpoena", "might subpoena",
+                "urges subpoena", "urges ftc to subpoena",
+            )):
+                return None
+            return event, "subpoenas_reported"
+        return None
+
     if "softbank" in context and "allied universal" in context:
         if not any(x in context for x in (
             "acquisition", "acquire", "takeover", "merger", "buy", "bid",
@@ -813,6 +861,10 @@ def tracked_policy_event_key(item: dict) -> str | None:
 
 def detect_category(text: str) -> str:
     low = text.lower()
+    if re.search(r"\bftc\b", low) and ("openai" in low or "anthropic" in low) and any(
+        t in low for t in ("subpoena", "complaint", "investigation", "sues", "settlement", "consent order")
+    ):
+        return "FTC 프런티어 AI 소비자보호 조사·집행 단계"
     if "softbank" in low and "allied universal" in low:
         return "SoftBank–Allied Universal 물리보안·로봇 인수 단계"
     if "anthropic" in low and any(x in low for x in (
@@ -837,6 +889,12 @@ def detect_category(text: str) -> str:
 
 def detect_entity(text: str) -> str:
     low = text.lower()
+    if re.search(r"\bftc\b", low) and ("openai" in low or "anthropic" in low) and any(
+        t in low for t in ("subpoena", "complaint", "investigation", "sues", "settlement", "consent order")
+    ):
+        if "openai" in low and "anthropic" in low:
+            return "FTC–OpenAI·Anthropic"
+        return "FTC–OpenAI" if "openai" in low else "FTC–Anthropic"
     if "softbank" in low and "allied universal" in low:
         return "SoftBank–Allied Universal"
     if "anthropic" in low and any(x in low for x in (
@@ -1365,6 +1423,12 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             lines.append(f"• <b>신규 단계</b>: {html.escape(detail)} · 신뢰보도 단계이며 당사자 공식 확정과 구분")
             lines.append("• <b>사업 구조</b>: 기존 Allied Universal의 데이터센터 현장 경비·출입통제·원격관제 및 로봇 서비스를 인수 협상과 분리. 미체결 거래를 연결매출로 인정하지 않음")
             lines.append("• <b>다음 확인</b>: 본계약·차입과 승계부채·반독점 승인·거래종결·실제 로봇 배치·보안 인력 비용·반복 계약")
+        elif rep["category"] == "FTC 프런티어 AI 소비자보호 조사·집행 단계":
+            stage = tracked_policy_event_stage(rep)
+            detail = stage[1].replace("_", " ") if stage else "추가 검증"
+            lines.append(f"• <b>신규 단계</b>: {html.escape(detail)} · 보도 단계이며 공식 FTC 처분과 구분")
+            lines.append("• <b>법적 구분</b>: 민사 소환장·자료 제출 요구는 위법 확정·모델 출시 중단·과징금 부과가 아님")
+            lines.append("• <b>다음 확인</b>: FTC 사건번호·공식 소장·청문회·명령·합의·제재금·회사 대응·영업 영향")
         elif rep["category"] == "Anthropic 프런티어 AI 안전법안 입법 단계":
             stage = tracked_policy_event_stage(rep)
             detail = stage[1].replace("_", " ") if stage else "추가 검증"
