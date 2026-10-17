@@ -71,6 +71,75 @@ class IntegrityTests(unittest.TestCase):
         fixture = json.loads(path.read_text(encoding='utf-8'))
         return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
 
+    def marked_analysis_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_marked_analysis_39004365855.json'
+        fixture = json.loads(path.read_text(encoding='utf-8'))
+        return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def test_actual_marked_dilemma_headline_is_military_analysis(self):
+        fixture, _ = self.marked_analysis_fixture()
+        row = fixture['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row), 'military_analysis')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '사우디·후티 · 군사·안보 해설')
+
+    def test_marked_analysis_preserves_separate_actual_military_actions(self):
+        for action in ('사우디 공습 재개', '후티 미사일 발사', '후티 미사일 2발 발사',
+                       '사우디 미사일 요격했다', '후티가 사우디를 공격했다',
+                       '사우디 공습 진행 중', '사우디 정유시설 피격됐다'):
+            row = article('후티 공습에 딜레마 빠진 사우디…' + action + ' [디브리핑]')
+            with self.subTest(action=action):
+                self.assertIsNone(integrity.non_military_kind(row))
+                self.assertEqual(integrity.final_color(row), 'red')
+
+    def test_marked_analysis_requires_both_editorial_marker_and_context(self):
+        for title in ('후티 공습에 딜레마 빠진 사우디',
+                      '후티 사우디 공습 [디브리핑]',
+                      '사우디 경제 딜레마 [디브리핑]'):
+            with self.subTest(title=title):
+                self.assertNotEqual(integrity.non_military_kind(article(title)), 'military_analysis')
+
+    def test_actual_marked_analysis_render_clears_attack_cache_and_preserves_limits(self):
+        fixture, now = self.marked_analysis_fixture()
+        rows = fixture['articles']; row = rows[0]
+        row.update(forced_tags=['확전'], signals_ko=['새로운 실제 공격'],
+                   deep_signal='공격 확대', newidea_marks=['공격 확대'])
+        before = watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        self.assertEqual(row['classification_color'], 'yellow')
+        self.assertIn(html.escape(row['title_original']), text)
+        self.assertIn('군사·안보 해설', text)
+        self.assertIn('본문 미확인', text)
+        self.assertNotIn('신규 변화의 중심은 실제 공격', text)
+        self.assertNotIn(' · 확전 · ', text)
+        self.assertFalse(row.get('signals_ko') or row.get('forced_tags') or row.get('deep_signal') or row.get('newidea_marks'))
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id']]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(), before)
+
+    def test_final_gate_rejects_actual_same_hash_marked_analysis_red_body(self):
+        fixture, now = self.marked_analysis_fixture()
+        rows = fixture['articles']; text = fixture['actual_alert'].strip()
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
+                integrity.verify_alert()
+
     def test_actual_refinery_restart_condemnation_is_diplomatic_reaction(self):
         fixture, _ = self.condemnation_shipping_fixture()
         row = fixture['articles'][0]

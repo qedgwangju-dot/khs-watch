@@ -290,7 +290,16 @@ def _refinery_restart_statement_spans(title):
 def _military_analysis_headline(title):
     military = re.search(r'미사일|공습|공격|방패|방공|요격|\b(?:missile|attack|airstrike|shield|defen[cs]e)', title)
     question = re.search(r'왜|어째서|\b(?:why|how)\b', title) and re.search(r'\?|까요|는가|했나', title)
-    return bool(military and question)
+    # A labelled dilemma feature describes the attack's implications. Its
+    # background noun does not identify a new operation at publication time.
+    marked_feature = re.search(r'\[디브리핑\]', title) and re.search(r'딜레마', title)
+    if marked_feature and re.search(
+            r'(?:공습|공격|폭격|타격|요격)(?:을|를)?\s*'
+            r'(?:개시|재개|감행|실시|완료|성공|했|하고\s*있|진행\s*중)|'
+            r'(?:미사일|드론)(?:\s*\d+\s*(?:발|대))?(?:을|를)?\s*발사|'
+            r'(?:피격|파괴)(?:됐|되었|당했)', title):
+        return False
+    return bool(military and (question or marked_feature))
 
 
 def _military_report_headline(title):
@@ -375,7 +384,7 @@ def _clear_market_event_cache(row):
 
 
 def _headline_event_cache_required(row, kind):
-    return (kind in ('ceasefire_position', 'military_report', 'reaction', 'fuel_shipping')
+    return (kind in ('ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis')
             or (kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
             or _energy_facility_headline(row)
