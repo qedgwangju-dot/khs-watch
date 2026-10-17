@@ -397,27 +397,27 @@ def event_signature(category: Category, item: dict) -> str:
 
 
 def corroborated(category: Category, item: dict, peers: Iterable[dict]) -> bool:
+    from space_launch_event_guard import eligible, semantic_pair
+
     if source_is_official(item):
+        # Primary evidence for the named organization, never proof of unrelated
+        # analysts' assertions or outside-party contracts.
         return True
-    if category.key == "falcon_transition":
-        title = normalized_title(item.get("title", ""))
-        # Retirement and immediate cancellation are consequential claims:
-        # two mirrored news headlines cannot substitute for NASA, SEC or SpaceX.
-        if re.search(r"retir|phase.?out|discontinu|cancell?ed", title, re.I):
-            return False
     if not source_is_trusted(item):
         return False
-    sig = event_signature(category, item)
-    source = (item.get("source") or "").strip().lower()
+    if not eligible(category.key, item, NOW):
+        return False
+    if category.key == "falcon_transition":
+        title = normalized_title(item.get("title", ""))
+        if re.search(r"retir|phase.?out|discontinu|cancell?ed", title, re.I):
+            return False
     for peer in peers:
         if peer is item or not source_is_trusted(peer):
             continue
-        peer_source = (peer.get("source") or "").strip().lower()
-        if not peer_source or peer_source == source:
+        if not eligible(category.key, peer, NOW):
             continue
-        if event_signature(category, peer) != sig:
-            continue
-        return True
+        if semantic_pair(category.key, item, peer):
+            return True
     return False
 
 
