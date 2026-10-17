@@ -41,13 +41,6 @@ def clean_blocks(text,now):
         if kept:output.append("\n".join(kept))
     return "\n\n".join(output).rstrip()+"\n" if len(output)>1 else ""
 
-def process(alert_path,pending_path,now,fetch,rate):
-    raw=alert_path.read_text(encoding='utf-8') if alert_path.exists() else ''
-    filtered=clean_blocks(raw,now) if raw else ''
-    state=json.loads(pending_path.read_text(encoding='utf-8'))
-    if not isinstance(state.get('seen'),dict):raise RuntimeError('State schema invalid')
-    notices,errors=correction_notices(state['seen'],fetch,rate)
-
 def self_test():
     now=datetime(2026,10,17,10,tzinfo=timezone.utc)
     doc=("🚀 우주 발사 병목 웹감시\n기준: 2026-10-17 19:00 KST\n\n"
@@ -78,10 +71,3 @@ def main():
     print("space_launch_alert_filter=ok alert="+str(bool(changed)))
 if __name__=="__main__":main()
 
-import space_launch_bottleneck_watch as watch
-
-def corrections_for_run(path):
-    pending=watch.PENDING_STATE_PATH
-    if not pending.exists():return []
-    current=json.loads(pending.read_text(encoding='utf-8'))
-    return correction_notices(current.get('seen',{}),watch.request_bytes,watch.fetch_usdkrw())
