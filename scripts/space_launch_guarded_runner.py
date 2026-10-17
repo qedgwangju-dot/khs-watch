@@ -18,3 +18,5 @@ def corroboration(category,item,peers):
     if not watch.source_is_trusted(item):return False
     return any(peer is not item and watch.source_is_trusted(peer)
                and guard.semantic_pair(category.key,item,peer) for peer in peers)
+
+# A contract and a development delay require different alert labels.
