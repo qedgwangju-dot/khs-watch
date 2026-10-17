@@ -132,6 +132,13 @@ def _short_judgment(title: str, tags: str) -> str:
     if "원전" in blob:
         return "원전 관련 보도는 한미 공동 팩트시트의 프레임워크 범위와 개별 프로젝트 확정 수준을 구분."
     if "알래스카 lng" in blob or "project north" in blob:
+        if "재산세" in blob:
+            if "법적 발효" in blob or "실제 시행" in blob:
+                return "알래스카 주 세제 감면 실제 발효 단계. 적용 시설·대체세액·실제 납세액은 별도로 확인하며 한국 투자승인으로 간주하지 않음."
+            if "법률 성립" in blob or "법률 제정" in blob:
+                return "알래스카 주 법률 성립 단계. 발효일·대체세율·주정부 및 지방정부 적용범위는 아직 따로 확인."
+            if "감면 요청" in blob or "감면을 요청" in blob or "면제 요청" in blob:
+                return "10월15일 한국의 재산세 감면 요청 보도. 미국의 법적 수용·감면 시행은 미확정. 2033년 연 최대 약 1조원 부담 추산은 확정 절감액이 아님."
         if "대만" in blob or "taiwan" in blob:
             return "미국 측 발표: 대만 30%·20년 구매와 44억달러 출자 주장은 구속력 있는 계약·실제 납입과 별개. CPC·Glenfarne 공식 서명을 확인."
         if "연방 인허가" in blob or "permit" in blob or "착공 가능" in blob:
@@ -365,6 +372,30 @@ def _alaska_kumkang_context() -> list[str]:
         status_lines.append("• 미국 발표: <b>대만 30%·20년 구매</b> 주장 · 대만 측 구속력 있는 장기구매계약 미확인")
     if "alaska_taiwan_us_investment_claim_usd_b:4.4" in facts:
         status_lines.append("• 미국 발표: <b>대만 44억달러 추가 출자</b> 주장 · 대만 승인·실제 납입 미확인")
+    tax_request_official = "alaska_tax_relief_request_status:official_confirmed" in facts
+    tax_request_reported = "alaska_tax_relief_request_status:reported" in facts
+    if tax_request_official or tax_request_reported:
+        request_label = "한국 정부 공식 문서로 확인" if tax_request_official else "10월15일 매일경제 단독 보도"
+        status_lines.append(
+            f"• 재산세 감면 요청: <b>{request_label}</b> · 미국 측 감면 승인 또는 한국 투자 확정이 아님"
+        )
+        if "alaska_tax_2033_liability_estimate_usd_m:740" in facts:
+            status_lines.append(
+                "• 재산세 부담: <b>2033년 연 최대 약 1조원(기사 추산)</b> · 전액 면제·대체세금·실제 절감액은 별도 확인"
+            )
+        status_lines.append(
+            "• 알래스카 주: <b>기존 평가액 기준 2% 재산세</b> · 2026년 7월 HB 381 협의안 부결, "
+            "8월 감면법 재추진도 의회 문턱을 넘지 못함 · 법안 발의/하원 통과와 실제 법률 성립 구분"
+        )
+        if "alaska_tax_law_status:enacted" in facts:
+            status_lines.append("• 감면법: <b>주정부·주의회 근거로 법률 성립 확인</b> · 발효 전은 현재 비용 절감으로 계산하지 않음")
+        if "alaska_tax_relief_status:effective" in facts:
+            status_lines.append("• 실제 적용: <b>감면 법률 발효 확인</b> · 새 대체세율·적용시점·총절감액 후속 검증")
+        status_lines.append(
+            '• 세제 근거: <a href="https://m.mk.co.kr/news/economy/12177076">매일경제 단독</a> · '
+            '<a href="https://gov.alaska.gov/governor-dunleavy-introduces-legislation-to-advance-alaska-lng-project-with-alternative-tax-structure/">알래스카 주지사 세법안</a> · '
+            '<a href="https://www.akleg.gov/basis/Bill/Detail/34?Root=HB+381">HB 381 주의회 기록</a>'
+        )
     return status_lines + [
         "• 한국 대미투자 약속: <b>전략투자 2,000억달러 + 조선협력 1,500억달러 = 총 3,500억달러</b>",
         "",
@@ -412,6 +443,7 @@ def _next_checks(flags: dict[str, bool]) -> list[str]:
         checks += ["계통연계 승인·전원 인가·실제 가동"]
     if flags["alaska"]:
         checks += [
+            "재산세 감면 요청의 한국 공식 확인·알래스카 주의회 법안 처리·법률 발효·대체세율·실제 비용절감",
             "한국 정부 상업성 심사·투자 승인·실제 송금 및 백악관 주장과의 차이",
             "대만 CPC·Glenfarne 30%·20년 구매 본계약과 44억달러 출자 승인·납입",
             "Glenfarne 1단계 내수 가스관·2단계 LNG 수출기지 각각의 FID·금융종결·실제 착공",
