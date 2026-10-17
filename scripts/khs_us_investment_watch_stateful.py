@@ -1201,8 +1201,10 @@ def _accepted_facts_for_group(family: str, rows: list[dict]) -> tuple[set[str], 
         # 의회·정부의 법률 제정/발효 단계는 기사 2건으로 대체할 수 없다.
         if family == "alaska_lng" and fact in {
             "alaska_tax_law_status:enacted", "alaska_tax_relief_status:effective",
-        } and not any(_is_alaska_tax_primary(r) for r in evidence):
-            continue
+        }:
+            if not any(_is_alaska_tax_primary(r) for r in evidence):
+                continue
+            official = True
         # 공식자료 1건 또는 서로 다른 출처 2곳 이상이 같은 상태값을 지지해야 승격한다.
         firsthand_report = (
             family == "alaska_lng"
