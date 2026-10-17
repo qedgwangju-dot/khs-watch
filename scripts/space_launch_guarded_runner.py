@@ -20,3 +20,9 @@ def corroboration(category,item,peers):
                and guard.semantic_pair(category.key,item,peer) for peer in peers)
 
 # A contract and a development delay require different alert labels.
+
+
+def check_development(category, title):
+    if category.key=='rocketlab':
+        return guard.kind('rocketlab',title)=='development'
+    return False
