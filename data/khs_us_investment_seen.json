@@ -344,7 +344,8 @@
     "stateevt_90b6a05593e2e71dc434": "2026-10-14T01:14:49.498979+00:00",
     "stateevt_95f14d5c2d3931140281": "2026-10-14T01:19:04.298789+00:00",
     "stateevt_0e79c14e0010e5a9f4aa": "2026-10-14T02:58:28.478258+00:00",
-    "stateevt_6c723d274b826022f8f1": "2026-10-17T04:40:10.903987+00:00"
+    "stateevt_6c723d274b826022f8f1": "2026-10-17T04:40:10.903987+00:00",
+    "stateevt_60599bf5e149b80833fe": "2026-10-17T12:18:05.211565+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -380,7 +381,8 @@
     "eventstate_alaska_lng_90b6a05593e2e71dc434": "2026-10-14T01:14:49.498979+00:00",
     "eventstate_alaska_lng_95f14d5c2d3931140281": "2026-10-14T01:19:04.298789+00:00",
     "eventstate_alaska_lng_0e79c14e0010e5a9f4aa": "2026-10-14T02:58:28.478258+00:00",
-    "eventstate_alaska_lng_6c723d274b826022f8f1": "2026-10-17T04:40:10.903987+00:00"
+    "eventstate_alaska_lng_6c723d274b826022f8f1": "2026-10-17T04:40:10.903987+00:00",
+    "eventstate_alaska_lng_60599bf5e149b80833fe": "2026-10-17T12:18:05.211565+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -683,6 +685,8 @@
         "alaska_taiwan_project_share_reported:30",
         "alaska_taiwan_term_reported_years:20",
         "alaska_taiwan_us_investment_claim_usd_b:4.4",
+        "alaska_tax_2033_liability_estimate_usd_m:740",
+        "alaska_tax_relief_request_status:reported",
         "alaska_us_claim_usd_b:54",
         "alaska_us_reiteration:2026-10-13"
       ],
@@ -693,43 +697,33 @@
         "alaska_lng|alaska_taiwan_project_share_reported": "alaska_taiwan_project_share_reported:30",
         "alaska_lng|alaska_taiwan_term_reported_years": "alaska_taiwan_term_reported_years:20",
         "alaska_lng|alaska_taiwan_us_investment_claim_usd_b": "alaska_taiwan_us_investment_claim_usd_b:4.4",
+        "alaska_lng|alaska_tax_2033_liability_estimate_usd_m": "alaska_tax_2033_liability_estimate_usd_m:740",
+        "alaska_lng|alaska_tax_relief_request_status": "alaska_tax_relief_request_status:reported",
         "alaska_lng|alaska_us_claim_usd_b": "alaska_us_claim_usd_b:54",
         "alaska_lng|alaska_us_reiteration": "alaska_us_reiteration:2026-10-13"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
-      "updated_at": "2026-10-17T04:40:13.882275+00:00",
+      "updated_at": "2026-10-17T12:18:08.359611+00:00",
       "last_title": "백악관 공식 2026-10-13 한국 에너지투자 패키지 중 알래스카 LNG 540억달러 포함 주장 재확인",
       "last_source": "White House",
       "evidence": [
         {
-          "source": "연합뉴스 한민족센터",
-          "title": "트럼프 \"韓 약속 500억불에 더해 대만도 알래스카 가스 투자\"(종합2보) - 연합뉴스 한민족센터",
-          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBfUkF1MEdlcm5Fd2R6VjVQTlZMaEtDVEJ6U3BqWWh0Q010UWw2c25UZjVRRWJmSHh1aXYzWlpHZDJiMUcta005R2x1Z29ndUxSdk8xTXJkcURlQlFPS0hZR1lpYWtVU3c4OUhqOFhYc1NBMGNN?oc=5",
-          "published": "2026-10-14T05:36:13+00:00"
+          "source": "매일경제",
+          "title": "한국 정부 알래스카 LNG 재산세 감면 요청 보도: 2033년 연간 7억4000만달러 부담 추산",
+          "link": "https://m.mk.co.kr/news/economy/12177076",
+          "published": "2026-10-15T08:45:00+00:00"
         },
         {
-          "source": "매일경제TV",
-          "title": "트럼프 \"대만, 알래스카 LNG에 44억달러 투자\"…한국 500억달러 주장 반복 - 매일경제TV",
-          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE42M1RWRzlINlhlclktNXg2RUxhcGtTa2UyaGtGbjhsN3h0X29DUWYwRlVGcmVPNG5RVEc2MFl5YmFrSEVXRkpaU2FhQmZBdmgyaWd6bEs5ZFJSSmNxckVNX0wzeFhXcmJa?oc=5",
-          "published": "2026-10-14T05:31:00+00:00"
+          "source": "매일경제",
+          "title": "[단독] 韓, 연간 최대 1조원 알래스카 LNG 재산세 ‘감면 요청’ - 매일경제",
+          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5adC05ckpTeUxkMmxSX3pZTWxNVlNYY2FzNHFCUjFTSFoxS2ozajFGOTI4azVBMTlPRGh3cWluc3lKOVhzal9tVkgyeDJiV2lpbVMyRg?oc=5",
+          "published": "2026-10-15T08:44:33+00:00"
         },
         {
-          "source": "Chosunbiz",
-          "title": "트럼프 “韓, 알래스카 LNG에 500억달러 투자” 거듭 주장 - 조선비즈 - Chosunbiz",
-          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQTG9fcVhVZU1iOWdIQkhZd09zYUJDdF9oWWNxT25LZHJDbWY1OHEwUXg2RDZUcnF0UzcxTXpEbTRxRGNpZ2FVRDRxZHI2Z29BS3JWanRUU2gtQWgwWDVtbEJaSnhEeU5VRHJYTlRJRG9nb1duNmlfOXZ5eU5oZmJPTnMwdndQb0VfRkR5UUpuc2NBVG1NVGNGakdCTElUQdIBsgFBVV95cUxPcnF5OERZMUFKUjEwcEVkMGhibzkzV1NpRExTUm1Kb0E3aWNIcUtreHNPU3AyMW9icS13QzRUcGgtb1JoY0JIbGItZE1ldG93S1JfTlNyVXBLQ0ZhT0wya1RxZFRZNnR6TUtfT2dMVmNnTmZkeUhVUVlHOEZRcjFwY0liMFpGam5FM243bXZfMThsM09MbWNXeFAzVVpQTWg2d1luNlZKSk9NbGM5NGI2OUJ3?oc=5",
-          "published": "2026-10-14T17:26:00+00:00"
-        },
-        {
-          "source": "뉴스핌",
-          "title": "트럼프 \"韓 500억 달러 알래스카 LNG 투자는 무역합의의 일부\" - 뉴스핌",
-          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBkTWRNYUNPTkp1SEpiQnc5Mk1GRElZYmZ1WGZ5MTFEY3FSZDhXQmVwaTZUQ1A5Uk1EUHQ5SDg3VWM0LWFaV0l3NWZxRjJwYkVmZE40SHU5ekpjYl9Y?oc=5",
-          "published": "2026-10-14T18:12:00+00:00"
-        },
-        {
-          "source": "VOA 한국어 홈페이지",
-          "title": "트럼프 대통령 “한국, 알래스카에 500억 달러 투자”…백악관도 ‘한국 투자’ 강조 - VOA 한국어 홈페이지",
-          "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQMkxhc2c4X2ZHa3N3OVRMVVZxVHhyUGNINmNiUzdUZ19hMy15a0N5WGxfYjFuNHJvTG9XOFRHRjJtNlpCRFNXVnkwTVNTM2Ytd1hFeVlLX3pfSTdlbnZtRjBfMjI5Rm41YUt1RjNrelBaaW5xcnZia3B4cVZ3UU1Yb3pfQi3SAYcBQVVfeXFMUEJTd0JMY2RNQzU0Z0ZXQnprdUZkSnpRWkpua0RKX3ZjSUVTamdERjg2aERnWDJyTm5lWHpjUDRDMGpsZEIybkEyQWFldjBEc1k2NWlmMDBnQzFmUUJRT0s3Snh6ekdzcUxTeXVIVnFacVN4c1ZXU3N2WUgxZVlLWlhjb2Jibnlj?oc=5",
-          "published": "2026-10-14T17:53:41+00:00"
+          "source": "MTN 머니투데이방송",
+          "title": "트럼프 '알래스카 LNG' 압박에…韓, 연간 1조원 재산세 면제 요청 - MTN 머니투데이방송",
+          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1QYUpqY0tTMFpLaENsUFV2UkNMc1VQbk1vVTJPNzYtYTFVYXFDRXJlQ004Wkt6aWdNZU5RVXVpU3VDcE9yOUc3a0lqbGlpY1JQamcySW43Qi1FcFZmZHZV?oc=5",
+          "published": "2026-10-16T04:59:39+00:00"
         }
       ]
     },
