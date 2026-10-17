@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-17T01:58:07+09:00",
-  "last_event_kind": "eu_diesel_reserve_policy",
-  "last_event_id": "eu_diesel_reserve_policy:39e5bae5e4105db3",
+  "last_alert_at_kst": "2026-10-17T20:39:37+09:00",
+  "last_event_kind": "eia_weekly_stock_balance",
+  "last_event_id": "eia_weekly_stock_balance:2026-10-09",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-10-13T21:23:53+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-10-13T21:11:24+09:00",
@@ -33,30 +33,11 @@
     "saudi_bypass_investment:3ba5edb3ff00bf86": "2026-10-14T11:09:53+09:00",
     "eu_diesel_reserve_policy:54f8a60d9eb812bf": "2026-10-14T23:03:10+09:00",
     "us_gulf_isaias_shutin:59e04145a9693f41": "2026-10-15T03:54:32+09:00",
-    "eia_refining_crack_watch:8930fae216868471": "2026-10-16T05:32:44+09:00"
+    "eia_refining_crack_watch:8930fae216868471": "2026-10-16T05:32:44+09:00",
+    "eia_weekly_stock_balance:2026-10-09": "2026-10-17T20:39:37+09:00"
   },
   "last_market": {
-    "oil": {
-      "symbol": "BZ=F",
-      "label": "Brent",
-      "unit": "달러/배럴",
-      "price": 109.28,
-      "previous_close": 105.92,
-      "change": 3.3599999999999994,
-      "change_pct": 3.1722054380664644,
-      "timestamp_utc": "2026-10-16T16:48:40Z",
-      "timestamp_epoch": 1792169320.0
-    },
-    "usdkrw": {
-      "symbol": "KRW=X",
-      "label": "원·달러",
-      "unit": "원/달러",
-      "price": 1334.12,
-      "previous_close": 1341.19,
-      "change": -7.070000000000164,
-      "change_pct": -0.5271438051282937,
-      "timestamp_utc": "2026-10-16T16:58:41Z",
-      "timestamp_epoch": 1792169921.0
-    }
+    "oil": null,
+    "usdkrw": null
   }
 }
