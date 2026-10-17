@@ -77,3 +77,11 @@ def main():
     else:target.unlink(missing_ok=True)
     print("space_launch_alert_filter=ok alert="+str(bool(changed)))
 if __name__=="__main__":main()
+
+import space_launch_bottleneck_watch as watch
+
+def corrections_for_run(path):
+    pending=watch.PENDING_STATE_PATH
+    if not pending.exists():return []
+    current=json.loads(pending.read_text(encoding='utf-8'))
+    return correction_notices(current.get('seen',{}),watch.request_bytes,watch.fetch_usdkrw())
