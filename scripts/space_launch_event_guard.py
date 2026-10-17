@@ -101,17 +101,14 @@ def self_test():
 # Historical mislabelled notifications; unique IDs ensure each correction once.
 FACT_CASES = (
   ("audit:20261017:neutron_2027", "Rocket Lab Neutron 2027",
-   "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-provides-update-neutron-development-and-adjusts",
-   ("Neutron","2027")),
+   "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000067/rklb-10142026ex991.htm",
+   ("Rocket Lab","Neutron","2027")),
   ("audit:20261017:morgan_300_unchanged", "Morgan Stanley SpaceX",
-   "https://price-target.com/2026/10/14/175083/",
-   ("Morgan Stanley","$300","Unchanged")),
+   "https://www.investing.com/news/analyst-ratings/morgan-stanley-raises-spacex-stock-price-target-on-distributed-inference-potential-93CH-4948701",
+   ("Morgan Stanley","$300.00","reiterated")),
   ("audit:20261017:citizens_130_90", "Citizens Rocket Lab",
-   "https://www.tipranks.com/news/the-fly/rocket-lab-price-target-lowered-to-90-from-130-at-citizens-thefly-news",
+   "https://www.investing.com/news/analyst-ratings/citizens-cuts-rocket-lab-stock-price-target-on-neutron-delay-to-2027-93CH-4953465",
    ("Citizens","$90","$130")),
-  ("audit:20261017:pivotal_220_230", "Pivotal Research SpaceX",
-   "https://www.tipranks.com/news/the-fly/spacex-price-target-raised-to-230-from-220-at-pivotal-research-thefly-news",
-   ("Pivotal","$230","$220")),
 )
 
 def source_valid(text,required):
@@ -169,11 +166,11 @@ def correction_self_test():
         if url not in mapping:raise RuntimeError("unknown")
         return mapping[url].encode()
     alerts,errors=correction_notices({},fake,1300)
-    assert len(alerts)==4 and not errors
+    assert len(alerts)==3 and not errors
     assert "117,000원" in alerts[2][1]
     assert not correction_notices({key:"sent" for key,_,_,_ in FACT_CASES},fake,1300)[0]
     alerts2,err2=correction_notices({},lambda x: b"invalid",1300)
-    assert not alerts2 and len(err2)==4
+    assert not alerts2 and len(err2)==3
     print("space_launch_correction_self_test=ok source_guard=1 once_per_event=1 price=1")
 
 if __name__=="__main__":
