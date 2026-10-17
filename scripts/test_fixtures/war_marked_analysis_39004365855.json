@@ -1,0 +1,60 @@
+{
+  "provenance": {
+    "run_id": "39004365855",
+    "code_sha": "1def27eb1f106eaca44f70856f8c76e3e2b2c971",
+    "queried_at_kst": "2026-10-17T13:56:40.483319+09:00",
+    "alert_sha256": "dd7adae99e69a3c565a032780a6dd6631633a1c2b39f7cabd86e9f7f6a46e8f5",
+    "source_body_limit": "RSS headline only; publisher body and operating HTTP bytes were not preserved.",
+    "evidence_sha256": "c54b9ddc845a600ec6a088e13b2d31ec9a2fb7544c46ad5ce480565eaefa5137"
+  },
+  "articles": [
+    {
+      "id": "d606b9b6482eccd86a02",
+      "title_original": "슬리퍼 신은 반군에 세계 원유시장 ‘휘청’…후티 공습에 딜레마 빠진 사우디 [디브리핑] - 헤럴드경제",
+      "title_ko": "슬리퍼 신은 반군에 세계 원유시장 ‘휘청’…후티 공습에 딜레마 빠진 사우디 [디브리핑] - 헤럴드경제",
+      "description": "슬리퍼 신은 반군에 세계 원유시장 ‘휘청’…후티 공습에 딜레마 빠진 사우디 [디브리핑] 헤럴드경제",
+      "source": "헤럴드경제",
+      "source_url": "https://biz.heraldcorp.com",
+      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5GOHltaEY4bkFPVFhDQUl3RW9EbVlvZ0NoLXRKUktGZE5XVUIwbnlKbUdpSFBUTHprdHNRMmZyRl9aTUp4eTJwZXQ3a1ZYZ3NNeE1jaGpB?oc=5",
+      "published": "Sat, 17 Oct 2026 02:00:00 GMT",
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "withheld",
+      "reason": "가격 시각 오래됨·미래 시각",
+      "observed_at_kst": "2026-10-17T05:59:00+09:00"
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "withheld",
+      "reason": "가격 시각 오래됨·미래 시각",
+      "observed_at_kst": "2026-10-17T05:59:00+09:00"
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "withheld",
+      "reason": "가격 시각 오래됨·미래 시각",
+      "observed_at_kst": "2026-10-17T05:59:00+09:00"
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "withheld",
+      "reason": "가격 시각 오래됨·미래 시각",
+      "observed_at_kst": "2026-10-17T05:59:00+09:00"
+    }
+  },
+  "actual_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>\n조회 2026-10-17 13:56 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [신규] <b>1. 사우디·후티</b>\n슬리퍼 신은 반군에 세계 원유시장 ‘휘청’…후티 공습에 딜레마 빠진 사우디 [디브리핑] - 헤럴드경제\nRSS 보도 10-17 11:00 KST · <b>176분 경과</b> · 확전 · <a href=\"https://news.google.com/rss/articles/CBMiVkFVX3lxTE5GOHltaEY4bkFPVFhDQUl3RW9EbVlvZ0NoLXRKUktGZE5XVUIwbnlKbUdpSFBUTHprdHNRMmZyRl9aTUp4eTJwZXQ3a1ZYZ3NNeE1jaGpB?oc=5\">헤럴드경제 검색 링크</a> · 제목 기준·본문 미확인\n\n시장자료 확인 보류 · 나스닥100 선물 (가격 시각 오래됨·미래 시각) / WTI (가격 시각 오래됨·미래 시각) / Brent (가격 시각 오래됨·미래 시각) / 달러지수 (가격 시각 오래됨·미래 시각)\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n"
+}
