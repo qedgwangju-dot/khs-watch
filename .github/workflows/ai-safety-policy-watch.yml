@@ -528,6 +528,29 @@ jobs:
           replay_items = [i for i in items if i["fingerprint"] in deferred]
           selected_next, deferred_next, count_next = select_policy_alert_events(replay_items)
           assert len(selected_next) == 2 and not deferred_next and count_next == 0
+          # The Oct 15 subpoenas are a historical report, not a fresh
+          # enforcement verdict. Keep each company's later formal case distinct.
+          both = item("FTC subpoenas OpenAI and Anthropic over AI consumer harms")
+          assert tracked_policy_event_key(both) == "ftc_ai_safety_both:subpoenas_reported"
+          assert tracked_policy_event_key(both) in POLICY_EVENT_BASELINES
+          assert material(both)
+          assert "조사·집행" in detect_category(both["title"])
+          assert tracked_policy_event_stage(item(
+              "FTC sues OpenAI over AI model consumer safety"
+          )) == ("ftc_ai_safety_openai", "formal_complaint_reported")
+          assert tracked_policy_event_stage(item(
+              "FTC reaches settlement with Anthropic over AI model safety"
+          )) == ("ftc_ai_safety_anthropic", "settlement_reported")
+          assert tracked_policy_event_stage(item(
+              "FTC closes investigation into OpenAI AI model safety"
+          )) == ("ftc_ai_safety_openai", "investigation_closed_reported")
+          assert tracked_policy_event_stage(item(
+              "FTC could subpoena Anthropic over AI model safety"
+          )) is None
+          assert not material(item(
+              "FTC sues OpenAI over AI model consumer safety", "Unknown Blog"
+          ))
+          print("ai_policy_ftc_probe_followup_regression=PASS")
           print("ai_policy_softbank_anthropic_stage_regression=PASS")
           print("ai_policy_event_backlog_preservation=PASS")
           PY
