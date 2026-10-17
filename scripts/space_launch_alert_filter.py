@@ -48,6 +48,25 @@ def process(alert_path,pending_path,now,fetch,rate):
     if not isinstance(state.get('seen'),dict):raise RuntimeError('State schema invalid')
     notices,errors=correction_notices(state['seen'],fetch,rate)
 
+def self_test():
+    now=datetime(2026,10,17,10,tzinfo=timezone.utc)
+    doc=("🚀 우주 발사 병목 웹감시\n기준: 2026-10-17 19:00 KST\n\n"
+         "[계약] Rocket Lab Electron·Neutron\n"
+         "• Rocket Lab Neutron debut delayed to 2027 - Bloomberg\n"
+         "• 검증: 복수 신뢰보도 | 2026-10-15 06:10 KST\n\n"
+         "[증권사] SpaceX\n"
+         "• Morgan Stanley raises SpaceX price target - Investing.com\n"
+         "• 검증: 복수 신뢰보도 | 2026-10-14 19:48 KST\n\n"
+         "[계약] Electron 공급\n"
+         "• Rocket Lab signs Electron satellite launch contract\n"
+         "• 검증: 복수 신뢰보도 | 2026-10-17 17:10 KST\n")
+    out=clean_blocks(doc,now)
+    assert "Neutron debut" not in out
+    assert "Morgan Stanley raises" not in out
+    assert "signs Electron" in out
+    assert "🚀 우주 발사 병목 웹감시" in out
+    print("space_launch_filter_self_test=ok misclassified=blocked valid_contract=retained")
+
 def main():
     if len(sys.argv)!=2:
         raise SystemExit("Expected alert file path")
