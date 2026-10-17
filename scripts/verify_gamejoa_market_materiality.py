@@ -2922,6 +2922,27 @@ class MaterialityChecks(unittest.TestCase):
             with self.subTest(title=title):
                 self.assertEqual(materiality.assess(title, body)["disposition"], "exclude")
 
+    def test_local_museum_ai_reenactment_is_not_an_ai_industry_market_event(self):
+        title = "[진주소식]저작권박물관, '웃으면 복이와요' AI 재현 영상 등"
+        body = (
+            "당시 방송 영상은 전해지지 않지만, 연출자 김형진과 백재현, "
+            "동국대 대학미디어센터 학생들이 AI 기술을 활용해 이를 영화로 재현했다."
+        )
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "exclude", audit)
+        self.assertEqual(audit["reason"], "noncommercial_cultural_ai_reenactment")
+        self.assertNotIn("capital_or_shareholder_action", [item["kind"] for item in audit["evidence"]])
+        item = alert(title, body)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([item], 7), [])
+
+        capital = materiality.assess(
+            "기관, 펀드에 1조원 신규 출자 확정",
+            "기관은 6일 펀드에 1조원 신규 출자를 확정했다고 발표했다.",
+        )
+        self.assertEqual(capital["disposition"], "keep", capital)
+        self.assertIn("capital_or_shareholder_action", [item["kind"] for item in capital["evidence"]])
+
     def test_preliminary_stage_is_not_upgraded_to_confirmed(self):
         for title, body in KEEP[2:5]:
             audit = materiality.assess(title, body)
