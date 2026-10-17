@@ -22,6 +22,7 @@ import os
 import pathlib
 import re
 import time
+import threading
 import unicodedata
 import urllib.error
 import urllib.parse
@@ -2261,17 +2262,43 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
         except Exception as exc:
             errors.append(str(exc))
 
+    # Optional first-party sources must never block the existing hourly monitor.
+    # All three loaders run concurrently in daemon threads, with a shared wall
+    # clock budget. A slow DNS read or anti-bot response cannot cancel Actions.
     extra_official=(
-        ("EIA 주간 원유·정제품 재고",EIA_STOCKS_URL,parse_eia_weekly_stock_balance),
-        ("IEA 10월 15일 비축유 집행",IEA_OCT15_URL,parse_iea_oct15_statement),
-        ("Delek 부통령 증설 발표",DELEK_TYLER_TRANSCRIPT_URL,parse_delek_tyler_dpa_remarks),
+        ("EIA 주간 원유·정제품 재고",EIA_STOCKS_URL,parse_eia_weekly_stock_balance,None),
+        ("IEA 10월 15일 비축유 집행",IEA_OCT15_URL,parse_iea_oct15_statement,
+         "iea_oct15_reserve_execution:2026-10-15-330-100-20plus"),
+        ("Delek 부통령 증설 발표",DELEK_TYLER_TRANSCRIPT_URL,parse_delek_tyler_dpa_remarks,
+         "delek_tyler_dpa:2026-10-13-announcement"),
     )
-    for desc,url,parser in extra_official:
+    already=load_state().get("alerted_events") or {}
+    results={}
+    workers=[]
+    def optional_worker(description,source_url,parser):
         try:
-            page=fetch_bytes(url,timeout=18,attempts=2).decode("utf-8",errors="replace")
-            items.append(parser(page,current))
+            page=fetch_bytes(source_url,timeout=7,attempts=1).decode("utf-8",errors="replace")
+            results[description]=(parser(page,current),None)
         except Exception as exc:
-            errors.append(f"{desc}: {type(exc).__name__}: {exc}")
+            results[description]=(None,f"{type(exc).__name__}: {exc}")
+    for description,source_url,parser,stable_id in extra_official:
+        if stable_id and stable_id in already:
+            continue
+        thread=threading.Thread(
+            target=optional_worker,args=(description,source_url,parser),daemon=True)
+        thread.start()
+        workers.append((description,thread))
+    deadline=time.monotonic()+15.0
+    for description,thread in workers:
+        thread.join(max(0.0,deadline-time.monotonic()))
+        if thread.is_alive():
+            errors.append(f"{description}: 원천 조회 15초 전체 제한 초과 · 기존 감시 계속")
+            continue
+        row,error=results.get(description,(None,"응답 결과 없음"))
+        if row is not None:
+            items.append(row)
+        else:
+            errors.append(f"{description}: {error}")
 
     try:
         tanker_html = fetch_bytes(TANKERTRACKERS_PUBLIC_TELEGRAM_URL,timeout=12,attempts=1).decode("utf-8",errors="replace")
@@ -2905,6 +2932,9 @@ def event_recently_alerted(
         current_event_id.startswith((
             "russia_diesel_supply_transition:",
             "saudi_bypass_investment:",
+            "delek_tyler_dpa:",
+            "iea_oct15_reserve_execution:",
+            "eia_weekly_stock_balance:",
         ))
         and isinstance(alerted, dict)
         and current_event_id in alerted
@@ -2932,11 +2962,6 @@ def event_recently_alerted(
                 if previously_sent and (current.astimezone(KST) - previously_sent).total_seconds() < hours * 3600:
                     return True
 
-    if current_event_id.startswith((
-        "delek_tyler_dpa:", "iea_oct15_reserve_execution:", "eia_weekly_stock_balance:",
-    )):
-        return (current_event_id in (state.get("alerted_events") or {})
-                or state.get("last_event_id")==current_event_id)
     if state.get("last_event_id") == current_event_id:
         previous = _parse_kst_timestamp(state.get("last_alert_at_kst"))
         if previous is None:
