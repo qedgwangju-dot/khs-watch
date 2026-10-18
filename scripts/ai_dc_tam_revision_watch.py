@@ -379,6 +379,14 @@ def jpm_needs_baseline(previous: dict) -> bool:
     return not bool(previous.get("last_sent_event_id"))
 
 
+def jpm_networking_needs_alert(previous: dict) -> bool:
+    """Only the old, already-delivered capex study can receive this once-only addendum."""
+    return (
+        previous.get("last_sent_event_id") == JPM_BASELINE_EVENT
+        and previous.get("networking_alert_id") != JPM_NETWORKING_EVENT
+    )
+
+
 def jpm_guard() -> None:
     j = JPM_REFERENCE
     assert j["na_installed_2026_gw"] - j["na_installed_2025_gw"] == 28
@@ -395,6 +403,12 @@ def jpm_guard() -> None:
     ) == {}
     assert jpm_needs_baseline({}) is True
     assert jpm_needs_baseline({"last_sent_event_id": JPM_BASELINE_EVENT}) is False
+    assert jpm_networking_needs_alert({}) is False
+    assert jpm_networking_needs_alert({"last_sent_event_id": JPM_BASELINE_EVENT}) is True
+    assert jpm_networking_needs_alert({
+        "last_sent_event_id": JPM_BASELINE_EVENT,
+        "networking_alert_id": JPM_NETWORKING_EVENT,
+    }) is False
     assert len(JPM_NETWORKING_TICKERS) == len(set(JPM_NETWORKING_TICKERS)) == 9
     assert "LITE" in JPM_NETWORKING_TICKERS and "CLS" in JPM_NETWORKING_TICKERS
 
@@ -684,10 +698,7 @@ def main() -> int:
     jpm_alert = bool(jpm_event_id) and can_deliver
     # Separate, one-time networking *analysis* addendum to the already delivered
     # capex event. Do not re-send JPM_REFERENCE 85%/70% as fresh news.
-    jpm_networking_due = (
-        jpm_old.get("last_sent_event_id") == JPM_BASELINE_EVENT
-        and jpm_old.get("networking_alert_id") != JPM_NETWORKING_EVENT
-    )
+    jpm_networking_due = jpm_networking_needs_alert(jpm_old)
     jpm_networking_alert = jpm_networking_due and can_deliver
     jpm_next = dict(jpm_old)
     if jpm_networking_alert:
