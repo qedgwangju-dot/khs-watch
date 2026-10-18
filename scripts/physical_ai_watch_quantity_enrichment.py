@@ -312,6 +312,18 @@ def _skip_quantity_enrichment(block: str) -> bool:
         return True
     if "Fluence" in block and ("Brunsbüttel" in block or "브룬스뷔텔" in block):
         return True
+    # New organizational, regulatory and local-production planning stories:
+    # 3 months/70m KRW/100 projects, legacy export USD, and planned robot
+    # counts are not confirmed shippable robot units.
+    if any(label in block for label in (
+        "기후부 · 옥외형 ESS 분류지침",
+        "브릴스 · 미시간 AMR 현지",
+        "현대차그룹 · RX사업전략팀",
+        "LG전자 · 로봇 소프트웨어 플랫폼",
+        "로보티즈 · 8월 소프트웨어 기존",
+        "로보티즈 · 하드웨어 설계도 실제",
+    )):
+        return True
     return False
 
 
