@@ -59,6 +59,8 @@ NEWS_QUERIES = (
     'data center developer credit debt financing bond yields project construction delays',
     'data center finance IPO delayed loan funding financial close power permit 2026',
     'AI infrastructure financing debt project delays data centers US 2026',
+    'data center lease amendment delivery penalties cost overrun tenant termination lender 2026',
+    'data center refinancing credit spread covenant default investor bond yields 2026',
 )
 
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
@@ -217,7 +219,8 @@ def classify(text: str) -> str:
         k in low for k in (
             "financial", "financing", "funding", "credit", "bond", "borrowing",
             "debt", "liquidity", "ipo", "investor", "fundraise", "fray",
-            "funding crunch", "construction loan",
+            "funding crunch", "construction loan", "cost overrun",
+            "lease termination", "tenant walk away", "financial close",
         )
     ):
         return "자금조달·계획 실현 위험"
@@ -242,9 +245,17 @@ def is_meaningful(title: str, source: str, domain: str) -> bool:
 
     # Do not infer a data center development setback from generic AI financing.
     if theme == "자금조달·계획 실현 위험":
-        return any(k in low for k in ("data center", "data centre", "datacenter", "ai infrastructure")) and (
-            trusted(domain) or any(k in low for k in ("loan", "financing closed", "financial close"))
-        )
+        context = any(k in low for k in ("data center", "data centre", "datacenter", "ai infrastructure"))
+        adverse = any(k in low for k in (
+            "fray", "delay", "postpone", "withdraw", "cancel", "default", "distress",
+            "bond sell", "sell-off", "selloff", "downgrad", "worsen", "slump",
+            "cost overrun", "risk", "concern", "financing crunch", "funding gap",
+            "funding shortfall", "under pressure", "rising yield", "debt burden",
+            "repayment", "credit squeeze", "walk away", "termination",
+            "financing fail", "credit spread", "lease amendment",
+        ))
+        # A financing facility closing is progress, not an adverse-risk alert.
+        return context and trusted(domain) and adverse
 
     official = domain.endswith("ferc.gov") or domain.endswith("federalregister.gov") or domain.endswith("pjm.com")
     if official and theme in {"비용보호·준비도 규칙", "Phantom load·수요전망", "매몰·송전비용", "재심사·접속승계"}:
@@ -330,6 +341,12 @@ def regression_checks() -> None:
     assert classify(headline) == "자금조달·계획 실현 위험"
     assert is_meaningful(headline, "Financial Times", "ft.com")
     assert not is_meaningful("AI boom continues", "Financial Times", "ft.com")
+    assert not is_meaningful(
+        "Data center secures $2bn construction financing and begins work",
+        "Reuters", "reuters.com")
+    assert is_meaningful(
+        "Data center lease amendment adds $359m cost overruns and debt burden",
+        "Reuters", "reuters.com")
     assert dollar_values("$10tn") == [10e12]
     assert dollar_values("$500bn") == [500e9]
     now = FT_OCT18_ANNOUNCED_UTC
@@ -382,8 +399,13 @@ def collect_news() -> list[dict]:
             # The verified anchor below already covers the same FT story.
             if "ft.com" in domain and "10tn" in title.lower() and "ai infrastructure" in title.lower():
                 continue
+            stable_id = (
+                sig("financing-news", source_label(source, source_url).lower(), normalize(title).lower())
+                if theme == "자금조달·계획 실현 위험"
+                else sig(title, link)
+            )
             out.append({
-                "id": sig(title, link),
+                "id": stable_id,
                 "title": title,
                 "url": link,
                 "source": source_label(source, source_url),
@@ -488,8 +510,9 @@ if should_alert:
     if any(item.get("verified_first_party_headline") for item in new_items):
         msg += ["", "<b>📌 FT 10월 18일 미국 AI 인프라 금융·착공 위험</b>"]
         msg.append(
-            f"• FT 보도상 미국 AI 인프라 투자 구상 <b>10조달러({h(krw_from_usd(10e12, fx))})</b>."
-            " 실제 집행액·확정 취소액이 아님"
+            f"• FT의 10조달러({h(krw_from_usd(10e12, fx))})는"
+            " 2025~2032년 미국 AI 인프라 누적 지출 전망(Columbia·Brookings 연구 인용)."
+            " 이미 집행·확정 투자한 금액이나 취소금액이 아님"
         )
         msg.append(
             "• FT가 인용한 RegLayer 집계: 2026년 대형 프로젝트 지연·철회·차단 최소 47건."
@@ -508,7 +531,8 @@ if should_alert:
         msg.append(
             f"• 근거 등급: {a('FT 원보도', FT_OCT18_URL)}는 제목을 FT 공식 게시물로 확인."
             f" {a('FT 공식 게시', FT_OFFICIAL_POST)} ·"
-            f" {a('OpenAI 원발표', OPENAI_STARGATE_OFFICIAL)}."
+            f" {a('OpenAI 원발표', OPENAI_STARGATE_OFFICIAL)} ·"
+            f" {a('Brookings 2025~2032 전망', 'https://www.brookings.edu/articles/the-10-trillion-question-financing-the-ai-buildout/')}."
             " 세부 47건·35%는 FT 인용 추정으로 독립 원자료 미확보"
         )
 
