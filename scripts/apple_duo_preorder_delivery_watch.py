@@ -321,6 +321,18 @@ def _load() -> dict:
     val.setdefault("market_latest",{"미국":"2027-01"})
     val.setdefault("market_day_latest",{})
     val.setdefault("market_sku_day_latest",{})
+    # Quarantine a previously accepted unverified August ETA. An in-flight
+    # old workflow may reintroduce it during concurrent checkpoint writes.
+    if (val.get("market_latest") or {}).get("미국") == "2027-08":
+        val.setdefault("quarantined_delivery_claims", []).append({
+            "market": "미국",
+            "reported_month": "2027-08",
+            "reason": "Unverified ETA outlier, not verified against publisher's delivery quote",
+        })
+        val["market_latest"]["미국"] = "2027-01"
+        val["seen_fact_keys"] = [
+            k for k in val["seen_fact_keys"] if not k.endswith(":2027-08")
+        ]
     return val
 
 def _new_delivery_signals(rows: list[dict], state: dict) -> tuple[list[dict],set[str]]:
