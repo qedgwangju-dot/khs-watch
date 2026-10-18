@@ -1,6 +1,6 @@
 {
   "source_version": 1,
-  "last_checked_kst": "2026-10-19T03:03:37+09:00",
+  "last_checked_kst": "2026-10-19T05:36:19+09:00",
   "seen_keys": [
     "609d75cf5cc90df8dff5f4ed2fb09ad754e450a0f523d84c02f4a214f14d1e45",
     "2cde781fca552a36aa9f4cc68a6a71ccea8bb33bcb434c5b6558f21154f9a0f0",
@@ -34,12 +34,7 @@
   "sources_ok": {
     "texas_governor": true,
     "ercot": true,
-    "puct_search": false
+    "puct_search": true
   },
-  "last_errors": [
-    "PUCT search data center: fetch failed: https://www.puc.texas.gov/agency/sitesearch.aspx?q=data+center: HTTP Error 403: Forbidden",
-    "PUCT search large load: fetch failed: https://www.puc.texas.gov/agency/sitesearch.aspx?q=large+load: HTTP Error 403: Forbidden",
-    "PUCT search interconnection: fetch failed: https://www.puc.texas.gov/agency/sitesearch.aspx?q=interconnection: HTTP Error 403: Forbidden",
-    "PUCT search ratepayer data center: fetch failed: https://www.puc.texas.gov/agency/sitesearch.aspx?q=ratepayer+data+center: HTTP Error 403: Forbidden"
-  ]
+  "last_errors": []
 }
