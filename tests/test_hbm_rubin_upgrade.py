@@ -140,7 +140,7 @@ class HBFStandardMilestoneTests(unittest.TestCase):
           'description':'2026년 10월 14일 SEDEX 2026 내년 1월 최종 규격 계획',
           'direct_link':'https://ir.newspiw.com/news/view/20261014000748','source':'뉴스핌',
           'published_at_kst':'2026-10-14T12:30:00+09:00'}
-        with __import__('unittest.mock',fromlist=['patch']).patch.object(m,'compact_fact_text',return_value='SK하이닉스 HBF 내년 1월 최종 규격 발표 예정'):
+        with __import__('unittest.mock',fromlist=['patch']).patch.object(r,'compact_fact_text',return_value='SK하이닉스 HBF 내년 1월 최종 규격 발표 예정'):
             obs=r.hbf_signal(event)
         self.assertEqual(obs['stage'],'final_spec_target')
         self.assertFalse(obs['official'])
