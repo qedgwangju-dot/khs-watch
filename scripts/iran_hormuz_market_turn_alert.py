@@ -2068,9 +2068,9 @@ def _nabep_milestone_numbers(title: str) -> tuple[int,int,int,int,int] | None:
     """Exact Oct-13 milestone signature, not equipment commissioned count."""
     match = re.fullmatch(
         r"Venezuela NABEP Oct2026 disclosed rig milestone: "
-        r"drilling (\\d+) arrived; workover (\\d+) deploying; "
-        r"other rigs (\\d+) purchased; steam boilers (\\d+) purchased; "
-        r"heavy machines (\\d+) purchased; self-reported capital USD1bn; "
+        r"drilling (\d+) arrived; workover (\d+) deploying; "
+        r"other rigs (\d+) purchased; steam boilers (\d+) purchased; "
+        r"heavy machines (\d+) purchased; self-reported capital USD1bn; "
         r"company-reported output over 200000 bpd", title
     )
     if not match:
@@ -2165,7 +2165,7 @@ def _build_nabep_oct13_alert_body(
         "회사 주장     자체투자 약 10억 달러 · 원유 생산 하루 20만 배럴 초과",
     ]
     if fx is not None:
-        parts.append(f"원화 환산     기업 자체투자 주장 약 {fx.price/1e4:.4f}조원 · 환율 {fx.price:,.2f}원/달러")
+        parts.append(f"원화 환산     기업 자체투자 주장 약 {fx.price/1000:.4f}조원 · 환율 {fx.price:,.2f}원/달러")
     else:
         parts.append(
             f"원화 환산     기업 자체투자 주장 약 1조 3,336억원"

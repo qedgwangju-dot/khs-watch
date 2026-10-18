@@ -232,6 +232,9 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("구매/도착/배치/시추 가동은 서로 다릅니다",body)
         self.assertNotIn("전량 가동 확인",body)
         self.assertLessEqual(len(body.splitlines()),31)
+        fx=MODULE.Quote("KRW=X","원·달러","원/달러",1334.61,1334.61,0,0,"",now.timestamp())
+        priced=MODULE.build_physical_flow_alert_body("venezuela_nabep_equipment",[a,b],None,now,fx)
+        self.assertIn("약 1.3346조원",priced)
 
     def test_nabep_equipment_rejects_unverified_numbers_and_spoofs(self):
         a=MODULE.parse_nabep_oct13_equipment_release(
