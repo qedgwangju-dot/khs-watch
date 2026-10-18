@@ -38,6 +38,11 @@ for _required in (
     "DEXMATE_LG_RECOVERY =",
     "STOCK_218_CORRECTION =",
     "FLUENCE_VATTENFALL_RECOVERY =",
+    "ROBOT_OCT16_PREFIX =",
+    "ROBOT_OCT16_EVENTS =",
+    "def _oct16_recovery(",
+    "def _oct16_group(",
+    "def _oct16_stage(",
     "def _fluence_vattenfall_recovery(",
     "def _stock_218_correction_recovery(",
     "def _catl_intilion_recovery(",
@@ -3978,5 +3983,158 @@ if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,20):
     assert '목표' in base.meaning(qc)
     assert qk not in oct15_keys[:-1], 'quantity correction must be separate event'
 
+
+
+# 62) October 15/16 status changes: ESS actual government classification
+# guidance, BRILS manufacturing PLAN vs production and signed orders,
+# Hyundai RX internal strategy team, LG robotics SW subteam, and already
+# released ROBOTIS software (do not turn future hardware plan into a launch).
+new_event_specs = (
+    ('ess_outdoor_guideline','ess_outdoor_policy','official_guideline',
+     '기후부 · 옥외형 ESS 분류지침 전국 배포'),
+    ('brils_us_amr_production_plan','brils_us_localization','reported_local_production_plan',
+     '브릴스 · 미시간 AMR 현지 생산체계 추진'),
+    ('hyundai_rx_strategy_team','hyundai_robot_rx_team','company_sourced_team_report',
+     '현대차그룹 · RX사업전략팀 신설'),
+    ('lg_robot_software_platform_team','lge_robot_sw_platform','industry_sourced_sw_team',
+     'LG전자 · 로봇 소프트웨어 플랫폼 조직 신설 보도'),
+)
+keys = set()
+for event_id, expected_group, expected_stage, expected_category in new_event_specs:
+    samples = watcher.query_news(watcher.ROBOT_OCT16_PREFIX + event_id)
+    assert len(samples) == 1, (event_id,samples)
+    item = samples[0]
+    assert item.get('published') is None, "Date-only press coverage needs no fabricated hour"
+    group, points, cat, digest = classify(item)
+    assert group == expected_group and points >= 11, (event_id,group,points)
+    assert cat == expected_category, (event_id,cat)
+    assert item['oct16_stage'] == expected_stage
+    assert digest not in keys, (event_id,'dedup keys unexpectedly overlap')
+    keys.add(digest)
+    assert base.meaning(cat), (event_id,'empty meaning')
+    assert base.risk(cat), (event_id,'empty risk')
+    visible = f"{item['title']} {item['description']}"
+    assert base.category(visible,base.topic_group(visible)) == cat, (event_id,'render loses source evidence')
+    assert '원' in base.meaning(cat) if expected_group in {
+        'ess_outdoor_policy','brils_us_localization'
+    } else True
+    assert watcher.qty._skip_quantity_enrichment(
+        f'<b>1. {item["title"]}</b>\n<b>분류</b>  {cat}\n'
+        '3개월 7,000만원, 100개 사업장, 2028년 로봇 예정 100대'
+    ), ('false "confirmed product quantity" added to policy/organization', event_id)
+
+ess_doc = watcher.ROBOT_OCT16_EVENTS['ess_outdoor_guideline']['description']
+assert '공작물' in ess_doc and '가설건축물' in ess_doc and '건축물' in ess_doc
+assert '7,000만원' in ess_doc and '3개월' in ess_doc
+assert '국비' not in base.meaning('기후부 · 옥외형 ESS 분류지침 전국 배포').split('아닙니다')[1], (
+    "Guideline should not be called subsidy"
+)
+assert 100*70_000_000 == 7_000_000_000, '100 * maximum KRW saving = 70eok upper bound'
+
+b = watcher.ROBOT_OCT16_EVENTS['brils_us_amr_production_plan']['description']
+assert '371만달러' in b and '1,504만달러' in b
+assert '상반기' in b and '북미 누적' in b
+assert int(3_710_000*1338.60) == 4_966_206_000
+assert int(15_040_000*1338.60) == 20_132_544_000
+assert '미공개' in b and '협의 중' in b
+assert 'Navigation' in b and 'FMS' in b
+assert '장기 유지보수' not in b or '잠재' in b
+
+brils_reprint = make(
+    '브릴스, 미시간 미국 AMR 현지 생산 체제 구축 추진',
+    '브릴스 BRILS USA Michigan 법인에서 저상형 AMR 현지 생산을 추진한다. '
+    '미국 고객사 공급은 협의 중이고 첫 출하는 미확정이다.',
+    '이데일리',
+)
+bg, bs, bc, bk = classify(brils_reprint)
+brils_original = watcher.query_news(
+    watcher.ROBOT_OCT16_PREFIX + 'brils_us_amr_production_plan'
+)[0]
+assert bg == 'brils_us_localization' and bs >= 11, (bg,bs,bc)
+assert bk == base.key(brils_original), 'Same US-production PLAN must not resend from another paper'
+
+brils_plan_only = make(
+    '브릴스, 미시간 미국 AMR 현지 생산 검토 중',
+    '브릴스 BRILS USA 미시간 AMR 로봇 현지 생산은 아직 추진 중.',
+    '광고블로그',
+)
+pg, ps, pc, pk = classify(brils_plan_only)
+assert pg == 'brils_us_localization' and ps < 11, (pg,ps,pc)
+
+brils_real_start = make(
+    '브릴스, 미국 실제 AMR 생산 개시 공식 확인',
+    '브릴스는 미시간 BRILS USA AMR 미국 실제 생산 개시를 공식 발표했다. '
+    '생산 첫 물량을 실제 검수했다고 밝혔다.',
+    '브릴스',
+)
+rg, rs, rc, rk = classify(brils_real_start)
+assert rg == 'brils_us_localization' and rs >= 11 and rk != bk, (rg,rs,rc)
+assert '실제 생산' in rc, rc
+
+rx_press_copy = make(
+    '현대차그룹 RX사업전략팀 신설 로봇 사업화 강화',
+    '현대차그룹 미래사업전략실 산하 RX사업전략팀 신설, '
+    'Atlas 2028년 HMGMA 투입은 기존 목표다.',
+    '이데일리',
+)
+hg, hs, hc, hk = classify(rx_press_copy)
+rx_original = watcher.query_news(
+    watcher.ROBOT_OCT16_PREFIX + 'hyundai_rx_strategy_team'
+)[0]
+assert hg == 'hyundai_robot_rx_team' and hs>=11 and hk==base.key(rx_original), (hg,hs,hk)
+rx_official = make(
+    '현대차그룹 RX사업전략팀 회사 공식 확인',
+    '현대차그룹은 RX사업전략팀 조직 신설을 회사 공식 확인했다.',
+    '현대자동차그룹',
+)
+rg2,rs2,rc2,rk2=classify(rx_official)
+assert rg2=='hyundai_robot_rx_team' and rs2>=11 and rk2!=hk,(rg2,rs2,rc2)
+
+lg_report_clone = make(
+    'LG전자 로봇 소프트웨어 플랫폼 조직 신설',
+    'LG전자 로봇 소프트웨어 플랫폼 조직을 신설하고 제어·학습 인력을 통합했다.',
+    'ZDNet korea',
+)
+lg,ls,lc,lk=classify(lg_report_clone)
+lg_original=watcher.query_news(
+    watcher.ROBOT_OCT16_PREFIX+'lg_robot_software_platform_team'
+)[0]
+assert lg=='lge_robot_sw_platform' and ls>=11 and lk==base.key(lg_original),(lg,ls,lk)
+lg_official=make(
+    'LG전자 로봇 소프트웨어 플랫폼 조직 회사 공식 확인',
+    'LG전자는 로봇 소프트웨어 플랫폼 조직 신설을 회사 공식 확인했다.',
+    'LG전자',
+)
+og,os,oc,ok=classify(lg_official)
+assert og=='lge_robot_sw_platform' and os>=11 and ok!=lk,(og,os,oc)
+
+robotis_open_older=make(
+    '로보티즈 SW·HW 전면 개방 오픈소스 휴머노이드',
+    '로보티즈 AI 사피엔스 소프트웨어 구동 코드는 이미 8월 공개됐고 '
+    '하드웨어 설계도는 향후 공개 예정이라고 다시 설명했다.',
+    'ZDNet korea',
+)
+rog,ros,roc,rok=classify(robotis_open_older)
+assert rog=='robotis_open_source_baseline' and ros<11,(rog,ros,roc)
+robotis_future_cad=make(
+    'ROBOTIS AI 사피엔스 하드웨어 CAD 설계도 실제 공개 완료',
+    'ROBOTIS AI 사피엔스 휴머노이드 하드웨어 CAD 설계도 실제 공개 완료. '
+    '공식 GitHub 배포와 라이선스를 공개했다.',
+    'ROBOTIS',
+)
+fg,fs,fc,fk=classify(robotis_future_cad)
+assert fg=='robotis_hardware_release' and fs>=11, (fg,fs,fc)
+robotis_media_cad=dict(robotis_future_cad,source='무명 유튜버')
+mg,ms,mc,mk=classify(robotis_media_cad)
+assert mg=='robotis_hardware_release' and ms<11, (mg,ms,mc)
+
+# One-shot recovery expires, preventing future replay after dedup rotation.
+now_saved=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,26,12,0,tzinfo=dt.timezone.utc)
+    for event_id,_,_,_ in new_event_specs:
+        assert watcher.query_news(watcher.ROBOT_OCT16_PREFIX+event_id)==[], event_id
+finally:
+    base.NOW=now_saved
 
 print("Physical-AI watcher regression guards: PASS")
