@@ -121,6 +121,43 @@ class CurrencyKRWGuardTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             g.validate_text("수입가 18 엔")
 
+    def test_jpy_korean_particles_preserve_amount_and_particle(self):
+        for particle in ('과', '와', '은', '는', '이', '가', '을', '를', '에', '의',
+                         '도', '만', '으로', '으로는', '에서', '에서는',
+                         '까지', '부터', '보다', '보다는'):
+            with self.subTest(particle=particle), patch.object(g, '_rate', side_effect=self.fake_rate):
+                out = g.enforce_text('비용 100억엔' + particle + ' 납품원가')
+            self.assertIn('100억엔(약 900억원)' + particle, out)
+            g.validate_text(out)
+
+    def test_jpy_particle_boundary_does_not_match_inside_Korean_names(self):
+        for word in ('엔비디아', '엔씨소프트', '엔과이어', '엔가드', '엔이텍', '엔으로직스'):
+            sample = '8/18 ' + word + ' 고객사 확대'
+            with self.subTest(word=word), patch.object(g, '_rate', side_effect=AssertionError('No FX for names')):
+                self.assertEqual(g.enforce_text(sample), sample)
+                g.validate_text(sample)
+
+    def test_jpy_particle_ranges_and_compound_amounts_keep_whole_value(self):
+        for sample, expected in (
+                ('100억~120억엔과 납품원가', '100억~120억엔(약 900억원~약 1,080억원)과'),
+                ('1조2000억엔으로 투자', '1조2000억엔(약 10조8,000억원)으로'),
+                ('250엔과 단가', '250엔(약 2,250원)과')):
+            with self.subTest(sample=sample), patch.object(g, '_rate', side_effect=self.fake_rate):
+                out = g.enforce_text(sample)
+            self.assertIn(expected, out)
+            g.validate_text(out)
+
+    def test_validator_rejects_bare_jpy_amount_with_particle(self):
+        for sample in ('100억엔과 납품원가', '250엔으로 계산', '100억~120억엔은 비용'):
+            with self.subTest(sample=sample), self.assertRaises(RuntimeError):
+                g.validate_text(sample)
+
+    def test_existing_jpy_conversion_before_particle_is_idempotent(self):
+        sample = '100억엔(약 900억원)과 엔비디아 협력'
+        with patch.object(g, '_rate', side_effect=AssertionError('Existing conversion is retained')):
+            self.assertEqual(g.enforce_text(sample), sample)
+            g.validate_text(sample)
+
     def test_fx_failure_blocks_alert_instead_of_sending_unconverted_amount(self):
         with patch.object(g, "_rate", return_value=(None, "failed")):
             with self.assertRaises(RuntimeError):

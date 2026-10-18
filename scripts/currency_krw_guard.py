@@ -5,6 +5,13 @@ import re
 
 from fx_api import daily_krw
 
+# A currency can take a Korean particle, while 엔비디아/엔씨소프트 are words.
+# The particle must end at a word boundary; it is not a prefix exception.
+_JPY_UNIT_WORD = (
+    r"엔(?=$|[^가-힣]|(?:으로(?:는|도)?|에서(?:는|도)?|까지(?:는|도)?|"
+    r"부터(?:는|도)?|보다(?:는|도)?|과|와|은|는|이|가|을|를|에|의|도|만)(?=$|[^가-힣]))"
+)
+
 CURRENCY_WORDS = {
     "달러": "USD",
     "유로": "EUR",
@@ -100,7 +107,7 @@ def _normalize_existing_separate_krw(text: str) -> str:
     # 아래 enforce 단계에서 실행 시점의 검증된 API 환율로 다시 계산한다.
     # 사용자가 요구한 표기는 항상 "외화금액(약 원화금액)"으로 통일한다.
     pat = re.compile(
-        r"(?P<fx>\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만|만)\s*(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|엔(?![가-힣])|링깃|위안|파운드))"
+        r"(?P<fx>\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만|만)\s*(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|" + _JPY_UNIT_WORD + r"|링깃|위안|파운드))"
         r"\s*(?:·|=|≈|≒)\s*(?:약\s*)?[\d,]+(?:조[\d,]*억|조|억)?원"
     )
     return pat.sub(lambda m: m.group("fx"), text)
@@ -117,7 +124,7 @@ def enforce_text(text: str) -> str:
         r"(?:(?P<eok>\d[\d,.]*(?:\.\d+)?)\s*억\s*)?"
         r"(?:(?P<ten_million>\d[\d,.]*(?:\.\d+)?)\s*천만\s*)?"
         r"(?:(?P<man>\d[\d,.]*(?:\.\d+)?)\s*만\s*)?"
-        r"(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|엔(?![가-힣])|링깃|위안|파운드)"
+        r"(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|" + _JPY_UNIT_WORD + r"|링깃|위안|파운드)"
         r"(?P<per>/" + PER_UNIT_PATTERN + r")?",
         re.I,
     )
@@ -141,7 +148,7 @@ def enforce_text(text: str) -> str:
         r"(?P<a>\d[\d,.]*(?:\.\d+)?)\s*(?P<ua>조|십억|억|백만|천만|만)"
         r"\s*(?P<sep>[~～–—-])\s*"
         r"(?P<b>\d[\d,.]*(?:\.\d+)?)\s*(?P<ub>조|십억|억|백만|천만|만)?"
-        r"\s*(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|엔(?![가-힣])|링깃|위안|파운드)"
+        r"\s*(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|" + _JPY_UNIT_WORD + r"|링깃|위안|파운드)"
     )
     def repl_range(m):
         tail = text[m.end():]
@@ -158,7 +165,7 @@ def enforce_text(text: str) -> str:
     # Korean large-unit currency amounts.
     large_pat = re.compile(
         r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<unit>조|십억|억|백만|천만|만)"
-        r"\s*(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|엔(?![가-힣])|링깃|위안|파운드)(?P<per>/" + PER_UNIT_PATTERN + r")?",
+        r"\s*(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|" + _JPY_UNIT_WORD + r"|링깃|위안|파운드)(?P<per>/" + PER_UNIT_PATTERN + r")?",
         re.I,
     )
     def repl_large(m):
@@ -264,7 +271,7 @@ def enforce_text(text: str) -> str:
     text = symbol_plain.sub(repl_symbol_plain, text)
 
     word_plain = re.compile(
-        r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|엔(?![가-힣])|링깃|위안|파운드)"
+        r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|" + _JPY_UNIT_WORD + r"|링깃|위안|파운드)"
         r"(?P<per>/" + PER_UNIT_PATTERN + r")?"
     )
     def repl_word_plain(m):
@@ -294,7 +301,7 @@ def _money_candidates(text: str):
         r"\d[\d,.]*(?:\.\d+)?\s*"
         r"(?:(?:조|십억|억|백만|천만|만)"
         r"(?:\s*\d[\d,.]*(?:\.\d+)?\s*(?:억|천만|만)){0,2})?"
-        r"\s*(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|엔(?![가-힣])|링깃|위안|파운드)"
+        r"\s*(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|" + _JPY_UNIT_WORD + r"|링깃|위안|파운드)"
         r"(?:/" + PER_UNIT_PATTERN + r")?"
     )
     symbol = (
