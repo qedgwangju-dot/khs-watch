@@ -4137,4 +4137,37 @@ try:
 finally:
     base.NOW=now_saved
 
+
+# 63) Actual 2026-10-18 Telegram 233 artifact regression.
+# A general ESS quarterly-earnings preview is not a signed order.
+ess_outlook_title = make(
+    'K배터리 3Q도 실적 청신호..美 ESS 분기 설치량 최대 지속 - 머니투데이',
+    '올해 미국 ESS 설치 규모 확대와 K배터리의 실적 회복 기대감을 전했다.',
+    '머니투데이',
+)
+eg,es,ec,ek=classify(ess_outlook_title)
+assert es < 11, ('ESS general market outlook incorrectly promoted',eg,es,ec)
+# A primary official metric release should not be prohibited just because
+# it contains "ESS" or "quarter": it must be evaluated on its own evidence.
+ess_factual_primary = make(
+    'ESS 산업 3분기 확정 설치량 공식 발표',
+    '공식 기관이 2026년 3분기 실제 ESS 설치 2GWh를 발표했다.',
+    '미국 에너지정보청',
+)
+fg,fs,fc,fk=classify(ess_factual_primary)
+assert not watcher.ESS_CONCRETE_NEW_EVENT.search(ess_outlook_title['title'])
+
+corrected = watcher.query_news(
+    watcher.ROBOT_OCT16_PREFIX + 'telegram233_quality_correction'
+)
+if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,25):
+    assert len(corrected)==1,corrected
+    cg,cs,cc,ck=classify(corrected[0])
+    assert cg=='alert_quality_oct18' and cs>=11,(cg,cs,cc)
+    assert 'Telegram 233' in cc and '정정' in cc,cc
+    assert '엔비디아' in base.meaning(cc)
+    assert '철회' in base.meaning(cc)
+    assert watcher.qty._unknown_block('6~12개월 12개 제품이라고 오해') is None
+    assert '새 계약' not in corrected[0].get('title','')
+
 print("Physical-AI watcher regression guards: PASS")
