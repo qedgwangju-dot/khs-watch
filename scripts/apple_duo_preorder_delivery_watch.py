@@ -151,13 +151,20 @@ def _shipping_event(blob: str, published: dt.datetime) -> dict | None:
     # Delivery of new orders differs from release on 10/23 and from original preorders.
     eta_words=("shipping","delivery","delivered","ships","backorder","wait times",
                "배송","출고","납기","대기 기간")
-    # Prefer shipment-related sentences. Do not take unrelated dates from sidebars.
+    # Associate a shipping date with the closest shipping wording. A whole
+    # syndicated article may mention unrelated past/future financial dates.
     clauses=re.split(r"[\n;。!?]+",blob)
     selected=[]
     for clause in clauses:
         cs=clause.lower()
-        if any(k in cs for k in eta_words):
-            selected.append(clause)
+        for word in eta_words:
+            start=0
+            while True:
+                pos=cs.find(word,start)
+                if pos<0:
+                    break
+                selected.append(clause[max(0,pos-25):min(len(clause),pos+110)])
+                start=pos+len(word)
     if not selected:
         return None
     info=_month_and_day(" ".join(selected),published)
