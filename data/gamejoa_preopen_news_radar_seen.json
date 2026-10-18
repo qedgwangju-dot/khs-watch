@@ -5218,6 +5218,29 @@
       "telegram_core_fact": "반도체 호황으로 삼성전자와 SK하이닉스의 직원들이 수억원대 성과급을 받을 것으로 예상되지만, 이런 성과급이 소비 진작으로 이어지는 효과는 크지 않을 것이라는 분석이 나왔다.",
       "title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”"
     },
+    "core:142054586f2daba66aef7cd4": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828801",
+      "source": "뉴시스",
+      "source_body_digest": "5917b60dcd1ff962928332ec16eda09572a4dd402c6c9be3a783d3a0e6638929",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0f4f16eea0ec65264502ebbd5eee027f87989666af3764d0c484d8ec24d87d7",
+      "source_fact_keys": [
+        "source_fact:v1:1a2809742cf2596db23e46a94fbd4a6e9c337700809075a312d966a4ef68f7ad",
+        "source_fact:v1:60f6539d8e8ea4396016eab4229281addb42e60c4b882b2faae07bf0734f2fd7",
+        "source_fact:v1:c1598d91db536c217b18735e2c7595aa04d65fe5d49dd1978d802f7341bdd78c",
+        "source_fact:v1:dc8e872add32094f94c5e9fd66e6c9e7078c8a6fbccd0ee583bd6bd9bfb7a4a5"
+      ],
+      "source_published_kst": "2026-10-19T00:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 투자가 중단될 경우 미국 경제가 침체에 빠질 수 있다는 경고가 나왔다.",
+      "title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고"
+    },
     "core:1421d611ccc41c39e9d7bf71": {
       "first_seen_kst": "2026-10-18T12:31:06+09:00",
       "lanes": {
@@ -38649,6 +38672,34 @@
       "telegram_core_fact": "프루프포인트는 15일(현지시간) 전액 현금 거래 방식의 베로니스 인수 계약을 체결했다고 밝혔다. 사이버보안 기업 프루프포인트가 데이터 보안 전문기업 베로니스를 약 63억달러(약 8조4000억원)에 인수한다.",
       "title": "프루프포인트, 데이터·AI 보안기업 베로니스 8.4조원에 인수"
     },
+    "core:97938d238d7277f98aec5a43": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
+    },
     "core:979c2cac4e7b6d858f7a5509": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
       "lanes": {
@@ -51127,6 +51178,28 @@
       "source_title": "가온전선, 미국 원전용 케이블 시장 진출…북미 사업 확대 | 연합뉴스",
       "telegram_core_fact": "가온전선이 미국 원전용 케이블 시장에 진출하며 북미 전력 인프라 사업을 확대한다. 가온전선은 미국 생산법인 LSCUS가 노스캐롤라이나주 타보로 공장에 원전용 케이블 생산설비를 구축할 계획이라고 12일 밝혔다.",
       "title": "가온전선, 미국 원전용 케이블 시장 진출…북미 사업 확대 | 연합뉴스"
+    },
+    "core:c987d235b015ae84d0df2253": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825089",
+      "source": "뉴시스",
+      "source_body_digest": "6664d431b68cf771f18f89629231fa2014e07295620a51c80f739a94ad8c6cc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a0781ef638988f63436a86390c844db764d8670b8624ca9fc890aa277eb5d0",
+      "source_fact_keys": [
+        "source_fact:v1:8ccbabcfb0b08f86fab5fd78a6467c354efcfec2d7237a4d88445379f9311d11",
+        "source_fact:v1:b8aac1ab2387546d87d5a43e7f038267d837635f09f4922a417e38c2512f3be4",
+        "source_fact:v1:f4c057206a048862b32f401f6d79d1c9c72e39b57dd1df88d25fbce5398ce727"
+      ],
+      "source_published_kst": "2026-10-19T00:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은",
+      "telegram_core_fact": "두 기업은 올해 초 AI를 활용한 신약 개발에 각각 10억 달러를 투자하겠다는 공동 계획을 발표했다. 글로벌 빅테크 기업들이 인공지능(AI)을 앞세워 제약·바이오 시장에 진출하면서 국내 바이오 기업들의 해외 기술 협력 기회가 늘어날 것이라는 전망이 나왔다.",
+      "title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은"
     },
     "core:c98a12df05481f1169021c74": {
       "first_seen_kst": "2026-10-17T01:51:48+09:00",
@@ -78480,6 +78553,28 @@
       "telegram_core_fact": "이달 들어 21조원 가까이 순매도하며 증시 폭락을 이끈 외국인 투자자들이 SK하이닉스와 삼성전자를 집중 매도한 반면 일부 반도체 기판·후공정·장비 등 공급망 관련주는 사모은 것으로 나타났다.",
       "title": "이달 21조 던진 외국인…삼전·닉스 팔았지만 반도체 공급망은 샀다"
     },
+    "event:d9dd1c9b93405b66406e492f": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825089",
+      "source": "뉴시스",
+      "source_body_digest": "6664d431b68cf771f18f89629231fa2014e07295620a51c80f739a94ad8c6cc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a0781ef638988f63436a86390c844db764d8670b8624ca9fc890aa277eb5d0",
+      "source_fact_keys": [
+        "source_fact:v1:8ccbabcfb0b08f86fab5fd78a6467c354efcfec2d7237a4d88445379f9311d11",
+        "source_fact:v1:b8aac1ab2387546d87d5a43e7f038267d837635f09f4922a417e38c2512f3be4",
+        "source_fact:v1:f4c057206a048862b32f401f6d79d1c9c72e39b57dd1df88d25fbce5398ce727"
+      ],
+      "source_published_kst": "2026-10-19T00:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은",
+      "telegram_core_fact": "두 기업은 올해 초 AI를 활용한 신약 개발에 각각 10억 달러를 투자하겠다는 공동 계획을 발표했다. 글로벌 빅테크 기업들이 인공지능(AI)을 앞세워 제약·바이오 시장에 진출하면서 국내 바이오 기업들의 해외 기술 협력 기회가 늘어날 것이라는 전망이 나왔다.",
+      "title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은"
+    },
     "event:d9f68e9c742b0457f3d6101b": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -78710,6 +78805,34 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812443",
       "source": "뉴시스",
       "title": "호르무즈 원유 수송 회복에도…유가 100달러·美금리 고공행진"
+    },
+    "event:dd480e9f85b8db1d6cd66c57": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
     },
     "event:dd5adac256182ab8506f3e92": {
       "first_seen_kst": "2026-10-04T06:52:27+09:00",
@@ -120009,6 +120132,29 @@
       "telegram_core_fact": "이재명 대통령은 11일 \"지난 3년간의 서울·수도권 인허가 공백 때문에 주택 공급에 일부 차질이 발생했지만, 조만간 주택 공급이 정상화된다\"고 밝혔다.",
       "title": "李대통령 \"2022년 대선 이후 차질 빚은 주택공급 조만간 정상화\" | 연합뉴스"
     },
+    "fact:85cec1d8cdaa83cdc09a7dd3": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828801",
+      "source": "뉴시스",
+      "source_body_digest": "5917b60dcd1ff962928332ec16eda09572a4dd402c6c9be3a783d3a0e6638929",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0f4f16eea0ec65264502ebbd5eee027f87989666af3764d0c484d8ec24d87d7",
+      "source_fact_keys": [
+        "source_fact:v1:1a2809742cf2596db23e46a94fbd4a6e9c337700809075a312d966a4ef68f7ad",
+        "source_fact:v1:60f6539d8e8ea4396016eab4229281addb42e60c4b882b2faae07bf0734f2fd7",
+        "source_fact:v1:c1598d91db536c217b18735e2c7595aa04d65fe5d49dd1978d802f7341bdd78c",
+        "source_fact:v1:dc8e872add32094f94c5e9fd66e6c9e7078c8a6fbccd0ee583bd6bd9bfb7a4a5"
+      ],
+      "source_published_kst": "2026-10-19T00:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 투자가 중단될 경우 미국 경제가 침체에 빠질 수 있다는 경고가 나왔다.",
+      "title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고"
+    },
     "fact:85d38b90520a982a866208db": {
       "first_seen_kst": "2026-10-13T09:41:33+09:00",
       "lanes": {
@@ -130631,6 +130777,34 @@
       "source_title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\"",
       "telegram_core_fact": "유철종 전문위원 = 일본 방위성이 우크라이나 방산업체 '스카이폴'(SkyFall)이 생산하는 요격 드론 구매 계약을 체결하고 신속한 도입을 추진 중인 것으로 전해졌다.",
       "title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\""
+    },
+    "fact:a8d8b7062eb783eaf978db14": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
     },
     "fact:a8efd948396cbc36e3ab206a": {
       "first_seen_kst": "2026-10-16T15:46:25+09:00",
@@ -157008,6 +157182,28 @@
       "source_published_kst": "2026-10-07T15:35+09:00",
       "title": "HD건설기계, 북미 AI 데이터센터에 전력 공급…3900억 계약 체결"
     },
+    "fact:fd3f78f8c5d47ffaebe92d13": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825089",
+      "source": "뉴시스",
+      "source_body_digest": "6664d431b68cf771f18f89629231fa2014e07295620a51c80f739a94ad8c6cc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a0781ef638988f63436a86390c844db764d8670b8624ca9fc890aa277eb5d0",
+      "source_fact_keys": [
+        "source_fact:v1:8ccbabcfb0b08f86fab5fd78a6467c354efcfec2d7237a4d88445379f9311d11",
+        "source_fact:v1:b8aac1ab2387546d87d5a43e7f038267d837635f09f4922a417e38c2512f3be4",
+        "source_fact:v1:f4c057206a048862b32f401f6d79d1c9c72e39b57dd1df88d25fbce5398ce727"
+      ],
+      "source_published_kst": "2026-10-19T00:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은",
+      "telegram_core_fact": "두 기업은 올해 초 AI를 활용한 신약 개발에 각각 10억 달러를 투자하겠다는 공동 계획을 발표했다. 글로벌 빅테크 기업들이 인공지능(AI)을 앞세워 제약·바이오 시장에 진출하면서 국내 바이오 기업들의 해외 기술 협력 기회가 늘어날 것이라는 전망이 나왔다.",
+      "title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은"
+    },
     "fact:fd4547af46d2611428082ce7": {
       "first_seen_kst": "2026-10-16T21:38:15+09:00",
       "lanes": {
@@ -164252,6 +164448,28 @@
       "source_title": "EU 집행위원장, \"전쟁 멈추면 모를까 러시아 제재 해제는 없어\"",
       "telegram_core_fact": "유럽연합(EU)은 미국 도널드 트럼프 대통령의 요청에도 러시아에 대한 경제 제재를 러시아가 전쟁을 중지하지 않는 한 결코 풀지 않을 것이라고 EU 집행위원장이 확고하게 말했다.",
       "title": "EU 집행위원장, \"전쟁 멈추면 모를까 러시아 제재 해제는 없어\""
+    },
+    "link:0ef9b6b4bcc09f2b7417266f": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825089",
+      "source": "뉴시스",
+      "source_body_digest": "6664d431b68cf771f18f89629231fa2014e07295620a51c80f739a94ad8c6cc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a0781ef638988f63436a86390c844db764d8670b8624ca9fc890aa277eb5d0",
+      "source_fact_keys": [
+        "source_fact:v1:8ccbabcfb0b08f86fab5fd78a6467c354efcfec2d7237a4d88445379f9311d11",
+        "source_fact:v1:b8aac1ab2387546d87d5a43e7f038267d837635f09f4922a417e38c2512f3be4",
+        "source_fact:v1:f4c057206a048862b32f401f6d79d1c9c72e39b57dd1df88d25fbce5398ce727"
+      ],
+      "source_published_kst": "2026-10-19T00:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은",
+      "telegram_core_fact": "두 기업은 올해 초 AI를 활용한 신약 개발에 각각 10억 달러를 투자하겠다는 공동 계획을 발표했다. 글로벌 빅테크 기업들이 인공지능(AI)을 앞세워 제약·바이오 시장에 진출하면서 국내 바이오 기업들의 해외 기술 협력 기회가 늘어날 것이라는 전망이 나왔다.",
+      "title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은"
     },
     "link:0f08d5e0610e377b62cf42e9": {
       "first_seen_kst": "2026-10-16T18:07:43+09:00",
@@ -215207,6 +215425,34 @@
       "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
       "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
     },
+    "link:8f7b467950d2a8379f8fa423": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
+    },
     "link:8f81dce616c455f2ab4f89b3": {
       "first_seen_kst": "2026-10-12T22:29:29+09:00",
       "lanes": {
@@ -248984,6 +249230,29 @@
       "source_published_kst": "2026-10-05T22:22+09:00",
       "title": "LG전자, 북미서 5GW AIDC 냉각 설루션 장기 공급 계약 따냈다"
     },
+    "link:e2e357b885669c3d4f8842c4": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828801",
+      "source": "뉴시스",
+      "source_body_digest": "5917b60dcd1ff962928332ec16eda09572a4dd402c6c9be3a783d3a0e6638929",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0f4f16eea0ec65264502ebbd5eee027f87989666af3764d0c484d8ec24d87d7",
+      "source_fact_keys": [
+        "source_fact:v1:1a2809742cf2596db23e46a94fbd4a6e9c337700809075a312d966a4ef68f7ad",
+        "source_fact:v1:60f6539d8e8ea4396016eab4229281addb42e60c4b882b2faae07bf0734f2fd7",
+        "source_fact:v1:c1598d91db536c217b18735e2c7595aa04d65fe5d49dd1978d802f7341bdd78c",
+        "source_fact:v1:dc8e872add32094f94c5e9fd66e6c9e7078c8a6fbccd0ee583bd6bd9bfb7a4a5"
+      ],
+      "source_published_kst": "2026-10-19T00:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 투자가 중단될 경우 미국 경제가 침체에 빠질 수 있다는 경고가 나왔다.",
+      "title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고"
+    },
     "link:e2e8546c236ffa24df683d55": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -264986,6 +265255,29 @@
       "source_title": "시지메드텍, 코오롱제약과 hECM 사업 첫 상업생산 돌입…10~11월 첫 납품",
       "telegram_core_fact": "양사 계약에 따른 첫 납품은 10~11월이 목표다.",
       "title": "시지메드텍, 코오롱제약과 hECM 사업 첫 상업생산 돌입…10~11월 첫 납품"
+    },
+    "original:0b25546ca425f1ef9fb31793": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828801",
+      "source": "뉴시스",
+      "source_body_digest": "5917b60dcd1ff962928332ec16eda09572a4dd402c6c9be3a783d3a0e6638929",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0f4f16eea0ec65264502ebbd5eee027f87989666af3764d0c484d8ec24d87d7",
+      "source_fact_keys": [
+        "source_fact:v1:1a2809742cf2596db23e46a94fbd4a6e9c337700809075a312d966a4ef68f7ad",
+        "source_fact:v1:60f6539d8e8ea4396016eab4229281addb42e60c4b882b2faae07bf0734f2fd7",
+        "source_fact:v1:c1598d91db536c217b18735e2c7595aa04d65fe5d49dd1978d802f7341bdd78c",
+        "source_fact:v1:dc8e872add32094f94c5e9fd66e6c9e7078c8a6fbccd0ee583bd6bd9bfb7a4a5"
+      ],
+      "source_published_kst": "2026-10-19T00:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 투자가 중단될 경우 미국 경제가 침체에 빠질 수 있다는 경고가 나왔다.",
+      "title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고"
     },
     "original:0b3a5ebdde0c6ce55b8f7b68": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -292168,6 +292460,28 @@
       "telegram_core_fact": "펜스케오토모티브그룹(PAG)이 최대주주인 펜스케코퍼레이션, 미쓰이물산과 기업가치 약 163억 달러 비상장 전환(Going Private) 합병 계약을 체결하고, 소액주주에게 주당 212달러를 현금으로 지급하기로 했다고 15일 발표했다.",
       "title": "펜스케오토모티브그룹, 비상장 전환 추진..주당 212달러 현금인수"
     },
+    "original:4f0a50b0f72e87b39318d103": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825089",
+      "source": "뉴시스",
+      "source_body_digest": "6664d431b68cf771f18f89629231fa2014e07295620a51c80f739a94ad8c6cc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a0781ef638988f63436a86390c844db764d8670b8624ca9fc890aa277eb5d0",
+      "source_fact_keys": [
+        "source_fact:v1:8ccbabcfb0b08f86fab5fd78a6467c354efcfec2d7237a4d88445379f9311d11",
+        "source_fact:v1:b8aac1ab2387546d87d5a43e7f038267d837635f09f4922a417e38c2512f3be4",
+        "source_fact:v1:f4c057206a048862b32f401f6d79d1c9c72e39b57dd1df88d25fbce5398ce727"
+      ],
+      "source_published_kst": "2026-10-19T00:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은",
+      "telegram_core_fact": "두 기업은 올해 초 AI를 활용한 신약 개발에 각각 10억 달러를 투자하겠다는 공동 계획을 발표했다. 글로벌 빅테크 기업들이 인공지능(AI)을 앞세워 제약·바이오 시장에 진출하면서 국내 바이오 기업들의 해외 기술 협력 기회가 늘어날 것이라는 전망이 나왔다.",
+      "title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은"
+    },
     "original:4f201c835aacc882b9dff716": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
@@ -302216,6 +302530,34 @@
       ],
       "source_published_kst": "2026-10-07T08:53+09:00",
       "title": "LS에코에너지, AI 데이터센터용 버스덕트 설비 투자…생산능력 2배 늘린다"
+    },
+    "original:698d58435f1baac819d82723": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
     },
     "original:69a7fbf2ec12f1fc918a8123": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
@@ -386476,6 +386818,34 @@
       "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
       "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
     },
+    "source_fact:10af99955dc3dd78808c3ecd": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
+    },
     "source_fact:10b1313cdc2ab988d65e2f0a": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -437069,6 +437439,29 @@
       "telegram_core_fact": "중국 경제매체 차이롄서에 따르면 중국 재정부는 전일 일부 제품의 수출 세금환급 정책을 조정하는 공고를 발표했다.",
       "title": "中, 전기차 수출 세금환급 축소…해외 생산 가속화"
     },
+    "source_fact:30dad9217881764aa8956690": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828801",
+      "source": "뉴시스",
+      "source_body_digest": "5917b60dcd1ff962928332ec16eda09572a4dd402c6c9be3a783d3a0e6638929",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0f4f16eea0ec65264502ebbd5eee027f87989666af3764d0c484d8ec24d87d7",
+      "source_fact_keys": [
+        "source_fact:v1:1a2809742cf2596db23e46a94fbd4a6e9c337700809075a312d966a4ef68f7ad",
+        "source_fact:v1:60f6539d8e8ea4396016eab4229281addb42e60c4b882b2faae07bf0734f2fd7",
+        "source_fact:v1:c1598d91db536c217b18735e2c7595aa04d65fe5d49dd1978d802f7341bdd78c",
+        "source_fact:v1:dc8e872add32094f94c5e9fd66e6c9e7078c8a6fbccd0ee583bd6bd9bfb7a4a5"
+      ],
+      "source_published_kst": "2026-10-19T00:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 투자가 중단될 경우 미국 경제가 침체에 빠질 수 있다는 경고가 나왔다.",
+      "title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고"
+    },
     "source_fact:30dbfac67d75b7301495d83f": {
       "first_seen_kst": "2026-10-15T07:35:02+09:00",
       "lanes": {
@@ -448091,6 +448484,29 @@
       "source_title": "리오틴토, 3분기 구리 20만5000t 보합..오유톨고이 27%↑",
       "telegram_core_fact": "리오틴토(RIO)는 3분기 연결 기준 구리 생산량이 20만5000t으로 전년 동기와 같은 수준을 유지했고, 오유톨고이 구리 생산량은 전년비 27% 늘었으며 전 세계 철광석 판매량은 9080만t으로 3% 증가했다고 14일(현지시간) 발표했다.",
       "title": "리오틴토, 3분기 구리 20만5000t 보합..오유톨고이 27%↑"
+    },
+    "source_fact:38420b78cc076fafa14be6e4": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828801",
+      "source": "뉴시스",
+      "source_body_digest": "5917b60dcd1ff962928332ec16eda09572a4dd402c6c9be3a783d3a0e6638929",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0f4f16eea0ec65264502ebbd5eee027f87989666af3764d0c484d8ec24d87d7",
+      "source_fact_keys": [
+        "source_fact:v1:1a2809742cf2596db23e46a94fbd4a6e9c337700809075a312d966a4ef68f7ad",
+        "source_fact:v1:60f6539d8e8ea4396016eab4229281addb42e60c4b882b2faae07bf0734f2fd7",
+        "source_fact:v1:c1598d91db536c217b18735e2c7595aa04d65fe5d49dd1978d802f7341bdd78c",
+        "source_fact:v1:dc8e872add32094f94c5e9fd66e6c9e7078c8a6fbccd0ee583bd6bd9bfb7a4a5"
+      ],
+      "source_published_kst": "2026-10-19T00:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 투자가 중단될 경우 미국 경제가 침체에 빠질 수 있다는 경고가 나왔다.",
+      "title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고"
     },
     "source_fact:3843dbf2d9c33e27e4e62534": {
       "first_seen_kst": "2026-10-18T20:38:08+09:00",
@@ -465839,6 +466255,34 @@
       "source_title": "DHT 홀딩스, 3분기 TCE 일 14만달러·4분기 현물 51만달러 예약",
       "telegram_core_fact": "DHT 홀딩스(DHT)는 3분기 선단 전체 시간용선 등가(TCE) 수익이 하루 평균 14만1300달러로 추정되며, 4분기 현재까지 예약된 현물(스폿) 운항일의 평균 운임이 하루 50만9100달러에 달한다고 13일 발표했다.",
       "title": "DHT 홀딩스, 3분기 TCE 일 14만달러·4분기 현물 51만달러 예약"
+    },
+    "source_fact:43a4a8cbce5823e1714f9b98": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
     },
     "source_fact:43a882c1e5c9f6963faaaa41": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -493340,6 +493784,29 @@
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
+    "source_fact:54e82aec64e3ef5298543303": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828801",
+      "source": "뉴시스",
+      "source_body_digest": "5917b60dcd1ff962928332ec16eda09572a4dd402c6c9be3a783d3a0e6638929",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0f4f16eea0ec65264502ebbd5eee027f87989666af3764d0c484d8ec24d87d7",
+      "source_fact_keys": [
+        "source_fact:v1:1a2809742cf2596db23e46a94fbd4a6e9c337700809075a312d966a4ef68f7ad",
+        "source_fact:v1:60f6539d8e8ea4396016eab4229281addb42e60c4b882b2faae07bf0734f2fd7",
+        "source_fact:v1:c1598d91db536c217b18735e2c7595aa04d65fe5d49dd1978d802f7341bdd78c",
+        "source_fact:v1:dc8e872add32094f94c5e9fd66e6c9e7078c8a6fbccd0ee583bd6bd9bfb7a4a5"
+      ],
+      "source_published_kst": "2026-10-19T00:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 투자가 중단될 경우 미국 경제가 침체에 빠질 수 있다는 경고가 나왔다.",
+      "title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고"
+    },
     "source_fact:54f75b630c0ebe7de26f3e03": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
       "lanes": {
@@ -518873,6 +519340,28 @@
       "source_title": "경기도 양식어가 42곳에 유용미생물 2만6680리터… 확대 필요 4.9점",
       "telegram_core_fact": "연구소는 올해 4~9월 11개 시군 42개 양식어가에 유용미생물 2만6680L를 무상 공급했다.",
       "title": "경기도 양식어가 42곳에 유용미생물 2만6680리터… 확대 필요 4.9점"
+    },
+    "source_fact:6514f8f7b5fed995dac3dca0": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825089",
+      "source": "뉴시스",
+      "source_body_digest": "6664d431b68cf771f18f89629231fa2014e07295620a51c80f739a94ad8c6cc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a0781ef638988f63436a86390c844db764d8670b8624ca9fc890aa277eb5d0",
+      "source_fact_keys": [
+        "source_fact:v1:8ccbabcfb0b08f86fab5fd78a6467c354efcfec2d7237a4d88445379f9311d11",
+        "source_fact:v1:b8aac1ab2387546d87d5a43e7f038267d837635f09f4922a417e38c2512f3be4",
+        "source_fact:v1:f4c057206a048862b32f401f6d79d1c9c72e39b57dd1df88d25fbce5398ce727"
+      ],
+      "source_published_kst": "2026-10-19T00:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은",
+      "telegram_core_fact": "두 기업은 올해 초 AI를 활용한 신약 개발에 각각 10억 달러를 투자하겠다는 공동 계획을 발표했다. 글로벌 빅테크 기업들이 인공지능(AI)을 앞세워 제약·바이오 시장에 진출하면서 국내 바이오 기업들의 해외 기술 협력 기회가 늘어날 것이라는 전망이 나왔다.",
+      "title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은"
     },
     "source_fact:65170ca5d32b7e5bec7eb826": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
@@ -583853,6 +584342,34 @@
       "source_published_kst": "2026-10-06T11:22+09:00",
       "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
     },
+    "source_fact:8fde32ee13397125298dbb51": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
+    },
     "source_fact:8fe035582ebfeafb85b29785": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
@@ -600214,6 +600731,28 @@
       "source_title": "“삼전 쓸어담던 큰손 빠지니 폭락?”…‘자사주 매입 끝’ 증시, 누가 받치나",
       "telegram_core_fact": "금융감독원 전자공시시스템에 따르면 삼성전자는 전날 자기주식취득결과보고서를 제출하고 총 15조원 자사주 매입을 완료했다고 밝혔다.",
       "title": "“삼전 쓸어담던 큰손 빠지니 폭락?”…‘자사주 매입 끝’ 증시, 누가 받치나"
+    },
+    "source_fact:9ab2abe2ccc8b7d39d5998a3": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825089",
+      "source": "뉴시스",
+      "source_body_digest": "6664d431b68cf771f18f89629231fa2014e07295620a51c80f739a94ad8c6cc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a0781ef638988f63436a86390c844db764d8670b8624ca9fc890aa277eb5d0",
+      "source_fact_keys": [
+        "source_fact:v1:8ccbabcfb0b08f86fab5fd78a6467c354efcfec2d7237a4d88445379f9311d11",
+        "source_fact:v1:b8aac1ab2387546d87d5a43e7f038267d837635f09f4922a417e38c2512f3be4",
+        "source_fact:v1:f4c057206a048862b32f401f6d79d1c9c72e39b57dd1df88d25fbce5398ce727"
+      ],
+      "source_published_kst": "2026-10-19T00:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은",
+      "telegram_core_fact": "두 기업은 올해 초 AI를 활용한 신약 개발에 각각 10억 달러를 투자하겠다는 공동 계획을 발표했다. 글로벌 빅테크 기업들이 인공지능(AI)을 앞세워 제약·바이오 시장에 진출하면서 국내 바이오 기업들의 해외 기술 협력 기회가 늘어날 것이라는 전망이 나왔다.",
+      "title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은"
     },
     "source_fact:9ab5bc9b8f91e71d3d15ee35": {
       "first_seen_kst": "2026-10-17T06:31:57+09:00",
@@ -651971,6 +652510,34 @@
       "telegram_core_fact": "사우디아라비아 주도 연합군이 예멘 수도 사나 등 친(親)이란 무장 세력 후티 본거지의 에너지 시설 등에 광범위한 공습을 가했다.",
       "title": "사우디 연합군, 후티 석유시설 공습…\"공항공격 대가 치를것\"(종합)"
     },
+    "source_fact:bbef73e41a9027fc280f84d2": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
+    },
     "source_fact:bbf4cc954fca137c3749f0ad": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
       "lanes": {
@@ -659272,6 +659839,34 @@
       "source_published_kst": "2026-10-07T13:37+09:00",
       "title": "대구·경북 제조업 생산 엇갈려…소비는 동반 감소"
     },
+    "source_fact:c102cd6dbf8e3d27c14fbf05": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
+    },
     "source_fact:c104ebe8f663131a3880a30f": {
       "first_seen_kst": "2026-10-14T18:12:32+09:00",
       "lanes": {
@@ -665821,6 +666416,29 @@
       "source_title": "美 이란 공격 우려·유조선 피격 확대에 국제유가 급등 | 연합뉴스",
       "telegram_core_fact": "유가는 장중 5% 넘게 급등했으나 트럼프 대통령이 오는 11월 중간선거 이전, 이란을 공격하지 않겠다고 밝히면서 상승 폭을 일부 반납했습니다.",
       "title": "美 이란 공격 우려·유조선 피격 확대에 국제유가 급등 | 연합뉴스"
+    },
+    "source_fact:c4ddab1e6c0d22ed0e57d6cb": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828801",
+      "source": "뉴시스",
+      "source_body_digest": "5917b60dcd1ff962928332ec16eda09572a4dd402c6c9be3a783d3a0e6638929",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0f4f16eea0ec65264502ebbd5eee027f87989666af3764d0c484d8ec24d87d7",
+      "source_fact_keys": [
+        "source_fact:v1:1a2809742cf2596db23e46a94fbd4a6e9c337700809075a312d966a4ef68f7ad",
+        "source_fact:v1:60f6539d8e8ea4396016eab4229281addb42e60c4b882b2faae07bf0734f2fd7",
+        "source_fact:v1:c1598d91db536c217b18735e2c7595aa04d65fe5d49dd1978d802f7341bdd78c",
+        "source_fact:v1:dc8e872add32094f94c5e9fd66e6c9e7078c8a6fbccd0ee583bd6bd9bfb7a4a5"
+      ],
+      "source_published_kst": "2026-10-19T00:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 투자가 중단될 경우 미국 경제가 침체에 빠질 수 있다는 경고가 나왔다.",
+      "title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고"
     },
     "source_fact:c4e2eb74c0e8fed79aebd2b0": {
       "first_seen_kst": "2026-10-18T17:16:37+09:00",
@@ -694767,6 +695385,34 @@
       "telegram_core_fact": "감정가가 50억8300만원으로 책정된 해당 아파트는 최저 입찰가가 32억원까지 떨어졌고, 최종적으로 40억2000만원에 낙찰됐다.",
       "title": "\"감정가 50억 아파트, 40억에 낙찰\"…전문가가 본 서울 부동산의 이상 징후"
     },
+    "source_fact:d7650ea4cfeb14760e6cb854": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
+    },
     "source_fact:d768a65172ddb830f2f44a46": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
       "lanes": {
@@ -703355,6 +704001,34 @@
       "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
       "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
       "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
+    },
+    "source_fact:dd35bea4ae9e8c05244ab179": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
     },
     "source_fact:dd37b9964b6c7d42316f35a0": {
       "first_seen_kst": "2026-10-15T11:11:30+09:00",
@@ -718237,6 +718911,28 @@
       ],
       "source_published_kst": "2026-10-04T22:38+09:00",
       "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
+    },
+    "source_fact:e6530ed886cd7022c49ab7a7": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825089",
+      "source": "뉴시스",
+      "source_body_digest": "6664d431b68cf771f18f89629231fa2014e07295620a51c80f739a94ad8c6cc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a0781ef638988f63436a86390c844db764d8670b8624ca9fc890aa277eb5d0",
+      "source_fact_keys": [
+        "source_fact:v1:8ccbabcfb0b08f86fab5fd78a6467c354efcfec2d7237a4d88445379f9311d11",
+        "source_fact:v1:b8aac1ab2387546d87d5a43e7f038267d837635f09f4922a417e38c2512f3be4",
+        "source_fact:v1:f4c057206a048862b32f401f6d79d1c9c72e39b57dd1df88d25fbce5398ce727"
+      ],
+      "source_published_kst": "2026-10-19T00:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은",
+      "telegram_core_fact": "두 기업은 올해 초 AI를 활용한 신약 개발에 각각 10억 달러를 투자하겠다는 공동 계획을 발표했다. 글로벌 빅테크 기업들이 인공지능(AI)을 앞세워 제약·바이오 시장에 진출하면서 국내 바이오 기업들의 해외 기술 협력 기회가 늘어날 것이라는 전망이 나왔다.",
+      "title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은"
     },
     "source_fact:e66537054e5dab8842958029": {
       "first_seen_kst": "2026-10-11T15:53:29+09:00",
@@ -733772,6 +734468,34 @@
       "source_title": "[데스크시각] 심텍의 ‘성장 변곡점’",
       "telegram_core_fact": "실적 반등, 한 단계 높은 성장을 기대하고 있다. 이런 배경에서 여의도 증권가에서는 내년 소캠2 매출이 2배 이상 증가할 것이란 전망을 내놓기도 했다.",
       "title": "[데스크시각] 심텍의 ‘성장 변곡점’"
+    },
+    "source_fact:f0a409b175f1e87be1841c12": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
     },
     "source_fact:f0aa29959e27b270f2669f97": {
       "first_seen_kst": "2026-10-17T05:57:10+09:00",
@@ -754401,6 +755125,34 @@
       "telegram_core_fact": "BI는 SK하이닉스 매출 중 솔리다임이 약 10%를 차지한다고 감안했을 때, 외부 투자자 지분이 10%가 되더라도 SK하이닉스의 주당순이익(EPS) 감소폭은 약 1%에 그칠 것으로 추정했다.",
       "title": "SK 솔리다임 美 상장 갑론을박…중복상장 우려 vs 투자확대 효과"
     },
+    "source_fact:feef92cfb0093872a3bf3eea": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
+    },
     "source_fact:fef03f31dbb08a8e98431612": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
       "lanes": {
@@ -760508,6 +761260,29 @@
       "source_title": "시지메드텍, 코오롱제약과 hECM 사업 첫 상업생산 돌입…10~11월 첫 납품",
       "telegram_core_fact": "양사 계약에 따른 첫 납품은 10~11월이 목표다.",
       "title": "시지메드텍, 코오롱제약과 hECM 사업 첫 상업생산 돌입…10~11월 첫 납품"
+    },
+    "title:0b25546ca425f1ef9fb31793": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828801",
+      "source": "뉴시스",
+      "source_body_digest": "5917b60dcd1ff962928332ec16eda09572a4dd402c6c9be3a783d3a0e6638929",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0f4f16eea0ec65264502ebbd5eee027f87989666af3764d0c484d8ec24d87d7",
+      "source_fact_keys": [
+        "source_fact:v1:1a2809742cf2596db23e46a94fbd4a6e9c337700809075a312d966a4ef68f7ad",
+        "source_fact:v1:60f6539d8e8ea4396016eab4229281addb42e60c4b882b2faae07bf0734f2fd7",
+        "source_fact:v1:c1598d91db536c217b18735e2c7595aa04d65fe5d49dd1978d802f7341bdd78c",
+        "source_fact:v1:dc8e872add32094f94c5e9fd66e6c9e7078c8a6fbccd0ee583bd6bd9bfb7a4a5"
+      ],
+      "source_published_kst": "2026-10-19T00:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 투자가 중단될 경우 미국 경제가 침체에 빠질 수 있다는 경고가 나왔다.",
+      "title": "\"데이터센터 멈추면 美 경기침체 온다”…블랙록 CEO의 경고"
     },
     "title:0b3a5ebdde0c6ce55b8f7b68": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -788204,6 +788979,28 @@
       "telegram_core_fact": "펜스케오토모티브그룹(PAG)이 최대주주인 펜스케코퍼레이션, 미쓰이물산과 기업가치 약 163억 달러 비상장 전환(Going Private) 합병 계약을 체결하고, 소액주주에게 주당 212달러를 현금으로 지급하기로 했다고 15일 발표했다.",
       "title": "펜스케오토모티브그룹, 비상장 전환 추진..주당 212달러 현금인수"
     },
+    "title:4f0a50b0f72e87b39318d103": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825089",
+      "source": "뉴시스",
+      "source_body_digest": "6664d431b68cf771f18f89629231fa2014e07295620a51c80f739a94ad8c6cc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a0781ef638988f63436a86390c844db764d8670b8624ca9fc890aa277eb5d0",
+      "source_fact_keys": [
+        "source_fact:v1:8ccbabcfb0b08f86fab5fd78a6467c354efcfec2d7237a4d88445379f9311d11",
+        "source_fact:v1:b8aac1ab2387546d87d5a43e7f038267d837635f09f4922a417e38c2512f3be4",
+        "source_fact:v1:f4c057206a048862b32f401f6d79d1c9c72e39b57dd1df88d25fbce5398ce727"
+      ],
+      "source_published_kst": "2026-10-19T00:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은",
+      "telegram_core_fact": "두 기업은 올해 초 AI를 활용한 신약 개발에 각각 10억 달러를 투자하겠다는 공동 계획을 발표했다. 글로벌 빅테크 기업들이 인공지능(AI)을 앞세워 제약·바이오 시장에 진출하면서 국내 바이오 기업들의 해외 기술 협력 기회가 늘어날 것이라는 전망이 나왔다.",
+      "title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은"
+    },
     "title:4f201c835aacc882b9dff716": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
@@ -798500,6 +799297,34 @@
       ],
       "source_published_kst": "2026-10-07T08:53+09:00",
       "title": "LS에코에너지, AI 데이터센터용 버스덕트 설비 투자…생산능력 2배 늘린다"
+    },
+    "title:698d58435f1baac819d82723": {
+      "first_seen_kst": "2026-10-19T00:10:36+09:00",
+      "lanes": {
+        "live": "2026-10-19T00:10:36+09:00"
+      },
+      "last_seen_kst": "2026-10-19T00:10:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823625",
+      "source": "뉴시스",
+      "source_body_digest": "e6d5977418f06726d25af036cc0d08927293335ec23f52c99694dba651fcebd1",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-19",
+      "source_fact_identity": "source_facts:v1:20fb8c263f6d1876116f4fdf9d67c563e05cc889738080fddffc2cdb2c3d6ed0",
+      "source_fact_keys": [
+        "source_fact:v1:2243f54f5037884894d4ff8f9bcc83c1863e47aff99a9982b17bb0bbcef17fc0",
+        "source_fact:v1:73ec341b5d94880890ad75c3355cb7552d4ee19fcdc719bf1f68eb6ccc46424b",
+        "source_fact:v1:7d9a0ab9b3da394d88050982f945dd004ae7dd5f867a125ca214a3caeeced65b",
+        "source_fact:v1:869eb11eb046148960f8e5b0e9d4248c6ac46fd175411120e0aca147125b27c4",
+        "source_fact:v1:99e529fed5a0e8dbd81b86bc77ec9d10adbd393706f5793158a8c2e632d3982a",
+        "source_fact:v1:d3ce1e7d62497f5e5d3711e9e3d001ae091a327a1908a0be2f327986cfcb2822",
+        "source_fact:v1:db3dd1368f275441617ae46610c8bbcffbc25c31f116a675fe2357c028f27343",
+        "source_fact:v1:ea83b48d12a674931751950f2f4bda8bca359a5f20abd7d8bd335928b41ee045",
+        "source_fact:v1:f5d9d4401b154a7e59322bdd007d4be40d0e72a0dec093a5b9eaad4b00b71cab"
+      ],
+      "source_published_kst": "2026-10-19T00:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
+      "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
+      "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
     },
     "title:69a7fbf2ec12f1fc918a8123": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
@@ -858212,5 +859037,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-18T22:53:47+09:00"
+  "updated_at_kst": "2026-10-19T00:10:36+09:00"
 }
