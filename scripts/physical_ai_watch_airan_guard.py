@@ -694,7 +694,9 @@ ESS_GENERIC_DEMAND_HEADLINE = re.compile(
     r'(?:ESS|BESS|에너지저장|배터리|battery).{0,38}'
     r'수요\s*(?:폭증|급증|폭발|확대|성장)|'
     r'수요\s*(?:폭증|급증|폭발|확대).{0,38}'
-    r'(?:ESS|BESS|에너지저장|배터리|battery)',
+    r'(?:ESS|BESS|에너지저장|배터리|battery)|'
+    r'전고체.{0,85}(?:잡는\s*자|시장.{0,18}(?:선점|경쟁)|'
+    r'기술.{0,18}경쟁|주도권.{0,18}경쟁|선점\s*경쟁\s*치열)',
     re.I,
 )
 ESS_CONCRETE_NEW_EVENT = re.compile(
