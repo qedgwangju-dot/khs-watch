@@ -107,5 +107,59 @@ class RubinUltraHBMOptionSetTests(unittest.TestCase):
         self.assertEqual(w.rubin_ultra_hbm_options_changes(old, dict(old)), [])
 
 
+    def test_rubin_news_refers_to_standard_rubin_not_ultra(self):
+        fact = w.RUBIN_SUPPLY_MEDIA_NEWS["standard_rubin_12hi_dominant"]
+        self.assertEqual(fact["product_scope"], "Rubin_HBM4_not_Rubin_Ultra")
+        self.assertTrue(fact["reported_12hi_majority"])
+        self.assertTrue(fact["reported_8hi_supplementary_request"])
+        self.assertFalse(fact["nvidia_official_final_spec"])
+        notice = w.rubin_supply_media_report_event("standard_rubin_12hi_dominant", fact)
+        self.assertIn("일반 Rubin",notice["headline_ko"])
+        self.assertTrue(any("Rubin Ultra" in p for p in notice["fact_bullets"]))
+        self.assertNotIn("NVIDIA 공식 최종 구성 확정",notice["verdict"])
+
+    def test_samsung_report_not_issuer_confirmed_contract(self):
+        fact=w.RUBIN_SUPPLY_MEDIA_NEWS["samsung_nvhbm_tsmc_3nm_selection"]
+        self.assertTrue(fact["reported_tsmc_3nm_manufacturing_selection"])
+        self.assertFalse(fact["issuer_official_foundry_contract_confirmed"])
+        self.assertFalse(fact["nvhbm_mass_production_confirmed"])
+        self.assertTrue(fact["samsung_standard_hbm4_4nm_inhouse_unchanged"])
+        notice=w.rubin_supply_media_report_event("samsung_nvhbm_tsmc_3nm_selection",fact)
+        self.assertIn("보도",notice["headline_ko"])
+        self.assertIn("en.sedaily.com",notice["direct_link"])
+        self.assertTrue(any("1곳" in p for p in notice["fact_bullets"]))
+
+    def test_editorial_report_is_not_manufacturer_official_foundry_upgrade(self):
+        f=w.RUBIN_SUPPLY_MEDIA_NEWS["samsung_nvhbm_tsmc_3nm_selection"]
+        fake={"vendor":"samsung","stage":"official_foundry_selection",
+              "evidence":"reported_source_only",
+              "source_url":f["source_url"],"product_scope":"nvhbm"}
+        original=__import__("copy").deepcopy(w.NVHBM_FOUNDRY_BASELINE)
+        got=w.merge_nvhbm_foundry_milestone(original,fake)
+        self.assertEqual(got,original)
+
+    def test_both_report_event_keys_are_distinct_and_stable(self):
+        news=w.RUBIN_SUPPLY_MEDIA_NEWS
+        n1=w.rubin_supply_media_report_event("standard_rubin_12hi_dominant",news["standard_rubin_12hi_dominant"])
+        n2=w.rubin_supply_media_report_event("samsung_nvhbm_tsmc_3nm_selection",news["samsung_nvhbm_tsmc_3nm_selection"])
+        self.assertNotEqual(n1["fact_key"],n2["fact_key"])
+        self.assertEqual(n1["fact_key"],w.rubin_supply_media_report_event("standard_rubin_12hi_dominant",news["standard_rubin_12hi_dominant"])["fact_key"])
+        with self.assertRaises(ValueError):
+            w.rubin_supply_media_report_event("unknown",{})
+
+    def test_initial_news_alert_preserves_independent_origin_and_links(self):
+        e=[w.rubin_supply_media_report_event(k,v) for k,v in w.RUBIN_SUPPLY_MEDIA_NEWS.items()]
+        rendered=w.build_alert(__import__("datetime").datetime(2026,10,18,20,30,0),e,{"rate":None})
+        self.assertIn("DIGITIMES",rendered)
+        self.assertIn("서울경제",rendered)
+        self.assertIn("3나노",rendered)
+        self.assertIn("8단",rendered)
+        self.assertIn("12단",rendered)
+        self.assertIn("미확정",rendered)
+        self.assertIn(w.RUBIN_SUPPLY_MEDIA_NEWS["standard_rubin_12hi_dominant"]["source_url"],rendered)
+        self.assertIn(w.RUBIN_SUPPLY_MEDIA_NEWS["samsung_nvhbm_tsmc_3nm_selection"]["source_url"],rendered)
+
+
+
 if __name__ == "__main__":
     unittest.main()

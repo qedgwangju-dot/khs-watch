@@ -126,6 +126,36 @@ SAMSUNG_HBM4E_THERMAL_BASELINE = {
     "as_of": "2026-10-02",
     "note": "40배는 장비업계의 장기 전망으로 저장하고 삼성 HBM4E 확정 로드맵으로 승격하지 않음. TSMC 공식 CoWoS 로드맵은 2028년 14배, 2029년 14배 초과이며 40배는 SoW-X 별도 구조.",
 }
+# Separate standard Rubin HBM4 8/12-high media signals from Rubin Ultra options.
+RUBIN_SUPPLY_MEDIA_TRACK_VERSION = 1
+RUBIN_SUPPLY_MEDIA_NEWS = {
+    "standard_rubin_12hi_dominant": {
+        "product_scope": "Rubin_HBM4_not_Rubin_Ultra",
+        "reported_12hi_majority": True,
+        "reported_8hi_supplementary_request": True,
+        "nvidia_official_12hi_majority_confirmed": False,
+        "nvidia_official_final_spec": False,
+        "source_family": "DIGITIMES",
+        "published_at_kst": "2026-10-15T09:32:00+08:00",
+        "source_url": "https://www.digitimes.com/news/a20261014VL224/nvidia-hbm4-rubin-hbm-dram.html",
+        "independent_source_count": 1,
+    },
+    "samsung_nvhbm_tsmc_3nm_selection": {
+        "product_scope": "NVIDIA_NVHBM_custom_HBM4E_base_die_not_standard_HBM4",
+        "reported_tsmc_3nm_manufacturing_selection": True,
+        "reported_samsung_foundry_2nm_alternative_validation": True,
+        "reported_nvidia_three_vendor_common_1c_request": True,
+        "issuer_official_foundry_contract_confirmed": False,
+        "issuer_official_customer_qualification_confirmed": False,
+        "nvhbm_mass_production_confirmed": False,
+        "samsung_standard_hbm4_4nm_inhouse_unchanged": True,
+        "source_family": "Seoul Economic Daily",
+        "published_at_kst": "2026-10-18T16:47:48+09:00",
+        "source_url": "https://en.sedaily.com/finance/2026/10/18/samsung-to-use-tsmc-for-base-die-in-nvidias-custom-hbm",
+        "source_original_url": "https://n.news.naver.com/article/011/0004672401?type=journalists",
+        "independent_source_count": 1,
+    },
+}
 RUBIN_ULTRA_HBM_OPTIONS_TRACK_VERSION = 2
 RUBIN_ULTRA_HBM_OPTIONS_BASELINE = {
     "stage": "reported_evaluation",
@@ -489,6 +519,7 @@ CATEGORY_KO = {
     "hbm4e_thermal_package": "삼성 HBM4E 발열·인터포저·패키징 병목",
     "rubin_shipments": "Rubin Ultra·NVL576 실제 출하",
     "rubin_hbm_option_set": "별도 알림 · Rubin Ultra HBM4/HBM4E 옵션 변화",
+    "rubin_supply_media_news": "일반 Rubin 12단 우세·삼성 NVHBM TSMC 위탁생산 업계 보도",
     "samsung_hbm4_price": "삼성전자 2027 HBM4 계약가격·협상력",
     "samsung_nextgen_hbm": "별도 알림 · 삼성 Custom HBM·HBM5·zHBM 맞춤형 로드맵",
     "nvhbm_architecture": "별도 알림 · NVIDIA NVHBM·Custom HBM 구조 전환",
@@ -1813,6 +1844,50 @@ def _rubin_preference_source_id(event: dict) -> str:
         if token in source:
             return label
     return ""
+
+
+
+def rubin_supply_media_report_event(kind: str, facts: dict) -> dict:
+    """One publisher's disclosed facts; never turn a press report into a foundry order."""
+    if kind not in RUBIN_SUPPLY_MEDIA_NEWS:
+        raise ValueError("unsupported report identity")
+    source = str(facts.get("source_family") or "")
+    url = str(facts.get("source_url") or "")
+    published = str(facts.get("published_at_kst") or "")
+    if kind == "standard_rubin_12hi_dominant":
+        title = "일반 Rubin HBM4 12단 주력 전망·8단 추가 공급 요청"
+        points = [
+            "• DIGITIMES 단독 업계 보도: Rubin에는 HBM4 12단이 주력으로 예상되며, 8단 공급 확대 요청 보도도 존재합니다.",
+            "• 적용 범위: 일반 Rubin HBM4입니다. Rubin Ultra의 HBM4E 후보군·적층 선택과 동일시하지 않습니다.",
+            "• 8단 요청은 12단 수요 소멸을 의미하지 않으며, 실제 제품별 발주량·평균판매단가는 미공개입니다.",
+            "• NVIDIA 공식 최종 구성·12단 비중: 미확정. 코어 다이 Gb 용량이 달라지면 적층 수만으로 GPU당 HBM GB를 결정할 수 없습니다.",
+        ]
+    else:
+        title = "삼성전자 NVHBM 베이스 다이 TSMC 3나노 채택 보도"
+        points = [
+            "• 10월 18일 서울경제 원보도: 삼성전자가 NVIDIA 맞춤형 NVHBM 베이스 다이에 TSMC 3나노 공정을 적용하기로 결정했다고 업계 관계자를 인용했습니다.",
+            "• 보도상 NVIDIA 요구: 삼성·SK하이닉스·마이크론에 TSMC 3나노 베이스 다이 및 1c 코어 다이 공통화 요청. 3사 개별 공식 계약으로 승격하지 않습니다.",
+            "• 삼성 파운드리 2나노 내부 대안 검증도 업계 보도이며, 실제 고객 인증·수율·양산 매출은 미확정입니다.",
+            "• 기존 표준 HBM4/HBM4E 자체 4나노 베이스 다이와 NVIDIA 맞춤형 NVHBM 외부 위탁생산을 구분합니다.",
+            "• 공급망 효과: 삼성 메모리 HBM 매출 확대 기회와 자체 파운드리 베이스 다이 물량 유출 가능성을 동시에 감시합니다.",
+            "• 원문 출처는 서울경제 1곳이며 영문 재게시·타 매체 재인용을 독립 확인 2곳으로 계산하지 않습니다.",
+            "• TSMC·삼성·NVIDIA 제조사 공식 계약·웨이퍼 발주·양산 공시: 미확인.",
+        ]
+    return {
+        "category": "rubin_supply_media_news",
+        "fact_key": "rubin_supply_media_" + kind + "_v1",
+        "headline_ko": title,
+        "fact_bullets": points,
+        "verification": "단일 원보도 · 제조사 공식 확인 전 · 제품별 범위 잠금",
+        "verdict": "확정 제조계약·양산·수율·고객 구매물량이 아닙니다. 후속 공식자료·발주·검수 확인 전에는 기대 수준으로만 해석합니다.",
+        "quality": "신뢰 전문매체 원보도(단일 출처)",
+        "origin_source": source,
+        "source": source,
+        "published_at_kst": published,
+        "direct_link": url,
+        "article_text": "",
+        "supply_media_facts": json.loads(json.dumps(facts)),
+    }
 
 
 def extract_rubin_ultra_hbm_options(event: dict) -> dict | None:
@@ -3605,7 +3680,7 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         grouped.setdefault(e["category"], []).append(e)
 
     n = 1
-    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "hbm_hybrid_bonding", "rubin_shipments", "rubin_hbm_option_set", "samsung_hbm4_price", "samsung_nextgen_hbm", "nvhbm_architecture", "hbm_2027_contract", "morgan_stanley_nvidia_hbm_margin", "jpm_hbm_structural", "micron_sca_visibility", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
+    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "hbm_hybrid_bonding", "rubin_shipments", "rubin_hbm_option_set", "rubin_supply_media_news", "samsung_hbm4_price", "samsung_nextgen_hbm", "nvhbm_architecture", "hbm_2027_contract", "morgan_stanley_nvidia_hbm_margin", "jpm_hbm_structural", "micron_sca_visibility", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
         group = grouped.get(category) or []
         if not group:
             continue
@@ -3619,6 +3694,8 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성 HBM4E 발열·패키징 병목 감시", ""]
         if category == "rubin_hbm_option_set" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 Rubin Ultra HBM4/HBM4E 옵션 감시", ""]
+        if category == "rubin_supply_media_news" and n > 1:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 Rubin·NVHBM 공급망 원보도 신규 변화", ""]
         if category == "samsung_hbm4_price" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성전자 2027 HBM4 계약가격·협상력 감시", ""]
         if category == "samsung_nextgen_hbm" and n > 1:
@@ -4310,6 +4387,21 @@ def main() -> None:
                     hbm_hybrid_bond_event(hybrid_state, [reason], vendor=vendor)
                 )
 
+    # Curated, independently readable publisher originals supplied in this
+    # conversation. This is a ONE-TIME attributed report notice, not a
+    # promotion to an issuer-confirmed foundry/customer/volume milestone.
+    media_version_before = int(state.get("rubin_supply_media_track_version") or 0)
+    media_state = json.loads(json.dumps(state.get("rubin_supply_media") or {}))
+    if media_version_before < RUBIN_SUPPLY_MEDIA_TRACK_VERSION:
+        for key, known in RUBIN_SUPPLY_MEDIA_NEWS.items():
+            if key not in media_state:
+                media_state[key] = json.loads(json.dumps(known))
+            if not first_run:
+                event = rubin_supply_media_report_event(key, media_state[key])
+                if event["fact_key"] not in seen_fact_keys:
+                    verified_events.append(event)
+        media_version_before = RUBIN_SUPPLY_MEDIA_TRACK_VERSION
+
     fx = fetch_fx()
     if fx.get("error"):
         errors.append(fx["error"])
@@ -4340,6 +4432,8 @@ def main() -> None:
         "nvhbm_architecture": nvhbm_state,
         "nvhbm_foundry_track_version": NVHBM_FOUNDRY_TRACK_VERSION,
         "nvhbm_foundry_strategy": foundry_state,
+        "rubin_supply_media_track_version": media_version_before,
+        "rubin_supply_media": media_state,
         "samsung_hbm4e_thermal_track_version": thermal_track_version,
         "samsung_hbm4e_thermal_package": thermal_state,
         "hbm_hybrid_bond_track_version": hybrid_version,
@@ -4385,6 +4479,7 @@ def main() -> None:
         f"- NVIDIA NVHBM/custom-HBM typed changes: {len(nvhbm_changes)}",
         f"- NVHBM foundry strategy initial: {str(foundry_initial).lower()}",
         f"- NVHBM foundry official milestones: {len(foundry_changes)}",
+        f"- Rubin/NVHBM dated publisher reports locked: {len(media_state)} / version {media_version_before}",
         f"- Samsung HBM4E thermal/package typed changes: {len(thermal_changes)}",
         f"- HBM hybrid bond reported-risk initial: {str(initial_hybrid_notice).lower()}",
         f"- HBM hybrid bond official milestones: {len(hybrid_changes)}",
