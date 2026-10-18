@@ -39,6 +39,9 @@ for _required in (
     "STOCK_218_CORRECTION =",
     "FLUENCE_VATTENFALL_RECOVERY =",
     "ROBOT_OCT16_PREFIX =",
+    "MICRON_EIM_RECOVERY =",
+    "def _micron_eim_recovery(",
+    "def _micron_eim_stage(",
     "ROBOT_OCT16_EVENTS =",
     "def _oct16_recovery(",
     "def _oct16_group(",
@@ -4179,5 +4182,142 @@ if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,25):
     assert '철회' in base.meaning(cc)
     assert watcher.qty._unknown_block('6~12개월 12개 제품이라고 오해') is None
     assert '새 계약' not in corrected[0].get('title','')
+
+
+# 64) Micron EIM edge-inference-memory R&D: 10/16 executive quote is a
+# new R&D lane, not a 2028 mass-production commitment or a Robot OEM order.
+micron_eim_report = make(
+    '마이크론 휴머노이드용 EIM 엣지 추론 메모리 LPDDR 개발',
+    '이철 마이크론 상무는 SEDEX 2026에서 EIM Edge Inference Memory 개발과 '
+    '주요 고객 요구사항 논의를 설명했다. 로봇용 LPDDR6를 논리 칩 위 적층한다. '
+    '2028년 하반기 양산은 회사 공식 일정이 아니라 업계 예상이다. '
+    '대역폭·지연시간·전력·수율·고객 양산 계약은 미공개다.',
+    '디일렉',
+)
+micron_eim_report['link'] = watcher.MICRON_EIM_SOURCE_URL
+eg, es, ec, ek = classify(micron_eim_report)
+assert eg == 'micron_eim_edge' and es >= 11, (eg, es, ec)
+assert ec == '마이크론 EIM · SEDEX 경영진 개발·고객 협의 보도', ec
+assert '2028년 하반기' in base.meaning(ec)
+assert '회사 공식 일정이 아닌 업계 예상' in base.meaning(ec)
+assert 'PIM' in base.meaning(ec) and 'HBM' in base.meaning(ec)
+assert '200억원' in base.meaning(ec)
+assert '휨' in base.risk(ec) and '검사 시간' in base.risk(ec)
+rendered_eim = micron_eim_report['title']+' '+micron_eim_report['description']
+assert base.category(rendered_eim,base.topic_group(rendered_eim)) == ec
+assert '회사 명의 EIM 시제품' in base.verification(micron_eim_report,eg,rendered_eim)
+
+eim_republished = dict(
+    micron_eim_report,
+    title='美光 Micron EIM Edge Inference Memory 로봇용 개발 협의',
+    description='마이크론 EIM Edge Inference Memory 논리 칩 위 LPDDR 적층 개발. '
+                '이철 상무 SEDEX에서 2028년 양산 예상 보도.',
+)
+dg, ds, dc, dk = classify(eim_republished)
+assert dg == eg and ds >= 11 and dk == ek, (dg,ds,dc,dk)
+
+# Only a source on Micron's own domain may raise the official evidence tier.
+eim_official_dev = make(
+    'Micron official EIM Edge Inference Memory robot LPDDR development announced',
+    'Micron officially confirms EIM edge inference memory research for humanoid '
+    'robots with LPDDR6 on a logic die.',
+    'Micron',
+)
+eim_official_dev['link'] = 'https://www.micron.com/about/press/eim-research-example'
+og, os, oc, ok = classify(eim_official_dev)
+assert og == eg and os >= 11 and ok != ek, (og,os,oc)
+assert oc == '마이크론 EIM · 개발 공식 확인', oc
+
+eim_official_spoof = dict(eim_official_dev,link='https://news.example.com/micron-eim')
+sg, ss, sc, sk = classify(eim_official_spoof)
+assert sg == eg and ss < 11, (sg,ss,sc)
+assert sk != ok
+
+eim_official_samples = make(
+    'Micron EIM robot LPDDR customer samples shipped',
+    'Micron EIM edge inference memory customer samples shipped for robot '
+    'manufacturer qualification and system validation.',
+    'Micron',
+)
+eim_official_samples['link'] = 'https://www.micron.com/about/press/eim-robot-samples-example'
+pg, ps, pc, pk = classify(eim_official_samples)
+assert pg == eg and ps >= 11 and pk not in {ek,ok}, (pg,ps,pc)
+assert pc == '마이크론 EIM · 고객 시제품 제공·검증', pc
+
+eim_official_sop = make(
+    'Micron EIM robot LPDDR mass production started',
+    'Micron EIM Edge Inference Memory LPDDR production started, '
+    'with commercial shipments begun for physical AI robots.',
+    'Micron',
+)
+eim_official_sop['link'] = 'https://www.micron.com/about/press/eim-started-example'
+rg, rs, rc, rk = classify(eim_official_sop)
+assert rg == eg and rs >= 11 and rk not in {ek,ok,pk}, (rg,rs,rc)
+assert rc == '마이크론 EIM · 실제 양산·상업 출하', rc
+
+eim_production_rumor = dict(eim_official_sop,source='익명 투자 블로그')
+bg, bs, bc, bk = classify(eim_production_rumor)
+assert bg == eg and bs < 11,(bg,bs,bc)
+
+eim_hbm_unrelated = make(
+    'Micron HBM market price rises amid AI datacenter shortage',
+    'Micron server HBM price rises; no EIM product development or humanoid '
+    'robot edge inference memory announcement.',
+    '반도체 테마 뉴스',
+)
+ug, us, uc, uk = classify(eim_hbm_unrelated)
+assert ug != 'micron_eim_edge' and us < 11,(ug,us,uc)
+
+# Do not turn technology parameters (1-2 billion weights; 200GB; 4TB)
+# into "12개 확인 물량" or phantom $ / KRW device pricing.
+assert watcher.qty._skip_quantity_enrichment(
+    '<b>1. 마이크론 EIM 로봇 메모리</b>\n'
+    '<b>분류</b>  마이크론 EIM · SEDEX 경영진 개발·고객 협의 보도\n'
+    'AI 모델 10억~20억 개 파라미터·200GB LPDDR·4TB 스토리지'
+)
+
+recovery = watcher.query_news(watcher.MICRON_EIM_RECOVERY)
+if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,24):
+    assert len(recovery)==1,recovery
+    news=recovery[0]
+    assert news['link'] == watcher.MICRON_EIM_SOURCE_URL
+    assert news['source'] == '디일렉' and news['published'] is None
+    eg2,es2,ec2,ek2 = classify(news)
+    assert eg2==eg and es2>=11 and ek2==ek,(eg2,es2,ec2,ek2)
+    assert base.category(news['title']+' '+news['description'],eg2)==ec
+    assert '2028년 하반기' in news['description']
+    assert '업계 예상' in news['description']
+    assert 'EIM 자체의 시제품' in news['description']
+    assert '카운터포인트리서치 전망' in news['description']
+
+saved_micron_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,25,0,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.MICRON_EIM_RECOVERY)==[],(
+        'dated 10/16 R&D report must not replay after 10/24 expiry'
+    )
+finally:
+    base.NOW=saved_micron_now
+
+# Broad political productivity rhetoric and technology-theme roundups
+# cannot become manufacturing, shipment or customer-order signals.
+musk_debt_comment=make(
+    'Elon Musk says AI and robots can fix national debt; DOGE failed',
+    'Axios Walter Isaacson podcast Elon Musk argues AI and robotics '
+    'productivity can solve the US national debt, no newly signed '
+    'Optimus robot supply order or production numbers.',
+    'Axios',
+)
+g,s,c,k=classify(musk_debt_comment)
+assert g!='micron_eim_edge' and s < 11,(g,s,c)
+
+generic_solidstate=make(
+    '전고체 배터리 잡는 자가 車·로봇·ESS 주도…시장 선점 경쟁 치열',
+    '삼성SDI·LG에너지솔루션·SK온 기존 로봇 배터리 샘플 개발과 '
+    '전고체 기술 경쟁을 설명하나 신규 계약·양산 발표는 없다.',
+    '국민일보',
+)
+g,s,c,k=classify(generic_solidstate)
+assert g!='micron_eim_edge' and s < 11,(g,s,c)
 
 print("Physical-AI watcher regression guards: PASS")
