@@ -59,10 +59,10 @@
   "last_scan_items": 21,
   "last_signal_count": 0,
   "last_alert": {
-    "at_kst": "2026-10-18T06:45:27+09:00",
-    "kind": "extension"
+    "at_kst": "2026-10-18T15:15:07+09:00",
+    "kind": "correction"
   },
-  "updated_at_kst": "2026-10-18T15:11:23+09:00",
+  "updated_at_kst": "2026-10-18T15:15:07+09:00",
   "errors": [],
   "market_sku_latest": {},
   "market_day_latest": {},
@@ -82,5 +82,7 @@
       "reported_month": "2027-08",
       "reason": "Unverified ETA outlier, not verified against publisher's delivery quote"
     }
-  ]
+  ],
+  "false_august_correction_sent": true,
+  "august_false_alert_corrected_at_kst": "2026-10-18T15:15:07+09:00"
 }
