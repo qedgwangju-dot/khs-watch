@@ -800,6 +800,24 @@ def material(item: dict) -> bool:
     ):
         return False
     # Corporate acquisition stage is NOT an AI cyber breach or a deployment.
+    # Cohere–AISLE LOI and CEO interviews belong to the policy/business watcher.
+    # Keep a genuinely new independently reported breach on the incident route.
+    merger_title = str(item.get("title") or "").lower()
+    if "cohere" in merger_text and re.search(r"\baisle\b", merger_text):
+        mna_headline = any(word in merger_title for word in (
+            "acquisition", "to acquire", "intends to buy", "to buy aisle",
+            "letter of intent", "signs loi", "takeover", "merger", "인수",
+        ))
+        acquisition_interview = (
+            "squawk on the street" in merger_text
+            and any(word in merger_text for word in ("acquisition", "to acquire", "letter of intent"))
+        )
+        real_new_incident = any(word in merger_title for word in (
+            "confirmed new breach", "new data breach", "active intrusion",
+            "actively exploited", "new data exfiltration", "confirmed credential theft",
+        ))
+        if (mna_headline or acquisition_interview) and not real_new_incident:
+            return False
     if "ionq" in merger_text and "elisity" in merger_text and any(
         word in merger_text for word in ("acquisition", "acquire", "all-stock transaction", "인수")
     ):
