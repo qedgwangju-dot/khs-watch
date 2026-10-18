@@ -268,6 +268,33 @@ class DuoPreorderTests(unittest.TestCase):
         self.assertTrue(merged["false_august_correction_sent"])
 
 
+
+    def test_same_macrumors_january25_article_after_correction_does_not_repeat(self):
+        row={
+            "title":"Apple Retail Staff Told to Warn Against iPhone Duo Walk-In Purchases",
+            "description":(
+                "iPhone Duo U.S. check back October 24 for pickup. "
+                "Last August production was very low. Within 30 minutes "
+                "all configurations in the U.S. store showed January 25 shipping estimates."
+            ),
+            "source":"MacRumors",
+            "link":"https://www.macrumors.com/2026/10/17/staff-warn-against-iphone-duo-walk-ins/",
+            "publisher_direct":True,
+            "published_at_kst":"2026-10-18T06:30:45+09:00",
+        }
+        state={
+            "initial_alert_sent":True,
+            "false_august_correction_sent":True,
+            "market_latest":{"미국":"2027-01"},
+            "market_day_latest":{},
+            "seen_ids":[],"seen_fact_keys":["미국:2027-01"],
+        }
+        changes,_=m._new_delivery_signals([row],state)
+        self.assertEqual(changes,[])
+        self.assertEqual(state["market_latest"]["미국"],"2027-01")
+        self.assertFalse(m._needs_august_correction(state))
+
+
 if __name__=="__main__":
     result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(DuoPreorderTests))
     if not result.wasSuccessful():
