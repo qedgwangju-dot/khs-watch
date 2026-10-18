@@ -249,6 +249,7 @@ jobs:
           path: |
             out/treasury_etf_flow_status.md
             out/treasury_etf_flow_telegram.txt
+            out/treasury_real_yield_validation.txt
             out/treasury_runtime_status.log
             data/treasury_etf_flow_state.json
           if-no-files-found: ignore
