@@ -140,26 +140,26 @@ class HBFStandardMilestoneTests(unittest.TestCase):
           'description':'2026년 10월 14일 SEDEX 2026 내년 1월 최종 규격 계획',
           'direct_link':'https://ir.newspiw.com/news/view/20261014000748','source':'뉴스핌',
           'published_at_kst':'2026-10-14T12:30:00+09:00'}
-        with unittest.mock.patch.object(m,'compact_fact_text',return_value='SK하이닉스 HBF 내년 1월 최종 규격 발표 예정'):
-            obs=w.hbf_signal(event)
+        with __import__('unittest.mock',fromlist=['patch']).patch.object(m,'compact_fact_text',return_value='SK하이닉스 HBF 내년 1월 최종 규격 발표 예정'):
+            obs=r.hbf_signal(event)
         self.assertEqual(obs['stage'],'final_spec_target')
         self.assertFalse(obs['official'])
-        self.assertEqual(w.hbf_stage_changes({'stage':'final_spec_target'},obs),[])
+        self.assertEqual(r.hbf_stage_changes({'stage':'final_spec_target'},obs),[])
 
     def test_hbf_issuer_final_spec_notifies_only_once(self):
         before={'stage':'final_spec_target'}
         new={'stage':'official_final_spec','official':True,'origin':'SK hynix',
              'source_url':'https://news.skhynix.com/en/hbf-final','observed_at':'2027-01-15'}
-        self.assertTrue(w.hbf_stage_changes(before,new))
-        self.assertEqual(w.hbf_stage_changes(new,new),[])
-        self.assertEqual(w.hbf_stage_changes(new,dict(new,stage='final_spec_target')),[])
+        self.assertTrue(r.hbf_stage_changes(before,new))
+        self.assertEqual(r.hbf_stage_changes(new,new),[])
+        self.assertEqual(r.hbf_stage_changes(new,dict(new,stage='final_spec_target')),[])
 
     def test_hbf_reporter_cannot_promote_mass_production(self):
-        self.assertEqual(w.hbf_stage_changes({'stage':'final_spec_target'},
+        self.assertEqual(r.hbf_stage_changes({'stage':'final_spec_target'},
                          {'stage':'mass_production','official':False}),[])
 
     def test_hbf_target_is_not_commercialized_output(self):
-        notice=w.hbf_stage_notice({'stage':'official_final_spec','official':True,
+        notice=r.hbf_stage_notice({'stage':'official_final_spec','official':True,
                  'origin':'SK hynix','source_url':'https://news.skhynix.com/en/hbf-final'},['공식 확정'])
         self.assertIn('512GB',str(notice))
         self.assertIn('양산',notice['verdict'])
