@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import datetime as dt
 import html
+import os
 import re
 
 import requests
@@ -722,3 +723,23 @@ app.send_exact = send_refinancing
 
 if __name__ == "__main__":
     app.main()
+    if os.getenv("TREASURY_REPORT_VALIDATE_ONLY", "").lower() in ("1", "true", "yes"):
+        raw_path = app.base.OUT / "treasury_etf_flow_telegram.txt"
+        if raw_path.exists():
+            raw_report = raw_path.read_text(encoding="utf-8")
+            final_report = _compact_report(raw_report)
+            # Validate actual final rendering, not only the unformatted feeder.
+            if "[실질금리·시장 내재 물가상승률]" not in final_report:
+                raise RuntimeError("real yield block missing from final report")
+            if "자료 보류:" in final_report or "자료 확인 불가:" in final_report:
+                raise RuntimeError("official real-yield feed did not produce a verified signal")
+            (app.base.OUT / "treasury_real_yield_validation.txt").write_text(
+                final_report + "\n", encoding="utf-8"
+            )
+            real_lines = final_report.split("[실질금리·시장 내재 물가상승률]", 1)[1].split("\n\n", 1)[0]
+            print(
+                "treasury_real_yield_validation=ok telegram_sent=false "
+                + real_lines.replace("\n", " | ")[:900]
+            )
+        else:
+            print("treasury_real_yield_validation=skipped feeder_report_unavailable")
