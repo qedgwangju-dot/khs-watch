@@ -352,6 +352,34 @@ jobs:
           }
           if material(acquisition):
               raise AssertionError("Security M&A was mislabeled as a security incident")
+          # Corporate LOIs and CNBC discussion must not create a duplicate breach
+          # alert; an independently confirmed new incident still must pass.
+          cohere_loi = {
+              "kind": "news",
+              "title": "Cohere and AISLE sign letter of intent to advance AI cyber defense",
+              "description": "Cohere proposes acquiring AISLE, not an actual cyber breach",
+              "source": "Cohere",
+              "url": "https://cohere.com/blog/cohere-and-aisle-sign-letter-of-intent-to-advance-cyber-resilient-sovereign-ai",
+          }
+          assert not material(cohere_loi), "Cohere-AISLE LOI replayed as incident"
+          cohere_cnbc = dict(
+              cohere_loi, source="CNBC",
+              title="OpenAI Hugging Face breach is a great example, says Cohere CEO",
+              description="Cohere CEO on Squawk on the Street discusses the AISLE acquisition and rogue agents",
+          )
+          assert not material(cohere_cnbc), "Cohere M&A interview replayed as incident"
+          cohere_signed = dict(
+              cohere_loi, title="Cohere signs definitive acquisition agreement with AISLE"
+          )
+          assert not material(cohere_signed), "Corporate signing became cyber breach"
+          cohere_incident = dict(
+              cohere_loi,
+              title="Cohere and AISLE report confirmed new breach involving AI agents",
+              description="Confirmed AI agent security incident with unauthorized access and credential theft",
+              source="Reuters",
+          )
+          assert material(cohere_incident), "Actual AI security incident lost in M&A exclusion"
+          print("ai_security_cohere_aisle_business_vs_incident=PASS")
           print("ai_security_insider_case_regression=PASS")
           PY
 
