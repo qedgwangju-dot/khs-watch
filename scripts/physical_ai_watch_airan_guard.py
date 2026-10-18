@@ -2051,7 +2051,9 @@ def _oct16_stage(group: str, text: str, source: str = '') -> str:
     if group == 'brils_us_localization':
         if source in ROBOT_OCT16_PRIMARY[group] and re.search(
             r'현지.{0,40}(?:조립|생산).{0,30}(?:가동|첫\s*출하|실제\s*생산\s*개시)|'
-            r'미국.{0,30}(?:생산\s*시작|첫\s*납품)|started\s*US\s*production',
+            r'미국.{0,30}(?:생산\s*(?:시작|개시)|첫\s*납품)|'
+            r'(?:미국|미시간).{0,45}(?:실제\s*)?(?:AMR.{0,12})?생산\s*(?:시작|개시|완료)|'
+            r'started\s*US\s*production',
             text,re.I
         ) and not re.search(r'예정|계획|추진|협의|논의',text,re.I):
             return 'official_us_production'
