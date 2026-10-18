@@ -7,6 +7,7 @@ on:
       - "scripts/qra_long_end_issuance.py"
       - "tests/test_qra_long_end_issuance.py"
       - "scripts/qra_recurring_state_commit.py"
+      - "scripts/qra_dealer_requested_bot_once.py"
       - "scripts/treasury_fiscal_plan_watch.py"
       - "scripts/treasury_fiscal_plan_state_commit.py"
       - "tests/test_treasury_fiscal_plan_watch.py"
@@ -41,6 +42,43 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+
+  requested_dealer_bot_once:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout existing QRA repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate existing QRA event and HTML links without sending
+        run: |
+          python -m py_compile scripts/qra_dealer_requested_bot_once.py
+          python -m unittest discover -s tests -p 'test_qra_long_end_issuance.py'
+      - name: Send once to explicitly requested Treasury bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          FALLBACK_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+        run: |
+          export TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-$FALLBACK_CHAT_ID}"
+          python scripts/qra_dealer_requested_bot_once.py
+      - name: Save confirmed event without disturbing QRA normal bot
+        if: success() && hashFiles('out/qra_requested_bot_dealer_confirmed.json') != ''
+        run: python scripts/qra_recurring_state_commit.py
+      - name: Retain requested-bot delivery proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: requested-treasury-dealer-bot-${{ github.run_id }}
+          path: out/qra_requested_bot_dealer_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
+
   monitor:
     runs-on: ubuntu-latest
     timeout-minutes: 10
