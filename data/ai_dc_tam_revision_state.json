@@ -29,7 +29,7 @@
     "agentic_cpu_per_gpu": 1.0
   },
   "baseline_source": "BofA Global Research 2차 공개보도 기준",
-  "updated_at_kst": "2026-10-18T16:15:38+09:00",
+  "updated_at_kst": "2026-10-18T16:57:39+09:00",
   "seen_ids": [
     "66d627057937a9e600c63eac",
     "08d5cbf40c85943b346ecc01",
@@ -41,9 +41,33 @@
     "9e0ff2dd6547bbf2f495031c",
     "d9f2bbc7e11214c2c27550bc"
   ],
+  "jpm_capex": {
+    "metrics": {
+      "as_of": "2026-10-13",
+      "source_grade": "JP모건 증권사 추정 · 리포트 원문 직접 미확인 · 2차 보도 2곳 이상 교차",
+      "top4_growth_2026_pct": 85.0,
+      "top4_prior_2026_pct": 80.0,
+      "top4_growth_2027_pct": 70.0,
+      "top4_prior_2027_pct": 50.0,
+      "top4_increment_2026_b_floor": 270.0,
+      "top4_increment_2027_b_floor": 400.0,
+      "na_planned_2026q2_gw_floor": 200.0,
+      "na_installed_2025_gw": 54.0,
+      "na_installed_2026_gw": 82.0,
+      "na_installed_2027_gw": 125.0,
+      "all_provider_capex_2026_b_approx": 800.0,
+      "all_provider_capex_2027_b_approx": 1500.0,
+      "tier2_capex_2026_b_floor": 200.0,
+      "tier2_capex_2027_b_floor": 370.0,
+      "top4_dc_capex_ocf_2026_pct": 80.0,
+      "top4_dc_capex_ocf_2027_pct": 111.0
+    },
+    "last_sent_event_id": "jpm-cloud-dc-2026-10-13-85-70-54-82-125",
+    "last_sent_at_kst": "2026-10-18T16:57:39+09:00"
+  },
   "fx": {
     "usdkrw": 1332.1,
-    "basis": "2026-10-16 일일 기준 · ECB/Frankfurter · 조회 2026-10-18 16:15 KST · 보조 API 2026-10-18 · 차이 0.20% · 일중 기준시각 차이 가능",
+    "basis": "2026-10-16 일일 기준 · ECB/Frankfurter · 조회 2026-10-18 16:57 KST · 보조 API 2026-10-18 · 차이 0.20% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "quality": "교차검증 일일 기준환율"
   },
