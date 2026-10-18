@@ -18398,6 +18398,27 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 디젤 수출 제한을 일시적으로 완화한 결정에 대한 미국 정치권의 비판이 확산하자 \"미국 국민을 위한 올바른 선택\"이라며 반박했다.",
       "title": "트럼프, 러시아산 디젤 제재 완화 비판에 \"미국 위한 올바른 선택\""
     },
+    "core:475a8b4d91250bae9b25d9a4": {
+      "first_seen_kst": "2026-10-18T12:55:00+09:00",
+      "lanes": {
+        "live": "2026-10-18T12:55:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T12:55:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830391",
+      "source": "뉴시스",
+      "source_body_digest": "e4a21faaf14866fd55f9f960dfd73178418ad94c7d1acfe1441f94a3a46d1d54",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:db87b8add59dc9ac240eea057192cef403ec544cfa69f057ae2fc8927fafdf40",
+      "source_fact_keys": [
+        "source_fact:v1:64d474d97b115ba020f618af5bdb9329926ae154ef72f2f89218fea4581ef374",
+        "source_fact:v1:abc9a0802bece8afa7d24ee797b9a75fca4d23bde3ba99b31fa3eecf9548e826"
+      ],
+      "source_published_kst": "2026-10-18T12:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명",
+      "telegram_core_fact": "협약에는 현지 인허가와 원주민 협정 체결, 시추장비 구매 등 과업을 완료한 뒤 연구비 잔금 50%를 지급하도록 명시됐으나 지난 2024년 7월 잔금 지급 당시 현지기업은 필수 인허가를 받지 못했고 원주민 협정도 체결하지 못한 상태였던 것으로 드러났다.",
+      "title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명"
+    },
     "core:476b2f7ed236667d7046196d": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
       "lanes": {
@@ -81829,6 +81850,27 @@
       "source_title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파",
       "telegram_core_fact": "8일(현지시간) 파이낸셜타임스를 비롯한 주요 외신들에 따르면 개발사인 오픈AI는 투자자들에게 연간 환산 매출이 500억 달러 수준으로 예상된다고 말했다.",
       "title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파"
+    },
+    "fact:06efba198a0f0f3f75186586": {
+      "first_seen_kst": "2026-10-18T12:55:00+09:00",
+      "lanes": {
+        "live": "2026-10-18T12:55:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T12:55:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830391",
+      "source": "뉴시스",
+      "source_body_digest": "e4a21faaf14866fd55f9f960dfd73178418ad94c7d1acfe1441f94a3a46d1d54",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:db87b8add59dc9ac240eea057192cef403ec544cfa69f057ae2fc8927fafdf40",
+      "source_fact_keys": [
+        "source_fact:v1:64d474d97b115ba020f618af5bdb9329926ae154ef72f2f89218fea4581ef374",
+        "source_fact:v1:abc9a0802bece8afa7d24ee797b9a75fca4d23bde3ba99b31fa3eecf9548e826"
+      ],
+      "source_published_kst": "2026-10-18T12:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명",
+      "telegram_core_fact": "협약에는 현지 인허가와 원주민 협정 체결, 시추장비 구매 등 과업을 완료한 뒤 연구비 잔금 50%를 지급하도록 명시됐으나 지난 2024년 7월 잔금 지급 당시 현지기업은 필수 인허가를 받지 못했고 원주민 협정도 체결하지 못한 상태였던 것으로 드러났다.",
+      "title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명"
     },
     "fact:070b889edf6d15e67bc9cd46": {
       "first_seen_kst": "2026-10-17T09:15:26+09:00",
@@ -191255,6 +191297,27 @@
       "telegram_core_fact": "경쟁사인 키옥시아와 샌디스크의 실적 흐름 등을 감안해 단순 추산하면 솔리다임의 올해 순이익은 14조~16조원, 2027년에는 20조원을 넘어설 가능성도 거론된다. 현지 투자 확대를 위한 IPO에서 LG전자가 보유지분 100% 중 15%를 구주 매출했다.",
       "title": "솔리다임, 누구를 위한 상장인가? …‘국민주식’ SK하이닉스 주주의 걱정 [홍길용의 화식열전](918회)"
     },
+    "link:5a4564dbd6a39e8bb71a831d": {
+      "first_seen_kst": "2026-10-18T12:55:00+09:00",
+      "lanes": {
+        "live": "2026-10-18T12:55:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T12:55:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830391",
+      "source": "뉴시스",
+      "source_body_digest": "e4a21faaf14866fd55f9f960dfd73178418ad94c7d1acfe1441f94a3a46d1d54",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:db87b8add59dc9ac240eea057192cef403ec544cfa69f057ae2fc8927fafdf40",
+      "source_fact_keys": [
+        "source_fact:v1:64d474d97b115ba020f618af5bdb9329926ae154ef72f2f89218fea4581ef374",
+        "source_fact:v1:abc9a0802bece8afa7d24ee797b9a75fca4d23bde3ba99b31fa3eecf9548e826"
+      ],
+      "source_published_kst": "2026-10-18T12:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명",
+      "telegram_core_fact": "협약에는 현지 인허가와 원주민 협정 체결, 시추장비 구매 등 과업을 완료한 뒤 연구비 잔금 50%를 지급하도록 명시됐으나 지난 2024년 7월 잔금 지급 당시 현지기업은 필수 인허가를 받지 못했고 원주민 협정도 체결하지 못한 상태였던 것으로 드러났다.",
+      "title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명"
+    },
     "link:5a46f7d29274f129126a74c5": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -264557,6 +264620,27 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "러 드론, 키이우 남부교 이틀새 4번 타격…차량'지하철 통행 끊겼다"
+    },
+    "original:145acaaf8e99f118cded7f25": {
+      "first_seen_kst": "2026-10-18T12:55:00+09:00",
+      "lanes": {
+        "live": "2026-10-18T12:55:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T12:55:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830391",
+      "source": "뉴시스",
+      "source_body_digest": "e4a21faaf14866fd55f9f960dfd73178418ad94c7d1acfe1441f94a3a46d1d54",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:db87b8add59dc9ac240eea057192cef403ec544cfa69f057ae2fc8927fafdf40",
+      "source_fact_keys": [
+        "source_fact:v1:64d474d97b115ba020f618af5bdb9329926ae154ef72f2f89218fea4581ef374",
+        "source_fact:v1:abc9a0802bece8afa7d24ee797b9a75fca4d23bde3ba99b31fa3eecf9548e826"
+      ],
+      "source_published_kst": "2026-10-18T12:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명",
+      "telegram_core_fact": "협약에는 현지 인허가와 원주민 협정 체결, 시추장비 구매 등 과업을 완료한 뒤 연구비 잔금 50%를 지급하도록 명시됐으나 지난 2024년 7월 잔금 지급 당시 현지기업은 필수 인허가를 받지 못했고 원주민 협정도 체결하지 못한 상태였던 것으로 드러났다.",
+      "title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명"
     },
     "original:1470ae0ea379f715a1ced8c7": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -581725,6 +581809,27 @@
       "telegram_core_fact": "조사 결과에 따르면 3분기 제조업의 시황(89) BSI가 전분기(90)와 비슷한 수준을 보였고 매출(87) BSI는 전분기(93) 대비 6포인트(p) 하락한 것으로 나타났다.",
       "title": "제조업 경기 3분기 '악화'…4분기 전망도 회복 기대감↓"
     },
+    "source_fact:9497c416e5f9b28e59334acb": {
+      "first_seen_kst": "2026-10-18T12:55:00+09:00",
+      "lanes": {
+        "live": "2026-10-18T12:55:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T12:55:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830391",
+      "source": "뉴시스",
+      "source_body_digest": "e4a21faaf14866fd55f9f960dfd73178418ad94c7d1acfe1441f94a3a46d1d54",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:db87b8add59dc9ac240eea057192cef403ec544cfa69f057ae2fc8927fafdf40",
+      "source_fact_keys": [
+        "source_fact:v1:64d474d97b115ba020f618af5bdb9329926ae154ef72f2f89218fea4581ef374",
+        "source_fact:v1:abc9a0802bece8afa7d24ee797b9a75fca4d23bde3ba99b31fa3eecf9548e826"
+      ],
+      "source_published_kst": "2026-10-18T12:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명",
+      "telegram_core_fact": "협약에는 현지 인허가와 원주민 협정 체결, 시추장비 구매 등 과업을 완료한 뒤 연구비 잔금 50%를 지급하도록 명시됐으나 지난 2024년 7월 잔금 지급 당시 현지기업은 필수 인허가를 받지 못했고 원주민 협정도 체결하지 못한 상태였던 것으로 드러났다.",
+      "title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명"
+    },
     "source_fact:949f54a4b38849de621d5b95": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -589898,6 +590003,27 @@
       "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
       "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
       "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
+    },
+    "source_fact:99c15d0681c1805b5418e4a9": {
+      "first_seen_kst": "2026-10-18T12:55:00+09:00",
+      "lanes": {
+        "live": "2026-10-18T12:55:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T12:55:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830391",
+      "source": "뉴시스",
+      "source_body_digest": "e4a21faaf14866fd55f9f960dfd73178418ad94c7d1acfe1441f94a3a46d1d54",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:db87b8add59dc9ac240eea057192cef403ec544cfa69f057ae2fc8927fafdf40",
+      "source_fact_keys": [
+        "source_fact:v1:64d474d97b115ba020f618af5bdb9329926ae154ef72f2f89218fea4581ef374",
+        "source_fact:v1:abc9a0802bece8afa7d24ee797b9a75fca4d23bde3ba99b31fa3eecf9548e826"
+      ],
+      "source_published_kst": "2026-10-18T12:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명",
+      "telegram_core_fact": "협약에는 현지 인허가와 원주민 협정 체결, 시추장비 구매 등 과업을 완료한 뒤 연구비 잔금 50%를 지급하도록 명시됐으나 지난 2024년 7월 잔금 지급 당시 현지기업은 필수 인허가를 받지 못했고 원주민 협정도 체결하지 못한 상태였던 것으로 드러났다.",
+      "title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명"
     },
     "source_fact:99c7a7881ab3ade9a96b51d9": {
       "first_seen_kst": "2026-10-11T23:10:29+09:00",
@@ -752104,6 +752230,27 @@
       "source_event_identity": "",
       "title": "러 드론, 키이우 남부교 이틀새 4번 타격…차량'지하철 통행 끊겼다"
     },
+    "title:145acaaf8e99f118cded7f25": {
+      "first_seen_kst": "2026-10-18T12:55:00+09:00",
+      "lanes": {
+        "live": "2026-10-18T12:55:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T12:55:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830391",
+      "source": "뉴시스",
+      "source_body_digest": "e4a21faaf14866fd55f9f960dfd73178418ad94c7d1acfe1441f94a3a46d1d54",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:db87b8add59dc9ac240eea057192cef403ec544cfa69f057ae2fc8927fafdf40",
+      "source_fact_keys": [
+        "source_fact:v1:64d474d97b115ba020f618af5bdb9329926ae154ef72f2f89218fea4581ef374",
+        "source_fact:v1:abc9a0802bece8afa7d24ee797b9a75fca4d23bde3ba99b31fa3eecf9548e826"
+      ],
+      "source_published_kst": "2026-10-18T12:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명",
+      "telegram_core_fact": "협약에는 현지 인허가와 원주민 협정 체결, 시추장비 구매 등 과업을 완료한 뒤 연구비 잔금 50%를 지급하도록 명시됐으나 지난 2024년 7월 잔금 지급 당시 현지기업은 필수 인허가를 받지 못했고 원주민 협정도 체결하지 못한 상태였던 것으로 드러났다.",
+      "title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명"
+    },
     "title:1470ae0ea379f715a1ced8c7": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -844959,5 +845106,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-18T12:31:06+09:00"
+  "updated_at_kst": "2026-10-18T12:55:00+09:00"
 }
