@@ -6,6 +6,7 @@ import re
 import requests
 
 import treasury_credit_flow_watch_marketstress as stress
+import treasury_real_yield_signal as real_yield
 
 app = stress.app
 readable = stress.readable
@@ -581,6 +582,22 @@ def _compact_report(raw_text):
     d30_bp = _rate_move_bp(r30)
     tech_head, tech_reason = stress._market_stress(y10, y30, d10_bp, d30_bp)
     jpm_30y_line = _jpm_30y_signal(y30)
+    # This is an optional added signal. A stale or failed real-yield source must
+    # not be fabricated and must not suppress the existing nominal-rate report.
+    try:
+        if not y10 or treasury_date == "확인 대기":
+            raise real_yield.CurveMismatch("10년 명목금리 또는 기준일 누락")
+        real_yield_block = real_yield.build_block(treasury_date, y10)
+    except real_yield.CurveMismatch as exc:
+        real_yield_block = (
+            "[실질금리·시장 내재 물가상승률]\n"
+            f"자료 보류: {exc} · 같은 거래일 미 재무부 명목·실질 수치 검증 전 경보 미발동"
+        )
+    except Exception as exc:
+        real_yield_block = (
+            "[실질금리·시장 내재 물가상승률]\n"
+            f"자료 확인 불가: {type(exc).__name__} · 공식 원천 조회 실패, 경보 미발동"
+        )
 
     try:
         repo_line = get_repo_stress()
@@ -656,6 +673,9 @@ def _compact_report(raw_text):
         f"시장 기술압력: {tech_head}",
         f"→ {tech_reason}",
         f"{jpm_30y_line}",
+        "",
+        real_yield_block,
+        "",
         f"{repo_line}",
         f"{gr_line}",
         f"{refi_line}",
