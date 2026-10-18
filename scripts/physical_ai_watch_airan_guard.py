@@ -1876,6 +1876,388 @@ def _oct15_verification(group: str, text: str, source: str) -> str:
     return '공식 추가확인 필요'
 
 
+
+# 2026-10-15..16 high-signal events. Preserve the existing workflow, state,
+# alert renderer and Telegram route. These four reports are independent:
+# construction-classification policy, AMR localization plan, Hyundai RX
+# organizational change, and LG robotics software integration report.
+# Previously released ROBOTIS open-source control code is only a baseline.
+ROBOT_OCT16_PREFIX = 'DIRECT_ROBOT_OCT16_'
+ROBOT_OCT16_EVENTS = {
+    'ess_outdoor_guideline': {
+        'group': 'ess_outdoor_policy',
+        'stage': 'official_guideline',
+        'source': '기후에너지환경부',
+        'title': '기후부, 옥외형 ESS 시설물 분류 지침 확정·전국 배포',
+        'link': 'https://eiec.kdi.re.kr/policy/materialView.do?num=288155',
+        'description': (
+            '2026-10-15 기후에너지환경부·국무조정실은 국토교통부 협의를 거쳐 '
+            '전국 지방정부에 옥외형 ESS 건축물·가설건축물·공작물 분류 기준을 배포했다. '
+            '출입 불가 전용 외함은 공작물, 점검을 위한 제한적 출입 허용은 가설건축물, '
+            '사람이 상시 출입하는 전용 건물은 건축물로 나눈다. '
+            '정부 전망은 기존 대비 일부 해당 사업장에 한해 인허가 기간 최대 3개월, '
+            '설치 관련 비용 최대 7,000만원 절감이며 전국 모든 현장의 실제 절감액이 아니다. '
+            '사업장 100곳 모두 최고 절감액을 달성하면 이론상 70억원이지만 '
+            '확정 예산·지원금·ESS 구매 계약과 다르다. '
+            '정부 신규 배정 예산은 발표하지 않았다. '
+            '안전·소방·열폭주·배기·방폭·냉각·보험, 부지와 송전 접속, '
+            '전원 인가 시점에 필요한 별도 심사·비용은 면제하지 않는다. '
+            '배터리셀·전력변환장치·에너지관리시스템·소방·전기공사 업체의 '
+            '실제 수주와 지침으로 단축된 인허가 사례를 별도로 확인한다.'
+        ),
+    },
+    'brils_us_amr_production_plan': {
+        'group': 'brils_us_localization',
+        'stage': 'reported_us_production_plan',
+        'source': '전자신문',
+        'title': '브릴스, 미시간 미국 AMR 현지 조립·생산 추진…계약·가동 전',
+        'link': 'https://www.etnews.com/20261016000210?m=1',
+        'description': (
+            '2026-10-16 브릴스(468670) 회사 발표를 전한 전자신문·이데일리: '
+            '미시간 그랜드래피즈의 BRILS USA LLC 법인을 북미 영업·기술지원에서 '
+            '미국 현지 조립·생산 거점으로 확대 추진한다. '
+            '우선 포크형·저상형 자율이동로봇 AMR을 현지 조립하고 '
+            '피지컬 AI 로봇으로 장래 확대를 계획한다. '
+            '미국 전기차·자동차부품 업체와 AMR 공급은 협의 중으로 '
+            '북미 신계약 금액·확정 고객·현지 생산 시작일·출하대수는 미공개다. '
+            '기존 2026년 상반기 미국 수출 371만달러, 북미 누적 수출 1,504만달러는 '
+            '서로 다른 기간의 과거 수출 실적이다. '
+            '2026-10-15 서울외국환중개 달러 매매기준율 1,338.60원을 '
+            '단순 적용한 참고 원화는 각각 49억6,620만6,000원과 201억3,254만4,000원이며 '
+            '수출 당시 회계상 실제 환산매출과 다르다. '
+            '2026년 상반기 연결 매출 약 136억5,709만원, 영업이익 약 8억4,120만원, '
+            '순이익 약 9억1,057만원은 과거 분기 아닌 반기 누적 실적이다. '
+            '현지화 목적은 미국 FCC 규제에 따른 인증·원산지 불확실성 완화와 '
+            '부품 조달·서비스 현지화다. '
+            '로봇 본체 장비 일회성 매출, 자체 BRILS Navigation 및 FMS 관제·'
+            '유지보수의 잠재 반복매출은 구분하며 기존 판매계약의 반복수주로 추정하지 않는다.'
+        ),
+    },
+    'hyundai_rx_strategy_team': {
+        'group': 'hyundai_robot_rx_team',
+        'stage': 'company_sourced_organization_report',
+        'source': '머니투데이',
+        'title': '현대차그룹, 미래사업전략실 산하 RX사업전략팀 신설',
+        'link': 'https://www.mt.co.kr/industry/2026/10/15/2026101514482769434',
+        'description': (
+            '2026-10-15 머니투데이 회사 관계자 인용·이데일리 교차확인: '
+            '현대자동차그룹이 미래사업전략실 산하 RX사업전략팀을 신설했다. '
+            '그룹은 RX를 로보틱스 에브리싱으로 재정의해 '
+            '현대차·기아 로보틱스랩, 보스턴다이내믹스, 현대모비스·현대글로비스의 '
+            '로봇 사업전략·양산원가·외부 판매와 공급망을 조율하는 목적이다. '
+            '2028년 미국 HMGMA Atlas 활용은 이전 발표 계획으로 '
+            '이번 조직 신설이 로봇 양산 개시·외부 판매·유상 계약은 아니다. '
+            '조직 예산·새 설비투자 액수·신규 고객·판매대수는 공개되지 않았다. '
+            '향후 실제 조직 공식 발표와 로봇 외부 고객 유상 수주, '
+            '로봇 구매·작업 가동률·인수시험·유지보수 책임을 분리해 확인한다.'
+        ),
+    },
+    'lg_robot_software_platform_team': {
+        'group': 'lge_robot_sw_platform',
+        'stage': 'industry_sourced_team_report',
+        'source': 'ZDNet korea',
+        'title': 'LG전자, 로봇 소프트웨어 플랫폼 통합 조직 신설 보도',
+        'link': 'https://zdnet.co.kr/view/?no=20261016135133',
+        'description': (
+            '2026-10-16 ZDNet korea 로봇업계 취재: LG전자 로보틱스사업센터 '
+            '산하에 여러 사업부의 로봇 소프트웨어 개발 인력을 모은 '
+            '로봇 소프트웨어 플랫폼 조직을 신설하고 '
+            'ETRI 출신 김영준 전무가 맡는다는 보도다. '
+            '조직 인사·세부 업무범위에 관한 회사 공식 10월 보도자료는 확인되지 않았다. '
+            '회사 2026-06-30 CEO 직속 로보틱스사업센터 신설은 이미 공식 확정됐고 '
+            '8월 18일 NVIDIA 협력과 양재 1만㎡ 데이터팩토리 4개층, '
+            '연내 로봇 수백 대·학습데이터 10만시간 목표는 이전 공식 발표다. '
+            '7월 말 창원 AXIUM 액추에이터 시범생산 시작도 기존 사실이며 '
+            '유료 고객 주문·반복 소프트웨어 사용권 매출과 혼동하지 않는다. '
+            '플랫폼은 로봇 제어·계획·학습·시뮬레이션·운영체제·미들웨어를 통합해 '
+            '클로이드와 산업·상업용 로봇에 적용하려는 준비 단계다. '
+            '회사 직접 조직 확인, 외부 로봇 고객명, 상용 사용권·원격관제·'
+            '장기 유지보수 계약과 고객 사용량을 확인한다.'
+        ),
+    },
+}
+ROBOT_OCT16_GROUPS = {k:v['group'] for k,v in ROBOT_OCT16_EVENTS.items()}
+ROBOT_OCT16_TITLES = {
+    'ess_outdoor_policy': '기후부 · 옥외형 ESS 분류지침 전국 배포',
+    'brils_us_localization': '브릴스 · 미시간 AMR 현지 생산체계 추진',
+    'hyundai_robot_rx_team': '현대차그룹 · RX사업전략팀 신설',
+    'lge_robot_sw_platform': 'LG전자 · 로봇 소프트웨어 플랫폼 조직 신설 보도',
+    'robotis_open_source_baseline': '로보티즈 · 8월 소프트웨어 기존 공개·하드웨어 공개 예정',
+    'robotis_hardware_release': '로보티즈 · 하드웨어 설계도 실제 공개 공식 확인',
+}
+ROBOT_OCT16_GROUP_PATS = (
+    ('ess_outdoor_policy',
+     re.compile(r'기후에너지환경부|기후부|옥외형\s*(?:에너지저장장치|ESS)',re.I),
+     re.compile(r'(?:ESS|에너지저장장치).{0,180}(?:시설물\s*분류|공작물|가설건축물|분류\s*지침)|(?:시설물\s*분류|가설건축물|공작물).{0,180}(?:ESS|에너지저장장치)',re.I)),
+    ('brils_us_localization',
+     re.compile(r'브릴스|BRILS',re.I),
+     re.compile(r'미시간|Grand\s*Rapids|BRILS\s*USA|미국.{0,45}(?:현지\s*생산|AMR)|북미.{0,45}(?:현지\s*생산|AMR)',re.I)),
+    ('hyundai_robot_rx_team',
+     re.compile(r'현대차(?:그룹)?|현대자동차(?:그룹)?|Hyundai\s*Motor',re.I),
+     re.compile(r'RX사업전략팀|RX\s*사업\s*전략팀|robotics\s*everything',re.I)),
+    ('lge_robot_sw_platform',
+     re.compile(r'LG전자|LG\s*Electronics',re.I),
+     re.compile(r'로봇\s*(?:소프트웨어|SW)\s*플랫폼\s*(?:조직|팀)|robotics\s*software\s*platform\s*(?:team|organization)',re.I)),
+)
+ROBOT_OCT16_PRIMARY = {
+    'ess_outdoor_policy': {'기후에너지환경부','국무조정실'},
+    'brils_us_localization': {'브릴스','BRILS'},
+    'hyundai_robot_rx_team': {'현대자동차그룹','Hyundai Motor Group'},
+    'lge_robot_sw_platform': {'LG전자','LG Electronics'},
+}
+ROBOT_OCT16_REPORTERS = {
+    'brils_us_localization': {'전자신문','이데일리','프라임경제'},
+    'hyundai_robot_rx_team': {'머니투데이','이데일리'},
+    'lge_robot_sw_platform': {'ZDNet korea','지디넷코리아'},
+}
+ROBOT_OCT16_REVERSE = re.compile(
+    r'계획\s*(?:취소|중단|철회)|사업\s*(?:취소|중단|철회)|'
+    r'취소\s*확정|공식\s*철회|cancelled|terminated|abandoned',
+    re.I,
+)
+
+
+def _oct16_group(text: str) -> str:
+    for group, actor, topic in ROBOT_OCT16_GROUP_PATS:
+        if actor.search(text) and topic.search(text):
+            return group
+    if re.search(r'로보티즈|ROBOTIS',text,re.I) and re.search(
+        r'오픈\s*소스|오픈소스|전면\s*개방|핵심\s*코드|'
+        r'하드웨어.{0,30}(?:설계도|CAD|회로도|오픈)',text,re.I
+    ):
+        if re.search(r'(?:CAD|회로도|설계도).{0,60}(?:실제\s*공개|공개\s*완료|업로드\s*완료|릴리스|released)|'
+                     r'(?:실제\s*공개|공개\s*완료|release).{0,60}(?:CAD|회로도|설계도)',text,re.I):
+            return 'robotis_hardware_release'
+        return 'robotis_open_source_baseline'
+    return ''
+
+
+def _oct16_stage(group: str, text: str, source: str = '') -> str:
+    if group == 'robotis_open_source_baseline':
+        return 'already_public_baseline'
+    if group == 'robotis_hardware_release':
+        if source in {'ROBOTIS','로보티즈'} and not re.search(r'계획|예정|추진|will|plan',text,re.I):
+            return 'official_hardware_release'
+        return 'background'
+    if ROBOT_OCT16_REVERSE.search(text):
+        if source in ROBOT_OCT16_PRIMARY.get(group,set()):
+            return 'official_reversal'
+        return 'background'
+    if group == 'ess_outdoor_policy':
+        if source in ROBOT_OCT16_PRIMARY[group] and re.search(
+            r'지침(?:서)?|가이드라인',text,re.I
+        ) and re.search(r'배포|일원화|전국\s*안내|확정|published|issued',text,re.I):
+            return 'official_guideline'
+    if group == 'brils_us_localization':
+        if source in ROBOT_OCT16_PRIMARY[group] and re.search(
+            r'현지.{0,40}(?:조립|생산).{0,30}(?:가동|첫\s*출하|실제\s*생산\s*개시)|'
+            r'미국.{0,30}(?:생산\s*시작|첫\s*납품)|started\s*US\s*production',
+            text,re.I
+        ) and not re.search(r'예정|계획|추진|협의|논의',text,re.I):
+            return 'official_us_production'
+        if source in ROBOT_OCT16_PRIMARY[group] and re.search(
+            r'(?:유상|확정|정식)\s*(?:공급|구매)\s*계약\s*체결|'
+            r'signed\s*supply\s*contract',
+            text,re.I
+        ) and not re.search(r'예정|논의|협의|추진',text,re.I):
+            return 'official_customer_contract'
+        if source in ROBOT_OCT16_REPORTERS[group] and re.search(
+            r'현지.{0,65}(?:생산|조립).{0,50}(?:추진|계획|구축)|'
+            r'(?:생산|조립)\s*체제.{0,20}(?:구축|추진)|'
+            r'현지\s*생산|미시간\s*생산',
+            text,re.I
+        ):
+            return 'reported_local_production_plan'
+    if group == 'hyundai_robot_rx_team':
+        if source in ROBOT_OCT16_PRIMARY[group] and re.search(r'팀\s*신설|조직\s*신설|established|formed',text,re.I):
+            return 'official_team_confirmation'
+        if source in ROBOT_OCT16_REPORTERS[group] and re.search(r'신설|출범|조직개편',text,re.I):
+            return 'company_sourced_team_report'
+    if group == 'lge_robot_sw_platform':
+        if source in ROBOT_OCT16_PRIMARY[group] and re.search(r'팀\s*신설|조직\s*신설|플랫폼\s*조직\s*확인|formed',text,re.I):
+            return 'official_sw_team'
+        if source in ROBOT_OCT16_REPORTERS[group] and re.search(r'신설|출범|통합',text,re.I):
+            return 'industry_sourced_sw_team'
+    return 'background'
+
+
+def _oct16_recovery(event_id: str) -> list[dict]:
+    # One event per semantic stage; do not manufacture publication hours.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,25):
+        return []
+    event=ROBOT_OCT16_EVENTS.get(event_id)
+    if not event:
+        return []
+    return [{
+        'title':event['title'], 'link':event['link'],
+        'description':event['description'], 'source':event['source'],
+        'published':None, 'direct_recovery':True,
+        'oct16_event_id':event_id, 'oct16_stage':event['stage'],
+    }]
+
+
+def _oct16_render_category(group: str, text: str) -> str:
+    if group == 'brils_us_localization':
+        if re.search(r'미국\s*(?:실제|현지).{0,25}(?:생산\s*개시|초도\s*출하\s*완료)',text,re.I):
+            return '브릴스 · 미시간 AMR 실제 생산·첫 출하 공식 확인'
+        if re.search(r'미국.{0,100}공급계약\s*체결\s*공식\s*확인',text,re.I):
+            return '브릴스 · 미국 고객 유상 계약 공식 확인'
+    if group == 'hyundai_robot_rx_team' and re.search(r'RX사업전략팀.{0,60}회사\s*공식\s*확인',text,re.I):
+        return '현대차그룹 · RX사업전략팀 회사 공식 확인'
+    if group == 'lge_robot_sw_platform' and re.search(r'로봇\s*소프트웨어\s*플랫폼.{0,60}회사\s*공식\s*확인',text,re.I):
+        return 'LG전자 · 로봇 소프트웨어 플랫폼 회사 공식 확인'
+    return ROBOT_OCT16_TITLES[group]
+
+
+ROBOT_OCT16_MEANINGS = {
+    '기후부 · 옥외형 ESS 분류지침 전국 배포': (
+        '정부·국무조정실은 10/15 옥외형 ESS 시설물 유형 판단 기준을 배포했습니다. '
+        '출입 불가 전용 외함은 공작물, 점검용 제한적 출입은 가설건축물, '
+        '상시 출입 전용 건물은 건축물입니다. '
+        '정부가 제시한 절감 상한은 사업장당 인허가 최대 3개월·비용 최대 7,000만원입니다. '
+        '100개 사업장이 모두 최대 절감액을 달성해야 70억원이라는 단순 상한 계산이며 '
+        '국비 보조금·신규 ESS 설비투자·확정 매출이 아닙니다. '
+        '향후 지자체 실제 적용건수, 전력망 접속·안전허가·착공 시점을 확인합니다.'
+    ),
+    '브릴스 · 미시간 AMR 현지 생산체계 추진': (
+        '브릴스(468670)가 미국 미시간 BRILS USA LLC 거점에서 포크형·저상형 AMR '
+        '현지 조립·생산체계를 추진하고 있습니다. '
+        '기존 2026년 상반기 미국 수출 371만달러(10/15 환율 적용 약 49억6,621만원), '
+        '북미 누적 수출 1,504만달러(약 201억3,254만원)는 서로 다른 과거 기간입니다. '
+        '상반기 연결 매출 약 136억5,709만원·영업이익 약 8억4,120만원을 확인했습니다. '
+        '미국 OEM 공급은 협의 단계이며 새 계약액·현지 실제 조립 물량은 비공개입니다. '
+        '로봇 완제품 일회성 매출과 BRILS Navigation/FMS 통합관제·유지보수 '
+        '잠재 반복매출을 구분해 후속 수주를 검증합니다.'
+    ),
+    '현대차그룹 · RX사업전략팀 신설': (
+        '10/15 현대차그룹 미래사업전략실의 RX사업전략팀 출범 보도로 '
+        '기존 Atlas·Spot·모베드 등 사업을 양산 원가·공급망·외부 판로와 '
+        '연결하는 전략 전담 조직이 확인됐습니다. '
+        '2028년 미국 HMGMA Atlas 투입 계획은 이전 발표이며 '
+        '조직 신설 자체는 양산 시작·신규 주문·매출이 아닙니다. '
+        '회사 공식 조직 확정·별도 신규 고객·외부 유상 주문·로봇 대수를 추적합니다.'
+    ),
+    'LG전자 · 로봇 소프트웨어 플랫폼 조직 신설 보도': (
+        '10/16 ZDNet 업계 취재로 LG전자가 로보틱스사업센터 산하 '
+        '로봇 소프트웨어 플랫폼 전담 조직을 신설하고 김영준 전무가 '
+        '지휘한다고 보도됐습니다. '
+        '6/30 CEO 직속 로보틱스사업센터, 7월 말 AXIUM 초도생산, '
+        '8/18 양재 데이터팩토리 1만㎡·로봇 수백대·10만시간 학습 목표와 '
+        'NVIDIA 협력은 회사 기존 공식 발표로 이미 새로운 계약이 아닙니다. '
+        '이번 뉴스의 신규성은 조직 통합이며 유상 플랫폼 사용권·'
+        '원격관제·장기 유지보수 계약은 미확인입니다.'
+    ),
+    '로보티즈 · 하드웨어 설계도 실제 공개 공식 확인': (
+        '로보티즈의 기존 8월 로봇 구동 소프트웨어 공개와 '
+        '향후 하드웨어 CAD·전자회로도 실제 배포를 구분합니다. '
+        '실제 공식 파일 배포 시에는 부품 제조·액추에이터 공급·'
+        '개발 생태계 유입이 새로운 단계입니다. '
+        '파일·사용권 조건·실제 유상 액추에이터 주문은 별도로 확인합니다.'
+    ),
+}
+ROBOT_OCT16_RISKS = {
+    '기후부 · 옥외형 ESS 분류지침 전국 배포': (
+        '건축물 분류 간소화만으로 화재·열폭주·배기·방폭·냉각·보험과 '
+        '계통접속·소방검사까지 면제되지 않습니다. '
+        '6~12개월 지자체 분류 적용편차, 실제 인허가 단축일수, '
+        'ESS 착공·전원 인가 전력망 병목을 추적합니다.'
+    ),
+    '브릴스 · 미시간 AMR 현지 생산체계 추진': (
+        '최대 역풍은 미국 현지 생산·부품 조달 준비가 완료돼도 '
+        '원산지 규정·FCC 적합성·제품 인증·현지 검수·보험에서 '
+        '지연돼 매출로 전환되지 못하는 것입니다. '
+        '향후 6~12개월 실제 첫 조립대수·유상 계약·FMS 사용권 갱신과 '
+        '설치·원격관제 비용을 확인합니다. '
+        '중국산 부품 대체 시 원가상승·납기 변동을 분리합니다.'
+    ),
+    '현대차그룹 · RX사업전략팀 신설': (
+        '조직만 생기고 Atlas 부품 직행수율·고온 동작 검사·'
+        '양산 비용이 개선되지 않으면 실적에 연결되지 않습니다. '
+        '6~24개월 RMAC 실제 작업 성공률, 안전요원·원격지원·'
+        '정비비·공장 투입대수·외부 유상 주문을 확인합니다.'
+    ),
+    'LG전자 · 로봇 소프트웨어 플랫폼 조직 신설 보도': (
+        '업계 보도 조직 신설과 회사 직접 인사·조직 공시는 구분합니다. '
+        '소프트웨어 통합이 가동률·작업성공률 개선으로 연결되지 않으면 '
+        '데이터팩토리·AXIUM 설비의 고정비 부담이 늘어날 수 있습니다. '
+        '6~12개월 회사 공식 조직확인·고객 검증·로봇 실제 투입대수, '
+        '손·촉각센서·안전·신뢰성 시험·소프트웨어 사용권 매출을 봅니다.'
+    ),
+    '로보티즈 · 하드웨어 설계도 실제 공개 공식 확인': (
+        'CAD 공개와 실제 완성품 공급계약은 다릅니다. '
+        '안전·인증·액추에이터 수율·공급망 품질·부품 원가 개선이 필요합니다.'
+    ),
+}
+
+
+def _oct16_category(group: str, text: str) -> str:
+    return _oct16_render_category(group,text)
+
+
+def _oct16_score(item: dict, group: str, text: str) -> int:
+    stage=_oct16_stage(group,text,item.get('source') or '')
+    if item.get('oct16_stage') and item.get('oct16_event_id'):
+        stage=item['oct16_stage']
+    return {
+        'official_guideline': 82,
+        'reported_local_production_plan': 51,
+        'official_us_production': 88,
+        'official_customer_contract': 90,
+        'company_sourced_team_report': 43,
+        'official_team_confirmation': 71,
+        'industry_sourced_sw_team': 45,
+        'official_sw_team': 71,
+        'official_hardware_release': 78,
+        'official_reversal': 88,
+    }.get(stage,0)
+
+
+def _oct16_key(item: dict, group: str, text: str) -> str:
+    stage=_oct16_stage(group,text,item.get('source') or '')
+    if item.get('oct16_stage') and item.get('oct16_event_id'):
+        stage=item['oct16_stage']
+    return hashlib.sha256(f'robot-oct16|{group}|{stage}|2026-10'.encode()).hexdigest()
+
+
+def _oct16_verification(item: dict, group: str, text: str) -> str:
+    source=item.get('source') or ''
+    if group == 'ess_outdoor_policy':
+        return (
+            '기후에너지환경부 10/15 보도자료 KDI 등록본·뉴스1·아주경제 교차확인 · '
+            '정식 지침 배포, 사업별 인허가·절감 실적·ESS 수주와 별개'
+        )
+    if group == 'brils_us_localization':
+        stage=_oct16_stage(group,text,source)
+        if item.get('oct16_stage'):
+            stage=item['oct16_stage']
+        if stage == 'reported_local_production_plan':
+            return (
+                '10/16 브릴스 발표를 인용한 전자신문·이데일리·프라임경제 · '
+                '상반기 실적은 뉴스핌·회사 자료 인용 보도 · '
+                '미국 공장 첫 가동·신규 유상 고객 계약은 미확인'
+            )
+        return '회사 직접 현지 가동·계약자료 별도 확인 필요'
+    if group == 'hyundai_robot_rx_team':
+        return (
+            '10/15 머니투데이 그룹 관계자 인용·이데일리 교차확인 · '
+            '별도 그룹 공식 조직 공지 미확인 · 신규 양산·계약 아님'
+        )
+    if group == 'lge_robot_sw_platform':
+        return (
+            '10/16 ZDNet 업계 인용 보도 · 회사 6/30 조직·8/18 '
+            'NVIDIA/데이터팩토리 공식자료는 기존 배경 · '
+            '새 하부 조직·책임자 회사 직접 공식발표 미확인'
+        )
+    return 'ROBOTIS 공식 설계도 배포·라이선스·실제 고객 수주 재확인'
+
+
+def _oct16_clean_title(title: str, source: str) -> str:
+    for event in ROBOT_OCT16_EVENTS.values():
+        if title == event['title']:
+            return title
+    return title
+
+
 _orig_query_news = base.query_news
 
 
@@ -1908,6 +2290,8 @@ def query_news(q: str) -> list[dict]:
         return _fluence_vattenfall_recovery()
     if q.startswith(ROBOT_OCT15_PREFIX):
         return _oct15_recovery(q[len(ROBOT_OCT15_PREFIX):])
+    if q.startswith(ROBOT_OCT16_PREFIX):
+        return _oct16_recovery(q[len(ROBOT_OCT16_PREFIX):])
     return _orig_query_news(q)
 
 
@@ -2034,6 +2418,24 @@ for _key in ROBOT_OCT15_EVENTS:
     _sentinel = ROBOT_OCT15_PREFIX + _key
     if _sentinel not in base.QUERIES:
         base.QUERIES.append(_sentinel)
+for _key in ROBOT_OCT16_EVENTS:
+    _sentinel = ROBOT_OCT16_PREFIX + _key
+    if _sentinel not in base.QUERIES:
+        base.QUERIES.append(_sentinel)
+for _q in (
+    '(기후에너지환경부 OR 기후부) (옥외형 ESS OR 에너지저장장치) '
+    '(시설물 분류 OR 건축물 OR 공작물 OR 가설건축물) (가이드라인 OR 지침 OR 지자체 실제 적용)',
+    '(브릴스 OR BRILS) (미시간 OR BRILS USA OR 그랜드래피즈) '
+    '(AMR OR 포크형 OR 저상형 OR 자율이동로봇) (현지 생산 OR 첫 출하 OR 유상계약 OR 규제)',
+    '(현대차그룹 OR 현대자동차그룹) (RX사업전략팀 OR Robotics Everything) '
+    '(조직 신설 OR 공식 확인 OR 로봇 외부 수주)',
+    '(LG전자 OR LG Electronics) (로봇 소프트웨어 플랫폼 OR robotics software platform) '
+    '(조직 신설 OR 공식 확인 OR 상용 사용권 OR 계약)',
+    '(로보티즈 OR ROBOTIS) (AI 사피엔스 OR 휴머노이드) '
+    '(하드웨어 설계도 OR 회로도 OR CAD) (실제 공개 OR GitHub OR 다운로드 OR 배포)',
+):
+    if _q not in base.QUERIES:
+        base.QUERIES.append(_q)
 for _q in (
     '(Agility Robotics OR Churchill XI OR CCXI) (S-4 OR AGLT OR 합병) '
     '(SEC effective OR shareholder vote OR 거래 종결 OR 상장 시작)',
@@ -2097,6 +2499,9 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    _new = _oct16_group(text)
+    if _new:
+        return _new
     _g = _oct15_group(text)
     if _g:
         return _g
@@ -2151,6 +2556,9 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     item_text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    group_oct16=_oct16_group(item_text)
+    if group_oct16:
+        return _oct16_score(item,group_oct16,item_text)
     group_oct15 = _oct15_group(item_text)
     if group_oct15:
         _stage_oct15 = _oct15_stage(group_oct15, item_text, item.get('source') or '')
@@ -2288,6 +2696,8 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group in ROBOT_OCT16_TITLES:
+        return _oct16_category(group,text)
     if group in ROBOT_OCT15_TITLES.values():
         return group
     if group in ROBOT_OCT15_TITLES:
@@ -2421,6 +2831,8 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat in ROBOT_OCT16_MEANINGS:
+        return ROBOT_OCT16_MEANINGS[cat]
     if cat in _OCT15_MEANINGS:
         return _OCT15_MEANINGS[cat]
     if cat.startswith('Fluence–Vattenfall · '):
@@ -2774,6 +3186,8 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat in ROBOT_OCT16_RISKS:
+        return ROBOT_OCT16_RISKS[cat]
     if cat in _OCT15_RISKS:
         return _OCT15_RISKS[cat]
     if cat.startswith('Fluence–Vattenfall · '):
@@ -2934,6 +3348,8 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group in ROBOT_OCT16_TITLES:
+        return _oct16_verification(item,group,text)
     if group in ROBOT_OCT15_TITLES:
         return _oct15_verification(group, text, item.get('source') or '')
     if group == 'fluence_vattenfall_bess':
@@ -3072,6 +3488,9 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    _oct16=_oct16_group(title+' '+source)
+    if _oct16 in ROBOT_OCT16_TITLES:
+        return _oct16_clean_title(title,source)
     _oct15 = _oct15_group(title+' '+source)
     if _oct15 in ROBOT_OCT15_TITLES:
         return title
@@ -3172,6 +3591,15 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group in ROBOT_OCT16_TITLES:
+        return {
+            'ess_outdoor_policy':'ESS 인허가·정책',
+            'brils_us_localization':'브릴스 북미 AMR',
+            'hyundai_robot_rx_team':'현대차 로봇 전략',
+            'lge_robot_sw_platform':'LG 로봇 소프트웨어',
+            'robotis_open_source_baseline':'로보티즈 기존 오픈소스',
+            'robotis_hardware_release':'로보티즈 하드웨어 개방',
+        }[group]
     if group in ROBOT_OCT15_TITLES:
         return {
             'agility_spac_2026': 'Agility IPO',
@@ -3217,6 +3645,9 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    _g16 = _oct16_group(text)
+    if _g16:
+        return _oct16_key(item,_g16,text)
     _g = _oct15_group(text)
     if _g in ROBOT_OCT15_TITLES:
         _stage_name = _oct15_stage(_g, text, item.get('source') or '')
@@ -3389,6 +3820,13 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    # Show distinct new status changes but do not resurrect known repeats.
+    for _new_group in ('lge_robot_sw_platform','hyundai_robot_rx_team',
+                       'brils_us_localization','ess_outdoor_policy',
+                       'robotis_hardware_release'):
+        _hit=next((x for x in candidates if x.get('group')==_new_group),None)
+        if _hit and not any(x.get('key')==_hit.get('key') for x in chosen):
+            chosen=[_hit,*chosen][:limit]
     # Promote verifiable milestones over low-quality general market articles;
     # do not resend any event key already in the persisted dedup state.
     for _group in (
