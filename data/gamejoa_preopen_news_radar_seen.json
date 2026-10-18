@@ -7530,6 +7530,30 @@
       "telegram_core_fact": "그간 정부와 지자체의 주택 공급 통계는 인허가 물량을 중심으로 제시돼 실제 착공·입주까지 상당한 시차가 있다는 지적이 있었다.",
       "title": "서울 정비사업 착공 물량 공개…2031년 31만호 공급상황 한눈에 | 연합뉴스"
     },
+    "core:1d315e3ec09c799d4aaf07c8": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018026100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4f6a3bcd5dd0432fef15273193f3f2851b9cb5af4c651c40b648b98c71eb15e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb79a9c9b47c1d42873aacd60b67b0d609caea807564bdc674c4879d6f9dd951",
+      "source_fact_keys": [
+        "source_fact:v1:2827fa0a31db18f0e407838f048ff172f56f94dd40e242e3a4556aa986968f3c",
+        "source_fact:v1:2c4217dbbee0822b23cef582385ab34011e4ebecf4a7b995b35cffc3efa5b7d3",
+        "source_fact:v1:4536a41fb7b40fe1c60a61c687b549cca952f465298bf52d4bc399669f99f46a",
+        "source_fact:v1:83ee2a9cec110a34cb34e17d74a536a60a69f19cf8736724e15b232a9b7dd1d1",
+        "source_fact:v1:c1a9183c74b201cdac79e206f96920d12d569fe9e63b934835122af30cbe457d"
+      ],
+      "source_published_kst": "2026-10-19T05:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스",
+      "telegram_core_fact": "특이사항이 없이 금융위 의결이 마무리되면, 핀다는 대원저축은행 인수를 위한 금융당국의 인허가 절차를 마무리하게 된다.",
+      "title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스"
+    },
     "core:1d3e5ef4133da3f33d6354bc": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -35241,6 +35265,33 @@
       "telegram_core_fact": "금융당국이 고빈도매매(HFT·High Frequency Trading) 보완 방안 검토에 착수한 가운데 파생시장에 적용되는 과다호가부담금, 스피드범프(Speed Bump·호가 지연제) 등이 규제책으로 거론된다.",
       "title": "금융당국, '초단타' HFT 겨냥…과다호가부담금·호가 지연제 고심"
     },
+    "core:8867e7b4ca022e6d2a4534fa": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
+    },
     "core:887195adcd7b4d7a55795511": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
       "lanes": {
@@ -41455,6 +41506,37 @@
       "telegram_core_fact": "백 연구원은 \"4분기부터는 상반기 부진했던 수주 흐름이 본격적으로 반전될 전망\"이라며 \"국내에서는 1조9000억원 장거리공대공 체계개발 사업 우선협상대상자로 선정돼 12월 최종 계약 체결이 예상된다\"고 분석했다.",
       "title": "유안타證 \"LIG D&A, 4분기 신규 수주 가속화\""
     },
+    "core:a1b7479ea67c26a0abd10d6d": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
+    },
     "core:a1ca12f6a35ab11a52d8e0df": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
       "lanes": {
@@ -46824,6 +46906,24 @@
       "telegram_core_fact": "방송미디어통신위원회가 불법스팸 발송으로 얻은 부당이익을 환수하기 위한 과징금 제도를 신설하고, 통신시장 금지행위 위반에 대한 제재 수위를 대폭 끌어올린다.",
       "title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진"
     },
+    "core:b6e44cd8c322bbbc0d4ed494": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830208",
+      "source": "뉴시스",
+      "source_body_digest": "744cdc4b882ecab1a175c23caa9cdf515c5cc2a2a162dc80e14aef6ef0c3f212",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "서남권 메가프로젝트 본격 가동…앰코 투자계획 이행",
+      "telegram_core_fact": "이민우 산업통상부 산업성장실장은 19일 앰코 광주사업장에서 열린 '앰코 광주공장 증축 착공식'에 참석해 착공을 축하하고, 서남권 첨단반도체 투자 이행을 적극 지원하겠다고 밝혔다.",
+      "title": "서남권 메가프로젝트 본격 가동…앰코 투자계획 이행"
+    },
     "core:b6f71642c68cd1234e8b3367": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -47199,6 +47299,28 @@
       "source_title": "의정부도시공사, 공영주차장 등 운영 환경 변경",
       "telegram_core_fact": "전현영 의정부도시공사 사장은 \"앞으로도 시민들이 체감할 수 있는 주차환경 개선과 주차공간 확보를 위해 지속적으로 노력하겠다\"고 말했다.",
       "title": "의정부도시공사, 공영주차장 등 운영 환경 변경"
+    },
+    "core:b8ca0431ecf9ff534f32e275": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017030400002",
+      "source": "연합뉴스",
+      "source_body_digest": "9c10dc77c6faa6026771c225227c41117b98464c182ac9396dc57ba56b4b52eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f5a43f5709799e0a90a68e876f2236e5a2705bd60aa8cccfee94e4afa8dca7",
+      "source_fact_keys": [
+        "source_fact:v1:0842796ae614591e277233f96a68a3d531438811c3d9527c5940e640f7db5b24",
+        "source_fact:v1:7eadda8106e68c78c1fe5a6ec8b3a404ae8a06573c914cb9ad7e4f40c9407352",
+        "source_fact:v1:f1bf597122101fbe247606fd486b5b4e100289c447f92922444651339a60824e"
+      ],
+      "source_published_kst": "2026-10-19T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스",
+      "telegram_core_fact": "이런 가운데 반복적으로 담합 사건에 이름을 올리는 사업자에 제재 실효성을 높여야 한다는 지적도 나온다.",
+      "title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스"
     },
     "core:b8f3a407876f0ea8c4d5cc69": {
       "first_seen_kst": "2026-10-13T04:37:27+09:00",
@@ -58958,6 +59080,28 @@
       "telegram_core_fact": "유현승 시지메드텍 대표는 “현지 파트너와 협력해 콜롬비아 의료진의 수요에 대응하고 중남미에서 장기적인 공급·교육 체계를 구축하겠다”고 말했다.",
       "title": "시지메드텍, 척추 고정 시스템 콜롬비아 허가…중남미 시장 확대"
     },
+    "core:e8ec81b793d06e49cfedaccf": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637078",
+      "source": "이투데이",
+      "source_body_digest": "f309ad255d19bd2dcc41afe01ad1a155d999b30659095fe271c032de9626ed8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d6872df020d28873a7002b4f040197ffde9f823799f54f6757c0586cda2da0e",
+      "source_fact_keys": [
+        "source_fact:v1:4247c0b4e3adca3e0da64424e68a28d72605805ca03534aa8bbf540f240c68a1",
+        "source_fact:v1:8169991f3f2c8f4ef37d7545924b68ee4d4c1873195279ef8b037cfbf7db3d26",
+        "source_fact:v1:dabef13fcaf5fba612cde96f92cde7d7526713523173c5e09330fb967029de0e"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산",
+      "telegram_core_fact": "전체 상품 매출에서 제로 상품이 차지하는 비중도 같은 기간 5.8%에서 6.8%로 상승했다. 초기 시장을 이끈 탄산음료는 최근 1년 전체 제로 상품 판매량의 42%를 차지해 가장 큰 비중을 유지했다.",
+      "title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산"
+    },
     "core:e8ef4b9eb756304742880af2": {
       "first_seen_kst": "2026-10-13T22:04:42+09:00",
       "lanes": {
@@ -66296,6 +66440,37 @@
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
+    "event:19e84bb4ef03379bba312e43": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
+    },
     "event:1a24f752f89b77b670b4f63b": {
       "first_seen_kst": "2026-10-16T15:15:48+09:00",
       "lanes": {
@@ -73006,6 +73181,30 @@
       "link": "https://www.mt.co.kr/world/2026/09/24/2026092413520770400",
       "source": "머니투데이",
       "title": "\"중국산 메모리 쏟아진다\"...'빅쇼트' 마이클 버리, AI·반도체 공매도 확대"
+    },
+    "event:83b1ae085e1d1e397ca7e218": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018026100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4f6a3bcd5dd0432fef15273193f3f2851b9cb5af4c651c40b648b98c71eb15e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb79a9c9b47c1d42873aacd60b67b0d609caea807564bdc674c4879d6f9dd951",
+      "source_fact_keys": [
+        "source_fact:v1:2827fa0a31db18f0e407838f048ff172f56f94dd40e242e3a4556aa986968f3c",
+        "source_fact:v1:2c4217dbbee0822b23cef582385ab34011e4ebecf4a7b995b35cffc3efa5b7d3",
+        "source_fact:v1:4536a41fb7b40fe1c60a61c687b549cca952f465298bf52d4bc399669f99f46a",
+        "source_fact:v1:83ee2a9cec110a34cb34e17d74a536a60a69f19cf8736724e15b232a9b7dd1d1",
+        "source_fact:v1:c1a9183c74b201cdac79e206f96920d12d569fe9e63b934835122af30cbe457d"
+      ],
+      "source_published_kst": "2026-10-19T05:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스",
+      "telegram_core_fact": "특이사항이 없이 금융위 의결이 마무리되면, 핀다는 대원저축은행 인수를 위한 금융당국의 인허가 절차를 마무리하게 된다.",
+      "title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스"
     },
     "event:83c53d4458cde3b63b606a9a": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
@@ -107122,6 +107321,28 @@
       "telegram_core_fact": "NH농협생명이 연간 신계약 보험계약마진(CSM) 1조원 달성을 목표로 수익성 중심의 성장 전략을 강화한다. NH농협생명은 7일 '신계약 CSM 1조 추진 선포식'을 열고 연간 신계약 CSM 1조원 달성을 위한 전사적 목표를 공유했다고 밝혔다.",
       "title": "NH농협생명, 신계약 CSM 1조원 목표…\"수익성 중심 성장\""
     },
+    "fact:57e3edee02044efc49e45dd1": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637078",
+      "source": "이투데이",
+      "source_body_digest": "f309ad255d19bd2dcc41afe01ad1a155d999b30659095fe271c032de9626ed8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d6872df020d28873a7002b4f040197ffde9f823799f54f6757c0586cda2da0e",
+      "source_fact_keys": [
+        "source_fact:v1:4247c0b4e3adca3e0da64424e68a28d72605805ca03534aa8bbf540f240c68a1",
+        "source_fact:v1:8169991f3f2c8f4ef37d7545924b68ee4d4c1873195279ef8b037cfbf7db3d26",
+        "source_fact:v1:dabef13fcaf5fba612cde96f92cde7d7526713523173c5e09330fb967029de0e"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산",
+      "telegram_core_fact": "전체 상품 매출에서 제로 상품이 차지하는 비중도 같은 기간 5.8%에서 6.8%로 상승했다. 초기 시장을 이끈 탄산음료는 최근 1년 전체 제로 상품 판매량의 42%를 차지해 가장 큰 비중을 유지했다.",
+      "title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산"
+    },
     "fact:57f35f351fb2d2b358aefbd8": {
       "first_seen_kst": "2026-10-13T04:37:27+09:00",
       "lanes": {
@@ -122852,6 +123073,37 @@
       "telegram_core_fact": "크리스탈리나 게오르기에바(사진) 국제통화기금(IMF) 총재가 고유가 장기화, 치솟는 국가 부채, 인공지능(AI) 투자 열풍에 따른 위험성을 지적하며 세계 경제가 심각한 위협에 직면해 있다고 경고했다.",
       "title": "IMF 총재 \"고유가·부채·AI 거품, 세계경제 거센 위협\" 경고"
     },
+    "fact:8cec9a8a5e1504b5eee28350": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
+    },
     "fact:8d0331c99d9019d15b700f97": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -138200,6 +138452,30 @@
       "telegram_core_fact": "박상현 iM증권 연구원은 \"금융시장은 코어 CPI 0.1%p 상회를 유가 상승발 물가 압력의 전방위 확산으로 받아들였다\"며 \"10월 동결 가능성은 높지만 12월에 이어 내년 1월 FOMC 회의에서 추가 인상이 단행될 확률이 50%를 웃돌고 있다. 결국 긴축 지속 여부는 유가 불안 장기화에 달렸다\"고 짚었다.",
       "title": "韓증시 때린 美 '물가 쇼크'…증권가 \"금리 추가 인상·AI 신용 비상\""
     },
+    "fact:bd6a7e2927c9fe0a0ced5808": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018026100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4f6a3bcd5dd0432fef15273193f3f2851b9cb5af4c651c40b648b98c71eb15e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb79a9c9b47c1d42873aacd60b67b0d609caea807564bdc674c4879d6f9dd951",
+      "source_fact_keys": [
+        "source_fact:v1:2827fa0a31db18f0e407838f048ff172f56f94dd40e242e3a4556aa986968f3c",
+        "source_fact:v1:2c4217dbbee0822b23cef582385ab34011e4ebecf4a7b995b35cffc3efa5b7d3",
+        "source_fact:v1:4536a41fb7b40fe1c60a61c687b549cca952f465298bf52d4bc399669f99f46a",
+        "source_fact:v1:83ee2a9cec110a34cb34e17d74a536a60a69f19cf8736724e15b232a9b7dd1d1",
+        "source_fact:v1:c1a9183c74b201cdac79e206f96920d12d569fe9e63b934835122af30cbe457d"
+      ],
+      "source_published_kst": "2026-10-19T05:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스",
+      "telegram_core_fact": "특이사항이 없이 금융위 의결이 마무리되면, 핀다는 대원저축은행 인수를 위한 금융당국의 인허가 절차를 마무리하게 된다.",
+      "title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스"
+    },
     "fact:bd94a9492a5a1afadd27282a": {
       "first_seen_kst": "2026-10-15T07:35:02+09:00",
       "lanes": {
@@ -147944,6 +148220,33 @@
       "telegram_core_fact": "전 세계 수십 개 국가의 고객 6000곳 이상에 제품과 서비스를 제공해 온 조델은 견고한 로봇 엔드 이펙터를 공급하며, 글로벌 산업용 체화된 지능 실행 계층을 선도하고 표준을 정립하는 것을 목표로 한다. 조델의 제품군은 17개 시리즈, 50개 이상의 양산 제품으로 구성되며, 연간 생산능력은 10만 대를 넘어선다.",
       "title": "조델, 마이디어 그룹 투자 유치 이어 CIIF에서 산업용 체화된 지능 실행 위한 풀스택 신제품 공개"
     },
+    "fact:dc751647e8624a1259860e08": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
+    },
     "fact:dc799e0aed59dcc43eb68bc5": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -150644,6 +150947,28 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
+    },
+    "fact:e53fcb1b7cda10b35f61ebf4": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017030400002",
+      "source": "연합뉴스",
+      "source_body_digest": "9c10dc77c6faa6026771c225227c41117b98464c182ac9396dc57ba56b4b52eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f5a43f5709799e0a90a68e876f2236e5a2705bd60aa8cccfee94e4afa8dca7",
+      "source_fact_keys": [
+        "source_fact:v1:0842796ae614591e277233f96a68a3d531438811c3d9527c5940e640f7db5b24",
+        "source_fact:v1:7eadda8106e68c78c1fe5a6ec8b3a404ae8a06573c914cb9ad7e4f40c9407352",
+        "source_fact:v1:f1bf597122101fbe247606fd486b5b4e100289c447f92922444651339a60824e"
+      ],
+      "source_published_kst": "2026-10-19T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스",
+      "telegram_core_fact": "이런 가운데 반복적으로 담합 사건에 이름을 올리는 사업자에 제재 실효성을 높여야 한다는 지적도 나온다.",
+      "title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스"
     },
     "fact:e54134d20b75a13ce5c7ba2b": {
       "first_seen_kst": "2026-10-14T23:19:07+09:00",
@@ -186867,6 +187192,33 @@
       "telegram_core_fact": "자율주행 트럭 기업 마스오토가 미국 교통부와 자율주행 트럭 상용화 확대 방안을 논의한다. 노제경 마스오토 부대표는 21일 ‘자율주행에 대비한 운송 노선 구축’ 세션과 22일 ‘실증에서 상용화로: 자율주행 글로벌 투어’ 세션에 한국 측 연사로 참여한다.",
       "title": "마스오토, 美 교통부와 자율주행 협력 모색"
     },
+    "link:46264fe41481f9d499321971": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
+    },
     "link:462761b8d52188c97335f069": {
       "first_seen_kst": "2026-10-12T02:51:54+09:00",
       "lanes": {
@@ -193022,6 +193374,37 @@
       "link": "https://www.mk.co.kr/news/stock/12158947",
       "source": "매일경제",
       "title": "[MK시그널] 네패스아크, 대규모 설비 투자에 따른 생산능력 확대 기대감 등에 주가 상승세... MK시그널 추천 후 상승률 24.58% 기록"
+    },
+    "link:556725606591c3dd6e5774bf": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
     },
     "link:556a3b62797b87cc4bce7d83": {
       "first_seen_kst": "2026-10-13T21:34:27+09:00",
@@ -199749,6 +200132,24 @@
       "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
       "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
       "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
+    },
+    "link:65aaf07025f1c78b6025ffc5": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830331",
+      "source": "뉴시스",
+      "source_body_digest": "43d492371511155a65037af57fcfce483e4d88673cb4b9a12d77770757f4ccd8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"짐은 호텔로, 할인은 카드로\"…외국인 관광객 잡는 백화점·아울렛",
+      "telegram_core_fact": "롯데백화점은 올해 업계 최초로 외국인 매출 1조원을 돌파했다.",
+      "title": "\"짐은 호텔로, 할인은 카드로\"…외국인 관광객 잡는 백화점·아울렛"
     },
     "link:65bf83afd81fe39b9dd0c5bb": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
@@ -209574,6 +209975,28 @@
       "telegram_core_fact": "KB증권은 삼성전자의 내년 고대역폭메모리(HBM) 판매가격이 올해보다 100% 이상 오를 것으로 예상했고, 메리츠증권은 서버 D램과 HBM으로의 생산능력 전환에 따라 모바일 메모리 판가도 내년 1분기부터 분기 기준 50% 이상 상승할 것으로 내다봤다.",
       "title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑"
     },
+    "link:7d9fb2d15a742eac52786b67": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017030400002",
+      "source": "연합뉴스",
+      "source_body_digest": "9c10dc77c6faa6026771c225227c41117b98464c182ac9396dc57ba56b4b52eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f5a43f5709799e0a90a68e876f2236e5a2705bd60aa8cccfee94e4afa8dca7",
+      "source_fact_keys": [
+        "source_fact:v1:0842796ae614591e277233f96a68a3d531438811c3d9527c5940e640f7db5b24",
+        "source_fact:v1:7eadda8106e68c78c1fe5a6ec8b3a404ae8a06573c914cb9ad7e4f40c9407352",
+        "source_fact:v1:f1bf597122101fbe247606fd486b5b4e100289c447f92922444651339a60824e"
+      ],
+      "source_published_kst": "2026-10-19T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스",
+      "telegram_core_fact": "이런 가운데 반복적으로 담합 사건에 이름을 올리는 사업자에 제재 실효성을 높여야 한다는 지적도 나온다.",
+      "title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스"
+    },
     "link:7db008139db8b8f4245f272e": {
       "first_seen_kst": "2026-10-08T22:29:06+09:00",
       "lanes": {
@@ -217919,6 +218342,28 @@
       "source_title": "저가커피업계, 원두 직접 생산해 원가 절감·공급 안정화 | 연합뉴스",
       "telegram_core_fact": "저가커피 프랜차이즈 업계가 원두를 직접 생산·공급하는 체계를 강화하며 원가 절감과 품질 관리, 공급 안정화에 나서고 있다. 가맹점 확대에 따라 원두를 안정적으로 공급하기 위해 공장을 건립했다고 메가MGC커피는 설명했다.",
       "title": "저가커피업계, 원두 직접 생산해 원가 절감·공급 안정화 | 연합뉴스"
+    },
+    "link:93b4c9497b93b8a3acf95e19": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637078",
+      "source": "이투데이",
+      "source_body_digest": "f309ad255d19bd2dcc41afe01ad1a155d999b30659095fe271c032de9626ed8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d6872df020d28873a7002b4f040197ffde9f823799f54f6757c0586cda2da0e",
+      "source_fact_keys": [
+        "source_fact:v1:4247c0b4e3adca3e0da64424e68a28d72605805ca03534aa8bbf540f240c68a1",
+        "source_fact:v1:8169991f3f2c8f4ef37d7545924b68ee4d4c1873195279ef8b037cfbf7db3d26",
+        "source_fact:v1:dabef13fcaf5fba612cde96f92cde7d7526713523173c5e09330fb967029de0e"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산",
+      "telegram_core_fact": "전체 상품 매출에서 제로 상품이 차지하는 비중도 같은 기간 5.8%에서 6.8%로 상승했다. 초기 시장을 이끈 탄산음료는 최근 1년 전체 제로 상품 판매량의 42%를 차지해 가장 큰 비중을 유지했다.",
+      "title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산"
     },
     "link:93baa9d69742744364a11d15": {
       "first_seen_kst": "2026-10-15T09:43:41+09:00",
@@ -233420,6 +233865,24 @@
       "source_title": "시브릿지 골드, 와이오밍 구리·금 프로젝트 30만 달러에 인수",
       "telegram_core_fact": "시브릿지 골드(SA)가 오로젠 로열티스와 미국 와이오밍주 남부 슬로터하우스 프로젝트 지분 100%를 인수하는 매매계약을 체결했다고 13일 발표했다. 증권가 컨센서스에 따르면 시브릿지 골드의 주당순이익(EPS)은 2026년 0.25달러로 흑자전환할 것으로 예상된다.",
       "title": "시브릿지 골드, 와이오밍 구리·금 프로젝트 30만 달러에 인수"
+    },
+    "link:b7cd615bd1fc6eaa71f53312": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830208",
+      "source": "뉴시스",
+      "source_body_digest": "744cdc4b882ecab1a175c23caa9cdf515c5cc2a2a162dc80e14aef6ef0c3f212",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "서남권 메가프로젝트 본격 가동…앰코 투자계획 이행",
+      "telegram_core_fact": "이민우 산업통상부 산업성장실장은 19일 앰코 광주사업장에서 열린 '앰코 광주공장 증축 착공식'에 참석해 착공을 축하하고, 서남권 첨단반도체 투자 이행을 적극 지원하겠다고 밝혔다.",
+      "title": "서남권 메가프로젝트 본격 가동…앰코 투자계획 이행"
     },
     "link:b7ce1c6e4511729c2191de79": {
       "first_seen_kst": "2026-10-02T18:02:38+09:00",
@@ -252926,6 +253389,30 @@
       "source": "전자신문",
       "title": "리빌더AI, 소프트웨어에서 피지컬 AI로…“제조-ready product”"
     },
+    "link:e9bc9a2426542e3f52b21697": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018026100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4f6a3bcd5dd0432fef15273193f3f2851b9cb5af4c651c40b648b98c71eb15e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb79a9c9b47c1d42873aacd60b67b0d609caea807564bdc674c4879d6f9dd951",
+      "source_fact_keys": [
+        "source_fact:v1:2827fa0a31db18f0e407838f048ff172f56f94dd40e242e3a4556aa986968f3c",
+        "source_fact:v1:2c4217dbbee0822b23cef582385ab34011e4ebecf4a7b995b35cffc3efa5b7d3",
+        "source_fact:v1:4536a41fb7b40fe1c60a61c687b549cca952f465298bf52d4bc399669f99f46a",
+        "source_fact:v1:83ee2a9cec110a34cb34e17d74a536a60a69f19cf8736724e15b232a9b7dd1d1",
+        "source_fact:v1:c1a9183c74b201cdac79e206f96920d12d569fe9e63b934835122af30cbe457d"
+      ],
+      "source_published_kst": "2026-10-19T05:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스",
+      "telegram_core_fact": "특이사항이 없이 금융위 의결이 마무리되면, 핀다는 대원저축은행 인수를 위한 금융당국의 인허가 절차를 마무리하게 된다.",
+      "title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스"
+    },
     "link:e9c34b0b9a16b664b7ae169e": {
       "first_seen_kst": "2026-09-28T08:48:10+09:00",
       "lanes": {
@@ -264285,6 +264772,24 @@
       "source_title": "커피 홀딩, 250만달러 규모 자사주 매입 승인",
       "telegram_core_fact": "커피 홀딩(JVA)은 이사회가 발행 보통주를 최대 250만 달러까지 매입할 수 있는 자사주 매입 프로그램을 승인했다고 10월 7일 발표했다.",
       "title": "커피 홀딩, 250만달러 규모 자사주 매입 승인"
+    },
+    "original:0621fee1547c9d8d100577f4": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830208",
+      "source": "뉴시스",
+      "source_body_digest": "744cdc4b882ecab1a175c23caa9cdf515c5cc2a2a162dc80e14aef6ef0c3f212",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "서남권 메가프로젝트 본격 가동…앰코 투자계획 이행",
+      "telegram_core_fact": "이민우 산업통상부 산업성장실장은 19일 앰코 광주사업장에서 열린 '앰코 광주공장 증축 착공식'에 참석해 착공을 축하하고, 서남권 첨단반도체 투자 이행을 적극 지원하겠다고 밝혔다.",
+      "title": "서남권 메가프로젝트 본격 가동…앰코 투자계획 이행"
     },
     "original:062303f7a8ea75bcb890da21": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -278997,6 +279502,33 @@
       "link": "https://biz.heraldcorp.com/article/10884864",
       "source": "헤럴드경제",
       "title": "李대통령 “한·멕시코 무역협정 필요”…CEPA 공동연구 추진"
+    },
+    "original:2b96078f04aca901550a5892": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
     },
     "original:2b97f2c498a23ac5f8c8e0e4": {
       "first_seen_kst": "2026-10-02T16:20:30+09:00",
@@ -298828,6 +299360,24 @@
       "source_title": "솔랩, 달 탐사 핵심부품 공급…5면 태양전지판·배터리리스 전력계 개발",
       "telegram_core_fact": "우주 전력시스템 전문기업 솔랩(대표 김정식)이 국제 달 탐사 프로젝트에 다단 전개형 태양전지판과 배터리 없는 전력시스템 등 핵심 우주 부품을 공급한다.",
       "title": "솔랩, 달 탐사 핵심부품 공급…5면 태양전지판·배터리리스 전력계 개발"
+    },
+    "original:5d10936326a2a247a380121c": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830331",
+      "source": "뉴시스",
+      "source_body_digest": "43d492371511155a65037af57fcfce483e4d88673cb4b9a12d77770757f4ccd8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"짐은 호텔로, 할인은 카드로\"…외국인 관광객 잡는 백화점·아울렛",
+      "telegram_core_fact": "롯데백화점은 올해 업계 최초로 외국인 매출 1조원을 돌파했다.",
+      "title": "\"짐은 호텔로, 할인은 카드로\"…외국인 관광객 잡는 백화점·아울렛"
     },
     "original:5d1648b6e58ce59deb94db66": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
@@ -325382,6 +325932,28 @@
       "telegram_core_fact": "이달 1일부터 5일까지 여성용 하이넥 집업 판매량은 전년비 약 132%, 매출은 약 175% 증가했다. 같은 기간 남녀 공용 제품의 판매량과 매출도 각각 약 28%, 51% 늘었다.",
       "title": "꽃무늬 뽀글이 입어볼까…탑텐, 플리스 판매량 최대 132%↑"
     },
+    "original:a1095068c6ea740cd36c1ad7": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637078",
+      "source": "이투데이",
+      "source_body_digest": "f309ad255d19bd2dcc41afe01ad1a155d999b30659095fe271c032de9626ed8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d6872df020d28873a7002b4f040197ffde9f823799f54f6757c0586cda2da0e",
+      "source_fact_keys": [
+        "source_fact:v1:4247c0b4e3adca3e0da64424e68a28d72605805ca03534aa8bbf540f240c68a1",
+        "source_fact:v1:8169991f3f2c8f4ef37d7545924b68ee4d4c1873195279ef8b037cfbf7db3d26",
+        "source_fact:v1:dabef13fcaf5fba612cde96f92cde7d7526713523173c5e09330fb967029de0e"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산",
+      "telegram_core_fact": "전체 상품 매출에서 제로 상품이 차지하는 비중도 같은 기간 5.8%에서 6.8%로 상승했다. 초기 시장을 이끈 탄산음료는 최근 1년 전체 제로 상품 판매량의 42%를 차지해 가장 큰 비중을 유지했다.",
+      "title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산"
+    },
     "original:a11519f421fd9ddfd8aa94a3": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
@@ -326920,6 +327492,28 @@
       "source_title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장",
       "telegram_core_fact": "실제 웰크론한텍 중국법인은 현지 주요 리튬이온배터리 분리막 생산시설을 대상으로 총 4건의 에너지 설비 프로젝트를 따내며 올해 3분기 누적 수주액 242억원을 달성했다.",
       "title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장"
+    },
+    "original:a526f039a9e3ba32a0b33645": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017030400002",
+      "source": "연합뉴스",
+      "source_body_digest": "9c10dc77c6faa6026771c225227c41117b98464c182ac9396dc57ba56b4b52eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f5a43f5709799e0a90a68e876f2236e5a2705bd60aa8cccfee94e4afa8dca7",
+      "source_fact_keys": [
+        "source_fact:v1:0842796ae614591e277233f96a68a3d531438811c3d9527c5940e640f7db5b24",
+        "source_fact:v1:7eadda8106e68c78c1fe5a6ec8b3a404ae8a06573c914cb9ad7e4f40c9407352",
+        "source_fact:v1:f1bf597122101fbe247606fd486b5b4e100289c447f92922444651339a60824e"
+      ],
+      "source_published_kst": "2026-10-19T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스",
+      "telegram_core_fact": "이런 가운데 반복적으로 담합 사건에 이름을 올리는 사업자에 제재 실효성을 높여야 한다는 지적도 나온다.",
+      "title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스"
     },
     "original:a5328c564ccc236a51e1dc63": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
@@ -337616,6 +338210,30 @@
       "telegram_core_fact": "김진희 우주항공청 인공위성부문장은 “우주에서 모든 기능이 정상적으로 작동하는지 시험하기 위한 시제기와 시제기에서 개선이 필요한 사항을 검증해 올리는 검증기를 올려 성능을 확인했고, 절차 자동화 등을 거쳐 이번 양산기들의 영상을 조기에 확보했다”고 설명했다.",
       "title": "발사 14시간만에 첫 영상 보낸 초소형군집위성···다음 절차는?"
     },
+    "original:c0cd2226798ce0e207ce9e75": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018026100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4f6a3bcd5dd0432fef15273193f3f2851b9cb5af4c651c40b648b98c71eb15e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb79a9c9b47c1d42873aacd60b67b0d609caea807564bdc674c4879d6f9dd951",
+      "source_fact_keys": [
+        "source_fact:v1:2827fa0a31db18f0e407838f048ff172f56f94dd40e242e3a4556aa986968f3c",
+        "source_fact:v1:2c4217dbbee0822b23cef582385ab34011e4ebecf4a7b995b35cffc3efa5b7d3",
+        "source_fact:v1:4536a41fb7b40fe1c60a61c687b549cca952f465298bf52d4bc399669f99f46a",
+        "source_fact:v1:83ee2a9cec110a34cb34e17d74a536a60a69f19cf8736724e15b232a9b7dd1d1",
+        "source_fact:v1:c1a9183c74b201cdac79e206f96920d12d569fe9e63b934835122af30cbe457d"
+      ],
+      "source_published_kst": "2026-10-19T05:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스",
+      "telegram_core_fact": "특이사항이 없이 금융위 의결이 마무리되면, 핀다는 대원저축은행 인수를 위한 금융당국의 인허가 절차를 마무리하게 된다.",
+      "title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스"
+    },
     "original:c0d3e04aeadb6d8446e37872": {
       "first_seen_kst": "2026-10-15T19:21:06+09:00",
       "lanes": {
@@ -338574,6 +339192,37 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811376",
       "source": "뉴시스",
       "title": "'추석 연휴·보조금 소진'에 9월 내수 한풀꺾인 완성차…기아는 3Q 글로벌 역대급 실적"
+    },
+    "original:c3a1aef018676205616715aa": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
     },
     "original:c3a85a93ce4b985fcab66703": {
       "first_seen_kst": "2026-10-11T10:13:01+09:00",
@@ -414752,6 +415401,37 @@
       "telegram_core_fact": "화물 적재 공간을 갖춘 카고바이크로 제품군을 확대하면 개인 이동을 넘어 기업 간 거래(B2B) 기반 라스트마일 물류 시장까지 진출할 수 있다.",
       "title": "지바이크, 대만 기업과 '수소 카고바이크' 공동 개발…생활물류 시장 공략"
     },
+    "source_fact:21d95fe413ded0ecd3751d66": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
+    },
     "source_fact:21dd08a1a0f952b86bac7564": {
       "first_seen_kst": "2026-10-16T23:57:27+09:00",
       "lanes": {
@@ -429346,6 +430026,30 @@
       "telegram_core_fact": "SK그룹이 조(兆) 단위 자금을 투입해 미국 원전 기업 웨스팅하우스 지분을 인수하는 방안을 검토 중인 것으로 파악됐다.",
       "title": "[단독] 팀 코리아, 美웨스팅하우스 지분 인수 '兆단위 베팅'"
     },
+    "source_fact:2a88623673e48eeb9a7f19f3": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018026100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4f6a3bcd5dd0432fef15273193f3f2851b9cb5af4c651c40b648b98c71eb15e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb79a9c9b47c1d42873aacd60b67b0d609caea807564bdc674c4879d6f9dd951",
+      "source_fact_keys": [
+        "source_fact:v1:2827fa0a31db18f0e407838f048ff172f56f94dd40e242e3a4556aa986968f3c",
+        "source_fact:v1:2c4217dbbee0822b23cef582385ab34011e4ebecf4a7b995b35cffc3efa5b7d3",
+        "source_fact:v1:4536a41fb7b40fe1c60a61c687b549cca952f465298bf52d4bc399669f99f46a",
+        "source_fact:v1:83ee2a9cec110a34cb34e17d74a536a60a69f19cf8736724e15b232a9b7dd1d1",
+        "source_fact:v1:c1a9183c74b201cdac79e206f96920d12d569fe9e63b934835122af30cbe457d"
+      ],
+      "source_published_kst": "2026-10-19T05:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스",
+      "telegram_core_fact": "특이사항이 없이 금융위 의결이 마무리되면, 핀다는 대원저축은행 인수를 위한 금융당국의 인허가 절차를 마무리하게 된다.",
+      "title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스"
+    },
     "source_fact:2a89b45b38158b7ce08bed7c": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
       "lanes": {
@@ -430341,6 +431045,28 @@
       "source_title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등",
       "telegram_core_fact": "트럼프 대통령의 발언이 나온 이후 유가 상승폭은 일부 줄었지만, 중동의 원유 공급 불안이 이어지면서 국제유가는 결국 4% 넘게 오른 채 거래를 마쳤다.",
       "title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등"
+    },
+    "source_fact:2b16c59dd119c4aacdacbfa0": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637078",
+      "source": "이투데이",
+      "source_body_digest": "f309ad255d19bd2dcc41afe01ad1a155d999b30659095fe271c032de9626ed8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d6872df020d28873a7002b4f040197ffde9f823799f54f6757c0586cda2da0e",
+      "source_fact_keys": [
+        "source_fact:v1:4247c0b4e3adca3e0da64424e68a28d72605805ca03534aa8bbf540f240c68a1",
+        "source_fact:v1:8169991f3f2c8f4ef37d7545924b68ee4d4c1873195279ef8b037cfbf7db3d26",
+        "source_fact:v1:dabef13fcaf5fba612cde96f92cde7d7526713523173c5e09330fb967029de0e"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산",
+      "telegram_core_fact": "전체 상품 매출에서 제로 상품이 차지하는 비중도 같은 기간 5.8%에서 6.8%로 상승했다. 초기 시장을 이끈 탄산음료는 최근 1년 전체 제로 상품 판매량의 42%를 차지해 가장 큰 비중을 유지했다.",
+      "title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산"
     },
     "source_fact:2b1a2c4e7c578bc31724e5fc": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
@@ -436663,6 +437389,30 @@
       "telegram_core_fact": "누리호 5차 발사 때 국산 소자·부품 우주검증 위성 ‘E3T 2호기’ 본체의 제작 및 운용을 맡았다.",
       "title": "스타트업 군단, 누리호 발사 참여…민간 주도 '뉴스페이스' 개막"
     },
+    "source_fact:2f781200717a0b0a86835232": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018026100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4f6a3bcd5dd0432fef15273193f3f2851b9cb5af4c651c40b648b98c71eb15e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb79a9c9b47c1d42873aacd60b67b0d609caea807564bdc674c4879d6f9dd951",
+      "source_fact_keys": [
+        "source_fact:v1:2827fa0a31db18f0e407838f048ff172f56f94dd40e242e3a4556aa986968f3c",
+        "source_fact:v1:2c4217dbbee0822b23cef582385ab34011e4ebecf4a7b995b35cffc3efa5b7d3",
+        "source_fact:v1:4536a41fb7b40fe1c60a61c687b549cca952f465298bf52d4bc399669f99f46a",
+        "source_fact:v1:83ee2a9cec110a34cb34e17d74a536a60a69f19cf8736724e15b232a9b7dd1d1",
+        "source_fact:v1:c1a9183c74b201cdac79e206f96920d12d569fe9e63b934835122af30cbe457d"
+      ],
+      "source_published_kst": "2026-10-19T05:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스",
+      "telegram_core_fact": "특이사항이 없이 금융위 의결이 마무리되면, 핀다는 대원저축은행 인수를 위한 금융당국의 인허가 절차를 마무리하게 된다.",
+      "title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스"
+    },
     "source_fact:2f7b111168bcdc278ddca52b": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
       "lanes": {
@@ -438568,6 +439318,37 @@
       "source_title": "\"러시아 제재 해제 안 한다\"…EU, 젤렌스키 지지 결집",
       "telegram_core_fact": "안토니우 코스타 EU 정상회의 상임의장은 \"지금은 우크라이나 지지를 철회할 때가 아니다. 러시아 제재를 완화할 때도 아니다\"라며 \"오히려 우크라이나 지원을 확대하고 러시아 압박을 강화할 때\"라고 말했다.",
       "title": "\"러시아 제재 해제 안 한다\"…EU, 젤렌스키 지지 결집"
+    },
+    "source_fact:30babbf58dc24e414d47d8cf": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
     },
     "source_fact:30bc084a8cee61b6aec84b4a": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
@@ -445882,6 +446663,37 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
       "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
     },
+    "source_fact:3564f91a51b820546404b885": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
+    },
     "source_fact:357649c350460723f7cad9c3": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -447219,6 +448031,30 @@
       "source_title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑",
       "telegram_core_fact": "특히 캐터필러는 데이터센터 건설 장비뿐 아니라 전력 공급에 필요한 가스터빈 등도 공급하고 있어 AI 인프라 투자 확대의 수혜 기업으로 평가받고 있다. 미국 중장비 제조업체 캐터필러(CAT)가 인공지능(AI) 데이터센터 투자 확대와 글로벌 인프라 건설 수요에 힘입어 추가 상승할 가능성이 있다는 분석이 나왔다.",
       "title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑"
+    },
+    "source_fact:36770cf0a91bd8587c9a1b0c": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018026100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4f6a3bcd5dd0432fef15273193f3f2851b9cb5af4c651c40b648b98c71eb15e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb79a9c9b47c1d42873aacd60b67b0d609caea807564bdc674c4879d6f9dd951",
+      "source_fact_keys": [
+        "source_fact:v1:2827fa0a31db18f0e407838f048ff172f56f94dd40e242e3a4556aa986968f3c",
+        "source_fact:v1:2c4217dbbee0822b23cef582385ab34011e4ebecf4a7b995b35cffc3efa5b7d3",
+        "source_fact:v1:4536a41fb7b40fe1c60a61c687b549cca952f465298bf52d4bc399669f99f46a",
+        "source_fact:v1:83ee2a9cec110a34cb34e17d74a536a60a69f19cf8736724e15b232a9b7dd1d1",
+        "source_fact:v1:c1a9183c74b201cdac79e206f96920d12d569fe9e63b934835122af30cbe457d"
+      ],
+      "source_published_kst": "2026-10-19T05:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스",
+      "telegram_core_fact": "특이사항이 없이 금융위 의결이 마무리되면, 핀다는 대원저축은행 인수를 위한 금융당국의 인허가 절차를 마무리하게 된다.",
+      "title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스"
     },
     "source_fact:367c504d6014698c010536e7": {
       "first_seen_kst": "2026-10-18T17:16:37+09:00",
@@ -450645,6 +451481,37 @@
       "telegram_core_fact": "한국이 대미투자 1호 사업을 공식 발표하고 일부 투자금까지 미국으로 송금했지만, 한미 안보 협의체가 전혀 가동되지 않고 있는 것으로 알려졌다.",
       "title": "대미투자 송금까지 했는데 … 한미 안보협의체 공회전"
     },
+    "source_fact:38a6bbc42a44fc996f1a5711": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
+    },
     "source_fact:38a8e9717396f380a4a4f59d": {
       "first_seen_kst": "2026-10-15T13:40:20+09:00",
       "lanes": {
@@ -452851,6 +453718,33 @@
       "source_title": "AZZ, 2분기 매출 4억8700만 달러 17%↑…연간 가이던스 상향",
       "telegram_core_fact": "AZZ(AZZ)가 2027회계연도 2분기(2026년 6~8월) 매출액이 4억8690만 달러로 전년비 16.7% 증가했고, 비일반회계기준(Non-GAAP) 조정 희석 주당순이익(EPS)은 2.00달러로 29.0% 늘어 분기 기준 사상 최대 실적을 냈다고 13일(현지시간) 발표했다.",
       "title": "AZZ, 2분기 매출 4억8700만 달러 17%↑…연간 가이던스 상향"
+    },
+    "source_fact:3a2dc9d36f0763c26c6891dd": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
     },
     "source_fact:3a2e5f5e1c06b6586910e5af": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -456202,6 +457096,37 @@
       "source_title": "BYD, 헝가리에 유럽 정복 전초기지…27% 관세 피해 현지 생산 승부수",
       "telegram_core_fact": "중국산 전기차에 회사별로 부과되는 EU의 관세(최대 45.3%) 장벽을 넘기 위해 유럽 안에 생산기지와 공급망을 구축하고 있다.",
       "title": "BYD, 헝가리에 유럽 정복 전초기지…27% 관세 피해 현지 생산 승부수"
+    },
+    "source_fact:3c4bc624b6fcf27ffe29061c": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
     },
     "source_fact:3c4c63f128595249e6bc0897": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
@@ -460029,6 +460954,28 @@
       "source_title": "리바이스트라우스 앤 코, 3분기 매출 16억 달러 4%↑·EPS 전망 상향",
       "telegram_core_fact": "리바이스트라우스 앤 코(LEVI)는 8월 30일 종료된 2026 회계연도 3분기 매출액이 16억970만 달러로 전년비 4.3% 증가했고, 계속사업 희석 주당순이익(GAAP)은 0.43달러로 전년 동기(0.31달러) 대비 38.7% 늘었다고 7일(현지시간) 발표했다.",
       "title": "리바이스트라우스 앤 코, 3분기 매출 16억 달러 4%↑·EPS 전망 상향"
+    },
+    "source_fact:3eecbde21d16986670c089e9": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017030400002",
+      "source": "연합뉴스",
+      "source_body_digest": "9c10dc77c6faa6026771c225227c41117b98464c182ac9396dc57ba56b4b52eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f5a43f5709799e0a90a68e876f2236e5a2705bd60aa8cccfee94e4afa8dca7",
+      "source_fact_keys": [
+        "source_fact:v1:0842796ae614591e277233f96a68a3d531438811c3d9527c5940e640f7db5b24",
+        "source_fact:v1:7eadda8106e68c78c1fe5a6ec8b3a404ae8a06573c914cb9ad7e4f40c9407352",
+        "source_fact:v1:f1bf597122101fbe247606fd486b5b4e100289c447f92922444651339a60824e"
+      ],
+      "source_published_kst": "2026-10-19T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스",
+      "telegram_core_fact": "이런 가운데 반복적으로 담합 사건에 이름을 올리는 사업자에 제재 실효성을 높여야 한다는 지적도 나온다.",
+      "title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스"
     },
     "source_fact:3ef60a8de64728cd3a1d507d": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
@@ -474411,6 +475358,33 @@
       "telegram_core_fact": "한국토지주택공사(LH)가 주택공급 사업의 병목을 줄이고 착공 일정을 앞당기는데 박차를 가하고 있다. 보상에 들어간 지 한 달가량 지난 9월 초 기준 계약률은 토지 소유자 수 기준 약 27%, 보상 계약액은 약 2조4000억원으로 집계됐다.",
       "title": "\"계획보다 더 빨리\"…LH, 사업 병목 풀고 주택공급 속도전"
     },
+    "source_fact:47c5b48d11219da5cb21e57f": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
+    },
     "source_fact:47c60e3f269dee486cca2f95": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -486616,6 +487590,37 @@
       "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
       "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
+    },
+    "source_fact:4f4f7608b4ccbb5b4509e30c": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
     },
     "source_fact:4f5019a2176ded1e1ae2e44e": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
@@ -513565,6 +514570,37 @@
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "리노공업, 중장기 주목할 부분은 CPO…목표가↑-DS"
     },
+    "source_fact:5fe0c3874b41037af074b606": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
+    },
     "source_fact:5fe3e3adfdb98d1268d7bc83": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
       "lanes": {
@@ -522428,6 +523464,30 @@
       "source_title": "\"美, 경윳값 잡으려 러·이란 '그림자 선단' 제재완화도 검토\" | 연합뉴스",
       "telegram_core_fact": "다음 달 중간선거를 앞두고 경윳값이 오르자 도널드 트럼프 미국 대통령이 러시아와 이란의 '그림자 선단'에 대한 제재를 완화하는 방안도 검토 중이라고 파이낸셜타임스(FT)가 15일(현지시간) 보도했다.",
       "title": "\"美, 경윳값 잡으려 러·이란 '그림자 선단' 제재완화도 검토\" | 연합뉴스"
+    },
+    "source_fact:660041855f1332ceabada84d": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018026100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4f6a3bcd5dd0432fef15273193f3f2851b9cb5af4c651c40b648b98c71eb15e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb79a9c9b47c1d42873aacd60b67b0d609caea807564bdc674c4879d6f9dd951",
+      "source_fact_keys": [
+        "source_fact:v1:2827fa0a31db18f0e407838f048ff172f56f94dd40e242e3a4556aa986968f3c",
+        "source_fact:v1:2c4217dbbee0822b23cef582385ab34011e4ebecf4a7b995b35cffc3efa5b7d3",
+        "source_fact:v1:4536a41fb7b40fe1c60a61c687b549cca952f465298bf52d4bc399669f99f46a",
+        "source_fact:v1:83ee2a9cec110a34cb34e17d74a536a60a69f19cf8736724e15b232a9b7dd1d1",
+        "source_fact:v1:c1a9183c74b201cdac79e206f96920d12d569fe9e63b934835122af30cbe457d"
+      ],
+      "source_published_kst": "2026-10-19T05:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스",
+      "telegram_core_fact": "특이사항이 없이 금융위 의결이 마무리되면, 핀다는 대원저축은행 인수를 위한 금융당국의 인허가 절차를 마무리하게 된다.",
+      "title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스"
     },
     "source_fact:660463daacb1b6c7363c99c6": {
       "first_seen_kst": "2026-10-10T03:26:28+09:00",
@@ -588248,6 +589308,28 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 한국의 대미투자금 중 500억달러가 알래스카 액화천연가스(LNG) 프로젝트에 투입된다고 발표한 뒤에도 한국의 관리들이 계속 반박하고 있다고 알래스카퍼블리미디어가 9일(현지시간) 보도했다.",
       "title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”"
     },
+    "source_fact:9110889fe0e87777b1f434ee": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017030400002",
+      "source": "연합뉴스",
+      "source_body_digest": "9c10dc77c6faa6026771c225227c41117b98464c182ac9396dc57ba56b4b52eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f5a43f5709799e0a90a68e876f2236e5a2705bd60aa8cccfee94e4afa8dca7",
+      "source_fact_keys": [
+        "source_fact:v1:0842796ae614591e277233f96a68a3d531438811c3d9527c5940e640f7db5b24",
+        "source_fact:v1:7eadda8106e68c78c1fe5a6ec8b3a404ae8a06573c914cb9ad7e4f40c9407352",
+        "source_fact:v1:f1bf597122101fbe247606fd486b5b4e100289c447f92922444651339a60824e"
+      ],
+      "source_published_kst": "2026-10-19T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스",
+      "telegram_core_fact": "이런 가운데 반복적으로 담합 사건에 이름을 올리는 사업자에 제재 실효성을 높여야 한다는 지적도 나온다.",
+      "title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스"
+    },
     "source_fact:911132d91e8026e39e71bc70": {
       "first_seen_kst": "2026-10-14T23:19:07+09:00",
       "lanes": {
@@ -603825,6 +604907,28 @@
       "source_title": "개미, 주식 7조 던지고 채권 10조 담았다",
       "telegram_core_fact": "금융투자협회와 한국거래소에 따르면 올 3분기(7~9월) 개인투자자의 장외채권 순매수액은 10조4028억원으로 집계됐다. 지난 3분기에 개인들은 유가증권시장에서 7조원 넘게 순매도하면서 채권은 10조원 넘게 사들였다.",
       "title": "개미, 주식 7조 던지고 채권 10조 담았다"
+    },
+    "source_fact:9b45d9fe799feacdc93e8a86": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017030400002",
+      "source": "연합뉴스",
+      "source_body_digest": "9c10dc77c6faa6026771c225227c41117b98464c182ac9396dc57ba56b4b52eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f5a43f5709799e0a90a68e876f2236e5a2705bd60aa8cccfee94e4afa8dca7",
+      "source_fact_keys": [
+        "source_fact:v1:0842796ae614591e277233f96a68a3d531438811c3d9527c5940e640f7db5b24",
+        "source_fact:v1:7eadda8106e68c78c1fe5a6ec8b3a404ae8a06573c914cb9ad7e4f40c9407352",
+        "source_fact:v1:f1bf597122101fbe247606fd486b5b4e100289c447f92922444651339a60824e"
+      ],
+      "source_published_kst": "2026-10-19T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스",
+      "telegram_core_fact": "이런 가운데 반복적으로 담합 사건에 이름을 올리는 사업자에 제재 실효성을 높여야 한다는 지적도 나온다.",
+      "title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스"
     },
     "source_fact:9b48809c05b2554852f58ef9": {
       "first_seen_kst": "2026-10-12T09:29:59+09:00",
@@ -645925,6 +647029,37 @@
       "telegram_core_fact": "해상 봉쇄망을 뚫고 이란산 원유를 밀수출하던 유령선들을 대거 제재 명단에 올리면서 이란의 경제적 숨통을 완전히 끊겠다는 구상이다.",
       "title": "유령선 17척의 비밀…미국 ‘경제적 고립 작전’에 이란 숨통 막히나 [밀리터리노트]"
     },
+    "source_fact:b61cda01beceafc883aa3de0": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
+    },
     "source_fact:b62008c41e671b49c0e84eaa": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
       "lanes": {
@@ -648195,6 +649330,37 @@
       "telegram_core_fact": "케이엠제약 관계자는 \"이번 채용은 생산과 물류, 영업 등 주요 직군의 인력을 확보해 사업 확대에 대응하기 위한 것\"이라며 \"각 분야의 전문 인력을 통해 생산 안정성과 고객 대응력을 높여나갈 계획\"이라고 말했다.",
       "title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용"
     },
+    "source_fact:b7ba484cddaf48290e98f344": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
+    },
     "source_fact:b7bdcdefcf246fc3d7488582": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
       "lanes": {
@@ -648903,6 +650069,33 @@
       ],
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
+    "source_fact:b8318d5bd6520b7df77bda61": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
     },
     "source_fact:b833a70b995422355b5c4841": {
       "first_seen_kst": "2026-10-10T22:01:04+09:00",
@@ -679065,6 +680258,37 @@
       "source_published_kst": "2026-10-06T18:04+09:00",
       "title": "가을에만 파는데 3000만잔…스타벅스 ‘블글라’ 8년째 흥행"
     },
+    "source_fact:cb8f7a8ba4d26e904ba37338": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
+    },
     "source_fact:cb96c39d58cc6237d8fd3ae8": {
       "first_seen_kst": "2026-10-15T07:35:02+09:00",
       "lanes": {
@@ -680391,6 +681615,33 @@
       "source_title": "홍라희, 삼성 지분 2.6조 이재용에 증여 | 중앙일보",
       "telegram_core_fact": "이재용 삼성전자 회장이 모친인 홍라희(사진) 리움미술관 명예관장의 삼성전자 주식 1115만8000주(0.17%)를 증여받는다고 13일 공시했다. 증여 완료 시 이 회장의 주식 수는 1억1637만7053주, 지분율은 1.75%로 늘어나며 홍 관장의 지분율은 0.98%에서 0.81%로 감소한다.",
       "title": "홍라희, 삼성 지분 2.6조 이재용에 증여 | 중앙일보"
+    },
+    "source_fact:cc7c22fc735060ef239ca6b7": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
     },
     "source_fact:cc83977517fb9cad4c0de73e": {
       "first_seen_kst": "2026-10-14T03:39:25+09:00",
@@ -684141,6 +685392,33 @@
       "source_title": "폭스바겐그룹, 3분기 누적 600만대 인도…유럽 대기 물량 10대 중 4대 전기차",
       "telegram_core_fact": "폭스바겐그룹은 올해 1~9월 글로벌 인도량 601만대를 기록했다고 13일 밝혔다. 글로벌 기준으로는 3분기까지의 누적 인도량이 전년비 약 9% 감소했다.",
       "title": "폭스바겐그룹, 3분기 누적 600만대 인도…유럽 대기 물량 10대 중 4대 전기차"
+    },
+    "source_fact:ceece07f5b72cd545b7def7f": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
     },
     "source_fact:ceee4f0d8c06f4335d0f8d18": {
       "first_seen_kst": "2026-10-14T13:28:53+09:00",
@@ -690431,6 +691709,37 @@
       ],
       "source_published_kst": "2026-10-07T03:50+09:00",
       "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
+    },
+    "source_fact:d30d733de54c62e6b505a13c": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
     },
     "source_fact:d31627a8107c78e47139d878": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
@@ -705104,6 +706413,33 @@
       "source_published_kst": "2026-10-06T18:13+09:00",
       "title": "[BioS]알테오젠, 알테오젠바이오로직스 합병 결정"
     },
+    "source_fact:dc468d568cd9fdebe230034e": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
+    },
     "source_fact:dc4879a7519aac8e2eae4b73": {
       "first_seen_kst": "2026-10-16T14:45:17+09:00",
       "lanes": {
@@ -714828,6 +716164,33 @@
       "source_title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’",
       "telegram_core_fact": "“과징금이 처벌이 아닌 기업의 영업비용으로 전락해서는 안 된다”며 “반복적인 소비자 기만행위를 막을 수 있도록 공정위의 제재 실효성을 강화해야 한다”고 강조했다.",
       "title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’"
+    },
+    "source_fact:e232133f6336d5fe90e4269d": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
     },
     "source_fact:e235d165821cc7bc60bb00d8": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -732604,6 +733967,37 @@
       "telegram_core_fact": "미국에서 인공지능(AI) 데이터센터 건설 확대와 노후 전력망 교체 수요가 겹치면서 초고압 변압기를 주문한 뒤 납품 받기까지 최대 5년이 걸리는 공급난이 이어지고 있다.",
       "title": "'AIDC 확대' 美 초고압 변압기 주문량 폭발…한국산 수입액 1위"
     },
+    "source_fact:ed8ad42c9b244f69ca8509c6": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
+    },
     "source_fact:ed8cbfacad94e285400762bb": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -733647,6 +735041,30 @@
       "source_title": "미래에셋 'TIGER 달러 단기자산 ETF' 2종, 합산 순자산 1조 돌파",
       "telegram_core_fact": "미래에셋자산운용은 달러 단기자산 상장지수펀드(ETF) 2종 ‘TIGER 미국달러단기채권액티브’와 ‘TIGER 미국초단기(3개월이하)국채’의 합산 순자산이 1조원을 돌파했다고 8일 밝혔다.",
       "title": "미래에셋 'TIGER 달러 단기자산 ETF' 2종, 합산 순자산 1조 돌파"
+    },
+    "source_fact:ee78c7c7d957093bb5f78f90": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018026100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4f6a3bcd5dd0432fef15273193f3f2851b9cb5af4c651c40b648b98c71eb15e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb79a9c9b47c1d42873aacd60b67b0d609caea807564bdc674c4879d6f9dd951",
+      "source_fact_keys": [
+        "source_fact:v1:2827fa0a31db18f0e407838f048ff172f56f94dd40e242e3a4556aa986968f3c",
+        "source_fact:v1:2c4217dbbee0822b23cef582385ab34011e4ebecf4a7b995b35cffc3efa5b7d3",
+        "source_fact:v1:4536a41fb7b40fe1c60a61c687b549cca952f465298bf52d4bc399669f99f46a",
+        "source_fact:v1:83ee2a9cec110a34cb34e17d74a536a60a69f19cf8736724e15b232a9b7dd1d1",
+        "source_fact:v1:c1a9183c74b201cdac79e206f96920d12d569fe9e63b934835122af30cbe457d"
+      ],
+      "source_published_kst": "2026-10-19T05:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스",
+      "telegram_core_fact": "특이사항이 없이 금융위 의결이 마무리되면, 핀다는 대원저축은행 인수를 위한 금융당국의 인허가 절차를 마무리하게 된다.",
+      "title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스"
     },
     "source_fact:ee7ee4f6cd3fe802b1473375": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
@@ -740692,6 +742110,33 @@
       "telegram_core_fact": "도널드 트럼프 미국 행정부가 우크라이나에 러시아 에너지 시설 공격을 중단하도록 압박하기 위해 무기 공급 중단을 위협했다고 파이낸셜타임스(FT)가 11일(현지 시간) 보도했다. 미국의 메시지에는 정보 공유 중단, '우크라이나 우선요구목록(PURL)'을 중단할 수 있다는 위협이 포함된 것으로 전해졌다.",
       "title": "美, 우크라 전방위 압박…\"무기도 안 준다\" 위협"
     },
+    "source_fact:f3115bdfd1229709e00e9c23": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
+    },
     "source_fact:f324f1ab961919649a875181": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
       "lanes": {
@@ -744973,6 +746418,28 @@
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "샌프란시스코 연은 총재 \"AI발 인플레, 단발성 아닐 수도\""
     },
+    "source_fact:f5f9c1da3df2efe05afed819": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637078",
+      "source": "이투데이",
+      "source_body_digest": "f309ad255d19bd2dcc41afe01ad1a155d999b30659095fe271c032de9626ed8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d6872df020d28873a7002b4f040197ffde9f823799f54f6757c0586cda2da0e",
+      "source_fact_keys": [
+        "source_fact:v1:4247c0b4e3adca3e0da64424e68a28d72605805ca03534aa8bbf540f240c68a1",
+        "source_fact:v1:8169991f3f2c8f4ef37d7545924b68ee4d4c1873195279ef8b037cfbf7db3d26",
+        "source_fact:v1:dabef13fcaf5fba612cde96f92cde7d7526713523173c5e09330fb967029de0e"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산",
+      "telegram_core_fact": "전체 상품 매출에서 제로 상품이 차지하는 비중도 같은 기간 5.8%에서 6.8%로 상승했다. 초기 시장을 이끈 탄산음료는 최근 1년 전체 제로 상품 판매량의 42%를 차지해 가장 큰 비중을 유지했다.",
+      "title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산"
+    },
     "source_fact:f5fc4c55eeb121214a5c0ab3": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
       "lanes": {
@@ -745862,6 +747329,28 @@
       "source_title": "국내 가상자산 적립식 매수 1조원 육박…하락장에도 꾸준 | 연합뉴스",
       "telegram_core_fact": "국내 가상자산 적립식 매수 서비스 '모으기'의 누적 투자액이 1조원에 육박한 것으로 나타났다. 디지털엑스는 이용자가 3천830명(11.3%) 증가한 3만7천659명을 기록했지만, 투자액은 278억원(14.1%) 감소한 1천699억원으로 집계됐다.",
       "title": "국내 가상자산 적립식 매수 1조원 육박…하락장에도 꾸준 | 연합뉴스"
+    },
+    "source_fact:f6a09ede7ead98bba55d7ca0": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637078",
+      "source": "이투데이",
+      "source_body_digest": "f309ad255d19bd2dcc41afe01ad1a155d999b30659095fe271c032de9626ed8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d6872df020d28873a7002b4f040197ffde9f823799f54f6757c0586cda2da0e",
+      "source_fact_keys": [
+        "source_fact:v1:4247c0b4e3adca3e0da64424e68a28d72605805ca03534aa8bbf540f240c68a1",
+        "source_fact:v1:8169991f3f2c8f4ef37d7545924b68ee4d4c1873195279ef8b037cfbf7db3d26",
+        "source_fact:v1:dabef13fcaf5fba612cde96f92cde7d7526713523173c5e09330fb967029de0e"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산",
+      "telegram_core_fact": "전체 상품 매출에서 제로 상품이 차지하는 비중도 같은 기간 5.8%에서 6.8%로 상승했다. 초기 시장을 이끈 탄산음료는 최근 1년 전체 제로 상품 판매량의 42%를 차지해 가장 큰 비중을 유지했다.",
+      "title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산"
     },
     "source_fact:f6ac460ded4c947379db440e": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
@@ -761990,6 +763479,24 @@
       "telegram_core_fact": "커피 홀딩(JVA)은 이사회가 발행 보통주를 최대 250만 달러까지 매입할 수 있는 자사주 매입 프로그램을 승인했다고 10월 7일 발표했다.",
       "title": "커피 홀딩, 250만달러 규모 자사주 매입 승인"
     },
+    "title:0621fee1547c9d8d100577f4": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830208",
+      "source": "뉴시스",
+      "source_body_digest": "744cdc4b882ecab1a175c23caa9cdf515c5cc2a2a162dc80e14aef6ef0c3f212",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "서남권 메가프로젝트 본격 가동…앰코 투자계획 이행",
+      "telegram_core_fact": "이민우 산업통상부 산업성장실장은 19일 앰코 광주사업장에서 열린 '앰코 광주공장 증축 착공식'에 참석해 착공을 축하하고, 서남권 첨단반도체 투자 이행을 적극 지원하겠다고 밝혔다.",
+      "title": "서남권 메가프로젝트 본격 가동…앰코 투자계획 이행"
+    },
     "title:062303f7a8ea75bcb890da21": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
       "lanes": {
@@ -776983,6 +778490,33 @@
       "link": "https://biz.heraldcorp.com/article/10884864",
       "source": "헤럴드경제",
       "title": "李대통령 “한·멕시코 무역협정 필요”…CEPA 공동연구 추진"
+    },
+    "title:2b96078f04aca901550a5892": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830711",
+      "source": "뉴시스",
+      "source_body_digest": "30ab7997678b6a0995de767710114cd212dcfaaf6cf487a113cbbd9729b8d668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8cd8be0c0e0436211c01608610075f2e9fec9508538a78aee42b2a235e15c75",
+      "source_fact_keys": [
+        "source_fact:v1:032421b5a8841782751766bf506ac1c02bb72ba72006e80c8021b2569eb9117e",
+        "source_fact:v1:054ed33c72faa818d26a63fe2bcaeaa854c219489f8031f2839658aac60abeaa",
+        "source_fact:v1:1fc8fea36475980d2be3e962a453321d8b856a445088f978b64e530594b6bd93",
+        "source_fact:v1:33cca185b3130426ab5d11f5c1f01ca8f8f3887a5f4d1e15fe5e041e133acc6c",
+        "source_fact:v1:6048984b38062902a2c2e3c5fc23e8d7a8c1e5f7d74eadc53c0db16d1bfb66db",
+        "source_fact:v1:66d7cba05c8ae274573e7a95fad2622e289435208790c3e39bf48137cd6bf7cc",
+        "source_fact:v1:9a2e5104350d184c0a74dece58e8ff1c72c51ec359e88ac8ee2df2fe8e03e93e",
+        "source_fact:v1:f8beee0c068d2010e0ab8ae3b59a4df56570a2a9ddcbcfd5635164eb0f1414ca"
+      ],
+      "source_published_kst": "2026-10-19T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 의회에서 초당적 지지로 통과된 러시아 제재를 면제하자 공화당 내부에서 반발이 확산하고 있다.",
+      "title": "트럼프 '러 제재 면제' 후폭풍…공화당서도 반발, 하원의장 \"푸틴 못 믿어\""
     },
     "title:2b97f2c498a23ac5f8c8e0e4": {
       "first_seen_kst": "2026-10-02T16:20:30+09:00",
@@ -797191,6 +798725,24 @@
       "source_title": "솔랩, 달 탐사 핵심부품 공급…5면 태양전지판·배터리리스 전력계 개발",
       "telegram_core_fact": "우주 전력시스템 전문기업 솔랩(대표 김정식)이 국제 달 탐사 프로젝트에 다단 전개형 태양전지판과 배터리 없는 전력시스템 등 핵심 우주 부품을 공급한다.",
       "title": "솔랩, 달 탐사 핵심부품 공급…5면 태양전지판·배터리리스 전력계 개발"
+    },
+    "title:5d10936326a2a247a380121c": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830331",
+      "source": "뉴시스",
+      "source_body_digest": "43d492371511155a65037af57fcfce483e4d88673cb4b9a12d77770757f4ccd8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"짐은 호텔로, 할인은 카드로\"…외국인 관광객 잡는 백화점·아울렛",
+      "telegram_core_fact": "롯데백화점은 올해 업계 최초로 외국인 매출 1조원을 돌파했다.",
+      "title": "\"짐은 호텔로, 할인은 카드로\"…외국인 관광객 잡는 백화점·아울렛"
     },
     "title:5d1275d37d9ab016ae433c4b": {
       "first_seen_kst": "2026-10-12T21:44:29+09:00",
@@ -824386,6 +825938,28 @@
       "telegram_core_fact": "이달 1일부터 5일까지 여성용 하이넥 집업 판매량은 전년비 약 132%, 매출은 약 175% 증가했다. 같은 기간 남녀 공용 제품의 판매량과 매출도 각각 약 28%, 51% 늘었다.",
       "title": "꽃무늬 뽀글이 입어볼까…탑텐, 플리스 판매량 최대 132%↑"
     },
+    "title:a1095068c6ea740cd36c1ad7": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637078",
+      "source": "이투데이",
+      "source_body_digest": "f309ad255d19bd2dcc41afe01ad1a155d999b30659095fe271c032de9626ed8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d6872df020d28873a7002b4f040197ffde9f823799f54f6757c0586cda2da0e",
+      "source_fact_keys": [
+        "source_fact:v1:4247c0b4e3adca3e0da64424e68a28d72605805ca03534aa8bbf540f240c68a1",
+        "source_fact:v1:8169991f3f2c8f4ef37d7545924b68ee4d4c1873195279ef8b037cfbf7db3d26",
+        "source_fact:v1:dabef13fcaf5fba612cde96f92cde7d7526713523173c5e09330fb967029de0e"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산",
+      "telegram_core_fact": "전체 상품 매출에서 제로 상품이 차지하는 비중도 같은 기간 5.8%에서 6.8%로 상승했다. 초기 시장을 이끈 탄산음료는 최근 1년 전체 제로 상품 판매량의 42%를 차지해 가장 큰 비중을 유지했다.",
+      "title": "10명 중 3명 ‘제로’ 산다…2030이 이끈 시장, 젤리·숙취해소제로 확산"
+    },
     "title:a11519f421fd9ddfd8aa94a3": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
@@ -825979,6 +827553,28 @@
       "source_title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장",
       "telegram_core_fact": "실제 웰크론한텍 중국법인은 현지 주요 리튬이온배터리 분리막 생산시설을 대상으로 총 4건의 에너지 설비 프로젝트를 따내며 올해 3분기 누적 수주액 242억원을 달성했다.",
       "title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장"
+    },
+    "title:a526f039a9e3ba32a0b33645": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017030400002",
+      "source": "연합뉴스",
+      "source_body_digest": "9c10dc77c6faa6026771c225227c41117b98464c182ac9396dc57ba56b4b52eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f5a43f5709799e0a90a68e876f2236e5a2705bd60aa8cccfee94e4afa8dca7",
+      "source_fact_keys": [
+        "source_fact:v1:0842796ae614591e277233f96a68a3d531438811c3d9527c5940e640f7db5b24",
+        "source_fact:v1:7eadda8106e68c78c1fe5a6ec8b3a404ae8a06573c914cb9ad7e4f40c9407352",
+        "source_fact:v1:f1bf597122101fbe247606fd486b5b4e100289c447f92922444651339a60824e"
+      ],
+      "source_published_kst": "2026-10-19T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스",
+      "telegram_core_fact": "이런 가운데 반복적으로 담합 사건에 이름을 올리는 사업자에 제재 실효성을 높여야 한다는 지적도 나온다.",
+      "title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스"
     },
     "title:a5328c564ccc236a51e1dc63": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
@@ -837005,6 +838601,30 @@
       "telegram_core_fact": "김진희 우주항공청 인공위성부문장은 “우주에서 모든 기능이 정상적으로 작동하는지 시험하기 위한 시제기와 시제기에서 개선이 필요한 사항을 검증해 올리는 검증기를 올려 성능을 확인했고, 절차 자동화 등을 거쳐 이번 양산기들의 영상을 조기에 확보했다”고 설명했다.",
       "title": "발사 14시간만에 첫 영상 보낸 초소형군집위성···다음 절차는?"
     },
+    "title:c0cd2226798ce0e207ce9e75": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018026100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4f6a3bcd5dd0432fef15273193f3f2851b9cb5af4c651c40b648b98c71eb15e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb79a9c9b47c1d42873aacd60b67b0d609caea807564bdc674c4879d6f9dd951",
+      "source_fact_keys": [
+        "source_fact:v1:2827fa0a31db18f0e407838f048ff172f56f94dd40e242e3a4556aa986968f3c",
+        "source_fact:v1:2c4217dbbee0822b23cef582385ab34011e4ebecf4a7b995b35cffc3efa5b7d3",
+        "source_fact:v1:4536a41fb7b40fe1c60a61c687b549cca952f465298bf52d4bc399669f99f46a",
+        "source_fact:v1:83ee2a9cec110a34cb34e17d74a536a60a69f19cf8736724e15b232a9b7dd1d1",
+        "source_fact:v1:c1a9183c74b201cdac79e206f96920d12d569fe9e63b934835122af30cbe457d"
+      ],
+      "source_published_kst": "2026-10-19T05:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스",
+      "telegram_core_fact": "특이사항이 없이 금융위 의결이 마무리되면, 핀다는 대원저축은행 인수를 위한 금융당국의 인허가 절차를 마무리하게 된다.",
+      "title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스"
+    },
     "title:c0d3e04aeadb6d8446e37872": {
       "first_seen_kst": "2026-10-15T19:21:06+09:00",
       "lanes": {
@@ -838026,6 +839646,37 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811376",
       "source": "뉴시스",
       "title": "'추석 연휴·보조금 소진'에 9월 내수 한풀꺾인 완성차…기아는 3Q 글로벌 역대급 실적"
+    },
+    "title:c3a1aef018676205616715aa": {
+      "first_seen_kst": "2026-10-19T06:02:38+09:00",
+      "lanes": {
+        "live": "2026-10-19T06:02:38+09:00"
+      },
+      "last_seen_kst": "2026-10-19T06:02:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828310",
+      "source": "뉴시스",
+      "source_body_digest": "d86396eff243562f5d11592e685b5d941508a426d70c0fb60f33cf8d79adca21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b88aa1ae4be6a30595e841576be3b6804a3aa6969ecf0fae8bcfb6c1f5f17651",
+      "source_fact_keys": [
+        "source_fact:v1:4d110bfca1ac1ec4e885f4a95833271132519f61a75c1149773a8a8ef7c01ea4",
+        "source_fact:v1:4d6d8eee5a2e7d9b084e775369f4598856318b9a6af6535cb3cfc0f890910318",
+        "source_fact:v1:5895177f589a6858817a635e63c23f40da1587f6ca76db0bde091c9c37d040d4",
+        "source_fact:v1:85e9dd32e1981b87b02abdb413dff3b3b9be5a6af23d415dd115392cd45f0baa",
+        "source_fact:v1:87eb8e7d662caa7619df9344b3d4c00e3b4978b908e156f79dd62afa9c4cd6b4",
+        "source_fact:v1:9a71d919634675a676a592ca563b3c63f6dd8ec95394d4d037c4143d860b2f5e",
+        "source_fact:v1:b20c373404646379b2b4502f074469bf266b3eb2b41a6b51a99b4b7a5411c3d8",
+        "source_fact:v1:b3d8793a9a3e5998c5177dfd6cc7f388807111c5b8570ad9143ef6af311e29a4",
+        "source_fact:v1:c406a099205b8f8fce80b9fb1183abbd06a3bfa1cb93b9619a33be474cfe7f43",
+        "source_fact:v1:ca51cfdaeb520dad0d5f35ad36e6c7281f2a2074c8358c30a517067471449397",
+        "source_fact:v1:f52102f72666ab33134b22bc39676bf66e0c5ea4439d453d1bba8970680dd6ad",
+        "source_fact:v1:fcb1073b0942d3bcd24e197490336646e3149ab76394d335633fca5831534e04"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]",
+      "telegram_core_fact": "미국과 중국이 관세와 핵심 광물 수출통제 등을 둘러싼 갈등을 얼마나 완화할지, 한국이 미중 사이에서 반도체 ·배터리 등 핵심 산업의 공급망 안정과 시장 접근성을 확보할 수 있을지가 관건이다.",
+      "title": "한국, 미중 사이 실익 찾을까…통상·공급망 시험대 [③선전APEC D-30]"
     },
     "title:c3a85a93ce4b985fcab66703": {
       "first_seen_kst": "2026-10-11T10:13:01+09:00",
@@ -861984,5 +863635,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-19T05:12:02+09:00"
+  "updated_at_kst": "2026-10-19T06:02:38+09:00"
 }
