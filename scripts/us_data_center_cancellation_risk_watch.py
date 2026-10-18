@@ -26,6 +26,13 @@ FERC_ROSNER = "https://www.ferc.gov/news-events/news/commissioner-rosners-remark
 FERC_PJM_COST = "https://www.ferc.gov/news-events/news/commissioner-changs-concurrence-transmission-security-agreement-between-peco"
 FT_OCT18_URL = "https://www.ft.com/content/9ea5a37d-15c9-4d5b-94d6-719048c9cd3c"
 FT_OFFICIAL_POST = "https://bsky.app/profile/financialtimes.com/post/3my4rbhlidz2h"
+NSCALE_REUTERS = "https://www.reuters.com/business/media-telecom/microsoft-pulls-out-uk-data-center-deal-with-nscale-telegraph-reports-2026-10-18/"
+NSCALE_OFFICIAL_2025 = "https://www.nscale.com/press-releases/nscale-uk-ai-infrastructure-announcement"
+NSCALE_MSFT_OTHER_REGIONS = "https://www.nscale.com/press-releases/nscale-microsoft-2025"
+NSCALE_EVENT_DAY_UTC = dt.datetime(2026, 10, 18, 10, 1, tzinfo=dt.timezone.utc)
+NSCALE_EVENT_MAX_AGE_HOURS = 72
+NSCALE_ANCHOR_KEY = "nscale-microsoft-loughton-reported-termination-2026-10-18"
+
 OPENAI_STARGATE_OFFICIAL = "https://openai.com/index/announcing-the-stargate-project/"
 FT_OCT18_ANNOUNCED_UTC = dt.datetime(2026, 10, 18, 4, 26, 58, tzinfo=dt.timezone.utc)
 FT_CURRENT_STORY_MAX_AGE_HOURS = 72
@@ -61,6 +68,8 @@ NEWS_QUERIES = (
     'AI infrastructure financing debt project delays data centers US 2026',
     'data center lease amendment delivery penalties cost overrun tenant termination lender 2026',
     'data center refinancing credit spread covenant default investor bond yields 2026',
+    '"Microsoft" "Nscale" "Loughton" data centre contract termination grid Reuters Telegraph',
+    '"Nscale" "Loughton" "Microsoft" power connection withdrawal customer alternative 2026',
 )
 
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
@@ -213,7 +222,13 @@ def source_label(source: str, url: str = "") -> str:
 
 
 def classify(text: str) -> str:
-    low = (text or "").lower()
+    low = (text or "").lower().replace("data-center", "data center").replace("data-centre", "data centre")
+    if all(x in low for x in ("microsoft", "nscale")) and any(x in low for x in ("loughton", "essex")) and any(
+        x in low for x in ("pulls out", "pulled out", "pull out", "withdraw", "terminat", "cancel", "scrap", "axes")
+    ):
+        # Contract withdrawal reporting is not a cancelled data-center project,
+        # not an official Microsoft termination announcement.
+        return "고객 이용계약 철회 보도"
     # Financial pipeline risk is distinct from an actual cancelled project.
     if any(k in low for k in ("data center", "data centre", "datacenter", "ai infrastructure")) and any(
         k in low for k in (
@@ -238,8 +253,14 @@ def classify(text: str) -> str:
 
 
 def is_meaningful(title: str, source: str, domain: str) -> bool:
-    low = f"{title} {source}".lower()
+    low = f"{title} {source}".lower().replace("data-center", "data center").replace("data-centre", "data centre")
     theme = classify(low)
+    if theme == "고객 이용계약 철회 보도":
+        # A named customer exit at 50MW is material even below the generic
+        # US project cancellation screen of 250MW.
+        return trusted(domain) and all(x in low for x in ("microsoft", "nscale")) and any(
+            x in low for x in ("loughton", "essex")
+        )
     if theme == "기타":
         return False
 
@@ -336,7 +357,60 @@ def anchored_ft_oct18_event(now: dt.datetime | None = None) -> dict | None:
     }
 
 
+def anchored_nscale_loughton_event(now: dt.datetime | None = None) -> dict | None:
+    """First verified news event; Telegraph allegation reported by Reuters.
+    Nscale's Sep-2025 own release independently confirms site size and prior plan,
+    NOT the Oct-2026 withdrawal. No firm-party statement is implied.
+    """
+    now = now or dt.datetime.now(dt.timezone.utc)
+    hours = (now - NSCALE_EVENT_DAY_UTC).total_seconds() / 3600
+    if hours < 0 or hours > NSCALE_EVENT_MAX_AGE_HOURS:
+        return None
+    return {
+        "id": sig(NSCALE_ANCHOR_KEY, NSCALE_REUTERS),
+        "title": "Microsoft pulls out of UK data-center deal with Nscale in Loughton, Telegraph reports",
+        "url": NSCALE_REUTERS,
+        "source": "Reuters (The Telegraph 원보도 인용)",
+        "theme": "고객 이용계약 철회 보도",
+        "published": NSCALE_EVENT_DAY_UTC.strftime("%a, %d %b %Y %H:%M:%S GMT"),
+        "scale_mw": 50.0,
+        "nscale_loughton_media_anchor": True,
+        "official_contract_termination_confirmed": False,
+        "reported_power_delay_not_causal_proof": True,
+    }
+
+
+def nscale_is_same_initial_retelling(title: str, published: dt.datetime) -> bool:
+    """Collapse same day's wire rewrites without suppressing later confirmations."""
+    low = normalize(title).lower()
+    if published.date() > dt.date(2026, 10, 19):
+        return False
+    if re.search(r"confirms?|official statement|signed replacement|court filing|reversal", low):
+        return False
+    return (
+        "microsoft" in low and "nscale" in low
+        and any(x in low for x in ("loughton", "essex", "uk data"))
+        and any(x in low for x in ("withdraw", "pulls out", "pulled out", "cancel", "scrap", "axes"))
+    )
+
+
 def regression_checks() -> None:
+    assert classify("Microsoft pulls out of UK data-center deal with Nscale in Loughton") == "고객 이용계약 철회 보도"
+    assert is_meaningful(
+        "Microsoft pulls out of UK data-center deal with Nscale in Loughton",
+        "Reuters", "reuters.com"
+    )
+    assert not is_meaningful("Microsoft outlines UK data center expansion", "Reuters", "reuters.com")
+    assert anchored_nscale_loughton_event(NSCALE_EVENT_DAY_UTC) is not None
+    assert anchored_nscale_loughton_event(NSCALE_EVENT_DAY_UTC + dt.timedelta(hours=73)) is None
+    assert nscale_is_same_initial_retelling(
+        "Microsoft pulls out of UK data-center deal with Nscale in Loughton",
+        NSCALE_EVENT_DAY_UTC
+    )
+    assert not nscale_is_same_initial_retelling(
+        "Microsoft formally confirms the Nscale Loughton contract termination",
+        NSCALE_EVENT_DAY_UTC
+    )
     headline = "America's $10tn AI infrastructure boom is starting to fray"
     assert classify(headline) == "자금조달·계획 실현 위험"
     assert is_meaningful(headline, "Financial Times", "ft.com")
@@ -396,6 +470,9 @@ def collect_news() -> list[dict]:
                     dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=FINANCING_NEWS_MAX_AGE_HOURS)
                 ):
                     continue
+            if nscale_is_same_initial_retelling(title, published.astimezone(dt.timezone.utc)):
+                # The Reuters anchor below assigns one stable cross-source key.
+                continue
             # The verified anchor below already covers the same FT story.
             if "ft.com" in domain and "10tn" in title.lower() and "ai infrastructure" in title.lower():
                 continue
@@ -416,6 +493,9 @@ def collect_news() -> list[dict]:
     verified_ft = anchored_ft_oct18_event()
     if verified_ft:
         out.append(verified_ft)
+    verified_nscale = anchored_nscale_loughton_event()
+    if verified_nscale:
+        out.append(verified_nscale)
     return list({x["id"]: x for x in out}.values())
 
 
@@ -423,6 +503,7 @@ def source_priority(item: dict) -> tuple[int, int, str]:
     src = item.get("source", "")
     official = 0 if src in {"FERC", "미국 연방관보", "PJM", "Capgemini"} else 1
     theme_order = {
+        "고객 이용계약 철회 보도": -2,
         "자금조달·계획 실현 위험": -1,
         "프로젝트 취소·지연": 0,
         "재심사·접속승계": 1,
@@ -465,12 +546,35 @@ pending = {
     "fx_source": fx_source,
     "fx_checked_utc": fx_checked,
     "updated_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+    "nscale_loughton": {
+        "event_key": NSCALE_ANCHOR_KEY,
+        "site": "Loughton, Essex, UK",
+        "former_anchor_customer": "Microsoft",
+        "operator": "Nscale",
+        "site_initial_mw": 50,
+        "site_expandable_mw": 90,
+        "planned_nvidia_gb300_gpu_count": 23040,
+        "original_supply_target": "2027-Q1",
+        "first_media_report": "The Telegraph",
+        "reuters_followup_reported": sig(NSCALE_ANCHOR_KEY, NSCALE_REUTERS) in seen,
+        "microsoft_formal_cancellation_statement": False,
+        "reported_grid_availability": "2030년대, 언론보도 기준·전력회사 공식 원문 미확인",
+        "withdrawal_reason_confirmed": False,
+        "site_cancellation_confirmed": False,
+        "other_microsoft_contracts_terminated": False,
+        "contract_value_disclosed": False,
+        "news_link": NSCALE_REUTERS,
+        "historical_official_link": NSCALE_OFFICIAL_2025,
+    },
 }
 PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 if should_alert:
+    nscale_new = any(item.get("nscale_loughton_media_anchor") for item in new_items)
     if baseline_run:
-        headline = "✅ 미국 데이터센터 취소·지연·계통비용 위험 감시 시작"
+        headline = "✅ 데이터센터 취소·지연·계통비용 위험 감시 시작"
+    elif nscale_new:
+        headline = "⚠️ Microsoft–Nscale 영국 데이터센터 이용계약 철회 보도"
     else:
         headline = "⚠️ 미국 데이터센터 취소·지연·계통비용 변화"
 
@@ -507,6 +611,18 @@ if should_alert:
             msg.append(f"• 이번 핵심 변화 │ {a(title_ko, first.get('url',''))}")
         msg.append("• 판단 기준 │ 취소 → stranded cost → restudy → 추가 CAPEX·금융비용 → IRR 악화 경로 확인")
 
+    if nscale_new:
+        msg += ["", "<b>⚠️ 영국 로턴: 계약 철회 보도·전원 인가 병목</b>"]
+        msg.append("• <b>보도 상태</b> │ The Telegraph 최초 보도, Reuters 10월 18일 후속 보도. Microsoft 공식 철회사유 미공개")
+        msg.append("• <b>2025년 Nscale 당사자 발표</b> │ 로턴 초기 50MW→최대 90MW, NVIDIA GB300 23,040개, 2027년 1분기 공급 목표")
+        msg.append("• <b>핵심 변화</b> │ Microsoft의 로턴 시설 이용계약 철회 보도. 로턴 데이터센터 사업 전체 취소·Nscale 다른 고객계약 취소 아님")
+        msg.append("• <b>전력 위험</b> │ 2030년대 전력 공급 가능하다는 언론보도. 실제 철회사유 및 전력회사 공식 확정 문서는 별도 확인 필요")
+        msg.append("• <b>재무 영향</b> │ 임차인 매출·사업금융 가정 약화 가능. 해당 계약금액·위약금·확정 손실액 미공개(금액 추정 금지)")
+        msg.append("• <b>시간표</b> │ 2027년 1분기 공급 목표 대 2030년대 전력 가능성: 실현되면 최소 약 3년 지연")
+        msg.append("• <b>실패 경로</b> │ 전력망 접속 지연→GPU 납품·설치 지연→고객 계약 변경→차입·현금회수 부담")
+        msg.append("• <b>다음 확인</b> │ 당사자 계약 공시/공식 설명, 계통접속 예정일, 대체전원 계약, 신규 핵심 고객, 프로젝트 금융조건")
+        msg.append(f"• {a('Reuters 10월 18일 원문', NSCALE_REUTERS)} · {a('Nscale 2025년 원발표', NSCALE_OFFICIAL_2025)}")
+        msg.append(f"• {a('Nscale-Microsoft 타지역 계약 원발표', NSCALE_MSFT_OTHER_REGIONS)}")
     if any(item.get("verified_first_party_headline") for item in new_items):
         msg += ["", "<b>📌 FT 10월 18일 미국 AI 인프라 금융·착공 위험</b>"]
         msg.append(
@@ -561,6 +677,8 @@ if should_alert:
             title_ko = (
                 "FT 미국 AI 인프라 10조달러 계획의 금융·착공 위험 확대"
                 if item.get("verified_first_party_headline")
+                else "Microsoft, 영국 로턴 Nscale 데이터센터 이용계약 철회 보도(Reuters·The Telegraph)"
+                if item.get("nscale_loughton_media_anchor")
                 else translate_title(item.get("title", ""), theme, src)
             )
             suffix = money_suffix(item.get("title", ""), fx)
@@ -593,6 +711,7 @@ STATUS.write_text(
     f"- 재심사 기준: **{BASELINE['restudy_min_months']}개월~1년 이상(산업 경험치)**\n"
     f"- PJM 2024 DC 송전사업: **{BASELINE['pjm_2024_dc_transmission_projects']}건 / ${BASELINE['pjm_2024_dc_transmission_usd_b']}B**\n"
     f"- 신규 의미자료: **{len(new_items)}건**\n"
+    f"- Reuters–Nscale 로턴 철회 보도: **{'신규' if any(x.get('nscale_loughton_media_anchor') for x in new_items) else '중복 제외/해당 없음'}**\n"
     f"- 알림: **{'예' if should_alert else '아니오'}**\n",
     encoding="utf-8",
 )
