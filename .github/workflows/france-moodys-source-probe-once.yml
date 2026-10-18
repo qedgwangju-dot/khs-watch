@@ -39,7 +39,7 @@ jobs:
                 return {"source":url,"route":route,"status":r.status,"length":len(body),
                   "has_Frances_government":bool(re.search("Government of France",visible,re.I)),
                   "news_link_count":len(set(links)),"sample_titles":titles[:3],
-                  "script_sources":re.findall(r'<script[^>]*src=["\\']([^"\\']+)["\\']',body,re.I)[:12],
+                  "script_sources":re.findall(r'<script[^>]*src="([^"]+)"',body,re.I)[:12],
                   "next_data_present":"__NEXT_DATA__" in body,
                   "app_state_present":"__INITIAL_STATE__" in body
                   }
