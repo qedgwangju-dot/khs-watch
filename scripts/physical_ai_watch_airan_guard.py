@@ -1884,6 +1884,29 @@ def _oct15_verification(group: str, text: str, source: str) -> str:
 # Previously released ROBOTIS open-source control code is only a baseline.
 ROBOT_OCT16_PREFIX = 'DIRECT_ROBOT_OCT16_'
 ROBOT_OCT16_EVENTS = {
+    'telegram233_quality_correction': {
+        'group': 'alert_quality_oct18',
+        'stage': 'correction',
+        'source': '기존 GitHub Actions 발송문·실행기록',
+        'title': '정정: Telegram 233번 ESS 일반 기사 고신호 철회·엔비디아 원화환산 오탐',
+        'link': 'https://github.com/qedgwangju-dot/khs-watch/actions/runs/39101708735',
+        'description': (
+            '2026-10-18 Run #641 Telegram message_id=233 실제 발송문 검사 결과 '
+            '1번 머니투데이 K배터리 3분기 실적 청신호·미국 ESS 설치량 일반 전망 '
+            '기사를 별도 신규 수주·실적 확정 고신호로 볼 직접 계약 또는 '
+            '검증된 신규 정량 설치 물량 증거가 없어 고신호 판정을 철회한다. '
+            '기사에 나타난 시장 전망 자체를 부정하는 것은 아니다. '
+            '같은 Telegram 233 LG전자 확인 문구에서 날짜 8/18 뒤 '
+            '엔비디아를 18 엔화로 오인해 단어 중간에 원화 환산액을 '
+            '삽입한 통화 인식 오류도 철회한다. '
+            'LG전자의 로봇 소프트웨어 플랫폼 신설 보도와 기후부 ESS '
+            '분류 지침, 브릴스 미국 현지 조립 추진, 현대차 RX사업전략팀 '
+            '신설 등 나머지 네 건의 구분된 사실은 유지한다. '
+            '외화 숫자 바로 뒤의 진짜 통화 단위만 변환하고 '
+            '기업 고유명사·날짜와 일반 전망은 제외하는 회귀검사를 추가했다. '
+            '이번 정정은 새로운 공급계약·실적 또는 사업 예산 발표가 아니다.'
+        ),
+    },
     'ess_outdoor_guideline': {
         'group': 'ess_outdoor_policy',
         'stage': 'official_guideline',
@@ -1978,6 +2001,7 @@ ROBOT_OCT16_EVENTS = {
 }
 ROBOT_OCT16_GROUPS = {k:v['group'] for k,v in ROBOT_OCT16_EVENTS.items()}
 ROBOT_OCT16_TITLES = {
+    'alert_quality_oct18': '알림 품질 정정 · Telegram 233 고신호·통화인식 오류',
     'ess_outdoor_policy': '기후부 · 옥외형 ESS 분류지침 전국 배포',
     'brils_us_localization': '브릴스 · 미시간 AMR 현지 생산체계 추진',
     'hyundai_robot_rx_team': '현대차그룹 · RX사업전략팀 신설',
@@ -2018,6 +2042,8 @@ ROBOT_OCT16_REVERSE = re.compile(
 
 
 def _oct16_group(text: str) -> str:
+    if '정정: Telegram 233' in text:
+        return 'alert_quality_oct18'
     for group, actor, topic in ROBOT_OCT16_GROUP_PATS:
         if actor.search(text) and topic.search(text):
             return group
@@ -2033,6 +2059,8 @@ def _oct16_group(text: str) -> str:
 
 
 def _oct16_stage(group: str, text: str, source: str = '') -> str:
+    if group == 'alert_quality_oct18':
+        return 'correction' if source == '기존 GitHub Actions 발송문·실행기록' else 'background'
     if group == 'robotis_open_source_baseline':
         return 'already_public_baseline'
     if group == 'robotis_hardware_release':
@@ -2112,6 +2140,15 @@ def _oct16_render_category(group: str, text: str) -> str:
 
 
 ROBOT_OCT16_MEANINGS = {
+    '알림 품질 정정 · Telegram 233 고신호·통화인식 오류': (
+        '10/18 Telegram 233의 1번 K배터리 일반 업황 기사는 '
+        '신규 고객계약·공식 실적 공시로 볼 직접 근거가 없어 별도 고신호 판정을 철회합니다. '
+        'LG전자 확인문에 나온 8/18 엔비디아는 날짜와 기업명이지 '
+        '18엔 통화금액이 아닌데 환산액을 넣은 오탐도 철회합니다. '
+        '정부 ESS 지침·브릴스 현지 생산계획·LG 소프트웨어팀 보도·'
+        '현대차 RX팀 신설의 증거 수준과 고신호 구분은 유지합니다. '
+        '향후 실제 계약·출하·정량 설치 발표와 포괄 업황 기사를 분리합니다.'
+    ),
     '기후부 · 옥외형 ESS 분류지침 전국 배포': (
         '정부·국무조정실은 10/15 옥외형 ESS 시설물 유형 판단 기준을 배포했습니다. '
         '출입 불가 전용 외함은 공작물, 점검용 제한적 출입은 가설건축물, '
@@ -2158,6 +2195,11 @@ ROBOT_OCT16_MEANINGS = {
     ),
 }
 ROBOT_OCT16_RISKS = {
+    '알림 품질 정정 · Telegram 233 고신호·통화인식 오류': (
+        '이번 정정 자체가 신규 수주나 공급 증거는 아닙니다. '
+        '후속 알림은 회사 공시·조달·실제 설치량·계약금액을 확인하며, '
+        '외화 환산은 날짜·고유명사를 분리해 검증합니다.'
+    ),
     '기후부 · 옥외형 ESS 분류지침 전국 배포': (
         '건축물 분류 간소화만으로 화재·열폭주·배기·방폭·냉각·보험과 '
         '계통접속·소방검사까지 면제되지 않습니다. '
@@ -2203,6 +2245,7 @@ def _oct16_score(item: dict, group: str, text: str) -> int:
     if item.get('oct16_event_id') and item.get('oct16_stage') != stage:
         return 0
     return {
+        'correction': 98,
         'official_guideline': 82,
         'reported_local_production_plan': 51,
         'official_us_production': 88,
@@ -2224,6 +2267,11 @@ def _oct16_key(item: dict, group: str, text: str) -> str:
 
 def _oct16_verification(item: dict, group: str, text: str) -> str:
     source=item.get('source') or ''
+    if group == 'alert_quality_oct18':
+        return (
+            'Run #641 실제 Telegram 233 원문과 기업명·날짜·통화 환산 로그 확인 · '
+            '신규 계약 없는 일반 업황 기사 고신호 판정 철회'
+        )
     if group == 'ess_outdoor_policy':
         return (
             '기후에너지환경부 10/15 보도자료 KDI 등록본·뉴스1·아주경제 교차확인 · '
@@ -2559,6 +2607,16 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     item_text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    # Earnings/ESS-installation market outlook alone is not a newly signed
+    # order, confirmed company result, or new installation figure.
+    # Preserve credible primary quantitative releases and contract news.
+    headline = item.get('title') or ''
+    if (item.get('source') not in base.OFFICIAL_OR_PRIMARY
+            and re.search(r'(?:K\s*배터리|K-배터리|ESS|에너지저장)', headline, re.I)
+            and re.search(r'(?:실적\s*청신호|설치량.{0,24}(?:최대|최고)\s*지속)', headline, re.I)
+            and not ESS_CONCRETE_NEW_EVENT.search(headline)
+            and not ESS_OFFICIAL_QUARTERLY.search(headline)):
+        return 0
     group_oct16=_oct16_group(item_text)
     if group_oct16:
         return _oct16_score(item,group_oct16,item_text)
@@ -3596,6 +3654,7 @@ def clean_title(title: str, source: str) -> str:
 def tag_for(group: str) -> str:
     if group in ROBOT_OCT16_TITLES:
         return {
+            'alert_quality_oct18':'Telegram 233 정정',
             'ess_outdoor_policy':'ESS 인허가·정책',
             'brils_us_localization':'브릴스 북미 AMR',
             'hyundai_robot_rx_team':'현대차 로봇 전략',
@@ -3824,7 +3883,7 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
     # Show distinct new status changes but do not resurrect known repeats.
-    for _new_group in ('lge_robot_sw_platform','hyundai_robot_rx_team',
+    for _new_group in ('alert_quality_oct18','lge_robot_sw_platform','hyundai_robot_rx_team',
                        'brils_us_localization','ess_outdoor_policy',
                        'robotis_hardware_release'):
         _hit=next((x for x in candidates if x.get('group')==_new_group),None)
