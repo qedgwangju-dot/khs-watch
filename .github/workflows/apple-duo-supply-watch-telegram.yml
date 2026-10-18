@@ -371,6 +371,11 @@ jobs:
               if isinstance(remote.get("last_alert"),dict) or isinstance(draft.get("last_alert"),dict):
                   candidates=[x for x in (remote.get("last_alert"),draft.get("last_alert")) if isinstance(x,dict)]
                   merged["last_alert"]=max(candidates,key=lambda x:str(x.get("at_kst") or ""))
+              # Delivery ETA state has its own evidence-integrity gate, which
+              # must run AFTER generic seen-key union and concurrent merging.
+              if name == "apple_duo_preorder_delivery_state.json":
+                  from scripts.apple_duo_preorder_delivery_watch import _merge_delivery_state
+                  merged = _merge_delivery_state(remote, draft)
               # Do not regress verified status to rumor.
               for field in ("s27_status",):
                   candidates=[(x.get("metrics") or {}) for x in (remote,draft)]

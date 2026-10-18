@@ -93,97 +93,174 @@ def _date(v: str | None) -> dt.datetime | None:
     except Exception:
         return None
 
+_MONTH_NAMES = (
+    "october|oct|november|nov|december|dec|january|jan|february|feb|"
+    "march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep"
+)
+_DATE_MENTION_RE = re.compile(
+    r"(?:20\d{2}\s*년\s*\d{1,2}\s*월(?:\s*\d{1,2}\s*일)?|"
+    r"\d{1,2}\s*월(?:\s*\d{1,2}\s*(?:-|–|—|~)\s*\d{1,2}\s*일|\s*\d{1,2}\s*일)?|"
+    r"(?:early|mid|late)\s+(?:" + _MONTH_NAMES + r")(?:\s+20\d{2})?|"
+    r"(?:" + _MONTH_NAMES + r")\s+(?:\d{1,2}\s*(?:-|–|—|to|through|~)\s*\d{1,2}"
+    r"|\d{1,2})(?:\s*,?\s*20\d{2})?|"
+    r"(?:" + _MONTH_NAMES + r")\s+20\d{2})",
+    re.I,
+)
+_ETA_WORD_RE = re.compile(
+    r"shipping|delivery|delivered|ships?\b|backorders?|wait\s+times?|"
+    r"배송|출고|납기|대기\s*기간",
+    re.I,
+)
+_NOND_ELIVERY_WORD_RE = re.compile(
+    r"production|produced|manufactur|assembl|fabricat|"
+    r"pickup|pick-up|walk-in|매장\s*수령|픽업|생산|제조|조립",
+    re.I,
+)
+
+
 def _month_and_day(phrase: str, pub: dt.datetime) -> tuple[str, str, str | None] | None:
     s = phrase.lower()
-    month_map = {
+    names = {
         "october":10, "oct":10, "november":11, "nov":11,
         "december":12, "dec":12, "january":1, "jan":1,
         "february":2, "feb":2, "march":3, "mar":3,
         "april":4, "apr":4, "may":5, "june":6, "jun":6,
         "july":7, "jul":7, "august":8, "aug":8, "september":9, "sep":9,
     }
-    found: list[tuple[int,int|None]]=[]
-    month_name=r"october|oct|november|nov|december|dec|january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep"
-    # Range like November 16–23: track its *latest* delivery day.
-    for m in re.finditer(
-        r"\b("+month_name+r")\s+(\d{1,2})\s*(?:-|–|—|to|through|~)\s*(\d{1,2})\b",s
-    ):
-        start_day,end_day=int(m.group(2)),int(m.group(3))
-        if start_day<=end_day:
-            found.append((month_map[m.group(1)],end_day))
-    for m in re.finditer(r"\b("+month_name+r")\s+(\d{1,2})\b",s):
-        found.append((month_map[m.group(1)],int(m.group(2))))
-    for m in re.finditer(r"\b("+month_name+r")\b",s):
-        month=month_map[m.group(1)]
-        if not any(f[0]==month for f in found):
-            found.append((month,None))
-    for m in re.finditer(r"(\d{1,2})\s*월\s*(\d{1,2})?\s*일?",s):
-        found.append((int(m.group(1)),int(m.group(2)) if m.group(2) else None))
-    found=[(mo,day) for mo,day in found if 1<=mo<=12 and (day is None or 1<=day<=31)]
-    if not found:
+    matching_month = re.search(r"\b(?:" + _MONTH_NAMES + r")\b", s, re.I)
+    korean = re.search(r"(?:(20\d{2})\s*년\s*)?(\d{1,2})\s*월", s)
+    if matching_month:
+        mo = names[matching_month.group(0).lower()]
+        rest = s[matching_month.end():]
+        range_match = re.search(r"^\s*(\d{1,2})\s*(?:-|–|—|to|through|~)\s*(\d{1,2})", rest)
+        date_match = re.search(r"^\s*(\d{1,2})(?:\D|$)", rest)
+        day = int(range_match.group(2)) if range_match else (int(date_match.group(1)) if date_match else None)
+    elif korean:
+        mo = int(korean.group(2))
+        rest = s[korean.end():]
+        range_match = re.search(r"^\s*(\d{1,2})\s*(?:-|–|—|~)\s*(\d{1,2})\s*일", rest)
+        date_match = re.search(r"^\s*(\d{1,2})\s*일", rest)
+        day = int(range_match.group(2)) if range_match else (int(date_match.group(1)) if date_match else None)
+    else:
         return None
-    # Never convert an October 23 launch date into a reported new-order delay.
-    future=[]
-    for month,day in found:
-        year=pub.year+(1 if month < pub.month-1 else 0)
-        try:
-            value=dt.date(year,month,day or 1)
-        except ValueError:
-            continue
-        if value<=LAUNCH:
-            continue
-        future.append((year,month,day))
-    if not future:
+    if not 1 <= mo <= 12 or (day is not None and not 1 <= day <= 31):
         return None
-    year,month,day=max(future)
-    precision=f"{year}년 {month}월 {day}일" if day else f"{year}년 {month}월(정확한 일자 확인 불가)"
-    if day is None and ("late " in s or "말" in s):
-        precision=f"{year}년 {month}월 말(정확한 일자 확인 불가)"
-    exact=f"{year:04d}-{month:02d}-{day:02d}" if day is not None else None
-    return f"{year:04d}-{month:02d}", precision, exact
+
+    years = re.findall(r"\b20(?:26|27|28|29)\b|20(?:26|27|28|29)\s*년", s)
+    if korean and korean.group(1):
+        year = int(korean.group(1))
+    elif years:
+        year = int(re.search(r"20\d{2}", years[0]).group(0))
+    elif mo >= pub.month:
+        year = pub.year
+    elif pub.month >= 9 and mo <= 3:
+        # January following an October preorder is Jan 2027. "late August"
+        # in an October retrospective is NOT automatically August 2027.
+        year = pub.year + 1
+    else:
+        return None
+    try:
+        d = dt.date(year, mo, day or 1)
+    except ValueError:
+        return None
+    if d <= LAUNCH:
+        return None
+    if (d - pub.date()).days > 180:
+        return None
+    label = (
+        f"{year}년 {mo}월 {day}일"
+        if day is not None
+        else f"{year}년 {mo}월 말(정확한 일자 확인 불가)"
+        if re.search(r"\blate\b|말", s)
+        else f"{year}년 {mo}월(정확한 일자 확인 불가)"
+    )
+    exact = d.isoformat() if day is not None else None
+    return f"{year:04d}-{mo:02d}", label, exact
+
 
 def _shipping_event(blob: str, published: dt.datetime) -> dict | None:
-    low=blob.lower()
     if published < PREORDER:
         return None
+    low = blob.lower()
     if not ("iphone duo" in low or "아이폰 듀오" in low):
         return None
-    # Delivery of new orders differs from release on 10/23 and from original preorders.
-    eta_words=("shipping","delivery","delivered","ships","backorder","wait times",
-               "배송","출고","납기","대기 기간")
-    # Associate a shipping date with the closest shipping wording. A whole
-    # syndicated article may mention unrelated past/future financial dates.
-    clauses=re.split(r"[\n;。!?]+",blob)
-    selected=[]
-    for clause in clauses:
-        cs=clause.lower()
-        for word in eta_words:
-            start=0
-            while True:
-                pos=cs.find(word,start)
-                if pos<0:
-                    break
-                selected.append(clause[max(0,pos-25):min(len(clause),pos+110)])
-                start=pos+len(word)
-    if not selected:
+    candidates = []
+    for match in _DATE_MENTION_RE.finditer(blob):
+        # Associate each calendar expression with the shipping/delivery phrase
+        # in the SAME local clause. Never choose the largest month in an entire
+        # syndicated article with production history, retail pickup, and launch.
+        before = blob[max(0, match.start() - 115):match.start()]
+        after = blob[match.end():min(len(blob), match.end() + 85)]
+        left = re.split(r"[.!?;\n。]+", before)[-1]
+        right = re.split(r"[.!?;\n。]+", after)[0]
+        eta_positions = []
+        for m in _ETA_WORD_RE.finditer(left):
+            eta_positions.append(("before", len(left) - m.end()))
+        for m in _ETA_WORD_RE.finditer(right):
+            eta_positions.append(("after", m.start()))
+        if not eta_positions:
+            continue
+        direction, distance = min(eta_positions, key=lambda x: x[1])
+        if distance > (85 if direction == "before" else 48):
+            continue
+        context = (left[-95:] + " " + match.group(0) + " " + right[:65]).strip()
+        # The nearest semantic cue must refer to delivery, not production or
+        # pickup availability. A speculative article can mention all three.
+        competing = []
+        for m in _NOND_ELIVERY_WORD_RE.finditer(left):
+            competing.append(len(left) - m.end())
+        for m in _NOND_ELIVERY_WORD_RE.finditer(right):
+            competing.append(m.start())
+        if competing and min(competing) < distance:
+            continue
+        info = _month_and_day(match.group(0), published)
+        if info is not None:
+            candidates.append((info, context))
+    if not candidates:
         return None
-    info=_month_and_day(" ".join(selected),published)
-    if info is None:
-        return None
-    ym, _, exact=info
-    candidate=dt.date.fromisoformat(exact) if exact else dt.date(int(ym[:4]),int(ym[5:]),1)
-    if (candidate-published.date()).days > 180:
-        return None
-    # No cross-country comparisons based on unspecified geography.
-    has_us=bool(re.search(r"\b(?:u\.s\.?|united states|usa|us apple store)\b",low))
-    has_kr=bool(re.search(r"\b(?:south korea|korea|한국|국내|대한민국)\b",low))
-    market="미국" if has_us and not has_kr else ("한국" if has_kr and not has_us else "지역 미확인")
-    capacities=set(re.findall(r"\b(?:256|512)\s*gb\b|\b(?:1|2)\s*tb\b",low))
-    colours={x for x in ("star white","night sky","스타 화이트","나이트 스카이") if x in low}
-    storage=next(iter(capacities)).replace(" ","").upper() if len(capacities)==1 else "구성 미확인"
-    colour=next(iter(colours)) if len(colours)==1 else "색상 미확인"
-    return {"market":market,"month":info[0],"label":info[1],"exact_date":info[2],
-            "capacity":storage,"colour":colour}
+    # Multiple genuine shipment-date milestones in one article are allowed;
+    # only DATE-CONSTRAINED quotations participate in the latest-date choice.
+    info, evidence = max(candidates, key=lambda x: (x[0][0], x[0][2] or ""))
+    if re.search(r"\b(?:u\.s\.?(?=\W|$)|united states|usa|us apple store)\b", low):
+        has_us = True
+    else:
+        has_us = False
+    has_kr = bool(re.search(r"\b(?:south korea|korea|한국|국내|대한민국)\b", low))
+    market = "미국" if has_us and not has_kr else ("한국" if has_kr and not has_us else "지역 미확인")
+    # Model variants in price lists elsewhere in the article never assign an
+    # unknown general delivery ETA to 256GB/2TB or a particular color.
+    local = evidence.lower()
+    if "all configurations" in local or "모든 구성" in local:
+        local = re.sub(r"\b(?:256|512)\s*gb\b|\b[12]\s*tb\b", "", local)
+    sizes = set(re.findall(r"\b(?:256|512)\s*gb\b|\b(?:1|2)\s*tb\b", local))
+    colors = {x for x in ("star white", "night sky", "스타 화이트", "나이트 스카이") if x in local}
+    storage = next(iter(sizes)).replace(" ", "").upper() if len(sizes) == 1 else "구성 미확인"
+    color = next(iter(colors)) if len(colors) == 1 else "색상 미확인"
+    return {
+        "market": market, "month": info[0], "label": info[1],
+        "exact_date": info[2], "capacity": storage, "colour": color,
+        "eta_evidence": re.sub(r"\s+", " ", evidence)[:175],
+    }
+
+
+def _direct_publisher_link(row: dict) -> bool:
+    # Search snippets behind a Google News redirect are discovery only.
+    host = (urlparse(row.get("link") or "").hostname or "").lower().removeprefix("www.")
+    source = (row.get("source") or "").lower()
+    hosts = {
+        "macrumors": "macrumors.com",
+        "appleinsider": "appleinsider.com",
+        "the verge": "theverge.com",
+        "reuters": "reuters.com",
+        "financial times": "ft.com",
+        "nikkei": "asia.nikkei.com",
+        "bloomberg": "bloomberg.com",
+        "연합뉴스": "yna.co.kr",
+    }
+    for src, expected in hosts.items():
+        if src in source:
+            return host == expected or host.endswith("." + expected)
+    return False
 
 def _initial_alert() -> str:
     return "\n".join([
@@ -302,8 +379,71 @@ def _collect() -> tuple[list[dict],list[str]]:
                     desc=full
             row={"title":title,"description":desc,"source":source,"link":link,
                  "published_at_kst":pub.isoformat(timespec="seconds")}
+            row["publisher_direct"] = _direct_publisher_link(row)
             results[_fingerprint(row)]=row
     return sorted(results.values(),key=lambda x:x["published_at_kst"]),errors
+
+
+def _sanitize_delivery_state(val: dict) -> dict:
+    # Quarantine claims unsupported by the publisher's article (2027-08 was
+    # incorrectly inferred from a historical "late August" production passage).
+    val.setdefault("quarantined_delivery_claims", [])
+    cutoff = PREORDER.date() + dt.timedelta(days=180)
+    def impossible_month(month: str) -> bool:
+        try:
+            d = dt.date.fromisoformat(str(month)[:7] + "-01")
+        except Exception:
+            return False
+        return d > cutoff or str(month) == "2027-08"
+    latest = val.setdefault("market_latest", {"미국": "2027-01"})
+    for key, month in list(latest.items()):
+        if month and impossible_month(str(month)):
+            if not any(x.get("market") == key and x.get("reported_month") == month
+                       for x in val["quarantined_delivery_claims"]):
+                val["quarantined_delivery_claims"].append({
+                    "market": key, "reported_month": month,
+                    "reason": "No delivery ETA in verified direct publisher article",
+                })
+            latest[key] = "2027-01" if key == "미국" else None
+    for name in ("market_sku_latest",):
+        values = val.setdefault(name, {})
+        for key, month in list(values.items()):
+            if month and impossible_month(str(month)):
+                values.pop(key, None)
+    for name in ("market_day_latest", "market_sku_day_latest"):
+        dates = val.setdefault(name, {})
+        for key, date_str in list(dates.items()):
+            try:
+                date = dt.date.fromisoformat(str(date_str))
+            except ValueError:
+                dates.pop(key, None)
+                continue
+            if date > cutoff:
+                dates.pop(key, None)
+    val["seen_fact_keys"] = [
+        key for key in val.get("seen_fact_keys", [])
+        if not any(impossible_month(month) for month in re.findall(r"20\d{2}-\d{2}", str(key)))
+    ]
+    val["schema_version"] = max(int(val.get("schema_version") or 1), 2)
+    return val
+
+
+def _merge_delivery_state(remote: dict, local: dict) -> dict:
+    newer = local if str(local.get("updated_at_kst") or "") >= str(remote.get("updated_at_kst") or "") else remote
+    older = remote if newer is local else local
+    merged = dict(older)
+    merged.update(newer)
+    merged["initial_alert_sent"] = bool(remote.get("initial_alert_sent") or local.get("initial_alert_sent"))
+    for key in ("seen_ids", "seen_fact_keys"):
+        merged[key] = sorted(set(remote.get(key) or []) | set(local.get(key) or []))[-1800:]
+    # Preserve quarantine and audit history across concurrent scan commits.
+    audit = list(remote.get("quarantined_delivery_claims") or [])
+    for entry in local.get("quarantined_delivery_claims") or []:
+        if entry not in audit:
+            audit.append(entry)
+    merged["quarantined_delivery_claims"] = audit[-25:]
+    return _sanitize_delivery_state(merged)
+
 
 def _load() -> dict:
     if not STATE_PATH.exists():
@@ -321,19 +461,7 @@ def _load() -> dict:
     val.setdefault("market_latest",{"미국":"2027-01"})
     val.setdefault("market_day_latest",{})
     val.setdefault("market_sku_day_latest",{})
-    # Quarantine a previously accepted unverified August ETA. An in-flight
-    # old workflow may reintroduce it during concurrent checkpoint writes.
-    if (val.get("market_latest") or {}).get("미국") == "2027-08":
-        val.setdefault("quarantined_delivery_claims", []).append({
-            "market": "미국",
-            "reported_month": "2027-08",
-            "reason": "Unverified ETA outlier, not verified against publisher's delivery quote",
-        })
-        val["market_latest"]["미국"] = "2027-01"
-        val["seen_fact_keys"] = [
-            k for k in val["seen_fact_keys"] if not k.endswith(":2027-08")
-        ]
-    return val
+    return _sanitize_delivery_state(val)
 
 def _new_delivery_signals(rows: list[dict], state: dict) -> tuple[list[dict],set[str]]:
     seen=set(state.get("seen_ids") or [])
@@ -348,6 +476,10 @@ def _new_delivery_signals(rows: list[dict], state: dict) -> tuple[list[dict],set
         if fp in seen:
             continue
         seen.add(fp)
+        # Publisher's direct first-party feed or article link is mandatory.
+        # RSS snippets behind Google News redirects are search context only.
+        if row.get("publisher_direct") is False:
+            continue
         body=f"{row['title']}. {row.get('description','')}"
         pub=dt.datetime.fromisoformat(row["published_at_kst"])
         info=_shipping_event(body,pub)
@@ -414,6 +546,7 @@ def _update_alert(changes: list[dict]) -> str:
             f"• {html.escape(ch['market'])} / {html.escape(ch['capacity'])} / {html.escape(ch['colour'])}: "
             f"{html.escape(ch.get('previous_month') or '이전 수치 없음')} → {html.escape(ch['label'])}",
             f"  └ {html.escape(row['source'])} · {html.escape(row['published_at_kst'])}",
+            f"  └ 배송일 관련 근거 문장: {html.escape(ch.get('eta_evidence') or '원문 추가 확인 필요')}",
             f'<a href="{html.escape(row.get("link") or "",quote=True)}">배송 전망 원문</a>',
         ]
     lines += ["","• 배송일은 국가·색상·저장용량·조회시각별로 달라질 수 있습니다.",
@@ -446,7 +579,8 @@ def main() -> None:
         state["seen_ids"]=sorted(seen)[-800:]
         if updates:
             alerts.append(_update_alert(updates))
-    state.update({"schema_version":1,"updated_at_kst":now.isoformat(timespec="seconds"),
+    state=_sanitize_delivery_state(state)
+    state.update({"schema_version":2,"updated_at_kst":now.isoformat(timespec="seconds"),
                   "last_scan_items":len(rows),"errors":errors[-20:],
                   "last_signal_count":len(alerts)-(1 if first else 0),
                   "last_alert":{"at_kst":now.isoformat(timespec="seconds"),"kind":"baseline" if first else "extension"} if alerts else state.get("last_alert")})

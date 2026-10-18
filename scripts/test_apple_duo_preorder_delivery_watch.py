@@ -144,6 +144,100 @@ class DuoPreorderTests(unittest.TestCase):
         x=m._shipping_event("iPhone Duo U.S. costs $1999, launches October 23.",self.pub())
         self.assertIsNone(x)
 
+
+    def test_macrumors_walkins_article_has_jan25_not_august(self):
+        article = (
+            "iPhone Duo U.S. sales launch October 23. Apple online store says "
+            "check back on October 24 for pickup availability. In early September, "
+            "Nikkei Asia said production reached a few hundred per day in late August. "
+            "Delivery estimates moved beyond launch day within minutes, and within "
+            "30 minutes all configurations in Apple's U.S. online store showed "
+            "January 25 shipping estimates."
+        )
+        event=m._shipping_event(article,dt.datetime(2026,10,17,23,30,tzinfo=ZoneInfo("Asia/Seoul")))
+        self.assertIsNotNone(event)
+        self.assertEqual(event["exact_date"],"2027-01-25")
+        self.assertEqual(event["market"],"미국")
+        self.assertEqual(event["capacity"],"구성 미확인")
+
+    def test_late_august_production_history_without_delivery_is_not_eta(self):
+        text="iPhone Duo U.S. manufacturing in late August had production issues. Shipping launch is October 23."
+        self.assertIsNone(m._shipping_event(text,self.pub()))
+
+    def test_explicit_august_2026_is_not_august_2027(self):
+        text="iPhone Duo U.S. shipping in August 2026 during old tests, launching October 23."
+        self.assertIsNone(m._shipping_event(text,self.pub()))
+
+    def test_pickup_oct24_is_not_new_order_delivery_eta(self):
+        text="iPhone Duo U.S. preorders. Check back on October 24 for in-store pickup availability."
+        self.assertIsNone(m._shipping_event(text,self.pub()))
+
+    def test_following_year_january_without_year_still_resolves(self):
+        info=m._shipping_event("iPhone Duo U.S. delivery estimates now January 25.",self.pub())
+        self.assertEqual(info["exact_date"],"2027-01-25")
+
+    def test_fake_google_news_redirect_cannot_raise_delivery_alert(self):
+        row={
+            "title":"iPhone Duo U.S. shipping now February 18, 2027",
+            "description":"iPhone Duo delivery estimates February 18, 2027",
+            "source":"MacRumors",
+            "link":"https://news.google.com/rss/articles/fake",
+            "publisher_direct":False,
+            "published_at_kst":self.pub().isoformat(),
+        }
+        st={"market_latest":{"미국":"2027-01"},"seen_ids":[],"seen_fact_keys":[]}
+        new,_=m._new_delivery_signals([row],st)
+        self.assertFalse(new)
+        self.assertFalse(m._direct_publisher_link(row))
+
+    def test_valid_direct_publisher_link_allowed(self):
+        row={
+            "source":"MacRumors",
+            "link":"https://www.macrumors.com/2026/10/17/staff-warn-against-iphone-duo-walk-ins/"
+        }
+        self.assertTrue(m._direct_publisher_link(row))
+
+    def test_wrong_august_fact_key_is_removed_even_after_prior_month_reset(self):
+        val={
+            "market_latest":{"미국":"2027-01"},"market_day_latest":{},
+            "market_sku_latest":{},"market_sku_day_latest":{},
+            "seen_fact_keys":["미국|구성 미확인|색상 미확인:2027-08","미국:2027-01"],
+        }
+        result=m._sanitize_delivery_state(val)
+        self.assertEqual(result["seen_fact_keys"],["미국:2027-01"])
+
+    def test_concurrent_merge_cannot_restore_false_august_delivery(self):
+        remote={
+            "updated_at_kst":"2026-10-18T14:45:00+09:00",
+            "market_latest":{"미국":"2027-08"},
+            "seen_fact_keys":["미국|구성 미확인|색상 미확인:2027-08"],
+        }
+        local={
+            "updated_at_kst":"2026-10-18T14:43:00+09:00",
+            "market_latest":{"미국":"2027-01"},
+            "seen_fact_keys":["미국:2027-01"],
+            "quarantined_delivery_claims":[{"market":"미국","reported_month":"2027-08","reason":"test"}],
+        }
+        merged=m._merge_delivery_state(remote,local)
+        self.assertEqual(merged["market_latest"]["미국"],"2027-01")
+        self.assertNotIn("미국|구성 미확인|색상 미확인:2027-08",merged["seen_fact_keys"])
+        self.assertTrue(merged["quarantined_delivery_claims"])
+
+    def test_unknown_region_cannot_mutate_known_us_eta(self):
+        row={
+            "title":"iPhone Duo shipping now February 18, 2027",
+            "description":"Shipping delivery February 18, 2027",
+            "source":"The Verge",
+            "publisher_direct":True,
+            "link":"https://www.theverge.com/news/example",
+            "published_at_kst":self.pub().isoformat(),
+        }
+        st={"market_latest":{"미국":"2027-01"},"seen_ids":[],"seen_fact_keys":[]}
+        changes,_=m._new_delivery_signals([row],st)
+        self.assertFalse(changes)
+        self.assertEqual(st["market_latest"]["미국"],"2027-01")
+
+
 if __name__=="__main__":
     result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(DuoPreorderTests))
     if not result.wasSuccessful():
