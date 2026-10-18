@@ -19,10 +19,31 @@
     "d116b9c1d93285f3fc00",
     "f75e6bd7c76201128c2f",
     "feb51d10c9dbda9914e6",
-    "45d18c735546785071cd"
+    "45d18c735546785071cd",
+    "52f354a2f4980f854c0f"
   ],
   "last_fx_krw_per_usd": 1334.772994,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-10-18T07:04:45+00:00",
-  "updated_at_utc": "2026-10-18T07:04:48+00:00"
+  "fx_checked_utc": "2026-10-18T11:02:31+00:00",
+  "updated_at_utc": "2026-10-18T11:02:35+00:00",
+  "nscale_loughton": {
+    "event_key": "nscale-microsoft-loughton-reported-termination-2026-10-18",
+    "site": "Loughton, Essex, UK",
+    "former_anchor_customer": "Microsoft",
+    "operator": "Nscale",
+    "site_initial_mw": 50,
+    "site_expandable_mw": 90,
+    "planned_nvidia_gb300_gpu_count": 23040,
+    "original_supply_target": "2027-Q1",
+    "first_media_report": "The Telegraph",
+    "reuters_followup_reported": true,
+    "microsoft_formal_cancellation_statement": false,
+    "reported_grid_availability": "2030년대, 언론보도 기준·전력회사 공식 원문 미확인",
+    "withdrawal_reason_confirmed": false,
+    "site_cancellation_confirmed": false,
+    "other_microsoft_contracts_terminated": false,
+    "contract_value_disclosed": false,
+    "news_link": "https://www.reuters.com/business/media-telecom/microsoft-pulls-out-uk-data-center-deal-with-nscale-telegraph-reports-2026-10-18/",
+    "historical_official_link": "https://www.nscale.com/press-releases/nscale-uk-ai-infrastructure-announcement"
+  }
 }
