@@ -4320,4 +4320,14 @@ generic_solidstate=make(
 g,s,c,k=classify(generic_solidstate)
 assert g!='micron_eim_edge' and s < 11,(g,s,c)
 
+# Filtering a generic competition article must not prevent genuine, newly
+# signed battery supply agreements with an explicit concrete contract.
+solid_state_real_contract = dict(
+    generic_solidstate,
+    title='삼성SDI 전고체 배터리 최초 공급계약 체결로 시장 선점 경쟁',
+)
+assert not watcher._is_generic_ess_demand_story(solid_state_real_contract), (
+    'market-noise guard must not block explicit first signed awards'
+)
+
 print("Physical-AI watcher regression guards: PASS")
