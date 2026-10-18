@@ -415,6 +415,9 @@ CITI_HBM_BASELINE = {
     "as_of": "2026-09-30",
 }
 STRUCTURE_BASELINE_VERSION = 3
+HBF_TRACK_VERSION = 1
+HBF_INITIAL_SOURCE = 'https://ir.newspim.com/news/view/20261014000748'
+HBF_OFFICIAL_SPEC = 'https://news.skhynix.co.kr/hbf-at-fms-2026/'
 KNOWN_STRUCTURE_FACT_KEYS = {
     "hbm_capacity_kv_offload_mainstream_8hi_12hi_niche_4hi",
     "bernstein_rubin_ultra_model_1024_to_640_8hi50_12hi50",
@@ -508,6 +511,7 @@ QUERIES = [
         "memory_migration",
         'TrendForce HBM "KV cache" (offload OR offloading OR HBF OR "SSD POD" OR CMX OR "8-Hi" OR "12-Hi" OR "4-Hi")',
     ),
+    ("hbf_roadmap", '(HBF OR "High Bandwidth Flash" OR 고대역폭플래시) (SK하이닉스 OR "SK hynix" OR Sandisk OR 샌디스크 OR OCP) (standard OR specification OR January OR 2027 OR 규격 OR 표준 OR 샘플 OR 양산 OR 계약 OR 검증)'),
 ]
 
 CATEGORY_KO = {
@@ -531,6 +535,7 @@ CATEGORY_KO = {
     "citi_hbm_outlook": "Citi HBM 2027~2028 수요·공급·가격",
     "hbm_wafer_economics": "HBM↔DDR5 웨이퍼 경제성",
     "memory_migration": "별도 알림 · HBM 용량 축소→KV 캐시 외부 메모리 전환",
+    "hbf_roadmap": "별도 알림 · HBF 표준규격·고객검증·양산 전환",
 }
 
 OFFICIAL_SOURCE_HINTS = (
@@ -3956,6 +3961,55 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
     return "\n".join(lines).strip() + "\n"
 
 
+
+HBF_STAGE_RANK = {'first_ocp_draft':1,'final_spec_target':2,'official_final_spec':3,
+                  'customer_sample':4,'customer_qualified':5,'contract_signed':6,
+                  'mass_production':7,'commercial_shipment':8}
+
+def hbf_signal(event):
+    """A scheduled final specification is never treated as an adopted final specification."""
+    text = compact_fact_text(event)
+    if not re.search(r'\bHBF\b|high\s+bandwidth\s+flash|고대역폭\s*플래시',text,re.I):
+        return None
+    source=(event.get('direct_link') or '')
+    official=any(x in source for x in ('news.skhynix.co.kr/','news.skhynix.com/','sandisk.com/','opencompute.org/'))
+    origin=event.get('origin_source') or event.get('source') or ''
+    low=text.lower()
+    future=bool(re.search(r'예정|목표|계획|전망|예상|will|expects?|target|plans?|scheduled',low,re.I))
+    stage=None
+    if re.search(r'2027.{0,35}?(?:1월|january)|(?:1월|january).{0,65}?2027|내년\s*1월',low,re.I) and re.search(r'최종\s*(?:기술\s*)?규격|final\s+(?:technical\s+)?specification',low,re.I):
+        stage='final_spec_target'
+    if official and not future and re.search(r'(?:최종\s*(?:기술\s*)?규격\s*(?:확정|공개|발표)|final\s+(?:technical\s+)?specification\s+(?:released|approved|published|finalized))',low,re.I):
+        stage='official_final_spec'
+    if official and not future and re.search(r'고객\s*샘플\s*(?:제공|출하|전달)|customer\s+samples?\s+(?:shipped|delivered)',low,re.I):stage='customer_sample'
+    if official and not future and re.search(r'고객\s*(?:검증|인증)\s*완료|customer\s+qualification\s+(?:completed|passed)',low,re.I):stage='customer_qualified'
+    if official and not future and re.search(r'공급\s*계약\s*체결|supply\s+contract\s+signed',low,re.I):stage='contract_signed'
+    if official and not future and re.search(r'양산\s*(?:개시|시작)|mass\s+production\s+(?:began|started)',low,re.I):stage='mass_production'
+    if official and not future and re.search(r'상용\s*출하\s*(?:시작|개시)|commercial\s+shipments?\s+(?:began|started)',low,re.I):stage='commercial_shipment'
+    if not stage:return None
+    return {'stage':stage,'official':official,'source_url':source,'origin':origin,
+            'observed_at':event.get('published_at_kst') or ''}
+
+def hbf_stage_changes(old,new):
+    before=HBF_STAGE_RANK.get(old.get('stage'),0)
+    after=HBF_STAGE_RANK.get(new.get('stage'),0)
+    if after<=before:return []
+    if new['stage'] in ('official_final_spec','customer_sample','customer_qualified','contract_signed','mass_production','commercial_shipment') and not new.get('official'):return []
+    return [f"HBF 단계 {old.get('stage') or '미확인'}→{new['stage']}"]
+
+def hbf_stage_notice(obs,changes):
+    return {'category':'hbf_roadmap',
+      'fact_key':'hbf_stage_'+obs['stage'],
+      'headline_ko':'SK하이닉스·Sandisk HBF 표준화·고객채택 단계 변화',
+      'fact_bullets':changes+['2026년 8월 첫 OCP 규격 공개와 2027년 1월 최종 규격 목표는 별개입니다.',
+        '기존 기준선: 최대 512GB·0.4~3.0TB/s는 규격값이지 양산 출하량이 아닙니다.'],
+      'verdict':'최종 규격 확정·샘플·고객 인증·공급계약·양산·상용 출하를 구분합니다. HBF는 HBM을 전면 대체하지 않습니다.',
+      'verification':'회사 공식 확정 단계만 양산·계약 판정', 'quality':'공식자료' if obs.get('official') else '신뢰보도',
+      'origin_source':obs.get('origin') or 'SK하이닉스',
+      'source':obs.get('origin') or 'SK하이닉스',
+      'published_at_kst':obs.get('observed_at') or '', 'direct_link':obs.get('source_url') or HBF_INITIAL_SOURCE,
+      'article_text':''}
+
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     history_cutoff = now - timedelta(days=14)
@@ -3966,6 +4020,13 @@ def main() -> None:
         seen_fact_keys.update(KNOWN_STRUCTURE_FACT_KEYS)
         state["structure_baseline_version"] = STRUCTURE_BASELINE_VERSION
 
+    hbf_state=dict(state.get('hbf_roadmap') or {})
+    if int(state.get('hbf_track_version') or 0) < HBF_TRACK_VERSION:
+        hbf_state={'stage':'final_spec_target','target_month':'2027-01',
+                   'initial_spec_published':'2026-08-03','max_capacity_gb':512,
+                   'bandwidth_min_tbs':0.4,'bandwidth_max_tbs':3.0,
+                   'source_url':HBF_INITIAL_SOURCE,'official_spec_url':HBF_OFFICIAL_SPEC,
+                   'status':'reported_target_not_official_final_not_commercial'}
     raw_events_by_id: dict[str, dict] = {}
     errors: list[str] = []
     feed_checks, feed_healthy = 0, 0
@@ -3997,6 +4058,18 @@ def main() -> None:
 
     verified_events, verify_errors = choose_verified_events(fresh_unseen, raw_events, seen_fact_keys)
     errors.extend(verify_errors)
+    for raw in raw_events:
+        if raw.get("category") != "hbf_roadmap":continue
+        enriched=enrich_event(raw)
+        if not enriched.get("link_verified"):continue
+        obs=hbf_signal(enriched)
+        if not obs:continue
+        changes=hbf_stage_changes(hbf_state,obs)
+        if changes:
+            hbf_state.update(obs)
+            notice=hbf_stage_notice(obs,changes)
+            if notice["fact_key"] not in seen_fact_keys and not first_run:
+                verified_events.append(notice)
 
     rubin_options_state = dict(state.get("rubin_ultra_hbm_options") or {})
     rubin_options_track_version = int(state.get("rubin_ultra_hbm_options_track_version") or 0)
@@ -4422,6 +4495,8 @@ def main() -> None:
         "seen_ids": sorted((seen_before | current_ids))[-1200:],
         "seen_fact_keys": sorted(seen_fact_keys | new_fact_keys)[-500:],
         "structure_baseline_version": STRUCTURE_BASELINE_VERSION,
+        "hbf_track_version": HBF_TRACK_VERSION,
+        "hbf_roadmap": hbf_state,
         "rubin_ultra_hbm_options_track_version": rubin_options_track_version,
         "rubin_ultra_hbm_options": rubin_options_state,
         "samsung_hbm4_price_track_version": samsung_price_track_version,
@@ -4492,6 +4567,7 @@ def main() -> None:
         f"- break_even_gpu_growth: {BREAKEVEN_GPU_GROWTH*100:.1f}%",
         f"- source_errors_or_suppressed: {len(errors)}",
         f"- news_feeds_healthy: {feed_healthy}/{feed_checks}",
+        f"- HBF stage: {hbf_state.get('stage') or '미확인'}",
     ]
     for e in errors[:12]:
         status.append(f"  - {e}")
