@@ -291,6 +291,10 @@ def _skip_quantity_enrichment(block: str) -> bool:
     # separately calculated from Tbit -> GB, never from a random number+대.
     if "휴머노이드 두뇌 D램" in block or "휴머노이드 메모리" in block:
         return True
+    # EIM is an R&D/edge-memory specification, not a confirmed robot
+    # delivery. Model parameter counts, 200GB and 4TB are not product units.
+    if "마이크론 EIM" in block or "EIM 로봇 메모리" in block:
+        return True
     # GPU-hours are training workload measurements, not a shipment count.
     # Never turn a FUNDA analyst comparison into priced hardware units.
     if "로봇 사후학습" in block and ("GPU" in block or "가속기" in block):
