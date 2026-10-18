@@ -792,7 +792,8 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
         if any(x in context for x in (
             "letter of intent", "signed an loi", "signs loi", "signed loi",
             "intent to acquire aisle", "proposed acquisition", "plans to acquire aisle",
-            "to buy aisle", "to acquire aisle", "aisle 인수", "인수 의향서",
+            "to buy aisle", "to acquire aisle", "aisle acquisition", "acquisition of aisle",
+            "cohere aisle acquisition", "aisle 인수", "인수 의향서",
         )):
             return ("cohere_aisle", "letter_of_intent_announced")
         return None
