@@ -4,12 +4,12 @@
   "source_url": "https://epoch.ai/data/ai-data-centers",
   "data_url": "https://epoch.ai/data/data_centers/data_centers.csv",
   "timeline_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
-  "as_of_kst": "2026-10-18T23:56:00+09:00",
+  "as_of_kst": "2026-10-19T03:12:52+09:00",
   "site_count": 77,
-  "current_it_mw": 11851.3,
+  "current_it_mw": 11978.3,
   "planned_it_mw_2030": 33147.3,
-  "remaining_it_mw": 21296.0,
-  "execution_ratio_pct": 35.75,
+  "remaining_it_mw": 21169.0,
+  "execution_ratio_pct": 36.14,
   "top_remaining_sites": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -52,14 +52,6 @@
       "planned_date": "2027-11-15"
     },
     {
-      "name": "Anthropic-Amazon New Carlisle",
-      "owner": "Amazon #confident",
-      "current_mw": 910.0,
-      "planned_mw": 1925.0,
-      "gap_mw": 1015.0,
-      "planned_date": "2028-03-17"
-    },
-    {
       "name": "Goodnight",
       "owner": "Google #speculative",
       "current_mw": 0.0,
@@ -82,6 +74,14 @@
       "planned_mw": 902.0,
       "gap_mw": 902.0,
       "planned_date": "2028-12-31"
+    },
+    {
+      "name": "Anthropic-Amazon New Carlisle",
+      "owner": "Amazon #confident",
+      "current_mw": 1037.0,
+      "planned_mw": 1925.0,
+      "gap_mw": 888.0,
+      "planned_date": "2028-03-17"
     },
     {
       "name": "Google Fort Wayne",
@@ -135,7 +135,7 @@
     },
     "Anthropic-Amazon New Carlisle": {
       "planned": 1925.0,
-      "current": 910.0
+      "current": 1037.0
     },
     "Colossus 1": {
       "planned": 340.0,
