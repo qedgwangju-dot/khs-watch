@@ -93,6 +93,34 @@ class CurrencyKRWGuardTests(unittest.TestCase):
         self.assertIn("50억링깃(", out)
 
 
+    def test_korean_company_nvidia_must_never_be_read_as_jpy(self):
+        sample = (
+            "6/30 회사 발표·8/18 엔비디아 데이터팩토리 공식자료 · "
+            "2026-10-18 엔비디아의 고객사 확대 · 엔씨소프트 협력 · "
+            "원화 7,000만원과 10억원"
+        )
+        with patch.object(g, "_rate", side_effect=AssertionError("No FX conversion for brands")):
+            out = g.enforce_text(sample)
+        self.assertEqual(out, sample)
+        g.validate_text(out)
+        self.assertNotIn("엔(약", out)
+        self.assertNotIn("환율 기준:", out)
+
+    def test_genuine_jpy_amounts_still_convert_and_not_brand_fragment(self):
+        sample = "8/18 엔비디아 협력, 일본은 100억엔과 250엔화 납품원가"
+        with patch.object(g, "_rate", side_effect=self.fake_rate):
+            out = g.enforce_text(sample)
+        self.assertIn("8/18 엔비디아 협력", out)
+        self.assertIn("100억엔(", out)
+        self.assertIn("250엔화(", out)
+        self.assertNotIn("엔(약 162원)비디아", out)
+        g.validate_text(out)
+
+    def test_currency_validator_does_not_require_brand_conversion(self):
+        g.validate_text("사업비는 미확정, 6/30 엔비디아 제휴, 18 엔씨소프트")
+        with self.assertRaises(RuntimeError):
+            g.validate_text("수입가 18 엔")
+
     def test_fx_failure_blocks_alert_instead_of_sending_unconverted_amount(self):
         with patch.object(g, "_rate", return_value=(None, "failed")):
             with self.assertRaises(RuntimeError):
