@@ -188,7 +188,8 @@ class TreasuryReportIntegrity(unittest.TestCase):
 
         with patch.object(report, "get_repo_stress", return_value="Repo: 안정 | 기준 2026-10-07"), \
              patch.object(report.readable, "get_growth_cost_snapshot", return_value={"ok": False}), \
-             patch.object(report, "get_refinancing_snapshot", return_value={"record_date":"2026-09-30","next12_t":10.64,"next12_share":33.4,"bills_t":7.12,"bill_share":22.4,"plus75_b":53.4}):
+             patch.object(report, "get_refinancing_snapshot", return_value={"record_date":"2026-09-30","next12_t":10.64,"next12_share":33.4,"bills_t":7.12,"bill_share":22.4,"plus75_b":53.4}), \
+             patch.object(report.real_yield, "build_block", return_value="[실질금리·시장 내재 물가상승률]\n원천 날짜 일치: 2026-10-08"):
             rendered = report._compact_report(raw)
         self.assertIn("전체 방향: 장기 국채금리 하락 · 회사채 신용 경계", rendered)
         self.assertIn("국채·ETF 2026-10-08 / 회사채 OAS 2026-10-07", rendered)
