@@ -66,6 +66,11 @@ JPM_REFERENCE = {
     "top4_dc_capex_ocf_2027_pct": 111.0,
 }
 JPM_BASELINE_EVENT = "jpm-cloud-dc-2026-10-13-85-70-54-82-125"
+JPM_NETWORKING_EVENT = "jpm-cloud-dc-networking-2026-10-13-nine-suppliers"
+JPM_NETWORKING_TICKERS = ("LITE", "COHR", "FN", "GLW", "APH", "CRDO", "ANET", "CIEN", "CLS")
+JPM_CORNING_META_URL = "https://www.corning.com/emea/en/about-us/news-events/news-releases/2026/01/corning-and-meta-announce-multiyear-up-to-6-billion-agreement-to-accelerate-us-data-center-buildout.html"
+JPM_CELESTICA_Q2_URL = "https://corporate.celestica.com/node/17621/html"
+JPM_CIENA_VI_URL = "https://investor.ciena.com/news/news-details/2026/Vodafone-Idea-Deploys-Cienas-WaveLogic-6-Extreme-to-Deliver-High-Capacity-Connectivity-03-31-2026/default.aspx"
 JPM_SECONDARY_SOURCES = (
     "https://www.macrostream.ai/articles/6ace3ff6f30e248c424121dd",
     "https://streetsignal.substack.com/p/streetsignal-morning-call-10132026",
@@ -390,6 +395,8 @@ def jpm_guard() -> None:
     ) == {}
     assert jpm_needs_baseline({}) is True
     assert jpm_needs_baseline({"last_sent_event_id": JPM_BASELINE_EVENT}) is False
+    assert len(JPM_NETWORKING_TICKERS) == len(set(JPM_NETWORKING_TICKERS)) == 9
+    assert "LITE" in JPM_NETWORKING_TICKERS and "CLS" in JPM_NETWORKING_TICKERS
 
 
 
@@ -483,6 +490,46 @@ def jpm_alert_text(metrics: dict, fx: dict, revised: dict | None,
             text.append("원문: " + url)
         text.append("원문: " + JPM_FINANCE_OFFICIAL)
     return "\n".join(text) + "\n"
+
+
+
+def jpm_networking_alert_text(fx: dict) -> str:
+    rate = float(fx["usdkrw"])
+    return "\n".join([
+        "JP모건 AI 데이터센터 네트워킹 병목·공급사 추가 관점",
+        "※ 기존 2026~2027 설비투자 증가율 숫자의 새 발표가 아닙니다.",
+        "",
+        "■ 무엇이 달라졌나",
+        "• 전체 데이터센터 투자 확대의 수혜가 GPU 외에 광연결·스위치·고속 케이블로 확산될 가능성.",
+        "• 네트워킹은 GPU 간 데이터 이동 지연·대역폭·전력 손실을 좌우하므로 실제 설치 물량을 확인.",
+        "• JP모건의 공급사 긍정적 관점 ≠ 고객별 독점공급·계약·확정매출.",
+        "",
+        "■ 이번 JP모건 자료에 나온 9개 후보(종목코드)",
+        "• 광원·광부품: 루멘텀 LITE, 코히런트 COHR, 파브리넷 FN",
+        "• 광섬유·고속 연결: 코닝 GLW, 암페놀 APH, 크레도 CRDO",
+        "• 네트워크 스위치·광전송·제조: 아리스타 ANET, 시에나 CIEN, 셀레스티카 CLS",
+        "• 공시상 각 기업의 고객 실명·매출비중은 따로 검증. 단순 투자의견은 별도 신규 사건으로 취급하지 않음.",
+        "",
+        "■ 확인된 사업 연결 — 증권사 추정과 구분",
+        f"• 코닝–Meta: 다년 광섬유·케이블 공급계약 최대 60억달러({krw_from_usd_b(6,rate)}). 상한액이지 기인식 매출 아님.",
+        f"• 셀레스티카: 2026년 2분기 고성능 플랫폼(HPS) 매출 약 19억달러({krw_from_usd_b(1.9,rate)})."
+        " 실제 발생한 사업부 매출로, 전액이 단일 데이터센터 계약은 아님.",
+        "• 시에나: WaveLogic 6 Extreme 데이터센터 간 광연결 실제 구축 사례(Vodafone Idea)."
+        " 미국 상위 4개 CSP 직접 계약 증빙은 아님.",
+        "",
+        "■ 이후 신규 알림 조건",
+        "• 9개 업체의 실제 신규수주·출하·고객 검증·생산능력·평균판매단가·영업현금흐름 의미 변화",
+        "• 숨은 역풍: 광결합 손실·발열·고온 신뢰성·인증시간·수율·소재 병목·고객 투자 지연",
+        "• 기존 광통신 감시에 빠진 APH·CIEN·CLS 검색을 추가. 과거 기사 재발송 방지.",
+        "",
+        f"• 환율: 1달러={rate:,.2f}원 · {fx.get('basis','확인 불가')} · {fx.get('source','확인 불가')}",
+        "• JP모건 증권 리포트 원문 직접 미열람. 2차 공개 보도·개별 공식자료 기반.",
+        "원문: https://www.macrostream.ai/articles/6ace3ff6f30e248c424121dd",
+        "원문: " + JPM_CORNING_META_URL,
+        "원문: " + JPM_CELESTICA_Q2_URL,
+        "원문: " + JPM_CIENA_VI_URL,
+        ""
+    ])
 
 
 def fmt(key: str, value: float, fx: float | None = None) -> str:
@@ -635,7 +682,17 @@ def main() -> int:
                     hashlib.sha256(json.dumps(jpm_revision, sort_keys=True).encode("utf-8")).hexdigest()[:24]
                     if jpm_revision else "")
     jpm_alert = bool(jpm_event_id) and can_deliver
+    # Separate, one-time networking *analysis* addendum to the already delivered
+    # capex event. Do not re-send JPM_REFERENCE 85%/70% as fresh news.
+    jpm_networking_due = (
+        jpm_old.get("last_sent_event_id") == JPM_BASELINE_EVENT
+        and jpm_old.get("networking_alert_id") != JPM_NETWORKING_EVENT
+    )
+    jpm_networking_alert = jpm_networking_due and can_deliver
     jpm_next = dict(jpm_old)
+    if jpm_networking_alert:
+        jpm_next["networking_alert_id"] = JPM_NETWORKING_EVENT
+        jpm_next["networking_alert_at_kst"] = now.astimezone(KST).isoformat(timespec="seconds")
     if jpm_alert:
         jpm_metrics.update(jpm_revision)
         jpm_next["metrics"] = jpm_metrics
@@ -670,6 +727,8 @@ def main() -> int:
             alerts.append(build_alert(proposed, changes, list({r["id"]: r for r in evidence}.values()), fx))
     if jpm_alert:
         alerts.append(jpm_alert_text(jpm_metrics, fx, jpm_revision, jpm_support))
+    if jpm_networking_alert:
+        alerts.append(jpm_networking_alert_text(fx))
     if alerts:
         ALERT.write_text("\n\n".join(alerts), encoding="utf-8")
 
@@ -682,10 +741,11 @@ def main() -> int:
         f"- 중요 전망 변경: **{len(changes)}건**\n"
         f"- JP모건 현재 성장률 2026/2027: **{jpm_metrics['top4_growth_2026_pct']:g}% / {jpm_metrics['top4_growth_2027_pct']:g}%**\n"
         f"- JP모건 기준·전망 알림: **{'예' if jpm_alert else '아니오'}**\n"
+        f"- JP모건 네트워킹 별도 관점: **{'예' if jpm_networking_alert else '아니오'}**\n"
         f"- 알림: **{'예' if alerts else '아니오'}**\n",
         encoding="utf-8",
     )
-    print(f"ai_dc_tam_watch first={first} rows={len(rows)} candidates={len(candidates)} changes={len(changes)} jpm_initial={jpm_initial} jpm_changes={len(jpm_revision)} jpm_alert={jpm_alert} alert={bool(alerts)}")
+    print(f"ai_dc_tam_watch first={first} rows={len(rows)} candidates={len(candidates)} changes={len(changes)} jpm_initial={jpm_initial} jpm_changes={len(jpm_revision)} jpm_alert={jpm_alert} jpm_net_alert={jpm_networking_alert} alert={bool(alerts)}")
     return 0
 
 
