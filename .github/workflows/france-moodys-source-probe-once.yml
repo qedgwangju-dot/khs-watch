@@ -31,6 +31,9 @@ jobs:
             "https://www.bing.com/search?q=site%3Aratings.moodys.com%2Fratings-news%2F434553",
             "https://news.google.com/rss/search?q=Moody%27s%20France%20rating%20October%202026&hl=en-US&gl=US&ceid=US%3Aen",
             "https://r.jina.ai/https://www.aft.gouv.fr/en/frances-credit-ratings",
+            "https://presse.economie.gouv.fr/?s=Moody",
+            "https://presse.economie.gouv.fr/?p=163622",
+            "https://r.jina.ai/https://presse.economie.gouv.fr/?p=163622",
             "https://www.aft.gouv.fr/en/frances-credit-ratings",
           ]
           def fetch(url, route):
@@ -45,6 +48,8 @@ jobs:
                 links=re.findall(r"href=[\"']([^\"']*ratings-news/\d+[^\"']*)[\"']",body,re.I)
                 return {"source":url,"route":route,"status":r.status,"length":len(body),
                   "has_Frances_government":bool(re.search("Government of France",visible,re.I)),
+                  "contains_moodys":bool(re.search("Moody", visible,re.I)),
+                  "matching_titles":re.findall(r".{0,60}Moody.{0,80}",visible,re.I)[:2],
                   "news_link_count":len(set(links)),"moody_article_ids":len(set(re.findall(r'ratings-news/\d+',body))),
                   "decoded_ids":list(dict.fromkeys(re.findall(r'ratings-news/\d+',urllib.parse.unquote(html.unescape(body)))))[:10],
                   "jina_head":body[:220].replace("\\n"," ") if "r.jina.ai/https://ratings.moodys.com/ratings-news/434553" in url else "",
