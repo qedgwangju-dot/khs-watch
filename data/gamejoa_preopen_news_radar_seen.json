@@ -35622,6 +35622,26 @@
       "telegram_core_fact": "신현송 한국은행 총재가 물가상승률이 목표 수준인 2%로 수렴한다는 확신이 들 때까지 긴축적인 통화정책 기조를 유지하겠다는 뜻을 밝혔다.",
       "title": "신현송 한은 총재 \"물가 잡힐 때까지 긴축 유지…인플레 취약계층에 가장 타격 커\""
     },
+    "core:8d4a884ff2afbb135e6961c4": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905431",
+      "source": "헤럴드경제",
+      "source_body_digest": "05bae5582c2e6f8f7b9259ce33654af1c969f4e4f99976bad798060b0c50e202",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42a57569627aee96379fb20fa675ece3a6c5527b79360a5b2fa9dd72517a467f",
+      "source_fact_keys": [
+        "source_fact:v1:61ddffd6ab5e2af07e52e45a5d9014e2e6174a115e0596af8fb2ff2d562fda7d"
+      ],
+      "source_published_kst": "2026-10-18T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘첨단 지능형 교통체계(ITS) 세계총회’ 강릉서 열린다",
+      "telegram_core_fact": "특히 AI 기반 ITS를 중심으로 자율주행, 디지털인프라 등 첨단기술과 교통체계의 융합을 논의하고 ITS의 발전 방향을 함께 모색하는 국제적 논의의 장이 될 전망이다.",
+      "title": "‘첨단 지능형 교통체계(ITS) 세계총회’ 강릉서 열린다"
+    },
     "core:8d573eea8c1e7bcf338f4120": {
       "first_seen_kst": "2026-10-17T08:46:34+09:00",
       "lanes": {
@@ -51438,6 +51458,35 @@
       "source_title": "조선대 참여 큐브 위성, 누리호 타고 우주로…\"광통신 실증\"",
       "telegram_core_fact": "조선대 연구진은 CPSat을 통해 실제 우주환경에서 광통신 기술을 검증하며 차세대 위성통신 기술의 가능성을 확인한다.",
       "title": "조선대 참여 큐브 위성, 누리호 타고 우주로…\"광통신 실증\""
+    },
+    "core:cf8688d58600a884a3f07a62": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
     },
     "core:cf9a1106a652f98e5451ea16": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
@@ -93696,6 +93745,26 @@
       "source_title": "이란 외무 \"호르무즈 재개방, 美 선택에 달려…대화 문 열렸다\"",
       "telegram_core_fact": "이란 반관영 메흐르통신에 따르면 아라그치 장관은 이날 이라크 바그다드에서 열린 이슬람협력기구(OIC) 외교장관회의에서 \"이란은 호르무즈 해협의 안전하고 안정적인 항행을 보장한다는 입장을 유지하고 있다\"면서 \"해상 항행 차질과 불안정은 미국과 이스라엘의 공격적 행동, 미국의 봉쇄와 강압적 조치의 결과\"라고 말했다.",
       "title": "이란 외무 \"호르무즈 재개방, 美 선택에 달려…대화 문 열렸다\""
+    },
+    "fact:308b9ecc1d91ec5bcbc34d4f": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905431",
+      "source": "헤럴드경제",
+      "source_body_digest": "05bae5582c2e6f8f7b9259ce33654af1c969f4e4f99976bad798060b0c50e202",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42a57569627aee96379fb20fa675ece3a6c5527b79360a5b2fa9dd72517a467f",
+      "source_fact_keys": [
+        "source_fact:v1:61ddffd6ab5e2af07e52e45a5d9014e2e6174a115e0596af8fb2ff2d562fda7d"
+      ],
+      "source_published_kst": "2026-10-18T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘첨단 지능형 교통체계(ITS) 세계총회’ 강릉서 열린다",
+      "telegram_core_fact": "특히 AI 기반 ITS를 중심으로 자율주행, 디지털인프라 등 첨단기술과 교통체계의 융합을 논의하고 ITS의 발전 방향을 함께 모색하는 국제적 논의의 장이 될 전망이다.",
+      "title": "‘첨단 지능형 교통체계(ITS) 세계총회’ 강릉서 열린다"
     },
     "fact:30a8e1f3d48192d2d9b1eda8": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -145957,6 +146026,35 @@
       ],
       "source_published_kst": "2026-10-06T12:32+09:00",
       "title": "\"양자 R&D→상용화로 가속…韓, 산업 연계 강화해야\""
+    },
+    "fact:e1985a31821e97442536d41b": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
     },
     "fact:e1999c30bf0c53cbc55c3b60": {
       "first_seen_kst": "2026-10-15T17:49:30+09:00",
@@ -235967,6 +236065,35 @@
       "source_published_kst": "2026-10-06T13:24+09:00",
       "title": "두산로보틱스, 피지컬 AI 협동로봇 플랫폼 만든다…국책과제 2건 선정"
     },
+    "link:ca7bdc5feab4e3b9d469f083": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
+    },
     "link:ca829d5b5954daef93b8bc65": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -238390,6 +238517,26 @@
       ],
       "source_published_kst": "2026-10-06T15:09+09:00",
       "title": "AI팩토리에 승부 건 엔비디아 \"생산성·수명·범용성이 수익 좌우\""
+    },
+    "link:d09dd9cf0fe018faa4e9c524": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905431",
+      "source": "헤럴드경제",
+      "source_body_digest": "05bae5582c2e6f8f7b9259ce33654af1c969f4e4f99976bad798060b0c50e202",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42a57569627aee96379fb20fa675ece3a6c5527b79360a5b2fa9dd72517a467f",
+      "source_fact_keys": [
+        "source_fact:v1:61ddffd6ab5e2af07e52e45a5d9014e2e6174a115e0596af8fb2ff2d562fda7d"
+      ],
+      "source_published_kst": "2026-10-18T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘첨단 지능형 교통체계(ITS) 세계총회’ 강릉서 열린다",
+      "telegram_core_fact": "특히 AI 기반 ITS를 중심으로 자율주행, 디지털인프라 등 첨단기술과 교통체계의 융합을 논의하고 ITS의 발전 방향을 함께 모색하는 국제적 논의의 장이 될 전망이다.",
+      "title": "‘첨단 지능형 교통체계(ITS) 세계총회’ 강릉서 열린다"
     },
     "link:d09ec6729442f5b02f1ed29d": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
@@ -261287,6 +261434,26 @@
       "source": "파이낸셜뉴스",
       "title": "한투운용, 한가위 맞아 '홍동백서' ACE ETF 4종 추천"
     },
+    "original:0d6d060f7b5cb891e2d93095": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905431",
+      "source": "헤럴드경제",
+      "source_body_digest": "05bae5582c2e6f8f7b9259ce33654af1c969f4e4f99976bad798060b0c50e202",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42a57569627aee96379fb20fa675ece3a6c5527b79360a5b2fa9dd72517a467f",
+      "source_fact_keys": [
+        "source_fact:v1:61ddffd6ab5e2af07e52e45a5d9014e2e6174a115e0596af8fb2ff2d562fda7d"
+      ],
+      "source_published_kst": "2026-10-18T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘첨단 지능형 교통체계(ITS) 세계총회’ 강릉서 열린다",
+      "telegram_core_fact": "특히 AI 기반 ITS를 중심으로 자율주행, 디지털인프라 등 첨단기술과 교통체계의 융합을 논의하고 ITS의 발전 방향을 함께 모색하는 국제적 논의의 장이 될 전망이다.",
+      "title": "‘첨단 지능형 교통체계(ITS) 세계총회’ 강릉서 열린다"
+    },
     "original:0d6d38cd893daaf6d2cb0c69": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
       "lanes": {
@@ -263708,6 +263875,35 @@
       "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
       "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
       "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
+    },
+    "original:13f72042dfce4665f2d43688": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
     },
     "original:140b6b472ee5f26e9302306e": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -366411,6 +366607,35 @@
       "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
       "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
     },
+    "source_fact:0806da9e12682d8c0af8d4d6": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
+    },
     "source_fact:080be0be957bbf765faa1883": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
       "lanes": {
@@ -421064,6 +421289,35 @@
       "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
       "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
     },
+    "source_fact:2aee25ee65389769bb27f1ca": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
+    },
     "source_fact:2aef304f8f3c8b43424fed7e": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
       "lanes": {
@@ -455050,6 +455304,35 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:42016141c2383538112b4b2c": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
     },
     "source_fact:4202f9e289c4d9a11f5e69c7": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -511187,6 +511470,35 @@
       "telegram_core_fact": "중국산 장비가 전체에서 38%를 차지하는 등 수입 의존도가 높은 가운데 항만 자동화가 확대되면서 정보보안과 유지관리 체계를 강화해야 한다는 지적이 나온다. 국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다.",
       "title": "4대 신항만 장비 38%가 '메이드 인 차이나'"
     },
+    "source_fact:65bb9bcca0fb0bf95acc2639": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
+    },
     "source_fact:65c0190607ccc06282a1b2df": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
       "lanes": {
@@ -512872,6 +513184,35 @@
       ],
       "source_published_kst": "2026-10-06T18:38+09:00",
       "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
+    },
+    "source_fact:671b0ab85d2b32712152fd4f": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
     },
     "source_fact:6723b4362dcb43dc3312ce93": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
@@ -578469,6 +578810,35 @@
       "telegram_core_fact": "방승재 이음투자컨설팅 대표는 “AI 산업의 성장은 반도체 한 분야에 그치지 않고 전력과 냉각, 데이터센터, 네트워크 등 인프라 공급망 전반으로 확산되고 있다”며 “HIDDEN VALUE AI를 통해 단기적인 시장 움직임보다 산업 변화가 기업의 수주와 실적으로 이어지는 과정을 체계적으로 분석해 제공하겠다”고 말했다.",
       "title": "이음투자컨설팅, AI 인프라 분석 상품 ‘HIDDEN VALUE AI’ 출시"
     },
+    "source_fact:93271f3eeff5fed479af024d": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
+    },
     "source_fact:932fac9f4bac63ee2b786037": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
       "lanes": {
@@ -598189,6 +598559,26 @@
       "telegram_core_fact": "10년 만기 미국 국채금리는 장중 연 5.36%까지 상승해 2002년 이후 최고치를 기록했다.",
       "title": "뉴욕증시, 국채금리 24년래 최고에 휘청⋯3대 지수 동반 하락[종합]"
     },
+    "source_fact:a0139fac114cc941a9f1d2a3": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905431",
+      "source": "헤럴드경제",
+      "source_body_digest": "05bae5582c2e6f8f7b9259ce33654af1c969f4e4f99976bad798060b0c50e202",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42a57569627aee96379fb20fa675ece3a6c5527b79360a5b2fa9dd72517a467f",
+      "source_fact_keys": [
+        "source_fact:v1:61ddffd6ab5e2af07e52e45a5d9014e2e6174a115e0596af8fb2ff2d562fda7d"
+      ],
+      "source_published_kst": "2026-10-18T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘첨단 지능형 교통체계(ITS) 세계총회’ 강릉서 열린다",
+      "telegram_core_fact": "특히 AI 기반 ITS를 중심으로 자율주행, 디지털인프라 등 첨단기술과 교통체계의 융합을 논의하고 ITS의 발전 방향을 함께 모색하는 국제적 논의의 장이 될 전망이다.",
+      "title": "‘첨단 지능형 교통체계(ITS) 세계총회’ 강릉서 열린다"
+    },
     "source_fact:a01694ca011c817974c9a055": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -613591,6 +613981,35 @@
       "source_title": "SK하이닉스 안현 사장 '전체 메모리 계층 최적화로 AI 생태계 지속 성장 견인'",
       "telegram_core_fact": "안 사장은 'AI 시대, 메모리 기술의 진화 방향'을 주제로 진행한 기조연설에서 AI 추론 수요 확대에 따라 기존 메모리 계층의 성능과 용량 측면에서 새로운 병목이 발생하고 있다고 설명함.",
       "title": "SK하이닉스 안현 사장 '전체 메모리 계층 최적화로 AI 생태계 지속 성장 견인'"
+    },
+    "source_fact:aa678f56330946d6edc88064": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
     },
     "source_fact:aa69cee20e73c60892c7d513": {
       "first_seen_kst": "2026-10-14T06:09:46+09:00",
@@ -637799,6 +638218,35 @@
       ],
       "source_published_kst": "2026-10-06T15:51+09:00",
       "title": "이형일 \"119만호 추가 공급…2030년까지 착공 노력\""
+    },
+    "source_fact:ba1b35ba19b81c265ea8df19": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
     },
     "source_fact:ba2b24f8620b0f79e7f08872": {
       "first_seen_kst": "2026-10-16T21:38:15+09:00",
@@ -664896,6 +665344,35 @@
       "telegram_core_fact": "디스커버리의 바이오 검사 역량에 루닛의 AI 병리 분석 기술을 더해 글로벌 제약 기업들에 표준화된 조직 관련 데이터를 제공하는 것이 이번 협업의 골자다. 검체 공급부터 분자병리, 유전체, 단백체 분석까지 신약 개발의 전 단계를 아우르는 검사 시스템을 갖추고 있는 것이 특징이다.",
       "title": "루닛, 美 디스커버리와 맞손…글로벌 제약사에 AI 병리 분석 공급"
     },
+    "source_fact:cc20fe5af68ea8b5e1e3c34c": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
+    },
     "source_fact:cc22cd56836826697a509e59": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
       "lanes": {
@@ -687448,6 +687925,35 @@
       ],
       "source_published_kst": "2026-10-06T07:48+09:00",
       "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
+    },
+    "source_fact:dab7a2bf225502227c3e5a48": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
     },
     "source_fact:dab8bc99996d6ba170ccb8dc": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -747878,6 +748384,26 @@
       "source": "파이낸셜뉴스",
       "title": "한투운용, 한가위 맞아 '홍동백서' ACE ETF 4종 추천"
     },
+    "title:0d6d060f7b5cb891e2d93095": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905431",
+      "source": "헤럴드경제",
+      "source_body_digest": "05bae5582c2e6f8f7b9259ce33654af1c969f4e4f99976bad798060b0c50e202",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42a57569627aee96379fb20fa675ece3a6c5527b79360a5b2fa9dd72517a467f",
+      "source_fact_keys": [
+        "source_fact:v1:61ddffd6ab5e2af07e52e45a5d9014e2e6174a115e0596af8fb2ff2d562fda7d"
+      ],
+      "source_published_kst": "2026-10-18T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘첨단 지능형 교통체계(ITS) 세계총회’ 강릉서 열린다",
+      "telegram_core_fact": "특히 AI 기반 ITS를 중심으로 자율주행, 디지털인프라 등 첨단기술과 교통체계의 융합을 논의하고 ITS의 발전 방향을 함께 모색하는 국제적 논의의 장이 될 전망이다.",
+      "title": "‘첨단 지능형 교통체계(ITS) 세계총회’ 강릉서 열린다"
+    },
     "title:0d6d38cd893daaf6d2cb0c69": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
       "lanes": {
@@ -750325,6 +750851,35 @@
       "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
       "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
       "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
+    },
+    "title:13f72042dfce4665f2d43688": {
+      "first_seen_kst": "2026-10-18T11:40:04+09:00",
+      "lanes": {
+        "live": "2026-10-18T11:40:04+09:00"
+      },
+      "last_seen_kst": "2026-10-18T11:40:04+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018019900009",
+      "source": "연합뉴스",
+      "source_body_digest": "61632f4fa12bf6e301db309a0710b92cb67c5c20bacc74ba11eb7fe69222da58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21a0196c1f5f5c341d049dc6c8b66430eb15d7695b7f78691bd9faaef19c9323",
+      "source_fact_keys": [
+        "source_fact:v1:1d5589fda37d037d93309ce9e5956f867378a0e54b003b00662d113fe6c05396",
+        "source_fact:v1:41362f23ec86916d00c298a89ba65b25c04bde03994f534e718f804019ab4761",
+        "source_fact:v1:42efb0ee0f487ce74ec4cb37cd986383991854f93eaa45f2b84dedd0704f9518",
+        "source_fact:v1:634fbf037643ee880398b877c54ae05b0322c9d95f96c2b4203575911ede7b7b",
+        "source_fact:v1:796dfd3a44d8cf8f5dfa3f43b998f828f51ba8fcb2168e3a313347a6a849258d",
+        "source_fact:v1:7c5c4927255f6c8e8268c26a0fc11a2aa3e2d225ecb62f1460c8f0610f8f2a8f",
+        "source_fact:v1:830b0b0692a052cd4ac03a46bb5294d557d5514e0312a36578ac25a30f20aeac",
+        "source_fact:v1:c65e5600d98a747317cf8508cfa4425b98757d40c03818274118ba2537136538",
+        "source_fact:v1:d120f6d1d55ff5b25f1074ebd9d2097b03bf4a5ba5aa7c67082fa693c0ea9ed6",
+        "source_fact:v1:ef2f7290778f2ed0ed9248e8dd09c153cfd7e63ce7e5ac951f87273b338a4d12"
+      ],
+      "source_published_kst": "2026-10-18T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스",
+      "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
+      "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
     },
     "title:140b6b472ee5f26e9302306e": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -843296,5 +843851,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-18T11:10:24+09:00"
+  "updated_at_kst": "2026-10-18T11:40:04+09:00"
 }
