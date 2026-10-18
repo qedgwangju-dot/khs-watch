@@ -12,6 +12,7 @@
     "06f31a2502204ad6f54838c8",
     "08ed332a833d8940dad4857b",
     "09a0982101c4770ca00446f7",
+    "0a6ad4d5a2ee737544d0",
     "0bfd6487c7dca0df3060",
     "0c3be72a3d2f1a6278f4",
     "0c41cee8d35cd34119e0",
@@ -174,6 +175,7 @@
     "6223aa96c7711ded5a8fd75e",
     "625ceaf0bf077fbe34d9",
     "62685c8dd2e7998d2358",
+    "62c185f895ebe03ed919",
     "635f1a64f5a8fe85f171f016",
     "6382bc7e267471efc7741a08",
     "63bad288bae065b3dc9d3e9f",
@@ -305,6 +307,7 @@
     "b15516c6c7dc0b3e9e68",
     "b1856f772ff8c9c2e97a4a43",
     "b1bfa52c6fd3c2c0c99600ce",
+    "b227918ae6c81a391555",
     "b23c284ecb6c4b5c63464a2a",
     "b244f204db532493bbe8",
     "b2dfec269fc1b02f155ef74c",
@@ -458,7 +461,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-18T22:35:12+09:00",
+  "last_scan_kst": "2026-10-19T01:56:38+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -466,6 +469,8 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 12,
-  "fetch_errors": []
+  "fetch_ok": 11,
+  "fetch_errors": [
+    "bing_news \"Apple\" \"NVLink Fusion\": ParseError not well-formed (invalid token): line 1, column 41"
+  ]
 }
