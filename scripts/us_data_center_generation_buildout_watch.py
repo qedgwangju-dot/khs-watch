@@ -617,9 +617,11 @@ def vg_classify_official_headline(title: str):
         return None
     if not re.search(r"power islands?|power plants?|generation|gas[- ]fired|data cent(?:er|re)", t, re.I):
         return None
-    if re.search(r"expects?|plans?|targets?|may |could |potential|up to |framework|"
-                 r"envisag|anticipat|outline|wants? to|to place|to submit|"
-                 r"set to|is poised to|proposes?|prepar(?:e|es|ing)", t, re.I):
+    if re.search(r"\bexpects?\b|\bplans?\b|\btargets?\b|\bmay\b|\bcould\b|"
+                 r"\bpotential\b|\bup to\b|\bframework\b|\benvisag\w*|"
+                 r"\banticipat\w*|\boutline\b|\bwants?\s+to\b|\bto place\b|"
+                 r"\bto submit\b|\bset to\b|\bis poised to\b|\bproposes?\b|"
+                 r"\bprepar(?:e|es|ing)\b", t, re.I):
         return None
     if re.search(r"cancel(?:led|ed|lation)?|terminate[sd]?|withdrawn", t, re.I):
         return "risk-cancel"
