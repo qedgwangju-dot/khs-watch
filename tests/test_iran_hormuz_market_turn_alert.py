@@ -164,6 +164,78 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
             "OPEC secretary general: world primary energy needs rise 23% by 2050"
         ))
 
+    @staticmethod
+    def _venezuela_reuters_fixture():
+        return """<html><body><article>
+        Reuters CARACAS - Venezuela expects nearly $76 billion in oil investment
+        over the next five years, acting President Delcy Rodriguez said,
+        as a bilateral agreement with the US includes plans to drill 250 rigs
+        across 17 oil fields. The parties signed 61 agreements.
+        Zulia output rose from 70,000 bpd to 370,000 bpd with
+        a goal of 400,000 bpd by end of year. Period unspecified.
+        </article></body></html>"""
+
+    @staticmethod
+    def _venezuela_ministry_fixture():
+        return """<html><body>
+        Delcy Rodríguez informó que Petróleos de Venezuela (PDVSA)
+        ha suscrito 61 acuerdos y mantiene en negociación otros 44,
+        para un total proyectado de 105 convenios.
+        </body></html>"""
+
+    def test_venezuela_plan_requires_reuters_full_and_official_agreement_count(self):
+        now=dt.datetime(2026,10,18,5,tzinfo=dt.timezone.utc)
+        r=MODULE.parse_venezuela_reuters_plan(
+            self._venezuela_reuters_fixture(),now,MODULE.VENEZUELA_20261017_SOURCE_URLS[1]
+        )
+        g=MODULE.parse_venezuela_government_agreements(self._venezuela_ministry_fixture(),now)
+        self.assertEqual(MODULE.classify_event("Venezuela expects nearly $76 billion oil investment over five years"),"venezuela_oil_investment")
+        self.assertEqual(MODULE._venezuela_investment_stage(r.title),"plan_announced")
+        self.assertEqual(MODULE._venezuela_investment_stage(g.title),"official_agreements_context")
+        self.assertIsNone(MODULE.confirm_event([r]))
+        self.assertIsNone(MODULE.confirm_event([g]))
+        confirmed=MODULE.confirm_event([r,g])
+        self.assertIsNotNone(confirmed)
+        self.assertEqual(MODULE.event_id("venezuela_oil_investment",[r,g]),MODULE.VENEZUELA_PLAN_EVENT_ID)
+        self.assertTrue(MODULE._venezuela_plan_summary([r,g])["zulia_claim"])
+
+    def test_venezuela_false_rig_contract_claim_rejected(self):
+        now=dt.datetime(2026,10,18,5,tzinfo=dt.timezone.utc)
+        invalid=self._venezuela_reuters_fixture().replace("250 rigs","250 rigs signed as completed purchase")
+        with self.assertRaisesRegex(RuntimeError,"원문|Reuters"):
+            MODULE.parse_venezuela_reuters_plan(invalid.replace("76 billion","75 billion"),now,MODULE.VENEZUELA_20261017_SOURCE_URLS[1])
+        with self.assertRaisesRegex(RuntimeError,"원문|61건"):
+            MODULE.parse_venezuela_government_agreements("<html>61 agreements were rumored</html>",now)
+        with self.assertRaisesRegex(RuntimeError,"미승인"):
+            MODULE.parse_venezuela_reuters_plan(self._venezuela_reuters_fixture(),now,"https://untrusted.example/ven")
+        self.assertEqual(MODULE._venezuela_investment_stage("Venezuela 250 rigs planned in 17 fields; financing not yet funded"),"unclassified")
+
+    def test_venezuela_dedup_reprints_and_stage_separation(self):
+        now=dt.datetime(2026,10,18,5,tzinfo=dt.timezone.utc)
+        r=MODULE.parse_venezuela_reuters_plan(self._venezuela_reuters_fixture(),now,MODULE.VENEZUELA_20261017_SOURCE_URLS[1])
+        g=MODULE.parse_venezuela_government_agreements(self._venezuela_ministry_fixture(),now)
+        later=MODULE.NewsItem(r.title,r.source,r.link,r.published_utc,r.published_epoch+86400,r.event_kind)
+        self.assertEqual(MODULE.event_id("venezuela_oil_investment",[r,g]),MODULE.event_id("venezuela_oil_investment",[later,g]))
+        state={"alerted_events":{MODULE.VENEZUELA_PLAN_EVENT_ID:"2026-10-18T14:00:00+09:00"}}
+        self.assertTrue(MODULE.event_recently_alerted(state,MODULE.VENEZUELA_PLAN_EVENT_ID,now+dt.timedelta(days=90)))
+        follow="Venezuela oil financing closed, funding disbursed to operators"
+        self.assertEqual(MODULE._venezuela_investment_stage(follow),"funding_reported")
+        self.assertNotEqual(MODULE.classify_event(follow),None)
+
+    def test_venezuela_alert_contains_dated_fx_and_separate_61_agreements(self):
+        now=dt.datetime(2026,10,18,5,tzinfo=dt.timezone.utc)
+        r=MODULE.parse_venezuela_reuters_plan(self._venezuela_reuters_fixture(),now,MODULE.VENEZUELA_20261017_SOURCE_URLS[1])
+        g=MODULE.parse_venezuela_government_agreements(self._venezuela_ministry_fixture(),now)
+        body=MODULE.build_physical_flow_alert_body("venezuela_oil_investment",[r,g],None,now)
+        self.assertIn("정부 예상 투자계획 발표",body)
+        self.assertIn("약 101조",body)
+        self.assertIn("10월 16일 기준",body)
+        self.assertIn("61건 기존 협정",body)
+        self.assertIn("자금 집행 확정 아님",body)
+        self.assertIn("정부 주장/증가 기간 미공개",body)
+        self.assertIn("250기 실제 발주",body)
+        self.assertLessEqual(len(body.splitlines()),36)
+
     def test_final_ceasefire_is_classified(self):
         title = "US and Iran agree to ceasefire agreement, officials say - Reuters"
         self.assertEqual(MODULE.classify_event(title), "ceasefire")

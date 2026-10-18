@@ -136,7 +136,33 @@ MIDEAST_PRODUCT_GAP_URLS = (
     "jpmorgan-and-goldman-see-middle-east-oil-flows-near-pre-war-levels/",
 )
 
+VENEZUELA_20261017_REUTERS_URL = (
+    "https://www.reuters.com/business/energy/"
+    "venezuela-expects-nearly-76-billion-oil-investment-over-five-years-acting-2026-10-17/"
+)
+VENEZUELA_20261017_SOURCE_URLS = (
+    VENEZUELA_20261017_REUTERS_URL,
+    "https://finance.yahoo.com/energy/articles/venezuela-expects-nearly-76-billion-225220894.html",
+    "https://www.investing.com/news/commodities-news/venezuela-expects-nearly-76-billion-in-oil-investment-over-five-years-acting-president-says-4955647",
+    "https://bluewaterhealthyliving.com/news/world-news/venezuela-expects-nearly-76-billion-in-oil-investment-over-five-years-acting-president-says/",
+)
+VENEZUELA_OFFICIAL_61_URL = (
+    "https://mppre.gob.ve/publicacion/"
+    "8447-venezuela-impulsa-105-acuerdos-estrategicos-y-estima-captar-12-mil-millones-de-dolares-en-financiamiento"
+)
+VENEZUELA_SOURCE_REUTERS = "Reuters (2026-10-17)"
+VENEZUELA_SOURCE_MINISTRY = "베네수엘라 외교부 (2026-10-09)"
+VENEZUELA_PLAN_STORY_TIME = dt.datetime(2026,10,17,22,52,tzinfo=UTC)
+VENEZUELA_PLAN_EVENT_ID = "venezuela_oil_investment:2026-10-17-plan-76b-250rig-17fields"
+# Dated observed 2026-10-16 FX; never presented as live.
+VENEZUELA_20261016_KRW_PER_USD = 1333.64
+
 NEWS_QUERIES = (
+    '"Venezuela" "76 billion" oil 250 rigs 17 fields when:3d',
+    '"PDVSA" "oil investment" 250 rigs 17 fields when:3d',
+    '"Venezuela" oil drilling rig purchase funding disbursed production when:3d',
+    '"Zulia" 400000 barrels oil field Venezuela verified when:3d',
+    '베네수엘라 석유 투자 760억달러 250기 17개 유전 when:3d',
     'Iran ceasefire agreement OR Iran truce agreement OR "US Iran ceasefire" when:3d',
     'US ends attacks Iran OR US halts strikes Iran OR US ceases military operations Iran when:3d',
     '"Strait of Hormuz reopens" OR "shipping resumes" Hormuz OR "traffic returns to normal" Hormuz when:3d',
@@ -334,6 +360,7 @@ EVENT_LABELS = {
     "eia_weekly_stock_balance": "EIA 미국 원유·정제품·전략비축유 재고",
     "iea_oct15_reserve_execution": "IEA 잔여 비축유·경유 방출 우선집행",
     "delek_tyler_dpa": "Delek 타일러 정유공장 DPA 증설 발표",
+    "venezuela_oil_investment": "베네수엘라 5년 석유투자 예상·실행 단계",
     "east_west_pipeline_recovery": "사우디 East-West Pipeline 실물 회복",
     "saudi_bypass_investment": "사우디 호르무즈 우회 신규 송유관 투자 단계 변화",
     "regional_export_recovery": "중동 원유 수출 회복 단계 상향",
@@ -408,6 +435,7 @@ def _source_name_ko(source: str) -> str:
         ("bnn bloomberg", "BNN 블룸버그"),
         ("bloomberg", "블룸버그"),
         ("reuters", "로이터"),
+        ("베네수엘라 외교부", "베네수엘라 외교부"),
         ("xinhua", "신화통신"),
         ("anadolu agency", "아나돌루통신"),
         ("mma", "미 해양광물관리청"),
@@ -523,6 +551,13 @@ def _news_title_ko(row: NewsItem) -> str:
         return "IEA, 기존 3월 약정의 잔여 비축유 신속 방출과 경유 우선 집행"
     if kind == "delek_tyler_dpa":
         return "JD Vance, Delek 타일러 정유공장 DPA 활용 증설계획 발표"
+    if kind == "venezuela_oil_investment":
+        stage = _venezuela_investment_stage(title)
+        if stage == "plan_announced":
+            return "베네수엘라, 5년간 약 760억 달러 석유 투자 예상·250기 시추계획 발표"
+        if stage == "official_agreements_context":
+            return "베네수엘라 정부, PDVSA 61건 협정 체결·44건 추가 협상 발표"
+        return "베네수엘라 유전 투자 후속 이행 단계 보도"
 
     if kind == "crude_product_divergence":
         return "JP모건, 중동 원유 흐름은 전쟁 전 수준에 근접했지만 정제품 회복은 지연"
@@ -605,10 +640,35 @@ def source_is_trusted(source: str) -> bool:
     return any(alias in low for alias in TRUSTED_SOURCE_ALIASES)
 
 
+def _venezuela_investment_stage(title: str) -> str:
+    low = normalize_text(title)
+    if not any(v in low for v in ("venezuela", "venezuelan", "pdvsa", "베네수엘라")):
+        return "unclassified"
+    # Historical official count is supporting context, not the fresh $76B story.
+    if "pdvsa" in low and "61 agreements" in low and "44" in low:
+        return "official_agreements_context"
+    if ("76 billion" in low or "$76bn" in low or "760억" in low) and any(
+        v in low for v in ("oil", "petrol", "석유", "원유")
+    ):
+        return "plan_announced"
+    # Follow-up Reuters/official reports are explicitly only reports until independently audited.
+    if any(v in low for v in ("funding disbursed", "financing closed", "자금 집행 시작", "금융조달 완료")):
+        return "funding_reported"
+    if any(v in low for v in ("rigs delivered", "rigs deployed", "rig begins drilling", "시추장비 인도", "시추장비 현장 투입")):
+        return "rig_arrival_reported"
+    if "zulia" in low and any(v in low for v in ("400,000 barrels per day", "400000 bpd", "40만 배럴")) and any(
+        v in low for v in ("produces", "production reached", "actual", "실제 생산", "생산 확인")
+    ):
+        return "output_reported"
+    return "unclassified"
+
+
 def classify_event(title: str) -> str | None:
     low = normalize_text(title)
     if not low:
         return None
+    if _venezuela_investment_stage(title) not in ("unclassified", "official_agreements_context"):
+        return "venezuela_oil_investment"
 
     # New capital programme is separate from EXISTING East-West pipeline flow.
     if _saudi_bypass_investment_headline(title):
@@ -1939,6 +1999,161 @@ def _build_eia_refining_alert_body(
     return "\n".join(lines).strip() + "\n"
 
 
+def parse_venezuela_reuters_plan(raw_html: str, current: dt.datetime, source_url: str) -> NewsItem:
+    """Verify Reuters full article before emitting the attributed *plan* stage."""
+    if source_url not in VENEZUELA_20261017_SOURCE_URLS:
+        raise RuntimeError("미승인 베네수엘라 Reuters 링크")
+    low = normalize_text(_visible_text(raw_html))
+    anchors = (
+        "venezuela", "rodriguez", "76 billion", "five years",
+        "250 rigs", "17 oil fields", "61 agreements",
+    )
+    if not all(v in low for v in anchors) or "reuters" not in low:
+        raise RuntimeError("Reuters 발표 핵심 7가지·기사 작성자 확인 불가")
+    if not any(x in low for x in ("expects", "expect", "nearly", "almost")):
+        raise RuntimeError("이미 투자 확정된 것으로 잘못 해석할 위험")
+    zulia_present = (
+        "zulia" in low and "70,000" in low
+        and "370,000" in low and "400,000" in low
+    )
+    title = (
+        "Venezuela oil expects 76 billion over five years; 250 rigs planned, "
+        "17 oil fields, 61 agreements; investment not paid"
+        + ("; Zulia self-reported 70000 to 370000 bpd target 400000" if zulia_present else "")
+    )
+    return NewsItem(
+        title,VENEZUELA_SOURCE_REUTERS,source_url,
+        VENEZUELA_PLAN_STORY_TIME.isoformat(),VENEZUELA_PLAN_STORY_TIME.timestamp(),
+        "venezuela_oil_investment",
+    )
+
+
+def parse_venezuela_government_agreements(raw_html: str, current: dt.datetime) -> NewsItem:
+    low = normalize_text(_visible_text(raw_html))
+    anchors = ("pdvsa", "61 acuerdos", "44", "105", "delcy")
+    if not all(v in low for v in anchors):
+        raise RuntimeError("베네수엘라 외교부 협정 61건·추가 44건 원문 직접 확인 실패")
+    stamp = dt.datetime(2026,10,9,15,tzinfo=UTC)
+    return NewsItem(
+        "Venezuela PDVSA signed 61 agreements and 44 others negotiating; "
+        "supporting context only, not confirmation of 76 billion funding",
+        VENEZUELA_SOURCE_MINISTRY,VENEZUELA_OFFICIAL_61_URL,
+        stamp.isoformat(),stamp.timestamp(),"venezuela_oil_investment"
+    )
+
+
+def fetch_venezuela_reuters_plan(current: dt.datetime) -> NewsItem:
+    errors=[]
+    for url in VENEZUELA_20261017_SOURCE_URLS:
+        try:
+            page=fetch_bytes(url,timeout=7,attempts=1).decode("utf-8","replace")
+            return parse_venezuela_reuters_plan(page,current,url)
+        except Exception as exc:
+            errors.append(f"{urllib.parse.urlparse(url).hostname}: {type(exc).__name__}")
+    raise RuntimeError("Reuters 본문·재게시 직접 검증 실패: "+" | ".join(errors))
+
+
+def _venezuela_has_verified_reuters(rows: list[NewsItem]) -> bool:
+    for r in rows:
+        if r.source != VENEZUELA_SOURCE_REUTERS or r.link not in VENEZUELA_20261017_SOURCE_URLS:
+            continue
+        if ("76 billion" in r.title and "250 rigs planned" in r.title
+                and "17 oil fields" in r.title and "61 agreements" in r.title):
+            return True
+    return False
+
+
+def _venezuela_has_official_61(rows: list[NewsItem]) -> bool:
+    return any(
+        r.source == VENEZUELA_SOURCE_MINISTRY
+        and r.link == VENEZUELA_OFFICIAL_61_URL
+        and "61 agreements and 44 others negotiating" in r.title
+        for r in rows
+    )
+
+
+def _venezuela_plan_summary(rows: list[NewsItem]) -> dict:
+    if not (_venezuela_has_verified_reuters(rows) and _venezuela_has_official_61(rows)):
+        raise RuntimeError("베네수엘라 투자 Reuters·정부 근거 부족: 발송 차단")
+    r=next(r for r in rows if r.source==VENEZUELA_SOURCE_REUTERS)
+    return {"amount_usd":76000000000, "years":5, "rigs_planned":250,
+            "fields":17, "agreements":61, "zulia_claim": "Zulia self-reported" in r.title,
+            "source_link":r.link}
+
+
+def _build_venezuela_oil_plan_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None
+) -> str:
+    stage_set={_venezuela_investment_stage(r.title) for r in news_rows}
+    stage_set.discard("official_agreements_context")
+    stage_set.discard("unclassified")
+    if len(stage_set)!=1:
+        raise RuntimeError("베네수엘라 상이한 투자단계 혼합")
+    stage=next(iter(stage_set))
+    lines=[
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[한눈에]",
+    ]
+    if stage=="plan_announced":
+        d=_venezuela_plan_summary(news_rows)
+        lines.extend([
+            "판정          정부 예상 투자계획 발표 · 자금 집행 확정 아님",
+            "투자          5년간 약 760억 달러 · 연평균 단순 152억 달러",
+            "미국 협정     17개 유전 · 시추장비 250기 투입 계획(발주·가동 미확인)",
+            "계약          PDVSA 61건 기존 협정 · 개별 발주·투자 집행 미확인",
+        ])
+        historic=VENEZUELA_20261016_KRW_PER_USD
+        historic_krw=76000000000*historic
+        lines.append(
+            f"원화 환산     약 {int(historic_krw//1e12)}조 "
+            f"{int((historic_krw%1e12)//1e8):,}억원"
+            f" · 10월 16일 기준 {historic:,.2f}원/달러 (실시간 환율 아님)"
+        )
+        if d["zulia_claim"]:
+            lines.append("술리아주      7만→37만 배럴/일 · 정부 주장/증가 기간 미공개")
+            lines.append("연말 목표     40만 배럴/일 · 목표치(실제 관측 아님)")
+        lines.extend([
+            "",
+            "[핵심]",
+            "중동 공급차질 대응의 장기 대체 경로지만 760억 달러가 당장 석유시장에 투입된 것은 아닙니다.",
+            "→ 투자계획·협정 체결과 신규 시추장비 발주·실제 생산·수출은 서로 다른 단계입니다.",
+            "",
+            "[다음 확인]",
+            "자금          계약별 금융조달·투자 확정·실제 지출 증빙",
+            "제재          미 재무부(OFAC) 일반허가 49B 조건과 개별 허가 여부",
+            "장비          250기 실제 발주·통관·시추 개시/가동 대수",
+            "물량          PDVSA·독립자료 생산량·선적량, 술리아주 40만 목표 이행",
+            "실적          Chevron·SLB 등 공개 수주·설비투자·실제 매출",
+            "",
+            "[위험]",
+            "정전·송유관·희석제·정유·유조선/보험 병목으로 허가 후에도 생산·수출이 지연될 수 있습니다.",
+        ])
+    else:
+        lines.extend([
+            f"투자단계      {stage} · 보도 단계(현금집행·장비 가동은 별도 확인)",
+            "",
+            "[다음 확인]",
+            "발표기관·계약 상대방·발주번호·실제 장비 수·생산물량·선적 도착 증빙",
+        ])
+    if oil is not None:
+        direction="상승" if oil.change>0 else "하락" if oil.change<0 else "보합"
+        lines.append(f"Brent         {oil.price:.2f}달러/배럴 · {oil.change_pct:+.2f}% {direction}")
+    lines.extend(["","[근거]"])
+    for r in news_rows[:3]:
+        publish=dt.datetime.fromtimestamp(r.published_epoch,tz=UTC).astimezone(KST)
+        lines.append(f"{_source_name_ko(r.source)} · 자료 {publish:%m-%d %H:%M KST}")
+        if r.link:
+            lines.append(f"원문: {r.link}")
+    lines.extend([
+        "",
+        "[주의]",
+        "Reuters가 전한 대통령 발언과 정부의 기존 61건 협정은 서로 다른 확인 범위입니다.",
+        "Chevron·SLB의 기존 별도 사업을 이번 250기 확정 납품계약으로 간주하지 않습니다.",
+    ])
+    return "\n".join(lines).strip()+"\n"
+
+
 def parse_delek_tyler_dpa_remarks(raw_html: str, current: dt.datetime) -> NewsItem:
     low=normalize_text(_visible_text(raw_html))
     if not ("delek" in low and "tyler" in low and "defense production act" in low
@@ -2334,6 +2549,22 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
         except Exception as exc:
             errors.append(str(exc))
 
+    # For the fresh Reuters-reported plan, require its full story plus separately
+    # dated government documentation of PDVSA's prior 61 agreements.
+    # Do not turn old source publication time into the current execution time.
+    plan_elapsed=(current.astimezone(UTC)-VENEZUELA_PLAN_STORY_TIME).total_seconds()
+    plan_sent=VENEZUELA_PLAN_EVENT_ID in (load_state().get("alerted_events") or {})
+    if 0 <= plan_elapsed <= 72*3600 and not plan_sent:
+        try:
+            items.append(fetch_venezuela_reuters_plan(current))
+        except Exception as exc:
+            errors.append(f"베네수엘라 Reuters 본문: {exc}")
+        try:
+            ministry=fetch_bytes(VENEZUELA_OFFICIAL_61_URL,timeout=8,attempts=1).decode("utf-8","replace")
+            items.append(parse_venezuela_government_agreements(ministry,current))
+        except Exception as exc:
+            errors.append(f"베네수엘라 PDVSA 61건 공식 원문: {type(exc).__name__}: {exc}")
+
     # Optional first-party sources must never block the existing hourly monitor.
     # All three loaders run concurrently in daemon threads, with a shared wall
     # clock budget. A slow DNS read or anti-bot response cannot cancel Actions.
@@ -2479,7 +2710,13 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
 def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tuple[str, list[NewsItem]]]:
     by_kind: dict[tuple[str,str], list[NewsItem]] = {}
     for item in items:
-        if item.event_kind == "china_fuel_export_policy":
+        if item.event_kind == "venezuela_oil_investment":
+            stage=_venezuela_investment_stage(item.title)
+            if stage=="unclassified":
+                continue
+            if stage=="official_agreements_context":
+                stage="plan_announced"
+        elif item.event_kind == "china_fuel_export_policy":
             stage=_china_fuel_export_stage(item.title)
         elif item.event_kind == "russia_diesel_supply_transition":
             stage=_russian_diesel_supply_stage(item.title)
@@ -2497,6 +2734,18 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
 
     candidates: list[tuple[float, str, list[NewsItem]]] = []
     for (kind,stage), rows in by_kind.items():
+        if kind == "venezuela_oil_investment":
+            if stage=="plan_announced" and not (
+                _venezuela_has_verified_reuters(rows)
+                and _venezuela_has_official_61(rows)
+            ):
+                continue
+            if stage!="plan_announced":
+                # Independent published corroboration required for follow-up
+                # reports; they remain "reported", not physically verified.
+                known={normalize_text(r.source) for r in rows}
+                if len(known)<2:
+                    continue
         if kind == "saudi_bypass_investment" and stage in (
             "target_total_confirmed", "tender_issued",
             "contract_awarded", "construction_started", "commissioned",
@@ -2519,7 +2768,7 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             reverse=True,
         ):
             publisher=normalize_text(row.source)
-            if kind in ("china_fuel_export_policy","hormuz_7day_diplomacy","russia_diesel_supply_transition"):
+            if kind in ("china_fuel_export_policy","hormuz_7day_diplomacy","russia_diesel_supply_transition","venezuela_oil_investment"):
                 if ("reuters" in publisher or "reuters" in normalize_text(row.title)
                     or "marketscreener" in publisher or "euronext" in publisher):
                     publisher="reuters"
@@ -2742,6 +2991,21 @@ def load_state(path: pathlib.Path = STATE_PATH) -> dict:
 
 def event_id(kind: str, rows: list[NewsItem]) -> str:
     combined = " ".join(normalize_text(row.title) for row in rows)
+    if kind == "venezuela_oil_investment":
+        stages = {_venezuela_investment_stage(row.title) for row in rows}
+        stages.discard("official_agreements_context")
+        stages.discard("unclassified")
+        if len(stages) != 1:
+            raise ValueError("베네수엘라 투자: 계획·이행단계 뉴스 혼합 또는 단계 불명확")
+        stage = next(iter(stages))
+        if stage == "plan_announced":
+            if not (_venezuela_has_verified_reuters(rows) and _venezuela_has_official_61(rows)):
+                raise ValueError("760억 달러 Reuters 본문과 61건 정부 원문 모두 필요")
+            return VENEZUELA_PLAN_EVENT_ID
+        # Later credible reports are not automatically called funded/operational.
+        published = dt.datetime.fromtimestamp(max(row.published_epoch for row in rows),tz=UTC).strftime("%Y-%m")
+        basis = f"{kind}|{stage}|{published}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind in ("eia_weekly_stock_balance","iea_oct15_reserve_execution","delek_tyler_dpa"):
         approved = {
@@ -3043,6 +3307,7 @@ IMMUTABLE_EVENT_PREFIXES = (
     "eia_weekly_stock_balance:",
     "iea_oct15_reserve_execution:",
     "delek_tyler_dpa:",
+    "venezuela_oil_investment:",
     "g7_reserve_release_agreement:",
     "eu_diesel_reserve_policy:",
     "crude_product_divergence:",
@@ -4768,6 +5033,8 @@ def build_physical_flow_alert_body(
     fx: Quote | None = None,
 ) -> str:
     metrics = _extract_kpler_sts_metrics(news_rows)
+    if kind == "venezuela_oil_investment":
+        return _build_venezuela_oil_plan_alert_body(news_rows, oil, current, fx)
     if kind == "tankertrackers_7country_crude_mtd":
         return _build_tankertrackers_seven_country_alert_body(news_rows, oil, current, fx)
     if kind == "eia_weekly_stock_balance":
@@ -5153,6 +5420,7 @@ def run_monitor(current: dt.datetime) -> int:
         "sts_reroute_expansion",
         "ex_iran_crude_prewar_recovery",
         "tankertrackers_7country_crude_mtd",
+        "venezuela_oil_investment",
         "saudi_asia_osp_change",
         "east_west_pipeline_recovery",
         "saudi_bypass_investment",
@@ -5182,7 +5450,9 @@ def run_monitor(current: dt.datetime) -> int:
         if fx is not None and not quote_is_fresh(fx, current, max_age_minutes):
             fx = None
         body = build_physical_flow_alert_body(kind, news_rows, oil, current, fx)
-        if kind == "tankertrackers_7country_crude_mtd":
+        if kind == "venezuela_oil_investment":
+            title = "베네수엘라 5년 석유투자·실제 집행 단계"
+        elif kind == "tankertrackers_7country_crude_mtd":
             title = "중동 7개국 원유수출 월중 회복·정제품 병목"
         elif kind == "eia_refining_crack_watch":
             title = "미국 정제마진·정유사 이익 병목 변화"
