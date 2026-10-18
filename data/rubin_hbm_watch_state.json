@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-18T20:57:06+09:00",
+  "updated_at_kst": "2026-10-19T01:04:28+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -25,7 +25,9 @@
     "1f7c1f701db354f9e408d486",
     "20a5c84026d1bbe9b4f60398",
     "21e84f4d7bcbfa46a6b63dee",
+    "23e1b2ffed5d29e750cc3b26",
     "24d724784a608cfa35b56f7d",
+    "26c54e01df4302a688940e35",
     "27f85e070f62c260de7cb002",
     "2b939f56287ecd7e580d3744",
     "2be3c9dce3ee541c0e8e9e37",
@@ -67,6 +69,7 @@
     "5a97726e2e93fc7408e02754",
     "62514606e58e299512d357d4",
     "64e23ef31ffa634926d6176f",
+    "65c4b8e5a765026618fcf4c0",
     "65f05201a0c34568be8d9590",
     "65f1cfef6daf0acc077943e5",
     "683bf92b23e4d4953f109996",
@@ -142,6 +145,7 @@
     "cd8ac1c75b1f05e1e2de11bc",
     "cdb74aa9fe6a1d10fc0d28c2",
     "d059f8c3e0d742a821065a47",
+    "d15e8f133032b5be6630415f",
     "d26bff6649e5357d756fc3fc",
     "d33a5fbc0d352f5813521b17",
     "d3d3dee3de412005e6f96385",
@@ -163,8 +167,10 @@
     "e1cf986a1ad553979c710286",
     "e21989f35cb34017ddf8375a",
     "e44aed066c594b811835e985",
+    "e898e45f31649d9b7b036987",
     "e917aed0ebcc8c2bd2d2a9bb",
     "e91a33b5d73da251921a7da4",
+    "e96d2abb9575076e085850b0",
     "e9cfa9f618010bad720140bb",
     "e9d025e15967b9bfaa912ef4",
     "e9f1478bb2d4988d9cb80d94",
@@ -206,13 +212,13 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 3,
-  "last_verified_event_count": 2,
-  "last_send_event_count": 2,
+  "last_unseen_raw_count": 6,
+  "last_verified_event_count": 0,
+  "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1332.1,
-    "date": "2026-10-16 일일 기준 · ECB/Frankfurter · 조회 2026-10-18 20:57 KST · 보조 API 2026-10-18 · 차이 0.20% · 일중 기준시각 차이 가능",
+    "date": "2026-10-16 일일 기준 · ECB/Frankfurter · 조회 2026-10-19 01:04 KST · 보조 API 2026-10-18 · 차이 0.20% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -341,14 +347,14 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-18T20:57:20+09:00",
+    "last_checked_at_kst": "2026-10-19T01:04:43+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-18T20:57:59+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-10-19T01:05:23+09:00",
+    "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-18T20:57:59+09:00",
   "telegram_message_ids": [
@@ -414,8 +420,8 @@
       "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
-    "last_validation_cutoff": "2026-10-18",
-    "last_checked_at_kst": "2026-10-18T20:57:43+09:00",
+    "last_validation_cutoff": "2026-10-19",
+    "last_checked_at_kst": "2026-10-19T01:05:12+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -474,7 +480,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-18T20:57:43+09:00",
+        "checked_at_kst": "2026-10-19T01:05:12+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -551,8 +557,8 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10461",
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
-    "last_checked_cutoff": "2026-10-18",
-    "last_checked_at_kst": "2026-10-18T20:57:48+09:00",
+    "last_checked_cutoff": "2026-10-19",
+    "last_checked_at_kst": "2026-10-19T01:05:17+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -596,7 +602,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-18T20:57:50+09:00",
+    "last_checked_at_kst": "2026-10-19T01:05:19+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
