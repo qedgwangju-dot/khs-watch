@@ -532,6 +532,7 @@ def parse_google_news(query: str, now: dt.datetime) -> list[dict]:
             "title": title,
             "description": desc,
             "source": source or "Google News",
+            "publisher_url": (source_node.attrib.get("url") or "").strip() if source_node is not None else "",
             "url": link,
             "published_at": published.isoformat() if published else None,
         })
@@ -649,6 +650,28 @@ def fetch_openshell_telemetry() -> dict:
         "title": " · ".join(summary) if summary else latest["name"],
         "detail": " | ".join(details),
     }
+
+def cohere_aisle_publisher_verified(item: dict) -> bool:
+    """Company-branded news is official only with its matching publisher host.
+
+    Google News source labels are self-descriptions, not proof that the source
+    is controlled by Cohere or AISLE. Do not promote a spoofed label into a
+    signed/closed acquisition milestone.
+    """
+    label = str(item.get("source") or "").strip().lower()
+    if not label.startswith(("cohere", "aisle")):
+        return True  # Trusted independent media has its own source checks.
+    link = (item.get("publisher_url") or "").strip()
+    if not link and item.get("kind") == "official_direct":
+        link = (item.get("url") or "").strip()
+    try:
+        host = (urllib.parse.urlsplit(link).hostname or "").lower()
+    except ValueError:
+        return False
+    if label.startswith("cohere"):
+        return host in ("cohere.com", "www.cohere.com")
+    return host in ("aisle.com", "www.aisle.com")
+
 
 def source_official(source: str) -> bool:
     low = source.lower()
@@ -1042,7 +1065,10 @@ def material(item: dict) -> bool:
         return False
     if is_anthropic_mission_launch_baseline(item) or is_reported_si_original(item):
         return False
-    if tracked_policy_event_stage(item):
+    milestone = tracked_policy_event_stage(item)
+    if milestone:
+        if milestone[0] == "cohere_aisle" and not cohere_aisle_publisher_verified(item):
+            return False
         return source_trusted(item.get("source", ""))
     stage = trail_of_bits_mna_stage(item)
     if stage:
@@ -1104,7 +1130,7 @@ def normalize(item: dict) -> dict:
     out["fingerprint"] = fingerprint(item)
     out["category"] = detect_category(combined)
     out["entity"] = detect_entity(combined)
-    out["official"] = source_official(item.get("source",""))
+    out["official"] = source_official(item.get("source","")) and cohere_aisle_publisher_verified(item)
     return out
 
 
@@ -1476,7 +1502,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
         if rep["category"] == "Cohere–AISLE AI 보안 인수·상용화 단계":
             milestone = tracked_policy_event_stage(rep)
             detail = milestone[1].replace("_", " ") if milestone else "추가 검증"
-            verification = "당사자 공식 발표" if source_official(rep.get("source","")) else "신뢰보도 · 공식 발표와 별도 검증"
+            verification = "당사자 공식 발표" if rep.get("official") else "신뢰보도 · 공식 발표와 별도 검증"
             lines.append(f"• <b>신규 단계</b>: {html.escape(detail)} · {verification}")
             lines.append("• <b>기준선</b>: 2026년 10월 15일 Cohere·AISLE 인수 의향서 체결. 본계약·인수 종결 아님, 거래금액 미공개")
             lines.append("• <b>기술·매출</b>: AISLE의 취약점 발견·악용 가능성 검증·자동수정·MCP 연동·패키지 방화벽과 Cohere North의 기업용 보안 운영을 구분. 유료 계약·반복매출은 개별 확인 필요")
