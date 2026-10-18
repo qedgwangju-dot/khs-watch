@@ -34,6 +34,15 @@ def choose_newer(remote: dict, local: dict) -> dict:
                     str(remote.get("dealer_links_edited_at_kst") or ""),
                     str(local.get("dealer_links_edited_at_kst") or ""),
                 )
+    # Preserve a verified one-time delivery to the requested separate bot.
+    for candidate in (remote, local):
+        if candidate.get("dealer_requested_bot_event") and candidate.get("dealer_requested_bot_message_id"):
+            if (not selected.get("dealer_requested_bot_event")
+                or str(candidate.get("dealer_requested_bot_sent_at_kst") or "")
+                   > str(selected.get("dealer_requested_bot_sent_at_kst") or "")):
+                for field in ("dealer_requested_bot_event", "dealer_requested_bot_username",
+                              "dealer_requested_bot_message_id", "dealer_requested_bot_sent_at_kst"):
+                    selected[field] = candidate[field]
     return selected
 
 
