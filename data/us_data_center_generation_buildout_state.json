@@ -166,10 +166,45 @@
     "394b88027aa4cb3c5917",
     "644835b9ff0f6ea97163"
   ],
-  "last_fx_krw_per_usd": 1339.092519,
+  "last_fx_krw_per_usd": 1334.772994,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-10-08T09:55:11+00:00",
-  "updated_at_utc": "2026-10-08T09:55:56+00:00",
+  "fx_checked_utc": "2026-10-18T09:07:50+00:00",
+  "updated_at_utc": "2026-10-18T09:08:19+00:00",
+  "venture_global_power_island": {
+    "framework_signed": "2026-10-09",
+    "announcement_date": "2026-10-15",
+    "power_island_max_units": 16,
+    "power_island_unit_mw": 720,
+    "power_island_max_mw": 11520,
+    "existing_island_mode_mw": 4500,
+    "ge_manufacturing_reservation_units": 8,
+    "ge_manufacturing_reservation_denominator_remaining": 15,
+    "ge_grid_equipment_max_packages": 21,
+    "ge_grid_initial_reservation_packages": 5,
+    "full_option_equipment_usd_b": 17.2,
+    "potential_compute_gw": 10,
+    "conditional_target_year": 2034,
+    "first_power_island_po_target": "2026-12-31",
+    "grid_first_po_target": "2026-Q4",
+    "delivery_window": "2028~2034",
+    "customer_signed": false,
+    "first_power_island_po_placed": false,
+    "facility_energized": false,
+    "phase": "기본계약·일부 제조능력 예약",
+    "scope": "가스터빈·증기터빈·E-house·전력변압기·가스절연 개폐장치·전기제어/통합서비스",
+    "version": 1,
+    "official_release_verified_live": true,
+    "baker_official_verified_live": true,
+    "sec_verified_live": false,
+    "last_checked_utc": "2026-10-18T09:08:19+00:00",
+    "source_errors": [
+      "SEC 2026-10-15 8-K 실시간 확인 불가: HTTPError: 403 Client Error: Forbidden for url: https://www.sec.gov/Archives/edgar/data/2007855/00020"
+    ],
+    "alerted_milestones": [
+      "vg-power|framework-reservations|2026-10-09"
+    ],
+    "framework_alert_delivered": true
+  },
   "hyperscaler_nuclear_ppa": {
     "version": 7,
     "states": {
@@ -242,9 +277,9 @@
       }
     },
     "source_errors": [
-      "Constellation IR newsroom: ReadTimeout"
+      "Constellation IR newsroom: HTTPError"
     ],
-    "last_checked_utc": "2026-10-08T09:56:23+00:00",
+    "last_checked_utc": "2026-10-18T09:08:23+00:00",
     "alert_change_count": 0,
     "google_constellation_official_ack": true
   }
