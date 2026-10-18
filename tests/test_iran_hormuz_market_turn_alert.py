@@ -199,6 +199,44 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertEqual(MODULE.event_id("venezuela_oil_investment",[r,g]),MODULE.VENEZUELA_PLAN_EVENT_ID)
         self.assertTrue(MODULE._venezuela_plan_summary([r,g])["zulia_claim"])
 
+    def test_venezuela_primary_source_preserved_despite_newer_reprints(self):
+        now=dt.datetime(2026,10,18,5,tzinfo=dt.timezone.utc)
+        original=MODULE.parse_venezuela_reuters_plan(
+            self._venezuela_reuters_fixture(),now,MODULE.VENEZUELA_20261017_SOURCE_URLS[1]
+        )
+        official=MODULE.parse_venezuela_government_agreements(self._venezuela_ministry_fixture(),now)
+        copies=[
+            MODULE.NewsItem(
+                "Venezuela expects nearly $76 billion oil investment over five years",
+                name,"https://example.com/"+str(i),now.isoformat(),now.timestamp()+i,
+                "venezuela_oil_investment"
+            )
+            for i,name in enumerate(("Reuters","Financial Times","Associated Press","Bloomberg"),start=1)
+        ]
+        candidates=MODULE.confirm_events(copies+[original,official])
+        one=[rows for kind,rows in candidates if kind=="venezuela_oil_investment"]
+        self.assertEqual(len(one),1)
+        self.assertTrue(MODULE._venezuela_has_verified_reuters(one[0]))
+        self.assertTrue(MODULE._venezuela_has_official_61(one[0]))
+        self.assertEqual(MODULE.event_id("venezuela_oil_investment",one[0]),MODULE.VENEZUELA_PLAN_EVENT_ID)
+
+    def test_invalid_event_id_does_not_block_valid_oil_alert(self):
+        now=dt.datetime(2026,10,18,5,tzinfo=dt.timezone.utc)
+        bogus=[
+            MODULE.NewsItem("Venezuela expects nearly $76 billion oil investment over five years",
+                "Reuters","https://example.org/unverified",now.isoformat(),now.timestamp(),"venezuela_oil_investment")
+        ]
+        good=[
+            MODULE.NewsItem(
+                "Gulf of Oman ship-to-ship record surge","Kpler","https://example.com/kpler",
+                now.isoformat(),now.timestamp()-60,"sts_reroute_expansion")
+        ]
+        selected,_=MODULE.select_unalerted_event(
+            {},[("venezuela_oil_investment",bogus),("sts_reroute_expansion",good)],now
+        )
+        self.assertIsNotNone(selected)
+        self.assertEqual(selected[0],"sts_reroute_expansion")
+
     def test_venezuela_false_rig_contract_claim_rejected(self):
         now=dt.datetime(2026,10,18,5,tzinfo=dt.timezone.utc)
         invalid=self._venezuela_reuters_fixture().replace("250 rigs","250 rigs signed as completed purchase")

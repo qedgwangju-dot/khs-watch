@@ -2780,6 +2780,16 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
                     publisher="associated press"
             source_rows.setdefault(publisher, row)
         selected = list(source_rows.values())
+        if kind == "venezuela_oil_investment" and stage == "plan_announced":
+            # Keep both original, independently scoped records even when newer
+            # syndicated Reuters headlines outnumber the 3-slot display limit.
+            original = next((r for r in rows if _venezuela_has_verified_reuters([r])), None)
+            government = next((r for r in rows if _venezuela_has_official_61([r])), None)
+            if original is None or government is None:
+                continue
+            selected = [original, government] + [
+                r for r in selected if r != original and r != government
+            ][:1]
 
         has_primary_data = kind in ("oil_flow_recovery", "sts_reroute_expansion") and any(
             any(alias in normalize_text(row.source) for alias in DATA_PROVIDER_ALIASES)
@@ -2870,7 +2880,8 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
 
     candidates.sort(key=lambda value: value[0], reverse=True)
     return [
-        (kind, sorted(selected, key=lambda item: item.published_epoch, reverse=True)[:3])
+        (kind, selected[:3] if kind == "venezuela_oil_investment"
+              else sorted(selected, key=lambda item: item.published_epoch, reverse=True)[:3])
         for _, kind, selected in candidates
     ]
 
@@ -3397,7 +3408,13 @@ def select_unalerted_event(
 ) -> tuple[tuple[str, list[NewsItem], str] | None, list[str]]:
     duplicate_labels: list[str] = []
     for candidate_kind, candidate_rows in candidates:
-        candidate_id = event_id(candidate_kind, candidate_rows)
+        try:
+            candidate_id = event_id(candidate_kind, candidate_rows)
+        except (ValueError, RuntimeError) as exc:
+            # Bad/missing evidence must not crash the entire hourly oil monitor.
+            # Do not write state for an unverified event.
+            print(f"candidate_validation_blocked={candidate_kind}: {type(exc).__name__}: {exc}")
+            continue
         if event_recently_alerted(state, candidate_id, current):
             duplicate_labels.append(EVENT_LABELS.get(candidate_kind, candidate_kind))
             continue
