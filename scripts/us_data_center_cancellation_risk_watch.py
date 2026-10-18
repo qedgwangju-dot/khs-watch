@@ -24,6 +24,12 @@ CAPGEMINI = "https://www.capgemini.com/insights/research-library/data-centers-an
 FERC_LARGE_LOAD = "https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration"
 FERC_ROSNER = "https://www.ferc.gov/news-events/news/commissioner-rosners-remarks-large-load-show-cause-orders-e-7-e-12-june-18-2026"
 FERC_PJM_COST = "https://www.ferc.gov/news-events/news/commissioner-changs-concurrence-transmission-security-agreement-between-peco"
+FT_OCT18_URL = "https://www.ft.com/content/9ea5a37d-15c9-4d5b-94d6-719048c9cd3c"
+FT_OFFICIAL_POST = "https://bsky.app/profile/financialtimes.com/post/3my4rbhlidz2h"
+OPENAI_STARGATE_OFFICIAL = "https://openai.com/index/announcing-the-stargate-project/"
+FT_OCT18_ANNOUNCED_UTC = dt.datetime(2026, 10, 18, 4, 26, 58, tzinfo=dt.timezone.utc)
+FT_CURRENT_STORY_MAX_AGE_HOURS = 72
+FINANCING_NEWS_MAX_AGE_HOURS = 48
 
 # Verified reference points. The restudy duration is an industry-experience range
 # quoted by Data Center Knowledge, not a statutory nationwide deadline.
@@ -41,6 +47,7 @@ TRUSTED_DOMAINS = (
     "ferc.gov", "federalregister.gov", "pjm.com", "capgemini.com",
     "datacenterknowledge.com", "reuters.com", "utilitydive.com", "rtoinsider.com",
     "datacenterdynamics.com", "publicpower.org", "bisnow.com",
+    "ft.com", "wsj.com", "axios.com", "bloomberg.com",
 )
 
 NEWS_QUERIES = (
@@ -49,6 +56,9 @@ NEWS_QUERIES = (
     'data center phantom load forecast utility cancellation transmission substation',
     'data center restudy interconnection capacity reassignment queue delay',
     'hyperscale data center withdraw cancel delay transmission utility project',
+    'data center developer credit debt financing bond yields project construction delays',
+    'data center finance IPO delayed loan funding financial close power permit 2026',
+    'AI infrastructure financing debt project delays data centers US 2026',
 )
 
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
@@ -129,6 +139,7 @@ def dollar_values(text: str) -> list[float]:
     low = (text or "").lower().replace(",", "")
     vals = []
     pats = (
+        (r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*(?:trillion|tn|tr)\b", 1e12),
         (r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*(?:billion|bn|b)\b", 1e9),
         (r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*(?:million|mn|m)\b", 1e6),
     )
@@ -187,6 +198,9 @@ def source_label(source: str, url: str = "") -> str:
         ("ferc", "FERC"), ("federal register", "미국 연방관보"), ("pjm", "PJM"),
         ("capgemini", "Capgemini"), ("datacenterknowledge", "Data Center Knowledge"),
         ("reuters", "Reuters"), ("utilitydive", "Utility Dive"),
+        ("financial times", "Financial Times"), ("ft.com", "Financial Times"),
+        ("wall street journal", "Wall Street Journal"), ("axios", "Axios"),
+        ("bloomberg", "Bloomberg"),
         ("rtoinsider", "RTO Insider"), ("datacenterdynamics", "Data Center Dynamics"),
         ("publicpower", "Public Power"), ("bisnow", "Bisnow"),
     )
@@ -198,6 +212,15 @@ def source_label(source: str, url: str = "") -> str:
 
 def classify(text: str) -> str:
     low = (text or "").lower()
+    # Financial pipeline risk is distinct from an actual cancelled project.
+    if any(k in low for k in ("data center", "data centre", "datacenter", "ai infrastructure")) and any(
+        k in low for k in (
+            "financial", "financing", "funding", "credit", "bond", "borrowing",
+            "debt", "liquidity", "ipo", "investor", "fundraise", "fray",
+            "funding crunch", "construction loan",
+        )
+    ):
+        return "자금조달·계획 실현 위험"
     if any(k in low for k in ("cost recovery agreement", "transmission security agreement", "financial security", "site control", "readiness requirement")):
         return "비용보호·준비도 규칙"
     if any(k in low for k in ("phantom load", "speculative load", "duplicate request", "double counting", "load forecast")):
@@ -216,6 +239,12 @@ def is_meaningful(title: str, source: str, domain: str) -> bool:
     theme = classify(low)
     if theme == "기타":
         return False
+
+    # Do not infer a data center development setback from generic AI financing.
+    if theme == "자금조달·계획 실현 위험":
+        return any(k in low for k in ("data center", "data centre", "datacenter", "ai infrastructure")) and (
+            trusted(domain) or any(k in low for k in ("loan", "financing closed", "financial close"))
+        )
 
     official = domain.endswith("ferc.gov") or domain.endswith("federalregister.gov") or domain.endswith("pjm.com")
     if official and theme in {"비용보호·준비도 규칙", "Phantom load·수요전망", "매몰·송전비용", "재심사·접속승계"}:
@@ -269,8 +298,44 @@ def translate_title(text: str, theme: str, source: str) -> str:
         "매몰·송전비용": "데이터센터 매몰비용·송전비용 관련 신규 자료",
         "Phantom load·수요전망": "데이터센터 Phantom load·수요전망 관련 신규 자료",
         "비용보호·준비도 규칙": "대형부하 비용보호·준비도 규칙 관련 신규 자료",
+        "자금조달·계획 실현 위험": "데이터센터 자금조달·사업 실현 위험 관련 신규 자료",
     }
     return f"{source} · {labels.get(theme, '데이터센터 취소·지연 위험 관련 신규 자료')}"
+
+
+def anchored_ft_oct18_event(now: dt.datetime | None = None) -> dict | None:
+    """One-time, time-bounded first-party FT headline previously independently verified.
+
+    The original FT article is paywalled: quoted project counts and the viability
+    share below must remain attributed estimates, not independently verified facts.
+    """
+    now = now or dt.datetime.now(dt.timezone.utc)
+    age = (now - FT_OCT18_ANNOUNCED_UTC).total_seconds() / 3600
+    if age < 0 or age > FT_CURRENT_STORY_MAX_AGE_HOURS:
+        return None
+    return {
+        "id": sig("ft-oct18-ai-infrastructure-finance", FT_OCT18_URL),
+        "title": "America's $10tn AI infrastructure boom is starting to fray",
+        "url": FT_OCT18_URL,
+        "source": "Financial Times",
+        "theme": "자금조달·계획 실현 위험",
+        "published": FT_OCT18_ANNOUNCED_UTC.strftime("%a, %d %b %Y %H:%M:%S GMT"),
+        "scale_mw": 0.0,
+        "verified_first_party_headline": True,
+    }
+
+
+def regression_checks() -> None:
+    headline = "America's $10tn AI infrastructure boom is starting to fray"
+    assert classify(headline) == "자금조달·계획 실현 위험"
+    assert is_meaningful(headline, "Financial Times", "ft.com")
+    assert not is_meaningful("AI boom continues", "Financial Times", "ft.com")
+    assert dollar_values("$10tn") == [10e12]
+    assert dollar_values("$500bn") == [500e9]
+    now = FT_OCT18_ANNOUNCED_UTC
+    assert anchored_ft_oct18_event(now) is not None
+    assert anchored_ft_oct18_event(now + dt.timedelta(hours=73)) is None
+    assert extract_scale_mw("279 GWh energy storage") == 0.0
 
 
 def collect_news() -> list[dict]:
@@ -306,6 +371,14 @@ def collect_news() -> list[dict]:
             if not is_meaningful(title, source, domain):
                 continue
             theme = classify(f"{title} {source}")
+            if theme == "자금조달·계획 실현 위험":
+                if published.astimezone(dt.timezone.utc) < (
+                    dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=FINANCING_NEWS_MAX_AGE_HOURS)
+                ):
+                    continue
+            # The verified anchor below already covers the same FT story.
+            if "ft.com" in domain and "10tn" in title.lower() and "ai infrastructure" in title.lower():
+                continue
             out.append({
                 "id": sig(title, link),
                 "title": title,
@@ -315,6 +388,9 @@ def collect_news() -> list[dict]:
                 "published": pub,
                 "scale_mw": extract_scale_mw(title),
             })
+    verified_ft = anchored_ft_oct18_event()
+    if verified_ft:
+        out.append(verified_ft)
     return list({x["id"]: x for x in out}.values())
 
 
@@ -322,6 +398,7 @@ def source_priority(item: dict) -> tuple[int, int, str]:
     src = item.get("source", "")
     official = 0 if src in {"FERC", "미국 연방관보", "PJM", "Capgemini"} else 1
     theme_order = {
+        "자금조달·계획 실현 위험": -1,
         "프로젝트 취소·지연": 0,
         "재심사·접속승계": 1,
         "매몰·송전비용": 2,
@@ -330,6 +407,8 @@ def source_priority(item: dict) -> tuple[int, int, str]:
     }
     return official, theme_order.get(item.get("theme"), 9), item.get("title", "")
 
+
+regression_checks()
 
 OUT.mkdir(exist_ok=True)
 for p in (ALERT, PENDING, STATUS):
@@ -403,6 +482,33 @@ if should_alert:
             msg.append(f"• 이번 핵심 변화 │ {a(title_ko, first.get('url',''))}")
         msg.append("• 판단 기준 │ 취소 → stranded cost → restudy → 추가 CAPEX·금융비용 → IRR 악화 경로 확인")
 
+    if any(item.get("verified_first_party_headline") for item in new_items):
+        msg += ["", "<b>📌 FT 10월 18일 미국 AI 인프라 금융·착공 위험</b>"]
+        msg.append(
+            f"• FT 보도상 미국 AI 인프라 투자 구상 <b>10조달러({h(krw_from_usd(10e12, fx))})</b>."
+            " 실제 집행액·확정 취소액이 아님"
+        )
+        msg.append(
+            "• FT가 인용한 RegLayer 집계: 2026년 대형 프로젝트 지연·철회·차단 최소 47건."
+            " RegLayer의 개별 프로젝트 전체 원자료는 별도 확인 필요"
+        )
+        msg.append(
+            "• FT가 전한 Bernstein 약 35%: 계획의 실현 신뢰도 추정."
+            " 실제 완공률·취소율이나 10조달러에 곱할 비율이 아님"
+        )
+        msg.append(
+            f"• OpenAI 스타게이트 <b>5,000억달러({h(krw_from_usd(500e9, fx))})</b>는"
+            " 2025년 최초 투자 구상. 실제 지출·계약·가동 물량과 분리"
+        )
+        msg.append("• 경고 경로: 금리·금융조달 → 전력 접속·인허가 → 착공 → 장비 주문 → 전원 인가")
+        msg.append("• 재확인: 대출 금융종결·신규수주·전력서비스 계약·착공·공식 가동 MW")
+        msg.append(
+            f"• 근거 등급: {a('FT 원보도', FT_OCT18_URL)}는 제목을 FT 공식 게시물로 확인."
+            f" {a('FT 공식 게시', FT_OFFICIAL_POST)} ·"
+            f" {a('OpenAI 원발표', OPENAI_STARGATE_OFFICIAL)}."
+            " 세부 47건·35%는 FT 인용 추정으로 독립 원자료 미확보"
+        )
+
     if new_items:
         msg += ["", "<b>🆕 핵심 신규 변화</b>"]
         chosen = []
@@ -425,7 +531,11 @@ if should_alert:
         for idx, item in enumerate(chosen, 1):
             src = item.get("source", "")
             theme = item.get("theme", "기타")
-            title_ko = translate_title(item.get("title", ""), theme, src)
+            title_ko = (
+                "FT 미국 AI 인프라 10조달러 계획의 금융·착공 위험 확대"
+                if item.get("verified_first_party_headline")
+                else translate_title(item.get("title", ""), theme, src)
+            )
             suffix = money_suffix(item.get("title", ""), fx)
             msg.append(f"{idx}. {a(title_ko, item.get('url',''))}{h(suffix)}")
             msg.append(f"   {h(theme)} · {h(src)}")
