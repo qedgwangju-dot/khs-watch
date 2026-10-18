@@ -3670,6 +3670,16 @@ assert not watcher._is_stock_reaction_only(real_new_event_headline),(
 )
 
 corr=watcher.query_news(watcher.STOCK_218_CORRECTION)
+if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,18):
+    assert corr == [], 'expired one-time correction must not replay'
+    # Regression checks for correction content run against their original
+    # active window, then restore the real current clock.
+    _restore_now = base.NOW
+    base.NOW = dt.datetime(2026,10,17,12,0,tzinfo=dt.timezone.utc)
+    try:
+        corr = watcher.query_news(watcher.STOCK_218_CORRECTION)
+    finally:
+        base.NOW = _restore_now
 assert len(corr)==1 and corr[0].get('correction_218_stock'),corr
 cg,cs,cc,ck=classify(corr[0])
 assert cg=='alert_quality_correction' and cs>=11,(cg,cs,cc)
