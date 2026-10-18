@@ -39,7 +39,7 @@ VERIFIED_AFT_SNAPSHOT = {
     "url": AFT_EN, "source_kind": "historical_official_snapshot",
     "verified_on": "2026-10-14",
 }
-MILESTONES = {7: "일주일 전", 1: "하루 전", 0: "당일"}
+MILESTONES = {7: "일주일 전", 3: "3일 전", 1: "하루 전", 0: "당일"}
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATUS = ROOT / "out" / "france_credit_overlay_status.md"
 
