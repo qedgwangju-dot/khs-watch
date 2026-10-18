@@ -132,6 +132,14 @@ class DuoPreorderTests(unittest.TestCase):
         self.assertIn("총주문 마감 아님",first)
         self.assertIn("공식 출시일",first)
 
+    def test_august_2027_misread_is_blocked(self):
+        x=m._shipping_event("iPhone Duo U.S. shipping now August 2027.",self.pub())
+        self.assertIsNone(x)
+
+    def test_january_2027_delivery_still_parsed(self):
+        x=m._shipping_event("iPhone Duo U.S. delivery January 25, 2027.",self.pub())
+        self.assertEqual(x["exact_date"],"2027-01-25")
+
     def test_apple_msrp_and_shipping_not_confused(self):
         x=m._shipping_event("iPhone Duo U.S. costs $1999, launches October 23.",self.pub())
         self.assertIsNone(x)
