@@ -25,7 +25,8 @@ KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입�
                'military_statement': '군사 대응·보복 발언', 'support_statement': '지원 정책 발언',
                'military_discussion': '공습 재개 논의·이견', 'military_analysis': '군사·안보 해설',
                'market_effect': '전쟁의 물가 파급 보도', 'ceasefire_position': '휴전·공격 중단 입장',
-               'military_report': '공격 조사·보고서 공표', 'fuel_shipping': '봉쇄·연료 선적 보도'}
+               'military_report': '공격 조사·보고서 공표', 'fuel_shipping': '봉쇄·연료 선적 보도',
+               'trade_proposal': '에너지 거래 재개 제안'}
 
 
 def _headline(row):
@@ -43,6 +44,23 @@ def maritime_attack_tally(row):
                        r'\b(?:\d+|one|two|three)\s+(?:days?|weeks?|months?)\b', title)
     uncertain = re.search(r'부인|미확인|가능성|우려|예고|\?|\b(?:denies?|denied|not|never|may|might|could)\b', title)
     return bool(ships and attacks and count and period and not uncertain)
+
+
+def _maritime_attack_headline(row):
+    """A ship-attack headline does not establish an older template's details."""
+    title = _headline(row)
+    uncertain = re.search(r'부인|미확인|가능성|우려|예고|\?|\b(?:denies?|denied|not|never|may|might|could)\b', title)
+    hit = re.search(r'피격|\b(?:ships?|vessels?|tankers?)\b.{0,18}\b(?:attacked|struck|hit)\b(?!\s+(?:record|a deal))', title)
+    return bool(re.search(r'선박|상선|유조선|\b(?:ships?|vessels?|tankers?)\b', title)
+                and hit and not uncertain)
+
+
+def _energy_trade_proposal_headline(title):
+    energy = re.search(r'천연가스|가스관|가스|원유|석유|\b(?:natural gas|gas|oil|pipeline)\b', title)
+    trade = re.search(r'수입|수출|운송|재가동|\b(?:imports?|exports?|pipeline)\b', title)
+    proposal = re.search(r'제안|추진|검토|\b(?:propos\w*|consider\w*|discuss\w*)\b', title)
+    implemented = re.search(r'양측.{0,15}(?:휴전|공격\s*중단).{0,12}(?:발효됐|이행했|이행\s*중|시행됐)', title)
+    return bool(energy and trade and proposal and not implemented)
 
 
 def _riyadh_missile_headline(row):
@@ -76,6 +94,8 @@ def _energy_facility_statement_spans(title):
 
 
 def _headline_action_label(row):
+    if _maritime_attack_headline(row):
+        return '선박 피격 보도'
     return '에너지 시설 공격 보도' if _energy_facility_headline(row) else '정유시설 공격 보도'
 
 
@@ -110,7 +130,7 @@ def _primary_topic(row):
         if group == '우크라이나·러시아' and re.search(r'트럼프|미국|\btrump\b|\bu\.s\.', title):
             group = '미국·우크라이나·러시아'
         return group + ' · ' + KIND_LABELS[kind]
-    if kind in ('military_statement', 'military_discussion', 'military_analysis', 'ceasefire_position', 'military_report', 'fuel_shipping'):
+    if kind in ('military_statement', 'military_discussion', 'military_analysis', 'ceasefire_position', 'military_report', 'fuel_shipping', 'trade_proposal'):
         return _headline_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'support_statement':
         label = '정보 지원·종전 의향 발언' if re.search(r'종전|peace|end.{0,8}war', title) else '지원 정책 발언'
@@ -130,6 +150,12 @@ def _primary_topic(row):
     if kind is None and maritime_attack_tally(row):
         area = '호르무즈' if re.search(r'호르무즈|\bhormuz\b', title) else '해상'
         return area + ' · 선박 피격 집계 보도'
+    if kind is None and _maritime_attack_headline(row):
+        prior_topic = _topic(row)
+        if prior_topic.endswith(' · 유조선 피격'):
+            return prior_topic
+        area = '호르무즈' if re.search(r'호르무즈|\bhormuz\b', title) else '해상'
+        return area + ' · 선박 피격 보도'
     if (kind is None and re.search(r'아람코|\baramco\b', title)
             and re.search(r'공격(?!적)|피격|\b(?:attack(?:s|ed)?|struck|hit)\b', title)
             and not attack_denied and not re.search(r'요격|intercept', title)):
@@ -340,6 +366,8 @@ def non_military_kind(row):
         return 'reaction'
     if _fuel_shipping_headline(title):
         return 'fuel_shipping'
+    if _energy_trade_proposal_headline(title):
+        return 'trade_proposal'
     if statements or future:
         return 'military_statement'
     if _ceasefire_rejection_headline(title):
@@ -384,11 +412,12 @@ def _clear_market_event_cache(row):
 
 
 def _headline_event_cache_required(row, kind):
-    return (kind in ('ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis')
+    return (kind in ('ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis', 'trade_proposal')
             or (kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
             or _energy_facility_headline(row)
-            or (kind is None and _headline_refinery_action(row)))
+            or (kind is None and _headline_refinery_action(row))
+            or (_maritime_attack_headline(row) and not maritime_attack_tally(row)))
 
 
 def _clear_headline_event_cache(row, kind):
@@ -462,6 +491,15 @@ def verdict(items):
         )
     kinds = [non_military_kind(row) for row in items]
     if kinds and all(kinds):
+        if 'trade_proposal' in kinds:
+            core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
+            return (
+                '<b>투자 판정</b>\n'
+                f'- <b>핵심:</b> {core}\n'
+                '- <b>현재 단계:</b> 제안·검토 단계 — 에너지 거래 재개 구상은 양측 휴전 이행을 뜻하지 않음\n'
+                '- <b>시장:</b> 협상 당사자의 수용·거부와 실제 수출입·공급 변화는 별도 확인 필요\n'
+                '- <b>다음:</b> 제안 원문·당사자 반응 → 공식 합의 → 실제 거래·휴전 이행의 독립 확인'
+            )
         if 'fuel_shipping' in kinds:
             core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
             return (
@@ -806,7 +844,7 @@ def verify_alert(test_mode=False):
         primary = _primary_topic(row)
         if primary and html.escape(primary) not in lines[start]:
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered topic differs from headline event')
-        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping') and (
+        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal') and (
                 row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
             raise RuntimeError('WAR_INTEGRITY_GATE: statement presented as a new attack or implemented peace')
         marker = {'red': '🔴', 'green': '🟢', 'yellow': '🟡'}.get(row.get('classification_color'), '')
