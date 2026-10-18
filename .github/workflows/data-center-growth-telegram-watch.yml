@@ -26,7 +26,11 @@ on:
       - "scripts/korea_aidc_policy_watch.py"
       - "scripts/korea_aidc_policy_watch_v2.py"
   schedule:
+    # Keep the established hourly check and add a backup within the hour.
+    # GitHub scheduled jobs are best-effort; the existing concurrency group
+    # and persisted event fingerprint avoid double Telegram sends.
     - cron: "23 * * * *"
+    - cron: "53 * * * *"
   workflow_dispatch:
 
 permissions:
