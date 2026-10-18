@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-19T06:40:46+09:00",
+  "updated_at_kst": "2026-10-19T08:05:41+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -219,7 +219,7 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1332.1,
-    "date": "2026-10-16 일일 기준 · ECB/Frankfurter · 조회 2026-10-19 06:41 KST · 보조 API 2026-10-18 · 차이 0.20% · 일중 기준시각 차이 가능",
+    "date": "2026-10-16 일일 기준 · ECB/Frankfurter · 조회 2026-10-19 08:05 KST · 보조 API 2026-10-18 · 차이 0.20% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -348,13 +348,13 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-19T06:41:16+09:00",
+    "last_checked_at_kst": "2026-10-19T08:05:59+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-19T06:41:44+09:00",
+    "checked_at_kst": "2026-10-19T08:06:30+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-18T20:57:59+09:00",
@@ -422,7 +422,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-19",
-    "last_checked_at_kst": "2026-10-19T06:41:22+09:00",
+    "last_checked_at_kst": "2026-10-19T08:06:18+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -481,7 +481,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-19T06:41:22+09:00",
+        "checked_at_kst": "2026-10-19T08:06:18+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -559,7 +559,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-19",
-    "last_checked_at_kst": "2026-10-19T06:41:33+09:00",
+    "last_checked_at_kst": "2026-10-19T08:06:24+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -603,7 +603,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-19T06:41:36+09:00",
+    "last_checked_at_kst": "2026-10-19T08:06:26+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -952,8 +952,8 @@
     "share_source_url": "https://counterpointresearch.com/en/insights/global-hbm-market-share-q2-2026",
     "last_official_stage_change_at": null
   },
-  "feed_checks": 42,
-  "feed_healthy": 42,
+  "feed_checks": 44,
+  "feed_healthy": 44,
   "nvhbm_foundry_track_version": 1,
   "nvhbm_foundry_strategy": {
     "source_editorial": "TrendForce News 편집 기사(독자 취재/독립 원출처로 중복 계산 금지)",
@@ -1051,5 +1051,17 @@
       "source_original_url": "https://n.news.naver.com/article/011/0004672401?type=journalists",
       "independent_source_count": 1
     }
+  },
+  "hbf_track_version": 1,
+  "hbf_roadmap": {
+    "stage": "final_spec_target",
+    "target_month": "2027-01",
+    "initial_spec_published": "2026-08-03",
+    "max_capacity_gb": 512,
+    "bandwidth_min_tbs": 0.4,
+    "bandwidth_max_tbs": 3.0,
+    "source_url": "https://ir.newspim.com/news/view/20261014000748",
+    "official_spec_url": "https://news.skhynix.co.kr/hbf-at-fms-2026/",
+    "status": "reported_target_not_official_final_not_commercial"
   }
 }
