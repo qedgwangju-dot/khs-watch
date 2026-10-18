@@ -76,6 +76,116 @@ class IntegrityTests(unittest.TestCase):
         fixture = json.loads(path.read_text(encoding='utf-8'))
         return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
 
+    def maritime_proposal_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_maritime_proposal_39101605203.json'
+        fixture = json.loads(path.read_text(encoding='utf-8'))
+        return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def test_actual_gas_import_proposal_is_not_implemented_peace(self):
+        fixture, _ = self.maritime_proposal_fixture()
+        row = fixture['articles'][1]
+        self.assertEqual(integrity.non_military_kind(row), 'trade_proposal')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '우크라이나·러시아 · 에너지 거래 재개 제안')
+
+    def test_actual_maritime_headline_is_not_a_specific_UKMTO_template(self):
+        fixture, now = self.maritime_proposal_fixture()
+        row = fixture['articles'][0]
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([row], [], now)
+        self.assertIn(html.escape(row['title_original']), text)
+        self.assertNotIn('UKMTO', text)
+        self.assertNotIn('미확인 발사체', text)
+        self.assertNotIn('피격이 반복', text)
+        self.assertFalse(row.get('signals_ko') or row.get('forced_tags'))
+        self.assertEqual(row['classification_color'], 'red')
+
+    def test_actual_three_item_render_retains_titles_stages_and_body_limits(self):
+        fixture, now = self.maritime_proposal_fixture()
+        rows = fixture['articles']
+        before = watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        for row in rows:
+            self.assertIn(html.escape(row['title_original']), text)
+        self.assertEqual([row['classification_color'] for row in rows], ['red', 'yellow', ''])
+        self.assertNotIn('🟢', text)
+        self.assertIn('제목 기준·본문 미확인', text)
+        self.assertEqual(rows[1]['source_metadata']['published_at_kst'], '2026-10-18T14:29:41+09:00')
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(), before)
+
+    def test_final_gate_rejects_actual_same_hash_UKMTO_green_proposal_body(self):
+        fixture, now = self.maritime_proposal_fixture()
+        rows = fixture['articles']; text = fixture['actual_alert'].strip()
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
+                integrity.verify_alert()
+
+    def test_trade_proposal_requires_energy_trade_and_a_proposal(self):
+        for title in ('美, 유럽에 러시아산 천연가스 수입재개 제안',
+                      '미국, 러시아 가스관 재가동 추진…유럽 거부',
+                      'US proposes resuming Russian natural gas imports to Europe'):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), 'trade_proposal')
+                self.assertEqual(integrity.final_color(article(title)), 'yellow')
+        for title in ('유럽, 러시아산 천연가스 수입 재개했다', '미국, 선거제도 변경 제안',
+                      '러시아산 천연가스 가격 상승', '미국, 에너지 시설 공습 재개'):
+            with self.subTest(title=title):
+                self.assertNotEqual(integrity.non_military_kind(article(title)), 'trade_proposal')
+
+    def test_trade_proposal_preserves_separate_attack_and_implemented_ceasefire(self):
+        for title in ('美, 러시아 가스 수입 재개 제안…이스라엘 공습 개시',
+                      'US proposes Russian gas imports and launches airstrikes'):
+            with self.subTest(title=title):
+                self.assertIsNone(integrity.non_military_kind(article(title)))
+                self.assertEqual(integrity.final_color(article(title)), 'red')
+        row = article('러시아 가스 수입 재개 제안…양측 휴전 이행 중')
+        self.assertNotEqual(integrity.non_military_kind(row), 'trade_proposal')
+
+    def test_single_trade_proposal_verdict_does_not_claim_peace_implementation(self):
+        fixture, now = self.maritime_proposal_fixture()
+        row = fixture['articles'][1]
+        row.update(signals_ko=['새 휴전 이행'], forced_tags=['휴전·평화'], tags=['휴전·평화'])
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([row], [], now)
+        self.assertIn(html.escape(row['title_original']), text)
+        self.assertIn('제안·검토 단계', text)
+        self.assertIn('양측 휴전 이행을 뜻하지 않음', text)
+        self.assertNotIn('🟢', text)
+        self.assertFalse(row.get('signals_ko') or row.get('forced_tags'))
+
+    def test_maritime_current_title_counts_and_UKMTO_attribution_retained(self):
+        for title in ('호르무즈 유조선 피격…테헤란 재개방안 제시',
+                      'UKMTO, 오만 유조선 피격 2건 보고'):
+            row = article(title)
+            row.update(signals_ko=['옛 유조선 사건 요약'], forced_tags=['유조선피격'])
+            with self.subTest(title=title), patch.object(integrity.body_parallel, '_safe_enrich'):
+                text = integrity.build_alert([row], [], NOW)
+            self.assertIn(html.escape(title), text)
+            self.assertNotIn('옛 유조선 사건 요약', text)
+
+    def test_ship_tally_remains_distinct_from_single_ship_report(self):
+        row = article('호르무즈 피격 선박 2주에 24척, 개전 이후 최대 규모')
+        self.assertTrue(integrity.maritime_attack_tally(row))
+        self.assertEqual(integrity.topic_label(row), '호르무즈 · 선박 피격 집계 보도')
+
     def test_actual_marked_dilemma_headline_is_military_analysis(self):
         fixture, _ = self.marked_analysis_fixture()
         row = fixture['articles'][0]
