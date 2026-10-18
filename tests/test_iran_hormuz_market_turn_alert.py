@@ -183,6 +183,85 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         para un total proyectado de 105 convenios.
         </body></html>"""
 
+    @staticmethod
+    def _nabep_press_fixture():
+        return """<html><body>
+        North American Blue Energy Partners (NABEP) Boosts Operations with New Workover and Drilling Rigs.
+        Eleven new 550-horsepower workover rigs are being deployed.
+        Two new 1,500-horsepower drilling rigs arrived on October 7 for NABEP.
+        Separately, the company has purchased 60 rigs, 30 steam boilers and 70 pieces of heavy machinery.
+        NABEP has increased production from 18,000 to more than 200,000 barrels per day
+        by investing about $1 billion of its own money.
+        </body></html>"""
+
+    @staticmethod
+    def _nabep_trade_fixture():
+        return """<html><body>
+        NABEP adds workover, drilling rigs in Venezuela as it targets 1 MMbpd.
+        Deploying 11 new 550-hp workover rigs and two new 1,500-hp drilling rigs arrived Oct. 7.
+        Separately the company has purchased 60 rigs, 30 steam boilers and 70 pieces of heavy machinery.
+        Production rose from 18,000 bpd to more than 200,000 bpd with $1 billion in capital invested.
+        </body></html>"""
+
+    def test_nabep_equipment_company_and_trade_require_both(self):
+        original=MODULE.parse_nabep_oct13_equipment_release(
+            self._nabep_press_fixture(), MODULE.VENEZUELA_NABEP_COMPANY_URLS[0],
+            MODULE.VENEZUELA_NABEP_COMPANY_SOURCE)
+        independent=MODULE.parse_nabep_oct13_equipment_release(
+            self._nabep_trade_fixture(), MODULE.VENEZUELA_NABEP_TRADE_URLS[0],
+            MODULE.VENEZUELA_NABEP_TRADE_SOURCE)
+        self.assertIsNone(MODULE.confirm_event([original]))
+        self.assertIsNone(MODULE.confirm_event([independent]))
+        self.assertIsNotNone(MODULE.confirm_event([original,independent]))
+        self.assertEqual(MODULE.event_id("venezuela_nabep_equipment",[original,independent]),
+                         MODULE.VENEZUELA_NABEP_20261013_EVENT_ID)
+        self.assertEqual(MODULE._nabep_milestone_numbers(original.title),(2,11,60,30,70))
+
+    def test_nabep_equipment_not_assumed_250_order_or_funded_76b(self):
+        now=dt.datetime(2026,10,18,6,tzinfo=dt.timezone.utc)
+        a=MODULE.parse_nabep_oct13_equipment_release(
+            self._nabep_press_fixture(),MODULE.VENEZUELA_NABEP_COMPANY_URLS[0],
+            MODULE.VENEZUELA_NABEP_COMPANY_SOURCE)
+        b=MODULE.parse_nabep_oct13_equipment_release(
+            self._nabep_trade_fixture(),MODULE.VENEZUELA_NABEP_TRADE_URLS[0],
+            MODULE.VENEZUELA_NABEP_TRADE_SOURCE)
+        body=MODULE.build_physical_flow_alert_body("venezuela_nabep_equipment",[a,b],None,now)
+        for phrase in ("1,500마력 2기","550마력 11기","장비 60기",
+                       "증기보일러 30기","중장비 70대","760억 달러","250기 대비 이행률"):
+            self.assertIn(phrase,body)
+        self.assertIn("구매/도착/배치/시추 가동은 서로 다릅니다",body)
+        self.assertNotIn("전량 가동 확인",body)
+        self.assertLessEqual(len(body.splitlines()),31)
+
+    def test_nabep_equipment_rejects_unverified_numbers_and_spoofs(self):
+        a=MODULE.parse_nabep_oct13_equipment_release(
+            self._nabep_press_fixture(),MODULE.VENEZUELA_NABEP_COMPANY_URLS[0],
+            MODULE.VENEZUELA_NABEP_COMPANY_SOURCE)
+        forged=MODULE.NewsItem(a.title,"NABEP blog",a.link,a.published_utc,a.published_epoch,a.event_kind)
+        self.assertFalse(MODULE._nabep_milestone_evidence([a,forged]))
+        self.assertIsNone(MODULE.confirm_event([a,forged]))
+        with self.assertRaisesRegex(RuntimeError,"미승인"):
+            MODULE.parse_nabep_oct13_equipment_release(
+                self._nabep_trade_fixture(),"https://example.com/fake",MODULE.VENEZUELA_NABEP_TRADE_SOURCE)
+        with self.assertRaisesRegex(RuntimeError,"원문 검증 실패"):
+            MODULE.parse_nabep_oct13_equipment_release(
+                self._nabep_trade_fixture().replace("60 rigs","600 rigs"),
+                MODULE.VENEZUELA_NABEP_TRADE_URLS[0],MODULE.VENEZUELA_NABEP_TRADE_SOURCE)
+
+    def test_nabep_equipment_is_deduplicated_by_original_date(self):
+        now=dt.datetime(2026,10,18,6,tzinfo=dt.timezone.utc)
+        original=MODULE.parse_nabep_oct13_equipment_release(
+            self._nabep_press_fixture(),MODULE.VENEZUELA_NABEP_COMPANY_URLS[0],
+            MODULE.VENEZUELA_NABEP_COMPANY_SOURCE)
+        trade=MODULE.parse_nabep_oct13_equipment_release(
+            self._nabep_trade_fixture(),MODULE.VENEZUELA_NABEP_TRADE_URLS[0],
+            MODULE.VENEZUELA_NABEP_TRADE_SOURCE)
+        eid=MODULE.event_id("venezuela_nabep_equipment",[original,trade])
+        self.assertTrue(MODULE.event_recently_alerted(
+            {"alerted_events":{eid:now.astimezone(MODULE.KST).isoformat()}},eid,now))
+        self.assertEqual(original.published_epoch, trade.published_epoch)
+        self.assertEqual(original.published_epoch,MODULE.VENEZUELA_NABEP_EVENT_DATE.timestamp())
+
     def test_venezuela_plan_requires_reuters_full_and_official_agreement_count(self):
         now=dt.datetime(2026,10,18,5,tzinfo=dt.timezone.utc)
         r=MODULE.parse_venezuela_reuters_plan(

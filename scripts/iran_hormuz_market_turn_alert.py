@@ -154,6 +154,22 @@ VENEZUELA_SOURCE_REUTERS = "Reuters (2026-10-17)"
 VENEZUELA_SOURCE_MINISTRY = "베네수엘라 외교부 (2026-10-09)"
 VENEZUELA_PLAN_STORY_TIME = dt.datetime(2026,10,17,22,52,tzinfo=UTC)
 VENEZUELA_PLAN_EVENT_ID = "venezuela_oil_investment:2026-10-17-plan-76b-250rig-17fields"
+
+# Oct 13 company-published implementation evidence is older than the Oct 17
+# $76bn government investment projection. Never conflate arrived vs purchased
+# equipment or country-wide plan vs NABEP's self-reported company capital.
+VENEZUELA_NABEP_20261013_EVENT_ID = "venezuela_nabep_equipment:2026-10-13-two-arrived-eleven-deploying-sixty-purchased"
+VENEZUELA_NABEP_EVENT_DATE = dt.datetime(2026,10,13,16,5,tzinfo=UTC)
+VENEZUELA_NABEP_COMPANY_URLS = (
+    "https://www.prnewswire.com/news-releases/nabep-boosts-operations-with-new-workover-and-drilling-rigs-302907314.html",
+    "https://www.newswire.ca/news-releases/nabep-boosts-operations-with-new-workover-and-drilling-rigs-883673877.html",
+)
+VENEZUELA_NABEP_TRADE_URLS = (
+    "https://www.worldoil.com/news/2026/10/13/nabep-adds-workover-drilling-rigs-in-venezuela-as-it-targets-1-mmbpd/",
+    "https://drillingcontractor.org/nabep-adds-drilling-and-workover-rigs-for-venezuela-production-push-80336",
+)
+VENEZUELA_NABEP_COMPANY_SOURCE = "NABEP 공식 보도자료 (10월 13일)"
+VENEZUELA_NABEP_TRADE_SOURCE = "World Oil·Drilling Contractor (10월 13~14일)"
 # Dated observed 2026-10-16 FX; never presented as live.
 VENEZUELA_20261016_KRW_PER_USD = 1333.64
 
@@ -161,6 +177,9 @@ NEWS_QUERIES = (
     '"Venezuela" "76 billion" oil 250 rigs 17 fields when:3d',
     '"PDVSA" "oil investment" 250 rigs 17 fields when:3d',
     '"Venezuela" oil drilling rig purchase funding disbursed production when:3d',
+    '"NABEP" "drilling rigs" "workover rigs" Venezuela when:7d',
+    '"NABEP" "drilling rigs arrived" "Oct. 7" when:7d',
+    '"NABEP" "60 rigs" "30 steam boilers" when:7d',
     '"Zulia" 400000 barrels oil field Venezuela verified when:3d',
     '베네수엘라 석유 투자 760억달러 250기 17개 유전 when:3d',
     'Iran ceasefire agreement OR Iran truce agreement OR "US Iran ceasefire" when:3d',
@@ -361,6 +380,7 @@ EVENT_LABELS = {
     "iea_oct15_reserve_execution": "IEA 잔여 비축유·경유 방출 우선집행",
     "delek_tyler_dpa": "Delek 타일러 정유공장 DPA 증설 발표",
     "venezuela_oil_investment": "베네수엘라 5년 석유투자 예상·실행 단계",
+    "venezuela_nabep_equipment": "베네수엘라 NABEP 장비 도착·보수·투자 이행",
     "east_west_pipeline_recovery": "사우디 East-West Pipeline 실물 회복",
     "saudi_bypass_investment": "사우디 호르무즈 우회 신규 송유관 투자 단계 변화",
     "regional_export_recovery": "중동 원유 수출 회복 단계 상향",
@@ -551,6 +571,8 @@ def _news_title_ko(row: NewsItem) -> str:
         return "IEA, 기존 3월 약정의 잔여 비축유 신속 방출과 경유 우선 집행"
     if kind == "delek_tyler_dpa":
         return "JD Vance, Delek 타일러 정유공장 DPA 활용 증설계획 발표"
+    if kind == "venezuela_nabep_equipment":
+        return "NABEP, 시추장비 2기 도착·유정보수장비 11기 배치 중·별도 장비 60기 구매 발표"
     if kind == "venezuela_oil_investment":
         stage = _venezuela_investment_stage(title)
         if stage == "plan_announced":
@@ -2042,6 +2064,141 @@ def parse_venezuela_government_agreements(raw_html: str, current: dt.datetime) -
     )
 
 
+def _nabep_milestone_numbers(title: str) -> tuple[int,int,int,int,int] | None:
+    """Exact Oct-13 milestone signature, not equipment commissioned count."""
+    match = re.fullmatch(
+        r"Venezuela NABEP Oct2026 disclosed rig milestone: "
+        r"drilling (\\d+) arrived; workover (\\d+) deploying; "
+        r"other rigs (\\d+) purchased; steam boilers (\\d+) purchased; "
+        r"heavy machines (\\d+) purchased; self-reported capital USD1bn; "
+        r"company-reported output over 200000 bpd", title
+    )
+    if not match:
+        return None
+    return tuple(int(x) for x in match.groups())
+
+
+def parse_nabep_oct13_equipment_release(
+    raw_html: str, source_url: str, publisher: str
+) -> NewsItem:
+    if publisher == VENEZUELA_NABEP_COMPANY_SOURCE:
+        if source_url not in VENEZUELA_NABEP_COMPANY_URLS:
+            raise RuntimeError("미승인 NABEP 원문")
+    elif publisher == VENEZUELA_NABEP_TRADE_SOURCE:
+        if source_url not in VENEZUELA_NABEP_TRADE_URLS:
+            raise RuntimeError("미승인 독립 석유 전문매체")
+    else:
+        raise RuntimeError("미승인 장비공급 기사 발행자")
+    text = normalize_text(_visible_text(raw_html))
+    required = (
+        any(z in text for z in ("nabep", "north american blue energy")),
+        "workover" in text and ("11" in text or "eleven" in text) and "550" in text,
+        "drilling" in text and ("two" in text or "2" in text) and "1,500" in text,
+        ("october 7" in text or "oct. 7" in text or "7 october" in text),
+        "60 rigs" in text and "30 steam boilers" in text and "70" in text,
+        ("200,000" in text or "200000" in text),
+        ("$1 billion" in text or "us$1 billion" in text or "us$1.0 billion" in text),
+    )
+    if not all(required):
+        raise RuntimeError("NABEP 2기 도착·11기 배치·60기 구매·10억 달러·20만 배럴 원문 검증 실패")
+    canonical = (
+        "Venezuela NABEP Oct2026 disclosed rig milestone: "
+        "drilling 2 arrived; workover 11 deploying; other rigs 60 purchased; "
+        "steam boilers 30 purchased; heavy machines 70 purchased; "
+        "self-reported capital USD1bn; company-reported output over 200000 bpd"
+    )
+    return NewsItem(
+        canonical,publisher,source_url,
+        VENEZUELA_NABEP_EVENT_DATE.isoformat(),VENEZUELA_NABEP_EVENT_DATE.timestamp(),
+        "venezuela_nabep_equipment",
+    )
+
+
+def _nabep_milestone_evidence(rows: list[NewsItem]) -> bool:
+    company = [
+        r for r in rows if r.source == VENEZUELA_NABEP_COMPANY_SOURCE
+        and r.link in VENEZUELA_NABEP_COMPANY_URLS
+        and _nabep_milestone_numbers(r.title) == (2,11,60,30,70)
+    ]
+    trade = [
+        r for r in rows if r.source == VENEZUELA_NABEP_TRADE_SOURCE
+        and r.link in VENEZUELA_NABEP_TRADE_URLS
+        and _nabep_milestone_numbers(r.title) == (2,11,60,30,70)
+    ]
+    return bool(company and trade)
+
+
+def fetch_nabep_equipment_milestone() -> list[NewsItem]:
+    rows=[]
+    errors=[]
+    groups=(
+        (VENEZUELA_NABEP_COMPANY_URLS,VENEZUELA_NABEP_COMPANY_SOURCE),
+        (VENEZUELA_NABEP_TRADE_URLS,VENEZUELA_NABEP_TRADE_SOURCE),
+    )
+    for urls, source in groups:
+        for url in urls:
+            try:
+                html_page=fetch_bytes(url,timeout=7,attempts=1).decode("utf-8","replace")
+                item=parse_nabep_oct13_equipment_release(html_page,url,source)
+                rows.append(item)
+                break
+            except Exception as exc:
+                errors.append(f"{source} {urllib.parse.urlparse(url).hostname}: {type(exc).__name__}")
+    if not _nabep_milestone_evidence(rows):
+        raise RuntimeError("NABEP 원문+전문매체 검증 실패: "+" | ".join(errors))
+    return rows
+
+
+def _build_nabep_oct13_alert_body(
+    rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None
+) -> str:
+    if not _nabep_milestone_evidence(rows):
+        raise RuntimeError("NABEP 장비 도착 근거 2종 미확인 · Telegram 송출 차단")
+    parts=[
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[현재 숫자]",
+        "자료 기준      2026년 10월 13일 NABEP 기업 발표·석유 전문매체 보도",
+        "시추장비      1,500마력 2기 · 10월 7일 현장 도착(가동 여부 별도)",
+        "유정보수장비  550마력 11기 · 배치 중(전량 가동 확정 아님)",
+        "별도 구매     시추·보수장비 60기 · 증기보일러 30기 · 중장비 70대",
+        "회사 주장     자체투자 약 10억 달러 · 원유 생산 하루 20만 배럴 초과",
+    ]
+    if fx is not None:
+        parts.append(f"원화 환산     기업 자체투자 주장 약 {fx.price/1e4:.4f}조원 · 환율 {fx.price:,.2f}원/달러")
+    else:
+        parts.append(
+            f"원화 환산     기업 자체투자 주장 약 1조 3,336억원"
+            f" · 10월 16일 관측 환율 {VENEZUELA_20261016_KRW_PER_USD:,.2f}원/달러 기준"
+        )
+    parts.extend([
+        "",
+        "[핵심]",
+        "이것은 17개 유전·시추장비 250기 계획 전체가 이미 집행됐다는 증거가 아닙니다.",
+        "→ 2기 도착·11기 배치 중·60기 구매는 서로 다른 단계이며 합산하지 않습니다.",
+        "→ 760억 달러 5년 정부 투자 예상액과 NABEP의 자체투자 10억 달러 주장은 별도 기준입니다.",
+        "",
+        "[다음 확인]",
+        "장비          2기 현장 실제 시추 개시 · 11기 정비 가동률 · 60기 구매분 인도",
+        "자금          10억 달러 외부 감사·계약대금·추가 시추/설비투자 발주",
+        "물량          NABEP 20만 배럴/일 독립 추적 · PDVSA 전체 생산·수출 물량",
+        "역풍          전력·희석제·송유관·인허가·보험 병목, 설비 정지·교체비",
+        "",
+        "[근거]",
+    ])
+    for r in rows[:2]:
+        stamp=dt.datetime.fromtimestamp(r.published_epoch,tz=UTC).astimezone(KST)
+        parts.append(f"{r.source} · 자료 {stamp:%m-%d %H:%M KST}")
+        parts.append(f"원문: {r.link}")
+    parts.extend([
+        "",
+        "[주의]",
+        "구매/도착/배치/시추 가동은 서로 다릅니다. 250기 대비 이행률을 임의 계산하지 않습니다.",
+        "장비·자체투자·생산량은 기업 발표를 전문매체가 전달한 수치로, 감사 완료 물량은 아닙니다.",
+    ])
+    return "\n".join(parts).strip()+"\n"
+
+
 def fetch_venezuela_reuters_plan(current: dt.datetime) -> NewsItem:
     errors=[]
     for url in VENEZUELA_20261017_SOURCE_URLS:
@@ -2549,6 +2706,16 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
         except Exception as exc:
             errors.append(str(exc))
 
+    # Previously published NABEP equipment milestone; one alert per factual
+    # dated event. Do not re-stamp Oct-13 corporate claims as today's production.
+    equipment_age=(current.astimezone(UTC)-VENEZUELA_NABEP_EVENT_DATE).total_seconds()
+    equipment_sent=VENEZUELA_NABEP_20261013_EVENT_ID in (load_state().get("alerted_events") or {})
+    if 0 <= equipment_age <= 14*86400 and not equipment_sent:
+        try:
+            items.extend(fetch_nabep_equipment_milestone())
+        except Exception as exc:
+            errors.append(f"베네수엘라 NABEP 장비 구매·현장 도착 교차 검증: {exc}")
+
     # For the fresh Reuters-reported plan, require its full story plus separately
     # dated government documentation of PDVSA's prior 61 agreements.
     # Do not turn old source publication time into the current execution time.
@@ -2734,6 +2901,8 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
 
     candidates: list[tuple[float, str, list[NewsItem]]] = []
     for (kind,stage), rows in by_kind.items():
+        if kind == "venezuela_nabep_equipment" and not _nabep_milestone_evidence(rows):
+            continue
         if kind == "venezuela_oil_investment":
             if stage=="plan_announced" and not (
                 _venezuela_has_verified_reuters(rows)
@@ -3002,6 +3171,10 @@ def load_state(path: pathlib.Path = STATE_PATH) -> dict:
 
 def event_id(kind: str, rows: list[NewsItem]) -> str:
     combined = " ".join(normalize_text(row.title) for row in rows)
+    if kind == "venezuela_nabep_equipment":
+        if not _nabep_milestone_evidence(rows):
+            raise ValueError("NABEP 장비 도착 원문·전문매체 동시 검증 필수")
+        return VENEZUELA_NABEP_20261013_EVENT_ID
     if kind == "venezuela_oil_investment":
         stages = {_venezuela_investment_stage(row.title) for row in rows}
         stages.discard("official_agreements_context")
@@ -5050,6 +5223,8 @@ def build_physical_flow_alert_body(
     fx: Quote | None = None,
 ) -> str:
     metrics = _extract_kpler_sts_metrics(news_rows)
+    if kind == "venezuela_nabep_equipment":
+        return _build_nabep_oct13_alert_body(news_rows, oil, current, fx)
     if kind == "venezuela_oil_investment":
         return _build_venezuela_oil_plan_alert_body(news_rows, oil, current, fx)
     if kind == "tankertrackers_7country_crude_mtd":
@@ -5438,6 +5613,7 @@ def run_monitor(current: dt.datetime) -> int:
         "ex_iran_crude_prewar_recovery",
         "tankertrackers_7country_crude_mtd",
         "venezuela_oil_investment",
+        "venezuela_nabep_equipment",
         "saudi_asia_osp_change",
         "east_west_pipeline_recovery",
         "saudi_bypass_investment",
@@ -5467,7 +5643,9 @@ def run_monitor(current: dt.datetime) -> int:
         if fx is not None and not quote_is_fresh(fx, current, max_age_minutes):
             fx = None
         body = build_physical_flow_alert_body(kind, news_rows, oil, current, fx)
-        if kind == "venezuela_oil_investment":
+        if kind == "venezuela_nabep_equipment":
+            title = "베네수엘라 NABEP 시추장비 도착·투자 이행"
+        elif kind == "venezuela_oil_investment":
             title = "베네수엘라 5년 석유투자·실제 집행 단계"
         elif kind == "tankertrackers_7country_crude_mtd":
             title = "중동 7개국 원유수출 월중 회복·정제품 병목"
