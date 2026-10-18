@@ -56,6 +56,7 @@ jobs:
                   "decoded_ids":list(dict.fromkeys(re.findall(r'ratings-news/\d+',urllib.parse.unquote(html.unescape(body)))))[:10],
                   "jina_head":body[:220].replace("\\n"," ") if "r.jina.ai/https://ratings.moodys.com/ratings-news/434553" in url else "",
                   "moody_links":(re.findall(r'https?://presse\.economie\.gouv\.fr/[^"<> ]{0,150}',body)[:8] if "presse.economie.gouv.fr/?s=" in url else []),
+                  "moody_anchor_matches":([(a, re.sub(r'<[^>]+>', ' ', z)[:120]) for a,z in re.findall(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>',body,re.I|re.S) if re.search('moody',z,re.I)][:8] if "presse.economie.gouv.fr/?s=" in url else []),
                   "json_sample":(body[:230] if "/wp-json/" in url else ""),
                   "sample_titles":titles[:3],
                   "script_sources":re.findall(r'<script[^>]*src="([^"]+)"',body,re.I)[:12],
