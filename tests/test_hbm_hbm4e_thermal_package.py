@@ -288,6 +288,8 @@ class HybridHBMSourceGuardTests(unittest.TestCase):
             "structure_baseline_version":w.STRUCTURE_BASELINE_VERSION,
             "nvhbm_foundry_track_version":w.NVHBM_FOUNDRY_TRACK_VERSION,
             "nvhbm_foundry_strategy":copy.deepcopy(w.NVHBM_FOUNDRY_BASELINE),
+            "rubin_supply_media_track_version":w.RUBIN_SUPPLY_MEDIA_TRACK_VERSION,
+            "rubin_supply_media":copy.deepcopy(w.RUBIN_SUPPLY_MEDIA_NEWS),
         }}
         def load():
             return copy.deepcopy(memory["saved"]), False
@@ -529,6 +531,8 @@ class HybridTelegramPresentationTests(unittest.TestCase):
             "structure_baseline_version":w.STRUCTURE_BASELINE_VERSION,
             "nvhbm_foundry_track_version":w.NVHBM_FOUNDRY_TRACK_VERSION,
             "nvhbm_foundry_strategy":copy.deepcopy(w.NVHBM_FOUNDRY_BASELINE),
+            "rubin_supply_media_track_version":w.RUBIN_SUPPLY_MEDIA_TRACK_VERSION,
+            "rubin_supply_media":copy.deepcopy(w.RUBIN_SUPPLY_MEDIA_NEWS),
             "hbm_hybrid_bond_track_version":1,
             "hbm_hybrid_bonding": {
                 "sk_official_hybrid_stage": "technical_feasibility",

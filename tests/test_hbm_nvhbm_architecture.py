@@ -389,6 +389,8 @@ class NVHBMFoundryStrategyTests(unittest.TestCase):
             "hbm_hybrid_bonding":copy.deepcopy(w.HBM_HYBRID_BOND_BASELINE),
             "nvhbm_architecture_track_version":w.NVHBM_ARCH_TRACK_VERSION,
             "nvhbm_architecture":copy.deepcopy(w.NVHBM_ARCH_BASELINE),
+            "rubin_supply_media_track_version":w.RUBIN_SUPPLY_MEDIA_TRACK_VERSION,
+            "rubin_supply_media":copy.deepcopy(w.RUBIN_SUPPLY_MEDIA_NEWS),
         }}
         def load():
             return copy.deepcopy(memory["data"]),False
