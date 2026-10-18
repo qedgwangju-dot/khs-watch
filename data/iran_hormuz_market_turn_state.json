@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-18T03:53:56+09:00",
-  "last_event_kind": "iea_oct15_reserve_execution",
-  "last_event_id": "iea_oct15_reserve_execution:2026-10-15-330-100-20plus",
+  "last_alert_at_kst": "2026-10-18T14:48:45+09:00",
+  "last_event_kind": "venezuela_oil_investment",
+  "last_event_id": "venezuela_oil_investment:2026-10-17-plan-76b-250rig-17fields",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-10-13T21:23:53+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-10-13T21:11:24+09:00",
@@ -36,10 +36,21 @@
     "eia_refining_crack_watch:8930fae216868471": "2026-10-16T05:32:44+09:00",
     "eia_weekly_stock_balance:2026-10-09": "2026-10-17T20:39:37+09:00",
     "delek_tyler_dpa:2026-10-13-announcement": "2026-10-17T23:25:43+09:00",
-    "iea_oct15_reserve_execution:2026-10-15-330-100-20plus": "2026-10-18T03:53:56+09:00"
+    "iea_oct15_reserve_execution:2026-10-15-330-100-20plus": "2026-10-18T03:53:56+09:00",
+    "venezuela_oil_investment:2026-10-17-plan-76b-250rig-17fields": "2026-10-18T14:48:45+09:00"
   },
   "last_market": {
     "oil": null,
-    "usdkrw": null
+    "usdkrw": {
+      "symbol": "KRW=X",
+      "label": "원·달러",
+      "unit": "원/달러",
+      "price": 1329.6,
+      "previous_close": 1341.19,
+      "change": -11.590000000000146,
+      "change_pct": -0.8641579492838558,
+      "timestamp_utc": "2026-10-18T03:30:30Z",
+      "timestamp_epoch": 1792294230.0
+    }
   }
 }
