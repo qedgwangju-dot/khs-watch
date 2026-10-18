@@ -125,6 +125,10 @@ NEWS_QUERIES = [
     # A private industry draft is not an introduced/enacted congressional bill.
     '"Anthropic" "AI safety bill" (lawmakers OR Congress OR proposal OR introduced OR enacted)',
     '"Anthropic" "frontier AI" (bill OR legislation) (Commerce OR Congress OR independent evaluators)',
+    # Cohere–AISLE acquisition stages and commercialization; not a cyber incident.
+    '"Cohere" "AISLE" ("letter of intent" OR acquisition OR "definitive agreement" OR closing OR terminated)',
+    '"Cohere Cyber" "AISLE" (customer OR contract OR product OR deployment OR license OR subscription)',
+    '"Aidan Gomez" "AISLE" (CNBC OR "rogue agents" OR cybersecurity)',
     # FTC civil subpoenas are not findings of liability; follow real enforcement milestones.
     '"FTC" ("OpenAI" OR "Anthropic") (subpoena OR complaint OR settlement OR consent order)',
     '"FTC" ("OpenAI" OR "Anthropic") ("AI agents" OR "AI model") (enforcement OR investigation OR lawsuit)',
@@ -134,6 +138,10 @@ NEWS_QUERIES = [
 # These existing stages are silently seeded so syndicated reprints cannot
 # masquerade as a new agreement or an enacted rule.
 POLICY_EVENT_BASELINES = {
+    "cohere_aisle:letter_of_intent_announced": {
+        "source_url": "https://cohere.com/blog/cohere-and-aisle-sign-letter-of-intent-to-advance-cyber-resilient-sovereign-ai",
+        "status": "2026-10-15 Cohere and AISLE signed an LOI only; no definitive contract, closing, price or incremental revenue confirmed",
+    },
     "softbank_allied:initial_talks_reported": {
         "source_url": "https://www.ft.com/content/e44a17f9-5be0-4a78-89fb-41c4578838ca",
         "status": "2026-10-17 FT / 2026-10-16 Bloomberg and Reuters early discussions; no signed deal",
@@ -160,7 +168,7 @@ OFFICIAL_SOURCE_HINTS = (
     "naver", "lg cns", "s2w", "샌즈랩", "palo alto", "unit 42",
     "crowdstrike", "ibm", "nvidia", "microsoft", "openshell",
     "nemoclaw", "sentry", "sap", "canonical", "red hat",
-    "trail of bits", "trailofbits.com",
+    "trail of bits", "trailofbits.com", "cohere", "aisle",
 )
 
 TRUSTED_SOURCE_HINTS = (
@@ -171,7 +179,7 @@ TRUSTED_SOURCE_HINTS = (
     "techcrunch", "wired", "securityweek", "palo alto", "unit 42",
     "associated press", "ap news", "guardian", "cbs news", "wall street journal", "wsj",
     "crowdstrike", "ibm", "nvidia", "microsoft",
-    "trail of bits", "trailofbits.com",
+    "trail of bits", "trailofbits.com", "cnbc",
 )
 
 AI_TOPIC_TERMS = (
@@ -746,6 +754,49 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
             return event, "subpoenas_reported"
         return None
 
+    if re.search(r"\bcohere\b", context) and re.search(r"\baisle\b", context):
+        # Do not misclassify an LOI, a proposed purchase, or a CNBC interview
+        # as a definitive deal or a real-world security incident.
+        if any(x in title for x in (
+            "deal terminated", "acquisition terminated", "calls off acquisition",
+            "ends acquisition", "abandons acquisition", "deal collapses",
+            "인수 철회", "인수 무산",
+        )):
+            return ("cohere_aisle", "terminated_reported")
+        if any(x in title for x in (
+            "completes acquisition", "completed acquisition", "acquisition completed",
+            "acquisition closed", "closes acquisition", "deal closed",
+            "transaction completed", "인수 완료", "인수 종결",
+        )) and not any(x in title for x in ("expected to", "could", "may ", "plans to")):
+            return ("cohere_aisle", "closed_reported")
+        if any(x in title for x in (
+            "regulatory clearance", "antitrust clearance",
+            "regulators approve acquisition", "regulatory approval granted",
+            "인수 승인",
+        )):
+            return ("cohere_aisle", "regulatory_approval_reported")
+        if any(x in title for x in (
+            "signs definitive agreement", "signed definitive agreement",
+            "definitive acquisition agreement", "agrees to acquire aisle",
+            "agreed to acquire aisle", "reaches deal to buy aisle",
+            "인수 본계약 체결",
+        )) and not any(x in title for x in ("could", "may ", "expected", "plans", "talks")):
+            return ("cohere_aisle", "definitive_agreement_reported")
+        if any(x in title for x in (
+            "launches commercial aisle service", "commercially launches aisle",
+            "cohere cyber launches aisle", "cohere launches aisle security",
+            "aisle paid security contract", "cohere cyber signs paying customer",
+            "유료 보안 서비스 출시", "상용 서비스 출시",
+        )) and not any(x in title for x in ("plans to", "could", "may ", "expects to")):
+            return ("cohere_aisle", "commercial_service_reported")
+        if any(x in context for x in (
+            "letter of intent", "signed an loi", "signs loi", "signed loi",
+            "intent to acquire aisle", "proposed acquisition", "plans to acquire aisle",
+            "to buy aisle", "to acquire aisle", "aisle 인수", "인수 의향서",
+        )):
+            return ("cohere_aisle", "letter_of_intent_announced")
+        return None
+
     if "softbank" in context and "allied universal" in context:
         if not any(x in context for x in (
             "acquisition", "acquire", "takeover", "merger", "buy", "bid",
@@ -865,6 +916,8 @@ def detect_category(text: str) -> str:
         t in low for t in ("subpoena", "complaint", "investigation", "sues", "settlement", "consent order")
     ):
         return "FTC 프런티어 AI 소비자보호 조사·집행 단계"
+    if "cohere" in low and re.search(r"\baisle\b", low):
+        return "Cohere–AISLE AI 보안 인수·상용화 단계"
     if "softbank" in low and "allied universal" in low:
         return "SoftBank–Allied Universal 물리보안·로봇 인수 단계"
     if "anthropic" in low and any(x in low for x in (
@@ -895,6 +948,8 @@ def detect_entity(text: str) -> str:
         if "openai" in low and "anthropic" in low:
             return "FTC–OpenAI·Anthropic"
         return "FTC–OpenAI" if "openai" in low else "FTC–Anthropic"
+    if "cohere" in low and re.search(r"\baisle\b", low):
+        return "Cohere–AISLE"
     if "softbank" in low and "allied universal" in low:
         return "SoftBank–Allied Universal"
     if "anthropic" in low and any(x in low for x in (
@@ -1417,7 +1472,15 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "SoftBank–Allied Universal 물리보안·로봇 인수 단계":
+        if rep["category"] == "Cohere–AISLE AI 보안 인수·상용화 단계":
+            milestone = tracked_policy_event_stage(rep)
+            detail = milestone[1].replace("_", " ") if milestone else "추가 검증"
+            verification = "당사자 공식 발표" if source_official(rep.get("source","")) else "신뢰보도 · 공식 발표와 별도 검증"
+            lines.append(f"• <b>신규 단계</b>: {html.escape(detail)} · {verification}")
+            lines.append("• <b>기준선</b>: 2026년 10월 15일 Cohere·AISLE 인수 의향서 체결. 본계약·인수 종결 아님, 거래금액 미공개")
+            lines.append("• <b>기술·매출</b>: AISLE의 취약점 발견·악용 가능성 검증·자동수정·MCP 연동·패키지 방화벽과 Cohere North의 기업용 보안 운영을 구분. 유료 계약·반복매출은 개별 확인 필요")
+            lines.append("• <b>다음 확인</b>: 본계약·인수 완료·거래금액·고객 검증·실제 배치·유료 사용권·구독 갱신·품질·오탐 및 접근권한 위험")
+        elif rep["category"] == "SoftBank–Allied Universal 물리보안·로봇 인수 단계":
             stage = tracked_policy_event_stage(rep)
             detail = stage[1].replace("_", " ") if stage else "추가 검증"
             lines.append(f"• <b>신규 단계</b>: {html.escape(detail)} · 신뢰보도 단계이며 당사자 공식 확정과 구분")
