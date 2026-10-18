@@ -238,6 +238,36 @@ class DuoPreorderTests(unittest.TestCase):
         self.assertEqual(st["market_latest"]["미국"],"2027-01")
 
 
+
+    def test_correction_notice_is_due_once_for_quarantined_false_august(self):
+        st = {
+            "quarantined_delivery_claims": [
+                {"market":"미국","reported_month":"2027-08","reason":"unverified"}
+            ],
+            "false_august_correction_sent":False,
+        }
+        self.assertTrue(m._needs_august_correction(st))
+        st["false_august_correction_sent"]=True
+        self.assertFalse(m._needs_august_correction(st))
+        notice=m._august_correction_alert()
+        self.assertIn("2027년 1월 25일",notice)
+        self.assertIn("잘못된 날짜 추출",notice)
+
+    def test_concurrent_merge_keeps_confirmed_correction_receipt(self):
+        remote={
+            "updated_at_kst":"2026-10-18T15:20:00+09:00",
+            "market_latest":{"미국":"2027-01"},
+            "false_august_correction_sent":True,
+        }
+        local={
+            "updated_at_kst":"2026-10-18T15:22:00+09:00",
+            "market_latest":{"미국":"2027-01"},
+            "false_august_correction_sent":False,
+        }
+        merged=m._merge_delivery_state(remote,local)
+        self.assertTrue(merged["false_august_correction_sent"])
+
+
 if __name__=="__main__":
     result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(DuoPreorderTests))
     if not result.wasSuccessful():

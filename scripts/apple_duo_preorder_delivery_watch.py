@@ -262,6 +262,35 @@ def _direct_publisher_link(row: dict) -> bool:
             return host == expected or host.endswith("." + expected)
     return False
 
+def _needs_august_correction(state: dict) -> bool:
+    return (
+        not bool(state.get("false_august_correction_sent"))
+        and any(
+            entry.get("reported_month") == "2027-08"
+            for entry in state.get("quarantined_delivery_claims") or []
+        )
+    )
+
+
+def _august_correction_alert() -> str:
+    return "\n".join([
+        "📦 <b>[정정 | iPhone Duo 배송 예정일]</b>",
+        "━━━━━━━━━━━━━━━━",
+        "• 앞서 발송한 <b>'2027년 1월 → 2027년 8월 말'</b> 알림은 잘못된 날짜 추출이므로 취소합니다.",
+        "• 해당 MacRumors 10월 17일 보도가 확인한 미국 온라인 신규 주문 배송 예정일은 "
+        "<b>2027년 1월 25일</b>입니다.",
+        "• 기사 속 <b>'지난 8월'</b>은 초기 생산량을 설명한 과거 시점이며 배송 예정일이 아닙니다.",
+        "• <b>10월 24일</b>은 매장 수령 재고 확인 안내일로, 배송 지연 날짜가 아닙니다.",
+        "• Apple 공식 출시일 <b>2026년 10월 23일</b>과 온라인 신규 주문 배송일을 분리합니다.",
+        "• 1월 25일도 당시 미국 온라인 스토어에 관한 언론 보도이며,"
+        " 한국 전 구성의 현재 배송일이나 실제 예약 대수로 일반화할 수 없습니다.",
+        "",
+        '<a href="https://www.macrumors.com/2026/10/17/staff-warn-against-iphone-duo-walk-ins/">'
+        "MacRumors 원문</a>",
+        f'<a href="{APPLE}">Apple 공식 출시 일정</a>',
+    ]) + "\n"
+
+
 def _initial_alert() -> str:
     return "\n".join([
         "📦 <b>[iPhone Duo 초기 예약·배송 지연 | 첫 기준선]</b>",
@@ -434,6 +463,9 @@ def _merge_delivery_state(remote: dict, local: dict) -> dict:
     merged = dict(older)
     merged.update(newer)
     merged["initial_alert_sent"] = bool(remote.get("initial_alert_sent") or local.get("initial_alert_sent"))
+    merged["false_august_correction_sent"] = bool(
+        remote.get("false_august_correction_sent") or local.get("false_august_correction_sent")
+    )
     for key in ("seen_ids", "seen_fact_keys"):
         merged[key] = sorted(set(remote.get(key) or []) | set(local.get(key) or []))[-1800:]
     # Preserve quarantine and audit history across concurrent scan commits.
@@ -580,10 +612,17 @@ def main() -> None:
         if updates:
             alerts.append(_update_alert(updates))
     state=_sanitize_delivery_state(state)
+    correction_pending = _needs_august_correction(state)
+    if correction_pending:
+        alerts.append(_august_correction_alert())
+        state["false_august_correction_sent"] = True
+        state["august_false_alert_corrected_at_kst"] = now.isoformat(timespec="seconds")
     state.update({"schema_version":2,"updated_at_kst":now.isoformat(timespec="seconds"),
                   "last_scan_items":len(rows),"errors":errors[-20:],
-                  "last_signal_count":len(alerts)-(1 if first else 0),
-                  "last_alert":{"at_kst":now.isoformat(timespec="seconds"),"kind":"baseline" if first else "extension"} if alerts else state.get("last_alert")})
+                  "last_signal_count":len(updates) if not first else 0,
+                  "last_alert":{"at_kst":now.isoformat(timespec="seconds"),
+                                "kind":"correction" if correction_pending else ("baseline" if first else "extension")}
+                                if alerts else state.get("last_alert")})
     PENDING.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     if alerts:
         txt="\n\n".join(alerts)
