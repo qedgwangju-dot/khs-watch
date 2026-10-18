@@ -1908,7 +1908,7 @@ ROBOT_OCT16_EVENTS = {
     },
     'brils_us_amr_production_plan': {
         'group': 'brils_us_localization',
-        'stage': 'reported_us_production_plan',
+        'stage': 'reported_local_production_plan',
         'source': '전자신문',
         'title': '브릴스, 미시간 미국 AMR 현지 조립·생산 추진…계약·가동 전',
         'link': 'https://www.etnews.com/20261016000210?m=1',
@@ -1935,7 +1935,7 @@ ROBOT_OCT16_EVENTS = {
     },
     'hyundai_rx_strategy_team': {
         'group': 'hyundai_robot_rx_team',
-        'stage': 'company_sourced_organization_report',
+        'stage': 'company_sourced_team_report',
         'source': '머니투데이',
         'title': '현대차그룹, 미래사업전략실 산하 RX사업전략팀 신설',
         'link': 'https://www.mt.co.kr/industry/2026/10/15/2026101514482769434',
@@ -1954,7 +1954,7 @@ ROBOT_OCT16_EVENTS = {
     },
     'lg_robot_software_platform_team': {
         'group': 'lge_robot_sw_platform',
-        'stage': 'industry_sourced_team_report',
+        'stage': 'industry_sourced_sw_team',
         'source': 'ZDNet korea',
         'title': 'LG전자, 로봇 소프트웨어 플랫폼 통합 조직 신설 보도',
         'link': 'https://zdnet.co.kr/view/?no=20261016135133',
