@@ -558,3 +558,315 @@ print(
     f"generation_buildout baseline={BASELINE['need_generation_gw']}GW "
     f"gev_slots={gev['gas_contract_slot_gw']}GW new={len(new_items)} changes={len(gev_changes)} alert={should_alert}"
 )
+
+
+# VENTURE_GLOBAL_POWER_ISLAND_EXTENSION_V1
+# Existing generation-buildout workflow, pending state, and Telegram route only.
+# This block executes after the original watcher, before the already deployed
+# nuclear-PPA runtime extension. It does not create independent workflows/files.
+VG_RELEASE = "https://investors.ventureglobal.com/news/news-details/2026/Venture-Global-Secures-New-Agreements-to-Support-Expansion-of-Existing-Grid-Independent-Power-Network/default.aspx"
+VG_SEC_8K = "https://www.sec.gov/Archives/edgar/data/2007855/000200785526000081/vg-20261009.htm"
+VG_BAKER_RELEASE = "https://investors.bakerhughes.com/news/press-releases/news-details/2026/Baker-Hughes-and-Venture-Global-Expand-Strategic-Long-Term-Power-Generation-Partnership/default.aspx"
+VG_BASELINE = {
+    "framework_signed": "2026-10-09",
+    "announcement_date": "2026-10-15",
+    "power_island_max_units": 16,
+    "power_island_unit_mw": 720,
+    "power_island_max_mw": 11520,
+    "existing_island_mode_mw": 4500,
+    "ge_manufacturing_reservation_units": 8,
+    "ge_manufacturing_reservation_denominator_remaining": 15,
+    "ge_grid_equipment_max_packages": 21,
+    "ge_grid_initial_reservation_packages": 5,
+    "full_option_equipment_usd_b": 17.2,
+    "potential_compute_gw": 10,
+    "conditional_target_year": 2034,
+    "first_power_island_po_target": "2026-12-31",
+    "grid_first_po_target": "2026-Q4",
+    "delivery_window": "2028~2034",
+    "customer_signed": False,
+    "first_power_island_po_placed": False,
+    "facility_energized": False,
+    "phase": "기본계약·일부 제조능력 예약",
+    "scope": "가스터빈·증기터빈·E-house·전력변압기·가스절연 개폐장치·전기제어/통합서비스",
+}
+VG_OFFICIAL_DOMAINS = (
+    "ventureglobal.com",
+    "gevernova.com",
+    "bakerhughes.com",
+    "sec.gov",
+)
+VG_STAGE_LABELS = {
+    "first-po": "첫 발전설비 구매주문 실제 발행",
+    "additional-po": "추가 발전설비 실제 발주",
+    "customer-signed": "데이터센터 장기 전력구매·사용권 계약 체결",
+    "permit-approved": "가스발전·데이터센터 인허가 승인",
+    "financial-close": "프로젝트 금융종결",
+    "construction-start": "신규 발전설비 실제 착공",
+    "delivery": "발전설비 납품·현장 인수",
+    "energization": "발전설비 실제 전원 인가·상업운전",
+    "risk-delay": "발주·인허가·전원 인가 일정 지연",
+    "risk-cancel": "고객·발주·프로젝트 취소",
+}
+
+
+def vg_classify_official_headline(title: str):
+    """Forward plans and headline reprints cannot be marked as actual orders."""
+    t = normalize(html.unescape(title))
+    if not re.search(r"venture global|ventureglobal|\bVGLNG\b", t, re.I):
+        return None
+    if not re.search(r"power islands?|power plants?|generation|gas[- ]fired|data cent(?:er|re)", t, re.I):
+        return None
+    if re.search(r"expects?|plans?|targets?|may |could |potential|up to |framework|"
+                 r"envisag|anticipat|outline|wants? to|to place|to submit|"
+                 r"set to|is poised to|proposes?|prepar(?:e|es|ing)", t, re.I):
+        return None
+    if re.search(r"cancel(?:led|ed|lation)?|terminate[sd]?|withdrawn", t, re.I):
+        return "risk-cancel"
+    if re.search(r"delay(?:ed)?|postpon(?:e|ed|ement)|suspend(?:ed)?", t, re.I):
+        return "risk-delay"
+    if re.search(r"first.{0,35}(?:purchase order|firm order)|"
+                 r"placed.{0,35}first.{0,25}order|first.{0,25}purchase order.{0,25}placed", t, re.I):
+        return "first-po"
+    if re.search(r"(?:additional|another|second|third).{0,35}(?:purchase orders?|firm orders?)|"
+                 r"(?:placed|awarded|issued).{0,35}(?:additional|new).{0,35}(?:orders?|purchase)", t, re.I):
+        return "additional-po"
+    if re.search(r"(?:data cent(?:er|re)|hyperscaler|AI compute).{0,65}"
+                 r"(?:signed|secures?|executes?|finalizes?).{0,35}(?:power|electricity).{0,25}"
+                 r"(?:contract|agreement|PPA)|"
+                 r"(?:signed|executed|secured).{0,40}(?:data cent(?:er|re)|hyperscaler).{0,35}"
+                 r"(?:power|electricity).{0,30}(?:agreement|contract)", t, re.I):
+        return "customer-signed"
+    if re.search(r"(?:permit|approval).{0,30}(?:issued|granted|approved)|"
+                 r"(?:regulator|authority).{0,40}approves?", t, re.I):
+        return "permit-approved"
+    if re.search(r"(?:financial close|financing closed|project financing secured)", t, re.I):
+        return "financial-close"
+    if re.search(r"breaks ground|construction (?:starts|begins|started)", t, re.I):
+        return "construction-start"
+    if re.search(r"power island.{0,45}(?:delivered|installed|commissioned)|"
+                 r"(?:first|new).{0,30}turbine.{0,25}(?:delivered|installed)", t, re.I):
+        return "delivery"
+    if re.search(r"power island.{0,45}(?:energized|in commercial operation|starts operation)|"
+                 r"(?:commissioned|energized).{0,40}(?:power island|power plant)", t, re.I):
+        return "energization"
+    return None
+
+
+def vg_parser_self_test():
+    b = VG_BASELINE
+    assert b["power_island_max_units"] * b["power_island_unit_mw"] == b["power_island_max_mw"] == 11520
+    assert b["power_island_max_mw"] != 720
+    assert b["ge_manufacturing_reservation_units"] < b["power_island_max_units"]
+    assert b["ge_grid_equipment_max_packages"] != b["power_island_max_units"]
+    assert not b["first_power_island_po_placed"] and not b["customer_signed"]
+    cases = (
+        ("Venture Global expects to place first power island purchase order by end 2026", None),
+        ("Venture Global and GE Vernova agree on up to 16 power islands of 720 MW", None),
+        ("Venture Global submits first permit applications for gas power island", None),
+        ("Venture Global announces 10 GW potential data center capacity by 2034", None),
+        ("Venture Global placed first firm purchase order for 720 MW power island", "first-po"),
+        ("Venture Global secured project financing closed for 720 MW gas-fired power plant", "financial-close"),
+        ("Venture Global says data center power island energization delayed", "risk-delay"),
+        ("Venture Global says new 720 MW power island energized", "energization"),
+    )
+    for headline, expected in cases:
+        got = vg_classify_official_headline(headline)
+        assert got == expected, (headline, got, expected)
+
+
+def vg_official_text(url: str):
+    try:
+        content = fetch(url, 18).content
+        body = normalize(BeautifulSoup(content, "html.parser").get_text(" ", strip=True))
+        if len(body) < 300:
+            raise ValueError("official text too short")
+        return body, None
+    except Exception as exc:
+        return "", f"{type(exc).__name__}: {str(exc)[:90]}"
+
+
+def vg_official_rss_events():
+    """Official-party news only. Google News syndication alone is not evidence."""
+    query = (
+        '"Venture Global" ("power island" OR "power generation" OR "AI data center") '
+        '(purchase order OR "financial close" OR permit OR construction OR energized OR cancellation)'
+    )
+    url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({
+        "q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"
+    })
+    events = {}
+    try:
+        root = ET.fromstring(fetch(url, 17).content)
+    except Exception:
+        return []
+    import email.utils
+    for node in root.findall("./channel/item")[:35]:
+        title = normalize(node.findtext("title") or "")
+        source_el = node.find("source")
+        domain = domain_of(source_el.attrib.get("url", "") if source_el is not None else "")
+        if not trusted(domain) and not any(
+            domain == d or domain.endswith("." + d) for d in VG_OFFICIAL_DOMAINS
+        ):
+            continue
+        if not any(domain == d or domain.endswith("." + d) for d in VG_OFFICIAL_DOMAINS):
+            # Independent news is useful for research but cannot alone
+            # promote a purchase order, customer or energization to confirmed.
+            continue
+        published = node.findtext("pubDate") or ""
+        try:
+            day = email.utils.parsedate_to_datetime(published)
+            if day.tzinfo is None:
+                day = day.replace(tzinfo=dt.timezone.utc)
+            if day.date() < dt.date(2026, 10, 15):
+                continue
+            if (dt.datetime.now(dt.timezone.utc) - day).days > 30:
+                continue
+        except Exception:
+            continue
+        stage = vg_classify_official_headline(title)
+        if not stage:
+            continue
+        key = "vg-power|" + stage
+        # Preserve one commercial stage across press reprints; a fresh
+        # numbered shipment/plant can be tracked separately after confirmation.
+        if stage in {"additional-po", "energization", "delivery"}:
+            number = re.search(r"\b(?:number|unit|site)\s*#?\s*(\d+)\b", title, re.I)
+            if number:
+                key += "|unit-" + number.group(1)
+        events.setdefault(key, {
+            "stage": stage,
+            "title": title,
+            "source_domain": domain,
+            "url": VG_RELEASE if "ventureglobal" in domain else
+                   VG_BAKER_RELEASE if "bakerhughes" in domain else
+                   "https://www.gevernova.com/news/",
+        })
+    return list(events.values())
+
+
+def vg_run_existing_generation_watch():
+    vg_parser_self_test()
+    previous = old.get("venture_global_power_island") or {}
+    checked = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    release_text, release_error = vg_official_text(VG_RELEASE)
+    baker_text, baker_error = vg_official_text(VG_BAKER_RELEASE)
+    sec_text, sec_error = vg_official_text(VG_SEC_8K)
+
+    release_ok = all(x in release_text.lower() for x in (
+        "720 mw", "16", "ge vernova", "baker hughes", "10 gw"
+    ))
+    baker_ok = all(x in baker_text.lower() for x in (
+        "venture global", "ge vernova", "16", "gas turbines"
+    ))
+    sec_ok = all(x in sec_text.lower() for x in (
+        "17.2 billion", "initial unit manufacturing reservation",
+        "initial long lead equipment"
+    ))
+    # The SEC baseline was independently verified on its filed Oct-15 8-K.
+    # A temporary SEC website rejection must never silently upgrade a
+    # proposed 16-unit maximum to firm orders.
+    source_ok = release_ok and baker_ok
+    errors = []
+    if not release_ok:
+        errors.append("Venture Global 공식 보도자료: " + str(release_error or "필수 내용 확인 실패"))
+    if not baker_ok:
+        errors.append("Baker Hughes 공식 보도자료: " + str(baker_error or "필수 내용 확인 실패"))
+    if not sec_ok:
+        errors.append("SEC 2026-10-15 8-K 실시간 확인 불가: " + str(sec_error or "필수 문구 확인 실패"))
+
+    # Current framework reservations may be used in LNG projects; there is
+    # still no publicly confirmed data center customer/offtake contract.
+    stage = dict(previous)
+    if source_ok:
+        stage.update(VG_BASELINE)
+        stage.update({
+            "version": 1,
+            "official_release_verified_live": True,
+            "baker_official_verified_live": True,
+            "sec_verified_live": sec_ok,
+            "last_checked_utc": checked,
+            "source_errors": errors,
+        })
+    new = []
+    if source_ok and not previous.get("framework_alert_delivered"):
+        new.append({
+            "key": "vg-power|framework-reservations|2026-10-09",
+            "stage": "기본계약·예약",
+            "title": "Venture Global 16×720MW 조건부 전력섬 기본계약·제조능력 예약",
+            "url": VG_RELEASE,
+        })
+    prior_keys = set(previous.get("alerted_milestones") or [])
+    for event in vg_official_rss_events():
+        key = "vg-power|" + event["stage"]
+        if event["stage"] in {"additional-po", "energization", "delivery"}:
+            number = re.search(r"\b(?:number|unit|site)\s*#?\s*(\d+)\b", event["title"], re.I)
+            if number:
+                key += "|unit-" + number.group(1)
+        if key not in prior_keys and source_ok:
+            new.append(dict(event, key=key, stage=VG_STAGE_LABELS[event["stage"]]))
+    if new:
+        seen = list(dict.fromkeys(list(prior_keys) + [x["key"] for x in new]))
+        stage["alerted_milestones"] = seen[-180:]
+        stage["framework_alert_delivered"] = True
+
+    # Do not advance the watch on official-source outage. Never send a claim
+    # based on RSS third-party paraphrase, historical cache, or target dates.
+    if source_ok and new:
+        reported_fx = fx if fx_source != "직전 저장값" else 1334.61
+        fx_label = (
+            fx_source if fx_source != "직전 저장값"
+            else "2026-10-16 확인 시장 종가(직전 저장환율 대신 명시적 과거기준)"
+        )
+        money = krw_from_usd_b(17.2, reported_fx)
+        lines = [
+            "<b>⚡ LNG→AI 데이터센터 자체발전 실행 감시 · Venture Global(VG)</b>",
+            "",
+            "• <b>공식 기본계약</b> │ GE Vernova(GEV)·Baker Hughes(BKR)·GE Grid Solutions",
+            "• <b>전체 선택권</b> │ 발전설비 최대 16기 × 720MW = <b>11,520MW(11.52GW)</b>",
+            "• <b>기존 4.5GW</b> │ 운영·건설·발주를 합친 규모. 모두 현재 발전 중이라는 뜻 아님",
+            "• <b>제조능력 예약</b> │ 첫 발주 예정 1기 제외 나머지 15기 중 8기, 전력망 장비 21묶음 중 최초 5묶음",
+            f"• <b>SEC 조건부 총 대금</b> │ $17.2B (약 {money}) · 모든 향후 구매주문 진행 시. 실제 확정 수주 아님",
+            "• <b>컴퓨팅 10GW</b> │ 고객·자금조달·인허가 조건이 충족될 때 2034년 말까지의 목표. 이미 계약된 AI 용량 아님",
+            "• <b>시간표</b> │ 첫 발전설비 구매주문 2026년 말 목표 → 장비 인도 2028~2034",
+            "• <b>초기 수익</b> │ 터빈·증기터빈·변압기·가스절연 개폐장치·전기제어·통합설비",
+            "• <b>반복 수익</b> │ 유지보수·부품·성능개선 가능성은 별도 장기 서비스계약 검증 필요",
+            "• <b>역풍</b> │ 발전·대기배출 인허가, 가스 연료비, 냉각·방폭·보험, 고객 부족, 대규모 차입·설비투자",
+            "",
+            "<b>신규 확인·단계 변화</b>",
+        ]
+        for event in new[:5]:
+            lines.append("• " + h(event["stage"]) + ": " + h(event["title"]))
+        lines.extend([
+            "",
+            f"• 환산 기준: 1달러={reported_fx:,.2f}원 · {h(fx_label)}",
+            f"• {a('Venture Global 공식발표', VG_RELEASE)}",
+            f"• {a('SEC 8-K 기본계약·예약·조건부 금액', VG_SEC_8K)}",
+            f"• {a('Baker Hughes 공식 공급범위', VG_BAKER_RELEASE)}",
+            "",
+            "• 다음 통보: 실제 구매주문·고객 전력계약·인허가 승인·금융종결·장비 인도·상업운전·취소/지연",
+        ])
+        existing = ALERT.read_text(encoding="utf-8").strip() if ALERT.exists() else ""
+        report = "\n".join(lines).strip()
+        ALERT.write_text((existing + "\n\n" if existing else "") + report + "\n", encoding="utf-8")
+
+    # Existing watcher already wrote pending state. Extend that one JSON only.
+    pending = load_json(PENDING)
+    if stage:
+        pending["venture_global_power_island"] = stage
+        PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if STATUS.exists():
+        with STATUS.open("a", encoding="utf-8") as fp:
+            fp.write(
+                f"- VG 전력섬: {'공식 2자 교차확인' if source_ok else '원천 일시 확인 불가'}"
+                f" · 16×720MW=11520MW · SEC 실시간={sec_ok}"
+                f" · 신규 의미변화={len(new)}건 · 오류={len(errors)}건\n"
+            )
+    print(
+        f"vg_power_island source_ok={source_ok} sec_ok={sec_ok} "
+        f"new_changes={len(new)} alert={bool(new and source_ok)} "
+        f"errors={len(errors)} previous_state={bool(previous)}"
+    )
+
+
+vg_run_existing_generation_watch()
