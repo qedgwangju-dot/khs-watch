@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 1,
   "initial_alert_sent": true,
   "seen_ids": [
     "13d0edb9416d3fcdeee36d53",
@@ -34,7 +34,8 @@
     "initial_launch_allocation",
     "미국:2026-11",
     "미국:2026-12",
-    "미국:2027-01"
+    "미국:2027-01",
+    "미국|구성 미확인|색상 미확인:2027-08"
   ],
   "baseline": {
     "2026-10-16_initial_stock_out": {
@@ -54,7 +55,7 @@
     }
   },
   "market_latest": {
-    "미국": "2027-01"
+    "미국": "2027-08"
   },
   "last_scan_items": 21,
   "last_signal_count": 0,
@@ -62,7 +63,7 @@
     "at_kst": "2026-10-18T06:45:27+09:00",
     "kind": "extension"
   },
-  "updated_at_kst": "2026-10-18T10:31:26+09:00",
+  "updated_at_kst": "2026-10-18T14:38:20+09:00",
   "errors": [],
   "market_sku_latest": {},
   "market_day_latest": {},
