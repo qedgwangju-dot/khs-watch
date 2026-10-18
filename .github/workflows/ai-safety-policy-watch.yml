@@ -437,7 +437,8 @@ jobs:
           from scripts.ai_safety_policy_watch import (
               MAX_ALERT_EVENTS, POLICY_EVENT_BASELINES, cluster_events,
               detect_category, detect_entity, google_news_url, material, source_official, source_trusted,
-              select_policy_alert_events, tracked_policy_event_key, tracked_policy_event_stage,
+              cohere_aisle_publisher_verified, select_policy_alert_events,
+              tracked_policy_event_key, tracked_policy_event_stage,
           )
           def item(title, source="Reuters"):
               return {
@@ -553,11 +554,16 @@ jobs:
           cohere_loi = item(
               "Cohere and AISLE sign letter of intent to advance cyber-resilient sovereign AI", "Cohere"
           )
+          cohere_loi["publisher_url"] = "https://cohere.com"
           cohere_key = "cohere_aisle:letter_of_intent_announced"
           assert tracked_policy_event_key(cohere_loi) == cohere_key
           assert cohere_key in POLICY_EVENT_BASELINES
           assert source_official("Cohere") and source_official("AISLE")
           assert source_trusted("CNBC") and material(cohere_loi)
+          assert cohere_aisle_publisher_verified(cohere_loi)
+          forged_company_source = dict(cohere_loi, publisher_url="https://fake-cohere.example.invalid")
+          assert not cohere_aisle_publisher_verified(forged_company_source)
+          assert not material(forged_company_source), "Unverified company publisher was accepted as official"
           assert detect_category(cohere_loi["title"]) == "Cohere–AISLE AI 보안 인수·상용화 단계"
           assert detect_entity(cohere_loi["title"]) == "Cohere–AISLE"
           assert tracked_policy_event_key(item(
