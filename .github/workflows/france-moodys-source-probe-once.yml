@@ -1,0 +1,45 @@
+name: France Moody official source probe once
+on:
+  push:
+    paths:
+      - ".github/workflows/france-moodys-source-probe-once.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Inspect public Moody official rating source (read only)
+        env:
+          KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+        run: |
+          python - <<'PY'
+          import urllib.parse, urllib.request, re, html, concurrent.futures, json
+          urls=[
+            "https://ratings.moodys.com/ratings-new",
+            "https://ratings.moodys.com/ratings-news/434553",
+            "https://www.aft.gouv.fr/en/frances-credit-ratings",
+          ]
+          def fetch(url, route):
+            full=url if route=="direct" else ("https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch?url="+urllib.parse.quote(url,safe=""))
+            req=urllib.request.Request(full,headers={"User-Agent":"Mozilla/5.0 (khs-watch/1.0)","Accept":"text/html,*/*"})
+            try:
+              with urllib.request.urlopen(req, timeout=12) as r:
+                body=r.read().decode("utf-8","replace")
+                visible=re.sub(r"<[^>]+>"," ",body)
+                visible=re.sub(r"\s+"," ",html.unescape(visible))
+                titles=re.findall(r"(?:Moody.?s Ratings.{0,110}(?:France|Government of France)|Government of France.{0,100})",visible,re.I)
+                links=re.findall(r"href=[\"']([^\"']*ratings-news/\d+[^\"']*)[\"']",body,re.I)
+                return {"source":url,"route":route,"status":r.status,"length":len(body),
+                  "has_Frances_government":bool(re.search("Government of France",visible,re.I)),
+                  "news_link_count":len(set(links)),"sample_titles":titles[:3]}
+            except Exception as e:
+              return {"source":url,"route":route,"error":type(e).__name__+":"+str(e)[:100]}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=6) as ex:
+            ans=list(ex.map(lambda p:fetch(*p),[(u,t) for u in urls for t in ("direct","proxy")]))
+          for item in ans: print(json.dumps(item,ensure_ascii=False))
+          PY
