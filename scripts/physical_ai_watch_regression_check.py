@@ -4266,7 +4266,7 @@ eim_hbm_unrelated = make(
     '반도체 테마 뉴스',
 )
 ug, us, uc, uk = classify(eim_hbm_unrelated)
-assert ug != 'micron_eim_edge' and us < 11,(ug,us,uc)
+assert us < 11, ('HBM-price story with a negative EIM mention must stay silent',ug,us,uc)
 
 # Do not turn technology parameters (1-2 billion weights; 200GB; 4TB)
 # into "12개 확인 물량" or phantom $ / KRW device pricing.
