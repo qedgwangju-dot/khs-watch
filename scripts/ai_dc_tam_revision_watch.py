@@ -45,6 +45,37 @@ BASELINE = {
     "agentic_cpu_per_gpu": 1.0,
 }
 
+# 13 October 2026 JPMorgan Hardware & Networking research, independently repeated
+# by multiple secondary outlets. The paywalled original is NOT verified.
+JPM_REFERENCE = {
+    "as_of": "2026-10-13",
+    "source_grade": "JP모건 증권사 추정 · 리포트 원문 직접 미확인 · 2차 보도 2곳 이상 교차",
+    "top4_growth_2026_pct": 85.0, "top4_prior_2026_pct": 80.0,
+    "top4_growth_2027_pct": 70.0, "top4_prior_2027_pct": 50.0,
+    "top4_increment_2026_b_floor": 270.0,
+    "top4_increment_2027_b_floor": 400.0,
+    "na_planned_2026q2_gw_floor": 200.0,
+    "na_installed_2025_gw": 54.0,
+    "na_installed_2026_gw": 82.0,
+    "na_installed_2027_gw": 125.0,
+    "all_provider_capex_2026_b_approx": 800.0,
+    "all_provider_capex_2027_b_approx": 1500.0,
+    "tier2_capex_2026_b_floor": 200.0,
+    "tier2_capex_2027_b_floor": 370.0,
+    "top4_dc_capex_ocf_2026_pct": 80.0,
+    "top4_dc_capex_ocf_2027_pct": 111.0,
+}
+JPM_BASELINE_EVENT = "jpm-cloud-dc-2026-10-13-85-70-54-82-125"
+JPM_SECONDARY_SOURCES = (
+    "https://www.macrostream.ai/articles/6ace3ff6f30e248c424121dd",
+    "https://streetsignal.substack.com/p/streetsignal-morning-call-10132026",
+)
+JPM_FINANCE_OFFICIAL = "https://www.jpmorgan.com/insights/banking/capital-markets/financing-ai-infrastructure-data-centers"
+JPM_NEWS_QUERIES = (
+    'JPMorgan top four cloud data center capex growth forecast revised 2026 2027',
+    'J.P. Morgan hardware networking four CSP data center capex growth 2027',
+)
+
 QUERIES = (
     'BofA AI data center systems market 2030',
     'Bank of America data center systems TAM AI 2030',
@@ -298,6 +329,153 @@ def material_changes(old: dict, new: dict) -> list[dict]:
     return out
 
 
+
+def jpm_parse_future_growth(text: str) -> dict:
+    """Conservative top-four growth extraction. Excludes 2nd-tier and cash-flow percentages."""
+    low = clean(text).lower()
+    if not any(t in low for t in ("jpmorgan", "j.p. morgan", "jp morgan")):
+        return {}
+    if not any(t in low for t in ("data center", "data centre", "cloud dc")):
+        return {}
+    if not ("capex" in low or "capital expenditure" in low):
+        return {}
+    if not any(t in low for t in ("top four", "top 4", "four csp", "four hyperscaler")):
+        return {}
+    out = {}
+    for year in (2026, 2027):
+        # Anchor to the same year and require an explicit target-rate wording.
+        for match in re.finditer(r"\b" + str(year) + r"\b", low):
+            tail = low[match.end():match.end()+135]
+            tail = re.split(r"\b202[5-9]\b", tail, maxsplit=1)[0]
+            surrounding = low[max(0, match.start()-100):match.start()] + tail
+            if not any(t in surrounding for t in ("growth", "yoy", "raised", "revised")):
+                continue
+            if "cash flow" in tail[:75] or "tier 2" in tail[:35]:
+                continue
+            patterns = (
+                r"\b(?:revised|raised|increased|upgraded)\b.{0,50}?\bto\s*\+?(\d{2,3})\s*%",
+                r"\b(?:forecast|growth|yoy)\b.{0,50}?\bto\s*\+?(\d{2,3})\s*%",
+                r"\b(?:growth|yoy)\s*(?:rate\s*)?(?:of|at|:)?\s*\+?(\d{2,3})\s*%",
+                r"\+?(\d{2,3})\s*%\s*(?:growth|yoy)",
+            )
+            for pattern in patterns:
+                mm = re.search(pattern, tail, re.I)
+                if mm and 15 <= int(mm.group(1)) <= 120:
+                    out[year] = float(mm.group(1))
+                    break
+            if year in out:
+                break
+    return out
+
+
+def jpm_guard() -> None:
+    j = JPM_REFERENCE
+    assert j["na_installed_2026_gw"] - j["na_installed_2025_gw"] == 28
+    assert j["na_installed_2027_gw"] - j["na_installed_2026_gw"] == 43
+    # The two percentage figures use different investment universes.
+    assert (j["all_provider_capex_2027_b_approx"] /
+            j["all_provider_capex_2026_b_approx"] - 1) * 100 == 87.5
+    assert j["top4_growth_2027_pct"] == 70
+    assert jpm_parse_future_growth(
+        "JPMorgan top four CSP data center capex 2027 growth forecast raised from 70% to 80%"
+    ) == {2027: 80.0}
+    assert jpm_parse_future_growth(
+        "JPMorgan tier 2 neocloud data center capex 2027 growth forecast raised to 85%"
+    ) == {}
+
+
+def jpm_watch_revisions(now: datetime, current: dict) -> tuple[dict, list[dict]]:
+    """Only corroborated fresh revisions may supersede the saved JPM estimate."""
+    cutoff = max(now - timedelta(days=7), datetime(2026, 10, 13, tzinfo=timezone.utc))
+    buckets = {}
+    seen = set()
+    for query in JPM_NEWS_QUERIES:
+        try:
+            root = ET.fromstring(fetch(gnews_url(query), 16))
+        except Exception:
+            continue
+        for item in root.findall("./channel/item")[:20]:
+            source_node = item.find("source")
+            source = clean(source_node.text if source_node is not None else "")
+            pub = parse_date(clean(item.findtext("pubDate") or ""))
+            if pub is None or pub < cutoff or pub > now + timedelta(hours=2):
+                continue
+            if not trusted_source(source) and "j.p. morgan" not in source.lower():
+                continue
+            title = clean(item.findtext("title") or "")
+            description = clean(item.findtext("description") or "")
+            link = clean(item.findtext("link") or "")
+            dedup = source.lower() + "|" + title.lower()
+            if dedup in seen:
+                continue
+            seen.add(dedup)
+            rates = jpm_parse_future_growth(title + " " + description)
+            for year, value in rates.items():
+                key = f"top4_growth_{year}_pct"
+                if abs(value - float(current.get(key) or 0)) < 5:
+                    continue
+                buckets.setdefault((key, value), {})[source.lower()] = {
+                    "source": source, "title": title, "url": decode_news(link) or link,
+                    "published": pub.isoformat(),
+                }
+    candidates = [(key, value, list(by_source.values()))
+                  for (key, value), by_source in buckets.items() if len(by_source) >= 2]
+    if not candidates:
+        return {}, []
+    candidates.sort(key=lambda c: max(z["published"] for z in c[2]), reverse=True)
+    key, value, supporting = candidates[0]
+    return {key: value}, supporting
+
+
+def jpm_alert_text(metrics: dict, fx: dict, revised: dict | None,
+                   evidence: list[dict]) -> str:
+    m = metrics
+    rate = float(fx["usdkrw"])
+    is_revision = bool(revised)
+    title = ("JP모건 데이터센터 설비투자 전망 변경" if is_revision
+             else "JP모건 10월 13일 데이터센터 설비투자 전망 감시 기준선 등록")
+    text = [
+        title, "",
+        "■ 상위 4개 CSP 데이터센터 설비투자 증가율(증권사 전망)",
+        f"• 2026년 기존 {m['top4_prior_2026_pct']:g}% → {m['top4_growth_2026_pct']:g}%",
+        f"• 2027년 기존 {m['top4_prior_2027_pct']:g}% → {m['top4_growth_2027_pct']:g}%",
+        f"• 2026년 추가 투자 2,700억달러 이상({krw_from_usd_b(m['top4_increment_2026_b_floor'], rate)} 이상)",
+        f"• 2027년 추가 투자 4,000억달러 이상({krw_from_usd_b(m['top4_increment_2027_b_floor'], rate)} 이상)",
+        "",
+        "■ 북미 데이터센터 전력설비 계획·설치 추정",
+        f"• 2026년 2분기 말 계획 {m['na_planned_2026q2_gw_floor']:g}GW 초과: 전원 인가 확정이 아님",
+        f"• 설치 2025년 {m['na_installed_2025_gw']:g}GW → 2026년 {m['na_installed_2026_gw']:g}GW"
+        f" → 2027년 {m['na_installed_2027_gw']:g}GW (각각 증권사 추정)",
+        "• 연간 증가 +28GW(2026년), +43GW(2027년). 실제 가동·송전접속 MW는 별도 검증",
+        "",
+        "■ 더 넓은 사업자군 전체 금액: 상위 4개 성장률과 분모가 다름",
+        f"• 2026년 약 8,000억달러({krw_from_usd_b(m['all_provider_capex_2026_b_approx'], rate)})",
+        f"• 2027년 약 1조5,000억달러({krw_from_usd_b(m['all_provider_capex_2027_b_approx'], rate)})",
+        "• 위 전체 금액의 단순 증가율은 약 +87.5%이며 상위 4개 사업자 +70%와 혼합 금지",
+        "• 전력 계획→계통 계약→인허가→착공→전원 인가→장비 검수→매출 인식 순서 확인",
+        "",
+        "■ 투자 회수와 자금조달 역풍",
+        f"• 상위 4개 사업자의 데이터센터 투자/영업현금흐름: 2026년 {m['top4_dc_capex_ocf_2026_pct']:g}%"
+        f" → 2027년 {m['top4_dc_capex_ocf_2027_pct']:g}% (2차 보도 전망)",
+        "• 전망치·연구기관별 투자 범위가 달라 직접 합산하거나 확정 수주로 간주하지 않음",
+        f"• 검증 수준: {m['source_grade']}",
+        f"• 환율: 1달러={rate:,.2f}원, {fx.get('basis','확인 불가')} · {fx.get('source','확인 불가')}",
+    ]
+    if is_revision:
+        text.insert(3, "• 신규 교차검증 변화: " + ", ".join(
+            f"{key.split('_')[2]}년 성장률 {value:g}%" for key, value in revised.items()))
+        text.append("• 신규 전망은 서로 다른 신뢰보도 2곳 이상 같은 수치일 때만 알림·기준 갱신")
+        for row in evidence[:2]:
+            if row["url"].startswith("http") and "news.google.com" not in row["url"]:
+                text.append("원문: " + row["url"])
+    else:
+        text.append("• 10월 13일 발표 내용의 신규 감시 등록이며 10월 18일 새 발표 아님")
+        for url in JPM_SECONDARY_SOURCES:
+            text.append("원문: " + url)
+        text.append("원문: " + JPM_FINANCE_OFFICIAL)
+    return "\n".join(text) + "\n"
+
+
 def fmt(key: str, value: float, fx: float | None = None) -> str:
     if key.endswith("_usd_t"):
         base = f"{value:.2f}조달러"
@@ -369,6 +547,7 @@ def main() -> int:
         p.unlink(missing_ok=True)
 
     now = datetime.now(timezone.utc)
+    jpm_guard()
     old = load_state()
     first = not bool(old)
     baseline_metrics = {k: v for k, v in BASELINE.items() if k not in {"source", "as_of"}}
@@ -386,7 +565,8 @@ def main() -> int:
         print(f"ai_dc_tam_fx_error={type(exc).__name__}: {exc}")
 
     rows = collect(now)
-    seen = set(old.get("seen_ids") or [])
+    seen_ordered = list(old.get("seen_ids") or [])
+    seen = set(seen_ordered)
     new_rows = [r for r in rows if r["id"] not in seen]
 
     # 본문 접근이 일시 실패해도 다음 실행에서 다시 숫자를 추출할 수 있도록
@@ -419,7 +599,8 @@ def main() -> int:
                 continue
             v = round(float(parsed[key]), 4)
             buckets.setdefault(v, []).append(row)
-        qualified = [(value, support) for value, support in buckets.items() if len(support) >= 2]
+        qualified = [(value, support) for value, support in buckets.items()
+                     if len({str(row.get("source") or "").strip().lower() for row in support}) >= 2]
         if not qualified:
             continue
         value, support = max(
@@ -431,7 +612,28 @@ def main() -> int:
 
     changes = material_changes(reference_metrics, proposed)
     notify = bool(changes)
-    next_reference = dict(proposed) if notify else dict(reference_metrics)
+    # A blocked message must not acknowledge or consume its new baseline.
+    can_deliver = not first and bool(fx.get("usdkrw"))
+    next_reference = dict(proposed) if notify and can_deliver else dict(reference_metrics)
+
+    jpm_old = dict(old.get("jpm_capex") or {})
+    jpm_metrics = dict(jpm_old.get("metrics") or JPM_REFERENCE)
+    for key, val in JPM_REFERENCE.items():
+        jpm_metrics.setdefault(key, val)
+    jpm_initial = not jpm_old.get("last_sent_event_id")
+    jpm_revision, jpm_support = ({}, []) if jpm_initial else jpm_watch_revisions(now, jpm_metrics)
+    jpm_event_id = (JPM_BASELINE_EVENT if jpm_initial else
+                    hashlib.sha256(json.dumps(jpm_revision, sort_keys=True).encode("utf-8")).hexdigest()[:24]
+                    if jpm_revision else "")
+    jpm_alert = bool(jpm_event_id) and can_deliver
+    jpm_next = dict(jpm_old)
+    if jpm_alert:
+        jpm_metrics.update(jpm_revision)
+        jpm_next["metrics"] = jpm_metrics
+        jpm_next["last_sent_event_id"] = jpm_event_id
+        jpm_next["last_sent_at_kst"] = now.astimezone(KST).isoformat(timespec="seconds")
+    else:
+        jpm_next.setdefault("metrics", jpm_metrics)
 
     pending = {
         "initialized": True,
@@ -439,7 +641,8 @@ def main() -> int:
         "reference_metrics": next_reference,
         "baseline_source": BASELINE["source"],
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
-        "seen_ids": list(dict.fromkeys(list(seen) + [r["id"] for r in rows]))[-1000:],
+        "seen_ids": list(dict.fromkeys(seen_ordered + [r["id"] for r in rows]))[-1000:],
+        "jpm_capex": jpm_next,
         "fx": fx,
         "last_collection": {
             "trusted_rows": len(rows),
@@ -450,11 +653,16 @@ def main() -> int:
     }
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
+    alerts = []
     if notify and not first:
-        if not fx.get("usdkrw"):
+        if not can_deliver:
             print("ai_dc_tam_alert_blocked_no_krw=true")
         else:
-            ALERT.write_text(build_alert(proposed, changes, list({r["id"]: r for r in evidence}.values()), fx), encoding="utf-8")
+            alerts.append(build_alert(proposed, changes, list({r["id"]: r for r in evidence}.values()), fx))
+    if jpm_alert:
+        alerts.append(jpm_alert_text(jpm_metrics, fx, jpm_revision, jpm_support))
+    if alerts:
+        ALERT.write_text("\n\n".join(alerts), encoding="utf-8")
 
     STATUS.write_text(
         "# AI 데이터센터 TAM·설비투자 전망 감시\n\n"
@@ -463,10 +671,12 @@ def main() -> int:
         f"- 신규 자료: **{len(new_rows)}건**\n"
         f"- 숫자 후보: **{len(candidates)}건**\n"
         f"- 중요 전망 변경: **{len(changes)}건**\n"
-        f"- 알림: **{'예' if notify and not first else '아니오'}**\n",
+        f"- JP모건 현재 성장률 2026/2027: **{jpm_metrics['top4_growth_2026_pct']:g}% / {jpm_metrics['top4_growth_2027_pct']:g}%**\n"
+        f"- JP모건 기준·전망 알림: **{'예' if jpm_alert else '아니오'}**\n"
+        f"- 알림: **{'예' if alerts else '아니오'}**\n",
         encoding="utf-8",
     )
-    print(f"ai_dc_tam_watch first={first} rows={len(rows)} candidates={len(candidates)} changes={len(changes)} alert={notify and not first}")
+    print(f"ai_dc_tam_watch first={first} rows={len(rows)} candidates={len(candidates)} changes={len(changes)} jpm_initial={jpm_initial} jpm_changes={len(jpm_revision)} jpm_alert={jpm_alert} alert={bool(alerts)}")
     return 0
 
 
