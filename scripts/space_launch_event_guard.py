@@ -86,6 +86,8 @@ def self_test():
     article=lambda title,date="2026-10-16T10:00:00+00:00":dict(title=title,published=date,source="Reuters")
     assert kind("rocketlab","Rocket Lab Neutron first launch delayed to 2027")=="development_delay"
     assert kind("rocketlab","Citizens cuts Rocket Lab target after Neutron delay")=="development_delay"
+    assert kind("rocketlab","Rocket Lab Neutron maiden flight delayed")=="development_delay"
+    assert kind("rocketlab","Rocket Lab Electron secures 20 mission contract")=="contract"
     assert kind("spacex_valuation","Morgan Stanley raises SpaceX price target")=="analyst"
     assert not eligible("rocketlab",article("Rocket Lab Neutron debut delayed to 2027"),now)
     assert not eligible("rocketlab",article("Citizens lowers Rocket Lab price target on Neutron delay"),now)
@@ -101,7 +103,7 @@ def self_test():
 # Historical mislabelled notifications; unique IDs ensure each correction once.
 FACT_CASES = (
   ("audit:20261017:neutron_2027", "Rocket Lab Neutron 2027",
-   "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000067/rklb-10142026ex991.htm",
+   "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-provides-update-neutron-development-and-adjusts",
    ("Rocket Lab","Neutron","2027")),
   ("audit:20261017:morgan_300_unchanged", "Morgan Stanley SpaceX",
    "https://www.investing.com/news/analyst-ratings/morgan-stanley-raises-spacex-stock-price-target-on-distributed-inference-potential-93CH-4948701",
