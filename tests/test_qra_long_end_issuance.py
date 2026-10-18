@@ -152,6 +152,26 @@ class TreasuryLongEndQraTests(unittest.TestCase):
         self.assertEqual(merged["last_heading"],prior["last_heading"])
         self.assertEqual(merged["telegram_message_id"],297)
 
+    def test_requested_bot_delivery_survives_racing_qra_state(self):
+        from qra_recurring_state_commit import choose_newer
+        base = {
+            "last_heading": "DOCUMENTS RELEASED at 12:00 PM Friday, October 16, 2026",
+            "last_sent_at_kst": "2026-10-17T01:54:54+09:00",
+            "telegram_message_id": 297,
+            "bot_username": "hs8879887988798879_bot",
+        }
+        forwarded = {**base,
+            "dealer_requested_bot_event": "dealer-agenda:2026-10-16:requested-bot:html-v1",
+            "dealer_requested_bot_username": "hs88798879887988798879_bot",
+            "dealer_requested_bot_message_id": 99,
+            "dealer_requested_bot_sent_at_kst": "2026-10-18T14:24:52+09:00",
+        }
+        for remote, local in ((base, forwarded), (forwarded, base)):
+            merged = choose_newer(remote, local)
+            self.assertEqual(merged["dealer_requested_bot_message_id"], 99)
+            self.assertEqual(merged["telegram_message_id"], 297)
+            self.assertEqual(merged["bot_username"], "hs8879887988798879_bot")
+
     def test_scenario_is_not_a_government_announcement(self):
         compared=issuance.summarize_long_end_supply(
             issuance.nominal_long_end_table(sample_table()))
