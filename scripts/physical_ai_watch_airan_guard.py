@@ -2718,6 +2718,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_micron_eim(text):
+        return 'micron_eim_edge'
     _new = _oct16_group(text)
     if _new:
         return _new
@@ -2775,6 +2777,16 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     item_text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if _is_micron_eim(item_text):
+        stage = _micron_eim_stage(item_text,item)
+        return {
+            'executive_reported_rnd': 47,
+            'company_confirmed_rnd': 57,
+            'company_confirmed_sample': 69,
+            'company_confirmed_customer': 78,
+            'company_confirmed_sop': 88,
+            'background': 0,
+        }.get(stage,0)
     # Earnings/ESS-installation market outlook alone is not a newly signed
     # order, confirmed company result, or new installation figure.
     # Preserve credible primary quantitative releases and contract news.
@@ -2925,6 +2937,15 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'micron_eim_edge':
+        stage = _micron_eim_display_stage(text)
+        return {
+            'executive_reported_rnd': '마이크론 EIM · SEDEX 경영진 개발·고객 협의 보도',
+            'company_confirmed_rnd': '마이크론 EIM · 개발 공식 확인',
+            'company_confirmed_sample': '마이크론 EIM · 고객 시제품 제공·검증',
+            'company_confirmed_customer': '마이크론 EIM · 고객 정식 채택·공급계약',
+            'company_confirmed_sop': '마이크론 EIM · 실제 양산·상업 출하',
+        }.get(stage,'마이크론 EIM · 개발 단계')
     if group in ROBOT_OCT16_TITLES:
         return _oct16_category(group,text)
     if group in ROBOT_OCT15_TITLES.values():
@@ -3060,6 +3081,46 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat.startswith('마이크론 EIM · '):
+        if 'SEDEX 경영진' in cat:
+            return (
+                '10/16 SEDEX 2026에서 이철 마이크론 상무가 피지컬 AI용 '
+                'EIM(엣지 추론 메모리)을 고객과 개발 협의 중이라고 설명한 신규 연구개발 신호입니다. '
+                'EIM은 논리 칩 위 저전력 D램(LPDDR) 적층 구조로, '
+                '메모리 내부 연산인 PIM·현재 서버용 HBM과 다른 설계입니다. '
+                '대역폭·지연시간·전력·신뢰성 수치는 미공개입니다. '
+                'LPDDR6 기반 2028년 하반기 양산은 회사 공식 일정이 아닌 업계 예상입니다. '
+                '향후 고성능 휴머노이드 200GB D램·4TB 저장용량은 회사 경영진의 미래 '
+                '시나리오이며 카운터포인트 2030년 산업 평균 39GB와 혼동하면 안 됩니다. '
+                '가상 10만 대×200GB=2,000만GB에 실현가격 1GB당 1,000원 변화를 '
+                '적용하면 원화 매출 민감도는 200억원이지만 실제 계약·매출 전망이 아닙니다.'
+            )
+        if '개발 공식 확인' in cat:
+            return (
+                'Micron 공식 발표로 EIM 연구개발 자체를 확인한 단계입니다. '
+                '공개된 메모리 적층 구조·LPDDR 세대·성능 목표·시제품 일정이 '
+                '10/16 경영진 보도 대비 새로 확인됐는지 판단하고, '
+                '신규 생산라인 투자액과 출하·매출은 분리합니다.'
+            )
+        if '시제품 제공·검증' in cat:
+            return (
+                'EIM 실제 시제품을 로봇·칩셋 고객에게 제공해 인증·수율·성능을 '
+                '측정하기 시작한 단계입니다. 고객 이름, 공급 개수, '
+                '고온 동작 검사·지연시간·전력 소모량·검사 시간을 확인해야 합니다.'
+            )
+        if '정식 채택·공급계약' in cat:
+            return (
+                'Micron 공식 고객 선정 또는 서명된 공급계약으로 제품 기술이 '
+                '실제 매출 파이프라인으로 진입한 단계입니다. '
+                '고객 실명·계약금액·납기·평균판매단가·검수·반복 발주를 확인합니다.'
+            )
+        if '실제 양산·상업 출하' in cat:
+            return (
+                'EIM 양산이나 유상 출하를 회사가 확정한 단계입니다. '
+                '실제 양품 칩 수·출하량·실현 단가·제품별 매출총이익률·'
+                '고객 검수 및 반품·교환 접수를 추적합니다.'
+            )
+        return 'EIM 개발 내용 보도 단계이며 고객 계약·양산 매출과 다릅니다.'
     if cat in ROBOT_OCT16_MEANINGS:
         return ROBOT_OCT16_MEANINGS[cat]
     if cat in _OCT15_MEANINGS:
@@ -3415,6 +3476,18 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('마이크론 EIM · '):
+        return (
+            '핵심 실패 경로는 논리 반도체 위 LPDDR 적층의 휨·발열·층간 접속 결함으로 '
+            '수율이 떨어지고 고객 신뢰성 검증이 지연되는 경우입니다. '
+            '고온 동작 검사·검사 시간·전력당 대역폭·레이턴시·'
+            '반품·교환 접수·설비투자 부담을 확인해야 합니다. '
+            '2028년 하반기는 업계 예상일 뿐 확정 양산이 아닙니다. '
+            '6~24개월 위험 구간의 조기 지표는 회사 공식 사양, '
+            '고객 검증 일정, 패키징 양품률, 상업 출하 여부입니다. '
+            'EIM과 HBM을 로봇에 동시 탑재한다고 단정하거나 '
+            '고객 실명이 미확정인데 엔비디아·테슬라 수주로 표시하지 않습니다.'
+        )
     if cat in ROBOT_OCT16_RISKS:
         return ROBOT_OCT16_RISKS[cat]
     if cat in _OCT15_RISKS:
@@ -3577,6 +3650,21 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'micron_eim_edge':
+        stage = _micron_eim_stage(text,item)
+        if stage == 'executive_reported_rnd':
+            return (
+                '10/16 디일렉 SEDEX 현장 이철 상무 발언 보도 · '
+                '마이크론 공식 로보틱스 제품·메모리 자료로 적용 방향 확인 · '
+                '회사 명의 EIM 시제품·양산·고객계약 공식 공개 미확인 · '
+                '2028년 하반기는 업계 예상'
+            )
+        if stage.startswith('company_confirmed'):
+            return (
+                'Micron 회사 도메인 1차자료 확인 · R&D/시제품/고객/양산 '
+                '증거단계 분리 · 실제 제품 수율·납품금액·매출 인식 추가 확인'
+            )
+        return 'EIM 개발단계 불확실 · 회사 명의 신규 사양 또는 납품자료 미확인'
     if group in ROBOT_OCT16_TITLES:
         return _oct16_verification(item,group,text)
     if group in ROBOT_OCT15_TITLES:
@@ -3717,6 +3805,17 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if _is_micron_eim(title + ' ' + source):
+        if source in MICRON_EIM_PRIMARY_SOURCES:
+            stage=_micron_eim_display_stage(title)
+            if stage=='company_confirmed_sop':
+                return '마이크론, 로봇용 EIM 실제 양산·상업 출하 공식 발표'
+            if stage=='company_confirmed_customer':
+                return '마이크론, 로봇용 EIM 고객 선정·공급계약 공식 발표'
+            if stage=='company_confirmed_sample':
+                return '마이크론, 로봇용 EIM 시제품 고객 검증 공식 발표'
+            return '마이크론, 로봇용 EIM 연구개발 공식 사양 발표'
+        return '마이크론, EIM 개발·고객 협의 공개…2028 양산은 업계 예상'
     _oct16=_oct16_group(title+' '+source)
     if _oct16 in ROBOT_OCT16_TITLES:
         return _oct16_clean_title(title,source)
@@ -3820,6 +3919,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'micron_eim_edge':
+        return '마이크론 EIM 로봇 메모리'
     if group in ROBOT_OCT16_TITLES:
         return {
             'alert_quality_oct18':'Telegram 233 정정',
@@ -3875,6 +3976,11 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if _is_micron_eim(text):
+        stage = _micron_eim_stage(text,item)
+        return hashlib.sha256(
+            f'micron-eim|physical-ai|SEDEX-20261016|{stage}'.encode()
+        ).hexdigest()
     _g16 = _oct16_group(text)
     if _g16:
         return _oct16_key(item,_g16,text)
@@ -4060,6 +4166,7 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
     # Promote verifiable milestones over low-quality general market articles;
     # do not resend any event key already in the persisted dedup state.
     for _group in (
+        'micron_eim_edge',
         'atlas_protoops_build',
         'xinjian_prs_ipo',
         'rainbow_fcc_compliance',
