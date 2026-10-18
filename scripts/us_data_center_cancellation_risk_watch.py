@@ -162,8 +162,8 @@ def money_suffix(text: str, fx: float) -> str:
 def extract_scale_mw(text: str) -> float:
     low = (text or "").lower().replace(",", "")
     vals = []
-    vals += [float(x) for x in re.findall(r"([0-9]+(?:\.[0-9]+)?)\s*mw", low)]
-    vals += [float(x) * 1000 for x in re.findall(r"([0-9]+(?:\.[0-9]+)?)\s*gw", low)]
+    vals += [float(x) for x in re.findall(r"(?<![a-z0-9])([0-9]+(?:\.[0-9]+)?)\s*mw\b", low)]
+    vals += [float(x) * 1000 for x in re.findall(r"(?<![a-z0-9])([0-9]+(?:\.[0-9]+)?)\s*gw\b", low)]
     return max(vals + [0.0])
 
 
@@ -336,6 +336,9 @@ def regression_checks() -> None:
     assert anchored_ft_oct18_event(now) is not None
     assert anchored_ft_oct18_event(now + dt.timedelta(hours=73)) is None
     assert extract_scale_mw("279 GWh energy storage") == 0.0
+    assert extract_scale_mw("500 MWh BESS") == 0.0
+    assert extract_scale_mw("2.5 GW data center") == 2500.0
+    assert extract_scale_mw("250 MW data center") == 250.0
 
 
 def collect_news() -> list[dict]:
