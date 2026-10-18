@@ -26,7 +26,10 @@ KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입�
                'military_discussion': '공습 재개 논의·이견', 'military_analysis': '군사·안보 해설',
                'market_effect': '전쟁의 물가 파급 보도', 'ceasefire_position': '휴전·공격 중단 입장',
                'military_report': '공격 조사·보고서 공표', 'fuel_shipping': '봉쇄·연료 선적 보도',
-               'trade_proposal': '에너지 거래 재개 제안'}
+               'trade_proposal': '에너지 거래 재개 제안',
+               'diplomatic_contact': '외교 접촉 보도',
+               'diplomatic_analysis': '외교·안보 해설',
+               'diplomatic_position': '외교 갈등·압박 보도'}
 
 
 def _headline(row):
@@ -122,6 +125,15 @@ def _headline_group(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position'):
+        actors = []
+        if re.search(r'미국|트럼프|美|\bu\.s\.|\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너', title):
+            actors.append('미국')
+        if re.search(r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b', title):
+            actors.append('우크라이나')
+        if re.search(r'러시아|\brussia\w*\b', title):
+            actors.append('러시아')
+        return ('·'.join(actors) if actors else _headline_group(title)) + ' · ' + KIND_LABELS[kind]
     if kind == 'market_effect':
         us_prices = re.search(r'(?:미국|美|united states|u\.s\.).{0,12}(?:물가|cpi|inflation)', title)
         return ('미국·물가' if us_prices else '물가·경제지표') + ' · 전쟁 파급 보도'
@@ -344,6 +356,28 @@ def _report_with_completed_action(title):
         r'\b(?:russia|ukraine|iran|israel|houthis?)\s+(?:attacks|strikes|bombs|attacked|bombed)\b', title))
 
 
+def _diplomatic_headline_kind(title):
+    """A contact, dispute or labelled analysis does not assert peace progress."""
+    # Separate completed operations remain actions even in a contact headline.
+    if re.search(r'(?:공습|폭격|공격|타격|요격)(?:을|를)?\s*(?:했다|했으며|하고\s*있|진행\s*중)|'
+                 r'(?:피격|파괴)(?:됐|되었|당했)|\b(?:attacked|struck|bombed)\b', title):
+        return None
+    if re.search(r'\[[^\]]*월드뷰\]', title) and re.search(r'외교|우크라|\b(?:diplomac|ukrain)', title):
+        return 'diplomatic_analysis'
+    actor = re.search(r'젤렌스키|우크라|트럼프|미국|위트코프|쿠슈너|'
+                      r'\b(?:zelenskyy?|zelenskiy|ukrain\w*|trump|witkoff|kushner)\b|\bu\.s\.', title)
+    if not actor:
+        return None
+    if re.search(r'항복\s*압박|\b(?:surrender|capitulat\w*)\b.{0,30}\bpressure\b|'
+                 r'\bpressure\b.{0,30}\b(?:surrender|capitulat\w*)\b', title):
+        return 'diplomatic_position'
+    if re.search(r'통화|대화|회담|접촉|\b(?:speaks?|spoke|talks?|talked)\s+(?:to|with)\b|'
+                 r'\b(?:calls?|called)\s+(?:(?:u\.s\.|us)\s+)?'
+                 r'(?:envoys?|witkoff|kushner|trump|zelenskyy?|zelenskiy)\b', title):
+        return 'diplomatic_contact'
+    return None
+
+
 def non_military_kind(row):
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
     if mixed_restraint_attack(row):
@@ -399,7 +433,7 @@ def non_military_kind(row):
                           r'\b(?:ceasefire|peace deal).{0,20}(?:agreed|signed|implemented)', title)
     if prices and re.search(r'전쟁|\bwar\b', title) and not new_peace:
         return 'market_effect'
-    return None
+    return _diplomatic_headline_kind(title) if not new_peace else None
 
 
 def _clear_market_event_cache(row):
@@ -412,7 +446,8 @@ def _clear_market_event_cache(row):
 
 
 def _headline_event_cache_required(row, kind):
-    return (kind in ('ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis', 'trade_proposal')
+    return (kind in ('ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis', 'trade_proposal',
+                    'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position')
             or (kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
             or _energy_facility_headline(row)
@@ -438,6 +473,10 @@ def score_item(row, now):
     kind = non_military_kind(row)
     if kind == 'market_effect':
         _clear_market_event_cache(row)
+        score, _ = source_score._original_score(row, now)
+        return score, list(row['tags'])
+    if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position'):
+        _clear_headline_event_cache(row, kind)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
     score, tags = _score(row, now)
@@ -491,6 +530,15 @@ def verdict(items):
         )
     kinds = [non_military_kind(row) for row in items]
     if kinds and all(kinds):
+        if set(kinds) & {'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position'}:
+            core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
+            return (
+                '<b>투자 판정</b>\n'
+                f'- <b>핵심:</b> {core}\n'
+                '- <b>현재 단계:</b> 접촉·갈등·해설 단계 — 협상 재개 의사·양측 휴전 합의·이행은 별도 확인 필요\n'
+                '- <b>시장:</b> 외교 접촉이나 해설만으로 정유시설 공격·공급 차질·가격 방향의 변화를 확정할 수 없음\n'
+                '- <b>다음:</b> 발언·접촉 원문 → 당사자 공식 결정 → 실제 협상·작전·휴전 이행 확인'
+            )
         if 'trade_proposal' in kinds:
             core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
             return (
@@ -844,7 +892,7 @@ def verify_alert(test_mode=False):
         primary = _primary_topic(row)
         if primary and html.escape(primary) not in lines[start]:
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered topic differs from headline event')
-        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal') and (
+        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position') and (
                 row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
             raise RuntimeError('WAR_INTEGRITY_GATE: statement presented as a new attack or implemented peace')
         marker = {'red': '🔴', 'green': '🟢', 'yellow': '🟡'}.get(row.get('classification_color'), '')
