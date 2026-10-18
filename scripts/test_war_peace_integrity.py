@@ -2,6 +2,7 @@
 import datetime as dt
 import copy
 import html
+import hashlib
 from email.utils import format_datetime
 import io
 import json
@@ -84,6 +85,154 @@ class IntegrityTests(unittest.TestCase):
     def diplomatic_contact_fixture(self):
         path = Path(__file__).parent/'test_fixtures/war_diplomatic_contact_39158841555.json'
         return json.loads(path.read_text(encoding='utf-8'))['runs']
+
+    def talk_plan_drone_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_talk_plan_drone_39177756870.json'
+        value = json.loads(path.read_text(encoding='utf-8'))
+        return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_actual_talk_restart_plan_is_not_implemented_peace(self):
+        fixture, _ = self.talk_plan_drone_fixture()
+        row = fixture['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_plan')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertIn('협상 추진·논의', integrity.topic_label(row))
+
+    def test_actual_preference_for_Russian_participation_is_not_implemented_peace(self):
+        fixture, _ = self.talk_plan_drone_fixture()
+        row = fixture['articles'][4]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_position')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '미국·러시아 · 외교 갈등·압박 보도')
+
+    def test_full_saved_candidates_do_not_promote_next_negotiation_preference(self):
+        fixture, now = self.talk_plan_drone_fixture()
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(fixture['articles'], fixture['markets'], now)
+        self.assertIn(html.escape(fixture['articles'][4]['title_original']), text)
+        self.assertEqual(fixture['articles'][4]['classification_color'], 'yellow')
+        self.assertNotIn('🟢', text)
+        self.assertNotIn('에너지 휴전 발표', text)
+        self.assertFalse(quality._alert_quality_issues(text))
+
+    def test_actual_calls_deal_a_name_is_not_phone_contact(self):
+        fixture, _ = self.talk_plan_drone_fixture()
+        row = fixture['articles'][1]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_statement')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertIn('거래·정책 평가 발언', integrity.topic_label(row))
+
+    def test_actual_drone_airstrike_overrides_background_ceasefire(self):
+        fixture, _ = self.talk_plan_drone_fixture()
+        row = fixture['articles'][3]
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'red')
+        self.assertEqual(integrity.topic_label(row), '우크라이나·러시아 · 드론 공습 보도')
+
+    def test_diplomatic_source_score_does_not_bypass_three_hour_limit(self):
+        fixture, now = self.talk_plan_drone_fixture()
+        self.assertGreater(watch.age_minutes(fixture['articles'][1], now), 180)
+        self.assertEqual(integrity.score_item(fixture['articles'][1], now), (0, []))
+
+    def test_actual_rejected_inputs_keep_headlines_and_drop_stale_discovery(self):
+        fixture, now = self.talk_plan_drone_fixture()
+        rows = [row for row in fixture['articles'] if row['rendered']]
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        shown = [row for row in receipt['articles'] if row['rendered']]
+        self.assertEqual([row['id'] for row in shown], [rows[i]['id'] for i in (0, 2, 3)])
+        self.assertEqual([row['classification_color'] for row in shown], ['yellow', 'yellow', 'red'])
+        for row in shown:
+            self.assertIn(html.escape(row['title_original']), text)
+            self.assertFalse(row.get('signals_ko') or row.get('forced_tags'))
+        self.assertNotIn('🟢', text)
+        self.assertNotIn('에너지 휴전 발표', text)
+        self.assertNotIn('협상 재개 의사를 공개적으로 확인', text)
+        self.assertEqual(rows[1]['render_withheld'], 'discovery_publication_stale')
+        self.assertFalse(quality._alert_quality_issues(text))
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in shown]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            integrity.verify_alert()
+
+    def test_final_gate_rechecks_stale_discovery_independent_of_age_label(self):
+        fixture, now = self.talk_plan_drone_fixture()
+        row = fixture['articles'][1]
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([row], [], now - dt.timedelta(hours=4))
+        self.assertTrue(text)
+        receipt = evidence.alert_receipt([row], [], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id']]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            stack.enter_context(patch.object(integrity, '_verify'))
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE.*stale discovery'):
+                integrity.verify_alert()
+
+    def test_final_gate_rechecks_actual_wrong_plan_contact_and_drone_topics(self):
+        fixture, now = self.talk_plan_drone_fixture()
+        rows = fixture['articles']
+        text = fixture['rejected_alert'].strip()
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        for index in (0, 1, 3):
+            with self.subTest(id=rows[index]['id']), tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                # Isolate each stored topic from the earlier global quality gate.
+                one = copy.deepcopy(receipt)
+                one['articles'] = [row for row in one['articles'] if not row['rendered'] or row['id'] == rows[index]['id']]
+                blocks = text.splitlines()
+                starts = [i for i, line in enumerate(blocks) if '[신규]' in line or '[후속]' in line or '[속보]' in line]
+                start = starts[index]
+                end = starts[index+1] if index+1 < len(starts) else next(i for i in range(start+1, len(blocks)) if blocks[i] == '<b>투자 판정</b>')
+                isolated = '\n'.join(blocks[start:end])
+                one['alert_sha256'] = hashlib.sha256(isolated.encode()).hexdigest()
+                for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                    stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+                watch.ALERT.write_text(isolated, encoding='utf-8')
+                watch.PENDING.write_text(json.dumps({'ids': [rows[index]['id']]}), encoding='utf-8')
+                watch.AUDIT.write_text(json.dumps(one, ensure_ascii=False), encoding='utf-8')
+                stack.enter_context(patch.object(integrity, '_verify'))
+                with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
+                    integrity.verify_alert()
+
+    def test_talk_plans_label_calls_and_actual_operations_keep_separate_stages(self):
+        for title, kind in (
+            ('젤렌스키, 이번 주 평화협상 재개 추진…푸틴 회동 논의', 'diplomatic_plan'),
+            ('젤렌스키, 평화협상 재개 안 해…푸틴 회동 논의도 거부', 'diplomatic_plan'),
+            ('Zelensky plans to resume peace talks; Putin meeting under discussion', 'diplomatic_plan'),
+            ("Wright calls Trump's diesel deal a peace incentive. Rubio disagrees.", 'diplomatic_statement'),
+            ('Wright calls Trump to discuss a diesel deal', 'diplomatic_contact'),
+        ):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), kind)
+                self.assertEqual(integrity.final_color(article(title)), 'yellow')
+        for title in ('우크라, 드론 1000대로 러시아 공습…트럼프와 통화',
+                      '우크라, 드론 1000대로 러시아 공습…평화협상 재개 논의'):
+            with self.subTest(title=title):
+                self.assertIsNone(integrity.non_military_kind(article(title)))
+                self.assertEqual(integrity.final_color(article(title)), 'red')
+        bilateral = article('러시아·우크라이나, 평화협상 끝에 양측 휴전 합의 발효')
+        self.assertIsNone(integrity.non_military_kind(bilateral))
+        self.assertEqual(integrity.final_color(bilateral), 'green')
+        self.assertNotEqual(integrity.non_military_kind(article("Zelensky calls Trump's proposal unacceptable")), 'diplomatic_contact')
+
+    def test_drone_attack_denial_plan_analysis_and_report_are_not_actual_action(self):
+        for title in ('우크라, 드론 1000대로 러시아 공습 계획',
+                      '우크라 드론 1000대 러시아 공습 재개 논의',
+                      '우크라, 드론 1000대로 러시아 공습한 적 없다고 부인',
+                      '우크라 드론 1000대 러시아 공습 가능성 검토',
+                      '우크라 드론 1000대 러시아 공습 왜? [해설]',
+                      '우크라 드론 1000대 러시아 공습 조사보고서 공개'):
+            with self.subTest(title=title):
+                self.assertFalse(integrity._headline_drone_action(article(title)))
+
 
     def test_actual_envoy_call_is_not_a_new_peace_commitment(self):
         row = self.diplomatic_contact_fixture()[0]['articles'][0]
