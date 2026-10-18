@@ -2216,6 +2216,27 @@
       "telegram_core_fact": "일본 주요 전자재료 업체인 레조낙은 지난 3월부터 기판에 필수적인 동박적층판(CCL)과 프리프레그 전 제품의 가격을 30% 이상 인상했다. 세계 최대 반도체 조립·검사 전문 기업인 대만 ASE는 첨단 패키징 공급 견적 가격을 20% 이상 높인 것으로 알려졌다.",
       "title": "기판 20%·동박판 30% 껑충 … 日·대만 소부장 영향력 커져"
     },
+    "core:094c8603353f0fb623ab6b10": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906246",
+      "source": "헤럴드경제",
+      "source_body_digest": "46c2dd0621029dab33d20744ae23118ccdf15d97791359f2f3995ea54978547e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ab05f23a4963a1079250ba27037c5d3e834b24a222cea970fd1422a1abbefc2",
+      "source_fact_keys": [
+        "source_fact:v1:37fee4ec8301d8f0805b963324ef839831c0ec3a4458dde7a64b8cd3c06c0874",
+        "source_fact:v1:9b1270ed841cace4adccf7a14839477b763815bf00e79a0ceb0ed14eb10a45e8"
+      ],
+      "source_published_kst": "2026-10-18T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대",
+      "telegram_core_fact": "10월 원/달러 환율이 반도체 수출 호조에 따른 달러 공급 확대 등에 힘입어 2년 1개월 만에 최저 수준으로 내려갔다.",
+      "title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대"
+    },
     "core:0962885657c523ce55e29020": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -46133,6 +46154,33 @@
       "telegram_core_fact": "시는 사전 검토를 마치는 대로 대상지를 순차적으로 방문해 건축물과 토지의 실제 이용 현황과 관련 인허가 여부 등을 확인할 계획이다.",
       "title": "부천시, 개발제한구역 내 건축물·토지 변동 61곳 현장 조사"
     },
+    "core:b623690dcb3dbb37e69471fa": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
+    },
     "core:b62a4699d7b33ee4112c4f90": {
       "first_seen_kst": "2026-10-13T11:35:08+09:00",
       "lanes": {
@@ -66972,6 +67020,33 @@
       "telegram_core_fact": "반도체 호황에 힘입어 원·달러 환율이 2년 만에 최저 수준으로 떨어졌다.",
       "title": "반도체 호황에 2년 만에 최저 환율…AI 불안이 원화 강세 막나[주간외환전망]"
     },
+    "event:2a0380df10b701818734a35f": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
+    },
     "event:2a36aba084b0ce1f47a1eab5": {
       "first_seen_kst": "2026-09-29T10:32:56+09:00",
       "lanes": {
@@ -79305,6 +79380,27 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811936",
       "source": "뉴시스",
       "title": "9월 물가 2.9%↑…정부 \"석유 최고가격제 없었다면 3.5%\"(종합)"
+    },
+    "event:e6002f02caf69b1cd165d145": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906246",
+      "source": "헤럴드경제",
+      "source_body_digest": "46c2dd0621029dab33d20744ae23118ccdf15d97791359f2f3995ea54978547e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ab05f23a4963a1079250ba27037c5d3e834b24a222cea970fd1422a1abbefc2",
+      "source_fact_keys": [
+        "source_fact:v1:37fee4ec8301d8f0805b963324ef839831c0ec3a4458dde7a64b8cd3c06c0874",
+        "source_fact:v1:9b1270ed841cace4adccf7a14839477b763815bf00e79a0ceb0ed14eb10a45e8"
+      ],
+      "source_published_kst": "2026-10-18T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대",
+      "telegram_core_fact": "10월 원/달러 환율이 반도체 수출 호조에 따른 달러 공급 확대 등에 힘입어 2년 1개월 만에 최저 수준으로 내려갔다.",
+      "title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대"
     },
     "event:e62a17b8f9602fe94f4bb7f2": {
       "first_seen_kst": "2026-10-02T06:33:23+09:00",
@@ -120774,6 +120870,33 @@
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "SK에너지·현대오일뱅크 44조 정유 담합 심의 착수…과징금 최대 4.6조"
     },
+    "fact:8903131f6c00bfc5a9293aa5": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
+    },
     "fact:890e3b8e22998e24096f74ab": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -156974,6 +157097,27 @@
       "source_published_kst": "2026-10-06T14:29+09:00",
       "title": "에스넷시스템, 델 사업 성장세…실적 확대 견인"
     },
+    "fact:fdc879eef3e24ef9139cfb00": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906246",
+      "source": "헤럴드경제",
+      "source_body_digest": "46c2dd0621029dab33d20744ae23118ccdf15d97791359f2f3995ea54978547e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ab05f23a4963a1079250ba27037c5d3e834b24a222cea970fd1422a1abbefc2",
+      "source_fact_keys": [
+        "source_fact:v1:37fee4ec8301d8f0805b963324ef839831c0ec3a4458dde7a64b8cd3c06c0874",
+        "source_fact:v1:9b1270ed841cace4adccf7a14839477b763815bf00e79a0ceb0ed14eb10a45e8"
+      ],
+      "source_published_kst": "2026-10-18T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대",
+      "telegram_core_fact": "10월 원/달러 환율이 반도체 수출 호조에 따른 달러 공급 확대 등에 힘입어 2년 1개월 만에 최저 수준으로 내려갔다.",
+      "title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대"
+    },
     "fact:fde654b9e599f1bfdd77c4e3": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -176832,6 +176976,27 @@
       "source_title": "이소영 “온누리 품목 제한 검토”…납품대금연동제 손질[종합]",
       "telegram_core_fact": "이 장관은 “발동 요건에 대한 제도 보완과 제재, 계약에서의 자동 적용 제도까지 포함해 납품대금연동제를 전체적으로 다시 검토하겠다”라고 밝혔다.",
       "title": "이소영 “온누리 품목 제한 검토”…납품대금연동제 손질[종합]"
+    },
+    "link:2fa86132e6941da55dab5bbe": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906246",
+      "source": "헤럴드경제",
+      "source_body_digest": "46c2dd0621029dab33d20744ae23118ccdf15d97791359f2f3995ea54978547e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ab05f23a4963a1079250ba27037c5d3e834b24a222cea970fd1422a1abbefc2",
+      "source_fact_keys": [
+        "source_fact:v1:37fee4ec8301d8f0805b963324ef839831c0ec3a4458dde7a64b8cd3c06c0874",
+        "source_fact:v1:9b1270ed841cace4adccf7a14839477b763815bf00e79a0ceb0ed14eb10a45e8"
+      ],
+      "source_published_kst": "2026-10-18T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대",
+      "telegram_core_fact": "10월 원/달러 환율이 반도체 수출 호조에 따른 달러 공급 확대 등에 힘입어 2년 1개월 만에 최저 수준으로 내려갔다.",
+      "title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대"
     },
     "link:2fc02a834f59bae586ae0c9e": {
       "first_seen_kst": "2026-10-11T03:32:04+09:00",
@@ -251044,6 +251209,33 @@
       "telegram_core_fact": "HD현대중공업 역시 2분기 영업이익이 1조원을 넘어서는 등 조선 부문의 실적 개선이 그룹 성장을 뒷받침했다. 전력 인프라 시장의 호황을 맞은 HD현대일렉트릭은 상반기 영업이익 5453억원을 기록했다.",
       "title": "[정기선 HD현대 회장 1년①] 조선·전력 슈퍼사이클 올라탔다…자산 100조 시대 눈앞"
     },
+    "link:e8c05c966433e333f0500c57": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
+    },
     "link:e8e1c75708dd9d9749d2843b": {
       "first_seen_kst": "2026-10-13T08:59:28+09:00",
       "lanes": {
@@ -317789,6 +317981,27 @@
       "telegram_core_fact": "10월 2일 자사주 10만7360주를 약 24만 달러에 사들였고, 매입한 주식은 전량 소각할 계획입니다.",
       "title": "미니소, 자사주 매입·전량 소각으로 주주환원 기대 부각"
     },
+    "original:9205c585da35fe07b9c710ef": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906246",
+      "source": "헤럴드경제",
+      "source_body_digest": "46c2dd0621029dab33d20744ae23118ccdf15d97791359f2f3995ea54978547e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ab05f23a4963a1079250ba27037c5d3e834b24a222cea970fd1422a1abbefc2",
+      "source_fact_keys": [
+        "source_fact:v1:37fee4ec8301d8f0805b963324ef839831c0ec3a4458dde7a64b8cd3c06c0874",
+        "source_fact:v1:9b1270ed841cace4adccf7a14839477b763815bf00e79a0ceb0ed14eb10a45e8"
+      ],
+      "source_published_kst": "2026-10-18T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대",
+      "telegram_core_fact": "10월 원/달러 환율이 반도체 수출 호조에 따른 달러 공급 확대 등에 힘입어 2년 1개월 만에 최저 수준으로 내려갔다.",
+      "title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대"
+    },
     "original:9216e097bc1391bb00af2cc5": {
       "first_seen_kst": "2026-10-14T02:42:17+09:00",
       "lanes": {
@@ -331186,6 +331399,33 @@
       "source_title": "머스크 “마이크론 빼고 메모리값 터무니없어”…삼전닉스 저격?- 매경ECONOMY",
       "telegram_core_fact": "HBM 매출 점유율은 SK하이닉스 50%, 마이크론 18%였지만 마이크론은 AI 확산에 따른 메모리 수요 증가에 힘입어 점유율을 확대하는 중이다.",
       "title": "머스크 “마이크론 빼고 메모리값 터무니없어”…삼전닉스 저격?- 매경ECONOMY"
+    },
+    "original:b35ab7332b6c6664e472e528": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
     },
     "original:b367b3443767cc3fc3f8f923": {
       "first_seen_kst": "2026-10-02T22:41:43+09:00",
@@ -447572,6 +447812,33 @@
       "telegram_core_fact": "리오틴토(RIO)는 3분기 연결 기준 구리 생산량이 20만5000t으로 전년 동기와 같은 수준을 유지했고, 오유톨고이 구리 생산량은 전년비 27% 늘었으며 전 세계 철광석 판매량은 9080만t으로 3% 증가했다고 14일(현지시간) 발표했다.",
       "title": "리오틴토, 3분기 구리 20만5000t 보합..오유톨고이 27%↑"
     },
+    "source_fact:3843dbf2d9c33e27e4e62534": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
+    },
     "source_fact:38442bcaa8c679581830d1c4": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
       "lanes": {
@@ -463061,6 +463328,33 @@
       "source_title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥",
       "telegram_core_fact": "포워드 가이던스는 기준금리 발표를 앞두고 연준 의장 및 위원들이 내비치는 새 금리에 대한 신호다.",
       "title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥"
+    },
+    "source_fact:4270d20581a58b8719c5953a": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
     },
     "source_fact:427500e5e90d013dbb4823ec": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -510676,6 +510970,33 @@
       "source_title": "포라프릭 글로벌, 모로코 방산 AL NASR 100% 인수 의향서 체결",
       "telegram_core_fact": "포라프릭 글로벌(AFRI)이 모로코 방위산업 플랫폼 AL NASR 인더스트리즈 앤드 시스템즈(ALIS)의 지분 100%를 인수하는 의향서(LOI)를 체결했으며, 거래 완료 시점을 2026년 4분기로 목표한다고 10월 7일 발표했다.",
       "title": "포라프릭 글로벌, 모로코 방산 AL NASR 100% 인수 의향서 체결"
+    },
+    "source_fact:5fcf62ed325c0d8f76616840": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
     },
     "source_fact:5fd25c167963391be7ef9f7a": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
@@ -571635,6 +571956,33 @@
       "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
       "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
     },
+    "source_fact:885c4638d2c8581f55a02532": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
+    },
     "source_fact:885d6de70da672c5bec4747f": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
       "lanes": {
@@ -585281,6 +585629,33 @@
       "telegram_core_fact": "신한금융지주는 전날 사모펀드 운용사 JKL파트너스가 특수목적법인(SPC) 빅튜라를 통해 보유한 중인 롯데손보 지분 77.04%(2억3908만2287주)를 6933억원에 인수하는 주식매매계약을 체결했다. 기본자본 킥스 비율도 -5.4%로, 기본자본이 1364억원 적자인 상태다.",
       "title": "신한지주, 인수 부담에 4% 급락…롯데손보는 4%↑"
     },
+    "source_fact:9135141855557f1d51000b31": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
+    },
     "source_fact:91374e051372691639cc90a6": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
       "lanes": {
@@ -593269,6 +593644,27 @@
       "source_title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’",
       "telegram_core_fact": "코스피가 12일 삼성전자(005930)와 SK하이닉스(000660) 동반 약세로 인해 장중 3% 넘게 급락해 결국 6400선까지 밀렸다.",
       "title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’"
+    },
+    "source_fact:96a30568363dd76edb91a7ba": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906246",
+      "source": "헤럴드경제",
+      "source_body_digest": "46c2dd0621029dab33d20744ae23118ccdf15d97791359f2f3995ea54978547e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ab05f23a4963a1079250ba27037c5d3e834b24a222cea970fd1422a1abbefc2",
+      "source_fact_keys": [
+        "source_fact:v1:37fee4ec8301d8f0805b963324ef839831c0ec3a4458dde7a64b8cd3c06c0874",
+        "source_fact:v1:9b1270ed841cace4adccf7a14839477b763815bf00e79a0ceb0ed14eb10a45e8"
+      ],
+      "source_published_kst": "2026-10-18T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대",
+      "telegram_core_fact": "10월 원/달러 환율이 반도체 수출 호조에 따른 달러 공급 확대 등에 힘입어 2년 1개월 만에 최저 수준으로 내려갔다.",
+      "title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대"
     },
     "source_fact:96a45de4c3a69839aab91f02": {
       "first_seen_kst": "2026-10-08T22:29:06+09:00",
@@ -635165,6 +635561,33 @@
       "telegram_core_fact": "외국인은 올해 코스피 시장에서 누적 197조원 넘게 순매도했다. 2008년 1월 11일 46.35% 이후 약 18년9개월 만에 가장 낮은 수준이다.",
       "title": "107조 벌어도 외국인은 팔았다…삼전 지분율 18년9개월 최저[종합]"
     },
+    "source_fact:b12973162437385f04d4a0a3": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
+    },
     "source_fact:b13089ac75c45ce16810e194": {
       "first_seen_kst": "2026-10-17T20:19:17+09:00",
       "lanes": {
@@ -656334,6 +656757,33 @@
       "telegram_core_fact": "청주시는 SK하이닉스와 894억원 'SK하이닉스 공업용수 공급사업(4단계)' 원인자부담금 협약을 체결했다고 14일 밝혔다. 이번 협약은 SK하이닉스가 추진하는 대규모 반도체 생산시설인 P&T7(투자규모 20조원)과 M17(〃 80조원)에 공업용수를 안정적으로 공급하고자 마련됐다.",
       "title": "청주시, SK하이닉스와 894억원 규모 공업용수 공급 협약 | 연합뉴스"
     },
+    "source_fact:bf73c83d8ed6b38f2765d456": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
+    },
     "source_fact:bf77927647fc26f7e330e2fb": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
       "lanes": {
@@ -671553,6 +672003,33 @@
       ],
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
+    },
+    "source_fact:c8dd3b9d9971f56e8f4e1632": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
     },
     "source_fact:c8dee8a27478bee99eaf46d7": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
@@ -754049,6 +754526,27 @@
       "telegram_core_fact": "의약품 수입 의존도를 낮추려는 인니 정부의 규제 기조 속에서 대웅제약은 2027년부터 현지 생산 및 공급 체계를 가동함으로써 향후 강화될 현지 진출 장벽을 선제적으로 넘어선다는 전략이다.",
       "title": "'할랄' 빗장 건 인니…대웅, 현지생산으로 승부수"
     },
+    "source_fact:ff2a2e144e099a4a594a4a90": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906246",
+      "source": "헤럴드경제",
+      "source_body_digest": "46c2dd0621029dab33d20744ae23118ccdf15d97791359f2f3995ea54978547e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ab05f23a4963a1079250ba27037c5d3e834b24a222cea970fd1422a1abbefc2",
+      "source_fact_keys": [
+        "source_fact:v1:37fee4ec8301d8f0805b963324ef839831c0ec3a4458dde7a64b8cd3c06c0874",
+        "source_fact:v1:9b1270ed841cace4adccf7a14839477b763815bf00e79a0ceb0ed14eb10a45e8"
+      ],
+      "source_published_kst": "2026-10-18T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대",
+      "telegram_core_fact": "10월 원/달러 환율이 반도체 수출 호조에 따른 달러 공급 확대 등에 힘입어 2년 1개월 만에 최저 수준으로 내려갔다.",
+      "title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대"
+    },
     "source_fact:ff2befa2164c149b385dfe9e": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -813929,6 +814427,27 @@
       "telegram_core_fact": "10월 2일 자사주 10만7360주를 약 24만 달러에 사들였고, 매입한 주식은 전량 소각할 계획입니다.",
       "title": "미니소, 자사주 매입·전량 소각으로 주주환원 기대 부각"
     },
+    "title:9205c585da35fe07b9c710ef": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906246",
+      "source": "헤럴드경제",
+      "source_body_digest": "46c2dd0621029dab33d20744ae23118ccdf15d97791359f2f3995ea54978547e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ab05f23a4963a1079250ba27037c5d3e834b24a222cea970fd1422a1abbefc2",
+      "source_fact_keys": [
+        "source_fact:v1:37fee4ec8301d8f0805b963324ef839831c0ec3a4458dde7a64b8cd3c06c0874",
+        "source_fact:v1:9b1270ed841cace4adccf7a14839477b763815bf00e79a0ceb0ed14eb10a45e8"
+      ],
+      "source_published_kst": "2026-10-18T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대",
+      "telegram_core_fact": "10월 원/달러 환율이 반도체 수출 호조에 따른 달러 공급 확대 등에 힘입어 2년 1개월 만에 최저 수준으로 내려갔다.",
+      "title": "반도체 수출 호조에 환율 2년 1개월만에 최저…1340원대"
+    },
     "title:9216e097bc1391bb00af2cc5": {
       "first_seen_kst": "2026-10-14T02:42:17+09:00",
       "lanes": {
@@ -827821,6 +828340,33 @@
       "source_title": "머스크 “마이크론 빼고 메모리값 터무니없어”…삼전닉스 저격?- 매경ECONOMY",
       "telegram_core_fact": "HBM 매출 점유율은 SK하이닉스 50%, 마이크론 18%였지만 마이크론은 AI 확산에 따른 메모리 수요 증가에 힘입어 점유율을 확대하는 중이다.",
       "title": "머스크 “마이크론 빼고 메모리값 터무니없어”…삼전닉스 저격?- 매경ECONOMY"
+    },
+    "title:b35ab7332b6c6664e472e528": {
+      "first_seen_kst": "2026-10-18T20:38:08+09:00",
+      "lanes": {
+        "live": "2026-10-18T20:38:08+09:00"
+      },
+      "last_seen_kst": "2026-10-18T20:38:08+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261018200458",
+      "source": "지디넷코리아",
+      "source_body_digest": "77cf8dd44dd348c71874d44b48ef0e50b215c85d57cb967a10ea4ef7aa13e96e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01768654d4d234fba326013470cac729ca68577d0c05c02433a63fcd82f46207",
+      "source_fact_keys": [
+        "source_fact:v1:078b31772e64ea95f739055d46db86bf188d0f6831c52b6391d0794aa8b260e3",
+        "source_fact:v1:086041de3dd770b8f1f75fb32e47832945886b841f5af386edb3a09eb40745ad",
+        "source_fact:v1:1bb6c7d3ac4e0b91296593db2099e9e431b577462d741f19626643f76cde2d67",
+        "source_fact:v1:3b35bce60b61f23f458cf55d6abb43396ca018d71a42ee544f7f40c1a4874447",
+        "source_fact:v1:676a0a55d0e73281589785273c009cfabaf888dc30f6cc07394a0283b1bc4e96",
+        "source_fact:v1:6d0c722e7865a0742712287384122abd5696ad13c890f9fd99bac9616e782cad",
+        "source_fact:v1:766337527cac2dd5859f8e5791565123aeef6dba69b9707969f428e9d6ee89c5",
+        "source_fact:v1:7c213240b792968274aa6b510e3b5fa8e1da12fa2b13b6085f81f48850a37231"
+      ],
+      "source_published_kst": "2026-10-18T20:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\"",
+      "telegram_core_fact": "우리 포트폴리오에 있는 이스라엘 공간음향 AI 기업 카르돔(Kardome)은 한국투자파트너스가 현대자동차그룹, 주도한 시리즈 A 투자를 유치했다.",
+      "title": "J벤처스 \"이스라엘-한국-실리콘밸리 연결 가교될 것\""
     },
     "title:b367b3443767cc3fc3f8f923": {
       "first_seen_kst": "2026-10-02T22:41:43+09:00",
@@ -857327,5 +857873,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-18T20:09:09+09:00"
+  "updated_at_kst": "2026-10-18T20:38:08+09:00"
 }
