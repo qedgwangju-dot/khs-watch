@@ -14435,6 +14435,27 @@
       "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
       "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
     },
+    "core:36200b03a594da948e9939fa": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.mk.co.kr/news/it/12179147",
+      "source": "매일경제",
+      "source_body_digest": "2cdc2ebc945ab4a177ff0143622a7850d58674f5b0b3c4b91df3b4340f0b9ffa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8803056029ae3c7360791f5448f89f6c3cbcefbca487505a51d40e47fd2926e6",
+      "source_fact_keys": [
+        "source_fact:v1:af15af968e41eadf1e5d569f2b22f95dd88787d74daff4b72c375cd19e585c13",
+        "source_fact:v1:dba6bd988b370b5f88d6068fb0d3c8f20825323db72b8f2c41e9462bd9a2b146"
+      ],
+      "source_published_kst": "2026-10-19T06:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연",
+      "telegram_core_fact": "앤트로픽은 당초 이달 중 상장을 추진했으나 일정이 연기되면서, 11월 미국 중간선거 이후 상장할 가능성이 커졌다.",
+      "title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연"
+    },
     "core:362c744d88f81539dd2665f5": {
       "first_seen_kst": "2026-10-10T08:01:49+09:00",
       "lanes": {
@@ -25796,6 +25817,31 @@
       "source_published_kst": "2026-10-07T14:04+09:00",
       "title": "MS·아마존 이어 구글까지…AI 전력 병목 해결에 '원전' 뜬다"
     },
+    "core:65442083c414861ce5a82d22": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016152800003",
+      "source": "연합뉴스",
+      "source_body_digest": "50ec74ea4b26b9d40a36d01e7b573e8476ff229f46fa4decd3badaf9c3bfa520",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7a6eb1fe2bc2165bec66d5f0bb3518268a0cf7fd87fa169c7c30dd9163dd427",
+      "source_fact_keys": [
+        "source_fact:v1:05b02b4f80889116e6a7f0e3aed3ac81ed58bb382cca5a44b4d3f523d584055b",
+        "source_fact:v1:0f654fe8c6022736559252ae2259b07d27b68e66227760ae574a701757b96065",
+        "source_fact:v1:5590f52b470d58d0bf6f3972e842f7455d3c36467e2888cd41080defbd3214b7",
+        "source_fact:v1:60adeb489733ef08da004d21029aceec81a8fb2b219e8ffdebb1756c74f5577d",
+        "source_fact:v1:9314f94c6dfd56666216fa4364370ce8ca0545fb914bcb55faf1e7048422788b",
+        "source_fact:v1:a3add5c1250ed9ee5ab32a4b235eda29525d0de5d1a65782a33bfbe6925c328e"
+      ],
+      "source_published_kst": "2026-10-19T07:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스",
+      "telegram_core_fact": "메리츠증권은 SK온이 3분기 매출 1조5천984억원에 적자 1천794억원(AMPC 900억원 포함)을 기록해 지난해 동기(매출 1조8천79억원·적자 1천248억원)보다 적자 폭이 커졌을 것으로 전망했다.",
+      "title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스"
+    },
     "core:6585cf369d71b173d0204508": {
       "first_seen_kst": "2026-10-16T15:15:48+09:00",
       "lanes": {
@@ -31322,6 +31368,28 @@
       "source_title": "삼성전자, 3분기 호실적에 프리마켓서 1.5% 상승…SK하닉도 1%↑",
       "telegram_core_fact": "삼성전자는 이날 프리마켓 개장 직전 연결 기준 올해 3분기 매출 195조원, 영업이익 107조4000억원의 3분기 잠정 실적을 발표했다.",
       "title": "삼성전자, 3분기 호실적에 프리마켓서 1.5% 상승…SK하닉도 1%↑"
+    },
+    "core:7a858ef664d7dcf2be62167e": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830719",
+      "source": "뉴시스",
+      "source_body_digest": "665d776b89d40e56bdc41861db22aa8f9b4749919e16cb9adcc5a8985dd3ee11",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:133b1ae9e8a15aa38e72df4e24356493d8a5ba403bf29e11d96213913b57a77b",
+      "source_fact_keys": [
+        "source_fact:v1:21c150cfc00a25f842ea932ee452f3704fa6206e9a848a25bf924528afad8152",
+        "source_fact:v1:5715d70bba4387688b27ce94ed4cff7ac262047079d0548a7f25ddcd3038ea5e",
+        "source_fact:v1:fee07f5cf43821d677a54153ba730eda09815033ac51e1b0b902878d53949579"
+      ],
+      "source_published_kst": "2026-10-19T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\"",
+      "telegram_core_fact": "매킨토시는 AI 관련 자본지출이 실제로 이뤄지지 않을 경우 관련 기업들이 큰 타격을 받을 수 있지만, 계획대로 투자가 계속되는 상황도 위험할 수 있다고 지적했다.",
+      "title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\""
     },
     "core:7a8637a36c36dbb030990e03": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -40626,6 +40694,27 @@
       "source_title": "경유 공급 우려에 정부 \"물량 문제 없어…11월까지 원유 100%\" | 연합뉴스",
       "telegram_core_fact": "산업통상부는 13일 \"10∼11월 원유 도입물량은 전년 평균 대비 100% 이상 확보하고 있다\"며 \"나프타는 10월 물량을 수요 대비 100% 이상, 11월 물량도 수요 대비 100% 수준으로 확보했다\"고 설명했다.",
       "title": "경유 공급 우려에 정부 \"물량 문제 없어…11월까지 원유 100%\" | 연합뉴스"
+    },
+    "core:9dafe220ba7014fb0d1730cf": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637025",
+      "source": "이투데이",
+      "source_body_digest": "5ed72d9ad0e53302642704243cad25ed7e2846516c3fe9f3fba8498e6196b122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ee576c0d246f03c8436a1f153ae7bf1917104cfdc615b8f5ad2c06c998c9267",
+      "source_fact_keys": [
+        "source_fact:v1:416e23f19898b36ea6d29697cd93df742ecfe678272247bec821727a85fed099",
+        "source_fact:v1:ffb09cc1f2f2a9078003080702ce3290fc2a50c6367087a11900cb643d2c0d40"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓",
+      "telegram_core_fact": "상장예정 기업과 재무기준 미달 기업 등을 중심으로 직권 지정 대상이 포함됐으며, 전체 대상은 전년보다 소폭 줄었다.",
+      "title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓"
     },
     "core:9db596e9b0bfde00a0c44346": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
@@ -55136,6 +55225,32 @@
       "telegram_core_fact": "이번 8-K는 실적 발표가 아니라 IPO 완료 후 감사를 거친 개시 재무상태표 공시로, 매출액이나 주당순이익 등 실적 수치와 가이던스는 포함되지 않았다.",
       "title": "사우스포트 애퀴지션, IPO 2억1000만 달러 조달..신탁 2억1100만 달러"
     },
+    "core:d7d26a2a9cc8927bd95d33cd": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019007500071",
+      "source": "연합뉴스",
+      "source_body_digest": "827550ec493f33a1ea7505bbad87c0a09fae96ff8898aa6e4922a4165a8e7342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6855837fdcd34823b51f7739a9db08ccc9ad3d5fc1c703ed3ab610af02106412",
+      "source_fact_keys": [
+        "source_fact:v1:08ad940a775d8122c8e826cbc4ff2e1f2814b44d9c799d7e866290ae1821db00",
+        "source_fact:v1:1ff14bb26e28c236f5867c7030e4e32535f655fd44e2bce3c8926d0527b410e0",
+        "source_fact:v1:238adfba984502f705d58016fc30da9237e407e23d064dddcc57d3ffbb17446f",
+        "source_fact:v1:697cef419b1e95288ee0489599f12b4d847b4873652fe7bc411e3eaa32c4abd6",
+        "source_fact:v1:82023a31961594a720ca3affd3de57bacf23ad4473d27a5c00362fa8f2e63cfc",
+        "source_fact:v1:8347a1e11d7f6d59dd6a3868fc640d1515b01362d31160b7cd6969c116d7c5de",
+        "source_fact:v1:8e3a0a84835bf769728e162dcf9aa85802afd3ab494759821ba511ab3dfcc63f"
+      ],
+      "source_published_kst": "2026-10-19T07:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
+      "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
+      "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
+    },
     "core:d7d36875a6fa7a3eb72575c9": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
       "lanes": {
@@ -58262,6 +58377,24 @@
       "source_title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]",
       "telegram_core_fact": "삼성전자가 분기 영업이익 100조원을 처음 돌파했다는 발표가 나왔지만 초고수들은 전 거래일 순매수 상위에 올려놨던 전기전자 대형주를 하루 만에 대거 정리했다.",
       "title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]"
+    },
+    "core:e39fc8f2ff17442fa2f764a3": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906401",
+      "source": "헤럴드경제",
+      "source_body_digest": "dd15c517c565fa7740280b14c7ee0ec34a5a2fb2f30b30bbf30c719049a3632a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T06:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "美에너지장관, 러 제재 면제에 “경제적 생명줄 아냐…전쟁 끝내기 위한 당근책”",
+      "telegram_core_fact": "크리스 라이트 미국 에너지부 장관은 18일(현지시간) 러시아산 에너지 구매국에 고율 관세를 부과하는 등의 제재를 면제한 것이 “전쟁을 끝내기 위해 제시하는 당근”이라고 강조했다.",
+      "title": "美에너지장관, 러 제재 면제에 “경제적 생명줄 아냐…전쟁 끝내기 위한 당근책”"
     },
     "core:e3cddc945987eb1365f16196": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
@@ -68228,6 +68361,24 @@
       "telegram_core_fact": "엔비디아(NVDA)가 인공지능(AI) 스타트업 리플렉션 AI(Reflection AI) 인수나 지분 투자를 확대하는 방안을 검토하고 있다고 파이낸셜타임스(FT)가 12일(현지시간) 보도했다.",
       "title": "[TODAY엔비디아]리플렉션 AI 인수나 추가 투자 검토…개장전 '강보합'"
     },
+    "event:2ff0237a2fa988b994d35767": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906401",
+      "source": "헤럴드경제",
+      "source_body_digest": "dd15c517c565fa7740280b14c7ee0ec34a5a2fb2f30b30bbf30c719049a3632a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T06:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "美에너지장관, 러 제재 면제에 “경제적 생명줄 아냐…전쟁 끝내기 위한 당근책”",
+      "telegram_core_fact": "크리스 라이트 미국 에너지부 장관은 18일(현지시간) 러시아산 에너지 구매국에 고율 관세를 부과하는 등의 제재를 면제한 것이 “전쟁을 끝내기 위해 제시하는 당근”이라고 강조했다.",
+      "title": "美에너지장관, 러 제재 면제에 “경제적 생명줄 아냐…전쟁 끝내기 위한 당근책”"
+    },
     "event:2ff61933d1a34dd957ceac8d": {
       "event_alias_evidence_message_id": 2298,
       "event_alias_evidence_run_id": 37416023045,
@@ -73669,6 +73820,28 @@
       "source": "뉴시스",
       "title": "\"86주 연속 서울 집값 상승\"…과거엔 '이것' 나오자 꺾였다"
     },
+    "event:8544155c932d8c20d68ce895": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830719",
+      "source": "뉴시스",
+      "source_body_digest": "665d776b89d40e56bdc41861db22aa8f9b4749919e16cb9adcc5a8985dd3ee11",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:133b1ae9e8a15aa38e72df4e24356493d8a5ba403bf29e11d96213913b57a77b",
+      "source_fact_keys": [
+        "source_fact:v1:21c150cfc00a25f842ea932ee452f3704fa6206e9a848a25bf924528afad8152",
+        "source_fact:v1:5715d70bba4387688b27ce94ed4cff7ac262047079d0548a7f25ddcd3038ea5e",
+        "source_fact:v1:fee07f5cf43821d677a54153ba730eda09815033ac51e1b0b902878d53949579"
+      ],
+      "source_published_kst": "2026-10-19T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\"",
+      "telegram_core_fact": "매킨토시는 AI 관련 자본지출이 실제로 이뤄지지 않을 경우 관련 기업들이 큰 타격을 받을 수 있지만, 계획대로 투자가 계속되는 상황도 위험할 수 있다고 지적했다.",
+      "title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\""
+    },
     "event:85bffb6179f3e2b35ba853d5": {
       "first_seen_kst": "2026-09-29T09:18:00+09:00",
       "lanes": {
@@ -75986,26 +76159,23 @@
     "event:ac0ad917a93b514dcfba2737": {
       "first_seen_kst": "2026-10-19T06:35:52+09:00",
       "lanes": {
-        "live": "2026-10-19T06:35:52+09:00"
+        "live": "2026-10-19T07:37:37+09:00"
       },
-      "last_seen_kst": "2026-10-19T06:35:52+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261019006800009",
-      "source": "연합뉴스",
-      "source_body_digest": "8ee8000a73abf1eec1c577922ebe7d23763246cac45253275648eb7eb7fa2662",
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.mk.co.kr/news/it/12179147",
+      "source": "매일경제",
+      "source_body_digest": "2cdc2ebc945ab4a177ff0143622a7850d58674f5b0b3c4b91df3b4340f0b9ffa",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2c62b50441853f5c3fd87c05fae199dbbea2e999ce3eef42dda2ccac9d741ba0",
+      "source_fact_identity": "source_facts:v1:8803056029ae3c7360791f5448f89f6c3cbcefbca487505a51d40e47fd2926e6",
       "source_fact_keys": [
-        "source_fact:v1:00a75e3c4b1c293f5a52c753267013593e51bda18c6d28d5be9866c624d7895e",
-        "source_fact:v1:23b3a32c1a43a073003497601494b18980e066e3eb6cb1f9866734a5c581b6ca",
-        "source_fact:v1:6e0d159a04ef0ca360184aae6d94e1e374045e1784945785e084e1be0ddd1179",
-        "source_fact:v1:76475172d77372054f9810bed4e4aa1de84eef1e347dc5c3cd9039f4c07ede69",
-        "source_fact:v1:9c5e5e2aeca2d53f671b1b4083b3c4907c893523ad86bd0a9ab51a3bff14f1e4"
+        "source_fact:v1:af15af968e41eadf1e5d569f2b22f95dd88787d74daff4b72c375cd19e585c13",
+        "source_fact:v1:dba6bd988b370b5f88d6068fb0d3c8f20825323db72b8f2c41e9462bd9a2b146"
       ],
-      "source_published_kst": "2026-10-19T06:28+09:00",
+      "source_published_kst": "2026-10-19T06:51+09:00",
       "source_supply_terms": {},
-      "source_title": "앤트로픽, 지분 5% 공익기금에 출연…\"AI 일자리 충격 대응\" | 연합뉴스",
-      "telegram_core_fact": "기업공개(IPO)를 앞둔 앤트로픽이 회사 지분 5%를 새로 만드는 공익기금에 출연하기로 했다. 앤트로픽은 18일(현지시간) 공식 블로그를 통해 주주 승인을 거쳐 지분 5%를 '앤트로픽 공익기금'에 출연한다고 밝혔다.",
-      "title": "앤트로픽, 지분 5% 공익기금에 출연…\"AI 일자리 충격 대응\" | 연합뉴스"
+      "source_title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연",
+      "telegram_core_fact": "앤트로픽은 당초 이달 중 상장을 추진했으나 일정이 연기되면서, 11월 미국 중간선거 이후 상장할 가능성이 커졌다.",
+      "title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연"
     },
     "event:ac4d2cac33b47cb678323229": {
       "first_seen_kst": "2026-10-15T05:17:25+09:00",
@@ -102058,6 +102228,28 @@
       "telegram_core_fact": "미국 치킨 프랜차이즈 KFC가 40년 가까이 유지해 온 펩시코와의 음료 공급 계약을 종료하고 코카콜라 제품을 도입한다. 매출 하락과 점포 정리 등이 이어지는 가운데, 시장조사업체 테크노믹에 따르면 한때 미국 치킨 프랜차이즈 시장을 선도했던 KFC는 매출 순위에서 현재 5위로 내려앉았다.",
       "title": "KFC마저 펩시 손절…코카콜라 택한 이유는"
     },
+    "fact:4347b33737dd535eee1dbe32": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830719",
+      "source": "뉴시스",
+      "source_body_digest": "665d776b89d40e56bdc41861db22aa8f9b4749919e16cb9adcc5a8985dd3ee11",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:133b1ae9e8a15aa38e72df4e24356493d8a5ba403bf29e11d96213913b57a77b",
+      "source_fact_keys": [
+        "source_fact:v1:21c150cfc00a25f842ea932ee452f3704fa6206e9a848a25bf924528afad8152",
+        "source_fact:v1:5715d70bba4387688b27ce94ed4cff7ac262047079d0548a7f25ddcd3038ea5e",
+        "source_fact:v1:fee07f5cf43821d677a54153ba730eda09815033ac51e1b0b902878d53949579"
+      ],
+      "source_published_kst": "2026-10-19T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\"",
+      "telegram_core_fact": "매킨토시는 AI 관련 자본지출이 실제로 이뤄지지 않을 경우 관련 기업들이 큰 타격을 받을 수 있지만, 계획대로 투자가 계속되는 상황도 위험할 수 있다고 지적했다.",
+      "title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\""
+    },
     "fact:439b9a3b463761e063d5a919": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -125614,6 +125806,27 @@
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "베니테크 바이오파마, BB-301 FDA 추가자료 요청..임상 일정 유지"
     },
+    "fact:939996e10e3052a81bd7ad02": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.mk.co.kr/news/it/12179147",
+      "source": "매일경제",
+      "source_body_digest": "2cdc2ebc945ab4a177ff0143622a7850d58674f5b0b3c4b91df3b4340f0b9ffa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8803056029ae3c7360791f5448f89f6c3cbcefbca487505a51d40e47fd2926e6",
+      "source_fact_keys": [
+        "source_fact:v1:af15af968e41eadf1e5d569f2b22f95dd88787d74daff4b72c375cd19e585c13",
+        "source_fact:v1:dba6bd988b370b5f88d6068fb0d3c8f20825323db72b8f2c41e9462bd9a2b146"
+      ],
+      "source_published_kst": "2026-10-19T06:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연",
+      "telegram_core_fact": "앤트로픽은 당초 이달 중 상장을 추진했으나 일정이 연기되면서, 11월 미국 중간선거 이후 상장할 가능성이 커졌다.",
+      "title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연"
+    },
     "fact:93aab7caadc3a06716c32700": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -140466,6 +140679,31 @@
       "telegram_core_fact": "키움증권은 12일 현대차에 대해 \"파업 여파로 (3분기) 국내 판매량이 전년비 27.2% 감소했을 것으로 추정된다\"며 목표주가를 기존 70만원에서 60만원으로 하향 조정했다.",
       "title": "\"현대차, 파업으로 국내 판매량 27% 감소 전망…목표가↓\"-키움"
     },
+    "fact:c18b4a29e6fa0f8b48446c99": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016152800003",
+      "source": "연합뉴스",
+      "source_body_digest": "50ec74ea4b26b9d40a36d01e7b573e8476ff229f46fa4decd3badaf9c3bfa520",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7a6eb1fe2bc2165bec66d5f0bb3518268a0cf7fd87fa169c7c30dd9163dd427",
+      "source_fact_keys": [
+        "source_fact:v1:05b02b4f80889116e6a7f0e3aed3ac81ed58bb382cca5a44b4d3f523d584055b",
+        "source_fact:v1:0f654fe8c6022736559252ae2259b07d27b68e66227760ae574a701757b96065",
+        "source_fact:v1:5590f52b470d58d0bf6f3972e842f7455d3c36467e2888cd41080defbd3214b7",
+        "source_fact:v1:60adeb489733ef08da004d21029aceec81a8fb2b219e8ffdebb1756c74f5577d",
+        "source_fact:v1:9314f94c6dfd56666216fa4364370ce8ca0545fb914bcb55faf1e7048422788b",
+        "source_fact:v1:a3add5c1250ed9ee5ab32a4b235eda29525d0de5d1a65782a33bfbe6925c328e"
+      ],
+      "source_published_kst": "2026-10-19T07:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스",
+      "telegram_core_fact": "메리츠증권은 SK온이 3분기 매출 1조5천984억원에 적자 1천794억원(AMPC 900억원 포함)을 기록해 지난해 동기(매출 1조8천79억원·적자 1천248억원)보다 적자 폭이 커졌을 것으로 전망했다.",
+      "title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스"
+    },
     "fact:c1a7311460f64113df097e74": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
@@ -143226,6 +143464,27 @@
       "source_title": "[단독] 한투, 美에 대체투자 운용사 세운다",
       "telegram_core_fact": "지난 5월 국내 3위 암호화폐거래소 운영사 코인원 지분 20%를 취득한 데 이어 최근 KDB생명 인수 우선협상대상자로 선정됐다. 한국투자금융그룹이 미국 대체투자 전문 운용사 찰스뱅크캐피털파트너스와 합작법인(JV) 설립을 추진한다.",
       "title": "[단독] 한투, 美에 대체투자 운용사 세운다"
+    },
+    "fact:caf0028c6d57ca90caa8cd49": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637025",
+      "source": "이투데이",
+      "source_body_digest": "5ed72d9ad0e53302642704243cad25ed7e2846516c3fe9f3fba8498e6196b122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ee576c0d246f03c8436a1f153ae7bf1917104cfdc615b8f5ad2c06c998c9267",
+      "source_fact_keys": [
+        "source_fact:v1:416e23f19898b36ea6d29697cd93df742ecfe678272247bec821727a85fed099",
+        "source_fact:v1:ffb09cc1f2f2a9078003080702ce3290fc2a50c6367087a11900cb643d2c0d40"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓",
+      "telegram_core_fact": "상장예정 기업과 재무기준 미달 기업 등을 중심으로 직권 지정 대상이 포함됐으며, 전체 대상은 전년보다 소폭 줄었다.",
+      "title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓"
     },
     "fact:caf418423ecc579e9713e2a8": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -151107,6 +151366,32 @@
       ],
       "source_published_kst": "2026-10-06T13:55+09:00",
       "title": "금투협, IIFA 총회 참여…\"글로벌 펀드산업 현안 논의\""
+    },
+    "fact:e3f7e3230b66565acce68f24": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019007500071",
+      "source": "연합뉴스",
+      "source_body_digest": "827550ec493f33a1ea7505bbad87c0a09fae96ff8898aa6e4922a4165a8e7342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6855837fdcd34823b51f7739a9db08ccc9ad3d5fc1c703ed3ab610af02106412",
+      "source_fact_keys": [
+        "source_fact:v1:08ad940a775d8122c8e826cbc4ff2e1f2814b44d9c799d7e866290ae1821db00",
+        "source_fact:v1:1ff14bb26e28c236f5867c7030e4e32535f655fd44e2bce3c8926d0527b410e0",
+        "source_fact:v1:238adfba984502f705d58016fc30da9237e407e23d064dddcc57d3ffbb17446f",
+        "source_fact:v1:697cef419b1e95288ee0489599f12b4d847b4873652fe7bc411e3eaa32c4abd6",
+        "source_fact:v1:82023a31961594a720ca3affd3de57bacf23ad4473d27a5c00362fa8f2e63cfc",
+        "source_fact:v1:8347a1e11d7f6d59dd6a3868fc640d1515b01362d31160b7cd6969c116d7c5de",
+        "source_fact:v1:8e3a0a84835bf769728e162dcf9aa85802afd3ab494759821ba511ab3dfcc63f"
+      ],
+      "source_published_kst": "2026-10-19T07:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
+      "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
+      "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
     },
     "fact:e3ff6c5b1aec4843c0493838": {
       "first_seen_kst": "2026-10-07T23:50:27+09:00",
@@ -174108,6 +174393,27 @@
       "source": "이데일리",
       "title": "“AI 생산성 향상에 물가 안정?…오히려 대규모 투자로 금리 끌어올려”"
     },
+    "link:246f2b22ba0098d0e23cb256": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.mk.co.kr/news/it/12179147",
+      "source": "매일경제",
+      "source_body_digest": "2cdc2ebc945ab4a177ff0143622a7850d58674f5b0b3c4b91df3b4340f0b9ffa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8803056029ae3c7360791f5448f89f6c3cbcefbca487505a51d40e47fd2926e6",
+      "source_fact_keys": [
+        "source_fact:v1:af15af968e41eadf1e5d569f2b22f95dd88787d74daff4b72c375cd19e585c13",
+        "source_fact:v1:dba6bd988b370b5f88d6068fb0d3c8f20825323db72b8f2c41e9462bd9a2b146"
+      ],
+      "source_published_kst": "2026-10-19T06:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연",
+      "telegram_core_fact": "앤트로픽은 당초 이달 중 상장을 추진했으나 일정이 연기되면서, 11월 미국 중간선거 이후 상장할 가능성이 커졌다.",
+      "title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연"
+    },
     "link:247ec16296ba1129f3d62ac0": {
       "first_seen_kst": "2026-10-05T18:36:59+09:00",
       "lanes": {
@@ -178374,6 +178680,31 @@
       "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
       "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
     },
+    "link:2e133b417e3134584d8b927b": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016152800003",
+      "source": "연합뉴스",
+      "source_body_digest": "50ec74ea4b26b9d40a36d01e7b573e8476ff229f46fa4decd3badaf9c3bfa520",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7a6eb1fe2bc2165bec66d5f0bb3518268a0cf7fd87fa169c7c30dd9163dd427",
+      "source_fact_keys": [
+        "source_fact:v1:05b02b4f80889116e6a7f0e3aed3ac81ed58bb382cca5a44b4d3f523d584055b",
+        "source_fact:v1:0f654fe8c6022736559252ae2259b07d27b68e66227760ae574a701757b96065",
+        "source_fact:v1:5590f52b470d58d0bf6f3972e842f7455d3c36467e2888cd41080defbd3214b7",
+        "source_fact:v1:60adeb489733ef08da004d21029aceec81a8fb2b219e8ffdebb1756c74f5577d",
+        "source_fact:v1:9314f94c6dfd56666216fa4364370ce8ca0545fb914bcb55faf1e7048422788b",
+        "source_fact:v1:a3add5c1250ed9ee5ab32a4b235eda29525d0de5d1a65782a33bfbe6925c328e"
+      ],
+      "source_published_kst": "2026-10-19T07:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스",
+      "telegram_core_fact": "메리츠증권은 SK온이 3분기 매출 1조5천984억원에 적자 1천794억원(AMPC 900억원 포함)을 기록해 지난해 동기(매출 1조8천79억원·적자 1천248억원)보다 적자 폭이 커졌을 것으로 전망했다.",
+      "title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스"
+    },
     "link:2e474a96a681baa2421ab669": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
       "lanes": {
@@ -178843,6 +179174,32 @@
       "source": "뉴시스",
       "title": "한전, 변전소 AI 감시에 국산 AI 반도체 활용…현장 성능검증 착수"
     },
+    "link:2f42ff8921ae81b6905117f9": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019007500071",
+      "source": "연합뉴스",
+      "source_body_digest": "827550ec493f33a1ea7505bbad87c0a09fae96ff8898aa6e4922a4165a8e7342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6855837fdcd34823b51f7739a9db08ccc9ad3d5fc1c703ed3ab610af02106412",
+      "source_fact_keys": [
+        "source_fact:v1:08ad940a775d8122c8e826cbc4ff2e1f2814b44d9c799d7e866290ae1821db00",
+        "source_fact:v1:1ff14bb26e28c236f5867c7030e4e32535f655fd44e2bce3c8926d0527b410e0",
+        "source_fact:v1:238adfba984502f705d58016fc30da9237e407e23d064dddcc57d3ffbb17446f",
+        "source_fact:v1:697cef419b1e95288ee0489599f12b4d847b4873652fe7bc411e3eaa32c4abd6",
+        "source_fact:v1:82023a31961594a720ca3affd3de57bacf23ad4473d27a5c00362fa8f2e63cfc",
+        "source_fact:v1:8347a1e11d7f6d59dd6a3868fc640d1515b01362d31160b7cd6969c116d7c5de",
+        "source_fact:v1:8e3a0a84835bf769728e162dcf9aa85802afd3ab494759821ba511ab3dfcc63f"
+      ],
+      "source_published_kst": "2026-10-19T07:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
+      "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
+      "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
+    },
     "link:2f4d3013a4e3fc346fadf7c5": {
       "first_seen_kst": "2026-10-12T14:17:50+09:00",
       "lanes": {
@@ -179075,6 +179432,27 @@
       "source_title": "‘안전펜스’ 갇혔던 로봇, 족쇄 풀려…반복 자동화 넘어 ‘M.AX 혁신’ 신호탄[규제 풀린 휴머노이드]",
       "telegram_core_fact": "산업통상부가 이번에 주도한 산업융합 관련 규제특례 승인은 그동안 소프트웨어에 머물던 AI가 '이동형 휴머노이드 로봇'이라는 실체를 통해 제조업 현장의 AI 대전환을 이룰 신호탄이란 점에서 의미가 있다.",
       "title": "‘안전펜스’ 갇혔던 로봇, 족쇄 풀려…반복 자동화 넘어 ‘M.AX 혁신’ 신호탄[규제 풀린 휴머노이드]"
+    },
+    "link:2fd98d22c1293f70c68f278d": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637025",
+      "source": "이투데이",
+      "source_body_digest": "5ed72d9ad0e53302642704243cad25ed7e2846516c3fe9f3fba8498e6196b122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ee576c0d246f03c8436a1f153ae7bf1917104cfdc615b8f5ad2c06c998c9267",
+      "source_fact_keys": [
+        "source_fact:v1:416e23f19898b36ea6d29697cd93df742ecfe678272247bec821727a85fed099",
+        "source_fact:v1:ffb09cc1f2f2a9078003080702ce3290fc2a50c6367087a11900cb643d2c0d40"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓",
+      "telegram_core_fact": "상장예정 기업과 재무기준 미달 기업 등을 중심으로 직권 지정 대상이 포함됐으며, 전체 대상은 전년보다 소폭 줄었다.",
+      "title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓"
     },
     "link:2fd9d63addab16cd1301e7de": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
@@ -218126,6 +218504,28 @@
       "source_title": "트럼프 '에너지 휴전' 압박에도…\"러, 우크라 공격 계속\"(종합) | 연합뉴스",
       "telegram_core_fact": "트럼프 대통령의 '에너지 휴전 합의' 주장에도 지난 밤새 우크라이나의 에너지 시설과 민간 시설을 겨냥한 러시아의 공격이 이어졌다. 도널드 트럼프 미국 대통령이 '에너지 휴전 합의'를 주장하며 러시아·우크라이나를 압박했지만 러시아가 휴전 요구를 사실상 외면하면서 긴장 완화까지 나아가지 못하는 분위기다.",
       "title": "트럼프 '에너지 휴전' 압박에도…\"러, 우크라 공격 계속\"(종합) | 연합뉴스"
+    },
+    "link:9144229d9e290750b4c92a8a": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830719",
+      "source": "뉴시스",
+      "source_body_digest": "665d776b89d40e56bdc41861db22aa8f9b4749919e16cb9adcc5a8985dd3ee11",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:133b1ae9e8a15aa38e72df4e24356493d8a5ba403bf29e11d96213913b57a77b",
+      "source_fact_keys": [
+        "source_fact:v1:21c150cfc00a25f842ea932ee452f3704fa6206e9a848a25bf924528afad8152",
+        "source_fact:v1:5715d70bba4387688b27ce94ed4cff7ac262047079d0548a7f25ddcd3038ea5e",
+        "source_fact:v1:fee07f5cf43821d677a54153ba730eda09815033ac51e1b0b902878d53949579"
+      ],
+      "source_published_kst": "2026-10-19T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\"",
+      "telegram_core_fact": "매킨토시는 AI 관련 자본지출이 실제로 이뤄지지 않을 경우 관련 기업들이 큰 타격을 받을 수 있지만, 계획대로 투자가 계속되는 상황도 위험할 수 있다고 지적했다.",
+      "title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\""
     },
     "link:9148e73b6178005c5e09ddb4": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
@@ -258264,6 +258664,24 @@
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
     },
+    "link:f38288ddb61a4efed980e8ee": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906401",
+      "source": "헤럴드경제",
+      "source_body_digest": "dd15c517c565fa7740280b14c7ee0ec34a5a2fb2f30b30bbf30c719049a3632a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T06:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "美에너지장관, 러 제재 면제에 “경제적 생명줄 아냐…전쟁 끝내기 위한 당근책”",
+      "telegram_core_fact": "크리스 라이트 미국 에너지부 장관은 18일(현지시간) 러시아산 에너지 구매국에 고율 관세를 부과하는 등의 제재를 면제한 것이 “전쟁을 끝내기 위해 제시하는 당근”이라고 강조했다.",
+      "title": "美에너지장관, 러 제재 면제에 “경제적 생명줄 아냐…전쟁 끝내기 위한 당근책”"
+    },
     "link:f3942519cf693bd4415ebe7e": {
       "first_seen_kst": "2026-10-13T20:49:52+09:00",
       "lanes": {
@@ -267713,6 +268131,27 @@
       "source_title": "한화에어로스페이스, 3분기 영업익 1.2조 전망…\"통합화·대형화로 수익성 극대화\"",
       "telegram_core_fact": "한화에어로스페이스가 3분기에 1조원 이상의 영업이익을 달성하면 2개 분기 연속으로 분기 영업이익이 1조원을 기록하게 된다.",
       "title": "한화에어로스페이스, 3분기 영업익 1.2조 전망…\"통합화·대형화로 수익성 극대화\""
+    },
+    "original:0b82b9815d6f401dd647feec": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.mk.co.kr/news/it/12179147",
+      "source": "매일경제",
+      "source_body_digest": "2cdc2ebc945ab4a177ff0143622a7850d58674f5b0b3c4b91df3b4340f0b9ffa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8803056029ae3c7360791f5448f89f6c3cbcefbca487505a51d40e47fd2926e6",
+      "source_fact_keys": [
+        "source_fact:v1:af15af968e41eadf1e5d569f2b22f95dd88787d74daff4b72c375cd19e585c13",
+        "source_fact:v1:dba6bd988b370b5f88d6068fb0d3c8f20825323db72b8f2c41e9462bd9a2b146"
+      ],
+      "source_published_kst": "2026-10-19T06:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연",
+      "telegram_core_fact": "앤트로픽은 당초 이달 중 상장을 추진했으나 일정이 연기되면서, 11월 미국 중간선거 이후 상장할 가능성이 커졌다.",
+      "title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연"
     },
     "original:0b8f0cd0f79fd0a9c90360d3": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
@@ -284239,6 +284678,31 @@
       ],
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
+    },
+    "original:34c6d44c95746c4ac60a69f3": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016152800003",
+      "source": "연합뉴스",
+      "source_body_digest": "50ec74ea4b26b9d40a36d01e7b573e8476ff229f46fa4decd3badaf9c3bfa520",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7a6eb1fe2bc2165bec66d5f0bb3518268a0cf7fd87fa169c7c30dd9163dd427",
+      "source_fact_keys": [
+        "source_fact:v1:05b02b4f80889116e6a7f0e3aed3ac81ed58bb382cca5a44b4d3f523d584055b",
+        "source_fact:v1:0f654fe8c6022736559252ae2259b07d27b68e66227760ae574a701757b96065",
+        "source_fact:v1:5590f52b470d58d0bf6f3972e842f7455d3c36467e2888cd41080defbd3214b7",
+        "source_fact:v1:60adeb489733ef08da004d21029aceec81a8fb2b219e8ffdebb1756c74f5577d",
+        "source_fact:v1:9314f94c6dfd56666216fa4364370ce8ca0545fb914bcb55faf1e7048422788b",
+        "source_fact:v1:a3add5c1250ed9ee5ab32a4b235eda29525d0de5d1a65782a33bfbe6925c328e"
+      ],
+      "source_published_kst": "2026-10-19T07:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스",
+      "telegram_core_fact": "메리츠증권은 SK온이 3분기 매출 1조5천984억원에 적자 1천794억원(AMPC 900억원 포함)을 기록해 지난해 동기(매출 1조8천79억원·적자 1천248억원)보다 적자 폭이 커졌을 것으로 전망했다.",
+      "title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스"
     },
     "original:34d497452081419e0080130a": {
       "first_seen_kst": "2026-10-04T15:27:13+09:00",
@@ -317602,6 +318066,24 @@
       "source_published_kst": "2026-10-05T18:09+09:00",
       "title": "서울사이버대 개인정보 유출…학생·교직원·지원자 정보 포함"
     },
+    "original:89468713e0ac85667923a5d7": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906401",
+      "source": "헤럴드경제",
+      "source_body_digest": "dd15c517c565fa7740280b14c7ee0ec34a5a2fb2f30b30bbf30c719049a3632a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T06:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "美에너지장관, 러 제재 면제에 “경제적 생명줄 아냐…전쟁 끝내기 위한 당근책”",
+      "telegram_core_fact": "크리스 라이트 미국 에너지부 장관은 18일(현지시간) 러시아산 에너지 구매국에 고율 관세를 부과하는 등의 제재를 면제한 것이 “전쟁을 끝내기 위해 제시하는 당근”이라고 강조했다.",
+      "title": "美에너지장관, 러 제재 면제에 “경제적 생명줄 아냐…전쟁 끝내기 위한 당근책”"
+    },
     "original:894751a64d82672d3b582227": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
       "lanes": {
@@ -326812,6 +327294,28 @@
       "link": "https://biz.heraldcorp.com/article/10892352",
       "source": "헤럴드경제",
       "title": "뉴욕증시, 상승 출발… 테슬라·인텔 등 기술주 강세"
+    },
+    "original:a0b018643e9b1ec239760fa0": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830719",
+      "source": "뉴시스",
+      "source_body_digest": "665d776b89d40e56bdc41861db22aa8f9b4749919e16cb9adcc5a8985dd3ee11",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:133b1ae9e8a15aa38e72df4e24356493d8a5ba403bf29e11d96213913b57a77b",
+      "source_fact_keys": [
+        "source_fact:v1:21c150cfc00a25f842ea932ee452f3704fa6206e9a848a25bf924528afad8152",
+        "source_fact:v1:5715d70bba4387688b27ce94ed4cff7ac262047079d0548a7f25ddcd3038ea5e",
+        "source_fact:v1:fee07f5cf43821d677a54153ba730eda09815033ac51e1b0b902878d53949579"
+      ],
+      "source_published_kst": "2026-10-19T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\"",
+      "telegram_core_fact": "매킨토시는 AI 관련 자본지출이 실제로 이뤄지지 않을 경우 관련 기업들이 큰 타격을 받을 수 있지만, 계획대로 투자가 계속되는 상황도 위험할 수 있다고 지적했다.",
+      "title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\""
     },
     "original:a0c2e92795d1f67c55faed05": {
       "first_seen_kst": "2026-10-06T16:20:22+09:00",
@@ -342048,6 +342552,32 @@
       "source_title": "아이온큐, 엘리시티 13억 달러 전량 주식 인수 계약",
       "telegram_core_fact": "아이온큐(IONQ)가 제로 트러스트 보안 기업 엘리시티(Elisity)를 최대 13억 달러 전량 주식 거래로 인수하는 확정 계약을 체결했다고 13일 발표했다.",
       "title": "아이온큐, 엘리시티 13억 달러 전량 주식 인수 계약"
+    },
+    "original:c89459652037f4c75b06bbca": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019007500071",
+      "source": "연합뉴스",
+      "source_body_digest": "827550ec493f33a1ea7505bbad87c0a09fae96ff8898aa6e4922a4165a8e7342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6855837fdcd34823b51f7739a9db08ccc9ad3d5fc1c703ed3ab610af02106412",
+      "source_fact_keys": [
+        "source_fact:v1:08ad940a775d8122c8e826cbc4ff2e1f2814b44d9c799d7e866290ae1821db00",
+        "source_fact:v1:1ff14bb26e28c236f5867c7030e4e32535f655fd44e2bce3c8926d0527b410e0",
+        "source_fact:v1:238adfba984502f705d58016fc30da9237e407e23d064dddcc57d3ffbb17446f",
+        "source_fact:v1:697cef419b1e95288ee0489599f12b4d847b4873652fe7bc411e3eaa32c4abd6",
+        "source_fact:v1:82023a31961594a720ca3affd3de57bacf23ad4473d27a5c00362fa8f2e63cfc",
+        "source_fact:v1:8347a1e11d7f6d59dd6a3868fc640d1515b01362d31160b7cd6969c116d7c5de",
+        "source_fact:v1:8e3a0a84835bf769728e162dcf9aa85802afd3ab494759821ba511ab3dfcc63f"
+      ],
+      "source_published_kst": "2026-10-19T07:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
+      "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
+      "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
     },
     "original:c8a24ae29b793bd73ed17f0f": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
@@ -357421,6 +357951,27 @@
       "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
       "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
       "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
+    },
+    "original:f0838ae004a90b5d49fe057e": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637025",
+      "source": "이투데이",
+      "source_body_digest": "5ed72d9ad0e53302642704243cad25ed7e2846516c3fe9f3fba8498e6196b122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ee576c0d246f03c8436a1f153ae7bf1917104cfdc615b8f5ad2c06c998c9267",
+      "source_fact_keys": [
+        "source_fact:v1:416e23f19898b36ea6d29697cd93df742ecfe678272247bec821727a85fed099",
+        "source_fact:v1:ffb09cc1f2f2a9078003080702ce3290fc2a50c6367087a11900cb643d2c0d40"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓",
+      "telegram_core_fact": "상장예정 기업과 재무기준 미달 기업 등을 중심으로 직권 지정 대상이 포함됐으며, 전체 대상은 전년보다 소폭 줄었다.",
+      "title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓"
     },
     "original:f0918d18ced22761d1b1402b": {
       "first_seen_kst": "2026-10-05T15:34:30+09:00",
@@ -393537,6 +394088,27 @@
       "telegram_core_fact": "이 사장은 '생애최초 주택구입자에 대한 대출 규제를 강화해야 한다'는 기존 발언에 대해 질문을 받자 \"앞으로 집값이 급락할 가능성이 있기 때문에 그 점을 고려해서 드린 말씀\"이라며 \"급락할 가능성이 좀 많다. 지금 저희가 공급을 열심히 하고 있다\"고 답했습니다.",
       "title": "자고 나면 집값 오르는데 \"급락 가능성\"…근거 살펴보니 [시장톡]"
     },
+    "source_fact:131aa61764ac16254f172b3f": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.mk.co.kr/news/it/12179147",
+      "source": "매일경제",
+      "source_body_digest": "2cdc2ebc945ab4a177ff0143622a7850d58674f5b0b3c4b91df3b4340f0b9ffa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8803056029ae3c7360791f5448f89f6c3cbcefbca487505a51d40e47fd2926e6",
+      "source_fact_keys": [
+        "source_fact:v1:af15af968e41eadf1e5d569f2b22f95dd88787d74daff4b72c375cd19e585c13",
+        "source_fact:v1:dba6bd988b370b5f88d6068fb0d3c8f20825323db72b8f2c41e9462bd9a2b146"
+      ],
+      "source_published_kst": "2026-10-19T06:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연",
+      "telegram_core_fact": "앤트로픽은 당초 이달 중 상장을 추진했으나 일정이 연기되면서, 11월 미국 중간선거 이후 상장할 가능성이 커졌다.",
+      "title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연"
+    },
     "source_fact:131c7ba547b96650023a5a34": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
       "lanes": {
@@ -423549,6 +424121,32 @@
       "telegram_core_fact": "동아시아 주요국의 연휴가 집중된 이번 10월에도 외국인 관광객의 소비가 백화점과 면세점 매출 증가에 힘을 보탠 것으로 분석된다.",
       "title": "\"작년 역대급 기록 넘었다\" 동아시아 황금연휴에 백화점·면세점 '방긋'"
     },
+    "source_fact:25a531152aa534ec1b24d942": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019007500071",
+      "source": "연합뉴스",
+      "source_body_digest": "827550ec493f33a1ea7505bbad87c0a09fae96ff8898aa6e4922a4165a8e7342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6855837fdcd34823b51f7739a9db08ccc9ad3d5fc1c703ed3ab610af02106412",
+      "source_fact_keys": [
+        "source_fact:v1:08ad940a775d8122c8e826cbc4ff2e1f2814b44d9c799d7e866290ae1821db00",
+        "source_fact:v1:1ff14bb26e28c236f5867c7030e4e32535f655fd44e2bce3c8926d0527b410e0",
+        "source_fact:v1:238adfba984502f705d58016fc30da9237e407e23d064dddcc57d3ffbb17446f",
+        "source_fact:v1:697cef419b1e95288ee0489599f12b4d847b4873652fe7bc411e3eaa32c4abd6",
+        "source_fact:v1:82023a31961594a720ca3affd3de57bacf23ad4473d27a5c00362fa8f2e63cfc",
+        "source_fact:v1:8347a1e11d7f6d59dd6a3868fc640d1515b01362d31160b7cd6969c116d7c5de",
+        "source_fact:v1:8e3a0a84835bf769728e162dcf9aa85802afd3ab494759821ba511ab3dfcc63f"
+      ],
+      "source_published_kst": "2026-10-19T07:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
+      "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
+      "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
+    },
     "source_fact:25a8dd19279a11a461172129": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -426260,6 +426858,28 @@
       "source_title": "AI 데이터센터가 살린 철강…관세 50%에도 대미 수출 급증",
       "telegram_core_fact": "특히 미국 내 중국산 철강재에 대한 관세와 안보 규제가 강화되면서 중국산 제품의 시장 접근성이 크게 떨어졌고, 한국산 봉형강과 강관, 강판 등에 대한 수요가 늘어난 것도 수출 증가의 배경으로 꼽힌다.",
       "title": "AI 데이터센터가 살린 철강…관세 50%에도 대미 수출 급증"
+    },
+    "source_fact:2776cc3bb4df2200ad4a2a5a": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830719",
+      "source": "뉴시스",
+      "source_body_digest": "665d776b89d40e56bdc41861db22aa8f9b4749919e16cb9adcc5a8985dd3ee11",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:133b1ae9e8a15aa38e72df4e24356493d8a5ba403bf29e11d96213913b57a77b",
+      "source_fact_keys": [
+        "source_fact:v1:21c150cfc00a25f842ea932ee452f3704fa6206e9a848a25bf924528afad8152",
+        "source_fact:v1:5715d70bba4387688b27ce94ed4cff7ac262047079d0548a7f25ddcd3038ea5e",
+        "source_fact:v1:fee07f5cf43821d677a54153ba730eda09815033ac51e1b0b902878d53949579"
+      ],
+      "source_published_kst": "2026-10-19T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\"",
+      "telegram_core_fact": "매킨토시는 AI 관련 자본지출이 실제로 이뤄지지 않을 경우 관련 기업들이 큰 타격을 받을 수 있지만, 계획대로 투자가 계속되는 상황도 위험할 수 있다고 지적했다.",
+      "title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\""
     },
     "source_fact:277d9a18c43ef9ef52b1aeb3": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
@@ -434905,6 +435525,32 @@
       "telegram_core_fact": "김 장관은 그간의 TF 논의 결과를 토대로 기업별 투자 진행 상황과 애로사항, 지방정부의 인허가 추진 상황 등을 종합적으로 점검했다.",
       "title": "김정관, 392조 충청권 투자 점검…\"인허가·전력·용수 확실하게 뒷받침\""
     },
+    "source_fact:2ca23f1f066dedb0de4749ca": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019007500071",
+      "source": "연합뉴스",
+      "source_body_digest": "827550ec493f33a1ea7505bbad87c0a09fae96ff8898aa6e4922a4165a8e7342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6855837fdcd34823b51f7739a9db08ccc9ad3d5fc1c703ed3ab610af02106412",
+      "source_fact_keys": [
+        "source_fact:v1:08ad940a775d8122c8e826cbc4ff2e1f2814b44d9c799d7e866290ae1821db00",
+        "source_fact:v1:1ff14bb26e28c236f5867c7030e4e32535f655fd44e2bce3c8926d0527b410e0",
+        "source_fact:v1:238adfba984502f705d58016fc30da9237e407e23d064dddcc57d3ffbb17446f",
+        "source_fact:v1:697cef419b1e95288ee0489599f12b4d847b4873652fe7bc411e3eaa32c4abd6",
+        "source_fact:v1:82023a31961594a720ca3affd3de57bacf23ad4473d27a5c00362fa8f2e63cfc",
+        "source_fact:v1:8347a1e11d7f6d59dd6a3868fc640d1515b01362d31160b7cd6969c116d7c5de",
+        "source_fact:v1:8e3a0a84835bf769728e162dcf9aa85802afd3ab494759821ba511ab3dfcc63f"
+      ],
+      "source_published_kst": "2026-10-19T07:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
+      "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
+      "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
+    },
     "source_fact:2ca54ea7dc8cea204aad59ef": {
       "first_seen_kst": "2026-10-17T08:46:34+09:00",
       "lanes": {
@@ -438048,6 +438694,27 @@
       "telegram_core_fact": "방한한 리사 수 AMD 회장 겸 최고경영자(CEO)가 삼성과 SK의 반도체 수장을 만나 AI 협력 강화 방안을 논의한다. 약 7개월 만에 다시 성사된 전 부회장과 수 회장의 이번 회동으로 삼성전자와 AMD는 고대역폭메모리(HBM)를 포함한 AI 반도체 협력을 강화할 전망이다.",
       "title": "AMD 리사수, 삼성 전영현·SK 곽노정 만나 AI 협력방안 논의(종합)"
     },
+    "source_fact:2f00888746e3d4fc2e2d53cd": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637025",
+      "source": "이투데이",
+      "source_body_digest": "5ed72d9ad0e53302642704243cad25ed7e2846516c3fe9f3fba8498e6196b122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ee576c0d246f03c8436a1f153ae7bf1917104cfdc615b8f5ad2c06c998c9267",
+      "source_fact_keys": [
+        "source_fact:v1:416e23f19898b36ea6d29697cd93df742ecfe678272247bec821727a85fed099",
+        "source_fact:v1:ffb09cc1f2f2a9078003080702ce3290fc2a50c6367087a11900cb643d2c0d40"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓",
+      "telegram_core_fact": "상장예정 기업과 재무기준 미달 기업 등을 중심으로 직권 지정 대상이 포함됐으며, 전체 대상은 전년보다 소폭 줄었다.",
+      "title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓"
+    },
     "source_fact:2f016e384a26c06803f94a80": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -438528,6 +439195,32 @@
       "source_title": "韓中, 공급망 핫라인 가동…새만금 투자 협력 확대 논의",
       "telegram_core_fact": "한국과 중국 통상당국이 주요 산업 품목의 안정적인 공급망 관리와 새만금 산업단지 투자 확대를 위한 협력 방안을 논의했다. 이번 회의에서 양측은 새만금과 후이저우 산업단지의 지원제도와 투자 인센티브를 공유하고 상대국 산업단지에 진출하는 기업의 편의를 확대하는 방안을 논의했다.",
       "title": "韓中, 공급망 핫라인 가동…새만금 투자 협력 확대 논의"
+    },
+    "source_fact:2f4c5da9e7d925675b2b9007": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019007500071",
+      "source": "연합뉴스",
+      "source_body_digest": "827550ec493f33a1ea7505bbad87c0a09fae96ff8898aa6e4922a4165a8e7342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6855837fdcd34823b51f7739a9db08ccc9ad3d5fc1c703ed3ab610af02106412",
+      "source_fact_keys": [
+        "source_fact:v1:08ad940a775d8122c8e826cbc4ff2e1f2814b44d9c799d7e866290ae1821db00",
+        "source_fact:v1:1ff14bb26e28c236f5867c7030e4e32535f655fd44e2bce3c8926d0527b410e0",
+        "source_fact:v1:238adfba984502f705d58016fc30da9237e407e23d064dddcc57d3ffbb17446f",
+        "source_fact:v1:697cef419b1e95288ee0489599f12b4d847b4873652fe7bc411e3eaa32c4abd6",
+        "source_fact:v1:82023a31961594a720ca3affd3de57bacf23ad4473d27a5c00362fa8f2e63cfc",
+        "source_fact:v1:8347a1e11d7f6d59dd6a3868fc640d1515b01362d31160b7cd6969c116d7c5de",
+        "source_fact:v1:8e3a0a84835bf769728e162dcf9aa85802afd3ab494759821ba511ab3dfcc63f"
+      ],
+      "source_published_kst": "2026-10-19T07:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
+      "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
+      "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
     },
     "source_fact:2f50cacf48c13c947dcaddb9": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -451333,6 +452026,31 @@
       "source_title": "유진투자증권 “러시아 제재 완화에도 디젤 공급난 지속…정제마진 강세 전망”",
       "telegram_core_fact": "유진투자증권은 13일 미국이 디젤 가격 안정을 위해 러시아산 경유에 대한 제재를 한시적으로 완화했지만 글로벌 공급 부족을 해소하기는 어려울 것으로 전망했다.",
       "title": "유진투자증권 “러시아 제재 완화에도 디젤 공급난 지속…정제마진 강세 전망”"
+    },
+    "source_fact:377fa7132c28779fcec6d9ca": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016152800003",
+      "source": "연합뉴스",
+      "source_body_digest": "50ec74ea4b26b9d40a36d01e7b573e8476ff229f46fa4decd3badaf9c3bfa520",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7a6eb1fe2bc2165bec66d5f0bb3518268a0cf7fd87fa169c7c30dd9163dd427",
+      "source_fact_keys": [
+        "source_fact:v1:05b02b4f80889116e6a7f0e3aed3ac81ed58bb382cca5a44b4d3f523d584055b",
+        "source_fact:v1:0f654fe8c6022736559252ae2259b07d27b68e66227760ae574a701757b96065",
+        "source_fact:v1:5590f52b470d58d0bf6f3972e842f7455d3c36467e2888cd41080defbd3214b7",
+        "source_fact:v1:60adeb489733ef08da004d21029aceec81a8fb2b219e8ffdebb1756c74f5577d",
+        "source_fact:v1:9314f94c6dfd56666216fa4364370ce8ca0545fb914bcb55faf1e7048422788b",
+        "source_fact:v1:a3add5c1250ed9ee5ab32a4b235eda29525d0de5d1a65782a33bfbe6925c328e"
+      ],
+      "source_published_kst": "2026-10-19T07:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스",
+      "telegram_core_fact": "메리츠증권은 SK온이 3분기 매출 1조5천984억원에 적자 1천794억원(AMPC 900억원 포함)을 기록해 지난해 동기(매출 1조8천79억원·적자 1천248억원)보다 적자 폭이 커졌을 것으로 전망했다.",
+      "title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스"
     },
     "source_fact:3787d27156d7f2a87afd0fcb": {
       "first_seen_kst": "2026-10-15T16:50:59+09:00",
@@ -488494,6 +489212,32 @@
       ],
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
+    },
+    "source_fact:4edf571602aed326d61c025b": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019007500071",
+      "source": "연합뉴스",
+      "source_body_digest": "827550ec493f33a1ea7505bbad87c0a09fae96ff8898aa6e4922a4165a8e7342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6855837fdcd34823b51f7739a9db08ccc9ad3d5fc1c703ed3ab610af02106412",
+      "source_fact_keys": [
+        "source_fact:v1:08ad940a775d8122c8e826cbc4ff2e1f2814b44d9c799d7e866290ae1821db00",
+        "source_fact:v1:1ff14bb26e28c236f5867c7030e4e32535f655fd44e2bce3c8926d0527b410e0",
+        "source_fact:v1:238adfba984502f705d58016fc30da9237e407e23d064dddcc57d3ffbb17446f",
+        "source_fact:v1:697cef419b1e95288ee0489599f12b4d847b4873652fe7bc411e3eaa32c4abd6",
+        "source_fact:v1:82023a31961594a720ca3affd3de57bacf23ad4473d27a5c00362fa8f2e63cfc",
+        "source_fact:v1:8347a1e11d7f6d59dd6a3868fc640d1515b01362d31160b7cd6969c116d7c5de",
+        "source_fact:v1:8e3a0a84835bf769728e162dcf9aa85802afd3ab494759821ba511ab3dfcc63f"
+      ],
+      "source_published_kst": "2026-10-19T07:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
+      "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
+      "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
     },
     "source_fact:4ee384f04d72fee9f1ce1d38": {
       "first_seen_kst": "2026-10-15T01:29:03+09:00",
@@ -530873,6 +531617,32 @@
       "telegram_core_fact": "미국 국채 10년물 금리가 연 5%를 넘어서면서 주식투자자가 긴장하고 있지만, 증권가에선 오히려 장기 금리의 하락이 더 큰 악재가 될 수 있다는 분석이 잇달아 나왔다.",
       "title": "\"증시 덮칠 '진짜 공포' 따로 있다\"…증권가 '무서운 경고' [분석+]"
     },
+    "source_fact:69b1e50053ad6781db68a75f": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019007500071",
+      "source": "연합뉴스",
+      "source_body_digest": "827550ec493f33a1ea7505bbad87c0a09fae96ff8898aa6e4922a4165a8e7342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6855837fdcd34823b51f7739a9db08ccc9ad3d5fc1c703ed3ab610af02106412",
+      "source_fact_keys": [
+        "source_fact:v1:08ad940a775d8122c8e826cbc4ff2e1f2814b44d9c799d7e866290ae1821db00",
+        "source_fact:v1:1ff14bb26e28c236f5867c7030e4e32535f655fd44e2bce3c8926d0527b410e0",
+        "source_fact:v1:238adfba984502f705d58016fc30da9237e407e23d064dddcc57d3ffbb17446f",
+        "source_fact:v1:697cef419b1e95288ee0489599f12b4d847b4873652fe7bc411e3eaa32c4abd6",
+        "source_fact:v1:82023a31961594a720ca3affd3de57bacf23ad4473d27a5c00362fa8f2e63cfc",
+        "source_fact:v1:8347a1e11d7f6d59dd6a3868fc640d1515b01362d31160b7cd6969c116d7c5de",
+        "source_fact:v1:8e3a0a84835bf769728e162dcf9aa85802afd3ab494759821ba511ab3dfcc63f"
+      ],
+      "source_published_kst": "2026-10-19T07:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
+      "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
+      "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
+    },
     "source_fact:69be3405b9d9c74ffdd3df62": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -535078,6 +535848,27 @@
       "source_published_kst": "2026-10-06T08:55+09:00",
       "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
     },
+    "source_fact:6c304aa83dafc36d38b2ec4d": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637025",
+      "source": "이투데이",
+      "source_body_digest": "5ed72d9ad0e53302642704243cad25ed7e2846516c3fe9f3fba8498e6196b122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ee576c0d246f03c8436a1f153ae7bf1917104cfdc615b8f5ad2c06c998c9267",
+      "source_fact_keys": [
+        "source_fact:v1:416e23f19898b36ea6d29697cd93df742ecfe678272247bec821727a85fed099",
+        "source_fact:v1:ffb09cc1f2f2a9078003080702ce3290fc2a50c6367087a11900cb643d2c0d40"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓",
+      "telegram_core_fact": "상장예정 기업과 재무기준 미달 기업 등을 중심으로 직권 지정 대상이 포함됐으며, 전체 대상은 전년보다 소폭 줄었다.",
+      "title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓"
+    },
     "source_fact:6c33f175d0ee81f2caecc91c": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -538533,6 +539324,28 @@
       ],
       "source_published_kst": "2026-10-06T10:33+09:00",
       "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
+    },
+    "source_fact:6e8d846adfa0e005e2d45d3d": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830719",
+      "source": "뉴시스",
+      "source_body_digest": "665d776b89d40e56bdc41861db22aa8f9b4749919e16cb9adcc5a8985dd3ee11",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:133b1ae9e8a15aa38e72df4e24356493d8a5ba403bf29e11d96213913b57a77b",
+      "source_fact_keys": [
+        "source_fact:v1:21c150cfc00a25f842ea932ee452f3704fa6206e9a848a25bf924528afad8152",
+        "source_fact:v1:5715d70bba4387688b27ce94ed4cff7ac262047079d0548a7f25ddcd3038ea5e",
+        "source_fact:v1:fee07f5cf43821d677a54153ba730eda09815033ac51e1b0b902878d53949579"
+      ],
+      "source_published_kst": "2026-10-19T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\"",
+      "telegram_core_fact": "매킨토시는 AI 관련 자본지출이 실제로 이뤄지지 않을 경우 관련 기업들이 큰 타격을 받을 수 있지만, 계획대로 투자가 계속되는 상황도 위험할 수 있다고 지적했다.",
+      "title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\""
     },
     "source_fact:6e92fb8f8c615be9a180febc": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
@@ -543960,6 +544773,31 @@
       "telegram_core_fact": "베터 홈 앤 파이낸스 홀딩(BETR)은 2026년 9월 30일 종료된 3분기 잠정 총순매출액(Total Net Revenues)이 4510만 달러로 전년비 8.6% 증가했지만, 앞서 제시한 가이던스 하단(4900만~5200만 달러)에는 못 미쳤다고 14일 발표했다.",
       "title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회"
     },
+    "source_fact:7224b7f97bdc8e525c174fdb": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016152800003",
+      "source": "연합뉴스",
+      "source_body_digest": "50ec74ea4b26b9d40a36d01e7b573e8476ff229f46fa4decd3badaf9c3bfa520",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7a6eb1fe2bc2165bec66d5f0bb3518268a0cf7fd87fa169c7c30dd9163dd427",
+      "source_fact_keys": [
+        "source_fact:v1:05b02b4f80889116e6a7f0e3aed3ac81ed58bb382cca5a44b4d3f523d584055b",
+        "source_fact:v1:0f654fe8c6022736559252ae2259b07d27b68e66227760ae574a701757b96065",
+        "source_fact:v1:5590f52b470d58d0bf6f3972e842f7455d3c36467e2888cd41080defbd3214b7",
+        "source_fact:v1:60adeb489733ef08da004d21029aceec81a8fb2b219e8ffdebb1756c74f5577d",
+        "source_fact:v1:9314f94c6dfd56666216fa4364370ce8ca0545fb914bcb55faf1e7048422788b",
+        "source_fact:v1:a3add5c1250ed9ee5ab32a4b235eda29525d0de5d1a65782a33bfbe6925c328e"
+      ],
+      "source_published_kst": "2026-10-19T07:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스",
+      "telegram_core_fact": "메리츠증권은 SK온이 3분기 매출 1조5천984억원에 적자 1천794억원(AMPC 900억원 포함)을 기록해 지난해 동기(매출 1조8천79억원·적자 1천248억원)보다 적자 폭이 커졌을 것으로 전망했다.",
+      "title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스"
+    },
     "source_fact:7224ce34c551ab818d9a5de2": {
       "first_seen_kst": "2026-10-12T15:02:00+09:00",
       "lanes": {
@@ -548650,6 +549488,27 @@
       ],
       "source_published_kst": "2026-10-05T12:55+09:00",
       "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
+    },
+    "source_fact:750b33f2b8bce02e93a745e0": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.mk.co.kr/news/it/12179147",
+      "source": "매일경제",
+      "source_body_digest": "2cdc2ebc945ab4a177ff0143622a7850d58674f5b0b3c4b91df3b4340f0b9ffa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8803056029ae3c7360791f5448f89f6c3cbcefbca487505a51d40e47fd2926e6",
+      "source_fact_keys": [
+        "source_fact:v1:af15af968e41eadf1e5d569f2b22f95dd88787d74daff4b72c375cd19e585c13",
+        "source_fact:v1:dba6bd988b370b5f88d6068fb0d3c8f20825323db72b8f2c41e9462bd9a2b146"
+      ],
+      "source_published_kst": "2026-10-19T06:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연",
+      "telegram_core_fact": "앤트로픽은 당초 이달 중 상장을 추진했으나 일정이 연기되면서, 11월 미국 중간선거 이후 상장할 가능성이 커졌다.",
+      "title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연"
     },
     "source_fact:75127950eacfea034a716352": {
       "first_seen_kst": "2026-10-17T09:15:26+09:00",
@@ -567643,6 +568502,31 @@
       "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
       "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
       "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
+    },
+    "source_fact:815fcd003260d1a569210661": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016152800003",
+      "source": "연합뉴스",
+      "source_body_digest": "50ec74ea4b26b9d40a36d01e7b573e8476ff229f46fa4decd3badaf9c3bfa520",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7a6eb1fe2bc2165bec66d5f0bb3518268a0cf7fd87fa169c7c30dd9163dd427",
+      "source_fact_keys": [
+        "source_fact:v1:05b02b4f80889116e6a7f0e3aed3ac81ed58bb382cca5a44b4d3f523d584055b",
+        "source_fact:v1:0f654fe8c6022736559252ae2259b07d27b68e66227760ae574a701757b96065",
+        "source_fact:v1:5590f52b470d58d0bf6f3972e842f7455d3c36467e2888cd41080defbd3214b7",
+        "source_fact:v1:60adeb489733ef08da004d21029aceec81a8fb2b219e8ffdebb1756c74f5577d",
+        "source_fact:v1:9314f94c6dfd56666216fa4364370ce8ca0545fb914bcb55faf1e7048422788b",
+        "source_fact:v1:a3add5c1250ed9ee5ab32a4b235eda29525d0de5d1a65782a33bfbe6925c328e"
+      ],
+      "source_published_kst": "2026-10-19T07:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스",
+      "telegram_core_fact": "메리츠증권은 SK온이 3분기 매출 1조5천984억원에 적자 1천794억원(AMPC 900억원 포함)을 기록해 지난해 동기(매출 1조8천79억원·적자 1천248억원)보다 적자 폭이 커졌을 것으로 전망했다.",
+      "title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스"
     },
     "source_fact:81645b0454ccabb83e4882f2": {
       "first_seen_kst": "2026-10-11T21:07:10+09:00",
@@ -610261,6 +611145,32 @@
       "telegram_core_fact": "10년 만기 미국 국채금리는 장중 연 5.36%까지 상승해 2002년 이후 최고치를 기록했다.",
       "title": "뉴욕증시, 국채금리 24년래 최고에 휘청⋯3대 지수 동반 하락[종합]"
     },
+    "source_fact:9d470f9162fc16f3ac17b586": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019007500071",
+      "source": "연합뉴스",
+      "source_body_digest": "827550ec493f33a1ea7505bbad87c0a09fae96ff8898aa6e4922a4165a8e7342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6855837fdcd34823b51f7739a9db08ccc9ad3d5fc1c703ed3ab610af02106412",
+      "source_fact_keys": [
+        "source_fact:v1:08ad940a775d8122c8e826cbc4ff2e1f2814b44d9c799d7e866290ae1821db00",
+        "source_fact:v1:1ff14bb26e28c236f5867c7030e4e32535f655fd44e2bce3c8926d0527b410e0",
+        "source_fact:v1:238adfba984502f705d58016fc30da9237e407e23d064dddcc57d3ffbb17446f",
+        "source_fact:v1:697cef419b1e95288ee0489599f12b4d847b4873652fe7bc411e3eaa32c4abd6",
+        "source_fact:v1:82023a31961594a720ca3affd3de57bacf23ad4473d27a5c00362fa8f2e63cfc",
+        "source_fact:v1:8347a1e11d7f6d59dd6a3868fc640d1515b01362d31160b7cd6969c116d7c5de",
+        "source_fact:v1:8e3a0a84835bf769728e162dcf9aa85802afd3ab494759821ba511ab3dfcc63f"
+      ],
+      "source_published_kst": "2026-10-19T07:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
+      "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
+      "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
+    },
     "source_fact:9d5740643c47749d5390a916": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
       "lanes": {
@@ -620699,6 +621609,32 @@
       "source_title": "中 CXMT, 서버용 차세대 D램 출시 예고…韓 반도체 추격",
       "telegram_core_fact": "트렌드포스에 따르면 올해 2분기 매출 기준 CXMT의 D램 시장점유율은 전 분기 7.6%에서 9.5%로 상승했다.",
       "title": "中 CXMT, 서버용 차세대 D램 출시 예고…韓 반도체 추격"
+    },
+    "source_fact:a3fed4d8fd9ffed701d170f4": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019007500071",
+      "source": "연합뉴스",
+      "source_body_digest": "827550ec493f33a1ea7505bbad87c0a09fae96ff8898aa6e4922a4165a8e7342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6855837fdcd34823b51f7739a9db08ccc9ad3d5fc1c703ed3ab610af02106412",
+      "source_fact_keys": [
+        "source_fact:v1:08ad940a775d8122c8e826cbc4ff2e1f2814b44d9c799d7e866290ae1821db00",
+        "source_fact:v1:1ff14bb26e28c236f5867c7030e4e32535f655fd44e2bce3c8926d0527b410e0",
+        "source_fact:v1:238adfba984502f705d58016fc30da9237e407e23d064dddcc57d3ffbb17446f",
+        "source_fact:v1:697cef419b1e95288ee0489599f12b4d847b4873652fe7bc411e3eaa32c4abd6",
+        "source_fact:v1:82023a31961594a720ca3affd3de57bacf23ad4473d27a5c00362fa8f2e63cfc",
+        "source_fact:v1:8347a1e11d7f6d59dd6a3868fc640d1515b01362d31160b7cd6969c116d7c5de",
+        "source_fact:v1:8e3a0a84835bf769728e162dcf9aa85802afd3ab494759821ba511ab3dfcc63f"
+      ],
+      "source_published_kst": "2026-10-19T07:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
+      "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
+      "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
     },
     "source_fact:a4048b68f95e12fba6f02cf0": {
       "first_seen_kst": "2026-10-18T07:09:00+09:00",
@@ -673374,6 +674310,31 @@
       "source_published_kst": "2026-10-07T06:06+09:00",
       "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
     },
+    "source_fact:c5d6423e9819f2da400b9bd3": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016152800003",
+      "source": "연합뉴스",
+      "source_body_digest": "50ec74ea4b26b9d40a36d01e7b573e8476ff229f46fa4decd3badaf9c3bfa520",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7a6eb1fe2bc2165bec66d5f0bb3518268a0cf7fd87fa169c7c30dd9163dd427",
+      "source_fact_keys": [
+        "source_fact:v1:05b02b4f80889116e6a7f0e3aed3ac81ed58bb382cca5a44b4d3f523d584055b",
+        "source_fact:v1:0f654fe8c6022736559252ae2259b07d27b68e66227760ae574a701757b96065",
+        "source_fact:v1:5590f52b470d58d0bf6f3972e842f7455d3c36467e2888cd41080defbd3214b7",
+        "source_fact:v1:60adeb489733ef08da004d21029aceec81a8fb2b219e8ffdebb1756c74f5577d",
+        "source_fact:v1:9314f94c6dfd56666216fa4364370ce8ca0545fb914bcb55faf1e7048422788b",
+        "source_fact:v1:a3add5c1250ed9ee5ab32a4b235eda29525d0de5d1a65782a33bfbe6925c328e"
+      ],
+      "source_published_kst": "2026-10-19T07:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스",
+      "telegram_core_fact": "메리츠증권은 SK온이 3분기 매출 1조5천984억원에 적자 1천794억원(AMPC 900억원 포함)을 기록해 지난해 동기(매출 1조8천79억원·적자 1천248억원)보다 적자 폭이 커졌을 것으로 전망했다.",
+      "title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스"
+    },
     "source_fact:c5dae81b1688af8919e00674": {
       "first_seen_kst": "2026-10-13T23:22:47+09:00",
       "lanes": {
@@ -698036,6 +698997,28 @@
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
+    "source_fact:d5b2f7b7f21818c7259c0562": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830719",
+      "source": "뉴시스",
+      "source_body_digest": "665d776b89d40e56bdc41861db22aa8f9b4749919e16cb9adcc5a8985dd3ee11",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:133b1ae9e8a15aa38e72df4e24356493d8a5ba403bf29e11d96213913b57a77b",
+      "source_fact_keys": [
+        "source_fact:v1:21c150cfc00a25f842ea932ee452f3704fa6206e9a848a25bf924528afad8152",
+        "source_fact:v1:5715d70bba4387688b27ce94ed4cff7ac262047079d0548a7f25ddcd3038ea5e",
+        "source_fact:v1:fee07f5cf43821d677a54153ba730eda09815033ac51e1b0b902878d53949579"
+      ],
+      "source_published_kst": "2026-10-19T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\"",
+      "telegram_core_fact": "매킨토시는 AI 관련 자본지출이 실제로 이뤄지지 않을 경우 관련 기업들이 큰 타격을 받을 수 있지만, 계획대로 투자가 계속되는 상황도 위험할 수 있다고 지적했다.",
+      "title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\""
+    },
     "source_fact:d5b5bf41d1bf05aaa0842816": {
       "first_seen_kst": "2026-10-11T20:19:08+09:00",
       "lanes": {
@@ -703055,6 +704038,31 @@
       ],
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:d885803d06b48fcb04172ac5": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016152800003",
+      "source": "연합뉴스",
+      "source_body_digest": "50ec74ea4b26b9d40a36d01e7b573e8476ff229f46fa4decd3badaf9c3bfa520",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7a6eb1fe2bc2165bec66d5f0bb3518268a0cf7fd87fa169c7c30dd9163dd427",
+      "source_fact_keys": [
+        "source_fact:v1:05b02b4f80889116e6a7f0e3aed3ac81ed58bb382cca5a44b4d3f523d584055b",
+        "source_fact:v1:0f654fe8c6022736559252ae2259b07d27b68e66227760ae574a701757b96065",
+        "source_fact:v1:5590f52b470d58d0bf6f3972e842f7455d3c36467e2888cd41080defbd3214b7",
+        "source_fact:v1:60adeb489733ef08da004d21029aceec81a8fb2b219e8ffdebb1756c74f5577d",
+        "source_fact:v1:9314f94c6dfd56666216fa4364370ce8ca0545fb914bcb55faf1e7048422788b",
+        "source_fact:v1:a3add5c1250ed9ee5ab32a4b235eda29525d0de5d1a65782a33bfbe6925c328e"
+      ],
+      "source_published_kst": "2026-10-19T07:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스",
+      "telegram_core_fact": "메리츠증권은 SK온이 3분기 매출 1조5천984억원에 적자 1천794억원(AMPC 900억원 포함)을 기록해 지난해 동기(매출 1조8천79억원·적자 1천248억원)보다 적자 폭이 커졌을 것으로 전망했다.",
+      "title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스"
     },
     "source_fact:d887272c12d7267fb0ae0e3c": {
       "first_seen_kst": "2026-10-19T04:40:52+09:00",
@@ -734673,6 +735681,31 @@
       "source_title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다",
       "telegram_core_fact": "호남 반도체 클러스터 1단계 전력 공급망 구축에 1조4000억원이 투입되는 가운데 한국전력이 부담하는 몫은 20% 미만에 그칠 것으로 나타났다.",
       "title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다"
+    },
+    "source_fact:ec99076becf87122456dcb5c": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016152800003",
+      "source": "연합뉴스",
+      "source_body_digest": "50ec74ea4b26b9d40a36d01e7b573e8476ff229f46fa4decd3badaf9c3bfa520",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7a6eb1fe2bc2165bec66d5f0bb3518268a0cf7fd87fa169c7c30dd9163dd427",
+      "source_fact_keys": [
+        "source_fact:v1:05b02b4f80889116e6a7f0e3aed3ac81ed58bb382cca5a44b4d3f523d584055b",
+        "source_fact:v1:0f654fe8c6022736559252ae2259b07d27b68e66227760ae574a701757b96065",
+        "source_fact:v1:5590f52b470d58d0bf6f3972e842f7455d3c36467e2888cd41080defbd3214b7",
+        "source_fact:v1:60adeb489733ef08da004d21029aceec81a8fb2b219e8ffdebb1756c74f5577d",
+        "source_fact:v1:9314f94c6dfd56666216fa4364370ce8ca0545fb914bcb55faf1e7048422788b",
+        "source_fact:v1:a3add5c1250ed9ee5ab32a4b235eda29525d0de5d1a65782a33bfbe6925c328e"
+      ],
+      "source_published_kst": "2026-10-19T07:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스",
+      "telegram_core_fact": "메리츠증권은 SK온이 3분기 매출 1조5천984억원에 적자 1천794억원(AMPC 900억원 포함)을 기록해 지난해 동기(매출 1조8천79억원·적자 1천248억원)보다 적자 폭이 커졌을 것으로 전망했다.",
+      "title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스"
     },
     "source_fact:ec993f028cdda52519727b93": {
       "first_seen_kst": "2026-10-15T09:18:20+09:00",
@@ -768048,6 +769081,27 @@
       "telegram_core_fact": "한화에어로스페이스가 3분기에 1조원 이상의 영업이익을 달성하면 2개 분기 연속으로 분기 영업이익이 1조원을 기록하게 된다.",
       "title": "한화에어로스페이스, 3분기 영업익 1.2조 전망…\"통합화·대형화로 수익성 극대화\""
     },
+    "title:0b82b9815d6f401dd647feec": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.mk.co.kr/news/it/12179147",
+      "source": "매일경제",
+      "source_body_digest": "2cdc2ebc945ab4a177ff0143622a7850d58674f5b0b3c4b91df3b4340f0b9ffa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8803056029ae3c7360791f5448f89f6c3cbcefbca487505a51d40e47fd2926e6",
+      "source_fact_keys": [
+        "source_fact:v1:af15af968e41eadf1e5d569f2b22f95dd88787d74daff4b72c375cd19e585c13",
+        "source_fact:v1:dba6bd988b370b5f88d6068fb0d3c8f20825323db72b8f2c41e9462bd9a2b146"
+      ],
+      "source_published_kst": "2026-10-19T06:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연",
+      "telegram_core_fact": "앤트로픽은 당초 이달 중 상장을 추진했으나 일정이 연기되면서, 11월 미국 중간선거 이후 상장할 가능성이 커졌다.",
+      "title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연"
+    },
     "title:0b8f0cd0f79fd0a9c90360d3": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -784909,6 +785963,31 @@
       ],
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
+    },
+    "title:34c6d44c95746c4ac60a69f3": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016152800003",
+      "source": "연합뉴스",
+      "source_body_digest": "50ec74ea4b26b9d40a36d01e7b573e8476ff229f46fa4decd3badaf9c3bfa520",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7a6eb1fe2bc2165bec66d5f0bb3518268a0cf7fd87fa169c7c30dd9163dd427",
+      "source_fact_keys": [
+        "source_fact:v1:05b02b4f80889116e6a7f0e3aed3ac81ed58bb382cca5a44b4d3f523d584055b",
+        "source_fact:v1:0f654fe8c6022736559252ae2259b07d27b68e66227760ae574a701757b96065",
+        "source_fact:v1:5590f52b470d58d0bf6f3972e842f7455d3c36467e2888cd41080defbd3214b7",
+        "source_fact:v1:60adeb489733ef08da004d21029aceec81a8fb2b219e8ffdebb1756c74f5577d",
+        "source_fact:v1:9314f94c6dfd56666216fa4364370ce8ca0545fb914bcb55faf1e7048422788b",
+        "source_fact:v1:a3add5c1250ed9ee5ab32a4b235eda29525d0de5d1a65782a33bfbe6925c328e"
+      ],
+      "source_published_kst": "2026-10-19T07:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스",
+      "telegram_core_fact": "메리츠증권은 SK온이 3분기 매출 1조5천984억원에 적자 1천794억원(AMPC 900억원 포함)을 기록해 지난해 동기(매출 1조8천79억원·적자 1천248억원)보다 적자 폭이 커졌을 것으로 전망했다.",
+      "title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스"
     },
     "title:34d497452081419e0080130a": {
       "first_seen_kst": "2026-10-04T15:27:13+09:00",
@@ -818922,6 +820001,24 @@
       "source_published_kst": "2026-10-05T18:09+09:00",
       "title": "서울사이버대 개인정보 유출…학생·교직원·지원자 정보 포함"
     },
+    "title:89468713e0ac85667923a5d7": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906401",
+      "source": "헤럴드경제",
+      "source_body_digest": "dd15c517c565fa7740280b14c7ee0ec34a5a2fb2f30b30bbf30c719049a3632a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T06:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "美에너지장관, 러 제재 면제에 “경제적 생명줄 아냐…전쟁 끝내기 위한 당근책”",
+      "telegram_core_fact": "크리스 라이트 미국 에너지부 장관은 18일(현지시간) 러시아산 에너지 구매국에 고율 관세를 부과하는 등의 제재를 면제한 것이 “전쟁을 끝내기 위해 제시하는 당근”이라고 강조했다.",
+      "title": "美에너지장관, 러 제재 면제에 “경제적 생명줄 아냐…전쟁 끝내기 위한 당근책”"
+    },
     "title:894751a64d82672d3b582227": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
       "lanes": {
@@ -828402,6 +829499,28 @@
       "link": "https://biz.heraldcorp.com/article/10892352",
       "source": "헤럴드경제",
       "title": "뉴욕증시, 상승 출발… 테슬라·인텔 등 기술주 강세"
+    },
+    "title:a0b018643e9b1ec239760fa0": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830719",
+      "source": "뉴시스",
+      "source_body_digest": "665d776b89d40e56bdc41861db22aa8f9b4749919e16cb9adcc5a8985dd3ee11",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:133b1ae9e8a15aa38e72df4e24356493d8a5ba403bf29e11d96213913b57a77b",
+      "source_fact_keys": [
+        "source_fact:v1:21c150cfc00a25f842ea932ee452f3704fa6206e9a848a25bf924528afad8152",
+        "source_fact:v1:5715d70bba4387688b27ce94ed4cff7ac262047079d0548a7f25ddcd3038ea5e",
+        "source_fact:v1:fee07f5cf43821d677a54153ba730eda09815033ac51e1b0b902878d53949579"
+      ],
+      "source_published_kst": "2026-10-19T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\"",
+      "telegram_core_fact": "매킨토시는 AI 관련 자본지출이 실제로 이뤄지지 않을 경우 관련 기업들이 큰 타격을 받을 수 있지만, 계획대로 투자가 계속되는 상황도 위험할 수 있다고 지적했다.",
+      "title": "WSJ, AI 투자 거품 경고…\"이번에도 과거와 다르지 않다\""
     },
     "title:a0c2e92795d1f67c55faed05": {
       "first_seen_kst": "2026-10-06T16:20:22+09:00",
@@ -844148,6 +845267,32 @@
       "telegram_core_fact": "아이온큐(IONQ)가 제로 트러스트 보안 기업 엘리시티(Elisity)를 최대 13억 달러 전량 주식 거래로 인수하는 확정 계약을 체결했다고 13일 발표했다.",
       "title": "아이온큐, 엘리시티 13억 달러 전량 주식 인수 계약"
     },
+    "title:c89459652037f4c75b06bbca": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019007500071",
+      "source": "연합뉴스",
+      "source_body_digest": "827550ec493f33a1ea7505bbad87c0a09fae96ff8898aa6e4922a4165a8e7342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6855837fdcd34823b51f7739a9db08ccc9ad3d5fc1c703ed3ab610af02106412",
+      "source_fact_keys": [
+        "source_fact:v1:08ad940a775d8122c8e826cbc4ff2e1f2814b44d9c799d7e866290ae1821db00",
+        "source_fact:v1:1ff14bb26e28c236f5867c7030e4e32535f655fd44e2bce3c8926d0527b410e0",
+        "source_fact:v1:238adfba984502f705d58016fc30da9237e407e23d064dddcc57d3ffbb17446f",
+        "source_fact:v1:697cef419b1e95288ee0489599f12b4d847b4873652fe7bc411e3eaa32c4abd6",
+        "source_fact:v1:82023a31961594a720ca3affd3de57bacf23ad4473d27a5c00362fa8f2e63cfc",
+        "source_fact:v1:8347a1e11d7f6d59dd6a3868fc640d1515b01362d31160b7cd6969c116d7c5de",
+        "source_fact:v1:8e3a0a84835bf769728e162dcf9aa85802afd3ab494759821ba511ab3dfcc63f"
+      ],
+      "source_published_kst": "2026-10-19T07:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
+      "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
+      "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
+    },
     "title:c8a24ae29b793bd73ed17f0f": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
       "lanes": {
@@ -859729,6 +860874,27 @@
       "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
       "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
+    "title:f0838ae004a90b5d49fe057e": {
+      "first_seen_kst": "2026-10-19T07:37:37+09:00",
+      "lanes": {
+        "live": "2026-10-19T07:37:37+09:00"
+      },
+      "last_seen_kst": "2026-10-19T07:37:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637025",
+      "source": "이투데이",
+      "source_body_digest": "5ed72d9ad0e53302642704243cad25ed7e2846516c3fe9f3fba8498e6196b122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ee576c0d246f03c8436a1f153ae7bf1917104cfdc615b8f5ad2c06c998c9267",
+      "source_fact_keys": [
+        "source_fact:v1:416e23f19898b36ea6d29697cd93df742ecfe678272247bec821727a85fed099",
+        "source_fact:v1:ffb09cc1f2f2a9078003080702ce3290fc2a50c6367087a11900cb643d2c0d40"
+      ],
+      "source_published_kst": "2026-10-19T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓",
+      "telegram_core_fact": "상장예정 기업과 재무기준 미달 기업 등을 중심으로 직권 지정 대상이 포함됐으며, 전체 대상은 전년보다 소폭 줄었다.",
+      "title": "금감원, 1193개사 감사인 지정 사전통지⋯전년보다 3%↓"
+    },
     "title:f0918d18ced22761d1b1402b": {
       "first_seen_kst": "2026-10-05T15:34:30+09:00",
       "lanes": {
@@ -866345,5 +867511,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-19T07:05:38+09:00"
+  "updated_at_kst": "2026-10-19T07:37:37+09:00"
 }
