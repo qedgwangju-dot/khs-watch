@@ -32,6 +32,9 @@ STATUS_PATH = ROOT / "out" / "ai_networking_optics_watch_status.md"
 KST = ZoneInfo("Asia/Seoul")
 NOW = dt.datetime.now(dt.timezone.utc)
 CREDO_COMPANY = "Credo"
+# Additional JPMorgan-specified suppliers. Past coverage is NOT a new material event.
+NETWORKING_ADDED_SUPPLIERS = {"Amphenol", "Ciena", "Celestica"}
+NETWORKING_ADDED_FROM_UTC = dt.datetime(2026, 10, 18, 9, 17, tzinfo=dt.timezone.utc)
 CREDO_MONITOR_VERSION = 1
 # Pre-existing public releases are a silent baseline, never new deliveries.
 CREDO_PRIOR_EVENT_KEYS = {
@@ -74,6 +77,21 @@ COMPANIES = {
         "ticker": "ANET",
         "aliases": ["Arista Networks", "Arista"],
         "query": '"Arista Networks" (AI networking OR Ethernet OR 800G OR 1.6T OR 3.2T OR optics OR optical OR cluster OR hyperscaler)',
+    },
+    "Amphenol": {
+        "ticker": "APH",
+        "aliases": ["Amphenol", "Amphenol Corporation"],
+        "query": '"Amphenol" ("AI data center" OR datacom OR "high-speed interconnect" OR "high speed connectors" OR "high-speed cable" OR "optical interconnect") (order OR contract OR supply OR shipped OR shipments OR revenue OR capacity OR manufacturing OR customer OR qualification OR results)',
+    },
+    "Ciena": {
+        "ticker": "CIEN",
+        "aliases": ["Ciena", "WaveLogic", "Waveserver"],
+        "query": '"Ciena" (WaveLogic OR Waveserver OR "data center interconnect" OR "optical pluggable" OR 800G OR 1.6T OR "AI networking" OR "coherent optical") (customer OR contract OR order OR deployment OR shipped OR production OR results OR revenue OR guidance OR capacity)',
+    },
+    "Celestica": {
+        "ticker": "CLS",
+        "aliases": ["Celestica"],
+        "query": '"Celestica" (hyperscaler OR "networking switch" OR "data center networking" OR HPS OR "800G switch" OR "AI networking") (program OR orders OR contract OR manufacturing OR shipped OR production OR ramp OR revenue OR guidance OR capacity OR results)',
     },
     "Marvell": {
         "ticker": "MRVL",
@@ -348,6 +366,9 @@ DISPLAY_NAMES_KO = {
     "Broadcom": "브로드컴",
     "Arista Networks": "아리스타 네트웍스",
     "Marvell": "마벨",
+    "Amphenol": "암페놀",
+    "Ciena": "시에나",
+    "Celestica": "셀레스티카",
     "Lumentum": "루멘텀",
     "Lumentum Supply & Capacity": "루멘텀 AI 광부품 공급·증설",
     "Coherent": "코히런트",
@@ -383,6 +404,7 @@ TRUSTED_SOURCES = {
     "Reuters", "Bloomberg", "Financial Times", "The Wall Street Journal", "CNBC",
     "DigiTimes", "DIGITIMES", "Investing.com", "Barron's", "MarketWatch",
     "NVIDIA Blog", "NVIDIA Newsroom", "Broadcom", "Arista Networks", "Marvell",
+    "Amphenol", "Amphenol Corporation", "Ciena", "Ciena Corporation", "Celestica",
     "Lumentum", "Coherent", "Credo", "Credo Technology Group Holding Ltd",
     "Business Wire", "AXT", "WIN Semiconductors", "VPEC", "Applied Optoelectronics",
     "Fabrinet", "TSMC", "TrendForce",
@@ -509,6 +531,7 @@ SOURCE_PRIORITY = {
     "Coherent": 100, "Credo": 100, "Credo Technology": 100,
     "Business Wire": 88, "NVIDIA Blog": 100, "NVIDIA Newsroom": 100,
     "Broadcom": 100, "Arista Networks": 100, "Marvell": 100,
+    "Amphenol": 100, "Ciena": 100, "Celestica": 100,
     "Lumentum": 100, "AXT": 100, "Applied Optoelectronics": 100,
     "Fabrinet": 100, "TSMC": 100,
     "Volantis": 100, "Lightmatter": 100, "Ayar Labs": 100, "Xscape Photonics": 100,
@@ -2656,8 +2679,104 @@ def load_state() -> dict:
         return {"initialized": False, "seen_keys": []}
 
 
+
+def networking_supplier_milestone(company: str, title: str, source: str,
+                                  published: str | None) -> tuple[str, str] | None:
+    """Only new product/customer/sales milestones, never JPM stock picks or old articles."""
+    if company not in NETWORKING_ADDED_SUPPLIERS:
+        return None
+    try:
+        event_dt = dt.datetime.fromisoformat(published or "")
+        if event_dt.tzinfo is None:
+            return None
+        event_dt = event_dt.astimezone(dt.timezone.utc)
+    except (TypeError, ValueError):
+        return None
+    if event_dt < NETWORKING_ADDED_FROM_UTC:
+        return None
+    title_lower = html.unescape(title or "").lower()
+    source_lower = (source or "").lower()
+    if not any(alias in title_lower or alias in source_lower for alias in {
+        "Amphenol": ("amphenol",),
+        "Ciena": ("ciena",),
+        "Celestica": ("celestica",),
+    }[company]):
+        return None
+    if is_noise(title) or re.search(
+        r"\bjpmorgan\b|\bjp morgan\b|\banalyst\b|\bbullish\b|"
+        r"\b(stock|shares|share price|recommendation|target price|price target)\b",
+        title_lower, re.I,
+    ):
+        return None
+    if source_priority(source) < 65:
+        return None
+    products = {
+        "Amphenol": r"datacom|data.?cent(?:er|re)|hyperscaler|AI (?:rack|network)|"
+                    r"high.?speed (?:connector|cable|interconnect)|optical interconnect|"
+                    r"communications solutions|backplane|signal integrity",
+        "Ciena": r"wavelogic|waveserver|coherent optical|data.?cent(?:er|re)|"
+                 r"800g|1[.]6t|1600zr|pluggable|optical interconnect|ai networking|"
+                 r"optical transport",
+        "Celestica": r"hyperscaler|data.?cent(?:er|re) network|networking switch|"
+                     r"ethernet switch|800g switch|hps|cloud networking|switch program",
+    }
+    if not re.search(products[company], title_lower, re.I):
+        return None
+    milestones = (
+        (r"purchase order|contract|long.?term agreement|supply agreement|"
+         r"design win|order(?:s|ed)?|backlog|bookings?", "수주·계약"),
+        (r"shipments?|shipped|deliver(?:ed|y)|manufactur|volume production|"
+         r"mass production|production ramp|ramping|new production", "양산·출하"),
+        (r"revenue|financial results|earnings|guidance|sales growth|segment sales",
+         "실적·매출"),
+        (r"qualif|certif|customer test|customer validation|customer approval",
+         "고객 검증"),
+        (r"capacity expansion|factory expansion|new factory|new plant|"
+         r"capacity ramp|new line", "생산능력·설비투자"),
+    )
+    for terms, step in milestones:
+        if re.search(terms, title_lower, re.I):
+            label = {
+                "Amphenol": "AI 고속 연결부품·데이터센터 공급",
+                "Ciena": "AI 데이터센터 광전송·연결",
+                "Celestica": "하이퍼스케일러 스위치 제조",
+            }[company]
+            return (label, step)
+    return None
+
+
+def networking_supplier_regression_checks() -> None:
+    base_time = NETWORKING_ADDED_FROM_UTC + dt.timedelta(hours=1)
+    date_new = base_time.isoformat()
+    date_old = (NETWORKING_ADDED_FROM_UTC - dt.timedelta(days=1)).isoformat()
+    good = {
+        "Amphenol": "Amphenol signs new AI data center high-speed connector supply contract",
+        "Ciena": "Ciena delivers WaveLogic optical transport order for new data center",
+        "Celestica": "Celestica hyperscaler networking switch production ramps on customer orders",
+    }
+    for company, headline in good.items():
+        assert networking_supplier_milestone(company, headline, company, date_new)
+        assert networking_supplier_milestone(company, headline, company, date_old) is None
+        assert networking_supplier_milestone(company, headline, company, None) is None
+    assert networking_supplier_milestone(
+        "Celestica", "JPMorgan bullish on Celestica AI networking stocks",
+        "Reuters", date_new) is None
+    assert networking_supplier_milestone(
+        "Amphenol", "Amphenol expands aerospace connector production",
+        "Amphenol", date_new) is None
+    assert networking_supplier_milestone(
+        "Ciena", "Ciena stock rallies after analyst rating upgrade",
+        "Reuters", date_new) is None
+    assert networking_supplier_milestone(
+        "Celestica", "Celestica announces enterprise healthcare contract",
+        "Celestica", date_new) is None
+    assert all(x in COMPANIES for x in NETWORKING_ADDED_SUPPLIERS)
+    assert all(x in DISPLAY_NAMES_KO for x in NETWORKING_ADDED_SUPPLIERS)
+
+
 def main() -> None:
     _self_test_korean_optics_alerts()
+    networking_supplier_regression_checks()
     (ROOT / "out").mkdir(parents=True, exist_ok=True)
     (ROOT / "data").mkdir(parents=True, exist_ok=True)
 
@@ -2764,6 +2883,10 @@ def main() -> None:
                 continue
             title = item["title"]
             source = item.get("source") or ""
+            networking_event = networking_supplier_milestone(
+                company, title, source, item.get("published"))
+            if company in NETWORKING_ADDED_SUPPLIERS and networking_event is None:
+                continue
             # Even a trusted outlet's paraphrase of anonymous allocation
             # percentages does not establish a signed Meta customer award.
             if meta_anonymous_rumor(title) and not meta_official_source(item):
@@ -2835,6 +2958,10 @@ def main() -> None:
                 # Supply booked until 2029 has no conventional product-speed or
                 # "order" token. Never exclude a first-hand CEO quote on that basis.
                 score = max(score, 18)
+            if networking_event:
+                # Only strictly verified commercial stages; network switches
+                # may have no optical/CPO keyword in the headline.
+                score = max(score, 11)
             if power_event:
                 # Factory fuel cell / grid news often lacks 800G or "optical"
                 # in the title, so the original optics score must not drop it.
@@ -2845,7 +2972,7 @@ def main() -> None:
             has_high = any(re.search(p, title, re.I) for p in HIGH_SIGNAL_PATTERNS)
             has_action = any(re.search(p, title, re.I) for p in ACTION_PATTERNS)
             very_strong = bool(re.search(r"\b3\.2\s*[Tt]\b", title, re.I))
-            if not power_event and not lite_event and not meta_event and not credo_event and (
+            if not power_event and not lite_event and not meta_event and not credo_event and not networking_event and (
                 score < 7 or not has_high or (not has_action and not very_strong)
             ):
                 continue
@@ -2855,8 +2982,8 @@ def main() -> None:
                 "ticker": meta["ticker"],
                 "score": score,
                 "key": key,
-                "stage": credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
-                "category": credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else category_for(title, company),
+                "stage": networking_event[1] if networking_event else credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
+                "category": networking_event[0] if networking_event else credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else category_for(title, company),
             })
             all_relevant.append(item)
 
