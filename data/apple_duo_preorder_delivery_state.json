@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "initial_alert_sent": true,
   "seen_ids": [
     "13d0edb9416d3fcdeee36d53",
@@ -34,8 +34,7 @@
     "initial_launch_allocation",
     "미국:2026-11",
     "미국:2026-12",
-    "미국:2027-01",
-    "미국|구성 미확인|색상 미확인:2027-08"
+    "미국:2027-01"
   ],
   "baseline": {
     "2026-10-16_initial_stock_out": {
@@ -55,7 +54,7 @@
     }
   },
   "market_latest": {
-    "미국": "2027-08"
+    "미국": "2027-01"
   },
   "last_scan_items": 21,
   "last_signal_count": 0,
@@ -67,5 +66,16 @@
   "errors": [],
   "market_sku_latest": {},
   "market_day_latest": {},
-  "market_sku_day_latest": {}
+  "market_sku_day_latest": {},
+  "quarantined_delivery_claims": [
+    {
+      "market": "미국",
+      "reported_month": "2027-08",
+      "reason": "Unverified calendar-date contamination; awaiting direct source confirmation",
+      "prior_alert": {
+        "at_kst": "2026-10-18T06:45:27+09:00",
+        "kind": "extension"
+      }
+    }
+  ]
 }
