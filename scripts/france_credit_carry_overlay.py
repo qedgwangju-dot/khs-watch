@@ -9,6 +9,7 @@ No separate bot, schedule, or state writer is created.
 from __future__ import annotations
 
 import datetime as dt
+import hashlib
 import html
 import json
 import pathlib
@@ -20,6 +21,7 @@ from zoneinfo import ZoneInfo
 
 from scripts import europe_sovereign_yield_watch as base
 from scripts.khs_source_fetch import fetch_text
+from scripts.france_ministry_moodys_fallback import discover_ministry_notice
 
 KST = ZoneInfo("Asia/Seoul")
 PARIS = ZoneInfo("Europe/Paris")
@@ -248,6 +250,13 @@ def format_event(rating: dict, events: list[dict], pending: dict,
         status = (f"공식자료 기준 Moody’s {rating['rating']} / 전망 {rating['outlook']} / "
                   f"최근 결정일 {rating['decision_date']}.")
         caveat = "등급 변동·전망 변경 여부는 이전 공식 기록과 비교해 판단합니다."
+    elif any(x["kind"] == "government_rating_notice" for x in events):
+        notice = next(x for x in events if x["kind"] == "government_rating_notice")
+        name = "프랑스 재무부의 Moody’s 신용등급 관련 공식 입장"
+        status = (f"{notice['date']} 프랑스 재무부의 Moody’s 관련 공식 보도자료가 공개됐습니다. "
+                  "신용등급과 전망의 최종 확정값은 Moody’s 직접 발표 또는 AFT 최신 자료 "
+                  "검증 전까지 표시하지 않습니다.")
+        caveat = "정부의 대응 발표 확인과 Moody’s 신용등급 결정문 직접 확인은 서로 다른 단계입니다."
     elif any(x["kind"] == "milestone" for x in events):
         days = min(x["days"] for x in events if x["kind"] == "milestone")
         name = f"프랑스 Moody’s 신용등급 검토 D-{days}"
@@ -292,6 +301,8 @@ def format_event(rating: dict, events: list[dict], pending: dict,
         "",
         f"• AFT France Moody's rating calendar: {rating['url']}",
         f"• Briefs France carry story: {ORIGINAL_STORY}",
+        *([f"• France government Moody press: {next(x for x in events if x['kind'] == 'government_rating_notice')['url']}"]
+          if any(x["kind"] == "government_rating_notice" for x in events) else []),
     ])
     return name, msg
 
@@ -344,8 +355,34 @@ def main() -> int:
         "source_kind": "historical_official_snapshot",
         "verified_on": (existing_credit.get("last_official") or VERIFIED_AFT_SNAPSHOT).get("verified_on", "2026-10-14"),
     }
-    events = credit_events(now.astimezone(PARIS).date(), existing_credit, rating)
+    local_day = now.astimezone(PARIS).date()
+    events = credit_events(local_day, existing_credit, rating)
     delivered = set(existing_credit.get("sent_keys") or [])
+
+    # First-party French Finance Ministry is a backup for the AFT's HTTP 403
+    # problem. A ministry response can confirm publication of an official
+    # government statement, but it must NOT be interpreted as a Moody's
+    # rating or outlook action without Moody's issuer decision.
+    government_notice = None
+    government_errors = []
+    if local_day >= REVIEW_DATE:
+        def government_fetch(url):
+            data, err = fetch_text(
+                url, "Mozilla/5.0 (khs-france-rating-press/1.0)",
+                timeout=13, attempts=1, accept="text/html",
+            )
+            if err is not None or not data:
+                raise RuntimeError(err or "empty ministry notice")
+            return data
+        government_notice, government_errors = discover_ministry_notice(government_fetch, now)
+        if government_notice:
+            digest = hashlib.sha256(government_notice["url"].encode("utf-8")).hexdigest()[:16]
+            key = f"government_notice:{government_notice['date']}:{digest}"
+            if key not in delivered:
+                events.append({"kind": "government_rating_notice",
+                               "key": key, "date": government_notice["date"],
+                               "url": government_notice["url"],
+                               "title": government_notice.get("title", "")})
     if not source_ok and fail_streak >= 4:
         key = "official_rating_source_unavailable:2026-10"
         if key not in delivered:
@@ -396,10 +433,12 @@ def main() -> int:
             f"- 최근 공식확인: Moody's {rating['rating']}, {rating['outlook']}, {rating['decision_date']}",
             f"- 다음 심사: {rating['next_review'] or '미게시'}",
             f"- 연속 원문 오류: {fail_streak}",
+            f"- 프랑스 재무부 공식 입장: {government_notice['url'] if government_notice else '신규 확인 없음'}",
             f"- 이번 새 이벤트: {len(events)}",
             f"- 중복키: {', '.join(x['key'] for x in events) if events else '없음'}",
             f"- 공식 페이지: {rating['url']}",
             *([f"- {x}" for x in errors[:3]] if errors else []),
+            *([f"- 재무부 보조원천: {x}" for x in government_errors[:2]] if government_errors else []),
         ]) + "\n",
         encoding="utf-8",
     )
