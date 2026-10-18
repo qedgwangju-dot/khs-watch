@@ -368,6 +368,12 @@ def jpm_parse_future_growth(text: str) -> dict:
     return out
 
 
+
+def jpm_needs_baseline(previous: dict) -> bool:
+    """A successful previously committed Telegram delivery suppresses replay."""
+    return not bool(previous.get("last_sent_event_id"))
+
+
 def jpm_guard() -> None:
     j = JPM_REFERENCE
     assert j["na_installed_2026_gw"] - j["na_installed_2025_gw"] == 28
@@ -382,6 +388,9 @@ def jpm_guard() -> None:
     assert jpm_parse_future_growth(
         "JPMorgan tier 2 neocloud data center capex 2027 growth forecast raised to 85%"
     ) == {}
+    assert jpm_needs_baseline({}) is True
+    assert jpm_needs_baseline({"last_sent_event_id": JPM_BASELINE_EVENT}) is False
+
 
 
 def jpm_watch_revisions(now: datetime, current: dict) -> tuple[dict, list[dict]]:
@@ -620,7 +629,7 @@ def main() -> int:
     jpm_metrics = dict(jpm_old.get("metrics") or JPM_REFERENCE)
     for key, val in JPM_REFERENCE.items():
         jpm_metrics.setdefault(key, val)
-    jpm_initial = not jpm_old.get("last_sent_event_id")
+    jpm_initial = jpm_needs_baseline(jpm_old)
     jpm_revision, jpm_support = ({}, []) if jpm_initial else jpm_watch_revisions(now, jpm_metrics)
     jpm_event_id = (JPM_BASELINE_EVENT if jpm_initial else
                     hashlib.sha256(json.dumps(jpm_revision, sort_keys=True).encode("utf-8")).hexdigest()[:24]
