@@ -45,6 +45,8 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
         self.assertEqual(watch.credit_events(dt.date(2026, 10, 16), old, rating), [])
         one_day = watch.credit_events(dt.date(2026, 10, 22), old, rating)
         self.assertEqual(one_day[0]["key"], "milestone:2026-10-23:D-1")
+        three_day = watch.credit_events(dt.date(2026, 10, 20), old, rating)
+        self.assertEqual(three_day[0]["key"], "milestone:2026-10-23:D-3")
 
     def test_official_rating_downgrade_requires_changed_official_row(self):
         old = {"last_official": watch.parse_moodys(EXAMPLE_EN)}
@@ -158,6 +160,23 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
         self.assertIn("프랑스 국채관리청 Moody’s 공식 신용등급 일정", html)
         self.assertIn("프랑스 헤지펀드 캐리 청산 보도", html)
         self.assertTrue(all(len(x) <= 3900 for x in chunks))
+
+
+    def test_government_notice_does_not_claim_moodys_rating_result(self):
+        snapshot = dict(watch.VERIFIED_AFT_SNAPSHOT)
+        event = [{"kind": "government_rating_notice",
+                  "key": "government_notice:2026-10-24:test",
+                  "date": "2026-10-24",
+                  "url": "https://presse.economie.gouv.fr/notation-moodys-france/",
+                  "title": "Notation Moody's : réaction du gouvernement"}]
+        _, msg = watch.format_event(
+            snapshot, event, {}, dt.datetime(2026, 10, 24, tzinfo=watch.KST))
+        self.assertIn("직접 발표", msg)
+        self.assertIn("검증 전", msg)
+        self.assertIn("France government Moody press:", msg)
+        from scripts.europe_sovereign_yield_telegram_html import render_chunks
+        rendered = "\n".join(render_chunks(msg))
+        self.assertIn('>프랑스 재무부 Moody’s 공식 입장</a>', rendered)
 
     def test_official_fetch_fallback(self):
         def fetch(url):
