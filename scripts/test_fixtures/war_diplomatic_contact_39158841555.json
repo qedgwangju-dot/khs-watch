@@ -1,0 +1,460 @@
+{
+  "runs": [
+    {
+      "provenance": {
+        "run_id": "39158841555",
+        "code_sha": "0c583570f783ef96204c5967120782506f950241",
+        "queried_at_kst": "2026-10-19T04:28:35.790606+09:00",
+        "alert_sha256": "3456e47ee5c11a7de758131cd358fb9a7348a7ff0a084c44b78d992634c94631"
+      },
+      "articles": [
+        {
+          "id": "f2a6b3b5d1128b0459a3",
+          "title_original": "Zelensky speaks to Witkoff, Kushner amid U.S.-Ukraine crisis",
+          "title_ko": "Zelensky는 미국-우크라이나 위기 속에서 Witkoff, Kushner와 대화합니다.",
+          "description": "Ukrainian President Volodymyr Zelensky spoke Sunday with President Trump's envoys Steve Witkoff and Jared Kushner about the crisis between the countries and U.S. efforts to resume peace talks with Russia. Why it matters: It was the first call between Zelensky and senior U.S. officials since tensions spiked between their countries after Trump cut a diesel deal with Russia 10 days ago. Driving the news: The call took place amid assertions by Zelensky that the Trump administration was behind restrictions imposed on the Starlink and Starshield satellite systems used by the Ukrainian military. \"Who made this decision? I don't know. I think that this is really both [White House and SpaceX] decision. If President Trump will decide tomorrow, or better today, if he will personally decide to lift this decision, it will immediately work as it was before,\" Zelensky said on NBC's \"Meet the Press\" Sunday. He added, \"The message came from [the U.S.] government. I don't know from whom. It's the opinion of our generals, of our government, and of course also my opinion, that it was a message from the American government to limit the speed. And technically, SpaceX did it.\" Secretary of State Marco Rubio said on Saturday that the U.S. government was not involved in the Starlink restrictions and said it has been restored. Ukrainian officials dispute that.",
+          "source": "Axios",
+          "link": "https://www.axios.com/2026/10/18/zelensky-witkoff-kushner-ukraine-russia-crisis",
+          "published": "Sun, 18 Oct 2026 18:04:23 +0000",
+          "score": 76,
+          "tags": [
+            "종전·협상",
+            "협상내용",
+            "휴전·평화"
+          ],
+          "body_checked": true,
+          "signals_ko": [
+            "젤렌스키 측이 종전·평화 협상 재개 의사를 공개적으로 확인"
+          ],
+          "classification_color": "green",
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": true,
+          "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "6eb09acda883286ac98f",
+          "title_original": "사우디·예멘 후티 반군 공습 주고받아…리야드 업무·학교 마비 - 뉴스1",
+          "title_ko": "사우디·예멘 후티 반군 공습 주고받아…리야드 업무·학교 마비 - 뉴스1",
+          "description": "사우디·예멘 후티 반군 공습 주고받아…리야드 업무·학교 마비 뉴스1",
+          "source": "뉴스1",
+          "source_url": "https://www.news1.kr",
+          "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1IU0c3c2ZBZDdiVzg2OVVTOWI5Nk5YdU9NamJJRHZyMnFBaXp4YU1UcGNWLXZlZTNydWI1YWx0Y1JDeHNCTDlqRGxJZ2hKcldxYjN0bTNmSkh6NzNtM0d5Y3B3?oc=5",
+          "published": "Sun, 18 Oct 2026 18:56:07 GMT",
+          "score": 10,
+          "tags": [
+            "확전"
+          ],
+          "body_checked": true,
+          "classification_color": "red",
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": true,
+          "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "markets": [],
+      "market_source_status": {
+        "NQ=F": {
+          "name": "나스닥100 선물",
+          "status": "withheld",
+          "reason": "유효 가격 표본 없음",
+          "quote_metadata": {
+            "symbol": "NQ=F",
+            "instrumentType": "FUTURE",
+            "previousClose": 29391.5,
+            "chartPreviousClose": 29391.5,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792184399,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "start": 1792296000,
+                "end": 1792296000,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "start": 1792296000,
+                "end": 1792382340,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "start": 1792382340,
+                "end": 1792382340,
+                "gmtoffset": -14400
+              }
+            }
+          }
+        },
+        "CL=F": {
+          "name": "WTI",
+          "status": "withheld",
+          "reason": "유효 가격 표본 없음",
+          "quote_metadata": {
+            "symbol": "CL=F",
+            "instrumentType": "FUTURE",
+            "previousClose": 99.02,
+            "chartPreviousClose": 99.02,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792184398,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "start": 1792296000,
+                "end": 1792296000,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "start": 1792296000,
+                "end": 1792382340,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "start": 1792382340,
+                "end": 1792382340,
+                "gmtoffset": -14400
+              }
+            }
+          }
+        },
+        "BZ=F": {
+          "name": "Brent",
+          "status": "withheld",
+          "reason": "유효 가격 표본 없음",
+          "quote_metadata": {
+            "symbol": "BZ=F",
+            "instrumentType": "FUTURE",
+            "previousClose": 109.86,
+            "chartPreviousClose": 109.86,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792184371,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "end": 1792296000,
+                "start": 1792296000,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "end": 1792382340,
+                "start": 1792296000,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "end": 1792382340,
+                "start": 1792382340,
+                "gmtoffset": -14400
+              }
+            }
+          }
+        },
+        "DX-Y.NYB": {
+          "name": "달러지수",
+          "status": "withheld",
+          "reason": "유효 가격 표본 없음",
+          "quote_metadata": {
+            "symbol": "DX-Y.NYB",
+            "instrumentType": "INDEX",
+            "previousClose": 101.837,
+            "chartPreviousClose": 101.837,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792184399,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "start": 1792296000,
+                "end": 1792296000,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "start": 1792296000,
+                "end": 1792382340,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "start": 1792382340,
+                "end": 1792382340,
+                "gmtoffset": -14400
+              }
+            }
+          }
+        }
+      },
+      "actual_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟢 <b>재건·휴전</b>\n조회 2026-10-19 04:28 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🟢 [신규] <b>1. 우크라이나·러시아</b>\n젤렌스키 측이 종전·평화 협상 재개 의사를 공개적으로 확인\nRSS 보도 10-19 03:04 KST · <b>84분 경과</b> · 종전·협상 · 휴전·평화 · <a href=\"https://www.axios.com/2026/10/18/zelensky-witkoff-kushner-ukraine-russia-crisis\">Axios 원문</a> · RSS 입력 기준·본문 미확인\n\n🔴 [신규] <b>2. 사우디·후티</b>\n사우디·예멘 후티 반군 공습 주고받아…리야드 업무·학교 마비 - 뉴스1\nRSS 보도 10-19 03:56 KST · <b>32분 경과</b> · 확전 · <a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTE1IU0c3c2ZBZDdiVzg2OVVTOWI5Nk5YdU9NamJJRHZyMnFBaXp4YU1UcGNWLXZlZTNydWI1YWx0Y1JDeHNCTDlqRGxJZ2hKcldxYjN0bTNmSkh6NzNtM0d5Y3B3?oc=5\">뉴스1 검색 링크</a> · 제목 기준·본문 미확인\n\n시장자료 확인 보류 · 나스닥100 선물 (유효 가격 표본 없음) / WTI (유효 가격 표본 없음) / Brent (유효 가격 표본 없음) / 달러지수 (유효 가격 표본 없음)\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n",
+      "evidence_sha256": "ecf036858e7302f3f26b9e11553d4d6ad1d68d5396fe5e504e58adecdc21b97d"
+    },
+    {
+      "provenance": {
+        "run_id": "39169304677",
+        "code_sha": "aac0e17af6eceb080ddf0203334691ca0909bfc1",
+        "queried_at_kst": "2026-10-19T06:47:34.364841+09:00",
+        "alert_sha256": "05a3845a734291632bcc33ed32fecfd0737a991db1b0a8922e8acad5831efa69"
+      },
+      "articles": [
+        {
+          "id": "3de4ba2775f3e496ba05",
+          "title_original": "[윤재준의 월드뷰] 美 외교 기조 변화에 우크라이나 불확실성 고조",
+          "title_ko": "[윤재준의 월드뷰] 美 외교 기조 변화에 우크라이나 불확실성 고조",
+          "description": "[파이낸셜뉴스] 지난주 우크라이나군이 일론 머스크의 군용 위성 인터넷 서비스인 '스타실드(Starshield)' 접속 차단과 미국의 미사일 경보 정보 공유 중단이라는 유례없는 제한 조치로 큰 혼란을 겪었다. 이로 인해 민간인들이 러시아의 탄도미사일 공격 위험에 무방비로 노출되고 미국과의 동맹 관계에 균열이 가고 있다는 우려가 커지고 있다. 이번 접속 제한은 워싱턴과 키이우 간의 갈등이 고조되는 가운데 발생했다. 영국의 한 전문가는 이번 조치가 볼로디미르 젤렌스키 우크라이나 대통령을 향한 미국 정치권의 대립적 태도와 무관하지 않다고 분석했다. 14일(현지시간) 영국을 방문한 젤렌스키 대통령은 인터뷰에서 미국의 이 같은 행보에 대해 \"배신감을 느낀다\"고 직설적으로 심경을 토로했다. 스타실드 연결은 다음날 다시 복구됐으나",
+          "source": "파이낸셜뉴스",
+          "link": "https://www.fnnews.com/news/202610181717459107",
+          "discovery_url": "https://www.fnnews.com/news/202610181717459107",
+          "resolved_url": "https://www.fnnews.com/news/202610181717459107",
+          "published": "Mon, 19 Oct 2026 05:00:00 +0900",
+          "rss_published": "Mon,19 Oct 2026 05:00:00 +0900",
+          "source_metadata": {
+            "title": "[윤재준의 월드뷰] 美 외교 기조 변화에 우크라이나 불확실성 고조",
+            "publication_status": "verified",
+            "published_at_kst": "2026-10-19T05:00:00+09:00",
+            "publication_candidates": [
+              {
+                "field": "article:published_time",
+                "at_kst": "2026-10-19T05:00:00+09:00"
+              },
+              {
+                "field": "dd:published_time",
+                "at_kst": "2026-10-19T05:00:00+09:00"
+              },
+              {
+                "field": "jsonld:datePublished",
+                "at_kst": "2026-10-19T05:00:00+09:00"
+              },
+              {
+                "field": "visible:입력",
+                "at_kst": "2026-10-19T05:00:00+09:00"
+              }
+            ]
+          },
+          "score": 12,
+          "tags": [
+            "확전"
+          ],
+          "body_checked": true,
+          "body_verified": true,
+          "classification_color": "yellow",
+          "publication_basis": "publisher",
+          "rendered": true,
+          "article_text_sha256": "e09ef983309a2f3112a699ce156cebd5811b2d8ee12f04c8403834aa55081cb3"
+        },
+        {
+          "id": "6d44ea702b67f0e5d131",
+          "title_original": "젤렌스키 “미국이 항복 압박”…트럼프 “러시아 제재하면 평화협상 깨져” - 한겨레",
+          "title_ko": "젤렌스키 “미국이 항복 압박”…트럼프 “러시아 제재하면 평화협상 깨져” - 한겨레",
+          "description": "젤렌스키 “미국이 항복 압박”…트럼프 “러시아 제재하면 평화협상 깨져” 한겨레",
+          "source": "한겨레",
+          "source_url": "https://www.hani.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9HdHBXRUJxdFF2TElianQ5T3I4cF94UFlBUDZwTndoS2tadXc2ekx6ekxCQmFfTmJLbk1QZjRGRExocHdFbUtMaW1abGJsWFBVMlR1VTZYU3BFTHJFMmh0RjgzTFlPM2VjVDg4SVhn?oc=5",
+          "published": "Sun, 18 Oct 2026 21:44:00 GMT",
+          "score": 11,
+          "tags": [
+            "종전·협상",
+            "제재·압박"
+          ],
+          "body_checked": true,
+          "signals_ko": [],
+          "classification_color": "yellow",
+          "non_military_kind": "sanctions",
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": true,
+          "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "857c6b542ac396e57967",
+          "title_original": "치고받는 트럼프와 젤렌스키.... \"미국이 우크라이나에 러시아에 대한 항복 압박\" 반발",
+          "title_ko": "치고받는 트럼프와 젤렌스키.... \"미국이 우크라이나에 러시아에 대한 항복 압박\" 반발",
+          "description": "[파이낸셜뉴스]도널드 트럼프 미국 대통령이 러시아와의 평화협상을 위해 추가 제재를 유보하겠다며 볼로디미르 젤렌스키 우크라이나 대통령을 향해 전쟁을 끝낼 의지가 없다고 비난했다. 젤렌스키 대통령은 미국이 우크라이나에 러시아에 대한 항복을 압박하고 있다며 정면으로 반발했다. 트럼프 대통령은 18일(현지시간) 자신의 소셜\"\"미디어 트루스소셜에 \"러시아와 우크라이나 간 평화를 협상하는 과정에서 러시아를 어리석게 협상 테이블에서 떠나게 만들고 싶지 않다\"고 밝혔다. 그는 \"현재 큰 진전이 이뤄지고 있으며 인질 협상도 포함된다\"며 \"지금 그 문서에 서명하면 러시아를 협상장에서 떠나게 할 수 있지만 나중에 언제든 서명할 수 있다\"고 주장했다. 트럼프 대통령은 러시아가 이란에 대한 지원을 자제하고",
+          "source": "파이낸셜뉴스",
+          "link": "https://www.fnnews.com/news/202610190634188065",
+          "discovery_url": "https://www.fnnews.com/news/202610190634188065",
+          "resolved_url": "https://www.fnnews.com/news/202610190634188065",
+          "published": "Mon, 19 Oct 2026 06:43:29 +0900",
+          "rss_published": "Mon,19 Oct 2026 06:43:29 +0900",
+          "source_metadata": {
+            "title": "치고받는 트럼프와 젤렌스키.... \"미국이 우크라이나에 러시아에 대한 항복 압박\" 반발",
+            "publication_status": "verified",
+            "published_at_kst": "2026-10-19T06:43:29+09:00",
+            "publication_candidates": [
+              {
+                "field": "article:published_time",
+                "at_kst": "2026-10-19T06:43:29+09:00"
+              },
+              {
+                "field": "dd:published_time",
+                "at_kst": "2026-10-19T06:43:29+09:00"
+              },
+              {
+                "field": "jsonld:datePublished",
+                "at_kst": "2026-10-19T06:43:29+09:00"
+              },
+              {
+                "field": "visible:입력",
+                "at_kst": "2026-10-19T06:43:00+09:00"
+              }
+            ]
+          },
+          "score": 11,
+          "tags": [
+            "종전·협상"
+          ],
+          "body_checked": true,
+          "body_verified": true,
+          "classification_color": "yellow",
+          "publication_basis": "publisher",
+          "rendered": true,
+          "article_text_sha256": "83557619e058eee1b974dd22710e676a2334b923a2b21a03cce40cebc55ea9f9"
+        }
+      ],
+      "markets": [],
+      "market_source_status": {
+        "NQ=F": {
+          "name": "나스닥100 선물",
+          "status": "withheld",
+          "reason": "유효 가격 표본 없음",
+          "quote_metadata": {
+            "symbol": "NQ=F",
+            "instrumentType": "FUTURE",
+            "previousClose": 29391.5,
+            "chartPreviousClose": 29391.5,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792184399,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "end": 1792296000,
+                "start": 1792296000,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "end": 1792382340,
+                "start": 1792296000,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "end": 1792382340,
+                "start": 1792382340,
+                "gmtoffset": -14400
+              }
+            }
+          }
+        },
+        "CL=F": {
+          "name": "WTI",
+          "status": "withheld",
+          "reason": "유효 가격 표본 없음",
+          "quote_metadata": {
+            "symbol": "CL=F",
+            "instrumentType": "FUTURE",
+            "previousClose": 99.02,
+            "chartPreviousClose": 99.02,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792184398,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "start": 1792296000,
+                "end": 1792296000,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "start": 1792296000,
+                "end": 1792382340,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "start": 1792382340,
+                "end": 1792382340,
+                "gmtoffset": -14400
+              }
+            }
+          }
+        },
+        "BZ=F": {
+          "name": "Brent",
+          "status": "withheld",
+          "reason": "유효 가격 표본 없음",
+          "quote_metadata": {
+            "symbol": "BZ=F",
+            "instrumentType": "FUTURE",
+            "previousClose": 109.86,
+            "chartPreviousClose": 109.86,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792184371,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "start": 1792296000,
+                "end": 1792296000,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "start": 1792296000,
+                "end": 1792382340,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "start": 1792382340,
+                "end": 1792382340,
+                "gmtoffset": -14400
+              }
+            }
+          }
+        },
+        "DX-Y.NYB": {
+          "name": "달러지수",
+          "status": "withheld",
+          "reason": "유효 가격 표본 없음",
+          "quote_metadata": {
+            "symbol": "DX-Y.NYB",
+            "instrumentType": "INDEX",
+            "previousClose": 101.837,
+            "chartPreviousClose": 101.837,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792184399,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "start": 1792296000,
+                "end": 1792296000,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "start": 1792296000,
+                "end": 1792382340,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "start": 1792382340,
+                "end": 1792382340,
+                "gmtoffset": -14400
+              }
+            }
+          }
+        }
+      },
+      "actual_alert": "<b>전쟁·종전·재건 웹감시</b>\n🟡 <b>군사위협·협상 제약</b>  |  🟡 <b>제재·외교반응</b>\n조회 2026-10-19 06:47 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🟡 [신규] <b>1. 우크라이나·러시아 · 에너지 휴전 발표·양측 검증 대기</b>\n[윤재준의 월드뷰] 美 외교 기조 변화에 우크라이나 불확실성 고조\n보도 10-19 05:00 KST · <b>107분 경과</b> · 확전 · <a href=\"https://www.fnnews.com/news/202610181717459107\">파이낸셜뉴스 원문</a>\n\n🟡 [속보] <b>2. 우크라이나·러시아</b>\n젤렌스키 “미국이 항복 압박”…트럼프 “러시아 제재하면 평화협상 깨져” - 한겨레\nRSS 보도 10-19 06:44 KST · <b>3분 경과</b> · 종전·협상 · 제재·압박 · <a href=\"https://news.google.com/rss/articles/CBMibkFVX3lxTE9HdHBXRUJxdFF2TElianQ5T3I4cF94UFlBUDZwTndoS2tadXc2ekx6ekxCQmFfTmJLbk1QZjRGRExocHdFbUtMaW1abGJsWFBVMlR1VTZYU3BFTHJFMmh0RjgzTFlPM2VjVDg4SVhn?oc=5\">한겨레 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [속보] <b>3. 우크라이나·러시아 · 에너지 휴전 발표·양측 검증 대기</b>\n치고받는 트럼프와 젤렌스키.... &quot;미국이 우크라이나에 러시아에 대한 항복 압박&quot; 반발\n보도 10-19 06:43 KST · <b>4분 경과</b> · 종전·협상 · <a href=\"https://www.fnnews.com/news/202610190634188065\">파이낸셜뉴스 원문</a>\n\n시장자료 확인 보류 · 나스닥100 선물 (유효 가격 표본 없음) / WTI (유효 가격 표본 없음) / Brent (유효 가격 표본 없음) / 달러지수 (유효 가격 표본 없음)\n\n<b>투자 판정</b>\n- <b>핵심:</b> 트럼프의 에너지 휴전 발표는 외교적 제안·발표 단계로, 실제 휴전 성립이 아님\n- <b>현재 단계:</b> 우크라이나의 조건부 동참 의사·러시아 공식 확인·실제 공격 중단을 각각 검증해야 함\n- <b>시장:</b> 정유시설·전력망 공격과 경유·전력 위험프리미엄 완화를 확정할 수 없음\n- <b>다음:</b> 양측 공식 합의 → 발효 시각 → 공격 중단 24·72시간 → 위반·피해 확인\n",
+      "evidence_sha256": "faeb565b5b2bea28e7055e7ee966740f8b737278c8cc37dd74ea934d5f3f6c7b"
+    }
+  ],
+  "limits": [
+    "Production source HTTP bytes were not preserved.",
+    "Axios remains RSS description/title evidence with unverified publisher body.",
+    "Later exact-link reads do not replace the operating response or independently confirm reported events."
+  ]
+}

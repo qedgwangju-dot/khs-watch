@@ -81,6 +81,93 @@ class IntegrityTests(unittest.TestCase):
         fixture = json.loads(path.read_text(encoding='utf-8'))
         return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
 
+    def diplomatic_contact_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_diplomatic_contact_39158841555.json'
+        return json.loads(path.read_text(encoding='utf-8'))['runs']
+
+    def test_actual_envoy_call_is_not_a_new_peace_commitment(self):
+        row = self.diplomatic_contact_fixture()[0]['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_contact')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '미국·우크라이나 · 외교 접촉 보도')
+
+    def test_actual_worldview_is_diplomatic_analysis_not_energy_ceasefire(self):
+        row = self.diplomatic_contact_fixture()[1]['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_analysis')
+        self.assertEqual(integrity.topic_label(row), '미국·우크라이나 · 외교·안보 해설')
+
+    def test_actual_surrender_pressure_reaction_is_not_energy_ceasefire(self):
+        row = self.diplomatic_contact_fixture()[1]['articles'][2]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_position')
+        self.assertEqual(integrity.topic_label(row), '미국·우크라이나·러시아 · 외교 갈등·압박 보도')
+
+    def test_actual_diplomatic_inputs_keep_full_headlines_and_clear_background(self):
+        for fixture in self.diplomatic_contact_fixture():
+            with self.subTest(run=fixture['provenance']['run_id']):
+                rows = fixture['articles']
+                now = dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+                with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+                    text = integrity.build_alert(rows, fixture['markets'], now)
+                for row in rows:
+                    self.assertIn(html.escape(integrity._display_headline(row)), text)
+                    if integrity.non_military_kind(row) in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position'):
+                        self.assertFalse(row.get('signals_ko') or row.get('forced_tags'))
+                        self.assertEqual(row['tags'], [integrity.KIND_LABELS[integrity.non_military_kind(row)]])
+                expected = ['yellow', 'red'] if len(rows) == 2 else ['yellow', 'yellow', 'yellow']
+                self.assertEqual([row['classification_color'] for row in rows], expected)
+                self.assertNotIn('에너지 휴전 발표', text)
+                self.assertNotIn('협상 재개 의사를 공개적으로 확인', text)
+                self.assertNotIn('🟢', text)
+                if len(rows) == 3:
+                    self.assertIn('접촉·갈등·해설', text)
+                receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+                with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                    for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                        stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+                    watch.ALERT.write_text(text, encoding='utf-8')
+                    watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in rows]}), encoding='utf-8')
+                    watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+                    integrity.verify_alert()
+
+    def test_final_gate_rejects_same_hash_actual_diplomatic_wrong_topics(self):
+        for fixture in self.diplomatic_contact_fixture():
+            with self.subTest(run=fixture['provenance']['run_id']), tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                    stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+                rows = fixture['articles']
+                now = dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+                text = fixture['actual_alert'].strip()
+                receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+                self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+                watch.ALERT.write_text(text, encoding='utf-8')
+                watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in rows]}), encoding='utf-8')
+                watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+                with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
+                    integrity.verify_alert()
+
+    def test_diplomatic_contact_and_pressure_language_boundaries(self):
+        for title, kind in (
+            ('젤렌스키, 미국 특사 위트코프·쿠슈너와 통화…양국 갈등 논의', 'diplomatic_contact'),
+            ('Zelensky talks with U.S. envoys about Ukraine crisis', 'diplomatic_contact'),
+            ('Zelensky calls Witkoff amid U.S.-Ukraine crisis', 'diplomatic_contact'),
+            ('젤렌스키, 미국의 항복 압박에 반발', 'diplomatic_position'),
+            ('[월드뷰] 미국 외교 기조와 우크라이나 불확실성', 'diplomatic_analysis'),
+        ):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), kind)
+                self.assertEqual(integrity.final_color(article(title)), 'yellow')
+
+    def test_separate_actual_attack_and_explicit_peace_are_not_contact(self):
+        for title in (
+            '젤렌스키, 미국 특사와 통화…러시아 미사일 발사',
+            '[월드뷰] 미국 외교 기조 변화…러시아 공습 재개',
+            'Zelensky speaks to Witkoff; Russia launched airstrikes',
+            '젤렌스키, 미국 특사와 통화…양측 휴전 합의 발효',
+            'Zelensky calls for military aid from U.S.',
+        ):
+            with self.subTest(title=title):
+                self.assertNotIn(integrity.non_military_kind(article(title)), ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position'))
+
     def test_actual_gas_import_proposal_is_not_implemented_peace(self):
         fixture, _ = self.maritime_proposal_fixture()
         row = fixture['articles'][1]
