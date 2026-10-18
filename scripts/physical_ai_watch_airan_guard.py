@@ -2196,8 +2196,10 @@ def _oct16_category(group: str, text: str) -> str:
 
 def _oct16_score(item: dict, group: str, text: str) -> int:
     stage=_oct16_stage(group,text,item.get('source') or '')
-    if item.get('oct16_stage') and item.get('oct16_event_id'):
-        stage=item['oct16_stage']
+    # Even internally seeded articles must independently satisfy source,
+    # claim wording and stage rules. A wrong tag must never force an alert.
+    if item.get('oct16_event_id') and item.get('oct16_stage') != stage:
+        return 0
     return {
         'official_guideline': 82,
         'reported_local_production_plan': 51,
@@ -2213,9 +2215,8 @@ def _oct16_score(item: dict, group: str, text: str) -> int:
 
 
 def _oct16_key(item: dict, group: str, text: str) -> str:
+    # Canonical semantic key belongs to evidence stage, never title/publisher.
     stage=_oct16_stage(group,text,item.get('source') or '')
-    if item.get('oct16_stage') and item.get('oct16_event_id'):
-        stage=item['oct16_stage']
     return hashlib.sha256(f'robot-oct16|{group}|{stage}|2026-10'.encode()).hexdigest()
 
 
