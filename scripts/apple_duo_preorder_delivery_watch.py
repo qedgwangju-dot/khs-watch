@@ -163,6 +163,10 @@ def _shipping_event(blob: str, published: dt.datetime) -> dict | None:
     info=_month_and_day(" ".join(selected),published)
     if info is None:
         return None
+    ym, _, exact=info
+    candidate=dt.date.fromisoformat(exact) if exact else dt.date(int(ym[:4]),int(ym[5:]),1)
+    if (candidate-published.date()).days > 180:
+        return None
     # No cross-country comparisons based on unspecified geography.
     has_us=bool(re.search(r"\b(?:u\.s\.?|united states|usa|us apple store)\b",low))
     has_kr=bool(re.search(r"\b(?:south korea|korea|한국|국내|대한민국)\b",low))
