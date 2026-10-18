@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-18T05:51:26.659054+00:00",
+  "updated_at": "2026-10-18T09:52:43.901815+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -567,13 +567,19 @@
     "223c22080b0bff5453fdb2ddf27264e91c9adc6731ee344dadb566c145762fd9",
     "7b7bc88ca16afa125bed47f5127666d4238b9e987470fc75dffcc52bacde9655",
     "02be04dad4af4dc48e99e49593f09ea2e09ab6ce8b9e2ad6e252fda49b054948",
-    "c5e044f17e56a75d2754e8ba62c63b8221b010ed4d9e58e25f0695528bce5239"
+    "c5e044f17e56a75d2754e8ba62c63b8221b010ed4d9e58e25f0695528bce5239",
+    "2bc408af987ca8dd19b0ba965b3d220d7878cec401c7f350cb7c133b70faa1c2",
+    "fd0d9526db1e7a6318332272761f6d45a38a2e1db3d3402f5417b40b66fd8449"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "2bc408af987ca8dd19b0ba965b3d220d7878cec401c7f350cb7c133b70faa1c2",
+    "fd0d9526db1e7a6318332272761f6d45a38a2e1db3d3402f5417b40b66fd8449"
+  ],
   "groups": [
     "agility_spac_2026",
     "alert_quality_223",
     "alert_quality_correction",
+    "alert_quality_oct18",
     "alert_quality_qty_224225",
     "atlas_protoops_build",
     "brils_us_localization",
@@ -582,8 +588,8 @@
     "dexmate_lg_commercial",
     "ess_battery",
     "ess_outdoor_policy",
-    "fluence_vattenfall_bess",
     "humanoid_brain_dram",
+    "hyundai_mobis_atlas",
     "hyundai_robot_rx_team",
     "lfp_314_cif_north_america",
     "lg_factory_loop",
