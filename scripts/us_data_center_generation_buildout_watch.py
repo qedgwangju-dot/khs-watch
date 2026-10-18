@@ -618,8 +618,9 @@ def vg_classify_official_headline(title: str):
     if not re.search(r"power islands?|power plants?|generation|gas[- ]fired|data cent(?:er|re)", t, re.I):
         return None
     if re.search(r"\bexpects?\b|\bplans?\b|\btargets?\b|\bmay\b|\bcould\b|"
-                 r"\bpotential\b|\bup to\b|\bframework\b|\benvisag\w*|"
-                 r"\banticipat\w*|\boutline\b|\bwants?\s+to\b|\bto place\b|"
+                 r"\bpotential\b|\bup to\b|\bframework\b|\bwill\b|\bplanned\b|"
+                 r"\bscheduled\b|\bforecast\b|\benvisag\w*|\banticipat\w*|"
+                 r"\boutline\b|\bwants?\s+to\b|\bto place\b|"
                  r"\bto submit\b|\bset to\b|\bis poised to\b|\bproposes?\b|"
                  r"\bprepar(?:e|es|ing)\b", t, re.I):
         return None
@@ -664,6 +665,7 @@ def vg_parser_self_test():
     assert not b["first_power_island_po_placed"] and not b["customer_signed"]
     cases = (
         ("Venture Global expects to place first power island purchase order by end 2026", None),
+        ("Venture Global will issue first power island purchase order in December 2026", None),
         ("Venture Global and GE Vernova agree on up to 16 power islands of 720 MW", None),
         ("Venture Global submits first permit applications for gas power island", None),
         ("Venture Global announces 10 GW potential data center capacity by 2034", None),
@@ -703,6 +705,11 @@ def vg_official_rss_events():
     except Exception:
         return []
     import email.utils
+    try:
+        from googlenewsdecoder import gnewsdecoder
+    except ImportError:
+        gnewsdecoder = None
+
     for node in root.findall("./channel/item")[:35]:
         title = normalize(node.findtext("title") or "")
         source_el = node.find("source")
@@ -729,6 +736,24 @@ def vg_official_rss_events():
         stage = vg_classify_official_headline(title)
         if not stage:
             continue
+        original_link = normalize(node.findtext("link") or "")
+        if "news.google.com" in original_link:
+            decoded = None
+            if gnewsdecoder is not None:
+                try:
+                    result = gnewsdecoder(original_link, interval=0.1)
+                    if isinstance(result, dict) and result.get("status"):
+                        decoded = str(result.get("decoded_url") or "")
+                except Exception:
+                    decoded = None
+            original_link = decoded or ""
+        article_domain = domain_of(original_link)
+        if not original_link or not any(
+            article_domain == d or article_domain.endswith("." + d)
+            for d in VG_OFFICIAL_DOMAINS
+        ):
+            # Never send a future milestone with a generic/old source link.
+            continue
         key = "vg-power|" + stage
         # Preserve one commercial stage across press reprints; a fresh
         # numbered shipment/plant can be tracked separately after confirmation.
@@ -740,9 +765,7 @@ def vg_official_rss_events():
             "stage": stage,
             "title": title,
             "source_domain": domain,
-            "url": VG_RELEASE if "ventureglobal" in domain else
-                   VG_BAKER_RELEASE if "bakerhughes" in domain else
-                   "https://www.gevernova.com/news/",
+            "url": original_link,
         })
     return list(events.values())
 
@@ -782,6 +805,14 @@ def vg_run_existing_generation_watch():
     stage = dict(previous)
     if source_ok:
         stage.update(VG_BASELINE)
+        # Once an actual customer/order/energization was confirmed, do not
+        # reset it to False merely because the original framework press
+        # release still describes the earlier planning state.
+        for confirmed_key in (
+            "first_power_island_po_placed", "customer_signed", "facility_energized"
+        ):
+            if previous.get(confirmed_key) is True:
+                stage[confirmed_key] = True
         stage.update({
             "version": 1,
             "official_release_verified_live": True,
@@ -811,6 +842,17 @@ def vg_run_existing_generation_watch():
         seen = list(dict.fromkeys(list(prior_keys) + [x["key"] for x in new]))
         stage["alerted_milestones"] = seen[-180:]
         stage["framework_alert_delivered"] = True
+        for event in new:
+            key = event["key"]
+            if key.startswith("vg-power|first-po") or key.startswith("vg-power|additional-po"):
+                stage["first_power_island_po_placed"] = True
+                stage["phase"] = "발전설비 실제 구매주문"
+            elif key.startswith("vg-power|customer-signed"):
+                stage["customer_signed"] = True
+                stage["phase"] = "데이터센터 고객 전력계약"
+            elif key.startswith("vg-power|energization"):
+                stage["facility_energized"] = True
+                stage["phase"] = "전원 인가·상업운전"
 
     # Do not advance the watch on official-source outage. Never send a claim
     # based on RSS third-party paraphrase, historical cache, or target dates.
@@ -828,7 +870,7 @@ def vg_run_existing_generation_watch():
             "• <b>전체 선택권</b> │ 발전설비 최대 16기 × 720MW = <b>11,520MW(11.52GW)</b>",
             "• <b>기존 4.5GW</b> │ 운영·건설·발주를 합친 규모. 모두 현재 발전 중이라는 뜻 아님",
             "• <b>제조능력 예약</b> │ 첫 발주 예정 1기 제외 나머지 15기 중 8기, 전력망 장비 21묶음 중 최초 5묶음",
-            f"• <b>SEC 조건부 총 대금</b> │ $17.2B (약 {money}) · 모든 향후 구매주문 진행 시. 실제 확정 수주 아님",
+            f"• <b>SEC 조건부 총 대금</b> │ $17.2B ({money}) · 모든 향후 구매주문 진행 시. 실제 확정 수주 아님",
             "• <b>컴퓨팅 10GW</b> │ 고객·자금조달·인허가 조건이 충족될 때 2034년 말까지의 목표. 이미 계약된 AI 용량 아님",
             "• <b>시간표</b> │ 첫 발전설비 구매주문 2026년 말 목표 → 장비 인도 2028~2034",
             "• <b>초기 수익</b> │ 터빈·증기터빈·변압기·가스절연 개폐장치·전기제어·통합설비",
