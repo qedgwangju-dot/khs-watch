@@ -58,6 +58,9 @@ QUERIES = [
     '"Alaska LNG" offtake OR FID OR financing when:7d',
     '"Alaska LNG" 13 MTPA OR 16 MTPA when:7d',
     '"Alaska LNG" tax OR property tax OR pipeline when:7d',
+    '"Alaska LNG" "HB 381" signed enacted tax when:14d',
+    '"Alaska LNG" "SB 280" volumetric tax effective when:14d',
+    '"알래스카 LNG" 재산세 감면 법안 통과 발효 when:14d',
     '"알래스카 LNG" 금강공업 API 5L X70 when:14d',
     '"금강공업" "Alaska LNG" 공급계약 OR 벤더 OR 수주 when:14d',
     '"KUMKANG KIND" "Alaska LNG" "API 5L" when:14d',
@@ -75,6 +78,7 @@ TRUSTED = [
     "글로벌경제신문", "GetNews", "Reuters", "Wall Street Journal", "WSJ", "Yahoo",
     "Inside Climate News", "San Antonio Express-News", "Global Energy Monitor", "Pipeline & Gas Journal",
     "Bloomberg", "Utility Dive", "Glenfarne", "Alaska's News Source", "ERCOT", "PUCT", "Texas Governor",
+    "Alaska State Legislature", "Alaska Department of Revenue", "Alaska Governor",
     "데이터투자", "DataTooza", "YTN", "동아일보", "한겨레", "White House", "백악관",
 ]
 
