@@ -2309,6 +2309,159 @@ def _oct16_clean_title(title: str, source: str) -> str:
     return title
 
 
+
+# Micron EIM: an executive-described R&D direction reported on 2026-10-16,
+# NOT a Micron-issued production schedule or a contracted humanoid DRAM.
+# Keep this product lane separate from Counterpoint's blended 19->39GB DRAM
+# demand forecast, from LPDDR today and from server-side HBM/PIM.
+MICRON_EIM_RECOVERY = 'DIRECT_MICRON_EIM_SEDEX_20261016_REPORTED_RND'
+MICRON_EIM_SOURCE_URL = 'https://www.thelec.kr/news/articleView.html?idxno=63825'
+MICRON_EIM_MICRON_ROBOTICS_URL = (
+    'https://www.micron.com/about/blog/applications/industrial/'
+    'the-rise-of-smarter-robots-and-why-memory-is-becoming-their-superpower'
+)
+MICRON_EIM_PRIMARY_SOURCES = {'Micron', 'Micron Technology', '마이크론', 'Micron Technology Inc.'}
+MICRON_EIM_TRUSTED_REPORTERS = {'디일렉', 'The Elec', 'THE ELEC'}
+MICRON_EIM_ID = re.compile(
+    r'\bEIM\b|Edge\s*Inference\s*Memory|엣지\s*(?:인퍼런스|추론)\s*메모리',
+    re.I,
+)
+MICRON_EIM_VENDOR = re.compile(r'\bMicron\b|마이크론|美光', re.I)
+MICRON_EIM_CONTEXT = re.compile(
+    r'LPDDR|저전력\s*D램|DRAM|메모리|memory|'
+    r'휴머노이드|humanoid|physical\s*AI|피지컬\s*AI|로봇|robot|추론|inference',
+    re.I,
+)
+MICRON_EIM_RND = re.compile(
+    r'develop(?:ing|ment)?|in\s+development|R&D|planning|'
+    r'개발|준비|추진|협의|discuss(?:ing)?|SEDEX|논의',
+    re.I,
+)
+MICRON_EIM_SAMPLE = re.compile(
+    r'(?:EIM|엣지\s*(?:인퍼런스|추론)\s*메모리).{0,130}'
+    r'(?:샘플\s*(?:납품|출하|공급\s*개시|제공\s*시작|검증\s*통과)|'
+    r'(?:customer|qualification)\s*samples?\s*(?:shipped|delivered))|'
+    r'(?:샘플\s*(?:납품|출하|공급\s*개시|제공\s*시작)).{0,130}\bEIM\b',
+    re.I,
+)
+MICRON_EIM_CUSTOMER = re.compile(
+    r'(?:EIM|엣지\s*(?:인퍼런스|추론)\s*메모리).{0,180}'
+    r'(?:고객\s*최종\s*선정|고객\s*정식\s*채택|디자인윈|design\s*win|'
+    r'구매\s*계약\s*체결|supply\s*contract\s*signed)|'
+    r'(?:design\s*win|디자인윈|정식\s*공급계약).{0,180}\bEIM\b',
+    re.I,
+)
+MICRON_EIM_SOP = re.compile(
+    r'(?:EIM|엣지\s*(?:인퍼런스|추론)\s*메모리).{0,150}'
+    r'(?:양산\s*(?:개시|시작|돌입|완료)|상업\s*출하\s*시작|mass\s*production\s*(?:started|began)|'
+    r'first\s*commercial\s*shipments?\s*(?:started|began))|'
+    r'(?:양산\s*(?:개시|시작|돌입)).{0,150}\bEIM\b',
+    re.I,
+)
+MICRON_EIM_NEGATIVE = re.compile(
+    r'양산\s*(?:예상|계획|목표|예정|검토|미확정|시점\s*전)|'
+    r'(?:mass\s*production|commercial\s*shipment).{0,45}'
+    r'(?:expected|target|planned|tentative|unconfirmed)|'
+    r'(?:not\s*(?:yet\s*)?(?:produced|shipped|commercialized))',
+    re.I,
+)
+
+
+def _is_micron_eim(text: str) -> bool:
+    return bool(
+        MICRON_EIM_ID.search(text)
+        and MICRON_EIM_VENDOR.search(text)
+        and MICRON_EIM_CONTEXT.search(text)
+    )
+
+
+def _micron_eim_primary(item: dict) -> bool:
+    # Media quoting a Micron executive != Micron company-issued milestone.
+    # Trust both publisher identity and an unchanged Micron-owned origin URL.
+    return bool(
+        (item.get('source') or '') in MICRON_EIM_PRIMARY_SOURCES
+        and re.match(
+            r'^https?://(?:[a-z0-9-]+\.)*micron\.com(?:/|$)',
+            item.get('link') or '', re.I,
+        )
+    )
+
+
+def _micron_eim_stage(text: str, item: dict) -> str:
+    if not _is_micron_eim(text):
+        return ''
+    if _micron_eim_primary(item):
+        if MICRON_EIM_SOP.search(text) and not MICRON_EIM_NEGATIVE.search(text):
+            return 'company_confirmed_sop'
+        if MICRON_EIM_CUSTOMER.search(text) and not MICRON_EIM_NEGATIVE.search(text):
+            return 'company_confirmed_customer'
+        if MICRON_EIM_SAMPLE.search(text) and not MICRON_EIM_NEGATIVE.search(text):
+            return 'company_confirmed_sample'
+        if MICRON_EIM_RND.search(text):
+            return 'company_confirmed_rnd'
+    if ((item.get('source') or '') in MICRON_EIM_TRUSTED_REPORTERS
+            and MICRON_EIM_RND.search(text)
+            and re.match(
+                r'^https?://(?:www\.)?thelec\.kr/',
+                item.get('link') or '', re.I,
+            )):
+        return 'executive_reported_rnd'
+    return 'background'
+
+
+def _micron_eim_display_stage(text: str) -> str:
+    # The existing Telegram renderer passes title + description but drops
+    # item['source']. Stage wording is therefore recovered from unambiguous
+    # outcome phrases; reported 2028 targets never render as achieved SOP.
+    if MICRON_EIM_SOP.search(text) and not MICRON_EIM_NEGATIVE.search(text):
+        return 'company_confirmed_sop'
+    if MICRON_EIM_CUSTOMER.search(text) and not MICRON_EIM_NEGATIVE.search(text):
+        return 'company_confirmed_customer'
+    if MICRON_EIM_SAMPLE.search(text) and not MICRON_EIM_NEGATIVE.search(text):
+        return 'company_confirmed_sample'
+    if re.search(r'마이크론\s*공식\s*EIM|Micron\s*official\s*EIM',text,re.I):
+        return 'company_confirmed_rnd'
+    return 'executive_reported_rnd'
+
+
+def _micron_eim_recovery() -> list[dict]:
+    # One-time backfill of the 10/16 executive presentation reported by
+    # The Elec. Source gives the date, not a verified publication hour.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026, 10, 24):
+        return []
+    return [{
+        'title': '마이크론 EIM 로봇용 저전력 D램 적층 설계 개발 공개…SEDEX 2026',
+        'link': MICRON_EIM_SOURCE_URL,
+        'description': (
+            '디일렉이 2026-10-16 서울 SEDEX 휴머노이드 반도체 세션에서 '
+            '이철 마이크론 상무의 발언을 직접 보도했다. '
+            '마이크론은 피지컬 AI용 엣지 추론 메모리(EIM)를 개발하고 '
+            '주요 고객과 제품 요구사항을 협의 중이다. EIM은 논리 칩 위에 '
+            '저전력 D램 LPDDR을 수직 적층해 AI 추론용 데이터 전송 지연을 '
+            '줄이고 대역폭을 높이려는 설계다. '
+            '이는 메모리 내부 연산을 뜻하는 PIM과 다르며 '
+            '데이터센터용 HBM이 이미 휴머노이드에 EIM으로 양산 공급된다는 뜻도 아니다. '
+            '구체적인 EIM 용량·대역폭·지연시간·전력·고온 동작 검사·수율·검증고객은 '
+            '공개되지 않았다. LPDDR6 기반 EIM 2028년 하반기 양산은 '
+            '회사 확정 일정이 아니라 기사에서 소개한 업계 예상이다. '
+            '이철 상무는 현재 일반 서비스 로봇 12GB D램·256GB 저장장치 대비 '
+            '미래 고성능 휴머노이드에는 200GB D램·4TB 저장장치가 '
+            '필요할 수 있다고 전망했다. 이는 2030 산업 평균 39GB라는 '
+            '카운터포인트리서치 전망과 다른 고성능 미래 시나리오다. '
+            '마이크론 공식 로보틱스 블로그는 기존 휴머노이드용 '
+            '16~128GB LPDDR5·5X 및 1~4TB SSD 적용 범위를 소개하지만 '
+            'EIM 자체의 시제품·고객 인증·양산·계약 매출을 공식 발표하지 않았다. '
+            '가정에 따른 민감도: 고사양 200GB 탑재 로봇 10만 대라면 '
+            '메모리 용량 2,000만GB, 실현 가격 1GB당 1,000원 차이마다 '
+            '가상 매출 200억원 변동이다. 실제 판매량이나 공급가격은 아니다.'
+        ),
+        'source': '디일렉',
+        'published': None,
+        'direct_recovery': True,
+        'executive_reported_development': True,
+    }]
+
+
 _orig_query_news = base.query_news
 
 
@@ -2339,6 +2492,8 @@ def query_news(q: str) -> list[dict]:
         return _stock_218_correction_recovery()
     if q == FLUENCE_VATTENFALL_RECOVERY:
         return _fluence_vattenfall_recovery()
+    if q == MICRON_EIM_RECOVERY:
+        return _micron_eim_recovery()
     if q.startswith(ROBOT_OCT15_PREFIX):
         return _oct15_recovery(q[len(ROBOT_OCT15_PREFIX):])
     if q.startswith(ROBOT_OCT16_PREFIX):
@@ -2499,6 +2654,19 @@ for _q in (
     '(Boston Dynamics OR 보스턴다이내믹스) (Atlas OR 아틀라스) '
     '(ProtoOps OR assembly time OR 제작시간 OR 시간 단축 OR 1시간) '
     '(actual OR 달성 OR 목표 OR 조립 OR 수율)',
+):
+    if _q not in base.QUERIES:
+        base.QUERIES.append(_q)
+
+# Target EIM research and subsequent first-party validation, not generic
+# high-end robot-memory capacity forecasts or ordinary HBM price articles.
+if MICRON_EIM_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(MICRON_EIM_RECOVERY)
+for _q in (
+    '(마이크론 OR Micron) (EIM OR "Edge Inference Memory" OR 엣지 인퍼런스 메모리) '
+    '(SEDEX OR 개발 OR LPDDR6 OR 시제품 OR 고객검증 OR design win OR 양산)',
+    '("EIM" OR "Edge Inference Memory") (Micron OR 마이크론) '
+    '(sample OR 고객 승인 OR bandwidth OR 전력 OR first shipment OR 양산 시작)',
 ):
     if _q not in base.QUERIES:
         base.QUERIES.append(_q)
