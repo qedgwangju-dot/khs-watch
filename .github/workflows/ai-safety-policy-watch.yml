@@ -436,7 +436,7 @@ jobs:
           python - <<'PY'
           from scripts.ai_safety_policy_watch import (
               MAX_ALERT_EVENTS, POLICY_EVENT_BASELINES, cluster_events,
-              detect_category, detect_entity, google_news_url, material, source_trusted,
+              detect_category, detect_entity, google_news_url, material, source_official, source_trusted,
               select_policy_alert_events, tracked_policy_event_key, tracked_policy_event_stage,
           )
           def item(title, source="Reuters"):
@@ -550,6 +550,48 @@ jobs:
           assert not material(item(
               "FTC sues OpenAI over AI model consumer safety", "Unknown Blog"
           ))
+          cohere_loi = item(
+              "Cohere and AISLE sign letter of intent to advance cyber-resilient sovereign AI", "Cohere"
+          )
+          cohere_key = "cohere_aisle:letter_of_intent_announced"
+          assert tracked_policy_event_key(cohere_loi) == cohere_key
+          assert cohere_key in POLICY_EVENT_BASELINES
+          assert source_official("Cohere") and source_official("AISLE")
+          assert source_trusted("CNBC") and material(cohere_loi)
+          assert detect_category(cohere_loi["title"]) == "Cohere–AISLE AI 보안 인수·상용화 단계"
+          assert detect_entity(cohere_loi["title"]) == "Cohere–AISLE"
+          assert tracked_policy_event_key(item(
+              "Aidan Gomez discusses Cohere AISLE acquisition and rogue agents on CNBC", "CNBC"
+          )) == cohere_key
+          assert tracked_policy_event_key(item(
+              "Cohere could sign a definitive agreement to acquire AISLE"
+          )) != "cohere_aisle:definitive_agreement_reported"
+          assert tracked_policy_event_stage(item(
+              "Cohere signs definitive agreement to acquire AISLE"
+          )) == ("cohere_aisle", "definitive_agreement_reported")
+          assert tracked_policy_event_stage(item(
+              "Cohere closes acquisition of AISLE"
+          )) == ("cohere_aisle", "closed_reported")
+          assert tracked_policy_event_stage(item(
+              "Cohere and AISLE deal terminated"
+          )) == ("cohere_aisle", "terminated_reported")
+          assert tracked_policy_event_stage(item(
+              "Cohere Cyber launches AISLE commercial security service"
+          )) == ("cohere_aisle", "commercial_service_reported")
+          assert tracked_policy_event_stage(item(
+              "AISLE finds new OpenSSL vulnerabilities"
+          )) is None
+          assert not material(item(
+              "Cohere signs definitive agreement to acquire AISLE", "Unknown Blog"
+          ))
+          cohere_stages = cluster_events([
+              staged_row("Cohere and AISLE sign letter of intent", "aisle_loi_1"),
+              staged_row("Cohere AISLE letter of intent announced", "aisle_loi_2"),
+              staged_row("Cohere signs definitive agreement to acquire AISLE", "aisle_signed"),
+          ])
+          assert len(cohere_stages) == 2
+          assert sorted(len(x) for x in cohere_stages) == [1, 2]
+          print("ai_policy_cohere_aisle_stage_regression=PASS")
           print("ai_policy_ftc_probe_followup_regression=PASS")
           print("ai_policy_softbank_anthropic_stage_regression=PASS")
           print("ai_policy_event_backlog_preservation=PASS")
