@@ -327,6 +327,20 @@ jobs:
           mkdir -p out
           rm -f out/treasury_weekly_haven_runtime.log out/treasury_weekly_haven_alert.txt out/treasury_weekly_haven_confirmed.json
           PYTHONPATH=scripts python scripts/treasury_weekly_haven_alert.py | tee out/treasury_weekly_haven_runtime.log
+          if [ "$WEEKLY_HAVEN_VALIDATE_ONLY" = "1" ] && grep -q '"status": "validated"' out/treasury_weekly_haven_runtime.log; then
+            python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import re
+
+          payload = Path("out/treasury_weekly_haven_telegram.html.txt").read_text(encoding="utf-8")
+          assert payload.count("<a href=") == 3, "Three official source links missing"
+          assert "나스닥100: " in payload and "미 10년물 금리: " in payload
+          assert "CTA" in payload and "공식 출처" in payload
+          assert len(payload) < 3900, "Telegram payload too long"
+          print(f"weekly_telegram_html_validated=true source_links=3 payload_chars={len(payload)}")
+          PY
+          fi
           if grep -q '"status": "source_unavailable"' out/treasury_weekly_haven_runtime.log; then
             echo "::error::Nasdaq/Treasury weekly official source unavailable; alert not sent."
             exit 1
