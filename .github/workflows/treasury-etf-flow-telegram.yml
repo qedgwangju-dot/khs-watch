@@ -1,9 +1,6 @@
 name: Treasury ETF Fund Flow Telegram
 
 on:
-  push:
-    paths:
-      - ".github/workflows/treasury-etf-flow-telegram.yml"
   schedule:
     - cron: "30,35,40 8 * * *"
       timezone: "Asia/Seoul"
@@ -58,7 +55,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
-      TREASURY_REPORT_VALIDATE_ONLY: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.validate_only)) && '1' || '0' }}
+      TREASURY_REPORT_VALIDATE_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.validate_only && '1' || '0' }}
 
     steps:
       - name: Checkout latest delivery state
@@ -281,7 +278,6 @@ jobs:
   weekly-stock-bond-hedge:
     if: >-
       ${{
-        github.event_name == 'push' ||
         github.event_name == 'workflow_dispatch' ||
         (github.event_name == 'schedule' && (
           github.event.schedule == '15,45 14 * * 6' ||
@@ -296,7 +292,7 @@ jobs:
       TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
       WEEKLY_HAVEN_VALIDATE_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.validate_only && '1' || '0' }}
-      WEEKLY_HAVEN_REPAIR_FORMAT: ${{ github.event_name == 'push' && '1' || '0' }}
+      WEEKLY_HAVEN_REPAIR_FORMAT: "0"
 
     steps:
       - name: Checkout existing repository and confirmed alerts
