@@ -2669,28 +2669,34 @@ def _extract_reclaimed_memory(item: dict) -> dict | None:
         "本公司確認", "官方确认", "당사가 확인",
     )):
         obs["smartphone_brand_procurement_official_confirmed"] = True
-    if any(x in blob for x in ("per chip", "per unit", "每顆", "每颗", "칩당", "개당")) and any(
-        x in blob for x in ("cost", "price", "비용", "가격", "成本", "漲", "涨")
-    ):
-        m = re.search(
+    # Resolve each amount to its *own* phrase. A story can include a chip
+    # price, an alleged OEM subsidy, and an unrelated consumer rebate; taking
+    # the first CNY number would silently corrupt the typed state.
+    prices = [
+        (m.start(), m.end(), int(m.group(1) or m.group(2)))
+        for m in re.finditer(
             r"(?:rmb|cny|¥)\s*(\d{2,4})|(?<!\d)(\d{2,4})\s*(?:元(?:人民幣|人民币)?|위안)",
             blob,
         )
-        if m:
-            amount = int(m.group(1) or m.group(2))
-            if 100 <= amount <= 2000:
-                obs["reported_chip_cost_increase_cny"] = amount
-    if any(x in blob for x in ("shenzhen", "深圳", "선전")) and any(
-        x in blob for x in ("subsid", "補助", "补助", "補貼", "补贴", "보조금", "지원금")
-    ) and brands:
-        m = re.search(
-            r"(?:rmb|cny|¥)\s*(\d{2,4})|(?<!\d)(\d{2,4})\s*(?:元(?:人民幣|人民币)?|위안)",
-            blob,
-        )
-        if m:
-            amount = int(m.group(1) or m.group(2))
-            if 100 <= amount <= 1000:
-                obs["reported_shenzhen_oem_subsidy_cny"] = amount
+    ]
+
+    def nearest_amount(terms: tuple[str, ...], maximum_gap: int = 110) -> int | None:
+        anchors = [m.start() for term in terms for m in re.finditer(re.escape(term), blob)]
+        matches = [
+            (min(min(abs(start - a), abs(end - a)) for a in anchors), amount)
+            for start, end, amount in prices
+        ] if anchors else []
+        matches = sorted((gap, amount) for gap, amount in matches if gap <= maximum_gap)
+        return matches[0][1] if matches else None
+
+    if any(x in blob for x in ("per chip", "per unit", "每顆", "每颗", "칩당", "개당")):
+        amount = nearest_amount(("memory costs", "chip prices", "per chip", "每顆", "每颗", "칩당", "晶片價格", "칩 가격"), 110)
+        if amount is not None and 100 <= amount <= 2000:
+            obs["reported_chip_cost_increase_cny"] = amount
+    if any(x in blob for x in ("shenzhen", "深圳", "선전")) and brands:
+        amount = nearest_amount(("subsidy", "subsid", "補助", "补助", "補貼", "补贴", "보조금", "지원금"), 65)
+        if amount is not None and 100 <= amount <= 1000:
+            obs["reported_shenzhen_oem_subsidy_cny"] = amount
     obs.update({
         "source": item.get("source") or "출처 미표시",
         "source_url": item.get("link") or "",

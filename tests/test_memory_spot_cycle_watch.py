@@ -34,6 +34,8 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertEqual(w._reclaimed_memory_source_rank(item), 2)
         obs = w._extract_reclaimed_memory(item)
         self.assertTrue(obs["smartphone_brand_procurement_reported"])
+        self.assertEqual(obs["reported_chip_cost_increase_cny"], 500)
+        self.assertEqual(obs["reported_shenzhen_oem_subsidy_cny"], 300)
         self.assertNotIn("smartphone_brand_procurement_official_confirmed", obs)
         merged = w._merge_typed_state(w.RECLAIMED_MEMORY_BASELINE, obs)
         self.assertFalse(merged["smartphone_brand_procurement_official_confirmed"])
