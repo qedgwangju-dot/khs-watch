@@ -13,6 +13,7 @@ import pathlib
 import tempfile
 import urllib.parse
 import urllib.request
+from html.parser import HTMLParser
 from zoneinfo import ZoneInfo
 
 import treasury_weekly_stock_bond_signal as signal
@@ -20,7 +21,9 @@ import treasury_weekly_stock_bond_signal as signal
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "treasury_weekly_haven_state.json"
 OUT_PATH = ROOT / "out" / "treasury_weekly_haven_alert.txt"
+HTML_PATH = ROOT / "out" / "treasury_weekly_haven_telegram.html.txt"
 RECEIPT_PATH = ROOT / "out" / "treasury_weekly_haven_confirmed.json"
+FORMAT_REVISION = 2
 EXPECTED_BOT = "khs8879887988798879_bot"
 
 
@@ -53,7 +56,21 @@ def already_delivered(state, end):
     )
 
 
-def send_telegram(text):
+class _LinkParser(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.source_links = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            href = dict(attrs).get("href")
+            if href:
+                self.source_links.append(href)
+
+
+def _post_telegram_html(text_html: str, *, method: str, message_id: int | None = None):
+    if method not in ("sendMessage", "editMessageText"):
+        raise ValueError("unexpected Telegram API method")
     token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
     chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
     if not token or not chat_id:
@@ -61,28 +78,62 @@ def send_telegram(text):
     expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or EXPECTED_BOT).strip().lstrip("@")
     if expected != EXPECTED_BOT:
         raise RuntimeError("unexpected existing Telegram bot identifier")
-    if len(text) > 4000:
-        raise RuntimeError("Telegram message too long")
+    if len(text_html) > 3900:
+        raise RuntimeError("Telegram HTML exceeds safe length")
+    parser = _LinkParser()
+    parser.feed(text_html)
+    if len(parser.source_links) != 3:
+        raise RuntimeError("Telegram HTML must contain exactly three clickable source links")
+
     with urllib.request.urlopen(
         f"https://api.telegram.org/bot{token}/getMe", timeout=20
     ) as response:
         identity = json.load(response)
     actual = (identity.get("result") or {}).get("username")
     if not identity.get("ok") or actual != EXPECTED_BOT:
-        raise RuntimeError("Telegram bot mismatch; refusing to send")
-    payload = urllib.parse.urlencode({
-        "chat_id": chat_id, "text": text, "disable_web_page_preview": "true",
-    }).encode("utf-8")
+        raise RuntimeError("Telegram bot mismatch; refusing to send or edit")
+    payload = {
+        "chat_id": chat_id,
+        "text": text_html,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": "true",
+    }
+    if method == "editMessageText":
+        if not isinstance(message_id, int) or message_id < 1:
+            raise RuntimeError("editing requires existing Telegram message_id")
+        payload["message_id"] = message_id
     req = urllib.request.Request(
-        f"https://api.telegram.org/bot{token}/sendMessage",
-        data=payload, method="POST"
+        f"https://api.telegram.org/bot{token}/{method}",
+        data=urllib.parse.urlencode(payload).encode("utf-8"), method="POST"
     )
     with urllib.request.urlopen(req, timeout=25) as response:
         result = json.load(response)
-    message_id = (result.get("result") or {}).get("message_id")
-    if not result.get("ok") or not isinstance(message_id, int) or message_id < 1:
+    delivered = result.get("result") or {}
+    returned_id = delivered.get("message_id") if isinstance(delivered, dict) else None
+    if not result.get("ok") or not isinstance(returned_id, int) or returned_id < 1:
         raise RuntimeError("Telegram did not acknowledge a message_id")
-    return actual, message_id
+    if message_id is not None and returned_id != message_id:
+        raise RuntimeError("Telegram edited unexpected message_id")
+    returned_entities = [
+        entity.get("url")
+        for entity in (delivered.get("entities") or [])
+        if entity.get("type") == "text_link"
+    ]
+    if sorted(returned_entities) != sorted(parser.source_links):
+        raise RuntimeError("Telegram response does not confirm all three clickable source links")
+    visible_text = str(delivered.get("text") or "")
+    for required in ("나스닥100:", "미 10년물 금리:", "CTA", "공식 출처"):
+        if required not in visible_text:
+            raise RuntimeError("Telegram response missing expected visible content: " + required)
+    return actual, returned_id
+
+
+def send_telegram(text_html: str):
+    return _post_telegram_html(text_html, method="sendMessage")
+
+
+def edit_telegram(text_html: str, message_id: int):
+    return _post_telegram_html(text_html, method="editMessageText", message_id=message_id)
 
 
 def run(validate_only=False, now=None, path=STATE_PATH):
