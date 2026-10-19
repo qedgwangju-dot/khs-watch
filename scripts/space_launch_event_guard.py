@@ -109,7 +109,7 @@ FACT_CASES = (
    "https://www.pricetargets.com/NASDAQ/SPCX/",
    ("Morgan Stanley","$300","Overweight")),
   ("audit:20261017:citizens_130_90", "Citizens Rocket Lab",
-   "https://www.tipranks.com/news/the-fly/rocket-lab-price-target-lowered-to-90-from-130-at-citizens-thefly-news",
+   "https://finance.yahoo.com/markets/stocks/articles/rklb-stock-citizens-cuts-target-122451102.html",
    ("Citizens","$90","$130")),
 )
 
