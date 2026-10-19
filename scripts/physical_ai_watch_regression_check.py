@@ -5155,4 +5155,37 @@ finally:
     base.NOW=_old_tesla_agm_now
 
 
+
+# 91) Do not equate an official Tesla event partnership, a hands-on
+# Optimus demo, and a first-party V3 reveal; verify official X separately.
+summit_partner=dict(summit_organizer,
+    title='Tesla official partner at Humanoids Summit December 1-2 2026',
+    description='Humanoids Summit confirms Tesla as official partner.',
+)
+pg,ps,pc,pk=classify(summit_partner)
+assert pg=='tesla_humanoids_summit_2026' and ps>=11,(pg,ps,pc)
+assert pc=='테슬라 Humanoids Summit · 파트너 참가 공식 확인',pc
+assert pk not in {ok,tk,vk},'Partner stage must be distinct from demo/V3'
+assert 'V3' in base.meaning(pc) and '단정할 수 없습니다' in base.meaning(pc)
+assert '시연·V3 여부 별도' in base.clean_title(summit_partner['title'],summit_partner['source'])
+
+summit_partner_repost=dict(summit_partner,source='Unverified Media')
+pg2,ps2,pc2,pk2=classify(summit_partner_repost)
+assert pg2==pg and ps2<11,(pg2,ps2,pc2)
+
+summit_ceo_x=dict(summit_tesla_v3,source='Elon Musk (X)',
+    link='https://x.com/elonmusk/status/9999999999999999999')
+xg,xs,xc,xk=classify(summit_ceo_x)
+assert xg=='tesla_humanoids_summit_2026' and xs>=11,(xg,xs,xc)
+assert xc=='테슬라 Humanoids Summit · V3 공식 공개 예고',xc
+assert xk==vk,'Tesla CEO direct confirmation and Tesla.com are same event'
+
+summit_fake_x=dict(summit_ceo_x,link='https://x.com/someone_else/status/9999999999999999999')
+fg,fs,fc,fk=classify(summit_fake_x)
+assert fg==xg and fs<11,(fg,fs,fc)
+
+assert base.clean_title(agm_notice['title'],'Tesla IR').startswith('12월 3일'),(
+    'Base display label already supplies Tesla name; avoid duplicate headline')
+
+
 print("Physical-AI watcher regression guards: PASS")
