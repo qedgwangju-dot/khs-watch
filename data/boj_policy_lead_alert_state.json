@@ -1,20 +1,18 @@
 {
-  "last_signal_key": "c1ebb8c92e039e1d9ec28f9b",
-  "last_alert_at_kst": "2026-10-15T10:54:13+09:00",
-  "last_published_at_kst": "2026-10-15T10:30:00+09:00",
-  "last_source": "Bank of Japan",
-  "last_title": "Speech by Board Member KOEDA in Kumamoto (Economic Activity, Prices, and Monetary Policy in Japan)",
+  "last_signal_key": "0ca202f1e4a7c555620da279",
+  "last_alert_at_kst": "2026-10-19T09:34:33+09:00",
+  "last_published_at_kst": "2026-10-19T09:17:00+09:00",
+  "last_source": "Reuters",
+  "last_title": "BOJ Governor Ueda says underlying inflation 'quite close' to 2% target - Reuters",
   "signature": {
     "level": 1,
-    "event_type": "official_speech",
+    "event_type": "press_conference",
     "policy_rate": null,
     "hike_bp": null,
-    "vote_for": 2,
-    "vote_against": 1,
+    "vote_for": null,
+    "vote_against": null,
     "dissent_direction": null,
-    "dissenters": [
-      "고에다"
-    ],
+    "dissenters": [],
     "assessment_vote_for": null,
     "assessment_vote_against": null,
     "assessment_view": null,
@@ -30,7 +28,7 @@
     "conditional_pace": false,
     "accommodative": false,
     "neutral_rate": false,
-    "inflation_upside": false,
-    "risk_channels": true
+    "inflation_upside": true,
+    "risk_channels": false
   }
 }
