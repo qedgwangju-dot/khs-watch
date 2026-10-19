@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-20T04:57:02+09:00",
+  "updated_at_kst": "2026-10-20T08:41:57+09:00",
   "circle": {
     "date": "2026-10-15",
     "circulation_usd_b": 72.5,
@@ -51,25 +51,25 @@
   },
   "crcl": {
     "date": "2026-10-19",
-    "close": 81.27,
+    "close": 81.35,
     "prev_date": "2026-10-16",
     "prev_close": 82.22,
-    "daily_pct": -1.16,
+    "daily_pct": -1.06,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
     "crosscheck_date": "2026-10-19",
-    "crosscheck_close": 81.31500244140625,
-    "crosscheck_daily_pct": -1.1,
-    "crosscheck_gap_pct": 0.055,
+    "crosscheck_close": 81.37000274658203,
+    "crosscheck_daily_pct": -1.03,
+    "crosscheck_gap_pct": 0.025,
     "crosscheck_status": "confirmed"
   },
   "tbx": {
     "date": "2026-10-19",
-    "close": 29.670000076293945,
+    "close": 29.629899978637695,
     "prev_date": "2026-10-16",
     "prev_close": 29.540000915527344,
-    "daily_pct": 0.44
+    "daily_pct": 0.3
   },
   "fx": {
     "rate": 1342.4,
@@ -78,9 +78,11 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,331.87원, 차이 0.78%"
+    "crosscheck": "Yahoo Finance 1,330.90원, 차이 0.86%"
   },
-  "crcl_last_alerted_close_date": "2026-10-16",
+  "crcl_last_alerted_close_date": "2026-10-19",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "usdxx: BlackRock USDXX fetch failed on all official URLs: https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-10-19 sec=[(datetime.date(2026, 10, 16), 3.84), (datetime.date(2026, 10, 16), 3.84)] seven=[(datetime.date(2026, 10, 16), 3.84)] | https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-10-19 sec=[(datetime.date(2026, 10, 16), 3.84), (datetime.date(2026, 10, 16), 3.84)] seven=[(datetime.date(2026, 10, 16), 3.84)]"
+  ]
 }
