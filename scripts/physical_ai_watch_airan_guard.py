@@ -5881,6 +5881,233 @@ for _q in (
         base.QUERIES.append(_q)
 
 
+# 2026 Dec Tesla AGM and Humanoids Summit: verified stages, not clickbait.
+# Current 2026-10-19 SEC notice is primary; the original SEC HTML returned
+# an access error so the Tesla IR confirmation and faithful proxy mirror
+# plus Reuters were checked separately. The organizer's GENERIC LinkedIn
+# company profile does not prove Tesla's specific Optimus program or V3.
+TESLA_AGM26_EVENT = 'DIRECT_TESLA_AGM_DEF14A_20261019'
+TESLA_AGM26_SEC = 'https://www.sec.gov/Archives/edgar/data/1318605/000110465926116700/tm267596-1_def14a.htm'
+TESLA_AGM26_PRIMARY = {'Tesla IR','Tesla Investor Relations','Tesla','SEC'}
+TESLA_SUMMIT26_PRIMARY = {'Humanoids Summit','HumanoidsSummit'}
+TESLA_AGM26_RE = re.compile(r'2026.{0,60}(?:annual\s+(?:shareholders?|stockholders?)\s+meeting|주주총회)|TSLA2026|tm267596-1_def14a',re.I)
+TESLA_AGM26_DATE = re.compile(r'Dec(?:ember)?\s*3,?\s*2026|2026[-./]12[-./]0?3|12월\s*0?3일',re.I)
+TESLA_AGM26_RESULTS = re.compile(r'final\s+vot(?:e|ing)\s+results|certified\s+vote|(?:최종\s*)?표결\s*결과\s*(?:발표|공시)',re.I)
+TESLA_SUMMIT26_RE = re.compile(r'Humanoids?\s*Summit|휴머노이드\s*서밋',re.I)
+TESLA_SUMMIT26_DATE = re.compile(r'2026|Dec(?:ember)?\s*1\s*(?:[-–]|and|to)\s*2|12월\s*1\s*[~\-–]\s*2일',re.I)
+TESLA_SUMMIT26_DEMO = re.compile(r'(?:Optimus|옵티머스).{0,120}(?:hands[- ]on|live\s+demo|실물\s*(?:전시|체험|시연)|현장\s*시연)|(?:hands[- ]on|live\s+demo|실물\s*(?:체험|시연)).{0,120}(?:Optimus|옵티머스)',re.I)
+TESLA_SUMMIT26_V3 = re.compile(r'(?:Optimus|옵티머스).{0,110}(?:V3|Gen\s*3|3세대).{0,70}(?:unveil|reveal|debut|시연|공개)|(?:V3|Gen\s*3|3세대).{0,100}(?:Optimus|옵티머스).{0,70}(?:unveil|reveal|debut|시연|공개)',re.I)
+TESLA_SUMMIT26_DENIAL = re.compile(r'V3.{0,45}(?:unconfirmed|not\s+confirmed|미확정|미정|언급\s*없음|미공개)|(?:not\s+confirmed|미확정|미정|언급\s*없음).{0,45}V3',re.I)
+
+def _agm26_match(t):
+    return bool(re.search(r'Tesla|테슬라|TSLA',t,re.I) and TESLA_AGM26_RE.search(t))
+
+def _sum26_match(t):
+    return bool(TESLA_SUMMIT26_RE.search(t) and TESLA_SUMMIT26_DATE.search(t)
+                and re.search(r'Tesla|테슬라|Optimus|옵티머스',t,re.I))
+
+def _agm26_stage(item):
+    t=' '.join(str(item.get(x) or '') for x in ('title','description'))
+    src,link=item.get('source') or '',item.get('link') or ''
+    if not _agm26_match(t):
+        return ''
+    primary=(src in TESLA_AGM26_PRIMARY and bool(re.match(
+        r'https://(?:www\.sec\.gov/Archives/edgar/|ir\.tesla\.com/|www\.tesla\.com/)',link,re.I)))
+    if primary and TESLA_AGM26_RESULTS.search(t): return 'official_vote_result'
+    if primary and TESLA_AGM26_DATE.search(t): return 'official_notice'
+    return 'unverified'
+
+def _sum26_stage(item):
+    t=' '.join(str(item.get(x) or '') for x in ('title','description'))
+    if not _sum26_match(t): return ''
+    src,link=item.get('source') or '',item.get('link') or ''
+    tesla=(src in {'Tesla','Tesla IR','Tesla Official'} and bool(re.match(
+        r'https://(?:www\.)?tesla\.com/',link,re.I)))
+    organizer=(src in TESLA_SUMMIT26_PRIMARY and bool(re.match(
+        r'https://(?:www\.)?humanoidssummit\.com/|'
+        r'https://(?:www\.)?linkedin\.com/posts/humanoidssummit[_\-]',link,re.I)))
+    if tesla and TESLA_SUMMIT26_V3.search(t) and not TESLA_SUMMIT26_DENIAL.search(t):
+        return 'official_v3'
+    if TESLA_SUMMIT26_DEMO.search(t):
+        if tesla: return 'tesla_confirmed_demo'
+        if organizer: return 'organizer_confirmed_demo'
+    return 'unverified_participation'
+
+def _agm26_recovery():
+    if base.NOW.astimezone(base.KST).date()>dt.date(2026,10,27): return []
+    return [{
+        'title':'Tesla 2026 annual shareholder meeting December 3, 2026 DEF14A',
+        'link':TESLA_AGM26_SEC,
+        'description':(
+            'Tesla 2026 annual shareholder meeting December 3, 2026, '
+            '3:00 PM Central Standard Time; December 4 06:00 KST. '
+            'Venue Gigafactory Texas in Austin with limited in-person lottery '
+            'attendance and a public webcast. Shareholder record date Oct 13. '
+            'Tesla IR confirms SEC definitive proxy DEF14A filing Oct 19. '
+            'Faithfully reproduced proxy and Reuters independently confirm '
+            'three items: Class I director election Elon Musk, Robyn Denholm '
+            'and JB Straubel (three-year terms), advisory vote on 2025 '
+            'executive compensation, and PwC auditor appointment for 2026. '
+            'This is NOT an official Optimus V3 unveil, robot sales contract '
+            'or manufacturing yield release. Separately the organizer confirms '
+            'Humanoids Summit at San Mateo Event Center Dec 1-2, 2026. '
+            'The reported Tesla official-partner status, hands-on Optimus '
+            'display and FSD test drives were NOT independently verified from '
+            'a specific official event post; this report does NOT confirm V3. '
+            'Official summit webpages inconsistently number the event fifth '
+            'versus sixth, so no edition rank is asserted.'
+        ),
+        'source':'Tesla IR',
+        'published':None,
+        'direct_recovery':True,
+        'tesla_official_agm_notice':True,
+    }]
+
+_cal26_old_query=base.query_news
+_cal26_old_group=base.topic_group
+_cal26_old_score=base.score
+_cal26_old_category=base.category
+_cal26_old_meaning=base.meaning
+_cal26_old_risk=base.risk
+_cal26_old_verification=base.verification
+_cal26_old_title=base.clean_title
+_cal26_old_tag=base.tag_for
+_cal26_old_key=base.key
+_cal26_old_select=base.select_diverse
+
+def _cal26_query(q):
+    if q==TESLA_AGM26_EVENT: return _agm26_recovery()
+    return _cal26_old_query(q)
+
+def _cal26_group(t):
+    if _agm26_match(t): return 'tesla_agm_2026'
+    if _sum26_match(t): return 'tesla_humanoids_summit_2026'
+    return _cal26_old_group(t)
+
+def _cal26_score(item):
+    t=' '.join(str(item.get(x) or '') for x in ('title','description','source'))
+    group=_cal26_group(t)
+    if group=='tesla_agm_2026':
+        return {'official_notice':43,'official_vote_result':59,'unverified':0}.get(_agm26_stage(item),0)
+    if group=='tesla_humanoids_summit_2026':
+        return {'organizer_confirmed_demo':47,'tesla_confirmed_demo':56,
+                'official_v3':74,'unverified_participation':0}.get(_sum26_stage(item),0)
+    return _cal26_old_score(item)
+
+def _cal26_category(t,group):
+    if group=='tesla_agm_2026':
+        return ('테슬라 2026 주주총회 · 공식 표결 결과'
+                if TESLA_AGM26_RESULTS.search(t) else
+                '테슬라 2026 주주총회 · 12월 3일 공식 일정')
+    if group=='tesla_humanoids_summit_2026':
+        if TESLA_SUMMIT26_V3.search(t) and not TESLA_SUMMIT26_DENIAL.search(t):
+            return '테슬라 Humanoids Summit · V3 공식 공개 예고'
+        return '테슬라 Humanoids Summit · Optimus 현장 시연 공식 확인'
+    return _cal26_old_category(t,group)
+
+def _cal26_meaning(cat):
+    if cat=='테슬라 2026 주주총회 · 12월 3일 공식 일정':
+        return ('Tesla의 10/19 SEC 위임장 제출로 12/3 중부시간 15시 '
+                '(한국 12/4 오전 6시) 주주총회 일정이 확정됐습니다. '
+                'Elon Musk·Robyn Denholm·JB Straubel Class I 이사 선임, '
+                '2025 임원 보수 자문투표, PwC 감사인 승인 등 3개 안건입니다. '
+                '이는 Optimus V3 시연·수주·실제 양산 발표가 아닙니다. '
+                '12/1~2 Humanoids Summit 행사 개최는 주최 측 공식 확인이지만 '
+                'Tesla 개별 파트너·Optimus 체험·V3 공개는 따로 확인해야 합니다.')
+    if cat=='테슬라 2026 주주총회 · 공식 표결 결과':
+        return ('회사 공식 표결 결과가 나온 단계입니다. 3개 안건의 실제 '
+                '찬반·가결 여부를 초기 위임장과 분리하고 Optimus 기술 발표와 혼동하지 않습니다.')
+    if cat=='테슬라 Humanoids Summit · V3 공식 공개 예고':
+        return ('Tesla의 직접 공식 자료가 Optimus V3 공개 일정을 확정한 단계입니다. '
+                '실제 시연·자율 작업 성공률·사람 개입·손 내구성·양산물량은 후속 검증합니다.')
+    if cat=='테슬라 Humanoids Summit · Optimus 현장 시연 공식 확인':
+        return ('주최 측 또는 Tesla가 특정 Optimus 시연 프로그램을 직접 확정한 단계입니다. '
+                'V2 전시·기존 홍보물과 V3 공개를 혼동하지 않고 '
+                '현장 자율 시연·원격지원·실제 출하를 각각 확인합니다.')
+    return _cal26_old_meaning(cat)
+
+def _cal26_risk(cat):
+    if cat.startswith('테슬라 2026 주주총회'):
+        return ('주주총회는 일정·의결권 행사이지 신규 Optimus 제품 발표를 '
+                '보장하지 않습니다. 회의 후 실제 로봇 성능·판매계약·'
+                '출하량 공시가 없으면 본업 매출 상향 근거가 아닙니다.')
+    if cat.startswith('테슬라 Humanoids Summit'):
+        return ('행사 홍보 이미지의 V2 또는 원격조종 데모를 V3 자율양산으로 '
+                '오판하는 것이 핵심 실패 경로입니다. 12/1~2 실제 기종, '
+                '작업의 자율성, 안전요원·원격지원 개입, 작업 성공률, '
+                '손 고장과 정비비용을 확인해야 합니다. 매출 발생과도 별도입니다.')
+    return _cal26_old_risk(cat)
+
+def _cal26_verification(item,group,t):
+    if group=='tesla_agm_2026':
+        return ('Tesla 투자자관계 10/19 SEC 위임장 접수 확인 · '
+                '위임장 공개 복제본·Reuters 일정/안건 교차확인 · '
+                'SEC 원본 HTML 직접 열람 실패 · V3 안건 없음'
+                if _agm26_stage(item)=='official_notice'
+                else 'Tesla/SEC 공식 표결 기록 단계 또는 미검증 보도')
+    if group=='tesla_humanoids_summit_2026':
+        if _sum26_stage(item)=='official_v3': return 'Tesla 공식 V3 시연 예고 · 실제 공개/양산 별도'
+        if _sum26_stage(item) in {'tesla_confirmed_demo','organizer_confirmed_demo'}:
+            return '행사 주최 측 또는 Tesla의 개별 공식 시연 공지 확인 · V3 여부 별도'
+        return '주최 측 행사 날짜 확인 · Tesla 참가·시연 프로그램 개별 공식 확인 전'
+    return _cal26_old_verification(item,group,t)
+
+def _cal26_title(title,source):
+    t=title+' '+source
+    if _agm26_match(t):
+        return ('테슬라 2026 주주총회 공식 표결 결과' if TESLA_AGM26_RESULTS.search(t)
+                else '테슬라 12월 3일 주주총회 확정…한국 12월 4일 오전 6시')
+    if _sum26_match(t):
+        return ('테슬라, 12월 서밋 Optimus V3 첫 공개 공식 예고'
+                if TESLA_SUMMIT26_V3.search(t) and not TESLA_SUMMIT26_DENIAL.search(t)
+                else '테슬라, Humanoids Summit Optimus 시연 공식 확인…V3 미확정')
+    return _cal26_old_title(title,source)
+
+def _cal26_tag(group):
+    if group=='tesla_agm_2026': return '테슬라 주주총회'
+    if group=='tesla_humanoids_summit_2026': return '테슬라 로봇 서밋'
+    return _cal26_old_tag(group)
+
+def _cal26_key(item):
+    t=' '.join(str(item.get(x) or '') for x in ('title','description','source'))
+    group=_cal26_group(t)
+    if group=='tesla_agm_2026':
+        return hashlib.sha256(f'tesla|agm|20261203|{_agm26_stage(item)}'.encode()).hexdigest()
+    if group=='tesla_humanoids_summit_2026':
+        return hashlib.sha256(f'tesla|summit|20261201-02|{_sum26_stage(item)}'.encode()).hexdigest()
+    return _cal26_old_key(item)
+
+def _cal26_select(items,seen,force,limit):
+    selected=_cal26_old_select(items,seen,force,limit)
+    candidates=items if force else [i for i in items if i.get('key') not in seen]
+    for group in ('tesla_agm_2026','tesla_humanoids_summit_2026'):
+        event=next((i for i in candidates if i.get('group')==group and i.get('score',0)>=11),None)
+        if event and not any(i.get('key')==event.get('key') for i in selected):
+            selected=([event,*selected] if len(selected)<limit else [event,*selected[:-1]])
+    return selected
+
+base.query_news=_cal26_query
+base.topic_group=_cal26_group
+base.score=_cal26_score
+base.category=_cal26_category
+base.meaning=_cal26_meaning
+base.risk=_cal26_risk
+base.verification=_cal26_verification
+base.clean_title=_cal26_title
+base.tag_for=_cal26_tag
+base.key=_cal26_key
+base.select_diverse=_cal26_select
+
+if TESLA_AGM26_EVENT not in base.QUERIES:
+    base.QUERIES.append(TESLA_AGM26_EVENT)
+for q in (
+    '(Tesla OR Optimus OR 테슬라 OR 옵티머스) ("Humanoids Summit" OR 휴머노이드 서밋) '
+    '(2026 OR December) (partner OR hands-on OR demo OR V3 OR official OR 시연 OR 체험)',
+    '(Tesla OR 테슬라) ("2026 Annual Meeting" OR "TSLA2026" OR 2026 주주총회) '
+    '(December 3 OR 12월 3일 OR official voting results OR 8-K)',
+):
+    if q not in base.QUERIES: base.QUERIES.append(q)
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()
