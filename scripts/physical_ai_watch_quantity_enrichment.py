@@ -308,6 +308,13 @@ def _skip_quantity_enrichment(block: str) -> bool:
         return True
     if "CATL–INTILION" in block or "CATL–Intilion" in block:
         return True
+    # DIGITIMES anonymous supplier report has no confirmed ESS units,
+    # no identified exiting vendors and no new GWh shipments. Do not
+    # manufacture device counts from policy years or legacy contract data.
+    if "미국 ESS 공급망 · 중국계 시스템업체 집단 철수설" in block:
+        return True
+    if "DIGITIMES: 중국계 ESS 시스템업체" in block:
+        return True
     if "Dexmate–LG CNS" in block or "덱스메이트" in block and "LG CNS" in block:
         return True
     # Installed capacity is not a count of robots/units. The signed Fluence
