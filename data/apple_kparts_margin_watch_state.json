@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-19T19:59:22+09:00",
+  "updated_at_kst": "2026-10-20T02:28:01+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
   "baseline": {
@@ -22,6 +22,7 @@
     "0c1804f03ca1e2e0f8d6e0d6",
     "0df2abbc6a6421820cc3a5b9",
     "0e31b7f0f845b623421d2253",
+    "0e6a17ed6942156da4db589e",
     "13d534d5f347c56488b68120",
     "147971abb3ed6ed2afd59ade",
     "174af52ad3e91e661e4b7eb6",
@@ -98,6 +99,7 @@
     "76df16bae073627e6de08bce",
     "7752b307b0421e0db6d8c1dc",
     "77ce3e3b35d2e47cf2b00c8e",
+    "79b21c7aa8226ee44cbebc1b",
     "7aa99fac531b68530ccf03e2",
     "7b3fbd299b22185b1a954c05",
     "818bd84a305e4a6dd9955187",
@@ -165,8 +167,10 @@
     "d669a09ccb20d5ea9bb42ccd",
     "d7ab90989cbf67b88cf033c4",
     "d84c90764ddb8bc8b842ba21",
+    "dc18abe6e1cb37cc9e8dc253",
     "ddb2691df0b50ae0e45a4c23",
     "dec5d2731ee6c20eecf43ac3",
+    "df43364b8db0bae98ed47037",
     "dfe36f5ae82f1833ec82786b",
     "e0f884d948fa1ac70bf4d2d6",
     "e11adb7b6af5fc6ef91570b1",
@@ -197,8 +201,8 @@
   ],
   "last_fx_bucket": "orange",
   "last_fx": {
-    "latest_rate": 1332.1,
-    "latest_date": "2026-10-16",
+    "latest_rate": 1329.49,
+    "latest_date": "2026-10-19",
     "latest_source": "ECB/Frankfurter",
     "q2_avg": 1500.48,
     "q3_avg": 1417.24,
@@ -206,7 +210,7 @@
     "bucket": "orange",
     "average_source": "Fed H.10/FRED"
   },
-  "last_scan_items": 31,
+  "last_scan_items": 30,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-09-28T07:38:15+09:00",
