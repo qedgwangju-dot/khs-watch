@@ -946,6 +946,48 @@
       "source": "뉴스핌",
       "scope": "reported_target_not_official_OCP_final_issue; user_supplied_headline; article_body_access_unavailable",
       "excerpt": "2026년 10월 14일 뉴스핌 사용자 제공 제목상 안현 사장의 2027년 1월 최종 규격 발표 언급. 기사 본문 및 공식 OCP 최신 최종본 일정은 별도 검증 필요."
+    },
+    {
+      "key": "hynix_supplier_rnd|skhynix|2026",
+      "axis": "hynix_supplier_rnd",
+      "value": {
+        "stage": "announced",
+        "upfront_development_pct_max": 50,
+        "failed_development_subject_to_review": true,
+        "paid_advance_amount_krw": null,
+        "not_automatic_refund": true
+      },
+      "unit": "percent,stage",
+      "period": "2026",
+      "as_of": "2026-07-02",
+      "evidence": "official",
+      "source_url": "https://news.skhynix.co.kr/fact-08/",
+      "source_title": "SK하이닉스 협력사 초기 연구개발비 최대 50% 선지원·기술기여도 정산",
+      "source": "SK하이닉스 뉴스룸",
+      "scope": "prior_20260702_RND_announcement_baseline_not_current_cash",
+      "excerpt": "SK하이닉스 2026년 7월 2일 공식 발표. 최대 50% 초기 개발비 선지원, 실패 때 기여도 기반 정산; 2026년 10월 19일 보증과 별개."
+    },
+    {
+      "key": "hynix_trinity_fab|yongin|2025-2031",
+      "axis": "hynix_trinity_fab",
+      "value": {
+        "stage": "construction",
+        "national_budget_krw": 373600000000,
+        "local_budget_krw": 57700000000,
+        "private_budget_krw": 443300000000,
+        "total_budget_krw": 874600000000,
+        "actual_qualified_supplier_count": null,
+        "facility_spend_not_loan_guarantee": true
+      },
+      "unit": "KRW,stage",
+      "period": "2025-2031",
+      "as_of": "2026-10-19",
+      "evidence": "official",
+      "source_url": "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156785695",
+      "source_title": "산업통상부 트리니티 팹 실증 예산 국비 3,736억원·지방비 577억원·민자 4,433억원",
+      "source": "산업통상부",
+      "scope": "validation_facility_2025_2031_budget_not_20261019_new_2T_cash_grant",
+      "excerpt": "트리니티 팹 총사업비 8,746억원, 2025~2031년. 금융보증 2조원과 별도의 실증 설비투자."
     }
   ],
   "user_capture": {

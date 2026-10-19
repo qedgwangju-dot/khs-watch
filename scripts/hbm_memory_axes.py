@@ -22,6 +22,10 @@ FOUNDRY_PRICING_RANGE_TRACK_VERSION = 1
 GLASS_SUBSTRATE_TRACK_VERSION = 5
 FOPLP_TRACK_VERSION = 1
 HBF_TRACK_VERSION = 1
+HYNIX_FINANCE_VERSION = 1
+HYNIX_FINANCE_GOV = "https://www.korea.kr/news/policyNewsView.do?newsId=148973781"
+HYNIX_FINANCE_PRESS = "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156785695"
+HYNIX_FINANCE_YNA = "https://www.yna.co.kr/view/AKR20261019072200003"
 HBF_OCP_STORAGE_URL = "https://www.opencompute.org/contribution-family/storage/"
 HBF_FIRST_SPEC_URL = "https://www.opencompute.org/contribution-family/storage/"
 HBF_REPORT_URL = "https://newspim.com/news/view/20261014000748"
@@ -52,6 +56,8 @@ EXTRA_QUERIES = [
     '(TSMC OR 台積電) (CoPoS OR "Chip-on-Panel-on-Substrate") (pilot OR 試產 OR 驗證 OR mass production OR 양산 OR 2027 OR 2028)',
     '(site:news.skhynix.co.kr OR site:news.skhynix.com OR site:sandisk.com) ("HBF" OR "High Bandwidth Flash") (standard OR specification OR final OR prototype OR pilot OR qualification OR contract OR shipment OR customer OR 규격 OR 양산 OR 2027)',
     '(site:opencompute.org OR site:news.skhynix.co.kr) "HBF" ("V0.7.0" OR "V1.0.0" OR 최종 OR updated)',
+    '(SK하이닉스 OR SK hynix) (수출공급망 강화보증 OR 상생 무역금융 OR 2조원 보증 OR 무역보험공사) (협약 OR 보증서 OR 발급 OR 지원) when:30d',
+    '(SK하이닉스 OR SK hynix) (트리니티팹 OR Trinity Fab OR R&D 도전 보상제) (개소 OR 검증 OR 양산 OR 사업화) when:90d',
 
     '(SemiAnalysis OR TrendForce OR Micron OR Citi OR JPMorgan OR "J.P. Morgan" OR BofA) 2027 (HBM3E OR HBM4 OR HBM4E) (price OR pricing OR ASP OR "$/Gb" OR "per Gb" OR 가격)',
     '"HBM3E" "HBM4" "HBM4E" 2027 (price OR ASP OR "$/Gb")',
@@ -59,7 +65,8 @@ EXTRA_QUERIES = [
 COMPANIES = {'samsung': r'삼성(?:전자)?|Samsung(?: Electronics)?',
              'skhynix': r'SK\s?하이닉스|SK\s*hynix', 'micron': r'마이크론|Micron'}
 OFFICIAL = {'news.samsung.com': 'samsung', 'semiconductor.samsung.com': 'samsung',
-            'news.skhynix.com': 'skhynix', 'investors.micron.com': 'micron', 'micron.com': 'micron',
+            'news.skhynix.com': 'skhynix', 'korea.kr':'motie', 'm.korea.kr':'motie',
+            'investors.micron.com': 'micron', 'micron.com': 'micron',
             'nvidianews.nvidia.com': 'nvidia', 'developer.nvidia.com': 'nvidia',
             'chemtronics.co.kr': 'chemtronics', 'www.chemtronics.co.kr': 'chemtronics',
             'thejntc.com': 'jntc', 'www.thejntc.com': 'jntc',
@@ -206,6 +213,10 @@ def local_period(text, published):
 
 
 def is_axis_text(text):
+    if (re.search(r'SK\s*하이닉스|SK\s*hynix|하이닉스', text, re.I)
+            and re.search(r'수출공급망\s*강화보증|상생\s*무역금융|트리니티\s*팹|Trinity\s*Fab|'
+                          r'R&D\s*도전\s*보상제|협력사.{0,35}(?:보증|대출|실증|검증)', text, re.I)):
+        return True
     if (re.search(r"\bHBF\b|High[ -]Bandwidth Flash|고대역폭\s*(?:플래시|낸드)",text,re.I)
             and re.search(r"규격|표준|최종|연기|미뤄|1월|January|specification|standard|revision|"
                           r"pilot|sample|production|qualification|customer|contract|shipment|"
@@ -1621,6 +1632,77 @@ def parse_hbf_company_milestones(item,body):
     return milestones
 
 
+
+# Four distinct scopes: bank guarantee, paid loan, validation facility, and R&D support.
+HYNIX_GUARANTEE_STAGE = {'agreement':1,'first_certificate':2,'actual_lending':3}
+HYNIX_TRINITY_STAGE = {'construction':1,'opened':2,'qualified':3}
+
+def parse_hynix_supplier_program(item,body):
+    url=str(item.get('direct_link') or '')
+    domain=host(url)
+    official=domain in ('korea.kr','m.korea.kr','news.skhynix.co.kr')
+    verified_yonhap=domain=='yna.co.kr' and url.split('?')[0]==HYNIX_FINANCE_YNA
+    if not (official or verified_yonhap):
+        return []
+    plain=re.sub(r'\s+', ' ', str(body or ''))
+    if not re.search(r'SK\s*하이닉스|SK\s*hynix|하이닉스',plain,re.I):
+        return []
+    asof=str(item.get('published_at_kst') or '')[:10]
+    out=[]
+    if (asof>='2026-10-19'
+            and re.search(r'수출\s*공급망\s*강화\s*보증|수출공급망\s*강화보증',plain,re.I)
+            and re.search(r'2\s*조\s*원',plain)
+            and re.search(r'무역보험공사',plain)
+            and re.search(r'출범|협약',plain)):
+        bank=bool(re.search(
+            r'(?:1,?000|1\s*천)\s*억\s*원.{0,60}출연|출연.{0,60}(?:1,?000|1\s*천)\s*억\s*원',plain,re.I))
+        stage=('first_certificate' if re.search(r'1\s*호\s*보증서.{0,25}(?:발급|전달)',plain)
+               else 'agreement')
+        data={'stage':stage,'ceiling_krw':2_000_000_000_000,
+              'contribution_krw':100_000_000_000 if bank else None,
+              'multiplier':20 if re.search(r'20\s*배',plain) else None,
+              'max_rate_discount_pp':2.5 if re.search(r'2[.]5\s*%[pP]?|2[.]5\s*%포인트',plain) else None,
+              'guarantee_years':3 if re.search(r'보증.{0,40}3\s*년|3\s*년.{0,40}보증',plain) else None,
+              'eligible_recommended_suppliers':bool(re.search(r'추천.{0,20}협력사|협력사.{0,20}추천',plain)),
+              'guaranteed_loan_drawn_krw':None,'direct_customer_sales_krw':None,
+              'is_cash_grant':False}
+        rec=make_record('hynix_supplier_guarantee',['skhynix','2026'],
+                        data,'KRW,stage','2026-10-19',item,
+                        'SK하이닉스·4대 은행 2조원 수출공급망 보증 출범',
+                        as_of=asof,scope='2trillion_guarantee_not_cash_grant_or_realized_sales')
+        rec['evidence']='official' if official else 'reported'
+        out.append(rec)
+    if (re.search(r'트리니티\s*팹|트리니티팹|Trinity\s*Fab',plain,re.I)
+            and re.search(r'국비.{0,25}3,?736\s*억',plain)
+            and re.search(r'지방비.{0,25}577\s*억',plain)
+            and re.search(r'민자.{0,25}4,?433\s*억',plain)):
+        stage=('opened' if re.search(r'트리니티.{0,95}(?:개소했다|운영\s*개시했다|개방했다)',plain,re.I)
+               else 'construction')
+        val={'stage':stage,'national_budget_krw':373_600_000_000,
+             'local_budget_krw':57_700_000_000,'private_budget_krw':443_300_000_000,
+             'total_budget_krw':874_600_000_000,'actual_qualified_supplier_count':None,
+             'facility_spend_not_loan_guarantee':True}
+        rec=make_record('hynix_trinity_fab',['yongin','2025-2031'],
+                        val,'KRW,stage','2025-2031',item,
+                        '트리니티 팹 국비·지방비·민자 실증시설 투자',as_of=asof,
+                        scope='trinity_lab_capex_not_guarantee_or_hbm_revenue')
+        rec['evidence']='official' if official else 'reported'
+        out.append(rec)
+    if (re.search(r'R&D\s*도전\s*보상제',plain,re.I)
+            and re.search(r'초기\s*개발비.{0,70}50\s*%',plain)
+            and re.search(r'실패.{0,85}(?:기여|정산)',plain)):
+        val={'stage':'announced','upfront_development_pct_max':50,
+             'failed_development_subject_to_review':True,
+             'paid_advance_amount_krw':None,'not_automatic_refund':True}
+        rec=make_record('hynix_supplier_rnd',['skhynix','2026'],
+                        val,'percent,stage','2026',item,
+                        '협력사 R&D 최대 50% 선지원·실패 기여도 사후 정산',as_of=asof,
+                        scope='historical_RND_not_this_2trillion_guarantee')
+        rec['evidence']='official' if official else 'reported'
+        out.append(rec)
+    return out
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
@@ -1637,6 +1719,7 @@ def parse_records(item, body):
     records.extend(parse_foplp_records(item, body))
     records.extend(parse_hbf_ocp_version(item, body))
     records.extend(parse_hbf_company_milestones(item, body))
+    records.extend(parse_hynix_supplier_program(item, body))
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
     for original in paragraphs:
         p = resolve_relative_years(original, published)
@@ -1811,6 +1894,29 @@ def comparison(old, new):
         if av is not None and bv is not None and int(av) != int(bv):
             reasons.append(f"가격 곡선 확인 세대 수 {int(av)}→{int(bv)}개")
         return reasons
+    if new['axis'] == 'hynix_supplier_guarantee':
+        result=[]
+        if HYNIX_GUARANTEE_STAGE.get(b.get('stage'),0)>HYNIX_GUARANTEE_STAGE.get(a.get('stage'),0):
+            result.append(f"보증 단계 {a.get('stage')}→{b.get('stage')}")
+        for field,label in (('ceiling_krw','보증 한도'),('contribution_krw','출연 재원'),
+                            ('guaranteed_loan_drawn_krw','실제 대출 실행액')):
+            if b.get(field) is not None and a.get(field)!=b.get(field):
+                result.append(f"{label} {int((a.get(field) or 0)/1e8):,}→{int(b[field]/1e8):,}억원")
+        return result
+    if new['axis'] == 'hynix_trinity_fab':
+        result=[]
+        if HYNIX_TRINITY_STAGE.get(b.get('stage'),0)>HYNIX_TRINITY_STAGE.get(a.get('stage'),0):
+            result.append(f"트리니티 팹 {a.get('stage')}→{b.get('stage')}")
+        for field,label in (('national_budget_krw','국비'),
+                            ('local_budget_krw','지방비'),
+                            ('private_budget_krw','민자')):
+            if b.get(field) is not None and a.get(field)!=b.get(field):
+                result.append(f"{label} {int((a.get(field) or 0)/1e8):,}→{int(b[field]/1e8):,}억원")
+        return result
+    if new['axis'] == 'hynix_supplier_rnd':
+        if b.get('upfront_development_pct_max')!=a.get('upfront_development_pct_max'):
+            return [f"개발비 선지원 {a.get('upfront_development_pct_max')}→{b.get('upfront_development_pct_max')}%"]
+        return []
     if new['axis'] == 'hbf_ocp_spec':
         if a.get('version') == b.get('version'):
             if not a.get('final_spec_officially_confirmed') and b.get('final_spec_officially_confirmed'):
@@ -2293,7 +2399,7 @@ def update_state(state, records, now, seeds=None):
         if r['as_of'][:10] > now.date().isoformat():
             continue
         grouped.setdefault(r['key'], []).append(r)
-    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'glass_jv_stage', 'foplp_mature_node_industry', 'foplp_company_ai_stage', 'hbf_ocp_spec','hbf_reported_roadmap','hbf_issuer_milestone','hbm_generation_pricing', 'hbm_market_pricing'}
+    sparse_axes = {'hynix_supplier_guarantee','hynix_trinity_fab','hynix_supplier_rnd', 'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'glass_jv_stage', 'foplp_mature_node_industry', 'foplp_company_ai_stage', 'hbf_ocp_spec','hbf_reported_roadmap','hbf_issuer_milestone','hbm_generation_pricing', 'hbm_market_pricing'}
     for key, rows in grouped.items():
         rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
         prior = state['latest'].get(key) or state['last_notified'].get(key)
@@ -2374,6 +2480,9 @@ def render(change, rate=None):
              'postprocess_order': 'HBM 후공정 장비 수주 변화',
              'postprocess_stage': 'HBM 후공정 고객 검증·양산 단계 변화',
              'hbm_generation_pricing': 'HBM 세대별 2027 가격 리셋',
+             'hynix_supplier_guarantee':'SK하이닉스 2조원 수출공급망 강화보증',
+             'hynix_trinity_fab':'트리니티 팹 실증시설 예산·개소 단계',
+             'hynix_supplier_rnd':'협력사 연구개발 도전 보상제',
              'hbf_ocp_spec':'SK하이닉스·Sandisk HBF OCP 표준 버전 변화',
               'hbf_issuer_milestone':'HBF 고객검증·정식발주·양산·출하 단계',
               'hbf_reported_roadmap':'HBF 2027년 1월 최종본 보도 일정',
@@ -2418,6 +2527,23 @@ def render(change, rate=None):
             if not points:
                 parts.append("정확한 세대별 숫자 공개 확인 전")
             return " / ".join(parts)
+        if record['axis'] == 'hynix_supplier_guarantee':
+            result=[f"대출보증 {int(v['ceiling_krw']/1e8):,}억원"]
+            if v.get('contribution_krw'):
+                result.append(f"출연 {int(v['contribution_krw']/1e8):,}억원")
+            if v.get('multiplier'):
+                result.append(f"보증배수 {v['multiplier']:g}배")
+            if v.get('max_rate_discount_pp'):
+                result.append(f"최대 금리 우대 {v['max_rate_discount_pp']:g}%p")
+            result.append(f"상태 {v.get('stage')}·실제 대출·수주·매출 별도 미확인")
+            return ' / '.join(result)
+        if record['axis'] == 'hynix_trinity_fab':
+            return (f"국비 {int(v['national_budget_krw']/1e8):,}억원 · "
+                    f"지방비 {int(v['local_budget_krw']/1e8):,}억원 · "
+                    f"민자 {int(v['private_budget_krw']/1e8):,}억원 "
+                    f"= 총 {int(v['total_budget_krw']/1e8):,}억원 / {v['stage']}")
+        if record['axis'] == 'hynix_supplier_rnd':
+            return f"개발비 최대 {v['upfront_development_pct_max']}% 선지원 · 실패 기여도 평가·정산"
         if record['axis'] == 'hbf_ocp_spec':
             stage='최종본 공식 확인' if v.get('final_spec_officially_confirmed') else '공개 규격(최종 여부 별도)'
             if v.get('version') == v.get('spec_metrics_verified_for_version','0.7.0'):
@@ -2687,6 +2813,15 @@ def render(change, rate=None):
         lines.append('• 기관별 가격곡선을 서로 합치지 않습니다. 동일 기관·동일 세대·동일 적층 조건만 전후 비교합니다.')
         lines.append('• 8단·12단 등 적층 높이가 다르면 별도 가격으로 저장하며 Blended ASP와 세대별 $/Gb를 합치지 않습니다.')
         lines.append('• 사용자 캡처는 방향 기준선일 뿐, 판독이 모호한 숫자는 저장하지 않습니다. 공개 원문에서 확인되는 숫자만 가격 상태값으로 승격합니다.')
+    if r['axis'] == 'hynix_supplier_guarantee':
+        lines.append('• 2조원은 협력사 대출보증 공급 한도이며 보조금·양산 매출이 아닙니다.')
+        lines.append('• SK하이닉스 추천 및 무역보험공사 보증심사 뒤 협약 은행에서 대출받는 구조입니다.')
+        lines.append('• 보증발급→대출실행→공정검증→정식발주→양산매출을 구분하여 감시합니다.')
+        lines.append('• 출연재원 1,000억원과 납품대금지원 펀드 1,000억원은 별개입니다.')
+    if r['axis'] == 'hynix_trinity_fab':
+        lines.append('• 시설 구축비와 실증 수율·고객 인증·구매계약은 별도입니다.')
+    if r['axis'] == 'hynix_supplier_rnd':
+        lines.append('• 연구개발 실패 시 자동 전액 환급이 아니라 기술기여도 평가 후 정산합니다.')
     if r['axis'] == 'hbf_ocp_spec':
         lines.append('• 최초 OCP V0.7.0은 2026년 8월 공개된 규격 초안이며, 최종본·실제 칩 성능·양산 매출과는 다릅니다.')
         lines.append('• 규격 공개→고객 샘플→고객 검증→실제 공급계약→시험생산→양산→매출 발생을 별도로 확인합니다.')
@@ -2836,6 +2971,11 @@ def main():
             and any(k in text for k in ('hbm3e','hbm4','hbm4e'))
             and any(k in text for k in ('$/gb','per gb','price','pricing','asp','가격'))
         )
+        structured_partner = (
+            any(x in text for x in ('sk하이닉스','sk hynix','하이닉스'))
+            and any(x in text for x in ('수출공급망 강화보증','상생 무역금융',
+                                        '트리니티팹','트리니티 팹','r&d 도전 보상제'))
+        )
         structured_hbf = (
             'hbf' in text or 'high bandwidth flash' in text or '고대역폭 플래시' in text
         )
@@ -2858,7 +2998,7 @@ def main():
                 )
             )
         )
-        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass or structured_foplp or structured_hbf:
+        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass or structured_foplp or structured_hbf or structured_partner:
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
         if not concrete_state_evidence(e):
@@ -2888,7 +3028,8 @@ def main():
         'lg innotek', 'lginnotek', 'samsung electro-mechanics', 'samsungsem', 'skc',
         'ctee.com.tw', '工商時報', 'tsmc.com', 'aseglobal.com', 'innolux.com', 'pti.com.tw', 'chipmos.com',
         'opencompute.org', 'sandisk.com', 'news.skhynix.co.kr', 'news.skhynix.com',
-        'newspim', '뉴스핌'
+        'newspim', '뉴스핌', 'yna.co.kr', '연합뉴스', 'korea.kr',
+        'm.korea.kr', '산업통상부'
     )
     legacy.relevant = lambda text: original_relevant(text) or is_axis_text(text)
     observed, coverage = [], []
@@ -2929,6 +3070,27 @@ def main():
         return [e for e in events if original_relevant(e.get('title', '') + ' ' + e.get('description', ''))]
     legacy.read_events = gather
     legacy.main()
+    # Revisit the dated October 19 announcement until it is represented by
+    # verified state. Do not create a fresh alert from an old page each hour.
+    old_program=(initial.get('memory_axes') or {}).get('latest') or {}
+    if (now.date().isoformat()>='2026-10-19'
+            and 'hynix_supplier_guarantee|skhynix|2026' not in old_program):
+        for url,name in ((HYNIX_FINANCE_GOV,'산업통상부'),
+                         (HYNIX_FINANCE_PRESS,'산업통상부'),
+                         (HYNIX_FINANCE_YNA,'연합뉴스')):
+            try:
+                raw=legacy.fetch(url,timeout=12).decode('utf-8',errors='replace')
+                body,_=read_document(raw)
+                item={'direct_link':url,'source':name,
+                      'title':'SK하이닉스 수출공급망 강화보증 2조원 출범',
+                      'published_at_kst':'2026-10-19T15:00:00+09:00'}
+                found=parse_hynix_supplier_program(item,body)
+                if any(r['axis']=='hynix_supplier_guarantee' for r in found):
+                    observed.extend(found)
+                    break
+                coverage.append('2조원 공식 보증 본문 문구 확인 불가: '+host(url))
+            except Exception as exc:
+                coverage.append('2조원 공식 보증 조회 실패: '+host(url)+' / '+type(exc).__name__)
     # OCP is the standards authority. A failed public listing request is a
     # coverage gap, not permission to promote an article or stale number.
     try:
@@ -2998,11 +3160,13 @@ def main():
         glass_axes = {'glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex','glass_jv_stage','foplp_mature_node_industry','foplp_company_ai_stage'}
         generation_price_axes = {'hbm_generation_pricing'}
         hbf_axes = {'hbf_ocp_spec','hbf_issuer_milestone','hbf_reported_roadmap'}
-        regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes | generation_price_axes | hbf_axes]
+        partner_axes = {'hynix_supplier_guarantee','hynix_trinity_fab','hynix_supplier_rnd'}
+        regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes | generation_price_axes | hbf_axes | partner_axes]
         foundry = [k for k in chosen if state['pending'][k]['record']['axis'] in foundry_axes]
         glass = [k for k in chosen if state['pending'][k]['record']['axis'] in glass_axes]
         generation_price = [k for k in chosen if state['pending'][k]['record']['axis'] in generation_price_axes]
         hbf = [k for k in chosen if state['pending'][k]['record']['axis'] in hbf_axes]
+        partner = [k for k in chosen if state['pending'][k]['record']['axis'] in partner_axes]
         sections = []
         if regular:
             blocks = ['<b>HBM·서버 D램 연계 상태 변화</b>']
@@ -3015,6 +3179,10 @@ def main():
         if glass:
             blocks = ['<b>CoPoS·FOPLP·유리기판 고객검증·양산 전환 감시</b>']
             blocks.extend(render(state['pending'][key], rate) for key in glass)
+            sections.append('\n\n'.join(blocks))
+        if partner:
+            blocks = ['<b>SK하이닉스 소부장 2조 보증·트리니티 팹·R&D 지원</b>']
+            blocks.extend(render(state['pending'][key],rate) for key in partner)
             sections.append('\n\n'.join(blocks))
         if hbf:
             blocks = ['<b>SK하이닉스·Sandisk HBF 최종 규격·실제 양산 전환 감시</b>']
