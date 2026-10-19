@@ -209,6 +209,32 @@ jobs:
           print("nuclear_regression_tests=passed")
           PY
 
+      # One-time read-only source test; validates the exact government notices on
+      # the GitHub runner. It never sends Telegram, writes state, or dispatches.
+      - name: One-time read-only China export notices source verification
+        if: github.event.head_commit.message == 'Read-only China MOFCOM primary-source smoke test'
+        env:
+          KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+          KHS_SOURCE_PROXY_FIRST: "true"
+        run: |
+          PYTHONPATH=. python - <<'PY'
+          import scripts.khs_trusted_policy_news_watch as m
+          now = m.now_kst()
+          rules = {r.key:r for r in m.STORY_RULES}
+          ok = []
+          for key in m.MOFCOM_2026_POLICY_NOTICES:
+              items = m.collect_rule_items(rules[key], now)
+              if not items:
+                  raise RuntimeError(f"China MOFCOM first-party notice unavailable on GitHub runner: {key}")
+              item = items[0]
+              if m.alert_confirmation_status(rules[key], items)[0] != "공식 확인":
+                  raise RuntimeError(f"China notice failed verification: {key}")
+              print(f"china_mofcom_verified={key} url={item['link']}")
+              ok.append(key)
+          assert len(ok) == 3
+          print("china_mofcom_source_smoke_test=passed source_count=3")
+          PY
+
       # Maintenance pushes validate only; they do not enable, resume, or dispatch the live watch.
 
   watch:
