@@ -80,7 +80,9 @@ def _riyadh_missile_headline(row):
 
 def _display_headline(row):
     original = str(row.get('title_original') or row.get('title') or '')
-    if non_military_kind(row) in ('diplomatic_appeal', 'operational_disruption'):
+    if (non_military_kind(row) in ('diplomatic_appeal', 'operational_disruption')
+            or _summit_openness_headline(_headline(row))
+            or _summit_openness_denied(_headline(row))):
         # RSS bullet lines remain one ordered headline in the rendered block.
         return ' '.join(original.split())
     return original if (_riyadh_missile_headline(row) or re.search(r'[가-힣]', original)
@@ -134,9 +136,28 @@ def _headline_group(title):
     return '전쟁·외교'
 
 
+def _summit_openness_denied(title):
+    return bool(re.search(r"\b(?:not|never|isn['’]t|wasn['’]t)\s+(?:yet\s+)?open\s+to\b.{0,25}\bsummit\b", title))
+
+
+def _summit_openness_headline(title):
+    return bool(re.search(r'\bopen\s+to\b.{0,25}\b(?:a\s+)?summit\b', title)
+                and not _summit_openness_denied(title))
+
+
+def _bargain_proposal_headline(title):
+    return bool(re.search(r'담판(?:을|를)?\s*(?:제안|추진|논의|검토)', title))
+
+
+def _meeting_uncertainty_headline(title):
+    return bool(re.search(r'회담.{0,18}여부.{0,18}(?:모르겠|미정|확답.{0,5}않)|'
+                          r'회담.{0,18}(?:정해지지\s*않|아직\s*미정)', title))
+
+
 def _summit_proposal_headline(title):
     summit = r'(?:정상\s*회담|\d+\s*자\s*(?:정상\s*)?회담)'
-    return bool(re.search(summit + r'.{0,18}(?:제안|추진|논의|검토|계획)', title)
+    return bool(_summit_openness_headline(title)
+                or re.search(summit + r'.{0,18}(?:제안|추진|논의|검토|계획)', title)
                 or re.search(r'\b(?:propos\w*|discuss\w*|plans?)\b.{0,60}\bsummit\b|'
                              r'\bsummit\b.{0,25}\b(?:proposal|under discussion|planned)\b', title))
 
@@ -148,6 +169,9 @@ def _summit_possibility_reaction(title):
 def _diplomatic_group(title):
     # A three-party summit can discuss Ukraine without inviting Ukraine.
     # Keep the named participants distinct from that discussion's object.
+    if _meeting_uncertainty_headline(title):
+        # A possible venue is not an additional meeting participant.
+        title = re.sub(r'(?:중국|中)(?:에)?서', '', title)
     trilateral = bool(re.search(r'미\s*[·ㆍ/]\s*중\s*[·ㆍ/]\s*러', title))
     actors = []
     for label, pattern in (
@@ -155,7 +179,8 @@ def _diplomatic_group(title):
             ('우크라이나', r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b'),
             ('중국', r'중국|시진핑|\b(?:china|chinese|xi(?:\s+jinping)?)\b'),
             ('러시아', r'러시아|푸틴|크렘린|라브로프|(?:^|[\s·ㆍ/])러(?=\s|[·ㆍ/]|$)|\b(?:russia\w*|putin|kremlin|lavrov)\b'),
-            ('이란', r'이란|\biran(?:ian)?\b')):
+            ('이란', r'이란|\biran(?:ian)?\b'),
+            ('북한', r'북한|김정은|\bnorth\s+korea\b|\bkim\s+jong[ -]?un\b')):
         if re.search(pattern, title) or (trilateral and label in ('미국', '중국', '러시아')):
             actors.append(label)
     if _summit_proposal_headline(title) and all(label in actors for label in ('미국', '중국', '러시아')):
@@ -175,11 +200,17 @@ def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
     if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal'):
+        if kind == 'diplomatic_position' and _summit_openness_denied(title):
+            return _diplomatic_group(title) + ' · 정상회담 의향 부인'
+        if kind == 'diplomatic_position' and _meeting_uncertainty_headline(title):
+            return _diplomatic_group(title) + ' · 회담 여부 미정 발언'
         if kind == 'diplomatic_position' and _summit_possibility_reaction(title):
             # A named excluded counterpart is not a confirmed participant.
             actors = re.sub(r'젤렌스키(?:\s*대통령)?(?:이|가)?\s*아닌', '', title)
             return _diplomatic_group(actors) + ' · 회담 가능성에 대한 반응'
-        label = ('조건부 공격 중단 제안' if kind == 'diplomatic_plan' and _conditional_pause_proposal(title) else
+        label = ('정상회담 의향·논의' if kind == 'diplomatic_plan' and _summit_openness_headline(title) else
+                 '담판 제안·논의' if kind == 'diplomatic_plan' and _bargain_proposal_headline(title) else
+                 '조건부 공격 중단 제안' if kind == 'diplomatic_plan' and _conditional_pause_proposal(title) else
                  '정상회담 제안·논의' if kind == 'diplomatic_plan' and _summit_proposal_headline(title) else KIND_LABELS[kind])
         return _diplomatic_group(title) + ' · ' + label
     if kind == 'operational_disruption':
@@ -287,12 +318,14 @@ def _diplomatic_appeal_headline(title):
 
 
 def _operational_disruption_headline(title):
-    event = r'(?:event|forum|conference|summit|행사|포럼|회의)'
+    event = r'(?:event|forum|conference|summit|행사|포럼|회의|사막의\s*다보스)'
     change = r'(?:postpon\w*|cancel\w*|연기|취소)'
     # "after attacks" names the background of the changed event schedule.
     return bool((re.search(change + r'.{0,65}' + event, title)
                  or re.search(event + r'.{0,25}' + change, title))
-                and re.search(r'\bafter\b.{0,35}\battacks?\b|(?:공격|공습).{0,18}(?:이후|여파)|(?:공격|공습)\s*후', title))
+                and (re.search(r'\bafter\b.{0,35}\battacks?\b|(?:공격|공습).{0,18}(?:이후|여파)|'
+                               r'(?:공격|공습)\s*후|공세\s*속', title)
+                     or _military_actions(title)))
 
 
 def _conditional_pause_proposal(title):
@@ -478,7 +511,8 @@ def _diplomatic_headline_kind(title):
                       r'\b(?:zelenskyy?|zelenskiy|ukrain\w*|trump|witkoff|kushner|iran(?:ian)?|russia\w*|putin|kremlin|lavrov)\b|\bu\.s\.', title)
     if not actor:
         return None
-    if _summit_possibility_reaction(title):
+    if (_summit_possibility_reaction(title) or _meeting_uncertainty_headline(title)
+            or _summit_openness_denied(title)):
         return 'diplomatic_position'
     if re.search(r'항복\s*압박|\b(?:surrender|capitulat\w*)\b.{0,30}\bpressure\b|'
                  r'\bpressure\b.{0,30}\b(?:surrender|capitulat\w*)\b', title):
@@ -486,7 +520,7 @@ def _diplomatic_headline_kind(title):
     if re.search(r'(?:종전|평화|휴전)\s*협상.{0,18}(?:러시아|러|우크라이나).{0,12}'
                  r'(?:떠나길|이탈).{0,12}(?:원치\s*않|원하지\s*않)', title):
         return 'diplomatic_position'
-    if _summit_proposal_headline(title):
+    if _summit_proposal_headline(title) or _bargain_proposal_headline(title):
         return 'diplomatic_plan'
     if re.search(r'(?:평화\s*협상|종전\s*협상|휴전\s*협상)(?:을|를)?\s*'
                  r'(?:(?:재개|개최|개시)(?:를|을)?\s*)?(?:추진|논의|검토|계획)|'
@@ -647,6 +681,11 @@ def final_color(row):
     if _energy_facility_headline(row) and _military_actions(_headline(row)):
         return 'red'
     if _ceasefire_rejection_headline(_headline(row)) and _military_actions(_headline(row)):
+        return 'red'
+    title = _headline(row)
+    if (_military_actions(title) and (_operational_disruption_headline(title)
+            or _summit_openness_headline(title) or _summit_openness_denied(title) or _bargain_proposal_headline(title)
+            or _meeting_uncertainty_headline(title))):
         return 'red'
     return 'red' if maritime_attack_tally(row) else _color(row)
 

@@ -1,0 +1,399 @@
+{
+  "provenance": {
+    "run_id": "39317765794",
+    "code_sha": "17a63defab5812f90897ba3e74c536bff4e3d78e",
+    "queried_at_kst": "2026-10-20T05:16:31.372942+09:00",
+    "alert_sha256": "1067031e732a96b1444af502a10dbb0d9b6f07e3dcfe529304bdc4b427c14455"
+  },
+  "articles": [
+    {
+      "id": "1370d4e144c22fcfaab0",
+      "title_original": "사우디, 후티 공세 속 '사막의 다보스' 내년으로 연기",
+      "title_ko": "사우디, 후티 공세 속 '사막의 다보스' 내년으로 연기",
+      "description": "[파이낸셜뉴스] 사우디아라비아가 19일(현지시간) '사막의 다보스'라는 별명이 있는 투자 콘퍼런스를 내년으로 연기한다고 발표했다. 예멘 후티 반군이 이날도 리야드 킹칼리드 국제공항과 사우디 아람코 석유 시설 등 6곳에 대규모 미사일, 무인기 공격을 퍼부은 가운데 이런 결정이 나왔다. '사막의 다보스'는 사우디 수도 리야드에서 열린다. 파이낸셜타임스(FT) 등 외신에 따르면 사우디는 성명에서 당초 다음 주 개최 예정이던 연례 '미래 투자 이니셔티브(FII)' 행사를 내년으로 미뤘다며 새 개최 일자는 '매우 조만간' 발표될 것이라고 밝혔다. 친 이란 예멘 후티 반군은 최근 수주일에 걸쳐 리야드 국제공항을 비롯해 사우디 곳곳에 무인기와 미사일 공격을 지속하고 있다. 리야드 킹칼리드 국제공항은 지난 10일 이후 폐쇄됐다. 당시 후티반군",
+      "source": "파이낸셜뉴스",
+      "link": "https://www.fnnews.com/news/202610200430568666",
+      "discovery_url": "https://www.fnnews.com/news/202610200430568666",
+      "resolved_url": "https://www.fnnews.com/news/202610200430568666",
+      "published": "Tue, 20 Oct 2026 04:53:39 +0900",
+      "rss_published": "Tue,20 Oct 2026 04:53:39 +0900",
+      "source_metadata": {
+        "title": "사우디, 후티 공세 속 '사막의 다보스' 내년으로 연기",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-20T04:53:39+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-20T04:53:39+09:00"
+          },
+          {
+            "field": "dd:published_time",
+            "at_kst": "2026-10-20T04:53:39+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-20T04:53:39+09:00"
+          },
+          {
+            "field": "visible:입력",
+            "at_kst": "2026-10-20T04:53:00+09:00"
+          }
+        ]
+      },
+      "score": 87,
+      "tags": [],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "red",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "72adb50b9a6ce0d79afcdd14eecf469bc12aac1e0b4d32fb7ffa4eb613fc70b4"
+    },
+    {
+      "id": "585c7790ffaf42462220",
+      "title_original": "Trump open to summit with Xi and Putin — to discuss denuclearization",
+      "title_ko": "트럼프, 시진핑·푸틴과 정상회담 열어 비핵화 논의",
+      "description": "President Trump wants to hold a trilateral summit with Chinese President Xi and Russian President Putin in China next month to discuss \"denuclearization\" — but not necessarily Ukraine. Why it matters: Such a summit between the leaders of the U.S., China and Russia would be unprecedented. Trump has been talking for two years about his aspiration to reach a deal with Russia and China to reduce the number of nuclear weapons. But so far Putin and Xi haven't shown much openness to the idea. Driving the news: Trump is expected to travel to China in mid-November to participate in the Asia-Pacific Economic Cooperation (APEC) leaders' meeting in the city of Shenzhen. The Kremlin has been floating the idea of holding such a meeting since July. Putin raised the issue in two phone calls with Trump, including one last week. The Chinese government hasn't expressed willingness to hold such a summit. What he's saying: When asked on Monday whether such a summit could discuss ending the war in Ukraine, Trump said he wants to hold such a trilateral meeting, but in order to discuss other issues. \"I would do it, not so much for Ukraine, we would have it to talk about denuclearization,\" he said.",
+      "source": "Axios",
+      "link": "https://www.axios.com/2026/10/19/trump-summit-xi-putin-denuclearization-ukraine",
+      "published": "Mon, 19 Oct 2026 20:04:17 +0000",
+      "score": 60,
+      "tags": [
+        "종전·협상",
+        "협상내용",
+        "휴전·평화"
+      ],
+      "body_checked": true,
+      "signals_ko": [
+        "후속 3자 협상·회담이 실제 준비 단계로 이동하는지 확인"
+      ],
+      "classification_color": "",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "694e0d7464110f13c488",
+      "title_original": "중간선거 급한 트럼프, ‘졸속 종전’ 밀어붙이나…푸틴은 유럽 뺀 담판 제안 - 한겨레",
+      "title_ko": "중간선거 급한 트럼프, ‘졸속 종전’ 밀어붙이나…푸틴은 유럽 뺀 담판 제안 - 한겨레",
+      "description": "중간선거 급한 트럼프, ‘졸속 종전’ 밀어붙이나…푸틴은 유럽 뺀 담판 제안 한겨레",
+      "source": "한겨레",
+      "source_url": "https://www.hani.co.kr",
+      "link": "https://www.hani.co.kr/arti/international/america/1283161.html",
+      "discovery_url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9adEhKTmhqeTR5Mk9fLTVkaFRoQ3Y0WkRfUzNjSk5HLXk3ZFNLMlNNT19KNnhSRlA5M2QxYkhRYkw2ZVphMGtxVngzcFc5V3FSd2t4NWlBT0xUeEZwdG5hblhDYm5kbXlOMi0xSGpUNA?oc=5",
+      "resolved_url": "https://www.hani.co.kr/arti/international/america/1283161.html",
+      "published": "Tue, 20 Oct 2026 05:00:00 +0900",
+      "rss_published": "Mon, 19 Oct 2026 20:00:00 GMT",
+      "source_metadata": {
+        "title": "중간선거 급한 트럼프, ‘졸속 종전’ 밀어붙이나…푸틴은 유럽 뺀 담판 제안",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-20T05:00:00+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-20T05:00:00+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-20T05:00:00+09:00"
+          }
+        ]
+      },
+      "score": 13,
+      "tags": [
+        "정치일정",
+        "종전·협상"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "classification_color": "yellow",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "4922452fde6ff7699ad87ac08c20d0d844cb5863b3621a3da3977d99543c4c86"
+    },
+    {
+      "id": "75371bcca85302114376",
+      "title_original": "트럼프, 내달 中서 김정은과 회담 여부에 \"모르겠다\" - 연합뉴스",
+      "title_ko": "트럼프, 내달 中서 김정은과 회담 여부에 \"모르겠다\" - 연합뉴스",
+      "description": "트럼프, 내달 中서 김정은과 회담 여부에 \"모르겠다\" 연합뉴스",
+      "source": "연합뉴스",
+      "source_url": "https://www.yna.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFAtYnU5cGZkZEwzLWRGdW85b21ZOVZGWGFPZzhvQ2xxZGlySGRnWDZ4aks4Mi1jTDczOGthNlhyYnV6eVc5UkZBTHQ0X2FmQWJBRU1OZXV1OFpHTzZjdnF3U1FjMmJ5RzE1QzgxdFJ6WnB6OEdFSEE?oc=5",
+      "published": "Mon, 19 Oct 2026 20:05:12 GMT",
+      "score": 10,
+      "tags": [
+        "외교 접촉 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_contact",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "aeec257f70c878244d44",
+      "title_original": "크렘린궁: 미·러·중국 정상회담이 11월 APEC 회의 기간 중에 개최될 가능성이 있다. - Vietnam.vn",
+      "title_ko": "크렘린궁: 미·러·중국 정상회담이 11월 APEC 회의 기간 중에 개최될 가능성이 있다. - Vietnam.vn",
+      "description": "크렘린궁: 미·러·중국 정상회담이 11월 APEC 회의 기간 중에 개최될 가능성이 있다. Vietnam.vn",
+      "source": "Vietnam.vn",
+      "source_url": "https://www.vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPS3NJbnZlUVRCOWtjakhiNjBMUmpmUEg1d3BQMlFhdG9Ya0xYUHl3OWRkX0lsbUd3ZG5JQWNrSUFWVlJES1J5UVN6RTc0MkxZWlZleEhZV191QmxHM09hZGdXTUxDU2ZSMHpZaHRlalJmMUxadVFMRzUzOUU3RThqNFY2UUpjSnFyeWFSMHZnSF93bG8yVTdnNEpDZjZoVUJ1NE1HTUxR?oc=5",
+      "published": "Mon, 19 Oct 2026 17:15:55 GMT",
+      "score": 6,
+      "tags": [
+        "외교 접촉 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "non_military_kind": "diplomatic_contact",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "f3149a2418220666b71d",
+      "title_original": "Saudi Arabia postpones its 'Davos in the Desert' conference after attacks",
+      "title_ko": "사우디아라비아, 테러 이후 '사막의 다보스' 회의 연기",
+      "description": "",
+      "source": "Reuters",
+      "link": "https://www.reuters.com/world/middle-east/saudi-fii-postpones-flagship-conference-until-2027-2026-10-19/",
+      "published": "2026-10-19T16:05:49.543Z",
+      "score": 6,
+      "tags": [
+        "행사·운영 일정 변경 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "non_military_kind": "operational_disruption",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29726.75,
+      "pct": 1.1406358981338238,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "05:06 KST",
+      "observed_at_kst": "2026-10-20T05:06:31+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 29391.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 29391.5,
+        "chartPreviousClose": 29391.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792440391,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792382400,
+            "start": 1792382400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792468740,
+            "start": 1792382400,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792468740,
+            "start": 1792468740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 98.41000366210938,
+      "pct": -0.616033465856014,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "05:06 KST",
+      "observed_at_kst": "2026-10-20T05:06:31+09:00",
+      "symbol": "CL=F",
+      "previous_close": 99.02,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 99.02,
+        "chartPreviousClose": 99.02,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792440391,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792382400,
+            "end": 1792382400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792382400,
+            "end": 1792468740,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792468740,
+            "end": 1792468740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 109.4000015258789,
+      "pct": -0.41871333890505236,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "05:05 KST",
+      "observed_at_kst": "2026-10-20T05:05:58+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 109.86,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 109.86,
+        "chartPreviousClose": 109.86,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792440358,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792382400,
+            "start": 1792382400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792468740,
+            "start": 1792382400,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792468740,
+            "start": 1792468740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.98799896240234,
+      "pct": 0.14827514793478436,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "05:06 KST",
+      "observed_at_kst": "2026-10-20T05:06:33+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 101.837,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 101.837,
+        "chartPreviousClose": 101.837,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792440393,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792382400,
+            "start": 1792382400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792468740,
+            "start": 1792382400,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792468740,
+            "start": 1792468740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "sent_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟡 <b>군사위협·협상 제약</b>  |  🟡 <b>제재·외교반응</b>\n조회 2026-10-20 05:16 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [속보] <b>1. 사우디·후티</b>\n사우디, 후티 공세 속 &#x27;사막의 다보스&#x27; 내년으로 연기\n보도 10-20 04:53 KST · <b>22분 경과</b> · 전쟁 · <a href=\"https://www.fnnews.com/news/202610200430568666\">파이낸셜뉴스 원문</a>\n\n[속보] <b>2. 우크라이나·러시아</b>\n후속 3자 협상·회담이 실제 준비 단계로 이동하는지 확인\nRSS 보도 10-20 05:04 KST · <b>12분 경과</b> · 종전·협상 · 휴전·평화 · <a href=\"https://www.axios.com/2026/10/19/trump-summit-xi-putin-denuclearization-ukraine\">Axios 원문</a> · RSS 입력 기준·본문 미확인\n\n🟡 [속보] <b>3. 우크라이나·러시아 · 에너지 휴전 발표·양측 검증 대기</b>\n중간선거 급한 트럼프, ‘졸속 종전’ 밀어붙이나…푸틴은 유럽 뺀 담판 제안 - 한겨레\n보도 10-20 05:00 KST · <b>16분 경과</b> · 종전·협상 · <a href=\"https://www.hani.co.kr/arti/international/america/1283161.html\">한겨레 원문</a>\n\n🟡 [속보] <b>4. 미국 · 외교 접촉 보도</b>\n트럼프, 내달 中서 김정은과 회담 여부에 &quot;모르겠다&quot; - 연합뉴스\nRSS 보도 10-20 05:05 KST · <b>11분 경과</b> · 외교 접촉 보도 · <a href=\"https://news.google.com/rss/articles/CBMidkFVX3lxTFAtYnU5cGZkZEwzLWRGdW85b21ZOVZGWGFPZzhvQ2xxZGlySGRnWDZ4aks4Mi1jTDczOGthNlhyYnV6eVc5UkZBTHQ0X2FmQWJBRU1OZXV1OFpHTzZjdnF3U1FjMmJ5RzE1QzgxdFJ6WnB6OEdFSEE?oc=5\">연합뉴스 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,726.75</b>  +1.14% · 제공처 비교종가 대비 · 기준 05:06 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>98.41</b>  -0.62% · 제공처 비교종가 대비 · 기준 05:06 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>109.40</b>  -0.42% · 제공처 비교종가 대비 · 기준 05:05 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.99</b>  +0.15% · 제공처 비교종가 대비 · 기준 05:06 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n",
+  "evidence_sha256": "60e5aa36b0a4a7afc820eac906e68a8729611c74c5f7c51aa3e27c563fc9a056",
+  "limits": [
+    "Stored publisher extraction and RSS inputs do not preserve original operating HTTP response bytes.",
+    "Telegram returned body, server date, recipient hash and device receipt are unverified.",
+    "Source article statements are not independently confirmed events."
+  ]
+}
