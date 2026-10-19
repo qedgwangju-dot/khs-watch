@@ -1075,13 +1075,15 @@
   },
   "_delivery": {
     "id": "cfe22701220e33ad853f44de45c4bf5c4329d8d7d1564cd56b7a182f4ec9674f",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-19T20:04:23+09:00",
     "chunks": [
       "<b>🚨 AI 부품 리드타임 변화</b>\n\n<b>핵심 변화</b>\n• <b>전주 대비:</b> ↘ 병목 완화 — 악화 0개 / 완화 1개\n• <b>최대 병목:</b> ABF 48~56주 / 균형 12주 (4.3배)\n• 이전 확정값 유지: CPU, GPU, DRAM, NAND(eSSD), HDD, ABF, MLCC\n\n<b>현재 숫자</b>\n• <b>심각:</b> DRAM 20주/8주 (2.5배) · ABF 48~56주/12주 (4.3배)\n• <b>제약:</b> CPU 25~30주/16~20주 (1.5배) · NAND(eSSD) 16주/8주 (2.0배) · HDD 50주/16주 (3.1배) · MLCC 35주/12주 (2.9배)\n• <b>균형:</b> GPU 30~40주/30~40주 (1.0배)\n\n<b>구조 시간축</b>\n• UBS 프로젝트 기준: HDD 12~24개월 <i>(부품 주문→납기와 직접 비교 금지)</i>\n\n<b>미래 재평가</b>\n• <b>HDD:</b> 에이전틱 AI 수요 증가 → HDD 공급 압박 지속\n• <b>ABF:</b> 수급 격차가 단기간 닫히기 어렵고 3Q26~4Q27 장기계약 가격은 분기당 10~15% 인상 전망\n\n<b>관련 기업</b>\n• <b>HDD:</b> Seagate·Western Digital — nearline HDD\n• <b>ABF:</b> 삼성전기·Ibiden·Unimicron·Nan Ya PCB — 고성능 FC-BGA/ABF 기판\n\n<b>역풍·다음 확인</b>\n• HDD: 출하 EB·리드타임·고객 재고 (6~12개월) / ABF: 리드타임·SAP 가동률·수율·고객 승인 (12~24개월)\n\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-006\">TrendForce 원문</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      308
+    ],
     "candidate": {
       "updated_at_kst": "2026-10-19T20:03:09+09:00",
       "seen_ids": [
