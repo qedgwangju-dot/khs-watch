@@ -66,11 +66,13 @@ TRUSTED=(
  "DIGITIMES","Reuters","Bloomberg","SpaceNews","Payload",
  "Financial Times","Aviation Week","The Korea Economic Daily",
 )
-STOP=set(("telepix kencoa aerospace space spacex satellite satellites
- ai optical payload korea korean global export contract wins 2026
- 2027 2028 the a an for to with and new of on in from company
- companies plans planning launches spaceflight rocket startup
- suppliers future new upcoming".split()))
+STOP=set((
+ "telepix kencoa aerospace space spacex satellite satellites "
+ "ai optical payload korea korean global export contract wins 2026 "
+ "2027 2028 the a an for to with and new of on in from company "
+ "companies plans planning launches spaceflight rocket startup "
+ "suppliers future new upcoming"
+).split())
 NOISE=re.compile(r"주가\s*급등|주가\s*하락|목표주가|class action|options activity|insider sale|why shares|"
                  r"stock soars|stock jumps|analyst rating|tesla shares|meme",re.I)
 
