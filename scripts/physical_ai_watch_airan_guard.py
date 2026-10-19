@@ -4810,10 +4810,69 @@ base.key = key
 base.select_diverse = select_diverse
 
 
+
+def _drop_stock_price_sections(text: str) -> str:
+    """Last-mile defense: strip stock-only headlines before Telegram sends.
+
+    This protects against legacy-score wrappers and future wording variants.
+    Preserve legitimate article blocks, renumber them, update the count.
+    If none remain, emit an empty message rather than a false alert.
+    """
+    if '<b>신규 고신호 ' not in text or '━━━━━━━━━━━━━━━━━━' not in text:
+        return text
+    head, tail = text.split('━━━━━━━━━━━━━━━━━━', 1)
+    sections = tail.split('──────────────────')
+    title_rx = re.compile(r'(?m)^\s*<b>\s*\d+\.\s*([^<\n]+)</b>')
+    kept = []
+    removed = 0
+    for section in sections:
+        m = title_rx.search(section)
+        if m:
+            title = m.group(1)
+            if (not re.search(r'정정|오탐', title)
+                    and _is_stock_reaction_only(
+                        {'title': title, 'source': '비공식 언론'}
+                    )):
+                print('Final Telegram stock-only headline excluded:', title)
+                removed += 1
+                continue
+        kept.append(section)
+    if not removed:
+        return text
+    count = sum(bool(title_rx.search(x)) for x in kept)
+    if count == 0:
+        return ''
+    head = re.sub(
+        r'(<b>신규 고신호 )\d+(건</b>)',
+        lambda m: f'{m.group(1)}{count}{m.group(2)}',
+        head,
+        count=1,
+    )
+    new_body = '──────────────────'.join(kept)
+    counter = [0]
+
+    def renumber(m: re.Match) -> str:
+        counter[0] += 1
+        return f'{m.group(1)}{counter[0]}{m.group(2)}'
+
+    new_body = re.sub(
+        r'(?m)^(\s*<b>)\d+(\.\s+)',
+        renumber,
+        new_body,
+    )
+    if counter[0] != count:
+        raise RuntimeError('Telegram alert count mismatch after stock-filter')
+    return head + '━━━━━━━━━━━━━━━━━━' + new_body
+
+
 def _finalize_airan_criteria() -> None:
     if not base.ALERT_PATH.exists():
         return
     text = base.ALERT_PATH.read_text(encoding='utf-8')
+    text = _drop_stock_price_sections(text)
+    if not text:
+        base.ALERT_PATH.write_text('', encoding='utf-8')
+        return
     marker = '<b>판정 기준</b>'
     if marker in text:
         body = text.split(marker, 1)[0].rstrip()
