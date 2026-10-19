@@ -54,7 +54,9 @@ jobs:
     timeout-minutes: 12
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
-      DRY_RUN: ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run == 'true') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[dry-run]')) && 'true' || 'false' }}
+      # 코드 push는 무조건 미전송 검사, 명시적 [format-sample]만 1회 시험 발송.
+      DRY_RUN: ${{ ((github.event_name == 'push' && !contains(github.event.head_commit.message, '[format-sample]')) || (github.event_name == 'workflow_dispatch' && inputs.dry_run == 'true')) && 'true' || 'false' }}
+      FORMAT_SAMPLE_SEND: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[format-sample]') && 'true' || 'false' }}
     steps:
       - name: Checkout latest production main
         uses: actions/checkout@v4
@@ -71,6 +73,8 @@ jobs:
       - name: Query Bank of Korea official market yields
         env:
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+          PREVIEW_FORMAT: ${{ env.DRY_RUN }}
+          FORMAT_SAMPLE_SEND: ${{ env.FORMAT_SAMPLE_SEND }}
         run: python scripts/korea_credit_spread_watch.py
       - name: Publish official-source status
         if: always()
@@ -90,9 +94,10 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+          FORMAT_SAMPLE_SEND: ${{ env.FORMAT_SAMPLE_SEND }}
         run: python scripts/korea_credit_spread_watch.py --send
       - name: Persist alert state only after Telegram delivery acknowledgement
-        if: success() && env.DRY_RUN != 'true' && hashFiles('out/korea_credit_spread_watch_confirmed.json') != ''
+        if: success() && env.DRY_RUN != 'true' && env.FORMAT_SAMPLE_SEND != 'true' && hashFiles('out/korea_credit_spread_watch_confirmed.json') != ''
         run: |
           set -e
           test -f out/korea_credit_spread_watch_pending.json
@@ -118,6 +123,11 @@ jobs:
           done
           echo "텔레그램 전송은 확인됐으나 상태 저장이 실패했습니다. 다음 실행 전에 복구 필요." >&2
           exit 1
+      - name: Mark one-off format verification receipt
+        if: success() && env.FORMAT_SAMPLE_SEND == 'true' && hashFiles('out/korea_credit_spread_watch_confirmed.json') != ''
+        run: |
+          echo "실제 텔레그램 본문 일치 확인. 양식 시험만 실행했으며 신용경보 상태는 변경하지 않음." >> "$GITHUB_STEP_SUMMARY"
+          cat out/korea_credit_spread_watch_confirmed.json >> "$GITHUB_STEP_SUMMARY"
       - name: Save verification records without credentials
         if: always()
         uses: actions/upload-artifact@v4
