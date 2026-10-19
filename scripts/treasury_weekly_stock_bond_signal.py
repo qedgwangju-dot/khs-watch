@@ -10,8 +10,10 @@ from __future__ import annotations
 import csv
 import datetime as dt
 import io
+import html
 import json
 import math
+from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 
 import requests
@@ -160,16 +162,120 @@ def fetch_current_week(now: dt.datetime | None = None, client=requests) -> dict:
     return result
 
 
+
+SOURCE_LABELS = (
+    ("indexes.nasdaq.com", "나스닥100 지수 이력"),
+    ("api.nasdaq.com", "나스닥 공식 종가"),
+    ("home.treasury.gov", "미 재무부 10년물 금리"),
+)
+
+
+def _source_links(result: dict) -> str:
+    """Three named and validated HTTPS text links, never raw pasted URLs."""
+    urls = result.get("source_urls") or []
+    if len(urls) != len(SOURCE_LABELS):
+        raise SourceMissing("required Nasdaq/Treasury source links missing")
+    elements = []
+    for url, (host, label) in zip(urls, SOURCE_LABELS):
+        parsed = urlparse(str(url))
+        if (
+            parsed.scheme != "https" or parsed.hostname != host
+            or parsed.username or parsed.password or parsed.fragment
+        ):
+            raise SourceMissing("unrecognized source URL for " + label)
+        safe_url = html.escape(str(url), quote=True)
+        elements.append(f'<a href="{safe_url}">{html.escape(label)}</a>')
+    return " · ".join(elements)
+
+
+def _period_line(result: dict) -> str:
+    return f"기준: {result['start']} → {result['end']} (미국 현지 주간 마감)"
+
+
+def _stock_line(result: dict) -> str:
+    return (
+        f"나스닥100: {result['ndx_start']:,.2f} → "
+        f"{result['ndx_end']:,.2f} ({result['ndx_week_pct']:+.2f}%)"
+    )
+
+
+def _bond_line(result: dict) -> str:
+    return (
+        f"미 10년물 금리: {result['y10_start']:.2f}% → "
+        f"{result['y10_end']:.2f}% ({result['y10_week_bp']:+.0f}bp)"
+    )
+
+
+def _threshold_explanation(result: dict) -> str:
+    if result["category"] == "안전자산 방어 신호":
+        return "나스닥100 주간 -5% 이하 + 10년물 금리 -10bp 이하"
+    if result["category"] == "주식·국채 동반 약세 경보":
+        return "나스닥100 주간 -5% 이하 + 10년물 금리 +10bp 이상"
+    if result["category"] == "기술주 급락·국채 완충 불충분":
+        return "나스닥100 주간 -5% 이하, 10년물 금리 -10bp 하락은 미충족"
+    if result["category"] == "주간 급락 조건 미충족":
+        return "나스닥100 주간 -5% 급락 조건 미충족"
+    raise ValueError("unexpected weekly risk regime category")
+
+
+def _note_lines() -> tuple[str, ...]:
+    return (
+        "CTA 숏커버링: CFTC 포지션·CME 미결제약정 확인 전 미확정.",
+        "해당 주간 금리와 주가 움직임이며 이후 국채 수익·헤지 성과를 보장하지 않음.",
+        "같은 날짜의 나스닥 종가와 미 재무부 공식 일일 수익률로 비교. 자료 불일치 시 경보 보류.",
+    )
+
+
 def report_text(result: dict) -> str:
-    return "\n".join([
-        "[미 증시 급락·국채 헤지 기능 주간 경보]",
+    """Clean plain-text audit copy; source destinations are preserved separately."""
+    rows = [
+        "미 증시 급락·국채 헤지 기능 | 주간 경보",
         f"판정: {result['category']}",
-        f"주간 마감 기준: {result['start']} → {result['end']} (미국 현지)",
-        f"나스닥100: {result['ndx_start']:,.2f} → {result['ndx_end']:,.2f} ({result['ndx_week_pct']:+.2f}%)",
-        f"미 10년물 금리: {result['y10_start']:.2f}% → {result['y10_end']:.2f}% ({result['y10_week_bp']:+.0f}bp)",
-        f"해석: {result['comment']}",
-        "CTA 숏커버링은 CFTC 포지션 변화·CME 거래량 및 미결제약정 확인 전까지 확정하지 않음.",
-        "기술주 급락과 금리하락이 겹쳐도 이후 국채 상승·수익을 보장하지 않음.",
-        "같은 날짜의 나스닥100 종가와 미 재무부 공식 금리만 사용. 주간 기준일 불일치 때는 경보 보류.",
-        f"출처: {' | '.join(result['source_urls'])}",
-    ])
+        _period_line(result),
+        "",
+        "핵심 숫자",
+        _stock_line(result),
+        _bond_line(result),
+        "",
+        "무슨 뜻인가",
+        result["comment"],
+        "",
+        f"경보 조건: {_threshold_explanation(result)}",
+        "",
+        "확인할 점",
+        *_note_lines(),
+        "",
+        "공식 출처: 나스닥100 지수 이력 · 나스닥 공식 종가 · 미 재무부 10년물 금리",
+    ]
+    return "\n".join(rows)
+
+
+def report_html(result: dict) -> str:
+    """Telegram HTML: native bold section labels and tappable source text-links."""
+    esc = html.escape
+    source_links = _source_links(result)
+    paragraphs = [
+        "<b>미 증시 급락·국채 헤지 기능 | 주간 경보</b>",
+        f"<b>판정: {esc(result['category'])}</b>",
+        esc(_period_line(result)),
+        "",
+        "<b>핵심 숫자</b>",
+        esc(_stock_line(result)),
+        esc(_bond_line(result)),
+        "",
+        "<b>무슨 뜻인가</b>",
+        esc(result["comment"]),
+        "",
+        f"<b>경보 조건:</b> {esc(_threshold_explanation(result))}",
+        "",
+        "<b>확인할 점</b>",
+        *(esc(note) for note in _note_lines()),
+        "",
+        "<b>공식 출처</b>",
+        source_links,
+    ]
+    output = "\n".join(paragraphs)
+    # Telegram measures decoded visible text; also bound the raw payload.
+    if len(output) > 3900 or len(report_text(result)) > 3800:
+        raise ValueError("Telegram weekly report exceeds size budget")
+    return output
