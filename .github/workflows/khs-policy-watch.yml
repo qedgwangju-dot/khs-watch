@@ -209,16 +209,6 @@ jobs:
           print("nuclear_regression_tests=passed")
           PY
 
-      # One-time verification authorized for the new China MOFCOM control alerts.
-      # Runs ONLY for this exact commit message, then this temporary step is removed.
-      - name: Dispatch existing policy watch once after China notice regression
-        if: github.event.head_commit.message == 'One-time China MOFCOM live verification'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh workflow run khs-policy-watch.yml --ref main -f telegram_test=false -f telegram_dry_run=false
-          echo "china_mofcom_live_dispatch=created" >> "$GITHUB_STEP_SUMMARY"
-
       # Maintenance pushes validate only; they do not enable, resume, or dispatch the live watch.
 
   watch:
