@@ -156,7 +156,7 @@ def fetch_current_week(now: dt.datetime | None = None, client=requests) -> dict:
     result = evaluate_week(nasdaq, treasury, end)
     result["source_urls"] = [
         "https://indexes.nasdaq.com/Index/History/NDX",
-        "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index",
+        f"{NASDAQ_API}?assetclass=index&limit=60&fromdate={params['fromdate']}&todate={params['todate']}",
         treasury_url,
     ]
     return result
