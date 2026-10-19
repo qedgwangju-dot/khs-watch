@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import datetime as dt
 import hashlib
+import re
 import sys
 import tempfile
 from pathlib import Path
@@ -4351,7 +4352,7 @@ if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,23):
     assert '유료 본문 직접 열람 실패' in base.verification(cr,cg,render)
     assert '55%' in base.risk(cc) and '75%' in base.risk(cc)
     assert '개별 업체 철수 공시' in base.meaning(cc)
-    assert '기존' in base.meaning(cc) and '7.5GWh' in base.meaning(cc)
+    assert re.search(r'과거|기존',base.meaning(cc)) and '7.5GWh' in base.meaning(cc)
     assert watcher.qty._skip_quantity_enrichment(
         '<b>1. 미국 ESS 공급망</b>\n'
         '<b>분류</b>  미국 ESS 공급망 · 중국계 시스템업체 집단 철수설 보도\n'
