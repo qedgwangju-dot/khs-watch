@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "created_at": "2026-10-19T16:00:07.742460+00:00",
+  "updated_at": "2026-10-19T16:00:07.742460+00:00",
+  "source_checks": {
+    "2026년 4월 KRX 정정공시": {
+      "ok": true,
+      "url": "https://kind.krx.co.kr/external/2026/04/03/001401/20260326001612/91763.htm"
+    },
+    "2026년 10월 한화오션 공시": {
+      "ok": false,
+      "error": "ValueError"
+    },
+    "KBI 강관 공급 회사 발표 재전재": {
+      "ok": true,
+      "url": "https://www.hankyung.com/article/202610199762i"
+    },
+    "KBI 강관 보도 교차": {
+      "ok": true,
+      "url": "https://www.etnews.com/20261019000197"
+    },
+    "PRS 공시 내용 전재 교차": {
+      "ok": true,
+      "url": "https://www.digitaltoday.co.kr/disclosure/articleView.html?idxno=707870"
+    }
+  },
+  "seen": {
+    "kbi:spacex_deluge_950t_202610": "2026-10-19T16:00:07.742460+00:00"
+  }
+}
