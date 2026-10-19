@@ -96,6 +96,131 @@ class IntegrityTests(unittest.TestCase):
         value = json.loads(path.read_text(encoding='utf-8'))
         return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def demands_disruption_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_demands_disruption_attack_39271931307.json'
+        value = json.loads(path.read_text(encoding='utf-8'))
+        return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_actual_navigation_negotiation_demands_are_not_implemented_peace(self):
+        fixture, _ = self.demands_disruption_fixture()
+        row = fixture['articles'][1]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_appeal')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '러시아 · 항행·협상 재개 요구')
+
+    def test_actual_forum_postponement_is_not_a_new_attack(self):
+        fixture, _ = self.demands_disruption_fixture()
+        row = fixture['articles'][2]
+        self.assertEqual(integrity.non_military_kind(row), 'operational_disruption')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '사우디·후티 · 행사·운영 일정 변경 보도')
+
+    def test_actual_casualties_keep_attack_title_and_explicit_Yemeni_actor(self):
+        fixture, _ = self.demands_disruption_fixture()
+        for index, group in ((0, '우크라이나·러시아'), (3, '후티·예멘 정부군'), (4, '후티·예멘 정부군')):
+            with self.subTest(index=index):
+                row = fixture['articles'][index]
+                self.assertIsNone(integrity.non_military_kind(row))
+                self.assertEqual(integrity.final_color(row), 'red')
+                self.assertEqual(integrity.topic_label(row), group + ' · 공습·공격 피해 보도')
+
+    def test_unrendered_conditional_exchange_proposal_is_not_a_completed_pause(self):
+        fixture, _ = self.demands_disruption_fixture()
+        row = fixture['articles'][5]
+        self.assertFalse(row['rendered'])
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_plan')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '우크라이나·러시아 · 조건부 공격 중단 제안')
+
+    def test_demands_postponement_scores_do_not_inherit_peace_cache(self):
+        fixture, now = self.demands_disruption_fixture()
+        for index in (1, 2, 5):
+            with self.subTest(index=index):
+                row = fixture['articles'][index]
+                expected, _ = integrity.source_score._original_score(copy.deepcopy(row), now)
+                score, tags = integrity.score_item(row, now)
+                self.assertEqual(score, expected)
+                self.assertEqual(tags, [integrity.KIND_LABELS[integrity.non_military_kind(row)]])
+                self.assertFalse(row.get('signals_ko') or row.get('forced_tags'))
+                self.assertNotIn('newidea_marks', row)
+                self.assertNotIn('deep_signal', row)
+
+    def test_actual_demand_disruption_render_and_full_candidate_gate(self):
+        fixture, now = self.demands_disruption_fixture()
+        rows = fixture['articles']
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        shown = [row for row in receipt['articles'] if row['rendered']]
+        self.assertEqual([row['id'] for row in shown], [row['id'] for row in rows[:4]])
+        self.assertEqual([row['classification_color'] for row in shown], ['red', 'yellow', 'yellow', 'red'])
+        for row in shown:
+            self.assertIn(html.escape(' '.join(row['title_original'].split())), text)
+            self.assertFalse(row.get('signals_ko') or row.get('forced_tags'))
+        self.assertNotIn('후속 협상 실무 의제', text)
+        self.assertNotIn('🟢', text)
+        self.assertIn('53명 사망·200여명 부상', text)
+        self.assertIn('본문 미확인', text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in shown]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            integrity.verify_alert()
+
+    def test_final_gate_rejects_actual_same_hash_demand_disruption_wrong_body(self):
+        fixture, now = self.demands_disruption_fixture()
+        rows = [row for row in fixture['articles'] if row['rendered']]
+        text = fixture['sent_alert'].strip()
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
+                integrity.verify_alert()
+
+    def test_appeals_do_not_hide_separate_operations_or_implemented_ceasefire(self):
+        for title in ('Lavrov calls for resumption of Yemen negotiations',
+                      '라브로프, 호르무즈 항행 자유 회복 촉구'):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), 'diplomatic_appeal')
+        for title in ('Lavrov calls for negotiations; Russia launched airstrikes',
+                      '라브로프, 항행 자유 회복 촉구…러시아 미사일 발사',
+                      '라브로프, 협상 재개 촉구…양측 휴전 합의 발효'):
+            with self.subTest(title=title):
+                self.assertNotEqual(integrity.non_military_kind(article(title)), 'diplomatic_appeal')
+        self.assertEqual(integrity.non_military_kind(article('Zelensky calls Trump')), 'diplomatic_contact')
+        self.assertEqual(integrity.non_military_kind(article("Zelensky calls Trump's diesel deal a peace incentive")), 'diplomatic_statement')
+
+    def test_postponement_and_casualty_boundaries_preserve_action_stage(self):
+        for title in ('Saudi Arabia postpones event after Houthi attacks; Houthis launched new attacks',
+                      '사우디 행사 연기…후티 미사일 발사'):
+            with self.subTest(title=title):
+                self.assertNotEqual(integrity.non_military_kind(article(title)), 'operational_disruption')
+        for title in ('러 대규모 공습에 우크라 사상자 속출 가능성',
+                      '러 공습 사상자 조사보고서 공표 연기',
+                      '후티 미사일 공격에 53명 사망 보도 부인',
+                      '후티 미사일 공격에 53명 사망 예상',
+                      '미국, 후티 미사일 공격에 53명 사망한 사건 규탄'):
+            with self.subTest(title=title):
+                self.assertNotIn('공습·공격 피해 보도', integrity.topic_label(article(title)))
+
+    def test_only_appeal_and_postponement_verdict_has_no_implemented_peace(self):
+        fixture, now = self.demands_disruption_fixture()
+        rows = fixture['articles'][1:3]
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        self.assertTrue(all(integrity.non_military_kind(row) for row in rows))
+        self.assertNotIn('🟢', text)
+        self.assertNotIn('신규 변화의 중심은 실제 공격', text)
+        self.assertIn('별도 확인', text)
+        self.assertEqual(('<b>투자 판정</b>' + text.split('<b>투자 판정</b>', 1)[1]).strip(), integrity.verdict(rows).strip())
+
     def test_actual_information_resumption_reaction_is_not_energy_ceasefire(self):
         fixture, _ = self.summit_support_fixture()
         row = fixture['articles'][3]
