@@ -73,7 +73,7 @@ class CreditWatchTests(unittest.TestCase):
         rows=sample(60,85)
         decision=c.decide(rows,{})
         msg=c.render(rows,decision,dt.datetime(2026,10,19,18,tzinfo=ZoneInfo('Asia/Seoul')))
-        for word in ('CP–CD','회사채','국고채','하향 확인','다음 경계','817Y002'):
+        for word in ('CP–CD','회사채','국고채','하향:','다음 경계','817Y002'):
             self.assertIn(word,msg)
 
     def test_exact_oct19_actual_values_and_direction(self):
@@ -99,7 +99,7 @@ class CreditWatchTests(unittest.TestCase):
                      'CD 91일 3.250% | +0.0/+1.0bp',
                      '회사채 AA- 3년 4.560% | +1.9/-4.2bp',
                      '국고채 3년 3.877% | +2.3/-4.4bp',
-                     '50bp까지 3.0bp','80bp까지 11.7bp',
+                     '50bp(+3.0bp)','80bp(+11.7bp)',
                      '확산은 아직 확인되지 않음'):
             self.assertIn(text,m)
         self.assertNotIn('CP(A1',m)
@@ -148,5 +148,17 @@ class CreditWatchTests(unittest.TestCase):
         self.assertIn('단계',msg)
         self.assertIn('방향:',msg)
         self.assertLess(len(msg),c.MAX_MESSAGE_CHARS)
+
+    def test_daily_reversal_not_mistaken_for_five_day_trend(self):
+        rows=sample(36,60)
+        rows[-2].update(cp_cd=50,rates={"cp":3.50,"cd":3,"corp":4.10,"gov":3.5})
+        rows[-1].update(cp_cd=47,rates={"cp":3.47,"cd":3,"corp":4.10,"gov":3.5},rank=1)
+        msg=c.render(rows,c.decide(rows,{}),
+                     dt.datetime(2026,10,19,20,4,tzinfo=ZoneInfo("Asia/Seoul")))
+        self.assertIn("5영업일 방향: 단기 악화↑ · 회사채 보합→",msg)
+        self.assertIn("전일 변화: CP–CD -3.0bp / AA- +0.0bp",msg)
+        self.assertLessEqual(len(msg.splitlines()),28)
+        self.assertIn("5영업일 방향",msg.splitlines()[1])
+        self.assertIn("전일 변화",msg.splitlines()[2])
 
 if __name__=='__main__':unittest.main()
