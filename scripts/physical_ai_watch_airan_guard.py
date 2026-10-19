@@ -2587,10 +2587,164 @@ def _cn_ess_us_retreat_recovery() -> list[dict]:
     }]
 
 
+
+# Actual WORLDWIDE grid-scale BESS commissioning, not annual forecasts,
+# Korea-only installations, or signed orders. The original Benchmark
+# Mineral Intelligence figures were quoted by Energy-Storage.News (Oct 15)
+# and reproduced by the Korean Energy Technology Evaluation agency.
+BESS_SEP26_RECOVERY = 'DIRECT_BMI_GLOBAL_BESS_202609_20P4GWH_YTD208_20261015'
+BESS_SEP26_TITLE = '9월 글로벌 계통용 BESS 신규 가동 20.4GWh(+61%), 1~9월 누적 208GWh(+43%)'
+BESS_SEP26_URL = 'https://www.energy-storage.news/20-4gwh-grid-scale-bess-deployed-globally-in-september-up-61-ytd-installs-up-43/'
+BESS_BMI_SOURCES = {
+    'Energy-Storage.News', 'Benchmark Mineral Intelligence',
+    '한국에너지기술평가원', 'KETEP', 'Energy Storage News'
+}
+BESS_BMI_MONTHS = {
+    'january': '01', 'february': '02', 'march': '03',
+    'april': '04', 'may': '05', 'june': '06',
+    'july': '07', 'august': '08', 'september': '09',
+    'october': '10', 'november': '11', 'december': '12',
+}
+BESS_BMI_ACTUAL = re.compile(
+    r'(?:came\s+online|went\s+online|commissioned|newly\s+deployed|'
+    r'deployed\s+globally|installed\s+globally|신규\s*(?:가동|설치)|'
+    r'(?:실제|신규)\s*설치량|가동량|상업운전\s*개시)', re.I,
+)
+BESS_BMI_GRID = re.compile(
+    r'grid[-\s]*scale\s*(?:BESS|battery)|계통용\s*(?:BESS|ESS|에너지저장)|'
+    r'전력망용\s*(?:BESS|ESS)|그리드\s*규모|그리드\s*스케일', re.I,
+)
+BESS_BMI_AGENCY = re.compile(r'Benchmark\s*Mineral\s*Intelligence|\bBMI\b', re.I)
+
+
+def _bess_bmi_period(text: str) -> str:
+    # The period comes from the stated deployment month, never today's date.
+    month = re.search(
+        r'\b(January|February|March|April|May|June|July|August|September|'
+        r'October|November|December)\b|(?<!\d)(1[0-2]|[1-9])\s*월', text, re.I
+    )
+    if not month:
+        return ''
+    month_str = BESS_BMI_MONTHS[month.group(1).lower()] if month.group(1) else f'{int(month.group(2)):02d}'
+    year = re.search(r'\b(20(?:2[6-9]|3[0-9]))\b', text)
+    if not year:
+        return ''
+    return f'{year.group(1)}-{month_str}'
+
+
+def _is_bess_bmi_actual(text: str) -> bool:
+    return bool(
+        BESS_BMI_GRID.search(text) and BESS_BMI_AGENCY.search(text)
+        and BESS_BMI_ACTUAL.search(text) and _bess_bmi_period(text)
+        and re.search(r'\b\d+(?:\.\d+)?\s*GWh\b',text,re.I)
+    )
+
+
+def _bess_bmi_stage(text: str, source: str = '') -> str:
+    if not _is_bess_bmi_actual(text):
+        return ''
+    if source not in BESS_BMI_SOURCES:
+        return 'news_reprint_unconfirmed'
+    period = _bess_bmi_period(text)
+    if (period == '2026-09'
+            and re.search(r'20\s*\.\s*4\s*GWh',text,re.I)
+            and re.search(r'208\s*GWh',text,re.I)):
+        return 'september_actual_commissioning'
+    if (period != '2026-09' and re.search(r'\b(?:YTD|year[-\s]*to[-\s]*date|'
+                                             r'연초\s*누적|누계)\b',text,re.I)
+            and len(re.findall(r'\d+(?:\.\d+)?\s*GWh',text,re.I)) >= 2):
+        return 'new_month_actual_commissioning'
+    return 'background'
+
+
+def _bess_bmi_recovery() -> list[dict]:
+    # Full press story is date-stamped October 15, not a verified clock time.
+    # An explicitly time-limited direct recovery is safer than fabricating
+    # an hourly publication timestamp or replaying it after state rotation.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026, 10, 23):
+        return []
+    return [{
+        'title': BESS_SEP26_TITLE,
+        'link': BESS_SEP26_URL,
+        'description': (
+            'Benchmark Mineral Intelligence 제공 수치를 인용한 Energy-Storage.News '
+            '2026년 10월 15일 보도. 2026년 9월 전 세계 계통용 BESS 신규 가동량은 '
+            '약 20.4GWh로 전년 동월 대비 61% 증가, 2026년 1~9월 누계는 '
+            '208GWh로 전년 동기 대비 43% 증가했다. '
+            '중국은 9월에 12GWh 이상 가동했으며, 유럽은 9월 2GWh 이상 '
+            '연속 5개월 가동, 유럽 1~9월 누적은 22GWh로 전년 동기 대비 '
+            '182% 증가했다. 한국에너지기술평가원 세계 에너지시장 정보도 '
+            '2026년 10월 16일 동일 수치를 재확인했다. '
+            '가동량은 이미 설치되어 운영에 들어간 산업 전체 물량이지 '
+            '미래 신규 발주 GWh, 한국 배터리업체 수주액, AI데이터센터 전용 '
+            'ESS 물량, BBU 용량을 뜻하지 않는다. '
+            '1GWh=100만kWh이므로 9월 약 2,040만kWh, '
+            '1~9월 누계 약 2억 800만kWh에 해당한다. '
+            '배터리 셀 가격과 건설·변전·냉각·안전·소방·소프트웨어 비용의 '
+            '범위가 다른 만큼 이 용량을 임의 단가로 곱해 '
+            '기업 확정 원화 매출이나 총사업비로 발표하지 않는다. '
+            '개별 셀 업체, 설치 장소, 계약금액은 이 글로벌 집계로 특정 불가.'
+        ),
+        'source': 'Energy-Storage.News',
+        'published': None,
+        'direct_recovery': True,
+        'bess_bmi_report': True,
+    }]
+
+
+# Samsung SDI solid-state roadmap and September BBU display already exist.
+# A new October 18 article describes an *earliest possible* Q2-2027
+# Malaysian LFP-BBU production schedule. It is NOT an official SOP.
+SDI_BBU_LFP_RE = re.compile(
+    r'(?:삼성\s*SDI|SAMSUNG\s*SDI|Samsung\s*SDI).{0,230}'
+    r'(?:BBU|배터리\s*백업(?:\s*유닛)?|배터리백업유닛).{0,180}'
+    r'(?:LFP|리튬인산철|21700|원통형)', re.I
+)
+SDI_BBU_LFP_RE_ALT = re.compile(
+    r'(?:BBU|배터리\s*백업(?:\s*유닛)?).{0,140}'
+    r'(?:LFP|리튬인산철|21700).{0,200}'
+    r'(?:삼성\s*SDI|SAMSUNG\s*SDI|Samsung\s*SDI)', re.I
+)
+SDI_BBU_OFFICIAL = {'삼성SDI','SAMSUNG SDI','Samsung SDI','삼성SDI 뉴스룸'}
+SDI_BBU_SOP = re.compile(
+    r'(?:BBU|21700|원통형).{0,95}(?:LFP|리튬인산철).{0,115}'
+    r'(?:양산\s*(?:개시|시작|돌입|완료)|첫\s*출하\s*(?:개시|완료)|'
+    r'first\s+commercial\s+shipment|mass\s+production\s+(?:started|began))|'
+    r'(?:LFP|리튬인산철).{0,120}(?:BBU|21700|원통형).{0,110}'
+    r'(?:양산\s*(?:개시|시작|돌입|완료)|첫\s*출하\s*(?:개시|완료))',
+    re.I
+)
+SDI_BBU_PLAN_ONLY = re.compile(
+    r'예정|계획|목표|추진|검토|이르면|가능성|보도|기대|'
+    r'planned|target|expected|may\s+start|earliest',re.I
+)
+SDI_BBU_CONTRACT = re.compile(
+    r'(?:BBU|21700).{0,120}(?:LFP|리튬인산철).{0,140}'
+    r'(?:고객\s*공급계약\s*체결|확정\s*구매계약\s*체결|'
+    r'signed\s+(?:binding\s+)?supply\s+contract)',re.I
+)
+
+
+def _is_sdi_bbu_lfp(text: str) -> bool:
+    return bool(SDI_BBU_LFP_RE.search(text) or SDI_BBU_LFP_RE_ALT.search(text))
+
+
+def _sdi_bbu_lfp_stage(text: str, source: str = '') -> str:
+    if not _is_sdi_bbu_lfp(text):
+        return ''
+    if source in SDI_BBU_OFFICIAL:
+        if SDI_BBU_CONTRACT.search(text) and not SDI_BBU_PLAN_ONLY.search(text):
+            return 'official_customer_order'
+        if SDI_BBU_SOP.search(text) and not SDI_BBU_PLAN_ONLY.search(text):
+            return 'official_first_lfp_bbu_sop'
+    return 'press_plan_or_existing_product'
+
 _orig_query_news = base.query_news
 
 
 def query_news(q: str) -> list[dict]:
+    if q == BESS_SEP26_RECOVERY:
+        return _bess_bmi_recovery()
     if q == DONGKUK_NPS_RECOVERY:
         return _dongkuk_report_recovery()
     if q == DKT_HUMANOID_RECOVERY:
@@ -2629,6 +2783,16 @@ def query_news(q: str) -> list[dict]:
 
 
 base.query_news = query_news
+if BESS_SEP26_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(BESS_SEP26_RECOVERY)
+for _q in (
+    '(Benchmark Mineral Intelligence OR BMI) (grid-scale BESS OR 계통용 ESS) '
+    '(global OR worldwide OR 전 세계) (installed OR commissioned OR 신규 가동 OR 누적)',
+    '(삼성SDI OR Samsung SDI) (BBU OR 배터리백업) (21700 OR 원통형 OR LFP) '
+    '(말레이시아 OR Seremban OR 2027 OR 양산 OR 고객 계약 OR 첫 출하)',
+):
+    if _q not in base.QUERIES:
+        base.QUERIES.append(_q)
 if CN_ESS_US_RETREAT_ID not in base.QUERIES:
     base.QUERIES.append(CN_ESS_US_RETREAT_ID)
 for _q in (
@@ -2853,6 +3017,10 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_bess_bmi_actual(text):
+        return 'global_bess_commissioned'
+    if _is_sdi_bbu_lfp(text):
+        return 'sdi_lfp_bbu'
     if _is_cn_ess_us_exit(text):
         return 'china_ess_us_exit_report'
     if _is_micron_eim(text):
@@ -2914,6 +3082,21 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     item_text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if _is_bess_bmi_actual(item_text):
+        stage = _bess_bmi_stage(item_text,item.get('source') or '')
+        return {
+            'september_actual_commissioning': 71,
+            'new_month_actual_commissioning': 72,
+            'news_reprint_unconfirmed': 0,
+            'background': 0,
+        }.get(stage, 0)
+    if _is_sdi_bbu_lfp(item_text):
+        stage = _sdi_bbu_lfp_stage(item_text,item.get('source') or '')
+        return {
+            'official_customer_order': 79,
+            'official_first_lfp_bbu_sop': 85,
+            'press_plan_or_existing_product': 0,
+        }.get(stage,0)
     if _is_cn_ess_us_exit(item_text):
         stage = _cn_ess_us_exit_stage(item_text,item)
         return {'anonymous_industry_report':43,
@@ -3079,6 +3262,16 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'global_bess_commissioned':
+        if _bess_bmi_period(text) == '2026-09':
+            return '글로벌 계통용 BESS · 2026년 9월 신규 가동량'
+        return '글로벌 계통용 BESS · 이후 월간 실제 가동량'
+    if group == 'sdi_lfp_bbu':
+        if SDI_BBU_CONTRACT.search(text) and not SDI_BBU_PLAN_ONLY.search(text):
+            return '삼성SDI LFP BBU · 고객 공급계약 공식 확인'
+        if SDI_BBU_SOP.search(text) and not SDI_BBU_PLAN_ONLY.search(text):
+            return '삼성SDI LFP BBU · 양산·첫 출하 공식 확인'
+        return '삼성SDI LFP BBU · 기존 제품·2027년 2분기 보도 계획'
     if group == 'china_ess_us_exit_report':
         if CN_ESS_US_FINAL_EXIT.search(text) and not CN_ESS_US_NEGATED.search(text):
             return '미국 ESS 공급망 · 중국계 개별업체 철수 공식확인'
@@ -3227,6 +3420,42 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '글로벌 계통용 BESS · 2026년 9월 신규 가동량':
+        return (
+            'Benchmark Mineral Intelligence 집계를 인용한 Energy-Storage.News 10/15 신규 실측 통계입니다. '
+            '2026년 9월 전 세계 신규 가동량 약 20.4GWh(+61% 전년 동월), '
+            '2026년 1~9월 누적 208GWh(+43% 전년 동기)입니다. '
+            '중국 9월 12GWh 이상, 유럽 1~9월 22GWh(+182%)를 구분합니다. '
+            '20.4GWh는 약 2,040만kWh, 누적 208GWh는 약 2억 800만kWh입니다. '
+            '이미 가동된 설비 용량으로 장래 발주·고객 수주·삼성SDI나 LG에너지솔루션 '
+            '매출로 환산할 수 없습니다. 1GWh=100만kWh이며, '
+            '실제 시스템 평균판매단가·설계조달시공 계약액 미공개로 '
+            '원화 총사업비는 확인 불가입니다.'
+        )
+    if cat == '글로벌 계통용 BESS · 이후 월간 실제 가동량':
+        return (
+            'Benchmark Mineral Intelligence의 전 세계 실제 가동 통계가 새 기준월로 갱신된 단계입니다. '
+            '기준월·1~해당월 누적·전년동기 대비·지역별 실제 가동량을 각각 검증합니다. '
+            '이 통계는 가동 시점 집계이지 셀 업체 신규 수주 또는 매출 확정이 아닙니다.'
+        )
+    if cat == '삼성SDI LFP BBU · 고객 공급계약 공식 확인':
+        return (
+            '삼성SDI의 21700 LFP 서버 백업전원용 배터리가 고객과 공급계약 단계로 '
+            '진입한 신호입니다. 9/29 공개 제품과 다른 단계이며 고객 실명·'
+            '계약액·공급수량·첫 출하·인수시험·원화 인식매출을 별도로 검증합니다.'
+        )
+    if cat == '삼성SDI LFP BBU · 양산·첫 출하 공식 확인':
+        return (
+            '삼성SDI가 서버용 21700 LFP BBU 배터리 실제 양산 또는 첫 출하를 '
+            '회사 자료로 공개한 단계입니다. 2027년 2분기 언론의 '
+            '예상 일정과 구분하고, 월 생산량·초기 수율·고객 검수·매출 인식을 확인합니다.'
+        )
+    if cat == '삼성SDI LFP BBU · 기존 제품·2027년 2분기 보도 계획':
+        return (
+            '2026년 9월 29일 BBU용 21700 LFP 셀 공개는 이미 확인된 기준선이고 '
+            '2027년 2분기 말레이시아 양산 가능성은 언론 계획 보도입니다. '
+            '회사 실제 출하 또는 신규 정식 수주 확인 전에는 재알림하지 않습니다.'
+        )
     if cat == '미국 ESS 공급망 · 중국계 시스템업체 집단 철수설 보도':
         return (
             'DIGITIMES 10/19 단독의 미국 업계 익명 관계자 발언으로, '
@@ -3641,6 +3870,25 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('글로벌 계통용 BESS · '):
+        return (
+            '세계 설치통계가 한국 배터리의 실제 수주를 보증하지 않습니다. '
+            '중국이 9월 12GWh 이상을 차지하고 지역별 원산지 규제·가격이 다릅니다. '
+            '열폭주·배기·방폭·냉각·보험·소방 인증과 전력망 접속·전원 인가 시점이 '
+            '개별 사업의 최대 설치 병목입니다. '
+            '가상의 9월 전체 가동량 20.4GWh가 25% 줄면 5.1GWh '
+            '(510만kWh) 감소하지만 이는 실제 감소 예측이 아닙니다. '
+            '앞으로 6~12개월은 지역별 신규 가동·프로젝트 인허가·'
+            '고객별 확정 공급계약·준공 지연을 구분합니다.'
+        )
+    if cat.startswith('삼성SDI LFP BBU · '):
+        return (
+            '9/29 제품 공개와 2027년 2분기 예상은 안정 양산·고객 수주와 다릅니다. '
+            '원통형 LFP 고출력 방전의 발열·충전균일성·열폭주 전파, '
+            '서버 인증·신뢰성·보험·보증충당금·장비 전환 비용이 병목입니다. '
+            '향후 6~12개월 확인할 지표는 실제 고객검수·첫 출하·'
+            '직행수율·가격 및 데이터센터 운영가동률입니다.'
+        )
     if cat.startswith('미국 ESS 공급망 · '):
         return (
             '최대 역풍은 익명 업계 보도가 실제 전면철수로 이어지지 않거나 '
@@ -3826,6 +4074,23 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'global_bess_commissioned':
+        return (
+            'Benchmark Mineral Intelligence 집계를 인용한 Energy-Storage.News '
+            '10/15 기사·한국에너지기술평가원 10/16 재확인 · '
+            '조사기관 원자료 전체 직접 열람은 별도 · '
+            '글로벌 실제 가동량이며 기업별 계약·수주 금액 확인 아님'
+        )
+    if group == 'sdi_lfp_bbu':
+        if _sdi_bbu_lfp_stage(text,item.get('source') or '') in (
+            'official_first_lfp_bbu_sop','official_customer_order'
+        ):
+            return '삼성SDI 1차자료 확인 · 고객·제품·계약/출하·원화 매출 별도 검증'
+        return (
+            '삼성SDI 9/29 LFP BBU 21700 공개는 회사 공식 발표, '
+            '2027년 2분기 말레이시아 계획은 10/18 언론보도만 존재 · '
+            '회사 실제 양산·고객 납품 공식 확인 전'
+        )
     if group == 'china_ess_us_exit_report':
         if _cn_ess_us_exit_stage(text,item) == 'company_confirmed_us_exit':
             return '해당 기업 공식 웹도메인 종료 발표 · 종료계약·대체 고객·매출 추가 검증'
@@ -3990,6 +4255,12 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if _is_bess_bmi_actual(title+' '+source):
+        if _bess_bmi_period(title) == '2026-09':
+            return BESS_SEP26_TITLE
+        return title
+    if _is_sdi_bbu_lfp(title + ' ' + source):
+        return '삼성SDI 21700 LFP BBU 실제 양산·공급계약 단계 변화'
     if _is_cn_ess_us_exit(title + ' ' + source):
         if source in {'CATL','Sungrow','BYD','HiTHIUM','HyperStrong'} and CN_ESS_US_FINAL_EXIT.search(title):
             return f'{source}, 미국 ESS 사업 철수 공식 확인…고객 이전 별도 검증'
@@ -4108,6 +4379,10 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'global_bess_commissioned':
+        return '글로벌 계통용 BESS'
+    if group == 'sdi_lfp_bbu':
+        return '삼성SDI 서버 백업전원'
     if group == 'china_ess_us_exit_report':
         return '미국 ESS 공급망'
     if group == 'micron_eim_edge':
@@ -4167,6 +4442,24 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if _is_bess_bmi_actual(text):
+        period = _bess_bmi_period(text)
+        if period == '2026-09':
+            return hashlib.sha256(
+                b'benchmark-mineral-intelligence|global-grid-bess|2026-09|20.4gwh|208gwh'
+            ).hexdigest()
+        # Date and the first reported GWh metric form the update identity;
+        # repeated publication by a second media outlet shares the same key.
+        qty = re.search(r'(d+(?:.d+)?)s*GWh',text,re.I)
+        value = qty.group(1) if qty else 'unreported'
+        return hashlib.sha256(
+            f'benchmark-mineral-intelligence|global-grid-bess|{period}|{value}gwh'.encode()
+        ).hexdigest()
+    if _is_sdi_bbu_lfp(text):
+        stage = _sdi_bbu_lfp_stage(text,item.get('source') or '')
+        return hashlib.sha256(
+            f'samsung-sdi|21700-lfp-bbu|{stage}|2026-2027'.encode()
+        ).hexdigest()
     if _is_cn_ess_us_exit(text):
         stage=_cn_ess_us_exit_stage(text,item)
         if stage=='company_confirmed_us_exit':
@@ -4357,6 +4650,11 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    # Preserve a separately verified monthly global installation metric
+    # even when generic old ESS stories are numerous.
+    bess_actual = next((x for x in candidates if x.get('group') == 'global_bess_commissioned'), None)
+    if bess_actual and not any(x.get('key') == bess_actual.get('key') for x in chosen):
+        chosen = ([bess_actual,*chosen] if len(chosen)<limit else [bess_actual,*chosen[:-1]])
     # Show distinct new status changes but do not resurrect known repeats.
     for _new_group in ('china_ess_us_exit_report','alert_quality_oct18','lge_robot_sw_platform','hyundai_robot_rx_team',
                        'brils_us_localization','ess_outdoor_policy',
