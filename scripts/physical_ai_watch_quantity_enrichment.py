@@ -258,6 +258,12 @@ def _insert_after_core(block: str, value_block: str) -> str:
 
 
 def _skip_quantity_enrichment(block: str) -> bool:
+    # BMW's 20 GWh supplier framework is neither new pack production nor
+    # a priced count of robots. JPM's $5bn is deployed equity, while $230bn
+    # is financial arranging; neither is a product shipment quantity.
+    if ("BMW Gen6 ·" in block or "BMW 원통형 배터리팩" in block
+            or "JP모건 SRI ·" in block or "JP모건 전략적 투자" in block):
+        return True
     # These alerts describe steel tonnage or an old robot-module validation
     # throughput, not a priced count of finished robot/BMS customer shipments.
     if "동국산업 46시리즈" in block or ("동국산업" in block and "니켈도금강판" in block):
