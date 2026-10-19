@@ -127,18 +127,42 @@ def _headline_group(title):
     return '전쟁·외교'
 
 
+def _summit_proposal_headline(title):
+    summit = r'(?:정상\s*회담|\d+\s*자\s*(?:정상\s*)?회담)'
+    return bool(re.search(summit + r'.{0,18}(?:제안|추진|논의|검토|계획)', title)
+                or re.search(r'\b(?:propos\w*|discuss\w*|plans?)\b.{0,60}\bsummit\b|'
+                             r'\bsummit\b.{0,25}\b(?:proposal|under discussion|planned)\b', title))
+
+
+def _diplomatic_group(title):
+    # A three-party summit can discuss Ukraine without inviting Ukraine.
+    # Keep the named participants distinct from that discussion's object.
+    trilateral = bool(re.search(r'미\s*[·ㆍ/]\s*중\s*[·ㆍ/]\s*러', title))
+    actors = []
+    for label, pattern in (
+            ('미국', r'미국|트럼프|美|\bu\.s\.|\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너'),
+            ('우크라이나', r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b'),
+            ('중국', r'중국|시진핑|\b(?:china|chinese|xi(?:\s+jinping)?)\b'),
+            ('러시아', r'러시아|푸틴|크렘린|(?:^|\s)러(?=\s|[·ㆍ/]|$)|\b(?:russia\w*|putin|kremlin)\b')):
+        if re.search(pattern, title) or (trilateral and label in ('미국', '중국', '러시아')):
+            actors.append(label)
+    if _summit_proposal_headline(title) and all(label in actors for label in ('미국', '중국', '러시아')):
+        return '미국·중국·러시아'
+    return '·'.join(actors) if actors else _headline_group(title)
+
+
+def _information_resumption_headline(title):
+    return bool(re.search(r'정보.{0,8}(?:지원|공유|제공).{0,18}(?:재개|복원|재시작)|'
+                          r'\b(?:intelligence|information).{0,15}(?:support|sharing|provision).{0,20}(?:resum\w*|restor\w*)|'
+                          r'\b(?:resum\w*|restor\w*).{0,20}(?:intelligence|information).{0,15}(?:support|sharing|provision)', title))
+
+
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
     if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement'):
-        actors = []
-        if re.search(r'미국|트럼프|美|\bu\.s\.|\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너', title):
-            actors.append('미국')
-        if re.search(r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b', title):
-            actors.append('우크라이나')
-        if re.search(r'러시아|(?:^|\s)러(?=\s|$)|\brussia\w*\b', title):
-            actors.append('러시아')
-        return ('·'.join(actors) if actors else _headline_group(title)) + ' · ' + KIND_LABELS[kind]
+        label = '정상회담 제안·논의' if kind == 'diplomatic_plan' and _summit_proposal_headline(title) else KIND_LABELS[kind]
+        return _diplomatic_group(title) + ' · ' + label
     if kind == 'market_effect':
         us_prices = re.search(r'(?:미국|美|united states|u\.s\.).{0,12}(?:물가|cpi|inflation)', title)
         return ('미국·물가' if us_prices else '물가·경제지표') + ' · 전쟁 파급 보도'
@@ -150,6 +174,8 @@ def _primary_topic(row):
     if kind in ('military_statement', 'military_discussion', 'military_analysis', 'ceasefire_position', 'military_report', 'fuel_shipping', 'trade_proposal'):
         return _headline_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'support_statement':
+        if _information_resumption_headline(title):
+            return _diplomatic_group(title) + ' · 정보 제공·공유 재개 보도'
         label = '정보 지원·종전 의향 발언' if re.search(r'종전|peace|end.{0,8}war', title) else '지원 정책 발언'
         return _headline_group(title) + ' · ' + label
     if kind is None and _headline_drone_action(row):
@@ -403,6 +429,8 @@ def _diplomatic_headline_kind(title):
     if re.search(r'(?:종전|평화|휴전)\s*협상.{0,18}(?:러시아|러|우크라이나).{0,12}'
                  r'(?:떠나길|이탈).{0,12}(?:원치\s*않|원하지\s*않)', title):
         return 'diplomatic_position'
+    if _summit_proposal_headline(title):
+        return 'diplomatic_plan'
     if re.search(r'(?:평화\s*협상|종전\s*협상|휴전\s*협상)(?:을|를)?\s*'
                  r'(?:(?:재개|개최|개시)(?:를|을)?\s*)?(?:추진|논의|검토|계획)|'
                  r'회동(?:을|를|도)?\s*(?:추진|논의|검토|계획)|'
@@ -420,6 +448,8 @@ def _diplomatic_headline_kind(title):
 
 def non_military_kind(row):
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
+    new_peace = re.search(r'(?:휴전|종전|평화협정).{0,12}(?:합의|체결|이행|발효)|'
+                          r'\b(?:ceasefire|peace deal).{0,20}(?:agreed|signed|implemented)', title)
     if mixed_restraint_attack(row):
         return 'mixed_restraint'
     if _headline_drone_action(row):
@@ -465,14 +495,12 @@ def non_military_kind(row):
                  r'\b(?:warns?|threatens?|considers?).{0,55}(?:retaliat|attack|strike)|'
                  r'\bretaliation.{0,30}(?:warning|threat)', title):
         return 'military_statement'
-    if re.search(r'정보.{0,8}(?:지원|공유).{0,18}(?:유지|계속|부인|중단하지\s*않)|'
+    if not new_peace and (_information_resumption_headline(title) or re.search(r'정보.{0,8}(?:지원|공유).{0,18}(?:유지|계속|부인|중단하지\s*않)|'
                  r'\b(?:intelligence|information).{0,15}(?:support|sharing).{0,20}(?:maintain|continu)|'
-                 r'\b(?:maintains?|continues?).{0,20}(?:intelligence|information).{0,15}(?:support|sharing)', title):
+                 r'\b(?:maintains?|continues?).{0,20}(?:intelligence|information).{0,15}(?:support|sharing)', title)):
         return 'support_statement'
     # An inflation report about war costs is not a new diplomatic event.
     prices = re.search(r'소비자물가|물가|\bcpi\b|\binflation\b|consumer prices', title)
-    new_peace = re.search(r'(?:휴전|종전|평화협정).{0,12}(?:합의|체결|이행|발효)|'
-                          r'\b(?:ceasefire|peace deal).{0,20}(?:agreed|signed|implemented)', title)
     if prices and re.search(r'전쟁|\bwar\b', title) and not new_peace:
         return 'market_effect'
     return _diplomatic_headline_kind(title) if not new_peace else None
@@ -488,7 +516,7 @@ def _clear_market_event_cache(row):
 
 
 def _headline_event_cache_required(row, kind):
-    return (kind in ('ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis', 'trade_proposal',
+    return (kind in ('support_statement', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis', 'trade_proposal',
                     'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement')
             or (kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
@@ -521,7 +549,7 @@ def score_item(row, now):
         _clear_market_event_cache(row)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
-    if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement'):
+    if kind in ('support_statement', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement'):
         _clear_headline_event_cache(row, kind)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
@@ -583,7 +611,7 @@ def verdict(items):
             return (
                 '<b>투자 판정</b>\n'
                 f'- <b>핵심:</b> {core}\n'
-                '- <b>현재 단계:</b> 접촉·갈등·해설·추진·평가 발언 단계 — 실제 협상 개최·양측 휴전 합의·이행은 별도 확인 필요\n'
+                '- <b>현재 단계:</b> 접촉·갈등·해설·제안·추진·평가 발언 단계 — 실제 협상 개최·양측 휴전 합의·이행은 별도 확인 필요\n'
                 '- <b>시장:</b> 외교 접촉이나 해설만으로 정유시설 공격·공급 차질·가격 방향의 변화를 확정할 수 없음\n'
                 '- <b>다음:</b> 발언·접촉 원문 → 당사자 공식 결정 → 실제 협상·작전·휴전 이행 확인'
             )
@@ -879,7 +907,12 @@ def build_alert(items, markets, now):
         note = '시장자료 확인 보류 · ' + ' / '.join(f"{row['name']} ({row['reason']})" for row in missing)
         lines.insert(at, html.escape(note))
         lines.insert(at + 1, '')
-    return '\n'.join(lines).strip() + '\n'
+    result = '\n'.join(lines)
+    if rendered_rows and '<b>투자 판정</b>' in result:
+        # The older builder receives all candidates but displays at most four.
+        # A deferred attack must not set the verdict of four diplomatic items.
+        result = result.split('<b>투자 판정</b>', 1)[0] + verdict(rendered_rows)
+    return result.strip() + '\n'
 
 
 def finalize():
@@ -988,6 +1021,10 @@ def verify_alert(test_mode=False):
             raise RuntimeError('WAR_INTEGRITY_GATE: unverified source body lacks visible limitation')
     if set(matched) != set(ids):
         raise RuntimeError('WAR_INTEGRITY_GATE: duplicated or omitted rendered source')
+    if rows and all(non_military_kind(row) for row in rows) and '<b>투자 판정</b>' in text:
+        actual_verdict = '<b>투자 판정</b>' + text.split('<b>투자 판정</b>', 1)[1]
+        if actual_verdict.strip() != verdict(rows).strip():
+            raise RuntimeError('WAR_INTEGRITY_GATE: final verdict differs from rendered headline stages')
     for row in receipt['markets']:
         price, close, pct = row['price'], row['previous_close'], row['pct']
         if not all(math.isfinite(value) for value in (price, close, pct)) or price <= 0 or close <= 0:
