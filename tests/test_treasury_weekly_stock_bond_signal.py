@@ -44,6 +44,13 @@ class Client:
         response.raise_for_status = Mock()
         response.text = self.csv
         response.content = feed(self.yields)
+        response.json.return_value = {
+            "status": {"rCode": 200},
+            "data": {"symbol": "NDX", "tradesTable": {"rows": [
+                {"date": "10/09/2026", "close": "30,883.15"},
+                {"date": "10/16/2026", "close": "29,187.55"},
+            ]}},
+        }
         return response
 
 
@@ -109,13 +116,34 @@ class StockBondWeekTests(unittest.TestCase):
             w.evaluate_week({"2026-10-09":30,"2026-10-15":27},
                             {"2026-10-09":5.24,"2026-10-16":5.09},dt.date(2026,10,16))
 
+    def test_nasdaq_api_wrong_symbol_or_error_status_fails_closed(self):
+        with self.assertRaises(w.SourceMissing):
+            w.parse_nasdaq_api({"status": {"rCode": 400}, "data": None})
+        with self.assertRaises(w.SourceMissing):
+            w.parse_nasdaq_api({
+                "status": {"rCode": 200},
+                "data": {"symbol": "COMP", "tradesTable": {"rows": [{"date": "10/16/2026","close":"100"}]}},
+            })
+
+    def test_nasdaq_official_history_api_parses_complete_close(self):
+        row={
+            "status": {"rCode": 200},
+            "data": {"symbol": "NDX", "tradesTable": {"rows": [
+                {"date": "10/09/2026", "close":"30,883.15"},
+                {"date": "10/16/2026", "close":"29,187.55"},
+            ]}},
+        }
+        ndx=w.parse_nasdaq_api(row)
+        self.assertEqual(ndx["2026-10-09"], 30883.15)
+        self.assertEqual(ndx["2026-10-16"], 29187.55)
+
     def test_client_fetch_uses_primary_official_sources_only(self):
         client=Client()
         ts=dt.datetime(2026,10,17,14,0,tzinfo=ZoneInfo("Asia/Seoul"))
         x=w.fetch_current_week(ts,client=client)
         self.assertEqual(x["end"],"2026-10-16")
         self.assertEqual(len(client.calls),2)
-        self.assertTrue(client.calls[0][0].startswith("https://fred.stlouisfed.org/"))
+        self.assertTrue(client.calls[0][0].startswith("https://api.nasdaq.com/"))
         self.assertIn("daily_treasury_yield_curve",client.calls[1][0])
         self.assertIn("경보", w.report_text(x))
         self.assertIn("CFTC",w.report_text(x))
