@@ -120,20 +120,17 @@ class CreditWatchTests(unittest.TestCase):
         self.assertEqual(c.direction_overview(rows)['summary'],'단기 개선↓ · 회사채 개선↓')
 
     def test_message_hysteresis_clearly_separates_observed_and_notified(self):
-        rows=sample(20,60)
-        action=c.decide(rows,{'notified_rank':3})
-        self.assertEqual(action['rank'],3)
-        # Stage 3 already latched while current measured stage is zero:
-        # user must see both until recovery threshold is satisfied.
-        rows[-1]['cp_cd']=70
-        rows[-1]['rank']=3
-        rows[-2]['cp_cd']=40
-        rows[-2]['rank']=1
-        # If level changed, do not mislabel a lower measured level as the notified level.
-        rows[-1].update(cp_cd=35,credit=65,rank=1)
-        decision={'rank':3,'previous_rank':3,'transition':'유지','events':[]}
-        msg=c.render(rows,decision,dt.datetime(2026,10,19,19,tzinfo=ZoneInfo('Asia/Seoul')))
-        self.assertIn('실측 관찰 / 경보 악화(회복 연속 확인 중)',msg)
+        rows=sample(80,95)
+        # 실측은 관찰 단계로 낮아졌지만 3영업일 회복 확인에는 아직 이르다.
+        for i,(cp,aa) in zip((2,1),((20,60),(35,65))):
+            rows[-i].update(cp_cd=cp,credit=aa,rank=c.level(cp,aa),
+                            rates={"cp":3+cp/100,"cd":3,"corp":3.5+aa/100,"gov":3.5})
+        action=c.decide(rows,{"notified_rank":3})
+        self.assertEqual(action["rank"],3)
+        self.assertEqual(action["transition"],"유지")
+        msg=c.render(rows,action,dt.datetime(2026,10,19,19,tzinfo=ZoneInfo("Asia/Seoul")))
+        self.assertIn("실측 관찰 / 경보 악화(회복 연속 확인 중)",msg)
+        self.assertIn("현재 2/3",msg)
 
     def test_number_display_no_negative_zero(self):
         self.assertEqual(c.signed(-0.001),'+0.0')
