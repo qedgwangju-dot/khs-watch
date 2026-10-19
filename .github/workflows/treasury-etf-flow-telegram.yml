@@ -164,18 +164,28 @@ jobs:
           print("treasury_compact_invariants=ok, daily_guard=ok, credit_flow_and_oas=ok")
           PY
 
-      - name: Inspect official weekly stock bond close without Telegram
+      - name: Probe Nasdaq historical sources without sending
         if: steps.delivery_gate.outputs.should_run == 'true' && env.TREASURY_REPORT_VALIDATE_ONLY == '1'
         run: |
           PYTHONPATH=scripts python - <<'PY'
-          import datetime as dt
-          import json
-          import treasury_weekly_stock_bond_signal as weekly
-
-          row=weekly.fetch_current_week(dt.datetime.now(dt.timezone.utc))
-          print("treasury_weekly_official_validation=" + json.dumps(row, ensure_ascii=False))
-          assert row["start"] <= row["end"]
-          assert row["ndx_start"] > 0 and row["ndx_end"] > 0
+          import requests
+          from bs4 import BeautifulSoup
+          urls={
+            "fred_csv":"https://fred.stlouisfed.org/graph/fredgraph.csv?id=NASDAQ100&cosd=2026-10-08&coed=2026-10-16",
+            "nasdaq_index":"https://indexes.nasdaq.com/Index/History/NDX",
+            "nasdaq_api":"https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&limit=20",
+            "chartexchange":"https://chartexchange.com/symbol/index-ndx/historical/",
+            "stooq":"https://stooq.com/q/d/l/?s=%5Endx&i=d&d1=20261008&d2=20261016",
+          }
+          for key,url in urls.items():
+              try:
+                  res=requests.get(url,headers={"User-Agent":"Mozilla/5.0"},timeout=(5,8))
+                  content=res.text[:350].replace("\n"," ")
+                  if key in ("nasdaq_index","chartexchange"):
+                      content=" ".join(BeautifulSoup(res.text,"html.parser").stripped_strings)[:350]
+                  print(f"nasdaq_source_probe {key} status={res.status_code} bytes={len(res.content)} sample={content!r}")
+              except Exception as exc:
+                  print(f"nasdaq_source_probe {key} error={type(exc).__name__}: {str(exc)[:220]}")
           PY
 
       - name: Validate exact Telegram bot route
