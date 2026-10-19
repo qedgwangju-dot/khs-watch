@@ -134,6 +134,32 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertIn("15분 지연", body)
         self.assertNotIn("실시간", body)
 
+    def test_source_health_outage_is_distinct_from_quiet_period(self):
+        from boj_policy_lead_alert import source_health_verified
+        self.assertFalse(source_health_verified({"rss_ok": 0, "official_index_ok": 0}))
+        self.assertTrue(source_health_verified({"rss_ok": 1, "official_index_ok": 0}))
+        self.assertTrue(source_health_verified({"rss_ok": 0, "official_index_ok": 1}))
+
+    def test_oct19_google_news_source_label_opens_reuters_original(self):
+        from unittest.mock import patch
+        signal = classify(
+            Item(
+                title="BOJ Governor Ueda says underlying inflation 'quite close' to 2% target - Reuters",
+                source="Reuters",
+                link="https://news.google.com/rss/articles/example",
+                published=dt.datetime(2026, 10, 19, 9, 17, tzinfo=KST),
+                description="",
+            )
+        )
+        with patch("boj_policy_lead_alert.decode_google_link", return_value=signal.link):
+            _, body, payload = build(
+                signal, "test",
+                dt.datetime(2026, 10, 19, 9, 34, tzinfo=KST), {},
+            )
+        self.assertIn("reuters.com/world/asia-pacific/boj-governor-ueda", body)
+        self.assertNotIn("news.google.com/rss/articles/", body)
+        self.assertEqual(payload["signal"]["event_type"], "parliament_testimony")
+
     def test_expected_25bp_with_conditional_guidance_stays_yellow(self):
         signal = classify(
             self.mk(
