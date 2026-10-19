@@ -227,7 +227,7 @@ def classify(group:str,title:str)->str|None:
   if PARTNERS["roadster"].search(s):return None  # Roadster needs direct signed evidence.
   if p not in ("spacex","blue_origin"):return None
   if re.search(r"(?:신규|추가|새로운)\s*(?:계약|수주|공급|발주)|new(?:ly signed)? contract|"
-               r"signs? (?:new )?(?:supply )?contract|purchase order|contract award|"
+               r"signs? .{0,70} contract|new .{0,70} contract|purchase order|contract award|"
                r"공급\s*계약\s*체결|계약\s*체결",s,re.I):
    phase="new_contract"
   elif CANCEL.search(s):
