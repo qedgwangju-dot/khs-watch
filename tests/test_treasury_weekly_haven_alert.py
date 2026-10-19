@@ -24,9 +24,10 @@ class WeekAlertTests(unittest.TestCase):
         root=Path(self.tmp.name)
         self.state=root/"state.json"
         self.o=patch.object(alert,"OUT_PATH",root/"out.txt")
+        self.h=patch.object(alert,"HTML_PATH",root/"telegram.html.txt")
         self.r=patch.object(alert,"RECEIPT_PATH",root/"receipt.json")
-        self.o.start();self.r.start()
-        self.addCleanup(self.o.stop);self.addCleanup(self.r.stop)
+        self.o.start();self.h.start();self.r.start()
+        self.addCleanup(self.o.stop);self.addCleanup(self.h.stop);self.addCleanup(self.r.stop)
 
     def test_validation_never_sends_or_advances_state(self):
         with patch.object(source,"fetch_current_week",return_value=snap()),patch.object(alert,"send_telegram") as send:
