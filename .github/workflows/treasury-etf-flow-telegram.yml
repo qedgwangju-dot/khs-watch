@@ -1,6 +1,9 @@
 name: Treasury ETF Fund Flow Telegram
 
 on:
+  push:
+    paths:
+      - ".github/workflows/treasury-etf-flow-telegram.yml"
   schedule:
     - cron: "30,35,40 8 * * *"
       timezone: "Asia/Seoul"
@@ -49,7 +52,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
-      TREASURY_REPORT_VALIDATE_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.validate_only && '1' || '0' }}
+      TREASURY_REPORT_VALIDATE_ONLY: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.validate_only)) && '1' || '0' }}
 
     steps:
       - name: Checkout latest delivery state
@@ -105,6 +108,7 @@ jobs:
           python -m py_compile scripts/treasury_credit_flow_watch_marketstress.py
           python -m py_compile scripts/treasury_credit_flow_watch_refinancing.py
           python -m py_compile scripts/treasury_real_yield_signal.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_treasury_weekly_stock_bond_signal.py' -v
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_treasury_real_yield_signal.py' -v
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_treasury_daily_report_integrity.py' -v
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_treasury_ishares_timeout.py' -v
@@ -158,6 +162,20 @@ jobs:
           assert round(hdoas, 1) == -9.9, hdoas
           assert o_head == "혼조·추가 확인", o_head
           print("treasury_compact_invariants=ok, daily_guard=ok, credit_flow_and_oas=ok")
+          PY
+
+      - name: Inspect official weekly stock bond close without Telegram
+        if: steps.delivery_gate.outputs.should_run == 'true' && env.TREASURY_REPORT_VALIDATE_ONLY == '1'
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import datetime as dt
+          import json
+          import treasury_weekly_stock_bond_signal as weekly
+
+          row=weekly.fetch_current_week(dt.datetime.now(dt.timezone.utc))
+          print("treasury_weekly_official_validation=" + json.dumps(row, ensure_ascii=False))
+          assert row["start"] <= row["end"]
+          assert row["ndx_start"] > 0 and row["ndx_end"] > 0
           PY
 
       - name: Validate exact Telegram bot route
