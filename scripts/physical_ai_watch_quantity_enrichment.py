@@ -317,6 +317,10 @@ def _skip_quantity_enrichment(block: str) -> bool:
         return True
     if "Dexmate–LG CNS" in block or "덱스메이트" in block and "LG CNS" in block:
         return True
+    # Global BESS deployment statistics are GWh of already operational
+    # capacity, not new robot/unit orders. Do not split 20.4GWh into "4GW".
+    if "글로벌 계통용 BESS" in block or "9월 글로벌 계통용 BESS" in block:
+        return True
     # Installed capacity is not a count of robots/units. The signed Fluence
     # EPC contract already carries precise MW/MWh and benchmark cost data.
     if "Fluence–Vattenfall" in block or "Fluence·Vattenfall ESS" in block:
