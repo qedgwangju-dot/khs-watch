@@ -1507,7 +1507,7 @@ def _quote_context(key: str) -> dict:
         "change_pct": float(quote.change_pct),
         "time": observed.astimezone(KST),
         "age_seconds": age_seconds,
-        "fresh": age_seconds <= 20 * 60,
+        "fresh": age_seconds <= 3 * 60,
         "source": "Yahoo query1/query2 교차확인",
     }
 
@@ -1712,6 +1712,16 @@ def market_context(event_time: dt.datetime | None = None) -> dict:
     return out
 
 
+def market_quote_age_label(quote: dict, now: dt.datetime) -> str:
+    observed = quote.get("time")
+    if not isinstance(observed, dt.datetime):
+        return "자료 시각 확인 불가"
+    minutes = max(0, int((now - observed).total_seconds() // 60))
+    if minutes <= 3:
+        return f"최근 시세 · {observed.strftime('%m-%d %H:%M')} KST"
+    return f"{minutes}분 지연 · 마지막 시세 {observed.strftime('%m-%d %H:%M')} KST"
+
+
 def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) -> tuple[str, str, dict]:
     emoji = LEVEL_EMOJI[signal.level]
     title = f"🏦 {emoji} BOJ 정책경로 변화"
@@ -1882,9 +1892,14 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
                 suffix = ""
                 if key == "usd_jpy_event":
                     suffix = " · 엔화 약세" if item["change_pct"] > 0 else " · 엔화 강세"
+                observed = item.get("latest_time")
+                stamp = (
+                    f" · 시세 시각 {observed.strftime('%m-%d %H:%M')} KST"
+                    if isinstance(observed, dt.datetime) else ""
+                )
                 reaction_lines.append(
                     f"- {label}: {item['change_pct']:+.2f}% "
-                    f"({item['reference_price']:.3f} → {item['latest_price']:.3f}){suffix}"
+                    f"({item['reference_price']:.3f} → {item['latest_price']:.3f}){suffix}{stamp}"
                 )
                 reaction_parts.append(
                     f"{label} {item['change_pct']:+.2f}%"
@@ -1910,18 +1925,18 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     usd = market.get("usd_jpy")
     if usd:
         latest_parts.append(
-            f"USD/JPY {usd['price']:.3f} (15분 {usd['m15']:+.2f}% / 30분 {usd['m30']:+.2f}%)"
+            f"USD/JPY {usd['price']:.3f} (15분 {usd['m15']:+.2f}% / 30분 {usd['m30']:+.2f}%; {market_quote_age_label(usd, now)})"
         )
     nikkei = market.get("nikkei")
     if nikkei:
-        freshness = "종가/지연" if not nikkei["fresh"] else "실시간"
+        freshness = market_quote_age_label(nikkei, now)
         latest_parts.append(
             f"Nikkei {nikkei['price']:.2f} ({nikkei['change_pct']:+.2f}%, {freshness})"
         )
     nq = market.get("nasdaq_future")
     if nq:
         latest_parts.append(
-            f"NQ선물 {nq['price']:.2f} ({nq['change_pct']:+.2f}%)"
+            f"NQ선물 {nq['price']:.2f} ({nq['change_pct']:+.2f}%, {market_quote_age_label(nq, now)})"
         )
 
     if signal.event_type == "press_conference":
@@ -2025,7 +2040,12 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     ]
 
     if latest_parts:
-        lines += ["", "【현재 시장 스냅샷】", "- " + " | ".join(latest_parts)]
+        lines += ["", "【시장 시세·마지막 확인 시각】", "- " + " | ".join(latest_parts)]
+    if signal.event_type == "parliament_testimony":
+        lines += [
+            "- 반응 해석: 발언의 정확한 시작 시각이 아닌 Reuters 기사 공개 시각을 기준으로 계산",
+            "- 각 자산의 마지막 시세 시각이 다를 수 있으므로 BOJ 발언 단독 효과로 단정하지 않음",
+        ]
 
     jgb2 = market.get("jgb2")
     if jgb2:
