@@ -2650,8 +2650,8 @@ def _bess_bmi_stage(text: str, source: str = '') -> str:
             and re.search(r'20\s*\.\s*4\s*GWh',text,re.I)
             and re.search(r'208\s*GWh',text,re.I)):
         return 'september_actual_commissioning'
-    if (period != '2026-09' and re.search(r'\b(?:YTD|year[-\s]*to[-\s]*date|'
-                                             r'연초\s*누적|누계)\b',text,re.I)
+    if (period != '2026-09' and re.search(r'(?:\b(?:YTD|year[-\s]*to[-\s]*date)\b|'
+                                             r'연초\s*누적|누계)',text,re.I)
             and len(re.findall(r'\d+(?:\.\d+)?\s*GWh',text,re.I)) >= 2):
         return 'new_month_actual_commissioning'
     return 'background'
