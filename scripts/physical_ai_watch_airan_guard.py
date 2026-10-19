@@ -5186,7 +5186,7 @@ BMW_GEN6_BAT = re.compile(r'high[-\s]*voltage\s*batter|배터리|battery|电池'
 BMW_GEN6_SOP = re.compile(
     r'(?:began|begun|starts?|started|commenced)\s+(?:series|mass)\s+production|'
     r'series\s+production\s+(?:has\s+)?(?:started|begun)|'
-    r'양산\s*(?:개시|시작|돌입)|正式量产|量产下线',
+    r'양산\s*(?:을\s*)?(?:공식\s*)?(?:개시|시작|돌입)|正式量产|量产下线',
     re.I,
 )
 BMW_GEN6_DELIVERY = re.compile(
