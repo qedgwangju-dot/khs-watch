@@ -3,7 +3,7 @@
   "version": 5,
   "dataset_updated": "Oct 15, 2026",
   "source_hash": "90274d9aeb331cac9f503f69ebe642db41c074068a504e4c8af2caff4427cd8b",
-  "snapshot_hash": "db2593c02d073ee1cf6738610c17d2e21e8ead3dcafbb62daf667868925d6497",
+  "snapshot_hash": "054f7cad9af03317cc11b2726794d21c86a453c5fbd6fd35619500b5f14c9778",
   "projects": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -31,14 +31,14 @@
       "owner": "Amazon",
       "users": "Anthropic",
       "investors": "미기재",
-      "current_mw": 910.0,
+      "current_mw": 1037.0,
       "planned_mw": 1925.0,
-      "progress": 47.3,
+      "progress": 53.9,
       "completion_date": "2028-03-17",
       "completion": "2028.1Q",
-      "stage": "부분 가동·냉각설비 설치",
+      "stage": "부분 가동·시운전·내부설비",
       "risk": false,
-      "source_status": "Buildings 17-18 fully roofed but still having surrounding generators/cooling under construction. Cleared land for buildings 19-32 is still bare, with no building foundations visible yet. Based on satellite imagery.",
+      "source_status": "Buildings 17-18 are operational. This is an estimate based on a rule of thumb of \"operational 5 months after roof is complete\", assuming the roofs took one more month after 2025-12-23. Also added four more months to account for commissioning and adjacent cooling units not being complete yet.",
       "mw_quality": "현재 추정 IT전력·부분 가동/건설 병행",
       "energy_site": "Indiana Michigan Power(I&M/AEP) 계통전력 · 전용 발전원 구성 미공개 · 디젤은 백업",
       "energy_future": "Amazon 기업 장기전원: Talen 원전 1.92GW + X-energy SMR 5GW+ 목표(부지 직접 아님)",
@@ -306,7 +306,11 @@
       "company_issues": []
     }
   ],
-  "last_changes": [],
+  "last_changes": [
+    "Amazon New Carlisle (IN) Epoch 현재 IT전력 추정치 상향 910→1,037MW",
+    "Amazon New Carlisle (IN) Epoch IT전력 비율 47%→54%",
+    "Amazon New Carlisle (IN) 공정 진전 부분 가동·냉각설비 설치→부분 가동·시운전·내부설비"
+  ],
   "source_errors": [],
-  "updated_at_utc": "2026-10-18T23:45:46+00:00"
+  "updated_at_utc": "2026-10-19T01:22:50+00:00"
 }
