@@ -21,6 +21,10 @@ DELIVERY_GATED_RULE_KEYS = {
     OISP_RULE_KEY,
     "us_fcc_chinese_optical_transceiver_ban",
     "uk_china_ev_tariff_review",
+    # One owner and one delivery-gated receipt for the three 2026-10-19 MOFCOM notices.
+    "china_mofcom_2026_drone_controls",
+    "china_mofcom_2026_tunnel_machine_controls",
+    "china_mofcom_2026_dredging_controls",
 }
 SURVIVING_ALERT_PATHS = (
     OUT / "khs_policy_watch_alerts.json",
