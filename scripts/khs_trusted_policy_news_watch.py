@@ -163,6 +163,73 @@ OFFICIAL_TEXT_STORIES = {
     ),
 }
 
+
+# These are three separate, confirmed 2026-10-19 Chinese export-control
+# announcements. The Ministry's older /zcfb/blgg/gg/ index does not list all
+# current policy categories. Read the exact primary release, then the separate
+# official Ministry-hosted mirror if necessary. Never infer a ban from a headline.
+MOFCOM_2026_POLICY_NOTICES = {
+    "china_mofcom_2026_drone_controls": {
+        "number": "49",
+        "urls": (
+            "https://www.mofcom.gov.cn/zcfb/dwmygl/art/2026/art_6476d897af164126a97baf440726d538.html",
+            "https://hzf.mofcom.gov.cn/article/ggfw/zcfg/zcfgdwmy/zcfgdwmyxx/202610/8776.html",
+        ),
+        "markers": ("公告2026年第49号", "9A012.a", "9E901", "2026年11月18日"),
+        "source": "중국 상무부·해관총서·중앙군사위원회 장비발전부",
+        "actual_bullets": (
+            "공고 제49호는 조건에 해당하는 드론, 자동조종장치, 항공기 엔진·통신장치, 비행제어·군집제어·자율항법 기술 및 특정 부품의 수출허가 기준을 조정했습니다.",
+            "9A012.a는 가시거리 밖 비행과 항속 30분~3시간·46.3km/h 돌풍 비행능력 또는 항속 3시간 이상 등 세부 요건으로 판정합니다.",
+            "일부 9A012.a.1 물품은 등록 방식, 지정 전시회 반출은 조건부 등록 방식, 합규기업은 통용허가 등 예외를 명시합니다.",
+        ),
+        "scope_note": "모든 민간 드론의 전면 수출금지가 아닙니다. 2026년 8월 5일 제34호의 미국향 엄격 심사는 별도 기존 조치입니다.",
+        "next": "11월 18일 시행·정정공고, 9A012/9E901 적용 제품과 수출허가·최종사용자, 한국 부품 공급망·미국 조달 변화를 확인합니다.",
+    },
+    "china_mofcom_2026_tunnel_machine_controls": {
+        "number": "50",
+        "urls": (
+            "https://www.mofcom.gov.cn/zwgk/zcfb/art/2026/art_9ce34ccfa6c040d7a4f7622f89133be5.html",
+            "https://hzf.mofcom.gov.cn/article/ggfw/zcfg/zcfgdwmy/zcfgdwmyxx/202610/8777.html",
+        ),
+        "markers": ("公告2026年第50号", "2B906", "2B904", "2026年11月18日"),
+        "source": "중국 상무부·해관총서",
+        "actual_bullets": (
+            "공고 제50호는 전단면 터널굴착기(2B906), 보행식 굴착기(2B904), 고원용 습식 콘크리트 분사장비(2B903)와 주요 부품·기술을 포함합니다.",
+            "중국과 분쟁이 있는 민감 국가·지역에는 수출허가가 필요하지만, 다른 국가·지역은 원칙적으로 등록 후 수출증빙 발급 방식입니다.",
+            "관세 신고에 이중용도 품목 코드와 성능정보를 요구하며, 신고 진위가 의심될 경우 물품 통관이 보류될 수 있습니다.",
+        ),
+        "scope_note": "모든 터널굴착기의 전 세계 수출금지가 아니며, 대상국별 허가와 등록·재수출 제한을 구분합니다.",
+        "next": "민감 국가·지역의 구체적 범위, 수출등록·허가 소요기간, 해외 철도·터널 공사와 대체 공급사 주문을 확인합니다.",
+    },
+    "china_mofcom_2026_dredging_controls": {
+        "number": "51",
+        "urls": (
+            "https://www.mofcom.gov.cn/zwgk/zcfb/art/2026/art_24e42675dd30435a944eee87427a94d2.html",
+            "https://hzf.mofcom.gov.cn/article/ggfw/zcfg/zcfgdwmy/zcfgdwmyxx/202610/8778.html",
+        ),
+        "markers": ("公告2026年第51号", "8A901.f.1", "8A901.f.3", "2026年11月18日"),
+        "source": "중국 상무부·해관총서",
+        "actual_bullets": (
+            "공고 제51호는 준설 펌프(흡입구 내경 0.55m 이상·최고 회전수 400rpm 이하), 특정 펌프 하우징·임펠러를 통제합니다.",
+            "흡입관 지름 0.55m 이상 준설 헤드와 커터 지름 2.1m 이상 준설 날 등도 규정하며 대상 품목에 수출허가를 요구합니다.",
+            "성능 기준에 근접한 비대상 장비도 구체적 사양을 신고해야 하며, 세관의 의심 심사 중 통관이 정지될 수 있습니다.",
+        ),
+        "scope_note": "준설선 전체와 모든 부품을 일괄 금지하는 규정이 아니라 상세 규격별 수출허가·신고 조정입니다.",
+        "next": "11월 18일 적용 목록, 준설선 조달·부품 대체, 준설 공사 발주 지연과 국내 조선·해양장비 공급계약을 확인합니다.",
+    },
+}
+
+def mofcom_notice_body_verified(raw: str, rule_key: str) -> bool:
+    spec = MOFCOM_2026_POLICY_NOTICES.get(rule_key)
+    if spec is None:
+        return False
+    normalized = re.sub(r"\s+", "", clean_text(raw)).lower()
+    return all(marker.lower() in normalized for marker in spec["markers"])
+
+def mofcom_notice_stage(now: dt.datetime) -> str:
+    # Date alone cannot confirm whether a later suspension/amendment occurred.
+    return "effective-date-arrived" if now.astimezone(KST).date() >= dt.date(2026, 11, 18) else "announced"
+
 ANALYST_DIRECT_STORIES = {
     "us_fcc_chinese_optical_transceiver_ban": (
         (
@@ -214,6 +281,10 @@ RULE_MAX_AGE_HOURS = {
     # One-time recovery for the 2026-10-01 Morgan Stanley 3.2T/65% research
     # story that predates the international outlet parser fix.
     "us_fcc_chinese_optical_transceiver_ban": 24 * 7,
+    # Allow the 2026-10-19 official notices through the Nov 18 effective-date checkpoint.
+    "china_mofcom_2026_drone_controls": 24 * 40,
+    "china_mofcom_2026_tunnel_machine_controls": 24 * 40,
+    "china_mofcom_2026_dredging_controls": 24 * 40,
     # Backfill only the verified launch/current execution stages once; after
     # that semantic event keys prevent republications from becoming new alerts.
     "us_dow_project_meridian_future_warfare": 24 * 7,
@@ -325,6 +396,48 @@ class StoryRule:
 
 
 STORY_RULES = (
+    StoryRule(
+        key="china_mofcom_2026_drone_controls",
+        title="중국, 드론·자율비행 기술 수출통제 기준 조정 공고 제49호",
+        google_queries=(),
+        required_groups=(("公告2026年第49号",), ("无人机", "无人驾驶航空器"), ("2026年11月18日",)),
+        core="중국 상무부·해관총서·중앙군사위원회 장비발전부가 특정 드론·핵심 부품·비행제어 및 자율항법 기술의 수출통제를 조정했습니다.",
+        impact="드론·항공전자·군집비행 기술, 한국 부품 공급망·미국 드론조달 | 수급·시간표·돈 버는 능력",
+        point="허가·등록 조건에 따라 중국산 완제품과 핵심 부품의 해외 납기가 달라질 수 있지만, 비중국 업체의 실제 주문은 별도로 확인해야 합니다.",
+        counter="허가 편의와 민간용 예외가 있어 전면 수출중단으로 오인하면 안 됩니다.",
+        sectors="드론, 비행제어 소프트웨어, 자율항법, 군집제어, 항공전자",
+        impacts=("매출·마진·현금흐름", "수급", "시간표"),
+        paths=("공식 공고", "수출허가", "제품별 성능요건", "실제 주문"),
+        follow_up="공고 제49호 시행·정정, 통제코드, 허가·등록 실제 처리와 업체별 출하·매출을 확인합니다.",
+    ),
+    StoryRule(
+        key="china_mofcom_2026_tunnel_machine_controls",
+        title="중국, 터널굴착기·보행식 굴착기 수출통제 공고 제50호",
+        google_queries=(),
+        required_groups=(("公告2026年第50号",), ("盾构机", "掘进机"), ("2026年11月18日",)),
+        core="중국 상무부·해관총서가 터널굴착기·보행식 굴착기·고원용 습식 분사장비 및 핵심 부품·기술에 수출통제를 신설했습니다.",
+        impact="해외 터널·지하철·철도 건설공정 및 토목장비 | 납기·설비비·시간표",
+        point="민감 국가 허가심사와 그 외 국가의 등록 요건이 공사 납기에 영향을 줄 수 있습니다.",
+        counter="민감 국가와 그 밖의 국가에 적용하는 수출절차가 다릅니다.",
+        sectors="터널굴착기, 중장비, 철도·도로 건설, 산업기계",
+        impacts=("매출·마진·현금흐름", "수급", "시간표"),
+        paths=("조달·납기", "수출허가", "국가별 적용", "대체장비"),
+        follow_up="공고 제50호의 대상국·허가/등록 구분, 납기와 프로젝트별 신규 발주를 확인합니다.",
+    ),
+    StoryRule(
+        key="china_mofcom_2026_dredging_controls",
+        title="중국, 준설선 펌프·준설 장치 수출통제 조정 공고 제51호",
+        google_queries=(),
+        required_groups=(("公告2026年第51号",), ("挖泥船",), ("2026年11月18日",)),
+        core="중국 상무부·해관총서가 일정 규격의 준설 펌프·준설 헤드·준설 날 등 장비와 부품의 수출허가 기준을 조정했습니다.",
+        impact="항만·해양공사·준설선 기자재 | 납기·대체조달·시간표",
+        point="설비 규격별 수출허가가 해외 준설공사 장비 인도 시점과 부품 비용에 영향을 줄 수 있습니다.",
+        counter="통제 품목은 규격으로 정의되므로 모든 준설선 및 부품이 일괄 수출금지되는 것은 아닙니다.",
+        sectors="준설선, 산업용 펌프, 항만·해양건설, 조선 기자재",
+        impacts=("매출·마진·현금흐름", "수급", "시간표"),
+        paths=("수출허가", "기계 성능요건", "대체부품", "납기"),
+        follow_up="공고 제51호의 세부 성능·세관심사·허가기간 및 조달가격을 감시합니다.",
+    ),
     StoryRule(
         key="china_mofcom_export_controls_tariffs",
         title="중국 상무부, 전략 품목 수출금지·관세 정책 변화",
@@ -1243,7 +1356,7 @@ def fetch_text(url: str, timeout: int = 8) -> str:
         # already configured policy proxy/direct race only for these named
         # verified first-party/research sources, without changing RSS sourcing.
         host = (urllib.parse.urlparse(url).hostname or "").lower()
-        if host not in {"home.treasury.gov", "money.udn.com"}:
+        if host not in {"home.treasury.gov", "money.udn.com", "www.mofcom.gov.cn", "hzf.mofcom.gov.cn"}:
             raise
         body, error = fetch_policy_source_with_fallback(
             url, user_agent=user_agent, timeout=timeout, attempts=1, accept=accept
@@ -1346,6 +1459,43 @@ def load_seen() -> dict:
 def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     items: list[dict] = []
     seen_links: set[str] = set()
+
+    # Exact first-party notices are identified by all three: document number,
+    # subject-specific technical codes, and its published effective date.
+    # The separate Ministry-hosted mirror is NOT an independent policy event.
+    if rule.key in MOFCOM_2026_POLICY_NOTICES:
+        spec = MOFCOM_2026_POLICY_NOTICES[rule.key]
+        published = dt.datetime(2026, 10, 19, 16, tzinfo=KST)
+        if (now - published).total_seconds() / 3600 > max_age_hours_for_rule(rule):
+            return []
+        for official_url in spec["urls"]:
+            try:
+                raw = fetch_text(official_url, timeout=10)
+            except Exception as exc:
+                print(f"trusted_policy_news=mofcom_direct_failed rule={rule.key} error={type(exc).__name__}: {exc}")
+                continue
+            if not mofcom_notice_body_verified(raw, rule.key):
+                print(f"trusted_policy_news=mofcom_direct_rejected rule={rule.key} reason=not_full_matching_official_notice")
+                continue
+            body = clean_text(raw)
+            if not has_required_terms(body, rule):
+                print(f"trusted_policy_news=mofcom_direct_rejected rule={rule.key} reason=required_terms_missing")
+                continue
+            item = {
+                "title": rule.title,
+                "description": body[:45000],
+                "link": official_url,
+                "source": spec["source"],
+                "published_kst": published.isoformat(timespec="seconds"),
+                "published_precision": "date",
+                "priority": 0,
+                "official_direct_verified": True,
+                "mofcom_notice_key": rule.key,
+                "mofcom_stage": mofcom_notice_stage(now),
+            }
+            print(f"trusted_policy_news=mofcom_direct_verified rule={rule.key} notice={spec['number']} stage={item['mofcom_stage']}")
+            return [item]
+        return []
 
     # Some FCC Commission items are available first as official plain-text
     # attachments. Read those exact documents before falling back to news RSS.
@@ -1784,6 +1934,15 @@ def is_polysilicon_11052_base_rehash_text(value: str) -> bool:
 
 
 def semantic_policy_event_key(item: dict) -> str:
+    # The same three first-party notices may be printed at two official URLs.
+    # De-duplicate mirrors and news reprints, but never merge distinct notices
+    # or the announced and effective-date-arrived stages.
+    mofcom_key = str(item.get("mofcom_notice_key") or "")
+    if mofcom_key in MOFCOM_2026_POLICY_NOTICES and item.get("official_direct_verified") is True:
+        number = MOFCOM_2026_POLICY_NOTICES[mofcom_key]["number"]
+        stage = str(item.get("mofcom_stage") or "announced")
+        if stage in {"announced", "effective-date-arrived"}:
+            return f"china-mofcom-2026-notice-{number}-{stage}"
     title_text = clean_text(str(item.get("title") or "")).lower()
     text = clean_text(
         " ".join(
@@ -2893,6 +3052,35 @@ def korean_trump_story_title(title: str) -> str:
 def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] | None:
     if not items:
         return None
+    if rule.key in MOFCOM_2026_POLICY_NOTICES:
+        item = items[0]
+        if item.get("official_direct_verified") is not True:
+            return None
+        spec = MOFCOM_2026_POLICY_NOTICES[rule.key]
+        effective_day = item.get("mofcom_stage") == "effective-date-arrived"
+        return {
+            "title": rule.title + (" · 공고상 시행일 도래" if effective_day else " · 11월 18일 시행 예정"),
+            "core": rule.core,
+            "stage": (
+                "2026년 11월 18일 공고상 시행일 도래. 별도 유예·정정이 없는지 후속 공식 확인 필요."
+                if effective_day else "2026년 10월 19일 공식 공고 확정, 11월 18일 시행 예정."
+            ),
+            "event_date": "2026년 11월 18일" if effective_day else "2026년 10월 19일",
+            "event_date_label": "공고상 시행일" if effective_day else "공식 발표일",
+            "show_publication_date": False,
+            "actual_bullets": list(spec["actual_bullets"]),
+            "timeline": "2026년 10월 19일 공고 발표 → 2026년 11월 18일 공고상 시행일 → 이후 통관·허가·정정공고 확인",
+            "scope_note": spec["scope_note"],
+            "korea_candidates": "국내 수혜기업별 직접 수주·양산·매출은 공개자료로 확인한 경우에만 분류합니다.",
+            "next": spec["next"],
+            "investment": rule.point,
+            "priced_in": "공식 정책 발표는 확정됐으나 대체 공급사의 계약·주가는 별도 확인 대상입니다.",
+            "counter": rule.counter,
+            "failure": "허가·등록 예외, 대체 공급능력 부족, 부품 인증과 통관 지연을 우선 점검합니다.",
+            "impacts": rule.impacts,
+            "paths": rule.paths,
+            "sectors": rule.sectors,
+        }
     title = str(items[0].get("title", ""))
     semantic_key = semantic_policy_event_key(items[0])
     if (
@@ -3671,6 +3859,13 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
+    if rule.key in MOFCOM_2026_POLICY_NOTICES and any(
+        item.get("official_direct_verified") is True
+        and item.get("mofcom_notice_key") == rule.key
+        and str(item.get("link") or "") in MOFCOM_2026_POLICY_NOTICES[rule.key]["urls"]
+        for item in items
+    ):
+        return "공식 확인", "중국 상무부 공식 공고 원문·문서번호·세부 성능코드·시행일 대조 완료"
     if (
         rule.key == "us_treasury_outbound_ai_robotics_enforcement"
         and any(
@@ -3799,6 +3994,42 @@ def render_auction115_compact_body(now: dt.datetime) -> str:
         f'- 출처: <a href="{fcc_url}">FCC 원문</a>',
     ]) + "\n"
 
+
+
+def _self_test_mofcom_2026_notices() -> None:
+    rules = {rule.key: rule for rule in STORY_RULES}
+    before = dt.datetime(2026, 10, 20, 9, tzinfo=KST)
+    after = dt.datetime(2026, 11, 18, 9, tzinfo=KST)
+    assert mofcom_notice_stage(before) == "announced"
+    assert mofcom_notice_stage(after) == "effective-date-arrived"
+    for key, spec in MOFCOM_2026_POLICY_NOTICES.items():
+        raw = " ".join((*spec["markers"], "无人驾驶航空器 掘进机 盾构机 挖泥船"))
+        assert mofcom_notice_body_verified(raw, key)
+        assert not mofcom_notice_body_verified(
+            raw.replace(f"第{spec['number']}号", "第99号"), key
+        ), "other notice must not pass first-party guard"
+        official = {
+            "title": rules[key].title,
+            "description": raw,
+            "link": spec["urls"][0],
+            "source": spec["source"],
+            "published_kst": "2026-10-19T16:00:00+09:00",
+            "official_direct_verified": True,
+            "mofcom_notice_key": key,
+            "mofcom_stage": "announced",
+        }
+        effective = {**official, "mofcom_stage": "effective-date-arrived"}
+        assert alert_confirmation_status(rules[key], [official])[0] == "공식 확인"
+        assert semantic_policy_event_key(official) != semantic_policy_event_key(effective)
+        assert story_event_fingerprint(rules[key], [official]) != story_event_fingerprint(rules[key], [effective])
+        assert story_event_fingerprint(rules[key], [official]) == story_event_fingerprint(
+            rules[key], [{**official, "link": spec["urls"][1]}]
+        ), "official mirrors must have one stable policy event"
+        spoofed = {**official, "official_direct_verified": False}
+        assert alert_confirmation_status(rules[key], [spoofed])[0] == "공식 확인 전"
+        assert not semantic_policy_event_key(spoofed).startswith("china-mofcom-2026-notice-")
+        assert item_story_profile(rules[key], [official])["event_date"] == "2026년 10월 19일"
+        assert item_story_profile(rules[key], [effective])["event_date"] == "2026년 11월 18일"
 
 def _self_test_us_treasury_outbound_event_model() -> None:
     rule = next(r for r in STORY_RULES if r.key == "us_treasury_outbound_ai_robotics_enforcement")
@@ -4085,6 +4316,9 @@ def main() -> int:
         "us_treasury_outbound_ai_robotics_enforcement": 3,
         "us_fcc_chinese_optical_transceiver_ban": 2,
         "uk_china_ev_tariff_review": 1,
+        "china_mofcom_2026_drone_controls": 8,
+        "china_mofcom_2026_tunnel_machine_controls": 8,
+        "china_mofcom_2026_dredging_controls": 8,
     }
     alerts.sort(
         key=lambda alert: (
@@ -4160,6 +4394,9 @@ def main() -> int:
             "us_treasury_outbound_ai_robotics_enforcement",
             "us_fcc_chinese_optical_transceiver_ban",
             "uk_china_ev_tariff_review",
+            "china_mofcom_2026_drone_controls",
+            "china_mofcom_2026_tunnel_machine_controls",
+            "china_mofcom_2026_dredging_controls",
         }:
             continue
         seen_entry = {
@@ -4182,6 +4419,7 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    _self_test_mofcom_2026_notices()
     _self_test_us_treasury_outbound_event_model()
     _self_test_fcc_optical_transceiver_event_model()
     _self_test_super_intelligence_force_event_model()
