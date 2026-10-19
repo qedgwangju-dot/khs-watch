@@ -40,6 +40,8 @@ for _required in (
     "FLUENCE_VATTENFALL_RECOVERY =",
     "ROBOT_OCT16_PREFIX =",
     "MICRON_EIM_RECOVERY =",
+    "CN_ESS_US_RETREAT_ID =",
+    "def _cn_ess_us_retreat_recovery(",
     "def _micron_eim_recovery(",
     "def _micron_eim_stage(",
     "ROBOT_OCT16_EVENTS =",
@@ -4329,5 +4331,86 @@ solid_state_real_contract = dict(
 assert not watcher._is_generic_ess_demand_story(solid_state_real_contract), (
     'market-noise guard must not block explicit first signed awards'
 )
+
+
+# 60) 2026-10-19 DIGITIMES Chinese BESS-system-integrator market exit:
+# anonymous supply-chain interview is not verified company closure.
+cn_ess_retreat = watcher.query_news(watcher.CN_ESS_US_RETREAT_ID)
+if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,23):
+    assert len(cn_ess_retreat)==1, cn_ess_retreat
+    cr=cn_ess_retreat[0]
+    assert cr['source']=='DIGITIMES'
+    assert '0000771701_AKR6XDK313NXUP0KYL64J' in cr['link']
+    assert cr['published']=='2026-10-18T19:00:00+00:00', cr
+    cg,cs,cc,ck=classify(cr)
+    assert cg=='china_ess_us_exit_report' and cs>=11, (cg,cs,cc)
+    assert cc=='미국 ESS 공급망 · 중국계 시스템업체 집단 철수설 보도',cc
+    render=cr['title']+' '+cr['description']
+    assert base.category(render,base.topic_group(render))==cc
+    assert '미확인' in cr['title'] or '철수설' in cr['title']
+    assert '유료 본문 직접 열람 실패' in base.verification(cr,cg,render)
+    assert '55%' in base.risk(cc) and '75%' in base.risk(cc)
+    assert '개별 업체 철수 공시' in base.meaning(cc)
+    assert '기존' in base.meaning(cc) and '7.5GWh' in base.meaning(cc)
+    assert watcher.qty._skip_quantity_enrichment(
+        '<b>1. 미국 ESS 공급망</b>\n'
+        '<b>분류</b>  미국 ESS 공급망 · 중국계 시스템업체 집단 철수설 보도\n'
+        'DIGITIMES 2026; 2025년 ESS 1.5조원 7.5GWh'
+    ),'must not mislabel previous ESS contracts as fresh confirmed quantities'
+
+cn_ess_rewrite=make(
+    '중국계 ESS 기업 미국 철수설 DIGITIMES 재인용',
+    'DIGITIMES 2026-10-19 중국 ESS 미국 집단 철수설이 주식 테마로 재확산.',
+    '시장 테마 뉴스'
+)
+rg,rs,rc,rk=classify(cn_ess_rewrite)
+assert rg=='china_ess_us_exit_report' and rs<11,(rg,rs,rc)
+if cn_ess_retreat:
+    assert rk==ck, 'reprints cannot create an independent retreat event'
+
+cn_ess_unrelated=make(
+    'Sungrow inverter sales grow in Europe',
+    'European ESS battery storage growth with no US market exit confirmation',
+    'Sungrow'
+)
+ug,us,uc,uk=classify(cn_ess_unrelated)
+assert us<11,(ug,us,uc)
+
+# Hypothetical future CATL company announcement, not an observed Oct-19 fact.
+catl_official_exit=make(
+    'CATL 中国 ESS 美国 业务退出',
+    'CATL 中国 ESS 美国 业务美国 ESS 事业 业务 已退出. '
+    'CATL 중국 ESS 미국 사업 철수 완료를 회사가 발표했다고 가정한다.',
+    'CATL'
+)
+catl_official_exit['link']='https://www.catl.com/en/news/hypothetical-exit'
+eg,es,ec,ek=classify(catl_official_exit)
+assert eg=='china_ess_us_exit_report' and es>=11,(eg,es,ec)
+assert ec=='미국 ESS 공급망 · 중국계 개별업체 철수 공식확인',ec
+assert '별도 상위 단계' in base.meaning(ec)
+if cn_ess_retreat:
+    assert ek!=ck,'actual company shutdown must be separate upgrade'
+
+fake_origin=dict(catl_official_exit,link='https://www.catl.com.fake-site.example/news')
+fg,fs,fc,fk=classify(fake_origin)
+assert fg==eg and fs<11, (fg,fs,fc)
+
+untrusted_copy=dict(catl_official_exit,source='증시 테마 뉴스')
+sg,ss,sc,sk=classify(untrusted_copy)
+assert sg==eg and ss<11,(sg,ss,sc)
+
+denial=dict(catl_official_exit)
+denial['description']+=' 하지만 CATL은 미국 ESS 사업 철수 부인 공식 확인.'
+dg,ds,dc,dk=classify(denial)
+assert dg==eg and ds<11,(dg,ds,dc)
+
+old_cn_ess_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,24,0,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.CN_ESS_US_RETREAT_ID)==[],(
+        'DIGITIMES one-off story must expire instead of replaying'
+    )
+finally:
+    base.NOW=old_cn_ess_now
 
 print("Physical-AI watcher regression guards: PASS")
