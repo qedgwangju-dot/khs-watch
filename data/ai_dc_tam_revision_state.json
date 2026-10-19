@@ -29,7 +29,7 @@
     "agentic_cpu_per_gpu": 1.0
   },
   "baseline_source": "BofA Global Research 2차 공개보도 기준",
-  "updated_at_kst": "2026-10-19T15:21:21+09:00",
+  "updated_at_kst": "2026-10-19T15:45:21+09:00",
   "seen_ids": [
     "66d627057937a9e600c63eac",
     "08d5cbf40c85943b346ecc01",
@@ -67,9 +67,37 @@
     "networking_alert_id": "jpm-cloud-dc-networking-2026-10-13-nine-suppliers",
     "networking_alert_at_kst": "2026-10-18T18:27:51+09:00"
   },
+  "semianalysis_2027": {
+    "user_excerpt": {
+      "2027_new_capacity_headline_gw": 50,
+      "under_construction_gw": 60,
+      "advanced_2027_construction_gw_floor": 24,
+      "advanced_campuses": 40,
+      "older_semianalysis_2027_gw": 43,
+      "altimeter_2027_gw_opinion": 25,
+      "claimed_ytd_lease_commitments_usd_t": 1.3,
+      "hypothetical_cost_per_gw_usd_b": 50,
+      "comparator_2027_capex_usd_t": 1.5,
+      "geography": "원문 원자료 확인 전 미확정",
+      "power_basis": "총전력/IT전력/전원인가 여부 원문 확인 전 미확정",
+      "provenance": "사용자 제공 기사 발췌; 원문 수치 독립 검증 전"
+    },
+    "primary_status": "발행처 RSS·핵심 숫자 2개 이상 직접 확인",
+    "primary_numeric_anchors": [
+      "50gw",
+      "60gw",
+      "24gw"
+    ],
+    "last_primary_checked_kst": "2026-10-19T15:45:21+09:00",
+    "primary_errors": [],
+    "publisher_release": "2026-10-19T05:39:38+00:00",
+    "publisher_article_url": "https://newsletter.semianalysis.com/p/datacenters-2027-the-year-of-acceleration",
+    "delivered_id": "semianalysis-2027-acceleration-primary-evidence-20261019",
+    "delivered_at_kst": "2026-10-19T15:45:21+09:00"
+  },
   "fx": {
     "usdkrw": 1332.1,
-    "basis": "2026-10-16 일일 기준 · ECB/Frankfurter · 조회 2026-10-19 15:21 KST · 보조 API 2026-10-19 · 차이 0.11% · 일중 기준시각 차이 가능",
+    "basis": "2026-10-16 일일 기준 · ECB/Frankfurter · 조회 2026-10-19 15:45 KST · 보조 API 2026-10-19 · 차이 0.11% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "quality": "교차검증 일일 기준환율"
   },
