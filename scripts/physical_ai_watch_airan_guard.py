@@ -5161,6 +5161,329 @@ def _finalize_airan_criteria() -> None:
     base.ALERT_PATH.write_text(text.strip(), encoding='utf-8')
 
 
+# BMW Gen6 Shenyang battery-PACK assembly SOP and JPMorgan SRI cumulative
+# deployment. Both are evidence-graded milestones within the existing watcher.
+# IMPORTANT: BMW assembles externally sourced cylindrical CELLS into PACKS;
+# a pack SOP is not an announcement that BMW makes the battery cells itself.
+# SRI $5bn was ALREADY DEPLOYED under a 2025 $10bn equity envelope; it is
+# not a new $5bn national-defense appropriation or a robot-factory contract.
+BMW_GEN6_PACK_RECOVERY = 'DIRECT_BMW_SHENYANG_GEN6_PACK_SOP_20261015'
+BMW_GEN6_PACK_URL = (
+    'https://www.press.bmwgroup.com/global/article/detail/'
+    'T0461769EN/bmw-group-begins-series-production-of-gen6-high-voltage-batteries-in-shenyang'
+)
+JPM_SRI_DEPLOYMENT_RECOVERY = 'DIRECT_JPM_SRI_5BN_DEPLOYED_230BN_FACILITATED_20261019'
+JPM_SRI_PROGRESS_URL = (
+    'https://www.marketscreener.com/news/'
+    'one-year-in-jpmorganchase-s-security-and-resiliency-initiative-is-helping-to-strengthen-industries-ce785cdbd888f024'
+)
+BMW_GEN6_PRIMARY = {'BMW Group','BMW Group Official','BMW'}
+JPM_SRI_PRIMARY = {'JPMorganChase', 'JPMorgan Chase', 'Reuters'}
+BMW_GEN6_ID = re.compile(r'\bBMW\b|宝马|비엠더블유',re.I)
+BMW_GEN6_PROD = re.compile(r'Gen\s*6|Gen6|6\s*세대|第六代',re.I)
+BMW_GEN6_LOC = re.compile(r'Shenyang|선양|沈阳',re.I)
+BMW_GEN6_BAT = re.compile(r'high[-\s]*voltage\s*batter|배터리|battery|电池',re.I)
+BMW_GEN6_SOP = re.compile(
+    r'(?:began|begun|starts?|started|commenced)\s+(?:series|mass)\s+production|'
+    r'series\s+production\s+(?:has\s+)?(?:started|begun)|'
+    r'양산\s*(?:개시|시작|돌입)|正式量产|量产下线',
+    re.I,
+)
+BMW_GEN6_DELIVERY = re.compile(
+    r'(?:China|중국|中国).{0,90}(?:Neue\s*Klasse|iX3|i3).{0,90}'
+    r'(?:actual|first)\s+(?:customer\s+)?deliveries|'
+    r'중국.{0,90}(?:Neue\s*Klasse|iX3|i3).{0,90}고객\s*인도\s*(?:완료|시작)',
+    re.I,
+)
+JPM_SRI_ID = re.compile(r'JPMorgan\s*Chase|JPMorganChase|JP\s*모건|제이피모건',re.I)
+JPM_SRI_NAME = re.compile(r'SRI\b|Security\s+and\s+Resilien|안보.{0,15}회복력|경제안보\s*회복력',re.I)
+JPM_SRI_EQUITY = re.compile(
+    r'(?:\$?\s*5\s*billion|50\s*억\s*달러).{0,125}'
+    r'(?:deployed|invested|집행|투자\s*완료)|'
+    r'(?:deployed|invested|누적\s*집행).{0,125}(?:\$?\s*5\s*billion|50\s*억\s*달러)',
+    re.I,
+)
+JPM_SRI_FINANCED = re.compile(r'\$?\s*230\s*billion|2[, ]?300\s*억\s*달러|2,300억달러',re.I)
+JPM_SRI_PLAN_ONLY = re.compile(
+    r'(?:plans?\s+to\s+invest|will\s+invest|could\s+invest|'
+    r'투자\s*(?:계획|검토|예정)|집행\s*목표)',
+    re.I,
+)
+
+
+def _is_bmw_gen6_pack(text: str) -> bool:
+    return bool(BMW_GEN6_ID.search(text) and BMW_GEN6_PROD.search(text)
+                and BMW_GEN6_LOC.search(text) and BMW_GEN6_BAT.search(text))
+
+
+def _bmw_gen6_pack_stage(text: str, source: str='') -> str:
+    if not _is_bmw_gen6_pack(text): return ''
+    if source not in BMW_GEN6_PRIMARY: return 'unverified'
+    if BMW_GEN6_DELIVERY.search(text): return 'actual_china_vehicle_delivery'
+    if BMW_GEN6_SOP.search(text): return 'shenyang_pack_sop'
+    return 'prior_plan'
+
+
+def _bmw_gen6_pack_recovery() -> list[dict]:
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,26): return []
+    return [{
+        'title': 'BMW Gen6 선양 46mm 원통형 셀 기반 고전압 배터리팩 양산 공식 개시',
+        'link': BMW_GEN6_PACK_URL,
+        'description': (
+            '2026-10-15 BMW Group 공식 보도자료: BMW가 중국 선양 Shenyang '
+            '파워트레인 공장에서 Gen6 고전압 배터리팩의 실제 양산을 시작했다. '
+            '이 거점은 헝가리 Debrecen, 독일 Irlbach-Straßkirchen 뒤 '
+            '세 번째 생산거점이다. BMW가 원통형 배터리 셀 자체를 '
+            '생산한다는 발표가 아니다. 외부에서 입고되는 셀을 '
+            '전수 수입검사하고 냉각 유닛과 클러스터로 조립한 다음 '
+            '레이저 세정·고정밀 용접·실시간 용접검사·발포 결합·'
+            '밀봉·리벳·Energy Master 제어기 설치·배터리팩 최종검사를 거친다. '
+            'Gen6 원통형 셀은 BMW가 밝힌 기존 세대 대비 에너지 밀도 20% 이상 증가, '
+            '충전속도·주행거리 최대 30% 개선 사양이다. '
+            'CATL과 BMW의 2022-09-09 46mm 원통형 셀 공급 기본계약은 '
+            '중국·유럽 두 공장 각각 최대 연산 20GWh였으나 '
+            '이번 선양 팩라인 특정 셀 공급사 실명과 출하 셀 수·GWh·'
+            'BMW 배터리팩 원화 매출은 이번 보도만으로 직접 확정되지 않는다. '
+            '미국 Woodruff·멕시코 San Luis Potosí 조립라인의 양산은 '
+            '앞으로 수개월 내 개시 예정이며 이미 생산 중이라는 뜻이 아니다. '
+            '배터리팩 생산과 현지 Neue Klasse 차종의 첫 고객 인도는 별개이다.'
+        ),
+        'source': 'BMW Group',
+        'published': None,
+        'direct_recovery': True,
+        'bmw_pack_sop_fact': True,
+    }]
+
+
+def _is_jpm_sri(text: str) -> bool:
+    return bool(JPM_SRI_ID.search(text) and JPM_SRI_NAME.search(text))
+
+
+def _jpm_sri_stage(text: str, source: str='') -> str:
+    if not _is_jpm_sri(text): return ''
+    if source not in JPM_SRI_PRIMARY: return 'unverified'
+    if JPM_SRI_EQUITY.search(text) and JPM_SRI_FINANCED.search(text):
+        return 'first_year_equity_deployed'
+    return 'prior_envelope'
+
+
+def _jpm_sri_recovery() -> list[dict]:
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,26): return []
+    return [{
+        'title': 'JPMorganChase 안보·공급망 SRI 1년차 지분투자 50억달러 누적 집행',
+        'link': JPM_SRI_PROGRESS_URL,
+        'description': (
+            '2026-10-19 JPMorganChase 발행 Business Wire 1주년 성과 자료와 '
+            'Reuters 보도: SRI(Security and Resiliency Initiative)의 '
+            '전략적 투자그룹이 기존 계획 100억달러 중 50억달러를 '
+            '지분투자로 이미 누적 집행했다. 추가 50억달러 신규 투자 결정이 아니다. '
+            '금융지원·주선 실적 약 2,300억달러는 50억달러 지분투자와 '
+            '성격과 집계가 다르므로 단순 합산하지 않는다. '
+            '2025년 최초 SRI 장기 금융지원 계획은 10년간 '
+            '총 1조5,000억달러이며 이 자금 전체가 정부 예산도 '
+            'JP모건 직접 자기자본 투자도 아니다. '
+            '지분투자 분야는 방산과 초음속 미사일만이 아니라 '
+            '로봇·자율제조·분산형 배터리저장·첨단제조·핵심광물·에너지 등이다. '
+            '약 10개 기업 투자·건당 약 5억달러는 Todd Combs의 '
+            '기존 발표에 근거한 평균값이며 로봇 회사 10곳 '
+            '각각에 대한 고정액 투자가 아니다. '
+            '환율 기준 2026-10-19 19:05 KST 1달러=1,330.33원: '
+            '50억달러(약 6조6,517억원), 100억달러(약 13조3,033억원), '
+            '2,300억달러(약 305조9,759억원), '
+            '1조5,000억달러(약 1,995조4,950억원). '
+            '투자수혜 기업별 자금수령·계약금액·일시·로봇공장 건설 '
+            '또는 미사일 생산라인 발주는 이 집계만으로 확인되지 않는다.'
+        ),
+        'source': 'JPMorganChase',
+        'published': None,
+        'direct_recovery': True,
+        'sri_first_year_progress': True,
+    }]
+
+
+_bmw_jpm_prev_query = base.query_news
+_bmw_jpm_prev_group = base.topic_group
+_bmw_jpm_prev_score = base.score
+_bmw_jpm_prev_category = base.category
+_bmw_jpm_prev_meaning = base.meaning
+_bmw_jpm_prev_risk = base.risk
+_bmw_jpm_prev_verify = base.verification
+_bmw_jpm_prev_title = base.clean_title
+_bmw_jpm_prev_tag = base.tag_for
+_bmw_jpm_prev_key = base.key
+_bmw_jpm_prev_select = base.select_diverse
+
+
+def _bmw_jpm_query(q: str) -> list[dict]:
+    if q == BMW_GEN6_PACK_RECOVERY: return _bmw_gen6_pack_recovery()
+    if q == JPM_SRI_DEPLOYMENT_RECOVERY: return _jpm_sri_recovery()
+    return _bmw_jpm_prev_query(q)
+
+
+def _bmw_jpm_group(text: str) -> str | None:
+    if _is_bmw_gen6_pack(text): return 'bmw_gen6_pack'
+    if _is_jpm_sri(text): return 'jpm_sri_2026'
+    return _bmw_jpm_prev_group(text)
+
+
+def _bmw_jpm_score(item: dict) -> int:
+    text = f"{item.get('title','')} {item.get('description','')}"
+    g = _bmw_jpm_group(text)
+    if g == 'bmw_gen6_pack':
+        return {'shenyang_pack_sop':52,'actual_china_vehicle_delivery':60}.get(
+            _bmw_gen6_pack_stage(text,item.get('source') or ''),0)
+    if g == 'jpm_sri_2026':
+        return {'first_year_equity_deployed':48}.get(
+            _jpm_sri_stage(text,item.get('source') or ''),0)
+    return _bmw_jpm_prev_score(item)
+
+
+def _bmw_jpm_category(text: str, group: str) -> str:
+    if group == 'bmw_gen6_pack':
+        if BMW_GEN6_DELIVERY.search(text):
+            return 'BMW Gen6 · 중국 신세대 전기차 실제 고객 인도'
+        return 'BMW Gen6 · 선양 배터리팩 양산 공식 개시'
+    if group == 'jpm_sri_2026':
+        return 'JP모건 SRI · 50억달러 지분투자 누적 집행'
+    return _bmw_jpm_prev_category(text,group)
+
+
+def _bmw_jpm_meaning(cat: str) -> str:
+    if cat == 'BMW Gen6 · 선양 배터리팩 양산 공식 개시':
+        return (
+            'BMW는 10/15 선양에서 Gen6 고전압 배터리팩 양산을 시작했습니다. '
+            'CATL과 46mm 원통형 셀 공급계약은 별도로 존재하지만 BMW 직접 '
+            '원통형 셀 제조·이번 팩라인의 특정 셀 공급사 확정과는 다릅니다. '
+            '셀 입고검사→냉각 클러스터→레이저 용접·실시간 검사→'
+            '발포·밀봉→Energy Master 설치→최종검사까지가 새 양산 공정입니다. '
+            '실제 셀 발주 GWh·팩 생산량·중국 차량 고객 인도와 '
+            '공급사별 매출 인식을 따로 확인합니다.'
+        )
+    if cat == 'BMW Gen6 · 중국 신세대 전기차 실제 고객 인도':
+        return (
+            'BMW가 Gen6 배터리팩을 통합한 중국 내 생산 Neue Klasse '
+            '차량의 실제 고객 인도를 자체 확인한 단계입니다. '
+            '이전 팩라인 SOP와 별도이며 차량 생산·판매 물량, '
+            '배터리 셀 출하 GWh, 팩 생산 수율과 보증비용을 따로 봅니다.'
+        )
+    if cat == 'JP모건 SRI · 50억달러 지분투자 누적 집행':
+        return (
+            '2025년 출범한 SRI의 첫해 누적 집행 성과입니다. '
+            '전략적 투자그룹 지분투자 50억달러(약 6조6,517억원)는 '
+            '100억달러(약 13조3,033억원) 지분투자 목표의 절반이며, '
+            '금융지원·주선 실적 2,300억달러(약 305조9,759억원)와 '
+            '장기 종합계획 1조5,000억달러(약 1,995조4,950억원)는 '
+            '서로 다른 금액입니다. 신규 50억달러 발주나 '
+            '방산 한 분야의 확정 구매계약이 아닙니다. '
+            '고객·투자받은 기업·지분율·유입 현금·'
+            '실제 공장 착공·수주 및 정비·운영 매출을 추적합니다. '
+            '환율은 10/19 19:05 KST 조회 1달러=1,330.33원 기준.'
+        )
+    return _bmw_jpm_prev_meaning(cat)
+
+
+def _bmw_jpm_risk(cat: str) -> str:
+    if cat.startswith('BMW Gen6 · '):
+        return (
+            '6~12개월 위험은 셀 입고품질·셀당 발열, '
+            '용접부 결함과 검사시간·발포 접착·기밀성·팩 조립수율·'
+            '열폭주 전파·냉각 및 보증충당금입니다. '
+            '셀 에너지 밀도 20% 이상 개선이 팩/차량 성능 20% '
+            '개선을 동일하게 보장하지 않습니다. '
+            '중국 차량 인도 대수, 팩 양품률·교환 접수, '
+            '미국·멕시코 라인 실제 양산시점을 확인합니다.'
+        )
+    if cat == 'JP모건 SRI · 50억달러 지분투자 누적 집행':
+        return (
+            '6~24개월 실패 경로는 지분투자 성과를 미국 로봇 공장 '
+            '수주로 과장하는 것과 투자기업의 지연·평가손실·'
+            '자금소진입니다. 100억달러 초기 지분투자 한도 '
+            '중 50억달러 집행으로 단순 산술상 50%가 남았지만 '
+            '반드시 같은 분야에 추가 배분해야 하는 의무는 없습니다. '
+            '금융주선액을 은행 직접 현금 지출이나 방산 계약으로 '
+            '착각하지 말고 공시된 투자처·계약·실제 사업비·금융조건을 확인합니다.'
+        )
+    return _bmw_jpm_prev_risk(cat)
+
+
+def _bmw_jpm_verify(item: dict, group: str, text: str) -> str:
+    if group == 'bmw_gen6_pack':
+        return (
+            'BMW Group 10/15 공식 보도자료·10/16 BMW China 공식자료·'
+            'electrive.com 10/15 보도 교차 확인 · 배터리팩 양산 확정, '
+            '셀 자체 양산·현지 셀 공급사·GWh·첫 차량 인도 미확인'
+        )
+    if group == 'jpm_sri_2026':
+        return (
+            '10/19 JPMorganChase 배포 Business Wire 1년 성과 발표·'
+            'Reuters 당일 보도·10/13 Bloomberg 기존 집행 규모 대조 · '
+            '기존 지분투자 50억달러 누적 집행 확정, '
+            '신규 50억달러 방산 발주나 기업별 수주계약은 미확인'
+        )
+    return _bmw_jpm_prev_verify(item,group,text)
+
+
+def _bmw_jpm_title(title: str, source: str) -> str:
+    if _is_bmw_gen6_pack(title):
+        return 'BMW, 선양 Gen6 고전압 배터리팩 실제 양산 개시(셀 생산과 구분)'
+    if _is_jpm_sri(title):
+        return 'JP모건, 안보·로봇·제조 SRI 지분투자 50억달러 누적 집행'
+    return _bmw_jpm_prev_title(title,source)
+
+
+def _bmw_jpm_tag(group: str) -> str:
+    if group == 'bmw_gen6_pack': return 'BMW 원통형 배터리팩'
+    if group == 'jpm_sri_2026': return 'JP모건 전략적 투자'
+    return _bmw_jpm_prev_tag(group)
+
+
+def _bmw_jpm_key(item: dict) -> str:
+    text=f"{item.get('title','')} {item.get('description','')}"
+    g=_bmw_jpm_group(text)
+    if g == 'bmw_gen6_pack':
+        stage=_bmw_gen6_pack_stage(text,item.get('source') or '')
+        return hashlib.sha256(f'bmw|gen6|shenyang|{stage}|2026-10-15'.encode()).hexdigest()
+    if g == 'jpm_sri_2026':
+        stage=_jpm_sri_stage(text,item.get('source') or '')
+        return hashlib.sha256(f'jpm|sri|first-year|5bn-deployed|230bn-facilitated|{stage}'.encode()).hexdigest()
+    return _bmw_jpm_prev_key(item)
+
+
+def _bmw_jpm_select(items: list[dict],seen: set[str],force: bool,limit: int) -> list[dict]:
+    chosen=_bmw_jpm_prev_select(items,seen,force,limit)
+    candidates=items if force else [x for x in items if x.get('key') not in seen]
+    for grp in ('bmw_gen6_pack','jpm_sri_2026'):
+        match=next((x for x in candidates
+                    if x.get('group')==grp and x.get('score',0)>=11),None)
+        if match and not any(x.get('key')==match.get('key') for x in chosen):
+            chosen=([match,*chosen] if len(chosen)<limit else [match,*chosen[:-1]])
+    return chosen
+
+
+base.query_news=_bmw_jpm_query
+base.topic_group=_bmw_jpm_group
+base.score=_bmw_jpm_score
+base.category=_bmw_jpm_category
+base.meaning=_bmw_jpm_meaning
+base.risk=_bmw_jpm_risk
+base.verification=_bmw_jpm_verify
+base.clean_title=_bmw_jpm_title
+base.tag_for=_bmw_jpm_tag
+base.key=_bmw_jpm_key
+base.select_diverse=_bmw_jpm_select
+
+for _rec in (BMW_GEN6_PACK_RECOVERY,JPM_SRI_DEPLOYMENT_RECOVERY):
+    if _rec not in base.QUERIES: base.QUERIES.append(_rec)
+for _q in (
+    '(BMW OR 宝马) (Gen6 OR 第六代 OR 6세대) (Shenyang OR 선양 OR 沈阳) '
+    '(battery OR 배터리) (series production OR 양산 개시 OR 첫 고객 인도 OR 용접 수율)',
+    '(JPMorganChase OR JPMorgan OR JP모건) (SRI OR Security and Resiliency) '
+    '(equity deployed OR 5 billion OR 50억달러 OR funded company OR investee) '
+    '(robotics OR autonomous manufacturing OR hypersonic OR battery storage)',
+):
+    if _q not in base.QUERIES: base.QUERIES.append(_q)
+
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()
