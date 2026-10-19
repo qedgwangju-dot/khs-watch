@@ -41,6 +41,9 @@ for _required in (
     "JPM_SRI_FX_CORRECTION_RECOVERY =",
     "VW_EU_BATTERY_RECALL_RECOVERY =",
     "def _vw_eu_recall_recovery(",
+    "TESLA_AGM26_EVENT =",
+    "def _agm26_recovery(",
+    "def _sum26_stage(",
     "def _jpm_sri_fx_correction_recovery(",
     "def _bmw_gen6_pack_recovery(",
     "def _jpm_sri_recovery(",
@@ -5033,5 +5036,123 @@ try:
         'Expired backfill must not replay as new European recall')
 finally:
     base.NOW=_vw_now
+
+
+# 90) Tesla official 2026 AGM date and conditional Silicon Valley
+# Humanoids Summit appearance: an actual SEC proxy is NOT a V3 demo.
+agm_notice = make(
+    "Tesla 2026 annual shareholder meeting December 3, 2026 DEF14A",
+    "Tesla official 2026 annual shareholder meeting notice for December 3, "
+    "2026 at 3:00 PM CST; record date Oct 13, 2026; Class I nominees "
+    "Elon Musk, Robyn Denholm and JB Straubel. 2025 executive comp "
+    "advisory vote and PwC 2026 audit ratification.",
+    "Tesla IR",
+)
+agm_notice['link']=watcher.TESLA_AGM26_SEC
+ag,ascore,ac,ak=classify(agm_notice)
+assert ag=='tesla_agm_2026' and ascore>=11,(ag,ascore,ac)
+assert ac=='테슬라 2026 주주총회 · 12월 3일 공식 일정',ac
+assert '12/4 오전 6시' in base.meaning(ac),base.meaning(ac)
+assert '3개' in base.meaning(ac) and 'V3' in base.meaning(ac),base.meaning(ac)
+assert 'SEC 원본 HTML 직접 열람 실패' in base.verification(
+    agm_notice,ag,agm_notice['title']+' '+agm_notice['description']
+)
+
+agm_news_mirror=dict(agm_notice,source='Reuters')
+ng,ns,nc,nk=classify(agm_news_mirror)
+assert ng==ag and ns<11, (ng,ns,nc)
+agm_source_spoof=dict(agm_notice,link='https://example.com/not-sec')
+sg,ss,sc,sk=classify(agm_source_spoof)
+assert sg==ag and ss<11, (sg,ss,sc)
+
+agm_again=dict(agm_notice,title='Tesla 2026 annual shareholder meeting December 3 2026 details')
+rg,rs,rc,rk=classify(agm_again)
+assert rg==ag and rs>=11 and rk==ak, (rg,rs,rc,rk)
+assert watcher.qty._skip_quantity_enrichment(
+    '<b>1. 테슬라 2026 주주총회</b>\n'
+    '<b>분류</b>  테슬라 2026 주주총회 · 12월 3일 공식 일정\n'
+    'Class I 이사 3명 및 안건 3개'
+), 'Governance agenda counts are not manufactured robot units'
+
+agm_votes=make(
+    'Tesla 2026 annual shareholder meeting December 3 2026 final voting results',
+    'Tesla final voting results December 3 2026 official tally of Class I directors.',
+    'Tesla IR',
+)
+agm_votes['link']='https://ir.tesla.com/2026-voting-results'
+vg,vs,vc,vk=classify(agm_votes)
+assert vg==ag and vs>=11 and vk!=ak,(vg,vs,vc,vk)
+
+# An organizer EVENT date is verified; the analyst excerpt alone cannot
+# certify Tesla's specific demonstration or the Optimus V3 model.
+summit_report=make(
+    'Tesla Optimus Humanoids Summit December 1-2, 2026 demo reported',
+    'Broker says official partner Tesla offers hands-on Optimus and FSD rides. '
+    'Promotional image looks like V2, V3 not confirmed.',
+    'Analyst Telegram',
+)
+summit_report['link']='https://www.linkedin.com/company/humanoidssummit'
+sg,ss,sc,sk=classify(summit_report)
+assert sg=='tesla_humanoids_summit_2026' and ss<11,(sg,ss,sc)
+
+summit_organizer=dict(summit_report)
+summit_organizer.update({
+    'source':'Humanoids Summit',
+    'title':'Tesla Optimus hands-on at Humanoids Summit December 1-2, 2026',
+    'description':'Official Humanoids Summit live demo Tesla Optimus hands-on '
+                  'display for all attendees, FSD test drives.',
+    'link':'https://www.linkedin.com/posts/humanoidssummit_example-official-post',
+})
+og,os,oc,ok=classify(summit_organizer)
+assert og==sg and os>=11,(og,os,oc)
+assert oc=='테슬라 Humanoids Summit · Optimus 현장 시연 공식 확인',oc
+assert 'V3' in base.meaning(oc) and 'V2' in base.meaning(oc),base.meaning(oc)
+assert '원격' in base.risk(oc),base.risk(oc)
+
+summit_repost=dict(summit_organizer,source='Market Commentary')
+xg,xs,xc,xk=classify(summit_repost)
+assert xg==og and xs<11,(xg,xs,xc)
+summit_company_profile=dict(summit_organizer,link='https://www.linkedin.com/company/humanoidssummit')
+pg,ps,pc,pk=classify(summit_company_profile)
+assert pg==og and ps<11,(pg,ps,pc)
+
+summit_negative=dict(summit_organizer,
+    title='Tesla Optimus V3 not confirmed for Humanoids Summit December 1-2 2026')
+ng,ns,nc,nk=classify(summit_negative)
+assert ng==og and ns>=11 and nk==ok,(ng,ns,nc,nk)
+
+summit_tesla=dict(summit_organizer,source='Tesla',
+    link='https://www.tesla.com/event/optimus-summit')
+tg,ts,tc,tk=classify(summit_tesla)
+assert tg==og and ts>=11 and tk!=ok,(tg,ts,tc,tk)
+
+summit_tesla_v3=dict(summit_tesla,
+    title='Tesla Optimus Gen 3 live reveal at Humanoids Summit December 1-2 2026',
+    description='Tesla announces official Optimus Gen 3 debut at the event.')
+vg,vs,vc,vk=classify(summit_tesla_v3)
+assert vg==og and vs>=11 and vk!=tk,(vg,vs,vc,vk)
+assert 'V3 공식 공개' in vc,vc
+summit_v3_rumour=dict(summit_tesla_v3,source='Market Commentary')
+mg,ms,mc,mk=classify(summit_v3_rumour)
+assert mg==og and ms<11,(mg,ms,mc)
+
+agm_backfill=base.query_news(watcher.TESLA_AGM26_EVENT)
+if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,27):
+    assert len(agm_backfill)==1,agm_backfill
+    a=agm_backfill[0]
+    assert a['source']=='Tesla IR' and a['published'] is None,a
+    assert a['link']==watcher.TESLA_AGM26_SEC,a
+    bg,bs,bc,bk=classify(a)
+    assert bg==ag and bs>=11 and bc==ac and bk==ak,(bg,bs,bc,bk)
+    assert base.category(a['title']+' '+a['description'],bg)==ac
+    assert '주최 측' in base.meaning(bc)
+_old_tesla_agm_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,28,13,0,tzinfo=dt.timezone.utc)
+    assert base.query_news(watcher.TESLA_AGM26_EVENT)==[],(
+        'Fixed 10/19 proxy notice must expire to prevent repeat after state rollover')
+finally:
+    base.NOW=_old_tesla_agm_now
+
 
 print("Physical-AI watcher regression guards: PASS")
