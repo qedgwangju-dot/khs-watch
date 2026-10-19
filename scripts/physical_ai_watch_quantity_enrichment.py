@@ -278,6 +278,8 @@ def _skip_quantity_enrichment(block: str) -> bool:
         return True
     if "Digital Optimus" in block or "디지털 에이전트" in block or "디지털 옵티머스" in block:
         return True
+    if "OpenAI 자체 휴머노이드" in block or "OpenAI 휴머노이드 ·" in block:
+        return True
     # VNET's 889/1007 MW are IDC POWER capacity, not deployed ESS MWh.
     # Secondary equity shares cannot be priced as shipped robot units.
     if "CATL 관계사–VNET" in block or "CATL–VNET" in block:
