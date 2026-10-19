@@ -5896,6 +5896,12 @@ TESLA_AGM26_RESULTS = re.compile(r'final\s+vot(?:e|ing)\s+results|certified\s+vo
 TESLA_SUMMIT26_RE = re.compile(r'Humanoids?\s*Summit|휴머노이드\s*서밋',re.I)
 TESLA_SUMMIT26_DATE = re.compile(r'2026|Dec(?:ember)?\s*1\s*(?:[-–]|and|to)\s*2|12월\s*1\s*[~\-–]\s*2일',re.I)
 TESLA_SUMMIT26_DEMO = re.compile(r'(?:Optimus|옵티머스).{0,120}(?:hands[- ]on|live\s+demo|실물\s*(?:전시|체험|시연)|현장\s*시연)|(?:hands[- ]on|live\s+demo|실물\s*(?:체험|시연)).{0,120}(?:Optimus|옵티머스)',re.I)
+TESLA_SUMMIT26_PARTNER = re.compile(
+    r'(?:Tesla|테슬라).{0,80}(?:official\s+partner|공식\s+파트너|'
+    r'참가\s+확정|confirmed\s+participant)|'
+    r'(?:official\s+partner|공식\s+파트너).{0,80}(?:Tesla|테슬라)',
+    re.I,
+)
 TESLA_SUMMIT26_V3 = re.compile(r'(?:Optimus|옵티머스).{0,110}(?:V3|Gen\s*3|3세대).{0,70}(?:unveil|reveal|debut|시연|공개)|(?:V3|Gen\s*3|3세대).{0,100}(?:Optimus|옵티머스).{0,70}(?:unveil|reveal|debut|시연|공개)',re.I)
 TESLA_SUMMIT26_DENIAL = re.compile(r'V3.{0,45}(?:unconfirmed|not\s+confirmed|미확정|미정|언급\s*없음|미공개)|(?:not\s+confirmed|미확정|미정|언급\s*없음).{0,45}V3',re.I)
 
@@ -5921,8 +5927,13 @@ def _sum26_stage(item):
     t=' '.join(str(item.get(x) or '') for x in ('title','description'))
     if not _sum26_match(t): return ''
     src,link=item.get('source') or '',item.get('link') or ''
-    tesla=(src in {'Tesla','Tesla IR','Tesla Official'} and bool(re.match(
-        r'https://(?:www\.)?tesla\.com/',link,re.I)))
+    tesla=(
+        (src in {'Tesla','Tesla IR','Tesla Official'} and bool(re.match(
+            r'https://(?:www\.)?tesla\.com/',link,re.I)))
+        or (src in {'Tesla (X)','Elon Musk (X)','Tesla AI (X)'} and bool(re.match(
+            r'https://(?:x\.com|twitter\.com)/(?:Tesla|Tesla_AI|elonmusk)/status/\d+',
+            link,re.I)))
+    )
     organizer=(src in TESLA_SUMMIT26_PRIMARY and bool(re.match(
         r'https://(?:www\.)?humanoidssummit\.com/|'
         r'https://(?:www\.)?linkedin\.com/posts/humanoidssummit[_\-]',link,re.I)))
@@ -5931,6 +5942,9 @@ def _sum26_stage(item):
     if TESLA_SUMMIT26_DEMO.search(t):
         if tesla: return 'tesla_confirmed_demo'
         if organizer: return 'organizer_confirmed_demo'
+    if TESLA_SUMMIT26_PARTNER.search(t):
+        if tesla: return 'tesla_confirmed_partner'
+        if organizer: return 'organizer_confirmed_partner'
     return 'unverified_participation'
 
 def _agm26_recovery():
@@ -5990,7 +6004,8 @@ def _cal26_score(item):
     if group=='tesla_agm_2026':
         return {'official_notice':43,'official_vote_result':59,'unverified':0}.get(_agm26_stage(item),0)
     if group=='tesla_humanoids_summit_2026':
-        return {'organizer_confirmed_demo':47,'tesla_confirmed_demo':56,
+        return {'organizer_confirmed_partner':35,'tesla_confirmed_partner':43,
+                'organizer_confirmed_demo':47,'tesla_confirmed_demo':56,
                 'official_v3':74,'unverified_participation':0}.get(_sum26_stage(item),0)
     return _cal26_old_score(item)
 
@@ -6002,7 +6017,9 @@ def _cal26_category(t,group):
     if group=='tesla_humanoids_summit_2026':
         if TESLA_SUMMIT26_V3.search(t) and not TESLA_SUMMIT26_DENIAL.search(t):
             return '테슬라 Humanoids Summit · V3 공식 공개 예고'
-        return '테슬라 Humanoids Summit · Optimus 현장 시연 공식 확인'
+        if TESLA_SUMMIT26_DEMO.search(t):
+            return '테슬라 Humanoids Summit · Optimus 현장 시연 공식 확인'
+        return '테슬라 Humanoids Summit · 파트너 참가 공식 확인'
     return _cal26_old_category(t,group)
 
 def _cal26_meaning(cat):
@@ -6024,6 +6041,11 @@ def _cal26_meaning(cat):
         return ('주최 측 또는 Tesla가 특정 Optimus 시연 프로그램을 직접 확정한 단계입니다. '
                 'V2 전시·기존 홍보물과 V3 공개를 혼동하지 않고 '
                 '현장 자율 시연·원격지원·실제 출하를 각각 확인합니다.')
+    if cat=='테슬라 Humanoids Summit · 파트너 참가 공식 확인':
+        return ('Tesla의 행사 참가·파트너 지위만 주최 측 또는 Tesla가 공식 확인한 '
+                '단계입니다. 이 사실로 Optimus 실물 체험, FSD 시승이나 '
+                'V3 공개·실제 유상 계약까지 단정할 수 없습니다. '
+                '행사 일정과 구체 시연 프로그램을 각각 추가 확인합니다.')
     return _cal26_old_meaning(cat)
 
 def _cal26_risk(cat):
@@ -6049,18 +6071,22 @@ def _cal26_verification(item,group,t):
         if _sum26_stage(item)=='official_v3': return 'Tesla 공식 V3 시연 예고 · 실제 공개/양산 별도'
         if _sum26_stage(item) in {'tesla_confirmed_demo','organizer_confirmed_demo'}:
             return '행사 주최 측 또는 Tesla의 개별 공식 시연 공지 확인 · V3 여부 별도'
+        if _sum26_stage(item) in {'tesla_confirmed_partner','organizer_confirmed_partner'}:
+            return '주최 측 또는 Tesla 공식 참가 공지 확인 · 실물 체험·FSD 시승·V3 미확정'
         return '주최 측 행사 날짜 확인 · Tesla 참가·시연 프로그램 개별 공식 확인 전'
     return _cal26_old_verification(item,group,t)
 
 def _cal26_title(title,source):
     t=title+' '+source
     if _agm26_match(t):
-        return ('테슬라 2026 주주총회 공식 표결 결과' if TESLA_AGM26_RESULTS.search(t)
-                else '테슬라 12월 3일 주주총회 확정…한국 12월 4일 오전 6시')
+        return ('2026 주주총회 공식 표결 결과' if TESLA_AGM26_RESULTS.search(t)
+                else '12월 3일 공식 주주총회…한국 12월 4일 오전 6시')
     if _sum26_match(t):
-        return ('테슬라, 12월 서밋 Optimus V3 첫 공개 공식 예고'
-                if TESLA_SUMMIT26_V3.search(t) and not TESLA_SUMMIT26_DENIAL.search(t)
-                else '테슬라, Humanoids Summit Optimus 시연 공식 확인…V3 미확정')
+        if TESLA_SUMMIT26_V3.search(t) and not TESLA_SUMMIT26_DENIAL.search(t):
+            return 'Optimus V3 첫 공개 공식 예고'
+        if TESLA_SUMMIT26_DEMO.search(t):
+            return 'Optimus 현장 시연 공식 확인…V3 여부 별도'
+        return '공식 파트너·참가 확인…시연·V3 여부 별도'
     return _cal26_old_title(title,source)
 
 def _cal26_tag(group):
