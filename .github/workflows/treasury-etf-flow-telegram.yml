@@ -173,7 +173,7 @@ jobs:
           urls={
             "fred_csv":"https://fred.stlouisfed.org/graph/fredgraph.csv?id=NASDAQ100&cosd=2026-10-08&coed=2026-10-16",
             "nasdaq_index":"https://indexes.nasdaq.com/Index/History/NDX",
-            "nasdaq_api":"https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&limit=20",
+            "nasdaq_api":"https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&limit=20&fromdate=2026-10-01&todate=2026-10-19",
             "chartexchange":"https://chartexchange.com/symbol/index-ndx/historical/",
             "stooq":"https://stooq.com/q/d/l/?s=%5Endx&i=d&d1=20261008&d2=20261016",
           }
@@ -183,6 +183,7 @@ jobs:
                   content=res.text[:350].replace("\n"," ")
                   if key in ("nasdaq_index","chartexchange"):
                       content=" ".join(BeautifulSoup(res.text,"html.parser").stripped_strings)[:350]
+                  if key == "nasdaq_api": content=res.text[:2200]
                   print(f"nasdaq_source_probe {key} status={res.status_code} bytes={len(res.content)} sample={content!r}")
               except Exception as exc:
                   print(f"nasdaq_source_probe {key} error={type(exc).__name__}: {str(exc)[:220]}")
