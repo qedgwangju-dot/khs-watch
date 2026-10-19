@@ -2464,6 +2464,129 @@ def _micron_eim_recovery() -> list[dict]:
     }]
 
 
+# DIGITIMES 2026-10-19: anonymous US supply-chain statement concerning
+# Chinese BESS SYSTEM INTEGRATORS, not verified Chinese cell-supplier exit.
+# Never label an industry interview as a named company's completed shutdown.
+CN_ESS_US_RETREAT_ID = 'DIGITIMES_CN_BESS_US_20261019_771701'
+CN_ESS_US_RETREAT_URL = (
+    'https://www.digitimes.com.tw/tech/dt/n/shwnws.asp?'
+    'CnlID=1&Cat=90&id=0000771701_AKR6XDK313NXUP0KYL64J'
+)
+CN_ESS_US_RETREAT_TITLE = (
+    'DIGITIMES: 중국계 ESS 시스템업체 미국 사업 집단 철수설…회사별 확인 전'
+)
+CN_ESS_US_CN = re.compile(r'중국|中系|中國|中国|China|Chinese|PRC',re.I)
+CN_ESS_US_ESS = re.compile(r'ESS|BESS|儲能|储能|energy\s*storage|에너지\s*저장',re.I)
+CN_ESS_US_AMERICA = re.compile(r'미국|美國|美国|撤美|U\.S\.|US\s+market|United\s+States|America',re.I)
+CN_ESS_US_EXIT = re.compile(
+    r'集體撤美|集体撤美|退出營運|退出营运|철수|철수설|'
+    r'withdrawal|retreat|US\s+exit|exited\s+the\s+US|'
+    r'(?:미국|US).{0,55}(?:영업\s*종료|사업\s*종료)|'
+    r'(?:US|America).{0,40}(?:shutdown|exit|closure)',
+    re.I,
+)
+CN_ESS_US_NEGATED = re.compile(
+    r'철수\s*부인|철수하지\s*않|美國.{0,30}否認|'
+    r'denies?\s+(?:the\s+)?(?:exit|withdrawal)|'
+    r'not\s+(?:exiting|withdrawn)|considering\s+(?:withdrawal|exit)|'
+    r'철수\s*(?:검토|계획|예정)|plans?\s+to\s+(?:exit|withdraw)',
+    re.I,
+)
+CN_ESS_US_FINAL_EXIT = re.compile(
+    r'(?:미국|美国|美國|US|U\.S\.).{0,110}'
+    r'(?:ESS|BESS|儲能|储能|energy\s*storage|에너지저장).{0,120}'
+    r'(?:사업\s*철수\s*완료|영업\s*종료|사업\s*종료\s*확정|'
+    r'正式退出|已退出|終止營運|终止运营|ceased\s+operations|'
+    r'completed\s+withdrawal|closed\s+its\s+US\s+operations)',
+    re.I,
+)
+CN_ESS_US_VENDOR_DOMAINS = {
+    'CATL': ('catl.com', {'CATL','宁德时代','寧德時代'}),
+    'Sungrow': ('sungrowpower.com', {'Sungrow','阳光电源','陽光電源'}),
+    'BYD': ('byd.com', {'BYD','比亚迪','比亞迪'}),
+    'HiTHIUM': ('hithium.com', {'HiTHIUM','海辰储能','海辰儲能'}),
+    'HyperStrong': ('hyperstrong.com', {'HyperStrong','海博思创','海博思創'}),
+}
+
+
+def _is_cn_ess_us_exit(text: str) -> bool:
+    chinese = CN_ESS_US_CN.search(text) or re.search(
+        r'\bCATL\b|\bSungrow\b|\bBYD\b|\bHiTHIUM\b|\bHyperStrong\b|'
+        r'宁德时代|陽光電源|阳光电源|海辰储能|海博思创',text,re.I
+    )
+    return bool(
+        chinese and CN_ESS_US_ESS.search(text)
+        and CN_ESS_US_AMERICA.search(text)
+        and CN_ESS_US_EXIT.search(text)
+    )
+
+
+def _cn_ess_official_vendor(item: dict) -> str:
+    link = item.get('link') or ''
+    host = re.match(r'^https?://([^/:?#]+)(?:[/:?#]|$)',link,re.I)
+    if not host:
+        return ''
+    host=host.group(1).lower()
+    source=item.get('source') or ''
+    for canonical,(domain,names) in CN_ESS_US_VENDOR_DOMAINS.items():
+        if source in names and (host == domain or host.endswith('.'+domain)):
+            return canonical
+    return ''
+
+
+def _cn_ess_us_exit_stage(text: str, item: dict) -> str:
+    if not _is_cn_ess_us_exit(text):
+        return ''
+    if (_cn_ess_official_vendor(item)
+            and CN_ESS_US_FINAL_EXIT.search(text)
+            and not CN_ESS_US_NEGATED.search(text)):
+        return 'company_confirmed_us_exit'
+    if ((item.get('source') or '') == 'DIGITIMES'
+            and '0000771701_AKR6XDK313NXUP0KYL64J' in (item.get('link') or '')
+            and re.search(r'DIGITIMES.{0,85}(?:업계|익명|단독|철수설)',text,re.I)
+            and re.search(r'2026.{0,4}10.{0,4}19|10월\s*19',text,re.I)):
+        return 'anonymous_industry_report'
+    return 'unverified_rewrite'
+
+
+def _cn_ess_us_retreat_recovery() -> list[dict]:
+    # Public headline + first paragraph, timestamp 03:00 Asia/Taipei.
+    # A paywalled article is NOT a list of verified company exits.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,23):
+        return []
+    return [{
+        'title': CN_ESS_US_RETREAT_TITLE,
+        'link': CN_ESS_US_RETREAT_URL,
+        'description': (
+            'DIGITIMES 2026-10-19 대만시간 03:00 단독 '
+            '「雙向技術封鎖與非紅代工新賽局　傳中系儲能巨頭集體撤美」. '
+            '검색 색인·공개 도입부에는 익명의 미국 공급망 관계자가 '
+            '중국계 ESS 시스템 통합 대기업들이 2026년 미국 사업에서 '
+            '사실상 대부분 철수했다고 주장했다고 적혔다. '
+            '기사 유료 전문은 직접 읽지 못했다. 기업별 명단, 미국 법인 폐쇄 공시, '
+            '해지계약, 기존 수주 취소, 새 공급사 이전계약은 확인되지 않았다. '
+            '미국 IRS Notice 2026-15는 48E ESS 세액공제에서 '
+            '금지 외국기업(PFE) 원가조달 제한을 설명하며, '
+            '2026년 시작하는 ESS 프로젝트의 비PFE 원가 비율은 55%다. '
+            '이것은 모든 중국 제품 판매를 금지하는 법률이 아니다. '
+            '미국 USTR 발표의 중국산 비전기차 리튬이온배터리 Section 301 '
+            '추가 관세 25% 예정 시행연도는 2026년이다. '
+            'Wood Mackenzie 2026-06-29 조사에서 2025년 글로벌 '
+            '중국계 ESS 시스템 통합업체 비중은 76%이며, '
+            '북미 ESS 시스템 통합 1위는 Tesla로 확인된다. '
+            '삼성SDI 미국 ESS 1조5천억원 2026년 3월 계약 및 2025년 '
+            '2조원 초과 LFP 계약, LG에너지솔루션 기존 7.5GWh 북미 계약은 '
+            '발표된 기존 사업으로 이번 보도 후 신규 발주가 아니다. '
+            '셀과 시스템 통합, 세액공제 부적격과 미국 판매 불가능, '
+            '신규 입찰 철수와 기존 프로젝트 유지 여부를 구분한다.'
+        ),
+        'source': 'DIGITIMES',
+        'published': '2026-10-18T19:00:00+00:00',
+        'direct_recovery': True,
+        'anonymous_industry_source': True,
+    }]
+
+
 _orig_query_news = base.query_news
 
 
@@ -2496,6 +2619,8 @@ def query_news(q: str) -> list[dict]:
         return _fluence_vattenfall_recovery()
     if q == MICRON_EIM_RECOVERY:
         return _micron_eim_recovery()
+    if q == CN_ESS_US_RETREAT_ID:
+        return _cn_ess_us_retreat_recovery()
     if q.startswith(ROBOT_OCT15_PREFIX):
         return _oct15_recovery(q[len(ROBOT_OCT15_PREFIX):])
     if q.startswith(ROBOT_OCT16_PREFIX):
@@ -2504,6 +2629,14 @@ def query_news(q: str) -> list[dict]:
 
 
 base.query_news = query_news
+if CN_ESS_US_RETREAT_ID not in base.QUERIES:
+    base.QUERIES.append(CN_ESS_US_RETREAT_ID)
+for _q in (
+    '(DIGITIMES OR 儲能 OR 储能) (集體撤美 OR 集体撤美 OR 중국계 ESS) (美國 OR 美国 OR US OR 미국) (철수 OR exit OR 撤退)',
+    '(CATL OR 宁德时代 OR Sungrow OR 阳光电源 OR BYD OR 比亚迪 OR HiTHIUM OR HyperStrong) (ESS OR BESS OR 储能) (US OR 美國 OR 美国 OR 미국) (exit OR closure OR 撤退 OR 철수)',
+):
+    if _q not in base.QUERIES:
+        base.QUERIES.append(_q)
 for q in (
     CATL_INTILION_RECOVERY,
     DEXMATE_LG_RECOVERY,
@@ -2720,6 +2853,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_cn_ess_us_exit(text):
+        return 'china_ess_us_exit_report'
     if _is_micron_eim(text):
         return 'micron_eim_edge'
     _new = _oct16_group(text)
@@ -2779,6 +2914,11 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     item_text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if _is_cn_ess_us_exit(item_text):
+        stage = _cn_ess_us_exit_stage(item_text,item)
+        return {'anonymous_industry_report':43,
+                'company_confirmed_us_exit':83,
+                'unverified_rewrite':0}.get(stage,0)
     if _is_micron_eim(item_text):
         stage = _micron_eim_stage(item_text,item)
         return {
@@ -2939,6 +3079,10 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'china_ess_us_exit_report':
+        if CN_ESS_US_FINAL_EXIT.search(text) and not CN_ESS_US_NEGATED.search(text):
+            return '미국 ESS 공급망 · 중국계 개별업체 철수 공식확인'
+        return '미국 ESS 공급망 · 중국계 시스템업체 집단 철수설 보도'
     if group == 'micron_eim_edge':
         stage = _micron_eim_display_stage(text)
         return {
@@ -3083,6 +3227,25 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '미국 ESS 공급망 · 중국계 시스템업체 집단 철수설 보도':
+        return (
+            'DIGITIMES 10/19 단독의 미국 업계 익명 관계자 발언으로, '
+            '중국계 ESS 시스템 통합업체 일부가 미국 시장에서 사업을 '
+            '줄이거나 철수했을 가능성이 제기됐습니다. 개별 업체 철수 공시와 '
+            '취소 계약은 아직 확인되지 않았습니다. '
+            '세액공제 PFE 조달제한과 관세 상승은 실제 정책이지만 '
+            '중국 배터리 수입·판매 전체 금지를 뜻하지는 않습니다. '
+            '삼성SDI 1조5천억원·2조원 초과 계약과 LG에너지솔루션 '
+            '7.5GWh 공급계약은 과거 확정 사업이지 이 기사 후 고객이 '
+            '옮겨왔다고 증명된 신규 계약은 아닙니다.'
+        )
+    if cat == '미국 ESS 공급망 · 중국계 개별업체 철수 공식확인':
+        return (
+            '해당 중국계 ESS 제조사가 공식자료로 미국 사업 종료를 확인한 '
+            '별도 상위 단계입니다. 종료된 수주·고객·공장·유지보수 책임과 '
+            '미국 새 발주처의 실제 대체 계약을 따로 확인해야 합니다. '
+            '회사의 사업철수와 모든 중국산 셀 공급 중단은 다른 사건입니다.'
+        )
     if cat.startswith('마이크론 EIM · '):
         if 'SEDEX 경영진' in cat:
             return (
@@ -3478,6 +3641,17 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('미국 ESS 공급망 · '):
+        return (
+            '최대 역풍은 익명 업계 보도가 실제 전면철수로 이어지지 않거나 '
+            '중국산 셀의 가격 경쟁력이 유지돼 한국 기업 신규 수주가 늘지 않는 경우입니다. '
+            '미국 48E ESS 세액공제 적격 비PFE 조달원가 비율은 '
+            '2026년 55%이고 2030년 75%로 강화됩니다. '
+            '프로젝트별 관세 분류·세액공제 적용·현지 공장 가동률, '
+            '열폭주·배기·방폭·냉각·보험·인허가·전원 인가 시점을 검증해야 합니다. '
+            '6~12개월 위험 구간의 조기 지표는 중국 업체 공식 종료, '
+            '미국 실제 재입찰, 한국 업체 신규 공급계약, 출하 GWh입니다.'
+        )
     if cat.startswith('마이크론 EIM · '):
         return (
             '핵심 실패 경로는 논리 반도체 위 LPDDR 적층의 휨·발열·층간 접속 결함으로 '
@@ -3652,6 +3826,15 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'china_ess_us_exit_report':
+        if _cn_ess_us_exit_stage(text,item) == 'company_confirmed_us_exit':
+            return '해당 기업 공식 웹도메인 종료 발표 · 종료계약·대체 고객·매출 추가 검증'
+        return (
+            'DIGITIMES 10/19 원제·대만 현지 03:00·공개 도입부 검색 확인 · '
+            '유료 본문 직접 열람 실패 · 익명 공급망 업계 보도 단계 · '
+            '개별 중국기업 철수 공시·한국기업 대체 수주 미확인 · '
+            '미 IRS Notice 2026-15·USTR 관세·Wood Mackenzie 교차 검증'
+        )
     if group == 'micron_eim_edge':
         stage = _micron_eim_stage(text,item)
         if stage == 'executive_reported_rnd':
@@ -3807,6 +3990,10 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if _is_cn_ess_us_exit(title + ' ' + source):
+        if source in {'CATL','Sungrow','BYD','HiTHIUM','HyperStrong'} and CN_ESS_US_FINAL_EXIT.search(title):
+            return f'{source}, 미국 ESS 사업 철수 공식 확인…고객 이전 별도 검증'
+        return CN_ESS_US_RETREAT_TITLE
     if _is_micron_eim(title + ' ' + source):
         if source in MICRON_EIM_PRIMARY_SOURCES:
             stage=_micron_eim_display_stage(title)
@@ -3921,6 +4108,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'china_ess_us_exit_report':
+        return '미국 ESS 공급망'
     if group == 'micron_eim_edge':
         return '마이크론 EIM 로봇 메모리'
     if group in ROBOT_OCT16_TITLES:
@@ -3978,6 +4167,16 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if _is_cn_ess_us_exit(text):
+        stage=_cn_ess_us_exit_stage(text,item)
+        if stage=='company_confirmed_us_exit':
+            vendor=_cn_ess_official_vendor(item)
+            return hashlib.sha256(
+                f'china-ess|us-market|official-exit|{vendor}|2026'.encode()
+            ).hexdigest()
+        return hashlib.sha256(
+            b'digitimes|chinese-bess-system-suppliers|anonymous-us-retreat|20261019|771701'
+        ).hexdigest()
     if _is_micron_eim(text):
         stage = _micron_eim_stage(text,item)
         return hashlib.sha256(
@@ -4159,7 +4358,7 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
     # Show distinct new status changes but do not resurrect known repeats.
-    for _new_group in ('alert_quality_oct18','lge_robot_sw_platform','hyundai_robot_rx_team',
+    for _new_group in ('china_ess_us_exit_report','alert_quality_oct18','lge_robot_sw_platform','hyundai_robot_rx_team',
                        'brils_us_localization','ess_outdoor_policy',
                        'robotis_hardware_release'):
         _hit=next((x for x in candidates if x.get('group')==_new_group),None)
