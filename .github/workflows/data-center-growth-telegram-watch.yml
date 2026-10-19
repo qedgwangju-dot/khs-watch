@@ -31,6 +31,12 @@ on:
     # and persisted event fingerprint avoid double Telegram sends.
     - cron: "23 * * * *"
     - cron: "53 * * * *"
+  workflow_run:
+    # Fallback inside the existing watcher when GitHub skips/delays both crons.
+    # The upstream is an existing same-repository, data-center workflow only.
+    workflows:
+      - "US Data Center Cycle Telegram Watch"
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -42,6 +48,11 @@ concurrency:
 
 jobs:
   monitor:
+    # Never process workflow_run events from failed or non-main upstream runs.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
