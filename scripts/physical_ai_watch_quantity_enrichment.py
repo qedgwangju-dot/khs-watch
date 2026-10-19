@@ -258,6 +258,12 @@ def _insert_after_core(block: str, value_block: str) -> str:
 
 
 def _skip_quantity_enrichment(block: str) -> bool:
+    # US 22,524 vehicles are a separate NHTSA recall, not a count of
+    # European vehicles or a saleable physical product to price.
+    if "폭스바겐 유럽 배터리 리콜" in block or (
+        "93MF" in block and "93MV" in block and "배터리" in block
+    ):
+        return True
     # BMW's 20 GWh supplier framework is neither new pack production nor
     # a priced count of robots. JPM's $5bn is deployed equity, while $230bn
     # is financial arranging; neither is a product shipment quantity.
