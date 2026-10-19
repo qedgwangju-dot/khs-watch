@@ -9,6 +9,81 @@ import memory_spot_cycle_watch as w
 
 
 class MemorySpotCycleWatchTests(unittest.TestCase):
+
+    def test_reclaimed_headline_scored_without_price_word(self):
+        item = {
+            "title": "메모리 품귀에 폐폰까지 뜯는다…中서 재활용 칩 거래 확산",
+            "description": "중국 화창베이 폐휴대폰 분해 칩 거래",
+            "source": "조세일보",
+            "link": "https://joseilbo.com/news/htmls/2026/10/20261019577666.html",
+            "published_kst": "2026-10-19T10:00:00+09:00",
+        }
+        self.assertTrue(w._is_reclaimed_memory_item(item))
+        self.assertGreaterEqual(w._score(item), 8)
+        self.assertTrue(w._extract_reclaimed_memory(item)["used_phone_chip_trade_reported"])
+
+    def test_reclaimed_rumor_not_official_or_repeat(self):
+        item = {
+            "title": "Chinese smartphone brands sourcing salvaged memory from used phones",
+            "description": "Some smartphone brands are sourcing salvaged memory chips from used iPhones. "
+                           "Memory costs up to RMB 500 more per chip; Shenzhen subsidy RMB 300 rumored.",
+            "source": "TrendForce News",
+            "link": "https://www.trendforce.com/news/2026/10/19/example/",
+            "published_kst": "2026-10-19T11:00:00+09:00",
+        }
+        self.assertEqual(w._reclaimed_memory_source_rank(item), 2)
+        obs = w._extract_reclaimed_memory(item)
+        self.assertTrue(obs["smartphone_brand_procurement_reported"])
+        self.assertNotIn("smartphone_brand_procurement_official_confirmed", obs)
+        merged = w._merge_typed_state(w.RECLAIMED_MEMORY_BASELINE, obs)
+        self.assertFalse(merged["smartphone_brand_procurement_official_confirmed"])
+        self.assertEqual(w._reclaimed_memory_changes(w.RECLAIMED_MEMORY_BASELINE, merged), [])
+
+    def test_reclaimed_consumer_subsidy_never_becomes_chip_sourcing(self):
+        item = {
+            "title": "China consumer smartphone replacement subsidy policy",
+            "description": "Government gives 15%, up to 500 yuan for smartphones. "
+                           "Used phone recycling is also encouraged.",
+            "source": "NDRC",
+            "link": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202512/t20251230_1402851.html",
+            "published_kst": "2026-01-01T00:00:00+09:00",
+        }
+        self.assertIsNone(w._extract_reclaimed_memory(item))
+        self.assertFalse(w.RECLAIMED_MEMORY_BASELINE["shenzhen_oem_subsidy_official_confirmed"])
+
+    def test_reclaimed_delta_threshold_and_official_upgrade(self):
+        base = dict(w.RECLAIMED_MEMORY_BASELINE)
+        self.assertEqual(w._reclaimed_memory_changes(base, base), [])
+        big = dict(base, reported_chip_cost_increase_cny=700)
+        self.assertTrue(any("원가 상승폭" in x for x in w._reclaimed_memory_changes(base, big)))
+        small = dict(base, reported_chip_cost_increase_cny=550)
+        self.assertFalse(any("원가 상승폭" in x for x in w._reclaimed_memory_changes(base, small)))
+        confirmed = dict(base, smartphone_brand_procurement_official_confirmed=True)
+        self.assertTrue(any("공식 확인" in x for x in w._reclaimed_memory_changes(base, confirmed)))
+        self.assertEqual(w._reclaimed_memory_changes(confirmed, confirmed), [])
+
+    def test_reclaimed_one_initial_alert_then_no_rebroadcast(self):
+        import json
+        with tempfile.TemporaryDirectory() as d:
+            root = pathlib.Path(d)
+            with patch.object(w, "STATE_PATH", root / "state.json"), \
+                 patch.object(w, "OUT_DIR", root), \
+                 patch.object(w, "PENDING_PATH", root / "pending.json"), \
+                 patch.object(w, "ALERT_PATH", root / "alert.txt"), \
+                 patch.object(w, "STATUS_PATH", root / "status.md"):
+                w.write_outputs([], [])
+                alert = w.ALERT_PATH.read_text(encoding="utf-8")
+                self.assertIn("회수 메모리칩 거래", alert)
+                self.assertIn("공식 미확인", alert)
+                state = json.loads(w.PENDING_PATH.read_text(encoding="utf-8"))
+                self.assertEqual(state["reclaimed_memory_track_version"], 1)
+                self.assertFalse(state["reclaimed_memory"]["smartphone_brand_procurement_official_confirmed"])
+                w.STATE_PATH.write_text(json.dumps(state, ensure_ascii=False), encoding="utf-8")
+                w.write_outputs([], [])
+                self.assertFalse(w.ALERT_PATH.exists())
+                saved = json.loads(w.PENDING_PATH.read_text(encoding="utf-8"))
+                self.assertEqual(saved["reclaimed_memory"]["source_url"], w.RECLAIMED_MEMORY_BASELINE["source_url"])
+
     def test_4q26_price_forecast_exposes_specific_contract_price_changes(self):
         blob = (
             "4Q26 Contract Prices for Enterprise SSD Surge 23-28% QoQ Against Trend, "

@@ -89,6 +89,23 @@ NAND_DIVERGENCE_BASELINE = {
     "source_rank": 3,
     "as_of": "2026-09-30",
 }
+RECLAIMED_MEMORY_TRACK_VERSION = 1
+RECLAIMED_MEMORY_BASELINE = {
+    "used_phone_chip_trade_reported": True,
+    "smartphone_brand_procurement_reported": True,
+    "smartphone_brand_procurement_official_confirmed": False,
+    "reported_chip_cost_increase_cny": 500,
+    "reported_shenzhen_oem_subsidy_cny": 300,
+    "shenzhen_oem_subsidy_official_confirmed": False,
+    "source": "TechNews 익명 취재·TrendForce News 재인용",
+    "source_kind": "중국 일부 저가폰 제조사 조달·칩당 원가·선전시 제조사 보조금은 업체·정부 공식 미확인",
+    "source_url": "https://technews.tw/2026/10/16/smartphone-memory-huaqiangbei/",
+    "secondary_source_url": "https://www.trendforce.com/news/2026/10/19/news-chinese-phone-makers-eye-salvaged-memory-as-chip-prices-reportedly-rise-by-up-to-rmb-500-per-unit/",
+    "history_source_url": "https://www.digitimes.com/news/a20260331PD221/china-mobile-phone-recycling-chip-shortage.html",
+    "government_consumer_policy_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202512/t20251230_1402851.html",
+    "source_rank": 2,
+    "as_of": "2026-10-19",
+}
 TREND_4Q26_REVISION_TRACK_VERSION = 1
 TREND_4Q26_PRIOR_BASELINE = {
     "conventional_dram_min_pct": 3.0,
@@ -360,6 +377,9 @@ QUERIES = [
     ("ko", '창신메모리 CXMT 4F² 서버 DDR5 RDIMM 실제 양산 고객 검증 2027'),
     ("ko", 'CXMT DRAM 웨이퍼 월 생산능력 2027 32만 42만 4F2'),
     ("ko", '노트북 출하량 전망 2027 CPU DRAM SSD 가격 원가 전가 TrendForce 소비 수요'),
+    ("ko", '중국 메모리 품귀 폐휴대폰 재활용 칩 화창베이 스마트폰 제조사'),
+    ("ko", '중국 선전 화창베이 회수 메모리칩 제조사 공식 구매 확인 품질 불량'),
+    ("en", 'China smartphone brands salvaged memory chips used phone Huaqiangbei sourcing confirmation'),
     ("en", 'Cathie Wood ARK Hong Kong China CXMT memory chip avoid vicious cycles'),
     ("en", 'CXMT 4F2 4F squared DRAM DDR5 RDIMM commercial production customer validation'),
     ("en", 'CXMT DRAM monthly wafers capacity 2027 320000 420000 trendforce'),
@@ -665,6 +685,10 @@ def _fingerprint(item: dict) -> str:
 
 def _score(item: dict) -> int:
     blob = f"{item['title']} {item.get('source','')} {item.get('description','')}".lower()
+    # Salvaged-chip shortage headlines often lack the literal "price" token.
+    # Substantive notifications are still controlled by typed-state deltas.
+    if _is_reclaimed_memory_item(item):
+        return 10
     score = 0
     mem_hits = sum(1 for x in MEMORY_MARKERS if x in blob)
     change_hits = sum(1 for x in CHANGE_MARKERS if x in blob)
@@ -2583,6 +2607,116 @@ def _merge_typed_state(old: dict, obs: dict) -> dict:
     return merged
 
 
+
+def _is_reclaimed_memory_item(item: dict) -> bool:
+    blob = _clean(f"{item.get('title', '')} {item.get('description', '')}").lower()
+    memory = any(x in blob for x in (
+        "memory", "dram", "nand", "lpddr", "ufs", "메모리", "디램",
+        "記憶體", "内存", "存储芯片", "存儲晶片",
+    ))
+    phones = any(x in blob for x in (
+        "phone", "iphone", "手機", "手机", "폐폰", "폐휴대폰", "휴대폰",
+        "스마트폰", "華強北", "华强北", "huaqiangbei",
+    ))
+    recovery = any(x in blob for x in (
+        "salvag", "reclaim", "recycl", "refurbish", "dismantl", "used-phone",
+        "old-phone", "second-hand", "재활용", "회수 칩", "폐폰", "폐휴대폰",
+        "중고 칩", "拆機", "拆机", "拆解", "回收", "華強北", "华强北",
+        "huaqiangbei",
+    ))
+    return memory and phones and recovery
+
+
+def _reclaimed_memory_source_rank(item: dict) -> int:
+    host = (urllib.parse.urlparse(str(item.get("link") or "")).hostname or "").lower()
+    makers = ("samsung.com", "mi.com", "oppo.com", "vivo.com", "huawei.com", "apple.com")
+    if any(host == x or host.endswith("." + x) for x in makers):
+        return 3
+    media = ("technews.tw", "trendforce.com", "reuters.com", "digitimes.com",
+             "joseilbo.com", "newsis.com")
+    if any(host == x or host.endswith("." + x) for x in media):
+        return 2
+    # Google News may retain a redirect if URL decoding is temporarily blocked.
+    source = str(item.get("source") or "").lower()
+    return 2 if any(x in source for x in (
+        "technews", "科技新報", "trendforce", "digitimes",
+        "reuters", "조세일보", "뉴시스",
+    )) else 0
+
+
+def _extract_reclaimed_memory(item: dict) -> dict | None:
+    if not _is_reclaimed_memory_item(item):
+        return None
+    rank = _reclaimed_memory_source_rank(item)
+    if rank < 2:
+        return None
+    blob = _clean(f"{item.get('title', '')} {item.get('description', '')}").lower()
+    obs: dict = {"used_phone_chip_trade_reported": True}
+    brands = any(x in blob for x in (
+        "smartphone maker", "smartphone brand", "phone maker", "phone brand",
+        "some brands", "手機品牌", "手机品牌", "手機廠商", "手机厂商",
+        "스마트폰 업체", "스마트폰 제조사", "일부 브랜드", "일부 제조사",
+    ))
+    buying = any(x in blob for x in (
+        "sourcing", "procur", "purchas", "buying", "source memory",
+        "採購", "采购", "進貨", "进货", "구매", "조달",
+    ))
+    if brands and buying:
+        obs["smartphone_brand_procurement_reported"] = True
+    # A media quote or source-name match can NEVER confirm manufacturer adoption.
+    if rank == 3 and brands and buying and any(x in blob for x in (
+        "we confirm", "we use reclaimed", "confirmed we",
+        "本公司確認", "官方确认", "당사가 확인",
+    )):
+        obs["smartphone_brand_procurement_official_confirmed"] = True
+    if any(x in blob for x in ("per chip", "per unit", "每顆", "每颗", "칩당", "개당")) and any(
+        x in blob for x in ("cost", "price", "비용", "가격", "成本", "漲", "涨")
+    ):
+        m = re.search(
+            r"(?:rmb|cny|¥)\s*(\d{2,4})|(?<!\d)(\d{2,4})\s*(?:元(?:人民幣|人民币)?|위안)",
+            blob,
+        )
+        if m:
+            amount = int(m.group(1) or m.group(2))
+            if 100 <= amount <= 2000:
+                obs["reported_chip_cost_increase_cny"] = amount
+    if any(x in blob for x in ("shenzhen", "深圳", "선전")) and any(
+        x in blob for x in ("subsid", "補助", "补助", "補貼", "补贴", "보조금", "지원금")
+    ) and brands:
+        m = re.search(
+            r"(?:rmb|cny|¥)\s*(\d{2,4})|(?<!\d)(\d{2,4})\s*(?:元(?:人民幣|人民币)?|위안)",
+            blob,
+        )
+        if m:
+            amount = int(m.group(1) or m.group(2))
+            if 100 <= amount <= 1000:
+                obs["reported_shenzhen_oem_subsidy_cny"] = amount
+    obs.update({
+        "source": item.get("source") or "출처 미표시",
+        "source_url": item.get("link") or "",
+        "source_rank": rank,
+        "as_of": (item.get("published_kst") or "")[:10],
+    })
+    return obs
+
+
+def _reclaimed_memory_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    if new.get("smartphone_brand_procurement_reported") is True and not old.get("smartphone_brand_procurement_reported"):
+        changes.append("폐휴대폰 회수칩 제조사 조달 보도 등장(실명·계약 미확인)")
+    if new.get("smartphone_brand_procurement_official_confirmed") is True and not old.get("smartphone_brand_procurement_official_confirmed"):
+        changes.append("휴대폰 제조사의 회수 메모리칩 실제 채택 공식 확인")
+    for key, label in (
+        ("reported_chip_cost_increase_cny", "보도상 칩당 메모리 원가 상승폭"),
+        ("reported_shenzhen_oem_subsidy_cny", "보도상 선전시 제조사 지원설"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if b is not None and (a is None or abs(int(b) - int(a)) >= 100):
+            changes.append(f"{label}: {int(a):,}→{int(b):,}위안" if a is not None
+                           else f"{label}: {int(b):,}위안 신규 보도(공식 미확인)")
+    return changes
+
+
 def _china_dram_cycle_rank(item: dict) -> int:
     host = (urllib.parse.urlparse(str(item.get("link") or "")).hostname or "").lower()
     if host == "cxmt.com" or host.endswith(".cxmt.com"):
@@ -3088,6 +3222,13 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     if divergence_upgrade_due:
         state["nand_divergence_track_version"] = NAND_DIVERGENCE_TRACK_VERSION
 
+    reclaimed_state = _merge_typed_state(
+        RECLAIMED_MEMORY_BASELINE, dict(state.get("reclaimed_memory") or {}),
+    )
+    reclaimed_upgrade_due = int(state.get("reclaimed_memory_track_version") or 0) < RECLAIMED_MEMORY_TRACK_VERSION
+    if reclaimed_upgrade_due:
+        state["reclaimed_memory_track_version"] = RECLAIMED_MEMORY_TRACK_VERSION
+
     china_cycle_state = _merge_typed_state(
         CHINA_DRAM_CYCLE_BASELINE, dict(state.get("china_dram_cycle") or {}),
     )
@@ -3309,6 +3450,22 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
                 china_cycle_changes.extend(changes)
                 china_cycle_source = obs.get("source_url") or ""
 
+    reclaimed_changes: list[str] = []
+    reclaimed_source_url = ""
+    if reclaimed_upgrade_due:
+        reclaimed_changes.append("중국 폐휴대폰 회수칩 거래·저가폰 업체 조달 제보 신규 감시(제조사·정부 미확인)")
+        reclaimed_source_url = RECLAIMED_MEMORY_BASELINE["source_url"]
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _extract_reclaimed_memory(item)
+        if not obs:
+            continue
+        updated = _merge_typed_state(reclaimed_state, obs)
+        changes = _reclaimed_memory_changes(reclaimed_state, updated)
+        reclaimed_state = updated
+        if changes:
+            reclaimed_changes.extend(changes)
+            reclaimed_source_url = obs.get("source_url") or reclaimed_source_url
+
     pc_notebook_changes: list[str] = []
     pc_notebook_source_url = ""
     if pc_notebook_upgrade_due:
@@ -3385,6 +3542,9 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             continue
         if _extract_pc_notebook_demand(x):
             continue
+        if _is_reclaimed_memory_item(x):
+            # Prevent syndicated articles from leaking through the generic path.
+            continue
         if _is_china_dram_cycle_item(x):
             continue
         if _extract_nand_divergence(x) or _extract_legacy_dram_state(x):
@@ -3437,6 +3597,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "trendforce_4q26_revision": trend_4q26_state,
         "trendforce_3q4q_pace_track_version": TREND_3Q4Q_PACE_TRACK_VERSION,
         "trendforce_3q4q_pace": trend_3q4q_state,
+        "reclaimed_memory_track_version": RECLAIMED_MEMORY_TRACK_VERSION,
+        "reclaimed_memory": reclaimed_state,
         "china_dram_cycle_track_version": CHINA_DRAM_CYCLE_TRACK_VERSION,
         "china_dram_cycle": china_cycle_state,
         "pc_notebook_demand_track_version": PC_NOTEBOOK_DEMAND_TRACK_VERSION,
@@ -3475,6 +3637,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- TrendForce 3Q→4Q 가격속도 변화: {len(trend_3q4q_changes)}건",
         f"- NAND 소비자↔기업용 eSSD 양극화 변화: {len(divergence_changes)}건",
         f"- CXMT DRAM·ARK 투자 회피 역풍 변화: {len(china_cycle_changes)}건",
+        f"- 중국 회수 메모리칩 거래·제조사 실제 채택 변화: {len(reclaimed_changes)}건",
         f"- PC 메모리·CPU 원가→노트북 수요 역풍 변화: {len(pc_notebook_changes)}건",
         f"- 구세대 DRAM EOL·배정 변화: {len(legacy_changes)}건",
         f"- 원천 오류: {len(errors)}건",
@@ -3485,11 +3648,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(legacy_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if trend_4q26_changes:
@@ -3528,6 +3691,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif china_cycle_changes:
         lines.append("한눈에: <b>" + html.escape(china_cycle_changes[0]) + "</b>")
+    elif reclaimed_changes:
+        lines.append("한눈에: <b>" + html.escape(reclaimed_changes[0]) + "</b>")
     elif pc_notebook_changes:
         lines.append("한눈에: <b>" + html.escape(pc_notebook_changes[0]) + "</b>")
     elif legacy_changes:
@@ -3869,6 +4034,33 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if bernstein_source_url:
             lines.append('  <a href="' + html.escape(bernstein_source_url, quote=True) + '">근거 기사</a>')
 
+
+    if reclaimed_changes:
+        lines.append("• <b>중국 폐휴대폰 회수 메모리칩 거래·조달 대체 신호</b>")
+        for change in list(dict.fromkeys(reclaimed_changes)):
+            lines.append("  " + html.escape(change))
+        lines.append("  단계: 중국 중고폰 해체·칩 거래는 기보도된 업계 현상; 일부 휴대폰 제조사 구매설은 익명 제보로 고객명·구매량·양산 투입 미확인")
+        price = reclaimed_state.get("reported_chip_cost_increase_cny")
+        subsidy = reclaimed_state.get("reported_shenzhen_oem_subsidy_cny")
+        if price is not None:
+            lines.append(f"  원가 제보: 일부 메모리칩의 가격 상승폭 최대 <b>{int(price):,}위안</b>/개 · 공식 계약가 아님")
+        if subsidy is not None:
+            lines.append(f"  지원설: 선전시 제조사 보조 약 <b>{int(subsidy):,}위안</b> · 시정부 확정 공문 확인 전")
+        lines.append("  별도 공식정책: 중국의 소비자 대상 스마트폰 구매보조금은 판매가 15%, 최대 500위안이며 제조사 회수칩 지원설과 다름")
+        lines.append("  대체 범위: 모바일 LPDDR·UFS/eMMC 회수 부품의 저가·수리 시장; HBM·서버용 DDR5·기업용 SSD 양산품 대체로 보지 않음")
+        lines.append("  실패모드: 탈납땜·재포장 수율 저하, 호환성·신뢰성 검증 부족, 위조품, 반품·교환 접수·보증비용")
+        lines.append("  다음 확인: 실명 제조사 공식 납품 발표·구매물량·칩당 회수원가·불량률·스마트폰 출하·보조금 원문")
+        source_links = (
+            ("TechNews 익명 취재", RECLAIMED_MEMORY_BASELINE["source_url"]),
+            ("TrendForce News 별도 편집보도", RECLAIMED_MEMORY_BASELINE["secondary_source_url"]),
+            ("2026년 3월 선행 보도", RECLAIMED_MEMORY_BASELINE["history_source_url"]),
+            ("중국 정부 소비자 보조금 규정", RECLAIMED_MEMORY_BASELINE["government_consumer_policy_url"]),
+        )
+        if reclaimed_source_url and reclaimed_source_url not in {u for _, u in source_links}:
+            lines.append('  <a href="' + html.escape(reclaimed_source_url, quote=True) + '">이번 변동 근거</a>')
+        for label, url in source_links:
+            lines.append('  <a href="' + html.escape(url, quote=True) + '">' + html.escape(label) + '</a>')
+
     if divergence_changes:
         lines.append("• <b>NAND 소비자↔기업용 eSSD 양극화 변화</b>")
         for change in list(dict.fromkeys(divergence_changes)):
@@ -4058,13 +4250,13 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
 
     if legacy_changes:
-        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or micron_supply_changes or dgx_spark_changes or goldman_structural_changes or ymtc_nand_changes or divergence_changes or china_cycle_changes or prepared_items)
+        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or micron_supply_changes or dgx_spark_changes or goldman_structural_changes or ymtc_nand_changes or divergence_changes or china_cycle_changes or reclaimed_changes or prepared_items)
         if has_other_content:
             lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
         else:
