@@ -270,8 +270,7 @@ def render(rows,decision,now,sample=False):
         reading=f"단기는 {d['cp'][0]}, 회사채는 {d['aa'][0]}: 부문별 방향이 다름"
     lines += [
         "<b>해석:</b> "+reading,
-        "방향은 5일 변화 ±2bp 기준(자체 판정); 확대는 상대 조달부담 상승",
-        "단계는 자체 감시 기준이며 공식 위기등급이 아님",
+        "방향은 5일 변화 ±2bp 기준; 단계는 자체 감시 기준(공식 위기등급 아님)",
         f"한국은행 ECOS {TABLE} · 조회 {now:%m/%d %H:%M} KST",
         SOURCE,
     ]
