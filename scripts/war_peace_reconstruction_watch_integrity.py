@@ -141,6 +141,10 @@ def _summit_proposal_headline(title):
                              r'\bsummit\b.{0,25}\b(?:proposal|under discussion|planned)\b', title))
 
 
+def _summit_possibility_reaction(title):
+    return bool(re.search(r'(?:\d+\s*자\s*)?(?:정상\s*)?회담.{0,35}가능성.{0,20}반응', title))
+
+
 def _diplomatic_group(title):
     # A three-party summit can discuss Ukraine without inviting Ukraine.
     # Keep the named participants distinct from that discussion's object.
@@ -150,11 +154,14 @@ def _diplomatic_group(title):
             ('미국', r'미국|트럼프|美|\bu\.s\.|\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너'),
             ('우크라이나', r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b'),
             ('중국', r'중국|시진핑|\b(?:china|chinese|xi(?:\s+jinping)?)\b'),
-            ('러시아', r'러시아|푸틴|크렘린|라브로프|(?:^|\s)러(?=\s|[·ㆍ/]|$)|\b(?:russia\w*|putin|kremlin|lavrov)\b')):
+            ('러시아', r'러시아|푸틴|크렘린|라브로프|(?:^|[\s·ㆍ/])러(?=\s|[·ㆍ/]|$)|\b(?:russia\w*|putin|kremlin|lavrov)\b'),
+            ('이란', r'이란|\biran(?:ian)?\b')):
         if re.search(pattern, title) or (trilateral and label in ('미국', '중국', '러시아')):
             actors.append(label)
     if _summit_proposal_headline(title) and all(label in actors for label in ('미국', '중국', '러시아')):
         return '미국·중국·러시아'
+    if set(actors) == {'러시아', '이란'}:
+        return '이란·러시아'
     return '·'.join(actors) if actors else _headline_group(title)
 
 
@@ -168,6 +175,10 @@ def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
     if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal'):
+        if kind == 'diplomatic_position' and _summit_possibility_reaction(title):
+            # A named excluded counterpart is not a confirmed participant.
+            actors = re.sub(r'젤렌스키(?:\s*대통령)?(?:이|가)?\s*아닌', '', title)
+            return _diplomatic_group(actors) + ' · 회담 가능성에 대한 반응'
         label = ('조건부 공격 중단 제안' if kind == 'diplomatic_plan' and _conditional_pause_proposal(title) else
                  '정상회담 제안·논의' if kind == 'diplomatic_plan' and _summit_proposal_headline(title) else KIND_LABELS[kind])
         return _diplomatic_group(title) + ' · ' + label
@@ -463,10 +474,12 @@ def _diplomatic_headline_kind(title):
         return None
     if re.search(r'\[[^\]]*월드뷰\]', title) and re.search(r'외교|우크라|\b(?:diplomac|ukrain)', title):
         return 'diplomatic_analysis'
-    actor = re.search(r'젤렌스키|우크라|트럼프|미국|위트코프|쿠슈너|'
-                      r'\b(?:zelenskyy?|zelenskiy|ukrain\w*|trump|witkoff|kushner)\b|\bu\.s\.', title)
+    actor = re.search(r'젤렌스키|우크라|트럼프|미국|위트코프|쿠슈너|이란|러시아|푸틴|크렘린|라브로프|'
+                      r'\b(?:zelenskyy?|zelenskiy|ukrain\w*|trump|witkoff|kushner|iran(?:ian)?|russia\w*|putin|kremlin|lavrov)\b|\bu\.s\.', title)
     if not actor:
         return None
+    if _summit_possibility_reaction(title):
+        return 'diplomatic_position'
     if re.search(r'항복\s*압박|\b(?:surrender|capitulat\w*)\b.{0,30}\bpressure\b|'
                  r'\bpressure\b.{0,30}\b(?:surrender|capitulat\w*)\b', title):
         return 'diplomatic_position'
@@ -483,7 +496,7 @@ def _diplomatic_headline_kind(title):
         return 'diplomatic_plan'
     if _diplomatic_deal_statement(title):
         return 'diplomatic_statement'
-    if re.search(r'통화|대화|회담|접촉|\b(?:speaks?|spoke|talks?|talked)\s+(?:to|with)\b|'
+    if re.search(r'통화|대화|회담|접촉|\bforeign ministers?\b.{0,20}\bhold talks\b|\b(?:speaks?|spoke|talks?|talked)\s+(?:to|with)\b|'
                  r'\b(?:calls?|called)\s+(?:(?:u\.s\.|us)\s+)?'
                  r'(?:envoys?|witkoff|kushner|trump|zelenskyy?|zelenskiy)\b(?![\'’]s\b)', title):
         return 'diplomatic_contact'

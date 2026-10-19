@@ -1,0 +1,305 @@
+{
+  "provenance": {
+    "run_id": "39276986309",
+    "code_sha": "2f65b28489bd2d90fd5141d13ea5b246b0060c3a",
+    "queried_at_kst": "2026-10-20T00:21:09.839954+09:00",
+    "alert_sha256": "e24c448ca6070728a27842a7ff11a32a4272a38cf01da8dc7185db0920f42181"
+  },
+  "articles": [
+    {
+      "id": "d65ed141aecca5d1070a",
+      "title_original": "후티 반군, 예멘 정부군 기지 미사일 공격…최소 30명 사망 - 뉴스1",
+      "title_ko": "후티 반군, 예멘 정부군 기지 미사일 공격…최소 30명 사망 - 뉴스1",
+      "description": "후티 반군, 예멘 정부군 기지 미사일 공격…최소 30명 사망 뉴스1",
+      "source": "뉴스1",
+      "source_url": "https://www.news1.kr",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9qS3YzWjloYThMVjdqaGo3MzNFWFVVbFJXaENUZG1wUDM0T0xSaUdyblRUNjB5dE9VaFd1d0hJRFhMTHVLdXhRTkxWWEZmUWE1cl9RNkYzTm9ZeFBlNTZUSFVR?oc=5",
+      "published": "Mon, 19 Oct 2026 12:37:02 GMT",
+      "score": 10,
+      "tags": [
+        "공습·공격 피해 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "2c47128ae62078b94256",
+      "title_original": "전쟁중 이란·러 외무장관 회담…양국 공조 강조(종합) - 연합뉴스",
+      "title_ko": "전쟁중 이란·러 외무장관 회담…양국 공조 강조(종합) - 연합뉴스",
+      "description": "전쟁중 이란·러 외무장관 회담…양국 공조 강조(종합) 연합뉴스",
+      "source": "연합뉴스",
+      "source_url": "https://www.yna.co.kr",
+      "link": "https://www.yna.co.kr/view/AKR20261019180551079",
+      "discovery_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBDUUdJMExEdmlJVi11WnRNZnJkNklUODdJTlB0alNBcnEtclhxZExncmtndWg2STVyOW9rcEU2RkJUeDFYR3pMYVFmVEpiRDNYeFRqdzdhS25CZ3fSAWBBVV95cUxNZlBsNHRHQ3VkanhkdFVkWjlzT3UzWFlPU1FHZjNaSWNwYk4xZnZid2Vkd2FIbVBHVk1ONzltUjJ6Q0M4LWpQZTB5VjV3dUZ6WnQ0VHpuZllTbjJYSGllNmc?oc=5",
+      "resolved_url": "https://www.yna.co.kr/view/AKR20261019180551079",
+      "published": "Mon, 19 Oct 2026 23:43:06 +0900",
+      "rss_published": "Mon, 19 Oct 2026 14:43:06 GMT",
+      "source_metadata": {
+        "title": "전쟁중 이란·러 외무장관 회담…양국 공조 강조(종합) | 연합뉴스",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-19T23:43:06+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-19T23:43:06+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-19T23:43:06+09:00"
+          }
+        ]
+      },
+      "score": 8,
+      "tags": [],
+      "body_checked": true,
+      "body_verified": true,
+      "classification_color": "",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "1f1366e88fdd2ae75fe3b9b2cdd559c3f9b895fb6f3d456e471f79b0fb3509c2"
+    },
+    {
+      "id": "498ce09961aafa8916cb",
+      "title_original": "크렘린궁은 푸틴 대통령이 젤렌스키 대통령이 아닌 다른 상대와 3자 회담을 가질 가능성에 대해 반응했다. - Vietnam.vn",
+      "title_ko": "크렘린궁은 푸틴 대통령이 젤렌스키 대통령이 아닌 다른 상대와 3자 회담을 가질 가능성에 대해 반응했다. - Vietnam.vn",
+      "description": "크렘린궁은 푸틴 대통령이 젤렌스키 대통령이 아닌 다른 상대와 3자 회담을 가질 가능성에 대해 반응했다. Vietnam.vn",
+      "source": "Vietnam.vn",
+      "source_url": "https://www.vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNamZvbzhUUFp0aklQVzFqdUh5bTFZZ1RTWkd2Y0N6bjctRklpb0xKandaN3ZXOVgtWXZQVXkzb0dRZnVyZ0lIXzFQUURLNTNkc1BSamhjaVdBOFd6Wk1SdlBXZ2JYVldMR1pZOGVtZ3JBeFJ4SlRNSVBQeS1qNUdUTWxIYnZTQjgzTzJYb3F3Q3F6VDMxWVBIYjNoQjZhMHpfWEdCR2hIV2ZGLXVLSXcwdw?oc=5",
+      "published": "Mon, 19 Oct 2026 15:15:38 GMT",
+      "score": 7,
+      "tags": [
+        "외교 접촉 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_contact",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29866.0,
+      "pct": 1.6144123300954272,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "00:11 KST",
+      "observed_at_kst": "2026-10-20T00:11:09+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 29391.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 29391.5,
+        "chartPreviousClose": 29391.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792422669,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792382400,
+            "end": 1792382400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792382400,
+            "end": 1792468740,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792468740,
+            "end": 1792468740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 97.69999694824219,
+      "pct": -1.3330671094302193,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "00:11 KST",
+      "observed_at_kst": "2026-10-20T00:11:07+09:00",
+      "symbol": "CL=F",
+      "previous_close": 99.02,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 99.02,
+        "chartPreviousClose": 99.02,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792422667,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792382400,
+            "start": 1792382400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792468740,
+            "start": 1792382400,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792468740,
+            "start": 1792468740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 108.19000244140625,
+      "pct": -1.5201142896356767,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "00:11 KST",
+      "observed_at_kst": "2026-10-20T00:11:03+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 109.86,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 109.86,
+        "chartPreviousClose": 109.86,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792422663,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792382400,
+            "end": 1792382400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792382400,
+            "end": 1792468740,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792468740,
+            "end": 1792468740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.93199920654297,
+      "pct": 0.09328555097161129,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "00:11 KST",
+      "observed_at_kst": "2026-10-20T00:11:14+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 101.837,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 101.837,
+        "chartPreviousClose": 101.837,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792422674,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792382400,
+            "end": 1792382400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792382400,
+            "end": 1792468740,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792468740,
+            "end": 1792468740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "dry_run_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟡 <b>발언·제재·외교반응·협상 제약</b>\n조회 2026-10-20 00:21 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [신규] <b>1. 후티·예멘 정부군 · 공습·공격 피해 보도</b>\n후티 반군, 예멘 정부군 기지 미사일 공격…최소 30명 사망 - 뉴스1\nRSS 보도 10-19 21:37 KST · <b>164분 경과</b> · 공습·공격 피해 보도 · <a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTE9qS3YzWjloYThMVjdqaGo3MzNFWFVVbFJXaENUZG1wUDM0T0xSaUdyblRUNjB5dE9VaFd1d0hJRFhMTHVLdXhRTkxWWEZmUWE1cl9RNkYzTm9ZeFBlNTZUSFVR?oc=5\">뉴스1 검색 링크</a> · 제목 기준·본문 미확인\n\n[신규] <b>2. 이란·호르무즈</b>\n전쟁중 이란·러 외무장관 회담…양국 공조 강조(종합) - 연합뉴스\n보도 10-19 23:43 KST · <b>38분 경과</b> · 전쟁 · <a href=\"https://www.yna.co.kr/view/AKR20261019180551079\">연합뉴스 원문</a>\n\n🟡 [속보] <b>3. 우크라이나·러시아 · 외교 접촉 보도</b>\n크렘린궁은 푸틴 대통령이 젤렌스키 대통령이 아닌 다른 상대와 3자 회담을 가질 가능성에 대해 반응했다. - Vietnam.vn\nRSS 보도 10-20 00:15 KST · <b>5분 경과</b> · 외교 접촉 보도 · <a href=\"https://news.google.com/rss/articles/CBMisAFBVV95cUxNamZvbzhUUFp0aklQVzFqdUh5bTFZZ1RTWkd2Y0N6bjctRklpb0xKandaN3ZXOVgtWXZQVXkzb0dRZnVyZ0lIXzFQUURLNTNkc1BSamhjaVdBOFd6Wk1SdlBXZ2JYVldMR1pZOGVtZ3JBeFJ4SlRNSVBQeS1qNUdUTWxIYnZTQjgzTzJYb3F3Q3F6VDMxWVBIYjNoQjZhMHpfWEdCR2hIV2ZGLXVLSXcwdw?oc=5\">Vietnam.vn 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,866.00</b>  +1.61% · 제공처 비교종가 대비 · 기준 00:11 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>97.70</b>  -1.33% · 제공처 비교종가 대비 · 기준 00:11 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>108.19</b>  -1.52% · 제공처 비교종가 대비 · 기준 00:11 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.93</b>  +0.09% · 제공처 비교종가 대비 · 기준 00:11 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n",
+  "evidence_sha256": "abef6c48181fac0cadf6c2ee4a9073cdb558a240a6919bbe98214d6052cac37d",
+  "limits": [
+    "DRY_RUN: this body was not transmitted and these candidate IDs were not added to seen.",
+    "Later source verification does not reconstruct operating HTTP bytes or independently confirm events."
+  ]
+}
