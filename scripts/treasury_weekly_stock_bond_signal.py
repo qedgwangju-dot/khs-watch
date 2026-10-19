@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Weekly US equity/10Y Treasury risk-regime check; no Telegram side effects.
 
-Nasdaq-100 source: Nasdaq Inc data redistributed by Federal Reserve FRED NASDAQ100.
+Nasdaq-100 source: Nasdaq official historical daily index close API.
 10-year yield: U.S. Treasury official daily par yield.
 Compare previous Friday with the current completed Friday, never mixed dates.
 """
@@ -18,7 +18,7 @@ import requests
 
 from treasury_real_yield_signal import parse_feed
 
-NASDAQ_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv"
+NASDAQ_API = "https://api.nasdaq.com/api/quote/NDX/historical"
 NASDAQ_SERIES = "NASDAQ100"
 TREASURY_XML = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; khs-watch-treasury-weekly/1.0)"}
@@ -66,6 +66,30 @@ def parse_nasdaq_csv(content: str) -> dict[str, float]:
     return rows
 
 
+def parse_nasdaq_api(payload: dict) -> dict[str, float]:
+    status = payload.get("status") or {}
+    if status.get("rCode") not in (200, "200"):
+        raise SourceMissing("official Nasdaq history API returned a non-success status")
+    data = payload.get("data") or {}
+    table = data.get("tradesTable") or {}
+    rows = table.get("rows") or []
+    if str(data.get("symbol") or "").upper() != "NDX" or not rows:
+        raise SourceMissing("Nasdaq official NDX historical rows unavailable")
+    parsed = {}
+    for row in rows:
+        try:
+            date_key = dt.datetime.strptime((row.get("date") or "").strip(), "%m/%d/%Y").date().isoformat()
+            close = float(str(row.get("close") or "").replace(",", "").replace("$", ""))
+        except (ValueError, TypeError, AttributeError):
+            raise SourceMissing("Nasdaq official date or closing value malformed")
+        if not math.isfinite(close) or close <= 0:
+            raise SourceMissing("invalid Nasdaq closing index")
+        if date_key in parsed and abs(parsed[date_key]-close) > 0.001:
+            raise SourceMissing("conflicting official Nasdaq index close")
+        parsed[date_key]=close
+    return parsed
+
+
 def evaluate_week(nasdaq: dict, treasury: dict, end: dt.date) -> dict:
     if end.weekday() != 4:
         raise SourceMissing("weekly signal must use Friday's closing session")
@@ -108,21 +132,29 @@ def fetch_current_week(now: dt.datetime | None = None, client=requests) -> dict:
     end = completed_friday(now)
     start = end - dt.timedelta(days=7)
     params = {
-        "id": NASDAQ_SERIES,
-        "cosd": (start - dt.timedelta(days=3)).isoformat(),
-        "coed": end.isoformat(),
+        "assetclass": "index",
+        "limit": 60,
+        "fromdate": (start - dt.timedelta(days=3)).isoformat(),
+        "todate": end.isoformat(),
     }
-    response = client.get(NASDAQ_CSV, params=params, headers=HEADERS, timeout=(7, 20))
+    response = client.get(
+        NASDAQ_API, params=params,
+        headers={**HEADERS, "Accept": "application/json", "Origin": "https://www.nasdaq.com"},
+        timeout=(7, 14),
+    )
     response.raise_for_status()
-    nasdaq = parse_nasdaq_csv(response.text)
+    try:
+        nasdaq = parse_nasdaq_api(response.json())
+    except (ValueError, TypeError, KeyError) as exc:
+        raise SourceMissing(f"Nasdaq official JSON unusable: {type(exc).__name__}") from exc
     treasury_url = f"{TREASURY_XML}?data=daily_treasury_yield_curve&field_tdr_date_value={end.year}"
     reply = client.get(treasury_url, headers=HEADERS, timeout=(7, 20))
     reply.raise_for_status()
     treasury = parse_feed(reply.content, "BC_10YEAR")
     result = evaluate_week(nasdaq, treasury, end)
     result["source_urls"] = [
-        "https://fred.stlouisfed.org/series/NASDAQ100",
         "https://indexes.nasdaq.com/Index/History/NDX",
+        "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index",
         treasury_url,
     ]
     return result
