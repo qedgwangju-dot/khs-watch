@@ -4892,15 +4892,16 @@ def _openai_humanoid_recovery() -> list[dict]:
         'title': 'OpenAI 자체 휴머노이드 개발·2027년 시연 목표, 9월 CEO 인터뷰 재확인',
         'link': OPENAI_HUMANOID_FORTUNE_URL,
         'description': (
-            '2026-09-15 Fortune 인터뷰에서 CEO Sam Altman이 '
-            'we will definitely do a humanoid 라는 기존 개발 의도를 확인하고 '
-            '2027년에 cool demo 또는 great demo를 보여줄 수 있을 것으로 '
+            '2026-09-01 Sources 팟캐스트에서 CEO Sam Altman이 '
+            'we will definitely do a humanoid 라고 자체 개발 계획을 밝혔고, '
+            '2026-09-15 Fortune 인터뷰에서 이를 재확인하면서 2027년에 '
+            'cool demo 또는 great demo를 보여줄 수 있을 것으로 '
             '기대한다고 설명했다. 이는 2026-10-19 회사 신규 보도자료가 아닌 '
             '기존 인터뷰의 재보도이며, 2027년 정식 출시·양산·판매 약속이 아니다. '
             '공공장소에 로봇이 널리 다니기까지는 몇 년 더 걸릴 수 있다고 밝혔다. '
             'OpenAI 공식 채용공고에는 로봇용 맞춤 액추에이터·모터·감속기, '
             '시험동력계와 정밀 검사, 하드웨어 시제품 조립, 실시간 동작 제어, '
-            '권선·적층·절연·충전 공정 등 자체 연구개발과 생산 준비 과제가 존재한다. '
+            '권선·철심 적층·절연·수지 충전 공정 등 자체 연구개발과 생산 준비 과제가 존재한다. '
             '하지만 로봇 형상·2027년 데모 내용·현장 검증 대수·설비투자액·'
             '고객 납품 계약·매출과 최종 상용화 일정은 공개되지 않았다. '
             '과거 Dactyl 로봇손 연구는 실제 기존 연구 사례이며 신규 로봇 '
@@ -4986,7 +4987,8 @@ def _openai_category(text: str, group: str) -> str:
 def _openai_meaning(cat: str) -> str:
     if cat == 'OpenAI 휴머노이드 · 2027년 시연 목표 CEO 인터뷰':
         return (
-            'Sam Altman은 2026-09-15 Fortune 인터뷰에서 자체 휴머노이드 개발과 '
+            'Sam Altman은 9/1 Sources에서 자체 휴머노이드 개발을 밝혔고, '
+            '9/15 Fortune 인터뷰에서 이를 재확인하며 '
             '2027년 인상적인 시연 가능성을 언급했습니다. 10/19 보도는 새 '
             'CEO 발표가 아닌 과거 인터뷰 재소개입니다. 실제 OpenAI 채용공고에서 '
             '모터·액추에이터 자체 설계, 시제품 제작, 제조·시험설비 인력 채용이 '
@@ -5029,7 +5031,7 @@ def _openai_verification(item: dict, group: str, text: str) -> str:
         stage = _openai_own_humanoid_stage(item)
         if stage == 'ceo_2027_demo_goal':
             return (
-                '2026-09-15 Fortune CEO 직접 문답·OpenAI 공식 '
+                '2026-09-01 Sources CEO 직접 발언·9/15 Fortune 재확인·OpenAI 공식 '
                 '액추에이터 제조·제어·실험 채용공고 교차확인 · '
                 '2027년 시연 목표, 양산·고객 계약 미확인'
             )
