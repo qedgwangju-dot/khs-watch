@@ -1301,6 +1301,12 @@ def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     state = load_json(STATE_PATH)
     pending = load_json(PENDING_PATH)
+    # An isolated/rerun invocation may not have the earlier Rubin collector's
+    # pending file. Preserve the full existing production state in that case;
+    # do not overwrite Telegram receipts or unrelated HBM modules with {}.
+    # When upstream has already created pending, its updated values take priority.
+    if not pending and state:
+        pending = copy.deepcopy(state)
     raw_previous = repair_bad_initial_state(state.get("ai_component_leadtime") or copy.deepcopy(BASELINE))
     raw_previous_components = copy.deepcopy(raw_previous.get("components") or BASELINE["components"])
     weekly_002_previous, repaired_status_names = repair_weekly_002_state(raw_previous)

@@ -405,6 +405,37 @@ class Weekly006ScreenshotRegressionTests(unittest.TestCase):
         self.assertNotEqual(w.source_tier(spoof), 3)
         self.assertGreater(w.source_score(trusted, {}, ""), w.source_score(spoof, {}, ""))
 
+    def test_existing_upstream_pending_state_is_preserved(self):
+        from copy import deepcopy
+        with tempfile.TemporaryDirectory() as tmp:
+            root = pathlib.Path(tmp)
+            state = root / "rubin.json"
+            pending = root / "pending.json"
+            alert = root / "alert.md"
+            snapshot = {
+                "source": w.WEEKLY_006_LOCK["source"],
+                "as_of": "2026-10-19",
+                "components": deepcopy(w.WEEKLY_006_LOCK["components"]),
+                "signals": {"HDD": w.WEEKLY_006_HDD_OUTLOOK},
+            }
+            state.write_text(json.dumps({
+                "ai_component_leadtime": snapshot,
+                "telegram_message_id": 308,
+            }, ensure_ascii=False), encoding="utf-8")
+            pending.write_text(json.dumps({
+                "telegram_message_id": 308,
+                "upstream_collector_update": {"preserve": "yes"},
+            }, ensure_ascii=False), encoding="utf-8")
+            with mock.patch.object(w, "STATE_PATH", state), \
+                 mock.patch.object(w, "PENDING_PATH", pending), \
+                 mock.patch.object(w, "ALERT_PATH", alert), \
+                 mock.patch.object(w, "read_rss", return_value=[]):
+                w.main()
+                actual = json.loads(pending.read_text(encoding="utf-8"))
+                self.assertEqual(actual["upstream_collector_update"]["preserve"], "yes")
+                self.assertEqual(actual["telegram_message_id"], 308)
+                self.assertEqual(actual["ai_component_leadtime"]["components"]["HDD"]["status"], "Very Tight")
+
     def test_existing_rubin_state_and_delivery_route_unchanged_after_one_correction(self):
         from copy import deepcopy
         with tempfile.TemporaryDirectory() as tmp:
