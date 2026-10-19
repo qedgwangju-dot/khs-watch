@@ -1,0 +1,375 @@
+{
+  "provenance": {
+    "run_id": "39271931307",
+    "code_sha": "489a6ceb3a12f7b14caf8dd1fc23bfd452b24826",
+    "queried_at_kst": "2026-10-19T23:47:21.171613+09:00",
+    "alert_sha256": "bd337b40b32dc0e0fa6be19eb3bf4ae4e95a6303efd4edb8b823e57e3a07b220"
+  },
+  "articles": [
+    {
+      "id": "83384ac4bf892ab8adc4",
+      "title_original": "러 대규모 공습에 우크라 사상자 속출…젤렌스키 \"미국 사전 경고 또 없었다\" 분통",
+      "title_ko": "러 대규모 공습에 우크라 사상자 속출…젤렌스키 \"미국 사전 경고 또 없었다\" 분통",
+      "description": "[파이낸셜뉴스] 러시아가 우크라이나 전역의 에너지 시설과 도심을 겨냥해 대규모 공습을 가해 사상자가 속출한 가운데, 볼로디미르 젤렌스키 우크라이나 대통령이 우방국인 미국으로부터 또다시 사전 공습 경고를 받지 못했다고 주장하며 노골적인 불만을 드러냈다. 19일(현지시간) 가디언과 키이우 인디펜던트 등 외신에 따르면 러시아군은 18일 밤부터 19일 아침까지 수도 키이우를 비롯해 하르키우, 오데사 등 11개 지역에 16기의 탄도미사일과 200여 기의 샤헤드 드론 등을 동원해 광범위한 폭격을 가했다. 이 공격으로 키이우에서 최소 1명이 숨지고 8명이 다쳤으며, 25층 주거용 건물과 병원, 학교, 지하철역 등이 파괴됐다. 또한 10곳 이상의 에너지 시설이 타격을 입어 최소 55만 가구의 전력 공급이 끊겼다. 이에 대해 러시아 국방부는 \"키이우",
+      "source": "파이낸셜뉴스",
+      "link": "https://www.fnnews.com/news/202610192206073164",
+      "discovery_url": "https://www.fnnews.com/news/202610192206073164",
+      "resolved_url": "https://www.fnnews.com/news/202610192206073164",
+      "published": "Mon, 19 Oct 2026 22:09:57 +0900",
+      "rss_published": "Mon,19 Oct 2026 22:09:57 +0900",
+      "source_metadata": {
+        "title": "러 대규모 공습에 우크라 사상자 속출…젤렌스키 \"미국 사전 경고 또 없었다\" 분통",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-19T22:09:57+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-19T22:09:57+09:00"
+          },
+          {
+            "field": "dd:published_time",
+            "at_kst": "2026-10-19T22:09:57+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-19T22:09:57+09:00"
+          },
+          {
+            "field": "visible:입력",
+            "at_kst": "2026-10-19T22:09:00+09:00"
+          }
+        ]
+      },
+      "score": 60,
+      "tags": [
+        "협상내용",
+        "확전"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [
+        "후속 협상 실무 의제에 에너지 인프라 포함"
+      ],
+      "forced_tags": [
+        "종전·협상",
+        "협상내용",
+        "휴전·평화"
+      ],
+      "classification_color": "red",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "69547af5e42fa69008a076632995f26a771321002c6c1cdfd7d3017ba0ef1afd"
+    },
+    {
+      "id": "dee120592f27a2a7d3f5",
+      "title_original": "*LAVROV CALLS FOR RESTORING FREEDOM OF NAVIGATION IN HORMUZ \n*LAVROV URGES RETURN TO PRE-CRISIS MIDEAST CONDITIONS \n*LAVROV CALLS FOR RESUMPTION OF YEMEN NEGOTIATIONS\n( @WalterBloomberg )",
+      "title_ko": "*LAVROV는 호르무즈에서 항해의 자유를 회복할 것을 요구합니다. *LAVROV는 위기 이전의 중동 상태로 돌아갈 것을 촉구합니다. *LAVROV는 예멘 협상 재개를 요구합니다( @WalterBloomberg )",
+      "description": "*LAVROV CALLS FOR RESTORING FREEDOM OF NAVIGATION IN HORMUZ \n*LAVROV URGES RETURN TO PRE-CRISIS MIDEAST CONDITIONS \n*LAVROV CALLS FOR RESUMPTION OF YEMEN NEGOTIATIONS\n( @WalterBloomberg )",
+      "source": "Walter Bloomberg",
+      "link": "https://t.me/WalterBloomberg/37111",
+      "published": "Mon, 19 Oct 2026 13:39:31 +0000",
+      "score": 12,
+      "tags": [
+        "종전·협상"
+      ],
+      "body_checked": true,
+      "classification_color": "green",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "9af0e14b86653f0cbdaab1b9d761d9a9e9c4a7d487550b796929864df1ded85b"
+    },
+    {
+      "id": "510e1108991dc64b42fc",
+      "title_original": "SAUDI ARABIA TO POSTPONE IN-PERSON ‘DAVOS IN THE DESERT’ EVENT AFTER HOUTHI ATTACKS - FT\n( @WalterBloomberg )",
+      "title_ko": "사우디아라비아, 후티 반군 공격 이후 '사막에서의 다보스' 행사 연기 예정 - FT(@WalterBloomberg)",
+      "description": "SAUDI ARABIA TO POSTPONE IN-PERSON ‘DAVOS IN THE DESERT’ EVENT AFTER HOUTHI ATTACKS - FT\n( @WalterBloomberg )",
+      "source": "Walter Bloomberg",
+      "link": "https://t.me/WalterBloomberg/37122",
+      "published": "Mon, 19 Oct 2026 14:26:18 +0000",
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "414dba7ef81d375cb1a6570ef076521b5fa582969577526ba642c927555cca54"
+    },
+    {
+      "id": "a7c55e2cbb62ecb506fc",
+      "title_original": "후티 미사일 공격에 예멘 정부군 53명 사망·200여명 부상 - 스페셜타임스",
+      "title_ko": "후티 미사일 공격에 예멘 정부군 53명 사망·200여명 부상 - 스페셜타임스",
+      "description": "후티 미사일 공격에 예멘 정부군 53명 사망·200여명 부상 스페셜타임스",
+      "source": "스페셜타임스",
+      "source_url": "http://www.specialtimes.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1PRndrel9uZ3oxSzdTRVBYdGRZMXRaLXhnaTNLMVJGdzY1YXRlWko2dWxlRzZZQ2xMa1JnV2xPMEloY2xXdzVPcEtfSU9meFZoS2FvUjNXd2tYTlV5M3Y4ZjdVMDIySTFpeEIwUnZrQ3JuZw?oc=5",
+      "published": "Mon, 19 Oct 2026 14:13:26 GMT",
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "d65ed141aecca5d1070a",
+      "title_original": "후티 반군, 예멘 정부군 기지 미사일 공격…최소 30명 사망 - 뉴스1",
+      "title_ko": "후티 반군, 예멘 정부군 기지 미사일 공격…최소 30명 사망 - 뉴스1",
+      "description": "후티 반군, 예멘 정부군 기지 미사일 공격…최소 30명 사망 뉴스1",
+      "source": "뉴스1",
+      "source_url": "https://www.news1.kr",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9qS3YzWjloYThMVjdqaGo3MzNFWFVVbFJXaENUZG1wUDM0T0xSaUdyblRUNjB5dE9VaFd1d0hJRFhMTHVLdXhRTkxWWEZmUWE1cl9RNkYzTm9ZeFBlNTZUSFVR?oc=5",
+      "published": "Mon, 19 Oct 2026 12:37:02 GMT",
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "cd00973bfc100378dd3e",
+      "title_original": "우크라이나는 패트리어트 미사일을 제공받는 대가로 러시아 석유 시설 공격을 중단할 것을 제안했다. - Vietnam.vn",
+      "title_ko": "우크라이나는 패트리어트 미사일을 제공받는 대가로 러시아 석유 시설 공격을 중단할 것을 제안했다. - Vietnam.vn",
+      "description": "우크라이나는 패트리어트 미사일을 제공받는 대가로 러시아 석유 시설 공격을 중단할 것을 제안했다. Vietnam.vn",
+      "source": "Vietnam.vn",
+      "source_url": "https://www.vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQWW50SF9xZ3cwUEsxRm11VXY0UklQZmN3VEttaEJXMHRFZXhVd3lsclFwNkxiMHQ2OHRvSWNaVHlPM21qamptTVZCcUFpcHpoRGNoRG9QcU5TYlo3S1JIU1d4YWRDeHpiSWltZ0F2am1ER0JPVHdpYl9ZR1BBMi1uNGtLNkdaVEVPZXRwTGp0MkRYclhyWmJQSVFObXd6T3VzeHc?oc=5",
+      "published": "Mon, 19 Oct 2026 12:18:07 GMT",
+      "score": 6,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29787.0,
+      "pct": 1.3456271370974493,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "23:37 KST",
+      "observed_at_kst": "2026-10-19T23:37:23+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 29391.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 29391.5,
+        "chartPreviousClose": 29391.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792420643,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792382400,
+            "start": 1792382400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792468740,
+            "start": 1792382400,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792468740,
+            "start": 1792468740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 97.91000366210938,
+      "pct": -1.1209819611094907,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "23:37 KST",
+      "observed_at_kst": "2026-10-19T23:37:21+09:00",
+      "symbol": "CL=F",
+      "previous_close": 99.02,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 99.02,
+        "chartPreviousClose": 99.02,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792420641,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792382400,
+            "start": 1792382400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792468740,
+            "start": 1792382400,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792468740,
+            "start": 1792468740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 108.44999694824219,
+      "pct": -1.2834544436171602,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "23:37 KST",
+      "observed_at_kst": "2026-10-19T23:37:21+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 109.86,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 109.86,
+        "chartPreviousClose": 109.86,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792420641,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792382400,
+            "end": 1792382400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792382400,
+            "end": 1792468740,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792468740,
+            "end": 1792468740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.9540023803711,
+      "pct": 0.114891817680296,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "23:37 KST",
+      "observed_at_kst": "2026-10-19T23:37:27+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 101.837,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 101.837,
+        "chartPreviousClose": 101.837,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792420647,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792382400,
+            "end": 1792382400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792382400,
+            "end": 1792468740,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792468740,
+            "end": 1792468740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "sent_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟢 <b>재건·휴전</b>\n조회 2026-10-19 23:47 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [신규] <b>1. 우크라이나·러시아</b>\n후속 협상 실무 의제에 에너지 인프라 포함\n보도 10-19 22:09 KST · <b>97분 경과</b> · 확전 · <a href=\"https://www.fnnews.com/news/202610192206073164\">파이낸셜뉴스 원문</a>\n\n🟢 [신규] <b>2. 이란·호르무즈</b>\n*LAVROV는 호르무즈에서 항해의 자유를 회복할 것을 요구합니다. *LAVROV는 위기 이전의 중동 상태로 돌아갈 것을 촉구합니다. *LAVROV는 예멘 협상 재개를 요구합니다( @WalterBloomberg )\nRSS 보도 10-19 22:39 KST · <b>67분 경과</b> · 종전·협상 · <a href=\"https://t.me/WalterBloomberg/37111\">Walter Bloomberg 원문</a> · RSS 입력 기준·본문 미확인\n\n🔴 [속보] <b>3. 사우디·후티</b>\n사우디아라비아, 후티 반군 공격 이후 &#x27;사막에서의 다보스&#x27; 행사 연기 예정 - FT(@WalterBloomberg)\nRSS 보도 10-19 23:26 KST · <b>21분 경과</b> · 확전 · <a href=\"https://t.me/WalterBloomberg/37122\">Walter Bloomberg 원문</a> · RSS 입력 기준·본문 미확인\n\n🔴 [신규] <b>4. 사우디·후티</b>\n후티 미사일 공격에 예멘 정부군 53명 사망·200여명 부상 - 스페셜타임스\nRSS 보도 10-19 23:13 KST · <b>33분 경과</b> · 확전 · <a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE1PRndrel9uZ3oxSzdTRVBYdGRZMXRaLXhnaTNLMVJGdzY1YXRlWko2dWxlRzZZQ2xMa1JnV2xPMEloY2xXdzVPcEtfSU9meFZoS2FvUjNXd2tYTlV5M3Y4ZjdVMDIySTFpeEIwUnZrQ3JuZw?oc=5\">스페셜타임스 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,787.00</b>  +1.35% · 제공처 비교종가 대비 · 기준 23:37 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>97.91</b>  -1.12% · 제공처 비교종가 대비 · 기준 23:37 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>108.45</b>  -1.28% · 제공처 비교종가 대비 · 기준 23:37 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.95</b>  +0.11% · 제공처 비교종가 대비 · 기준 23:37 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n",
+  "evidence_sha256": "735e4f4cc6b63a5d6e7022530b0dbb5dfcd0aae548fa1ce73fb3400f857fb805",
+  "limits": [
+    "Stored publisher extraction and RSS inputs do not preserve original operating HTTP response bytes.",
+    "Telegram returned body, server date, recipient hash and device receipt are unverified.",
+    "Source article statements are not independently confirmed events."
+  ]
+}

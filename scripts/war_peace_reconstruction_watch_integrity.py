@@ -31,7 +31,9 @@ KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입�
                'diplomatic_plan': '협상 추진·논의',
                'diplomatic_statement': '거래·정책 평가 발언',
                'diplomatic_analysis': '외교·안보 해설',
-               'diplomatic_position': '외교 갈등·압박 보도'}
+               'diplomatic_position': '외교 갈등·압박 보도',
+               'diplomatic_appeal': '항행·협상 재개 요구',
+               'operational_disruption': '행사·운영 일정 변경 보도'}
 
 
 def _headline(row):
@@ -78,6 +80,9 @@ def _riyadh_missile_headline(row):
 
 def _display_headline(row):
     original = str(row.get('title_original') or row.get('title') or '')
+    if non_military_kind(row) in ('diplomatic_appeal', 'operational_disruption'):
+        # RSS bullet lines remain one ordered headline in the rendered block.
+        return ' '.join(original.split())
     return original if (_riyadh_missile_headline(row) or re.search(r'[가-힣]', original)
                         or _diplomatic_deal_statement(original.lower())) else str(row.get('title_ko') or original)
 
@@ -100,6 +105,8 @@ def _energy_facility_statement_spans(title):
 
 
 def _headline_action_label(row):
+    if _headline_attack_casualties(row):
+        return '공습·공격 피해 보도'
     if _headline_drone_action(row):
         return '드론 공습 보도'
     if _maritime_attack_headline(row):
@@ -143,7 +150,7 @@ def _diplomatic_group(title):
             ('미국', r'미국|트럼프|美|\bu\.s\.|\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너'),
             ('우크라이나', r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b'),
             ('중국', r'중국|시진핑|\b(?:china|chinese|xi(?:\s+jinping)?)\b'),
-            ('러시아', r'러시아|푸틴|크렘린|(?:^|\s)러(?=\s|[·ㆍ/]|$)|\b(?:russia\w*|putin|kremlin)\b')):
+            ('러시아', r'러시아|푸틴|크렘린|라브로프|(?:^|\s)러(?=\s|[·ㆍ/]|$)|\b(?:russia\w*|putin|kremlin|lavrov)\b')):
         if re.search(pattern, title) or (trilateral and label in ('미국', '중국', '러시아')):
             actors.append(label)
     if _summit_proposal_headline(title) and all(label in actors for label in ('미국', '중국', '러시아')):
@@ -160,9 +167,12 @@ def _information_resumption_headline(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
-    if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement'):
-        label = '정상회담 제안·논의' if kind == 'diplomatic_plan' and _summit_proposal_headline(title) else KIND_LABELS[kind]
+    if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal'):
+        label = ('조건부 공격 중단 제안' if kind == 'diplomatic_plan' and _conditional_pause_proposal(title) else
+                 '정상회담 제안·논의' if kind == 'diplomatic_plan' and _summit_proposal_headline(title) else KIND_LABELS[kind])
         return _diplomatic_group(title) + ' · ' + label
+    if kind == 'operational_disruption':
+        return _headline_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'market_effect':
         us_prices = re.search(r'(?:미국|美|united states|u\.s\.).{0,12}(?:물가|cpi|inflation)', title)
         return ('미국·물가' if us_prices else '물가·경제지표') + ' · 전쟁 파급 보도'
@@ -180,6 +190,10 @@ def _primary_topic(row):
         return _headline_group(title) + ' · ' + label
     if kind is None and _headline_drone_action(row):
         return _headline_group(title) + ' · 드론 공습 보도'
+    if kind is None and _headline_attack_casualties(row):
+        group = ('후티·예멘 정부군' if re.search(r'후티', title) and re.search(r'예멘\s*정부군', title)
+                 else _headline_group(title))
+        return group + ' · 공습·공격 피해 보도'
     if kind is None and _headline_refinery_action(row):
         return '우크라이나·러시아 · 정유시설 공격 보도'
     if _energy_facility_headline(row):
@@ -242,6 +256,36 @@ def _headline_drone_action(row):
             continue
         return True
     return False
+
+
+def _headline_attack_casualties(row):
+    """A current attack/casualty clause cannot inherit an old negotiation topic."""
+    title = _headline(row)
+    if re.search(r'조사\s*보고서|집계|해설|분석|계획|검토|가능성|우려|예상|예고|시사|규탄|비난|부인|허위|가짜|[?？]|'
+                 r'하지\s*않|한\s*적\s*없|사망\s*보도.{0,8}(?:아냐|사실무근)', title):
+        return False
+    return bool(re.search(
+        r'(?:공습|공격|폭격|타격)(?:으로|에|…|\.{3})\s*.{0,45}'
+        r'(?:사상자\s*속출|\d[\d,]*\s*(?:여\s*)?명\s*(?:사망|부상))', title))
+
+
+def _diplomatic_appeal_headline(title):
+    target = r'(?:negotiations?|talks|freedom of navigation|pre-crisis.{0,20}conditions|ceasefire)'
+    return bool(re.search(r'\b(?:calls?\s+for|urges?|demands?|appeals?\s+for)\b.{0,70}' + target, title)
+                or re.search(r'(?:협상|항행|항해|휴전).{0,35}(?:요구|촉구)', title))
+
+
+def _operational_disruption_headline(title):
+    event = r'(?:event|forum|conference|summit|행사|포럼|회의)'
+    change = r'(?:postpon\w*|cancel\w*|연기|취소)'
+    # "after attacks" names the background of the changed event schedule.
+    return bool((re.search(change + r'.{0,65}' + event, title)
+                 or re.search(event + r'.{0,25}' + change, title))
+                and re.search(r'\bafter\b.{0,35}\battacks?\b|(?:공격|공습).{0,18}(?:이후|여파)|(?:공격|공습)\s*후', title))
+
+
+def _conditional_pause_proposal(title):
+    return bool(re.search(r'(?:대가|조건).{0,50}(?:공격|공습)(?:을|를)?\s*중단.{0,25}제안', title))
 
 
 def _condemnation_object_spans(title):
@@ -452,7 +496,7 @@ def non_military_kind(row):
                           r'\b(?:ceasefire|peace deal).{0,20}(?:agreed|signed|implemented)', title)
     if mixed_restraint_attack(row):
         return 'mixed_restraint'
-    if _headline_drone_action(row):
+    if _headline_drone_action(row) or _headline_attack_casualties(row):
         return None
     # Require an explicit new-action predicate before background weapon nouns
     # can turn a sanctions listing or a condemnation into a military event.
@@ -466,6 +510,14 @@ def non_military_kind(row):
         return None
     if _report_with_completed_action(title):
         return None
+    if (not new_peace and not (statements or future or condemnation or _ceasefire_rejection_headline(title))
+            and not re.search(r'\b(?:attacked|struck|bombed)\b', title)):
+        if _diplomatic_appeal_headline(title):
+            return 'diplomatic_appeal'
+        if _operational_disruption_headline(title):
+            return 'operational_disruption'
+        if _conditional_pause_proposal(title):
+            return 'diplomatic_plan'
     if _military_report_headline(title):
         return 'military_report'
     if condemnation:
@@ -517,12 +569,13 @@ def _clear_market_event_cache(row):
 
 def _headline_event_cache_required(row, kind):
     return (kind in ('support_statement', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis', 'trade_proposal',
-                    'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement')
+                    'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption')
             or (kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
             or _energy_facility_headline(row)
             or (kind is None and _headline_refinery_action(row))
             or (kind is None and _headline_drone_action(row))
+            or (kind is None and _headline_attack_casualties(row))
             or (_maritime_attack_headline(row) and not maritime_attack_tally(row)))
 
 
@@ -549,7 +602,7 @@ def score_item(row, now):
         _clear_market_event_cache(row)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
-    if kind in ('support_statement', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement'):
+    if kind in ('support_statement', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption'):
         _clear_headline_event_cache(row, kind)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
@@ -575,6 +628,8 @@ def final_color(row):
     if _headline_refinery_action(row):
         return 'red'
     if _headline_drone_action(row):
+        return 'red'
+    if _headline_attack_casualties(row):
         return 'red'
     if _energy_facility_headline(row) and _military_actions(_headline(row)):
         return 'red'
@@ -606,6 +661,15 @@ def verdict(items):
         )
     kinds = [non_military_kind(row) for row in items]
     if kinds and all(kinds):
+        if set(kinds) & {'diplomatic_appeal', 'operational_disruption'}:
+            core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
+            return (
+                '<b>투자 판정</b>\n'
+                f'- <b>핵심:</b> {core}\n'
+                '- <b>현재 단계:</b> 요구·촉구·제안과 행사 일정 변경 보도 — 실제 협상 개최·양측 휴전 이행·새 군사작전은 별도 확인 필요\n'
+                '- <b>시장:</b> 발언의 요구 대상과 행사 차질을 구분하고 운항·공급·가격의 실제 변화는 별도 확인\n'
+                '- <b>다음:</b> 발언·일정 원문 → 공식 결정 → 실제 협상·운영 변화·작전 확인'
+            )
         if set(kinds) & {'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement'}:
             core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
             return (
@@ -980,7 +1044,7 @@ def verify_alert(test_mode=False):
         age = watch.age_minutes(row, dt.datetime.fromisoformat(receipt['queried_at_kst']))
         if age is not None and age > 3 * 60:
             raise RuntimeError('WAR_INTEGRITY_GATE: stale discovery publication in rendered source')
-        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement') and (
+        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption') and (
                 row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
             raise RuntimeError('WAR_INTEGRITY_GATE: statement presented as a new attack or implemented peace')
         marker = {'red': '🔴', 'green': '🟢', 'yellow': '🟡'}.get(row.get('classification_color'), '')
@@ -1014,6 +1078,9 @@ def verify_alert(test_mode=False):
         if current_kind is None and _headline_drone_action(row) and (
                 row.get('classification_color') != 'red' or not lines[start].startswith('🔴')):
             raise RuntimeError('WAR_INTEGRITY_GATE: drone attack headline hidden by background stage')
+        if current_kind is None and _headline_attack_casualties(row) and (
+                row.get('classification_color') != 'red' or not lines[start].startswith('🔴')):
+            raise RuntimeError('WAR_INTEGRITY_GATE: attack casualties hidden by background stage')
         if current_kind is None and _energy_facility_headline(row) and _military_actions(_headline(row)) and (
                 row.get('classification_color') != 'red' or not lines[start].startswith('🔴')):
             raise RuntimeError('WAR_INTEGRITY_GATE: separate actual action hidden by energy facility plan')
