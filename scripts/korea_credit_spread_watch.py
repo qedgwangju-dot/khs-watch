@@ -194,8 +194,8 @@ def next_boundary(latest):
     cp_lim,aa_lim=UP[k+1]
     cp_gap=max(0,cp_lim-latest["cp_cd"])
     aa_gap=max(0,aa_lim-latest["credit"])
-    return (f"{LEVELS[k+1]}: CP–CD {cp_lim:.0f}bp까지 {cp_gap:.1f}bp"
-            f" / AA- {aa_lim:.0f}bp까지 {aa_gap:.1f}bp (둘 중 하나)")
+    return (f"{LEVELS[k+1]}: CP–CD {cp_lim:.0f}bp(+{cp_gap:.1f}bp) "
+            f"또는 AA- {aa_lim:.0f}bp(+{aa_gap:.1f}bp)")
 
 def render(rows,decision,now,sample=False):
     if len(rows)<7: raise ValueError("원문 통계가 7공표일 미만이라 메시지 생성 불가")
@@ -211,8 +211,9 @@ def render(rows,decision,now,sample=False):
     if sample: lines.append("<b>[양식 검증 · 새 경보가 아닙니다]</b>")
     lines += [
         f"<b>국내 신용금리 경보 | {applied}</b>",
-        f"<b>방향: {d['summary']}</b>",
-        f"자료 {date} · 전일/5영업일 비교",
+        f"<b>5영업일 방향: {d['summary']}</b>",
+        f"전일 변화: CP–CD {signed(diff1('cp_cd'))}bp / AA- {signed(diff1('credit'))}bp",
+        f"공식 기준일 {date} · 확대=상대 조달부담 증가",
     ]
     if applied!=measured:
         lines.append(f"실측 {measured} / 경보 {applied}(회복 연속 확인 중)")
@@ -226,14 +227,13 @@ def render(rows,decision,now,sample=False):
         f"AA- 회사채–국고채 <b>{latest['credit']:.1f}bp</b> {d['aa'][1]} {d['aa'][2]}",
         f"  전일 {signed(diff1('credit'))} / 5일 {signed(diff5('credit'))}bp",
         "",
-        "<b>② 실제 금리 (연%)</b>",
+        "<b>② 실제 금리 (연% · 전일/5일 변화)</b>",
     ]
     for kind,short in (("cp","CP 91일"),("cd","CD 91일"),
                        ("corp","회사채 AA- 3년"),("gov","국고채 3년")):
         lines.append(f"{short} {latest['rates'][kind]:.3f}% | "
                      f"{signed(rate_delta(kind,prev))}/{signed(rate_delta(kind,week))}bp")
     lines += [
-        "(금리 변동: 전일/5일)",
         "",
         "<b>③ 다음 경계</b>",
         next_boundary(latest)
@@ -242,8 +242,8 @@ def render(rows,decision,now,sample=False):
         t=decision["rank"]-1
         cp_cap,aa_cap,n=DOWN[t]
         streak,_=recovery_streak(rows,t)
-        lines.append(f"하향 확인: 두 스프레드 {cp_cap:.0f}/{aa_cap:.0f}bp 미만"
-                     f" {n}영업일 (현재 {streak}/{n})")
+        lines.append(f"하향: CP–CD {cp_cap:.0f}bp 미만 + AA- {aa_cap:.0f}bp 미만")
+        lines.append(f"  두 조건 동시 {n}영업일 연속 (현재 {streak}/{n})")
     if decision["events"]:
         lines.append("추가 신호: "+"; ".join(html.escape(x) for x in decision["events"]))
     if d["cp"][0]=="악화" and d["aa"][0]=="보합":
