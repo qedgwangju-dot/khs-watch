@@ -40,6 +40,39 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         merged = w._merge_typed_state(w.RECLAIMED_MEMORY_BASELINE, obs)
         self.assertFalse(merged["smartphone_brand_procurement_official_confirmed"])
         self.assertEqual(w._reclaimed_memory_changes(w.RECLAIMED_MEMORY_BASELINE, merged), [])
+        kept = w._merge_reclaimed_memory_state(w.RECLAIMED_MEMORY_BASELINE, obs)
+        self.assertEqual(kept["source_url"], w.RECLAIMED_MEMORY_BASELINE["source_url"])
+
+    def test_reclaimed_official_oem_grant_is_not_official_oem_chip_purchase(self):
+        item = {
+            "title": "深圳手机厂商回收内存芯片补贴正式发布",
+            "description": "深圳市正式公布手机厂商采购拆机内存芯片补贴300元政策",
+            "source": "深圳市人民政府",
+            "link": "https://www.sz.gov.cn/test/local-memory-policy.html",
+            "published_kst": "2026-10-20T12:00:00+09:00",
+        }
+        obs = w._extract_reclaimed_memory(item)
+        self.assertIsNotNone(obs)
+        self.assertTrue(obs["shenzhen_oem_subsidy_official_confirmed"])
+        self.assertFalse(obs.get("smartphone_brand_procurement_official_confirmed", False))
+        current = w._merge_reclaimed_memory_state(w.RECLAIMED_MEMORY_BASELINE, obs)
+        self.assertTrue(any("보조금 제도 공식 발표" in c
+                            for c in w._reclaimed_memory_changes(w.RECLAIMED_MEMORY_BASELINE, current)))
+
+    def test_reclaimed_republishers_preserve_primary_source_url(self):
+        baseline = dict(w.RECLAIMED_MEMORY_BASELINE)
+        republished = {
+            "source": "조세일보",
+            "source_url": "https://news.google.com/rss/articles/temporary",
+            "source_rank": 2,
+            "as_of": "2026-10-20",
+            "used_phone_chip_trade_reported": True,
+        }
+        upgraded = w._merge_reclaimed_memory_state(baseline, republished)
+        self.assertEqual(upgraded["source"], baseline["source"])
+        self.assertEqual(upgraded["source_url"], baseline["source_url"])
+        self.assertFalse(upgraded["smartphone_brand_procurement_official_confirmed"])
+        self.assertEqual(w._reclaimed_memory_changes(baseline, upgraded), [])
 
     def test_reclaimed_consumer_subsidy_never_becomes_chip_sourcing(self):
         item = {

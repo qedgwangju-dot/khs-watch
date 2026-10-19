@@ -2632,6 +2632,8 @@ def _reclaimed_memory_source_rank(item: dict) -> int:
     makers = ("samsung.com", "mi.com", "oppo.com", "vivo.com", "huawei.com", "apple.com")
     if any(host == x or host.endswith("." + x) for x in makers):
         return 3
+    if host == "gov.cn" or host.endswith(".gov.cn"):
+        return 3
     media = ("technews.tw", "trendforce.com", "reuters.com", "digitimes.com",
              "joseilbo.com", "newsis.com")
     if any(host == x or host.endswith("." + x) for x in media):
@@ -2697,6 +2699,13 @@ def _extract_reclaimed_memory(item: dict) -> dict | None:
         amount = nearest_amount(("subsidy", "subsid", "補助", "补助", "補貼", "补贴", "보조금", "지원금"), 65)
         if amount is not None and 100 <= amount <= 1000:
             obs["reported_shenzhen_oem_subsidy_cny"] = amount
+        host = (urllib.parse.urlparse(str(item.get("link") or "")).hostname or "").lower()
+        if (host == "gov.cn" or host.endswith(".gov.cn")) and any(
+            x in blob for x in ("subsid", "補助", "补助", "補貼", "补贴", "보조금", "지원금")
+        ) and any(x in blob for x in ("official", "正式", "确定", "公布", "发布", "공식")):
+            # Explicit local OEM scheme, not the nationwide consumer rebate.
+            obs["shenzhen_oem_subsidy_official_confirmed"] = True
+            obs["shenzhen_oem_subsidy_official_source_url"] = item.get("link") or ""
     obs.update({
         "source": item.get("source") or "출처 미표시",
         "source_url": item.get("link") or "",
@@ -2706,12 +2715,25 @@ def _extract_reclaimed_memory(item: dict) -> dict | None:
     return obs
 
 
+def _merge_reclaimed_memory_state(old: dict, obs: dict) -> dict:
+    merged = _merge_typed_state(old, obs)
+    if not merged.get("smartphone_brand_procurement_official_confirmed"):
+        # Reprints, including undecoded Google News RSS redirect URLs, must
+        # not overwrite the original TechNews investigation's provenance.
+        for field in ("source", "source_url", "source_kind"):
+            merged[field] = RECLAIMED_MEMORY_BASELINE[field]
+        merged["source_rank"] = RECLAIMED_MEMORY_BASELINE["source_rank"]
+    return merged
+
+
 def _reclaimed_memory_changes(old: dict, new: dict) -> list[str]:
     changes: list[str] = []
     if new.get("smartphone_brand_procurement_reported") is True and not old.get("smartphone_brand_procurement_reported"):
         changes.append("폐휴대폰 회수칩 제조사 조달 보도 등장(실명·계약 미확인)")
     if new.get("smartphone_brand_procurement_official_confirmed") is True and not old.get("smartphone_brand_procurement_official_confirmed"):
         changes.append("휴대폰 제조사의 회수 메모리칩 실제 채택 공식 확인")
+    if new.get("shenzhen_oem_subsidy_official_confirmed") is True and not old.get("shenzhen_oem_subsidy_official_confirmed"):
+        changes.append("선전시 제조사 회수칩 조달 보조금 제도 공식 발표")
     for key, label in (
         ("reported_chip_cost_increase_cny", "보도상 칩당 메모리 원가 상승폭"),
         ("reported_shenzhen_oem_subsidy_cny", "보도상 선전시 제조사 지원설"),
@@ -3228,7 +3250,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     if divergence_upgrade_due:
         state["nand_divergence_track_version"] = NAND_DIVERGENCE_TRACK_VERSION
 
-    reclaimed_state = _merge_typed_state(
+    reclaimed_state = _merge_reclaimed_memory_state(
         RECLAIMED_MEMORY_BASELINE, dict(state.get("reclaimed_memory") or {}),
     )
     reclaimed_upgrade_due = int(state.get("reclaimed_memory_track_version") or 0) < RECLAIMED_MEMORY_TRACK_VERSION
@@ -3465,7 +3487,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         obs = _extract_reclaimed_memory(item)
         if not obs:
             continue
-        updated = _merge_typed_state(reclaimed_state, obs)
+        updated = _merge_reclaimed_memory_state(reclaimed_state, obs)
         changes = _reclaimed_memory_changes(reclaimed_state, updated)
         reclaimed_state = updated
         if changes:
@@ -4051,7 +4073,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if price is not None:
             lines.append(f"  원가 제보: 일부 메모리칩의 가격 상승폭 최대 <b>{int(price):,}위안</b>/개 · 공식 계약가 아님")
         if subsidy is not None:
-            lines.append(f"  지원설: 선전시 제조사 보조 약 <b>{int(subsidy):,}위안</b> · 시정부 확정 공문 확인 전")
+            support_status = (
+                "시정부 공식자료 확인" if reclaimed_state.get("shenzhen_oem_subsidy_official_confirmed")
+                else "시정부 확정 공문 확인 전"
+            )
+            lines.append(f"  지원설: 선전시 제조사 보조 약 <b>{int(subsidy):,}위안</b> · {support_status}")
         lines.append("  별도 공식정책: 중국의 소비자 대상 스마트폰 구매보조금은 판매가 15%, 최대 500위안이며 제조사 회수칩 지원설과 다름")
         lines.append("  대체 범위: 모바일 LPDDR·UFS/eMMC 회수 부품의 저가·수리 시장; HBM·서버용 DDR5·기업용 SSD 양산품 대체로 보지 않음")
         lines.append("  실패모드: 탈납땜·재포장 수율 저하, 호환성·신뢰성 검증 부족, 위조품, 반품·교환 접수·보증비용")
