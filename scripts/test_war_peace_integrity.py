@@ -96,6 +96,70 @@ class IntegrityTests(unittest.TestCase):
         value = json.loads(path.read_text(encoding='utf-8'))
         return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def bilateral_possibility_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_bilateral_possibility_39276986309.json'
+        value = json.loads(path.read_text(encoding='utf-8'))
+        return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_actual_Iran_Russia_ministers_keep_explicit_bilateral_contact(self):
+        fixture, _ = self.bilateral_possibility_fixture()
+        row = fixture['articles'][1]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_contact')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '이란·러시아 · 외교 접촉 보도')
+
+    def test_actual_summit_possibility_reaction_is_not_a_completed_contact(self):
+        fixture, _ = self.bilateral_possibility_fixture()
+        row = fixture['articles'][2]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_position')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '러시아 · 회담 가능성에 대한 반응')
+
+    def test_actual_bilateral_possibility_render_passes_full_gate(self):
+        fixture, now = self.bilateral_possibility_fixture()
+        rows = fixture['articles']
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        self.assertEqual([row['classification_color'] for row in rows], ['red', 'yellow', 'yellow'])
+        for row in rows:
+            self.assertIn(html.escape(row['title_original']), text)
+        self.assertNotIn('이란·호르무즈', text)
+        self.assertIn('이란·러시아 · 외교 접촉 보도', text)
+        self.assertIn('러시아 · 회담 가능성에 대한 반응', text)
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            integrity.verify_alert()
+
+    def test_final_gate_rejects_same_hash_wrong_bilateral_possibility_topics(self):
+        fixture, now = self.bilateral_possibility_fixture()
+        text = fixture['dry_run_alert'].strip()
+        receipt = evidence.alert_receipt(fixture['articles'], fixture['markets'], now, text)
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in fixture['articles']]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
+                integrity.verify_alert()
+
+    def test_bilateral_contact_keeps_separate_operations_and_implemented_peace(self):
+        for title in ('이란·러 외무장관 회담…양국 공조 강조',
+                      'Iran and Russia foreign ministers hold talks'):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), 'diplomatic_contact')
+                self.assertEqual(integrity.topic_label(article(title)), '이란·러시아 · 외교 접촉 보도')
+        for title in ('이란·러 외무장관 회담…이란 미사일 발사',
+                      '이란·러 외무장관 회담…양측 휴전 합의 발효'):
+            with self.subTest(title=title):
+                self.assertNotEqual(integrity.non_military_kind(article(title)), 'diplomatic_contact')
+
     def demands_disruption_fixture(self):
         path = Path(__file__).parent/'test_fixtures/war_demands_disruption_attack_39271931307.json'
         value = json.loads(path.read_text(encoding='utf-8'))
