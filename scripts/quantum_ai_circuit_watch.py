@@ -110,7 +110,7 @@ def stage(title,body):
         return "논문·결과 정정 또는 재현 실패"
     if re.search(r"\b(contract|paid|license|commercial|customer|production deployment|revenue)\b",title) and re.search(r"\b(quantum|circuit|compiler|qubit)\b",title):
         return "양자 설계·제어 유료 계약 또는 상용 채택"
-    if re.search(r"\b(replicat|reproduc|independent validation|independently verified)\b",title):
+    if re.search(r"\b(replicat\w*|reproduc\w*|independent validation|independently verified)\b",title):
         return "독립 재현·검증"
     if re.search(r"\b(hardware|processor|computer|qpu|physical qubits|laser control)\b",title) and re.search(r"\b(demonstrat|deploy|implement|execut|run|control|automat|operate|tested|validated|stabili)\w*",title):
         if re.search(r"\b(demonstrat|deploy|implement|execut|run|control|automat|operat|test|validat)\w*",body):
