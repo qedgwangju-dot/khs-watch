@@ -4824,7 +4824,10 @@ OPENAI_HUMANOID_NAME = re.compile(r'\bOpenAI\b|오픈\s*AI', re.I)
 OPENAI_HUMANOID_KIND = re.compile(r'휴머노이드|humanoid|robotics?|로보틱스|로봇', re.I)
 OPENAI_HUMANOID_FUTURE = re.compile(
     r'\b2027\b|시연|실물|demo|prototype|액추에이터|actuator|motor|'
-    r'자체\s*개발|building|build|채용|hiring', re.I
+    r'자체\s*개발|building|build|채용|hiring|'
+    r'정식\s*(?:공급|구매|판매)\s*계약|유상\s*계약|'
+    r'signed|supply\s+contract|customer\s+contract|'
+    r'deliver(?:ies|ed)?|출하|납품|commercial\s+launch', re.I
 )
 OPENAI_HUMANOID_COMPLETED = re.compile(
     r'실물\s*시연\s*(?:완료|공개|실시)|'
