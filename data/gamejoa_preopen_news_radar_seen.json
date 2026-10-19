@@ -4428,6 +4428,31 @@
       "telegram_core_fact": "강원 원주시는 '2026 원주 중소기업 우수제품 박람회'가 2만여명의 관람객을 모으고 온오프라인에서 3억3천만원의 매출을 기록했다고 7일 밝혔다.",
       "title": "원주 중소기업 우수제품 박람회 2만명 방문…매출 3억3천만원 | 연합뉴스"
     },
+    "core:109d0958b33e594713714611": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.asiae.co.kr/article/2026101613180548638",
+      "source": "아시아경제",
+      "source_body_digest": "a53f37c4796740ee3881ebe28a8c169bd022cdfa5e73752354068784476c843a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:602bcf593c14cda342583f360b0137319c6f4ae82662996f4eec8f1f28afb9a3",
+      "source_fact_keys": [
+        "source_fact:v1:06f1843ed36de0952124be2940444af213547370e586768bf33452f502504488",
+        "source_fact:v1:4dd727f2f61cfc6533361772b47b605115598da3ed9f1dda8b102e39fe82155e",
+        "source_fact:v1:7a049b198a73fa3aa5917da6d33bce4f9879a6339b767bd2afb55b36e0171fa6",
+        "source_fact:v1:9c370106efcf28933ade9e88f91decd49ed3f585fa3a3ec1bb73027f4935c432",
+        "source_fact:v1:aff6a0b60c1972cf6d3bc373078da9804bec2940e36b6b177a18cb8f94524738",
+        "source_fact:v1:fdbe05d701d14e070c9821c0cdc0b4db62ff3851028cfe8d4c5c65557c0a3394"
+      ],
+      "source_published_kst": "2026-10-19T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다",
+      "telegram_core_fact": "특히 3나노미터(㎚·10억분의 1m) 이하 첨단공정에 대한 TSMC의 투자 결정이 향후 전력 수요 증가를 좌우할 핵심 변수라고 설명했다. 첨단 반도체 공장 증설과 인공지능(AI) 서버 산업 확대에 따라 오는 2035년에는 대만 전체 전력 소비량의 약 30%를 반도체 관련 산업이 차지할 것으로 예상된다.",
+      "title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다"
+    },
     "core:10af1f8db1997a7960a60e8e": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
       "lanes": {
@@ -22920,6 +22945,24 @@
       "telegram_core_fact": "아이티센씨티에스는 롯데이노베이트와 2027년 준공 예정인 안산 GCC 운영과 향후 데이터센터 사업 협력을 위한 업무협약(MOU)을 맺었다고 16일 밝혔다. 아이티센씨티에스는 핵심 협력사로 참여해 전문 운영 인력과 IT 인프라 운영 역량으로 데이터센터 운영을 지원한다.",
       "title": "아이티센씨티에스, AI 데이터센터 사업 확대…롯데이노베이트와 협력"
     },
+    "core:579f72ba01927ad1403dd4f5": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019034100003",
+      "source": "연합뉴스",
+      "source_body_digest": "5f1d143583891c97b8a8101ed27bbd088cac91a0193d0e538d82ffdcd532d19c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T09:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, 현지법인 '한미USA' 설립…반도체 공급망 공략 | 연합뉴스",
+      "telegram_core_fact": "한미반도체는 미국 내 메모리와 파운드리(반도체 위탁생산), 첨단 패키징 생산 기반이 확대되면서 반도체 제조 장비 수요도 늘어날 것으로 기대하고 있다.",
+      "title": "한미반도체, 현지법인 '한미USA' 설립…반도체 공급망 공략 | 연합뉴스"
+    },
     "core:57c0cec098000c61e2d18e64": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
       "lanes": {
@@ -28920,6 +28963,37 @@
       "source_title": "[ET특징주]셀트리온, 3분기 역대 최대 실적에 상승세",
       "telegram_core_fact": "셀트리온은 연결 기준 올해 3분기 영업이익이 전년비 69.2% 늘어난 5100억원, 매출은 45.8% 증가한 1조5000억원으로 잠정 집계됐다고 발표했다.",
       "title": "[ET특징주]셀트리온, 3분기 역대 최대 실적에 상승세"
+    },
+    "core:6f0eb8a4d53d238698f3eb42": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
     },
     "core:6f2c1f8cc244a49e9339fd22": {
       "first_seen_kst": "2026-10-12T10:37:32+09:00",
@@ -41110,6 +41184,24 @@
       "telegram_core_fact": "산업통상부는 13일 \"10∼11월 원유 도입물량은 전년 평균 대비 100% 이상 확보하고 있다\"며 \"나프타는 10월 물량을 수요 대비 100% 이상, 11월 물량도 수요 대비 100% 수준으로 확보했다\"고 설명했다.",
       "title": "경유 공급 우려에 정부 \"물량 문제 없어…11월까지 원유 100%\" | 연합뉴스"
     },
+    "core:9d8c23f440f832ba236c1b0b": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261019005100038",
+      "source": "연합뉴스",
+      "source_body_digest": "8c9619794bef18379838c32b217127128f20544ac001b635ade53aaabea604f8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"종전협상 위해 결정\"…프랑스선 시위 격화 | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러 제재 보류 결정은 러시아 우크라이나 전쟁의 종전 협상을 위한 것이라고 밝혔습니다. 네 트럼프 대통령이 최근 러시아에 대한 제재를 보류한 것은 러시아가 종전 협상을 계속하도록 하기 위한 결정이었다고 주장했습니다.",
+      "title": "트럼프 \"종전협상 위해 결정\"…프랑스선 시위 격화 | 연합뉴스"
+    },
     "core:9dafe220ba7014fb0d1730cf": {
       "first_seen_kst": "2026-10-19T07:37:37+09:00",
       "lanes": {
@@ -46444,6 +46536,31 @@
       "source_title": "\"투자유치 성과 구체화\"…세종시장, 100여일만 시청 집무실 복귀 | 연합뉴스",
       "telegram_core_fact": "취임 100일을 기점으로 기업의 투자 계획이 구체화한 것이 시청 집무실 복귀를 결정한 배경이 됐다. 세종시는 삼성전기의 8조원대 투자계획, 다이소 물류센터 확장계획, 8조8천억원대 인공지능 데이터센터 유치 등을 조 시장 취임 후 주요 투자유치 성과로 꼽았다.",
       "title": "\"투자유치 성과 구체화\"…세종시장, 100여일만 시청 집무실 복귀 | 연합뉴스"
+    },
+    "core:b26c810f46df07510a067a15": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906537",
+      "source": "헤럴드경제",
+      "source_body_digest": "ecfafb4f9ce7a5765ef09a0610ee44869fbd0d235cb8460a42bb1a7e9d553b6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b2d714c5fbca9735e4d1402a2d4b32ebe8359be0fa8e2116d2ce2b6b57aa6bf",
+      "source_fact_keys": [
+        "source_fact:v1:855df57a8075ad05a0264a1ee1d1a4d2777365fff0a392437dad5dfcc3f4bb4a",
+        "source_fact:v1:8c4ee3a9c85c883e53d836a47298bb358269634111bc4c83adb9a8a17dd7ae03",
+        "source_fact:v1:931e83e602c0d92fbd20995ee3967a167f7d67fc8e6c16b7a5be4fe962f0e094",
+        "source_fact:v1:a8d02e455c3a6df41bec66f59a8e33d38165e30af12eec948744675aba090102",
+        "source_fact:v1:c090e76d470208ee15677d0b2e8988bee4d4f55796eb0a557d7d93dd0740fea8",
+        "source_fact:v1:caa47b03372e16988c0fd6f64f418e5db23be321c1a6cd0753ce769892ef5615"
+      ],
+      "source_published_kst": "2026-10-19T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄",
+      "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지코리아가 2031년까지 광주사업장에 총 3조원을 투자해 인공지능(AI)용 첨단 패키징 시설을 확충한다. 앰코는 2031년까지 총 3조원을 투자해 약 2000명을 고용할 계획이다.",
+      "title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄"
     },
     "core:b26c9f6a84ff8e8dc7c28a01": {
       "first_seen_kst": "2026-10-13T04:58:06+09:00",
@@ -55665,6 +55782,31 @@
       "source_title": "美 10월 소비자심리 5개월 만에 최저…생활비 불만 커져",
       "telegram_core_fact": "9일(현지시간) 미국 월스트리트저널(WSJ) 등 외신에 따르면 미시간대가 발표한 10월 소비자심리지수 잠정치는 46.3으로, 전월 확정치(48.1)보다 1.8포인트 하락했다. 미국 소비자심리가 생활비 부담 속에 5개월 만에 가장 낮은 수준으로 떨어졌다.",
       "title": "美 10월 소비자심리 5개월 만에 최저…생활비 불만 커져"
+    },
+    "core:d790bedeb3ca7b1e6bdfdd40": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831001",
+      "source": "뉴시스",
+      "source_body_digest": "403afe21141f51a08e13c8d963ae5b46793fe89a0b7531f0a73d46504065891e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b164fea4523821e98e31f853f86165a5c2503d941a0d7cfa23f7db47d45bd4a",
+      "source_fact_keys": [
+        "source_fact:v1:3bc0d881833dfec868c4d31ab6bee9aad84cbd93ad1ca81873e129165b4b1fdb",
+        "source_fact:v1:424e11c9bbf2fe261ccf8c16f155f9e6fcdd0297c468bbf11cdd3bbd2b5da3c6",
+        "source_fact:v1:68a5a80d4ce546fb7a540eb8596938708037d0cc55d33b8ba12e63c40c4b43d9",
+        "source_fact:v1:771c29ee9576b20204d63780d7362caac26a6c3e520864adf769055c0b94c62f",
+        "source_fact:v1:a7f87ff084be62d82415248c7e011bfb66b43c892b08ee22f7645d2a9237f9d1",
+        "source_fact:v1:aa90f850784d8b69cc465a6ce2c4dc7ca8859606b7616d6443eb84daf47940d4"
+      ],
+      "source_published_kst": "2026-10-19T09:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업",
+      "telegram_core_fact": "\"앞으로 오스넷·CIP를 비롯한 글로벌 기업들과 협력을 확대해 호주 재생에너지 개발과 전력망 구축 사업에서 신규 사업을 발굴할 계획\"이라고 밝혔다. 현대건설이 호주 에너지 기업 오스넷과 송·변전 인프라에 이어 에너지저장장치(BESS), 데이터센터 계통연계 사업까지 협력을 확대한다.",
+      "title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업"
     },
     "core:d79107b68dbd47c89b78b77e": {
       "first_seen_kst": "2026-10-16T17:33:02+09:00",
@@ -80352,24 +80494,27 @@
     "event:d9dd1c9b93405b66406e492f": {
       "first_seen_kst": "2026-10-19T00:10:36+09:00",
       "lanes": {
-        "live": "2026-10-19T00:10:36+09:00"
+        "live": "2026-10-19T10:00:18+09:00"
       },
-      "last_seen_kst": "2026-10-19T00:10:36+09:00",
-      "link": "https://www.newsis.com/view/NISX20261014_0003825089",
-      "source": "뉴시스",
-      "source_body_digest": "6664d431b68cf771f18f89629231fa2014e07295620a51c80f739a94ad8c6cc9",
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906537",
+      "source": "헤럴드경제",
+      "source_body_digest": "ecfafb4f9ce7a5765ef09a0610ee44869fbd0d235cb8460a42bb1a7e9d553b6a",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:c5a0781ef638988f63436a86390c844db764d8670b8624ca9fc890aa277eb5d0",
+      "source_fact_identity": "source_facts:v1:0b2d714c5fbca9735e4d1402a2d4b32ebe8359be0fa8e2116d2ce2b6b57aa6bf",
       "source_fact_keys": [
-        "source_fact:v1:8ccbabcfb0b08f86fab5fd78a6467c354efcfec2d7237a4d88445379f9311d11",
-        "source_fact:v1:b8aac1ab2387546d87d5a43e7f038267d837635f09f4922a417e38c2512f3be4",
-        "source_fact:v1:f4c057206a048862b32f401f6d79d1c9c72e39b57dd1df88d25fbce5398ce727"
+        "source_fact:v1:855df57a8075ad05a0264a1ee1d1a4d2777365fff0a392437dad5dfcc3f4bb4a",
+        "source_fact:v1:8c4ee3a9c85c883e53d836a47298bb358269634111bc4c83adb9a8a17dd7ae03",
+        "source_fact:v1:931e83e602c0d92fbd20995ee3967a167f7d67fc8e6c16b7a5be4fe962f0e094",
+        "source_fact:v1:a8d02e455c3a6df41bec66f59a8e33d38165e30af12eec948744675aba090102",
+        "source_fact:v1:c090e76d470208ee15677d0b2e8988bee4d4f55796eb0a557d7d93dd0740fea8",
+        "source_fact:v1:caa47b03372e16988c0fd6f64f418e5db23be321c1a6cd0753ce769892ef5615"
       ],
-      "source_published_kst": "2026-10-19T00:05+09:00",
+      "source_published_kst": "2026-10-19T08:51+09:00",
       "source_supply_terms": {},
-      "source_title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은",
-      "telegram_core_fact": "두 기업은 올해 초 AI를 활용한 신약 개발에 각각 10억 달러를 투자하겠다는 공동 계획을 발표했다. 글로벌 빅테크 기업들이 인공지능(AI)을 앞세워 제약·바이오 시장에 진출하면서 국내 바이오 기업들의 해외 기술 협력 기회가 늘어날 것이라는 전망이 나왔다.",
-      "title": "엔비디아·릴리 뭉쳤다…AI 신약 개발 열풍 속 K바이오 생존 전략은"
+      "source_title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄",
+      "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지코리아가 2031년까지 광주사업장에 총 3조원을 투자해 인공지능(AI)용 첨단 패키징 시설을 확충한다. 앰코는 2031년까지 총 3조원을 투자해 약 2000명을 고용할 계획이다.",
+      "title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄"
     },
     "event:d9f68e9c742b0457f3d6101b": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -91146,6 +91291,31 @@
       ],
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "\"LG전자, AI 데이터센터 냉각·로보틱스 사업 기대…목표가↑\"-메리츠"
+    },
+    "fact:194bfe76af2be569692e902b": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.asiae.co.kr/article/2026101613180548638",
+      "source": "아시아경제",
+      "source_body_digest": "a53f37c4796740ee3881ebe28a8c169bd022cdfa5e73752354068784476c843a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:602bcf593c14cda342583f360b0137319c6f4ae82662996f4eec8f1f28afb9a3",
+      "source_fact_keys": [
+        "source_fact:v1:06f1843ed36de0952124be2940444af213547370e586768bf33452f502504488",
+        "source_fact:v1:4dd727f2f61cfc6533361772b47b605115598da3ed9f1dda8b102e39fe82155e",
+        "source_fact:v1:7a049b198a73fa3aa5917da6d33bce4f9879a6339b767bd2afb55b36e0171fa6",
+        "source_fact:v1:9c370106efcf28933ade9e88f91decd49ed3f585fa3a3ec1bb73027f4935c432",
+        "source_fact:v1:aff6a0b60c1972cf6d3bc373078da9804bec2940e36b6b177a18cb8f94524738",
+        "source_fact:v1:fdbe05d701d14e070c9821c0cdc0b4db62ff3851028cfe8d4c5c65557c0a3394"
+      ],
+      "source_published_kst": "2026-10-19T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다",
+      "telegram_core_fact": "특히 3나노미터(㎚·10억분의 1m) 이하 첨단공정에 대한 TSMC의 투자 결정이 향후 전력 수요 증가를 좌우할 핵심 변수라고 설명했다. 첨단 반도체 공장 증설과 인공지능(AI) 서버 산업 확대에 따라 오는 2035년에는 대만 전체 전력 소비량의 약 30%를 반도체 관련 산업이 차지할 것으로 예상된다.",
+      "title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다"
     },
     "fact:194e656677419b7a1d52b944": {
       "first_seen_kst": "2026-10-16T16:08:38+09:00",
@@ -121621,6 +121791,31 @@
       "telegram_core_fact": "제이케이시냅스는 올해 상반기 반도체 공정 소재 부문 누적 매출액이 50억 3118만원을 기록했다고 이날 밝혔다.",
       "title": "제이케이시냅스, 반도체 공정 소재 부문 상반기 매출 50.3억"
     },
+    "fact:83eb4ba35152a9dbd6e3df78": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831001",
+      "source": "뉴시스",
+      "source_body_digest": "403afe21141f51a08e13c8d963ae5b46793fe89a0b7531f0a73d46504065891e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b164fea4523821e98e31f853f86165a5c2503d941a0d7cfa23f7db47d45bd4a",
+      "source_fact_keys": [
+        "source_fact:v1:3bc0d881833dfec868c4d31ab6bee9aad84cbd93ad1ca81873e129165b4b1fdb",
+        "source_fact:v1:424e11c9bbf2fe261ccf8c16f155f9e6fcdd0297c468bbf11cdd3bbd2b5da3c6",
+        "source_fact:v1:68a5a80d4ce546fb7a540eb8596938708037d0cc55d33b8ba12e63c40c4b43d9",
+        "source_fact:v1:771c29ee9576b20204d63780d7362caac26a6c3e520864adf769055c0b94c62f",
+        "source_fact:v1:a7f87ff084be62d82415248c7e011bfb66b43c892b08ee22f7645d2a9237f9d1",
+        "source_fact:v1:aa90f850784d8b69cc465a6ce2c4dc7ca8859606b7616d6443eb84daf47940d4"
+      ],
+      "source_published_kst": "2026-10-19T09:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업",
+      "telegram_core_fact": "\"앞으로 오스넷·CIP를 비롯한 글로벌 기업들과 협력을 확대해 호주 재생에너지 개발과 전력망 구축 사업에서 신규 사업을 발굴할 계획\"이라고 밝혔다. 현대건설이 호주 에너지 기업 오스넷과 송·변전 인프라에 이어 에너지저장장치(BESS), 데이터센터 계통연계 사업까지 협력을 확대한다.",
+      "title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업"
+    },
     "fact:84105470599569677145dce6": {
       "first_seen_kst": "2026-10-14T15:54:32+09:00",
       "lanes": {
@@ -133568,6 +133763,31 @@
       "telegram_core_fact": "이날 발표된 자료에 따르면 금융위원회와 금융감독원은 주거용 PF 사업장 300여 곳에 밀착관리 담당자를 지정하고 사업장별 자금조달 애로에 맞는 금융지원 방안을 연계·안내하는 등 집중 관리하고 있다.",
       "title": "금융위, 정비사업 금융·보증 지원 강화…주택공급 뒷받침"
     },
+    "fact:a953e405b25aa1beed21ff5f": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906537",
+      "source": "헤럴드경제",
+      "source_body_digest": "ecfafb4f9ce7a5765ef09a0610ee44869fbd0d235cb8460a42bb1a7e9d553b6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b2d714c5fbca9735e4d1402a2d4b32ebe8359be0fa8e2116d2ce2b6b57aa6bf",
+      "source_fact_keys": [
+        "source_fact:v1:855df57a8075ad05a0264a1ee1d1a4d2777365fff0a392437dad5dfcc3f4bb4a",
+        "source_fact:v1:8c4ee3a9c85c883e53d836a47298bb358269634111bc4c83adb9a8a17dd7ae03",
+        "source_fact:v1:931e83e602c0d92fbd20995ee3967a167f7d67fc8e6c16b7a5be4fe962f0e094",
+        "source_fact:v1:a8d02e455c3a6df41bec66f59a8e33d38165e30af12eec948744675aba090102",
+        "source_fact:v1:c090e76d470208ee15677d0b2e8988bee4d4f55796eb0a557d7d93dd0740fea8",
+        "source_fact:v1:caa47b03372e16988c0fd6f64f418e5db23be321c1a6cd0753ce769892ef5615"
+      ],
+      "source_published_kst": "2026-10-19T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄",
+      "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지코리아가 2031년까지 광주사업장에 총 3조원을 투자해 인공지능(AI)용 첨단 패키징 시설을 확충한다. 앰코는 2031년까지 총 3조원을 투자해 약 2000명을 고용할 계획이다.",
+      "title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄"
+    },
     "fact:a954ccb993a69dd7768eb9d4": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -142273,6 +142493,37 @@
       ],
       "source_published_kst": "2026-10-07T07:55+09:00",
       "title": "삼성전기, 3분기 ‘깜짝 실적’ 전망…목표가 160만→260만원"
+    },
+    "fact:c2fb16bcca193c88cf1f6317": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
     },
     "fact:c318b0383abf01258d514fd3": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
@@ -189502,6 +189753,31 @@
       "telegram_core_fact": "[파이낸셜뉴스]한화엔진이 삼성중공업과 1322억원 선박용 엔진 공급 계약을 체결하며 중장기 일감을 추가 확보했다.",
       "title": "한화엔진, 삼성重에 1322억 선박엔진 공급계약"
     },
+    "link:45ab01841e2e73fcc24d1186": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906537",
+      "source": "헤럴드경제",
+      "source_body_digest": "ecfafb4f9ce7a5765ef09a0610ee44869fbd0d235cb8460a42bb1a7e9d553b6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b2d714c5fbca9735e4d1402a2d4b32ebe8359be0fa8e2116d2ce2b6b57aa6bf",
+      "source_fact_keys": [
+        "source_fact:v1:855df57a8075ad05a0264a1ee1d1a4d2777365fff0a392437dad5dfcc3f4bb4a",
+        "source_fact:v1:8c4ee3a9c85c883e53d836a47298bb358269634111bc4c83adb9a8a17dd7ae03",
+        "source_fact:v1:931e83e602c0d92fbd20995ee3967a167f7d67fc8e6c16b7a5be4fe962f0e094",
+        "source_fact:v1:a8d02e455c3a6df41bec66f59a8e33d38165e30af12eec948744675aba090102",
+        "source_fact:v1:c090e76d470208ee15677d0b2e8988bee4d4f55796eb0a557d7d93dd0740fea8",
+        "source_fact:v1:caa47b03372e16988c0fd6f64f418e5db23be321c1a6cd0753ce769892ef5615"
+      ],
+      "source_published_kst": "2026-10-19T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄",
+      "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지코리아가 2031년까지 광주사업장에 총 3조원을 투자해 인공지능(AI)용 첨단 패키징 시설을 확충한다. 앰코는 2031년까지 총 3조원을 투자해 약 2000명을 고용할 계획이다.",
+      "title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄"
+    },
     "link:45b3e40f88b6192a140df3fa": {
       "first_seen_kst": "2026-10-16T21:59:28+09:00",
       "lanes": {
@@ -204733,6 +205009,31 @@
       "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
       "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
     },
+    "link:6ab1b30af1466e41e14e3a4b": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.asiae.co.kr/article/2026101613180548638",
+      "source": "아시아경제",
+      "source_body_digest": "a53f37c4796740ee3881ebe28a8c169bd022cdfa5e73752354068784476c843a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:602bcf593c14cda342583f360b0137319c6f4ae82662996f4eec8f1f28afb9a3",
+      "source_fact_keys": [
+        "source_fact:v1:06f1843ed36de0952124be2940444af213547370e586768bf33452f502504488",
+        "source_fact:v1:4dd727f2f61cfc6533361772b47b605115598da3ed9f1dda8b102e39fe82155e",
+        "source_fact:v1:7a049b198a73fa3aa5917da6d33bce4f9879a6339b767bd2afb55b36e0171fa6",
+        "source_fact:v1:9c370106efcf28933ade9e88f91decd49ed3f585fa3a3ec1bb73027f4935c432",
+        "source_fact:v1:aff6a0b60c1972cf6d3bc373078da9804bec2940e36b6b177a18cb8f94524738",
+        "source_fact:v1:fdbe05d701d14e070c9821c0cdc0b4db62ff3851028cfe8d4c5c65557c0a3394"
+      ],
+      "source_published_kst": "2026-10-19T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다",
+      "telegram_core_fact": "특히 3나노미터(㎚·10억분의 1m) 이하 첨단공정에 대한 TSMC의 투자 결정이 향후 전력 수요 증가를 좌우할 핵심 변수라고 설명했다. 첨단 반도체 공장 증설과 인공지능(AI) 서버 산업 확대에 따라 오는 2035년에는 대만 전체 전력 소비량의 약 30%를 반도체 관련 산업이 차지할 것으로 예상된다.",
+      "title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다"
+    },
     "link:6abff28564c33a90007ca70e": {
       "first_seen_kst": "2026-10-05T12:29:58+09:00",
       "lanes": {
@@ -211375,6 +211676,24 @@
       "source_title": "與안도걸 “해외 상장도 주주동의 의무화 논의”…솔리다임發 중복상장 논란",
       "telegram_core_fact": "해외법인의 중복상장 문제가 불거진 건 솔리다임의 미국 나스닥 상장 추진설이 구체화하면서다. 안 의원은 이날 이데일리와의 통화에서 “최근 (솔리다임 등) 해외 시장에서의 문제가 나오고 있는 만큼, 해외 상장을 포함해 법안을 적용하는 방안을 검토하려고 한다”며 “국감이 끝난 이후부터 특위를 위주로 논의하겠다”고 말했다.",
       "title": "與안도걸 “해외 상장도 주주동의 의무화 논의”…솔리다임發 중복상장 논란"
+    },
+    "link:7af4309fdc51539d48aa5d97": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019034100003",
+      "source": "연합뉴스",
+      "source_body_digest": "5f1d143583891c97b8a8101ed27bbd088cac91a0193d0e538d82ffdcd532d19c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T09:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, 현지법인 '한미USA' 설립…반도체 공급망 공략 | 연합뉴스",
+      "telegram_core_fact": "한미반도체는 미국 내 메모리와 파운드리(반도체 위탁생산), 첨단 패키징 생산 기반이 확대되면서 반도체 제조 장비 수요도 늘어날 것으로 기대하고 있다.",
+      "title": "한미반도체, 현지법인 '한미USA' 설립…반도체 공급망 공략 | 연합뉴스"
     },
     "link:7b05ebe95a1fe2a13ef301aa": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -222276,6 +222595,31 @@
       "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
       "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
     },
+    "link:95d5d6d779152caece7a1a7e": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831001",
+      "source": "뉴시스",
+      "source_body_digest": "403afe21141f51a08e13c8d963ae5b46793fe89a0b7531f0a73d46504065891e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b164fea4523821e98e31f853f86165a5c2503d941a0d7cfa23f7db47d45bd4a",
+      "source_fact_keys": [
+        "source_fact:v1:3bc0d881833dfec868c4d31ab6bee9aad84cbd93ad1ca81873e129165b4b1fdb",
+        "source_fact:v1:424e11c9bbf2fe261ccf8c16f155f9e6fcdd0297c468bbf11cdd3bbd2b5da3c6",
+        "source_fact:v1:68a5a80d4ce546fb7a540eb8596938708037d0cc55d33b8ba12e63c40c4b43d9",
+        "source_fact:v1:771c29ee9576b20204d63780d7362caac26a6c3e520864adf769055c0b94c62f",
+        "source_fact:v1:a7f87ff084be62d82415248c7e011bfb66b43c892b08ee22f7645d2a9237f9d1",
+        "source_fact:v1:aa90f850784d8b69cc465a6ce2c4dc7ca8859606b7616d6443eb84daf47940d4"
+      ],
+      "source_published_kst": "2026-10-19T09:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업",
+      "telegram_core_fact": "\"앞으로 오스넷·CIP를 비롯한 글로벌 기업들과 협력을 확대해 호주 재생에너지 개발과 전력망 구축 사업에서 신규 사업을 발굴할 계획\"이라고 밝혔다. 현대건설이 호주 에너지 기업 오스넷과 송·변전 인프라에 이어 에너지저장장치(BESS), 데이터센터 계통연계 사업까지 협력을 확대한다.",
+      "title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업"
+    },
     "link:95de071ff4186ad09a6f70ff": {
       "first_seen_kst": "2026-10-18T08:31:39+09:00",
       "lanes": {
@@ -227213,6 +227557,37 @@
       "source_published_kst": "2026-10-07T09:30+09:00",
       "title": "포스코홀딩스, 8년 투자 결실…아르헨티나 리튬 2공장 준공"
     },
+    "link:a10749c0e4f2db774f68a804": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
+    },
     "link:a109e9493862de9d108427dc": {
       "first_seen_kst": "2026-10-16T21:38:15+09:00",
       "lanes": {
@@ -230776,6 +231151,24 @@
       ],
       "source_published_kst": "2026-10-06T17:48+09:00",
       "title": "알테오젠, 알테오젠바이오로직스 흡수합병…사업 역량 통합"
+    },
+    "link:a960376a2d212ed3e5462cde": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261019005100038",
+      "source": "연합뉴스",
+      "source_body_digest": "8c9619794bef18379838c32b217127128f20544ac001b635ade53aaabea604f8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"종전협상 위해 결정\"…프랑스선 시위 격화 | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러 제재 보류 결정은 러시아 우크라이나 전쟁의 종전 협상을 위한 것이라고 밝혔습니다. 네 트럼프 대통령이 최근 러시아에 대한 제재를 보류한 것은 러시아가 종전 협상을 계속하도록 하기 위한 결정이었다고 주장했습니다.",
+      "title": "트럼프 \"종전협상 위해 결정\"…프랑스선 시위 격화 | 연합뉴스"
     },
     "link:a97db9746d9359f539d1adf5": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -253123,6 +253516,24 @@
       "source_title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초",
       "telegram_core_fact": "미국여자프로농구(WNBA) 골든스테이트 발키리스가 여성 프로스포츠 구단 가운데 처음으로 연매출 1억 달러(약 1400억원)를 돌파했다.",
       "title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초"
+    },
+    "link:e1a65e676e28b2ca0e9e3fc0": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831152",
+      "source": "뉴시스",
+      "source_body_digest": "727c3124765dbd2cd93c3d92fa8c29ebe6925777c7f2f756acf8fc7dcb6827d6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T09:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 美 데이터센터에 1700억 규모 배전 솔루션 공급",
+      "telegram_core_fact": "LS일렉트릭은 이번 계약을 통해 38킬로볼트(kV)급 고압 배전반을 공급한다.",
+      "title": "LS일렉트릭, 美 데이터센터에 1700억 규모 배전 솔루션 공급"
     },
     "link:e1a900815be225fca93a0d84": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -293447,6 +293858,37 @@
       "telegram_core_fact": "서울시는 지난 7일 제16차 도시계획위원회를 열고 도로 지분을 이용한 소규모 지분 쪼개기 등 투기성 거래를 선제적으로 차단하기 위해 서울 전역의 지목이 도로인 토지를 토허구역으로 신규지정한다고 8일 밝혔다.",
       "title": "서울 모든 도로, 토허구역 지정…‘도로 쪼개팔기’ 기획부동산 막는다"
     },
+    "original:4483393655de58db91ade973": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
+    },
     "original:44859b4e84cfa9f5b0807f3f": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
       "lanes": {
@@ -295452,6 +295894,24 @@
       "link": "https://www.mk.co.kr/news/politics/12157622",
       "source": "매일경제",
       "title": "워싱턴서 루비오 만난 조현 \"호르무즈 자유통항 기여할것\""
+    },
+    "original:4966b56bf87f6bab61da7370": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261019005100038",
+      "source": "연합뉴스",
+      "source_body_digest": "8c9619794bef18379838c32b217127128f20544ac001b635ade53aaabea604f8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"종전협상 위해 결정\"…프랑스선 시위 격화 | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러 제재 보류 결정은 러시아 우크라이나 전쟁의 종전 협상을 위한 것이라고 밝혔습니다. 네 트럼프 대통령이 최근 러시아에 대한 제재를 보류한 것은 러시아가 종전 협상을 계속하도록 하기 위한 결정이었다고 주장했습니다.",
+      "title": "트럼프 \"종전협상 위해 결정\"…프랑스선 시위 격화 | 연합뉴스"
     },
     "original:497c8691673f1c156c5a95a1": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -305409,6 +305869,31 @@
       ],
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
+    },
+    "original:63012e1c45479266433ed56e": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831001",
+      "source": "뉴시스",
+      "source_body_digest": "403afe21141f51a08e13c8d963ae5b46793fe89a0b7531f0a73d46504065891e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b164fea4523821e98e31f853f86165a5c2503d941a0d7cfa23f7db47d45bd4a",
+      "source_fact_keys": [
+        "source_fact:v1:3bc0d881833dfec868c4d31ab6bee9aad84cbd93ad1ca81873e129165b4b1fdb",
+        "source_fact:v1:424e11c9bbf2fe261ccf8c16f155f9e6fcdd0297c468bbf11cdd3bbd2b5da3c6",
+        "source_fact:v1:68a5a80d4ce546fb7a540eb8596938708037d0cc55d33b8ba12e63c40c4b43d9",
+        "source_fact:v1:771c29ee9576b20204d63780d7362caac26a6c3e520864adf769055c0b94c62f",
+        "source_fact:v1:a7f87ff084be62d82415248c7e011bfb66b43c892b08ee22f7645d2a9237f9d1",
+        "source_fact:v1:aa90f850784d8b69cc465a6ce2c4dc7ca8859606b7616d6443eb84daf47940d4"
+      ],
+      "source_published_kst": "2026-10-19T09:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업",
+      "telegram_core_fact": "\"앞으로 오스넷·CIP를 비롯한 글로벌 기업들과 협력을 확대해 호주 재생에너지 개발과 전력망 구축 사업에서 신규 사업을 발굴할 계획\"이라고 밝혔다. 현대건설이 호주 에너지 기업 오스넷과 송·변전 인프라에 이어 에너지저장장치(BESS), 데이터센터 계통연계 사업까지 협력을 확대한다.",
+      "title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업"
     },
     "original:6310a3871fbbce3b832530c2": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
@@ -332497,6 +332982,24 @@
       "telegram_core_fact": "해외 부문의 견조한 성장과 순매출 가이던스 상향은 긍정적이나, 북미 사업 부진과 핵심 영업이익률 하락, 연간 주당순이익 증가율 하향은 부담 요인이다.",
       "title": "펩시코, 3분기 매출 253억달러 5.6%↑..연간 EPS 전망 하향"
     },
+    "original:a78d9638edd43053366be3d9": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831152",
+      "source": "뉴시스",
+      "source_body_digest": "727c3124765dbd2cd93c3d92fa8c29ebe6925777c7f2f756acf8fc7dcb6827d6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T09:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 美 데이터센터에 1700억 규모 배전 솔루션 공급",
+      "telegram_core_fact": "LS일렉트릭은 이번 계약을 통해 38킬로볼트(kV)급 고압 배전반을 공급한다.",
+      "title": "LS일렉트릭, 美 데이터센터에 1700억 규모 배전 솔루션 공급"
+    },
     "original:a78ecaf4a2a17a92f2b7c41b": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
       "lanes": {
@@ -337451,6 +337954,31 @@
       "telegram_core_fact": "페이워드가 두바이 규제당국으로부터 가상자산 서비스 제공을 위한 최종 승인을 받으며 현지 시장 진출을 본격화했다.",
       "title": "페이워드, 두바이 VASP 라이선스 최종 승인∙∙∙UAE 시장 공략 본격화"
     },
+    "original:b2fb4e0d9ce1ee60cb8c13c8": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906537",
+      "source": "헤럴드경제",
+      "source_body_digest": "ecfafb4f9ce7a5765ef09a0610ee44869fbd0d235cb8460a42bb1a7e9d553b6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b2d714c5fbca9735e4d1402a2d4b32ebe8359be0fa8e2116d2ce2b6b57aa6bf",
+      "source_fact_keys": [
+        "source_fact:v1:855df57a8075ad05a0264a1ee1d1a4d2777365fff0a392437dad5dfcc3f4bb4a",
+        "source_fact:v1:8c4ee3a9c85c883e53d836a47298bb358269634111bc4c83adb9a8a17dd7ae03",
+        "source_fact:v1:931e83e602c0d92fbd20995ee3967a167f7d67fc8e6c16b7a5be4fe962f0e094",
+        "source_fact:v1:a8d02e455c3a6df41bec66f59a8e33d38165e30af12eec948744675aba090102",
+        "source_fact:v1:c090e76d470208ee15677d0b2e8988bee4d4f55796eb0a557d7d93dd0740fea8",
+        "source_fact:v1:caa47b03372e16988c0fd6f64f418e5db23be321c1a6cd0753ce769892ef5615"
+      ],
+      "source_published_kst": "2026-10-19T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄",
+      "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지코리아가 2031년까지 광주사업장에 총 3조원을 투자해 인공지능(AI)용 첨단 패키징 시설을 확충한다. 앰코는 2031년까지 총 3조원을 투자해 약 2000명을 고용할 계획이다.",
+      "title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄"
+    },
     "original:b3104036a0ebc17a464077ed": {
       "first_seen_kst": "2026-10-03T03:34:04+09:00",
       "lanes": {
@@ -338648,6 +339176,31 @@
       "source_title": "디아이티, 레이저 장비 피보팅으로 영업익 122% 급증… 재평가 기대",
       "telegram_core_fact": "디아이티의 2026년 상반기 연결 매출액은 901억원, 영업이익은 305억원을 기록했다.",
       "title": "디아이티, 레이저 장비 피보팅으로 영업익 122% 급증… 재평가 기대"
+    },
+    "original:b774cd7f9d9a8225e94d5b09": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.asiae.co.kr/article/2026101613180548638",
+      "source": "아시아경제",
+      "source_body_digest": "a53f37c4796740ee3881ebe28a8c169bd022cdfa5e73752354068784476c843a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:602bcf593c14cda342583f360b0137319c6f4ae82662996f4eec8f1f28afb9a3",
+      "source_fact_keys": [
+        "source_fact:v1:06f1843ed36de0952124be2940444af213547370e586768bf33452f502504488",
+        "source_fact:v1:4dd727f2f61cfc6533361772b47b605115598da3ed9f1dda8b102e39fe82155e",
+        "source_fact:v1:7a049b198a73fa3aa5917da6d33bce4f9879a6339b767bd2afb55b36e0171fa6",
+        "source_fact:v1:9c370106efcf28933ade9e88f91decd49ed3f585fa3a3ec1bb73027f4935c432",
+        "source_fact:v1:aff6a0b60c1972cf6d3bc373078da9804bec2940e36b6b177a18cb8f94524738",
+        "source_fact:v1:fdbe05d701d14e070c9821c0cdc0b4db62ff3851028cfe8d4c5c65557c0a3394"
+      ],
+      "source_published_kst": "2026-10-19T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다",
+      "telegram_core_fact": "특히 3나노미터(㎚·10억분의 1m) 이하 첨단공정에 대한 TSMC의 투자 결정이 향후 전력 수요 증가를 좌우할 핵심 변수라고 설명했다. 첨단 반도체 공장 증설과 인공지능(AI) 서버 산업 확대에 따라 오는 2035년에는 대만 전체 전력 소비량의 약 30%를 반도체 관련 산업이 차지할 것으로 예상된다.",
+      "title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다"
     },
     "original:b78e0e45ae014738504db46e": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
@@ -361261,6 +361814,24 @@
       "source_event_identity": "",
       "title": "취업문 얼었는데 환호한 월가…엔비디아·AMD 줄줄이 최고치[뉴욕마감]"
     },
+    "original:f248683bd1446211b3eccc27": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019034100003",
+      "source": "연합뉴스",
+      "source_body_digest": "5f1d143583891c97b8a8101ed27bbd088cac91a0193d0e538d82ffdcd532d19c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T09:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, 현지법인 '한미USA' 설립…반도체 공급망 공략 | 연합뉴스",
+      "telegram_core_fact": "한미반도체는 미국 내 메모리와 파운드리(반도체 위탁생산), 첨단 패키징 생산 기반이 확대되면서 반도체 제조 장비 수요도 늘어날 것으로 기대하고 있다.",
+      "title": "한미반도체, 현지법인 '한미USA' 설립…반도체 공급망 공략 | 연합뉴스"
+    },
     "original:f257e1b268e92f3b6aa19d9a": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -370706,6 +371277,31 @@
       "telegram_core_fact": "높아진 분양가와 강화된 대출 규제, 고금리에 대한 부담이 겹치며 청약 시장이 실수요자 위주로 재편되는 가운데, 역세권·직주근접 등 양호한 주거환경에 가격 경쟁력까지 갖춘 곳으로만 청약 통장이 움직이고 있다는 해석이 나온다.",
       "title": "'되는 곳'에만 몰렸다…서울 60대1인데 부산 0.6대1[청약, 선별의 시대①]"
     },
+    "source_fact:026c8097b998cc2a243a86eb": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831001",
+      "source": "뉴시스",
+      "source_body_digest": "403afe21141f51a08e13c8d963ae5b46793fe89a0b7531f0a73d46504065891e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b164fea4523821e98e31f853f86165a5c2503d941a0d7cfa23f7db47d45bd4a",
+      "source_fact_keys": [
+        "source_fact:v1:3bc0d881833dfec868c4d31ab6bee9aad84cbd93ad1ca81873e129165b4b1fdb",
+        "source_fact:v1:424e11c9bbf2fe261ccf8c16f155f9e6fcdd0297c468bbf11cdd3bbd2b5da3c6",
+        "source_fact:v1:68a5a80d4ce546fb7a540eb8596938708037d0cc55d33b8ba12e63c40c4b43d9",
+        "source_fact:v1:771c29ee9576b20204d63780d7362caac26a6c3e520864adf769055c0b94c62f",
+        "source_fact:v1:a7f87ff084be62d82415248c7e011bfb66b43c892b08ee22f7645d2a9237f9d1",
+        "source_fact:v1:aa90f850784d8b69cc465a6ce2c4dc7ca8859606b7616d6443eb84daf47940d4"
+      ],
+      "source_published_kst": "2026-10-19T09:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업",
+      "telegram_core_fact": "\"앞으로 오스넷·CIP를 비롯한 글로벌 기업들과 협력을 확대해 호주 재생에너지 개발과 전력망 구축 사업에서 신규 사업을 발굴할 계획\"이라고 밝혔다. 현대건설이 호주 에너지 기업 오스넷과 송·변전 인프라에 이어 에너지저장장치(BESS), 데이터센터 계통연계 사업까지 협력을 확대한다.",
+      "title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업"
+    },
     "source_fact:02749de35befcf4eec052120": {
       "first_seen_kst": "2026-10-14T07:46:13+09:00",
       "lanes": {
@@ -373542,6 +374138,31 @@
       ],
       "source_published_kst": "2026-10-07T11:25+09:00",
       "title": "홍지선 국토장관 “비아파트 주거사다리 효과, 충분히 검토 못해” [국감]"
+    },
+    "source_fact:04ae140c6d12e632c8a083f9": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.asiae.co.kr/article/2026101613180548638",
+      "source": "아시아경제",
+      "source_body_digest": "a53f37c4796740ee3881ebe28a8c169bd022cdfa5e73752354068784476c843a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:602bcf593c14cda342583f360b0137319c6f4ae82662996f4eec8f1f28afb9a3",
+      "source_fact_keys": [
+        "source_fact:v1:06f1843ed36de0952124be2940444af213547370e586768bf33452f502504488",
+        "source_fact:v1:4dd727f2f61cfc6533361772b47b605115598da3ed9f1dda8b102e39fe82155e",
+        "source_fact:v1:7a049b198a73fa3aa5917da6d33bce4f9879a6339b767bd2afb55b36e0171fa6",
+        "source_fact:v1:9c370106efcf28933ade9e88f91decd49ed3f585fa3a3ec1bb73027f4935c432",
+        "source_fact:v1:aff6a0b60c1972cf6d3bc373078da9804bec2940e36b6b177a18cb8f94524738",
+        "source_fact:v1:fdbe05d701d14e070c9821c0cdc0b4db62ff3851028cfe8d4c5c65557c0a3394"
+      ],
+      "source_published_kst": "2026-10-19T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다",
+      "telegram_core_fact": "특히 3나노미터(㎚·10억분의 1m) 이하 첨단공정에 대한 TSMC의 투자 결정이 향후 전력 수요 증가를 좌우할 핵심 변수라고 설명했다. 첨단 반도체 공장 증설과 인공지능(AI) 서버 산업 확대에 따라 오는 2035년에는 대만 전체 전력 소비량의 약 30%를 반도체 관련 산업이 차지할 것으로 예상된다.",
+      "title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다"
     },
     "source_fact:04ae1a19783bed4e7544438f": {
       "first_seen_kst": "2026-10-14T17:21:42+09:00",
@@ -378214,6 +378835,31 @@
       "source_title": "LG전자, GS건설·美 GRC와 AI 데이터센터 액침냉각 기술 개발…차세대 냉각시장 공략 가속",
       "telegram_core_fact": "LG전자가 GS건설, 미국 액침냉각 전문기업 GRC와 손잡고 인공지능(AI) 데이터센터용 액침 냉각 기술 고도화와 표준설계 개발에 나선다. LG전자에 따르면 , 이들 3사는 서울 종로구 GS건설 본사에서 ‘데이터센터 액침냉각 기술과 설비 기술 개발 및 협력을 위한 업무협약(MOU)’을 체결했다.",
       "title": "LG전자, GS건설·美 GRC와 AI 데이터센터 액침냉각 기술 개발…차세대 냉각시장 공략 가속"
+    },
+    "source_fact:075b99803eda6c73158ef645": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.asiae.co.kr/article/2026101613180548638",
+      "source": "아시아경제",
+      "source_body_digest": "a53f37c4796740ee3881ebe28a8c169bd022cdfa5e73752354068784476c843a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:602bcf593c14cda342583f360b0137319c6f4ae82662996f4eec8f1f28afb9a3",
+      "source_fact_keys": [
+        "source_fact:v1:06f1843ed36de0952124be2940444af213547370e586768bf33452f502504488",
+        "source_fact:v1:4dd727f2f61cfc6533361772b47b605115598da3ed9f1dda8b102e39fe82155e",
+        "source_fact:v1:7a049b198a73fa3aa5917da6d33bce4f9879a6339b767bd2afb55b36e0171fa6",
+        "source_fact:v1:9c370106efcf28933ade9e88f91decd49ed3f585fa3a3ec1bb73027f4935c432",
+        "source_fact:v1:aff6a0b60c1972cf6d3bc373078da9804bec2940e36b6b177a18cb8f94524738",
+        "source_fact:v1:fdbe05d701d14e070c9821c0cdc0b4db62ff3851028cfe8d4c5c65557c0a3394"
+      ],
+      "source_published_kst": "2026-10-19T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다",
+      "telegram_core_fact": "특히 3나노미터(㎚·10억분의 1m) 이하 첨단공정에 대한 TSMC의 투자 결정이 향후 전력 수요 증가를 좌우할 핵심 변수라고 설명했다. 첨단 반도체 공장 증설과 인공지능(AI) 서버 산업 확대에 따라 오는 2035년에는 대만 전체 전력 소비량의 약 30%를 반도체 관련 산업이 차지할 것으로 예상된다.",
+      "title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다"
     },
     "source_fact:075ea2eba29cc63d0c264ec1": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
@@ -412739,6 +413385,31 @@
       "telegram_core_fact": "실적 반등, 한 단계 높은 성장을 기대하고 있다. 이런 배경에서 여의도 증권가에서는 내년 소캠2 매출이 2배 이상 증가할 것이란 전망을 내놓기도 했다.",
       "title": "[데스크시각] 심텍의 ‘성장 변곡점’"
     },
+    "source_fact:1d261fb0ca486f98e82498df": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906537",
+      "source": "헤럴드경제",
+      "source_body_digest": "ecfafb4f9ce7a5765ef09a0610ee44869fbd0d235cb8460a42bb1a7e9d553b6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b2d714c5fbca9735e4d1402a2d4b32ebe8359be0fa8e2116d2ce2b6b57aa6bf",
+      "source_fact_keys": [
+        "source_fact:v1:855df57a8075ad05a0264a1ee1d1a4d2777365fff0a392437dad5dfcc3f4bb4a",
+        "source_fact:v1:8c4ee3a9c85c883e53d836a47298bb358269634111bc4c83adb9a8a17dd7ae03",
+        "source_fact:v1:931e83e602c0d92fbd20995ee3967a167f7d67fc8e6c16b7a5be4fe962f0e094",
+        "source_fact:v1:a8d02e455c3a6df41bec66f59a8e33d38165e30af12eec948744675aba090102",
+        "source_fact:v1:c090e76d470208ee15677d0b2e8988bee4d4f55796eb0a557d7d93dd0740fea8",
+        "source_fact:v1:caa47b03372e16988c0fd6f64f418e5db23be321c1a6cd0753ce769892ef5615"
+      ],
+      "source_published_kst": "2026-10-19T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄",
+      "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지코리아가 2031년까지 광주사업장에 총 3조원을 투자해 인공지능(AI)용 첨단 패키징 시설을 확충한다. 앰코는 2031년까지 총 3조원을 투자해 약 2000명을 고용할 계획이다.",
+      "title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄"
+    },
     "source_fact:1d2707fa1b6eff737d173557": {
       "first_seen_kst": "2026-10-15T17:49:30+09:00",
       "lanes": {
@@ -442951,6 +443622,31 @@
       "telegram_core_fact": "반면 롯데손보의 자산은 14조원, 고객수 334만명, CSM(보험계약마진) 2조2000억원의 중형 손보사다. 신한금융은 JKL파트너스가 보유한 롯데손보 지분 77.04%를 6933억원에 인수하고 금융당국 승인 등 필요한 절차를 거쳐 잔여지분 22.96%를 추가 확보할 방침이다.",
       "title": "신한금융, 롯데손보 품고 비은행 힘 키운다"
     },
+    "source_fact:2fc2997e8ad318d7b72c2c88": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906537",
+      "source": "헤럴드경제",
+      "source_body_digest": "ecfafb4f9ce7a5765ef09a0610ee44869fbd0d235cb8460a42bb1a7e9d553b6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b2d714c5fbca9735e4d1402a2d4b32ebe8359be0fa8e2116d2ce2b6b57aa6bf",
+      "source_fact_keys": [
+        "source_fact:v1:855df57a8075ad05a0264a1ee1d1a4d2777365fff0a392437dad5dfcc3f4bb4a",
+        "source_fact:v1:8c4ee3a9c85c883e53d836a47298bb358269634111bc4c83adb9a8a17dd7ae03",
+        "source_fact:v1:931e83e602c0d92fbd20995ee3967a167f7d67fc8e6c16b7a5be4fe962f0e094",
+        "source_fact:v1:a8d02e455c3a6df41bec66f59a8e33d38165e30af12eec948744675aba090102",
+        "source_fact:v1:c090e76d470208ee15677d0b2e8988bee4d4f55796eb0a557d7d93dd0740fea8",
+        "source_fact:v1:caa47b03372e16988c0fd6f64f418e5db23be321c1a6cd0753ce769892ef5615"
+      ],
+      "source_published_kst": "2026-10-19T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄",
+      "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지코리아가 2031년까지 광주사업장에 총 3조원을 투자해 인공지능(AI)용 첨단 패키징 시설을 확충한다. 앰코는 2031년까지 총 3조원을 투자해 약 2000명을 고용할 계획이다.",
+      "title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄"
+    },
     "source_fact:2fd0f4c24216a99d66ee60a5": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
       "lanes": {
@@ -463888,6 +464584,31 @@
       "telegram_core_fact": "연구원은 기준금리 인상과 대출규제로 자금조달 부담이 이어지는 가운데서도 전월세난 심화 등으로 한강벨트 이외 수도권 지역의 아파트 가격 상승세가 지속되면서 주택사업자들의 분양시장 기대심리가 개선된 것으로 분석했다.",
       "title": "수도권 집값 상승에 분양시장 기대 개선…지방은 미분양에 악화 | 연합뉴스"
     },
+    "source_fact:3d1bd36c6193e8aa7677b476": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.asiae.co.kr/article/2026101613180548638",
+      "source": "아시아경제",
+      "source_body_digest": "a53f37c4796740ee3881ebe28a8c169bd022cdfa5e73752354068784476c843a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:602bcf593c14cda342583f360b0137319c6f4ae82662996f4eec8f1f28afb9a3",
+      "source_fact_keys": [
+        "source_fact:v1:06f1843ed36de0952124be2940444af213547370e586768bf33452f502504488",
+        "source_fact:v1:4dd727f2f61cfc6533361772b47b605115598da3ed9f1dda8b102e39fe82155e",
+        "source_fact:v1:7a049b198a73fa3aa5917da6d33bce4f9879a6339b767bd2afb55b36e0171fa6",
+        "source_fact:v1:9c370106efcf28933ade9e88f91decd49ed3f585fa3a3ec1bb73027f4935c432",
+        "source_fact:v1:aff6a0b60c1972cf6d3bc373078da9804bec2940e36b6b177a18cb8f94524738",
+        "source_fact:v1:fdbe05d701d14e070c9821c0cdc0b4db62ff3851028cfe8d4c5c65557c0a3394"
+      ],
+      "source_published_kst": "2026-10-19T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다",
+      "telegram_core_fact": "특히 3나노미터(㎚·10억분의 1m) 이하 첨단공정에 대한 TSMC의 투자 결정이 향후 전력 수요 증가를 좌우할 핵심 변수라고 설명했다. 첨단 반도체 공장 증설과 인공지능(AI) 서버 산업 확대에 따라 오는 2035년에는 대만 전체 전력 소비량의 약 30%를 반도체 관련 산업이 차지할 것으로 예상된다.",
+      "title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다"
+    },
     "source_fact:3d2560ecf197f4a05833b1f6": {
       "first_seen_kst": "2026-10-15T14:04:10+09:00",
       "lanes": {
@@ -480732,6 +481453,31 @@
       "telegram_core_fact": "네오클라우드는 대규모 설비투자 못지않게 수천~수만 개의 GPU를 지연 없이 안정적으로 연결하고 자원을 효율적으로 배분하는 운영 소프트웨어 기술이 핵심이다.",
       "title": "베슬AI, 2027년까지 GPU 5만장 확보 목표...네오클라우드 전환 승부수"
     },
+    "source_fact:477226e6b9323acd71352bdd": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831001",
+      "source": "뉴시스",
+      "source_body_digest": "403afe21141f51a08e13c8d963ae5b46793fe89a0b7531f0a73d46504065891e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b164fea4523821e98e31f853f86165a5c2503d941a0d7cfa23f7db47d45bd4a",
+      "source_fact_keys": [
+        "source_fact:v1:3bc0d881833dfec868c4d31ab6bee9aad84cbd93ad1ca81873e129165b4b1fdb",
+        "source_fact:v1:424e11c9bbf2fe261ccf8c16f155f9e6fcdd0297c468bbf11cdd3bbd2b5da3c6",
+        "source_fact:v1:68a5a80d4ce546fb7a540eb8596938708037d0cc55d33b8ba12e63c40c4b43d9",
+        "source_fact:v1:771c29ee9576b20204d63780d7362caac26a6c3e520864adf769055c0b94c62f",
+        "source_fact:v1:a7f87ff084be62d82415248c7e011bfb66b43c892b08ee22f7645d2a9237f9d1",
+        "source_fact:v1:aa90f850784d8b69cc465a6ce2c4dc7ca8859606b7616d6443eb84daf47940d4"
+      ],
+      "source_published_kst": "2026-10-19T09:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업",
+      "telegram_core_fact": "\"앞으로 오스넷·CIP를 비롯한 글로벌 기업들과 협력을 확대해 호주 재생에너지 개발과 전력망 구축 사업에서 신규 사업을 발굴할 계획\"이라고 밝혔다. 현대건설이 호주 에너지 기업 오스넷과 송·변전 인프라에 이어 에너지저장장치(BESS), 데이터센터 계통연계 사업까지 협력을 확대한다.",
+      "title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업"
+    },
     "source_fact:477754e0389952f0d406ff4f": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
       "lanes": {
@@ -483333,6 +484079,37 @@
       ],
       "source_published_kst": "2026-10-07T09:31+09:00",
       "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
+    },
+    "source_fact:48e5e43a4168626a6ef2d523": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
     },
     "source_fact:48e94ba4fae53756328a054c": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -485991,6 +486768,37 @@
       "source_title": "씨피시스템, 독일 프라운호퍼서 클린룸 최고 청정등급 인증…반도체·이차전지 공급 확대",
       "telegram_core_fact": "반도체와 이차전지 생산설비에 요구되는 최고 수준의 청정 성능을 검증받은 데 이어 부산 제2공장 증설을 통해 생산능력을 확대하고 국내외 공급을 늘릴 계획이다.",
       "title": "씨피시스템, 독일 프라운호퍼서 클린룸 최고 청정등급 인증…반도체·이차전지 공급 확대"
+    },
+    "source_fact:4a674c80dc98b1dbeb0f698d": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
     },
     "source_fact:4a70bedcb0018d6ccb5e6647": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
@@ -490596,6 +491404,37 @@
       "source_title": "美 'PPI 쇼크'에도…10년물 금리 되레 하락",
       "telegram_core_fact": "지난 14일까지만 해도 연 5.3%를 훌쩍 웃돈 미 10년 만기 국채 금리는 미 9월 CPI와 PPI가 발표된 뒤 크게 하락했다.",
       "title": "美 'PPI 쇼크'에도…10년물 금리 되레 하락"
+    },
+    "source_fact:4da6ba6f01886ccdf9d7f9fa": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
     },
     "source_fact:4dab6466b40db44962822b8f": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -508560,6 +509399,31 @@
       "telegram_core_fact": "한국거래소는 DS자산운용, 한국투자신탁운용, 키움투자자산운용, 삼성자산운용의 상장지수펀드(ETF) 4종목을 오는 13일 유가증권시장에 상장한다고 8일 밝혔다.",
       "title": "'반도체 밸류체인 투자' 등 ETF 4종 13일 신규 상장 | 연합뉴스"
     },
+    "source_fact:587fe832da19f1056b6db4c9": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831001",
+      "source": "뉴시스",
+      "source_body_digest": "403afe21141f51a08e13c8d963ae5b46793fe89a0b7531f0a73d46504065891e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b164fea4523821e98e31f853f86165a5c2503d941a0d7cfa23f7db47d45bd4a",
+      "source_fact_keys": [
+        "source_fact:v1:3bc0d881833dfec868c4d31ab6bee9aad84cbd93ad1ca81873e129165b4b1fdb",
+        "source_fact:v1:424e11c9bbf2fe261ccf8c16f155f9e6fcdd0297c468bbf11cdd3bbd2b5da3c6",
+        "source_fact:v1:68a5a80d4ce546fb7a540eb8596938708037d0cc55d33b8ba12e63c40c4b43d9",
+        "source_fact:v1:771c29ee9576b20204d63780d7362caac26a6c3e520864adf769055c0b94c62f",
+        "source_fact:v1:a7f87ff084be62d82415248c7e011bfb66b43c892b08ee22f7645d2a9237f9d1",
+        "source_fact:v1:aa90f850784d8b69cc465a6ce2c4dc7ca8859606b7616d6443eb84daf47940d4"
+      ],
+      "source_published_kst": "2026-10-19T09:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업",
+      "telegram_core_fact": "\"앞으로 오스넷·CIP를 비롯한 글로벌 기업들과 협력을 확대해 호주 재생에너지 개발과 전력망 구축 사업에서 신규 사업을 발굴할 계획\"이라고 밝혔다. 현대건설이 호주 에너지 기업 오스넷과 송·변전 인프라에 이어 에너지저장장치(BESS), 데이터센터 계통연계 사업까지 협력을 확대한다.",
+      "title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업"
+    },
     "source_fact:5888de282998a191ff17b03e": {
       "first_seen_kst": "2026-10-12T19:07:06+09:00",
       "lanes": {
@@ -515023,6 +515887,31 @@
       ],
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
+    },
+    "source_fact:5c3f288a27c888cff40c6466": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906537",
+      "source": "헤럴드경제",
+      "source_body_digest": "ecfafb4f9ce7a5765ef09a0610ee44869fbd0d235cb8460a42bb1a7e9d553b6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b2d714c5fbca9735e4d1402a2d4b32ebe8359be0fa8e2116d2ce2b6b57aa6bf",
+      "source_fact_keys": [
+        "source_fact:v1:855df57a8075ad05a0264a1ee1d1a4d2777365fff0a392437dad5dfcc3f4bb4a",
+        "source_fact:v1:8c4ee3a9c85c883e53d836a47298bb358269634111bc4c83adb9a8a17dd7ae03",
+        "source_fact:v1:931e83e602c0d92fbd20995ee3967a167f7d67fc8e6c16b7a5be4fe962f0e094",
+        "source_fact:v1:a8d02e455c3a6df41bec66f59a8e33d38165e30af12eec948744675aba090102",
+        "source_fact:v1:c090e76d470208ee15677d0b2e8988bee4d4f55796eb0a557d7d93dd0740fea8",
+        "source_fact:v1:caa47b03372e16988c0fd6f64f418e5db23be321c1a6cd0753ce769892ef5615"
+      ],
+      "source_published_kst": "2026-10-19T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄",
+      "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지코리아가 2031년까지 광주사업장에 총 3조원을 투자해 인공지능(AI)용 첨단 패키징 시설을 확충한다. 앰코는 2031년까지 총 3조원을 투자해 약 2000명을 고용할 계획이다.",
+      "title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄"
     },
     "source_fact:5c4594c5e0918ef6b5f0ee04": {
       "first_seen_kst": "2026-10-10T11:01:18+09:00",
@@ -561006,6 +561895,37 @@
       "telegram_core_fact": "존슨앤존슨(JNJ)이 3분기 매출액이 253억9900만 달러로 전년비 5.9% 증가했으며, 탤크(활석) 소송 합의 추진 관련 일회성 비용이 반영돼 GAAP 기준 희석 주당순이익은 0.09달러로 전년비 95.8% 감소했다고 13일 발표했다.",
       "title": "존슨앤존슨, 3분기 매출 254억달러 5.9%↑..연간 가이던스 상향"
     },
+    "source_fact:797892dcd6555499d6eec51f": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
+    },
     "source_fact:797c068f38a1b7df3275d4a4": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -574957,6 +575877,31 @@
       "telegram_core_fact": "미국의 새로운 제재는 노벨평화상 수상자가 발표된 후 이뤄졌는데 공교롭게도 도널드 트럼프 미국 대통령은 자신의 노벨평화상 불발에 분노했다.",
       "title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재"
     },
+    "source_fact:82bb620a82ed559cdee6e9e5": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.asiae.co.kr/article/2026101613180548638",
+      "source": "아시아경제",
+      "source_body_digest": "a53f37c4796740ee3881ebe28a8c169bd022cdfa5e73752354068784476c843a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:602bcf593c14cda342583f360b0137319c6f4ae82662996f4eec8f1f28afb9a3",
+      "source_fact_keys": [
+        "source_fact:v1:06f1843ed36de0952124be2940444af213547370e586768bf33452f502504488",
+        "source_fact:v1:4dd727f2f61cfc6533361772b47b605115598da3ed9f1dda8b102e39fe82155e",
+        "source_fact:v1:7a049b198a73fa3aa5917da6d33bce4f9879a6339b767bd2afb55b36e0171fa6",
+        "source_fact:v1:9c370106efcf28933ade9e88f91decd49ed3f585fa3a3ec1bb73027f4935c432",
+        "source_fact:v1:aff6a0b60c1972cf6d3bc373078da9804bec2940e36b6b177a18cb8f94524738",
+        "source_fact:v1:fdbe05d701d14e070c9821c0cdc0b4db62ff3851028cfe8d4c5c65557c0a3394"
+      ],
+      "source_published_kst": "2026-10-19T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다",
+      "telegram_core_fact": "특히 3나노미터(㎚·10억분의 1m) 이하 첨단공정에 대한 TSMC의 투자 결정이 향후 전력 수요 증가를 좌우할 핵심 변수라고 설명했다. 첨단 반도체 공장 증설과 인공지능(AI) 서버 산업 확대에 따라 오는 2035년에는 대만 전체 전력 소비량의 약 30%를 반도체 관련 산업이 차지할 것으로 예상된다.",
+      "title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다"
+    },
     "source_fact:82bc536178e2af8e26f7d671": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -575419,6 +576364,31 @@
       "source_title": "李 \"녹색기업 세액공제 외 보조금 지급 검토\" 지시",
       "telegram_core_fact": "이재명 대통령이 내년에 도입하는 국내생산세액공제 제도의 혜택을 당장 보지 못할 녹색기업들을 위해 직접 보조금을 지급하는 방안을 검토하라고 지시했다.",
       "title": "李 \"녹색기업 세액공제 외 보조금 지급 검토\" 지시"
+    },
+    "source_fact:8325130975cacd75c6bed89f": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.asiae.co.kr/article/2026101613180548638",
+      "source": "아시아경제",
+      "source_body_digest": "a53f37c4796740ee3881ebe28a8c169bd022cdfa5e73752354068784476c843a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:602bcf593c14cda342583f360b0137319c6f4ae82662996f4eec8f1f28afb9a3",
+      "source_fact_keys": [
+        "source_fact:v1:06f1843ed36de0952124be2940444af213547370e586768bf33452f502504488",
+        "source_fact:v1:4dd727f2f61cfc6533361772b47b605115598da3ed9f1dda8b102e39fe82155e",
+        "source_fact:v1:7a049b198a73fa3aa5917da6d33bce4f9879a6339b767bd2afb55b36e0171fa6",
+        "source_fact:v1:9c370106efcf28933ade9e88f91decd49ed3f585fa3a3ec1bb73027f4935c432",
+        "source_fact:v1:aff6a0b60c1972cf6d3bc373078da9804bec2940e36b6b177a18cb8f94524738",
+        "source_fact:v1:fdbe05d701d14e070c9821c0cdc0b4db62ff3851028cfe8d4c5c65557c0a3394"
+      ],
+      "source_published_kst": "2026-10-19T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다",
+      "telegram_core_fact": "특히 3나노미터(㎚·10억분의 1m) 이하 첨단공정에 대한 TSMC의 투자 결정이 향후 전력 수요 증가를 좌우할 핵심 변수라고 설명했다. 첨단 반도체 공장 증설과 인공지능(AI) 서버 산업 확대에 따라 오는 2035년에는 대만 전체 전력 소비량의 약 30%를 반도체 관련 산업이 차지할 것으로 예상된다.",
+      "title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다"
     },
     "source_fact:8326373dd06799fd16f8b5a7": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
@@ -599286,6 +600256,37 @@
       "telegram_core_fact": "델 테크놀로지스(Dell Technologies)가 IBK기업은행 정보보호 기반 강화를 위한 사이버 복원력 인프라 구축을 지원했다. 델 테크놀로지스는 13일 IBK기업은행이 자사 데이터 보호 솔루션을 기반으로 하남데이터센터 백업 인프라를 새롭게 구축했다고 밝혔다.",
       "title": "델 테크놀로지스, IBK기업은행 사이버 복원력 강화 지원…백업 인프라 고도화"
     },
+    "source_fact:9302b20fd554c342abe5b86c": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
+    },
     "source_fact:9304e62512ef3d57e74abed3": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
       "lanes": {
@@ -606841,6 +607842,37 @@
       "source_title": "iM證 “원화 강세가 독 됐다…외국인 매도에 코스피 나홀로 약세”",
       "telegram_core_fact": "박상현 iM증권 연구원은 13일 “7월 이후 코스피와 해외 주요 증시의 차별화가 뚜렷해졌다”며 “차익실현과 수급 악화에 더해 원화 가치의 급격한 상승과 변동성 확대도 외국인 매도 심리를 자극한 것으로 보인다”고 밝혔다.",
       "title": "iM證 “원화 강세가 독 됐다…외국인 매도에 코스피 나홀로 약세”"
+    },
+    "source_fact:97c3fa561b12dcdb195f7857": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
     },
     "source_fact:97db8546c828e82a8d90b231": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -622709,6 +623741,31 @@
       ],
       "source_published_kst": "2026-10-07T14:01+09:00",
       "title": "스피어, 608억 규모 특수합금 공급계약"
+    },
+    "source_fact:a1a020194673391e34b91fa2": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831001",
+      "source": "뉴시스",
+      "source_body_digest": "403afe21141f51a08e13c8d963ae5b46793fe89a0b7531f0a73d46504065891e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b164fea4523821e98e31f853f86165a5c2503d941a0d7cfa23f7db47d45bd4a",
+      "source_fact_keys": [
+        "source_fact:v1:3bc0d881833dfec868c4d31ab6bee9aad84cbd93ad1ca81873e129165b4b1fdb",
+        "source_fact:v1:424e11c9bbf2fe261ccf8c16f155f9e6fcdd0297c468bbf11cdd3bbd2b5da3c6",
+        "source_fact:v1:68a5a80d4ce546fb7a540eb8596938708037d0cc55d33b8ba12e63c40c4b43d9",
+        "source_fact:v1:771c29ee9576b20204d63780d7362caac26a6c3e520864adf769055c0b94c62f",
+        "source_fact:v1:a7f87ff084be62d82415248c7e011bfb66b43c892b08ee22f7645d2a9237f9d1",
+        "source_fact:v1:aa90f850784d8b69cc465a6ce2c4dc7ca8859606b7616d6443eb84daf47940d4"
+      ],
+      "source_published_kst": "2026-10-19T09:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업",
+      "telegram_core_fact": "\"앞으로 오스넷·CIP를 비롯한 글로벌 기업들과 협력을 확대해 호주 재생에너지 개발과 전력망 구축 사업에서 신규 사업을 발굴할 계획\"이라고 밝혔다. 현대건설이 호주 에너지 기업 오스넷과 송·변전 인프라에 이어 에너지저장장치(BESS), 데이터센터 계통연계 사업까지 협력을 확대한다.",
+      "title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업"
     },
     "source_fact:a1a7d222c36133b712ad7805": {
       "first_seen_kst": "2026-10-10T01:24:21+09:00",
@@ -660520,6 +661577,37 @@
       "telegram_core_fact": "배준형 산업부 통상협력국장은 \"한중 공급망은 우리 기업의 생산과 수출에 직결되는 만큼 평소 안정적으로 관리하는 것이 중요하다\"며 \"공급망 현안은 핫라인을 통해 수시로 소통해 나가는 한편, 새만금을 중심으로 한 산단 협력도 기업이 체감하는 성과로 이어지도록 후속 협의를 이어가겠다\"고 말했다.",
       "title": "한중 통상당국, 공급망 핫라인 유지…새만금 산단 협력도 속도 | 연합뉴스"
     },
+    "source_fact:b98e3a5841e61b051db9f3dd": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
+    },
     "source_fact:b99b8e70a66992280aa12f12": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -665647,6 +666735,37 @@
       "source_title": "펩트론 \"릴리 본계약 없이 기술평가 종료\"…애프터마켓서 28% 급락",
       "telegram_core_fact": "시장은 이를 사실상의 본계약 불발로 해석해 펩트론 주가는 장 마감을 앞두고 애프터마켓에서 28% 넘게 급락했다.",
       "title": "펩트론 \"릴리 본계약 없이 기술평가 종료\"…애프터마켓서 28% 급락"
+    },
+    "source_fact:bd2a861b6d480e4809dced0c": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
     },
     "source_fact:bd2b7191c2bf464620e643fa": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
@@ -677242,6 +678361,31 @@
       "source_title": "산업장관, 서남권 반도체 부지 현장점검…조선업 AX도 촉진 | 연합뉴스",
       "telegram_core_fact": "김 장관은 \"반도체 메가프로젝트는 부지와 전력·용수 등 투자기반을 차질없이 마련해 투자가 적기에 이행되도록 뒷받침하고, 조선산업은 설계·생산 현장에 AI를 적용해 조선소의 생산성과 근로자의 작업환경을 획기적으로 개선하겠다\"고 말했다.",
       "title": "산업장관, 서남권 반도체 부지 현장점검…조선업 AX도 촉진 | 연합뉴스"
+    },
+    "source_fact:c4463f2f6e04e6ccddedd960": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831001",
+      "source": "뉴시스",
+      "source_body_digest": "403afe21141f51a08e13c8d963ae5b46793fe89a0b7531f0a73d46504065891e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b164fea4523821e98e31f853f86165a5c2503d941a0d7cfa23f7db47d45bd4a",
+      "source_fact_keys": [
+        "source_fact:v1:3bc0d881833dfec868c4d31ab6bee9aad84cbd93ad1ca81873e129165b4b1fdb",
+        "source_fact:v1:424e11c9bbf2fe261ccf8c16f155f9e6fcdd0297c468bbf11cdd3bbd2b5da3c6",
+        "source_fact:v1:68a5a80d4ce546fb7a540eb8596938708037d0cc55d33b8ba12e63c40c4b43d9",
+        "source_fact:v1:771c29ee9576b20204d63780d7362caac26a6c3e520864adf769055c0b94c62f",
+        "source_fact:v1:a7f87ff084be62d82415248c7e011bfb66b43c892b08ee22f7645d2a9237f9d1",
+        "source_fact:v1:aa90f850784d8b69cc465a6ce2c4dc7ca8859606b7616d6443eb84daf47940d4"
+      ],
+      "source_published_kst": "2026-10-19T09:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업",
+      "telegram_core_fact": "\"앞으로 오스넷·CIP를 비롯한 글로벌 기업들과 협력을 확대해 호주 재생에너지 개발과 전력망 구축 사업에서 신규 사업을 발굴할 계획\"이라고 밝혔다. 현대건설이 호주 에너지 기업 오스넷과 송·변전 인프라에 이어 에너지저장장치(BESS), 데이터센터 계통연계 사업까지 협력을 확대한다.",
+      "title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업"
     },
     "source_fact:c44a724006d278d591675c80": {
       "first_seen_kst": "2026-10-14T06:09:46+09:00",
@@ -701303,6 +702447,31 @@
       "telegram_core_fact": "2028년 6월 결산 매출액은 2억9380만 달러로 59.00% 증가하고, 2029년 6월 결산 매출액은 4억9958만 달러로 70.05% 늘어날 것으로 예상된다.",
       "title": "메소블라스트, 1분기 순매출 2800만달러..전년비 44% 증가"
     },
+    "source_fact:d3bc1e48567d3ab69b72ca9b": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.asiae.co.kr/article/2026101613180548638",
+      "source": "아시아경제",
+      "source_body_digest": "a53f37c4796740ee3881ebe28a8c169bd022cdfa5e73752354068784476c843a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:602bcf593c14cda342583f360b0137319c6f4ae82662996f4eec8f1f28afb9a3",
+      "source_fact_keys": [
+        "source_fact:v1:06f1843ed36de0952124be2940444af213547370e586768bf33452f502504488",
+        "source_fact:v1:4dd727f2f61cfc6533361772b47b605115598da3ed9f1dda8b102e39fe82155e",
+        "source_fact:v1:7a049b198a73fa3aa5917da6d33bce4f9879a6339b767bd2afb55b36e0171fa6",
+        "source_fact:v1:9c370106efcf28933ade9e88f91decd49ed3f585fa3a3ec1bb73027f4935c432",
+        "source_fact:v1:aff6a0b60c1972cf6d3bc373078da9804bec2940e36b6b177a18cb8f94524738",
+        "source_fact:v1:fdbe05d701d14e070c9821c0cdc0b4db62ff3851028cfe8d4c5c65557c0a3394"
+      ],
+      "source_published_kst": "2026-10-19T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다",
+      "telegram_core_fact": "특히 3나노미터(㎚·10억분의 1m) 이하 첨단공정에 대한 TSMC의 투자 결정이 향후 전력 수요 증가를 좌우할 핵심 변수라고 설명했다. 첨단 반도체 공장 증설과 인공지능(AI) 서버 산업 확대에 따라 오는 2035년에는 대만 전체 전력 소비량의 약 30%를 반도체 관련 산업이 차지할 것으로 예상된다.",
+      "title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다"
+    },
     "source_fact:d3be16d0819e475059a0ee01": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
       "lanes": {
@@ -707309,6 +708478,37 @@
       "source_title": "美증시, 3분기 실적이 계속 떠받칠까…\"이번주 판가름\"",
       "telegram_core_fact": "11일(현지시간) 마켓워치에 따르면 시장조사업체 팩트셋은 지난 9일 보고서에서 스탠더드앤드푸어스(S&P)500 기업들의 3분기 순이익이 29.6% 늘어날 것으로 예상했다.",
       "title": "美증시, 3분기 실적이 계속 떠받칠까…\"이번주 판가름\""
+    },
+    "source_fact:d72448f11781d2fe2020c264": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
     },
     "source_fact:d72eaae4aeceae33df45d5e1": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -725686,6 +726886,31 @@
       ],
       "source_published_kst": "2026-10-06T18:28+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 원 규모 LFP 공급 계약 체결… K-배터리 핵심 도약"
+    },
+    "source_fact:e28eb975974b3aac352123ea": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906537",
+      "source": "헤럴드경제",
+      "source_body_digest": "ecfafb4f9ce7a5765ef09a0610ee44869fbd0d235cb8460a42bb1a7e9d553b6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b2d714c5fbca9735e4d1402a2d4b32ebe8359be0fa8e2116d2ce2b6b57aa6bf",
+      "source_fact_keys": [
+        "source_fact:v1:855df57a8075ad05a0264a1ee1d1a4d2777365fff0a392437dad5dfcc3f4bb4a",
+        "source_fact:v1:8c4ee3a9c85c883e53d836a47298bb358269634111bc4c83adb9a8a17dd7ae03",
+        "source_fact:v1:931e83e602c0d92fbd20995ee3967a167f7d67fc8e6c16b7a5be4fe962f0e094",
+        "source_fact:v1:a8d02e455c3a6df41bec66f59a8e33d38165e30af12eec948744675aba090102",
+        "source_fact:v1:c090e76d470208ee15677d0b2e8988bee4d4f55796eb0a557d7d93dd0740fea8",
+        "source_fact:v1:caa47b03372e16988c0fd6f64f418e5db23be321c1a6cd0753ce769892ef5615"
+      ],
+      "source_published_kst": "2026-10-19T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄",
+      "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지코리아가 2031년까지 광주사업장에 총 3조원을 투자해 인공지능(AI)용 첨단 패키징 시설을 확충한다. 앰코는 2031년까지 총 3조원을 투자해 약 2000명을 고용할 계획이다.",
+      "title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄"
     },
     "source_fact:e29af5a0e29a49df84ab29d8": {
       "first_seen_kst": "2026-10-10T03:26:28+09:00",
@@ -756079,6 +757304,31 @@
       "source_published_kst": "2026-10-06T17:47+09:00",
       "title": "치킨업계 “산지 닭값 내려도 매입단가는 달라”…담합 조사에 비용 부담 강조"
     },
+    "source_fact:f6348fc81d2fe580089fb90f": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831001",
+      "source": "뉴시스",
+      "source_body_digest": "403afe21141f51a08e13c8d963ae5b46793fe89a0b7531f0a73d46504065891e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b164fea4523821e98e31f853f86165a5c2503d941a0d7cfa23f7db47d45bd4a",
+      "source_fact_keys": [
+        "source_fact:v1:3bc0d881833dfec868c4d31ab6bee9aad84cbd93ad1ca81873e129165b4b1fdb",
+        "source_fact:v1:424e11c9bbf2fe261ccf8c16f155f9e6fcdd0297c468bbf11cdd3bbd2b5da3c6",
+        "source_fact:v1:68a5a80d4ce546fb7a540eb8596938708037d0cc55d33b8ba12e63c40c4b43d9",
+        "source_fact:v1:771c29ee9576b20204d63780d7362caac26a6c3e520864adf769055c0b94c62f",
+        "source_fact:v1:a7f87ff084be62d82415248c7e011bfb66b43c892b08ee22f7645d2a9237f9d1",
+        "source_fact:v1:aa90f850784d8b69cc465a6ce2c4dc7ca8859606b7616d6443eb84daf47940d4"
+      ],
+      "source_published_kst": "2026-10-19T09:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업",
+      "telegram_core_fact": "\"앞으로 오스넷·CIP를 비롯한 글로벌 기업들과 협력을 확대해 호주 재생에너지 개발과 전력망 구축 사업에서 신규 사업을 발굴할 계획\"이라고 밝혔다. 현대건설이 호주 에너지 기업 오스넷과 송·변전 인프라에 이어 에너지저장장치(BESS), 데이터센터 계통연계 사업까지 협력을 확대한다.",
+      "title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업"
+    },
     "source_fact:f637a29eccade0b98d66a201": {
       "first_seen_kst": "2026-10-14T19:15:46+09:00",
       "lanes": {
@@ -760718,6 +761968,37 @@
       "telegram_core_fact": "트럼프 대통령은 14일(현지시간) 소셜미디어 트루스소셜 계정에 올린 글에서 \"하워드 러트닉 상무부 장관과 글로벌파운드리가 뉴욕주 말타에 2개의 대형 반도체 제조 공장을 신설하기로 합의했다\"며 \"미국 산업 기반을 부흥시키고 국가 안보를 강화할 역사적 무역 협상의 성과\"라고 밝혔다.",
       "title": "트럼프 \"뉴욕주에 반도체 공장 2곳 신설\"…日 210억달러 투자"
     },
+    "source_fact:f9b5c68c0b898489730131f5": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
+    },
     "source_fact:f9b7b77191667d160b2deaeb": {
       "first_seen_kst": "2026-10-15T10:14:14+09:00",
       "lanes": {
@@ -761979,6 +763260,37 @@
       "source_title": "바오준, 자사주 4만달러 매입..한도 2.5% 소진",
       "telegram_core_fact": "바오준(BZUN)이 9일 미국 나스닥 글로벌 셀렉트 시장에서 자사 복수의결권(WVR) 보통주 3만6576주를 주당 1.10~1.11달러, 총 4만352달러에 매입해 자기주식(treasury shares)으로 보유하기로 했다고 12일 발표했다.",
       "title": "바오준, 자사주 4만달러 매입..한도 2.5% 소진"
+    },
+    "source_fact:fa9106074cd810fb96cf0b85": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
     },
     "source_fact:fa93fb99df7cb40e8c40148e": {
       "first_seen_kst": "2026-10-18T09:49:30+09:00",
@@ -764172,6 +765484,31 @@
       "source_title": "레노버·엔비디아, AI 팩토리 구축 속도 높인다…최단 15일 만에 출하",
       "telegram_core_fact": "레노버 AI 익스프레스는 기존 '레노버 하이브리드 AI 팩토리 위드 엔비디아'를 기업이 보다 빠르게 구축할 수 있도록 지원하는 솔루션이다.",
       "title": "레노버·엔비디아, AI 팩토리 구축 속도 높인다…최단 15일 만에 출하"
+    },
+    "source_fact:fbdd836990e5d30ce79f79b8": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906537",
+      "source": "헤럴드경제",
+      "source_body_digest": "ecfafb4f9ce7a5765ef09a0610ee44869fbd0d235cb8460a42bb1a7e9d553b6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b2d714c5fbca9735e4d1402a2d4b32ebe8359be0fa8e2116d2ce2b6b57aa6bf",
+      "source_fact_keys": [
+        "source_fact:v1:855df57a8075ad05a0264a1ee1d1a4d2777365fff0a392437dad5dfcc3f4bb4a",
+        "source_fact:v1:8c4ee3a9c85c883e53d836a47298bb358269634111bc4c83adb9a8a17dd7ae03",
+        "source_fact:v1:931e83e602c0d92fbd20995ee3967a167f7d67fc8e6c16b7a5be4fe962f0e094",
+        "source_fact:v1:a8d02e455c3a6df41bec66f59a8e33d38165e30af12eec948744675aba090102",
+        "source_fact:v1:c090e76d470208ee15677d0b2e8988bee4d4f55796eb0a557d7d93dd0740fea8",
+        "source_fact:v1:caa47b03372e16988c0fd6f64f418e5db23be321c1a6cd0753ce769892ef5615"
+      ],
+      "source_published_kst": "2026-10-19T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄",
+      "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지코리아가 2031년까지 광주사업장에 총 3조원을 투자해 인공지능(AI)용 첨단 패키징 시설을 확충한다. 앰코는 2031년까지 총 3조원을 투자해 약 2000명을 고용할 계획이다.",
+      "title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄"
     },
     "source_fact:fbe05adf59a3a8c3b509a83c": {
       "first_seen_kst": "2026-10-16T18:07:43+09:00",
@@ -766640,6 +767977,37 @@
       "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
       "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
     },
+    "source_fact:fd62ac06ab9d5889f11a396a": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
+    },
     "source_fact:fd62d0a09c78ff6b41cec8fb": {
       "first_seen_kst": "2026-10-15T07:08:31+09:00",
       "lanes": {
@@ -766789,6 +768157,31 @@
       "source_title": "한국주택협회 회원사, 신규 분양 11만 가구 돌파⋯전년比 25% 증가",
       "telegram_core_fact": "한국주택협회 회원사들의 올해 1~9월 누적 분양 물량이 전년비 25% 증가한 것으로 나타났다. 월별 분양실적을 보면 1월 7421가구에서 2월 7853가구, 3월 1만3764가구로 증가한 뒤 4월에는 2만5105가구를 기록하며 올해 들어 가장 많은 물량이 공급됐다.",
       "title": "한국주택협회 회원사, 신규 분양 11만 가구 돌파⋯전년比 25% 증가"
+    },
+    "source_fact:fd78a259e0a096e0bbda8b00": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906537",
+      "source": "헤럴드경제",
+      "source_body_digest": "ecfafb4f9ce7a5765ef09a0610ee44869fbd0d235cb8460a42bb1a7e9d553b6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b2d714c5fbca9735e4d1402a2d4b32ebe8359be0fa8e2116d2ce2b6b57aa6bf",
+      "source_fact_keys": [
+        "source_fact:v1:855df57a8075ad05a0264a1ee1d1a4d2777365fff0a392437dad5dfcc3f4bb4a",
+        "source_fact:v1:8c4ee3a9c85c883e53d836a47298bb358269634111bc4c83adb9a8a17dd7ae03",
+        "source_fact:v1:931e83e602c0d92fbd20995ee3967a167f7d67fc8e6c16b7a5be4fe962f0e094",
+        "source_fact:v1:a8d02e455c3a6df41bec66f59a8e33d38165e30af12eec948744675aba090102",
+        "source_fact:v1:c090e76d470208ee15677d0b2e8988bee4d4f55796eb0a557d7d93dd0740fea8",
+        "source_fact:v1:caa47b03372e16988c0fd6f64f418e5db23be321c1a6cd0753ce769892ef5615"
+      ],
+      "source_published_kst": "2026-10-19T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄",
+      "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지코리아가 2031년까지 광주사업장에 총 3조원을 투자해 인공지능(AI)용 첨단 패키징 시설을 확충한다. 앰코는 2031년까지 총 3조원을 투자해 약 2000명을 고용할 계획이다.",
+      "title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄"
     },
     "source_fact:fd7ec878ff8bff0f3fa96783": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
@@ -799057,6 +800450,37 @@
       "telegram_core_fact": "서울시는 지난 7일 제16차 도시계획위원회를 열고 도로 지분을 이용한 소규모 지분 쪼개기 등 투기성 거래를 선제적으로 차단하기 위해 서울 전역의 지목이 도로인 토지를 토허구역으로 신규지정한다고 8일 밝혔다.",
       "title": "서울 모든 도로, 토허구역 지정…‘도로 쪼개팔기’ 기획부동산 막는다"
     },
+    "title:4483393655de58db91ade973": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019047600003",
+      "source": "연합뉴스",
+      "source_body_digest": "83f0ab18d6e91c55baad88d6d4d810d2f98291da57016a8fcd06c4c984c7b52e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d87aa094efb925c4abf356fca85bbba254868987753f41ace500b222b6e81511",
+      "source_fact_keys": [
+        "source_fact:v1:112843257b210969ea4ea6fb963740a9fad7b484f9cd00d1eb1daf87096e10ab",
+        "source_fact:v1:2938a1fe550099997fe11c5e06114d5010f28caebef9f4f17216f3a3d24013cb",
+        "source_fact:v1:3032e4201faee33926b95fd171fd2ca9135ba88d74fc953a23b5241492e155cb",
+        "source_fact:v1:45a13962567135144e949c7f54781a04e5e6985442f15204012324c9d2356515",
+        "source_fact:v1:5784673a1c9543f46077b555e2fc049673395acf0ab6f2857e8f9d079ca6c0e3",
+        "source_fact:v1:b36b91e47dc4ae1183b3b144201d556261ac0330d4931ec783d35054ea62af74",
+        "source_fact:v1:bdfbf812dfb00f183b4702f3087817fb4b6fe0362531b33d5d58b855101b2ae5",
+        "source_fact:v1:d3bc6f7fdf87486ef155b231dc0693bc6df8d36b218f75ad556829f8559f138b",
+        "source_fact:v1:dacda6a998f17dfae825f2cac759359b9af9e16e805cb558edadfad5901dc933",
+        "source_fact:v1:e22d8409947e64bd6f341107f41b8f89d5502677990026b83258af2f29078144",
+        "source_fact:v1:e4491fff20e0606cff9b315f7b24fe87efdb7968ffe9edcc8e5ae8eecb946cbe",
+        "source_fact:v1:f4bbd6a13ee56e6632a23a032601d6dbe63f81242b3934e194cf2ac32e18b0b1"
+      ],
+      "source_published_kst": "2026-10-19T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
+      "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
+    },
     "title:44859b4e84cfa9f5b0807f3f": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
       "lanes": {
@@ -801084,6 +802508,24 @@
       "link": "https://www.mk.co.kr/news/politics/12157622",
       "source": "매일경제",
       "title": "워싱턴서 루비오 만난 조현 \"호르무즈 자유통항 기여할것\""
+    },
+    "title:4966b56bf87f6bab61da7370": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261019005100038",
+      "source": "연합뉴스",
+      "source_body_digest": "8c9619794bef18379838c32b217127128f20544ac001b635ade53aaabea604f8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"종전협상 위해 결정\"…프랑스선 시위 격화 | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러 제재 보류 결정은 러시아 우크라이나 전쟁의 종전 협상을 위한 것이라고 밝혔습니다. 네 트럼프 대통령이 최근 러시아에 대한 제재를 보류한 것은 러시아가 종전 협상을 계속하도록 하기 위한 결정이었다고 주장했습니다.",
+      "title": "트럼프 \"종전협상 위해 결정\"…프랑스선 시위 격화 | 연합뉴스"
     },
     "title:497c8691673f1c156c5a95a1": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -811299,6 +812741,31 @@
       ],
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
+    },
+    "title:63012e1c45479266433ed56e": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831001",
+      "source": "뉴시스",
+      "source_body_digest": "403afe21141f51a08e13c8d963ae5b46793fe89a0b7531f0a73d46504065891e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b164fea4523821e98e31f853f86165a5c2503d941a0d7cfa23f7db47d45bd4a",
+      "source_fact_keys": [
+        "source_fact:v1:3bc0d881833dfec868c4d31ab6bee9aad84cbd93ad1ca81873e129165b4b1fdb",
+        "source_fact:v1:424e11c9bbf2fe261ccf8c16f155f9e6fcdd0297c468bbf11cdd3bbd2b5da3c6",
+        "source_fact:v1:68a5a80d4ce546fb7a540eb8596938708037d0cc55d33b8ba12e63c40c4b43d9",
+        "source_fact:v1:771c29ee9576b20204d63780d7362caac26a6c3e520864adf769055c0b94c62f",
+        "source_fact:v1:a7f87ff084be62d82415248c7e011bfb66b43c892b08ee22f7645d2a9237f9d1",
+        "source_fact:v1:aa90f850784d8b69cc465a6ce2c4dc7ca8859606b7616d6443eb84daf47940d4"
+      ],
+      "source_published_kst": "2026-10-19T09:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업",
+      "telegram_core_fact": "\"앞으로 오스넷·CIP를 비롯한 글로벌 기업들과 협력을 확대해 호주 재생에너지 개발과 전력망 구축 사업에서 신규 사업을 발굴할 계획\"이라고 밝혔다. 현대건설이 호주 에너지 기업 오스넷과 송·변전 인프라에 이어 에너지저장장치(BESS), 데이터센터 계통연계 사업까지 협력을 확대한다.",
+      "title": "현대건설, 호주 전력망·신재생 사업 확대…오스넷·CIP와 협업"
     },
     "title:6310a3871fbbce3b832530c2": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
@@ -839013,6 +840480,24 @@
       "telegram_core_fact": "해외 부문의 견조한 성장과 순매출 가이던스 상향은 긍정적이나, 북미 사업 부진과 핵심 영업이익률 하락, 연간 주당순이익 증가율 하향은 부담 요인이다.",
       "title": "펩시코, 3분기 매출 253억달러 5.6%↑..연간 EPS 전망 하향"
     },
+    "title:a78d9638edd43053366be3d9": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831152",
+      "source": "뉴시스",
+      "source_body_digest": "727c3124765dbd2cd93c3d92fa8c29ebe6925777c7f2f756acf8fc7dcb6827d6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T09:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS일렉트릭, 美 데이터센터에 1700억 규모 배전 솔루션 공급",
+      "telegram_core_fact": "LS일렉트릭은 이번 계약을 통해 38킬로볼트(kV)급 고압 배전반을 공급한다.",
+      "title": "LS일렉트릭, 美 데이터센터에 1700억 규모 배전 솔루션 공급"
+    },
     "title:a78ecaf4a2a17a92f2b7c41b": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
       "lanes": {
@@ -844138,6 +845623,31 @@
       "telegram_core_fact": "페이워드가 두바이 규제당국으로부터 가상자산 서비스 제공을 위한 최종 승인을 받으며 현지 시장 진출을 본격화했다.",
       "title": "페이워드, 두바이 VASP 라이선스 최종 승인∙∙∙UAE 시장 공략 본격화"
     },
+    "title:b2fb4e0d9ce1ee60cb8c13c8": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10906537",
+      "source": "헤럴드경제",
+      "source_body_digest": "ecfafb4f9ce7a5765ef09a0610ee44869fbd0d235cb8460a42bb1a7e9d553b6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b2d714c5fbca9735e4d1402a2d4b32ebe8359be0fa8e2116d2ce2b6b57aa6bf",
+      "source_fact_keys": [
+        "source_fact:v1:855df57a8075ad05a0264a1ee1d1a4d2777365fff0a392437dad5dfcc3f4bb4a",
+        "source_fact:v1:8c4ee3a9c85c883e53d836a47298bb358269634111bc4c83adb9a8a17dd7ae03",
+        "source_fact:v1:931e83e602c0d92fbd20995ee3967a167f7d67fc8e6c16b7a5be4fe962f0e094",
+        "source_fact:v1:a8d02e455c3a6df41bec66f59a8e33d38165e30af12eec948744675aba090102",
+        "source_fact:v1:c090e76d470208ee15677d0b2e8988bee4d4f55796eb0a557d7d93dd0740fea8",
+        "source_fact:v1:caa47b03372e16988c0fd6f64f418e5db23be321c1a6cd0753ce769892ef5615"
+      ],
+      "source_published_kst": "2026-10-19T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄",
+      "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지코리아가 2031년까지 광주사업장에 총 3조원을 투자해 인공지능(AI)용 첨단 패키징 시설을 확충한다. 앰코는 2031년까지 총 3조원을 투자해 약 2000명을 고용할 계획이다.",
+      "title": "앰코 광주공장 3조원 증축…서남권 반도체 프로젝트 신호탄"
+    },
     "title:b3104036a0ebc17a464077ed": {
       "first_seen_kst": "2026-10-03T03:34:04+09:00",
       "lanes": {
@@ -845390,6 +846900,31 @@
       "source_title": "디아이티, 레이저 장비 피보팅으로 영업익 122% 급증… 재평가 기대",
       "telegram_core_fact": "디아이티의 2026년 상반기 연결 매출액은 901억원, 영업이익은 305억원을 기록했다.",
       "title": "디아이티, 레이저 장비 피보팅으로 영업익 122% 급증… 재평가 기대"
+    },
+    "title:b774cd7f9d9a8225e94d5b09": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.asiae.co.kr/article/2026101613180548638",
+      "source": "아시아경제",
+      "source_body_digest": "a53f37c4796740ee3881ebe28a8c169bd022cdfa5e73752354068784476c843a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:602bcf593c14cda342583f360b0137319c6f4ae82662996f4eec8f1f28afb9a3",
+      "source_fact_keys": [
+        "source_fact:v1:06f1843ed36de0952124be2940444af213547370e586768bf33452f502504488",
+        "source_fact:v1:4dd727f2f61cfc6533361772b47b605115598da3ed9f1dda8b102e39fe82155e",
+        "source_fact:v1:7a049b198a73fa3aa5917da6d33bce4f9879a6339b767bd2afb55b36e0171fa6",
+        "source_fact:v1:9c370106efcf28933ade9e88f91decd49ed3f585fa3a3ec1bb73027f4935c432",
+        "source_fact:v1:aff6a0b60c1972cf6d3bc373078da9804bec2940e36b6b177a18cb8f94524738",
+        "source_fact:v1:fdbe05d701d14e070c9821c0cdc0b4db62ff3851028cfe8d4c5c65557c0a3394"
+      ],
+      "source_published_kst": "2026-10-19T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다",
+      "telegram_core_fact": "특히 3나노미터(㎚·10억분의 1m) 이하 첨단공정에 대한 TSMC의 투자 결정이 향후 전력 수요 증가를 좌우할 핵심 변수라고 설명했다. 첨단 반도체 공장 증설과 인공지능(AI) 서버 산업 확대에 따라 오는 2035년에는 대만 전체 전력 소비량의 약 30%를 반도체 관련 산업이 차지할 것으로 예상된다.",
+      "title": "[대만칩통신]TSMC가 키운 전력 수요…대만 반도체 산업, 10년 뒤 2배 쓴다"
     },
     "title:b78e0e45ae014738504db46e": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
@@ -868429,6 +869964,24 @@
       "source_event_identity": "",
       "title": "취업문 얼었는데 환호한 월가…엔비디아·AMD 줄줄이 최고치[뉴욕마감]"
     },
+    "title:f248683bd1446211b3eccc27": {
+      "first_seen_kst": "2026-10-19T10:00:18+09:00",
+      "lanes": {
+        "live": "2026-10-19T10:00:18+09:00"
+      },
+      "last_seen_kst": "2026-10-19T10:00:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019034100003",
+      "source": "연합뉴스",
+      "source_body_digest": "5f1d143583891c97b8a8101ed27bbd088cac91a0193d0e538d82ffdcd532d19c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T09:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, 현지법인 '한미USA' 설립…반도체 공급망 공략 | 연합뉴스",
+      "telegram_core_fact": "한미반도체는 미국 내 메모리와 파운드리(반도체 위탁생산), 첨단 패키징 생산 기반이 확대되면서 반도체 제조 장비 수요도 늘어날 것으로 기대하고 있다.",
+      "title": "한미반도체, 현지법인 '한미USA' 설립…반도체 공급망 공략 | 연합뉴스"
+    },
     "title:f257e1b268e92f3b6aa19d9a": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -874259,5 +875812,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-19T09:33:44+09:00"
+  "updated_at_kst": "2026-10-19T10:00:18+09:00"
 }
