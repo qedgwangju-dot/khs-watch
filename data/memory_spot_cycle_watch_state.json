@@ -733,10 +733,16 @@
       "source": "TradingKey",
       "published_kst": "2026-10-13T11:58:00+09:00",
       "first_seen_kst": "2026-10-17T22:13:45+09:00"
+    },
+    "dab04ab1653a7e5cee8cee89": {
+      "title": "메모리 품귀에 폐폰까지 뜯는다…中서 ‘재활용 칩’ 거래 확산 - 조세일보",
+      "source": "조세일보",
+      "published_kst": "2026-10-19T11:12:01+09:00",
+      "first_seen_kst": "2026-10-19T11:41:38+09:00"
     }
   },
-  "updated_at_kst": "2026-10-19T09:31:33+09:00",
-  "last_scan_count": 7,
+  "updated_at_kst": "2026-10-19T11:41:38+09:00",
+  "last_scan_count": 8,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -797,20 +803,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-16T18:48:49+09:00",
+  "last_successful_delivery_kst": "2026-10-19T11:41:48+09:00",
   "telegram_message_ids": [
-    300
+    307
   ],
-  "telegram_message_id": 300,
+  "telegram_message_id": 307,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      300
+      307
     ],
-    "confirmed_at_kst": "2026-10-16T18:48:49+09:00",
-    "alert_signature": "c06e890c5b523c21f238c7479ae6621978b0b282b89fe838a8558c12b3c9c063"
+    "confirmed_at_kst": "2026-10-19T11:41:48+09:00",
+    "alert_signature": "08cfa9baea458b7597370ec22c5cf7656d1f91123007adf711e6eeb4f6d122e7"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1024,5 +1030,22 @@
     "source_kind": "ARK 홍콩 발언은 Bloomberg 재인용 · CXMT G5는 공식 양산 · 4F²/증설치는 보도·전망",
     "source": "ARK 발언 재보도·CXMT 공식·TrendForce 업계 인용",
     "source_rank": 2
+  },
+  "reclaimed_memory_track_version": 1,
+  "reclaimed_memory": {
+    "used_phone_chip_trade_reported": true,
+    "smartphone_brand_procurement_reported": true,
+    "smartphone_brand_procurement_official_confirmed": false,
+    "reported_chip_cost_increase_cny": 500,
+    "reported_shenzhen_oem_subsidy_cny": 300,
+    "shenzhen_oem_subsidy_official_confirmed": false,
+    "source": "조세일보",
+    "source_kind": "중국 일부 저가폰 제조사 조달·칩당 원가·선전시 제조사 보조금은 업체·정부 공식 미확인",
+    "source_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE13TldsamMyLW5IOHBjcVExWU1mbDNtMVltVGlVdFZPcGNYREVjV0o0LV9LemxIWDBsaTJfOWRSQWgxaFpJdndpUmN2NFVxMzZ4bDZWS0k1TmU4SGdvRXVJ?oc=5",
+    "secondary_source_url": "https://www.trendforce.com/news/2026/10/19/news-chinese-phone-makers-eye-salvaged-memory-as-chip-prices-reportedly-rise-by-up-to-rmb-500-per-unit/",
+    "history_source_url": "https://www.digitimes.com/news/a20260331PD221/china-mobile-phone-recycling-chip-shortage.html",
+    "government_consumer_policy_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202512/t20251230_1402851.html",
+    "source_rank": 2,
+    "as_of": "2026-10-19"
   }
 }
