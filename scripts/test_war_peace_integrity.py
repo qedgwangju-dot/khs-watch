@@ -91,6 +91,139 @@ class IntegrityTests(unittest.TestCase):
         value = json.loads(path.read_text(encoding='utf-8'))
         return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def summit_support_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_diplomatic_actors_info_39187221621.json'
+        value = json.loads(path.read_text(encoding='utf-8'))
+        return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_actual_information_resumption_reaction_is_not_energy_ceasefire(self):
+        fixture, _ = self.summit_support_fixture()
+        row = fixture['articles'][3]
+        self.assertEqual(integrity.non_military_kind(row), 'support_statement')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '미국·우크라이나·러시아 · 정보 제공·공유 재개 보도')
+
+    def test_actual_summit_proposals_preserve_three_parties_and_proposal_stage(self):
+        fixture, _ = self.summit_support_fixture()
+        for index in (0, 1, 2, 6):
+            with self.subTest(index=index):
+                row = fixture['articles'][index]
+                self.assertEqual(integrity.non_military_kind(row), 'diplomatic_plan')
+                self.assertEqual(integrity.final_color(row), 'yellow')
+                self.assertEqual(integrity.topic_label(row), '미국·중국·러시아 · 정상회담 제안·논의')
+
+    def test_information_policy_score_clears_cached_energy_event(self):
+        fixture, now = self.summit_support_fixture()
+        row = fixture['articles'][3]
+        expected_score, _ = integrity.source_score._original_score(copy.deepcopy(row), now)
+        score, tags = integrity.score_item(row, now)
+        self.assertEqual(score, expected_score)
+        self.assertEqual(tags, [integrity.KIND_LABELS['support_statement']])
+        self.assertEqual(row['tags'], tags)
+        self.assertFalse(row.get('signals_ko') or row.get('forced_tags'))
+        self.assertNotIn('newidea_marks', row)
+        self.assertNotIn('deep_signal', row)
+
+    def test_actual_summit_support_render_retains_titles_and_full_final_gate(self):
+        fixture, now = self.summit_support_fixture()
+        rows = [row for row in fixture['articles'] if row['rendered']]
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        self.assertEqual([row['classification_color'] for row in rows], ['yellow'] * 4)
+        self.assertEqual(text.count('미국·중국·러시아 · 정상회담 제안·논의'), 3)
+        for row in rows:
+            self.assertIn(html.escape(row['title_original']), text)
+            self.assertFalse(row.get('signals_ko') or row.get('forced_tags'))
+            self.assertEqual(row['tags'], [integrity.KIND_LABELS[integrity.non_military_kind(row)]])
+        self.assertNotIn('에너지 휴전 발표', text)
+        self.assertNotIn('신규 변화의 중심은 실제 공격', text)
+        self.assertNotIn('🟢', text)
+        self.assertIn('제목 기준·본문 미확인', text)
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            integrity.verify_alert()
+
+    def test_final_gate_rejects_actual_same_hash_summit_support_wrong_topics(self):
+        fixture, now = self.summit_support_fixture()
+        rows = [row for row in fixture['articles'] if row['rendered']]
+        text = fixture['sent_alert'].strip()
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
+                integrity.verify_alert()
+
+    def test_full_candidate_verdict_uses_only_four_rendered_headlines(self):
+        fixture, now = self.summit_support_fixture()
+        rows = fixture['articles']
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        shown = [row for row in receipt['articles'] if row['rendered']]
+        self.assertEqual([row['id'] for row in shown], [row['id'] for row in rows[:4]])
+        self.assertEqual([row['classification_color'] for row in shown], ['yellow'] * 4)
+        self.assertEqual(('<b>투자 판정</b>' + text.split('<b>투자 판정</b>', 1)[1]).strip(), integrity.verdict(shown).strip())
+        self.assertNotIn('신규 변화의 중심은 실제 공격', text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in shown]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            integrity.verify_alert()
+
+    def test_final_gate_rejects_attack_verdict_after_correct_diplomatic_items(self):
+        fixture, now = self.summit_support_fixture()
+        rows = [row for row in fixture['articles'] if row['rendered']]
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        text = text.split('<b>투자 판정</b>', 1)[0] + '<b>투자 판정</b>' + fixture['sent_alert'].split('<b>투자 판정</b>', 1)[1]
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE.*verdict'):
+                integrity.verify_alert()
+
+    def test_information_resumption_keeps_denial_and_separate_actual_actions(self):
+        for title in ('젤렌스키, 美 정보 제공 재개에 감사·러시아 정책에는 우려',
+                      '미국, 우크라 군사 정보 공유 재개 보도 부인',
+                      'Zelensky thanks U.S. for resuming intelligence sharing, worries about Russia policy'):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), 'support_statement')
+        for title in ('젤렌스키, 미국 정보 제공 재개에 감사…러시아 미사일 발사',
+                      '미국 정보 공유 재개…우크라이나 러 정유시설 공습 재개',
+                      '젤렌스키, 미국 정보 공유 재개에 감사…양측 휴전 합의 발효',
+                      'Zelensky thanks U.S. for resuming intelligence sharing; Russia launched airstrikes'):
+            with self.subTest(title=title):
+                self.assertNotEqual(integrity.non_military_kind(article(title)), 'support_statement')
+
+    def test_summit_proposals_keep_contact_and_completed_operation_boundaries(self):
+        for title in ('푸틴, 트럼프·시진핑에 3자 정상회담 제안',
+                      '트럼프, 푸틴·시진핑과 정상회담 개최 논의',
+                      'Putin proposes three-way summit with Trump and Xi'):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), 'diplomatic_plan')
+                self.assertIn('미국·중국·러시아', integrity.topic_label(article(title)))
+        for title in ('트럼프·푸틴, 정상회담 개최',
+                      '트럼프·시진핑·푸틴 정상회담 제안…러시아 미사일 발사',
+                      '트럼프·시진핑·푸틴 정상회담 제안…양측 휴전 합의 발효'):
+            with self.subTest(title=title):
+                self.assertNotEqual(integrity.non_military_kind(article(title)), 'diplomatic_plan')
+
     def test_actual_talk_restart_plan_is_not_implemented_peace(self):
         fixture, _ = self.talk_plan_drone_fixture()
         row = fixture['articles'][0]

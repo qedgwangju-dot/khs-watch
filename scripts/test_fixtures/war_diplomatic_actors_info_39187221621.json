@@ -1,0 +1,456 @@
+{
+  "provenance": {
+    "run_id": "39187221621",
+    "code_sha": "76e78de4643d444d13fbe0a9dfcf89ba25910e40",
+    "queried_at_kst": "2026-10-19T10:52:21.341716+09:00",
+    "alert_sha256": "9a1930da6b0b61223c703e0bc1cb99b564dfd39f8e7e495953b30c18b7c845fc"
+  },
+  "articles": [
+    {
+      "id": "57872c64e83e1e28169d",
+      "title_original": "\"푸틴, 트럼프에 내달 미·중·러 3자 정상회담 제안\" - 연합뉴스",
+      "title_ko": "\"푸틴, 트럼프에 내달 미·중·러 3자 정상회담 제안\" - 연합뉴스",
+      "description": "\"푸틴, 트럼프에 내달 미·중·러 3자 정상회담 제안\" 연합뉴스",
+      "source": "연합뉴스",
+      "source_url": "https://www.yna.co.kr",
+      "link": "https://www.yna.co.kr/view/AKR20261019046300009",
+      "discovery_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6QmZ6SjJoUEx4NWFZc1J1T2xNZ1BZYnItN2dYek0zXy1IT01pXzdJZ3RHdTM1RTJOYWc5ZEQyTWRuRHhHSnM0ZXBQQXdIZU9DNXRMY0FwS3N4M0lBUTk4etIBYEFVX3lxTFB6QmZ6SjJoUEx4NWFZc1J1T2xNZ1BZYnItN2dYek0zXy1IT01pXzdJZ3RHdTM1RTJOYWc5ZEQyTWRuRHhHSnM0ZXBQQXdIZU9DNXRMY0FwS3N4M0lBUTk4eg?oc=5",
+      "resolved_url": "https://www.yna.co.kr/view/AKR20261019046300009",
+      "published": "Mon, 19 Oct 2026 09:49:22 +0900",
+      "rss_published": "Mon, 19 Oct 2026 00:49:22 GMT",
+      "source_metadata": {
+        "title": "\"푸틴, 트럼프에 내달 미·중·러 3자 정상회담 제안\" | 연합뉴스",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-19T09:49:22+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-19T09:49:22+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-19T09:49:22+09:00"
+          }
+        ]
+      },
+      "score": 12,
+      "tags": [
+        "외교 접촉 보도"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_contact",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "6d1b6a232fc0acd6fa79e06eb00ba6ba3cf95f7b8ecca6f25130b29b360bbdfb"
+    },
+    {
+      "id": "a59142c021379dace724",
+      "title_original": "푸틴, 트럼프에 미·중·러 3자 정상회담 제안…우크라 종전 논의 - 아주경제",
+      "title_ko": "푸틴, 트럼프에 미·중·러 3자 정상회담 제안…우크라 종전 논의 - 아주경제",
+      "description": "푸틴, 트럼프에 미·중·러 3자 정상회담 제안…우크라 종전 논의 아주경제",
+      "source": "아주경제",
+      "source_url": "https://www.ajunews.com",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFA3ZXZjNENvOG5WcWZHQ0xkd05vVDZVLTJ5Vl9UTlI5OG44VDdMYWdzdXpmWTFpTWlfR3RVUko4U1ZPS1BnR2FadElSVGhheDV6OHJwb0VJTzgxZ9IBWEFVX3lxTE01WkxBSXFfcElNNXZqUWNtWmk3S25LdWtiRmE5LXVXT0hDQ1NkSW9SS0ZYWmliNEtEdXBRV216RVVuMmY1SkZMWWp6M3VIWjRZSnh1MjFfZmM?oc=5",
+      "published": "Mon, 19 Oct 2026 01:28:03 GMT",
+      "score": 11,
+      "tags": [
+        "외교 접촉 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_contact",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "507f0c0aaeb99ea2ebc7",
+      "title_original": "\"푸틴, 트럼프·시진핑에 우크라전 종전 위한 3자 정상회담 제안\" - 뉴시스",
+      "title_ko": "\"푸틴, 트럼프·시진핑에 우크라전 종전 위한 3자 정상회담 제안\" - 뉴시스",
+      "description": "\"푸틴, 트럼프·시진핑에 우크라전 종전 위한 3자 정상회담 제안\" 뉴시스",
+      "source": "뉴시스",
+      "source_url": "https://www.newsis.com",
+      "link": "https://www.newsis.com/view/NISX20261019_0003830959",
+      "discovery_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBoNW9VbzVLbWRDN1ByaGRLZHk3QktlMUhDdF82QnJ6S2syWW8wNXgwczBCOU5XcU43Ympua3MxN09PdG0ydDJsVXJxQS1FVVlxWlU3a2pMQVlhdnFGbHVmQ9IBeEFVX3lxTE02NWptTTE2TmNtb2hEczV1czBGak9aTWtsU2ZDYnI4WmpuUmdPUnF1TTJjdUZpVmpNRG1SUkdtWThvN0VtWEM3ZjM4REgwTmRZU3dXaVd2RXJ5X09HQlJONmxnamYwZjBubWZhS1hzOVJlTnk0Z3lHdg?oc=5",
+      "resolved_url": "https://www.newsis.com/view/NISX20261019_0003830959",
+      "published": "Mon, 19 Oct 2026 10:27:18 +0900",
+      "rss_published": "Mon, 19 Oct 2026 01:27:18 GMT",
+      "source_metadata": {
+        "title": "\"푸틴, 트럼프·시진핑에 우크라전 종전 위한 3자 정상회담 제안\"",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-19T10:27:18+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-19T10:27:18+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-19T10:27:18+09:00"
+          }
+        ]
+      },
+      "score": 11,
+      "tags": [
+        "외교 접촉 보도"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_contact",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "44eae812784f0541be4b3c9c5b7db2656690d8c042d3b54ef9ff1f79db118434"
+    },
+    {
+      "id": "7539379a537354896555",
+      "title_original": "젤렌스키, 美 정보 제공 재개에 감사·러시아 정책에는 우려",
+      "title_ko": "젤렌스키, 美 정보 제공 재개에 감사·러시아 정책에는 우려",
+      "description": "[파이낸셜뉴스] 볼로디미르 젤렌스키 우크라이나 대통령이 잠시 중단됐던 미국의 군사 정보 공유가 재개된 것에 대해 감사의 뜻을 전했다. 우크라이나는 드론 1000여대를 동원해 개전 이후 러시아에 대한 최대 공격을 실시했다. 젤렌스키 대통령은 18일(현지시간) 방송된 미국 NBC뉴스 대담 프로그램 '언론과의 만남(Meet the Press)'와의 인터뷰에서 \"일정 기간 정보가 차단되었다가 미국 측에 의해 다시 해제되었다\"며 \"이 점에 대해 매우 감사하게 생각하며, 현재는 정상 작동하고 있다\"고 밝혔다. 그는 이어 \"러시아가 탄도미사일을 발사할 때 우리 측에 이를 미리 알려줄 수 있는 독보적인 정보력은 오직 미국만이 가지고 있다\"며 \"정보가 차단되었던 사흘 동안 탄도미사일 공격이 이어졌으나 관련 정보를 전혀 제공받지 못했다&",
+      "source": "파이낸셜뉴스",
+      "link": "https://www.fnnews.com/news/202610190836181505",
+      "discovery_url": "https://www.fnnews.com/news/202610190836181505",
+      "resolved_url": "https://www.fnnews.com/news/202610190836181505",
+      "published": "Mon, 19 Oct 2026 10:46:02 +0900",
+      "rss_published": "Mon,19 Oct 2026 10:46:02 +0900",
+      "source_metadata": {
+        "title": "젤렌스키, 美 정보 제공 재개에 감사·러시아 정책에는 우려",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-19T10:46:02+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-19T10:46:02+09:00"
+          },
+          {
+            "field": "dd:published_time",
+            "at_kst": "2026-10-19T10:46:02+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-19T10:46:02+09:00"
+          },
+          {
+            "field": "visible:입력",
+            "at_kst": "2026-10-19T10:46:00+09:00"
+          }
+        ]
+      },
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "classification_color": "yellow",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "72566610686554f2268aefdec810f63abf6517ef8ee9702e186dcc5b6ee5cecb"
+    },
+    {
+      "id": "69d14e54cc63e23d1355",
+      "title_original": "사우디 연합군·후티 반군 공습 격화…예멘서 최소 9명 사망 - 더페어",
+      "title_ko": "사우디 연합군·후티 반군 공습 격화…예멘서 최소 9명 사망 - 더페어",
+      "description": "사우디 연합군·후티 반군 공습 격화…예멘서 최소 9명 사망 더페어",
+      "source": "더페어",
+      "source_url": "https://www.thefairnews.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1EbmJqZTVkMnJUV19aZHpZbkNLZTBSellQTjlfNzFILVFsUEk3TkhKZ0V0LUsxMWQ0Slh5UWJSUXIybWRtOW1VekIycmNXaFBWRmRlaVRlcUFTdFRzdkpydlJaOXU1c2FDdUNNZWI5X1PSAXRBVV95cUxPQnBDNnF3dElXN2h3YjQ2Tm9RcTMtcEttQjdmUmNQUXpGY2c4Z0NxTFlrUjlmNDljWmptV3g2ZVFsU212Tnk5Tjk5Vno0dkpDMF92eFZndE56TFNpSHZ6N0dUY3JrSUxmbnJKTUhYQzEyV0xlZw?oc=5",
+      "published": "Sun, 18 Oct 2026 22:57:42 GMT",
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "71edf180cc4d186478de",
+      "title_original": "우크라, 드론 1000대 넘게 러시아 공습…트럼프와 갈등 격화 - 이데일리",
+      "title_ko": "우크라, 드론 1000대 넘게 러시아 공습…트럼프와 갈등 격화 - 이데일리",
+      "description": "우크라, 드론 1000대 넘게 러시아 공습…트럼프와 갈등 격화 이데일리",
+      "source": "이데일리",
+      "source_url": "https://www.edaily.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNNTBGM0dKd3dkRGNVV1o1cjBoRUpCZjI4VkZ4MmRaV1lvYWkteFBLbWxuTHNFZFlpSHFQcXJkR1h0R2FvQWlPY0h3REdnS0tKbEdfM2FLTWVQdjBRTFItaTA2d3BJSUhQS2pYT0N4N3RtOWNUSGpaNUpRbFFJOVJFag?oc=5",
+      "published": "Sun, 18 Oct 2026 22:57:02 GMT",
+      "score": 10,
+      "tags": [
+        "드론 공습 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "21873a38e7bdeeed0dc0",
+      "title_original": "\"푸틴, 트럼프·시진핑에 내달 3자 회담 제안…러에 유리한 종전 노려\" - 뉴스1",
+      "title_ko": "\"푸틴, 트럼프·시진핑에 내달 3자 회담 제안…러에 유리한 종전 노려\" - 뉴스1",
+      "description": "\"푸틴, 트럼프·시진핑에 내달 3자 회담 제안…러에 유리한 종전 노려\" 뉴스1",
+      "source": "뉴스1",
+      "source_url": "https://www.news1.kr",
+      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBWQlVobWp2NmYwR2JuWXpiZUlhU3p3NnZVYmVPN1BWYTEwU1J4UmdiTmQyREV5LWlMQ05oWFFjWU9rX0hXMDNPY2owaTNYOHlDYkZGWVgtUmo?oc=5",
+      "published": "Mon, 19 Oct 2026 00:47:38 GMT",
+      "score": 9,
+      "tags": [
+        "외교 접촉 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "non_military_kind": "diplomatic_contact",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "26f1bd39265f92501f18",
+      "title_original": "이란 \"美, 조건 수용하면 6일 내 호르무즈 개방·7일째 협상 재개\" - 뉴스1",
+      "title_ko": "이란 \"美, 조건 수용하면 6일 내 호르무즈 개방·7일째 협상 재개\" - 뉴스1",
+      "description": "이란 \"美, 조건 수용하면 6일 내 호르무즈 개방·7일째 협상 재개\" 뉴스1",
+      "source": "뉴스1",
+      "source_url": "https://www.news1.kr",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5qUU1nR1JqWlFjSXh4WkJrN0lvSkljYlhWVjZYaHhMYjlTVVY5YWFvX3RaUTlmZUJhNFcwVEFNTkkxal96WnptekU5M1M2MHpHWGxWclI1TTlSaGRFWk1lOFNB?oc=5",
+      "published": "Mon, 19 Oct 2026 00:43:28 GMT",
+      "score": 9,
+      "tags": [
+        "종전·협상"
+      ],
+      "body_checked": true,
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29683.0,
+      "pct": 0.9917833387203867,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "10:42 KST",
+      "observed_at_kst": "2026-10-19T10:42:20+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 29391.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 29391.5,
+        "chartPreviousClose": 29391.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792374140,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792296000,
+            "start": 1792296000,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792382340,
+            "start": 1792296000,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792382340,
+            "start": 1792382340,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 97.63999938964844,
+      "pct": -1.3936584632918136,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "10:42 KST",
+      "observed_at_kst": "2026-10-19T10:42:51+09:00",
+      "symbol": "CL=F",
+      "previous_close": 99.02,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 99.02,
+        "chartPreviousClose": 99.02,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792374171,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792296000,
+            "end": 1792296000,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792296000,
+            "end": 1792382340,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792382340,
+            "end": 1792382340,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 108.04000091552734,
+      "pct": -1.6566530898167287,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "10:42 KST",
+      "observed_at_kst": "2026-10-19T10:42:44+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 109.86,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 109.86,
+        "chartPreviousClose": 109.86,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792374164,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792296000,
+            "end": 1792296000,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792296000,
+            "end": 1792382340,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792382340,
+            "end": 1792382340,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.83399963378906,
+      "pct": -0.002946243713919383,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "10:43 KST",
+      "observed_at_kst": "2026-10-19T10:43:51+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 101.837,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 101.837,
+        "chartPreviousClose": 101.837,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792374231,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792296000,
+            "end": 1792296000,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792296000,
+            "end": 1792382340,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792382340,
+            "end": 1792382340,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "sent_alert": "<b>전쟁·종전·재건 웹감시</b>\n🟡 <b>군사위협·협상 제약</b>  |  🟡 <b>제재·외교반응</b>\n조회 2026-10-19 10:52 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🟡 [신규] <b>1. 미국 · 외교 접촉 보도</b>\n&quot;푸틴, 트럼프에 내달 미·중·러 3자 정상회담 제안&quot; - 연합뉴스\n보도 10-19 09:49 KST · <b>62분 경과</b> · 외교 접촉 보도 · <a href=\"https://www.yna.co.kr/view/AKR20261019046300009\">연합뉴스 원문</a>\n\n🟡 [속보] <b>2. 미국·우크라이나 · 외교 접촉 보도</b>\n푸틴, 트럼프에 미·중·러 3자 정상회담 제안…우크라 종전 논의 - 아주경제\nRSS 보도 10-19 10:28 KST · <b>24분 경과</b> · 외교 접촉 보도 · <a href=\"https://news.google.com/rss/articles/CBMiWkFVX3lxTFA3ZXZjNENvOG5WcWZHQ0xkd05vVDZVLTJ5Vl9UTlI5OG44VDdMYWdzdXpmWTFpTWlfR3RVUko4U1ZPS1BnR2FadElSVGhheDV6OHJwb0VJTzgxZ9IBWEFVX3lxTE01WkxBSXFfcElNNXZqUWNtWmk3S25LdWtiRmE5LXVXT0hDQ1NkSW9SS0ZYWmliNEtEdXBRV216RVVuMmY1SkZMWWp6M3VIWjRZSnh1MjFfZmM?oc=5\">아주경제 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [속보] <b>3. 미국·우크라이나 · 외교 접촉 보도</b>\n&quot;푸틴, 트럼프·시진핑에 우크라전 종전 위한 3자 정상회담 제안&quot; - 뉴시스\n보도 10-19 10:27 KST · <b>25분 경과</b> · 외교 접촉 보도 · <a href=\"https://www.newsis.com/view/NISX20261019_0003830959\">뉴시스 원문</a>\n\n🟡 [속보] <b>4. 우크라이나·러시아 · 에너지 휴전 발표·양측 검증 대기</b>\n젤렌스키, 美 정보 제공 재개에 감사·러시아 정책에는 우려\n보도 10-19 10:46 KST · <b>6분 경과</b> · 확전 · <a href=\"https://www.fnnews.com/news/202610190836181505\">파이낸셜뉴스 원문</a>\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,683.00</b>  +0.99% · 제공처 비교종가 대비 · 기준 10:42 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>97.64</b>  -1.39% · 제공처 비교종가 대비 · 기준 10:42 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>108.04</b>  -1.66% · 제공처 비교종가 대비 · 기준 10:42 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.83</b>  -0.00% · 제공처 비교종가 대비 · 기준 10:43 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n",
+  "evidence_sha256": "f0bf258f1419286219123462ec79fe1aeb9fb9a6e1c7c5605738e1f60613fb49",
+  "limits": [
+    "Stored publisher extraction and RSS inputs do not preserve original operating HTTP response bytes.",
+    "Telegram returned body, server date, recipient hash and device receipt are unverified.",
+    "Source article statements are not independently confirmed events."
+  ]
+}
