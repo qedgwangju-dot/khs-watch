@@ -5600,6 +5600,283 @@ for _q in (
     if _q not in base.QUERIES: base.QUERIES.append(_q)
 
 
+
+# Volkswagen Europe high-voltage battery recall: 2026-10 safety event.
+# UK 93MF/93MV is manufacturer confirmed, while German KBA rollout remains
+# pending. US 26V630/93EX (22,524 ID.4s, SK Battery America) is DIFFERENT.
+# Never attribute a European cell maker using a US recall.
+VW_EU_BATTERY_RECALL_RECOVERY = 'DIRECT_VW_EU_93MF_93MV_80PCT_OFFICIAL_20261019'
+VW_EU_BATTERY_RECALL_URL = (
+    'https://www.volkswagen.co.uk/en/owners-and-services/my-car/'
+    'battery-recall-campaign.html'
+)
+VW_EU_OFFICIAL_SOURCES = {
+    'Volkswagen UK', 'Volkswagen Vans UK', 'Volkswagen Denmark',
+}
+VW_EU_GERMAN_REGULATOR_SOURCES = {'KBA', 'Kraftfahrt-Bundesamt'}
+VW_RECALL_NAME = re.compile(
+    r'Volkswagen|폭스바겐|\bVW\b', re.I
+)
+VW_RECALL_BATTERY = re.compile(
+    r'high[-\s]?voltage\s+batter(?:y|ies)|HV\s+batter(?:y|ies)|'
+    r'고전압\s*배터리|배터리\s*셀|battery\s*cell|'
+    r'배터리\s*리콜', re.I
+)
+VW_RECALL_EVENT = re.compile(
+    r'recall|리콜|93MF|93MV|26V630|93EX|80\s*%', re.I
+)
+VW_RECALL_CAMPAIGN_EU = re.compile(r'\b93MF\b|\b93MV\b', re.I)
+VW_RECALL_SAFETY = re.compile(
+    r'80\s*%|overheat|overheating|thermal|fire|충전\s*제한|과열|화재',
+    re.I,
+)
+VW_RECALL_GERMANY = re.compile(r'KBA|Kraftfahrt-Bundesamt|독일\s*연방|German\s*Federal',re.I)
+VW_RECALL_ACTIVATED = re.compile(
+    r'(?:리콜|조치).{0,25}(?:등록|개시|발효|확정)|'
+    r'(?:recall|campaign).{0,30}(?:officially\s+)?(?:issued|activated|launched)',
+    re.I,
+)
+VW_RECALL_ACTIVATION_NEGATION = re.compile(
+    r'미등록|준비|예정|협의|아직|not\s+yet|pending|prepar|unconfirmed',
+    re.I,
+)
+
+
+def _is_vw_battery_recall(text: str) -> bool:
+    return bool(
+        VW_RECALL_NAME.search(text)
+        and VW_RECALL_BATTERY.search(text)
+        and VW_RECALL_EVENT.search(text)
+    )
+
+
+def _vw_eu_recall_stage(text: str, source: str = '') -> str:
+    if not _is_vw_battery_recall(text):
+        return ''
+    if (source in VW_EU_GERMAN_REGULATOR_SOURCES
+            and VW_RECALL_GERMANY.search(text)
+            and VW_RECALL_ACTIVATED.search(text)
+            and not VW_RECALL_ACTIVATION_NEGATION.search(text)):
+        return 'germany_regulator_activated'
+    if (source in VW_EU_OFFICIAL_SOURCES
+            and VW_RECALL_CAMPAIGN_EU.search(text)
+            and VW_RECALL_SAFETY.search(text)):
+        return 'uk_official_safety_campaign'
+    # A 2026-09-30 US filing is prior context, never a new EU campaign.
+    return 'background_or_us_context'
+
+
+def _vw_eu_recall_recovery() -> list[dict]:
+    # Date-only manufacturer evidence: do not invent a publication hour.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026, 10, 25):
+        return []
+    return [{
+        'title': (
+            '폭스바겐 유럽 고전압 배터리 리콜: 영국 93MF·93MV '
+            '안전조치 80% 제한 공식 안내'
+        ),
+        'link': VW_EU_BATTERY_RECALL_URL,
+        'description': (
+            '폭스바겐 영국 공식 홈페이지는 고전압 배터리 '
+            '안전 캠페인 93MF 및 93MV를 확인한다. '
+            '특정 공급업체에서 2022~2025년 생산한 배터리 셀에 '
+            '품질 편차 가능성이 있으며 일부 ID.3, ID.4, ID.7과 '
+            'ID.Buzz 및 ID.Buzz Cargo를 점검한다. '
+            '영국 ID.Buzz 차종의 80% 충전 제한 조치는 '
+            '2026년 10월 12일 주간에 시작됐다고 공식 발표됐다. '
+            '80%를 넘겨 충전하면 과열·최악의 경우 화재 위험이 있어 '
+            '해당 차량의 충전 한도를 최대 80%로 제한한다. '
+            '폭스바겐 영국 안내의 배터리 점검 소요시간은 약 1시간이며 '
+            '필요에 따라 소프트웨어 조치 또는 배터리 모듈 교체가 가능하다. '
+            '독일의 KBA 공식 등록·발효 및 정확한 유럽 차량 대수는 '
+            '2026년 10월 19일 기준 추가 확인이 필요하다. '
+            '10월 15~16일 dpa·Handelsblatt에서 독일 리콜 준비 및 '
+            'Cupra Born 포함 유럽 일부 차종을 보도했으나 '
+            '유럽 공급사 실명·배터리 팩 전량 교체대수·비용은 공개되지 않았다. '
+            '미국 26V630/93EX 리콜의 대상인 ID.4 22,524대 '
+            '(2023~2026년형)는 2026년 9월 30일 별도 신고 건이다. '
+            '미국 건에서 확인된 SK Battery America 공급 사실을 '
+            '유럽 대상 배터리 셀 공급사로 치환하면 안 된다. '
+            '2018년 Volkswagen Group은 유럽용으로 SK이노베이션·'
+            'LG화학·삼성SDI 등을 당시 협력사로 열거했으나 '
+            '그 과거 다중공급 사실은 이번 결함 셀의 공급사 식별 자료가 아니다. '
+            '유럽 리콜의 실제 검사·교체 대수, 셀 일련번호, '
+            '보증충당금·수리비 부담자와 고객 통지·수리 완료율을 추적한다.'
+        ),
+        'source': 'Volkswagen UK',
+        'published': None,
+        'direct_recovery': True,
+        'vw_europe_official_93mf_93mv': True,
+    }]
+
+
+_vw_recall_prev_query = base.query_news
+_vw_recall_prev_group = base.topic_group
+_vw_recall_prev_score = base.score
+_vw_recall_prev_category = base.category
+_vw_recall_prev_meaning = base.meaning
+_vw_recall_prev_risk = base.risk
+_vw_recall_prev_verification = base.verification
+_vw_recall_prev_title = base.clean_title
+_vw_recall_prev_tag = base.tag_for
+_vw_recall_prev_key = base.key
+_vw_recall_prev_select = base.select_diverse
+
+
+def _vw_eu_recall_query(q: str) -> list[dict]:
+    if q == VW_EU_BATTERY_RECALL_RECOVERY:
+        return _vw_eu_recall_recovery()
+    return _vw_recall_prev_query(q)
+
+
+def _vw_eu_recall_group(text: str) -> str | None:
+    if _is_vw_battery_recall(text):
+        return 'vw_europe_battery_recall'
+    return _vw_recall_prev_group(text)
+
+
+def _vw_eu_recall_score(item: dict) -> int:
+    text = f"{item.get('title','')} {item.get('description','')}"
+    if _is_vw_battery_recall(text):
+        return {
+            'uk_official_safety_campaign': 49,
+            'germany_regulator_activated': 57,
+            'background_or_us_context': 0,
+        }.get(_vw_eu_recall_stage(text, item.get('source') or ''), 0)
+    return _vw_recall_prev_score(item)
+
+
+def _vw_eu_recall_category(text: str, group: str) -> str:
+    if group == 'vw_europe_battery_recall':
+        # The renderer loses source information; classify by the verified
+        # campaign marker, not by a US SKBA name embedded for comparison.
+        if (VW_RECALL_GERMANY.search(text) and VW_RECALL_ACTIVATED.search(text)
+                and not VW_RECALL_ACTIVATION_NEGATION.search(text)):
+            return '폭스바겐 유럽 배터리 리콜 · 독일 KBA 공식 시행'
+        return '폭스바겐 유럽 배터리 리콜 · 영국 93MF·93MV 충전 제한'
+    return _vw_recall_prev_category(text, group)
+
+
+def _vw_eu_recall_meaning(cat: str) -> str:
+    if cat == '폭스바겐 유럽 배터리 리콜 · 영국 93MF·93MV 충전 제한':
+        return (
+            '영국 폭스바겐 공식 안내: 93MF·93MV 고전압 배터리 '
+            '품질 점검과 최대 80% 충전 제한 조치. '
+            '특정 공급업체의 2022~2025년 배터리 셀 품질 문제이며, '
+            '셀 과열·열폭주·화재 위험 완화가 목적입니다. '
+            '영국 ID.Buzz는 10/12 주간부터 제한을 시작했습니다. '
+            '배터리 점검은 약 1시간이고 필요 시 소프트웨어 조치·'
+            '모듈 교체가 시행됩니다. 독일은 별도 당국 협의 단계이며 '
+            '전체 유럽 대상 대수·공급사·실제 교체비는 미공개입니다. '
+            '미국 ID.4 22,524대(26V630/93EX) 및 SK Battery America '
+            '공급 사실은 미국 별도 리콜 자료이므로 유럽과 합산하지 않습니다.'
+        )
+    if cat == '폭스바겐 유럽 배터리 리콜 · 독일 KBA 공식 시행':
+        return (
+            '독일 KBA가 유럽 고전압 배터리 안전조치를 정식 개시한 '
+            '단계입니다. 독일 공식 대상 차대번호·차종·대수, '
+            '80% 충전 제한과 소프트웨어·모듈 교체 대상, '
+            '결함 셀 공급사 및 예상 충당금을 확인합니다. '
+            '기존 영국 93MF·93MV 조치와 실제 중복 차량을 구분합니다.'
+        )
+    return _vw_recall_prev_meaning(cat)
+
+
+def _vw_eu_recall_risk(cat: str) -> str:
+    if cat.startswith('폭스바겐 유럽 배터리 리콜 ·'):
+        return (
+            '가장 현실적인 실패 경로는 셀 품질 편차를 '
+            '소프트웨어로 충분히 분리하지 못해 모듈 교체·'
+            '정비 인력·보증충당금·보험 비용이 늘어나는 것입니다. '
+            '공식 안내상 배터리 점검 약 1시간이므로 '
+            '실제 점검 1만 대라면 검사 공임만 1만 정비시간입니다 '
+            '(가정 예시, 공식 리콜 대상 대수 아님). '
+            '셀 내부 단락·열폭주 전파·화재 안전, '
+            '충전율 제한 장기화에 따른 고객 불편과 '
+            '고객 검수 지연이 6~12개월 위험구간입니다. '
+            '차대번호별 통지·검사 건수·불량 모듈 교체율·'
+            '교체부품 납기·회사 분기 품질충당금을 추적합니다. '
+            '유럽 공급업체는 공식 미공개이며 미국 SKBA 건과 분리합니다.'
+        )
+    return _vw_recall_prev_risk(cat)
+
+
+def _vw_eu_recall_verification(item: dict, group: str, text: str) -> str:
+    if group == 'vw_europe_battery_recall':
+        if _vw_eu_recall_stage(text, item.get('source') or '') == 'germany_regulator_activated':
+            return '독일 KBA 공식 시행 단계 · 유럽 물량·차대번호 원자료 재확인 필요'
+        if _vw_eu_recall_stage(text, item.get('source') or '') == 'uk_official_safety_campaign':
+            return (
+                'Volkswagen UK 93MF·93MV 공식 안내·Volkswagen Vans UK '
+                '10/12 주간 80% 제한·dpa 10/15 독일 준비보도 대조 · '
+                '미국 NHTSA 26V630은 9/30 별도 리콜 · '
+                '유럽 셀 공급사 미공개·정확한 유럽 수량 미확정'
+            )
+        return '언론 보도 또는 별도 미국 사건 · 유럽 공식 시행 실적 아님'
+    return _vw_recall_prev_verification(item, group, text)
+
+
+def _vw_eu_recall_title(title: str, source: str) -> str:
+    if _is_vw_battery_recall(title):
+        if source in VW_EU_GERMAN_REGULATOR_SOURCES:
+            return '폭스바겐 유럽 배터리 리콜, 독일 KBA 공식 시행'
+        return '폭스바겐, 영국 93MF·93MV 배터리 80% 안전조치 공식 안내'
+    return _vw_recall_prev_title(title, source)
+
+
+def _vw_eu_recall_tag(group: str) -> str:
+    if group == 'vw_europe_battery_recall':
+        return '폭스바겐 고전압 배터리'
+    return _vw_recall_prev_tag(group)
+
+
+def _vw_eu_recall_key(item: dict) -> str:
+    text=f"{item.get('title','')} {item.get('description','')}"
+    if _is_vw_battery_recall(text):
+        stage=_vw_eu_recall_stage(text,item.get('source') or '')
+        return hashlib.sha256(
+            f'vw|europe-hv-battery|{stage}|93mf-93mv|2026-10'.encode()
+        ).hexdigest()
+    return _vw_recall_prev_key(item)
+
+
+def _vw_eu_recall_select(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
+    selected = _vw_recall_prev_select(items, seen, force, limit)
+    possible = items if force else [x for x in items if x.get('key') not in seen]
+    candidate = next((x for x in possible if (
+        x.get('group') == 'vw_europe_battery_recall' and x.get('score',0)>=11
+    )),None)
+    if candidate and not any(x.get('key') == candidate.get('key') for x in selected):
+        selected = ([candidate, *selected] if len(selected)<limit else
+                    [candidate, *selected[:-1]])
+    return selected
+
+
+base.query_news = _vw_eu_recall_query
+base.topic_group = _vw_eu_recall_group
+base.score = _vw_eu_recall_score
+base.category = _vw_eu_recall_category
+base.meaning = _vw_eu_recall_meaning
+base.risk = _vw_eu_recall_risk
+base.verification = _vw_eu_recall_verification
+base.clean_title = _vw_eu_recall_title
+base.tag_for = _vw_eu_recall_tag
+base.key = _vw_eu_recall_key
+base.select_diverse = _vw_eu_recall_select
+
+if VW_EU_BATTERY_RECALL_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(VW_EU_BATTERY_RECALL_RECOVERY)
+for _q in (
+    '(Volkswagen OR 폭스바겐 OR VW) (93MF OR 93MV OR 93EX) '
+    '(battery recall OR 고전압 배터리 리콜 OR 화재 위험 OR 80% 제한)',
+    '(폭스바겐 OR Volkswagen) (유럽 OR 독일 OR UK OR Europe) '
+    '(배터리 셀 OR battery cells) '
+    '(리콜 등록 OR 신규 안전조치 OR 공식 대상차량 OR KBA)',
+):
+    if _q not in base.QUERIES:
+        base.QUERIES.append(_q)
+
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()
