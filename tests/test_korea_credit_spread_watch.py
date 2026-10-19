@@ -156,10 +156,10 @@ class CreditWatchTests(unittest.TestCase):
         msg=c.render(rows,c.decide(rows,{}),
                      dt.datetime(2026,10,19,20,4,tzinfo=ZoneInfo("Asia/Seoul")))
         self.assertIn("5영업일 방향: 단기 악화↑ · 회사채 보합→",msg)
-        self.assertIn("전일 변화: CP–CD -3.0bp / AA- +0.0bp",msg)
+        self.assertIn("전일: CP–CD -3.0bp 축소 / AA-금리차 +0.0bp 불변",msg)
         self.assertLessEqual(len(msg.splitlines()),28)
         self.assertIn("5영업일 방향",msg.splitlines()[1])
-        self.assertIn("전일 변화",msg.splitlines()[2])
+        self.assertIn("전일:",msg.splitlines()[2])
 
     def test_mixed_official_publication_dates_are_never_silently_used(self):
         base={f'202610{d:02d}':3.0 for d in range(8,20) if dt.date(2026,10,d).weekday()<5}
