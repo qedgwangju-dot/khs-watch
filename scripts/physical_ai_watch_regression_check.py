@@ -35,6 +35,8 @@ for _required in (
     "def _bess_bmi_recovery(",
     "SDI_BBU_LFP_RE =",
     "HUMANOID_DRAM_RECOVERY =",
+    "OPENAI_HUMANOID_RECOVERY =",
+    "def _openai_humanoid_recovery(",
     "OPTIMUS_HAND_MAGNET_RECOVERY =",
     "LFP_NA_CIF_PRICE_RECOVERY =",
     "VNET_EQUITY_RECOVERY =",
@@ -4593,5 +4595,112 @@ try:
     assert watcher.query_news(watcher.ALERT238_CORRECTION_ID)==[]
 finally:
     base.NOW=old_238_now
+
+
+# 2026-10-19: Sam Altman first-person Fortune interview was published on
+# 2026-09-15. The October article is a RETROSPECTIVE rediscovery, not a
+# newly announced 2027 product launch, customer contract, or demo video.
+_openai_ceo = make(
+    "OpenAI humanoid robot 2027 cool demo Sam Altman interview",
+    "OpenAI CEO Sam Altman said in the Fortune interview on Sept 15 2026: "
+    "we will definitely do a humanoid and we should have a cool demo in "
+    "2027. Widespread public robots will take years longer. This is a "
+    "2027 demonstration goal, not commercialization.",
+    "Fortune",
+)
+oa_g,oa_s,oa_c,oa_k = classify(_openai_ceo)
+assert oa_g == 'openai_own_humanoid' and oa_s >= 11, (oa_g,oa_s,oa_c)
+assert oa_c == 'OpenAI 휴머노이드 · 2027년 시연 목표 CEO 인터뷰',oa_c
+assert '9/15' not in base.meaning(oa_c) or '2027' in base.meaning(oa_c)
+assert '2027년' in base.risk(oa_c) and '목표' in base.risk(oa_c)
+assert '회사 신규' not in base.meaning(oa_c) or '10/19' in base.meaning(oa_c)
+
+_openai_second_headline = make(
+    "OpenAI Sam Altman 2027 humanoid demo",
+    "Sam Altman Fortune confirms we will definitely do a humanoid, "
+    "a great demo is expected in 2027; no confirmed robot order.",
+    "Fortune",
+)
+oa2_g,oa2_s,oa2_c,oa2_k = classify(_openai_second_headline)
+assert oa2_g==oa_g and oa2_s>=11 and oa2_k==oa_k,(oa2_g,oa2_s,oa2_k)
+
+_openai_second_hand = dict(_openai_ceo,source='DigitalToday')
+osh_g,osh_s,osh_c,osh_k=classify(_openai_second_hand)
+assert osh_g==oa_g and osh_s<11,(osh_g,osh_s,osh_c)
+
+_openai_jobs = make(
+    "OpenAI robotics actuator motor manufacturing jobs",
+    "OpenAI is hiring actuator and robotics motor engineers and prototype "
+    "testing workers for an unannounced humanoid program.",
+    "OpenAI",
+)
+oj_g,oj_s,oj_c,oj_k=classify(_openai_jobs)
+assert oj_g==oa_g and oj_s<11,(oj_g,oj_s,oj_c)
+
+_openai_goal_reprint = make(
+    "OpenAI 2027 humanoid demo likely in the future",
+    "OpenAI is targeting a 2027 humanoid demo but no physical demo "
+    "has yet been completed.",
+    "OpenAI",
+)
+og_g,og_s,og_c,og_k=classify(_openai_goal_reprint)
+assert og_g==oa_g and og_s<11,(og_g,og_s,og_c)
+
+_openai_demo_done = make(
+    "OpenAI publicly demonstrated its own humanoid robot",
+    "OpenAI publicly demonstrated its own humanoid robot with an "
+    "independently observable manipulation task and completed demo.",
+    "OpenAI",
+)
+od_g,od_s,od_c,od_k=classify(_openai_demo_done)
+assert od_g==oa_g and od_s>=11,(od_g,od_s,od_c)
+assert od_c=='OpenAI 휴머노이드 · 실물 시연 완료 공식 확인',od_c
+assert od_k!=oa_k,(od_k,oa_k)
+
+_openai_paid_contract = make(
+    "OpenAI humanoid signed paid supply contract",
+    "OpenAI humanoid signed paid supply contract for real-world deployments.",
+    "OpenAI",
+)
+oc_g,oc_s,oc_c,oc_k=classify(_openai_paid_contract)
+assert oc_g==oa_g and oc_s>=11,(oc_g,oc_s,oc_c)
+assert oc_c=='OpenAI 휴머노이드 · 실제 고객 유상계약 공식 확인',oc_c
+assert len({oa_k,od_k,oc_k})==3
+
+_roadster_theme = make(
+    "Tesla flying Roadster means Optimus supply chain gains",
+    "The flying Roadster prototype launched, so Optimus suppliers will "
+    "benefit despite no confirmed robot parts order or robot shipment.",
+    "BigGo Finance",
+)
+r_g,r_s,r_c,r_k = classify(_roadster_theme)
+assert r_s < 11, "Roadster hype cannot create a humanoid supplier alert"
+
+_dated = watcher.query_news(watcher.OPENAI_HUMANOID_RECOVERY)
+if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,23):
+    assert len(_dated)==1,_dated
+    event=_dated[0]
+    assert event['source']=='Fortune' and event['published'] is None
+    assert event['link']==watcher.OPENAI_HUMANOID_FORTUNE_URL
+    dg,ds,dc,dk=classify(event)
+    assert dg==oa_g and ds>=11 and dc==oa_c and dk==oa_k,(dg,ds,dc,dk)
+    ctext=f"{event['title']} {event['description']}"
+    assert base.category(ctext,base.topic_group(ctext))==oa_c
+    assert '9월 CEO 인터뷰' in base.clean_title(event['title'],event['source'])
+    assert '2026-09-15' in base.verification(event,dg,ctext)
+    assert '2027년' in base.meaning(oa_c)
+    assert watcher.qty._skip_quantity_enrichment(
+        '<b>1. OpenAI 자체 휴머노이드</b>\n'
+        '<b>분류</b>  OpenAI 휴머노이드 · 2027년 시연 목표 CEO 인터뷰\n'
+        '27개 구인 직무와 2027년 시연 목표'
+    ), 'recruitment numbers are not priced completed robots'
+_old_openai_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,24,12,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.OPENAI_HUMANOID_RECOVERY)==[], (
+        'historical OpenAI September claim cannot replay after recovery expiry'
+    )
+finally:
+    base.NOW=_old_openai_now
 
 print("Physical-AI watcher regression guards: PASS")
