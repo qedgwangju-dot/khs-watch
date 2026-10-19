@@ -26,7 +26,11 @@ LEVELS=("안정","관찰","주의","악화","심각")
 UP=((0,0),(30,70),(50,80),(70,90),(100,120))
 DOWN={0:(30,70,5),1:(40,75,3),2:(60,85,3),3:(90,110,3)}
 KINDS=("cp","cd","corp","gov")
-LABELS={"cp":"CP(A1·91일)","cd":"CD(91일)","corp":"회사채(AA-·3년)","gov":"국고채(3년)"}
+LABELS={"cp":"기업어음(CP·91일)","cd":"양도성예금증서(CD·91일)","corp":"회사채(AA-·3년)","gov":"국고채(3년)"}
+# 표시용 방향은 5영업일 신용스프레드 변화가 ±2bp를 넘어야 실질 변화로 표시한다.
+# 이는 모니터링 자체 판정선이며 한국은행·금융당국의 공식 위험 기준이 아니다.
+FLAT_BP=2.0
+MAX_MESSAGE_CHARS=1600
 
 def normal(s):
     return re.sub(r"\s+","",str(s).upper().replace("−","-").replace("–","-"))
@@ -157,34 +161,119 @@ def decide(rows,state):
     return {"send":send,"rank":target,"previous_rank":old,"transition":transition,
             "events":events,"signature":signature}
 
-def render(rows,decision,now):
+def signed(v):
+    # 반올림으로 생기는 -0.0bp 표시를 제거한다.
+    z=round(float(v),1)
+    return f"{0.0:+.1f}" if z==0 else f"{z:+.1f}"
+
+def direction(delta):
+    if delta>=FLAT_BP: return ("악화","↑","확대")
+    if delta<=-FLAT_BP: return ("개선","↓","축소")
+    return ("보합","→","보합")
+
+def direction_overview(rows):
+    if len(rows)<6: raise ValueError("방향 분석을 위한 5영업일 기준 데이터 부족")
+    latest,week=rows[-1],rows[-6]
+    cp_delta=round(latest["cp_cd"]-week["cp_cd"],3)
+    aa_delta=round(latest["credit"]-week["credit"],3)
+    cp,aa=direction(cp_delta),direction(aa_delta)
+    return {"cp":cp,"aa":aa,"cp_delta":cp_delta,"aa_delta":aa_delta,
+            "summary":f"단기 {cp[0]}{cp[1]} · 회사채 {aa[0]}{aa[1]}"}
+
+def recovery_streak(rows,target):
+    cp_cap,aa_cap,n=DOWN[target]
+    count=0
+    for row in reversed(rows):
+        if row["cp_cd"]<cp_cap and row["credit"]<aa_cap: count+=1
+        else: break
+    return min(count,n),n
+
+def next_boundary(latest):
+    k=latest["rank"]
+    if k>=4: return "심각 단계 기준 충족(추가 악화는 절대 수준·상승 속도 추적)"
+    cp_lim,aa_lim=UP[k+1]
+    cp_gap=max(0,cp_lim-latest["cp_cd"])
+    aa_gap=max(0,aa_lim-latest["credit"])
+    return (f"{LEVELS[k+1]}: CP–CD {cp_lim:.0f}bp까지 {cp_gap:.1f}bp"
+            f" / AA- {aa_lim:.0f}bp까지 {aa_gap:.1f}bp (둘 중 하나)")
+
+def render(rows,decision,now,sample=False):
+    if len(rows)<7: raise ValueError("원문 통계가 7공표일 미만이라 메시지 생성 불가")
     latest,prev,week=rows[-1],rows[-2],rows[-6]
-    stage=LEVELS[decision["rank"]]
+    measured=LEVELS[latest["rank"]]
+    applied=LEVELS[decision["rank"]]
+    d=direction_overview(rows)
     date=dt.datetime.strptime(latest["date"],"%Y%m%d").strftime("%Y-%m-%d")
-    signed=lambda v:f"{v:+.1f}bp"
-    lines=[f"<b>[국내 CP·신용스프레드 | {stage} | {decision['transition']}]</b>",
-           f"공식 자료 기준일: {date} | 조회 {now:%Y-%m-%d %H:%M} KST",
-           "금리 연% / 금리 차이 bp (1bp=0.01%포인트)",""]
-    for k in KINDS:
-        v=latest["rates"][k]
-        lines.append(f"• {html.escape(LABELS[k])}: {v:.3f}% | 전일 {signed((v-prev['rates'][k])*100)} / 5영업일 {signed((v-week['rates'][k])*100)}")
-    for k,label in (("cp_cd","CP–CD 금리 차이"),("credit","회사채 AA- 3년−국고채 3년 금리 차이")):
-        lines.append(f"• {label}: {latest[k]:.1f}bp | 전일 {signed(latest[k]-prev[k])} / 5영업일 {signed(latest[k]-week[k])}")
-    if decision["previous_rank"] is not None:
-        lines.append(f"단계 변경: {LEVELS[decision['previous_rank']]} → {stage}")
-    if decision["events"]:
-        lines.append("조기경보: "+" / ".join(html.escape(x) for x in decision["events"]))
-    ups={0:"관찰: CP–CD 30bp 또는 AA- 70bp",1:"주의: CP–CD 50bp 또는 AA- 80bp",
-         2:"악화: CP–CD 70bp 또는 AA- 90bp",3:"심각: CP–CD 100bp 또는 AA- 120bp"}
-    if decision["rank"] in ups: lines.append("다음 악화선: "+ups[decision["rank"]])
+    diff1=lambda key:latest[key]-prev[key]
+    diff5=lambda key:latest[key]-week[key]
+    rate_delta=lambda key,past:(latest["rates"][key]-past["rates"][key])*100
+    lines=[]
+    if sample: lines.append("<b>[양식 검증 · 새 경보가 아닙니다]</b>")
+    lines += [
+        f"<b>국내 신용금리 경보 | {applied}</b>",
+        f"<b>방향: {d['summary']}</b>",
+        f"자료 {date} · 전일/5영업일 비교",
+    ]
+    if applied!=measured:
+        lines.append(f"실측 {measured} / 경보 {applied}(회복 연속 확인 중)")
+    if decision["transition"]!="유지":
+        lines.append(f"단계 판정: {html.escape(decision['transition'])}")
+    lines += [
+        "",
+        "<b>① 핵심 신용스프레드</b>",
+        f"CP–CD <b>{latest['cp_cd']:.1f}bp</b> {d['cp'][1]} {d['cp'][2]}",
+        f"  전일 {signed(diff1('cp_cd'))} / 5일 {signed(diff5('cp_cd'))}bp",
+        f"AA- 회사채–국고채 <b>{latest['credit']:.1f}bp</b> {d['aa'][1]} {d['aa'][2]}",
+        f"  전일 {signed(diff1('credit'))} / 5일 {signed(diff5('credit'))}bp",
+        "",
+        "<b>② 실제 금리 (연%)</b>",
+    ]
+    for kind,short in (("cp","CP 91일"),("cd","CD 91일"),
+                       ("corp","회사채 AA- 3년"),("gov","국고채 3년")):
+        lines.append(f"{short} {latest['rates'][kind]:.3f}% | "
+                     f"{signed(rate_delta(kind,prev))}/{signed(rate_delta(kind,week))}bp")
+    lines += [
+        "(금리 변동: 전일/5일)",
+        "",
+        "<b>③ 다음 경계</b>",
+        next_boundary(latest)
+    ]
     if decision["rank"]>0:
-        a,b,n=DOWN[decision["rank"]-1]
-        lines.append(f"회복선: CP–CD {a:g}bp 미만, AA- {b:g}bp 미만 <b>동시</b> {n}영업일 연속")
-    lines+=["의미: 기업 차환금리 및 회사채 발행 여건에 주의. 금리 상승 자체와 신용위험 프리미엄 확대는 구분해야 합니다.",
-            "이 단계는 자체 감시 기준이며 금융당국의 공식 위기 등급이 아닙니다.",
-            f"공식 원천: 한국은행 경제통계시스템(ECOS), 시장금리(일별) {TABLE}",
-            SOURCE]
-    return "\n".join(lines)
+        t=decision["rank"]-1
+        cp_cap,aa_cap,n=DOWN[t]
+        streak,_=recovery_streak(rows,t)
+        lines.append(f"하향 확인: 두 스프레드 {cp_cap:.0f}/{aa_cap:.0f}bp 미만"
+                     f" {n}영업일 (현재 {streak}/{n})")
+    if decision["events"]:
+        lines.append("추가 신호: "+"; ".join(html.escape(x) for x in decision["events"]))
+    if d["cp"][0]=="악화" and d["aa"][0]=="보합":
+        reading="단기 기업자금 압력 상승, AA- 회사채 전반 확산은 아직 확인되지 않음"
+    elif d["cp"][0]=="악화" and d["aa"][0]=="악화":
+        reading="단기·회사채 신용위험 프리미엄 동반 확대"
+    elif d["cp"][0]=="개선" and d["aa"][0]=="개선":
+        reading="두 시장의 신용위험 프리미엄 동반 축소"
+    elif d["cp"][0]=="보합" and d["aa"][0]=="보합":
+        reading="두 스프레드 모두 최근 5영업일 거의 보합"
+    else:
+        reading=f"단기는 {d['cp'][0]}, 회사채는 {d['aa'][0]}: 부문별 방향이 다름"
+    lines += [
+        "<b>해석:</b> "+reading,
+        "방향은 5일 변화 ±2bp 기준(자체 판정); 확대는 상대 조달부담 상승",
+        "단계는 자체 감시 기준이며 공식 위기등급이 아님",
+        f"한국은행 ECOS {TABLE} · 조회 {now:%m/%d %H:%M} KST",
+        SOURCE,
+    ]
+    message="\n".join(lines)
+    # 텔레그램 한 메시지에 원문 그대로 표시해야 하므로 초과 시 잘라 보내지 않는다.
+    if len(message)>MAX_MESSAGE_CHARS or len(html.unescape(re.sub(r"</?b>","",message)))>MAX_MESSAGE_CHARS:
+        raise ValueError("알림 최대 표시길이 초과: 임의 잘라내기 금지")
+    return message
+
+def telegram_plaintext(message):
+    """허용된 <b> 태그만 사용하고 수신 확인 시 원문 전부를 대조한다."""
+    if re.search(r"<(?!/?b>)[^>]*>",message):
+        raise ValueError("텔레그램 미허용 HTML 태그")
+    return html.unescape(re.sub(r"</?b>","",message))
 
 def telegram(url,params=None):
     req=urllib.request.Request(url,method="POST" if params else "GET",
@@ -201,30 +290,37 @@ def send(now):
     token=os.environ.get("TELEGRAM_BOT_TOKEN","").strip()
     chat=os.environ.get("TELEGRAM_CHAT_ID","").strip()
     if not token or not chat: raise RuntimeError("기존 GLOBAL_RATES 텔레그램 보안 설정 누락")
-    if not ALERT.exists() or not PENDING.exists(): raise RuntimeError("검증된 신규 경보 없음")
+    sample=os.environ.get("FORMAT_SAMPLE_SEND","").strip().lower()=="true"
+    if not ALERT.exists() or (not sample and not PENDING.exists()):
+        raise RuntimeError("검증된 신규 경보 없음")
     who=telegram(f"https://api.telegram.org/bot{token}/getMe")
     got=str((who.get("result") or {}).get("username") or "")
     if who.get("ok") is not True or got.lower()!=BOT.lower():
         raise RuntimeError(f"잘못된 텔레그램 봇: expected @{BOT} got @{got or 'unknown'}")
     message=ALERT.read_text(encoding="utf-8").strip()
-    if not message or len(message)>4096: raise ValueError("메시지 길이 또는 공백 오류")
+    if not message or len(message)>MAX_MESSAGE_CHARS:
+        raise ValueError("메시지 길이 또는 공백 오류")
+    expected_text=telegram_plaintext(message)
     reply=telegram(f"https://api.telegram.org/bot{token}/sendMessage",
                    {"chat_id":chat,"text":message,"parse_mode":"HTML","disable_web_page_preview":"true"})
     obj=reply.get("result") or {}
     mid=obj.get("message_id")
     if reply.get("ok") is not True or not isinstance(mid,int) or mid<1 or not str(obj.get("text") or "").strip():
         raise RuntimeError("Telegram 실제 메시지 수신 확인 실패")
+    if obj.get("text")!=expected_text:
+        raise RuntimeError("Telegram 응답 본문과 발송 원문이 다름: 내용 보존 미확인")
     if re.fullmatch(r"-?\d+",chat) and str((obj.get("chat") or {}).get("id"))!=chat:
         raise RuntimeError("Telegram 수신 대화방 불일치")
     receipt={"status":"confirmed","bot_username":got,"message_id":mid,
              "delivered_at_kst":now.isoformat(timespec="seconds"),
              "message_sha256":hashlib.sha256(message.encode()).hexdigest(),
              "run_id":os.environ.get("GITHUB_RUN_ID","local")}
-    state=json.loads(PENDING.read_text(encoding="utf-8"))
-    state["delivery_receipt"]=receipt
     ACK.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    PENDING.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    print(f"telegram_delivery_confirmed=true bot=@{got} message_id={mid}")
+    if not sample:
+        state=json.loads(PENDING.read_text(encoding="utf-8"))
+        state["delivery_receipt"]=receipt
+        PENDING.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    print(f"telegram_delivery_confirmed=true full_text_verified=true sample={sample} bot=@{got} message_id={mid}")
 
 def watch(now):
     ALERT.parent.mkdir(parents=True,exist_ok=True)
@@ -236,17 +332,23 @@ def watch(now):
     state=json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
     action=decide(rows,state)
     latest=rows[-1]
+    d=direction_overview(rows)
+    sample=os.environ.get("FORMAT_SAMPLE_SEND","").strip().lower()=="true"
+    preview=os.environ.get("PREVIEW_FORMAT","").strip().lower()=="true"
     STATUS.write_text("\n\n".join([
         "# 국내 CP·회사채 신용스프레드",
         f"공식 기준일: {latest['date']}",
-        f"실측 단계: {LEVELS[latest['rank']]}",
+        f"실측 단계: {LEVELS[latest['rank']]} / 경보 단계: {LEVELS[action['rank']]}",
+        f"단기 방향: {d['cp'][0]} / 회사채 방향: {d['aa'][0]} (5영업일 기준)",
+        f"추가 신호: {'; '.join(action['events']) or '없음'}",
         f"CP–CD {latest['cp_cd']:.1f}bp / 회사채 AA- {latest['credit']:.1f}bp",
         "공식 항목코드: "+", ".join(k+"="+v for k,v in codes.items()),
-        "알림 상태: "+("새 경보 검증됨" if action["send"] else "새 경보 없음"),
+        "알림 상태: "+("형식 시험(실제 새 경보 아님)" if sample else ("새 경보 검증됨" if action["send"] else "새 경보 없음")),
         "원천: "+SOURCE])+"\n",encoding="utf-8")
     print(f"credit_source_valid=true day={latest['date']} cp_cd={latest['cp_cd']} credit={latest['credit']} alert={action['send']}")
-    if action["send"]:
-        ALERT.write_text(render(rows,action,now)+"\n",encoding="utf-8")
+    if action["send"] or sample or preview:
+        ALERT.write_text(render(rows,action,now,sample=sample)+"\n",encoding="utf-8")
+    if action["send"] and not sample and not preview:
         new={"notified_rank":action["rank"],"last_source_date":latest["date"],
              "last_alert_signature":action["signature"],"transition":action["transition"],
              "last_alert_at_kst":now.isoformat(timespec="seconds"),
