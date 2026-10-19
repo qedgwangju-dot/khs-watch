@@ -258,6 +258,12 @@ def _insert_after_core(block: str, value_block: str) -> str:
 
 
 def _skip_quantity_enrichment(block: str) -> bool:
+    # Governance agenda items, attendees and promotional robot displays
+    # are not priced quantities of manufactured robots or shipped parts.
+    if ("테슬라 2026 주주총회" in block
+            or "테슬라 로봇 서밋" in block
+            or "테슬라 Humanoids Summit" in block):
+        return True
     # US 22,524 vehicles are a separate NHTSA recall, not a count of
     # European vehicles or a saleable physical product to price.
     if "폭스바겐 유럽 배터리 리콜" in block or (
