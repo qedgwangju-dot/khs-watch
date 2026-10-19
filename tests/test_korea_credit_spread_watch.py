@@ -73,7 +73,83 @@ class CreditWatchTests(unittest.TestCase):
         rows=sample(60,85)
         decision=c.decide(rows,{})
         msg=c.render(rows,decision,dt.datetime(2026,10,19,18,tzinfo=ZoneInfo('Asia/Seoul')))
-        for word in ('CP–CD','회사채','국고채','회복선','다음 악화선','817Y002'):
+        for word in ('CP–CD','회사채','국고채','하향 확인','다음 경계','817Y002'):
             self.assertIn(word,msg)
+
+    def test_exact_oct19_actual_values_and_direction(self):
+        rows=sample(36,68.1)
+        rows[-6].update(date="20261012",rates={"cp":3.600,"cd":3.240,"corp":4.602,"gov":3.921},
+                        cp_cd=36.0,credit=68.1,rank=1)
+        rows[-2].update(date="20261016",rates={"cp":3.710,"cd":3.250,"corp":4.541,"gov":3.854},
+                        cp_cd=46.0,credit=68.7,rank=1)
+        rows[-1].update(date="20261019",rates={"cp":3.720,"cd":3.250,"corp":4.560,"gov":3.877},
+                        cp_cd=47.0,credit=68.3,rank=1)
+        d=c.direction_overview(rows)
+        self.assertEqual(d['summary'],'단기 악화↑ · 회사채 보합→')
+        self.assertAlmostEqual(d['cp_delta'],11.0)
+        self.assertAlmostEqual(d['aa_delta'],0.2)
+        a=c.decide(rows,{})
+        m=c.render(rows,a,dt.datetime(2026,10,19,19,46,tzinfo=ZoneInfo('Asia/Seoul')))
+        for text in ('방향: 단기 악화↑ · 회사채 보합→',
+                     'CP–CD <b>47.0bp</b> ↑ 확대',
+                     'AA- 회사채–국고채 <b>68.3bp</b> → 보합',
+                     '전일 +1.0 / 5일 +11.0bp',
+                     '전일 -0.4 / 5일 +0.2bp',
+                     'CP 91일 3.720% | +1.0/+12.0bp',
+                     'CD 91일 3.250% | +0.0/+1.0bp',
+                     '회사채 AA- 3년 4.560% | +1.9/-4.2bp',
+                     '국고채 3년 3.877% | +2.3/-4.4bp',
+                     '50bp까지 3.0bp','80bp까지 11.7bp',
+                     '확산은 아직 확인되지 않음'):
+            self.assertIn(text,m)
+        self.assertNotIn('CP(A1',m)
+        self.assertLess(len(m),c.MAX_MESSAGE_CHARS)
+        self.assertEqual(m.count('<b>'),m.count('</b>'))
+        self.assertNotIn('<br',m)
+        self.assertIn('단계는 자체 감시 기준',m)
+
+    def test_direction_not_confused_with_absolute_rate(self):
+        self.assertEqual(c.direction(1.99)[0],'보합')
+        self.assertEqual(c.direction(-1.99)[0],'보합')
+        self.assertEqual(c.direction(2)[0],'악화')
+        self.assertEqual(c.direction(-2)[0],'개선')
+        self.assertEqual(c.direction_overview(sample(20,60))['summary'],'단기 보합→ · 회사채 보합→')
+        rows=sample(20,60)
+        rows[-1]['cp_cd']=15
+        rows[-1]['credit']=55
+        self.assertEqual(c.direction_overview(rows)['summary'],'단기 개선↓ · 회사채 개선↓')
+
+    def test_message_hysteresis_clearly_separates_observed_and_notified(self):
+        rows=sample(20,60)
+        action=c.decide(rows,{'notified_rank':3})
+        self.assertEqual(action['rank'],3)
+        # Stage 3 already latched while current measured stage is zero:
+        # user must see both until recovery threshold is satisfied.
+        rows[-1]['cp_cd']=70
+        rows[-1]['rank']=3
+        rows[-2]['cp_cd']=40
+        rows[-2]['rank']=1
+        # If level changed, do not mislabel a lower measured level as the notified level.
+        rows[-1].update(cp_cd=35,credit=65,rank=1)
+        decision={'rank':3,'previous_rank':3,'transition':'유지','events':[]}
+        msg=c.render(rows,decision,dt.datetime(2026,10,19,19,tzinfo=ZoneInfo('Asia/Seoul')))
+        self.assertIn('실측 관찰 / 경보 악화(회복 연속 확인 중)',msg)
+
+    def test_number_display_no_negative_zero(self):
+        self.assertEqual(c.signed(-0.001),'+0.0')
+        self.assertEqual(c.signed(0),'+0.0')
+        self.assertEqual(c.signed(-1.234),'-1.2')
+        self.assertEqual(c.telegram_plaintext('<b>알림</b> <b>47bp</b>'),'알림 47bp')
+        with self.assertRaises(ValueError):
+            c.telegram_plaintext('<script>broken</script>')
+
+    def test_sample_is_explicit_not_a_live_alert(self):
+        rows=sample(47,68.3)
+        action=c.decide(rows,{'notified_rank':1})
+        msg=c.render(rows,action,dt.datetime(2026,10,19,20,tzinfo=ZoneInfo('Asia/Seoul')),sample=True)
+        self.assertIn('[양식 검증 · 새 경보가 아닙니다]',msg)
+        self.assertIn('단계',msg)
+        self.assertIn('방향:',msg)
+        self.assertLess(len(msg),c.MAX_MESSAGE_CHARS)
 
 if __name__=='__main__':unittest.main()
