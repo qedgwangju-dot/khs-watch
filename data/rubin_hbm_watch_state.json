@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-19T09:20:05+09:00",
+  "updated_at_kst": "2026-10-19T14:00:52+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -47,6 +47,7 @@
     "4247585e3b18e9cad642ceec",
     "4247b04678644c4743f6ef69",
     "4254884b8b0b799b2b6b87a7",
+    "42bddb914005aa9ccad6975e",
     "44974ccaa7ba66fe19dffd08",
     "45ba5c60ce8b21a79021bfee",
     "460ed817d323c8e04fb77eac",
@@ -64,6 +65,7 @@
     "55091923d90dc0ed8d04d739",
     "56e8f0eca1d1bc92b2236a78",
     "573bcda4aab60c7fad394316",
+    "5981ac46be8c309fddca3975",
     "59dea53db71c13bdf6c120ef",
     "5a6acc82cc352f26a7561f06",
     "5a97726e2e93fc7408e02754",
@@ -79,12 +81,14 @@
     "6b3790289403fb21cb553ae9",
     "6c31c0bc458f7594ee609fbe",
     "6d5b2615f6eeda6fb7676f49",
+    "6ea6cbf3e4695d57b00d7f2f",
     "707d826335e54177f6ce0340",
     "7093ff7a0f077fda1f385ca3",
     "709b3fc6612d64794f7a06c4",
     "7310bace62d2a5a4af5e422b",
     "76f6aabe7d3a7e8cf74e88aa",
     "7905a269e5f79330a355c833",
+    "794f80194983716de6cec9e9",
     "79c0abd9a50719543edf1ba8",
     "7ae441cd60cdb8d1312ea00f",
     "7c33b82fc611110ae28acc16",
@@ -119,6 +123,8 @@
     "a1a690013aa0ea680246e633",
     "a1f202951bc6ed71f25e0b03",
     "a26d4143fd0ed29bf472c95f",
+    "a5e5e46c974a1d97938605b0",
+    "a5f0fa88ace5f865cd621157",
     "a6929e533932abf2c07f5238",
     "a72352cea720750a97e651b2",
     "aa0285bd4d722170d864937a",
@@ -148,6 +154,7 @@
     "d059f8c3e0d742a821065a47",
     "d15e8f133032b5be6630415f",
     "d26bff6649e5357d756fc3fc",
+    "d28d5880444e7be09d769915",
     "d33a5fbc0d352f5813521b17",
     "d3d3dee3de412005e6f96385",
     "d438811610a9bd1cc60718b5",
@@ -167,6 +174,7 @@
     "e05c1927e16110a949b8b797",
     "e1cf986a1ad553979c710286",
     "e21989f35cb34017ddf8375a",
+    "e30d4033d138dafdbc11c607",
     "e44aed066c594b811835e985",
     "e898e45f31649d9b7b036987",
     "e917aed0ebcc8c2bd2d2a9bb",
@@ -195,6 +203,7 @@
     "fbd920db100fb7204a37af3d",
     "fd0ab513604f145f508ff4dd",
     "fe56173d9b7f7777f313ff43",
+    "ff6008725169b36e97b5c3ce",
     "ff9744abe3535e79694d130b"
   ],
   "seen_fact_keys": [
@@ -213,13 +222,13 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 9,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1332.1,
-    "date": "2026-10-16 일일 기준 · ECB/Frankfurter · 조회 2026-10-19 09:20 KST · 보조 API 2026-10-18 · 차이 0.20% · 일중 기준시각 차이 가능",
+    "date": "2026-10-16 일일 기준 · ECB/Frankfurter · 조회 2026-10-19 14:01 KST · 보조 API 2026-10-19 · 차이 0.11% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -348,13 +357,13 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-19T09:20:21+09:00",
+    "last_checked_at_kst": "2026-10-19T14:01:08+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-19T09:20:51+09:00",
+    "checked_at_kst": "2026-10-19T14:01:56+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-18T20:57:59+09:00",
@@ -422,7 +431,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-19",
-    "last_checked_at_kst": "2026-10-19T09:20:40+09:00",
+    "last_checked_at_kst": "2026-10-19T14:01:26+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -481,7 +490,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-19T09:20:40+09:00",
+        "checked_at_kst": "2026-10-19T14:01:26+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -490,7 +499,7 @@
         "rss_coverage_unavailable": false
       },
       "primary_source_audit": {
-        "checked_at_kst": "2026-10-19T03:47:32+09:00",
+        "checked_at_kst": "2026-10-19T14:01:26+09:00",
         "sources": {
           "bnpp_public": {
             "status": "retrieval_unavailable",
@@ -559,7 +568,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-19",
-    "last_checked_at_kst": "2026-10-19T09:20:45+09:00",
+    "last_checked_at_kst": "2026-10-19T14:01:51+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -603,7 +612,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-19T09:20:47+09:00",
+    "last_checked_at_kst": "2026-10-19T14:01:52+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
