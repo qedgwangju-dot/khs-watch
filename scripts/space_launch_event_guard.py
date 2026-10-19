@@ -103,7 +103,7 @@ def self_test():
 # Historical mislabelled notifications; unique IDs ensure each correction once.
 FACT_CASES = (
   ("audit:20261017:neutron_2027", "Rocket Lab Neutron 2027",
-   "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000067/rklb-10142026ex991.htm",
+   "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-provides-update-neutron-development-and-adjusts",
    ("Rocket Lab","Neutron","2027")),
   ("audit:20261017:morgan_300_unchanged", "Morgan Stanley SpaceX",
    "https://www.pricetargets.com/NASDAQ/SPCX/",
