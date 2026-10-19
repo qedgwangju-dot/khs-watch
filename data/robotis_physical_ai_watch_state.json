@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-19T06:14:26.718157+00:00",
+  "updated_at": "2026-10-19T10:55:28.079320+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -575,9 +575,24 @@
     "4b919dfad45953c75336c208d3b92a8536d5f58e08ab4c279bf2c02b5535e799",
     "2866987981bb234a051762d2d7a44f8fb0f62cce5c904e192942d70fc4212a77",
     "d5fde1831207f58516d7e0d2dc20273655ade8594682fb3fcfba154c88e7af14",
-    "9e6099c465f2adf660a4a30ea2a1ef0dac1fe0dc22230ea28c7f055917871d30"
+    "9e6099c465f2adf660a4a30ea2a1ef0dac1fe0dc22230ea28c7f055917871d30",
+    "a3c323837f042bba7da05f38798c8b1b5fdf880bc5ca81e3abb83aa9d3ad1bd2",
+    "2af286979e0be8bc763bf357c9052d0f705ed996fd00ffdc86c891e40a0f3918",
+    "19113d01c950fb05e4659d175caa350e6f8df26f2e8d85aa8b6f973bb9787d94",
+    "8cf09f973a569aee3b897f0902c2171940d037d7687bf830e9525ef405768402",
+    "bf7f0ba0a9dfe4ec27487c2b648928ea640b77e67e26c4d40082a4bf14903b2d",
+    "2593b212e0a7f7ea6d6ff22285ac1d9a13a585b88c8d77a869e733a99ceb5c32",
+    "546c1148bf40cd0e847731380658ed8d7b770648b998006afd3ef94ddbe271ec"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "a3c323837f042bba7da05f38798c8b1b5fdf880bc5ca81e3abb83aa9d3ad1bd2",
+    "2af286979e0be8bc763bf357c9052d0f705ed996fd00ffdc86c891e40a0f3918",
+    "19113d01c950fb05e4659d175caa350e6f8df26f2e8d85aa8b6f973bb9787d94",
+    "8cf09f973a569aee3b897f0902c2171940d037d7687bf830e9525ef405768402",
+    "bf7f0ba0a9dfe4ec27487c2b648928ea640b77e67e26c4d40082a4bf14903b2d",
+    "2593b212e0a7f7ea6d6ff22285ac1d9a13a585b88c8d77a869e733a99ceb5c32",
+    "546c1148bf40cd0e847731380658ed8d7b770648b998006afd3ef94ddbe271ec"
+  ],
   "groups": [
     "agility_spac_2026",
     "alert_quality_223",
@@ -585,6 +600,7 @@
     "alert_quality_oct18",
     "alert_quality_qty_224225",
     "atlas_protoops_build",
+    "bmw_gen6_pack",
     "brils_us_localization",
     "catl_intilion_sodium",
     "catl_vnet_infrastructure",
@@ -594,7 +610,7 @@
     "ess_outdoor_policy",
     "global_bess_commissioned",
     "hyundai_mobis_atlas",
-    "hyundai_robot_rx_team",
+    "jpm_sri_2026",
     "lg_factory_loop",
     "lg_robotics",
     "lge_robot_sw_platform",
