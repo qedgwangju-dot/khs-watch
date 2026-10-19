@@ -4842,7 +4842,8 @@ finally:
     base.NOW=_saved_bmw_jpm_now
 
 # Currency arithmetic, exactly 1 USD = 1330.33 KRW on 2026-10-19 19:05 KST.
-assert round(5e9*1330.33/1e8)==66517
+# Monetary display rounds half-up at the 100m-KRW precision, not Python's banker's rounding.
+assert int(5e9*1330.33/1e8+0.5)==66517
 assert round(10e9*1330.33/1e8)==133033
 assert round(230e9*1330.33/1e8)==3059759
 assert round(1.5e12*1330.33/1e8)==19954950
