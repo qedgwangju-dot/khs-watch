@@ -4526,4 +4526,72 @@ sdi_bbu_media_fake=dict(sdi_bbu_future,source="증시 테마 언론")
 gf,sf,cf,kf=classify(sdi_bbu_media_fake)
 assert gf=='sdi_lfp_bbu' and sf<11,(gf,sf,cf)
 
+
+# 78) Run #664 / Telegram 238 item 1 was a price ONLY headline.
+# The original regex missed "8%대 올라". The final HTML guard must also
+# remove such a block while preserving item 2 (measured BMI BESS demand).
+bad_stock_238 = make(
+    "삼성SDI 주가 장중 8%대 올라, ESS 수요 증가 기대감에 2차전지주 강세",
+    "주가 움직임과 ESS 업황 기대감만 보도하고 신규 계약이나 실적 공시는 없다.",
+    "비즈니스포스트",
+)
+sg,ss,sc,sk = classify(bad_stock_238)
+assert ss < 11, (sg,ss,sc)
+assert watcher._is_stock_reaction_only(bad_stock_238), "8%대 올라 must be filtered"
+assert not watcher._is_stock_reaction_only({
+    "title":"삼성SDI 신규 ESS 공급계약 체결 사실 발표",
+    "source":"비즈니스포스트",
+}),"New contracted deal without share-price headline is not market reaction"
+
+fake_alert_html=(
+    '🚨 <b>피지컬AI·로봇 공급망 구조 변화 감지</b>\n'
+    '<b>신규 고신호 2건</b>\n'
+    '━━━━━━━━━━━━━━━━━━\n\n'
+    '<b>1. 삼성SDI 주가 장중 8%대 올라, ESS 수요 증가 기대감에 2차전지주 강세</b>\n'
+    '<b>분류</b>  ESS 배터리·한국 공급망\n'
+    '──────────────────\n\n'
+    '<b>2. 글로벌 계통용 BESS 9월 실제 가동 20.4GWh</b>\n'
+    '<b>분류</b>  글로벌 계통용 BESS · 2026년 9월 신규 가동량\n'
+    '──────────────────\n'
+    '<b>판정 기준</b>  실제 사업만 알림.'
+)
+filtered=watcher._drop_stock_price_sections(fake_alert_html)
+assert '주가 장중' not in filtered,filtered
+assert '<b>신규 고신호 1건</b>' in filtered,filtered
+assert '<b>1. 글로벌 계통용 BESS 9월 실제 가동' in filtered,filtered
+assert '<b>2. 글로벌 계통용 BESS' not in filtered,filtered
+assert '<b>판정 기준</b>' in filtered,filtered
+bad_alone = fake_alert_html.split('──────────────────')[0] + (
+    '──────────────────\n<b>판정 기준</b>  실제 사업만 알림.'
+)
+assert watcher._drop_stock_price_sections(bad_alone) == '', \
+    'A sole stock-only signal must not reach Telegram'
+
+correct_238=watcher.query_news(watcher.ALERT238_CORRECTION_ID)
+if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,24):
+    assert len(correct_238)==1,correct_238
+    correction=correct_238[0]
+    cg,css,cc,ck=classify(correction)
+    assert cg=='alert_quality_238' and css >= 11,(cg,css,cc)
+    assert cc=='알림 품질 정정 · Telegram 238번 주가 반응 오탐',cc
+    assert ck!=bk, 'Correction cannot collide with September global actuals'
+    assert 'message_id=238' in base.meaning(cc)
+    assert '오탐' in base.clean_title(correction['title'],correction['source'])
+    assert 'Run #664' in base.verification(correction,cg,
+        correction['title']+' '+correction['description'])
+    corrected_html=(
+        '🚨 <b>피지컬AI·로봇 공급망 구조 변화 감지</b>\n'
+        '<b>신규 고신호 1건</b>\n'
+        '━━━━━━━━━━━━━━━━━━\n\n'
+        '<b>1. 정정: Telegram 238번 삼성SDI 주가 반응 오탐 제외</b>\n'
+        '──────────────────\n<b>판정 기준</b>  실제 사업만 알림.'
+    )
+    assert watcher._drop_stock_price_sections(corrected_html) == corrected_html
+old_238_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,25,10,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.ALERT238_CORRECTION_ID)==[]
+finally:
+    base.NOW=old_238_now
+
 print("Physical-AI watcher regression guards: PASS")
