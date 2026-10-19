@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-19T14:39:02.358272+00:00",
+  "updated_at": "2026-10-19T15:13:16.697930+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -585,9 +585,12 @@
     "546c1148bf40cd0e847731380658ed8d7b770648b998006afd3ef94ddbe271ec",
     "069da3e60c01c0087e42cc458be07bfc40b7593e7be913ab218786c64ac50513",
     "995ec56b2bdc638ee945b2b8afb6dbf18174879b5fca7ff7432af171ff5d0746",
-    "0d9327716ac58ef27f4f767fb7ca1e0b99aaf1575f43dc806553ac03935b7c8f"
+    "0d9327716ac58ef27f4f767fb7ca1e0b99aaf1575f43dc806553ac03935b7c8f",
+    "243a809cb1801b419fdffdf539da6de92fd1b449a6ea1b528945ab1f203d996b"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "243a809cb1801b419fdffdf539da6de92fd1b449a6ea1b528945ab1f203d996b"
+  ],
   "groups": [
     "agility_spac_2026",
     "alert_quality_223",
@@ -598,13 +601,13 @@
     "bmw_gen6_pack",
     "brils_us_localization",
     "catl_intilion_sodium",
-    "catl_vnet_infrastructure",
     "china_ess_us_exit_report",
     "dexmate_lg_commercial",
     "ess_battery",
     "ess_outdoor_policy",
     "global_bess_commissioned",
     "hyundai_mobis_atlas",
+    "hyundai_robot_rx_team",
     "jpm_sri_2026",
     "lg_factory_loop",
     "lg_robotics",
@@ -613,6 +616,7 @@
     "openai_own_humanoid",
     "rainbow_fcc_compliance",
     "robotis",
+    "tesla_agm_2026",
     "unichem_loomia_acquisition",
     "vw_europe_battery_recall",
     "xinjian_prs_ipo"
