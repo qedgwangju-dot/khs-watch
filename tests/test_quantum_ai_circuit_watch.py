@@ -1,6 +1,9 @@
 import datetime as dt
 import json
+import tempfile
 import unittest
+from pathlib import Path
+from unittest import mock
 from zoneinfo import ZoneInfo
 import quantum_ai_circuit_watch as q
 
@@ -100,11 +103,23 @@ class QuantumCircuitMilestoneTests(unittest.TestCase):
         def partial(url):
             if url==q.CODE_RELEASES: return "[]"
             raise OSError("source blocked")
-        found,notes,healthy=q.collect(self.now,getter=partial)
-        self.assertEqual(healthy,1)
+        with self.assertRaisesRegex(RuntimeError,"공식 연구·보도 원천 부족"):
+            q.collect(self.now,getter=partial)
+        def degraded(url):
+            if url==q.INDEXES[0][1]: return ""
+            if url==q.ARXIV: return self.atom(1)
+            raise OSError("source blocked")
+        found,notes,healthy=q.collect(self.now,getter=degraded)
+        self.assertEqual(healthy,2)
         self.assertTrue(any("실패" in note for note in notes))
         with self.assertRaisesRegex(RuntimeError,"모든 공식 원천 조회 실패"):
             q.collect(self.now,getter=lambda _: (_ for _ in ()).throw(OSError("fail")))
+
+    def test_deleted_state_file_fails_closed(self):
+        with tempfile.TemporaryDirectory() as folder:
+            with mock.patch.object(q,"STATE",Path(folder)/"missing.json"):
+                with self.assertRaisesRegex(RuntimeError,"중복방지 상태 파일 없음"):
+                    q.load_state()
 
     def test_alert_text_factual_boundaries(self):
         event={"title":"Independent replication of Claude quantum circuits",

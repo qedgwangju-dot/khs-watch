@@ -129,10 +129,12 @@ def collect(now,getter=get):
     notes=[]
     found={}
     success=0
+    primary_sources_ok=0
     for label,index in INDEXES:
         try:
             html_text=getter(index)
             success+=1
+            primary_sources_ok+=1
             parser=Links()
             parser.feed(html_text)
             possible={}
@@ -214,13 +216,15 @@ def collect(now,getter=get):
         notes.append(f"연구자 공개코드 조회 실패: {type(exc).__name__} {str(exc)[:100]}")
     if not success:
         raise RuntimeError("모든 공식 원천 조회 실패: "+"; ".join(notes))
+    if not primary_sources_ok or success<2:
+        raise RuntimeError("공식 연구·보도 원천 부족, 정상조회 판정 차단: "+ "; ".join(notes))
     return sorted(found.values(),key=lambda x:(x["date"],x["key"])),notes,success
 
 def load_state():
     try:
         state=json.loads(STATE.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        return {"seen":{}}
+    except FileNotFoundError as exc:
+        raise RuntimeError("기존 중복방지 상태 파일 없음: 재전송 차단") from exc
     except (OSError,ValueError) as exc:
         raise RuntimeError("기존 중복방지 상태 손상: 재전송 방지 위해 중단") from exc
     if not isinstance(state,dict) or not isinstance(state.get("seen"),dict):
