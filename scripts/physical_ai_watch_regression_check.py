@@ -31,6 +31,9 @@ for _required in (
     "DKT_HUMANOID_RECOVERY =",
     "TESLA_TOUCH_PATENT_RECOVERY =",
     "DIGITAL_OPTIMUS_GAME_RECOVERY =",
+    "BESS_SEP26_RECOVERY =",
+    "def _bess_bmi_recovery(",
+    "SDI_BBU_LFP_RE =",
     "HUMANOID_DRAM_RECOVERY =",
     "OPTIMUS_HAND_MAGNET_RECOVERY =",
     "LFP_NA_CIF_PRICE_RECOVERY =",
@@ -4413,5 +4416,114 @@ try:
     )
 finally:
     base.NOW=old_cn_ess_now
+
+
+# 76) 2026-09 WORLDWIDE GRID-SCALE BESS commissioning is a monthly
+# measured operational statistic (not forecast, cell sales, AI-DC only).
+bess_sep = make(
+    "Benchmark Mineral Intelligence: September 2026 global grid-scale BESS 20.4GWh commissioned",
+    "Benchmark Mineral Intelligence reported worldwide grid-scale BESS actual "
+    "commissioned installations in September 2026 of 20.4GWh, up 61% YoY; "
+    "2026 YTD commissioned installations are 208GWh, up 43%. "
+    "China more than 12GWh and Europe YTD 22GWh.",
+    "Energy-Storage.News",
+)
+bg,bs,bc,bk = classify(bess_sep)
+assert bg == 'global_bess_commissioned' and bs >= 11,(bg,bs,bc)
+assert bc == '글로벌 계통용 BESS · 2026년 9월 신규 가동량',bc
+assert '20.4GWh' in base.meaning(bc) and '208GWh' in base.meaning(bc)
+assert '한 국' not in base.meaning(bc)
+assert '화재' not in base.risk(bc) or '열폭주' in base.risk(bc)
+assert 'KETEP' not in base.verification(bess_sep,bg,bess_sep['title']) or \
+       '한국에너지기술평가원' in base.verification(bess_sep,bg,bess_sep['title'])
+assert watcher._bess_bmi_period(bess_sep['title']+' '+bess_sep['description'])=='2026-09'
+assert watcher._bess_bmi_period('2026년 9월 계통용 BESS 가동')=='2026-09'
+bess_reprint = make(
+    "2026년 9월 전 세계 계통용 BESS 20.4GWh 신규 가동",
+    "Benchmark Mineral Intelligence 집계 2026년 9월 세계 전력망 계통용 BESS "
+    "실제 신규 가동 20.4GWh, 1~9월 누적 208GWh, 전년 대비 61%/43%.",
+    "한국에너지기술평가원",
+)
+rg,rs,rc,rk=classify(bess_reprint)
+assert rg==bg and rs>=11 and rk==bk,(rg,rs,rc,rk)
+bess_noise = dict(bess_sep,source='테마 주식 블로그')
+ng,ns,nc,nk=classify(bess_noise)
+assert ng==bg and ns<11,(ng,ns,nc)
+bess_next_month=make(
+    "October 2026 global grid-scale BESS 18.7GWh commissioned",
+    "Benchmark Mineral Intelligence says worldwide grid-scale BESS installed "
+    "18.7GWh in October 2026 and YTD reaches 226.7GWh, up 20% YoY.",
+    "Energy-Storage.News",
+)
+fg,fs,fc,fk=classify(bess_next_month)
+assert fg==bg and fs>=11 and fk!=bk,(fg,fs,fc,fk)
+assert fc=='글로벌 계통용 BESS · 이후 월간 실제 가동량',fc
+
+# September 2026 quantity validation: decimal GWh not GW, no signed
+# Samsung SDI or LG Energy Solution purchase contract implied.
+assert 20.4*1_000_000==20_400_000
+assert 208*1_000_000==208_000_000
+assert round(20.4/1.61,2)==12.67  # imputed prior-year month, approximate
+assert round(208/1.43,2)==145.45  # imputed prior-year YTD, approximate
+
+recovered_bess = watcher.query_news(watcher.BESS_SEP26_RECOVERY)
+if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,23):
+    assert len(recovered_bess)==1,recovered_bess
+    rec = recovered_bess[0]
+    assert rec['source']=='Energy-Storage.News' and rec['published'] is None,rec
+    gb,sc,cat,k=classify(rec)
+    assert gb==bg and sc>=11 and k==bk,(gb,sc,cat)
+    assert cat==bc,cat
+    text=rec['title']+' '+rec['description']
+    assert base.category(text,gb)==bc
+    assert '한국에너지기술평가원' in base.verification(rec,gb,text)
+    assert watcher.qty._skip_quantity_enrichment(
+        '<b>1. 글로벌 계통용 BESS</b>\n'
+        '<b>분류</b> 글로벌 계통용 BESS · 2026년 9월 신규 가동량\n'
+        '20.4GWh·208GWh 실제 가동량'
+    ),"BESS GWh may not become phantom 4GW or unit count"
+
+old_bmi_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,24,12,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.BESS_SEP26_RECOVERY)==[]
+finally:
+    base.NOW=old_bmi_now
+
+# 77) Samsung SDI 21700 LFP BBU 2026-09-29 product exhibit was an
+# existing baseline. 2026-10-18 media 2027 Q2 schedule is a plan,
+# NOT 2027 production or an official customer agreement.
+sdi_bbu_media=make(
+    "삼성SDI, AI서버 BBU용 21700 LFP 2027년 2분기 양산 추진",
+    "아시아투데이는 삼성SDI가 말레이시아 스름반 2공장에 21700 원통형 LFP BBU "
+    "극판 설비를 설치하는 방안을 추진하고 이르면 2027년 2분기 양산 예정이라고 보도했다.",
+    "아시아투데이",
+)
+bgu,bsc,bcat,bkey=classify(sdi_bbu_media)
+assert bgu=='sdi_lfp_bbu' and bsc<11,(bgu,bsc,bcat)
+assert bcat.endswith('기존 제품·2027년 2분기 보도 계획'),bcat
+
+sdi_bbu_old_company=make(
+    "삼성SDI 서버 BBU용 21700 원통형 LFP 첫 제품 공개",
+    "삼성SDI가 싱가포르 데이터센터 월드 아시아에서 BBU용 21700 원통형 "
+    "리튬인산철 LFP 셀을 공개했다.",
+    "삼성SDI",
+)
+gsc,ssc,ccc,kcc=classify(sdi_bbu_old_company)
+assert gsc=='sdi_lfp_bbu' and ssc<11,(gsc,ssc,ccc)
+
+sdi_bbu_future=make(
+    "삼성SDI BBU LFP 21700 원통형 배터리 양산 시작",
+    "삼성SDI는 데이터센터 BBU용 LFP 21700 원통형 셀 "
+    "양산 시작을 공식 발표했다.",
+    "삼성SDI",
+)
+gfu,sfu,cfu,kfu=classify(sdi_bbu_future)
+assert gfu=='sdi_lfp_bbu' and sfu>=11,(gfu,sfu,cfu)
+assert cfu=='삼성SDI LFP BBU · 양산·첫 출하 공식 확인',cfu
+assert kfu!=bkey
+sdi_bbu_media_fake=dict(sdi_bbu_future,source="증시 테마 언론")
+gf,sf,cf,kf=classify(sdi_bbu_media_fake)
+assert gf=='sdi_lfp_bbu' and sf<11,(gf,sf,cf)
 
 print("Physical-AI watcher regression guards: PASS")
