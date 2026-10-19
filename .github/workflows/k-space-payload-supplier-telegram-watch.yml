@@ -1,0 +1,119 @@
+name: Korea Space AI Payload and SpaceX Supplier Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/k-space-payload-supplier-telegram-watch.yml"
+      - "scripts/k_space_payload_supplier_watch.py"
+  schedule:
+    # Separate from launch, national-defense, and telecom workflows.
+    - cron: "23,53 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: k-space-payload-supplier-telegram-watch
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887988798879887988798879_bot"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Syntax and regression tests
+        run: |
+          python -m py_compile scripts/k_space_payload_supplier_watch.py
+          python -m py_compile scripts/space_launch_telegram_send.py
+          python -m py_compile scripts/merge_space_launch_state.py
+          python scripts/k_space_payload_supplier_watch.py --self-test
+          python scripts/space_launch_telegram_send.py --inline-self-test
+          python scripts/merge_space_launch_state.py --self-test
+
+      - name: Verify company sources and discover real contract milestones
+        run: python scripts/k_space_payload_supplier_watch.py
+
+      - name: Enforce compact Korean inline-link report
+        if: hashFiles('out/k_space_payload_supplier_telegram.txt') != ''
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, "scripts")
+          from space_launch_telegram_send import inline_messages
+          p = Path("out/k_space_payload_supplier_telegram.txt")
+          message = p.read_text(encoding="utf-8")
+          result = inline_messages(message)
+          if len(result) != 1:
+              raise RuntimeError(f"Fragmented Telegram alert: {len(result)} parts")
+          body, entities = result[0]
+          if not 2 <= len(entities) <= 10:
+              raise RuntimeError(f"Unexpected source link count: {len(entities)}")
+          if "• 원문:" in body or "아래 링크 버튼" in body:
+              raise RuntimeError("Non-compact links")
+          if not body.startswith("🛰️ 국내 위성 AI·SpaceX 부품 공급망 감시"):
+              raise RuntimeError("Wrong alert title")
+          if not all(e["url"].startswith("https://") for e in entities):
+              raise RuntimeError("Non-HTTPS source link")
+          print(f"k_space_compact_korean_alert=ok messages=1 source_links={len(entities)} utf16_length={len(body.encode('utf-16-le')) // 2}")
+          PY
+
+      - name: Show execution diagnostics
+        if: always()
+        run: |
+          if [ -f out/k_space_payload_supplier_status.md ]; then
+            cat out/k_space_payload_supplier_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "원천 조회 실패·검증 게이트 차단" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send verified Korean alert to dedicated Telegram bot only
+        if: hashFiles('out/k_space_payload_supplier_telegram.txt') != ''
+        env:
+          SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
+          SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
+        run: |
+          python scripts/space_launch_telegram_send.py --inline out/k_space_payload_supplier_telegram.txt
+
+      - name: Commit dedup state only after successful delivery
+        if: success() && hashFiles('out/k_space_payload_supplier_pending.json') != ''
+        run: |
+          cp out/k_space_payload_supplier_pending.json /tmp/k_space_payload_supplier_pending.json
+          git config user.name "k-space-payload-watch[bot]"
+          git config user.email "k-space-payload-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+
+            python scripts/merge_space_launch_state.py \
+              data/k_space_payload_supplier_state.json \
+              /tmp/k_space_payload_supplier_pending.json \
+              data/k_space_payload_supplier_state.json
+
+            git add data/k_space_payload_supplier_state.json
+            if git diff --cached --quiet; then
+              echo "Space payload supplier dedup state unchanged"
+              exit 0
+            fi
+            git commit -m "chore: update Korean space payload supplier watch state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
