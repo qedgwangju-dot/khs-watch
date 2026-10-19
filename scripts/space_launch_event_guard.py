@@ -103,13 +103,13 @@ def self_test():
 # Historical mislabelled notifications; unique IDs ensure each correction once.
 FACT_CASES = (
   ("audit:20261017:neutron_2027", "Rocket Lab Neutron 2027",
-   "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-provides-update-neutron-development-and-adjusts",
+   "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000067/rklb-10142026ex991.htm",
    ("Rocket Lab","Neutron","2027")),
   ("audit:20261017:morgan_300_unchanged", "Morgan Stanley SpaceX",
-   "https://www.investing.com/news/analyst-ratings/morgan-stanley-raises-spacex-stock-price-target-on-distributed-inference-potential-93CH-4948701",
-   ("Morgan Stanley","$300.00","reiterated")),
+   "https://www.pricetargets.com/NASDAQ/SPCX/",
+   ("Morgan Stanley","$300","Overweight")),
   ("audit:20261017:citizens_130_90", "Citizens Rocket Lab",
-   "https://www.investing.com/news/analyst-ratings/citizens-cuts-rocket-lab-stock-price-target-on-neutron-delay-to-2027-93CH-4953465",
+   "https://www.tipranks.com/news/the-fly/rocket-lab-price-target-lowered-to-90-from-130-at-citizens-thefly-news",
    ("Citizens","$90","$130")),
 )
 
