@@ -1,6 +1,9 @@
 name: Treasury ETF Fund Flow Telegram
 
 on:
+  push:
+    paths:
+      - ".github/workflows/treasury-etf-flow-telegram.yml"
   schedule:
     - cron: "30,35,40 8 * * *"
       timezone: "Asia/Seoul"
@@ -55,7 +58,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
-      TREASURY_REPORT_VALIDATE_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.validate_only && '1' || '0' }}
+      TREASURY_REPORT_VALIDATE_ONLY: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.validate_only)) && '1' || '0' }}
 
     steps:
       - name: Checkout latest delivery state
@@ -292,7 +295,8 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
-      WEEKLY_HAVEN_VALIDATE_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.validate_only && '1' || '0' }}
+      WEEKLY_HAVEN_VALIDATE_ONLY: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.validate_only)) && '1' || '0' }}
+      WEEKLY_HAVEN_REPAIR_FORMAT: "0"
 
     steps:
       - name: Checkout existing repository and confirmed alerts
@@ -315,6 +319,7 @@ jobs:
           python -m py_compile scripts/treasury_weekly_haven_alert.py
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_treasury_weekly_stock_bond_signal.py' -v
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_treasury_weekly_haven_alert.py' -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_treasury_weekly_telegram_format.py' -v
 
       - name: Evaluate weekly market closes and conditionally send through existing bot
         run: |
@@ -327,6 +332,10 @@ jobs:
             exit 1
           elif grep -q '"status": "telegram_confirmed"' out/treasury_weekly_haven_runtime.log; then
             echo "주간 위험 신호 확인 · 기존 Global Rates 봇으로 전송 성공" >> "$GITHUB_STEP_SUMMARY"
+          elif grep -q '"status": "telegram_edited"' out/treasury_weekly_haven_runtime.log; then
+            echo "기존 Telegram 메시지 편집 및 클릭형 출처 확인 완료" >> "$GITHUB_STEP_SUMMARY"
+          elif grep -q '"status": "format_already_current"' out/treasury_weekly_haven_runtime.log; then
+            echo "기존 메시지가 이미 최신 형식이므로 편집하지 않았습니다" >> "$GITHUB_STEP_SUMMARY"
           elif grep -q '"status": "validated"' out/treasury_weekly_haven_runtime.log; then
             echo "공식 주간 수치 확인 · 검증 모드이므로 Telegram 미전송" >> "$GITHUB_STEP_SUMMARY"
           elif grep -Eq '"status": "(threshold_not_met|duplicate_suppressed)"' out/treasury_weekly_haven_runtime.log; then
@@ -368,6 +377,7 @@ jobs:
           path: |
             out/treasury_weekly_haven_runtime.log
             out/treasury_weekly_haven_alert.txt
+            out/treasury_weekly_haven_telegram.html.txt
             out/treasury_weekly_haven_confirmed.json
             data/treasury_weekly_haven_state.json
           if-no-files-found: ignore
