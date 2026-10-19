@@ -175,6 +175,11 @@ def direction(delta):
     if delta<=-FLAT_BP: return ("개선","↓","축소")
     return ("보합","→","보합")
 
+def day_word(delta):
+    # 계산 정밀도 아래의 소수 변화는 실무상 변화 없음으로 표시한다.
+    d=round(float(delta),1)
+    return "확대" if d>0 else ("축소" if d<0 else "불변")
+
 def direction_overview(rows):
     if len(rows)<6: raise ValueError("방향 분석을 위한 5영업일 기준 데이터 부족")
     latest,week=rows[-1],rows[-6]
@@ -216,7 +221,8 @@ def render(rows,decision,now,sample=False):
     lines += [
         f"<b>국내 신용금리 경보 | {applied}</b>",
         f"<b>5영업일 방향: {d['summary']}</b>",
-        f"전일 변화: CP–CD {signed(diff1('cp_cd'))}bp / AA- {signed(diff1('credit'))}bp",
+        f"전일: CP–CD {signed(diff1('cp_cd'))}bp {day_word(diff1('cp_cd'))} / "
+        f"AA-금리차 {signed(diff1('credit'))}bp {day_word(diff1('credit'))}",
         f"공식 기준일 {date} · 확대=상대 조달부담 증가",
     ]
     if applied!=measured:
