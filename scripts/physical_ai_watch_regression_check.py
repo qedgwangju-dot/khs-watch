@@ -36,6 +36,10 @@ for _required in (
     "SDI_BBU_LFP_RE =",
     "HUMANOID_DRAM_RECOVERY =",
     "OPENAI_HUMANOID_RECOVERY =",
+    "BMW_GEN6_PACK_RECOVERY =",
+    "JPM_SRI_DEPLOYMENT_RECOVERY =",
+    "def _bmw_gen6_pack_recovery(",
+    "def _jpm_sri_recovery(",
     "def _openai_humanoid_recovery(",
     "OPTIMUS_HAND_MAGNET_RECOVERY =",
     "LFP_NA_CIF_PRICE_RECOVERY =",
@@ -4704,5 +4708,143 @@ try:
     )
 finally:
     base.NOW=_old_openai_now
+
+
+# 90) BMW actual Shenyang high-voltage PACK assembly started Oct 15.
+# Do NOT treat it as BMW cell-manufacturing SOP or a confirmed CATL
+# Shenyang production-line supply contract.
+bmw_pack=make(
+    "BMW Gen6 Shenyang 46mm high-voltage battery pack series production begun",
+    "BMW Group 2026-10-15 Shenyang Gen6 battery packs actual series production "
+    "begun. Third battery assembly location after Debrecen and Irlbach. "
+    "Battery cells supplied by partners; finished pack first customer delivery not announced.",
+    "BMW Group",
+)
+bg,bs,bc,bk=classify(bmw_pack)
+assert bg=='bmw_gen6_pack' and bs>=11,(bg,bs,bc)
+assert bc=='BMW Gen6 · 선양 배터리팩 양산 공식 개시',bc
+assert '원통형 셀 제조' in base.meaning(bc),base.meaning(bc)
+assert '양산 공정' in base.meaning(bc),base.meaning(bc)
+assert '용접부' in base.risk(bc),base.risk(bc)
+
+bmw_pack_headline=make(
+    "BMW Gen6 Shenyang 46mm battery pack started series production",
+    "BMW Gen6 battery Shenyang begun series production based on "
+    "the same official October 15 announcement.",
+    "BMW Group",
+)
+bg2,bs2,bc2,bk2=classify(bmw_pack_headline)
+assert bg2==bg and bs2>=11 and bk2==bk,(bg2,bs2,bc2,bk2)
+
+bmw_pack_past_plan=make(
+    "BMW Gen6 Shenyang 46mm battery factory plan",
+    "BMW expects battery Gen6 factory assembly in Shenyang to start in the future.",
+    "BMW Group",
+)
+pb,ps,pc,pk=classify(bmw_pack_past_plan)
+assert pb==bg and ps<11,(pb,ps,pc)
+
+bmw_pack_rumor=dict(bmw_pack,source='unverified blog')
+rb,rs,rc,rk=classify(bmw_pack_rumor)
+assert rb==bg and rs<11,(rb,rs,rc)
+
+bmw_vehicle_actual=make(
+    "BMW Gen6 Shenyang China iX3 first actual customer deliveries completed",
+    "BMW Gen6 battery Shenyang China iX3 first customer deliveries completed "
+    "after pack production began.",
+    "BMW Group",
+)
+vg,vs,vc,vk=classify(bmw_vehicle_actual)
+assert vg==bg and vs>=11 and vk!=bk,(vg,vs,vc,vk)
+assert vc=='BMW Gen6 · 중국 신세대 전기차 실제 고객 인도',vc
+
+bmw_backfill=base.query_news(watcher.BMW_GEN6_PACK_RECOVERY)
+if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,26):
+    assert len(bmw_backfill)==1,bmw_backfill
+    br=bmw_backfill[0]
+    assert br['source']=='BMW Group' and br['published'] is None
+    xg,xs,xc,xk=classify(br)
+    assert xg==bg and xs>=11 and xc==bc and xk==bk,(xg,xs,xc,xk)
+    br_text=br['title']+' '+br['description']
+    assert base.category(br_text,base.topic_group(br_text))==bc
+    assert '배터리팩 양산 확정' in base.verification(br,xg,br_text)
+    assert 'BMW가 원통형 배터리 셀 자체를' in br_text
+    assert watcher.qty._skip_quantity_enrichment(
+        '<b>BMW Gen6 · 선양 배터리팩 양산 공식 개시</b> 20GWh '
+        '삼성SDI 4695 2개·2026년'
+    ), 'gen6 pack capacity cannot be rendered as robot unit counts'
+
+# JPM 50eok USD is ALREADY deployed cumulatively, not a fresh
+# 50eok USD contract; 230bn finance/facilitate is not additive.
+jpm_progress=make(
+    "JPMorganChase SRI $5 billion equity invested first year",
+    "JPMorganChase 2026-10-19 Security and Resiliency Initiative "
+    "$5 billion equity deployed out of initial $10 billion target; "
+    "$230 billion financed and facilitated. Initial program was $1.5 trillion in 2025.",
+    "JPMorganChase",
+)
+jg,js,jc,jk=classify(jpm_progress)
+assert jg=='jpm_sri_2026' and js>=11,(jg,js,jc)
+assert jc=='JP모건 SRI · 50억달러 지분투자 누적 집행',jc
+assert '신규 50억달러 발주' in base.meaning(jc),base.meaning(jc)
+assert '305조9,759억원' in base.meaning(jc),base.meaning(jc)
+assert '서로 다른 금액' in base.meaning(jc),base.meaning(jc)
+
+jpm_press=make(
+    "JPMorganChase SRI $5 billion deployed, $230 billion financed",
+    "JPMorganChase Security and Resiliency Initiative already invested "
+    "$5 billion in equity with $230 billion of financing arranged.",
+    "Reuters",
+)
+pg,ps,pc,pk=classify(jpm_press)
+assert pg==jg and ps>=11 and pk==jk,(pg,ps,pc,pk)
+
+jpm_plan=make(
+    "JPMorganChase SRI $10 billion equity investment plan",
+    "JPMorganChase 2025 Security and Resiliency Initiative plans to invest "
+    "$10 billion in strategic companies over a 10-year period.",
+    "JPMorganChase",
+)
+bg0,bs0,bc0,bk0=classify(jpm_plan)
+assert bg0==jg and bs0<11,(bg0,bs0,bc0)
+
+jpm_rumor=make(
+    "JPMorganChase SRI $5 billion in new robot-factory contracts",
+    "JPMorganChase Security and Resiliency Initiative $5 billion invested "
+    "and $230 billion financed claim from unknown theme blog.",
+    "speculative theme blog",
+)
+rg0,rs0,rc0,rk0=classify(jpm_rumor)
+assert rg0==jg and rs0<11,(rg0,rs0,rc0)
+
+jpm_backfill=base.query_news(watcher.JPM_SRI_DEPLOYMENT_RECOVERY)
+if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,26):
+    assert len(jpm_backfill)==1,jpm_backfill
+    jr=jpm_backfill[0]
+    assert jr['source']=='JPMorganChase' and jr['published'] is None
+    y_g,y_s,y_c,y_k=classify(jr)
+    assert y_g==jg and y_s>=11 and y_c==jc and y_k==jk,(y_g,y_s,y_c,y_k)
+    assert '기존 계획' in jr['description']
+    assert '서로 다른' in base.meaning(jc)
+    assert watcher.qty._skip_quantity_enrichment(
+        '<b>JP모건 SRI · 50억달러 지분투자 누적 집행</b>\n'
+        '10개 기업, 100억달러 계획·2,300억달러 금융주선'
+    ), 'equity tally cannot become hardware shipment volume'
+
+# Cumulative records should not be replayed after the bounded recovery
+# window, even when dedup state later rotates.
+_saved_bmw_jpm_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,27,12,0,tzinfo=dt.timezone.utc)
+    assert base.query_news(watcher.BMW_GEN6_PACK_RECOVERY)==[]
+    assert base.query_news(watcher.JPM_SRI_DEPLOYMENT_RECOVERY)==[]
+finally:
+    base.NOW=_saved_bmw_jpm_now
+
+# Currency arithmetic, exactly 1 USD = 1330.33 KRW on 2026-10-19 19:05 KST.
+assert round(5e9*1330.33/1e8)==66517
+assert round(10e9*1330.33/1e8)==133033
+assert round(230e9*1330.33/1e8)==3059759
+assert round(1.5e12*1330.33/1e8)==19954950
 
 print("Physical-AI watcher regression guards: PASS")
