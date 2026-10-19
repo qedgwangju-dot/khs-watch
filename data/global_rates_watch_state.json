@@ -5,9 +5,9 @@
     "ust2": 4.74,
     "ust10": 5.09,
     "ust30": 5.43,
-    "usdjpy": 158.0709991455078,
+    "usdjpy": 158.12600708007812,
     "us_jp_2y_spread": 2.822,
-    "usdjpy_daily_change_pct": 0.05316839075861794,
+    "usdjpy_daily_change_pct": 0.08798640399408193,
     "boe_bank_rate": 3.75
   },
   "active": {
@@ -52,13 +52,13 @@
     }
   },
   "classification": "미국 장기채 스트레스",
-  "updated_at_kst": "2026-10-19T13:21:02+09:00",
+  "updated_at_kst": "2026-10-19T14:22:47+09:00",
   "date_alignment": {
     "jgb2_date": "2026/10/16",
     "ust2_date": "2026-10-16",
     "same_2y_date": true,
     "latest_rate_date": "2026-10-16",
     "live_fx_signal_eligible": true,
-    "live_fx_timestamp_utc": "2026-10-19T04:21:20Z"
+    "live_fx_timestamp_utc": "2026-10-19T05:23:07Z"
   }
 }
