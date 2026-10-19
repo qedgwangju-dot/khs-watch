@@ -373,3 +373,5 @@ if __name__=="__main__":
     except Exception as exc:
         print(f"credit_watch_failed={type(exc).__name__}: {exc}",file=sys.stderr)
         sys.exit(1)
+
+# 검증 기록: 실제 발송 시험은 명시적 커밋 표시를 사용하며 신규 신용경보로 기록하지 않는다.
