@@ -609,7 +609,8 @@ STOCK_ONLY_REACTION = re.compile(
     r'^\s*\d+(?:\.\d+)?\s*%\s*(?:조정|하락|상승|급등|반등|급락|등락)|'
     # Run #584 item 1: "삼성SDI 5% 오르며 2차전지株 강세" had a
     # price-action verb instead of "주가"/"상승". It is not new business.
-    r'\d+(?:\.\d+)?\s*%\s*(?:오르|올랐|내리|내렸|뛰|반등|상승|강세|급등|하락|급락)',
+    r'\d+(?:\.\d+)?\s*%\s*(?:대\s*)?(?:오르|올랐|내리|내렸|뛰|반등|상승|강세|급등|하락|급락)|'
+    r'주가.{0,55}(?:오르|올랐|내리|내렸|뛰어|폭등|급등|강세|약세|하락|급락)',
     re.I,
 )
 EDITORIAL_ONLY_HEADLINE = re.compile(
