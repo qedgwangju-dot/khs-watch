@@ -12264,6 +12264,24 @@
       "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
       "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
     },
+    "core:2b221b6a0e82a23ddc2a4cf9": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://it.chosun.com/news/articleView.html?idxno=2023092172265",
+      "source": "조선일보",
+      "source_body_digest": "bac141a669b7450efdf74d6efd0f1a10a21246066cf0a6acf46d80fe76054dbf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 정부·은행과 2조원 소부장 금융지원",
+      "telegram_core_fact": "회사는 용인 반도체 클러스터에 조성 중인 ‘트리니티 팹’을 통해 소부장 기업의 기술 검증과 상용화도 지원한다.",
+      "title": "SK하이닉스, 정부·은행과 2조원 소부장 금융지원"
+    },
     "core:2b2774459b1052970ec1e6b4": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
       "lanes": {
@@ -20391,6 +20409,30 @@
       "source_title": "[BioS]씨어스, 'AI 부정맥' UAE 아부다비 보건부 IRB 승인",
       "telegram_core_fact": "현재 UAE 국가 건강검진 프로그램에는 부정맥 스크리닝 검사가 포함돼 있지 않으며, 씨어스는 지난해말 입찰을 통해 이 사업의 유일한 사업자로 선정됐다.",
       "title": "[BioS]씨어스, 'AI 부정맥' UAE 아부다비 보건부 IRB 승인"
+    },
+    "core:48c00064dbbbe787f092999e": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831650",
+      "source": "뉴시스",
+      "source_body_digest": "11eda69a77d58f42d893fd0d16f40a5875c67e0394554e7fc7b7908298f2ae6e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:184d9bdf7388a0cdfcf21c234df445479b06fdf1a0721f8407c772d45d98c51d",
+      "source_fact_keys": [
+        "source_fact:v1:1ca283351dad11a742d08694a236483618d37273361825d287debe62510e73ef",
+        "source_fact:v1:2b9bb2cd6056f4b8702194ffd931f4200194c90f3cb3c97c6d385cd99152c21d",
+        "source_fact:v1:44752a8c4587639062b5a7ac6619192376cedb572ccaaa31eeb66bca0bfa9e38",
+        "source_fact:v1:ccfabee244bee3d8dc54716b8df55138e04619fabace80f2c25f37e9ea2210f2",
+        "source_fact:v1:e7ba242bbe41319e878d9cd4585412485bd5970f931c1fdb00b9dcd0b4220a2d"
+      ],
+      "source_published_kst": "2026-10-20T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유",
+      "telegram_core_fact": "엔비디아는 지난 8월 아폴로와 블랙록, 블랙스톤, 브룩필드, 골드만삭스, KKR 등 글로벌 금융사 6곳과 손잡고 AI 인프라 기업에 5000억달러(약 664조원) 이상을 공급할 수 있는 자금조달 플랫폼을 구축하겠다고 밝혔다. 인공지능(AI) 경쟁의 승패가 기술력뿐 아니라 자금 조달 능력에 달렸다는 분석이 나왔다.",
+      "title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유"
     },
     "core:48d0b94adba9e4f03329e2a6": {
       "first_seen_kst": "2026-10-10T02:34:57+09:00",
@@ -30631,6 +30673,30 @@
       "source_title": "“AI가 美 경제 4년내 50% 키운다”⋯앤스로픽의 대담한 예측",
       "telegram_core_fact": "앤스로픽의 잭 클라크 공동창업자가 AI 기술 발전으로 2030년까지 미국의 국내총생산(GDP)이 약 50% 증가할 수 있다는 대담한 전망을 내놨다. 이어 “매우 터무니없게 들린다는 것을 나도 안다”면서도 “AI가 과학적 발견의 속도를 비약적으로 높이고 있다”고 설명했다.",
       "title": "“AI가 美 경제 4년내 50% 키운다”⋯앤스로픽의 대담한 예측"
+    },
+    "core:6e849a884cb8db4065ac9f54": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831920",
+      "source": "뉴시스",
+      "source_body_digest": "b83cb303809c94d8e5c51400235efb2b04e1c09ad660c37be6e7d83a1f34d2ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80f11f69f981bd15eaeae9248c9e394262705f76b245a7db1ef7fceb8fe95d80",
+      "source_fact_keys": [
+        "source_fact:v1:029938f8c8f4906e98288de358dca36b632aa2e820716ce3b81c677feae9df2d",
+        "source_fact:v1:6abaa3afa481e89e1745f71f55fd3daaf5b74373bd478e2624d60d8f48e1fa1f",
+        "source_fact:v1:6c7878167cb34b4d5eaa5f14ca0a985955f9eb80c7687dde4db39539aed56977",
+        "source_fact:v1:8e88667d122242fe2c83cbdee9fd5c2c3c47cf8f546c6dadc71a18a72b3370a0",
+        "source_fact:v1:e213fc34cd98c813dcfd95c4beb7f62f4e96e4acd3e9bef6603d585650328231"
+      ],
+      "source_published_kst": "2026-10-20T00:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져",
+      "telegram_core_fact": "통상 비트코인 강세장이 나타나는 10월을 뜻하는 '업토버(Uptober)' 기대와 달리 미국 비트코인 현물 상장지수펀드(ETF)에서는 최근 2주간 1조2110억원이 넘는 자금이 빠져나갔다.",
+      "title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져"
     },
     "core:6e8b3c6115f48c11c96ca50a": {
       "first_seen_kst": "2026-10-15T15:07:47+09:00",
@@ -41041,6 +41107,30 @@
       "telegram_core_fact": "기존 예비입찰에 참여한 6개 업체가 모두 인수여력을 인정받아 숏리스트에 선정된 가운데 유력 원매자들이 컨소시엄을 통한 추가 입찰 의사를 전하면서 인수전에 불이 붙고 있다.",
       "title": "[단독] CJ, 중앙일보 인수전 뛰어든다…다우키움그룹과 컨소 구성 추진"
     },
+    "core:937f66f4c40304e7dee2cc06": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261019165131",
+      "source": "지디넷코리아",
+      "source_body_digest": "eda81684905f3c64efa865e4a007a1d88e1cf65b07a23de2886d7dcbca7765a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cb5e6a0be3bc7ca1ac9c21af44fa60a6e85459ab0e690f3b5e0b760d45ac52b",
+      "source_fact_keys": [
+        "source_fact:v1:4b42fd73ca3f93937a13983c9375e8d272c024e961191ab3214e56a6205668d3",
+        "source_fact:v1:5136d78e1062f8e935d9c5ae1cc4f574579c43fce328c414b4b8b828522cac9c",
+        "source_fact:v1:6d348ace6a60113d2dffb70ed4d640fed74ef8100d12385f0824578c1f0cf4eb",
+        "source_fact:v1:8ef30334d032977ae3443bc0d4551c247cf80462cce73862008c7184abca3fea",
+        "source_fact:v1:e857558fd355591026189dba574f3b193d7d814d1ba2001cbebd2c99233b648f"
+      ],
+      "source_published_kst": "2026-10-19T16:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발",
+      "telegram_core_fact": "오케스트로 클라우드는 지난 16일 퓨리오사AI, 업스테이지, 에스피케이인크(SPK), 대원씨티에스와 신경망처리장치(NPU) 기반 소버린 AI 풀스택 상품 공동 개발을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
+      "title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발"
+    },
     "core:938149f0ed7a41d8bcdca8f0": {
       "first_seen_kst": "2026-10-13T05:27:22+09:00",
       "lanes": {
@@ -43138,6 +43228,40 @@
       "source_title": "日 기린 맥주도 ‘한국산’…하이트진로, 수입 넘어 직접 만든다",
       "telegram_core_fact": "하이트진로가 일본 기린의 ‘이치방 시보리’ 캔맥주를 국내에서 생산하며 20여 년간 이어온 협력을 수입·유통에서 제조로 넓힌다. 2011년 캔과 생맥주를 포함한 독점 수입·판매 계약을 체결한 뒤 2012년부터 본격적으로 제품을 공급해 왔다.",
       "title": "日 기린 맥주도 ‘한국산’…하이트진로, 수입 넘어 직접 만든다"
+    },
+    "core:9bab104dd5f3dd3b706a099f": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
     },
     "core:9bba5cca5230cf6aedb2f49f": {
       "first_seen_kst": "2026-10-10T06:41:01+09:00",
@@ -66855,6 +66979,27 @@
       "source_published_kst": "2026-10-07T09:22+09:00",
       "title": "상한가 유도한 AI 공급계약, 금액 반토막…플리토 7% 급락"
     },
+    "core:f552317aa8d513156d0bfbc4": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832158",
+      "source": "뉴시스",
+      "source_body_digest": "0c0f10b3c74cc0b932b106d7024c0a3e8b10adf4d9f7ecae8da75e3a374f4fd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b7fa91a4864f243d9e4871f84051abf8312a14d0f0142072262408b973efe2",
+      "source_fact_keys": [
+        "source_fact:v1:6007e2e9471d2235275859460a8f5379c47e8123f2da856afd47736b3f490e9b",
+        "source_fact:v1:bc452113eb5f4f43c864d63d35cdd5fede164751fa7aeb29d2cda76bbce0a805"
+      ],
+      "source_published_kst": "2026-10-19T17:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여",
+      "telegram_core_fact": "지난달 진행된 예비입찰에는 참여하지 않았으나 적격 인수 후보로 선정된 다우키움그룹과 손잡고 본입찰에 나서게 됐다.",
+      "title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여"
+    },
     "core:f5701b4520560479f2e24c0d": {
       "first_seen_kst": "2026-10-19T22:09:23+09:00",
       "lanes": {
@@ -79842,6 +79987,30 @@
       "telegram_core_fact": "그는 이 경험을 바탕으로 '스마트 에너지 플러스(SMART ENERGY PLUS·SEP) 2026'에서 AI 데이터센터의 전력 수요 증가에 대응하기 위한 재생에너지와 ESS의 역할에 대해 발표할 예정이다.",
       "title": "'차원이 다른' AI 데이터센터 전력 수요…재생에너지+ESS가 해답"
     },
+    "event:9601ea1ca926383011d1448c": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831650",
+      "source": "뉴시스",
+      "source_body_digest": "11eda69a77d58f42d893fd0d16f40a5875c67e0394554e7fc7b7908298f2ae6e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:184d9bdf7388a0cdfcf21c234df445479b06fdf1a0721f8407c772d45d98c51d",
+      "source_fact_keys": [
+        "source_fact:v1:1ca283351dad11a742d08694a236483618d37273361825d287debe62510e73ef",
+        "source_fact:v1:2b9bb2cd6056f4b8702194ffd931f4200194c90f3cb3c97c6d385cd99152c21d",
+        "source_fact:v1:44752a8c4587639062b5a7ac6619192376cedb572ccaaa31eeb66bca0bfa9e38",
+        "source_fact:v1:ccfabee244bee3d8dc54716b8df55138e04619fabace80f2c25f37e9ea2210f2",
+        "source_fact:v1:e7ba242bbe41319e878d9cd4585412485bd5970f931c1fdb00b9dcd0b4220a2d"
+      ],
+      "source_published_kst": "2026-10-20T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유",
+      "telegram_core_fact": "엔비디아는 지난 8월 아폴로와 블랙록, 블랙스톤, 브룩필드, 골드만삭스, KKR 등 글로벌 금융사 6곳과 손잡고 AI 인프라 기업에 5000억달러(약 664조원) 이상을 공급할 수 있는 자금조달 플랫폼을 구축하겠다고 밝혔다. 인공지능(AI) 경쟁의 승패가 기술력뿐 아니라 자금 조달 능력에 달렸다는 분석이 나왔다.",
+      "title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유"
+    },
     "event:9661857bfddf0492b5d8fc2e": {
       "first_seen_kst": "2026-09-22T13:40:10+09:00",
       "lanes": {
@@ -89090,6 +89259,27 @@
       "source_title": "리밸런싱 유예하더니…국민연금, 급락장서 대량 매도 | 연합뉴스",
       "telegram_core_fact": "7월부터 리밸런싱이 재개되면서 국민연금은 코스피가 고점 대비 20%에서 30% 낮은 수준에서 거래되는 시점에 오히려 순매도에 나섰습니다. 지난 8월 이후 연기금 등이 유가증권시장에서 순매도한 규모는 약 1조 3천억원에 달합니다.",
       "title": "리밸런싱 유예하더니…국민연금, 급락장서 대량 매도 | 연합뉴스"
+    },
+    "fact:041e2b40e40ebf1f6d4e5695": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832158",
+      "source": "뉴시스",
+      "source_body_digest": "0c0f10b3c74cc0b932b106d7024c0a3e8b10adf4d9f7ecae8da75e3a374f4fd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b7fa91a4864f243d9e4871f84051abf8312a14d0f0142072262408b973efe2",
+      "source_fact_keys": [
+        "source_fact:v1:6007e2e9471d2235275859460a8f5379c47e8123f2da856afd47736b3f490e9b",
+        "source_fact:v1:bc452113eb5f4f43c864d63d35cdd5fede164751fa7aeb29d2cda76bbce0a805"
+      ],
+      "source_published_kst": "2026-10-19T17:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여",
+      "telegram_core_fact": "지난달 진행된 예비입찰에는 참여하지 않았으나 적격 인수 후보로 선정된 다우키움그룹과 손잡고 본입찰에 나서게 됐다.",
+      "title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여"
     },
     "fact:042b380e7790769f45e4b055": {
       "first_seen_kst": "2026-10-15T03:55:55+09:00",
@@ -144841,6 +145031,30 @@
       "telegram_core_fact": "시는 임대 수입 등을 감안해 기존과 유사한 판매시설로 활용하기로 하고, 새 임대 사업자 선정을 위한 공개 입찰을 준비했다.",
       "title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스"
     },
+    "fact:b37325b1a3292749a4e4aae7": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831920",
+      "source": "뉴시스",
+      "source_body_digest": "b83cb303809c94d8e5c51400235efb2b04e1c09ad660c37be6e7d83a1f34d2ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80f11f69f981bd15eaeae9248c9e394262705f76b245a7db1ef7fceb8fe95d80",
+      "source_fact_keys": [
+        "source_fact:v1:029938f8c8f4906e98288de358dca36b632aa2e820716ce3b81c677feae9df2d",
+        "source_fact:v1:6abaa3afa481e89e1745f71f55fd3daaf5b74373bd478e2624d60d8f48e1fa1f",
+        "source_fact:v1:6c7878167cb34b4d5eaa5f14ca0a985955f9eb80c7687dde4db39539aed56977",
+        "source_fact:v1:8e88667d122242fe2c83cbdee9fd5c2c3c47cf8f546c6dadc71a18a72b3370a0",
+        "source_fact:v1:e213fc34cd98c813dcfd95c4beb7f62f4e96e4acd3e9bef6603d585650328231"
+      ],
+      "source_published_kst": "2026-10-20T00:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져",
+      "telegram_core_fact": "통상 비트코인 강세장이 나타나는 10월을 뜻하는 '업토버(Uptober)' 기대와 달리 미국 비트코인 현물 상장지수펀드(ETF)에서는 최근 2주간 1조2110억원이 넘는 자금이 빠져나갔다.",
+      "title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져"
+    },
     "fact:b3736e2f874c4cb1d795bd0e": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
       "lanes": {
@@ -145891,6 +146105,30 @@
       "source_title": "'100조 영업익'에도 삼성전자 주가 주춤…'HBM 가격'에 운명 달렸다",
       "telegram_core_fact": "사상 처음으로 분기 영업이익 '100조 원' 돌파가 유력한 삼성전자 주가가 실적발표를 앞두고 주춤한 모습이다.",
       "title": "'100조 영업익'에도 삼성전자 주가 주춤…'HBM 가격'에 운명 달렸다"
+    },
+    "fact:b6724597cf2bf8306d6b72a5": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261019165131",
+      "source": "지디넷코리아",
+      "source_body_digest": "eda81684905f3c64efa865e4a007a1d88e1cf65b07a23de2886d7dcbca7765a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cb5e6a0be3bc7ca1ac9c21af44fa60a6e85459ab0e690f3b5e0b760d45ac52b",
+      "source_fact_keys": [
+        "source_fact:v1:4b42fd73ca3f93937a13983c9375e8d272c024e961191ab3214e56a6205668d3",
+        "source_fact:v1:5136d78e1062f8e935d9c5ae1cc4f574579c43fce328c414b4b8b828522cac9c",
+        "source_fact:v1:6d348ace6a60113d2dffb70ed4d640fed74ef8100d12385f0824578c1f0cf4eb",
+        "source_fact:v1:8ef30334d032977ae3443bc0d4551c247cf80462cce73862008c7184abca3fea",
+        "source_fact:v1:e857558fd355591026189dba574f3b193d7d814d1ba2001cbebd2c99233b648f"
+      ],
+      "source_published_kst": "2026-10-19T16:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발",
+      "telegram_core_fact": "오케스트로 클라우드는 지난 16일 퓨리오사AI, 업스테이지, 에스피케이인크(SPK), 대원씨티에스와 신경망처리장치(NPU) 기반 소버린 AI 풀스택 상품 공동 개발을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
+      "title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발"
     },
     "fact:b674b06282009a3855058ce3": {
       "first_seen_kst": "2026-10-12T15:43:01+09:00",
@@ -149304,6 +149542,30 @@
       ],
       "source_published_kst": "2026-10-06T10:28+09:00",
       "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
+    },
+    "fact:c117950651d85ce2ecde8a70": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831650",
+      "source": "뉴시스",
+      "source_body_digest": "11eda69a77d58f42d893fd0d16f40a5875c67e0394554e7fc7b7908298f2ae6e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:184d9bdf7388a0cdfcf21c234df445479b06fdf1a0721f8407c772d45d98c51d",
+      "source_fact_keys": [
+        "source_fact:v1:1ca283351dad11a742d08694a236483618d37273361825d287debe62510e73ef",
+        "source_fact:v1:2b9bb2cd6056f4b8702194ffd931f4200194c90f3cb3c97c6d385cd99152c21d",
+        "source_fact:v1:44752a8c4587639062b5a7ac6619192376cedb572ccaaa31eeb66bca0bfa9e38",
+        "source_fact:v1:ccfabee244bee3d8dc54716b8df55138e04619fabace80f2c25f37e9ea2210f2",
+        "source_fact:v1:e7ba242bbe41319e878d9cd4585412485bd5970f931c1fdb00b9dcd0b4220a2d"
+      ],
+      "source_published_kst": "2026-10-20T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유",
+      "telegram_core_fact": "엔비디아는 지난 8월 아폴로와 블랙록, 블랙스톤, 브룩필드, 골드만삭스, KKR 등 글로벌 금융사 6곳과 손잡고 AI 인프라 기업에 5000억달러(약 664조원) 이상을 공급할 수 있는 자금조달 플랫폼을 구축하겠다고 밝혔다. 인공지능(AI) 경쟁의 승패가 기술력뿐 아니라 자금 조달 능력에 달렸다는 분석이 나왔다.",
+      "title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유"
     },
     "fact:c11d09409109f4a1063ca6dd": {
       "first_seen_kst": "2026-10-18T07:09:00+09:00",
@@ -158336,6 +158598,40 @@
       ],
       "source_published_kst": "2026-10-06T13:31+09:00",
       "title": "한미반도체, 삼성전기에 244억원 규모 'MSVP' 반도체 장비 공급"
+    },
+    "fact:dd0a5b7a3d499eaf5e915995": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
     },
     "fact:dd1a9669e90479849a9fd8b1": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
@@ -169936,6 +170232,27 @@
       "source_published_kst": "2026-10-07T08:44+09:00",
       "title": "이자벨라 뱅크, 그랜드리버 합병 규제승인 완료..11월 2일 종결 예정"
     },
+    "link:00c894f41fbc5be2d7ed5202": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832158",
+      "source": "뉴시스",
+      "source_body_digest": "0c0f10b3c74cc0b932b106d7024c0a3e8b10adf4d9f7ecae8da75e3a374f4fd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b7fa91a4864f243d9e4871f84051abf8312a14d0f0142072262408b973efe2",
+      "source_fact_keys": [
+        "source_fact:v1:6007e2e9471d2235275859460a8f5379c47e8123f2da856afd47736b3f490e9b",
+        "source_fact:v1:bc452113eb5f4f43c864d63d35cdd5fede164751fa7aeb29d2cda76bbce0a805"
+      ],
+      "source_published_kst": "2026-10-19T17:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여",
+      "telegram_core_fact": "지난달 진행된 예비입찰에는 참여하지 않았으나 적격 인수 후보로 선정된 다우키움그룹과 손잡고 본입찰에 나서게 됐다.",
+      "title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여"
+    },
     "link:00c8a30a85ccc50b06365562": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
       "lanes": {
@@ -170143,6 +170460,24 @@
       "source_title": "미·중 우주 AI데이터센터 경쟁 가속…우주청 \"2028년 조기 실증 노력\"",
       "telegram_core_fact": "우주 인공지능(AI) 데이터센터의 조기 실증 필요성에 여야가 한목소리를 냈다. 이처럼 글로벌 기업들이 우주 AI 데이터센터의 기술 실증과 상용화에 속도를 내는 사이 국내에서는 실제 우주 환경에서 기술을 검증하기 위한 준비가 부족하다고 지적했다.",
       "title": "미·중 우주 AI데이터센터 경쟁 가속…우주청 \"2028년 조기 실증 노력\""
+    },
+    "link:0108cb98626787446ec2c301": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://it.chosun.com/news/articleView.html?idxno=2023092172265",
+      "source": "조선일보",
+      "source_body_digest": "bac141a669b7450efdf74d6efd0f1a10a21246066cf0a6acf46d80fe76054dbf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 정부·은행과 2조원 소부장 금융지원",
+      "telegram_core_fact": "회사는 용인 반도체 클러스터에 조성 중인 ‘트리니티 팹’을 통해 소부장 기업의 기술 검증과 상용화도 지원한다.",
+      "title": "SK하이닉스, 정부·은행과 2조원 소부장 금융지원"
     },
     "link:011e50f0801042f5975f1bb0": {
       "first_seen_kst": "2026-10-14T19:15:46+09:00",
@@ -202458,6 +202793,30 @@
       "telegram_core_fact": "SK어스온은 이번 15-1/05 광구 생산 개시로 2003년 원유 생산을 시작한 15-1 광구에 이어 베트남 내 생산 거점을 확대하는 데 성공했다.",
       "title": "SK이노, 베트남서 첫 원유 생산 … 6000만배럴 기대"
     },
+    "link:4dc717b55819fa5737273457": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831650",
+      "source": "뉴시스",
+      "source_body_digest": "11eda69a77d58f42d893fd0d16f40a5875c67e0394554e7fc7b7908298f2ae6e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:184d9bdf7388a0cdfcf21c234df445479b06fdf1a0721f8407c772d45d98c51d",
+      "source_fact_keys": [
+        "source_fact:v1:1ca283351dad11a742d08694a236483618d37273361825d287debe62510e73ef",
+        "source_fact:v1:2b9bb2cd6056f4b8702194ffd931f4200194c90f3cb3c97c6d385cd99152c21d",
+        "source_fact:v1:44752a8c4587639062b5a7ac6619192376cedb572ccaaa31eeb66bca0bfa9e38",
+        "source_fact:v1:ccfabee244bee3d8dc54716b8df55138e04619fabace80f2c25f37e9ea2210f2",
+        "source_fact:v1:e7ba242bbe41319e878d9cd4585412485bd5970f931c1fdb00b9dcd0b4220a2d"
+      ],
+      "source_published_kst": "2026-10-20T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유",
+      "telegram_core_fact": "엔비디아는 지난 8월 아폴로와 블랙록, 블랙스톤, 브룩필드, 골드만삭스, KKR 등 글로벌 금융사 6곳과 손잡고 AI 인프라 기업에 5000억달러(약 664조원) 이상을 공급할 수 있는 자금조달 플랫폼을 구축하겠다고 밝혔다. 인공지능(AI) 경쟁의 승패가 기술력뿐 아니라 자금 조달 능력에 달렸다는 분석이 나왔다.",
+      "title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유"
+    },
     "link:4dd09b5c075586f46fdee76d": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -217089,6 +217448,30 @@
       "source_published_kst": "2026-10-07T17:06+09:00",
       "title": "\"50년 기다린 탄약고 이전, 반도체에 밀려선 안돼\""
     },
+    "link:6f0facad7cd0ddacb1a474bb": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831920",
+      "source": "뉴시스",
+      "source_body_digest": "b83cb303809c94d8e5c51400235efb2b04e1c09ad660c37be6e7d83a1f34d2ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80f11f69f981bd15eaeae9248c9e394262705f76b245a7db1ef7fceb8fe95d80",
+      "source_fact_keys": [
+        "source_fact:v1:029938f8c8f4906e98288de358dca36b632aa2e820716ce3b81c677feae9df2d",
+        "source_fact:v1:6abaa3afa481e89e1745f71f55fd3daaf5b74373bd478e2624d60d8f48e1fa1f",
+        "source_fact:v1:6c7878167cb34b4d5eaa5f14ca0a985955f9eb80c7687dde4db39539aed56977",
+        "source_fact:v1:8e88667d122242fe2c83cbdee9fd5c2c3c47cf8f546c6dadc71a18a72b3370a0",
+        "source_fact:v1:e213fc34cd98c813dcfd95c4beb7f62f4e96e4acd3e9bef6603d585650328231"
+      ],
+      "source_published_kst": "2026-10-20T00:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져",
+      "telegram_core_fact": "통상 비트코인 강세장이 나타나는 10월을 뜻하는 '업토버(Uptober)' 기대와 달리 미국 비트코인 현물 상장지수펀드(ETF)에서는 최근 2주간 1조2110억원이 넘는 자금이 빠져나갔다.",
+      "title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져"
+    },
     "link:6f126eb10d6c21d13e0a2c0e": {
       "first_seen_kst": "2026-09-18T16:49:31+09:00",
       "lanes": {
@@ -218490,6 +218873,30 @@
       "source_title": "중수청, 출범 첫날 접수 고소·고발건 배당 시작",
       "telegram_core_fact": "출범 엿새째를 맞은 중대범죄수사청(중수청)이 첫날 접수한 고소·고발 사건들을 배당하고 검토에 착수했다.",
       "title": "중수청, 출범 첫날 접수 고소·고발건 배당 시작"
+    },
+    "link:728ee3d2b989069e9ed80663": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261019165131",
+      "source": "지디넷코리아",
+      "source_body_digest": "eda81684905f3c64efa865e4a007a1d88e1cf65b07a23de2886d7dcbca7765a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cb5e6a0be3bc7ca1ac9c21af44fa60a6e85459ab0e690f3b5e0b760d45ac52b",
+      "source_fact_keys": [
+        "source_fact:v1:4b42fd73ca3f93937a13983c9375e8d272c024e961191ab3214e56a6205668d3",
+        "source_fact:v1:5136d78e1062f8e935d9c5ae1cc4f574579c43fce328c414b4b8b828522cac9c",
+        "source_fact:v1:6d348ace6a60113d2dffb70ed4d640fed74ef8100d12385f0824578c1f0cf4eb",
+        "source_fact:v1:8ef30334d032977ae3443bc0d4551c247cf80462cce73862008c7184abca3fea",
+        "source_fact:v1:e857558fd355591026189dba574f3b193d7d814d1ba2001cbebd2c99233b648f"
+      ],
+      "source_published_kst": "2026-10-19T16:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발",
+      "telegram_core_fact": "오케스트로 클라우드는 지난 16일 퓨리오사AI, 업스테이지, 에스피케이인크(SPK), 대원씨티에스와 신경망처리장치(NPU) 기반 소버린 AI 풀스택 상품 공동 개발을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
+      "title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발"
     },
     "link:7295b0e52e58926803fd090a": {
       "first_seen_kst": "2026-10-19T15:46:20+09:00",
@@ -276786,6 +277193,40 @@
       "telegram_core_fact": "LG전자의 3분기 잠정 영업이익은 7818억원으로 전년비 13.5% 증가했지만 시장 기대치 약 1조301억원을 24.1% 밑돌았다.",
       "title": "LG전자, 실적 충격 속 이틀 새 14% 하락…AI 냉각·로봇에 쏠린 시선"
     },
+    "link:fd37285e04a810931f23660c": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
+    },
     "link:fd3d50a413fa453a14bf1068": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
       "lanes": {
@@ -307638,6 +308079,27 @@
       "telegram_core_fact": "국내외 ESG 규제가 강화되고 지속가능성 공시 의무화가 추진되는 데 맞춰 공급망 전반의 대응 역량을 높이기 위해 마련한 행사다.",
       "title": "동아쏘시오그룹, 협력사 ESG 공급망 교육 개최"
     },
+    "original:4551cb54917412a208f30ee2": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832158",
+      "source": "뉴시스",
+      "source_body_digest": "0c0f10b3c74cc0b932b106d7024c0a3e8b10adf4d9f7ecae8da75e3a374f4fd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b7fa91a4864f243d9e4871f84051abf8312a14d0f0142072262408b973efe2",
+      "source_fact_keys": [
+        "source_fact:v1:6007e2e9471d2235275859460a8f5379c47e8123f2da856afd47736b3f490e9b",
+        "source_fact:v1:bc452113eb5f4f43c864d63d35cdd5fede164751fa7aeb29d2cda76bbce0a805"
+      ],
+      "source_published_kst": "2026-10-19T17:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여",
+      "telegram_core_fact": "지난달 진행된 예비입찰에는 참여하지 않았으나 적격 인수 후보로 선정된 다우키움그룹과 손잡고 본입찰에 나서게 됐다.",
+      "title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여"
+    },
     "original:4552aaf1f3b572285f222d38": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -310710,6 +311172,24 @@
       "link": "https://www.dt.co.kr/article/12086796",
       "source": "디지털타임스",
       "title": "‘한국을 내 편으로’…경쟁 붙은 젠슨 황·리사 수"
+    },
+    "original:4c6e23c882a99481dabd5403": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://it.chosun.com/news/articleView.html?idxno=2023092172265",
+      "source": "조선일보",
+      "source_body_digest": "bac141a669b7450efdf74d6efd0f1a10a21246066cf0a6acf46d80fe76054dbf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 정부·은행과 2조원 소부장 금융지원",
+      "telegram_core_fact": "회사는 용인 반도체 클러스터에 조성 중인 ‘트리니티 팹’을 통해 소부장 기업의 기술 검증과 상용화도 지원한다.",
+      "title": "SK하이닉스, 정부·은행과 2조원 소부장 금융지원"
     },
     "original:4c7f09659c999983bb8d3eda": {
       "first_seen_kst": "2026-10-16T16:35:36+09:00",
@@ -335909,6 +336389,30 @@
       "telegram_core_fact": "자산운용업계에 따르면 미래에셋자산운용의 'TIGER 미국배당다우존스 ETF'는 연초 이후 개인 순매수액이 1조2천827억원으로 같은 지수를 추종하는 국내 ETF 가운데 가장 많았다.",
       "title": "미래에셋 美배당다우존스, 개인 순매수 1.3조…동종 ETF 최대 | 연합뉴스"
     },
+    "original:8a590a18ec8522a45c57a37b": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831920",
+      "source": "뉴시스",
+      "source_body_digest": "b83cb303809c94d8e5c51400235efb2b04e1c09ad660c37be6e7d83a1f34d2ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80f11f69f981bd15eaeae9248c9e394262705f76b245a7db1ef7fceb8fe95d80",
+      "source_fact_keys": [
+        "source_fact:v1:029938f8c8f4906e98288de358dca36b632aa2e820716ce3b81c677feae9df2d",
+        "source_fact:v1:6abaa3afa481e89e1745f71f55fd3daaf5b74373bd478e2624d60d8f48e1fa1f",
+        "source_fact:v1:6c7878167cb34b4d5eaa5f14ca0a985955f9eb80c7687dde4db39539aed56977",
+        "source_fact:v1:8e88667d122242fe2c83cbdee9fd5c2c3c47cf8f546c6dadc71a18a72b3370a0",
+        "source_fact:v1:e213fc34cd98c813dcfd95c4beb7f62f4e96e4acd3e9bef6603d585650328231"
+      ],
+      "source_published_kst": "2026-10-20T00:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져",
+      "telegram_core_fact": "통상 비트코인 강세장이 나타나는 10월을 뜻하는 '업토버(Uptober)' 기대와 달리 미국 비트코인 현물 상장지수펀드(ETF)에서는 최근 2주간 1조2110억원이 넘는 자금이 빠져나갔다.",
+      "title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져"
+    },
     "original:8a71f506b1a8a11836c355d8": {
       "first_seen_kst": "2026-09-18T23:32:37+09:00",
       "lanes": {
@@ -340867,6 +341371,30 @@
       "source_title": "디티에스, 코스닥 상장 추진…\"글로벌 열관리 솔루션 기업으로 도약\"",
       "telegram_core_fact": "공랭식 열관리 전문기업 디티에스가 코스닥 상장을 통해 주력 에너지 플랜트 사업의 수주 기반을 강화하고 인공지능(AI) 데이터센터 냉각과 폐열발전 분야로 사업 영역을 확대한다.",
       "title": "디티에스, 코스닥 상장 추진…\"글로벌 열관리 솔루션 기업으로 도약\""
+    },
+    "original:965d416ef572bb0027c139f2": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261019165131",
+      "source": "지디넷코리아",
+      "source_body_digest": "eda81684905f3c64efa865e4a007a1d88e1cf65b07a23de2886d7dcbca7765a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cb5e6a0be3bc7ca1ac9c21af44fa60a6e85459ab0e690f3b5e0b760d45ac52b",
+      "source_fact_keys": [
+        "source_fact:v1:4b42fd73ca3f93937a13983c9375e8d272c024e961191ab3214e56a6205668d3",
+        "source_fact:v1:5136d78e1062f8e935d9c5ae1cc4f574579c43fce328c414b4b8b828522cac9c",
+        "source_fact:v1:6d348ace6a60113d2dffb70ed4d640fed74ef8100d12385f0824578c1f0cf4eb",
+        "source_fact:v1:8ef30334d032977ae3443bc0d4551c247cf80462cce73862008c7184abca3fea",
+        "source_fact:v1:e857558fd355591026189dba574f3b193d7d814d1ba2001cbebd2c99233b648f"
+      ],
+      "source_published_kst": "2026-10-19T16:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발",
+      "telegram_core_fact": "오케스트로 클라우드는 지난 16일 퓨리오사AI, 업스테이지, 에스피케이인크(SPK), 대원씨티에스와 신경망처리장치(NPU) 기반 소버린 AI 풀스택 상품 공동 개발을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
+      "title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발"
     },
     "original:965f60fecc20397ba152811c": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
@@ -359470,6 +359998,40 @@
       "source": "매일경제",
       "title": "바이두, 자사주 59만주 매입..5000만 홍콩달러 집행"
     },
+    "original:c3eca79df5719ea8fc137245": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
+    },
     "original:c3eda81918bfbd6d27cac022": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
       "lanes": {
@@ -371354,6 +371916,30 @@
       ],
       "source_published_kst": "2026-10-07T03:11+09:00",
       "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
+    "original:e092bb895fdeb1676eb4beb7": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831650",
+      "source": "뉴시스",
+      "source_body_digest": "11eda69a77d58f42d893fd0d16f40a5875c67e0394554e7fc7b7908298f2ae6e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:184d9bdf7388a0cdfcf21c234df445479b06fdf1a0721f8407c772d45d98c51d",
+      "source_fact_keys": [
+        "source_fact:v1:1ca283351dad11a742d08694a236483618d37273361825d287debe62510e73ef",
+        "source_fact:v1:2b9bb2cd6056f4b8702194ffd931f4200194c90f3cb3c97c6d385cd99152c21d",
+        "source_fact:v1:44752a8c4587639062b5a7ac6619192376cedb572ccaaa31eeb66bca0bfa9e38",
+        "source_fact:v1:ccfabee244bee3d8dc54716b8df55138e04619fabace80f2c25f37e9ea2210f2",
+        "source_fact:v1:e7ba242bbe41319e878d9cd4585412485bd5970f931c1fdb00b9dcd0b4220a2d"
+      ],
+      "source_published_kst": "2026-10-20T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유",
+      "telegram_core_fact": "엔비디아는 지난 8월 아폴로와 블랙록, 블랙스톤, 브룩필드, 골드만삭스, KKR 등 글로벌 금융사 6곳과 손잡고 AI 인프라 기업에 5000억달러(약 664조원) 이상을 공급할 수 있는 자금조달 플랫폼을 구축하겠다고 밝혔다. 인공지능(AI) 경쟁의 승패가 기술력뿐 아니라 자금 조달 능력에 달렸다는 분석이 나왔다.",
+      "title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유"
     },
     "original:e0a6dbfb330e9e15fd048479": {
       "first_seen_kst": "2026-10-09T18:14:26+09:00",
@@ -398561,6 +399147,27 @@
       "telegram_core_fact": "그는 \"현대차그룹은 2032년까지 인도에 155억 달러(약 20조원 이상)를 투자해 차세대 제조·혁신·연구개발(R&D)을 발전시키고 인도 정부와의 협력을 강화하기 위한 전담 조직을 설립할 것\"이라고 말했다.",
       "title": "정의선 현대차그룹 회장 \"인도에 강한 확신…생산 넘어 설계·혁신까지 나아갈 것\" [푸네 新공장 준공]"
     },
+    "source_fact:0917d557c7f6e921efef62ec": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832158",
+      "source": "뉴시스",
+      "source_body_digest": "0c0f10b3c74cc0b932b106d7024c0a3e8b10adf4d9f7ecae8da75e3a374f4fd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b7fa91a4864f243d9e4871f84051abf8312a14d0f0142072262408b973efe2",
+      "source_fact_keys": [
+        "source_fact:v1:6007e2e9471d2235275859460a8f5379c47e8123f2da856afd47736b3f490e9b",
+        "source_fact:v1:bc452113eb5f4f43c864d63d35cdd5fede164751fa7aeb29d2cda76bbce0a805"
+      ],
+      "source_published_kst": "2026-10-19T17:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여",
+      "telegram_core_fact": "지난달 진행된 예비입찰에는 참여하지 않았으나 적격 인수 후보로 선정된 다우키움그룹과 손잡고 본입찰에 나서게 됐다.",
+      "title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여"
+    },
     "source_fact:091d9c0ed69788f7cb66ac69": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -411082,6 +411689,40 @@
       "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
       "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
+    "source_fact:10a4f14d0c63f812dda3f6b2": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
+    },
     "source_fact:10a99141ec93977add645bc2": {
       "first_seen_kst": "2026-10-13T01:37:36+09:00",
       "lanes": {
@@ -417104,6 +417745,30 @@
       "source_title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스",
       "telegram_core_fact": "보고서는 \"바이오 원부자재는 원가, 품질, 공급 안전성을 좌우하는 전략 자산\"이라며 \"의약품 제조 품목 허가에 등록된 원부자재는 교체 시 재검증 비용이 막대해 안정적 매출의 원천이 된다\"고 짚었다.",
       "title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스"
+    },
+    "source_fact:14407401bc62d7e248f2df6e": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261019165131",
+      "source": "지디넷코리아",
+      "source_body_digest": "eda81684905f3c64efa865e4a007a1d88e1cf65b07a23de2886d7dcbca7765a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cb5e6a0be3bc7ca1ac9c21af44fa60a6e85459ab0e690f3b5e0b760d45ac52b",
+      "source_fact_keys": [
+        "source_fact:v1:4b42fd73ca3f93937a13983c9375e8d272c024e961191ab3214e56a6205668d3",
+        "source_fact:v1:5136d78e1062f8e935d9c5ae1cc4f574579c43fce328c414b4b8b828522cac9c",
+        "source_fact:v1:6d348ace6a60113d2dffb70ed4d640fed74ef8100d12385f0824578c1f0cf4eb",
+        "source_fact:v1:8ef30334d032977ae3443bc0d4551c247cf80462cce73862008c7184abca3fea",
+        "source_fact:v1:e857558fd355591026189dba574f3b193d7d814d1ba2001cbebd2c99233b648f"
+      ],
+      "source_published_kst": "2026-10-19T16:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발",
+      "telegram_core_fact": "오케스트로 클라우드는 지난 16일 퓨리오사AI, 업스테이지, 에스피케이인크(SPK), 대원씨티에스와 신경망처리장치(NPU) 기반 소버린 AI 풀스택 상품 공동 개발을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
+      "title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발"
     },
     "source_fact:144c191f560cae303cfa4513": {
       "first_seen_kst": "2026-10-11T06:07:21+09:00",
@@ -429112,6 +429777,30 @@
       "telegram_core_fact": "이재원 유안타증권 연구원은 \"현재 국내 주식시장의 가장 큰 고민은 반도체 실적이 아닌 외국인 수급\"이라며 \"삼성전자 3·4분기 영업이익이 시장 기대를 상회했고 메모리 가격과 AI 인프라 투자도 견조하지만, 외국인 매도 지속에 코스피의 상대적 부진이 지속되고 있다\"고 말했다.",
       "title": "반도체株 던진 외국인… 코스피 6400 밑으로 끌어내렸다"
     },
+    "source_fact:1beb82e1ee0828919251cf02": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831920",
+      "source": "뉴시스",
+      "source_body_digest": "b83cb303809c94d8e5c51400235efb2b04e1c09ad660c37be6e7d83a1f34d2ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80f11f69f981bd15eaeae9248c9e394262705f76b245a7db1ef7fceb8fe95d80",
+      "source_fact_keys": [
+        "source_fact:v1:029938f8c8f4906e98288de358dca36b632aa2e820716ce3b81c677feae9df2d",
+        "source_fact:v1:6abaa3afa481e89e1745f71f55fd3daaf5b74373bd478e2624d60d8f48e1fa1f",
+        "source_fact:v1:6c7878167cb34b4d5eaa5f14ca0a985955f9eb80c7687dde4db39539aed56977",
+        "source_fact:v1:8e88667d122242fe2c83cbdee9fd5c2c3c47cf8f546c6dadc71a18a72b3370a0",
+        "source_fact:v1:e213fc34cd98c813dcfd95c4beb7f62f4e96e4acd3e9bef6603d585650328231"
+      ],
+      "source_published_kst": "2026-10-20T00:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져",
+      "telegram_core_fact": "통상 비트코인 강세장이 나타나는 10월을 뜻하는 '업토버(Uptober)' 기대와 달리 미국 비트코인 현물 상장지수펀드(ETF)에서는 최근 2주간 1조2110억원이 넘는 자금이 빠져나갔다.",
+      "title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져"
+    },
     "source_fact:1bec90a99629d352c0703737": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
       "lanes": {
@@ -438305,6 +438994,30 @@
       "source_title": "뉴욕증시도 흔들렸다…中반도체 굴기에 하락 마감[뉴스새벽배송]",
       "telegram_core_fact": "중국 반도체 기업의 기술 진전 소식에 인공지능(AI) 관련주의 경쟁 우려가 커지면서 간밤의 미국 뉴욕증시가 하락 마감했다.",
       "title": "뉴욕증시도 흔들렸다…中반도체 굴기에 하락 마감[뉴스새벽배송]"
+    },
+    "source_fact:213c7079d27cf93d77e95cbc": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261019165131",
+      "source": "지디넷코리아",
+      "source_body_digest": "eda81684905f3c64efa865e4a007a1d88e1cf65b07a23de2886d7dcbca7765a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cb5e6a0be3bc7ca1ac9c21af44fa60a6e85459ab0e690f3b5e0b760d45ac52b",
+      "source_fact_keys": [
+        "source_fact:v1:4b42fd73ca3f93937a13983c9375e8d272c024e961191ab3214e56a6205668d3",
+        "source_fact:v1:5136d78e1062f8e935d9c5ae1cc4f574579c43fce328c414b4b8b828522cac9c",
+        "source_fact:v1:6d348ace6a60113d2dffb70ed4d640fed74ef8100d12385f0824578c1f0cf4eb",
+        "source_fact:v1:8ef30334d032977ae3443bc0d4551c247cf80462cce73862008c7184abca3fea",
+        "source_fact:v1:e857558fd355591026189dba574f3b193d7d814d1ba2001cbebd2c99233b648f"
+      ],
+      "source_published_kst": "2026-10-19T16:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발",
+      "telegram_core_fact": "오케스트로 클라우드는 지난 16일 퓨리오사AI, 업스테이지, 에스피케이인크(SPK), 대원씨티에스와 신경망처리장치(NPU) 기반 소버린 AI 풀스택 상품 공동 개발을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
+      "title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발"
     },
     "source_fact:213e6b3176d9b1ecf51f83a8": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
@@ -449424,6 +450137,40 @@
       "telegram_core_fact": "특히 미국 내 중국산 철강재에 대한 관세와 안보 규제가 강화되면서 중국산 제품의 시장 접근성이 크게 떨어졌고, 한국산 봉형강과 강관, 강판 등에 대한 수요가 늘어난 것도 수출 증가의 배경으로 꼽힌다.",
       "title": "AI 데이터센터가 살린 철강…관세 50%에도 대미 수출 급증"
     },
+    "source_fact:27702955f3159cec73fef4dc": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
+    },
     "source_fact:2771c3f0459fff653db3fda6": {
       "first_seen_kst": "2026-10-19T15:22:07+09:00",
       "lanes": {
@@ -450618,6 +451365,40 @@
       "source_title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\"",
       "telegram_core_fact": "러시아와 에너지 시설 공격을 서로 중단하는 방안을 논의하러 미국을 찾은 우크라이나 대표단이 협상장에서 러시아산 경유 수출 제재 완화 방침을 전달받고 “함정처럼 느껴졌다”고 반발한 것으로 전해졌다.",
       "title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\""
+    },
+    "source_fact:2832d0829bf25256f9a0f771": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
     },
     "source_fact:2833f4980a9986f20659ea3b": {
       "first_seen_kst": "2026-10-18T19:24:30+09:00",
@@ -455632,6 +456413,40 @@
       "source_title": "롯데이노베이트, 국내외 데이터센터 사업확대…\"성장동력 육성\"",
       "telegram_core_fact": "롯데이노베이트[286940]는 안산 글로벌 클라우드 센터(GCC) 운영과 향후 데이터센터 사업 협력을 위해 IT 인프라 전문기업 아이티센씨티에스[031820]와 업무협약(MOU)을 체결했다고 16일 밝혔다. 롯데이노베이트는 이지스자산운용과 5년간의 위탁운영 계약을 체결해 센터 운영 전반을 총괄할 예정이다.",
       "title": "롯데이노베이트, 국내외 데이터센터 사업확대…\"성장동력 육성\""
+    },
+    "source_fact:2af97d8ba04e3bd5b6fd7bd7": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
     },
     "source_fact:2afe17a7ddc980a9bd5a7ec4": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
@@ -463930,6 +464745,30 @@
       "telegram_core_fact": "미국의 9월 소비자물가지수(CPI) 상승률이 전년 동월 대비 3.7%로 높아진 가운데 현장에서도 물가 압력 확대가 확인되면서 연준의 금리 결정은 더욱 복잡해질 것으로 보인다.",
       "title": "美연준 베이지북 \"물가 상승 가속\"…소비 정체·AI발 고용 위축"
     },
+    "source_fact:305396349533db4d8f1bd999": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831650",
+      "source": "뉴시스",
+      "source_body_digest": "11eda69a77d58f42d893fd0d16f40a5875c67e0394554e7fc7b7908298f2ae6e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:184d9bdf7388a0cdfcf21c234df445479b06fdf1a0721f8407c772d45d98c51d",
+      "source_fact_keys": [
+        "source_fact:v1:1ca283351dad11a742d08694a236483618d37273361825d287debe62510e73ef",
+        "source_fact:v1:2b9bb2cd6056f4b8702194ffd931f4200194c90f3cb3c97c6d385cd99152c21d",
+        "source_fact:v1:44752a8c4587639062b5a7ac6619192376cedb572ccaaa31eeb66bca0bfa9e38",
+        "source_fact:v1:ccfabee244bee3d8dc54716b8df55138e04619fabace80f2c25f37e9ea2210f2",
+        "source_fact:v1:e7ba242bbe41319e878d9cd4585412485bd5970f931c1fdb00b9dcd0b4220a2d"
+      ],
+      "source_published_kst": "2026-10-20T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유",
+      "telegram_core_fact": "엔비디아는 지난 8월 아폴로와 블랙록, 블랙스톤, 브룩필드, 골드만삭스, KKR 등 글로벌 금융사 6곳과 손잡고 AI 인프라 기업에 5000억달러(약 664조원) 이상을 공급할 수 있는 자금조달 플랫폼을 구축하겠다고 밝혔다. 인공지능(AI) 경쟁의 승패가 기술력뿐 아니라 자금 조달 능력에 달렸다는 분석이 나왔다.",
+      "title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유"
+    },
     "source_fact:3055e7f326e366b988e58377": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
       "lanes": {
@@ -470445,6 +471284,30 @@
       ],
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
+    },
+    "source_fact:341f04583add9918c2606e6c": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831650",
+      "source": "뉴시스",
+      "source_body_digest": "11eda69a77d58f42d893fd0d16f40a5875c67e0394554e7fc7b7908298f2ae6e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:184d9bdf7388a0cdfcf21c234df445479b06fdf1a0721f8407c772d45d98c51d",
+      "source_fact_keys": [
+        "source_fact:v1:1ca283351dad11a742d08694a236483618d37273361825d287debe62510e73ef",
+        "source_fact:v1:2b9bb2cd6056f4b8702194ffd931f4200194c90f3cb3c97c6d385cd99152c21d",
+        "source_fact:v1:44752a8c4587639062b5a7ac6619192376cedb572ccaaa31eeb66bca0bfa9e38",
+        "source_fact:v1:ccfabee244bee3d8dc54716b8df55138e04619fabace80f2c25f37e9ea2210f2",
+        "source_fact:v1:e7ba242bbe41319e878d9cd4585412485bd5970f931c1fdb00b9dcd0b4220a2d"
+      ],
+      "source_published_kst": "2026-10-20T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유",
+      "telegram_core_fact": "엔비디아는 지난 8월 아폴로와 블랙록, 블랙스톤, 브룩필드, 골드만삭스, KKR 등 글로벌 금융사 6곳과 손잡고 AI 인프라 기업에 5000억달러(약 664조원) 이상을 공급할 수 있는 자금조달 플랫폼을 구축하겠다고 밝혔다. 인공지능(AI) 경쟁의 승패가 기술력뿐 아니라 자금 조달 능력에 달렸다는 분석이 나왔다.",
+      "title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유"
     },
     "source_fact:3428365d787ddd7985631a95": {
       "first_seen_kst": "2026-10-08T19:49:39+09:00",
@@ -506964,6 +507827,30 @@
       "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
       "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
+    },
+    "source_fact:4a139a310de795b2aa4207ec": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831650",
+      "source": "뉴시스",
+      "source_body_digest": "11eda69a77d58f42d893fd0d16f40a5875c67e0394554e7fc7b7908298f2ae6e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:184d9bdf7388a0cdfcf21c234df445479b06fdf1a0721f8407c772d45d98c51d",
+      "source_fact_keys": [
+        "source_fact:v1:1ca283351dad11a742d08694a236483618d37273361825d287debe62510e73ef",
+        "source_fact:v1:2b9bb2cd6056f4b8702194ffd931f4200194c90f3cb3c97c6d385cd99152c21d",
+        "source_fact:v1:44752a8c4587639062b5a7ac6619192376cedb572ccaaa31eeb66bca0bfa9e38",
+        "source_fact:v1:ccfabee244bee3d8dc54716b8df55138e04619fabace80f2c25f37e9ea2210f2",
+        "source_fact:v1:e7ba242bbe41319e878d9cd4585412485bd5970f931c1fdb00b9dcd0b4220a2d"
+      ],
+      "source_published_kst": "2026-10-20T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유",
+      "telegram_core_fact": "엔비디아는 지난 8월 아폴로와 블랙록, 블랙스톤, 브룩필드, 골드만삭스, KKR 등 글로벌 금융사 6곳과 손잡고 AI 인프라 기업에 5000억달러(약 664조원) 이상을 공급할 수 있는 자금조달 플랫폼을 구축하겠다고 밝혔다. 인공지능(AI) 경쟁의 승패가 기술력뿐 아니라 자금 조달 능력에 달렸다는 분석이 나왔다.",
+      "title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유"
     },
     "source_fact:4a1607dc189459d6300d4948": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
@@ -588691,6 +589578,40 @@
       "telegram_core_fact": "한국주택협회 회원사들의 올해 1~9월 누적 분양 물량이 전년비 25% 증가한 것으로 나타났다. 월별 분양실적을 보면 1월 7421가구에서 2월 7853가구, 3월 1만3764가구로 증가한 뒤 4월에는 2만5105가구를 기록하며 올해 들어 가장 많은 물량이 공급됐다.",
       "title": "한국주택협회 회원사, 신규 분양 11만 가구 돌파⋯전년比 25% 증가"
     },
+    "source_fact:7b58bdfa764ed07e89d0652e": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
+    },
     "source_fact:7b5e8502a9618f4d3c14b345": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
       "lanes": {
@@ -598173,6 +599094,30 @@
       "telegram_core_fact": "우크라이나 총참모부는 7일 당시 공격으로 저장탱크 14기와 송유관 일부, 석유제품 자동 출하시설이 손상된 것으로 확인됐다고 발표했다. 우크라이나 총참모부는 우랄스유가 러시아 전체 원유 수출의 최대 50%를 차지하며 사마라 기지가 러시아군 수요를 충족하는 데도 관여한다고 설명했다.",
       "title": "러 사마라 핵심 석유거점 또 대형 화재…우크라 \"2일 공격 때 탱크 14기 손상\""
     },
+    "source_fact:8191b42f4d752a26f3e9bfa8": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831920",
+      "source": "뉴시스",
+      "source_body_digest": "b83cb303809c94d8e5c51400235efb2b04e1c09ad660c37be6e7d83a1f34d2ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80f11f69f981bd15eaeae9248c9e394262705f76b245a7db1ef7fceb8fe95d80",
+      "source_fact_keys": [
+        "source_fact:v1:029938f8c8f4906e98288de358dca36b632aa2e820716ce3b81c677feae9df2d",
+        "source_fact:v1:6abaa3afa481e89e1745f71f55fd3daaf5b74373bd478e2624d60d8f48e1fa1f",
+        "source_fact:v1:6c7878167cb34b4d5eaa5f14ca0a985955f9eb80c7687dde4db39539aed56977",
+        "source_fact:v1:8e88667d122242fe2c83cbdee9fd5c2c3c47cf8f546c6dadc71a18a72b3370a0",
+        "source_fact:v1:e213fc34cd98c813dcfd95c4beb7f62f4e96e4acd3e9bef6603d585650328231"
+      ],
+      "source_published_kst": "2026-10-20T00:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져",
+      "telegram_core_fact": "통상 비트코인 강세장이 나타나는 10월을 뜻하는 '업토버(Uptober)' 기대와 달리 미국 비트코인 현물 상장지수펀드(ETF)에서는 최근 2주간 1조2110억원이 넘는 자금이 빠져나갔다.",
+      "title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져"
+    },
     "source_fact:8192944e1be0fbb83d5a9638": {
       "first_seen_kst": "2026-10-17T08:22:42+09:00",
       "lanes": {
@@ -598202,6 +599147,30 @@
       "source_title": "中, AI·바이오·태양광 기술 40개 수출통제 추진",
       "telegram_core_fact": "중국이 인공지능(AI)과 바이오의약, 태양광 분야 핵심 기술 40개를 수출통제 대상에 추가하는 방안을 추진한다.",
       "title": "中, AI·바이오·태양광 기술 40개 수출통제 추진"
+    },
+    "source_fact:8193ab180da897dfd7b6d3ac": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831650",
+      "source": "뉴시스",
+      "source_body_digest": "11eda69a77d58f42d893fd0d16f40a5875c67e0394554e7fc7b7908298f2ae6e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:184d9bdf7388a0cdfcf21c234df445479b06fdf1a0721f8407c772d45d98c51d",
+      "source_fact_keys": [
+        "source_fact:v1:1ca283351dad11a742d08694a236483618d37273361825d287debe62510e73ef",
+        "source_fact:v1:2b9bb2cd6056f4b8702194ffd931f4200194c90f3cb3c97c6d385cd99152c21d",
+        "source_fact:v1:44752a8c4587639062b5a7ac6619192376cedb572ccaaa31eeb66bca0bfa9e38",
+        "source_fact:v1:ccfabee244bee3d8dc54716b8df55138e04619fabace80f2c25f37e9ea2210f2",
+        "source_fact:v1:e7ba242bbe41319e878d9cd4585412485bd5970f931c1fdb00b9dcd0b4220a2d"
+      ],
+      "source_published_kst": "2026-10-20T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유",
+      "telegram_core_fact": "엔비디아는 지난 8월 아폴로와 블랙록, 블랙스톤, 브룩필드, 골드만삭스, KKR 등 글로벌 금융사 6곳과 손잡고 AI 인프라 기업에 5000억달러(약 664조원) 이상을 공급할 수 있는 자금조달 플랫폼을 구축하겠다고 밝혔다. 인공지능(AI) 경쟁의 승패가 기술력뿐 아니라 자금 조달 능력에 달렸다는 분석이 나왔다.",
+      "title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유"
     },
     "source_fact:8195ab08895906bb22b7080f": {
       "first_seen_kst": "2026-10-10T01:47:39+09:00",
@@ -598887,6 +599856,40 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:81fbd81da3fc79850147b036": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
     },
     "source_fact:8201cdb5f95251367d2fc0ed": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
@@ -606963,6 +607966,30 @@
       "telegram_core_fact": "인공지능(AI) 클라우드 기업 코어위브 주가가 하루 만에 15% 넘게 급락했다. 회사채 금리가 15%를 돌파하면서 빚으로 그래픽처리장치(GPU)를 사들이고 고객에게 받은 사용료로 갚는 사업 구조에 대한 불안이 커졌다.",
       "title": "코어위브 15% 급락…AI 부채 공포, 네오클라우드·반도체 덮쳤다"
     },
+    "source_fact:8796880c0dc94c2c87154582": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261019165131",
+      "source": "지디넷코리아",
+      "source_body_digest": "eda81684905f3c64efa865e4a007a1d88e1cf65b07a23de2886d7dcbca7765a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cb5e6a0be3bc7ca1ac9c21af44fa60a6e85459ab0e690f3b5e0b760d45ac52b",
+      "source_fact_keys": [
+        "source_fact:v1:4b42fd73ca3f93937a13983c9375e8d272c024e961191ab3214e56a6205668d3",
+        "source_fact:v1:5136d78e1062f8e935d9c5ae1cc4f574579c43fce328c414b4b8b828522cac9c",
+        "source_fact:v1:6d348ace6a60113d2dffb70ed4d640fed74ef8100d12385f0824578c1f0cf4eb",
+        "source_fact:v1:8ef30334d032977ae3443bc0d4551c247cf80462cce73862008c7184abca3fea",
+        "source_fact:v1:e857558fd355591026189dba574f3b193d7d814d1ba2001cbebd2c99233b648f"
+      ],
+      "source_published_kst": "2026-10-19T16:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발",
+      "telegram_core_fact": "오케스트로 클라우드는 지난 16일 퓨리오사AI, 업스테이지, 에스피케이인크(SPK), 대원씨티에스와 신경망처리장치(NPU) 기반 소버린 AI 풀스택 상품 공동 개발을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
+      "title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발"
+    },
     "source_fact:87989ee5e93468fc4b0f1f11": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -608656,6 +609683,40 @@
       "source_title": "\"앤트로픽-NTT, 오사카에 日 최대 데이터센터 건립 조율\"",
       "telegram_core_fact": "보도에 따르면 NTT의 자회사인 NTT데이터그룹과 앤트로픽이 오사카부 남쪽 해안 지역에 일본 내 인공지능(AI) 서비스 거점으로서 데이터센터를 신설하기 위한 협의를 진행 중이다.",
       "title": "\"앤트로픽-NTT, 오사카에 日 최대 데이터센터 건립 조율\""
+    },
+    "source_fact:888b07bafa0cbadd9f1b89b8": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
     },
     "source_fact:888de7f1ec7c1c9f3b3690bd": {
       "first_seen_kst": "2026-10-14T22:15:19+09:00",
@@ -635884,6 +636945,40 @@
       "source_title": "정부, 경제안보품목 확대…핵심광물·소부장 100개 집중 관리",
       "telegram_core_fact": "정부가 반도체·재생에너지 등 첨단산업 핵심품목을 경제안보품목으로 추가 지정하고 핵심광물과 소재·부품·장비 등 100개 내외 품목을 집중 관리한다. 내년 정부 예산안에 반영한 2000억원을 바탕으로 공급망 중요도가 높지만 민간 단독 투자가 어려운 해외 생산기지 확보 사업에 대한 투자도 확대한다.",
       "title": "정부, 경제안보품목 확대…핵심광물·소부장 100개 집중 관리"
+    },
+    "source_fact:99861084b2c613c3835e0afb": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
     },
     "source_fact:99880b2571f07b490f075e67": {
       "first_seen_kst": "2026-10-18T10:36:52+09:00",
@@ -683328,6 +684423,40 @@
       "telegram_core_fact": "반도체·인공지능(AI) 등 전력수요 증가에 대응해 송전망 투자를 대폭 늘리고 있지만 한국전력의 송·변전 사업 지연율은 최근 2년 연속 60%대를 기록했다. 산업통상자원중소벤처기업위원회 국감에서는 한국가스공사와 한국석유공사 통합 과정의 사전 협의 부족이 쟁점이 됐다.",
       "title": "[2026 국감] 송전망 투자 2.7배 늘리는데 지연율 60%…가스·석유公 통합 '사전협의 부족'"
     },
+    "source_fact:b60a45cef1900f9c1dbf4b18": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
+    },
     "source_fact:b60f0e3861e5428bd1df40b7": {
       "first_seen_kst": "2026-10-15T08:21:08+09:00",
       "lanes": {
@@ -697482,6 +698611,40 @@
       "telegram_core_fact": "이상일 경기 용인특례시장은 18일 \"반도체 프로젝트를 잘 추진해 시 재정이 늘어나는 만큼 시민을 위한 사업에 과감하게 투자할 계획\"이라고 밝혔다.",
       "title": "이상일 시장 \"반도체 재정, 시민 복지·체육·문화 투자의 힘으로 환원\""
     },
+    "source_fact:beeac0174dd4b8707f24afa3": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
+    },
     "source_fact:beefd300db97b9f6629d012b": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -709735,6 +710898,30 @@
       "source_published_kst": "2026-10-06T04:55+09:00",
       "title": "[美특징주]세레브라스, 올트먼 “긴밀한 파트너” 발언에 주가10%↑…엔비디아 우려 완화"
     },
+    "source_fact:c617aeb445130bf71aa74ccd": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261019165131",
+      "source": "지디넷코리아",
+      "source_body_digest": "eda81684905f3c64efa865e4a007a1d88e1cf65b07a23de2886d7dcbca7765a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cb5e6a0be3bc7ca1ac9c21af44fa60a6e85459ab0e690f3b5e0b760d45ac52b",
+      "source_fact_keys": [
+        "source_fact:v1:4b42fd73ca3f93937a13983c9375e8d272c024e961191ab3214e56a6205668d3",
+        "source_fact:v1:5136d78e1062f8e935d9c5ae1cc4f574579c43fce328c414b4b8b828522cac9c",
+        "source_fact:v1:6d348ace6a60113d2dffb70ed4d640fed74ef8100d12385f0824578c1f0cf4eb",
+        "source_fact:v1:8ef30334d032977ae3443bc0d4551c247cf80462cce73862008c7184abca3fea",
+        "source_fact:v1:e857558fd355591026189dba574f3b193d7d814d1ba2001cbebd2c99233b648f"
+      ],
+      "source_published_kst": "2026-10-19T16:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발",
+      "telegram_core_fact": "오케스트로 클라우드는 지난 16일 퓨리오사AI, 업스테이지, 에스피케이인크(SPK), 대원씨티에스와 신경망처리장치(NPU) 기반 소버린 AI 풀스택 상품 공동 개발을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
+      "title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발"
+    },
     "source_fact:c617aeb746d212c869044f1e": {
       "first_seen_kst": "2026-10-15T03:55:55+09:00",
       "lanes": {
@@ -710115,6 +711302,40 @@
       "source_title": "브룩필드, 우선주 1억5000만 캐나다달러 발행..연 5.65% 배당",
       "telegram_core_fact": "브룩필드(BN)가 시리즈 56 클래스A 우선주 600만 주를 주당 25캐나다달러에 발행해 총 1억5000만 캐나다달러를 조달하기로 하고, 연 5.65%의 누적 분기 고정배당을 제시했다고 10월 15일 발표했다.",
       "title": "브룩필드, 우선주 1억5000만 캐나다달러 발행..연 5.65% 배당"
+    },
+    "source_fact:c66910f2a931ea7c5458cf8c": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
     },
     "source_fact:c6699ed7b435b3e0d9e8932d": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
@@ -710974,6 +712195,30 @@
       ],
       "source_published_kst": "2026-10-06T12:17+09:00",
       "title": "이형일 \"대미 원전 100억달러, 상업적 합리성 검증돼야 송금\"[2026국감]"
+    },
+    "source_fact:c6e5f1bdb680984329d95cf9": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831650",
+      "source": "뉴시스",
+      "source_body_digest": "11eda69a77d58f42d893fd0d16f40a5875c67e0394554e7fc7b7908298f2ae6e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:184d9bdf7388a0cdfcf21c234df445479b06fdf1a0721f8407c772d45d98c51d",
+      "source_fact_keys": [
+        "source_fact:v1:1ca283351dad11a742d08694a236483618d37273361825d287debe62510e73ef",
+        "source_fact:v1:2b9bb2cd6056f4b8702194ffd931f4200194c90f3cb3c97c6d385cd99152c21d",
+        "source_fact:v1:44752a8c4587639062b5a7ac6619192376cedb572ccaaa31eeb66bca0bfa9e38",
+        "source_fact:v1:ccfabee244bee3d8dc54716b8df55138e04619fabace80f2c25f37e9ea2210f2",
+        "source_fact:v1:e7ba242bbe41319e878d9cd4585412485bd5970f931c1fdb00b9dcd0b4220a2d"
+      ],
+      "source_published_kst": "2026-10-20T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유",
+      "telegram_core_fact": "엔비디아는 지난 8월 아폴로와 블랙록, 블랙스톤, 브룩필드, 골드만삭스, KKR 등 글로벌 금융사 6곳과 손잡고 AI 인프라 기업에 5000억달러(약 664조원) 이상을 공급할 수 있는 자금조달 플랫폼을 구축하겠다고 밝혔다. 인공지능(AI) 경쟁의 승패가 기술력뿐 아니라 자금 조달 능력에 달렸다는 분석이 나왔다.",
+      "title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유"
     },
     "source_fact:c6eaf11a4d1f1923247f2417": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
@@ -728760,6 +730005,30 @@
       "telegram_core_fact": "공랭식 열관리 전문기업 디티에스가 코스닥 상장을 통해 주력 에너지 플랜트 사업의 수주 기반을 강화하고 인공지능(AI) 데이터센터 냉각과 폐열발전 분야로 사업 영역을 확대한다.",
       "title": "디티에스, 코스닥 상장 추진…\"글로벌 열관리 솔루션 기업으로 도약\""
     },
+    "source_fact:d1b6777a86e69ca892e299c3": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261019165131",
+      "source": "지디넷코리아",
+      "source_body_digest": "eda81684905f3c64efa865e4a007a1d88e1cf65b07a23de2886d7dcbca7765a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cb5e6a0be3bc7ca1ac9c21af44fa60a6e85459ab0e690f3b5e0b760d45ac52b",
+      "source_fact_keys": [
+        "source_fact:v1:4b42fd73ca3f93937a13983c9375e8d272c024e961191ab3214e56a6205668d3",
+        "source_fact:v1:5136d78e1062f8e935d9c5ae1cc4f574579c43fce328c414b4b8b828522cac9c",
+        "source_fact:v1:6d348ace6a60113d2dffb70ed4d640fed74ef8100d12385f0824578c1f0cf4eb",
+        "source_fact:v1:8ef30334d032977ae3443bc0d4551c247cf80462cce73862008c7184abca3fea",
+        "source_fact:v1:e857558fd355591026189dba574f3b193d7d814d1ba2001cbebd2c99233b648f"
+      ],
+      "source_published_kst": "2026-10-19T16:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발",
+      "telegram_core_fact": "오케스트로 클라우드는 지난 16일 퓨리오사AI, 업스테이지, 에스피케이인크(SPK), 대원씨티에스와 신경망처리장치(NPU) 기반 소버린 AI 풀스택 상품 공동 개발을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
+      "title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발"
+    },
     "source_fact:d1bbf6fd383b4a6c3ebf0e00": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -739662,6 +740931,40 @@
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
     },
+    "source_fact:d822f7cef660d69300a80565": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
+    },
     "source_fact:d82f74ccd7961c01371360c6": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
       "lanes": {
@@ -742566,6 +743869,40 @@
       "source_title": "김광석 \"반도체·AI 호황, 5년 뒤 장담 못해…전력 인프라서 M&A 기회 찾아야\"",
       "telegram_core_fact": "김광석 삼정KPMG 부대표(사진)는 최근 인터뷰에서 “AI 수요에 따른 전력 부족 현상은 장기적인 글로벌 트렌드가 될 것”이라며 이같이 말했다.",
       "title": "김광석 \"반도체·AI 호황, 5년 뒤 장담 못해…전력 인프라서 M&A 기회 찾아야\""
+    },
+    "source_fact:d9e76f49723bc44bd91089e8": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
     },
     "source_fact:d9eba95438ff8842e1d3ede4": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -748212,6 +749549,27 @@
       ],
       "source_published_kst": "2026-10-06T15:17+09:00",
       "title": "그래도 버틴다…\"이란, 원유수출 막혀도 美 지치기 기다려\" | 연합뉴스"
+    },
+    "source_fact:dd6c89601f51b0830c7abd9b": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832158",
+      "source": "뉴시스",
+      "source_body_digest": "0c0f10b3c74cc0b932b106d7024c0a3e8b10adf4d9f7ecae8da75e3a374f4fd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b7fa91a4864f243d9e4871f84051abf8312a14d0f0142072262408b973efe2",
+      "source_fact_keys": [
+        "source_fact:v1:6007e2e9471d2235275859460a8f5379c47e8123f2da856afd47736b3f490e9b",
+        "source_fact:v1:bc452113eb5f4f43c864d63d35cdd5fede164751fa7aeb29d2cda76bbce0a805"
+      ],
+      "source_published_kst": "2026-10-19T17:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여",
+      "telegram_core_fact": "지난달 진행된 예비입찰에는 참여하지 않았으나 적격 인수 후보로 선정된 다우키움그룹과 손잡고 본입찰에 나서게 됐다.",
+      "title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여"
     },
     "source_fact:dd73f4898ad3eb1e410fe6b4": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
@@ -767280,6 +768638,30 @@
       "telegram_core_fact": "BofA는 성명을 통해 14일 발표할 3분기 실적에 12억달러의 비용이 반영될 예정이며, 이로 인해 주당순이익(EPS)이 17센트 감소할 것이라고 밝혔다.",
       "title": "BofA, '자금세탁 방지 소홀' 벌금 1.6조…\"분기실적에 비용반영\""
     },
+    "source_fact:e885606b5330875aa65af95b": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831920",
+      "source": "뉴시스",
+      "source_body_digest": "b83cb303809c94d8e5c51400235efb2b04e1c09ad660c37be6e7d83a1f34d2ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80f11f69f981bd15eaeae9248c9e394262705f76b245a7db1ef7fceb8fe95d80",
+      "source_fact_keys": [
+        "source_fact:v1:029938f8c8f4906e98288de358dca36b632aa2e820716ce3b81c677feae9df2d",
+        "source_fact:v1:6abaa3afa481e89e1745f71f55fd3daaf5b74373bd478e2624d60d8f48e1fa1f",
+        "source_fact:v1:6c7878167cb34b4d5eaa5f14ca0a985955f9eb80c7687dde4db39539aed56977",
+        "source_fact:v1:8e88667d122242fe2c83cbdee9fd5c2c3c47cf8f546c6dadc71a18a72b3370a0",
+        "source_fact:v1:e213fc34cd98c813dcfd95c4beb7f62f4e96e4acd3e9bef6603d585650328231"
+      ],
+      "source_published_kst": "2026-10-20T00:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져",
+      "telegram_core_fact": "통상 비트코인 강세장이 나타나는 10월을 뜻하는 '업토버(Uptober)' 기대와 달리 미국 비트코인 현물 상장지수펀드(ETF)에서는 최근 2주간 1조2110억원이 넘는 자금이 빠져나갔다.",
+      "title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져"
+    },
     "source_fact:e888a7f8ee5e69b0236bf32b": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -776978,6 +778360,40 @@
       "telegram_core_fact": "유진투자증권은 13일 미국이 디젤 가격 안정을 위해 러시아산 경유에 대한 제재를 한시적으로 완화했지만 글로벌 공급 부족을 해소하기는 어려울 것으로 전망했다.",
       "title": "유진투자증권 “러시아 제재 완화에도 디젤 공급난 지속…정제마진 강세 전망”"
     },
+    "source_fact:eeb906ac274b46e5ecb2ab40": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
+    },
     "source_fact:eebda9ce331fb1252b0b9443": {
       "first_seen_kst": "2026-10-17T06:31:57+09:00",
       "lanes": {
@@ -783564,6 +784980,40 @@
       "source_title": "현대엘리베이터, 현대무벡스 지분 1160억 어치 팔고 1700억 자사주 소각",
       "telegram_core_fact": "현대엘리베이터가 현대무벡스 지분 일부를 매각하고 1700억원 자사주를 소각하며 자산 효율화와 주주환원에 나선다.",
       "title": "현대엘리베이터, 현대무벡스 지분 1160억 어치 팔고 1700억 자사주 소각"
+    },
+    "source_fact:f2b0bb48a955ef7c251d8a3d": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
     },
     "source_fact:f2b38194bfc30a383833ed6e": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -798541,6 +799991,30 @@
       "telegram_core_fact": "시장조사업체 카운터포인트리서치와 트렌드포스에 따르면 CXMT의 월간 D램 웨이퍼 생산능력은 현재 약 32만 장에서 내년 42만 장으로 확대될 전망이다.",
       "title": "중국 D램 생산능력 내년 31% 급증…메모리 가격 주도권 흔드나 [메모리 패권, 가격전쟁의 서막]"
     },
+    "source_fact:fc77b3999640f4d4e6cbc4ad": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831920",
+      "source": "뉴시스",
+      "source_body_digest": "b83cb303809c94d8e5c51400235efb2b04e1c09ad660c37be6e7d83a1f34d2ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80f11f69f981bd15eaeae9248c9e394262705f76b245a7db1ef7fceb8fe95d80",
+      "source_fact_keys": [
+        "source_fact:v1:029938f8c8f4906e98288de358dca36b632aa2e820716ce3b81c677feae9df2d",
+        "source_fact:v1:6abaa3afa481e89e1745f71f55fd3daaf5b74373bd478e2624d60d8f48e1fa1f",
+        "source_fact:v1:6c7878167cb34b4d5eaa5f14ca0a985955f9eb80c7687dde4db39539aed56977",
+        "source_fact:v1:8e88667d122242fe2c83cbdee9fd5c2c3c47cf8f546c6dadc71a18a72b3370a0",
+        "source_fact:v1:e213fc34cd98c813dcfd95c4beb7f62f4e96e4acd3e9bef6603d585650328231"
+      ],
+      "source_published_kst": "2026-10-20T00:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져",
+      "telegram_core_fact": "통상 비트코인 강세장이 나타나는 10월을 뜻하는 '업토버(Uptober)' 기대와 달리 미국 비트코인 현물 상장지수펀드(ETF)에서는 최근 2주간 1조2110억원이 넘는 자금이 빠져나갔다.",
+      "title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져"
+    },
     "source_fact:fc7fbfbf7c45915795a97fa9": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
       "lanes": {
@@ -802491,6 +803965,30 @@
       "source_title": "외국인 3.8조원 매도 폭탄…코스피 5900·코스닥 800선까지 위협 [fn오후시황]",
       "telegram_core_fact": "같은 시간 외국인은 유가증권시장에서 3조8766억원어치를 순매도했다.",
       "title": "외국인 3.8조원 매도 폭탄…코스피 5900·코스닥 800선까지 위협 [fn오후시황]"
+    },
+    "source_fact:fedc4c8b1424806d98a817eb": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831920",
+      "source": "뉴시스",
+      "source_body_digest": "b83cb303809c94d8e5c51400235efb2b04e1c09ad660c37be6e7d83a1f34d2ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80f11f69f981bd15eaeae9248c9e394262705f76b245a7db1ef7fceb8fe95d80",
+      "source_fact_keys": [
+        "source_fact:v1:029938f8c8f4906e98288de358dca36b632aa2e820716ce3b81c677feae9df2d",
+        "source_fact:v1:6abaa3afa481e89e1745f71f55fd3daaf5b74373bd478e2624d60d8f48e1fa1f",
+        "source_fact:v1:6c7878167cb34b4d5eaa5f14ca0a985955f9eb80c7687dde4db39539aed56977",
+        "source_fact:v1:8e88667d122242fe2c83cbdee9fd5c2c3c47cf8f546c6dadc71a18a72b3370a0",
+        "source_fact:v1:e213fc34cd98c813dcfd95c4beb7f62f4e96e4acd3e9bef6603d585650328231"
+      ],
+      "source_published_kst": "2026-10-20T00:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져",
+      "telegram_core_fact": "통상 비트코인 강세장이 나타나는 10월을 뜻하는 '업토버(Uptober)' 기대와 달리 미국 비트코인 현물 상장지수펀드(ETF)에서는 최근 2주간 1조2110억원이 넘는 자금이 빠져나갔다.",
+      "title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져"
     },
     "source_fact:fedd617f4cbeb18509e4e0f8": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -834325,6 +835823,27 @@
       "telegram_core_fact": "국내외 ESG 규제가 강화되고 지속가능성 공시 의무화가 추진되는 데 맞춰 공급망 전반의 대응 역량을 높이기 위해 마련한 행사다.",
       "title": "동아쏘시오그룹, 협력사 ESG 공급망 교육 개최"
     },
+    "title:4551cb54917412a208f30ee2": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832158",
+      "source": "뉴시스",
+      "source_body_digest": "0c0f10b3c74cc0b932b106d7024c0a3e8b10adf4d9f7ecae8da75e3a374f4fd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b7fa91a4864f243d9e4871f84051abf8312a14d0f0142072262408b973efe2",
+      "source_fact_keys": [
+        "source_fact:v1:6007e2e9471d2235275859460a8f5379c47e8123f2da856afd47736b3f490e9b",
+        "source_fact:v1:bc452113eb5f4f43c864d63d35cdd5fede164751fa7aeb29d2cda76bbce0a805"
+      ],
+      "source_published_kst": "2026-10-19T17:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여",
+      "telegram_core_fact": "지난달 진행된 예비입찰에는 참여하지 않았으나 적격 인수 후보로 선정된 다우키움그룹과 손잡고 본입찰에 나서게 됐다.",
+      "title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여"
+    },
     "title:4552aaf1f3b572285f222d38": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -837419,6 +838938,24 @@
       "link": "https://www.dt.co.kr/article/12086796",
       "source": "디지털타임스",
       "title": "‘한국을 내 편으로’…경쟁 붙은 젠슨 황·리사 수"
+    },
+    "title:4c6e23c882a99481dabd5403": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://it.chosun.com/news/articleView.html?idxno=2023092172265",
+      "source": "조선일보",
+      "source_body_digest": "bac141a669b7450efdf74d6efd0f1a10a21246066cf0a6acf46d80fe76054dbf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 정부·은행과 2조원 소부장 금융지원",
+      "telegram_core_fact": "회사는 용인 반도체 클러스터에 조성 중인 ‘트리니티 팹’을 통해 소부장 기업의 기술 검증과 상용화도 지원한다.",
+      "title": "SK하이닉스, 정부·은행과 2조원 소부장 금융지원"
     },
     "title:4c7f09659c999983bb8d3eda": {
       "first_seen_kst": "2026-10-16T16:35:36+09:00",
@@ -863160,6 +864697,30 @@
       "telegram_core_fact": "자산운용업계에 따르면 미래에셋자산운용의 'TIGER 미국배당다우존스 ETF'는 연초 이후 개인 순매수액이 1조2천827억원으로 같은 지수를 추종하는 국내 ETF 가운데 가장 많았다.",
       "title": "미래에셋 美배당다우존스, 개인 순매수 1.3조…동종 ETF 최대 | 연합뉴스"
     },
+    "title:8a590a18ec8522a45c57a37b": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831920",
+      "source": "뉴시스",
+      "source_body_digest": "b83cb303809c94d8e5c51400235efb2b04e1c09ad660c37be6e7d83a1f34d2ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80f11f69f981bd15eaeae9248c9e394262705f76b245a7db1ef7fceb8fe95d80",
+      "source_fact_keys": [
+        "source_fact:v1:029938f8c8f4906e98288de358dca36b632aa2e820716ce3b81c677feae9df2d",
+        "source_fact:v1:6abaa3afa481e89e1745f71f55fd3daaf5b74373bd478e2624d60d8f48e1fa1f",
+        "source_fact:v1:6c7878167cb34b4d5eaa5f14ca0a985955f9eb80c7687dde4db39539aed56977",
+        "source_fact:v1:8e88667d122242fe2c83cbdee9fd5c2c3c47cf8f546c6dadc71a18a72b3370a0",
+        "source_fact:v1:e213fc34cd98c813dcfd95c4beb7f62f4e96e4acd3e9bef6603d585650328231"
+      ],
+      "source_published_kst": "2026-10-20T00:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져",
+      "telegram_core_fact": "통상 비트코인 강세장이 나타나는 10월을 뜻하는 '업토버(Uptober)' 기대와 달리 미국 비트코인 현물 상장지수펀드(ETF)에서는 최근 2주간 1조2110억원이 넘는 자금이 빠져나갔다.",
+      "title": "\"사라진 업토버\"…비트코인 ETF서 2주간 1조2117억원 빠져"
+    },
     "title:8a71f506b1a8a11836c355d8": {
       "first_seen_kst": "2026-09-18T23:32:37+09:00",
       "lanes": {
@@ -868183,6 +869744,30 @@
       "source_title": "디티에스, 코스닥 상장 추진…\"글로벌 열관리 솔루션 기업으로 도약\"",
       "telegram_core_fact": "공랭식 열관리 전문기업 디티에스가 코스닥 상장을 통해 주력 에너지 플랜트 사업의 수주 기반을 강화하고 인공지능(AI) 데이터센터 냉각과 폐열발전 분야로 사업 영역을 확대한다.",
       "title": "디티에스, 코스닥 상장 추진…\"글로벌 열관리 솔루션 기업으로 도약\""
+    },
+    "title:965d416ef572bb0027c139f2": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261019165131",
+      "source": "지디넷코리아",
+      "source_body_digest": "eda81684905f3c64efa865e4a007a1d88e1cf65b07a23de2886d7dcbca7765a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cb5e6a0be3bc7ca1ac9c21af44fa60a6e85459ab0e690f3b5e0b760d45ac52b",
+      "source_fact_keys": [
+        "source_fact:v1:4b42fd73ca3f93937a13983c9375e8d272c024e961191ab3214e56a6205668d3",
+        "source_fact:v1:5136d78e1062f8e935d9c5ae1cc4f574579c43fce328c414b4b8b828522cac9c",
+        "source_fact:v1:6d348ace6a60113d2dffb70ed4d640fed74ef8100d12385f0824578c1f0cf4eb",
+        "source_fact:v1:8ef30334d032977ae3443bc0d4551c247cf80462cce73862008c7184abca3fea",
+        "source_fact:v1:e857558fd355591026189dba574f3b193d7d814d1ba2001cbebd2c99233b648f"
+      ],
+      "source_published_kst": "2026-10-19T16:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발",
+      "telegram_core_fact": "오케스트로 클라우드는 지난 16일 퓨리오사AI, 업스테이지, 에스피케이인크(SPK), 대원씨티에스와 신경망처리장치(NPU) 기반 소버린 AI 풀스택 상품 공동 개발을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
+      "title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발"
     },
     "title:965f60fecc20397ba152811c": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
@@ -887415,6 +889000,40 @@
       "source": "매일경제",
       "title": "바이두, 자사주 59만주 매입..5000만 홍콩달러 집행"
     },
+    "title:c3eca79df5719ea8fc137245": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637401",
+      "source": "이투데이",
+      "source_body_digest": "f0c2802ba26b2a58d40a7d8510fda8e29f216d613594e139f3ec3249e2ddb255",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d691905f5ad101130d2beedc4cd8b7bd0995c18f22fc607d057aaef42812870",
+      "source_fact_keys": [
+        "source_fact:v1:1249bbc744037e85eb5dd98dd8f805bc0ff4581d138ee98f55be982e3e4ad848",
+        "source_fact:v1:1c8bfe3997eff15744349e9d57a19d80d113b978c3ffa28c591d803d95740c0d",
+        "source_fact:v1:2189434524f2f69bccdbc53532205310c08f6cdf9bd00f47c4f0defe2b99fb61",
+        "source_fact:v1:2f0a5300ad5b24e6be90a4668c92639ba3ac3203d84fd73957c21facef866976",
+        "source_fact:v1:34e979fbdeb86bfa609550b5182b43706d51e15ddb63e002c9b922cb956eff96",
+        "source_fact:v1:5be119a5e43483cc7f605a8ee49ef6d20708384d72afabf9433a048dcba37858",
+        "source_fact:v1:64197322089d6badaf912b36482911455cef1168c860b6a7f23b967e2ecd344d",
+        "source_fact:v1:6a16b099a8725c9efbfe9344d130c926abe57c0a700f3de20c7604f923302edd",
+        "source_fact:v1:8482f582ab41a0cd41a3a0a3d30938ad3c89d73921c1468c238ce62b67de2080",
+        "source_fact:v1:a6f4e5a90c89a5fe5c2ac9e83fd0443bbbba044967a2ff38cb164a484dd17801",
+        "source_fact:v1:b295441856ec2179d6862d5d3b19fd005eebde65e286351249660e84e0f3542b",
+        "source_fact:v1:b51f1198c6073b3f20bbbc99e92662d8b3fbdf1abe15f4f5040bb94594d40f22",
+        "source_fact:v1:e1d5095eb670887ed6a41f1beeba08a3d43171694c47a7883915e0b04af2440c",
+        "source_fact:v1:fc8538d9007cfc7410c8a25638685839f08798d9c3ec094566eb7f4a8df5b0da",
+        "source_fact:v1:fce7cd5d7ac36f4c01bbb6a4ae21bf61e41d90ff741c840eba923fab847f73b1"
+      ],
+      "source_published_kst": "2026-10-19T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]",
+      "telegram_core_fact": "정부와 SK하이닉스, 금융권이 공동 조성한 2조원 '반도체 상생 무역금융'은 대기업 중심의 반도체 산업 호황을 중소·중견 협력사 생태계 전반으로 확산시키기 위한 정책적 조치다. 19일 본격 가동된 반도체 상생 무역금융(수출공급망 강화보증)은 단일 기업 협약 기준으로 역대 최대 규모다.",
+      "title": "단일 기업으론 최대 규모⋯반도체 호황, 소부장까지 확산[상생 무역금융 가동]"
+    },
     "title:c3eda81918bfbd6d27cac022": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
       "lanes": {
@@ -899457,6 +901076,30 @@
       ],
       "source_published_kst": "2026-10-07T03:11+09:00",
       "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
+    "title:e092bb895fdeb1676eb4beb7": {
+      "first_seen_kst": "2026-10-20T00:33:17+09:00",
+      "lanes": {
+        "live": "2026-10-20T00:33:17+09:00"
+      },
+      "last_seen_kst": "2026-10-20T00:33:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831650",
+      "source": "뉴시스",
+      "source_body_digest": "11eda69a77d58f42d893fd0d16f40a5875c67e0394554e7fc7b7908298f2ae6e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:184d9bdf7388a0cdfcf21c234df445479b06fdf1a0721f8407c772d45d98c51d",
+      "source_fact_keys": [
+        "source_fact:v1:1ca283351dad11a742d08694a236483618d37273361825d287debe62510e73ef",
+        "source_fact:v1:2b9bb2cd6056f4b8702194ffd931f4200194c90f3cb3c97c6d385cd99152c21d",
+        "source_fact:v1:44752a8c4587639062b5a7ac6619192376cedb572ccaaa31eeb66bca0bfa9e38",
+        "source_fact:v1:ccfabee244bee3d8dc54716b8df55138e04619fabace80f2c25f37e9ea2210f2",
+        "source_fact:v1:e7ba242bbe41319e878d9cd4585412485bd5970f931c1fdb00b9dcd0b4220a2d"
+      ],
+      "source_published_kst": "2026-10-20T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유",
+      "telegram_core_fact": "엔비디아는 지난 8월 아폴로와 블랙록, 블랙스톤, 브룩필드, 골드만삭스, KKR 등 글로벌 금융사 6곳과 손잡고 AI 인프라 기업에 5000억달러(약 664조원) 이상을 공급할 수 있는 자금조달 플랫폼을 구축하겠다고 밝혔다. 인공지능(AI) 경쟁의 승패가 기술력뿐 아니라 자금 조달 능력에 달렸다는 분석이 나왔다.",
+      "title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유"
     },
     "title:e0a6dbfb330e9e15fd048479": {
       "first_seen_kst": "2026-10-09T18:14:26+09:00",
@@ -912473,5 +914116,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-20T00:04:45+09:00"
+  "updated_at_kst": "2026-10-20T00:33:17+09:00"
 }
