@@ -4811,6 +4811,277 @@ base.select_diverse = select_diverse
 
 
 
+# OpenAI CEO September 2026 first-person interview and official hardware R&D.
+# Reporting appeared again on 2026-10-19, but the statement itself is not a
+# new 10/19 corporate press release nor a 2027 product-launch commitment.
+# Keep CEO goal, verified completed demonstration and paid customer contract
+# as separate evidence stages. Roadster -> Optimus supplier inference is noise.
+OPENAI_HUMANOID_RECOVERY = 'DIRECT_OPENAI_HUMANOID_FORTUNE_20260915_2027_DEMO_GOAL'
+OPENAI_HUMANOID_FORTUNE_URL = (
+    'https://www.fortune.com/2026/09/15/sam-altman-openai-ai-safety-pause-trump-xi/'
+)
+OPENAI_HUMANOID_NAME = re.compile(r'\bOpenAI\b|오픈\s*AI', re.I)
+OPENAI_HUMANOID_KIND = re.compile(r'휴머노이드|humanoid|robotics?|로보틱스|로봇', re.I)
+OPENAI_HUMANOID_FUTURE = re.compile(
+    r'\b2027\b|시연|실물|demo|prototype|액추에이터|actuator|motor|'
+    r'자체\s*개발|building|build|채용|hiring', re.I
+)
+OPENAI_HUMANOID_COMPLETED = re.compile(
+    r'실물\s*시연\s*(?:완료|공개|실시)|'
+    r'(?:humanoid|robot).{0,95}(?:demo(?:nstration)?\s+(?:completed|shown|unveiled)|'
+    r'live\s+demonstration\s+(?:completed|shown))|'
+    r'(?:publicly\s+demonstrated|unveiled)\s+(?:its\s+)?(?:own\s+)?humanoid',
+    re.I,
+)
+OPENAI_HUMANOID_DELIVERY_CONTRACT = re.compile(
+    r'(?:휴머노이드|humanoid).{0,120}'
+    r'(?:정식\s*(?:납품|공급|판매)\s*계약\s*체결|유료\s*고객\s*계약\s*체결)|'
+    r'(?:signed\s+(?:paid|commercial)\s+(?:robot\s+)?(?:supply|customer)\s+(?:contract|agreement))',
+    re.I,
+)
+OPENAI_HUMANOID_UNFINISHED = re.compile(
+    r'예정|계획|목표|전망|검토|논의|기대|'
+    r'not\s+yet|expected|plan(?:ned|s)?|aim(?:s|ed)?|forecast|could',
+    re.I,
+)
+OPENAI_HUMANOID_ROADSTER = re.compile(
+    r'로드스터|\bRoadster\b|비행\s*자동차|flying\s*(?:car|roadster)', re.I
+)
+OPENAI_HUMANOID_ROADSTER_THEME = re.compile(
+    r'Optimus|옵티머스|로봇\s*공급망|robot(?:ics)?\s*supply\s*chain', re.I
+)
+
+
+def _is_openai_own_humanoid(text: str) -> bool:
+    return bool(OPENAI_HUMANOID_NAME.search(text)
+                and OPENAI_HUMANOID_KIND.search(text)
+                and OPENAI_HUMANOID_FUTURE.search(text))
+
+
+def _openai_own_humanoid_stage(item: dict) -> str:
+    text = f"{item.get('title', '')} {item.get('description', '')}"
+    source = item.get('source') or ''
+    if not _is_openai_own_humanoid(text):
+        return 'background'
+    if source in {'OpenAI', 'OpenAI 공식'}:
+        if OPENAI_HUMANOID_DELIVERY_CONTRACT.search(text) and not OPENAI_HUMANOID_UNFINISHED.search(text):
+            return 'official_paid_contract'
+        if OPENAI_HUMANOID_COMPLETED.search(text) and not OPENAI_HUMANOID_UNFINISHED.search(text):
+            return 'official_completed_demo'
+    if source in {'Fortune', 'Fortune Magazine'}:
+        # The September first-person interview is the evidence, not a
+        # second-hand "official corporate 2027 launch" claim.
+        if (re.search(r'2027', text)
+                and re.search(r'cool\s+demo|great\s+demo|멋진\s*시연|인상적인\s*시연', text,re.I)
+                and re.search(r'we\s+will\s+definitely\s+do\s+a\s+humanoid|'
+                              r'휴머노이드.{0,45}(?:직접\s*)?(?:만들|개발)|'
+                              r'humanoid', text,re.I)):
+            return 'ceo_2027_demo_goal'
+    return 'background'
+
+
+def _openai_humanoid_recovery() -> list[dict]:
+    # One-time retrospective alert, labelled September statement and October
+    # rediscovery. Never fabricate a Sept 15 intraday announcement timestamp.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026, 10, 23):
+        return []
+    return [{
+        'title': 'OpenAI 자체 휴머노이드 개발·2027년 시연 목표, 9월 CEO 인터뷰 재확인',
+        'link': OPENAI_HUMANOID_FORTUNE_URL,
+        'description': (
+            '2026-09-15 Fortune 인터뷰에서 CEO Sam Altman이 '
+            'we will definitely do a humanoid 라는 기존 개발 의도를 확인하고 '
+            '2027년에 cool demo 또는 great demo를 보여줄 수 있을 것으로 '
+            '기대한다고 설명했다. 이는 2026-10-19 회사 신규 보도자료가 아닌 '
+            '기존 인터뷰의 재보도이며, 2027년 정식 출시·양산·판매 약속이 아니다. '
+            '공공장소에 로봇이 널리 다니기까지는 몇 년 더 걸릴 수 있다고 밝혔다. '
+            'OpenAI 공식 채용공고에는 로봇용 맞춤 액추에이터·모터·감속기, '
+            '시험동력계와 정밀 검사, 하드웨어 시제품 조립, 실시간 동작 제어, '
+            '권선·적층·절연·충전 공정 등 자체 연구개발과 생산 준비 과제가 존재한다. '
+            '하지만 로봇 형상·2027년 데모 내용·현장 검증 대수·설비투자액·'
+            '고객 납품 계약·매출과 최종 상용화 일정은 공개되지 않았다. '
+            '과거 Dactyl 로봇손 연구는 실제 기존 연구 사례이며 신규 로봇 '
+            '양산 실적과 다르다. 기존 Figure 등 투자·협력도 자체 로봇 출하와 구분한다.'
+        ),
+        'source': 'Fortune',
+        'published': None,
+        'direct_recovery': True,
+        'openai_ceo_interview_baseline': True,
+    }]
+
+
+_openai_prev_query_news = base.query_news
+_openai_prev_topic_group = base.topic_group
+_openai_prev_score = base.score
+_openai_prev_category = base.category
+_openai_prev_meaning = base.meaning
+_openai_prev_risk = base.risk
+_openai_prev_verification = base.verification
+_openai_prev_clean_title = base.clean_title
+_openai_prev_tag_for = base.tag_for
+_openai_prev_key = base.key
+_openai_prev_select_diverse = base.select_diverse
+
+
+def _openai_query_news(q: str) -> list[dict]:
+    if q == OPENAI_HUMANOID_RECOVERY:
+        return _openai_humanoid_recovery()
+    return _openai_prev_query_news(q)
+
+
+base.query_news = _openai_query_news
+if OPENAI_HUMANOID_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(OPENAI_HUMANOID_RECOVERY)
+for _openai_search in (
+    '(OpenAI OR 오픈AI) (humanoid OR 휴머노이드 OR robotics) '
+    '(Sam Altman OR 올트먼 OR "robot demo" OR 2027) '
+    '(demonstration OR 시연 OR 출시 OR 계획 OR 완료 OR 연기)',
+    '(OpenAI OR 오픈AI) (휴머노이드 OR humanoid) '
+    '(실제 시연 OR demo complete OR 정식 판매 OR 고객 계약 OR 출하 OR 양산)',
+):
+    if _openai_search not in base.QUERIES:
+        base.QUERIES.append(_openai_search)
+
+
+def _openai_topic_group(text: str) -> str | None:
+    if _is_openai_own_humanoid(text):
+        return 'openai_own_humanoid'
+    return _openai_prev_topic_group(text)
+
+
+def _openai_score(item: dict) -> int:
+    text = f"{item.get('title','')} {item.get('description','')}"
+    source = item.get('source') or ''
+    # Do not convert Roadster showmanship into an Optimus supplier milestone.
+    if (OPENAI_HUMANOID_ROADSTER.search(text)
+            and OPENAI_HUMANOID_ROADSTER_THEME.search(text)
+            and source not in {'Tesla', 'Tesla Official'}):
+        if not re.search(r'(?:Optimus|옵티머스).{0,55}(?:정식\s*계약\s*체결|'
+                         r'signed\s+supply\s+contract)',text,re.I):
+            return 0
+    if _is_openai_own_humanoid(text):
+        stage = _openai_own_humanoid_stage(item)
+        return {
+            'ceo_2027_demo_goal': 47,
+            'official_completed_demo': 66,
+            'official_paid_contract': 70,
+        }.get(stage, 0)
+    return _openai_prev_score(item)
+
+
+def _openai_category(text: str, group: str) -> str:
+    if group == 'openai_own_humanoid':
+        # Base Telegram renderer only passes (title + description), not source.
+        if OPENAI_HUMANOID_DELIVERY_CONTRACT.search(text) and not OPENAI_HUMANOID_UNFINISHED.search(text):
+            return 'OpenAI 휴머노이드 · 실제 고객 유상계약 공식 확인'
+        if OPENAI_HUMANOID_COMPLETED.search(text) and not OPENAI_HUMANOID_UNFINISHED.search(text):
+            return 'OpenAI 휴머노이드 · 실물 시연 완료 공식 확인'
+        return 'OpenAI 휴머노이드 · 2027년 시연 목표 CEO 인터뷰'
+    return _openai_prev_category(text, group)
+
+
+def _openai_meaning(cat: str) -> str:
+    if cat == 'OpenAI 휴머노이드 · 2027년 시연 목표 CEO 인터뷰':
+        return (
+            'Sam Altman은 2026-09-15 Fortune 인터뷰에서 자체 휴머노이드 개발과 '
+            '2027년 인상적인 시연 가능성을 언급했습니다. 10/19 보도는 새 '
+            'CEO 발표가 아닌 과거 인터뷰 재소개입니다. 실제 OpenAI 채용공고에서 '
+            '모터·액추에이터 자체 설계, 시제품 제작, 제조·시험설비 인력 채용이 '
+            '확인돼 연구개발이 소프트웨어에서 하드웨어로 확장되는 신호입니다. '
+            '그러나 로봇 완성품 데모·상용 출시·구매고객·매출·설비투자 금액은 '
+            '확정되지 않았습니다.'
+        )
+    if cat == 'OpenAI 휴머노이드 · 실물 시연 완료 공식 확인':
+        return (
+            '회사 공식 영상·제품·시연 자료로 실제 기체의 작업 능력이 확인된 '
+            '단계입니다. 원격조종·안전요원 유무, 처음 보는 작업 성공률, '
+            '반복 시험시간, 손 조작·전력·가동률, 시연 일자를 구분합니다. '
+            '시연은 양산·고객 매출과 별개입니다.'
+        )
+    if cat == 'OpenAI 휴머노이드 · 실제 고객 유상계약 공식 확인':
+        return (
+            '연구개발·시연과 달리 로봇 실제 고객의 정식 구매·납품 계약이 '
+            '공식 확인된 단계입니다. 고객 실명, 물량×단가 원화 매출, '
+            '설치·검수·유지보수·원격관제의 후속 매출을 분리합니다.'
+        )
+    return _openai_prev_meaning(cat)
+
+
+def _openai_risk(cat: str) -> str:
+    if cat.startswith('OpenAI 휴머노이드 · '):
+        return (
+            '2027년은 목표 시연 시점이지 출시 확정일이 아닙니다. '
+            '6~24개월의 가장 현실적인 실패 경로는 고토크 액추에이터의 '
+            '발열·감속기 마모·손 제어 오차, 실물 학습데이터 부족, '
+            '자율작업 신뢰성·안전 검증과 공급업체 검사수율이 동시에 '
+            '지연되는 경우입니다. 먼저 볼 지표는 원격지원 개입률·'
+            '반복 작업 성공률·가동률·교체부품 비용·2027년 시연 '
+            '목표 변경입니다. 아직 로봇 양산 수량이나 판매가격이 없습니다.'
+        )
+    return _openai_prev_risk(cat)
+
+
+def _openai_verification(item: dict, group: str, text: str) -> str:
+    if group == 'openai_own_humanoid':
+        stage = _openai_own_humanoid_stage(item)
+        if stage == 'ceo_2027_demo_goal':
+            return (
+                '2026-09-15 Fortune CEO 직접 문답·OpenAI 공식 '
+                '액추에이터 제조·제어·실험 채용공고 교차확인 · '
+                '2027년 시연 목표, 양산·고객 계약 미확인'
+            )
+        if stage in {'official_completed_demo','official_paid_contract'}:
+            return 'OpenAI 1차자료 단계 · 원격조종·실제 계약·고객·매출 별도 검증'
+        return '채용·개발 보도 단계 · 완성 로봇 판매·시연 완료 미확인'
+    return _openai_prev_verification(item, group, text)
+
+
+def _openai_clean_title(title: str, source: str) -> str:
+    if _is_openai_own_humanoid(f'{title} {source}'):
+        if source in {'Fortune','Fortune Magazine'}:
+            return 'OpenAI 자체 휴머노이드 개발·2027년 시연 목표, 9월 CEO 인터뷰 재확인'
+    return _openai_prev_clean_title(title, source)
+
+
+def _openai_tag_for(group: str) -> str:
+    if group == 'openai_own_humanoid':
+        return 'OpenAI 자체 휴머노이드'
+    return _openai_prev_tag_for(group)
+
+
+def _openai_key(item: dict) -> str:
+    text = f"{item.get('title','')} {item.get('description','')}"
+    if _is_openai_own_humanoid(text):
+        stage = _openai_own_humanoid_stage(item)
+        return hashlib.sha256(
+            f'openai|own-humanoid|{stage}|'
+            f'{"Fortune-2026-09-15" if stage == "ceo_2027_demo_goal" else "future-official-stage"}'.encode()
+        ).hexdigest()
+    return _openai_prev_key(item)
+
+
+def _openai_select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
+    chosen = _openai_prev_select_diverse(items, seen, force, limit)
+    candidates = items if force else [x for x in items if x.get('key') not in seen]
+    hit = next((x for x in candidates
+                if x.get('group') == 'openai_own_humanoid' and x.get('score',0)>=11),None)
+    if hit and not any(x.get('key') == hit.get('key') for x in chosen):
+        chosen = ([hit,*chosen] if len(chosen)<limit else [hit,*chosen[:-1]])
+    return chosen
+
+
+base.topic_group = _openai_topic_group
+base.score = _openai_score
+base.category = _openai_category
+base.meaning = _openai_meaning
+base.risk = _openai_risk
+base.verification = _openai_verification
+base.clean_title = _openai_clean_title
+base.tag_for = _openai_tag_for
+base.key = _openai_key
+base.select_diverse = _openai_select_diverse
+
+
 def _drop_stock_price_sections(text: str) -> str:
     """Last-mile defense: strip stock-only headlines before Telegram sends.
 
