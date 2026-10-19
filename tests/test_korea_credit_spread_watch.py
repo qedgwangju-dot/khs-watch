@@ -107,6 +107,17 @@ class CreditWatchTests(unittest.TestCase):
         self.assertEqual(m.count('<b>'),m.count('</b>'))
         self.assertNotIn('<br',m)
         self.assertIn('단계는 자체 감시 기준',m)
+        # CP와 CD의 뜻은 누구나 한눈에 읽을 수 있도록 핵심 지표 바로 아래에 각각 괄호로 표시한다.
+        cp_explain='CP(기업어음: 기업의 단기 자금조달)'
+        cd_explain='CD(양도성예금증서: 은행의 단기 자금조달)'
+        self.assertIn(cp_explain,m)
+        self.assertIn(cd_explain,m)
+        self.assertEqual(m.count(cp_explain),1)
+        self.assertEqual(m.count(cd_explain),1)
+        self.assertLess(m.index('① 핵심 신용스프레드'),m.index(cp_explain))
+        self.assertLess(m.index(cp_explain),m.index(cd_explain))
+        self.assertLess(m.index(cd_explain),m.index('CP–CD <b>47.0bp</b>'))
+        self.assertLess(len(m),c.MAX_MESSAGE_CHARS)
 
     def test_direction_not_confused_with_absolute_rate(self):
         self.assertEqual(c.direction(1.99)[0],'보합')
