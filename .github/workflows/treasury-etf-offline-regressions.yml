@@ -13,6 +13,7 @@ on:
       - scripts/treasury_weekly_haven_alert.py
       - tests/test_treasury_weekly_stock_bond_signal.py
       - tests/test_treasury_weekly_haven_alert.py
+      - tests/test_treasury_weekly_telegram_format.py
       - tests/test_treasury_ishares_timeout.py
       - .github/workflows/treasury-etf-flow-telegram.yml
       - .github/workflows/treasury-etf-offline-regressions.yml
@@ -61,6 +62,7 @@ jobs:
               "test_treasury_real_yield_signal.py",
               "test_treasury_weekly_stock_bond_signal.py",
               "test_treasury_weekly_haven_alert.py",
+              "test_treasury_weekly_telegram_format.py",
               "test_treasury_ishares_timeout.py",
           ):
               suite.addTests(unittest.defaultTestLoader.discover("tests", pattern=pattern))
