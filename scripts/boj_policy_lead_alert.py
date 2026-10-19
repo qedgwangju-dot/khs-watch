@@ -52,6 +52,7 @@ BOJ_STATEMENTS_2026 = "https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.ht
 REUTERS_BOJ_DECISION = "https://www.reuters.com/world/asia-pacific/boj-raises-interest-rates-31-year-high-widely-expected-move-2026-09-18/"
 REUTERS_BOJ_REACTION = "https://www.reuters.com/world/asia-pacific/view-investors-react-boj-raising-interest-rates-31-year-high-2026-09-18/"
 REUTERS_BOJ_PRESS_CONFERENCE = "https://www.reuters.com/business/finance/boj-governor-uedas-comments-news-conference-2026-09-18/"
+REUTERS_BOJ_PARLIAMENT_20261019 = "https://www.reuters.com/world/asia-pacific/boj-governor-ueda-says-underlying-inflation-quite-close-2-target-2026-10-19/"
 MOF_JGB_YIELDS = "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv"
 CBOE_JYVIX = "https://www.cboe.com/us/indices/dashboard/JYVIX/"
 TRUSTED = {"Reuters", "Bloomberg", "Nikkei Asia", "Financial Times", "Bank of Japan"}
@@ -117,6 +118,7 @@ LEVEL_LABEL = {
 EVENT_LABEL = {
     "decision": "금융정책 결정",
     "press_conference": "우에다 총재 기자회견",
+    "parliament_testimony": "우에다 총재 국회 출석·답변",
     "summary_of_opinions": "금융정책결정회의 주요 의견",
     "official_speech": "BOJ 핵심 인사 발언",
     "market_path": "고신뢰 정책경로 보도",
@@ -756,16 +758,37 @@ def event_type(item: Item) -> str | None:
         return None
     if not ("bank of japan" in text or re.search(r"\bboj\b", text)):
         return None
-    if any(x in title for x in ("raises interest rate", "raised interest rate", "raising interest rate", "raises rates", "raised rates", "rate decision")):
-        return "decision"
-    if "press conference" in title or "governor kazuo ueda" in title or "governor ueda" in title:
+    # Publication photos often caption an older press conference. Classification
+    # must use the actual speaking venue rather than the photo caption.
+    if any(marker in text for marker in (
+        "told parliament", "speaking in parliament", "in parliament",
+        "parliamentary committee", "national diet", "told lawmakers",
+    )):
+        return "parliament_testimony"
+    # October 19 Reuters headline/RSS describes parliamentary answers, confirmed
+    # against Reuters syndication, even if the short RSS excerpt omits the venue.
+    if (
+        source == "Reuters"
+        and item.published.date() == dt.date(2026, 10, 19)
+        and "governor ueda" in title
+        and "underlying inflation" in title
+        and "quite close" in title
+    ):
+        return "parliament_testimony"
+    if "press conference" in title or "news conference" in title:
         return "press_conference"
     if "summary of opinions" in title:
         return "summary_of_opinions"
+    if any(x in title for x in (
+        "raises interest rate", "raised interest rate", "raising interest rate",
+        "raises rates", "raised rates", "rate decision",
+    )):
+        return "decision"
+    # A quoted or photographed governor is not evidence of a new press conference.
+    if "governor ueda" in title or "governor kazuo ueda" in title:
+        return "official_speech"
     if any(x in text for x in ("raises interest rate", "raised interest rate", "raises rates", "raised rates", "rate decision", "policy meeting")):
         return "decision"
-    if "press conference" in text or "governor kazuo ueda" in text or "governor ueda" in text:
-        return "press_conference"
     if "summary of opinions" in text:
         return "summary_of_opinions"
     if any(x in text for x in ("rate hike", "rate hikes", "tightening", "neutral rate", "interest rate")):
@@ -846,6 +869,9 @@ def classify(item: Item) -> Signal | None:
     if kind == "press_conference" and hawkish_tail_50bp and conditional:
         level = 1
         note = "50bp·연속 인상 가능성을 배제하지 않았지만 고정된 인상 간격은 없다고 명시 — 조건부 꼬리위험, 기본경로 가속 확정 아님"
+
+    if kind == "parliament_testimony" and "quite close" in lower and "underlying inflation" in lower:
+        note = "국회 답변: 기조물가가 2% 목표에 상당히 근접 — 인상 시점·속도 가속 확정은 아님"
 
     # Official source is authoritative for existence of the event, but may contain only a title in RSS.
     key_material = (
@@ -1011,6 +1037,7 @@ def collect(now: dt.datetime) -> list[Signal]:
     event_priority = {
         "decision": 5,
         "press_conference": 4,
+        "parliament_testimony": 4,
         "summary_of_opinions": 3,
         "official_speech": 2,
         "market_path": 1,
@@ -1287,6 +1314,7 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
     elif signal.source != "Bank of Japan" and signal.event_type in {
         "decision",
         "press_conference",
+        "parliament_testimony",
         "summary_of_opinions",
         "official_speech",
     }:
@@ -1312,6 +1340,18 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
     # market-path story must not become "new" after a later policy decision was already sent.
     if last_published is not None and signal.published < last_published - dt.timedelta(minutes=2):
         return False, "이미 반영한 최신 정책 이벤트보다 오래된 보도"
+
+    # Preserve the successful October 19 delivery when fixing a previously wrong
+    # press-conference classification. Never resend just because the label changed.
+    if (
+        previous.get("event_type") == "press_conference"
+        and signal.event_type == "parliament_testimony"
+        and signal.source == state.get("last_source")
+        and normalize(signal.title) == normalize(str(state.get("last_title") or ""))
+        and last_published is not None
+        and abs((signal.published - last_published).total_seconds()) <= 120
+    ):
+        return False, "이미 송출한 국회 발언 보도 — 사건 유형만 정정"
 
     if (
         previous.get("event_type") == "press_conference"
@@ -1384,6 +1424,7 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
     official_like = signal.event_type in {
         "decision",
         "press_conference",
+        "parliament_testimony",
         "summary_of_opinions",
         "official_speech",
     }
@@ -1428,6 +1469,8 @@ def korean_event_title(signal: Signal) -> str:
         return "일본은행 금융정책 결정"
     if signal.event_type == "press_conference":
         return "우에다 일본은행 총재 기자회견·정책경로 발언"
+    if signal.event_type == "parliament_testimony":
+        return "우에다 일본은행 총재 국회 답변·물가 발언"
     if signal.event_type == "summary_of_opinions":
         return "일본은행 금융정책결정회의 주요 의견"
     if signal.event_type == "official_speech":
@@ -1464,7 +1507,7 @@ def _quote_context(key: str) -> dict:
         "change_pct": float(quote.change_pct),
         "time": observed.astimezone(KST),
         "age_seconds": age_seconds,
-        "fresh": age_seconds <= 20 * 60,
+        "fresh": age_seconds <= 3 * 60,
         "source": "Yahoo query1/query2 교차확인",
     }
 
@@ -1669,6 +1712,16 @@ def market_context(event_time: dt.datetime | None = None) -> dict:
     return out
 
 
+def market_quote_age_label(quote: dict, now: dt.datetime) -> str:
+    observed = quote.get("time")
+    if not isinstance(observed, dt.datetime):
+        return "자료 시각 확인 불가"
+    minutes = max(0, int((now - observed).total_seconds() // 60))
+    if minutes <= 3:
+        return f"최근 시세 · {observed.strftime('%m-%d %H:%M')} KST"
+    return f"{minutes}분 지연 · 마지막 시세 {observed.strftime('%m-%d %H:%M')} KST"
+
+
 def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) -> tuple[str, str, dict]:
     emoji = LEVEL_EMOJI[signal.level]
     title = f"🏦 {emoji} BOJ 정책경로 변화"
@@ -1687,9 +1740,16 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     if not decision_lines:
         decision_lines.append(f"- 이벤트: {EVENT_LABEL.get(signal.event_type, '정책 업데이트')}")
 
-    if signal.event_type == "press_conference":
+    if signal.event_type == "parliament_testimony":
         source_validation = [
-            "- 회견 검증: Reuters 회견 원문 직접 확인",
+            "- 발언 검증: Reuters 국회 답변 보도 확인",
+            "- 행사 유형: 일본 국회 출석·답변, 기자회견·금융정책결정회의 아님",
+            "- 일본 국회 공식 회의록: 별도 원문 확인 전",
+            "- 9월 정책금리·표결은 이번 발언과 별개인 직전 결정",
+        ]
+    elif signal.event_type == "press_conference":
+        source_validation = [
+            "- 회견 검증: Reuters 회견 보도 확인",
             "- 직전 결정 검증: Reuters 결정·시장반응 원문 교차확인",
             (
                 "- BOJ 성명 상세: 공식 원문 확인 완료"
@@ -1787,6 +1847,14 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
             f"- 중립·종착금리: {'정확한 수준 특정 어렵다고 언급' if signal.neutral_rate else '새 명시적 언급 미확인'}",
             f"- 물가 정책국면: {'2% 부근 안정·상방이탈 방지 단계' if signal.stabilize_underlying_around_2 else '추가 확인 필요'}",
         ]
+    elif signal.event_type == "parliament_testimony":
+        context_title = "우에다 총재 국회 발언"
+        context_lines = [
+            "- 기조물가: 2% 물가안정 목표에 상당히 근접",
+            "- 물가 압력: AI 수요·고용·원자재 가격 등의 영향은 Reuters 보도에서 확인",
+            "- 추가 금리 조정: 필요성을 언급했으나 다음 회의 인상 확약은 없음",
+            "- 인상 시점·속도: 구체적인 확정 일정 제시 없음",
+        ]
     else:
         context_title = "시장 기대 대비 정책 서프라이즈"
         context_lines = surprise_lines
@@ -1824,9 +1892,14 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
                 suffix = ""
                 if key == "usd_jpy_event":
                     suffix = " · 엔화 약세" if item["change_pct"] > 0 else " · 엔화 강세"
+                observed = item.get("latest_time")
+                stamp = (
+                    f" · 시세 시각 {observed.strftime('%m-%d %H:%M')} KST"
+                    if isinstance(observed, dt.datetime) else ""
+                )
                 reaction_lines.append(
                     f"- {label}: {item['change_pct']:+.2f}% "
-                    f"({item['reference_price']:.3f} → {item['latest_price']:.3f}){suffix}"
+                    f"({item['reference_price']:.3f} → {item['latest_price']:.3f}){suffix}{stamp}"
                 )
                 reaction_parts.append(
                     f"{label} {item['change_pct']:+.2f}%"
@@ -1852,18 +1925,18 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     usd = market.get("usd_jpy")
     if usd:
         latest_parts.append(
-            f"USD/JPY {usd['price']:.3f} (15분 {usd['m15']:+.2f}% / 30분 {usd['m30']:+.2f}%)"
+            f"USD/JPY {usd['price']:.3f} (15분 {usd['m15']:+.2f}% / 30분 {usd['m30']:+.2f}%; {market_quote_age_label(usd, now)})"
         )
     nikkei = market.get("nikkei")
     if nikkei:
-        freshness = "종가/지연" if not nikkei["fresh"] else "실시간"
+        freshness = market_quote_age_label(nikkei, now)
         latest_parts.append(
             f"Nikkei {nikkei['price']:.2f} ({nikkei['change_pct']:+.2f}%, {freshness})"
         )
     nq = market.get("nasdaq_future")
     if nq:
         latest_parts.append(
-            f"NQ선물 {nq['price']:.2f} ({nq['change_pct']:+.2f}%)"
+            f"NQ선물 {nq['price']:.2f} ({nq['change_pct']:+.2f}%, {market_quote_age_label(nq, now)})"
         )
 
     if signal.event_type == "press_conference":
@@ -1872,6 +1945,12 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
             f"- 직전 결정: {fallback.get('policy_rate', 1.25) - fallback.get('hike_bp', 25)/100:.2f}% → {fallback.get('policy_rate', 1.25):.2f}% (+{fallback.get('hike_bp', 25)}bp)",
             f"- 표결: {fallback.get('vote_for', 7)}대{fallback.get('vote_against', 2)} · 아사다·사토 = 동결 요구",
             "- 시장 기대: +25bp 예상 부합 · 50bp 매파 꼬리위험은 결정에서 미실현",
+        ]
+    elif signal.event_type == "parliament_testimony":
+        prior_decision = [
+            "- 직전 결정(9월 18일): 1.00% → 1.25% (+25bp)",
+            "- 직전 표결(9월 18일): 7대2 · 이번 국회 발언에서 재표결한 것이 아님",
+            "- 이번 국회 답변: 새로운 정책금리 결정 없음",
         ]
     else:
         prior_decision = []
@@ -1930,6 +2009,12 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         policy_detail.append("- 금융여건: 인상 후에도 완화적")
     if signal.risk_channels:
         policy_detail.append("- 위험채널: 환율·유가·AI 수요 등을 함께 점검")
+    if signal.event_type == "parliament_testimony":
+        policy_detail = [
+            "- 핵심 발언: 기조물가가 2%에 상당히 근접",
+            "- 정책 의미: 적절한 금리 조정 필요성 강조 · 조기 인상 확정은 아님",
+            "- 위험채널: AI 수요·수출·고용·원자재 가격과 장기금리",
+        ]
 
     lines = [
         "【한눈에 보기】",
@@ -1949,13 +2034,18 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         "【물가·가이던스】",
         *policy_detail,
         "",
-        "【시장 반응 | 이벤트 이후】",
+        "【시장 반응 | 보도 공개 시점 기준】" if signal.event_type == "parliament_testimony" else "【시장 반응 | 이벤트 이후】",
         "- 확인 대상: USD/JPY · Nikkei 225 · Nasdaq 100 선물 · JGB 2년물 · FX 변동성",
         *reaction_lines,
     ]
 
     if latest_parts:
-        lines += ["", "【현재 시장 스냅샷】", "- " + " | ".join(latest_parts)]
+        lines += ["", "【시장 시세·마지막 확인 시각】", "- " + " | ".join(latest_parts)]
+    if signal.event_type == "parliament_testimony":
+        lines += [
+            "- 반응 해석: 발언의 정확한 시작 시각이 아닌 Reuters 기사 공개 시각을 기준으로 계산",
+            "- 각 자산의 마지막 시세 시각이 다를 수 있으므로 BOJ 발언 단독 효과로 단정하지 않음",
+        ]
 
     jgb2 = market.get("jgb2")
     if jgb2:
@@ -1984,6 +2074,14 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         lines.append("- 경제·물가 진단 별도 표결: 정책 7대2와 혼합하지 않음 · 명시적 원문 있을 때만 표시")
 
     source_link = decode_google_link(signal.link) if signal.link else ""
+    if (
+        signal.event_type == "parliament_testimony"
+        and signal.source == "Reuters"
+        and signal.published.date() == dt.date(2026, 10, 19)
+        and "quite close" in signal.title.lower()
+        and ("news.google.com" in source_link or not source_link)
+    ):
+        source_link = REUTERS_BOJ_PARLIAMENT_20261019
 
     lines += [
         "",

@@ -32,6 +32,108 @@ class BojPolicyPathAlertTests(unittest.TestCase):
             description=desc,
         )
 
+    def test_reuters_october_19_parliament_remarks_not_press_conference(self):
+        item = Item(
+            title="BOJ Governor Ueda says underlying inflation 'quite close' to 2% target - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com/world/asia-pacific/boj-governor-ueda-says-underlying-inflation-quite-close-2-target-2026-10-19/",
+            published=dt.datetime(2026, 10, 19, 9, 17, tzinfo=KST),
+            description=(
+                "Ueda told parliament underlying inflation was approaching 2%. "
+                "Photo caption: Governor Ueda speaks at a press conference on September 18."
+            ),
+        )
+        signal = classify(item)
+        self.assertIsNotNone(signal)
+        self.assertEqual(signal.event_type, "parliament_testimony")
+        self.assertIn("국회 답변", signal.note)
+        self.assertNotIn("기자회견", signal.note)
+        title, body, _ = build(
+            signal, "새 고신뢰 정책 이벤트",
+            dt.datetime(2026, 10, 19, 9, 34, tzinfo=KST), {},
+        )
+        self.assertIn("우에다 총재 국회 출석·답변", body)
+        self.assertIn("일본 국회 출석·답변, 기자회견·금융정책결정회의 아님", body)
+        self.assertIn("이번 국회 답변: 새로운 정책금리 결정 없음", body)
+        self.assertNotIn("회견 검증: Reuters 회견 원문 직접 확인", body)
+        self.assertIn("보도 공개 시점 기준", body)
+        self.assertIn("reuters.com/world/asia-pacific/boj-governor-ueda", body)
+
+    def test_reuters_oct19_rss_title_alone_is_parliament_not_conference(self):
+        signal = classify(
+            Item(
+                title="BOJ Governor Ueda says underlying inflation 'quite close' to 2% target - Reuters",
+                source="Reuters",
+                link="https://example.com/reuters",
+                published=dt.datetime(2026, 10, 19, 9, 17, tzinfo=KST),
+                description="",
+            )
+        )
+        self.assertEqual(signal.event_type, "parliament_testimony")
+
+    def test_governor_comment_is_not_a_press_conference_without_explicit_venue(self):
+        signal = classify(
+            Item(
+                title="BOJ Governor Ueda says no rush to tighten - Reuters",
+                source="Reuters",
+                link="https://example.com/gov",
+                published=dt.datetime(2026, 10, 20, 10, 0, tzinfo=KST),
+                description="Markets assess his remarks on policy rates.",
+            )
+        )
+        self.assertEqual(signal.event_type, "official_speech")
+        conference = classify(
+            self.mk("BOJ Governor Ueda's comments at news conference - Reuters", hour=3)
+        )
+        self.assertEqual(conference.event_type, "press_conference")
+
+    def test_previous_oct19_delivery_is_not_resent_after_type_correction(self):
+        item = Item(
+            title="BOJ Governor Ueda says underlying inflation 'quite close' to 2% target - Reuters",
+            source="Reuters",
+            link="https://example.com/original",
+            published=dt.datetime(2026, 10, 19, 9, 17, tzinfo=KST),
+            description="",
+        )
+        signal = classify(item)
+        previous = signal_signature(signal)
+        previous["event_type"] = "press_conference"
+        state = {
+            "last_signal_key": "0ca202f1e4a7c555620da279",
+            "last_alert_at_kst": "2026-10-19T09:34:33+09:00",
+            "last_published_at_kst": "2026-10-19T09:17:00+09:00",
+            "last_source": "Reuters",
+            "last_title": item.title,
+            "signature": previous,
+        }
+        ok, reason = should_alert(signal, state, dt.datetime(2026, 10, 19, 11, 30, tzinfo=KST))
+        self.assertFalse(ok)
+        self.assertEqual(reason, "이미 송출한 국회 발언 보도 — 사건 유형만 정정")
+
+    def test_delayed_quotes_are_not_labeled_realtime(self):
+        from boj_policy_lead_alert import market_quote_age_label
+        now = dt.datetime(2026, 10, 19, 9, 35, tzinfo=KST)
+        quote = {
+            "time": dt.datetime(2026, 10, 19, 9, 19, 45, tzinfo=KST),
+            "price": 64046.94,
+            "change_pct": -1.96,
+            "fresh": True,
+        }
+        self.assertIn("15분 지연", market_quote_age_label(quote, now))
+        self.assertNotIn("실시간", market_quote_age_label(quote, now))
+        signal = classify(
+            Item(
+                title="BOJ Governor Ueda says underlying inflation 'quite close' to 2% target - Reuters",
+                source="Reuters",
+                link="https://example.com/reuters",
+                published=dt.datetime(2026, 10, 19, 9, 17, tzinfo=KST),
+                description="",
+            )
+        )
+        _, body, _ = build(signal, "test", now, {"nikkei": quote})
+        self.assertIn("15분 지연", body)
+        self.assertNotIn("실시간", body)
+
     def test_expected_25bp_with_conditional_guidance_stays_yellow(self):
         signal = classify(
             self.mk(
@@ -180,7 +282,7 @@ class BojPolicyPathAlertTests(unittest.TestCase):
             )
         )
         self.assertIsNotNone(signal)
-        self.assertEqual(signal.event_type, "press_conference")
+        self.assertEqual(signal.event_type, "official_speech")
         self.assertEqual(signal.level, 2)
 
     def test_surprise_half_point_is_red(self):
