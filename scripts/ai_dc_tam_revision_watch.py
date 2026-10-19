@@ -76,6 +76,26 @@ JPM_SECONDARY_SOURCES = (
     "https://streetsignal.substack.com/p/streetsignal-morning-call-10132026",
 )
 JPM_FINANCE_OFFICIAL = "https://www.jpmorgan.com/insights/banking/capital-markets/financing-ai-infrastructure-data-centers"
+
+# Article address supplied by the user; its contents are NOT a verified primary
+# source until confirmed by the publisher's own feed with numeric evidence.
+SEMIA_2027_ARTICLE = "https://newsletter.semianalysis.com/p/datacenters-2027-the-year-of-acceleration"
+SEMIA_2027_RSS = "https://newsletter.semianalysis.com/feed"
+SEMIA_2027_ID = "semianalysis-2027-acceleration-primary-evidence-20261019"
+SEMIA_2027_USER_EXCERPT = {
+    "2027_new_capacity_headline_gw": 50,
+    "under_construction_gw": 60,
+    "advanced_2027_construction_gw_floor": 24,
+    "advanced_campuses": 40,
+    "older_semianalysis_2027_gw": 43,
+    "altimeter_2027_gw_opinion": 25,
+    "claimed_ytd_lease_commitments_usd_t": 1.3,
+    "hypothetical_cost_per_gw_usd_b": 50,
+    "comparator_2027_capex_usd_t": 1.5,
+    "geography": "원문 원자료 확인 전 미확정",
+    "power_basis": "총전력/IT전력/전원인가 여부 원문 확인 전 미확정",
+    "provenance": "사용자 제공 기사 발췌; 원문 수치 독립 검증 전",
+}
 JPM_NEWS_QUERIES = (
     'JPMorgan top four cloud data center capex growth forecast revised 2026 2027',
     'J.P. Morgan hardware networking four CSP data center capex growth 2027',
@@ -546,6 +566,145 @@ def jpm_networking_alert_text(fx: dict) -> str:
     ])
 
 
+
+def semia_numeric_anchors(text: str) -> list[str]:
+    """Extract only explicit GW/leasing figures, never treat GWh as GW."""
+    t = clean(text).lower().replace(",", "")
+    expected = (
+        ("50gw", r"(?<!\w)50\s*(?:gw|gigawatts?)\b"),
+        ("60gw", r"(?<!\w)60\s*(?:gw|gigawatts?)\b"),
+        ("24gw", r"(?<!\w)24\s*(?:gw|gigawatts?)\b"),
+        ("1.3tn_leases", r"(?:\$\s*1\.3\s*(?:trillion|tn|t)\b|"
+                          r"1\.3\s*(?:trillion|tn)\s*dollars?)"
+                          r".{0,90}(?:lease|leasing|contracts?)"),
+    )
+    return [key for key, pattern in expected if re.search(pattern, t, re.I | re.S)]
+
+
+def semia_primary_probe(now: datetime) -> dict:
+    """Gate publication on an actual SemiAnalysis publisher RSS item and 2 numbers.
+
+    No fallback to third-party articles, Google snippets, user quotation or
+    model priors. On source failure, leave the last delivered event unchanged.
+    """
+    result = {"status": "공식 기사 확인 대기", "publisher_confirmed": False,
+              "verified": False, "numeric_anchors": [], "published": "",
+              "url": "", "errors": []}
+    try:
+        root = ET.fromstring(fetch(SEMIA_2027_RSS, 14))
+    except Exception as exc:
+        result["status"] = "발행처 RSS 조회 실패·원문 확인 대기"
+        result["errors"].append(type(exc).__name__)
+        return result
+    for item in root.findall("./channel/item")[:35]:
+        title = clean(item.findtext("title") or "")
+        link = (item.findtext("link") or "").strip()
+        host = (urllib.parse.urlparse(link).hostname or "").lower()
+        if host not in {"newsletter.semianalysis.com", "semianalysis.com"}:
+            continue
+        low_title = title.lower()
+        matched = (
+            "datacenters-2027-the-year-of-acceleration" in link.lower()
+            or (("datacenters 2027" in low_title or "data centers 2027" in low_title)
+                and "acceleration" in low_title)
+        )
+        if not matched:
+            continue
+        publication = parse_date(item.findtext("pubDate") or "")
+        if publication is None:
+            result["status"] = "발행처 기사 제목 확인·게시시각 미확인"
+            continue
+        if publication > now + timedelta(hours=2):
+            result["status"] = "발행처 시각 미래값·검증 보류"
+            continue
+        if now - publication > timedelta(days=14):
+            result["status"] = "과거 기사 재발견·신규 알림 금지"
+            continue
+        result["publisher_confirmed"] = True
+        result["published"] = publication.isoformat()
+        result["url"] = link
+        content = item.findtext("{http://purl.org/rss/1.0/modules/content/}encoded") or ""
+        excerpt = item.findtext("description") or ""
+        verified_text = " ".join((title, content, excerpt))
+        result["numeric_anchors"] = semia_numeric_anchors(verified_text)
+        if len(result["numeric_anchors"]) >= 2:
+            result["verified"] = True
+            result["status"] = "발행처 RSS·핵심 숫자 2개 이상 직접 확인"
+        else:
+            result["status"] = "발행처 기사 확인·핵심 수치 본문 접근 제한"
+        return result
+    return result
+
+
+def semia_alert_due(old: dict, source: dict, fx: dict, first: bool) -> bool:
+    return (
+        not first
+        and bool(fx.get("usdkrw"))
+        and bool(source.get("verified"))
+        and len(source.get("numeric_anchors") or []) >= 2
+        and old.get("delivered_id") != SEMIA_2027_ID
+    )
+
+
+def semia_regression_checks() -> None:
+    # Two MW/GW concepts and all-in capex use DIFFERENT quantities.
+    t = "50GW capacity additions; 60 GW under construction; 24 gigawatts late stage."
+    assert semia_numeric_anchors(t) == ["50gw", "60gw", "24gw"]
+    assert semia_numeric_anchors("50GWh batteries 60MWh storage") == []
+    assert SEMIA_2027_USER_EXCERPT["advanced_2027_construction_gw_floor"] <= SEMIA_2027_USER_EXCERPT["under_construction_gw"]
+    assert SEMIA_2027_USER_EXCERPT["2027_new_capacity_headline_gw"] * SEMIA_2027_USER_EXCERPT["hypothetical_cost_per_gw_usd_b"] == 2500
+    assert SEMIA_2027_USER_EXCERPT["comparator_2027_capex_usd_t"] * 1000 != 2500
+    valid = {"verified": True, "numeric_anchors": ["50gw", "60gw"]}
+    fx = {"usdkrw": 1300}
+    assert semia_alert_due({}, valid, fx, False)
+    assert not semia_alert_due({"delivered_id": SEMIA_2027_ID}, valid, fx, False)
+    assert not semia_alert_due({}, {"verified": False, "numeric_anchors": []}, fx, False)
+    assert not semia_alert_due({}, valid, {}, False)
+
+
+def semia_verified_alert_text(source: dict, fx: dict) -> str:
+    """Primary publisher verified some headline numbers; others remain user excerpt."""
+    b = SEMIA_2027_USER_EXCERPT
+    rate = float(fx["usdkrw"])
+    checked = ", ".join(source["numeric_anchors"])
+    total_usd_b = b["2027_new_capacity_headline_gw"] * b["hypothetical_cost_per_gw_usd_b"]
+    return "\n".join([
+        "SemiAnalysis 2027 데이터센터 건설 가속 전망 — 발행처 확인",
+        "",
+        "■ 발행처와 숫자 검증 범위",
+        f"• 발행처 RSS 확인: {source['published']} · 직접 확인한 수치표현: {checked}",
+        "• 나머지 세부 숫자는 사용자 제공 발췌. 유료 원자료·개별 현장 명단 전체는 미열람.",
+        f"• 헤드라인 신규 용량 약 {b['2027_new_capacity_headline_gw']}GW(주장),"
+        f" 건설 중 {b['under_construction_gw']}GW(주장),"
+        f" 후반 공정 {b['advanced_2027_construction_gw_floor']}GW 이상(주장).",
+        "• 건설 후반 24GW는 건설 중 60GW의 부분집합. 더하거나 완공·전원 인가로 간주하지 않음.",
+        "• 동일 용량의 지역(미국/북미/세계), 전력 기준(IT/총전력), 집계일이"
+        " 완전히 대조되기 전에는 Epoch·JP모건·Goldman GW와 합산하지 않음.",
+        "",
+        "■ 투자액·임대계약 구분",
+        f"• 1GW당 500억달러({krw_from_usd_b(50, rate)}) 시나리오"
+        f" × 50GW = 2조5,000억달러({krw_from_usd_b(total_usd_b, rate)}).",
+        "• 이는 총 구축비 감도분석이지 2027년 한 해의 실제 설비투자·신규 발주액이 아님.",
+        f"• 연초 이후 임대계약 1조3,000억달러({krw_from_usd_b(1300, rate)}) 주장:"
+        " 기간별 미래 지급의무이며 즉시 매출·현금 지급과 구분.",
+        f"• 별도 2027년 투자전망 약 1조5,000억달러({krw_from_usd_b(1500, rate)})와"
+        " 집계범위·현금 집행연도가 달라 단순 차감·동일시 금지.",
+        "",
+        "■ 건설과 반도체 병목을 별도로 확인",
+        "• 사업별 계약·부지 → 실제 착공 → 후반 전기·냉각 공사 → 전원 인가 → 서버 반입·검수 순으로 추적.",
+        "• 2027~2028년 HBM·DRAM·첨단 로직·CoWoS 수율과 공급량이 추가 병목으로"
+        " 이동할 수 있음. 메모리·로직 양산 물량과 건설 GW를 나란히 감시.",
+        "• 위험: 계약 취소·대출비용·전력접속 지연, 변압기 납기, 현장 인력, 냉각 인수시험, HBM 휨·검사시간.",
+        "",
+        "■ 근거·환율",
+        f"• 1달러={rate:,.2f}원 · {fx.get('basis','확인 불가')} · {fx.get('source','확인 불가')}",
+        "• SemiAnalysis 자체 예측이며 공식 완공실적·구속력 있는 모든 계약의 전수 확인은 아님.",
+        "원문: " + source["url"],
+        "원문: https://newsletter.semianalysis.com/p/to-boldly-go-the-case-for-space-datacenters",
+        ""
+    ])
+
+
 def fmt(key: str, value: float, fx: float | None = None) -> str:
     if key.endswith("_usd_t"):
         base = f"{value:.2f}조달러"
@@ -618,6 +777,7 @@ def main() -> int:
 
     now = datetime.now(timezone.utc)
     jpm_guard()
+    semia_regression_checks()
     old = load_state()
     first = not bool(old)
     baseline_metrics = {k: v for k, v in BASELINE.items() if k not in {"source", "as_of"}}
@@ -712,6 +872,22 @@ def main() -> int:
     else:
         jpm_next.setdefault("metrics", jpm_metrics)
 
+    semi_old = dict(old.get("semianalysis_2027") or {})
+    semi_live = semia_primary_probe(now)
+    semi_notify = semia_alert_due(semi_old, semi_live, fx, first)
+    semi_next = dict(semi_old)
+    semi_next["user_excerpt"] = SEMIA_2027_USER_EXCERPT
+    semi_next["primary_status"] = semi_live["status"]
+    semi_next["primary_numeric_anchors"] = semi_live["numeric_anchors"]
+    semi_next["last_primary_checked_kst"] = now.astimezone(KST).isoformat(timespec="seconds")
+    semi_next["primary_errors"] = semi_live.get("errors") or []
+    if semi_live.get("publisher_confirmed"):
+        semi_next["publisher_release"] = semi_live["published"]
+        semi_next["publisher_article_url"] = semi_live["url"]
+    if semi_notify:
+        semi_next["delivered_id"] = SEMIA_2027_ID
+        semi_next["delivered_at_kst"] = now.astimezone(KST).isoformat(timespec="seconds")
+
     pending = {
         "initialized": True,
         "metrics": proposed,
@@ -720,6 +896,7 @@ def main() -> int:
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen_ids": list(dict.fromkeys(seen_ordered + [r["id"] for r in rows]))[-1000:],
         "jpm_capex": jpm_next,
+        "semianalysis_2027": semi_next,
         "fx": fx,
         "last_collection": {
             "trusted_rows": len(rows),
@@ -740,6 +917,8 @@ def main() -> int:
         alerts.append(jpm_alert_text(jpm_metrics, fx, jpm_revision, jpm_support))
     if jpm_networking_alert:
         alerts.append(jpm_networking_alert_text(fx))
+    if semi_notify:
+        alerts.append(semia_verified_alert_text(semi_live, fx))
     if alerts:
         ALERT.write_text("\n\n".join(alerts), encoding="utf-8")
 
@@ -753,10 +932,13 @@ def main() -> int:
         f"- JP모건 현재 성장률 2026/2027: **{jpm_metrics['top4_growth_2026_pct']:g}% / {jpm_metrics['top4_growth_2027_pct']:g}%**\n"
         f"- JP모건 기준·전망 알림: **{'예' if jpm_alert else '아니오'}**\n"
         f"- JP모건 네트워킹 별도 관점: **{'예' if jpm_networking_alert else '아니오'}**\n"
+        f"- SemiAnalysis 2027 원천 상태: **{semi_live['status']}**\n"
+        f"- SemiAnalysis 핵심 수치 확인: **{len(semi_live['numeric_anchors'])}개**\n"
+        f"- SemiAnalysis 신규 알림: **{'예' if semi_notify else '아니오'}**\n"
         f"- 알림: **{'예' if alerts else '아니오'}**\n",
         encoding="utf-8",
     )
-    print(f"ai_dc_tam_watch first={first} rows={len(rows)} candidates={len(candidates)} changes={len(changes)} jpm_initial={jpm_initial} jpm_changes={len(jpm_revision)} jpm_alert={jpm_alert} jpm_net_alert={jpm_networking_alert} alert={bool(alerts)}")
+    print(f"ai_dc_tam_watch first={first} rows={len(rows)} candidates={len(candidates)} changes={len(changes)} jpm_initial={jpm_initial} jpm_changes={len(jpm_revision)} jpm_alert={jpm_alert} jpm_net_alert={jpm_networking_alert} semia_source={semi_live['status']} semia_anchors={len(semi_live['numeric_anchors'])} semia_alert={semi_notify} alert={bool(alerts)}")
     return 0
 
 
