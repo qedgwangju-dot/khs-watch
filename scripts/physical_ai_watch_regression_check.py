@@ -4676,7 +4676,7 @@ _roadster_theme = make(
 r_g,r_s,r_c,r_k = classify(_roadster_theme)
 assert r_s < 11, "Roadster hype cannot create a humanoid supplier alert"
 
-_dated = watcher.query_news(watcher.OPENAI_HUMANOID_RECOVERY)
+_dated = base.query_news(watcher.OPENAI_HUMANOID_RECOVERY)
 if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,23):
     assert len(_dated)==1,_dated
     event=_dated[0]
@@ -4697,7 +4697,7 @@ if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,23):
 _old_openai_now=base.NOW
 try:
     base.NOW=dt.datetime(2026,10,24,12,0,tzinfo=dt.timezone.utc)
-    assert watcher.query_news(watcher.OPENAI_HUMANOID_RECOVERY)==[], (
+    assert base.query_news(watcher.OPENAI_HUMANOID_RECOVERY)==[], (
         'historical OpenAI September claim cannot replay after recovery expiry'
     )
 finally:
