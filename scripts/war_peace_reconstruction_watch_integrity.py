@@ -28,6 +28,8 @@ KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입�
                'military_report': '공격 조사·보고서 공표', 'fuel_shipping': '봉쇄·연료 선적 보도',
                'trade_proposal': '에너지 거래 재개 제안',
                'diplomatic_contact': '외교 접촉 보도',
+               'diplomatic_plan': '협상 추진·논의',
+               'diplomatic_statement': '거래·정책 평가 발언',
                'diplomatic_analysis': '외교·안보 해설',
                'diplomatic_position': '외교 갈등·압박 보도'}
 
@@ -76,7 +78,8 @@ def _riyadh_missile_headline(row):
 
 def _display_headline(row):
     original = str(row.get('title_original') or row.get('title') or '')
-    return original if _riyadh_missile_headline(row) or re.search(r'[가-힣]', original) else str(row.get('title_ko') or original)
+    return original if (_riyadh_missile_headline(row) or re.search(r'[가-힣]', original)
+                        or _diplomatic_deal_statement(original.lower())) else str(row.get('title_ko') or original)
 
 
 def _energy_facility_headline(row):
@@ -97,6 +100,8 @@ def _energy_facility_statement_spans(title):
 
 
 def _headline_action_label(row):
+    if _headline_drone_action(row):
+        return '드론 공습 보도'
     if _maritime_attack_headline(row):
         return '선박 피격 보도'
     return '에너지 시설 공격 보도' if _energy_facility_headline(row) else '정유시설 공격 보도'
@@ -125,13 +130,13 @@ def _headline_group(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
-    if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position'):
+    if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement'):
         actors = []
         if re.search(r'미국|트럼프|美|\bu\.s\.|\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너', title):
             actors.append('미국')
         if re.search(r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b', title):
             actors.append('우크라이나')
-        if re.search(r'러시아|\brussia\w*\b', title):
+        if re.search(r'러시아|(?:^|\s)러(?=\s|$)|\brussia\w*\b', title):
             actors.append('러시아')
         return ('·'.join(actors) if actors else _headline_group(title)) + ' · ' + KIND_LABELS[kind]
     if kind == 'market_effect':
@@ -147,6 +152,8 @@ def _primary_topic(row):
     if kind == 'support_statement':
         label = '정보 지원·종전 의향 발언' if re.search(r'종전|peace|end.{0,8}war', title) else '지원 정책 발언'
         return _headline_group(title) + ' · ' + label
+    if kind is None and _headline_drone_action(row):
+        return _headline_group(title) + ' · 드론 공습 보도'
     if kind is None and _headline_refinery_action(row):
         return '우크라이나·러시아 · 정유시설 공격 보도'
     if _energy_facility_headline(row):
@@ -193,6 +200,22 @@ def _military_actions(title):
         r'보복\s*(?:공습|공격)\s*(?:개시|실시)|'
         r'\band\s+(?:attacks?|strikes?|bombs?)\b|'
         r'\b(?:launches?|launched|conducts?|conducted|resumes?|resumed)\s+(?:new\s+)?(?:attacks?|strikes?|airstrikes?)', title))
+
+
+def _headline_drone_action(row):
+    """A reported drone operation is separate from a body's earlier ceasefire."""
+    title = _headline(row)
+    for clause in re.split(r'…|\.{3}|[;；]', title):
+        if not re.search(r'우크라|러시아|미국|이란|이스라엘|후티', clause):
+            continue
+        if not re.search(r'드론.{0,55}(?:공습|공격|폭격|타격)', clause):
+            continue
+        if re.search(r'계획|검토|추진|논의|협의|예정|준비|가능성|예고|시사|예상|부인|허위|가짜|'
+                     r'안\s*(?:했|한|해)|하지\s*않|한\s*적\s*없|하겠다|할\s*(?:것|예정)|'
+                     r'해설|분석|조사\s*보고서|[?？]|비난|규탄|요구|촉구', clause):
+            continue
+        return True
+    return False
 
 
 def _condemnation_object_spans(title):
@@ -356,6 +379,12 @@ def _report_with_completed_action(title):
         r'\b(?:russia|ukraine|iran|israel|houthis?)\s+(?:attacks|strikes|bombs|attacked|bombed)\b', title))
 
 
+def _diplomatic_deal_statement(title):
+    return bool(re.search(r'\b(?:diesel|energy|gas|oil)\b', title)
+                and re.search(r'\b(?:calls?|called)\b.{0,60}\b(?:deal|waiver|trade)\b\s+'
+                              r'(?:an?\s+).{0,30}\b(?:incentive|gift|lifeline|mistake)\b', title))
+
+
 def _diplomatic_headline_kind(title):
     """A contact, dispute or labelled analysis does not assert peace progress."""
     # Separate completed operations remain actions even in a contact headline.
@@ -371,9 +400,20 @@ def _diplomatic_headline_kind(title):
     if re.search(r'항복\s*압박|\b(?:surrender|capitulat\w*)\b.{0,30}\bpressure\b|'
                  r'\bpressure\b.{0,30}\b(?:surrender|capitulat\w*)\b', title):
         return 'diplomatic_position'
+    if re.search(r'(?:종전|평화|휴전)\s*협상.{0,18}(?:러시아|러|우크라이나).{0,12}'
+                 r'(?:떠나길|이탈).{0,12}(?:원치\s*않|원하지\s*않)', title):
+        return 'diplomatic_position'
+    if re.search(r'(?:평화\s*협상|종전\s*협상|휴전\s*협상)(?:을|를)?\s*'
+                 r'(?:(?:재개|개최|개시)(?:를|을)?\s*)?(?:추진|논의|검토|계획)|'
+                 r'회동(?:을|를|도)?\s*(?:추진|논의|검토|계획)|'
+                 r'\b(?:plans?|planning|discuss\w*)\b.{0,35}\b(?:peace talks|meeting)\b|'
+                 r'\b(?:peace talks|meeting)\b.{0,25}\b(?:under discussion|planned)\b', title):
+        return 'diplomatic_plan'
+    if _diplomatic_deal_statement(title):
+        return 'diplomatic_statement'
     if re.search(r'통화|대화|회담|접촉|\b(?:speaks?|spoke|talks?|talked)\s+(?:to|with)\b|'
                  r'\b(?:calls?|called)\s+(?:(?:u\.s\.|us)\s+)?'
-                 r'(?:envoys?|witkoff|kushner|trump|zelenskyy?|zelenskiy)\b', title):
+                 r'(?:envoys?|witkoff|kushner|trump|zelenskyy?|zelenskiy)\b(?![\'’]s\b)', title):
         return 'diplomatic_contact'
     return None
 
@@ -382,6 +422,8 @@ def non_military_kind(row):
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
     if mixed_restraint_attack(row):
         return 'mixed_restraint'
+    if _headline_drone_action(row):
+        return None
     # Require an explicit new-action predicate before background weapon nouns
     # can turn a sanctions listing or a condemnation into a military event.
     discussion = _military_discussion_spans(title)
@@ -447,11 +489,12 @@ def _clear_market_event_cache(row):
 
 def _headline_event_cache_required(row, kind):
     return (kind in ('ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis', 'trade_proposal',
-                    'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position')
+                    'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement')
             or (kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
             or _energy_facility_headline(row)
             or (kind is None and _headline_refinery_action(row))
+            or (kind is None and _headline_drone_action(row))
             or (_maritime_attack_headline(row) and not maritime_attack_tally(row)))
 
 
@@ -470,12 +513,15 @@ def _clear_headline_event_cache(row, kind):
 
 
 def score_item(row, now):
+    age = watch.age_minutes(row, now)
+    if age is not None and age > 3 * 60:
+        return 0, []
     kind = non_military_kind(row)
     if kind == 'market_effect':
         _clear_market_event_cache(row)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
-    if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position'):
+    if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement'):
         _clear_headline_event_cache(row, kind)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
@@ -499,6 +545,8 @@ def final_color(row):
     if _report_with_completed_action(_headline(row)):
         return 'red'
     if _headline_refinery_action(row):
+        return 'red'
+    if _headline_drone_action(row):
         return 'red'
     if _energy_facility_headline(row) and _military_actions(_headline(row)):
         return 'red'
@@ -530,12 +578,12 @@ def verdict(items):
         )
     kinds = [non_military_kind(row) for row in items]
     if kinds and all(kinds):
-        if set(kinds) & {'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position'}:
+        if set(kinds) & {'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement'}:
             core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
             return (
                 '<b>투자 판정</b>\n'
                 f'- <b>핵심:</b> {core}\n'
-                '- <b>현재 단계:</b> 접촉·갈등·해설 단계 — 협상 재개 의사·양측 휴전 합의·이행은 별도 확인 필요\n'
+                '- <b>현재 단계:</b> 접촉·갈등·해설·추진·평가 발언 단계 — 실제 협상 개최·양측 휴전 합의·이행은 별도 확인 필요\n'
                 '- <b>시장:</b> 외교 접촉이나 해설만으로 정유시설 공격·공급 차질·가격 방향의 변화를 확정할 수 없음\n'
                 '- <b>다음:</b> 발언·접촉 원문 → 당사자 공식 결정 → 실제 협상·작전·휴전 이행 확인'
             )
@@ -709,7 +757,7 @@ def build_alert(items, markets, now):
     aliases, seen = _source_aliases(state), set(state.get('seen', []))
     for row in items:
         # These annotations belong to this render, not an earlier replay.
-        if row.get('render_withheld') in ('duplicate_source_article', 'source_alias_already_seen'):
+        if row.get('render_withheld') in ('duplicate_source_article', 'source_alias_already_seen', 'discovery_publication_stale'):
             row.pop('render_withheld')
             row.pop('duplicate_of', None)
             row.pop('duplicate_basis', None)
@@ -728,6 +776,10 @@ def build_alert(items, markets, now):
         dates = [dt.datetime.fromisoformat(value['at_kst']) for value in metadata.get('publication_candidates', [])]
         if dates and (min(dates) < now - dt.timedelta(hours=3) or max(dates) > now + dt.timedelta(minutes=5)):
             row['render_withheld'] = 'origin_publication_stale_or_future'
+            continue
+        age = watch.age_minutes(row, now)
+        if age is not None and age > 3 * 60:
+            row['render_withheld'] = 'discovery_publication_stale'
             continue
         visible.append(row)
     visible = _dedupe_source_articles(visible)
@@ -892,7 +944,10 @@ def verify_alert(test_mode=False):
         primary = _primary_topic(row)
         if primary and html.escape(primary) not in lines[start]:
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered topic differs from headline event')
-        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position') and (
+        age = watch.age_minutes(row, dt.datetime.fromisoformat(receipt['queried_at_kst']))
+        if age is not None and age > 3 * 60:
+            raise RuntimeError('WAR_INTEGRITY_GATE: stale discovery publication in rendered source')
+        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement') and (
                 row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
             raise RuntimeError('WAR_INTEGRITY_GATE: statement presented as a new attack or implemented peace')
         marker = {'red': '🔴', 'green': '🟢', 'yellow': '🟡'}.get(row.get('classification_color'), '')
@@ -923,6 +978,9 @@ def verify_alert(test_mode=False):
         if current_kind is None and _headline_refinery_action(row) and (
                 row.get('classification_color') != 'red' or not lines[start].startswith('🔴')):
             raise RuntimeError('WAR_INTEGRITY_GATE: refinery attack headline hidden by background stage')
+        if current_kind is None and _headline_drone_action(row) and (
+                row.get('classification_color') != 'red' or not lines[start].startswith('🔴')):
+            raise RuntimeError('WAR_INTEGRITY_GATE: drone attack headline hidden by background stage')
         if current_kind is None and _energy_facility_headline(row) and _military_actions(_headline(row)) and (
                 row.get('classification_color') != 'red' or not lines[start].startswith('🔴')):
             raise RuntimeError('WAR_INTEGRITY_GATE: separate actual action hidden by energy facility plan')
