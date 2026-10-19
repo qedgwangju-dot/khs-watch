@@ -11,6 +11,12 @@ on:
       timezone: "Asia/Seoul"
     - cron: "0,15,30 12 * * *"
       timezone: "Asia/Seoul"
+    - cron: "15,45 14 * * 6"
+      timezone: "Asia/Seoul"
+    - cron: "15 15 * * 6"
+      timezone: "Asia/Seoul"
+    - cron: "15 14 * * 0"
+      timezone: "Asia/Seoul"
   workflow_run:
     workflows:
       - "Global Rates & Yen Carry Telegram Watch"
@@ -269,5 +275,103 @@ jobs:
             out/treasury_real_yield_validation.txt
             out/treasury_runtime_status.log
             data/treasury_etf_flow_state.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+  weekly-stock-bond-hedge:
+    if: >-
+      ${{
+        github.event_name == 'push' ||
+        github.event_name == 'workflow_dispatch' ||
+        (github.event_name == 'schedule' && (
+          github.event.schedule == '15,45 14 * * 6' ||
+          github.event.schedule == '15 15 * * 6' ||
+          github.event.schedule == '15 14 * * 0'
+        ))
+      }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      WEEKLY_HAVEN_VALIDATE_ONLY: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.validate_only)) && '1' || '0' }}
+
+    steps:
+      - name: Checkout existing repository and confirmed alerts
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python for weekly source checks
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependency for official Nasdaq and Treasury reads
+        run: python -m pip install --disable-pip-version-check requests
+
+      - name: Validate Nasdaq Treasury dates and Telegram dedupe
+        run: |
+          python -m py_compile scripts/treasury_weekly_stock_bond_signal.py
+          python -m py_compile scripts/treasury_weekly_haven_alert.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_treasury_weekly_stock_bond_signal.py' -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_treasury_weekly_haven_alert.py' -v
+
+      - name: Evaluate weekly market closes and conditionally send through existing bot
+        run: |
+          set -o pipefail
+          mkdir -p out
+          rm -f out/treasury_weekly_haven_runtime.log out/treasury_weekly_haven_alert.txt out/treasury_weekly_haven_confirmed.json
+          PYTHONPATH=scripts python scripts/treasury_weekly_haven_alert.py | tee out/treasury_weekly_haven_runtime.log
+          if grep -q '"status": "source_unavailable"' out/treasury_weekly_haven_runtime.log; then
+            echo "::error::Nasdaq/Treasury weekly official source unavailable; alert not sent."
+            exit 1
+          elif grep -q '"status": "telegram_confirmed"' out/treasury_weekly_haven_runtime.log; then
+            echo "주간 위험 신호 확인 · 기존 Global Rates 봇으로 전송 성공" >> "$GITHUB_STEP_SUMMARY"
+          elif grep -q '"status": "validated"' out/treasury_weekly_haven_runtime.log; then
+            echo "공식 주간 수치 확인 · 검증 모드이므로 Telegram 미전송" >> "$GITHUB_STEP_SUMMARY"
+          elif grep -Eq '"status": "(threshold_not_met|duplicate_suppressed)"' out/treasury_weekly_haven_runtime.log; then
+            echo "경보 조건 미충족 또는 동일 주간 이미 전송됨" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::error::Weekly watch returned no auditable result."
+            exit 1
+          fi
+
+      - name: Commit confirmed weekly alert state only
+        if: success()
+        run: |
+          if [ ! -f data/treasury_weekly_haven_state.json ]; then
+            echo "주간 Telegram 성공 확인이 없으므로 상태 파일 미변경"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/treasury_weekly_haven_state.json
+          if git diff --cached --quiet; then
+            echo "주간 중복 또는 조건 미충족 · 상태 변경 없음"
+            exit 0
+          fi
+          git commit -m "Record verified Treasury safe-haven weekly Telegram alert"
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Upload weekly validation and Telegram receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: treasury-weekly-haven-${{ github.run_id }}
+          path: |
+            out/treasury_weekly_haven_runtime.log
+            out/treasury_weekly_haven_alert.txt
+            out/treasury_weekly_haven_confirmed.json
+            data/treasury_weekly_haven_state.json
           if-no-files-found: ignore
           retention-days: 14
