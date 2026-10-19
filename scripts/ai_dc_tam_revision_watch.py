@@ -659,7 +659,13 @@ def semia_regression_checks() -> None:
     assert semia_alert_due({}, valid, fx, False)
     assert not semia_alert_due({"delivered_id": SEMIA_2027_ID}, valid, fx, False)
     assert not semia_alert_due({}, {"verified": False, "numeric_anchors": []}, fx, False)
+    assert not semia_alert_due({}, {"verified": True, "numeric_anchors": ["50gw"]}, fx, False)
+    assert not semia_alert_due({}, valid, fx, True)
     assert not semia_alert_due({}, valid, {}, False)
+    assert semia_numeric_anchors("60 GWh battery + 24 MWh ESS") == []
+    assert SEMIA_2027_USER_EXCERPT["advanced_campuses"] == 40
+    assert (SEMIA_2027_USER_EXCERPT["advanced_2027_construction_gw_floor"] /
+            SEMIA_2027_USER_EXCERPT["under_construction_gw"]) == 0.4
 
 
 def semia_verified_alert_text(source: dict, fx: dict) -> str:
