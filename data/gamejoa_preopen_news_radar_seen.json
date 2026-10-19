@@ -23685,6 +23685,24 @@
       "telegram_core_fact": "경동나비엔은 미국 뉴저지와 캘리포니아 어바인에 '이노베이션 센터 및 트레이닝 아카데미'를 개소하고 미국 내 생산기지 설립을 본격 추진한다고 12일 밝혔다. 경동나비엔은 이번 센터 및 아카데미 설립을 미국 현지 생산 기지 도입을 위한 발판으로 활용할 방침이다.",
       "title": "\"美생산기지 설립 추진\"…나비엔, 현지 센터 개소"
     },
+    "core:5a822562394346e222b67a01": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831066",
+      "source": "뉴시스",
+      "source_body_digest": "7ab9a130aea1fcc8d5431837f9a467165ef2d1a07cf875d6a3989fc4a6d8e089",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T09:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대글로비스, 美 필라델피아 항만 계약 2056년까지 연장 추진…\"물류 허브 구축\"",
+      "telegram_core_fact": "항만 내 신규 완성차 물류 부지 확보와 기존 부지 계약을 2056년까지 연장하는 방안도 이번 협약에 포함됐다. 2010년 필라델피아 항만에서 완성차 물류 사업을 시작한 현대글로비스는 2019년 약 64만㎡(19만 평) 완성차 전용 야드 '사우스포트(Southport)'를 개소했다.",
+      "title": "현대글로비스, 美 필라델피아 항만 계약 2056년까지 연장 추진…\"물류 허브 구축\""
+    },
     "core:5a8ba209843c8bfbbc09e6c3": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
       "lanes": {
@@ -24211,6 +24229,33 @@
       "source_title": "브리티시 아메리칸 타바코, 12월 23일까지 메릴린치 통한 자사주 매입",
       "telegram_core_fact": "브리티시 아메리칸 타바코(BTI)가 메릴린치인터내셔널(Merrill Lynch International)과 자사주 매입 계약을 체결하고, 10월 13일부터 12월 23일 영업 종료 시점까지 보통주를 매입해 전량 소각하기로 했다고 10월 7일 발표했다.",
       "title": "브리티시 아메리칸 타바코, 12월 23일까지 메릴린치 통한 자사주 매입"
+    },
+    "core:5cd9f51105e0cb07d0591b6d": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
     },
     "core:5d54ccd1209d2ec4407badd7": {
       "first_seen_kst": "2026-10-16T16:08:38+09:00",
@@ -39403,6 +39448,28 @@
       "telegram_core_fact": "앤듀릴은 완성 잠수함을 별도로 만드는 것이 아니라 이들 업체에 복잡한 부품과 대형 조립체를 공급한다.",
       "title": "앤듀릴, 美버지니아급 핵잠 부품 생산 진출…2030년 새 조선소 가동"
     },
+    "core:95136061794355033be23f97": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637233",
+      "source": "이투데이",
+      "source_body_digest": "0ed42452e8da8dfebb8e488cc1b27dcf3134e7ed7d3e0d274bc6c56486691ad9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95f244c417ff29c5aafeb0a256602d90ba0fe0dcb9b6f74958777b7809221aa3",
+      "source_fact_keys": [
+        "source_fact:v1:407c0b95dbd24325737e9d48182183679a657c61979e4a99b772e77a86fd0b8c",
+        "source_fact:v1:880cc4656c15623c6135248de2fdd52c63733b3754b2dc970dd879c7e40edd95",
+        "source_fact:v1:ffdd934ca5f46f0515d2a3eaac98a3b9b35e729b34b67b6a952bf2c32b9ba0d6"
+      ],
+      "source_published_kst": "2026-10-19T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여",
+      "telegram_core_fact": "1·2차 교육에서는 소송과 강제집행 등 초기 권리구제 절차를, 3·4차 교육에서는 경·공매와 배당을 통한 보증금 회수 방안을 다뤘다.",
+      "title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여"
+    },
     "core:953ae855b85b4cab5a932db7": {
       "first_seen_kst": "2026-10-10T15:05:36+09:00",
       "lanes": {
@@ -50522,6 +50589,26 @@
       "telegram_core_fact": "이날 정규 거래에서 4% 하락했던 스페이스X 주가는 주파수 인수 발표 이후 시간외 거래에서 약 2% 상승했다.",
       "title": "“이통사 정신 좀 들어?”…머스크 ‘美전역 주파수 인수’에 주가 우수수"
     },
+    "core:c036c97fb3e7a8035fc35488": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/19/2026101909433422474",
+      "source": "머니투데이",
+      "source_body_digest": "7bb0e2e10673c3bead216f8c3751e7766aff04481f4cf3c9e92ee62d1be7c90b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcddfb7ec79f9300a218e8b4f22f5e245895857df65035c15fd4bc80376779f9",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3"
+      ],
+      "source_published_kst": "2026-10-19T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화",
+      "telegram_core_fact": "한미반도체가 지난 16일(현지시간) 미국 캘리포니아주 산호세에서 한미USA 오피스에서 개소식을 진행했다고 19일 밝혔다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화"
+    },
     "core:c0429a5f98b9962fe5d0c9a5": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
       "lanes": {
@@ -58777,6 +58864,30 @@
       "telegram_core_fact": "특히 고망간강의 상용화 추진에는 장인화 포스코그룹 회장의 선제적인 기술 리더십이 있었던 것으로 전해진다. 포스코가 한화오션과 협력해 고망간강을 액화천연가스(LNG) 운반선 핵심 설비인 LNG 화물창 적용하며 상용화를 본격화한다.",
       "title": "포스코, 한화오션과 고망간강 LNG화물창 상용화…\"장인화 회장, 기술 리더십 결실\""
     },
+    "core:e1357c1fcb75c685bf2611e5": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831085",
+      "source": "뉴시스",
+      "source_body_digest": "f911fdb5032e1581ca981771bbed3c6594926a5c08cfb102717c0269cebb9142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f25dcc4e01d194a9c13066b3d2d7939dd173b578dc7d73cfe6359c51aebb845",
+      "source_fact_keys": [
+        "source_fact:v1:44e7078e4e230d7f45cdc87ca7af1b117a8ec69c30d9ab4ad8ef0b1f8c93a539",
+        "source_fact:v1:68ba96d9472c3fa2c4c1a8a636bba2c30d2ea87cbc7bef104e6e9f439f581d69",
+        "source_fact:v1:6d77e371b9f8ff5961b0420f2968fce22ce8a91a813510582cf6f46d726bf4e0",
+        "source_fact:v1:863f86cf468fc4512c969fbb6961523d60bda28685e7757bdfe257a18c0d638d",
+        "source_fact:v1:f31954de8e3014f473f5f5d48612b8645d45a33d7e5417c5780a5ae77c2dbbba"
+      ],
+      "source_published_kst": "2026-10-19T09:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
+      "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
+      "title": "엠엑스온, 전사 공급망 관리 체계 구축"
+    },
     "core:e1526d5e03163801d7f8f1cf": {
       "first_seen_kst": "2026-10-17T05:57:10+09:00",
       "lanes": {
@@ -61053,6 +61164,26 @@
       "source_title": "“美 데이터센터 올 들어 최소 47곳 지연·중단·철회⋯AI 인프라 건설 붐 균열”",
       "telegram_core_fact": "FT가 인용한 규제정보업체 레그레이어에 따르면 올 들어 최소 47개의 대형 프로젝트가 지연되거나 철회 중단됐다.",
       "title": "“美 데이터센터 올 들어 최소 47곳 지연·중단·철회⋯AI 인프라 건설 붐 균열”"
+    },
+    "core:eaff84cb61527877c0514e8c": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637327",
+      "source": "이투데이",
+      "source_body_digest": "c2826bc11d1453ec9bfbd651523e498ed7f76a39490e7dd97612f7401770d347",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:0912950299e0dffb15465c13df3318d25ba0e9ee093d1c2d32cd743d725a8989",
+      "source_fact_identity": "source_facts:v1:d097e493ef5d477f6024e8eb1bbce2240eaf024733e4f04a8e2d3ff2ddde3dc6",
+      "source_fact_keys": [
+        "source_fact:v1:4af56444819ca4071fe96f9fe882cb3a0c5960ab03e0263a3a59785a2aca568d"
+      ],
+      "source_published_kst": "2026-10-19T11:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환",
+      "telegram_core_fact": "파두는 19일 잠정 실적 공시를 통해 올해 3분기 매출 1436억원, 영업이익 363억원을 달성했다고 밝혔다.",
+      "title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환"
     },
     "core:eb00552c4160a66639f2e337": {
       "first_seen_kst": "2026-10-17T13:10:08+09:00",
@@ -79805,6 +79936,26 @@
       "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
       "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
     },
+    "event:c91c823415d334644868f303": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637327",
+      "source": "이투데이",
+      "source_body_digest": "c2826bc11d1453ec9bfbd651523e498ed7f76a39490e7dd97612f7401770d347",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:0912950299e0dffb15465c13df3318d25ba0e9ee093d1c2d32cd743d725a8989",
+      "source_fact_identity": "source_facts:v1:d097e493ef5d477f6024e8eb1bbce2240eaf024733e4f04a8e2d3ff2ddde3dc6",
+      "source_fact_keys": [
+        "source_fact:v1:4af56444819ca4071fe96f9fe882cb3a0c5960ab03e0263a3a59785a2aca568d"
+      ],
+      "source_published_kst": "2026-10-19T11:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환",
+      "telegram_core_fact": "파두는 19일 잠정 실적 공시를 통해 올해 3분기 매출 1436억원, 영업이익 363억원을 달성했다고 밝혔다.",
+      "title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환"
+    },
     "event:c97955bd13212d7367a4e3b6": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
       "lanes": {
@@ -83050,24 +83201,29 @@
     "event:f4ecbfee964d5885993d3f2c": {
       "first_seen_kst": "2026-10-19T08:28:33+09:00",
       "lanes": {
-        "live": "2026-10-19T09:01:52+09:00"
+        "live": "2026-10-19T11:35:40+09:00"
       },
-      "last_seen_kst": "2026-10-19T09:01:52+09:00",
-      "link": "https://magazine.hankyung.com/business/article/202610153231b",
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
       "source": "한국경제",
-      "source_body_digest": "8e155851200c21fcbbbecdff8197d8396d232ebc41281b09828405d14a05dca8",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:ada76e7e5d42d3f545bcfcc7923c9d191b2150031fbffbc2ac23e6706e42f47a",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
       "source_fact_keys": [
-        "source_fact:v1:4c39432acff7a9e518349d78433f95081739889fce2ee546ae24913b33dbdb46",
-        "source_fact:v1:a3e6aeb42b58dba09467ab3d7f242b9e315b5cbc666c1f328278705df4088a87",
-        "source_fact:v1:cf08c9c5c89c1b0c063ed83f8afafbce3e48c2aaf720c770f668be39cc46cf04"
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
       ],
-      "source_published_kst": "2026-10-19T08:23+09:00",
+      "source_published_kst": "2026-10-19T11:25+09:00",
       "source_supply_terms": {},
-      "source_title": "‘외국인’과 ‘호캉스’…K호텔 전성시대[호텔, 서울을 점령하다]",
-      "telegram_core_fact": "즉 한국에 관심이 높아진 ‘외국인’과 ‘호캉스’를 즐기는 내국인 증가라는 두 가지 핵심축이 호텔의 평일과 주말 수요를 모두 채우며 전례 없는 매출 성장을 견인하고 있다는 설명이다. 외국인 관광객이 밀려들고 국내에서는 호텔에서 휴식을 취하는 ‘호캉스’가 일상적인 여가 문화로 자리 잡았다.",
-      "title": "‘외국인’과 ‘호캉스’…K호텔 전성시대[호텔, 서울을 점령하다]"
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
     },
     "event:f51b571ffc3ff1d202160484": {
       "first_seen_kst": "2026-10-13T00:22:20+09:00",
@@ -102712,6 +102868,33 @@
       "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
       "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
     },
+    "fact:3fb3146eb13578f8769c0207": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
+    },
     "fact:3fcce3d913b1d933357ca6a6": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -108966,6 +109149,28 @@
       "source_title": "메모리값 상승에 저가폰 직격탄…2030년 출하량 40% 급감 전망 | 연합뉴스",
       "telegram_core_fact": "메모리 반도체 가격 상승으로 제조 원가 부담이 커지면서 2030년까지 글로벌 저가 스마트폰 출하량이 2억3천만대 넘게 감소할 수 있다는 전망이 나왔다.",
       "title": "메모리값 상승에 저가폰 직격탄…2030년 출하량 40% 급감 전망 | 연합뉴스"
+    },
+    "fact:5605926d8b79b2954a7968ac": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831460",
+      "source": "뉴시스",
+      "source_body_digest": "6a9a56da4b66dc40293e8591e8ce99fc4a27ce2c0df05ad7a8d45addb957eeb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:545bcdfacbecb99eb65a74f30270c995e2a1cfdc752b28cfc585fe79c023600d",
+      "source_fact_keys": [
+        "source_fact:v1:133dc47b7fc9e7620e3c459ef2d7f8a57112f01b927881088c149d717d6ba74d",
+        "source_fact:v1:38261fb21720951e22c3fa192048339aa73165400529efeddfb687b4bd4eea28",
+        "source_fact:v1:a3f2170b8655d824b23260bf1d11f5654573af53bbe16eb0d6c8713227a11e0f"
+      ],
+      "source_published_kst": "2026-10-19T11:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적",
+      "telegram_core_fact": "가온전선이 올해 3분기 영업이익 520억원을 기록하며 역대 최대 실적을 달성했다.",
+      "title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적"
     },
     "fact:560b2c368b3ba8d5a3960099": {
       "first_seen_kst": "2026-10-17T08:22:42+09:00",
@@ -123173,6 +123378,28 @@
       "source_published_kst": "2026-10-06T13:55+09:00",
       "title": "제약바이오협회, 'R&D·임상·RA 역량강화' 세미나"
     },
+    "fact:855594521b4becf107f13ce4": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637233",
+      "source": "이투데이",
+      "source_body_digest": "0ed42452e8da8dfebb8e488cc1b27dcf3134e7ed7d3e0d274bc6c56486691ad9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95f244c417ff29c5aafeb0a256602d90ba0fe0dcb9b6f74958777b7809221aa3",
+      "source_fact_keys": [
+        "source_fact:v1:407c0b95dbd24325737e9d48182183679a657c61979e4a99b772e77a86fd0b8c",
+        "source_fact:v1:880cc4656c15623c6135248de2fdd52c63733b3754b2dc970dd879c7e40edd95",
+        "source_fact:v1:ffdd934ca5f46f0515d2a3eaac98a3b9b35e729b34b67b6a952bf2c32b9ba0d6"
+      ],
+      "source_published_kst": "2026-10-19T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여",
+      "telegram_core_fact": "1·2차 교육에서는 소송과 강제집행 등 초기 권리구제 절차를, 3·4차 교육에서는 경·공매와 배당을 통한 보증금 회수 방안을 다뤘다.",
+      "title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여"
+    },
     "fact:855bd8584a91f094e9f2480e": {
       "first_seen_kst": "2026-10-08T19:27:03+09:00",
       "lanes": {
@@ -132711,6 +132938,26 @@
       "source_published_kst": "2026-10-05T18:32+09:00",
       "title": "[단독] 개정 상법에 한전 '소송 리스크'"
     },
+    "fact:a330f94f7ee6b3250e324541": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637327",
+      "source": "이투데이",
+      "source_body_digest": "c2826bc11d1453ec9bfbd651523e498ed7f76a39490e7dd97612f7401770d347",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:0912950299e0dffb15465c13df3318d25ba0e9ee093d1c2d32cd743d725a8989",
+      "source_fact_identity": "source_facts:v1:d097e493ef5d477f6024e8eb1bbce2240eaf024733e4f04a8e2d3ff2ddde3dc6",
+      "source_fact_keys": [
+        "source_fact:v1:4af56444819ca4071fe96f9fe882cb3a0c5960ab03e0263a3a59785a2aca568d"
+      ],
+      "source_published_kst": "2026-10-19T11:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환",
+      "telegram_core_fact": "파두는 19일 잠정 실적 공시를 통해 올해 3분기 매출 1436억원, 영업이익 363억원을 달성했다고 밝혔다.",
+      "title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환"
+    },
     "fact:a34bdc56a22764d055bf420b": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
       "lanes": {
@@ -134747,6 +134994,30 @@
       "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
       "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
       "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
+    },
+    "fact:a9c512b0da0f4f6c739afb1c": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831085",
+      "source": "뉴시스",
+      "source_body_digest": "f911fdb5032e1581ca981771bbed3c6594926a5c08cfb102717c0269cebb9142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f25dcc4e01d194a9c13066b3d2d7939dd173b578dc7d73cfe6359c51aebb845",
+      "source_fact_keys": [
+        "source_fact:v1:44e7078e4e230d7f45cdc87ca7af1b117a8ec69c30d9ab4ad8ef0b1f8c93a539",
+        "source_fact:v1:68ba96d9472c3fa2c4c1a8a636bba2c30d2ea87cbc7bef104e6e9f439f581d69",
+        "source_fact:v1:6d77e371b9f8ff5961b0420f2968fce22ce8a91a813510582cf6f46d726bf4e0",
+        "source_fact:v1:863f86cf468fc4512c969fbb6961523d60bda28685e7757bdfe257a18c0d638d",
+        "source_fact:v1:f31954de8e3014f473f5f5d48612b8645d45a33d7e5417c5780a5ae77c2dbbba"
+      ],
+      "source_published_kst": "2026-10-19T09:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
+      "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
+      "title": "엠엑스온, 전사 공급망 관리 체계 구축"
     },
     "fact:a9e371f2978c6dbe3b48fdb6": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -137009,6 +137280,26 @@
       "source_title": "젤렌스키 “트럼프 ’에너지 휴전’ 언급에도 러 공격 계속“",
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미국 대통령이 '에너지 휴전'을 언급한 이후 우크라이나가 공격을 자제했지만, 러시아는 그렇지 않았다고 주장했습니다.",
       "title": "젤렌스키 “트럼프 ’에너지 휴전’ 언급에도 러 공격 계속“"
+    },
+    "fact:afee97d44db7512c6a760ec9": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/19/2026101909433422474",
+      "source": "머니투데이",
+      "source_body_digest": "7bb0e2e10673c3bead216f8c3751e7766aff04481f4cf3c9e92ee62d1be7c90b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcddfb7ec79f9300a218e8b4f22f5e245895857df65035c15fd4bc80376779f9",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3"
+      ],
+      "source_published_kst": "2026-10-19T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화",
+      "telegram_core_fact": "한미반도체가 지난 16일(현지시간) 미국 캘리포니아주 산호세에서 한미USA 오피스에서 개소식을 진행했다고 19일 밝혔다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화"
     },
     "fact:b000c6d164a6b3ca29572763": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
@@ -186133,6 +186424,26 @@
       "source": "연합뉴스",
       "title": "'SK그룹 상장사 투자' 등 ETF 4종 22일 신규 상장 | 연합뉴스"
     },
+    "link:39d23de8a815f87861496626": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637327",
+      "source": "이투데이",
+      "source_body_digest": "c2826bc11d1453ec9bfbd651523e498ed7f76a39490e7dd97612f7401770d347",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:0912950299e0dffb15465c13df3318d25ba0e9ee093d1c2d32cd743d725a8989",
+      "source_fact_identity": "source_facts:v1:d097e493ef5d477f6024e8eb1bbce2240eaf024733e4f04a8e2d3ff2ddde3dc6",
+      "source_fact_keys": [
+        "source_fact:v1:4af56444819ca4071fe96f9fe882cb3a0c5960ab03e0263a3a59785a2aca568d"
+      ],
+      "source_published_kst": "2026-10-19T11:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환",
+      "telegram_core_fact": "파두는 19일 잠정 실적 공시를 통해 올해 3분기 매출 1436억원, 영업이익 363억원을 달성했다고 밝혔다.",
+      "title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환"
+    },
     "link:39e3f42e4c695f50280eccdb": {
       "first_seen_kst": "2026-10-09T20:24:58+09:00",
       "lanes": {
@@ -191068,6 +191379,24 @@
       "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
       "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
     },
+    "link:4651a280bc63bc499e10dc2e": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831066",
+      "source": "뉴시스",
+      "source_body_digest": "7ab9a130aea1fcc8d5431837f9a467165ef2d1a07cf875d6a3989fc4a6d8e089",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T09:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대글로비스, 美 필라델피아 항만 계약 2056년까지 연장 추진…\"물류 허브 구축\"",
+      "telegram_core_fact": "항만 내 신규 완성차 물류 부지 확보와 기존 부지 계약을 2056년까지 연장하는 방안도 이번 협약에 포함됐다. 2010년 필라델피아 항만에서 완성차 물류 사업을 시작한 현대글로비스는 2019년 약 64만㎡(19만 평) 완성차 전용 야드 '사우스포트(Southport)'를 개소했다.",
+      "title": "현대글로비스, 美 필라델피아 항만 계약 2056년까지 연장 추진…\"물류 허브 구축\""
+    },
     "link:465d328d23235e7ffa81ba7a": {
       "first_seen_kst": "2026-10-13T16:01:00+09:00",
       "lanes": {
@@ -191224,6 +191553,26 @@
       "link": "https://www.mt.co.kr/industry/2026/10/01/2026100117344654643",
       "source": "머니투데이",
       "title": "'영업익 5% 과징금' 산안법 통과..재계 \"중소·중견기업 존폐 영향\""
+    },
+    "link:46e05ef27da424fd0eb617c7": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/19/2026101909433422474",
+      "source": "머니투데이",
+      "source_body_digest": "7bb0e2e10673c3bead216f8c3751e7766aff04481f4cf3c9e92ee62d1be7c90b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcddfb7ec79f9300a218e8b4f22f5e245895857df65035c15fd4bc80376779f9",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3"
+      ],
+      "source_published_kst": "2026-10-19T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화",
+      "telegram_core_fact": "한미반도체가 지난 16일(현지시간) 미국 캘리포니아주 산호세에서 한미USA 오피스에서 개소식을 진행했다고 19일 밝혔다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화"
     },
     "link:46eff1cd48dc2ef34fcfbff6": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -205443,6 +205792,33 @@
       "telegram_core_fact": "롯데이노베이트[286940]는 안산 글로벌 클라우드 센터(GCC) 운영과 향후 데이터센터 사업 협력을 위해 IT 인프라 전문기업 아이티센씨티에스[031820]와 업무협약(MOU)을 체결했다고 16일 밝혔다. 롯데이노베이트는 이지스자산운용과 5년간의 위탁운영 계약을 체결해 센터 운영 전반을 총괄할 예정이다.",
       "title": "롯데이노베이트, 국내외 데이터센터 사업확대…\"성장동력 육성\""
     },
+    "link:6961aa47aa06c71d7c808687": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
+    },
     "link:69651256855d45d0f997b55e": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
       "lanes": {
@@ -216282,6 +216658,28 @@
       "telegram_core_fact": "한승연 연구원은 이날 보고서에서 \"올해 코스피 의약품 주가가 27% 내린 데 비해 셀트리온은 6% 하락에 그쳐 코스피 제약사 내 상대적 견조한 모습\"이라며 \"업종 둔화에도 강력한 신제품 효과로 올해 영업이익이 전년 대비 62%의 고성장이 예상된다\"고 전망했다.",
       "title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스"
     },
+    "link:8358335c6215db56c47da8c0": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831460",
+      "source": "뉴시스",
+      "source_body_digest": "6a9a56da4b66dc40293e8591e8ce99fc4a27ce2c0df05ad7a8d45addb957eeb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:545bcdfacbecb99eb65a74f30270c995e2a1cfdc752b28cfc585fe79c023600d",
+      "source_fact_keys": [
+        "source_fact:v1:133dc47b7fc9e7620e3c459ef2d7f8a57112f01b927881088c149d717d6ba74d",
+        "source_fact:v1:38261fb21720951e22c3fa192048339aa73165400529efeddfb687b4bd4eea28",
+        "source_fact:v1:a3f2170b8655d824b23260bf1d11f5654573af53bbe16eb0d6c8713227a11e0f"
+      ],
+      "source_published_kst": "2026-10-19T11:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적",
+      "telegram_core_fact": "가온전선이 올해 3분기 영업이익 520억원을 기록하며 역대 최대 실적을 달성했다.",
+      "title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적"
+    },
     "link:835afc0cfc7fbb7df69558d7": {
       "first_seen_kst": "2026-10-16T22:28:52+09:00",
       "lanes": {
@@ -217150,6 +217548,30 @@
       "link": "https://magazine.hankyung.com/business/article/202610029993b",
       "source": "한국경제",
       "title": "HD현대重, 태안 해상변전소 본계약…해상풍력 밸류체인 확대"
+    },
+    "link:85e4b8881ffec8680ba61e0d": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831085",
+      "source": "뉴시스",
+      "source_body_digest": "f911fdb5032e1581ca981771bbed3c6594926a5c08cfb102717c0269cebb9142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f25dcc4e01d194a9c13066b3d2d7939dd173b578dc7d73cfe6359c51aebb845",
+      "source_fact_keys": [
+        "source_fact:v1:44e7078e4e230d7f45cdc87ca7af1b117a8ec69c30d9ab4ad8ef0b1f8c93a539",
+        "source_fact:v1:68ba96d9472c3fa2c4c1a8a636bba2c30d2ea87cbc7bef104e6e9f439f581d69",
+        "source_fact:v1:6d77e371b9f8ff5961b0420f2968fce22ce8a91a813510582cf6f46d726bf4e0",
+        "source_fact:v1:863f86cf468fc4512c969fbb6961523d60bda28685e7757bdfe257a18c0d638d",
+        "source_fact:v1:f31954de8e3014f473f5f5d48612b8645d45a33d7e5417c5780a5ae77c2dbbba"
+      ],
+      "source_published_kst": "2026-10-19T09:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
+      "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
+      "title": "엠엑스온, 전사 공급망 관리 체계 구축"
     },
     "link:85ea778d4233b7ad3885f2d9": {
       "first_seen_kst": "2026-10-17T03:36:50+09:00",
@@ -221727,6 +222149,28 @@
       "link": "https://www.fnnews.com/news/202609201704467601",
       "source": "파이낸셜뉴스",
       "title": "CXMT, 5세대 D램 공정 양산 돌입...韓 추격 가속"
+    },
+    "link:91e666276145393bd8ee427b": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637233",
+      "source": "이투데이",
+      "source_body_digest": "0ed42452e8da8dfebb8e488cc1b27dcf3134e7ed7d3e0d274bc6c56486691ad9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95f244c417ff29c5aafeb0a256602d90ba0fe0dcb9b6f74958777b7809221aa3",
+      "source_fact_keys": [
+        "source_fact:v1:407c0b95dbd24325737e9d48182183679a657c61979e4a99b772e77a86fd0b8c",
+        "source_fact:v1:880cc4656c15623c6135248de2fdd52c63733b3754b2dc970dd879c7e40edd95",
+        "source_fact:v1:ffdd934ca5f46f0515d2a3eaac98a3b9b35e729b34b67b6a952bf2c32b9ba0d6"
+      ],
+      "source_published_kst": "2026-10-19T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여",
+      "telegram_core_fact": "1·2차 교육에서는 소송과 강제집행 등 초기 권리구제 절차를, 3·4차 교육에서는 경·공매와 배당을 통한 보증금 회수 방안을 다뤘다.",
+      "title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여"
     },
     "link:91fdd9dfd65698d253c7b25a": {
       "first_seen_kst": "2026-10-02T02:33:30+09:00",
@@ -278276,6 +278720,24 @@
       "telegram_core_fact": "박광래 신한투자증권 연구위원은 \"현대모비스의 2026년 3분기 연결 기준 매출액은 15조5332억원으로 전년비 3.3% 증가하고 영업이익은 9041억원으로 15.9% 늘어날 것으로 추정된다\"며 \"완성차 생산과 판매 부진, 환율 하락에도 불구하고 양호한 수익성을 기록할 것\"이라고 말했다.",
       "title": "신한투자證 \"현대모비스, 제조부문 수익성 개선\""
     },
+    "original:1c0d7b8a6e670071cd7b25eb": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831066",
+      "source": "뉴시스",
+      "source_body_digest": "7ab9a130aea1fcc8d5431837f9a467165ef2d1a07cf875d6a3989fc4a6d8e089",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T09:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대글로비스, 美 필라델피아 항만 계약 2056년까지 연장 추진…\"물류 허브 구축\"",
+      "telegram_core_fact": "항만 내 신규 완성차 물류 부지 확보와 기존 부지 계약을 2056년까지 연장하는 방안도 이번 협약에 포함됐다. 2010년 필라델피아 항만에서 완성차 물류 사업을 시작한 현대글로비스는 2019년 약 64만㎡(19만 평) 완성차 전용 야드 '사우스포트(Southport)'를 개소했다.",
+      "title": "현대글로비스, 美 필라델피아 항만 계약 2056년까지 연장 추진…\"물류 허브 구축\""
+    },
     "original:1c110567ae025af94fce1d23": {
       "first_seen_kst": "2026-10-13T07:02:46+09:00",
       "lanes": {
@@ -281628,6 +282090,28 @@
       "source_title": "트럼프 \"11월 3일 중간선거 전까지 이란 공격 안 해\" | 연합뉴스",
       "telegram_core_fact": "또 트럼프 대통령은 소셜미디어를 통해 \"우리는 이란과 생산적인 논의를 진행하고 있다\"며 \"이란은 경제적으로나 군사적으로 매우 나쁜 상황에 처해 있고, 봉쇄 조치는 전면적으로 유지될 것\"이라고도 말했습니다.",
       "title": "트럼프 \"11월 3일 중간선거 전까지 이란 공격 안 해\" | 연합뉴스"
+    },
+    "original:246e3c412f5b31b59b5a9140": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637233",
+      "source": "이투데이",
+      "source_body_digest": "0ed42452e8da8dfebb8e488cc1b27dcf3134e7ed7d3e0d274bc6c56486691ad9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95f244c417ff29c5aafeb0a256602d90ba0fe0dcb9b6f74958777b7809221aa3",
+      "source_fact_keys": [
+        "source_fact:v1:407c0b95dbd24325737e9d48182183679a657c61979e4a99b772e77a86fd0b8c",
+        "source_fact:v1:880cc4656c15623c6135248de2fdd52c63733b3754b2dc970dd879c7e40edd95",
+        "source_fact:v1:ffdd934ca5f46f0515d2a3eaac98a3b9b35e729b34b67b6a952bf2c32b9ba0d6"
+      ],
+      "source_published_kst": "2026-10-19T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여",
+      "telegram_core_fact": "1·2차 교육에서는 소송과 강제집행 등 초기 권리구제 절차를, 3·4차 교육에서는 경·공매와 배당을 통한 보증금 회수 방안을 다뤘다.",
+      "title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여"
     },
     "original:246ea032141a9f245e23407c": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
@@ -298155,6 +298639,26 @@
       ],
       "source_published_kst": "2026-10-07T07:48+09:00",
       "title": "트럼프 \"이란 누가 이끄는지 모른다는 게 가장 큰 문제\""
+    },
+    "original:4ba86260620c90d024f7acd8": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637327",
+      "source": "이투데이",
+      "source_body_digest": "c2826bc11d1453ec9bfbd651523e498ed7f76a39490e7dd97612f7401770d347",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:0912950299e0dffb15465c13df3318d25ba0e9ee093d1c2d32cd743d725a8989",
+      "source_fact_identity": "source_facts:v1:d097e493ef5d477f6024e8eb1bbce2240eaf024733e4f04a8e2d3ff2ddde3dc6",
+      "source_fact_keys": [
+        "source_fact:v1:4af56444819ca4071fe96f9fe882cb3a0c5960ab03e0263a3a59785a2aca568d"
+      ],
+      "source_published_kst": "2026-10-19T11:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환",
+      "telegram_core_fact": "파두는 19일 잠정 실적 공시를 통해 올해 3분기 매출 1436억원, 영업이익 363억원을 달성했다고 밝혔다.",
+      "title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환"
     },
     "original:4bb6126cbd2c6d9988e024ad": {
       "first_seen_kst": "2026-10-03T12:48:39+09:00",
@@ -326138,6 +326642,26 @@
       "telegram_core_fact": "실제로 지난 12일 코스피가 3.65% 떨어졌을 때 개인투자자들은 유가증권시장에서 1조4674억원어치를 순매수했다. 코스피가 5.46% 급락한 이날 개인투자자들은 5413억원을 순매수했다.",
       "title": "\"떨어졌을 때 사자더니\"…개미들 저가 매수 속 반대매매 593억원"
     },
+    "original:92a3be4cd5af883808f8936a": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/19/2026101909433422474",
+      "source": "머니투데이",
+      "source_body_digest": "7bb0e2e10673c3bead216f8c3751e7766aff04481f4cf3c9e92ee62d1be7c90b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcddfb7ec79f9300a218e8b4f22f5e245895857df65035c15fd4bc80376779f9",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3"
+      ],
+      "source_published_kst": "2026-10-19T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화",
+      "telegram_core_fact": "한미반도체가 지난 16일(현지시간) 미국 캘리포니아주 산호세에서 한미USA 오피스에서 개소식을 진행했다고 19일 밝혔다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화"
+    },
     "original:92a644f218071566be837441": {
       "first_seen_kst": "2026-10-04T15:45:24+09:00",
       "lanes": {
@@ -335304,6 +335828,30 @@
       "telegram_core_fact": "고 연구원은 “컴포넌트의 경우 수주 공시를 통해 AI 서버 수요의 견조함이 확인된다”며 “2027~2028년 반영될 수주금액만 4조원 수준”이라고 강조했다.",
       "title": "\"삼성전기, 3년 성장 사이클 열린다…수주 확대 지속\""
     },
+    "original:a96a197f978142e13085721e": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831085",
+      "source": "뉴시스",
+      "source_body_digest": "f911fdb5032e1581ca981771bbed3c6594926a5c08cfb102717c0269cebb9142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f25dcc4e01d194a9c13066b3d2d7939dd173b578dc7d73cfe6359c51aebb845",
+      "source_fact_keys": [
+        "source_fact:v1:44e7078e4e230d7f45cdc87ca7af1b117a8ec69c30d9ab4ad8ef0b1f8c93a539",
+        "source_fact:v1:68ba96d9472c3fa2c4c1a8a636bba2c30d2ea87cbc7bef104e6e9f439f581d69",
+        "source_fact:v1:6d77e371b9f8ff5961b0420f2968fce22ce8a91a813510582cf6f46d726bf4e0",
+        "source_fact:v1:863f86cf468fc4512c969fbb6961523d60bda28685e7757bdfe257a18c0d638d",
+        "source_fact:v1:f31954de8e3014f473f5f5d48612b8645d45a33d7e5417c5780a5ae77c2dbbba"
+      ],
+      "source_published_kst": "2026-10-19T09:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
+      "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
+      "title": "엠엑스온, 전사 공급망 관리 체계 구축"
+    },
     "original:a97165826f4b5a21432a7935": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
       "lanes": {
@@ -340135,6 +340683,28 @@
       "source_title": "최태원 이어 산업·국방·국토장관 군공항행…호남 반도체 점검 | 연합뉴스",
       "telegram_core_fact": "호남 반도체 클러스터 예정지인 광주 군공항에 최태원 SK그룹 회장에 이어 정부 관계부처 장관들의 발길이 이어지고 있다. 최 회장은 호남 반도체 공장 건설을 최대한 서두르고, 투자를 확대할 수 있다는 의지도 보였다.",
       "title": "최태원 이어 산업·국방·국토장관 군공항행…호남 반도체 점검 | 연합뉴스"
+    },
+    "original:b5596abb369029f4f8536ec5": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831460",
+      "source": "뉴시스",
+      "source_body_digest": "6a9a56da4b66dc40293e8591e8ce99fc4a27ce2c0df05ad7a8d45addb957eeb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:545bcdfacbecb99eb65a74f30270c995e2a1cfdc752b28cfc585fe79c023600d",
+      "source_fact_keys": [
+        "source_fact:v1:133dc47b7fc9e7620e3c459ef2d7f8a57112f01b927881088c149d717d6ba74d",
+        "source_fact:v1:38261fb21720951e22c3fa192048339aa73165400529efeddfb687b4bd4eea28",
+        "source_fact:v1:a3f2170b8655d824b23260bf1d11f5654573af53bbe16eb0d6c8713227a11e0f"
+      ],
+      "source_published_kst": "2026-10-19T11:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적",
+      "telegram_core_fact": "가온전선이 올해 3분기 영업이익 520억원을 기록하며 역대 최대 실적을 달성했다.",
+      "title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적"
     },
     "original:b55aab252ea48f211484312a": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -367428,6 +367998,33 @@
       "source_title": "부동산원·HUG \"정부 주택공급 확대 뒷받침할 것\"",
       "telegram_core_fact": "한국부동산원과 주택도시보증공사(HUG)가 정부의 주택공급 확대 정책을 뒷받침하기 위해 프로젝트파이낸싱(PF) 보증과 리츠 관리·감독 기능을 강화하겠다고 밝혔다.",
       "title": "부동산원·HUG \"정부 주택공급 확대 뒷받침할 것\""
+    },
+    "original:fc10173dc0b926bbb7e64928": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
     },
     "original:fc1d264cec263501ed4a1ec5": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -395677,6 +396274,33 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
       "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
     },
+    "source_fact:10b6123d623546c619dcb769": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
+    },
     "source_fact:10b6d240f3d5c9d9523f8749": {
       "first_seen_kst": "2026-10-05T23:37:00+09:00",
       "lanes": {
@@ -404649,6 +405273,33 @@
       "telegram_core_fact": "고객 주문과 로그인뿐 아니라 물류 현장의 상품 분류 작업과 배송에도 차질이 빚어진 것으로 파악됐다.",
       "title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질"
     },
+    "source_fact:16a27bb75a72c12da9a3e090": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
+    },
     "source_fact:16a48cc002bd6ac48ee9797d": {
       "first_seen_kst": "2026-10-15T08:21:08+09:00",
       "lanes": {
@@ -408292,6 +408943,33 @@
       ],
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
+    },
+    "source_fact:1925f69dcec77272b091cd5c": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
     },
     "source_fact:19269ef2f4a6cccc32996f91": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
@@ -420228,6 +420906,33 @@
       "source_title": "\"반도체는 팀 스포츠\"…리사 수 \"삼성·SK와 HBM4 협력…전 세계 수백억달러 투자\"",
       "telegram_core_fact": "수 회장은 차세대 인공지능(AI) 가속기 제품군에 6세대 고대역폭메모리(HBM4)를 탑재하고 있음을 공식화하며, 한국 핵심 파트너사들과 5년 이상 장기 공급망을 구축할 계획이라고 밝혔다.",
       "title": "\"반도체는 팀 스포츠\"…리사 수 \"삼성·SK와 HBM4 협력…전 세계 수백억달러 투자\""
+    },
+    "source_fact:205afd1f48ff03cbb13dbfdd": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
     },
     "source_fact:205c78f6e25ea9cc54b2fb8f": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
@@ -433611,6 +434316,33 @@
       "source_title": "사상 최고치 달리던 美증시 제동…AI 랠리 시험대[월스트리트in]",
       "telegram_core_fact": "사상 최고치 부근까지 오른 주가와 5%를 웃도는 장기금리가 공존하려면 기업들이 높아진 기대를 실적으로 증명해야 한다. 특히 AI에 쏟아부은 막대한 자금이 실제 매출과 이익으로 연결되고 있는지가 이번 실적시즌의 핵심 시험대가 될 전망이다.",
       "title": "사상 최고치 달리던 美증시 제동…AI 랠리 시험대[월스트리트in]"
+    },
+    "source_fact:2820db8bfeedf813e7b35854": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
     },
     "source_fact:2831b2bc1f70521df51b9cc5": {
       "first_seen_kst": "2026-10-11T15:53:29+09:00",
@@ -547294,6 +548026,28 @@
       "telegram_core_fact": "HLB그룹이 올해 연말부터 내년 상반기까지 신약 상업화와 허가, 후속 후보물질 임상 성과를 동시에 검증받는다. 신경영양성각막염 치료제와 차세대 세포치료제 임상 결과 발표도 앞두고 있어 신약 개발사로서 역량을 재확인하는 시험대에 오를 전망이다.",
       "title": "HLB그룹, 간암신약 美 재도전·임상 발표…연말·연초 성장 시험대"
     },
+    "source_fact:6ecfa0ea7b110b119ec2dc85": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831460",
+      "source": "뉴시스",
+      "source_body_digest": "6a9a56da4b66dc40293e8591e8ce99fc4a27ce2c0df05ad7a8d45addb957eeb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:545bcdfacbecb99eb65a74f30270c995e2a1cfdc752b28cfc585fe79c023600d",
+      "source_fact_keys": [
+        "source_fact:v1:133dc47b7fc9e7620e3c459ef2d7f8a57112f01b927881088c149d717d6ba74d",
+        "source_fact:v1:38261fb21720951e22c3fa192048339aa73165400529efeddfb687b4bd4eea28",
+        "source_fact:v1:a3f2170b8655d824b23260bf1d11f5654573af53bbe16eb0d6c8713227a11e0f"
+      ],
+      "source_published_kst": "2026-10-19T11:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적",
+      "telegram_core_fact": "가온전선이 올해 3분기 영업이익 520억원을 기록하며 역대 최대 실적을 달성했다.",
+      "title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적"
+    },
     "source_fact:6ed4dc4e19f70cb2f3ae5e67": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
       "lanes": {
@@ -548704,6 +549458,30 @@
       "source_title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어",
       "telegram_core_fact": "반도체 산업이 전례 없는 호황을 누리는 반면, 건설 현장에서는 30만명이 넘는 노동자가 원치 않게 일터를 떠난 것으로 나타났다. 고용계약 종료나 구조조정, 해고 등에 따른 비자발적 이직자가 30만명을 넘어선 것은 2023년 9월(31만 432명) 이후 35개월 만이다.",
       "title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어"
+    },
+    "source_fact:6fd41c3d830141a7bd6b1cdb": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831085",
+      "source": "뉴시스",
+      "source_body_digest": "f911fdb5032e1581ca981771bbed3c6594926a5c08cfb102717c0269cebb9142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f25dcc4e01d194a9c13066b3d2d7939dd173b578dc7d73cfe6359c51aebb845",
+      "source_fact_keys": [
+        "source_fact:v1:44e7078e4e230d7f45cdc87ca7af1b117a8ec69c30d9ab4ad8ef0b1f8c93a539",
+        "source_fact:v1:68ba96d9472c3fa2c4c1a8a636bba2c30d2ea87cbc7bef104e6e9f439f581d69",
+        "source_fact:v1:6d77e371b9f8ff5961b0420f2968fce22ce8a91a813510582cf6f46d726bf4e0",
+        "source_fact:v1:863f86cf468fc4512c969fbb6961523d60bda28685e7757bdfe257a18c0d638d",
+        "source_fact:v1:f31954de8e3014f473f5f5d48612b8645d45a33d7e5417c5780a5ae77c2dbbba"
+      ],
+      "source_published_kst": "2026-10-19T09:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
+      "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
+      "title": "엠엑스온, 전사 공급망 관리 체계 구축"
     },
     "source_fact:6fd83272e0ae780b1ab54e3b": {
       "first_seen_kst": "2026-10-08T19:27:03+09:00",
@@ -550297,6 +551075,30 @@
       "source_title": "반도체특별시 첫발, 3조대 앰코 광주공장 증설 19일 착공",
       "telegram_core_fact": "글로벌 반도체 후공정 기업 앰코테크놀로지코리아(엠코)가 3조원대 광주공장 증설 공사 착공에 나선다.",
       "title": "반도체특별시 첫발, 3조대 앰코 광주공장 증설 19일 착공"
+    },
+    "source_fact:70b7e391afb36cdc28759a3f": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831085",
+      "source": "뉴시스",
+      "source_body_digest": "f911fdb5032e1581ca981771bbed3c6594926a5c08cfb102717c0269cebb9142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f25dcc4e01d194a9c13066b3d2d7939dd173b578dc7d73cfe6359c51aebb845",
+      "source_fact_keys": [
+        "source_fact:v1:44e7078e4e230d7f45cdc87ca7af1b117a8ec69c30d9ab4ad8ef0b1f8c93a539",
+        "source_fact:v1:68ba96d9472c3fa2c4c1a8a636bba2c30d2ea87cbc7bef104e6e9f439f581d69",
+        "source_fact:v1:6d77e371b9f8ff5961b0420f2968fce22ce8a91a813510582cf6f46d726bf4e0",
+        "source_fact:v1:863f86cf468fc4512c969fbb6961523d60bda28685e7757bdfe257a18c0d638d",
+        "source_fact:v1:f31954de8e3014f473f5f5d48612b8645d45a33d7e5417c5780a5ae77c2dbbba"
+      ],
+      "source_published_kst": "2026-10-19T09:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
+      "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
+      "title": "엠엑스온, 전사 공급망 관리 체계 구축"
     },
     "source_fact:70c2399175b9c009c317be3c": {
       "first_seen_kst": "2026-10-11T11:48:17+09:00",
@@ -595267,6 +596069,28 @@
       "telegram_core_fact": "황종우 해수부 장관은 통합 방침은 결정된 사안이라면서도 당시보다 항만공사 인력이 늘고 국제물류 공급망 환경이 달라졌다고 설명했다. 여야 의원들은 4개 항만공사 통합의 효과와 지역별 자율성 약화를 따져 물었고, 북극항로 시범운항 이후 경제성과 안전대책을 구체적으로 점검해야 한다고 주문했다.",
       "title": "항만공사 통합·북극항로 검증대…해수부 국감서 경제성·지역균형 추궁(종합)[국감]"
     },
+    "source_fact:8df8e92fe45903405201e28b": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637233",
+      "source": "이투데이",
+      "source_body_digest": "0ed42452e8da8dfebb8e488cc1b27dcf3134e7ed7d3e0d274bc6c56486691ad9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95f244c417ff29c5aafeb0a256602d90ba0fe0dcb9b6f74958777b7809221aa3",
+      "source_fact_keys": [
+        "source_fact:v1:407c0b95dbd24325737e9d48182183679a657c61979e4a99b772e77a86fd0b8c",
+        "source_fact:v1:880cc4656c15623c6135248de2fdd52c63733b3754b2dc970dd879c7e40edd95",
+        "source_fact:v1:ffdd934ca5f46f0515d2a3eaac98a3b9b35e729b34b67b6a952bf2c32b9ba0d6"
+      ],
+      "source_published_kst": "2026-10-19T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여",
+      "telegram_core_fact": "1·2차 교육에서는 소송과 강제집행 등 초기 권리구제 절차를, 3·4차 교육에서는 경·공매와 배당을 통한 보증금 회수 방안을 다뤘다.",
+      "title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여"
+    },
     "source_fact:8dffe547009367c0f2732fe8": {
       "first_seen_kst": "2026-10-14T20:43:11+09:00",
       "lanes": {
@@ -608492,6 +609316,33 @@
       "source_title": "씨이랩, AI 데이터센터 인프라 컨퍼런스 개최…기업 고객 확대 추진",
       "telegram_core_fact": "인공지능(AI) 인프라 소프트웨어 전문기업 씨이랩(189330)이 기업의 AI 데이터센터(AIDC) 전환을 지원하기 위한 컨퍼런스를 개최하고 기업 고객 확대에 나섰다.",
       "title": "씨이랩, AI 데이터센터 인프라 컨퍼런스 개최…기업 고객 확대 추진"
+    },
+    "source_fact:969009e64c22dc6bfb993d17": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
     },
     "source_fact:9691e27e6017dbfdca0eb213": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
@@ -627420,6 +628271,33 @@
       "telegram_core_fact": "증권가는 아비언트의 2026년 매출액을 약 34억2,167만 달러로 전년 대비 4.95% 증가할 것으로 예상한다.",
       "title": "아비언트, 신임 대표에 마이크 프랭크 선임..가이던스 유지"
     },
+    "source_fact:a24c95727b832a3209f54efe": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
+    },
     "source_fact:a24cdfe8dc78d5adbeecbb64": {
       "first_seen_kst": "2026-10-16T19:48:28+09:00",
       "lanes": {
@@ -634505,6 +635383,30 @@
       "telegram_core_fact": "SK하이닉스의 D램과 낸드플래시를 비롯해 인세라솔루션의 고속 정밀 조정 거울, 모멘텀스페이스의 반작용휠, KAIST(한국과학기술원)의 자세결정 및 시스템 모듈, 코스모비의 전기추력기용 1A급 할로우음극, 인터그래비티 테크놀로지스의 궤도 수송선 항전 장비 등이 실제 우주환경에서 성능을 검증한다.",
       "title": "삼전 D램·낸드플래시 이어 SK하이닉스도 우주검증"
     },
+    "source_fact:a669e8fee6e877ad9c65f470": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831085",
+      "source": "뉴시스",
+      "source_body_digest": "f911fdb5032e1581ca981771bbed3c6594926a5c08cfb102717c0269cebb9142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f25dcc4e01d194a9c13066b3d2d7939dd173b578dc7d73cfe6359c51aebb845",
+      "source_fact_keys": [
+        "source_fact:v1:44e7078e4e230d7f45cdc87ca7af1b117a8ec69c30d9ab4ad8ef0b1f8c93a539",
+        "source_fact:v1:68ba96d9472c3fa2c4c1a8a636bba2c30d2ea87cbc7bef104e6e9f439f581d69",
+        "source_fact:v1:6d77e371b9f8ff5961b0420f2968fce22ce8a91a813510582cf6f46d726bf4e0",
+        "source_fact:v1:863f86cf468fc4512c969fbb6961523d60bda28685e7757bdfe257a18c0d638d",
+        "source_fact:v1:f31954de8e3014f473f5f5d48612b8645d45a33d7e5417c5780a5ae77c2dbbba"
+      ],
+      "source_published_kst": "2026-10-19T09:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
+      "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
+      "title": "엠엑스온, 전사 공급망 관리 체계 구축"
+    },
     "source_fact:a66b9a9304062d03bb667511": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
@@ -635094,6 +635996,28 @@
       "source_title": "트럼프, '러·우 에너지 휴전합의' 했다는데…러는 공습 계속(종합2보) | 연합뉴스",
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 11일(현지시간) 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔다. 젤렌스키 대통령은 또 이날 저녁 영상 연설에서 러시아가 트럼프 대통령의 발표 이후에도 우크라이나 제2의 도시 하르키우의 열병합발전소를 공격하는 등 에너지 시설 공격을 지속했다고 밝혔다.",
       "title": "트럼프, '러·우 에너지 휴전합의' 했다는데…러는 공습 계속(종합2보) | 연합뉴스"
+    },
+    "source_fact:a6d6a8ad8655a92589371742": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637233",
+      "source": "이투데이",
+      "source_body_digest": "0ed42452e8da8dfebb8e488cc1b27dcf3134e7ed7d3e0d274bc6c56486691ad9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95f244c417ff29c5aafeb0a256602d90ba0fe0dcb9b6f74958777b7809221aa3",
+      "source_fact_keys": [
+        "source_fact:v1:407c0b95dbd24325737e9d48182183679a657c61979e4a99b772e77a86fd0b8c",
+        "source_fact:v1:880cc4656c15623c6135248de2fdd52c63733b3754b2dc970dd879c7e40edd95",
+        "source_fact:v1:ffdd934ca5f46f0515d2a3eaac98a3b9b35e729b34b67b6a952bf2c32b9ba0d6"
+      ],
+      "source_published_kst": "2026-10-19T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여",
+      "telegram_core_fact": "1·2차 교육에서는 소송과 강제집행 등 초기 권리구제 절차를, 3·4차 교육에서는 경·공매와 배당을 통한 보증금 회수 방안을 다뤘다.",
+      "title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여"
     },
     "source_fact:a6d8ec94fdb592c3b091a20e": {
       "first_seen_kst": "2026-10-13T23:22:47+09:00",
@@ -674288,6 +675212,28 @@
       "telegram_core_fact": "신화망과 경제통, 신랑재경, 홍콩경제일보에 따르면 중국 해관총서(海關總署 관세청격)는 14일 달러 기준으로 9월 수출액이 전년 동월 대비 36.3% 크게 늘어난 4471억8000만 달러(약 598조2835억원)를 기록했다고 발표했다.",
       "title": "[올댓차이나] 9월 中 수출 36.3% 급증…\"무역흑자 1335억$·20개월 만에 최대\""
     },
+    "source_fact:c01b52665c9623f510cb8034": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831460",
+      "source": "뉴시스",
+      "source_body_digest": "6a9a56da4b66dc40293e8591e8ce99fc4a27ce2c0df05ad7a8d45addb957eeb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:545bcdfacbecb99eb65a74f30270c995e2a1cfdc752b28cfc585fe79c023600d",
+      "source_fact_keys": [
+        "source_fact:v1:133dc47b7fc9e7620e3c459ef2d7f8a57112f01b927881088c149d717d6ba74d",
+        "source_fact:v1:38261fb21720951e22c3fa192048339aa73165400529efeddfb687b4bd4eea28",
+        "source_fact:v1:a3f2170b8655d824b23260bf1d11f5654573af53bbe16eb0d6c8713227a11e0f"
+      ],
+      "source_published_kst": "2026-10-19T11:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적",
+      "telegram_core_fact": "가온전선이 올해 3분기 영업이익 520억원을 기록하며 역대 최대 실적을 달성했다.",
+      "title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적"
+    },
     "source_fact:c01de5fa34672858edb0957c": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -683595,6 +684541,30 @@
       "source_published_kst": "2026-10-06T15:42+09:00",
       "title": "MSDI, 구미시와 7천억 규모 미사일 방산단지 조성 MOU | 연합뉴스"
     },
+    "source_fact:c5ae6a499665a60f89266dd5": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831085",
+      "source": "뉴시스",
+      "source_body_digest": "f911fdb5032e1581ca981771bbed3c6594926a5c08cfb102717c0269cebb9142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f25dcc4e01d194a9c13066b3d2d7939dd173b578dc7d73cfe6359c51aebb845",
+      "source_fact_keys": [
+        "source_fact:v1:44e7078e4e230d7f45cdc87ca7af1b117a8ec69c30d9ab4ad8ef0b1f8c93a539",
+        "source_fact:v1:68ba96d9472c3fa2c4c1a8a636bba2c30d2ea87cbc7bef104e6e9f439f581d69",
+        "source_fact:v1:6d77e371b9f8ff5961b0420f2968fce22ce8a91a813510582cf6f46d726bf4e0",
+        "source_fact:v1:863f86cf468fc4512c969fbb6961523d60bda28685e7757bdfe257a18c0d638d",
+        "source_fact:v1:f31954de8e3014f473f5f5d48612b8645d45a33d7e5417c5780a5ae77c2dbbba"
+      ],
+      "source_published_kst": "2026-10-19T09:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
+      "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
+      "title": "엠엑스온, 전사 공급망 관리 체계 구축"
+    },
     "source_fact:c5b8081de46318d6f9850dbd": {
       "first_seen_kst": "2026-10-11T16:47:25+09:00",
       "lanes": {
@@ -689660,6 +690630,26 @@
       "telegram_core_fact": "이번 협약을 통해 4개 기관은 도내 소기업, 소상공인에게 총 75억원 '제주 소상공인 희망온 특별보증'을 공급한다.",
       "title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원"
     },
+    "source_fact:c94be4c3e0a608e588f8fbbd": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637327",
+      "source": "이투데이",
+      "source_body_digest": "c2826bc11d1453ec9bfbd651523e498ed7f76a39490e7dd97612f7401770d347",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:0912950299e0dffb15465c13df3318d25ba0e9ee093d1c2d32cd743d725a8989",
+      "source_fact_identity": "source_facts:v1:d097e493ef5d477f6024e8eb1bbce2240eaf024733e4f04a8e2d3ff2ddde3dc6",
+      "source_fact_keys": [
+        "source_fact:v1:4af56444819ca4071fe96f9fe882cb3a0c5960ab03e0263a3a59785a2aca568d"
+      ],
+      "source_published_kst": "2026-10-19T11:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환",
+      "telegram_core_fact": "파두는 19일 잠정 실적 공시를 통해 올해 3분기 매출 1436억원, 영업이익 363억원을 달성했다고 밝혔다.",
+      "title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환"
+    },
     "source_fact:c94bf725c89c3e0ca81ca4f8": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
       "lanes": {
@@ -694687,6 +695677,28 @@
       "source_published_kst": "2026-10-05T18:18+09:00",
       "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
     },
+    "source_fact:cccdf2fea98d3ec9977c2f3d": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637233",
+      "source": "이투데이",
+      "source_body_digest": "0ed42452e8da8dfebb8e488cc1b27dcf3134e7ed7d3e0d274bc6c56486691ad9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95f244c417ff29c5aafeb0a256602d90ba0fe0dcb9b6f74958777b7809221aa3",
+      "source_fact_keys": [
+        "source_fact:v1:407c0b95dbd24325737e9d48182183679a657c61979e4a99b772e77a86fd0b8c",
+        "source_fact:v1:880cc4656c15623c6135248de2fdd52c63733b3754b2dc970dd879c7e40edd95",
+        "source_fact:v1:ffdd934ca5f46f0515d2a3eaac98a3b9b35e729b34b67b6a952bf2c32b9ba0d6"
+      ],
+      "source_published_kst": "2026-10-19T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여",
+      "telegram_core_fact": "1·2차 교육에서는 소송과 강제집행 등 초기 권리구제 절차를, 3·4차 교육에서는 경·공매와 배당을 통한 보증금 회수 방안을 다뤘다.",
+      "title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여"
+    },
     "source_fact:ccd072401ed75a483348772b": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
       "lanes": {
@@ -696687,6 +697699,26 @@
       "source_title": "뱅크오브아메리카, 3분기 희석EPS 0.91달러..규제비용에 12.5%↓",
       "telegram_core_fact": "뱅크오브아메리카(BAC)가 3분기 GAAP 기준 희석 주당순이익(EPS) 0.91달러를 기록해 전년 동기 1.04달러보다 12.5% 감소했다고 14일(현지시간) 발표했다.",
       "title": "뱅크오브아메리카, 3분기 희석EPS 0.91달러..규제비용에 12.5%↓"
+    },
+    "source_fact:ce23a9f9ec6c7e882972be8f": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/19/2026101909433422474",
+      "source": "머니투데이",
+      "source_body_digest": "7bb0e2e10673c3bead216f8c3751e7766aff04481f4cf3c9e92ee62d1be7c90b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcddfb7ec79f9300a218e8b4f22f5e245895857df65035c15fd4bc80376779f9",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3"
+      ],
+      "source_published_kst": "2026-10-19T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화",
+      "telegram_core_fact": "한미반도체가 지난 16일(현지시간) 미국 캘리포니아주 산호세에서 한미USA 오피스에서 개소식을 진행했다고 19일 밝혔다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화"
     },
     "source_fact:ce23adab61e67bafea59f340": {
       "first_seen_kst": "2026-10-15T13:40:20+09:00",
@@ -701797,6 +702829,30 @@
       "source_title": "IMF·WB 연차총회 태국서 개막…중동전쟁·공공부채·AI 논의 | 연합뉴스",
       "telegram_core_fact": "아자이 방가 세계은행(WB) 총재는 중동전쟁 이후 이란이 호르무즈 해협을 봉쇄해 전 세계 석유 공급량의 20%가량이 차단됐을 때 세계 경제 성장세가 우려했던 것보다는 안정적으로 유지됐지만 최근 다시 압박이 가중되고 있다고 진단했다.",
       "title": "IMF·WB 연차총회 태국서 개막…중동전쟁·공공부채·AI 논의 | 연합뉴스"
+    },
+    "source_fact:d12e75d3749d7b535d51b034": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831085",
+      "source": "뉴시스",
+      "source_body_digest": "f911fdb5032e1581ca981771bbed3c6594926a5c08cfb102717c0269cebb9142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f25dcc4e01d194a9c13066b3d2d7939dd173b578dc7d73cfe6359c51aebb845",
+      "source_fact_keys": [
+        "source_fact:v1:44e7078e4e230d7f45cdc87ca7af1b117a8ec69c30d9ab4ad8ef0b1f8c93a539",
+        "source_fact:v1:68ba96d9472c3fa2c4c1a8a636bba2c30d2ea87cbc7bef104e6e9f439f581d69",
+        "source_fact:v1:6d77e371b9f8ff5961b0420f2968fce22ce8a91a813510582cf6f46d726bf4e0",
+        "source_fact:v1:863f86cf468fc4512c969fbb6961523d60bda28685e7757bdfe257a18c0d638d",
+        "source_fact:v1:f31954de8e3014f473f5f5d48612b8645d45a33d7e5417c5780a5ae77c2dbbba"
+      ],
+      "source_published_kst": "2026-10-19T09:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
+      "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
+      "title": "엠엑스온, 전사 공급망 관리 체계 구축"
     },
     "source_fact:d131327b817867492bbd1a23": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -714395,6 +715451,33 @@
       "source_title": "IMF, 한국 성장률 3.3%로 상향…AI·반도체 수출 호조 영향",
       "telegram_core_fact": "IMF는 13일 발표한 '10월 세계경제전망(World Economic Outlook)'에서 올해 한국 경제성장률을 3.3%로 제시했다. 중동전쟁 장기화와 국제유가 상승에도 인공지능(AI) 투자 확대에 따른 반도체 수출 호조가 한국 경제의 성장을 견인할 것으로 전망했다.",
       "title": "IMF, 한국 성장률 3.3%로 상향…AI·반도체 수출 호조 영향"
+    },
+    "source_fact:d8ecfdff3d0214ce8ddaa865": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
     },
     "source_fact:d8ed1899d8f4ed88c0f48658": {
       "first_seen_kst": "2026-10-14T20:10:22+09:00",
@@ -730719,6 +731802,28 @@
       ],
       "source_published_kst": "2026-10-06T07:48+09:00",
       "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
+    },
+    "source_fact:e3000698650fa6afc2546130": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831460",
+      "source": "뉴시스",
+      "source_body_digest": "6a9a56da4b66dc40293e8591e8ce99fc4a27ce2c0df05ad7a8d45addb957eeb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:545bcdfacbecb99eb65a74f30270c995e2a1cfdc752b28cfc585fe79c023600d",
+      "source_fact_keys": [
+        "source_fact:v1:133dc47b7fc9e7620e3c459ef2d7f8a57112f01b927881088c149d717d6ba74d",
+        "source_fact:v1:38261fb21720951e22c3fa192048339aa73165400529efeddfb687b4bd4eea28",
+        "source_fact:v1:a3f2170b8655d824b23260bf1d11f5654573af53bbe16eb0d6c8713227a11e0f"
+      ],
+      "source_published_kst": "2026-10-19T11:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적",
+      "telegram_core_fact": "가온전선이 올해 3분기 영업이익 520억원을 기록하며 역대 최대 실적을 달성했다.",
+      "title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적"
     },
     "source_fact:e3007429f8884fb32514b550": {
       "first_seen_kst": "2026-10-14T22:15:19+09:00",
@@ -786524,6 +787629,24 @@
       "telegram_core_fact": "박광래 신한투자증권 연구위원은 \"현대모비스의 2026년 3분기 연결 기준 매출액은 15조5332억원으로 전년비 3.3% 증가하고 영업이익은 9041억원으로 15.9% 늘어날 것으로 추정된다\"며 \"완성차 생산과 판매 부진, 환율 하락에도 불구하고 양호한 수익성을 기록할 것\"이라고 말했다.",
       "title": "신한투자證 \"현대모비스, 제조부문 수익성 개선\""
     },
+    "title:1c0d7b8a6e670071cd7b25eb": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831066",
+      "source": "뉴시스",
+      "source_body_digest": "7ab9a130aea1fcc8d5431837f9a467165ef2d1a07cf875d6a3989fc4a6d8e089",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-19T09:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대글로비스, 美 필라델피아 항만 계약 2056년까지 연장 추진…\"물류 허브 구축\"",
+      "telegram_core_fact": "항만 내 신규 완성차 물류 부지 확보와 기존 부지 계약을 2056년까지 연장하는 방안도 이번 협약에 포함됐다. 2010년 필라델피아 항만에서 완성차 물류 사업을 시작한 현대글로비스는 2019년 약 64만㎡(19만 평) 완성차 전용 야드 '사우스포트(Southport)'를 개소했다.",
+      "title": "현대글로비스, 美 필라델피아 항만 계약 2056년까지 연장 추진…\"물류 허브 구축\""
+    },
     "title:1c110567ae025af94fce1d23": {
       "first_seen_kst": "2026-10-13T07:02:46+09:00",
       "lanes": {
@@ -789900,6 +791023,28 @@
       "source_title": "트럼프 \"11월 3일 중간선거 전까지 이란 공격 안 해\" | 연합뉴스",
       "telegram_core_fact": "또 트럼프 대통령은 소셜미디어를 통해 \"우리는 이란과 생산적인 논의를 진행하고 있다\"며 \"이란은 경제적으로나 군사적으로 매우 나쁜 상황에 처해 있고, 봉쇄 조치는 전면적으로 유지될 것\"이라고도 말했습니다.",
       "title": "트럼프 \"11월 3일 중간선거 전까지 이란 공격 안 해\" | 연합뉴스"
+    },
+    "title:246e3c412f5b31b59b5a9140": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637233",
+      "source": "이투데이",
+      "source_body_digest": "0ed42452e8da8dfebb8e488cc1b27dcf3134e7ed7d3e0d274bc6c56486691ad9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95f244c417ff29c5aafeb0a256602d90ba0fe0dcb9b6f74958777b7809221aa3",
+      "source_fact_keys": [
+        "source_fact:v1:407c0b95dbd24325737e9d48182183679a657c61979e4a99b772e77a86fd0b8c",
+        "source_fact:v1:880cc4656c15623c6135248de2fdd52c63733b3754b2dc970dd879c7e40edd95",
+        "source_fact:v1:ffdd934ca5f46f0515d2a3eaac98a3b9b35e729b34b67b6a952bf2c32b9ba0d6"
+      ],
+      "source_published_kst": "2026-10-19T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여",
+      "telegram_core_fact": "1·2차 교육에서는 소송과 강제집행 등 초기 권리구제 절차를, 3·4차 교육에서는 경·공매와 배당을 통한 보증금 회수 방안을 다뤘다.",
+      "title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여"
     },
     "title:246ea032141a9f245e23407c": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
@@ -806744,6 +807889,26 @@
       ],
       "source_published_kst": "2026-10-07T07:48+09:00",
       "title": "트럼프 \"이란 누가 이끄는지 모른다는 게 가장 큰 문제\""
+    },
+    "title:4ba86260620c90d024f7acd8": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637327",
+      "source": "이투데이",
+      "source_body_digest": "c2826bc11d1453ec9bfbd651523e498ed7f76a39490e7dd97612f7401770d347",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:0912950299e0dffb15465c13df3318d25ba0e9ee093d1c2d32cd743d725a8989",
+      "source_fact_identity": "source_facts:v1:d097e493ef5d477f6024e8eb1bbce2240eaf024733e4f04a8e2d3ff2ddde3dc6",
+      "source_fact_keys": [
+        "source_fact:v1:4af56444819ca4071fe96f9fe882cb3a0c5960ab03e0263a3a59785a2aca568d"
+      ],
+      "source_published_kst": "2026-10-19T11:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환",
+      "telegram_core_fact": "파두는 19일 잠정 실적 공시를 통해 올해 3분기 매출 1436억원, 영업이익 363억원을 달성했다고 밝혔다.",
+      "title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환"
     },
     "title:4bb6126cbd2c6d9988e024ad": {
       "first_seen_kst": "2026-10-03T12:48:39+09:00",
@@ -835304,6 +836469,26 @@
       "telegram_core_fact": "실제로 지난 12일 코스피가 3.65% 떨어졌을 때 개인투자자들은 유가증권시장에서 1조4674억원어치를 순매수했다. 코스피가 5.46% 급락한 이날 개인투자자들은 5413억원을 순매수했다.",
       "title": "\"떨어졌을 때 사자더니\"…개미들 저가 매수 속 반대매매 593억원"
     },
+    "title:92a3be4cd5af883808f8936a": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/19/2026101909433422474",
+      "source": "머니투데이",
+      "source_body_digest": "7bb0e2e10673c3bead216f8c3751e7766aff04481f4cf3c9e92ee62d1be7c90b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcddfb7ec79f9300a218e8b4f22f5e245895857df65035c15fd4bc80376779f9",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3"
+      ],
+      "source_published_kst": "2026-10-19T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화",
+      "telegram_core_fact": "한미반도체가 지난 16일(현지시간) 미국 캘리포니아주 산호세에서 한미USA 오피스에서 개소식을 진행했다고 19일 밝혔다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화"
+    },
     "title:92a644f218071566be837441": {
       "first_seen_kst": "2026-10-04T15:45:24+09:00",
       "lanes": {
@@ -844777,6 +845962,30 @@
       "telegram_core_fact": "고 연구원은 “컴포넌트의 경우 수주 공시를 통해 AI 서버 수요의 견조함이 확인된다”며 “2027~2028년 반영될 수주금액만 4조원 수준”이라고 강조했다.",
       "title": "\"삼성전기, 3년 성장 사이클 열린다…수주 확대 지속\""
     },
+    "title:a96a197f978142e13085721e": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831085",
+      "source": "뉴시스",
+      "source_body_digest": "f911fdb5032e1581ca981771bbed3c6594926a5c08cfb102717c0269cebb9142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f25dcc4e01d194a9c13066b3d2d7939dd173b578dc7d73cfe6359c51aebb845",
+      "source_fact_keys": [
+        "source_fact:v1:44e7078e4e230d7f45cdc87ca7af1b117a8ec69c30d9ab4ad8ef0b1f8c93a539",
+        "source_fact:v1:68ba96d9472c3fa2c4c1a8a636bba2c30d2ea87cbc7bef104e6e9f439f581d69",
+        "source_fact:v1:6d77e371b9f8ff5961b0420f2968fce22ce8a91a813510582cf6f46d726bf4e0",
+        "source_fact:v1:863f86cf468fc4512c969fbb6961523d60bda28685e7757bdfe257a18c0d638d",
+        "source_fact:v1:f31954de8e3014f473f5f5d48612b8645d45a33d7e5417c5780a5ae77c2dbbba"
+      ],
+      "source_published_kst": "2026-10-19T09:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
+      "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
+      "title": "엠엑스온, 전사 공급망 관리 체계 구축"
+    },
     "title:a97165826f4b5a21432a7935": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
       "lanes": {
@@ -849814,6 +851023,28 @@
       "source_title": "최태원 이어 산업·국방·국토장관 군공항행…호남 반도체 점검 | 연합뉴스",
       "telegram_core_fact": "호남 반도체 클러스터 예정지인 광주 군공항에 최태원 SK그룹 회장에 이어 정부 관계부처 장관들의 발길이 이어지고 있다. 최 회장은 호남 반도체 공장 건설을 최대한 서두르고, 투자를 확대할 수 있다는 의지도 보였다.",
       "title": "최태원 이어 산업·국방·국토장관 군공항행…호남 반도체 점검 | 연합뉴스"
+    },
+    "title:b5596abb369029f4f8536ec5": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003831460",
+      "source": "뉴시스",
+      "source_body_digest": "6a9a56da4b66dc40293e8591e8ce99fc4a27ce2c0df05ad7a8d45addb957eeb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:545bcdfacbecb99eb65a74f30270c995e2a1cfdc752b28cfc585fe79c023600d",
+      "source_fact_keys": [
+        "source_fact:v1:133dc47b7fc9e7620e3c459ef2d7f8a57112f01b927881088c149d717d6ba74d",
+        "source_fact:v1:38261fb21720951e22c3fa192048339aa73165400529efeddfb687b4bd4eea28",
+        "source_fact:v1:a3f2170b8655d824b23260bf1d11f5654573af53bbe16eb0d6c8713227a11e0f"
+      ],
+      "source_published_kst": "2026-10-19T11:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적",
+      "telegram_core_fact": "가온전선이 올해 3분기 영업이익 520억원을 기록하며 역대 최대 실적을 달성했다.",
+      "title": "가온전선, 올 3Q 매출 9865억·영업익 520억…역대 최대 실적"
     },
     "title:b55aab252ea48f211484312a": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -877640,6 +878871,33 @@
       "telegram_core_fact": "한국부동산원과 주택도시보증공사(HUG)가 정부의 주택공급 확대 정책을 뒷받침하기 위해 프로젝트파이낸싱(PF) 보증과 리츠 관리·감독 기능을 강화하겠다고 밝혔다.",
       "title": "부동산원·HUG \"정부 주택공급 확대 뒷받침할 것\""
     },
+    "title:fc10173dc0b926bbb7e64928": {
+      "first_seen_kst": "2026-10-19T11:35:40+09:00",
+      "lanes": {
+        "live": "2026-10-19T11:35:40+09:00"
+      },
+      "last_seen_kst": "2026-10-19T11:35:40+09:00",
+      "link": "https://www.hankyung.com/article/2026101903257",
+      "source": "한국경제",
+      "source_body_digest": "ee4f24ae2fe7eef0a190213fb45d64f8e40a5dbe4b3d57c8695ec6179a9e6c5f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e32db0e8ea9b8295dcd9eca23241768b2981d31c63475c8e9638e1006bceec8f",
+      "source_fact_keys": [
+        "source_fact:v1:3bc9bedbe4b0ab363613b7e39030cdc677c31c1cc8962a6eb70d8d956aedf038",
+        "source_fact:v1:7e7e7f1eb89fc6ff7d08561663b2aa0dbc11250616e8918423595b5ea0e8a2e0",
+        "source_fact:v1:8255a5ac65661e6ce8147f021b59f7a8beb395d9498beb5fd0e9309b7851c599",
+        "source_fact:v1:b62b9c06117bd6417195308e4fc221d2ae9be08d69abc269309425bc577a0494",
+        "source_fact:v1:c2bb12c2a8d04608163b7584b3a74301a3b5aa273e2c0ae0061b260cdf8565df",
+        "source_fact:v1:d2ba003bc9e1684de58d1b61c596a41322ee788bc2a47a05282e131c81d8be76",
+        "source_fact:v1:e393d1b38040df2f145de40bc79f7024c15f4183e1b885414803d47d8b1691ae",
+        "source_fact:v1:f65bcc6f114f876562027683dc029371d56525a450b73bbd3b0282312e767195"
+      ],
+      "source_published_kst": "2026-10-19T11:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
+      "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
+      "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
+    },
     "title:fc1d264cec263501ed4a1ec5": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -879515,5 +880773,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-19T11:13:29+09:00"
+  "updated_at_kst": "2026-10-19T11:35:40+09:00"
 }
