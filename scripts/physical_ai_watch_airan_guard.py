@@ -5225,6 +5225,11 @@ BMW_GEN6_PACK_URL = (
     'T0461769EN/bmw-group-begins-series-production-of-gen6-high-voltage-batteries-in-shenyang'
 )
 JPM_SRI_DEPLOYMENT_RECOVERY = 'DIRECT_JPM_SRI_5BN_DEPLOYED_230BN_FACILITATED_20261019'
+
+# One correction to prior sent alerts 240/241. This is OUR arithmetic
+# correction, not another event or a JPMorganChase press release.
+JPM_SRI_FX_CORRECTION_RECOVERY = 'DIRECT_JPM_SRI_20261019_KRW_SINGLE_BASIS_CORRECTION'
+
 JPM_SRI_PROGRESS_URL = (
     'https://www.marketscreener.com/news/'
     'one-year-in-jpmorganchase-s-security-and-resiliency-initiative-is-helping-to-strengthen-industries-ce785cdbd888f024'
@@ -5353,6 +5358,32 @@ def _jpm_sri_recovery() -> list[dict]:
     }]
 
 
+
+def _jpm_sri_fx_correction_recovery() -> list[dict]:
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,23): return []
+    return [{
+        'title': '정정: JPMorganChase SRI 누적 지분투자 50억달러 원화 환산기준 일치',
+        'link': JPM_SRI_PROGRESS_URL,
+        'description': (
+            '앞서 전송된 BMW·JP모건 통합 알림 message_id 240/241 중 '
+            'JP모건 항목 일부가 다른 환율의 원화 환산액을 중복 표기한 오류를 바로잡는다. '
+            '2026-10-19 19:05 KST 검증 환율 1달러=1,330.33원 단일 적용: '
+            '누적 지분투자 50억달러(약 6조6,517억원), '
+            '전체 예정 지분투자 100억달러(약 13조3,033억원), '
+            '대출·금융지원·주선 실적 2,300억달러(약 305조9,759억원), '
+            '10년 장기 금융지원 구상 1조5,000억달러(약 1,995조4,950억원). '
+            '이 숫자들은 2026년 신규 예산이나 방산·로봇 공장의 수주 실적이 아니며 '
+            '금융주선액·실제 지분투자액을 합산해서는 안 된다. '
+            '50억달러는 이미 집행됐다는 JPMorganChase 2026-10-19 첫해 '
+            '업무성과 발표를 유지하며 새로운 자금 집행 사건은 아니다.'
+        ),
+        'source': '원화 계산 정정',
+        'published': None,
+        'direct_recovery': True,
+        'jpm_fx_correction': True,
+    }]
+
+
 _bmw_jpm_prev_query = base.query_news
 _bmw_jpm_prev_group = base.topic_group
 _bmw_jpm_prev_score = base.score
@@ -5369,6 +5400,7 @@ _bmw_jpm_prev_select = base.select_diverse
 def _bmw_jpm_query(q: str) -> list[dict]:
     if q == BMW_GEN6_PACK_RECOVERY: return _bmw_gen6_pack_recovery()
     if q == JPM_SRI_DEPLOYMENT_RECOVERY: return _jpm_sri_recovery()
+    if q == JPM_SRI_FX_CORRECTION_RECOVERY: return _jpm_sri_fx_correction_recovery()
     return _bmw_jpm_prev_query(q)
 
 
@@ -5385,6 +5417,7 @@ def _bmw_jpm_score(item: dict) -> int:
         return {'shenyang_pack_sop':52,'actual_china_vehicle_delivery':60}.get(
             _bmw_gen6_pack_stage(text,item.get('source') or ''),0)
     if g == 'jpm_sri_2026':
+        if item.get('jpm_fx_correction'): return 75
         return {'first_year_equity_deployed':48}.get(
             _jpm_sri_stage(text,item.get('source') or ''),0)
     return _bmw_jpm_prev_score(item)
@@ -5396,11 +5429,25 @@ def _bmw_jpm_category(text: str, group: str) -> str:
             return 'BMW Gen6 · 중국 신세대 전기차 실제 고객 인도'
         return 'BMW Gen6 · 선양 배터리팩 양산 공식 개시'
     if group == 'jpm_sri_2026':
+        if '정정:' in text and re.search(r'환산|환율',text):
+            return 'JP모건 SRI · 환율 표기 정정(기존 알림)'
         return 'JP모건 SRI · 50억달러 지분투자 누적 집행'
     return _bmw_jpm_prev_category(text,group)
 
 
 def _bmw_jpm_meaning(cat: str) -> str:
+    if cat == 'JP모건 SRI · 환율 표기 정정(기존 알림)':
+        return (
+            '기존 JPMorganChase 지분투자 알림에서 환율 시점이 혼재한 '
+            '원화 표기를 정정합니다. 2026-10-19 19:05 KST '
+            '1달러=1,330.33원 단일 기준: '
+            '누적 투자 50억달러(약 6조6,517억원), '
+            '목표 지분투자 100억달러(약 13조3,033억원), '
+            '금융주선·지원 2,300억달러(약 305조9,759억원), '
+            '10년 금융지원 계획 1조5,000억달러(약 1,995조4,950억원). '
+            '기존 50억달러 누적 집행 성과의 계산을 바로잡은 것이며 '
+            '신규 투자, 로봇 공장 계약 또는 방산 발주가 아닙니다.'
+        )
     if cat == 'BMW Gen6 · 선양 배터리팩 양산 공식 개시':
         return (
             'BMW는 10/15 선양에서 Gen6 고전압 배터리팩 양산을 시작했습니다. '
@@ -5435,6 +5482,13 @@ def _bmw_jpm_meaning(cat: str) -> str:
 
 
 def _bmw_jpm_risk(cat: str) -> str:
+    if cat == 'JP모건 SRI · 환율 표기 정정(기존 알림)':
+        return (
+            '원인은 2026-10-19 실시간 확인 환율과 '
+            '이전 영업일 일일 환율을 혼용한 표기였습니다. '
+            '이전 원화값을 신규 자금집행 증거로 쓰지 않고 '
+            '공식 투자처·투자계약·금융조건 확인을 계속합니다.'
+        )
     if cat.startswith('BMW Gen6 · '):
         return (
             '6~12개월 위험은 셀 입고품질·셀당 발열, '
@@ -5459,6 +5513,12 @@ def _bmw_jpm_risk(cat: str) -> str:
 
 
 def _bmw_jpm_verify(item: dict, group: str, text: str) -> str:
+    if item.get('jpm_fx_correction'):
+        return (
+            '정정 안내(회사 신규 발표가 아님) · JPMorganChase 10/19 '
+            '원문은 기존 누적집행 사실 근거 · '
+            '10/19 19:05 KST 조회 1달러=1,330.33원 검산'
+        )
     if group == 'bmw_gen6_pack':
         return (
             'BMW Group 10/15 공식 보도자료·10/16 BMW China 공식자료·'
@@ -5476,6 +5536,8 @@ def _bmw_jpm_verify(item: dict, group: str, text: str) -> str:
 
 
 def _bmw_jpm_title(title: str, source: str) -> str:
+    if source == '원화 계산 정정' and 'JPMorganChase' in title:
+        return '정정: JP모건 SRI 기존 알림 원화환산 단일 기준으로 통일'
     if _is_bmw_gen6_pack(title):
         return 'BMW, 선양 Gen6 고전압 배터리팩 실제 양산 개시(셀 생산과 구분)'
     if _is_jpm_sri(title):
@@ -5491,6 +5553,8 @@ def _bmw_jpm_tag(group: str) -> str:
 
 def _bmw_jpm_key(item: dict) -> str:
     text=f"{item.get('title','')} {item.get('description','')}"
+    if item.get('jpm_fx_correction'):
+        return hashlib.sha256(b'jpm-sri|2026-10-19|once-only-fx-correction-1330.33').hexdigest()
     g=_bmw_jpm_group(text)
     if g == 'bmw_gen6_pack':
         stage=_bmw_gen6_pack_stage(text,item.get('source') or '')
@@ -5524,7 +5588,7 @@ base.tag_for=_bmw_jpm_tag
 base.key=_bmw_jpm_key
 base.select_diverse=_bmw_jpm_select
 
-for _rec in (BMW_GEN6_PACK_RECOVERY,JPM_SRI_DEPLOYMENT_RECOVERY):
+for _rec in (BMW_GEN6_PACK_RECOVERY,JPM_SRI_DEPLOYMENT_RECOVERY,JPM_SRI_FX_CORRECTION_RECOVERY):
     if _rec not in base.QUERIES: base.QUERIES.append(_rec)
 for _q in (
     '(BMW OR 宝马) (Gen6 OR 第六代 OR 6세대) (Shenyang OR 선양 OR 沈阳) '
