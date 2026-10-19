@@ -202,7 +202,7 @@ def classify(group:str,title:str)->str|None:
  if group=="telepix_contract":
   if p not in ("antaris","skyserve","huleo"):return None
   if re.search(r"MOU|memorandum|업무협약",s,re.I):return None
-  if re.search(r"추가\s*(?:수주|계약)|계약\s*(?:연장|갱신)|renewal|extension|expanded contract|new follow-on contract",s,re.I):
+  if re.search(r"(?:추가|신규)\s*(?:수주|계약|발주)|새(?:로운)?\s*계약|계약\s*(?:연장|갱신)|renewal|extension|expanded contract|new(?: follow-on)? contract|additional order",s,re.I):
    return f"telepix_contract:{p}:change"
   if SIGNED.search(s):return f"telepix_contract:{p}:signed"
   if CANCEL.search(s):return f"telepix_contract:{p}:change"
@@ -221,10 +221,19 @@ def classify(group:str,title:str)->str|None:
   if not y and phase=="planned":return None
   return f"telepix_flight:{p}:{phase}:{y.group(0) if y else 'date_pending'}"
  if group=="kencoa_supplier":
-  if not SUPPLIER.search(s):return None
+  if not SUPPLIER.search(s) and not (
+    SIGNED.search(s) and re.search(r"부품|parts|components?|material|발사체|rocket",s,re.I)
+  ):return None
   if PARTNERS["roadster"].search(s):return None  # Roadster needs direct signed evidence.
   if p not in ("spacex","blue_origin"):return None
-  phase="change" if CANCEL.search(s) else "confirmed_supply"
+  if re.search(r"(?:신규|추가|새로운)\s*(?:계약|수주|공급|발주)|new(?:ly signed)? contract|"
+               r"signs? (?:new )?(?:supply )?contract|purchase order|contract award|"
+               r"공급\s*계약\s*체결|계약\s*체결",s,re.I):
+   phase="new_contract"
+  elif CANCEL.search(s):
+   phase="change"
+  else:
+   phase="confirmed_supply"
   return f"kencoa_supplier:{p}:{phase}"
  if group=="kencoa_roadster":
   # Any hypothetical Tesla Roadster supply requires first-party proof.
@@ -375,6 +384,10 @@ def self_test()->int:
  assert classify("telepix_contract","TelePIX Bellatrix signs MOU") is None
  assert classify("telepix_flight","TelePIX Antaris JANUS-2 2027 launch")=="telepix_flight:antaris:planned:2027"
  assert classify("telepix_contract","TelePIX and SkyServe announce additional contract renewal")=="telepix_contract:skyserve:change"
+ assert classify("telepix_contract","텔레픽스 SkyServe 신규 계약 체결")=="telepix_contract:skyserve:change"
+ assert classify("kencoa_supplier","켄코아 SpaceX 신규 부품 공급 계약 체결")=="kencoa_supplier:spacex:new_contract"
+ assert classify("kencoa_supplier","Kencoa signs new SpaceX rocket parts contract")=="kencoa_supplier:spacex:new_contract"
+ assert "kencoa_supplier:spacex:new_contract" not in KEY_BASELINE
  assert set(KEY_BASELINE).isdisjoint({"kencoa_roadster:potential_supply"})
  assert len(BASELINE_LINKS)<=10 and len(baseline())<3400
  a={"source":"연합뉴스","published":NOW,"title":"텔레픽스 인도 스카이서브 서비스 공급 계약 체결","url":"https://a.example"}
