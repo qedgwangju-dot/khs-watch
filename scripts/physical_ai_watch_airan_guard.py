@@ -2626,7 +2626,7 @@ def _bess_bmi_period(text: str) -> str:
     if not month:
         return ''
     month_str = BESS_BMI_MONTHS[month.group(1).lower()] if month.group(1) else f'{int(month.group(2)):02d}'
-    year = re.search(r'\b(20(?:2[6-9]|3[0-9]))\b', text)
+    year = re.search(r'(?<!\d)(20(?:2[6-9]|3[0-9]))(?!\d)', text)
     if not year:
         return ''
     return f'{year.group(1)}-{month_str}'
