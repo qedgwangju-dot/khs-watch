@@ -2740,10 +2740,46 @@ def _sdi_bbu_lfp_stage(text: str, source: str = '') -> str:
             return 'official_first_lfp_bbu_sop'
     return 'press_plan_or_existing_product'
 
+
+# Verification of 2026-10-19 Run #664 / Telegram message_id=238:
+# its first item was merely a Samsung SDI share-price reaction (8%대 올라),
+# NOT an ESS order or company earnings disclosure. Its second item,
+# Benchmark Mineral Intelligence worldwide BESS actuals, remains valid.
+ALERT238_CORRECTION_ID = 'DIRECT_ROBOTIS_ALERT_238_PRICE_REACTION_CORRECTION_20261019'
+
+
+def _alert238_correction() -> list[dict]:
+    # A single time-limited correction is sent via the EXISTING bot.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026, 10, 24):
+        return []
+    return [{
+        'title': '정정: Telegram 238번 1번 삼성SDI 주가 기사 오탐 제외',
+        'link': 'https://github.com/qedgwangju-dot/khs-watch/actions/runs/39197066558',
+        'description': (
+            '2026년 10월 19일 기존 알림 Telegram message_id=238 1번 '
+            '비즈니스포스트의 삼성SDI 주가 장중 8%대 올라 기사에는 '
+            '신규 ESS 수주·첫 출하·확정 실적이 없었습니다. '
+            '주가 변동 및 기대감만으로 공급망 구조 변화로 판정한 것은 오탐입니다. '
+            '기존 238번 2번 Benchmark Mineral Intelligence '
+            '9월 전 세계 계통용 BESS 신규 가동 20.4GWh 및 '
+            '1~9월 누적 208GWh 실측집계는 유지합니다. '
+            '수정한 판정기에 %대 올라 및 주가 상승 표현을 '
+            '비사업 반응으로 걸러내는 회귀검사를 추가했습니다. '
+            '이 정정은 신규 공급계약이나 기업 매출이 아닙니다.'
+        ),
+        'source': '알림 운영검증 기록',
+        'published': None,
+        'quality_correction_238': True,
+        'direct_recovery': True,
+    }]
+
+
 _orig_query_news = base.query_news
 
 
 def query_news(q: str) -> list[dict]:
+    if q == ALERT238_CORRECTION_ID:
+        return _alert238_correction()
     if q == BESS_SEP26_RECOVERY:
         return _bess_bmi_recovery()
     if q == DONGKUK_NPS_RECOVERY:
@@ -2784,6 +2820,8 @@ def query_news(q: str) -> list[dict]:
 
 
 base.query_news = query_news
+if ALERT238_CORRECTION_ID not in base.QUERIES:
+    base.QUERIES.append(ALERT238_CORRECTION_ID)
 if BESS_SEP26_RECOVERY not in base.QUERIES:
     base.QUERIES.append(BESS_SEP26_RECOVERY)
 for _q in (
@@ -3018,6 +3056,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if '정정: Telegram 238번 1번' in text:
+        return 'alert_quality_238'
     if _is_bess_bmi_actual(text):
         return 'global_bess_commissioned'
     if _is_sdi_bbu_lfp(text):
@@ -3083,6 +3123,8 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     item_text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if item.get('quality_correction_238'):
+        return 98 if topic_group(item_text) == 'alert_quality_238' else 0
     if _is_bess_bmi_actual(item_text):
         stage = _bess_bmi_stage(item_text,item.get('source') or '')
         return {
@@ -3263,6 +3305,8 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'alert_quality_238':
+        return '알림 품질 정정 · Telegram 238번 주가 반응 오탐'
     if group == 'global_bess_commissioned':
         if _bess_bmi_period(text) == '2026-09':
             return '글로벌 계통용 BESS · 2026년 9월 신규 가동량'
@@ -3421,6 +3465,15 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '알림 품질 정정 · Telegram 238번 주가 반응 오탐':
+        return (
+            'Telegram message_id=238의 첫 번째 삼성SDI 주가 8%대 상승 기사는 '
+            '신규 ESS 공급계약·실제 출하·분기 실적 발표가 없는데도 고신호로 전송된 오탐입니다. '
+            '해당 기사로부터 어떤 삼성SDI 신규 원화 매출도 확정하지 않습니다. '
+            '같은 메시지의 두 번째 실제 글로벌 BESS 9월 가동량 20.4GWh(+61%)와 '
+            '1~9월 누적 208GWh(+43%)는 유지합니다. '
+            '신규 판정은 주가 변동 기사를 점수 0으로 걸러내며 이 정정 자체는 계약이 아닙니다.'
+        )
     if cat == '글로벌 계통용 BESS · 2026년 9월 신규 가동량':
         return (
             'Benchmark Mineral Intelligence 집계를 인용한 Energy-Storage.News 10/15 신규 실측 통계입니다. '
@@ -3871,6 +3924,8 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat == '알림 품질 정정 · Telegram 238번 주가 반응 오탐':
+        return '주가 상승·테마 기사와 신규 계약·가동·매출을 섞으면 거짓 수혜가 발생합니다. 이후 첫 신규 수주·확정 실적 공시가 있을 때만 단계 상승으로 알립니다.'
     if cat.startswith('글로벌 계통용 BESS · '):
         return (
             '세계 설치통계가 한국 배터리의 실제 수주를 보증하지 않습니다. '
@@ -4075,6 +4130,12 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'alert_quality_238':
+        return (
+            'GitHub Run #664 실제 출력 아티팩트와 Telegram API message_id=238 '
+            '대조 확인 · 비즈니스포스트 1번은 주가반응 오탐 · '
+            '2번 BMI 글로벌 가동 통계는 정상 · Python 재발방지 테스트 추가'
+        )
     if group == 'global_bess_commissioned':
         return (
             'Benchmark Mineral Intelligence 집계를 인용한 Energy-Storage.News '
@@ -4256,6 +4317,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if title.startswith('정정: Telegram 238번 1번'):
+        return '정정: Telegram 238번 삼성SDI 주가 반응 오탐 제외'
     if _is_bess_bmi_actual(title+' '+source):
         if _bess_bmi_period(title) == '2026-09':
             return BESS_SEP26_TITLE
@@ -4380,6 +4443,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'alert_quality_238':
+        return '기존 알림 정정'
     if group == 'global_bess_commissioned':
         return '글로벌 계통용 BESS'
     if group == 'sdi_lfp_bbu':
@@ -4443,6 +4508,10 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'alert_quality_238':
+        return hashlib.sha256(
+            b'robotis|telegram238|20261019|item1-stock-reaction-correction'
+        ).hexdigest()
     if _is_bess_bmi_actual(text):
         period = _bess_bmi_period(text)
         if period == '2026-09':
@@ -4651,6 +4720,9 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    correction238 = next((x for x in candidates if x.get('group') == 'alert_quality_238'), None)
+    if correction238 and not any(x.get('key') == correction238.get('key') for x in chosen):
+        chosen = ([correction238,*chosen] if len(chosen)<limit else [correction238,*chosen[:-1]])
     # Preserve a separately verified monthly global installation metric
     # even when generic old ESS stories are numerous.
     bess_actual = next((x for x in candidates if x.get('group') == 'global_bess_commissioned'), None)
