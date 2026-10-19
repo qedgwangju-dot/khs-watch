@@ -10761,6 +10761,27 @@
       "telegram_core_fact": "일렉트로룩스 빌트인 납품 채널에 마이디어 제품군이 더해지면 삼성전자·LG전자와 수주 경쟁이 한층 치열해질 전망이다.",
       "title": "中 마이디어-스웨덴 일렉트로룩스 백색가전 북미 연합 가동…삼성전자·LG전자 아성 '빨간불'"
     },
+    "core:24354a167df3416e03574807": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/20/2026102003351299925",
+      "source": "머니투데이",
+      "source_body_digest": "54fbc1463cefa0a6270593e9887a58416bc685fed0a1e17e9ea0876abfd7c33a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e1383b178d017a966bc55c8c4c158883d363dc7e68ff07d237badc72f278ee9",
+      "source_fact_keys": [
+        "source_fact:v1:949391ff5b6d2e67f1503c31c0bc6808b85c4735f08f6fab505a8bce4b4feedf",
+        "source_fact:v1:c7177eb9a472baab8d654664880c1f4d00bdeed8168ef3fa88419249014e75e4"
+      ],
+      "source_published_kst": "2026-10-20T03:38+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질",
+      "telegram_core_fact": "'사막의 다보스'로 불리는 FII는 사우디가 글로벌 투자자와 기업인, 각국 정상들을 초청해 탈(脫)석유 경제 다각화 프로젝트를 홍보하고 외국인 투자(FDI)를 유치하는 핵심 국정 무대다.",
+      "title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질"
+    },
     "core:243e7733970f29d5516dc664": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
       "lanes": {
@@ -12231,6 +12252,29 @@
       "source_title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인",
       "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
       "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
+    },
+    "core:299e0ccf5c40348d625fce54": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.hankyung.com/article/2026101913831",
+      "source": "한국경제",
+      "source_body_digest": "6540b42160b9116d6ddb2756cbd8dfbeafc473d65e441046a63be44c476798d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e1bfd392fadb9c1093292c74f3ff8fa72157ed0b219d1b2e4baeb81def37a03",
+      "source_fact_keys": [
+        "source_fact:v1:0525dea4dc8c1dbd958a54821d63a2c70c78e13d2512aaf4db59dd3f7802d8fb",
+        "source_fact:v1:a0fbcc7051133323379b8a74f2a2ebb49080488b308e459cd38c306bb40841a1",
+        "source_fact:v1:b238c0dade9392465159aaf6abb85657211e3e5fd97af62728dcf616cfd2f55e",
+        "source_fact:v1:c4e2a04dcbce15d507f27f656b86d0a73e1c06f359dbced26a9eea35b94dbe05"
+      ],
+      "source_published_kst": "2026-10-19T18:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코, 전남광주에 3조 반도체 '통큰 투자'",
+      "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지코리아가 전남광주통합특별시에 3조원 규모 생산시설을 구축한다. 당초 1조원 규모였던 투자 계획을 세 배로 확대한 것으로, 국내 외국인투자기업의 단일 투자로는 최대 규모가 될 전망이다.",
+      "title": "앰코, 전남광주에 3조 반도체 '통큰 투자'"
     },
     "core:29d1be029fa9aa5a0b500ba6": {
       "first_seen_kst": "2026-10-17T09:15:26+09:00",
@@ -18878,6 +18922,24 @@
       "source_title": "한·이집트 비즈니스 라운드테이블…수소트램 공급 양해각서",
       "telegram_core_fact": "산업통상부는 7일 서울 롯데호텔에서 이집트 투자통상부와 공동으로 '한-이집트 비즈니스 라운드테이블(BRT)'을 개최했다고 밝혔다. 이번 MOU에 따라 현대로템은 이집트 터널청에 수소트램 44편성을 공급하고 건설, 시스템, 운영, 유지보수 등을 아우르는 사업 협력을 추진하기로 했다.",
       "title": "한·이집트 비즈니스 라운드테이블…수소트램 공급 양해각서"
+    },
+    "core:3f9c04c0b3457c6d4ac5e384": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637655",
+      "source": "이투데이",
+      "source_body_digest": "b470458fe4c68fd2ff68df88bf1d079c94a20f3d8ea130133e491a4d284b6c2c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T08:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 “삼성전자, 내년 영업익 555조원 전망…메모리 물량 80% 이미 확보”",
+      "telegram_core_fact": "KB증권은 삼성전자의 올해 영업이익을 367조원으로 전년 대비 742% 증가하고 내년에는 555조원으로 51% 늘어날 것으로 추정했다.",
+      "title": "KB證 “삼성전자, 내년 영업익 555조원 전망…메모리 물량 80% 이미 확보”"
     },
     "core:3fa20e3ad7ac34dd44bfe8b0": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -26747,6 +26809,37 @@
       "source_title": "트럼프 ‘블루 타이드’ 마지막 퍼즐 완성하나…‘보우소나루 정치 왕조’ 계승자 [더 비저너리-플라비우 보우소나루]",
       "telegram_core_fact": "브라질도 예외가 아니어서 트럼프 행정부는 보우소나루 전 대통령의 기소를 중단시키려 브라질에 관세를 부과하고 연방대법원 핵심 대법관을 제재했으며 고위 당국자 여러 명의 비자도 취소했다.",
       "title": "트럼프 ‘블루 타이드’ 마지막 퍼즐 완성하나…‘보우소나루 정치 왕조’ 계승자 [더 비저너리-플라비우 보우소나루]"
+    },
+    "core:5ec6eb98a456f70886a09394": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
     },
     "core:5eca936e35a6ba0ec8389b4e": {
       "first_seen_kst": "2026-10-15T16:25:35+09:00",
@@ -57501,6 +57594,29 @@
       "telegram_core_fact": "세계 최대 자산운용사 블랙록은 지난 3분기 시장 예상치를 웃도는 순이익을 기록하고 2,050억 달러의 고객 자금 순유입을 달성했다고 14일(현지시간) 발표했다.",
       "title": "[美특징주]블랙록, 3Q 호실적·운용자산 15.5조달러로 확대...주가 2%↑"
     },
+    "core:cabc92a73dd5884389e8212c": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01508806645614888",
+      "source": "이데일리",
+      "source_body_digest": "4b63c675fd3f1c248bdf036e4658669a9cd97b1d10199a8ba90c08402115866d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cf0d7556fb5425c5abd6baab2a182ecf984654016ef632b90365a78e898bcb5",
+      "source_fact_keys": [
+        "source_fact:v1:07e96dca93bd23ad1a92c5cbfb78ebdffff074eea0fff19322a10d458f9c5552",
+        "source_fact:v1:0a3f58c6a49b72cc0e4314c763045dfa6ec74a1ecbc991816e930f5985c6de98",
+        "source_fact:v1:aaef3bb3e55e8201fb7bb089f21bad871cdcef94238e1ca6174aff04005b0f89",
+        "source_fact:v1:efb0d1aa5bfaa74f0a2e10213c86f8d0846a50caf47309386a6b75c8768636b8"
+      ],
+      "source_published_kst": "2026-10-20T04:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑",
+      "telegram_core_fact": "클라우드 모니터링 소프트웨어 업체 데이터도그(DDOG)가 인공지능(AI) 사업 성장 기대감에 6% 가까이 상승하고 있다. 이번 투자의견 상향은 데이터도그의 성장 전망에 대한 투자자들의 기대를 높이며 주가 상승을 이끌었다.",
+      "title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑"
+    },
     "core:cae54fa5da7607715f815bef": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
       "lanes": {
@@ -62723,6 +62839,26 @@
       "telegram_core_fact": "SK그룹이 조(兆) 단위 자금을 투입해 미국 원전 기업 웨스팅하우스 지분을 인수하는 방안을 검토 중인 것으로 파악됐다.",
       "title": "[단독] 팀 코리아, 美웨스팅하우스 지분 인수 '兆단위 베팅'"
     },
+    "core:de30f0c7cf07c52d7b08293a": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832614",
+      "source": "뉴시스",
+      "source_body_digest": "db84a46cff1f508817c43a8e118e6c479c6e4d25d25aa06c08b907e44f1d19d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74074e43b1057df9748c8c739e86e298ba8be70dc1cebf3bce06615378b06e8f",
+      "source_fact_keys": [
+        "source_fact:v1:bf894d90050c791a35f8d41b9adce52c7eaab7f2c58e9ea5fef171861ddd4886"
+      ],
+      "source_published_kst": "2026-10-20T08:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니테크노, 북미향 ESS 적용 부품 공급 협력사 선정",
+      "telegram_core_fact": "유니테크노 관계자는 \"앞으로도 정밀 사출 기술과 안정적인 양산 역량을 바탕으로 글로벌 배터리 공급망 내 사업 기회를 확대하고, ESS 사업을 핵심 성장동력으로 육성해나가겠다\"고 말했다.",
+      "title": "유니테크노, 북미향 ESS 적용 부품 공급 협력사 선정"
+    },
     "core:de399d0b92f549ff8b5074e3": {
       "first_seen_kst": "2026-10-14T15:35:09+09:00",
       "lanes": {
@@ -66762,6 +66898,35 @@
       "source_title": "美 스타벅스, 치폴레 인수 저울질…역대급 M&A 되나",
       "telegram_core_fact": "스타벅스의 치폴레 인수가 성사된다면 2014년 버거킹이 팀홀튼을 114억 달러(약 15조 3102억원)에 인수한 거래를 넘어선다.",
       "title": "美 스타벅스, 치폴레 인수 저울질…역대급 M&A 되나"
+    },
+    "core:edb56f00ea401c44deb1c3a7": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
     },
     "core:edb8ea591f6431c13819ddb3": {
       "first_seen_kst": "2026-10-19T14:20:34+09:00",
@@ -79459,6 +79624,24 @@
       "source_published_kst": "2026-10-04T06:29+09:00",
       "title": "외국인, 한 달간 코스피서 20조 매도…비중 삼전 46%·닉스 49%대"
     },
+    "event:6d4b39c583ae10f6d2562871": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637655",
+      "source": "이투데이",
+      "source_body_digest": "b470458fe4c68fd2ff68df88bf1d079c94a20f3d8ea130133e491a4d284b6c2c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T08:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 “삼성전자, 내년 영업익 555조원 전망…메모리 물량 80% 이미 확보”",
+      "telegram_core_fact": "KB증권은 삼성전자의 올해 영업이익을 367조원으로 전년 대비 742% 증가하고 내년에는 555조원으로 51% 늘어날 것으로 추정했다.",
+      "title": "KB證 “삼성전자, 내년 영업익 555조원 전망…메모리 물량 80% 이미 확보”"
+    },
     "event:6d6f65e0a0c66cc695483ee7": {
       "first_seen_kst": "2026-09-18T10:39:41+09:00",
       "lanes": {
@@ -81537,25 +81720,33 @@
     "event:8a87c7fdf2df4ded76281e4a": {
       "first_seen_kst": "2026-10-20T05:37:55+09:00",
       "lanes": {
-        "live": "2026-10-20T07:37:12+09:00"
+        "live": "2026-10-20T08:37:36+09:00"
       },
-      "last_seen_kst": "2026-10-20T07:37:12+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2637601",
-      "source": "이투데이",
-      "source_body_digest": "72b5baf0e7ace8316d4f20b942295102091da7b8b3740fc146da39c56262c6bc",
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:606f87cd265843528d5a68beccde89e95b8f094995c8caa14f44c807c25e8c95",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
       "source_fact_keys": [
-        "source_fact:v1:6938985910e8e177f5291d32ec14a982a32c5d6e823538a6249143adf4ba3856",
-        "source_fact:v1:9944ddb560c8c420cf596ef0df21318d258a7966665d0382faee1142e1e312da",
-        "source_fact:v1:b3ec20aab2ffde3ffd1eaea32f30abb7656b96abc57734d663ba4092f8359439",
-        "source_fact:v1:e8ed394f6698c5ae0762df00d824dd8f6f3716dabff93972d7b23e4ebf9979d5"
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
       ],
-      "source_published_kst": "2026-10-20T06:26+09:00",
+      "source_published_kst": "2026-10-20T05:41+09:00",
       "source_supply_terms": {},
-      "source_title": "국제유가, 대러 제재 완화ㆍ후티 공격에 혼조⋯WTI 2.22%↑ [상보]",
-      "telegram_core_fact": "19일(현지시간)뉴욕상업거래소에서 11월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 2.25달러(2.22%) 상승한 배럴당 103.66달러에 거래를 마쳤다.",
-      "title": "국제유가, 대러 제재 완화ㆍ후티 공격에 혼조⋯WTI 2.22%↑ [상보]"
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
     },
     "event:8b6e886c14b1bee9c0e010ef": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
@@ -83186,25 +83377,25 @@
     "event:a224bb7605b3da289a7b8a67": {
       "first_seen_kst": "2026-10-19T05:12:02+09:00",
       "lanes": {
-        "live": "2026-10-19T22:09:23+09:00"
+        "live": "2026-10-20T08:37:36+09:00"
       },
-      "last_seen_kst": "2026-10-19T22:09:23+09:00",
-      "link": "https://www.yna.co.kr/view/MYH20261019012200038",
-      "source": "연합뉴스",
-      "source_body_digest": "bb94b3f2b7312b449af79fd86b78138f14a6735028aec9aee746d47ceecc01dc",
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.hankyung.com/article/2026101913831",
+      "source": "한국경제",
+      "source_body_digest": "6540b42160b9116d6ddb2756cbd8dfbeafc473d65e441046a63be44c476798d1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:1608317f15fd4ae7eb8ab64658b78f419a9ff20cae82eceb500384244945157f",
+      "source_fact_identity": "source_facts:v1:1e1bfd392fadb9c1093292c74f3ff8fa72157ed0b219d1b2e4baeb81def37a03",
       "source_fact_keys": [
-        "source_fact:v1:31586baa2127378fa733d2aaaf526b38048915888f2d15a34083f6a7d07fe004",
-        "source_fact:v1:98769fca6cb4154d77e53a239dc47af4da1b25d7d5ed83bc7ee2d76ab93011fa",
-        "source_fact:v1:b06a996f5039382dcc89cf3fad2ac6062402e278a3d9d18dc25b8c8aad4d9cdf",
-        "source_fact:v1:b91e9e60a1591f044d2d7381d0677a318da3f24071c647939172f9eb4f081b68"
+        "source_fact:v1:0525dea4dc8c1dbd958a54821d63a2c70c78e13d2512aaf4db59dd3f7802d8fb",
+        "source_fact:v1:a0fbcc7051133323379b8a74f2a2ebb49080488b308e459cd38c306bb40841a1",
+        "source_fact:v1:b238c0dade9392465159aaf6abb85657211e3e5fd97af62728dcf616cfd2f55e",
+        "source_fact:v1:c4e2a04dcbce15d507f27f656b86d0a73e1c06f359dbced26a9eea35b94dbe05"
       ],
-      "source_published_kst": "2026-10-19T15:21+09:00",
+      "source_published_kst": "2026-10-19T18:41+09:00",
       "source_supply_terms": {},
-      "source_title": "2028 공급과잉론 재점화…증설 경쟁은 '변수' | 연합뉴스",
-      "telegram_core_fact": "중국발 D램 공세에, 업체들의 증설 경쟁까지 겹치면서 공급 과잉이 빚어질 수 있다는 건데요.",
-      "title": "2028 공급과잉론 재점화…증설 경쟁은 '변수' | 연합뉴스"
+      "source_title": "앰코, 전남광주에 3조 반도체 '통큰 투자'",
+      "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지코리아가 전남광주통합특별시에 3조원 규모 생산시설을 구축한다. 당초 1조원 규모였던 투자 계획을 세 배로 확대한 것으로, 국내 외국인투자기업의 단일 투자로는 최대 규모가 될 전망이다.",
+      "title": "앰코, 전남광주에 3조 반도체 '통큰 투자'"
     },
     "event:a258381fbb6b865b4da4c5a3": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
@@ -87747,6 +87938,35 @@
       "source_title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑",
       "telegram_core_fact": "KB증권은 삼성전자의 내년 고대역폭메모리(HBM) 판매가격이 올해보다 100% 이상 오를 것으로 예상했고, 메리츠증권은 서버 D램과 HBM으로의 생산능력 전환에 따라 모바일 메모리 판가도 내년 1분기부터 분기 기준 50% 이상 상승할 것으로 내다봤다.",
       "title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑"
+    },
+    "event:ddca58403229024d330bc2d2": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
     },
     "event:ddd1d26d294017ec236945ba": {
       "first_seen_kst": "2026-10-12T11:27:57+09:00",
@@ -117564,6 +117784,35 @@
       "source_published_kst": "2026-10-06T16:18+09:00",
       "title": "파라다이스, 회사채 수요예측에 3.4배 몰려…2·3년물 온도차 | 연합뉴스"
     },
+    "fact:56b08384f376d9c0d0f8eae9": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
+    },
     "fact:56c7a5d3f7e2b3533b5eaa06": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -131129,6 +131378,26 @@
       "telegram_core_fact": "제프리스에 따르면 KFC는 새 음료 공급사로 코카콜라를 선택했으며, 수개월 전 메리어트가 30년간 이어졌던 펩시와의 협력 관계를 끝내고 코카콜라와 새롭게 계약을 체결했다. 2세대 로드스터 공개이후 JP모간은 테슬라에 대한 투자의견 ‘보유’와 목표주가 415달러를 유지한다고 밝혔다.",
       "title": "[개장전특징주]펩시코, 코카콜라, 테슬라, 스트레티지"
     },
+    "fact:81ee1a1d0220e03ab650acf0": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832614",
+      "source": "뉴시스",
+      "source_body_digest": "db84a46cff1f508817c43a8e118e6c479c6e4d25d25aa06c08b907e44f1d19d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74074e43b1057df9748c8c739e86e298ba8be70dc1cebf3bce06615378b06e8f",
+      "source_fact_keys": [
+        "source_fact:v1:bf894d90050c791a35f8d41b9adce52c7eaab7f2c58e9ea5fef171861ddd4886"
+      ],
+      "source_published_kst": "2026-10-20T08:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니테크노, 북미향 ESS 적용 부품 공급 협력사 선정",
+      "telegram_core_fact": "유니테크노 관계자는 \"앞으로도 정밀 사출 기술과 안정적인 양산 역량을 바탕으로 글로벌 배터리 공급망 내 사업 기회를 확대하고, ESS 사업을 핵심 성장동력으로 육성해나가겠다\"고 말했다.",
+      "title": "유니테크노, 북미향 ESS 적용 부품 공급 협력사 선정"
+    },
     "fact:820544e20032a7d1265a9fb7": {
       "first_seen_kst": "2026-10-14T17:44:16+09:00",
       "lanes": {
@@ -144336,6 +144605,29 @@
       "telegram_core_fact": "당국은 김씨가 중국에서 축구선수로 활동하면서 냈던 세금 중 공제받지 못하고 이월된 금액을 이후 일본으로 이적해 활동하던 기간의 국내 소득세에서 공제하는 식으로 해당 시행령 규정을 위반했다고 판단한 것이다.",
       "title": "축구 김영권, '日활동 때 소득세 8억 부과' 불복 소송서 패소"
     },
+    "fact:a8aabad8a6d242baffe64425": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01508806645614888",
+      "source": "이데일리",
+      "source_body_digest": "4b63c675fd3f1c248bdf036e4658669a9cd97b1d10199a8ba90c08402115866d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cf0d7556fb5425c5abd6baab2a182ecf984654016ef632b90365a78e898bcb5",
+      "source_fact_keys": [
+        "source_fact:v1:07e96dca93bd23ad1a92c5cbfb78ebdffff074eea0fff19322a10d458f9c5552",
+        "source_fact:v1:0a3f58c6a49b72cc0e4314c763045dfa6ec74a1ecbc991816e930f5985c6de98",
+        "source_fact:v1:aaef3bb3e55e8201fb7bb089f21bad871cdcef94238e1ca6174aff04005b0f89",
+        "source_fact:v1:efb0d1aa5bfaa74f0a2e10213c86f8d0846a50caf47309386a6b75c8768636b8"
+      ],
+      "source_published_kst": "2026-10-20T04:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑",
+      "telegram_core_fact": "클라우드 모니터링 소프트웨어 업체 데이터도그(DDOG)가 인공지능(AI) 사업 성장 기대감에 6% 가까이 상승하고 있다. 이번 투자의견 상향은 데이터도그의 성장 전망에 대한 투자자들의 기대를 높이며 주가 상승을 이끌었다.",
+      "title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑"
+    },
     "fact:a8ac2096942053ad5766eb57": {
       "first_seen_kst": "2026-10-17T09:15:26+09:00",
       "lanes": {
@@ -147011,6 +147303,29 @@
       "source_title": "[굿모닝 증시]코스피, 7000선 재도전…美 CPI·반도체 실적이 방향 가른다",
       "telegram_core_fact": "미국 9월 소비자물가지수(CPI)와 생산자물가지수(PPI), 미국 시장금리 움직임에 더해 미국 금융주와 ASML·TSMC 등 주요 반도체 기업의 실적이 국내 증시 방향성을 결정할 주요 변수로 꼽힌다.",
       "title": "[굿모닝 증시]코스피, 7000선 재도전…美 CPI·반도체 실적이 방향 가른다"
+    },
+    "fact:af7c814fcb1b51997e0ee61c": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.hankyung.com/article/2026101913831",
+      "source": "한국경제",
+      "source_body_digest": "6540b42160b9116d6ddb2756cbd8dfbeafc473d65e441046a63be44c476798d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e1bfd392fadb9c1093292c74f3ff8fa72157ed0b219d1b2e4baeb81def37a03",
+      "source_fact_keys": [
+        "source_fact:v1:0525dea4dc8c1dbd958a54821d63a2c70c78e13d2512aaf4db59dd3f7802d8fb",
+        "source_fact:v1:a0fbcc7051133323379b8a74f2a2ebb49080488b308e459cd38c306bb40841a1",
+        "source_fact:v1:b238c0dade9392465159aaf6abb85657211e3e5fd97af62728dcf616cfd2f55e",
+        "source_fact:v1:c4e2a04dcbce15d507f27f656b86d0a73e1c06f359dbced26a9eea35b94dbe05"
+      ],
+      "source_published_kst": "2026-10-19T18:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코, 전남광주에 3조 반도체 '통큰 투자'",
+      "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지코리아가 전남광주통합특별시에 3조원 규모 생산시설을 구축한다. 당초 1조원 규모였던 투자 계획을 세 배로 확대한 것으로, 국내 외국인투자기업의 단일 투자로는 최대 규모가 될 전망이다.",
+      "title": "앰코, 전남광주에 3조 반도체 '통큰 투자'"
     },
     "fact:af7d770bae8d68f83c3faac8": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
@@ -150173,6 +150488,37 @@
       "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
       "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
       "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
+    },
+    "fact:b7695f8b9bc2ff2007c06955": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
     },
     "fact:b76c4b9377d1e155202af472": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -156497,6 +156843,27 @@
       "source_title": "'7억 성과급' 떴다… 동탄·영통 다시 들썩",
       "telegram_core_fact": "동탄은 7월 토지거래허가구역 지정 이후 매수세가 주춤했지만, 9월 정부 대출 규제에서 비교적 자유로운 사내대출이 시행되면서 문의가 다시 늘었다.",
       "title": "'7억 성과급' 떴다… 동탄·영통 다시 들썩"
+    },
+    "fact:caca12683798bb1d460287e2": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/20/2026102003351299925",
+      "source": "머니투데이",
+      "source_body_digest": "54fbc1463cefa0a6270593e9887a58416bc685fed0a1e17e9ea0876abfd7c33a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e1383b178d017a966bc55c8c4c158883d363dc7e68ff07d237badc72f278ee9",
+      "source_fact_keys": [
+        "source_fact:v1:949391ff5b6d2e67f1503c31c0bc6808b85c4735f08f6fab505a8bce4b4feedf",
+        "source_fact:v1:c7177eb9a472baab8d654664880c1f4d00bdeed8168ef3fa88419249014e75e4"
+      ],
+      "source_published_kst": "2026-10-20T03:38+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질",
+      "telegram_core_fact": "'사막의 다보스'로 불리는 FII는 사우디가 글로벌 투자자와 기업인, 각국 정상들을 초청해 탈(脫)석유 경제 다각화 프로젝트를 홍보하고 외국인 투자(FDI)를 유치하는 핵심 국정 무대다.",
+      "title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질"
     },
     "fact:cad529b8034314d2fa1cf664": {
       "first_seen_kst": "2026-10-14T17:44:16+09:00",
@@ -175909,6 +176276,35 @@
       "telegram_core_fact": "외국인은 올해 230조원 넘게 주식을 순매도했다. 중국의 덤핑 공세에 국내 기업 제품 수요가 줄어들면 기업들의 중장기 영업이익률이 낮아질 수 있다는 우려가 반도체 분야에서도 고개를 든 것이다.",
       "title": "[머니톡스] 증시의 사계절…외국인은 왜 팔기만 하나 | 연합뉴스"
     },
+    "link:0410e44246c57a88762cd669": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
+    },
     "link:0414401fa934a9d6f5658426": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
       "lanes": {
@@ -191839,6 +192235,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T22:31+09:00",
       "title": "시총 기준 상폐요건 강화에 법원 제동…\"비례 원칙에 어긋나\" | 연합뉴스"
+    },
+    "link:28fb87fedbef8a58e2db8ab4": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01508806645614888",
+      "source": "이데일리",
+      "source_body_digest": "4b63c675fd3f1c248bdf036e4658669a9cd97b1d10199a8ba90c08402115866d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cf0d7556fb5425c5abd6baab2a182ecf984654016ef632b90365a78e898bcb5",
+      "source_fact_keys": [
+        "source_fact:v1:07e96dca93bd23ad1a92c5cbfb78ebdffff074eea0fff19322a10d458f9c5552",
+        "source_fact:v1:0a3f58c6a49b72cc0e4314c763045dfa6ec74a1ecbc991816e930f5985c6de98",
+        "source_fact:v1:aaef3bb3e55e8201fb7bb089f21bad871cdcef94238e1ca6174aff04005b0f89",
+        "source_fact:v1:efb0d1aa5bfaa74f0a2e10213c86f8d0846a50caf47309386a6b75c8768636b8"
+      ],
+      "source_published_kst": "2026-10-20T04:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑",
+      "telegram_core_fact": "클라우드 모니터링 소프트웨어 업체 데이터도그(DDOG)가 인공지능(AI) 사업 성장 기대감에 6% 가까이 상승하고 있다. 이번 투자의견 상향은 데이터도그의 성장 전망에 대한 투자자들의 기대를 높이며 주가 상승을 이끌었다.",
+      "title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑"
     },
     "link:2905a2b21ee30ecd8d7d1b5e": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -232501,6 +232920,27 @@
       "telegram_core_fact": "외부 협력자 대상으로 신주인수권 34만6500개를 발행하기로 결의하면서 향후 주식 수 증가에 따른 지분 희석 우려가 부각됐습니다. 전량 행사 시 약 121만 달러가 유입되지만, 협력자 명단과 희석 규모가 공개되지 않아 불확실성이 커지며 매도세가 나타났습니다.",
       "title": "료지바바, 협력자 대상 신주인수권 발행 결의에 지분 희석 우려 부각"
     },
+    "link:86bfb2fd28b6fdff08c26ba3": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/20/2026102003351299925",
+      "source": "머니투데이",
+      "source_body_digest": "54fbc1463cefa0a6270593e9887a58416bc685fed0a1e17e9ea0876abfd7c33a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e1383b178d017a966bc55c8c4c158883d363dc7e68ff07d237badc72f278ee9",
+      "source_fact_keys": [
+        "source_fact:v1:949391ff5b6d2e67f1503c31c0bc6808b85c4735f08f6fab505a8bce4b4feedf",
+        "source_fact:v1:c7177eb9a472baab8d654664880c1f4d00bdeed8168ef3fa88419249014e75e4"
+      ],
+      "source_published_kst": "2026-10-20T03:38+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질",
+      "telegram_core_fact": "'사막의 다보스'로 불리는 FII는 사우디가 글로벌 투자자와 기업인, 각국 정상들을 초청해 탈(脫)석유 경제 다각화 프로젝트를 홍보하고 외국인 투자(FDI)를 유치하는 핵심 국정 무대다.",
+      "title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질"
+    },
     "link:86d9eb6d967d69497c2e77ac": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
       "lanes": {
@@ -249034,6 +249474,24 @@
       "source": "머니투데이",
       "title": "美 금리 인상에 환율 1380원대…\"추세적 반등은 아냐\""
     },
+    "link:ab45871571d90a2200866131": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637655",
+      "source": "이투데이",
+      "source_body_digest": "b470458fe4c68fd2ff68df88bf1d079c94a20f3d8ea130133e491a4d284b6c2c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T08:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 “삼성전자, 내년 영업익 555조원 전망…메모리 물량 80% 이미 확보”",
+      "telegram_core_fact": "KB증권은 삼성전자의 올해 영업이익을 367조원으로 전년 대비 742% 증가하고 내년에는 555조원으로 51% 늘어날 것으로 추정했다.",
+      "title": "KB證 “삼성전자, 내년 영업익 555조원 전망…메모리 물량 80% 이미 확보”"
+    },
     "link:ab56d18cd8caafbc0435018e": {
       "first_seen_kst": "2026-10-15T15:07:47+09:00",
       "lanes": {
@@ -259789,6 +260247,26 @@
       "telegram_core_fact": "포스코DX는 포스코기술투자와 함께 출자한 ‘포스코DX 기업형벤처캐피탈(CVC) 신기술투자조합’을 통해 스타트업 인핸스에 20억 원을 투자하고 업무 실행 특화형 AI 에이전트 구축을 위한 업무협약을 체결했다고 11일 밝혔다.",
       "title": "포스코DX, 온톨로지 기반 AI 고도화…인핸스에 20억 투자"
     },
+    "link:c3edf9e515311bdb09f7306a": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832614",
+      "source": "뉴시스",
+      "source_body_digest": "db84a46cff1f508817c43a8e118e6c479c6e4d25d25aa06c08b907e44f1d19d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74074e43b1057df9748c8c739e86e298ba8be70dc1cebf3bce06615378b06e8f",
+      "source_fact_keys": [
+        "source_fact:v1:bf894d90050c791a35f8d41b9adce52c7eaab7f2c58e9ea5fef171861ddd4886"
+      ],
+      "source_published_kst": "2026-10-20T08:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니테크노, 북미향 ESS 적용 부품 공급 협력사 선정",
+      "telegram_core_fact": "유니테크노 관계자는 \"앞으로도 정밀 사출 기술과 안정적인 양산 역량을 바탕으로 글로벌 배터리 공급망 내 사업 기회를 확대하고, ESS 사업을 핵심 성장동력으로 육성해나가겠다\"고 말했다.",
+      "title": "유니테크노, 북미향 ESS 적용 부품 공급 협력사 선정"
+    },
     "link:c3fc495992234a04d2d9c693": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -268948,6 +269426,37 @@
       ],
       "source_published_kst": "2026-10-06T11:18+09:00",
       "title": "디스플레이 규제합리화 브리핑하는 김민성 부단장 | 연합뉴스"
+    },
+    "link:d9346a1d8ec4a73fd1921719": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
     },
     "link:d93653ae425fbf6082b9e51d": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
@@ -281932,6 +282441,29 @@
       "source_title": "투모로로보틱스, 로봇 AI '하빌리스 브레인 0' 공개",
       "telegram_core_fact": "장병탁 투모로로보틱스 대표는 “로봇 AI가 실제 산업 현장에서 쓰이려면 높은 작업 성공률뿐 아니라 반복 작업의 안정성과 예상치 못한 변화에 대한 대응력을 갖춰야 한다”며 “다양한 로봇의 조작 지능을 고도화하고, 파트너사와 현장 실증을 확대해 제조·물류 분야의 피지컬 AI 상용화를 앞당기겠다”고 말했다.",
       "title": "투모로로보틱스, 로봇 AI '하빌리스 브레인 0' 공개"
+    },
+    "link:f9418acc0c3ba6d3b919140e": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.hankyung.com/article/2026101913831",
+      "source": "한국경제",
+      "source_body_digest": "6540b42160b9116d6ddb2756cbd8dfbeafc473d65e441046a63be44c476798d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e1bfd392fadb9c1093292c74f3ff8fa72157ed0b219d1b2e4baeb81def37a03",
+      "source_fact_keys": [
+        "source_fact:v1:0525dea4dc8c1dbd958a54821d63a2c70c78e13d2512aaf4db59dd3f7802d8fb",
+        "source_fact:v1:a0fbcc7051133323379b8a74f2a2ebb49080488b308e459cd38c306bb40841a1",
+        "source_fact:v1:b238c0dade9392465159aaf6abb85657211e3e5fd97af62728dcf616cfd2f55e",
+        "source_fact:v1:c4e2a04dcbce15d507f27f656b86d0a73e1c06f359dbced26a9eea35b94dbe05"
+      ],
+      "source_published_kst": "2026-10-19T18:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코, 전남광주에 3조 반도체 '통큰 투자'",
+      "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지코리아가 전남광주통합특별시에 3조원 규모 생산시설을 구축한다. 당초 1조원 규모였던 투자 계획을 세 배로 확대한 것으로, 국내 외국인투자기업의 단일 투자로는 최대 규모가 될 전망이다.",
+      "title": "앰코, 전남광주에 3조 반도체 '통큰 투자'"
     },
     "link:f944630b232b618245885292": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
@@ -298969,6 +299501,29 @@
       "source": "파이낸셜뉴스",
       "title": "[속보][뉴욕증시] 나스닥지수, 이틀 연속 사상 최고…다우지수, 0.4% 하락"
     },
+    "original:211c4b21b6166017c4a38805": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.hankyung.com/article/2026101913831",
+      "source": "한국경제",
+      "source_body_digest": "6540b42160b9116d6ddb2756cbd8dfbeafc473d65e441046a63be44c476798d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e1bfd392fadb9c1093292c74f3ff8fa72157ed0b219d1b2e4baeb81def37a03",
+      "source_fact_keys": [
+        "source_fact:v1:0525dea4dc8c1dbd958a54821d63a2c70c78e13d2512aaf4db59dd3f7802d8fb",
+        "source_fact:v1:a0fbcc7051133323379b8a74f2a2ebb49080488b308e459cd38c306bb40841a1",
+        "source_fact:v1:b238c0dade9392465159aaf6abb85657211e3e5fd97af62728dcf616cfd2f55e",
+        "source_fact:v1:c4e2a04dcbce15d507f27f656b86d0a73e1c06f359dbced26a9eea35b94dbe05"
+      ],
+      "source_published_kst": "2026-10-19T18:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코, 전남광주에 3조 반도체 '통큰 투자'",
+      "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지코리아가 전남광주통합특별시에 3조원 규모 생산시설을 구축한다. 당초 1조원 규모였던 투자 계획을 세 배로 확대한 것으로, 국내 외국인투자기업의 단일 투자로는 최대 규모가 될 전망이다.",
+      "title": "앰코, 전남광주에 3조 반도체 '통큰 투자'"
+    },
     "original:2123b7b9b592659f7607a137": {
       "first_seen_kst": "2026-10-15T17:49:30+09:00",
       "lanes": {
@@ -308388,6 +308943,26 @@
       "source_title": "코스피 5% 폭락한 날 \"레버리지 우르르\"...개미 또 물렸다",
       "telegram_core_fact": "코스피가 5% 넘게 급락한 지난 13일 개인 투자자들이 레버리지 상장지수펀드(ETF)를 6000억원 넘게 순매수했다. 코스콤 ETF체크에 따르면 코스피가 5.46% 하락한 지난 13일 개인 투자자 가장 많이 산 ETF는 'KODEX 레버리지'로, 순매수액은 3610억원이다.",
       "title": "코스피 5% 폭락한 날 \"레버리지 우르르\"...개미 또 물렸다"
+    },
+    "original:36dd4219861dc4452928cbf2": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832614",
+      "source": "뉴시스",
+      "source_body_digest": "db84a46cff1f508817c43a8e118e6c479c6e4d25d25aa06c08b907e44f1d19d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74074e43b1057df9748c8c739e86e298ba8be70dc1cebf3bce06615378b06e8f",
+      "source_fact_keys": [
+        "source_fact:v1:bf894d90050c791a35f8d41b9adce52c7eaab7f2c58e9ea5fef171861ddd4886"
+      ],
+      "source_published_kst": "2026-10-20T08:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니테크노, 북미향 ESS 적용 부품 공급 협력사 선정",
+      "telegram_core_fact": "유니테크노 관계자는 \"앞으로도 정밀 사출 기술과 안정적인 양산 역량을 바탕으로 글로벌 배터리 공급망 내 사업 기회를 확대하고, ESS 사업을 핵심 성장동력으로 육성해나가겠다\"고 말했다.",
+      "title": "유니테크노, 북미향 ESS 적용 부품 공급 협력사 선정"
     },
     "original:36ddfc56628b1bafc7f98727": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
@@ -318193,6 +318768,37 @@
       "link": "https://mobile.newsis.com/view/NISX20260922_0003800514",
       "source": "뉴시스",
       "title": "\"AI 데이터센터 열 잡아라\"…삼성·LG전자, 냉난방공조 생산거점 '확대'"
+    },
+    "original:4c29900fe396c86c536f7f0b": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
     },
     "original:4c36451cf10afcb124827485": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
@@ -354209,6 +354815,29 @@
       "source": "연합뉴스",
       "title": "뱅크샐러드 IPO 닻 올렸다…코스닥 상장예심 청구 | 연합뉴스"
     },
+    "original:a1e74eccadd0454a60e840fa": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01508806645614888",
+      "source": "이데일리",
+      "source_body_digest": "4b63c675fd3f1c248bdf036e4658669a9cd97b1d10199a8ba90c08402115866d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cf0d7556fb5425c5abd6baab2a182ecf984654016ef632b90365a78e898bcb5",
+      "source_fact_keys": [
+        "source_fact:v1:07e96dca93bd23ad1a92c5cbfb78ebdffff074eea0fff19322a10d458f9c5552",
+        "source_fact:v1:0a3f58c6a49b72cc0e4314c763045dfa6ec74a1ecbc991816e930f5985c6de98",
+        "source_fact:v1:aaef3bb3e55e8201fb7bb089f21bad871cdcef94238e1ca6174aff04005b0f89",
+        "source_fact:v1:efb0d1aa5bfaa74f0a2e10213c86f8d0846a50caf47309386a6b75c8768636b8"
+      ],
+      "source_published_kst": "2026-10-20T04:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑",
+      "telegram_core_fact": "클라우드 모니터링 소프트웨어 업체 데이터도그(DDOG)가 인공지능(AI) 사업 성장 기대감에 6% 가까이 상승하고 있다. 이번 투자의견 상향은 데이터도그의 성장 전망에 대한 투자자들의 기대를 높이며 주가 상승을 이끌었다.",
+      "title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑"
+    },
     "original:a1e83fe0b66dff5ce036237d": {
       "first_seen_kst": "2026-10-16T20:17:17+09:00",
       "lanes": {
@@ -373148,6 +373777,27 @@
       "telegram_core_fact": "다음달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 해제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다.",
       "title": "IEA \"경유 공급 부족 내년까지 계속\" | 연합뉴스"
     },
+    "original:d065dd3f4ebe04ad7cb76b5b": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/20/2026102003351299925",
+      "source": "머니투데이",
+      "source_body_digest": "54fbc1463cefa0a6270593e9887a58416bc685fed0a1e17e9ea0876abfd7c33a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e1383b178d017a966bc55c8c4c158883d363dc7e68ff07d237badc72f278ee9",
+      "source_fact_keys": [
+        "source_fact:v1:949391ff5b6d2e67f1503c31c0bc6808b85c4735f08f6fab505a8bce4b4feedf",
+        "source_fact:v1:c7177eb9a472baab8d654664880c1f4d00bdeed8168ef3fa88419249014e75e4"
+      ],
+      "source_published_kst": "2026-10-20T03:38+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질",
+      "telegram_core_fact": "'사막의 다보스'로 불리는 FII는 사우디가 글로벌 투자자와 기업인, 각국 정상들을 초청해 탈(脫)석유 경제 다각화 프로젝트를 홍보하고 외국인 투자(FDI)를 유치하는 핵심 국정 무대다.",
+      "title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질"
+    },
     "original:d07abb30fb3af5b9e4ba9401": {
       "first_seen_kst": "2026-10-13T11:12:56+09:00",
       "lanes": {
@@ -381254,6 +381904,24 @@
       "source_published_kst": "2026-10-06T17:04+09:00",
       "title": "이형일, 내년 가상자산 과세에 \"의견 수렴\"…추가 유예 여부 즉답 피해"
     },
+    "original:e385ba64f003bca9a3f89585": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637655",
+      "source": "이투데이",
+      "source_body_digest": "b470458fe4c68fd2ff68df88bf1d079c94a20f3d8ea130133e491a4d284b6c2c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T08:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 “삼성전자, 내년 영업익 555조원 전망…메모리 물량 80% 이미 확보”",
+      "telegram_core_fact": "KB증권은 삼성전자의 올해 영업이익을 367조원으로 전년 대비 742% 증가하고 내년에는 555조원으로 51% 늘어날 것으로 추정했다.",
+      "title": "KB證 “삼성전자, 내년 영업익 555조원 전망…메모리 물량 80% 이미 확보”"
+    },
     "original:e38f51b9b80603c6214c0612": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -383307,6 +383975,35 @@
       "source_title": "이번 주 국내 기름값 소폭 하락…국제유가도 내림세",
       "telegram_core_fact": "국제유가는 중동 원유 수출이 일부 회복하면서 하락했다.",
       "title": "이번 주 국내 기름값 소폭 하락…국제유가도 내림세"
+    },
+    "original:e86354a5bbc6907eccce17f4": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
     },
     "original:e863f46b0db6c5726239ce95": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
@@ -398040,6 +398737,27 @@
       "telegram_core_fact": "추미애 경기도지사가 보육예산 '임의삭감'을 공개 부인하면서 어린이집 운영지원비의 원아당 도 지원단가를 1만2600원에서 6000원으로 조정한 내역을 직접 밝혔다. 추 지사는 보육예산 임의 삭감을 부인하면서 어린이집 운영지원비 원아당 도 지원단가를 1만2600원에서 6000원으로 조정했다고 밝혔다.",
       "title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원"
     },
+    "source_fact:0310a3241eb223919557b386": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/20/2026102003351299925",
+      "source": "머니투데이",
+      "source_body_digest": "54fbc1463cefa0a6270593e9887a58416bc685fed0a1e17e9ea0876abfd7c33a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e1383b178d017a966bc55c8c4c158883d363dc7e68ff07d237badc72f278ee9",
+      "source_fact_keys": [
+        "source_fact:v1:949391ff5b6d2e67f1503c31c0bc6808b85c4735f08f6fab505a8bce4b4feedf",
+        "source_fact:v1:c7177eb9a472baab8d654664880c1f4d00bdeed8168ef3fa88419249014e75e4"
+      ],
+      "source_published_kst": "2026-10-20T03:38+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질",
+      "telegram_core_fact": "'사막의 다보스'로 불리는 FII는 사우디가 글로벌 투자자와 기업인, 각국 정상들을 초청해 탈(脫)석유 경제 다각화 프로젝트를 홍보하고 외국인 투자(FDI)를 유치하는 핵심 국정 무대다.",
+      "title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질"
+    },
     "source_fact:03163a52610ccc1e008419d4": {
       "first_seen_kst": "2026-10-11T16:16:50+09:00",
       "lanes": {
@@ -406293,6 +407011,37 @@
       "source_title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’",
       "telegram_core_fact": "현재 경기도 화성에 50MW급 태양광 모듈 생산라인을 구축하고, 초경량·고출력 태양광 모듈과 건물일체형 태양광 모듈을 개발·생산하고 있다. 에이스인벤터는 아이템을 인정받아 한국건설기술연구원 스마트건설지원센터 보육기업으로 선정됐다.",
       "title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’"
+    },
+    "source_fact:0814249a729b3672921ff08f": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
     },
     "source_fact:08153fffe91f4a5e6ed3ff33": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
@@ -438480,6 +439229,37 @@
       "telegram_core_fact": "\"우리 기업의 해외수주 지원을 위해 3조원 해외건설 신(新)전략펀드를 신설하고, 해외 진출 사업의 연관 지역경제가 활성화될 수 있도록 패키지형 수주(개발·건설·유지보수)를 확대하겠다\"고 밝혔다.",
       "title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설"
     },
+    "source_fact:1b907c23462fd7d047ca0078": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
+    },
     "source_fact:1b92d15eaa6e0c64392d3db9": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -446002,6 +446782,37 @@
       "telegram_core_fact": "최근 유안타증권 이외에도 LS증권(10월15일)과 현대차증권(10월15일), 신한투자증권(10월13일)에서 각각 \"내실을 다지는 3분기\", \"견조한 실적과 지속되는 AIDC 모멘텀\", \"4Q 수주 규모가 중요\" 라고 GS건설 분석 리포트를 발표했다.",
       "title": "GS건설, `데이터센터 준비 갈 완료` 증권사 발표에 강세"
     },
+    "source_fact:1ff11e5e64a3b138308f41ec": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
+    },
     "source_fact:1ff14f022effc0e236f7e2e2": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
       "lanes": {
@@ -447878,6 +448689,35 @@
       "source_title": "태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정…세계 193위",
       "telegram_core_fact": "태평양은 지난해 대형·고난도 사건과 크로스보더 거래를 수행하며 전년 대비 약 12% 증가한 4702억원의 매출을 기록했다. 법무법인 태평양은 미국 법률전문매체 아메리칸 로이어가 발표한 ‘2026 글로벌 200대 로펌(The Global 200)’에서 세계 193위에 올랐다고 7일 밝혔다.",
       "title": "태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정…세계 193위"
+    },
+    "source_fact:20b10572a8db3279915a8bf8": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
     },
     "source_fact:20b3cbc349c4ac2fe1833189": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
@@ -453902,6 +454742,29 @@
       "source_title": "현대건설, 2조6천억 규모 목동10단지 재건축 시공사 선정 | 연합뉴스",
       "telegram_core_fact": "현대건설은 2조6천136억원 서울 양천구 목동10단지 재건축 사업을 수주했다고 19일 밝혔다.",
       "title": "현대건설, 2조6천억 규모 목동10단지 재건축 시공사 선정 | 연합뉴스"
+    },
+    "source_fact:240885ea3855e2beb83ca30a": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01508806645614888",
+      "source": "이데일리",
+      "source_body_digest": "4b63c675fd3f1c248bdf036e4658669a9cd97b1d10199a8ba90c08402115866d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cf0d7556fb5425c5abd6baab2a182ecf984654016ef632b90365a78e898bcb5",
+      "source_fact_keys": [
+        "source_fact:v1:07e96dca93bd23ad1a92c5cbfb78ebdffff074eea0fff19322a10d458f9c5552",
+        "source_fact:v1:0a3f58c6a49b72cc0e4314c763045dfa6ec74a1ecbc991816e930f5985c6de98",
+        "source_fact:v1:aaef3bb3e55e8201fb7bb089f21bad871cdcef94238e1ca6174aff04005b0f89",
+        "source_fact:v1:efb0d1aa5bfaa74f0a2e10213c86f8d0846a50caf47309386a6b75c8768636b8"
+      ],
+      "source_published_kst": "2026-10-20T04:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑",
+      "telegram_core_fact": "클라우드 모니터링 소프트웨어 업체 데이터도그(DDOG)가 인공지능(AI) 사업 성장 기대감에 6% 가까이 상승하고 있다. 이번 투자의견 상향은 데이터도그의 성장 전망에 대한 투자자들의 기대를 높이며 주가 상승을 이끌었다.",
+      "title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑"
     },
     "source_fact:240a4585e838f62d3448d6d7": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -462911,6 +463774,35 @@
       "source_title": "데본에너지, 이글포드 자산 42억달러 매각..자사주 매입·부채 감축 가속",
       "telegram_core_fact": "생산량 약 4% 비중의 성숙 자산을 42억 달러 현금에 매각해 자사주 매입과 부채 감축 재원을 확보한 점은 주주가치에 긍정적이에요.",
       "title": "데본에너지, 이글포드 자산 42억달러 매각..자사주 매입·부채 감축 가속"
+    },
+    "source_fact:2907e5cd77e7cc84838a0fb1": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
     },
     "source_fact:29087f60c663bb53b1eab05a": {
       "first_seen_kst": "2026-10-18T06:42:56+09:00",
@@ -489200,6 +490092,27 @@
       "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
       "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
     },
+    "source_fact:38e5ab20223eee5545b4369f": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/20/2026102003351299925",
+      "source": "머니투데이",
+      "source_body_digest": "54fbc1463cefa0a6270593e9887a58416bc685fed0a1e17e9ea0876abfd7c33a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e1383b178d017a966bc55c8c4c158883d363dc7e68ff07d237badc72f278ee9",
+      "source_fact_keys": [
+        "source_fact:v1:949391ff5b6d2e67f1503c31c0bc6808b85c4735f08f6fab505a8bce4b4feedf",
+        "source_fact:v1:c7177eb9a472baab8d654664880c1f4d00bdeed8168ef3fa88419249014e75e4"
+      ],
+      "source_published_kst": "2026-10-20T03:38+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질",
+      "telegram_core_fact": "'사막의 다보스'로 불리는 FII는 사우디가 글로벌 투자자와 기업인, 각국 정상들을 초청해 탈(脫)석유 경제 다각화 프로젝트를 홍보하고 외국인 투자(FDI)를 유치하는 핵심 국정 무대다.",
+      "title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질"
+    },
     "source_fact:38e70daac7be3b8def66d263": {
       "first_seen_kst": "2026-10-12T00:21:39+09:00",
       "lanes": {
@@ -505254,6 +506167,37 @@
       "source_title": "[마켓뷰] 美반도체 약세에 추가 하락? 반발매수?…코스피 향배는 | 연합뉴스",
       "telegram_core_fact": "서 상무는 \"반도체 업종의 부진과 외국인 수급 부담으로 장 초반 약세가 이어질 것으로 예상한다\"면서도 \"다만 관련 악재들이 전일 상당 부분 선반영됐고, 중국 창신메모리의 기술 진전이 즉각적인 공급 증가나 메모리 가격 하락을 의미하지 않는다는 점에서 낙폭 축소와 반발 매수 유입 가능성도 높은 상황\"이라고 밝혔다.",
       "title": "[마켓뷰] 美반도체 약세에 추가 하락? 반발매수?…코스피 향배는 | 연합뉴스"
+    },
+    "source_fact:42a8135aadd3255e4bdd6b24": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
     },
     "source_fact:42b271705b43e62c115e5d8e": {
       "first_seen_kst": "2026-10-14T06:09:46+09:00",
@@ -537661,6 +538605,37 @@
       "telegram_core_fact": "CNBC에 따르면 오픈AI는 투자자 설명자료에서 올해 3분기 전체 연환산 매출 증가율이 77%에 달했다고 밝혔다.",
       "title": "오픈AI 매출 200억달러 ‘착시’에…엔비디아·오라클 등 AI주 급락"
     },
+    "source_fact:555ec7c1b0e4577b45bb2d87": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
+    },
     "source_fact:5560ed5e579dd2eea18340d2": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -557333,6 +558308,37 @@
       "telegram_core_fact": "국토부는 지난해 9·7 주택공급 확대방안과 올해 8·13 주택 신속공급 방안 등의 효과가 공급 선행지표 개선으로 이어지고 있다고 설명했다. 국토교통부에 따르면 올해 3~8월 서울 주택 인허가 실적은 3만6000가구로 지난해 같은 기간(2만1000가구)보다 74% 증가했다.",
       "title": "국토부 “강남·서초 집값 10주 연속 ↓…2028년부터 공급 개선”"
     },
+    "source_fact:6054ec9e7b4d3790b3c70fd5": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
+    },
     "source_fact:605bcd36087b0fb60acfc9f3": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -564065,6 +565071,35 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:64777c7894f6a51e9b7aac65": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
     },
     "source_fact:647cdaddde4f79e606cdbf92": {
       "first_seen_kst": "2026-10-17T01:17:18+09:00",
@@ -577706,6 +578741,37 @@
       "source_title": "中 나우라, 하이브리드 본딩 장비기업 인수…첨단 패키징 사업 강화",
       "telegram_core_fact": "선전증권거래소에 따르면 나우라 자회사 북방화창마이크로전자를 통해 베이징 노허젠웨이 지분 100%를 4억456만위안(약 810억원)에 인수하는 계약을 체결했다.",
       "title": "中 나우라, 하이브리드 본딩 장비기업 인수…첨단 패키징 사업 강화"
+    },
+    "source_fact:6ca182c3271b9923147bce9b": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
     },
     "source_fact:6ca28c6fcae01953f1271434": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
@@ -599046,6 +600112,37 @@
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
+    "source_fact:795f67c3359419d8329e770e": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
+    },
     "source_fact:795f8564d2371e80cb8afafc": {
       "first_seen_kst": "2026-10-19T12:29:34+09:00",
       "lanes": {
@@ -612018,6 +613115,37 @@
       ],
       "source_published_kst": "2026-10-07T07:33+09:00",
       "title": "[마켓무버]뉴욕증시, 금리 부담 완화에 일제 상승…AI·반도체가 랠리 주도"
+    },
+    "source_fact:817161a26a2af08c4c516750": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
     },
     "source_fact:8178246a5429883154d9f21b": {
       "first_seen_kst": "2026-10-08T22:29:06+09:00",
@@ -643208,6 +644336,35 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 경유 가격을 잡기 위해 러시아산 경유의 미국 수입 등을 허용하는 한시적인 대러 제재 완화 조치를 발표했다.",
       "title": "중간선거 앞 기름값 급등에…트럼프, 대러 제재 풀고 경유 수입"
     },
+    "source_fact:95034ad4fa198a5d87698431": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
+    },
     "source_fact:95049d759548c1c8b42d4042": {
       "first_seen_kst": "2026-10-14T21:14:31+09:00",
       "lanes": {
@@ -644343,6 +645500,29 @@
       "source_title": "\"증시 덮칠 '진짜 공포' 따로 있다\"…증권가 '무서운 경고' [분석+]",
       "telegram_core_fact": "미국 국채 10년물 금리가 연 5%를 넘어서면서 주식투자자가 긴장하고 있지만, 증권가에선 오히려 장기 금리의 하락이 더 큰 악재가 될 수 있다는 분석이 잇달아 나왔다.",
       "title": "\"증시 덮칠 '진짜 공포' 따로 있다\"…증권가 '무서운 경고' [분석+]"
+    },
+    "source_fact:95b327c719e7ee564a55753d": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01508806645614888",
+      "source": "이데일리",
+      "source_body_digest": "4b63c675fd3f1c248bdf036e4658669a9cd97b1d10199a8ba90c08402115866d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cf0d7556fb5425c5abd6baab2a182ecf984654016ef632b90365a78e898bcb5",
+      "source_fact_keys": [
+        "source_fact:v1:07e96dca93bd23ad1a92c5cbfb78ebdffff074eea0fff19322a10d458f9c5552",
+        "source_fact:v1:0a3f58c6a49b72cc0e4314c763045dfa6ec74a1ecbc991816e930f5985c6de98",
+        "source_fact:v1:aaef3bb3e55e8201fb7bb089f21bad871cdcef94238e1ca6174aff04005b0f89",
+        "source_fact:v1:efb0d1aa5bfaa74f0a2e10213c86f8d0846a50caf47309386a6b75c8768636b8"
+      ],
+      "source_published_kst": "2026-10-20T04:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑",
+      "telegram_core_fact": "클라우드 모니터링 소프트웨어 업체 데이터도그(DDOG)가 인공지능(AI) 사업 성장 기대감에 6% 가까이 상승하고 있다. 이번 투자의견 상향은 데이터도그의 성장 전망에 대한 투자자들의 기대를 높이며 주가 상승을 이끌었다.",
+      "title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑"
     },
     "source_fact:95b5aa690a80f709b16d5db7": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -669855,6 +671035,37 @@
       "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
       "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
+    "source_fact:a440bfd47302c050ca1cc636": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
+    },
     "source_fact:a4451b119956ba8af12b35bd": {
       "first_seen_kst": "2026-10-18T07:38:19+09:00",
       "lanes": {
@@ -680708,6 +681919,35 @@
       "telegram_core_fact": "휴매나(HUM)는 자회사 센터웰의 시니어 일차의료 클리닉 약 150곳을 운영할 새 합작법인을 블랙록 산하 HPS 인베스트먼트 파트너스와 설립하고, 블랙록이 기존 파트너 WCAS의 센터웰 합작법인 지분(약 28억 달러 규모)을 인수하는 계약을 체결했다고 10월 13일 발표했다.",
       "title": "휴매나, 블랙록 WCAS 지분 28억 달러 인수..센터웰 합작 재편"
     },
+    "source_fact:aae16e0b8b88a17d86ec6da8": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
+    },
     "source_fact:aae2b1c0db0ee14d8ea4a12d": {
       "first_seen_kst": "2026-10-15T13:08:36+09:00",
       "lanes": {
@@ -685909,6 +687149,35 @@
       "source_title": "[속보]코스피, 中 반도체 쇼크에 6000선 턱걸이…외국인 4.5조 팔자",
       "telegram_core_fact": "코스피·코스닥은 각각 5.46%·1.43% 하락해 양 시장에 매도 사이드카가 발동됐다.",
       "title": "[속보]코스피, 中 반도체 쇼크에 6000선 턱걸이…외국인 4.5조 팔자"
+    },
+    "source_fact:ad89f8803468004e5ff72945": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
     },
     "source_fact:ad8aa1e874f4591e8b8696f6": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
@@ -706191,6 +707460,37 @@
       "telegram_core_fact": "에이아이오에스 테크(AIOS)는 스마트코어 홀딩스(SmartCore Holdings Limited) 발행주식 전부를 약 1억 달러 전액 주식 교환 방식으로 인수하는 계약을 체결했으며, 거래 후 기존 주주 지분율은 약 19.8%로 낮아진다고 현지시간 19일 발표했다.",
       "title": "에이아이오에스 테크, 스마트코어 1억 달러 주식 인수…주주 지분 20%로 희석"
     },
+    "source_fact:b97d3d1c4357dbcb2b02d3b8": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
+    },
     "source_fact:b983ce8ff9fb852cb97ba49a": {
       "first_seen_kst": "2026-10-15T11:11:30+09:00",
       "lanes": {
@@ -710771,6 +712071,29 @@
       "telegram_core_fact": "중국 외골격 로봇 기업 지케 테크놀로지(极?科技)는 70여개 국가에 제품을 공급하고 있으며, B라운드 투자에서 앤트그룹과 메이퇀룽주, 세쿼이아차이나 등의 투자를 유치했다. 시장조사업체 IDC에 따르면 2025년 중국 외골격 로봇 출하량은 약 2만6000대로 집계됐다.",
       "title": "[테크 차이나] 일상 속으로 파고드는 외골격 로봇…소비자용 제품 중심으로 시장 확대"
     },
+    "source_fact:bc46509bab4debfe2c55d9f0": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01508806645614888",
+      "source": "이데일리",
+      "source_body_digest": "4b63c675fd3f1c248bdf036e4658669a9cd97b1d10199a8ba90c08402115866d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cf0d7556fb5425c5abd6baab2a182ecf984654016ef632b90365a78e898bcb5",
+      "source_fact_keys": [
+        "source_fact:v1:07e96dca93bd23ad1a92c5cbfb78ebdffff074eea0fff19322a10d458f9c5552",
+        "source_fact:v1:0a3f58c6a49b72cc0e4314c763045dfa6ec74a1ecbc991816e930f5985c6de98",
+        "source_fact:v1:aaef3bb3e55e8201fb7bb089f21bad871cdcef94238e1ca6174aff04005b0f89",
+        "source_fact:v1:efb0d1aa5bfaa74f0a2e10213c86f8d0846a50caf47309386a6b75c8768636b8"
+      ],
+      "source_published_kst": "2026-10-20T04:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑",
+      "telegram_core_fact": "클라우드 모니터링 소프트웨어 업체 데이터도그(DDOG)가 인공지능(AI) 사업 성장 기대감에 6% 가까이 상승하고 있다. 이번 투자의견 상향은 데이터도그의 성장 전망에 대한 투자자들의 기대를 높이며 주가 상승을 이끌었다.",
+      "title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑"
+    },
     "source_fact:bc493935a54d12805bef9c65": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -712804,6 +714127,26 @@
       "source_title": "웹케시, 위세얼과 업무협약… 韓 진출 中기업에 '경리나라' 공급",
       "telegram_core_fact": "웹케시가 중국 기업의 한국 진출을 지원하는 위세얼과 '경리나라' 공급 확대를 위한 업무협약을 체결했다고 12일 밝혔다.",
       "title": "웹케시, 위세얼과 업무협약… 韓 진출 中기업에 '경리나라' 공급"
+    },
+    "source_fact:bd908b233fce94be179b7971": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832614",
+      "source": "뉴시스",
+      "source_body_digest": "db84a46cff1f508817c43a8e118e6c479c6e4d25d25aa06c08b907e44f1d19d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74074e43b1057df9748c8c739e86e298ba8be70dc1cebf3bce06615378b06e8f",
+      "source_fact_keys": [
+        "source_fact:v1:bf894d90050c791a35f8d41b9adce52c7eaab7f2c58e9ea5fef171861ddd4886"
+      ],
+      "source_published_kst": "2026-10-20T08:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니테크노, 북미향 ESS 적용 부품 공급 협력사 선정",
+      "telegram_core_fact": "유니테크노 관계자는 \"앞으로도 정밀 사출 기술과 안정적인 양산 역량을 바탕으로 글로벌 배터리 공급망 내 사업 기회를 확대하고, ESS 사업을 핵심 성장동력으로 육성해나가겠다\"고 말했다.",
+      "title": "유니테크노, 북미향 ESS 적용 부품 공급 협력사 선정"
     },
     "source_fact:bd946da579c5d58dc509d3c9": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
@@ -747293,6 +748636,37 @@
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
     },
+    "source_fact:d1bf466fd5137fe01c6c04df": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
+    },
     "source_fact:d1cd327a9f7a9f65b1836670": {
       "first_seen_kst": "2026-10-12T12:09:58+09:00",
       "lanes": {
@@ -752397,6 +753771,35 @@
       "source_title": "[제2서울핀테크랩 스타트업 CEO] 난방약자와 기후투자자를 연결하는 히트펌프 열 구독서비스 운영 기업 ‘모닥불 에너지’",
       "telegram_core_fact": "소상공인, 단독주택, 공장·시설 등 전문성과 자본이 부족한 소비자가 구독료만 납부하면 히트펌프의 금융 및 설치부터 운영 및 에너지 거래까지 통합 서비스를 누릴 수 있는 데이터 기반 재생열에너지 플랫폼을 구축하고 있다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 난방약자와 기후투자자를 연결하는 히트펌프 열 구독서비스 운영 기업 ‘모닥불 에너지’"
+    },
+    "source_fact:d4eb85cb2af64d979433b5bb": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
     },
     "source_fact:d4ec1565be57bcef2ace6a17": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -763569,6 +764972,29 @@
       "source_title": "LG전자, 자회사 부진에 3Q 성적표 '예상치 하회'…가전·TV 등 주력사업은 '선방'",
       "telegram_core_fact": "증권가에서는 컨센서스 대비 실적이 하회한 배경에 대해 연결 자회사 LG이노텍의 수익성 부진을 꼽고 있다.",
       "title": "LG전자, 자회사 부진에 3Q 성적표 '예상치 하회'…가전·TV 등 주력사업은 '선방'"
+    },
+    "source_fact:db384308ae3f4540a612e92e": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.hankyung.com/article/2026101913831",
+      "source": "한국경제",
+      "source_body_digest": "6540b42160b9116d6ddb2756cbd8dfbeafc473d65e441046a63be44c476798d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e1bfd392fadb9c1093292c74f3ff8fa72157ed0b219d1b2e4baeb81def37a03",
+      "source_fact_keys": [
+        "source_fact:v1:0525dea4dc8c1dbd958a54821d63a2c70c78e13d2512aaf4db59dd3f7802d8fb",
+        "source_fact:v1:a0fbcc7051133323379b8a74f2a2ebb49080488b308e459cd38c306bb40841a1",
+        "source_fact:v1:b238c0dade9392465159aaf6abb85657211e3e5fd97af62728dcf616cfd2f55e",
+        "source_fact:v1:c4e2a04dcbce15d507f27f656b86d0a73e1c06f359dbced26a9eea35b94dbe05"
+      ],
+      "source_published_kst": "2026-10-19T18:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코, 전남광주에 3조 반도체 '통큰 투자'",
+      "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지코리아가 전남광주통합특별시에 3조원 규모 생산시설을 구축한다. 당초 1조원 규모였던 투자 계획을 세 배로 확대한 것으로, 국내 외국인투자기업의 단일 투자로는 최대 규모가 될 전망이다.",
+      "title": "앰코, 전남광주에 3조 반도체 '통큰 투자'"
     },
     "source_fact:db391c54caf1b0d2c1601836": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -795805,6 +797231,29 @@
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
+    "source_fact:edebd150cfcac2ab2b6a18b7": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01508806645614888",
+      "source": "이데일리",
+      "source_body_digest": "4b63c675fd3f1c248bdf036e4658669a9cd97b1d10199a8ba90c08402115866d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cf0d7556fb5425c5abd6baab2a182ecf984654016ef632b90365a78e898bcb5",
+      "source_fact_keys": [
+        "source_fact:v1:07e96dca93bd23ad1a92c5cbfb78ebdffff074eea0fff19322a10d458f9c5552",
+        "source_fact:v1:0a3f58c6a49b72cc0e4314c763045dfa6ec74a1ecbc991816e930f5985c6de98",
+        "source_fact:v1:aaef3bb3e55e8201fb7bb089f21bad871cdcef94238e1ca6174aff04005b0f89",
+        "source_fact:v1:efb0d1aa5bfaa74f0a2e10213c86f8d0846a50caf47309386a6b75c8768636b8"
+      ],
+      "source_published_kst": "2026-10-20T04:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑",
+      "telegram_core_fact": "클라우드 모니터링 소프트웨어 업체 데이터도그(DDOG)가 인공지능(AI) 사업 성장 기대감에 6% 가까이 상승하고 있다. 이번 투자의견 상향은 데이터도그의 성장 전망에 대한 투자자들의 기대를 높이며 주가 상승을 이끌었다.",
+      "title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑"
+    },
     "source_fact:edefe1253bcb47156695ef85": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
       "lanes": {
@@ -796742,6 +798191,29 @@
       "source_title": "솔루스첨단소재, 4분기 전지박 판가 50% 이상 인상…“2027년 수익성 개선 본격화”",
       "telegram_core_fact": "솔루스첨단소재는 글로벌 주요 고객사를 대상으로 올해 4분기 전지박 평균 판매가격을 전 분기 대비 50% 이상 인상하기로 했다고 19일 밝혔다 4분기부터 인상된 단가가 실적에 본격 반영되는 가운데, 공장 가동률 상승에 따른 생산량 확대와 제조 효율화 효과가 맞물려 수익성 빠르게 개선될 것으로 전망하고 있다.",
       "title": "솔루스첨단소재, 4분기 전지박 판가 50% 이상 인상…“2027년 수익성 개선 본격화”"
+    },
+    "source_fact:ee94fba60f037c8fa376cd14": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.hankyung.com/article/2026101913831",
+      "source": "한국경제",
+      "source_body_digest": "6540b42160b9116d6ddb2756cbd8dfbeafc473d65e441046a63be44c476798d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e1bfd392fadb9c1093292c74f3ff8fa72157ed0b219d1b2e4baeb81def37a03",
+      "source_fact_keys": [
+        "source_fact:v1:0525dea4dc8c1dbd958a54821d63a2c70c78e13d2512aaf4db59dd3f7802d8fb",
+        "source_fact:v1:a0fbcc7051133323379b8a74f2a2ebb49080488b308e459cd38c306bb40841a1",
+        "source_fact:v1:b238c0dade9392465159aaf6abb85657211e3e5fd97af62728dcf616cfd2f55e",
+        "source_fact:v1:c4e2a04dcbce15d507f27f656b86d0a73e1c06f359dbced26a9eea35b94dbe05"
+      ],
+      "source_published_kst": "2026-10-19T18:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코, 전남광주에 3조 반도체 '통큰 투자'",
+      "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지코리아가 전남광주통합특별시에 3조원 규모 생산시설을 구축한다. 당초 1조원 규모였던 투자 계획을 세 배로 확대한 것으로, 국내 외국인투자기업의 단일 투자로는 최대 규모가 될 전망이다.",
+      "title": "앰코, 전남광주에 3조 반도체 '통큰 투자'"
     },
     "source_fact:eea18477d57ef381df88c019": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -798506,6 +799978,29 @@
       "telegram_core_fact": "대만 기업들은 AI 인프라 투자 확대에 따른 판매량 증가로 실적을 끌어올리고 있는 반면 한국 반도체 기업의 이익은 메모리 가격 상승에 대한 의존도가 높다. 코스콤 CHECK 등에 따르면 코스피는 올해 3분기 19.33% 하락했다.",
       "title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자"
     },
+    "source_fact:ef760207ff29e8d85c0c7a5a": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.hankyung.com/article/2026101913831",
+      "source": "한국경제",
+      "source_body_digest": "6540b42160b9116d6ddb2756cbd8dfbeafc473d65e441046a63be44c476798d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e1bfd392fadb9c1093292c74f3ff8fa72157ed0b219d1b2e4baeb81def37a03",
+      "source_fact_keys": [
+        "source_fact:v1:0525dea4dc8c1dbd958a54821d63a2c70c78e13d2512aaf4db59dd3f7802d8fb",
+        "source_fact:v1:a0fbcc7051133323379b8a74f2a2ebb49080488b308e459cd38c306bb40841a1",
+        "source_fact:v1:b238c0dade9392465159aaf6abb85657211e3e5fd97af62728dcf616cfd2f55e",
+        "source_fact:v1:c4e2a04dcbce15d507f27f656b86d0a73e1c06f359dbced26a9eea35b94dbe05"
+      ],
+      "source_published_kst": "2026-10-19T18:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코, 전남광주에 3조 반도체 '통큰 투자'",
+      "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지코리아가 전남광주통합특별시에 3조원 규모 생산시설을 구축한다. 당초 1조원 규모였던 투자 계획을 세 배로 확대한 것으로, 국내 외국인투자기업의 단일 투자로는 최대 규모가 될 전망이다.",
+      "title": "앰코, 전남광주에 3조 반도체 '통큰 투자'"
+    },
     "source_fact:ef7ca30358db767f895f58e3": {
       "first_seen_kst": "2026-10-19T13:56:52+09:00",
       "lanes": {
@@ -799091,6 +800586,29 @@
       "source_title": "“트럼프, 젤렌스키가 요청 무시하자 푸틴과 경유 거래 결정“",
       "telegram_core_fact": "트럼프 대통령은 푸틴 대통령과 통화한 뒤 러시아가 미국과 세계 시장에 경유 30만t 이상을 즉시 공급하고 11월에 50만t을, 그 직후엔 100만t을 추가 공급하기로 했다고 발표했습니다.",
       "title": "“트럼프, 젤렌스키가 요청 무시하자 푸틴과 경유 거래 결정“"
+    },
+    "source_fact:efed02b61b7b68214f768d43": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.hankyung.com/article/2026101913831",
+      "source": "한국경제",
+      "source_body_digest": "6540b42160b9116d6ddb2756cbd8dfbeafc473d65e441046a63be44c476798d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e1bfd392fadb9c1093292c74f3ff8fa72157ed0b219d1b2e4baeb81def37a03",
+      "source_fact_keys": [
+        "source_fact:v1:0525dea4dc8c1dbd958a54821d63a2c70c78e13d2512aaf4db59dd3f7802d8fb",
+        "source_fact:v1:a0fbcc7051133323379b8a74f2a2ebb49080488b308e459cd38c306bb40841a1",
+        "source_fact:v1:b238c0dade9392465159aaf6abb85657211e3e5fd97af62728dcf616cfd2f55e",
+        "source_fact:v1:c4e2a04dcbce15d507f27f656b86d0a73e1c06f359dbced26a9eea35b94dbe05"
+      ],
+      "source_published_kst": "2026-10-19T18:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코, 전남광주에 3조 반도체 '통큰 투자'",
+      "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지코리아가 전남광주통합특별시에 3조원 규모 생산시설을 구축한다. 당초 1조원 규모였던 투자 계획을 세 배로 확대한 것으로, 국내 외국인투자기업의 단일 투자로는 최대 규모가 될 전망이다.",
+      "title": "앰코, 전남광주에 3조 반도체 '통큰 투자'"
     },
     "source_fact:efef31881cce4e341c45cba8": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
@@ -802535,6 +804053,35 @@
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 '6조원' 규모 LFP 공급…\"물량 두 배 이상 확대\""
     },
+    "source_fact:f2291748d58b16d74b1b3a20": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
+    },
     "source_fact:f22cdb3a91e716169f93b039": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -805631,6 +807178,35 @@
       "source_title": "\"월 100만원 모아도 답 없잖아\"…청년층 고위험 투자 내몰리는 이유",
       "telegram_core_fact": "박 변호사는 \"월 300만원을 버는 청년이 서울에서 월세와 통신비, 관리비, 식비 등 기본적인 생활비를 지출하면 월 100만원 정도를 저축하는 것도 쉽지 않다\"며 \"매달 100만원을 모아도 10년간 1억2000만원 수준인데, 이는 자산 가격 상승 속도를 도저히 따라갈 수 없는 금액\"이라고 지적했다.",
       "title": "\"월 100만원 모아도 답 없잖아\"…청년층 고위험 투자 내몰리는 이유"
+    },
+    "source_fact:f41b7c39336bad0a10db39f1": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
     },
     "source_fact:f41d96aaccecd6f6184e4f23": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
@@ -811387,6 +812963,35 @@
       "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
       "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
       "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
+    },
+    "source_fact:f7c9024a8155e86669e291fd": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
     },
     "source_fact:f7d7073a4f139be4d9ebc046": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
@@ -839072,6 +840677,29 @@
       "source": "파이낸셜뉴스",
       "title": "[속보][뉴욕증시] 나스닥지수, 이틀 연속 사상 최고…다우지수, 0.4% 하락"
     },
+    "title:211c4b21b6166017c4a38805": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.hankyung.com/article/2026101913831",
+      "source": "한국경제",
+      "source_body_digest": "6540b42160b9116d6ddb2756cbd8dfbeafc473d65e441046a63be44c476798d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e1bfd392fadb9c1093292c74f3ff8fa72157ed0b219d1b2e4baeb81def37a03",
+      "source_fact_keys": [
+        "source_fact:v1:0525dea4dc8c1dbd958a54821d63a2c70c78e13d2512aaf4db59dd3f7802d8fb",
+        "source_fact:v1:a0fbcc7051133323379b8a74f2a2ebb49080488b308e459cd38c306bb40841a1",
+        "source_fact:v1:b238c0dade9392465159aaf6abb85657211e3e5fd97af62728dcf616cfd2f55e",
+        "source_fact:v1:c4e2a04dcbce15d507f27f656b86d0a73e1c06f359dbced26a9eea35b94dbe05"
+      ],
+      "source_published_kst": "2026-10-19T18:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "앰코, 전남광주에 3조 반도체 '통큰 투자'",
+      "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지코리아가 전남광주통합특별시에 3조원 규모 생산시설을 구축한다. 당초 1조원 규모였던 투자 계획을 세 배로 확대한 것으로, 국내 외국인투자기업의 단일 투자로는 최대 규모가 될 전망이다.",
+      "title": "앰코, 전남광주에 3조 반도체 '통큰 투자'"
+    },
     "title:2123b7b9b592659f7607a137": {
       "first_seen_kst": "2026-10-15T17:49:30+09:00",
       "lanes": {
@@ -848708,6 +850336,26 @@
       "source_title": "코스피 5% 폭락한 날 \"레버리지 우르르\"...개미 또 물렸다",
       "telegram_core_fact": "코스피가 5% 넘게 급락한 지난 13일 개인 투자자들이 레버리지 상장지수펀드(ETF)를 6000억원 넘게 순매수했다. 코스콤 ETF체크에 따르면 코스피가 5.46% 하락한 지난 13일 개인 투자자 가장 많이 산 ETF는 'KODEX 레버리지'로, 순매수액은 3610억원이다.",
       "title": "코스피 5% 폭락한 날 \"레버리지 우르르\"...개미 또 물렸다"
+    },
+    "title:36dd4219861dc4452928cbf2": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832614",
+      "source": "뉴시스",
+      "source_body_digest": "db84a46cff1f508817c43a8e118e6c479c6e4d25d25aa06c08b907e44f1d19d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74074e43b1057df9748c8c739e86e298ba8be70dc1cebf3bce06615378b06e8f",
+      "source_fact_keys": [
+        "source_fact:v1:bf894d90050c791a35f8d41b9adce52c7eaab7f2c58e9ea5fef171861ddd4886"
+      ],
+      "source_published_kst": "2026-10-20T08:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니테크노, 북미향 ESS 적용 부품 공급 협력사 선정",
+      "telegram_core_fact": "유니테크노 관계자는 \"앞으로도 정밀 사출 기술과 안정적인 양산 역량을 바탕으로 글로벌 배터리 공급망 내 사업 기회를 확대하고, ESS 사업을 핵심 성장동력으로 육성해나가겠다\"고 말했다.",
+      "title": "유니테크노, 북미향 ESS 적용 부품 공급 협력사 선정"
     },
     "title:36ddfc56628b1bafc7f98727": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
@@ -858613,6 +860261,37 @@
       "link": "https://mobile.newsis.com/view/NISX20260922_0003800514",
       "source": "뉴시스",
       "title": "\"AI 데이터센터 열 잡아라\"…삼성·LG전자, 냉난방공조 생산거점 '확대'"
+    },
+    "title:4c29900fe396c86c536f7f0b": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6325172",
+      "source": "뉴스1",
+      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_keys": [
+        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
+        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
+        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
+        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
+        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
+        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
+        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
+        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
+        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
+        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
+        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
+        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+      ],
+      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
+      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
+      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
     },
     "title:4c36451cf10afcb124827485": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
@@ -895440,6 +897119,29 @@
       "source": "연합뉴스",
       "title": "뱅크샐러드 IPO 닻 올렸다…코스닥 상장예심 청구 | 연합뉴스"
     },
+    "title:a1e74eccadd0454a60e840fa": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01508806645614888",
+      "source": "이데일리",
+      "source_body_digest": "4b63c675fd3f1c248bdf036e4658669a9cd97b1d10199a8ba90c08402115866d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cf0d7556fb5425c5abd6baab2a182ecf984654016ef632b90365a78e898bcb5",
+      "source_fact_keys": [
+        "source_fact:v1:07e96dca93bd23ad1a92c5cbfb78ebdffff074eea0fff19322a10d458f9c5552",
+        "source_fact:v1:0a3f58c6a49b72cc0e4314c763045dfa6ec74a1ecbc991816e930f5985c6de98",
+        "source_fact:v1:aaef3bb3e55e8201fb7bb089f21bad871cdcef94238e1ca6174aff04005b0f89",
+        "source_fact:v1:efb0d1aa5bfaa74f0a2e10213c86f8d0846a50caf47309386a6b75c8768636b8"
+      ],
+      "source_published_kst": "2026-10-20T04:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑",
+      "telegram_core_fact": "클라우드 모니터링 소프트웨어 업체 데이터도그(DDOG)가 인공지능(AI) 사업 성장 기대감에 6% 가까이 상승하고 있다. 이번 투자의견 상향은 데이터도그의 성장 전망에 대한 투자자들의 기대를 높이며 주가 상승을 이끌었다.",
+      "title": "[美특징주]데이터도그, AI 성장 수혜 기대…주가 5%↑"
+    },
     "title:a1e83fe0b66dff5ce036237d": {
       "first_seen_kst": "2026-10-16T20:17:17+09:00",
       "lanes": {
@@ -914930,6 +916632,27 @@
       "telegram_core_fact": "다음달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 해제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다.",
       "title": "IEA \"경유 공급 부족 내년까지 계속\" | 연합뉴스"
     },
+    "title:d065dd3f4ebe04ad7cb76b5b": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/20/2026102003351299925",
+      "source": "머니투데이",
+      "source_body_digest": "54fbc1463cefa0a6270593e9887a58416bc685fed0a1e17e9ea0876abfd7c33a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e1383b178d017a966bc55c8c4c158883d363dc7e68ff07d237badc72f278ee9",
+      "source_fact_keys": [
+        "source_fact:v1:949391ff5b6d2e67f1503c31c0bc6808b85c4735f08f6fab505a8bce4b4feedf",
+        "source_fact:v1:c7177eb9a472baab8d654664880c1f4d00bdeed8168ef3fa88419249014e75e4"
+      ],
+      "source_published_kst": "2026-10-20T03:38+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질",
+      "telegram_core_fact": "'사막의 다보스'로 불리는 FII는 사우디가 글로벌 투자자와 기업인, 각국 정상들을 초청해 탈(脫)석유 경제 다각화 프로젝트를 홍보하고 외국인 투자(FDI)를 유치하는 핵심 국정 무대다.",
+      "title": "사우디, '사막의 다보스' 내년으로 연기…후티 반군 공세에 차질"
+    },
     "title:d07abb30fb3af5b9e4ba9401": {
       "first_seen_kst": "2026-10-13T11:12:56+09:00",
       "lanes": {
@@ -923091,6 +924814,24 @@
       "source_published_kst": "2026-10-06T17:04+09:00",
       "title": "이형일, 내년 가상자산 과세에 \"의견 수렴\"…추가 유예 여부 즉답 피해"
     },
+    "title:e385ba64f003bca9a3f89585": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637655",
+      "source": "이투데이",
+      "source_body_digest": "b470458fe4c68fd2ff68df88bf1d079c94a20f3d8ea130133e491a4d284b6c2c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T08:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 “삼성전자, 내년 영업익 555조원 전망…메모리 물량 80% 이미 확보”",
+      "telegram_core_fact": "KB증권은 삼성전자의 올해 영업이익을 367조원으로 전년 대비 742% 증가하고 내년에는 555조원으로 51% 늘어날 것으로 추정했다.",
+      "title": "KB證 “삼성전자, 내년 영업익 555조원 전망…메모리 물량 80% 이미 확보”"
+    },
     "title:e38f51b9b80603c6214c0612": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -925212,6 +926953,35 @@
       "source_title": "이번 주 국내 기름값 소폭 하락…국제유가도 내림세",
       "telegram_core_fact": "국제유가는 중동 원유 수출이 일부 회복하면서 하락했다.",
       "title": "이번 주 국내 기름값 소폭 하락…국제유가도 내림세"
+    },
+    "title:e86354a5bbc6907eccce17f4": {
+      "first_seen_kst": "2026-10-20T08:37:36+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:37:36+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:37:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645614888",
+      "source": "이데일리",
+      "source_body_digest": "3d8d08b2de45eba3f208de608b485c83cde3183c7c74b697ed03735f2f994093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f90926df1d66d890c7842ac44cb70c824cb12b7ac938d16c481f119c68231df",
+      "source_fact_keys": [
+        "source_fact:v1:0d27cc33b65ee18270298ae92bebe0570e823cccfae91f43372bb43c90e2938b",
+        "source_fact:v1:3db4c39789cfd30d3af6deeb181c76b2437f8336e4bd5495faf44fa997326ead",
+        "source_fact:v1:4627e2d36fbe26720370a355722c13862b9ff3a26ab0458fa14695156fd1b3f8",
+        "source_fact:v1:76fdc7bc843d95e29c717832ba52620059f41a09ccdfddf66e00fc5b378cf957",
+        "source_fact:v1:a500029bdbd1183e9b49ac93ca197237c43f9c73f022a35bc6e5d69f23ecb0e8",
+        "source_fact:v1:a89251e2ea20d088788f031434c764c69b76fb37411e159c15e527d09d500417",
+        "source_fact:v1:b9f4e27f55b01ad42321abc1ae4a667dcafae224b596b9471963db89cab81307",
+        "source_fact:v1:cd877fcffb842c2f219cace33fb9472a0258eedcd814ecd9b2e54f00ba0d7043",
+        "source_fact:v1:d0a7cc672005e92d0fd781daf5a6326575ae848e821b75d27efb96ba2aeb3005",
+        "source_fact:v1:f410a36726b9bd88c444eda21206e7c412d90791b78c36420c28feb5efc08f6d"
+      ],
+      "source_published_kst": "2026-10-20T08:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]",
+      "telegram_core_fact": "나스닥지수가 1% 넘게 올랐지만 AI 클라우드 기업 코어위브는 투자의견 상향에도 하락했다.",
+      "title": "AI 잔치 끝났나…나스닥 1.1% 반등했지만 코어위브는 또 하락 [뉴스새벽배송]"
     },
     "title:e863f46b0db6c5726239ce95": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
@@ -935251,5 +937021,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-20T08:05:53+09:00"
+  "updated_at_kst": "2026-10-20T08:37:36+09:00"
 }
