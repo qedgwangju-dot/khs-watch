@@ -8,6 +8,7 @@ on:
       - "scripts/k_space_payload_supplier_watch.py"
   schedule:
     # Separate from launch, national-defense, and telecom workflows.
+    # Regression: a second run with unchanged sources must NOT resend the baseline.
     - cron: "23,53 * * * *"
   workflow_dispatch:
 
