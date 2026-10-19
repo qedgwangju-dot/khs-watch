@@ -49,7 +49,7 @@ def codes_for(rows):
                 raise ValueError("공식 통계 항목코드 이상")
             names[k].add(code)
     if any(len(names[k])!=1 for k in KINDS):
-        raise ValueError("CP·CD·회사채·국고채 공식 항목의 고유 식별 실패: "+str({k:len(v) for k,v in names.items()}))
+        raise ValueError("CP·CD·회사채·국고채 공식 항목의 고유 식별 실패: "+str({k:len(v) for k,v in names.items()})+" / 이름·코드: "+str([(row.get("ITEM_NAME1"),row.get("ITEM_CODE1")) for row in rows if name_kind(row.get("ITEM_NAME1",""))=="corp"]))
     return {k:next(iter(names[k])) for k in KINDS}
 
 def ecos(key,start,end,code=""):
