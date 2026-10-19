@@ -82,6 +82,9 @@ JPM_FINANCE_OFFICIAL = "https://www.jpmorgan.com/insights/banking/capital-market
 SEMIA_2027_ARTICLE = "https://newsletter.semianalysis.com/p/datacenters-2027-the-year-of-acceleration"
 SEMIA_2027_RSS = "https://newsletter.semianalysis.com/feed"
 SEMIA_2027_ID = "semianalysis-2027-acceleration-primary-evidence-20261019"
+SEMIA_LEASE_CORRECTION_ID = "semianalysis-2027-lease-conflict-clarification-20261019"
+SEMIA_DAYONE_SOLUTION_URL = "https://dayonedc.com/our-solutions"
+SEMIA_DAYONE_2026_FINANCING_URL = "https://dayonedc.com/headliners/dayone-upsizes-malaysia-financing-to-us7-2-billion-total-billings-surpass-1gw-and-bookings-reach-2-3gw"
 SEMIA_2027_USER_EXCERPT = {
     "2027_new_capacity_headline_gw": 50,
     "under_construction_gw": 60,
@@ -581,6 +584,91 @@ def semia_numeric_anchors(text: str) -> list[str]:
     return [key for key, pattern in expected if re.search(pattern, t, re.I | re.S)]
 
 
+
+def semia_lease_evidence(text: str) -> dict:
+    """Extract mutually inconsistent *publisher* year-to-date lease descriptions.
+
+    No amount may enter confirmed financial totals when at least two versions
+    conflict, even if the subtitle says 1.3T. A lease TCV is not construction
+    CAPEX or recognized revenue.
+    """
+    text = clean(text).lower()
+    flags = {
+        "headline_1_3_t": bool(re.search(
+            r"(?:1[.]3\s*(?:t|tn|trillion)).{0,95}(?:lease|contracts?)", text, re.I)),
+        "body_under_1_t": bool(re.search(
+            r"slightly\s+under\s*(?:usd\s*|\$\s*)?1\s*(?:t\b|tn\b|trillion\b)", text, re.I)),
+        "body_over_1_t": bool(re.search(
+            r"over\s+a\s+trillion\s*(?:usd|dollars?)?|"
+            r"over\s+(?:usd\s*|\$\s*)?1\s*(?:t\b|tn\b|trillion\b)", text, re.I)),
+        "term_15_20_years": bool(re.search(r"15\s*[-–—]\s*20\s*(?:year|yr)", text, re.I)),
+        "tcv_30_50_b_per_gw": bool(re.search(
+            r"(?:\$\s*|usd\s*)?30\s*[-–—]\s*50\s*(?:b\b|bn\b|billion\b)"
+            r".{0,35}(?:per|/)\s*gw", text, re.I)),
+        "developer_prefund_5_10_pct": bool(re.search(
+            r"5\s*[-–—]\s*10\s*%.{0,90}(?:project capital|without a customer)", text, re.I)),
+        "dayone_9_months": bool(re.search(
+            r"dayone.{0,430}?(?:~|about|around|roughly|approximately)?\s*9\s*months?", text,
+            re.I | re.S)),
+    }
+    flags["body_conflict"] = bool(flags["body_under_1_t"] and flags["body_over_1_t"])
+    flags["exact_lease_ytd_usable"] = False
+    return flags
+
+
+def semia_lease_correction_due(old: dict, source: dict, fx: dict, first: bool) -> bool:
+    return bool(
+        not first and fx.get("usdkrw")
+        and old.get("delivered_id") == SEMIA_2027_ID
+        and old.get("lease_clarification_id") != SEMIA_LEASE_CORRECTION_ID
+        and source.get("verified")
+        and source.get("lease_evidence", {}).get("body_conflict")
+    )
+
+
+def semia_lease_correction_alert(source: dict, fx: dict) -> str:
+    rate = float(fx["usdkrw"])
+    return "\n".join([
+        "[수치 보강·정정] SemiAnalysis 2027 데이터센터 임대계약·건설 단계",
+        "",
+        "■ 앞서 송출된 SemiAnalysis 전망의 임대금액 정밀 검증",
+        "• 원문 표제: 올해 누적 임대계약 1조3,000억달러 주장.",
+        "• 같은 원문 본문: 구속력 있는 임대계약 '1조달러 약간 미만',"
+        " 다른 문단: 체결된 임대계약 '1조달러 초과'로 표현.",
+        "• 계약 범위·집계 마감·정의가 일치하는지 설명이 없으므로"
+        " 올해 임대계약 확정 총액은 '확인 불가'로 잠급니다.",
+        "• 원문 제목의 숫자만으로 2027 신규 GW, 실제 투자·매출액을 역산하지 않습니다.",
+        "",
+        "■ 앞으로 중요하게 보는 계약 경제성",
+        f"• 대형 선임대: 보통 15~20년, 1GW당 총계약가치"
+        f" 300억달러({krw_from_usd_b(30,rate)})~"
+        f"500억달러({krw_from_usd_b(50,rate)}).",
+        "• 단순 계약기간 나눗셈: 연간 1GW당 15억~33억3,333만달러."
+        " 계약 총액·실제 입금·건설비·영업매출은 다른 지표.",
+        "• 임차인 확정 전 개발사의 선투입 자금은 통상 사업비의 5~10%라는 연구기관 설명."
+        " 전력·인허가·완공 보증·대출 조건은 별도 확인.",
+        "• 건설 속도: SemiAnalysis의 DayOne 약 9개월 사례."
+        " DayOne 공식 자료는 말레이시아 NTP 부지 약 8.5개월 실적."
+        " 모든 사업장에 적용 불가.",
+        "",
+        "■ 실제 사업과의 대조",
+        f"• DayOne 공식 발표: 장기 고객계약으로 수익 발생 IT전력 1GW,"
+        f" 고객 계약물량 2.3GW, 추가 예약 1.1GW, 금융조달"
+        f" 72억달러({krw_from_usd_b(7.2,rate)})."
+        " 같은 모집단으로 합산하지 않습니다.",
+        "• 2027 신규 용량 50GW, 건설 중 60GW, 후반 공정 24GW는"
+        " 전망·전체 공정·그 부분집합을 구분합니다.",
+        "",
+        f"• 환율: 1달러={rate:,.2f}원 · {fx.get('basis','확인 불가')}",
+        "• 향후 알림: 신규 원출처 수치가 실제 일치하고, 새 계약·금융종결·전원 인가 등"
+        " 별도 사건이 확인될 때만. 동일 기사 재송출 금지.",
+        "원문: " + source["url"],
+        "원문: " + SEMIA_DAYONE_SOLUTION_URL,
+        "원문: " + SEMIA_DAYONE_2026_FINANCING_URL,
+        ""
+    ])
+
+
 def semia_primary_probe(now: datetime) -> dict:
     """Gate publication on an actual SemiAnalysis publisher RSS item and 2 numbers.
 
@@ -627,6 +715,7 @@ def semia_primary_probe(now: datetime) -> dict:
         excerpt = item.findtext("description") or ""
         verified_text = " ".join((title, content, excerpt))
         result["numeric_anchors"] = semia_numeric_anchors(verified_text)
+        result["lease_evidence"] = semia_lease_evidence(verified_text)
         if len(result["numeric_anchors"]) >= 2:
             result["verified"] = True
             result["status"] = "발행처 RSS·핵심 숫자 2개 이상 직접 확인"
@@ -666,6 +755,27 @@ def semia_regression_checks() -> None:
     assert SEMIA_2027_USER_EXCERPT["advanced_campuses"] == 40
     assert (SEMIA_2027_USER_EXCERPT["advanced_2027_construction_gw_floor"] /
             SEMIA_2027_USER_EXCERPT["under_construction_gw"]) == 0.4
+    example = ("Year-to-date, slightly under USD 1T of binding / non-cancellable"
+               " datacenter leases have been signed. Just in 2026 year-to-date,"
+               " we've identified over a trillion USD of lease value signed and closed."
+               " 15-20 year contract, with a TCV of $30-50B per GW."
+               " Developers spend 5-10% of project capital without a customer.")
+    proof = semia_lease_evidence(example)
+    assert proof["body_conflict"] and not proof["exact_lease_ytd_usable"]
+    assert proof["term_15_20_years"]
+    assert proof["tcv_30_50_b_per_gw"]
+    assert proof["developer_prefund_5_10_pct"]
+    assert not semia_lease_evidence("We signed $1.3T of leases")["body_conflict"]
+    assert not semia_lease_evidence("We leased 60GWh storage at 15-20 years")["body_conflict"]
+    correction_source = {"verified": True, "lease_evidence": proof}
+    acknowledged = {"delivered_id": SEMIA_2027_ID}
+    assert semia_lease_correction_due(acknowledged, correction_source, fx, False)
+    assert not semia_lease_correction_due(
+        {**acknowledged, "lease_clarification_id": SEMIA_LEASE_CORRECTION_ID},
+        correction_source, fx, False)
+    assert not semia_lease_correction_due(acknowledged, {"verified": False,
+        "lease_evidence": proof}, fx, False)
+    assert not semia_lease_correction_due(acknowledged, correction_source, {}, False)
 
 
 def semia_verified_alert_text(source: dict, fx: dict) -> str:
@@ -881,7 +991,24 @@ def main() -> int:
     semi_old = dict(old.get("semianalysis_2027") or {})
     semi_live = semia_primary_probe(now)
     semi_notify = semia_alert_due(semi_old, semi_live, fx, first)
+    semi_lease_correction = semia_lease_correction_due(semi_old, semi_live, fx, first)
     semi_next = dict(semi_old)
+    # Only source-confirmed definitions, never assign a conflicting aggregate as a fact.
+    semi_next["lease_contract_terms"] = {
+        "typical_contract_years": [15, 20],
+        "tcv_usd_b_per_gw": [30, 50],
+        "developer_prefund_percent": [5, 10],
+        "modular_build_months_example": 9,
+        "dayone_official_ntp_build_months": 8.5,
+        "contract_total_usd_t_confirmed": None,
+        "lease_ytd_source_conflict": "표제 1.3조달러·본문 1조달러 미만·다른 본문 1조달러 초과",
+        "contract_tcv_not_annual_capex": True,
+        "source_grade": "SemiAnalysis 발행처 + DayOne 회사 발표; 금융 현금집행 별도 검증",
+    }
+    semi_next["lease_evidence"] = semi_live.get("lease_evidence") or {}
+    if semi_lease_correction:
+        semi_next["lease_clarification_id"] = SEMIA_LEASE_CORRECTION_ID
+        semi_next["lease_clarification_at_kst"] = now.astimezone(KST).isoformat(timespec="seconds")
     semi_next["user_excerpt"] = SEMIA_2027_USER_EXCERPT
     semi_next["primary_status"] = semi_live["status"]
     semi_next["primary_numeric_anchors"] = semi_live["numeric_anchors"]
@@ -925,6 +1052,8 @@ def main() -> int:
         alerts.append(jpm_networking_alert_text(fx))
     if semi_notify:
         alerts.append(semia_verified_alert_text(semi_live, fx))
+    if semi_lease_correction:
+        alerts.append(semia_lease_correction_alert(semi_live, fx))
     if alerts:
         ALERT.write_text("\n\n".join(alerts), encoding="utf-8")
 
@@ -941,10 +1070,12 @@ def main() -> int:
         f"- SemiAnalysis 2027 원천 상태: **{semi_live['status']}**\n"
         f"- SemiAnalysis 핵심 수치 확인: **{len(semi_live['numeric_anchors'])}개**\n"
         f"- SemiAnalysis 신규 알림: **{'예' if semi_notify else '아니오'}**\n"
+        f"- SemiAnalysis 임대계약 원문 충돌 확인: **{'예' if semi_live.get('lease_evidence', {}).get('body_conflict') else '아니오·재검증 필요'}**\n"
+        f"- SemiAnalysis 임대금액 1회 정정: **{'예' if semi_lease_correction else '아니오'}**\n"
         f"- 알림: **{'예' if alerts else '아니오'}**\n",
         encoding="utf-8",
     )
-    print(f"ai_dc_tam_watch first={first} rows={len(rows)} candidates={len(candidates)} changes={len(changes)} jpm_initial={jpm_initial} jpm_changes={len(jpm_revision)} jpm_alert={jpm_alert} jpm_net_alert={jpm_networking_alert} semia_source={semi_live['status']} semia_anchors={len(semi_live['numeric_anchors'])} semia_alert={semi_notify} alert={bool(alerts)}")
+    print(f"ai_dc_tam_watch first={first} rows={len(rows)} candidates={len(candidates)} changes={len(changes)} jpm_initial={jpm_initial} jpm_changes={len(jpm_revision)} jpm_alert={jpm_alert} jpm_net_alert={jpm_networking_alert} semia_source={semi_live['status']} semia_anchors={len(semi_live['numeric_anchors'])} semia_alert={semi_notify} semi_lease_conflict={semi_live.get('lease_evidence', {}).get('body_conflict')} semi_lease_correction={semi_lease_correction} alert={bool(alerts)}")
     return 0
 
 
