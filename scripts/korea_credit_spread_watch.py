@@ -232,6 +232,8 @@ def render(rows,decision,now,sample=False):
     lines += [
         "",
         "<b>① 핵심 신용스프레드</b>",
+        "CP(기업어음: 기업의 단기 자금조달)",
+        "CD(양도성예금증서: 은행의 단기 자금조달)",
         f"CP–CD <b>{latest['cp_cd']:.1f}bp</b> {d['cp'][1]} {d['cp'][2]}",
         f"  전일 {signed(diff1('cp_cd'))} / 5일 {signed(diff5('cp_cd'))}bp",
         f"AA- 회사채–국고채 <b>{latest['credit']:.1f}bp</b> {d['aa'][1]} {d['aa'][2]}",
