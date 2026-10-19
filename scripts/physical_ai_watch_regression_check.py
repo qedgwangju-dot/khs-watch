@@ -4944,7 +4944,8 @@ assert 'SK Battery America' in base.meaning(vc),base.meaning(vc)
 assert '공급사' in base.verification(vw_eu_primary,vg,
     vw_eu_primary['title']+' '+vw_eu_primary['description'])
 assert '충당금' in base.risk(vc) and '1만 정비시간' in base.risk(vc)
-assert base.clean_title(vw_eu_primary['title'],vw_eu_primary['source']).startswith('폭스바겐, 영국')
+assert '실제 교체율은 미확정' in base.meaning(vc),base.meaning(vc)
+assert base.clean_title(vw_eu_primary['title'],vw_eu_primary['source']).startswith('영국 93MF')
 
 vw_vans_official = make(
     "폭스바겐 영국 93MF 고전압 배터리 리콜 80% 충전 제한",
@@ -4986,6 +4987,15 @@ vw_germany_unready = make(
 )
 pg, ps, pc, pk = classify(vw_germany_unready)
 assert pg == vg and ps < 11,(pg,ps,pc)
+
+
+vw_other_kba = make(
+    "폭스바겐 독일 KBA 구형 93EA 고전압 배터리 리콜 공식 등록",
+    "KBA officially issued Volkswagen high-voltage battery recall 93EA.",
+    "KBA",
+)
+og, os, oc, ok = classify(vw_other_kba)
+assert og == vg and os < 11, (og,os,oc)
 
 vw_germany_official_future = make(
     "폭스바겐 독일 KBA 93MV 고전압 배터리 리콜 공식 등록 개시",
