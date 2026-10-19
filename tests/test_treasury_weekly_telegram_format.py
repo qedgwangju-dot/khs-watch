@@ -25,7 +25,7 @@ def example():
     )
     row["source_urls"]=[
         "https://indexes.nasdaq.com/Index/History/NDX",
-        "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index",
+        "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&limit=60&fromdate=2026-10-06&todate=2026-10-16",
         "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026",
     ]
     return row
