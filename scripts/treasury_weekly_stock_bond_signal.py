@@ -13,7 +13,7 @@ import io
 import html
 import json
 import math
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 from zoneinfo import ZoneInfo
 
 import requests
@@ -183,6 +183,20 @@ def _source_links(result: dict) -> str:
             or parsed.username or parsed.password or parsed.fragment
         ):
             raise SourceMissing("unrecognized source URL for " + label)
+        query = parse_qs(parsed.query)
+        if host == "api.nasdaq.com" and (
+            parsed.path != "/api/quote/NDX/historical"
+            or query.get("assetclass") != ["index"]
+            or not query.get("fromdate") or not query.get("todate")
+        ):
+            raise SourceMissing("dated official Nasdaq source link incomplete")
+        if host == "indexes.nasdaq.com" and parsed.path != "/Index/History/NDX":
+            raise SourceMissing("Nasdaq landing source link incorrect")
+        if host == "home.treasury.gov" and (
+            query.get("data") != ["daily_treasury_yield_curve"]
+            or not query.get("field_tdr_date_value")
+        ):
+            raise SourceMissing("U.S. Treasury official source link incomplete")
         safe_url = html.escape(str(url), quote=True)
         elements.append(f'<a href="{safe_url}">{html.escape(label)}</a>')
     return " · ".join(elements)
