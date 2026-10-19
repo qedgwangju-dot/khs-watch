@@ -210,6 +210,7 @@ jobs:
             out/boj_policy_lead_alert.json
             out/boj_policy_market_context.json
             out/boj_policy_lead_telegram_confirmed.json
+            out/khs_source_failures.json
           if-no-files-found: ignore
           retention-days: 7
 
