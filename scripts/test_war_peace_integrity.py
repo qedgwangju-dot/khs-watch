@@ -42,6 +42,166 @@ class IntegrityTests(unittest.TestCase):
         self.addCleanup(self.state_patch.stop)
         watch.STATE.write_text('{"seen": []}', encoding='utf-8')
 
+    def postponement_summit_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_postponement_summit_39317765794.json'
+        value = json.loads(path.read_text(encoding='utf-8'))
+        return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_actual_Davos_alias_postponement_is_an_operating_schedule_report(self):
+        fixture, _ = self.postponement_summit_fixture()
+        row = fixture['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row), 'operational_disruption')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '사우디·후티 · 행사·운영 일정 변경 보도')
+
+    def test_actual_summit_openness_preserves_three_explicit_participants(self):
+        fixture, _ = self.postponement_summit_fixture()
+        row = fixture['articles'][1]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_plan')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '미국·중국·러시아 · 정상회담 의향·논의')
+        self.assertEqual(integrity._display_headline(row), row['title_original'])
+
+    def test_actual_bargain_proposal_question_is_not_an_energy_ceasefire(self):
+        fixture, _ = self.postponement_summit_fixture()
+        row = fixture['articles'][2]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_plan')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '미국·러시아 · 담판 제안·논의')
+
+    def test_actual_meeting_uncertainty_preserves_Kim_and_no_confirmed_contact(self):
+        fixture, _ = self.postponement_summit_fixture()
+        row = fixture['articles'][3]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_position')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '미국·북한 · 회담 여부 미정 발언')
+
+    def test_actual_postponement_and_summit_render_preserves_full_gate_and_limits(self):
+        fixture, now = self.postponement_summit_fixture()
+        rows = fixture['articles']
+        before = watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        shown = [r for r in rows if r['link'] in html.unescape(text)]
+        self.assertEqual([r['id'] for r in shown], [r['id'] for r in rows[:4]])
+        self.assertEqual([r['classification_color'] for r in shown], ['yellow']*4)
+        for row in shown:
+            self.assertIn(html.escape(row['title_original']), text)
+        self.assertNotIn('🔴', text)
+        self.assertNotIn('🟢', text)
+        self.assertNotIn('에너지 휴전 발표·양측 검증 대기', text)
+        self.assertNotIn('후속 3자 협상·회담이 실제 준비 단계로 이동하는지 확인', text)
+        self.assertIn('RSS 입력 기준·본문 미확인', text)
+        self.assertIn('제목 기준·본문 미확인', text)
+        self.assertEqual([r['body_verified'] for r in shown], [True, False, True, False])
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+            watch.ALERT.write_text(text,encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in shown]}),encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8')
+            integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(),before)
+
+    def test_final_gate_rejects_actual_same_hash_postponement_summit_wrong_body(self):
+        fixture, now = self.postponement_summit_fixture()
+        rows = fixture['articles'][:4]
+        text = fixture['sent_alert'].strip()
+        receipt = evidence.alert_receipt(rows,fixture['markets'],now,text)
+        self.assertEqual(receipt['alert_sha256'],fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+            watch.ALERT.write_text(text,encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in rows]}),encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
+                integrity.verify_alert()
+
+    def test_final_gate_rechecks_each_wrong_topic_with_a_matching_body_hash(self):
+        fixture, now = self.postponement_summit_fixture()
+        for index, wrong in enumerate(('사우디·후티','우크라이나·러시아','우크라이나·러시아 · 에너지 휴전 발표·양측 검증 대기','미국 · 외교 접촉 보도')):
+            with self.subTest(index=index):
+                rows = copy.deepcopy(fixture['articles'][:4])
+                with patch.object(integrity.body_parallel,'_safe_enrich'):
+                    text = integrity.build_alert(rows,fixture['markets'],now)
+                topic = integrity.topic_label(rows[index])
+                text = text.replace(html.escape(topic),html.escape(wrong),1)
+                receipt = evidence.alert_receipt(rows,fixture['markets'],now,text)
+                with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                    for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                        stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+                    watch.ALERT.write_text(text,encoding='utf-8')
+                    watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in rows]}),encoding='utf-8')
+                    watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8')
+                    with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
+                        integrity.verify_alert()
+
+    def test_postponement_and_summit_words_do_not_hide_separate_actual_actions(self):
+        for title in ("후티 미사일 발사…사우디 '사막의 다보스' 내년으로 연기",
+                      'Trump open to summit with Xi and Putin; Russia attacked Ukraine',
+                      '푸틴, 담판 제안…러시아 공습 개시',
+                      '트럼프, 김정은 회담 여부 모르겠다…이란 미사일 발사'):
+            with self.subTest(title=title):
+                row=article(title)
+                self.assertIsNone(integrity.non_military_kind(row))
+                self.assertEqual(integrity.final_color(row),'red')
+
+    def test_negated_summit_openness_is_not_a_positive_proposal(self):
+        for title in ('Trump not open to summit with Xi and Putin',
+                      "Trump isn't open to a summit with Xi and Putin",
+                      'Trump not yet open to summit with Xi and Putin'):
+            with self.subTest(title=title):
+                row=article(title)
+                self.assertEqual(integrity.non_military_kind(row),'diplomatic_position')
+                self.assertEqual(integrity.topic_label(row),'미국·중국·러시아 · 정상회담 의향 부인')
+                self.assertEqual(integrity._display_headline(row),title)
+
+    def test_openness_preserves_contrast_without_an_agreement(self):
+        title='Trump open to summit with Xi and Putin, but no agreement reached'
+        row=article(title)
+        with patch.object(integrity.body_parallel,'_safe_enrich'):
+            text=integrity.build_alert([row],[],NOW)
+        self.assertEqual(integrity.non_military_kind(row),'diplomatic_plan')
+        self.assertEqual(row['classification_color'],'yellow')
+        self.assertIn(html.escape(title),text)
+        self.assertNotIn('🟢',text)
+
+    def test_completed_summit_is_not_openness_or_a_proposal(self):
+        for title in ('트럼프, 시진핑·푸틴과 정상회담 개최',
+                      'Trump held a summit with Xi and Putin to discuss denuclearization'):
+            with self.subTest(title=title):
+                self.assertNotEqual(integrity.non_military_kind(article(title)),'diplomatic_plan')
+
+    def test_explicit_bilateral_implemented_peace_is_not_a_summit_plan(self):
+        for title in ('미국·러시아 정상회담…양측 휴전 합의 발효',
+                      'Trump and Putin summit: ceasefire agreed and implemented by both sides'):
+            with self.subTest(title=title):
+                self.assertNotIn(integrity.non_military_kind(article(title)),('diplomatic_plan','diplomatic_position'))
+
+    def test_meeting_location_is_not_an_extra_confirmed_participant(self):
+        row=article('트럼프, 중국서 김정은과 회담 여부에 "모르겠다"')
+        self.assertEqual(integrity.topic_label(row),'미국·북한 · 회담 여부 미정 발언')
+        explicit=article('트럼프, 중국 시진핑과 회담 여부에 "모르겠다"')
+        self.assertEqual(integrity.topic_label(explicit),'미국·중국 · 회담 여부 미정 발언')
+
+    def test_postponement_background_and_generated_cache_do_not_change_new_event(self):
+        fixture, now=self.postponement_summit_fixture()
+        row=fixture['articles'][0]
+        metadata=copy.deepcopy(row['source_metadata'])
+        row['signals_ko']=['에너지 인프라 상호 공격 자제·중단']
+        row['forced_tags']=['휴전·평화']
+        with patch.object(integrity.body_parallel,'_safe_enrich'):
+            text=integrity.build_alert([row],fixture['markets'],now)
+        self.assertEqual(row['classification_color'],'yellow')
+        self.assertTrue(row['body_verified'])
+        self.assertEqual(row['source_metadata'],metadata)
+        self.assertFalse(row['signals_ko'])
+        self.assertFalse(row.get('forced_tags'))
+        self.assertIn(html.escape(row['title_original']),text)
+        self.assertNotIn('신규 변화의 중심은 실제 공격',text)
+
     def alias_fixture(self):
         path = Path(__file__).parent/'test_fixtures/war_source_alias_38526317484.json'
         fixture = json.loads(path.read_text(encoding='utf-8'))
