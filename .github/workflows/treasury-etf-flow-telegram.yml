@@ -1,4 +1,5 @@
 name: Treasury ETF Fund Flow Telegram
+# One-time duplicate-regression run: weekly 2026-10-16 alert already confirmed as message_id 456.
 
 on:
   push:
