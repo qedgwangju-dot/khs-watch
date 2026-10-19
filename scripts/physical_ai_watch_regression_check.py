@@ -4687,7 +4687,9 @@ if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,23):
     ctext=f"{event['title']} {event['description']}"
     assert base.category(ctext,base.topic_group(ctext))==oa_c
     assert '9월 CEO 인터뷰' in base.clean_title(event['title'],event['source'])
-    assert '2026-09-15' in base.verification(event,dg,ctext)
+    assert '9/15 Fortune' in base.verification(event,dg,ctext)
+    assert '2026-09-01 Sources' in event['description']
+    assert '2026-09-15 Fortune' in event['description']
     assert '2027년' in base.meaning(oa_c)
     assert watcher.qty._skip_quantity_enrichment(
         '<b>1. OpenAI 자체 휴머노이드</b>\n'
