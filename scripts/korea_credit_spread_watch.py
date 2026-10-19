@@ -103,6 +103,10 @@ def level(cp_cd,credit):
     return 0
 
 def aligned(series,now):
+    # 네 금리 중 어느 하나만 신규 공표되었을 때 오래된 공통 날짜로 후퇴하지 않는다.
+    latest_by_kind={k:max(series[k]) if series.get(k) else None for k in KINDS}
+    if None in latest_by_kind.values() or len(set(latest_by_kind.values()))!=1:
+        raise ValueError("네 계열의 최신 공식 기준일 불일치: "+str(latest_by_kind))
     days=sorted(set.intersection(*(set(series[k]) for k in KINDS)))
     if len(days)<7: raise ValueError("동일 날짜 4종 금리 7회 미만")
     result=[]
