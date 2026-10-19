@@ -1,0 +1,118 @@
+name: Korean Space Launchpad Supply and Hanwha PRS Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/k-space-launchpad-capital-telegram-watch.yml"
+      - "scripts/k_space_launchpad_capital_watch.py"
+  schedule:
+    - cron: "14,44 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: k-space-launchpad-capital-telegram-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887988798879887988798879_bot"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Syntax and scenario regression tests
+        run: |
+          python -m py_compile scripts/k_space_launchpad_capital_watch.py
+          python -m py_compile scripts/space_launch_telegram_send.py
+          python -m py_compile scripts/merge_space_launch_state.py
+          python scripts/k_space_launchpad_capital_watch.py --self-test
+          python scripts/space_launch_telegram_send.py --inline-self-test
+          python scripts/merge_space_launch_state.py --self-test
+
+      - name: Check original disclosures and independent source coverage
+        run: python scripts/k_space_launchpad_capital_watch.py
+
+      - name: Require one compact Korean Telegram message and all source links
+        if: hashFiles('out/k_space_launchpad_capital_telegram.txt') != ''
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, "scripts")
+          from space_launch_telegram_send import inline_messages
+          p = Path("out/k_space_launchpad_capital_telegram.txt")
+          original = p.read_text(encoding="utf-8")
+          messages = inline_messages(original)
+          if len(messages) != 1:
+              raise RuntimeError(f"Telegram report split into {len(messages)} messages")
+          body, entities = messages[0]
+          if not body.startswith("🚀 발사대 실물수주·한화 우주 투자재원 감시"):
+              raise RuntimeError("Wrong alert header")
+          if not 2 <= len(entities) <= 10:
+              raise RuntimeError(f"Unexpected source count: {len(entities)}")
+          if "• 원문:" in body or "아래 링크 버튼" in body:
+              raise RuntimeError("Unconverted source link or button placeholder")
+          if not all(e["type"] == "text_link" for e in entities):
+              raise RuntimeError("Missing inline clickable source")
+          if "계약금액 확정" in body and "단가 미공개" in body:
+              raise RuntimeError("Contract value contradiction")
+          print(f"compact_korean_alert_verified=true source_links={len(entities)} utf16_units={len(body.encode('utf-16-le'))//2}")
+          PY
+
+      - name: Summary and source audit
+        if: always()
+        run: |
+          if [ -f out/k_space_launchpad_capital_status.md ]; then
+            cat out/k_space_launchpad_capital_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "공식 원문 미검증·통신 장애로 전송 차단" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Deliver to exact approved Telegram bot
+        if: hashFiles('out/k_space_launchpad_capital_telegram.txt') != ''
+        env:
+          SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
+          SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
+        run: |
+          python scripts/space_launch_telegram_send.py --inline out/k_space_launchpad_capital_telegram.txt
+
+      - name: Merge independent seen state after confirmed Telegram delivery
+        if: success() && hashFiles('out/k_space_launchpad_capital_pending.json') != ''
+        run: |
+          cp out/k_space_launchpad_capital_pending.json /tmp/k_space_launchpad_capital_pending.json
+          git config user.name "k-space-launchpad-capital-watch[bot]"
+          git config user.email "k-space-launchpad-capital-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/merge_space_launch_state.py \
+              data/k_space_launchpad_capital_watch_state.json \
+              /tmp/k_space_launchpad_capital_pending.json \
+              data/k_space_launchpad_capital_watch_state.json
+            git add data/k_space_launchpad_capital_watch_state.json
+            if git diff --cached --quiet; then
+              echo "No dedup state change"
+              exit 0
+            fi
+            git commit -m "chore: update space launchpad and PRS watch dedup state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
