@@ -38,6 +38,8 @@ for _required in (
     "OPENAI_HUMANOID_RECOVERY =",
     "BMW_GEN6_PACK_RECOVERY =",
     "JPM_SRI_DEPLOYMENT_RECOVERY =",
+    "JPM_SRI_FX_CORRECTION_RECOVERY =",
+    "def _jpm_sri_fx_correction_recovery(",
     "def _bmw_gen6_pack_recovery(",
     "def _jpm_sri_recovery(",
     "def _openai_humanoid_recovery(",
@@ -4847,5 +4849,75 @@ assert int(5e9*1330.33/1e8+0.5)==66517
 assert round(10e9*1330.33/1e8)==133033
 assert round(230e9*1330.33/1e8)==3059759
 assert round(1.5e12*1330.33/1e8)==19954950
+
+
+# 91) Regression: correction of mixed-rate JPM Telegram body was a
+# one-time ERRATUM, not fresh corporate financing; preserve source dates.
+jpm_corrected=base.query_news(watcher.JPM_SRI_FX_CORRECTION_RECOVERY)
+if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,23):
+    assert len(jpm_corrected)==1,jpm_corrected
+    fix=jpm_corrected[0]
+    assert fix['source']=='원화 계산 정정',fix
+    fg,fs,fc,fk=classify(fix)
+    assert fg==jg and fs>=11,(fg,fs,fc)
+    assert fc=='JP모건 SRI · 환율 표기 정정(기존 알림)',fc
+    assert fk not in {jk,pk},(fk,jk,pk)
+    assert '회사 신규 발표가 아님' in base.verification(
+        fix,fg,fix['title']+' '+fix['description']
+    )
+    assert '신규 투자' in base.meaning(fc),base.meaning(fc)
+    assert base.clean_title(fix['title'],fix['source']).startswith('정정: JP모건 SRI')
+
+# Stable currency basis across formatted headline/category/core: do not
+# allow the automatic postprocessor to mix an older daily ECB rate
+# with the separately checked 2026-10-19 19:05 KST spot quote.
+fx_block=(
+    '<b>4. JP모건 전략적 투자 JP모건 SRI 50억달러 누적 집행</b>\n'
+    '<b>분류</b> JP모건 SRI · 50억달러 지분투자 누적 집행\n'
+    '💡 <b>핵심</b> 50억달러(약 6조6,517억원) 중 '
+    '100억달러 2,300억달러 1조5,000억달러를 분리한다'
+)
+normalized=watcher._correct_jpm_sri_krw_at_source_rate(fx_block)
+for expected in ('50억달러(약 6조6,517억원)',
+                 '100억달러(약 13조3,033억원)',
+                 '2,300억달러(약 305조9,759억원)',
+                 '1조5,000억달러(약 1,995조4,950억원)'):
+    assert expected in normalized,(expected,normalized)
+assert '6조6,605억원' not in normalized,normalized
+assert watcher._correct_jpm_sri_krw_at_source_rate(normalized)==normalized
+
+not_jpm='BMW Gen6 · 선양 배터리팩 양산 공식 개시, 50억달러와는 무관'
+assert watcher._correct_jpm_sri_krw_at_source_rate(not_jpm)==not_jpm
+
+sample_alert=(
+    '<b>피지컬AI 고신호</b>\n<b>신규 고신호 5건</b>\n━━━━━━━━━━━━━━━━━━\n'
+    '<b>1. 배터리주 들썩…中 ESS 업체 美서 철수</b>\n'+'A\n'
+    '──────────────────\n'
+    '<b>2. BMW Gen6 선양 46mm 배터리팩 실제 양산</b>\n'+'B\n'
+    '──────────────────\n'
+    '<b>3. 백조세탁기부터 클로이드까지…타임스스퀘어 가전 혁신 영상</b>\n'+'C\n'
+    '──────────────────\n'
+    '<b>4. 증시 주인공된 배터리주…삼성SDI·LG엔솔 강세</b>\n'+'D\n'
+    '──────────────────\n'
+    '<b>5. JP모건 SRI 누적 지분투자 50억달러</b>\n'+'E\n'
+)
+filtered=watcher._drop_stock_price_sections(sample_alert)
+assert '신규 고신호 2건' in filtered,filtered
+assert '배터리주 들썩' not in filtered,filtered
+assert '백조세탁기' not in filtered,filtered
+assert '증시 주인공' not in filtered,filtered
+assert '<b>1. BMW Gen6' in filtered,filtered
+assert '<b>2. JP모건 SRI' in filtered,filtered
+assert watcher._drop_stock_price_sections(filtered)==filtered
+
+_now_for_fx=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,27,12,0,tzinfo=dt.timezone.utc)
+    assert base.query_news(watcher.JPM_SRI_FX_CORRECTION_RECOVERY)==[],(
+        'old erratum must not repeat forever when state rotates'
+    )
+finally:
+    base.NOW=_now_for_fx
+
 
 print("Physical-AI watcher regression guards: PASS")
