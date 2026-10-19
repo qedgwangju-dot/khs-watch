@@ -3279,6 +3279,31 @@
       "telegram_core_fact": "소어 인더스트리즈(THO)가 이사회에서 주당 0.54달러의 정기 분기 현금배당을 승인했으며, 이는 직전 분기 배당금 0.52달러보다 3.8% 인상된 수준이라고 13일 발표했다.",
       "title": "소어 인더스트리즈, 분기 배당 0.54달러로 3.8% 인상"
     },
+    "core:0c6e07182ca59059e57f856e": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101914841",
+      "source": "한국경제",
+      "source_body_digest": "bb6b7e5c65e7c2382e9a714c5371594fd6739e7d4c419a48436e25aba1694193",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:567e540c2d772e64ae81496916e48c4f09a832aae46982346857a575de0cf19a",
+      "source_fact_keys": [
+        "source_fact:v1:3ae0dc1d11cf1fa0f5da081d087c0592805ac0d5e17eb7df5f8e9edeb9cb7dc5",
+        "source_fact:v1:59ec4255521fa552c5628a1a103bb36bc7d22f2a4bd7c7a62820ffa82b71b9ad",
+        "source_fact:v1:5d5dfe53b9027b8b4d758dd103a5727e8b3feb8041a1c8b8ee470cb7ff75650f",
+        "source_fact:v1:5dfe91675a4dbc7e23aace62c1e696ba4cb4b84cfff417665d0182a04bf4f6b9",
+        "source_fact:v1:ccf559defad6f0f4c3b6bd240ec541d0c970e50456ba91203c1fcf8961dc4e2f",
+        "source_fact:v1:f28d12a73603f29cdaf3efdb7161d337bb00b1ac20bd63518d1ce95e81084aac"
+      ],
+      "source_published_kst": "2026-10-19T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명",
+      "telegram_core_fact": "지난 15일 프랑스 통계청(INSEE)이 발표한 9월 소비자물가지수(CPI) 역시 전년 동월과 비교해 3.1% 올랐다.",
+      "title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명"
+    },
     "core:0c7ea764e14928f5c6d5ae91": {
       "first_seen_kst": "2026-10-19T13:26:21+09:00",
       "lanes": {
@@ -14289,6 +14314,30 @@
       "source_title": "엘로메이캐피탈, 일회성 이익·프로젝트 지연 우려에 투자심리 위축",
       "telegram_core_fact": "2030년 EBITDA 목표와 도라드 지분 매각에 따른 부채 축소 소식이 나왔지만, 2026년 전망에 일회성 이익이 섞여 있어 실제 수익력이 과대평가됐다는 우려가 커졌습니다.",
       "title": "엘로메이캐피탈, 일회성 이익·프로젝트 지연 우려에 투자심리 위축"
+    },
+    "core:309b9e35cdbaef0286cac01f": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04096726645614560",
+      "source": "이데일리",
+      "source_body_digest": "edd2abae31d0574efc76fc8827dd88c567c30da3cd3f817aa9818ecdbbea43ce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ee640d5319f4e803b9a60b94477cc68cdcc3d74a16fede822e7adffa5ca23d2",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3",
+        "source_fact:v1:abfe0ed71e1936c803a6572c15aca9582ca82fbfdbcb541e0761824e74f05c99",
+        "source_fact:v1:b4c0882194b16dded4728cfb7ba8439bebbd5e5abe8a77418bc0d7140f50c42e",
+        "source_fact:v1:bb8c66810832184020065ec8ad7b78706c89b336602d295d1c2731202198e2b1",
+        "source_fact:v1:c389451d9a0f28537009ccabed6622e4329c42280e467bd92d1ee4e0859d3b23"
+      ],
+      "source_published_kst": "2026-10-19T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출",
+      "telegram_core_fact": "한미반도체(042700)가 미국 법인 ‘한미USA’를 설립하고 미국 현지 반도체 시장에 본격 진출한다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출"
     },
     "core:30a97786829b50ee4c0e0cd4": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -45885,6 +45934,28 @@
       "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
       "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
     },
+    "core:a0b51f28540178f266ab834a": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177168",
+      "source": "매일경제",
+      "source_body_digest": "c807f99ed1449860ed2024dafb6a447419518b37d5fba687cb9f48416ec34c80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b73d304eddcea8ef19f2171aa8c280d0f7ea9298ec97f572afdfcada3ff6bc53",
+      "source_fact_keys": [
+        "source_fact:v1:72a42cd72bb63be5edd56ef4a6ab6cf546abf3ab403d1452345ee77d4373058d",
+        "source_fact:v1:cab97a1d3879161ceda0f07b81975a572e753608ee88d79f1b07e78669a094b4",
+        "source_fact:v1:d6c8168db12e56ce0765882d6aab5bca962bb8c1532da08bad3cc960f81282f0"
+      ],
+      "source_published_kst": "2026-10-20T02:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가",
+      "telegram_core_fact": "GLASS HOUSE BRANDS INC(GLAS)는 2026년 9월 30일 종료된 3분기 잠정(비감사) 계속사업 매출액이 5680만 달러로 전년비 116.8% 증가했고 전분기 대비로도 20.8% 늘었다고 10월 19일 발표했다.",
+      "title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가"
+    },
     "core:a0c53b2eb24d4edcef67d6ac": {
       "first_seen_kst": "2026-10-14T16:58:19+09:00",
       "lanes": {
@@ -48940,6 +49011,26 @@
       "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
       "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
       "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
+    },
+    "core:aba25dd6fec220db3a6f8f60": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637567",
+      "source": "이투데이",
+      "source_body_digest": "e6ccaf83ae8146e3977452c9037cbc92bdb0abbe848e7dfe436153ffa7016982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:81957f910b8dbc05b4564e595126742deae4230b7742be2a8771f6fac366ce1f",
+      "source_fact_keys": [
+        "source_fact:v1:5a3bfa063f9c94cd9d6afe891892ad99944991ee3ab6864c4a11cf01c9a6371c"
+      ],
+      "source_published_kst": "2026-10-19T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자칠판 업계, 출혈경쟁 줄이고 서비스 품질 높인다…조달제도 변화 공동 대응",
+      "telegram_core_fact": "조합은 이번 협약이 과도한 가격 경쟁을 지양하고 서비스 품질을 높이는 한편, 공공 교육기관과 기업 고객에게 안정적인 사후관리 서비스를 제공하는 데 도움이 될 것으로 기대하고 있다.",
+      "title": "전자칠판 업계, 출혈경쟁 줄이고 서비스 품질 높인다…조달제도 변화 공동 대응"
     },
     "core:aba60189e9e61e50045f7bb4": {
       "first_seen_kst": "2026-10-12T19:52:19+09:00",
@@ -62016,6 +62107,27 @@
       "telegram_core_fact": "이날 로이터 통신에 따르면 2016년 소프트뱅크가 암(Arm)홀딩스를 인수한 이후, 암(Arm)홀딩스는 단순 기술 라이선스 제공에서 직접 칩 판매로 사업 방향을 선회하면서 퀄컴과의 관계는 악화되었다.",
       "title": "[美특징주]퀄컴·암(Arm)홀딩스, 법적 공방 본격화…개장전↑"
     },
+    "core:db977403f71b7c2b350ae4c7": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832481",
+      "source": "뉴시스",
+      "source_body_digest": "54675bd0c7d773f3c916e24085f2254cb60ad72486708755f73be808a1a7e025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1800f8392beb272f4254da0b8072dfcc65e10bd7a48f0a514ddd128dd5680d9a",
+      "source_fact_keys": [
+        "source_fact:v1:a10925298a5bd9660b789a4411598edbb92b596f713cb52c04ee99b5d8df9a18",
+        "source_fact:v1:f6b863ac4f90f372522fae616ee865a6334fe0d51089257d86b92e6540f4fa4d"
+      ],
+      "source_published_kst": "2026-10-20T07:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사",
+      "telegram_core_fact": "이란 이슬람혁명수비대(IRGC)가 호르무즈 해협을 통과하는 해저 통신케이블에 대한 공격 가능성을 시사하며 적대국들을 향해 경고했다.",
+      "title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사"
+    },
     "core:dbcc8303a276f93e99c0831b": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
       "lanes": {
@@ -63630,6 +63742,27 @@
       "source_title": "신한금융, 국내 금융그룹 첫 인도네시아 금융지주사 출범",
       "telegram_core_fact": "진옥동 신한금융 회장은 \"금융지주회사 출범을 통해 인도네시아 현지 사업을 하나의 체계로 운영할 기반을 갖춘 만큼 이번 업무협약은 현지 비즈니스 확장을 위한 새로운 시도\"라며 \"이를 계기로 시나르마스 그룹, 현지 고객들에게 차별화된 금융 가치를 제공하고 양국 경제 발전에도 기여하겠다\"고 말했다.",
       "title": "신한금융, 국내 금융그룹 첫 인도네시아 금융지주사 출범"
+    },
+    "core:e177d2d97f3a41de61f36c22": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020015200009",
+      "source": "연합뉴스",
+      "source_body_digest": "43e6f3ebd941ddfba5b5a05dbbf95c7303cde21010738f7e310f5ad314f55e38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe0f535e08cd6b2dbb33d21add7a1ca3042f93a46623a6aa9255e7e710839537",
+      "source_fact_keys": [
+        "source_fact:v1:84b4d369a14ad85c1911b409754b28017ac5e27d97da0e051164f9efb9ee2ed5",
+        "source_fact:v1:d314788251c81d9d2a7a5ec4961438ecb903ba862c4ac1a8a886d77bc48f17cc"
+      ],
+      "source_published_kst": "2026-10-20T07:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스",
+      "telegram_core_fact": "영국계 데이터센터 운영업체인 엔스케일이 앤트로픽에 컴퓨팅 용량을 공급하는 약 450억달러(약 60조4천억원) 계약을 협상 중이라고 블룸버그 통신이 19일(현지시간) 보도했다.",
+      "title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스"
     },
     "core:e179b47d062b7492c7a3f47a": {
       "first_seen_kst": "2026-10-17T08:22:42+09:00",
@@ -71082,6 +71215,30 @@
       "telegram_core_fact": "중국산 장비가 전체에서 38%를 차지하는 등 수입 의존도가 높은 가운데 항만 자동화가 확대되면서 정보보안과 유지관리 체계를 강화해야 한다는 지적이 나온다. 국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다.",
       "title": "4대 신항만 장비 38%가 '메이드 인 차이나'"
     },
+    "core:fe31f6aa9559c3ebfadd5456": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637409",
+      "source": "이투데이",
+      "source_body_digest": "393fb8af013c07b3b977db1ebf61cb237b6f93da748022a27bff92366335af4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d167e4a9a44581c95fa0f3f55f82933dcdde07ab595ef366231cfb8a514ce91",
+      "source_fact_keys": [
+        "source_fact:v1:03edd0f86f55360102cbcb021bdb0d4b5a23a91a24e0d2e7684fc4fc968574d5",
+        "source_fact:v1:56c71efaf98f1c77296c27b29f26da5c4cecd5e4b61fb15cd61b7b92d0e4d7aa",
+        "source_fact:v1:6c00d5d77484d114c55b945d9fbe5103a8654d3cd96f58fd02f1581fdd45f1ed",
+        "source_fact:v1:ad0147d088ffd5c44c8a48cfce10d582546ec55d82045ef4574eea6163d33f1e",
+        "source_fact:v1:b55ff769b06ce25c129dd366fa591c3064dc36b3eba1792725a005112dd9f9a2"
+      ],
+      "source_published_kst": "2026-10-19T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비",
+      "telegram_core_fact": "한화오션과 필리조선소 지분 매각 규모는 예정된 거래를 포함해 약 3조4000억원이다. 업계에 따르면 한화시스템은 한화오션 잔여 지분 7.24%를 키움증권과 특수목적법인(SPC) 6곳에 총 1조3834억원에 양도하기로 했다.",
+      "title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비"
+    },
     "core:fe3258bf2b7691823f3c180b": {
       "first_seen_kst": "2026-10-14T19:42:07+09:00",
       "lanes": {
@@ -71929,6 +72086,31 @@
       "source_title": "칩플레이션에…中 스마트폰 제조 축소 전략",
       "telegram_core_fact": "시장조사업체 옴디아에 따르면 화웨이를 제외한 샤오미, 오포, 비보 등 중국 스마트폰 업체들은 올 2분기 출하량이 전년비 19% 줄어든 것으로 나타났다. 고가 스마트폰 경우 메모리 반도체가 제조 원가에서 차지하는 비중이 상대적으로 낮고 소비자가 가격 인상에 대한 저항 심리도 약하다.",
       "title": "칩플레이션에…中 스마트폰 제조 축소 전략"
+    },
+    "event:03fcae430dae5efb6b66c3b3": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101914841",
+      "source": "한국경제",
+      "source_body_digest": "bb6b7e5c65e7c2382e9a714c5371594fd6739e7d4c419a48436e25aba1694193",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:567e540c2d772e64ae81496916e48c4f09a832aae46982346857a575de0cf19a",
+      "source_fact_keys": [
+        "source_fact:v1:3ae0dc1d11cf1fa0f5da081d087c0592805ac0d5e17eb7df5f8e9edeb9cb7dc5",
+        "source_fact:v1:59ec4255521fa552c5628a1a103bb36bc7d22f2a4bd7c7a62820ffa82b71b9ad",
+        "source_fact:v1:5d5dfe53b9027b8b4d758dd103a5727e8b3feb8041a1c8b8ee470cb7ff75650f",
+        "source_fact:v1:5dfe91675a4dbc7e23aace62c1e696ba4cb4b84cfff417665d0182a04bf4f6b9",
+        "source_fact:v1:ccf559defad6f0f4c3b6bd240ec541d0c970e50456ba91203c1fcf8961dc4e2f",
+        "source_fact:v1:f28d12a73603f29cdaf3efdb7161d337bb00b1ac20bd63518d1ce95e81084aac"
+      ],
+      "source_published_kst": "2026-10-19T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명",
+      "telegram_core_fact": "지난 15일 프랑스 통계청(INSEE)이 발표한 9월 소비자물가지수(CPI) 역시 전년 동월과 비교해 3.1% 올랐다.",
+      "title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명"
     },
     "event:0476a77b85be77ae1ec7955d": {
       "first_seen_kst": "2026-10-04T11:57:24+09:00",
@@ -84720,6 +84902,27 @@
       "source": "매일경제",
       "title": "李대통령, 멕시코 ‘K엑스포’ 방문…“관세 얼마나 올랐나”"
     },
+    "event:ba4de30c6ca676c77f27f2ad": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020015200009",
+      "source": "연합뉴스",
+      "source_body_digest": "43e6f3ebd941ddfba5b5a05dbbf95c7303cde21010738f7e310f5ad314f55e38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe0f535e08cd6b2dbb33d21add7a1ca3042f93a46623a6aa9255e7e710839537",
+      "source_fact_keys": [
+        "source_fact:v1:84b4d369a14ad85c1911b409754b28017ac5e27d97da0e051164f9efb9ee2ed5",
+        "source_fact:v1:d314788251c81d9d2a7a5ec4961438ecb903ba862c4ac1a8a886d77bc48f17cc"
+      ],
+      "source_published_kst": "2026-10-20T07:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스",
+      "telegram_core_fact": "영국계 데이터센터 운영업체인 엔스케일이 앤트로픽에 컴퓨팅 용량을 공급하는 약 450억달러(약 60조4천억원) 계약을 협상 중이라고 블룸버그 통신이 19일(현지시간) 보도했다.",
+      "title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스"
+    },
     "event:ba788d3209221bdc009f8f7e": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
@@ -89742,25 +89945,26 @@
     "event:fb94c1156ed8268f97db75ef": {
       "first_seen_kst": "2026-10-19T15:46:20+09:00",
       "lanes": {
-        "live": "2026-10-19T15:46:20+09:00"
+        "live": "2026-10-20T08:05:53+09:00"
       },
-      "last_seen_kst": "2026-10-19T15:46:20+09:00",
-      "link": "https://zdnet.co.kr/view/?no=20261019145947",
-      "source": "지디넷코리아",
-      "source_body_digest": "447f7928d01462ce51c875a260807432f17da11137a797db8cb4f18636f8d17a",
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04096726645614560",
+      "source": "이데일리",
+      "source_body_digest": "edd2abae31d0574efc76fc8827dd88c567c30da3cd3f817aa9818ecdbbea43ce",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:400502fd8dfad6683d7ff42b748805e5ddd73f8b2322da04d176d82aefad1fda",
+      "source_fact_identity": "source_facts:v1:2ee640d5319f4e803b9a60b94477cc68cdcc3d74a16fede822e7adffa5ca23d2",
       "source_fact_keys": [
-        "source_fact:v1:4515c512cba1327b8f3bdd169c7a0f6a1fdbd539120b7c996b5b1bc233dcd5ba",
-        "source_fact:v1:4facd9d1ca88c8dbf61091bdae4302c3335e46707a238469137e7f0774ac52ca",
-        "source_fact:v1:60ede9ff3c9de77219962137c9b834e808ffa707a0f6408316404e1766c352ac",
-        "source_fact:v1:8c7bedf4d5fadf3297522c8f9f0ea3f2165936a9a38d940616a2649d299b211f"
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3",
+        "source_fact:v1:abfe0ed71e1936c803a6572c15aca9582ca82fbfdbcb541e0761824e74f05c99",
+        "source_fact:v1:b4c0882194b16dded4728cfb7ba8439bebbd5e5abe8a77418bc0d7140f50c42e",
+        "source_fact:v1:bb8c66810832184020065ec8ad7b78706c89b336602d295d1c2731202198e2b1",
+        "source_fact:v1:c389451d9a0f28537009ccabed6622e4329c42280e467bd92d1ee4e0859d3b23"
       ],
-      "source_published_kst": "2026-10-19T14:59+09:00",
+      "source_published_kst": "2026-10-19T16:49+09:00",
       "source_supply_terms": {},
-      "source_title": "앰코코리아, 광주사업장에 첨단패키징 증설…2031년까지 3조 투입",
-      "telegram_core_fact": "앰코코리아는 이날 착공식에서 첨단 패키징 수요 확대에 대응해 광주사업장에 올해부터 2031년까지 총 3조원을 투자하고 약 2000명을 고용할 계획이라고 발표했다.",
-      "title": "앰코코리아, 광주사업장에 첨단패키징 증설…2031년까지 3조 투입"
+      "source_title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출",
+      "telegram_core_fact": "한미반도체(042700)가 미국 법인 ‘한미USA’를 설립하고 미국 현지 반도체 시장에 본격 진출한다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출"
     },
     "event:fbdc07cc840136fe89a3651b": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
@@ -122698,6 +122902,27 @@
       "telegram_core_fact": "셀트리온이 올해 연초 제시한 분기별 영업이익 목표를 3분기까지 모두 달성했다.",
       "title": "셀트리온 “3분기까지 실적 목표 달성⋯올해 약속 반드시 완수”"
     },
+    "fact:68d193c61a7f0076a2a2bff5": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020015200009",
+      "source": "연합뉴스",
+      "source_body_digest": "43e6f3ebd941ddfba5b5a05dbbf95c7303cde21010738f7e310f5ad314f55e38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe0f535e08cd6b2dbb33d21add7a1ca3042f93a46623a6aa9255e7e710839537",
+      "source_fact_keys": [
+        "source_fact:v1:84b4d369a14ad85c1911b409754b28017ac5e27d97da0e051164f9efb9ee2ed5",
+        "source_fact:v1:d314788251c81d9d2a7a5ec4961438ecb903ba862c4ac1a8a886d77bc48f17cc"
+      ],
+      "source_published_kst": "2026-10-20T07:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스",
+      "telegram_core_fact": "영국계 데이터센터 운영업체인 엔스케일이 앤트로픽에 컴퓨팅 용량을 공급하는 약 450억달러(약 60조4천억원) 계약을 협상 중이라고 블룸버그 통신이 19일(현지시간) 보도했다.",
+      "title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스"
+    },
     "fact:68f9be8fe56d3d707a2446fa": {
       "first_seen_kst": "2026-10-20T06:12:02+09:00",
       "lanes": {
@@ -131152,6 +131377,31 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[단독]새일여성 97% 취업 전환…1년 뒤 고용유지율은 60% 그쳐"
     },
+    "fact:8299131ae397d4d2b7d0ebb6": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101914841",
+      "source": "한국경제",
+      "source_body_digest": "bb6b7e5c65e7c2382e9a714c5371594fd6739e7d4c419a48436e25aba1694193",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:567e540c2d772e64ae81496916e48c4f09a832aae46982346857a575de0cf19a",
+      "source_fact_keys": [
+        "source_fact:v1:3ae0dc1d11cf1fa0f5da081d087c0592805ac0d5e17eb7df5f8e9edeb9cb7dc5",
+        "source_fact:v1:59ec4255521fa552c5628a1a103bb36bc7d22f2a4bd7c7a62820ffa82b71b9ad",
+        "source_fact:v1:5d5dfe53b9027b8b4d758dd103a5727e8b3feb8041a1c8b8ee470cb7ff75650f",
+        "source_fact:v1:5dfe91675a4dbc7e23aace62c1e696ba4cb4b84cfff417665d0182a04bf4f6b9",
+        "source_fact:v1:ccf559defad6f0f4c3b6bd240ec541d0c970e50456ba91203c1fcf8961dc4e2f",
+        "source_fact:v1:f28d12a73603f29cdaf3efdb7161d337bb00b1ac20bd63518d1ce95e81084aac"
+      ],
+      "source_published_kst": "2026-10-19T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명",
+      "telegram_core_fact": "지난 15일 프랑스 통계청(INSEE)이 발표한 9월 소비자물가지수(CPI) 역시 전년 동월과 비교해 3.1% 올랐다.",
+      "title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명"
+    },
     "fact:829baa78c53521b57794c487": {
       "first_seen_kst": "2026-10-13T20:01:17+09:00",
       "lanes": {
@@ -137500,6 +137750,28 @@
       "source_title": "수은, IFC와 핵심광물·AI 금융협력 확대⋯개도국 진출 지원",
       "telegram_core_fact": "황 행장은 “IFC는 개도국 인프라와 에너지 분야에서 오랜 기간 협력해 온 수은의 중요한 개발금융 파트너”라며 “글로벌 금융기관과의 공조를 바탕으로 핵심광물 공급망과 혁신·첨단산업 분야에서 우리 기업의 해외 진출을 뒷받침하는 금융 교두보 역할을 이어가겠다”고 말했다.",
       "title": "수은, IFC와 핵심광물·AI 금융협력 확대⋯개도국 진출 지원"
+    },
+    "fact:943b184dcb89efbdecb2dc28": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177168",
+      "source": "매일경제",
+      "source_body_digest": "c807f99ed1449860ed2024dafb6a447419518b37d5fba687cb9f48416ec34c80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b73d304eddcea8ef19f2171aa8c280d0f7ea9298ec97f572afdfcada3ff6bc53",
+      "source_fact_keys": [
+        "source_fact:v1:72a42cd72bb63be5edd56ef4a6ab6cf546abf3ab403d1452345ee77d4373058d",
+        "source_fact:v1:cab97a1d3879161ceda0f07b81975a572e753608ee88d79f1b07e78669a094b4",
+        "source_fact:v1:d6c8168db12e56ce0765882d6aab5bca962bb8c1532da08bad3cc960f81282f0"
+      ],
+      "source_published_kst": "2026-10-20T02:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가",
+      "telegram_core_fact": "GLASS HOUSE BRANDS INC(GLAS)는 2026년 9월 30일 종료된 3분기 잠정(비감사) 계속사업 매출액이 5680만 달러로 전년비 116.8% 증가했고 전분기 대비로도 20.8% 늘었다고 10월 19일 발표했다.",
+      "title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가"
     },
     "fact:943d45563811ecc353aa403e": {
       "first_seen_kst": "2026-10-17T05:57:10+09:00",
@@ -156182,6 +156454,30 @@
       "telegram_core_fact": "한국거래소는 DS자산운용, 한국투자신탁운용, 키움투자자산운용, 삼성자산운용의 상장지수펀드(ETF) 4종목을 오는 13일 유가증권시장에 상장한다고 8일 밝혔다.",
       "title": "'반도체 밸류체인 투자' 등 ETF 4종 13일 신규 상장 | 연합뉴스"
     },
+    "fact:cab8da5c4b70eaaf546bccb9": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637409",
+      "source": "이투데이",
+      "source_body_digest": "393fb8af013c07b3b977db1ebf61cb237b6f93da748022a27bff92366335af4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d167e4a9a44581c95fa0f3f55f82933dcdde07ab595ef366231cfb8a514ce91",
+      "source_fact_keys": [
+        "source_fact:v1:03edd0f86f55360102cbcb021bdb0d4b5a23a91a24e0d2e7684fc4fc968574d5",
+        "source_fact:v1:56c71efaf98f1c77296c27b29f26da5c4cecd5e4b61fb15cd61b7b92d0e4d7aa",
+        "source_fact:v1:6c00d5d77484d114c55b945d9fbe5103a8654d3cd96f58fd02f1581fdd45f1ed",
+        "source_fact:v1:ad0147d088ffd5c44c8a48cfce10d582546ec55d82045ef4574eea6163d33f1e",
+        "source_fact:v1:b55ff769b06ce25c129dd366fa591c3064dc36b3eba1792725a005112dd9f9a2"
+      ],
+      "source_published_kst": "2026-10-19T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비",
+      "telegram_core_fact": "한화오션과 필리조선소 지분 매각 규모는 예정된 거래를 포함해 약 3조4000억원이다. 업계에 따르면 한화시스템은 한화오션 잔여 지분 7.24%를 키움증권과 특수목적법인(SPC) 6곳에 총 1조3834억원에 양도하기로 했다.",
+      "title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비"
+    },
     "fact:cabfd964b4a6b32c7bd63739": {
       "first_seen_kst": "2026-10-11T18:58:34+09:00",
       "lanes": {
@@ -157846,6 +158142,27 @@
       "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
       "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
     },
+    "fact:cfb7eba21a9d81e0641bc9e4": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832481",
+      "source": "뉴시스",
+      "source_body_digest": "54675bd0c7d773f3c916e24085f2254cb60ad72486708755f73be808a1a7e025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1800f8392beb272f4254da0b8072dfcc65e10bd7a48f0a514ddd128dd5680d9a",
+      "source_fact_keys": [
+        "source_fact:v1:a10925298a5bd9660b789a4411598edbb92b596f713cb52c04ee99b5d8df9a18",
+        "source_fact:v1:f6b863ac4f90f372522fae616ee865a6334fe0d51089257d86b92e6540f4fa4d"
+      ],
+      "source_published_kst": "2026-10-20T07:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사",
+      "telegram_core_fact": "이란 이슬람혁명수비대(IRGC)가 호르무즈 해협을 통과하는 해저 통신케이블에 대한 공격 가능성을 시사하며 적대국들을 향해 경고했다.",
+      "title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사"
+    },
     "fact:cfc3efe2b4db87a6131bdca8": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -158338,6 +158655,30 @@
       "source_title": "‘앓던 이’도 AI가 해결…디오·LG CNS, 임플란트 플랫폼 ‘DIO AX’ 첫선",
       "telegram_core_fact": "DIO AX 플랫폼에서 발생하는 직접적인 구독료 수익은 물론, 시너지 효과로 디오 임플란트 제품 매출도 증가할 수 있다는 것이 회사 측의 기대다.",
       "title": "‘앓던 이’도 AI가 해결…디오·LG CNS, 임플란트 플랫폼 ‘DIO AX’ 첫선"
+    },
+    "fact:d0c004dc00bf0e704e9c6ca7": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04096726645614560",
+      "source": "이데일리",
+      "source_body_digest": "edd2abae31d0574efc76fc8827dd88c567c30da3cd3f817aa9818ecdbbea43ce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ee640d5319f4e803b9a60b94477cc68cdcc3d74a16fede822e7adffa5ca23d2",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3",
+        "source_fact:v1:abfe0ed71e1936c803a6572c15aca9582ca82fbfdbcb541e0761824e74f05c99",
+        "source_fact:v1:b4c0882194b16dded4728cfb7ba8439bebbd5e5abe8a77418bc0d7140f50c42e",
+        "source_fact:v1:bb8c66810832184020065ec8ad7b78706c89b336602d295d1c2731202198e2b1",
+        "source_fact:v1:c389451d9a0f28537009ccabed6622e4329c42280e467bd92d1ee4e0859d3b23"
+      ],
+      "source_published_kst": "2026-10-19T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출",
+      "telegram_core_fact": "한미반도체(042700)가 미국 법인 ‘한미USA’를 설립하고 미국 현지 반도체 시장에 본격 진출한다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출"
     },
     "fact:d0c967a776946724999347ff": {
       "first_seen_kst": "2026-10-13T13:27:52+09:00",
@@ -160725,6 +161066,26 @@
       ],
       "source_published_kst": "2026-10-07T06:31+09:00",
       "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
+    },
+    "fact:d7ad1814b446c1fe70be394a": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637567",
+      "source": "이투데이",
+      "source_body_digest": "e6ccaf83ae8146e3977452c9037cbc92bdb0abbe848e7dfe436153ffa7016982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:81957f910b8dbc05b4564e595126742deae4230b7742be2a8771f6fac366ce1f",
+      "source_fact_keys": [
+        "source_fact:v1:5a3bfa063f9c94cd9d6afe891892ad99944991ee3ab6864c4a11cf01c9a6371c"
+      ],
+      "source_published_kst": "2026-10-19T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자칠판 업계, 출혈경쟁 줄이고 서비스 품질 높인다…조달제도 변화 공동 대응",
+      "telegram_core_fact": "조합은 이번 협약이 과도한 가격 경쟁을 지양하고 서비스 품질을 높이는 한편, 공공 교육기관과 기업 고객에게 안정적인 사후관리 서비스를 제공하는 데 도움이 될 것으로 기대하고 있다.",
+      "title": "전자칠판 업계, 출혈경쟁 줄이고 서비스 품질 높인다…조달제도 변화 공동 대응"
     },
     "fact:d7b0df917265718882e81fa5": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
@@ -175005,6 +175366,30 @@
       "source_title": "정유주 동반약세…트럼프 \"러·우, 에너지 휴전\"",
       "telegram_core_fact": "트럼프 대통령은 11일(이하 현지시간) 자신의 소셜미디어 트루스소셜에 \"러시아와 우크라이나 간 전쟁에서 에너지 휴전이 즉시 발효됐다\"며 \"양측 모두 동의했다. 이를 깨뜨리지 말라\"고 밝혔다.",
       "title": "정유주 동반약세…트럼프 \"러·우, 에너지 휴전\""
+    },
+    "link:027f4e8aa7ed3cb1540f784f": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04096726645614560",
+      "source": "이데일리",
+      "source_body_digest": "edd2abae31d0574efc76fc8827dd88c567c30da3cd3f817aa9818ecdbbea43ce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ee640d5319f4e803b9a60b94477cc68cdcc3d74a16fede822e7adffa5ca23d2",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3",
+        "source_fact:v1:abfe0ed71e1936c803a6572c15aca9582ca82fbfdbcb541e0761824e74f05c99",
+        "source_fact:v1:b4c0882194b16dded4728cfb7ba8439bebbd5e5abe8a77418bc0d7140f50c42e",
+        "source_fact:v1:bb8c66810832184020065ec8ad7b78706c89b336602d295d1c2731202198e2b1",
+        "source_fact:v1:c389451d9a0f28537009ccabed6622e4329c42280e467bd92d1ee4e0859d3b23"
+      ],
+      "source_published_kst": "2026-10-19T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출",
+      "telegram_core_fact": "한미반도체(042700)가 미국 법인 ‘한미USA’를 설립하고 미국 현지 반도체 시장에 본격 진출한다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출"
     },
     "link:028ac415e606e855a52ba48a": {
       "first_seen_kst": "2026-10-15T16:50:59+09:00",
@@ -190501,6 +190886,31 @@
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "美 벨 텍스트론 구매단 방한…K항공우주 소부장 공급망 협력"
     },
+    "link:26a0434d3be1b1114f10a77a": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101914841",
+      "source": "한국경제",
+      "source_body_digest": "bb6b7e5c65e7c2382e9a714c5371594fd6739e7d4c419a48436e25aba1694193",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:567e540c2d772e64ae81496916e48c4f09a832aae46982346857a575de0cf19a",
+      "source_fact_keys": [
+        "source_fact:v1:3ae0dc1d11cf1fa0f5da081d087c0592805ac0d5e17eb7df5f8e9edeb9cb7dc5",
+        "source_fact:v1:59ec4255521fa552c5628a1a103bb36bc7d22f2a4bd7c7a62820ffa82b71b9ad",
+        "source_fact:v1:5d5dfe53b9027b8b4d758dd103a5727e8b3feb8041a1c8b8ee470cb7ff75650f",
+        "source_fact:v1:5dfe91675a4dbc7e23aace62c1e696ba4cb4b84cfff417665d0182a04bf4f6b9",
+        "source_fact:v1:ccf559defad6f0f4c3b6bd240ec541d0c970e50456ba91203c1fcf8961dc4e2f",
+        "source_fact:v1:f28d12a73603f29cdaf3efdb7161d337bb00b1ac20bd63518d1ce95e81084aac"
+      ],
+      "source_published_kst": "2026-10-19T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명",
+      "telegram_core_fact": "지난 15일 프랑스 통계청(INSEE)이 발표한 9월 소비자물가지수(CPI) 역시 전년 동월과 비교해 3.1% 올랐다.",
+      "title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명"
+    },
     "link:26ab3833d0111f8a162166f0": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
       "lanes": {
@@ -190564,6 +190974,28 @@
       "source_title": "경영권 승계·재벌 사업 재편 활발…한국에 눈 돌리는 글로벌 PE",
       "telegram_core_fact": "글로벌 PE들은 한국 기업을 인수한 뒤 해외시장 진출을 지원하는 방식으로 기업가치를 높일 수 있다는 점에도 주목하고 있다.",
       "title": "경영권 승계·재벌 사업 재편 활발…한국에 눈 돌리는 글로벌 PE"
+    },
+    "link:26d4a9bba5c37fd6bfc02a68": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177168",
+      "source": "매일경제",
+      "source_body_digest": "c807f99ed1449860ed2024dafb6a447419518b37d5fba687cb9f48416ec34c80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b73d304eddcea8ef19f2171aa8c280d0f7ea9298ec97f572afdfcada3ff6bc53",
+      "source_fact_keys": [
+        "source_fact:v1:72a42cd72bb63be5edd56ef4a6ab6cf546abf3ab403d1452345ee77d4373058d",
+        "source_fact:v1:cab97a1d3879161ceda0f07b81975a572e753608ee88d79f1b07e78669a094b4",
+        "source_fact:v1:d6c8168db12e56ce0765882d6aab5bca962bb8c1532da08bad3cc960f81282f0"
+      ],
+      "source_published_kst": "2026-10-20T02:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가",
+      "telegram_core_fact": "GLASS HOUSE BRANDS INC(GLAS)는 2026년 9월 30일 종료된 3분기 잠정(비감사) 계속사업 매출액이 5680만 달러로 전년비 116.8% 증가했고 전분기 대비로도 20.8% 늘었다고 10월 19일 발표했다.",
+      "title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가"
     },
     "link:26d83ee106903fea19673461": {
       "first_seen_kst": "2026-10-20T04:27:47+09:00",
@@ -206881,6 +207313,27 @@
       "source_published_kst": "2026-10-07T11:00+09:00",
       "title": "폴스타, 9월 역대 최대 판매…年 판매목표 달성 성큼"
     },
+    "link:4c9bcd51983516e9cc861621": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832481",
+      "source": "뉴시스",
+      "source_body_digest": "54675bd0c7d773f3c916e24085f2254cb60ad72486708755f73be808a1a7e025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1800f8392beb272f4254da0b8072dfcc65e10bd7a48f0a514ddd128dd5680d9a",
+      "source_fact_keys": [
+        "source_fact:v1:a10925298a5bd9660b789a4411598edbb92b596f713cb52c04ee99b5d8df9a18",
+        "source_fact:v1:f6b863ac4f90f372522fae616ee865a6334fe0d51089257d86b92e6540f4fa4d"
+      ],
+      "source_published_kst": "2026-10-20T07:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사",
+      "telegram_core_fact": "이란 이슬람혁명수비대(IRGC)가 호르무즈 해협을 통과하는 해저 통신케이블에 대한 공격 가능성을 시사하며 적대국들을 향해 경고했다.",
+      "title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사"
+    },
     "link:4ca79cfae2e6d27ab6a6d365": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -210285,6 +210738,30 @@
       "source_title": "중국산 전기차 공세 계속된다…“올해 수출 1천만대 넘길 것”",
       "telegram_core_fact": "미국과 유럽연합(EU) 등은 중국산 전기차에 대한 관세를 부과하며 대응하고 있다.",
       "title": "중국산 전기차 공세 계속된다…“올해 수출 1천만대 넘길 것”"
+    },
+    "link:5424685f08e367cab62d0c06": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637409",
+      "source": "이투데이",
+      "source_body_digest": "393fb8af013c07b3b977db1ebf61cb237b6f93da748022a27bff92366335af4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d167e4a9a44581c95fa0f3f55f82933dcdde07ab595ef366231cfb8a514ce91",
+      "source_fact_keys": [
+        "source_fact:v1:03edd0f86f55360102cbcb021bdb0d4b5a23a91a24e0d2e7684fc4fc968574d5",
+        "source_fact:v1:56c71efaf98f1c77296c27b29f26da5c4cecd5e4b61fb15cd61b7b92d0e4d7aa",
+        "source_fact:v1:6c00d5d77484d114c55b945d9fbe5103a8654d3cd96f58fd02f1581fdd45f1ed",
+        "source_fact:v1:ad0147d088ffd5c44c8a48cfce10d582546ec55d82045ef4574eea6163d33f1e",
+        "source_fact:v1:b55ff769b06ce25c129dd366fa591c3064dc36b3eba1792725a005112dd9f9a2"
+      ],
+      "source_published_kst": "2026-10-19T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비",
+      "telegram_core_fact": "한화오션과 필리조선소 지분 매각 규모는 예정된 거래를 포함해 약 3조4000억원이다. 업계에 따르면 한화시스템은 한화오션 잔여 지분 7.24%를 키움증권과 특수목적법인(SPC) 6곳에 총 1조3834억원에 양도하기로 했다.",
+      "title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비"
     },
     "link:542c084cee45ec9181e22e3c": {
       "first_seen_kst": "2026-10-02T09:01:13+09:00",
@@ -234037,6 +234514,26 @@
       "source_title": "롯데百, LA에 K-뷰티 전초기지…유망 브랜드 글로벌 진출 지원",
       "telegram_core_fact": "롯데백화점이 미국 로스앤젤레스(LA)에서 K-뷰티 팝업을 열고 국내 뷰티 브랜드의 글로벌 시장 진출 지원에 나선다고 8일 밝혔다. 롯데백화점의 K-뷰티 상품군 외국인 매출은 최근 3개월간 전년 대비 110% 증가했다.",
       "title": "롯데百, LA에 K-뷰티 전초기지…유망 브랜드 글로벌 진출 지원"
+    },
+    "link:8be1af9ade4d0ee347b41941": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637567",
+      "source": "이투데이",
+      "source_body_digest": "e6ccaf83ae8146e3977452c9037cbc92bdb0abbe848e7dfe436153ffa7016982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:81957f910b8dbc05b4564e595126742deae4230b7742be2a8771f6fac366ce1f",
+      "source_fact_keys": [
+        "source_fact:v1:5a3bfa063f9c94cd9d6afe891892ad99944991ee3ab6864c4a11cf01c9a6371c"
+      ],
+      "source_published_kst": "2026-10-19T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자칠판 업계, 출혈경쟁 줄이고 서비스 품질 높인다…조달제도 변화 공동 대응",
+      "telegram_core_fact": "조합은 이번 협약이 과도한 가격 경쟁을 지양하고 서비스 품질을 높이는 한편, 공공 교육기관과 기업 고객에게 안정적인 사후관리 서비스를 제공하는 데 도움이 될 것으로 기대하고 있다.",
+      "title": "전자칠판 업계, 출혈경쟁 줄이고 서비스 품질 높인다…조달제도 변화 공동 대응"
     },
     "link:8be25627c55de0576d24f856": {
       "first_seen_kst": "2026-10-02T17:14:32+09:00",
@@ -274187,6 +274684,27 @@
       "source": "매일경제",
       "title": "“현대차·모비스 70층, 구조 포기했습니다”…피지컬AI ETF ‘싸늘’"
     },
+    "link:e7adc0deeef996a9c75ae2f3": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020015200009",
+      "source": "연합뉴스",
+      "source_body_digest": "43e6f3ebd941ddfba5b5a05dbbf95c7303cde21010738f7e310f5ad314f55e38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe0f535e08cd6b2dbb33d21add7a1ca3042f93a46623a6aa9255e7e710839537",
+      "source_fact_keys": [
+        "source_fact:v1:84b4d369a14ad85c1911b409754b28017ac5e27d97da0e051164f9efb9ee2ed5",
+        "source_fact:v1:d314788251c81d9d2a7a5ec4961438ecb903ba862c4ac1a8a886d77bc48f17cc"
+      ],
+      "source_published_kst": "2026-10-20T07:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스",
+      "telegram_core_fact": "영국계 데이터센터 운영업체인 엔스케일이 앤트로픽에 컴퓨팅 용량을 공급하는 약 450억달러(약 60조4천억원) 계약을 협상 중이라고 블룸버그 통신이 19일(현지시간) 보도했다.",
+      "title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스"
+    },
     "link:e7b99cc2adfffce40f32a5d3": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
       "lanes": {
@@ -285695,6 +286213,27 @@
       "telegram_core_fact": "챈은 \"데이터센터 구축, 미국 모델 훈련은 중국에서 수입되는 수많은 데이터센터 부품에 의존한다\"며 미국 공급망 전반에 걸쳐서도 중국산 부품과 연결고리가 나타난다고 평가했다.",
       "title": "\"美기업들, AI 패권 경쟁 벌이면서도 中 공급망 의존\""
     },
+    "original:02dbc9985f6b1de1292cfd13": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020015200009",
+      "source": "연합뉴스",
+      "source_body_digest": "43e6f3ebd941ddfba5b5a05dbbf95c7303cde21010738f7e310f5ad314f55e38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe0f535e08cd6b2dbb33d21add7a1ca3042f93a46623a6aa9255e7e710839537",
+      "source_fact_keys": [
+        "source_fact:v1:84b4d369a14ad85c1911b409754b28017ac5e27d97da0e051164f9efb9ee2ed5",
+        "source_fact:v1:d314788251c81d9d2a7a5ec4961438ecb903ba862c4ac1a8a886d77bc48f17cc"
+      ],
+      "source_published_kst": "2026-10-20T07:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스",
+      "telegram_core_fact": "영국계 데이터센터 운영업체인 엔스케일이 앤트로픽에 컴퓨팅 용량을 공급하는 약 450억달러(약 60조4천억원) 계약을 협상 중이라고 블룸버그 통신이 19일(현지시간) 보도했다.",
+      "title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스"
+    },
     "original:02dfa54dc4e9ebf60f25493d": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
       "lanes": {
@@ -295189,6 +295728,27 @@
       "source_published_kst": "2026-10-06T15:09+09:00",
       "title": "AI팩토리에 승부 건 엔비디아 \"생산성·수명·범용성이 수익 좌우\""
     },
+    "original:19039f6e0c9ddc7eabcc1087": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832481",
+      "source": "뉴시스",
+      "source_body_digest": "54675bd0c7d773f3c916e24085f2254cb60ad72486708755f73be808a1a7e025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1800f8392beb272f4254da0b8072dfcc65e10bd7a48f0a514ddd128dd5680d9a",
+      "source_fact_keys": [
+        "source_fact:v1:a10925298a5bd9660b789a4411598edbb92b596f713cb52c04ee99b5d8df9a18",
+        "source_fact:v1:f6b863ac4f90f372522fae616ee865a6334fe0d51089257d86b92e6540f4fa4d"
+      ],
+      "source_published_kst": "2026-10-20T07:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사",
+      "telegram_core_fact": "이란 이슬람혁명수비대(IRGC)가 호르무즈 해협을 통과하는 해저 통신케이블에 대한 공격 가능성을 시사하며 적대국들을 향해 경고했다.",
+      "title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사"
+    },
     "original:190e74ccdcc0cc1b32718611": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -295998,6 +296558,26 @@
       "source_title": "젤렌스키 \"러, 에너지 휴전 깨고 공습…푸틴은 트루스소셜 안 읽나\"",
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령이 도널드 트럼프 미국 대통령이 발표한 '에너지 휴전'을 러시아가 위반했다고 비판하며 러시아가 공격을 중단하지 않는 한 우크라이나도 공세를 이어가겠다는 입장을 밝혔다.",
       "title": "젤렌스키 \"러, 에너지 휴전 깨고 공습…푸틴은 트루스소셜 안 읽나\""
+    },
+    "original:1b9e1ca5f08e17f5a32ebc92": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637567",
+      "source": "이투데이",
+      "source_body_digest": "e6ccaf83ae8146e3977452c9037cbc92bdb0abbe848e7dfe436153ffa7016982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:81957f910b8dbc05b4564e595126742deae4230b7742be2a8771f6fac366ce1f",
+      "source_fact_keys": [
+        "source_fact:v1:5a3bfa063f9c94cd9d6afe891892ad99944991ee3ab6864c4a11cf01c9a6371c"
+      ],
+      "source_published_kst": "2026-10-19T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자칠판 업계, 출혈경쟁 줄이고 서비스 품질 높인다…조달제도 변화 공동 대응",
+      "telegram_core_fact": "조합은 이번 협약이 과도한 가격 경쟁을 지양하고 서비스 품질을 높이는 한편, 공공 교육기관과 기업 고객에게 안정적인 사후관리 서비스를 제공하는 데 도움이 될 것으로 기대하고 있다.",
+      "title": "전자칠판 업계, 출혈경쟁 줄이고 서비스 품질 높인다…조달제도 변화 공동 대응"
     },
     "original:1bab876952a029bf9cd1148b": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -298646,6 +299226,28 @@
       "source_title": "법인보험대리점 프라임에셋, 내년 하반기 코스피 상장 추진",
       "telegram_core_fact": "법인보험대리점(GA) 프라임에셋이 비상장 기조를 바꾸고 내년 하반기 유가증권시장(코스피) 입성을 추진한다.",
       "title": "법인보험대리점 프라임에셋, 내년 하반기 코스피 상장 추진"
+    },
+    "original:21b60710a66821cb13636342": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177168",
+      "source": "매일경제",
+      "source_body_digest": "c807f99ed1449860ed2024dafb6a447419518b37d5fba687cb9f48416ec34c80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b73d304eddcea8ef19f2171aa8c280d0f7ea9298ec97f572afdfcada3ff6bc53",
+      "source_fact_keys": [
+        "source_fact:v1:72a42cd72bb63be5edd56ef4a6ab6cf546abf3ab403d1452345ee77d4373058d",
+        "source_fact:v1:cab97a1d3879161ceda0f07b81975a572e753608ee88d79f1b07e78669a094b4",
+        "source_fact:v1:d6c8168db12e56ce0765882d6aab5bca962bb8c1532da08bad3cc960f81282f0"
+      ],
+      "source_published_kst": "2026-10-20T02:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가",
+      "telegram_core_fact": "GLASS HOUSE BRANDS INC(GLAS)는 2026년 9월 30일 종료된 3분기 잠정(비감사) 계속사업 매출액이 5680만 달러로 전년비 116.8% 증가했고 전분기 대비로도 20.8% 늘었다고 10월 19일 발표했다.",
+      "title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가"
     },
     "original:21b849a38dd1886e1dbbb591": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -311420,6 +312022,30 @@
       "source_published_kst": "2026-10-07T15:02+09:00",
       "title": "감사원 \"KBS, 드라마 제작비 집행 확인 안 해…출연료 부풀려 차액 빼돌려\""
     },
+    "original:3f08371247ad5fc439fdbb82": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04096726645614560",
+      "source": "이데일리",
+      "source_body_digest": "edd2abae31d0574efc76fc8827dd88c567c30da3cd3f817aa9818ecdbbea43ce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ee640d5319f4e803b9a60b94477cc68cdcc3d74a16fede822e7adffa5ca23d2",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3",
+        "source_fact:v1:abfe0ed71e1936c803a6572c15aca9582ca82fbfdbcb541e0761824e74f05c99",
+        "source_fact:v1:b4c0882194b16dded4728cfb7ba8439bebbd5e5abe8a77418bc0d7140f50c42e",
+        "source_fact:v1:bb8c66810832184020065ec8ad7b78706c89b336602d295d1c2731202198e2b1",
+        "source_fact:v1:c389451d9a0f28537009ccabed6622e4329c42280e467bd92d1ee4e0859d3b23"
+      ],
+      "source_published_kst": "2026-10-19T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출",
+      "telegram_core_fact": "한미반도체(042700)가 미국 법인 ‘한미USA’를 설립하고 미국 현지 반도체 시장에 본격 진출한다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출"
+    },
     "original:3f257c09a74d9a3ebfe93729": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
       "lanes": {
@@ -321951,6 +322577,31 @@
       "source_title": "6시간 넘는 비행 더 편안하게…싱가포르항공, 11월부터 새 어메니티 선봬",
       "telegram_core_fact": "싱가포르항공은 최근 장거리 항공여행에서 단순 좌석 서비스뿐 아니라 수면과 식사, 엔터테인먼트 등 비행 전반의 경험을 개선하는 데 투자를 확대하고 있다.",
       "title": "6시간 넘는 비행 더 편안하게…싱가포르항공, 11월부터 새 어메니티 선봬"
+    },
+    "original:5695aa6b5a75e8340e6ff2e8": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101914841",
+      "source": "한국경제",
+      "source_body_digest": "bb6b7e5c65e7c2382e9a714c5371594fd6739e7d4c419a48436e25aba1694193",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:567e540c2d772e64ae81496916e48c4f09a832aae46982346857a575de0cf19a",
+      "source_fact_keys": [
+        "source_fact:v1:3ae0dc1d11cf1fa0f5da081d087c0592805ac0d5e17eb7df5f8e9edeb9cb7dc5",
+        "source_fact:v1:59ec4255521fa552c5628a1a103bb36bc7d22f2a4bd7c7a62820ffa82b71b9ad",
+        "source_fact:v1:5d5dfe53b9027b8b4d758dd103a5727e8b3feb8041a1c8b8ee470cb7ff75650f",
+        "source_fact:v1:5dfe91675a4dbc7e23aace62c1e696ba4cb4b84cfff417665d0182a04bf4f6b9",
+        "source_fact:v1:ccf559defad6f0f4c3b6bd240ec541d0c970e50456ba91203c1fcf8961dc4e2f",
+        "source_fact:v1:f28d12a73603f29cdaf3efdb7161d337bb00b1ac20bd63518d1ce95e81084aac"
+      ],
+      "source_published_kst": "2026-10-19T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명",
+      "telegram_core_fact": "지난 15일 프랑스 통계청(INSEE)이 발표한 9월 소비자물가지수(CPI) 역시 전년 동월과 비교해 3.1% 올랐다.",
+      "title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명"
     },
     "original:569ad87dc9e746654f084303": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -349390,6 +350041,30 @@
       "source_title": "[BioS]씨어스, 'AI 부정맥' UAE 아부다비 보건부 IRB 승인",
       "telegram_core_fact": "현재 UAE 국가 건강검진 프로그램에는 부정맥 스크리닝 검사가 포함돼 있지 않으며, 씨어스는 지난해말 입찰을 통해 이 사업의 유일한 사업자로 선정됐다.",
       "title": "[BioS]씨어스, 'AI 부정맥' UAE 아부다비 보건부 IRB 승인"
+    },
+    "original:982a8681675ee7f2ed327fa0": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637409",
+      "source": "이투데이",
+      "source_body_digest": "393fb8af013c07b3b977db1ebf61cb237b6f93da748022a27bff92366335af4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d167e4a9a44581c95fa0f3f55f82933dcdde07ab595ef366231cfb8a514ce91",
+      "source_fact_keys": [
+        "source_fact:v1:03edd0f86f55360102cbcb021bdb0d4b5a23a91a24e0d2e7684fc4fc968574d5",
+        "source_fact:v1:56c71efaf98f1c77296c27b29f26da5c4cecd5e4b61fb15cd61b7b92d0e4d7aa",
+        "source_fact:v1:6c00d5d77484d114c55b945d9fbe5103a8654d3cd96f58fd02f1581fdd45f1ed",
+        "source_fact:v1:ad0147d088ffd5c44c8a48cfce10d582546ec55d82045ef4574eea6163d33f1e",
+        "source_fact:v1:b55ff769b06ce25c129dd366fa591c3064dc36b3eba1792725a005112dd9f9a2"
+      ],
+      "source_published_kst": "2026-10-19T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비",
+      "telegram_core_fact": "한화오션과 필리조선소 지분 매각 규모는 예정된 거래를 포함해 약 3조4000억원이다. 업계에 따르면 한화시스템은 한화오션 잔여 지분 7.24%를 키움증권과 특수목적법인(SPC) 6곳에 총 1조3834억원에 양도하기로 했다.",
+      "title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비"
     },
     "original:982b0ce6440d10d2ea822b13": {
       "first_seen_kst": "2026-09-28T10:16:02+09:00",
@@ -410271,6 +410946,30 @@
       "source_published_kst": "2026-10-07T16:08+09:00",
       "title": "금속노조 \"충주 킬른 설비 사망사고, 위험의 외주화 여전\""
     },
+    "source_fact:0b49b9703fa6827fa61be9bb": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04096726645614560",
+      "source": "이데일리",
+      "source_body_digest": "edd2abae31d0574efc76fc8827dd88c567c30da3cd3f817aa9818ecdbbea43ce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ee640d5319f4e803b9a60b94477cc68cdcc3d74a16fede822e7adffa5ca23d2",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3",
+        "source_fact:v1:abfe0ed71e1936c803a6572c15aca9582ca82fbfdbcb541e0761824e74f05c99",
+        "source_fact:v1:b4c0882194b16dded4728cfb7ba8439bebbd5e5abe8a77418bc0d7140f50c42e",
+        "source_fact:v1:bb8c66810832184020065ec8ad7b78706c89b336602d295d1c2731202198e2b1",
+        "source_fact:v1:c389451d9a0f28537009ccabed6622e4329c42280e467bd92d1ee4e0859d3b23"
+      ],
+      "source_published_kst": "2026-10-19T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출",
+      "telegram_core_fact": "한미반도체(042700)가 미국 법인 ‘한미USA’를 설립하고 미국 현지 반도체 시장에 본격 진출한다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출"
+    },
     "source_fact:0b4d03f30590d58f393bf5cd": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
       "lanes": {
@@ -435396,6 +436095,31 @@
       "source_published_kst": "2026-10-07T06:01+09:00",
       "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
     },
+    "source_fact:1a2caa952175c65816e3c2db": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101914841",
+      "source": "한국경제",
+      "source_body_digest": "bb6b7e5c65e7c2382e9a714c5371594fd6739e7d4c419a48436e25aba1694193",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:567e540c2d772e64ae81496916e48c4f09a832aae46982346857a575de0cf19a",
+      "source_fact_keys": [
+        "source_fact:v1:3ae0dc1d11cf1fa0f5da081d087c0592805ac0d5e17eb7df5f8e9edeb9cb7dc5",
+        "source_fact:v1:59ec4255521fa552c5628a1a103bb36bc7d22f2a4bd7c7a62820ffa82b71b9ad",
+        "source_fact:v1:5d5dfe53b9027b8b4d758dd103a5727e8b3feb8041a1c8b8ee470cb7ff75650f",
+        "source_fact:v1:5dfe91675a4dbc7e23aace62c1e696ba4cb4b84cfff417665d0182a04bf4f6b9",
+        "source_fact:v1:ccf559defad6f0f4c3b6bd240ec541d0c970e50456ba91203c1fcf8961dc4e2f",
+        "source_fact:v1:f28d12a73603f29cdaf3efdb7161d337bb00b1ac20bd63518d1ce95e81084aac"
+      ],
+      "source_published_kst": "2026-10-19T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명",
+      "telegram_core_fact": "지난 15일 프랑스 통계청(INSEE)이 발표한 9월 소비자물가지수(CPI) 역시 전년 동월과 비교해 3.1% 올랐다.",
+      "title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명"
+    },
     "source_fact:1a3331009d1122c7d68944b9": {
       "first_seen_kst": "2026-10-12T11:51:53+09:00",
       "lanes": {
@@ -451346,6 +452070,28 @@
       ],
       "source_published_kst": "2026-10-07T08:02+09:00",
       "title": "[오늘의 증시]실적 앞두고 美증시 강세…코스피, 반도체 훈풍에 반등 전망"
+    },
+    "source_fact:2330fe6efcb3181b4541e279": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177168",
+      "source": "매일경제",
+      "source_body_digest": "c807f99ed1449860ed2024dafb6a447419518b37d5fba687cb9f48416ec34c80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b73d304eddcea8ef19f2171aa8c280d0f7ea9298ec97f572afdfcada3ff6bc53",
+      "source_fact_keys": [
+        "source_fact:v1:72a42cd72bb63be5edd56ef4a6ab6cf546abf3ab403d1452345ee77d4373058d",
+        "source_fact:v1:cab97a1d3879161ceda0f07b81975a572e753608ee88d79f1b07e78669a094b4",
+        "source_fact:v1:d6c8168db12e56ce0765882d6aab5bca962bb8c1532da08bad3cc960f81282f0"
+      ],
+      "source_published_kst": "2026-10-20T02:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가",
+      "telegram_core_fact": "GLASS HOUSE BRANDS INC(GLAS)는 2026년 9월 30일 종료된 3분기 잠정(비감사) 계속사업 매출액이 5680만 달러로 전년비 116.8% 증가했고 전분기 대비로도 20.8% 늘었다고 10월 19일 발표했다.",
+      "title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가"
     },
     "source_fact:23319d5d32177523b18a686b": {
       "first_seen_kst": "2026-10-19T10:51:05+09:00",
@@ -468266,6 +469012,30 @@
       "telegram_core_fact": "온·오프라인 휴대폰 판매원 정보를 규제기관뿐 아니라 이용자에게도 공개해 유통점의 책임 판매 강화와 이용자 권익을 보호하겠다는 목적이다.",
       "title": "통신 유통점 '종사자 등록제' 전면 확대…규제 과도 우려도"
     },
+    "source_fact:2c788f64dac6583d4895ba69": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04096726645614560",
+      "source": "이데일리",
+      "source_body_digest": "edd2abae31d0574efc76fc8827dd88c567c30da3cd3f817aa9818ecdbbea43ce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ee640d5319f4e803b9a60b94477cc68cdcc3d74a16fede822e7adffa5ca23d2",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3",
+        "source_fact:v1:abfe0ed71e1936c803a6572c15aca9582ca82fbfdbcb541e0761824e74f05c99",
+        "source_fact:v1:b4c0882194b16dded4728cfb7ba8439bebbd5e5abe8a77418bc0d7140f50c42e",
+        "source_fact:v1:bb8c66810832184020065ec8ad7b78706c89b336602d295d1c2731202198e2b1",
+        "source_fact:v1:c389451d9a0f28537009ccabed6622e4329c42280e467bd92d1ee4e0859d3b23"
+      ],
+      "source_published_kst": "2026-10-19T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출",
+      "telegram_core_fact": "한미반도체(042700)가 미국 법인 ‘한미USA’를 설립하고 미국 현지 반도체 시장에 본격 진출한다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출"
+    },
     "source_fact:2c7abe09394d9345590eb2fc": {
       "first_seen_kst": "2026-10-10T07:23:23+09:00",
       "lanes": {
@@ -471068,6 +471838,30 @@
       "source_title": "[분양 NOW] '반도체 머니'에 동탄 들썩…삼성전자까지 도보 10분",
       "telegram_core_fact": "'반도체 머니'가 실제로 유입돼 집값이 오르기 전에 미리 아파트를 사려는 수요가 늘어서다.",
       "title": "[분양 NOW] '반도체 머니'에 동탄 들썩…삼성전자까지 도보 10분"
+    },
+    "source_fact:2e4216f0d6354de66a6bc6bb": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04096726645614560",
+      "source": "이데일리",
+      "source_body_digest": "edd2abae31d0574efc76fc8827dd88c567c30da3cd3f817aa9818ecdbbea43ce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ee640d5319f4e803b9a60b94477cc68cdcc3d74a16fede822e7adffa5ca23d2",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3",
+        "source_fact:v1:abfe0ed71e1936c803a6572c15aca9582ca82fbfdbcb541e0761824e74f05c99",
+        "source_fact:v1:b4c0882194b16dded4728cfb7ba8439bebbd5e5abe8a77418bc0d7140f50c42e",
+        "source_fact:v1:bb8c66810832184020065ec8ad7b78706c89b336602d295d1c2731202198e2b1",
+        "source_fact:v1:c389451d9a0f28537009ccabed6622e4329c42280e467bd92d1ee4e0859d3b23"
+      ],
+      "source_published_kst": "2026-10-19T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출",
+      "telegram_core_fact": "한미반도체(042700)가 미국 법인 ‘한미USA’를 설립하고 미국 현지 반도체 시장에 본격 진출한다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출"
     },
     "source_fact:2e47310b873e943a47e20c59": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
@@ -495660,6 +496454,31 @@
       ],
       "source_published_kst": "2026-10-07T10:34+09:00",
       "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
+    },
+    "source_fact:3d6d5d2eff0617a32feda172": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101914841",
+      "source": "한국경제",
+      "source_body_digest": "bb6b7e5c65e7c2382e9a714c5371594fd6739e7d4c419a48436e25aba1694193",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:567e540c2d772e64ae81496916e48c4f09a832aae46982346857a575de0cf19a",
+      "source_fact_keys": [
+        "source_fact:v1:3ae0dc1d11cf1fa0f5da081d087c0592805ac0d5e17eb7df5f8e9edeb9cb7dc5",
+        "source_fact:v1:59ec4255521fa552c5628a1a103bb36bc7d22f2a4bd7c7a62820ffa82b71b9ad",
+        "source_fact:v1:5d5dfe53b9027b8b4d758dd103a5727e8b3feb8041a1c8b8ee470cb7ff75650f",
+        "source_fact:v1:5dfe91675a4dbc7e23aace62c1e696ba4cb4b84cfff417665d0182a04bf4f6b9",
+        "source_fact:v1:ccf559defad6f0f4c3b6bd240ec541d0c970e50456ba91203c1fcf8961dc4e2f",
+        "source_fact:v1:f28d12a73603f29cdaf3efdb7161d337bb00b1ac20bd63518d1ce95e81084aac"
+      ],
+      "source_published_kst": "2026-10-19T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명",
+      "telegram_core_fact": "지난 15일 프랑스 통계청(INSEE)이 발표한 9월 소비자물가지수(CPI) 역시 전년 동월과 비교해 3.1% 올랐다.",
+      "title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명"
     },
     "source_fact:3d766666d9bae67b153a9d27": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
@@ -539092,6 +539911,31 @@
       "source_published_kst": "2026-10-06T14:14+09:00",
       "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
     },
+    "source_fact:568985799406de319ba58bba": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101914841",
+      "source": "한국경제",
+      "source_body_digest": "bb6b7e5c65e7c2382e9a714c5371594fd6739e7d4c419a48436e25aba1694193",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:567e540c2d772e64ae81496916e48c4f09a832aae46982346857a575de0cf19a",
+      "source_fact_keys": [
+        "source_fact:v1:3ae0dc1d11cf1fa0f5da081d087c0592805ac0d5e17eb7df5f8e9edeb9cb7dc5",
+        "source_fact:v1:59ec4255521fa552c5628a1a103bb36bc7d22f2a4bd7c7a62820ffa82b71b9ad",
+        "source_fact:v1:5d5dfe53b9027b8b4d758dd103a5727e8b3feb8041a1c8b8ee470cb7ff75650f",
+        "source_fact:v1:5dfe91675a4dbc7e23aace62c1e696ba4cb4b84cfff417665d0182a04bf4f6b9",
+        "source_fact:v1:ccf559defad6f0f4c3b6bd240ec541d0c970e50456ba91203c1fcf8961dc4e2f",
+        "source_fact:v1:f28d12a73603f29cdaf3efdb7161d337bb00b1ac20bd63518d1ce95e81084aac"
+      ],
+      "source_published_kst": "2026-10-19T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명",
+      "telegram_core_fact": "지난 15일 프랑스 통계청(INSEE)이 발표한 9월 소비자물가지수(CPI) 역시 전년 동월과 비교해 3.1% 올랐다.",
+      "title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명"
+    },
     "source_fact:568efc24569d188cbfc1c054": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -550752,6 +551596,30 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:5cd6bfc2959a989e15237527": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04096726645614560",
+      "source": "이데일리",
+      "source_body_digest": "edd2abae31d0574efc76fc8827dd88c567c30da3cd3f817aa9818ecdbbea43ce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ee640d5319f4e803b9a60b94477cc68cdcc3d74a16fede822e7adffa5ca23d2",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3",
+        "source_fact:v1:abfe0ed71e1936c803a6572c15aca9582ca82fbfdbcb541e0761824e74f05c99",
+        "source_fact:v1:b4c0882194b16dded4728cfb7ba8439bebbd5e5abe8a77418bc0d7140f50c42e",
+        "source_fact:v1:bb8c66810832184020065ec8ad7b78706c89b336602d295d1c2731202198e2b1",
+        "source_fact:v1:c389451d9a0f28537009ccabed6622e4329c42280e467bd92d1ee4e0859d3b23"
+      ],
+      "source_published_kst": "2026-10-19T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출",
+      "telegram_core_fact": "한미반도체(042700)가 미국 법인 ‘한미USA’를 설립하고 미국 현지 반도체 시장에 본격 진출한다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출"
     },
     "source_fact:5cd930aff88e007d6d08bdbc": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
@@ -565465,6 +566333,30 @@
       "telegram_core_fact": "다음 달 중간선거를 앞두고 경윳값이 오르자 도널드 트럼프 미국 대통령이 러시아와 이란의 '그림자 선단'에 대한 제재를 완화하는 방안도 검토 중이라고 파이낸셜타임스(FT)가 15일(현지시간) 보도했다.",
       "title": "\"美, 경윳값 잡으려 러·이란 '그림자 선단' 제재완화도 검토\" | 연합뉴스"
     },
+    "source_fact:65ff20bcff27b660c3de40a2": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637409",
+      "source": "이투데이",
+      "source_body_digest": "393fb8af013c07b3b977db1ebf61cb237b6f93da748022a27bff92366335af4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d167e4a9a44581c95fa0f3f55f82933dcdde07ab595ef366231cfb8a514ce91",
+      "source_fact_keys": [
+        "source_fact:v1:03edd0f86f55360102cbcb021bdb0d4b5a23a91a24e0d2e7684fc4fc968574d5",
+        "source_fact:v1:56c71efaf98f1c77296c27b29f26da5c4cecd5e4b61fb15cd61b7b92d0e4d7aa",
+        "source_fact:v1:6c00d5d77484d114c55b945d9fbe5103a8654d3cd96f58fd02f1581fdd45f1ed",
+        "source_fact:v1:ad0147d088ffd5c44c8a48cfce10d582546ec55d82045ef4574eea6163d33f1e",
+        "source_fact:v1:b55ff769b06ce25c129dd366fa591c3064dc36b3eba1792725a005112dd9f9a2"
+      ],
+      "source_published_kst": "2026-10-19T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비",
+      "telegram_core_fact": "한화오션과 필리조선소 지분 매각 규모는 예정된 거래를 포함해 약 3조4000억원이다. 업계에 따르면 한화시스템은 한화오션 잔여 지분 7.24%를 키움증권과 특수목적법인(SPC) 6곳에 총 1조3834억원에 양도하기로 했다.",
+      "title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비"
+    },
     "source_fact:660041855f1332ceabada84d": {
       "first_seen_kst": "2026-10-19T06:02:38+09:00",
       "lanes": {
@@ -571832,6 +572724,28 @@
       ],
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "엠투클라우드 \"백신 유통 이력 '디지털 관리' 의료기관까지 확대\""
+    },
+    "source_fact:69e64329f60dd5b27ff4d52f": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177168",
+      "source": "매일경제",
+      "source_body_digest": "c807f99ed1449860ed2024dafb6a447419518b37d5fba687cb9f48416ec34c80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b73d304eddcea8ef19f2171aa8c280d0f7ea9298ec97f572afdfcada3ff6bc53",
+      "source_fact_keys": [
+        "source_fact:v1:72a42cd72bb63be5edd56ef4a6ab6cf546abf3ab403d1452345ee77d4373058d",
+        "source_fact:v1:cab97a1d3879161ceda0f07b81975a572e753608ee88d79f1b07e78669a094b4",
+        "source_fact:v1:d6c8168db12e56ce0765882d6aab5bca962bb8c1532da08bad3cc960f81282f0"
+      ],
+      "source_published_kst": "2026-10-20T02:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가",
+      "telegram_core_fact": "GLASS HOUSE BRANDS INC(GLAS)는 2026년 9월 30일 종료된 3분기 잠정(비감사) 계속사업 매출액이 5680만 달러로 전년비 116.8% 증가했고 전분기 대비로도 20.8% 늘었다고 10월 19일 발표했다.",
+      "title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가"
     },
     "source_fact:69e88c8be7a4ad9ae3d321a6": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -585858,6 +586772,31 @@
       "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
       "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
       "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
+    },
+    "source_fact:7250c1c01a1ac8d556c0d140": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101914841",
+      "source": "한국경제",
+      "source_body_digest": "bb6b7e5c65e7c2382e9a714c5371594fd6739e7d4c419a48436e25aba1694193",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:567e540c2d772e64ae81496916e48c4f09a832aae46982346857a575de0cf19a",
+      "source_fact_keys": [
+        "source_fact:v1:3ae0dc1d11cf1fa0f5da081d087c0592805ac0d5e17eb7df5f8e9edeb9cb7dc5",
+        "source_fact:v1:59ec4255521fa552c5628a1a103bb36bc7d22f2a4bd7c7a62820ffa82b71b9ad",
+        "source_fact:v1:5d5dfe53b9027b8b4d758dd103a5727e8b3feb8041a1c8b8ee470cb7ff75650f",
+        "source_fact:v1:5dfe91675a4dbc7e23aace62c1e696ba4cb4b84cfff417665d0182a04bf4f6b9",
+        "source_fact:v1:ccf559defad6f0f4c3b6bd240ec541d0c970e50456ba91203c1fcf8961dc4e2f",
+        "source_fact:v1:f28d12a73603f29cdaf3efdb7161d337bb00b1ac20bd63518d1ce95e81084aac"
+      ],
+      "source_published_kst": "2026-10-19T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명",
+      "telegram_core_fact": "지난 15일 프랑스 통계청(INSEE)이 발표한 9월 소비자물가지수(CPI) 역시 전년 동월과 비교해 3.1% 올랐다.",
+      "title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명"
     },
     "source_fact:7253bc269639e25795aa805c": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
@@ -602658,6 +603597,27 @@
       "telegram_core_fact": "이재용 삼성전자 회장이 모친인 홍라희(사진) 리움미술관 명예관장의 삼성전자 주식 1115만8000주(0.17%)를 증여받는다고 13일 공시했다. 증여 완료 시 이 회장의 주식 수는 1억1637만7053주, 지분율은 1.75%로 늘어나며 홍 관장의 지분율은 0.98%에서 0.81%로 감소한다.",
       "title": "홍라희, 삼성 지분 2.6조 이재용에 증여 | 중앙일보"
     },
+    "source_fact:7c16089ab727f90c8d74d62e": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832481",
+      "source": "뉴시스",
+      "source_body_digest": "54675bd0c7d773f3c916e24085f2254cb60ad72486708755f73be808a1a7e025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1800f8392beb272f4254da0b8072dfcc65e10bd7a48f0a514ddd128dd5680d9a",
+      "source_fact_keys": [
+        "source_fact:v1:a10925298a5bd9660b789a4411598edbb92b596f713cb52c04ee99b5d8df9a18",
+        "source_fact:v1:f6b863ac4f90f372522fae616ee865a6334fe0d51089257d86b92e6540f4fa4d"
+      ],
+      "source_published_kst": "2026-10-20T07:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사",
+      "telegram_core_fact": "이란 이슬람혁명수비대(IRGC)가 호르무즈 해협을 통과하는 해저 통신케이블에 대한 공격 가능성을 시사하며 적대국들을 향해 경고했다.",
+      "title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사"
+    },
     "source_fact:7c183d8cd52ac06307e084a9": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
       "lanes": {
@@ -619358,6 +620318,30 @@
       "source_title": "'역대 최대' 10개 금융지주 상반기 순이익 17조 돌파",
       "telegram_core_fact": "이들 10대 금융지주사의 상반기 당기순이익 합계는 전년 동기(15조4000억원)보다 2조2000억원(13.7%)증가한 총 17조6000억원으로 집계됐다.",
       "title": "'역대 최대' 10개 금융지주 상반기 순이익 17조 돌파"
+    },
+    "source_fact:86d2517384cbbea3052bb366": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637409",
+      "source": "이투데이",
+      "source_body_digest": "393fb8af013c07b3b977db1ebf61cb237b6f93da748022a27bff92366335af4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d167e4a9a44581c95fa0f3f55f82933dcdde07ab595ef366231cfb8a514ce91",
+      "source_fact_keys": [
+        "source_fact:v1:03edd0f86f55360102cbcb021bdb0d4b5a23a91a24e0d2e7684fc4fc968574d5",
+        "source_fact:v1:56c71efaf98f1c77296c27b29f26da5c4cecd5e4b61fb15cd61b7b92d0e4d7aa",
+        "source_fact:v1:6c00d5d77484d114c55b945d9fbe5103a8654d3cd96f58fd02f1581fdd45f1ed",
+        "source_fact:v1:ad0147d088ffd5c44c8a48cfce10d582546ec55d82045ef4574eea6163d33f1e",
+        "source_fact:v1:b55ff769b06ce25c129dd366fa591c3064dc36b3eba1792725a005112dd9f9a2"
+      ],
+      "source_published_kst": "2026-10-19T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비",
+      "telegram_core_fact": "한화오션과 필리조선소 지분 매각 규모는 예정된 거래를 포함해 약 3조4000억원이다. 업계에 따르면 한화시스템은 한화오션 잔여 지분 7.24%를 키움증권과 특수목적법인(SPC) 6곳에 총 1조3834억원에 양도하기로 했다.",
+      "title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비"
     },
     "source_fact:86e04df1abe7f4f4e97dbad7": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -642133,6 +643117,31 @@
       "telegram_core_fact": "트럼프 미국 대통령이 우크라이나에 '에너지 휴전'을 압박하기 위해 무기 공급까지 차단할지 주목된다.",
       "title": "\"젤렌스키 패트리엇 다 썼다\"…트럼프, 무기차단해 종전 압박할까"
     },
+    "source_fact:94f4011f4d7c156859da0940": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101914841",
+      "source": "한국경제",
+      "source_body_digest": "bb6b7e5c65e7c2382e9a714c5371594fd6739e7d4c419a48436e25aba1694193",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:567e540c2d772e64ae81496916e48c4f09a832aae46982346857a575de0cf19a",
+      "source_fact_keys": [
+        "source_fact:v1:3ae0dc1d11cf1fa0f5da081d087c0592805ac0d5e17eb7df5f8e9edeb9cb7dc5",
+        "source_fact:v1:59ec4255521fa552c5628a1a103bb36bc7d22f2a4bd7c7a62820ffa82b71b9ad",
+        "source_fact:v1:5d5dfe53b9027b8b4d758dd103a5727e8b3feb8041a1c8b8ee470cb7ff75650f",
+        "source_fact:v1:5dfe91675a4dbc7e23aace62c1e696ba4cb4b84cfff417665d0182a04bf4f6b9",
+        "source_fact:v1:ccf559defad6f0f4c3b6bd240ec541d0c970e50456ba91203c1fcf8961dc4e2f",
+        "source_fact:v1:f28d12a73603f29cdaf3efdb7161d337bb00b1ac20bd63518d1ce95e81084aac"
+      ],
+      "source_published_kst": "2026-10-19T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명",
+      "telegram_core_fact": "지난 15일 프랑스 통계청(INSEE)이 발표한 9월 소비자물가지수(CPI) 역시 전년 동월과 비교해 3.1% 올랐다.",
+      "title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명"
+    },
     "source_fact:94f59458c8600c65b03cde44": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -643862,6 +644871,30 @@
       "source_title": "브라질증시 폭등 예상한 전설의 ‘투자 기계’…함께 매수한 종목은?",
       "telegram_core_fact": "그러다 브라질 헤알화가 저평가를 탈출하고 신흥국 투자가 급물살을 탄 2025년에 급격히 반등한다. ‘투자 기계’라는 별명을 지닌 월가의 전설적 투자자 스탠리 드러켄밀러의 브라질 증시 상장지수펀드(ETF) 매수 타점이 화제다.",
       "title": "브라질증시 폭등 예상한 전설의 ‘투자 기계’…함께 매수한 종목은?"
+    },
+    "source_fact:96041da6e75e167e26814faf": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637409",
+      "source": "이투데이",
+      "source_body_digest": "393fb8af013c07b3b977db1ebf61cb237b6f93da748022a27bff92366335af4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d167e4a9a44581c95fa0f3f55f82933dcdde07ab595ef366231cfb8a514ce91",
+      "source_fact_keys": [
+        "source_fact:v1:03edd0f86f55360102cbcb021bdb0d4b5a23a91a24e0d2e7684fc4fc968574d5",
+        "source_fact:v1:56c71efaf98f1c77296c27b29f26da5c4cecd5e4b61fb15cd61b7b92d0e4d7aa",
+        "source_fact:v1:6c00d5d77484d114c55b945d9fbe5103a8654d3cd96f58fd02f1581fdd45f1ed",
+        "source_fact:v1:ad0147d088ffd5c44c8a48cfce10d582546ec55d82045ef4574eea6163d33f1e",
+        "source_fact:v1:b55ff769b06ce25c129dd366fa591c3064dc36b3eba1792725a005112dd9f9a2"
+      ],
+      "source_published_kst": "2026-10-19T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비",
+      "telegram_core_fact": "한화오션과 필리조선소 지분 매각 규모는 예정된 거래를 포함해 약 3조4000억원이다. 업계에 따르면 한화시스템은 한화오션 잔여 지분 7.24%를 키움증권과 특수목적법인(SPC) 6곳에 총 1조3834억원에 양도하기로 했다.",
+      "title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비"
     },
     "source_fact:96041ec81927c0b7078b5cda": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
@@ -650632,6 +651665,27 @@
       "source_title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고",
       "telegram_core_fact": "미국 10년물 국채 금리는 장중 5.36%를 넘어 2002년 이후 최고치를 새로 썼고, 30년물 금리도 5.73%까지 치솟았다. 7일(현지 시각) 미국 국채시장에서 10년물 금리는 장중 전장보다 약 8bp(1bp=0.01%포인트) 오른 5.3640%까지 상승했다.",
       "title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고"
+    },
+    "source_fact:99c9a454b25bd415ce0f7475": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020015200009",
+      "source": "연합뉴스",
+      "source_body_digest": "43e6f3ebd941ddfba5b5a05dbbf95c7303cde21010738f7e310f5ad314f55e38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe0f535e08cd6b2dbb33d21add7a1ca3042f93a46623a6aa9255e7e710839537",
+      "source_fact_keys": [
+        "source_fact:v1:84b4d369a14ad85c1911b409754b28017ac5e27d97da0e051164f9efb9ee2ed5",
+        "source_fact:v1:d314788251c81d9d2a7a5ec4961438ecb903ba862c4ac1a8a886d77bc48f17cc"
+      ],
+      "source_published_kst": "2026-10-20T07:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스",
+      "telegram_core_fact": "영국계 데이터센터 운영업체인 엔스케일이 앤트로픽에 컴퓨팅 용량을 공급하는 약 450억달러(약 60조4천억원) 계약을 협상 중이라고 블룸버그 통신이 19일(현지시간) 보도했다.",
+      "title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스"
     },
     "source_fact:99cb5074bd5c15176b6bbb02": {
       "first_seen_kst": "2026-10-19T04:40:52+09:00",
@@ -676192,6 +677246,27 @@
       "telegram_core_fact": "미래에셋증권은 대덕전자의 올해 3분기 매출액을 4190억원(전년비 46.4% 증가), 영업이익을 804억원(228.7% 증가)으로 추산했다.",
       "title": "'AI 올인'에 구형 기판 씨말랐다…\"대덕전자, 실적 반사이익\"[클릭 e종목]"
     },
+    "source_fact:a8c07815aca8c5804f00f393": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832481",
+      "source": "뉴시스",
+      "source_body_digest": "54675bd0c7d773f3c916e24085f2254cb60ad72486708755f73be808a1a7e025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1800f8392beb272f4254da0b8072dfcc65e10bd7a48f0a514ddd128dd5680d9a",
+      "source_fact_keys": [
+        "source_fact:v1:a10925298a5bd9660b789a4411598edbb92b596f713cb52c04ee99b5d8df9a18",
+        "source_fact:v1:f6b863ac4f90f372522fae616ee865a6334fe0d51089257d86b92e6540f4fa4d"
+      ],
+      "source_published_kst": "2026-10-20T07:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사",
+      "telegram_core_fact": "이란 이슬람혁명수비대(IRGC)가 호르무즈 해협을 통과하는 해저 통신케이블에 대한 공격 가능성을 시사하며 적대국들을 향해 경고했다.",
+      "title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사"
+    },
     "source_fact:a8c37374e41fb98f630bc8f9": {
       "first_seen_kst": "2026-10-18T09:49:30+09:00",
       "lanes": {
@@ -678085,6 +679160,28 @@
       "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
       "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
     },
+    "source_fact:a9fd5d7e73bda9059887e055": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177168",
+      "source": "매일경제",
+      "source_body_digest": "c807f99ed1449860ed2024dafb6a447419518b37d5fba687cb9f48416ec34c80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b73d304eddcea8ef19f2171aa8c280d0f7ea9298ec97f572afdfcada3ff6bc53",
+      "source_fact_keys": [
+        "source_fact:v1:72a42cd72bb63be5edd56ef4a6ab6cf546abf3ab403d1452345ee77d4373058d",
+        "source_fact:v1:cab97a1d3879161ceda0f07b81975a572e753608ee88d79f1b07e78669a094b4",
+        "source_fact:v1:d6c8168db12e56ce0765882d6aab5bca962bb8c1532da08bad3cc960f81282f0"
+      ],
+      "source_published_kst": "2026-10-20T02:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가",
+      "telegram_core_fact": "GLASS HOUSE BRANDS INC(GLAS)는 2026년 9월 30일 종료된 3분기 잠정(비감사) 계속사업 매출액이 5680만 달러로 전년비 116.8% 증가했고 전분기 대비로도 20.8% 늘었다고 10월 19일 발표했다.",
+      "title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가"
+    },
     "source_fact:a9fe582f0336edd3bf6d748e": {
       "first_seen_kst": "2026-10-13T04:37:27+09:00",
       "lanes": {
@@ -679939,6 +681036,30 @@
       "source_title": "중간선거 앞둔 트럼프 ‘폭주’…꼬여만 가는 러-우크라戰",
       "telegram_core_fact": "로이터통신에 따르면 트럼프 대통령은 지난 9일(현지시간) 블라디미르 푸틴 러시아 대통령과의 통화 후 러시아가 즉시 30만톤(t) 이상의 경유를 미국과 글로벌 시장에 공급한다고 자신의 사회관계망서비스(SNS) ‘트루스소셜’을 통해 발표했다.",
       "title": "중간선거 앞둔 트럼프 ‘폭주’…꼬여만 가는 러-우크라戰"
+    },
+    "source_fact:ab0322a63e2bbe759b5ab5ab": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637409",
+      "source": "이투데이",
+      "source_body_digest": "393fb8af013c07b3b977db1ebf61cb237b6f93da748022a27bff92366335af4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d167e4a9a44581c95fa0f3f55f82933dcdde07ab595ef366231cfb8a514ce91",
+      "source_fact_keys": [
+        "source_fact:v1:03edd0f86f55360102cbcb021bdb0d4b5a23a91a24e0d2e7684fc4fc968574d5",
+        "source_fact:v1:56c71efaf98f1c77296c27b29f26da5c4cecd5e4b61fb15cd61b7b92d0e4d7aa",
+        "source_fact:v1:6c00d5d77484d114c55b945d9fbe5103a8654d3cd96f58fd02f1581fdd45f1ed",
+        "source_fact:v1:ad0147d088ffd5c44c8a48cfce10d582546ec55d82045ef4574eea6163d33f1e",
+        "source_fact:v1:b55ff769b06ce25c129dd366fa591c3064dc36b3eba1792725a005112dd9f9a2"
+      ],
+      "source_published_kst": "2026-10-19T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비",
+      "telegram_core_fact": "한화오션과 필리조선소 지분 매각 규모는 예정된 거래를 포함해 약 3조4000억원이다. 업계에 따르면 한화시스템은 한화오션 잔여 지분 7.24%를 키움증권과 특수목적법인(SPC) 6곳에 총 1조3834억원에 양도하기로 했다.",
+      "title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비"
     },
     "source_fact:ab03bddabf15a10e7ce4ef04": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
@@ -697810,6 +698931,27 @@
       "source_published_kst": "2026-10-07T08:54+09:00",
       "title": "LS에코에너지, 베트남에 80억 투자…에폭시 타입 버스덕트 신규 생산"
     },
+    "source_fact:b4f9fb2de0bfea2a820c48ff": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020015200009",
+      "source": "연합뉴스",
+      "source_body_digest": "43e6f3ebd941ddfba5b5a05dbbf95c7303cde21010738f7e310f5ad314f55e38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe0f535e08cd6b2dbb33d21add7a1ca3042f93a46623a6aa9255e7e710839537",
+      "source_fact_keys": [
+        "source_fact:v1:84b4d369a14ad85c1911b409754b28017ac5e27d97da0e051164f9efb9ee2ed5",
+        "source_fact:v1:d314788251c81d9d2a7a5ec4961438ecb903ba862c4ac1a8a886d77bc48f17cc"
+      ],
+      "source_published_kst": "2026-10-20T07:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스",
+      "telegram_core_fact": "영국계 데이터센터 운영업체인 엔스케일이 앤트로픽에 컴퓨팅 용량을 공급하는 약 450억달러(약 60조4천억원) 계약을 협상 중이라고 블룸버그 통신이 19일(현지시간) 보도했다.",
+      "title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스"
+    },
     "source_fact:b4fac59b2252d6207ff61b64": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
       "lanes": {
@@ -705664,6 +706806,26 @@
       "source_title": "엘도라도 골드, 스쿠리스 광산 EU 전략프로젝트 지정",
       "telegram_core_fact": "증권가 컨센서스에 따르면 엘도라도 골드의 2026년 예상 매출액은 24억8300만 달러로 전년 대비 36.52% 증가할 전망이다.",
       "title": "엘도라도 골드, 스쿠리스 광산 EU 전략프로젝트 지정"
+    },
+    "source_fact:b9f6d69a1d29d6f138ae7686": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637567",
+      "source": "이투데이",
+      "source_body_digest": "e6ccaf83ae8146e3977452c9037cbc92bdb0abbe848e7dfe436153ffa7016982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:81957f910b8dbc05b4564e595126742deae4230b7742be2a8771f6fac366ce1f",
+      "source_fact_keys": [
+        "source_fact:v1:5a3bfa063f9c94cd9d6afe891892ad99944991ee3ab6864c4a11cf01c9a6371c"
+      ],
+      "source_published_kst": "2026-10-19T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자칠판 업계, 출혈경쟁 줄이고 서비스 품질 높인다…조달제도 변화 공동 대응",
+      "telegram_core_fact": "조합은 이번 협약이 과도한 가격 경쟁을 지양하고 서비스 품질을 높이는 한편, 공공 교육기관과 기업 고객에게 안정적인 사후관리 서비스를 제공하는 데 도움이 될 것으로 기대하고 있다.",
+      "title": "전자칠판 업계, 출혈경쟁 줄이고 서비스 품질 높인다…조달제도 변화 공동 대응"
     },
     "source_fact:b9f761b19a0dd992a048a244": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -739878,22 +741040,26 @@
     "source_fact:ce23a9f9ec6c7e882972be8f": {
       "first_seen_kst": "2026-10-19T11:35:40+09:00",
       "lanes": {
-        "live": "2026-10-19T11:35:40+09:00"
+        "live": "2026-10-20T08:05:53+09:00"
       },
-      "last_seen_kst": "2026-10-19T11:35:40+09:00",
-      "link": "https://www.mt.co.kr/industry/2026/10/19/2026101909433422474",
-      "source": "머니투데이",
-      "source_body_digest": "7bb0e2e10673c3bead216f8c3751e7766aff04481f4cf3c9e92ee62d1be7c90b",
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04096726645614560",
+      "source": "이데일리",
+      "source_body_digest": "edd2abae31d0574efc76fc8827dd88c567c30da3cd3f817aa9818ecdbbea43ce",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:bcddfb7ec79f9300a218e8b4f22f5e245895857df65035c15fd4bc80376779f9",
+      "source_fact_identity": "source_facts:v1:2ee640d5319f4e803b9a60b94477cc68cdcc3d74a16fede822e7adffa5ca23d2",
       "source_fact_keys": [
-        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3"
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3",
+        "source_fact:v1:abfe0ed71e1936c803a6572c15aca9582ca82fbfdbcb541e0761824e74f05c99",
+        "source_fact:v1:b4c0882194b16dded4728cfb7ba8439bebbd5e5abe8a77418bc0d7140f50c42e",
+        "source_fact:v1:bb8c66810832184020065ec8ad7b78706c89b336602d295d1c2731202198e2b1",
+        "source_fact:v1:c389451d9a0f28537009ccabed6622e4329c42280e467bd92d1ee4e0859d3b23"
       ],
-      "source_published_kst": "2026-10-19T09:55+09:00",
+      "source_published_kst": "2026-10-19T16:49+09:00",
       "source_supply_terms": {},
-      "source_title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화",
-      "telegram_core_fact": "한미반도체가 지난 16일(현지시간) 미국 캘리포니아주 산호세에서 한미USA 오피스에서 개소식을 진행했다고 19일 밝혔다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
-      "title": "한미반도체, 美 실리콘밸리에 '한미USA' 개소…북미시장 공략 강화"
+      "source_title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출",
+      "telegram_core_fact": "한미반도체(042700)가 미국 법인 ‘한미USA’를 설립하고 미국 현지 반도체 시장에 본격 진출한다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출"
     },
     "source_fact:ce23adab61e67bafea59f340": {
       "first_seen_kst": "2026-10-15T13:40:20+09:00",
@@ -766220,6 +767386,31 @@
       "source_title": "다크아이리스, 600만 달러 공모가 확정에 지분 희석 우려 부각",
       "telegram_core_fact": "행사가 2.04달러, 6개월 만기 워런트에 무현금 행사 옵션이 붙어 최대 약 5000만 주가 신규 발행될 수 있어 지분 희석 우려가 커졌습니다. 600만 달러 규모 최선 노력 공모가 유닛당 1.44달러로 확정되면서 매도세가 나타나고 있습니다.",
       "title": "다크아이리스, 600만 달러 공모가 확정에 지분 희석 우려 부각"
+    },
+    "source_fact:dd8bf09149a6767325eed96b": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101914841",
+      "source": "한국경제",
+      "source_body_digest": "bb6b7e5c65e7c2382e9a714c5371594fd6739e7d4c419a48436e25aba1694193",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:567e540c2d772e64ae81496916e48c4f09a832aae46982346857a575de0cf19a",
+      "source_fact_keys": [
+        "source_fact:v1:3ae0dc1d11cf1fa0f5da081d087c0592805ac0d5e17eb7df5f8e9edeb9cb7dc5",
+        "source_fact:v1:59ec4255521fa552c5628a1a103bb36bc7d22f2a4bd7c7a62820ffa82b71b9ad",
+        "source_fact:v1:5d5dfe53b9027b8b4d758dd103a5727e8b3feb8041a1c8b8ee470cb7ff75650f",
+        "source_fact:v1:5dfe91675a4dbc7e23aace62c1e696ba4cb4b84cfff417665d0182a04bf4f6b9",
+        "source_fact:v1:ccf559defad6f0f4c3b6bd240ec541d0c970e50456ba91203c1fcf8961dc4e2f",
+        "source_fact:v1:f28d12a73603f29cdaf3efdb7161d337bb00b1ac20bd63518d1ce95e81084aac"
+      ],
+      "source_published_kst": "2026-10-19T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명",
+      "telegram_core_fact": "지난 15일 프랑스 통계청(INSEE)이 발표한 9월 소비자물가지수(CPI) 역시 전년 동월과 비교해 3.1% 올랐다.",
+      "title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명"
     },
     "source_fact:dd8cc39320a55c95bc3d5528": {
       "first_seen_kst": "2026-10-19T09:01:52+09:00",
@@ -794399,6 +795590,30 @@
       "source_title": "우리은행, SK하이닉스와 반도체 협력사 금융지원",
       "telegram_core_fact": "우리은행은 19일 용인 반도체클러스터에서 SK하이닉스, 한국무역보험공사, 주요 시중은행과 '반도체 산업 수출공급망 강화를 위한 금융지원 업무협약'을 체결했다. 우리은행에 따르면 이번 협약으로 SK하이닉스와 4대 시중은행은 총 1000억원을 공동 출연한다.",
       "title": "우리은행, SK하이닉스와 반도체 협력사 금융지원"
+    },
+    "source_fact:ed9c707fb29b189976079e11": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637409",
+      "source": "이투데이",
+      "source_body_digest": "393fb8af013c07b3b977db1ebf61cb237b6f93da748022a27bff92366335af4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d167e4a9a44581c95fa0f3f55f82933dcdde07ab595ef366231cfb8a514ce91",
+      "source_fact_keys": [
+        "source_fact:v1:03edd0f86f55360102cbcb021bdb0d4b5a23a91a24e0d2e7684fc4fc968574d5",
+        "source_fact:v1:56c71efaf98f1c77296c27b29f26da5c4cecd5e4b61fb15cd61b7b92d0e4d7aa",
+        "source_fact:v1:6c00d5d77484d114c55b945d9fbe5103a8654d3cd96f58fd02f1581fdd45f1ed",
+        "source_fact:v1:ad0147d088ffd5c44c8a48cfce10d582546ec55d82045ef4574eea6163d33f1e",
+        "source_fact:v1:b55ff769b06ce25c129dd366fa591c3064dc36b3eba1792725a005112dd9f9a2"
+      ],
+      "source_published_kst": "2026-10-19T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비",
+      "telegram_core_fact": "한화오션과 필리조선소 지분 매각 규모는 예정된 거래를 포함해 약 3조4000억원이다. 업계에 따르면 한화시스템은 한화오션 잔여 지분 7.24%를 키움증권과 특수목적법인(SPC) 6곳에 총 1조3834억원에 양도하기로 했다.",
+      "title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비"
     },
     "source_fact:ed9ffa398335fb9bdc7a3c2b": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
@@ -824832,6 +826047,27 @@
       "telegram_core_fact": "챈은 \"데이터센터 구축, 미국 모델 훈련은 중국에서 수입되는 수많은 데이터센터 부품에 의존한다\"며 미국 공급망 전반에 걸쳐서도 중국산 부품과 연결고리가 나타난다고 평가했다.",
       "title": "\"美기업들, AI 패권 경쟁 벌이면서도 中 공급망 의존\""
     },
+    "title:02dbc9985f6b1de1292cfd13": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020015200009",
+      "source": "연합뉴스",
+      "source_body_digest": "43e6f3ebd941ddfba5b5a05dbbf95c7303cde21010738f7e310f5ad314f55e38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe0f535e08cd6b2dbb33d21add7a1ca3042f93a46623a6aa9255e7e710839537",
+      "source_fact_keys": [
+        "source_fact:v1:84b4d369a14ad85c1911b409754b28017ac5e27d97da0e051164f9efb9ee2ed5",
+        "source_fact:v1:d314788251c81d9d2a7a5ec4961438ecb903ba862c4ac1a8a886d77bc48f17cc"
+      ],
+      "source_published_kst": "2026-10-20T07:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스",
+      "telegram_core_fact": "영국계 데이터센터 운영업체인 엔스케일이 앤트로픽에 컴퓨팅 용량을 공급하는 약 450억달러(약 60조4천억원) 계약을 협상 중이라고 블룸버그 통신이 19일(현지시간) 보도했다.",
+      "title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스"
+    },
     "title:02dfa54dc4e9ebf60f25493d": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
       "lanes": {
@@ -834531,6 +835767,27 @@
       "source_published_kst": "2026-10-06T15:09+09:00",
       "title": "AI팩토리에 승부 건 엔비디아 \"생산성·수명·범용성이 수익 좌우\""
     },
+    "title:19039f6e0c9ddc7eabcc1087": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832481",
+      "source": "뉴시스",
+      "source_body_digest": "54675bd0c7d773f3c916e24085f2254cb60ad72486708755f73be808a1a7e025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1800f8392beb272f4254da0b8072dfcc65e10bd7a48f0a514ddd128dd5680d9a",
+      "source_fact_keys": [
+        "source_fact:v1:a10925298a5bd9660b789a4411598edbb92b596f713cb52c04ee99b5d8df9a18",
+        "source_fact:v1:f6b863ac4f90f372522fae616ee865a6334fe0d51089257d86b92e6540f4fa4d"
+      ],
+      "source_published_kst": "2026-10-20T07:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사",
+      "telegram_core_fact": "이란 이슬람혁명수비대(IRGC)가 호르무즈 해협을 통과하는 해저 통신케이블에 대한 공격 가능성을 시사하며 적대국들을 향해 경고했다.",
+      "title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사"
+    },
     "title:190e74ccdcc0cc1b32718611": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -835380,6 +836637,26 @@
       "source_title": "젤렌스키 \"러, 에너지 휴전 깨고 공습…푸틴은 트루스소셜 안 읽나\"",
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령이 도널드 트럼프 미국 대통령이 발표한 '에너지 휴전'을 러시아가 위반했다고 비판하며 러시아가 공격을 중단하지 않는 한 우크라이나도 공세를 이어가겠다는 입장을 밝혔다.",
       "title": "젤렌스키 \"러, 에너지 휴전 깨고 공습…푸틴은 트루스소셜 안 읽나\""
+    },
+    "title:1b9e1ca5f08e17f5a32ebc92": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637567",
+      "source": "이투데이",
+      "source_body_digest": "e6ccaf83ae8146e3977452c9037cbc92bdb0abbe848e7dfe436153ffa7016982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:81957f910b8dbc05b4564e595126742deae4230b7742be2a8771f6fac366ce1f",
+      "source_fact_keys": [
+        "source_fact:v1:5a3bfa063f9c94cd9d6afe891892ad99944991ee3ab6864c4a11cf01c9a6371c"
+      ],
+      "source_published_kst": "2026-10-19T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자칠판 업계, 출혈경쟁 줄이고 서비스 품질 높인다…조달제도 변화 공동 대응",
+      "telegram_core_fact": "조합은 이번 협약이 과도한 가격 경쟁을 지양하고 서비스 품질을 높이는 한편, 공공 교육기관과 기업 고객에게 안정적인 사후관리 서비스를 제공하는 데 도움이 될 것으로 기대하고 있다.",
+      "title": "전자칠판 업계, 출혈경쟁 줄이고 서비스 품질 높인다…조달제도 변화 공동 대응"
     },
     "title:1bab876952a029bf9cd1148b": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -838052,6 +839329,28 @@
       "source_title": "법인보험대리점 프라임에셋, 내년 하반기 코스피 상장 추진",
       "telegram_core_fact": "법인보험대리점(GA) 프라임에셋이 비상장 기조를 바꾸고 내년 하반기 유가증권시장(코스피) 입성을 추진한다.",
       "title": "법인보험대리점 프라임에셋, 내년 하반기 코스피 상장 추진"
+    },
+    "title:21b60710a66821cb13636342": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177168",
+      "source": "매일경제",
+      "source_body_digest": "c807f99ed1449860ed2024dafb6a447419518b37d5fba687cb9f48416ec34c80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b73d304eddcea8ef19f2171aa8c280d0f7ea9298ec97f572afdfcada3ff6bc53",
+      "source_fact_keys": [
+        "source_fact:v1:72a42cd72bb63be5edd56ef4a6ab6cf546abf3ab403d1452345ee77d4373058d",
+        "source_fact:v1:cab97a1d3879161ceda0f07b81975a572e753608ee88d79f1b07e78669a094b4",
+        "source_fact:v1:d6c8168db12e56ce0765882d6aab5bca962bb8c1532da08bad3cc960f81282f0"
+      ],
+      "source_published_kst": "2026-10-20T02:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가",
+      "telegram_core_fact": "GLASS HOUSE BRANDS INC(GLAS)는 2026년 9월 30일 종료된 3분기 잠정(비감사) 계속사업 매출액이 5680만 달러로 전년비 116.8% 증가했고 전분기 대비로도 20.8% 늘었다고 10월 19일 발표했다.",
+      "title": "GLASS HOUSE BRANDS INC, 3분기 매출 5680만 달러..전년비 117% 증가"
     },
     "title:21b849a38dd1886e1dbbb591": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -851084,6 +852383,30 @@
       "source_published_kst": "2026-10-07T15:02+09:00",
       "title": "감사원 \"KBS, 드라마 제작비 집행 확인 안 해…출연료 부풀려 차액 빼돌려\""
     },
+    "title:3f08371247ad5fc439fdbb82": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04096726645614560",
+      "source": "이데일리",
+      "source_body_digest": "edd2abae31d0574efc76fc8827dd88c567c30da3cd3f817aa9818ecdbbea43ce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ee640d5319f4e803b9a60b94477cc68cdcc3d74a16fede822e7adffa5ca23d2",
+      "source_fact_keys": [
+        "source_fact:v1:233ebb22eb0d0bc2c2d477a0e76fc4d02fae2bd1641ce6535a1bb20c3d529db3",
+        "source_fact:v1:abfe0ed71e1936c803a6572c15aca9582ca82fbfdbcb541e0761824e74f05c99",
+        "source_fact:v1:b4c0882194b16dded4728cfb7ba8439bebbd5e5abe8a77418bc0d7140f50c42e",
+        "source_fact:v1:bb8c66810832184020065ec8ad7b78706c89b336602d295d1c2731202198e2b1",
+        "source_fact:v1:c389451d9a0f28537009ccabed6622e4329c42280e467bd92d1ee4e0859d3b23"
+      ],
+      "source_published_kst": "2026-10-19T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출",
+      "telegram_core_fact": "한미반도체(042700)가 미국 법인 ‘한미USA’를 설립하고 미국 현지 반도체 시장에 본격 진출한다. 한미반도체는 한미타이완, 한미차이나, 한미싱가포르에 이어 한미USA를 설립하며 글로벌 공급망을 한층 강화했다.",
+      "title": "한미반도체, '한미USA' 설립…미국 반도체 공급망 본격 진출"
+    },
     "title:3f257c09a74d9a3ebfe93729": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
       "lanes": {
@@ -861778,6 +863101,31 @@
       "source_title": "6시간 넘는 비행 더 편안하게…싱가포르항공, 11월부터 새 어메니티 선봬",
       "telegram_core_fact": "싱가포르항공은 최근 장거리 항공여행에서 단순 좌석 서비스뿐 아니라 수면과 식사, 엔터테인먼트 등 비행 전반의 경험을 개선하는 데 투자를 확대하고 있다.",
       "title": "6시간 넘는 비행 더 편안하게…싱가포르항공, 11월부터 새 어메니티 선봬"
+    },
+    "title:5695aa6b5a75e8340e6ff2e8": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.hankyung.com/article/2026101914841",
+      "source": "한국경제",
+      "source_body_digest": "bb6b7e5c65e7c2382e9a714c5371594fd6739e7d4c419a48436e25aba1694193",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:567e540c2d772e64ae81496916e48c4f09a832aae46982346857a575de0cf19a",
+      "source_fact_keys": [
+        "source_fact:v1:3ae0dc1d11cf1fa0f5da081d087c0592805ac0d5e17eb7df5f8e9edeb9cb7dc5",
+        "source_fact:v1:59ec4255521fa552c5628a1a103bb36bc7d22f2a4bd7c7a62820ffa82b71b9ad",
+        "source_fact:v1:5d5dfe53b9027b8b4d758dd103a5727e8b3feb8041a1c8b8ee470cb7ff75650f",
+        "source_fact:v1:5dfe91675a4dbc7e23aace62c1e696ba4cb4b84cfff417665d0182a04bf4f6b9",
+        "source_fact:v1:ccf559defad6f0f4c3b6bd240ec541d0c970e50456ba91203c1fcf8961dc4e2f",
+        "source_fact:v1:f28d12a73603f29cdaf3efdb7161d337bb00b1ac20bd63518d1ce95e81084aac"
+      ],
+      "source_published_kst": "2026-10-19T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명",
+      "telegram_core_fact": "지난 15일 프랑스 통계청(INSEE)이 발표한 9월 소비자물가지수(CPI) 역시 전년 동월과 비교해 3.1% 올랐다.",
+      "title": "경유 44% 급등·담배 한갑 2만원…프랑스 물가 비명"
     },
     "title:569ad87dc9e746654f084303": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -889766,6 +891114,30 @@
       "source_title": "[BioS]씨어스, 'AI 부정맥' UAE 아부다비 보건부 IRB 승인",
       "telegram_core_fact": "현재 UAE 국가 건강검진 프로그램에는 부정맥 스크리닝 검사가 포함돼 있지 않으며, 씨어스는 지난해말 입찰을 통해 이 사업의 유일한 사업자로 선정됐다.",
       "title": "[BioS]씨어스, 'AI 부정맥' UAE 아부다비 보건부 IRB 승인"
+    },
+    "title:982a8681675ee7f2ed327fa0": {
+      "first_seen_kst": "2026-10-20T08:05:53+09:00",
+      "lanes": {
+        "live": "2026-10-20T08:05:53+09:00"
+      },
+      "last_seen_kst": "2026-10-20T08:05:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637409",
+      "source": "이투데이",
+      "source_body_digest": "393fb8af013c07b3b977db1ebf61cb237b6f93da748022a27bff92366335af4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d167e4a9a44581c95fa0f3f55f82933dcdde07ab595ef366231cfb8a514ce91",
+      "source_fact_keys": [
+        "source_fact:v1:03edd0f86f55360102cbcb021bdb0d4b5a23a91a24e0d2e7684fc4fc968574d5",
+        "source_fact:v1:56c71efaf98f1c77296c27b29f26da5c4cecd5e4b61fb15cd61b7b92d0e4d7aa",
+        "source_fact:v1:6c00d5d77484d114c55b945d9fbe5103a8654d3cd96f58fd02f1581fdd45f1ed",
+        "source_fact:v1:ad0147d088ffd5c44c8a48cfce10d582546ec55d82045ef4574eea6163d33f1e",
+        "source_fact:v1:b55ff769b06ce25c129dd366fa591c3064dc36b3eba1792725a005112dd9f9a2"
+      ],
+      "source_published_kst": "2026-10-19T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비",
+      "telegram_core_fact": "한화오션과 필리조선소 지분 매각 규모는 예정된 거래를 포함해 약 3조4000억원이다. 업계에 따르면 한화시스템은 한화오션 잔여 지분 7.24%를 키움증권과 특수목적법인(SPC) 6곳에 총 1조3834억원에 양도하기로 했다.",
+      "title": "오션·필리 정리하는 한화시스템…3.4조 실탄으로 다음 승부 준비"
     },
     "title:982b0ce6440d10d2ea822b13": {
       "first_seen_kst": "2026-09-28T10:16:02+09:00",
@@ -933879,5 +935251,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-20T07:37:12+09:00"
+  "updated_at_kst": "2026-10-20T08:05:53+09:00"
 }
