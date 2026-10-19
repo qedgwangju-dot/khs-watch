@@ -35,7 +35,7 @@ def name_kind(name):
     s=normal(name)
     if re.search(r"CP\(?91일",s): return "cp"
     if re.search(r"CD\(?91일",s): return "cd"
-    if "회사채" in s and "3년" in s and "AA-" in s: return "corp"
+    if s=="회사채(3년,AA-)": return "corp"  # 민평(010310000)은 별도 계열이므로 섞지 않음
     if "국고채" in s and "3년" in s: return "gov"
     return None
 
