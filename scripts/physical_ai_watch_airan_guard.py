@@ -5654,6 +5654,7 @@ def _vw_eu_recall_stage(text: str, source: str = '') -> str:
     if not _is_vw_battery_recall(text):
         return ''
     if (source in VW_EU_GERMAN_REGULATOR_SOURCES
+            and VW_RECALL_CAMPAIGN_EU.search(text)
             and VW_RECALL_GERMANY.search(text)
             and VW_RECALL_ACTIVATED.search(text)
             and not VW_RECALL_ACTIVATION_NEGATION.search(text)):
@@ -5750,7 +5751,9 @@ def _vw_eu_recall_category(text: str, group: str) -> str:
     if group == 'vw_europe_battery_recall':
         # The renderer loses source information; classify by the verified
         # campaign marker, not by a US SKBA name embedded for comparison.
-        if (VW_RECALL_GERMANY.search(text) and VW_RECALL_ACTIVATED.search(text)
+        if (VW_RECALL_CAMPAIGN_EU.search(text)
+                and VW_RECALL_GERMANY.search(text)
+                and VW_RECALL_ACTIVATED.search(text)
                 and not VW_RECALL_ACTIVATION_NEGATION.search(text)):
             return '폭스바겐 유럽 배터리 리콜 · 독일 KBA 공식 시행'
         return '폭스바겐 유럽 배터리 리콜 · 영국 93MF·93MV 충전 제한'
@@ -5766,7 +5769,8 @@ def _vw_eu_recall_meaning(cat: str) -> str:
             '셀 과열·열폭주·화재 위험 완화가 목적입니다. '
             '영국 ID.Buzz는 10/12 주간부터 제한을 시작했습니다. '
             '배터리 점검은 약 1시간이고 필요 시 소프트웨어 조치·'
-            '모듈 교체가 시행됩니다. 독일은 별도 당국 협의 단계이며 '
+            '모듈 교체가 이뤄질 수 있지만 실제 교체율은 미확정입니다. '
+            '독일은 별도 당국 협의 단계이며 '
             '전체 유럽 대상 대수·공급사·실제 교체비는 미공개입니다. '
             '미국 ID.4 22,524대(26V630/93EX) 및 SK Battery America '
             '공급 사실은 미국 별도 리콜 자료이므로 유럽과 합산하지 않습니다.'
@@ -5819,8 +5823,8 @@ def _vw_eu_recall_verification(item: dict, group: str, text: str) -> str:
 def _vw_eu_recall_title(title: str, source: str) -> str:
     if _is_vw_battery_recall(title):
         if source in VW_EU_GERMAN_REGULATOR_SOURCES:
-            return '폭스바겐 유럽 배터리 리콜, 독일 KBA 공식 시행'
-        return '폭스바겐, 영국 93MF·93MV 배터리 80% 안전조치 공식 안내'
+            return '독일 KBA 유럽 배터리 리콜 공식 시행'
+        return '영국 93MF·93MV 배터리 80% 안전조치 공식 안내'
     return _vw_recall_prev_title(title, source)
 
 
