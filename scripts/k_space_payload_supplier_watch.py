@@ -200,6 +200,8 @@ def classify(group:str,title:str)->str|None:
  if group=="telepix_contract":
   if p not in ("antaris","skyserve","huleo"):return None
   if re.search(r"MOU|memorandum|업무협약",s,re.I):return None
+  if re.search(r"추가\s*(?:수주|계약)|계약\s*(?:연장|갱신)|renewal|extension|expanded contract|new follow-on contract",s,re.I):
+   return f"telepix_contract:{p}:change"
   if SIGNED.search(s):return f"telepix_contract:{p}:signed"
   if CANCEL.search(s):return f"telepix_contract:{p}:change"
  if group=="telepix_flight":
@@ -369,7 +371,8 @@ def self_test()->int:
  assert classify("kencoa_supplier","Tesla Roadster uses SpaceX thrusters") is None
  assert classify("kencoa_supplier","켄코아 SpaceX 티타늄 공급 로드스터 추력기 시연") is None
  assert classify("telepix_contract","TelePIX Bellatrix signs MOU") is None
- assert classify("telepix_flight","TelePIX Antaris JANUS-2 2027 launch")==cases and False if False else True
+ assert classify("telepix_flight","TelePIX Antaris JANUS-2 2027 launch")=="telepix_flight:antaris:planned:2027"
+ assert classify("telepix_contract","TelePIX and SkyServe announce additional contract renewal")=="telepix_contract:skyserve:change"
  assert set(KEY_BASELINE).isdisjoint({"kencoa_roadster:potential_supply"})
  assert len(BASELINE_LINKS)<=10 and len(baseline())<3400
  a={"source":"연합뉴스","published":NOW,"title":"텔레픽스 인도 스카이서브 서비스 공급 계약 체결","url":"https://a.example"}
