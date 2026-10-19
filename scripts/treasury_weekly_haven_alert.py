@@ -136,12 +136,26 @@ def edit_telegram(text_html: str, message_id: int):
     return _post_telegram_html(text_html, method="editMessageText", message_id=message_id)
 
 
-def run(validate_only=False, now=None, path=STATE_PATH):
+def run(validate_only=False, now=None, path=STATE_PATH, repair_format=False):
     now = now or dt.datetime.now(dt.timezone.utc)
+    if validate_only and repair_format:
+        raise ValueError("validation and actual Telegram editing cannot run together")
     end = signal.completed_friday(now).isoformat()
     state = load_state(path)
-    if already_delivered(state, end) and not validate_only:
+    was_delivered = already_delivered(state, end)
+    if was_delivered and not validate_only and not repair_format:
         return {"status": "duplicate_suppressed", "end": end, "telegram_sent": False}
+    if repair_format:
+        if not was_delivered:
+            raise RuntimeError("cannot edit a weekly message without a confirmed same-week receipt")
+        previous_receipt = state["last_alert"]
+        if previous_receipt.get("format_revision", 1) >= FORMAT_REVISION:
+            return {
+                "status": "format_already_current", "end": end,
+                "message_id": previous_receipt["message_id"],
+                "telegram_sent": False,
+            }
+
     try:
         data = signal.fetch_current_week(now)
     except (signal.SourceMissing, ValueError, OSError) as exc:
@@ -152,21 +166,56 @@ def run(validate_only=False, now=None, path=STATE_PATH):
             "telegram_sent": False,
         }
     except Exception as exc:
-        # Source/provider failures are not successful 'no-news' checks.
         return {
             "status": "source_unavailable",
             "end": end,
             "reason": f"{type(exc).__name__}: {str(exc)[:350]}",
             "telegram_sent": False,
         }
+
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     text = signal.report_text(data)
+    telegram_html = signal.report_html(data)
     OUT_PATH.write_text(text + "\n", encoding="utf-8")
+    HTML_PATH.write_text(telegram_html + "\n", encoding="utf-8")
     if not data["alert"]:
+        if repair_format:
+            raise RuntimeError("existing alert is confirmed but refreshed official signals no longer satisfy threshold")
         return {"status": "threshold_not_met", "end": end, "telegram_sent": False, "category": data["category"]}
     if validate_only:
-        return {"status": "validated", "end": end, "telegram_sent": False, "data": data}
-    username, message_id = send_telegram(text)
+        return {
+            "status": "validated", "end": end, "telegram_sent": False,
+            "format_revision": FORMAT_REVISION, "data": data,
+            "clickable_sources": 3,
+        }
+
+    if repair_format:
+        previous_receipt = state["last_alert"]
+        if (
+            data["category"] != previous_receipt.get("category")
+            or abs(data["ndx_week_pct"] - previous_receipt.get("ndx_week_pct", float("inf"))) > 0.02
+            or abs(data["y10_week_bp"] - previous_receipt.get("y10_week_bp", float("inf"))) > 0.1
+        ):
+            raise RuntimeError("live official weekly data diverge from previous confirmed Telegram message")
+        username, confirmed_id = edit_telegram(telegram_html, int(previous_receipt["message_id"]))
+        previous_receipt["format_revision"] = FORMAT_REVISION
+        previous_receipt["edited_at_kst"] = dt.datetime.now(
+            ZoneInfo("Asia/Seoul")
+        ).isoformat(timespec="seconds")
+        previous_receipt["clickable_source_links"] = 3
+        write_state(state, path)
+        receipt = {
+            "operation": "editMessageText", "end": end, "message_id": confirmed_id,
+            "bot_username": username, "format_revision": FORMAT_REVISION,
+            "telegram_sent": False, "telegram_edited": True,
+        }
+        RECEIPT_PATH.write_text(
+            json.dumps(receipt, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        return {"status": "telegram_edited", **receipt}
+
+    username, message_id = send_telegram(telegram_html)
     receipt = {
         "end": end,
         "category": data["category"],
@@ -174,6 +223,8 @@ def run(validate_only=False, now=None, path=STATE_PATH):
         "y10_week_bp": data["y10_week_bp"],
         "bot_username": username,
         "message_id": message_id,
+        "format_revision": FORMAT_REVISION,
+        "clickable_source_links": 3,
         "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
     }
     RECEIPT_PATH.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -184,7 +235,8 @@ def run(validate_only=False, now=None, path=STATE_PATH):
 
 def main():
     validation = os.getenv("WEEKLY_HAVEN_VALIDATE_ONLY", "").lower() in ("1", "true", "yes")
-    result = run(validate_only=validation)
+    repair = os.getenv("WEEKLY_HAVEN_REPAIR_FORMAT", "").lower() in ("1", "true", "yes")
+    result = run(validate_only=validation, repair_format=repair)
     print("treasury_weekly_haven_status=" + json.dumps(result, ensure_ascii=False))
     if result["status"] == "source_unavailable":
         raise SystemExit(2)
