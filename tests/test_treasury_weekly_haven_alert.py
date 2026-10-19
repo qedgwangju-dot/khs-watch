@@ -13,8 +13,11 @@ NOW=dt.datetime(2026,10,17,14,0,tzinfo=ZoneInfo("Asia/Seoul"))
 def snap():
     x=source.evaluate_week({"2026-10-09":30883.15,"2026-10-16":29187.55},
                            {"2026-10-09":5.24,"2026-10-16":5.09},dt.date(2026,10,16))
-    x["source_urls"]=["https://indexes.nasdaq.com/Index/History/NDX",
-                      "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/"]
+    x["source_urls"]=[
+        "https://indexes.nasdaq.com/Index/History/NDX",
+        "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index",
+        "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026",
+    ]
     return x
 
 class WeekAlertTests(unittest.TestCase):
