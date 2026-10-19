@@ -42,6 +42,95 @@ class IntegrityTests(unittest.TestCase):
         self.addCleanup(self.state_patch.stop)
         watch.STATE.write_text('{"seen": []}', encoding='utf-8')
 
+    def conditional_summit_fixture(self):
+        path=Path(__file__).parent/'test_fixtures/war_conditional_summit_39336422842.json'
+        value=json.loads(path.read_text(encoding='utf-8'))
+        return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_actual_willingness_excludes_explicitly_excluded_Zelensky(self):
+        fixture,_=self.conditional_summit_fixture()
+        row=fixture['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row),'diplomatic_plan')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'미국·중국·러시아 · 회담 용의 발언')
+
+    def test_actual_negotiation_exclusion_keeps_dispute_actors(self):
+        fixture,_=self.conditional_summit_fixture()
+        row=fixture['articles'][1]
+        self.assertEqual(integrity.non_military_kind(row),'diplomatic_position')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'미국·우크라이나 · 협상 참여·배제 입장')
+
+    def test_actual_conditional_summit_keeps_compact_three_party_subject(self):
+        fixture,_=self.conditional_summit_fixture()
+        row=fixture['articles'][2]
+        self.assertEqual(integrity.non_military_kind(row),'diplomatic_plan')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'미국·중국·러시아 · 조건부 회담 의향')
+
+    def test_actual_conditional_and_exclusion_render_preserves_full_gate(self):
+        fixture,now=self.conditional_summit_fixture()
+        rows=fixture['articles'];before=watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel,'_safe_enrich'),patch.object(watch,'market_source_status',fixture['market_source_status'],create=True):
+            text=integrity.build_alert(rows,fixture['markets'],now)
+        receipt=evidence.alert_receipt(rows,fixture['markets'],now,text)
+        shown=[r for r in receipt['articles'] if r['rendered']]
+        self.assertEqual([r['id'] for r in shown],[r['id'] for r in rows[:4]])
+        self.assertEqual([r['classification_color'] for r in shown],['yellow']*4)
+        self.assertNotIn('미국·우크라이나·중국·러시아',text)
+        self.assertIn('中이 원하면 할 것',html.unescape(text))
+        for r in rows[:4]:self.assertIn(html.escape(r['title_original']),text)
+        self.assertNotIn('🔴',text)
+        self.assertNotIn('🟢',text)
+        with tempfile.TemporaryDirectory() as folder,ExitStack() as stack:
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+            watch.ALERT.write_text(text,encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in shown]}),encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8')
+            integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(),before)
+
+    def test_final_gate_rejects_same_hash_conditional_and_exclusion_errors(self):
+        fixture,now=self.conditional_summit_fixture()
+        rows=fixture['articles'][:4];text=fixture['dry_run_alert'].strip()
+        receipt=evidence.alert_receipt(rows,fixture['markets'],now,text)
+        self.assertEqual(receipt['alert_sha256'],fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder,ExitStack() as stack:
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+            watch.ALERT.write_text(text,encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in rows]}),encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):integrity.verify_alert()
+
+    def test_willingness_denial_and_condition_keep_negation(self):
+        for title in ('트럼프, 푸틴·시진핑과 회담 용의 없어',
+                      '트럼프, 푸틴과 회담 용의 부인'):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)),'diplomatic_position')
+                self.assertIn('회담 의향 부인',integrity.topic_label(article(title)))
+        title='트럼프, 미중러 정상회담 "중국이 원하면 할 것"'
+        with patch.object(integrity.body_parallel,'_safe_enrich'):
+            text=integrity.build_alert([article(title)],[],NOW)
+        self.assertIn(html.escape(title),text)
+        self.assertNotIn('🟢',text)
+
+    def test_conditional_or_exclusion_does_not_hide_actual_operations(self):
+        for title in ('트럼프, 미중러 정상회담 원하면 할 것…이란 미사일 발사',
+                      '트럼프, 젤렌스키 종전협상에서 배제…러시아 공습 개시'):
+            with self.subTest(title=title):
+                row=article(title)
+                self.assertIsNone(integrity.non_military_kind(row))
+                self.assertEqual(integrity.final_color(row),'red')
+        self.assertNotEqual(integrity.non_military_kind(article('트럼프, 푸틴·시진핑과 정상회담 개최')),'diplomatic_plan')
+
+    def test_unrendered_North_Russia_contact_keeps_both_explicit_actors(self):
+        fixture,_=self.conditional_summit_fixture()
+        row=fixture['articles'][4]
+        self.assertEqual(integrity.non_military_kind(row),'diplomatic_contact')
+        self.assertEqual(integrity.topic_label(row),'북한·러시아 · 외교 접촉 보도')
+
     def postponement_summit_fixture(self):
         path = Path(__file__).parent/'test_fixtures/war_postponement_summit_39317765794.json'
         value = json.loads(path.read_text(encoding='utf-8'))
