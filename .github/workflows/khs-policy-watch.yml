@@ -115,6 +115,33 @@ jobs:
           m._self_test_us_treasury_outbound_event_model()
           m._self_test_defense_future_warfare_event_model()
           m._self_test_fcc_optical_transceiver_event_model()
+          m._self_test_mofcom_2026_notices()
+          from scripts.khs_policy_telegram_formatter import prepare_telegram_html
+          import datetime as dt
+          from zoneinfo import ZoneInfo
+          now = dt.datetime(2026, 10, 20, 9, tzinfo=ZoneInfo("Asia/Seoul"))
+          rules = {rule.key: rule for rule in m.STORY_RULES}
+          new_keys = tuple(m.MOFCOM_2026_POLICY_NOTICES)
+          batch = []
+          for key in new_keys:
+              spec = m.MOFCOM_2026_POLICY_NOTICES[key]
+              item = {
+                  "title": rules[key].title,
+                  "description": " ".join(spec["markers"]) + " 无人驾驶航空器 掘进机 盾构机 挖泥船",
+                  "link": spec["urls"][0],
+                  "source": spec["source"],
+                  "published_kst": "2026-10-19T16:00:00+09:00",
+                  "official_direct_verified": True,
+                  "mofcom_notice_key": key,
+                  "mofcom_stage": "announced",
+              }
+              batch.append({"rule": rules[key], "items": [item]})
+          from scripts.khs_policy_seen_finalize import DELIVERY_GATED_RULE_KEYS
+          assert set(new_keys).issubset(DELIVERY_GATED_RULE_KEYS)
+          body = m.render_alert_bundle(batch, now)
+          message = prepare_telegram_html("중국 드론·산업기계 수출통제 3개 공고", body)
+          assert len(message) <= 4096, f"MOFCOM Telegram content too long: {len(message)}"
+          print(f"mofcom_2026_notice_delivery_regression=passed characters={len(message)}")
           print("us_treasury_outbound_regression=passed")
           print("defense_future_warfare_regression=passed")
           print("fcc_optical_transceiver_regression=passed")
