@@ -1,0 +1,17 @@
+{
+  "seen": {
+    "ai-qc:baseline:anthropic-2026-10-16": {
+      "url": "https://www.anthropic.com/research/designing-efficient-quantum-circuits",
+      "status": "2026-10-16 최초 연구 기준사건; 53h 타원곡선과 510만→44만 게이트는 각각 다른 회로"
+    },
+    "ai-qc:baseline:arxiv:2610.22367v1": {
+      "url": "https://arxiv.org/abs/2610.22367",
+      "status": "2026-10-15 arXiv v1 최초 논문"
+    },
+    "ai-qc:baseline:quera-2026-08-27": {
+      "url": "https://www.quera.com/press-releases/quera-computing-uses-ai-to-automate-a-critical-quantum-computer-subsystem-enabling-the-acceleration-of-commercial-grade-quantum-computing-deployments-from-quera",
+      "status": "2026-08-27 Claude 레이저 제어 연구 미상용화 기준사건"
+    }
+  },
+  "checked_at_kst": null
+}
