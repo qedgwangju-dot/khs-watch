@@ -161,4 +161,11 @@ class CreditWatchTests(unittest.TestCase):
         self.assertIn("5영업일 방향",msg.splitlines()[1])
         self.assertIn("전일 변화",msg.splitlines()[2])
 
+    def test_mixed_official_publication_dates_are_never_silently_used(self):
+        base={f'202610{d:02d}':3.0 for d in range(8,20) if dt.date(2026,10,d).weekday()<5}
+        series={k:dict(base) for k in c.KINDS}
+        series['cp']['20261020']=3.2
+        with self.assertRaisesRegex(ValueError,"최신 공식 기준일 불일치"):
+            c.aligned(series,dt.datetime(2026,10,20,20,tzinfo=ZoneInfo('Asia/Seoul')))
+
 if __name__=='__main__':unittest.main()
