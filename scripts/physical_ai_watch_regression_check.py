@@ -39,6 +39,8 @@ for _required in (
     "BMW_GEN6_PACK_RECOVERY =",
     "JPM_SRI_DEPLOYMENT_RECOVERY =",
     "JPM_SRI_FX_CORRECTION_RECOVERY =",
+    "VW_EU_BATTERY_RECALL_RECOVERY =",
+    "def _vw_eu_recall_recovery(",
     "def _jpm_sri_fx_correction_recovery(",
     "def _bmw_gen6_pack_recovery(",
     "def _jpm_sri_recovery(",
@@ -4919,5 +4921,107 @@ try:
 finally:
     base.NOW=_now_for_fx
 
+
+
+# 80) Volkswagen Europe 93MF / 93MV cell safety campaigns, not US 26V630.
+# Distinct regulators, OEM evidence, 80% charging limit, and unnamed EU
+# supplier. The 22,524 US vehicles are NOT EU recall quantity.
+vw_eu_primary = make(
+    "폭스바겐 유럽 고전압 배터리 리콜: 영국 93MF·93MV 80% 제한 공식 안내",
+    "Volkswagen UK 93MF 93MV high-voltage battery cell safety recall. "
+    "Some ID.3, ID.4, ID.7 and ID.Buzz vehicles with supplier cells "
+    "produced between 2022 and 2025 need checks; charge cap 80% "
+    "because of overheating and fire risk. "
+    "Germany KBA registration pending; no named EU supplier. "
+    "US ID.4 26V630 22,524 SK Battery America is a different recall.",
+    "Volkswagen UK",
+)
+vg, vs, vc, vk = classify(vw_eu_primary)
+assert vg == 'vw_europe_battery_recall' and vs >= 11, (vg,vs,vc)
+assert vc == '폭스바겐 유럽 배터리 리콜 · 영국 93MF·93MV 충전 제한',vc
+assert '유럽과 합산하지' in base.meaning(vc),base.meaning(vc)
+assert 'SK Battery America' in base.meaning(vc),base.meaning(vc)
+assert '공급사' in base.verification(vw_eu_primary,vg,
+    vw_eu_primary['title']+' '+vw_eu_primary['description'])
+assert '충당금' in base.risk(vc) and '1만 정비시간' in base.risk(vc)
+assert base.clean_title(vw_eu_primary['title'],vw_eu_primary['source']).startswith('폭스바겐, 영국')
+
+vw_vans_official = make(
+    "폭스바겐 영국 93MF 고전압 배터리 리콜 80% 충전 제한",
+    "Volkswagen Vans UK official 93MF high-voltage battery safety recall "
+    "for ID.Buzz. Production defect and fire risk; maximum 80% charge cap.",
+    "Volkswagen Vans UK",
+)
+vg2, vs2, vc2, vk2 = classify(vw_vans_official)
+assert vg2 == vg and vs2 >= 11 and vk2 == vk, (vg2,vs2,vc2,vk2)
+
+vw_reprinted = dict(vw_eu_primary,source="더구루")
+vg3, vs3, vc3, vk3 = classify(vw_reprinted)
+assert vg3 == vg and vs3 < 11 and vk3 != "future_germany_kba", (vg3,vs3,vc3)
+
+vw_us_old = make(
+    "Volkswagen ID.4 HV battery recall 26V630 22524 vehicles",
+    "Volkswagen Group of America recalled 22,524 US ID.4 in 93EX "
+    "on September 30, 2026. SK Battery America supplied cells. "
+    "Charge only to 80% due to high-voltage battery overheating.",
+    "NHTSA",
+)
+ug, us, uc, uk = classify(vw_us_old)
+assert ug == vg and us < 11 and uk != vk,(ug,us,uc,uk)
+
+vw_eu_skba_rumour = make(
+    "폭스바겐 유럽 93MF 고전압 배터리 리콜 공급사 SK온이라는 추측",
+    "폭스바겐 UK 93MF 80% 제한, 루머에 따르면 유럽 결함 셀 "
+    "공급사는 SK Battery America일 것이라는 미확인 해석이다.",
+    "시장 루머",
+)
+sg, ss, sc, sk = classify(vw_eu_skba_rumour)
+assert sg == vg and ss < 11,(sg,ss,sc)
+
+vw_germany_unready = make(
+    "독일 KBA 폭스바겐 93MF 고전압 배터리 리콜 준비",
+    "KBA German Federal Motor Transport Authority 아직 등록 준비 단계; "
+    "Volkswagen 93MF high-voltage battery recall 80% cap pending.",
+    "KBA",
+)
+pg, ps, pc, pk = classify(vw_germany_unready)
+assert pg == vg and ps < 11,(pg,ps,pc)
+
+vw_germany_official_future = make(
+    "폭스바겐 독일 KBA 93MV 고전압 배터리 리콜 공식 등록 개시",
+    "KBA German Federal Motor Transport Authority Volkswagen 93MV "
+    "high-voltage battery campaign issued and activated, 80% charge limit.",
+    "KBA",
+)
+kg, ks, kc, kk = classify(vw_germany_official_future)
+assert kg == vg and ks >= 11 and kk != vk,(kg,ks,kc,kk)
+assert kc == '폭스바겐 유럽 배터리 리콜 · 독일 KBA 공식 시행',kc
+
+# Recovery uses an official VW page and preserves only a calendar date.
+_vw_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,19,13,0,tzinfo=dt.timezone.utc)
+    recovered=base.query_news(watcher.VW_EU_BATTERY_RECALL_RECOVERY)
+    assert len(recovered)==1,recovered
+    vv=recovered[0]
+    assert vv['source']=='Volkswagen UK' and vv['published'] is None,vv
+    assert vv['link']=='https://www.volkswagen.co.uk/en/owners-and-services/my-car/battery-recall-campaign.html'
+    rg,rs,rc,rk=classify(vv)
+    assert rg==vg and rs>=11 and rk==vk,(rg,rs,rc,rk)
+    renderer_text=vv['title']+' '+vv['description']
+    assert base.category(renderer_text,base.topic_group(renderer_text))==vc
+    assert '유럽 공급사 실명' in vv['description']
+    assert 'SK Battery America' in vv['description']
+    assert '배터리 점검 소요시간은 약 1시간' in vv['description']
+    assert watcher.qty._skip_quantity_enrichment(
+        "<b>1. 폭스바겐 유럽 배터리 리콜</b>\n"
+        "<b>분류</b> 폭스바겐 유럽 배터리 리콜 · 영국 93MF·93MV 충전 제한\n"
+        "미국 ID.4 22,524대 별도 26V630"
+    ),'The US count may never be priced as EU recall inventory'
+    base.NOW=dt.datetime(2026,10,26,12,0,tzinfo=dt.timezone.utc)
+    assert base.query_news(watcher.VW_EU_BATTERY_RECALL_RECOVERY)==[],(
+        'Expired backfill must not replay as new European recall')
+finally:
+    base.NOW=_vw_now
 
 print("Physical-AI watcher regression guards: PASS")
