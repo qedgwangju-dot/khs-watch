@@ -1087,13 +1087,15 @@
   },
   "_delivery": {
     "id": "7073f57cb069b9921422b120f6457cf914176afe56fb16391b6de372f2ef988b",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-19T21:53:58+09:00",
     "chunks": [
       "<b>AI 부품 리드타임 정정 — 10월 19일</b>\n\n기존 알림의 ‘완화 1개’는 HDD 공급 상태를 잘못 판독한 결과입니다.\n• <b>정정된 전주 대비: 악화 0개 (없음) / 완화 0개 (없음)</b>\n• <b>HDD:</b> 저장 오류 공급 제약 → 정정 심각한 공급 부족, 현재 50주 / 균형 16주\n• HDD: 지난주 Very Tight·50주 → 이번 주 Very Tight·50주. <b>완화 아님</b>.\n• 별도 전망: 대형 고객은 2028년 장기계약 이후에도 HDD 공급 부족을 예상. 납기 감소와 구분.\n\n<b>10월 19일 이미지 기준 7개 품목</b>\n• <b>심각:</b> DRAM 20주/8주 (2.5배) · HDD 50주/16주 (3.1배) · ABF 48~56주/12주 (4.3배)\n• <b>제약:</b> CPU 25~30주/16~20주 (1.5배) · NAND(eSSD) 16주/8주 (2.0배) · MLCC 35주/12주 (2.9배)\n• <b>균형:</b> GPU 30~40주/30~40주 (1.0배)\n\n• 잘못된 원인: 원문 내 부분 문구를 주간 공급 상태로 오인해 이전 심각 상태를 덮어씀.\n• 방지: 7개 행 직접 대조, 출처 미확인 상태 변경 차단, 악화·완화 품목명과 납기 변화 표시.\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-006\">TrendForce Weekly Radar 006</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      309
+    ],
     "candidate": {
       "updated_at_kst": "2026-10-19T21:53:24+09:00",
       "seen_ids": [
