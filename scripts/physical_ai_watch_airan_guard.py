@@ -5087,6 +5087,53 @@ base.key = _openai_key
 base.select_diverse = _openai_select_diverse
 
 
+_FINAL_STOCK_ONLY_NEWS = re.compile(
+    r'(?:배터리주|2차전지주|증시\s*주인공|마켓트래커|주가\s*장중|ETF\s*급등)'
+    r'.{0,110}(?:들썩|강세|급등|상승|주인공|반등)|'
+    r'(?:증시\s*주인공|마켓트래커).{0,110}(?:배터리주|2차전지주|강세)|'
+    r'백조세탁기부터.{0,100}(?:혁신\s*영상|타임스스퀘어)',
+    re.I,
+)
+_FINAL_SUBSTANTIVE_CHANGE = re.compile(
+    r'계약\s*체결|고객\s*승인|양산\s*(?:개시|시작)|첫\s*출하|'
+    r'실제\s*가동|납품\s*계약|투자\s*집행|양산\s*시작|'
+    r'(?:signed|executed)\s+(?:supply|purchase)\s+contract',
+    re.I,
+)
+
+
+def _correct_jpm_sri_krw_at_source_rate(text: str) -> str:
+    """Keep ONE dated verified rate for this historical JPM milestone.
+
+    A live currency postprocessor may have an older ECB *daily* quote than
+    the 2026-10-19 19:05 KST 1,330.33 KRW rate verified for this report.
+    Ensure every relevant amount is already paired before that later guard.
+    Do not change amounts or FX on unrelated current news.
+    """
+    pieces = text.split('──────────────────')
+    fixed=[]
+    values={
+        '1조5,000억달러':'약 1,995조4,950억원',
+        '2,300억달러':'약 305조9,759억원',
+        '100억달러':'약 13조3,033억원',
+        '50억달러':'약 6조6,517억원',
+        '5억달러':'약 6,652억원',
+    }
+    for piece in pieces:
+        if not ('JP모건 SRI' in piece or 'JP모건 전략적 투자' in piece):
+            fixed.append(piece)
+            continue
+        for usd,won in values.items():
+            # Do not append a second conversion to correctly paired text.
+            piece = re.sub(
+                re.escape(usd)+r'(?!\s*\([^)]*원\))',
+                lambda m, u=usd, w=won: f'{u}({w})',
+                piece,
+            )
+        fixed.append(piece)
+    return '──────────────────'.join(fixed)
+
+
 def _drop_stock_price_sections(text: str) -> str:
     """Last-mile defense: strip stock-only headlines before Telegram sends.
 
@@ -5106,10 +5153,14 @@ def _drop_stock_price_sections(text: str) -> str:
         if m:
             title = m.group(1)
             if (not re.search(r'정정|오탐', title)
-                    and _is_stock_reaction_only(
-                        {'title': title, 'source': '비공식 언론'}
+                    and (
+                        _is_stock_reaction_only(
+                            {'title': title, 'source': '비공식 언론'}
+                        )
+                        or (_FINAL_STOCK_ONLY_NEWS.search(title)
+                            and not _FINAL_SUBSTANTIVE_CHANGE.search(title))
                     )):
-                print('Final Telegram stock-only headline excluded:', title)
+                print('Final Telegram stock-only/marketing headline excluded:', title)
                 removed += 1
                 continue
         kept.append(section)
@@ -5149,6 +5200,7 @@ def _finalize_airan_criteria() -> None:
     if not text:
         base.ALERT_PATH.write_text('', encoding='utf-8')
         return
+    text = _correct_jpm_sri_krw_at_source_rate(text)
     marker = '<b>판정 기준</b>'
     if marker in text:
         body = text.split(marker, 1)[0].rstrip()
