@@ -1,6 +1,9 @@
+import json
 import pathlib
 import sys
+import tempfile
 import unittest
+from unittest import mock
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import ai_component_leadtime_watch as w
@@ -245,6 +248,201 @@ class LeadTimeParserTests(unittest.TestCase):
         }
         self.assertGreater(w.candidate_sort_key(newer), w.candidate_sort_key(older))
 
+
+
+class Weekly006ScreenshotRegressionTests(unittest.TestCase):
+    """TrendForce Oct 19 image and preserved Oct 12 state: no genuine easing."""
+
+    def test_weekly_006_all_seven_rows_exactly_match_user_screenshot(self):
+        issue = w.WEEKLY_006_LOCK
+        self.assertEqual(issue["as_of"], "2026-10-19")
+        self.assertEqual(issue["source"], "https://insights.trendforce.com/p/weekly-radar-006")
+        self.assertEqual(len(issue["components"]), 7)
+        expected = {
+            "CPU": ("Tight", "25-30", "16-20"),
+            "GPU": ("Balanced", "30-40", "30-40"),
+            "DRAM": ("Very Tight", "20", "8"),
+            "NAND(eSSD)": ("Tight", "16", "8"),
+            "HDD": ("Very Tight", "50", "16"),
+            "ABF": ("Very Tight", "48-56", "12"),
+            "MLCC": ("Tight", "35", "12"),
+        }
+        for name, vals in expected.items():
+            with self.subTest(name=name):
+                self.assertEqual(w.canonical_component(issue["components"][name]), vals)
+
+    def test_weekly_005_checkpoint_to_006_shows_zero_worsening_and_zero_easing(self):
+        old, new = w.WEEKLY_005_ARCHIVED_COMPONENTS, w.WEEKLY_006_LOCK["components"]
+        self.assertEqual(w.changed_components(old, new), [])
+        self.assertEqual(w.supply_direction(old, new), ("→ 변화 제한", 0, 0))
+        self.assertEqual(w.supply_direction_details(old, new), {
+            "worse": [], "better": [], "uncertain": [],
+        })
+
+    def test_weekly_006_repair_changes_only_its_wrong_hdd_status(self):
+        from copy import deepcopy
+        previous = {
+            "source": w.WEEKLY_006_LOCK["source"], "as_of": "2026-10-19",
+            "components": deepcopy(w.WEEKLY_006_LOCK["components"]),
+        }
+        previous["components"]["HDD"]["status"] = "Tight"
+        fixed, changes = w.repair_weekly_006_state(previous)
+        self.assertEqual(changes, ["HDD"])
+        self.assertEqual(fixed["components"]["HDD"]["status"], "Very Tight")
+        self.assertEqual(fixed["components"]["HDD"]["current"], "50")
+        self.assertEqual(w.repair_weekly_006_state(fixed)[1], [])
+        self.assertEqual(fixed["image_verified_issue"], "weekly-radar-006")
+        self.assertIn("2028년", fixed["signals"]["HDD"])
+        correction = w.build_weekly_006_correction_alert(
+            previous["components"], fixed["components"], changes,
+        )
+        self.assertIn("기존 알림의 ‘완화 1개’", correction)
+        self.assertIn("완화 0개 (없음)", correction)
+        self.assertIn("HDD", correction)
+        self.assertIn("50주", correction)
+        self.assertIn("완화 아님", correction)
+        self.assertIn("2028년 장기계약", correction)
+        self.assertIn("MLCC 35주/12주", correction)
+
+    def test_weekly_006_outlook_extends_into_2028_without_claiming_shorter_hdd_lead(self):
+        issue = w.WEEKLY_006_LOCK["components"]
+        official = w.extract_signals(
+            "HDD supply is tight into 2028 with 50-week lead times.",
+            w.WEEKLY_006_LOCK["source"],
+        )
+        self.assertIn("2028년", official["HDD"])
+        chain = w.memory_storage_chain_state(
+            issue, {
+                "NAND(eSSD)": "DRAM 부족이 일부 NAND 업체의 기업용 SSD 지원 능력까지 제약",
+                "HDD": official["HDD"],
+            }
+        )
+        self.assertTrue(chain["hdd_relief_late_2027_or_later"])
+        self.assertTrue(chain["active"])
+        self.assertEqual(issue["HDD"]["current"], "50")
+
+    def test_weekly_006_repair_does_not_modify_007_or_old_vintages(self):
+        from copy import deepcopy
+        data = {
+            "source": "https://insights.trendforce.com/p/weekly-radar-007",
+            "components": deepcopy(w.WEEKLY_006_LOCK["components"]),
+        }
+        data["components"]["HDD"] = {"status": "Tight", "current": "44", "balanced": "16"}
+        fixed, changes = w.repair_weekly_006_state(data)
+        self.assertEqual(changes, [])
+        self.assertEqual(fixed["components"]["HDD"]["current"], "44")
+        data["source"] = "https://insights.trendforce.com/p/weekly-radar-005"
+        fixed, changes = w.repair_weekly_006_state(data)
+        self.assertEqual(changes, [])
+
+    def test_status_only_narrative_does_not_promote_unverified_relief(self):
+        old = w.WEEKLY_005_ARCHIVED_COMPONENTS
+        merged, evidence = w.merge_verified_weekly_components(old, {
+            "HDD": {"status": "Tight"},
+        })
+        self.assertEqual(merged["HDD"]["status"], "Very Tight")
+        self.assertEqual(evidence.get("HDD"), None)
+        self.assertEqual(w.supply_direction(old, merged)[1:], (0, 0))
+
+    def test_full_official_row_can_confirm_status_only_relief_and_names_item(self):
+        old = w.WEEKLY_005_ARCHIVED_COMPONENTS
+        merged, evidence = w.merge_verified_weekly_components(old, {
+            "HDD": {"status": "Tight", "current": "50", "balanced": "16"},
+        })
+        self.assertEqual(merged["HDD"]["status"], "Tight")
+        self.assertEqual(evidence["HDD"], {"status", "current", "balanced"})
+        label, worse, better = w.supply_direction(old, merged)
+        self.assertEqual((worse, better), (0, 1))
+        self.assertIn("HDD: 납기 50주 유지", w.supply_direction_details(old, merged)["better"][0])
+        text = w.build_alert(
+            old, merged, ["HDD"], w.WEEKLY_006_LOCK["source"],
+            "2026-10-19T19:00:00+09:00", False,
+        )
+        self.assertIn("완화 1개 (HDD:", text)
+        self.assertIn("심각한 공급 부족→공급 제약", text)
+
+    def test_real_hdd_leadtime_improvement_names_item_and_weeks(self):
+        from copy import deepcopy
+        old = w.WEEKLY_005_ARCHIVED_COMPONENTS
+        new = deepcopy(old)
+        new["HDD"]["current"] = "46"
+        self.assertEqual(w.supply_direction(old, new)[1:], (0, 1))
+        msg = w.build_alert(
+            old, new, ["HDD"], w.WEEKLY_006_LOCK["source"],
+            "2026-10-19T19:00:00+09:00", False,
+        )
+        self.assertIn("완화 1개 (HDD: 50주→46주 (4주 단축))", msg)
+
+    def test_balanced_benchmark_only_change_is_not_delivery_easing(self):
+        from copy import deepcopy
+        old = w.WEEKLY_005_ARCHIVED_COMPONENTS
+        new = deepcopy(old)
+        new["HDD"]["balanced"] = "20"
+        self.assertEqual(w.supply_direction(old, new)[1:], (0, 0))
+        new["HDD"]["balanced"] = "16"
+        new["HDD"]["status"] = ""
+        self.assertEqual(w.supply_direction(old, new)[1:], (0, 0))
+
+    def test_conflicting_status_and_time_moves_is_held(self):
+        from copy import deepcopy
+        old = w.WEEKLY_005_ARCHIVED_COMPONENTS
+        new = deepcopy(old)
+        new["HDD"]["current"] = "54"
+        new["HDD"]["status"] = "Tight"
+        self.assertEqual(w.supply_component_direction(old["HDD"], new["HDD"]), "uncertain")
+        self.assertEqual(w.supply_direction(old, new)[1:], (0, 0))
+        msg = w.build_alert(
+            old, new, ["HDD"], w.WEEKLY_006_LOCK["source"],
+            "2026-10-19T19:00:00+09:00", False,
+        )
+        self.assertIn("방향 판정 보류", msg)
+        self.assertIn("HDD", msg)
+
+    def test_fake_official_domain_does_not_rank_above_real_trendforce(self):
+        trusted = "https://insights.trendforce.com/p/weekly-radar-006"
+        spoof = "https://some-trendforce.com/p/weekly-radar-006"
+        self.assertEqual(w.source_tier(trusted), 3)
+        self.assertNotEqual(w.source_tier(spoof), 3)
+        self.assertGreater(w.source_score(trusted, {}, ""), w.source_score(spoof, {}, ""))
+
+    def test_existing_rubin_state_and_delivery_route_unchanged_after_one_correction(self):
+        from copy import deepcopy
+        with tempfile.TemporaryDirectory() as tmp:
+            root = pathlib.Path(tmp)
+            state_file = root / "rubin_hbm_watch_state.json"
+            pending = root / "rubin_hbm_pending_state.json"
+            alert = root / "rubin_hbm_alert.md"
+            bad = {
+                "as_of": "2026-10-19",
+                "source": w.WEEKLY_006_LOCK["source"],
+                "components": deepcopy(w.WEEKLY_006_LOCK["components"]),
+                "signals": {"HDD": "에이전틱 AI 수요 증가 → HDD 공급 압박 지속"},
+                "seen_urls": [w.WEEKLY_006_LOCK["source"]],
+            }
+            bad["components"]["HDD"]["status"] = "Tight"
+            original = {
+                "ai_component_leadtime": bad,
+                "last_successful_delivery_kst": "2026-10-19T20:04:28+09:00",
+                "telegram_message_id": 308,
+                "unrelated_existing_route": {"do_not_touch": True},
+            }
+            state_file.write_text(json.dumps(original, ensure_ascii=False), encoding="utf-8")
+            with mock.patch.object(w, "STATE_PATH", state_file), \
+                 mock.patch.object(w, "PENDING_PATH", pending), \
+                 mock.patch.object(w, "ALERT_PATH", alert), \
+                 mock.patch.object(w, "read_rss", return_value=[]):
+                w.main()
+                text = alert.read_text(encoding="utf-8")
+                self.assertIn("완화 0개 (없음)", text)
+                snapshot = json.loads(pending.read_text(encoding="utf-8"))
+                self.assertEqual(snapshot["ai_component_leadtime"]["components"]["HDD"]["status"], "Very Tight")
+                self.assertEqual(snapshot["telegram_message_id"], 308)
+                self.assertEqual(snapshot["unrelated_existing_route"], {"do_not_touch": True})
+                # Emulate the existing delivery path's confirmed state checkpoint.
+                state_file.write_text(json.dumps(snapshot, ensure_ascii=False), encoding="utf-8")
+                alert.unlink(missing_ok=True)
+                w.main()
+                self.assertFalse(alert.exists())
 
 class LeadTimeAlertTests(unittest.TestCase):
     def setUp(self):

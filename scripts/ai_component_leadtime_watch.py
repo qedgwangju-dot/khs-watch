@@ -75,6 +75,47 @@ WEEKLY_004_LOCK = {
     },
 }
 
+
+# 2026-10-19 Weekly Radar 006: exact seven-row source image supplied by user.
+# Values and labels are evidence from that screenshot, NOT parsed from prose.
+# This issue-specific lock must never override Weekly Radar 007 or newer.
+WEEKLY_006_LOCK = {
+    "as_of": "2026-10-19",
+    "source": "https://insights.trendforce.com/p/weekly-radar-006",
+    "source_kind": "TrendForce Weekly Radar 006 / 사용자 제공 원본 이미지 직접 판독",
+    "components": {
+        "CPU": {"status": "Tight", "current": "25-30", "balanced": "16-20"},
+        "GPU": {"status": "Balanced", "current": "30-40", "balanced": "30-40"},
+        "DRAM": {"status": "Very Tight", "current": "20", "balanced": "8"},
+        "NAND(eSSD)": {"status": "Tight", "current": "16", "balanced": "8"},
+        "HDD": {"status": "Very Tight", "current": "50", "balanced": "16"},
+        "ABF": {"status": "Very Tight", "current": "48-56", "balanced": "12"},
+        "MLCC": {"status": "Tight", "current": "35", "balanced": "12"},
+    },
+}
+
+
+
+
+# Weekly Radar 006 official narrative, separate from the image's seven numeric rows.
+WEEKLY_006_HDD_OUTLOOK = (
+    "HDD 현재 50주 / 균형 16주 · 대형 클라우드 고객은 "
+    "2028년 장기계약 체결 후에도 공급 부족을 예상 (TrendForce 10/19)"
+)
+
+# Previous confirmed Week 005 checkpoint (saved 2026-10-19 14:01 KST).
+# Referenced only for issue 006 correction; NOT a generic baseline for future issues.
+# GitHub historical source: ece7bb88ce9c64050dc9910b12a4e729ff041d60.
+WEEKLY_005_ARCHIVED_COMPONENTS = {
+    "CPU": {"status": "Tight", "current": "25-30", "balanced": "16-20"},
+    "GPU": {"status": "Balanced", "current": "30-40", "balanced": "30-40"},
+    "DRAM": {"status": "Very Tight", "current": "20", "balanced": "8"},
+    "NAND(eSSD)": {"status": "Tight", "current": "16", "balanced": "8"},
+    "HDD": {"status": "Very Tight", "current": "50", "balanced": "16"},
+    "ABF": {"status": "Very Tight", "current": "48-56", "balanced": "12"},
+    "MLCC": {"status": "Tight", "current": "35", "balanced": "12"},
+}
+
 TOSHIBA_HDD_OFFICIAL = {
     "as_of": "2026-10-02",
     "source": "https://toshiba.semicon-storage.com/ap-en/company/news/news-topics/2026/10/storage-20261002-1.html",
@@ -286,7 +327,7 @@ def is_trendforce_source(url: str, text: str) -> bool:
     host = (urlparse(url).hostname or "").lower()
     low = text.lower()
     return (
-        "trendforce.com" in host
+        host == "trendforce.com" or host.endswith(".trendforce.com")
         or (host.endswith("x.com") and "/trendforce" in url.lower())
         or "trendforce" in low
     )
@@ -508,6 +549,10 @@ def extract_signals(text: str, source_url: str = "") -> dict[str, str]:
         for name, value in WEEKLY_004_LOCK["signals"].items():
             signals.setdefault(name, value)
 
+    if source_url.rstrip("/") == WEEKLY_006_LOCK["source"]:
+        # The 2028 outlook is narrative evidence, not a change to 50-week lead time.
+        signals["HDD"] = WEEKLY_006_HDD_OUTLOOK
+
     return signals
 
 
@@ -619,7 +664,7 @@ def memory_storage_chain_state(
         and "기업용 SSD" in nand_signal
     )
     hdd_late_2027 = (
-        "2027년 말" in hdd_signal
+        ("2027년 말" in hdd_signal or "2028년" in hdd_signal)
         and ("50주" in hdd_signal or str(hdd.get("current") or "") == "50")
     )
     active = bool(
@@ -654,7 +699,7 @@ def memory_storage_chain_state(
             "확인 범위는 DRAM 부족이 일부 NAND 공급사의 기업용 SSD 솔루션 지원 능력을 제약한다는 것. "
             "NAND 컨트롤러 출하 자체의 직접 병목은 별도 확인 전까지 확정하지 않음. "
             "전체 NAND Flash는 2H27부터 수급 완화 가능성이 있어 기업용 SSD 병목과 분리함. "
-            "HDD late-2027은 시장 전체 정상화 전망이며 Toshiba 증설 라인 가동 개시 여부와 별도 관리."
+            "HDD 2027년 말 이후·2028년 공급 제약 전망은 시장 전체 조달 전망이며 Toshiba 증설 라인 첫 출하 사실과 별도 관리."
         ),
     }
 
@@ -692,22 +737,54 @@ def build_memory_storage_chain_alert(chain: dict, components: dict, source_url: 
     return "\n".join(lines).strip() + "\n"
 
 
-def supply_direction(old: dict, new: dict) -> tuple[str, int, int]:
-    worse = 0
-    better = 0
-    for name, entry in new.items():
-        # 신규 감시 편입을 '악화'로 세지 않는다. 실제 전주 대비 변화만 방향에 반영한다.
-        if name not in old:
+
+def supply_component_direction(before: dict, after: dict) -> str:
+    """Count real lead-time moves, or explicitly confirmed status-tier moves.
+
+    A balanced-market baseline adjustment alone never counts as an actual
+    delivery lead-time improvement. Unknown statuses cannot become zero.
+    When explicit status and lead time contradict, hold direction for review.
+    """
+    a = midpoint_week(str(before.get("current") or ""))
+    b = midpoint_week(str(after.get("current") or ""))
+    before_level = STATUS_SEVERITY.get(str(before.get("status") or ""))
+    after_level = STATUS_SEVERITY.get(str(after.get("status") or ""))
+    current_move = (1 if b > a + 0.05 else -1 if b < a - 0.05 else 0) if a is not None and b is not None else 0
+    status_move = ((1 if after_level > before_level else -1 if after_level < before_level else 0)
+                   if before_level is not None and after_level is not None else 0)
+    if current_move and status_move and current_move != status_move:
+        return "uncertain"
+    move = current_move or status_move
+    return "worse" if move > 0 else "better" if move < 0 else "same"
+
+
+def supply_direction_details(old: dict, new: dict) -> dict[str, list[str]]:
+    details: dict[str, list[str]] = {"worse": [], "better": [], "uncertain": []}
+    for name in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC"):
+        if name not in old or name not in new:
+            continue  # Newly monitored component is not a week-over-week change.
+        before, after = old[name] or {}, new[name] or {}
+        direction = supply_component_direction(before, after)
+        if direction == "same":
             continue
-        before = old.get(name) or {}
-        old_ratio = ratio_value(str(before.get("current") or ""), str(before.get("balanced") or ""))
-        new_ratio = ratio_value(str(entry.get("current") or ""), str(entry.get("balanced") or ""))
-        old_sev = STATUS_SEVERITY.get(str(before.get("status") or ""), 0)
-        new_sev = STATUS_SEVERITY.get(str(entry.get("status") or ""), 0)
-        if new_sev > old_sev or (old_ratio is not None and new_ratio is not None and new_ratio > old_ratio + 0.05):
-            worse += 1
-        elif new_sev < old_sev or (old_ratio is not None and new_ratio is not None and new_ratio < old_ratio - 0.05):
-            better += 1
+        a, b = str(before.get("current") or ""), str(after.get("current") or "")
+        before_mid, after_mid = midpoint_week(a), midpoint_week(b)
+        if a != b and before_mid is not None and after_mid is not None:
+            move = after_mid - before_mid
+            movement = f"{fmt_week(a)}→{fmt_week(b)} ({abs(move):g}주 {'연장' if move > 0 else '단축'})"
+        else:
+            movement = f"납기 {fmt_week(b)} 유지" if a and a == b else "납기 비교 불충분"
+        before_status = fmt_status(before)
+        after_status = fmt_status(after)
+        if before_status != after_status:
+            movement += f", 상태 {before_status}→{after_status}"
+        details[direction].append(f"{name}: {movement}")
+    return details
+
+
+def supply_direction(old: dict, new: dict) -> tuple[str, int, int]:
+    details = supply_direction_details(old, new)
+    worse, better = len(details["worse"]), len(details["better"])
     if worse > better:
         return "↗ 병목 확대", worse, better
     if better > worse:
@@ -741,7 +818,7 @@ def focus_components(changed: list[str], signal_names: list[str], components: di
 
 def source_tier(url: str, text: str = "") -> int:
     host = (urlparse(url).hostname or "").lower()
-    if "trendforce.com" in host:
+    if host == "trendforce.com" or host.endswith(".trendforce.com"):
         return 3
     if host.endswith("x.com") and "/trendforce" in url.lower():
         return 2
@@ -764,7 +841,7 @@ def source_score(url: str, components: dict, text: str) -> int:
     host = (urlparse(url).hostname or "").lower()
     score = len(components) * 10
     # 공식 원문이 일부 필드만 노출하더라도 2차 재인용보다 항상 우선한다.
-    if "trendforce.com" in host:
+    if host == "trendforce.com" or host.endswith(".trendforce.com"):
         score += 1000
     elif host.endswith("x.com") and "/trendforce" in url.lower():
         score += 900
@@ -849,6 +926,87 @@ def repair_weekly_004_state(previous: dict) -> tuple[dict, list[str], list[str]]
     repaired["as_of"] = WEEKLY_004_LOCK["as_of"]
     repaired["source"] = WEEKLY_004_LOCK["source"]
     return repaired, component_changes, signal_changes
+
+
+
+def repair_weekly_006_state(previous: dict) -> tuple[dict, list[str]]:
+    """Repair the one mislabeled 10/19 issue without changing any other vintage."""
+    if str(previous.get("source") or "").rstrip("/") != WEEKLY_006_LOCK["source"]:
+        return previous, []
+    fixed = copy.deepcopy(previous)
+    fixed.setdefault("components", {})
+    changed: list[str] = []
+    for name, expected in WEEKLY_006_LOCK["components"].items():
+        original = fixed["components"].get(name) or {}
+        if canonical_component(original) != canonical_component(expected):
+            fixed["components"][name] = copy.deepcopy(expected)
+            changed.append(name)
+    fixed["as_of"] = WEEKLY_006_LOCK["as_of"]
+    fixed["source"] = WEEKLY_006_LOCK["source"]
+    fixed["image_verified_issue"] = "weekly-radar-006"
+    fixed.setdefault("signals", {})
+    fixed["signals"]["HDD"] = WEEKLY_006_HDD_OUTLOOK
+    return fixed, changed
+
+
+def build_weekly_006_correction_alert(before: dict, after: dict, changed: list[str]) -> str:
+    """One-off factual correction, emitted only when stored 006 values were wrong."""
+    direction, worse, better = supply_direction(WEEKLY_005_ARCHIVED_COMPONENTS, after)
+    lines = [
+        "<b>AI 부품 리드타임 정정 — 10월 19일</b>",
+        "",
+        "기존 알림의 ‘완화 1개’는 HDD 공급 상태를 잘못 판독한 결과입니다.",
+        "• <b>정정된 전주 대비: 악화 0개 (없음) / 완화 0개 (없음)</b>"
+        if worse == 0 and better == 0 else
+        f"• <b>전주 대비: 악화 {worse}개 / 완화 {better}개</b>",
+    ]
+    for name in changed:
+        old = before.get(name) or {}
+        new = after.get(name) or {}
+        lines.append(
+            f"• <b>{html.escape(name)}:</b> 저장 오류 {html.escape(fmt_status(old))} → "
+            f"정정 {html.escape(fmt_status(new))}, 현재 {html.escape(fmt_week(new.get('current')))}"
+            f" / 균형 {html.escape(fmt_week(new.get('balanced')))}"
+        )
+    lines += [
+        "• HDD: 지난주 Very Tight·50주 → 이번 주 Very Tight·50주. <b>완화 아님</b>.",
+        "• 별도 전망: 대형 고객은 2028년 장기계약 이후에도 HDD 공급 부족을 예상. 납기 감소와 구분.",
+        "",
+        "<b>10월 19일 이미지 기준 7개 품목</b>",
+    ]
+    lines.extend(_compact_status_groups(after))
+    lines += [
+        "",
+        "• 잘못된 원인: 원문 내 부분 문구를 주간 공급 상태로 오인해 이전 심각 상태를 덮어씀.",
+        "• 방지: 7개 행 직접 대조, 출처 미확인 상태 변경 차단, 악화·완화 품목명과 납기 변화 표시.",
+        f'• <a href="{html.escape(WEEKLY_006_LOCK["source"], quote=True)}">TrendForce Weekly Radar 006</a>',
+    ]
+    return "\n".join(lines).strip() + "\n"
+
+
+def merge_verified_weekly_components(previous: dict, extracted: dict) -> tuple[dict, dict[str, set[str]]]:
+    """Never infer a direction from status-only snippets with no same-issue lead times."""
+    merged = copy.deepcopy(previous)
+    evidence: dict[str, set[str]] = {}
+    for name, entry in extracted.items():
+        if name not in ALIASES:
+            continue
+        record = dict(merged.get(name) or {})
+        full_row = all(entry.get(k) for k in ("status", "current", "balanced"))
+        accepted: set[str] = set()
+        for key in ("status", "current", "balanced"):
+            value = entry.get(key)
+            if not value:
+                continue
+            if (key == "status" and record.get("status")
+                    and str(record["status"]) != str(value) and not full_row):
+                continue
+            record[key] = value
+            accepted.add(key)
+        if accepted:
+            merged[name] = record
+            evidence[name] = accepted
+    return merged, evidence
 
 
 def build_weekly_004_correction_alert(
@@ -1028,13 +1186,22 @@ def build_alert(
             )
 
     existing_changes = [name for name in changed if name in old]
+    details = supply_direction_details(old, new)
     if worse_count or better_count:
+        worse_label = (f"악화 {worse_count}개 (" + "; ".join(details["worse"]) + ")"
+                       if worse_count else "악화 0개 (없음)")
+        better_label = (f"완화 {better_count}개 (" + "; ".join(details["better"]) + ")"
+                        if better_count else "완화 0개 (없음)")
         lines.append(
-            f"• <b>전주 대비:</b> {html.escape(direction)}"
-            f" — 악화 {worse_count}개 / 완화 {better_count}개"
+            f"• <b>전주 대비:</b> {html.escape(direction)} — "
+            + html.escape(worse_label + " / " + better_label)
         )
     elif not added:
-        lines.append("• <b>전주 대비:</b> 의미 있는 리드타임 방향 변화 없음")
+        lines.append("• <b>전주 대비:</b> 납기·공급 상태 변화 없음 (악화 0개 / 완화 0개, 해당 없음)")
+    if details["uncertain"]:
+        lines.append(
+            "• <b>방향 판정 보류:</b> " + html.escape("; ".join(details["uncertain"]))
+        )
 
     if strongest:
         ratio, name, entry = strongest
@@ -1138,7 +1305,9 @@ def main() -> None:
     raw_previous_components = copy.deepcopy(raw_previous.get("components") or BASELINE["components"])
     weekly_002_previous, repaired_status_names = repair_weekly_002_state(raw_previous)
     weekly_002_components = copy.deepcopy(weekly_002_previous.get("components") or BASELINE["components"])
-    previous, repaired_004_components, repaired_004_signals = repair_weekly_004_state(weekly_002_previous)
+    weekly_004_previous, repaired_004_components, repaired_004_signals = repair_weekly_004_state(weekly_002_previous)
+    before_006 = copy.deepcopy(weekly_004_previous.get("components") or BASELINE["components"])
+    previous, repaired_006_components = repair_weekly_006_state(weekly_004_previous)
     previous_components = previous.get("components") or BASELINE["components"]
     seen_urls = set(previous.get("seen_urls") or [])
 
@@ -1181,6 +1350,10 @@ def main() -> None:
                 # The 10/5 source is image-led; use the directly transcribed seven-row table
                 # instead of allowing a partial HTML/index parse to inherit stale prior values.
                 components = copy.deepcopy(WEEKLY_004_LOCK["components"])
+            if direct.rstrip("/") == WEEKLY_006_LOCK["source"]:
+                # The 10/19 screenshot shows all seven complete rows. Narrative snippets
+                # must NOT downgrade HDD from Very Tight to Tight while 50 weeks holds.
+                components = copy.deepcopy(WEEKLY_006_LOCK["components"])
             signals = extract_signals(full_text, direct)
             candidates.append(
                 {
@@ -1215,10 +1388,13 @@ def main() -> None:
     if repaired_004_components or repaired_004_signals:
         correction = build_weekly_004_correction_alert(
             weekly_002_components,
-            previous_components,
+            weekly_004_previous.get("components") or BASELINE["components"],
             repaired_004_components,
             repaired_004_signals,
         )
+        notify_text = (notify_text.rstrip() + "\n\n" + correction.strip()).strip() + "\n" if notify_text else correction
+    if repaired_006_components:
+        correction = build_weekly_006_correction_alert(before_006, previous_components, repaired_006_components)
         notify_text = (notify_text.rstrip() + "\n\n" + correction.strip()).strip() + "\n" if notify_text else correction
     new_seen = set(seen_urls)
 
@@ -1230,15 +1406,7 @@ def main() -> None:
         extracted = best.get("components") or {}
         extracted_signals = best.get("signals") or {}
         candidate_controller_direct = bool(best.get("nand_controller_direct_constraint"))
-        evidence = {name: set(entry.keys()) for name, entry in extracted.items()}
-
-        merged = copy.deepcopy(previous_components)
-        for name, entry in extracted.items():
-            old_entry = dict(merged.get(name) or {})
-            for key in ("status", "current", "balanced"):
-                if entry.get(key):
-                    old_entry[key] = entry[key]
-            merged[name] = old_entry
+        merged, evidence = merge_verified_weekly_components(previous_components, extracted)
 
         merged_signals = copy.deepcopy(previous_signals)
         merged_signals.update({k: v for k, v in extracted_signals.items() if v})
@@ -1326,6 +1494,7 @@ def main() -> None:
         "seen_urls": sorted(new_seen)[-120:],
         "last_checked_at_kst": now.isoformat(timespec="seconds"),
         "candidate_count": len(candidates),
+        "image_verified_issue": "weekly-radar-006" if latest_source.rstrip("/") == WEEKLY_006_LOCK["source"] else "",
         "errors": errors[-10:],
     }
     write_json(PENDING_PATH, pending)
