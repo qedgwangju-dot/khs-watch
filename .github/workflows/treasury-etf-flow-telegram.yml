@@ -335,6 +335,7 @@ jobs:
 
           payload = Path("out/treasury_weekly_haven_telegram.html.txt").read_text(encoding="utf-8")
           assert payload.count("<a href=") == 3, "Three official source links missing"
+          assert "fromdate=" in payload and "&amp;todate=" in payload, "dated Nasdaq API URL missing"
           assert "나스닥100: " in payload and "미 10년물 금리: " in payload
           assert "CTA" in payload and "공식 출처" in payload
           assert len(payload) < 3900, "Telegram payload too long"
