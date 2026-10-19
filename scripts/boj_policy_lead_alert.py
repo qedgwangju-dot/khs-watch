@@ -43,6 +43,11 @@ WATCH = OUT / "boj_policy_lead_watch.md"
 MARKET = OUT / "boj_policy_market_context.json"
 PENDING = OUT / "boj_policy_lead_pending_state.json"
 CONFIRMED = OUT / "boj_policy_lead_telegram_confirmed.json"
+SOURCE_HEALTH = {"rss_ok": 0, "official_index_ok": 0}
+
+
+def source_health_verified(status: dict) -> bool:
+    return int(status.get("rss_ok") or 0) + int(status.get("official_index_ok") or 0) > 0
 
 UA = "Mozilla/5.0 khs-boj-policy-path/2.0"
 # Runtime verification marker: official-document and cross-market checks are validated on every workflow run.
@@ -401,7 +406,9 @@ def fetch_rss(url: str, source_name: str, now: dt.datetime) -> list[Item]:
         )
         return []
     try:
-        return parse_rss(text, source_name)
+        items = parse_rss(text, source_name)
+        SOURCE_HEALTH["rss_ok"] += 1
+        return items
     except Exception as exc:
         record_source_failure(
             lane="boj_policy_path",
@@ -504,6 +511,8 @@ def fetch_official_statement_items(now: dt.datetime) -> list[Item]:
             checked_at=now,
         )
         return []
+
+    SOURCE_HEALTH["official_index_ok"] += 1
 
     links: list[tuple[dt.datetime, str]] = []
     for href, label_html in re.findall(
@@ -1011,6 +1020,8 @@ def verified_event_signals(now: dt.datetime) -> list[Signal]:
 
 
 def collect(now: dt.datetime) -> list[Signal]:
+    SOURCE_HEALTH["rss_ok"] = 0
+    SOURCE_HEALTH["official_index_ok"] = 0
     items: list[Item] = []
     for query in QUERIES:
         items.extend(fetch_rss(news_url(query), "Google News", now))
@@ -2184,6 +2195,15 @@ def main() -> int:
     now = dt.datetime.now(KST)
     signals = enrich_decision_context(collect(now))
     state = load_state()
+    print("BOJ_SOURCE_HEALTH=" + json.dumps(SOURCE_HEALTH, ensure_ascii=False))
+
+    # Failed primary retrieval must never be conflated with 'no new event'.
+    if not source_health_verified(SOURCE_HEALTH):
+        WATCH.write_text(
+            f"BOJ 정책경로 원천조회 장애: RSS 및 BOJ 성명 목록 확인 전부 실패 · 조회 {label_time(now)}\n",
+            encoding="utf-8",
+        )
+        raise RuntimeError("BOJ source outage: no successfully parsed RSS or BOJ official index")
 
     if not signals:
         WATCH.write_text(
