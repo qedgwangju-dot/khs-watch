@@ -297,7 +297,10 @@ def _sodium_stage(text: str, source: str = '') -> str:
         or not SODIUM_SHIPMENT.search(text)
     ):
         return 'known_baseline'
-    if SODIUM_LGES_BASE.search(text) and not (SODIUM_VALIDATION.search(text) and re.search(r'completed|passed|approved|공급|승인|완료|통과', text, re.I)) and not SODIUM_SOP.search(text):
+    if (SODIUM_LGES_BASE.search(text)
+            and not SODIUM_SCHEDULE_CHANGE.search(text)
+            and not (SODIUM_VALIDATION.search(text) and re.search(r'completed|passed|approved|공급|승인|완료|통과', text, re.I))
+            and not SODIUM_SOP.search(text)):
         return 'known_baseline'
     if SODIUM_SDI_BASE.search(text) and not re.search(r'(?:mass\s*production|양산).{0,80}(?:20\d{2}|\d+\s*GWh)|(?:20\d{2}|\d+\s*GWh).{0,80}(?:mass\s*production|양산)', text, re.I):
         return 'known_baseline'
