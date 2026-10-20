@@ -31,6 +31,34 @@ STATUS_PATH = ROOT / "out" / "ai_networking_optics_watch_status.md"
 
 KST = ZoneInfo("Asia/Seoul")
 NOW = dt.datetime.now(dt.timezone.utc)
+# Distinct R&D-only channel inside the existing optics workflow; no new runner,
+# state file, schedule, credential or Telegram destination is introduced.
+OOI_COMPANY = "NVIDIA OOI & DWDM"
+OOI_WATCH_VERSION = 1
+OOI_REFERENCE_BASELINE_KEYS = {
+    "nvidia|ooi|jlt-concept-2023",
+    "nvidia|ooi|semicon-west-prototype-2026-10-13",
+    "nvidia|dwdm|256gbps-8x32-2026-ofc",
+}
+OOI_VERIFIED_REFERENCE = {
+    "semicon_west_talk_date": "2026-10-13",
+    "wccftech_publication_date": "2026-10-19",
+    "old_jlt_research_date": "2023-02-15",
+    "dwdm_paper_year": 2026,
+    "dwdm_wavelength_count": 8,
+    "dwdm_gbps_per_wavelength": 32,
+    "dwdm_aggregate_gbps": 256,
+    "ooi_status": "prototype_only",
+    "feynman_2028_ooi_confirmed": False,
+    "confirmed_ooi_customer_order": False,
+    "confirmed_ooi_volume_shipments": False,
+    "official_sources": [
+        "https://www.nvidia.com/en-us/events/semicon-west/",
+        "https://research.nvidia.com/publication/2023-02_beyond-cpo-motivation-and-approach-bringing-optics-silicon-interposer",
+        "https://research.nvidia.com/research-area/circuits-and-vlsi-design",
+        "https://doi.org/10.1364/OFC.2026.M4B.2",
+    ],
+}
 CREDO_COMPANY = "Credo"
 # Additional JPMorgan-specified suppliers. Past coverage is NOT a new material event.
 NETWORKING_ADDED_SUPPLIERS = {"Amphenol", "Ciena", "Celestica"}
@@ -67,6 +95,14 @@ COMPANIES = {
         "ticker": "NVDA",
         "aliases": ["NVIDIA", "Nvidia"],
         "query": 'NVIDIA (Spectrum-X OR NVLink OR BlueField OR networking OR Ethernet OR CPO OR "co-packaged optics" OR "silicon photonics" OR 1.6T OR 3.2T)',
+    },
+    "NVIDIA OOI & DWDM": {
+        "ticker": "NVDA",
+        "aliases": ["NVIDIA", "Nikola Nedovic", "Optics-on-Interposer", "OOI", "DWDM"],
+        "queries": [
+            '"NVIDIA" ("optics-on-interposer" OR "optics on interposer" OR "OOI") (qualification OR reliability OR "thermal cycling" OR "insertion loss" OR customer OR integration OR packaging OR production OR shipping OR prototype OR SEMICON)',
+            '"NVIDIA" (DWDM OR "wavelength division multiplexing") ("256 Gb/s" OR "512 Gb/s" OR "8 wavelengths" OR "optical I/O" OR prototype OR reliability OR customer OR production OR demonstrated)',
+        ],
     },
     "Broadcom": {
         "ticker": "AVGO",
@@ -363,6 +399,7 @@ COMPANIES = {
 
 DISPLAY_NAMES_KO = {
     "NVIDIA": "엔비디아",
+    "NVIDIA OOI & DWDM": "엔비디아 인터포저 광학·DWDM",
     "Broadcom": "브로드컴",
     "Arista Networks": "아리스타 네트웍스",
     "Marvell": "마벨",
@@ -403,7 +440,8 @@ DISPLAY_NAMES_KO = {
 TRUSTED_SOURCES = {
     "Reuters", "Bloomberg", "Financial Times", "The Wall Street Journal", "CNBC",
     "DigiTimes", "DIGITIMES", "Investing.com", "Barron's", "MarketWatch",
-    "NVIDIA Blog", "NVIDIA Newsroom", "Broadcom", "Arista Networks", "Marvell",
+    "NVIDIA Blog", "NVIDIA Newsroom", "NVIDIA Research", "Optica Publishing Group",
+    "Optica", "IEEE Photonics Society", "Broadcom", "Arista Networks", "Marvell",
     "Amphenol", "Amphenol Corporation", "Ciena", "Ciena Corporation", "Celestica",
     "Lumentum", "Coherent", "Credo", "Credo Technology Group Holding Ltd",
     "Business Wire", "AXT", "WIN Semiconductors", "VPEC", "Applied Optoelectronics",
@@ -530,6 +568,8 @@ NOISE_PATTERNS = [
 SOURCE_PRIORITY = {
     "Coherent": 100, "Credo": 100, "Credo Technology": 100,
     "Business Wire": 88, "NVIDIA Blog": 100, "NVIDIA Newsroom": 100,
+    "NVIDIA Research": 100, "Optica Publishing Group": 100, "Optica": 100,
+    "IEEE Photonics Society": 100,
     "Broadcom": 100, "Arista Networks": 100, "Marvell": 100,
     "Amphenol": 100, "Ciena": 100, "Celestica": 100,
     "Lumentum": 100, "AXT": 100, "Applied Optoelectronics": 100,
@@ -815,7 +855,141 @@ def preserve_delivery_metadata(previous: dict, pending: dict) -> dict:
     return pending
 
 
+def is_nvidia_ooi_dwdm_topic(title: str) -> bool:
+    """Identify optical R&D without conflating all CPO/NVLink products with OOI."""
+    text = html.unescape(title or "")
+    subject = bool(re.search(r"\bNVIDIA\b|\bNedovic\b|\b輝達\b|\b英偉達\b", text, re.I))
+    ooi = bool(re.search(
+        r"\bOOI\b|optics[- ]on[- ](?:the[- ])?interposer|"
+        r"(?:optical engines?|optics).{0,45}(?:silicon )?interposer|"
+        r"(?:silicon )?interposer.{0,45}(?:optical engines?|optics)",
+        text, re.I,
+    ))
+    dwdm = bool(re.search(
+        r"\bDWDM\b|dense wavelength[- ]division multiplexing|"
+        r"256\s*Gb/?s.{0,25}(?:optical|fiber|fibre)",
+        text, re.I,
+    ))
+    return subject and (ooi or dwdm)
+
+
+def ooi_dwdm_milestone(title: str) -> tuple[str, str, str] | None:
+    """Return a step, label and *semantic* key, never infer OOI revenue from CPO."""
+    text = html.unescape(title or "")
+    if not is_nvidia_ooi_dwdm_topic(text) or is_noise(text):
+        return None
+    actual = bool(re.search(
+        r"has (?:started|integrated|qualified|shipped|begun)|"
+        r"(?:begins|started|achieved|demonstrated|demonstrates|validated|"
+        r"passed|shipped|entered|delivered|secured|confirmed|signed|qualified|"
+        r"announces successful|reports measured|commercial production|"
+        r"量产|出货|驗證通過|认证通过)",
+        text, re.I,
+    ))
+    prospective = bool(re.search(
+        r"\b(?:could|might|may|potential|proposal|proposed|envisioned|"
+        r"planned|plans?|planning|expects?|expected|aims?|targets?|"
+        r"explores?|evaluates?|reportedly|rumou?r|future products?)\b|"
+        r"\b2028 roadmap\b|將於|计划|预计|有望|規劃",
+        text, re.I,
+    ))
+    if prospective and not actual:
+        # Includes potential Feynman adoption; product designation ≠ volume win.
+        return None
+
+    ooi = bool(re.search(
+        r"\bOOI\b|optics[- ]on[- ](?:the[- ])?interposer|"
+        r"(?:optical engines?|optics).{0,45}interposer|"
+        r"interposer.{0,45}(?:optical engines?|optics)",
+        text, re.I,
+    ))
+    if ooi and not prospective:
+        if re.search(
+            r"(?:begins|starts|has begun|entered|has started).{0,45}"
+            r"(?:mass|volume|commercial) production|"
+            r"(?:has shipped|ships|shipped|delivered).{0,40}(?:OOI|interposer optical|optical interposer)",
+            text, re.I,
+        ):
+            return ("OOI 실제 양산·출하", "검증된 제품 출하·생산", "nvidia|ooi|commercial-production")
+        if re.search(
+            r"(?:customer|hyperscaler|foundry|packaging partner).{0,60}"
+            r"(?:qualified|certified|approved|accepted|validated|signed|contract|purchase order)|"
+            r"(?:qualified|certified|approved|accepted|validated|signed).{0,45}"
+            r"(?:customer|hyperscaler|foundry|packaging partner)",
+            text, re.I,
+        ):
+            return ("OOI 고객·파운드리 검증", "고객·공정 승인 확인", "nvidia|ooi|customer-qualification")
+        if re.search(
+            r"(?:has integrated|successfully integrated|completes integration|"
+            r"integrates OOI).{0,80}(?:GPU|HBM|Feynman|compute package|NVLink)|"
+            r"(?:GPU|HBM|Feynman|NVLink).{0,80}"
+            r"(?:successfully integrates|integrates OOI|integration completed)",
+            text, re.I,
+        ):
+            return ("OOI 연산칩 패키지 실제 통합", "시제품 설계 검증", "nvidia|ooi|compute-package-integration")
+        measured = bool(re.search(
+            r"(?:yield|warpage|thermal cycling|burn[- ]?in|reliability|"
+            r"insertion loss|coupling loss).{0,50}"
+            r"\d+(?:\.\d+)?\s*(?:%|nm|dB|hours?|°C|degrees?)|"
+            r"(?:passed|completed).{0,35}(?:reliability|thermal cycling|burn[- ]?in)",
+            text, re.I,
+        ))
+        if measured and actual:
+            # Preserve measured milestone identity; a new numerical metric is not
+            # the same event as the prior 2023 feasibility simulation.
+            return (
+                "OOI 광패키징 수율·고온 신뢰성",
+                "정량 검증·신뢰성 성과",
+                "nvidia|ooi|reliability|" + key_for(normalize_text(text.lower())),
+            )
+
+    speed = re.search(r"(?<!\d)(\d{3,4})(?:\s*)(?:Gb/s|Gbps|Gbit/s)\b", text, re.I)
+    speed_gbps = int(speed.group(1)) if speed else None
+    if speed_gbps and speed_gbps > 256 and re.search(r"\bDWDM\b|wavelength[- ]division", text, re.I):
+        if actual and re.search(r"demonstrat|achiev|measur|test(?:ed|s)?|validat|verified", text, re.I):
+            return (
+                "DWDM 측정 성능 향상",
+                "256Gb/s 초과 실측·연구 단계",
+                f"nvidia|dwdm|measured|{speed_gbps}gbps",
+            )
+
+    # Historical 2023 motivation and pre-existing 2026 OFC/ISSCC 8×32 demonstration
+    # are reference context, not a newly qualified NVLink-CPO part.
+    if re.search(r"\bDWDM\b|wavelength[- ]division", text, re.I):
+        if re.search(r"256\s*(?:Gb/s|Gbps)|32\s*(?:Gb/s|Gbps)|8[- ]?wavelength", text, re.I):
+            return ("DWDM 256Gb/s 기존 연구", "시연·양산 미확인",
+                    "nvidia|dwdm|256gbps-8x32-2026-ofc")
+    if ooi and re.search(r"prototype|research|present|demo|showcase|reveal|unveil|"
+                         r"interposer|concept|SEMICON|development", text, re.I):
+        return ("OOI 2026년 시제품 기존 발표", "연구·양산 미확인",
+                "nvidia|ooi|semicon-west-prototype-2026-10-13")
+    return None
+
+
+def official_ooi_source(item: dict) -> bool:
+    """A trusted media name or Google News label alone is not technical proof."""
+    if item.get("company") != OOI_COMPANY:
+        return True
+    name = normalize_text(item.get("source") or "").lower()
+    host = (urllib.parse.urlparse(item.get("source_url") or "").hostname or "").lower()
+    qualified = {
+        "nvidia.com", "research.nvidia.com", "blogs.nvidia.com",
+        "nvidianews.nvidia.com", "investor.nvidia.com",
+        "opg.optica.org", "optica.org", "ieee.org", "semiconwest2026.eventscribe.net",
+        "tsmc.com",
+    }
+    official = any(host == x or host.endswith("." + x) for x in qualified)
+    named = bool(re.search(
+        r"nvidia|optica|ieee|optical fiber communication|semicon west|tsmc",
+        name, re.I,
+    ))
+    return official and named
+
+
 def canonical_story_key(company: str, title: str) -> str | None:
+    if company == OOI_COMPANY:
+        event = ooi_dwdm_milestone(title)
+        return event[2] if event else None
     if company == CREDO_COMPANY:
         signal = credo_milestone(title)
         return signal[2] if signal else None
@@ -1983,6 +2157,9 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company == OOI_COMPANY:
+        event = ooi_dwdm_milestone(title)
+        return event[0] if event else "OOI·DWDM 단계 검증 필요"
     if company == CREDO_COMPANY:
         event = credo_milestone(title)
         return event[0] if event else "크레도 광학 신호 검증대기"
@@ -2174,6 +2351,13 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "OOI 실제 양산·출하": "연구 시제품에서 실제 패키지 광엔진 생산·인도로 넘어간 물량만 매출 후보입니다. GPU·NVLink CPO 전체 출하와 OOI 공급량은 별개입니다.",
+        "OOI 고객·파운드리 검증": "고객·파운드리가 고온 신뢰성·양품률·인터포저 연결성 검증을 통과하면 상용화 가능성이 높아지지만 발주량·매출은 별도 확인해야 합니다.",
+        "OOI 연산칩 패키지 실제 통합": "광엔진의 동일 인터포저 실장·칩 간 거리 단축을 실제 GPU/HBM 패키지로 검증한 경우에만 제품화 단계 변화입니다.",
+        "OOI 광패키징 수율·고온 신뢰성": "인터포저 휨·광결합 손실·고온 동작 검사·열·수율·반품·교환 접수로 넘어가는 양산 병목을 정량화해야 합니다.",
+        "DWDM 측정 성능 향상": "8파장×32Gb/s=256Gb/s는 2026년 기존 연구 기준입니다. 이보다 높은 독립 측정치도 연구 성과와 고객 양산을 구분합니다.",
+        "DWDM 256Gb/s 기존 연구": "2026년 OFC에 발표된 파장당 32Gb/s·8파장 시연 결과이며, 상용 NVLink 시스템의 OOI 양산 근거는 아닙니다.",
+        "OOI 2026년 시제품 기존 발표": "NVIDIA의 10월 13일 SEMICON West 연구발표입니다. 10월 19일 기사 게재와 새 고객·양산 사건은 구분합니다.",
         "크레도 SRMO 표준 최종 승인": "광 연결 규격 상호운용성이 확보되면 고객 검증이 빨라질 수 있지만 실제 장비·광모듈 수주는 별도 확인해야 합니다.",
         "크레도 SRMO 표준화 협력": "2027년 OCP 규격 승인 목표는 개발 단계이고 실제 고객 양산 수주는 아닙니다.",
         "크레도 6.4T NPO 실제 양산·출하": "6.4T NPO 첫 양산과 반복 출하를 확인해야 2028 회계연도 기술 기대가 실제 광부품 매출로 전환됩니다.",
@@ -2302,6 +2486,13 @@ def meaning_for(category: str) -> str:
 
 def risk_for(category: str) -> str:
     mapping = {
+        "OOI 실제 양산·출하": "GPU/HBM 발열과 광엔진의 고온 수명·휨·광결합 수율이 불량 비용·검사 처리량·반품 및 보증충당금을 키울 수 있습니다.",
+        "OOI 고객·파운드리 검증": "고온 동작 검사, 열응력, FAU 정렬·삽입손실, 보험·인증 문제로 채택과 검수·매출 인식이 늦어질 수 있습니다.",
+        "OOI 연산칩 패키지 실제 통합": "광엔진이 연산칩과 동일 인터포저를 공유하면 열·휨·수율·교체성 제약이 커져 양산 원가가 높아질 수 있습니다.",
+        "OOI 광패키징 수율·고온 신뢰성": "광결합 수율·신뢰성 시험 기간·고온 검사 시간·정렬 오차가 목표에 못 미치면 차세대 OOI 양산 채택이 지연될 수 있습니다.",
+        "DWDM 측정 성능 향상": "파장간 간섭·레이저 열안정성·손실·파장 제어와 검사시간이 실제 고객 신뢰성 인증 병목입니다.",
+        "DWDM 256Gb/s 기존 연구": "실험실 성능을 실제 장기 신뢰성·다중공급사 고객 검증으로 연결하기 전에는 생산계획이나 매출로 환산할 수 없습니다.",
+        "OOI 2026년 시제품 기존 발표": "연구 발표를 상용화로 오인하지 않아야 하며 고온 수명·2.5D 패키징 수율·Feynman 채택 지연 가능성이 남습니다.",
         "크레도 SRMO 표준 최종 승인": "표준 승인만으로 고객주문이 확정되지는 않으며 광출력·고온수명·광결합 오차와 보험·현장 교체성 검증이 남습니다.",
         "크레도 SRMO 표준화 협력": "규격 초안·검증·OCP 승인 목표인 2027년이 밀리면 고객 채택과 공급망 수율 램프가 늦어집니다.",
         "크레도 6.4T NPO 실제 양산·출하": "광엔진 결합 정밀도, 레이저 발열, 수율, 고온동작 검사시간, 고객 인증·반품률이 최우선 위험입니다.",
@@ -2467,6 +2658,32 @@ def _self_test_korean_optics_alerts() -> None:
     assert stage_for(oe_sample) == "고객 검증·양산 도입"
 
     assert len(story_tokens("옵티코어 AI 데이터센터 광트랜시버 공급계약")) >= 3
+    # OOI and a separate DWDM 8x32 lab link are historical, not products.
+    ooi_proto = "NVIDIA next-gen CPO Optics-on-Interposer OOI prototype unveiled at SEMICON West 2026"
+    ooi_old = "NVIDIA demonstrates eight-wavelength 256 Gb/s DWDM optical link"
+    ooi_plan = "NVIDIA plans to deploy OOI optics on interposer in Feynman 2028"
+    ooi_prod = "NVIDIA begins mass production of Optics-on-Interposer OOI optical engines"
+    ooi_qualified = "NVIDIA customer has qualified OOI optics-on-interposer optical engine packaging"
+    ooi_new_measure = "NVIDIA demonstrates measured 512Gb/s DWDM optical I/O link"
+    ooi_no_link = "NVIDIA's current Spectrum-X Ethernet CPO switches ship to AI customers"
+    assert ooi_dwdm_milestone(ooi_proto)[2] == "nvidia|ooi|semicon-west-prototype-2026-10-13"
+    assert ooi_dwdm_milestone(ooi_old)[2] == "nvidia|dwdm|256gbps-8x32-2026-ofc"
+    assert ooi_dwdm_milestone(ooi_plan) is None
+    assert ooi_dwdm_milestone(ooi_prod)[0] == "OOI 실제 양산·출하"
+    assert ooi_dwdm_milestone(ooi_qualified)[0] == "OOI 고객·파운드리 검증"
+    assert ooi_dwdm_milestone(ooi_new_measure)[2] == "nvidia|dwdm|measured|512gbps"
+    assert ooi_dwdm_milestone(ooi_no_link) is None
+    assert not official_ooi_source({
+        "company": OOI_COMPANY, "source": "NVIDIA", "source_url": "https://fake.example.net"
+    })
+    assert official_ooi_source({
+        "company": OOI_COMPANY, "source": "NVIDIA Research",
+        "source_url": "https://research.nvidia.com"
+    })
+    assert not official_ooi_source({
+        "company": OOI_COMPANY, "source": "Wccftech",
+        "source_url": "https://wccftech.com"
+    })
     assert source_priority("전자신문") >= 65
     assert source_priority("OE Solutions") >= 65
 
