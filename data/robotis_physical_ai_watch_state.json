@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-20T23:20:00.854546+00:00",
+  "updated_at": "2026-10-20T23:29:27.671735+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -594,15 +594,16 @@
     "8b2b9062c0228262fcab8e91723d7cb7330a55be22e62736c62ca59cf7615208",
     "5145224b06facaa9c8d55eaf7d16de363749a12a9a66efb60f6adafe2e720e4d",
     "62b6bca1bd271806f5be4437a9ab12d2ed7e7d5fb976c7c384bc7ab67a3ec070",
-    "2093cb7d173dba451bd919faa88cb4256dd92d83373cf0d12e660df8f2e89188"
+    "2093cb7d173dba451bd919faa88cb4256dd92d83373cf0d12e660df8f2e89188",
+    "0fd3cbe43c3386454c2313b113d56c2d738fda8a043e6dad93467a45f41adfb9"
   ],
   "last_selected": [
-    "62b6bca1bd271806f5be4437a9ab12d2ed7e7d5fb976c7c384bc7ab67a3ec070",
-    "2093cb7d173dba451bd919faa88cb4256dd92d83373cf0d12e660df8f2e89188"
+    "0fd3cbe43c3386454c2313b113d56c2d738fda8a043e6dad93467a45f41adfb9"
   ],
   "groups": [
     "alert_quality_238",
     "alert_quality_246",
+    "alert_quality_fx_249",
     "alert_quality_oct18",
     "atlas_actuator_bom",
     "bmw_gen6_pack",
