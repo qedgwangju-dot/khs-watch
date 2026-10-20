@@ -14,6 +14,13 @@ SPEC.loader.exec_module(MODULE)
 
 
 class IranHormuzMarketTurnTests(unittest.TestCase):
+    def test_all_google_rss_queries_use_short_bounded_timeout(self):
+        import inspect
+        body=inspect.getsource(MODULE.fetch_news)
+        self.assertIn("fetch_bytes(google_news_url(query), timeout=4, attempts=1)",body)
+        self.assertNotIn("fetch_bytes(google_news_url(query))",body)
+
+
     def test_aramco_official_rss_requires_real_first_party_article_link(self):
         now=dt.datetime(2026,10,12,10,0,tzinfo=dt.timezone.utc)
         stamp="Mon, 12 Oct 2026 08:30:00 GMT"

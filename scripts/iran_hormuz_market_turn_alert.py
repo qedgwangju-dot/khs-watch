@@ -2702,7 +2702,7 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
     errors: list[str] = []
     for query in NEWS_QUERIES:
         try:
-            items.extend(parse_rss(fetch_bytes(google_news_url(query)), current, max_age_hours))
+            items.extend(parse_rss(fetch_bytes(google_news_url(query), timeout=4, attempts=1), current, max_age_hours))
         except Exception as exc:
             errors.append(str(exc))
 
