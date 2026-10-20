@@ -33,9 +33,12 @@ on:
     - cron: "53 * * * *"
   workflow_run:
     # Fallback inside the existing watcher when GitHub skips/delays both crons.
-    # The upstream is an existing same-repository, data-center workflow only.
+    # Both upstreams are pre-existing same-repository data-center workflows.
+    # They only TRIGGER the original workflow; the saved-event gate and
+    # concurrency group prevent repeat Telegram deliveries.
     workflows:
       - "US Data Center Cycle Telegram Watch"
+      - "Texas Data Center Watch Telegram"
     types: [completed]
   workflow_dispatch:
 
