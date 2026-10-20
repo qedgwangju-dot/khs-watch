@@ -52,8 +52,8 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-10-20T09:18:23+09:00",
-    "risk_score": 2,
+    "updated_at_kst": "2026-10-20T14:59:13+09:00",
+    "risk_score": 1,
     "grade_emoji": "🟡",
     "grade_label": "추가인상 가능성 유지",
     "next_mpc_date": "2026-10-22",
@@ -69,7 +69,7 @@
         "prev_core_yoy": 3.4,
         "headline_reaccelerating": false,
         "core_reaccelerating": false,
-        "stale": false
+        "stale": true
       },
       "household": {
         "period": "2026-09",
@@ -79,50 +79,20 @@
         "mortgage_reaccelerating": false,
         "source": "https://www.fsc.go.kr/no010101/87939?srchCtgry=&curPage=&srchKey=&srchText=&srchBeginDt=&srchEndDt=",
         "source_tier": "공식",
-        "stale": false
+        "stale": true
       },
       "housing": null,
       "oil": {
         "date": "2026-10-20",
-        "brent_usd": 109.09,
-        "change_5d_pct": 2.29,
+        "brent_usd": 110.12,
+        "change_5d_pct": 4.19,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
       }
     },
-    "rhetoric_score": 1,
-    "recent_rhetoric": [
-      {
-        "speaker": "신현송",
-        "date": "2026-10-15",
-        "flags": {
-          "hike_needed": false,
-          "neutral_upper": false,
-          "inflation_upside": false,
-          "middle_east_inflation": true,
-          "oct_hike_caution": false,
-          "rate_not_only_tool": false,
-          "macroprudential_mix": false,
-          "hike_timing_speed": false,
-          "k_shaped_low_income": false,
-          "ai_war_inflation": true,
-          "fvi_leverage": false,
-          "ai_investment_duration": false,
-          "next_meeting_hawk": false,
-          "next_meeting_caution": false,
-          "two_hikes_effect": false,
-          "demand_inflation": false,
-          "middle_east_cost": false
-        },
-        "title": "신현송 한은 총재 \"AI 호황이 중동전쟁 압도\"…물가 2% 원칙 지킨다 - diarypoint.com",
-        "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBlcEt1a3ZQMWQ1UWRtVk8tbjhrdXM1clFvVGc5SjhsLXFGd3NMTzBnWU8yU2lESkxTZFBESUwwQTFlbmIwYkU2WlFDN3FuSGl1NldPakh3WjN2azhtSnB0YlpJSElMd0pYcHdj?oc=5",
-        "source_name": "diarypoint.com",
-        "published_at_kst": "2026-10-15T14:59+09:00",
-        "event_hash": "57aded834a024a00c16d363981585008c32cc28e1a8c36533c7aad84c363dce2",
-        "score": 1
-      }
-    ],
+    "rhetoric_score": 0,
+    "recent_rhetoric": [],
     "seen_rhetoric_hashes": [
       "5be88233156f29ad1bc2ecc1a91836e3822516286e2c5ed7f0d36c0f802c6568",
       "cfc9ecc85da2f4cf06e52a4322dc9c7e5764e4f4b5d5a6c343b20b7ddf0d2528",
