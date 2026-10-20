@@ -15,7 +15,7 @@
     }
   },
   "parsons": {
-    "data_well_6000_complete": true,
+    "data_well_6000_complete": false,
     "deep_fission_criticality": false,
     "doe_construct_operate_authorized": false,
     "non_nuclear_demo_complete": false,
@@ -39,6 +39,11 @@
     "https://www.deepfission.com/newsroom/press-releases/detail/118/deep-fission-installs-and-retrieves-full-scale-reactor-canister-using-off-the-shelf-drilling-equipment": "Deep Fission Installs and Retrieves Full-Scale Reactor Canister Using Off-the-Shelf Drilling Equipment",
     "https://www.deepfission.com/newsroom/press-releases/detail/119/deep-fission-publishes-doe-approved-nuclear-safety-design-agreement-for-gravity-pilot-reactor-demonstrating-commitment-to-transparency": "Deep Fission Publishes DOE-Approved Nuclear Safety Design Agreement for Gravity™ Pilot Reactor, Demonstrating Commitment to Transparency",
     "https://www.deepfission.com/newsroom/press-releases/detail/120/deep-fission-and-youngquist-brothers-announce-collaboration-on-deep-large-diameter-borehole-drilling-for-underground-nuclear-reactor-deployment": "Deep Fission and Youngquist Brothers Announce Collaboration on Deep, Large-Diameter Borehole Drilling for Underground Nuclear Reactor Deployment",
+    "https://www.deepfission.com/newsroom/press-releases/detail/121/deep-fission-rejects-distortions-in-short-seller-report": "Deep Fission Rejects Distortions in Short-Seller Report",
+    "https://www.deepfission.com/newsroom/press-releases/detail/122/deep-fission-to-participate-in-upcoming-investor-conferences": "Deep Fission to Participate in Upcoming Investor Conferences",
+    "https://www.deepfission.com/newsroom/press-releases/detail/123/deep-fission-schedules-business-update-call-on-tuesday-october-20-2026": "Deep Fission Schedules Business Update Call on Tuesday, October 20, 2026",
+    "https://www.deepfission.com/newsroom/press-releases/detail/124/deep-fission-honored-by-goldman-sachs-for-entrepreneurship": "Deep Fission Honored by Goldman Sachs for Entrepreneurship",
+    "https://www.deepfission.com/newsroom/press-releases/detail/125/deep-fission-signs-binding-25-year-master-energy-purchase-agreement-for-planned-commercial-project": "Deep Fission Signs Binding 25-Year Master Energy Purchase Agreement for Planned Commercial Project",
     "https://www.deepfission.com/pr-media-kit/press-releases/detail/105/deep-fission-kicks-off-historic-borehole-drilling-for-first-of-a-kind-nuclear-project": "Deep Fission Kicks Off Historic Borehole Drilling for First-of-a-Kind Nuclear Project",
     "https://www.deepfission.com/pr-media-kit/press-releases/detail/108/deep-fission-inc-confidentially-submits-draft-registration-statement-for-primary-offering": "Deep Fission, Inc. Confidentially Submits Draft Registration Statement for Primary Offering",
     "https://www.deepfission.com/pr-media-kit/press-releases/detail/109/advanced-nuclear-company-deep-fission-announces-launch-of-public-offering-of-common-stock": "Advanced Nuclear Company Deep Fission Announces Launch of Public Offering of Common Stock",
@@ -220,6 +225,12 @@
       "form": "8-K",
       "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926109201/tm2625786d1_8k.htm"
     },
+    "0001104659-26-117389": {
+      "date": "2026-10-20",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926117389/tm2627978d1_8k.htm"
+    },
     "0001213900-22-027248": {
       "date": "2022-05-16",
       "description": "QUARTERLY REPORT",
@@ -332,8 +343,9 @@
   "sent_event_ids": [
     "nsda-approved:https://www.deepfission.com/newsroom/press-releases/detail/116/department-of-energy-approves-nuclear-safety-design-agreement-for-deep-fissions-gravity-reactor-designed-to-convert-to-commercial-operation",
     "prototype-canister-on-site:https://www.deepfission.com/newsroom/press-releases/detail/114/deep-fission-prototype-reactor-canister-arrives-at-kansas-site-advancing-reactor-proof-of-concept-program",
-    "sec:0001104659-26-109201"
+    "sec:0001104659-26-109201",
+    "sec:0001104659-26-117389"
   ],
-  "updated_at": "2026-09-21T16:59:48+00:00",
+  "updated_at": "2026-10-20T19:59:04+00:00",
   "version": 3
 }
