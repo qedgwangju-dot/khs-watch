@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "initial_alert_sent": false,
+  "initial_alert_sent": true,
   "metrics": {
     "product": "갤럭시 버즈 온",
     "korean_price_krw": 299000,
@@ -10,6 +10,23 @@
     "global_schedule": "국가별 일정 미공개",
     "units_sold": null
   },
-  "seen_ids": [],
-  "last_alert": null
+  "seen_ids": [
+    "0d25a8d0000a6c7b9df165a2",
+    "669aafd0f75566f77df76946",
+    "716f3dc9880680a34d28824b",
+    "8752fba96e78fc30838b77f2",
+    "9af61d0d5a3310fad5fc7573",
+    "a84ed000785d8f73fefd3050",
+    "e32ac4437418263703879eae",
+    "e39553a5cc4dbe4ec095a2ea",
+    "f4725efcc1dcf0a1f6522aba"
+  ],
+  "last_alert": {
+    "at_kst": "2026-10-20T21:34:48+09:00",
+    "count": 1
+  },
+  "updated_at_kst": "2026-10-20T21:34:48+09:00",
+  "last_scan_count": 9,
+  "last_new_signal_count": 1,
+  "errors": []
 }
