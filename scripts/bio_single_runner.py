@@ -169,6 +169,8 @@ def main() -> int:
         "last_health_notice_date": prev.get("last_health_notice_date", ""),
         "failure_notice_message_id": prev.get("failure_notice_message_id", 0),
         "last_qlex_telegram_message_ids": prev.get("last_qlex_telegram_message_ids", []),
+        "last_jemperli_telegram_message_ids": prev.get("last_jemperli_telegram_message_ids", []),
+        "last_jemperli_telegram_sent_at_kst": prev.get("last_jemperli_telegram_sent_at_kst", ""),
         "last_qlex_telegram_sent_at_kst": prev.get("last_qlex_telegram_sent_at_kst", ""),
         "errors": [],
         "failed_component": "",
@@ -307,6 +309,9 @@ def main() -> int:
             ids = confirmed_telegram_ids(log) if rc == 0 else []
             jemp_handled = rc == 0 and bool(ids)
             hb["jemperli_send_outcome"] = "success" if jemp_handled else "failure"
+            if jemp_handled:
+                hb["last_jemperli_telegram_message_ids"] = ids
+                hb["last_jemperli_telegram_sent_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
             if not jemp_handled:
                 hb["failed_component"] = "Jemperli Telegram 전송"
                 reason = concise_delivery_error(log) if rc != 0 else "Telegram message_id 미확인"
