@@ -115,7 +115,12 @@ def _token() -> str:
                 timeout=(5, 10), allow_redirects=False)
             body = r.json()
             if r.status_code != 200 or body.get("return_code") != 0 or not body.get("token"):
-                raise ValueError("키움 인증 미승인 (HTTP " + str(r.status_code) + ", code " + str(body.get("return_code")) + ")")
+                message = str(body.get("return_msg") or "")
+                for secret in (os.environ["KIWOOM_APPKEY"], os.environ["KIWOOM_SECRETKEY"], body.get("token")):
+                    if secret:
+                        message = message.replace(str(secret), "[redacted]")
+                raise ValueError("키움 인증 미승인 (HTTP " + str(r.status_code) + ", code "
+                                 + str(body.get("return_code")) + "): " + message[:240])
             _TOKEN = str(body["token"])
             _TOKEN_UNTIL = time.time() + 20 * 60
             return _TOKEN
