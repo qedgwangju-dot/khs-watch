@@ -5,7 +5,8 @@
     "ICI|combined": "d6110dceb2cbd321bb4dac9a83b7eeb239cee9d42340f398d4cac8578b35c39d",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
     "Federal Reserve Z.1|household_balance_sheet": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64",
-    "LSEG Lipper via Reuters|lipper": "322bb6e2516a3f327007042522d224c50a05c059d5697b540dd5b8be9b515502"
+    "LSEG Lipper via Reuters|lipper": "322bb6e2516a3f327007042522d224c50a05c059d5697b540dd5b8be9b515502",
+    "Goldman Prime 공개보도 교차검증|goldman_prime": "68150cc88049a070fc72f73d87ae8d9bf1bde0db4db25ba3088f92a6dfba5a61"
   },
   "values": {
     "ICI|mmf": {
@@ -116,16 +117,35 @@
       },
       "us_equity_url": "https://www.channelnewsasia.com/business/money-market-funds-attract-massive-inflows-bond-selloff-bit-6445901",
       "fingerprint": "322bb6e2516a3f327007042522d224c50a05c059d5697b540dd5b8be9b515502"
+    },
+    "Goldman Prime 공개보도 교차검증|goldman_prime": {
+      "source": "Goldman Prime 공개보도 교차검증",
+      "kind": "goldman_prime",
+      "period": "October 15, 2026",
+      "reference_week": "2026-10-15",
+      "reference_week_verified": true,
+      "published": "2026-10-20",
+      "url": "https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade",
+      "comparison_note": "복수 공개 보도의 인용치. Goldman 고객 전용 원자료·업종별 표준편차 수치 미확보",
+      "metrics": {
+        "tech_net_allocation_pct": 23.5,
+        "net_leverage_pct": 48.6
+      },
+      "crosschecked_sources": [
+        "https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade",
+        "https://www.tokenpost.com/news/investing/35230"
+      ],
+      "fingerprint": "68150cc88049a070fc72f73d87ae8d9bf1bde0db4db25ba3088f92a6dfba5a61"
     }
   },
-  "updated_at_kst": "2026-10-17T01:38:06.918620+09:00",
+  "updated_at_kst": "2026-10-20T19:53:03.467801+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-10-16",
-    "sp500_last_value": 7693.25,
+    "sp500_last_date": "2026-10-19",
+    "sp500_last_value": 7690.72998046875,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -1.61,
+    "sp500_drawdown_pct": -1.64,
     "hartnett_tracking_version": "2026-10-09-v1",
     "hartnett_treasury_date": "2026-10-19",
     "hartnett_10y_pct": 5.15,
