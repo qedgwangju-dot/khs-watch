@@ -2,7 +2,7 @@
 import os, re, json, hashlib, html
 from io import StringIO
 from pathlib import Path
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone, date
 from zoneinfo import ZoneInfo
 from urllib.parse import quote, urljoin
 from email.utils import parsedate_to_datetime
