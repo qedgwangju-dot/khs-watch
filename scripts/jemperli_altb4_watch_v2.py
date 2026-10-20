@@ -51,7 +51,8 @@ _original_recent = base.is_recent
 
 
 def is_recent(item: base.Item) -> bool:
-    return is_sc_sapphire(item) or _original_recent(item)
+    # Persist significant official events across a temporary outage beyond the news age window.
+    return is_fda_approved_rectal(item) or is_sc_sapphire(item) or _original_recent(item)
 
 
 def is_current_rectal_priority_story(item: base.Item) -> bool:
