@@ -1736,6 +1736,7 @@ class Watch:
                 "sent_drop":abs(float(info["drop"])),"trigger":info,
             }
             msg_id=await self._send_event("kosdaq_shock_start", ep, now_t, self.build_kosdaq_drop_alert("start",ep,now_t,price))
+            ep["sent_drop"]=self._approved_drop(msg_id, ep["sent_drop"])
             self.kosdaq_episode=ep
             self.msg_ids.append(msg_id)
             self._record_delivery("kosdaq_shock_start",msg_id,ep,now_t)
@@ -2088,6 +2089,7 @@ class Watch:
                     "price_only_reason": "missing channel snapshot at/before event start",
                 }
                 msg_id = await self._send_event("price_only_start", ep, now_t, self.build_alert("start", ep, now_t, cur))
+                ep["sent_drop"] = self._approved_drop(msg_id, ep["sent_drop"])
                 self.episode = ep
                 self.msg_ids.append(msg_id)
                 self._record_delivery("price_only_start", msg_id, self.episode, now_t)
@@ -2108,6 +2110,7 @@ class Watch:
                     "price_only_reason": f"start channel alignment exceeds {MAX_FLOW_ALIGNMENT_SEC}s",
                 }
                 msg_id = await self._send_event("price_only_start", ep, now_t, self.build_alert("start", ep, now_t, cur))
+                ep["sent_drop"] = self._approved_drop(msg_id, ep["sent_drop"])
                 self.episode = ep
                 self.msg_ids.append(msg_id)
                 self._record_delivery("price_only_start", msg_id, self.episode, now_t)
@@ -2117,6 +2120,7 @@ class Watch:
                             "low_ts": now_t, "low_price": cur, "sent_drop": abs(float(info["drop"])),
                             "alerted": True, "trigger": info}
             msg_id = await self._send_event("start", ep, now_t, self.build_alert("start", ep, now_t, cur))
+            ep["sent_drop"] = self._approved_drop(msg_id, ep["sent_drop"])
             self.episode = ep
             self.msg_ids.append(msg_id)
             self._record_delivery("start", msg_id, self.episode, now_t)

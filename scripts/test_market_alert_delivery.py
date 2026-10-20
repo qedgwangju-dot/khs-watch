@@ -253,6 +253,36 @@ class EventStateTests(unittest.TestCase):
         self.assertEqual([r["market"] for r in got], ["KOSPI", "KOSDAQ"] * 3)
         self.assertEqual(got[-1]["actor"], "기관")
 
+    def test_reused_kospi_start_receipt_keeps_its_approved_drop(self):
+        now = time.time()
+        for mode in ("complete", "missing", "stale"):
+            with self.subTest(mode=mode):
+                w = self.worker()
+                w.idx = deque([(now, 99.2)])
+                w._trigger = lambda: (True, {"peak_ts": now-300, "peak": 100.0,
+                                            "cur_ts": now, "cur": 99.2, "drop": -.8})
+                w._flow_channel_near = lambda ts, _key: None if mode == "missing" else ({}, ts-(45 if mode == "stale" else 0))
+                w._record_delivery = lambda *_a, **_k: None
+                with patch.object(watch, "telegram_send", return_value=123), \
+                     patch.object(watch, "receipt_for", return_value={"context": {"observed_drop": .5}}):
+                    asyncio.run(w.evaluate())
+                self.assertEqual(w.episode["sent_drop"], .5)
+
+    def test_reused_kosdaq_start_receipt_keeps_its_approved_drop(self):
+        now = time.time()
+        w = self.worker()
+        w.kosdaq_regular_price_ready = True
+        w.kosdaq_opening_gap_sent = True
+        w.kosdaq_idx = deque([(now, 99.2)])
+        w._kosdaq_trigger = lambda: (True, {"peak_ts": now-300, "peak": 100.0,
+                                           "cur_ts": now, "cur": 99.2, "drop": -.8})
+        w.build_kosdaq_drop_alert = lambda *_a: "offline fixture"
+        w._record_delivery = lambda *_a, **_k: None
+        with patch.object(watch, "telegram_send", return_value=123), \
+             patch.object(watch, "receipt_for", return_value={"context": {"observed_drop": .5}}):
+            asyncio.run(watch.Watch.maybe_alert_kosdaq_drop(w))
+        self.assertEqual(w.kosdaq_episode["sent_drop"], .5)
+
     def test_receipt_and_event_log_are_linked_without_exposing_recipient_id(self):
         w = self.worker()
         with tempfile.TemporaryDirectory() as directory:
