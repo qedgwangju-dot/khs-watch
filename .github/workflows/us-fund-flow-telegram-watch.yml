@@ -85,7 +85,7 @@ jobs:
           assert parse(investing,date(2026,10,19))==(date(2026,10,15),23.5,48.6)
           assert parse(hedgeweek,date(2026,10,20))==(date(2026,10,15),23.5,48.6)
           assert parse(investing.replace("Oct. 15","Oct. 22"),date(2026,10,19)) is None
-          assert parse(investing.replace("prime desk","equity desk"),date(2026,10,19)) is None
+          assert parse(investing.replace("prime desk","equity desk").replace("prime book","equity book"),date(2026,10,19)) is None
           assert parse(investing.replace("five trading sessions through Oct. 15","last week"),
                        date(2026,10,19)) is None
           result=scope["parse_goldman_prime_public"]()
