@@ -65,6 +65,9 @@ jobs:
               @staticmethod
               def now(tz):
                   return datetime(2026,10,20,tzinfo=tz)
+              @staticmethod
+              def strptime(value,pattern):
+                  return datetime.strptime(value,pattern)
           investing=("Goldman Sachs prime desk found hedge funds cut technology stock positions "
                      "in five trading sessions through Oct. 15. Net allocation to the sector stands "
                      "at 23.5% of the global prime book. Their net leverage fell to a one-year low of 48.6%.")
