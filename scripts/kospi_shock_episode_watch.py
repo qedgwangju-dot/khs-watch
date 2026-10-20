@@ -32,6 +32,7 @@ from market_flow_channels import (
     program_current as market_program_current,
 )
 from market_program_close import collect as collect_program_close, render as render_program_close
+from market_alert_delivery import delivery_context, receipt_for, send_message
 
 KST = ZoneInfo("Asia/Seoul")
 BASE = "https://openapi.ls-sec.co.kr:8080"
@@ -180,76 +181,7 @@ def link(url: str, label: str) -> str:
 
 
 def telegram_send(text: str) -> int:
-    token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
-    chat_id = ((os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or "").strip()
-               or (os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip())
-    expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
-    if not token or not chat_id:
-        raise RuntimeError("Telegram token/chat id missing")
-
-    actual = ""
-    last_error = ""
-    for attempt in range(5):
-        try:
-            with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as r:
-                ident = json.loads(r.read().decode("utf-8"))
-            actual = str((ident.get("result") or {}).get("username") or "")
-            if not ident.get("ok") or (expected and actual.lower() != expected.lower()):
-                raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
-            break
-        except RuntimeError:
-            raise
-        except Exception as exc:
-            last_error = f"Telegram getMe transport error: {type(exc).__name__}: {exc}"
-            if attempt >= 4:
-                raise RuntimeError(last_error) from exc
-            time.sleep(min(8.0, 1.0 * (2 ** attempt)))
-
-    payload = urllib.parse.urlencode({
-        "chat_id": chat_id, "text": text, "parse_mode": "HTML",
-        "disable_web_page_preview": "true",
-    }).encode("utf-8")
-
-    for attempt in range(6):
-        try:
-            req = urllib.request.Request(
-                f"https://api.telegram.org/bot{token}/sendMessage",
-                data=payload, method="POST",
-            )
-            with urllib.request.urlopen(req, timeout=30) as r:
-                out = json.loads(r.read().decode("utf-8"))
-            if out.get("ok"):
-                message_id = int(out["result"]["message_id"])
-                print(
-                    f"telegram_delivery_confirmed=true bot=@{actual} message_id={message_id}",
-                    flush=True,
-                )
-                return message_id
-            code = int(out.get("error_code") or 0)
-            last_error = f"Telegram rejected message: {out}"
-            if code == 429 or code >= 500:
-                retry_after = fnum(((out.get("parameters") or {}).get("retry_after")))
-                time.sleep(min(30.0, retry_after if retry_after is not None else 1.5 * (2 ** attempt)))
-                continue
-            raise RuntimeError(last_error)
-        except urllib.error.HTTPError as exc:
-            try:
-                body = exc.read().decode("utf-8", errors="replace")
-            except Exception:
-                body = ""
-            last_error = f"Telegram HTTP {exc.code}: {body[:300]}"
-            if attempt < 5 and (exc.code == 429 or 500 <= exc.code < 600):
-                time.sleep(min(30.0, 1.5 * (2 ** attempt)))
-                continue
-            raise RuntimeError(last_error) from exc
-        except RuntimeError:
-            raise
-        except Exception as exc:
-            last_error = f"Telegram send transport error: {type(exc).__name__}: {exc}"
-            if attempt >= 5:
-                raise RuntimeError(last_error) from exc
-            time.sleep(min(30.0, 1.5 * (2 ** attempt)))
-    raise RuntimeError(last_error or "Telegram send failed after retries")
+    return send_message(text)
 
 
 def get_token() -> str:
@@ -1502,11 +1434,13 @@ class Watch:
 
     async def _run_enrichment(self, ep: dict[str, Any], att: dict[str, Any]) -> None:
         async with self.enrichment_sem:
+            source_ready = False
             try:
                 text, detail = await asyncio.to_thread(
                     build_enrichment, self.token, ep, att
                 )
-                msg_id = await asyncio.to_thread(telegram_send, text)
+                source_ready = True
+                msg_id = await self._send_event("enrichment", ep, float(ep.get("low_ts") or time.time()), text)
                 self.enrichment_msg_ids.append(msg_id)
                 self._record_delivery("enrichment", msg_id, ep, float(ep.get("low_ts") or time.time()))
                 self.raw["last_enrichment"] = {
@@ -1521,14 +1455,17 @@ class Watch:
                 }
             except Exception as exc:
                 self.raw["last_enrichment_error"] = f"{type(exc).__name__}: {exc}"
+                self.raw["last_enrichment_error_phase"] = "delivery" if source_ready else "source"
                 print(f"kospi_enrichment_error={type(exc).__name__}: {exc}", flush=True)
 
     async def _run_kosdaq_enrichment(self, ep: dict[str,Any], att: dict[str,Any]) -> None:
         """기존 코스피 정밀분해의 송출·인계 경로를 재사용하되 시장은 코스닥으로 한정."""
         async with self.enrichment_sem:
+            source_ready = False
             try:
                 text, detail = await asyncio.to_thread(build_kosdaq_enrichment,self.token,ep,att)
-                msg_id = await asyncio.to_thread(telegram_send,text)
+                source_ready = True
+                msg_id = await self._send_event("kosdaq_enrichment", ep, float(ep.get("low_ts") or time.time()), text)
                 self.enrichment_msg_ids.append(msg_id)
                 self._record_delivery("kosdaq_enrichment",msg_id,ep,float(ep.get("low_ts") or time.time()))
                 self.raw["last_kosdaq_enrichment"]={
@@ -1543,7 +1480,12 @@ class Watch:
                 }
             except Exception as exc:
                 self.raw["last_kosdaq_enrichment_error"]=f"{type(exc).__name__}: {exc}"
+                self.raw["last_kosdaq_enrichment_error_phase"] = "delivery" if source_ready else "source"
                 print(f"kosdaq_enrichment_error={type(exc).__name__}: {exc}",flush=True)
+                if source_ready:
+                    # A send/checkpoint failure is not a missing market-data source.
+                    # Preserve its receipt/uncertainty instead of sending a false source hold.
+                    return
                 # 원자료가 부족할 때 코스피 종목·선물 수급을 대신 쓰지 않는다.
                 # Telegram을 통한 오류 상태 고지는 별도 후보 숫자를 꾸며내지 않는다.
                 try:
@@ -1553,7 +1495,7 @@ class Watch:
                         "• 코스닥 업종·종목·ETF에 필요한 LS 자료 확보 실패 — 매도종목을 추정하지 않습니다.",
                         "• 코스피200 선물과 코스피 종목 자료를 코스닥 근거로 대체하지 않습니다.",
                     ]
-                    msg_id=await asyncio.to_thread(telegram_send,"\n".join(lines))
+                    msg_id=await self._send_event("kosdaq_enrichment_hold", ep, float(ep.get("low_ts") or time.time()), "\n".join(lines))
                     self.enrichment_msg_ids.append(msg_id)
                     self._record_delivery("kosdaq_enrichment_hold",msg_id,ep,float(ep.get("low_ts") or time.time()))
                 except Exception as notify_exc:
@@ -1779,7 +1721,7 @@ class Watch:
                     "• 전일 종가→시가 갭과 개장 이후 현물 순매도를 별도로 판정합니다.",
                     "• "+link(KOSDAQ_URL,"코스닥 지수"),
                 ])
-                msg_id=await asyncio.to_thread(telegram_send,text)
+                msg_id=await self._send_event("kosdaq_open_gap", {"market":"KOSDAQ","start_ts":self.session_open_ts}, now_t, text)
                 self.msg_ids.append(msg_id)
                 self.kosdaq_opening_gap_sent=True
                 self._record_delivery("kosdaq_open_gap",msg_id,
@@ -1793,9 +1735,7 @@ class Watch:
                 "start_price":info["peak"],"low_ts":now_t,"low_price":price,
                 "sent_drop":abs(float(info["drop"])),"trigger":info,
             }
-            msg_id=await asyncio.to_thread(
-                telegram_send,self.build_kosdaq_drop_alert("start",ep,now_t,price)
-            )
+            msg_id=await self._send_event("kosdaq_shock_start", ep, now_t, self.build_kosdaq_drop_alert("start",ep,now_t,price))
             self.kosdaq_episode=ep
             self.msg_ids.append(msg_id)
             self._record_delivery("kosdaq_shock_start",msg_id,ep,now_t)
@@ -1806,10 +1746,8 @@ class Watch:
             ep["low_ts"]=now_t
         total_drop=abs(pct(float(ep["start_price"]),price) or 0.0)
         if total_drop>=float(ep.get("sent_drop",0.0))+0.50:
-            msg_id=await asyncio.to_thread(
-                telegram_send,self.build_kosdaq_drop_alert("expand",ep,now_t,price)
-            )
-            ep["sent_drop"]=total_drop
+            msg_id=await self._send_event("kosdaq_shock_expand", ep, now_t, self.build_kosdaq_drop_alert("expand",ep,now_t,price))
+            ep["sent_drop"]=self._approved_drop(msg_id, total_drop)
             self.msg_ids.append(msg_id)
             self._record_delivery("kosdaq_shock_expand",msg_id,ep,now_t)
         low_age=now_t-float(ep["low_ts"])
@@ -1825,9 +1763,7 @@ class Watch:
                or (low_age>=120 and recovery_ratio>=0.45)
                or (now_t-float(ep["start_ts"])>=MAX_EPISODE_SEC and low_age>=600))
         if ended:
-            msg_id=await asyncio.to_thread(
-                telegram_send,self.build_kosdaq_drop_alert("end",ep,now_t,price)
-            )
+            msg_id=await self._send_event("kosdaq_shock_end", ep, now_t, self.build_kosdaq_drop_alert("end",ep,now_t,price))
             self.kosdaq_episode=None
             self.kosdaq_last_episode_end_ts=now_t
             self.msg_ids.append(msg_id)
@@ -1938,8 +1874,10 @@ class Watch:
                 "KOSDAQ", actor, delta, (pair["start_ts"], pair["end_ts"]), start)
             text = self.build_kosdaq_flow_surge_alert(actor, delta, pair, now_ts, industries)
             confirmation_first = dict(self.kosdaq_surge_pending[actor])
-            msg_id = await asyncio.to_thread(
-                telegram_send, text
+            msg_id = await self._send_event(
+                "kosdaq_flow_surge", {"market": "KOSDAQ", "actor": actor,
+                                      "start_ts": pair["start_ts"], "low_ts": pair["end_ts"]},
+                pair["end_ts"], text,
             )
             self.msg_ids.append(msg_id)
             self.kosdaq_surge_sent_at[actor] = now_ts
@@ -2044,8 +1982,10 @@ class Watch:
             industries = await self._surge_industry_context("KOSPI", actor, cand.get("spot"), spot_window, start)
             text = self.build_flow_surge_alert(cand, now_ts, industries)
             confirmation_first = dict(self.surge_pending[actor])
-            msg_id = await asyncio.to_thread(
-                telegram_send, text
+            msg_id = await self._send_event(
+                "flow_surge", {"market": "KOSPI", "actor": actor,
+                               "start_ts": sample_ts - SURGE_WINDOW_SEC, "low_ts": sample_ts},
+                sample_ts, text,
             )
             self.msg_ids.append(msg_id)
             self.surge_sent_at[actor] = now_ts
@@ -2114,15 +2054,15 @@ class Watch:
             snap = self.raw.get("last_price_snapshot") or {}
             opct = fnum((snap.get("KOSPI") or {}).get("open_pct"))
             if opct is not None and opct <= OPEN_GAP_ALERT_PCT:
-                msg_id = await asyncio.to_thread(telegram_send, self.build_open_gap_alert(snap))
+                msg_id = await self._send_event("open_gap", {"start_ts":self.session_open_ts}, now_t, self.build_open_gap_alert(snap))
                 self.msg_ids.append(msg_id)
                 self.opening_gap_sent = True
                 self.raw["opening_gap_alert"] = {
                     "message_id": msg_id, "open_pct": opct,
                     "sent_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
                 }
-                # 개장 경보는 일반 사건 _record_delivery 경로를 거치지 않으므로 즉시 인계한다.
-                self._checkpoint_handoff(force=True)
+                self._record_delivery("open_gap", msg_id,
+                                      {"start_ts": self.session_open_ts, "low_ts": now_t}, now_t)
         if self.episode is None:
             hit, info = self._trigger()
             if not hit:
@@ -2141,15 +2081,14 @@ class Watch:
                     "cur_ts": info["cur_ts"], "cur": info["cur"],
                     "drop": info["drop"], "reason": "missing channel snapshot at/before event start",
                 }
-                self.episode = {
+                ep = {
                     "start_ts": info["peak_ts"], "start_price": info["peak"],
                     "low_ts": now_t, "low_price": cur, "sent_drop": abs(float(info["drop"])),
                     "alerted": True, "trigger": info, "price_only": True,
                     "price_only_reason": "missing channel snapshot at/before event start",
                 }
-                msg_id = await asyncio.to_thread(
-                    telegram_send, self.build_alert("start", self.episode, now_t, cur)
-                )
+                msg_id = await self._send_event("price_only_start", ep, now_t, self.build_alert("start", ep, now_t, cur))
+                self.episode = ep
                 self.msg_ids.append(msg_id)
                 self._record_delivery("price_only_start", msg_id, self.episode, now_t)
                 return
@@ -2162,23 +2101,23 @@ class Watch:
                     "peak_ts": info["peak_ts"], "channel_alignment_sec": channel_gaps,
                     "reason": f"start channel alignment exceeds {MAX_FLOW_ALIGNMENT_SEC}s",
                 }
-                self.episode = {
+                ep = {
                     "start_ts": info["peak_ts"], "start_price": info["peak"],
                     "low_ts": now_t, "low_price": cur, "sent_drop": abs(float(info["drop"])),
                     "alerted": True, "trigger": info, "price_only": True,
                     "price_only_reason": f"start channel alignment exceeds {MAX_FLOW_ALIGNMENT_SEC}s",
                 }
-                msg_id = await asyncio.to_thread(
-                    telegram_send, self.build_alert("start", self.episode, now_t, cur)
-                )
+                msg_id = await self._send_event("price_only_start", ep, now_t, self.build_alert("start", ep, now_t, cur))
+                self.episode = ep
                 self.msg_ids.append(msg_id)
                 self._record_delivery("price_only_start", msg_id, self.episode, now_t)
                 return
 
-            self.episode = {"start_ts": info["peak_ts"], "start_price": info["peak"],
+            ep = {"start_ts": info["peak_ts"], "start_price": info["peak"],
                             "low_ts": now_t, "low_price": cur, "sent_drop": abs(float(info["drop"])),
                             "alerted": True, "trigger": info}
-            msg_id = await asyncio.to_thread(telegram_send, self.build_alert("start", self.episode, now_t, cur))
+            msg_id = await self._send_event("start", ep, now_t, self.build_alert("start", ep, now_t, cur))
+            self.episode = ep
             self.msg_ids.append(msg_id)
             self._record_delivery("start", msg_id, self.episode, now_t)
             return
@@ -2187,8 +2126,8 @@ class Watch:
             ep["low_price"] = cur; ep["low_ts"] = now_t
         total_drop = abs(pct(float(ep["start_price"]), cur) or 0.0)
         if total_drop >= float(ep.get("sent_drop", 0.0)) + 0.50:
-            ep["sent_drop"] = total_drop
-            msg_id = await asyncio.to_thread(telegram_send, self.build_alert("expand", ep, now_t, cur))
+            msg_id = await self._send_event("expand", ep, now_t, self.build_alert("expand", ep, now_t, cur))
+            ep["sent_drop"] = self._approved_drop(msg_id, total_drop)
             self.msg_ids.append(msg_id)
             self._record_delivery("expand", msg_id, ep, now_t)
         low_age = now_t - float(ep["low_ts"])
@@ -2203,7 +2142,7 @@ class Watch:
                  (now_t - float(ep["start_ts"]) >= MAX_EPISODE_SEC and low_age >= 600))
         if ended:
             final_att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
-            msg_id = await asyncio.to_thread(telegram_send, self.build_end(ep, now_t, cur))
+            msg_id = await self._send_event("end", ep, now_t, self.build_end(ep, now_t, cur))
             self.msg_ids.append(msg_id)
             # 완료 전송이 확인되면 활성 사건을 먼저 비워 인계 상태에 원상태가 남지 않게 한다.
             # 기존 코드는 종료 전송 직후 체크포인트에 활성 사건을 저장할 수 있었다.
@@ -2223,6 +2162,30 @@ class Watch:
             return
         self.save_handoff(self.handoff_path)
         self.last_handoff_save_ts = now
+
+    async def _send_event(self, stage: str, ep: dict[str, Any], observed_ts: float,
+                          text: str) -> int:
+        market = str(ep.get("market") or ("KOSDAQ" if stage.startswith("kosdaq") else "KOSPI"))
+        series = getattr(self, "kosdaq_idx" if market == "KOSDAQ" else "idx", [])
+        current_price = series[-1][1] if series else None
+        context = {
+            "market": market, "stage": stage, "actor": str(ep.get("actor") or ""),
+            "event_start_ts": ep.get("start_ts"), "event_low_ts": ep.get("low_ts"),
+            "observed_ts": observed_ts,
+            "observed_drop": abs(pct(ep.get("start_price"), current_price) or 0.0),
+        }
+        if stage in {"expand", "kosdaq_shock_expand"}:
+            context["expansion_from"] = ep.get("sent_drop", 0.0)
+        with delivery_context(**context):
+            return await asyncio.to_thread(telegram_send, text)
+
+    @staticmethod
+    def _approved_drop(message_id: int, fallback: float) -> float:
+        # A persisted approval may be reused after a checkpoint failure. Advance
+        # only to the drawdown in that actual message, not a later unseen tick.
+        receipt = receipt_for(message_id) or {}
+        value = (receipt.get("context") or {}).get("observed_drop")
+        return float(value) if value is not None else fallback
 
     def _record_delivery(self, stage: str, message_id: int, ep: dict[str, Any],
                          observed_ts: float, evidence: dict[str, Any] | None = None) -> None:
@@ -2248,9 +2211,47 @@ class Watch:
             evidence = rendered
         if evidence is not None:
             record["evidence"] = evidence
+        receipt = receipt_for(message_id)
+        if receipt and (receipt.get("context") or {}).get("stage") == stage:
+            record["delivery_receipt"] = {k: v for k, v in receipt.items() if k != "request_html"}
+            record["request_body_sha256"] = receipt["request_body_sha256"]
+            record["recipient_sha256"] = receipt["returned_recipient_sha256"]
+            actual = receipt.get("context") or {}
+            for name in ("event_start_ts", "event_low_ts", "observed_ts"):
+                record[name] = actual.get(name)
+            record["event_start_kst"] = fmt_clock(record["event_start_ts"])
+            record["event_low_kst"] = fmt_clock(record["event_low_ts"])
+            record["observed_kst"] = fmt_clock(record["observed_ts"])
+            if DELIVERY_LOG.exists():
+                for line in DELIVERY_LOG.read_text(encoding="utf-8").splitlines():
+                    previous = json.loads(line)
+                    if previous.get("message_id") == message_id:
+                        prior_key = (previous.get("delivery_receipt") or {}).get("delivery_key")
+                        if prior_key != receipt.get("delivery_key"):
+                            raise RuntimeError("Conflicting market delivery receipt for the same message_id")
+                        self._checkpoint_handoff(force=True)
+                        return
         with DELIVERY_LOG.open("a", encoding="utf-8") as fp:
             fp.write(json.dumps(record, ensure_ascii=False) + "\n")
         self._checkpoint_handoff(force=True)
+
+    def _log_market_health(self) -> None:
+        now = time.time()
+        if getattr(self, "test", False) or now - getattr(self, "_last_health_log", 0.0) < 60:
+            return
+        self._last_health_log = now
+        def age(value):
+            return round(now - value, 1) if value is not None else None
+        state = {
+            "observed_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
+            "kospi_price_age_sec": age(getattr(self, "last_idx_tick_ts", None)),
+            "kospi_futures_price_age_sec": age(getattr(self, "last_fut_tick_ts", None)),
+            "kospi_flow_success_age_sec": age(getattr(self, "last_flow_success_ts", None)),
+            "kosdaq_price_age_sec": age(self.kosdaq_idx[-1][0] if self.kosdaq_idx else None),
+            "kospi_episode_active": self.episode is not None,
+            "kosdaq_episode_active": self.kosdaq_episode is not None,
+        }
+        print("market_watch_health=" + json.dumps(state, ensure_ascii=False), flush=True)
 
     def save_handoff(self, path: str | Path | None) -> None:
         if not path:
@@ -2563,6 +2564,7 @@ class Watch:
                     if self.last_flow_success_ts is None or now_ts - self.last_flow_success_ts > 180:
                         raise RuntimeError("LS spot/futures/program flow snapshot stale >180s")
 
+            self._log_market_health()
             await asyncio.sleep(0.6)
 
         # Reuse only existing close messages, after the actual session close.
@@ -2575,10 +2577,7 @@ class Watch:
             end_ts, end_price = self.idx[-1]
             final_att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
             close_text = self.build_end(ep, end_ts, end_price, session_close=True)
-            msg_id = await asyncio.to_thread(
-                telegram_send,
-                close_text,
-            )
+            msg_id = await self._send_event("close", ep, end_ts, close_text)
             self.msg_ids.append(msg_id)
             self.episode = None
             self.last_episode_end_ts = end_ts
@@ -2598,9 +2597,7 @@ class Watch:
             ep=self.kosdaq_episode
             end_ts,end_price=self.kosdaq_idx[-1]
             close_text=self.build_kosdaq_drop_alert("close",ep,end_ts,end_price,session_close=True)
-            msg_id=await asyncio.to_thread(
-                telegram_send,close_text
-            )
+            msg_id=await self._send_event("kosdaq_shock_close", ep, end_ts, close_text)
             self.kosdaq_episode=None
             self.kosdaq_last_episode_end_ts=end_ts
             self.msg_ids.append(msg_id)
