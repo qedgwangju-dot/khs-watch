@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "initial_alert_sent": false,
+  "baseline_as_of": "2026-10-20",
+  "metrics": {
+    "fold8_demand_change_pct": 16,
+    "fold8_demand_context": "Forbes 삼성 경영진 인터뷰·출시 이후 고객수요·절대판매대수 미공개",
+    "samsung_foldable_google_search_change_pct": 300,
+    "samsung_search_context": "최근 한 달 구글 검색 관심도·판매대수 아님",
+    "fold8_korea_sales_wow_pct": 10,
+    "fold8_korea_context": "9월 17일 국내 전주 대비 판매 보도",
+    "idc_2026_foldable_m": 22.9,
+    "idc_2026_foldable_yoy_pct": 12.6,
+    "trendforce_2026_foldable_m": 20.2,
+    "trendforce_2026_foldable_yoy_pct": 0.5,
+    "official_launch_date": "2026-10-23"
+  },
+  "access": {
+    "한국": "reservation_only",
+    "일본": "reservation_only"
+  },
+  "seen_ids": [],
+  "last_alert": null
+}
