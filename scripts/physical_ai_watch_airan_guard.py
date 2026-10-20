@@ -6599,7 +6599,6 @@ ATLAS_COST_20261019_RECOVERY = "DIRECT_BD_CFO_ATLAS_ACTUATOR_BOM_70_20261019"
 EKA_ROBOTICS_20261020_RECOVERY = "DIRECT_EKA_SERIESA_150M_SAMSUNG_NEXT_20261020"
 ATLAS_COST_FORTUNE = "https://fortune.com/2026/10/19/how-boston-dynamics-turning-robots-into-a-real-business-cfo/"
 EKA_ROBOTICS_FUNDING = "https://ekarobotics.com/blog/eka-robotics-raises-150m-to-build-superhuman-intelligence-for-the-physical-world"
-ATLAS_EKA_FX = 1327.21  # source rate observed 2026-10-20; historical, never "live"
 _ATLAS_BD_SOURCE = {"Boston Dynamics", "보스턴다이내믹스"}
 _EKA_COMPANY_SOURCES = {"Eka Robotics", "EKA Robotics"}
 _EKA_RESEARCH_SOURCE = {"Rainbow Robotics", "레인보우로보틱스"}
@@ -6684,8 +6683,8 @@ def _atlas_eka_recovery(q: str) -> list[dict]:
                 "10월 신규 5만개 부품 주문·양산 납품 공시는 아니다. "
                 "현대차·기아 시설 내 그룹 전체 로봇 약 50,000대 배치 구상을 언급했으나 "
                 "Atlas 50,000대 확정 공급계약·납품 수량으로 볼 근거는 없다. "
-                "Boston Dynamics Spot 기본 플랫폼은 100,000달러(약 1억3,272만원), "
-                "옵션 포함 최고 300,000달러(약 3억9,816만원) 수준이라는 설명이다. "
+                "Boston Dynamics Spot 기본 플랫폼은 100,000달러, "
+                "옵션 포함 최고 300,000달러 수준이라는 설명이다. "
                 "이는 Spot 가격이지 Atlas 판매가격이나 Atlas 액추에이터 단가가 아니다. "
                 "현대모비스 액추에이터 실제 총원가·공급단가·영업이익·공급 대수는 미공개다. "
                 "원가가정: 액추에이터가 부품원가 70%라면 액추에이터 단가 10% 하락 시 "
@@ -6706,7 +6705,7 @@ def _atlas_eka_recovery(q: str) -> list[dict]:
             "title":"Eka Robotics 시리즈 A 1억5000만달러 투자 유치, Samsung Next 참여 공식 발표",
             "description":(
                 "2026-10-20 Eka Robotics 회사 공식자료: 150 million dollars "
-                "Series A(1억5000만달러, 약 1,991억원)는 전체 라운드 조달액이다. "
+                "Series A(1억5000만달러)는 전체 라운드 조달액이다. "
                 "a16z와 F-Prime 공동 주도, Samsung Next 투자 참여 공식 명시. "
                 "삼성넥스트의 개별 투자액과 투자 지분율은 미공개이며 "
                 "삼성전자 로봇 매출·삼성넥스트 단독 1,991억원 투자가 아니다. "
@@ -6721,7 +6720,7 @@ def _atlas_eka_recovery(q: str) -> list[dict]:
                 "이번 새 라운드에서 RB-Y1을 추가 발주했다는 뜻은 아니다. "
                 "자금은 로봇 모델·고객 배치 확대를 목적으로 하지만 개별 집행액은 미공개다. "
                 "TechCrunch 2026-10-20 보도에 따르면 투자 후 기업가치 14억5000만달러 "
-                "(약 1조9,245억원)는 추정 투자평가액이지 매출이 아니다. "
+                "는 추정 투자평가액이지 매출이 아니다. "
                 "실제 유료 고객·수익·반복 사용권 금액은 확인되지 않았다."
             ),
             "source":"Eka Robotics",
@@ -6803,14 +6802,14 @@ def _ae_meaning(cat: str) -> str:
             "액추에이터 약 70%, 현대모비스 원가 수준 공급을 언급했습니다. "
             "1월 공식 공급 협력의 경제성 설명이 구체화된 것이지 신규 계약은 아닙니다. "
             "그룹 내 약 5만 대 배치는 여러 로봇의 계획이며 Atlas 5만 대 확정 발주가 아닙니다. "
-            "Spot 판매가는 기본 10만달러(약 1억3,272만원)~옵션 30만달러"
-            "(약 3억9,816만원)이고 Atlas 가격·부품단가로 사용할 수 없습니다. "
+            "Spot 판매가는 기본 10만달러~옵션 포함 30만달러이고 "
+            "Atlas 가격·부품단가로 사용할 수 없습니다. "
             "액추에이터 가격이 10% 낮아지면 다른 조건 일정 시 Atlas BOM은 "
             "약 7% 낮아지는 원가 민감도(70%×10%)입니다."
         )
     if cat=="Eka Robotics · 시리즈 A 공식 조달·삼성넥스트 참여":
         return (
-            "Eka 회사 공식 발표로 시리즈 A 전체 1억5000만달러(약 1,991억원)를 조달하고 "
+            "Eka 회사 공식 발표로 시리즈 A 전체 1억5000만달러를 조달하고 "
             "Samsung Next가 공동 투자자로 참여했습니다. 개별 투자액·지분율 미공개. "
             "Eka는 힘 감지 로봇손·시각-힘-행동 VFA 모델을 연구하며 "
             "시간당 1,500회 조작(인간 기준 600회)의 2.5배는 회사 주장 성능입니다. "
@@ -6887,9 +6886,9 @@ def _ae_title(title: str,source: str) -> str:
 
 def _ae_tag(group: str) -> str:
     if group=="atlas_actuator_bom":
-        return "Atlas 액추에이터 원가"
+        return "Atlas 원가"
     if group=="eka_dexterous_funding":
-        return "Eka–Samsung Next·레인보우"
+        return "로봇 손·자금조달"
     return _ae_prev_tag(group)
 
 
