@@ -4819,6 +4819,27 @@
       "telegram_core_fact": "관리기관별 징수율은 한국산업기술진흥협회가 3.9%로 가장 낮았고 정보통신기획평가원 6%, 한국연구재단 13.8%, 연구개발특구진흥재단 15%, 과학기술사업화진흥원 16.6% 순이다.",
       "title": "정부 R&D 기술료 징수율 21.6%…기업 3곳중 2곳 10%도 안내"
     },
+    "core:108ee8c2bc9beb853b7fe607": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637739",
+      "source": "이투데이",
+      "source_body_digest": "d5759bd72619b788909be9e5e69c0e816a3bf4cd0dc88002d495649ede9c174a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5fbd94a65b53000b129df4770cbdc0264e8b59bc02109363dd9a3b85a134c2d",
+      "source_fact_keys": [
+        "source_fact:v1:0f408995d4338f7cbe58444c3db1f9ea3a1cb8cb0aa2ff34012abd17d051c10a",
+        "source_fact:v1:5d25d3eeb2e9416c5ca3a56bc14307a059b28bcbf76fb4009699edf519ba2f94"
+      ],
+      "source_published_kst": "2026-10-20T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의",
+      "telegram_core_fact": "로봇·반도체·AI 데이터센터·자율주행차·바이오 등 5극3특 주요 성장엔진과 관련해 산업 현장에서 제기된 규제 애로 해소 방안을 관계 부처가 발표한다.",
+      "title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의"
+    },
     "core:109c189177d69312e8544960": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
       "lanes": {
@@ -36220,6 +36241,30 @@
       "telegram_core_fact": "한국투자신탁운용은 만기매칭형 채권 상장지수펀드(ETF·이하 만기채권형 ETF)인 'ACE 29-11회사채(AA-이상)액티브' ETF를 상장했다고 13일 밝혔다.",
       "title": "한투운용, 만기채권형 회사채 투자 액티브 ETF 상장 | 연합뉴스"
     },
+    "core:7bbfcfee4350a4cf6cf2c00d": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833373",
+      "source": "뉴시스",
+      "source_body_digest": "52d8c114c22c2f712e52f0614f9c0ec9a195d6adef4cd1abb6e5ca3a44363160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5401fbd92f228687be8554d69164eb6f73d8bc5e02ee41c3b11589c938908be",
+      "source_fact_keys": [
+        "source_fact:v1:2aa0bfa0c2f44aeecdf0c1b9c473d029f8c15ae0b77b0c7345164b75a5b1f11f",
+        "source_fact:v1:892ab4630d796a62cd40234bf4b05a535b226e129c969ec3a9f81f59a84e9720",
+        "source_fact:v1:b3c8be3acf959804ee237bb6dc05333413a379cfde07e51e5c0c500e056178e7",
+        "source_fact:v1:c1523d4e4512a4d58a6440c86cb48e192629600ecd9b2d261aaf106fea9ccf7d",
+        "source_fact:v1:da517135c1862d7e5453d42bc6951eec8f4bce6f9b71fdccef2577a2a03cda2f"
+      ],
+      "source_published_kst": "2026-10-20T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어",
+      "telegram_core_fact": "현재 수은은 KAI 지분 26.41%를 보유한 최대주주이며, 한화그룹은 지분 15.89%를 확보한 2대 주주다.",
+      "title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어"
+    },
     "core:7bc0f12bfcf13e0ff8ea3e69": {
       "first_seen_kst": "2026-10-14T13:28:53+09:00",
       "lanes": {
@@ -39310,6 +39355,24 @@
       "source_title": "코스피 199조 던진 외국인 이건 계속 샀다는데…10조 가량 담은 ‘ETF’",
       "telegram_core_fact": "이재원 유안타증권 연구원은 “현재 국내 주식시장의 가장 큰 고민은 반도체 실적이 아닌 외국인 수급”이라며 “삼성전자 3분기 영업이익이 시장 기대를 상회했고 메모리 가격과 AI 인프라 투자도 견조하지만, 외국인 매도 지속에 코스피의 상대적 부진이 지속되고 있다”고 말했다.",
       "title": "코스피 199조 던진 외국인 이건 계속 샀다는데…10조 가량 담은 ‘ETF’"
+    },
+    "core:85a670a695e323d8493ce168": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832739",
+      "source": "뉴시스",
+      "source_body_digest": "e7cc19a2a6d9dcd49db28f1022990786289ed6072a01e10d62f4b9b8dd9c3851",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T10:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "비료값 오늘부터 평균 5.1% 인하…가격보조도 유지",
+      "telegram_core_fact": "농림축산식품부는 이날부터 농협이 무기질비료 판매가격을 평균 5.1% 인하한다고 밝혔다. 20일부터 무기질비료 판매가격이 평균 5.1% 인하된다.",
+      "title": "비료값 오늘부터 평균 5.1% 인하…가격보조도 유지"
     },
     "core:85b57d468f07b20b7d7db5a9": {
       "first_seen_kst": "2026-10-17T00:51:19+09:00",
@@ -51769,6 +51832,26 @@
       "telegram_core_fact": "정이수 연구원은 \"HK이노엔 3분기 매출액은 전년 대비 2.2% 많은 2천666억원, 영업이익은 2.2% 감소한 253억원으로 컨센서스(시장평균전망치·매출액 2천746억원, 영업이익 313억원)를 각각 3%, 19% 하회할 전망\"이라고 말했다.",
       "title": "IBK증권 \"HK이노엔, 3분기 실적 주춤에도 美진출 성큼\" | 연합뉴스"
     },
+    "core:b0d85bcf434e61f5b0203be4": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833117",
+      "source": "뉴시스",
+      "source_body_digest": "c34325091e88128fae9a8e086040f8c897843f8ed3094a2b8d3e1f7cf1fd73b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a4fa7db70d25a8281404a16fa0fde75ae19589e44bbfe9b0d534b966025d215",
+      "source_fact_keys": [
+        "source_fact:v1:3d916f643f388b188c6b1aedb619929d6cadf97d67bbe74a4cef477bf552b21d"
+      ],
+      "source_published_kst": "2026-10-20T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\"",
+      "telegram_core_fact": "FT는 \"엔스케일은 미국 뉴욕증시에서 350억 달러 기업공개(IPO)을 추진하고 있다\"며 \"앤트로픽과 두 번째 계약은 엔스케일의 잠재적 투자자를 안심시키는 데 도움될 수 있다\"고 평가했다.",
+      "title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\""
+    },
     "core:b0e7292bbfc3320de8fb2ed1": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -52465,6 +52548,27 @@
       "source_title": "러 측도 경유 美 등에 공급 확인…\"10월 30만t 공급\"",
       "telegram_core_fact": "미 재무부는 곧바로 러시아 경유에 대한 제재 해제를 발표했는데, 러시아도 이를 확인한 모습이다.",
       "title": "러 측도 경유 美 등에 공급 확인…\"10월 30만t 공급\""
+    },
+    "core:b4939e85fa0f84d3771d3a82": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637733",
+      "source": "이투데이",
+      "source_body_digest": "f5684d498b48f99e570eb5b09bcd7b56906366419521361756209e479581069f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7ad55a21f4ffa1a24d75fda5d2146429b8b82403bf04159ca4f7f06f7c678e4",
+      "source_fact_keys": [
+        "source_fact:v1:00660ed265466640b971e938b945b8b9f5a3ec2f7694a64b5abdd946791fd736",
+        "source_fact:v1:04b49b1b61c2392164718e69a8e15ca83b651b63ff43ef16903f218c247c8419"
+      ],
+      "source_published_kst": "2026-10-20T09:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다",
+      "telegram_core_fact": "무신사는 15일 문을 연 ‘무신사 스탠다드 롯데백화점 창원점’의 누적 매출이 개점 나흘 만에 4억5000만원을 돌파했다고 20일 밝혔다.",
+      "title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다"
     },
     "core:b493f1f4ef0278a06b2b9607": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
@@ -57607,6 +57711,26 @@
       "source_title": "트럼프, 고유가에 러·이란 그림자함대 제재 완화 '만지작'",
       "telegram_core_fact": "미국이 다음달 3일 중간선거를 앞두고 유가 잡기에 어려움을 겪고 있는 가운데 러시아와 이란에 연계된 '그림자 선단(shadow fleet)' 유조선에 대한 규제를 완화하는 방안을 검토하고 있다고 파이낸셜타임스(FT)가 15일(현지시간) 사안에 정통한 관계자들을 인용해 보도했다.",
       "title": "트럼프, 고유가에 러·이란 그림자함대 제재 완화 '만지작'"
+    },
+    "core:c6aaa32928820a8c36c33efb": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etnews.com/20261020000228",
+      "source": "전자신문",
+      "source_body_digest": "7c417a1ded7a818e4baca338f06c37577cd1f26b9d219de2a86aca9170429b7c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26cbb7aa49ea3ddd8439cdbab647d656884c464aaf546399dee79e8b68f55b27",
+      "source_fact_keys": [
+        "source_fact:v1:d0912fc290db940bddc1b4c34d753926e014ae63fc780a54a9a051bf0931808a"
+      ],
+      "source_published_kst": "2026-10-20T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "수출 1조달러 견인할 'ABCDE' 뜬다…수출 붐업코리아 개막",
+      "telegram_core_fact": "미국 자동차 부품 유통기업과 350만달러 밸브 공급 계약 체결이 예고된 것을 비롯, 개막 전 이미 103건, 약 6900만달러 수출 계약 및 양해각서(MOU)가 확정되는 등 현장 성과도 잇따르고 있다.",
+      "title": "수출 1조달러 견인할 'ABCDE' 뜬다…수출 붐업코리아 개막"
     },
     "core:c6bc04f39158a1d06b3b34e5": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
@@ -87023,22 +87147,22 @@
     "event:ba4de30c6ca676c77f27f2ad": {
       "first_seen_kst": "2026-10-20T08:05:53+09:00",
       "lanes": {
-        "live": "2026-10-20T11:16:24+09:00"
+        "live": "2026-10-20T14:25:37+09:00"
       },
-      "last_seen_kst": "2026-10-20T11:16:24+09:00",
-      "link": "https://zdnet.co.kr/view/?no=20261020084317",
-      "source": "지디넷코리아",
-      "source_body_digest": "9fd40e39f1c5d03b88956298fe28af2b9768941622b56d5f38966aa933658068",
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833117",
+      "source": "뉴시스",
+      "source_body_digest": "c34325091e88128fae9a8e086040f8c897843f8ed3094a2b8d3e1f7cf1fd73b5",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:7987b352a85dd4bc80df046096198b82c5a8a04be3752345bdf068b12e2ae124",
+      "source_fact_identity": "source_facts:v1:1a4fa7db70d25a8281404a16fa0fde75ae19589e44bbfe9b0d534b966025d215",
       "source_fact_keys": [
-        "source_fact:v1:f5b3f4d9509433338d6c792a518951063a65c4c9e69b24ce03829c78d6edd524"
+        "source_fact:v1:3d916f643f388b188c6b1aedb619929d6cadf97d67bbe74a4cef477bf552b21d"
       ],
-      "source_published_kst": "2026-10-20T09:24+09:00",
+      "source_published_kst": "2026-10-20T14:00+09:00",
       "source_supply_terms": {},
-      "source_title": "[AI 고속도로] 앤트로픽, AI 인프라 확충에 60조원 베팅…엔스케일과 협력 확대",
-      "telegram_core_fact": "19일(현지시간) 블룸버그통신에 따르면 앤트로픽과 엔스케일은 미국 웨스트버지니아주에 조성 중인 '모나크(Monarch)' 데이터센터 캠퍼스의 두 번째 시설에서 AI 컴퓨팅 자원을 공급하는 방안을 협의 중이다.",
-      "title": "[AI 고속도로] 앤트로픽, AI 인프라 확충에 60조원 베팅…엔스케일과 협력 확대"
+      "source_title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\"",
+      "telegram_core_fact": "FT는 \"엔스케일은 미국 뉴욕증시에서 350억 달러 기업공개(IPO)을 추진하고 있다\"며 \"앤트로픽과 두 번째 계약은 엔스케일의 잠재적 투자자를 안심시키는 데 도움될 수 있다\"고 평가했다.",
+      "title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\""
     },
     "event:ba788d3209221bdc009f8f7e": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
@@ -104839,6 +104963,27 @@
       "telegram_core_fact": "이날 인베스팅닷컴에 따르면 스페이스X는 미국의 광대역 통신 분야에 특화된 사모펀드 운용사 ‘그레인 운용’의 전국 단위 800메가헤르츠 대역 저주파수 포트폴리오를 인수하는 최종 계약을 체결했다고 발표했다.",
       "title": "AT&T, 개장전 5% 하락…스페이스X 주파수 인수에 배당략일도 부담"
     },
+    "fact:248a5620b76b052f93db2f50": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637739",
+      "source": "이투데이",
+      "source_body_digest": "d5759bd72619b788909be9e5e69c0e816a3bf4cd0dc88002d495649ede9c174a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5fbd94a65b53000b129df4770cbdc0264e8b59bc02109363dd9a3b85a134c2d",
+      "source_fact_keys": [
+        "source_fact:v1:0f408995d4338f7cbe58444c3db1f9ea3a1cb8cb0aa2ff34012abd17d051c10a",
+        "source_fact:v1:5d25d3eeb2e9416c5ca3a56bc14307a059b28bcbf76fb4009699edf519ba2f94"
+      ],
+      "source_published_kst": "2026-10-20T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의",
+      "telegram_core_fact": "로봇·반도체·AI 데이터센터·자율주행차·바이오 등 5극3특 주요 성장엔진과 관련해 산업 현장에서 제기된 규제 애로 해소 방안을 관계 부처가 발표한다.",
+      "title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의"
+    },
     "fact:249af8eba61e7c0487a7ee11": {
       "first_seen_kst": "2026-10-19T15:46:20+09:00",
       "lanes": {
@@ -116855,6 +117000,26 @@
       "telegram_core_fact": "영국 해사무역기구(UKMTO)는 호르무즈 해협에서 선박 피격 사건 보고를 접수했다고 11일(현지시간) 밝혔다.",
       "title": "호르무즈서 유조선 발사체에 피격…선원들은 무사 | 연합뉴스"
     },
+    "fact:4c4890a3b50bb5bdbb1c8344": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etnews.com/20261020000228",
+      "source": "전자신문",
+      "source_body_digest": "7c417a1ded7a818e4baca338f06c37577cd1f26b9d219de2a86aca9170429b7c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26cbb7aa49ea3ddd8439cdbab647d656884c464aaf546399dee79e8b68f55b27",
+      "source_fact_keys": [
+        "source_fact:v1:d0912fc290db940bddc1b4c34d753926e014ae63fc780a54a9a051bf0931808a"
+      ],
+      "source_published_kst": "2026-10-20T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "수출 1조달러 견인할 'ABCDE' 뜬다…수출 붐업코리아 개막",
+      "telegram_core_fact": "미국 자동차 부품 유통기업과 350만달러 밸브 공급 계약 체결이 예고된 것을 비롯, 개막 전 이미 103건, 약 6900만달러 수출 계약 및 양해각서(MOU)가 확정되는 등 현장 성과도 잇따르고 있다.",
+      "title": "수출 1조달러 견인할 'ABCDE' 뜬다…수출 붐업코리아 개막"
+    },
     "fact:4c5dde494561bacdcaa2521e": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -124010,6 +124175,26 @@
       "source_title": "삼성증권 \"LG전자, AI 데이터센터 냉각솔루션 성장 본격화\"",
       "telegram_core_fact": "LG전자 3분기 매출은 23조8270억원으로 전년비 8.9% 증가했습니다.",
       "title": "삼성증권 \"LG전자, AI 데이터센터 냉각솔루션 성장 본격화\""
+    },
+    "fact:63f60df77854d38894c903f4": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833117",
+      "source": "뉴시스",
+      "source_body_digest": "c34325091e88128fae9a8e086040f8c897843f8ed3094a2b8d3e1f7cf1fd73b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a4fa7db70d25a8281404a16fa0fde75ae19589e44bbfe9b0d534b966025d215",
+      "source_fact_keys": [
+        "source_fact:v1:3d916f643f388b188c6b1aedb619929d6cadf97d67bbe74a4cef477bf552b21d"
+      ],
+      "source_published_kst": "2026-10-20T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\"",
+      "telegram_core_fact": "FT는 \"엔스케일은 미국 뉴욕증시에서 350억 달러 기업공개(IPO)을 추진하고 있다\"며 \"앤트로픽과 두 번째 계약은 엔스케일의 잠재적 투자자를 안심시키는 데 도움될 수 있다\"고 평가했다.",
+      "title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\""
     },
     "fact:64212f2ad6297ce9e0513ec7": {
       "first_seen_kst": "2026-10-18T05:50:47+09:00",
@@ -146829,6 +147014,27 @@
       "source_title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회",
       "telegram_core_fact": "제주도가 40메가와트(MW)급 인공지능(AI) 데이터센터 구축과 지역 산업의 인공지능 전환(AX)을 추진하기 위해 도내 공공기관의 참여를 확대하고 분야별 실증과제를 발굴한다.",
       "title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회"
+    },
+    "fact:a69aa856d386bbb30bd83aef": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637733",
+      "source": "이투데이",
+      "source_body_digest": "f5684d498b48f99e570eb5b09bcd7b56906366419521361756209e479581069f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7ad55a21f4ffa1a24d75fda5d2146429b8b82403bf04159ca4f7f06f7c678e4",
+      "source_fact_keys": [
+        "source_fact:v1:00660ed265466640b971e938b945b8b9f5a3ec2f7694a64b5abdd946791fd736",
+        "source_fact:v1:04b49b1b61c2392164718e69a8e15ca83b651b63ff43ef16903f218c247c8419"
+      ],
+      "source_published_kst": "2026-10-20T09:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다",
+      "telegram_core_fact": "무신사는 15일 문을 연 ‘무신사 스탠다드 롯데백화점 창원점’의 누적 매출이 개점 나흘 만에 4억5000만원을 돌파했다고 20일 밝혔다.",
+      "title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다"
     },
     "fact:a6a35a5f553cf31f8f38a05e": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
@@ -175632,6 +175838,30 @@
       "source_published_kst": "2026-10-07T09:31+09:00",
       "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
     },
+    "fact:f88f07ceccfdcfcd35863311": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833373",
+      "source": "뉴시스",
+      "source_body_digest": "52d8c114c22c2f712e52f0614f9c0ec9a195d6adef4cd1abb6e5ca3a44363160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5401fbd92f228687be8554d69164eb6f73d8bc5e02ee41c3b11589c938908be",
+      "source_fact_keys": [
+        "source_fact:v1:2aa0bfa0c2f44aeecdf0c1b9c473d029f8c15ae0b77b0c7345164b75a5b1f11f",
+        "source_fact:v1:892ab4630d796a62cd40234bf4b05a535b226e129c969ec3a9f81f59a84e9720",
+        "source_fact:v1:b3c8be3acf959804ee237bb6dc05333413a379cfde07e51e5c0c500e056178e7",
+        "source_fact:v1:c1523d4e4512a4d58a6440c86cb48e192629600ecd9b2d261aaf106fea9ccf7d",
+        "source_fact:v1:da517135c1862d7e5453d42bc6951eec8f4bce6f9b71fdccef2577a2a03cda2f"
+      ],
+      "source_published_kst": "2026-10-20T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어",
+      "telegram_core_fact": "현재 수은은 KAI 지분 26.41%를 보유한 최대주주이며, 한화그룹은 지분 15.89%를 확보한 2대 주주다.",
+      "title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어"
+    },
     "fact:f8958d458bcffdd2b20fd0bb": {
       "first_seen_kst": "2026-10-11T02:45:51+09:00",
       "lanes": {
@@ -198230,6 +198460,27 @@
       "telegram_core_fact": "리사 수 AMD 최고경영자(CEO)가 한국을 인공지능(AI)과 반도체 공급망에서 핵심적인 파트너로 꼽았다. 최근 수 CEO가 한국을 잇따라 찾는 배경에도 장기적인 공급망 협력이 있다고 설명했다.",
       "title": "리사 수 AMD CEO “반도체는 팀 스포츠, 한국은 핵심 파트너”"
     },
+    "link:2d3ce04422eb3438c5dfd778": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637733",
+      "source": "이투데이",
+      "source_body_digest": "f5684d498b48f99e570eb5b09bcd7b56906366419521361756209e479581069f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7ad55a21f4ffa1a24d75fda5d2146429b8b82403bf04159ca4f7f06f7c678e4",
+      "source_fact_keys": [
+        "source_fact:v1:00660ed265466640b971e938b945b8b9f5a3ec2f7694a64b5abdd946791fd736",
+        "source_fact:v1:04b49b1b61c2392164718e69a8e15ca83b651b63ff43ef16903f218c247c8419"
+      ],
+      "source_published_kst": "2026-10-20T09:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다",
+      "telegram_core_fact": "무신사는 15일 문을 연 ‘무신사 스탠다드 롯데백화점 창원점’의 누적 매출이 개점 나흘 만에 4억5000만원을 돌파했다고 20일 밝혔다.",
+      "title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다"
+    },
     "link:2d4b5d29917228b2bf122143": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
       "lanes": {
@@ -204859,6 +205110,26 @@
       "source_title": "시나이이뮤노테라퓨틱스, 510만 달러 CDMO 계약에 확정 주문 4배 증가",
       "telegram_core_fact": "510만 달러 개발·임상 생산 CDMO 계약을 체결했습니다. 확정 고객 주문은 760만 달러로 연초보다 약 4배 늘었습니다.",
       "title": "시나이이뮤노테라퓨틱스, 510만 달러 CDMO 계약에 확정 주문 4배 증가"
+    },
+    "link:3b894cefdaedab1fd5445ce9": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etnews.com/20261020000228",
+      "source": "전자신문",
+      "source_body_digest": "7c417a1ded7a818e4baca338f06c37577cd1f26b9d219de2a86aca9170429b7c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26cbb7aa49ea3ddd8439cdbab647d656884c464aaf546399dee79e8b68f55b27",
+      "source_fact_keys": [
+        "source_fact:v1:d0912fc290db940bddc1b4c34d753926e014ae63fc780a54a9a051bf0931808a"
+      ],
+      "source_published_kst": "2026-10-20T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "수출 1조달러 견인할 'ABCDE' 뜬다…수출 붐업코리아 개막",
+      "telegram_core_fact": "미국 자동차 부품 유통기업과 350만달러 밸브 공급 계약 체결이 예고된 것을 비롯, 개막 전 이미 103건, 약 6900만달러 수출 계약 및 양해각서(MOU)가 확정되는 등 현장 성과도 잇따르고 있다.",
+      "title": "수출 1조달러 견인할 'ABCDE' 뜬다…수출 붐업코리아 개막"
     },
     "link:3b918564087053bdaed011d0": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
@@ -212476,6 +212747,24 @@
       "link": "https://biz.chosun.com/industry/car/2026/10/02/HYQ5Z3YHTRCQTAGU7YWIFYYIMI/",
       "source": "조선비즈",
       "title": "현대차·기아, 3분기 美 역대 최다 기록… 포드 제치고 ‘빅3’ 눈앞"
+    },
+    "link:4e23bc4881ac3149d426871d": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etnews.com/20261020000234",
+      "source": "전자신문",
+      "source_body_digest": "2faa3ddcdfd057ab5a02470256b6293a3047b4a9fcf4e72cff4f8c140f117dae",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T13:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "자비스, 배터리 X-ray 검사장비 34억 수주…21일 거래재개",
+      "telegram_core_fact": "자비스는 액면병합에 따른 거래정지 기간이던 9월 29일 이 계약을 공시했다.",
+      "title": "자비스, 배터리 X-ray 검사장비 34억 수주…21일 거래재개"
     },
     "link:4e2a53b1a322a569f8b6d3f2": {
       "first_seen_kst": "2026-10-10T23:07:35+09:00",
@@ -249834,6 +250123,26 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "서비스 매출 94% 셀렉트스타…IPO서 플랫폼 전환 시험대[IPO 엑스레이]"
     },
+    "link:a1b3b1258fb196c907a3366b": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833117",
+      "source": "뉴시스",
+      "source_body_digest": "c34325091e88128fae9a8e086040f8c897843f8ed3094a2b8d3e1f7cf1fd73b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a4fa7db70d25a8281404a16fa0fde75ae19589e44bbfe9b0d534b966025d215",
+      "source_fact_keys": [
+        "source_fact:v1:3d916f643f388b188c6b1aedb619929d6cadf97d67bbe74a4cef477bf552b21d"
+      ],
+      "source_published_kst": "2026-10-20T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\"",
+      "telegram_core_fact": "FT는 \"엔스케일은 미국 뉴욕증시에서 350억 달러 기업공개(IPO)을 추진하고 있다\"며 \"앤트로픽과 두 번째 계약은 엔스케일의 잠재적 투자자를 안심시키는 데 도움될 수 있다\"고 평가했다.",
+      "title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\""
+    },
     "link:a1b73df275afde2f39408223": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
       "lanes": {
@@ -253737,6 +254046,27 @@
       "source_title": "\"방치 계좌 해소 핵심 과제...위험자산 투자한도 현 70%보다 늘려야\"",
       "telegram_core_fact": "송 전무는 현 70%인 위험자산 비중을 늘려야 한다며 “금융기관의 투자교육을 확대하여 고객으로 하여금 다양한 자산에 투자하는 방법을 안내할 필요가 있다”고 했다. 퇴직연금은 노후 대비 성격이 강하다 보니 현행 규정상 전체 적립금의 최대 70%까지만 주식형 ETF나 주식형 펀드 같은 위험자산에 투자할 수 있다.",
       "title": "\"방치 계좌 해소 핵심 과제...위험자산 투자한도 현 70%보다 늘려야\""
+    },
+    "link:aa360ce8f9415bc84aed0793": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637739",
+      "source": "이투데이",
+      "source_body_digest": "d5759bd72619b788909be9e5e69c0e816a3bf4cd0dc88002d495649ede9c174a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5fbd94a65b53000b129df4770cbdc0264e8b59bc02109363dd9a3b85a134c2d",
+      "source_fact_keys": [
+        "source_fact:v1:0f408995d4338f7cbe58444c3db1f9ea3a1cb8cb0aa2ff34012abd17d051c10a",
+        "source_fact:v1:5d25d3eeb2e9416c5ca3a56bc14307a059b28bcbf76fb4009699edf519ba2f94"
+      ],
+      "source_published_kst": "2026-10-20T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의",
+      "telegram_core_fact": "로봇·반도체·AI 데이터센터·자율주행차·바이오 등 5극3특 주요 성장엔진과 관련해 산업 현장에서 제기된 규제 애로 해소 방안을 관계 부처가 발표한다.",
+      "title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의"
     },
     "link:aa5b2571ad41792111947e8d": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
@@ -259426,6 +259756,24 @@
       ],
       "source_published_kst": "2026-10-06T06:22+09:00",
       "title": "뉴욕증시, 국채금리 상승에도 기술주 강세에↑…나스닥, 사상최고치"
+    },
+    "link:b6bb8f9600528b529934a478": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832739",
+      "source": "뉴시스",
+      "source_body_digest": "e7cc19a2a6d9dcd49db28f1022990786289ed6072a01e10d62f4b9b8dd9c3851",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T10:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "비료값 오늘부터 평균 5.1% 인하…가격보조도 유지",
+      "telegram_core_fact": "농림축산식품부는 이날부터 농협이 무기질비료 판매가격을 평균 5.1% 인하한다고 밝혔다. 20일부터 무기질비료 판매가격이 평균 5.1% 인하된다.",
+      "title": "비료값 오늘부터 평균 5.1% 인하…가격보조도 유지"
     },
     "link:b6c0d7ab9734d45d7766bcfc": {
       "first_seen_kst": "2026-09-29T16:50:36+09:00",
@@ -289989,6 +290337,30 @@
       "telegram_core_fact": "GC녹십자가 LG CNS와 인공지능(AI) 기반 자동화·자율 운영 스마트 공장 구축을 추진한다. LG CNS 측은 그동안 축적한 AI 스마트 공장 역량으로 GC녹십자의 제조 혁신을 지원할 것이라고 밝혔다.",
       "title": "GC녹십자, LG CNS와 스마트공장 구축…AI 자동화 추진 | 연합뉴스"
     },
+    "link:fe9419224e87093ef077b5f5": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833373",
+      "source": "뉴시스",
+      "source_body_digest": "52d8c114c22c2f712e52f0614f9c0ec9a195d6adef4cd1abb6e5ca3a44363160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5401fbd92f228687be8554d69164eb6f73d8bc5e02ee41c3b11589c938908be",
+      "source_fact_keys": [
+        "source_fact:v1:2aa0bfa0c2f44aeecdf0c1b9c473d029f8c15ae0b77b0c7345164b75a5b1f11f",
+        "source_fact:v1:892ab4630d796a62cd40234bf4b05a535b226e129c969ec3a9f81f59a84e9720",
+        "source_fact:v1:b3c8be3acf959804ee237bb6dc05333413a379cfde07e51e5c0c500e056178e7",
+        "source_fact:v1:c1523d4e4512a4d58a6440c86cb48e192629600ecd9b2d261aaf106fea9ccf7d",
+        "source_fact:v1:da517135c1862d7e5453d42bc6951eec8f4bce6f9b71fdccef2577a2a03cda2f"
+      ],
+      "source_published_kst": "2026-10-20T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어",
+      "telegram_core_fact": "현재 수은은 KAI 지분 26.41%를 보유한 최대주주이며, 한화그룹은 지분 15.89%를 확보한 2대 주주다.",
+      "title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어"
+    },
     "link:fe9526086ec2db6f99fb33d3": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
       "lanes": {
@@ -292569,6 +292941,30 @@
       "source_title": "농진청, 고기능성 수수 신품종 개발·재배 기계화 박차",
       "telegram_core_fact": "농촌진흥청이 국산 수수의 경쟁력을 높이고 수수 산업 활성화를 지원하기 위해 고기능성 신품종 개발과 생산·가공·유통을 연계한 산업화 체계 구축에 박차를 가하고 있다.",
       "title": "농진청, 고기능성 수수 신품종 개발·재배 기계화 박차"
+    },
+    "original:03cd6952d40bdfbb2b393f13": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833373",
+      "source": "뉴시스",
+      "source_body_digest": "52d8c114c22c2f712e52f0614f9c0ec9a195d6adef4cd1abb6e5ca3a44363160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5401fbd92f228687be8554d69164eb6f73d8bc5e02ee41c3b11589c938908be",
+      "source_fact_keys": [
+        "source_fact:v1:2aa0bfa0c2f44aeecdf0c1b9c473d029f8c15ae0b77b0c7345164b75a5b1f11f",
+        "source_fact:v1:892ab4630d796a62cd40234bf4b05a535b226e129c969ec3a9f81f59a84e9720",
+        "source_fact:v1:b3c8be3acf959804ee237bb6dc05333413a379cfde07e51e5c0c500e056178e7",
+        "source_fact:v1:c1523d4e4512a4d58a6440c86cb48e192629600ecd9b2d261aaf106fea9ccf7d",
+        "source_fact:v1:da517135c1862d7e5453d42bc6951eec8f4bce6f9b71fdccef2577a2a03cda2f"
+      ],
+      "source_published_kst": "2026-10-20T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어",
+      "telegram_core_fact": "현재 수은은 KAI 지분 26.41%를 보유한 최대주주이며, 한화그룹은 지분 15.89%를 확보한 2대 주주다.",
+      "title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어"
     },
     "original:03d33c40e226ec613fa237d4": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
@@ -309856,6 +310252,26 @@
       "telegram_core_fact": "이번 다카이치 총리의 입장은 트럼프 행정부가 ICC) 재판관 출신 나비 필레이가 노벨평화상 수상자로 발표된 9일(현지 시간) ICC에 대한 전면 제재를 발표한 직후 나왔다.",
       "title": "日다카이치, 美트럼프 행정부의 ICC 제재에 \"깊은 우려…ICC 지지\""
     },
+    "original:2b5941c16da99ec51a7cb581": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833117",
+      "source": "뉴시스",
+      "source_body_digest": "c34325091e88128fae9a8e086040f8c897843f8ed3094a2b8d3e1f7cf1fd73b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a4fa7db70d25a8281404a16fa0fde75ae19589e44bbfe9b0d534b966025d215",
+      "source_fact_keys": [
+        "source_fact:v1:3d916f643f388b188c6b1aedb619929d6cadf97d67bbe74a4cef477bf552b21d"
+      ],
+      "source_published_kst": "2026-10-20T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\"",
+      "telegram_core_fact": "FT는 \"엔스케일은 미국 뉴욕증시에서 350억 달러 기업공개(IPO)을 추진하고 있다\"며 \"앤트로픽과 두 번째 계약은 엔스케일의 잠재적 투자자를 안심시키는 데 도움될 수 있다\"고 평가했다.",
+      "title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\""
+    },
     "original:2b5d50c8071afdb7751adcf6": {
       "first_seen_kst": "2026-10-14T07:46:13+09:00",
       "lanes": {
@@ -327003,6 +327419,27 @@
       "link": "https://www.fnnews.com/news/202610020701299645",
       "source": "파이낸셜뉴스",
       "title": "마이크론이 연 반도체 실적시즌…'삼성전자 HBM4·범용D램'에 쏠린 눈"
+    },
+    "original:51ab30373c4109e3ca834899": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637733",
+      "source": "이투데이",
+      "source_body_digest": "f5684d498b48f99e570eb5b09bcd7b56906366419521361756209e479581069f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7ad55a21f4ffa1a24d75fda5d2146429b8b82403bf04159ca4f7f06f7c678e4",
+      "source_fact_keys": [
+        "source_fact:v1:00660ed265466640b971e938b945b8b9f5a3ec2f7694a64b5abdd946791fd736",
+        "source_fact:v1:04b49b1b61c2392164718e69a8e15ca83b651b63ff43ef16903f218c247c8419"
+      ],
+      "source_published_kst": "2026-10-20T09:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다",
+      "telegram_core_fact": "무신사는 15일 문을 연 ‘무신사 스탠다드 롯데백화점 창원점’의 누적 매출이 개점 나흘 만에 4억5000만원을 돌파했다고 20일 밝혔다.",
+      "title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다"
     },
     "original:51ba2285bcce5a5f1fb1babb": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
@@ -351272,6 +351709,26 @@
       "source_published_kst": "2026-10-07T06:31+09:00",
       "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
     },
+    "original:8ad969ee9e0a3a4d99a49f96": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etnews.com/20261020000228",
+      "source": "전자신문",
+      "source_body_digest": "7c417a1ded7a818e4baca338f06c37577cd1f26b9d219de2a86aca9170429b7c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26cbb7aa49ea3ddd8439cdbab647d656884c464aaf546399dee79e8b68f55b27",
+      "source_fact_keys": [
+        "source_fact:v1:d0912fc290db940bddc1b4c34d753926e014ae63fc780a54a9a051bf0931808a"
+      ],
+      "source_published_kst": "2026-10-20T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "수출 1조달러 견인할 'ABCDE' 뜬다…수출 붐업코리아 개막",
+      "telegram_core_fact": "미국 자동차 부품 유통기업과 350만달러 밸브 공급 계약 체결이 예고된 것을 비롯, 개막 전 이미 103건, 약 6900만달러 수출 계약 및 양해각서(MOU)가 확정되는 등 현장 성과도 잇따르고 있다.",
+      "title": "수출 1조달러 견인할 'ABCDE' 뜬다…수출 붐업코리아 개막"
+    },
     "original:8ad97f2fbbd04588088cbf44": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
       "lanes": {
@@ -352519,6 +352976,27 @@
       "link": "https://www.yna.co.kr/view/MYH20261002009500038",
       "source": "연합뉴스",
       "title": "美경윳값 폭등에…트럼프, 유럽에 폭탄돌리기 | 연합뉴스"
+    },
+    "original:8d77a2e1d22437edd8653f74": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637739",
+      "source": "이투데이",
+      "source_body_digest": "d5759bd72619b788909be9e5e69c0e816a3bf4cd0dc88002d495649ede9c174a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5fbd94a65b53000b129df4770cbdc0264e8b59bc02109363dd9a3b85a134c2d",
+      "source_fact_keys": [
+        "source_fact:v1:0f408995d4338f7cbe58444c3db1f9ea3a1cb8cb0aa2ff34012abd17d051c10a",
+        "source_fact:v1:5d25d3eeb2e9416c5ca3a56bc14307a059b28bcbf76fb4009699edf519ba2f94"
+      ],
+      "source_published_kst": "2026-10-20T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의",
+      "telegram_core_fact": "로봇·반도체·AI 데이터센터·자율주행차·바이오 등 5극3특 주요 성장엔진과 관련해 산업 현장에서 제기된 규제 애로 해소 방안을 관계 부처가 발표한다.",
+      "title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의"
     },
     "original:8d78654a4cf8b784f7345809": {
       "first_seen_kst": "2026-10-16T19:48:28+09:00",
@@ -361749,6 +362227,24 @@
       "telegram_core_fact": "LG전자에 따르면 미국 빌더 사업 매출은 2024년 전년 대비 약 64%, 2025년에는 40% 이상 증가했다. [뉴욕=이데일리 성주원 특파원] LG전자가 미국 주택건설업체를 대상으로 한 빌더(Builder) 사업에서 올해도 두 자릿수를 크게 웃도는 성장세를 이어가고 있다.",
       "title": "LG전자 美빌더 사업 고성장…\"올해도 두 자릿수 훌쩍 넘는다\""
     },
+    "original:a30aa3300ca53c8671f1c1d8": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etnews.com/20261020000234",
+      "source": "전자신문",
+      "source_body_digest": "2faa3ddcdfd057ab5a02470256b6293a3047b4a9fcf4e72cff4f8c140f117dae",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T13:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "자비스, 배터리 X-ray 검사장비 34억 수주…21일 거래재개",
+      "telegram_core_fact": "자비스는 액면병합에 따른 거래정지 기간이던 9월 29일 이 계약을 공시했다.",
+      "title": "자비스, 배터리 X-ray 검사장비 34억 수주…21일 거래재개"
+    },
     "original:a31434fda9090f68794334b5": {
       "first_seen_kst": "2026-10-20T13:59:52+09:00",
       "lanes": {
@@ -370454,6 +370950,24 @@
       ],
       "source_published_kst": "2026-10-06T14:09+09:00",
       "title": "더 똑똑해진 ‘인천공항 면세점’ 앱…음식 사전 예약·주문·결제도 ‘뚝딱’"
+    },
+    "original:b72b4e16af3d5cf40235d88d": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832739",
+      "source": "뉴시스",
+      "source_body_digest": "e7cc19a2a6d9dcd49db28f1022990786289ed6072a01e10d62f4b9b8dd9c3851",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T10:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "비료값 오늘부터 평균 5.1% 인하…가격보조도 유지",
+      "telegram_core_fact": "농림축산식품부는 이날부터 농협이 무기질비료 판매가격을 평균 5.1% 인하한다고 밝혔다. 20일부터 무기질비료 판매가격이 평균 5.1% 인하된다.",
+      "title": "비료값 오늘부터 평균 5.1% 인하…가격보조도 유지"
     },
     "original:b74f9228905a9a80cccf8e78": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -545899,6 +546413,30 @@
       "telegram_core_fact": "후보지 선정부터 착공까지 걸리는 기간을 약 6년에서 4년 6개월로 1년 6개월 단축하고, 2030년까지 후보지 100곳을 선정해 약 8만호의 주택 공급 기반을 마련한다는 계획이다.",
       "title": "서울시 '모아통합기획' 도입…착공까지 6년→4년6개월로 단축 | 연합뉴스"
     },
+    "source_fact:540cb9d8ef916cd6dfda37b6": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833373",
+      "source": "뉴시스",
+      "source_body_digest": "52d8c114c22c2f712e52f0614f9c0ec9a195d6adef4cd1abb6e5ca3a44363160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5401fbd92f228687be8554d69164eb6f73d8bc5e02ee41c3b11589c938908be",
+      "source_fact_keys": [
+        "source_fact:v1:2aa0bfa0c2f44aeecdf0c1b9c473d029f8c15ae0b77b0c7345164b75a5b1f11f",
+        "source_fact:v1:892ab4630d796a62cd40234bf4b05a535b226e129c969ec3a9f81f59a84e9720",
+        "source_fact:v1:b3c8be3acf959804ee237bb6dc05333413a379cfde07e51e5c0c500e056178e7",
+        "source_fact:v1:c1523d4e4512a4d58a6440c86cb48e192629600ecd9b2d261aaf106fea9ccf7d",
+        "source_fact:v1:da517135c1862d7e5453d42bc6951eec8f4bce6f9b71fdccef2577a2a03cda2f"
+      ],
+      "source_published_kst": "2026-10-20T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어",
+      "telegram_core_fact": "현재 수은은 KAI 지분 26.41%를 보유한 최대주주이며, 한화그룹은 지분 15.89%를 확보한 2대 주주다.",
+      "title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어"
+    },
     "source_fact:541100b6b7ff9404336b79d9": {
       "first_seen_kst": "2026-10-14T20:43:11+09:00",
       "lanes": {
@@ -568830,6 +569368,26 @@
       "telegram_core_fact": "지난주 코스피 지수는 외국인과 기관의 대규모 동반 매도세와 삼성전자의 셀온(Sell-on, 호재 속 가격하락) 물량 출회에 타격을 입으며 직전 주 대비 5% 이상 하락한 6620선으로 밀려났다.",
       "title": "[주간수급리포트] 6620선 주저앉은 코스피…삼전 셀온·외인 팔자에 5% '뚝'"
     },
+    "source_fact:60b0e515fd8e22e763b9b45e": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etnews.com/20261020000228",
+      "source": "전자신문",
+      "source_body_digest": "7c417a1ded7a818e4baca338f06c37577cd1f26b9d219de2a86aca9170429b7c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26cbb7aa49ea3ddd8439cdbab647d656884c464aaf546399dee79e8b68f55b27",
+      "source_fact_keys": [
+        "source_fact:v1:d0912fc290db940bddc1b4c34d753926e014ae63fc780a54a9a051bf0931808a"
+      ],
+      "source_published_kst": "2026-10-20T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "수출 1조달러 견인할 'ABCDE' 뜬다…수출 붐업코리아 개막",
+      "telegram_core_fact": "미국 자동차 부품 유통기업과 350만달러 밸브 공급 계약 체결이 예고된 것을 비롯, 개막 전 이미 103건, 약 6900만달러 수출 계약 및 양해각서(MOU)가 확정되는 등 현장 성과도 잇따르고 있다.",
+      "title": "수출 1조달러 견인할 'ABCDE' 뜬다…수출 붐업코리아 개막"
+    },
     "source_fact:60b8ca92d721e8eafcd8c800": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
       "lanes": {
@@ -576949,6 +577507,30 @@
       "source_title": "트랜스오션, 멕시코만 시추선 2척 5억5000만 달러 수주",
       "telegram_core_fact": "트랜스오션(RIG)은 미국 멕시코만에서 운용하는 초심해 시추선 '디프워터 프로테우스'와 '디프워터 컨커러' 2척의 신규 계약을 따내 확정 수주잔고(backlog) 약 5억5000만 달러를 확보했다고 10월 19일 발표했다.",
       "title": "트랜스오션, 멕시코만 시추선 2척 5억5000만 달러 수주"
+    },
+    "source_fact:65a38c26cd9bb768ad453ab6": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833373",
+      "source": "뉴시스",
+      "source_body_digest": "52d8c114c22c2f712e52f0614f9c0ec9a195d6adef4cd1abb6e5ca3a44363160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5401fbd92f228687be8554d69164eb6f73d8bc5e02ee41c3b11589c938908be",
+      "source_fact_keys": [
+        "source_fact:v1:2aa0bfa0c2f44aeecdf0c1b9c473d029f8c15ae0b77b0c7345164b75a5b1f11f",
+        "source_fact:v1:892ab4630d796a62cd40234bf4b05a535b226e129c969ec3a9f81f59a84e9720",
+        "source_fact:v1:b3c8be3acf959804ee237bb6dc05333413a379cfde07e51e5c0c500e056178e7",
+        "source_fact:v1:c1523d4e4512a4d58a6440c86cb48e192629600ecd9b2d261aaf106fea9ccf7d",
+        "source_fact:v1:da517135c1862d7e5453d42bc6951eec8f4bce6f9b71fdccef2577a2a03cda2f"
+      ],
+      "source_published_kst": "2026-10-20T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어",
+      "telegram_core_fact": "현재 수은은 KAI 지분 26.41%를 보유한 최대주주이며, 한화그룹은 지분 15.89%를 확보한 2대 주주다.",
+      "title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어"
     },
     "source_fact:65a655fd7364a3affe1fe95f": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
@@ -618858,6 +619440,30 @@
       "source_title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\"",
       "telegram_core_fact": "러시아와 에너지 시설 공격을 서로 중단하는 방안을 논의하러 미국을 찾은 우크라이나 대표단이 협상장에서 러시아산 경유 수출 제재 완화 방침을 전달받고 “함정처럼 느껴졌다”고 반발한 것으로 전해졌다.",
       "title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\""
+    },
+    "source_fact:7e0717097aa94d13b25f8e3b": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833373",
+      "source": "뉴시스",
+      "source_body_digest": "52d8c114c22c2f712e52f0614f9c0ec9a195d6adef4cd1abb6e5ca3a44363160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5401fbd92f228687be8554d69164eb6f73d8bc5e02ee41c3b11589c938908be",
+      "source_fact_keys": [
+        "source_fact:v1:2aa0bfa0c2f44aeecdf0c1b9c473d029f8c15ae0b77b0c7345164b75a5b1f11f",
+        "source_fact:v1:892ab4630d796a62cd40234bf4b05a535b226e129c969ec3a9f81f59a84e9720",
+        "source_fact:v1:b3c8be3acf959804ee237bb6dc05333413a379cfde07e51e5c0c500e056178e7",
+        "source_fact:v1:c1523d4e4512a4d58a6440c86cb48e192629600ecd9b2d261aaf106fea9ccf7d",
+        "source_fact:v1:da517135c1862d7e5453d42bc6951eec8f4bce6f9b71fdccef2577a2a03cda2f"
+      ],
+      "source_published_kst": "2026-10-20T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어",
+      "telegram_core_fact": "현재 수은은 KAI 지분 26.41%를 보유한 최대주주이며, 한화그룹은 지분 15.89%를 확보한 2대 주주다.",
+      "title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어"
     },
     "source_fact:7e0778cbcb3e73f0ef245dd1": {
       "first_seen_kst": "2026-10-17T05:57:10+09:00",
@@ -684623,6 +685229,27 @@
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 계약…LFP 물량 두 배 넘게 확대"
     },
+    "source_fact:a550b9d41364ad7cad39f0cb": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637739",
+      "source": "이투데이",
+      "source_body_digest": "d5759bd72619b788909be9e5e69c0e816a3bf4cd0dc88002d495649ede9c174a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5fbd94a65b53000b129df4770cbdc0264e8b59bc02109363dd9a3b85a134c2d",
+      "source_fact_keys": [
+        "source_fact:v1:0f408995d4338f7cbe58444c3db1f9ea3a1cb8cb0aa2ff34012abd17d051c10a",
+        "source_fact:v1:5d25d3eeb2e9416c5ca3a56bc14307a059b28bcbf76fb4009699edf519ba2f94"
+      ],
+      "source_published_kst": "2026-10-20T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의",
+      "telegram_core_fact": "로봇·반도체·AI 데이터센터·자율주행차·바이오 등 5극3특 주요 성장엔진과 관련해 산업 현장에서 제기된 규제 애로 해소 방안을 관계 부처가 발표한다.",
+      "title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의"
+    },
     "source_fact:a55aabe62b46f8b823c266d1": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -703789,6 +704416,30 @@
       "source_title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표",
       "telegram_core_fact": "블룸버그(Bloomberg)에 따르면 앤트로픽은 이르면 11월 중순 기업공개(IPO)를 추진한다.",
       "title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표"
+    },
+    "source_fact:b02133f25e296d00ff911803": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833373",
+      "source": "뉴시스",
+      "source_body_digest": "52d8c114c22c2f712e52f0614f9c0ec9a195d6adef4cd1abb6e5ca3a44363160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5401fbd92f228687be8554d69164eb6f73d8bc5e02ee41c3b11589c938908be",
+      "source_fact_keys": [
+        "source_fact:v1:2aa0bfa0c2f44aeecdf0c1b9c473d029f8c15ae0b77b0c7345164b75a5b1f11f",
+        "source_fact:v1:892ab4630d796a62cd40234bf4b05a535b226e129c969ec3a9f81f59a84e9720",
+        "source_fact:v1:b3c8be3acf959804ee237bb6dc05333413a379cfde07e51e5c0c500e056178e7",
+        "source_fact:v1:c1523d4e4512a4d58a6440c86cb48e192629600ecd9b2d261aaf106fea9ccf7d",
+        "source_fact:v1:da517135c1862d7e5453d42bc6951eec8f4bce6f9b71fdccef2577a2a03cda2f"
+      ],
+      "source_published_kst": "2026-10-20T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어",
+      "telegram_core_fact": "현재 수은은 KAI 지분 26.41%를 보유한 최대주주이며, 한화그룹은 지분 15.89%를 확보한 2대 주주다.",
+      "title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어"
     },
     "source_fact:b021d087eccfe436474fac7b": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -768163,6 +768814,30 @@
       "telegram_core_fact": "4대 은행과 SK하이닉스는 공동으로 재원을 출연하고, 무보는 이를 바탕으로 총 2조원 수출신용보증을 공급한다.",
       "title": "4대 은행, SK하이닉스와 반도체 협력기업에 2조 금융지원"
     },
+    "source_fact:d57766eb9220a25a2f4cc2cd": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833373",
+      "source": "뉴시스",
+      "source_body_digest": "52d8c114c22c2f712e52f0614f9c0ec9a195d6adef4cd1abb6e5ca3a44363160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5401fbd92f228687be8554d69164eb6f73d8bc5e02ee41c3b11589c938908be",
+      "source_fact_keys": [
+        "source_fact:v1:2aa0bfa0c2f44aeecdf0c1b9c473d029f8c15ae0b77b0c7345164b75a5b1f11f",
+        "source_fact:v1:892ab4630d796a62cd40234bf4b05a535b226e129c969ec3a9f81f59a84e9720",
+        "source_fact:v1:b3c8be3acf959804ee237bb6dc05333413a379cfde07e51e5c0c500e056178e7",
+        "source_fact:v1:c1523d4e4512a4d58a6440c86cb48e192629600ecd9b2d261aaf106fea9ccf7d",
+        "source_fact:v1:da517135c1862d7e5453d42bc6951eec8f4bce6f9b71fdccef2577a2a03cda2f"
+      ],
+      "source_published_kst": "2026-10-20T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어",
+      "telegram_core_fact": "현재 수은은 KAI 지분 26.41%를 보유한 최대주주이며, 한화그룹은 지분 15.89%를 확보한 2대 주주다.",
+      "title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어"
+    },
     "source_fact:d57a3221c9ee7ca2f1652a69": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
       "lanes": {
@@ -779452,6 +780127,27 @@
       "source_title": "고고로, 6200만 달러 증자..주당 2.48달러 신주 발행",
       "telegram_core_fact": "배터리 교환 생태계 기업 고고로(GGR)가 이사 Chung-Yao Yin이 지배하는 법인과 전략적 투자자를 대상으로 보통주 2493만6057주를 주당 2.48달러에 발행해 약 6180만 달러 두 번째 신규 지분투자를 유치한다고 7일(현지시간) 발표했다.",
       "title": "고고로, 6200만 달러 증자..주당 2.48달러 신주 발행"
+    },
+    "source_fact:dbc336fe50d8c40482f43ca9": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637733",
+      "source": "이투데이",
+      "source_body_digest": "f5684d498b48f99e570eb5b09bcd7b56906366419521361756209e479581069f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7ad55a21f4ffa1a24d75fda5d2146429b8b82403bf04159ca4f7f06f7c678e4",
+      "source_fact_keys": [
+        "source_fact:v1:00660ed265466640b971e938b945b8b9f5a3ec2f7694a64b5abdd946791fd736",
+        "source_fact:v1:04b49b1b61c2392164718e69a8e15ca83b651b63ff43ef16903f218c247c8419"
+      ],
+      "source_published_kst": "2026-10-20T09:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다",
+      "telegram_core_fact": "무신사는 15일 문을 연 ‘무신사 스탠다드 롯데백화점 창원점’의 누적 매출이 개점 나흘 만에 4억5000만원을 돌파했다고 20일 밝혔다.",
+      "title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다"
     },
     "source_fact:dbc4886ba9a9ff621f24ace5": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -800775,6 +801471,27 @@
       "telegram_core_fact": "블룸버그(Bloomberg)에 따르면 앤트로픽은 이르면 11월 중순 기업공개(IPO)를 추진한다.",
       "title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표"
     },
+    "source_fact:e7cbec09053903dc18cf32c2": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637739",
+      "source": "이투데이",
+      "source_body_digest": "d5759bd72619b788909be9e5e69c0e816a3bf4cd0dc88002d495649ede9c174a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5fbd94a65b53000b129df4770cbdc0264e8b59bc02109363dd9a3b85a134c2d",
+      "source_fact_keys": [
+        "source_fact:v1:0f408995d4338f7cbe58444c3db1f9ea3a1cb8cb0aa2ff34012abd17d051c10a",
+        "source_fact:v1:5d25d3eeb2e9416c5ca3a56bc14307a059b28bcbf76fb4009699edf519ba2f94"
+      ],
+      "source_published_kst": "2026-10-20T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의",
+      "telegram_core_fact": "로봇·반도체·AI 데이터센터·자율주행차·바이오 등 5극3특 주요 성장엔진과 관련해 산업 현장에서 제기된 규제 애로 해소 방안을 관계 부처가 발표한다.",
+      "title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의"
+    },
     "source_fact:e7e6aa58597f207d8d9f5e39": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
       "lanes": {
@@ -809709,6 +810426,26 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:ecd86e658ace5dd95e502d5a": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833117",
+      "source": "뉴시스",
+      "source_body_digest": "c34325091e88128fae9a8e086040f8c897843f8ed3094a2b8d3e1f7cf1fd73b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a4fa7db70d25a8281404a16fa0fde75ae19589e44bbfe9b0d534b966025d215",
+      "source_fact_keys": [
+        "source_fact:v1:3d916f643f388b188c6b1aedb619929d6cadf97d67bbe74a4cef477bf552b21d"
+      ],
+      "source_published_kst": "2026-10-20T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\"",
+      "telegram_core_fact": "FT는 \"엔스케일은 미국 뉴욕증시에서 350억 달러 기업공개(IPO)을 추진하고 있다\"며 \"앤트로픽과 두 번째 계약은 엔스케일의 잠재적 투자자를 안심시키는 데 도움될 수 있다\"고 평가했다.",
+      "title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\""
     },
     "source_fact:ecdc07a09167e24d39838717": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
@@ -824569,6 +825306,27 @@
       ],
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "\"미래 성장동력 확보\"…알테오젠, 2천억 투자유치"
+    },
+    "source_fact:f5e96d990c6bf26b59162dbd": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637733",
+      "source": "이투데이",
+      "source_body_digest": "f5684d498b48f99e570eb5b09bcd7b56906366419521361756209e479581069f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7ad55a21f4ffa1a24d75fda5d2146429b8b82403bf04159ca4f7f06f7c678e4",
+      "source_fact_keys": [
+        "source_fact:v1:00660ed265466640b971e938b945b8b9f5a3ec2f7694a64b5abdd946791fd736",
+        "source_fact:v1:04b49b1b61c2392164718e69a8e15ca83b651b63ff43ef16903f218c247c8419"
+      ],
+      "source_published_kst": "2026-10-20T09:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다",
+      "telegram_core_fact": "무신사는 15일 문을 연 ‘무신사 스탠다드 롯데백화점 창원점’의 누적 매출이 개점 나흘 만에 4억5000만원을 돌파했다고 20일 밝혔다.",
+      "title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다"
     },
     "source_fact:f5eb4bbe1e8301446d45c714": {
       "first_seen_kst": "2026-10-15T19:21:06+09:00",
@@ -842911,6 +843669,30 @@
       "telegram_core_fact": "농촌진흥청이 국산 수수의 경쟁력을 높이고 수수 산업 활성화를 지원하기 위해 고기능성 신품종 개발과 생산·가공·유통을 연계한 산업화 체계 구축에 박차를 가하고 있다.",
       "title": "농진청, 고기능성 수수 신품종 개발·재배 기계화 박차"
     },
+    "title:03cd6952d40bdfbb2b393f13": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833373",
+      "source": "뉴시스",
+      "source_body_digest": "52d8c114c22c2f712e52f0614f9c0ec9a195d6adef4cd1abb6e5ca3a44363160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5401fbd92f228687be8554d69164eb6f73d8bc5e02ee41c3b11589c938908be",
+      "source_fact_keys": [
+        "source_fact:v1:2aa0bfa0c2f44aeecdf0c1b9c473d029f8c15ae0b77b0c7345164b75a5b1f11f",
+        "source_fact:v1:892ab4630d796a62cd40234bf4b05a535b226e129c969ec3a9f81f59a84e9720",
+        "source_fact:v1:b3c8be3acf959804ee237bb6dc05333413a379cfde07e51e5c0c500e056178e7",
+        "source_fact:v1:c1523d4e4512a4d58a6440c86cb48e192629600ecd9b2d261aaf106fea9ccf7d",
+        "source_fact:v1:da517135c1862d7e5453d42bc6951eec8f4bce6f9b71fdccef2577a2a03cda2f"
+      ],
+      "source_published_kst": "2026-10-20T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어",
+      "telegram_core_fact": "현재 수은은 KAI 지분 26.41%를 보유한 최대주주이며, 한화그룹은 지분 15.89%를 확보한 2대 주주다.",
+      "title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어"
+    },
     "title:03d33c40e226ec613fa237d4": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
@@ -860553,6 +861335,26 @@
       "telegram_core_fact": "이번 다카이치 총리의 입장은 트럼프 행정부가 ICC) 재판관 출신 나비 필레이가 노벨평화상 수상자로 발표된 9일(현지 시간) ICC에 대한 전면 제재를 발표한 직후 나왔다.",
       "title": "日다카이치, 美트럼프 행정부의 ICC 제재에 \"깊은 우려…ICC 지지\""
     },
+    "title:2b5941c16da99ec51a7cb581": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833117",
+      "source": "뉴시스",
+      "source_body_digest": "c34325091e88128fae9a8e086040f8c897843f8ed3094a2b8d3e1f7cf1fd73b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a4fa7db70d25a8281404a16fa0fde75ae19589e44bbfe9b0d534b966025d215",
+      "source_fact_keys": [
+        "source_fact:v1:3d916f643f388b188c6b1aedb619929d6cadf97d67bbe74a4cef477bf552b21d"
+      ],
+      "source_published_kst": "2026-10-20T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\"",
+      "telegram_core_fact": "FT는 \"엔스케일은 미국 뉴욕증시에서 350억 달러 기업공개(IPO)을 추진하고 있다\"며 \"앤트로픽과 두 번째 계약은 엔스케일의 잠재적 투자자를 안심시키는 데 도움될 수 있다\"고 평가했다.",
+      "title": "\"앤트로픽, 英엔스케일과 두 번째 대형 계약 논의…컴퓨팅 용량 2배로\""
+    },
     "title:2b5d50c8071afdb7751adcf6": {
       "first_seen_kst": "2026-10-14T07:46:13+09:00",
       "lanes": {
@@ -877994,6 +878796,27 @@
       "link": "https://www.fnnews.com/news/202610020701299645",
       "source": "파이낸셜뉴스",
       "title": "마이크론이 연 반도체 실적시즌…'삼성전자 HBM4·범용D램'에 쏠린 눈"
+    },
+    "title:51ab30373c4109e3ca834899": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637733",
+      "source": "이투데이",
+      "source_body_digest": "f5684d498b48f99e570eb5b09bcd7b56906366419521361756209e479581069f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7ad55a21f4ffa1a24d75fda5d2146429b8b82403bf04159ca4f7f06f7c678e4",
+      "source_fact_keys": [
+        "source_fact:v1:00660ed265466640b971e938b945b8b9f5a3ec2f7694a64b5abdd946791fd736",
+        "source_fact:v1:04b49b1b61c2392164718e69a8e15ca83b651b63ff43ef16903f218c247c8419"
+      ],
+      "source_published_kst": "2026-10-20T09:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다",
+      "telegram_core_fact": "무신사는 15일 문을 연 ‘무신사 스탠다드 롯데백화점 창원점’의 누적 매출이 개점 나흘 만에 4억5000만원을 돌파했다고 20일 밝혔다.",
+      "title": "무신사 스탠다드 창원점, 나흘 만에 4억5000만원 팔았다"
     },
     "title:51ba2285bcce5a5f1fb1babb": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
@@ -902764,6 +903587,26 @@
       "source_published_kst": "2026-10-07T06:31+09:00",
       "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
     },
+    "title:8ad969ee9e0a3a4d99a49f96": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etnews.com/20261020000228",
+      "source": "전자신문",
+      "source_body_digest": "7c417a1ded7a818e4baca338f06c37577cd1f26b9d219de2a86aca9170429b7c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26cbb7aa49ea3ddd8439cdbab647d656884c464aaf546399dee79e8b68f55b27",
+      "source_fact_keys": [
+        "source_fact:v1:d0912fc290db940bddc1b4c34d753926e014ae63fc780a54a9a051bf0931808a"
+      ],
+      "source_published_kst": "2026-10-20T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "수출 1조달러 견인할 'ABCDE' 뜬다…수출 붐업코리아 개막",
+      "telegram_core_fact": "미국 자동차 부품 유통기업과 350만달러 밸브 공급 계약 체결이 예고된 것을 비롯, 개막 전 이미 103건, 약 6900만달러 수출 계약 및 양해각서(MOU)가 확정되는 등 현장 성과도 잇따르고 있다.",
+      "title": "수출 1조달러 견인할 'ABCDE' 뜬다…수출 붐업코리아 개막"
+    },
     "title:8ad97f2fbbd04588088cbf44": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
       "lanes": {
@@ -904011,6 +904854,27 @@
       "link": "https://www.yna.co.kr/view/MYH20261002009500038",
       "source": "연합뉴스",
       "title": "美경윳값 폭등에…트럼프, 유럽에 폭탄돌리기 | 연합뉴스"
+    },
+    "title:8d77a2e1d22437edd8653f74": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637739",
+      "source": "이투데이",
+      "source_body_digest": "d5759bd72619b788909be9e5e69c0e816a3bf4cd0dc88002d495649ede9c174a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5fbd94a65b53000b129df4770cbdc0264e8b59bc02109363dd9a3b85a134c2d",
+      "source_fact_keys": [
+        "source_fact:v1:0f408995d4338f7cbe58444c3db1f9ea3a1cb8cb0aa2ff34012abd17d051c10a",
+        "source_fact:v1:5d25d3eeb2e9416c5ca3a56bc14307a059b28bcbf76fb4009699edf519ba2f94"
+      ],
+      "source_published_kst": "2026-10-20T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의",
+      "telegram_core_fact": "로봇·반도체·AI 데이터센터·자율주행차·바이오 등 5극3특 주요 성장엔진과 관련해 산업 현장에서 제기된 규제 애로 해소 방안을 관계 부처가 발표한다.",
+      "title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의"
     },
     "title:8d78654a4cf8b784f7345809": {
       "first_seen_kst": "2026-10-16T19:48:28+09:00",
@@ -913499,6 +914363,24 @@
       "telegram_core_fact": "LG전자에 따르면 미국 빌더 사업 매출은 2024년 전년 대비 약 64%, 2025년에는 40% 이상 증가했다. [뉴욕=이데일리 성주원 특파원] LG전자가 미국 주택건설업체를 대상으로 한 빌더(Builder) 사업에서 올해도 두 자릿수를 크게 웃도는 성장세를 이어가고 있다.",
       "title": "LG전자 美빌더 사업 고성장…\"올해도 두 자릿수 훌쩍 넘는다\""
     },
+    "title:a30aa3300ca53c8671f1c1d8": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.etnews.com/20261020000234",
+      "source": "전자신문",
+      "source_body_digest": "2faa3ddcdfd057ab5a02470256b6293a3047b4a9fcf4e72cff4f8c140f117dae",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T13:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "자비스, 배터리 X-ray 검사장비 34억 수주…21일 거래재개",
+      "telegram_core_fact": "자비스는 액면병합에 따른 거래정지 기간이던 9월 29일 이 계약을 공시했다.",
+      "title": "자비스, 배터리 X-ray 검사장비 34억 수주…21일 거래재개"
+    },
     "title:a31434fda9090f68794334b5": {
       "first_seen_kst": "2026-10-20T13:59:52+09:00",
       "lanes": {
@@ -922514,6 +923396,24 @@
       ],
       "source_published_kst": "2026-10-06T14:09+09:00",
       "title": "더 똑똑해진 ‘인천공항 면세점’ 앱…음식 사전 예약·주문·결제도 ‘뚝딱’"
+    },
+    "title:b72b4e16af3d5cf40235d88d": {
+      "first_seen_kst": "2026-10-20T14:25:37+09:00",
+      "lanes": {
+        "live": "2026-10-20T14:25:37+09:00"
+      },
+      "last_seen_kst": "2026-10-20T14:25:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832739",
+      "source": "뉴시스",
+      "source_body_digest": "e7cc19a2a6d9dcd49db28f1022990786289ed6072a01e10d62f4b9b8dd9c3851",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T10:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "비료값 오늘부터 평균 5.1% 인하…가격보조도 유지",
+      "telegram_core_fact": "농림축산식품부는 이날부터 농협이 무기질비료 판매가격을 평균 5.1% 인하한다고 밝혔다. 20일부터 무기질비료 판매가격이 평균 5.1% 인하된다.",
+      "title": "비료값 오늘부터 평균 5.1% 인하…가격보조도 유지"
     },
     "title:b74f9228905a9a80cccf8e78": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -953551,5 +954451,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-20T13:59:52+09:00"
+  "updated_at_kst": "2026-10-20T14:25:37+09:00"
 }
