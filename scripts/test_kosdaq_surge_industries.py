@@ -494,10 +494,11 @@ class KOSPIIndustryTests(IndustryFixture, unittest.TestCase):
         w.session_open_ts, w.session_close_ts = OPEN, END + 3600
         w.session_continuous_end_ts = END + 1800
         w.flows.append({"ts": END + 20})
-        w.surge_pending["외국인"] = {"sample_ts": END, "seen_at": END}
+        w.surge_pending["외국인"] = {"sample_ts": END, "seen_at": END, "end_values": {"spot": 999}}
         cand = {"actor": "외국인", "mode": "현물 중심", "spot": 1001, "futures": -20,
                 "confidence": "단독 신호", "spot_window": (START + 20, END + 20),
-                "futures_window": (START + 10, END + 10), "sample_ts": END + 20}
+                "futures_window": (START + 10, END + 10), "sample_ts": END + 20,
+                "spot_end_cumulative": 1001}
         result = self.load([self.history()])
         result["requested_window"] = list(cand["spot_window"])
         receipts = []
@@ -514,6 +515,190 @@ class KOSPIIndustryTests(IndustryFixture, unittest.TestCase):
             self.assertEqual(evidence["message_sha256"], hashlib.sha256(send.call_args.args[0].encode()).hexdigest())
             asyncio.run(w.maybe_alert_flow_surge(END + 26))
             self.assertEqual(send.call_count, 1)
+
+
+class MarketSurgeParityTests(IndustryFixture, unittest.TestCase):
+    """A change in one market must satisfy the same source/display safeguards."""
+    @staticmethod
+    def watch():
+        w = watcher.Watch("fixture", [], "", False)
+        w.session_open_ts, w.session_close_ts = OPEN, END + 3600
+        w.session_continuous_end_ts = END + 1800
+        w._record_delivery = lambda *a, **kw: None
+        return w
+
+    @staticmethod
+    def add_tick(w, market, point, value, actor="외국인"):
+        row = {"ts": point, "market": market, "현물": {
+            "sample_ts": point, **{who: value if who == actor else 0 for who in ACTORS}}}
+        (w.flows if market == "KOSPI" else w.kosdaq_flows).append(row)
+
+    @staticmethod
+    def evaluate(w, market, point):
+        callback = w.maybe_alert_flow_surge if market == "KOSPI" else w.maybe_alert_kosdaq_surge
+        asyncio.run(callback(point))
+
+    def render(self, w, market, actor, context, delta=1000):
+        if market == "KOSPI":
+            cand = {"actor": actor, "mode": "현물 중심", "confidence": "단독 신호",
+                    "spot": delta, "futures": None, "spot_window": (START, END)}
+            return w.build_flow_surge_alert(cand, END + 3, context)
+        return w.build_kosdaq_flow_surge_alert(actor, delta, {"start_ts": START, "end_ts": END}, END + 3, context)
+
+    def context(self, market, actor):
+        code, name = ("013", "전기전자") if market == "KOSPI" else ("319", "화학")
+        master = coverage([(code, name), ("018", "건설") if market == "KOSPI" else ("320", "제약")])
+        master["market"] = market
+        return self.load([master] + pair(code, name, -100, -70, actor), actor, market=market)
+
+    def test_all_six_market_investor_bodies_share_field_order_and_partial_limits(self):
+        for actor in ACTORS:
+            bodies = []
+            for market in ("KOSPI", "KOSDAQ"):
+                with self.subTest(market=market, actor=actor):
+                    context = self.context(market, actor)
+                    text = self.render(self.watch(), market, actor, context)
+                    self.assertIn(f"{actor} 업종 순매수 증가 상위 1개", text)
+                    self.assertIn("확인 1개 / 수집 대상 2개 · 전체 업종 순위 확정 보류", text)
+                    self.assertIn("업종 금액: 원자료 단위 미확인으로 표시 보류", text)
+                    self.assertIn("누적 순매수의 5분 변화량", text)
+                    self.assertIn("두 차례 연속 확인", text)
+                    self.assertIn("주가 상승 확정값이 아닙니다", text)
+                    self.assertIn("현물 10:14:00~10:19:00", text)
+                    # Market-specific thresholds/channels remain explicit extras.
+                    common = [line for line in text.splitlines() if not any(key in line for key in
+                              ("감지 기준:", "프로그램:", "KOSPI200 선물", "프로그램 교차검증:", "href="))]
+                    normalized = "\n".join(common).replace("코스피", "시장").replace("코스닥", "시장")
+                    normalized = normalized.replace("전기전자", "업종").replace("화학", "업종")
+                    bodies.append(normalized)
+            self.assertEqual(bodies[0], bodies[1])
+
+    def test_wrong_market_actor_or_window_is_held_for_both_markets(self):
+        for market in ("KOSPI", "KOSDAQ"):
+            original = self.context(market, "외국인")
+            for change in ({"market": "other"}, {"investor": "기관"}, {"requested_window": [START - 1, END]}):
+                with self.subTest(market=market, change=change):
+                    text = self.render(self.watch(), market, "외국인", {**original, **change})
+                    self.assertIn("같은 투자자·구간의 자료 없음", text)
+                    self.assertNotIn("순매수 증가 상위", text)
+
+    def test_no_positive_spot_does_not_borrow_industry_ranks(self):
+        for market in ("KOSPI", "KOSDAQ"):
+            for delta in (-10, 0, None):
+                text = self.render(self.watch(), market, "외국인", self.context(market, "외국인"), delta)
+                self.assertIn("현물 순매수 증가 없음 또는 표본 부족", text)
+                self.assertNotIn("순매수 증가 상위", text)
+
+    def test_industry_reader_exception_is_identical_for_both_markets(self):
+        for market in ("KOSPI", "KOSDAQ"):
+            w = self.watch()
+            with patch.object(watcher, "industry_buy_context", side_effect=OSError("fixture")) as load:
+                context = asyncio.run(w._surge_industry_context(market, "기관", 1000, (START, END), OPEN))
+            load.assert_called_once_with(START, END, "기관", session_open_ts=OPEN, market=market)
+            text = self.render(w, market, "기관", context)
+            self.assertIn("업종 수급 자료 처리 실패", text)
+            self.assertIn("+1,000억원", text)
+            self.assertIn("업종 확인 범위: 확인 0개", text)
+
+    def test_new_clock_same_cumulative_cannot_confirm_either_market(self):
+        for market in ("KOSPI", "KOSDAQ"):
+            for actor in ACTORS:
+                with self.subTest(market=market, actor=actor):
+                    w = self.watch()
+                    with patch.object(watcher, "telegram_send", return_value=100) as send, \
+                            patch.object(watcher, "industry_buy_context", return_value=None):
+                        for ts, value in ((START - 20, 0), (START, 0), (END - 20, 1000), (END, 1000)):
+                            self.add_tick(w, market, ts, value, actor)
+                            self.evaluate(w, market, ts + 3)
+                        send.assert_not_called()
+                        self.add_tick(w, market, END + 20, 1050, actor)
+                        self.evaluate(w, market, END + 23)
+                        send.assert_called_once()
+                        for step, value in ((40, 1100), (60, 1200)):
+                            self.add_tick(w, market, END + step, value, actor)
+                            self.evaluate(w, market, END + step + 3)
+                        send.assert_called_once()  # shared twenty-minute cooldown
+
+    def test_cumulative_reversal_requires_a_fresh_confirmation(self):
+        for market in ("KOSPI", "KOSDAQ"):
+            w = self.watch()
+            with patch.object(watcher, "telegram_send", return_value=100) as send, \
+                    patch.object(watcher, "industry_buy_context", return_value=None):
+                for ts, value in ((START - 20, 0), (START, 0), (END - 20, 1200), (END, 1100)):
+                    self.add_tick(w, market, ts, value)
+                    self.evaluate(w, market, ts + 3)
+                send.assert_not_called()
+                self.add_tick(w, market, END + 20, 1150)
+                self.evaluate(w, market, END + 23)
+                send.assert_called_once()
+
+    def test_changed_trigger_channels_and_declining_combined_channel_do_not_confirm(self):
+        pending = {}
+        confirm = watcher.confirm_flow_surge
+        self.assertFalse(confirm(pending, "외국인", END, END + 3, {"spot": 1200}))
+        self.assertFalse(confirm(pending, "외국인", END + 20, END + 23, {"futures": 1500}))
+        self.assertFalse(confirm(pending, "외국인", END + 40, END + 43, {"spot": 1200, "futures": 1500}))
+        self.assertFalse(confirm(pending, "외국인", END + 60, END + 63, {"spot": 1199, "futures": 1600}))
+        self.assertTrue(confirm(pending, "외국인", END + 80, END + 83, {"spot": 1200, "futures": 1600}))
+
+    def test_legacy_kospi_pending_without_values_does_not_confirm(self):
+        pending = {"외국인": {"sample_ts": END, "seen_at": END + 3}}
+        self.assertFalse(watcher.confirm_flow_surge(pending, "외국인", END + 20, END + 23, {"spot": 1000}))
+        self.assertTrue(watcher.confirm_flow_surge(pending, "외국인", END + 40, END + 43, {"spot": 1050}))
+
+    def test_legacy_kosdaq_endpoint_and_new_handoff_values_are_preserved(self):
+        w = self.watch()
+        w.surge_pending["외국인"] = {"sample_ts": END, "seen_at": END + 3,
+                                     "end_values": {"spot": 1000, "futures": 1500}}
+        w.kosdaq_surge_pending["기관"] = {"sample_ts": END, "seen_at": END + 3, "end_value": 160}
+        path = Path(self.directory.name) / "handoff.json"
+        w.save_handoff(path)
+        restored = self.watch()
+        restored.load_handoff(path)
+        self.assertEqual(restored.surge_pending, w.surge_pending)
+        self.assertEqual(restored.kosdaq_surge_pending["기관"]["end_value"], 160)
+        self.assertTrue(watcher.confirm_flow_surge(restored.kosdaq_surge_pending, "기관", END + 20,
+                                                  END + 23, {"spot": 170}))
+
+    def test_sender_failure_does_not_advance_either_market(self):
+        for market in ("KOSPI", "KOSDAQ"):
+            w = self.watch()
+            receipts = []
+            w._record_delivery = lambda *a, **kw: receipts.append((a, kw))
+            with patch.object(watcher, "telegram_send", side_effect=RuntimeError("fixture")), \
+                    patch.object(watcher, "industry_buy_context", return_value=None):
+                for ts, value in ((START - 20, 0), (START, 0), (END - 20, 1000)):
+                    self.add_tick(w, market, ts, value)
+                    self.evaluate(w, market, ts + 3)
+                self.add_tick(w, market, END, 1050)
+                with self.assertRaises(RuntimeError): self.evaluate(w, market, END + 3)
+            self.assertFalse(w.surge_sent_at)
+            self.assertFalse(w.kosdaq_surge_sent_at)
+            self.assertFalse(w.msg_ids)
+            self.assertFalse(receipts)
+
+    def test_same_delivery_contract_and_actual_body_digest_for_both_markets(self):
+        for market in ("KOSPI", "KOSDAQ"):
+            w = self.watch()
+            receipts = []
+            w._record_delivery = lambda *a, **kw: receipts.append((a, kw))
+            with patch.object(watcher, "telegram_send", return_value=123) as send, \
+                    patch.object(watcher, "industry_buy_context", return_value=None):
+                for ts, value in ((START - 20, 0), (START, 0), (END - 20, 1000), (END, 1050)):
+                    self.add_tick(w, market, ts, value)
+                    self.evaluate(w, market, ts + 3)
+            evidence = receipts[0][1]["evidence"]
+            self.assertEqual(evidence["market"], market)
+            self.assertEqual(evidence["actor"], "외국인")
+            self.assertEqual(evidence["alert_contract"], watcher.FLOW_SURGE_ALERT_CONTRACT)
+            self.assertEqual(evidence["display_unit"], "억원")
+            self.assertEqual(evidence["spot_start_cumulative"], 0)
+            self.assertEqual(evidence["spot_end_cumulative"], 1050)
+            self.assertEqual(evidence["spot_delta_eok"], 1050)
+            self.assertEqual(evidence["confirmation_first"]["end_values"], {"spot": 1000})
+            self.assertEqual(evidence["confirmation_second"]["end_values"], {"spot": 1050})
+            self.assertEqual(list(evidence["spot_window"]), [START, END])
+            self.assertEqual(evidence["message_sha256"], hashlib.sha256(send.call_args.args[0].encode()).hexdigest())
 
 
 class CollectorHistoryTests(unittest.TestCase):
