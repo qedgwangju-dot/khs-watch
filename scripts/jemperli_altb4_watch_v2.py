@@ -16,6 +16,44 @@ CANADA_EVENT_KEY = base.digest('jemperli|canada|rectal|snds_review_accepted')
 CANADA_GSK_URL = 'https://ca.gsk.com/en-ca/media/press-releases/gsk-s-jemperli-dostarlimab-accepted-for-review-by-health-canada-for-patients-with-dmmrmsi-h-locally-advanced-rectal-cancer/'
 
 
+
+# Verified new material events, separate from previous FDA application and review notices.
+FDA_APPROVAL_DATE = dt.date(2026, 10, 19)
+FDA_APPROVAL_URL = "https://www.gsk.com/en-gb/media/press-releases/jemperli-dostarlimab-approved-in-us-as-first-and-only-immunotherapy-for-adults-with-msi-hdmmr-locally-advanced-rectal-cancer/"
+FDA_FDA_URL = "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-dostarlimab-locally-advanced-rectal-cancer"
+FDA_APPROVAL_EVENT = base.digest("JEMPERLI|FDA|2026-10-19|stage2-3|MSI-H-dMMR|rectal|accelerated-approval")
+SAPPHIRE_URL = "https://clinicaltrials.gov/study/NCT07860450"
+SAPPHIRE_EVENT = base.digest("JEMPERLI|SC|NCT07860450|2026-10-06|registration")
+
+
+def is_fda_approved_rectal(item: base.Item) -> bool:
+    txt = item.full.lower()
+    date = base.parse_published(item.published)
+    if date and date.date() < FDA_APPROVAL_DATE:
+        return False
+    title = item.title.lower()
+    if not ("rectal" in txt or "직장암" in txt):
+        return False
+    if not any(k in txt for k in ("jemperli", "dostarlimab", "젬퍼리")):
+        return False
+    if base.canonicalize_url(item.url) == base.canonicalize_url(FDA_APPROVAL_URL):
+        return True
+    return bool(
+        re.search(r"approved in (?:the )?(?:u\\.s\\.|us|united states)|fda (?:granted|grants) (?:accelerated )?approval|fda (?:has )?approved|fda approves", title)
+    )
+
+
+def is_sc_sapphire(item: base.Item) -> bool:
+    return "nct07860450" in (item.full + " " + item.url).lower()
+
+
+_original_recent = base.is_recent
+
+
+def is_recent(item: base.Item) -> bool:
+    return is_sc_sapphire(item) or _original_recent(item)
+
+
 def is_current_rectal_priority_story(item: base.Item) -> bool:
     low = item.full.lower()
     if 'jemperli' not in low and 'dostarlimab' not in low:
@@ -98,6 +136,10 @@ def _stage(item: base.Item) -> str:
 
 def event_key(item: base.Item) -> str:
     low = item.full.lower()
+    if is_fda_approved_rectal(item):
+        return FDA_APPROVAL_EVENT
+    if is_sc_sapphire(item):
+        return SAPPHIRE_EVENT
 
     if is_canada_rectal_review_story(item):
         return CANADA_EVENT_KEY
@@ -138,6 +180,29 @@ def _enrich_with_current_gsk_release(item: base.Item, body: str, resolved: str) 
 
 
 def build_item_summary(item: base.Item) -> str:
+    if is_fda_approved_rectal(item):
+        return (
+            "**[젬퍼리] 미국 FDA 직장암 신규 적응증 가속승인**\\n\\n"
+            "- **타임라인:**\\n"
+            "• **2026년 8월 24일** FDA 우선심사 접수\\n"
+            "• **2026년 10월 19일** FDA, 2·3기 MSI-H/dMMR 국소 진행성 직장암 정맥주사 Jemperli 가속승인\\n"
+            "- **임상:** AZUR-1 총 154명. 연구자 평가 98/144명(68%), 독립평가 54/116명(47%)에서 12개월 지속 임상적 완전반응. 평가기준을 구분해야 합니다.\\n"
+            "- **알테오젠:** 이번 승인은 정맥주사 적응증으로 ALT-B4 피하주사 승인이 아닙니다.\\n"
+            "- **위험:** 장기 재발·유효성 추적 및 중대한 면역 관련 이상반응 검증 필요.\\n"
+            f"- FDA 공식 원문: {FDA_FDA_URL}\\n"
+            f"- GSK 공식 원문: {FDA_APPROVAL_URL}"
+        )
+    if is_sc_sapphire(item):
+        return (
+            "**[젬퍼리] SAPPHIRE 피하주사 임상 등록 — 개시 예정, 아직 모집 전**\\n\\n"
+            "- **타임라인:**\\n"
+            "• **2026년 10월 6일** 자궁내막암 피하주사 임상시험 NCT07860450 등록 공개\\n"
+            "• **2026년 11월 12일** 임상 시작 예정일(실제 시작 확인 전)\\n"
+            "- **임상:** 원발성 진행성·재발성 자궁내막암, 목표 380명. 1b상 용량선정 후 무작위배정 3상에서 정맥주사 대 피하주사 비교. 카르보플라틴·파클리탁셀 병용.\\n"
+            "- **구분:** FDA 직장암 신규 적응증 승인이 아니며 실제 첫 투약과도 다릅니다.\\n"
+            "- **알테오젠:** Tesaro(GSK 자회사) ALT-B4 기술이전 후 개발 단계. 허가·판매·로열티는 아직 별도 단계입니다.\\n"
+            f"- 임상시험 등록 원문: {SAPPHIRE_URL}"
+        )
     body, resolved = base.fetch_body(item)
     body, resolved, enriched = _enrich_with_current_gsk_release(item, body, resolved)
     full = f'{item.full} {body}'.strip()
@@ -255,6 +320,8 @@ _original_gsk_official_items = base.gsk_official_items
 
 def gsk_official_items() -> list[base.Item]:
     items = _original_gsk_official_items()
+    items.append(base.Item("GSK 공식", "Jemperli dostarlimab approved in US for MSI-H/dMMR locally advanced rectal cancer by FDA", FDA_APPROVAL_URL, "Mon, 19 Oct 2026 14:00:00 GMT", "FDA accelerated approval, AZUR-1 stage II/III rectal cancer."))
+    items.append(base.Item("ClinicalTrials.gov 공식", "Jemperli dostarlimab subcutaneous SAPPHIRE NCT07860450 trial registration", SAPPHIRE_URL, "Tue, 06 Oct 2026 12:00:00 GMT", "Not yet recruiting, 380 patients, endometrial carcinoma, estimated start 2026-11-12."))
     items.append(
         base.Item(
             'GSK 공식',
@@ -268,6 +335,7 @@ def gsk_official_items() -> list[base.Item]:
 def main() -> int:
     migrate_state_once()
     base.event_key = event_key
+    base.is_recent = is_recent
     base.is_relevant = is_relevant
     base.build_item_summary = build_item_summary
     base.gsk_official_items = gsk_official_items
