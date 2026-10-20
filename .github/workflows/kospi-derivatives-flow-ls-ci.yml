@@ -33,6 +33,8 @@ on:
       - "scripts/test_kosdaq_surge_industries.py"
       - "scripts/probe_kosdaq_surge_industries.py"
       - "scripts/market_flow_channels.py"
+      - "scripts/market_investors.py"
+      - "scripts/test_market_investment_trust.py"
       - "scripts/market_program_close.py"
       - "scripts/test_market_program_close.py"
       - "scripts/test_fixtures/program_close_readback_20261016.json"
@@ -94,6 +96,7 @@ jobs:
           python scripts/test_kospi_flow_attribution_strict.py
           python scripts/test_kosdaq_surge_industries.py
           python scripts/test_market_flow_channels.py
+          python scripts/test_market_investment_trust.py
 
       - name: Verify KOSPI scheduled CI isolation
         run: |

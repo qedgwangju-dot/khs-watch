@@ -18,7 +18,7 @@ from krx_session_calendar import session_state
 from kosdaq_surge_industries import _industry
 
 KST = ZoneInfo("Asia/Seoul")
-INVESTORS = {"0008": "개인", "0017": "외국인", "0018": "기관"}
+INVESTORS = {"0008": "개인", "0017": "외국인", "0018": "기관", "0003": "투신"}
 
 
 def fnum(value):
