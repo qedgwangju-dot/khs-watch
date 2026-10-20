@@ -128,6 +128,7 @@
     "498c400247061d10784f",
     "4ae613377b83c919e086",
     "4aef2ecfbb056ca1b7c8",
+    "4b2cb0ff5183107236b9",
     "4b46161d49e1f7f26f45",
     "4b793de26b8bcdc5072c",
     "4b8b0c3b21aa80a786ae8b16",
@@ -449,6 +450,7 @@
     "f927019eab761079a46ff8a9",
     "f963efc3b59306faf2cce6ef",
     "fa8d1a9e4e401d87fc73",
+    "fb120bf2f70ce88d5fd0",
     "fc4ec7c811ea11e654b9",
     "fca7094742b5720faa7c",
     "fcb7928c20171e06f9564722",
@@ -484,7 +486,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-20T11:06:01+09:00",
+  "last_scan_kst": "2026-10-20T16:31:01+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -492,6 +494,10 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 12,
-  "fetch_errors": []
+  "fetch_ok": 9,
+  "fetch_errors": [
+    "bing_news 애플 M8 서버 엔비디아: ParseError not well-formed (invalid token): line 1, column 41",
+    "bing_news \"Apple\" HBM server supplier contrac: ParseError not well-formed (invalid token): line 1, column 41",
+    "bing_news \"Apple\" \"NVLink Fusion\": ParseError not well-formed (invalid token): line 1, column 41"
+  ]
 }
