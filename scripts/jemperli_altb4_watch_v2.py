@@ -118,7 +118,14 @@ def _jurisdiction(item: base.Item) -> str:
 
 def _stage(item: base.Item) -> str:
     low = item.full.lower()
-    if any(x in low for x in ('approved', 'approval', '승인')):
+    title = item.title.lower()
+    # "if approved", "seeking approval", and historical applications are not agency decisions.
+    if is_fda_approved_rectal(item) or re.search(
+        r'\b(?:fda|health canada|ema)\s+(?:has\s+)?(?:approved|approves)\b|\bapproved\s+(?:by|in)\s+(?:the\s+)?(?:fda|u\.s\.|us|united states|canada)\b',
+        title,
+    ):
+        return 'approved'
+    if '승인' in title and not any(x in title for x in ('승인 신청', '승인 예정', '승인 기대', '승인 가능', '승인 여부', '승인 시')):
         return 'approved'
     if 'pdufa' in low:
         return 'pdufa'
