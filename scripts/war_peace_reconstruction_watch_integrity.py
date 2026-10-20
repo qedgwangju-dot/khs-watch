@@ -326,7 +326,7 @@ def _ceasefire_rejection_headline(title):
 
 def _military_actions(title):
     return list(re.finditer(
-        r'(?:공습|공격|폭격)\s*(?:개시|재개|감행)|미사일\s*발사|'
+        r'(?:공습|공격|폭격)\s*(?:개시|재개|감행)|(?:공습|공격|폭격)에\s*(?:나섰|돌입)|미사일\s*발사|'
         r'보복\s*(?:공습|공격)\s*(?:개시|실시)|'
         r'\band\s+(?:attacks?|strikes?|bombs?)\b|'
         r'\b(?:launches?|launched|conducts?|conducted|resumes?|resumed)\s+(?:new\s+)?(?:attacks?|strikes?|airstrikes?)', title))
@@ -374,11 +374,13 @@ def _operational_disruption_headline(title):
                      or re.search(event + r'(?:(?!…|\.{3}|[;；]).){0,25}' + change, title))
     # A separate completed action remains military news even beside a delay.
     if re.search(r'(?:공습|폭격|공격|타격|요격)(?:을|를)?\s*(?:했다|했으며|하고\s*있|진행\s*중)|'
+                 r'(?:공습|공격|폭격)에\s*(?:나섰|돌입)|'
                  r'(?:피격|파괴)(?:됐|되었|당했)|\b(?:attacked|struck|bombed)\b', title):
         return False
     # Nominal damage and flight cancellations can describe the delay's background.
     return bool(changed_event
                 and (re.search(r'\bafter\b.{0,35}\battacks?\b|(?:공격|공습).{0,18}(?:이후|여파)|'
+                               r'(?:공격|공습|폭격)(?:에|으로)(?!\s*(?:나섰|돌입))|'
                                r'(?:공격|공습)\s*후|공세\s*속|(?:공항|항만|항구)\s*피격|'
                                r'항공편\s*(?:\d+(?:\.\d+)?%\s*)?취소', title)
                      or _military_actions(title)))
@@ -792,6 +794,8 @@ def score_item(row, now):
 def final_color(row):
     if non_military_kind(row):
         return 'yellow'
+    if re.search(r'(?:공습|공격|폭격)에\s*(?:나섰|돌입)', _headline(row)):
+        return 'red'
     if _report_with_completed_action(_headline(row)):
         return 'red'
     if _headline_refinery_action(row):

@@ -50,6 +50,52 @@ class IntegrityTests(unittest.TestCase):
         value = json.loads((Path(__file__).parent/'test_fixtures/war_conditional_support_39360628209.json').read_text(encoding='utf-8'))
         return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def attack_cause_delay_fixture(self):
+        value = json.loads((Path(__file__).parent/'test_fixtures/war_attack_cause_delay_39361325251.json').read_text(encoding='utf-8'))
+        return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_attack_cause_delay_actual_current_event_is_postponement(self):
+        fixture, _ = self.attack_cause_delay_fixture();row=fixture['articles'][3]
+        self.assertEqual(row['id'],'e63492b9b171333801b9')
+        self.assertEqual(integrity.non_military_kind(row),'operational_disruption')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertIn('행사·운영 일정 변경 보도',integrity.topic_label(row))
+        self.assertEqual(integrity._display_headline(row),row['title_original'])
+
+    def test_attack_cause_delay_variants_and_separate_action(self):
+        for cause in ('미사일 공격에','미사일 공격으로','공습에','폭격으로'):
+            title='사우디, 후티 '+cause+' 국제투자회의 내년으로 연기'
+            with self.subTest(title=title):self.assertEqual(integrity.non_military_kind(article(title)),'operational_disruption')
+        for title in ('사우디, 후티 공격에 나섰다…국제투자회의 내년으로 연기',
+                      '사우디, 후티 미사일 공격에 국제투자회의 내년으로 연기…후티 공습 개시'):
+            with self.subTest(title=title):
+                self.assertNotEqual(integrity.non_military_kind(article(title)),'operational_disruption')
+                self.assertEqual(integrity.final_color(article(title)),'red')
+
+    def test_attack_cause_delay_actual4_full8_render_gate_and_wrong_body(self):
+        fixture,now=self.attack_cause_delay_fixture();before=watch.STATE.read_bytes()
+        for count in (4,len(fixture['articles'])):
+            rows=copy.deepcopy(fixture['articles'][:count])
+            with self.subTest(candidates=count),patch.object(integrity.body_parallel,'_safe_enrich'),patch.object(watch,'market_source_status',fixture['market_source_status'],create=True):
+                text=integrity.build_alert(rows,fixture['markets'],now);shown=[x for x in rows if x['link'] in html.unescape(text)]
+                self.assertEqual([x['id'] for x in shown],[x['id'] for x in rows[:4]])
+                self.assertEqual([x['classification_color'] for x in shown],['yellow']*4)
+                self.assertIn('국제투자회의 내년으로 연기',text)
+                self.assertIn('조건부 공격 중단 제안',text)
+                self.assertIn('협상 지속·재개 의향',text)
+                self.assertNotIn('🔴',text);self.assertNotIn('🟢',text)
+                receipt=evidence.alert_receipt(rows,fixture['markets'],now,text)
+                with tempfile.TemporaryDirectory() as folder,ExitStack() as stack:
+                    for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+                    watch.ALERT.write_text(text,encoding='utf-8');watch.PENDING.write_text(json.dumps({'ids':[x['id'] for x in shown]}),encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8');integrity.verify_alert()
+        rows=fixture['articles'][:4];wrong=fixture['sent_alert'].strip();receipt=evidence.alert_receipt(rows,fixture['markets'],now,wrong)
+        self.assertEqual(receipt['alert_sha256'],fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder,ExitStack() as stack:
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+            watch.ALERT.write_text(wrong,encoding='utf-8');watch.PENDING.write_text(json.dumps({'ids':[x['id'] for x in rows]}),encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(),before)
+
     def test_actual_conditional_support_and_negotiation_intent_are_not_implemented_peace(self):
         fixture, _ = self.conditional_support_fixture()
         for index in (1, 2):
