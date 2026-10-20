@@ -62,6 +62,60 @@ class IntegrityTests(unittest.TestCase):
         value = json.loads((Path(__file__).parent/'test_fixtures/war_withdrawal_position_39391758440.json').read_text(encoding='utf-8'))
         return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def market_claim_fixture(self):
+        value = json.loads((Path(__file__).parent/'test_fixtures/war_market_claim_reaction_39393068852.json').read_text(encoding='utf-8'))
+        return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_market_claim_actual_bourse_reaction_is_not_a_new_operation(self):
+        fixture, _ = self.market_claim_fixture(); row = fixture['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row), 'market_reaction')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '걸프 증시 · 증시 반응 보도')
+        self.assertEqual(integrity._display_headline(row), row['title_original'])
+
+    def test_market_claim_move_and_claim_both_required(self):
+        for title in ('Gulf stocks fall after Houthis claim attacks on Saudi sites',
+                      '후티가 사우디 공격을 주장하자 걸프 증시 하락'):
+            with self.subTest(title=title): self.assertEqual(integrity.non_military_kind(article(title)), 'market_reaction')
+        for title in ('후티, 사우디 공항 공격 주장', 'Gulf bourses retreat after Saudi airport attack'):
+            with self.subTest(title=title): self.assertNotEqual(integrity.non_military_kind(article(title)), 'market_reaction')
+
+    def test_market_claim_separate_actual_action_preserved(self):
+        for title in ('Gulf bourses retreat after Houthis claim attacks…Iran launches attacks',
+                      '후티가 공격을 주장하자 걸프 증시 하락…사우디 공습 개시'):
+            with self.subTest(title=title):
+                self.assertIsNone(integrity.non_military_kind(article(title)))
+                self.assertEqual(integrity.final_color(article(title)), 'red')
+
+    def test_market_claim_score_clears_attack_background_cache(self):
+        fixture, now = self.market_claim_fixture(); row = copy.deepcopy(fixture['articles'][0])
+        row.update(tags=['확전'], signals_ko=['새로운 공격 확대'], forced_tags=['확전'])
+        integrity.score_item(row, now)
+        self.assertEqual(row['tags'], ['증시 반응 보도'])
+        self.assertEqual(row['signals_ko'], []); self.assertEqual(row['forced_tags'], [])
+
+    def test_market_claim_actual_single_full_gate_and_old_body_rejection(self):
+        fixture, now = self.market_claim_fixture(); before = watch.STATE.read_bytes()
+        for selected in (fixture['articles'][:1], fixture['articles']):
+            rows = copy.deepcopy(selected)
+            with self.subTest(candidates=len(rows)), patch.object(integrity.body_parallel,'_safe_enrich'), patch.object(watch,'market_source_status',fixture['market_source_status'],create=True):
+                text=integrity.build_alert(rows,fixture['markets'],now)
+                shown=[row for row in rows if row['link'] in html.unescape(text)]
+                self.assertIn('걸프 증시 · 증시 반응 보도',text)
+                self.assertIn(html.escape(fixture['articles'][0]['title_original']),text)
+                receipt=evidence.alert_receipt(rows,fixture['markets'],now,text)
+                with tempfile.TemporaryDirectory() as folder,ExitStack() as stack:
+                    for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+                    watch.ALERT.write_text(text,encoding='utf-8');watch.PENDING.write_text(json.dumps({'ids':[x['id'] for x in shown]}),encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8')
+                    integrity.verify_alert()
+        wrong=fixture['dryrun_alert'].strip(); rows=fixture['articles'];receipt=evidence.alert_receipt(rows,fixture['markets'],now,wrong)
+        self.assertEqual(receipt['alert_sha256'],fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder,ExitStack() as stack:
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+            watch.ALERT.write_text(wrong,encoding='utf-8');watch.PENDING.write_text(json.dumps({'ids':[x['id'] for x in rows if x['rendered']]}),encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(),before)
+
     def test_withdrawal_actual_possibility_preserves_us_iran_and_source_title(self):
         fixture, _ = self.withdrawal_fixture(); row = fixture['articles'][4]
         self.assertEqual(integrity.non_military_kind(row), 'military_position')
