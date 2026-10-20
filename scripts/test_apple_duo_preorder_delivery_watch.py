@@ -269,6 +269,46 @@ class DuoPreorderTests(unittest.TestCase):
 
 
 
+    def test_oct19_improved_delivery_is_not_labeled_added_delay(self):
+        row={
+            "title":"Apple Starts Moving Up iPhone Duo Delivery Dates",
+            "description":(
+                "iPhone Duo U.S. Star White 512GB delivery estimate was December. "
+                "The preordered device now arrives November 20 to November 30, 2026. "
+                "Other U.S. customers shifted from December 1–8 to November 16–23."
+            ),
+            "source":"MacRumors",
+            "link":"https://www.macrumors.com/2026/10/19/apple-starts-moving-up-iphone-duo-delivery-dates/",
+            "publisher_direct":True,
+            "published_at_kst":"2026-10-20T04:31:00+09:00",
+        }
+        state={"market_latest":{"미국":"2027-01"},"market_day_latest":{},
+               "market_sku_latest":{},"market_sku_day_latest":{},
+               "seen_ids":[],"seen_fact_keys":[]}
+        changes,_=m._new_delivery_signals([row],state)
+        self.assertFalse(changes)
+        self.assertEqual(state["market_latest"]["미국"],"2027-01")
+
+    def test_walkins_article_past_august_and_oct24_cannot_extend_to_aug2027(self):
+        row={
+            "title":"Apple Retail Staff Told to Warn Against iPhone Duo Walk-In Purchases",
+            "description":(
+                "Apple staff warns about October 23 launch day walk-ins and "
+                "October 24 pickup availability. In late August production was a "
+                "few hundred per day. Within 30 minutes the U.S. online store "
+                "showed January 25 shipping estimates for iPhone Duo."
+            ),
+            "source":"MacRumors",
+            "publisher_direct":True,
+            "link":"https://www.macrumors.com/2026/10/17/staff-warn-against-iphone-duo-walk-ins/",
+            "published_at_kst":"2026-10-18T06:30:45+09:00",
+        }
+        state={"market_latest":{"미국":"2027-01"},"market_day_latest":{},
+               "market_sku_latest":{},"market_sku_day_latest":{},
+               "seen_ids":[],"seen_fact_keys":[]}
+        changes,_=m._new_delivery_signals([row],state)
+        self.assertFalse(changes)
+
     def test_same_macrumors_january25_article_after_correction_does_not_repeat(self):
         row={
             "title":"Apple Retail Staff Told to Warn Against iPhone Duo Walk-In Purchases",
