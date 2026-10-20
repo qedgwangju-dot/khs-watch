@@ -1,0 +1,677 @@
+{
+  "runs": {
+    "sent": {
+      "provenance": {
+        "run_id": 39470547515,
+        "actual_code_sha": "445e1b6993437b7ee0342f8dcffc4efff414a2bc",
+        "queried_at_kst": "2026-10-21T02:58:40.603350+09:00",
+        "artifact_id": 12286308396,
+        "artifact_zip_sha256": "4bba5e1a25282af020feb8fa511f99f261b6f96984c3edf7cb472a18466a40dd",
+        "alert_sha256": "012fd20fbbd08e3b55884404126432c26f07e4e4827fb0bc3be1f437c58864ce",
+        "full_operating_article_bodies_preserved": false,
+        "source": "Saved operating evidence and sent/rejected request body only. No later HTTP bodies inserted."
+      },
+      "articles": [
+        {
+          "id": "7971c2b70f42e1c80453",
+          "title_original": "사우디, 수도 리야드 노린 후티 탄도미사일·드론 요격 - 뉴스1",
+          "title_ko": "사우디, 수도 리야드 노린 후티 탄도미사일·드론 요격 - 뉴스1",
+          "description": "사우디, 수도 리야드 노린 후티 탄도미사일·드론 요격 뉴스1",
+          "source": "뉴스1",
+          "source_url": "https://www.news1.kr",
+          "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5BMWZjVWxENDZyd2VkXzlmLWRiUW9zcmRBcTBBbnh2OUFLSl93cEVENmRjeGN5NklqSjAzVllITi1TTElsOTRydzA3S291N1A4TzFZT3lsWV9TVTUwZmVOcEN3?oc=5",
+          "published": "Tue, 20 Oct 2026 15:06:58 GMT",
+          "score": 100,
+          "tags": [
+            "중동비상경보",
+            "확전"
+          ],
+          "body_checked": true,
+          "signals_ko": [
+            "🔴 후티의 리야드 탄도미사일 공격·요격 신호 — 사우디 수도·공항·에너지 시설 추가 표적 여부 확인"
+          ],
+          "forced_tags": [
+            "확전",
+            "중동비상경보"
+          ],
+          "classification_color": "red",
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": true,
+          "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "21015d25598ebf2d2b15",
+          "title_original": "트럼프 행정부, 최근 이란 공습 승인 직전까지 검토 - 블루밍비트",
+          "title_ko": "트럼프 행정부, 최근 이란 공습 승인 직전까지 검토 - 블루밍비트",
+          "description": "트럼프 행정부, 최근 이란 공습 승인 직전까지 검토 블루밍비트",
+          "source": "블루밍비트",
+          "source_url": "https://bloomingbit.io",
+          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1hRUx5czRSZXphYlF4MzcyQzREcGJpNEUyb1JFUUdpOEl1aEZhRTRabzFfdkNUWUVRNVNNcXdPVmNfMk5FcW1obmhTeU5DM3lv?oc=5",
+          "published": "Tue, 20 Oct 2026 15:30:47 GMT",
+          "score": 10,
+          "tags": [
+            "군사 대응·보복 발언"
+          ],
+          "body_checked": true,
+          "signals_ko": [],
+          "classification_color": "yellow",
+          "non_military_kind": "military_statement",
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": true,
+          "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "c126320718099e3cc352",
+          "title_original": "TRUMP REPORTEDLY CAME VERY CLOSE TO ORDERING STRIKES ON IRAN\nThe Trump administration came “very close” to approving military strikes on Iran on at least one recent occasion, sources told The Jerusalem Post.\nTrump has pledged no new strikes before November 3, but Iranian officials told Reuters th...",
+          "title_ko": "트럼프 대통령은 이란에 대한 공격 명령에 매우 가까웠다고 보도됐다. 트럼프 행정부는 최근 적어도 한 번은 이란에 대한 군사 공격을 승인하는 데 “매우 가까웠다”고 소식통이 예루살렘 포스트에 말했다. 트럼프 대통령은 11월 3일 이전에는 추가 공격을 하지 않겠다고 약속했지만 이란 관리들은 로이터 통신에 이렇게 말했습니다.",
+          "description": "TRUMP REPORTEDLY CAME VERY CLOSE TO ORDERING STRIKES ON IRAN\nThe Trump administration came “very close” to approving military strikes on Iran on at least one recent occasion, sources told The Jerusalem Post.\nTrump has pledged no new strikes before November 3, but Iranian officials told Reuters they expect U.S. bombing to resume eventually.\n( @WalterBloomberg )",
+          "source": "Walter Bloomberg",
+          "link": "https://t.me/WalterBloomberg/37184",
+          "published": "Tue, 20 Oct 2026 15:05:16 +0000",
+          "score": 9,
+          "tags": [
+            "확전"
+          ],
+          "body_checked": true,
+          "classification_color": "",
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": true,
+          "article_text_sha256": "738ae236eae2ba533f6e8d3e3d8b95c377a5ea497070e857020b09b8df5f6493"
+        },
+        {
+          "id": "96ca9bd6516010a4d731",
+          "title_original": "“이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 의도적 지연” - KBS 뉴스",
+          "title_ko": "“이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 의도적 지연” - KBS 뉴스",
+          "description": "“이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 의도적 지연” KBS 뉴스",
+          "source": "KBS 뉴스",
+          "source_url": "https://news.kbs.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE51eE16R3J0OWFqbEpaUGhhTlMxeFZPSTdTSDRIRFZRY004aWF2eDQ0eGtnSmlPZ2xFRXRlT3pqMnVRM3lXT1hFbFUzRkxidW9CaTEtT1lxb1hDdm8?oc=5",
+          "published": "Tue, 20 Oct 2026 14:59:00 GMT",
+          "score": 9,
+          "tags": [
+            "협상 교착·지연 보도"
+          ],
+          "body_checked": true,
+          "signals_ko": [],
+          "forced_tags": [],
+          "classification_color": "yellow",
+          "non_military_kind": "diplomatic_position",
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": true,
+          "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "c468ad553f8d1d4cafab",
+          "title_original": "\"우크라 대신 中·러 손잡는 트럼프, '21세기판 얄타회담' 포석\" - 연합뉴스",
+          "title_ko": "\"우크라 대신 中·러 손잡는 트럼프, '21세기판 얄타회담' 포석\" - 연합뉴스",
+          "description": "\"우크라 대신 中·러 손잡는 트럼프, '21세기판 얄타회담' 포석\" 연합뉴스",
+          "source": "연합뉴스",
+          "source_url": "https://www.yna.co.kr",
+          "link": "https://www.yna.co.kr/view/AKR20261021001700071",
+          "discovery_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9NMjU4QTdhLVRpR2tiR0c2UHBLc2hwRTEtQkRnRTRwMkI0M2Nya3FRVzR1TVhHWklBZWZwUDhHNnFiOGoxSGRGbG5xNDdwNVJkUFoxNHJxVUNwUzjSAWBBVV95cUxQVVZxOXFYVFhNRkpNQ01ST0VRNE9Kb3FRd3Ytdm5fVVE5eUczRVpCdGJfV2ZXNmNwM01VUFdWRGlCWFhRWjVWQ2lkTWRUVVdYODIwZ2tVT2hPVktfR1Rzc2U?oc=5",
+          "resolved_url": "https://www.yna.co.kr/view/AKR20261021001700071",
+          "published": "Wed, 21 Oct 2026 01:20:38 +0900",
+          "rss_published": "Tue, 20 Oct 2026 16:20:38 GMT",
+          "source_metadata": {
+            "title": "\"우크라 대신 中·러 손잡는 트럼프, '21세기판 얄타회담' 포석\" | 연합뉴스",
+            "publication_status": "verified",
+            "published_at_kst": "2026-10-21T01:20:38+09:00",
+            "publication_candidates": [
+              {
+                "field": "article:published_time",
+                "at_kst": "2026-10-21T01:20:38+09:00"
+              },
+              {
+                "field": "jsonld:datePublished",
+                "at_kst": "2026-10-21T01:20:38+09:00"
+              }
+            ]
+          },
+          "score": 8,
+          "tags": [
+            "외교 접촉 보도"
+          ],
+          "body_checked": true,
+          "body_verified": true,
+          "signals_ko": [],
+          "forced_tags": [],
+          "non_military_kind": "diplomatic_contact",
+          "publication_basis": "publisher",
+          "rendered": false,
+          "article_text_sha256": "16f3b8bb8c119a36fd1699973b779527c5cf7889ef54327f852b46b6ce938398"
+        },
+        {
+          "id": "dc56dec5662e67b3d563",
+          "title_original": "RUBIO: OIL GOING THROUGH HORMUZ NEARLY EQUAL TO BEFORE WAR\n( @WalterBloomberg )",
+          "title_ko": "루비오: 호르무즈를 통과하는 석유는 전쟁 전과 거의 동일합니다(@WalterBloomberg)",
+          "description": "RUBIO: OIL GOING THROUGH HORMUZ NEARLY EQUAL TO BEFORE WAR\n( @WalterBloomberg )",
+          "source": "Walter Bloomberg",
+          "link": "https://t.me/WalterBloomberg/37186",
+          "published": "Tue, 20 Oct 2026 15:44:47 +0000",
+          "score": 6,
+          "tags": [],
+          "body_checked": true,
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": false,
+          "article_text_sha256": "dba267b6db805c230a671f7ac67b1f98ec9abf226161c0929d0a13a461e4c3e4"
+        }
+      ],
+      "markets": [
+        {
+          "name": "나스닥100 선물",
+          "price": 29755.0,
+          "pct": 0.10934477247876995,
+          "arrow": "▲",
+          "basis": "제공처 비교종가 대비",
+          "source": "Yahoo Finance 1분봉",
+          "asof": "02:48 KST",
+          "observed_at_kst": "2026-10-21T02:48:43+09:00",
+          "symbol": "NQ=F",
+          "previous_close": 29722.5,
+          "previous_close_field": "chartPreviousClose",
+          "previous_close_date_verified": false,
+          "quote_metadata": {
+            "symbol": "NQ=F",
+            "instrumentType": "FUTURE",
+            "previousClose": 29722.5,
+            "chartPreviousClose": 29722.5,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792518523,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "start": 1792468800,
+                "end": 1792468800,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "start": 1792468800,
+                "end": 1792555140,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "start": 1792555140,
+                "end": 1792555140,
+                "gmtoffset": -14400
+              }
+            }
+          },
+          "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+          "comparison": null,
+          "verified": false,
+          "verify_note": ""
+        },
+        {
+          "name": "WTI",
+          "price": 97.91000366210938,
+          "pct": -0.6393305641268832,
+          "arrow": "▼",
+          "basis": "제공처 비교종가 대비",
+          "source": "Yahoo Finance 1분봉",
+          "asof": "02:48 KST",
+          "observed_at_kst": "2026-10-21T02:48:43+09:00",
+          "symbol": "CL=F",
+          "previous_close": 98.54,
+          "previous_close_field": "chartPreviousClose",
+          "previous_close_date_verified": false,
+          "quote_metadata": {
+            "symbol": "CL=F",
+            "instrumentType": "FUTURE",
+            "previousClose": 98.54,
+            "chartPreviousClose": 98.54,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792518523,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "end": 1792468800,
+                "start": 1792468800,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "end": 1792555140,
+                "start": 1792468800,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "end": 1792555140,
+                "start": 1792555140,
+                "gmtoffset": -14400
+              }
+            }
+          },
+          "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+          "comparison": null,
+          "verified": false,
+          "verify_note": ""
+        },
+        {
+          "name": "Brent",
+          "price": 108.69999694824219,
+          "pct": -0.7759042006004635,
+          "arrow": "▼",
+          "basis": "제공처 비교종가 대비",
+          "source": "Yahoo Finance 1분봉",
+          "asof": "02:48 KST",
+          "observed_at_kst": "2026-10-21T02:48:25+09:00",
+          "symbol": "BZ=F",
+          "previous_close": 109.55,
+          "previous_close_field": "chartPreviousClose",
+          "previous_close_date_verified": false,
+          "quote_metadata": {
+            "symbol": "BZ=F",
+            "instrumentType": "FUTURE",
+            "previousClose": 109.55,
+            "chartPreviousClose": 109.55,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792518505,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "start": 1792468800,
+                "end": 1792468800,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "start": 1792468800,
+                "end": 1792555140,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "start": 1792555140,
+                "end": 1792555140,
+                "gmtoffset": -14400
+              }
+            }
+          },
+          "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+          "comparison": null,
+          "verified": false,
+          "verify_note": ""
+        },
+        {
+          "name": "달러지수",
+          "price": 101.70999908447266,
+          "pct": -0.26475869339807057,
+          "arrow": "▼",
+          "basis": "제공처 비교종가 대비",
+          "source": "Yahoo Finance 1분봉",
+          "asof": "02:48 KST",
+          "observed_at_kst": "2026-10-21T02:48:45+09:00",
+          "symbol": "DX-Y.NYB",
+          "previous_close": 101.98,
+          "previous_close_field": "chartPreviousClose",
+          "previous_close_date_verified": false,
+          "quote_metadata": {
+            "symbol": "DX-Y.NYB",
+            "instrumentType": "INDEX",
+            "previousClose": 101.98,
+            "chartPreviousClose": 101.98,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792518525,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "start": 1792468800,
+                "end": 1792468800,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "start": 1792468800,
+                "end": 1792555140,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "start": 1792555140,
+                "end": 1792555140,
+                "gmtoffset": -14400
+              }
+            }
+          },
+          "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+          "comparison": null,
+          "verified": false,
+          "verify_note": ""
+        }
+      ],
+      "market_source_status": {
+        "NQ=F": {
+          "name": "나스닥100 선물",
+          "status": "available",
+          "reason": null
+        },
+        "CL=F": {
+          "name": "WTI",
+          "status": "available",
+          "reason": null
+        },
+        "BZ=F": {
+          "name": "Brent",
+          "status": "available",
+          "reason": null
+        },
+        "DX-Y.NYB": {
+          "name": "달러지수",
+          "status": "available",
+          "reason": null
+        }
+      },
+      "original_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟡 <b>발언·제재·외교반응·협상 제약</b>\n조회 2026-10-21 02:58 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [신규] <b>1. 사우디·후티 · 리야드 미사일 보도</b>\n사우디, 수도 리야드 노린 후티 탄도미사일·드론 요격 - 뉴스1\nRSS 보도 10-21 00:06 KST · <b>171분 경과</b> · 중동비상경보 · 확전 · <a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTE5BMWZjVWxENDZyd2VkXzlmLWRiUW9zcmRBcTBBbnh2OUFLSl93cEVENmRjeGN5NklqSjAzVllITi1TTElsOTRydzA3S291N1A4TzFZT3lsWV9TVTUwZmVOcEN3?oc=5\">뉴스1 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [신규] <b>2. 미국·이란 · 군사 대응·보복 발언</b>\n트럼프 행정부, 최근 이란 공습 승인 직전까지 검토 - 블루밍비트\nRSS 보도 10-21 00:30 KST · <b>147분 경과</b> · 군사 대응·보복 발언 · <a href=\"https://news.google.com/rss/articles/CBMiUEFVX3lxTE1hRUx5czRSZXphYlF4MzcyQzREcGJpNEUyb1JFUUdpOEl1aEZhRTRabzFfdkNUWUVRNVNNcXdPVmNfMk5FcW1obmhTeU5DM3lv?oc=5\">블루밍비트 검색 링크</a> · 제목 기준·본문 미확인\n\n[신규] <b>3. 이란·호르무즈</b>\n트럼프 대통령은 이란에 대한 공격 명령에 매우 가까웠다고 보도됐다. 트럼프 행정부는 최근 적어도 한 번은 이란에 대한 군사 공격을 승인하는 데 “매우 가까웠다”고 소식통이 예루살렘 포스트에 말했다. 트럼프 대통령은 11월 3일 이전에는 추가 공격을 하지 않겠다고 약속했지만 이란 관리들은 로이터 통신에 이렇게 말했습니다.\nRSS 보도 10-21 00:05 KST · <b>173분 경과</b> · 확전 · <a href=\"https://t.me/WalterBloomberg/37184\">Walter Bloomberg 원문</a> · RSS 입력 기준·본문 미확인\n\n🟡 [신규] <b>4. 미국·이란 · 협상 교착·지연 보도</b>\n“이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 의도적 지연” - KBS 뉴스\nRSS 보도 10-20 23:59 KST · <b>179분 경과</b> · 협상 교착·지연 보도 · <a href=\"https://news.google.com/rss/articles/CBMiW0FVX3lxTE51eE16R3J0OWFqbEpaUGhhTlMxeFZPSTdTSDRIRFZRY004aWF2eDQ0eGtnSmlPZ2xFRXRlT3pqMnVRM3lXT1hFbFUzRkxidW9CaTEtT1lxb1hDdm8?oc=5\">KBS 뉴스 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,755.00</b>  +0.11% · 제공처 비교종가 대비 · 기준 02:48 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>97.91</b>  -0.64% · 제공처 비교종가 대비 · 기준 02:48 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>108.70</b>  -0.78% · 제공처 비교종가 대비 · 기준 02:48 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.71</b>  -0.26% · 제공처 비교종가 대비 · 기준 02:48 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n"
+    },
+    "rejected": {
+      "provenance": {
+        "run_id": 39501042790,
+        "actual_code_sha": "190fafd42255acbfe4f968388518b696e9501273",
+        "queried_at_kst": "2026-10-21T06:32:36.354730+09:00",
+        "artifact_id": 12300975112,
+        "artifact_zip_sha256": "a72899abf9e624d601a5e409c56f2b990e4a205042847128447c6c857d663c17",
+        "alert_sha256": "0612f85fddd9238512255549d064afc42854254ebcdb5b3041d33d527bf9f5af",
+        "full_operating_article_bodies_preserved": false,
+        "source": "Saved operating evidence and sent/rejected request body only. No later HTTP bodies inserted."
+      },
+      "articles": [
+        {
+          "id": "6dc173d6a48426dc92d5",
+          "title_original": "\"이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연\" - 연합뉴스 한민족센터",
+          "title_ko": "\"이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연\" - 연합뉴스 한민족센터",
+          "description": "\"이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연\" 연합뉴스 한민족센터",
+          "source": "연합뉴스 한민족센터",
+          "source_url": "https://www.koreancenter.or.kr",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9iX0g3M09hN0FGUVhtWjhHLTkzdmVBNTBlc1lfT0N1aEVzMjN4UG5TWTJtLTJnMkxybEw1Rk9ZU2hzUlROQXJ3U0E0VTZON0t1bzFHc1c5WlhlODBJWVZtX0VaQXpWSUkyR2RObVdOek1ZMHJr?oc=5",
+          "published": "Tue, 20 Oct 2026 20:31:16 GMT",
+          "score": 14,
+          "tags": [
+            "협상 교착·지연 보도"
+          ],
+          "body_checked": true,
+          "signals_ko": [],
+          "forced_tags": [],
+          "classification_color": "yellow",
+          "non_military_kind": "diplomatic_position",
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": true,
+          "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "0946ae1823bcd0c4b676",
+          "title_original": "\"이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연\" - 연합뉴스TV",
+          "title_ko": "\"이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연\" - 연합뉴스TV",
+          "description": "\"이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연\" 연합뉴스TV",
+          "source": "연합뉴스TV",
+          "source_url": "https://www.yonhapnewstv.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFByS3ZOR0N5UkhKZFlKdC1XU3JrZ1pHSmU3eFJyVERHWHFhWnpkeVV1c0x1eW10Zm1wX3o3QUZDeVVERVRkZkpWN3duT09FWENNZExGQ0s4bDBPZ1dVR1AtLWJaS2ZCOUU?oc=5",
+          "published": "Tue, 20 Oct 2026 20:30:00 GMT",
+          "score": 14,
+          "tags": [
+            "협상 교착·지연 보도"
+          ],
+          "body_checked": true,
+          "signals_ko": [],
+          "forced_tags": [],
+          "classification_color": "yellow",
+          "non_military_kind": "diplomatic_position",
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": true,
+          "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "3bc9cc6a246d0cc46d98",
+          "title_original": "트럼프 이제 종전 합의할 때…젤렌스키, 전쟁 끝내길 원해야 - 아주경제",
+          "title_ko": "트럼프 이제 종전 합의할 때…젤렌스키, 전쟁 끝내길 원해야 - 아주경제",
+          "description": "트럼프 이제 종전 합의할 때…젤렌스키, 전쟁 끝내길 원해야 아주경제",
+          "source": "아주경제",
+          "source_url": "https://www.ajunews.com",
+          "link": "https://www.ajunews.com/view/20261021060738870",
+          "discovery_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9OSmhBSVNJRTQ0b1h5MmRDSGdSV0R4NjZqNU1KTzdjbmhreFB0cWZqelVnUGhFU3Nia2MxVkwtaEtESW1OVlVaWjZENjRaWGxnZTdLNGs3eFJuUdIBWEFVX3lxTE52QkV5RzhWRmgxakVMU2NhRGtNYkhMQnZMTjVjRnoxT29rTW93bnFyaXI1LXVvMjBaVFc4cW1jaVh6ZHpod2wyZ0RpaVJMTEU5bGdwem01MkQ?oc=5",
+          "resolved_url": "https://www.ajunews.com/view/20261021060738870",
+          "published": "Wed, 21 Oct 2026 06:11:46 +0900",
+          "rss_published": "Tue, 20 Oct 2026 21:11:46 GMT",
+          "source_metadata": {
+            "title": "트럼프 \"이제 종전 합의할 때…젤렌스키, 전쟁 끝내길 원해야\" | 아주경제",
+            "publication_status": "verified",
+            "published_at_kst": "2026-10-21T06:11:46+09:00",
+            "publication_candidates": [
+              {
+                "field": "article:published_time",
+                "at_kst": "2026-10-21T06:11:46+09:00"
+              },
+              {
+                "field": "jsonld:datePublished",
+                "at_kst": "2026-10-21T06:11:46+09:00"
+              }
+            ]
+          },
+          "score": 11,
+          "tags": [
+            "종전·협상"
+          ],
+          "body_checked": true,
+          "body_verified": true,
+          "classification_color": "green",
+          "publication_basis": "publisher",
+          "rendered": true,
+          "article_text_sha256": "4ac8169b56ba4070de1b34e065f9e5cc975044903162218e0d3ccd7eece3f220"
+        },
+        {
+          "id": "8bad58e079a79e54b41e",
+          "title_original": "젤렌스키, 오슬로 회동 후 '美와 정보 공유 정상화됐다'",
+          "title_ko": "젤렌스키, 오슬로 회동 후 '美와 정보 공유 정상화됐다'",
+          "description": "[파이낸셜뉴스] 볼로디미르 젤렌스키 우크라이나 대통령이 도널드 트럼프 미국 대통령의 특사와 회동을 가진 뒤, 러시아의 미사일 공격에 대한 미국 측의 정보 공유가 다시 정상적으로 작동하고 있다고 밝혔다. 20일(현지시간) BBC방송은 노르웨이 오슬로에서 젤렌스키 대통령과 스티브 윗코프 특사 회동은 최근 미국이 주요 정보 제공을 중단했다는 우크라이나 측의 주장에 대해 마코 루비오 미국 국무장관이 \"터무니없는 주장\"이라며 반박하는 등 양국 간 갈등이 고조된 상황에서 이뤄졌다. 우크라이나 문제를 논의하기 위해 열린 회담에 참석한 알렉산데르 스투브 핀란드 대통령은 평화 달성을 위한 제안에서 \"실질적인 진전\"이 있었다고 전했다. 다만 구체적인 내용은 밝히지 않은 채 향후 협상 과정에서 인내심이 필요할 것이라고",
+          "source": "파이낸셜뉴스",
+          "link": "https://www.fnnews.com/news/202610210608468042",
+          "discovery_url": "https://www.fnnews.com/news/202610210608468042",
+          "resolved_url": "https://www.fnnews.com/news/202610210608468042",
+          "published": "Wed, 21 Oct 2026 06:23:28 +0900",
+          "rss_published": "Wed,21 Oct 2026 06:23:28 +0900",
+          "source_metadata": {
+            "title": "젤렌스키, 오슬로 회동 후 '美와 정보 공유 정상화됐다'",
+            "publication_status": "verified",
+            "published_at_kst": "2026-10-21T06:23:28+09:00",
+            "publication_candidates": [
+              {
+                "field": "article:published_time",
+                "at_kst": "2026-10-21T06:23:28+09:00"
+              },
+              {
+                "field": "dd:published_time",
+                "at_kst": "2026-10-21T06:23:28+09:00"
+              },
+              {
+                "field": "jsonld:datePublished",
+                "at_kst": "2026-10-21T06:23:28+09:00"
+              },
+              {
+                "field": "visible:입력",
+                "at_kst": "2026-10-21T06:23:00+09:00"
+              }
+            ]
+          },
+          "score": 10,
+          "tags": [
+            "확전"
+          ],
+          "body_checked": true,
+          "body_verified": true,
+          "classification_color": "red",
+          "publication_basis": "publisher",
+          "rendered": true,
+          "article_text_sha256": "636c78a3d983daac6fd34e93ec8c9d34d0cc1220549f59b344edd325ed61984c"
+        },
+        {
+          "id": "ef67479d065bae70a757",
+          "title_original": "젤렌스키 \"미중러 종전회담 열리면 우리도 참여해야\" - 연합뉴스",
+          "title_ko": "젤렌스키 \"미중러 종전회담 열리면 우리도 참여해야\" - 연합뉴스",
+          "description": "젤렌스키 \"미중러 종전회담 열리면 우리도 참여해야\" 연합뉴스",
+          "source": "연합뉴스",
+          "source_url": "https://www.yna.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBKV1JWOXhUTElRTlYwdGNsQ3ZHdUt0NWxCTlFONzNnT18yMjdISG8xX0tLTDNkNWstYWFKUVJvTC1PMDFKWXhIMkFSRU90andzWmk1SnhEUzE3cFFib0lfedIBYEFVX3lxTFBKV1JWOXhUTElRTlYwdGNsQ3ZHdUt0NWxCTlFONzNnT18yMjdISG8xX0tLTDNkNWstYWFKUVJvTC1PMDFKWXhIMkFSRU90andzWmk1SnhEUzE3cFFib0lfeQ?oc=5",
+          "published": "Tue, 20 Oct 2026 18:49:57 GMT",
+          "score": 10,
+          "tags": [
+            "외교 접촉 보도"
+          ],
+          "body_checked": true,
+          "signals_ko": [],
+          "forced_tags": [],
+          "non_military_kind": "diplomatic_contact",
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": false,
+          "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "39b135c1e0926eece964",
+          "title_original": "호르무즈서 하루 유조선 3척 기뢰 충돌...\"이란, 중간선거 타격 위해 협상 지연\" - YTN",
+          "title_ko": "호르무즈서 하루 유조선 3척 기뢰 충돌...\"이란, 중간선거 타격 위해 협상 지연\" - YTN",
+          "description": "호르무즈서 하루 유조선 3척 기뢰 충돌...\"이란, 중간선거 타격 위해 협상 지연\" YTN",
+          "source": "YTN",
+          "source_url": "https://www.ytn.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5rSVpqcWEwWEstekxkcDZYU3pnV0h0b3hnaTFWRUpPc2FRMmk3OUtHdmhIQ2xtcDNNSndHQmpXbDBoNjZ0Q3dGWmxpdUpxT25PY212dnVCeWhZQlFsN2c?oc=5",
+          "published": "Tue, 20 Oct 2026 21:02:00 GMT",
+          "score": 9,
+          "tags": [
+            "협상 교착·지연 보도"
+          ],
+          "body_checked": true,
+          "signals_ko": [],
+          "forced_tags": [],
+          "non_military_kind": "diplomatic_position",
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": false,
+          "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "b14b8236ccf7c54ae19a",
+          "title_original": "종전 협상 재촉하는 트럼프… “러시아는 거대한 기계… 젤렌스키, 합의해야” 압박 - 조선비즈 - Chosunbiz",
+          "title_ko": "종전 협상 재촉하는 트럼프… “러시아는 거대한 기계… 젤렌스키, 합의해야” 압박 - 조선비즈 - Chosunbiz",
+          "description": "종전 협상 재촉하는 트럼프… “러시아는 거대한 기계… 젤렌스키, 합의해야” 압박 - 조선비즈 Chosunbiz",
+          "source": "Chosunbiz",
+          "source_url": "https://biz.chosun.com",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNbHhPZXl0X1RveVR5S2FtaVhNeVRadWFXOVllZjlhcXZ2Tjk0akZhQWEzaDRQM1A4a1hZMmppZlNlZ2VNek9wSkpGWjVhOVJpVXFFT0VDTEJDTUtXVUFsZW93NWFrTmRVTTR2TEQ0d1cxNDdOT0JKajlTZjJRWmNnNjhvUXNXdU0wREtaYk5WbEdUQTN5Vko1cTBqNHN5QdIBsgFBVV95cUxQZVRMTTNOcEdwMHZnRTNjQ0ljcWw4NXZLdEN0XzQtbk90XzJpd3NCX0FfQ1lfSXkyc1ZEYmwxUFUxOHRQUEx3aHlQeGxJYjNDTmhZZjhTRUJSWFZpVWVOc2ZucHA0VTlKaktWZWRpWVBOX3ZnaG9LZGNTc0FseGE3dk0xM2wtNFR5ZlViYUZwbmc5VUozLXRDYVVFME5FNVZuRjNPRi1YSjdBenlyWEQ4anVn?oc=5",
+          "published": "Tue, 20 Oct 2026 20:54:00 GMT",
+          "score": 9,
+          "tags": [
+            "외교 접촉 보도"
+          ],
+          "body_checked": true,
+          "signals_ko": [],
+          "forced_tags": [],
+          "non_military_kind": "diplomatic_contact",
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": false,
+          "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "b89e7eb31dc745cac87e",
+          "title_original": "트럼프 \"러시아는 매우 큰 나라\"… 젤렌스키에 종전 합의 압박 - 조선일보",
+          "title_ko": "트럼프 \"러시아는 매우 큰 나라\"… 젤렌스키에 종전 합의 압박 - 조선일보",
+          "description": "트럼프 \"러시아는 매우 큰 나라\"… 젤렌스키에 종전 합의 압박 조선일보",
+          "source": "조선일보",
+          "source_url": "https://www.chosun.com",
+          "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQWk9WcFhMSWo4SHNjVGNxemJwS1Q3dm13RWQxcmVzcTlWVTNIbnVzVFJzLS00aEtMNFAyUV9xR2xORzNqSVRrVmE2VUowUDRrZDJNU0FsbUJDYjROdTh6LVpsRGJXRUQ1MHdJZG56SUFFanVGY1RVVTZHUVF6TWVlRldTWU8?oc=5",
+          "published": "Tue, 20 Oct 2026 20:50:00 GMT",
+          "score": 9,
+          "tags": [
+            "종전·협상"
+          ],
+          "body_checked": true,
+          "body_verified": false,
+          "publication_basis": "discovery_feed",
+          "rendered": false,
+          "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "markets": [
+        {
+          "name": "달러지수",
+          "price": 101.70700073242188,
+          "pct": -0.26769883072967904,
+          "arrow": "▼",
+          "basis": "제공처 비교종가 대비",
+          "source": "Yahoo Finance 1분봉",
+          "asof": "06:22 KST",
+          "observed_at_kst": "2026-10-21T06:22:38+09:00",
+          "symbol": "DX-Y.NYB",
+          "previous_close": 101.98,
+          "previous_close_field": "chartPreviousClose",
+          "previous_close_date_verified": false,
+          "quote_metadata": {
+            "symbol": "DX-Y.NYB",
+            "instrumentType": "INDEX",
+            "previousClose": 101.98,
+            "chartPreviousClose": 101.98,
+            "exchangeTimezoneName": "America/New_York",
+            "regularMarketTime": 1792531358,
+            "currentTradingPeriod": {
+              "pre": {
+                "timezone": "EDT",
+                "start": 1792468800,
+                "end": 1792468800,
+                "gmtoffset": -14400
+              },
+              "regular": {
+                "timezone": "EDT",
+                "start": 1792468800,
+                "end": 1792555140,
+                "gmtoffset": -14400
+              },
+              "post": {
+                "timezone": "EDT",
+                "start": 1792555140,
+                "end": 1792555140,
+                "gmtoffset": -14400
+              }
+            }
+          },
+          "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+          "comparison": null,
+          "verified": false,
+          "verify_note": ""
+        }
+      ],
+      "market_source_status": {
+        "NQ=F": {
+          "name": "나스닥100 선물",
+          "status": "withheld",
+          "reason": "가격 시각 오래됨·미래 시각",
+          "observed_at_kst": "2026-10-21T05:59:59+09:00"
+        },
+        "CL=F": {
+          "name": "WTI",
+          "status": "withheld",
+          "reason": "가격 시각 오래됨·미래 시각",
+          "observed_at_kst": "2026-10-21T05:59:55+09:00"
+        },
+        "BZ=F": {
+          "name": "Brent",
+          "status": "withheld",
+          "reason": "가격 시각 오래됨·미래 시각",
+          "observed_at_kst": "2026-10-21T05:57:55+09:00"
+        },
+        "DX-Y.NYB": {
+          "name": "달러지수",
+          "status": "available",
+          "reason": null
+        }
+      },
+      "original_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟢 <b>재건·휴전</b>  |  🟡 <b>발언·제재·외교반응·협상 제약</b>\n조회 2026-10-21 06:32 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🟡 [신규] <b>1. 미국·이란 · 협상 교착·지연 보도</b>\n&quot;이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연&quot; - 연합뉴스 한민족센터\nRSS 보도 10-21 05:31 KST · <b>61분 경과</b> · 협상 교착·지연 보도 · <a href=\"https://news.google.com/rss/articles/CBMidEFVX3lxTE9iX0g3M09hN0FGUVhtWjhHLTkzdmVBNTBlc1lfT0N1aEVzMjN4UG5TWTJtLTJnMkxybEw1Rk9ZU2hzUlROQXJ3U0E0VTZON0t1bzFHc1c5WlhlODBJWVZtX0VaQXpWSUkyR2RObVdOek1ZMHJr?oc=5\">연합뉴스 한민족센터 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [신규] <b>2. 미국·이란 · 협상 교착·지연 보도</b>\n&quot;이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연&quot; - 연합뉴스TV\nRSS 보도 10-21 05:30 KST · <b>62분 경과</b> · 협상 교착·지연 보도 · <a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTFByS3ZOR0N5UkhKZFlKdC1XU3JrZ1pHSmU3eFJyVERHWHFhWnpkeVV1c0x1eW10Zm1wX3o3QUZDeVVERVRkZkpWN3duT09FWENNZExGQ0s4bDBPZ1dVR1AtLWJaS2ZCOUU?oc=5\">연합뉴스TV 검색 링크</a> · 제목 기준·본문 미확인\n\n🟢 [속보] <b>3. 우크라이나·러시아</b>\n트럼프 이제 종전 합의할 때…젤렌스키, 전쟁 끝내길 원해야 - 아주경제\n보도 10-21 06:11 KST · <b>20분 경과</b> · 종전·협상 · <a href=\"https://www.ajunews.com/view/20261021060738870\">아주경제 원문</a>\n\n🔴 [속보] <b>4. 우크라이나·러시아</b>\n젤렌스키, 오슬로 회동 후 &#x27;美와 정보 공유 정상화됐다&#x27;\n보도 10-21 06:23 KST · <b>9분 경과</b> · 확전 · <a href=\"https://www.fnnews.com/news/202610210608468042\">파이낸셜뉴스 원문</a>\n\n<b>시장 반응</b>\n달러지수  <b>101.71</b>  -0.27% · 제공처 비교종가 대비 · 기준 06:22 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n시장자료 확인 보류 · 나스닥100 선물 (가격 시각 오래됨·미래 시각) / WTI (가격 시각 오래됨·미래 시각) / Brent (가격 시각 오래됨·미래 시각)\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n"
+    }
+  }
+}
