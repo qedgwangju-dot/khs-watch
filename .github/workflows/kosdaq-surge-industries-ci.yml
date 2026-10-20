@@ -8,6 +8,8 @@ on:
       - "scripts/probe_kosdaq_surge_industries.py"
       - "scripts/probe_market_surge_industries.py"
       - "scripts/kospi_shock_episode_watch.py"
+      - "scripts/market_alert_delivery.py"
+      - "scripts/test_market_alert_delivery.py"
       - "scripts/market_flow_channels.py"
       - "scripts/test_market_flow_channels.py"
       - "scripts/probe_market_flow_channels.py"
@@ -21,6 +23,8 @@ on:
       - "scripts/probe_kosdaq_surge_industries.py"
       - "scripts/probe_market_surge_industries.py"
       - "scripts/kospi_shock_episode_watch.py"
+      - "scripts/market_alert_delivery.py"
+      - "scripts/test_market_alert_delivery.py"
       - "scripts/market_flow_channels.py"
       - "scripts/test_market_flow_channels.py"
       - "scripts/probe_market_flow_channels.py"
@@ -47,6 +51,7 @@ jobs:
           python -m py_compile scripts/probe_market_surge_industries.py
           python scripts/test_kosdaq_surge_industries.py
           python scripts/test_market_flow_channels.py
+          python scripts/test_market_alert_delivery.py
           python scripts/test_kospi_shock_episode.py
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py

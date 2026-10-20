@@ -323,52 +323,10 @@ assert "self._checkpoint_handoff(force=True)" in delivery_src, delivery_src
 print("periodic_handoff_checkpoint_regression=true")
 
 
-# Regression: Telegram 일시 네트워크 장애는 재시도 후 같은 알림을 정상 전송한다.
-import json as _json
-import urllib.error as _urlerror
-_orig_urlopen = ks.urllib.request.urlopen
-_orig_sleep3 = ks.time.sleep
-_env = __import__("os").environ
-_old_env = {k: _env.get(k) for k in (
-    "TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID_PRIMARY", "TELEGRAM_CHAT_ID_FALLBACK",
-    "EXPECTED_TELEGRAM_BOT_USERNAME",
-)}
-_url_calls = {"send": 0}
-class _DummyURLResponse:
-    def __init__(self, obj):
-        self._payload = _json.dumps(obj).encode("utf-8")
-    def __enter__(self): return self
-    def __exit__(self, *args): return False
-    def read(self): return self._payload
-
-def _flaky_urlopen(req, timeout=0):
-    url = req if isinstance(req, str) else req.full_url
-    if "/getMe" in url:
-        return _DummyURLResponse({"ok": True, "result": {"username": "khs887900887900008879_bot"}})
-    if "/sendMessage" in url:
-        _url_calls["send"] += 1
-        if _url_calls["send"] < 3:
-            raise _urlerror.URLError("synthetic telegram disconnect")
-        return _DummyURLResponse({"ok": True, "result": {"message_id": 999}})
-    raise AssertionError(url)
-
-try:
-    _env["TELEGRAM_BOT_TOKEN"] = "token"
-    _env["TELEGRAM_CHAT_ID_PRIMARY"] = "chat"
-    _env["EXPECTED_TELEGRAM_BOT_USERNAME"] = "khs887900887900008879_bot"
-    ks.urllib.request.urlopen = _flaky_urlopen
-    ks.time.sleep = lambda *_args, **_kwargs: None
-    assert ks.telegram_send("test") == 999
-    assert _url_calls["send"] == 3, _url_calls
-finally:
-    ks.urllib.request.urlopen = _orig_urlopen
-    ks.time.sleep = _orig_sleep3
-    for _k, _v in _old_env.items():
-        if _v is None:
-            _env.pop(_k, None)
-        else:
-            _env[_k] = _v
-print("telegram_transport_retry_regression=true")
+# Delivery transport is checked with destination/text/date receipts and
+# ambiguous-send fault injection in test_market_alert_delivery.py. Network
+# disconnects after a POST must not be treated as proven rejection/retried.
+print("telegram_receipt_faults_covered_by_market_alert_delivery_tests=true")
 
 
 # 2026-10-08 09:58 실전 경보 검산: 계산합계 -40,892와 LS 직접값 -39,448의
@@ -595,7 +553,8 @@ assert flow_snapshot_health(future_flow,now_health)[0] is False
 print("flow_snapshot_freshness_regression=true")
 
 # 장전 갭다운 메시지 역시 실제 message_id 확인 즉시 handoff에 저장해야 재시작 중복을 방지한다.
-assert "self._checkpoint_handoff(force=True)" in inspect.getsource(ks.Watch.evaluate)
+assert 'self._record_delivery("open_gap"' in inspect.getsource(ks.Watch.evaluate)
+assert "self._checkpoint_handoff(force=True)" in inspect.getsource(ks.Watch._record_delivery)
 assert 'self.raw.pop("last_price_poll_error", None)' in inspect.getsource(ks.Watch.run)
 print("gap_handoff_and_recovered_poll_status_regression=true")
 

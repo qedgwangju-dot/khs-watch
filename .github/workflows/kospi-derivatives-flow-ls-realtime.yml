@@ -214,19 +214,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars
       - name: Verify Telegram route
-        run: |
-          python - <<'PY'
-          import json, os, urllib.request
-          token=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
-          expected=(os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
-          if not token: raise RuntimeError("Telegram token missing")
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=20) as r:
-              d=json.loads(r.read().decode("utf-8"))
-          actual=str((d.get("result") or {}).get("username") or "")
-          if not d.get("ok") or actual.lower()!=expected.lower():
-              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
-          print(f"telegram_route_valid=true bot=@{actual}")
-          PY
+        run: python scripts/market_alert_delivery.py --audit-route
       - name: Run morning KOSPI watcher
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_delivery_log.jsonl out/kospi_shock_enrichment_latest.json out/kosdaq_shock_enrichment_latest.json out/kospi_shock_handoff.json out/kospi_industry_flow.jsonl out/krx_market_closed.flag
@@ -332,6 +320,7 @@ jobs:
             out/kospi_shock_episode_status.md
             out/kospi_shock_episode_raw.json
             out/kospi_shock_delivery_log.jsonl
+            out/market_alert_delivery/
             out/kospi_shock_enrichment_latest.json
             out/kosdaq_shock_enrichment_latest.json
             out/kospi_industry_flow.jsonl
@@ -369,19 +358,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars
       - name: Verify Telegram route
-        run: |
-          python - <<'PY'
-          import json, os, urllib.request
-          token=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
-          expected=(os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
-          if not token: raise RuntimeError("Telegram token missing")
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=20) as r:
-              d=json.loads(r.read().decode("utf-8"))
-          actual=str((d.get("result") or {}).get("username") or "")
-          if not d.get("ok") or actual.lower()!=expected.lower():
-              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
-          print(f"telegram_route_valid=true bot=@{actual}")
-          PY
+        run: python scripts/market_alert_delivery.py --audit-route
       - name: Run afternoon KOSPI watcher with handoff
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_enrichment_latest.json out/kosdaq_shock_enrichment_latest.json
@@ -482,6 +459,7 @@ jobs:
             out/kospi_shock_episode_status.md
             out/kospi_shock_episode_raw.json
             out/kospi_shock_delivery_log.jsonl
+            out/market_alert_delivery/
             out/kospi_shock_enrichment_latest.json
             out/kosdaq_shock_enrichment_latest.json
             out/kospi_shock_handoff.json

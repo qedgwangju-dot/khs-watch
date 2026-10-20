@@ -19,6 +19,8 @@ on:
       - ".github/workflows/kospi-derivatives-flow-ls-realtime.yml"
       - ".github/workflows/korea-market-stress-telegram-watch.yml"
       - "scripts/kospi_shock_episode_watch.py"
+      - "scripts/market_alert_delivery.py"
+      - "scripts/test_market_alert_delivery.py"
       - "scripts/kospi_shock_enrichment.py"
       - "scripts/test_kospi_shock_episode.py"
       - "scripts/test_kospi_shock_enrichment.py"
@@ -73,6 +75,11 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars pyyaml
 
+      - name: Audit market alert destination without sending
+        env:
+          MARKET_ALERT_DELIVERY_DIR: out/market_alert_route_audit
+        run: python scripts/market_alert_delivery.py --audit-route
+
       - name: Compile
         run: |
           python -m py_compile             scripts/kospi_shock_episode_watch.py             scripts/kospi_shock_enrichment.py             scripts/kospi_unified_industry_collector.py             scripts/krx_session_calendar.py             scripts/test_kospi_shock_episode.py             scripts/test_kospi_shock_enrichment.py             scripts/kospi_flow_attribution_ls.py             scripts/test_kospi_flow_attribution_strict.py             scripts/kospi_rapid_fallback_watch.py
@@ -81,6 +88,7 @@ jobs:
         run: |
           python -m py_compile scripts/market_program_close.py scripts/test_market_program_close.py
           python scripts/test_market_program_close.py
+          python scripts/test_market_alert_delivery.py
           python scripts/test_kospi_shock_episode.py
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
@@ -589,7 +597,11 @@ jobs:
                   for match in re.finditer(r"(?ms)^python - <<'PY'\n(.*?)^PY\s*$",run):
                       compile(match.group(1), f"{name}:{step.get('name')}", "exec")
                       count+=1
-          assert count>=5, f"embedded Python blocks not verified: {count}"
+          assert count>=3, f"embedded Python blocks not verified: {count}"
+          for name in ("morning", "afternoon"):
+              preflight=next(x for x in doc["jobs"][name]["steps"] if x.get("name")=="Verify Telegram route")
+              assert preflight["run"]=="python scripts/market_alert_delivery.py --audit-route"
+          compile(Path("scripts/market_alert_delivery.py").read_text(encoding="utf-8"), "market_alert_delivery.py", "exec")
           print("kospi_production_integrity_structure_valid=true embedded_blocks=",count)
           PY
 
@@ -936,6 +948,7 @@ jobs:
         with:
           name: kospi-derivatives-ci-${{ github.run_id }}
           path: |
+            out/market_alert_route_audit/
             out/kosdaq_surge_history_probe.json
             out/kosdaq_surge_industry_probe.json
             out/kospi_shock_episode_status.md
