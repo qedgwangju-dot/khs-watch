@@ -84,6 +84,15 @@ jobs:
           parse=scope["goldman_prime_public_article"]
           assert parse(investing,date(2026,10,19))==(date(2026,10,15),23.5,48.6)
           assert parse(hedgeweek,date(2026,10,20))==(date(2026,10,15),23.5,48.6)
+          tokenpost=("Goldman Sachs prime brokerage hedge funds cut technology positions over five "
+                     "trading sessions through Oct. 15. Technology held a 23.5% net allocation "
+                     "in Goldman's prime brokerage book. Hedge fund net leverage fell to 48.6%.")
+          primexbt=("Hedge funds cut technology stock positions in the five trading sessions "
+                     "through Oct. 15, according to Goldman Sachs prime desk data. "
+                     "Net allocation to the sector stands at 23.5% of the global Prime book. "
+                     "Their net leverage fell to a one-year low of 48.6%.")
+          assert parse(tokenpost,date(2026,10,19))==(date(2026,10,15),23.5,48.6)
+          assert parse(primexbt,date(2026,10,19))==(date(2026,10,15),23.5,48.6)
           assert parse(investing.replace("Oct. 15","Oct. 22"),date(2026,10,19)) is None
           assert parse(investing.replace("prime desk","equity desk").replace("prime book","equity book"),date(2026,10,19)) is None
           assert parse(investing.replace("five trading sessions through Oct. 15","last week"),
