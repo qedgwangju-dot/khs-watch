@@ -85,6 +85,18 @@ def _krw_text(value: float, currency: str, per_unit: str = "") -> str:
     won = value * rate
     if per_unit:
         return f"약 {won:,.0f}원{per_unit}"
+    # Avoid rounding a Spot-sized 1.33억원 item to merely "1억원".
+    # Preserve ten-thousand-won precision for sub-10억원 foreign amounts.
+    if 100_000_000 <= won < 1_000_000_000:
+        eok_whole = int(won // 100_000_000)
+        man = int(round((won - eok_whole * 100_000_000) / 10_000))
+        if man == 10_000:
+            eok_whole += 1
+            man = 0
+        return (f"약 {eok_whole}억{man:,}만원" if man
+                else f"약 {eok_whole}억원")
+    if 1_000_000 <= won < 100_000_000:
+        return f"약 {round(won / 10_000):,}만원"
     eok = int(round(won / 100_000_000))
     if eok >= 10000:
         jo, rem = divmod(eok, 10000)
