@@ -78,6 +78,12 @@ class DeliveryTests(unittest.TestCase):
         self.assertEqual(route["public"]["chat_type"], "channel")
         self.assertEqual(route["public"]["route_selection"], "primary")
         self.assertEqual(route["public"]["recipient_sha256"], delivery.digest("-100888777666"))
+        self.assertIsNone(route["public"]["message_auto_delete_time_sec"])
+        self.chat.update(type="private", message_auto_delete_time=3600, is_forum=True)
+        refreshed = delivery.verify_route(refresh=True)["public"]
+        self.assertEqual(refreshed["chat_type"], "private")
+        self.assertEqual(refreshed["message_auto_delete_time_sec"], 3600)
+        self.assertTrue(refreshed["chat_is_forum"])
         self.assertFalse(self.sends())
 
     def test_wrong_bot_is_blocked_before_message(self):
@@ -252,6 +258,36 @@ class EventStateTests(unittest.TestCase):
                 asyncio.run(w._send_event(stage, {"market": market, "start_ts": 1000, "actor": "기관"}, 1200, "offline"))
         self.assertEqual([r["market"] for r in got], ["KOSPI", "KOSDAQ"] * 3)
         self.assertEqual(got[-1]["actor"], "기관")
+
+    def test_reused_kospi_start_receipt_keeps_its_approved_drop(self):
+        now = time.time()
+        for mode in ("complete", "missing", "stale"):
+            with self.subTest(mode=mode):
+                w = self.worker()
+                w.idx = deque([(now, 99.2)])
+                w._trigger = lambda: (True, {"peak_ts": now-300, "peak": 100.0,
+                                            "cur_ts": now, "cur": 99.2, "drop": -.8})
+                w._flow_channel_near = lambda ts, _key: None if mode == "missing" else ({}, ts-(45 if mode == "stale" else 0))
+                w._record_delivery = lambda *_a, **_k: None
+                with patch.object(watch, "telegram_send", return_value=123), \
+                     patch.object(watch, "receipt_for", return_value={"context": {"observed_drop": .5}}):
+                    asyncio.run(w.evaluate())
+                self.assertEqual(w.episode["sent_drop"], .5)
+
+    def test_reused_kosdaq_start_receipt_keeps_its_approved_drop(self):
+        now = time.time()
+        w = self.worker()
+        w.kosdaq_regular_price_ready = True
+        w.kosdaq_opening_gap_sent = True
+        w.kosdaq_idx = deque([(now, 99.2)])
+        w._kosdaq_trigger = lambda: (True, {"peak_ts": now-300, "peak": 100.0,
+                                           "cur_ts": now, "cur": 99.2, "drop": -.8})
+        w.build_kosdaq_drop_alert = lambda *_a: "offline fixture"
+        w._record_delivery = lambda *_a, **_k: None
+        with patch.object(watch, "telegram_send", return_value=123), \
+             patch.object(watch, "receipt_for", return_value={"context": {"observed_drop": .5}}):
+            asyncio.run(watch.Watch.maybe_alert_kosdaq_drop(w))
+        self.assertEqual(w.kosdaq_episode["sent_drop"], .5)
 
     def test_receipt_and_event_log_are_linked_without_exposing_recipient_id(self):
         w = self.worker()

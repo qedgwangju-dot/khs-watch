@@ -155,6 +155,8 @@ def verify_route(*, refresh: bool = False) -> dict:
         public = {"bot_username": username, "recipient_sha256": digest(actual_id),
                   "configured_recipient_sha256": digest(chat),
                   "chat_type": target["type"], "route_selection": "primary" if primary else "fallback",
+                  "message_auto_delete_time_sec": target.get("message_auto_delete_time"),
+                  "chat_is_forum": target.get("is_forum"),
                   "chat_title_sha256": digest(str(target.get("title") or "")),
                   "expected_label_matches_title": ("".join(label.split()) == "".join(str(target.get("title") or "").split())) if label else None,
                   "getMe_response_sha256": digest(bot_raw), "getChat_response_sha256": digest(target_raw),
