@@ -30,6 +30,10 @@ for _required in (
     "DONGKUK_NPS_RECOVERY =",
     "DKT_HUMANOID_RECOVERY =",
     "TESLA_TOUCH_PATENT_RECOVERY =",
+    "S24H_20261020_RECOVERY =",
+    "KREG_OCT23_RECOVERY =",
+    "def _s24h_recovery(",
+    "def _kreg_oct23_recovery(",
     "DIGITAL_OPTIMUS_GAME_RECOVERY =",
     "BESS_SEP26_RECOVERY =",
     "def _bess_bmi_recovery(",
@@ -5186,6 +5190,129 @@ assert fg==xg and fs<11,(fg,fs,fc)
 
 assert base.clean_title(agm_notice['title'],'Tesla IR').startswith('12월 3일'),(
     'Base display label already supplies Tesla name; avoid duplicate headline')
+
+
+
+# 2026-10-20 Samsung RX 24h and Oct23 regulatory meeting:
+# REPORTS / DISCUSSION vs official performance / legal adoption.
+samsung_24_report=make(
+    "삼성전자 RX사업추진실 24시간 이족보행 로봇 제조현장 실증 보도",
+    "중앙일보 업계 취재: 삼성전자 서울R&D캠퍼스 우면동에서 "
+    "24시간 3교대 모니터링을 하며 로봇의 물류 반복 작업을 검증하고 "
+    "CES 2027 전시를 검토 중. 완전 무인 연속가동 성능은 미확인.",
+    "중앙일보",
+)
+sg, ss, sc, sk = classify(samsung_24_report)
+assert sg=="samsung_24h_rx" and ss>=11, (sg,ss,sc)
+assert sc=="삼성전자 RX · 24시간 운용 목표 현장검증 보도",sc
+assert "CES" in base.meaning(sc) and "검토" in base.meaning(sc)
+assert "24시간" in base.risk(sc) and "가정" in base.risk(sc)
+
+samsung_24_rewrite=make(
+    "삼성전자 RX 로봇 24시간 생산근무 목표",
+    "삼성전자 우면동 이족보행 휴머노이드 로봇의 24시간 연속작업 목표를 시험 검증 중.",
+    "연합뉴스",
+)
+sg2,ss2,sc2,sk2=classify(samsung_24_rewrite)
+assert sg2==sg and ss2>=11 and sk2==sk, (sg2,ss2,sc2,sk2)
+
+samsung_ces_review=make(
+    "삼성전자 CES 2027 휴머노이드 검토",
+    "삼성전자 RX 24시간 산업용 로봇 CES 2027 출품을 검토 중이지만 아직 공식 참가 확정은 없다.",
+    "투자자 블로그",
+)
+sg3,ss3,sc3,sk3=classify(samsung_ces_review)
+assert sg3==sg and ss3<11,(sg3,ss3,sc3)
+
+samsung_official_uptime=make(
+    "삼성전자 RX 24시간 휴머노이드 연속 가동 시험 통과 발표",
+    "삼성전자 RX 이족보행 휴머노이드 로봇이 24시간 연속 무인 시험 통과를 공식 발표했다.",
+    "삼성전자",
+)
+ug,us,uc,uk=classify(samsung_official_uptime)
+assert ug==sg and us>=11 and uk!=sk,(ug,us,uc,uk)
+assert uc=="삼성전자 RX · 24시간 무인 연속가동 공식 검증",uc
+
+samsung_ces_official=make(
+    "삼성전자 CES 2027 이족보행 휴머노이드 로봇 공식 공개",
+    "삼성전자 RX CES 2027에서 이족보행 휴머노이드 로봇 공식 공개를 직접 발표했다.",
+    "삼성전자",
+)
+cg,cs,cc,ck=classify(samsung_ces_official)
+assert cg==sg and cs>=11 and ck not in {sk,uk},(cg,cs,cc,ck)
+assert cc=="삼성전자 RX · CES 2027 제품 공개 공식확인",cc
+
+reg_agenda=make(
+    "10월 23일 규제합리화위원회 로봇·AI 데이터센터 규제 논의 예고",
+    "청와대 20일 브리핑: 2026-10-23 규제합리화위원회 제2차 전체회의에서 "
+    "로봇, 반도체, AI 데이터센터의 규제 개선 방향을 논의할 예정이다. "
+    "개별 특례 시행은 확정 전.",
+    "연합뉴스",
+)
+rg,rs,rc,rk=classify(reg_agenda)
+assert rg=="robot_reg_oct23" and rs>=11,(rg,rs,rc)
+assert rc=="정부 규제합리화위 · 10월 23일 개최 예고",rc
+assert "이미 개정" in base.meaning(rc) and "뜻은 아닙니다" in base.meaning(rc)
+
+reg_reprint=make(
+    "규제합리화위 제2차 전체회의 로봇 관련 규제해소 발표",
+    "대통령이 10월 23일 규제합리화위원회 제2차 전체회의를 주재하고 "
+    "로봇과 AI 데이터센터의 현장 규제 개선 방향을 발표한다.",
+    "뉴스1",
+)
+rg2,rs2,rc2,rk2=classify(reg_reprint)
+assert rg2==rg and rs2>=11 and rk2==rk,(rg2,rs2,rc2,rk2)
+
+reg_official_decision=make(
+    "국무조정실 10월 23일 제2차 규제합리화위원회 로봇 실증특례 의결",
+    "국무조정실은 2026-10-23 규제합리화위원회 제2차 전체회의에서 "
+    "로봇 현장 실증특례 최종 확정을 공식 발표했다.",
+    "국무조정실",
+)
+og,os,oc,ok=classify(reg_official_decision)
+assert og==rg and os>=11 and ok!=rk,(og,os,oc,ok)
+assert oc=="정부 규제합리화위 · 23일 구체 제도변경 공식의결",oc
+
+reg_unapproved=make(
+    "규제합리화위원회 로봇 규제 논의 예정",
+    "정부가 10월 23일 규제합리화위원회 제2차 전체회의에서 "
+    "로봇 규제특례를 검토 중이며 시행은 미확정이다.",
+    "국무조정실",
+)
+g0,s0,c0,k0=classify(reg_unapproved)
+assert g0==rg and c0==rc and k0==rk,(g0,s0,c0,k0)
+
+# Two recoveries must be independently sourced, date-scoped, and not
+# fabricate 24h reliable operation, new capital budgets or legislation.
+old_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,20,12,0,tzinfo=dt.timezone.utc)
+    sampler=watcher.base.query_news(watcher.S24H_20261020_RECOVERY)
+    dater=watcher.base.query_news(watcher.KREG_OCT23_RECOVERY)
+    assert len(sampler)==1 and len(dater)==1,(sampler,dater)
+    assert sampler[0]["source"]=="중앙일보" and sampler[0]["published"] is None
+    assert dater[0]["source"]=="연합뉴스"
+    assert dater[0]["published"]=="2026-10-20T00:36:00+00:00"
+    rsg,rss,rsc,rsk=classify(sampler[0])
+    rrg,rrs,rrc,rrk=classify(dater[0])
+    assert rsg==sg and rss>=11 and rsc==sc and rsk==sk,(rsg,rss,rsc,rsk)
+    assert rrg==rg and rrs>=11 and rrc==rc and rrk==rk,(rrg,rrs,rrc,rrk)
+    for item,expected_cat in ((sampler[0],sc),(dater[0],rc)):
+        t=item["title"]+" "+item["description"]
+        shown=base.category(t,base.topic_group(t))
+        assert shown==expected_cat,(shown,expected_cat)
+        assert base.verification(item,base.topic_group(t),t)
+    assert watcher.qty._skip_quantity_enrichment(
+        "<b>1. 삼성전자 RX</b>\n<b>분류</b>  "+sc+"\n24시간 3교대"
+    ),"Pilot duration is not sold robot units"
+    assert watcher.qty._skip_quantity_enrichment(
+        "<b>2. 규제합리화위원회</b>\n<b>분류</b>  "+rc+"\n23일 참석 100명"
+    ),"Meeting attendees are not shipped robots"
+    base.NOW=dt.datetime(2026,10,25,0,0,tzinfo=dt.timezone.utc)
+    assert watcher.base.query_news(watcher.S24H_20261020_RECOVERY)==[]
+    assert watcher.base.query_news(watcher.KREG_OCT23_RECOVERY)==[]
+finally:
+    base.NOW=old_now
 
 
 print("Physical-AI watcher regression guards: PASS")
