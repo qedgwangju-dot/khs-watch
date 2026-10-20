@@ -5354,4 +5354,31 @@ for _item in roadmap_forecasts:
 # and add a BYD sodium row; this is NOT authenticated as a primary
 # Daishin update without a newer dated original report.
 
+
+# Verified rescheduling remains actionable; a forecast or analyst's repeated
+# multi-year milestone table alone is NOT official postponement/acceleration.
+sodium_true_acceleration = make(
+    "LG에너지솔루션 나트륨이온 배터리 상용화 일정 앞당겨",
+    "LG에너지솔루션은 2027년으로 계획했던 나트륨이온 배터리 "
+    "상용화 일정을 2026년으로 앞당겼다고 공식 발표했다.",
+    "LG에너지솔루션",
+)
+sg, ss, sc, sk = classify(sodium_true_acceleration)
+assert sg == "sodium_ion_battery" and ss >= 11, (sg, ss, sc)
+assert sc.endswith("나트륨이온 상용화 일정 변경"),sc
+
+sodium_rumor_acceleration = dict(sodium_true_acceleration, source="주가테마 블로그")
+rg, rs, rc, rk = classify(sodium_rumor_acceleration)
+assert rg == "sodium_ion_battery" and rs < 11, (rg, rs, rc)
+
+sodium_static_trusted = make(
+    "LG에너지솔루션 2027년 나트륨 양산 목표 다시 주목",
+    "LG에너지솔루션은 나트륨이온 배터리 2027년 상용화를 목표로 "
+    "2028년 2세대 공정을 개발할 계획이다. 신규 결정은 없다.",
+    "연합뉴스",
+)
+tg, ts, tc, tk = classify(sodium_static_trusted)
+assert ts < 11, (tg, ts, tc)
+
+
 print("Physical-AI watcher regression guards: PASS")
