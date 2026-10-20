@@ -131,6 +131,55 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertEqual(jem.event_key(b), jem.CANADA_EVENT_KEY)
         self.assertEqual(jem.event_key(a), jem.event_key(b))
 
+    def test_jemperli_fda_and_sc_events_use_distinct_verified_keys(self):
+        fda = jem_base.Item(
+            "GSK 공식",
+            "Jemperli dostarlimab approved in US for MSI-H/dMMR locally advanced rectal cancer by FDA",
+            jem.FDA_APPROVAL_URL, "Mon, 19 Oct 2026 14:00:00 GMT",
+        )
+        sc = jem_base.Item(
+            "ClinicalTrials.gov 공식",
+            "Jemperli subcutaneous SAPPHIRE NCT07860450 trial registration",
+            jem.SAPPHIRE_URL, "Tue, 06 Oct 2026 12:00:00 GMT",
+        )
+        self.assertTrue(jem.is_fda_approved_rectal(fda))
+        self.assertTrue(jem.is_sc_sapphire(sc))
+        self.assertEqual(jem.event_key(fda), jem.FDA_APPROVAL_EVENT)
+        self.assertEqual(jem.event_key(sc), jem.SAPPHIRE_EVENT)
+        self.assertNotEqual(jem.event_key(fda), jem.event_key(sc))
+        self.assertNotEqual(jem.event_key(fda), jem_base.digest("jemperli|us|rectal|approved"))
+        self.assertTrue(jem.is_recent(sc))
+        self.assertIn("자궁내막암", jem.build_item_summary(sc))
+        self.assertIn("정맥주사", jem.build_item_summary(fda))
+
+    def test_jemperli_fda_recovery_removes_only_untransmitted_key_once(self):
+        with tempfile.TemporaryDirectory() as td:
+            state_path = pathlib.Path(td) / "jemperli.json"
+            state_path.write_text(json.dumps({
+                "initialized": True, "dedupe_version": 4,
+                "seen_event_keys": [jem.FDA_APPROVAL_EVENT, jem.CURRENT_EVENT_KEY, "keep-older"]
+            }), encoding="utf-8")
+            with patch.object(jem_base, "STATE", state_path):
+                jem.migrate_state_once()
+                state = json.loads(state_path.read_text(encoding="utf-8"))
+                self.assertNotIn(jem.FDA_APPROVAL_EVENT, state["seen_event_keys"])
+                self.assertIn("keep-older", state["seen_event_keys"])
+                self.assertTrue(state["fda_approval_ack_repair_20261020"])
+                state["seen_event_keys"].append(jem.FDA_APPROVAL_EVENT)
+                state_path.write_text(json.dumps(state), encoding="utf-8")
+                jem.migrate_state_once()
+                again = json.loads(state_path.read_text(encoding="utf-8"))
+                self.assertIn(jem.FDA_APPROVAL_EVENT, again["seen_event_keys"])
+
+    def test_sapphire_identifier_passes_sender_without_general_english_exception(self):
+        with patch.object(base_korean_guard, "translate_to_korean",
+                          side_effect=AssertionError("unexpected translation network")):
+            rendered = guard.ensure_korean_text(
+                "- 임상: SAPPHIRE · Jemperli · NCT07860450 · 피하주사 등록"
+            )
+            self.assertIn("SAPPHIRE", rendered)
+            self.assertEqual(base_korean_guard.general_english_words(rendered), [])
+
     def test_jemperli_generic_unclassified_repost_is_blocked(self):
         item = jem_base.Item(
             "Google News",
