@@ -6941,6 +6941,158 @@ for _q in (
         base.QUERIES.append(_q)
 
 
+# Exactly one correction for Telegram message_id=249. The funding and CFO
+# events have ALREADY been sent successfully; they must not be replayed merely
+# because we corrected a source-code static FX conversion. Only correction
+# is new. A single formatter remains responsible for all current USD=>KRW.
+FX249_CORRECTION_RECOVERY = "DIRECT_TELEGRAM_249_FX_INCONSISTENCY_20261021"
+
+
+def _fx249_correction() -> list[dict]:
+    if base.NOW.astimezone(base.KST).date()>dt.date(2026,10,26):
+        return []
+    return [{
+        "title":"정정: Telegram 249번 환율 혼용으로 Eka 투자금액 표시 차이 수정",
+        "description":(
+            "2026-10-21 직전 Telegram 249번 1번 EKA Robotics 전체 Series A "
+            "1억5000만달러는 제목에 약 1,992억원, 본문에 약 1,991억원으로 "
+            "서로 다르게 출력됐다. 원인은 새 알림 본문에 과거 조회 환율을 고정해 "
+            "원화값을 적고 마지막 공통 환산 단계에서 신규 환율을 이용해 제목을 "
+            "다시 계산한 데 있다. Spot 기본 10만달러·옵션 최고 30만달러 "
+            "표시도 구 환율이 박혀 있었다. 같은 자금조달 사실을 다시 알리는 "
+            "것이 아니라 출처 기준 불일치와 재발방지 수정 사실만 정정한다. "
+            "Eka 전체 투자유치액과 Samsung Next 개별 투자액은 서로 다르며 "
+            "후자는 여전히 비공개다. Spot 견적은 Atlas 가격이 아니다. "
+            "후속 알림은 외화 원문만 소스에 보존하고 공통 환산기에서 "
+            "검증된 당일 단일 환율로 즉시 원화 환산한다. "
+            "1억~10억원 이하 달러 상품은 만원 단위까지 출력 정밀도를 개선했다."
+        ),
+        "source":"알림 운영검증 기록",
+        "link":"https://github.com/qedgwangju-dot/khs-watch/actions/runs/39514218089",
+        "published":None,
+        "direct_recovery":True,
+        "fx_correction_249":True,
+    }]
+
+
+_fx249_prev_query=base.query_news
+_fx249_prev_group=base.topic_group
+_fx249_prev_score=base.score
+_fx249_prev_category=base.category
+_fx249_prev_meaning=base.meaning
+_fx249_prev_risk=base.risk
+_fx249_prev_verify=base.verification
+_fx249_prev_title=base.clean_title
+_fx249_prev_tag=base.tag_for
+_fx249_prev_key=base.key
+_fx249_prev_select=base.select_diverse
+
+
+def _fx249_query(q):
+    if q==FX249_CORRECTION_RECOVERY:
+        return _fx249_correction()
+    return _fx249_prev_query(q)
+
+
+def _fx249_group(text):
+    if "정정: Telegram 249번" in text:
+        return "alert_quality_fx_249"
+    return _fx249_prev_group(text)
+
+
+def _fx249_score(item):
+    if item.get("fx_correction_249"):
+        return 98
+    return _fx249_prev_score(item)
+
+
+def _fx249_category(text,group):
+    if group=="alert_quality_fx_249":
+        return "알림 정정 · 249번 외화 환산 단일화"
+    return _fx249_prev_category(text,group)
+
+
+def _fx249_meaning(cat):
+    if cat=="알림 정정 · 249번 외화 환산 단일화":
+        return (
+            "Telegram 249번에서 EKA 시리즈 A 투자 총액 1억5000만달러가 "
+            "제목 약 1,992억원·본문 약 1,991억원으로 달랐습니다. "
+            "하나의 환율로 계산하지 않은 출력 오류입니다. "
+            "수정 후에는 기준 외화액만 보존하고 공통 환율 검증 단계가 "
+            "같은 실행에서 단 한 번 원화 환산합니다. "
+            "Spot 기본 10만달러·옵션 최고 30만달러 역시 같은 환율을 "
+            "쓰며 1억~10억원 금액의 만원단위 표기를 복구했습니다. "
+            "이미 보낸 EKA 투자 확정·Atlas 원가 발언 자체는 유지되고 "
+            "신규 부품 발주·양산 매출이 발생했다는 뜻은 아닙니다."
+        )
+    return _fx249_prev_meaning(cat)
+
+
+def _fx249_risk(cat):
+    if cat=="알림 정정 · 249번 외화 환산 단일화":
+        return (
+            "출처별 고정 환율과 마지막 실시간 환산기를 동시에 쓰면 "
+            "같은 달러금액의 원화 표시가 달라집니다. "
+            "원화 환산은 발송 직전 공통 단계로 일원화했고 "
+            "모의 환율 2개·중복 이벤트 회귀검사를 추가했습니다."
+        )
+    return _fx249_prev_risk(cat)
+
+
+def _fx249_verify(item,group,text):
+    if group=="alert_quality_fx_249":
+        return (
+            "Telegram 249 실제 아티팩트 제목·본문·환율 기준 불일치 확인 / "
+            "외화 원문 보존·단일 환율 변환·만원 단위 정밀도 재검증 / "
+            "신규 계약 아님"
+        )
+    return _fx249_prev_verify(item,group,text)
+
+
+def _fx249_title(title,source):
+    if title.startswith("정정: Telegram 249번"):
+        return "정정: Telegram 249번 Eka 투자금 1억원 표시차이·Spot 환산 기준 일원화"
+    return _fx249_prev_title(title,source)
+
+
+def _fx249_tag(group):
+    if group=="alert_quality_fx_249":
+        return "환율 환산 정정"
+    return _fx249_prev_tag(group)
+
+
+def _fx249_key(item):
+    if item.get("fx_correction_249"):
+        return hashlib.sha256(b"physicalai|telegram249|20261021|fx-one-rate-fix").hexdigest()
+    return _fx249_prev_key(item)
+
+
+def _fx249_select(items,seen,force,limit):
+    chosen=_fx249_prev_select(items,seen,force,limit)
+    candidates=items if force else [x for x in items if x.get("key") not in seen]
+    correction=next((x for x in candidates if x.get("group")=="alert_quality_fx_249"
+                     and x.get("score",0)>=11),None)
+    if correction and not any(x.get("key")==correction.get("key") for x in chosen):
+        chosen=([correction,*chosen] if len(chosen)<limit else
+                [correction,*chosen[:-1]])
+    return chosen
+
+
+base.query_news=_fx249_query
+base.topic_group=_fx249_group
+base.score=_fx249_score
+base.category=_fx249_category
+base.meaning=_fx249_meaning
+base.risk=_fx249_risk
+base.verification=_fx249_verify
+base.clean_title=_fx249_title
+base.tag_for=_fx249_tag
+base.key=_fx249_key
+base.select_diverse=_fx249_select
+if FX249_CORRECTION_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(FX249_CORRECTION_RECOVERY)
+
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()
