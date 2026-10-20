@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-10-20T10:45:20+09:00",
+  "updated_at_kst": "2026-10-20T15:41:42+09:00",
   "policy_rate": 1.0,
   "statement_url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260731a.pdf",
   "opinion_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi260918.pdf",
@@ -22,22 +22,22 @@
     "jgb40": 4.04
   },
   "usdjpy": {
-    "date": "2026-10-20T01:45:20Z",
-    "value": 158.55499267578125,
-    "change_pct": 0.3328412472484908,
+    "date": "2026-10-20T06:41:42Z",
+    "value": 158.0959930419922,
+    "change_pct": 0.053788314879692344,
     "source": "Yahoo query1/query2 5분 데이터 교차확인",
     "signal_eligible": true,
-    "age_seconds": 1.289375
+    "age_seconds": 1.456412
   },
   "auctions": {
     "20": {
-      "date": "9/15/2026",
-      "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20260915.htm",
-      "btc": 4.005450103364029,
-      "tail_bp": 1.3000000000000345,
-      "prev_date": "8/20/2026",
-      "prev_btc": 3.9823341477165943,
-      "prev_tail_bp": 1.5000000000000124
+      "date": "10/20/2026",
+      "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20261020.htm",
+      "btc": 5.844349283187488,
+      "tail_bp": 0.6000000000000227,
+      "prev_date": "9/15/2026",
+      "prev_btc": 4.005450103364029,
+      "prev_tail_bp": 1.3000000000000345
     },
     "30": {
       "date": "10/8/2026",
