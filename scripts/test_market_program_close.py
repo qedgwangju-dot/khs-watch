@@ -253,7 +253,7 @@ class ProgramClose(unittest.TestCase):
                 visible = re.sub("<[^>]+>", "", close)
                 self.assertLess(len(visible), 4096)
 
-    def test_noon_test_run_no_episode_do_not_query(self):
+    def test_noon_and_test_run_do_not_query(self):
         w = monitor.Watch.__new__(monitor.Watch)
         w.raw = {};w.token = "redacted"
         w.episode = {};w.idx = deque([(CLOSE - 1, 1)])
@@ -263,11 +263,9 @@ class ProgramClose(unittest.TestCase):
         with patch.object(monitor, "collect_program_close", side_effect=forbidden):
             asyncio.run(w._prepare_program_close(close, None, close - dt.timedelta(hours=3)))
             asyncio.run(w._prepare_program_close(close, 15, close + dt.timedelta(minutes=2)))
-            w.episode = None;w.kosdaq_episode = None
-            asyncio.run(w._prepare_program_close(close, None, close + dt.timedelta(minutes=2)))
         self.assertEqual(w.raw, {})
 
-    def test_only_existing_active_close_market_collected(self):
+    def test_both_markets_collected_even_when_only_one_episode_is_active(self):
         w = monitor.Watch.__new__(monitor.Watch)
         w.raw = {};w.token = "redacted"
         w.episode = {};w.idx = deque([(CLOSE - 1, 1)])
@@ -275,9 +273,9 @@ class ProgramClose(unittest.TestCase):
         close = dt.datetime.fromtimestamp(CLOSE, program.KST)
         with patch.object(monitor, "collect_program_close", return_value={"status": "held"}) as collect:
             asyncio.run(w._prepare_program_close(close, None, close + dt.timedelta(minutes=2)))
-        self.assertEqual(collect.call_count, 1)
-        self.assertEqual(collect.call_args.args[1], "KOSPI")
-        self.assertEqual(set(w.raw["program_close"]), {"KOSPI"})
+        self.assertEqual(collect.call_count, 2)
+        self.assertEqual([call.args[1] for call in collect.call_args_list], ["KOSPI", "KOSDAQ"])
+        self.assertEqual(set(w.raw["program_close"]), {"KOSPI", "KOSDAQ"})
 
 
 if __name__ == "__main__":
