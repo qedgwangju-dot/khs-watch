@@ -5422,4 +5422,114 @@ try:
 finally:
     base.NOW=previous_now
 
+
+# 75) Two 2026-10-19/20 new events: Boston Dynamics actual CFO interview
+# about actuator *BOM* and Eka company Series A with Samsung Next; preserve
+# 2025 RB-Y1 research relationship, deny false client orders and unit sales.
+assert watcher.ATLAS_COST_20261019_RECOVERY in base.QUERIES
+assert watcher.EKA_ROBOTICS_20261020_RECOVERY in base.QUERIES
+bd_event=watcher.base.query_news(watcher.ATLAS_COST_20261019_RECOVERY)
+eka_event=watcher.base.query_news(watcher.EKA_ROBOTICS_20261020_RECOVERY)
+if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,27):
+    assert len(bd_event)==1 and len(eka_event)==1
+    bd_item=bd_event[0]
+    eka_item=eka_event[0]
+    assert bd_item["source"]=="Fortune"
+    assert eka_item["source"]=="Eka Robotics"
+    assert bd_item["published"] is None and eka_item["published"] is None
+    bd_g,bd_s,bd_cat,bd_k=classify(bd_item)
+    ek_g,ek_s,ek_cat,ek_k=classify(eka_item)
+    assert bd_g=="atlas_actuator_bom" and bd_s>=11,(bd_g,bd_s,bd_cat)
+    assert ek_g=="eka_dexterous_funding" and ek_s>=11,(ek_g,ek_s,ek_cat)
+    assert bd_cat=="Atlas 액추에이터 · CFO 부품원가 70% 발언",bd_cat
+    assert ek_cat=="Eka Robotics · 시리즈 A 공식 조달·삼성넥스트 참여",ek_cat
+    assert bd_k!=ek_k
+    for item,cat in ((bd_item,bd_cat),(eka_item,ek_cat)):
+        x=item["title"]+" "+item["description"]
+        # Check the real Telegram renderer, which omits source in category().
+        assert base.category(x,base.topic_group(x))==cat,(cat,base.category(x,base.topic_group(x)))
+        assert base.key(item)==(bd_k if item==bd_item else ek_k)
+        assert base.meaning(cat) and base.risk(cat)
+    assert '부품·재료비' in base.meaning(bd_cat)
+    assert 'Atlas 5만 대 확정 발주가 아닙니다' in base.meaning(bd_cat)
+    assert 'Spot 판매가' in base.meaning(bd_cat)
+    assert '개별 투자액·지분율 미공개' in base.meaning(ek_cat)
+    assert '기존' not in base.category(eka_item['title']+' '+eka_item['description'],ek_g)
+    assert watcher.qty._skip_quantity_enrichment(
+        "<b>1. 보스턴다이내믹스 CFO: Atlas 액추에이터 부품원가 70%</b>\n"
+        "그룹 50,000대 배치 구상, 액추에이터 공급 단가 미공개"
+    )
+    assert watcher.qty._skip_quantity_enrichment(
+        "<b>2. Eka Robotics 공식 1억5000만달러 조달·Samsung Next 투자 참여</b>\n"
+        "기술 성능 시간당 1,500회, 투자 150 million dollars"
+    )
+    assert int(100000*watcher.ATLAS_EKA_FX)==132721000
+    assert int(300000*watcher.ATLAS_EKA_FX)==398163000
+    assert int(150_000_000*watcher.ATLAS_EKA_FX)==199081500000
+
+bd_old=make(
+    "보스턴다이내믹스 Atlas 액추에이터 전략적 공급협력 현대모비스",
+    "현대모비스는 CES 2026에서 Atlas 액추에이터 공급협력 발표. "
+    "부품 재료비 60% 초과로 추정된다.",
+    "현대모비스",
+)
+bdog,bdos,bdoc,bdok=classify(bd_old)
+assert bdog!="atlas_actuator_bom", (bdog,bdos,bdoc)
+
+bd_media_copy=make(
+    "Boston Dynamics Atlas actuator cost 70% new briefing",
+    "Boston Dynamics Atlas actuator materials make up 70% BOM and "
+    "Hyundai Mobis will manufacture at cost, according to Fortune CFO interview.",
+    "뉴스 재인용",
+)
+bdcg,bdcs,bdcc,bdck=classify(bd_media_copy)
+assert bdcg=="atlas_actuator_bom" and bdcs<11,(bdcg,bdcs,bdcc)
+
+bd_primary=make(
+    "보스턴다이내믹스 Atlas 액추에이터 BOM 70% 공식 발표",
+    "Boston Dynamics official announcement: Atlas actuator materials "
+    "70% of BOM and Hyundai Mobis supplying at cost.",
+    "Boston Dynamics",
+)
+bp_g,bp_s,bp_cat,bp_k=classify(bd_primary)
+assert bp_g=="atlas_actuator_bom" and bp_s>=11,(bp_g,bp_s,bp_cat)
+assert bp_cat=="Atlas 액추에이터 · 제조사 직접 원가비중 확인",bp_cat
+if bd_event:
+    assert bp_k!=base.key(bd_event[0]),"Direct official evidence must be distinct"
+
+eka_media_copy=make(
+    "Eka Robotics raises $150 million Series A with Samsung Next",
+    "Eka Robotics Series A 150 million dollars with Samsung Next as one participant.",
+    "일반 경제뉴스",
+)
+mg,ms,mc,mk=classify(eka_media_copy)
+assert mg=="eka_dexterous_funding" and ms<11,(mg,ms,mc)
+
+eka_legacy=make(
+    "Eka Robotics RB-Y1 dexterous hand research",
+    "Eka Robotics used Rainbow Robotics RB-Y1 for dexterous hand research in 2025.",
+    "레인보우로보틱스",
+)
+lg,ls,lc,lk=classify(eka_legacy)
+assert lg=="eka_dexterous_funding" and ls<11,(lg,ls,lc)
+
+eka_new_order=make(
+    "Eka Robotics RB-Y1 신규 공급계약 체결 발표",
+    "Eka Robotics RB-Y1 신규 공급계약 체결, robotics hand research platform orders.",
+    "레인보우로보틱스",
+)
+og,os,oc,ok=classify(eka_new_order)
+assert og=="eka_dexterous_funding" and os>=11,(og,os,oc)
+assert oc=="Eka Robotics–레인보우로보틱스 · RB-Y1 신규 주문",oc
+if eka_event:
+    assert ok!=base.key(eka_event[0]), "New OEM order must not be funding replay"
+
+t_ae=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,28,12,0,tzinfo=dt.timezone.utc)
+    assert watcher.base.query_news(watcher.ATLAS_COST_20261019_RECOVERY)==[]
+    assert watcher.base.query_news(watcher.EKA_ROBOTICS_20261020_RECOVERY)==[]
+finally:
+    base.NOW=t_ae
+
 print("Physical-AI watcher regression guards: PASS")
