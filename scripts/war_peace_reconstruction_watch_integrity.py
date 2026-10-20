@@ -179,6 +179,10 @@ def _bargain_proposal_headline(title):
     return bool(re.search(r'담판(?:을|를)?\s*(?:제안|추진|논의|검토)', title))
 
 
+def _bargain_question_headline(title):
+    return bool(re.search(r'담판(?:을|를)?\s*(?:짓나|성사될까|가능할까)', title))
+
+
 def _meeting_uncertainty_headline(title):
     return bool(re.search(r'회담.{0,18}여부.{0,18}(?:모르겠|미정|확답.{0,5}않)|'
                           r'회담.{0,18}(?:정해지지\s*않|아직\s*미정)', title))
@@ -214,8 +218,8 @@ def _diplomatic_group(title):
     if _meeting_uncertainty_headline(title):
         # A possible venue is not an additional meeting participant.
         title = re.sub(r'(?:중국|中)(?:에)?서', '', title)
-    if _summit_proposal_headline(title) and not re.search(r'젤렌스키.{0,12}배제하지\s*않', title):
-        title = re.sub(r'젤렌스키(?:\s*대통령)?(?:를|는|가)?\s*(?:배제|제외|아닌)', '', title)
+    if (_summit_proposal_headline(title) or _bargain_question_headline(title)) and not re.search(r'젤렌스키.{0,12}배제하지\s*않', title):
+        title = re.sub(r'젤렌스키(?:\s*대통령)?(?:를|는|가)?\s*(?:배제|제외|아닌|빠져라)', '', title)
     trilateral = bool(re.search(r'미\s*[·ㆍ/]?\s*중\s*[·ㆍ/]?\s*러', title))
     north_russia = bool(re.search(r'(?<![가-힣])북\s*[·ㆍ/]?\s*러(?=\s|$)', title))
     actors = []
@@ -251,6 +255,8 @@ def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
     if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal'):
+        if kind == 'diplomatic_analysis' and _bargain_question_headline(title):
+            return _diplomatic_group(title) + ' · 정상회담·담판 가능성 해설'
         if kind == 'diplomatic_position' and _harm_intent_denial_headline(title):
             return _diplomatic_group(title) + ' · 위해 의도 부인·설명'
         if kind == 'diplomatic_position' and _negotiation_stalemate_headline(title):
@@ -734,6 +740,8 @@ def _diplomatic_headline_kind(title):
                       r'\b(?:zelenskyy?|zelenskiy|ukrain\w*|trump|witkoff|kushner|iran(?:ian)?|russia\w*|putin|kremlin|lavrov)\b|\bu\.s\.', title)
     if not actor:
         return None
+    if _bargain_question_headline(title):
+        return 'diplomatic_analysis'
     if _harm_intent_denial_headline(title) or _negotiation_stalemate_headline(title):
         return 'diplomatic_position'
     if (_summit_possibility_reaction(title) or _meeting_uncertainty_headline(title)
@@ -857,6 +865,8 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    if kind == 'diplomatic_analysis' and _bargain_question_headline(title):
+        return '정상회담·담판 가능성 해설'
     if kind == 'diplomatic_position' and _harm_intent_denial_headline(title):
         return '위해 의도 부인·설명'
     if kind == 'diplomatic_position' and _negotiation_stalemate_headline(title):
@@ -947,7 +957,8 @@ def final_color(row):
             or _summit_openness_headline(title) or _summit_openness_denied(title) or _bargain_proposal_headline(title)
             or _meeting_uncertainty_headline(title) or _meeting_intent_stage(title)
             or _participation_exclusion_headline(title) or _harm_intent_denial_headline(title)
-            or _negotiation_stalemate_headline(title) or _ceasefire_proposal_stage(title))):
+            or _negotiation_stalemate_headline(title) or _ceasefire_proposal_stage(title)
+            or _bargain_question_headline(title))):
         return 'red'
     return 'red' if maritime_attack_tally(row) else _color(row)
 

@@ -134,6 +134,21 @@ class IntegrityTests(unittest.TestCase):
         self.assertNotIn('이스라엘',text);self.assertNotIn('적대행위 재개 가능성이 거론',text)
         self.assertNotIn('미국 중간고사',text);self.assertNotIn('🟢',text)
 
+    def test_current_stage_deferred_summit_question_keeps_named_participants(self):
+        fixture,now=self.current_stage_fixture();row=copy.deepcopy(fixture['articles'][5])
+        self.assertFalse(row['rendered'])
+        self.assertEqual(integrity.non_military_kind(row),'diplomatic_analysis')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'미국·중국·러시아 · 정상회담·담판 가능성 해설')
+        with patch.object(integrity.body_parallel,'_safe_enrich'):text=integrity.build_alert([row],[],now)
+        self.assertIn(html.escape(row['title_original']),text)
+        self.assertIn('젤렌스키는 빠져라',text);self.assertNotIn('미국·우크라이나·중국·러시아',text)
+        self.assertNotIn('🟢',text)
+
+    def test_current_stage_separate_operation_wins_over_summit_question(self):
+        row=article('트럼프, 푸틴·시진핑과 종전 담판 짓나…러시아 미사일 발사')
+        self.assertIsNone(integrity.non_military_kind(row));self.assertEqual(integrity.final_color(row),'red')
+
     def test_current_stage_ceasefire_proposal_remains_proposal(self):
         for title in ('우크라이나는 러시아 석유 시설에 대한 30일간의 휴전을 제안했다.',
                       'Ukraine proposes a 30-day ceasefire on Russian oil facilities',
