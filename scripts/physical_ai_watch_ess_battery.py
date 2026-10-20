@@ -18,6 +18,7 @@ MLCC guardrails:
 """
 from __future__ import annotations
 
+import datetime as dt
 import re
 import sys
 from pathlib import Path
@@ -69,6 +70,17 @@ base.QUERIES.extend([
     '(HiNa Battery OR 中科海钠 OR 하이나배터리) (sodium-ion OR sodium ion OR 钠离子 OR 나트륨이온) (339kWh OR 339 kWh OR 15000km OR 15,000km OR FAW OR 一汽解放 OR truck OR 트럭 OR ESS OR GWh OR mass production OR 양산)',
     '(Enertech OR 에너테크인터내셔널 OR 에너테크) (sodium-ion OR sodium ion OR 나트륨이온 OR 소듐이온) (140Wh OR 160Wh OR 2027 OR January OR 1월 OR Chungju OR 충주 OR mass production OR 양산 OR supply OR 공급 OR customer OR 고객)',
     '(sodium-ion OR sodium ion OR 나트륨이온 OR 소듐이온 OR 钠离子) (ESS OR BESS OR energy storage OR 에너지저장 OR UPS) (price parity OR LFP parity OR cost parity OR 가격 경쟁력 OR 가격 동등 OR price OR 가격 OR "$/kWh" OR yuan/Wh OR 위안/Wh) (contract OR transaction OR quotation OR supply OR 계약 OR 거래 OR 견적 OR 공급)',
+])
+
+base.QUERIES.extend([
+    '(IRS OR "Internal Revenue Service" OR Treasury) '
+    '("45X" OR "advanced manufacturing production credit") '
+    '(battery OR batteries OR "battery cells" OR "battery modules" OR '
+    '"prohibited foreign entities") '
+    '(new guidance OR final rule OR material assistance OR safe harbor)',
+    '("section 45X" OR "45X 생산세액공제") '
+    '(배터리 OR 전극활물질 OR 핵심광물 OR battery) '
+    '(regulation OR amendment OR 개정 OR 최종규정 OR 공급망 제한)',
 ])
 
 base.TRUSTED.update({
@@ -385,6 +397,89 @@ US_FORECAST = re.compile(r'forecast|outlook|projection|전망|예측', re.I)
 US_FORECAST_CHANGE = re.compile(r'revis|raise|lower|upgrade|downgrade|increase|decrease|상향|하향|수정|변경', re.I)
 US_POLICY = re.compile(r'FEOC|foreign\s+entity|tax\s+credit|세액공제|tariff|관세|interconnection|계통\s*접속|fire\s+code|화재\s*규정|permitting|인허가|domestic\s+content|현지\s*조달', re.I)
 US_POLICY_CHANGE = re.compile(r'final\s+rule|rule\s+change|effective|enacted|adopted|approved|확정|시행|발효|개정|변경|승인', re.I)
+
+
+# IRC 45X tax-credit baseline (26 USC 45X; IRS Form 7207 rev. 12/2025).
+# The well-known 2029=100%, 2030=75%, 2031=50%, 2032=25%,
+# 2033=0% BATTERY COMPONENT schedule is never breaking news.
+# Qualifying critical minerals have a separate 2031/32/33 phase-out,
+# 2034=0%. PFE/foreign-material-eligibility restrictions can matter
+# materially BEFORE 2030. Watch new primary-source changes only.
+US45X_ID = re.compile(
+    r'\b45[\s-]?X\b|제\s*45\s*X\s*조|section\s*45\s*X|'
+    r'advanced\s+manufacturing\s+production\s+credit|\bAMPC\b|'
+    r'생산\s*세액공제', re.I,
+)
+US45X_BATTERY = re.compile(
+    r'batter(?:y|ies)|battery\s+(?:cell|module)|배터리|전지|'
+    r'전극\s*활물질|electrode\s+active|critical\s+mineral|'
+    r'핵심\s*광물|FEOC|prohibited\s+foreign|material\s+assistance',
+    re.I,
+)
+US45X_PRIMARY = {
+    'IRS', 'Internal Revenue Service', 'U.S. Department of the Treasury',
+    'U.S. Treasury', 'Treasury Department', 'Federal Register',
+    'U.S. Congress', 'Congress.gov', 'Government Publishing Office',
+}
+US45X_CHANGED = re.compile(
+    r'\b(?:amend(?:ed|ment)?|revis(?:ed|ion)|new|final(?:ized)?|'
+    r'updated?|issu(?:ed|es)|repeal(?:ed)?|extended?)\b|'
+    r'개정|변경|새로운\s*지침|최종\s*규칙|최종\s*규정|신규\s*발표',
+    re.I,
+)
+US45X_MATERIAL = re.compile(
+    r'foreign\s+entit|prohibited\s+foreign|FEOC|'
+    r'material\s+assistance|cost\s+ratio|safe\s+harbor|'
+    r'금지\s*외국|외국\s*우려|원산지|'
+    r'credit\s+eligib|공제\s*(?:자격|적격|요건|금액|제한|연장|폐지)',
+    re.I,
+)
+US45X_DOCUMENT = re.compile(
+    r'\bNotice\s+20\d{2}[-\s]?\d{1,4}\b|'
+    r'\bREG[-\s]?\d{4,9}[-\s]?\d{2}\b|'
+    r'final\s+regulations?|new\s+safe\s+harbor\s+tables?|'
+    r'final\s+rules?|최종\s*(?:규정|규칙)|새\s*세법', re.I,
+)
+US45X_BASELINE_NOTICE = re.compile(r'\bNotice\s+2026[-\s]?15\b', re.I)
+US45X_WATCH_START = dt.datetime(2026, 10, 20, tzinfo=dt.timezone.utc)
+US45X_BASELINE = {
+    'battery_components': {2029:100,2030:75,2031:50,2032:25,2033:0},
+    'critical_minerals': {2030:100,2031:75,2032:50,2033:25,2034:0},
+    'cell_usd_per_kwh': 35, 'module_using_cells_usd_per_kwh': 10,
+    'module_without_cells_usd_per_kwh': 45,
+}
+
+
+def _is_us45x_battery(text: str) -> bool:
+    return bool(US45X_ID.search(text) and US45X_BATTERY.search(text))
+
+
+def _us45x_stage(text: str, source: str = '') -> str:
+    if not _is_us45x_battery(text):
+        return ''
+    if source not in US45X_PRIMARY:
+        return 'existing_baseline'
+    if not (US45X_CHANGED.search(text) and US45X_MATERIAL.search(text)):
+        return 'existing_baseline'
+    docs = US45X_DOCUMENT.findall(text)
+    docs = [d for d in docs if not US45X_BASELINE_NOTICE.search(d)]
+    if not docs:
+        return 'existing_baseline'
+    return 'new_official_45x_guidance'
+
+
+def _us45x_score(item: dict) -> int:
+    text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if _us45x_stage(text, item.get('source') or '') != 'new_official_45x_guidance':
+        return 0
+    try:
+        pub = dt.datetime.fromisoformat(item.get('published') or '')
+        if pub.tzinfo is None or pub.astimezone(dt.timezone.utc) < US45X_WATCH_START:
+            return 0
+    except (TypeError, ValueError):
+        return 0
+    return 48
+
 
 CATL_DEB_ID = re.compile(r'(?:CATL|宁德时代).{0,120}(?:Debrecen|德布勒森|데브레첸|Hungary|헝가리)|(?:Debrecen|德布勒森|데브레첸|Hungary|헝가리).{0,120}(?:CATL|宁德时代)', re.I)
 CATL_DEB_TRIAL = re.compile(r'trial\s*(?:production|operation|run)|test\s*production|试生产|试运行|시험\s*생산|시운전|생산\s*검증', re.I)
@@ -872,6 +967,8 @@ def _is_ess_battery(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_us45x_battery(text):
+        return 'us_45x_battery'
     sodium_stage = _sodium_stage(text)
     if sodium_stage and sodium_stage != 'background':
         return 'sodium_ion_battery'
@@ -895,6 +992,8 @@ def score(item: dict) -> int:
     group = topic_group(text)
     source = item.get('source') or ''
 
+    if group == 'us_45x_battery':
+        return _us45x_score(item)
     if group == 'sodium_ion_battery':
         stage = _sodium_stage(text, source)
         if stage in {'','known_baseline','background'}:
@@ -1100,6 +1199,8 @@ def _raw_cat(text: str) -> str:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'us_45x_battery':
+        return '미국 45X 제조세액공제 · 변경 지침·적격성 확인'
     if group == 'sodium_ion_battery':
         stage = _sodium_stage(text)
         raw = {
@@ -1170,6 +1271,15 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat.startswith('미국 45X 제조세액공제 · '):
+        return (
+            '45X 기존 법정 감액표는 배터리 부품 2029년까지 100%, '
+            '2030년 75%, 2031년 50%, 2032년 25%, 2033년부터 0%입니다. '
+            '적격 핵심광물은 별도 일정으로 2031년부터 감액돼 2034년 종료합니다. '
+            '이는 기존 법률 기준선으로 새 공제금이나 수주가 아닙니다. '
+            '신규 공식지침은 바뀐 법조항·시행일·예외·금지 외국기업 공급망 제한과 '
+            '실제 제조·판매주체, 고객·물량을 재확인한 뒤 매출 영향으로 연결합니다.'
+        )
     raw = cat.split(' · ', 1)[-1]
     if cat.startswith('나트륨이온 배터리 · '):
         return {
@@ -1271,6 +1381,15 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('미국 45X 제조세액공제 · '):
+        return (
+            '최대 실패 경로는 현지 셀을 양산해도 공급망의 금지 외국기업 '
+            '기여나 세무 적격성·판매 요건 때문에 공제를 받지 못하는 것입니다. '
+            '단위당 기본공제×적격 생산판매량×해당 연도 비율로 계산하며 '
+            '명목 공장 생산능력은 공제액이 아닙니다. '
+            '6~12개월 선행 지표는 IRS 확정 세이프하버·원가비율 증빙, '
+            '계약생산 청구권·검수, 실제 출하 GWh·수율·가동률입니다.'
+        )
     raw = cat.split(' · ', 1)[-1]
     if cat.startswith('나트륨이온 배터리 · '):
         return {
@@ -1353,6 +1472,13 @@ def risk(cat: str) -> str:
 
 def verification(item: dict, group: str, text: str) -> str:
     source = item.get('source') or ''
+    if group == 'us_45x_battery':
+        return (
+            '미국 26 USC §45X·IRS Form 7207 개정 지침 대조 · '
+            '기존 감액표와 적격 핵심광물 예외 구분 · '
+            'Notice 2026-15 잠정 공급망 판단기준은 2026년 2월 기존 자료 · '
+            '새로운 법률·IRS 시행규칙은 원문 재확인 필요'
+        )
     if group == 'sodium_ion_battery':
         stage = _sodium_stage(text, source)
         if stage == 'known_baseline':
@@ -1599,6 +1725,13 @@ def key(item: dict) -> str:
     import hashlib
     source = item.get('source') or ''
     group = topic_group(text)
+    if group == 'us_45x_battery':
+        stage = _us45x_stage(text, source)
+        if stage == 'existing_baseline':
+            return hashlib.sha256(b'45x-battery|statutory-schedule|existing-baseline').hexdigest()
+        docs = sorted(set(d.lower().replace(' ', '-') for d in US45X_DOCUMENT.findall(text)
+                          if not US45X_BASELINE_NOTICE.search(d)))
+        return hashlib.sha256(f'45x-battery|{stage}|{"|".join(docs)}'.encode()).hexdigest()
     catl_stage = _catl_debrecen_stage(text, source)
     isu_stage = _isu_li2s_stage(text, source)
     us_stage = _us_ess_stage(text, source)
@@ -1711,6 +1844,10 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
 
+    policy45x = next((x for x in candidates if x.get('group') == 'us_45x_battery'), None)
+    if policy45x and not any(x.get('key') == policy45x.get('key') for x in chosen):
+        chosen = ([policy45x, *chosen] if len(chosen) < limit
+                  else [policy45x, *chosen[:-1]])
     priority_item = next((x for x in candidates if x.get('group') == 'sodium_ion_battery'), None)
     if priority_item and not any(x.get('key') == priority_item.get('key') for x in chosen):
         if len(chosen) < limit:
