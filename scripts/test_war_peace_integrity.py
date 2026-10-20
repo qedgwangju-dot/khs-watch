@@ -66,6 +66,57 @@ class IntegrityTests(unittest.TestCase):
         value = json.loads((Path(__file__).parent/'test_fixtures/war_market_claim_reaction_39393068852.json').read_text(encoding='utf-8'))
         return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def tanker_route_fixture(self):
+        value=json.loads((Path(__file__).parent/'test_fixtures/war_tanker_route_39393915931.json').read_text(encoding='utf-8'))
+        return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_tanker_route_actual_movement_preserves_count_and_named_route(self):
+        fixture,now=self.tanker_route_fixture();row=copy.deepcopy(fixture['articles'][3])
+        self.assertEqual(integrity.non_military_kind(row),'maritime_routing')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'한국·호르무즈·수에즈 · 선박 항로·운송 보도')
+        self.assertEqual(integrity._display_headline(row),row['title_original'])
+        integrity.score_item(row,now)
+        self.assertEqual(row['tags'],['선박 항로·운송 보도']);self.assertEqual(row['signals_ko'],[]);self.assertEqual(row['forced_tags'],[])
+
+    def test_tanker_route_no_inferred_crude_cargo_and_planning_keeps_original_words(self):
+        for title in ('한국 유조선 19척 우회 운송…수에즈 경유 귀항',
+                      '한국 유조선, 호르무즈 우회 운항 검토',
+                      'Tankers reroute around the blockade'):
+            row=article(title)
+            with self.subTest(title=title),patch.object(integrity.body_parallel,'_safe_enrich'):
+                self.assertEqual(integrity.non_military_kind(row),'maritime_routing')
+                text=integrity.build_alert([row],[],NOW)
+                self.assertIn(html.escape(title),text)
+                self.assertNotIn('원유·연료 운송',text)
+                self.assertNotIn('확전',row['tags'])
+
+    def test_tanker_route_preserves_attacks_and_existing_explicit_oil_shipping(self):
+        for title in ('한국 유조선 우회 운송…미사일 발사',
+                      '호르무즈 한국 유조선 피격…수에즈 우회 운항'):
+            with self.subTest(title=title):self.assertNotEqual(integrity.non_military_kind(article(title)),'maritime_routing')
+        row=article('호르무즈 봉쇄 속 한국 유조선 18척 원유 운송')
+        self.assertEqual(integrity.non_military_kind(row),'maritime_shipping')
+
+    def test_tanker_route_saved_full_gate_rejects_old_same_hash_escalation_tag(self):
+        fixture,now=self.tanker_route_fixture();before=watch.STATE.read_bytes()
+        rows=copy.deepcopy(fixture['articles'])
+        with patch.object(integrity.body_parallel,'_safe_enrich'),patch.object(watch,'market_source_status',fixture['market_source_status'],create=True):
+            text=integrity.build_alert(rows,fixture['markets'],now);shown=[x for x in rows if x['link']in html.unescape(text)]
+            self.assertEqual([x['classification_color']for x in shown],['yellow','yellow','red','yellow'])
+            self.assertIn('19척 우회 운송',text);self.assertIn('한국·호르무즈·수에즈',text)
+            receipt=evidence.alert_receipt(rows,fixture['markets'],now,text)
+            with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+                for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+                watch.ALERT.write_text(text,encoding='utf-8');watch.PENDING.write_text(json.dumps({'ids':[x['id']for x in shown]}),encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8');integrity.verify_alert()
+        wrong=fixture['dryrun_alert'].strip();receipt=evidence.alert_receipt(fixture['articles'],fixture['markets'],now,wrong)
+        self.assertEqual(receipt['alert_sha256'],fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+            watch.ALERT.write_text(wrong,encoding='utf-8');watch.PENDING.write_text(json.dumps({'ids':[x['id']for x in fixture['articles']if x['rendered']]}),encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(),before)
+
     def test_market_claim_actual_bourse_reaction_is_not_a_new_operation(self):
         fixture, _ = self.market_claim_fixture(); row = fixture['articles'][0]
         self.assertEqual(integrity.non_military_kind(row), 'market_reaction')
