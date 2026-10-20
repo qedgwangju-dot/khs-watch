@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-10-20T21:17:43+09:00",
+  "updated_at_kst": "2026-10-21T02:15:22+09:00",
   "policy_rate": 1.0,
   "statement_url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260731a.pdf",
   "opinion_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi260918.pdf",
@@ -22,12 +22,12 @@
     "jgb40": 4.04
   },
   "usdjpy": {
-    "date": "2026-10-20T12:17:43Z",
-    "value": 158.0970001220703,
-    "change_pct": -0.10046796667587461,
+    "date": "2026-10-20T17:15:21Z",
+    "value": 158.1959991455078,
+    "change_pct": -0.20124293938675483,
     "source": "Yahoo query1/query2 5분 데이터 교차확인",
     "signal_eligible": true,
-    "age_seconds": 1.743014
+    "age_seconds": 2.334626
   },
   "auctions": {
     "20": {
