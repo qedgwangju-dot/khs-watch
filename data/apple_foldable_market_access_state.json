@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "initial_alert_sent": true,
+  "baseline_as_of": "2026-10-20",
+  "metrics": {
+    "fold8_demand_change_pct": 16,
+    "fold8_demand_context": "Forbes 삼성 경영진 인터뷰·출시 이후 고객수요·절대판매대수 미공개",
+    "samsung_foldable_google_search_change_pct": 300,
+    "samsung_search_context": "최근 한 달 구글 검색 관심도·판매대수 아님",
+    "fold8_korea_sales_wow_pct": 10,
+    "fold8_korea_context": "9월 17일 국내 전주 대비 판매 보도",
+    "idc_2026_foldable_m": 22.9,
+    "idc_2026_foldable_yoy_pct": 12.6,
+    "trendforce_2026_foldable_m": 20.2,
+    "trendforce_2026_foldable_yoy_pct": 0.5,
+    "official_launch_date": "2026-10-23"
+  },
+  "access": {
+    "한국": "reservation_only",
+    "일본": "reported_not_live_verified"
+  },
+  "seen_ids": [
+    "0503f19684da6e1a29db1f68",
+    "1a229c0121d930f3636219cd",
+    "200a69139a759a00ea6d5b01",
+    "239c74344599d3f710d87543",
+    "2d7834c7ad00713bf3464e9f",
+    "334b6bbdc067201926a3905d",
+    "38d3b113dee567f47c7f7848",
+    "47189af86ca9873b3ab2a116",
+    "5cdf82875f0e28d0a8611698",
+    "73e4280b6044f060b5971c48",
+    "7c24760a3ff555030ec1bb7e",
+    "832e115aeb59d933153b355a",
+    "884d94c35ae7cac02e562d78",
+    "8cd964dafeac3c998b6dae7b",
+    "8fc76763d142806f3c3b7a7f",
+    "9c9a1ad70b7490fc9b1be61b",
+    "ad10e49e6d3154a6f6b0dc31",
+    "c2b7ece0bc1780dbae309175",
+    "c80ed3226a195b4cb4cf920e",
+    "cb9ddf14e34344b422fe8b9b",
+    "d88cada94ecf9eebaf5271be",
+    "dbf76c48e4a58b2ed56cb09b",
+    "e1d059b1cd21de869be1e686",
+    "eca870c9dc7dfc379642fe87",
+    "f0ececd446c50a9a13eac47e",
+    "f766bd8768f7b29388b6d887",
+    "f7fb5c6024602e5b3539f0ab",
+    "f8d50cbc05eead2a4561dbfc"
+  ],
+  "last_alert": {
+    "at_kst": "2026-10-20T21:39:24+09:00",
+    "count": 1
+  },
+  "updated_at_kst": "2026-10-20T21:39:24+09:00",
+  "last_scan_items": 28,
+  "last_new_signal_count": 1,
+  "last_official": {
+    "한국": "확인",
+    "일본": "확인 불가"
+  },
+  "errors": []
+}
