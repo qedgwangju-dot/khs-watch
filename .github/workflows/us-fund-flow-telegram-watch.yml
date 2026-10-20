@@ -9,6 +9,10 @@ on:
       - "scripts/us_positioning_options_sox_watch.py"
   schedule:
     - cron: "17 12,15,18,21 * * 1-5"
+  pull_request:
+    paths:
+      - "scripts/us_fund_flow_watch.py"
+      - ".github/workflows/us-fund-flow-telegram-watch.yml"
   workflow_dispatch:
     inputs:
       force_send:
@@ -29,7 +33,74 @@ concurrency:
   queue: max
 
 jobs:
+  offline-regressions:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile and test proprietary-report gate offline without secrets or Telegram
+        run: |
+          python -m py_compile scripts/us_fund_flow_watch.py
+          python - <<'PY'
+          import ast, re
+          from datetime import date, datetime
+          from email.utils import parsedate_to_datetime
+          from zoneinfo import ZoneInfo
+          from pathlib import Path
+          tree=ast.parse(Path("scripts/us_fund_flow_watch.py").read_text(encoding="utf-8"))
+          functions=[x for x in tree.body if isinstance(x,ast.FunctionDef) and x.name in
+                     ("goldman_prime_public_article","parse_goldman_prime_public")]
+          assert len(functions)==2, "Goldman functions missing"
+          a=ast.Module(body=functions,type_ignores=[])
+          ast.fix_missing_locations(a)
+          class FixedClock:
+              @staticmethod
+              def now(tz):
+                  return datetime(2026,10,20,tzinfo=tz)
+          investing=("Goldman Sachs prime desk found hedge funds cut technology stock positions "
+                     "in five trading sessions through Oct. 15. Net allocation to the sector stands "
+                     "at 23.5% of the global prime book. Their net leverage fell to a one-year low of 48.6%.")
+          hedgeweek=("Goldman Sachs prime brokerage hedge funds reduced technology sector positions "
+                     "during the five trading sessions to 15 October. The sector accounts for 23.5% "
+                     "of Goldman's global prime brokerage book. Net leverage fell to a one-year low of 48.6%.")
+          evidence={"investing.com":investing,"hedgeweek.com":hedgeweek}
+          def extract(u):
+              for k,v in evidence.items():
+                  if k in u:return u,v
+              return u,""
+          scope=dict(re=re,date=date,datetime=FixedClock,ZoneInfo=ZoneInfo,
+                     parsedate_to_datetime=parsedate_to_datetime,
+                     GOLDMAN_PRIME_SEARCH="Goldman Sachs prime broker",
+                     news_items=lambda q:[],extract_article_body=extract)
+          exec(compile(a,"scripts/us_fund_flow_watch.py","exec"),scope)
+          parse=scope["goldman_prime_public_article"]
+          assert parse(investing,date(2026,10,19))==(date(2026,10,15),23.5,48.6)
+          assert parse(hedgeweek,date(2026,10,20))==(date(2026,10,15),23.5,48.6)
+          assert parse(investing.replace("Oct. 15","Oct. 22"),date(2026,10,19)) is None
+          assert parse(investing.replace("prime desk","equity desk").replace("prime book","equity book"),date(2026,10,19)) is None
+          assert parse(investing.replace("five trading sessions through Oct. 15","last week"),
+                       date(2026,10,19)) is None
+          result=scope["parse_goldman_prime_public"]()
+          assert result is not None and result["kind"]=="goldman_prime"
+          assert result["reference_week"]=="2026-10-15" and result["metrics"]=={
+              "tech_net_allocation_pct":23.5,"net_leverage_pct":48.6}
+          evidence["hedgeweek.com"]=hedgeweek.replace("48.6%","47.6%")
+          assert scope["parse_goldman_prime_public"]() is None, "Divergent publishers must withhold alert"
+          evidence["hedgeweek.com"]=hedgeweek.replace("five trading sessions to 15 October","last week")
+          assert scope["parse_goldman_prime_public"]() is None, "Unverifiable observation date must withhold"
+          print("goldman_prime_regressions=passed synthetic_two_publisher_gate=true")
+          PY
+
   watch:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
