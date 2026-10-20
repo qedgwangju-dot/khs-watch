@@ -242,7 +242,7 @@ def build_alert(now: dt.datetime, cur: float, high: float, dd: float,
                   f"• 가격 안전망만 발동 — 정확한 사건구간 현물·선물·프로그램이 모두 확보되지 않아 원인 주체 확정 보류{': ' + html.escape(attribution_error) if attribution_error else ''}"]
     lines += ["", "<b>읽는 법</b>",
               "• <b>급락구간 변화량</b>이 원인 판정의 우선 기준입니다. 하루 누적 순매수만 보고 '누가 밀었다'고 단정하지 않습니다.",
-              "• 외국인·기관·개인의 현물 매도와 KOSPI200·선물 동조, 프로그램 매도까지 겹칠수록 원인 확신도를 높입니다.",
+              "• 외국인·기관·개인의 현물·선물 동조를 비교하며 투신은 기관 내 별도 관측합니다. 프로그램은 특정 주체에게 귀속하지 않습니다.",
               "• 수급은 원인 후보이며 뉴스·대형주 급락과 함께 교차 확인합니다.", "",
               f'• <a href="{KOSPI_URL}">KOSPI 확인</a>']
     return "\n".join(lines)

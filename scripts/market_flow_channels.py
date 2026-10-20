@@ -13,6 +13,8 @@ import threading
 import time
 from zoneinfo import ZoneInfo
 
+from market_investors import PRIMARY_ACTORS
+
 KST = ZoneInfo("Asia/Seoul")
 MARKET_SPECS = {
     "KOSPI": {"spot_market": "1", "upcode": "001", "asset": "K2I",
@@ -140,11 +142,23 @@ def parse_futures(body: dict, market: str, received_ts: float) -> dict:
     ts, row, values = max(valid, key=lambda item: item[0])
     if any(v is None for v in values.values()):
         raise ValueError("t8463 latest row missing investor amount")
+    # inv is the institutional subgroup, not an additional reconciliation
+    # bucket. An absent/mismatched subgroup must not invalidate its parent.
+    trust_amount = number(row.get("invmsamt"))
+    trust_volume = number(row.get("invmsvol"))
+    trust_valid = (str(summary.get("invcode") or "").strip() == "0003"
+                   and trust_amount is not None and trust_volume is not None
+                   and trust_volume.is_integer())
+    values["투신"] = trust_amount if trust_valid else None
     result = {"market": market, "asset": spec["asset"], "source_tr": "t8463",
             "source_scope_verified": True, "sample_ts": ts, "received_ts": received_ts,
             "timestamp_basis": "provider_date_time", "time": row["time"], "date": row["date"],
             "unit": "LS_raw_amount", "unit_verified": False,
             "request": futures_request(market), "summary": summary, "source_row": row,
+            "actor_quality": {"투신": {"verified": trust_valid, "parent": "기관",
+                "code": summary.get("invcode"), "amount_field": "invmsamt",
+                "volume_field": "invmsvol", "included_in_reconciliation": False,
+                "reason": None if trust_valid else "투신 코드0003·금액·수량 확인 부족"}},
             "decoded_response_json_sha256": decoded_hash(body), **values}
     if market == "KOSDAQ":
         result["investor_quality"] = futures_investor_quality(summary, row)
@@ -201,7 +215,7 @@ def block_scope_matches(block: dict, market: str, channel: str) -> bool:
                 and block.get("source_scope_verified") is True
                 and (market != "KOSDAQ" or (
                     quality["verified"] and all(number(block.get(actor)) == quality["amounts"][actor]
-                                                for actor in ("외국인", "기관", "개인")))))
+                                                for actor in PRIMARY_ACTORS))))
     if channel == "프로그램" and market == "KOSDAQ":
         return block.get("source_tr") == "t1640" and block.get("market") == market
     return True

@@ -56,7 +56,15 @@ def main(path: Path) -> int:
             issues = [key for key, ok in checks.items() if not ok]
             failed.extend(market + ":" + key for key in issues)
             evidence["markets"][market] = {"snapshot": snapshot, "checks": checks,
-                                            "health": watch.flow_snapshot_health(snapshot)}
+                                            "health": watch.flow_snapshot_health(snapshot),
+                "investment_trust": {
+                    "parent": "기관", "included_in_parent_reconciliation": False,
+                    "spot": (snapshot.get("현물") or {}).get("투신"),
+                    "spot_quality": ((snapshot.get("현물") or {}).get("actor_quality") or {}).get("투신"),
+                    "futures": (snapshot.get("지수선물") or {}).get("투신"),
+                    "futures_quality": ((snapshot.get("지수선물") or {}).get("actor_quality") or {}).get("투신"),
+                    "missing_fields_are_unverified_not_zero": True,
+                }}
         # A bounded readback exposes earlier dated rows for incident audits.
         # These later reads are not the HTTP responses used for a live message.
         try:

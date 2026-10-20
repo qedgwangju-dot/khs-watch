@@ -4,12 +4,14 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import math
 import os
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
 
 import requests
+from market_investors import LEADER_NOTE, trust_direction_lines
 
 KST = ZoneInfo("Asia/Seoul")
 BASE_URL = "https://openapi.ls-sec.co.kr:8080"
@@ -28,7 +30,8 @@ def fnum(v: Any) -> float | None:
     try:
         if v is None or str(v).strip() == "":
             return None
-        return float(str(v).replace(",", "").strip())
+        result = float(str(v).replace(",", "").strip())
+        return result if math.isfinite(result) else None
     except Exception:
         return None
 
@@ -298,10 +301,15 @@ def attribution_html_lines(data: dict[str, Any]) -> list[str]:
         if block.get("stale") or not block.get("base_time"):
             lines.append(f"• {label}: {window}분 변화량 확인 불가")
             continue
-        lines.append(f"• {label} {window}분: 외국인 <b>{fmt_eok(delta.get('외국인'))}</b> · 기관 <b>{fmt_eok(delta.get('기관계'))}</b> · 개인 <b>{fmt_eok(delta.get('개인'))}</b>")
+        lines.append(f"• {label} {window}분: 외국인 <b>{fmt_eok(delta.get('외국인'))}</b> · 기관 <b>{fmt_eok(delta.get('기관계'))}</b> · 개인 <b>{fmt_eok(delta.get('개인'))}</b> · 투신(기관 내) <b>{fmt_eok(delta.get('투신'))}</b>")
     lines += ["", "<b>하루 누적 수급 · 원인 판정과 분리</b>"]
     spot_cur = (data.get("kospi") or {}).get("current") or {}
-    lines.append(f"• KOSPI 누적: 외국인 {fmt_eok(spot_cur.get('외국인'))} · 기관 {fmt_eok(spot_cur.get('기관계'))} · 개인 {fmt_eok(spot_cur.get('개인'))}")
+    lines.append(f"• KOSPI 누적: 외국인 {fmt_eok(spot_cur.get('외국인'))} · 기관 {fmt_eok(spot_cur.get('기관계'))} · 개인 {fmt_eok(spot_cur.get('개인'))} · 투신(기관 내) {fmt_eok(spot_cur.get('투신'))}")
+    spot_block, fut_block = data.get('kospi') or {}, data.get('futures') or {}
+    spot_delta = spot_block.get('delta') if not spot_block.get('stale') and spot_block.get('base_time') else None
+    fut_delta = fut_block.get('delta') if not fut_block.get('stale') and fut_block.get('base_time') else None
+    lines.extend(trust_direction_lines(spot_delta, fut_delta or {}))
+    lines.append('• ' + LEADER_NOTE)
     lines += ["", "<b>수급 원인 판정</b>",
               f"• <b>{str(cls.get('verdict') or '판정 불가')}</b> · 확신도 {str(cls.get('confidence') or '낮음')}",
               f"• 프로그램: {str(cls.get('program_direction') or '확인 불가')}"]

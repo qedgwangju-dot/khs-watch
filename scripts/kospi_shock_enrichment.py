@@ -14,6 +14,15 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 import requests
+from market_investors import ALERT_ACTORS, PRIMARY_ACTORS, actor_label, trust_direction_lines
+
+
+def _spot_investor_lines(values: dict) -> list[str]:
+    shown = []
+    for actor in ALERT_ACTORS:
+        value = fnum(values.get(actor))
+        shown.append(actor_label(actor) + (f" {value:+,.0f}억원" if value is not None else " 확인 불가"))
+    return ["• 현물 구간 수급: " + " · ".join(shown), *trust_direction_lines(values)]
 
 KST = ZoneInfo("Asia/Seoul")
 BASE = "https://openapi.ls-sec.co.kr:8080"
@@ -777,7 +786,7 @@ def render_enrichment_summary(raw: dict[str, Any]) -> str:
         (fnum((raw.get("market_spot_deltas") or {}).get(actor)) or 0) < 0
         and any((fnum(item.get("delta")) or 0) < 0
                 for item in (by_actor.get(actor) or {}).get("rows", []))
-        for actor in ("외국인", "기관", "개인")
+        for actor in ALERT_ACTORS
     )
     has_etf = any((item.get("price") or {}).get("available") for item in etfs)
     if not (has_direct or industries or stocks or themes or has_etf or proxy):
@@ -795,6 +804,7 @@ def render_enrichment_summary(raw: dict[str, Any]) -> str:
             f"<code>{esc(event_time)} KST</code>",
             f"• 구간 <b>{start} → {low}</b>",
             market_line,
+            *_spot_investor_lines(raw.get("market_spot_deltas") or {}),
             "• 사건구간 업종·종목·테마·ETF 유효 자료 없음 — 순위·순매도액을 추정하지 않습니다.",
             ("• 원자료 조회 오류 있음 · GitHub Actions 아티팩트에 기록"
              if errors else "• 자료 시각 정렬·후보 검증 미충족 · GitHub Actions 아티팩트에 기록"),
@@ -806,6 +816,7 @@ def render_enrichment_summary(raw: dict[str, Any]) -> str:
             "🔎 <b>코스피 급락 · 수급·업종 정밀분해</b>",
             f"<code>{esc(event_time)} KST</code>",
             f"• 구간 <b>{start} → {low}</b> · 현물·프로그램 통합 / 선물 별도",
+            *_spot_investor_lines(raw.get("market_spot_deltas") or {}),
         ]
         spot = esc(market.get("spot_leader") or "확인 불가")
         fut = esc(market.get("futures_leader") or "확인 불가")
@@ -821,7 +832,7 @@ def render_enrichment_summary(raw: dict[str, Any]) -> str:
         lines.extend(["", "<b>① 현물 직접 업종</b> <i>(UBM 원값·30초 정렬)</i>"])
         any_direct = False
         spot_block = (raw.get("market_spot_deltas") or {})
-        for actor in ("외국인", "기관", "개인"):
+        for actor in ALERT_ACTORS:
             val = fnum(spot_block.get(actor))
             if val is None or val >= 0:
                 continue
@@ -830,7 +841,7 @@ def render_enrichment_summary(raw: dict[str, Any]) -> str:
             if not valid:
                 continue
             any_direct = True
-            prefix = f"• {esc(actor)} {val:+,.0f}억원 → "
+            prefix = f"• {esc(actor_label(actor))} {val:+,.0f}억원 → "
             entries = []
             for item in valid[:direct_limit]:
                 age1, age2 = fnum(item.get("start_gap_sec")), fnum(item.get("end_gap_sec"))
@@ -924,6 +935,7 @@ def render_enrichment_summary(raw: dict[str, Any]) -> str:
         f"<code>{esc(event_time)} KST</code>",
         f"• 구간 <b>{start} → {low}</b>",
         "• 시장 판정: " + esc(market.get("verdict") or "수급 정렬 부족·판정 보류"),
+        *_spot_investor_lines(raw.get("market_spot_deltas") or {}),
         "• 상세 표시는 Telegram 글자 수를 초과하여 생략했습니다. 검증 원자료는 기존 GitHub Actions 아티팩트에 저장합니다.",
     ]
     result = "\n".join(brief)
@@ -952,7 +964,7 @@ def build_enrichment(
     )
     spot_block = att.get("spot") or {}
     negative_spot_actors = []
-    for actor in ("외국인", "기관", "개인"):
+    for actor in ALERT_ACTORS:
         value = fnum(spot_block.get(actor))
         if value is not None and value < 0:
             negative_spot_actors.append((actor, value))
@@ -1198,6 +1210,7 @@ def render_kosdaq_enrichment(raw: dict[str,Any]) -> str:
         "🔎 <b>코스닥 급락 · 수급·업종 정밀분해</b>",
         f"<code>{esc(kst)} KST</code>",
         f"• 구간 {esc(event.get('start_kst') or '?')} → {esc(event.get('low_kst') or '?')}",
+        *_spot_investor_lines(delta),
     ]
     actor=event.get("spot_leader")
     if event.get("attribution_available") and actor:
@@ -1208,15 +1221,15 @@ def render_kosdaq_enrichment(raw: dict[str,Any]) -> str:
         line.append("• 현물 매도주체: 기준점 시간정렬 미충족 · 보류")
 
     matched=[]
-    for k in ("외국인","기관","개인"):
+    for k in ALERT_ACTORS:
         amt=fnum(delta.get(k))
         block=direct.get(k) or {}
         cand=[x for x in block.get("rows",[]) if (fnum(x.get("delta")) or 0)<0]
         if amt is not None and amt < 0 and cand:
             for x in cand[:1]:
-                matched.append(f"{esc(k)} {amt:+,.0f}억원 → {esc(x.get('name') or '?')} {_fmt_program(x.get('delta'))}")
+                matched.append(f"{esc(actor_label(k))} {amt:+,.0f}억원 → {esc(x.get('name') or '?')} {_fmt_program(x.get('delta'))}")
     line.extend(["","<b>① 현물 직접 업종</b> <i>(코스닥 3xx UBM 원값)</i>"])
-    line.extend(f"• {x}" for x in matched[:3])
+    line.extend(f"• {x}" for x in matched[:len(ALERT_ACTORS)])
     if not matched:
         line.append("• 정렬된 코스닥 업종별 수급 없음 · 직접 판정 보류")
     line.extend(["","<b>② 하락 업종</b> <i>(등락 / 후보 프로그램 원값)</i>"])
@@ -1275,7 +1288,7 @@ def build_kosdaq_enrichment(
     errors=[]
     spot_available = bool((att.get("channel_status") or {}).get("spot", {}).get("available", att.get("available")))
     spot=dict(att.get("spot") or {}) if spot_available else {}
-    neg=[(k,fnum(spot.get(k))) for k in ("외국인","기관","개인")]
+    neg=[(k,fnum(spot.get(k))) for k in ALERT_ACTORS]
     neg=[(k,v) for k,v in neg if v is not None and v<0]
     neg.sort(key=lambda x:x[1])
     direct={
@@ -1370,7 +1383,7 @@ def build_kosdaq_enrichment(
         "event":{
             "market":"KOSDAQ","start_ts":start_ts,"low_ts":low_ts,
             "start_kst":fmt_clock(start_ts),"low_kst":fmt_clock(low_ts),
-            "spot_leader":att.get("leader") or (min(neg,key=lambda x:x[1])[0] if neg else None),
+            "spot_leader":att.get("leader") or min((x for x in neg if x[0] in PRIMARY_ACTORS), key=lambda x:x[1], default=(None,None))[0],
             "attribution_available":spot_available,
             "market_attribution":att,
         },

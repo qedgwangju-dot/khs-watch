@@ -23,9 +23,10 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 from kospi_shock_enrichment import _display_name, _is_real_industry
+from market_investors import actor_label
 
 KST = ZoneInfo("Asia/Seoul")
-INVESTORS = {"개인": "0008", "외국인": "0017", "기관": "0018"}
+INVESTORS = {"개인": "0008", "외국인": "0017", "기관": "0018", "투신": "0003"}
 MAX_GAP_SEC = 30.0
 SOURCE = "LS UBM 통합 업종별투자자별매매현황"
 GUIDE_URL = "https://openapi.ls-sec.co.kr/apiservice?api_id=9a2800c3-9bf2-4d67-8d83-905074f06646"
@@ -98,7 +99,8 @@ def _native_history_context(block: dict[str, Any], records: list[dict[str, Any]]
     block["observed_industries"] = len(latest)
     block["expected_industries"] = len(expected) if expected is not None else None
     field, actor_code = {"개인": ("indmsamt", "indcode"), "외국인": ("formsamt", "forcode"),
-                         "기관": ("sysmsamt", "syscode")}[block["investor"]]
+                         "기관": ("sysmsamt", "syscode"),
+                         "투신": ("invmsamt", "invcode")}[block["investor"]]
     block["source_amount_field"] = field
     block["ranking_basis"] = "positive end_" + field + " - start_" + field
     exclusions: dict[str, int] = defaultdict(int)
@@ -406,7 +408,7 @@ def industry_context_lines(block: dict[str, Any] | None, investor: str,
     if not top:
         return [f"• 업종 순매수 증가 확인 보류 — {html.escape(str(block.get('reason') or '자료 부족'))}",
                 "• 업종 확인 범위: " + coverage]
-    lines = [f"• <b>{html.escape(investor)} 업종 순매수 증가 상위 {len(top)}개</b> (확인된 업종 기준)"]
+    lines = [f"• <b>{html.escape(actor_label(investor))} 업종 순매수 증가 상위 {len(top)}개</b> (확인된 업종 기준)"]
     for rank, row in enumerate(top, 1):
         lines.append(f"  {rank}. <b>{html.escape(row['name'])}</b> · 표본 {_time(row['start']['source_ts'])}~{_time(row['end']['source_ts'])}")
     lines += ["• 업종 확인 범위: " + coverage,

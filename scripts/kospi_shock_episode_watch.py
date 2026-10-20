@@ -33,6 +33,7 @@ from market_flow_channels import (
 )
 from market_program_close import collect as collect_program_close, render as render_program_close
 from market_alert_delivery import delivery_context, receipt_for, send_message
+from market_investors import ALERT_ACTORS, PRIMARY_ACTORS, LEADER_NOTE, TRUST_NOTE, actor_label, trust_direction_lines, trust_value
 
 KST = ZoneInfo("Asia/Seoul")
 BASE = "https://openapi.ls-sec.co.kr:8080"
@@ -337,8 +338,13 @@ def investor_current(token: str, market: str, upcode: str, exchgubun: str = "K",
             "source_tr": "t1602", "request_market": market, "upcode": upcode,
             "exchgubun": exchgubun, "returned_ex_upcode": ex_upcode,
             "timestamp_basis": "provider_time", "received_ts": fetched_ts,
+            "source_row": row,
             "개인": fnum(row.get("sv_08")),
-            "외국인": fnum(row.get("sv_17")), "기관": fnum(row.get("sv_18"))}
+            "외국인": fnum(row.get("sv_17")), "기관": fnum(row.get("sv_18")),
+            "투신": fnum(row.get("sv_03")),
+            "actor_quality": {"투신": {"parent": "기관", "amount_field": "sv_03",
+                "verified": fnum(row.get("sv_03")) is not None,
+                "reason": None if fnum(row.get("sv_03")) is not None else "투신 원값sv_03 미제공"}}}
 
 
 def program_current(token: str, market: str = "KOSPI") -> dict[str, Any]:
@@ -557,8 +563,9 @@ def backfill_index_bars(token: str, max_rows: int = 500, upcode: str = "001") ->
 
 def _actor_delta(start: dict[str, Any] | None, end: dict[str, Any] | None) -> dict[str, float | None]:
     out: dict[str, float | None] = {}
-    for actor in ("외국인", "기관", "개인"):
-        a = fnum((start or {}).get(actor)); b = fnum((end or {}).get(actor))
+    for actor in ALERT_ACTORS:
+        a = trust_value(start) if actor == '투신' else fnum((start or {}).get(actor))
+        b = trust_value(end) if actor == '투신' else fnum((end or {}).get(actor))
         out[actor] = (b - a) if a is not None and b is not None else None
     return out
 
@@ -632,11 +639,12 @@ def market_attribution_lines(att: dict[str, Any], market: str, final: bool = Fal
                                    ("futures", MARKET_SPECS[market]["futures_label"], future_fmt)):
         values = att.get(name)
         if values is not None:
-            shown = " · ".join(f"{actor} <b>{formatter(values.get(actor))}</b>"
-                               for actor in ("외국인", "기관", "개인"))
+            shown = " · ".join(f"{actor_label(actor)} <b>{formatter(values.get(actor))}</b>"
+                               for actor in ALERT_ACTORS)
             suffix = " <i>(LS 순매수금액 원값·환산 단위 미확인)</i>" if formatter is fmt_raw else ""
             lines.append(f"• {label}: {shown}{suffix}")
-            sellers = [(a, v) for a, v in values.items() if v is not None and v < 0]
+            sellers = [(a, values.get(a)) for a in PRIMARY_ACTORS
+                       if values.get(a) is not None and values[a] < 0]
             leader, value = min(sellers, key=lambda item: item[1]) if sellers else ("없음", None)
             if name == "futures" and market == "KOSDAQ" and not sellers:
                 leader = "외국인·기관·개인 중 없음"
@@ -650,6 +658,8 @@ def market_attribution_lines(att: dict[str, Any], market: str, final: bool = Fal
         lines.append(f"• 현물·선물 동시매도: <b>{html.escape(cross)}</b>")
     else:
         lines.append("• 현물·선물 동시매도: 판정 보류")
+    lines.extend(trust_direction_lines(att.get("spot"), att.get("futures") or {}))
+    lines.append("• " + LEADER_NOTE)
     p = att.get("program") or {}
     pgm_ok = (statuses.get("program") or {}).get("available", att.get("available"))
     if pgm_ok and p.get("전체") is not None:
@@ -798,7 +808,7 @@ def flow_surge_candidates(
         return []
     program = _flow_surge_program(rows, now_ts, session_open_ts)
     result = []
-    for actor in ("외국인", "기관", "개인"):
+    for actor in ALERT_ACTORS:
         ds = fnum((spot or {}).get("deltas", {}).get(actor))
         df = fnum((fut or {}).get("deltas", {}).get(actor))
         # 현물과 선물 표본 종료시점이 서로 멀면 하나의 동시 유입으로 합치지 않는다.
@@ -1206,7 +1216,8 @@ class Watch:
         )
         pgm = _program_delta(pgm_a[0], pgm_b[0]) if pgm_aligned else {"전체": None, "차익": None, "비차익": None, "베이시스": None}
         def dominant_seller(block: dict[str, float | None]) -> tuple[str | None, float | None]:
-            sellers = [(actor, val) for actor, val in block.items() if val is not None and float(val) < 0]
+            sellers = [(actor, block.get(actor)) for actor in PRIMARY_ACTORS
+                       if block.get(actor) is not None and float(block[actor]) < 0]
             return min(sellers, key=lambda x: float(x[1])) if sellers else (None, None)
 
         spot_leader, spot_leader_val = dominant_seller(spot)
@@ -1789,7 +1800,7 @@ class Watch:
         lines = [
             f"⚡ <b>{name} 단기 순매수 급증</b>",
             f"<code>{dt.datetime.fromtimestamp(now_ts, KST):%Y-%m-%d %H:%M:%S} KST</code>",
-            f"• <b>{html.escape(actor)}</b> · {html.escape(mode)} · 최근 5분",
+            f"• <b>{html.escape(actor_label(actor))}</b> · {html.escape(mode)} · 최근 5분",
             f"• 실제 수급 표본: {' / '.join(windows) if windows else '확인 불가'}",
             f"• {name} 현물(통합) <b>{fmt_eok(spot)}</b>",
         ]
@@ -1803,6 +1814,7 @@ class Watch:
         ]
         lines.extend(extra_lines or [])
         lines += [
+            "• " + TRUST_NOTE,
             f"• 감지 기준: {html.escape(threshold)} · 두 차례 연속 확인",
             "• 당일 누적 순매수의 5분 변화량입니다. 총거래대금·외부 신규자금 유입·주가 상승 확정값이 아닙니다.",
             "• " + " · ".join([link(KOSPI_URL if market == "KOSPI" else KOSDAQ_URL, market),
@@ -1856,7 +1868,7 @@ class Watch:
         pair = _flow_surge_channel_pair(list(self.kosdaq_flows), "현물", now_ts, start)
         candidates = {}
         if pair is not None:
-            for actor in ("외국인", "기관", "개인"):
+            for actor in ALERT_ACTORS:
                 delta = fnum((pair.get("deltas") or {}).get(actor))
                 if delta is not None and delta >= KOSDAQ_SURGE_SINGLE_SPOT_EOK:
                     candidates[actor] = delta
@@ -2329,7 +2341,7 @@ class Watch:
             self.surge_last_processed_ts = fnum(data.get("surge_last_processed_ts")) or 0.0
             self.surge_sent_at = {
                 str(k): float(v) for k, v in (data.get("surge_sent_at") or {}).items()
-                if str(k) in {"외국인", "기관", "개인"} and fnum(v) is not None
+                if str(k) in ALERT_ACTORS and fnum(v) is not None
             }
             self.surge_pending = {
                 str(k): {"sample_ts": float(v["sample_ts"]), "seen_at": float(v["seen_at"]),
@@ -2338,7 +2350,7 @@ class Watch:
                                         (v.get("end_values") if isinstance(v.get("end_values"), dict) else {}).items()
                                         if channel in {"spot", "futures"} and fnum(value) is not None}}
                 for k, v in (data.get("surge_pending") or {}).items()
-                if str(k) in {"외국인", "기관", "개인"} and isinstance(v, dict)
+                if str(k) in ALERT_ACTORS and isinstance(v, dict)
                 and fnum(v.get("sample_ts")) is not None and fnum(v.get("seen_at")) is not None
             }
             # 기존 KOSPI handoff 형식도 정상 복원하고 코스닥은 독립 보관한다.
@@ -2348,14 +2360,14 @@ class Watch:
             self.kosdaq_surge_last_processed_ts = fnum(data.get("kosdaq_surge_last_processed_ts")) or 0.0
             self.kosdaq_surge_sent_at = {
                 str(k): float(v) for k,v in (data.get("kosdaq_surge_sent_at") or {}).items()
-                if str(k) in {"외국인","기관","개인"} and fnum(v) is not None
+                if str(k) in ALERT_ACTORS and fnum(v) is not None
             }
             self.kosdaq_surge_pending = {
                 str(k): {"sample_ts": float(v["sample_ts"]), "seen_at": float(v["seen_at"]),
                          "end_value": float(v["end_value"]),
                          "end_values": {"spot": float(v["end_value"])}}
                 for k,v in (data.get("kosdaq_surge_pending") or {}).items()
-                if str(k) in {"외국인","기관","개인"} and isinstance(v,dict)
+                if str(k) in ALERT_ACTORS and isinstance(v,dict)
                 and fnum(v.get("sample_ts")) is not None and fnum(v.get("seen_at")) is not None
                 and fnum(v.get("end_value")) is not None
             }
