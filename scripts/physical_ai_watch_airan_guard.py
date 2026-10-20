@@ -1195,6 +1195,58 @@ def _catl_intilion_recovery() -> list[dict]:
     }]
 
 
+# Message 246 was sent as "new" on 2026-10-20 but the 16:34
+# iNews24 article only recaps CATL-INTILION's Oct-9 5-year up-to-3GWh
+# project-development target, already notified in message 218. The RSS
+# headline omitted INTILION, defeating the original project dedup key.
+CATL_INTILION_OCT20_REPRINT = re.compile(
+    r'CATL.{0,55}나트륨\s*배터리.{0,80}유럽\s*ESS.{0,80}저온.{0,35}장수명',
+    re.I,
+)
+ALERT246_CORRECTION_ID = 'DIRECT_ROBOTIS_246_CATL_INTILION_REPEAT_20261020'
+ALERT246_CORRECTION_TITLE = '정정: Telegram 246 CATL 유럽 나트륨 ESS 재보도 신규 알림 제외'
+
+
+def _catl_intilion_oct20_reprint(item: dict) -> bool:
+    return bool(
+        CATL_INTILION_OCT20_REPRINT.search(item.get('title') or '')
+        and item.get('source') not in CATL_INTILION_OFFICIAL
+    )
+
+
+def _alert246_correction_recovery() -> list[dict]:
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026, 10, 25):
+        return []
+    return [{
+        'title': ALERT246_CORRECTION_TITLE,
+        'link': 'https://www.inews24.com/view/2016628',
+        'description': (
+            '기존 Telegram 246번 1번 (2026-10-20 17:08 KST) '
+            '아이뉴스24의 CATL 유럽 ESS 저온·장수명 기사를 '
+            '신규 고신호로 보낸 것은 중복 판정 오류다. 해당 기사는 '
+            '10/09 INTILION CEO 발표·10/13 pv magazine 보도의 '
+            'CATL–INTILION 5년 최대 3GWh 나트륨이온 프로젝트 개발 '
+            '목표를 10/20에 재보도한 것으로, 신규 고객 구매계약·'
+            '셀 출하·설치 완료·매출 인식은 새롭게 확인되지 않는다. '
+            '기존 Telegram 218번 2번 CATL–INTILION 협력 알림은 '
+            '유효하나 신규 246번은 제외한다. '
+            '3GWh=300만kWh는 개발 목표이지 확정 납품량이 아니고 '
+            '기존 2025년 10GWh 협력과 중복될 가능성이 있어 '
+            '단순 합산하지 않는다. 이번 중복 원인은 기사 제목에 '
+            'INTILION 고객명이 빠져 기존 사건 식별을 우회한 것이다. '
+            '해당 제목은 10/09 알려진 협력으로 분류·중복 제외하고 '
+            '향후 당사자 공식 프로젝트 실명·확정 발주·현장 준공·'
+            '실제 출하가 확인될 때만 별도 알림한다. '
+            '동일 실행에서 검증한 2027~2029 전고체·나트륨 '
+            '증권사 로드맵은 전망표로서 신규 양산이나 고객계약이 아니다.'
+        ),
+        'source': '기존 GitHub Actions 실제 검증',
+        'published': None,
+        'direct_recovery': True,
+        'quality_correction_246': True,
+    }]
+
+
 # Dexmate CEO interview: distinguish a use/distribution statement and
 # vendor-reported hundred-unit global deployments from a signed LG CNS
 # sales contract or measured 99.99%-task success.
@@ -2778,6 +2830,8 @@ _orig_query_news = base.query_news
 
 
 def query_news(q: str) -> list[dict]:
+    if q == ALERT246_CORRECTION_ID:
+        return _alert246_correction_recovery()
     if q == ALERT238_CORRECTION_ID:
         return _alert238_correction()
     if q == BESS_SEP26_RECOVERY:
@@ -2820,6 +2874,8 @@ def query_news(q: str) -> list[dict]:
 
 
 base.query_news = query_news
+if ALERT246_CORRECTION_ID not in base.QUERIES:
+    base.QUERIES.append(ALERT246_CORRECTION_ID)
 if ALERT238_CORRECTION_ID not in base.QUERIES:
     base.QUERIES.append(ALERT238_CORRECTION_ID)
 if BESS_SEP26_RECOVERY not in base.QUERIES:
@@ -3056,6 +3112,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if ALERT246_CORRECTION_TITLE in text:
+        return 'alert_quality_246'
     if '정정: Telegram 238번 1번' in text:
         return 'alert_quality_238'
     if _is_bess_bmi_actual(text):
@@ -3123,6 +3181,10 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     item_text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if item.get('quality_correction_246'):
+        return 99 if topic_group(item_text) == 'alert_quality_246' else 0
+    if _catl_intilion_oct20_reprint(item):
+        return 0
     if item.get('quality_correction_238'):
         return 98 if topic_group(item_text) == 'alert_quality_238' else 0
     if _is_bess_bmi_actual(item_text):
@@ -3305,6 +3367,8 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'alert_quality_246':
+        return '알림 운영 정정 · CATL–INTILION 동일 프로젝트 중복 제외'
     if group == 'alert_quality_238':
         return '알림 품질 정정 · Telegram 238번 주가 반응 오탐'
     if group == 'global_bess_commissioned':
@@ -3465,6 +3529,8 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '알림 운영 정정 · CATL–INTILION 동일 프로젝트 중복 제외':
+        return ('Telegram 246은 10/09 공개된 CATL–INTILION 나트륨 ESS 최대 3GWh 협력의 10/20 재보도입니다. 새로운 계약·출하·설치로 알리지 않고 기존 218번 원사건을 유지합니다. 확정 발주·실제 사이트 운영 개시가 다음 알림 조건입니다.')
     if cat == '알림 품질 정정 · Telegram 238번 주가 반응 오탐':
         return (
             'Telegram message_id=238의 첫 번째 삼성SDI 주가 8%대 상승 기사는 '
@@ -3924,6 +3990,8 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat == '알림 운영 정정 · CATL–INTILION 동일 프로젝트 중복 제외':
+        return ('3GWh 개발 목표를 확정 구매·매출로 오인하거나 기존 10GWh 협력과 중복 합산하는 것이 핵심 위험입니다. 기사 제목의 고객명 누락 시 동일 사건 판정이 어려워지는 문제를 수정했습니다.')
     if cat == '알림 품질 정정 · Telegram 238번 주가 반응 오탐':
         return '주가 상승·테마 기사와 신규 계약·가동·매출을 섞으면 거짓 수혜가 발생합니다. 이후 첫 신규 수주·확정 실적 공시가 있을 때만 단계 상승으로 알립니다.'
     if cat.startswith('글로벌 계통용 BESS · '):
@@ -4130,6 +4198,8 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'alert_quality_246':
+        return '기존 Actions Run #693 실제 메시지 246 대조 · 10/09 INTILION 1차 발언과 10/13 pv magazine · 10/20 아이뉴스24 동일 사건 교차확인'
     if group == 'alert_quality_238':
         return (
             'GitHub Run #664 실제 출력 아티팩트와 Telegram API message_id=238 '
@@ -4317,6 +4387,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if title.startswith(ALERT246_CORRECTION_TITLE):
+        return ALERT246_CORRECTION_TITLE
     if title.startswith('정정: Telegram 238번 1번'):
         return '정정: Telegram 238번 삼성SDI 주가 반응 오탐 제외'
     if _is_bess_bmi_actual(title+' '+source):
@@ -4507,6 +4579,10 @@ def tag_for(group: str) -> str:
 
 
 def key(item: dict) -> str:
+    if item.get('quality_correction_246'):
+        return hashlib.sha256(b'physical-ai|telegram-246|catl-intilion|duplicate-correction').hexdigest()
+    if _catl_intilion_oct20_reprint(item):
+        return hashlib.sha256(b'catl-intilion|sodium|dach|20261009|3gwh-target|five-years').hexdigest()
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     if topic_group(text) == 'alert_quality_238':
         return hashlib.sha256(
@@ -4720,6 +4796,9 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    correction246 = next((x for x in candidates if x.get('group') == 'alert_quality_246'), None)
+    if correction246 and not any(x.get('key') == correction246.get('key') for x in chosen):
+        chosen = ([correction246, *chosen] if len(chosen)<limit else [correction246, *chosen[:-1]])
     correction238 = next((x for x in candidates if x.get('group') == 'alert_quality_238'), None)
     if correction238 and not any(x.get('key') == correction238.get('key') for x in chosen):
         chosen = ([correction238,*chosen] if len(chosen)<limit else [correction238,*chosen[:-1]])
