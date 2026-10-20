@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-10-09T18:58:06+09:00",
-  "last_checked_kst": "2026-10-20T15:09:29+09:00",
+  "last_checked_kst": "2026-10-20T16:02:56+09:00",
   "seen": {
     "43cceaed20a8c7450e6ef644": {
       "title": "[단독] LG전자 “우리도 반도체 개발합니다”…보쉬와 손잡고 ‘차량 칩렛’ 도전 - 매일경제",
@@ -22,6 +22,16 @@
       "published_kst": "2026-10-09T17:10+09:00",
       "first_seen_kst": "2026-10-12T04:34:05+09:00",
       "suppressed_stale": true
+    },
+    "2c375e0125fe8c367c361779": {
+      "title": "보스반도체, LG전자·하나마이크론과 '차량용 칩렛 반도체' 국산화 맞손 - 지디넷코리아",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9NaGxqNDJsUWtZQW4wQzlEN0o2YmFDQmZrczJaZ2RCUDAzenVWX0VTMEhlaUh3cjlaSnc5QzdzSnliMUwxd3lWdC1aa0Z0VmZnRkFVVGdn?oc=5",
+      "source": "지디넷코리아",
+      "event_id": "lg_bos_hana|research_update",
+      "stage": 1,
+      "published_kst": "2026-10-20T15:16+09:00",
+      "first_seen_kst": "2026-10-20T16:02:56+09:00",
+      "alerted": true
     }
   },
   "events": {
@@ -40,6 +50,14 @@
       "status": "언론보도: 보쉬 적용 논의, 공급계약 아님",
       "registered_kst": "2026-10-09T18:58:06+09:00",
       "baseline": true
+    },
+    "lg_bos_hana|research_update": {
+      "title": "보스반도체, LG전자·하나마이크론과 '차량용 칩렛 반도체' 국산화 맞손 - 지디넷코리아",
+      "stage": 1,
+      "source_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9NaGxqNDJsUWtZQW4wQzlEN0o2YmFDQmZrczJaZ2RCUDAzenVWX0VTMEhlaUh3cjlaSnc5QzdzSnliMUwxd3lWdC1aa0Z0VmZnRkFVVGdn?oc=5",
+      "registered_kst": "2026-10-20T16:02:56+09:00",
+      "quality": "신뢰 언론 보도",
+      "alerted": true
     }
   }
 }
