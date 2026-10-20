@@ -258,6 +258,13 @@ def _insert_after_core(block: str, value_block: str) -> str:
 
 
 def _skip_quantity_enrichment(block: str) -> bool:
+    # Section 45X statutory phase-out years and illustrative GWh are not
+    # confirmed manufactured / sold device counts. A policy alert must not
+    # receive a fabricated "confirmed 1 unit" or per-robot price table.
+    if '미국 45X 제조세액공제' in block or (
+        '45X' in block and ('세액공제' in block or 'production credit' in block)
+    ):
+        return True
     # Governance agenda items, attendees and promotional robot displays
     # are not priced quantities of manufactured robots or shipped parts.
     if ("테슬라 2026 주주총회" in block
