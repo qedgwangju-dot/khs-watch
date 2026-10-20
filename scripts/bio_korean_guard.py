@@ -15,7 +15,7 @@ ALLOWED_IDENTIFIERS = (
     'KEYTRUDA', 'QLEX', 'ALT-B4', 'Hybrozyme', 'GSK', 'Merck', 'Moderna', 'MRK',
     'AstraZeneca', 'Daiichi Sankyo', 'Tesaro', 'FDA', 'EMA', 'EU', 'EC', 'PDUFA',
     'CHMP', 'Project Orbis', 'ClinicalTrials.gov', 'DESTINY-Breast09', 'DESTINY-Breast05',
-    'AZUR-1', 'AZUR-2', 'AZUR-4', 'DOMENICA', 'JADE', 'INTerpath-001', 'INTerpath-014',
+    'AZUR-1', 'AZUR-2', 'AZUR-4', 'DOMENICA', 'JADE', 'SAPPHIRE', 'INTerpath-001', 'INTerpath-014',
     'KEYNOTE-942', 'HER2', 'dMMR', 'MSI-H', 'sBLA', 'RFS', 'DMFS', 'OS', 'HR', 'PFS',
     'ORR', 'cCR12', 'mRNA', 'SC', 'IV', 'THP', 'WAC', 'QoQ', 'YoY', 'USD', 'KRW',
     'ESMO', 'Bing', 'Google',
