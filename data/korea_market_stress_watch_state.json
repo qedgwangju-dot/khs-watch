@@ -1,71 +1,71 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-10-20T21:18:08+09:00",
+  "updated_at_kst": "2026-10-20T22:00:31+09:00",
   "seen_event_keys": [
-    "foreign1d_neg:2026-09-02:postclose",
-    "foreign3d_neg:2026-09-17:final",
-    "foreign3d_pos:2026-09-08:final",
-    "fx_1350_down:2026-10-06",
-    "foreign3d_neg:2026-09-28:final",
-    "foreign1d_neg:2026-09-28:final",
-    "fx_1350_down:2026-09-11",
-    "foreign1d_neg:2026-09-11:final",
-    "foreign3d_neg:2026-08-27",
-    "fx_daily_down:2026-09-02",
-    "fx_daily_up_stage1:2026-09-23",
-    "policy_spread:2026-09-17:1.00",
-    "policy_spread:2026-08-27:0.75",
-    "kosdaq_foreign3d_neg:2026-09-14:final",
-    "foreign1d_neg:2026-08-31",
-    "fx_daily_up:2026-09-15",
-    "capex:8c316cbbe125ec4c",
+    "foreign3d_neg:2026-09-30:final",
     "foreign3d_neg:2026-09-02:postclose",
+    "foreign3d_neg:2026-09-11:final",
+    "foreign1d_neg:2026-09-17:final",
+    "foreign1d_neg:2026-09-11:final",
+    "kosdaq_foreign3d_neg:2026-09-14:final",
+    "foreign3d_pos:2026-09-08:final",
     "foreign1d_neg:2026-09-14:final",
+    "kosdaq_foreign1d_neg:2026-09-10:final",
+    "fx_daily_up_stage1:2026-09-17",
+    "kosdaq_foreign3d_neg:2026-09-11:final",
+    "fx_1350_down:2026-09-11",
+    "fx_daily_up:2026-09-15",
+    "foreign3d_neg:2026-09-14:final",
     "foreign3d_neg:2026-09-02:final",
     "foreign3d_neg:2026-10-16:final",
+    "foreign1d_neg:2026-09-28:final",
     "capex:c77504fb6c1cca66",
-    "fx_daily_up_stage1:2026-09-17",
-    "foreign1d_neg:2026-09-10:final",
+    "foreign3d_neg:2026-08-27",
     "ust10_up:2026-09-10",
-    "foreign1d_neg:2026-09-02:final",
-    "fx_daily_down_stage2:2026-09-22",
+    "fx_daily_down_stage1:2026-10-16",
+    "foreign1d_neg:2026-08-31",
+    "fx_daily_down_stage1:2026-09-22",
     "fx_1350_down:2026-09-07",
+    "fx_daily_down_stage2:2026-09-22",
+    "fx_1350_down:2026-09-04",
     "fx_daily_up:2026-09-17",
-    "kosdaq_foreign3d_neg:2026-09-11:final",
+    "foreign1d_neg:2026-09-10:final",
+    "foreign3d_neg:2026-09-17:final",
+    "policy_spread:2026-09-17:1.00",
+    "kosdaq_foreign1d_pos:2026-09-09:final",
+    "foreign3d_pos:2026-09-07:final",
+    "foreign1d_pos:2026-09-07:final",
+    "capex:8c316cbbe125ec4c",
+    "kosdaq_foreign1d_neg:2026-09-11:final",
+    "fx_daily_down:2026-09-02",
+    "capex:13cbe150930d23d8",
+    "foreign1d_neg:2026-09-02:postclose",
+    "foreign1d_neg:2026-10-06:final",
+    "fx_1350_down:2026-10-06",
+    "foreign3d_neg:2026-09-28:final",
+    "foreign1d_neg:2026-09-30:final",
+    "policy_spread:2026-08-27:0.75",
+    "foreign1d_neg:2026-09-02:final",
     "foreign3d_neg:2026-10-06:final",
     "foreign3d_neg:2026-09-18:final",
-    "fx_1350_down:2026-09-04",
+    "kosdaq_foreign3d_neg:2026-09-10:final",
+    "fx_daily_up_stage1:2026-09-23",
     "fx_1350_down:2026-10-02",
-    "kosdaq_foreign1d_neg:2026-09-10:final",
-    "capex:13cbe150930d23d8",
-    "foreign1d_neg:2026-10-06:final",
-    "foreign1d_neg:2026-09-30:final",
-    "foreign1d_neg:2026-09-17:final",
-    "foreign3d_neg:2026-09-14:final",
-    "fx_daily_down_stage1:2026-09-22",
-    "kosdaq_foreign1d_pos:2026-09-09:final",
-    "ust10_up:2026-09-23",
-    "foreign3d_neg:2026-09-30:final",
-    "foreign3d_neg:2026-09-11:final",
-    "foreign1d_pos:2026-09-07:final",
-    "kosdaq_foreign1d_neg:2026-09-11:final",
-    "fx_daily_down_stage1:2026-10-16",
-    "foreign3d_pos:2026-09-07:final",
-    "kosdaq_foreign3d_neg:2026-09-10:final"
+    "ust10_up:2026-09-23"
   ],
   "active_keys": [
     "fx_1350_down:2026-10-20"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-10-20T21:18:08+09:00",
+    "checked_at_kst": "2026-10-20T22:00:31+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-10-20",
-      "value": 1328.4,
+      "value": 1328.0,
       "prev_date": "2026-10-19",
       "prev_value": 1330.3,
-      "change_krw": -1.9,
-      "change_pct": -0.1428,
+      "change_krw": -2.3,
+      "change_pct": -0.1729,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
       "ecos_official": {
         "date": "2026-10-20",
@@ -106,9 +106,9 @@
       "daily_krw": -522100000000,
       "three_day_eok": -1070.0,
       "three_day_krw": -107000000000,
-      "three_day_available": false,
+      "three_day_available": true,
       "source": "https://openapi.ls-sec.co.kr/apiservice",
-      "source_label": "LS증권 t1601 잠정 대체값",
+      "source_label": "LS증권 t1601 확정 대체값",
       "phase": "LS증권 t1601 대체값 · 실제 거래일 2026-10-20 기준",
       "ls_validation": {
         "status": "ls_fallback",
@@ -121,7 +121,7 @@
         "source": "https://openapi.ls-sec.co.kr/apiservice",
         "canonical_trade_date": "2026-10-20"
       },
-      "finality": "잠정"
+      "finality": "확정"
     },
     "global_wave_news": [],
     "hyperscaler_capex_news": [],
@@ -145,9 +145,9 @@
       "daily_krw": -177200000000,
       "three_day_eok": -4321.0,
       "three_day_krw": -432100000000,
-      "three_day_available": false,
+      "three_day_available": true,
       "source": "https://openapi.ls-sec.co.kr/apiservice",
-      "source_label": "LS증권 t1601 잠정 대체값",
+      "source_label": "LS증권 t1601 확정 대체값",
       "phase": "LS증권 t1601 대체값 · 실제 거래일 2026-10-20 기준",
       "ls_validation": {
         "status": "ls_fallback",
@@ -160,7 +160,7 @@
         "source": "https://openapi.ls-sec.co.kr/apiservice",
         "canonical_trade_date": "2026-10-20"
       },
-      "finality": "잠정"
+      "finality": "확정"
     },
     "flow_source_note": "KOSPI·KOSDAQ 장마감 외국인 수급은 네이버 장마감값과 LS증권 OpenAPI t1601 투자자별종합을 교차검증. 네이버 실패 시 LS t1601 대체값 사용, 유의한 불일치 시 수급 임계치 판정 보류. KRX는 공식 원천 재확인 링크로 제공.",
     "ls_flow_validation": {
@@ -191,30 +191,26 @@
     "KOSPI": {
       "market": "KOSPI",
       "date": "2026-10-20",
-      "checked_at": "2026-10-20T21:18:32+09:00",
+      "checked_at": "2026-10-20T22:00:59+09:00",
       "status": "ls_fallback",
-      "stable": false,
-      "observations": 1,
-      "reason": "네이버 조회 실패 · 20:10 이후 LS t1601 2회 연속 확인 대기",
+      "stable": true,
+      "observations": 2,
+      "reason": "네이버 조회 실패 · 20:10 이후 LS t1601 단독값 2회 연속 안정성 확인 완료",
       "value_eok": -5221.0
     },
     "KOSDAQ": {
       "market": "KOSDAQ",
       "date": "2026-10-20",
-      "checked_at": "2026-10-20T21:18:32+09:00",
+      "checked_at": "2026-10-20T22:00:59+09:00",
       "status": "ls_fallback",
-      "stable": false,
-      "observations": 1,
-      "reason": "네이버 조회 실패 · 20:10 이후 LS t1601 2회 연속 확인 대기",
+      "stable": true,
+      "observations": 2,
+      "reason": "네이버 조회 실패 · 20:10 이후 LS t1601 단독값 2회 연속 안정성 확인 완료",
       "value_eok": -1772.0
     }
   },
   "final_flow_history": {
     "KOSPI": [
-      {
-        "date": "2026-09-17",
-        "daily_eok": -26321.0
-      },
       {
         "date": "2026-09-18",
         "daily_eok": 4486.0
@@ -250,13 +246,13 @@
       {
         "date": "2026-10-19",
         "daily_eok": 947.0
+      },
+      {
+        "date": "2026-10-20",
+        "daily_eok": -5221.0
       }
     ],
     "KOSDAQ": [
-      {
-        "date": "2026-09-17",
-        "daily_eok": 467.0
-      },
       {
         "date": "2026-09-18",
         "daily_eok": -478.0
@@ -292,6 +288,10 @@
       {
         "date": "2026-10-19",
         "daily_eok": -1618.0
+      },
+      {
+        "date": "2026-10-20",
+        "daily_eok": -1772.0
       }
     ]
   }
