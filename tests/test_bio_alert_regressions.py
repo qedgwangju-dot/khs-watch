@@ -180,6 +180,29 @@ class BioAlertRegressionTests(unittest.TestCase):
             self.assertIn("SAPPHIRE", rendered)
             self.assertEqual(base_korean_guard.general_english_words(rendered), [])
 
+    def test_jemperli_preapproval_language_cannot_advance_regulatory_stage(self):
+        old = jem_base.Item(
+            "GSK 공식",
+            "Jemperli priority review for rectal cancer; if approved may avoid surgery",
+            jem_base.CURRENT_GSK_URL,
+            "Mon, 24 Aug 2026 12:00:00 GMT",
+        )
+        self.assertFalse(jem.is_fda_approved_rectal(old))
+        self.assertEqual(jem._stage(old), "priority_review")
+        self.assertNotEqual(jem.event_key(old), jem.FDA_APPROVAL_EVENT)
+
+    def test_jemperli_unmatched_articles_do_not_mark_new_events_delivered(self):
+        source = (ROOT / "scripts" / "jemperli_altb4_watch.py").read_text(encoding="utf-8")
+        self.assertIn("if ekey in seen_events:", source)
+        self.assertNotIn("if item.key in seen or ekey in seen_events:", source)
+        self.assertIn("if len(new_items) >= 5:", source)
+        self.assertIn("summaries = [build_item_summary(x) for x in new_items]", source)
+
+    def test_jemperli_telegram_message_ids_are_kept_as_evidence(self):
+        source = (ROOT / "scripts" / "bio_single_runner.py").read_text(encoding="utf-8")
+        self.assertIn('"last_jemperli_telegram_message_ids"', source)
+        self.assertIn('hb["last_jemperli_telegram_message_ids"] = ids', source)
+
     def test_jemperli_generic_unclassified_repost_is_blocked(self):
         item = jem_base.Item(
             "Google News",
