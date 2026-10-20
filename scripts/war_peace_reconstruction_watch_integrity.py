@@ -26,6 +26,7 @@ KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입�
                'military_statement': '군사 대응·보복 발언', 'support_statement': '지원 정책 발언',
                'military_position': '군사 개입·철수 입장',
                'corporate_spending': '기업 투자·자본배분 보도',
+               'market_reaction': '증시 반응 보도',
                'military_discussion': '공습 재개 논의·이견', 'military_analysis': '군사·안보 해설',
                'market_effect': '전쟁의 물가 파급 보도', 'ceasefire_position': '휴전·공격 중단 입장',
                'military_report': '공격 조사·보고서 공표', 'fuel_shipping': '봉쇄·연료 선적 보도',
@@ -100,7 +101,7 @@ def _riyadh_missile_headline(row):
 
 def _display_headline(row):
     original = str(row.get('title_original') or row.get('title') or '')
-    if (non_military_kind(row) in ('diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure', 'corporate_spending')
+    if (non_military_kind(row) in ('diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure', 'corporate_spending', 'market_reaction')
             or _summit_openness_headline(_headline(row))
             or _summit_openness_denied(_headline(row))):
         # RSS bullet lines remain one ordered headline in the rendered block.
@@ -281,6 +282,9 @@ def _primary_topic(row):
         return _diplomatic_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'corporate_spending':
         return '석유기업 · ' + KIND_LABELS[kind]
+    if kind == 'market_reaction':
+        area = '걸프 증시' if re.search(r'걸프|\bgulf\b', title) else '증시'
+        return area + ' · ' + KIND_LABELS[kind]
     if kind == 'market_effect':
         us_prices = re.search(r'(?:미국|美|united states|u\.s\.).{0,12}(?:물가|cpi|inflation)', title)
         return ('미국·물가' if us_prices else '물가·경제지표') + ' · 전쟁 파급 보도'
@@ -644,6 +648,15 @@ def _corporate_spending_headline(title):
     return bool(companies and spending)
 
 
+def _market_attack_claim_reaction(title):
+    move = re.search(r'\b(?:bourses?|stocks?|shares?|equities)\b.{0,35}'
+                     r'\b(?:retreat\w*|fall\w*|drop\w*|declin\w*|slid\w*|rise\w*|rall\w*)\b|'
+                     r'(?:증시|주가).{0,20}(?:하락|상승|반락|반등)', title)
+    claim_background = re.search(r'\bafter\b.{0,70}\bclaim(?:s|ed|ing)?\b.{0,25}\battacks?\b|'
+                                 r'공격(?:을|를)?\s*주장(?:하자|한\s*후|\s*이후)', title)
+    return bool(move and claim_background)
+
+
 def _diplomatic_headline_kind(title):
     intent = _negotiation_intent_stage(title)
     if intent:
@@ -716,6 +729,8 @@ def non_military_kind(row):
         return 'military_position'
     if not new_peace and _corporate_spending_headline(title):
         return 'corporate_spending'
+    if not new_peace and _market_attack_claim_reaction(title):
+        return 'market_reaction'
     if (not new_peace and not (statements or future or condemnation or _ceasefire_rejection_headline(title))
             and not re.search(r'\b(?:attacked|struck|bombed)\b', title)):
         if _diplomatic_appeal_headline(title):
@@ -781,7 +796,7 @@ def _clear_market_event_cache(row):
 
 
 def _headline_event_cache_required(row, kind):
-    return (kind in ('support_statement', 'military_position', 'corporate_spending', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis', 'trade_proposal',
+    return (kind in ('support_statement', 'military_position', 'corporate_spending', 'market_reaction', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis', 'trade_proposal',
                     'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure')
             or (kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
@@ -817,7 +832,7 @@ def score_item(row, now):
         _clear_market_event_cache(row)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
-    if kind in ('support_statement', 'military_position', 'corporate_spending', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure'):
+    if kind in ('support_statement', 'military_position', 'corporate_spending', 'market_reaction', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure'):
         _clear_headline_event_cache(row, kind)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
@@ -888,6 +903,15 @@ def verdict(items):
         )
     kinds = [non_military_kind(row) for row in items]
     if kinds and all(kinds):
+        if 'market_reaction' in kinds:
+            core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
+            return (
+                '<b>투자 판정</b>\n'
+                f'- <b>핵심:</b> {core}\n'
+                '- <b>현재 단계:</b> 증시 움직임을 보도한 기사 — 배경으로 인용된 공격 주장을 독립 확인한 것은 아님\n'
+                '- <b>시장:</b> 기사 속 시장·기간·등락과 별도 군사행동의 확인 수준을 구분\n'
+                '- <b>다음:</b> 시장 원자료·비교 기준 → 인용 발언 원문 → 별도 실제 공격·피해 확인'
+            )
         if 'corporate_spending' in kinds:
             core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
             return (
@@ -1297,7 +1321,7 @@ def verify_alert(test_mode=False):
         age = watch.age_minutes(row, queried)
         if age is not None and age > 3 * 60:
             raise RuntimeError('WAR_INTEGRITY_GATE: stale discovery publication in rendered source')
-        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_position', 'corporate_spending', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure') and (
+        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_position', 'corporate_spending', 'market_reaction', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure') and (
                 row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
             raise RuntimeError('WAR_INTEGRITY_GATE: statement presented as a new attack or implemented peace')
         marker = {'red': '🔴', 'green': '🟢', 'yellow': '🟡'}.get(row.get('classification_color'), '')
