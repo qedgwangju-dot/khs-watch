@@ -1419,6 +1419,27 @@
       "source_published_kst": "2026-10-07T09:47+09:00",
       "title": "8월 공장·창고 거래 규모 대폭 증가…거래량은 감소"
     },
+    "core:05a510d48eba62461eedbb72": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.hankyung.com/article/202610203413i",
+      "source": "한국경제",
+      "source_body_digest": "bf352ccfab00e6d8e9f7e407a35134423726188540d25535814d135181f42ae5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:359a558cf75f63c036c5ca8f234f935e4f45f15b908f21121e080fcfdbe8ff5c",
+      "source_fact_keys": [
+        "source_fact:v1:3acf1b34bc9df280203032d87e38c6294d9e3e44e9d1b85041b3664211c248e5",
+        "source_fact:v1:c4949ee1378e6bdb1015413fc2b0542a3385c408f73d7149e01719bdae8ea9ae"
+      ],
+      "source_published_kst": "2026-10-20T14:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\"",
+      "telegram_core_fact": "한화에어로스페이스와 현대로템, LIG디펜스앤에어로스페이스, 한화시스템 등 주요 방산주 네 곳의 시가총액이 하루 새 10조원 넘게 줄었다. 환율 하락과 수출 물량의 매출 반영 지연으로 3분기 실적 기대가 낮아진 가운데 신규 수주마저 늦어지면서다.",
+      "title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\""
+    },
     "core:05b010da02981bc857bb0e84": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
@@ -16217,6 +16238,30 @@
       "telegram_core_fact": "코스피·코스닥은 각각 5.46%·1.43% 하락해 양 시장에 매도 사이드카가 발동됐다. 삼성전자·SK하이닉스는 각각 7.29%·10.09% 하락했다.",
       "title": "코스피 5% 급락…중국발 반도체 공급 우려·외인 순매도에 휘청"
     },
+    "core:33d16ebc1f5293664b865afa": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177878",
+      "source": "매일경제",
+      "source_body_digest": "ea4175b0109ace7677bc744af917e420e35f3b82f187f7cffde492d87e145361",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17dac36858c8ee3b0f9834fa95148f83c71aec3209985edb731c8e6ac09e24ed",
+      "source_fact_keys": [
+        "source_fact:v1:41a6ae4ad313ff08e391e0414666fd1e418f0e13a516e9edd557491685f25434",
+        "source_fact:v1:5435ba224cad55511531529db84a57c0978e418e922277c716415be7fea80a99",
+        "source_fact:v1:60cf1a9b26be86772ae615736ee488d8e53d5095f205167e3a5b34e2c4a21346",
+        "source_fact:v1:894342d785b60e98afcf598a42283b0b375c91185602aa1420f4cd0cd0daa68b",
+        "source_fact:v1:cb1689457062992f2e2b08069c651c128d067e1c780413c0f240f8bd040386f3"
+      ],
+      "source_published_kst": "2026-10-20T22:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가",
+      "telegram_core_fact": "보안 로봇 기업 나이트스코프(KSCP)가 9월 30일 종료된 2026년 3분기 잠정 연결 매출액이 약 870만 달러로 전년 동기 310만 달러 대비 177% 증가했다고 20일 발표했다.",
+      "title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가"
+    },
     "core:33dabfef2790c23617713bd5": {
       "first_seen_kst": "2026-10-15T16:50:59+09:00",
       "lanes": {
@@ -17130,6 +17175,27 @@
       "source_title": "창업 아이디어에 AI 활용…‘모두의 창업’ 솔루션, 103개 선정",
       "telegram_core_fact": "‘모두의 창업’ 2차 프로젝트 참가자들이 창업 아이디어를 사업모델로 구체화하는 데 활용할 AI 솔루션 103개가 선정됐다. 1라운드 진출자는 1인당 100만원 범위에서 홈페이지 제작과 홍보 콘텐츠 생성, 계약서 작성 등에 필요한 AI 솔루션을 선택해 이용할 수 있다.",
       "title": "창업 아이디어에 AI 활용…‘모두의 창업’ 솔루션, 103개 선정"
+    },
+    "core:36721263fa9c89c336809f53": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019159051003",
+      "source": "연합뉴스",
+      "source_body_digest": "7f8d3f7f0fb77a33361055e9c6d8626eb1b173c701c2d05590f2cc38bbd1f80f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23fc0a8b9a1146785aefbafd0bd6fa4696e21ace041610c659667fd1b19b995",
+      "source_fact_keys": [
+        "source_fact:v1:510eee386ea744fb35a9a83d29ac58a1c85cabd9daedddef4c995fb4c4b155a1",
+        "source_fact:v1:904d4a73152009fd0ce020030c3824f0f0cc079474f8fb848c8e8797ef499789"
+      ],
+      "source_published_kst": "2026-10-20T11:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스",
+      "telegram_core_fact": "전세 거래가 급감한 배경에는 전세자금 대출 규제 강화와 전세 매물 부족, 기존 세입자의 계약 갱신 확대 등이 복합적으로 작용한 것으로 분석된다.",
+      "title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스"
     },
     "core:367f16a42ef4c06ea317e5f6": {
       "first_seen_kst": "2026-10-16T15:15:48+09:00",
@@ -41996,6 +42062,26 @@
       "telegram_core_fact": "AI 데이터센터 투자 경쟁이 가속화하면서 기존 회사채 시장을 넘어 사모대출과 구조화금융까지 조달 범위가 확대되고 있다.",
       "title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력"
     },
+    "core:896da46ad2121475db977198": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177884",
+      "source": "매일경제",
+      "source_body_digest": "42f21531a6c20751a9a6a918d2006e0301688b1eb2207fde4eb898666d46fb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc04a1b34eabceb6228f24003e89524bf4cde797aafbeb96361b08ae2c11ce0a",
+      "source_fact_keys": [
+        "source_fact:v1:da648aaa5b127c20b94c637c9a6460dabfe83c273a1c3ee8a2601917e1f0e0ef"
+      ],
+      "source_published_kst": "2026-10-20T22:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "노스롭그루먼, 3분기 호실적에 연간 가이던스 상향 소식에 강세",
+      "telegram_core_fact": "올해 매출과 조정 EPS 가이던스를 상향해 실적 개선 기대가 커지며 투자심리가 살아나고 있습니다.",
+      "title": "노스롭그루먼, 3분기 호실적에 연간 가이던스 상향 소식에 강세"
+    },
     "core:8978deaeb4495cddacab03dd": {
       "first_seen_kst": "2026-10-17T05:57:10+09:00",
       "lanes": {
@@ -63303,6 +63389,26 @@
       "telegram_core_fact": "삼성물산은 반포푸르지오아파트 리모델링 사업에 넥스트 리모델링 설계안을 담은 입찰제안서를 제출했다고 12일 밝혔다.",
       "title": "삼성물산, 반포푸르지오서 '넥스트 리모델링' 첫선⋯“신축급 주거 구현”"
     },
+    "core:d3cefd823defda5cac7b336c": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04054086645614888",
+      "source": "이데일리",
+      "source_body_digest": "fd4c9a871304f0c8466416b932b9c977c9d81dd669ea593b8cf31b171bd48334",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f55978f0fd8fd502daf7c05a1627d5085044e6f1517887d58d8ff45dd7a8ad45",
+      "source_fact_keys": [
+        "source_fact:v1:b88d4e66d800d10d2f52e9835b25f12dd194c988bad14e0f1764b7c21e2f5e49"
+      ],
+      "source_published_kst": "2026-10-20T15:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔티드, 동아ST와 손잡고 디지털 의료기기 시장 공략",
+      "telegram_core_fact": "물리 데이터 전문기업 솔티드가 동아쏘시오그룹 계열 제약사 동아ST와 손잡고 신체기능평가 솔루션 ‘뉴로게이트’의 의료기관 공급 확대에 나선다.",
+      "title": "솔티드, 동아ST와 손잡고 디지털 의료기기 시장 공략"
+    },
     "core:d3eb4e398c3f9eaeeb455519": {
       "first_seen_kst": "2026-10-16T06:50:52+09:00",
       "lanes": {
@@ -72241,6 +72347,24 @@
       "telegram_core_fact": "신세계면세점이 처음 선보인 정기 대규모 할인 행사 '신면세일'에서 화장품과 향수 매출이 46% 증가하며 전체 실적을 견인했다.",
       "title": "화장품 매출 46% 쑤욱…신세계免, 첫 '신면세일' 통했다"
     },
+    "core:f230be26cad92140d18c306c": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637938",
+      "source": "이투데이",
+      "source_body_digest": "52ee3ad1f660e6abb0790d0c30b770f186993f00856455569e1b571adfece448",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T14:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]셀트리온, 日·亞·중남미 시장서 '바이오시밀러 제품군' 확대",
+      "telegram_core_fact": "회사는 미국과 유럽 등 주요시장에서의 판매 확대와 고수익 후속제품군 성장이 실적을 견인한 가운데, 아시아와 중남미에서도 주력제품들의 높은 시장점유율과 신규제품출시 확대를 통해 추가 성장기반을 강화하고 있다고 설명했다.",
+      "title": "[BioS]셀트리온, 日·亞·중남미 시장서 '바이오시밀러 제품군' 확대"
+    },
     "core:f247cdcd52b6fd40e8dd9b5b": {
       "first_seen_kst": "2026-10-11T14:49:05+09:00",
       "lanes": {
@@ -75191,6 +75315,26 @@
       ],
       "source_published_kst": "2026-10-07T14:46+09:00",
       "title": "HD현대중공업, 누리호 성공에 기여…발사대시스템 총괄 지원 | 연합뉴스"
+    },
+    "core:fcb50c7d0b49c242afdb4ff6": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177882",
+      "source": "매일경제",
+      "source_body_digest": "94c1781d3009df09712d74ab4bb9735171048dc4e70cac10e6cdd7ccc5c94357",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ec8321dcd600c84f6a5a3fc0434e1f1a4fbe99f0f95878fb7f72ad1b0cdcdde",
+      "source_fact_keys": [
+        "source_fact:v1:2728b6058f41b50a8d5a5f3d9b231da095cc33df9b8d08e97e1b6b3f6334b5ab"
+      ],
+      "source_published_kst": "2026-10-20T22:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "해즈브로, 3분기 매출 15% 증가에 연간 전망 상향·자사주 매입 확대 소식",
+      "telegram_core_fact": "3분기 순매출이 15억9530만 달러로 15% 늘고 조정 EPS가 2.90달러로 크게 증가했습니다.",
+      "title": "해즈브로, 3분기 매출 15% 증가에 연간 전망 상향·자사주 매입 확대 소식"
     },
     "core:fcb629463d0ba426ef29ca4a": {
       "first_seen_kst": "2026-10-19T21:40:31+09:00",
@@ -96923,6 +97067,27 @@
       "telegram_core_fact": "트레이드웹 마켓(TW)이 전자 신용거래 플랫폼 트루미드 홀딩스(Trumid Holdings, LLC)를 약 19억7000만 달러에 인수하는 확정 계약을 체결했다고 19일 발표했다. 월가 증권사 컨센서스에 따르면 트레이드웹의 2026년 연간 매출액은 약 23억5100만 달러로 전년 대비 14.54% 증가할 전망이다.",
       "title": "트레이드웹 마켓, 트루미드 20억달러 인수..채권 전주기 확보"
     },
+    "fact:044a9ef308ba11d21c8b25f8": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.hankyung.com/article/202610203413i",
+      "source": "한국경제",
+      "source_body_digest": "bf352ccfab00e6d8e9f7e407a35134423726188540d25535814d135181f42ae5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:359a558cf75f63c036c5ca8f234f935e4f45f15b908f21121e080fcfdbe8ff5c",
+      "source_fact_keys": [
+        "source_fact:v1:3acf1b34bc9df280203032d87e38c6294d9e3e44e9d1b85041b3664211c248e5",
+        "source_fact:v1:c4949ee1378e6bdb1015413fc2b0542a3385c408f73d7149e01719bdae8ea9ae"
+      ],
+      "source_published_kst": "2026-10-20T14:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\"",
+      "telegram_core_fact": "한화에어로스페이스와 현대로템, LIG디펜스앤에어로스페이스, 한화시스템 등 주요 방산주 네 곳의 시가총액이 하루 새 10조원 넘게 줄었다. 환율 하락과 수출 물량의 매출 반영 지연으로 3분기 실적 기대가 낮아진 가운데 신규 수주마저 늦어지면서다.",
+      "title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\""
+    },
     "fact:046c4aebfabe4eb6296b7f9d": {
       "first_seen_kst": "2026-10-17T09:15:26+09:00",
       "lanes": {
@@ -107550,6 +107715,27 @@
       "telegram_core_fact": "스페이스X가 엔비디아 AI 칩 구매용으로 400억달러(약 55조원)의 자금 조달을 논의중이라는 소식이 전해진 뒤 이 회사의 신용 위험 지표가 사상 최고치로 치솟고 채권 가격이 약세를 보였다. 총 400억달러의 자금 조달이 성사된다면 AI 인프라 구축을 위한 역대 최대 채권 발행 중 하나가 된다.",
       "title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스"
     },
+    "fact:231a9418a744c462a0651f8b": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019159051003",
+      "source": "연합뉴스",
+      "source_body_digest": "7f8d3f7f0fb77a33361055e9c6d8626eb1b173c701c2d05590f2cc38bbd1f80f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23fc0a8b9a1146785aefbafd0bd6fa4696e21ace041610c659667fd1b19b995",
+      "source_fact_keys": [
+        "source_fact:v1:510eee386ea744fb35a9a83d29ac58a1c85cabd9daedddef4c995fb4c4b155a1",
+        "source_fact:v1:904d4a73152009fd0ce020030c3824f0f0cc079474f8fb848c8e8797ef499789"
+      ],
+      "source_published_kst": "2026-10-20T11:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스",
+      "telegram_core_fact": "전세 거래가 급감한 배경에는 전세자금 대출 규제 강화와 전세 매물 부족, 기존 세입자의 계약 갱신 확대 등이 복합적으로 작용한 것으로 분석된다.",
+      "title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스"
+    },
     "fact:23283e0d267b15f1a1a46820": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
       "lanes": {
@@ -107884,6 +108070,30 @@
       "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
       "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
       "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
+    },
+    "fact:23aa053ecd40c8d99f002d60": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177878",
+      "source": "매일경제",
+      "source_body_digest": "ea4175b0109ace7677bc744af917e420e35f3b82f187f7cffde492d87e145361",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17dac36858c8ee3b0f9834fa95148f83c71aec3209985edb731c8e6ac09e24ed",
+      "source_fact_keys": [
+        "source_fact:v1:41a6ae4ad313ff08e391e0414666fd1e418f0e13a516e9edd557491685f25434",
+        "source_fact:v1:5435ba224cad55511531529db84a57c0978e418e922277c716415be7fea80a99",
+        "source_fact:v1:60cf1a9b26be86772ae615736ee488d8e53d5095f205167e3a5b34e2c4a21346",
+        "source_fact:v1:894342d785b60e98afcf598a42283b0b375c91185602aa1420f4cd0cd0daa68b",
+        "source_fact:v1:cb1689457062992f2e2b08069c651c128d067e1c780413c0f240f8bd040386f3"
+      ],
+      "source_published_kst": "2026-10-20T22:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가",
+      "telegram_core_fact": "보안 로봇 기업 나이트스코프(KSCP)가 9월 30일 종료된 2026년 3분기 잠정 연결 매출액이 약 870만 달러로 전년 동기 310만 달러 대비 177% 증가했다고 20일 발표했다.",
+      "title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가"
     },
     "fact:23b8dbb76989020591404c65": {
       "first_seen_kst": "2026-10-10T10:34:18+09:00",
@@ -163380,6 +163590,26 @@
       "telegram_core_fact": "부천의 한 도장공장에서 불이 나 소방관 6명이 다친 가운데, 소방당국은 급격한 연소 확대로 인해 인명 피해가 커진 것으로 보고 있다. 경기도소방재난본부 등에 따르면 이날 오전 8시38분께 부천시 내동의 한 금속부품 도장공장 3층 세척실에서 화재가 발생했다는 신고가 접수됐다.",
       "title": "부천 도장공장 화재, 소방관 부상만 6명…\"급격한 연소 때문\""
     },
+    "fact:c6215e76dbdccc6a70a35fce": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177882",
+      "source": "매일경제",
+      "source_body_digest": "94c1781d3009df09712d74ab4bb9735171048dc4e70cac10e6cdd7ccc5c94357",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ec8321dcd600c84f6a5a3fc0434e1f1a4fbe99f0f95878fb7f72ad1b0cdcdde",
+      "source_fact_keys": [
+        "source_fact:v1:2728b6058f41b50a8d5a5f3d9b231da095cc33df9b8d08e97e1b6b3f6334b5ab"
+      ],
+      "source_published_kst": "2026-10-20T22:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "해즈브로, 3분기 매출 15% 증가에 연간 전망 상향·자사주 매입 확대 소식",
+      "telegram_core_fact": "3분기 순매출이 15억9530만 달러로 15% 늘고 조정 EPS가 2.90달러로 크게 증가했습니다.",
+      "title": "해즈브로, 3분기 매출 15% 증가에 연간 전망 상향·자사주 매입 확대 소식"
+    },
     "fact:c63ac6649063366907dc83f6": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
       "lanes": {
@@ -173648,6 +173878,26 @@
       "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
       "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
     },
+    "fact:e38633aa55902b9ebfc20c95": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177884",
+      "source": "매일경제",
+      "source_body_digest": "42f21531a6c20751a9a6a918d2006e0301688b1eb2207fde4eb898666d46fb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc04a1b34eabceb6228f24003e89524bf4cde797aafbeb96361b08ae2c11ce0a",
+      "source_fact_keys": [
+        "source_fact:v1:da648aaa5b127c20b94c637c9a6460dabfe83c273a1c3ee8a2601917e1f0e0ef"
+      ],
+      "source_published_kst": "2026-10-20T22:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "노스롭그루먼, 3분기 호실적에 연간 가이던스 상향 소식에 강세",
+      "telegram_core_fact": "올해 매출과 조정 EPS 가이던스를 상향해 실적 개선 기대가 커지며 투자심리가 살아나고 있습니다.",
+      "title": "노스롭그루먼, 3분기 호실적에 연간 가이던스 상향 소식에 강세"
+    },
     "fact:e386395ea0ed7499d98554af": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
       "lanes": {
@@ -179249,6 +179499,26 @@
       "source_title": "스피어, 美 우주항공발사업체에 285억 특수합금 공급",
       "telegram_core_fact": "코스닥 상장사 스피어는 미국 글로벌 우주항공발사업체와 285억원 특수 합금 공급 계약을 체결했다고 14일 공시했다.",
       "title": "스피어, 美 우주항공발사업체에 285억 특수합금 공급"
+    },
+    "fact:f2b25779afb60b15f83f1aae": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04054086645614888",
+      "source": "이데일리",
+      "source_body_digest": "fd4c9a871304f0c8466416b932b9c977c9d81dd669ea593b8cf31b171bd48334",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f55978f0fd8fd502daf7c05a1627d5085044e6f1517887d58d8ff45dd7a8ad45",
+      "source_fact_keys": [
+        "source_fact:v1:b88d4e66d800d10d2f52e9835b25f12dd194c988bad14e0f1764b7c21e2f5e49"
+      ],
+      "source_published_kst": "2026-10-20T15:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔티드, 동아ST와 손잡고 디지털 의료기기 시장 공략",
+      "telegram_core_fact": "물리 데이터 전문기업 솔티드가 동아쏘시오그룹 계열 제약사 동아ST와 손잡고 신체기능평가 솔루션 ‘뉴로게이트’의 의료기관 공급 확대에 나선다.",
+      "title": "솔티드, 동아ST와 손잡고 디지털 의료기기 시장 공략"
     },
     "fact:f2bfa773dfd4bf8d462390c3": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
@@ -196192,6 +196462,30 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T17:24+09:00",
       "title": "삼성·현대차 로봇투자 나섰지만 … 韓로봇 생태계는 '구멍가게' 수준"
+    },
+    "link:1b7348ae2da84bef1cbc63bb": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177878",
+      "source": "매일경제",
+      "source_body_digest": "ea4175b0109ace7677bc744af917e420e35f3b82f187f7cffde492d87e145361",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17dac36858c8ee3b0f9834fa95148f83c71aec3209985edb731c8e6ac09e24ed",
+      "source_fact_keys": [
+        "source_fact:v1:41a6ae4ad313ff08e391e0414666fd1e418f0e13a516e9edd557491685f25434",
+        "source_fact:v1:5435ba224cad55511531529db84a57c0978e418e922277c716415be7fea80a99",
+        "source_fact:v1:60cf1a9b26be86772ae615736ee488d8e53d5095f205167e3a5b34e2c4a21346",
+        "source_fact:v1:894342d785b60e98afcf598a42283b0b375c91185602aa1420f4cd0cd0daa68b",
+        "source_fact:v1:cb1689457062992f2e2b08069c651c128d067e1c780413c0f240f8bd040386f3"
+      ],
+      "source_published_kst": "2026-10-20T22:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가",
+      "telegram_core_fact": "보안 로봇 기업 나이트스코프(KSCP)가 9월 30일 종료된 2026년 3분기 잠정 연결 매출액이 약 870만 달러로 전년 동기 310만 달러 대비 177% 증가했다고 20일 발표했다.",
+      "title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가"
     },
     "link:1b79fa7f6ad14150400a395e": {
       "first_seen_kst": "2026-10-20T11:44:43+09:00",
@@ -214313,6 +214607,26 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
     },
+    "link:433fd4e92e160a0acc779958": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04054086645614888",
+      "source": "이데일리",
+      "source_body_digest": "fd4c9a871304f0c8466416b932b9c977c9d81dd669ea593b8cf31b171bd48334",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f55978f0fd8fd502daf7c05a1627d5085044e6f1517887d58d8ff45dd7a8ad45",
+      "source_fact_keys": [
+        "source_fact:v1:b88d4e66d800d10d2f52e9835b25f12dd194c988bad14e0f1764b7c21e2f5e49"
+      ],
+      "source_published_kst": "2026-10-20T15:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔티드, 동아ST와 손잡고 디지털 의료기기 시장 공략",
+      "telegram_core_fact": "물리 데이터 전문기업 솔티드가 동아쏘시오그룹 계열 제약사 동아ST와 손잡고 신체기능평가 솔루션 ‘뉴로게이트’의 의료기관 공급 확대에 나선다.",
+      "title": "솔티드, 동아ST와 손잡고 디지털 의료기기 시장 공략"
+    },
     "link:43473df7f9788358f2e72da7": {
       "first_seen_kst": "2026-10-13T09:41:33+09:00",
       "lanes": {
@@ -220527,6 +220841,27 @@
       "source_title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스",
       "telegram_core_fact": "국내 채권시장이 연휴로 휴장하는 동안 미국 장기금리 상승세가 진정된 영향도 있지만, 외국인의 국채선물 매수세가 투자 심리를 뒷받침했다.",
       "title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스"
+    },
+    "link:515d459fe87acb9d8ad7d5da": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.hankyung.com/article/202610203413i",
+      "source": "한국경제",
+      "source_body_digest": "bf352ccfab00e6d8e9f7e407a35134423726188540d25535814d135181f42ae5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:359a558cf75f63c036c5ca8f234f935e4f45f15b908f21121e080fcfdbe8ff5c",
+      "source_fact_keys": [
+        "source_fact:v1:3acf1b34bc9df280203032d87e38c6294d9e3e44e9d1b85041b3664211c248e5",
+        "source_fact:v1:c4949ee1378e6bdb1015413fc2b0542a3385c408f73d7149e01719bdae8ea9ae"
+      ],
+      "source_published_kst": "2026-10-20T14:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\"",
+      "telegram_core_fact": "한화에어로스페이스와 현대로템, LIG디펜스앤에어로스페이스, 한화시스템 등 주요 방산주 네 곳의 시가총액이 하루 새 10조원 넘게 줄었다. 환율 하락과 수출 물량의 매출 반영 지연으로 3분기 실적 기대가 낮아진 가운데 신규 수주마저 늦어지면서다.",
+      "title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\""
     },
     "link:516f4920c55af137e25f0f2e": {
       "first_seen_kst": "2026-10-19T12:07:04+09:00",
@@ -226904,6 +227239,24 @@
       "source_title": "AT&T, 개장전 5% 하락…스페이스X 주파수 인수에 배당략일도 부담",
       "telegram_core_fact": "이날 인베스팅닷컴에 따르면 스페이스X는 미국의 광대역 통신 분야에 특화된 사모펀드 운용사 ‘그레인 운용’의 전국 단위 800메가헤르츠 대역 저주파수 포트폴리오를 인수하는 최종 계약을 체결했다고 발표했다.",
       "title": "AT&T, 개장전 5% 하락…스페이스X 주파수 인수에 배당략일도 부담"
+    },
+    "link:5ee1b05e264ff495032f6332": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637938",
+      "source": "이투데이",
+      "source_body_digest": "52ee3ad1f660e6abb0790d0c30b770f186993f00856455569e1b571adfece448",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T14:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]셀트리온, 日·亞·중남미 시장서 '바이오시밀러 제품군' 확대",
+      "telegram_core_fact": "회사는 미국과 유럽 등 주요시장에서의 판매 확대와 고수익 후속제품군 성장이 실적을 견인한 가운데, 아시아와 중남미에서도 주력제품들의 높은 시장점유율과 신규제품출시 확대를 통해 추가 성장기반을 강화하고 있다고 설명했다.",
+      "title": "[BioS]셀트리온, 日·亞·중남미 시장서 '바이오시밀러 제품군' 확대"
     },
     "link:5eed4532cb32e851ab8d60cc": {
       "first_seen_kst": "2026-10-16T06:50:52+09:00",
@@ -281434,6 +281787,27 @@
       "telegram_core_fact": "삼성전기는 글로벌 대형기업과 3605억원 패키지 기판 공급계약을 체결했다고 19일 공시했다.",
       "title": "삼성전기, 3605억 규모 패키지 기판 공급계약"
     },
+    "link:d68c1cfe1831e6f9e8ed7703": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019159051003",
+      "source": "연합뉴스",
+      "source_body_digest": "7f8d3f7f0fb77a33361055e9c6d8626eb1b173c701c2d05590f2cc38bbd1f80f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23fc0a8b9a1146785aefbafd0bd6fa4696e21ace041610c659667fd1b19b995",
+      "source_fact_keys": [
+        "source_fact:v1:510eee386ea744fb35a9a83d29ac58a1c85cabd9daedddef4c995fb4c4b155a1",
+        "source_fact:v1:904d4a73152009fd0ce020030c3824f0f0cc079474f8fb848c8e8797ef499789"
+      ],
+      "source_published_kst": "2026-10-20T11:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스",
+      "telegram_core_fact": "전세 거래가 급감한 배경에는 전세자금 대출 규제 강화와 전세 매물 부족, 기존 세입자의 계약 갱신 확대 등이 복합적으로 작용한 것으로 분석된다.",
+      "title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스"
+    },
     "link:d69028e26eb0c692bec586ae": {
       "first_seen_kst": "2026-10-10T00:12:46+09:00",
       "lanes": {
@@ -283969,6 +284343,26 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04542806645585040",
       "source": "이데일리",
       "title": "실적 시즌 '환율'에 울고 웃고…3분기 전망치 희비 갈렸다"
+    },
+    "link:dd2075fdec4c8cfaf2340711": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177882",
+      "source": "매일경제",
+      "source_body_digest": "94c1781d3009df09712d74ab4bb9735171048dc4e70cac10e6cdd7ccc5c94357",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ec8321dcd600c84f6a5a3fc0434e1f1a4fbe99f0f95878fb7f72ad1b0cdcdde",
+      "source_fact_keys": [
+        "source_fact:v1:2728b6058f41b50a8d5a5f3d9b231da095cc33df9b8d08e97e1b6b3f6334b5ab"
+      ],
+      "source_published_kst": "2026-10-20T22:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "해즈브로, 3분기 매출 15% 증가에 연간 전망 상향·자사주 매입 확대 소식",
+      "telegram_core_fact": "3분기 순매출이 15억9530만 달러로 15% 늘고 조정 EPS가 2.90달러로 크게 증가했습니다.",
+      "title": "해즈브로, 3분기 매출 15% 증가에 연간 전망 상향·자사주 매입 확대 소식"
     },
     "link:dd3000c15a7d5d841df2334e": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
@@ -291450,6 +291844,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002069900003",
       "source": "연합뉴스",
       "title": "마이크론, 2분기 D램 시장서 2위 SK하이닉스 '턱밑' 추격 | 연합뉴스"
+    },
+    "link:edc5214d80bc33e68838f953": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177884",
+      "source": "매일경제",
+      "source_body_digest": "42f21531a6c20751a9a6a918d2006e0301688b1eb2207fde4eb898666d46fb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc04a1b34eabceb6228f24003e89524bf4cde797aafbeb96361b08ae2c11ce0a",
+      "source_fact_keys": [
+        "source_fact:v1:da648aaa5b127c20b94c637c9a6460dabfe83c273a1c3ee8a2601917e1f0e0ef"
+      ],
+      "source_published_kst": "2026-10-20T22:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "노스롭그루먼, 3분기 호실적에 연간 가이던스 상향 소식에 강세",
+      "telegram_core_fact": "올해 매출과 조정 EPS 가이던스를 상향해 실적 개선 기대가 커지며 투자심리가 살아나고 있습니다.",
+      "title": "노스롭그루먼, 3분기 호실적에 연간 가이던스 상향 소식에 강세"
     },
     "link:edd1d2d1276d8d76d1dec967": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -304528,6 +304942,26 @@
       "telegram_core_fact": "화물 적재 공간을 갖춘 카고바이크로 제품군을 확대하면 개인 이동을 넘어 기업 간 거래(B2B) 기반 라스트마일 물류 시장까지 진출할 수 있다.",
       "title": "지바이크, 대만 기업과 '수소 카고바이크' 공동 개발…생활물류 시장 공략"
     },
+    "original:0c42af8d36eae584e6ed90b6": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177882",
+      "source": "매일경제",
+      "source_body_digest": "94c1781d3009df09712d74ab4bb9735171048dc4e70cac10e6cdd7ccc5c94357",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ec8321dcd600c84f6a5a3fc0434e1f1a4fbe99f0f95878fb7f72ad1b0cdcdde",
+      "source_fact_keys": [
+        "source_fact:v1:2728b6058f41b50a8d5a5f3d9b231da095cc33df9b8d08e97e1b6b3f6334b5ab"
+      ],
+      "source_published_kst": "2026-10-20T22:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "해즈브로, 3분기 매출 15% 증가에 연간 전망 상향·자사주 매입 확대 소식",
+      "telegram_core_fact": "3분기 순매출이 15억9530만 달러로 15% 늘고 조정 EPS가 2.90달러로 크게 증가했습니다.",
+      "title": "해즈브로, 3분기 매출 15% 증가에 연간 전망 상향·자사주 매입 확대 소식"
+    },
     "original:0c49f3506ecc0c1d89bdc294": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -315283,6 +315717,26 @@
       "source_title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여",
       "telegram_core_fact": "1·2차 교육에서는 소송과 강제집행 등 초기 권리구제 절차를, 3·4차 교육에서는 경·공매와 배당을 통한 보증금 회수 방안을 다뤘다.",
       "title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여"
+    },
+    "original:246e571e135188b8de0032cf": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04054086645614888",
+      "source": "이데일리",
+      "source_body_digest": "fd4c9a871304f0c8466416b932b9c977c9d81dd669ea593b8cf31b171bd48334",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f55978f0fd8fd502daf7c05a1627d5085044e6f1517887d58d8ff45dd7a8ad45",
+      "source_fact_keys": [
+        "source_fact:v1:b88d4e66d800d10d2f52e9835b25f12dd194c988bad14e0f1764b7c21e2f5e49"
+      ],
+      "source_published_kst": "2026-10-20T15:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔티드, 동아ST와 손잡고 디지털 의료기기 시장 공략",
+      "telegram_core_fact": "물리 데이터 전문기업 솔티드가 동아쏘시오그룹 계열 제약사 동아ST와 손잡고 신체기능평가 솔루션 ‘뉴로게이트’의 의료기관 공급 확대에 나선다.",
+      "title": "솔티드, 동아ST와 손잡고 디지털 의료기기 시장 공략"
     },
     "original:246ea032141a9f245e23407c": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
@@ -341875,6 +342329,27 @@
       "source": "이투데이",
       "title": "구미시, LB세미콘 '전력반도체 증설투자' 유치"
     },
+    "original:5f5ae17f1b6a6b929e2f83c8": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019159051003",
+      "source": "연합뉴스",
+      "source_body_digest": "7f8d3f7f0fb77a33361055e9c6d8626eb1b173c701c2d05590f2cc38bbd1f80f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23fc0a8b9a1146785aefbafd0bd6fa4696e21ace041610c659667fd1b19b995",
+      "source_fact_keys": [
+        "source_fact:v1:510eee386ea744fb35a9a83d29ac58a1c85cabd9daedddef4c995fb4c4b155a1",
+        "source_fact:v1:904d4a73152009fd0ce020030c3824f0f0cc079474f8fb848c8e8797ef499789"
+      ],
+      "source_published_kst": "2026-10-20T11:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스",
+      "telegram_core_fact": "전세 거래가 급감한 배경에는 전세자금 대출 규제 강화와 전세 매물 부족, 기존 세입자의 계약 갱신 확대 등이 복합적으로 작용한 것으로 분석된다.",
+      "title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스"
+    },
     "original:5f5fd74846955ed4c8469c19": {
       "first_seen_kst": "2026-09-27T04:31:07+09:00",
       "lanes": {
@@ -360864,6 +361339,30 @@
       "telegram_core_fact": "이라크가 트럭으로 원유를 시리아를 거쳐 수출하는 방식이 이르면 이달 중순 시작될 전망이라고 블룸버그 통신이 7일(현지시간) 보도했다.",
       "title": "이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스"
     },
+    "original:8a1c2a0c9c8b9fefc42a8695": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177878",
+      "source": "매일경제",
+      "source_body_digest": "ea4175b0109ace7677bc744af917e420e35f3b82f187f7cffde492d87e145361",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17dac36858c8ee3b0f9834fa95148f83c71aec3209985edb731c8e6ac09e24ed",
+      "source_fact_keys": [
+        "source_fact:v1:41a6ae4ad313ff08e391e0414666fd1e418f0e13a516e9edd557491685f25434",
+        "source_fact:v1:5435ba224cad55511531529db84a57c0978e418e922277c716415be7fea80a99",
+        "source_fact:v1:60cf1a9b26be86772ae615736ee488d8e53d5095f205167e3a5b34e2c4a21346",
+        "source_fact:v1:894342d785b60e98afcf598a42283b0b375c91185602aa1420f4cd0cd0daa68b",
+        "source_fact:v1:cb1689457062992f2e2b08069c651c128d067e1c780413c0f240f8bd040386f3"
+      ],
+      "source_published_kst": "2026-10-20T22:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가",
+      "telegram_core_fact": "보안 로봇 기업 나이트스코프(KSCP)가 9월 30일 종료된 2026년 3분기 잠정 연결 매출액이 약 870만 달러로 전년 동기 310만 달러 대비 177% 증가했다고 20일 발표했다.",
+      "title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가"
+    },
     "original:8a213876bc4bec87b84e3fe6": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
       "lanes": {
@@ -364015,6 +364514,27 @@
       "source_title": "‘막차’ 탄 3대 주주가 판 뒤집었다… 중앙일보 우협에 다우·CJ 컨소",
       "telegram_core_fact": "중앙일보 인수 우선협상대상자로 다우키움그룹과 CJ그룹 컨소시엄이 선정됐다.",
       "title": "‘막차’ 탄 3대 주주가 판 뒤집었다… 중앙일보 우협에 다우·CJ 컨소"
+    },
+    "original:914aa8592946ede63cd540b7": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.hankyung.com/article/202610203413i",
+      "source": "한국경제",
+      "source_body_digest": "bf352ccfab00e6d8e9f7e407a35134423726188540d25535814d135181f42ae5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:359a558cf75f63c036c5ca8f234f935e4f45f15b908f21121e080fcfdbe8ff5c",
+      "source_fact_keys": [
+        "source_fact:v1:3acf1b34bc9df280203032d87e38c6294d9e3e44e9d1b85041b3664211c248e5",
+        "source_fact:v1:c4949ee1378e6bdb1015413fc2b0542a3385c408f73d7149e01719bdae8ea9ae"
+      ],
+      "source_published_kst": "2026-10-20T14:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\"",
+      "telegram_core_fact": "한화에어로스페이스와 현대로템, LIG디펜스앤에어로스페이스, 한화시스템 등 주요 방산주 네 곳의 시가총액이 하루 새 10조원 넘게 줄었다. 환율 하락과 수출 물량의 매출 반영 지연으로 3분기 실적 기대가 낮아진 가운데 신규 수주마저 늦어지면서다.",
+      "title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\""
     },
     "original:914e305c14c413abfadd5cfb": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
@@ -383174,6 +383694,26 @@
       "source_published_kst": "2026-10-06T22:58+09:00",
       "title": "우크라, '한국의 러 석유공급' 보도에 韓 비판 | 연합뉴스"
     },
+    "original:bd1caec04f3066dc7f7ad25e": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177884",
+      "source": "매일경제",
+      "source_body_digest": "42f21531a6c20751a9a6a918d2006e0301688b1eb2207fde4eb898666d46fb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc04a1b34eabceb6228f24003e89524bf4cde797aafbeb96361b08ae2c11ce0a",
+      "source_fact_keys": [
+        "source_fact:v1:da648aaa5b127c20b94c637c9a6460dabfe83c273a1c3ee8a2601917e1f0e0ef"
+      ],
+      "source_published_kst": "2026-10-20T22:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "노스롭그루먼, 3분기 호실적에 연간 가이던스 상향 소식에 강세",
+      "telegram_core_fact": "올해 매출과 조정 EPS 가이던스를 상향해 실적 개선 기대가 커지며 투자심리가 살아나고 있습니다.",
+      "title": "노스롭그루먼, 3분기 호실적에 연간 가이던스 상향 소식에 강세"
+    },
     "original:bd34160fe9a52bcabba764a5": {
       "first_seen_kst": "2026-09-27T19:02:46+09:00",
       "lanes": {
@@ -393874,6 +394414,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261002143000008",
       "source": "연합뉴스",
       "title": "국고채 금리 일제히 하락…3년물 연 3.937% | 연합뉴스"
+    },
+    "original:d5f3c9d840d1f0d193e56775": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637938",
+      "source": "이투데이",
+      "source_body_digest": "52ee3ad1f660e6abb0790d0c30b770f186993f00856455569e1b571adfece448",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T14:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]셀트리온, 日·亞·중남미 시장서 '바이오시밀러 제품군' 확대",
+      "telegram_core_fact": "회사는 미국과 유럽 등 주요시장에서의 판매 확대와 고수익 후속제품군 성장이 실적을 견인한 가운데, 아시아와 중남미에서도 주력제품들의 높은 시장점유율과 신규제품출시 확대를 통해 추가 성장기반을 강화하고 있다고 설명했다.",
+      "title": "[BioS]셀트리온, 日·亞·중남미 시장서 '바이오시밀러 제품군' 확대"
     },
     "original:d5f6de0d3071e7c9a1b449aa": {
       "first_seen_kst": "2026-09-29T17:06:52+09:00",
@@ -415148,6 +415706,27 @@
       "source_title": "오텍그룹, 노이리움과 냉동·냉장 설비 공급 협약 체결",
       "telegram_core_fact": "오텍그룹 계열사 오텍캐리어와 씨알케이가 건축·인테리어용 내·외장재 기업인 노이리움에 설비를 공급한다.",
       "title": "오텍그룹, 노이리움과 냉동·냉장 설비 공급 협약 체결"
+    },
+    "source_fact:01dd7898423c242ce1f837eb": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019159051003",
+      "source": "연합뉴스",
+      "source_body_digest": "7f8d3f7f0fb77a33361055e9c6d8626eb1b173c701c2d05590f2cc38bbd1f80f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23fc0a8b9a1146785aefbafd0bd6fa4696e21ace041610c659667fd1b19b995",
+      "source_fact_keys": [
+        "source_fact:v1:510eee386ea744fb35a9a83d29ac58a1c85cabd9daedddef4c995fb4c4b155a1",
+        "source_fact:v1:904d4a73152009fd0ce020030c3824f0f0cc079474f8fb848c8e8797ef499789"
+      ],
+      "source_published_kst": "2026-10-20T11:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스",
+      "telegram_core_fact": "전세 거래가 급감한 배경에는 전세자금 대출 규제 강화와 전세 매물 부족, 기존 세입자의 계약 갱신 확대 등이 복합적으로 작용한 것으로 분석된다.",
+      "title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스"
     },
     "source_fact:01dd8f04cb9e4b8246d7f4b5": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
@@ -446585,6 +447164,27 @@
       "source_title": "IMF, 올해 세계성장률 3.1%로 소폭 상향…",
       "telegram_core_fact": "호르무즈 해협 봉쇄 기간이 당초 전망보다 더 길어지고 대신 해협이 재개통된 뒤에는 더 큰 반등이 예상됨에 따라 지난 4월 전망치에 비해 올해 성장률은 2.2%P 하향 조정하고, 내년 성장률을 1.7%P 상향 조정한 것이라고 IMF는 설명했다.",
       "title": "IMF, 올해 세계성장률 3.1%로 소폭 상향…"
+    },
+    "source_fact:13b1ba8aad5e4d7dc6a08a69": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.hankyung.com/article/202610203413i",
+      "source": "한국경제",
+      "source_body_digest": "bf352ccfab00e6d8e9f7e407a35134423726188540d25535814d135181f42ae5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:359a558cf75f63c036c5ca8f234f935e4f45f15b908f21121e080fcfdbe8ff5c",
+      "source_fact_keys": [
+        "source_fact:v1:3acf1b34bc9df280203032d87e38c6294d9e3e44e9d1b85041b3664211c248e5",
+        "source_fact:v1:c4949ee1378e6bdb1015413fc2b0542a3385c408f73d7149e01719bdae8ea9ae"
+      ],
+      "source_published_kst": "2026-10-20T14:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\"",
+      "telegram_core_fact": "한화에어로스페이스와 현대로템, LIG디펜스앤에어로스페이스, 한화시스템 등 주요 방산주 네 곳의 시가총액이 하루 새 10조원 넘게 줄었다. 환율 하락과 수출 물량의 매출 반영 지연으로 3분기 실적 기대가 낮아진 가운데 신규 수주마저 늦어지면서다.",
+      "title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\""
     },
     "source_fact:13b32355686def4c955bb77f": {
       "first_seen_kst": "2026-10-12T00:21:39+09:00",
@@ -479746,6 +480346,26 @@
       "telegram_core_fact": "2029년까지 독자적인 소버린 AI 기술 체계를 구축하는 국가들은 AI 인프라에 국내총생산(GDP)의 최소 1%를 투자해야 할 것으로 내다봤다.",
       "title": "\"AI 주권에 GDP 1% 투자 필요…핵심은 GPU·전력 확보\""
     },
+    "source_fact:25f3801d7eba204aa6227478": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04054086645614888",
+      "source": "이데일리",
+      "source_body_digest": "fd4c9a871304f0c8466416b932b9c977c9d81dd669ea593b8cf31b171bd48334",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f55978f0fd8fd502daf7c05a1627d5085044e6f1517887d58d8ff45dd7a8ad45",
+      "source_fact_keys": [
+        "source_fact:v1:b88d4e66d800d10d2f52e9835b25f12dd194c988bad14e0f1764b7c21e2f5e49"
+      ],
+      "source_published_kst": "2026-10-20T15:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔티드, 동아ST와 손잡고 디지털 의료기기 시장 공략",
+      "telegram_core_fact": "물리 데이터 전문기업 솔티드가 동아쏘시오그룹 계열 제약사 동아ST와 손잡고 신체기능평가 솔루션 ‘뉴로게이트’의 의료기관 공급 확대에 나선다.",
+      "title": "솔티드, 동아ST와 손잡고 디지털 의료기기 시장 공략"
+    },
     "source_fact:25f7c9cf59296d99dd8226ee": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -480808,6 +481428,27 @@
       "source_title": "공공시장 입지 확대 나서는 주연테크, 해군 PC 공급사업 수주",
       "telegram_core_fact": "PC 제조기업 '주연테크'가 해군본부와 약 44억원 사무자동화장비 공급 계약을 최근 체결하며 공공부문 사업 확대에 나섰다.",
       "title": "공공시장 입지 확대 나서는 주연테크, 해군 PC 공급사업 수주"
+    },
+    "source_fact:269567cf0cba8d27f2e150d5": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019159051003",
+      "source": "연합뉴스",
+      "source_body_digest": "7f8d3f7f0fb77a33361055e9c6d8626eb1b173c701c2d05590f2cc38bbd1f80f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23fc0a8b9a1146785aefbafd0bd6fa4696e21ace041610c659667fd1b19b995",
+      "source_fact_keys": [
+        "source_fact:v1:510eee386ea744fb35a9a83d29ac58a1c85cabd9daedddef4c995fb4c4b155a1",
+        "source_fact:v1:904d4a73152009fd0ce020030c3824f0f0cc079474f8fb848c8e8797ef499789"
+      ],
+      "source_published_kst": "2026-10-20T11:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스",
+      "telegram_core_fact": "전세 거래가 급감한 배경에는 전세자금 대출 규제 강화와 전세 매물 부족, 기존 세입자의 계약 갱신 확대 등이 복합적으로 작용한 것으로 분석된다.",
+      "title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스"
     },
     "source_fact:26982db77d9d5d69c52630bf": {
       "first_seen_kst": "2026-10-16T19:25:42+09:00",
@@ -502753,6 +503394,30 @@
       "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 특별경영성과급은 내년 3월 정기주주총회와 이사회 의결을 거쳐 3월 말~4월 초 지급될 예정이다.",
       "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은"
     },
+    "source_fact:3280f3adacc8770fd109b378": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177878",
+      "source": "매일경제",
+      "source_body_digest": "ea4175b0109ace7677bc744af917e420e35f3b82f187f7cffde492d87e145361",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17dac36858c8ee3b0f9834fa95148f83c71aec3209985edb731c8e6ac09e24ed",
+      "source_fact_keys": [
+        "source_fact:v1:41a6ae4ad313ff08e391e0414666fd1e418f0e13a516e9edd557491685f25434",
+        "source_fact:v1:5435ba224cad55511531529db84a57c0978e418e922277c716415be7fea80a99",
+        "source_fact:v1:60cf1a9b26be86772ae615736ee488d8e53d5095f205167e3a5b34e2c4a21346",
+        "source_fact:v1:894342d785b60e98afcf598a42283b0b375c91185602aa1420f4cd0cd0daa68b",
+        "source_fact:v1:cb1689457062992f2e2b08069c651c128d067e1c780413c0f240f8bd040386f3"
+      ],
+      "source_published_kst": "2026-10-20T22:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가",
+      "telegram_core_fact": "보안 로봇 기업 나이트스코프(KSCP)가 9월 30일 종료된 2026년 3분기 잠정 연결 매출액이 약 870만 달러로 전년 동기 310만 달러 대비 177% 증가했다고 20일 발표했다.",
+      "title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가"
+    },
     "source_fact:3282cd2b40909ed476d21978": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
       "lanes": {
@@ -515047,6 +515712,27 @@
       "source_title": "수은 행장, 국제금융공사 총재와 글로벌 공급망 협력 논의 | 연합뉴스",
       "telegram_core_fact": "황 행장은 앞서 15일 영국수출금융청(UKEF)의 팀 리드 청장과 만나 탈탄소 전환, 핵심 광물 공급망, 방산 등 공동 관심 분야에서 금융 협력 확대 방안을 논의했다.",
       "title": "수은 행장, 국제금융공사 총재와 글로벌 공급망 협력 논의 | 연합뉴스"
+    },
+    "source_fact:3a20fc6044a8891847c68966": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.hankyung.com/article/202610203413i",
+      "source": "한국경제",
+      "source_body_digest": "bf352ccfab00e6d8e9f7e407a35134423726188540d25535814d135181f42ae5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:359a558cf75f63c036c5ca8f234f935e4f45f15b908f21121e080fcfdbe8ff5c",
+      "source_fact_keys": [
+        "source_fact:v1:3acf1b34bc9df280203032d87e38c6294d9e3e44e9d1b85041b3664211c248e5",
+        "source_fact:v1:c4949ee1378e6bdb1015413fc2b0542a3385c408f73d7149e01719bdae8ea9ae"
+      ],
+      "source_published_kst": "2026-10-20T14:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\"",
+      "telegram_core_fact": "한화에어로스페이스와 현대로템, LIG디펜스앤에어로스페이스, 한화시스템 등 주요 방산주 네 곳의 시가총액이 하루 새 10조원 넘게 줄었다. 환율 하락과 수출 물량의 매출 반영 지연으로 3분기 실적 기대가 낮아진 가운데 신규 수주마저 늦어지면서다.",
+      "title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\""
     },
     "source_fact:3a2667ac2fe041457910acc6": {
       "first_seen_kst": "2026-10-15T07:35:02+09:00",
@@ -558576,6 +559262,26 @@
       "source_title": "“호르무즈 막힌 사이 북극항로 뚫었다”…韓 컨테이너선 50일 만에 귀환",
       "telegram_core_fact": "특히 최근 이란 전쟁과 호르무즈 해협 봉쇄 등 중동발 물류 위기로 기존 수에즈 운하 노선의 불확실성이 커진 상황에서, 리드타임을 대폭 줄일 수 있는 북극항로가 유력한 대안으로 떠오른다.",
       "title": "“호르무즈 막힌 사이 북극항로 뚫었다”…韓 컨테이너선 50일 만에 귀환"
+    },
+    "source_fact:52864767109aa86aae029dbb": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177884",
+      "source": "매일경제",
+      "source_body_digest": "42f21531a6c20751a9a6a918d2006e0301688b1eb2207fde4eb898666d46fb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc04a1b34eabceb6228f24003e89524bf4cde797aafbeb96361b08ae2c11ce0a",
+      "source_fact_keys": [
+        "source_fact:v1:da648aaa5b127c20b94c637c9a6460dabfe83c273a1c3ee8a2601917e1f0e0ef"
+      ],
+      "source_published_kst": "2026-10-20T22:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "노스롭그루먼, 3분기 호실적에 연간 가이던스 상향 소식에 강세",
+      "telegram_core_fact": "올해 매출과 조정 EPS 가이던스를 상향해 실적 개선 기대가 커지며 투자심리가 살아나고 있습니다.",
+      "title": "노스롭그루먼, 3분기 호실적에 연간 가이던스 상향 소식에 강세"
     },
     "source_fact:52891dddb67d4d3e33055e0d": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -637178,6 +637884,30 @@
       "source_published_kst": "2026-10-06T13:10+09:00",
       "title": "서남권 반도체 팹은 제2 반도체 생산거점…풍부한 에너지 활용해야"
     },
+    "source_fact:7e4e2b1a33ce733859896cff": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177878",
+      "source": "매일경제",
+      "source_body_digest": "ea4175b0109ace7677bc744af917e420e35f3b82f187f7cffde492d87e145361",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17dac36858c8ee3b0f9834fa95148f83c71aec3209985edb731c8e6ac09e24ed",
+      "source_fact_keys": [
+        "source_fact:v1:41a6ae4ad313ff08e391e0414666fd1e418f0e13a516e9edd557491685f25434",
+        "source_fact:v1:5435ba224cad55511531529db84a57c0978e418e922277c716415be7fea80a99",
+        "source_fact:v1:60cf1a9b26be86772ae615736ee488d8e53d5095f205167e3a5b34e2c4a21346",
+        "source_fact:v1:894342d785b60e98afcf598a42283b0b375c91185602aa1420f4cd0cd0daa68b",
+        "source_fact:v1:cb1689457062992f2e2b08069c651c128d067e1c780413c0f240f8bd040386f3"
+      ],
+      "source_published_kst": "2026-10-20T22:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가",
+      "telegram_core_fact": "보안 로봇 기업 나이트스코프(KSCP)가 9월 30일 종료된 2026년 3분기 잠정 연결 매출액이 약 870만 달러로 전년 동기 310만 달러 대비 177% 증가했다고 20일 발표했다.",
+      "title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가"
+    },
     "source_fact:7e53342c021d3ea9cea9fc83": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
       "lanes": {
@@ -652676,6 +653406,30 @@
       "source_title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\"",
       "telegram_core_fact": "러시아와 에너지 시설 공격을 서로 중단하는 방안을 논의하러 미국을 찾은 우크라이나 대표단이 협상장에서 러시아산 경유 수출 제재 완화 방침을 전달받고 “함정처럼 느껴졌다”고 반발한 것으로 전해졌다.",
       "title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\""
+    },
+    "source_fact:87bf42e8587f542120081199": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177878",
+      "source": "매일경제",
+      "source_body_digest": "ea4175b0109ace7677bc744af917e420e35f3b82f187f7cffde492d87e145361",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17dac36858c8ee3b0f9834fa95148f83c71aec3209985edb731c8e6ac09e24ed",
+      "source_fact_keys": [
+        "source_fact:v1:41a6ae4ad313ff08e391e0414666fd1e418f0e13a516e9edd557491685f25434",
+        "source_fact:v1:5435ba224cad55511531529db84a57c0978e418e922277c716415be7fea80a99",
+        "source_fact:v1:60cf1a9b26be86772ae615736ee488d8e53d5095f205167e3a5b34e2c4a21346",
+        "source_fact:v1:894342d785b60e98afcf598a42283b0b375c91185602aa1420f4cd0cd0daa68b",
+        "source_fact:v1:cb1689457062992f2e2b08069c651c128d067e1c780413c0f240f8bd040386f3"
+      ],
+      "source_published_kst": "2026-10-20T22:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가",
+      "telegram_core_fact": "보안 로봇 기업 나이트스코프(KSCP)가 9월 30일 종료된 2026년 3분기 잠정 연결 매출액이 약 870만 달러로 전년 동기 310만 달러 대비 177% 증가했다고 20일 발표했다.",
+      "title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가"
     },
     "source_fact:87c32f978bb6dda75a6ee056": {
       "first_seen_kst": "2026-10-13T13:27:52+09:00",
@@ -684817,6 +685571,30 @@
       ],
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
+    },
+    "source_fact:9a666e24050358e2ed8660e5": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177878",
+      "source": "매일경제",
+      "source_body_digest": "ea4175b0109ace7677bc744af917e420e35f3b82f187f7cffde492d87e145361",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17dac36858c8ee3b0f9834fa95148f83c71aec3209985edb731c8e6ac09e24ed",
+      "source_fact_keys": [
+        "source_fact:v1:41a6ae4ad313ff08e391e0414666fd1e418f0e13a516e9edd557491685f25434",
+        "source_fact:v1:5435ba224cad55511531529db84a57c0978e418e922277c716415be7fea80a99",
+        "source_fact:v1:60cf1a9b26be86772ae615736ee488d8e53d5095f205167e3a5b34e2c4a21346",
+        "source_fact:v1:894342d785b60e98afcf598a42283b0b375c91185602aa1420f4cd0cd0daa68b",
+        "source_fact:v1:cb1689457062992f2e2b08069c651c128d067e1c780413c0f240f8bd040386f3"
+      ],
+      "source_published_kst": "2026-10-20T22:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가",
+      "telegram_core_fact": "보안 로봇 기업 나이트스코프(KSCP)가 9월 30일 종료된 2026년 3분기 잠정 연결 매출액이 약 870만 달러로 전년 동기 310만 달러 대비 177% 증가했다고 20일 발표했다.",
+      "title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가"
     },
     "source_fact:9a679015f4ac8975c1fd8945": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
@@ -722714,6 +723492,30 @@
       "source_title": "원안위, SMR 규제 인력·예산 도마…최원호 \"최소 1개 국 필요\"(종합)",
       "telegram_core_fact": "SMR에 대해서는 \"심사 전담조직을 구성하고 전용 심사지침을 개정해 표준설계인가의 안전성을 심사하고 있다\"며 \"올해 2월 수립한 SMR 규제체계 구축 로드맵을 충실히 이행하겠다\"고 강조했다.",
       "title": "원안위, SMR 규제 인력·예산 도마…최원호 \"최소 1개 국 필요\"(종합)"
+    },
+    "source_fact:aee3aad4f39d29a8a7cb18d8": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177878",
+      "source": "매일경제",
+      "source_body_digest": "ea4175b0109ace7677bc744af917e420e35f3b82f187f7cffde492d87e145361",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17dac36858c8ee3b0f9834fa95148f83c71aec3209985edb731c8e6ac09e24ed",
+      "source_fact_keys": [
+        "source_fact:v1:41a6ae4ad313ff08e391e0414666fd1e418f0e13a516e9edd557491685f25434",
+        "source_fact:v1:5435ba224cad55511531529db84a57c0978e418e922277c716415be7fea80a99",
+        "source_fact:v1:60cf1a9b26be86772ae615736ee488d8e53d5095f205167e3a5b34e2c4a21346",
+        "source_fact:v1:894342d785b60e98afcf598a42283b0b375c91185602aa1420f4cd0cd0daa68b",
+        "source_fact:v1:cb1689457062992f2e2b08069c651c128d067e1c780413c0f240f8bd040386f3"
+      ],
+      "source_published_kst": "2026-10-20T22:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가",
+      "telegram_core_fact": "보안 로봇 기업 나이트스코프(KSCP)가 9월 30일 종료된 2026년 3분기 잠정 연결 매출액이 약 870만 달러로 전년 동기 310만 달러 대비 177% 증가했다고 20일 발표했다.",
+      "title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가"
     },
     "source_fact:aee710ebf2cdd5a03e3e5bd4": {
       "first_seen_kst": "2026-10-19T08:00:35+09:00",
@@ -860012,6 +860814,26 @@
       "telegram_core_fact": "금융당국이 고빈도매매(HFT·High Frequency Trading) 보완 방안 검토에 착수한 가운데 파생시장에 적용되는 과다호가부담금, 스피드범프(Speed Bump·호가 지연제) 등이 규제책으로 거론된다.",
       "title": "금융당국, '초단타' HFT 겨냥…과다호가부담금·호가 지연제 고심"
     },
+    "source_fact:fc6050f6084a3726335cb306": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177882",
+      "source": "매일경제",
+      "source_body_digest": "94c1781d3009df09712d74ab4bb9735171048dc4e70cac10e6cdd7ccc5c94357",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ec8321dcd600c84f6a5a3fc0434e1f1a4fbe99f0f95878fb7f72ad1b0cdcdde",
+      "source_fact_keys": [
+        "source_fact:v1:2728b6058f41b50a8d5a5f3d9b231da095cc33df9b8d08e97e1b6b3f6334b5ab"
+      ],
+      "source_published_kst": "2026-10-20T22:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "해즈브로, 3분기 매출 15% 증가에 연간 전망 상향·자사주 매입 확대 소식",
+      "telegram_core_fact": "3분기 순매출이 15억9530만 달러로 15% 늘고 조정 EPS가 2.90달러로 크게 증가했습니다.",
+      "title": "해즈브로, 3분기 매출 15% 증가에 연간 전망 상향·자사주 매입 확대 소식"
+    },
     "source_fact:fc648d2b1316681d428a6432": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
       "lanes": {
@@ -871835,6 +872657,26 @@
       "telegram_core_fact": "화물 적재 공간을 갖춘 카고바이크로 제품군을 확대하면 개인 이동을 넘어 기업 간 거래(B2B) 기반 라스트마일 물류 시장까지 진출할 수 있다.",
       "title": "지바이크, 대만 기업과 '수소 카고바이크' 공동 개발…생활물류 시장 공략"
     },
+    "title:0c42af8d36eae584e6ed90b6": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177882",
+      "source": "매일경제",
+      "source_body_digest": "94c1781d3009df09712d74ab4bb9735171048dc4e70cac10e6cdd7ccc5c94357",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ec8321dcd600c84f6a5a3fc0434e1f1a4fbe99f0f95878fb7f72ad1b0cdcdde",
+      "source_fact_keys": [
+        "source_fact:v1:2728b6058f41b50a8d5a5f3d9b231da095cc33df9b8d08e97e1b6b3f6334b5ab"
+      ],
+      "source_published_kst": "2026-10-20T22:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "해즈브로, 3분기 매출 15% 증가에 연간 전망 상향·자사주 매입 확대 소식",
+      "telegram_core_fact": "3분기 순매출이 15억9530만 달러로 15% 늘고 조정 EPS가 2.90달러로 크게 증가했습니다.",
+      "title": "해즈브로, 3분기 매출 15% 증가에 연간 전망 상향·자사주 매입 확대 소식"
+    },
     "title:0c49f3506ecc0c1d89bdc294": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -882783,6 +883625,26 @@
       "source_title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여",
       "telegram_core_fact": "1·2차 교육에서는 소송과 강제집행 등 초기 권리구제 절차를, 3·4차 교육에서는 경·공매와 배당을 통한 보증금 회수 방안을 다뤘다.",
       "title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여"
+    },
+    "title:246e571e135188b8de0032cf": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04054086645614888",
+      "source": "이데일리",
+      "source_body_digest": "fd4c9a871304f0c8466416b932b9c977c9d81dd669ea593b8cf31b171bd48334",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f55978f0fd8fd502daf7c05a1627d5085044e6f1517887d58d8ff45dd7a8ad45",
+      "source_fact_keys": [
+        "source_fact:v1:b88d4e66d800d10d2f52e9835b25f12dd194c988bad14e0f1764b7c21e2f5e49"
+      ],
+      "source_published_kst": "2026-10-20T15:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔티드, 동아ST와 손잡고 디지털 의료기기 시장 공략",
+      "telegram_core_fact": "물리 데이터 전문기업 솔티드가 동아쏘시오그룹 계열 제약사 동아ST와 손잡고 신체기능평가 솔루션 ‘뉴로게이트’의 의료기관 공급 확대에 나선다.",
+      "title": "솔티드, 동아ST와 손잡고 디지털 의료기기 시장 공략"
     },
     "title:246ea032141a9f245e23407c": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
@@ -909926,6 +910788,27 @@
       "source": "이투데이",
       "title": "구미시, LB세미콘 '전력반도체 증설투자' 유치"
     },
+    "title:5f5ae17f1b6a6b929e2f83c8": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261019159051003",
+      "source": "연합뉴스",
+      "source_body_digest": "7f8d3f7f0fb77a33361055e9c6d8626eb1b173c701c2d05590f2cc38bbd1f80f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23fc0a8b9a1146785aefbafd0bd6fa4696e21ace041610c659667fd1b19b995",
+      "source_fact_keys": [
+        "source_fact:v1:510eee386ea744fb35a9a83d29ac58a1c85cabd9daedddef4c995fb4c4b155a1",
+        "source_fact:v1:904d4a73152009fd0ce020030c3824f0f0cc079474f8fb848c8e8797ef499789"
+      ],
+      "source_published_kst": "2026-10-20T11:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스",
+      "telegram_core_fact": "전세 거래가 급감한 배경에는 전세자금 대출 규제 강화와 전세 매물 부족, 기존 세입자의 계약 갱신 확대 등이 복합적으로 작용한 것으로 분석된다.",
+      "title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스"
+    },
     "title:5f5fd74846955ed4c8469c19": {
       "first_seen_kst": "2026-09-27T04:31:07+09:00",
       "lanes": {
@@ -929266,6 +930149,30 @@
       "telegram_core_fact": "이라크가 트럭으로 원유를 시리아를 거쳐 수출하는 방식이 이르면 이달 중순 시작될 전망이라고 블룸버그 통신이 7일(현지시간) 보도했다.",
       "title": "이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스"
     },
+    "title:8a1c2a0c9c8b9fefc42a8695": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177878",
+      "source": "매일경제",
+      "source_body_digest": "ea4175b0109ace7677bc744af917e420e35f3b82f187f7cffde492d87e145361",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17dac36858c8ee3b0f9834fa95148f83c71aec3209985edb731c8e6ac09e24ed",
+      "source_fact_keys": [
+        "source_fact:v1:41a6ae4ad313ff08e391e0414666fd1e418f0e13a516e9edd557491685f25434",
+        "source_fact:v1:5435ba224cad55511531529db84a57c0978e418e922277c716415be7fea80a99",
+        "source_fact:v1:60cf1a9b26be86772ae615736ee488d8e53d5095f205167e3a5b34e2c4a21346",
+        "source_fact:v1:894342d785b60e98afcf598a42283b0b375c91185602aa1420f4cd0cd0daa68b",
+        "source_fact:v1:cb1689457062992f2e2b08069c651c128d067e1c780413c0f240f8bd040386f3"
+      ],
+      "source_published_kst": "2026-10-20T22:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가",
+      "telegram_core_fact": "보안 로봇 기업 나이트스코프(KSCP)가 9월 30일 종료된 2026년 3분기 잠정 연결 매출액이 약 870만 달러로 전년 동기 310만 달러 대비 177% 증가했다고 20일 발표했다.",
+      "title": "나이트스코프, 3분기 잠정 매출 870만 달러..전년비 177% 증가"
+    },
     "title:8a213876bc4bec87b84e3fe6": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
       "lanes": {
@@ -932434,6 +933341,27 @@
       "source_title": "‘막차’ 탄 3대 주주가 판 뒤집었다… 중앙일보 우협에 다우·CJ 컨소",
       "telegram_core_fact": "중앙일보 인수 우선협상대상자로 다우키움그룹과 CJ그룹 컨소시엄이 선정됐다.",
       "title": "‘막차’ 탄 3대 주주가 판 뒤집었다… 중앙일보 우협에 다우·CJ 컨소"
+    },
+    "title:914aa8592946ede63cd540b7": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.hankyung.com/article/202610203413i",
+      "source": "한국경제",
+      "source_body_digest": "bf352ccfab00e6d8e9f7e407a35134423726188540d25535814d135181f42ae5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:359a558cf75f63c036c5ca8f234f935e4f45f15b908f21121e080fcfdbe8ff5c",
+      "source_fact_keys": [
+        "source_fact:v1:3acf1b34bc9df280203032d87e38c6294d9e3e44e9d1b85041b3664211c248e5",
+        "source_fact:v1:c4949ee1378e6bdb1015413fc2b0542a3385c408f73d7149e01719bdae8ea9ae"
+      ],
+      "source_published_kst": "2026-10-20T14:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\"",
+      "telegram_core_fact": "한화에어로스페이스와 현대로템, LIG디펜스앤에어로스페이스, 한화시스템 등 주요 방산주 네 곳의 시가총액이 하루 새 10조원 넘게 줄었다. 환율 하락과 수출 물량의 매출 반영 지연으로 3분기 실적 기대가 낮아진 가운데 신규 수주마저 늦어지면서다.",
+      "title": "하루만에 방산업종서 10조원 '증발'…\"미래가 안보인다\""
     },
     "title:914e305c14c413abfadd5cfb": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
@@ -952154,6 +953082,26 @@
       "source_published_kst": "2026-10-06T22:58+09:00",
       "title": "우크라, '한국의 러 석유공급' 보도에 韓 비판 | 연합뉴스"
     },
+    "title:bd1caec04f3066dc7f7ad25e": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1177884",
+      "source": "매일경제",
+      "source_body_digest": "42f21531a6c20751a9a6a918d2006e0301688b1eb2207fde4eb898666d46fb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc04a1b34eabceb6228f24003e89524bf4cde797aafbeb96361b08ae2c11ce0a",
+      "source_fact_keys": [
+        "source_fact:v1:da648aaa5b127c20b94c637c9a6460dabfe83c273a1c3ee8a2601917e1f0e0ef"
+      ],
+      "source_published_kst": "2026-10-20T22:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "노스롭그루먼, 3분기 호실적에 연간 가이던스 상향 소식에 강세",
+      "telegram_core_fact": "올해 매출과 조정 EPS 가이던스를 상향해 실적 개선 기대가 커지며 투자심리가 살아나고 있습니다.",
+      "title": "노스롭그루먼, 3분기 호실적에 연간 가이던스 상향 소식에 강세"
+    },
     "title:bd34160fe9a52bcabba764a5": {
       "first_seen_kst": "2026-09-27T19:02:46+09:00",
       "lanes": {
@@ -963092,6 +964040,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261002143000008",
       "source": "연합뉴스",
       "title": "국고채 금리 일제히 하락…3년물 연 3.937% | 연합뉴스"
+    },
+    "title:d5f3c9d840d1f0d193e56775": {
+      "first_seen_kst": "2026-10-20T23:08:51+09:00",
+      "lanes": {
+        "live": "2026-10-20T23:08:51+09:00"
+      },
+      "last_seen_kst": "2026-10-20T23:08:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2637938",
+      "source": "이투데이",
+      "source_body_digest": "52ee3ad1f660e6abb0790d0c30b770f186993f00856455569e1b571adfece448",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T14:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]셀트리온, 日·亞·중남미 시장서 '바이오시밀러 제품군' 확대",
+      "telegram_core_fact": "회사는 미국과 유럽 등 주요시장에서의 판매 확대와 고수익 후속제품군 성장이 실적을 견인한 가운데, 아시아와 중남미에서도 주력제품들의 높은 시장점유율과 신규제품출시 확대를 통해 추가 성장기반을 강화하고 있다고 설명했다.",
+      "title": "[BioS]셀트리온, 日·亞·중남미 시장서 '바이오시밀러 제품군' 확대"
     },
     "title:d5f6de0d3071e7c9a1b449aa": {
       "first_seen_kst": "2026-09-29T17:06:52+09:00",
@@ -981678,5 +982644,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-20T22:42:26+09:00"
+  "updated_at_kst": "2026-10-20T23:08:51+09:00"
 }
