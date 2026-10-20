@@ -168,7 +168,7 @@ if dep1_dir == '증가' and cma1_dir == '증가' and mmf1_dir == '감소' and cr
         f"• <b>종합</b>: <b>당일 현금성 잔액 개선 조합</b>으로 관찰합니다. "
         f"투자자예탁금 {fmt(dep1)}와 CMA {fmt(cma1)}가 늘고, MMF는 {fmt(mmf1)} 감소했으며 신용융자는 {fmt(cr1)} 감소했습니다. "
         "신용융자 외 차입과 실제 주식 매매자금은 이 통계로 확인되지 않습니다. "
-        f"다만 5D 투자자예탁금은 아직 {fmt(dep5)}라 최근 5개 공표구간 전체 추세가 완전히 반전됐다고 보기는 이릅니다."
+        f"5D 투자자예탁금은 {fmt(dep5)}로 {dep5_dir}입니다. 당일 조합과 5개 공표구간 누적 변화를 구분해 관찰합니다."
     )
 elif dep5_dir == '감소' and cr5_dir == '증가':
     summary_line = (
@@ -183,9 +183,34 @@ elif dep5_dir == '증가' and cr5_dir != '증가':
     )
 else:
     summary_line = (
-        "• <b>종합</b>: 당일과 5개 공표구간의 방향이 아직 완전히 일치하지 않습니다. "
-        "당일 현금성 매수여력 변화와 5D 예탁금 추세를 분리해 보고, 다음 공식값에서 같은 방향이 이어지는지 확인합니다."
+        "• <b>종합</b>: 다음 공식값에서 각 항목의 방향이 이어지는지 확인합니다. "
+        "잔액 변화만으로 실제 주식 매매나 동일 자금의 이동을 확인할 수 없습니다."
     )
+
+# Compare each series across periods; signs across different products need not
+# be identical for all four series to retain their own daily/five-period trend.
+period_names = {'deposit': '예탁금', 'mmf': 'MMF', 'cma': 'CMA', 'credit': '신용융자'}
+period_pairs = {
+    key: (direction(v[key]['d1'], key), direction(v[key]['d5'], key))
+    for key in period_names
+}
+reversed_periods = [name for key, name in period_names.items()
+                    if set(period_pairs[key]) == {'증가', '감소'}]
+flat_changes = [name for key, name in period_names.items()
+                if period_pairs[key][0] != period_pairs[key][1] and '보합' in period_pairs[key]]
+period_notes = []
+if reversed_periods:
+    period_notes.append(f"1D와 5D의 방향이 반대인 항목은 {', '.join(reversed_periods)}입니다.")
+if flat_changes:
+    period_notes.append(f"1D와 5D의 보합 여부가 다른 항목은 {', '.join(flat_changes)}입니다.")
+if not period_notes:
+    period_notes.append(
+        "네 지표 모두 1D와 5D 기준으로 보합입니다."
+        if all(pair == ('보합', '보합') for pair in period_pairs.values()) else
+        "네 지표의 1D와 5D 방향은 각 항목별로 일치합니다."
+    )
+period_context = ' '.join(period_notes)
+summary_line = summary_line.replace('• <b>종합</b>: ', f'• <b>종합</b>: {period_context} ', 1)
 
 new_section = '\n'.join([
     '<b>현재 판정</b>',

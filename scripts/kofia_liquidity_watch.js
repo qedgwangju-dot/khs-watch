@@ -12,7 +12,7 @@ const STATUS_FILE = path.join(OUT_DIR, 'kofia_liquidity_status.md');
 const PENDING_FILE = path.join(OUT_DIR, 'kofia_liquidity_pending_state.json');
 const EVIDENCE_FILE = path.join(OUT_DIR, 'kofia_liquidity_source_evidence.json');
 const DELIVERY_FILE = path.join(OUT_DIR, 'kofia_liquidity_delivery.json');
-const MESSAGE_VERSION = 'kofia-balances-20261013-v2';
+const MESSAGE_VERSION = 'kofia-balances-20261020-v3';
 const ORIGIN = 'https://freesis.kofia.or.kr';
 let sourceEvidence;
 
@@ -343,7 +343,7 @@ async function main() {
     `• 비교 기준: 1D ${fmtDate(referenceDates[1])} → ${fmtDate(referenceDates[0])} / 5D ${fmtDate(referenceDates[5])} → ${fmtDate(referenceDates[0])}`,
     `• 1D는 직전 공표일, 5D는 최근 5개 공표구간의 잔액 차이`,
     ...(narrativeCorrection ? [
-      `• <b>정정 사유</b>: 잔액만으로 위험자산 이동 가능성·수급의 질을 평가하던 문구와 비교 기준 설명을 수정. 공식 원값은 바뀌지 않았습니다.`
+      `• <b>정정 사유</b>: 네 지표의 1D·5D 방향 일치 여부를 실제 원값으로 비교하도록 종합 문구를 수정했습니다. 공식 원값은 바뀌지 않았습니다.`
     ] : []),
     ``,
     `<b>무엇이 달라졌나</b>`,
