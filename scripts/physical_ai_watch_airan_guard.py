@@ -6780,7 +6780,11 @@ def _ae_category(text: str, group: str) -> str:
     if group=="atlas_actuator_bom":
         if _ATLAS_SIGNED_NEW.search(text):
             return "Atlas 액추에이터 · 양산 구매계약 직접확인"
-        if re.search(r"\b(?:Boston\s*Dynamics|보스턴다이내믹스)\s*공식\s*발표",text,re.I):
+        if (re.search(
+                r"(?:보스턴다이내믹스|Boston\s*Dynamics).{0,100}"
+                r"(?:Atlas|아틀라스).{0,100}(?:BOM|액추에이터|actuator)"
+                r".{0,90}(?:공식\s*발표|official\s*announcement)",text,re.I
+            ) and not re.search(r"Fortune|CFO\s*직접\s*인터뷰|CFO:",text,re.I)):
             return "Atlas 액추에이터 · 제조사 직접 원가비중 확인"
         return "Atlas 액추에이터 · CFO 부품원가 70% 발언"
     if group=="eka_dexterous_funding":
