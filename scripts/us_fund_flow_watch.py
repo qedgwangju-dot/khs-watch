@@ -1263,6 +1263,17 @@ def goldman_prime_public_article(text, published):
             r"\b(?:the\s+)?(?:tech(?:nology)?\s+)?sector\s+accounts\s+for\s+"
             r"(\d{1,2}(?:\.\d+)?)\s*%\s+of\s+Goldman", text, re.I,
         )
+    if not a:
+        a = re.search(
+            r"\btechnology\s+(?:retained|held|has)\s+(?:a\s+)?"
+            r"(\d{1,2}(?:\.\d+)?)\s*%\s+net\s+allocation", text, re.I,
+        )
+    if not a:
+        a = re.search(
+            r"\btech(?:nology)?\s+(?:still\s+)?"
+            r"(?:represents|makes\s+up|accounts\s+for)\s+"
+            r"(\d{1,2}(?:\.\d+)?)\s*%\s+of\s+Goldman", text, re.I,
+        )
     lev = re.search(
         r"\bnet\s+leverage\b.{0,100}?(\d{1,2}(?:\.\d+)?)\s*%", text, re.I,
     )
@@ -1282,21 +1293,44 @@ def parse_goldman_prime_public():
         {
             "title": "Hedge funds cut tech stocks at record pace, Goldman says",
             "link": "https://www.investing.com/news/stock-market-news/hedge-funds-cut-tech-stocks-at-record-pace-goldman-says-4958101",
-            "pub": "Mon, 19 Oct 2026 13:15:00 GMT",
+            "pub": "Mon, 19 Oct 2026",
             "desc": "Goldman Sachs prime brokerage hedges and leverage",
         },
         {
             "title": "Hedge funds slash tech exposure at fastest pace in a decade",
             "link": "https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade",
-            "pub": "Tue, 20 Oct 2026 10:03:00 GMT",
+            "pub": "Tue, 20 Oct 2026",
             "desc": "Goldman Sachs prime book technology leverage",
         },
+        {
+            "title": "Goldman Clients Cut Tech Positions by Largest Percentage in Records Dating to 2016",
+            "link": "https://www.tokenpost.com/news/investing/35230",
+            "pub": "Mon, 19 Oct 2026",
+            "desc": "Goldman Sachs hedge funds prime brokerage technology positions",
+        },
+        {
+            "title": "Hedge funds cut tech stocks at the fastest pace in at least a decade, Goldman data shows",
+            "link": "https://primexbt.com/news/hedge-funds-cut-tech-stocks-at-the-fastest-pace-in-at-least-a-decade-goldman-dat/",
+            "pub": "Mon, 19 Oct 2026",
+            "desc": "Goldman Sachs prime desk technology net exposure leverage",
+        },
+        {
+            "title": "Hedge Funds Dump Tech at the Fastest Pace Since 2016, Goldman Says",
+            "link": "https://www.briefs.co/news/hedge-funds-dump-tech-at-the-fastest-pace-since-2016-goldman/",
+            "pub": "Mon, 19 Oct 2026",
+            "desc": "Goldman Sachs Prime Desk Trading Flow hedge funds",
+        },
     ]
-    trusted_domains = ("reuters.com", "investing.com", "hedgeweek.com", "bloomberg.com")
+    trusted_domains = (
+        "reuters.com", "investing.com", "hedgeweek.com",
+        "tokenpost.com", "primexbt.com", "briefs.co", "bloomberg.com",
+    )
     today = datetime.now(ZoneInfo("America/New_York")).date()
     records = []
     seen_urls = set()
-    for item in seeds + news_items(GOLDMAN_PRIME_SEARCH):
+    # Fixed seed articles are corroboration candidates, never proprietary GS source.
+    # Bound public search breadth to avoid missing Telegram's 20-minute job deadline.
+    for item in seeds + news_items(GOLDMAN_PRIME_SEARCH)[:16]:
         url = str(item.get("link") or "")
         if not url or url in seen_urls:
             continue
@@ -1309,8 +1343,11 @@ def parse_goldman_prime_public():
             continue
         if not 0 <= (today - pub).days <= 14:
             continue
-        final_url, text_body = extract_article_body(url)
         from urllib.parse import urlparse
+        candidate_host = (urlparse(url).hostname or "").lower()
+        if not any(candidate_host == d or candidate_host.endswith("." + d) for d in trusted_domains):
+            continue
+        final_url, text_body = extract_article_body(url)
         host = (urlparse(final_url).hostname or "").lower()
         if not any(host == d or host.endswith("." + d) for d in trusted_domains):
             continue
@@ -1319,6 +1356,13 @@ def parse_goldman_prime_public():
             continue
         observed, allocation, leverage = parsed
         records.append((observed, allocation, leverage, host, final_url))
+        key = (observed, allocation, leverage)
+        distinct_domains = {
+            h.removeprefix("www.") for o, a, l, h, _u in records
+            if (o, a, l) == key
+        }
+        if len(distinct_domains) >= 2:
+            break
     # Two independent public domains must agree on the observed period and both
     # headline positioning percentages. These are secondary citations, not
     # Goldman Marquee authentication or a direct weekly z-score feed.
