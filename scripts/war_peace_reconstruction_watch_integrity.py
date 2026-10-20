@@ -137,6 +137,8 @@ def _headline_action_label(row):
     if _headline_energy_operation(row) and re.search(r'\b(?:expands?|expanded)\b', _headline(row)):
         return '에너지 시설 공격 확대 보도'
     if _maritime_attack_expansion(row):
+        if re.search(r'공격\s*강화', _headline(row)):
+            return '선박 공격 강화 보도'
         return '선박 공격 확대 보도' if re.search(r'선박|상선|유조선|\b(?:ships?|vessels?|tankers?)\b', _headline(row)) else '공격 확대 보도'
     if _headline_attack_casualties(row):
         return '공습·공격 피해 보도'
@@ -227,7 +229,7 @@ def _diplomatic_group(title):
     north_russia = bool(re.search(r'(?<![가-힣])북\s*[·ㆍ/]?\s*러(?=\s|$)', title))
     actors = []
     for label, pattern in (
-            ('미국', r'미국|트럼프|美|\bu\.s\.|\bunited\s+states\b|'
+            ('미국', r'미국|트럼프|백악관|美|\bwhite\s+house\b|\bu\.s\.|\bunited\s+states\b|'
                      r'\bus(?=\s+(?:midterms?|elections?|officials?|government|military)\b)|'
                      r'\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너'),
             ('우크라이나', r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b'),
@@ -269,9 +271,15 @@ def _near_military_authorization(title):
                           r'(?:ordering|approving|authorizing)\s+(?:military\s+)?strikes?\b', title))
 
 
+def _attack_denial_with_blockade(title):
+    return bool(re.search(r'(?:공격|공습)(?:을|를)?\s*하지\s*않(?:을|겠)', title)
+                and re.search(r'봉쇄(?:는|를)?\s*(?:유지|계속)', title))
+
+
 def _statement_with_actual_action(title):
     stage = (_settlement_pressure_headline(title) or _meeting_participation_request(title)
-             or _information_resumption_headline(title) or _near_military_authorization(title))
+             or _information_resumption_headline(title) or _near_military_authorization(title)
+             or _attack_denial_with_blockade(title))
     return bool(stage and re.search(
         r'(?:공습|공격|폭격|타격|요격)(?:을|를)?\s*(?:했다(?!는)|했으며|하고\s*있|진행\s*중)|'
         r'(?:피격|파괴)(?:됐|되었|당했)|\b(?:attacked|struck|bombed)\b', title))
@@ -331,6 +339,8 @@ def _primary_topic(row):
     if kind == 'oil_pressure':
         return _diplomatic_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'military_position':
+        if _attack_denial_with_blockade(title):
+            return _diplomatic_group(title) + ' · 공격 부인·봉쇄 유지 입장'
         return _diplomatic_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'corporate_spending':
         return '석유기업 · ' + KIND_LABELS[kind]
@@ -356,6 +366,8 @@ def _primary_topic(row):
     if kind is None and _headline_drone_action(row):
         return _headline_group(title) + ' · 드론 공습 보도'
     if kind is None and _maritime_attack_expansion(row):
+        if re.search(r'공격\s*강화', title):
+            return _headline_group(title) + ' · 선박 공격 강화 보도'
         area = '호르무즈' if re.search(r'호르무즈|\bhormuz\b', title) else '해상'
         return area + ' · ' + _headline_action_label(row)
     if kind is None and _headline_attack_casualties(row):
@@ -524,7 +536,7 @@ def _maritime_attack_expansion(row):
     """A reported expansion differs from its plan, denial or price consequence."""
     for clause in re.split(r'…|\.{3}|[;；]', _headline(row)):
         if (re.search(r'호르무즈|선박|상선|유조선|\b(?:hormuz|ships?|vessels?|tankers?)\b', clause)
-                and re.search(r'공격\s*확대|\b(?:expands?|expanded)\s+attacks?\b', clause)
+                and re.search(r'공격\s*(?:확대|강화)|\b(?:expands?|expanded)\s+attacks?\b', clause)
                 and not re.search(r'예고|계획|검토|논의|가능성|우려|부인|하지\s*않|[?？]|'
                                   r'\b(?:plans?|may|might|could|denies?|denied)\b', clause)):
             return True
@@ -841,6 +853,8 @@ def non_military_kind(row):
         return 'diplomatic_position'
     if _near_military_authorization(title):
         return 'military_statement'
+    if _attack_denial_with_blockade(title):
+        return 'military_position'
     if not new_peace and _military_withdrawal_position(title):
         return 'military_position'
     if not new_peace and _corporate_spending_headline(title):
@@ -913,6 +927,8 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    if kind == 'military_position' and _attack_denial_with_blockade(title):
+        return '공격 부인·봉쇄 유지 입장'
     if kind == 'diplomatic_analysis' and _bargain_question_headline(title):
         return '정상회담·담판 가능성 해설'
     if kind == 'diplomatic_position' and _harm_intent_denial_headline(title):
@@ -1022,7 +1038,7 @@ def final_color(row):
             or _negotiation_stalemate_headline(title) or _ceasefire_proposal_stage(title)
             or _bargain_question_headline(title) or _information_resumption_headline(title)
             or _settlement_pressure_headline(title) or _meeting_participation_request(title)
-            or _near_military_authorization(title))):
+            or _near_military_authorization(title) or _attack_denial_with_blockade(title))):
         return 'red'
     return 'red' if maritime_attack_tally(row) else _color(row)
 

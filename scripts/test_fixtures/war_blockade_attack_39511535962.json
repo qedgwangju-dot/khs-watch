@@ -1,0 +1,402 @@
+{
+  "provenance": {
+    "run_id": 39511535962,
+    "actual_code_sha": "fd93078021d179680eb60a8b90c173b19bae9fb2",
+    "queried_at_kst": "2026-10-21T07:56:45.941047+09:00",
+    "artifact_id": 12306506125,
+    "artifact_zip_sha256": "30ba4533e48f033ab39973fed3c0be41810f2247ad7158ece9d8c017fbafade9",
+    "alert_sha256": "ca18826f5da4d984a236f963226498a3b783a85d53c4273f33d8afcada3793c5",
+    "operating_dry_run": true,
+    "actual_delivery": false,
+    "full_operating_article_bodies_preserved": false,
+    "later_HTTP_bodies_inserted": false
+  },
+  "articles": [
+    {
+      "id": "09bfad23d4fb1d351e6c",
+      "title_original": "백악관 “美 중간선거 전 이란 공격하지 않을 것”…호르무즈 해협 봉쇄는 유지 - 파이낸스투데이",
+      "title_ko": "백악관 “美 중간선거 전 이란 공격하지 않을 것”…호르무즈 해협 봉쇄는 유지 - 파이낸스투데이",
+      "description": "백악관 “美 중간선거 전 이란 공격하지 않을 것”…호르무즈 해협 봉쇄는 유지 파이낸스투데이",
+      "source": "파이낸스투데이",
+      "source_url": "https://www.fntoday.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBGM1JQLWJZbDkwbzZNajdHMlhBU0NUdmRoS2p1Nm92d2t4Z2FGMkNVbEVfdnEyRXdSYTdWYk9XNjFlS1NOLXVPcGhvUkxyeHlKNXl6cUJ1M0IyRmZKc1UzeWt0N1FCcHVhQlZ2dg?oc=5",
+      "published": "Tue, 20 Oct 2026 22:37:51 GMT",
+      "score": 12,
+      "tags": [
+        "정치일정",
+        "확전"
+      ],
+      "body_checked": true,
+      "classification_color": "",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "6dc173d6a48426dc92d5",
+      "title_original": "\"이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연\" - 연합뉴스 한민족센터",
+      "title_ko": "\"이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연\" - 연합뉴스 한민족센터",
+      "description": "\"이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연\" 연합뉴스 한민족센터",
+      "source": "연합뉴스 한민족센터",
+      "source_url": "https://www.koreancenter.or.kr",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9iX0g3M09hN0FGUVhtWjhHLTkzdmVBNTBlc1lfT0N1aEVzMjN4UG5TWTJtLTJnMkxybEw1Rk9ZU2hzUlROQXJ3U0E0VTZON0t1bzFHc1c5WlhlODBJWVZtX0VaQXpWSUkyR2RObVdOek1ZMHJr?oc=5",
+      "published": "Tue, 20 Oct 2026 20:31:16 GMT",
+      "score": 12,
+      "tags": [
+        "협상 교착·지연 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_position",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "0946ae1823bcd0c4b676",
+      "title_original": "\"이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연\" - 연합뉴스TV",
+      "title_ko": "\"이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연\" - 연합뉴스TV",
+      "description": "\"이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연\" 연합뉴스TV",
+      "source": "연합뉴스TV",
+      "source_url": "https://www.yonhapnewstv.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFByS3ZOR0N5UkhKZFlKdC1XU3JrZ1pHSmU3eFJyVERHWHFhWnpkeVV1c0x1eW10Zm1wX3o3QUZDeVVERVRkZkpWN3duT09FWENNZExGQ0s4bDBPZ1dVR1AtLWJaS2ZCOUU?oc=5",
+      "published": "Tue, 20 Oct 2026 20:30:00 GMT",
+      "score": 12,
+      "tags": [
+        "협상 교착·지연 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "non_military_kind": "diplomatic_position",
+      "render_withheld": "same_headline_distinct_publisher",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "49f5ee7dfe512417b433",
+      "title_original": "젤렌스키 “미국 측에서 긍정적 신호”…노르웨이서 종전 협상 논의 진전 - 파이낸스투데이",
+      "title_ko": "젤렌스키 “미국 측에서 긍정적 신호”…노르웨이서 종전 협상 논의 진전 - 파이낸스투데이",
+      "description": "젤렌스키 “미국 측에서 긍정적 신호”…노르웨이서 종전 협상 논의 진전 파이낸스투데이",
+      "source": "파이낸스투데이",
+      "source_url": "https://www.fntoday.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE0xVXF5UnRjZ05ieEhSZFBBLUJMVTcxdFNjamIyRG5mdnVyb0FQT1VoWkdENXc2N1BLSlpzUmZIMVRmWTl3Ml9xdjNCVl9aU1E1UzFnZnVLX3Nmb3NZZGI1STJrVDVaLUJzbWF6TA?oc=5",
+      "published": "Tue, 20 Oct 2026 22:36:42 GMT",
+      "score": 11,
+      "tags": [
+        "협상 추진·논의"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_plan",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "9fd0811f0acace863ba8",
+      "title_original": "이란, 중간선거 앞두고 선박 공격 강화...\"종전 협상도 의도적 지연\" - YTN",
+      "title_ko": "이란, 중간선거 앞두고 선박 공격 강화...\"종전 협상도 의도적 지연\" - YTN",
+      "description": "이란, 중간선거 앞두고 선박 공격 강화...\"종전 협상도 의도적 지연\" YTN",
+      "source": "YTN",
+      "source_url": "https://www.ytn.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1VZllJaDlKRTkyT3VDT3RjUFFxUG1wRWlEeGE3enZNWXBFQzdDT3ZhM1pWdF9tM3Q2dGtwVmV4RE9ZTUQ0bGI1V2djUkdJdlp3M04ybnV2dDNTYnI2Ymc?oc=5",
+      "published": "Tue, 20 Oct 2026 22:05:00 GMT",
+      "score": 11,
+      "tags": [
+        "협상 교착·지연 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_position",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "68e3f15cf7ff1e072e69",
+      "title_original": "트럼프 \"러시아는 거대한 나라…젤렌스키, 종전 합의해야\"(종합) - 연합뉴스",
+      "title_ko": "트럼프 \"러시아는 거대한 나라…젤렌스키, 종전 합의해야\"(종합) - 연합뉴스",
+      "description": "트럼프 \"러시아는 거대한 나라…젤렌스키, 종전 합의해야\"(종합) 연합뉴스",
+      "source": "연합뉴스",
+      "source_url": "https://www.yna.co.kr",
+      "link": "https://www.yna.co.kr/view/AKR20261021004751071",
+      "discovery_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBrUXRZdFMyQllGSVBocXI3cHRHQ0VSbUhrN3cxUlIzZ0s2NGI3V3VJVU1qTlZWLU9sVmFHcTdDbFVXMmZvUmNrZzRsUTJjX0laQW01Z2Z2aUlEbE3SAWBBVV95cUxQS0tORUlfU3lSelBvLXN0MHpheHM5WVZsTl81d1dlR0xqd19fLS1EOTNDbENMNi1lb0hBVVlOczFfMWdCZkVNcGVoZXZsSlRhZTVzQ3AzNXd0X29WbGxmU2w?oc=5",
+      "resolved_url": "https://www.yna.co.kr/view/AKR20261021004751071",
+      "published": "Wed, 21 Oct 2026 05:36:54 +0900",
+      "rss_published": "Tue, 20 Oct 2026 20:36:54 GMT",
+      "source_metadata": {
+        "title": "트럼프 \"러시아는 거대한 나라…젤렌스키, 종전 합의해야\"(종합) | 연합뉴스",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-21T05:36:54+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-21T05:36:54+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-21T05:36:54+09:00"
+          }
+        ]
+      },
+      "score": 10,
+      "tags": [
+        "종전 합의 촉구·압박"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "non_military_kind": "diplomatic_position",
+      "publication_basis": "publisher",
+      "rendered": false,
+      "article_text_sha256": "27061306b1766b552a2f83b8b2edf6138ec50e8567141fa6bdec7b9d5ed0fe0e"
+    },
+    {
+      "id": "051f48f3ab3bb31e890f",
+      "title_original": "트럼프, 젤렌스키에 종전 합의 압박⋯\"거부 땐 상황 악화\" - 동행미디어 시대",
+      "title_ko": "트럼프, 젤렌스키에 종전 합의 압박⋯\"거부 땐 상황 악화\" - 동행미디어 시대",
+      "description": "트럼프, 젤렌스키에 종전 합의 압박⋯\"거부 땐 상황 악화\" 동행미디어 시대",
+      "source": "동행미디어 시대",
+      "source_url": "https://www.sidae.com",
+      "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5FQk1NQmt0dUd5OVZ4RHVFb0Y5eFRQeUZFSW44UW1QbTQ2eFcxby1BOXJtQU5SR2JUWW1xbTAyaTQxNWJYRkgyTHA3cjM4RTNfYVJMeTE5LUFZTTJPOHc?oc=5",
+      "published": "Tue, 20 Oct 2026 22:24:09 GMT",
+      "score": 9,
+      "tags": [
+        "종전 합의 촉구·압박"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "non_military_kind": "diplomatic_position",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "28d5c796b9b4b3eb40fd",
+      "title_original": "트럼프, 젤렌스키에 '이제는 종전 합의할때 됐다' 압박",
+      "title_ko": "트럼프, 젤렌스키에 '이제는 종전 합의할때 됐다' 압박",
+      "description": "[파이낸셜뉴스] 도널드 트럼프 미국 대통령이 볼로디미르 젤렌스키 우크라이나 대통령을 향해 러시아와의 협상에 즉각 나설 것을 강력히 촉구했다. 트럼프 대통령은 미국이 우크라이나를 지원하는 동안 얻은 것은 아무것도 없다고 불만을 토로했다. 유로뉴스 등 외신 보도에 따르면 트럼프 대통령은 20일(현지시간) 미 워싱턴 백악관에서 기자들과 만나 \"우리는 젤렌스키 대통령이 협상을 타결 짓기를 원하며, 그는 할 수 있다\"며 \"2년 전 백악관 집무실에서 대화를 나눴을 때 이미 협상할 수도 있었다\"고 밝혔다. 이는 2025년 초 양국 정상 간에 있었던 격렬한 설전을 언급한 것으로 풀이된다. 그는 이어 \"우크라이나 국민들도 더 이상 참지 않을 것이기 때문에 젤렌스키 대통령은 결국 협상을 원하게 될 것\"이라며 \"미국은 우",
+      "source": "파이낸셜뉴스",
+      "link": "https://www.fnnews.com/news/202610210623326817",
+      "discovery_url": "https://www.fnnews.com/news/202610210623326817",
+      "resolved_url": "https://www.fnnews.com/news/202610210623326817",
+      "published": "Wed, 21 Oct 2026 06:32:47 +0900",
+      "rss_published": "Wed,21 Oct 2026 06:32:47 +0900",
+      "source_metadata": {
+        "title": "트럼프, 젤렌스키에 '이제는 종전 합의할때 됐다' 압박",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-21T06:32:47+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-21T06:32:47+09:00"
+          },
+          {
+            "field": "dd:published_time",
+            "at_kst": "2026-10-21T06:32:47+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-21T06:32:47+09:00"
+          },
+          {
+            "field": "visible:입력",
+            "at_kst": "2026-10-21T06:32:00+09:00"
+          }
+        ]
+      },
+      "score": 9,
+      "tags": [
+        "종전 합의 촉구·압박"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "non_military_kind": "diplomatic_position",
+      "publication_basis": "publisher",
+      "rendered": false,
+      "article_text_sha256": "89f92cd8646e1cd0199adb1bc2eae3aaebe9e250faa5275c495a211a5112a891"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29914.5,
+      "pct": 0.8062274117319967,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "07:46 KST",
+      "observed_at_kst": "2026-10-21T07:46:40+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 29675.25,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 29675.25,
+        "chartPreviousClose": 29675.25,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792536400,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792468800,
+            "start": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792555140,
+            "start": 1792468800,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792555140,
+            "start": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 98.19000244140625,
+      "pct": 0.37824825332881673,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "07:46 KST",
+      "observed_at_kst": "2026-10-21T07:46:45+09:00",
+      "symbol": "CL=F",
+      "previous_close": 97.82,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 97.82,
+        "chartPreviousClose": 97.82,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792536405,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 109.16999816894531,
+      "pct": 0.3492951272592304,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "07:45 KST",
+      "observed_at_kst": "2026-10-21T07:45:43+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 108.79,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 108.79,
+        "chartPreviousClose": 108.79,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792536343,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "withheld",
+      "reason": "가격 시각 오래됨·미래 시각",
+      "observed_at_kst": "2026-10-21T07:04:59+09:00"
+    }
+  },
+  "original_alert": "<b>전쟁·종전·재건 웹감시</b>\n🟡 <b>발언·제재·외교반응·협상 제약</b>\n조회 2026-10-21 07:56 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n[속보] <b>1. 이란·호르무즈</b>\n백악관 “美 중간선거 전 이란 공격하지 않을 것”…호르무즈 해협 봉쇄는 유지 - 파이낸스투데이\nRSS 보도 10-21 07:37 KST · <b>18분 경과</b> · 확전 · <a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTFBGM1JQLWJZbDkwbzZNajdHMlhBU0NUdmRoS2p1Nm92d2t4Z2FGMkNVbEVfdnEyRXdSYTdWYk9XNjFlS1NOLXVPcGhvUkxyeHlKNXl6cUJ1M0IyRmZKc1UzeWt0N1FCcHVhQlZ2dg?oc=5\">파이낸스투데이 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [신규] <b>2. 미국·이란 · 협상 교착·지연 보도</b>\n&quot;이란, 중간선거 앞둔 트럼프에 타격 주려 종전협상 지연&quot; - 연합뉴스 한민족센터\nRSS 보도 10-21 05:31 KST · <b>145분 경과</b> · 협상 교착·지연 보도 · <a href=\"https://news.google.com/rss/articles/CBMidEFVX3lxTE9iX0g3M09hN0FGUVhtWjhHLTkzdmVBNTBlc1lfT0N1aEVzMjN4UG5TWTJtLTJnMkxybEw1Rk9ZU2hzUlROQXJ3U0E0VTZON0t1bzFHc1c5WlhlODBJWVZtX0VaQXpWSUkyR2RObVdOek1ZMHJr?oc=5\">연합뉴스 한민족센터 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [속보] <b>3. 미국·우크라이나 · 협상 추진·논의</b>\n젤렌스키 “미국 측에서 긍정적 신호”…노르웨이서 종전 협상 논의 진전 - 파이낸스투데이\nRSS 보도 10-21 07:36 KST · <b>20분 경과</b> · 협상 추진·논의 · <a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE0xVXF5UnRjZ05ieEhSZFBBLUJMVTcxdFNjamIyRG5mdnVyb0FQT1VoWkdENXc2N1BLSlpzUmZIMVRmWTl3Ml9xdjNCVl9aU1E1UzFnZnVLX3Nmb3NZZGI1STJrVDVaLUJzbWF6TA?oc=5\">파이낸스투데이 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [신규] <b>4. 이란 · 협상 교착·지연 보도</b>\n이란, 중간선거 앞두고 선박 공격 강화...&quot;종전 협상도 의도적 지연&quot; - YTN\nRSS 보도 10-21 07:05 KST · <b>51분 경과</b> · 협상 교착·지연 보도 · <a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE1VZllJaDlKRTkyT3VDT3RjUFFxUG1wRWlEeGE3enZNWXBFQzdDT3ZhM1pWdF9tM3Q2dGtwVmV4RE9ZTUQ0bGI1V2djUkdJdlp3M04ybnV2dDNTYnI2Ymc?oc=5\">YTN 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,914.50</b>  +0.81% · 제공처 비교종가 대비 · 기준 07:46 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>98.19</b>  +0.38% · 제공처 비교종가 대비 · 기준 07:46 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>109.17</b>  +0.35% · 제공처 비교종가 대비 · 기준 07:45 KST · Yahoo Finance 1분봉 BZ=F\n\n시장자료 확인 보류 · 달러지수 (가격 시각 오래됨·미래 시각)\n\n<b>투자 판정</b>\n- <b>핵심:</b> 전쟁·휴전 방향을 확정할 실제 행동 변화는 확인되지 않음\n- <b>현재 단계:</b> 방향성 미확인 — 정책·해설·시장기사와 실제 사건을 분리\n- <b>시장:</b> 별도 군사·휴전 행동 확인 전 방향성 판정 보류\n- <b>다음:</b> 공식 행동·합의·공격 발생 여부 재확인\n"
+}

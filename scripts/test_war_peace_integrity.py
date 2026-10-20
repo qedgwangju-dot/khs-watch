@@ -227,6 +227,71 @@ class IntegrityTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
                 integrity.verify_alert()
 
+    def blockade_attack_fixture(self):
+        path=Path(__file__).parent/'test_fixtures/war_blockade_attack_39511535962.json'
+        value=json.loads(path.read_text(encoding='utf-8'))
+        return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_blockade_saved_future_attack_denial_is_statement(self):
+        fixture,_=self.blockade_attack_fixture();row=copy.deepcopy(fixture['articles'][0])
+        self.assertEqual(integrity.non_military_kind(row),'military_position')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'미국·이란 · 공격 부인·봉쇄 유지 입장')
+
+    def test_blockade_denial_clears_escalation_and_retains_both_clauses(self):
+        fixture,now=self.blockade_attack_fixture();row=copy.deepcopy(fixture['articles'][0])
+        _,tags=integrity.score_item(row,now)
+        self.assertNotIn('확전',tags);self.assertFalse(row.get('signals_ko'))
+        with patch.object(integrity.body_parallel,'_safe_enrich'):
+            text=integrity.build_alert([row],[],now)
+        self.assertIn(html.escape(row['title_original']),text)
+        self.assertIn('미국·이란 · 공격 부인·봉쇄 유지 입장',text)
+        self.assertNotIn('🟢',text);self.assertNotIn('🔴',text)
+
+    def test_blockade_does_not_hide_separate_completed_action(self):
+        for ending in ('이란 미사일 발사','이란 공습했다'):
+            with self.subTest(ending=ending):
+                row=article('백악관 이란 공격하지 않을 것…호르무즈 봉쇄는 유지; '+ending)
+                self.assertIsNone(integrity.non_military_kind(row))
+                self.assertEqual(integrity.final_color(row),'red')
+
+    def test_blockade_saved_attack_strength_precedes_negotiation_background(self):
+        fixture,now=self.blockade_attack_fixture();row=copy.deepcopy(fixture['articles'][4])
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row),'red')
+        self.assertEqual(integrity.topic_label(row),'이란 · 선박 공격 강화 보도')
+        _,tags=integrity.score_item(row,now)
+        self.assertNotIn('협상 교착·지연 보도',tags)
+        self.assertFalse(row.get('signals_ko'))
+
+    def test_blockade_planned_denied_strength_is_not_completed_action(self):
+        for title in ('이란, 선박 공격 강화 예고','이란, 선박 공격 강화 계획',
+                      '이란, 선박 공격 강화 부인','이란, 선박 공격 강화하지 않겠다'):
+            with self.subTest(title=title):
+                row=article(title)
+                self.assertFalse(integrity._maritime_attack_expansion(row))
+
+    def test_blockade_current_full_body_and_original_wrong_hash_gate(self):
+        fixture,now=self.blockade_attack_fixture();rows=copy.deepcopy(fixture['articles'])
+        with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+            root=Path(folder)
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():stack.enter_context(patch.object(watch,attr,root/name))
+            stack.enter_context(patch.object(integrity.body_parallel,'_safe_enrich'))
+            text=integrity.build_alert(rows,fixture['markets'],now)
+            receipt=evidence.alert_receipt(rows,fixture['markets'],now,text,fixture['market_source_status'])
+            shown=[x for x in receipt['articles']if x['rendered']]
+            self.assertEqual([x['id']for x in shown],[rows[i]['id']for i in (0,1,3,4)])
+            self.assertEqual([x['classification_color']for x in shown],['yellow','yellow','yellow','red'])
+            watch.ALERT.write_text(text,encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt),encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[x['id']for x in shown]}),encoding='utf-8')
+            integrity.verify_alert()
+            self.assertIn('실제 공격·해상안보·운영 위험',text)
+            original=copy.deepcopy(fixture['articles']);oldtext=fixture['original_alert']
+            oldreceipt=evidence.alert_receipt(original,fixture['markets'],now,oldtext,fixture['market_source_status'])
+            self.assertEqual(oldreceipt['alert_sha256'],fixture['provenance']['alert_sha256'])
+            watch.ALERT.write_text(oldtext,encoding='utf-8');watch.AUDIT.write_text(json.dumps(oldreceipt),encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):integrity.verify_alert()
+
     def energy_operation_fixture(self):
         value=json.loads((Path(__file__).parent/'test_fixtures/war_energy_operation_39436762007.json').read_text(encoding='utf-8'))
         return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
