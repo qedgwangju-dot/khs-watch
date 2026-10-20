@@ -46,6 +46,95 @@ class IntegrityTests(unittest.TestCase):
         value = json.loads((Path(__file__).parent/'test_fixtures/war_oil_shipping_39357999506.json').read_text(encoding='utf-8'))
         return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def conditional_support_fixture(self):
+        value = json.loads((Path(__file__).parent/'test_fixtures/war_conditional_support_39360628209.json').read_text(encoding='utf-8'))
+        return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_actual_conditional_support_and_negotiation_intent_are_not_implemented_peace(self):
+        fixture, _ = self.conditional_support_fixture()
+        for index in (1, 2):
+            row = fixture['articles'][index]
+            with self.subTest(title=row['title_original']):
+                self.assertEqual(integrity.non_military_kind(row), 'diplomatic_plan')
+                self.assertEqual(integrity.final_color(row), 'yellow')
+                self.assertNotIn('호르무즈', integrity.topic_label(row))
+        self.assertIn('조건부 공격 중단 제안', integrity.topic_label(fixture['articles'][1]))
+        self.assertIn('협상 지속·재개 의향', integrity.topic_label(fixture['articles'][2]))
+
+    def test_conditional_support_exchange_verbs_preserve_offer_stage(self):
+        for term in ('주면', '지원하면', '제공하면', '공급하면', '받으면'):
+            row = article('젤렌스키 "미국 패트리엇 ' + term + ' 러 공격 중단"')
+            with self.subTest(title=row['title_original']):
+                self.assertEqual(integrity.non_military_kind(row), 'diplomatic_plan')
+                self.assertEqual(integrity.final_color(row), 'yellow')
+
+    def test_conditional_support_denial_preserves_negation(self):
+        for title in ('젤렌스키 "미국 패트리엇 주면 러 공격 중단하지 않겠다"',
+                      '젤렌스키, 미국 패트리엇 주면 러 공격 중단한다는 제안 부인'):
+            with self.subTest(title=title):
+                row = article(title)
+                self.assertEqual(integrity.non_military_kind(row), 'ceasefire_position')
+                self.assertEqual(integrity.final_color(row), 'yellow')
+                self.assertEqual(integrity._display_headline(row), title)
+
+    def test_negotiation_intent_denial_is_a_position_not_peace(self):
+        row = article('트럼프 "우크라이나 종전 협상 지속 의지 없다"')
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_position')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertIn('의향 부인', integrity.topic_label(row))
+
+    def test_conditional_support_and_intent_keep_separate_actual_action(self):
+        for title in ('젤렌스키 "패트리엇 주면 러 공격 중단"…후티 미사일 발사',
+                      '트럼프 우크라이나 종전 협상 지속 의지…미국 공습 개시'):
+            with self.subTest(title=title):
+                row = article(title)
+                self.assertIsNone(integrity.non_military_kind(row))
+                self.assertEqual(integrity.final_color(row), 'red')
+        self.assertEqual(integrity.final_color(article('미국·이란 양측 휴전 합의 체결·발효')), 'green')
+
+    def test_conditional_support_score_clears_background_caches(self):
+        fixture, now = self.conditional_support_fixture()
+        for row in fixture['articles'][1:3]:
+            with self.subTest(id=row['id']):
+                row.update(signals_ko=['에너지 휴전 발표'], forced_tags=['휴전·평화'], deep_signal='과거 휴전')
+                integrity.score_item(row, now)
+                self.assertEqual(row['tags'], ['협상 추진·논의'])
+                self.assertFalse(row['signals_ko'])
+                self.assertFalse(row['forced_tags'])
+                self.assertNotIn('deep_signal', row)
+
+    def test_conditional_support_full_render_gate_keeps_three_yellow_one_red(self):
+        fixture, now = self.conditional_support_fixture()
+        before = watch.STATE.read_bytes()
+        for count in (4, 8):
+            rows = copy.deepcopy(fixture['articles'][:count])
+            with self.subTest(candidates=count), patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+                text = integrity.build_alert(rows, fixture['markets'], now)
+                shown = [row for row in rows if row['link'] in html.unescape(text)]
+                self.assertEqual([row['id'] for row in shown], [row['id'] for row in rows[:4]])
+                self.assertEqual([row['classification_color'] for row in shown], ['yellow','yellow','yellow','red'])
+                self.assertNotIn('🟢', text)
+                self.assertIn('조건부 공격 중단 제안', text)
+                self.assertIn('협상 지속·재개 의향', text)
+                self.assertIn('패트리엇', text)
+                self.assertNotIn('이란·호르무즈', text)
+                for row in shown[1:]:self.assertIn(html.escape(row['title_original']), text)
+                receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+                with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                    for attr, name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+                    watch.ALERT.write_text(text, encoding='utf-8');watch.PENDING.write_text(json.dumps({'ids':[row['id'] for row in shown]}), encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+                    integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(), before)
+
+    def test_conditional_support_same_hash_old_dry_body_rejected(self):
+        fixture, now = self.conditional_support_fixture();rows = fixture['articles'][:4];text = fixture['sent_alert'].strip()
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8');watch.PENDING.write_text(json.dumps({'ids':[row['id'] for row in rows]}), encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):integrity.verify_alert()
+
     def test_actual_oil_shipping_source_roles(self):
         fixture, _ = self.oil_shipping_fixture()
         expected = ['maritime_shipping', 'oil_market', 'oil_pressure', 'oil_pressure',
