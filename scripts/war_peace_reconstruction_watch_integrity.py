@@ -226,6 +226,8 @@ def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
     if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal'):
+        if kind == 'diplomatic_position' and _negotiation_intent_stage(title) == 'denied':
+            return _diplomatic_group(title) + ' · 협상 지속·재개 의향 부인'
         if kind == 'diplomatic_position' and _meeting_intent_stage(title) == 'denied':
             return _diplomatic_group(title) + ' · 회담 의향 부인'
         if kind == 'diplomatic_position' and _participation_exclusion_headline(title):
@@ -238,7 +240,8 @@ def _primary_topic(row):
             # A named excluded counterpart is not a confirmed participant.
             actors = re.sub(r'젤렌스키(?:\s*대통령)?(?:이|가)?\s*아닌', '', title)
             return _diplomatic_group(actors) + ' · 회담 가능성에 대한 반응'
-        label = ('조건부 회담 의향' if kind == 'diplomatic_plan' and _meeting_intent_stage(title) == 'conditional' else
+        label = ('협상 지속·재개 의향' if kind == 'diplomatic_plan' and _negotiation_intent_stage(title) == 'willing' else
+                 '조건부 회담 의향' if kind == 'diplomatic_plan' and _meeting_intent_stage(title) == 'conditional' else
                  '회담 용의 발언' if kind == 'diplomatic_plan' and _meeting_intent_stage(title) == 'willing' else
                  '정상회담 의향·논의' if kind == 'diplomatic_plan' and _summit_openness_headline(title) else
                  '담판 제안·논의' if kind == 'diplomatic_plan' and _bargain_proposal_headline(title) else
@@ -382,7 +385,25 @@ def _operational_disruption_headline(title):
 
 
 def _conditional_pause_proposal(title):
-    return bool(re.search(r'(?:대가|조건).{0,50}(?:공격|공습)(?:을|를)?\s*중단.{0,25}제안', title))
+    return bool((re.search(r'(?:대가|조건).{0,50}(?:공격|공습)(?:을|를)?\s*중단.{0,25}제안', title)
+                 or _conditional_pause_exchange(title)) and not _conditional_pause_exchange_denied(title))
+
+
+def _conditional_pause_exchange(title):
+    return re.search(r'(?:주면|지원하면|제공하면|공급하면|받으면)(?:(?!…|\.{3}|[;；]).){0,35}'
+                     r'(?:공격|공습|폭격)(?:을|를)?\s*중단', title)
+
+
+def _conditional_pause_exchange_denied(title):
+    offer = _conditional_pause_exchange(title)
+    return bool(offer and re.search(r'하지\s*않|않겠다|부인|거부', title[offer.end():]))
+
+
+def _negotiation_intent_stage(title):
+    match = re.search(r'협상(?:을|를)?\s*(?:지속|계속|재개)(?:할)?\s*(?:의지|의향)', title)
+    if not match:
+        return None
+    return 'denied' if re.match(r'(?:가|는|를)?\s*(?:없|부인)', title[match.end():]) else 'willing'
 
 
 def _condemnation_object_spans(title):
@@ -586,6 +607,9 @@ def _diplomatic_deal_statement(title):
 
 
 def _diplomatic_headline_kind(title):
+    intent = _negotiation_intent_stage(title)
+    if intent:
+        return 'diplomatic_position' if intent == 'denied' else 'diplomatic_plan'
     if re.search(r'협상(?:을|를)?\s*(?:(?:재개|개최|개시)(?:를|을)?\s*)?(?:논의|검토|추진|계획)|'
                  r'(?:종전|평화|휴전)\s*협상.{0,15}(?:진전되나|가능성)|'
                  r'(?:종전|평화|휴전)\s*협상.{0,18}진전.{0,25}발표\s*가능성', title):
@@ -657,6 +681,8 @@ def non_military_kind(row):
             return 'operational_disruption'
         if _conditional_pause_proposal(title):
             return 'diplomatic_plan'
+        if _conditional_pause_exchange_denied(title):
+            return 'ceasefire_position'
     if _military_report_headline(title):
         return 'military_report'
     if condemnation:
@@ -783,6 +809,7 @@ def final_color(row):
     title = _headline(row)
     if (_military_actions(title) and (_operational_disruption_headline(title)
             or re.search(r'유가|원유|연료|\b(?:oil|crude|fuel)\b', title)
+            or _conditional_pause_exchange(title) or _negotiation_intent_stage(title)
             or _summit_openness_headline(title) or _summit_openness_denied(title) or _bargain_proposal_headline(title)
             or _meeting_uncertainty_headline(title) or _meeting_intent_stage(title)
             or _participation_exclusion_headline(title))):
