@@ -54,6 +54,135 @@ class IntegrityTests(unittest.TestCase):
         value = json.loads((Path(__file__).parent/'test_fixtures/war_attack_cause_delay_39361325251.json').read_text(encoding='utf-8'))
         return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def publication_stage_fixture(self):
+        value = json.loads((Path(__file__).parent/'test_fixtures/war_publication_stage_39388589148.json').read_text(encoding='utf-8'))
+        return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_publication_stage_actual_negotiation_is_contact_not_implemented_peace(self):
+        fixture, _ = self.publication_stage_fixture()
+        row = fixture['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row), 'diplomatic_contact')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertIn('미국·우크라이나·러시아', integrity.topic_label(row))
+        self.assertEqual(integrity._display_headline(row), row['title_original'])
+
+    def test_publication_stage_actual_bombing_rumor_question_is_not_attack(self):
+        fixture, _ = self.publication_stage_fixture()
+        row = fixture['articles'][1]
+        self.assertEqual(integrity.non_military_kind(row), 'military_analysis')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertIn('미국·이스라엘·이란', integrity.topic_label(row))
+        self.assertEqual(integrity._display_headline(row), row['title_original'])
+
+    def test_publication_stage_talks_keep_real_ceasefire_and_separate_attack(self):
+        for title in ('미 특사, 젤렌스키와 평화 협상…이어 러시아행',
+                      'U.S. envoy meets Zelensky for peace talks, then heads to Russia'):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), 'diplomatic_contact')
+                self.assertEqual(integrity.final_color(article(title)), 'yellow')
+        row = article('우크라이나·러시아, 양측 휴전 합의…오늘부터 발효')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'green')
+        row = article('러시아, 젤렌스키와 종전 협상…우크라이나 공습 개시')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'red')
+
+    def test_publication_stage_rumor_does_not_hide_separate_actual_action(self):
+        for title in ('이란 폭격설 힘 얻나', '선거 후 이란 공습설 확산되나?'):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), 'military_analysis')
+                self.assertEqual(integrity.final_color(article(title)), 'yellow')
+        for title in ('이란 폭격설 힘 얻나…미국 공습 개시',
+                      '이란 공습설 확산되나…이스라엘 미사일 발사'):
+            with self.subTest(title=title):
+                self.assertIsNone(integrity.non_military_kind(article(title)))
+                self.assertEqual(integrity.final_color(article(title)), 'red')
+
+    def test_publication_stage_explicit_iso_timezone_and_milliseconds(self):
+        expected = dt.datetime(2026, 10, 20, 1, 5, 49, 543000, tzinfo=watch.KST)
+        for value in ('2026-10-19T16:05:49.543Z', '2026-10-19T16:05:49.543+00:00',
+                      '2026-10-20T01:05:49.543+09:00'):
+            with self.subTest(value=value): self.assertEqual(watch.parse_pub(value), expected)
+        for value in ('2026-10-19', '2026-10-19T16:05:49', 'bad date', ''):
+            with self.subTest(value=value): self.assertIsNone(watch.parse_pub(value))
+
+    def test_publication_stage_unknown_time_cannot_bypass_special_score(self):
+        for value in ('', 'bad date', '2026-10-20', '2026-10-20T01:05:49'):
+            row = article('사우디, 미사일 공격에 국제투자회의 연기')
+            row['published'] = value
+            with self.subTest(value=value): self.assertEqual(integrity.score_item(row, NOW), (0, []))
+
+    def test_publication_stage_actual_old_iso_cannot_be_new_candidate(self):
+        fixture, now = self.publication_stage_fixture()
+        row = fixture['articles'][3]
+        self.assertGreater(watch.age_minutes(row, now), 3 * 60)
+        self.assertEqual(integrity.score_item(row, now), (0, []))
+
+    def test_publication_stage_recent_iso_remains_eligible_with_exact_time(self):
+        row = article('사우디, 미사일 공격에 국제투자회의 연기')
+        row['published'] = (NOW - dt.timedelta(minutes=25)).astimezone(dt.timezone.utc).isoformat()
+        self.assertEqual(watch.age_minutes(row, NOW), 25)
+        self.assertGreater(integrity.score_item(row, NOW)[0], 0)
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([row], [], NOW)
+        self.assertIn(row['link'], text)
+        self.assertIn('25분 경과', text)
+
+    def test_publication_stage_future_cannot_bypass_special_score(self):
+        row = article('사우디, 미사일 공격에 국제투자회의 연기')
+        row['published'] = format_datetime(NOW + dt.timedelta(minutes=6))
+        self.assertEqual(integrity.score_item(row, NOW), (0, []))
+
+    def test_publication_stage_render_excludes_unknown_future_and_old_keeps_current(self):
+        for stamp in ('bad date', format_datetime(NOW + dt.timedelta(minutes=6)),
+                      (NOW - dt.timedelta(hours=4)).isoformat()):
+            held = article('사우디, 미사일 공격에 국제투자회의 연기', link='https://example.org/held')
+            held.update(id='held', published=stamp)
+            current = article('러시아, 우크라이나 공습 개시', link='https://example.org/current')
+            current['id'] = 'current'
+            with self.subTest(stamp=stamp), patch.object(integrity.body_parallel, '_safe_enrich'):
+                text = integrity.build_alert([held, current], [], NOW)
+                self.assertNotIn(held['link'], text)
+                self.assertTrue(held.get('render_withheld'))
+                self.assertIn(current['link'], text)
+
+    def test_publication_stage_rejected_input_corrected_full_gate_and_state(self):
+        fixture, now = self.publication_stage_fixture()
+        rows = copy.deepcopy(fixture['articles']); before = watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+            shown = [row for row in rows if row['link'] in html.unescape(text)]
+            self.assertEqual([row['id'] for row in shown], [row['id'] for row in rows[:3]])
+            self.assertEqual([row['classification_color'] for row in shown], ['yellow', 'yellow', 'red'])
+            self.assertEqual(rows[3]['render_withheld'], 'discovery_publication_stale')
+            self.assertNotIn('🟢', text); self.assertIn('폭격설', text); self.assertIn('53명 사망', html.unescape(text))
+            receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+            with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                for attr, name in {'ALERT':'alert.txt', 'PENDING':'pending.json', 'AUDIT':'evidence.json'}.items():
+                    stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+                watch.ALERT.write_text(text, encoding='utf-8')
+                watch.PENDING.write_text(json.dumps({'ids':[row['id'] for row in shown]}), encoding='utf-8')
+                watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+                integrity.verify_alert()
+            self.assertFalse(receipt['articles'][3]['rendered'])
+        self.assertEqual(watch.STATE.read_bytes(), before)
+
+    def test_publication_stage_final_gate_rechecks_unknown_and_future_receipt_dates(self):
+        row = article('사우디, 미사일 공격에 국제투자회의 연기')
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([row], [], NOW)
+        for stamp in ('bad date', format_datetime(NOW + dt.timedelta(minutes=6))):
+            forged = copy.deepcopy(row); forged['published'] = stamp
+            receipt = evidence.alert_receipt([forged], [], NOW, text)
+            with self.subTest(stamp=stamp), tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                for attr, name in {'ALERT':'alert.txt', 'PENDING':'pending.json', 'AUDIT':'evidence.json'}.items():
+                    stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+                watch.ALERT.write_text(text, encoding='utf-8')
+                watch.PENDING.write_text(json.dumps({'ids':[row['id']]}), encoding='utf-8')
+                watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+                with self.assertRaisesRegex(RuntimeError, 'unverified or future discovery publication'):
+                    integrity.verify_alert()
+
     def test_attack_cause_delay_actual_current_event_is_postponement(self):
         fixture, _ = self.attack_cause_delay_fixture();row=fixture['articles'][3]
         self.assertEqual(row['id'],'e63492b9b171333801b9')

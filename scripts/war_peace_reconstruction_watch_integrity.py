@@ -20,6 +20,7 @@ _topic, _build = watch.topic_label, watch.build_alert
 _verdict = previous.guard._verdict
 _future_refinery = previous._future_refinery_policy
 _verify = runner.verify_alert
+_parse_pub = watch.parse_pub
 KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입검토',
                'attack_pause': '공격 중단·부인 발언', 'mixed_restraint': '자제 발언·상대 공격 주장',
                'military_statement': '군사 대응·보복 발언', 'support_statement': '지원 정책 발언',
@@ -41,6 +42,20 @@ KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입�
 
 def _headline(row):
     return html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
+
+
+def parse_pub(value):
+    """Retain RSS dates and accept fully dated ISO timestamps with an explicit zone."""
+    parsed = _parse_pub(value)
+    if parsed is not None:
+        return parsed
+    text = str(value or '').strip()
+    if not re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})', text):
+        return None
+    try:
+        return dt.datetime.fromisoformat(text.replace('Z', '+00:00')).astimezone(watch.KST)
+    except ValueError:
+        return None
 
 
 def maritime_attack_tally(row):
@@ -124,7 +139,7 @@ def _headline_action_label(row):
 def _headline_group(title):
     """Use actors in the current headline, before background actors or caches."""
     us = bool(re.search(r'미국|트럼프|(?:^|\s)美(?:\s|,)|\b(?:trump|united states)\b|'
-                        r'(?:^|\s)미\s+(?:국방부|정부|행정부|군)|'
+                        r'(?:^|\s)미\s+(?:국방부|국방장관|정부|행정부|군)|'
                         r'\bu\.s\.(?=\s|$)|^us(?=\s|:|,)', title))
     if re.search(r'후티|\bhouthi', title):
         if us:
@@ -572,18 +587,19 @@ def _refinery_restart_statement_spans(title):
 
 
 def _military_analysis_headline(title):
-    military = re.search(r'미사일|공습|공격|방패|방공|요격|\b(?:missile|attack|airstrike|shield|defen[cs]e)', title)
+    military = re.search(r'미사일|공습|공격|폭격|방패|방공|요격|\b(?:missile|attack|airstrike|shield|defen[cs]e)', title)
     question = re.search(r'왜|어째서|\b(?:why|how)\b', title) and re.search(r'\?|까요|는가|했나', title)
+    rumor_question = re.search(r'(?:공격설|공습설|폭격설).{0,20}(?:힘\s*얻나|확산되나|가능성|[?？])', title)
     # A labelled dilemma feature describes the attack's implications. Its
     # background noun does not identify a new operation at publication time.
     marked_feature = re.search(r'\[디브리핑\]', title) and re.search(r'딜레마', title)
-    if marked_feature and re.search(
+    if (marked_feature or rumor_question) and re.search(
             r'(?:공습|공격|폭격|타격|요격)(?:을|를)?\s*'
             r'(?:개시|재개|감행|실시|완료|성공|했|하고\s*있|진행\s*중)|'
             r'(?:미사일|드론)(?:\s*\d+\s*(?:발|대))?(?:을|를)?\s*발사|'
             r'(?:피격|파괴)(?:됐|되었|당했)', title):
         return False
-    return bool(military and (question or marked_feature))
+    return bool(military and (question or marked_feature or rumor_question))
 
 
 def _military_report_headline(title):
@@ -648,7 +664,8 @@ def _diplomatic_headline_kind(title):
         return 'diplomatic_plan'
     if _diplomatic_deal_statement(title):
         return 'diplomatic_statement'
-    if re.search(r'통화|대화|회담|접촉|\bforeign ministers?\b.{0,20}\bhold talks\b|\b(?:speaks?|spoke|talks?|talked)\s+(?:to|with)\b|'
+    if re.search(r'통화|대화|회담|접촉|(?:종전|평화|휴전)\s*협상|\bpeace\s+talks\b|'
+                 r'\bforeign ministers?\b.{0,20}\bhold talks\b|\b(?:speaks?|spoke|talks?|talked)\s+(?:to|with)\b|'
                  r'\b(?:calls?|called)\s+(?:(?:u\.s\.|us)\s+)?'
                  r'(?:envoys?|witkoff|kushner|trump|zelenskyy?|zelenskiy)\b(?![\'’]s\b)', title):
         return 'diplomatic_contact'
@@ -725,7 +742,9 @@ def non_military_kind(row):
     prices = re.search(r'소비자물가|물가|\bcpi\b|\binflation\b|consumer prices', title)
     if prices and re.search(r'전쟁|\bwar\b', title) and not new_peace:
         return 'market_effect'
-    return _diplomatic_headline_kind(title) if not new_peace else None
+    # A commercial side deal in a peace-talks context keeps the existing
+    # transaction topic; the talks noun alone must not erase that distinction.
+    return _diplomatic_headline_kind(title) if not new_peace and not previous._lukoil_side_deal(row) else None
 
 
 def _clear_market_event_cache(row):
@@ -765,8 +784,9 @@ def _clear_headline_event_cache(row, kind):
 
 
 def score_item(row, now):
+    stamp = watch.parse_pub(row.get('published'))
     age = watch.age_minutes(row, now)
-    if age is not None and age > 3 * 60:
+    if stamp is None or stamp > now + dt.timedelta(minutes=5) or age > 3 * 60:
         return 0, []
     kind = non_military_kind(row)
     if kind == 'market_effect':
@@ -1041,7 +1061,8 @@ def build_alert(items, markets, now):
     aliases, seen = _source_aliases(state), set(state.get('seen', []))
     for row in items:
         # These annotations belong to this render, not an earlier replay.
-        if row.get('render_withheld') in ('duplicate_source_article', 'source_alias_already_seen', 'discovery_publication_stale'):
+        if row.get('render_withheld') in ('duplicate_source_article', 'source_alias_already_seen', 'discovery_publication_stale',
+                                        'discovery_publication_unverified', 'discovery_publication_future'):
             row.pop('render_withheld')
             row.pop('duplicate_of', None)
             row.pop('duplicate_basis', None)
@@ -1060,6 +1081,10 @@ def build_alert(items, markets, now):
         dates = [dt.datetime.fromisoformat(value['at_kst']) for value in metadata.get('publication_candidates', [])]
         if dates and (min(dates) < now - dt.timedelta(hours=3) or max(dates) > now + dt.timedelta(minutes=5)):
             row['render_withheld'] = 'origin_publication_stale_or_future'
+            continue
+        stamp = watch.parse_pub(row.get('published'))
+        if stamp is None or stamp > now + dt.timedelta(minutes=5):
+            row['render_withheld'] = 'discovery_publication_unverified' if stamp is None else 'discovery_publication_future'
             continue
         age = watch.age_minutes(row, now)
         if age is not None and age > 3 * 60:
@@ -1235,7 +1260,8 @@ def verify_alert(test_mode=False):
         primary = _primary_topic(row)
         if primary and html.escape(primary) not in lines[start]:
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered topic differs from headline event')
-        age = watch.age_minutes(row, dt.datetime.fromisoformat(receipt['queried_at_kst']))
+        queried = dt.datetime.fromisoformat(receipt['queried_at_kst'])
+        age = watch.age_minutes(row, queried)
         if age is not None and age > 3 * 60:
             raise RuntimeError('WAR_INTEGRITY_GATE: stale discovery publication in rendered source')
         if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure') and (
@@ -1253,6 +1279,9 @@ def verify_alert(test_mode=False):
             raise RuntimeError('WAR_INTEGRITY_GATE: unilateral restraint shown as bilateral peace')
         if primary and (start + 1 >= end or lines[start + 1] != html.escape(_display_headline(row))):
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered headline differs from source headline')
+        stamp = watch.parse_pub(row.get('published'))
+        if stamp is None or stamp > queried + dt.timedelta(minutes=5):
+            raise RuntimeError('WAR_INTEGRITY_GATE: unverified or future discovery publication in rendered source')
         current_kind = non_military_kind(row)
         if _headline_event_cache_required(row, current_kind):
             source_line = next((i for i in range(start + 2, end)
@@ -1299,6 +1328,7 @@ def verify_alert(test_mode=False):
             raise RuntimeError('WAR_INTEGRITY_GATE: undated comparison close labelled as previous day')
 
 
+watch.parse_pub = parse_pub
 watch.score_item, watch.topic_label, watch.build_alert = score_item, topic_label, build_alert
 watch.finalize = finalize
 previous.final_color = final_color
