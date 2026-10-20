@@ -1260,8 +1260,8 @@ def goldman_prime_public_article(text, published):
     )
     if not a:
         a = re.search(
-            r"\btech(?:nology)?\s+sector\s+accounts\s+for\s+"
-            r"(\d{1,2}(?:\.\d+)?)\s*%", text, re.I,
+            r"\b(?:the\s+)?(?:tech(?:nology)?\s+)?sector\s+accounts\s+for\s+"
+            r"(\d{1,2}(?:\.\d+)?)\s*%\s+of\s+Goldman", text, re.I,
         )
     lev = re.search(
         r"\bnet\s+leverage\b.{0,100}?(\d{1,2}(?:\.\d+)?)\s*%", text, re.I,
