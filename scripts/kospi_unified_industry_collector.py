@@ -185,20 +185,29 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
             print(f"kosdaq_ubm_degraded=true failed={kosdaq_failed}", flush=True)
         if failed:
             raise RuntimeError(f"UBM registration failures: {failed}")
-        # A separate metadata record makes missing/unregistered KOSDAQ sectors
-        # visible to the buy-alert reader. Existing crash parsers ignore it.
-        fp.write(json.dumps({
-            "record_type": "subscription_coverage", "ts": time.time(),
-            "market": "KOSDAQ", "source_tr": "UBM",
-            "expected": [x for x in industries if str(x["code"]).startswith("3")],
-            "registered": [key[1:] for _, key in registrations if key[1:].startswith("3")],
-            "failed": kosdaq_failed,
-        }, ensure_ascii=False) + "\n")
+        # Preserve each market's actual master, including missing sectors.
+        # The two markets' populations and ranks must never be combined.
+        for market in ("KOSPI", "KOSDAQ"):
+            expected = [x for x in industries if _industry(x["code"], x["name"], market)]
+            codes = {x["code"] for x in expected}
+            fp.write(json.dumps({
+                "record_type": "subscription_coverage", "ts": time.time(),
+                "market": market, "source_tr": "UBM", "expected": expected,
+                "registered": [key[1:] for _, key in registrations if key[1:] in codes],
+                "failed": kosdaq_failed if market == "KOSDAQ" else failed,
+            }, ensure_ascii=False) + "\n")
 
-        async def collect_kosdaq_history():
+        async def collect_industry_history():
             # t1621 is limited to 1 request/second. Spread one pass across the
             # industries, repeat no sooner than 60s, and leave UBM/KOSPI intact.
-            sectors = [x for x in industries if _industry(x["code"], x["name"])]
+            # Interleave the markets so adding KOSPI does not put every KOSDAQ
+            # sector behind a whole additional market pass. One shared worker
+            # respects the t1621 rate limit across both markets.
+            by_market = {m: [dict(x, market=m) for x in industries
+                             if _industry(x["code"], x["name"], m)]
+                         for m in ("KOSPI", "KOSDAQ")}
+            sectors = [items[i] for i in range(max(map(len, by_market.values())))
+                       for items in by_market.values() if i < len(items)]
             while True:
                 cycle_started = time.monotonic()
                 for item in sectors:
@@ -206,7 +215,7 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
                     request = {"t1621InBlock": {"upcode": item["code"], "nmin": 1,
                                                "cnt": 30, "bgubun": "0", "exchgubun": "U"}}
                     record = {"record_type": "industry_history_snapshot", "source_tr": "t1621",
-                              "market": "KOSDAQ", "upcode": item["code"], "industry": item["name"],
+                              "market": item["market"], "upcode": item["code"], "industry": item["name"],
                               "request": request, "source_unit": "UNVERIFIED"}
                     try:
                         response = await asyncio.wait_for(api.request("t1621", request), timeout=8)
@@ -222,7 +231,7 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
                     await asyncio.sleep(max(0, 1.1 - (time.monotonic() - call_started)))
                 await asyncio.sleep(max(0, 60 - (time.monotonic() - cycle_started)))
 
-        history_task = asyncio.create_task(collect_kosdaq_history())
+        history_task = asyncio.create_task(collect_industry_history())
         print(
             f"ubm_market_coverage kospi={sum(not x[1][1:].startswith('3') for x in registrations)} "
             f"kosdaq={sum(x[1][1:].startswith('3') for x in registrations)}",

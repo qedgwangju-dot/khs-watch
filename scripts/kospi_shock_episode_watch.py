@@ -1911,7 +1911,8 @@ class Watch:
                 },
             )
 
-    def build_flow_surge_alert(self, cand: dict[str, Any], now_ts: float) -> str:
+    def build_flow_surge_alert(self, cand: dict[str, Any], now_ts: float,
+                               industries: dict[str, Any] | None = None) -> str:
         actor = html.escape(str(cand["actor"]))
         spot, fut = cand.get("spot"), cand.get("futures")
         # '표본 종료시각-300초'는 실제 조회된 시작시각이 아닐 수 있다.
@@ -1929,6 +1930,13 @@ class Watch:
             f"• 현물(통합) {fmt_eok(spot)} · KOSPI200 선물 {fmt_eok(fut)}",
             f"• 확인 수준: {html.escape(str(cand['confidence']))}",
         ]
+        spot_window = cand.get("spot_window")
+        if fnum(spot) is not None and spot > 0 and spot_window:
+            lines.extend(industry_context_lines(
+                industries, str(cand["actor"]), *spot_window, market="KOSPI"))
+            lines.append("• 업종 순위는 현물 기준이며 선물·프로그램의 업종별 자금 배분을 뜻하지 않습니다.")
+        else:
+            lines.append("• 현물 업종 순매수 증가 확인 보류 — 같은 구간의 현물 순매수 증가 없음 또는 표본 부족")
         p = cand.get("program") or {}
         if p.get("valid"):
             trend = "순매수 증가" if p["delta"] > 0 else "순매도 증가" if p["delta"] < 0 else "변화 없음"
@@ -1986,8 +1994,26 @@ class Watch:
                 continue
             if now_ts - self.surge_sent_at.get(actor, 0.0) < SURGE_COOLDOWN_SEC:
                 continue
+            industries = None
+            spot_window = cand.get("spot_window")
+            if fnum(cand.get("spot")) is not None and cand["spot"] > 0 and spot_window:
+                try:
+                    industries = await asyncio.to_thread(
+                        industry_buy_context, *spot_window, actor,
+                        session_open_ts=start, market="KOSPI",
+                    )
+                except Exception as exc:
+                    # Industry context cannot discard a confirmed market alert.
+                    industries = {
+                        "market": "KOSPI", "investor": actor,
+                        "requested_window": list(spot_window), "available": False,
+                        "rows": [], "top": [], "covered_industries": 0,
+                        "expected_industries": None, "coverage_complete": False,
+                        "reason": "업종 수급 자료 처리 실패", "error_type": type(exc).__name__,
+                    }
+            text = self.build_flow_surge_alert(cand, now_ts, industries)
             msg_id = await asyncio.to_thread(
-                telegram_send, self.build_flow_surge_alert(cand, now_ts)
+                telegram_send, text
             )
             self.msg_ids.append(msg_id)
             self.surge_sent_at[actor] = now_ts
@@ -1997,6 +2023,8 @@ class Watch:
                 "sample_ts": sample_ts, "message_id": msg_id,
                 "spot_5m_eok": cand["spot"], "futures_5m_eok": cand["futures"],
                 "confidence": cand["confidence"],
+                "spot_window": spot_window, "futures_window": cand.get("futures_window"),
+                "industry_context": industries,
             }
             # 기존 급락과 동일한 실전 송출 기록/상태 인계 경로를 재사용한다.
             self._record_delivery(
@@ -2004,6 +2032,13 @@ class Watch:
                 {"start_ts": sample_ts - SURGE_WINDOW_SEC, "low_ts": sample_ts,
                  "market": "KOSPI", "actor": actor},
                 sample_ts,
+                evidence={
+                    "market": "KOSPI", "actor": actor,
+                    "spot_window": spot_window, "futures_window": cand.get("futures_window"),
+                    "spot_delta_eok": cand.get("spot"), "futures_delta_eok": cand.get("futures"),
+                    "industry_context": industries,
+                    "message_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                },
             )
 
     async def evaluate(self) -> None:

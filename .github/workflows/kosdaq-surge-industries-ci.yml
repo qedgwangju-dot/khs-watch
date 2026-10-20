@@ -6,6 +6,7 @@ on:
       - "scripts/kosdaq_surge_industries.py"
       - "scripts/test_kosdaq_surge_industries.py"
       - "scripts/probe_kosdaq_surge_industries.py"
+      - "scripts/probe_market_surge_industries.py"
       - "scripts/kospi_shock_episode_watch.py"
       - "scripts/market_flow_channels.py"
       - "scripts/test_market_flow_channels.py"
@@ -18,6 +19,7 @@ on:
       - "scripts/kosdaq_surge_industries.py"
       - "scripts/test_kosdaq_surge_industries.py"
       - "scripts/probe_kosdaq_surge_industries.py"
+      - "scripts/probe_market_surge_industries.py"
       - "scripts/kospi_shock_episode_watch.py"
       - "scripts/market_flow_channels.py"
       - "scripts/test_market_flow_channels.py"
@@ -42,6 +44,7 @@ jobs:
       - name: Validate industry context and existing flow guards offline
         run: |
           python -m py_compile scripts/kosdaq_surge_industries.py scripts/probe_kosdaq_surge_industries.py scripts/kospi_unified_industry_collector.py scripts/kospi_shock_episode_watch.py
+          python -m py_compile scripts/probe_market_surge_industries.py
           python scripts/test_kosdaq_surge_industries.py
           python scripts/test_market_flow_channels.py
           python scripts/test_kospi_shock_episode.py

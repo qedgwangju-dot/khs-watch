@@ -402,8 +402,122 @@ class NativeHistoryTests(IndustryFixture, unittest.TestCase):
         self.assertEqual(result["rows"][0]["end_gap_sec"], 30)
 
 
+class KOSPIIndustryTests(IndustryFixture, unittest.TestCase):
+    def load(self, rows, actor="외국인", **kwargs):
+        return super().load(rows, actor, market="KOSPI", **kwargs)
+
+    @staticmethod
+    def history(code="013", name="전기전자", before=500, after=530):
+        row = native(code, name, before, after)
+        row["market"] = "KOSPI"
+        for point, value in zip(row["response"]["t1621OutBlock1"], (before, after)):
+            point.update(formsamt=value, indmsamt=-value, sysmsamt=value * 2)
+        return row
+
+    @staticmethod
+    def master(items):
+        row = coverage(items)
+        row["market"] = "KOSPI"
+        return row
+
+    def test_same_market_actor_and_interval_cumulative_difference(self):
+        rows = [self.master([("013", "전기전자"), ("018", "건설")]),
+                self.history(), self.history("018", "건설", 10000, 10010), native()]
+        result = self.load(rows)
+        self.assertEqual([(x["name"], x["delta_raw"]) for x in result["top"]],
+                         [("전기전자", 30), ("건설", 10)])
+        self.assertTrue(result["coverage_complete"])
+        self.assertEqual(result["source_amount_field"], "formsamt")
+        self.assertFalse(result["unit_verified"])
+        self.assertIsNone(result["display_unit"])
+        institution = self.load(rows, "기관")
+        self.assertEqual(institution["top"][0]["delta_raw"], 60)
+        self.assertEqual(institution["source_amount_field"], "sysmsamt")
+        self.assertFalse(self.load(rows, "개인")["top"])
+
+    def test_kosdaq_history_cannot_hide_valid_kospi_ubm(self):
+        result = self.load(pair("013", "전기전자", 10, 20, "외국인") + [native()])
+        self.assertEqual(result["source_tr"], "UBM")
+        self.assertEqual(result["top"][0]["delta_raw"], 10)
+
+    def test_index_manufacturing_and_other_market_never_rank(self):
+        rows = [self.history(c, n, 0, 100000) for c, n in
+                [("001", "종합"), ("002", "대형주"), ("026", "제조업"),
+                 ("306", "제조"), ("319", "화학"), ("901", "기타지수")]]
+        result = self.load(rows + [self.history()])
+        self.assertEqual([x["code"] for x in result["top"]], ["013"])
+
+    def test_partial_rank_and_opposite_market_render_guard(self):
+        result = self.load([self.master([("013", "전기전자"), ("018", "건설")]), self.history()])
+        lines = "\n".join(industry_context_lines(result, "외국인", START, END, market="KOSPI"))
+        self.assertIn("확인 1개 / 수집 대상 2개", lines)
+        self.assertIn("전체 업종 순위 확정 보류", lines)
+        self.assertIn("금액: 원자료 단위 미확인", lines)
+        self.assertNotIn("전기전자", "\n".join(industry_context_lines(result, "외국인", START, END)))
+        self.assertNotIn("전기전자", "\n".join(industry_context_lines(result, "기관", START, END, market="KOSPI")))
+        self.assertNotIn("전기전자", "\n".join(industry_context_lines(result, "외국인", START + 1, END, market="KOSPI")))
+
+    def test_latest_failure_or_converted_amount_does_not_fallback(self):
+        old = self.history()
+        for changes in ({"status": "request_failed"}, {"source_unit": "억원"}):
+            latest = self.history()
+            latest.update(received_ts=END + 31, **changes)
+            result = self.load([old, latest] + pair("013", "전기전자", 0, 99999, "외국인"))
+            self.assertFalse(result["available"])
+            self.assertEqual(result["excluded"]["invalid_history_response"], 1)
+
+    def test_kospi_same_boundary_skew_and_negative_changes(self):
+        row = self.history()
+        for point in row["response"]["t1621OutBlock1"]:
+            stamp = dt.datetime.strptime(point["datetime"], "%Y%m%d%H%M%S") - dt.timedelta(seconds=31)
+            point.update(time=stamp.strftime("%H%M%S"), datetime=stamp.strftime("%Y%m%d%H%M%S"))
+        self.assertFalse(self.load([row])["available"])
+        self.assertFalse(self.load([self.history(before=1000, after=999)])["available"])
+
+    def test_kospi_renderer_uses_spot_context_and_keeps_futures_separate(self):
+        w = watcher.Watch("fixture", [], "", False)
+        result = self.load([self.history()])
+        cand = {"actor": "외국인", "mode": "현물·선물 동시", "spot": 550,
+                "futures": 720, "confidence": "중간", "spot_window": (START, END),
+                "futures_window": (START + 10, END + 10)}
+        text = w.build_flow_surge_alert(cand, END + 5, result)
+        self.assertIn("전기전자", text)
+        self.assertIn("선물·프로그램의 업종별 자금 배분을 뜻하지", text)
+        self.assertIn("KOSPI200 선물 +720억원", text)
+        cand["spot"] = -10
+        text = w.build_flow_surge_alert(cand, END + 5, result)
+        self.assertNotIn("전기전자", text)
+        self.assertIn("현물 순매수 증가 없음", text)
+
+    def test_confirmed_kospi_alert_loads_exact_window_and_preserves_receipt(self):
+        w = watcher.Watch("fixture", [], "", False)
+        w.session_open_ts, w.session_close_ts = OPEN, END + 3600
+        w.session_continuous_end_ts = END + 1800
+        w.flows.append({"ts": END + 20})
+        w.surge_pending["외국인"] = {"sample_ts": END, "seen_at": END}
+        cand = {"actor": "외국인", "mode": "현물 중심", "spot": 1001, "futures": -20,
+                "confidence": "단독 신호", "spot_window": (START + 20, END + 20),
+                "futures_window": (START + 10, END + 10), "sample_ts": END + 20}
+        result = self.load([self.history()])
+        result["requested_window"] = list(cand["spot_window"])
+        receipts = []
+        w._record_delivery = lambda *a, **kw: receipts.append((a, kw))
+        with patch.object(watcher, "flow_surge_candidates", return_value=[cand]), \
+                patch.object(watcher, "industry_buy_context", return_value=result) as load_context, \
+                patch.object(watcher, "telegram_send", return_value=987) as send:
+            asyncio.run(w.maybe_alert_flow_surge(END + 25))
+            load_context.assert_called_once_with(*cand["spot_window"], "외국인", session_open_ts=OPEN, market="KOSPI")
+            self.assertEqual(w.msg_ids, [987])
+            evidence = receipts[0][1]["evidence"]
+            self.assertEqual(evidence["spot_window"], cand["spot_window"])
+            self.assertEqual(evidence["industry_context"], result)
+            self.assertEqual(evidence["message_sha256"], hashlib.sha256(send.call_args.args[0].encode()).hexdigest())
+            asyncio.run(w.maybe_alert_flow_surge(END + 26))
+            self.assertEqual(send.call_count, 1)
+
+
 class CollectorHistoryTests(unittest.TestCase):
-    def exercise(self, fail=False):
+    def exercise(self, fail=False, dual=False):
         class Signal:
             def connect(self, fn): self.fn = fn
 
@@ -412,9 +526,12 @@ class CollectorHistoryTests(unittest.TestCase):
             async def login(self, *args): return True
             async def request(self, tr, query):
                 if tr == "t8424":
-                    return types.SimpleNamespace(body={"t8424OutBlock": [{"upcode": "319", "hname": "화학"}]})
+                    rows = [{"upcode": "319", "hname": "화학"}]
+                    if dual:
+                        rows += [{"upcode": "013", "hname": "전기전자"}]
+                    return types.SimpleNamespace(body={"t8424OutBlock": rows})
                 if fail: raise RuntimeError("fixture")
-                return types.SimpleNamespace(body=native()["response"])
+                return types.SimpleNamespace(body=native(query["t1621InBlock"]["upcode"])["response"])
             async def add_realtime(self, tr, key):
                 self.on_realtime.fn(self, tr, key, {"upcode": "319", "tjjcode": "0008", "msval": 1,
                                                   "msvol": 1, "tjjtime": dt.datetime.now(KST).strftime("%H%M%S"),
@@ -429,7 +546,7 @@ class CollectorHistoryTests(unittest.TestCase):
                 patch.object(collector, "ebest", types.SimpleNamespace(OpenApi=API)), \
                 patch.dict(os.environ, {"LS_OPENAPI_APP_KEY": "fixture", "LS_OPENAPI_APP_SECRET": "fixture"}):
             p = Path(directory) / "journal.jsonl"
-            asyncio.run(collector.main(p, dt.time(15, 32), test_seconds=1))
+            asyncio.run(collector.main(p, dt.time(15, 32), test_seconds=3 if dual else 1))
             return [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines()]
 
     def test_sampler_preserves_ubm_and_writes_dated_history(self):
@@ -441,6 +558,18 @@ class CollectorHistoryTests(unittest.TestCase):
         rows = self.exercise(fail=True)
         self.assertTrue(any(x.get("investor") == "개인" for x in rows))
         self.assertTrue(any(x.get("status") == "request_failed" and x["error_type"] == "RuntimeError" for x in rows))
+
+    def test_sampler_retains_two_separate_market_populations_and_responses(self):
+        rows = self.exercise(dual=True)
+        masters = {x["market"]: x for x in rows if x.get("record_type") == "subscription_coverage"}
+        self.assertEqual([x["code"] for x in masters["KOSPI"]["expected"]], ["013"])
+        self.assertEqual([x["code"] for x in masters["KOSDAQ"]["expected"]], ["319"])
+        snapshots = [x for x in rows if x.get("record_type") == "industry_history_snapshot"]
+        self.assertEqual({(x["market"], x["upcode"]) for x in snapshots}, {("KOSPI", "013"), ("KOSDAQ", "319")})
+        for row in snapshots:
+            self.assertEqual(row["response"]["t1621OutBlock"]["ex_upcode"], "U" + row["upcode"])
+        from kosdaq_surge_industries import _industry
+        self.assertTrue(_industry("327", "기타제조"))
 
 
 class ProductionAuditTests(unittest.TestCase):
