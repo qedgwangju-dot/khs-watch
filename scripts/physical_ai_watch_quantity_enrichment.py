@@ -366,6 +366,14 @@ def _skip_quantity_enrichment(block: str) -> bool:
         "로보티즈 · 하드웨어 설계도 실제",
     )):
         return True
+    # Atlas CFO's 50,000 group ROBOTS is a future multi-model plan,
+    # not signed Atlas shipments or priced actuator units. Eka's funding
+    # and 1,500 manipulations per hour are not robot counts for pricing.
+    if ("Atlas 액추에이터 · CFO 부품원가 70%" in block
+            or "보스턴다이내믹스 CFO:" in block
+            or "Eka Robotics · 시리즈 A 공식 조달" in block
+            or "Eka Robotics 공식 1억5000만달러" in block):
+        return True
     # A 24-hour R&D duty-cycle article and a 23rd regulatory meeting do not
     # establish numbers of shipped robots, priced parts or manufacturing orders.
     # Future official robot shipments may use normal quantity enrichment.
