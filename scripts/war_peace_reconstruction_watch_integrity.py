@@ -106,6 +106,7 @@ def _display_headline(row):
             or _summit_openness_headline(_headline(row))
             or _summit_openness_denied(_headline(row))
             or _harm_intent_denial_headline(_headline(row))
+            or _near_military_authorization(_headline(row))
             or _negotiation_stalemate_headline(_headline(row))
             or _ceasefire_proposal_stage(_headline(row))
             or _headline_attack_casualties(row) or _headline_energy_operation(row)):
@@ -248,9 +249,32 @@ def _diplomatic_group(title):
 
 
 def _information_resumption_headline(title):
-    return bool(re.search(r'정보.{0,8}(?:지원|공유|제공).{0,18}(?:재개|복원|재시작)|'
+    return bool(re.search(r'정보.{0,8}(?:지원|공유|제공).{0,18}(?:재개|복원|재시작|정상화)|'
                           r'\b(?:intelligence|information).{0,15}(?:support|sharing|provision).{0,20}(?:resum\w*|restor\w*)|'
                           r'\b(?:resum\w*|restor\w*).{0,20}(?:intelligence|information).{0,15}(?:support|sharing|provision)', title))
+
+
+def _settlement_pressure_headline(title):
+    return bool(re.search(r'(?:종전|휴전).{0,12}합의(?:할\s*때|해야|(?:를)?\s*(?:촉구|압박))|'
+                          r'종전\s*협상\s*재촉|젤렌스키.{0,22}합의해야', title))
+
+
+def _meeting_participation_request(title):
+    return bool(re.search(r'회담.{0,35}(?:우리도|우크라이나(?:도)?).{0,12}참여해야', title))
+
+
+def _near_military_authorization(title):
+    # A reported near-approval and an expected future resumption are statements.
+    return bool(re.search(r'\b(?:came|was|were)\s+(?:(?:reportedly|very)\s+)*close\s+to\s+'
+                          r'(?:ordering|approving|authorizing)\s+(?:military\s+)?strikes?\b', title))
+
+
+def _statement_with_actual_action(title):
+    stage = (_settlement_pressure_headline(title) or _meeting_participation_request(title)
+             or _information_resumption_headline(title) or _near_military_authorization(title))
+    return bool(stage and re.search(
+        r'(?:공습|공격|폭격|타격|요격)(?:을|를)?\s*(?:했다(?!는)|했으며|하고\s*있|진행\s*중)|'
+        r'(?:피격|파괴)(?:됐|되었|당했)|\b(?:attacked|struck|bombed)\b', title))
 
 
 def _primary_topic(row):
@@ -263,6 +287,10 @@ def _primary_topic(row):
             return _diplomatic_group(title) + ' · 위해 의도 부인·설명'
         if kind == 'diplomatic_position' and _negotiation_stalemate_headline(title):
             return _diplomatic_group(title) + ' · 협상 교착·지연 보도'
+        if kind == 'diplomatic_position' and _settlement_pressure_headline(title):
+            return _diplomatic_group(title) + ' · 종전 합의 촉구·압박'
+        if kind == 'diplomatic_position' and _meeting_participation_request(title):
+            return _diplomatic_group(title) + ' · 회담 참여 요구'
         proposal = _ceasefire_proposal_stage(title)
         if proposal and kind in ('diplomatic_position', 'diplomatic_plan'):
             return _diplomatic_group(title) + ' · ' + ('휴전 제안 부인' if proposal == 'denied' else '휴전 제안')
@@ -321,7 +349,8 @@ def _primary_topic(row):
         return _headline_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'support_statement':
         if _information_resumption_headline(title):
-            return _diplomatic_group(title) + ' · 정보 제공·공유 재개 보도'
+            stage = '정상화' if '정상화' in title else '재개'
+            return _diplomatic_group(title) + ' · 정보 제공·공유 ' + stage + ' 보도'
         label = '정보 지원·종전 의향 발언' if re.search(r'종전|peace|end.{0,8}war', title) else '지원 정책 발언'
         return _headline_group(title) + ' · ' + label
     if kind is None and _headline_drone_action(row):
@@ -806,8 +835,12 @@ def non_military_kind(row):
     if any(not any(span.start() <= action.start() and action.end() <= span.end()
                    for span in discussion + statements + future + condemnation) for action in actions):
         return None
-    if _report_with_completed_action(title):
+    if _report_with_completed_action(title) or _statement_with_actual_action(title):
         return None
+    if _settlement_pressure_headline(title) or _meeting_participation_request(title):
+        return 'diplomatic_position'
+    if _near_military_authorization(title):
+        return 'military_statement'
     if not new_peace and _military_withdrawal_position(title):
         return 'military_position'
     if not new_peace and _corporate_spending_headline(title):
@@ -886,6 +919,10 @@ def _headline_event_label(row, kind):
         return '위해 의도 부인·설명'
     if kind == 'diplomatic_position' and _negotiation_stalemate_headline(title):
         return '협상 교착·지연 보도'
+    if kind == 'diplomatic_position' and _settlement_pressure_headline(title):
+        return '종전 합의 촉구·압박'
+    if kind == 'diplomatic_position' and _meeting_participation_request(title):
+        return '회담 참여 요구'
     if kind in ('diplomatic_position', 'diplomatic_plan') and _ceasefire_proposal_stage(title):
         return '휴전 제안 부인' if _ceasefire_proposal_stage(title) == 'denied' else '휴전 제안'
     return KIND_LABELS[kind] if kind else _headline_action_label(row)
@@ -895,7 +932,8 @@ def _headline_event_cache_required(row, kind):
     return (kind in ('support_statement', 'military_position', 'corporate_spending', 'market_reaction', 'maritime_routing', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis', 'trade_proposal',
                     'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure')
             or (kind == 'military_statement' and (
-                _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
+                _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))
+                or _near_military_authorization(_headline(row))))
             or _energy_facility_headline(row)
             or (kind is None and _headline_refinery_action(row))
             or (kind is None and _headline_drone_action(row))
@@ -954,6 +992,8 @@ def score_item(row, now):
 def final_color(row):
     if non_military_kind(row):
         return 'yellow'
+    if _statement_with_actual_action(_headline(row)):
+        return 'red'
     if _headline_energy_operation(row):
         return 'red'
     if re.search(r'(?:공습|공격|폭격)에\s*(?:나섰|돌입)', _headline(row)):
@@ -980,7 +1020,9 @@ def final_color(row):
             or _meeting_uncertainty_headline(title) or _meeting_intent_stage(title)
             or _participation_exclusion_headline(title) or _harm_intent_denial_headline(title)
             or _negotiation_stalemate_headline(title) or _ceasefire_proposal_stage(title)
-            or _bargain_question_headline(title))):
+            or _bargain_question_headline(title) or _information_resumption_headline(title)
+            or _settlement_pressure_headline(title) or _meeting_participation_request(title)
+            or _near_military_authorization(title))):
         return 'red'
     return 'red' if maritime_attack_tally(row) else _color(row)
 
@@ -1227,13 +1269,38 @@ def _dedupe_source_articles(items):
     return visible
 
 
+def _distinct_publisher_headlines(items):
+    """Select one matching headline without asserting cross-publisher identity."""
+    selected = []
+    for row in items:
+        source = str(row.get('source') or '').strip().casefold()
+        title = _headline(row)
+        if source:
+            title = re.sub(r'\s+[-|]\s+' + re.escape(source) + r'\s*$', '', title)
+        key = re.findall(r'[^\W_]+', title, re.UNICODE)
+        collision = False
+        for other, other_key in selected:
+            other_source = str(other.get('source') or '').strip().casefold()
+            hosts = (_publisher_host(row), _publisher_host(other))
+            if (key and key == other_key and source and other_source and source != other_source
+                    and all(hosts) and hosts[0] != hosts[1]):
+                collision = True
+                break
+        if collision:
+            row['render_withheld'] = 'same_headline_distinct_publisher'
+        else:
+            selected.append((row, key))
+    return [row for row, _ in selected]
+
+
 def build_alert(items, markets, now):
     state = watch.load_state()
     aliases, seen = _source_aliases(state), set(state.get('seen', []))
     for row in items:
         # These annotations belong to this render, not an earlier replay.
         if row.get('render_withheld') in ('duplicate_source_article', 'source_alias_already_seen', 'discovery_publication_stale',
-                                        'discovery_publication_unverified', 'discovery_publication_future'):
+                                        'discovery_publication_unverified', 'discovery_publication_future',
+                                        'same_headline_distinct_publisher'):
             row.pop('render_withheld')
             row.pop('duplicate_of', None)
             row.pop('duplicate_basis', None)
@@ -1263,6 +1330,7 @@ def build_alert(items, markets, now):
             continue
         visible.append(row)
     visible = _dedupe_source_articles(visible)
+    visible = _distinct_publisher_headlines(visible)
     if not visible:
         return ''
     for row in items:

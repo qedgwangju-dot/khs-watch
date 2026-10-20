@@ -74,6 +74,159 @@ class IntegrityTests(unittest.TestCase):
         value=json.loads((Path(__file__).parent/'test_fixtures/war_denial_casualty_39427171063.json').read_text(encoding='utf-8'))
         return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def oct21_stage_fixture(self, scope='rejected'):
+        path=Path(__file__).parent/'test_fixtures/war_headline_stage_39501042790.json'
+        value=json.loads(path.read_text(encoding='utf-8'))['runs'][scope]
+        return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_oct21_information_normalization_is_support_not_attack(self):
+        fixture,_=self.oct21_stage_fixture();row=copy.deepcopy(fixture['articles'][3])
+        self.assertEqual(integrity.non_military_kind(row),'support_statement')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'미국·우크라이나 · 정보 제공·공유 정상화 보도')
+
+    def test_oct21_information_normalization_does_not_hide_separate_attack(self):
+        row=article('젤렌스키, 美 정보 공유 정상화…러시아 미사일 발사')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row),'red')
+
+    def test_oct21_settlement_pressure_is_not_implemented_peace(self):
+        fixture,_=self.oct21_stage_fixture()
+        for index in (2,6,7):
+            row=copy.deepcopy(fixture['articles'][index])
+            with self.subTest(title=row['title_original']):
+                self.assertEqual(integrity.non_military_kind(row),'diplomatic_position')
+                self.assertEqual(integrity.final_color(row),'yellow')
+                self.assertIn('종전 합의 촉구·압박',integrity.topic_label(row))
+
+    def test_oct21_pressure_does_not_hide_completed_separate_attack(self):
+        row=article('트럼프 종전 합의 촉구…러시아 미사일 발사')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row),'red')
+
+    def test_oct21_explicit_bilateral_implementation_remains_green(self):
+        row=article('우크라이나·러시아 양측 휴전 합의, 공격 중단 이행 시작')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row),'green')
+
+    def test_oct21_completed_predicates_survive_statement_context(self):
+        for title in ('트럼프 종전 합의 촉구…러시아 공습했다',
+                      '젤렌스키, 美 정보 공유 정상화…러시아 공격을 했다',
+                      'Trump came very close to ordering strikes on Iran; Iran bombed Israel'):
+            with self.subTest(title=title):
+                row=article(title)
+                self.assertIsNone(integrity.non_military_kind(row))
+                self.assertEqual(integrity.final_color(row),'red')
+
+    def test_oct21_near_authorization_preserves_english_order_and_negation(self):
+        fixture,now=self.oct21_stage_fixture('sent');row=copy.deepcopy(fixture['articles'][2])
+        self.assertEqual(integrity.non_military_kind(row),'military_statement')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'미국·이란 · 군사 대응·보복 발언')
+        score,tags=integrity.score_item(row,now)
+        self.assertGreater(score,0);self.assertNotIn('확전',tags)
+        self.assertEqual(integrity._display_headline(row),' '.join(row['title_original'].split()))
+        self.assertIn('no new strikes before November 3',integrity._display_headline(row))
+
+    def test_oct21_near_authorization_does_not_hide_separate_launch(self):
+        row=article('Trump came very close to ordering strikes on Iran; US launched strikes on Iran')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row),'red')
+
+    def test_oct21_conditional_meeting_participation_is_request(self):
+        fixture,_=self.oct21_stage_fixture();row=copy.deepcopy(fixture['articles'][4])
+        self.assertEqual(integrity.non_military_kind(row),'diplomatic_position')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'미국·우크라이나·중국·러시아 · 회담 참여 요구')
+
+    def test_oct21_distinct_publishers_same_headline_deferred_without_alias(self):
+        fixture,now=self.oct21_stage_fixture();rows=copy.deepcopy(fixture['articles'])
+        with patch.object(integrity.body_parallel,'_safe_enrich'):
+            text=integrity.build_alert(rows,fixture['markets'],now)
+        receipt=evidence.alert_receipt(rows,fixture['markets'],now,text)
+        self.assertEqual([x['id']for x in receipt['articles']if x['rendered']],
+                         [rows[i]['id']for i in (0,2,3,4)])
+        self.assertEqual(rows[1]['render_withheld'],'same_headline_distinct_publisher')
+        self.assertNotIn('duplicate_of',rows[1])
+        self.assertNotIn('동일 제목 중복',quality._alert_quality_issues(text))
+        self.assertEqual(json.loads(watch.STATE.read_text()),{'seen':[]})
+
+    def test_oct21_deferred_source_is_eligible_when_selected_alone(self):
+        fixture,now=self.oct21_stage_fixture();rows=copy.deepcopy(fixture['articles'][:2])
+        with patch.object(integrity.body_parallel,'_safe_enrich'):
+            integrity.build_alert(rows,[],now)
+            text=integrity.build_alert([rows[1]],[],now)
+        self.assertIn(rows[1]['link'],text)
+        self.assertNotIn('render_withheld',rows[1])
+
+    def test_oct21_deferred_publisher_never_enters_seen_or_aliases(self):
+        fixture,now=self.oct21_stage_fixture();rows=copy.deepcopy(fixture['articles'])
+        with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+            root=Path(folder)
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch,attr,root/name))
+            stack.enter_context(patch.object(integrity.body_parallel,'_safe_enrich'))
+            text=integrity.build_alert(rows,fixture['markets'],now)
+            receipt=evidence.alert_receipt(rows,fixture['markets'],now,text,fixture['market_source_status'])
+            ids=[x['id']for x in receipt['articles']if x['rendered']]
+            watch.ALERT.write_text(text,encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt),encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':ids}),encoding='utf-8')
+            integrity.verify_alert();watch.finalize()
+            state=json.loads(watch.STATE.read_text())
+            self.assertEqual(state['seen'],ids)
+            self.assertNotIn(rows[1]['id'],state['seen'])
+            self.assertNotIn(rows[1]['id'],state.get('source_aliases',{}))
+
+    def test_oct21_same_source_different_time_is_not_cross_publisher_selection(self):
+        fixture,now=self.oct21_stage_fixture();rows=copy.deepcopy(fixture['articles'][:2])
+        rows[1]['source']=rows[0]['source'];rows[1]['source_url']=rows[0]['source_url']
+        rows[1]['title_original']=rows[1]['title_ko']=rows[0]['title_original']
+        self.assertFalse(integrity._same_source_article(*rows))
+        self.assertEqual(integrity._distinct_publisher_headlines(rows),rows)
+        self.assertTrue(all('render_withheld'not in row for row in rows))
+
+    def test_oct21_publisher_selection_preserves_negation_word_order_and_counts(self):
+        fixture,now=self.oct21_stage_fixture()
+        for title in ('이란, 종전협상 지연하지 않는다 - 연합뉴스TV',
+                      '트럼프, 이란에 타격 주려 종전협상 지연 - 연합뉴스TV',
+                      '이란, 종전협상 30일 지연 - 연합뉴스TV'):
+            rows=copy.deepcopy(fixture['articles'][:2]);rows[1]['title_original']=rows[1]['title_ko']=title
+            with self.subTest(title=title),patch.object(integrity.body_parallel,'_safe_enrich'):
+                text=integrity.build_alert(rows,[],now)
+                self.assertIn(rows[0]['link'],text);self.assertIn(rows[1]['link'],text)
+
+    def test_oct21_saved_full_candidates_pass_existing_final_gate(self):
+        fixture,now=self.oct21_stage_fixture();rows=copy.deepcopy(fixture['articles'])
+        with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+            root=Path(folder)
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch,attr,root/name))
+            stack.enter_context(patch.object(integrity.body_parallel,'_safe_enrich'))
+            text=integrity.build_alert(rows,fixture['markets'],now)
+            receipt=evidence.alert_receipt(rows,fixture['markets'],now,text,fixture['market_source_status'])
+            ids=[x['id']for x in receipt['articles']if x['rendered']]
+            watch.ALERT.write_text(text,encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt),encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':ids}),encoding='utf-8')
+            integrity.verify_alert()
+            self.assertTrue(all(x['classification_color']=='yellow'for x in receipt['articles']if x['rendered']))
+            self.assertNotIn('🟢',text);self.assertNotIn('🔴',text)
+
+    def test_oct21_original_same_hash_wrong_stage_is_rejected(self):
+        fixture,now=self.oct21_stage_fixture();rows=copy.deepcopy(fixture['articles'][2:4])
+        with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+            root=Path(folder)
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch,attr,root/name))
+            stack.enter_context(patch.object(integrity.body_parallel,'_safe_enrich'))
+            text=integrity.build_alert(rows,fixture['markets'],now)
+            text=text.replace('🟡 [','🟢 [')
+            receipt=evidence.alert_receipt(rows,fixture['markets'],now,text,fixture['market_source_status'])
+            for row in receipt['articles']:row['classification_color']='green'
+            watch.ALERT.write_text(text,encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt),encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[x['id']for x in receipt['articles']if x['rendered']]}),encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
+                integrity.verify_alert()
+
     def energy_operation_fixture(self):
         value=json.loads((Path(__file__).parent/'test_fixtures/war_energy_operation_39436762007.json').read_text(encoding='utf-8'))
         return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
