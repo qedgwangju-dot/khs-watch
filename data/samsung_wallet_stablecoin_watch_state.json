@@ -6,13 +6,27 @@
       "published_utc": "2026-10-15T15:02:27+00:00",
       "source": "Google News RSS",
       "title": "Samsung Wallet Makes USDC the Default Stablecoin for 82 Million Phones - Startup Fortune"
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1ZUkxBYWxFY3RqeG9nNUh5VlBjdGxMdFpZeUVXRTNQeFY5STd3ZEpJbGNLTy01MTB2ZHB2UHFKTGNzMThwdlNiS1VXY0NoUDZ0WHlpX3Y4SUdYYmNDdVh2UnZlVUFhZw?oc=5",
+      "published_utc": "2026-10-20T00:49:25+00:00",
+      "source": "Google News RSS",
+      "title": "갤럭시 8200만대에 '디지털 달러' 심는다…삼성전자, 스테이블코인 송금시장 출사표 - 테크M"
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBDUXNqTmZpVi13RVlvM2Y0eVZ2c3d1dDdCcU1FQnI0WFRkc0lsS2k3M2o5SHJSOFc1dUNSekVLUWRFNUgwUlF1c1BIeXNmc1pBNkJWTENoaldJemY2VzhsS0UwWUJhR2_SAWtBVV95cUxNb0Z6ZG1ydUtmeFQwNm1CRGw0X3JsZThJaS0tc0QyUDU4cDB1MFZwcUk2SjhiZjIzcV80eDFLVzBxY0hBNmNvNXVjVW9pYm9CVXZjY3RPU0phdXhJbWlya1l5UkxJbkFSUm1iUQ?oc=5",
+      "published_utc": "2026-10-19T22:25:27+00:00",
+      "source": "Google News RSS",
+      "title": "갤럭시로 디지털 달러 보낸다…삼성월렛, 美 스테이블코인 송금 시동 - 비온미디어"
     }
   ],
   "official": {
-    "article_confirmed": true,
+    "article_confirmed": false,
     "bastion_partner_primary": false,
     "errors": [
+      "digitalasset: HTTP Error 403: Forbidden",
       "wallet_patent_us: HTTP Error 403: Forbidden",
+      "wallet_patent_news: HTTP Error 403: Forbidden",
       "bastion_partner_primary: HTTP Error 403: Forbidden"
     ],
     "explicit_reversal_confirmed": false,
@@ -25,7 +39,7 @@
     "solana_partner_primary": true,
     "sui_partner_primary": true,
     "wallet_patent_family_confirmed": true,
-    "wallet_patent_news_confirmed": true,
+    "wallet_patent_news_confirmed": false,
     "wallet_patent_us_confirmed": false,
     "wallet_patent_us_crosscheck_confirmed": false
   },
@@ -56,5 +70,5 @@
     "wallet_patent_publication": "US20260212355A1",
     "wallet_patent_publication_date": "2026-07-23"
   },
-  "updated_at_kst": "2026-10-20T09:45:01+09:00"
+  "updated_at_kst": "2026-10-20T14:25:51+09:00"
 }
