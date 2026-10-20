@@ -1,0 +1,333 @@
+{
+  "provenance": {
+    "run_id": "39391758440",
+    "code_sha": "6f987b635f86e3e71abdb7147a1dfc09c4d18a55",
+    "queried_at_kst": "2026-10-20T17:13:57.413645+09:00",
+    "artifact_id": 12250386171,
+    "artifact_zip_sha256": "19a8ab9917aea57bd0e54641d390a4c4fc861ce9a0ae7d9718e2e0c972a79c2b",
+    "alert_sha256": "bf92ae667e8e045c294f1ee62bd6c206199a4012d0ddfa996f4cfe87c0f7a6ea",
+    "scope": "Dry-run saved candidates, never sent. Full operating article bodies and HTTP bytes are absent. Later HTTP is not inserted."
+  },
+  "articles": [
+    {
+      "id": "4892cec16f2d5569dd93",
+      "title_original": "Oil majors face spending test from Iran war windfall cash",
+      "title_ko": "석유 메이저들은 이란 전쟁 횡재 현금으로 인한 지출 테스트에 직면",
+      "description": "",
+      "source": "Reuters",
+      "link": "https://www.reuters.com/business/energy/oil-majors-face-spending-test-iran-war-windfall-cash-2026-10-20/",
+      "published": "2026-10-20T06:04:09.249Z",
+      "score": 25,
+      "tags": [
+        "시장파급"
+      ],
+      "body_checked": true,
+      "signals_ko": [
+        "전쟁·종전 변화가 원유 가격에 직접 반영 — 공급차질 위험프리미엄 변화 확인"
+      ],
+      "forced_tags": [
+        "시장파급"
+      ],
+      "classification_color": "",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "877f9a1da6e73bf7e037",
+      "title_original": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 - 한겨레",
+      "title_ko": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 - 한겨레",
+      "description": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 한겨레",
+      "source": "한겨레",
+      "source_url": "https://www.hani.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9LQUJzWWQyc1VueVlIdEhjMHhJZThJMlpjWVdNYTRxNXFUZXlUdC1CcjMxWDJRX2dMLUtMYXk0dmdxV2ZVQXVPbEFwQXpkMUJVNUNKa2NqbkswUmJfaEwxcjQ3V2hkLWxfd1l2MUJIRndPcVk?oc=5",
+      "published": "Tue, 20 Oct 2026 07:29:00 GMT",
+      "score": 10,
+      "tags": [
+        "군사·안보 해설"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "military_analysis",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "afb8a6970f5ed777a35a",
+      "title_original": "통제불능 후티, 예멘·사우디 융단폭격… \"53명 사망\" - 조선일보",
+      "title_ko": "통제불능 후티, 예멘·사우디 융단폭격… \"53명 사망\" - 조선일보",
+      "description": "통제불능 후티, 예멘·사우디 융단폭격… \"53명 사망\" 조선일보",
+      "source": "조선일보",
+      "source_url": "https://www.chosun.com",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOY0xXNEdaRXZUQ2pXZTNsYkJNNWJfekpLU2JkMlFVcHFKQTFUakJLbDluMkNnNTkxQkEyQmFFODNjZjY3UXktZy0yVFIxZWswczV0UU83UzQxMHdPN2ZqTldjbGdySWt4RVRYOEpkaHhJRHA4NW9IemxuSWI0YkIxRHZscTZrWmJOdTgxU2ZSVXBFaTY0dEJ6UVJkdmhadw?oc=5",
+      "published": "Tue, 20 Oct 2026 06:40:00 GMT",
+      "score": 10,
+      "tags": [
+        "공습·공격 피해 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "b6d306d1c1dfb6b118d9",
+      "title_original": "\"美특사, 오슬로서 젤렌스키와 종전 협상…이어 러시아행\"(종합) - 뉴스1",
+      "title_ko": "\"美특사, 오슬로서 젤렌스키와 종전 협상…이어 러시아행\"(종합) - 뉴스1",
+      "description": "\"美특사, 오슬로서 젤렌스키와 종전 협상…이어 러시아행\"(종합) 뉴스1",
+      "source": "뉴스1",
+      "source_url": "https://www.news1.kr",
+      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5waW5GRlZ3M0dVM3ZMTEFPbW1DS0pmUXhKTWNiRUN6ZDZxaXdZZFNDR2hfUFN4OFVacVVSaEtLNXJ5MF81amlmem5mYnl3Y3JyMkJn?oc=5",
+      "published": "Tue, 20 Oct 2026 07:23:03 GMT",
+      "score": 9,
+      "tags": [
+        "외교 접촉 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_contact",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "c1998fdba0058bc318a6",
+      "title_original": "트럼프 대통령: 미국은 이란과의 전쟁에서 즉시 철수할 수 있다. - Vietnam.vn",
+      "title_ko": "트럼프 대통령: 미국은 이란과의 전쟁에서 즉시 철수할 수 있다. - Vietnam.vn",
+      "description": "트럼프 대통령: 미국은 이란과의 전쟁에서 즉시 철수할 수 있다. Vietnam.vn",
+      "source": "Vietnam.vn",
+      "source_url": "https://www.vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPM0gtZkJMaHQ0aS1Pb1J5REZRODdIMnYxSmRiY0czdExxUm9qM0p1MDNLbWdUNTVkenZ5OEpPTjFSQjlNbXJtS0tKdHFmNlNGQVVmY3k2eDVPQm8tT2N2OTlwS2RlS0lnNHBUcExqcHFhN2tYNm5Dd1BIbmdHcE9hRmVSd1lyVEg0VGFLRmdVVzNZVjF0UFlQUDBB?oc=5",
+      "published": "Tue, 20 Oct 2026 08:05:47 GMT",
+      "score": 7,
+      "tags": [],
+      "body_checked": true,
+      "classification_color": "",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29608.25,
+      "pct": -0.38438893094456805,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "17:03 KST",
+      "observed_at_kst": "2026-10-20T17:03:57+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 29722.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 29722.5,
+        "chartPreviousClose": 29722.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792483437,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 99.31999969482422,
+      "pct": 0.7915564185348112,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "17:03 KST",
+      "observed_at_kst": "2026-10-20T17:03:57+09:00",
+      "symbol": "CL=F",
+      "previous_close": 98.54,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 98.54,
+        "chartPreviousClose": 98.54,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792483437,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 110.56999969482422,
+      "pct": 0.931081419282731,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "17:03 KST",
+      "observed_at_kst": "2026-10-20T17:03:42+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 109.55,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 109.55,
+        "chartPreviousClose": 109.55,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792483422,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792468800,
+            "start": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792555140,
+            "start": 1792468800,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792555140,
+            "start": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.7770004272461,
+      "pct": -0.1990582199979496,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "17:04 KST",
+      "observed_at_kst": "2026-10-20T17:04:01+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 101.98,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 101.98,
+        "chartPreviousClose": 101.98,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792483441,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "dryrun_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟡 <b>발언·제재·외교반응·협상 제약</b>\n조회 2026-10-20 17:13 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🟡 [신규] <b>1. 미국·이스라엘·이란 · 군사·안보 해설</b>\n미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 - 한겨레\nRSS 보도 10-20 16:29 KST · <b>44분 경과</b> · 군사·안보 해설 · <a href=\"https://news.google.com/rss/articles/CBMic0FVX3lxTE9LQUJzWWQyc1VueVlIdEhjMHhJZThJMlpjWVdNYTRxNXFUZXlUdC1CcjMxWDJRX2dMLUtMYXk0dmdxV2ZVQXVPbEFwQXpkMUJVNUNKa2NqbkswUmJfaEwxcjQ3V2hkLWxfd1l2MUJIRndPcVk?oc=5\">한겨레 검색 링크</a> · 제목 기준·본문 미확인\n\n🔴 [신규] <b>2. 사우디·후티 · 공습·공격 피해 보도</b>\n통제불능 후티, 예멘·사우디 융단폭격… &quot;53명 사망&quot; - 조선일보\nRSS 보도 10-20 15:40 KST · <b>93분 경과</b> · 공습·공격 피해 보도 · <a href=\"https://news.google.com/rss/articles/CBMingFBVV95cUxOY0xXNEdaRXZUQ2pXZTNsYkJNNWJfekpLU2JkMlFVcHFKQTFUakJLbDluMkNnNTkxQkEyQmFFODNjZjY3UXktZy0yVFIxZWswczV0UU83UzQxMHdPN2ZqTldjbGdySWt4RVRYOEpkaHhJRHA4NW9IemxuSWI0YkIxRHZscTZrWmJOdTgxU2ZSVXBFaTY0dEJ6UVJkdmhadw?oc=5\">조선일보 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [신규] <b>3. 미국·우크라이나·러시아 · 외교 접촉 보도</b>\n&quot;美특사, 오슬로서 젤렌스키와 종전 협상…이어 러시아행&quot;(종합) - 뉴스1\nRSS 보도 10-20 16:23 KST · <b>50분 경과</b> · 외교 접촉 보도 · <a href=\"https://news.google.com/rss/articles/CBMiU0FVX3lxTE5waW5GRlZ3M0dVM3ZMTEFPbW1DS0pmUXhKTWNiRUN6ZDZxaXdZZFNDR2hfUFN4OFVacVVSaEtLNXJ5MF81amlmem5mYnl3Y3JyMkJn?oc=5\">뉴스1 검색 링크</a> · 제목 기준·본문 미확인\n\n[속보] <b>4. 이란·호르무즈</b>\n트럼프 대통령: 미국은 이란과의 전쟁에서 즉시 철수할 수 있다. - Vietnam.vn\nRSS 보도 10-20 17:05 KST · <b>8분 경과</b> · 전쟁 · <a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxPM0gtZkJMaHQ0aS1Pb1J5REZRODdIMnYxSmRiY0czdExxUm9qM0p1MDNLbWdUNTVkenZ5OEpPTjFSQjlNbXJtS0tKdHFmNlNGQVVmY3k2eDVPQm8tT2N2OTlwS2RlS0lnNHBUcExqcHFhN2tYNm5Dd1BIbmdHcE9hRmVSd1lyVEg0VGFLRmdVVzNZVjF0UFlQUDBB?oc=5\">Vietnam.vn 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 파급</b>\n[신규] <b>1. 이란·호르무즈</b>\n석유 메이저들은 이란 전쟁 횡재 현금으로 인한 지출 테스트에 직면\n- 전쟁·종전 변화가 원유 가격에 직접 반영 — 공급차질 위험프리미엄 변화 확인\nRSS 보도 10-20 15:04 KST · <b>129분 경과</b> · 시장파급 · <a href=\"https://www.reuters.com/business/energy/oil-majors-face-spending-test-iran-war-windfall-cash-2026-10-20/\">Reuters 원문</a> · RSS 입력 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,608.25</b>  -0.38% · 제공처 비교종가 대비 · 기준 17:03 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>99.32</b>  +0.79% · 제공처 비교종가 대비 · 기준 17:03 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>110.57</b>  +0.93% · 제공처 비교종가 대비 · 기준 17:03 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.78</b>  -0.20% · 제공처 비교종가 대비 · 기준 17:04 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n"
+}
