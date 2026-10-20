@@ -39,7 +39,7 @@ def is_fda_approved_rectal(item: base.Item) -> bool:
     if base.canonicalize_url(item.url) == base.canonicalize_url(FDA_APPROVAL_URL):
         return True
     return bool(
-        re.search(r"approved in (?:the )?(?:u\\.s\\.|us|united states)|fda (?:granted|grants) (?:accelerated )?approval|fda (?:has )?approved|fda approves", title)
+        re.search(r"approved in (?:the )?(?:u\.s\.|us|united states)|fda (?:granted|grants) (?:accelerated )?approval|fda (?:has )?approved|fda approves", title)
     )
 
 
@@ -182,25 +182,25 @@ def _enrich_with_current_gsk_release(item: base.Item, body: str, resolved: str) 
 def build_item_summary(item: base.Item) -> str:
     if is_fda_approved_rectal(item):
         return (
-            "**[젬퍼리] 미국 FDA 직장암 신규 적응증 가속승인**\\n\\n"
-            "- **타임라인:**\\n"
-            "• **2026년 8월 24일** FDA 우선심사 접수\\n"
-            "• **2026년 10월 19일** FDA, 2·3기 MSI-H/dMMR 국소 진행성 직장암 정맥주사 Jemperli 가속승인\\n"
-            "- **임상:** AZUR-1 총 154명. 연구자 평가 98/144명(68%), 독립평가 54/116명(47%)에서 12개월 지속 임상적 완전반응. 평가기준을 구분해야 합니다.\\n"
-            "- **알테오젠:** 이번 승인은 정맥주사 적응증으로 ALT-B4 피하주사 승인이 아닙니다.\\n"
-            "- **위험:** 장기 재발·유효성 추적 및 중대한 면역 관련 이상반응 검증 필요.\\n"
-            f"- FDA 공식 원문: {FDA_FDA_URL}\\n"
+            "**[젬퍼리] 미국 FDA 직장암 신규 적응증 가속승인**\n\n"
+            "- **타임라인:**\n"
+            "• **2026년 8월 24일** FDA 우선심사 접수\n"
+            "• **2026년 10월 19일** FDA, 2·3기 MSI-H/dMMR 국소 진행성 직장암 정맥주사 Jemperli 가속승인\n"
+            "- **임상:** AZUR-1 총 154명. 연구자 평가 98/144명(68%), 독립평가 54/116명(47%)에서 12개월 지속 임상적 완전반응. 평가기준을 구분해야 합니다.\n"
+            "- **알테오젠:** 이번 승인은 정맥주사 적응증으로 ALT-B4 피하주사 승인이 아닙니다.\n"
+            "- **위험:** 장기 재발·유효성 추적 및 중대한 면역 관련 이상반응 검증 필요.\n"
+            f"- FDA 공식 원문: {FDA_FDA_URL}\n"
             f"- GSK 공식 원문: {FDA_APPROVAL_URL}"
         )
     if is_sc_sapphire(item):
         return (
-            "**[젬퍼리] SAPPHIRE 피하주사 임상 등록 — 개시 예정, 아직 모집 전**\\n\\n"
-            "- **타임라인:**\\n"
-            "• **2026년 10월 6일** 자궁내막암 피하주사 임상시험 NCT07860450 등록 공개\\n"
-            "• **2026년 11월 12일** 임상 시작 예정일(실제 시작 확인 전)\\n"
-            "- **임상:** 원발성 진행성·재발성 자궁내막암, 목표 380명. 1b상 용량선정 후 무작위배정 3상에서 정맥주사 대 피하주사 비교. 카르보플라틴·파클리탁셀 병용.\\n"
-            "- **구분:** FDA 직장암 신규 적응증 승인이 아니며 실제 첫 투약과도 다릅니다.\\n"
-            "- **알테오젠:** Tesaro(GSK 자회사) ALT-B4 기술이전 후 개발 단계. 허가·판매·로열티는 아직 별도 단계입니다.\\n"
+            "**[젬퍼리] SAPPHIRE 피하주사 임상 등록 — 개시 예정, 아직 모집 전**\n\n"
+            "- **타임라인:**\n"
+            "• **2026년 10월 6일** 자궁내막암 피하주사 임상시험 NCT07860450 등록 공개\n"
+            "• **2026년 11월 12일** 임상 시작 예정일(실제 시작 확인 전)\n"
+            "- **임상:** 원발성 진행성·재발성 자궁내막암, 목표 380명. 1b상 용량선정 후 무작위배정 3상에서 정맥주사 대 피하주사 비교. 카르보플라틴·파클리탁셀 병용.\n"
+            "- **구분:** FDA 직장암 신규 적응증 승인이 아니며 실제 첫 투약과도 다릅니다.\n"
+            "- **알테오젠:** Tesaro(GSK 자회사) ALT-B4 기술이전 후 개발 단계. 허가·판매·로열티는 아직 별도 단계입니다.\n"
             f"- 임상시험 등록 원문: {SAPPHIRE_URL}"
         )
     body, resolved = base.fetch_body(item)
