@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-20T08:41:57+09:00",
+  "updated_at_kst": "2026-10-20T13:51:06+09:00",
   "circle": {
     "date": "2026-10-15",
     "circulation_usd_b": 72.5,
@@ -10,23 +10,23 @@
     }
   },
   "usdxx": {
-    "date": "2026-10-16",
-    "sec_yield_7d": 3.84,
-    "yield_7d": 3.84,
-    "yield_1d": 3.84,
+    "date": "2026-10-19",
+    "sec_yield_7d": 3.85,
+    "yield_7d": 3.85,
+    "yield_1d": 3.85,
     "yield_crosscheck_gap_bp": 0.0,
-    "visible_nav_date": "2026-10-16",
+    "visible_nav_date": "2026-10-19",
     "fund_size_usd_m": 61267.5,
-    "fund_size_date": "2026-10-16",
+    "fund_size_date": "2026-10-19",
     "source_url": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund",
     "product": "Circle Reserve Fund",
     "ticker": "USDXX",
     "cusip": "09261A870",
     "_previous_distinct": {
-      "date": "2026-10-15",
-      "sec_yield_7d": 3.83,
+      "date": "2026-10-16",
+      "sec_yield_7d": 3.84,
       "fund_size_usd_m": 61267.5,
-      "fund_size_date": "2026-10-15"
+      "fund_size_date": "2026-10-16"
     }
   },
   "sofr": {
@@ -66,7 +66,7 @@
   },
   "tbx": {
     "date": "2026-10-19",
-    "close": 29.629899978637695,
+    "close": 29.6299991607666,
     "prev_date": "2026-10-16",
     "prev_close": 29.540000915527344,
     "daily_pct": 0.3
@@ -78,11 +78,9 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,330.90원, 차이 0.86%"
+    "crosscheck": "Yahoo Finance 교차검증 접근 불가"
   },
   "crcl_last_alerted_close_date": "2026-10-19",
   "correction_pending": false,
-  "errors": [
-    "usdxx: BlackRock USDXX fetch failed on all official URLs: https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-10-19 sec=[(datetime.date(2026, 10, 16), 3.84), (datetime.date(2026, 10, 16), 3.84)] seven=[(datetime.date(2026, 10, 16), 3.84)] | https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-10-19 sec=[(datetime.date(2026, 10, 16), 3.84), (datetime.date(2026, 10, 16), 3.84)] seven=[(datetime.date(2026, 10, 16), 3.84)]"
-  ]
+  "errors": []
 }
