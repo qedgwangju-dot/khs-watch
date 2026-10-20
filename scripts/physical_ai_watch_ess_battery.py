@@ -407,8 +407,7 @@ US_POLICY_CHANGE = re.compile(r'final\s+rule|rule\s+change|effective|enacted|ado
 # materially BEFORE 2030. Watch new primary-source changes only.
 US45X_ID = re.compile(
     r'\b45[\s-]?X\b|제\s*45\s*X\s*조|section\s*45\s*X|'
-    r'advanced\s+manufacturing\s+production\s+credit|\bAMPC\b|'
-    r'생산\s*세액공제', re.I,
+    r'advanced\s+manufacturing\s+production\s+credit', re.I,
 )
 US45X_BATTERY = re.compile(
     r'batter(?:y|ies)|battery\s+(?:cell|module)|배터리|전지|'
