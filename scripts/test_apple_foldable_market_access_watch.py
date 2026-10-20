@@ -32,6 +32,13 @@ class FoldableMarketAccessTests(unittest.TestCase):
         self.assertIn("공식 페이지 직접 확인 불가",msg)
         self.assertIn("고객 수요 출시 이후",msg)
 
+    def test_reopening_requires_explicit_manufacturer_permission(self):
+        korea = "iPhone Duo 및 iPhone 18 Pro Max는 Apple Store에서 예약 없이 현장 구매가 가능합니다."
+        japan = "iPhone DuoとiPhone 18 Pro Maxは予約なしで購入できます。"
+        self.assertEqual(m._official_access(korea, "한국"), "walk_in_available")
+        self.assertEqual(m._official_access(japan, "일본"), "walk_in_available")
+        self.assertEqual(m._official_access("iPhone Duo Apple Store 픽업 가능", "한국"), "unknown")
+
     def test_missing_official_notice_never_means_reopened(self):
         v="<div>iPhone Duo available October 23. Free pickup available.</div>"
         self.assertEqual(m._official_access(v,"한국"),"unknown")

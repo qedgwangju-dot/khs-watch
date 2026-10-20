@@ -47,6 +47,16 @@ class GalaxyBudsOnRolloutTests(unittest.TestCase):
                       source="Yonhap", source_url="https://en.yna.co.kr")
         self.assertIsNone(m._signal(item,self.state()))
 
+    def test_verified_regional_launch_requires_named_market(self):
+        row=self.row("Samsung Galaxy Buds On launches in Japan; now available in Japan")
+        sig=m._signal(row,self.state())
+        self.assertEqual((sig["kind"],sig["value"]),("market_launch","일본"))
+        self.assertIsNone(m._signal(row, {"metrics": dict(m.BASELINE), "released_markets":["일본"]}))
+        fake=dict(row)
+        fake["source"]="Unknown blog"
+        fake["source_url"]="https://blog.example.com"
+        self.assertIsNone(m._signal(fake,self.state()))
+
     def test_existing_sales_launch_not_realert(self):
         item=self.row("삼성전자 갤럭시 버즈 온 국내 판매 시작")
         self.assertIsNone(m._signal(item,self.state("국내 정식판매 확인")))

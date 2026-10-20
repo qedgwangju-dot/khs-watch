@@ -129,8 +129,21 @@ def _signal(item:dict,state:dict) -> dict | None:
     if not ("갤럭시 버즈 온" in low or "galaxy buds on" in low):
         return None
     metrics=state.get("metrics") or BASELINE
-    reported=_parse_date(item.get("published_at_kst","")) if not item.get("published_at_kst","").startswith("20") else None
-    # ISO-formatted timestamps have already been checked by _news_items.
+    markets={
+        "미국": ("미국", "united states", "u.s.", "usa"),
+        "일본": ("일본", "japan"),
+        "중국": ("중국", "china"),
+        "인도": ("인도", "india"),
+        "유럽": ("유럽", "europe"),
+    }
+    if any(x in low for x in (
+        "해외 판매 시작", "현지 판매 시작", "launches in",
+        "available in", "on sale in", "sales start in"
+    )):
+        for region, aliases in markets.items():
+            if any(x in low for x in aliases) and region not in (state.get("released_markets") or []):
+                return {"kind": "market_launch", "value": region, "item": item}
+    # ISO timestamps already checked by _news_items.
     on_or_after_release=(item.get("published_at_kst","")[:10] >= "2026-10-27")
     if (metrics.get("status")!="국내 정식판매 확인" and on_or_after_release
         and any(k in low for k in ("판매 시작", "정식 출시", "구매 가능", "now available", "officially available", "goes on sale"))):
@@ -168,6 +181,7 @@ def _merge_buds_state(remote:dict,local:dict) -> dict:
     result.update(newer)
     result["initial_alert_sent"]=bool(remote.get("initial_alert_sent") or local.get("initial_alert_sent"))
     result["seen_ids"]=sorted(set(remote.get("seen_ids") or [])|set(local.get("seen_ids") or []))[-600:]
+    result["released_markets"]=sorted(set(remote.get("released_markets") or [])|set(local.get("released_markets") or []))
     if any((x.get("metrics") or {}).get("status")=="국내 정식판매 확인" for x in (remote,local)):
         result["metrics"]=dict(result.get("metrics") or {})
         result["metrics"]["status"]="국내 정식판매 확인"
@@ -219,23 +233,32 @@ def main() -> None:
         fid=item["id"]
         if fid in seen:
             continue
+        if alerts:
+            # Do not consume the next potentially actionable event: retry next run.
+            break
         seen.add(fid)
-        if not state.get("initial_alert_sent") or alerts:
+        if not state.get("initial_alert_sent"):
             continue
-        s=_signal(item, {"metrics":metrics})
-        if s is None:
+        signal=_signal(item, {"metrics": metrics, "released_markets": state.get("released_markets") or []})
+        if signal is None:
             continue
-        if s["kind"]=="launch":
-            metrics["status"]=s["value"]
-            text="삼성전자 공식: 갤럭시 버즈 온 국내 정식판매 개시 확인"
+        if signal["kind"]=="launch":
+            metrics["status"]=signal["value"]
+            message="삼성전자 공식: 갤럭시 버즈 온 국내 정식판매 개시 확인"
+        elif signal["kind"]=="market_launch":
+            released=set(state.get("released_markets") or [])
+            released.add(signal["value"])
+            state["released_markets"]=sorted(released)
+            message=f"삼성전자 공식: 갤럭시 버즈 온 {signal['value']} 지역 판매 개시 확인"
         else:
-            metrics["korean_price_krw"]=s["value"]
-            text=f"국내 공식 판매가 {s['old']:,}원 → {s['value']:,}원 변경"
+            metrics["korean_price_krw"]=signal["value"]
+            message=f"국내 공식 판매가 {signal['old']:,}원 → {signal['value']:,}원 변경"
         alerts.append(
             "🎧 <b>[갤럭시 버즈 온 | 새로운 상용화 사실]</b>\n"
-            f"• {html.escape(text)}\n"
+            f"• {html.escape(message)}\n"
             f'<a href="{html.escape(item["link"],quote=True)}">삼성전자 원문</a>'
         )
+
     state.update({
         "schema_version":1,
         "updated_at_kst":now.isoformat(timespec="seconds"),

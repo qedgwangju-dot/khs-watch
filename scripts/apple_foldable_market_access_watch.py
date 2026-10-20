@@ -98,7 +98,20 @@ def _official_access(raw: str, market: str) -> str:
         return "unknown"
     if blocked:
         return "reservation_only"
-    return "unknown"
+    # Loss of the earlier banner does NOT mean permission to walk in.
+    if market == "한국":
+        allowed = bool(
+            "iphone duo" in text and "iphone 18 pro max" in text
+            and re.search(r"(?:예약\s*없이\s*)?현장\s*구매(?:가|를)?\s*가능", text)
+        )
+    else:
+        allowed = (
+            "iphone duo" in text and "iphone 18 pro max" in text
+            and any(x in text for x in (
+                "予約なしで購入できます", "予約なしで購入可能です", "予約なしでご購入いただけます"
+            ))
+        )
+    return "walk_in_available" if allowed else "unknown"
 
 
 def _metric_quote(text: str, category: str) -> float | None:
@@ -312,12 +325,20 @@ def main() -> None:
     else:
         for market, value in official.items():
             # Never infer restriction has ended merely because notice is absent.
-            if value == "reservation_only" and access.get(market) != "reservation_only":
+            if value in ("reservation_only", "walk_in_available") and access.get(market) != value:
+                previous = access.get(market)
                 access[market] = value
+                if value == "walk_in_available":
+                    description = "예약 없는 현장 구매 가능하다는 명시적 공식 안내 확인"
+                    heading = "애플 매장 현장 구매 허용 확인"
+                else:
+                    description = "iPhone Duo·iPhone 18 Pro Max 예약 없는 현장 구매 제한 직접 확인"
+                    heading = "애플 매장 구매 제한 공식 확인"
                 alerts.append(
-                    "📱 <b>[Apple 매장 구매 제한 공식 재확인]</b>"\n"
-                    f"• {market} Apple 공식 안내: iPhone Duo·iPhone 18 Pro Max 예약 없는 현장 구매 제한\n"
-                    "• 온라인 주문·매장 픽업 예약은 별도이며 10월 23일 공식 출시는 유지\n"
+                    f"📱 <b>[{heading}]</b>\n"
+                    f"• {market}: {description}\n"
+                    f"• 이전 상태: {html.escape(str(previous or '미확인'))}\n"
+                    "• 배송 납기·예약 픽업·완제품 판매량과는 별개입니다.\n"
                     f'<a href="{APPLE_PAGES[market]}">Apple 공식 국가별 공지</a>'
                 )
 
