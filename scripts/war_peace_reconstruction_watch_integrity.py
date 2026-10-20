@@ -33,7 +33,10 @@ KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입�
                'diplomatic_analysis': '외교·안보 해설',
                'diplomatic_position': '외교 갈등·압박 보도',
                'diplomatic_appeal': '항행·협상 재개 요구',
-               'operational_disruption': '행사·운영 일정 변경 보도'}
+               'operational_disruption': '행사·운영 일정 변경 보도',
+               'maritime_shipping': '원유·연료 운송 보도',
+               'oil_market': '원유 공급·가격 보도',
+               'oil_pressure': '유가 압박·정치일정 보도'}
 
 
 def _headline(row):
@@ -80,7 +83,7 @@ def _riyadh_missile_headline(row):
 
 def _display_headline(row):
     original = str(row.get('title_original') or row.get('title') or '')
-    if (non_military_kind(row) in ('diplomatic_appeal', 'operational_disruption')
+    if (non_military_kind(row) in ('diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure')
             or _summit_openness_headline(_headline(row))
             or _summit_openness_denied(_headline(row))):
         # RSS bullet lines remain one ordered headline in the rendered block.
@@ -107,6 +110,8 @@ def _energy_facility_statement_spans(title):
 
 
 def _headline_action_label(row):
+    if _maritime_attack_expansion(row):
+        return '선박 공격 확대 보도' if re.search(r'선박|상선|유조선|\b(?:ships?|vessels?|tankers?)\b', _headline(row)) else '공격 확대 보도'
     if _headline_attack_casualties(row):
         return '공습·공격 피해 보도'
     if _headline_drone_action(row):
@@ -197,6 +202,7 @@ def _diplomatic_group(title):
             ('중국', r'중국|시진핑|\b(?:china|chinese|xi(?:\s+jinping)?)\b'),
             ('러시아', r'러시아|푸틴|크렘린|라브로프|(?:^|[\s·ㆍ/])러(?=\s|[·ㆍ/]|$)|\b(?:russia\w*|putin|kremlin|lavrov)\b'),
             ('이란', r'이란|\biran(?:ian)?\b'),
+            ('파키스탄', r'파키스탄|\bpakistan(?:i)?\b'),
             ('북한', r'북한|김정은|\bnorth\s+korea\b|\bkim\s+jong[ -]?un\b')):
         if (re.search(pattern, title) or (trilateral and label in ('미국', '중국', '러시아'))
                 or (north_russia and label in ('북한', '러시아'))):
@@ -241,6 +247,16 @@ def _primary_topic(row):
         return _diplomatic_group(title) + ' · ' + label
     if kind == 'operational_disruption':
         return _headline_group(title) + ' · ' + KIND_LABELS[kind]
+    if kind == 'maritime_shipping':
+        places = [label for label, pattern in (('한국', r'한국|\bkorea(?:n)?\b'),
+                  ('홍해', r'홍해|\bred sea\b'), ('호르무즈', r'호르무즈|\bhormuz\b'))
+                  if re.search(pattern, title)]
+        return ('·'.join(places) or '해상 운송') + ' · ' + KIND_LABELS[kind]
+    if kind == 'oil_market':
+        area = '호르무즈' if re.search(r'호르무즈|\bhormuz\b', title) else '원유시장'
+        return area + ' · ' + KIND_LABELS[kind]
+    if kind == 'oil_pressure':
+        return _diplomatic_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'market_effect':
         us_prices = re.search(r'(?:미국|美|united states|u\.s\.).{0,12}(?:물가|cpi|inflation)', title)
         return ('미국·물가' if us_prices else '물가·경제지표') + ' · 전쟁 파급 보도'
@@ -258,6 +274,9 @@ def _primary_topic(row):
         return _headline_group(title) + ' · ' + label
     if kind is None and _headline_drone_action(row):
         return _headline_group(title) + ' · 드론 공습 보도'
+    if kind is None and _maritime_attack_expansion(row):
+        area = '호르무즈' if re.search(r'호르무즈|\bhormuz\b', title) else '해상'
+        return area + ' · ' + _headline_action_label(row)
     if kind is None and _headline_attack_casualties(row):
         group = ('후티·예멘 정부군' if re.search(r'후티', title) and re.search(r'예멘\s*정부군', title)
                  else _headline_group(title))
@@ -378,6 +397,39 @@ def _fuel_shipping_headline(title):
                 and re.search(r'봉쇄|\bblockade\b', title)
                 and re.search(r'연료|lpg|\b(?:fuel|crude)\b', title)
                 and re.search(r'선적|운송|수출|\b(?:shipments?|cargo(?:es)?|export(?:s|ed)?)\b', title))
+
+
+def _maritime_attack_expansion(row):
+    """A reported expansion differs from its plan, denial or price consequence."""
+    for clause in re.split(r'…|\.{3}|[;；]', _headline(row)):
+        if (re.search(r'호르무즈|선박|상선|유조선|\b(?:hormuz|ships?|vessels?|tankers?)\b', clause)
+                and re.search(r'공격\s*확대|\b(?:expands?|expanded)\s+attacks?\b', clause)
+                and not re.search(r'예고|계획|검토|논의|가능성|우려|부인|하지\s*않|[?？]|'
+                                  r'\b(?:plans?|may|might|could|denies?|denied)\b', clause)):
+            return True
+    return False
+
+
+def _oil_shipping_kind(title):
+    # Threatened supply recovery is the effect's object, not an attack threat.
+    if re.search(r'(?:공격|공습|보복)(?:을|를)?\s*(?:확대\s*)?(?:예고|시사|경고|위협|검토)|'
+                 r'\b(?:warns?|threatens?)\b.{0,30}\b(?:attacks?|strikes?)\b', title):
+        return None
+    if (re.search(r'선박|상선|유조선|\b(?:ships?|vessels?|tankers?)\b', title)
+            and re.search(r'원유|연료|석유|\b(?:oil|crude|fuel)\b', title)
+            and re.search(r'운송|선적|\b(?:transport\w*|shipments?|cargo(?:es)?)\b', title)
+            and re.search(r'호르무즈|홍해|봉쇄|\b(?:hormuz|red sea|blockade)\b', title)
+            and not re.search(r'피격|공격|공습|폭격|미사일|\b(?:attack\w*|struck|bombed|missiles?)\b', title)):
+        return 'maritime_shipping'
+    oil_price = re.search(r'유가|(?:원유|석유)\s*가격|\boil prices?\b', title)
+    if (oil_price and re.search(r'공급|공격|봉쇄|\b(?:supply|attacks?|blockade)\b', title)
+            and re.search(r'최고치|최저치|상승|하락|유지|\b(?:high|low|rise\w*|fall\w*|stay\w*)\b', title)):
+        return 'oil_market'
+    if (oil_price and re.search(r'중간선거|\bmidterm', title)
+            and re.search(r'압박|겨냥|응징|목표|속내|끌어올|\b(?:pressure|target\w*|aim\w*)\b', title)
+            and not re.search(r'공격|공습|폭격|미사일|드론|\b(?:attacks?|strikes?|missiles?|drones?)\b', title)):
+        return 'oil_pressure'
+    return None
 
 
 def _rejection_future_action_spans(title):
@@ -534,6 +586,10 @@ def _diplomatic_deal_statement(title):
 
 
 def _diplomatic_headline_kind(title):
+    if re.search(r'협상(?:을|를)?\s*(?:(?:재개|개최|개시)(?:를|을)?\s*)?(?:논의|검토|추진|계획)|'
+                 r'(?:종전|평화|휴전)\s*협상.{0,15}(?:진전되나|가능성)|'
+                 r'(?:종전|평화|휴전)\s*협상.{0,18}진전.{0,25}발표\s*가능성', title):
+        return 'diplomatic_plan'
     """A contact, dispute or labelled analysis does not assert peace progress."""
     # Separate completed operations remain actions even in a contact headline.
     if re.search(r'(?:공습|폭격|공격|타격|요격)(?:을|를)?\s*(?:했다|했으며|하고\s*있|진행\s*중)|'
@@ -579,7 +635,7 @@ def non_military_kind(row):
                           r'\b(?:ceasefire|peace deal).{0,20}(?:agreed|signed|implemented)', title)
     if mixed_restraint_attack(row):
         return 'mixed_restraint'
-    if _headline_drone_action(row) or _headline_attack_casualties(row):
+    if _headline_drone_action(row) or _headline_attack_casualties(row) or _maritime_attack_expansion(row):
         return None
     # Require an explicit new-action predicate before background weapon nouns
     # can turn a sanctions listing or a condemnation into a military event.
@@ -607,6 +663,9 @@ def non_military_kind(row):
         return 'reaction'
     if _fuel_shipping_headline(title):
         return 'fuel_shipping'
+    oil_kind = _oil_shipping_kind(title)
+    if oil_kind and not new_peace:
+        return oil_kind
     if _energy_trade_proposal_headline(title):
         return 'trade_proposal'
     if statements or future:
@@ -652,12 +711,13 @@ def _clear_market_event_cache(row):
 
 def _headline_event_cache_required(row, kind):
     return (kind in ('support_statement', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis', 'trade_proposal',
-                    'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption')
+                    'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure')
             or (kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
             or _energy_facility_headline(row)
             or (kind is None and _headline_refinery_action(row))
             or (kind is None and _headline_drone_action(row))
+            or (kind is None and _maritime_attack_expansion(row))
             or (kind is None and _headline_attack_casualties(row))
             or (_maritime_attack_headline(row) and not maritime_attack_tally(row)))
 
@@ -685,7 +745,7 @@ def score_item(row, now):
         _clear_market_event_cache(row)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
-    if kind in ('support_statement', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption'):
+    if kind in ('support_statement', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure'):
         _clear_headline_event_cache(row, kind)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
@@ -712,6 +772,8 @@ def final_color(row):
         return 'red'
     if _headline_drone_action(row):
         return 'red'
+    if _maritime_attack_expansion(row):
+        return 'red'
     if _headline_attack_casualties(row):
         return 'red'
     if _energy_facility_headline(row) and _military_actions(_headline(row)):
@@ -720,6 +782,7 @@ def final_color(row):
         return 'red'
     title = _headline(row)
     if (_military_actions(title) and (_operational_disruption_headline(title)
+            or re.search(r'유가|원유|연료|\b(?:oil|crude|fuel)\b', title)
             or _summit_openness_headline(title) or _summit_openness_denied(title) or _bargain_proposal_headline(title)
             or _meeting_uncertainty_headline(title) or _meeting_intent_stage(title)
             or _participation_exclusion_headline(title))):
@@ -750,6 +813,15 @@ def verdict(items):
         )
     kinds = [non_military_kind(row) for row in items]
     if kinds and all(kinds):
+        if set(kinds) & {'maritime_shipping', 'oil_market', 'oil_pressure'}:
+            core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
+            return (
+                '<b>투자 판정</b>\n'
+                f'- <b>핵심:</b> {core}\n'
+                '- <b>현재 단계:</b> 운송·공급·가격·압박 목적에 관한 보도 — 별도의 실제 공격·휴전 이행은 각각 확인 필요\n'
+                '- <b>시장:</b> 기사 속 가격 기간·선박 건수·운송 경로와 실제 공급 차질을 구분\n'
+                '- <b>다음:</b> 운송·가격 원자료 → 공급·운항 변화 → 별도 군사행동·공식 합의 확인'
+            )
         if set(kinds) & {'diplomatic_appeal', 'operational_disruption'}:
             core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
             return (
@@ -1037,6 +1109,8 @@ def build_alert(items, markets, now):
     yellow_kinds = {non_military_kind(row) for row in rendered_rows if final_color(row) == 'yellow'}
     if yellow_kinds == {'market_effect'}:
         yellow_label = '물가·시장 파급 보도'
+    elif yellow_kinds and yellow_kinds <= {'maritime_shipping', 'oil_market', 'oil_pressure'}:
+        yellow_label = '운항·원유시장·경제 압박 보도'
     elif 'market_effect' in yellow_kinds:
         yellow_label += '·시장 파급'
     for marker, label in [('🔴', '공격·확전'), ('🟢', '재건·휴전'), ('🟡', yellow_label)]:
@@ -1133,7 +1207,7 @@ def verify_alert(test_mode=False):
         age = watch.age_minutes(row, dt.datetime.fromisoformat(receipt['queried_at_kst']))
         if age is not None and age > 3 * 60:
             raise RuntimeError('WAR_INTEGRITY_GATE: stale discovery publication in rendered source')
-        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption') and (
+        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure') and (
                 row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
             raise RuntimeError('WAR_INTEGRITY_GATE: statement presented as a new attack or implemented peace')
         marker = {'red': '🔴', 'green': '🟢', 'yellow': '🟡'}.get(row.get('classification_color'), '')
@@ -1167,6 +1241,9 @@ def verify_alert(test_mode=False):
         if current_kind is None and _headline_drone_action(row) and (
                 row.get('classification_color') != 'red' or not lines[start].startswith('🔴')):
             raise RuntimeError('WAR_INTEGRITY_GATE: drone attack headline hidden by background stage')
+        if current_kind is None and _maritime_attack_expansion(row) and (
+                row.get('classification_color') != 'red' or not lines[start].startswith('🔴')):
+            raise RuntimeError('WAR_INTEGRITY_GATE: maritime attack expansion hidden by market background')
         if current_kind is None and _headline_attack_casualties(row) and (
                 row.get('classification_color') != 'red' or not lines[start].startswith('🔴')):
             raise RuntimeError('WAR_INTEGRITY_GATE: attack casualties hidden by background stage')

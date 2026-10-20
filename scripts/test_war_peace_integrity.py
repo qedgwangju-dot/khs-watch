@@ -42,6 +42,121 @@ class IntegrityTests(unittest.TestCase):
         self.addCleanup(self.state_patch.stop)
         watch.STATE.write_text('{"seen": []}', encoding='utf-8')
 
+    def oil_shipping_fixture(self):
+        value = json.loads((Path(__file__).parent/'test_fixtures/war_oil_shipping_39357999506.json').read_text(encoding='utf-8'))
+        return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_actual_oil_shipping_source_roles(self):
+        fixture, _ = self.oil_shipping_fixture()
+        expected = ['maritime_shipping', 'oil_market', 'oil_pressure', 'oil_pressure',
+                    None, None, 'diplomatic_plan', 'diplomatic_plan']
+        for row, kind in zip(fixture['articles'], expected):
+            with self.subTest(title=row['title_original']):
+                self.assertEqual(integrity.non_military_kind(row), kind)
+                self.assertEqual(integrity.final_color(row), 'red' if kind is None else 'yellow')
+
+    def test_shipping_topic_uses_named_korean_vessel_and_route(self):
+        fixture, _ = self.oil_shipping_fixture()
+        topic = integrity.topic_label(fixture['articles'][0])
+        self.assertIn('한국', topic)
+        self.assertIn('홍해', topic)
+        self.assertIn('원유', topic)
+        self.assertNotIn('이란', topic)
+
+    def test_supply_recovery_threat_is_not_a_threat_to_attack(self):
+        for title in ('호르무즈 해협 공격으로 공급 회복 위협받으며 유가 5개월 최고치 유지',
+                      'Oil prices stay at five-month high as Hormuz attacks threaten supply recovery'):
+            with self.subTest(title=title):
+                row = article(title)
+                self.assertEqual(integrity.non_military_kind(row), 'oil_market')
+                self.assertNotIn('군사 대응', integrity.topic_label(row))
+
+    def test_oil_market_does_not_hide_actual_attack_or_explicit_attack_threat(self):
+        for title in ('유가 5개월 최고치…후티 미사일 발사',
+                      '한국 선박 원유 운송…후티 공습 개시',
+                      '호르무즈 한국 선박 원유 운송 중 피격됐다',
+                      '이란, 유가 압박 위해 호르무즈 선박 공격 확대'):
+            with self.subTest(title=title):
+                row = article(title)
+                self.assertIsNone(integrity.non_military_kind(row))
+                self.assertEqual(integrity.final_color(row), 'red')
+        self.assertEqual(integrity.non_military_kind(article('후티 공격 예고…유가 5개월 최고치')), 'military_statement')
+        self.assertEqual(integrity.non_military_kind(article('Iran threatens attacks as oil prices stay high')), 'military_statement')
+
+    def test_maritime_expansion_plan_denial_not_executed_action(self):
+        for title in ('이란, 호르무즈 선박 공격 확대 예고',
+                      '이란, 호르무즈 선박 공격 확대 계획 검토',
+                      '이란, 호르무즈 선박 공격 확대 보도 부인'):
+            with self.subTest(title=title):
+                self.assertFalse(integrity._maritime_attack_expansion(article(title)))
+
+    def test_shipping_and_market_score_clear_old_event_cache(self):
+        fixture, now = self.oil_shipping_fixture()
+        for row in fixture['articles'][:4]:
+            with self.subTest(id=row['id']):
+                row['signals_ko'] = ['과거 공격 확대']
+                row['forced_tags'] = ['확전']
+                row['newidea_marks'] = ['과거 휴전']
+                row['deep_signal'] = '과거 공격'
+                integrity.score_item(row, now)
+                self.assertNotIn('확전', row['tags'])
+                self.assertFalse(row['signals_ko'])
+                self.assertFalse(row['forced_tags'])
+                self.assertNotIn('newidea_marks', row)
+                self.assertNotIn('deep_signal', row)
+
+    def test_negotiation_possibility_and_discussion_preserve_named_participants(self):
+        fixture, _ = self.oil_shipping_fixture()
+        self.assertIn('미국·이란', integrity.topic_label(fixture['articles'][6]))
+        self.assertIn('파키스탄', integrity.topic_label(fixture['articles'][7]))
+        self.assertNotEqual(integrity.final_color(article('美·이란 종전 협상 진전되나…이번 주 발표 가능성')), 'green')
+        signed = article('미국·이란 양측 휴전 합의 체결·발효')
+        self.assertIsNone(integrity.non_military_kind(signed))
+        self.assertEqual(integrity.final_color(signed), 'green')
+
+    def test_oil_shipping_actual4_and_full8_render_gate_without_state_write(self):
+        fixture, now = self.oil_shipping_fixture()
+        before = watch.STATE.read_bytes()
+        for count in (4, 8):
+            with self.subTest(candidates=count):
+                rows = copy.deepcopy(fixture['articles'][:count])
+                with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+                    text = integrity.build_alert(rows, fixture['markets'], now)
+                shown = [row for row in rows if row['link'] in html.unescape(text)]
+                self.assertEqual([row['id'] for row in shown], [row['id'] for row in rows[:4]])
+                self.assertEqual([row['classification_color'] for row in shown], ['yellow']*4)
+                self.assertNotIn('군사 대응·보복 발언', text)
+                self.assertNotIn(' · 확전 · ', text)
+                self.assertNotIn('이란·호르무즈', text)
+                self.assertNotIn('🟢', text)
+                for row in shown:
+                    self.assertIn(html.escape(row['title_original']), text)
+                self.assertEqual(text.count('제목 기준·본문 미확인'), 4)
+                receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+                with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                    for attr, name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                        stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+                    watch.ALERT.write_text(text, encoding='utf-8')
+                    watch.PENDING.write_text(json.dumps({'ids':[row['id'] for row in shown]}), encoding='utf-8')
+                    watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+                    integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(), before)
+
+    def test_final_gate_rejects_same_hash_actual_oil_shipping_wrong_body(self):
+        fixture, now = self.oil_shipping_fixture()
+        rows = fixture['articles'][:4]
+        text = fixture['sent_alert'].strip()
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[row['id'] for row in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
+                integrity.verify_alert()
+
     def event_background_fixture(self):
         path = Path(__file__).parent/'test_fixtures/war_event_background_39343779440.json'
         value = json.loads(path.read_text(encoding='utf-8'))
