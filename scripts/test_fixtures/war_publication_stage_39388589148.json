@@ -1,0 +1,306 @@
+{
+  "provenance": {
+    "run_id": "39388589148",
+    "code_sha": "3ac00ba862290518499a4073040cee6f4e5c7f25",
+    "queried_at_kst": "2026-10-20T16:46:18.773373+09:00",
+    "artifact_id": 12248731629,
+    "artifact_zip_sha256": "83043d4b7c2b9f7924684d5c2c59a2f9afe02019d99e03a2792325b62a9b8a23",
+    "alert_sha256": "0ea593be3d8855ea17f4486a2f35d1b999c5b655ddecc76ae2a63520965bf772",
+    "scope": "Rejected diagnostic input only; never sent. Full operating HTTP bytes/article bodies are not present. Later sources are not inserted."
+  },
+  "articles": [
+    {
+      "id": "b6d306d1c1dfb6b118d9",
+      "title_original": "\"美특사, 오슬로서 젤렌스키와 종전 협상…이어 러시아행\"(종합) - 뉴스1",
+      "title_ko": "\"美특사, 오슬로서 젤렌스키와 종전 협상…이어 러시아행\"(종합) - 뉴스1",
+      "description": "\"美특사, 오슬로서 젤렌스키와 종전 협상…이어 러시아행\"(종합) 뉴스1",
+      "source": "뉴스1",
+      "source_url": "https://www.news1.kr",
+      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5waW5GRlZ3M0dVM3ZMTEFPbW1DS0pmUXhKTWNiRUN6ZDZxaXdZZFNDR2hfUFN4OFVacVVSaEtLNXJ5MF81amlmem5mYnl3Y3JyMkJn?oc=5",
+      "published": "Tue, 20 Oct 2026 07:23:03 GMT",
+      "score": 11,
+      "tags": [
+        "종전·협상"
+      ],
+      "body_checked": true,
+      "classification_color": "green",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "877f9a1da6e73bf7e037",
+      "title_original": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 - 한겨레",
+      "title_ko": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 - 한겨레",
+      "description": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 한겨레",
+      "source": "한겨레",
+      "source_url": "https://www.hani.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9LQUJzWWQyc1VueVlIdEhjMHhJZThJMlpjWVdNYTRxNXFUZXlUdC1CcjMxWDJRX2dMLUtMYXk0dmdxV2ZVQXVPbEFwQXpkMUJVNUNKa2NqbkswUmJfaEwxcjQ3V2hkLWxfd1l2MUJIRndPcVk?oc=5",
+      "published": "Tue, 20 Oct 2026 07:29:00 GMT",
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "afb8a6970f5ed777a35a",
+      "title_original": "통제불능 후티, 예멘·사우디 융단폭격… \"53명 사망\" - 조선일보",
+      "title_ko": "통제불능 후티, 예멘·사우디 융단폭격… \"53명 사망\" - 조선일보",
+      "description": "통제불능 후티, 예멘·사우디 융단폭격… \"53명 사망\" 조선일보",
+      "source": "조선일보",
+      "source_url": "https://www.chosun.com",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOY0xXNEdaRXZUQ2pXZTNsYkJNNWJfekpLU2JkMlFVcHFKQTFUakJLbDluMkNnNTkxQkEyQmFFODNjZjY3UXktZy0yVFIxZWswczV0UU83UzQxMHdPN2ZqTldjbGdySWt4RVRYOEpkaHhJRHA4NW9IemxuSWI0YkIxRHZscTZrWmJOdTgxU2ZSVXBFaTY0dEJ6UVJkdmhadw?oc=5",
+      "published": "Tue, 20 Oct 2026 06:40:00 GMT",
+      "score": 10,
+      "tags": [
+        "공습·공격 피해 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "f3149a2418220666b71d",
+      "title_original": "Saudi Arabia postpones its 'Davos in the Desert' conference after attacks",
+      "title_ko": "사우디아라비아, 테러 이후 '사막의 다보스' 회의 연기",
+      "description": "",
+      "source": "Reuters",
+      "link": "https://www.reuters.com/world/middle-east/saudi-fii-postpones-flagship-conference-until-2027-2026-10-19/",
+      "published": "2026-10-19T16:05:49.543Z",
+      "score": 6,
+      "tags": [
+        "행사·운영 일정 변경 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "operational_disruption",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29630.75,
+      "pct": -0.3086887038438846,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "16:36 KST",
+      "observed_at_kst": "2026-10-20T16:36:15+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 29722.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 29722.5,
+        "chartPreviousClose": 29722.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792481775,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 99.54000091552734,
+      "pct": 1.0148172473384731,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "16:36 KST",
+      "observed_at_kst": "2026-10-20T16:36:19+09:00",
+      "symbol": "CL=F",
+      "previous_close": 98.54,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 98.54,
+        "chartPreviousClose": 98.54,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792481779,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 110.69999694824219,
+      "pct": 1.0497461873502312,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "16:36 KST",
+      "observed_at_kst": "2026-10-20T16:36:19+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 109.55,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 109.55,
+        "chartPreviousClose": 109.55,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792481779,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.75900268554688,
+      "pct": -0.21670652525311862,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "16:36 KST",
+      "observed_at_kst": "2026-10-20T16:36:21+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 101.98,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 101.98,
+        "chartPreviousClose": 101.98,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792481781,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "rejected_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟢 <b>재건·휴전</b>  |  🟡 <b>발언·제재·외교반응·협상 제약</b>\n조회 2026-10-20 16:46 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🟢 [속보] <b>1. 우크라이나·러시아</b>\n&quot;美특사, 오슬로서 젤렌스키와 종전 협상…이어 러시아행&quot;(종합) - 뉴스1\nRSS 보도 10-20 16:23 KST · <b>23분 경과</b> · 종전·협상 · <a href=\"https://news.google.com/rss/articles/CBMiU0FVX3lxTE5waW5GRlZ3M0dVM3ZMTEFPbW1DS0pmUXhKTWNiRUN6ZDZxaXdZZFNDR2hfUFN4OFVacVVSaEtLNXJ5MF81amlmem5mYnl3Y3JyMkJn?oc=5\">뉴스1 검색 링크</a> · 제목 기준·본문 미확인\n\n🔴 [속보] <b>2. 이란·호르무즈</b>\n미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 - 한겨레\nRSS 보도 10-20 16:29 KST · <b>17분 경과</b> · 확전 · <a href=\"https://news.google.com/rss/articles/CBMic0FVX3lxTE9LQUJzWWQyc1VueVlIdEhjMHhJZThJMlpjWVdNYTRxNXFUZXlUdC1CcjMxWDJRX2dMLUtMYXk0dmdxV2ZVQXVPbEFwQXpkMUJVNUNKa2NqbkswUmJfaEwxcjQ3V2hkLWxfd1l2MUJIRndPcVk?oc=5\">한겨레 검색 링크</a> · 제목 기준·본문 미확인\n\n🔴 [신규] <b>3. 사우디·후티 · 공습·공격 피해 보도</b>\n통제불능 후티, 예멘·사우디 융단폭격… &quot;53명 사망&quot; - 조선일보\nRSS 보도 10-20 15:40 KST · <b>66분 경과</b> · 공습·공격 피해 보도 · <a href=\"https://news.google.com/rss/articles/CBMingFBVV95cUxOY0xXNEdaRXZUQ2pXZTNsYkJNNWJfekpLU2JkMlFVcHFKQTFUakJLbDluMkNnNTkxQkEyQmFFODNjZjY3UXktZy0yVFIxZWswczV0UU83UzQxMHdPN2ZqTldjbGdySWt4RVRYOEpkaHhJRHA4NW9IemxuSWI0YkIxRHZscTZrWmJOdTgxU2ZSVXBFaTY0dEJ6UVJkdmhadw?oc=5\">조선일보 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [신규] <b>4. 사우디 · 행사·운영 일정 변경 보도</b>\nSaudi Arabia postpones its &#x27;Davos in the Desert&#x27; conference after attacks\n공개시각 확인 필요 · 행사·운영 일정 변경 보도 · <a href=\"https://www.reuters.com/world/middle-east/saudi-fii-postpones-flagship-conference-until-2027-2026-10-19/\">Reuters 원문</a> · RSS 입력 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,630.75</b>  -0.31% · 제공처 비교종가 대비 · 기준 16:36 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>99.54</b>  +1.01% · 제공처 비교종가 대비 · 기준 16:36 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>110.70</b>  +1.05% · 제공처 비교종가 대비 · 기준 16:36 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.76</b>  -0.22% · 제공처 비교종가 대비 · 기준 16:36 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n"
+}
