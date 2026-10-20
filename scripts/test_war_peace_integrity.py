@@ -42,6 +42,106 @@ class IntegrityTests(unittest.TestCase):
         self.addCleanup(self.state_patch.stop)
         watch.STATE.write_text('{"seen": []}', encoding='utf-8')
 
+    def event_background_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_event_background_39343779440.json'
+        value = json.loads(path.read_text(encoding='utf-8'))
+        return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_actual_airport_background_event_delay_keeps_current_stage_and_actor(self):
+        fixture, _ = self.event_background_fixture()
+        row = fixture['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row), 'operational_disruption')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '사우디 · 행사·운영 일정 변경 보도')
+        self.assertEqual(integrity._display_headline(row), row['title_original'])
+
+    def test_event_delay_background_variants_preserve_45_percent_and_quotes(self):
+        for name in ('사막의 다보스', "'사막의 다보스'", '‘사막의 다보스’', '포럼', '행사'):
+            title = '공항 피격·항공편 45% 취소·투자자 이탈…사우디 ' + name + ' 연기'
+            with self.subTest(title=title):
+                row = article(title)
+                self.assertEqual(integrity.non_military_kind(row), 'operational_disruption')
+                self.assertEqual(integrity.final_color(row), 'yellow')
+                self.assertEqual(integrity.topic_label(row), '사우디 · 행사·운영 일정 변경 보도')
+                self.assertEqual(integrity._display_headline(row), title)
+
+    def test_actual_event_delay_score_clears_old_attack_cache(self):
+        fixture, now = self.event_background_fixture()
+        row = fixture['articles'][0]
+        metadata = copy.deepcopy(row['source_metadata'])
+        row['signals_ko'] = ['Aramco 공격 주장']
+        row['forced_tags'] = ['확전']
+        row['newidea_marks'] = ['과거 공격']
+        row['deep_signal'] = '과거 공격'
+        integrity.score_item(row, now)
+        self.assertEqual(row['tags'], ['행사·운영 일정 변경 보도'])
+        self.assertFalse(row['signals_ko'])
+        self.assertFalse(row['forced_tags'])
+        self.assertNotIn('newidea_marks', row)
+        self.assertNotIn('deep_signal', row)
+        self.assertEqual(row['source_metadata'], metadata)
+        self.assertTrue(row['body_verified'])
+
+    def test_event_delay_does_not_hide_separate_new_or_completed_attack(self):
+        for title in ('공항 피격·항공편 45% 취소…사우디 행사 연기…후티 미사일 발사',
+                      '항공편 45% 취소…사우디 행사 연기…후티 공습 개시',
+                      '항공편 45% 취소…사우디 행사 연기…공항 피격됐다',
+                      '항공편 45% 취소…사우디 행사 연기…후티가 공항을 공격했다'):
+            with self.subTest(title=title):
+                row = article(title)
+                self.assertNotEqual(integrity.non_military_kind(row), 'operational_disruption')
+                self.assertEqual(integrity.final_color(row), 'red')
+
+    def test_airport_background_requires_actual_event_schedule_change(self):
+        for title in ('공항 피격·항공편 45% 취소·투자자 이탈',
+                      '공항 피격…사우디 행사 예정대로 개최',
+                      '항공편 45% 취소…사우디 행사 연기 여부 미정'):
+            with self.subTest(title=title):
+                self.assertNotEqual(integrity.non_military_kind(article(title)), 'operational_disruption')
+
+    def test_actual_event_background_full_render_gate_and_state_preserved(self):
+        fixture, now = self.event_background_fixture()
+        rows = fixture['articles']
+        before = watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        shown = [row for row in rows if row['link'] in html.unescape(text)]
+        self.assertEqual([row['id'] for row in shown], [row['id'] for row in rows[:4]])
+        self.assertEqual([row['classification_color'] for row in shown], ['yellow']*4)
+        for row in shown:
+            self.assertIn(html.escape(row['title_original']), text)
+        self.assertIn('45%', text)
+        self.assertIn('사우디 · 행사·운영 일정 변경 보도', text)
+        self.assertNotIn('Aramco', text)
+        self.assertNotIn('🔴', text)
+        self.assertNotIn('🟢', text)
+        self.assertNotIn('신규 변화의 중심은 실제 공격', text)
+        self.assertIn('제목 기준·본문 미확인', text)
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[row['id'] for row in shown]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(), before)
+
+    def test_final_gate_rejects_actual_same_hash_event_background_wrong_body(self):
+        fixture, now = self.event_background_fixture()
+        rows = fixture['articles'][:4]
+        text = fixture['sent_alert'].strip()
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            for attr, name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[row['id'] for row in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
+                integrity.verify_alert()
+
     def conditional_summit_fixture(self):
         path=Path(__file__).parent/'test_fixtures/war_conditional_summit_39336422842.json'
         value=json.loads(path.read_text(encoding='utf-8'))
