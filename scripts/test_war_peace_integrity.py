@@ -58,6 +58,78 @@ class IntegrityTests(unittest.TestCase):
         value = json.loads((Path(__file__).parent/'test_fixtures/war_publication_stage_39388589148.json').read_text(encoding='utf-8'))
         return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def withdrawal_fixture(self):
+        value = json.loads((Path(__file__).parent/'test_fixtures/war_withdrawal_position_39391758440.json').read_text(encoding='utf-8'))
+        return value, dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_withdrawal_actual_possibility_preserves_us_iran_and_source_title(self):
+        fixture, _ = self.withdrawal_fixture(); row = fixture['articles'][4]
+        self.assertEqual(integrity.non_military_kind(row), 'military_position')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '미국·이란 · 군사 개입·철수 입장')
+        self.assertEqual(integrity._display_headline(row), row['title_original'])
+
+    def test_withdrawal_modal_variants_and_denial_remain_statements(self):
+        for title in ('트럼프 "미국은 이란 전쟁에서 철수할 수 없다"',
+                      '미군, 이란 전쟁에서 철수 가능성 언급',
+                      'Trump: U.S. troops can withdraw from the Iran war',
+                      'Trump: U.S. forces cannot withdraw from the Iran war'):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), 'military_position')
+                self.assertEqual(integrity.final_color(article(title)), 'yellow')
+                self.assertEqual(integrity._display_headline(article(title)), title)
+
+    def test_withdrawal_possibility_keeps_actual_action_and_company_boundaries(self):
+        row = article('미국, 이란 전쟁에서 철수할 수 있다…이란 공습 개시')
+        self.assertIsNone(integrity.non_military_kind(row)); self.assertEqual(integrity.final_color(row), 'red')
+        for title in ('미군, 이란 전쟁에서 병력 철수를 완료했다',
+                      '미국 기업, 이란 전쟁 때문에 공장에서 철수할 수 있다'):
+            with self.subTest(title=title): self.assertNotEqual(integrity.non_military_kind(article(title)), 'military_position')
+
+    def test_corporate_spending_actual_windfall_is_not_observed_oil_price_or_hormuz(self):
+        fixture, _ = self.withdrawal_fixture(); row = fixture['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row), 'corporate_spending')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '석유기업 · 기업 투자·자본배분 보도')
+        self.assertEqual(integrity._display_headline(row), row['title_original'])
+
+    def test_corporate_spending_does_not_relabel_plain_oil_supply_or_actual_attack(self):
+        row = article('Oil majors review capital spending and dividends after Iran war windfall')
+        self.assertEqual(integrity.non_military_kind(row), 'corporate_spending')
+        for title in ('Iran war threatens oil supply recovery',
+                      'U.S. defense spending rises during Iran war',
+                      'Oil majors review spending…Iran launches attacks'):
+            with self.subTest(title=title): self.assertNotEqual(integrity.non_military_kind(article(title)), 'corporate_spending')
+
+    def test_withdrawal_and_corporate_spending_clear_background_cache_on_score(self):
+        fixture, now = self.withdrawal_fixture()
+        for index, kind in ((0, 'corporate_spending'), (4, 'military_position')):
+            row = copy.deepcopy(fixture['articles'][index]); row.update(tags=['확전','시장파급'], signals_ko=['에너지 휴전 발표'], forced_tags=['확전'])
+            integrity.score_item(row, now)
+            self.assertEqual(row['tags'], [integrity.KIND_LABELS[kind]])
+            self.assertEqual(row['signals_ko'], []); self.assertEqual(row['forced_tags'], [])
+
+    def test_withdrawal_and_corporate_spending_saved_single_and_full_candidates_gate(self):
+        fixture, now = self.withdrawal_fixture(); before = watch.STATE.read_bytes()
+        for selected in ([fixture['articles'][0]], [fixture['articles'][4]], fixture['articles']):
+            rows = copy.deepcopy(selected)
+            with self.subTest(candidates=len(rows)), patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+                text = integrity.build_alert(rows, fixture['markets'], now)
+                shown = [row for row in rows if row['link'] in html.unescape(text)]
+                self.assertTrue(shown)
+                self.assertNotIn('호르무즈', text)
+                self.assertNotIn('원유 가격에 직접 반영', text)
+                self.assertNotIn('🟢', text)
+                receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+                with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                    for attr, name in {'ALERT':'alert.txt', 'PENDING':'pending.json', 'AUDIT':'evidence.json'}.items():
+                        stack.enter_context(patch.object(watch, attr, Path(folder)/name))
+                    watch.ALERT.write_text(text, encoding='utf-8')
+                    watch.PENDING.write_text(json.dumps({'ids':[row['id'] for row in shown]}), encoding='utf-8')
+                    watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+                    integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(), before)
+
     def test_publication_stage_actual_negotiation_is_contact_not_implemented_peace(self):
         fixture, _ = self.publication_stage_fixture()
         row = fixture['articles'][0]
