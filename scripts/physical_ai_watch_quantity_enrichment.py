@@ -359,6 +359,13 @@ def _skip_quantity_enrichment(block: str) -> bool:
         "로보티즈 · 하드웨어 설계도 실제",
     )):
         return True
+    # A 24-hour R&D duty-cycle article and a 23rd regulatory meeting do not
+    # establish numbers of shipped robots, priced parts or manufacturing orders.
+    # Future official robot shipments may use normal quantity enrichment.
+    if "삼성전자 RX · 24시간 운용 목표 현장검증 보도" in block:
+        return True
+    if "정부 규제합리화위 · 10월 23일 개최 예고" in block:
+        return True
     return False
 
 
