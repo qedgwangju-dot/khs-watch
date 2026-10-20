@@ -16,7 +16,7 @@ from zoneinfo import ZoneInfo
 import requests
 
 from kospi_flow_attribution_ls import attribution_html_lines, fetch_attribution
-from market_kiwoom_flow import optional_cash, cash_lines
+from market_supplementary_flow import optional_cash, cash_lines
 from krx_session_calendar import session_state
 
 KST = ZoneInfo("Asia/Seoul")

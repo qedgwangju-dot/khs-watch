@@ -1,6 +1,7 @@
 """Authenticated quote reachability only; never sends an alert or writes state."""
 import datetime as dt
 import json
+import os
 from pathlib import Path
 
 import market_namuh_flow as nh
@@ -31,6 +32,20 @@ def main():
     received = sum(item["status"] == "received" for item in result["sources"])
     result.update({"received": received, "finished_at": dt.datetime.now(dt.timezone.utc).isoformat(),
                    "source_reachability": "PASS" if received == 6 else "HELD"})
+    if received == 6:
+        result["supplement_validation"] = {}
+        for market in ("KOSPI", "KOSDAQ"):
+            try:
+                bundle = nh.current(market)
+                rendered = "\n".join(nh.lines(bundle, market))
+                result["supplement_validation"][market] = {"complete": bundle["complete"], "bundle": bundle,
+                    "render": rendered, "source_time_basis": "query_interval; daily date echoed",
+                    "incident_interval_eligible": False, "program_by_investor": False, "futures_won_amount": False}
+                print(json.dumps({"market":market,"cumulative_components_verified":bundle["complete"],
+                                  "render":rendered,"incident_interval_eligible":False},ensure_ascii=False))
+            except Exception as exc:
+                result["supplement_validation"][market] = {"complete":False,"reason":nh._redact(str(exc))}
+        result["unit_verification"] = "CUMULATIVE_COMPONENTS_PASS" if all(x["complete"] for x in result["supplement_validation"].values()) else "HELD"
     out = Path("out/market_namuh_source_probe.json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")

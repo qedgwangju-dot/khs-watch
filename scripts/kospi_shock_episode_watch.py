@@ -34,7 +34,7 @@ from market_flow_channels import (
 from market_program_close import collect as collect_program_close, render as render_program_close
 from market_alert_delivery import delivery_context, receipt_for, send_message
 from market_investors import ALERT_ACTORS, PRIMARY_ACTORS, LEADER_NOTE, TRUST_NOTE, actor_label, trust_direction_lines, trust_value
-from market_kiwoom_flow import enrich_snapshot, cash_lines
+from market_supplementary_flow import enrich_snapshot, cash_lines
 
 KST = ZoneInfo("Asia/Seoul")
 BASE = "https://openapi.ls-sec.co.kr:8080"

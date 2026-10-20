@@ -57,6 +57,8 @@ jobs:
       LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
       KIWOOM_APPKEY: ${{ secrets.KIWOOM_APPKEY }}
       KIWOOM_SECRETKEY: ${{ secrets.KIWOOM_SECRETKEY }}
+      NHPLUG_APP_KEY: ${{ secrets.NHPLUG_APP_KEY }}
+      NHPLUG_APP_SECRET: ${{ secrets.NHPLUG_APP_SECRET }}
 
     steps:
       - name: Checkout
@@ -70,7 +72,14 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml exchange_calendars
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml exchange_calendars cryptography
+
+      - name: Restore encrypted Namuh token cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.cache/khs-watch-namuh
+          key: nhplug-token-v1-${{ runner.os }}-${{ github.run_id }}-stress
+          restore-keys: nhplug-token-v1-${{ runner.os }}-
 
       - name: Verify required secrets
         run: |
@@ -519,6 +528,12 @@ jobs:
           done
           exit 1
 
+      - name: Save encrypted Namuh token cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.cache/khs-watch-namuh
+          key: nhplug-token-v1-${{ runner.os }}-${{ github.run_id }}-stress
       - name: Upload verification artifacts
         if: always()
         uses: actions/upload-artifact@v4
