@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-20T06:34:43.818600+00:00",
+  "updated_at": "2026-10-20T08:06:19.991011+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -589,9 +589,12 @@
     "243a809cb1801b419fdffdf539da6de92fd1b449a6ea1b528945ab1f203d996b",
     "d7274e493ae54451b9e77b22b39091f752650cbd15fc9bf7b890aa64807e874a",
     "8183795ae7501292e76d88ff01af56005d5d2e616de80a6345b1881fa40cb169",
-    "3d87a29e700408caf014a218c78f19724e8ad788f4a3cdbc45092a853d752049"
+    "3d87a29e700408caf014a218c78f19724e8ad788f4a3cdbc45092a853d752049",
+    "72a0fee840363a395d13e9e10cfc12b557be8f2c31e518782b79b206d44239f9"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "72a0fee840363a395d13e9e10cfc12b557be8f2c31e518782b79b206d44239f9"
+  ],
   "groups": [
     "agility_spac_2026",
     "alert_quality_223",
@@ -607,6 +610,7 @@
     "ess_battery",
     "ess_outdoor_policy",
     "global_bess_commissioned",
+    "hyundai_atlas_rollout",
     "hyundai_mobis_atlas",
     "jpm_sri_2026",
     "lg_factory_loop",
