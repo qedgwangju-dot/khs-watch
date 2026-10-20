@@ -78,6 +78,12 @@ class DeliveryTests(unittest.TestCase):
         self.assertEqual(route["public"]["chat_type"], "channel")
         self.assertEqual(route["public"]["route_selection"], "primary")
         self.assertEqual(route["public"]["recipient_sha256"], delivery.digest("-100888777666"))
+        self.assertIsNone(route["public"]["message_auto_delete_time_sec"])
+        self.chat.update(type="private", message_auto_delete_time=3600, is_forum=True)
+        refreshed = delivery.verify_route(refresh=True)["public"]
+        self.assertEqual(refreshed["chat_type"], "private")
+        self.assertEqual(refreshed["message_auto_delete_time_sec"], 3600)
+        self.assertTrue(refreshed["chat_is_forum"])
         self.assertFalse(self.sends())
 
     def test_wrong_bot_is_blocked_before_message(self):
