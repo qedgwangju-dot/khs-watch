@@ -22,6 +22,16 @@ class FoldableMarketAccessTests(unittest.TestCase):
         v="<div>しばらくの期間、お近くのApple Storeでは、最新のiPhone DuoとiPhone 18 Pro Maxを予約せずに購入することはできません。</div>"
         self.assertEqual(m._official_access(v,"일본"),"reservation_only")
 
+    def test_japanese_official_notice_with_nonbreaking_spaces(self):
+        t="近くのApple Storeでは、iPhone DuoとiPhone 18 Pro Maxを予約せずに購入することはできません。"
+        self.assertEqual(m._official_access("<p>"+t+"</p>", "일본"), "reservation_only")
+
+    def test_japan_unavailable_does_not_mask_korean_policy_or_fold8_demand(self):
+        msg=m._initial_alert({"한국":"reservation_only","일본":"unknown"})
+        self.assertIn("日本",msg.replace("일본","日本"))
+        self.assertIn("공식 페이지 직접 확인 불가",msg)
+        self.assertIn("고객 수요 출시 이후",msg)
+
     def test_missing_official_notice_never_means_reopened(self):
         v="<div>iPhone Duo available October 23. Free pickup available.</div>"
         self.assertEqual(m._official_access(v,"한국"),"unknown")

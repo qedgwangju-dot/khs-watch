@@ -36,7 +36,7 @@ TELEGRAM = OUT / "apple_duo_supply_watch_telegram.txt"
 KST = ZoneInfo("Asia/Seoul")
 FORBES = "https://www.forbes.com/sites/davidphelan/2026/10/14/apples-iphone-duo-debut-drives-300-spike-in-samsung-galaxy-z-fold8-searches/"
 APPLE_KR = "https://www.apple.com/kr/iphone/"
-APPLE_JP = "https://www.apple.com/jp/iphone/"
+APPLE_JP = "https://www.apple.com/jp/iphone/?cid=MAR-JP-GOOG-IPHONE"
 APPLE_SCHEDULE = "https://www.apple.com/kr/newsroom/2026/10/open-up-to-new-possibilities-with-iphone-duo/"
 IDC = "https://www.idc.com/promo/smartphone-market-share/market-share/"
 TRENDFORCE = "https://www.trendforce.com/presscenter/news/20260910-13228.html"
@@ -76,7 +76,7 @@ def _plain(raw: str) -> str:
 
 
 def _official_access(raw: str, market: str) -> str:
-    text = _plain(raw).lower()
+    text = re.sub(r"[\u200b-\u200f\u2060\ufeff\u00ad]", "", _plain(raw)).lower()
     # Both model names and an explicit prohibition must appear in one short
     # official statement. Missing notices mean unknown, not "allowed".
     if market == "한국":
@@ -86,11 +86,14 @@ def _official_access(raw: str, market: str) -> str:
             text, re.I
         ))
     elif market == "일본":
-        blocked = bool(re.search(
-            r"iphone\s*duo.{0,110}iphone\s*18\s*pro\s*max.{0,180}"
-            r"(?:予約せずに購入することはできません|予約なしでは購入できません)",
-            text, re.I
-        ))
+        blocked = (
+            "iphone duo" in text
+            and "iphone 18 pro max" in text
+            and (
+                "予約せずに購入することはできません" in text
+                or "予約なしでは購入できません" in text
+            )
+        )
     else:
         return "unknown"
     if blocked:
@@ -242,7 +245,10 @@ def _initial_alert(official: dict[str, str]) -> str:
         "• 삼성 폴더블 구글 검색 관심도 <b>최근 한 달 +300%</b>.",
         "  └ 검색량은 매출·판매량·구매전환률과 다릅니다.",
         "• 별도 국내 판매 기준선: 9월 공개 직후 Fold8 전주 대비 <b>+10%</b> 보도.",
-        "• Apple 공식 한국·일본 안내: <b>iPhone Duo·iPhone 18 Pro Max 예약 없는 현장 구매 제한</b>.",
+        "• 한국 Apple 공식 안내: <b>iPhone Duo·iPhone 18 Pro Max 예약 없는 현장 구매 제한</b>.",
+        "• 일본: Apple 지역 공지·MacRumors가 동일 제한을 보도. 이번 자동실행에서 "
+        + ("<b>공식 원문 직접 확인</b>." if official.get("일본") == "reservation_only" else
+           "<b>일본 공식 페이지 직접 확인 불가 — 보도·검색색인 확인 단계</b>."),
         "  └ 배송 주문/예약 픽업·신제품 출시일과 구분하며 공급 부족 원인은 미확정입니다.",
         "• Apple 공식 iPhone Duo 출시일: <b>10월 23일</b>로 유지.",
         "",
@@ -291,21 +297,25 @@ def main() -> None:
     seen = set(state.get("seen_ids") or [])
     alerts: list[str] = []
     pending_baseline = not state.get("initial_alert_sent", False)
-    baseline_ready = all(official.get(k) == "reservation_only" for k in ("한국", "일본"))
+    # A transient Japan notice parsing failure cannot hide the separate
+    # Samsung demand measurement or Korea's verified Apple retail policy.
+    baseline_ready = official.get("한국") == "reservation_only"
     if pending_baseline:
         if baseline_ready:
             alerts.append(_initial_alert(official))
             state["initial_alert_sent"] = True
-            access.update(official)
+            access["한국"] = "reservation_only"
+            access["일본"] = ("reservation_only" if official.get("일본") == "reservation_only"
+                          else "reported_not_live_verified")
         else:
-            errors.append("기준선 보류: 한·일 Apple 공식 현장판매 공지 직접 조회 불가")
+            errors.append("기준선 보류: 한국 Apple 공식 현장판매 공지 직접 조회 불가")
     else:
         for market, value in official.items():
             # Never infer restriction has ended merely because notice is absent.
             if value == "reservation_only" and access.get(market) != "reservation_only":
                 access[market] = value
                 alerts.append(
-                    "📱 <b>[Apple 매장 구매 제한 신규 확인]</b>\n"
+                    "📱 <b>[Apple 매장 구매 제한 공식 재확인]</b>"\n"
                     f"• {market} Apple 공식 안내: iPhone Duo·iPhone 18 Pro Max 예약 없는 현장 구매 제한\n"
                     "• 온라인 주문·매장 픽업 예약은 별도이며 10월 23일 공식 출시는 유지\n"
                     f'<a href="{APPLE_PAGES[market]}">Apple 공식 국가별 공지</a>'
