@@ -322,11 +322,30 @@ def _sodium_stage(text: str, source: str = '') -> str:
         return 'binding_contract'
     if SODIUM_CAPACITY.search(text) and re.search(r'commissioned|operational|started|completed|投产|建成|投运|가동|완공|반입|설치', text, re.I):
         return 'capacity_execution'
-    if re.search(r'(?:commercialization|mass\s*production|양산|상용화).{0,100}20\d{2}|20\d{2}.{0,100}(?:commercialization|mass\s*production|양산|상용화)', text, re.I):
+    if SODIUM_SCHEDULE_CHANGE.search(text) and re.search(
+        r'\b20\d{2}\b|20\d{2}\s*년', text, re.I
+    ):
         return 'schedule_change'
     if SODIUM_DENSITY.search(text) and re.search(r'new|next[-\s]*generation|improved|record|신형|차세대|향상|상향|신규', text, re.I):
         return 'performance_change'
     return 'background'
+
+# Timeline changes must be explicit changes to SOP/launch dates. A static
+# multi-year brokerage roadmap (even if it includes "2027 양산 목표") is NOT
+# a schedule change. Keep customer qualification/SOP actuals separate.
+SODIUM_SCHEDULE_CHANGE = re.compile(
+    r'(?:양산|상용화|납품|생산).{0,85}(?:일정|시점|시기).{0,55}'
+    r'(?:앞당|연기|늦춰|수정|변경|재설정)|'
+    r'(?:일정|시점|시기).{0,65}(?:앞당|연기|늦춰|수정|변경).{0,85}'
+    r'(?:양산|상용화|납품|생산)|'
+    r'(?:양산|상용화).{0,45}목표.{0,45}(?:앞당|연기|늦춰|수정|변경)|'
+    r'(?:production|commercialization|launch|delivery|SOP).{0,100}'
+    r'(?:schedule|date|target).{0,75}'
+    r'(?:advanced|accelerat|revised|changed|reschedul|postponed|delayed)|'
+    r'(?:advanced|accelerat|revised|reschedul|postponed|delayed).{0,100}'
+    r'(?:production|commercialization|launch|delivery|SOP).{0,85}20\d{2}',
+    re.I,
+)
 
 SODIUM_NEW_EVENT = re.compile(r'new|next[-\s]*generation|improved|record|launch|launched|신규|신형|차세대|향상|상향|출시', re.I)
 
@@ -996,6 +1015,13 @@ def score(item: dict) -> int:
     if group == 'sodium_ion_battery':
         stage = _sodium_stage(text, source)
         if stage in {'','known_baseline','background'}:
+            return 0
+        # A broker estimate, theme blog, or copied table cannot validate an
+        # actual change to an OEM mass-production schedule. Require a primary
+        # company source or a vetted report alongside explicit change verbs.
+        if (stage == 'schedule_change' and
+                source not in base.OFFICIAL_OR_PRIMARY and
+                source not in base.TRUSTED):
             return 0
         s = 20
         s += {
