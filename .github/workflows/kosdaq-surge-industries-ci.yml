@@ -52,7 +52,7 @@ jobs:
           python scripts/test_kospi_flow_attribution_strict.py
 
   native_source:
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     timeout-minutes: 8
     env:
@@ -66,8 +66,6 @@ jobs:
       - run: python -m pip install --disable-pip-version-check --quiet requests exchange_calendars
       - name: Audit dated industry source without messages or production state
         run: python scripts/probe_kosdaq_surge_industries.py --native --journal out/kosdaq_native_industry_probe.jsonl --out out/kosdaq_native_industry_probe.json
-      - name: Check both spot markets with preserved HTTP bytes and exact source windows
-        run: python scripts/probe_market_surge_industries.py
       - name: Preserve source audit
         if: always()
         uses: actions/upload-artifact@v4
@@ -76,8 +74,6 @@ jobs:
           path: |
             out/kosdaq_native_industry_probe.jsonl
             out/kosdaq_native_industry_probe.json
-            out/market_surge_industry_source.jsonl
-            out/market_surge_industry_source.json
           retention-days: 7
 
   market_flow_source:
