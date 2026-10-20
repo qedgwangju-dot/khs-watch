@@ -1,0 +1,253 @@
+{
+  "provenance": {
+    "run_id": "39436762007",
+    "actual_code_sha": "4b2fcf3ecb1deba5cf30d9c85d174d01eb678522",
+    "queried_at_kst": "2026-10-20T23:11:12.308822+09:00",
+    "artifact_id": 12272526325,
+    "artifact_zip_sha256": "ca8567fba6722f7e687a6573439f5c4474bf4f287995d49cacf4924ebc47999f",
+    "alert_sha256": "59000eb9cbb7c57a5cae7736be419d571ff1ec294f839dacce20dc7ef6d28086",
+    "operating_dry_run": true,
+    "actual_delivery": false,
+    "full_operating_article_bodies_preserved": false,
+    "later_HTTP_bodies_inserted": false
+  },
+  "articles": [
+    {
+      "id": "8727766fa482cf222797",
+      "title_original": "Russia expands attacks on energy facilities to western Ukraine",
+      "title_ko": "러시아, 에너지 시설에 대한 공격을 우크라이나 서부로 확대",
+      "description": "",
+      "source": "Reuters",
+      "link": "https://www.reuters.com/business/energy/russia-expands-attacks-energy-facilities-western-ukraine-2026-10-20/",
+      "published": "2026-10-20T11:54:27.961Z",
+      "score": 61,
+      "tags": [
+        "협상내용",
+        "확전"
+      ],
+      "body_checked": true,
+      "signals_ko": [
+        "후속 협상 실무 의제에 에너지 인프라 포함"
+      ],
+      "forced_tags": [
+        "종전·협상",
+        "협상내용",
+        "휴전·평화"
+      ],
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29632.75,
+      "pct": -0.3019597947682695,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "23:01 KST",
+      "observed_at_kst": "2026-10-20T23:01:09+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 29722.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 29722.5,
+        "chartPreviousClose": 29722.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792504869,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 98.31999969482422,
+      "pct": -0.2232598997115809,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "23:01 KST",
+      "observed_at_kst": "2026-10-20T23:01:13+09:00",
+      "symbol": "CL=F",
+      "previous_close": 98.54,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 98.54,
+        "chartPreviousClose": 98.54,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792504873,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 109.08999633789062,
+      "pct": -0.4199029320943626,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "23:01 KST",
+      "observed_at_kst": "2026-10-20T23:01:15+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 109.55,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 109.55,
+        "chartPreviousClose": 109.55,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792504875,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.6760025024414,
+      "pct": -0.29809521235398817,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "23:01 KST",
+      "observed_at_kst": "2026-10-20T23:01:15+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 101.98,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 101.98,
+        "chartPreviousClose": 101.98,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792504875,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "original_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>\n조회 2026-10-20 23:11 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [신규] <b>1. 우크라이나·러시아</b>\n후속 협상 실무 의제에 에너지 인프라 포함\nRSS 보도 10-20 20:54 KST · <b>136분 경과</b> · 확전 · <a href=\"https://www.reuters.com/business/energy/russia-expands-attacks-energy-facilities-western-ukraine-2026-10-20/\">Reuters 원문</a> · RSS 입력 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,632.75</b>  -0.30% · 제공처 비교종가 대비 · 기준 23:01 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>98.32</b>  -0.22% · 제공처 비교종가 대비 · 기준 23:01 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>109.09</b>  -0.42% · 제공처 비교종가 대비 · 기준 23:01 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.68</b>  -0.30% · 제공처 비교종가 대비 · 기준 23:01 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n"
+}

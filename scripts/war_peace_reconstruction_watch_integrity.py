@@ -108,7 +108,7 @@ def _display_headline(row):
             or _harm_intent_denial_headline(_headline(row))
             or _negotiation_stalemate_headline(_headline(row))
             or _ceasefire_proposal_stage(_headline(row))
-            or _headline_attack_casualties(row)):
+            or _headline_attack_casualties(row) or _headline_energy_operation(row)):
         # RSS bullet lines remain one ordered headline in the rendered block.
         return ' '.join(original.split())
     return original if (_riyadh_missile_headline(row) or re.search(r'[가-힣]', original)
@@ -117,7 +117,7 @@ def _display_headline(row):
 
 def _energy_facility_headline(row):
     title = _headline(row)
-    return bool(re.search(r'(?:에너지|핵(?:\s*및\s*에너지)?)\s*시설', title)
+    return _headline_energy_operation(row) or bool(re.search(r'(?:에너지|핵(?:\s*및\s*에너지)?)\s*시설', title)
                 and re.search(r'공격|공습|폭격|타격', title))
 
 
@@ -133,6 +133,8 @@ def _energy_facility_statement_spans(title):
 
 
 def _headline_action_label(row):
+    if _headline_energy_operation(row) and re.search(r'\b(?:expands?|expanded)\b', _headline(row)):
+        return '에너지 시설 공격 확대 보도'
     if _maritime_attack_expansion(row):
         return '선박 공격 확대 보도' if re.search(r'선박|상선|유조선|\b(?:ships?|vessels?|tankers?)\b', _headline(row)) else '공격 확대 보도'
     if _headline_attack_casualties(row):
@@ -336,6 +338,8 @@ def _primary_topic(row):
         return group + ' · 공습·공격 피해 보도'
     if kind is None and _headline_refinery_action(row):
         return '우크라이나·러시아 · 정유시설 공격 보도'
+    if kind is None and _headline_energy_operation(row):
+        return _headline_group(title) + ' · ' + _headline_action_label(row)
     if _energy_facility_headline(row):
         return _headline_group(title) + ' · ' + (KIND_LABELS[kind] if kind else _headline_action_label(row))
     if kind is None and _riyadh_missile_headline(row):
@@ -396,6 +400,16 @@ def _headline_drone_action(row):
             continue
         return True
     return False
+
+
+def _headline_energy_operation(row):
+    """Bind a named actor to a finite action, excluding plans and denials."""
+    return bool(re.search(
+        r'\b(?:russia(?:n)?|ukrain(?:e|ian)|iran(?:ian)?|israel(?:i)?|houthis?)\b'
+        r'(?:\s+(?:forces|troops|military))?\s+'
+        r'(?:expanded|expands?|resumed|resumes?|launched|launch(?:es)?|conducted|conducts?)\s+'
+        r'(?:new\s+)?(?:attacks?|strikes?|airstrikes?)\s+(?:on|against)\s+'
+        r'(?:[a-z-]+\s+){0,2}(?:energy|nuclear)\s+(?:facilities|infrastructure|sites)\b', _headline(row)))
 
 
 def _headline_attack_casualties(row):
@@ -779,7 +793,8 @@ def non_military_kind(row):
                           r'\b(?:ceasefire|peace deal).{0,20}(?:agreed|signed|implemented)', title)
     if mixed_restraint_attack(row):
         return 'mixed_restraint'
-    if _headline_drone_action(row) or _headline_attack_casualties(row) or _maritime_attack_expansion(row):
+    if (_headline_drone_action(row) or _headline_attack_casualties(row)
+            or _maritime_attack_expansion(row) or _headline_energy_operation(row)):
         return None
     # Require an explicit new-action predicate before background weapon nouns
     # can turn a sanctions listing or a condemnation into a military event.
@@ -886,6 +901,7 @@ def _headline_event_cache_required(row, kind):
             or (kind is None and _headline_drone_action(row))
             or (kind is None and _maritime_attack_expansion(row))
             or (kind is None and _headline_attack_casualties(row))
+            or (kind is None and _headline_energy_operation(row))
             or (_maritime_attack_headline(row) and not maritime_attack_tally(row)))
 
 
@@ -909,6 +925,10 @@ def score_item(row, now):
     if stamp is None or stamp > now + dt.timedelta(minutes=5) or age > 3 * 60:
         return 0, []
     kind = non_military_kind(row)
+    if kind is None and _headline_energy_operation(row):
+        _clear_headline_event_cache(row, kind)
+        score, _ = source_score._original_score(row, now)
+        return score, list(row['tags'])
     if kind == 'market_effect':
         _clear_market_event_cache(row)
         score, _ = source_score._original_score(row, now)
@@ -934,6 +954,8 @@ def score_item(row, now):
 def final_color(row):
     if non_military_kind(row):
         return 'yellow'
+    if _headline_energy_operation(row):
+        return 'red'
     if re.search(r'(?:공습|공격|폭격)에\s*(?:나섰|돌입)', _headline(row)):
         return 'red'
     if _report_with_completed_action(_headline(row)):

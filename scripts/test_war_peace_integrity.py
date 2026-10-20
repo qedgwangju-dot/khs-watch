@@ -74,6 +74,59 @@ class IntegrityTests(unittest.TestCase):
         value=json.loads((Path(__file__).parent/'test_fixtures/war_denial_casualty_39427171063.json').read_text(encoding='utf-8'))
         return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def energy_operation_fixture(self):
+        value=json.loads((Path(__file__).parent/'test_fixtures/war_energy_operation_39436762007.json').read_text(encoding='utf-8'))
+        return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_energy_operation_saved_active_predicate_preserves_actual_title(self):
+        fixture,now=self.energy_operation_fixture();row=copy.deepcopy(fixture['articles'][0])
+        self.assertTrue(integrity._headline_energy_operation(row));self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row),'red')
+        self.assertEqual(integrity.topic_label(row),'우크라이나·러시아 · 에너지 시설 공격 확대 보도')
+        self.assertEqual(integrity._display_headline(row),row['title_original'])
+
+    def test_energy_operation_completed_predicates_keep_target_without_adding_actors(self):
+        for title,topic in (('Russian forces resume strikes against energy infrastructure in Ukraine','우크라이나·러시아'),
+                            ('Iran launched attacks on nuclear facilities','이란')):
+            with self.subTest(title=title):
+                row=article(title)
+                self.assertTrue(integrity._headline_energy_operation(row));self.assertEqual(integrity.final_color(row),'red')
+                self.assertTrue(integrity.topic_label(row).startswith(topic+' · '))
+                self.assertEqual(integrity._display_headline(row),title)
+
+    def test_energy_operation_future_denied_nominal_actions_do_not_match_actual_predicate(self):
+        for title in ('Russia will expand attacks on energy facilities in Ukraine',
+                      'Russia plans to expand attacks on energy facilities in Ukraine',
+                      'Russia does not expand attacks on energy facilities in Ukraine',
+                      'Russia denies expanding attacks on energy facilities in Ukraine',
+                      'Officials discuss Russia expanding attacks on energy facilities in Ukraine'):
+            with self.subTest(title=title):self.assertFalse(integrity._headline_energy_operation(article(title)))
+
+    def test_energy_operation_scoring_discards_old_negotiation_cache(self):
+        fixture,now=self.energy_operation_fixture();row=copy.deepcopy(fixture['articles'][0])
+        integrity.score_item(row,now)
+        self.assertEqual(row['tags'],['에너지 시설 공격 확대 보도'])
+        self.assertEqual(row['signals_ko'],[]);self.assertEqual(row['forced_tags'],[])
+
+    def test_energy_operation_separate_diplomatic_clause_keeps_real_action(self):
+        row=article('Russia expands attacks on energy facilities; Trump discusses peace talks')
+        self.assertIsNone(integrity.non_military_kind(row));self.assertEqual(integrity.final_color(row),'red')
+        self.assertIn('에너지 시설 공격 확대 보도',integrity.topic_label(row))
+
+    def test_energy_operation_whole_final_gate_rejects_original_same_hash_wrong_summary(self):
+        fixture,now=self.energy_operation_fixture();before=watch.STATE.read_bytes();rows=copy.deepcopy(fixture['articles'])
+        with patch.object(integrity.body_parallel,'_safe_enrich'),patch.object(watch,'market_source_status',fixture['market_source_status'],create=True):text=integrity.build_alert(rows,fixture['markets'],now)
+        self.assertIn(html.escape(rows[0]['title_original']),text);self.assertNotIn('후속 협상 실무 의제',text)
+        receipt=evidence.alert_receipt(rows,fixture['markets'],now,text,fixture['market_source_status'])
+        with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+            watch.ALERT.write_text(text,encoding='utf-8');watch.PENDING.write_text(json.dumps({'ids':[rows[0]['id']]}),encoding='utf-8');watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8');integrity.verify_alert()
+            badtext=fixture['original_alert'];badreceipt=evidence.alert_receipt(fixture['articles'],fixture['markets'],now,badtext,fixture['market_source_status'])
+            self.assertEqual(badreceipt['alert_sha256'],fixture['provenance']['alert_sha256'])
+            watch.ALERT.write_text(badtext,encoding='utf-8');watch.AUDIT.write_text(json.dumps(badreceipt,ensure_ascii=False),encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(),before)
+
     def test_current_stage_saved_headline_classification_and_named_actors(self):
         fixture,now=self.current_stage_fixture()
         expected={0:('diplomatic_position','yellow','미국·이란 · 협상 교착·지연 보도'),
