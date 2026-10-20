@@ -5315,4 +5315,43 @@ finally:
     base.NOW=old_now
 
 
+
+# 2026-05 Daishin 2027-29 roadmap tables re-circulated as screenshots
+# are analyst forecasts, NOT new actual 2026-10 production, contracts,
+# capacity ramp, customer acceptance, or newly issued company guidance.
+roadmap_forecasts = [
+    make(
+        "표 21 전고체 배터리 업체별 타임라인 2027년 2028년 2029년",
+        "대신증권 Research Center 2026년 5월 전망표: LGES 2027 황화물계 "
+        "파일럿, 2029 흑연계 EV 초기 상용화 예정. 삼성SDI 2027 황화물계 "
+        "양산 개시 목표, 2028 라인 최적화·수율 안정화 전망. "
+        "에코프로비엠 2028년 300톤 증산 계획, 포스코퓨처엠 "
+        "2029년 대량 생산 준비, CATL 2027년 전고체 500Wh/kg "
+        "소규모 시험생산 목표이며 2030년 대량 양산 계획.",
+        "대신증권",
+    ),
+    make(
+        "표 20 나트륨 배터리 업체별 개발 타임라인 2027년 2028년 2029년",
+        "대신증권 Research Center 2026년 5월 전망표: LG에너지솔루션 "
+        "2027년 나트륨이온 1세대 양산 목표와 2028년 2세대 개발 "
+        "계획, 삼성SDI 공식 나트륨이온 양산 로드맵 없음. "
+        "에코프로비엠 양극재 고객사 일정 연동 개발, 엘앤에프 "
+        "초기 개발 단계. CATL 2027년 2세대 양산 체계 "
+        "완성과 2029년 글로벌 확산 전망. "
+        "BYD 2027년 3세대 나트륨 플랫폼 개발 및 "
+        "2030년 이후 대량 상용화라는 이미지상 예상 목표.",
+        "대신증권",
+    ),
+]
+for _item in roadmap_forecasts:
+    _g,_score,_cat,_key=classify(_item)
+    assert _score < 11, (
+        "Old analyst roadmap must not be mistaken for a newly achieved milestone",
+        _g,_score,_cat
+    )
+# Keep original image provenance separate: the recoverable 2026-05
+# research PDF uses tables 6/18/33, while the user images say 21/20
+# and add a BYD sodium row; this is NOT authenticated as a primary
+# Daishin update without a newer dated original report.
+
 print("Physical-AI watcher regression guards: PASS")
