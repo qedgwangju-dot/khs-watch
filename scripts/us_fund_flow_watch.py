@@ -1337,10 +1337,15 @@ def parse_goldman_prime_public():
         seen_urls.add(url)
         if not re.search(r"Goldman|hedge funds?.*tech", str(item.get("title") or "") + " " + str(item.get("desc") or ""), re.I):
             continue
+        publication = str(item.get("pub") or "").strip()
         try:
-            pub = parsedate_to_datetime(str(item.get("pub") or "")).date()
+            pub = parsedate_to_datetime(publication).date()
         except (TypeError, ValueError, IndexError, OverflowError):
-            continue
+            # Date-only publisher metadata is common and must not invent a clock time.
+            try:
+                pub = datetime.strptime(publication, "%a, %d %b %Y").date()
+            except (TypeError, ValueError):
+                continue
         if not 0 <= (today - pub).days <= 14:
             continue
         from urllib.parse import urlparse
