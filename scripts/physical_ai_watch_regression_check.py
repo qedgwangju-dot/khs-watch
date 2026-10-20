@@ -5381,4 +5381,45 @@ tg, ts, tc, tk = classify(sodium_static_trusted)
 assert ts < 11, (tg, ts, tc)
 
 
+
+# CATL-INTILION 10/20 iNews24 reprint omitted buyer's name in RSS
+# headline: message_id=246 from Run #693 is a DUPLICATE of message 218
+# original 10/09 5-year up-to-3GWh development-framework event.
+catl_reprint_246 = make(
+    "CATL, '나트륨 배터리'로 유럽 ESS 공략⋯저온·장수명 기술 앞세워",
+    "독 인틸리온과 최대 3GWh 공동개발 목표, "
+    "CATL 나트륨 ESS 1만5천 회 수명, 2027년 글로벌 공급 추진",
+    "아이뉴스24",
+)
+cg, cs, cc, ck = classify(catl_reprint_246)
+assert cs < 11, ('October 20 CATL-INTILION reprint must stay silent', cg,cs,cc)
+assert ck == hashlib.sha256(
+    b'catl-intilion|sodium|dach|20261009|3gwh-target|five-years'
+).hexdigest(), 'Missing buyer in headline must still reuse old CATL-INTILION event key'
+catl_other_new_news = make(
+    "CATL and Solarpro confirm first sodium-ion ESS commissioning",
+    "CATL and Solarpro jointly commissioned a new 500MWh sodium-ion site, "
+    "distinct from Intilion DACH 3GWh program.",
+    "CATL",
+)
+assert watcher._catl_intilion_oct20_reprint(catl_reprint_246)
+assert not watcher._catl_intilion_oct20_reprint(catl_other_new_news)
+previous_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,20,9,0,tzinfo=dt.timezone.utc)
+    r=watcher.query_news(watcher.ALERT246_CORRECTION_ID)
+    assert len(r)==1 and r[0].get('quality_correction_246'),r
+    ag,ass,ac,ak=classify(r[0])
+    assert ag=='alert_quality_246' and ass >= 11,(ag,ass,ac)
+    assert '중복 제외' in ac and '218번' in base.meaning(ac),(ac,base.meaning(ac))
+    p=r[0]['title']+' '+r[0]['description']
+    assert base.category(p,base.topic_group(p))==ac
+    assert 'Run #693' in base.verification(r[0],ag,p)
+    assert 'Telegram 246' in base.clean_title(r[0]['title'],r[0]['source'])
+    assert base.key(r[0])==ak
+    base.NOW=dt.datetime(2026,10,26,0,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.ALERT246_CORRECTION_ID)==[], 'old correction must expire'
+finally:
+    base.NOW=previous_now
+
 print("Physical-AI watcher regression guards: PASS")
