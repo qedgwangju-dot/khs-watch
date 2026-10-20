@@ -37,6 +37,8 @@ on:
       - "scripts/test_market_investment_trust.py"
       - "scripts/market_program_close.py"
       - "scripts/test_market_program_close.py"
+      - "scripts/test_market_close_pair.py"
+      - "scripts/test_fixtures/market_close_pair_20261020.json"
       - "scripts/test_fixtures/program_close_readback_20261016.json"
       - "scripts/test_market_flow_channels.py"
       - "scripts/probe_market_flow_channels.py"
@@ -90,6 +92,7 @@ jobs:
         run: |
           python -m py_compile scripts/market_program_close.py scripts/test_market_program_close.py
           python scripts/test_market_program_close.py
+          python scripts/test_market_close_pair.py
           python scripts/test_market_alert_delivery.py
           python scripts/test_kospi_shock_episode.py
           python scripts/test_kospi_shock_enrichment.py

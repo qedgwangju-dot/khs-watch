@@ -937,6 +937,7 @@ class Watch:
         self.kosdaq_price_task: asyncio.Task | None = None
         self.kosdaq_backfill_task: asyncio.Task | None = None
         self.kosdaq_last_price_snapshot: dict[str, Any] = {}
+        self.daily_close: dict[str, Any] = {}
 
 
     @staticmethod
@@ -1393,24 +1394,163 @@ class Watch:
                                      test_seconds: int | None, now: dt.datetime | None = None) -> None:
         if not should_finalize_market_close(now or dt.datetime.now(KST), close_dt, test_seconds):
             return
-        active = []
-        if self.episode is not None and self.idx:
-            active.append("KOSPI")
-        if self.kosdaq_episode is not None and self.kosdaq_idx:
-            active.append("KOSDAQ")
-        for market in active:
-            self.raw.setdefault("program_close", {})[market] = await asyncio.to_thread(
-                collect_program_close, self.token, market, close_dt.timestamp(), ls_post
-            )
+        state = self._daily_close_state(close_dt.date().isoformat())
+        for market in ("KOSPI", "KOSDAQ"):
+            if market in state["plans"] or market in state["message_ids"]:
+                continue
+            try:
+                result = await asyncio.to_thread(
+                    collect_program_close, self.token, market, close_dt.timestamp(), ls_post
+                )
+            except Exception as exc:
+                result = {"market": market, "status": "held",
+                          "reason": f"{type(exc).__name__}: {exc}"}
+            self.raw.setdefault("program_close", {})[market] = result
+
+    def _daily_close_state(self, day: str) -> dict[str, Any]:
+        state = getattr(self, "daily_close", {})
+        if not isinstance(state, dict) or state.get("date") != day:
+            state = {"date": day, "last_completed": {}, "plans": {}, "message_ids": {}}
+            self.daily_close = state
+        return state
+
+    def _remember_completed_episode(self, market: str, ep: dict[str, Any],
+                                    attribution: dict[str, Any], ended_ts: float) -> None:
+        day = dt.datetime.fromtimestamp(float(ep["start_ts"]), KST).date().isoformat()
+        state = self._daily_close_state(day)
+        state["last_completed"][market] = json.loads(json.dumps({
+            "episode": ep, "attribution": attribution, "ended_ts": ended_ts,
+        }))
+
+    def _close_quote(self, market: str, close_dt: dt.datetime, now: dt.datetime) -> dict[str, Any]:
+        series = self.idx if market == "KOSPI" else self.kosdaq_idx
+        if not series:
+            return {"available": False, "reason": "마감 시세 조회 기록 없음"}
+        ts, price = series[-1]
+        valid = (fnum(price) is not None and float(price) > 0
+                 and close_dt.timestamp() <= ts <= now.timestamp() + 5
+                 and 0 <= now.timestamp() - ts <= 90
+                 and dt.datetime.fromtimestamp(ts, KST).date() == close_dt.date())
+        return {"available": valid, "observed_ts": ts, "observed_price": price,
+                "reason": "" if valid else "마감 이후의 신선한 시세 미확보",
+                "independent_official_close_verified": False}
+
+    def _build_daily_close_plan(self, market: str, close_dt: dt.datetime,
+                               now: dt.datetime) -> dict[str, Any]:
+        state = self._daily_close_state(close_dt.date().isoformat())
+        active = self.episode if market == "KOSPI" else self.kosdaq_episode
+        completed = state["last_completed"].get(market)
+        candidate = None
+        if active:
+            att = (self.attribution if market == "KOSPI" else self._kosdaq_attribution)(
+                float(active["start_ts"]), float(active["low_ts"]))
+            candidate = {"episode": active, "attribution": att, "origin": "active"}
+        elif completed:
+            candidate = {**completed, "origin": "completed_intraday"}
+        quote = self._close_quote(market, close_dt, now)
+        price = quote.get("observed_price") if quote["available"] else None
+        observed_ts = quote.get("observed_ts", close_dt.timestamp())
+        label = "코스피" if market == "KOSPI" else "코스닥"
+        program = (self.raw.get("program_close") or {}).get(market)
+        if candidate:
+            ep = json.loads(json.dumps(candidate["episode"]))
+            ep["market"] = market
+            att = json.loads(json.dumps(candidate["attribution"]))
+            if market == "KOSPI":
+                text = self.build_end(ep, observed_ts, price, session_close=True, attribution=att)
+            else:
+                text = self.build_kosdaq_drop_alert("close", ep, observed_ts, price,
+                                                   session_close=True, attribution=att)
+            if candidate["origin"] == "completed_intraday":
+                text += f"\n• 대상: 장중 {fmt_clock(candidate['ended_ts'])}에 종료된 마지막 급락 사건."
+        else:
+            # The close timestamp is a daily summary identity, not a fabricated incident.
+            ep = {"market": market, "start_ts": close_dt.timestamp(),
+                  "low_ts": close_dt.timestamp(), "daily_summary_only": True}
+            att = {}
+            lines = [f"🟣 <b>{label} 장마감 요약</b>",
+                     f"<code>{now:%Y-%m-%d %H:%M:%S} KST</code>", "",
+                     "• 기록된 급락 경보 사건 없음 (감시에서 수집된 범위)." if price is not None
+                     else "• 급락 사건·마감 시세 확인 보류: 마감 이후 시세 미확보."]
+            if price is not None:
+                lines.append(f"• 마감 조회 시세 <b>{price:,.2f}</b> (조회 {fmt_clock(observed_ts)})")
+            lines += ["• 사건 시작·저점 수급이 없어 매도주체 판정은 하지 않습니다."]
+            lines += render_program_close(program, market)
+            lines += ["• 마감 조회 시세의 공식 종가 독립 대조는 미완료입니다.",
+                      "• " + link(KOSPI_URL if market == "KOSPI" else KOSDAQ_URL, market)]
+            text = "\n".join(lines)
+        return json.loads(json.dumps({
+            "session_date": close_dt.date().isoformat(), "market": market,
+            "stage": "close" if market == "KOSPI" else "kosdaq_shock_close",
+            "episode": ep, "origin": candidate["origin"] if candidate else "summary_only",
+            "quote": quote, "observed_ts": observed_ts, "attribution": att,
+            "program_close": program, "text": text,
+            "request_body_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+        }))
+
+    async def _finalize_daily_close(self, close_dt: dt.datetime | None,
+                                    test_seconds: int | None = None,
+                                    now: dt.datetime | None = None) -> None:
+        now = now or dt.datetime.now(KST)
+        if (not should_finalize_market_close(now, close_dt, test_seconds)
+                or now.date() != close_dt.date()):
+            return
+        state = self._daily_close_state(close_dt.date().isoformat())
+        await self._prepare_program_close(close_dt, test_seconds, now)
+        for market in ("KOSPI", "KOSDAQ"):
+            if market not in state["plans"] and market not in state["message_ids"]:
+                state["plans"][market] = self._build_daily_close_plan(market, close_dt, now)
+        # Freeze both bodies and incident identities before either send. A restart
+        # reuses the existing delivery journal's approval for the same plan.
+        self._checkpoint_handoff(force=True)
+        errors, enrichment = {}, []
+        for market in ("KOSPI", "KOSDAQ"):
+            if market in state["message_ids"]:
+                continue
+            plan = state["plans"][market]
+            ep = plan["episode"]
+            try:
+                msg_id = await self._send_event(plan["stage"], ep, plan["observed_ts"], plan["text"])
+                state["message_ids"][market] = msg_id
+                self.msg_ids.append(msg_id)
+                if market == "KOSPI":
+                    self.episode = None
+                    self.last_episode_end_ts = plan["observed_ts"]
+                else:
+                    self.kosdaq_episode = None
+                    self.kosdaq_last_episode_end_ts = plan["observed_ts"]
+                self._record_delivery(plan["stage"], msg_id, ep, plan["observed_ts"], evidence={
+                    "market_attribution": plan["attribution"], "program_close": plan["program_close"],
+                    "episode_origin": plan["origin"], "close_quote": plan["quote"],
+                    "request_body_sha256": plan["request_body_sha256"],
+                })
+                if plan["origin"] == "active":
+                    enrichment.append((market, ep, plan["attribution"]))
+            except Exception as exc:
+                errors[market] = f"{type(exc).__name__}: {exc}"
+        self.raw["daily_close"] = {
+            "date": state["date"], "message_ids": dict(state["message_ids"]),
+            "complete": set(state["message_ids"]) == {"KOSPI", "KOSDAQ"}, "errors": errors,
+        }
+        self._checkpoint_handoff(force=True)
+        if errors:
+            raise RuntimeError("Daily close delivery incomplete: " + "; ".join(
+                market + " " + error for market, error in errors.items()))
+        for market, ep, att in enrichment:
+            run = self._run_enrichment if market == "KOSPI" else self._run_kosdaq_enrichment
+            task = asyncio.create_task(run(json.loads(json.dumps(ep)), att))
+            self.enrichment_tasks.add(task)
+            task.add_done_callback(self.enrichment_tasks.discard)
 
     def build_end(
         self,
         ep: dict[str, Any],
         end_ts: float,
-        end_price: float,
+        end_price: float | None,
         session_close: bool = False,
+        attribution: dict[str, Any] | None = None,
     ) -> str:
-        att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
+        att = attribution if attribution is not None else self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
         drop = pct(float(ep["start_price"]), float(ep["low_price"])) or 0.0
         rebound = pct(float(ep["low_price"]), end_price) or 0.0
         if ep.get("price_only"):
@@ -1430,7 +1570,8 @@ class Watch:
                  f"• <b>{fmt_clock(ep['start_ts'])} → {fmt_clock(ep['low_ts'])}</b> · {fmt_duration(int(float(ep['low_ts']))-int(float(ep['start_ts'])))}",
                  f"• KOSPI <b>{float(ep['start_price']):,.2f}</b> → <b>{float(ep['low_price']):,.2f}</b> · <b>{drop:+.2f}%</b>",
                  (
-                     f"• 저점 이후 장마감 <b>{end_price:,.2f}</b> · 반등 <b>{rebound:+.2f}%</b>"
+                     (f"• 저점 이후 마감 조회 시세 <b>{end_price:,.2f}</b> (조회 {fmt_clock(end_ts)}) · 반등 <b>{rebound:+.2f}%</b>"
+                      if end_price is not None else "• 마감 조회 시세 확인 보류: 마감 이후의 신선한 시세 미확보.")
                      if session_close else
                      f"• 저점 이후 현재 <b>{end_price:,.2f}</b> · 반등 <b>{rebound:+.2f}%</b>"
                  ), "",
@@ -1439,6 +1580,7 @@ class Watch:
         if session_close:
             lines += render_program_close((getattr(self, "raw", {}).get("program_close") or {}).get("KOSPI"), "KOSPI")
             lines += ["", "• <b>장 마감으로 사건 추적을 종료합니다. 복원 여부는 확정하지 않습니다.</b>"]
+            lines += ["• 마감 조회 시세의 공식 종가 독립 대조는 미완료입니다."]
         lines += ["", market_attribution_footer("KOSPI", final=True),
                   "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"관련 뉴스")])]
         return "\n".join(lines)
@@ -1661,8 +1803,9 @@ class Watch:
         self.kosdaq_price_task=asyncio.create_task(run_one())
 
     def build_kosdaq_drop_alert(self, stage: str, ep: dict[str, Any],
-                                now_ts: float, price: float,
-                                session_close: bool=False) -> str:
+                                now_ts: float, price: float | None,
+                                session_close: bool=False,
+                                attribution: dict[str, Any] | None = None) -> str:
         label={"start":"🚨 코스닥 급락 포착", "expand":"🔴 코스닥 급락 확대",
                "end":"🟢 코스닥 급락 종료·반등 확인",
                "close":"🟣 코스닥 급락 장마감 확정"}.get(stage,"코스닥 급락")
@@ -1672,7 +1815,7 @@ class Watch:
         is_final=stage in {"end","close"}
         end_point=low if is_final else price
         change=pct(float(ep["start_price"]),end_point)
-        att=self._kosdaq_attribution(start_ts, low_ts if is_final else now_ts)
+        att=attribution if attribution is not None else self._kosdaq_attribution(start_ts, low_ts if is_final else now_ts)
         lines=[
             f"<b>{label}</b>",
             f"<code>{dt.datetime.fromtimestamp(time.time(),KST):%Y-%m-%d %H:%M:%S} KST</code>",
@@ -1681,11 +1824,16 @@ class Watch:
         ]
         if is_final:
             rebound=pct(low,price) or 0.0
-            lines.append(f"• 저점 이후 현재 {price:,.2f} · 반등 {rebound:+.2f}%")
+            if session_close or stage == "close":
+                lines.append(f"• 저점 이후 마감 조회 시세 {price:,.2f} (조회 {fmt_clock(now_ts)}) · 반등 {rebound:+.2f}%"
+                             if price is not None else "• 마감 조회 시세 확인 보류: 마감 이후의 신선한 시세 미확보.")
+            else:
+                lines.append(f"• 저점 이후 현재 {price:,.2f} · 반등 {rebound:+.2f}%")
         lines += ["", "<b>그 구간에서 누가 팔았나</b>"]
         lines += market_attribution_lines(att, "KOSDAQ", final=is_final)
         if session_close or stage == "close":
             lines += render_program_close((getattr(self, "raw", {}).get("program_close") or {}).get("KOSDAQ"), "KOSDAQ")
+            lines += ["• 마감 조회 시세의 공식 종가 독립 대조는 미완료입니다."]
         lines.extend([
             market_attribution_footer("KOSDAQ", final=is_final),
             "• 코스피200 선물·코스피 프로그램 수급은 코스닥 매도주체로 사용하지 않습니다.",
@@ -1775,13 +1923,14 @@ class Watch:
                or (low_age>=120 and recovery_ratio>=0.45)
                or (now_t-float(ep["start_ts"])>=MAX_EPISODE_SEC and low_age>=600))
         if ended:
+            final_att=self._kosdaq_attribution(float(ep["start_ts"]),float(ep["low_ts"]))
             msg_id=await self._send_event("kosdaq_shock_end", ep, now_t, self.build_kosdaq_drop_alert("end",ep,now_t,price))
+            self._remember_completed_episode("KOSDAQ", ep, final_att, now_t)
             self.kosdaq_episode=None
             self.kosdaq_last_episode_end_ts=now_t
             self.msg_ids.append(msg_id)
             self._record_delivery("kosdaq_shock_end",msg_id,ep,now_t)
             ep_copy=json.loads(json.dumps(ep))
-            final_att=self._kosdaq_attribution(float(ep["start_ts"]),float(ep["low_ts"]))
             task=asyncio.create_task(self._run_kosdaq_enrichment(ep_copy,final_att))
             self.enrichment_tasks.add(task)
             task.add_done_callback(self.enrichment_tasks.discard)
@@ -2160,6 +2309,7 @@ class Watch:
             final_att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
             msg_id = await self._send_event("end", ep, now_t, self.build_end(ep, now_t, cur))
             self.msg_ids.append(msg_id)
+            self._remember_completed_episode("KOSPI", ep, final_att, now_t)
             # 완료 전송이 확인되면 활성 사건을 먼저 비워 인계 상태에 원상태가 남지 않게 한다.
             # 기존 코드는 종료 전송 직후 체크포인트에 활성 사건을 저장할 수 있었다.
             self.episode = None
@@ -2298,6 +2448,7 @@ class Watch:
             "kosdaq_opening_gap_sent": self.kosdaq_opening_gap_sent,
             "kosdaq_last_price_processed_ts": self.kosdaq_last_price_processed_ts,
             "kosdaq_last_price_snapshot": self.kosdaq_last_price_snapshot,
+            "daily_close": getattr(self, "daily_close", {}),
         }
         p.parent.mkdir(parents=True, exist_ok=True)
         # 인계 파일을 직접 덮어쓰다 중단되면 손상된 JSON이 다음 작업에 넘어갈 수 있다.
@@ -2322,6 +2473,9 @@ class Watch:
             if str(data.get("date") or "") != today:
                 self.raw["handoff_loaded"] = {"path": str(p), "status": "stale_date"}
                 return
+            daily_close = data.get("daily_close")
+            if isinstance(daily_close, dict) and daily_close.get("date") == today:
+                self.daily_close = daily_close
             loaded = 0
             cutoff = time.time() - FLOW_LOOKBACK_SEC
             for snap in data.get("flows") or []:
@@ -2583,50 +2737,7 @@ class Watch:
             self._log_market_health()
             await asyncio.sleep(0.6)
 
-        # Reuse only existing close messages, after the actual session close.
-        await self._prepare_program_close(close_dt, test_seconds)
-
-        if self.episode is not None and self.idx and should_finalize_market_close(
-            dt.datetime.now(KST), close_dt, test_seconds
-        ):
-            ep = self.episode
-            end_ts, end_price = self.idx[-1]
-            final_att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
-            close_text = self.build_end(ep, end_ts, end_price, session_close=True)
-            msg_id = await self._send_event("close", ep, end_ts, close_text)
-            self.msg_ids.append(msg_id)
-            self.episode = None
-            self.last_episode_end_ts = end_ts
-            self._record_delivery("close", msg_id, ep, end_ts, evidence={
-                "market_attribution": final_att,
-                "program_close": (self.raw.get("program_close") or {}).get("KOSPI"),
-                "request_body_sha256": hashlib.sha256(close_text.encode("utf-8")).hexdigest(),
-            })
-            ep_copy = json.loads(json.dumps(ep))
-            task = asyncio.create_task(self._run_enrichment(ep_copy, final_att))
-            self.enrichment_tasks.add(task)
-            task.add_done_callback(self.enrichment_tasks.discard)
-
-        # 오전·오후 경계는 장마감이 아니다. 코스닥 사건도 실제 시장 종료에만 확정한다.
-        if (self.kosdaq_episode is not None and self.kosdaq_idx
-                and should_finalize_market_close(dt.datetime.now(KST),close_dt,test_seconds)):
-            ep=self.kosdaq_episode
-            end_ts,end_price=self.kosdaq_idx[-1]
-            close_text=self.build_kosdaq_drop_alert("close",ep,end_ts,end_price,session_close=True)
-            msg_id=await self._send_event("kosdaq_shock_close", ep, end_ts, close_text)
-            self.kosdaq_episode=None
-            self.kosdaq_last_episode_end_ts=end_ts
-            self.msg_ids.append(msg_id)
-            self._record_delivery("kosdaq_shock_close",msg_id,ep,end_ts,evidence={
-                **self._kosdaq_render_evidence,
-                "program_close": (self.raw.get("program_close") or {}).get("KOSDAQ"),
-                "request_body_sha256": hashlib.sha256(close_text.encode("utf-8")).hexdigest(),
-            })
-            ep_copy=json.loads(json.dumps(ep))
-            final_att=self._kosdaq_attribution(float(ep["start_ts"]),float(ep["low_ts"]))
-            task=asyncio.create_task(self._run_kosdaq_enrichment(ep_copy,final_att))
-            self.enrichment_tasks.add(task)
-            task.add_done_callback(self.enrichment_tasks.discard)
+        await self._finalize_daily_close(close_dt, test_seconds)
 
         if self.kosdaq_price_task:
             try:

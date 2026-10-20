@@ -1,0 +1,643 @@
+{
+  "provenance": {
+    "run_id": 39339679091,
+    "artifact_id": 12245650360,
+    "artifact_sha256": "294dfca48cdbc32e823cd9e4f9c07ba2de63751de1e6c1fc11f8d50ca83b6717",
+    "operating_code_sha": "c20dc570baaed6b9f65aaed6046681423f74b812",
+    "input_file_sha256": {
+      "kospi_shock_handoff.json": "ee070a01c5eb0ebcfcbcb86b6fa6bb506f05a4f99bd2336fecd4ca801b450d2c",
+      "kospi_shock_episode_raw.json": "4d5ca23336807d01e0f57b1bf8d1c723fc8632075483985927adb2c9c268075d",
+      "kospi_shock_delivery_log.jsonl": "22c39f10835e7c8d3d3e45a94118c405fb2e9153cee04163f12fec90a0a083a0",
+      "kospi_shock_enrichment_latest.json": "fbe3b09c7a7271bab12dd6c1e701840c78a4e12fb03f249d4e34ec3d8c49ba40",
+      "kosdaq_shock_enrichment_latest.json": "618394395576c3f33aa4c931c3355d95658b778b07f1616c8f15769c73baee1d"
+    },
+    "attributions_recalculated_from_stored_operating_flow_snapshots": true,
+    "later_HTTP_values_inserted": false,
+    "original_trade_HTTP_bytes_preserved": false,
+    "KOSPI_prices_source": "stored enrichment event",
+    "KOSDAQ_prices_source": "exact timestamp matches in stored handoff index ticks"
+  },
+  "date": "2026-10-20",
+  "close_ts": 1792477800.0,
+  "now_ts": 1792477920.0,
+  "kospi_episode": {
+    "start_ts": 1792475739.415747,
+    "start_price": 5549.99,
+    "low_ts": 1792476801.9598489,
+    "low_price": 5514.68,
+    "market": "KOSPI"
+  },
+  "kosdaq_episode": {
+    "start_ts": 1792475386.194197,
+    "low_ts": 1792476805.319,
+    "market": "KOSDAQ",
+    "start_price": 786.93,
+    "low_price": 780.05
+  },
+  "attributions": {
+    "KOSPI": {
+      "market": "KOSPI",
+      "channel_status": {
+        "spot": {
+          "available": true,
+          "reason": null,
+          "start_gap": 9.415746927261353,
+          "end_gap": 21.959848880767822,
+          "start_ts": 1792475730.0,
+          "end_ts": 1792476780.0
+        },
+        "futures": {
+          "available": true,
+          "reason": null,
+          "start_gap": 9.415746927261353,
+          "end_gap": 21.959848880767822,
+          "start_ts": 1792475730.0,
+          "end_ts": 1792476780.0
+        },
+        "program": {
+          "available": true,
+          "reason": null,
+          "start_gap": 9.463470220565796,
+          "end_gap": 0.5478494167327881,
+          "start_ts": 1792475729.9522767,
+          "end_ts": 1792476801.4119995
+        }
+      },
+      "spot": {
+        "외국인": -172.0,
+        "기관": 307.0,
+        "개인": -223.0,
+        "투신": null
+      },
+      "futures": {
+        "외국인": 954.0,
+        "기관": -697.0,
+        "개인": -254.0,
+        "투신": null
+      },
+      "futures_label": "KOSPI200 선물",
+      "futures_unit": "LS_raw_amount",
+      "start_ts": 1792475739.415747,
+      "end_ts": 1792476801.9598489,
+      "available": true,
+      "leader": "개인",
+      "start_gap": 9.415746927261353,
+      "end_gap": 21.959848880767822,
+      "program_source_time_verified": false,
+      "program": {
+        "차익": 17022.0,
+        "비차익": -21360.0,
+        "베이시스": 0.8599999999999999,
+        "전체": -4338.0,
+        "전체직접": -4283.0,
+        "검산차이": 55.0
+      },
+      "spot_leader": "개인",
+      "spot_leader_value": -223.0,
+      "futures_leader": "기관",
+      "futures_leader_value": -697.0,
+      "cross_sellers": [
+        "개인"
+      ],
+      "verdict": "현물은 개인, 선물은 기관이 최다 매도 — 주체 분산, 단일 주도자 확정 보류",
+      "confidence": "중간",
+      "program_kind": "비차익 매도 우세",
+      "start_alignment_sec": 9.415746927261353,
+      "end_alignment_sec": 21.959848880767822,
+      "spot_start_alignment_sec": 9.415746927261353,
+      "spot_end_alignment_sec": 21.959848880767822,
+      "futures_start_alignment_sec": 9.415746927261353,
+      "futures_end_alignment_sec": 21.959848880767822,
+      "program_start_alignment_sec": 9.463470220565796,
+      "program_end_alignment_sec": 0.5478494167327881,
+      "program_sample_span_sec": 2.923902988433838,
+      "program_crosscheck_gap": 55.0,
+      "program_crosscheck_ratio_pct": 1.2678653757491931,
+      "program_direction_consistent": true,
+      "program_direct_total": -4283.0,
+      "program_quality": false
+    },
+    "KOSDAQ": {
+      "market": "KOSDAQ",
+      "channel_status": {
+        "spot": {
+          "available": true,
+          "reason": null,
+          "start_gap": 16.194196939468384,
+          "end_gap": 25.319000005722046,
+          "start_ts": 1792475370.0,
+          "end_ts": 1792476780.0
+        },
+        "futures": {
+          "available": true,
+          "reason": null,
+          "start_gap": 16.194196939468384,
+          "end_gap": 25.319000005722046,
+          "start_ts": 1792475370.0,
+          "end_ts": 1792476780.0
+        },
+        "program": {
+          "available": true,
+          "reason": null,
+          "start_gap": 4.675378084182739,
+          "end_gap": 13.303911209106445,
+          "start_ts": 1792475381.5188189,
+          "end_ts": 1792476792.0150888
+        }
+      },
+      "spot": {
+        "외국인": 167.0,
+        "기관": -310.0,
+        "개인": 114.0,
+        "투신": null
+      },
+      "futures": {
+        "외국인": 606.0,
+        "기관": -405.0,
+        "개인": -182.0,
+        "투신": null
+      },
+      "futures_label": "KOSDAQ150 선물",
+      "futures_unit": "LS_raw_amount",
+      "start_ts": 1792475386.194197,
+      "end_ts": 1792476805.319,
+      "source_evidence": {
+        "spot": {
+          "start": {
+            "time": "14493000",
+            "sample_ts": 1792475370.0,
+            "market": "KOSDAQ",
+            "source_tr": "t1602",
+            "request_market": "3",
+            "upcode": "301",
+            "exchgubun": "U",
+            "returned_ex_upcode": "U301",
+            "timestamp_basis": "provider_time",
+            "received_ts": 1792475377.436144,
+            "개인": 4031.0,
+            "외국인": -3408.0,
+            "기관": -569.0
+          },
+          "end": {
+            "time": "15130000",
+            "sample_ts": 1792476780.0,
+            "market": "KOSDAQ",
+            "source_tr": "t1602",
+            "request_market": "3",
+            "upcode": "301",
+            "exchgubun": "U",
+            "returned_ex_upcode": "U301",
+            "timestamp_basis": "provider_time",
+            "received_ts": 1792476790.208373,
+            "개인": 4145.0,
+            "외국인": -3241.0,
+            "기관": -879.0
+          }
+        },
+        "futures": {
+          "start": {
+            "market": "KOSDAQ",
+            "asset": "KQI",
+            "source_tr": "t8463",
+            "source_scope_verified": true,
+            "sample_ts": 1792475370.0,
+            "received_ts": 1792475387.9464946,
+            "timestamp_basis": "provider_date_time",
+            "time": "144930",
+            "date": "20261020",
+            "unit": "LS_raw_amount",
+            "unit_verified": false,
+            "request": {
+              "t8463InBlock": {
+                "tm_rng": "D",
+                "fot_clsf_cd": "F",
+                "bsc_asts_id": "KQI",
+                "cnt": 10,
+                "bgubun": "0"
+              }
+            },
+            "summary": {
+              "tm_rng": "D",
+              "fot_clsf_cd": "F",
+              "bsc_asts_id": "KQI",
+              "indcode": "0008",
+              "forcode": "0009",
+              "syscode": "0018",
+              "stocode": "0001",
+              "invcode": "0003",
+              "bancode": "0004",
+              "inscode": "0002",
+              "fincode": "0005",
+              "moncode": "0006",
+              "etccode": "0007",
+              "natcode": "0011",
+              "pefcode": "0000"
+            },
+            "source_row": {
+              "date": "20261020",
+              "time": "144930",
+              "datetime": "20261020",
+              "indmsvol": -20,
+              "indmsamt": "-2",
+              "formsvol": -13107,
+              "formsamt": "-1752",
+              "sysmsvol": 13032,
+              "sysmsamt": "1742",
+              "stomsvol": 12285,
+              "stomsamt": "1643",
+              "invmsvol": 897,
+              "invmsamt": "119",
+              "banmsvol": -150,
+              "banmsamt": "-20",
+              "insmsvol": 0,
+              "insmsamt": "0",
+              "finmsvol": 0,
+              "finmsamt": "0",
+              "monmsvol": 0,
+              "monmsamt": "0",
+              "etcmsvol": 95,
+              "etcmsamt": "13",
+              "natmsvol": 0,
+              "natmsamt": "0",
+              "pefmsvol": 0,
+              "pefmsamt": "0"
+            },
+            "decoded_response_json_sha256": "5bfa431d3d472e5f0fb61875608dcf0e7ee8116abd448a79a38365af7b51724b",
+            "개인": -2.0,
+            "외국인": -1752.0,
+            "기관": 1742.0,
+            "investor_quality": {
+              "verified": true,
+              "issues": [],
+              "amounts": {
+                "개인": -2.0,
+                "외국인": -1752.0,
+                "기관": 1742.0,
+                "기타": 13.0,
+                "국가": 0.0
+              },
+              "volumes": {
+                "개인": -20.0,
+                "외국인": -13107.0,
+                "기관": 13032.0,
+                "기타": 95.0,
+                "국가": 0.0
+              },
+              "amount_sum": 1.0,
+              "volume_sum": 0.0,
+              "amount_rounding_tolerance_raw": 5
+            }
+          },
+          "end": {
+            "market": "KOSDAQ",
+            "asset": "KQI",
+            "source_tr": "t8463",
+            "source_scope_verified": true,
+            "sample_ts": 1792476780.0,
+            "received_ts": 1792476803.2382324,
+            "timestamp_basis": "provider_date_time",
+            "time": "151300",
+            "date": "20261020",
+            "unit": "LS_raw_amount",
+            "unit_verified": false,
+            "request": {
+              "t8463InBlock": {
+                "tm_rng": "D",
+                "fot_clsf_cd": "F",
+                "bsc_asts_id": "KQI",
+                "cnt": 10,
+                "bgubun": "0"
+              }
+            },
+            "summary": {
+              "tm_rng": "D",
+              "fot_clsf_cd": "F",
+              "bsc_asts_id": "KQI",
+              "indcode": "0008",
+              "forcode": "0009",
+              "syscode": "0018",
+              "stocode": "0001",
+              "invcode": "0003",
+              "bancode": "0004",
+              "inscode": "0002",
+              "fincode": "0005",
+              "moncode": "0006",
+              "etccode": "0007",
+              "natcode": "0011",
+              "pefcode": "0000"
+            },
+            "source_row": {
+              "date": "20261020",
+              "time": "151300",
+              "datetime": "20261020",
+              "indmsvol": -1385,
+              "indmsamt": "-184",
+              "formsvol": -8543,
+              "formsamt": "-1146",
+              "sysmsvol": 9988,
+              "sysmsamt": "1337",
+              "stomsvol": 11258,
+              "stomsamt": "1506",
+              "invmsvol": -1120,
+              "invmsamt": "-148",
+              "banmsvol": -150,
+              "banmsamt": "-20",
+              "insmsvol": 0,
+              "insmsamt": "0",
+              "finmsvol": 0,
+              "finmsamt": "0",
+              "monmsvol": 0,
+              "monmsamt": "0",
+              "etcmsvol": -60,
+              "etcmsamt": "-7",
+              "natmsvol": 0,
+              "natmsamt": "0",
+              "pefmsvol": 0,
+              "pefmsamt": "0"
+            },
+            "decoded_response_json_sha256": "64fe2a45059382ea2020ff7120eef9ab235dce4403a6d9ba7f27f929cfc1b72b",
+            "개인": -184.0,
+            "외국인": -1146.0,
+            "기관": 1337.0,
+            "investor_quality": {
+              "verified": true,
+              "issues": [],
+              "amounts": {
+                "개인": -184.0,
+                "외국인": -1146.0,
+                "기관": 1337.0,
+                "기타": -7.0,
+                "국가": 0.0
+              },
+              "volumes": {
+                "개인": -1385.0,
+                "외국인": -8543.0,
+                "기관": 9988.0,
+                "기타": -60.0,
+                "국가": 0.0
+              },
+              "amount_sum": 0.0,
+              "volume_sum": 0.0,
+              "amount_rounding_tolerance_raw": 5
+            }
+          }
+        },
+        "program": {
+          "start": {
+            "market": "KOSDAQ",
+            "source_tr": "t1640",
+            "source_scope_verified": true,
+            "unit": "LS_raw_amount",
+            "unit_verified": false,
+            "timestamp_basis": "query_interval",
+            "source_time_verified": false,
+            "query_started_ts": 1792475374.0562017,
+            "received_ts": 1792475381.5188189,
+            "sample_ts": 1792475381.5188189,
+            "time": "144941",
+            "전체": -291256.0,
+            "차익": 5416.0,
+            "비차익": -296703.0,
+            "베이시스": 4.19,
+            "차익비차익합": -291287.0,
+            "전체대비차이": 31.0,
+            "표본시차초": 7.4626171588897705,
+            "source_queries": [
+              {
+                "request": {
+                  "t1640InBlock": {
+                    "gubun": "21",
+                    "exchgubun": "U"
+                  }
+                },
+                "row": {
+                  "offervolume": 113202,
+                  "bidvolume": 97901,
+                  "volume": -15301,
+                  "offerdiff": 0,
+                  "biddiff": 0,
+                  "sundiff": 0,
+                  "basis": "4.19",
+                  "offervalue": "1653004",
+                  "bidvalue": "1361749",
+                  "value": "-291256",
+                  "offervaldiff": "0",
+                  "bidvaldiff": "9",
+                  "sunvaldiff": "9"
+                },
+                "query_started_ts": 1792475374.0562017,
+                "received_ts": 1792475375.9560869,
+                "decoded_response_json_sha256": "ac28158dd96ebeb1186699886ae07be6ac1553c5699fb71420ba7039725f4d5d"
+              },
+              {
+                "request": {
+                  "t1640InBlock": {
+                    "gubun": "22",
+                    "exchgubun": "U"
+                  }
+                },
+                "row": {
+                  "offervolume": 58,
+                  "bidvolume": 194,
+                  "volume": 136,
+                  "offerdiff": 0,
+                  "biddiff": 0,
+                  "sundiff": 0,
+                  "basis": "4.00",
+                  "offervalue": "2377",
+                  "bidvalue": "7794",
+                  "value": "5416",
+                  "offervaldiff": "0",
+                  "bidvaldiff": "0",
+                  "sunvaldiff": "0"
+                },
+                "query_started_ts": 1792475375.9561331,
+                "received_ts": 1792475378.2364752,
+                "decoded_response_json_sha256": "8ba395af3c4659311089d91b754247bbd2d25fdc2e535193c3925b98965f4940"
+              },
+              {
+                "request": {
+                  "t1640InBlock": {
+                    "gubun": "23",
+                    "exchgubun": "U"
+                  }
+                },
+                "row": {
+                  "offervolume": 113146,
+                  "bidvolume": 97708,
+                  "volume": -15438,
+                  "offerdiff": 0,
+                  "biddiff": 0,
+                  "sundiff": 0,
+                  "basis": "3.83",
+                  "offervalue": "1650663",
+                  "bidvalue": "1353960",
+                  "value": "-296703",
+                  "offervaldiff": "0",
+                  "bidvaldiff": "0",
+                  "sunvaldiff": "0"
+                },
+                "query_started_ts": 1792475378.2365086,
+                "received_ts": 1792475381.5188189,
+                "decoded_response_json_sha256": "e6608f7b1727895c6cca3f1a3baaefb6edc25ed0f785bd7685f88f02f484a591"
+              }
+            ]
+          },
+          "end": {
+            "market": "KOSDAQ",
+            "source_tr": "t1640",
+            "source_scope_verified": true,
+            "unit": "LS_raw_amount",
+            "unit_verified": false,
+            "timestamp_basis": "query_interval",
+            "source_time_verified": false,
+            "query_started_ts": 1792476788.8185546,
+            "received_ts": 1792476792.0150888,
+            "sample_ts": 1792476792.0150888,
+            "time": "151312",
+            "전체": -313110.0,
+            "차익": 6884.0,
+            "비차익": -320007.0,
+            "베이시스": 5.54,
+            "차익비차익합": -313123.0,
+            "전체대비차이": 13.0,
+            "표본시차초": 3.1965341567993164,
+            "source_queries": [
+              {
+                "request": {
+                  "t1640InBlock": {
+                    "gubun": "21",
+                    "exchgubun": "U"
+                  }
+                },
+                "row": {
+                  "offervolume": 119071,
+                  "bidvolume": 102995,
+                  "volume": -16076,
+                  "offerdiff": 0,
+                  "biddiff": 0,
+                  "sundiff": 0,
+                  "basis": "5.54",
+                  "offervalue": "1777440",
+                  "bidvalue": "1464329",
+                  "value": "-313110",
+                  "offervaldiff": "0",
+                  "bidvaldiff": "0",
+                  "sunvaldiff": "0"
+                },
+                "query_started_ts": 1792476788.8185546,
+                "received_ts": 1792476789.388583,
+                "decoded_response_json_sha256": "00c6a562da2a9fbe35274a5cf3b9d05ecb3e350a3bb19da233ef9d736f1ec15d"
+              },
+              {
+                "request": {
+                  "t1640InBlock": {
+                    "gubun": "22",
+                    "exchgubun": "U"
+                  }
+                },
+                "row": {
+                  "offervolume": 58,
+                  "bidvolume": 230,
+                  "volume": 172,
+                  "offerdiff": 0,
+                  "biddiff": 0,
+                  "sundiff": 0,
+                  "basis": "5.48",
+                  "offervalue": "2377",
+                  "bidvalue": "9262",
+                  "value": "6884",
+                  "offervaldiff": "0",
+                  "bidvaldiff": "0",
+                  "sunvaldiff": "0"
+                },
+                "query_started_ts": 1792476789.3886387,
+                "received_ts": 1792476790.6313126,
+                "decoded_response_json_sha256": "da4d2f6bdf716c175d1e2d19f699d301984bd152456fda65000fc0be28101309"
+              },
+              {
+                "request": {
+                  "t1640InBlock": {
+                    "gubun": "23",
+                    "exchgubun": "U"
+                  }
+                },
+                "row": {
+                  "offervolume": 119013,
+                  "bidvolume": 102765,
+                  "volume": -16248,
+                  "offerdiff": 0,
+                  "biddiff": 0,
+                  "sundiff": 0,
+                  "basis": "5.22",
+                  "offervalue": "1775074",
+                  "bidvalue": "1455067",
+                  "value": "-320007",
+                  "offervaldiff": "1",
+                  "bidvaldiff": "0",
+                  "sunvaldiff": "-1"
+                },
+                "query_started_ts": 1792476790.6313462,
+                "received_ts": 1792476792.0150888,
+                "decoded_response_json_sha256": "5fba61d1a5b9d67c87fe8eb47d9d0ec3d4dd25f947fe1985477c5d31cf7a1dc9"
+              }
+            ]
+          }
+        }
+      },
+      "available": true,
+      "leader": "기관",
+      "start_gap": 16.194196939468384,
+      "end_gap": 25.319000005722046,
+      "program_source_time_verified": false,
+      "program": {
+        "차익": 1468.0,
+        "비차익": -23304.0,
+        "베이시스": 1.3499999999999996,
+        "전체": -21836.0,
+        "전체직접": -21854.0,
+        "검산차이": -18.0
+      },
+      "spot_leader": "기관",
+      "spot_leader_value": -310.0,
+      "futures_leader": "기관",
+      "futures_leader_value": -405.0,
+      "cross_sellers": [
+        "기관"
+      ],
+      "verdict": "기관: 현물·선물 모두 최다 매도, 프로그램 매도 방향도 확인 — 프로그램 시차·검산 품질 때문에 확신도 상향 보류",
+      "confidence": "중간",
+      "program_kind": "비차익 매도 우세",
+      "start_alignment_sec": 16.194196939468384,
+      "end_alignment_sec": 25.319000005722046,
+      "spot_start_alignment_sec": 16.194196939468384,
+      "spot_end_alignment_sec": 25.319000005722046,
+      "futures_start_alignment_sec": 16.194196939468384,
+      "futures_end_alignment_sec": 25.319000005722046,
+      "program_start_alignment_sec": 4.675378084182739,
+      "program_end_alignment_sec": 13.303911209106445,
+      "program_sample_span_sec": 7.4626171588897705,
+      "program_crosscheck_gap": -18.0,
+      "program_crosscheck_ratio_pct": 0.08236478447881394,
+      "program_direction_consistent": true,
+      "program_direct_total": -21854.0,
+      "program_quality": false
+    }
+  },
+  "kospi_end_ts": 1792476982.9558263,
+  "kospi_end_message_id": 888,
+  "kosdaq_close_message_id": 891,
+  "last_quotes": {
+    "KOSPI": [
+      1792477919.2605922,
+      5553.08
+    ],
+    "KOSDAQ": [
+      1792477918.864319,
+      781.95
+    ]
+  },
+  "original_close_delivery_markets": [
+    "KOSDAQ"
+  ]
+}

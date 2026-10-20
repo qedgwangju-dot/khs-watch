@@ -415,7 +415,8 @@ assert not ks.should_finalize_market_close(_noon, _real_close, None)
 assert ks.should_finalize_market_close(_after, _real_close, None)
 assert not ks.should_finalize_market_close(_after, _real_close, 15)
 assert not ks.should_finalize_market_close(_after, None, None)
-assert "should_finalize_market_close(" in inspect.getsource(ks.Watch.run)
+assert "await self._finalize_daily_close(close_dt, test_seconds)" in inspect.getsource(ks.Watch.run)
+assert "should_finalize_market_close(" in inspect.getsource(ks.Watch._finalize_daily_close)
 print("noon_handoff_does_not_close_episode_regression=true")
 
 
@@ -608,7 +609,8 @@ _close_eval_source = inspect.getsource(ks.Watch.evaluate)
 _final_eval_tail = _close_eval_source.split("        if ended:", 1)[1]
 assert _final_eval_tail.index("self.episode = None") < _final_eval_tail.index('self._record_delivery("end"'), _final_eval_tail
 _close_run_source = inspect.getsource(ks.Watch.run)
-_final_close_tail = _close_run_source.split('self._record_delivery("close"', 1)[0]
+assert "await self._finalize_daily_close(close_dt, test_seconds)" in _close_run_source
+_final_close_tail = inspect.getsource(ks.Watch._finalize_daily_close).split('self._record_delivery(plan["stage"]', 1)[0]
 assert _final_close_tail.rfind("self.episode = None") > _final_close_tail.rfind("self.msg_ids.append(msg_id)"), _final_close_tail
 _handoff_source = inspect.getsource(ks.Watch.save_handoff)
 assert "temp.replace(p)" in _handoff_source, _handoff_source
