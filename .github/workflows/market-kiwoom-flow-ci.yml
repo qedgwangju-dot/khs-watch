@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - "scripts/market_kiwoom_flow.py"
+      - "scripts/market_namuh_flow.py"
+      - "scripts/probe_market_namuh_flow.py"
       - "scripts/probe_market_kiwoom_flow.py"
       - "scripts/test_market_kiwoom_flow.py"
       - "scripts/test_fixtures/kiwoom_cash_readback_20261020.json"
@@ -16,6 +18,8 @@ on:
     branches: [main]
     paths:
       - "scripts/market_kiwoom_flow.py"
+      - "scripts/market_namuh_flow.py"
+      - "scripts/probe_market_namuh_flow.py"
       - "scripts/probe_market_kiwoom_flow.py"
       - "scripts/test_market_kiwoom_flow.py"
       - "scripts/test_fixtures/kiwoom_cash_readback_20261020.json"
@@ -61,14 +65,31 @@ jobs:
     env:
       KIWOOM_APPKEY: ${{ secrets.KIWOOM_APPKEY }}
       KIWOOM_SECRETKEY: ${{ secrets.KIWOOM_SECRETKEY }}
+      NHPLUG_APP_KEY: ${{ secrets.NHPLUG_APP_KEY }}
+      NHPLUG_APP_SECRET: ${{ secrets.NHPLUG_APP_SECRET }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m pip install --disable-pip-version-check --quiet requests
+      - run: python -m pip install --disable-pip-version-check --quiet requests cryptography
+      - uses: actions/cache/restore@v4
+        with:
+          path: ~/.cache/khs-watch-namuh
+          key: nhplug-token-v1-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: nhplug-token-v1-${{ runner.os }}-
       - name: Read exact market sources without messages or state
-        run: python scripts/probe_market_kiwoom_flow.py
+        run: |
+          if [ -n "$NHPLUG_APP_KEY" ] && [ -n "$NHPLUG_APP_SECRET" ]; then
+            python scripts/probe_market_namuh_flow.py
+          else
+            python scripts/probe_market_kiwoom_flow.py
+          fi
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: ~/.cache/khs-watch-namuh
+          key: nhplug-token-v1-${{ runner.os }}-${{ github.run_id }}
       - name: Preserve original market responses and coverage limits
         if: always()
         uses: actions/upload-artifact@v4
@@ -77,4 +98,5 @@ jobs:
           path: |
             out/market_source_evidence/
             out/market_kiwoom_source_probe.json
+            out/market_namuh_source_probe.json
           retention-days: 7
