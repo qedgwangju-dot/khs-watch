@@ -216,5 +216,18 @@ class CurrencyKRWGuardTests(unittest.TestCase):
         self.assertIn("원/GPU)", out)
         g.validate_text(out)
 
+    def test_spot_prices_and_eka_round_use_same_rate_with_manwon_precision(self):
+        with patch.object(g, "_rate", return_value=(1327.84, "2026-10-20 test")):
+            out = g.enforce_text(
+                "Spot 기본 10만달러 옵션 30만달러, "
+                "Eka 시리즈A 전체 1억5000만달러"
+            )
+        self.assertIn("10만달러(약 1억3,278만원)", out)
+        self.assertIn("30만달러(약 3억9,835만원)", out)
+        self.assertIn("1억5000만달러(약 1,992억원)", out)
+        self.assertIn("USD/KRW 1,327.8400원", out)
+        g.validate_text(out)
+
+
 if __name__ == "__main__":
     unittest.main()
