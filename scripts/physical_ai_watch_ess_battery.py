@@ -1863,6 +1863,13 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
     return chosen
 
 
+# Fail closed for phaseout baseline and unrelated AMPC earnings.
+assert US45X_BASELINE['battery_components'] == {2029:100,2030:75,2031:50,2032:25,2033:0}
+assert US45X_BASELINE['critical_minerals'][2034] == 0
+assert _is_us45x_battery('45X battery modules 2030 75% 2031 50%')
+assert not _is_us45x_battery('Samsung SDI ESS Q3 earnings AMPC operating profit')
+assert _us45x_stage('45X battery cells 2030 75%', '') == 'existing_baseline'
+
 base.topic_group = topic_group
 base.score = score
 base.category = category
