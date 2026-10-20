@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-20T21:39:27+09:00",
+  "updated_at_kst": "2026-10-21T00:22:20+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
   "baseline": {
@@ -23,6 +23,7 @@
     "0df2abbc6a6421820cc3a5b9",
     "0e31b7f0f845b623421d2253",
     "0e6a17ed6942156da4db589e",
+    "131acff8776c8728aac09bc4",
     "13d534d5f347c56488b68120",
     "147971abb3ed6ed2afd59ade",
     "174af52ad3e91e661e4b7eb6",
@@ -170,6 +171,7 @@
     "d7ab90989cbf67b88cf033c4",
     "d84c90764ddb8bc8b842ba21",
     "dc18abe6e1cb37cc9e8dc253",
+    "dca6ca6ddc4166708a99a04a",
     "ddb2691df0b50ae0e45a4c23",
     "dec5d2731ee6c20eecf43ac3",
     "df43364b8db0bae98ed47037",
@@ -203,8 +205,8 @@
   ],
   "last_fx_bucket": "orange",
   "last_fx": {
-    "latest_rate": 1329.49,
-    "latest_date": "2026-10-19",
+    "latest_rate": 1327.84,
+    "latest_date": "2026-10-20",
     "latest_source": "ECB/Frankfurter",
     "q2_avg": 1500.48,
     "q3_avg": 1417.24,

@@ -2,11 +2,13 @@
   "schema_version": 2,
   "initial_alert_sent": true,
   "seen_ids": [
+    "0618607b5ec9a7e86b7d5461",
     "13d0edb9416d3fcdeee36d53",
     "14606c4bc0612db47365116d",
     "25cfca1f7b519c52f910f41d",
     "2630546bd90acbe71dba479f",
     "29c7afc4378154f73efc5051",
+    "2b55b59670850d8219c603ff",
     "4460936f6dad11dfb16ca9de",
     "456bef5bb2e467293a01b1b9",
     "45d9eaa5d7855e2fb858760d",
@@ -68,13 +70,13 @@
   "market_latest": {
     "미국": "2027-01"
   },
-  "last_scan_items": 19,
+  "last_scan_items": 21,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-10-18T15:15:07+09:00",
     "kind": "correction"
   },
-  "updated_at_kst": "2026-10-20T21:39:21+09:00",
+  "updated_at_kst": "2026-10-21T00:22:14+09:00",
   "errors": [],
   "market_sku_latest": {},
   "market_day_latest": {},
