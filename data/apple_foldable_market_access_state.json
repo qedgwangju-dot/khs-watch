@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "initial_alert_sent": false,
+  "initial_alert_sent": true,
   "baseline_as_of": "2026-10-20",
   "metrics": {
     "fold8_demand_change_pct": 16,
@@ -17,7 +17,7 @@
   },
   "access": {
     "한국": "reservation_only",
-    "일본": "reservation_only"
+    "일본": "reported_not_live_verified"
   },
   "seen_ids": [
     "0503f19684da6e1a29db1f68",
@@ -49,15 +49,16 @@
     "f7fb5c6024602e5b3539f0ab",
     "f8d50cbc05eead2a4561dbfc"
   ],
-  "last_alert": null,
-  "updated_at_kst": "2026-10-20T21:30:45+09:00",
+  "last_alert": {
+    "at_kst": "2026-10-20T21:39:24+09:00",
+    "count": 1
+  },
+  "updated_at_kst": "2026-10-20T21:39:24+09:00",
   "last_scan_items": 28,
-  "last_new_signal_count": 0,
+  "last_new_signal_count": 1,
   "last_official": {
     "한국": "확인",
     "일본": "확인 불가"
   },
-  "errors": [
-    "기준선 보류: 한·일 Apple 공식 현장판매 공지 직접 조회 불가"
-  ]
+  "errors": []
 }
