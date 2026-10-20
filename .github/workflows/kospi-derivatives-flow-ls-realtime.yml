@@ -202,6 +202,10 @@ jobs:
       TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
       LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
+      KIWOOM_APPKEY: ${{ secrets.KIWOOM_APPKEY }}
+      KIWOOM_SECRETKEY: ${{ secrets.KIWOOM_SECRETKEY }}
+      NHPLUG_APP_KEY: ${{ secrets.NHPLUG_APP_KEY }}
+      NHPLUG_APP_SECRET: ${{ secrets.NHPLUG_APP_SECRET }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -212,7 +216,13 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars
+        run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars cryptography
+      - name: Restore encrypted Namuh token cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.cache/khs-watch-namuh
+          key: nhplug-token-v1-${{ runner.os }}-${{ github.run_id }}-morning
+          restore-keys: nhplug-token-v1-${{ runner.os }}-
       - name: Verify Telegram route
         run: python scripts/market_alert_delivery.py --audit-route
       - name: Run morning KOSPI watcher
@@ -310,6 +320,12 @@ jobs:
           else
             test -s out/kospi_industry_flow.jsonl || { echo "Unified UBM industry flow file missing/empty"; exit 1; }
           fi
+      - name: Save encrypted Namuh token cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.cache/khs-watch-namuh
+          key: nhplug-token-v1-${{ runner.os }}-${{ github.run_id }}-morning
       - name: Upload morning handoff and verification
         if: always()
         uses: actions/upload-artifact@v4
@@ -321,6 +337,7 @@ jobs:
             out/kospi_shock_episode_raw.json
             out/kospi_shock_delivery_log.jsonl
             out/market_alert_delivery/
+            out/market_source_evidence/
             out/kospi_shock_enrichment_latest.json
             out/kosdaq_shock_enrichment_latest.json
             out/kospi_industry_flow.jsonl
@@ -340,6 +357,10 @@ jobs:
       TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
       LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
+      KIWOOM_APPKEY: ${{ secrets.KIWOOM_APPKEY }}
+      KIWOOM_SECRETKEY: ${{ secrets.KIWOOM_SECRETKEY }}
+      NHPLUG_APP_KEY: ${{ secrets.NHPLUG_APP_KEY }}
+      NHPLUG_APP_SECRET: ${{ secrets.NHPLUG_APP_SECRET }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -356,7 +377,13 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars
+        run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars cryptography
+      - name: Restore encrypted Namuh token cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.cache/khs-watch-namuh
+          key: nhplug-token-v1-${{ runner.os }}-${{ github.run_id }}-afternoon
+          restore-keys: nhplug-token-v1-${{ runner.os }}-
       - name: Verify Telegram route
         run: python scripts/market_alert_delivery.py --audit-route
       - name: Run afternoon KOSPI watcher with handoff
@@ -450,6 +477,12 @@ jobs:
           else
             test -s out/kospi_industry_flow.jsonl || { echo "Unified UBM industry flow file missing/empty"; exit 1; }
           fi
+      - name: Save encrypted Namuh token cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.cache/khs-watch-namuh
+          key: nhplug-token-v1-${{ runner.os }}-${{ github.run_id }}-afternoon
       - name: Upload afternoon verification
         if: always()
         uses: actions/upload-artifact@v4
@@ -460,6 +493,7 @@ jobs:
             out/kospi_shock_episode_raw.json
             out/kospi_shock_delivery_log.jsonl
             out/market_alert_delivery/
+            out/market_source_evidence/
             out/kospi_shock_enrichment_latest.json
             out/kosdaq_shock_enrichment_latest.json
             out/kospi_shock_handoff.json
