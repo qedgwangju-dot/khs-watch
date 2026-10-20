@@ -5463,9 +5463,9 @@ if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,27):
         "<b>2. Eka Robotics 공식 1억5000만달러 조달·Samsung Next 투자 참여</b>\n"
         "기술 성능 시간당 1,500회, 투자 150 million dollars"
     )
-    assert int(100000*watcher.ATLAS_EKA_FX)==132721000
-    assert int(300000*watcher.ATLAS_EKA_FX)==398163000
-    assert int(150_000_000*watcher.ATLAS_EKA_FX)==199081500000
+
+
+
 
 bd_old=make(
     "보스턴다이내믹스 Atlas 액추에이터 전략적 공급협력 현대모비스",
@@ -5531,5 +5531,54 @@ try:
     assert watcher.base.query_news(watcher.EKA_ROBOTICS_20261020_RECOVERY)==[]
 finally:
     base.NOW=t_ae
+
+
+# 76) Telegram 249 mixed a historical hardcoded KRW conversion and the
+# live common FX pass. Verify the source leaves only foreign currency
+# figures, that the common renderer uses one mocked rate for every amount,
+# and that the correction is ONE deduplicated event.
+if bd_event and eka_event:
+    no_static = (base.meaning(bd_cat)+base.meaning(ek_cat)
+                 +bd_event[0]["description"]+eka_event[0]["description"])
+    for old_conversion in ("1억3,272만원","3억9,816만원",
+                           "약 1,991억원","1조9,245억원"):
+        assert old_conversion not in no_static, old_conversion
+
+import currency_krw_guard as _fxguard249
+_old_fx249=_fxguard249._rate
+_old_used_fx249=dict(_fxguard249._USED_FX)
+try:
+    _fxguard249._rate=lambda curr:(1327.84,"2026-10-20 test") if curr=="USD" else (None,"unknown")
+    _fxguard249._USED_FX.clear()
+    sample=("Eka 1억5000만달러 투자. Spot 기본 10만달러, "
+            "옵션 30만달러. 같은 1억5000만달러 투자")
+    converted=_fxguard249.enforce_text(sample)
+    assert converted.count("1억5000만달러(약 1,992억원)")==2,converted
+    assert "10만달러(약 1억3,278만원)" in converted,converted
+    assert "30만달러(약 3억9,835만원)" in converted,converted
+    assert "USD/KRW 1,327.8400원" in converted,converted
+    _fxguard249.validate_text(converted)
+finally:
+    _fxguard249._rate=_old_fx249
+    _fxguard249._USED_FX.clear()
+    _fxguard249._USED_FX.update(_old_used_fx249)
+
+correction_item=watcher.base.query_news(watcher.FX249_CORRECTION_RECOVERY)
+if base.NOW.astimezone(base.KST).date() <=dt.date(2026,10,26):
+    assert len(correction_item)==1,correction_item
+    fxitem=correction_item[0]
+    fg,fs,fc,fk=classify(fxitem)
+    assert fg=="alert_quality_fx_249" and fs>=11 and "환산" in fc,(fg,fs,fc)
+    assert "1,992억원" in base.meaning(fc) and "1,991억원" in base.meaning(fc)
+    assert fk!=bd_k and fk!=ek_k
+    fx_text=fxitem["title"]+" "+fxitem["description"]
+    assert base.category(fx_text,base.topic_group(fx_text))==fc
+    assert base.key(fxitem)==fk
+_correction_old_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,27,1,0,tzinfo=dt.timezone.utc)
+    assert watcher.base.query_news(watcher.FX249_CORRECTION_RECOVERY)==[]
+finally:
+    base.NOW=_correction_old_now
 
 print("Physical-AI watcher regression guards: PASS")
