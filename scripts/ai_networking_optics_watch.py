@@ -3038,6 +3038,7 @@ def main() -> None:
     power_source_errors: list[str] = []
     meta_source_healthy = False
     credo_source_healthy = False
+    ooi_source_healthy = False
 
     cutoff = NOW - dt.timedelta(days=7)
     for company, meta in COMPANIES.items():
@@ -3094,6 +3095,8 @@ def main() -> None:
             meta_source_healthy = True
         if company == CREDO_COMPANY:
             credo_source_healthy = True
+        if company == OOI_COMPANY:
+            ooi_source_healthy = True
         for item in feed_items:
             published = dt.datetime.fromisoformat(item["published"]) if item.get("published") else None
             if published and published < cutoff:
@@ -3111,6 +3114,17 @@ def main() -> None:
             meta_event = meta_milestone(title) if company == META_COMPANY else None
             if company == META_COMPANY and meta_event is None:
                 continue
+            # In 2026 an Oct-13 NVIDIA SEMICON research talk and the earlier
+            # OFC 8×32=256Gb/s demonstration were widely syndicated as
+            # "breakthrough CPO". Do not re-label that old academic prototype as
+            # an NVIDIA product/customer milestone via the generic CPO buckets.
+            if company in {"NVIDIA", "CPO Packaging & Test", "CPO Equipment Supply Chain"}:
+                if is_nvidia_ooi_dwdm_topic(title):
+                    continue
+            ooi_event = ooi_dwdm_milestone(title) if company == OOI_COMPANY else None
+            if company == OOI_COMPANY and ooi_event is None:
+                continue
+
             # A power/fuel-cell article is not a generic 800G customer award.
             # Route it exclusively through the AAOI factory-power evidence gate.
             if company == "Applied Optoelectronics":
@@ -3167,6 +3181,10 @@ def main() -> None:
                     continue
 
             score = signal_score(title, source)
+            if ooi_event:
+                # Abstract/3D optical-I/O titles need not contain today's
+                # generic CPO speed/guidance terms; milestone is stage-verified.
+                score = max(score, 12)
             if meta_event:
                 score = max(score, 10)
             if credo_event:
@@ -3189,7 +3207,7 @@ def main() -> None:
             has_high = any(re.search(p, title, re.I) for p in HIGH_SIGNAL_PATTERNS)
             has_action = any(re.search(p, title, re.I) for p in ACTION_PATTERNS)
             very_strong = bool(re.search(r"\b3\.2\s*[Tt]\b", title, re.I))
-            if not power_event and not lite_event and not meta_event and not credo_event and not networking_event and (
+            if not ooi_event and not power_event and not lite_event and not meta_event and not credo_event and not networking_event and (
                 score < 7 or not has_high or (not has_action and not very_strong)
             ):
                 continue
@@ -3199,8 +3217,8 @@ def main() -> None:
                 "ticker": meta["ticker"],
                 "score": score,
                 "key": key,
-                "stage": networking_event[1] if networking_event else credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
-                "category": networking_event[0] if networking_event else credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else category_for(title, company),
+                "stage": ooi_event[1] if ooi_event else networking_event[1] if networking_event else credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
+                "category": ooi_event[0] if ooi_event else networking_event[0] if networking_event else credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else category_for(title, company),
             })
             all_relevant.append(item)
 
@@ -3267,6 +3285,7 @@ def main() -> None:
             and verified_power_event(item, quality_candidates)
             and lite_high_quality_source(item, quality_candidates)
             and meta_verified(item)
+            and official_ooi_source(item)
         )
     ]
 
@@ -3313,6 +3332,7 @@ def main() -> None:
         | set(LITE_PRIOR_KEYS)
         | set(META_KNOWN_KEYS)
         | set(CREDO_PRIOR_EVENT_KEYS)
+        | set(OOI_REFERENCE_BASELINE_KEYS)
     )
     seen_story_records = [
         record for record in (state.get("seen_story_records") or [])
@@ -3395,6 +3415,9 @@ def main() -> None:
         "meta_optical_watch_version": META_WATCH_VERSION if meta_source_healthy else int(state.get("meta_optical_watch_version") or 0),
         "credo_optics_watch_version": CREDO_MONITOR_VERSION if credo_source_healthy else int(state.get("credo_optics_watch_version") or 0),
         "credo_optics_source_ok": credo_source_healthy,
+        "nvidia_ooi_dwdm_watch_version": OOI_WATCH_VERSION if ooi_source_healthy else int(state.get("nvidia_ooi_dwdm_watch_version") or 0),
+        "nvidia_ooi_dwdm_source_ok": ooi_source_healthy,
+        "nvidia_ooi_dwdm_verified_reference": OOI_VERIFIED_REFERENCE,
         "credo_verified_baseline": CREDO_VERIFIED_BASELINE,
         "meta_optical_source_ok": meta_source_healthy,
         "meta_optical_last_healthy_kst": dt.datetime.now(KST).isoformat(timespec="seconds") if meta_source_healthy else state.get("meta_optical_last_healthy_kst"),
@@ -3466,6 +3489,12 @@ def main() -> None:
                     "CPO 광패키징 기판·인터포저",
                 }
             ]
+        ooi_version = int(state.get("nvidia_ooi_dwdm_watch_version") or 0)
+        if ooi_version < OOI_WATCH_VERSION or not ooi_source_healthy:
+            # First migration is silent. 2023 feasibility and the March/October
+            # 2026 prototype reports are not new signed customer orders.
+            # A failed research-news query also must not advance OOI milestones.
+            new_items = [item for item in new_items if item.get("company") != OOI_COMPANY]
         credo_version = int(state.get("credo_optics_watch_version") or 0)
         if credo_version < CREDO_MONITOR_VERSION or not credo_source_healthy:
             # Baseline already-published FY27 optics guidance, SRMO launch,
@@ -3527,6 +3556,8 @@ def main() -> None:
             alert_header = "🚨 <b>국내 AI 광통신 수주·검증 변화 감지</b>"
         elif photonic_compute_only:
             alert_header = "🚨 <b>AI 광컴퓨팅·광메모리 구조 변화 감지</b>"
+        elif all(item.get("company") == OOI_COMPANY for item in alert_items):
+            alert_header = "🚨 <b>엔비디아 OOI·DWDM 기술검증·양산 단계 변화</b>"
         elif all(item.get("company") == CREDO_COMPANY for item in alert_items):
             alert_header = "🚨 <b>크레도 광학·NPO 실제 상용화 단계 변화</b>"
         elif all(item.get("company") == META_COMPANY for item in alert_items):
@@ -3567,6 +3598,7 @@ def main() -> None:
             lines.extend([
                 f"<b>{idx}) {html.escape(DISPLAY_NAMES_KO.get(item['company'], item['company']))} ({html.escape(item['ticker'])}) — {html.escape(category)}</b>",
                 f"• 단계: {html.escape(item['stage'])}",
+                "• 확인 수준: NVIDIA·학술 1차 자료(OOI 시제품·DWDM 256Gb/s 기존 시연과 신규 양산 구분)" if item['company'] == OOI_COMPANY else (
                 "• 확인 수준: 회사 공식·신뢰자료의 단계별 확인(광학 목표/시제품/고객 계약/실제 출하 구분)" if item['company'] == CREDO_COMPANY else (
                 "• 확인 수준: 메타·공급사·공식 규격 1차 자료(익명 점유율 제외)" if item['company'] == META_COMPANY else (
                 f"• 확인 수준: {html.escape(evidence_label(item))}" if item['company'] in NEW_STRUCTURE_AXES else (
@@ -3574,7 +3606,7 @@ def main() -> None:
                 ) if item['company'] == LITE_CAPACITY_COMPANY else (
                     "• 확인 수준: 공급사 공식발표" if official_power_source(item) else
                     "• 확인 수준: 독립 신뢰매체 교차확인·실제 계약조건 재검증 필요"
-                ) if item['company'] == POWER_COMPANY else "")),
+                ) if item['company'] == POWER_COMPANY else ""))),
                 f"• 원문 제목: {html.escape(public_title)}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
             ])
@@ -3594,7 +3626,7 @@ def main() -> None:
         lines.extend([
             "<b>감시 기준</b>",
             "• 고객·수주·양산: 1.6T·3.2T·메타 실명 공급계약·NPO/CPO 실제 배치·루멘텀 예약·출하",
-            "• 병목·정책: FAU·InP·ELS·OCS/NPO, 일본 증설·고객 설비투자 분담·AAOI 전력·미국 규제 단계",
+            "• 병목·정책: OOI·DWDM 고온·광결합·수율 검증, FAU·InP·ELS·OCS/NPO·AAOI 전력·미국 규제",
             "• 제외: 전시·데모·단순 주가반응·기존 기사 재탕은 알림하지 않음",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
@@ -3642,6 +3674,8 @@ def main() -> None:
         f"- AAOI 대만 전력 감시: {'정상' if power_source_healthy else '보류·해당 감시축 기준선 미갱신'}",
         f"- 이전 오탐 정정: {'전송 대기' if correction_due else '기존 송출 확인·중복 발송 금지'}",
         f"- AAOI 대만 전력 최근 정상조회: {pending.get('aaoi_taiwan_power_last_healthy_kst') or '확인되지 않음'}",
+        f"- NVIDIA OOI·DWDM 전용 조회: {'정상' if ooi_source_healthy else '검색 실패·별도 기준선 유지'}",
+        f"- OOI 시제품: 2026-10-13 SEMICON West · DWDM 8×32=256Gb/s: 기존 OFC 연구 · Feynman OOI 탑재: 미확정",
         f"- 소스 오류: {len(errors)}건",
     ]
     if errors:
