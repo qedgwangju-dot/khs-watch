@@ -149,7 +149,7 @@ def request(api_id: str, body: dict, *, next_key="") -> dict:
     entry = {"provider": "Kiwoom", "api_id": api_id, "endpoint": PATHS[api_id], "request": body,
              "query_started_ts": started, "received_ts": time.time(), "http_status": r.status_code,
              "raw_base64": base64.b64encode(raw).decode(), "raw_sha256": digest(raw),
-             "response": r.json(), "cont_yn": r.headers.get("cont-yn", "N"),
+             "response": r.json(), "cont_yn": r.headers.get("cont-yn"),
              "next_key": r.headers.get("next-key", ""), "request_next_key": next_key,
              "official_spec_commit": SPEC_COMMIT, "official_spec_sha256": SPEC_SHA256,
              "code_sha": code_sha(), "run_id": os.getenv("GITHUB_RUN_ID")}

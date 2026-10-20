@@ -85,6 +85,7 @@ class KiwoomSources(unittest.TestCase):
             entry = cash(); entry["request"][key] = value
             with self.subTest(key=key), self.assertRaises(ValueError): flow.parse_cash(entry, "KOSPI")
         with self.assertRaises(ValueError): flow.parse_cash(dict(cash(), cont_yn="Y"), "KOSPI")
+        with self.assertRaises(ValueError): flow.parse_cash(dict(cash(), cont_yn=None), "KOSPI")
 
     def test_wrong_cash_row_name_or_code_rejected(self):
         for key, value in (("inds_cd", "001"), ("inds_nm", "종합(KOSDAQ)")):
