@@ -146,6 +146,7 @@ def _signal(item:dict,state:dict) -> dict | None:
     # ISO timestamps already checked by _news_items.
     on_or_after_release=(item.get("published_at_kst","")[:10] >= "2026-10-27")
     if (metrics.get("status")!="국내 정식판매 확인" and on_or_after_release
+        and any(k in low for k in ("국내", "한국", "south korea", "korean market"))
         and any(k in low for k in ("판매 시작", "정식 출시", "구매 가능", "now available", "officially available", "goes on sale"))):
         return {"kind":"launch","value":"국내 정식판매 확인", "item":item}
     # A new price must be marked as a CHANGE; the old KRW299,000 baseline
