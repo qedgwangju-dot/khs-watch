@@ -802,6 +802,27 @@
       "telegram_core_fact": "브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. CDS는 스페이스X가 194bp에서 1bp로, 오라클은 40bp 오른 81bp로 상승했습니다.",
       "title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'"
     },
+    "core:036fa09816a63bc730786c03": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.fnnews.com/news/202610200950560760",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "7fa2bf8c32d74247ad16efdea6918bb5c64c074abff22501b4adb229a6fb4dd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bba45caa7a44204b62c0a1901a2d39729c05e50c252e4166a5deebf1441c7ba",
+      "source_fact_keys": [
+        "source_fact:v1:2f00cd39a76f7d90c5a4c3ff3ca497c8bed6f359473f613f8e5ec0b09d1bd197",
+        "source_fact:v1:bc2ed78d9032ed870f7b18634300ebcbd89379d005bcaed32078abc9d42ae5ac"
+      ],
+      "source_published_kst": "2026-10-20T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다",
+      "telegram_core_fact": "로이터는 트럼프 행정부가 첨단 반도체 수출 규제 등 엔비디아의 사업에 직접 영향을 미칠 수 있는 정책을 검토하는 상황에서 대통령 명의 계좌의 주식거래가 공개됐다고 전했다.",
+      "title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다"
+    },
     "core:037ba9601cee4a51f93d9890": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
       "lanes": {
@@ -9897,6 +9918,33 @@
       "telegram_core_fact": "엔화 약세와 미국 장기채 가격 하락이 겹치며 국내 엔화 관련 상장지수펀드(ETF)가 최근 3개월 새 최대 17% 넘게 떨어졌다.",
       "title": "엔화 ETF 수익률 부진에도 일학개미 투자 몰린다"
     },
+    "core:2163b012d7b718a5022653f9": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
+    },
     "core:21731dc1c9a41f2eb1c0f74a": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -12145,6 +12193,24 @@
       "source_title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!",
       "telegram_core_fact": "SK하이닉스의 용인 1기 팹 가동이 임박함에 따라 케이씨텍과 지앤비에스 에코 등 관련 반도체 설비 기업들이 주목받았다. 한미반도체는 TC본더 장비 공급과 8공장 증설을 추진 중이며 곽동신 회장의 장내매수 소식이 전해졌다.",
       "title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!"
+    },
+    "core:282526581a3c836b294fd0c0": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020025300008",
+      "source": "연합뉴스",
+      "source_body_digest": "7beffebeb8557b4e8e8a46df55a638a1f185224d6aa5fd37ef216f0ed1e35e86",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T08:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "대신증권 \"LG CNS, 3분기 실적 예상치 5% 상회 전망\" | 연합뉴스",
+      "telegram_core_fact": "대신증권[003540]은 20일 LG CNS[064400]의 3분기 영업이익이 시장 예상치를 약 5% 웃돌 것으로 전망했다.",
+      "title": "대신증권 \"LG CNS, 3분기 실적 예상치 5% 상회 전망\" | 연합뉴스"
     },
     "core:284a26ad933c14096f2a56cd": {
       "first_seen_kst": "2026-10-17T15:00:49+09:00",
@@ -21580,6 +21646,30 @@
       "source_title": "'꿈의 영업익' 달성한 K-메모리…SK하이닉스로 바통이을까 | 연합뉴스",
       "telegram_core_fact": "삼성전자가 국내 기업 최초로 100조원이 넘는 꿈의 분기 영업이익을 기록한 가운데 이달 말 예정된 SK하이닉스의 실적에도 관심이 쏠린다.",
       "title": "'꿈의 영업익' 달성한 K-메모리…SK하이닉스로 바통이을까 | 연합뉴스"
+    },
+    "core:4776634f8c53cd35626c068f": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.mk.co.kr/news/it/12180321",
+      "source": "매일경제",
+      "source_body_digest": "f5dda035089737d663711f57cc74c972fd34558d90e488b3754beaa45fba009c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9d7eac6a105feb318972e1bd3b33fedf126c487ed7d81bb05afa5a99ff73b3e",
+      "source_fact_keys": [
+        "source_fact:v1:1908001f7b1b850d7f47e901656027efa8a57a96fc09a2dfbe99f39655e181c1",
+        "source_fact:v1:24ec65b680e94bd775ac29f035e77e85fcd64baa1b98a77f2bf778ffeff2a11b",
+        "source_fact:v1:43d7cc9456947b94dc4429f014090162fa2c8b274813c7403f65b606c3aa01c5",
+        "source_fact:v1:61090f7cbca3499c9dcdf8a87cd549ce6a11ea7c71145db4fe1e25655a25483a",
+        "source_fact:v1:6f52d4509b9ca192644983e11c4243ec41008c2dccbebcd58ab24b0d02a56b61"
+      ],
+      "source_published_kst": "2026-10-20T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다",
+      "telegram_core_fact": "글로벌 공급망 관리(SCM)·유통 기업 콜로세움코퍼레이션이 오는 29일 경기도 광주시 아세테크 데모센터에서 물류 자동화 도입을 희망하는 기업을 대상으로 ‘콜로세움 볼트 테크데이(Colosseum Vault Tech Day)’를 개최한다고 20일 밝혔다.",
+      "title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다"
     },
     "core:47829b5d82912d946fc7b068": {
       "first_seen_kst": "2026-10-20T02:43:34+09:00",
@@ -50801,6 +50891,32 @@
       "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 클러스터 부지를 방문해 생산시설 구축에 속도를 낼 것을 주문했다는 소식이 전해지면서 지역 건설·인프라 관련주에 매수세가 몰린 것으로 풀이된다. 관련 업계에 따르면 최태원 SK그룹 회장은 지난 9일 호남권 반도체 클러스터 부지를 처음으로 방문해 생산시설 구축을 위한 속도전을 주문했다.",
       "title": "최태원 '호남 반도체 클러스터' 속도전에…금호건설 24% 급등"
     },
+    "core:ac872404b71d36378521f1c4": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://biz.heraldcorp.com/article/10908236",
+      "source": "헤럴드경제",
+      "source_body_digest": "00f7ca53c1377e8ad0defb0dd85d5c5271bea55ad402d024b112a3af8496f8fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2d2397c817fd599ed41f218e5d25a257a099cb969170d6a3430aadbd0bd1692",
+      "source_fact_keys": [
+        "source_fact:v1:0a19b61843234df221e4307510014cbbe65ab9df830ce26b982a40a64cd3023e",
+        "source_fact:v1:1e225c50852be15bc79f9e2ddbcf4fb3a9f2c41dcc8f872a9d77bdb17b2db686",
+        "source_fact:v1:220a48a2be8377437f60b9f25532a5cde8f17775c777ffc0e1b7e0a6d2ea8343",
+        "source_fact:v1:598ef00e32a2ed296708af8d4471136d1e10c934a2574fa6f56bcd22ad4d49e4",
+        "source_fact:v1:5bc9cb140b94250234e720cb379c7981360b51b948d5e144945628c19ace0ed9",
+        "source_fact:v1:9c5e2b6757a3ba9dc56bb77f77b56042eb908ff34bc00815b1878e146942121d",
+        "source_fact:v1:cc98c550596106305748a6ad49389c8655fa7cb9370989be3014611178c70708"
+      ],
+      "source_published_kst": "2026-10-20T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손",
+      "telegram_core_fact": "KG모빌리티(KGM)가 유럽연합(EU)의 탄소국경조정제도(CBAM)에 대응하기 위해 협력사와 함께 부품 생산 과정에서 발생하는 탄소배출량 관리체계를 구축한다. 개별 부품의 배출량뿐 아니라 공급망 전반의 탄소 데이터를 체계적으로 관리해 유럽 수출 과정에서 발생할 수 있는 규제 부담을 줄이겠다는 것이다.",
+      "title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손"
+    },
     "core:ac9cb826fa5ae5ada3b4a0e5": {
       "first_seen_kst": "2026-10-19T13:26:21+09:00",
       "lanes": {
@@ -60664,6 +60780,28 @@
       "source_title": "대구 신세계 프리미엄 아울렛 건립 속도…인허가기간 절반 이하로 | 연합뉴스",
       "telegram_core_fact": "대구시가 신세계사이먼의 '대구 프리미엄 아울렛' 건립을 위한 인허가 기간을 통상의 절반 이하로 줄이는 등 사업 추진에 속도를 내기로 했다.",
       "title": "대구 신세계 프리미엄 아울렛 건립 속도…인허가기간 절반 이하로 | 연합뉴스"
+    },
+    "core:d16164e3653f74b0532334e3": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832136",
+      "source": "뉴시스",
+      "source_body_digest": "8eb071ffc0dc4a0760c5c59cff5f151c436bd552041788ccea4fea07e6123810",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ec79d5fdea55d37833809d01f24265fb70377ccc3f6bab71224780e2efbc0a6",
+      "source_fact_keys": [
+        "source_fact:v1:51d9ce5734f5a3bd7ea69ccac76d645730fec7b7969e116a32daa4edebb3042b",
+        "source_fact:v1:97b79580893c692e49608936c0d0d6f7aa5b987488124464244bad0bb4c12042",
+        "source_fact:v1:afd6833b6e391f5e937be0cc7f529369a733694334cdd21fbf48d796433e438e"
+      ],
+      "source_published_kst": "2026-10-20T06:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\"",
+      "telegram_core_fact": "업계에 따르면 현대로템은 전날 현대위아 특수사업부를 3584억원이 인수하는 계약을 체결했다고 공시했다. 현대로템이 현대위아 특수사업부(방산사업) 인수를 추진하며 K2 전차에 이어 주포 등 핵심 부품까지 생산 역량을 확보한다.",
+      "title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\""
     },
     "core:d17e465fea59fa0299d2dc24": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
@@ -83987,33 +84125,30 @@
     "event:8a87c7fdf2df4ded76281e4a": {
       "first_seen_kst": "2026-10-20T05:37:55+09:00",
       "lanes": {
-        "live": "2026-10-20T08:37:36+09:00"
+        "live": "2026-10-20T15:49:58+09:00"
       },
-      "last_seen_kst": "2026-10-20T08:37:36+09:00",
-      "link": "https://www.news1.kr/world/international-economy/6325172",
-      "source": "뉴스1",
-      "source_body_digest": "c568924c06367fc406e6d7649d969a3ed0ae7342091b4aa985d277a67d8a0cf9",
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:66dd1264866c5a8c99ad9c37887a9c7bf5f7ef3119db988905a6b5fa93330b62",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
       "source_fact_keys": [
-        "source_fact:v1:0098055e57c4ab08f2fcff8c742a833011b8d682c3451cca0a90c4f4b795aaf0",
-        "source_fact:v1:0361a653c7caaf7d968ff7b23835664ec332b31e87f1e03ef984807d05b505e0",
-        "source_fact:v1:36fc56eeb3f000abff0415dbed60dcfcdc8c617f4e66a4ba65809151e04f3075",
-        "source_fact:v1:48d42451b3669045da6e33d40add73b43533b178513e46cfd3dbf79695e82e30",
-        "source_fact:v1:651ac6cbbb1fcc4ded582e0973f3ad17111bc2ff45ffcf146ee9d7c42776e5aa",
-        "source_fact:v1:70837bdf367c59880747d388fdbf06d99dda282e6dbaef4a98e6c20be8c10bbc",
-        "source_fact:v1:8c661c08474ec8a9dcb26b7dccc117006787bdf34d66c7e03813e97ef50f3529",
-        "source_fact:v1:abe40e8336d540b30312cd65cbe9fabb32dccc4733ff8f30f3c9da416522ae3a",
-        "source_fact:v1:b54db018677782954e3d393f40943549efbcf976a24ec4d60acdf9f45b55855a",
-        "source_fact:v1:dae8f2267aca40df934d0108632cc624a36e33e60c1d3ef5605aaf40b0d32858",
-        "source_fact:v1:f345cdd8b4583dbc54917f82c7534e3e09b7a76f25d83865d7f7cbc3e235699c",
-        "source_fact:v1:f54863be2c39c8aa4aa2770d75958ed99adc894e21bd539d16942968ce83a90d"
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
       ],
-      "source_published_kst": "2026-10-20T05:41+09:00",
+      "source_published_kst": "2026-10-20T06:57+09:00",
       "source_supply_terms": {},
-      "source_title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승",
-      "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
-      "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
     },
     "event:8b6e886c14b1bee9c0e010ef": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
@@ -84266,6 +84401,27 @@
       "source_title": "KRX 저녁시장 43% 확보⋯전체 파이 키우기는 과제 [애프터마켓 한달 ②]",
       "telegram_core_fact": "전체 거래대금에서 애프터마켓이 차지하는 비중은 23.02%에서 15.94%로 7.08%포인트 하락했다.",
       "title": "KRX 저녁시장 43% 확보⋯전체 파이 키우기는 과제 [애프터마켓 한달 ②]"
+    },
+    "event:8e9991645a597e0617da74de": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.fnnews.com/news/202610200950560760",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "7fa2bf8c32d74247ad16efdea6918bb5c64c074abff22501b4adb229a6fb4dd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bba45caa7a44204b62c0a1901a2d39729c05e50c252e4166a5deebf1441c7ba",
+      "source_fact_keys": [
+        "source_fact:v1:2f00cd39a76f7d90c5a4c3ff3ca497c8bed6f359473f613f8e5ec0b09d1bd197",
+        "source_fact:v1:bc2ed78d9032ed870f7b18634300ebcbd89379d005bcaed32078abc9d42ae5ac"
+      ],
+      "source_published_kst": "2026-10-20T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다",
+      "telegram_core_fact": "로이터는 트럼프 행정부가 첨단 반도체 수출 규제 등 엔비디아의 사업에 직접 영향을 미칠 수 있는 정책을 검토하는 상황에서 대통령 명의 계좌의 주식거래가 공개됐다고 전했다.",
+      "title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다"
     },
     "event:8f0c08fcd07727026e1ec388": {
       "first_seen_kst": "2026-10-02T21:30:43+09:00",
@@ -85046,34 +85202,24 @@
     "event:99dc1627f74fea1187ad5631": {
       "first_seen_kst": "2026-10-20T09:12:50+09:00",
       "lanes": {
-        "live": "2026-10-20T09:12:50+09:00"
+        "live": "2026-10-20T15:49:58+09:00"
       },
-      "last_seen_kst": "2026-10-20T09:12:50+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2636731?trc=main_list_pick",
-      "source": "이투데이",
-      "source_body_digest": "c7c3c3cdeb518e813e870e0c5ce3a69b5ed84a574c3556c1eefb1ac634ff2298",
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832136",
+      "source": "뉴시스",
+      "source_body_digest": "8eb071ffc0dc4a0760c5c59cff5f151c436bd552041788ccea4fea07e6123810",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:dda33fd225b2c59372e8786c592534093ad03bbd097b45732eaa545cecc55dcf",
+      "source_fact_identity": "source_facts:v1:5ec79d5fdea55d37833809d01f24265fb70377ccc3f6bab71224780e2efbc0a6",
       "source_fact_keys": [
-        "source_fact:v1:04f14247b3184962c60cd19efde393f251031bde6b732af35d3b321d1a6f9e44",
-        "source_fact:v1:2e0d768d6e7a27da40d7e4b022995760f77c838ced6657ffa614e64dc2060b64",
-        "source_fact:v1:62a1af368f10620fd1a7027f5b4d887987974c1b2ef5decf2dd47f8d01cf7f4e",
-        "source_fact:v1:75637a56a60e4530abaa7cbe8fa00dc2e6531cbe7c91a7c32a8288f664ac3c6a",
-        "source_fact:v1:953f1755a0416eba3485fe795721081fa3591ff2b04d6f26c5e339bb20b8b923",
-        "source_fact:v1:affb4e59d216d9bdd0824940ccbd16f2ba55036173d45bcc617b8abe13c0012d",
-        "source_fact:v1:b67db7b0ec67fb5cd81663825cd9eebb63e4e72cbd648ab176864df94a38f0e7",
-        "source_fact:v1:d16d995cc377fb8d28543ae99c90f00c6a3b0a6853ef1308e5119d59806a9e15",
-        "source_fact:v1:d31e5baa3fa75dbe29a124d68b1342f32a67ad3416147fbc0a28a2a0cc36d70b",
-        "source_fact:v1:e6bf9923cfee8f5e4ba7bbe4f6f7d1ed581e4beecbc078a63cb481cc1de60fdd",
-        "source_fact:v1:ed30522394dc72d293c2d50822dae7ab0f161ed229768794859dead616c67d89",
-        "source_fact:v1:f412287ad37079b3c755072323c74e5ccdc902b5247841c79f9c5c7dea6caf16",
-        "source_fact:v1:fb71858fd68d6d659e5f109a5e00b8ca656b2fc4c78177b456d813825b18f708"
+        "source_fact:v1:51d9ce5734f5a3bd7ea69ccac76d645730fec7b7969e116a32daa4edebb3042b",
+        "source_fact:v1:97b79580893c692e49608936c0d0d6f7aa5b987488124464244bad0bb4c12042",
+        "source_fact:v1:afd6833b6e391f5e937be0cc7f529369a733694334cdd21fbf48d796433e438e"
       ],
-      "source_published_kst": "2026-10-20T05:00+09:00",
+      "source_published_kst": "2026-10-20T06:32+09:00",
       "source_supply_terms": {},
-      "source_title": "20년 키운 ‘일렉스’에 578억 쏜 우리산업…김정우 승계 ‘화룡점정’ 찍나?",
-      "telegram_core_fact": "코스닥 상장사 우리산업이 오너 2세 김정우 대표이사의 개인회사인 비상장사 일렉스 지분 100%를 578억원에 인수한다.",
-      "title": "20년 키운 ‘일렉스’에 578억 쏜 우리산업…김정우 승계 ‘화룡점정’ 찍나?"
+      "source_title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\"",
+      "telegram_core_fact": "업계에 따르면 현대로템은 전날 현대위아 특수사업부를 3584억원이 인수하는 계약을 체결했다고 공시했다. 현대로템이 현대위아 특수사업부(방산사업) 인수를 추진하며 K2 전차에 이어 주포 등 핵심 부품까지 생산 역량을 확보한다.",
+      "title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\""
     },
     "event:99f1adac742f83a138140ed7": {
       "first_seen_kst": "2026-10-12T10:37:32+09:00",
@@ -101478,6 +101624,33 @@
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한 주에 10% 뛴 광통신 ETF…\"AI 데이터센터 전력난이 복병\""
     },
+    "fact:18a3c1cedf2d8e26cae32447": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
+    },
     "fact:18b040404156aad53acb3426": {
       "first_seen_kst": "2026-10-13T23:22:47+09:00",
       "lanes": {
@@ -108262,6 +108435,27 @@
       ],
       "source_published_kst": "2026-10-07T09:23+09:00",
       "title": "법무법인 태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정 쾌거"
+    },
+    "fact:2e40ffc7cc879185f3901f86": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.fnnews.com/news/202610200950560760",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "7fa2bf8c32d74247ad16efdea6918bb5c64c074abff22501b4adb229a6fb4dd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bba45caa7a44204b62c0a1901a2d39729c05e50c252e4166a5deebf1441c7ba",
+      "source_fact_keys": [
+        "source_fact:v1:2f00cd39a76f7d90c5a4c3ff3ca497c8bed6f359473f613f8e5ec0b09d1bd197",
+        "source_fact:v1:bc2ed78d9032ed870f7b18634300ebcbd89379d005bcaed32078abc9d42ae5ac"
+      ],
+      "source_published_kst": "2026-10-20T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다",
+      "telegram_core_fact": "로이터는 트럼프 행정부가 첨단 반도체 수출 규제 등 엔비디아의 사업에 직접 영향을 미칠 수 있는 정책을 검토하는 상황에서 대통령 명의 계좌의 주식거래가 공개됐다고 전했다.",
+      "title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다"
     },
     "fact:2e5e5e6f4144235dcfd14471": {
       "first_seen_kst": "2026-10-12T21:20:33+09:00",
@@ -129440,6 +129634,30 @@
       "telegram_core_fact": "\"상표 심사가 6개월 이상 지연될 경우 매출 감소에 따른 경제적 피해가 연간 약 3조원으로 추정된다\"고 질타했다. 우리나라 상표출원 건수는 2023년 31만3천533건 이후 매년 늘어나고 있으나 심사관 수는 2023년 160명에서 2024년 177명으로 17명 늘어난 이후 올해까지 변동이 없는 상황이다.",
       "title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\""
     },
+    "fact:72045f24266ef8fa49cfd344": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.mk.co.kr/news/it/12180321",
+      "source": "매일경제",
+      "source_body_digest": "f5dda035089737d663711f57cc74c972fd34558d90e488b3754beaa45fba009c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9d7eac6a105feb318972e1bd3b33fedf126c487ed7d81bb05afa5a99ff73b3e",
+      "source_fact_keys": [
+        "source_fact:v1:1908001f7b1b850d7f47e901656027efa8a57a96fc09a2dfbe99f39655e181c1",
+        "source_fact:v1:24ec65b680e94bd775ac29f035e77e85fcd64baa1b98a77f2bf778ffeff2a11b",
+        "source_fact:v1:43d7cc9456947b94dc4429f014090162fa2c8b274813c7403f65b606c3aa01c5",
+        "source_fact:v1:61090f7cbca3499c9dcdf8a87cd549ce6a11ea7c71145db4fe1e25655a25483a",
+        "source_fact:v1:6f52d4509b9ca192644983e11c4243ec41008c2dccbebcd58ab24b0d02a56b61"
+      ],
+      "source_published_kst": "2026-10-20T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다",
+      "telegram_core_fact": "글로벌 공급망 관리(SCM)·유통 기업 콜로세움코퍼레이션이 오는 29일 경기도 광주시 아세테크 데모센터에서 물류 자동화 도입을 희망하는 기업을 대상으로 ‘콜로세움 볼트 테크데이(Colosseum Vault Tech Day)’를 개최한다고 20일 밝혔다.",
+      "title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다"
+    },
     "fact:720c64906bd7540a1d41c309": {
       "first_seen_kst": "2026-10-15T01:00:58+09:00",
       "lanes": {
@@ -146890,6 +147108,34 @@
       "telegram_core_fact": "실제로 국민연금의 국내주식 평가액은 4월 말 419조5000억원에서 6월 말 543조2000억원으로 약 123조7000억원 증가했다. 국민연금 국내 주식 평가액은 7월 말 418조6000억원으로 한 달 전보다 약 124조6천억원 감소했다.",
       "title": "‘고점’서 족쇄 채운 국민연금, 급락장 속수무책…“국민 노후자금 날려” 비판"
     },
+    "fact:a4eb10038e8e2e2e13a25785": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
+    },
     "fact:a518469e18d87df8507c2d42": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
       "lanes": {
@@ -152914,6 +153160,32 @@
       "telegram_core_fact": "삼성전자가 분기 영업이익 100조 원을 돌파하는 역대급 실적을 발표했지만, 코스피는 오히려 큰 폭으로 하락했습니다.",
       "title": "삼성전자 100조 실적에도…코스피 2% 넘게 하락 | 연합뉴스"
     },
+    "fact:b3a73e1596d464c06f9abb95": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://biz.heraldcorp.com/article/10908236",
+      "source": "헤럴드경제",
+      "source_body_digest": "00f7ca53c1377e8ad0defb0dd85d5c5271bea55ad402d024b112a3af8496f8fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2d2397c817fd599ed41f218e5d25a257a099cb969170d6a3430aadbd0bd1692",
+      "source_fact_keys": [
+        "source_fact:v1:0a19b61843234df221e4307510014cbbe65ab9df830ce26b982a40a64cd3023e",
+        "source_fact:v1:1e225c50852be15bc79f9e2ddbcf4fb3a9f2c41dcc8f872a9d77bdb17b2db686",
+        "source_fact:v1:220a48a2be8377437f60b9f25532a5cde8f17775c777ffc0e1b7e0a6d2ea8343",
+        "source_fact:v1:598ef00e32a2ed296708af8d4471136d1e10c934a2574fa6f56bcd22ad4d49e4",
+        "source_fact:v1:5bc9cb140b94250234e720cb379c7981360b51b948d5e144945628c19ace0ed9",
+        "source_fact:v1:9c5e2b6757a3ba9dc56bb77f77b56042eb908ff34bc00815b1878e146942121d",
+        "source_fact:v1:cc98c550596106305748a6ad49389c8655fa7cb9370989be3014611178c70708"
+      ],
+      "source_published_kst": "2026-10-20T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손",
+      "telegram_core_fact": "KG모빌리티(KGM)가 유럽연합(EU)의 탄소국경조정제도(CBAM)에 대응하기 위해 협력사와 함께 부품 생산 과정에서 발생하는 탄소배출량 관리체계를 구축한다. 개별 부품의 배출량뿐 아니라 공급망 전반의 탄소 데이터를 체계적으로 관리해 유럽 수출 과정에서 발생할 수 있는 규제 부담을 줄이겠다는 것이다.",
+      "title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손"
+    },
     "fact:b3abd1b3db587238c8e4c807": {
       "first_seen_kst": "2026-10-10T17:45:55+09:00",
       "lanes": {
@@ -158823,6 +159095,28 @@
       "source_title": "\"누리호 핵심 위성들도 관제···우주데이터센터 시대에도 지상국 필수\"",
       "telegram_core_fact": "한국형발사체 누리호가 지난 7일 5차 발사에 성공하며 초소형군집위성 5기와 큐브위성 9기를 우주로 보냈다.",
       "title": "\"누리호 핵심 위성들도 관제···우주데이터센터 시대에도 지상국 필수\""
+    },
+    "fact:c51d4f5e6b185417467d46c0": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832136",
+      "source": "뉴시스",
+      "source_body_digest": "8eb071ffc0dc4a0760c5c59cff5f151c436bd552041788ccea4fea07e6123810",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ec79d5fdea55d37833809d01f24265fb70377ccc3f6bab71224780e2efbc0a6",
+      "source_fact_keys": [
+        "source_fact:v1:51d9ce5734f5a3bd7ea69ccac76d645730fec7b7969e116a32daa4edebb3042b",
+        "source_fact:v1:97b79580893c692e49608936c0d0d6f7aa5b987488124464244bad0bb4c12042",
+        "source_fact:v1:afd6833b6e391f5e937be0cc7f529369a733694334cdd21fbf48d796433e438e"
+      ],
+      "source_published_kst": "2026-10-20T06:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\"",
+      "telegram_core_fact": "업계에 따르면 현대로템은 전날 현대위아 특수사업부를 3584억원이 인수하는 계약을 체결했다고 공시했다. 현대로템이 현대위아 특수사업부(방산사업) 인수를 추진하며 K2 전차에 이어 주포 등 핵심 부품까지 생산 역량을 확보한다.",
+      "title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\""
     },
     "fact:c52dc3deffbd66513e3bca3b": {
       "first_seen_kst": "2026-10-10T11:21:03+09:00",
@@ -187455,6 +187749,32 @@
       "source": "한국경제",
       "title": "스웨덴 방산기업 사브, 스테판 엥스트룀 한국 대표 선임"
     },
+    "link:133f71533ff69a9af833c3b4": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://biz.heraldcorp.com/article/10908236",
+      "source": "헤럴드경제",
+      "source_body_digest": "00f7ca53c1377e8ad0defb0dd85d5c5271bea55ad402d024b112a3af8496f8fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2d2397c817fd599ed41f218e5d25a257a099cb969170d6a3430aadbd0bd1692",
+      "source_fact_keys": [
+        "source_fact:v1:0a19b61843234df221e4307510014cbbe65ab9df830ce26b982a40a64cd3023e",
+        "source_fact:v1:1e225c50852be15bc79f9e2ddbcf4fb3a9f2c41dcc8f872a9d77bdb17b2db686",
+        "source_fact:v1:220a48a2be8377437f60b9f25532a5cde8f17775c777ffc0e1b7e0a6d2ea8343",
+        "source_fact:v1:598ef00e32a2ed296708af8d4471136d1e10c934a2574fa6f56bcd22ad4d49e4",
+        "source_fact:v1:5bc9cb140b94250234e720cb379c7981360b51b948d5e144945628c19ace0ed9",
+        "source_fact:v1:9c5e2b6757a3ba9dc56bb77f77b56042eb908ff34bc00815b1878e146942121d",
+        "source_fact:v1:cc98c550596106305748a6ad49389c8655fa7cb9370989be3014611178c70708"
+      ],
+      "source_published_kst": "2026-10-20T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손",
+      "telegram_core_fact": "KG모빌리티(KGM)가 유럽연합(EU)의 탄소국경조정제도(CBAM)에 대응하기 위해 협력사와 함께 부품 생산 과정에서 발생하는 탄소배출량 관리체계를 구축한다. 개별 부품의 배출량뿐 아니라 공급망 전반의 탄소 데이터를 체계적으로 관리해 유럽 수출 과정에서 발생할 수 있는 규제 부담을 줄이겠다는 것이다.",
+      "title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손"
+    },
     "link:1354253e1e196b85b17217e2": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -190340,6 +190660,34 @@
       "source_title": "영국 8월 산업생산 0.8% 증가…\"9개월 만에 최대폭\"",
       "telegram_core_fact": "BBC와 RTT 뉴스, 마켓워치는 영국 통계청(ONS)을 인용해 8월 산업생산이 전월 대비 0.8% 늘어나 2025년 11월 이래 최대 증가율을 기록했다고 전했다. 영국 8월 산업생산은 제조업 생산 호조에 힘입어 9개월 만에 가장 큰폭으로 늘어났다.",
       "title": "영국 8월 산업생산 0.8% 증가…\"9개월 만에 최대폭\""
+    },
+    "link:1914e42917322ed376ac57a9": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
     },
     "link:1919d3fa7ddd7a71f66c9f78": {
       "first_seen_kst": "2026-10-19T13:01:20+09:00",
@@ -203567,6 +203915,27 @@
       "source_title": "민형배 \"내년 농어촌기본소득 전면시행…통합지원금 활용 가능\"",
       "telegram_core_fact": "발언, 확대 시행을 위한 협의 구상 단계이지만 민 시장이 통합지원금 활용 가능성까지 열어두면서 논의는 구체화될 전망이다.",
       "title": "민형배 \"내년 농어촌기본소득 전면시행…통합지원금 활용 가능\""
+    },
+    "link:367b1fd66e76beeeb7872605": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.fnnews.com/news/202610200950560760",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "7fa2bf8c32d74247ad16efdea6918bb5c64c074abff22501b4adb229a6fb4dd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bba45caa7a44204b62c0a1901a2d39729c05e50c252e4166a5deebf1441c7ba",
+      "source_fact_keys": [
+        "source_fact:v1:2f00cd39a76f7d90c5a4c3ff3ca497c8bed6f359473f613f8e5ec0b09d1bd197",
+        "source_fact:v1:bc2ed78d9032ed870f7b18634300ebcbd89379d005bcaed32078abc9d42ae5ac"
+      ],
+      "source_published_kst": "2026-10-20T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다",
+      "telegram_core_fact": "로이터는 트럼프 행정부가 첨단 반도체 수출 규제 등 엔비디아의 사업에 직접 영향을 미칠 수 있는 정책을 검토하는 상황에서 대통령 명의 계좌의 주식거래가 공개됐다고 전했다.",
+      "title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다"
     },
     "link:369367a567f0555efa941108": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -236332,6 +236701,33 @@
       "telegram_core_fact": "최근 공격으로 키이우와 전선 인근 지역에서는 수십만명이 전력과 수도 공급 차질을 겪었다.",
       "title": "러, 발전소 넘어 송전선·석탄철도까지…키이우 전력 끊는 겨울공세"
     },
+    "link:81110f6477e5ce549cbae5cc": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
+    },
     "link:811d81f2674df72aadae5213": {
       "first_seen_kst": "2026-10-16T17:05:45+09:00",
       "lanes": {
@@ -236446,6 +236842,28 @@
       "link": "https://www.asiae.co.kr/article/2026091815095508229",
       "source": "아시아경제",
       "title": "메시지 전달에 주력한 李…'집값 반드시 안정' 'ETF 미비 인정' '사회 정책 강화'"
+    },
+    "link:8165b8eece4f2297e9c16738": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832136",
+      "source": "뉴시스",
+      "source_body_digest": "8eb071ffc0dc4a0760c5c59cff5f151c436bd552041788ccea4fea07e6123810",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ec79d5fdea55d37833809d01f24265fb70377ccc3f6bab71224780e2efbc0a6",
+      "source_fact_keys": [
+        "source_fact:v1:51d9ce5734f5a3bd7ea69ccac76d645730fec7b7969e116a32daa4edebb3042b",
+        "source_fact:v1:97b79580893c692e49608936c0d0d6f7aa5b987488124464244bad0bb4c12042",
+        "source_fact:v1:afd6833b6e391f5e937be0cc7f529369a733694334cdd21fbf48d796433e438e"
+      ],
+      "source_published_kst": "2026-10-20T06:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\"",
+      "telegram_core_fact": "업계에 따르면 현대로템은 전날 현대위아 특수사업부를 3584억원이 인수하는 계약을 체결했다고 공시했다. 현대로템이 현대위아 특수사업부(방산사업) 인수를 추진하며 K2 전차에 이어 주포 등 핵심 부품까지 생산 역량을 확보한다.",
+      "title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\""
     },
     "link:81707097117024bd6cb86d71": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
@@ -250453,6 +250871,24 @@
       ],
       "source_published_kst": "2026-10-06T18:21+09:00",
       "title": "\"'한국형 테마섹' 키우는데 본점은 전북?\"…KIC '서울 명문화' 목소리"
+    },
+    "link:a0c41f829f92fd3a52e56d16": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020025300008",
+      "source": "연합뉴스",
+      "source_body_digest": "7beffebeb8557b4e8e8a46df55a638a1f185224d6aa5fd37ef216f0ed1e35e86",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T08:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "대신증권 \"LG CNS, 3분기 실적 예상치 5% 상회 전망\" | 연합뉴스",
+      "telegram_core_fact": "대신증권[003540]은 20일 LG CNS[064400]의 3분기 영업이익이 시장 예상치를 약 5% 웃돌 것으로 전망했다.",
+      "title": "대신증권 \"LG CNS, 3분기 실적 예상치 5% 상회 전망\" | 연합뉴스"
     },
     "link:a0d13f70909685599bdf001f": {
       "first_seen_kst": "2026-10-17T11:37:20+09:00",
@@ -266818,6 +267254,30 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04690406645583072",
       "source": "이데일리",
       "title": "[美특징주]마이크론, 실적 발표 앞두고 개장 전 '약보합'…공매도·HBM4 경쟁 부담"
+    },
+    "link:c4caa76c5ca73568f8144e3c": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.mk.co.kr/news/it/12180321",
+      "source": "매일경제",
+      "source_body_digest": "f5dda035089737d663711f57cc74c972fd34558d90e488b3754beaa45fba009c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9d7eac6a105feb318972e1bd3b33fedf126c487ed7d81bb05afa5a99ff73b3e",
+      "source_fact_keys": [
+        "source_fact:v1:1908001f7b1b850d7f47e901656027efa8a57a96fc09a2dfbe99f39655e181c1",
+        "source_fact:v1:24ec65b680e94bd775ac29f035e77e85fcd64baa1b98a77f2bf778ffeff2a11b",
+        "source_fact:v1:43d7cc9456947b94dc4429f014090162fa2c8b274813c7403f65b606c3aa01c5",
+        "source_fact:v1:61090f7cbca3499c9dcdf8a87cd549ce6a11ea7c71145db4fe1e25655a25483a",
+        "source_fact:v1:6f52d4509b9ca192644983e11c4243ec41008c2dccbebcd58ab24b0d02a56b61"
+      ],
+      "source_published_kst": "2026-10-20T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다",
+      "telegram_core_fact": "글로벌 공급망 관리(SCM)·유통 기업 콜로세움코퍼레이션이 오는 29일 경기도 광주시 아세테크 데모센터에서 물류 자동화 도입을 희망하는 기업을 대상으로 ‘콜로세움 볼트 테크데이(Colosseum Vault Tech Day)’를 개최한다고 20일 밝혔다.",
+      "title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다"
     },
     "link:c4cbac078ff0d80c0e0d566c": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
@@ -296706,6 +297166,32 @@
       "source": "뉴시스",
       "title": "10월 기업경기전망 한 달 만에 '부정' 전환…\"중동 긴장에 다시 위축\""
     },
+    "original:0a88b30cb9ed8cb1f234d9f9": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://biz.heraldcorp.com/article/10908236",
+      "source": "헤럴드경제",
+      "source_body_digest": "00f7ca53c1377e8ad0defb0dd85d5c5271bea55ad402d024b112a3af8496f8fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2d2397c817fd599ed41f218e5d25a257a099cb969170d6a3430aadbd0bd1692",
+      "source_fact_keys": [
+        "source_fact:v1:0a19b61843234df221e4307510014cbbe65ab9df830ce26b982a40a64cd3023e",
+        "source_fact:v1:1e225c50852be15bc79f9e2ddbcf4fb3a9f2c41dcc8f872a9d77bdb17b2db686",
+        "source_fact:v1:220a48a2be8377437f60b9f25532a5cde8f17775c777ffc0e1b7e0a6d2ea8343",
+        "source_fact:v1:598ef00e32a2ed296708af8d4471136d1e10c934a2574fa6f56bcd22ad4d49e4",
+        "source_fact:v1:5bc9cb140b94250234e720cb379c7981360b51b948d5e144945628c19ace0ed9",
+        "source_fact:v1:9c5e2b6757a3ba9dc56bb77f77b56042eb908ff34bc00815b1878e146942121d",
+        "source_fact:v1:cc98c550596106305748a6ad49389c8655fa7cb9370989be3014611178c70708"
+      ],
+      "source_published_kst": "2026-10-20T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손",
+      "telegram_core_fact": "KG모빌리티(KGM)가 유럽연합(EU)의 탄소국경조정제도(CBAM)에 대응하기 위해 협력사와 함께 부품 생산 과정에서 발생하는 탄소배출량 관리체계를 구축한다. 개별 부품의 배출량뿐 아니라 공급망 전반의 탄소 데이터를 체계적으로 관리해 유럽 수출 과정에서 발생할 수 있는 규제 부담을 줄이겠다는 것이다.",
+      "title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손"
+    },
     "original:0a9949bd355a2e562e294fc2": {
       "first_seen_kst": "2026-10-01T04:48:27+09:00",
       "lanes": {
@@ -316516,6 +317002,34 @@
       "source_title": "AI 기업들 앞다퉈 상장 추진하더니…투자심리 위축에 급제동",
       "telegram_core_fact": "금리 상승과 증시 변동성 확대, AI 데이터센터 투자에 대한 우려가 겹치면서 주요 AI 인프라 기업들이 상장 일정을 잇달아 연기하거나 취소하고 있다.",
       "title": "AI 기업들 앞다퉈 상장 추진하더니…투자심리 위축에 급제동"
+    },
+    "original:37f754889e0d3fe18390a5b8": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
     },
     "original:3800773507f932bca69e1d59": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -339962,6 +340476,27 @@
       "source_title": "금리 두 번 올린 신현송…첫 국감서 쟁점은[한은 미리보기]",
       "telegram_core_fact": "한은은 물가 대응을 위해 지난 7·8월 연속으로 기준금리를 ‘백투백 인상’을 했다.",
       "title": "금리 두 번 올린 신현송…첫 국감서 쟁점은[한은 미리보기]"
+    },
+    "original:6d932a63c06749b19c03eb29": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.fnnews.com/news/202610200950560760",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "7fa2bf8c32d74247ad16efdea6918bb5c64c074abff22501b4adb229a6fb4dd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bba45caa7a44204b62c0a1901a2d39729c05e50c252e4166a5deebf1441c7ba",
+      "source_fact_keys": [
+        "source_fact:v1:2f00cd39a76f7d90c5a4c3ff3ca497c8bed6f359473f613f8e5ec0b09d1bd197",
+        "source_fact:v1:bc2ed78d9032ed870f7b18634300ebcbd89379d005bcaed32078abc9d42ae5ac"
+      ],
+      "source_published_kst": "2026-10-20T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다",
+      "telegram_core_fact": "로이터는 트럼프 행정부가 첨단 반도체 수출 규제 등 엔비디아의 사업에 직접 영향을 미칠 수 있는 정책을 검토하는 상황에서 대통령 명의 계좌의 주식거래가 공개됐다고 전했다.",
+      "title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다"
     },
     "original:6d942968f789262ad3f44c4a": {
       "first_seen_kst": "2026-10-13T02:02:36+09:00",
@@ -382756,6 +383291,33 @@
       "source_published_kst": "2026-10-07T08:04+09:00",
       "title": "우크라, '韓, 러에 석유공급' 외신 보도에 韓 비판"
     },
+    "original:d177819ba973fae238b84009": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
+    },
     "original:d1857880c014a5121b13388d": {
       "first_seen_kst": "2026-10-05T11:45:11+09:00",
       "lanes": {
@@ -383280,6 +383842,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "약한 고리 노린 해킹에 속수무책 은행권…'인증우회 취약' 알고도 뚫렸다"
+    },
+    "original:d2ad0b56ee0997d6d0797a47": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832136",
+      "source": "뉴시스",
+      "source_body_digest": "8eb071ffc0dc4a0760c5c59cff5f151c436bd552041788ccea4fea07e6123810",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ec79d5fdea55d37833809d01f24265fb70377ccc3f6bab71224780e2efbc0a6",
+      "source_fact_keys": [
+        "source_fact:v1:51d9ce5734f5a3bd7ea69ccac76d645730fec7b7969e116a32daa4edebb3042b",
+        "source_fact:v1:97b79580893c692e49608936c0d0d6f7aa5b987488124464244bad0bb4c12042",
+        "source_fact:v1:afd6833b6e391f5e937be0cc7f529369a733694334cdd21fbf48d796433e438e"
+      ],
+      "source_published_kst": "2026-10-20T06:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\"",
+      "telegram_core_fact": "업계에 따르면 현대로템은 전날 현대위아 특수사업부를 3584억원이 인수하는 계약을 체결했다고 공시했다. 현대로템이 현대위아 특수사업부(방산사업) 인수를 추진하며 K2 전차에 이어 주포 등 핵심 부품까지 생산 역량을 확보한다.",
+      "title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\""
     },
     "original:d2bd66492645ac93d61d43d2": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -387377,6 +387961,24 @@
       "telegram_core_fact": "고물가 시대 가성비와 접근성이 좋은 편의점 김밥 매출이 증가하고 있는 가운데, 참치김밥은 세븐일레븐, 불고기김밥은 CU, 일반김밥은 GS25의 속재료 비율이 가장 높은 것으로 나타났다. 참치김밥 4종에서 주요 속재료인 참치 비율은 전체 내용량 대비 16.5~21.9% 수준이었다.",
       "title": "'편의점 김밥 속재료' 따져보니…참치는 세븐일레븐·불고기는 CU"
     },
+    "original:db4b87da2cab09c44de0d97e": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020025300008",
+      "source": "연합뉴스",
+      "source_body_digest": "7beffebeb8557b4e8e8a46df55a638a1f185224d6aa5fd37ef216f0ed1e35e86",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T08:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "대신증권 \"LG CNS, 3분기 실적 예상치 5% 상회 전망\" | 연합뉴스",
+      "telegram_core_fact": "대신증권[003540]은 20일 LG CNS[064400]의 3분기 영업이익이 시장 예상치를 약 5% 웃돌 것으로 전망했다.",
+      "title": "대신증권 \"LG CNS, 3분기 실적 예상치 5% 상회 전망\" | 연합뉴스"
+    },
     "original:db4df5c3317f41134ef0fa92": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -390913,6 +391515,30 @@
       "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
       "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
       "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
+    },
+    "original:e438ab5ba3b1636ca3e33151": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.mk.co.kr/news/it/12180321",
+      "source": "매일경제",
+      "source_body_digest": "f5dda035089737d663711f57cc74c972fd34558d90e488b3754beaa45fba009c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9d7eac6a105feb318972e1bd3b33fedf126c487ed7d81bb05afa5a99ff73b3e",
+      "source_fact_keys": [
+        "source_fact:v1:1908001f7b1b850d7f47e901656027efa8a57a96fc09a2dfbe99f39655e181c1",
+        "source_fact:v1:24ec65b680e94bd775ac29f035e77e85fcd64baa1b98a77f2bf778ffeff2a11b",
+        "source_fact:v1:43d7cc9456947b94dc4429f014090162fa2c8b274813c7403f65b606c3aa01c5",
+        "source_fact:v1:61090f7cbca3499c9dcdf8a87cd549ce6a11ea7c71145db4fe1e25655a25483a",
+        "source_fact:v1:6f52d4509b9ca192644983e11c4243ec41008c2dccbebcd58ab24b0d02a56b61"
+      ],
+      "source_published_kst": "2026-10-20T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다",
+      "telegram_core_fact": "글로벌 공급망 관리(SCM)·유통 기업 콜로세움코퍼레이션이 오는 29일 경기도 광주시 아세테크 데모센터에서 물류 자동화 도입을 희망하는 기업을 대상으로 ‘콜로세움 볼트 테크데이(Colosseum Vault Tech Day)’를 개최한다고 20일 밝혔다.",
+      "title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다"
     },
     "original:e43df323f8b48b5c30c08ef8": {
       "first_seen_kst": "2026-10-17T20:19:17+09:00",
@@ -436206,6 +436832,32 @@
       "telegram_core_fact": "중동 정세 불안으로 국제유가와 미국 국채금리가 상승했지만, 반도체 수출업체의 달러 매도 물량과 수출 호조에 따른 경상수지 흑자 기대가 환율 하락을 뒷받침했다.",
       "title": "중동 불안.고금리 악재에 코스피 3.65% 급락 마감"
     },
+    "source_fact:13b57bb9e2c91f1f8718880d": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://biz.heraldcorp.com/article/10908236",
+      "source": "헤럴드경제",
+      "source_body_digest": "00f7ca53c1377e8ad0defb0dd85d5c5271bea55ad402d024b112a3af8496f8fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2d2397c817fd599ed41f218e5d25a257a099cb969170d6a3430aadbd0bd1692",
+      "source_fact_keys": [
+        "source_fact:v1:0a19b61843234df221e4307510014cbbe65ab9df830ce26b982a40a64cd3023e",
+        "source_fact:v1:1e225c50852be15bc79f9e2ddbcf4fb3a9f2c41dcc8f872a9d77bdb17b2db686",
+        "source_fact:v1:220a48a2be8377437f60b9f25532a5cde8f17775c777ffc0e1b7e0a6d2ea8343",
+        "source_fact:v1:598ef00e32a2ed296708af8d4471136d1e10c934a2574fa6f56bcd22ad4d49e4",
+        "source_fact:v1:5bc9cb140b94250234e720cb379c7981360b51b948d5e144945628c19ace0ed9",
+        "source_fact:v1:9c5e2b6757a3ba9dc56bb77f77b56042eb908ff34bc00815b1878e146942121d",
+        "source_fact:v1:cc98c550596106305748a6ad49389c8655fa7cb9370989be3014611178c70708"
+      ],
+      "source_published_kst": "2026-10-20T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손",
+      "telegram_core_fact": "KG모빌리티(KGM)가 유럽연합(EU)의 탄소국경조정제도(CBAM)에 대응하기 위해 협력사와 함께 부품 생산 과정에서 발생하는 탄소배출량 관리체계를 구축한다. 개별 부품의 배출량뿐 아니라 공급망 전반의 탄소 데이터를 체계적으로 관리해 유럽 수출 과정에서 발생할 수 있는 규제 부담을 줄이겠다는 것이다.",
+      "title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손"
+    },
     "source_fact:13b67fcc26cb52faa09c8fc6": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
@@ -441234,6 +441886,33 @@
       "telegram_core_fact": "보고서는 현재 5%인 주식 보유 공시 기준을 낮추는 방안을 검토하고, 파생상품을 통해 실질적으로 확보한 지분도 파악할 수 있도록 제도를 개선할 것을 제안했다. 현행 자본시장법에 따르면 상장기업 주식을 5% 이상 보유한 투자자는 보유 목적과 지분 등을 금융당국에 보고해야 한다.",
       "title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\""
     },
+    "source_fact:17109d66bd2497b18758ee8d": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
+    },
     "source_fact:171abf7b998cb86305b1a2e0": {
       "first_seen_kst": "2026-10-20T06:39:46+09:00",
       "lanes": {
@@ -445880,6 +446559,33 @@
       "telegram_core_fact": "서울 중구(구청장 김길성)는 회현동 뉴빌리지 사업을 담은 '서울역 일대 도시재생활성화계획 변경안'이 고시됨에 따라 CCTV 설치와 도로 정비를 시작으로 주민 체감 사업을 추진한다고 15일 밝혔다.",
       "title": "중구 '회현동 뉴빌리지 사업' 본격화…\"연내 도로정비 완료\" | 연합뉴스"
     },
+    "source_fact:19e8a42f8a8f878f9e326215": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
+    },
     "source_fact:19ea5ac58cbf090b054fc6d6": {
       "first_seen_kst": "2026-10-19T20:38:33+09:00",
       "lanes": {
@@ -446869,25 +447575,28 @@
     "source_fact:1a601da4736baf478c27db8f": {
       "first_seen_kst": "2026-10-20T15:25:58+09:00",
       "lanes": {
-        "live": "2026-10-20T15:25:58+09:00"
+        "live": "2026-10-20T15:49:58+09:00"
       },
-      "last_seen_kst": "2026-10-20T15:25:58+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=03066806645614888",
-      "source": "이데일리",
-      "source_body_digest": "26d4225a7b060c2f160ad9b8227122a846948746922538f842ec6a77b933e8d6",
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://biz.heraldcorp.com/article/10908236",
+      "source": "헤럴드경제",
+      "source_body_digest": "00f7ca53c1377e8ad0defb0dd85d5c5271bea55ad402d024b112a3af8496f8fe",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:dab8bf855c4e1da4795f9fbb39f32f9e85d79b8cecfd3897ca760087f18b574c",
+      "source_fact_identity": "source_facts:v1:e2d2397c817fd599ed41f218e5d25a257a099cb969170d6a3430aadbd0bd1692",
       "source_fact_keys": [
+        "source_fact:v1:0a19b61843234df221e4307510014cbbe65ab9df830ce26b982a40a64cd3023e",
+        "source_fact:v1:1e225c50852be15bc79f9e2ddbcf4fb3a9f2c41dcc8f872a9d77bdb17b2db686",
         "source_fact:v1:220a48a2be8377437f60b9f25532a5cde8f17775c777ffc0e1b7e0a6d2ea8343",
-        "source_fact:v1:67ac3476a796cf42301cf25d00bdda74d20f71d1cb01debda6aedc3f2fd353b3",
-        "source_fact:v1:c73eaec24ba90393a4bb60518e164a964a3d33d079c6f93db9ba84dda82ae465",
+        "source_fact:v1:598ef00e32a2ed296708af8d4471136d1e10c934a2574fa6f56bcd22ad4d49e4",
+        "source_fact:v1:5bc9cb140b94250234e720cb379c7981360b51b948d5e144945628c19ace0ed9",
+        "source_fact:v1:9c5e2b6757a3ba9dc56bb77f77b56042eb908ff34bc00815b1878e146942121d",
         "source_fact:v1:cc98c550596106305748a6ad49389c8655fa7cb9370989be3014611178c70708"
       ],
-      "source_published_kst": "2026-10-20T09:59+09:00",
+      "source_published_kst": "2026-10-20T10:09+09:00",
       "source_supply_terms": {},
-      "source_title": "KGM, 유럽 탄소규제 선제 대응…후시파트너스와 MOU",
-      "telegram_core_fact": "이용헌 KGM 연구기획센터장 상무는 “이번 협약은 협력사와 함께 유럽 탄소 규제에 선제적으로 대응하기 위한 첫걸음을 뗀 것으로 의미가 있다”며 “앞으로 실증으로 마련한 산정 체계를 공급망 전반으로 확대해 수출 경쟁력을 높여 나가겠다”고 말했다.",
-      "title": "KGM, 유럽 탄소규제 선제 대응…후시파트너스와 MOU"
+      "source_title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손",
+      "telegram_core_fact": "KG모빌리티(KGM)가 유럽연합(EU)의 탄소국경조정제도(CBAM)에 대응하기 위해 협력사와 함께 부품 생산 과정에서 발생하는 탄소배출량 관리체계를 구축한다. 개별 부품의 배출량뿐 아니라 공급망 전반의 탄소 데이터를 체계적으로 관리해 유럽 수출 과정에서 발생할 수 있는 규제 부담을 줄이겠다는 것이다.",
+      "title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손"
     },
     "source_fact:1a6468a4bee28874025771c7": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
@@ -453866,25 +454575,28 @@
     "source_fact:1e101eb8400aefe71c2c8cd2": {
       "first_seen_kst": "2026-10-20T15:25:58+09:00",
       "lanes": {
-        "live": "2026-10-20T15:25:58+09:00"
+        "live": "2026-10-20T15:49:58+09:00"
       },
-      "last_seen_kst": "2026-10-20T15:25:58+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=03066806645614888",
-      "source": "이데일리",
-      "source_body_digest": "26d4225a7b060c2f160ad9b8227122a846948746922538f842ec6a77b933e8d6",
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://biz.heraldcorp.com/article/10908236",
+      "source": "헤럴드경제",
+      "source_body_digest": "00f7ca53c1377e8ad0defb0dd85d5c5271bea55ad402d024b112a3af8496f8fe",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:dab8bf855c4e1da4795f9fbb39f32f9e85d79b8cecfd3897ca760087f18b574c",
+      "source_fact_identity": "source_facts:v1:e2d2397c817fd599ed41f218e5d25a257a099cb969170d6a3430aadbd0bd1692",
       "source_fact_keys": [
+        "source_fact:v1:0a19b61843234df221e4307510014cbbe65ab9df830ce26b982a40a64cd3023e",
+        "source_fact:v1:1e225c50852be15bc79f9e2ddbcf4fb3a9f2c41dcc8f872a9d77bdb17b2db686",
         "source_fact:v1:220a48a2be8377437f60b9f25532a5cde8f17775c777ffc0e1b7e0a6d2ea8343",
-        "source_fact:v1:67ac3476a796cf42301cf25d00bdda74d20f71d1cb01debda6aedc3f2fd353b3",
-        "source_fact:v1:c73eaec24ba90393a4bb60518e164a964a3d33d079c6f93db9ba84dda82ae465",
+        "source_fact:v1:598ef00e32a2ed296708af8d4471136d1e10c934a2574fa6f56bcd22ad4d49e4",
+        "source_fact:v1:5bc9cb140b94250234e720cb379c7981360b51b948d5e144945628c19ace0ed9",
+        "source_fact:v1:9c5e2b6757a3ba9dc56bb77f77b56042eb908ff34bc00815b1878e146942121d",
         "source_fact:v1:cc98c550596106305748a6ad49389c8655fa7cb9370989be3014611178c70708"
       ],
-      "source_published_kst": "2026-10-20T09:59+09:00",
+      "source_published_kst": "2026-10-20T10:09+09:00",
       "source_supply_terms": {},
-      "source_title": "KGM, 유럽 탄소규제 선제 대응…후시파트너스와 MOU",
-      "telegram_core_fact": "이용헌 KGM 연구기획센터장 상무는 “이번 협약은 협력사와 함께 유럽 탄소 규제에 선제적으로 대응하기 위한 첫걸음을 뗀 것으로 의미가 있다”며 “앞으로 실증으로 마련한 산정 체계를 공급망 전반으로 확대해 수출 경쟁력을 높여 나가겠다”고 말했다.",
-      "title": "KGM, 유럽 탄소규제 선제 대응…후시파트너스와 MOU"
+      "source_title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손",
+      "telegram_core_fact": "KG모빌리티(KGM)가 유럽연합(EU)의 탄소국경조정제도(CBAM)에 대응하기 위해 협력사와 함께 부품 생산 과정에서 발생하는 탄소배출량 관리체계를 구축한다. 개별 부품의 배출량뿐 아니라 공급망 전반의 탄소 데이터를 체계적으로 관리해 유럽 수출 과정에서 발생할 수 있는 규제 부담을 줄이겠다는 것이다.",
+      "title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손"
     },
     "source_fact:1e11cde639d6c71a505ffad3": {
       "first_seen_kst": "2026-10-11T22:57:06+09:00",
@@ -499873,6 +500585,28 @@
       "source_published_kst": "2026-10-06T11:47+09:00",
       "title": "재경부 국감, '대미투자' 여야 질타…野 \"사업성 미달시 국정조사 사안\""
     },
+    "source_fact:3829df89526394a435f466a3": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832136",
+      "source": "뉴시스",
+      "source_body_digest": "8eb071ffc0dc4a0760c5c59cff5f151c436bd552041788ccea4fea07e6123810",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ec79d5fdea55d37833809d01f24265fb70377ccc3f6bab71224780e2efbc0a6",
+      "source_fact_keys": [
+        "source_fact:v1:51d9ce5734f5a3bd7ea69ccac76d645730fec7b7969e116a32daa4edebb3042b",
+        "source_fact:v1:97b79580893c692e49608936c0d0d6f7aa5b987488124464244bad0bb4c12042",
+        "source_fact:v1:afd6833b6e391f5e937be0cc7f529369a733694334cdd21fbf48d796433e438e"
+      ],
+      "source_published_kst": "2026-10-20T06:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\"",
+      "telegram_core_fact": "업계에 따르면 현대로템은 전날 현대위아 특수사업부를 3584억원이 인수하는 계약을 체결했다고 공시했다. 현대로템이 현대위아 특수사업부(방산사업) 인수를 추진하며 K2 전차에 이어 주포 등 핵심 부품까지 생산 역량을 확보한다.",
+      "title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\""
+    },
     "source_fact:382bee2dcb4aec353c3ce426": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
       "lanes": {
@@ -531205,6 +531939,34 @@
       "telegram_core_fact": "유한양행(000100)의 폐암 신약 '렉라자'와 미국 존슨앤드존슨(J&J)의 항암제 '리브리반트' 병용요법이 올해 3분기 글로벌 매출 3억2000만달러(한화 4300억원)를 기록했다.",
       "title": "J&J ‘리브리반트·렉라자’ 병용, 3분기 매출 4300억원…전년比 62% 증가"
     },
+    "source_fact:4a2049182df6dd7dd8cef459": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
+    },
     "source_fact:4a2b18f54e483bd193d64b4a": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -536364,6 +537126,33 @@
       "telegram_core_fact": "일부 의약품은 공급 차질이 반복되고 있지만 식품의약품안전처가 상당수 사례를 별도 조치가 필요하지 않은 것으로 판단하면서 공급 안정화를 위한 관리체계 개선이 필요하다는 지적이 나온다. 그가 제시한 자료에서는 국가필수의약품 공급 중단·부족 보고 56건 가운데 38건이 '조치 불필요'로 분류됐다.",
       "title": "국가필수의약품 공급 차질 4년 새 2.8배…식약처는 상당수 '조치 불필요'"
     },
+    "source_fact:4d710ba1b1898a4a5b07a545": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
+    },
     "source_fact:4d75bc61cf8fe2b816ffb83a": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
@@ -539497,6 +540286,34 @@
       "source_title": "도미노피자, 3분기 희석 EPS 4.60달러..전년비 12.7% 증가",
       "telegram_core_fact": "도미노피자(DPZ)가 2026 회계연도 3분기(9월 6일 종료) 총매출액 11억8560만 달러, 영업이익 2억4180만 달러, 희석 주당순이익(EPS) 4.60달러를 기록했다고 13일 발표했다.",
       "title": "도미노피자, 3분기 희석 EPS 4.60달러..전년비 12.7% 증가"
+    },
+    "source_fact:4efd85c3a5834dbe90e7ff14": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
     },
     "source_fact:4f059574d3ab0f937021f074": {
       "first_seen_kst": "2026-10-11T23:10:29+09:00",
@@ -544646,6 +545463,55 @@
       "source_title": "J&J ‘리브리반트·렉라자’ 병용, 3분기 매출 4300억원…전년比 62% 증가",
       "telegram_core_fact": "유한양행(000100)의 폐암 신약 '렉라자'와 미국 존슨앤드존슨(J&J)의 항암제 '리브리반트' 병용요법이 올해 3분기 글로벌 매출 3억2000만달러(한화 4300억원)를 기록했다.",
       "title": "J&J ‘리브리반트·렉라자’ 병용, 3분기 매출 4300억원…전년比 62% 증가"
+    },
+    "source_fact:52005516c4e515c28b026a57": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
+    },
+    "source_fact:5204af62e86d3f0848c89f85": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.fnnews.com/news/202610200950560760",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "7fa2bf8c32d74247ad16efdea6918bb5c64c074abff22501b4adb229a6fb4dd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bba45caa7a44204b62c0a1901a2d39729c05e50c252e4166a5deebf1441c7ba",
+      "source_fact_keys": [
+        "source_fact:v1:2f00cd39a76f7d90c5a4c3ff3ca497c8bed6f359473f613f8e5ec0b09d1bd197",
+        "source_fact:v1:bc2ed78d9032ed870f7b18634300ebcbd89379d005bcaed32078abc9d42ae5ac"
+      ],
+      "source_published_kst": "2026-10-20T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다",
+      "telegram_core_fact": "로이터는 트럼프 행정부가 첨단 반도체 수출 규제 등 엔비디아의 사업에 직접 영향을 미칠 수 있는 정책을 검토하는 상황에서 대통령 명의 계좌의 주식거래가 공개됐다고 전했다.",
+      "title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다"
     },
     "source_fact:520872cbf357946f300e26d9": {
       "first_seen_kst": "2026-10-13T14:32:55+09:00",
@@ -555316,6 +556182,34 @@
       "source_title": "[제2서울핀테크랩 스타트업 CEO] 난방약자와 기후투자자를 연결하는 히트펌프 열 구독서비스 운영 기업 ‘모닥불 에너지’",
       "telegram_core_fact": "소상공인, 단독주택, 공장·시설 등 전문성과 자본이 부족한 소비자가 구독료만 납부하면 히트펌프의 금융 및 설치부터 운영 및 에너지 거래까지 통합 서비스를 누릴 수 있는 데이터 기반 재생열에너지 플랫폼을 구축하고 있다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 난방약자와 기후투자자를 연결하는 히트펌프 열 구독서비스 운영 기업 ‘모닥불 에너지’"
+    },
+    "source_fact:581962c208b5b3795ff4b372": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
     },
     "source_fact:581aee0ae68d1e0d78dd855f": {
       "first_seen_kst": "2026-10-14T17:44:16+09:00",
@@ -572616,6 +573510,32 @@
       "telegram_core_fact": "KB국민카드, 롯데카드, 웰컴저축은행 등 국내 금융사에 누적 1천만 명 이상 고객 기반으로 검증된 인증·보안 기술을 보유하고 있으며, 이 원천기술을 바탕으로 만든 솔루션이 TrustIn Gateway이다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 제로트러스트(Zero Trust) 기반 금융 보안·인증·결제 솔루션 개발하는 기업 ‘신영이노베이션’"
     },
+    "source_fact:61b6a4ce0c90370923874f1f": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://biz.heraldcorp.com/article/10908236",
+      "source": "헤럴드경제",
+      "source_body_digest": "00f7ca53c1377e8ad0defb0dd85d5c5271bea55ad402d024b112a3af8496f8fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2d2397c817fd599ed41f218e5d25a257a099cb969170d6a3430aadbd0bd1692",
+      "source_fact_keys": [
+        "source_fact:v1:0a19b61843234df221e4307510014cbbe65ab9df830ce26b982a40a64cd3023e",
+        "source_fact:v1:1e225c50852be15bc79f9e2ddbcf4fb3a9f2c41dcc8f872a9d77bdb17b2db686",
+        "source_fact:v1:220a48a2be8377437f60b9f25532a5cde8f17775c777ffc0e1b7e0a6d2ea8343",
+        "source_fact:v1:598ef00e32a2ed296708af8d4471136d1e10c934a2574fa6f56bcd22ad4d49e4",
+        "source_fact:v1:5bc9cb140b94250234e720cb379c7981360b51b948d5e144945628c19ace0ed9",
+        "source_fact:v1:9c5e2b6757a3ba9dc56bb77f77b56042eb908ff34bc00815b1878e146942121d",
+        "source_fact:v1:cc98c550596106305748a6ad49389c8655fa7cb9370989be3014611178c70708"
+      ],
+      "source_published_kst": "2026-10-20T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손",
+      "telegram_core_fact": "KG모빌리티(KGM)가 유럽연합(EU)의 탄소국경조정제도(CBAM)에 대응하기 위해 협력사와 함께 부품 생산 과정에서 발생하는 탄소배출량 관리체계를 구축한다. 개별 부품의 배출량뿐 아니라 공급망 전반의 탄소 데이터를 체계적으로 관리해 유럽 수출 과정에서 발생할 수 있는 규제 부담을 줄이겠다는 것이다.",
+      "title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손"
+    },
     "source_fact:61bd88208f02cdc759757e53": {
       "first_seen_kst": "2026-10-16T17:05:45+09:00",
       "lanes": {
@@ -575798,6 +576718,33 @@
       "source_title": "서울시립대 논술서 AI 안경 추가 적발…입시 부정행위 확산에 관리 허점 논란",
       "telegram_core_fact": "특히 한 대학에서 부정행위로 적발돼 수년간 응시 제한을 받더라도 다른 대학에는 제재가 적용되지 않는 것으로 확인되면서 입시 관리의 허점이 도마에 올랐다.",
       "title": "서울시립대 논술서 AI 안경 추가 적발…입시 부정행위 확산에 관리 허점 논란"
+    },
+    "source_fact:6381ee328d660de07b49e2bb": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
     },
     "source_fact:6385cc1d839595b6dcea21ee": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
@@ -581173,6 +582120,32 @@
       "telegram_core_fact": "최근 후티군은 미-이란 전쟁 등으로 이란이 공격을 받자 홍해와 사우디 본토에 대한 공격을 한층 강화해서 예멘 내전이 격렬한 국제전으로 확대된 양상을 보이고 있다.",
       "title": "예멘 정부군 \" 하루새 후티 반군 1900회 공격, 1150 명 살해\""
     },
+    "source_fact:66dd02dab1a265c956cc051a": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://biz.heraldcorp.com/article/10908236",
+      "source": "헤럴드경제",
+      "source_body_digest": "00f7ca53c1377e8ad0defb0dd85d5c5271bea55ad402d024b112a3af8496f8fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2d2397c817fd599ed41f218e5d25a257a099cb969170d6a3430aadbd0bd1692",
+      "source_fact_keys": [
+        "source_fact:v1:0a19b61843234df221e4307510014cbbe65ab9df830ce26b982a40a64cd3023e",
+        "source_fact:v1:1e225c50852be15bc79f9e2ddbcf4fb3a9f2c41dcc8f872a9d77bdb17b2db686",
+        "source_fact:v1:220a48a2be8377437f60b9f25532a5cde8f17775c777ffc0e1b7e0a6d2ea8343",
+        "source_fact:v1:598ef00e32a2ed296708af8d4471136d1e10c934a2574fa6f56bcd22ad4d49e4",
+        "source_fact:v1:5bc9cb140b94250234e720cb379c7981360b51b948d5e144945628c19ace0ed9",
+        "source_fact:v1:9c5e2b6757a3ba9dc56bb77f77b56042eb908ff34bc00815b1878e146942121d",
+        "source_fact:v1:cc98c550596106305748a6ad49389c8655fa7cb9370989be3014611178c70708"
+      ],
+      "source_published_kst": "2026-10-20T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손",
+      "telegram_core_fact": "KG모빌리티(KGM)가 유럽연합(EU)의 탄소국경조정제도(CBAM)에 대응하기 위해 협력사와 함께 부품 생산 과정에서 발생하는 탄소배출량 관리체계를 구축한다. 개별 부품의 배출량뿐 아니라 공급망 전반의 탄소 데이터를 체계적으로 관리해 유럽 수출 과정에서 발생할 수 있는 규제 부담을 줄이겠다는 것이다.",
+      "title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손"
+    },
     "source_fact:66e1c5e711a8e85ebc5391ec": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
       "lanes": {
@@ -582627,6 +583600,34 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:67c1d2342d393be14f1069d6": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
     },
     "source_fact:67c3d62b3e1e932e65f863cc": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
@@ -603438,6 +604439,33 @@
       "telegram_core_fact": "세계 최대 반도체 위탁생산(파운드리) 업체인 대만 TSMC가 올해 3분기 순이익이 65% 급증하는 사상 최대 실적을 거둘 것으로 전망된다.",
       "title": "TSMC, 순이익 65% 급증 전망…AI 반도체 호황 이어질까"
     },
+    "source_fact:73b95074dc9fe8e6acb22f9f": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
+    },
     "source_fact:73cb7b5c951bf5cb8221cd59": {
       "first_seen_kst": "2026-10-12T19:29:26+09:00",
       "lanes": {
@@ -622835,6 +623863,28 @@
       "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
       "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
     },
+    "source_fact:7f0d21c3662556df9a0fa1d9": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832136",
+      "source": "뉴시스",
+      "source_body_digest": "8eb071ffc0dc4a0760c5c59cff5f151c436bd552041788ccea4fea07e6123810",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ec79d5fdea55d37833809d01f24265fb70377ccc3f6bab71224780e2efbc0a6",
+      "source_fact_keys": [
+        "source_fact:v1:51d9ce5734f5a3bd7ea69ccac76d645730fec7b7969e116a32daa4edebb3042b",
+        "source_fact:v1:97b79580893c692e49608936c0d0d6f7aa5b987488124464244bad0bb4c12042",
+        "source_fact:v1:afd6833b6e391f5e937be0cc7f529369a733694334cdd21fbf48d796433e438e"
+      ],
+      "source_published_kst": "2026-10-20T06:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\"",
+      "telegram_core_fact": "업계에 따르면 현대로템은 전날 현대위아 특수사업부를 3584억원이 인수하는 계약을 체결했다고 공시했다. 현대로템이 현대위아 특수사업부(방산사업) 인수를 추진하며 K2 전차에 이어 주포 등 핵심 부품까지 생산 역량을 확보한다.",
+      "title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\""
+    },
     "source_fact:7f1179395ce330c9d3d69492": {
       "first_seen_kst": "2026-10-15T01:00:58+09:00",
       "lanes": {
@@ -633343,6 +634393,33 @@
       "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
       "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
     },
+    "source_fact:85ae208073071e69c7806cb0": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
+    },
     "source_fact:85b1eb1bd8531f7dec6dc19a": {
       "first_seen_kst": "2026-10-18T15:17:26+09:00",
       "lanes": {
@@ -635122,6 +636199,33 @@
       "source_title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음",
       "telegram_core_fact": "AI 데이터센터 투자 확대로 반도체 수요가 이어지는 가운데 D램 가격 상승세와 중국 메모리 업체의 공급 확대가 향후 시장의 주요 변수로 작용할 것이라는 전망이 나왔다.",
       "title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음"
+    },
+    "source_fact:86c8e966c0fee47ef86af5ba": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
     },
     "source_fact:86cac8ae6069e7bcb7034316": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
@@ -647289,6 +648393,32 @@
       "telegram_core_fact": "바오준(BZUN)이 9일 미국 나스닥 글로벌 셀렉트 시장에서 자사 복수의결권(WVR) 보통주 3만6576주를 주당 1.10~1.11달러, 총 4만352달러에 매입해 자기주식(treasury shares)으로 보유하기로 했다고 12일 발표했다.",
       "title": "바오준, 자사주 4만달러 매입..한도 2.5% 소진"
     },
+    "source_fact:8e34ef28c8d94326acc71600": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://biz.heraldcorp.com/article/10908236",
+      "source": "헤럴드경제",
+      "source_body_digest": "00f7ca53c1377e8ad0defb0dd85d5c5271bea55ad402d024b112a3af8496f8fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2d2397c817fd599ed41f218e5d25a257a099cb969170d6a3430aadbd0bd1692",
+      "source_fact_keys": [
+        "source_fact:v1:0a19b61843234df221e4307510014cbbe65ab9df830ce26b982a40a64cd3023e",
+        "source_fact:v1:1e225c50852be15bc79f9e2ddbcf4fb3a9f2c41dcc8f872a9d77bdb17b2db686",
+        "source_fact:v1:220a48a2be8377437f60b9f25532a5cde8f17775c777ffc0e1b7e0a6d2ea8343",
+        "source_fact:v1:598ef00e32a2ed296708af8d4471136d1e10c934a2574fa6f56bcd22ad4d49e4",
+        "source_fact:v1:5bc9cb140b94250234e720cb379c7981360b51b948d5e144945628c19ace0ed9",
+        "source_fact:v1:9c5e2b6757a3ba9dc56bb77f77b56042eb908ff34bc00815b1878e146942121d",
+        "source_fact:v1:cc98c550596106305748a6ad49389c8655fa7cb9370989be3014611178c70708"
+      ],
+      "source_published_kst": "2026-10-20T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손",
+      "telegram_core_fact": "KG모빌리티(KGM)가 유럽연합(EU)의 탄소국경조정제도(CBAM)에 대응하기 위해 협력사와 함께 부품 생산 과정에서 발생하는 탄소배출량 관리체계를 구축한다. 개별 부품의 배출량뿐 아니라 공급망 전반의 탄소 데이터를 체계적으로 관리해 유럽 수출 과정에서 발생할 수 있는 규제 부담을 줄이겠다는 것이다.",
+      "title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손"
+    },
     "source_fact:8e371131d2d1a9fddb521f2c": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
       "lanes": {
@@ -652653,6 +653783,30 @@
       "telegram_core_fact": "엔화 환율은 15일 뉴욕 증시 약세 여파로 미국 장기금리 하락에 미일 금리차가 축소하면서 엔 매수, 달러 매도 선행으로 1달러=158엔대 전반으로 올라 시작했다.",
       "title": "엔화, 美 장기금리 저하에 1달러=158엔대 전반 상승 출발"
     },
+    "source_fact:917a8c24d02c153a81e421a1": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.mk.co.kr/news/it/12180321",
+      "source": "매일경제",
+      "source_body_digest": "f5dda035089737d663711f57cc74c972fd34558d90e488b3754beaa45fba009c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9d7eac6a105feb318972e1bd3b33fedf126c487ed7d81bb05afa5a99ff73b3e",
+      "source_fact_keys": [
+        "source_fact:v1:1908001f7b1b850d7f47e901656027efa8a57a96fc09a2dfbe99f39655e181c1",
+        "source_fact:v1:24ec65b680e94bd775ac29f035e77e85fcd64baa1b98a77f2bf778ffeff2a11b",
+        "source_fact:v1:43d7cc9456947b94dc4429f014090162fa2c8b274813c7403f65b606c3aa01c5",
+        "source_fact:v1:61090f7cbca3499c9dcdf8a87cd549ce6a11ea7c71145db4fe1e25655a25483a",
+        "source_fact:v1:6f52d4509b9ca192644983e11c4243ec41008c2dccbebcd58ab24b0d02a56b61"
+      ],
+      "source_published_kst": "2026-10-20T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다",
+      "telegram_core_fact": "글로벌 공급망 관리(SCM)·유통 기업 콜로세움코퍼레이션이 오는 29일 경기도 광주시 아세테크 데모센터에서 물류 자동화 도입을 희망하는 기업을 대상으로 ‘콜로세움 볼트 테크데이(Colosseum Vault Tech Day)’를 개최한다고 20일 밝혔다.",
+      "title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다"
+    },
     "source_fact:917c1497c67a6218270e73ee": {
       "first_seen_kst": "2026-10-12T14:17:50+09:00",
       "lanes": {
@@ -655933,6 +657087,32 @@
       "source_title": "쎄크, 글로벌 반도체 공급망 진입…OSAT 첨단패키징용 양산 검사장비 첫 수주",
       "telegram_core_fact": "올해 1분기 장비 개발을 완료한 이후 확보한 첫 상용 수주로, 실제 반도체 양산공정에 적용되는 첫 공급 사례다.",
       "title": "쎄크, 글로벌 반도체 공급망 진입…OSAT 첨단패키징용 양산 검사장비 첫 수주"
+    },
+    "source_fact:9385fc696793bb04a72a0deb": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://biz.heraldcorp.com/article/10908236",
+      "source": "헤럴드경제",
+      "source_body_digest": "00f7ca53c1377e8ad0defb0dd85d5c5271bea55ad402d024b112a3af8496f8fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2d2397c817fd599ed41f218e5d25a257a099cb969170d6a3430aadbd0bd1692",
+      "source_fact_keys": [
+        "source_fact:v1:0a19b61843234df221e4307510014cbbe65ab9df830ce26b982a40a64cd3023e",
+        "source_fact:v1:1e225c50852be15bc79f9e2ddbcf4fb3a9f2c41dcc8f872a9d77bdb17b2db686",
+        "source_fact:v1:220a48a2be8377437f60b9f25532a5cde8f17775c777ffc0e1b7e0a6d2ea8343",
+        "source_fact:v1:598ef00e32a2ed296708af8d4471136d1e10c934a2574fa6f56bcd22ad4d49e4",
+        "source_fact:v1:5bc9cb140b94250234e720cb379c7981360b51b948d5e144945628c19ace0ed9",
+        "source_fact:v1:9c5e2b6757a3ba9dc56bb77f77b56042eb908ff34bc00815b1878e146942121d",
+        "source_fact:v1:cc98c550596106305748a6ad49389c8655fa7cb9370989be3014611178c70708"
+      ],
+      "source_published_kst": "2026-10-20T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손",
+      "telegram_core_fact": "KG모빌리티(KGM)가 유럽연합(EU)의 탄소국경조정제도(CBAM)에 대응하기 위해 협력사와 함께 부품 생산 과정에서 발생하는 탄소배출량 관리체계를 구축한다. 개별 부품의 배출량뿐 아니라 공급망 전반의 탄소 데이터를 체계적으로 관리해 유럽 수출 과정에서 발생할 수 있는 규제 부담을 줄이겠다는 것이다.",
+      "title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손"
     },
     "source_fact:9389458a411a3109bd67fd39": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -674970,6 +676150,28 @@
       "telegram_core_fact": "리사 수 AMD 회장이 \"한국은 AMD에 매우 중요한 생태계\"라고 말하며 삼성전자, SK하이닉스와 중장기적인 협력을 확대할 것이라는 뜻을 밝혔다. 수 회장은 방한 기간 중 삼성전자와 SK하이닉스 경영진을 잇달아 만나 고대역폭메모리(HBM) 등 반도체 공급망 전반의 협력 방안 논의에 나섰다.",
       "title": "리사 수 AMD 회장 \"韓과 3~5년 중장기 파트너십 구축…오늘 삼성전자 만나 협력 논의\""
     },
+    "source_fact:9e3d4276aa444a099affc721": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832136",
+      "source": "뉴시스",
+      "source_body_digest": "8eb071ffc0dc4a0760c5c59cff5f151c436bd552041788ccea4fea07e6123810",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ec79d5fdea55d37833809d01f24265fb70377ccc3f6bab71224780e2efbc0a6",
+      "source_fact_keys": [
+        "source_fact:v1:51d9ce5734f5a3bd7ea69ccac76d645730fec7b7969e116a32daa4edebb3042b",
+        "source_fact:v1:97b79580893c692e49608936c0d0d6f7aa5b987488124464244bad0bb4c12042",
+        "source_fact:v1:afd6833b6e391f5e937be0cc7f529369a733694334cdd21fbf48d796433e438e"
+      ],
+      "source_published_kst": "2026-10-20T06:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\"",
+      "telegram_core_fact": "업계에 따르면 현대로템은 전날 현대위아 특수사업부를 3584억원이 인수하는 계약을 체결했다고 공시했다. 현대로템이 현대위아 특수사업부(방산사업) 인수를 추진하며 K2 전차에 이어 주포 등 핵심 부품까지 생산 역량을 확보한다.",
+      "title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\""
+    },
     "source_fact:9e438ceeef9f6a0da0854aed": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -692920,6 +694122,33 @@
       "telegram_core_fact": "그러면서 젤렌스키는 \"우크라 방공 미사일 공급이 봉쇄되고 있을 때 러시아는 제재 해제와 유예를 받았다, 이는 불행하게도 우리 파트너들이 현실을 부정하고 있다는 것을 말해준다\"고 말했다.",
       "title": "우크라, \"또 러시아 탄도미사일 발사 사전경고 미국에서 못받아\""
     },
+    "source_fact:a86bb34ebfe1c7f01381e7b0": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
+    },
     "source_fact:a86cef00667e521c17dba173": {
       "first_seen_kst": "2026-10-18T09:22:47+09:00",
       "lanes": {
@@ -707382,6 +708611,27 @@
       "source_title": "웨스턴 얼라이언스 뱅코퍼, 3분기 희석 EPS 2.45달러..전년비 7.5% 증가",
       "telegram_core_fact": "웨스턴 얼라이언스 뱅코퍼레이션(WAL)이 2026년 3분기(7~9월) GAAP 기준 희석 주당순이익(EPS) 2.45달러로 전년 동기(2.28달러) 대비 7.5% 증가했고, 순이익은 2억7,720만 달러로 6.4% 늘었다고 19일 발표했다.",
       "title": "웨스턴 얼라이언스 뱅코퍼, 3분기 희석 EPS 2.45달러..전년비 7.5% 증가"
+    },
+    "source_fact:b0801553417e55af89763629": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.fnnews.com/news/202610200950560760",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "7fa2bf8c32d74247ad16efdea6918bb5c64c074abff22501b4adb229a6fb4dd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bba45caa7a44204b62c0a1901a2d39729c05e50c252e4166a5deebf1441c7ba",
+      "source_fact_keys": [
+        "source_fact:v1:2f00cd39a76f7d90c5a4c3ff3ca497c8bed6f359473f613f8e5ec0b09d1bd197",
+        "source_fact:v1:bc2ed78d9032ed870f7b18634300ebcbd89379d005bcaed32078abc9d42ae5ac"
+      ],
+      "source_published_kst": "2026-10-20T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다",
+      "telegram_core_fact": "로이터는 트럼프 행정부가 첨단 반도체 수출 규제 등 엔비디아의 사업에 직접 영향을 미칠 수 있는 정책을 검토하는 상황에서 대통령 명의 계좌의 주식거래가 공개됐다고 전했다.",
+      "title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다"
     },
     "source_fact:b087234fc20a5a3b48473523": {
       "first_seen_kst": "2026-10-15T02:27:03+09:00",
@@ -732724,6 +733974,34 @@
       "telegram_core_fact": "코스피·코스닥은 각각 5.46%·1.43% 하락해 양 시장에 매도 사이드카가 발동됐다.",
       "title": "[속보]코스피, 中 반도체 쇼크에 6000선 턱걸이…외국인 4.5조 팔자"
     },
+    "source_fact:bf5db9a18ed26258c8679857": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
+    },
     "source_fact:bf5dd9020af08ba4e5a935d7": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
       "lanes": {
@@ -734954,6 +736232,30 @@
       "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 12일 \"단기적인 위기대응을 넘어 공급망의 취약한 고리를 선제적으로 발굴하고 보강해 나가야 한다\"고 말했다. 산업군별 '공급망 특허전략맵'을 구축해 기술 확보와 특허 선점이 필요한 분야를 선제적으로 발굴하고, 향후 산업전략 수립에도 활용해 나갈 계획이다.",
       "title": "이형일 \"공급망 취약한 고리 선제적으로 발굴·보강해야\" | 연합뉴스"
     },
+    "source_fact:c0b21aa66d7608e8164ff2af": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.mk.co.kr/news/it/12180321",
+      "source": "매일경제",
+      "source_body_digest": "f5dda035089737d663711f57cc74c972fd34558d90e488b3754beaa45fba009c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9d7eac6a105feb318972e1bd3b33fedf126c487ed7d81bb05afa5a99ff73b3e",
+      "source_fact_keys": [
+        "source_fact:v1:1908001f7b1b850d7f47e901656027efa8a57a96fc09a2dfbe99f39655e181c1",
+        "source_fact:v1:24ec65b680e94bd775ac29f035e77e85fcd64baa1b98a77f2bf778ffeff2a11b",
+        "source_fact:v1:43d7cc9456947b94dc4429f014090162fa2c8b274813c7403f65b606c3aa01c5",
+        "source_fact:v1:61090f7cbca3499c9dcdf8a87cd549ce6a11ea7c71145db4fe1e25655a25483a",
+        "source_fact:v1:6f52d4509b9ca192644983e11c4243ec41008c2dccbebcd58ab24b0d02a56b61"
+      ],
+      "source_published_kst": "2026-10-20T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다",
+      "telegram_core_fact": "글로벌 공급망 관리(SCM)·유통 기업 콜로세움코퍼레이션이 오는 29일 경기도 광주시 아세테크 데모센터에서 물류 자동화 도입을 희망하는 기업을 대상으로 ‘콜로세움 볼트 테크데이(Colosseum Vault Tech Day)’를 개최한다고 20일 밝혔다.",
+      "title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다"
+    },
     "source_fact:c0b69c226ad4378f86bd4eef": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -737130,6 +738432,34 @@
       "source_title": "[오늘의 투자전략] 美 AI주 급락·CPI 충격…\"코스피, 전저점 지지력 시험\"",
       "telegram_core_fact": "간밤 미국 뉴욕증시는 ASML의 분기 호실적과 장비 수요 상향에도 불구하고 9월 CPI의 컨센서스 상회, 코어위브(-15.5%)의 회사채 수익률 급등에 따른 AI 신용 위험 재부각, 가트너 보고서발 AI 투자수익률 약화 불안감 등으로 일제히 하락 마감했다.",
       "title": "[오늘의 투자전략] 美 AI주 급락·CPI 충격…\"코스피, 전저점 지지력 시험\""
+    },
+    "source_fact:c1d3a6a4a31a6472e1aa9c6c": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
     },
     "source_fact:c1d5b0121033be4479b236bc": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -752364,6 +753694,30 @@
       "telegram_core_fact": "골드만삭스는 “AI 투자를 계속하려면 앞으로도 엄청난 돈을 빌려야 하는데, 조달 비용이 비싸지는 환경에서 기존 계획대로 자금을 구할 수 있느냐는 의구심이 높아졌다”고 했다.",
       "title": "\"조달비용 높은데, AI 투자 가능할까\"…개미 덮친 '빅테크 빚투'"
     },
+    "source_fact:ca33d34976b988957f667203": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.mk.co.kr/news/it/12180321",
+      "source": "매일경제",
+      "source_body_digest": "f5dda035089737d663711f57cc74c972fd34558d90e488b3754beaa45fba009c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9d7eac6a105feb318972e1bd3b33fedf126c487ed7d81bb05afa5a99ff73b3e",
+      "source_fact_keys": [
+        "source_fact:v1:1908001f7b1b850d7f47e901656027efa8a57a96fc09a2dfbe99f39655e181c1",
+        "source_fact:v1:24ec65b680e94bd775ac29f035e77e85fcd64baa1b98a77f2bf778ffeff2a11b",
+        "source_fact:v1:43d7cc9456947b94dc4429f014090162fa2c8b274813c7403f65b606c3aa01c5",
+        "source_fact:v1:61090f7cbca3499c9dcdf8a87cd549ce6a11ea7c71145db4fe1e25655a25483a",
+        "source_fact:v1:6f52d4509b9ca192644983e11c4243ec41008c2dccbebcd58ab24b0d02a56b61"
+      ],
+      "source_published_kst": "2026-10-20T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다",
+      "telegram_core_fact": "글로벌 공급망 관리(SCM)·유통 기업 콜로세움코퍼레이션이 오는 29일 경기도 광주시 아세테크 데모센터에서 물류 자동화 도입을 희망하는 기업을 대상으로 ‘콜로세움 볼트 테크데이(Colosseum Vault Tech Day)’를 개최한다고 20일 밝혔다.",
+      "title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다"
+    },
     "source_fact:ca39864fb2da388472e303f9": {
       "first_seen_kst": "2026-10-10T02:34:57+09:00",
       "lanes": {
@@ -759335,6 +760689,34 @@
       "telegram_core_fact": "미국 국채 10년물 금리가 연 5%를 넘어서면서 주식투자자가 긴장하고 있지만, 증권가에선 오히려 장기 금리의 하락이 더 큰 악재가 될 수 있다는 분석이 잇달아 나왔다.",
       "title": "\"증시 덮칠 '진짜 공포' 따로 있다\"…증권가 '무서운 경고' [분석+]"
     },
+    "source_fact:ce7c477f9c911e7addde0118": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
+    },
     "source_fact:ce8075ec8ba0423c42b18115": {
       "first_seen_kst": "2026-10-18T09:00:24+09:00",
       "lanes": {
@@ -764289,6 +765671,30 @@
       "source_title": "10월 초순 수출 102%↑⋯누적 8400억불 돌파에 '연 1조불 가시권'[종합]",
       "telegram_core_fact": "12일 관세청이 발표한 '2026년 10월 1일~10일 수출입 현황(잠정치)'에 따르면 이 기간 수출액은 261억400만달러로 전년비 102.0% 증가했다.",
       "title": "10월 초순 수출 102%↑⋯누적 8400억불 돌파에 '연 1조불 가시권'[종합]"
+    },
+    "source_fact:d15d8786473c0dc536ea87ce": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.mk.co.kr/news/it/12180321",
+      "source": "매일경제",
+      "source_body_digest": "f5dda035089737d663711f57cc74c972fd34558d90e488b3754beaa45fba009c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9d7eac6a105feb318972e1bd3b33fedf126c487ed7d81bb05afa5a99ff73b3e",
+      "source_fact_keys": [
+        "source_fact:v1:1908001f7b1b850d7f47e901656027efa8a57a96fc09a2dfbe99f39655e181c1",
+        "source_fact:v1:24ec65b680e94bd775ac29f035e77e85fcd64baa1b98a77f2bf778ffeff2a11b",
+        "source_fact:v1:43d7cc9456947b94dc4429f014090162fa2c8b274813c7403f65b606c3aa01c5",
+        "source_fact:v1:61090f7cbca3499c9dcdf8a87cd549ce6a11ea7c71145db4fe1e25655a25483a",
+        "source_fact:v1:6f52d4509b9ca192644983e11c4243ec41008c2dccbebcd58ab24b0d02a56b61"
+      ],
+      "source_published_kst": "2026-10-20T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다",
+      "telegram_core_fact": "글로벌 공급망 관리(SCM)·유통 기업 콜로세움코퍼레이션이 오는 29일 경기도 광주시 아세테크 데모센터에서 물류 자동화 도입을 희망하는 기업을 대상으로 ‘콜로세움 볼트 테크데이(Colosseum Vault Tech Day)’를 개최한다고 20일 밝혔다.",
+      "title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다"
     },
     "source_fact:d15e4e66dc38b7fa712f9a3f": {
       "first_seen_kst": "2026-10-15T14:35:05+09:00",
@@ -820964,6 +822370,30 @@
       "telegram_core_fact": "한국에너지공과대학교(KENTECH·켄텍)가 액화수소 플랜트 엔지니어링 원천기술로 개교 4년 만에 최대 기술이전 계약을 체결했다. 연구책임자이자 대표 발명자인 황지현 교수가 개발·축적한 기술로켄텍 개교 이후 최대 노하우 기술이전 계약이다.",
       "title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모"
     },
+    "source_fact:f1be4b5d4f1ef71263e75414": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.mk.co.kr/news/it/12180321",
+      "source": "매일경제",
+      "source_body_digest": "f5dda035089737d663711f57cc74c972fd34558d90e488b3754beaa45fba009c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9d7eac6a105feb318972e1bd3b33fedf126c487ed7d81bb05afa5a99ff73b3e",
+      "source_fact_keys": [
+        "source_fact:v1:1908001f7b1b850d7f47e901656027efa8a57a96fc09a2dfbe99f39655e181c1",
+        "source_fact:v1:24ec65b680e94bd775ac29f035e77e85fcd64baa1b98a77f2bf778ffeff2a11b",
+        "source_fact:v1:43d7cc9456947b94dc4429f014090162fa2c8b274813c7403f65b606c3aa01c5",
+        "source_fact:v1:61090f7cbca3499c9dcdf8a87cd549ce6a11ea7c71145db4fe1e25655a25483a",
+        "source_fact:v1:6f52d4509b9ca192644983e11c4243ec41008c2dccbebcd58ab24b0d02a56b61"
+      ],
+      "source_published_kst": "2026-10-20T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다",
+      "telegram_core_fact": "글로벌 공급망 관리(SCM)·유통 기업 콜로세움코퍼레이션이 오는 29일 경기도 광주시 아세테크 데모센터에서 물류 자동화 도입을 희망하는 기업을 대상으로 ‘콜로세움 볼트 테크데이(Colosseum Vault Tech Day)’를 개최한다고 20일 밝혔다.",
+      "title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다"
+    },
     "source_fact:f1cd67a0d506f215cd047204": {
       "first_seen_kst": "2026-10-09T18:14:26+09:00",
       "lanes": {
@@ -827118,6 +828548,34 @@
       "source_title": "골드만삭스 그룹, 3분기 순매출 187억달러..전년비 23% 증가",
       "telegram_core_fact": "골드만삭스 그룹(GS)이 9월 30일 종료된 2026년 3분기 순매출 186억7900만 달러, 순이익 52억9400만 달러, 희석 주당순이익(EPS) 17.01달러를 기록했다고 10월 13일 발표했다.",
       "title": "골드만삭스 그룹, 3분기 순매출 187억달러..전년비 23% 증가"
+    },
+    "source_fact:f58e08d1060799ba41709edb": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
     },
     "source_fact:f58ea4d94ef09b1f7d4732ae": {
       "first_seen_kst": "2026-10-15T11:11:30+09:00",
@@ -849078,6 +850536,32 @@
       "source": "뉴시스",
       "title": "10월 기업경기전망 한 달 만에 '부정' 전환…\"중동 긴장에 다시 위축\""
     },
+    "title:0a88b30cb9ed8cb1f234d9f9": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://biz.heraldcorp.com/article/10908236",
+      "source": "헤럴드경제",
+      "source_body_digest": "00f7ca53c1377e8ad0defb0dd85d5c5271bea55ad402d024b112a3af8496f8fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2d2397c817fd599ed41f218e5d25a257a099cb969170d6a3430aadbd0bd1692",
+      "source_fact_keys": [
+        "source_fact:v1:0a19b61843234df221e4307510014cbbe65ab9df830ce26b982a40a64cd3023e",
+        "source_fact:v1:1e225c50852be15bc79f9e2ddbcf4fb3a9f2c41dcc8f872a9d77bdb17b2db686",
+        "source_fact:v1:220a48a2be8377437f60b9f25532a5cde8f17775c777ffc0e1b7e0a6d2ea8343",
+        "source_fact:v1:598ef00e32a2ed296708af8d4471136d1e10c934a2574fa6f56bcd22ad4d49e4",
+        "source_fact:v1:5bc9cb140b94250234e720cb379c7981360b51b948d5e144945628c19ace0ed9",
+        "source_fact:v1:9c5e2b6757a3ba9dc56bb77f77b56042eb908ff34bc00815b1878e146942121d",
+        "source_fact:v1:cc98c550596106305748a6ad49389c8655fa7cb9370989be3014611178c70708"
+      ],
+      "source_published_kst": "2026-10-20T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손",
+      "telegram_core_fact": "KG모빌리티(KGM)가 유럽연합(EU)의 탄소국경조정제도(CBAM)에 대응하기 위해 협력사와 함께 부품 생산 과정에서 발생하는 탄소배출량 관리체계를 구축한다. 개별 부품의 배출량뿐 아니라 공급망 전반의 탄소 데이터를 체계적으로 관리해 유럽 수출 과정에서 발생할 수 있는 규제 부담을 줄이겠다는 것이다.",
+      "title": "KGM, 유럽 탄소규제 대비해 부품 배출량 관리…후시파트너스와 맞손"
+    },
     "title:0a9949bd355a2e562e294fc2": {
       "first_seen_kst": "2026-10-01T04:48:27+09:00",
       "lanes": {
@@ -869308,6 +870792,34 @@
       "source_title": "AI 기업들 앞다퉈 상장 추진하더니…투자심리 위축에 급제동",
       "telegram_core_fact": "금리 상승과 증시 변동성 확대, AI 데이터센터 투자에 대한 우려가 겹치면서 주요 AI 인프라 기업들이 상장 일정을 잇달아 연기하거나 취소하고 있다.",
       "title": "AI 기업들 앞다퉈 상장 추진하더니…투자심리 위축에 급제동"
+    },
+    "title:37f754889e0d3fe18390a5b8": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.hankyung.com/article/202610201964i",
+      "source": "한국경제",
+      "source_body_digest": "42ce75849e4ad3c10448e7e52fa16d22013f4d80ce4ef4b6a3bac2669a7ca5fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442e24bf2678a582e3c3fc10111a76d5298f60afd4d8098bcc5447099c699218",
+      "source_fact_keys": [
+        "source_fact:v1:02acb273e46a6346380e620c7c462e3bb80b3d2112c68edaa8b0e5a3783b9d7c",
+        "source_fact:v1:0e0f2fd382b3c346825c129030f1adc3b862fb145929ee4ce8dd49f2bf55e76a",
+        "source_fact:v1:3fea32f677f5ed0b05bbee47746379e1833c9e015fa2ec538d4e588749f43002",
+        "source_fact:v1:9773042be6b2e7a69e52fb0468e2316a5aa798769f2fe3c24a2fc9718ae8cf11",
+        "source_fact:v1:97ad73e1bf0dd3255d364b53e84658cfab760fe762ab4a2d29b7edbdde8da0c4",
+        "source_fact:v1:c636626e4b27bd2bc93bbb6b385f37acb67b421b9a362b5fad0817490d97429f",
+        "source_fact:v1:ccaabae4d4d6193a2181da27759d9bb7268bd4add9f47bced9bf6d6506798014",
+        "source_fact:v1:e499441caf9c6012506eb6239cb1b0bbc009135d94a4cc0159c8d0129a7fc6bf",
+        "source_fact:v1:f8e2dce58ec93d9cf131a633343d3a50672c9435ec3de0989e298c298f3b9e51"
+      ],
+      "source_published_kst": "2026-10-20T06:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'",
+      "telegram_core_fact": "유조선 운임 급등으로 유럽과 아시아 정유시설의 정제마진이 마이너스로 돌아섰다.",
+      "title": "\"휘발유 또 오르나\"…유조선 운임 10배 폭등에 정유업계 '비상'"
     },
     "title:3800773507f932bca69e1d59": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -893202,6 +894714,27 @@
       "source_title": "전남광주시의회 '동복댐·법정전입금·군공항' 점검…시장과 신경전(종합)",
       "telegram_core_fact": "전남광주통합특별시의원들이 시정질문을 통해 반도체 용수 공급에 따른 화순 동복댐 증고와 교육청 법정전입금 미편성, 군공항 이전에 따른 주민 수용성 확대, 도시철도 2호선 개통 연장 등을 집중 점검했다.",
       "title": "전남광주시의회 '동복댐·법정전입금·군공항' 점검…시장과 신경전(종합)"
+    },
+    "title:6d932a63c06749b19c03eb29": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.fnnews.com/news/202610200950560760",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "7fa2bf8c32d74247ad16efdea6918bb5c64c074abff22501b4adb229a6fb4dd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bba45caa7a44204b62c0a1901a2d39729c05e50c252e4166a5deebf1441c7ba",
+      "source_fact_keys": [
+        "source_fact:v1:2f00cd39a76f7d90c5a4c3ff3ca497c8bed6f359473f613f8e5ec0b09d1bd197",
+        "source_fact:v1:bc2ed78d9032ed870f7b18634300ebcbd89379d005bcaed32078abc9d42ae5ac"
+      ],
+      "source_published_kst": "2026-10-20T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다",
+      "telegram_core_fact": "로이터는 트럼프 행정부가 첨단 반도체 수출 규제 등 엔비디아의 사업에 직접 영향을 미칠 수 있는 정책을 검토하는 상황에서 대통령 명의 계좌의 주식거래가 공개됐다고 전했다.",
+      "title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다"
     },
     "title:6d942968f789262ad3f44c4a": {
       "first_seen_kst": "2026-10-13T02:02:36+09:00",
@@ -937020,6 +938553,33 @@
       "source_published_kst": "2026-10-07T08:04+09:00",
       "title": "우크라, '韓, 러에 석유공급' 외신 보도에 韓 비판"
     },
+    "title:d177819ba973fae238b84009": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003832856",
+      "source": "뉴시스",
+      "source_body_digest": "c897e96bddb85754a2f356fa54763cf6ecc4f5605a0cb194445d8156d1a46bc2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336ecca843965688a5117632a3f225fd4c2a93aacd7cf8d062a34775e01f20ec",
+      "source_fact_keys": [
+        "source_fact:v1:1ba56f937fb50f3ca2f6167de47f8fd3447725752b09ca390983b0beb270703d",
+        "source_fact:v1:1f2d6d02d7cf69a5883f3697ee2cd48a0e67176b1800ad96b4c5d444b9c0b01c",
+        "source_fact:v1:2216b90ab2739b6f7f734a2bf5fd96c5e08576181d9f24f2fc3c2bf17701c9ec",
+        "source_fact:v1:285f7fe7f354dee9e5b2a942596d9c278e8c7a2c13cd8df08a506f7feff217fe",
+        "source_fact:v1:2f7944927ba351ffa5a6df7c153ce2392b1d52f6a927101633032a436d14c706",
+        "source_fact:v1:6b7541ec1551a864c338a3a399a5a2f1272cbcb1f855f76ceb7a9943be747282",
+        "source_fact:v1:aea2e668d0a9dae8ea2383a0d1f55705cd7aac0f687c707617f028110075bf23",
+        "source_fact:v1:d6ecebf2c7040ca53cd5add16f26957b58a9769e2963d85a59a69f4f24d6f481"
+      ],
+      "source_published_kst": "2026-10-20T10:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
+      "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
+    },
     "title:d1857880c014a5121b13388d": {
       "first_seen_kst": "2026-10-05T11:45:11+09:00",
       "lanes": {
@@ -937544,6 +939104,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "약한 고리 노린 해킹에 속수무책 은행권…'인증우회 취약' 알고도 뚫렸다"
+    },
+    "title:d2ad0b56ee0997d6d0797a47": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261019_0003832136",
+      "source": "뉴시스",
+      "source_body_digest": "8eb071ffc0dc4a0760c5c59cff5f151c436bd552041788ccea4fea07e6123810",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ec79d5fdea55d37833809d01f24265fb70377ccc3f6bab71224780e2efbc0a6",
+      "source_fact_keys": [
+        "source_fact:v1:51d9ce5734f5a3bd7ea69ccac76d645730fec7b7969e116a32daa4edebb3042b",
+        "source_fact:v1:97b79580893c692e49608936c0d0d6f7aa5b987488124464244bad0bb4c12042",
+        "source_fact:v1:afd6833b6e391f5e937be0cc7f529369a733694334cdd21fbf48d796433e438e"
+      ],
+      "source_published_kst": "2026-10-20T06:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\"",
+      "telegram_core_fact": "업계에 따르면 현대로템은 전날 현대위아 특수사업부를 3584억원이 인수하는 계약을 체결했다고 공시했다. 현대로템이 현대위아 특수사업부(방산사업) 인수를 추진하며 K2 전차에 이어 주포 등 핵심 부품까지 생산 역량을 확보한다.",
+      "title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\""
     },
     "title:d2bd66492645ac93d61d43d2": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -941670,6 +943252,24 @@
       "telegram_core_fact": "고물가 시대 가성비와 접근성이 좋은 편의점 김밥 매출이 증가하고 있는 가운데, 참치김밥은 세븐일레븐, 불고기김밥은 CU, 일반김밥은 GS25의 속재료 비율이 가장 높은 것으로 나타났다. 참치김밥 4종에서 주요 속재료인 참치 비율은 전체 내용량 대비 16.5~21.9% 수준이었다.",
       "title": "'편의점 김밥 속재료' 따져보니…참치는 세븐일레븐·불고기는 CU"
     },
+    "title:db4b87da2cab09c44de0d97e": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020025300008",
+      "source": "연합뉴스",
+      "source_body_digest": "7beffebeb8557b4e8e8a46df55a638a1f185224d6aa5fd37ef216f0ed1e35e86",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-20T08:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "대신증권 \"LG CNS, 3분기 실적 예상치 5% 상회 전망\" | 연합뉴스",
+      "telegram_core_fact": "대신증권[003540]은 20일 LG CNS[064400]의 3분기 영업이익이 시장 예상치를 약 5% 웃돌 것으로 전망했다.",
+      "title": "대신증권 \"LG CNS, 3분기 실적 예상치 5% 상회 전망\" | 연합뉴스"
+    },
     "title:db4df5c3317f41134ef0fa92": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -945232,6 +946832,30 @@
       "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
       "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
       "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
+    },
+    "title:e438ab5ba3b1636ca3e33151": {
+      "first_seen_kst": "2026-10-20T15:49:58+09:00",
+      "lanes": {
+        "live": "2026-10-20T15:49:58+09:00"
+      },
+      "last_seen_kst": "2026-10-20T15:49:58+09:00",
+      "link": "https://www.mk.co.kr/news/it/12180321",
+      "source": "매일경제",
+      "source_body_digest": "f5dda035089737d663711f57cc74c972fd34558d90e488b3754beaa45fba009c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9d7eac6a105feb318972e1bd3b33fedf126c487ed7d81bb05afa5a99ff73b3e",
+      "source_fact_keys": [
+        "source_fact:v1:1908001f7b1b850d7f47e901656027efa8a57a96fc09a2dfbe99f39655e181c1",
+        "source_fact:v1:24ec65b680e94bd775ac29f035e77e85fcd64baa1b98a77f2bf778ffeff2a11b",
+        "source_fact:v1:43d7cc9456947b94dc4429f014090162fa2c8b274813c7403f65b606c3aa01c5",
+        "source_fact:v1:61090f7cbca3499c9dcdf8a87cd549ce6a11ea7c71145db4fe1e25655a25483a",
+        "source_fact:v1:6f52d4509b9ca192644983e11c4243ec41008c2dccbebcd58ab24b0d02a56b61"
+      ],
+      "source_published_kst": "2026-10-20T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다",
+      "telegram_core_fact": "글로벌 공급망 관리(SCM)·유통 기업 콜로세움코퍼레이션이 오는 29일 경기도 광주시 아세테크 데모센터에서 물류 자동화 도입을 희망하는 기업을 대상으로 ‘콜로세움 볼트 테크데이(Colosseum Vault Tech Day)’를 개최한다고 20일 밝혔다.",
+      "title": "물류 자동화 해법 제시…콜로세움 ‘볼트 테크데이’ 연다"
     },
     "title:e43df323f8b48b5c30c08ef8": {
       "first_seen_kst": "2026-10-17T20:19:17+09:00",
@@ -957238,5 +958862,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-20T15:25:58+09:00"
+  "updated_at_kst": "2026-10-20T15:49:58+09:00"
 }
