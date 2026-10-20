@@ -133,6 +133,8 @@ def _headline_group(title):
         return '미국·이란' if us else '이란'
     if re.search(r'이스라엘|네타냐후|\b(?:israel|netanyahu)\b', title):
         return '미국·이스라엘' if us else '이스라엘'
+    if re.search(r'사우디|\bsaudi\b', title):
+        return '사우디'
     return '전쟁·외교'
 
 
@@ -343,12 +345,20 @@ def _diplomatic_appeal_headline(title):
 
 def _operational_disruption_headline(title):
     event = r'(?:event|forum|conference|summit|행사|포럼|회의|사막의\s*다보스)'
-    change = r'(?:postpon\w*|cancel\w*|연기|취소)'
-    # "after attacks" names the background of the changed event schedule.
-    return bool((re.search(change + r'.{0,65}' + event, title)
-                 or re.search(event + r'.{0,25}' + change, title))
+    change = r'(?:postpon\w*|cancel\w*|(?:연기|취소)(?!\s*(?:여부|검토|논의|가능성|부인|미정|하지|않|안\s)))'
+    # Bind the changed schedule to the event, not an earlier cancelled flight.
+    changed_event = (re.search(r'\b(?:postpon\w*|cancel\w*)\b.{0,65}' + event, title)
+                     or re.search(r'(?:연기|취소)(?:된|하는|할)\s*.{0,25}' + event, title)
+                     or re.search(event + r'(?:(?!…|\.{3}|[;；]).){0,25}' + change, title))
+    # A separate completed action remains military news even beside a delay.
+    if re.search(r'(?:공습|폭격|공격|타격|요격)(?:을|를)?\s*(?:했다|했으며|하고\s*있|진행\s*중)|'
+                 r'(?:피격|파괴)(?:됐|되었|당했)|\b(?:attacked|struck|bombed)\b', title):
+        return False
+    # Nominal damage and flight cancellations can describe the delay's background.
+    return bool(changed_event
                 and (re.search(r'\bafter\b.{0,35}\battacks?\b|(?:공격|공습).{0,18}(?:이후|여파)|'
-                               r'(?:공격|공습)\s*후|공세\s*속', title)
+                               r'(?:공격|공습)\s*후|공세\s*속|(?:공항|항만|항구)\s*피격|'
+                               r'항공편\s*(?:\d+(?:\.\d+)?%\s*)?취소', title)
                      or _military_actions(title)))
 
 
