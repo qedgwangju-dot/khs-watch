@@ -1,4 +1,4 @@
-"""Read-only industry context for an existing KOSDAQ five-minute buy alert.
+"""Read-only industry context for existing KOSPI/KOSDAQ five-minute buy alerts.
 
 Dated t1621 minute history provides cumulative industry net-buy amounts. Its
 currency multiplier is unverified, so it is used for ranking only. Legacy UBM
@@ -41,12 +41,17 @@ def _number(value: Any) -> float | None:
         return None
 
 
-def _industry(code: str, name: str) -> bool:
+def _industry(code: str, name: str, market: str = "KOSDAQ") -> bool:
     # 2026-10-14 t8424: 306 is the manufacturing aggregate; 340..346
     # are size/company/index classifications, not separate industry sectors.
     aggregates = {"301", "306", "340", "341", "342", "343", "344", "345", "346"}
-    return bool(re.fullmatch(r"3\d{2}", code) and code not in aggregates and 0 < len(name) <= 60
-                and name != code and "코스닥" not in name and "KOSDAQ" not in name.upper()
+    if market == "KOSPI":
+        # Market/size indices and the manufacturing aggregate are not sectors.
+        aggregates = {"001", "002", "003", "004"}
+    pattern = {"KOSPI": r"0\d{2}", "KOSDAQ": r"3\d{2}"}.get(market)
+    return bool(pattern and re.fullmatch(pattern, code) and code not in aggregates and 0 < len(name) <= 60
+                and name != code and name.replace(" ", "") not in {"제조", "제조업"}
+                and "코스닥" not in name and "KOSDAQ" not in name.upper()
                 and _is_real_industry(name, code))
 
 
@@ -85,7 +90,7 @@ def _native_history_context(block: dict[str, Any], records: list[dict[str, Any]]
     for record in records:
         code = str(record.get("upcode") or "")
         received = _number(record.get("received_ts"))
-        if (record.get("market") != "KOSDAQ" or not _industry(code, _display_name(record.get("industry"))) or received is None
+        if (record.get("market") != block["market"] or not _industry(code, _display_name(record.get("industry")), block["market"]) or received is None
                 or received > time.time() or dt.datetime.fromtimestamp(received, KST).date() != day):
             continue
         if code not in latest or received >= float(latest[code]["received_ts"]):
@@ -110,7 +115,8 @@ def _native_history_context(block: dict[str, Any], records: list[dict[str, Any]]
         query = request.get("t1621InBlock") or {} if isinstance(request, dict) else {}
         if not isinstance(query, dict):
             query = {}
-        if (snapshot.get("status") != "success" or not isinstance(header, dict)
+        if (snapshot.get("status") != "success" or snapshot.get("source_unit") not in (None, "UNVERIFIED")
+                or not isinstance(header, dict)
                 or str(header.get(actor_code) or "").zfill(4) != INVESTORS[block["investor"]]
                 or header.get("ex_upcode") != "U" + code
                 or query.get("upcode") != code or query.get("exchgubun") != "U"
@@ -198,7 +204,8 @@ def _native_history_context(block: dict[str, Any], records: list[dict[str, Any]]
 
 def industry_buy_context(start_ts: float, end_ts: float, investor: str,
                          *, path: Path | None = None,
-                         session_open_ts: float | None = None) -> dict[str, Any]:
+                         session_open_ts: float | None = None,
+                         market: str = "KOSDAQ") -> dict[str, Any]:
     """Rank positive cumulative changes among independently aligned industries.
 
     The current journal can be appended while we read it. An unfinished final
@@ -207,7 +214,7 @@ def industry_buy_context(start_ts: float, end_ts: float, investor: str,
     the selected boundary can contribute to that boundary.
     """
     block: dict[str, Any] = {
-        "version": "kosdaq-surge-industries-v3", "market": "KOSDAQ",
+        "version": "market-surge-industries-v4", "market": market,
         "investor": investor, "requested_window": [start_ts, end_ts],
         "available": False, "rows": [], "top": [], "source": SOURCE,
         "source_guide": GUIDE_URL, "source_unit": "UNVERIFIED",
@@ -223,6 +230,8 @@ def industry_buy_context(start_ts: float, end_ts: float, investor: str,
         block["reason"] = reason
         return block
 
+    if market not in {"KOSPI", "KOSDAQ"}:
+        return hold("업종 시장 구분 확인 불가")
     start, end = _number(start_ts), _number(end_ts)
     if investor not in INVESTORS or start is None or end is None or not 300 <= end - start <= 330:
         return hold("같은 투자자의 유효한 5분 구간 없음")
@@ -267,29 +276,30 @@ def industry_buy_context(start_ts: float, end_ts: float, investor: str,
             invalid["invalid_record"] += 1
             continue
         if row.get("record_type") == "industry_history_snapshot" and row.get("source_tr") == "t1621":
-            histories.append(row)
+            if row.get("market") == market:
+                histories.append(row)
             continue
         if row.get("record_type") == "subscription_coverage":
             stamp = _number(row.get("ts"))
             items = row.get("expected")
-            if (row.get("market") == "KOSDAQ" and row.get("source_tr") == "UBM"
+            if (row.get("market") == market and row.get("source_tr") == "UBM"
                     and stamp is not None and session_open_ts - 3600 <= stamp <= time.time()
                     and dt.datetime.fromtimestamp(stamp, KST).date() == start_day and isinstance(items, list)):
                 history_expected = {str(x.get("code")) for x in items if isinstance(x, dict)
-                                    and _industry(str(x.get("code")), _display_name(x.get("name")))}
-            if (row.get("market") == "KOSDAQ" and row.get("source_tr") == "UBM"
+                                    and _industry(str(x.get("code")), _display_name(x.get("name")), market)}
+            if (row.get("market") == market and row.get("source_tr") == "UBM"
                     and stamp is not None and session_open_ts - 3600 <= stamp <= end
                     and dt.datetime.fromtimestamp(stamp, KST).date() == start_day):
                 if isinstance(items, list):
                     expected = {str(x.get("code")) for x in items if isinstance(x, dict)
-                                and _industry(str(x.get("code")), _display_name(x.get("name")))}
+                                and _industry(str(x.get("code")), _display_name(x.get("name")), market)}
             continue
         if row.get("investor") != investor:
             continue
         code = str(row.get("upcode") or "").strip()
         name = _display_name(row.get("industry"))
-        if not _industry(code, name):
-            if re.fullmatch(r"3\d{2}", code) and (not name or len(name) > 60 or name == code):
+        if not _industry(code, name, market):
+            if re.fullmatch(r"0\d{2}" if market == "KOSPI" else r"3\d{2}", code) and (not name or len(name) > 60 or name == code):
                 taint(code, row)
                 invalid["invalid_industry_name"] += 1
             continue
@@ -383,8 +393,8 @@ def industry_buy_context(start_ts: float, end_ts: float, investor: str,
 
 
 def industry_context_lines(block: dict[str, Any] | None, investor: str,
-                           start_ts: float, end_ts: float) -> list[str]:
-    if (not block or block.get("market") != "KOSDAQ" or block.get("investor") != investor
+                           start_ts: float, end_ts: float, *, market: str = "KOSDAQ") -> list[str]:
+    if (not block or block.get("market") != market or block.get("investor") != investor
             or block.get("requested_window") != [start_ts, end_ts]):
         return ["• 업종 순매수 증가 확인 보류 — 같은 투자자·구간의 자료 없음"]
     top = block.get("top") or []
