@@ -42,6 +42,9 @@ ICI_MMF = "https://www.ici.org/research/stats/mmf"
 FINRA_MARGIN = "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics"
 BING_Bofa = 'BofA EPFR US stocks money market Reuters'
 BING_LIPPER = 'LSEG Lipper U.S. equity funds money market Reuters'
+# Goldman Prime detailed 5-day z-score tables are licensed Marquee data, NOT a public API.
+# The event below uses corroborated, explicitly dated PUBLIC secondary reporting only.
+GOLDMAN_PRIME_SEARCH = 'Goldman Sachs prime brokerage hedge funds technology holdings net leverage Bloomberg'
 JPM_ALL_TOPICS = "https://www.jpmorganchase.com/institute/all-topics"
 JPM_HOUSEHOLD = "https://www.jpmorganchase.com/institute/all-topics/household-financial-health/drawing-on-investment-wealth-full-report"
 FED_Z1 = "https://www.federalreserve.gov/releases/z1/default.htm"
@@ -1221,6 +1224,144 @@ def parse_reuters(kind):
     return None
 
 
+def goldman_prime_public_article(text, published):
+    """Extract a dated Goldman Prime positioning observation, never a generic news date.
+
+    Returns only the same-report tech allocation + net leverage when both are
+    explicitly attributed and a five-trading-session ending date is present.
+    Z-scores from licensed Goldman charts are deliberately NOT imputed.
+    """
+    if not isinstance(text, str) or not isinstance(published, date):
+        return None
+    if not re.search(r"Goldman(?:\s+Sachs|'s)", text, re.I):
+        return None
+    if not re.search(r"prime\s+(?:desk|brokerage|book)|prime-brokerage", text, re.I):
+        return None
+    if not re.search(r"hedge\s+funds?", text, re.I):
+        return None
+    period = re.search(
+        r"\b(?:five|5)\s+trading\s+(?:sessions|days)\s+(?:through|to|ending)\s+"
+        r"(?:(October|Oct\.?)\s+(\d{1,2})|(\d{1,2})\s+(October|Oct\.?))",
+        text, re.I,
+    )
+    if not period:
+        return None
+    day = period.group(2) or period.group(3)
+    try:
+        observed = date(published.year, 10, int(day))
+    except (ValueError, TypeError):
+        return None
+    if not 0 <= (published - observed).days <= 14:
+        return None
+    a = re.search(
+        r"\bnet\s+allocation(?:\s+to\s+(?:the\s+)?(?:tech(?:nology)?\s+)?sector)?"
+        r"(?:\s+stands\s+at|\s+is)?\D{0,40}(\d{1,2}(?:\.\d+)?)\s*%",
+        text, re.I,
+    )
+    if not a:
+        a = re.search(
+            r"\btech(?:nology)?\s+sector\s+accounts\s+for\s+"
+            r"(\d{1,2}(?:\.\d+)?)\s*%", text, re.I,
+        )
+    lev = re.search(
+        r"\bnet\s+leverage\b.{0,100}?(\d{1,2}(?:\.\d+)?)\s*%", text, re.I,
+    )
+    if not a or not lev:
+        return None
+    allocation, leverage = float(a.group(1)), float(lev.group(1))
+    if not (0 <= allocation <= 100 and 0 <= leverage <= 100):
+        return None
+    if not re.search(r"tech(?:nology)?\s+(?:stock|sector|holdings?|positions?|exposure)|technology\s+shares", text, re.I):
+        return None
+    return observed, round(allocation, 2), round(leverage, 2)
+
+
+def parse_goldman_prime_public():
+    """Cross-check independent public publishers; fail closed when report is private."""
+    seeds = [
+        {
+            "title": "Hedge funds cut tech stocks at record pace, Goldman says",
+            "link": "https://www.investing.com/news/stock-market-news/hedge-funds-cut-tech-stocks-at-record-pace-goldman-says-4958101",
+            "pub": "Mon, 19 Oct 2026 13:15:00 GMT",
+            "desc": "Goldman Sachs prime brokerage hedges and leverage",
+        },
+        {
+            "title": "Hedge funds slash tech exposure at fastest pace in a decade",
+            "link": "https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade",
+            "pub": "Tue, 20 Oct 2026 10:03:00 GMT",
+            "desc": "Goldman Sachs prime book technology leverage",
+        },
+    ]
+    trusted_domains = ("reuters.com", "investing.com", "hedgeweek.com", "bloomberg.com")
+    today = datetime.now(ZoneInfo("America/New_York")).date()
+    records = []
+    seen_urls = set()
+    for item in seeds + news_items(GOLDMAN_PRIME_SEARCH):
+        url = str(item.get("link") or "")
+        if not url or url in seen_urls:
+            continue
+        seen_urls.add(url)
+        if not re.search(r"Goldman|hedge funds?.*tech", str(item.get("title") or "") + " " + str(item.get("desc") or ""), re.I):
+            continue
+        try:
+            pub = parsedate_to_datetime(str(item.get("pub") or "")).date()
+        except (TypeError, ValueError, IndexError, OverflowError):
+            continue
+        if not 0 <= (today - pub).days <= 14:
+            continue
+        final_url, text_body = extract_article_body(url)
+        from urllib.parse import urlparse
+        host = (urlparse(final_url).hostname or "").lower()
+        if not any(host == d or host.endswith("." + d) for d in trusted_domains):
+            continue
+        parsed = goldman_prime_public_article(text_body, pub)
+        if parsed is None:
+            continue
+        observed, allocation, leverage = parsed
+        records.append((observed, allocation, leverage, host, final_url))
+    # Two independent public domains must agree on the observed period and both
+    # headline positioning percentages. These are secondary citations, not
+    # Goldman Marquee authentication or a direct weekly z-score feed.
+    grouped = {}
+    for observed, allocation, leverage, host, url in records:
+        key = (observed, allocation, leverage)
+        grouped.setdefault(key, {})[host.removeprefix("www.")] = url
+    approved = [(key, domains) for key, domains in grouped.items() if len(domains) >= 2]
+    if not approved:
+        return None
+    (observed, allocation, leverage), domains = max(approved, key=lambda pair: pair[0][0])
+    if not 0 <= (today - observed).days <= 14:
+        return None
+    return {
+        "source": "Goldman Prime 공개보도 교차검증",
+        "kind": "goldman_prime",
+        "period": observed.strftime("%B %d, %Y"),
+        "reference_week": observed.isoformat(),
+        "reference_week_verified": True,
+        "published": today.isoformat(),
+        "url": next(iter(domains.values())),
+        "comparison_note": "복수 공개 보도의 인용치. Goldman 고객 전용 원자료·업종별 표준편차 수치 미확보",
+        "metrics": {
+            "tech_net_allocation_pct": allocation,
+            "net_leverage_pct": leverage,
+        },
+        "crosschecked_sources": list(domains.values()),
+    }
+
+
+# Regression checks run as part of the existing Python execution path.
+assert goldman_prime_public_article(
+    "Goldman Sachs prime brokerage hedge funds cut technology stock positions "
+    "in five trading sessions through Oct. 15. Net allocation to the sector stands at 23.5% "
+    "of the prime book. Their net leverage fell to a one-year low of 48.6%.",
+    date(2026, 10, 19),
+) == (date(2026, 10, 15), 23.5, 48.6)
+assert goldman_prime_public_article(
+    "Goldman Sachs prime brokerage hedge funds cut tech stocks in the week ending October 16. "
+    "Net allocation to the sector stands at 23.5%, net leverage 48.6%.",
+    date(2026, 10, 19),
+) is None
+
 def period_date(x):
     if not x:
         return None
@@ -1352,7 +1493,10 @@ assert "직접 이동 확인 불가" in flow_direction(-10.0, 5.0)
 def source_block(x, fx):
     m = x["metrics"]
     lines = []
-    if x["kind"] == "combined":
+    if x["kind"] == "goldman_prime":
+        lines.append(f"• 기술주 프라임 장부 순편입 비중 {m['tech_net_allocation_pct']:.2f}% / 헤지펀드 순레버리지 {m['net_leverage_pct']:.2f}%")
+        lines.append("• 주간 기준일을 확인한 복수 언론 인용치. 고객 전용 업종별 정규화 매도·공매도 강도는 자동 수집·검증되지 않음")
+    elif x["kind"] == "combined":
         lines.append(f"• 미국 국내주식형(뮤추얼펀드+ETF) {fmt_usd_bn_kr(m.get('domestic'), fx)}")
         lines.append(f"• 세계주식형 {fmt_usd_bn_kr(m.get('world'), fx)} / 채권형 {fmt_usd_bn_kr(m.get('bond'), fx)}")
         if x.get("domestic_4w") is not None:
@@ -1424,6 +1568,7 @@ for name, fn in [
     ("Federal Reserve Z.1 가계 대차대조표", parse_fed_household_balance_sheet),
     ("BofA/EPFR Reuters", lambda: parse_reuters("bofa")),
     ("LSEG Lipper Reuters", lambda: parse_reuters("lipper")),
+    ("Goldman Prime 공개보도", parse_goldman_prime_public),
 ]:
     try:
         x = fn()
@@ -1469,6 +1614,7 @@ ici_mmf = next((x for x in results if x["kind"] == "mmf"), None)
 finra = next((x for x in results if x["kind"] == "margin"), None)
 bofa = next((x for x in results if x["kind"] == "bofa"), None)
 lipper = next((x for x in results if x["kind"] == "lipper"), None)
+goldman_prime = next((x for x in results if x["kind"] == "goldman_prime"), None)
 jpm_household = next((x for x in results if x["kind"] == "household_withdrawals"), None)
 fed_household = next((x for x in results if x["kind"] == "household_balance_sheet"), None)
 
@@ -1554,6 +1700,13 @@ for i in range(len(known)):
             )
 
 interpret = []
+if goldman_prime:
+    gm = goldman_prime["metrics"]
+    interpret.append(
+        f"Goldman Prime 언론 교차검증({goldman_prime['reference_week']}): 기술주 순편입 "
+        f"{gm['tech_net_allocation_pct']:.2f}% / 순레버리지 {gm['net_leverage_pct']:.2f}%. "
+        "헤지펀드 포지션 비중이지 펀드 순유입·주가 등락률이나 직접 매도금액이 아님"
+    )
 if bofa:
     interpret.append(
         f"BofA/EPFR: 집계주간 {bofa.get('reference_week') or '확인 불가'}, "
@@ -1788,6 +1941,13 @@ if should_alert:
             f"• 현금성 대기자금(MMF): {fmt_usd_bn_kr(ch, fx)} → "
             f"{'감소' if ch is not None and ch < 0 else '증가' if ch is not None and ch > 0 else '변화 없음'}"
         )
+    if goldman_prime:
+        gm = goldman_prime["metrics"]
+        body.append(
+            f"• Goldman Prime(공개보도 확인, {goldman_prime['reference_week']}): "
+            f"기술주 순편입 {gm['tech_net_allocation_pct']:.2f}% / "
+            f"순레버리지 {gm['net_leverage_pct']:.2f}% → 원자료 업종별 거래강도는 확인 대기"
+        )
     if finra:
         md = finra["metrics"].get("margin_debt_mom_bn")
         body.append(
@@ -1947,6 +2107,7 @@ if should_alert:
         "• BofA/Hartnett Bloomberg 인용 2026-10-07 주간 MMF 1,664억달러는 당시 보도값이며 이후 주간 최신값으로 재사용 금지",
         "• BofA/Hartnett 주간 순유입과 ICI 공식 MMF 총자산 주간 증감은 모집단·산식이 달라 합산·직접 비교 금지",
         "• ICI·BofA/EPFR·LSEG Lipper는 모집단이 달라 합산·평균하지 않음",
+        "• Goldman Prime은 헤지펀드 보유·레버리지 비중으로, 펀드 순유입·CFTC 선물 포지션과 합산 금지; 고객 전용 5거래일 정규화 흐름은 공개 보도로 확인된 숫자만 표시",
         "• 보도일은 집계주간이 아님. 출처별 실제 집계기간이 확인되지 않으면 주식형 자금흐름 충돌 판정도 보류",
         "• 미 국채 10년물 5.30%·5.50%·6.00%와 5거래일 20bp는 내부 경보 기준이며 BofA가 공식 제시한 임계치가 아님",
         "• FINRA 마진부채는 월간 레버리지 확인용으로 주간 펀드 흐름과 기간을 섞지 않음",
