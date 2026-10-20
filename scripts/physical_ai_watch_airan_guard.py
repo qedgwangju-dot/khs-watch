@@ -6589,6 +6589,355 @@ for _query in (
         base.QUERIES.append(_query)
 
 
+# New 2026-10-19/20 disclosures: two distinct, properly sourced upgrades
+# in the EXISTING watcher. Do not confuse 70% Atlas actuator/BOM with
+# finished robot price or 50,000 HMG group deployments with Atlas orders.
+# Do not confuse Eka's FULL $150m funding round with Samsung Next's stake
+# or the known 2025 Rainbow RB-Y1 research-platform customer relationship
+# with a new paid production agreement.
+ATLAS_COST_20261019_RECOVERY = "DIRECT_BD_CFO_ATLAS_ACTUATOR_BOM_70_20261019"
+EKA_ROBOTICS_20261020_RECOVERY = "DIRECT_EKA_SERIESA_150M_SAMSUNG_NEXT_20261020"
+ATLAS_COST_FORTUNE = "https://fortune.com/2026/10/19/how-boston-dynamics-turning-robots-into-a-real-business-cfo/"
+EKA_ROBOTICS_FUNDING = "https://ekarobotics.com/blog/eka-robotics-raises-150m-to-build-superhuman-intelligence-for-the-physical-world"
+ATLAS_EKA_FX = 1327.21  # source rate observed 2026-10-20; historical, never "live"
+_ATLAS_BD_SOURCE = {"Boston Dynamics", "보스턴다이내믹스"}
+_EKA_COMPANY_SOURCES = {"Eka Robotics", "EKA Robotics"}
+_EKA_RESEARCH_SOURCE = {"Rainbow Robotics", "레인보우로보틱스"}
+_ATLAS_BOM_70 = re.compile(r"70\s*%|seventy\s*percent|70퍼센트", re.I)
+_ATLAS_AT_COST = re.compile(r"\bat\s+cost\b|원가\s*수준|원가에\s*공급", re.I)
+_ATLAS_SIGNED_NEW = re.compile(
+    r"(?:Atlas|아틀라스).{0,100}(?:purchase\s+order\s+signed|binding\s+order|"
+    r"양산\s*구매계약\s*체결|확정\s*발주\s*계약\s*체결)", re.I
+)
+_EKA_FUNDING = re.compile(
+    r"(?:Series\s*A|시리즈\s*A).{0,120}"
+    r"(?:\$?\s*150\s*(?:m|million)|1억\s*5[,]?000만\s*달러|1억5000만달러)|"
+    r"(?:\$?\s*150\s*(?:m|million)|1억\s*5[,]?000만\s*달러).{0,120}"
+    r"(?:Series\s*A|시리즈\s*A)", re.I
+)
+_EKA_SIGNED_CUSTOMER = re.compile(
+    r"(?:Eka|에카).{0,110}(?:정식\s*공급계약\s*체결|"
+    r"paid\s*production\s*contract\s*signed|"
+    r"paid\s*customer\s*deployment\s*completed|"
+    r"유료\s*고객\s*계약\s*체결)", re.I
+)
+_EKA_RB_Y1_SIGNED = re.compile(
+    r"(?:Eka|에카).{0,120}RB[-\s]?Y1.{0,120}"
+    r"(?:신규\s*공급계약\s*체결|구매\s*계약\s*체결|"
+    r"new\s*purchase\s*order\s*signed)", re.I
+)
+
+
+def _atlas_eka_identify(text: str) -> str:
+    # Keep source in scoring; do not classify a generic Spot price story as
+    # a confirmed Atlas bill-of-materials disclosure.
+    if (re.search(r"Boston\s*Dynamics|보스턴다이내믹스",text,re.I)
+            and re.search(r"Atlas|아틀라스",text,re.I)
+            and re.search(r"actuat|액추에이터|구동\s*장치",text,re.I)
+            and (_ATLAS_BOM_70.search(text) or _ATLAS_AT_COST.search(text)
+                 or _ATLAS_SIGNED_NEW.search(text))):
+        return "atlas_actuator_bom"
+    if (re.search(r"\bEka\s*Robotics\b|EKA\s*로보틱스|에카로보틱스",text,re.I)
+            and (re.search(r"Samsung\s*Next|삼성넥스트|시리즈\s*A|Series\s*A|"
+                           r"150\s*million|RB[-\s]?Y1|로봇\s*손|dexterous",text,re.I)
+                 or _EKA_SIGNED_CUSTOMER.search(text))):
+        return "eka_dexterous_funding"
+    return ""
+
+
+def _atlas_eka_stage(item: dict, group: str) -> str:
+    text = " ".join(str(item.get(k) or "") for k in ("title","description"))
+    source = item.get("source") or ""
+    if group == "atlas_actuator_bom":
+        if source in _ATLAS_BD_SOURCE and _ATLAS_SIGNED_NEW.search(text):
+            return "official_binding_atlas_order"
+        if source in _ATLAS_BD_SOURCE and _ATLAS_BOM_70.search(text) and _ATLAS_AT_COST.search(text):
+            return "first_party_bom_verification"
+        if source == "Fortune" and _ATLAS_BOM_70.search(text) and _ATLAS_AT_COST.search(text):
+            return "fortune_cfo_interview"
+        return "old_contract_or_reprint"
+    if group == "eka_dexterous_funding":
+        if source in _EKA_COMPANY_SOURCES and _EKA_SIGNED_CUSTOMER.search(text):
+            return "official_paid_robot_customer"
+        if source in _EKA_RESEARCH_SOURCE and _EKA_RB_Y1_SIGNED.search(text):
+            return "official_new_rb_y1_order"
+        if (source in _EKA_COMPANY_SOURCES
+                and _EKA_FUNDING.search(text)
+                and re.search(r"Samsung\s*Next|삼성넥스트",text,re.I)):
+            return "eka_company_series_a"
+        return "old_research_use_or_media_report"
+    return ""
+
+
+def _atlas_eka_recovery(q: str) -> list[dict]:
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,27):
+        return []
+    if q == ATLAS_COST_20261019_RECOVERY:
+        return [{
+            "title":"보스턴다이내믹스 CFO: Atlas 액추에이터 부품원가 70%, 현대모비스 원가 수준 공급",
+            "description":(
+                "2026-10-19 Fortune Amanda McMaster 보스턴다이내믹스 CFO 직접 인터뷰: "
+                "Atlas 액추에이터는 전체 부품·재료비(BOM)의 약 70%이며 "
+                "현대모비스가 원가 수준으로 생산해 공급할 계획이라고 설명했다. "
+                "2026-01 현대모비스·Boston Dynamics Atlas 액추에이터 전략적 공급 협력 "
+                "공식 발표의 60% 초과 원가 비중을 더 구체화한 경영진 발언이지 "
+                "10월 신규 5만개 부품 주문·양산 납품 공시는 아니다. "
+                "현대차·기아 시설 내 그룹 전체 로봇 약 50,000대 배치 구상을 언급했으나 "
+                "Atlas 50,000대 확정 공급계약·납품 수량으로 볼 근거는 없다. "
+                "Boston Dynamics Spot 기본 플랫폼은 100,000달러(약 1억3,272만원), "
+                "옵션 포함 최고 300,000달러(약 3억9,816만원) 수준이라는 설명이다. "
+                "이는 Spot 가격이지 Atlas 판매가격이나 Atlas 액추에이터 단가가 아니다. "
+                "현대모비스 액추에이터 실제 총원가·공급단가·영업이익·공급 대수는 미공개다. "
+                "원가가정: 액추에이터가 부품원가 70%라면 액추에이터 단가 10% 하락 시 "
+                "로봇 전체 부품원가가 약 7% 절감될 가능성이 있다(보조 계산). "
+                "Spot 현금창출사업에는 Orbit 시설 데이터·점검 소프트웨어, "
+                "Spot Care 유지보수 등이 포함되지만 이번 CFO 인터뷰에서 신규 유료계약을 "
+                "발표한 것은 아니다. "
+                "근거: Fortune CFO 직접 인터뷰와 현대모비스 2026-01 공식 협력 발표."
+            ),
+            "source":"Fortune",
+            "link":ATLAS_COST_FORTUNE,
+            "published":None,
+            "direct_recovery":True,
+            "executive_cost_disclosure":True,
+        }]
+    if q == EKA_ROBOTICS_20261020_RECOVERY:
+        return [{
+            "title":"Eka Robotics 시리즈 A 1억5000만달러 투자 유치, Samsung Next 참여 공식 발표",
+            "description":(
+                "2026-10-20 Eka Robotics 회사 공식자료: 150 million dollars "
+                "Series A(1억5000만달러, 약 1,991억원)는 전체 라운드 조달액이다. "
+                "a16z와 F-Prime 공동 주도, Samsung Next 투자 참여 공식 명시. "
+                "삼성넥스트의 개별 투자액과 투자 지분율은 미공개이며 "
+                "삼성전자 로봇 매출·삼성넥스트 단독 1,991억원 투자가 아니다. "
+                "Eka Robotics는 Vision-Force-Action(VFA) 모델과 힘 감지 로봇 손을 "
+                "개발하며 시뮬레이션 강화학습으로 촉각·접촉 제어를 연구한다. "
+                "회사 발표 정량: 시간당 1,500회 물체 조작, 자체 비교 인간 기준 "
+                "시간당 600회로 약 2.5배. 독립 평가·현장 장기간 성공률·양품률은 미확인이다. "
+                "2025-07 레인보우로보틱스 회사 제공 발표를 인용한 뉴스1·월간로봇기술 자료에서 "
+                "미국 Eka가 RB-Y1 이동형 양팔 로봇을 실제 연구용으로 활용하며 "
+                "dexterous hand 로봇 손 연구 프로젝트가 연결된다고 보도했다. "
+                "이는 과거 제품 실제 채택·연구용 공급 이력으로, "
+                "이번 새 라운드에서 RB-Y1을 추가 발주했다는 뜻은 아니다. "
+                "자금은 로봇 모델·고객 배치 확대를 목적으로 하지만 개별 집행액은 미공개다. "
+                "TechCrunch 2026-10-20 보도에 따르면 투자 후 기업가치 14억5000만달러 "
+                "(약 1조9,245억원)는 추정 투자평가액이지 매출이 아니다. "
+                "실제 유료 고객·수익·반복 사용권 금액은 확인되지 않았다."
+            ),
+            "source":"Eka Robotics",
+            "link":EKA_ROBOTICS_FUNDING,
+            "published":None,
+            "direct_recovery":True,
+            "company_funding_confirmation":True,
+        }]
+    return []
+
+
+_ae_prev_query=base.query_news
+_ae_prev_group=base.topic_group
+_ae_prev_score=base.score
+_ae_prev_category=base.category
+_ae_prev_meaning=base.meaning
+_ae_prev_risk=base.risk
+_ae_prev_verify=base.verification
+_ae_prev_title=base.clean_title
+_ae_prev_tag=base.tag_for
+_ae_prev_key=base.key
+_ae_prev_select=base.select_diverse
+
+
+def _ae_query(q: str) -> list[dict]:
+    if q in (ATLAS_COST_20261019_RECOVERY,EKA_ROBOTICS_20261020_RECOVERY):
+        return _atlas_eka_recovery(q)
+    return _ae_prev_query(q)
+
+
+def _ae_group(text: str) -> str | None:
+    g=_atlas_eka_identify(text)
+    return g or _ae_prev_group(text)
+
+
+def _ae_score(item: dict) -> int:
+    t=" ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    g=_atlas_eka_identify(t)
+    if not g:
+        return _ae_prev_score(item)
+    stage=_atlas_eka_stage(item,g)
+    return {
+        "fortune_cfo_interview":55,
+        "first_party_bom_verification":70,
+        "official_binding_atlas_order":83,
+        "eka_company_series_a":78,
+        "official_paid_robot_customer":87,
+        "official_new_rb_y1_order":85,
+        "old_contract_or_reprint":0,
+        "old_research_use_or_media_report":0,
+    }.get(stage,0)
+
+
+def _ae_category(text: str, group: str) -> str:
+    # Renderer loses item['source'] on this call, so use content not source.
+    if group=="atlas_actuator_bom":
+        if _ATLAS_SIGNED_NEW.search(text):
+            return "Atlas 액추에이터 · 양산 구매계약 직접확인"
+        if re.search(r"\b(?:Boston\s*Dynamics|보스턴다이내믹스)\s*공식\s*발표",text,re.I):
+            return "Atlas 액추에이터 · 제조사 직접 원가비중 확인"
+        return "Atlas 액추에이터 · CFO 부품원가 70% 발언"
+    if group=="eka_dexterous_funding":
+        if _EKA_SIGNED_CUSTOMER.search(text):
+            return "Eka Robotics · 신규 유료 고객 공급계약"
+        if _EKA_RB_Y1_SIGNED.search(text):
+            return "Eka Robotics–레인보우로보틱스 · RB-Y1 신규 주문"
+        return "Eka Robotics · 시리즈 A 공식 조달·삼성넥스트 참여"
+    return _ae_prev_category(text,group)
+
+
+def _ae_meaning(cat: str) -> str:
+    if cat=="Atlas 액추에이터 · CFO 부품원가 70% 발언":
+        return (
+            "10/19 Fortune에 보스턴다이내믹스 CFO가 Atlas 부품·재료비 중 "
+            "액추에이터 약 70%, 현대모비스 원가 수준 공급을 언급했습니다. "
+            "1월 공식 공급 협력의 경제성 설명이 구체화된 것이지 신규 계약은 아닙니다. "
+            "그룹 내 약 5만 대 배치는 여러 로봇의 계획이며 Atlas 5만 대 확정 발주가 아닙니다. "
+            "Spot 판매가는 기본 10만달러(약 1억3,272만원)~옵션 30만달러"
+            "(약 3억9,816만원)이고 Atlas 가격·부품단가로 사용할 수 없습니다. "
+            "액추에이터 가격이 10% 낮아지면 다른 조건 일정 시 Atlas BOM은 "
+            "약 7% 낮아지는 원가 민감도(70%×10%)입니다."
+        )
+    if cat=="Eka Robotics · 시리즈 A 공식 조달·삼성넥스트 참여":
+        return (
+            "Eka 회사 공식 발표로 시리즈 A 전체 1억5000만달러(약 1,991억원)를 조달하고 "
+            "Samsung Next가 공동 투자자로 참여했습니다. 개별 투자액·지분율 미공개. "
+            "Eka는 힘 감지 로봇손·시각-힘-행동 VFA 모델을 연구하며 "
+            "시간당 1,500회 조작(인간 기준 600회)의 2.5배는 회사 주장 성능입니다. "
+            "2025년 레인보우로보틱스 RB-Y1 실제 고객·손 연구 연결은 과거 확인된 "
+            "연구용 채택 이력이지 신규 발주나 양산 수익이 아닙니다. "
+            "반복 유료 고객·모델 사용료·실제 제품 성능 검증이 다음 단계입니다."
+        )
+    if cat=="Atlas 액추에이터 · 제조사 직접 원가비중 확인":
+        return "공식 비용 구조가 CFO 보도 단계를 넘어 직접 확인된 단계입니다. 부품비 원가비중과 실제 매출·공급단가는 따로 검증합니다."
+    if cat=="Atlas 액추에이터 · 양산 구매계약 직접확인":
+        return "Atlas용 액추에이터 확정 구매계약이 별도로 공표된 단계입니다. 계약부품 수·단가·고객 검수·매출 인식을 확인합니다."
+    if cat=="Eka Robotics · 신규 유료 고객 공급계약":
+        return "Eka 회사가 실제 유료 로봇 손 고객 계약을 공개한 단계입니다. 연구·투자 관계와 구분해 수주금액·출하·반복매출을 검증합니다."
+    if cat=="Eka Robotics–레인보우로보틱스 · RB-Y1 신규 주문":
+        return "기존 2025년 RB-Y1 연구 활용과 달리 신규 공급계약이 회사 공식 확인된 단계입니다. 신규 발주 대수·금액·검수·매출을 확인합니다."
+    return _ae_prev_meaning(cat)
+
+
+def _ae_risk(cat: str) -> str:
+    if cat.startswith("Atlas 액추에이터 · "):
+        return (
+            "70%는 부품·재료비 비중이며 전체 제조원가·소비자 판매가와 다릅니다. "
+            "원가 수준 공급은 높은 부품 이익률을 보장하지 않습니다. "
+            "감속기·모터·제어기 통합 수율, 토크 밀도, 발열·검사시간·"
+            "현장 내구성, 안전·보험·고객 인수시험이 6~24개월 병목입니다. "
+            "실패는 원가 절감에 비해 양품률이 낮고 그룹 고객의 실제 "
+            "Atlas 설치가 늦어지는 것입니다. 조기 지표는 첫 양산 출하·"
+            "고객 검수·부품 원가와 장기 가동률입니다."
+        )
+    if cat.startswith("Eka Robotics") or cat.startswith("Eka Robotics–"):
+        return (
+            "투자금은 제품 매출이 아닙니다. 삼성넥스트 참여를 삼성전자 전사 "
+            "직접 공급계약이나 레인보우 RB-Y1 새 대량발주로 간주하면 안 됩니다. "
+            "시뮬레이션에서 실제 로봇으로의 성능 이전, 힘 센서 품질·"
+            "과잉 파지에 따른 제품 파손, 내구성·안전 인증·보험, "
+            "반복 작업시 성능 저하가 6~12개월 위험요인입니다. "
+            "시간당 1,500회는 회사 발표 조작속도이며 현장 장기 고객 "
+            "성공률·가동률·계약 매출이 조기경보 지표입니다."
+        )
+    return _ae_prev_risk(cat)
+
+
+def _ae_verify(item: dict,group: str,text: str) -> str:
+    if group=="atlas_actuator_bom":
+        return (
+            "Fortune 10/19 보스턴다이내믹스 CFO 직접 인터뷰 + "
+            "현대모비스 1월 공식 액추에이터 공급협력 교차확인. "
+            "70%는 Atlas 부품·재료비 비중. Spot 가격·그룹 로봇 5만대 "
+            "구상은 Atlas 부품 단가·확정 발주가 아님."
+        )
+    if group=="eka_dexterous_funding":
+        return (
+            "Eka Robotics 10/20 회사 자금유치 발표 직접 확인, "
+            "TechCrunch 10/20 투자후 기업가치 교차 확인, "
+            "레인보우로보틱스 2025년 회사자료 기반 RB-Y1 활용 보도 교차검증. "
+            "Samsung Next 투자액·지분율·신규 RB-Y1 발주는 미공개."
+        )
+    return _ae_prev_verify(item,group,text)
+
+
+def _ae_title(title: str,source: str) -> str:
+    if re.search(r"\bEka\s*Robotics\b|EKA\s*로보틱스|에카로보틱스",title,re.I):
+        if source in _EKA_COMPANY_SOURCES and _EKA_SIGNED_CUSTOMER.search(title):
+            return "Eka Robotics 신규 유료 로봇 손 계약 공식 확인"
+        if source in _EKA_RESEARCH_SOURCE and _EKA_RB_Y1_SIGNED.search(title):
+            return "레인보우로보틱스, Eka용 RB-Y1 신규 발주 공식 확인"
+        return "Eka Robotics 공식 1억5000만달러 조달·Samsung Next 투자 참여"
+    if re.search(r"Boston\s*Dynamics|보스턴다이내믹스",title,re.I) and re.search(r"Atlas|아틀라스",title,re.I):
+        if source in _ATLAS_BD_SOURCE and _ATLAS_SIGNED_NEW.search(title):
+            return "보스턴다이내믹스, Atlas 액추에이터 정식 양산 발주 발표"
+        return "보스턴다이내믹스 CFO: Atlas 액추에이터 BOM 약 70%·현대모비스 원가 공급"
+    return _ae_prev_title(title,source)
+
+
+def _ae_tag(group: str) -> str:
+    if group=="atlas_actuator_bom":
+        return "Atlas 액추에이터 원가"
+    if group=="eka_dexterous_funding":
+        return "Eka–Samsung Next·레인보우"
+    return _ae_prev_tag(group)
+
+
+def _ae_key(item: dict) -> str:
+    text=" ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    g=_atlas_eka_identify(text)
+    if g=="atlas_actuator_bom":
+        stage=_atlas_eka_stage(item,g)
+        return hashlib.sha256(f"boston-atlas|20261019|bom70|mobis-atcost|{stage}".encode()).hexdigest()
+    if g=="eka_dexterous_funding":
+        stage=_atlas_eka_stage(item,g)
+        return hashlib.sha256(f"eka|20261020|seriesa150m|samsung-next|{stage}".encode()).hexdigest()
+    return _ae_prev_key(item)
+
+
+def _ae_select(items: list[dict],seen: set[str],force: bool,limit: int) -> list[dict]:
+    chosen=_ae_prev_select(items,seen,force,limit)
+    candidates=items if force else [x for x in items if x.get("key") not in seen]
+    for g in ("atlas_actuator_bom","eka_dexterous_funding"):
+        hit=next((x for x in candidates if x.get("group")==g and x.get("score",0)>=11),None)
+        if hit and not any(x.get("key")==hit.get("key") for x in chosen):
+            chosen=([hit,*chosen] if len(chosen)<limit else [hit,*chosen[:-1]])
+    return chosen
+
+
+base.query_news=_ae_query
+base.topic_group=_ae_group
+base.score=_ae_score
+base.category=_ae_category
+base.meaning=_ae_meaning
+base.risk=_ae_risk
+base.verification=_ae_verify
+base.clean_title=_ae_title
+base.tag_for=_ae_tag
+base.key=_ae_key
+base.select_diverse=_ae_select
+base.OFFICIAL_OR_PRIMARY.update({"Eka Robotics","EKA Robotics","Boston Dynamics"})
+base.TRUSTED.add("Fortune")
+for _q in (
+    ATLAS_COST_20261019_RECOVERY,EKA_ROBOTICS_20261020_RECOVERY,
+    '(Boston Dynamics OR 보스턴다이내믹스) (Atlas OR 아틀라스) '
+    '(Amanda McMaster OR CFO OR 맥마스터 OR 현대모비스) '
+    '(actuator cost OR 70% OR 원가 OR first production shipments OR supply order)',
+    '(Eka Robotics OR 에카로보틱스) (Samsung Next OR 삼성넥스트 OR '
+    'Series A OR 1억5000만달러) (funding OR VFA OR dexterous hand OR robots)',
+    '(Eka Robotics OR 에카로보틱스) (Rainbow Robotics OR 레인보우로보틱스 OR RB-Y1) '
+    '(new order OR purchase contract OR 신규 공급계약 OR 추가 발주 OR customer deployment)',
+):
+    if _q not in base.QUERIES:
+        base.QUERIES.append(_q)
+
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()
