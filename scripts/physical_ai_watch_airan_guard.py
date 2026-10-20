@@ -6134,6 +6134,382 @@ for q in (
 ):
     if q not in base.QUERIES: base.QUERIES.append(q)
 
+
+# 2026-10-20 Samsung 24-hour-duty humanoid FIELD-TEST reporting and
+# 2026-10-23 Presidential regulatory committee AGENDA. Existing watcher only.
+# NEVER equate a 24-hour design target or three supervised shifts with a
+# verified 24-hour autonomous uptime result; policy debate is not enacted law.
+S24H_20261020_RECOVERY = "DIRECT_SAMSUNG_RX_24H_FIELD_REPORT_20261020"
+KREG_OCT23_RECOVERY = "DIRECT_REGULATORY_COMMITTEE_ROBOT_AGENDA_20261020"
+S24H_JOONGANG = "https://www.joongang.co.kr/article/25471125"
+KREG_YONHAP = "https://www.yna.co.kr/view/AKR20261020047400001"
+S24H_COMPANY_SOURCES = {"삼성전자", "Samsung Electronics", "Samsung Newsroom", "삼성전자 뉴스룸"}
+S24H_REPORT_SOURCES = {"중앙일보", "연합뉴스", "뉴스1", "전자신문"}
+KREG_OFFICIAL_SOURCES = {"청와대", "대통령실", "국무조정실", "국무총리실", "산업통상부", "과학기술정보통신부"}
+KREG_REPORT_SOURCES = {"연합뉴스", "뉴스1", "머니투데이", "한국일보"}
+S24H_WORD = re.compile(r"24\s*시간|24[-\s]*hour|around[-\s]*the[-\s]*clock",re.I)
+S24H_SUBJECT = re.compile(r"휴머노이드|humanoid|이족\s*보행|로봇|robot",re.I)
+S24H_TEST = re.compile(r"검증|시험|실증|테스트|연구개발|testing|pilot|validation",re.I)
+S24H_OFFICIAL_UPTIME = re.compile(
+    r"(?:24\s*시간|24[-\s]*hour).{0,65}(?:연속|무인|continuous|autonomous).{0,65}"
+    r"(?:시험\s*통과|검증\s*완료|실측|입증|달성|passed|achieved|verified)|"
+    r"(?:연속|continuous).{0,40}(?:24\s*시간|24[-\s]*hour).{0,70}"
+    r"(?:실증\s*완료|검증\s*완료|달성|achieved|verified)",re.I
+)
+S24H_CES_OFFICIAL = re.compile(
+    r"(?:CES\s*2027|2027\s*CES).{0,120}"
+    r"(?:로봇|휴머노이드|robot|humanoid).{0,65}(?:공식\s*공개|공식\s*시연|전시\s*확정|첫\s*공개|unveiled|confirmed\s*demo)|"
+    r"(?:로봇|휴머노이드|robot|humanoid).{0,80}"
+    r"(?:CES\s*2027|2027\s*CES).{0,65}(?:공식\s*공개|시연\s*확정|unveiled)",re.I
+)
+S24H_CONTRACT = re.compile(
+    r"(?:휴머노이드|로봇|humanoid|robot).{0,100}(?:유상\s*납품|"
+    r"양산\s*출하\s*개시|정식\s*공급계약\s*체결|paid\s*contract|production\s*shipments)",re.I
+)
+S24H_NOT_CONFIRMED = re.compile(
+    r"(?:24\s*시간|24[-\s]*hour).{0,60}(?:미검증|미확인|목표|검토|미달)|"
+    r"(?:CES\s*2027|2027\s*CES).{0,80}(?:검토|예정|목표|미정|미확정|논의)",re.I
+)
+
+
+def _s24h_match(t: str) -> bool:
+    if not re.search(r"삼성전자|Samsung\s*Electronics",t,re.I):
+        return False
+    if not S24H_SUBJECT.search(t):
+        return False
+    return bool((S24H_WORD.search(t) and re.search(
+        r"RX|우면|R&D|서울연구|제조.*물류|CES\s*2027",t,re.I
+    )) or (re.search(r"CES\s*2027|2027\s*CES",t,re.I)
+            and re.search(r"이족보행|이족\s*보행|industrial\s*humanoid",t,re.I)))
+
+
+def _s24h_stage(item: dict) -> str:
+    t=" ".join(str(item.get(k) or "") for k in ("title","description"))
+    source=item.get("source") or ""
+    if not _s24h_match(t):
+        return ""
+    if source in S24H_COMPANY_SOURCES:
+        if S24H_CONTRACT.search(t) and not re.search(r"계약\s*(?:검토|예정|미정)|미확정|planned|expect",t,re.I):
+            return "official_customer_contract"
+        if S24H_OFFICIAL_UPTIME.search(t) and not S24H_NOT_CONFIRMED.search(t):
+            return "official_verified_uptime"
+        if S24H_CES_OFFICIAL.search(t) and not S24H_NOT_CONFIRMED.search(t):
+            return "official_ces_demonstration"
+    if source in S24H_REPORT_SOURCES and S24H_WORD.search(t) and S24H_TEST.search(t):
+        return "reported_supervised_field_test"
+    return "background"
+
+
+def _s24h_recovery() -> list[dict]:
+    if base.NOW.astimezone(base.KST).date()>dt.date(2026,10,23):
+        return []
+    return [{
+        "title":"삼성전자 RX, 우면동 24시간 작업 목표 이족 휴머노이드 현장 시험 보도",
+        "link":S24H_JOONGANG,
+        "description":(
+            "2026-10-20 중앙일보 단독: 삼성전자 RX사업추진실이 우면동 서울R&D캠퍼스에서 "
+            "제조·물류의 이족보행 휴머노이드 반복 업무를 검증 중이라고 업계 소식통을 인용해 보도했다. "
+            "24시간 3교대 운용과 현장 직원 모니터링을 언급하지만 사람이 개입하지 않은 "
+            "24시간 무중단 자율 가동 실측이나 작업 성공률·가동률·정비시간·출하량은 공개하지 않았다. "
+            "CES 2027은 2027-01-06~09 개최가 CTA 공식 확인되나 이 로봇의 출품은 검토 단계로 "
+            "공식 프로그램 확정이 아니다. 삼성전자는 7월 RX 조직 통합과 6월 구미 휴머노이드 "
+            "양산라인 구축 계획을 별도로 공개했으며 이번 기사는 실제 양산 개시 공시가 아니다. "
+            "삼성SDS의 9월 공식 RX ART에서 삼성전기·세메스의 작업 사례를 로봇으로 검증한 "
+            "사실은 별도 관계사 협력이지 이번 이족보행 로봇의 고객·공급계약 증거가 아니다. "
+            "기사 웹페이지 직접 열람은 제한되고 검색 색인·중앙일보 기사 인용 요약으로 대조했다. "
+            "양산/고객 매출 금액·실제 24시간 연속 자율가동/사람 개입률은 미공개다."
+        ),
+        "source":"중앙일보",
+        "published":None,
+        "direct_recovery":True,
+        "s24h_samsung_test":True,
+    }]
+
+
+KREG_OCT23_ID = re.compile(
+    r"규제\s*합리화\s*위원회|규제\s*합리화위|규제개혁위원회|regulatory\s*rationalization",
+    re.I
+)
+KREG_ROBOTIC = re.compile(r"로봇|robot|휴머노이드|humanoid|AI\s*데이터센터",re.I)
+KREG_MEETING = re.compile(
+    r"2026[-./]10[-./]23|10\s*월\s*23\s*일|(?:23\s*일).{0,80}(?:제2차|전체회의|위원회|로봇)|"
+    r"(?:제\s*2\s*차|두\s*번째).{0,65}(?:전체회의|위원회)", re.I
+)
+KREG_IMPLEMENTED = re.compile(
+    r"(?:(?:규제특례|안전인증|실증허용|인허가|로봇\s*현장|AI\s*데이터센터).{0,100}"
+    r"(?:의결|최종\s*확정|시행\s*확정|승인\s*완료|공포|시행령\s*개정\s*완료))|"
+    r"(?:(?:의결|최종\s*확정|승인\s*완료).{0,90}(?:규제특례|실증허용|인허가|안전인증))",
+    re.I
+)
+KREG_NEGATION = re.compile(
+    r"논의\s*예정|발표\s*예정|논의\s*중|검토\s*중|미확정|추진\s*계획|"
+    r"시행\s*예정|의결\s*전|승인\s*전|결정된\s*바\s*없",re.I
+)
+
+
+def _kreg_oct23_match(t: str) -> bool:
+    return bool(KREG_OCT23_ID.search(t) and KREG_ROBOTIC.search(t) and KREG_MEETING.search(t))
+
+
+def _kreg_oct23_stage(item: dict) -> str:
+    t=" ".join(str(item.get(k) or "") for k in ("title","description"))
+    source=item.get("source") or ""
+    if not _kreg_oct23_match(t):
+        return ""
+    if source in KREG_OFFICIAL_SOURCES and KREG_IMPLEMENTED.search(t) and not KREG_NEGATION.search(t):
+        return "official_specific_measure_adopted"
+    if (source in KREG_REPORT_SOURCES or source in KREG_OFFICIAL_SOURCES) and re.search(
+        r"23\s*일|2026-10-23|10\s*월\s*23\s*일",t
+    ) and re.search(r"주재|개최|예고|회의|발표",t):
+        return "announced_meeting_agenda"
+    return "background"
+
+
+def _kreg_oct23_recovery() -> list[dict]:
+    if base.NOW.astimezone(base.KST).date()>dt.date(2026,10,23):
+        return []
+    return [{
+        "title":"이재명 대통령 10월 23일 규제합리화위 2차 회의 예고…로봇·반도체·AI 데이터센터",
+        "link":KREG_YONHAP,
+        "description":(
+            "연합뉴스 2026-10-20 09:36 KST와 뉴스1 09:34 KST가 청와대의 10월 20일 "
+            "보도자료를 인용해 2026-10-23 규제합리화위원회 제2차 전체회의 개최 예정이라고 전했다. "
+            "로봇·반도체·AI 데이터센터·자율주행·바이오 산업의 규제 해소 방향을 부처별로 "
+            "발표·논의하며 국무조정실은 메가프로젝트와 5극3특 성장엔진 지원 방향을 보고한다. "
+            "창업기업 규제·행정서류 개선과 민간위원 토론도 예정됐다. "
+            "KTV 생중계 예정, 참석 약 100명으로 보도된다. "
+            "이것은 정부 발표를 인용한 회의 일정이며 로봇 실증특례·제품 인증·AI 데이터센터 "
+            "전력접속 규정이 이미 변경됐다는 뜻이 아니다. "
+            "세부 시행령·시행일·예산액·특정 수혜기업/로봇 납품계약은 아직 제시되지 않았다. "
+            "국무조정실 4월 첫 회의 공식 보도자료에서 위원회의 법적 구조가 확인됐지만 "
+            "이번 10월 회의 청와대 보도자료 원문은 직접 확보하지 못했다."
+        ),
+        "source":"연합뉴스",
+        "published":"2026-10-20T00:36:00+00:00",
+        "direct_recovery":True,
+        "kreg_oct23_agenda":True,
+    }]
+
+
+# Wrap only the final active Python route. Leave older lanes, state and bot as-is.
+_s24h_old_query=base.query_news
+_s24h_old_group=base.topic_group
+_s24h_old_score=base.score
+_s24h_old_category=base.category
+_s24h_old_meaning=base.meaning
+_s24h_old_risk=base.risk
+_s24h_old_verification=base.verification
+_s24h_old_title=base.clean_title
+_s24h_old_tag=base.tag_for
+_s24h_old_key=base.key
+_s24h_old_select=base.select_diverse
+
+
+def _s24h_query(q: str) -> list[dict]:
+    if q==S24H_20261020_RECOVERY:
+        return _s24h_recovery()
+    if q==KREG_OCT23_RECOVERY:
+        return _kreg_oct23_recovery()
+    return _s24h_old_query(q)
+
+
+def _s24h_group(t: str) -> str|None:
+    if _s24h_match(t):
+        return "samsung_24h_rx"
+    if _kreg_oct23_match(t):
+        return "robot_reg_oct23"
+    return _s24h_old_group(t)
+
+
+def _s24h_score(item: dict) -> int:
+    t=" ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    group=_s24h_group(t)
+    if group=="samsung_24h_rx":
+        return {
+            "reported_supervised_field_test":49,
+            "official_verified_uptime":85,
+            "official_ces_demonstration":77,
+            "official_customer_contract":90,
+            "background":0
+        }.get(_s24h_stage(item),0)
+    if group=="robot_reg_oct23":
+        return {
+            "announced_meeting_agenda":50,
+            "official_specific_measure_adopted":90,
+            "background":0
+        }.get(_kreg_oct23_stage(item),0)
+    return _s24h_old_score(item)
+
+
+def _s24h_category(t: str, group: str) -> str:
+    if group=="samsung_24h_rx":
+        if S24H_CONTRACT.search(t) and not re.search(r"계약\s*(?:검토|예정|미정)|미확정",t):
+            return "삼성전자 RX · 로봇 정식 고객계약·양산 출하"
+        if S24H_OFFICIAL_UPTIME.search(t) and not S24H_NOT_CONFIRMED.search(t):
+            return "삼성전자 RX · 24시간 무인 연속가동 공식 검증"
+        if S24H_CES_OFFICIAL.search(t) and not S24H_NOT_CONFIRMED.search(t):
+            return "삼성전자 RX · CES 2027 제품 공개 공식확인"
+        return "삼성전자 RX · 24시간 운용 목표 현장검증 보도"
+    if group=="robot_reg_oct23":
+        if KREG_IMPLEMENTED.search(t) and not KREG_NEGATION.search(t):
+            return "정부 규제합리화위 · 23일 구체 제도변경 공식의결"
+        return "정부 규제합리화위 · 10월 23일 개최 예고"
+    return _s24h_old_category(t,group)
+
+
+def _s24h_meaning(cat: str) -> str:
+    if cat=="삼성전자 RX · 24시간 운용 목표 현장검증 보도":
+        return (
+            "중앙일보 10/20 보도에 따르면 삼성전자 RX사업추진실이 우면동에서 이족보행 "
+            "휴머노이드로 물류·제조 반복 작업을 시험 중이며 3교대 모니터링을 언급했습니다. "
+            "24시간 연속 무인 자율운전·가동률·작업 성공률의 실제 수치가 공개된 것은 아닙니다. "
+            "CES 2027(2027-01-06~09) 출품은 검토이며 공식 확정되지 않았습니다. "
+            "7월 RX 조직 정비·6월 구미 생산라인 계획보다 구체적인 기술검증 진행 보도지만, "
+            "양산·납품·매출이 발생했다고 해석하지 않습니다."
+        )
+    if cat=="삼성전자 RX · 24시간 무인 연속가동 공식 검증":
+        return (
+            "삼성전자가 장시간 무인 가동·연속 작업 검증을 직접 공개한 별도 단계입니다. "
+            "실제 가동률, 작업 건수·실패 복구·배터리 교체·점검시간·사람 개입률을 "
+            "검산한 후 연간 납품대수×검증단가로 매출 전환을 확인합니다."
+        )
+    if cat=="삼성전자 RX · CES 2027 제품 공개 공식확인":
+        return (
+            "기존 'CES 출품 검토' 보도에서 삼성전자의 공식 시연·공개로 단계가 올라갔습니다. "
+            "현장 시연의 원격지원·자율성, 실제 작업 성공률 및 양산 계약은 별도 검증해야 합니다."
+        )
+    if cat=="삼성전자 RX · 로봇 정식 고객계약·양산 출하":
+        return (
+            "제조·물류 시험에서 유상 계약·완제품 출하 단계로 올라간 경우입니다. "
+            "이번 계약 제품·금액·실제 고객·검수 시점·반복 유지보수 등을 분리해서 확인합니다."
+        )
+    if cat=="정부 규제합리화위 · 10월 23일 개최 예고":
+        return (
+            "청와대가 10/20 안내한 10/23 규제합리화위원회 제2차 회의 일정입니다. "
+            "로봇·반도체·AI 데이터센터·자율주행·바이오 의제를 다루지만 "
+            "안전·실증·인증 규정이 이미 개정되거나 예산이 배정됐다는 뜻은 아닙니다. "
+            "23일 실제 의결·공포·시행일·조달 요건과 적용 기업을 분리해 추적합니다."
+        )
+    if cat=="정부 규제합리화위 · 23일 구체 제도변경 공식의결":
+        return (
+            "정부 1차자료에서 규제특례·인허가·인증 등 구체 조치가 최종 의결된 "
+            "별도 단계입니다. 적용 대상, 법적 효력과 시행일, 유예조건, "
+            "예산·시설 설치비·발주처·기업 매출 시차를 각각 검증합니다."
+        )
+    return _s24h_old_meaning(cat)
+
+
+def _s24h_risk(cat: str) -> str:
+    if cat.startswith("삼성전자 RX ·"):
+        return (
+            "최대 실패 경로는 사내 데모가 장시간 반복 작업의 가동률·"
+            "무인 작업 성공률·안전인증·교체부품비를 통과하지 못해 고객 배치가 늦어지는 것입니다. "
+            "24시간 99% 가동률도 하루 정지 14.4분이 허용되는 가정일 뿐 "
+            "실측치가 아니며, 실제 24시간 무중단 완성은 별도입니다. "
+            "6~12개월 위험 구간에 배터리·발열·낙상/충돌·"
+            "고장복구·보증충당금, 작업 성공률·사람 개입률을 확인합니다."
+        )
+    if cat.startswith("정부 규제합리화위 ·"):
+        return (
+            "가장 큰 역풍은 23일 회의가 개선 방향 발표에 그치고 법령개정·"
+            "산업현장 안전인증·실증특례·지방조례·인허가까지 수개월 지연되는 것입니다. "
+            "특정 산업 실증 1건 승인과 전 산업 규제해소도 다릅니다. "
+            "6~12개월 동안 관보·부처별 시행일·조건부 안전요원·"
+            "보험·안전책임·기업 발주/검수까지 확인합니다."
+        )
+    return _s24h_old_risk(cat)
+
+
+def _s24h_verification(item: dict,group: str,t: str) -> str:
+    if group=="samsung_24h_rx":
+        stage=_s24h_stage(item)
+        if stage=="reported_supervised_field_test":
+            return (
+                "중앙일보 10/20 기사 색인·유진투자증권 인용 기사 대조 / "
+                "삼성 공식 7월 RX 조직·6월 구미 로봇 라인 계획과 구분 / "
+                "원문 직접 열람 제한 / 24시간 무인 가동 KPI·CES 출품 공식 미확정"
+            )
+        return "삼성전자 직접 자료 우선 / 검증일·작업 KPI·실제 출하·매출 별도 확인"
+    if group=="robot_reg_oct23":
+        stage=_kreg_oct23_stage(item)
+        if stage=="announced_meeting_agenda":
+            return (
+                "청와대 10/20 발표를 인용한 연합뉴스·뉴스1 일치 / "
+                "국무조정실 4월 위원회 공식 보도자료로 제도 확인 / "
+                "10/20 청와대 원문 직접 열람 미확인 / 의결된 규제·시행일 없음"
+            )
+        return "국무조정실·청와대/관련부처 공식 원문, 조문·시행일 재검증"
+    return _s24h_old_verification(item,group,t)
+
+
+def _s24h_title(title: str,source: str) -> str:
+    t=title+" "+source
+    if _s24h_match(t):
+        if source in S24H_COMPANY_SOURCES and S24H_OFFICIAL_UPTIME.search(t):
+            return "삼성전자, 24시간 연속 무인 작업 성능 공식 검증"
+        if source in S24H_COMPANY_SOURCES and S24H_CES_OFFICIAL.search(t):
+            return "삼성전자, CES 2027 로봇 시연 공식 확정"
+        return "삼성전자, 우면동 '24시간 근무 목표' 이족보행 로봇 시험 보도"
+    if _kreg_oct23_match(t):
+        return "10월 23일 규제합리화위원회 로봇·AI 규제 논의 예고"
+    return _s24h_old_title(title,source)
+
+
+def _s24h_tag(group: str) -> str:
+    if group=="samsung_24h_rx":
+        return "삼성전자 휴머노이드"
+    if group=="robot_reg_oct23":
+        return "로봇 규제합리화"
+    return _s24h_old_tag(group)
+
+
+def _s24h_key(item: dict) -> str:
+    t=" ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    group=_s24h_group(t)
+    if group=="samsung_24h_rx":
+        stage=_s24h_stage(item)
+        return hashlib.sha256(f"samsung-rx|24h-humanoid|20261020|{stage}".encode()).hexdigest()
+    if group=="robot_reg_oct23":
+        stage=_kreg_oct23_stage(item)
+        return hashlib.sha256(f"korean-regulatory-committee|20261023|robot-ai|{stage}".encode()).hexdigest()
+    return _s24h_old_key(item)
+
+
+def _s24h_select(items: list[dict],seen: set[str],force: bool,limit: int) -> list[dict]:
+    selected=_s24h_old_select(items,seen,force,limit)
+    candidates=items if force else [x for x in items if x.get("key") not in seen]
+    for g in ("samsung_24h_rx","robot_reg_oct23"):
+        item=next((x for x in candidates if x.get("group")==g and x.get("score",0)>=11),None)
+        if item and not any(x.get("key")==item.get("key") for x in selected):
+            selected=([item,*selected] if len(selected)<limit else [item,*selected[:-1]])
+    return selected
+
+
+base.query_news=_s24h_query
+base.topic_group=_s24h_group
+base.score=_s24h_score
+base.category=_s24h_category
+base.meaning=_s24h_meaning
+base.risk=_s24h_risk
+base.verification=_s24h_verification
+base.clean_title=_s24h_title
+base.tag_for=_s24h_tag
+base.key=_s24h_key
+base.select_diverse=_s24h_select
+for _query in (
+    S24H_20261020_RECOVERY,
+    KREG_OCT23_RECOVERY,
+    '(삼성전자 OR Samsung Electronics) (우면동 OR RX사업추진실 OR 로봇) '
+    '(24시간 OR 연속가동 OR CES2027) (검증 OR 시험 OR 공식 공개 OR 가동률 OR 수주)',
+    '(삼성전자 OR 삼성 RX) (이족보행 휴머노이드 OR 산업용 로봇) '
+    '(2027 CES OR CES 2027 OR 24시간) (작업 성공률 OR 가동률 OR 양산 OR 고객)',
+    '(규제합리화위원회 OR 규제합리화위) (10월23일 OR 제2차) '
+    '(로봇 OR 반도체 OR AI 데이터센터) (의결 OR 발표 OR 시행일 OR 규제특례)',
+):
+    if _query not in base.QUERIES:
+        base.QUERIES.append(_query)
+
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()
