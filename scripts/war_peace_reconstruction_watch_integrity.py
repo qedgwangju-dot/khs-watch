@@ -104,7 +104,11 @@ def _display_headline(row):
     original = str(row.get('title_original') or row.get('title') or '')
     if (non_military_kind(row) in ('diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'maritime_routing', 'oil_market', 'oil_pressure', 'corporate_spending', 'market_reaction')
             or _summit_openness_headline(_headline(row))
-            or _summit_openness_denied(_headline(row))):
+            or _summit_openness_denied(_headline(row))
+            or _harm_intent_denial_headline(_headline(row))
+            or _negotiation_stalemate_headline(_headline(row))
+            or _ceasefire_proposal_stage(_headline(row))
+            or _headline_attack_casualties(row)):
         # RSS bullet lines remain one ordered headline in the rendered block.
         return ' '.join(original.split())
     return original if (_riyadh_missile_headline(row) or re.search(r'[가-힣]', original)
@@ -216,7 +220,9 @@ def _diplomatic_group(title):
     north_russia = bool(re.search(r'(?<![가-힣])북\s*[·ㆍ/]?\s*러(?=\s|$)', title))
     actors = []
     for label, pattern in (
-            ('미국', r'미국|트럼프|美|\bu\.s\.|\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너'),
+            ('미국', r'미국|트럼프|美|\bu\.s\.|\bunited\s+states\b|'
+                     r'\bus(?=\s+(?:midterms?|elections?|officials?|government|military)\b)|'
+                     r'\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너'),
             ('우크라이나', r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b'),
             ('중국', r'중국|시진핑|\b(?:china|chinese|xi(?:\s+jinping)?)\b'),
             ('러시아', r'러시아|푸틴|크렘린|라브로프|(?:^|[\s·ㆍ/])러(?=\s|[·ㆍ/]|$)|\b(?:russia\w*|putin|kremlin|lavrov)\b'),
@@ -245,6 +251,13 @@ def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
     if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal'):
+        if kind == 'diplomatic_position' and _harm_intent_denial_headline(title):
+            return _diplomatic_group(title) + ' · 위해 의도 부인·설명'
+        if kind == 'diplomatic_position' and _negotiation_stalemate_headline(title):
+            return _diplomatic_group(title) + ' · 협상 교착·지연 보도'
+        proposal = _ceasefire_proposal_stage(title)
+        if proposal and kind in ('diplomatic_position', 'diplomatic_plan'):
+            return _diplomatic_group(title) + ' · ' + ('휴전 제안 부인' if proposal == 'denied' else '휴전 제안')
         if kind == 'diplomatic_position' and _negotiation_intent_stage(title) == 'denied':
             return _diplomatic_group(title) + ' · 협상 지속·재개 의향 부인'
         if kind == 'diplomatic_position' and _meeting_intent_stage(title) == 'denied':
@@ -309,7 +322,10 @@ def _primary_topic(row):
         area = '호르무즈' if re.search(r'호르무즈|\bhormuz\b', title) else '해상'
         return area + ' · ' + _headline_action_label(row)
     if kind is None and _headline_attack_casualties(row):
-        group = ('후티·예멘 정부군' if re.search(r'후티', title) and re.search(r'예멘\s*정부군', title)
+        houthi = re.search(r'후티|\bhouthi', title)
+        yemen = re.search(r'예멘|\byemen(?:i)?\b', title)
+        government = re.search(r'예멘\s*정부군|\byemen(?:i)?\s+government\s+(?:forces|troops)\b', title)
+        group = ('후티·예멘 정부군' if houthi and government else '후티·예멘' if houthi and yemen
                  else _headline_group(title))
         return group + ' · 공습·공격 피해 보도'
     if kind is None and _headline_refinery_action(row):
@@ -382,6 +398,11 @@ def _headline_attack_casualties(row):
     if re.search(r'조사\s*보고서|집계|해설|분석|계획|검토|가능성|우려|예상|예고|시사|규탄|비난|부인|허위|가짜|[?？]|'
                  r'하지\s*않|한\s*적\s*없|사망\s*보도.{0,8}(?:아냐|사실무근)', title):
         return False
+    english_toll = re.search(
+        r'\bdeath\s+toll\s+(?:from|after|in)\b.{0,90}\b(?:attacks?|strikes?|bombing)\b.{0,90}'
+        r'\b(?:rises?|rose|climbs?|climbed|reaches?|reached)\s+(?:to\s+)?\d[\d,]*\b', title)
+    if english_toll and not re.search(r'\b(?:may|might|could|expected|projected|unconfirmed|den(?:y|ies|ied))\b', title):
+        return True
     return bool(re.search(
         r'(?:공습|공격|폭격|타격)(?:으로|에|…|\.{3})\s*.{0,45}'
         r'(?:사상자\s*속출|\d[\d,]*\s*(?:여\s*)?명\s*(?:사망|부상))', title))
@@ -642,6 +663,32 @@ def _diplomatic_deal_statement(title):
                               r'(?:an?\s+).{0,30}\b(?:incentive|gift|lifeline|mistake)\b', title))
 
 
+def _harm_intent_denial_headline(title):
+    """A denial of political intent is not execution of a background attack."""
+    return bool(re.search(
+        r"\b(?:is\s+not|isn't|isn’t|was\s+not|wasn't|wasn’t|not|never)\s+"
+        r'(?:out|trying|seeking|aiming)\s+to\s+(?:hurt|harm|damage)\b|'
+        r'(?:해치려는|해하려는|해칠\s*의도).{0,12}(?:아니|없)', title))
+
+
+def _negotiation_stalemate_headline(title):
+    return bool(re.search(r'\b(?:talks|negotiations)\b.{0,40}\b(?:stalemate|deadlock)\b|'
+                          r'\b(?:stalemated|deadlocked)\b.{0,20}\b(?:talks|negotiations)\b|'
+                          r'협상.{0,20}(?:교착|장기화|지연)', title))
+
+
+def _ceasefire_proposal_stage(title):
+    proposal = re.search(r'휴전(?:을|를)?\s*(?:제안|제의)|'
+                         r'\b(?:propos(?:e[sd]?|ing)|offer(?:s|ed|ing)?)\b.{0,45}\b(?:ceasefire|truce)\b|'
+                         r'\b(?:ceasefire|truce)\s+proposal\b', title)
+    if not proposal:
+        return None
+    denied = re.search(r'(?:휴전(?:을|를)?\s*)?(?:제안|제의).{0,8}(?:부인|사실무근|하지\s*않|안\s*했)|'
+                       r'\bden(?:y|ies|ied)\b.{0,25}\b(?:propos\w*|offer\w*)\b|'
+                       r'\b(?:did|does|has)\s+not\s+(?:propos\w*|offer\w*)\b', title)
+    return 'denied' if denied else 'proposed'
+
+
 def _military_withdrawal_position(title):
     military = re.search(r'전쟁|병력|미군|군대|\b(?:war|troops|forces)\b', title)
     corporate = re.search(r'기업|직원|공장|\b(?:compan\w*|employees?|factor\w*)\b', title)
@@ -678,12 +725,17 @@ def _diplomatic_headline_kind(title):
     if re.search(r'(?:공습|폭격|공격|타격|요격)(?:을|를)?\s*(?:했다|했으며|하고\s*있|진행\s*중)|'
                  r'(?:피격|파괴)(?:됐|되었|당했)|\b(?:attacked|struck|bombed)\b', title):
         return None
+    proposal = _ceasefire_proposal_stage(title)
+    if proposal:
+        return 'diplomatic_position' if proposal == 'denied' else 'diplomatic_plan'
     if re.search(r'\[[^\]]*월드뷰\]', title) and re.search(r'외교|우크라|\b(?:diplomac|ukrain)', title):
         return 'diplomatic_analysis'
     actor = re.search(r'젤렌스키|우크라|트럼프|미국|위트코프|쿠슈너|이란|러시아|푸틴|크렘린|라브로프|'
                       r'\b(?:zelenskyy?|zelenskiy|ukrain\w*|trump|witkoff|kushner|iran(?:ian)?|russia\w*|putin|kremlin|lavrov)\b|\bu\.s\.', title)
     if not actor:
         return None
+    if _harm_intent_denial_headline(title) or _negotiation_stalemate_headline(title):
+        return 'diplomatic_position'
     if (_summit_possibility_reaction(title) or _meeting_uncertainty_headline(title)
             or _summit_openness_denied(title) or _meeting_intent_stage(title) == 'denied'):
         return 'diplomatic_position'
@@ -803,6 +855,17 @@ def _clear_market_event_cache(row):
     row.pop('deep_signal', None)
 
 
+def _headline_event_label(row, kind):
+    title = _headline(row)
+    if kind == 'diplomatic_position' and _harm_intent_denial_headline(title):
+        return '위해 의도 부인·설명'
+    if kind == 'diplomatic_position' and _negotiation_stalemate_headline(title):
+        return '협상 교착·지연 보도'
+    if kind in ('diplomatic_position', 'diplomatic_plan') and _ceasefire_proposal_stage(title):
+        return '휴전 제안 부인' if _ceasefire_proposal_stage(title) == 'denied' else '휴전 제안'
+    return KIND_LABELS[kind] if kind else _headline_action_label(row)
+
+
 def _headline_event_cache_required(row, kind):
     return (kind in ('support_statement', 'military_position', 'corporate_spending', 'market_reaction', 'maritime_routing', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'military_analysis', 'trade_proposal',
                     'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure')
@@ -823,7 +886,7 @@ def _clear_headline_event_cache(row, kind):
         row['non_military_kind'] = kind
     else:
         row.pop('non_military_kind', None)
-    row['tags'] = [KIND_LABELS[kind] if kind else _headline_action_label(row)]
+    row['tags'] = [_headline_event_label(row, kind)]
     row['forced_tags'] = []
     row['signals_ko'] = []
     row.pop('newidea_marks', None)
@@ -883,7 +946,8 @@ def final_color(row):
             or _conditional_pause_exchange(title) or _negotiation_intent_stage(title)
             or _summit_openness_headline(title) or _summit_openness_denied(title) or _bargain_proposal_headline(title)
             or _meeting_uncertainty_headline(title) or _meeting_intent_stage(title)
-            or _participation_exclusion_headline(title))):
+            or _participation_exclusion_headline(title) or _harm_intent_denial_headline(title)
+            or _negotiation_stalemate_headline(title) or _ceasefire_proposal_stage(title))):
         return 'red'
     return 'red' if maritime_attack_tally(row) else _color(row)
 
@@ -1183,7 +1247,7 @@ def build_alert(items, markets, now):
         if kind:
             row['non_military_kind'] = kind
             row['tags'] = [tag for tag in row.get('tags', []) if tag not in ('확전', '확전위험', '공격확대예고')]
-            row['tags'].append(KIND_LABELS[kind])
+            row['tags'].append(_headline_event_label(row, kind))
             row['tags'] = list(dict.fromkeys(row['tags']))
             row['signals_ko'] = []
     text = _build(visible, markets, now)
@@ -1219,7 +1283,7 @@ def build_alert(items, markets, now):
                 if len(tail) == 2:
                     lines[i] = _publication_label(row, now) + ' · ' + tail[1]
             if kind:
-                lines[i] = lines[i].replace(' · 확전 · ', ' · ' + KIND_LABELS[kind] + ' · ')
+                lines[i] = lines[i].replace(' · 확전 · ', ' · ' + _headline_event_label(row, kind) + ' · ')
             if not row.get('body_verified') and 'news.google.com/' in str(row.get('link')):
                 lines[i] = lines[i].replace(' 원문</a>', ' 검색 링크</a>')
                 lines[i] += ' · 제목 기준·본문 미확인'
@@ -1362,7 +1426,7 @@ def verify_alert(test_mode=False):
                                 if any(url in lines[i] for url in urls) and ' KST' in lines[i]), None)
             if source_line is not None and any(line.strip() for line in lines[start + 2:source_line]):
                 raise RuntimeError('WAR_INTEGRITY_GATE: headline event contains background summary')
-            if (row.get('tags') != [KIND_LABELS[current_kind] if current_kind else _headline_action_label(row)]
+            if (row.get('tags') != [_headline_event_label(row, current_kind)]
                     or row.get('signals_ko') or row.get('forced_tags')):
                 raise RuntimeError('WAR_INTEGRITY_GATE: headline event retains background event cache')
         if (current_kind is None and _ceasefire_rejection_headline(_headline(row))

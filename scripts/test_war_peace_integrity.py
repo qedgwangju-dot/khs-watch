@@ -70,6 +70,133 @@ class IntegrityTests(unittest.TestCase):
         value=json.loads((Path(__file__).parent/'test_fixtures/war_tanker_route_39393915931.json').read_text(encoding='utf-8'))
         return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def current_stage_fixture(self):
+        value=json.loads((Path(__file__).parent/'test_fixtures/war_denial_casualty_39427171063.json').read_text(encoding='utf-8'))
+        return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_current_stage_saved_headline_classification_and_named_actors(self):
+        fixture,now=self.current_stage_fixture()
+        expected={0:('diplomatic_position','yellow','미국·이란 · 협상 교착·지연 보도'),
+                  1:('diplomatic_position','yellow','미국·우크라이나 · 위해 의도 부인·설명'),
+                  2:(None,'red','후티·예멘 · 공습·공격 피해 보도'),
+                  4:('diplomatic_plan','yellow','우크라이나·러시아 · 휴전 제안')}
+        for i,(kind,color,topic) in expected.items():
+            row=copy.deepcopy(fixture['articles'][i])
+            with self.subTest(title=row['title_original']):
+                self.assertEqual(integrity.non_military_kind(row),kind)
+                self.assertEqual(integrity.final_color(row),color)
+                self.assertEqual(integrity.topic_label(row),topic)
+
+    def test_current_stage_uses_ordered_original_instead_of_translation_or_cached_summary(self):
+        fixture,_=self.current_stage_fixture()
+        for i in (0,1,2,4):
+            row=copy.deepcopy(fixture['articles'][i]);row['title_ko']='이전 사건의 휴전 발표'
+            with self.subTest(title=row['title_original']):
+                self.assertEqual(integrity._display_headline(row),row['title_original'])
+
+    def test_current_stage_clears_inferred_escalation_and_stalemate_summary_cache(self):
+        fixture,now=self.current_stage_fixture()
+        for i,label in ((0,'협상 교착·지연 보도'),(1,'위해 의도 부인·설명'),
+                        (2,'공습·공격 피해 보도'),(4,'휴전 제안')):
+            row=copy.deepcopy(fixture['articles'][i]);row['forced_tags']=['확전'];row['signals_ko']=['다른 사건 배경']
+            with self.subTest(title=row['title_original']):
+                integrity.score_item(row,now)
+                self.assertEqual(row['tags'],[label]);self.assertEqual(row['signals_ko'],[])
+                self.assertEqual(row['forced_tags'],[])
+
+    def test_current_stage_harm_intent_denial_is_a_statement_even_with_attack_background(self):
+        fixture,_=self.current_stage_fixture()
+        titles=("Trump isn't out to hurt Ukraine, Rubio tells Zelensky",
+                'Trump is not trying to harm Ukraine, Rubio says',
+                '트럼프, 우크라이나를 해치려는 것이 아니다…루비오가 젤렌스키에게 설명')
+        for title in titles:
+            row=article(title);row['description']=fixture['articles'][1]['description']
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(row),'diplomatic_position')
+                self.assertEqual(integrity.final_color(row),'yellow')
+                self.assertNotIn('러시아',integrity.topic_label(row))
+
+    def test_current_stage_separate_actual_operations_are_not_hidden_by_statement(self):
+        titles=("Trump isn't out to hurt Ukraine; Russia launches new airstrikes",
+                'Iran prolongs talks in stalemate; Iran launches new attacks',
+                '우크라이나, 30일 휴전 제안…러시아 미사일 발사')
+        for title in titles:
+            with self.subTest(title=title):
+                self.assertIsNone(integrity.non_military_kind(article(title)))
+                self.assertEqual(integrity.final_color(article(title)),'red')
+
+    def test_current_stage_stalemate_does_not_invent_israel_or_new_hostilities(self):
+        fixture,now=self.current_stage_fixture();row=copy.deepcopy(fixture['articles'][0])
+        with patch.object(integrity.body_parallel,'_safe_enrich'):
+            text=integrity.build_alert([row],[],now)
+        self.assertIn(html.escape(row['title_original']),text)
+        self.assertIn('미국·이란 · 협상 교착·지연 보도',text)
+        self.assertNotIn('이스라엘',text);self.assertNotIn('적대행위 재개 가능성이 거론',text)
+        self.assertNotIn('미국 중간고사',text);self.assertNotIn('🟢',text)
+
+    def test_current_stage_ceasefire_proposal_remains_proposal(self):
+        for title in ('우크라이나는 러시아 석유 시설에 대한 30일간의 휴전을 제안했다.',
+                      'Ukraine proposes a 30-day ceasefire on Russian oil facilities',
+                      '양측에 30일 휴전을 제안했다'):
+            with self.subTest(title=title):
+                row=article(title)
+                self.assertEqual(integrity.non_military_kind(row),'diplomatic_plan')
+                self.assertEqual(integrity.final_color(row),'yellow')
+                self.assertIn('휴전 제안',integrity.topic_label(row))
+
+    def test_current_stage_denied_proposal_and_bilateral_implementation_keep_distinct_stages(self):
+        for title in ('우크라이나, 30일 휴전 제안 부인',
+                      'Ukraine denies proposing a 30-day ceasefire'):
+            with self.subTest(title=title):
+                row=article(title)
+                self.assertEqual(integrity.non_military_kind(row),'diplomatic_position')
+                self.assertIn('휴전 제안 부인',integrity.topic_label(row))
+                self.assertEqual(integrity.final_color(row),'yellow')
+        row=article('러시아·우크라이나, 정식 휴전 합의…양측 공격 중단 이행 확인')
+        self.assertIsNone(integrity.non_military_kind(row));self.assertEqual(integrity.final_color(row),'green')
+
+    def test_current_stage_english_casualty_count_retains_only_named_yemen_scope(self):
+        for count in ('73','1,073'):
+            title='Death toll from Houthi attack on Yemen training camp rises to '+count
+            row=article(title)
+            with self.subTest(count=count),patch.object(integrity.body_parallel,'_safe_enrich'):
+                text=integrity.build_alert([row],[],NOW)
+                self.assertTrue(integrity._headline_attack_casualties(row));self.assertEqual(integrity.final_color(row),'red')
+                self.assertIn('후티·예멘 · 공습·공격 피해 보도',text)
+                self.assertIn(title,text);self.assertNotIn('사우디',text)
+
+    def test_current_stage_unconfirmed_or_forecast_casualties_are_not_completed_count(self):
+        for title in ('Death toll from Houthi attack on Yemen camp may rise to 73',
+                      'Officials deny death toll from Houthi attack on Yemen camp rose to 73'):
+            with self.subTest(title=title):self.assertFalse(integrity._headline_attack_casualties(article(title)))
+
+    def test_current_stage_actual_sent_same_hash_wrong_body_is_rejected(self):
+        fixture,now=self.current_stage_fixture();text=fixture['original_alert']
+        receipt=evidence.alert_receipt(fixture['articles'],fixture['markets'],now,text,fixture['market_source_status'])
+        self.assertEqual(receipt['alert_sha256'],fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+            watch.ALERT.write_text(text,encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[r['id']for r in receipt['articles']if r['rendered']]}),encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):integrity.verify_alert()
+
+    def test_current_stage_saved_selection_whole_gate_without_source_or_state_change(self):
+        fixture,now=self.current_stage_fixture();rows=copy.deepcopy(fixture['articles']);before=watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel,'_safe_enrich'),patch.object(watch,'market_source_status',fixture['market_source_status'],create=True):
+            text=integrity.build_alert(rows,fixture['markets'],now)
+        receipt=evidence.alert_receipt(rows,fixture['markets'],now,text,fixture['market_source_status'])
+        shown=[r for r in receipt['articles']if r['rendered']]
+        self.assertEqual([r['id']for r in shown],[fixture['articles'][i]['id']for i in (0,1,2,4)])
+        self.assertEqual([r['classification_color']for r in shown],['yellow','yellow','red','yellow'])
+        self.assertEqual(rows[3]['render_withheld'],'origin_publication_stale_or_future')
+        for row in shown:self.assertIn(html.escape(row['title_original']),text)
+        with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():stack.enter_context(patch.object(watch,attr,Path(folder)/name))
+            watch.ALERT.write_text(text,encoding='utf-8');watch.PENDING.write_text(json.dumps({'ids':[r['id']for r in shown]}),encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False),encoding='utf-8');integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(),before)
+
     def test_tanker_route_actual_movement_preserves_count_and_named_route(self):
         fixture,now=self.tanker_route_fixture();row=copy.deepcopy(fixture['articles'][3])
         self.assertEqual(integrity.non_military_kind(row),'maritime_routing')

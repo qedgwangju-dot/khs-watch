@@ -1,0 +1,371 @@
+{
+  "provenance": {
+    "run_id": "39427171063",
+    "actual_code_sha": "738a07b7180e4aa7518490ff37935992266d8d49",
+    "queried_at_kst": "2026-10-20T22:04:40.090551+09:00",
+    "artifact_id": 12265618913,
+    "artifact_zip_sha256": "a2f600cf2dc858ae10c9d92e2e2daf9ed083f2dee19f33808947dacdf0f92e11",
+    "alert_sha256": "05e55f4fd105e9ea2c17c2a8094b274258f844cb2b65a49a7cb2fde12e12e42a",
+    "source": "Actual saved operating evidence and sent request body. No later HTTP content inserted.",
+    "full_operating_article_bodies_preserved": false
+  },
+  "articles": [
+    {
+      "id": "bf1ef3506f05e7f0a239",
+      "title_original": "Iran prolongs talks in stalemate to influence US midterms, officials say",
+      "title_ko": "이란, 미국 중간고사에 영향을 미치기 위해 교착상태에 있는 회담 연장",
+      "description": "",
+      "source": "Reuters",
+      "link": "https://www.reuters.com/world/us/iran-prolongs-talks-stalemate-influence-us-midterms-officials-say-2026-10-20/",
+      "published": "2026-10-20T10:26:13.331Z",
+      "score": 100,
+      "tags": [
+        "이란전쟁",
+        "재확전위험",
+        "협상교착"
+      ],
+      "body_checked": true,
+      "signals_ko": [
+        "🟡 미·이란 협상이 진전을 내지 못하고 적대행위 재개 가능성이 거론되는 단계 — 실제 공격 재개와는 구분"
+      ],
+      "forced_tags": [
+        "이란전쟁",
+        "협상교착",
+        "재확전위험"
+      ],
+      "classification_color": "yellow",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "50ce4238e9cde790bf39",
+      "title_original": "Trump isn't out to hurt Ukraine, Rubio tells Zelensky",
+      "title_ko": "트럼프는 우크라이나를 해치려는 것이 아니다, 루비오가 젤렌스키에게 말했다",
+      "description": "Secretary of State Marco Rubio told Ukrainian President Volodymyr Zelensky in a phone call Tuesday that President Trump hasn't issued any kind of order to harm Ukraine. Why it matters: The call was an effort to prevent the crisis between the U.S. and Ukraine from escalating further — and to push back on Ukrainian accusations that Trump is trying to coerce Zelensky into making concessions to Russia. The 45-minute call took place several hours ahead of a new round of peace talks with White House envoy Steve Witkoff aimed at reaching a unified position with European allies on an updated peace proposal to present to Russian President Vladimir Putin. Driving the news: The crisis broke out 10 days ago when Trump announced a diesel deal with Russia at the same time his envoys were in negotiations with Ukrainian officials in Miami. Zelensky on Monday lobbied a bipartisan group of senators to press the Trump administration to remove what he says are restrictions on intelligence sharing and weapons supplies. Behind the scenes: Rubio told reporters on Tuesday that he clarified to Zelensky that the Pentagon hasn't changed anything when it comes to intelligence sharing with Ukraine, weapons sales or restrictions on the use of the Starshield satellite system. \"No change was ordered. It is not true that we restricted it,\" Rubio said. Rubio acknowledged to Zelensky that there could be a delay in sending Patriot interceptors that have already been paid for by NATO countries. But the reason, he said, is that the U.S. needs to make sure it has enough to protect its own military bases around the world. \"Nothing is being deliberately denied. We balance between our obligations to partners and our own needs,\" he said. \"There hasn't been a deliberate political directive to harm Ukraine.\" Rubio also asserted that the several cases in which Ukraine didn't get advance warning of Russian ballistic missile attacks were a result of technical failures, not a U.S. order. What he's saying: \"No doubt there are tensions,\" he said. \"That is why we had the call. The president is frustrated. The president is responding to the insinuation that he is doing things to deliberately harm Ukraine, which is not fair and not true.\" Rubio said Trump is \"angry and frustrated\" about the lack of progress in peace talks between Russia and Ukraine after two years of efforts. The other side: Zelensky wrote on X after the call that he is \"grateful\" for Rubio's \"readiness to help and his clear position.\" He said Ukraine needs ballistic missile interceptors and early warnings to protect Ukrainian citizens and stressed that \"the situation with Starlink and Starshield needs to be restored.\" State of play: Witkoff arrived in Oslo on Tuesday for talks with Zelensky and European leaders. The talks there are expected to include Norwegian Prime Minister Jonas Gahr Støre, President of Finland Alexander Stubb, representatives of the E4 nations (the U.K., France, Germany and Poland) and officials from the EU and NATO. Following Oslo, Witkoff plans to travel to Russia to meet with Putin and present ideas developed in consultation with Ukrainian and European leaders.",
+      "source": "Axios",
+      "link": "https://www.axios.com/2026/10/20/rubio-zelensky-trump-directive-harm-ukraine-putin",
+      "published": "Tue, 20 Oct 2026 12:13:18 +0000",
+      "score": 15,
+      "tags": [
+        "종전·협상",
+        "확전"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "510b7f86789be81262cc",
+      "title_original": "Death toll from Houthi attack on Yemen training camp rises to 73",
+      "title_ko": "예멘 훈련소에 대한 후티 공격으로 인한 사망자 수는 73명으로 증가",
+      "description": "",
+      "source": "Reuters",
+      "link": "https://www.reuters.com/world/middle-east/death-toll-houthi-attack-yemen-training-camp-rises-73-2026-10-20/",
+      "published": "2026-10-20T12:52:12.284Z",
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "877f9a1da6e73bf7e037",
+      "title_original": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 - 한겨레",
+      "title_ko": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 - 한겨레",
+      "description": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 한겨레",
+      "source": "한겨레",
+      "source_url": "https://www.hani.co.kr",
+      "link": "https://www.hani.co.kr/arti/international/arabafrica/1283257.html",
+      "discovery_url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9LQUJzWWQyc1VueVlIdEhjMHhJZThJMlpjWVdNYTRxNXFUZXlUdC1CcjMxWDJRX2dMLUtMYXk0dmdxV2ZVQXVPbEFwQXpkMUJVNUNKa2NqbkswUmJfaEwxcjQ3V2hkLWxfd1l2MUJIRndPcVk?oc=5",
+      "resolved_url": "https://www.hani.co.kr/arti/international/arabafrica/1283257.html",
+      "published": "Tue, 20 Oct 2026 16:21:00 +0900",
+      "rss_published": "Tue, 20 Oct 2026 10:31:00 GMT",
+      "source_metadata": {
+        "title": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-20T16:21:00+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-20T16:21:00+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-20T16:21:00+09:00"
+          }
+        ]
+      },
+      "score": 10,
+      "tags": [
+        "군사·안보 해설"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "non_military_kind": "military_analysis",
+      "render_withheld": "origin_publication_stale_or_future",
+      "publication_basis": "publisher",
+      "rendered": false,
+      "article_text_sha256": "56f2680557914ebf39012503c7af31f584d966f0110b4d8092ddcbce108e0271"
+    },
+    {
+      "id": "89784f0126a443f6ab2e",
+      "title_original": "우크라이나는 러시아 석유 시설에 대한 30일간의 휴전을 제안했다. - Vietnam.vn",
+      "title_ko": "우크라이나는 러시아 석유 시설에 대한 30일간의 휴전을 제안했다. - Vietnam.vn",
+      "description": "우크라이나는 러시아 석유 시설에 대한 30일간의 휴전을 제안했다. Vietnam.vn",
+      "source": "Vietnam.vn",
+      "source_url": "https://www.vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOeTg3YWpydExISWdqZUFZV0RUUS1FN0JMTlRkWk5PWWctNnhHS2VNLUJwcm56VjVTcmxBS204T3hEMTVBbFFPZlhtWnJBR1lWRmxSYkU5MDlDWUFZSnJYeVV3LW1fR0p5a2lMV3h4MEQtSTQzQWtUSlVuQ2Vxa0VITGVYaFBlenJ2UVhfM0dB?oc=5",
+      "published": "Tue, 20 Oct 2026 11:01:15 GMT",
+      "score": 7,
+      "tags": [
+        "종전·협상"
+      ],
+      "body_checked": true,
+      "classification_color": "",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "0dd7d3b82b315070f50b",
+      "title_original": "[이슈] 트럼프, 푸틴·시진핑과 러-우 종전 담판 짓나…\"젤렌스키는 빠져라\" - 폴리뉴스 Polinews",
+      "title_ko": "[이슈] 트럼프, 푸틴·시진핑과 러-우 종전 담판 짓나…\"젤렌스키는 빠져라\" - 폴리뉴스 Polinews",
+      "description": "[이슈] 트럼프, 푸틴·시진핑과 러-우 종전 담판 짓나…\"젤렌스키는 빠져라\" 폴리뉴스 Polinews",
+      "source": "폴리뉴스 Polinews",
+      "source_url": "https://www.polinews.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1sVHFTTG1LM2RYMnladTBVTnhUWHJaQ1k1dG4wVjY5TDhicTNuUzhhRWFKcnNEa0RwRzJ3cUlXZF93TEJMN3VTYW90X25ydGQyUWZJSG4xU0FYYWlJLXQ3bE5fdEx0U09nZHRDWmF3?oc=5",
+      "published": "Tue, 20 Oct 2026 10:42:03 GMT",
+      "score": 7,
+      "tags": [
+        "종전·협상"
+      ],
+      "body_checked": true,
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29595.0,
+      "pct": -0.42896795357052486,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "21:54 KST",
+      "observed_at_kst": "2026-10-20T21:54:38+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 29722.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 29722.5,
+        "chartPreviousClose": 29722.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792500878,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 99.61000061035156,
+      "pct": 1.0858540799183691,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "21:54 KST",
+      "observed_at_kst": "2026-10-20T21:54:41+09:00",
+      "symbol": "CL=F",
+      "previous_close": 98.54,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 98.54,
+        "chartPreviousClose": 98.54,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792500881,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 110.36000061035156,
+      "pct": 0.7393889642643314,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "21:54 KST",
+      "observed_at_kst": "2026-10-20T21:54:41+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 109.55,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 109.55,
+        "chartPreviousClose": 109.55,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792500881,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792468800,
+            "start": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792555140,
+            "start": 1792468800,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792555140,
+            "start": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.76399993896484,
+      "pct": -0.2118062963670897,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "21:54 KST",
+      "observed_at_kst": "2026-10-20T21:54:43+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 101.98,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 101.98,
+        "chartPreviousClose": 101.98,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792500883,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792468800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792468800,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792555140,
+            "end": 1792555140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "original_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟡 <b>군사위협·협상 제약</b>\n조회 2026-10-20 22:04 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🟡 [신규] <b>1. 이란·미국·이스라엘 · 협상 교착·재확전 위험</b>\n미·이란 협상이 진전을 내지 못하고 적대행위 재개 가능성이 거론되는 단계 — 실제 공격 재개와는 구분\nRSS 보도 10-20 19:26 KST · <b>158분 경과</b> · 이란전쟁 · 재확전위험 · 협상교착 · <a href=\"https://www.reuters.com/world/us/iran-prolongs-talks-stalemate-influence-us-midterms-officials-say-2026-10-20/\">Reuters 원문</a> · RSS 입력 기준·본문 미확인\n\n🔴 [신규] <b>2. 우크라이나·러시아</b>\n트럼프는 우크라이나를 해치려는 것이 아니다, 루비오가 젤렌스키에게 말했다\nRSS 보도 10-20 21:13 KST · <b>51분 경과</b> · 종전·협상 · 확전 · <a href=\"https://www.axios.com/2026/10/20/rubio-zelensky-trump-directive-harm-ukraine-putin\">Axios 원문</a> · RSS 입력 기준·본문 미확인\n\n🔴 [속보] <b>3. 사우디·후티</b>\n예멘 훈련소에 대한 후티 공격으로 인한 사망자 수는 73명으로 증가\nRSS 보도 10-20 21:52 KST · <b>12분 경과</b> · 확전 · <a href=\"https://www.reuters.com/world/middle-east/death-toll-houthi-attack-yemen-training-camp-rises-73-2026-10-20/\">Reuters 원문</a> · RSS 입력 기준·본문 미확인\n\n[신규] <b>4. 우크라이나·러시아</b>\n우크라이나는 러시아 석유 시설에 대한 30일간의 휴전을 제안했다. - Vietnam.vn\nRSS 보도 10-20 20:01 KST · <b>123분 경과</b> · 종전·협상 · <a href=\"https://news.google.com/rss/articles/CBMijgFBVV95cUxOeTg3YWpydExISWdqZUFZV0RUUS1FN0JMTlRkWk5PWWctNnhHS2VNLUJwcm56VjVTcmxBS204T3hEMTVBbFFPZlhtWnJBR1lWRmxSYkU5MDlDWUFZSnJYeVV3LW1fR0p5a2lMV3h4MEQtSTQzQWtUSlVuQ2Vxa0VITGVYaFBlenJ2UVhfM0dB?oc=5\">Vietnam.vn 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,595.00</b>  -0.43% · 제공처 비교종가 대비 · 기준 21:54 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>99.61</b>  +1.09% · 제공처 비교종가 대비 · 기준 21:54 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>110.36</b>  +0.74% · 제공처 비교종가 대비 · 기준 21:54 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.76</b>  -0.21% · 제공처 비교종가 대비 · 기준 21:54 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n"
+}
