@@ -448,9 +448,8 @@ def main() -> int:
     new_items: list[Item] = []
     first_run = not state.get("initialized")
     for ekey, item in by_event.items():
-        if item.key in seen or ekey in seen_events:
+        if ekey in seen_events:
             seen.add(item.key)
-            seen_events.add(ekey)
             continue
         if first_run:
             # 최초 실행에서는 과거 기사 폭탄을 막고, 현재 GSK 공식 직장암 우선검토 건만 즉시 알림.
@@ -462,12 +461,14 @@ def main() -> int:
                 seen.add(item.key)
                 seen_events.add(ekey)
                 continue
+        if len(new_items) >= 5:
+            continue
         new_items.append(item)
         seen.add(item.key)
         seen_events.add(ekey)
 
     if new_items:
-        summaries = [build_item_summary(x) for x in new_items[:5]]
+        summaries = [build_item_summary(x) for x in new_items]
         ALERT.write_text(
             "[바이오 감시] Jemperli 새 데이터\n\n"
             + "\n\n".join(summaries)
