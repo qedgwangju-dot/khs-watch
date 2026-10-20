@@ -16,6 +16,14 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 SAMPLES = [
     {
+        "publisher": "디일렉",
+        "source": "Trusted news Terafab",
+        "title": "월 100만장 반도체 팹 짓는 일론 머스크 한국 소부장에 러브콜",
+        "summary": "Tesla SpaceX 테라팹 SEMICON West 이엔에프테크놀로지 동진쎄미켐 아스플로 비엠티 지앤지인텍 유니셈 미코 소재 장비 배관 공급망 NDA 협의",
+        "link": "https://www.thelec.kr/news/articleView.html?idxno=63960",
+        "expected": "테라팹 국내 소부장 공급망 접촉·계약 단계 변화",
+    },
+    {
         "publisher": "TrendForce",
         "source": "TrendForce semiconductor research",
         "title": "New HBM Market Outlook: HBM Suppliers Seize Pricing Power as AI Demand Fuels Explosive Contract Price Surge",
