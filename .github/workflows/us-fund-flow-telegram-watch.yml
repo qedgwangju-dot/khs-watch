@@ -65,6 +65,9 @@ jobs:
               @staticmethod
               def now(tz):
                   return datetime(2026,10,20,tzinfo=tz)
+              @staticmethod
+              def strptime(value,pattern):
+                  return datetime.strptime(value,pattern)
           investing=("Goldman Sachs prime desk found hedge funds cut technology stock positions "
                      "in five trading sessions through Oct. 15. Net allocation to the sector stands "
                      "at 23.5% of the global prime book. Their net leverage fell to a one-year low of 48.6%.")
@@ -84,6 +87,15 @@ jobs:
           parse=scope["goldman_prime_public_article"]
           assert parse(investing,date(2026,10,19))==(date(2026,10,15),23.5,48.6)
           assert parse(hedgeweek,date(2026,10,20))==(date(2026,10,15),23.5,48.6)
+          tokenpost=("Goldman Sachs prime brokerage hedge funds cut technology positions over five "
+                     "trading sessions through Oct. 15. Technology held a 23.5% net allocation "
+                     "in Goldman's prime brokerage book. Hedge fund net leverage fell to 48.6%.")
+          primexbt=("Hedge funds cut technology stock positions in the five trading sessions "
+                     "through Oct. 15, according to Goldman Sachs prime desk data. "
+                     "Net allocation to the sector stands at 23.5% of the global Prime book. "
+                     "Their net leverage fell to a one-year low of 48.6%.")
+          assert parse(tokenpost,date(2026,10,19))==(date(2026,10,15),23.5,48.6)
+          assert parse(primexbt,date(2026,10,19))==(date(2026,10,15),23.5,48.6)
           assert parse(investing.replace("Oct. 15","Oct. 22"),date(2026,10,19)) is None
           assert parse(investing.replace("prime desk","equity desk").replace("prime book","equity book"),date(2026,10,19)) is None
           assert parse(investing.replace("five trading sessions through Oct. 15","last week"),
@@ -97,6 +109,28 @@ jobs:
           evidence["hedgeweek.com"]=hedgeweek.replace("five trading sessions to 15 October","last week")
           assert scope["parse_goldman_prime_public"]() is None, "Unverifiable observation date must withhold"
           print("goldman_prime_regressions=passed synthetic_two_publisher_gate=true")
+          PY
+
+      - name: Diagnose public article access (read-only; no Telegram; no secrets)
+        run: |
+          python - <<'PY'
+          import urllib.request, urllib.error
+          sources={
+            "investing":"https://www.investing.com/news/stock-market-news/hedge-funds-cut-tech-stocks-at-record-pace-goldman-says-4958101",
+            "hedgeweek":"https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade",
+            "tokenpost":"https://www.tokenpost.com/news/investing/35230",
+            "primexbt":"https://primexbt.com/news/hedge-funds-cut-tech-stocks-at-the-fastest-pace-in-at-least-a-decade-goldman-dat/",
+            "briefs":"https://www.briefs.co/news/hedge-funds-dump-tech-at-the-fastest-pace-since-2016-goldman/",
+            "gmteight":"https://gmteight.com/flash/detail/1563275",
+          }
+          for name,url in sources.items():
+              try:
+                  req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0","Accept-Language":"en-US"})
+                  with urllib.request.urlopen(req, timeout=8) as resp:
+                      b=resp.read(1000000).decode("utf-8",errors="replace")
+                      print(f"source_probe={name} code={resp.status} len={len(b)} goldman={bool('Goldman' in b)} tech_235={bool('23.5' in b)} leverage_486={bool('48.6' in b)} oct15={bool('Oct. 15' in b or '15 October' in b)}")
+              except Exception as e:
+                  print(f"source_probe={name} error={type(e).__name__} note={str(e)[:90]}")
           PY
 
   watch:
