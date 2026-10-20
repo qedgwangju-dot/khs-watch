@@ -208,6 +208,11 @@ def block_scope_matches(block: dict, market: str, channel: str) -> bool:
     """Legacy spot history stays useful; it never acquires missing channels."""
     if block.get("market") is not None and block["market"] != market:
         return False
+    if block.get("source_tr") == "ka90005":
+        return (channel == "프로그램" and block.get("market") == market
+                and block.get("source_scope_verified") is True
+                and block.get("unit_verified") is True and block.get("unit") == "억원"
+                and block.get("independent_population_unit_and_clock_verified") is True)
     if channel == "지수선물":
         quality = futures_investor_quality(block.get("summary"), block.get("source_row")) if market == "KOSDAQ" else None
         return (block.get("source_tr") == "t8463"

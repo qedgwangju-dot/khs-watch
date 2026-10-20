@@ -202,6 +202,8 @@ jobs:
       TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
       LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
+      KIWOOM_APPKEY: ${{ secrets.KIWOOM_APPKEY }}
+      KIWOOM_SECRETKEY: ${{ secrets.KIWOOM_SECRETKEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -321,6 +323,7 @@ jobs:
             out/kospi_shock_episode_raw.json
             out/kospi_shock_delivery_log.jsonl
             out/market_alert_delivery/
+            out/market_source_evidence/
             out/kospi_shock_enrichment_latest.json
             out/kosdaq_shock_enrichment_latest.json
             out/kospi_industry_flow.jsonl
@@ -340,6 +343,8 @@ jobs:
       TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
       LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
+      KIWOOM_APPKEY: ${{ secrets.KIWOOM_APPKEY }}
+      KIWOOM_SECRETKEY: ${{ secrets.KIWOOM_SECRETKEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -460,6 +465,7 @@ jobs:
             out/kospi_shock_episode_raw.json
             out/kospi_shock_delivery_log.jsonl
             out/market_alert_delivery/
+            out/market_source_evidence/
             out/kospi_shock_enrichment_latest.json
             out/kosdaq_shock_enrichment_latest.json
             out/kospi_shock_handoff.json

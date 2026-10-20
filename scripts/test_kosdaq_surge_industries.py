@@ -292,7 +292,7 @@ class WatchIntegrationTests(IndustryFixture, unittest.TestCase):
             evidence = self.receipts[0][2]["evidence"]
             self.assertEqual(evidence["industry_context"]["requested_window"], [START, END])
             self.assertEqual(evidence["industry_context"]["investor"], "개인")
-            self.assertIn("market=2 upcode=301 exchgubun=U", evidence["source"])
+            self.assertIn("market=3 upcode=301 exchgubun=U", evidence["source"])
             self.assertEqual(evidence["message_sha256"], hashlib.sha256(text.encode()).hexdigest())
             self.market_tick(w, END + 20, 400)
             asyncio.run(w.maybe_alert_kosdaq_surge(END + 23))

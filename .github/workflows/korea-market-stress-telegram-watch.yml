@@ -55,6 +55,8 @@ jobs:
       DERIV_TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
       LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
       LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
+      KIWOOM_APPKEY: ${{ secrets.KIWOOM_APPKEY }}
+      KIWOOM_SECRETKEY: ${{ secrets.KIWOOM_SECRETKEY }}
 
     steps:
       - name: Checkout
@@ -533,5 +535,6 @@ jobs:
             out/fx_sector_rotation_pending_state.json
             out/kospi_rapid_fallback_status.md
             out/kospi_rapid_fallback_pending_state.json
+            out/market_source_evidence/
           if-no-files-found: ignore
           retention-days: 14

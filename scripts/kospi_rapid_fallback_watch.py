@@ -16,6 +16,7 @@ from zoneinfo import ZoneInfo
 import requests
 
 from kospi_flow_attribution_ls import attribution_html_lines, fetch_attribution
+from market_kiwoom_flow import optional_cash, cash_lines
 from krx_session_calendar import session_state
 
 KST = ZoneInfo("Asia/Seoul")
@@ -226,7 +227,8 @@ def telegram_send(text: str) -> int:
 
 def build_alert(now: dt.datetime, cur: float, high: float, dd: float,
                 m15: float | None, m30: float | None, reasons: list[str],
-                attribution: dict[str, Any] | None, attribution_error: str | None) -> str:
+                attribution: dict[str, Any] | None, attribution_error: str | None,
+                cash_supplement: dict | None = None) -> str:
     lines = ["🚨 <b>코스피 급락·매도주체 경보</b>", f"<code>{now:%Y-%m-%d %H:%M:%S} KST</code>", "",
              "<b>현재 움직임</b>", f"• KOSPI <b>{cur:,.2f}</b>",
              f"• 장중 고점 <b>{high:,.2f}</b> → 현재 <b>{cur:,.2f}</b> · 고점 대비 <b>{dd:+.2f}%</b>"]
@@ -240,6 +242,7 @@ def build_alert(now: dt.datetime, cur: float, high: float, dd: float,
     else:
         lines += ["<b>누가 밀었나 · 급락구간 수급</b>",
                   f"• 가격 안전망만 발동 — 정확한 사건구간 현물·선물·프로그램이 모두 확보되지 않아 원인 주체 확정 보류{': ' + html.escape(attribution_error) if attribution_error else ''}"]
+    lines += cash_lines(cash_supplement, "KOSPI", time.time())
     lines += ["", "<b>읽는 법</b>",
               "• <b>급락구간 변화량</b>이 원인 판정의 우선 기준입니다. 하루 누적 순매수만 보고 '누가 밀었다'고 단정하지 않습니다.",
               "• 외국인·기관·개인의 현물·선물 동조를 비교하며 투신은 기관 내 별도 관측합니다. 프로그램은 특정 주체에게 귀속하지 않습니다.",
@@ -326,7 +329,8 @@ def main() -> int:
         else:
             attribution_error = "장중 고점 대비 안전망 경보 — 정확한 사건구간 수급은 주 실시간 감시에서 판정"
         msg_id = telegram_send(build_alert(now, cur, session_high, dd, m15, m30,
-                                           reasons, attribution, attribution_error))
+                                           reasons, attribution, attribution_error,
+                                           cash_supplement=optional_cash("KOSPI")))
         if open_gap_hit:
             state["sent_open_gap"] = True
         if session_hit:

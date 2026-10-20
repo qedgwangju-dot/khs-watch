@@ -34,6 +34,7 @@ from market_flow_channels import (
 from market_program_close import collect as collect_program_close, render as render_program_close
 from market_alert_delivery import delivery_context, receipt_for, send_message
 from market_investors import ALERT_ACTORS, PRIMARY_ACTORS, LEADER_NOTE, TRUST_NOTE, actor_label, trust_direction_lines, trust_value
+from market_kiwoom_flow import enrich_snapshot, cash_lines
 
 KST = ZoneInfo("Asia/Seoul")
 BASE = "https://openapi.ls-sec.co.kr:8080"
@@ -377,6 +378,9 @@ def fetch_flow_snapshot(token: str, market_name: str = "KOSPI", on_channel=None)
                     snap.setdefault("rejected_source_evidence", {})[key] = exc.evidence
             if on_channel is not None:
                 on_channel({**snap, "ts": time.time(), "errors": dict(snap["errors"])})
+    snap = enrich_snapshot(snap, market_name)
+    if on_channel is not None and ("cash_supplement" in snap or "program_supplement" in snap):
+        on_channel({**snap, "ts": time.time(), "errors": dict(snap["errors"])})
     ended_ts = time.time()
     snap["ts_end"] = ended_ts
     snap["ts"] = (started_ts + ended_ts) / 2.0
@@ -634,6 +638,8 @@ def market_attribution_lines(att: dict[str, Any], market: str, final: bool = Fal
     ko = "코스피" if market == "KOSPI" else "코스닥"
     statuses = att.get("channel_status") or {}
     future_fmt = fmt_raw if att.get("futures_unit") == "LS_raw_amount" else fmt_eok
+    program_fmt = fmt_eok if att.get("program_unit") == "억원" else fmt_raw
+    program_note = "키움·독립 원화 원표 대조" if att.get("program_unit") == "억원" else "LS 원값"
     lines = []
     for name, label, formatter in (("spot", f"{ko} 현물(통합)", fmt_eok),
                                    ("futures", MARKET_SPECS[market]["futures_label"], future_fmt)):
@@ -665,10 +671,10 @@ def market_attribution_lines(att: dict[str, Any], market: str, final: bool = Fal
     if pgm_ok and p.get("전체") is not None:
         ratio = fnum(att.get("program_crosscheck_ratio_pct"))
         check_suffix = f" ({ratio:.2f}%)" if ratio is not None else " (비율 검증 보류)"
-        lines += [f"• {ko} 프로그램 전체(차익+비차익) <b>{fmt_raw(p.get('전체'))}</b> · "
-                  f"차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS 원값)</i>",
-                  f"• LS 전체 직접값 변화 <b>{fmt_raw(p.get('전체직접'))}</b> · "
-                  f"계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b>{check_suffix}"]
+        lines += [f"• {ko} 프로그램 전체(차익+비차익) <b>{program_fmt(p.get('전체'))}</b> · "
+                  f"차익 <b>{program_fmt(p.get('차익'))}</b> · 비차익 <b>{program_fmt(p.get('비차익'))}</b> <i>({program_note})</i>",
+                  f"• {'키움' if att.get('program_unit') == '억원' else 'LS'} 전체 직접값 변화 <b>{program_fmt(p.get('전체직접'))}</b> · "
+                  f"계산합계와 차이 <b>{program_fmt(p.get('검산차이'))}</b>{check_suffix}"]
     else:
         reason = str((statuses.get("program") or {}).get("reason") or "기준점 없음")
         lines.append(f"• {ko} 프로그램 전체·차익·비차익: 확인 보류 — {html.escape(reason)}")
@@ -688,6 +694,7 @@ def market_attribution_lines(att: dict[str, Any], market: str, final: bool = Fal
         lines.append("• 주체 판정 보류 — " + html.escape(str(att.get("reason") or "수급 기준점 부족")))
     lines.append("• 동일 검증 기준: 수급 시차 30초·프로그램 3종 조회시차 8초·합계 차이 1%. "
                  "원천 공표시각이 없는 프로그램은 조회시각을 표시하며 확신도 상향을 보류합니다.")
+    lines += cash_lines(att.get("cash_supplement"), market, att.get("end_ts"))
     return lines
 
 
@@ -721,6 +728,8 @@ def _flow_surge_channel_pair(
     start_ts, start = max(before, key=lambda x: x[0])
     skew = target - start_ts
     if skew > SURGE_MAX_SAMPLE_SKEW_SEC:
+        return None
+    if (start.get("source_tr"), start.get("unit")) != (end.get("source_tr"), end.get("unit")):
         return None
     return {
         "start_ts": start_ts, "end_ts": end_ts,
@@ -760,6 +769,8 @@ def _flow_surge_program(
     start_ts, start = max(prev, key=lambda x: x[0])
     if target - start_ts > SURGE_MAX_SAMPLE_SKEW_SEC:
         return None
+    if (start.get("source_tr"), start.get("unit")) != (end.get("source_tr"), end.get("unit")):
+        return None
     values = _program_delta(start, end)
     calc, direct, gap = (
         fnum(values.get("전체")),
@@ -788,6 +799,8 @@ def _flow_surge_program(
         "start_ts": start_ts,
         "end_ts": end_ts,
         "valid": aligned,
+        "unit": end.get("unit"),
+        "source_tr": end.get("source_tr"),
     }
 
 
@@ -849,6 +862,7 @@ def flow_surge_candidates(
             "spot_start_cumulative": fnum((spot or {}).get("start", {}).get(actor)),
             "futures_end_cumulative": fnum((fut or {}).get("end", {}).get(actor)),
             "program": program,
+            "cash_supplement": (spot or {}).get("end", {}).get("cash_supplement"),
             # 프로그램 매수는 투자자별 매수주체 확증이 아니라 별도의 시장 보조정보.
             "confidence": ("높음" if both and program_aligned else "중간" if both else "단독 신호"),
         })
@@ -1128,6 +1142,9 @@ class Watch:
 
     def _market_attribution(self, start_ts: float, end_ts: float, market: str) -> dict[str, Any]:
         rows = list(self.flows if market == "KOSPI" else self.kosdaq_flows)
+        supplements = [x.get("cash_supplement") for x in rows if isinstance(x.get("cash_supplement"), dict)
+                       and float(x["cash_supplement"].get("received_ts") or 0) <= end_ts]
+        cash_supplement = max(supplements, key=lambda x: float(x.get("received_ts") or 0)) if supplements else None
         # Legacy KOSPI handoffs keep their old series; after a new collection,
         # both markets require the exact-product channel. Never mix its scale
         # with the t1602 five-minute surge series.
@@ -1170,8 +1187,10 @@ class Watch:
                 "spot": observed["spot"], "futures": observed["futures"],
                 "futures_label": MARKET_SPECS[market]["futures_label"],
                 "futures_unit": (fut_b[0].get("unit") if fut_b else None),
+                "program_unit": (pgm_b[0].get("unit") if pgm_b else None),
+                "cash_supplement": cash_supplement,
                 "start_ts": start_ts, "end_ts": end_ts}
-        if market == "KOSDAQ":
+        if market in ("KOSPI", "KOSDAQ"):
             # Delivery evidence must survive the one-hour handoff lookback.
             # These are decoded provider fields, not preserved HTTP bytes.
             meta["source_evidence"] = {
@@ -1346,6 +1365,7 @@ class Watch:
             "",
             "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(LS_URL,"LS OpenAPI")]),
         ]
+        lines += cash_lines(self._cash_supplement("KOSPI", time.time()), "KOSPI")
         return "\n".join(lines)
 
     def build_alert(self, stage: str, ep: dict[str, Any], end_ts: float, end_price: float) -> str:
@@ -1414,6 +1434,12 @@ class Watch:
             self.daily_close = state
         return state
 
+    def _cash_supplement(self, market: str, at_ts: float) -> dict | None:
+        rows = getattr(self, "flows" if market == "KOSPI" else "kosdaq_flows", ())
+        values = [x.get("cash_supplement") for x in rows if isinstance(x.get("cash_supplement"), dict)
+                  and 0 < float(x["cash_supplement"].get("received_ts") or 0) <= at_ts]
+        return max(values, key=lambda x: x["received_ts"]) if values else None
+
     def _remember_completed_episode(self, market: str, ep: dict[str, Any],
                                     attribution: dict[str, Any], ended_ts: float) -> None:
         day = dt.datetime.fromtimestamp(float(ep["start_ts"]), KST).date().isoformat()
@@ -1475,6 +1501,7 @@ class Watch:
             if price is not None:
                 lines.append(f"• 마감 조회 시세 <b>{price:,.2f}</b> (조회 {fmt_clock(observed_ts)})")
             lines += ["• 사건 시작·저점 수급이 없어 매도주체 판정은 하지 않습니다."]
+            lines += cash_lines(self._cash_supplement(market, now.timestamp()), market, now.timestamp())
             lines += render_program_close(program, market)
             lines += ["• 마감 조회 시세의 공식 종가 독립 대조는 미완료입니다.",
                       "• " + link(KOSPI_URL if market == "KOSPI" else KOSDAQ_URL, market)]
@@ -1592,6 +1619,7 @@ class Watch:
                 text, detail = await asyncio.to_thread(
                     build_enrichment, self.token, ep, att
                 )
+                text += "\n" + "\n".join(cash_lines(att.get("cash_supplement"), "KOSPI", att.get("end_ts")))
                 source_ready = True
                 msg_id = await self._send_event("enrichment", ep, float(ep.get("low_ts") or time.time()), text)
                 self.enrichment_msg_ids.append(msg_id)
@@ -1617,6 +1645,7 @@ class Watch:
             source_ready = False
             try:
                 text, detail = await asyncio.to_thread(build_kosdaq_enrichment,self.token,ep,att)
+                text += "\n" + "\n".join(cash_lines(att.get("cash_supplement"), "KOSDAQ", att.get("end_ts")))
                 source_ready = True
                 msg_id = await self._send_event("kosdaq_enrichment", ep, float(ep.get("low_ts") or time.time()), text)
                 self.enrichment_msg_ids.append(msg_id)
@@ -1711,7 +1740,8 @@ class Watch:
                 self.raw["last_kosdaq_flow"] = {
                     "sample_at_kst": fmt_clock(sample_ts),
                     "last_received_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
-                    "market": "KOSDAQ", "source": "LS t1602/t8463/t1640",
+                    "market": "KOSDAQ", "sources": {key: (snap.get(key) or {}).get("source_tr")
+                                                     for key in ("현물", "지수선물", "프로그램")},
                 }
                 if ok:
                     self.raw.pop("last_kosdaq_flow_error", None)
@@ -1880,6 +1910,7 @@ class Watch:
                     "• 전일 종가→시가 갭과 개장 이후 현물 순매도를 별도로 판정합니다.",
                     "• "+link(KOSDAQ_URL,"코스닥 지수"),
                 ])
+                text += "\n" + "\n".join(cash_lines(self._cash_supplement("KOSDAQ", now_t), "KOSDAQ", now_t))
                 msg_id=await self._send_event("kosdaq_open_gap", {"market":"KOSDAQ","start_ts":self.session_open_ts}, now_t, text)
                 self.msg_ids.append(msg_id)
                 self.kosdaq_opening_gap_sent=True
@@ -1997,7 +2028,8 @@ class Watch:
             "KOSDAQ", actor, delta, (pair["start_ts"], pair["end_ts"]), now_ts, industries,
             mode="현물 중심", confidence="현물 단독 신호",
             threshold=f"현물 {KOSDAQ_SURGE_SINGLE_SPOT_EOK:,.0f}억원 이상",
-            extra_lines=["• 지수선물·프로그램: 이 알림의 감지 기준에 사용하지 않음 (KOSPI200 선물·프로그램 수급과 합산하지 않음)"],
+            extra_lines=["• 지수선물·프로그램: 이 알림의 감지 기준에 사용하지 않음 (KOSPI200 선물·프로그램 수급과 합산하지 않음)"]
+                        + cash_lines(pair.get("end", {}).get("cash_supplement"), "KOSDAQ", now_ts),
         )
 
     async def maybe_alert_kosdaq_surge(self, now_ts: float | None = None) -> None:
@@ -2061,7 +2093,7 @@ class Watch:
                 evidence={
                     "alert_contract": FLOW_SURGE_ALERT_CONTRACT,
                     "market": "KOSDAQ", "actor": actor,
-                    "source": "LS t1602 market=2 upcode=301 exchgubun=U gubun1=2",
+                    "source": "LS t1602 market=3 upcode=301 exchgubun=U gubun1=2",
                     "spot_window": [pair["start_ts"], pair["end_ts"]],
                     "spot_start_cumulative": fnum(pair["start"].get(actor)),
                     "spot_end_cumulative": end_value,
@@ -2086,7 +2118,9 @@ class Watch:
         p = cand.get("program") or {}
         if p.get("valid"):
             trend = "순매수 증가" if p["delta"] > 0 else "순매도 증가" if p["delta"] < 0 else "변화 없음"
-            lines.append(f"• 프로그램 {trend} {fmt_raw(p.get('delta'))} (LS 원값, 투자자 미구분)")
+            amount = fmt_eok(p.get("delta")) if p.get("unit") == "억원" else fmt_raw(p.get("delta"))
+            provider = "키움·독립 원화 원표 대조" if p.get("source_tr") == "ka90005" else "LS 원값"
+            lines.append(f"• 프로그램 {trend} {amount} ({provider}, 투자자 미구분)")
         else:
             lines.append("• 프로그램 교차검증: 미충족·보류 (매수주체 판정에 사용하지 않음)")
         if self.idx:
@@ -2105,7 +2139,7 @@ class Watch:
             confidence=("현물 단독 신호" if cand["mode"] == "현물 중심" else
                         "선물 단독 신호" if cand["mode"] == "선물 중심" else str(cand["confidence"])),
             threshold=threshold,
-            extra_windows=windows, extra_lines=lines,
+            extra_windows=windows, extra_lines=lines + cash_lines(cand.get("cash_supplement"), "KOSPI", now_ts),
         )
 
     async def maybe_alert_flow_surge(self, now_ts: float | None = None) -> None:
