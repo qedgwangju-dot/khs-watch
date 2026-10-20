@@ -302,16 +302,26 @@ def build_item_summary(item: base.Item) -> str:
 
 def migrate_state_once() -> None:
     state = base.load_state()
-    if int(state.get('dedupe_version') or 1) >= 4:
-        return
-    seen_events = set(state.get('seen_event_keys') or [])
-    # 이번 직장암 우선검토 사건은 이미 사용자에게 전달된 기존 사건이므로
-    # 새 중복키 체계 도입 시 재송출되지 않도록 기준선에 등록한다.
-    seen_events.add(CURRENT_EVENT_KEY)
-    seen_events.add(CANADA_EVENT_KEY)
-    state['seen_event_keys'] = base.cap(seen_events)
-    state['dedupe_version'] = 4
-    base.STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    changed = False
+    if int(state.get('dedupe_version') or 1) < 4:
+        seen_events = set(state.get('seen_event_keys') or [])
+        seen_events.update((CURRENT_EVENT_KEY, CANADA_EVENT_KEY))
+        state['seen_event_keys'] = base.cap(seen_events)
+        state['dedupe_version'] = 4
+        changed = True
+    if not state.get('fda_approval_ack_repair_20261020'):
+        # Prior code acknowledged FDA_APPROVAL_EVENT without rendering it:
+        # the previously seen GSK URL representative shadowed the new verified event.
+        # Artifact run 716 contained only the SAPPHIRE section, so this exact event
+        # must be retried once without disturbing any other past delivery marker.
+        state['seen_event_keys'] = [
+            key for key in (state.get('seen_event_keys') or [])
+            if key != FDA_APPROVAL_EVENT
+        ]
+        state['fda_approval_ack_repair_20261020'] = True
+        changed = True
+    if changed:
+        base.STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
 
 
@@ -319,8 +329,10 @@ _original_gsk_official_items = base.gsk_official_items
 
 
 def gsk_official_items() -> list[base.Item]:
-    items = _original_gsk_official_items()
-    items.append(base.Item("GSK 공식", "Jemperli dostarlimab approved in US for MSI-H/dMMR locally advanced rectal cancer by FDA", FDA_APPROVAL_URL, "Mon, 19 Oct 2026 14:00:00 GMT", "FDA accelerated approval, AZUR-1 stage II/III rectal cancer."))
+    # Verified new regulatory act must be chosen before a previously seen media-index
+    # item using the same event key, or the old URL-level dedupe hides the alert.
+    items = [base.Item("GSK 공식", "Jemperli dostarlimab approved in US for MSI-H/dMMR locally advanced rectal cancer by FDA", FDA_APPROVAL_URL, "Mon, 19 Oct 2026 14:00:00 GMT", "FDA accelerated approval, AZUR-1 stage II/III rectal cancer.")]
+    items.extend(_original_gsk_official_items())
     items.append(base.Item("ClinicalTrials.gov 공식", "Jemperli dostarlimab subcutaneous SAPPHIRE NCT07860450 trial registration", SAPPHIRE_URL, "Tue, 06 Oct 2026 12:00:00 GMT", "Not yet recruiting, 380 patients, endometrial carcinoma, estimated start 2026-11-12."))
     items.append(
         base.Item(
