@@ -60,7 +60,7 @@ def main(out: Path) -> None:
     # The same documented t1621 endpoint and one shared rate limit as production.
     for (market, code), item in master.items():
         started = time.monotonic()
-        request = {"t1621InBlock": {"upcode": code, "cnt": 500,
+        request = {"t1621InBlock": {"upcode": code, "nmin": 1, "cnt": 500,
                                     "bgubun": "0", "exchgubun": "U"}}
         record = {"record_type": "industry_history_snapshot", "source_tr": "t1621",
                   "market": market, "upcode": code, "industry": item["name"],
