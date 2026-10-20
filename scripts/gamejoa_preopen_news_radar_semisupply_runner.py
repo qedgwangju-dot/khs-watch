@@ -52,6 +52,14 @@ append_unique(base.QUERIES, [
         "AMD Versal Premium Gen 2 LPDDR5X HBM shortage memory on package ServeTheHome",
     ),
     (
+        "테라팹 국내 소재·장비·배관 공급망",
+        '"Terafab" (Tesla OR SpaceX) (HPSP OR Hanmi OR Korean OR supplier OR equipment OR materials OR NDA OR purchase order)',
+    ),
+    (
+        "테라팹 국내 공급망 협의",
+        '테라팹 스페이스X 테슬라 이엔에프테크놀로지 동진쎄미켐 아스플로 비엠티 유니셈 공급 계약 NDA',
+    ),
+    (
         "PC/노트북 부품 원가",
         "global PC notebook shipments memory SSD price surge DRAM NAND demand TrendForce Tom's Hardware",
     ),
@@ -78,6 +86,8 @@ append_unique(base.TERMS, [
     "contract price hikes",
     "contract price surge",
     "foundry",
+    "terafab",
+    "테라팹",
     "high-purity co2",
     "hbm4",
     "hbm suppliers",
@@ -106,6 +116,8 @@ for idx, (label, keys) in enumerate(base.SECTORS):
             "co2",
             "contract price surge",
             "foundry",
+            "terafab",
+            "테라팹",
             "high-purity co2",
             "hbm4",
             "hbm suppliers",
@@ -233,6 +245,8 @@ def install_fast_collect_items() -> None:
 def supply_theme(row: dict) -> str | None:
     text = base.source_content_text(row)
     src = source_text(row)
+    if has_any(text, ["terafab", "테라팹"]) and has_any(text, ["supplier", "supply chain", "purchase order", "nda", "non-disclosure", "equipment", "materials", "semicon west", "공급망", "납품", "발주", "기밀유지", "소재", "장비", "배관", "협의"]):
+        return "terafab_supplier_stage"
     if "trendforce" in src and has_any(text, ["hbm4", "hbm suppliers", "2027 hbm"]) and has_any(text, ["contract price", "contract price hikes", "contract price surge", "price hikes", "pricing power", "supply negotiations"]):
         return "hbm4_contract_price"
     if "trendforce" in src and has_any(text, ["macbook", "notebook shipments", "13.6"]):
@@ -257,6 +271,21 @@ def supply_theme(row: dict) -> str | None:
 
 
 THEME = {
+    "terafab_supplier_stage": {
+        "news": "테라팹 국내 소부장 공급망 접촉·계약 단계 변화",
+        "status": "보도·협의 단계",
+        "importance": "상",
+        "score": 110,
+        "impacts": ["매출·마진·현금흐름", "시간표"],
+        "paths": ["밸류체인", "계약 가시성", "설비투자"],
+        "sectors": ["Terafab", "전공정 소재·가스 배관·세정", "후공정 패키징·검사"],
+        "summary": "Tesla·SpaceX의 Terafab 관련 한국 공급사 접촉 보도입니다. 전시 부스 방문·NDA·품목 협의·시험 장비 발주·실제 납품계약을 서로 다른 단계로 확인해야 합니다.",
+        "view": "최종 공정·투자비가 확정되기 전에는 국내 업체별 직접 매출을 계산할 수 없습니다. 고객 인증·장비 발주·검수·매출 인식이 이어질 때 재평가 근거가 생깁니다.",
+        "korea": "HPSP·한미반도체의 앞선 발주·공급 보도와 이엔에프테크놀로지·동진쎄미켐·아스플로·비엠티·지앤지인텍·유니셈·미코의 협의 보도를 구분합니다.",
+        "priced": "미확인. 협의 기사만으로 개별 주식의 실제 수주나 실적 개선을 확정할 수 없습니다.",
+        "counter": "The Elec 취재상 접촉은 확인되지만, NDA와 부스 방문은 발주가 아니고 개별 계약금액·물량·양산 고객 검증은 공개되지 않았습니다.",
+        "failure": "6~24개월 안에 고객 인증·정식 주문·장비 반입·공장 전원 인가·검수로 이어지지 않으면 협의가 매출로 연결되지 않습니다. 병목은 초고청정 배관·소재 인증·수율·설비 가동 시점입니다.",
+    },
     "hbm4_contract_price": {
         "news": "TrendForce, 2027년 HBM4 계약가 대폭 인상 전망",
         "status": "확정",
