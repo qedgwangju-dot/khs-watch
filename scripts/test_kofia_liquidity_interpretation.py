@@ -2,6 +2,7 @@
 """Use the exact production workflow narrative Python and a separate final-message
 semantic validator on synthetic KOFIA states. No live Telegram or state mutation."""
 import json
+import hashlib
 import subprocess
 import sys
 import tempfile
@@ -30,6 +31,34 @@ def production_python():
 
 
 SCRIPT = production_python()
+
+
+def saved_delivery_trial():
+    fixture = json.loads(Path('tests/fixtures/kofia_summary_direction_39386470663.json').read_text(encoding='utf-8'))
+    original = fixture['original_alert_html']
+    state = fixture['pending']
+    assert hashlib.sha256(original.rstrip('\n').encode()).hexdigest() == fixture['provenance']['request_body_sha256']
+    try:
+        validate(original, state)
+    except RuntimeError as error:
+        assert 'summary daily/five-period relationship' in str(error)
+    else:
+        raise AssertionError('saved ID893 wrong summary accepted unchanged')
+    with tempfile.TemporaryDirectory(prefix='kofia_saved_delivery_') as root:
+        out = Path(root) / 'out'
+        out.mkdir()
+        (out / 'kofia_liquidity_alert.html').write_text(original, encoding='utf-8')
+        pending = json.dumps(state, ensure_ascii=False)
+        (out / 'kofia_liquidity_pending_state.json').write_text(pending, encoding='utf-8')
+        done = subprocess.run([sys.executable, '-X', 'utf8', '-c', SCRIPT], cwd=root,
+                              text=True, encoding='utf-8', capture_output=True)
+        assert done.returncode == 0, done.stderr
+        corrected = (out / 'kofia_liquidity_alert.html').read_text(encoding='utf-8')
+        assert fixture['expected_period_summary'] in corrected
+        assert '방향이 아직 완전히 일치하지 않습니다' not in corrected
+        assert (out / 'kofia_liquidity_pending_state.json').read_text(encoding='utf-8') == pending
+        assert validate(corrected, state)
+    print('PASS saved ID893 source-bound summary repair and same-body rejection')
 
 
 def trial(name, overrides=None, expected=None, forbidden=(), bad_dates=False, corrupt=None):
@@ -110,6 +139,40 @@ def trial(name, overrides=None, expected=None, forbidden=(), bad_dates=False, co
 
 
 def run_all():
+    saved_delivery_trial()
+    matching = {
+        'deposit': {'d1': -2_306_346, 'd5': -8_342_259},
+        'mmf': {'d1': 1_325_786, 'd5': 4_936_821},
+        'cma': {'d1': 413_591, 'd5': 1_657_980},
+        'credit': {'d1': -1_144_564, 'd5': -3_180_441},
+    }
+    trial('four matching period directions', overrides=matching,
+          expected='네 지표의 1D와 5D 방향은 각 항목별로 일치합니다.',
+          forbidden=('아직 완전히 일치하지 않습니다',))
+    trial('all four flat is not a trend', overrides={key: {'d1': 0, 'd5': 0} for key in matching},
+          expected='네 지표 모두 1D와 5D 기준으로 보합입니다.',
+          forbidden=('네 지표의 1D와 5D 방향은 각 항목별로 일치합니다.',))
+    trial('materially flat day is not an opposite direction', overrides={
+        **matching, 'cma': {'d1': 49_999, 'd5': 1_657_980}},
+        expected='1D와 5D의 보합 여부가 다른 항목은 CMA입니다.',
+        forbidden=('방향이 반대인 항목은 CMA',))
+    trial('actual reversal names only that series', overrides={
+        **matching, 'cma': {'d1': -413_591, 'd5': 1_657_980}},
+        expected='1D와 5D의 방향이 반대인 항목은 CMA입니다.',
+        forbidden=('네 지표의 1D와 5D 방향은 각 항목별로 일치합니다.',))
+    trial('matching cash improvement does not claim unproven reversal', overrides={
+        'deposit': {'d1': 3_000_000, 'd5': 5_000_000},
+        'mmf': {'d1': -4_000_000, 'd5': -8_000_000},
+        'cma': {'d1': 3_000_000, 'd5': 5_000_000},
+        'credit': {'d1': -1_000_000, 'd5': -3_000_000}},
+        expected='네 지표의 1D와 5D 방향은 각 항목별로 일치합니다.',
+        forbidden=('전체 추세가 완전히 반전됐다고 보기는 이릅니다',))
+    trial('tampered period relationship rejected', overrides=matching,
+          corrupt=lambda text: text.replace('네 지표의 1D와 5D 방향은 각 항목별로 일치합니다.',
+                                            '1D와 5D의 방향이 반대인 항목은 CMA입니다.', 1))
+    trial('stale mismatch appended after matching claim rejected', overrides=matching,
+          corrupt=lambda text: text.replace('각 항목별로 일치합니다.',
+                                            '각 항목별로 일치합니다. 당일과 5개 공표구간의 방향이 아직 완전히 일치하지 않습니다.', 1))
     trial(
         "2026-10-07 real positive MMF", expected="당일에도 MMF가 증가해 5개 공표구간 누적 증가 방향과 일치합니다.",
         forbidden=("당일 MMF 급감", "당일 MMF는 감소", "당일 MMF 감소"),

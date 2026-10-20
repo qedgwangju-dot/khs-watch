@@ -162,6 +162,33 @@ def validate(text, state):
     if d5 == "보합":
         expect("5개 공표구간 흐름과 같은 방향" not in persistence,
                "MMF daily non-flat move wrongly equated with flat five-day trend")
+
+    # Recalculate the period relationship independently from signed raw values,
+    # including materiality/flat boundaries, after the final text replacement.
+    pairs = [(name, direction(values[key]['d1'], values[key]['value']),
+              direction(values[key]['d5'], values[key]['value']))
+             for key, (_, name) in LABELS.items()]
+    opposite = [name for name, daily, five in pairs
+                if daily != five and daily != '보합' and five != '보합']
+    flat_change = [name for name, daily, five in pairs
+                   if daily != five and '보합' in (daily, five)]
+    period_claims = []
+    if opposite:
+        period_claims.append(f"1D와 5D의 방향이 반대인 항목은 {', '.join(opposite)}입니다.")
+    if flat_change:
+        period_claims.append(f"1D와 5D의 보합 여부가 다른 항목은 {', '.join(flat_change)}입니다.")
+    if not period_claims:
+        period_claims.append(
+            '네 지표 모두 1D와 5D 기준으로 보합입니다.'
+            if all(daily == five == '보합' for _, daily, five in pairs) else
+            '네 지표의 1D와 5D 방향은 각 항목별로 일치합니다.'
+        )
+    expect(summary.startswith('• <b>종합</b>: ' + ' '.join(period_claims) + ' '),
+           'summary daily/five-period relationship differs from raw values')
+    if not opposite and not flat_change:
+        expect('일치하지 않습니다' not in summary,
+               'matching daily/five-period directions mislabeled as disagreement')
+
     comparison = f"• 비교 기준: 1D {date_label(ref_dates[1])} → {date_label(ref_dates[0])} / 5D {date_label(ref_dates[5])} → {date_label(ref_dates[0])}"
     expect(text.splitlines().count(comparison) == 1, "comparison dates absent or inconsistent")
     expect("5D는 최근 5개 공표구간의 잔액 차이" in text, "balance-change period basis missing")

@@ -3,6 +3,8 @@ import copy
 import base64
 import hashlib
 import json
+import subprocess
+import tempfile
 from pathlib import Path
 import unittest
 
@@ -31,6 +33,70 @@ class SourceTests(unittest.TestCase):
         self.assertEqual(result['values']['mmf']['d1'], -2918091)
         self.assertEqual(result['values']['mmf']['d5'], 20425443)
         self.assertEqual(result['values']['forced']['value'], 27083)
+
+    def test_new_summary_version_corrects_once_after_confirmed_checkpoint(self):
+        # Exercise the real collector with preserved official responses. Every
+        # fetch is intercepted; unknown URLs/payloads fail and no Telegram runs.
+        wrapper = r'''
+const assert = require('assert');
+const fs = require('fs');
+const fixture = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
+const records = fixture.evidence.requests;
+global.fetch = async (url, options) => {
+  assert(String(url).startsWith('https://freesis.kofia.or.kr/'));
+  assert.strictEqual(options.method, 'POST');
+  const payload = JSON.parse(options.body);
+  const matches = records.filter(record => {
+    if (!String(url).endsWith(record.endpoint)) return false;
+    if (payload.dmSearchData) {
+      return record.payload.dmSearchData?.strSvrId === payload.dmSearchData.strSvrId;
+    }
+    const query = payload.dmSearch;
+    const stored = record.payload.dmSearch;
+    if (!stored || stored.OBJ_NM !== query.OBJ_NM) return false;
+    if (query.tmpV34) return stored.tmpV34 === query.tmpV34;
+    if (query.OBJ_NM === 'STATSCU0100000090BO') return stored.tmpV45 === query.tmpV45;
+    return true;
+  });
+  assert.strictEqual(matches.length, 1, JSON.stringify(payload));
+  const raw = Buffer.from(matches[0].response_body_base64, 'base64');
+  return {status:200, url:String(url), headers:{get:()=>'application/json'},
+          arrayBuffer:async()=>raw};
+};
+const {main} = require(process.argv[1]);
+(async () => {
+  const stateFile = 'data/kofia_liquidity_state.json';
+  const before = fs.readFileSync(stateFile);
+  await main();
+  let next = JSON.parse(fs.readFileSync('out/kofia_liquidity_pending_state.json'));
+  assert.strictEqual(next.message_version, 'kofia-balances-20261020-v3');
+  assert.strictEqual(next.last_event, '해석 정정');
+  assert.strictEqual(next.fingerprint, fixture.pending.fingerprint);
+  assert(fs.readFileSync('out/kofia_liquidity_alert.html','utf8').includes('1D·5D 방향 일치 여부'));
+  assert.deepStrictEqual(fs.readFileSync(stateFile), before);
+  await main();
+  assert(fs.existsSync('out/kofia_liquidity_pending_state.json'));
+  assert.deepStrictEqual(fs.readFileSync(stateFile), before);
+  // Simulate the acknowledged checkpoint only inside this temporary directory.
+  next.delivery_receipt = {message_id:1, timestamp_utc:'2026-10-20T09:00:00+00:00'};
+  fs.writeFileSync(stateFile, JSON.stringify(next));
+  const confirmed = fs.readFileSync(stateFile);
+  await main();
+  assert(!fs.existsSync('out/kofia_liquidity_alert.html'));
+  assert(!fs.existsSync('out/kofia_liquidity_pending_state.json'));
+  assert.deepStrictEqual(fs.readFileSync(stateFile), confirmed);
+})().catch(error => { console.error(error); process.exitCode=1; });
+'''
+        with tempfile.TemporaryDirectory(prefix='kofia_version_correction_') as root:
+            base = Path(root)
+            (base / 'data').mkdir()
+            (base / 'data/kofia_liquidity_state.json').write_text(
+                json.dumps(FIXTURE['pending']), encoding='utf-8')
+            done = subprocess.run(['node', '-e', wrapper,
+                                   str(Path('scripts/kofia_liquidity_watch.js').resolve()),
+                                   str(Path('tests/fixtures/kofia_source_20261012.json').resolve())],
+                                  cwd=base, text=True, encoding='utf-8', capture_output=True)
+            self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
 
     def test_source_hash_change_is_rejected(self):
         self.evidence['requests'][0]['response_text'] += ' '
