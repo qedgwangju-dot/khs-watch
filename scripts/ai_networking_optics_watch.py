@@ -3599,7 +3599,7 @@ def main() -> None:
         taihan_direct_verified, taihan_direct_status = verify_taihan_original_report()
         if taihan_direct_verified:
             company = TAIHAN_CABLE_COMPANY
-            title = "대한광통신, 美 하이퍼스케일 AI 데이터센터향 광케이블 2차 물량 공급 개시"
+            title = "대한광통신, 미국 하이퍼스케일 AI 데이터센터향 광케이블 2차 물량 공급 개시"
             event = new_infra_milestone(company, title)
             assert event and event[2] == "taihan|2026-09-second-shipment"
             all_relevant.append({
