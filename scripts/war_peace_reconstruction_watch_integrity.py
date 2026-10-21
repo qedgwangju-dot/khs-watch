@@ -283,7 +283,7 @@ def _statement_with_actual_action(title):
              or _information_resumption_headline(title) or _near_military_authorization(title)
              or _attack_denial_with_blockade(title) or _gold_price_headline(title)
              or _oil_supply_headline(title) or _peace_plan_discussion_headline(title)
-             or _security_activity_headline(title))
+             or _security_activity_headline(title) or _meeting_plan_stage(title))
     return bool(stage and re.search(
         r'(?:공습|공격|폭격|타격|요격)(?:을|를)?\s*(?:했다(?!는)|했으며|하고\s*있|진행\s*중)|'
         r'(?:피격|파괴)(?:됐|되었|당했)|'
@@ -302,6 +302,9 @@ def _primary_topic(row):
             group += '·유럽'
         return group + ' · ' + KIND_LABELS[kind]
     if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal'):
+        meeting_plan = _meeting_plan_stage(title)
+        if meeting_plan and kind in ('diplomatic_position', 'diplomatic_plan'):
+            return _diplomatic_group(title) + ' · ' + ('회담 추진 부인' if meeting_plan == 'denied' else '회담 추진·논의')
         if kind == 'diplomatic_analysis' and _bargain_question_headline(title):
             return _diplomatic_group(title) + ' · 정상회담·담판 가능성 해설'
         if kind == 'diplomatic_position' and _harm_intent_denial_headline(title):
@@ -811,6 +814,15 @@ def _peace_plan_discussion_headline(title):
     return bool(re.search(r'(?:종전|평화|휴전)(?:안|구상|초안)(?:을|를)?\s*(?:논의|협의|검토|전달|제시)', title))
 
 
+def _meeting_plan_stage(title):
+    if _summit_proposal_headline(title):
+        return None
+    match = re.search(r'회담(?:을|를|도)?\s*(?:추진|논의|검토|계획)', title)
+    if not match:
+        return None
+    return 'denied' if re.match(r'(?:은|는|을|를)?\s*(?:하지\s*않|않겠|없|부인)', title[match.end():]) else 'planned'
+
+
 def _diplomatic_headline_kind(title):
     if _peace_plan_discussion_headline(title):
         return 'diplomatic_plan'
@@ -835,6 +847,9 @@ def _diplomatic_headline_kind(title):
                       r'\b(?:zelenskyy?|zelenskiy|ukrain\w*|trump|witkoff|kushner|iran(?:ian)?|russia\w*|putin|kremlin|lavrov)\b|\bu\.s\.', title)
     if not actor:
         return None
+    meeting_plan = _meeting_plan_stage(title)
+    if meeting_plan:
+        return 'diplomatic_position' if meeting_plan == 'denied' else 'diplomatic_plan'
     if _bargain_question_headline(title):
         return 'diplomatic_analysis'
     if _harm_intent_denial_headline(title) or _negotiation_stalemate_headline(title):
@@ -971,6 +986,9 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    meeting_plan = _meeting_plan_stage(title)
+    if meeting_plan and kind in ('diplomatic_position', 'diplomatic_plan'):
+        return '회담 추진 부인' if meeting_plan == 'denied' else '회담 추진·논의'
     if kind == 'military_position' and _attack_denial_with_blockade(title):
         return '공격 부인·봉쇄 유지 입장'
     if kind == 'diplomatic_analysis' and _bargain_question_headline(title):

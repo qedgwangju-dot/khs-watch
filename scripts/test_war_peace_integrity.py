@@ -84,6 +84,68 @@ class IntegrityTests(unittest.TestCase):
         value=json.loads(path.read_text(encoding='utf-8'))
         return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def meeting_plan_fixture(self):
+        path=Path(__file__).parent/'test_fixtures/war_meeting_plan_39547155058.json'
+        value=json.loads(path.read_text(encoding='utf-8'))
+        return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_meeting_plan_saved_pursuit_is_not_completed_contact(self):
+        fixture,_=self.meeting_plan_fixture();row=copy.deepcopy(fixture['articles'][1])
+        self.assertEqual(integrity.non_military_kind(row),'diplomatic_plan')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'미국·우크라이나·러시아 · 회담 추진·논의')
+        self.assertEqual(integrity._display_headline(row),row['title_original'])
+
+    def test_meeting_plan_denial_and_actual_attack_remain_distinct(self):
+        row=article('트럼프 특사, 푸틴과 회담 추진 부인')
+        self.assertEqual(integrity.non_military_kind(row),'diplomatic_position')
+        self.assertEqual(integrity.topic_label(row),'미국·러시아 · 회담 추진 부인')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        row=article('트럼프 특사, 푸틴과 회담 추진…러시아 공습했다')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row),'red')
+
+    def test_meeting_plan_unqualified_contact_keeps_existing_kind(self):
+        row=article('트럼프 특사, 푸틴과 회담')
+        self.assertEqual(integrity.non_military_kind(row),'diplomatic_contact')
+        self.assertIn('외교 접촉 보도',integrity.topic_label(row))
+
+    def test_meeting_plan_full_saved_candidates_pass_final_gate(self):
+        fixture,now=self.meeting_plan_fixture();rows=copy.deepcopy(fixture['articles'])
+        with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+            root=Path(folder)
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch,attr,root/name))
+            stack.enter_context(patch.object(integrity.body_parallel,'_safe_enrich'))
+            text=integrity.build_alert(rows,fixture['markets'],now)
+            receipt=evidence.alert_receipt(rows,fixture['markets'],now,text,fixture['market_source_status'])
+            shown=[x for x in receipt['articles']if x['rendered']]
+            self.assertEqual([x['id']for x in shown],[fixture['articles'][i]['id']for i in(1,2)])
+            self.assertEqual([x['classification_color']for x in shown],['yellow','yellow'])
+            self.assertIn('회담 추진·논의',text);self.assertIn('원유 공급·가격 보도',text)
+            for x in shown:self.assertIn(html.escape(x['title_original']),text)
+            watch.ALERT.write_text(text,encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt),encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[x['id']for x in shown]}),encoding='utf-8')
+            integrity.verify_alert()
+            self.assertEqual(json.loads(watch.STATE.read_text()),{'seen':[]})
+
+    def test_meeting_plan_original_same_hash_contact_topic_rejected(self):
+        fixture,_=self.meeting_plan_fixture()
+        with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+            root=Path(folder)
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch,attr,root/name))
+            original=dict(run_id=str(fixture['provenance']['run_id']),code_sha=fixture['provenance']['actual_code_sha'],
+                          queried_at_kst=fixture['provenance']['queried_at_kst'],alert_sha256=fixture['provenance']['alert_sha256'],
+                          articles=fixture['articles'],markets=fixture['markets'],market_source_status=fixture['market_source_status'])
+            self.assertEqual(hashlib.sha256(fixture['original_alert'].strip().encode()).hexdigest(),original['alert_sha256'])
+            watch.ALERT.write_text(fixture['original_alert'],encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(original),encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[x['id']for x in fixture['articles']if x['rendered']]}),encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
+                integrity.verify_alert()
+
     def test_market_plan_gold_price_is_market_report_not_contact(self):
         fixture,_=self.market_plan_fixture();row=copy.deepcopy(fixture['articles'][0])
         self.assertEqual(integrity.non_military_kind(row),'commodity_market')
