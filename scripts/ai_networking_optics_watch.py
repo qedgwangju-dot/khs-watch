@@ -3132,6 +3132,71 @@ def _self_test_korean_optics_alerts() -> None:
     assert power_milestone("AAOI Taiwan Bloom Energy SOFC long-term service contract signed")[0] == "AAOI SOFC 유지보수 계약"
 
 
+
+def new_optical_infra_regression_checks() -> None:
+    # 3M warrant vesting is not a binding $6bn purchase order.
+    initial_3m = "3M expands Amazon $6 billion data center optical warrant agreement"
+    paid_3m = "3M Amazon fully vested optical warrant after actual $6 billion cumulative payments"
+    other_6b = "Meta signs Corning $6 billion optical fiber agreement"
+    assert new_infra_milestone(AMAZON_EBO_COMPANY, initial_3m)[2] in NEW_OPTICAL_INFRA_BASELINES
+    assert new_infra_milestone(AMAZON_EBO_COMPANY, paid_3m)[2] not in NEW_OPTICAL_INFRA_BASELINES
+    assert new_infra_milestone(AMAZON_EBO_COMPANY, other_6b) is None
+    assert new_infra_milestone(
+        AMAZON_EBO_COMPANY,"3M Microsoft expands EBO optical connector relationship"
+    )[2] == "3m|microsoft|2026-07-15-ebo"
+
+    # Fiber-kilometer shortage is a forecast; spot multiples are NOT
+    # every supplier's signed contract ASP. Later revisions may be notified.
+    original = "TrendForce Optical Fiber Spot Prices Surge 5-fold in 2026, Shortages Persist Through 2028"
+    revision = "TrendForce revises optical fiber spot price forecast upwards to six times 2025 levels"
+    assert new_infra_milestone(FIBER_SPOT_COMPANY, original)[2] in NEW_OPTICAL_INFRA_BASELINES
+    assert new_infra_milestone(FIBER_SPOT_COMPANY, revision)[2] not in NEW_OPTICAL_INFRA_BASELINES
+
+    # Old June second contract != actual second shipment != fresh third PO.
+    june = "대한광통신 미국 AI 데이터센터 864심 광케이블 2차 계약 355억원 체결"
+    october = "대한광통신, 美 하이퍼스케일 AI 데이터센터향 광케이블 2차 물량 공급 개시"
+    future = "대한광통신 AI 데이터센터 광케이블 2차 물량 공급 예정"
+    third = "대한광통신 미국향 864심 광케이블 3차 공급계약 수주"
+    unrelated = "가온전선 미국 AI 데이터센터 864심 광케이블 2차 공급 개시"
+    assert new_infra_milestone(TAIHAN_CABLE_COMPANY, june)[2] == "taihan|2026-06-second-contract"
+    assert new_infra_milestone(TAIHAN_CABLE_COMPANY, october)[2] == "taihan|2026-10-second-delivery"
+    assert new_infra_milestone(TAIHAN_CABLE_COMPANY, future)[2] == "taihan|2026-06-second-contract"
+    assert new_infra_milestone(TAIHAN_CABLE_COMPANY, third)[0] == "대한광통신 미국향 3차 수주"
+    assert new_infra_milestone(TAIHAN_CABLE_COMPANY, unrelated) is None
+    assert not same_underlying_story(
+        {"company":TAIHAN_CABLE_COMPANY,"title":june},
+        {"company":TAIHAN_CABLE_COMPANY,"title":october},
+    )
+    assert same_underlying_story(
+        {"company":TAIHAN_CABLE_COMPANY,"title":october},
+        {"company":TAIHAN_CABLE_COMPANY,"title":"대한광통신 미국 AI 광케이블 2차 출하 개시"},
+    )
+
+    # Two independent publishers or a truly first-party publisher are needed,
+    # not two reposts of a single untrusted blog or fake source label.
+    unofficial={"company":TAIHAN_CABLE_COMPANY,"title":october,"source":"데이터투자",
+                "source_url":"https://datatooza.com"}
+    credible={"company":TAIHAN_CABLE_COMPANY,"title":october,"source":"뉴시스",
+              "source_url":"https://newsis.com"}
+    spoofed={"company":TAIHAN_CABLE_COMPANY,"title":october,"source":"대한광통신",
+             "source_url":"https://random-blog.example"}
+    assert not new_infra_official_source(spoofed)
+    assert not new_infra_evidence_verified(unofficial,[unofficial])
+    assert new_infra_evidence_verified(unofficial,[unofficial,credible])
+    official={"company":AMAZON_EBO_COMPANY,"title":initial_3m,
+              "source":"3M Company","source_url":"https://investors.3m.com"}
+    assert new_infra_official_source(official)
+    for comp in NEW_OPTICAL_INFRA_SCOPES:
+        assert comp in COMPANIES and comp in DISPLAY_NAMES_KO
+    for headline,comp in (
+        (initial_3m,AMAZON_EBO_COMPANY),
+        (original,FIBER_SPOT_COMPANY),
+        (october,TAIHAN_CABLE_COMPANY),
+    ):
+        event=new_infra_milestone(comp,headline)
+        assert event and meaning_for(event[0]) and risk_for(event[0])
+
+
 def load_state() -> dict:
     if not STATE_PATH.exists():
         return {"initialized": False, "seen_keys": []}
@@ -3239,6 +3304,7 @@ def networking_supplier_regression_checks() -> None:
 def main() -> None:
     _self_test_korean_optics_alerts()
     networking_supplier_regression_checks()
+    new_optical_infra_regression_checks()
     (ROOT / "out").mkdir(parents=True, exist_ok=True)
     (ROOT / "data").mkdir(parents=True, exist_ok=True)
 
