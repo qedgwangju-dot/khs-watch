@@ -16,6 +16,8 @@ on:
       - ".github/workflows/korea-energy-mix-watch.yml"
       - "scripts/korea_energy_mix_watch.py"
       - "scripts/korea_energy_mix_watch_runner.py"
+      - "scripts/alert_timeline_dates.py"
+      - "tests/test_alert_timeline_dates.py"
       - "tests/test_korea_energy_mix_watch.py"
 
 concurrency:
@@ -46,8 +48,8 @@ jobs:
 
       - name: 검사
         run: |
-          python -m compileall -q scripts/korea_energy_mix_watch.py scripts/korea_energy_mix_watch_runner.py
-          pytest -q tests/test_korea_energy_mix_watch.py
+          python -m compileall -q scripts/korea_energy_mix_watch.py scripts/korea_energy_mix_watch_runner.py scripts/alert_timeline_dates.py
+          pytest -q tests/test_korea_energy_mix_watch.py tests/test_alert_timeline_dates.py
 
       - name: 전기본·전원믹스 확인
         id: energy
