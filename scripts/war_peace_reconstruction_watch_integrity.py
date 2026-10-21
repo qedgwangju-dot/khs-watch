@@ -336,6 +336,9 @@ def _statement_with_actual_action(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if kind in ('diplomatic_statement', 'diplomatic_plan') and _detainee_release_stage(title):
+        label = '억류자 석방 계획·논의' if _detainee_release_stage(title) == 'planned' else '억류자 석방·완화 보도'
+        return _diplomatic_group(title) + ' · ' + label
     if kind is None and _saudi_airport_casualty_report(title):
         actors = ['사우디']
         if re.search(r'후티|\bhouthi', title):
@@ -492,6 +495,10 @@ def _primary_topic(row):
         area = '호르무즈' if re.search(r'호르무즈|\bhormuz\b', title) else '해상'
         return area + ' · 선박 피격 집계 보도'
     if kind is None and _maritime_attack_headline(row):
+        if (re.search(r'페르시아만|\bpersian\s+gulf\b', title)
+                and re.search(r'호르무즈|\bhormuz\b', title)
+                and not re.search(r'이란|\biran(?:ian)?\b', title)):
+            return '페르시아만·호르무즈 · 선박 피격 보도'
         prior_topic = _topic(row)
         if prior_topic.endswith(' · 유조선 피격'):
             return prior_topic
@@ -1019,6 +1026,22 @@ def _houthi_attack_claim_headline(title):
     return bool(re.search(r'후티|\bhouthi', title) and re.search(r'공격했다고\s*주장|\bclaims?\b.{0,40}\battacked\b', title))
 
 
+def _detainee_release_stage(title):
+    # A later release clause must not displace an earlier envoy/peace-plan event.
+    title = re.split(r'…|\.{3}|[;；]', title)[0]
+    action = re.search(r'석방|\breleas(?:e[sd]?|ing)\b', title)
+    if not (action and re.search(r'억류|수감|구금|포로|인질|\b(?:detainees?|prisoners?|hostages?)\b', title)):
+        return None
+    after = title[action.end():]
+    before = title[max(0, action.start()-30):action.start()]
+    if (re.match(r'(?:은|는|을|를)?\s*(?:하지\s*않|부인|거부|무산)', after)
+            or re.search(r'\b(?:not|never)\s*$', before)):
+        return None
+    planned = (re.match(r'(?:은|는|을|를)?\s*(?:계획|검토|추진|제안|가능|예정|할)', after)
+               or re.search(r'\b(?:will|may|might|could|plans?\s+to)\s*$', before))
+    return 'planned' if planned else 'released'
+
+
 def _settlement_discussion_outlook(title):
     match = re.search(r'논의|\bdiscuss\w*\b', title)
     if not (match and re.search(r'트럼프|\btrump\b', title) and re.search(r'푸틴|\bputin\b', title)
@@ -1083,6 +1106,9 @@ def _diplomatic_headline_kind(title):
                       r'\b(?:zelenskyy?|zelenskiy|ukrain\w*|trump|witkoff|kushner|iran(?:ian)?|russia\w*|putin|kremlin|lavrov)\b|\bu\.s\.', title)
     if not actor:
         return None
+    release = _detainee_release_stage(title)
+    if release:
+        return 'diplomatic_plan' if release == 'planned' else 'diplomatic_statement'
     if _conditional_diplomacy_stage(title) == 'warning':
         return 'military_statement'
     meeting_plan = _meeting_plan_stage(title)
@@ -1229,6 +1255,8 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    if kind in ('diplomatic_statement', 'diplomatic_plan') and _detainee_release_stage(title):
+        return '억류자 석방 계획·논의' if _detainee_release_stage(title) == 'planned' else '억류자 석방·완화 보도'
     if kind is None and _saudi_airport_casualty_report(title):
         return '공항 공격·피해 보도'
     if _conditional_diplomacy_stage(title) == 'warning' and kind == 'military_statement':
