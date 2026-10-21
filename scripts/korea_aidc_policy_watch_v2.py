@@ -14,6 +14,11 @@ import requests
 from bs4 import BeautifulSoup
 
 try:
+    from alert_timeline_dates import extract_original_dates, parse_timestamp, timeline_lines, verified_age_days
+except ModuleNotFoundError:
+    from scripts.alert_timeline_dates import extract_original_dates, parse_timestamp, timeline_lines, verified_age_days
+
+try:
     import korea_aidc_policy_watch as base
 except ModuleNotFoundError:
     from scripts import korea_aidc_policy_watch as base
@@ -173,32 +178,18 @@ def enrich(row: dict[str, Any], session: requests.Session) -> dict[str, Any]:
         if response.url:
             result["url"] = response.url
         soup = BeautifulSoup(response.text, "html.parser")
-        # 기사 발행일은 Google News RSS 색인일 대신 발행사 원문 메타정보를 우선한다.
-        from email.utils import format_datetime
-        for query in (
-            'meta[property="article:published_time"]',
-            'meta[name="article:published_time"]',
-            'meta[name="datePublished"]',
-            'meta[property="og:article:published_time"]',
-            "time[datetime]",
-        ):
-            node = soup.select_one(query)
-            if not node:
-                continue
-            stamp = (node.get("content") or node.get("datetime") or "").strip()
-            if not stamp:
-                continue
-            try:
-                parsed = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
-                if parsed.tzinfo is None:
-                    parsed = parsed.replace(tzinfo=KST)
-                if 2024 <= parsed.year <= datetime.now(KST).year + 1:
-                    result["rss_published"] = result.get("published", "")
-                    result["published"] = format_datetime(parsed)
-                    result["date_verified_from_publisher"] = True
-                    break
-            except ValueError:
-                continue
+        # 원문 게시일·수정일·법령 시행일과 Google News RSS 노출일은 분리한다.
+        evidence = extract_original_dates(response.text)
+        result["timeline_evidence"] = evidence
+        result["rss_published"] = str(result.get("published", ""))
+        if evidence.get("published"):
+            from email.utils import format_datetime
+            parsed = parse_timestamp(evidence["published"])
+            if parsed is not None:
+                result["published"] = format_datetime(parsed)
+                result["date_verified_from_publisher"] = True
+        else:
+            result["date_verified_from_publisher"] = False
         for node in soup.select("script, style, noscript, nav, footer, header, aside"):
             node.decompose()
         selectors = (
@@ -516,6 +507,17 @@ def render(row: dict[str, Any]) -> str:
     new, changed, invest = fact_lines(row)
     project_event = str(row.get("event_key", "")).startswith("aidc|sgc-gunsan|")
     header = "<b>한국 AIDC 사업 실행 새 변화</b>" if project_event else "<b>한국 AIDC 정책·전력 특례 새 변화</b>"
+    evidence = dict(row.get("timeline_evidence") or {})
+    rss_date = str(row.get("rss_published") or row.get("published") or "")
+    chronology = timeline_lines(evidence, rss_published=rss_date)
+    if evidence.get("published") and evidence.get("published") != rss_date:
+        from alert_timeline_dates import korean_date as _korean_date
+        from scripts.alert_timeline_dates import korean_date as _korean_date_fallback
+        # 날짜값 자체가 다를 때만 검색 노출일을 별도 참고값으로 쓴다.
+        if _korean_date_fallback(evidence.get("published")) != _korean_date_fallback(rss_date):
+            chronology.append(f"검색 노출일(게시일과 다름)  {_korean_date_fallback(rss_date)}")
+    chronology_html = [f"<b>{html.escape(text.split('  ', 1)[0])}</b>  {html.escape(text.split('  ', 1)[-1])}"
+                       for text in chronology]
     return "\n".join([
         header,
         "",
@@ -525,7 +527,7 @@ def render(row: dict[str, Any]) -> str:
         "• <b>알림 기준</b>  같은 기사 재노출이 아니라 새 숫자·법적 제약·공식화·사업단계 변화가 생길 때만 전송",
         "",
         f"<b>{title}</b>",
-        f"<b>발표일</b>  {base.kdate(str(row.get('published', '')))}",
+        *chronology_html,
         f"<b>출처</b>  {source_link(row)}",
         "",
         "<b>이번에 새로 추가된 사실</b>",
