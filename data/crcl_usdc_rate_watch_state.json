@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-21T10:36:30+09:00",
+  "updated_at_kst": "2026-10-21T16:39:42+09:00",
   "circle": {
     "date": "2026-10-19",
     "circulation_usd_b": 71.9,
@@ -13,11 +13,11 @@
     "date": "2026-10-20",
     "sec_yield_7d": 3.85,
     "yield_7d": 3.85,
-    "yield_1d": null,
+    "yield_1d": 3.85,
     "yield_crosscheck_gap_bp": 0.0,
     "visible_nav_date": "2026-10-20",
-    "fund_size_usd_m": 61267.5,
-    "fund_size_date": "2026-10-19",
+    "fund_size_usd_m": 60767.5,
+    "fund_size_date": "2026-10-20",
     "source_url": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund",
     "product": "Circle Reserve Fund",
     "ticker": "USDXX",
@@ -82,7 +82,5 @@
   },
   "crcl_last_alerted_close_date": "2026-10-20",
   "correction_pending": false,
-  "errors": [
-    "fx: 2026-10-20 한국은행 ECOS 원/미국달러 매매기준율 조회 실패"
-  ]
+  "errors": []
 }
