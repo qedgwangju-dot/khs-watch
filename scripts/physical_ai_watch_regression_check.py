@@ -5658,4 +5658,28 @@ cg,cs,cc,ck=classify(catl_sodium_prior)
 assert cg=="sodium_ion_battery" and cs<11,(cg,cs,cc)
 assert ck != k,"Chinese contracted volume and Korean test plan must have different IDs"
 
+
+# Oct-21 SEM Mexico investment REPORTED and Samsung RX visit PLANNED.
+assert "SAMSUNG_ROBOT_OCT21_RECOVERY=" in watcher.__dict__.get(
+    "_watcher_source", Path(__file__).with_name("physical_ai_watch_airan_guard.py").read_text()
+)
+sem_recovery=watcher.query_news(watcher.SAMSUNG_ROBOT_OCT21_RECOVERY+"sem_mexico")
+rx_recovery=watcher.query_news(watcher.SAMSUNG_ROBOT_OCT21_RECOVERY+"samsung_rx_visit")
+if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,26):
+    assert len(sem_recovery)==1 and len(rx_recovery)==1
+    sem=sem_recovery[0]
+    sem_group=base.topic_group(sem["title"]+" "+sem["description"]+" "+sem["source"])
+    assert sem_group=="sem_mexico_camera_robot",sem_group
+    assert base.score(sem)>=11
+    assert "미확인" in base.meaning(base.category(sem["title"]+" "+sem["description"],sem_group))
+    assert base.key(sem)==base.key(dict(sem,title=sem["title"]+" (재게시)"))
+    rx=rx_recovery[0]
+    rx_group=base.topic_group(rx["title"]+" "+rx["description"]+" "+rx["source"])
+    assert rx_group=="samsung_rx_leadership_visit",rx_group
+    assert base.score(rx)==0, "planned CEO visit cannot be sent as achieved event"
+    assert base.score(dict(rx,source="삼성전자"))==0
+    assert "회사의 공식" not in rx["description"]
+else:
+    assert sem_recovery==[] and rx_recovery==[]
+
 print("Physical-AI watcher regression guards: PASS")
