@@ -1,0 +1,34 @@
+{
+  "source": "LNG supply crisis Telegram alert",
+  "audited_run_id": 39599715267,
+  "audited_message_id": 312,
+  "observed_before": "Two distinct RSS publisher titles were rendered as one generic confirmed Hormuz/Red Sea LNG deterioration claim.",
+  "status": "prior_unverified_claim_retracted",
+  "original_alert_at_kst": "2026-10-21T21:28:16+09:00",
+  "corrected_at_kst": "2026-10-22T00:11:37+09:00",
+  "correction_run_id": 39623297387,
+  "correction_action": "Telegram editMessageText",
+  "correction_message_id": 312,
+  "new_message_sent": false,
+  "root_causes": [
+    "RSS source grouping by category/polarity/subtype rather than the same physical LNG incident",
+    "commodity-neutral shipping attacks could count as confirmed LNG supply events",
+    "generic Korean headline fallback erased factual distinctions between separate stories"
+  ],
+  "remediation": [
+    "require explicitly LNG-related physical event, same route and event direction before cross-source confirmation",
+    "reject neutral LNG transit news and generic container/oil-tanker attack coverage as LNG outage evidence",
+    "fail closed on untranslatable or unverifiable LNG maritime titles",
+    "stable material-stage deduplication, serialized Actions, preserve existing state and schedule"
+  ],
+  "verification": {
+    "amended_run_id": 39622172713,
+    "amended_run_outcome": "success",
+    "news_candidate_count": 8,
+    "confirmed_change_count": 0,
+    "telegram_send": "skipped",
+    "correction_run_outcome": "success",
+    "telegram_edit_verified": true
+  },
+  "explicit_limit": "Full original publisher article texts were not verified from the Google News redirect links; this is a correction of an unsupported classification, not a claim the underlying sea risk disappeared."
+}

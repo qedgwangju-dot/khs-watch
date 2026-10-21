@@ -196,89 +196,6 @@ jobs:
           print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={message_ids}")
           PY
 
-      - name: Correct prior unverified LNG alert 312
-        if: >-
-          github.event_name == 'push' &&
-          github.event.head_commit.message == 'audit: correct prior misleading LNG alert 312'
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
-          FALLBACK_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
-          EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
-        run: |
-          python - <<'PY'
-          import datetime as dt
-          import json
-          import os
-          import pathlib
-          import urllib.error
-          import urllib.parse
-          import urllib.request
-          from zoneinfo import ZoneInfo
-
-          token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
-          chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip() or os.environ.get("FALLBACK_TELEGRAM_CHAT_ID", "").strip()
-          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip()
-          if not token or not chat_id:
-              raise RuntimeError("LNG alert correction: missing Telegram route credentials")
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
-              identity = json.load(response)
-          actual = str((identity.get("result") or {}).get("username") or "")
-          if not identity.get("ok") or actual != expected:
-              raise RuntimeError("LNG alert correction: verified bot identity mismatch")
-
-          text = (
-              "<b>[정정] 10월 21일 21:28 LNG 해상 운송 알림</b>\n\n"
-              "기존 ‘호르무즈·홍해 운송 악화 확정’ 판정을 철회합니다.\n\n"
-              "지캡틴과 가디언의 기사를 같은 LNG 실물 공급 차질로 묶었지만, "
-              "기사별 LNG 선적·운항 사실과 동일 사건 여부를 검증하지 못했습니다. "
-              "두 매체라는 이유만으로 같은 공급 악화를 확정한 것은 판정 오류입니다.\n\n"
-              "• 카타르 LNG 생산·선적량 감소: 해당 알림만으로 확인 불가\n"
-              "• 호르무즈·홍해의 일반 선박사고: LNG 공급 중단과 구분\n"
-              "• LNG 운반선의 실제 운항·선적·도착 변화: 별도 실물자료 확인 필요\n\n"
-              "앞으로는 동일 LNG 선박·항로·사건 종류·방향이 일치해야 "
-              "독립 출처 교차확인으로 인정하며, 구글 뉴스 링크는 원문 직접 열람과 구분합니다."
-          )
-          payload = urllib.parse.urlencode({
-              "chat_id": chat_id,
-              "message_id": 312,
-              "text": text,
-              "parse_mode": "HTML",
-              "disable_web_page_preview": "true",
-          }).encode("utf-8")
-          req = urllib.request.Request(
-              f"https://api.telegram.org/bot{token}/editMessageText",
-              data=payload, method="POST",
-          )
-          try:
-              with urllib.request.urlopen(req, timeout=25) as response:
-                  outcome = json.load(response)
-          except urllib.error.HTTPError as error:
-              # Explicitly fail; never send another alert as an untracked fallback.
-              info = error.read().decode("utf-8", errors="replace")
-              if "message is not modified" in info.lower():
-                  outcome = {"ok": True, "result": {"message_id": 312}}
-              else:
-                  raise RuntimeError(
-                      f"LNG alert 312 edit failed (HTTP {error.code}); no duplicate sent"
-                  ) from error
-          if not outcome.get("ok"):
-              raise RuntimeError("LNG alert 312 edit not confirmed; no duplicate sent")
-          result = outcome.get("result")
-          if isinstance(result, dict) and int(result.get("message_id", -1)) != 312:
-              raise RuntimeError("LNG alert 312 response message id mismatch")
-          confirmation = {
-              "status": "confirmed", "action": "editMessageText",
-              "message_id": 312, "bot": f"@{actual}",
-              "corrected_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
-              "replacement_notice": "Previously unverified LNG supply deterioration claim retracted",
-          }
-          pathlib.Path("out/lng_prior_alert_correction.json").write_text(
-              json.dumps(confirmation, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-          )
-          print("lng_prior_alert_corrected=true action=editMessageText message_id=312 no_new_message=true")
-          PY
-
       - name: Finalize alert state
         if: always()
         run: python scripts/lng_supply_crisis_alert_v34.py --finalize
@@ -294,7 +211,6 @@ jobs:
             out/lng_supply_crisis_alert.md
             out/lng_supply_crisis_alert.json
             out/lng_supply_crisis_telegram_confirmed.json
-            out/lng_prior_alert_correction.json
           if-no-files-found: ignore
           retention-days: 7
 
