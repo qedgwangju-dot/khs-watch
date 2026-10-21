@@ -23787,6 +23787,24 @@
       "telegram_core_fact": "가온전선이 미국 원전용 케이블 시장에 진출한다. 가온전선은 미국 생산법인 LSCUS가 노스캐롤라이나주 타보로 공장에 원전용 케이블 생산설비를 구축할 계획이라고 12일 밝혔다.",
       "title": "가온전선, 美 원전용 케이블 시장 진출…현지 시장 선점"
     },
+    "core:456a69f16f0368f3bb62eae5": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01912246645615544",
+      "source": "이데일리",
+      "source_body_digest": "1ef4739b61fbaf734f8b0f7596969909f77cafbee0a6c81d27108becf9af026b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "메타, 3분기 매출 26% 증가…사상 최대 실적",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 페이스북과 인스타그램의 모회사 메타플랫폼스가 3분기 사상 최대 매출을 기록했다.",
+      "title": "메타, 3분기 매출 26% 증가…사상 최대 실적"
+    },
     "core:456b3a12cb8347ee40023589": {
       "first_seen_kst": "2026-10-14T06:36:25+09:00",
       "lanes": {
@@ -50186,6 +50204,35 @@
       "telegram_core_fact": "코웨이의 지난해 연결 기준 매출은 4조9636억원, 영업이익은 8787억원으로 역대 최대치를 기록했다.",
       "title": "정수기 넘어 침대ㆍ라이프케어⋯매출 5조 눈앞 코웨이 [CEO 탐구생활]"
     },
+    "core:9382f431c60975452c45fc84": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
+    },
     "core:93844e859fb3f371e8762145": {
       "first_seen_kst": "2026-10-16T15:15:48+09:00",
       "lanes": {
@@ -62825,6 +62872,24 @@
       "telegram_core_fact": "창신메모리 역시 이날 중국 증시에서 장중 최대 5.3% 하락했다가 한국시간 오후 3시45분 기준 낙폭을 3%대로 다소 줄였다.",
       "title": "삼전닉스 앞섰다는 中창신메모리 발표…\"AI주 차익실현 빌미로\""
     },
+    "core:ba7b47693a0084539435e395": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021158700008",
+      "source": "연합뉴스",
+      "source_body_digest": "5238c6b57e0e0294fa06d54194b29ba07d5d458e62d1b51e5636e01d93820fe9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T18:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "루멘스바이오스 \"폴라리스우노 주식 138억원에 취득\" | 연합뉴스",
+      "telegram_core_fact": "코스닥 상장사 루멘스바이오스[038060]는 화학제품 제조,판매 업체 폴라리스우노의 주식 190만주를 약 138억원에 취득한다고 21일 공시했다.",
+      "title": "루멘스바이오스 \"폴라리스우노 주식 138억원에 취득\" | 연합뉴스"
+    },
     "core:ba81f0b0d34aa4da0fbbd9fc": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
       "lanes": {
@@ -63765,6 +63830,36 @@
       "telegram_core_fact": "미래에셋자산운용은 인공지능(AI) 인프라에 들어가는 적층세라믹콘덴서(MLCC)와 반도체 기판 기업에 투자하는 'TIGER 글로벌MLCC&기판 ETF(상장지수펀드)'를 상장했다고 20일 밝혔다.",
       "title": "미래에셋운용, 'MLCC·반도체 기판 투자' ETF 상장 | 연합뉴스"
     },
+    "core:bd1d782b7cf8a0a0ca5cd1a3": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
+    },
     "core:bd2d0e9a6811dc510836d6bc": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
@@ -64262,6 +64357,32 @@
       "source_title": "올해 韓 주식 200조 던진 외인…ETF는 10조 사들인 이유는?",
       "telegram_core_fact": "외국인 투자자들이 올해 국내 주식시장에서 200조원 넘게 팔아치우는 동안 상장지수펀드(ETF)는 10조원 가까이 사들였다. 올해 들어 국내 상장 주식을 사들인 금액보다 팔아치운 금액이 200조원 이상 많았다는 의미다.",
       "title": "올해 韓 주식 200조 던진 외인…ETF는 10조 사들인 이유는?"
+    },
+    "core:bea31ee3cf11844b559cbdd3": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
     },
     "core:becac79a5ba9aa04b83162ba": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
@@ -69539,6 +69660,24 @@
       "source_title": "컨테이너 운임 지수 보합…\"미주동안·중동항로↑\"",
       "telegram_core_fact": "글로벌 해상 운임 지수인 상하이 컨테이너 운임 지수(SCFI)도 전주보다 1.81포인트(0.1%) 오른 3662.3이다.",
       "title": "컨테이너 운임 지수 보합…\"미주동안·중동항로↑\""
+    },
+    "core:cfaf386a4c7ddd0e289c8d10": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182336",
+      "source": "매일경제",
+      "source_body_digest": "1a2774c2ff955826fde1a4281ae568e4a7e4d68ed5830d917e37b62a7d45d603",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T05:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "헥셀, 3분기 매출액 4억9640만 달러..전년비 8.8% 증가",
+      "telegram_core_fact": "헥셀(HXL)이 3분기(7~9월) 매출액 4억9640만 달러로 전년비 8.8% 증가했고, Non-GAAP 희석 주당순이익은 0.50달러로 전년 동기 0.37달러보다 35.1% 늘었다고 10월 21일 발표했다.",
+      "title": "헥셀, 3분기 매출액 4억9640만 달러..전년비 8.8% 증가"
     },
     "core:cfb144cc91d8b66284124ac4": {
       "first_seen_kst": "2026-10-12T16:50:12+09:00",
@@ -92893,6 +93032,32 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령의 '강제노동' 관세가 또다시 법적 시험대에 올랐지만 세계 각국은 관세에 대응하기 위해 강제노동 규제를 강화하고 있다는 분석이 나왔다.",
       "title": "트럼프 '강제노동 관세' 위법 논란에도…세계 각국 규제 고삐"
     },
+    "event:5f47ae63c8a57d312a6be1b6": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
+    },
     "event:5f72c1420252d2bea3931d43": {
       "first_seen_kst": "2026-10-09T20:24:58+09:00",
       "lanes": {
@@ -97006,6 +97171,24 @@
       "link": "https://www.fnnews.com/news/202609251000400971",
       "source": "파이낸셜뉴스",
       "title": "\"추석 상여금 굴려볼까\"…운용사, 美지수·AI·월배당 추천"
+    },
+    "event:9432819b6178fbe348768f58": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01912246645615544",
+      "source": "이데일리",
+      "source_body_digest": "1ef4739b61fbaf734f8b0f7596969909f77cafbee0a6c81d27108becf9af026b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "메타, 3분기 매출 26% 증가…사상 최대 실적",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 페이스북과 인스타그램의 모회사 메타플랫폼스가 3분기 사상 최대 매출을 기록했다.",
+      "title": "메타, 3분기 매출 26% 증가…사상 최대 실적"
     },
     "event:9483ee7f99e4aa2514e5b1e8": {
       "first_seen_kst": "2026-10-13T00:22:20+09:00",
@@ -111819,6 +112002,35 @@
       "source_title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)",
       "telegram_core_fact": "문예성 기자, 박정규 특파원 = 중국 정부가 대만과 외교관계를 유지하고 있는 파라과이와 벨리즈의 장관 2명을 상대로 자산 동결과 입국 금지 등 제재 조치를 발표했다.",
       "title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)"
+    },
+    "fact:0fbf979894b2a40a359e403f": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
     },
     "fact:0fc3c60f86990f8faffd9e65": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -174854,6 +175066,32 @@
       "source_published_kst": "2026-10-07T02:50+09:00",
       "title": "마이크론, 넷리스트와 특허소송 합의…8천억원 라이선스 계약 | 연합뉴스"
     },
+    "fact:b79d6de111ae902ad785de7e": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
+    },
     "fact:b7b6fac9d947fbfac5334546": {
       "first_seen_kst": "2026-10-17T11:11:58+09:00",
       "lanes": {
@@ -194312,6 +194550,36 @@
       "source_title": "아겐시아 코메르시알 스피, 인니 AI 데이터센터 부지 3000만~4000만달러 인수 추진",
       "telegram_core_fact": "아겐시아 코메르시알 스피리츠(AGCC)는 인도네시아 자회사가 서부 자바 지역 약 7헥타르 부지를 총 3000만~4000만 달러에 인수하는 조건부 매매계약을 체결했다고 10월 14일 발표했다. 상업용 AI 컴퓨팅 클라우드 서비스 관련 계약과 데이터센터, 전력, 네트워크 등 기술 인프라 구축이 이를 뒷받침한다고 밝혔다.",
       "title": "아겐시아 코메르시알 스피, 인니 AI 데이터센터 부지 3000만~4000만달러 인수 추진"
+    },
+    "fact:ead1594898d5bbd780268bb9": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
     },
     "fact:eadd2401812256f9758f6f64": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
@@ -249537,6 +249805,35 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "개미는 반도체 ‘팔자’…美 지수·파킹형에 몰린 돈 [ETF 지형도 변화]①"
     },
+    "link:5e4f66621be090101edf4c8a": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
+    },
     "link:5e6f41524b30b9155492fc49": {
       "first_seen_kst": "2026-10-19T15:22:07+09:00",
       "lanes": {
@@ -254270,6 +254567,24 @@
       "source": "연합뉴스",
       "title": "유로존 지난달 물가 3.8% 상승…3년 만에 최고치 | 연합뉴스"
     },
+    "link:68b7043b0d4687fafb953bd2": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182336",
+      "source": "매일경제",
+      "source_body_digest": "1a2774c2ff955826fde1a4281ae568e4a7e4d68ed5830d917e37b62a7d45d603",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T05:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "헥셀, 3분기 매출액 4억9640만 달러..전년비 8.8% 증가",
+      "telegram_core_fact": "헥셀(HXL)이 3분기(7~9월) 매출액 4억9640만 달러로 전년비 8.8% 증가했고, Non-GAAP 희석 주당순이익은 0.50달러로 전년 동기 0.37달러보다 35.1% 늘었다고 10월 21일 발표했다.",
+      "title": "헥셀, 3분기 매출액 4억9640만 달러..전년비 8.8% 증가"
+    },
     "link:68c4c34dee6d612afd9b874e": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -254583,6 +254898,36 @@
       ],
       "source_published_kst": "2026-10-05T16:41+09:00",
       "title": "에비던트, 크레스트옵틱스 인수 완료"
+    },
+    "link:6975fe0f74cbbd77bca22f13": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
     },
     "link:69769210d42ee4025418bed4": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
@@ -274880,6 +275225,24 @@
       "telegram_core_fact": "미국 반도체 패키징 기업 앰코테크놀로지와 한국 내 생산시설 확충을 지원하는 13억달러 신규 계약을 체결하고, 미국에서는 반도체 검사시설 구축에 11억달러를 지원한다.",
       "title": "엔비디아·앰코, 韓 패키징 증설에 13억달러 계약…美도 확대"
     },
+    "link:9420bc0a6b179b2a7f6d23f7": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021154200008",
+      "source": "연합뉴스",
+      "source_body_digest": "fe50c8559f38bd3d8d3e0ed487b48b15b4777cce53087c3c2e84257527a4dce1",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T18:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "TKG휴켐스 \"티케이지엠켐 주식 467억원에 추가취득\" | 연합뉴스",
+      "telegram_core_fact": "주식 취득 뒤 TKG휴켐스의 티케이지엠켐 지분율은 78.4%가 된다.",
+      "title": "TKG휴켐스 \"티케이지엠켐 주식 467억원에 추가취득\" | 연합뉴스"
+    },
     "link:942ed86013c97f018027d22b": {
       "first_seen_kst": "2026-10-16T21:38:15+09:00",
       "lanes": {
@@ -279595,6 +279958,24 @@
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
+    "link:9c993e57b79643afeb83b6ca": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01912246645615544",
+      "source": "이데일리",
+      "source_body_digest": "1ef4739b61fbaf734f8b0f7596969909f77cafbee0a6c81d27108becf9af026b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "메타, 3분기 매출 26% 증가…사상 최대 실적",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 페이스북과 인스타그램의 모회사 메타플랫폼스가 3분기 사상 최대 매출을 기록했다.",
+      "title": "메타, 3분기 매출 26% 증가…사상 최대 실적"
+    },
     "link:9c9feefe29223cc1f21a85a3": {
       "first_seen_kst": "2026-10-11T10:42:03+09:00",
       "lanes": {
@@ -282907,6 +283288,32 @@
       "source_title": "신한투자證 \"현대모비스, 제조부문 수익성 개선\"",
       "telegram_core_fact": "박광래 신한투자증권 연구위원은 \"현대모비스의 2026년 3분기 연결 기준 매출액은 15조5332억원으로 전년비 3.3% 증가하고 영업이익은 9041억원으로 15.9% 늘어날 것으로 추정된다\"며 \"완성차 생산과 판매 부진, 환율 하락에도 불구하고 양호한 수익성을 기록할 것\"이라고 말했다.",
       "title": "신한투자證 \"현대모비스, 제조부문 수익성 개선\""
+    },
+    "link:a2890d39d4174b1c8599b88c": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
     },
     "link:a29adf0b04069f2fd7f9e22a": {
       "first_seen_kst": "2026-10-20T18:31:59+09:00",
@@ -308303,6 +308710,24 @@
       "source_title": "아이콘 에너지, 컨테이너선 지분 2.8% 인수 합의…선박 계약매출 1200만 달러",
       "telegram_core_fact": "건화물선 전문 해운사 아이콘 에너지(ICON)가 대형 정기선사에 장기 용선된 1,800TEU급 컨테이너 피더선을 소유할 법인의 지분 약 2.8%를 인수하기로 합의했다고 14일(현지시간) 발표했다.",
       "title": "아이콘 에너지, 컨테이너선 지분 2.8% 인수 합의…선박 계약매출 1200만 달러"
+    },
+    "link:d6616f34c5b49d516565bf47": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021158700008",
+      "source": "연합뉴스",
+      "source_body_digest": "5238c6b57e0e0294fa06d54194b29ba07d5d458e62d1b51e5636e01d93820fe9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T18:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "루멘스바이오스 \"폴라리스우노 주식 138억원에 취득\" | 연합뉴스",
+      "telegram_core_fact": "코스닥 상장사 루멘스바이오스[038060]는 화학제품 제조,판매 업체 폴라리스우노의 주식 190만주를 약 138억원에 취득한다고 21일 공시했다.",
+      "title": "루멘스바이오스 \"폴라리스우노 주식 138억원에 취득\" | 연합뉴스"
     },
     "link:d665e34f33adc700e22a81b8": {
       "first_seen_kst": "2026-10-03T23:46:50+09:00",
@@ -346326,6 +346751,24 @@
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
     },
+    "original:2698701622306b27bfbe9ea5": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021158700008",
+      "source": "연합뉴스",
+      "source_body_digest": "5238c6b57e0e0294fa06d54194b29ba07d5d458e62d1b51e5636e01d93820fe9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T18:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "루멘스바이오스 \"폴라리스우노 주식 138억원에 취득\" | 연합뉴스",
+      "telegram_core_fact": "코스닥 상장사 루멘스바이오스[038060]는 화학제품 제조,판매 업체 폴라리스우노의 주식 190만주를 약 138억원에 취득한다고 21일 공시했다.",
+      "title": "루멘스바이오스 \"폴라리스우노 주식 138억원에 취득\" | 연합뉴스"
+    },
     "original:269a0a6e85af879b3cd0e728": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -375809,6 +376252,35 @@
       "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
       "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
     },
+    "original:6317caf8378413f37a9e96a5": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
+    },
     "original:63191b78b79b6805c3c0e6a1": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
       "lanes": {
@@ -377288,6 +377760,36 @@
       "source_title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스",
       "telegram_core_fact": "국내 인공지능(AI) 반도체 기업 딥엑스가 인텔의 AI 소프트웨어 생태계에 자사 신경망처리장치(NPU)를 연동하는 기술 협력을 본격화하고, AMD와도 협력 가능성을 논의하며 글로벌 피지컬 AI 시장 공략에 속도를 내고 있다.",
       "title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스"
+    },
+    "original:66acdb50f0c959d1004274a0": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
     },
     "original:66b026dc89e600c980a8b519": {
       "first_seen_kst": "2026-09-29T09:41:07+09:00",
@@ -408159,6 +408661,24 @@
       "telegram_core_fact": "런던 ICE 선물거래소에서 12월 인도분 브렌트유는 전장보다 3.72% 오른 배럴당 109.86달러에 거래를 마쳤다.",
       "title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스"
     },
+    "original:a5923b2c24250e23faa23847": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01912246645615544",
+      "source": "이데일리",
+      "source_body_digest": "1ef4739b61fbaf734f8b0f7596969909f77cafbee0a6c81d27108becf9af026b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "메타, 3분기 매출 26% 증가…사상 최대 실적",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 페이스북과 인스타그램의 모회사 메타플랫폼스가 3분기 사상 최대 매출을 기록했다.",
+      "title": "메타, 3분기 매출 26% 증가…사상 최대 실적"
+    },
     "original:a5b5f039df50add6441dc0cf": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -418296,6 +418816,32 @@
       ],
       "source_published_kst": "2026-10-07T09:23+09:00",
       "title": "법무법인 태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정 쾌거"
+    },
+    "original:bb809319364ce40af4665803": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
     },
     "original:bb8327ddf5d654178d936d0b": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -433470,6 +434016,24 @@
       "telegram_core_fact": "20일(현지시간) 스페이스X가 발표한 3분기 실적에 따르면 AI를 담당하는 초지능(SI) 사업부 매출은 75억6000만달러(약 10조210억원)로 전년비 830% 급증했다.",
       "title": "스페이스X, 우주기업에서 AI 기업으로…머스크는 1조달러 꿈꾼다(종합)"
     },
+    "original:db7a0d0f2f48a5fccd19c9ed": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182336",
+      "source": "매일경제",
+      "source_body_digest": "1a2774c2ff955826fde1a4281ae568e4a7e4d68ed5830d917e37b62a7d45d603",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T05:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "헥셀, 3분기 매출액 4억9640만 달러..전년비 8.8% 증가",
+      "telegram_core_fact": "헥셀(HXL)이 3분기(7~9월) 매출액 4억9640만 달러로 전년비 8.8% 증가했고, Non-GAAP 희석 주당순이익은 0.50달러로 전년 동기 0.37달러보다 35.1% 늘었다고 10월 21일 발표했다.",
+      "title": "헥셀, 3분기 매출액 4억9640만 달러..전년비 8.8% 증가"
+    },
     "original:db81e39157c5aabab43a5871": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -434394,6 +434958,24 @@
       "source_title": "반도체株 던진 외국인… 코스피 6400 밑으로 끌어내렸다",
       "telegram_core_fact": "이재원 유안타증권 연구원은 \"현재 국내 주식시장의 가장 큰 고민은 반도체 실적이 아닌 외국인 수급\"이라며 \"삼성전자 3·4분기 영업이익이 시장 기대를 상회했고 메모리 가격과 AI 인프라 투자도 견조하지만, 외국인 매도 지속에 코스피의 상대적 부진이 지속되고 있다\"고 말했다.",
       "title": "반도체株 던진 외국인… 코스피 6400 밑으로 끌어내렸다"
+    },
+    "original:ddbda39bbf0cae98e12cc74d": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021154200008",
+      "source": "연합뉴스",
+      "source_body_digest": "fe50c8559f38bd3d8d3e0ed487b48b15b4777cce53087c3c2e84257527a4dce1",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T18:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "TKG휴켐스 \"티케이지엠켐 주식 467억원에 추가취득\" | 연합뉴스",
+      "telegram_core_fact": "주식 취득 뒤 TKG휴켐스의 티케이지엠켐 지분율은 78.4%가 된다.",
+      "title": "TKG휴켐스 \"티케이지엠켐 주식 467억원에 추가취득\" | 연합뉴스"
     },
     "original:ddceb9f56166810f2f2c8c2c": {
       "first_seen_kst": "2026-10-10T12:12:57+09:00",
@@ -454818,6 +455400,36 @@
       "source_title": "생산자물가 두 달 연속 상승…배추 42.9%·쇠고기 10.4%↑",
       "telegram_core_fact": "생산자물가는 지난 7월 0.4% 하락했다가 8월 0.1% 상승 전환한 데 이어 두 달 연속 오름세를 이어갔다.",
       "title": "생산자물가 두 달 연속 상승…배추 42.9%·쇠고기 10.4%↑"
+    },
+    "source_fact:0256946f5f208849af628794": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
     },
     "source_fact:025ad1ec575f42f9a7292119": {
       "first_seen_kst": "2026-10-13T02:27:34+09:00",
@@ -489524,6 +490136,36 @@
       "telegram_core_fact": "오케스트로 클라우드는 지난 16일 퓨리오사AI, 업스테이지, 에스피케이인크(SPK), 대원씨티에스와 신경망처리장치(NPU) 기반 소버린 AI 풀스택 상품 공동 개발을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
       "title": "오케스트로·퓨리오사AI·업스테이지 뭉쳤다…소버린 AI 인프라 공동 개발"
     },
+    "source_fact:1448975d5c2574e093a847ea": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
+    },
     "source_fact:144c191f560cae303cfa4513": {
       "first_seen_kst": "2026-10-11T06:07:21+09:00",
       "lanes": {
@@ -498014,6 +498656,35 @@
       "source_title": "미, 우크라에 \"러 정유설비 공격하면 핵심 정보 끊겠다\" 경고",
       "telegram_core_fact": "협상에서 트럼프 특사인 스티브 윗코프와 사위 재러드 쿠슈너는 우크라이나가 미국의 러시아 정유설비 공습 중단 경고를 무시하면 정보 공유를 중단할 수 있다고 경고했다. 우크라이나는 미국이 제공하는 정보의 도움을 받아 러시아 전쟁비용의 핵심 원천인 석유 산업을 공격해왔다.",
       "title": "미, 우크라에 \"러 정유설비 공격하면 핵심 정보 끊겠다\" 경고"
+    },
+    "source_fact:1907b58ba5f050730b4dab6c": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
     },
     "source_fact:190d6b65f1ece89b7c8b5657": {
       "first_seen_kst": "2026-10-20T10:42:42+09:00",
@@ -517622,6 +518293,36 @@
       "telegram_core_fact": "현대차그룹은 엔비디아와 자율주행 및 피지컬 AI 인프라 강화에 협력하고, 웨이모와는 자율주행 생태계 조성에 나서고 있다.",
       "title": "[정의선 회장 6년] 車 넘어 '피지컬 AI' 승부수…로봇·자율주행 확장"
     },
+    "source_fact:22b3178e11456e12d5f8b685": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
+    },
     "source_fact:22b9ddfe483345998eba05be": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -517911,6 +518612,32 @@
       "source_title": "김정관 \"충청권 메가프로젝트 끝까지 챙길 것\"⋯인허가·전력·용수 지원 총력",
       "telegram_core_fact": "김정관 장관은 \"대규모 투자는 투자계획을 세우는 것만큼이나 현장에서 차질 없이 실행하는 것이 중요하다\"며 \"정부는 투자와 관련된 인허가의 신속 처리, 전력과 용수의 안정적 공급, 기업 애로에 대한 즉각 대응 체계만큼은 확실하게 뒷받침하겠다\"고 강조했다.",
       "title": "김정관 \"충청권 메가프로젝트 끝까지 챙길 것\"⋯인허가·전력·용수 지원 총력"
+    },
+    "source_fact:22debde9153399dee3e0275a": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
     },
     "source_fact:22e07075daa1e34a5ff30881": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
@@ -523929,6 +524656,32 @@
       "source_published_kst": "2026-10-07T06:59+09:00",
       "title": "트럼프 “관세 낮추려는 한국에 대가 지급해야 한다 말해”"
     },
+    "source_fact:259b44c3b7832e2016bdddc5": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
+    },
     "source_fact:259da9de540603fc3018ab9d": {
       "first_seen_kst": "2026-10-12T19:07:06+09:00",
       "lanes": {
@@ -529307,6 +530060,36 @@
       "source_title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장",
       "telegram_core_fact": "디에스자산운용은 오는 13일 'DS AI반도체액티브' 상장지수펀드(ETF)를 유가증권시장에 상장한다고 12일 밝혔다.",
       "title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장"
+    },
+    "source_fact:284136acc453e08cda52335b": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
     },
     "source_fact:28471cac6f16460e147b82cf": {
       "first_seen_kst": "2026-10-12T23:37:27+09:00",
@@ -556221,6 +557004,35 @@
       "telegram_core_fact": "전북연구원은 최근 발간한 이슈브리핑 제354호 '버려지던 열, 새만금에서 새로운 에너지로'에서 탄소중립 경쟁이 재생에너지 생산 확대에서 저장·전환·활용 효율을 높이는 방향으로 확장되고 있다는 점에 주목했다.",
       "title": "전북연구원, 새만금 미활용열 회수·재사용 '에너지 낭비 제로 국가 통합실증' 제안"
     },
+    "source_fact:35ed48de24ef5926f8857dd4": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
+    },
     "source_fact:35f0c1551b80d0ee3e557e27": {
       "first_seen_kst": "2026-10-20T10:11:13+09:00",
       "lanes": {
@@ -567856,6 +568668,35 @@
       "telegram_core_fact": "소식통에 따르면 윗코프 특사와 트럼프 대통령의 사위 쿠슈너는 9일 미국 마이애미에서 키릴로 부다노우 우크라이나 대통령실 비서실장을 비롯한 우크라이나 협상 대표단 및 유럽 안보 당국자들과 만나 현재 교착상태를 타개할 평화 구상을 논의할 예정이다.",
       "title": "\"트럼프 특사, 우크라전 교착 타개할 새 구상 제시 계획\" | 연합뉴스"
     },
+    "source_fact:3bfad93097f1a5d33a245b57": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
+    },
     "source_fact:3bfd95f93205b3166c04fa88": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
       "lanes": {
@@ -575858,6 +576699,35 @@
       "source_title": "이형일 \"공급망 취약한 고리 선제적으로 발굴·보강해야\" | 연합뉴스",
       "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 12일 \"단기적인 위기대응을 넘어 공급망의 취약한 고리를 선제적으로 발굴하고 보강해 나가야 한다\"고 말했다. 산업군별 '공급망 특허전략맵'을 구축해 기술 확보와 특허 선점이 필요한 분야를 선제적으로 발굴하고, 향후 산업전략 수립에도 활용해 나갈 계획이다.",
       "title": "이형일 \"공급망 취약한 고리 선제적으로 발굴·보강해야\" | 연합뉴스"
+    },
+    "source_fact:402de6e9a408818bad7cd935": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
     },
     "source_fact:4030ba947eaa6df93fd06f17": {
       "first_seen_kst": "2026-10-21T13:24:59+09:00",
@@ -605049,6 +605919,35 @@
       "telegram_core_fact": "31일부터 단일종목 레버리지 ETF 규제가 시행돼 대형 반도체 쏠림 완화와 코스닥 우량 성장주 수급 회복 가능성이 제기됐습니다.",
       "title": "삼전닉스 대신 방산·반도체 테마형으로…변화하는 레버리지 ETF 판도"
     },
+    "source_fact:4e8bb73869d63b3bda7d5e1a": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
+    },
     "source_fact:4e8d44b622a4163464812b88": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -613330,6 +614229,36 @@
       "telegram_core_fact": "SK하이닉스의 미국 반도체 계열사 솔리다임이 미국 증시 상장 저울질에 들어가면서 ‘중복상장 논란’이 불거졌다. 솔리다임의 성장성을 보고 SK하이닉스에 투자했던 주주들이 상장 이후에는 솔리다임 주식을 직접 선택할 수 있기 때문이다.",
       "title": "솔리다임 중복 상장 논란…SK하닉 주주 득실은?[위클리IB]"
     },
+    "source_fact:5298798738129fbd69c13e18": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
+    },
     "source_fact:5299d28e410837c54aa47b9e": {
       "first_seen_kst": "2026-10-20T07:06:59+09:00",
       "lanes": {
@@ -615724,6 +616653,36 @@
       "source_title": "\"AI 수요 아직 탄탄\"…슈퍼마이크로 깜짝 전망에 AI주 들썩",
       "telegram_core_fact": "20일(현지시간) 블룸버그통신에 따르면 슈퍼마이크로는 이날 잠정 실적 공시를 통해 7~9월 분기 매출이 185억~195억달러(24조 5495억~25조 8765억원)에 이를 것이라고 밝혔다.",
       "title": "\"AI 수요 아직 탄탄\"…슈퍼마이크로 깜짝 전망에 AI주 들썩"
+    },
+    "source_fact:53bb292245149bc91d70d99f": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
     },
     "source_fact:53bbd6eaef589b934e1ab847": {
       "first_seen_kst": "2026-10-21T14:30:03+09:00",
@@ -628442,6 +629401,36 @@
       "source_title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의",
       "telegram_core_fact": "중복상장 규제가 본격 시행되고 주주 보호를 강화하는 방향으로 자본시장 제도가 바뀌면서 기업의 인수합병(M&A)과 자금조달 과정에서 고려해야 할 변수가 늘고 있다.",
       "title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의"
+    },
+    "source_fact:59cd2e3e82586c02f2d53fe6": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
     },
     "source_fact:59ce312df4134ab4d642365b": {
       "first_seen_kst": "2026-10-13T06:17:31+09:00",
@@ -658354,6 +659343,35 @@
       "telegram_core_fact": "지난 7월 OK금융그룹이 예별손보 공개매각 우선협상대상자로 선정된 지 약 3개월 만이다.",
       "title": "예보, OK금융그룹과 예별손보 주식매매계약서 체결"
     },
+    "source_fact:68ebf50243878a4183a9e586": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
+    },
     "source_fact:68ef5820f54b14ddc99f27c6": {
       "first_seen_kst": "2026-10-18T07:09:00+09:00",
       "lanes": {
@@ -664871,6 +665889,36 @@
       "telegram_core_fact": "해당 매체는 \"미국의 고강도 법규 제한, 관세 중첩, 엄격한 지분 심사 등 다중 타격으로 과거 미국 시장을 주도했던 중국 ESS 대기업이 올해 사실상 집단 사업을 철수한 것으로 전해졌다\"고 밝혔다.",
       "title": "\"미국 사업 사실상 포기\" 백기 든 중국 ESS 기업들...2차전지주 '불기둥'"
     },
+    "source_fact:6c385555fc8189a72837d9de": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
+    },
     "source_fact:6c3a353f57826dc9cd516025": {
       "first_seen_kst": "2026-10-16T20:17:17+09:00",
       "lanes": {
@@ -665583,6 +666631,36 @@
       ],
       "source_published_kst": "2026-10-07T06:15+09:00",
       "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
+    },
+    "source_fact:6c90da0fd9fd77894756e26c": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
     },
     "source_fact:6c938bea1004695f284c3e20": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
@@ -709288,6 +710366,32 @@
       "telegram_core_fact": "KZ정밀 측은 영풍 이사진이 고려아연 지분을 MBK에 유리한 조건으로 매각할 수 있도록 계약했다면 영풍과 주주들에게 손해를 끼칠 소지가 있다는 취지의 문제를 제기해왔다.",
       "title": "고려아연 주식 얼마에 넘기기로 했나…영풍·MBK 계약서 공개 촉각"
     },
+    "source_fact:83538b9fc998cf79b8e01d98": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
+    },
     "source_fact:83542840b860148221a1d55b": {
       "first_seen_kst": "2026-10-19T10:51:05+09:00",
       "lanes": {
@@ -713739,6 +714843,35 @@
       "source_title": "제조업 경기 3분기 '악화'…4분기 전망도 회복 기대감↓",
       "telegram_core_fact": "조사 결과에 따르면 3분기 제조업의 시황(89) BSI가 전분기(90)와 비슷한 수준을 보였고 매출(87) BSI는 전분기(93) 대비 6포인트(p) 하락한 것으로 나타났다.",
       "title": "제조업 경기 3분기 '악화'…4분기 전망도 회복 기대감↓"
+    },
+    "source_fact:85c84d4fef7a2985161959d5": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
     },
     "source_fact:85cf5e66dc1e78c0eb3efc11": {
       "first_seen_kst": "2026-10-14T19:15:46+09:00",
@@ -736298,6 +737431,32 @@
       "source_title": "유나이티드헬스 그룹, 3분기 희석 EPS 4.56달러..전년비 76% 증가",
       "telegram_core_fact": "유나이티드헬스 그룹(UNH)은 3분기 매출액이 1126억9400만 달러로 전년비 0.4% 감소했지만, 영업이익은 65억6300만 달러로 52.1% 늘고 GAAP 희석 주당순이익(EPS)은 4.56달러로 76.1% 증가했다고 10월 13일 발표했다.",
       "title": "유나이티드헬스 그룹, 3분기 희석 EPS 4.56달러..전년비 76% 증가"
+    },
+    "source_fact:91e1c35a34237bdecef82b39": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
     },
     "source_fact:91e2675ad9825e2bbd8991bb": {
       "first_seen_kst": "2026-10-18T08:07:27+09:00",
@@ -796744,6 +797903,36 @@
       "telegram_core_fact": "커뮤니티 트러스트 뱅코프(CTBI)는 올해 3분기(7~9월) 희석 주당순이익이 1.43달러로 전년 동기 1.32달러보다 8.3% 늘었고, 순이익은 2589만 달러로 전년 동기 2391만 달러 대비 8.3% 증가했다고 10월 21일 발표했다.",
       "title": "커뮤니티 트러스트 뱅코프, 3분기 희석 EPS 1.43달러..전년비 8.3% 증가"
     },
+    "source_fact:aff67002a42c33bb3eebd65a": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
+    },
     "source_fact:aff91c25147147998e4afc75": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -811609,6 +812798,36 @@
       "source_title": "메리츠證 \"삼성전자 3분기 메모리 실적 예상 웃돌아…D램·낸드 가격 경쟁력 지속\"",
       "telegram_core_fact": "김선우 연구원은 \"당사의 최근 전망치 대비 메모리에서 2조2000억원 기대 이상의 성과를 기록한 것으로 추정된다\"며 \"급격한 원화 강세로 비우호적인 사업 환경이 조성됐음에도 업계 평균을 웃도는 견조한 판매가격 정책이 실적 개선을 이끈 것으로 판단한다\"고 설명했다.",
       "title": "메리츠證 \"삼성전자 3분기 메모리 실적 예상 웃돌아…D램·낸드 가격 경쟁력 지속\""
+    },
+    "source_fact:b775a30a8941537f574732c5": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
     },
     "source_fact:b77622c9135b59be6b52766e": {
       "first_seen_kst": "2026-10-19T06:35:52+09:00",
@@ -839622,6 +840841,35 @@
       "telegram_core_fact": "한은에 따르면 신 총재는 지난 주 태국 방콕에서 진행된 크리슈나 스리니바산 국제통화기금(IMF) 아시아·태평양국장과의 대담에서 AI가 중립금리(자연이자율, R*)에 미치는 영향에 대해 \"한국은 AI 공급망 중심에 있고 확대된 투자와 자금 조달 수요가 장기금리 상승에 기여하고 있다\"고 밝혔다.",
       "title": "고금리가 뉴노멀 될까⋯성장률이 끌어올린 '중립금리' 청사진"
     },
+    "source_fact:c5bc89d8fe7a9b590191708c": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
+    },
     "source_fact:c5c286e2b7dda3bbfc6b2197": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
@@ -856664,6 +857912,35 @@
       "source_title": "KB證 \"마이크론 파업하면 삼전·닉스 반사이익…가격결정력 강화\"",
       "telegram_core_fact": "\"향후 파업 규모와 실제 생산 감소 여부는 메모리 수급에 직접적 영향을 미치는 핵심 변수로 판단된다\"며 \"메모리 공급 부족이 지속되는 상황에서 마이크론의 생산 차질이 현실화된다면 삼성전자와 SK하이닉스의 가격 결정력과 공급 협상력은 한층 강화될 것\"이라고 전망했다.",
       "title": "KB證 \"마이크론 파업하면 삼전·닉스 반사이익…가격결정력 강화\""
+    },
+    "source_fact:ce51f0a1a96b425b930c71fb": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
     },
     "source_fact:ce5268cbc189f16737491037": {
       "first_seen_kst": "2026-10-16T18:58:56+09:00",
@@ -896134,6 +897411,32 @@
       "telegram_core_fact": "미국이 러시아산 경유를 국제 시장에 공급하기 위해 관련 제재를 일시 완화하기로 해 논란이 이는 가운데 러시아·우크라이나가 에너지 부문에 대한 휴전에 합의했다고 도널드 트럼프 미국 대통령이 11일(현지시간) 밝혔다.",
       "title": "트럼프 휴전 구상에도 … 러, 우크라 에너지 시설 때렸다"
     },
+    "source_fact:e212653bd8f3a36f4750d6a2": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
+    },
     "source_fact:e2158371b459ed4a07c600e5": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
@@ -907477,6 +908780,32 @@
       "telegram_core_fact": "인공지능(AI) 기업 앤스로픽이 회사 지분 5%를 공익기금에 출연하기로 했다. 18일(현지시간) 로이터통신에 따르면 앤스로픽은 이날 ‘앤스로픽 공익기금(Anthropic Public Benefit Fund)’을 설립하고 주주 승인을 거쳐 회사 지분 5%를 출연할 계획이라고 밝혔다.",
       "title": "앤스로픽, 지분 5% 공익기금에 출연…기업가치 오르면 추가 배정"
     },
+    "source_fact:e7ef2c8db591fdc183edcd5e": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
+    },
     "source_fact:e7f3bbbe70de9cf6d0b3c208": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
       "lanes": {
@@ -913482,6 +914811,35 @@
       "telegram_core_fact": "오디션 현장을 진출자뿐만 아니라 지역 창업 생태계 구성원이 함께 참여할 수 있는 개방형 교류 공간으로 운영한다.",
       "title": "중기부, 전국서 '모두의 창업' 오디션…3라운드 진출 200명 선발 | 연합뉴스"
     },
+    "source_fact:eae829b01101166806d1d3c2": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
+    },
     "source_fact:eae97a743631e6bebe0ac81f": {
       "first_seen_kst": "2026-10-16T17:33:02+09:00",
       "lanes": {
@@ -919193,6 +920551,32 @@
       "source_title": "국내 기름값 22주 연속 하락…휘발유·경유 1천800원대 지속",
       "telegram_core_fact": "한국석유공사 유가정보시스템 오피넷에 따르면 10월 둘째 주 전국 주유소 휘발유 평균 판매가는 지난주보다 L당 0.9원 내린 1천856.6원이었다.",
       "title": "국내 기름값 22주 연속 하락…휘발유·경유 1천800원대 지속"
+    },
+    "source_fact:edbb0d7ee01db826c9188c85": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
     },
     "source_fact:edbf47ca0b6eda1ad8004793": {
       "first_seen_kst": "2026-10-15T09:43:41+09:00",
@@ -972212,6 +973596,24 @@
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
     },
+    "title:2698701622306b27bfbe9ea5": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021158700008",
+      "source": "연합뉴스",
+      "source_body_digest": "5238c6b57e0e0294fa06d54194b29ba07d5d458e62d1b51e5636e01d93820fe9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T18:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "루멘스바이오스 \"폴라리스우노 주식 138억원에 취득\" | 연합뉴스",
+      "telegram_core_fact": "코스닥 상장사 루멘스바이오스[038060]는 화학제품 제조,판매 업체 폴라리스우노의 주식 190만주를 약 138억원에 취득한다고 21일 공시했다.",
+      "title": "루멘스바이오스 \"폴라리스우노 주식 138억원에 취득\" | 연합뉴스"
+    },
     "title:269a0a6e85af879b3cd0e728": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -1002292,6 +1003694,35 @@
       "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
       "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
     },
+    "title:6317caf8378413f37a9e96a5": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910475",
+      "source": "헤럴드경제",
+      "source_body_digest": "f88584708773fe6cb0ee7bf37b3e618b2bd1a8001deae93a5ac732c56ccfa5ae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8aa8b4eb284a82b63c7774e8d0904190e711b1f690c4abac880dce2dbf5d67b",
+      "source_fact_keys": [
+        "source_fact:v1:0fc05fc16eb86b19dc18309bb295a568e497695b9f490f6c7b903459d07b23d8",
+        "source_fact:v1:1ee0cb52bdcd2d7d17414d35bf9c878d0d10f347ddfaedd72b5942f9b191e845",
+        "source_fact:v1:234a0e0f1018df86282b45f8431da90ae6947307fd21cae03075a3a3d1f1aa06",
+        "source_fact:v1:288b560e5c504bbf9ba82dd74d82969cce0435593fe169efdfabf71b5c000885",
+        "source_fact:v1:65a991402f65bb7f02ae2f00e0bd1befbe8916e74963d3fe132278ce11262706",
+        "source_fact:v1:a37e57b4d4f4967b867b13e95570c2e6cb282952a60dc0c28612939ab45d595f",
+        "source_fact:v1:c0c25b48143ea44a96f43110de2897c7df812e8ab8dd8c324b30600ace246f57",
+        "source_fact:v1:eae6731751103155471d8c067e4cbbadff11ec084a8487f9ecae7ec25e51ddd0",
+        "source_fact:v1:f0e8b56272c23df76fd758e5de880a3c9a7d343bc813dd3a7c8d4f318e5a8e77",
+        "source_fact:v1:f31437233e55fdabc9413cc8e885177995a17a32fef5253578d652715aad5f29"
+      ],
+      "source_published_kst": "2026-10-21T19:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
+      "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
+      "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
+    },
     "title:63191b78b79b6805c3c0e6a1": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
       "lanes": {
@@ -1003797,6 +1005228,36 @@
       "source_title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스",
       "telegram_core_fact": "국내 인공지능(AI) 반도체 기업 딥엑스가 인텔의 AI 소프트웨어 생태계에 자사 신경망처리장치(NPU)를 연동하는 기술 협력을 본격화하고, AMD와도 협력 가능성을 논의하며 글로벌 피지컬 AI 시장 공략에 속도를 내고 있다.",
       "title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스"
+    },
+    "title:66acdb50f0c959d1004274a0": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182343",
+      "source": "매일경제",
+      "source_body_digest": "c0333265772ea0d362577ec3f93d6f4954e232f594152148443e54daa818a683",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e5601a963f1a72e5f7ac7401a0c9cb4aed79ecdf281aea400da7895f2dc731",
+      "source_fact_keys": [
+        "source_fact:v1:0317f1a003e386bde2b6669dddc84e471464e58eda9fdf2cbab7da7098f3d8e7",
+        "source_fact:v1:093866df51ebea5b871ec35e52556769a90f5b4d583d112fe5dffeb7fa07d0a2",
+        "source_fact:v1:22967e54c7cdee3df335c14fdce8d23fabd6ca900f8b20955b3760baa9c564d5",
+        "source_fact:v1:257cccb3a3423f957849cfd942af86981ff4782d08fd622228f13242f15f8c63",
+        "source_fact:v1:2d4a0df6f91f93c2c00348338526f950c6f46426344073e05d2be43338969858",
+        "source_fact:v1:4195e647b2ca672cb8e6b3a20d5d40e0e9a31f79ec309c4e0e467e229ca54687",
+        "source_fact:v1:4bed967eb9fd47ec0d8264f7950a8f609f3bd804928ef6f9fa07b78cce5a5d7f",
+        "source_fact:v1:5329f30eb473d0cc1425e8103be0209e260b419e2f2d635d70c2bb8dd889cdb2",
+        "source_fact:v1:7927a0fe74b6c485d1379b6fb0ba12901d8d3b6547563c8ab30d825168bc2b56",
+        "source_fact:v1:985d2830d89a01a2c27feec62043ac5a338505a563dd6815c1fc3c01f32074ff",
+        "source_fact:v1:da0f367b1326e9ca4f3a5eb0c0548d55c77c2bb586f14e42729fdf169a29587a"
+      ],
+      "source_published_kst": "2026-10-22T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향",
+      "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
+      "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
     },
     "title:66b026dc89e600c980a8b519": {
       "first_seen_kst": "2026-09-29T09:41:07+09:00",
@@ -1035316,6 +1036777,24 @@
       "telegram_core_fact": "런던 ICE 선물거래소에서 12월 인도분 브렌트유는 전장보다 3.72% 오른 배럴당 109.86달러에 거래를 마쳤다.",
       "title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스"
     },
+    "title:a5923b2c24250e23faa23847": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01912246645615544",
+      "source": "이데일리",
+      "source_body_digest": "1ef4739b61fbaf734f8b0f7596969909f77cafbee0a6c81d27108becf9af026b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "메타, 3분기 매출 26% 증가…사상 최대 실적",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 페이스북과 인스타그램의 모회사 메타플랫폼스가 3분기 사상 최대 매출을 기록했다.",
+      "title": "메타, 3분기 매출 26% 증가…사상 최대 실적"
+    },
     "title:a5b5f039df50add6441dc0cf": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -1045706,6 +1047185,32 @@
       ],
       "source_published_kst": "2026-10-07T09:23+09:00",
       "title": "법무법인 태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정 쾌거"
+    },
+    "title:bb809319364ce40af4665803": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638502",
+      "source": "이투데이",
+      "source_body_digest": "6e61192060f110795cd84a2a0f3fb550472487a8d171d378c0e3356c6dc97a27",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-22",
+      "source_fact_identity": "source_facts:v1:517832b2b51476c8e32029e0e1fc554f47332b6b71355f12d0ab5a08f238de5a",
+      "source_fact_keys": [
+        "source_fact:v1:0f1552e0e418583dae9d5493cd02a2a3696513148a662999f449e4fbace66ed1",
+        "source_fact:v1:3b67be4546339292373536a7e565699f3cbccc154a703674f562e184b3fce03e",
+        "source_fact:v1:56ddda12ef094566a3afcddda569339d1a1c7ae82a509969c34fe4bdab54b952",
+        "source_fact:v1:87ae1d233ada1b6b84a2cfaa5b2f9f38d073bf6c019e0d1ca6baea4ced799262",
+        "source_fact:v1:b5df5cecda267ddcaeeec802b8effe06e054f2b8496af86a82dc1fbbd8a8a455",
+        "source_fact:v1:cf1e04d587342d9b827ca79ef9b6364797ddfa6f8bb9c1737f335d6a7cf7ffee",
+        "source_fact:v1:df8535654803b4168b734efdaf2ea7c0199e25c31ede3abe66d2b8f1ba64630d"
+      ],
+      "source_published_kst": "2026-10-22T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직",
+      "telegram_core_fact": "코스피 지수가 3% 넘게 반등하며 5700선을 되찾았지만 거래대금은 전주 일평균 대비 4분의 3 수준에 머물렀다. 스페이스X의 실적 호조와 슈퍼마이크로컴퓨터의 잠정 매출 호조가 AI 인프라 투자에 대한 불안을 덜었고, 삼성전자와 SK하이닉스는 나란히 5%대 상승했다.",
+      "title": "코스피 3% 반등에도 거래대금 제자리…매수 기반 회복은 아직"
     },
     "title:bb8327ddf5d654178d936d0b": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -1061194,6 +1062699,24 @@
       "telegram_core_fact": "20일(현지시간) 스페이스X가 발표한 3분기 실적에 따르면 AI를 담당하는 초지능(SI) 사업부 매출은 75억6000만달러(약 10조210억원)로 전년비 830% 급증했다.",
       "title": "스페이스X, 우주기업에서 AI 기업으로…머스크는 1조달러 꿈꾼다(종합)"
     },
+    "title:db7a0d0f2f48a5fccd19c9ed": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182336",
+      "source": "매일경제",
+      "source_body_digest": "1a2774c2ff955826fde1a4281ae568e4a7e4d68ed5830d917e37b62a7d45d603",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T05:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "헥셀, 3분기 매출액 4억9640만 달러..전년비 8.8% 증가",
+      "telegram_core_fact": "헥셀(HXL)이 3분기(7~9월) 매출액 4억9640만 달러로 전년비 8.8% 증가했고, Non-GAAP 희석 주당순이익은 0.50달러로 전년 동기 0.37달러보다 35.1% 늘었다고 10월 21일 발표했다.",
+      "title": "헥셀, 3분기 매출액 4억9640만 달러..전년비 8.8% 증가"
+    },
     "title:db81e39157c5aabab43a5871": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -1062118,6 +1063641,24 @@
       "source_title": "반도체株 던진 외국인… 코스피 6400 밑으로 끌어내렸다",
       "telegram_core_fact": "이재원 유안타증권 연구원은 \"현재 국내 주식시장의 가장 큰 고민은 반도체 실적이 아닌 외국인 수급\"이라며 \"삼성전자 3·4분기 영업이익이 시장 기대를 상회했고 메모리 가격과 AI 인프라 투자도 견조하지만, 외국인 매도 지속에 코스피의 상대적 부진이 지속되고 있다\"고 말했다.",
       "title": "반도체株 던진 외국인… 코스피 6400 밑으로 끌어내렸다"
+    },
+    "title:ddbda39bbf0cae98e12cc74d": {
+      "first_seen_kst": "2026-10-22T06:06:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T06:06:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T06:06:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021154200008",
+      "source": "연합뉴스",
+      "source_body_digest": "fe50c8559f38bd3d8d3e0ed487b48b15b4777cce53087c3c2e84257527a4dce1",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T18:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "TKG휴켐스 \"티케이지엠켐 주식 467억원에 추가취득\" | 연합뉴스",
+      "telegram_core_fact": "주식 취득 뒤 TKG휴켐스의 티케이지엠켐 지분율은 78.4%가 된다.",
+      "title": "TKG휴켐스 \"티케이지엠켐 주식 467억원에 추가취득\" | 연합뉴스"
     },
     "title:ddceb9f56166810f2f2c8c2c": {
       "first_seen_kst": "2026-10-10T12:12:57+09:00",
@@ -1078333,5 +1079874,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T05:37:54+09:00"
+  "updated_at_kst": "2026-10-22T06:06:48+09:00"
 }
