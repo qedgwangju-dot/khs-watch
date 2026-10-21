@@ -2014,7 +2014,9 @@ def _render_bwrx_us(item: dict, idx: int, now: dt.datetime) -> list[str]:
 
 def _temelin_fold(value: str) -> str:
     value = unicodedata.normalize("NFKD", clean_text(value)).casefold()
-    return re.sub(r"\s+", " ", "".join(x for x in value if not unicodedata.combining(x)))
+    # Remove Czech combining accents, then recompose Hangul jamo into Korean syllables.
+    folded = "".join(x for x in value if not unicodedata.combining(x))
+    return re.sub(r"\s+", " ", unicodedata.normalize("NFC", folded))
 
 
 def _temelin_official_publisher(url: str) -> bool:
@@ -2140,6 +2142,10 @@ def _self_test_temelin_milestones() -> None:
         ("Commission proposed Industrial Accelerator Act for nuclear", None),
         ("두코바니 5·6호기 EPC 계약 체결", None),
     )
+    if _temelin_fold("테믈린") != "테믈린":
+        raise RuntimeError("Temelin Korean Hangul recomposition regression")
+    if _temelin_fold("Temelín") != "temelin":
+        raise RuntimeError("Temelin Czech accent-folding regression")
     for headline, want in examples:
         got = _temelin_milestone(headline)
         if got != want:
