@@ -1670,5 +1670,12 @@ previous._future_refinery_policy = future_refinery_policy
 runner.verify_alert = verify_alert
 
 
+def main():
+    import sys
+    import war_peace_reconstruction_watch_two_color as presentation
+    presentation.install(sys.modules[__name__])
+    return previous.main()
+
+
 if __name__ == '__main__':
-    raise SystemExit(previous.main())
+    raise SystemExit(main())

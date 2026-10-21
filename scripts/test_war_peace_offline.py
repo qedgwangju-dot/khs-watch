@@ -6,7 +6,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ('test_war_peace_runtime.py', 'test_war_peace_regression.py',
-           'test_war_peace_oct04_regression.py', 'test_war_peace_integrity.py')
+           'test_war_peace_oct04_regression.py', 'test_war_peace_integrity.py',
+           'test_war_peace_two_color.py')
 BOOTSTRAP = '''
 import runpy, socket, sys, urllib.request
 from pathlib import Path
