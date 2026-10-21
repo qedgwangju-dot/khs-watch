@@ -5593,6 +5593,7 @@ lges_na_sodium_plan = make(
     "뉴스1",
 )
 g,s_,c,k = classify(lges_na_sodium_plan)
+assert type(s_) is int, ('Score must be int, not human-facing verification text',s_)
 assert g=="sodium_ion_battery" and s_ < 11, (g,s_,c)
 assert c.endswith("현재 상용화 기준선"),c
 assert "30mwh" not in c.lower(), "Plan must not be titled as actual approved customer shipment"
@@ -5608,6 +5609,7 @@ lges_na_oct21_reprint = make(
     "머니S",
 )
 rg,rs,rc,rk=classify(lges_na_oct21_reprint)
+assert type(rs) is int, ('Sodium press score type invalid',rs)
 assert rg=="sodium_ion_battery" and rs<11,(rg,rs,rc)
 assert rk==k, "Same 30MWh test plan on 10/13 and 10/21 must share event key"
 
@@ -5618,6 +5620,7 @@ lges_press_test_start = make(
     "LG에너지솔루션",
 )
 pg,ps,pc,pk=classify(lges_press_test_start)
+assert type(ps) is int, ('Official sodium trial score type invalid',ps)
 assert pg==g and ps>=11 and pk!=k,(pg,ps,pc,pk)
 assert pc.endswith("LG엔솔 북미 30MWh 나트륨 ESS 샘플 시험 공식 착수"),pc
 assert "상업 수주나 양산 출하가 아닙니다" in base.meaning(pc),base.meaning(pc)
@@ -5631,6 +5634,7 @@ lges_press_approved = make(
     "LG에너지솔루션",
 )
 ag,aps,ac,ak=classify(lges_press_approved)
+assert type(aps) is int, ('Sodium customer approval score type invalid',aps)
 assert ag==g and aps>=11 and ak not in {k,pk},(ag,aps,ac,ak)
 assert ac.endswith("한국 나트륨이온 고객 검증·승인"),ac
 assert base.category(lges_press_approved["title"]+" "+lges_press_approved["description"],ag)==ac
