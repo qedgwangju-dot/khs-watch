@@ -25,6 +25,7 @@ on:
       - "scripts/remove_telegram_italics.py"
       - "scripts/korea_aidc_policy_watch.py"
       - "scripts/korea_aidc_policy_watch_v2.py"
+      - "tests/test_korea_aidc_policy_watch_v2.py"
   schedule:
     # Keep the established hourly check and add a backup within the hour.
     # GitHub scheduled jobs are best-effort; the existing concurrency group
@@ -104,6 +105,11 @@ jobs:
 
       - name: Check official Census data center series
         run: python scripts/data_center_growth_watch.py
+
+      - name: Validate AIDC policy facts and duplicate suppression
+        run: |
+          python -m compileall -q scripts/korea_aidc_policy_watch.py scripts/korea_aidc_policy_watch_v2.py
+          python -m unittest discover -s tests -p 'test_korea_aidc_policy_watch_v2.py' -v
 
       - name: Check Korea AIDC special-law power and permit policy
         run: python scripts/korea_aidc_policy_watch_v2.py
