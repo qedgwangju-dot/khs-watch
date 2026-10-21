@@ -690,3 +690,38 @@ def test_same_committee_event_never_realerts_from_new_publisher():
     assert notify == []
 
 # live-regression-20261006-v4
+
+
+def test_reindexed_old_original_is_suppressed_before_telegram(monkeypatch):
+    from scripts import korea_energy_mix_watch_runner as runner
+    from scripts import korea_energy_mix_watch as watch
+
+    def fake_fetch(url, evidence=None):
+        if evidence is not None:
+            evidence.update({
+                "published": "2026-06-24T09:00:00+09:00",
+                "modified": "",
+                "effective": "",
+                "published_source": "원문 게시일 표기",
+            })
+        return "https://www.mcee.go.kr/press/old", "2027년 상업운전 예정", ""
+
+    monkeypatch.setattr(runner, "fetch_article_body", fake_fetch)
+    candidate = {
+        "id": "source-a",
+        "title": "송전용 에너지저장장치 그리드포밍 도입 - 기후에너지환경부",
+        "publisher": "기후에너지환경부",
+        "official": True,
+        "published": "Wed, 21 Oct 2026 07:00:00 GMT",
+        "category": "전력망·계통 수용력",
+        "plan_stage": "발표·공개",
+        "url": "https://news.google.com/rss/articles/reindexed-old",
+        "event_key": "12th-plan|gridform-old",
+        "stage": 6,
+        "members": [],
+    }
+    found, seen_ids, seen_events = runner.verify_source_dates_before_notify(
+        [candidate], set(), {}
+    )
+    assert not found
+    assert seen_events["12th-plan|gridform-old"] > 0
