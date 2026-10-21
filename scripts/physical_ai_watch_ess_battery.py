@@ -333,6 +333,12 @@ def _sodium_stage(text: str, source: str = '') -> str:
     # Never promote a future prototype completion or planned first production
     # in a multi-company article into actual 30 MWh customer approval.
     if _is_lges_sodium_30mwh(text):
+        # Reporting another company's 30MWh test plan beside unrelated
+        # "started/approved" wording must never manufacture a real LGES
+        # commencement. Only LGES first-party claims can lift this lane.
+        # This also keeps 10/13 and 10/21 media recaps on one baseline key.
+        if source and source not in SODIUM_LGES_PRIMARY_SOURCES:
+            return 'known_baseline'
         if (SODIUM_LGES_30MWH_APPROVED.search(text)
                 and not SODIUM_LGES_30MWH_APPROVAL_NEGATION.search(text)):
             return 'customer_validation'
