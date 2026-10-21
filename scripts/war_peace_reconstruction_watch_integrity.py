@@ -972,7 +972,8 @@ def _diplomatic_headline_kind(title):
         return 'diplomatic_plan'
     if _diplomatic_deal_statement(title):
         return 'diplomatic_statement'
-    if re.search(r'통화|대화|회담|접촉|접견|면담|(?:종전|평화|휴전)\s*협상|\bpeace\s+talks\b|'
+    if re.search(r'통화|대화|회담|접촉|접견|면담|만나(?:서|고|며)?(?=\s|[,·…]|$)|'
+                 r'(?:종전|평화|휴전)\s*협상|\bpeace\s+talks\b|'
                  r'\bforeign ministers?\b.{0,20}\bhold talks\b|\b(?:speaks?|spoke|talks?|talked)\s+(?:to|with)\b|'
                  r'\b(?:calls?|called)\s+(?:(?:u\.s\.|us)\s+)?'
                  r'(?:envoys?|witkoff|kushner|trump|zelenskyy?|zelenskiy)\b(?![\'’]s\b)', title):
