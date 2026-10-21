@@ -78,3 +78,18 @@ def test_future_target_cannot_be_selected_as_article_publication():
     page = """<html><head><meta property="article:published_time"
     content="2040-01-01T00:00:00+09:00"></head><body>사업 목표</body></html>"""
     assert not extract_original_dates(page, now=NOW)["published"]
+
+
+def test_named_event_day_is_distinct_from_article_publication():
+    page = """
+    <html><body>
+      <div>등록일 2026년 9월 25일</div>
+      <article><p>회의 개최일: 2026년 9월 22일</p>
+      <p>새로운 제12차 전기본 공론화 절차를 공개하였다.</p></article>
+    </body></html>
+    """
+    evidence = extract_original_dates(page, now=NOW)
+    assert korean_date(evidence["published"]) == "2026년 9월 25일"
+    assert korean_date(evidence["event"]) == "2026년 9월 22일"
+    assert evidence["event_label"] == "회의일"
+    assert "회의일  2026년 9월 22일" in timeline_lines(evidence)
