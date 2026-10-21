@@ -284,16 +284,18 @@ SODIUM_LGES_30MWH_APPROVED = re.compile(
     re.I,
 )
 SODIUM_LGES_PRIMARY_SOURCES = {'LG에너지솔루션','LG Energy Solution'}
-SODIUM_LGES_30MWH_NEGATION = re.compile(
+SODIUM_LGES_30MWH_APPROVAL_NEGATION = re.compile(
     r'(?:아직|미완료|미승인|미확정|없음|not\s+yet|not\s+approved).{0,28}'
     r'(?:고객\s*승인|품질\s*승인|고객\s*검증|샘플\s*검증)|'
     r'(?:고객\s*승인|품질\s*승인|샘플\s*검증).{0,25}'
-    r'(?:없다|전|아니다|미완료|미확정|예정|계획|목표)|'
+    r'(?:없다|전|아니다|미완료|미확정|예정|계획|목표)',
+    re.I,
+)
+SODIUM_LGES_30MWH_START_NEGATION = re.compile(
     r'(?:테스트|시험|샘플).{0,35}(?:개시|시작|착수).{0,22}(?:예정|계획|목표)|'
     r'(?:내년|2027년|향후).{0,45}(?:테스트|시험|샘플).{0,35}(?:착수|개시|시작)',
     re.I,
 )
-
 
 
 def _is_lges_sodium_30mwh(text: str) -> bool:
@@ -331,11 +333,11 @@ def _sodium_stage(text: str, source: str = '') -> str:
     # Never promote a future prototype completion or planned first production
     # in a multi-company article into actual 30 MWh customer approval.
     if _is_lges_sodium_30mwh(text):
-        if SODIUM_LGES_30MWH_NEGATION.search(text):
-            return 'known_baseline'
-        if SODIUM_LGES_30MWH_APPROVED.search(text):
+        if (SODIUM_LGES_30MWH_APPROVED.search(text)
+                and not SODIUM_LGES_30MWH_APPROVAL_NEGATION.search(text)):
             return 'customer_validation'
-        if SODIUM_LGES_30MWH_START.search(text):
+        if (SODIUM_LGES_30MWH_START.search(text)
+                and not SODIUM_LGES_30MWH_START_NEGATION.search(text)):
             return 'lges_30mwh_test_started'
         return 'known_baseline'
 
