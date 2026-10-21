@@ -24,56 +24,60 @@
     {
       "ts": "2026-10-21T18:50:39+09:00",
       "value": 1324.3
+    },
+    {
+      "ts": "2026-10-21T22:10:04+09:00",
+      "value": 1326.9
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-10-21T18:50:39+09:00",
+    "checked_at": "2026-10-21T22:10:04+09:00",
     "market_phase": "장마감 후",
     "fx": {
-      "value": 1324.3,
+      "value": 1326.9,
       "prev_close": 1328.1,
       "naver_prev_close": 1327.0,
       "date": "2026-10-21",
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
-      "comparison_basis": "서울외환시장 15:30 USD/KRW 종가 · 시장 스트레스 감시 검증값 재사용",
+      "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
       "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20261020153049364",
       "basis_error": null,
-      "basis_reused": true
+      "basis_reused": false
     },
     "session_low": 1324.3,
-    "rebound_krw": 0.0,
-    "rebound_pct": 0.0,
-    "daily_krw": -3.7999999999999545,
-    "daily_pct": -0.28612303290415086,
+    "rebound_krw": 2.6000000000001364,
+    "rebound_pct": 0.19633013667599286,
+    "daily_krw": -1.199999999999818,
+    "daily_pct": -0.09035464196971432,
     "kospi_pct": 3.29,
     "ship": {
-      "avg": 0.8825000000000001,
-      "positive": 3,
-      "relative": -2.4074999999999998,
+      "avg": 0.9500000000000001,
+      "positive": 4,
+      "relative": -2.34,
       "valid": 4,
       "confirmed": false
     },
     "defense": {
-      "avg": -1.9099999999999997,
+      "avg": -1.7225000000000001,
       "positive": 2,
-      "relative": -5.199999999999999,
+      "relative": -5.0125,
       "valid": 4,
       "confirmed": false
     },
     "auto": {
-      "avg": -0.9975,
+      "avg": -0.6825,
       "positive": 0,
-      "relative": -4.2875,
+      "relative": -3.9725,
       "valid": 4,
       "confirmed": false
     },
     "counter": {
-      "avg": 0.08750000000000002,
+      "avg": 0.11750000000000005,
       "positive": 2,
-      "relative": -3.2025,
+      "relative": -3.1725,
       "valid": 4,
       "confirmed": false
     }
