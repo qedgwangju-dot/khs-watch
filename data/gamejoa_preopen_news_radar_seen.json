@@ -6102,6 +6102,34 @@
       "telegram_core_fact": "사업 규모는 1조원대로 추산된다. 마스턴투자운용과 글로벌 데이터센터 기업 디지털엣지코리아가 경기도 파주에 데이터센터를 구축한다.",
       "title": "[단독]마스턴투자운용·디지털엣지, 1조원대 '파주 데이터센터' 짓는다"
     },
+    "core:128eca27a9bdbce71c0b5d39": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
+    },
     "core:129055f8e579c243a2bb3919": {
       "first_seen_kst": "2026-10-17T03:36:50+09:00",
       "lanes": {
@@ -8709,6 +8737,28 @@
       "source_title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\"",
       "telegram_core_fact": "유철종 전문위원 = 일본 방위성이 우크라이나 방산업체 '스카이폴'(SkyFall)이 생산하는 요격 드론 구매 계약을 체결하고 신속한 도입을 추진 중인 것으로 전해졌다.",
       "title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\""
+    },
+    "core:1a996cba5a8534c2ee12e365": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021083100008",
+      "source": "연합뉴스",
+      "source_body_digest": "06d6dff326f9d02cce2f47db2dc3123575e7cd2896be6eb9f61699f0dafd5cd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adcfbfaf8bf03ed329a9cfe5d69f1a1ec96abb301775af53fe7802905b11b6a1",
+      "source_fact_keys": [
+        "source_fact:v1:c4550c906fded03d7cdff4bc9c42818b5a8277407feb9dffe3dbe23abf558f2c",
+        "source_fact:v1:e08b3d6d59de995fd641cf1c99ee1be49a059e274a211a9c8140ddc9907c7703",
+        "source_fact:v1:ff809d0730fbc68bf40d9455d2f686f5a6e4638c743b7a4f78028193d3e8906c"
+      ],
+      "source_published_kst": "2026-10-21T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스",
+      "telegram_core_fact": "박 연구원은 \"공적채권 발행 축소와 은행채 추가 발행 수요 완화가 확인되면서 상위등급 채권의 공급 부담은 단기적으로 상당 부분 경감된 것으로 판단한다\"며 \"은행채와 특수채 스프레드는 고점에 근접한 것으로 판단한다\"고 밝혔다.",
+      "title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스"
     },
     "core:1a9e1063b54188e6e1935bdf": {
       "first_seen_kst": "2026-10-18T15:17:26+09:00",
@@ -28794,6 +28844,31 @@
       "telegram_core_fact": "코스모스 홀딩스(COSM)는 2026년 3분기(7~9월) 잠정 매출액이 약 1740만 달러로 전년 동기 1710만 달러 대비 2% 증가하며 역대 3분기 최고치를 경신했다고 9일 발표했다.",
       "title": "코스모스 홀딩스, 3분기 잠정 매출 1740만 달러..전년비 2% 증가"
     },
+    "core:559fd4f8b4a8c6a996c80c4a": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06307446645615216",
+      "source": "이데일리",
+      "source_body_digest": "1f775d361c9d5210df9e9e0c59898cf31041d61e5ff638948ef6b2493b902daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f245e1a2baf082caf0e0941d81e4bd8b3cef328f5ac9803ff466572bf5816c3e",
+      "source_fact_keys": [
+        "source_fact:v1:0429bed492a871b65e827ff2431308f4d9184f51c078b8a16f34b910319cf62a",
+        "source_fact:v1:4afcc02ecbb5b443555861b54c0c1cce282f5a21b7cbc737dc802b4e6a02f5e0",
+        "source_fact:v1:52c737d267d826ed9d024cfefd00e26c9ba53e228343c948142c6053dd3f07ce",
+        "source_fact:v1:747b8ee719efcd25b1dd332f6797e637d9ca634a56d4181b89ec427c78e9bd89",
+        "source_fact:v1:9cc3960a0836fbf03900b8906a5f05bc91e4de29298b775bb45a660a2c8ba457",
+        "source_fact:v1:b736f2c848524a19308dffbf86c0bbc21e520ce639c2612c6dfbc661f003b9ae"
+      ],
+      "source_published_kst": "2026-10-21T22:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
+      "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
+      "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
+    },
     "core:55a465b040845439668a5b33": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -31684,6 +31759,33 @@
       "telegram_core_fact": "보스턴다이나믹스가 인공지능 전문가 로히트 프라사드를 신임 최고경영자(CEO)로 영입하고 피지컬 AI 기술 상용화에 속도를 낸다.",
       "title": "보스턴다이나믹스, 신임 CEO에 '아마존 AI 리더' 로히트 프라사드"
     },
+    "core:5f42dd3c94626afd8f684343": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
+    },
     "core:5f43afe29a14592ade33a266": {
       "first_seen_kst": "2026-10-14T06:09:46+09:00",
       "lanes": {
@@ -32008,6 +32110,24 @@
       "source_title": "오늘 밤 노벨문학상 발표…김혜순·애트우드·찬쉐·머네인 등 거론",
       "telegram_core_fact": "애트우드의 저서 판매량은 예스24에서 지난 8월 전월보다 28.5% 증가했다. 찬쉐와 머네인의 책은 과거 수상자 발표 시기에 판매량이 크게 늘었다.",
       "title": "오늘 밤 노벨문학상 발표…김혜순·애트우드·찬쉐·머네인 등 거론"
+    },
+    "core:60391c6afb511b6a7b03e26f": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638611",
+      "source": "이투데이",
+      "source_body_digest": "1848962d2311db4b8ef9ee3513940542207c1013758e19ef82573121bdd9d868",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "테슬라, 3분기 매출 제자리걸음에도 현금흐름 ‘깜짝 흑자’ [마켓핫]",
+      "telegram_core_fact": "테슬라의 서비스 및 기타 부문이 성장 동력이 된 반면, 핵심인 자동차 부문과 에너지 저장 부문의 매출은 각각 3%, 16% 감소했다.",
+      "title": "테슬라, 3분기 매출 제자리걸음에도 현금흐름 ‘깜짝 흑자’ [마켓핫]"
     },
     "core:605a7c00e49448e74e098978": {
       "first_seen_kst": "2026-10-15T02:27:03+09:00",
@@ -62418,6 +62538,26 @@
       "telegram_core_fact": "인도네시아 정부가 주식인 쌀의 자급자족 수준을 달성함에 따라 쌀 생산지 확보를 위해 진행해온 대규모 산림 개간 사업을 중단하기로 했다.",
       "title": "'쌀 자급 달성' 인니, '산림→농지' 개간사업 중단"
     },
+    "core:b87e9426268a256cf3eac85f": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.hankyung.com/article/202610215874i",
+      "source": "한국경제",
+      "source_body_digest": "d18f870b6be4e2ac56f31fc4d72bedc370901be18d2ac8cddfa1a2af9f788055",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322d003195fd5e0d11ad848fd0f10fe6074f33925faf64815dca5dbc991fce5b",
+      "source_fact_keys": [
+        "source_fact:v1:1140ff742b3bb04fb1ef8e94db5e37e47667fe363b8fcd1df63b63f58a4b0bfa"
+      ],
+      "source_published_kst": "2026-10-21T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 마케팅 기업 브레이즈, 세일즈포스가 56억6000만달러에 매수...51% 폭등",
+      "telegram_core_fact": "글로벌 고객관계관리(CRM) 기업 세일즈포스가 인공지능(AI) 기반 마케팅 플랫폼 회사 브레이즈를 5억6000만달러에 인수한다고 21일(현지시간) 발표했다.",
+      "title": "AI 마케팅 기업 브레이즈, 세일즈포스가 56억6000만달러에 매수...51% 폭등"
+    },
     "core:b88b231abe00e70195c2a9e5": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
       "lanes": {
@@ -79933,6 +80073,24 @@
       "source_title": "한국형발사체 '누리호' 정시 이륙… 목표 궤도 안착 [뉴시스Pic]",
       "telegram_core_fact": "박종찬 한국형발사체 고도화사업단장은 \"1·2·3단 엔진 연소시간이 기존 노미널 기준값(설계 기준값)보다 모두 약간씩 짧아졌다\"며 \"성능이 개선됐다고 표현하기보다는 예상했던 성능범위 안에서 더 좋은 방향의 마진(성능 여유)이 나온 것\"이라고 설명했다.",
       "title": "한국형발사체 '누리호' 정시 이륙… 목표 궤도 안착 [뉴시스Pic]"
+    },
+    "core:ee8d2dd75798fa59d0020ffe": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182213",
+      "source": "매일경제",
+      "source_body_digest": "b4a41535adad21949e295a05196d36b8eefe7c7274de5eb40b79753c94c52110",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T22:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "아이푸, 광학필름 선전 왈츠 인수 4500만 달러 규모",
+      "telegram_core_fact": "\"앞으로 인공지능과 디지털화 분야의 기술과 자원을 활용해 선전 왈츠의 연구개발 역량과 운영 효율을 높이는 방안을 모색할 것\"이라며 \"장기적인 사업 성장을 이끌고 주주에게 지속 가능한 가치를 창출하겠다\"고 밝혔다. 인수 대상 회사는 선전 왈츠 지분 99%를 간접 보유하고 있다.",
+      "title": "아이푸, 광학필름 선전 왈츠 인수 4500만 달러 규모"
     },
     "core:ee903e320987e50fea1fa697": {
       "first_seen_kst": "2026-10-12T23:37:27+09:00",
@@ -114534,6 +114692,34 @@
       "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
       "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
       "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
+    },
+    "fact:1529c9388870936ff9e23100": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
     },
     "fact:15359de09840cf974eab8d41": {
       "first_seen_kst": "2026-10-17T10:36:25+09:00",
@@ -155533,6 +155719,33 @@
       "telegram_core_fact": "허 지사장은 \"워크데이 채용 솔루션은 AI가 지원자를 자동으로 진행시키거나 탈락시키는 등 고용 관련 결정을 자동으로 내리지 않도록 설계됐다\"며 \"AI는 등급이나 추천 정보를 제시할 뿐이며, 실제 채용 의사결정은 항상 채용담당자와 관리자가 내린다\"고 말했다.",
       "title": "\"1시간 만에 불합격 통보\"…이력서 읽는 AI 채용, 차별 잔혹사 되나"
     },
+    "fact:876ee9155d17778bec74710b": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
+    },
     "fact:877ef639b6d2bd9116155867": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
@@ -170140,6 +170353,28 @@
       "telegram_core_fact": "브릴스가 미국의 외국산 첨단 로봇 규제 강화에 대응해 미시간 현지에서 자율이동로봇(AMR) 생산을 추진한다.",
       "title": "브릴스, 美 미시간서 로봇 생산 추진…FCC 규제 대응"
     },
+    "fact:abba4788efc5463ed320155b": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021083100008",
+      "source": "연합뉴스",
+      "source_body_digest": "06d6dff326f9d02cce2f47db2dc3123575e7cd2896be6eb9f61699f0dafd5cd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adcfbfaf8bf03ed329a9cfe5d69f1a1ec96abb301775af53fe7802905b11b6a1",
+      "source_fact_keys": [
+        "source_fact:v1:c4550c906fded03d7cdff4bc9c42818b5a8277407feb9dffe3dbe23abf558f2c",
+        "source_fact:v1:e08b3d6d59de995fd641cf1c99ee1be49a059e274a211a9c8140ddc9907c7703",
+        "source_fact:v1:ff809d0730fbc68bf40d9455d2f686f5a6e4638c743b7a4f78028193d3e8906c"
+      ],
+      "source_published_kst": "2026-10-21T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스",
+      "telegram_core_fact": "박 연구원은 \"공적채권 발행 축소와 은행채 추가 발행 수요 완화가 확인되면서 상위등급 채권의 공급 부담은 단기적으로 상당 부분 경감된 것으로 판단한다\"며 \"은행채와 특수채 스프레드는 고점에 근접한 것으로 판단한다\"고 밝혔다.",
+      "title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스"
+    },
     "fact:abc0f59780872b898d6d0eae": {
       "first_seen_kst": "2026-10-12T19:07:06+09:00",
       "lanes": {
@@ -174821,6 +175056,31 @@
       "source_title": "트럼프, 러시아 에너지 연계 '관세 폭탄' 유예…\"경유 가격 때문\"",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 경유가격을 잡기 위해 러시아 에너지 수출 연계 대규모 관세를 면제했다.",
       "title": "트럼프, 러시아 에너지 연계 '관세 폭탄' 유예…\"경유 가격 때문\""
+    },
+    "fact:b64a586dbb5699703eff3374": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06307446645615216",
+      "source": "이데일리",
+      "source_body_digest": "1f775d361c9d5210df9e9e0c59898cf31041d61e5ff638948ef6b2493b902daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f245e1a2baf082caf0e0941d81e4bd8b3cef328f5ac9803ff466572bf5816c3e",
+      "source_fact_keys": [
+        "source_fact:v1:0429bed492a871b65e827ff2431308f4d9184f51c078b8a16f34b910319cf62a",
+        "source_fact:v1:4afcc02ecbb5b443555861b54c0c1cce282f5a21b7cbc737dc802b4e6a02f5e0",
+        "source_fact:v1:52c737d267d826ed9d024cfefd00e26c9ba53e228343c948142c6053dd3f07ce",
+        "source_fact:v1:747b8ee719efcd25b1dd332f6797e637d9ca634a56d4181b89ec427c78e9bd89",
+        "source_fact:v1:9cc3960a0836fbf03900b8906a5f05bc91e4de29298b775bb45a660a2c8ba457",
+        "source_fact:v1:b736f2c848524a19308dffbf86c0bbc21e520ce639c2612c6dfbc661f003b9ae"
+      ],
+      "source_published_kst": "2026-10-21T22:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
+      "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
+      "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
     },
     "fact:b666ed94be09584c0d0ce4be": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -193689,6 +193949,26 @@
       "source_title": "[제2서울핀테크랩 스타트업 CEO] 난방약자와 기후투자자를 연결하는 히트펌프 열 구독서비스 운영 기업 ‘모닥불 에너지’",
       "telegram_core_fact": "소상공인, 단독주택, 공장·시설 등 전문성과 자본이 부족한 소비자가 구독료만 납부하면 히트펌프의 금융 및 설치부터 운영 및 에너지 거래까지 통합 서비스를 누릴 수 있는 데이터 기반 재생열에너지 플랫폼을 구축하고 있다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 난방약자와 기후투자자를 연결하는 히트펌프 열 구독서비스 운영 기업 ‘모닥불 에너지’"
+    },
+    "fact:e7d4c86c6b55df9b66235dd7": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.hankyung.com/article/202610215874i",
+      "source": "한국경제",
+      "source_body_digest": "d18f870b6be4e2ac56f31fc4d72bedc370901be18d2ac8cddfa1a2af9f788055",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322d003195fd5e0d11ad848fd0f10fe6074f33925faf64815dca5dbc991fce5b",
+      "source_fact_keys": [
+        "source_fact:v1:1140ff742b3bb04fb1ef8e94db5e37e47667fe363b8fcd1df63b63f58a4b0bfa"
+      ],
+      "source_published_kst": "2026-10-21T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 마케팅 기업 브레이즈, 세일즈포스가 56억6000만달러에 매수...51% 폭등",
+      "telegram_core_fact": "글로벌 고객관계관리(CRM) 기업 세일즈포스가 인공지능(AI) 기반 마케팅 플랫폼 회사 브레이즈를 5억6000만달러에 인수한다고 21일(현지시간) 발표했다.",
+      "title": "AI 마케팅 기업 브레이즈, 세일즈포스가 56억6000만달러에 매수...51% 폭등"
     },
     "fact:e7ef396d32b12aaece9a5df3": {
       "first_seen_kst": "2026-10-11T22:57:06+09:00",
@@ -235408,6 +235688,24 @@
       "source": "이데일리",
       "title": "[사설] 미 알래스카 LNG 사업... 수익성· 안전성부터 따져야"
     },
+    "link:3fdf2a89d09bbcb4b3ffd353": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182213",
+      "source": "매일경제",
+      "source_body_digest": "b4a41535adad21949e295a05196d36b8eefe7c7274de5eb40b79753c94c52110",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T22:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "아이푸, 광학필름 선전 왈츠 인수 4500만 달러 규모",
+      "telegram_core_fact": "\"앞으로 인공지능과 디지털화 분야의 기술과 자원을 활용해 선전 왈츠의 연구개발 역량과 운영 효율을 높이는 방안을 모색할 것\"이라며 \"장기적인 사업 성장을 이끌고 주주에게 지속 가능한 가치를 창출하겠다\"고 밝혔다. 인수 대상 회사는 선전 왈츠 지분 99%를 간접 보유하고 있다.",
+      "title": "아이푸, 광학필름 선전 왈츠 인수 4500만 달러 규모"
+    },
     "link:3fdfcc4c5d72e73cef004452": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
       "lanes": {
@@ -249833,6 +250131,34 @@
       "telegram_core_fact": "비타라인 5종 전 제품에 미백 기능성 고시 성분인 나이아신아마이드를 5% 함유하고, 독자 성분 '펩타이드 엑소좀™'을 품목별로 차등 배합해 탄력과 모공 등 복합적인 피부 고민을 관리할 수 있도록 제품력을 강화했다.",
       "title": "달바(d'Alba), 2026년 하반기 '비타라인 5종' 성분 업그레이드 출시"
     },
+    "link:5d90c20b59eea0e4acff4a05": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
+    },
     "link:5d91ca2fabdd08c60a0efaa4": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -254912,6 +255238,31 @@
       "source_title": "호남 반도체 산단 6GW 전력공급 협약 연내 추진…용인 9GW는 내년",
       "telegram_core_fact": "한국전력이 삼성전자·SK하이닉스가 참여하는 호남권 반도체 산업단지에 총 6GW(기가와트)의 전력을 공급하기 위한 협약을 연내 마무리한다. 삼성전자가 조성하는 용인 반도체 국가산업단지에는 총 9GW를 공급하기 위한 마지막 단계 협약을 내년 추진한다.",
       "title": "호남 반도체 산단 6GW 전력공급 협약 연내 추진…용인 9GW는 내년"
+    },
+    "link:6857f08d2a8cc8f50b03ea18": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06307446645615216",
+      "source": "이데일리",
+      "source_body_digest": "1f775d361c9d5210df9e9e0c59898cf31041d61e5ff638948ef6b2493b902daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f245e1a2baf082caf0e0941d81e4bd8b3cef328f5ac9803ff466572bf5816c3e",
+      "source_fact_keys": [
+        "source_fact:v1:0429bed492a871b65e827ff2431308f4d9184f51c078b8a16f34b910319cf62a",
+        "source_fact:v1:4afcc02ecbb5b443555861b54c0c1cce282f5a21b7cbc737dc802b4e6a02f5e0",
+        "source_fact:v1:52c737d267d826ed9d024cfefd00e26c9ba53e228343c948142c6053dd3f07ce",
+        "source_fact:v1:747b8ee719efcd25b1dd332f6797e637d9ca634a56d4181b89ec427c78e9bd89",
+        "source_fact:v1:9cc3960a0836fbf03900b8906a5f05bc91e4de29298b775bb45a660a2c8ba457",
+        "source_fact:v1:b736f2c848524a19308dffbf86c0bbc21e520ce639c2612c6dfbc661f003b9ae"
+      ],
+      "source_published_kst": "2026-10-21T22:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
+      "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
+      "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
     },
     "link:6862fc835bcfc1ed8c98d4a1": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -270530,6 +270881,33 @@
       "source_published_kst": "2026-10-07T08:37+09:00",
       "title": "LS에코에너지, AI데이터센터용 대용량 버스덕트에 80억원 투자 | 연합뉴스"
     },
+    "link:88913ea8e151f30d47997853": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
+    },
     "link:889b5af2bce11e95b85f5319": {
       "first_seen_kst": "2026-10-17T20:19:17+09:00",
       "lanes": {
@@ -285610,6 +285988,28 @@
       "source": "이데일리",
       "title": "ETF 성장세 주춤하자 다시 ‘쩐의 전쟁’…보수 0%대 승부수"
     },
+    "link:a65f7c8bf3c7b64476a4d4a3": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021083100008",
+      "source": "연합뉴스",
+      "source_body_digest": "06d6dff326f9d02cce2f47db2dc3123575e7cd2896be6eb9f61699f0dafd5cd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adcfbfaf8bf03ed329a9cfe5d69f1a1ec96abb301775af53fe7802905b11b6a1",
+      "source_fact_keys": [
+        "source_fact:v1:c4550c906fded03d7cdff4bc9c42818b5a8277407feb9dffe3dbe23abf558f2c",
+        "source_fact:v1:e08b3d6d59de995fd641cf1c99ee1be49a059e274a211a9c8140ddc9907c7703",
+        "source_fact:v1:ff809d0730fbc68bf40d9455d2f686f5a6e4638c743b7a4f78028193d3e8906c"
+      ],
+      "source_published_kst": "2026-10-21T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스",
+      "telegram_core_fact": "박 연구원은 \"공적채권 발행 축소와 은행채 추가 발행 수요 완화가 확인되면서 상위등급 채권의 공급 부담은 단기적으로 상당 부분 경감된 것으로 판단한다\"며 \"은행채와 특수채 스프레드는 고점에 근접한 것으로 판단한다\"고 밝혔다.",
+      "title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스"
+    },
     "link:a6633175af390740303e6d9f": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
@@ -299197,6 +299597,26 @@
       "telegram_core_fact": "[AP/뉴시스] 우크라이나가 하루 밤 동안 1000개가 넘는 드론을 러시아 여러 지역에 발사 공격했으며 우크라에서 멀리 떨어진 상트페테르부르그의 석유수출 터미널에 화재가 났다. 상트페테르부르그에서 석유 터미널, 루치 석유저장소가 드론에 불이 났다면서 주지사가 1명이 사망하고 5명이 부상했다고 말했다.",
       "title": "러, \"우크라 하루 드론 1000개 쏴\"…상트페테르부르그 석유시설 불"
     },
+    "link:c109c3118efc30a665d6fd46": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.hankyung.com/article/202610215874i",
+      "source": "한국경제",
+      "source_body_digest": "d18f870b6be4e2ac56f31fc4d72bedc370901be18d2ac8cddfa1a2af9f788055",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322d003195fd5e0d11ad848fd0f10fe6074f33925faf64815dca5dbc991fce5b",
+      "source_fact_keys": [
+        "source_fact:v1:1140ff742b3bb04fb1ef8e94db5e37e47667fe363b8fcd1df63b63f58a4b0bfa"
+      ],
+      "source_published_kst": "2026-10-21T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 마케팅 기업 브레이즈, 세일즈포스가 56억6000만달러에 매수...51% 폭등",
+      "telegram_core_fact": "글로벌 고객관계관리(CRM) 기업 세일즈포스가 인공지능(AI) 기반 마케팅 플랫폼 회사 브레이즈를 5억6000만달러에 인수한다고 21일(현지시간) 발표했다.",
+      "title": "AI 마케팅 기업 브레이즈, 세일즈포스가 56억6000만달러에 매수...51% 폭등"
+    },
     "link:c10f47f4cfa7635b551b0c87": {
       "first_seen_kst": "2026-09-30T14:40:35+09:00",
       "lanes": {
@@ -304574,6 +304994,34 @@
       "telegram_core_fact": "반면 외국인과 기관은 각각 1조2913억원, 1조4611억원을 순매도하고 있다.",
       "title": "코스피, 외인·기관 2.7조 매도에 1.9%대 약세…삼전닉스도 ↓"
     },
+    "link:cc887a2c146195d18c03bc1d": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
+    },
     "link:cc8f4e55f9e4e039018ea5ca": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -308279,6 +308727,24 @@
       "link": "https://biz.chosun.com/it-science/ict/2026/10/02/WCBPUPMHJJHCXII43WLH6MLTBA/",
       "source": "조선비즈",
       "title": "시높시스, 반도체 설계·검증 AI 에이전트 공개…삼성전자·엔비디아·인텔 등 협업"
+    },
+    "link:d413e967b157055aa35f6670": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638611",
+      "source": "이투데이",
+      "source_body_digest": "1848962d2311db4b8ef9ee3513940542207c1013758e19ef82573121bdd9d868",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "테슬라, 3분기 매출 제자리걸음에도 현금흐름 ‘깜짝 흑자’ [마켓핫]",
+      "telegram_core_fact": "테슬라의 서비스 및 기타 부문이 성장 동력이 된 반면, 핵심인 자동차 부문과 에너지 저장 부문의 매출은 각각 3%, 16% 감소했다.",
+      "title": "테슬라, 3분기 매출 제자리걸음에도 현금흐름 ‘깜짝 흑자’ [마켓핫]"
     },
     "link:d41602c2804a88890308ab9c": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
@@ -341805,6 +342271,33 @@
       "telegram_core_fact": "차이나 위차이 인터내셔널(CYD)은 전액 출자 자회사 광시위차이주조유한공사가 광시전예신소재와 오스템퍼드 연성주철(ADI) 열처리 사업을 위한 합작법인 광시아오베이과기를 설립했으며, 지분 34%를 확보했다고 10월 20일 발표했다.",
       "title": "차이나 위차이 인터내셔, 광시전예와 ADI 합작법인 설립..지분 34% 확보"
     },
+    "original:1bb20cc1acd8816299452d4e": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
+    },
     "original:1bbf4454055648eb0177bb08": {
       "first_seen_kst": "2026-10-20T16:54:02+09:00",
       "lanes": {
@@ -352243,6 +352736,28 @@
       "link": "https://www.yna.co.kr/view/AKR20261002138700060",
       "source": "연합뉴스",
       "title": "파주시, 평화경제특구 1차 후보지 지정 신청 완료 | 연합뉴스"
+    },
+    "original:303085007ffcfae429e1f155": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021083100008",
+      "source": "연합뉴스",
+      "source_body_digest": "06d6dff326f9d02cce2f47db2dc3123575e7cd2896be6eb9f61699f0dafd5cd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adcfbfaf8bf03ed329a9cfe5d69f1a1ec96abb301775af53fe7802905b11b6a1",
+      "source_fact_keys": [
+        "source_fact:v1:c4550c906fded03d7cdff4bc9c42818b5a8277407feb9dffe3dbe23abf558f2c",
+        "source_fact:v1:e08b3d6d59de995fd641cf1c99ee1be49a059e274a211a9c8140ddc9907c7703",
+        "source_fact:v1:ff809d0730fbc68bf40d9455d2f686f5a6e4638c743b7a4f78028193d3e8906c"
+      ],
+      "source_published_kst": "2026-10-21T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스",
+      "telegram_core_fact": "박 연구원은 \"공적채권 발행 축소와 은행채 추가 발행 수요 완화가 확인되면서 상위등급 채권의 공급 부담은 단기적으로 상당 부분 경감된 것으로 판단한다\"며 \"은행채와 특수채 스프레드는 고점에 근접한 것으로 판단한다\"고 밝혔다.",
+      "title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스"
     },
     "original:303821a4da55524285f0f30e": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -375141,6 +375656,34 @@
       "telegram_core_fact": "간밤 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망 심리가 확산한 영향으로 풀이된다.",
       "title": "아슬아슬하게 지킨 '육천피'… 美 CPI 발표 앞두고 관망세 짙어져"
     },
+    "original:5fa3ee25014b4d5270bf71d8": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
+    },
     "original:5fa51d8e0198127285a6b3bc": {
       "first_seen_kst": "2026-10-14T15:12:25+09:00",
       "lanes": {
@@ -378159,6 +378702,24 @@
       "source_title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설",
       "telegram_core_fact": "\"우리 기업의 해외수주 지원을 위해 3조원 해외건설 신(新)전략펀드를 신설하고, 해외 진출 사업의 연관 지역경제가 활성화될 수 있도록 패키지형 수주(개발·건설·유지보수)를 확대하겠다\"고 밝혔다.",
       "title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설"
+    },
+    "original:661be5d38027749019b1d4cd": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182213",
+      "source": "매일경제",
+      "source_body_digest": "b4a41535adad21949e295a05196d36b8eefe7c7274de5eb40b79753c94c52110",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T22:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "아이푸, 광학필름 선전 왈츠 인수 4500만 달러 규모",
+      "telegram_core_fact": "\"앞으로 인공지능과 디지털화 분야의 기술과 자원을 활용해 선전 왈츠의 연구개발 역량과 운영 효율을 높이는 방안을 모색할 것\"이라며 \"장기적인 사업 성장을 이끌고 주주에게 지속 가능한 가치를 창출하겠다\"고 밝혔다. 인수 대상 회사는 선전 왈츠 지분 99%를 간접 보유하고 있다.",
+      "title": "아이푸, 광학필름 선전 왈츠 인수 4500만 달러 규모"
     },
     "original:663791d2fd28acb7e84acee6": {
       "first_seen_kst": "2026-10-17T09:37:15+09:00",
@@ -384070,6 +384631,31 @@
       "source_title": "ESS 올라탄 K배터리…LG엔솔·삼성SDI 3분기 실적 기대감↑",
       "telegram_core_fact": "LG에너지솔루션이 북미 ESS 출하 확대에 힘입어 3분기 분기 최대 매출을 기록한 가운데 삼성SDI도 ESS 성장에 힘입어 시장 기대를 웃도는 실적을 낼 것이란 전망이 나온다.",
       "title": "ESS 올라탄 K배터리…LG엔솔·삼성SDI 3분기 실적 기대감↑"
+    },
+    "original:72cd13ebe4cb372781e6e5b9": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06307446645615216",
+      "source": "이데일리",
+      "source_body_digest": "1f775d361c9d5210df9e9e0c59898cf31041d61e5ff638948ef6b2493b902daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f245e1a2baf082caf0e0941d81e4bd8b3cef328f5ac9803ff466572bf5816c3e",
+      "source_fact_keys": [
+        "source_fact:v1:0429bed492a871b65e827ff2431308f4d9184f51c078b8a16f34b910319cf62a",
+        "source_fact:v1:4afcc02ecbb5b443555861b54c0c1cce282f5a21b7cbc737dc802b4e6a02f5e0",
+        "source_fact:v1:52c737d267d826ed9d024cfefd00e26c9ba53e228343c948142c6053dd3f07ce",
+        "source_fact:v1:747b8ee719efcd25b1dd332f6797e637d9ca634a56d4181b89ec427c78e9bd89",
+        "source_fact:v1:9cc3960a0836fbf03900b8906a5f05bc91e4de29298b775bb45a660a2c8ba457",
+        "source_fact:v1:b736f2c848524a19308dffbf86c0bbc21e520ce639c2612c6dfbc661f003b9ae"
+      ],
+      "source_published_kst": "2026-10-21T22:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
+      "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
+      "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
     },
     "original:72d5341f201152153c324df4": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -401450,6 +402036,24 @@
       "source_event_identity": "",
       "title": "아이큐엠 퀀텀 컴퓨터스, 전직원 주식보상 도입..최대 2600만 유로"
     },
+    "original:958b6268af440f73460b7769": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638611",
+      "source": "이투데이",
+      "source_body_digest": "1848962d2311db4b8ef9ee3513940542207c1013758e19ef82573121bdd9d868",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "테슬라, 3분기 매출 제자리걸음에도 현금흐름 ‘깜짝 흑자’ [마켓핫]",
+      "telegram_core_fact": "테슬라의 서비스 및 기타 부문이 성장 동력이 된 반면, 핵심인 자동차 부문과 에너지 저장 부문의 매출은 각각 3%, 16% 감소했다.",
+      "title": "테슬라, 3분기 매출 제자리걸음에도 현금흐름 ‘깜짝 흑자’ [마켓핫]"
+    },
     "original:95917edf7b10b3d63d90b432": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -415791,6 +416395,26 @@
       "source_title": "2.3조 vs 54조… 레버리지 손실 추정액 23배 차이나는 까닭 [팩트체크]",
       "telegram_core_fact": "반면 야당이 레버리지 ETF 피해 규모로 제시한 54조원은 씨티글로벌마켓증권이 시장 규모 변화와 신규 자금 유입 등을 토대로 추정한 숫자를 기반으로 한다.",
       "title": "2.3조 vs 54조… 레버리지 손실 추정액 23배 차이나는 까닭 [팩트체크]"
+    },
+    "original:b259001432cc375f2ec61cea": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.hankyung.com/article/202610215874i",
+      "source": "한국경제",
+      "source_body_digest": "d18f870b6be4e2ac56f31fc4d72bedc370901be18d2ac8cddfa1a2af9f788055",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322d003195fd5e0d11ad848fd0f10fe6074f33925faf64815dca5dbc991fce5b",
+      "source_fact_keys": [
+        "source_fact:v1:1140ff742b3bb04fb1ef8e94db5e37e47667fe363b8fcd1df63b63f58a4b0bfa"
+      ],
+      "source_published_kst": "2026-10-21T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 마케팅 기업 브레이즈, 세일즈포스가 56억6000만달러에 매수...51% 폭등",
+      "telegram_core_fact": "글로벌 고객관계관리(CRM) 기업 세일즈포스가 인공지능(AI) 기반 마케팅 플랫폼 회사 브레이즈를 5억6000만달러에 인수한다고 21일(현지시간) 발표했다.",
+      "title": "AI 마케팅 기업 브레이즈, 세일즈포스가 56억6000만달러에 매수...51% 폭등"
     },
     "original:b26697322a1a2aa23b7d450f": {
       "first_seen_kst": "2026-10-02T12:43:56+09:00",
@@ -458688,6 +459312,28 @@
       "telegram_core_fact": "이마트는 758억5000만원 자사주를 소각한다고 15일 공시했다.",
       "title": "이마트, 758억 규모 자사주 소각…“목표 초과 달성”"
     },
+    "source_fact:03ac2b089dc42d039e860383": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021083100008",
+      "source": "연합뉴스",
+      "source_body_digest": "06d6dff326f9d02cce2f47db2dc3123575e7cd2896be6eb9f61699f0dafd5cd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adcfbfaf8bf03ed329a9cfe5d69f1a1ec96abb301775af53fe7802905b11b6a1",
+      "source_fact_keys": [
+        "source_fact:v1:c4550c906fded03d7cdff4bc9c42818b5a8277407feb9dffe3dbe23abf558f2c",
+        "source_fact:v1:e08b3d6d59de995fd641cf1c99ee1be49a059e274a211a9c8140ddc9907c7703",
+        "source_fact:v1:ff809d0730fbc68bf40d9455d2f686f5a6e4638c743b7a4f78028193d3e8906c"
+      ],
+      "source_published_kst": "2026-10-21T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스",
+      "telegram_core_fact": "박 연구원은 \"공적채권 발행 축소와 은행채 추가 발행 수요 완화가 확인되면서 상위등급 채권의 공급 부담은 단기적으로 상당 부분 경감된 것으로 판단한다\"며 \"은행채와 특수채 스프레드는 고점에 근접한 것으로 판단한다\"고 밝혔다.",
+      "title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스"
+    },
     "source_fact:03aecda6d03f919d217801b2": {
       "first_seen_kst": "2026-10-21T18:34:10+09:00",
       "lanes": {
@@ -462870,6 +463516,33 @@
       "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
       "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
       "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
+    },
+    "source_fact:05eab90cd248e6fd2344ad10": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
     },
     "source_fact:05eb2f63f690964f2c1d300b": {
       "first_seen_kst": "2026-10-16T23:32:01+09:00",
@@ -477502,6 +478175,28 @@
       "telegram_core_fact": "KB증권은 마이크론 대만 공장의 파업이 현실화될 경우 글로벌 D램 공급 부족이 심화되면서 삼성전자와 SK하이닉스의 가격 결정력과 공급 협상력이 강화될 수 있다고 21일 밝혔다.",
       "title": "KB證 “마이크론 파업 예고⋯삼성전자·SK하이닉스 반사이익 기대”"
     },
+    "source_fact:0d95918c6d098a8e205534c6": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021083100008",
+      "source": "연합뉴스",
+      "source_body_digest": "06d6dff326f9d02cce2f47db2dc3123575e7cd2896be6eb9f61699f0dafd5cd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adcfbfaf8bf03ed329a9cfe5d69f1a1ec96abb301775af53fe7802905b11b6a1",
+      "source_fact_keys": [
+        "source_fact:v1:c4550c906fded03d7cdff4bc9c42818b5a8277407feb9dffe3dbe23abf558f2c",
+        "source_fact:v1:e08b3d6d59de995fd641cf1c99ee1be49a059e274a211a9c8140ddc9907c7703",
+        "source_fact:v1:ff809d0730fbc68bf40d9455d2f686f5a6e4638c743b7a4f78028193d3e8906c"
+      ],
+      "source_published_kst": "2026-10-21T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스",
+      "telegram_core_fact": "박 연구원은 \"공적채권 발행 축소와 은행채 추가 발행 수요 완화가 확인되면서 상위등급 채권의 공급 부담은 단기적으로 상당 부분 경감된 것으로 판단한다\"며 \"은행채와 특수채 스프레드는 고점에 근접한 것으로 판단한다\"고 밝혔다.",
+      "title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스"
+    },
     "source_fact:0d9aa79d0d3f71ee9d3fbf93": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -484931,6 +485626,31 @@
       "source_title": "글로벌 채권 공포…美 10년·30년물 장기금리 장중 24년 만 최고",
       "telegram_core_fact": "글로벌 채권 시장의 벤치마크인 10년물 금리는 장중 5.36%까지 올랐다.",
       "title": "글로벌 채권 공포…美 10년·30년물 장기금리 장중 24년 만 최고"
+    },
+    "source_fact:1132f7c9e84e229cef250e68": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06307446645615216",
+      "source": "이데일리",
+      "source_body_digest": "1f775d361c9d5210df9e9e0c59898cf31041d61e5ff638948ef6b2493b902daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f245e1a2baf082caf0e0941d81e4bd8b3cef328f5ac9803ff466572bf5816c3e",
+      "source_fact_keys": [
+        "source_fact:v1:0429bed492a871b65e827ff2431308f4d9184f51c078b8a16f34b910319cf62a",
+        "source_fact:v1:4afcc02ecbb5b443555861b54c0c1cce282f5a21b7cbc737dc802b4e6a02f5e0",
+        "source_fact:v1:52c737d267d826ed9d024cfefd00e26c9ba53e228343c948142c6053dd3f07ce",
+        "source_fact:v1:747b8ee719efcd25b1dd332f6797e637d9ca634a56d4181b89ec427c78e9bd89",
+        "source_fact:v1:9cc3960a0836fbf03900b8906a5f05bc91e4de29298b775bb45a660a2c8ba457",
+        "source_fact:v1:b736f2c848524a19308dffbf86c0bbc21e520ce639c2612c6dfbc661f003b9ae"
+      ],
+      "source_published_kst": "2026-10-21T22:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
+      "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
+      "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
     },
     "source_fact:1135562876090cb58b817afd": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
@@ -494461,6 +495181,26 @@
       "source_title": "韓·이집트 CEPA 협상 내년 상반기 시작…조선·에너지 등 협력 확대",
       "telegram_core_fact": "상품·서비스 무역을 비롯해 경제협력과 공급망 회복력 등을 폭넓게 다루는 높은 수준의 무역협정을 추진해, 아프리카 제2위 경제국인 이집트와 교역·투자를 확대할 제도적 기반을 마련한다는 구상이다.",
       "title": "韓·이집트 CEPA 협상 내년 상반기 시작…조선·에너지 등 협력 확대"
+    },
+    "source_fact:167e70c35ec7aad7dea9e79c": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.hankyung.com/article/202610215874i",
+      "source": "한국경제",
+      "source_body_digest": "d18f870b6be4e2ac56f31fc4d72bedc370901be18d2ac8cddfa1a2af9f788055",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322d003195fd5e0d11ad848fd0f10fe6074f33925faf64815dca5dbc991fce5b",
+      "source_fact_keys": [
+        "source_fact:v1:1140ff742b3bb04fb1ef8e94db5e37e47667fe363b8fcd1df63b63f58a4b0bfa"
+      ],
+      "source_published_kst": "2026-10-21T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 마케팅 기업 브레이즈, 세일즈포스가 56억6000만달러에 매수...51% 폭등",
+      "telegram_core_fact": "글로벌 고객관계관리(CRM) 기업 세일즈포스가 인공지능(AI) 기반 마케팅 플랫폼 회사 브레이즈를 5억6000만달러에 인수한다고 21일(현지시간) 발표했다.",
+      "title": "AI 마케팅 기업 브레이즈, 세일즈포스가 56억6000만달러에 매수...51% 폭등"
     },
     "source_fact:168020e5c000dffcc1c2de03": {
       "first_seen_kst": "2026-10-10T18:57:12+09:00",
@@ -565635,6 +566375,34 @@
       "telegram_core_fact": "대표적으로 미국은 인플레이션감축법(IRA)에 따라 2023년부터 첨단제조세액공제(AMPC)를 실시했는데 도입 후 2년간 민간 부문에서 태양광 분야에 190억달러 신규 투자가 이뤄졌고, 미국 내 생산이 전무했던 셀도 생산능력이 11GW까지 확대됐다.",
       "title": "中 보조금 공세 속 태양광 셀 기반 '흔들'…”세액공제로 제조 기반 지켜야\""
     },
+    "source_fact:39e011740556925f6bf0df7f": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
+    },
     "source_fact:39e08017aada6d135efc8f97": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -578682,6 +579450,34 @@
       "telegram_core_fact": "이처럼 시는 법적 테두리 안에서 사업을 안정적으로 관리하되, 동시 착공·동시 준공 약속이 지켜지지 않을 경우에는 사업 포기 요구를 비롯한 강력한 행정적 제재와 조치에 나선 방침이어서 향후 자광의 대응과 시공사 선정 결과에 지역사회의 이목이 쏠리고 있다.",
       "title": "전주시장, 약속 어긴 자광에 '초강수'…\"사업 포기 요구할 수도\" | 연합뉴스"
     },
+    "source_fact:4099fe4363d85f105184bad7": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
+    },
     "source_fact:409a825c441402a84a3e9b82": {
       "first_seen_kst": "2026-10-21T02:06:57+09:00",
       "lanes": {
@@ -579236,6 +580032,33 @@
       ],
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
+    },
+    "source_fact:40e95fde2d9c53f9b9ac5e80": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
     },
     "source_fact:40ef0773a97118286e63703e": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -609105,6 +609928,31 @@
       "telegram_core_fact": "인공지능(AI) 기업 앤스로픽이 회사 지분 5%를 공익기금에 출연하기로 했다. 18일(현지시간) 로이터통신에 따르면 앤스로픽은 이날 ‘앤스로픽 공익기금(Anthropic Public Benefit Fund)’을 설립하고 주주 승인을 거쳐 회사 지분 5%를 출연할 계획이라고 밝혔다.",
       "title": "앤스로픽, 지분 5% 공익기금에 출연…기업가치 오르면 추가 배정"
     },
+    "source_fact:4f5d0de70d7a2aa2efd2062c": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06307446645615216",
+      "source": "이데일리",
+      "source_body_digest": "1f775d361c9d5210df9e9e0c59898cf31041d61e5ff638948ef6b2493b902daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f245e1a2baf082caf0e0941d81e4bd8b3cef328f5ac9803ff466572bf5816c3e",
+      "source_fact_keys": [
+        "source_fact:v1:0429bed492a871b65e827ff2431308f4d9184f51c078b8a16f34b910319cf62a",
+        "source_fact:v1:4afcc02ecbb5b443555861b54c0c1cce282f5a21b7cbc737dc802b4e6a02f5e0",
+        "source_fact:v1:52c737d267d826ed9d024cfefd00e26c9ba53e228343c948142c6053dd3f07ce",
+        "source_fact:v1:747b8ee719efcd25b1dd332f6797e637d9ca634a56d4181b89ec427c78e9bd89",
+        "source_fact:v1:9cc3960a0836fbf03900b8906a5f05bc91e4de29298b775bb45a660a2c8ba457",
+        "source_fact:v1:b736f2c848524a19308dffbf86c0bbc21e520ce639c2612c6dfbc661f003b9ae"
+      ],
+      "source_published_kst": "2026-10-21T22:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
+      "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
+      "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
+    },
     "source_fact:4f632d424c21a2b11d41b89b": {
       "first_seen_kst": "2026-10-17T10:06:46+09:00",
       "lanes": {
@@ -625247,6 +626095,33 @@
       "source_title": "코스피 빠질 때 'SOL 전고체배터리&실리콘음극재' ETF, 22%↑",
       "telegram_core_fact": "신한자산운용은 전고체 등 차세대 배터리 핵심 기업에 투자하는 'SOL 전고체배터리&실리콘음극재' ETF(상장지수펀드) 최근 3개월 수익률이 국내 상장 주식형 ETF(레버리지·인버스 제외) 중 1위를 차지했다고 19일 밝혔다.",
       "title": "코스피 빠질 때 'SOL 전고체배터리&실리콘음극재' ETF, 22%↑"
+    },
+    "source_fact:57705393dd6724d210e9ed90": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
     },
     "source_fact:57760c06fd4edcc619908e0d": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
@@ -676169,6 +677044,33 @@
       "source_published_kst": "2026-10-06T13:55+09:00",
       "title": "제약바이오협회, 'R&D·임상·RA 역량강화' 세미나"
     },
+    "source_fact:70c9126e03432db9f5c99b5b": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
+    },
     "source_fact:70ceca586dee7777541ca08e": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
       "lanes": {
@@ -702717,6 +703619,34 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
+    "source_fact:7e550b6ed55263d9b074f57c": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
+    },
     "source_fact:7e592be1d7fdec98acb59184": {
       "first_seen_kst": "2026-10-18T11:10:24+09:00",
       "lanes": {
@@ -703420,6 +704350,31 @@
       ],
       "source_published_kst": "2026-10-05T10:35+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 바이오 ‘10대 거래’ 선정"
+    },
+    "source_fact:7eb2ff007f9062e80eb09d1a": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06307446645615216",
+      "source": "이데일리",
+      "source_body_digest": "1f775d361c9d5210df9e9e0c59898cf31041d61e5ff638948ef6b2493b902daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f245e1a2baf082caf0e0941d81e4bd8b3cef328f5ac9803ff466572bf5816c3e",
+      "source_fact_keys": [
+        "source_fact:v1:0429bed492a871b65e827ff2431308f4d9184f51c078b8a16f34b910319cf62a",
+        "source_fact:v1:4afcc02ecbb5b443555861b54c0c1cce282f5a21b7cbc737dc802b4e6a02f5e0",
+        "source_fact:v1:52c737d267d826ed9d024cfefd00e26c9ba53e228343c948142c6053dd3f07ce",
+        "source_fact:v1:747b8ee719efcd25b1dd332f6797e637d9ca634a56d4181b89ec427c78e9bd89",
+        "source_fact:v1:9cc3960a0836fbf03900b8906a5f05bc91e4de29298b775bb45a660a2c8ba457",
+        "source_fact:v1:b736f2c848524a19308dffbf86c0bbc21e520ce639c2612c6dfbc661f003b9ae"
+      ],
+      "source_published_kst": "2026-10-21T22:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
+      "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
+      "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
     },
     "source_fact:7eb544fdb9a5570ee6255bda": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
@@ -715684,6 +716639,31 @@
       "source_title": "쓰리엠, 3분기 GAAP 희석 EPS 2.63달러..전년비 70% 증가",
       "telegram_core_fact": "쓰리엠(MMM)은 3분기 GAAP 기준 매출액이 65억8400만 달러로 전년비 1.0% 증가했고, GAAP 희석 주당순이익(EPS)은 2.63달러로 70% 늘었다고 10월 20일 발표했다.",
       "title": "쓰리엠, 3분기 GAAP 희석 EPS 2.63달러..전년비 70% 증가"
+    },
+    "source_fact:85751968983aedbdddbca71d": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06307446645615216",
+      "source": "이데일리",
+      "source_body_digest": "1f775d361c9d5210df9e9e0c59898cf31041d61e5ff638948ef6b2493b902daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f245e1a2baf082caf0e0941d81e4bd8b3cef328f5ac9803ff466572bf5816c3e",
+      "source_fact_keys": [
+        "source_fact:v1:0429bed492a871b65e827ff2431308f4d9184f51c078b8a16f34b910319cf62a",
+        "source_fact:v1:4afcc02ecbb5b443555861b54c0c1cce282f5a21b7cbc737dc802b4e6a02f5e0",
+        "source_fact:v1:52c737d267d826ed9d024cfefd00e26c9ba53e228343c948142c6053dd3f07ce",
+        "source_fact:v1:747b8ee719efcd25b1dd332f6797e637d9ca634a56d4181b89ec427c78e9bd89",
+        "source_fact:v1:9cc3960a0836fbf03900b8906a5f05bc91e4de29298b775bb45a660a2c8ba457",
+        "source_fact:v1:b736f2c848524a19308dffbf86c0bbc21e520ce639c2612c6dfbc661f003b9ae"
+      ],
+      "source_published_kst": "2026-10-21T22:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
+      "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
+      "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
     },
     "source_fact:857c4e348bc66156e83956cc": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -756108,6 +757088,34 @@
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 '6조원' 규모 LFP 공급…\"물량 두 배 이상 확대\""
     },
+    "source_fact:9a6c6e7147b2ca746c6cb972": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
+    },
     "source_fact:9a6e2db056ea805f6e37eb7a": {
       "first_seen_kst": "2026-10-14T18:12:32+09:00",
       "lanes": {
@@ -762549,6 +763557,31 @@
       "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
       "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
+    },
+    "source_fact:9d825199499fdcc547233956": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06307446645615216",
+      "source": "이데일리",
+      "source_body_digest": "1f775d361c9d5210df9e9e0c59898cf31041d61e5ff638948ef6b2493b902daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f245e1a2baf082caf0e0941d81e4bd8b3cef328f5ac9803ff466572bf5816c3e",
+      "source_fact_keys": [
+        "source_fact:v1:0429bed492a871b65e827ff2431308f4d9184f51c078b8a16f34b910319cf62a",
+        "source_fact:v1:4afcc02ecbb5b443555861b54c0c1cce282f5a21b7cbc737dc802b4e6a02f5e0",
+        "source_fact:v1:52c737d267d826ed9d024cfefd00e26c9ba53e228343c948142c6053dd3f07ce",
+        "source_fact:v1:747b8ee719efcd25b1dd332f6797e637d9ca634a56d4181b89ec427c78e9bd89",
+        "source_fact:v1:9cc3960a0836fbf03900b8906a5f05bc91e4de29298b775bb45a660a2c8ba457",
+        "source_fact:v1:b736f2c848524a19308dffbf86c0bbc21e520ce639c2612c6dfbc661f003b9ae"
+      ],
+      "source_published_kst": "2026-10-21T22:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
+      "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
+      "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
     },
     "source_fact:9d83afd569d95e02a2c62f33": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
@@ -805693,6 +806726,31 @@
       "telegram_core_fact": "국제유가 상승에 따른 휘발유 가격 반등으로 헤드라인 물가 상승률은 전년 동월 대비 3% 중후반까지 확대될 것으로 예상된다.",
       "title": "美물가·연준 발언에 쏠린 눈…환율 하락세 이어질까[주간외환전망]"
     },
+    "source_fact:b2c5a107a7dbe2c345975a12": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06307446645615216",
+      "source": "이데일리",
+      "source_body_digest": "1f775d361c9d5210df9e9e0c59898cf31041d61e5ff638948ef6b2493b902daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f245e1a2baf082caf0e0941d81e4bd8b3cef328f5ac9803ff466572bf5816c3e",
+      "source_fact_keys": [
+        "source_fact:v1:0429bed492a871b65e827ff2431308f4d9184f51c078b8a16f34b910319cf62a",
+        "source_fact:v1:4afcc02ecbb5b443555861b54c0c1cce282f5a21b7cbc737dc802b4e6a02f5e0",
+        "source_fact:v1:52c737d267d826ed9d024cfefd00e26c9ba53e228343c948142c6053dd3f07ce",
+        "source_fact:v1:747b8ee719efcd25b1dd332f6797e637d9ca634a56d4181b89ec427c78e9bd89",
+        "source_fact:v1:9cc3960a0836fbf03900b8906a5f05bc91e4de29298b775bb45a660a2c8ba457",
+        "source_fact:v1:b736f2c848524a19308dffbf86c0bbc21e520ce639c2612c6dfbc661f003b9ae"
+      ],
+      "source_published_kst": "2026-10-21T22:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
+      "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
+      "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
+    },
     "source_fact:b2ca5b9c29765a6d4a124ec8": {
       "first_seen_kst": "2026-10-14T23:19:07+09:00",
       "lanes": {
@@ -816746,6 +817804,33 @@
       "source_published_kst": "2026-10-07T10:21+09:00",
       "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
     },
+    "source_fact:b86d52657549974075883922": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
+    },
     "source_fact:b86d8f721153ab80a25f5801": {
       "first_seen_kst": "2026-10-17T10:06:46+09:00",
       "lanes": {
@@ -821440,6 +822525,34 @@
       "source_title": "국제유가, 미·이란 외교적 해결 기대에 하락…WTI 1.8%↓",
       "telegram_core_fact": "이날 뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI)는 전장 대비 1.8% 하락한 배럴당 101.79달러에 거래를 마쳤다.",
       "title": "국제유가, 미·이란 외교적 해결 기대에 하락…WTI 1.8%↓"
+    },
+    "source_fact:bafeb1eebcafeb0c7cc73a62": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
     },
     "source_fact:bb01a2d8bf69e87803463aaf": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
@@ -848820,6 +849933,33 @@
       "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
       "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
     },
+    "source_fact:c882a48bc4a2550a4c13e5fa": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
+    },
     "source_fact:c883f76e2c8e440b11582bb1": {
       "first_seen_kst": "2026-10-15T15:07:47+09:00",
       "lanes": {
@@ -863572,6 +864712,33 @@
       "source_title": "현대차·기아, 레벨4 자율주행 트럭 상용화 박차…실제 운송 환경서 실증",
       "telegram_core_fact": "현대차·기아는 물류 계열사와 자율주행 전문기업이 참여하는 협력체계를 통해 레벨4 자율주행 대형트럭의 운행 데이터를 축적하고 상용화에 필요한 차량 제어 및 안전 기술을 검증할 계획이다.",
       "title": "현대차·기아, 레벨4 자율주행 트럭 상용화 박차…실제 운송 환경서 실증"
+    },
+    "source_fact:d00692d318bbcbdcb6d348a8": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
     },
     "source_fact:d00bceccd4420f20003b2b68": {
       "first_seen_kst": "2026-10-18T10:14:44+09:00",
@@ -887004,6 +888171,28 @@
       "telegram_core_fact": "뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI) 역시 3.51% 급등한 배럴당 101.41달러를 기록, 7거래일 연속 상승세를 이어가며 지난 9월17일 이후 최고가를 경신했다.",
       "title": "중동·우크라 '쌍끌이 악재'에 유가 급등…WTI 100달러 돌파"
     },
+    "source_fact:dc1a43bf7524bd6dbfe94e54": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021083100008",
+      "source": "연합뉴스",
+      "source_body_digest": "06d6dff326f9d02cce2f47db2dc3123575e7cd2896be6eb9f61699f0dafd5cd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adcfbfaf8bf03ed329a9cfe5d69f1a1ec96abb301775af53fe7802905b11b6a1",
+      "source_fact_keys": [
+        "source_fact:v1:c4550c906fded03d7cdff4bc9c42818b5a8277407feb9dffe3dbe23abf558f2c",
+        "source_fact:v1:e08b3d6d59de995fd641cf1c99ee1be49a059e274a211a9c8140ddc9907c7703",
+        "source_fact:v1:ff809d0730fbc68bf40d9455d2f686f5a6e4638c743b7a4f78028193d3e8906c"
+      ],
+      "source_published_kst": "2026-10-21T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스",
+      "telegram_core_fact": "박 연구원은 \"공적채권 발행 축소와 은행채 추가 발행 수요 완화가 확인되면서 상위등급 채권의 공급 부담은 단기적으로 상당 부분 경감된 것으로 판단한다\"며 \"은행채와 특수채 스프레드는 고점에 근접한 것으로 판단한다\"고 밝혔다.",
+      "title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스"
+    },
     "source_fact:dc1beef0f319df15f6bffa8e": {
       "first_seen_kst": "2026-10-13T18:41:17+09:00",
       "lanes": {
@@ -906219,6 +907408,34 @@
       "telegram_core_fact": "휴전 합의 발표에 앞서 트럼프 대통령은 러시아가 미국과 세계 시장에 경유 480만톤을 공급키로 했다고 밝혔다. 도널드 트럼프 대통령의 '러시아-우크라이나 에너지 휴전' 발표에도 러시아·우크라이나간 충돌이 계속되고 있다.",
       "title": "트럼프, 선거용 \"에너지 휴전\" 일방발표…꿈쩍않는 러·우 공방 지속"
     },
+    "source_fact:e5461ae5177f2ecea8c027a8": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
+    },
     "source_fact:e5486ae277d50d03e0352133": {
       "first_seen_kst": "2026-10-19T08:28:33+09:00",
       "lanes": {
@@ -918958,6 +920175,34 @@
       "source_title": "고려아연, 산소공장 증설 발주 87% 완료…내년 상업운전 시동",
       "telegram_core_fact": "본지 취재에 따르면 고려아연은 온산제련소 산소공장 증설을 위해 지난달 말까지 총 1170억원 규모 발주를 진행했다.",
       "title": "고려아연, 산소공장 증설 발주 87% 완료…내년 상업운전 시동"
+    },
+    "source_fact:ec07c68752b024de71d57d99": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
     },
     "source_fact:ec08ba861e7d8b309772bb16": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
@@ -940317,6 +941562,34 @@
       "telegram_core_fact": "규제자유특구 IR-DAY는 특구에서 실증기술 사업화를 추진하는 기업에 민간 투자유치 기회를 제공하는 행사로, 이번 제15회 행사는 오는 12월 서울에서 열릴 예정이다.",
       "title": "중진공, 규제자유특구 기업 투자유치 지원…참가기업 모집"
     },
+    "source_fact:f748b62b0ee9444d298354b3": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
+    },
     "source_fact:f7498fb3a18f3657d50b0da8": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
       "lanes": {
@@ -948778,6 +950051,34 @@
       "telegram_core_fact": "중국 메모리 반도체 기업들의 기술력이 한국보다 약 3년 뒤처져 있는 데다 인공지능(AI) 투자 확대에 따른 메모리 공급 부족이 2029년까지 이어질 것이라는 판단에서다.",
       "title": "댄 아이브스 \"삼성·SK하이닉스 과도한 조정…中 메모리 3년 뒤처져\" [fn마켓워치]"
     },
+    "source_fact:fc05846fb017d0ef55d81536": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
+    },
     "source_fact:fc05ee3ec86586f27023d17e": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
       "lanes": {
@@ -948808,6 +950109,33 @@
       "source_title": "“AI 기술은 앞서가는데 데이터센터가 없다”…세레브라스 CEO의 경고",
       "telegram_core_fact": "앤드루 펠드먼 세레브라스 CEO는 13일(현지시간) 미국 샌프란시스코에서 열린 ‘테크크런치 디스럽트 2026’ 대담에서 “AI 수요는 엄청난 속도로 증가하고 있다”면서도 “지난 몇 년간 AI 업계는 데이터센터가 들어서는 지역사회와 제대로 협력하지 못했다”고 밝혔다.",
       "title": "“AI 기술은 앞서가는데 데이터센터가 없다”…세레브라스 CEO의 경고"
+    },
+    "source_fact:fc089adee704a3ae6767bcfa": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
     },
     "source_fact:fc0a3c46ea60d286a3245518": {
       "first_seen_kst": "2026-10-17T00:51:19+09:00",
@@ -970230,6 +971558,33 @@
       "telegram_core_fact": "차이나 위차이 인터내셔널(CYD)은 전액 출자 자회사 광시위차이주조유한공사가 광시전예신소재와 오스템퍼드 연성주철(ADI) 열처리 사업을 위한 합작법인 광시아오베이과기를 설립했으며, 지분 34%를 확보했다고 10월 20일 발표했다.",
       "title": "차이나 위차이 인터내셔, 광시전예와 ADI 합작법인 설립..지분 34% 확보"
     },
+    "title:1bb20cc1acd8816299452d4e": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834931",
+      "source": "뉴시스",
+      "source_body_digest": "eafc449b35b20ea353b05612b699f21e1404ce39ef0524134aabb7c087e86855",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2dac7f68c882a44957dde8cd6c7ff7e5d01be026da469c9d69aef8b8f2e9bbf",
+      "source_fact_keys": [
+        "source_fact:v1:27460707419140bda84c1855570bf8c65e27c5e58f77dd2669e2c448c6b4db49",
+        "source_fact:v1:7a82287a7564b34b0e074a6f124b2dd86e782f2b2972a4581742ac1b3e46d900",
+        "source_fact:v1:866dc3effe4224881910f4471c5e635bdfe07fed6c597a7edec596de3130c693",
+        "source_fact:v1:90120272c2cb23f88478a9854b4cb7a0bb42ee4be7d8e338ce08d2a607a70956",
+        "source_fact:v1:933430cf6c61cbc4be66ada53217ad004409af24346531dd0adc0e3611575ec1",
+        "source_fact:v1:d85d27538f167fb0ec142646d3ff4bbd9c3e40b74d568fbc50c7513fa18c8249",
+        "source_fact:v1:e3e77abb7b136acc868be67282e1fc8c4a8d21b2f76f0c64e8dc687ebe5eeb58",
+        "source_fact:v1:ea719a04e056860c5b4d63c641802556198c74f41e8355f398b9dd183e513608"
+      ],
+      "source_published_kst": "2026-10-21T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급",
+      "telegram_core_fact": "생산적 금융 융자 부문은 올해 1월부터 9월까지 그룹 전체가 27조2000억원을 공급했다.",
+      "title": "우리금융, 1년간 생산적·포용금융 34조7000억 규모 공급"
+    },
     "title:1bbf4454055648eb0177bb08": {
       "first_seen_kst": "2026-10-20T16:54:02+09:00",
       "lanes": {
@@ -980823,6 +982178,28 @@
       "link": "https://www.yna.co.kr/view/AKR20261002138700060",
       "source": "연합뉴스",
       "title": "파주시, 평화경제특구 1차 후보지 지정 신청 완료 | 연합뉴스"
+    },
+    "title:303085007ffcfae429e1f155": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021083100008",
+      "source": "연합뉴스",
+      "source_body_digest": "06d6dff326f9d02cce2f47db2dc3123575e7cd2896be6eb9f61699f0dafd5cd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adcfbfaf8bf03ed329a9cfe5d69f1a1ec96abb301775af53fe7802905b11b6a1",
+      "source_fact_keys": [
+        "source_fact:v1:c4550c906fded03d7cdff4bc9c42818b5a8277407feb9dffe3dbe23abf558f2c",
+        "source_fact:v1:e08b3d6d59de995fd641cf1c99ee1be49a059e274a211a9c8140ddc9907c7703",
+        "source_fact:v1:ff809d0730fbc68bf40d9455d2f686f5a6e4638c743b7a4f78028193d3e8906c"
+      ],
+      "source_published_kst": "2026-10-21T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스",
+      "telegram_core_fact": "박 연구원은 \"공적채권 발행 축소와 은행채 추가 발행 수요 완화가 확인되면서 상위등급 채권의 공급 부담은 단기적으로 상당 부분 경감된 것으로 판단한다\"며 \"은행채와 특수채 스프레드는 고점에 근접한 것으로 판단한다\"고 밝혔다.",
+      "title": "KB증권 \"공적채권 부담 ↓…은행채·특수채 스프레드 고점 근접\" | 연합뉴스"
     },
     "title:303821a4da55524285f0f30e": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -1004230,6 +1005607,34 @@
       "telegram_core_fact": "간밤 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망 심리가 확산한 영향으로 풀이된다.",
       "title": "아슬아슬하게 지킨 '육천피'… 美 CPI 발표 앞두고 관망세 짙어져"
     },
+    "title:5fa3ee25014b4d5270bf71d8": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04818326645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "9ea7104d94eb6306fb056b26e2acc0db4bf52a3f753c77918c3a718b5f0f937e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0582668de49f379a457cce66302027ae35798361bf413c30abeb89e51d03f79c",
+      "source_fact_keys": [
+        "source_fact:v1:01a79b85fffe15e818267db3693ab8ea2a20e4a582c8d46e201b4d4dd0d69ddf",
+        "source_fact:v1:24378991d0fc9df76df0639ed821a136cccaee823f7891a81264b598b1205dc8",
+        "source_fact:v1:5887f37b9f38b2378925bd4502731d039e3a0a0429478198fcf5730672d087c7",
+        "source_fact:v1:5f5dd08b591a532ef76a753606b69317ae4dacb80b92e9135dc67c085db4543e",
+        "source_fact:v1:74a4939a70e4431e2995f41682049e6e3a93189bbc219fbc435adf1c16997add",
+        "source_fact:v1:879677fe24450d75b558deb01ee8ed23e9c3fe26c1c25372b6a8f5947f9bed39",
+        "source_fact:v1:8e8cdf5dca39d090d17fd2ce231c99883f8e7beda6d604a905b695e4ad86e57b",
+        "source_fact:v1:e433825891835b3ca6944323f54d582d0c9fd5d579c4f135677d0f6f9844f299",
+        "source_fact:v1:f0c89b7b51a8d4863c0a966d7badbddc5944a3e4b3c531a60ba3137967764796"
+      ],
+      "source_published_kst": "2026-10-21T16:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱",
+      "telegram_core_fact": "정부의 규제 완화 정책과 사업 예산이 12월 국회를 통과하고 후속 제도가 제때 뒷받침된다면, 국내 자율주행 화물운송의 상용화는 업계 전망대로 2~3년 내 현실화될 수 있다는 진단이 나왔다.",
+      "title": "“화물 늘고 운전석 비어간다”…자율주행 화물운송, 2~3년 내 상용화 문턱"
+    },
     "title:5fa51d8e0198127285a6b3bc": {
       "first_seen_kst": "2026-10-14T15:12:25+09:00",
       "lanes": {
@@ -1007318,6 +1008723,24 @@
       "source_title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설",
       "telegram_core_fact": "\"우리 기업의 해외수주 지원을 위해 3조원 해외건설 신(新)전략펀드를 신설하고, 해외 진출 사업의 연관 지역경제가 활성화될 수 있도록 패키지형 수주(개발·건설·유지보수)를 확대하겠다\"고 밝혔다.",
       "title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설"
+    },
+    "title:661be5d38027749019b1d4cd": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182213",
+      "source": "매일경제",
+      "source_body_digest": "b4a41535adad21949e295a05196d36b8eefe7c7274de5eb40b79753c94c52110",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T22:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "아이푸, 광학필름 선전 왈츠 인수 4500만 달러 규모",
+      "telegram_core_fact": "\"앞으로 인공지능과 디지털화 분야의 기술과 자원을 활용해 선전 왈츠의 연구개발 역량과 운영 효율을 높이는 방안을 모색할 것\"이라며 \"장기적인 사업 성장을 이끌고 주주에게 지속 가능한 가치를 창출하겠다\"고 밝혔다. 인수 대상 회사는 선전 왈츠 지분 99%를 간접 보유하고 있다.",
+      "title": "아이푸, 광학필름 선전 왈츠 인수 4500만 달러 규모"
     },
     "title:663791d2fd28acb7e84acee6": {
       "first_seen_kst": "2026-10-17T09:37:15+09:00",
@@ -1013303,6 +1014726,31 @@
       "source_title": "ESS 올라탄 K배터리…LG엔솔·삼성SDI 3분기 실적 기대감↑",
       "telegram_core_fact": "LG에너지솔루션이 북미 ESS 출하 확대에 힘입어 3분기 분기 최대 매출을 기록한 가운데 삼성SDI도 ESS 성장에 힘입어 시장 기대를 웃도는 실적을 낼 것이란 전망이 나온다.",
       "title": "ESS 올라탄 K배터리…LG엔솔·삼성SDI 3분기 실적 기대감↑"
+    },
+    "title:72cd13ebe4cb372781e6e5b9": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06307446645615216",
+      "source": "이데일리",
+      "source_body_digest": "1f775d361c9d5210df9e9e0c59898cf31041d61e5ff638948ef6b2493b902daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f245e1a2baf082caf0e0941d81e4bd8b3cef328f5ac9803ff466572bf5816c3e",
+      "source_fact_keys": [
+        "source_fact:v1:0429bed492a871b65e827ff2431308f4d9184f51c078b8a16f34b910319cf62a",
+        "source_fact:v1:4afcc02ecbb5b443555861b54c0c1cce282f5a21b7cbc737dc802b4e6a02f5e0",
+        "source_fact:v1:52c737d267d826ed9d024cfefd00e26c9ba53e228343c948142c6053dd3f07ce",
+        "source_fact:v1:747b8ee719efcd25b1dd332f6797e637d9ca634a56d4181b89ec427c78e9bd89",
+        "source_fact:v1:9cc3960a0836fbf03900b8906a5f05bc91e4de29298b775bb45a660a2c8ba457",
+        "source_fact:v1:b736f2c848524a19308dffbf86c0bbc21e520ce639c2612c6dfbc661f003b9ae"
+      ],
+      "source_published_kst": "2026-10-21T22:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
+      "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
+      "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
     },
     "title:72d5341f201152153c324df4": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -1030978,6 +1032426,24 @@
       "source_event_identity": "",
       "title": "아이큐엠 퀀텀 컴퓨터스, 전직원 주식보상 도입..최대 2600만 유로"
     },
+    "title:958b6268af440f73460b7769": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638611",
+      "source": "이투데이",
+      "source_body_digest": "1848962d2311db4b8ef9ee3513940542207c1013758e19ef82573121bdd9d868",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "테슬라, 3분기 매출 제자리걸음에도 현금흐름 ‘깜짝 흑자’ [마켓핫]",
+      "telegram_core_fact": "테슬라의 서비스 및 기타 부문이 성장 동력이 된 반면, 핵심인 자동차 부문과 에너지 저장 부문의 매출은 각각 3%, 16% 감소했다.",
+      "title": "테슬라, 3분기 매출 제자리걸음에도 현금흐름 ‘깜짝 흑자’ [마켓핫]"
+    },
     "title:95917edf7b10b3d63d90b432": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -1045760,6 +1047226,26 @@
       "source_title": "2.3조 vs 54조… 레버리지 손실 추정액 23배 차이나는 까닭 [팩트체크]",
       "telegram_core_fact": "반면 야당이 레버리지 ETF 피해 규모로 제시한 54조원은 씨티글로벌마켓증권이 시장 규모 변화와 신규 자금 유입 등을 토대로 추정한 숫자를 기반으로 한다.",
       "title": "2.3조 vs 54조… 레버리지 손실 추정액 23배 차이나는 까닭 [팩트체크]"
+    },
+    "title:b259001432cc375f2ec61cea": {
+      "first_seen_kst": "2026-10-22T07:08:27+09:00",
+      "lanes": {
+        "preopen": "2026-10-22T07:08:27+09:00"
+      },
+      "last_seen_kst": "2026-10-22T07:08:27+09:00",
+      "link": "https://www.hankyung.com/article/202610215874i",
+      "source": "한국경제",
+      "source_body_digest": "d18f870b6be4e2ac56f31fc4d72bedc370901be18d2ac8cddfa1a2af9f788055",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322d003195fd5e0d11ad848fd0f10fe6074f33925faf64815dca5dbc991fce5b",
+      "source_fact_keys": [
+        "source_fact:v1:1140ff742b3bb04fb1ef8e94db5e37e47667fe363b8fcd1df63b63f58a4b0bfa"
+      ],
+      "source_published_kst": "2026-10-21T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 마케팅 기업 브레이즈, 세일즈포스가 56억6000만달러에 매수...51% 폭등",
+      "telegram_core_fact": "글로벌 고객관계관리(CRM) 기업 세일즈포스가 인공지능(AI) 기반 마케팅 플랫폼 회사 브레이즈를 5억6000만달러에 인수한다고 21일(현지시간) 발표했다.",
+      "title": "AI 마케팅 기업 브레이즈, 세일즈포스가 56억6000만달러에 매수...51% 폭등"
     },
     "title:b26697322a1a2aa23b7d450f": {
       "first_seen_kst": "2026-10-02T12:43:56+09:00",
@@ -1082336,5 +1083822,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T06:35:46+09:00"
+  "updated_at_kst": "2026-10-22T07:08:27+09:00"
 }
