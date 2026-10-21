@@ -637,6 +637,18 @@ def main() -> int:
             held.append(f"{key}: {'; '.join(reject_reasons[:2]) or '본문 직접 검증 실패'}")
             continue
 
+        evidence = dict(verified.get("timeline_evidence") or {})
+        original_age = verified_age_days(evidence, now)
+        revised = parse_timestamp(evidence.get("modified", ""))
+        revised_age = ((now - revised).total_seconds() / 86400) if revised else None
+        if original_age is not None and original_age > MAX_AGE_DAYS and (
+            revised_age is None or revised_age > MAX_AGE_DAYS
+        ):
+            # 검색엔진이 새로 색인한 과거 문서: 신규 공식 변경으로 보고하지 않는다.
+            held.append(f"{key}: 과거 원문 재색인 차단 / {source_korean_date(evidence['published'])}")
+            seen[key] = max(previous, current)
+            continue
+
         fact_sig = material_signature(verified)
         sig_changed = bool(
             fact_sig and known_signatures.get(key) is not None
