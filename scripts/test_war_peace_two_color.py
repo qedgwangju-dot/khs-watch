@@ -388,6 +388,48 @@ class TwoColorTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
             self.presenter.verify_alert()
 
+    def test_peace_plan_delivery_with_named_recipient_is_dialogue(self):
+        for title in ('美특사, 우크라 종전안 푸틴에 전달…러, 구금 미국인 석방 - 연합뉴스',
+                      '미국 특사, 새 종전안 21일 푸틴에 전달',
+                      'US envoy delivers peace plan to Putin'):
+            with self.subTest(title=title):
+                row={'title_original':title,'title_ko':title}
+                self.assertEqual(stage.non_military_kind(row),'diplomatic_plan')
+                self.assertEqual(stage.final_color(row),'yellow')
+                self.assertEqual(presentation.direction(stage,row),'green')
+                self.assertIn('종전안 논의·전달',stage.topic_label(row))
+        row={'title_original':'美특사, 우크라 종전안 푸틴에 전달…러, 구금 미국인 석방'}
+        self.assertEqual(stage.topic_label(row),'미국·우크라이나·러시아 · 종전안 논의·전달')
+
+    def test_plan_delivery_denial_or_separate_attack_does_not_turn_green(self):
+        for title in ('미국 특사, 종전안 푸틴에 전달 부인',
+                      '미국 특사, 종전안 푸틴에 전달하지 않았다',
+                      '美특사, 종전안 푸틴에 전달…러시아 공습했다'):
+            with self.subTest(title=title):
+                self.assertEqual(presentation.direction(stage,{'title_original':title,'title_ko':title}),'red')
+
+    def test_latest_push_peace_plan_delivery_and_reference_preserved(self):
+        self.fixture=json.loads((Path(__file__).parent/'test_fixtures/war_peace_plan_recipient_39584508384.json').read_text(encoding='utf-8'))
+        (_,_,ids),text,receipt=self.present(tuple(range(len(self.fixture['articles']))))
+        shown=[row for row in receipt['articles'] if row.get('rendered')]
+        delivered=next(row for row in shown if row['id']=='a84a84da65087cece33e')
+        self.assertEqual(delivered['classification_color'],'green')
+        self.assertIn('미국·우크라이나·러시아 · 종전안 논의·전달',text)
+        self.assertIn('러, 구금 미국인 석방',text)
+        self.assertEqual(ids,[row['id'] for row in shown])
+        self.assertEqual(receipt['markets'],self.fixture['markets'])
+        self.assertTrue(any(row['display_section']=='market_reference' and row['classification_color'] is None for row in shown))
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.STATE.read_bytes(),self.state_before)
+
+    def test_original_same_hash_peace_plan_push_rejected(self):
+        f=json.loads((Path(__file__).parent/'test_fixtures/war_peace_plan_recipient_39584508384.json').read_text(encoding='utf-8'))
+        self.watch.ALERT.write_text(f['original_semantic_alert'],encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(f['original_semantic_evidence'],ensure_ascii=False),encoding='utf-8')
+        self.watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in f['articles'] if r['rendered']]}),encoding='utf-8')
+        with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
+            self.presenter.verify_alert()
+
     def test_production_entry_installs_directional_final_gate(self):
         original = stage.runner.verify_alert
         def entry():
