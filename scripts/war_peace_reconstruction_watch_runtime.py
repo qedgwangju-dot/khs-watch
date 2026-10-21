@@ -37,7 +37,9 @@ def _save(path, report):
 
 
 def _clean(watch):
-    for path in (watch.ALERT, watch.PENDING, getattr(watch, 'AUDIT', None)):
+    for path in (watch.ALERT, watch.PENDING, getattr(watch, 'AUDIT', None),
+                 watch.OUT / 'war_peace_reconstruction_stage_alert.txt',
+                 watch.OUT / 'war_peace_reconstruction_stage_evidence.json'):
         if path is None:
             continue
         path.unlink(missing_ok=True)
@@ -48,6 +50,10 @@ def _rejected_paths(watch):
         ('alert', watch.ALERT, watch.OUT / 'war_peace_reconstruction_rejected_alert.txt'),
         ('pending', watch.PENDING, watch.OUT / 'war_peace_reconstruction_rejected_pending.json'),
         ('evidence', getattr(watch, 'AUDIT', None), watch.OUT / 'war_peace_reconstruction_rejected_evidence.json'),
+        ('stage_alert', watch.OUT / 'war_peace_reconstruction_stage_alert.txt',
+         watch.OUT / 'war_peace_reconstruction_rejected_stage_alert.txt'),
+        ('stage_evidence', watch.OUT / 'war_peace_reconstruction_stage_evidence.json',
+         watch.OUT / 'war_peace_reconstruction_rejected_stage_evidence.json'),
     )
 
 
