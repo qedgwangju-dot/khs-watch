@@ -105,6 +105,7 @@ def _riyadh_missile_headline(row):
 def _display_headline(row):
     original = str(row.get('title_original') or row.get('title') or '')
     if (non_military_kind(row) in ('diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'maritime_routing', 'oil_market', 'oil_pressure', 'corporate_spending', 'market_reaction', 'commodity_market', 'security_activity')
+            or _attack_plan_spans(_headline(row))
             or _summit_openness_headline(_headline(row))
             or _summit_openness_denied(_headline(row))
             or _harm_intent_denial_headline(_headline(row))
@@ -260,7 +261,24 @@ def _information_resumption_headline(title):
 
 def _settlement_pressure_headline(title):
     return bool(re.search(r'(?:종전|휴전).{0,12}합의(?:할\s*때|해야|(?:를)?\s*(?:촉구|압박))|'
-                          r'종전\s*협상\s*재촉|젤렌스키.{0,22}합의해야', title))
+                          r'종전\s*협상\s*재촉|종전하라|젤렌스키.{0,22}합의해야', title))
+
+
+def _attack_plan_spans(title):
+    action = r'(?:공습|공격|폭격)(?:을|를)?\s*(?:(?:개시|재개)(?:를|을)?\s*)?'
+    return list(re.finditer(
+        r'(?P<held>' + action + r'(?:하려다|추진|계획|검토|준비)[^…;；]{0,70}?(?:보류|취소|철회)(?!\s*(?:하지|않|안\s|아니|부인)))|'
+        r'(?P<planned>' + action + r'(?:추진|검토|계획|준비))', title))
+
+
+def _attack_plan_status(title):
+    spans = _attack_plan_spans(title)
+    if any(span.lastgroup == 'planned' and not re.match(
+            r'\s*(?:부인|사실무근|하지\s*않|안\s*했)', title[span.end():]) for span in spans):
+        return 'planned'
+    if any(span.lastgroup == 'held' for span in spans):
+        return 'held'
+    return 'denied' if spans else None
 
 
 def _meeting_participation_request(title):
@@ -283,7 +301,8 @@ def _statement_with_actual_action(title):
              or _information_resumption_headline(title) or _near_military_authorization(title)
              or _attack_denial_with_blockade(title) or _gold_price_headline(title)
              or _oil_supply_headline(title) or _peace_plan_discussion_headline(title)
-             or _security_activity_headline(title) or _meeting_plan_stage(title))
+             or _security_activity_headline(title) or _meeting_plan_stage(title)
+             or _attack_plan_spans(title))
     return bool(stage and re.search(
         r'(?:공습|공격|폭격|타격|요격)(?:을|를)?\s*(?:했다(?!는)|했으며|하고\s*있|진행\s*중)|'
         r'(?:피격|파괴)(?:됐|되었|당했)|'
@@ -294,6 +313,12 @@ def _statement_with_actual_action(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if kind == 'military_discussion' and _attack_plan_status(title):
+        actors = [label for label, pattern in (('미국', r'트럼프|미국|美|\btrump\b'),
+                  ('이스라엘', r'이스라엘|네타냐후|\b(?:israel|netanyahu)\b'),
+                  ('이란', r'이란|\biran\b')) if re.search(pattern, title)]
+        label = {'held': '공습·공격 계획 보류·반대', 'denied': '공습·공격 계획 부인', 'planned': '공습·공격 계획·추진'}[_attack_plan_status(title)]
+        return ('·'.join(actors) or _diplomatic_group(title)) + ' · ' + label
     if kind == 'commodity_market':
         return '금시장 · ' + KIND_LABELS[kind]
     if kind == 'security_activity':
@@ -894,7 +919,7 @@ def non_military_kind(row):
         return None
     # Require an explicit new-action predicate before background weapon nouns
     # can turn a sanctions listing or a condemnation into a military event.
-    discussion = _military_discussion_spans(title)
+    discussion = _military_discussion_spans(title) + _attack_plan_spans(title)
     statements = _refinery_restart_statement_spans(title) + _energy_facility_statement_spans(title)
     future = _rejection_future_action_spans(title)
     condemnation = _condemnation_object_spans(title)
@@ -986,6 +1011,8 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    if kind == 'military_discussion' and _attack_plan_status(title):
+        return {'held': '공습·공격 계획 보류·반대', 'denied': '공습·공격 계획 부인', 'planned': '공습·공격 계획·추진'}[_attack_plan_status(title)]
     meeting_plan = _meeting_plan_stage(title)
     if meeting_plan and kind in ('diplomatic_position', 'diplomatic_plan'):
         return '회담 추진 부인' if meeting_plan == 'denied' else '회담 추진·논의'
@@ -1014,6 +1041,7 @@ def _headline_event_cache_required(row, kind):
             or (kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))
                 or _near_military_authorization(_headline(row))))
+            or (kind == 'military_discussion' and _attack_plan_spans(_headline(row)))
             or _energy_facility_headline(row)
             or (kind is None and _headline_refinery_action(row))
             or (kind is None and _headline_drone_action(row))

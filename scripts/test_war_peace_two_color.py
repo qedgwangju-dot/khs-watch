@@ -1,5 +1,6 @@
 """Directional presentation regressions; no collection, send, or real state writes."""
 import copy
+import base64
 import datetime as dt
 import hashlib
 import html
@@ -175,6 +176,62 @@ class TwoColorTests(unittest.TestCase):
         (self.folder/presentation.STAGE_EVIDENCE).unlink()
         with self.assertRaisesRegex(RuntimeError, 'missing verified event-stage proof'):
             self.presenter.verify_alert()
+
+    def test_preserved_inline_stage_proof_survives_existing_artifact_allowlist(self):
+        self.present()
+        receipt = json.loads(self.watch.AUDIT.read_text(encoding='utf-8'))
+        snapshot = receipt['semantic_snapshot']
+        for key, filename in [('alert_utf8_base64', presentation.STAGE_ALERT),
+                              ('evidence_utf8_base64', presentation.STAGE_EVIDENCE)]:
+            self.assertEqual(base64.b64decode(snapshot[key], validate=True), (self.folder/filename).read_bytes())
+
+    def test_attack_plan_hold_and_future_push_keep_distinct_directions(self):
+        cases = (
+            ('"네타냐후, 이란 대규모 폭격하려다 트럼프 반대에 보류" - 연합뉴스', 'green', '보류·반대'),
+            ('네타냐후, 이란에 대한 대규모 공습 재개 추진 - Investing.com 한국어', 'red', '계획·추진'),
+            ('"네타냐후, 이란 공격 재개 추진…트럼프는 반대" - 마켓인', 'red', '계획·추진'),
+        )
+        for title, color, label in cases:
+            with self.subTest(title=title):
+                row = {'title_original': title, 'title_ko': title}
+                self.assertEqual(stage.non_military_kind(row), 'military_discussion')
+                self.assertEqual(stage.final_color(row), 'yellow')
+                self.assertEqual(presentation.direction(stage, row), color)
+                self.assertIn(label, stage.topic_label(row))
+                self.assertNotIn('호르무즈', stage.topic_label(row))
+
+    def test_separate_actual_attack_wins_over_held_plan(self):
+        for suffix in ('…러시아 공습했다', '…미국 미사일 발사'):
+            row = {'title_original': '네타냐후, 이란 대규모 폭격하려다 트럼프 반대에 보류' + suffix}
+            self.assertEqual(presentation.direction(stage, row), 'red')
+        row = {'title_original': '네타냐후, 이란 공습 계획 보류…러시아 공습 재개 추진'}
+        self.assertEqual(presentation.direction(stage, row), 'red')
+
+    def test_attack_plan_denial_and_negated_hold(self):
+        row = {'title_original': '네타냐후, 이란 공습 재개 추진 부인'}
+        self.assertEqual(stage._attack_plan_status(stage._headline(row)), 'denied')
+        self.assertEqual(presentation.direction(stage, row), 'green')
+        self.assertIn('계획 부인', stage.topic_label(row))
+        row = {'title_original': '네타냐후, 이란 공습 재개 추진 보류하지 않았다'}
+        self.assertNotEqual(stage._attack_plan_status(stage._headline(row)), 'held')
+        self.assertEqual(presentation.direction(stage, row), 'red')
+
+    def test_latest_operating_saved_full_body_and_inline_proof(self):
+        self.fixture = json.loads((Path(__file__).parent/'test_fixtures/war_two_color_hold_39550874373.json').read_text(encoding='utf-8'))
+        (_, _, ids), text, receipt = self.present((0, 1, 2, 3))
+        rows = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual([row['classification_color'] for row in rows], ['red', 'green', 'red', 'red'])
+        self.assertEqual([row['semantic_classification_color'] for row in rows], ['yellow'] * 4)
+        self.assertEqual(len(ids), 4)
+        self.assertNotIn('호르무즈', text)
+        self.assertIn('공습·공격 계획 보류·반대', text)
+        self.assertIn('종전 합의 촉구·압박', text)
+        for row in rows:
+            self.assertIn(html.escape(row['title_original']), text)
+        snapshot = receipt['semantic_snapshot']
+        self.assertEqual(presentation.digest(base64.b64decode(snapshot['alert_utf8_base64'])), receipt['semantic_proof']['alert_sha256'])
+        self.assertEqual(presentation.digest(base64.b64decode(snapshot['evidence_utf8_base64'])), receipt['semantic_proof']['evidence_sha256'])
+        self.presenter.verify_alert()
 
     def test_runtime_cleans_and_preserves_rejected_stage_proof(self):
         self.present()
