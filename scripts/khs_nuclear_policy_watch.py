@@ -203,7 +203,10 @@ TEMELIN_CUTOFF_UTC = dt.datetime(2026, 10, 20, 5, 45, tzinfo=UTC)
 TEMELIN_OPTION_SOURCE = ("https://mpo.gov.cz/en/guidepost/for-the-media/press-releases/"
     "epc-contract-for-completion-of-dukovany-has-been-signed--minister-of-industry-and-trade--lukas-vlcek-will-visit-korea-again-in-july--287912/")
 TEMELIN_MEETING_SOURCE = "https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/172314/view"
-TEMELIN_CEZ_SOURCE = "https://www.cez.cz/en/energy-generation/nuclear-power-plants/new-nuclear-power-sources"
+TEMELIN_CEZ_SOURCE = "https://www.cez.cz/nextcez/cs/nove-jaderne-zdroje/elektrarna-temelin-ii/potencialni-dodavatele"
+TEMELIN_OPTION_TENOR_YEARS = 5
+TEMELIN_OPTION_REACTOR_DESIGN = "APR1000"
+TEMELIN_OPTION_EXPECTED_NET_MW_PER_UNIT = 1000
 TEMELIN_IAA_SOURCE = "https://commission.europa.eu/news-and-media/news/commission-proposes-new-measures-boost-eu-industry-and-jobs-2026-03-04_en"
 TEMELIN_OFFICIAL_QUERIES = (
     ('한국 정부', 'site:motir.go.kr 테믈린 3 4 원전 when:30d'),
@@ -228,8 +231,12 @@ TEMELIN_HISTORICAL_BASELINE = {
     "option_2025": {
         "stage": "option_in_dukovany_epc",
         "date": "2025-06-04",
-        "status": "두코바니 5·6호기 EPC에 테믈린 추가 2기 선택권 포함·아직 미행사",
-        "link": TEMELIN_OPTION_SOURCE,
+        "status": "두코바니 5·6호기 EPC에 테믈린 추가 2기 5년 선택권 포함·아직 미행사",
+        "option_tenor_years": TEMELIN_OPTION_TENOR_YEARS,
+        "conditional_design": TEMELIN_OPTION_REACTOR_DESIGN,
+        "expected_net_electric_capacity_mw_per_unit": TEMELIN_OPTION_EXPECTED_NET_MW_PER_UNIT,
+        "contract_source": TEMELIN_OPTION_SOURCE,
+        "link": TEMELIN_CEZ_SOURCE,
     },
     "ministerial_20261020": {
         "stage": "ministerial_interest",
@@ -2174,6 +2181,11 @@ def _self_test_temelin_milestones() -> None:
         raise RuntimeError("Temelin official source whitelist regression")
     if _temelin_official_publisher("https://mpo.gov.cz.fake.example"):
         raise RuntimeError("Temelin official source spoofing regression")
+    assert TEMELIN_OPTION_TENOR_YEARS == 5
+    assert TEMELIN_OPTION_REACTOR_DESIGN == "APR1000"
+    assert TEMELIN_OPTION_EXPECTED_NET_MW_PER_UNIT == 1000
+    if TEMELIN_HISTORICAL_BASELINE["option_2025"]["option_tenor_years"] != 5:
+        raise RuntimeError("Temelin 5-year option baseline regression")
 
 
 def _render_temelin_milestone(item: dict, idx: int) -> list[str]:
@@ -2181,11 +2193,11 @@ def _render_temelin_milestone(item: dict, idx: int) -> list[str]:
     return [
         f"## {idx}. [공식기관 발행제목 확인] 체코 테믈린 3·4호기",
         f"- 핵심 변화: {TEMELIN_STAGES[stage]}. 공식기관이 새 단계에 해당하는 발표 제목을 공개했습니다. 실제 계약 조건은 원문·계약서로 별도 확인합니다.",
-        "- 숫자: 잠재 후속 건설 대상 2기. 테믈린 별도 확정 계약금액·한국 기업 신규 수주액은 추가 계약 검증 전까지 미확정입니다.",
+        f"- 숫자: 후속 대형원전 선택권 2기·기간 5년. 행사 시 후보 노형 {TEMELIN_OPTION_REACTOR_DESIGN}, 순전기출력 약 {TEMELIN_OPTION_EXPECTED_NET_MW_PER_UNIT:,}MW/기(부지별 달라질 수 있음), 2기 합계 약 {2*TEMELIN_OPTION_EXPECTED_NET_MW_PER_UNIT:,}MW. 테믈린 별도 확정 계약금액·신규 수주액은 미확정입니다.",
         "- 한국 기업·매출 연결: 두코바니 팀코리아는 한국수력원자력·한국전력기술·두산에너빌리티·대우건설·한전원자력연료·한전KPS입니다. 테믈린 3·4호기 신규 계약은 아직 별도로 확인해야 하며, 신규 계약·공급품목·고객 확인 뒤 해당 기업 매출로 분류합니다.",
         "- 병목·실패모드: 체코 최종 투자결정, 2025년 선택권 행사, 자금조달, 현지 공급망 비중, EU 산업가속화법안 제3국 조달요건, 인허가가 결정적입니다. 테믈린 Rolls-Royce SMR는 별개 사업입니다.",
         f"- 출처: [{item['source']}]({item['link']}) · {item['published_kst']} · [발행기관]({item['publisher_url']})",
-        f"- 과거 공식 기준선: [2025년 선택권]({TEMELIN_OPTION_SOURCE}) / [2026년 10월 20일 장관 협의]({TEMELIN_MEETING_SOURCE})",
+        f"- 과거 공식 기준선: [체코 정부 2025년 계약]({TEMELIN_OPTION_SOURCE}) / [ČEZ 5년 선택권·APR1000 조건]({TEMELIN_CEZ_SOURCE}) / [2026년 10월 20일 장관 협의]({TEMELIN_MEETING_SOURCE})",
         "- 다음 확인: 건설 결정 → 옵션 행사 → EPC 본계약 → 금융·허가 → 기자재 본발주 → 착공. EU 원산지·조달 예외 별도 검증",
         "",
     ]
