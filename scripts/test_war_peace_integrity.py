@@ -79,6 +79,116 @@ class IntegrityTests(unittest.TestCase):
         value=json.loads(path.read_text(encoding='utf-8'))['runs'][scope]
         return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
 
+    def market_plan_fixture(self):
+        path=Path(__file__).parent/'test_fixtures/war_market_plan_39545657385.json'
+        value=json.loads(path.read_text(encoding='utf-8'))
+        return value,dt.datetime.fromisoformat(value['provenance']['queried_at_kst'])
+
+    def test_market_plan_gold_price_is_market_report_not_contact(self):
+        fixture,_=self.market_plan_fixture();row=copy.deepcopy(fixture['articles'][0])
+        self.assertEqual(integrity.non_military_kind(row),'commodity_market')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'금시장 · 금 가격·시장 반응 보도')
+        self.assertEqual(integrity._display_headline(row),row['title_original'])
+        self.assertIn('4115달러',integrity._display_headline(row))
+
+    def test_market_plan_sabotage_report_keeps_main_subject(self):
+        fixture,_=self.market_plan_fixture();row=copy.deepcopy(fixture['articles'][2])
+        self.assertEqual(integrity.non_military_kind(row),'security_activity')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'우크라이나·러시아·유럽 · 파괴공작 관련 보도')
+        self.assertEqual(integrity._display_headline(row),row['title_original'])
+
+    def test_market_plan_new_peace_plan_is_discussion_not_implemented_peace(self):
+        fixture,_=self.market_plan_fixture();row=copy.deepcopy(fixture['articles'][4])
+        self.assertEqual(integrity.non_military_kind(row),'diplomatic_plan')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertEqual(integrity.topic_label(row),'미국·우크라이나·러시아 · 종전안 논의·전달')
+        self.assertEqual(integrity._display_headline(row),row['title_original'])
+
+    def test_market_plan_unrendered_supply_and_delay_keep_their_own_stage(self):
+        fixture,now=self.market_plan_fixture()
+        for index,kind,topic in ((5,'diplomatic_position','협상 교착·지연 보도'),
+                                 (7,'oil_market','원유 공급·가격 보도')):
+            row=copy.deepcopy(fixture['articles'][index])
+            with self.subTest(title=row['title_original']):
+                self.assertEqual(integrity.non_military_kind(row),kind)
+                self.assertEqual(integrity.final_color(row),'yellow')
+                self.assertIn(topic,integrity.topic_label(row))
+                _,tags=integrity.score_item(row,now)
+                self.assertNotIn('확전',tags)
+
+    def test_market_plan_full_actual_candidates_preserve_selection_and_final_gate(self):
+        fixture,now=self.market_plan_fixture();rows=copy.deepcopy(fixture['articles'])
+        with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+            root=Path(folder)
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch,attr,root/name))
+            stack.enter_context(patch.object(integrity.body_parallel,'_safe_enrich'))
+            text=integrity.build_alert(rows,fixture['markets'],now)
+            receipt=evidence.alert_receipt(rows,fixture['markets'],now,text,fixture['market_source_status'])
+            shown=[x for x in receipt['articles']if x['rendered']]
+            ids=[x['id']for x in shown]
+            self.assertEqual(ids,[fixture['articles'][i]['id']for i in (0,2,3,4)])
+            self.assertEqual([x['classification_color']for x in shown],['yellow']*4)
+            self.assertIn('금시장 · 금 가격·시장 반응 보도',text)
+            self.assertIn('파괴공작 관련 보도',text)
+            self.assertIn('종전안 논의·전달',text)
+            self.assertEqual(text.count('제목 기준·본문 미확인'),4)
+            for x in shown:self.assertIn(html.escape(x['title_original']),text)
+            watch.ALERT.write_text(text,encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt),encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':ids}),encoding='utf-8')
+            integrity.verify_alert()
+            self.assertEqual(json.loads(watch.STATE.read_text()),{'seen':[]})
+
+    def test_market_plan_actual_original_same_hash_wrong_topics_rejected(self):
+        fixture,_=self.market_plan_fixture()
+        self.assertEqual(hashlib.sha256(fixture['original_alert'].strip().encode()).hexdigest(),
+                         fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory()as folder,ExitStack()as stack:
+            root=Path(folder)
+            for attr,name in {'ALERT':'alert.txt','PENDING':'pending.json','AUDIT':'evidence.json'}.items():
+                stack.enter_context(patch.object(watch,attr,root/name))
+            watch.ALERT.write_text(fixture['original_alert'],encoding='utf-8')
+            original=dict(code_sha=fixture['provenance']['actual_code_sha'],
+                          run_id=str(fixture['provenance']['run_id']),
+                          queried_at_kst=fixture['provenance']['queried_at_kst'],
+                          alert_sha256=fixture['provenance']['alert_sha256'],articles=fixture['articles'],
+                          markets=fixture['markets'],market_source_status=fixture['market_source_status'])
+            watch.AUDIT.write_text(json.dumps(original),encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids':[x['id']for x in fixture['articles']if x['rendered']]}),encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
+                integrity.verify_alert()
+
+    def test_market_plan_separate_actual_attacks_still_red(self):
+        for title in ('금값 하락…러시아 미사일 발사',
+                      '걸프산 원유 공급량 회복…이란 공격을 했다',
+                      '우크라 평화협상 교착 속 러시아 파괴공작…러시아 공습했다',
+                      '美특사, 젤렌스키와 새 종전안 논의…러시아 미사일 발사'):
+            with self.subTest(title=title):
+                row=article(title)
+                self.assertIsNone(integrity.non_military_kind(row))
+                self.assertEqual(integrity.final_color(row),'red')
+
+    def test_market_plan_negations_questions_and_price_units_preserved(self):
+        for title,kind in (('국제 금값 온스당 4115달러 하락하지 않아…이란 종전 협상 불확실성','commodity_market'),
+                           ('러시아, 유럽 파괴공작 부인…우크라 협상 교착','security_activity'),
+                           ('이란, 종전 협상 미루지 않는다','diplomatic_position')):
+            with self.subTest(title=title):
+                row=article(title)
+                self.assertEqual(integrity.non_military_kind(row),kind)
+                self.assertEqual(integrity._display_headline(row),title)
+                self.assertEqual(integrity.final_color(row),'yellow')
+
+    def test_market_plan_separate_missile_review_is_not_completed_launch(self):
+        for title in ('금값 하락…러시아 미사일 발사 검토',
+                      '美특사, 젤렌스키와 새 종전안 논의…이란 미사일 발사 검토'):
+            with self.subTest(title=title):
+                row=article(title)
+                self.assertEqual(integrity.final_color(row),'yellow')
+                self.assertEqual(integrity._display_headline(row),title)
+
     def test_oct21_information_normalization_is_support_not_attack(self):
         fixture,_=self.oct21_stage_fixture();row=copy.deepcopy(fixture['articles'][3])
         self.assertEqual(integrity.non_military_kind(row),'support_statement')
