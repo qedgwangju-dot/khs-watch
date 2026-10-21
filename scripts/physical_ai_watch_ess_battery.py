@@ -1075,10 +1075,6 @@ def score(item: dict) -> int:
         return _us45x_score(item)
     if group == 'sodium_ion_battery':
         stage = _sodium_stage(text, source)
-        if stage == 'lges_30mwh_test_started':
-            return 'LG에너지솔루션 회사 직접 발표에서 30MWh 고객 시험 실제 착수 확인 · 고객 승인·양산·매출 별도'
-        if stage == 'known_baseline' and _is_lges_sodium_30mwh(text):
-            return '10/13 뉴스1의 2027년 상반기 북미 30MWh 샘플평가 계획을 10/21 기사 재보도 · 시험 착수·승인·양산 미확정'
         if stage in {'','known_baseline','background'}:
             return 0
         # Only the company/actual buying customer can upgrade the 30 MWh
@@ -1582,6 +1578,10 @@ def verification(item: dict, group: str, text: str) -> str:
         )
     if group == 'sodium_ion_battery':
         stage = _sodium_stage(text, source)
+        if stage == 'lges_30mwh_test_started':
+            return 'LG에너지솔루션 30MWh 고객 샘플 시험 공식 실제 착수 · 고객승인·양산·매출은 별개'
+        if stage == 'known_baseline' and _is_lges_sodium_30mwh(text):
+            return '10/13 뉴스1에서 이미 2027년 상반기 북미 30MWh 샘플 평가를 계획으로 보도 · 10/21 재보도, 실제 시험 착수·승인·양산은 미확정'
         if stage == 'known_baseline':
             if SODIUM_CATL_60_BASE.search(text):
                 return 'CATL 공식자료 기준선 · HyperStrong 3년 60GWh 계약은 새 이벤트 아님'
