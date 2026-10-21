@@ -100,10 +100,17 @@ def validate(text, state):
            "invalid KOFIA receivable")
     expect(type(forced.get("value")) in (int, float) and math.isfinite(forced["value"]) and forced["value"] >= 0,
            "invalid KOFIA forced-sale amount")
-    rec_forced = re.findall(
-        r"^• 미수금 ([\d,]+\.\d{2})조 \| 실제 반대매매 ([\d,]+)억원$",
-        head, re.M
+    # New alerts identify the forced-sale scope: unpaid-settlement trades, not
+    # every credit-margin liquidation. Historical fixture messages remain testable.
+    modern_scope = state.get("message_version") == "kofia-balances-v4"
+    if modern_scope:
+        expect("실제 반대매매" not in text, "ambiguous all-market forced-sale label")
+    scope_pattern = (
+        r"^• 위탁매매 미수금 ([\d,]+\.\d{2})조 \| 미수거래 반대매매 ([\d,]+)억원$"
+        if modern_scope else
+        r"^• (?:위탁매매 )?미수금 ([\d,]+\.\d{2})조 \| (?:실제 반대매매|미수거래 반대매매) ([\d,]+)억원$"
     )
+    rec_forced = re.findall(scope_pattern, head, re.M)
     expect(len(rec_forced) == 1, "receivable/forced-sale row missing or duplicated")
     rec_print, forced_print = rec_forced[0]
     expected_forced_eok = int(math.floor(forced["value"] / 100.0 + 0.5))

@@ -12,7 +12,7 @@ const STATUS_FILE = path.join(OUT_DIR, 'kofia_liquidity_status.md');
 const PENDING_FILE = path.join(OUT_DIR, 'kofia_liquidity_pending_state.json');
 const EVIDENCE_FILE = path.join(OUT_DIR, 'kofia_liquidity_source_evidence.json');
 const DELIVERY_FILE = path.join(OUT_DIR, 'kofia_liquidity_delivery.json');
-const MESSAGE_VERSION = 'kofia-balances-20261020-v3';
+const MESSAGE_VERSION = 'kofia-balances-v4';
 const ORIGIN = 'https://freesis.kofia.or.kr';
 let sourceEvidence;
 
@@ -343,7 +343,7 @@ async function main() {
     `• 비교 기준: 1D ${fmtDate(referenceDates[1])} → ${fmtDate(referenceDates[0])} / 5D ${fmtDate(referenceDates[5])} → ${fmtDate(referenceDates[0])}`,
     `• 1D는 직전 공표일, 5D는 최근 5개 공표구간의 잔액 차이`,
     ...(narrativeCorrection ? [
-      `• <b>정정 사유</b>: 네 지표의 1D·5D 방향 일치 여부를 실제 원값으로 비교하도록 종합 문구를 수정했습니다. 공식 원값은 바뀌지 않았습니다.`
+      `• <b>정정 사유</b>: 반대매매 금액은 위탁매매 미수거래에 대한 통계입니다. 신용융자 반대매매 전체를 포함한 수치가 아닙니다. 잔액·증감액은 바뀌지 않았습니다.`
     ] : []),
     ``,
     `<b>무엇이 달라졌나</b>`,
@@ -351,7 +351,7 @@ async function main() {
     `• MMF 설정원본 <b>${fmtTrillion(metrics.mmf.value)}</b> (${fmtDate(metrics.mmf.date)}) | 1D ${fmtDelta(metrics.mmf.d1)} | 5D ${fmtDelta(metrics.mmf.d5)}`,
     `• CMA 잔고 <b>${fmtTrillion(metrics.cma.value)}</b> (${fmtDate(metrics.cma.date)}) | 1D ${fmtDelta(metrics.cma.d1)} | 5D ${fmtDelta(metrics.cma.d5)}`,
     `• 신용융자 <b>${fmtTrillion(metrics.credit.value)}</b> (${fmtDate(metrics.credit.date)}) | 1D ${fmtDelta(metrics.credit.d1)} | 5D ${fmtDelta(metrics.credit.d5)}`,
-    `• 미수금 ${fmtTrillion(metrics.receivable.value)} | 실제 반대매매 ${fmtEokFromMillion(metrics.forced.value)}${baselineLine}`,
+    `• 위탁매매 미수금 ${fmtTrillion(metrics.receivable.value)} | 미수거래 반대매매 ${fmtEokFromMillion(metrics.forced.value)}${baselineLine}`,
     ``,
     `<b>현재 판정</b>`,
     `• ${esc(signal)}`,
