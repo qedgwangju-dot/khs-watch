@@ -51,6 +51,18 @@ def test_extract_official_date_prefers_labeled_date():
     assert extract_official_date(html) == "2026-06-24"
 
 
+def test_unlabeled_target_year_is_not_misread_as_official_posting():
+    html = "<article>2027년 상업운전, 2029년 600MW 계획. [시행 2026. 6. 3.]</article>"
+    assert extract_official_date(html) == ""
+
+
+def test_grid_source_date_is_not_replaced_by_google_news_reindex():
+    from scripts.alert_timeline_dates import extract_original_dates
+    html = "<div>등록일자: 2026. 6. 24. / 상업운전 2027. 12.</div>"
+    evidence = extract_original_dates(html)
+    assert evidence["published"].startswith("2026-06-24")
+
+
 def test_gfm_alert_contains_readable_core_numbers_and_risk():
     item = {
         "title": "송전용 에너지저장장치에 전력망의 안정성을 높이는 그리드포밍 기술 도입",
