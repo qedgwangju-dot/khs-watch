@@ -2045,7 +2045,8 @@ def _temelin_milestone(title: str) -> str | None:
         return None
     # 테믈린 1·2호기 가동/정비나 '대형원전' 일반 기사는 후보가 아니다.
     if not (re.search(r"3\s*(?:[·./,&-]|and|및|a)\s*4", text)
-            or any(x in text for x in ("대형원전", "대형 원전", "new nuclear units", "nove bloky"))):
+            or any(x in text for x in ("대형원전", "대형 원전", "new nuclear units", "nove bloky",
+            "two new blocks", "dva nove bloky", "two new nuclear units"))):
         return None
     # 단순 회의·계획·기대·추정은 수주 확정 단계로 올리지 않는다.
     if any(x in text for x in (
@@ -2063,6 +2064,8 @@ def _temelin_milestone(title: str) -> str | None:
         ("epc_signed", r"(?:테믈린|temelin).{0,85}(?:epc|건설 본계약|건설계약).{0,30}(?:체결|서명|signed|executed)"),
         ("option_exercised", r"(?:테믈린|temelin).{0,85}(?:선택권|옵션|option).{0,25}(?:행사|발동|exercised|activated)"),
         ("government_decision", r"(?:테믈린|temelin).{0,85}(?:건설 최종 결정|건설 승인|construction approved)"),
+        ("government_decision", r"(?:government|vlada).{0,75}(?:approved construction|approves construction|schvalila vystavbu).{0,75}(?:temelin|테믈린)"),
+        ("government_decision", r"(?:government|vlada).{0,85}(?:temelin|테믈린).{0,45}(?:approved|schvalila).{0,30}(?:construction|vystavbu|건설)"),
     )
     for stage, pattern in rules:
         if re.search(pattern, text):
@@ -2071,8 +2074,10 @@ def _temelin_milestone(title: str) -> str | None:
     if re.search(r"(?:signed|체결).{0,60}epc.{0,65}(?:테믈린|temelin)", text):
         if "dukovany" not in text and "두코바니" not in text:
             return "epc_signed"
-    if re.search(r"(?:exercised|행사).{0,60}(?:option|선택권|옵션).{0,70}(?:테믈린|temelin)", text):
+    if re.search(r"(?:exercised|행사|uplatnil|uplatnila).{0,60}(?:option|선택권|옵션|opci).{0,70}(?:테믈린|temelin)", text):
         return "option_exercised"
+    if re.search(r"(?:podepsali|uzavreli).{0,80}(?:smlouvu|epc).{0,60}(?:temelin|테믈린)", text):
+        return "epc_signed"
     return None
 
 
@@ -2126,6 +2131,10 @@ def _self_test_temelin_milestones() -> None:
         ("ČEZ, 테믈린 3·4호기 EPC 본계약 체결", "epc_signed"),
         ("ČEZ, 테믈린 3·4호기 건설허가 발급", "construction_license"),
         ("ČEZ, 테믈린 3·4호기 실제 착공", "construction_started"),
+        ("Czech government approved construction of Temelin units 3 and 4", "government_decision"),
+        ("Vláda schválila výstavbu Temelín 3 a 4", "government_decision"),
+        ("ČEZ uplatnila opci na Temelín 3 a 4", "option_exercised"),
+        ("KHNP signs EPC contract for Temelin units 3 and 4", "epc_signed"),
         ("ČEZ signs early works contract for Temelin SMR with Rolls-Royce", None),
         ("Industrial Accelerator Act nuclear enters into force", "eu_iaa_enacted"),
         ("Commission proposed Industrial Accelerator Act for nuclear", None),
@@ -2145,9 +2154,9 @@ def _render_temelin_milestone(item: dict, idx: int) -> list[str]:
     stage = item["stage"]
     return [
         f"## {idx}. [공식기관 발행제목 확인] 체코 테믈린 3·4호기",
-        f"- 핵심 변화: {TEMELIN_STAGES[stage]}. {item['title']}",
+        f"- 핵심 변화: {TEMELIN_STAGES[stage]}. 공식기관이 새 단계에 해당하는 발표 제목을 공개했습니다. 실제 계약 조건은 원문·계약서로 별도 확인합니다.",
         "- 숫자: 잠재 후속 건설 대상 2기. 테믈린 별도 확정 계약금액·한국 기업 신규 수주액은 추가 계약 검증 전까지 미확정입니다.",
-        "- 한국 기업·매출 연결: 한국수력원자력·한국전력기술·두산에너빌리티·현대건설은 두코바니 참여 이력과 테믈린 신규 수주를 구분합니다. 신규 계약·공급 품목·고객 확정 뒤 매출로 분류합니다.",
+        "- 한국 기업·매출 연결: 두코바니 팀코리아는 한국수력원자력·한국전력기술·두산에너빌리티·대우건설·한전원자력연료·한전KPS입니다. 테믈린 3·4호기 신규 계약은 아직 별도로 확인해야 하며, 신규 계약·공급품목·고객 확인 뒤 해당 기업 매출로 분류합니다.",
         "- 병목·실패모드: 체코 최종 투자결정, 2025년 선택권 행사, 자금조달, 현지 공급망 비중, EU 산업가속화법안 제3국 조달요건, 인허가가 결정적입니다. 테믈린 Rolls-Royce SMR는 별개 사업입니다.",
         f"- 출처: [{item['source']}]({item['link']}) · {item['published_kst']} · [발행기관]({item['publisher_url']})",
         f"- 과거 공식 기준선: [2025년 선택권]({TEMELIN_OPTION_SOURCE}) / [2026년 10월 20일 장관 협의]({TEMELIN_MEETING_SOURCE})",
