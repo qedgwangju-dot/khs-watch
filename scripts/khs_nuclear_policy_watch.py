@@ -2071,7 +2071,7 @@ def _temelin_milestone(title: str) -> str | None:
         if re.search(pattern, text):
             return stage
     # 문장의 순서가 뒤집힌 국제 발표도 처리한다.
-    if re.search(r"(?:signed|체결).{0,60}epc.{0,65}(?:테믈린|temelin)", text):
+    if re.search(r"(?:signs|signed|체결).{0,60}epc.{0,65}(?:테믈린|temelin)", text):
         if "dukovany" not in text and "두코바니" not in text:
             return "epc_signed"
     if re.search(r"(?:exercised|행사|uplatnil|uplatnila).{0,60}(?:option|선택권|옵션|opci).{0,70}(?:테믈린|temelin)", text):
