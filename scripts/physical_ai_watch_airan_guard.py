@@ -7250,7 +7250,9 @@ def _sro_category(text,group):
       "sem_mexico_camera_robot":"삼성전기 · 멕시코 카메라 생산설비·로봇 공급 준비 보도",
       "samsung_rx_leadership_visit":"삼성전자 · RX사업추진실 방문 예정 보도",
     }
-    return labels.get(group,_sro_prev_category(text,group))
+    if group in labels:
+        return labels[group]
+    return _sro_prev_category(text,group)
 
 def _sro_meaning(cat):
     if cat.startswith("삼성전기 · 멕시코"):
