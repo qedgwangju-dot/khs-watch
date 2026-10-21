@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-22T05:16:03+09:00",
+  "updated_at_kst": "2026-10-22T08:29:36+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
   "baseline": {
@@ -220,7 +220,7 @@
     "average_source": "Fed H.10/FRED",
     "average_error": "RuntimeError"
   },
-  "last_scan_items": 26,
+  "last_scan_items": 27,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-09-28T07:38:15+09:00",
