@@ -3284,6 +3284,9 @@ def main() -> None:
     meta_source_healthy = False
     credo_source_healthy = False
     ooi_source_healthy = False
+    new_infra_source_ok = {k: False for k in NEW_OPTICAL_INFRA_SCOPES}
+    new_infra_source_errors = {k: [] for k in NEW_OPTICAL_INFRA_SCOPES}
+    new_infra_event_candidates = {k: 0 for k in NEW_OPTICAL_INFRA_SCOPES}
 
     cutoff = NOW - dt.timedelta(days=7)
     for company, meta in COMPANIES.items():
@@ -3294,6 +3297,8 @@ def main() -> None:
             queries = meta.get("queries") or [meta.get("query")]
             power_locales_ok: set[str] = set()
             power_query_failed = False
+            infra_locales_ok: set[str] = set()
+            infra_query_failed = False
             for query in [q for q in queries if q]:
                 for locale in locales:
                     try:
@@ -3306,13 +3311,28 @@ def main() -> None:
                         feed_items.extend(rows)
                         if company == POWER_COMPANY:
                             power_locales_ok.add(locale.get("gl", "US"))
+                        if company in NEW_OPTICAL_INFRA_SCOPES:
+                            infra_locales_ok.add(locale.get("gl", "US"))
                     except Exception as exc:
-                        if company != POWER_COMPANY:
+                        if company not in (NEW_OPTICAL_INFRA_SCOPES | {POWER_COMPANY}):
                             raise
-                        power_query_failed = True
-                        power_source_errors.append(
-                            f"{locale.get('gl', 'US')} query: {type(exc).__name__}: {exc}"
-                        )
+                        info = f"{locale.get('gl', 'US')} query: {type(exc).__name__}: {exc}"
+                        if company == POWER_COMPANY:
+                            power_query_failed = True
+                            power_source_errors.append(info)
+                        else:
+                            infra_query_failed = True
+                            new_infra_source_errors[company].append(info)
+            if company in NEW_OPTICAL_INFRA_SCOPES:
+                # An RSS outage of a specialist lane may not silently advance
+                # that lane's semantic baseline; other healthy lanes still run.
+                required_locales = {"KR", "US"} if company == TAIHAN_CABLE_COMPANY else {"US"}
+                new_infra_source_ok[company] = (
+                    not infra_query_failed and required_locales.issubset(infra_locales_ok)
+                )
+                if not new_infra_source_ok[company]:
+                    errors.append(f"{company} source degraded — lane frozen")
+                    continue
             if company == POWER_COMPANY:
                 # Unlike a generic news category, the power-to-production gate
                 # must not advance when one language lane is unavailable.
@@ -3348,6 +3368,15 @@ def main() -> None:
                 continue
             title = item["title"]
             source = item.get("source") or ""
+            infra_event = new_infra_milestone(company, title) if company in NEW_OPTICAL_INFRA_SCOPES else None
+            if company in NEW_OPTICAL_INFRA_SCOPES:
+                if infra_event is None:
+                    continue
+                new_infra_event_candidates[company] += 1
+            # Do not route the same contract/shortage item into generic supplier
+            # buckets, which formerly produced separate alert counts.
+            if company == "Corning" and re.search(r"TrendForce.*(?:fiber|fibre).*shortage", title, re.I):
+                continue
             networking_event = networking_supplier_milestone(
                 company, title, source, item.get("published"))
             if company in NETWORKING_ADDED_SUPPLIERS and networking_event is None:
@@ -3426,6 +3455,10 @@ def main() -> None:
                     continue
 
             score = signal_score(title, source)
+            if infra_event:
+                # Stage-checked fiber preform, warrant or 864-core delivery titles
+                # can be meaningful without "CPO" or 1.6T in the headline.
+                score = max(score, 16)
             if ooi_event:
                 # Abstract/3D optical-I/O titles need not contain today's
                 # generic CPO speed/guidance terms; milestone is stage-verified.
@@ -3452,7 +3485,7 @@ def main() -> None:
             has_high = any(re.search(p, title, re.I) for p in HIGH_SIGNAL_PATTERNS)
             has_action = any(re.search(p, title, re.I) for p in ACTION_PATTERNS)
             very_strong = bool(re.search(r"\b3\.2\s*[Tt]\b", title, re.I))
-            if not ooi_event and not power_event and not lite_event and not meta_event and not credo_event and not networking_event and (
+            if not infra_event and not ooi_event and not power_event and not lite_event and not meta_event and not credo_event and not networking_event and (
                 score < 7 or not has_high or (not has_action and not very_strong)
             ):
                 continue
@@ -3462,8 +3495,8 @@ def main() -> None:
                 "ticker": meta["ticker"],
                 "score": score,
                 "key": key,
-                "stage": ooi_event[1] if ooi_event else networking_event[1] if networking_event else credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
-                "category": ooi_event[0] if ooi_event else networking_event[0] if networking_event else credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else category_for(title, company),
+                "stage": infra_event[1] if infra_event else ooi_event[1] if ooi_event else networking_event[1] if networking_event else credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
+                "category": infra_event[0] if infra_event else ooi_event[0] if ooi_event else networking_event[0] if networking_event else credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else category_for(title, company),
             })
             all_relevant.append(item)
 
@@ -3531,6 +3564,7 @@ def main() -> None:
             and lite_high_quality_source(item, quality_candidates)
             and meta_verified(item)
             and official_ooi_source(item)
+            and new_infra_evidence_verified(item, quality_candidates)
         )
     ]
 
@@ -3578,6 +3612,7 @@ def main() -> None:
         | set(META_KNOWN_KEYS)
         | set(CREDO_PRIOR_EVENT_KEYS)
         | set(OOI_REFERENCE_BASELINE_KEYS)
+        | set(NEW_OPTICAL_INFRA_BASELINES)
     )
     seen_story_records = [
         record for record in (state.get("seen_story_records") or [])
@@ -3661,6 +3696,10 @@ def main() -> None:
         "credo_optics_watch_version": CREDO_MONITOR_VERSION if credo_source_healthy else int(state.get("credo_optics_watch_version") or 0),
         "credo_optics_source_ok": credo_source_healthy,
         "nvidia_ooi_dwdm_watch_version": OOI_WATCH_VERSION if ooi_source_healthy else int(state.get("nvidia_ooi_dwdm_watch_version") or 0),
+        "new_optical_infra_watch_version": NEW_OPTICAL_INFRA_VERSION if all(new_infra_source_ok.values()) else int(state.get("new_optical_infra_watch_version") or 0),
+        "new_optical_infra_source_ok": new_infra_source_ok,
+        "new_optical_infra_source_errors": new_infra_source_errors,
+        "new_optical_infra_event_candidates": new_infra_event_candidates,
         "nvidia_ooi_dwdm_source_ok": ooi_source_healthy,
         "nvidia_ooi_dwdm_verified_reference": OOI_VERIFIED_REFERENCE,
         "credo_verified_baseline": CREDO_VERIFIED_BASELINE,
@@ -3734,6 +3773,14 @@ def main() -> None:
                     "CPO 광패키징 기판·인터포저",
                 }
             ]
+        # Baseline known 3M 8-K, TrendForce 10/19 study and the Taihan 2/6
+        # contracts by semantic key. A separately verified actual shipment is
+        # eligible even on first rollout (no global suppression of true events).
+        new_items = [
+            item for item in new_items
+            if item.get("company") not in NEW_OPTICAL_INFRA_SCOPES
+            or new_infra_source_ok.get(item.get("company"), False)
+        ]
         ooi_version = int(state.get("nvidia_ooi_dwdm_watch_version") or 0)
         if ooi_version < OOI_WATCH_VERSION or not ooi_source_healthy:
             # First migration is silent. 2023 feasibility and the March/October
@@ -3807,6 +3854,12 @@ def main() -> None:
             alert_header = "🚨 <b>크레도 광학·NPO 실제 상용화 단계 변화</b>"
         elif all(item.get("company") == META_COMPANY for item in alert_items):
             alert_header = "🚨 <b>메타 광통신 공급사·NPO/CPO 실제 변화</b>"
+        elif all(item.get("company") == AMAZON_EBO_COMPANY for item in alert_items):
+            alert_header = "🚨 <b>3M·Amazon 데이터센터 광연결 계약·구매 변화</b>"
+        elif all(item.get("company") == FIBER_SPOT_COMPANY for item in alert_items):
+            alert_header = "🚨 <b>광섬유 공급 부족·현물가격·모재 증설 변화</b>"
+        elif all(item.get("company") == TAIHAN_CABLE_COMPANY for item in alert_items):
+            alert_header = "🚨 <b>대한광통신 미국 AI 데이터센터 광케이블 출하·계약 변화</b>"
         elif all(item.get("company") == POWER_COMPANY for item in alert_items):
             alert_header = "🚨 <b>AAOI 대만 전력확보·광모듈 증설 변화 감지</b>"
         elif all(item.get("company") in {"Lumentum", LITE_CAPACITY_COMPANY} for item in alert_items) and any(item.get("company") == LITE_CAPACITY_COMPANY for item in alert_items):
@@ -3843,6 +3896,9 @@ def main() -> None:
             lines.extend([
                 f"<b>{idx}) {html.escape(DISPLAY_NAMES_KO.get(item['company'], item['company']))} ({html.escape(item['ticker'])}) — {html.escape(category)}</b>",
                 f"• 단계: {html.escape(item['stage'])}",
+                ("• 확인 수준: 당사자·공식자료" if new_infra_official_source(item)
+                 else "• 확인 수준: 복수 신뢰매체 교차확인 · 계약·출하 원문 확인 필요")
+                if item['company'] in NEW_OPTICAL_INFRA_SCOPES else (
                 "• 확인 수준: NVIDIA·학술 1차 자료(OOI 시제품·DWDM 256Gb/s 기존 시연과 신규 양산 구분)" if item['company'] == OOI_COMPANY else (
                 "• 확인 수준: 회사 공식·신뢰자료의 단계별 확인(광학 목표/시제품/고객 계약/실제 출하 구분)" if item['company'] == CREDO_COMPANY else (
                 "• 확인 수준: 메타·공급사·공식 규격 1차 자료(익명 점유율 제외)" if item['company'] == META_COMPANY else (
@@ -3851,7 +3907,7 @@ def main() -> None:
                 ) if item['company'] == LITE_CAPACITY_COMPANY else (
                     "• 확인 수준: 공급사 공식발표" if official_power_source(item) else
                     "• 확인 수준: 독립 신뢰매체 교차확인·실제 계약조건 재검증 필요"
-                ) if item['company'] == POWER_COMPANY else ""))),
+                ) if item['company'] == POWER_COMPANY else "")))),
                 f"• 원문 제목: {html.escape(public_title)}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
             ])
@@ -3870,8 +3926,8 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "• 고객·수주·양산: 1.6T·3.2T·메타 실명 공급계약·NPO/CPO 실제 배치·루멘텀 예약·출하",
-            "• 병목·정책: OOI·DWDM 고온·광결합·수율 검증, FAU·InP·ELS·OCS/NPO·AAOI 전력·미국 규제",
+            "• 고객·수주·양산: 3M EBO 실제 구매·대한광통신 출하·1.6T·NPO/CPO 고객 검증",
+            "• 병목·정책: 광섬유 현물가격·모재 증설·루멘텀 공급예약·FAU·전력·미국 규제",
             "• 제외: 전시·데모·단순 주가반응·기존 기사 재탕은 알림하지 않음",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
@@ -3911,6 +3967,9 @@ def main() -> None:
         f"- 중복 제거 방식: 동일 원문 URL·제목/출처 통합 + 동일 사건 의미 클러스터 + 사건키 v3",
         f"- FAU·OCS·OPEN NPO 감시 버전: {STRUCTURAL_OPTICS_VERSION} (2025 OCP·2026년 7월 OPEN NPO 기존사건 기준선)",
         f"- 루멘텀 생산능력·자금분담 감시 버전: {LITE_SUPPLY_VERSION}",
+        f"- 3M·광섬유·대한광통신 감시 버전: {pending.get('new_optical_infra_watch_version')}",
+        f"- 신규 3축 원천조회 정상 여부: {new_infra_source_ok}",
+        f"- 신규 3축 기사 후보: {new_infra_event_candidates}",
         f"- 메타 광모듈·공급사 공식자료 감시: {'정상' if meta_source_healthy else '보류·해당 감시축 기준선 미갱신'}",
         f"- 메타 감시 버전: {pending.get('meta_optical_watch_version')}",
         f"- 크레도 광학·NPO 감시: {'정상' if credo_source_healthy else '보류·원천조회 실패 / 기준선 승격 금지'}",
