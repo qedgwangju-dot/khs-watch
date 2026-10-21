@@ -21,7 +21,14 @@
     "aidc|fact|bada18d119d6b4e3": 20,
     "aidc|fact|05238e6b0fd5e5c6": 20
   },
-  "updated_at": "2026-10-21T12:30:04.490066+00:00",
+  "material_signatures": {},
+  "updated_at": "2026-10-21T13:09:38.821418+00:00",
   "source_errors": [],
-  "dedupe_version": 3
+  "dedupe_version": 4,
+  "held_for_verification_count": 1,
+  "held_examples": [
+    "aidc|tax-credit|eligibility: 기사·공식자료 본문 직접 검증 실패"
+  ],
+  "eligible_backlog_count": 0,
+  "legacy_suppressed_count": 0
 }
