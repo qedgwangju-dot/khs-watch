@@ -266,8 +266,16 @@ def _settlement_pressure_headline(title):
 
 def _attack_plan_spans(title):
     action = r'(?:공습|공격|폭격)(?:을|를)?\s*(?:(?:개시|재개)(?:를|을)?\s*)?'
+    outcome = (r'(?:보류|취소|철회|(?:실행\s*)?불발|제동)'
+               r'(?!\s*(?:(?:은|는|을|를)?\s*(?:하지|않|안\s|아니|부인|사실무근|가능성)))')
+    # An explicit unrealized outcome can follow an ellipsis and opposition.
+    # Do not consume another attack expression: a separate active plan or
+    # actual action must retain its own span and direction.
+    linked_outcome = (action + r'(?:추진|계획|검토|준비)(?:했지만|했다|하다가)\s*'
+                      r'(?:…|\.{3})\s*(?:(?!공습|공격|폭격|…|\.{3}|[;；]).){0,55}?' + outcome)
     return list(re.finditer(
-        r'(?P<held>' + action + r'(?:하려다|추진|계획|검토|준비)[^…;；]{0,70}?(?:보류|취소|철회)(?!\s*(?:하지|않|안\s|아니|부인)))|'
+        r'(?P<held>' + linked_outcome + r'|' + action +
+        r'(?:하려다|추진|계획|검토|준비)[^…;；]{0,70}?' + outcome + r')|'
         r'(?P<planned>' + action + r'(?:추진|검토|계획|준비))', title))
 
 
@@ -302,7 +310,7 @@ def _statement_with_actual_action(title):
              or _attack_denial_with_blockade(title) or _gold_price_headline(title)
              or _oil_supply_headline(title) or _peace_plan_discussion_headline(title)
              or _security_activity_headline(title) or _meeting_plan_stage(title)
-             or _attack_plan_spans(title))
+             or _attack_plan_spans(title) or _prospective_attack_question_spans(title))
     return bool(stage and re.search(
         r'(?:공습|공격|폭격|타격|요격)(?:을|를)?\s*(?:했다(?!는)|했으며|하고\s*있|진행\s*중)|'
         r'(?:피격|파괴)(?:됐|되었|당했)|'
@@ -313,6 +321,11 @@ def _statement_with_actual_action(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if kind == 'military_analysis' and _prospective_attack_question_spans(title):
+        actors = [label for label, pattern in (('미국', r'트럼프|미국|美|\b(?:trump|us|united states)\b|\bu\.s\.'),
+                  ('이스라엘', r'이스라엘|네타냐후|\b(?:israel|netanyahu)\b'),
+                  ('이란', r'이란|\biran\b')) if re.search(pattern, title)]
+        return ('·'.join(actors) or _diplomatic_group(title)) + ' · 공습·공격 재개 가능성 해설'
     if kind == 'military_discussion' and _attack_plan_status(title):
         actors = [label for label, pattern in (('미국', r'트럼프|미국|美|\btrump\b'),
                   ('이스라엘', r'이스라엘|네타냐후|\b(?:israel|netanyahu)\b'),
@@ -730,6 +743,13 @@ def _refinery_restart_statement_spans(title):
     return statements
 
 
+def _prospective_attack_question_spans(title):
+    return list(re.finditer(
+        r'(?:공습|공격|폭격)(?:을|를)?\s*(?:재개|개시)(?:할\s*것인가|할까|하겠는가)[?？]|'
+        r'\b(?:will|would|could)\b(?:(?![?？;；]|…|\.{3}).){0,100}?'
+        r'\b(?:resume|restart|launch)\s+(?:attacks?|strikes?|airstrikes?)\b[^?？;；]*[?？]', title))
+
+
 def _military_analysis_headline(title):
     military = re.search(r'미사일|공습|공격|폭격|방패|방공|요격|\b(?:missile|attack|airstrike|shield|defen[cs]e)', title)
     question = re.search(r'왜|어째서|\b(?:why|how)\b', title) and re.search(r'\?|까요|는가|했나', title)
@@ -743,7 +763,7 @@ def _military_analysis_headline(title):
             r'(?:미사일|드론)(?:\s*\d+\s*(?:발|대))?(?:을|를)?\s*발사|'
             r'(?:피격|파괴)(?:됐|되었|당했)', title):
         return False
-    return bool(military and (question or marked_feature or rumor_question))
+    return bool(military and (question or marked_feature or rumor_question or _prospective_attack_question_spans(title)))
 
 
 def _military_report_headline(title):
@@ -919,13 +939,14 @@ def non_military_kind(row):
         return None
     # Require an explicit new-action predicate before background weapon nouns
     # can turn a sanctions listing or a condemnation into a military event.
+    question_spans = _prospective_attack_question_spans(title)
     discussion = _military_discussion_spans(title) + _attack_plan_spans(title)
     statements = _refinery_restart_statement_spans(title) + _energy_facility_statement_spans(title)
     future = _rejection_future_action_spans(title)
     condemnation = _condemnation_object_spans(title)
     actions = _military_actions(title)
     if any(not any(span.start() <= action.start() and action.end() <= span.end()
-                   for span in discussion + statements + future + condemnation) for action in actions):
+                   for span in discussion + question_spans + statements + future + condemnation) for action in actions):
         return None
     if _report_with_completed_action(title) or _statement_with_actual_action(title):
         return None
@@ -972,6 +993,8 @@ def non_military_kind(row):
         return 'ceasefire_position'
     if discussion:
         return 'military_discussion'
+    if question_spans:
+        return 'military_analysis'
     if _military_analysis_headline(title):
         return 'military_analysis'
     if refinery_attack_denial(row):
@@ -1011,6 +1034,8 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    if kind == 'military_analysis' and _prospective_attack_question_spans(title):
+        return '공습·공격 재개 가능성 해설'
     if kind == 'military_discussion' and _attack_plan_status(title):
         return {'held': '공습·공격 계획 보류·반대', 'denied': '공습·공격 계획 부인', 'planned': '공습·공격 계획·추진'}[_attack_plan_status(title)]
     meeting_plan = _meeting_plan_stage(title)
