@@ -23075,6 +23075,24 @@
       "telegram_core_fact": "올해 쌀 생산량이 지난해보다 0.6%, 벼 재배면적은 1.1% 가량 감소할 것으로 전망됐다. 8일 국가데이터가 발표한 '2026년 쌀 예상생산량조사 결과'를 보면 올해 쌀 생산량은 351만8000t으로 전년(353만9000t)보다 2만1000t(0.6%) 감소할 것으로 전망됐다.",
       "title": "올해 쌀 생산량 0.6% 감소 전망…재배면적 축소 영향"
     },
+    "core:44f78fa7eddb455383156f30": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182180",
+      "source": "매일경제",
+      "source_body_digest": "60849133e4d088957286b6892521b44f7cbf02cfb4cf02197772cbef4173f393",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T20:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "오르스타운 파이낸셜, 3분기 희석 EPS 1.17달러..전년비 3.5% 증가",
+      "telegram_core_fact": "오르스타운 파이낸셜(ORRF)은 9월 30일 종료된 3분기 GAAP 기준 순이익이 2280만 달러로 전년비 4.3% 증가했고, 희석 주당순이익(EPS)은 1.17달러로 전년 동기(1.13달러) 대비 3.5% 늘었다고 21일 발표했다.",
+      "title": "오르스타운 파이낸셜, 3분기 희석 EPS 1.17달러..전년비 3.5% 증가"
+    },
     "core:44f9a7d4925510d4f17bb511": {
       "first_seen_kst": "2026-10-13T09:41:33+09:00",
       "lanes": {
@@ -42040,6 +42058,33 @@
       "telegram_core_fact": "운송수지는 최근 수출운임 상승 영향으로 흑자 규모가 전월 6천만달러에서 8월 5억2천만달러로 늘었고, 지식재산권사용료수지는 전월 5억4천만달러 적자에서 8월 3억9천만달러로 적자 규모가 줄었다.",
       "title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스"
     },
+    "core:7f27624284f54263e6959018": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
+    },
     "core:7f2bb633a49c9d9b3e9b9ced": {
       "first_seen_kst": "2026-10-15T03:55:55+09:00",
       "lanes": {
@@ -44925,6 +44970,34 @@
       ],
       "source_published_kst": "2026-10-07T09:18+09:00",
       "title": "미래에셋 'TIGER 미국 타겟데일리커버드콜' 3종, 연초 이후 개인 순매수 1조 돌파"
+    },
+    "core:8779808cd5316d70c580f8b3": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
     },
     "core:8789b9b893466e3140902056": {
       "first_seen_kst": "2026-10-12T19:52:19+09:00",
@@ -48712,6 +48785,31 @@
       "source_title": "우리은행, SK하이닉스 협력사에 7500억원 금융지원…반도체 공급망 강화",
       "telegram_core_fact": "20배인 7500억원 금융지원을 진행하며, 약 124억원 상당의 보증료도 함께 지원해 기업의 금융 부담을 낮춘다. 우리은행이 19일 용인 반도체클러스터에서 SK하이닉스, 한국무역보험공사, 주요 시중은행과 '반도체 산업 수출공급망 강화를 위한 금융지원 업무협약'을 체결하고 SK하이닉스 협력기업 지원에 나선다.",
       "title": "우리은행, SK하이닉스 협력사에 7500억원 금융지원…반도체 공급망 강화"
+    },
+    "core:92f58ce8375ee049ae976aad": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/21/2026102119033954269",
+      "source": "머니투데이",
+      "source_body_digest": "6e900e3da7c476f00e451883e1b7a36877a95b90358b95f34e568287e9891480",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af9ecb2c2887d00b0469a207a04f1a42aa1eae4f6ec632abb7f431be1f99c187",
+      "source_fact_keys": [
+        "source_fact:v1:4977170c5e63cbb0031f35ba3fc8317da378897a9df71e4cec65a456872173de",
+        "source_fact:v1:653d792ed2ce6210484544a15f1e31432d6fd234f69a8cc4e81967fb1b4f5432",
+        "source_fact:v1:9b0253a499e8b7a22e807647a6efa6c3f976ceb63f518e927f354b55e96b8905",
+        "source_fact:v1:b2cf280e711db37f84e975ca635f9daa518e9a33ecb8d34af0a731f0728df5b9",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:e482568acd0e5492d8a9660e7b20907265aba6dd36d7a89795af0ccd6487b670"
+      ],
+      "source_published_kst": "2026-10-21T20:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설",
+      "telegram_core_fact": "양사는 공동 투자를 통해 전용 공장(팹)을 증설하고 2026년부터 장기 공급을 시작하며 글로벌 AI 인프라 시장 공략을 가속화할 방침이다.",
+      "title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설"
     },
     "core:93000a946dfec7b9c5897d46": {
       "first_seen_kst": "2026-10-21T06:55:09+09:00",
@@ -56322,6 +56420,34 @@
       "telegram_core_fact": "X4 파마슈티컬스(XFOR)가 대출기관 K2 헬스벤처스(K2HV)와 최대 1억5000만 달러 선순위 담보부 대출 계약을 체결하고, 첫 번째 트랜치(대출 실행분) 8000만 달러로 기존 대출을 전액 상환했다고 10월 8일(현지시간) 발표했다.",
       "title": "X4 파마슈티컬스, 최대 1억5000만 달러 대출 확보..기존 대출 상환"
     },
+    "core:ab379fd75bb7cdaa8be5a800": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
+    },
     "core:ab55b1177a2222a658e7b098": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -57460,6 +57586,31 @@
       "source_title": "신안산선 붕괴 4662억 '청구서'…영업정지에도 수주는 계속",
       "telegram_core_fact": "기존 계약에 따른 공사는 영업정지 중에도 계속할 수 있는 만큼 신규 계약과 입찰 제한이 언제 시작되는지가 제재의 실효성을 좌우한다.",
       "title": "신안산선 붕괴 4662억 '청구서'…영업정지에도 수주는 계속"
+    },
+    "core:aecf4163cd48fe4b47b396bb": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021090000083",
+      "source": "연합뉴스",
+      "source_body_digest": "3e08e833a906d80fa9277f82f155e1d98bbd390554171ff5ffc00a4cc485a3f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c0849f0b11cf629cab57d2b6b04b799361980d8e95f70ec339108b55b606e64",
+      "source_fact_keys": [
+        "source_fact:v1:01382ce4fbfeb904b4470281e35c9f84c535825bae411f19ba0b1e1e0e3f237e",
+        "source_fact:v1:378f275236754a987406a44c46242217bc1a7ced613bbd81d2190befe2558c3d",
+        "source_fact:v1:626e5a7469395be1585014af2df708274bbe3ad93cc9bf64d941c0c5ebbb9415",
+        "source_fact:v1:9a95f8ddcaa3bd711397e4a3295b4704d466b13758f8dbd059d150187cf2d648",
+        "source_fact:v1:a2cc3c64ac665f5823d51c1b98159cbab9d790f735150b4c989d873f024992c5",
+        "source_fact:v1:fca25bdc23b9f5993f968e72dfcc6ab991be9ca27781dbc9729ebe74e2f57897"
+      ],
+      "source_published_kst": "2026-10-21T12:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스",
+      "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
+      "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
     },
     "core:aed7837e16a75b58033c2c61": {
       "first_seen_kst": "2026-10-15T08:21:08+09:00",
@@ -75682,6 +75833,30 @@
       "telegram_core_fact": "젤렌스키의 이날 브뤼셀 방문은 트럼프 대통령의 압박에도 불구하고 우크라이나가 러시아 정유시설에 대한 공습을 재개하자 트럼프 대통령이 이를 '수치스러운 일'이라고 비판하는 등 양측의 파열음이 최고조에 달하고 있는 와중에 이뤄진 것이다.",
       "title": "트럼프 치받은 젤렌스키, '유일한 기댈 언덕' 유럽에 절박한 구애(종합) | 연합뉴스"
     },
+    "core:e89a881bc0e74f73c5cd74c5": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05825286645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "639676c255a7f455a10526e37359d1671c7a792589c19746db3a62f7501a8ff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a46a5dc35b9dcd5b036ac2b82f2793758363825e7feae1d9788b2211016bd54",
+      "source_fact_keys": [
+        "source_fact:v1:4d3dacf886870330670270ce851a5f5a16328f1ef36571132e6d8f5d3d864428",
+        "source_fact:v1:54f71e256b8e99f58e1ad5547250274c5224f1785980af28236b379538618581",
+        "source_fact:v1:8e01323a1621cd653ff79acd4cadf424c830fb2a02ffa12abeb8b6638cf811b0",
+        "source_fact:v1:a524b61777d6b6a1b6621ce4719a7c727f7b26d53cc4c5235af7a78428bdda4c",
+        "source_fact:v1:c72ad1207a9eb6ed215c4d165b95f999cf7cea24a0b7be3e1ce73462ac2d88ea"
+      ],
+      "source_published_kst": "2026-10-21T20:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다",
+      "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
+      "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
+    },
     "core:e8d3ac374b6249764fe55d05": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
       "lanes": {
@@ -83415,6 +83590,30 @@
       "source": "파이낸셜뉴스",
       "title": "삼전·닉스, 'AI 생태계' 투자 넓힌다…\"칩 넘어 데이터센터·SW까지\""
     },
+    "event:036dbdf332ab62d87103c9c6": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05825286645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "639676c255a7f455a10526e37359d1671c7a792589c19746db3a62f7501a8ff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a46a5dc35b9dcd5b036ac2b82f2793758363825e7feae1d9788b2211016bd54",
+      "source_fact_keys": [
+        "source_fact:v1:4d3dacf886870330670270ce851a5f5a16328f1ef36571132e6d8f5d3d864428",
+        "source_fact:v1:54f71e256b8e99f58e1ad5547250274c5224f1785980af28236b379538618581",
+        "source_fact:v1:8e01323a1621cd653ff79acd4cadf424c830fb2a02ffa12abeb8b6638cf811b0",
+        "source_fact:v1:a524b61777d6b6a1b6621ce4719a7c727f7b26d53cc4c5235af7a78428bdda4c",
+        "source_fact:v1:c72ad1207a9eb6ed215c4d165b95f999cf7cea24a0b7be3e1ce73462ac2d88ea"
+      ],
+      "source_published_kst": "2026-10-21T20:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다",
+      "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
+      "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
+    },
     "event:03c85469d8aaa633c3773cfd": {
       "first_seen_kst": "2026-10-18T09:22:47+09:00",
       "lanes": {
@@ -85915,26 +86114,27 @@
     "event:218a99ca56a654a79bc01716": {
       "first_seen_kst": "2026-10-21T17:12:46+09:00",
       "lanes": {
-        "live": "2026-10-21T17:12:46+09:00"
+        "live": "2026-10-21T21:09:15+09:00"
       },
-      "last_seen_kst": "2026-10-21T17:12:46+09:00",
-      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026102109580443128",
-      "source": "머니투데이",
-      "source_body_digest": "5c456eead958ad56bf0db3a78cbea54ecb983a783f6b469003427ced3e715be0",
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021090000083",
+      "source": "연합뉴스",
+      "source_body_digest": "3e08e833a906d80fa9277f82f155e1d98bbd390554171ff5ffc00a4cc485a3f9",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b2d2b27473597291e645364689b86239d2d4ea49d39b518fd88d196525cadabc",
+      "source_fact_identity": "source_facts:v1:4c0849f0b11cf629cab57d2b6b04b799361980d8e95f70ec339108b55b606e64",
       "source_fact_keys": [
-        "source_fact:v1:37e9871c2fb02ff482badcc3d47024aeaece6e4ea0f5955a899cae368c2eb201",
-        "source_fact:v1:4be3dcc7d8ffe579a1c8ff72c39fed4cb2f631d183935d130522c417660f54ce",
-        "source_fact:v1:81f2b183f2852f05394e22876d5ebfbec92ac54d736c491baaa7c1637e4b7eae",
-        "source_fact:v1:9d5cb56080183b308d3c514e1404f9368117dda8e53b6d0dc1bba5a8240e6b52",
-        "source_fact:v1:b10967102eca8d3c0e5b0b1bc7c16839ec13a98f623cb81d0d9cd4994499e644"
+        "source_fact:v1:01382ce4fbfeb904b4470281e35c9f84c535825bae411f19ba0b1e1e0e3f237e",
+        "source_fact:v1:378f275236754a987406a44c46242217bc1a7ced613bbd81d2190befe2558c3d",
+        "source_fact:v1:626e5a7469395be1585014af2df708274bbe3ad93cc9bf64d941c0c5ebbb9415",
+        "source_fact:v1:9a95f8ddcaa3bd711397e4a3295b4704d466b13758f8dbd059d150187cf2d648",
+        "source_fact:v1:a2cc3c64ac665f5823d51c1b98159cbab9d790f735150b4c989d873f024992c5",
+        "source_fact:v1:fca25bdc23b9f5993f968e72dfcc6ab991be9ca27781dbc9729ebe74e2f57897"
       ],
-      "source_published_kst": "2026-10-21T10:26+09:00",
+      "source_published_kst": "2026-10-21T12:24+09:00",
       "source_supply_terms": {},
-      "source_title": "티로보틱스, 반도체 유리기판 이송로봇 미국 특허 등록",
-      "telegram_core_fact": "최근 AI(인공지능) 반도체와 고대역폭메모리(HBM) 수요 증가로 첨단 패키징 기술의 중요성이 높아지면서 차세대 반도체용 유리기판이 주목받고 있다.",
-      "title": "티로보틱스, 반도체 유리기판 이송로봇 미국 특허 등록"
+      "source_title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스",
+      "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
+      "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
     },
     "event:21a927bf430aa6586cf948b6": {
       "first_seen_kst": "2026-10-01T04:48:27+09:00",
@@ -99932,20 +100132,29 @@
     "event:d76e144ae00d9bea7174fabc": {
       "first_seen_kst": "2026-10-21T20:37:27+09:00",
       "lanes": {
-        "live": "2026-10-21T20:37:27+09:00"
+        "live": "2026-10-21T21:09:15+09:00"
       },
-      "last_seen_kst": "2026-10-21T20:37:27+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261021170900003",
-      "source": "연합뉴스",
-      "source_body_digest": "1a85b160c66c0969d69df61a88904ed3e6669bd34fa78c266fb7fb8477b67dc3",
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-21T20:30+09:00",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
       "source_supply_terms": {},
-      "source_title": "삼성전기, 엔비디아 핵심 공급사 됐다…AI 기판 장기 공급 | 연합뉴스",
-      "telegram_core_fact": "삼성전기와 엔비디아가 인공지능(AI) 반도체용 첨단 패키지기판의 안정적인 공급을 위해 국내 생산시설에 공동 투자하고 장기 공급 협력에 나선다. 삼성전기는 이를 기반으로 올해부터 다년간 엔비디아에 차세대 AI 반도체용 패키지기판을 공급할 예정이다.",
-      "title": "삼성전기, 엔비디아 핵심 공급사 됐다…AI 기판 장기 공급 | 연합뉴스"
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
     },
     "event:d77b6a442ea70a495b6c3b7a": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
@@ -104836,6 +105045,34 @@
       "telegram_core_fact": "7월부터 리밸런싱이 재개되면서 국민연금은 코스피가 고점 대비 20%에서 30% 낮은 수준에서 거래되는 시점에 오히려 순매도에 나섰습니다. 지난 8월 이후 연기금 등이 유가증권시장에서 순매도한 규모는 약 1조 3천억원에 달합니다.",
       "title": "리밸런싱 유예하더니…국민연금, 급락장서 대량 매도 | 연합뉴스"
     },
+    "fact:03f5ca9b214a1f13c00cbd6f": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
+    },
     "fact:041e2b40e40ebf1f6d4e5695": {
       "first_seen_kst": "2026-10-20T00:33:17+09:00",
       "lanes": {
@@ -106561,6 +106798,30 @@
       "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
       "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
       "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
+    },
+    "fact:0851d082ab3abec3cf4429bc": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05825286645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "639676c255a7f455a10526e37359d1671c7a792589c19746db3a62f7501a8ff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a46a5dc35b9dcd5b036ac2b82f2793758363825e7feae1d9788b2211016bd54",
+      "source_fact_keys": [
+        "source_fact:v1:4d3dacf886870330670270ce851a5f5a16328f1ef36571132e6d8f5d3d864428",
+        "source_fact:v1:54f71e256b8e99f58e1ad5547250274c5224f1785980af28236b379538618581",
+        "source_fact:v1:8e01323a1621cd653ff79acd4cadf424c830fb2a02ffa12abeb8b6638cf811b0",
+        "source_fact:v1:a524b61777d6b6a1b6621ce4719a7c727f7b26d53cc4c5235af7a78428bdda4c",
+        "source_fact:v1:c72ad1207a9eb6ed215c4d165b95f999cf7cea24a0b7be3e1ce73462ac2d88ea"
+      ],
+      "source_published_kst": "2026-10-21T20:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다",
+      "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
+      "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
     },
     "fact:085b8f297808688c94707375": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -112033,6 +112294,33 @@
       "source_title": "뉴욕시 감사관 \"안전 우려 해소될 때까지 앤트로픽 IPO 연기\" 촉구",
       "telegram_core_fact": "뉴욕시 감사관 마크 레빈은 앤스로픽의 CEO인 다리오 아모데이에게 보낸 서한에서 인공지능(AI)의 안전성, 지배구조 및 개발 속도에 대한 우려를 해소할 때까지 미국 기업공개(IPO)를 연기할 것을 촉구했다.",
       "title": "뉴욕시 감사관 \"안전 우려 해소될 때까지 앤트로픽 IPO 연기\" 촉구"
+    },
+    "fact:164325f8ba4807655d76985e": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
     },
     "fact:1652cbe0424691d826c9069c": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
@@ -163705,6 +163993,34 @@
       "telegram_core_fact": "그루포 아에로멕시코(AERO)가 9월 30일 종료된 3분기 매출액(IFRS)이 분기 기준 사상 최고인 16억1900만 달러로 전년비 13.6% 증가했으나, 영업이익은 1억8960만 달러로 25.0% 감소했다고 19일 발표했다.",
       "title": "그루포 아에로멕시코, 3분기 매출 16억달러 최대..영업익 25% 감소"
     },
+    "fact:a758610f8edf72dba8a1f90a": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
+    },
     "fact:a769153dbab800caca178366": {
       "first_seen_kst": "2026-10-18T09:00:24+09:00",
       "lanes": {
@@ -173529,6 +173845,31 @@
       "source_title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인",
       "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
       "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
+    },
+    "fact:bf9515c0cbb9db756d655c53": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021090000083",
+      "source": "연합뉴스",
+      "source_body_digest": "3e08e833a906d80fa9277f82f155e1d98bbd390554171ff5ffc00a4cc485a3f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c0849f0b11cf629cab57d2b6b04b799361980d8e95f70ec339108b55b606e64",
+      "source_fact_keys": [
+        "source_fact:v1:01382ce4fbfeb904b4470281e35c9f84c535825bae411f19ba0b1e1e0e3f237e",
+        "source_fact:v1:378f275236754a987406a44c46242217bc1a7ced613bbd81d2190befe2558c3d",
+        "source_fact:v1:626e5a7469395be1585014af2df708274bbe3ad93cc9bf64d941c0c5ebbb9415",
+        "source_fact:v1:9a95f8ddcaa3bd711397e4a3295b4704d466b13758f8dbd059d150187cf2d648",
+        "source_fact:v1:a2cc3c64ac665f5823d51c1b98159cbab9d790f735150b4c989d873f024992c5",
+        "source_fact:v1:fca25bdc23b9f5993f968e72dfcc6ab991be9ca27781dbc9729ebe74e2f57897"
+      ],
+      "source_published_kst": "2026-10-21T12:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스",
+      "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
+      "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
     },
     "fact:bfb048c4efbd989f1881beac": {
       "first_seen_kst": "2026-10-20T02:15:18+09:00",
@@ -185554,6 +185895,31 @@
       ],
       "source_published_kst": "2026-10-07T11:36+09:00",
       "title": "우상호 지사 \"취임 100일, 강원 변화 시작…기업 투자 가시화\" | 연합뉴스"
+    },
+    "fact:df95c7ed84fe855eb98ef88b": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/21/2026102119033954269",
+      "source": "머니투데이",
+      "source_body_digest": "6e900e3da7c476f00e451883e1b7a36877a95b90358b95f34e568287e9891480",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af9ecb2c2887d00b0469a207a04f1a42aa1eae4f6ec632abb7f431be1f99c187",
+      "source_fact_keys": [
+        "source_fact:v1:4977170c5e63cbb0031f35ba3fc8317da378897a9df71e4cec65a456872173de",
+        "source_fact:v1:653d792ed2ce6210484544a15f1e31432d6fd234f69a8cc4e81967fb1b4f5432",
+        "source_fact:v1:9b0253a499e8b7a22e807647a6efa6c3f976ceb63f518e927f354b55e96b8905",
+        "source_fact:v1:b2cf280e711db37f84e975ca635f9daa518e9a33ecb8d34af0a731f0728df5b9",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:e482568acd0e5492d8a9660e7b20907265aba6dd36d7a89795af0ccd6487b670"
+      ],
+      "source_published_kst": "2026-10-21T20:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설",
+      "telegram_core_fact": "양사는 공동 투자를 통해 전용 공장(팹)을 증설하고 2026년부터 장기 공급을 시작하며 글로벌 AI 인프라 시장 공략을 가속화할 방침이다.",
+      "title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설"
     },
     "fact:df9ce6a3975413d6911c1827": {
       "first_seen_kst": "2026-10-14T21:45:21+09:00",
@@ -238821,6 +239187,30 @@
       "source": "매일경제",
       "title": "“긴축의 시대 투자로 정면돌파” … 서울머니쇼+에 초대합니다"
     },
+    "link:54501f9f2da2ee6b8da04f1f": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05825286645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "639676c255a7f455a10526e37359d1671c7a792589c19746db3a62f7501a8ff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a46a5dc35b9dcd5b036ac2b82f2793758363825e7feae1d9788b2211016bd54",
+      "source_fact_keys": [
+        "source_fact:v1:4d3dacf886870330670270ce851a5f5a16328f1ef36571132e6d8f5d3d864428",
+        "source_fact:v1:54f71e256b8e99f58e1ad5547250274c5224f1785980af28236b379538618581",
+        "source_fact:v1:8e01323a1621cd653ff79acd4cadf424c830fb2a02ffa12abeb8b6638cf811b0",
+        "source_fact:v1:a524b61777d6b6a1b6621ce4719a7c727f7b26d53cc4c5235af7a78428bdda4c",
+        "source_fact:v1:c72ad1207a9eb6ed215c4d165b95f999cf7cea24a0b7be3e1ce73462ac2d88ea"
+      ],
+      "source_published_kst": "2026-10-21T20:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다",
+      "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
+      "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
+    },
     "link:545879ec2fc2c5721c78b590": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
       "lanes": {
@@ -258662,6 +259052,31 @@
       "source_published_kst": "2026-10-05T20:07+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
     },
+    "link:7d2ecdf44d3c173cc14316cd": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/21/2026102119033954269",
+      "source": "머니투데이",
+      "source_body_digest": "6e900e3da7c476f00e451883e1b7a36877a95b90358b95f34e568287e9891480",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af9ecb2c2887d00b0469a207a04f1a42aa1eae4f6ec632abb7f431be1f99c187",
+      "source_fact_keys": [
+        "source_fact:v1:4977170c5e63cbb0031f35ba3fc8317da378897a9df71e4cec65a456872173de",
+        "source_fact:v1:653d792ed2ce6210484544a15f1e31432d6fd234f69a8cc4e81967fb1b4f5432",
+        "source_fact:v1:9b0253a499e8b7a22e807647a6efa6c3f976ceb63f518e927f354b55e96b8905",
+        "source_fact:v1:b2cf280e711db37f84e975ca635f9daa518e9a33ecb8d34af0a731f0728df5b9",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:e482568acd0e5492d8a9660e7b20907265aba6dd36d7a89795af0ccd6487b670"
+      ],
+      "source_published_kst": "2026-10-21T20:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설",
+      "telegram_core_fact": "양사는 공동 투자를 통해 전용 공장(팹)을 증설하고 2026년부터 장기 공급을 시작하며 글로벌 AI 인프라 시장 공략을 가속화할 방침이다.",
+      "title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설"
+    },
     "link:7d302456efa7f8655dc6b7ec": {
       "first_seen_kst": "2026-10-20T22:42:26+09:00",
       "lanes": {
@@ -259328,6 +259743,30 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "에너지효율 투자 금리 2%로 낮춘다…기업 이자부담 연 50억 절감"
+    },
+    "link:7eafd51cb72b5cfd8f8bd8d1": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05825286645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "639676c255a7f455a10526e37359d1671c7a792589c19746db3a62f7501a8ff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a46a5dc35b9dcd5b036ac2b82f2793758363825e7feae1d9788b2211016bd54",
+      "source_fact_keys": [
+        "source_fact:v1:4d3dacf886870330670270ce851a5f5a16328f1ef36571132e6d8f5d3d864428",
+        "source_fact:v1:54f71e256b8e99f58e1ad5547250274c5224f1785980af28236b379538618581",
+        "source_fact:v1:8e01323a1621cd653ff79acd4cadf424c830fb2a02ffa12abeb8b6638cf811b0",
+        "source_fact:v1:a524b61777d6b6a1b6621ce4719a7c727f7b26d53cc4c5235af7a78428bdda4c",
+        "source_fact:v1:c72ad1207a9eb6ed215c4d165b95f999cf7cea24a0b7be3e1ce73462ac2d88ea"
+      ],
+      "source_published_kst": "2026-10-21T20:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다",
+      "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
+      "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
     },
     "link:7eb431bb4a5b43dea47d1fd5": {
       "first_seen_kst": "2026-10-21T10:53:33+09:00",
@@ -267349,6 +267788,24 @@
       "source_title": "상반기 금융지주 순이익 17.6조…전년比 13.7% 증가",
       "telegram_core_fact": "올해 상반기 금융지주회사의 당기순이익이 17조6000억원으로 전년 대비 13.7% 증가한 것으로 나타났다.",
       "title": "상반기 금융지주 순이익 17.6조…전년比 13.7% 증가"
+    },
+    "link:90d20168f819e2fa2373ba3a": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182180",
+      "source": "매일경제",
+      "source_body_digest": "60849133e4d088957286b6892521b44f7cbf02cfb4cf02197772cbef4173f393",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T20:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "오르스타운 파이낸셜, 3분기 희석 EPS 1.17달러..전년비 3.5% 증가",
+      "telegram_core_fact": "오르스타운 파이낸셜(ORRF)은 9월 30일 종료된 3분기 GAAP 기준 순이익이 2280만 달러로 전년비 4.3% 증가했고, 희석 주당순이익(EPS)은 1.17달러로 전년 동기(1.13달러) 대비 3.5% 늘었다고 21일 발표했다.",
+      "title": "오르스타운 파이낸셜, 3분기 희석 EPS 1.17달러..전년비 3.5% 증가"
     },
     "link:90dc662fca31409ad11d8de5": {
       "first_seen_kst": "2026-10-19T17:39:56+09:00",
@@ -276868,6 +277325,33 @@
       "telegram_core_fact": "박종찬 한국형발사체 고도화사업단장은 \"1·2·3단 엔진 연소시간이 기존 노미널 기준값(설계 기준값)보다 모두 약간씩 짧아졌다\"며 \"성능이 개선됐다고 표현하기보다는 예상했던 성능범위 안에서 더 좋은 방향의 마진(성능 여유)이 나온 것\"이라고 설명했다.",
       "title": "한국형발사체 '누리호' 정시 이륙… 목표 궤도 안착 [뉴시스Pic]"
     },
+    "link:a29f94e79c89d4fdcadceabb": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
+    },
     "link:a2a31b37d1bd9848986b9ffc": {
       "first_seen_kst": "2026-10-12T22:07:35+09:00",
       "lanes": {
@@ -282570,6 +283054,31 @@
       "source_title": "\"삼성전자, CXMT와 기술격차 최대 7년…시장 우려 과도\"",
       "telegram_core_fact": "그는 \"삼성전자 주가가 이달 들어 중국의 추격 우려를 과도하게 반영하면서 16% 하락해 주가수익비율(PER) 3배 수준의 역사적 저평가 국면에 진입했다\"며 \"향후 배당 확대와 자사주 소각을 병행하는 주주환원 정책이 기대되는 만큼, 현재의 주가 조정은 비중 확대의 기회\"라고 판단했다.",
       "title": "\"삼성전자, CXMT와 기술격차 최대 7년…시장 우려 과도\""
+    },
+    "link:adee72532d63766dd112b447": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021090000083",
+      "source": "연합뉴스",
+      "source_body_digest": "3e08e833a906d80fa9277f82f155e1d98bbd390554171ff5ffc00a4cc485a3f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c0849f0b11cf629cab57d2b6b04b799361980d8e95f70ec339108b55b606e64",
+      "source_fact_keys": [
+        "source_fact:v1:01382ce4fbfeb904b4470281e35c9f84c535825bae411f19ba0b1e1e0e3f237e",
+        "source_fact:v1:378f275236754a987406a44c46242217bc1a7ced613bbd81d2190befe2558c3d",
+        "source_fact:v1:626e5a7469395be1585014af2df708274bbe3ad93cc9bf64d941c0c5ebbb9415",
+        "source_fact:v1:9a95f8ddcaa3bd711397e4a3295b4704d466b13758f8dbd059d150187cf2d648",
+        "source_fact:v1:a2cc3c64ac665f5823d51c1b98159cbab9d790f735150b4c989d873f024992c5",
+        "source_fact:v1:fca25bdc23b9f5993f968e72dfcc6ab991be9ca27781dbc9729ebe74e2f57897"
+      ],
+      "source_published_kst": "2026-10-21T12:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스",
+      "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
+      "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
     },
     "link:adfba73dcb8f5e66e84f8595": {
       "first_seen_kst": "2026-10-19T05:12:02+09:00",
@@ -292925,6 +293434,34 @@
       "source_title": "박홍근 “기업 청년 일자리 창출 지원”",
       "telegram_core_fact": "특히 청년들이 선호하는 첨단산업 분야 직업훈련과 초기 경력 형성, 기업의 채용·근속 지원에 집중 투자할 계획이다.",
       "title": "박홍근 “기업 청년 일자리 창출 지원”"
+    },
+    "link:c3718e90f2aa8cebaf2c6804": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
     },
     "link:c3824499f0f2a4ee5c1e00da": {
       "first_seen_kst": "2026-10-18T14:49:40+09:00",
@@ -306434,6 +306971,34 @@
       "link": "https://www.yna.co.kr/view/AKR20261003005300071",
       "source": "연합뉴스",
       "title": "트럼프 \"韓 알래스카 투자 합의않으면 두배로 청구\" 노골적 압박 | 연합뉴스"
+    },
+    "link:e1a4e5394cf21781eb1a62bb": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
     },
     "link:e1a51e47794abb1495a70a50": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -335993,6 +336558,31 @@
       "source": "헤럴드경제",
       "title": "“세계 최대 반도체 라인” 용인산단…1호 팹, 2028년 첫 삽 뜬다"
     },
+    "original:20c05bdae5c4195f31f4dd8d": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021090000083",
+      "source": "연합뉴스",
+      "source_body_digest": "3e08e833a906d80fa9277f82f155e1d98bbd390554171ff5ffc00a4cc485a3f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c0849f0b11cf629cab57d2b6b04b799361980d8e95f70ec339108b55b606e64",
+      "source_fact_keys": [
+        "source_fact:v1:01382ce4fbfeb904b4470281e35c9f84c535825bae411f19ba0b1e1e0e3f237e",
+        "source_fact:v1:378f275236754a987406a44c46242217bc1a7ced613bbd81d2190befe2558c3d",
+        "source_fact:v1:626e5a7469395be1585014af2df708274bbe3ad93cc9bf64d941c0c5ebbb9415",
+        "source_fact:v1:9a95f8ddcaa3bd711397e4a3295b4704d466b13758f8dbd059d150187cf2d648",
+        "source_fact:v1:a2cc3c64ac665f5823d51c1b98159cbab9d790f735150b4c989d873f024992c5",
+        "source_fact:v1:fca25bdc23b9f5993f968e72dfcc6ab991be9ca27781dbc9729ebe74e2f57897"
+      ],
+      "source_published_kst": "2026-10-21T12:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스",
+      "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
+      "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
+    },
     "original:20c501485e67e3bcfe467875": {
       "first_seen_kst": "2026-10-13T23:03:15+09:00",
       "lanes": {
@@ -344477,6 +345067,31 @@
       "source_title": "KRX 저녁시장 43% 확보⋯전체 파이 키우기는 과제 [애프터마켓 한달 ②]",
       "telegram_core_fact": "전체 거래대금에서 애프터마켓이 차지하는 비중은 23.02%에서 15.94%로 7.08%포인트 하락했다.",
       "title": "KRX 저녁시장 43% 확보⋯전체 파이 키우기는 과제 [애프터마켓 한달 ②]"
+    },
+    "original:319b771126e40497d9b27afc": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/21/2026102119033954269",
+      "source": "머니투데이",
+      "source_body_digest": "6e900e3da7c476f00e451883e1b7a36877a95b90358b95f34e568287e9891480",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af9ecb2c2887d00b0469a207a04f1a42aa1eae4f6ec632abb7f431be1f99c187",
+      "source_fact_keys": [
+        "source_fact:v1:4977170c5e63cbb0031f35ba3fc8317da378897a9df71e4cec65a456872173de",
+        "source_fact:v1:653d792ed2ce6210484544a15f1e31432d6fd234f69a8cc4e81967fb1b4f5432",
+        "source_fact:v1:9b0253a499e8b7a22e807647a6efa6c3f976ceb63f518e927f354b55e96b8905",
+        "source_fact:v1:b2cf280e711db37f84e975ca635f9daa518e9a33ecb8d34af0a731f0728df5b9",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:e482568acd0e5492d8a9660e7b20907265aba6dd36d7a89795af0ccd6487b670"
+      ],
+      "source_published_kst": "2026-10-21T20:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설",
+      "telegram_core_fact": "양사는 공동 투자를 통해 전용 공장(팹)을 증설하고 2026년부터 장기 공급을 시작하며 글로벌 AI 인프라 시장 공략을 가속화할 방침이다.",
+      "title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설"
     },
     "original:319e84733662651b6ff02cb0": {
       "first_seen_kst": "2026-09-19T00:05:24+09:00",
@@ -356730,6 +357345,33 @@
       "source_title": "넥센타이어, 호주에 네 번째 물류센터…현지 공급망 확대",
       "telegram_core_fact": "넥센타이어가 서호주 퍼스에 물류센터를 신설해 호주 내 공급망을 서부 지역까지 확대했다고 7일 밝혔다. 호주법인의 올해 상반기 매출은 전년 동기보다 50% 이상 증가했다.",
       "title": "넥센타이어, 호주에 네 번째 물류센터…현지 공급망 확대"
+    },
+    "original:4ad7db4cbedffa757267fd81": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
     },
     "original:4ad9849598d5795f9d101da3": {
       "first_seen_kst": "2026-10-19T08:28:33+09:00",
@@ -379045,6 +379687,24 @@
       "telegram_core_fact": "코트라는 지난해 유럽연합 포장 및 포장 폐기물 규정의 주요 내용과 올해 실무 문답 자료를 발간하고 규제 본격 시행 전후 두 차례 유럽연합 포장 및 포장 폐기물 규정 대응 화상 설명회를 개최해 우리 기업의 규제 대응을 지원해 왔다.",
       "title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간"
     },
+    "original:7b1c33be966a752cede37c31": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182180",
+      "source": "매일경제",
+      "source_body_digest": "60849133e4d088957286b6892521b44f7cbf02cfb4cf02197772cbef4173f393",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T20:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "오르스타운 파이낸셜, 3분기 희석 EPS 1.17달러..전년비 3.5% 증가",
+      "telegram_core_fact": "오르스타운 파이낸셜(ORRF)은 9월 30일 종료된 3분기 GAAP 기준 순이익이 2280만 달러로 전년비 4.3% 증가했고, 희석 주당순이익(EPS)은 1.17달러로 전년 동기(1.13달러) 대비 3.5% 늘었다고 21일 발표했다.",
+      "title": "오르스타운 파이낸셜, 3분기 희석 EPS 1.17달러..전년비 3.5% 증가"
+    },
     "original:7b3ae65051a5d08e321aceb9": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
       "lanes": {
@@ -389741,6 +390401,34 @@
       "source_published_kst": "2026-10-05T22:19+09:00",
       "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
     },
+    "original:91664efabedd1a7052f965ca": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
+    },
     "original:9167efbf51dd767a45d9b113": {
       "first_seen_kst": "2026-09-25T06:36:26+09:00",
       "lanes": {
@@ -398898,6 +399586,30 @@
       "link": "https://www.yna.co.kr/view/AKR20260917195851085",
       "source": "연합뉴스",
       "title": "[2보] 영국, 금리 3.75%로 동결…BOE 총재 \"금리 인상 가능성\" | 연합뉴스"
+    },
+    "original:a4b2a1ec0dd0fa3b11624dba": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05825286645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "639676c255a7f455a10526e37359d1671c7a792589c19746db3a62f7501a8ff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a46a5dc35b9dcd5b036ac2b82f2793758363825e7feae1d9788b2211016bd54",
+      "source_fact_keys": [
+        "source_fact:v1:4d3dacf886870330670270ce851a5f5a16328f1ef36571132e6d8f5d3d864428",
+        "source_fact:v1:54f71e256b8e99f58e1ad5547250274c5224f1785980af28236b379538618581",
+        "source_fact:v1:8e01323a1621cd653ff79acd4cadf424c830fb2a02ffa12abeb8b6638cf811b0",
+        "source_fact:v1:a524b61777d6b6a1b6621ce4719a7c727f7b26d53cc4c5235af7a78428bdda4c",
+        "source_fact:v1:c72ad1207a9eb6ed215c4d165b95f999cf7cea24a0b7be3e1ce73462ac2d88ea"
+      ],
+      "source_published_kst": "2026-10-21T20:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다",
+      "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
+      "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
     },
     "original:a4b5bc8e3c1ce28b50f9eddd": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -412032,6 +412744,34 @@
       "source_title": "뜨거운 실적에도 주가는 싸늘…삼전 정리하고 하닉 담을까 [플러스 관심종목]",
       "telegram_core_fact": "잠정 실적을 발표한 삼전의 영업이익률이 55.1%인데 하닉은 무려 78.3%다.",
       "title": "뜨거운 실적에도 주가는 싸늘…삼전 정리하고 하닉 담을까 [플러스 관심종목]"
+    },
+    "original:c1a4b90792316a13d7a87851": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
     },
     "original:c1a8aefb4eec721cd5b413a0": {
       "first_seen_kst": "2026-10-12T09:29:59+09:00",
@@ -443382,6 +444122,31 @@
       "telegram_core_fact": "우크라이나 총참모부는 7일 당시 공격으로 저장탱크 14기와 송유관 일부, 석유제품 자동 출하시설이 손상된 것으로 확인됐다고 발표했다. 우크라이나 총참모부는 우랄스유가 러시아 전체 원유 수출의 최대 50%를 차지하며 사마라 기지가 러시아군 수요를 충족하는 데도 관여한다고 설명했다.",
       "title": "러 사마라 핵심 석유거점 또 대형 화재…우크라 \"2일 공격 때 탱크 14기 손상\""
     },
+    "source_fact:018511e11555eba5151358bc": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021090000083",
+      "source": "연합뉴스",
+      "source_body_digest": "3e08e833a906d80fa9277f82f155e1d98bbd390554171ff5ffc00a4cc485a3f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c0849f0b11cf629cab57d2b6b04b799361980d8e95f70ec339108b55b606e64",
+      "source_fact_keys": [
+        "source_fact:v1:01382ce4fbfeb904b4470281e35c9f84c535825bae411f19ba0b1e1e0e3f237e",
+        "source_fact:v1:378f275236754a987406a44c46242217bc1a7ced613bbd81d2190befe2558c3d",
+        "source_fact:v1:626e5a7469395be1585014af2df708274bbe3ad93cc9bf64d941c0c5ebbb9415",
+        "source_fact:v1:9a95f8ddcaa3bd711397e4a3295b4704d466b13758f8dbd059d150187cf2d648",
+        "source_fact:v1:a2cc3c64ac665f5823d51c1b98159cbab9d790f735150b4c989d873f024992c5",
+        "source_fact:v1:fca25bdc23b9f5993f968e72dfcc6ab991be9ca27781dbc9729ebe74e2f57897"
+      ],
+      "source_published_kst": "2026-10-21T12:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스",
+      "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
+      "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
+    },
     "source_fact:018bcc3225b20abe1f852b6e": {
       "first_seen_kst": "2026-10-21T09:27:16+09:00",
       "lanes": {
@@ -451078,6 +451843,30 @@
       "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
       "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
       "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
+    },
+    "source_fact:057a17c07b9533e7fa5254e6": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05825286645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "639676c255a7f455a10526e37359d1671c7a792589c19746db3a62f7501a8ff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a46a5dc35b9dcd5b036ac2b82f2793758363825e7feae1d9788b2211016bd54",
+      "source_fact_keys": [
+        "source_fact:v1:4d3dacf886870330670270ce851a5f5a16328f1ef36571132e6d8f5d3d864428",
+        "source_fact:v1:54f71e256b8e99f58e1ad5547250274c5224f1785980af28236b379538618581",
+        "source_fact:v1:8e01323a1621cd653ff79acd4cadf424c830fb2a02ffa12abeb8b6638cf811b0",
+        "source_fact:v1:a524b61777d6b6a1b6621ce4719a7c727f7b26d53cc4c5235af7a78428bdda4c",
+        "source_fact:v1:c72ad1207a9eb6ed215c4d165b95f999cf7cea24a0b7be3e1ce73462ac2d88ea"
+      ],
+      "source_published_kst": "2026-10-21T20:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다",
+      "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
+      "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
     },
     "source_fact:057b08ae787f25fe3f550d04": {
       "first_seen_kst": "2026-10-21T12:53:55+09:00",
@@ -461527,6 +462316,31 @@
       "source_title": "슈퍼리그엔터프라이즈, 메타플래닛 비트코인 2100개 출자안 주총 통과에 주목",
       "telegram_core_fact": "메타플래닛이 비트코인 2,100개와 현금 250만 달러를 출자하는 안건이 주주총회를 통과하면서 거래의 불확실성이 크게 줄었습니다. 출자 자산 평가액은 약 1억7000만 달러 규모입니다.",
       "title": "슈퍼리그엔터프라이즈, 메타플래닛 비트코인 2100개 출자안 주총 통과에 주목"
+    },
+    "source_fact:0b76778af54c98c84a34542b": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021090000083",
+      "source": "연합뉴스",
+      "source_body_digest": "3e08e833a906d80fa9277f82f155e1d98bbd390554171ff5ffc00a4cc485a3f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c0849f0b11cf629cab57d2b6b04b799361980d8e95f70ec339108b55b606e64",
+      "source_fact_keys": [
+        "source_fact:v1:01382ce4fbfeb904b4470281e35c9f84c535825bae411f19ba0b1e1e0e3f237e",
+        "source_fact:v1:378f275236754a987406a44c46242217bc1a7ced613bbd81d2190befe2558c3d",
+        "source_fact:v1:626e5a7469395be1585014af2df708274bbe3ad93cc9bf64d941c0c5ebbb9415",
+        "source_fact:v1:9a95f8ddcaa3bd711397e4a3295b4704d466b13758f8dbd059d150187cf2d648",
+        "source_fact:v1:a2cc3c64ac665f5823d51c1b98159cbab9d790f735150b4c989d873f024992c5",
+        "source_fact:v1:fca25bdc23b9f5993f968e72dfcc6ab991be9ca27781dbc9729ebe74e2f57897"
+      ],
+      "source_published_kst": "2026-10-21T12:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스",
+      "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
+      "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
     },
     "source_fact:0b7aaaac04819bac7b3096e2": {
       "first_seen_kst": "2026-10-18T10:36:52+09:00",
@@ -472111,6 +472925,34 @@
       "telegram_core_fact": "제이피모간체이스(JPM)는 3분기 관리회계 기준 순매출이 509억 달러로 전년비 8% 증가했고, 희석 주당순이익(EPS)은 5.57달러를 기록했다고 10월 13일 발표했다.",
       "title": "제이피모간체이스, 3분기 관리 매출 509억 달러..전년비 8% 증가"
     },
+    "source_fact:1095237c6469ff29f4e631c3": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
+    },
     "source_fact:1095fbbafa933728d6042b96": {
       "first_seen_kst": "2026-10-21T13:57:06+09:00",
       "lanes": {
@@ -482081,6 +482923,33 @@
       "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
       "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
       "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
+    },
+    "source_fact:1627313c3d85080ecfbf3d17": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
     },
     "source_fact:162a3b2f66b5303830d731a7": {
       "first_seen_kst": "2026-10-12T20:14:14+09:00",
@@ -513450,6 +514319,34 @@
       "telegram_core_fact": "이 평가는 중앙행정, 지방정부, 공공기관을 대상으로 국가 공간정보(토지이용규제정보 등) 품질 수준을 진단 평가해 오류 수준 개선을 위해 이뤄진다.",
       "title": "예산군, 국토부 공간정보 품질관리 수준 평가서 '만점'"
     },
+    "source_fact:25de4183c51ac4ad7ad853ab": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
+    },
     "source_fact:25df43c5d37f84ed01de0508": {
       "first_seen_kst": "2026-10-19T08:28:33+09:00",
       "lanes": {
@@ -542083,6 +542980,31 @@
       "telegram_core_fact": "베슬AI는 한국투자증권(대표 김성환)과 ‘GPU 파이낸싱(GPU Financing)’ 업무협약(MOU)을 체결했다고 15일 밝혔다.",
       "title": "베슬AI, 한국투자증권과 ‘GPU 파이낸싱’ MOU...내년까지 5만장 확보"
     },
+    "source_fact:34cd85c494e3d8e7940485ba": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021090000083",
+      "source": "연합뉴스",
+      "source_body_digest": "3e08e833a906d80fa9277f82f155e1d98bbd390554171ff5ffc00a4cc485a3f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c0849f0b11cf629cab57d2b6b04b799361980d8e95f70ec339108b55b606e64",
+      "source_fact_keys": [
+        "source_fact:v1:01382ce4fbfeb904b4470281e35c9f84c535825bae411f19ba0b1e1e0e3f237e",
+        "source_fact:v1:378f275236754a987406a44c46242217bc1a7ced613bbd81d2190befe2558c3d",
+        "source_fact:v1:626e5a7469395be1585014af2df708274bbe3ad93cc9bf64d941c0c5ebbb9415",
+        "source_fact:v1:9a95f8ddcaa3bd711397e4a3295b4704d466b13758f8dbd059d150187cf2d648",
+        "source_fact:v1:a2cc3c64ac665f5823d51c1b98159cbab9d790f735150b4c989d873f024992c5",
+        "source_fact:v1:fca25bdc23b9f5993f968e72dfcc6ab991be9ca27781dbc9729ebe74e2f57897"
+      ],
+      "source_published_kst": "2026-10-21T12:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스",
+      "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
+      "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
+    },
     "source_fact:34d1837e44ff8ae929466d67": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -546471,6 +547393,34 @@
       "source_title": "학교 태양광 설비 안전검사 4년→1년 단축…교육부, 안전관리 강화",
       "telegram_core_fact": "교육부는 15일 전북 완주군 한국전기안전공사 본사에서 한국전기안전공사와 학교 태양광 설비 안전관리 강화를 위한 업무협약을 체결한다고 14일 밝혔다.",
       "title": "학교 태양광 설비 안전검사 4년→1년 단축…교육부, 안전관리 강화"
+    },
+    "source_fact:371d3b2392f9eb51bf172b65": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
     },
     "source_fact:371ef4190444234230c45082": {
       "first_seen_kst": "2026-10-12T13:36:34+09:00",
@@ -551246,6 +552196,33 @@
       "source_title": "트럼프 “러시아·우크라이나, 에너지 휴전 합의”…구체적 내용은 미공개",
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 11일(현지시간) 러시아와 우크라이나가 에너지 시설 공격을 중단하는‘에너지 휴전’에 합의했다고 밝혔다. 트럼프 대통령은 수주 동안 젤렌스키 대통령에게 러시아 에너지 기반시설에 대한 공격을 중단하라고 압박해 왔다.",
       "title": "트럼프 “러시아·우크라이나, 에너지 휴전 합의”…구체적 내용은 미공개"
+    },
+    "source_fact:39b9386e0b9c6bffd1ccd159": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
     },
     "source_fact:39c0274d99a905479c689382": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
@@ -558943,6 +559920,34 @@
       "source_title": "안현 SK하이닉스 사장 \"메모리 계층 최적화로 데이터 병목 극복해야\"",
       "telegram_core_fact": "[파이낸셜뉴스] 안현 SK하이닉스 개발총괄 사장이 인공지능(AI) 추론 수요 증가에 대응해 고대역폭메모리(HBM)를 넘어 차세대 메모리 개발을 확대하겠다는 구상을 제시했다.",
       "title": "안현 SK하이닉스 사장 \"메모리 계층 최적화로 데이터 병목 극복해야\""
+    },
+    "source_fact:3dea6a10f8dd7ac91a472e46": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
     },
     "source_fact:3deb2a6f9bcb3008f4857eb6": {
       "first_seen_kst": "2026-10-12T08:26:25+09:00",
@@ -576316,6 +577321,30 @@
       "telegram_core_fact": "코아스템켐온은 지난 17일 미국 식품의약국(FDA)과 뉴로나타 알-주의 임상 2상 결과에 대한 해석을 공유하고, 후속 확증 임상(3b상)과 가속승인 등 후속 개발 전략을 논의했다고 19일 밝혔다.",
       "title": "코아스템켐온, FDA와 '뉴로나타-알' 임상 논의… 美 진출 '투트랙 접근' 가시화"
     },
+    "source_fact:46d137fec661d980a47602c0": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05825286645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "639676c255a7f455a10526e37359d1671c7a792589c19746db3a62f7501a8ff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a46a5dc35b9dcd5b036ac2b82f2793758363825e7feae1d9788b2211016bd54",
+      "source_fact_keys": [
+        "source_fact:v1:4d3dacf886870330670270ce851a5f5a16328f1ef36571132e6d8f5d3d864428",
+        "source_fact:v1:54f71e256b8e99f58e1ad5547250274c5224f1785980af28236b379538618581",
+        "source_fact:v1:8e01323a1621cd653ff79acd4cadf424c830fb2a02ffa12abeb8b6638cf811b0",
+        "source_fact:v1:a524b61777d6b6a1b6621ce4719a7c727f7b26d53cc4c5235af7a78428bdda4c",
+        "source_fact:v1:c72ad1207a9eb6ed215c4d165b95f999cf7cea24a0b7be3e1ce73462ac2d88ea"
+      ],
+      "source_published_kst": "2026-10-21T20:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다",
+      "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
+      "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
+    },
     "source_fact:46d7fe95bc374baa2d4fd84b": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -589756,6 +590785,34 @@
       "telegram_core_fact": "지난 9월 FOMC에서 현재의 기준금리 수준으로 2% 물가 상승률을 달성하지 못하였기 때문에 추가 상승을 통한 제약적 금리로 물가를 잡겠다고 했습니다.",
       "title": "‘고금리’를 극복하는 이익의 힘…현재가 90년대 버블과 다른 이유 [타짜봉선생의 미국주식수업]"
     },
+    "source_fact:4d8ca6f6ea57d2b7d60e3314": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
+    },
     "source_fact:4d92bb3b85de37ab1742b761": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -591894,6 +592951,33 @@
       "source_title": "김정관 “메가프로젝트 투자 적기 이행 뒷받침”",
       "telegram_core_fact": "김정관(사진) 산업통상부 장관이 서남권 반도체 산업단지 후보지를 찾아 부지 조성과 전력·용수 공급 등 투자 기반을 차질 없이 마련하겠다고 밝혔다. 김 장관은 기업 투자가 적기에 이뤄질 수 있도록 부지 조성과 전력·용수 공급 인프라 확보, 주민 수용성 제고에 힘써 달라고 당부했다.",
       "title": "김정관 “메가프로젝트 투자 적기 이행 뒷받침”"
+    },
+    "source_fact:4e8321daf28bfddbb0ced40f": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
     },
     "source_fact:4e83b81bf1e391500f896125": {
       "first_seen_kst": "2026-10-19T08:00:35+09:00",
@@ -596181,6 +597265,33 @@
       "source_title": "美연준 베이지북 \"물가 상승 가속\"…소비 정체·AI발 고용 위축",
       "telegram_core_fact": "미국의 9월 소비자물가지수(CPI) 상승률이 전년 동월 대비 3.7%로 높아진 가운데 현장에서도 물가 압력 확대가 확인되면서 연준의 금리 결정은 더욱 복잡해질 것으로 보인다.",
       "title": "美연준 베이지북 \"물가 상승 가속\"…소비 정체·AI발 고용 위축"
+    },
+    "source_fact:509b585c91eb142fbecca484": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
     },
     "source_fact:509d40fbf7f97baebe4ee881": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -607198,6 +608309,34 @@
       "telegram_core_fact": "선샤인 바이오파마(SBFM)는 보통주 유닛 또는 선행출자 유닛 1090만9083개를 유닛당 0.55달러에 공모해 배정대행사 수수료와 발행 비용 차감 전 기준 총 약 600만 달러를 조달한다고 8일(현지시간) 발표했다. 공모가가 0.55달러로 1달러 미만인 점도 투자자가 유의할 대목이다.",
       "title": "선샤인 바이오파마, 600만 달러 공모가 확정..유닛당 0.55달러"
     },
+    "source_fact:561a4ec8e2eefdf8b6313374": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
+    },
     "source_fact:561b7674505615b3f1dba108": {
       "first_seen_kst": "2026-10-13T19:06:12+09:00",
       "lanes": {
@@ -614918,6 +616057,34 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
+    },
+    "source_fact:59dfd1a16ff4979a40a60e5f": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
     },
     "source_fact:59e2a4c6e49d1df08bb47bb2": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
@@ -692930,6 +694097,31 @@
       "telegram_core_fact": "다만, 일본 정부 대변인인 기하라 미노루 관방장관은 이날 정례 회견에서 다카이치 총리가 국회서 내놓은 소비세 인하 관련 국채 발행 발언에 대해 \"어디까지나 예산 편성 전반에 관한 답변\"이라고 확대 해석을 경계했다.",
       "title": "다카이치 감세재원 국채 발행 언급…\"'다카이치 엔저' 부정한다\" | 연합뉴스"
     },
+    "source_fact:82f90e75cf3e51dbdff139b8": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021090000083",
+      "source": "연합뉴스",
+      "source_body_digest": "3e08e833a906d80fa9277f82f155e1d98bbd390554171ff5ffc00a4cc485a3f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c0849f0b11cf629cab57d2b6b04b799361980d8e95f70ec339108b55b606e64",
+      "source_fact_keys": [
+        "source_fact:v1:01382ce4fbfeb904b4470281e35c9f84c535825bae411f19ba0b1e1e0e3f237e",
+        "source_fact:v1:378f275236754a987406a44c46242217bc1a7ced613bbd81d2190befe2558c3d",
+        "source_fact:v1:626e5a7469395be1585014af2df708274bbe3ad93cc9bf64d941c0c5ebbb9415",
+        "source_fact:v1:9a95f8ddcaa3bd711397e4a3295b4704d466b13758f8dbd059d150187cf2d648",
+        "source_fact:v1:a2cc3c64ac665f5823d51c1b98159cbab9d790f735150b4c989d873f024992c5",
+        "source_fact:v1:fca25bdc23b9f5993f968e72dfcc6ab991be9ca27781dbc9729ebe74e2f57897"
+      ],
+      "source_published_kst": "2026-10-21T12:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스",
+      "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
+      "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
+    },
     "source_fact:82fe2934cd77cf552e80add1": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
       "lanes": {
@@ -695765,6 +696957,30 @@
       "source_published_kst": "2026-10-06T17:24+09:00",
       "title": "英매체 \"한국산 연료, 서방 제재 선박 통해 러시아 대거 반출\""
     },
+    "source_fact:84f623a93453a9268140bda2": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05825286645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "639676c255a7f455a10526e37359d1671c7a792589c19746db3a62f7501a8ff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a46a5dc35b9dcd5b036ac2b82f2793758363825e7feae1d9788b2211016bd54",
+      "source_fact_keys": [
+        "source_fact:v1:4d3dacf886870330670270ce851a5f5a16328f1ef36571132e6d8f5d3d864428",
+        "source_fact:v1:54f71e256b8e99f58e1ad5547250274c5224f1785980af28236b379538618581",
+        "source_fact:v1:8e01323a1621cd653ff79acd4cadf424c830fb2a02ffa12abeb8b6638cf811b0",
+        "source_fact:v1:a524b61777d6b6a1b6621ce4719a7c727f7b26d53cc4c5235af7a78428bdda4c",
+        "source_fact:v1:c72ad1207a9eb6ed215c4d165b95f999cf7cea24a0b7be3e1ce73462ac2d88ea"
+      ],
+      "source_published_kst": "2026-10-21T20:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다",
+      "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
+      "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
+    },
     "source_fact:84fe39f641c2253dc224a802": {
       "first_seen_kst": "2026-10-14T12:34:00+09:00",
       "lanes": {
@@ -695787,6 +697003,34 @@
       "source_title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인",
       "telegram_core_fact": "증권가 컨센서스에 따르면 포르투나 마이닝의 2026년 예상 매출액은 13억570만 달러로 전년 대비 37.87% 증가할 전망이다.",
       "title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인"
+    },
+    "source_fact:84ffd2e45ad829e72b6074cb": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
     },
     "source_fact:85008042d2770fb5580140cf": {
       "first_seen_kst": "2026-10-20T14:54:10+09:00",
@@ -698019,6 +699263,31 @@
       "source_title": "미·중 우주 AI데이터센터 경쟁 가속…우주청 \"2028년 조기 실증 노력\"",
       "telegram_core_fact": "우주 인공지능(AI) 데이터센터의 조기 실증 필요성에 여야가 한목소리를 냈다. 이처럼 글로벌 기업들이 우주 AI 데이터센터의 기술 실증과 상용화에 속도를 내는 사이 국내에서는 실제 우주 환경에서 기술을 검증하기 위한 준비가 부족하다고 지적했다.",
       "title": "미·중 우주 AI데이터센터 경쟁 가속…우주청 \"2028년 조기 실증 노력\""
+    },
+    "source_fact:85e584f6b22b55e995d137db": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/21/2026102119033954269",
+      "source": "머니투데이",
+      "source_body_digest": "6e900e3da7c476f00e451883e1b7a36877a95b90358b95f34e568287e9891480",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af9ecb2c2887d00b0469a207a04f1a42aa1eae4f6ec632abb7f431be1f99c187",
+      "source_fact_keys": [
+        "source_fact:v1:4977170c5e63cbb0031f35ba3fc8317da378897a9df71e4cec65a456872173de",
+        "source_fact:v1:653d792ed2ce6210484544a15f1e31432d6fd234f69a8cc4e81967fb1b4f5432",
+        "source_fact:v1:9b0253a499e8b7a22e807647a6efa6c3f976ceb63f518e927f354b55e96b8905",
+        "source_fact:v1:b2cf280e711db37f84e975ca635f9daa518e9a33ecb8d34af0a731f0728df5b9",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:e482568acd0e5492d8a9660e7b20907265aba6dd36d7a89795af0ccd6487b670"
+      ],
+      "source_published_kst": "2026-10-21T20:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설",
+      "telegram_core_fact": "양사는 공동 투자를 통해 전용 공장(팹)을 증설하고 2026년부터 장기 공급을 시작하며 글로벌 AI 인프라 시장 공략을 가속화할 방침이다.",
+      "title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설"
     },
     "source_fact:85e5ffd0404d126c710e9516": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -707371,6 +708640,34 @@
       "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
       "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
     },
+    "source_fact:8b0bf5a24ed010e3589fe807": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
+    },
     "source_fact:8b0d9503a40d63f26e83e468": {
       "first_seen_kst": "2026-10-12T23:37:27+09:00",
       "lanes": {
@@ -714997,6 +716294,31 @@
       "source_title": "'코스닥 채비' 이에스티 \"글로벌 정전척 전문기업으로 성장\"[IPO출사표]",
       "telegram_core_fact": "김 대표는 “글로벌 주요 반도체 칩 메이커의 공급망에 진입해 95.5%의 양산 적용 승인율을 기록하며 기술 경쟁력을 입증했다”며 “이를 기반으로 고사양 재생품 공급을 확대하는 동시에 국내외 장비사와 신품 공동개발을 추진하며, 신품 공급부터 재생·교체까지 이어지는 반복매출 구조를 강화하고 있다”고 했다.",
       "title": "'코스닥 채비' 이에스티 \"글로벌 정전척 전문기업으로 성장\"[IPO출사표]"
+    },
+    "source_fact:8f6c2cc83cc645532acfafef": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/21/2026102119033954269",
+      "source": "머니투데이",
+      "source_body_digest": "6e900e3da7c476f00e451883e1b7a36877a95b90358b95f34e568287e9891480",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af9ecb2c2887d00b0469a207a04f1a42aa1eae4f6ec632abb7f431be1f99c187",
+      "source_fact_keys": [
+        "source_fact:v1:4977170c5e63cbb0031f35ba3fc8317da378897a9df71e4cec65a456872173de",
+        "source_fact:v1:653d792ed2ce6210484544a15f1e31432d6fd234f69a8cc4e81967fb1b4f5432",
+        "source_fact:v1:9b0253a499e8b7a22e807647a6efa6c3f976ceb63f518e927f354b55e96b8905",
+        "source_fact:v1:b2cf280e711db37f84e975ca635f9daa518e9a33ecb8d34af0a731f0728df5b9",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:e482568acd0e5492d8a9660e7b20907265aba6dd36d7a89795af0ccd6487b670"
+      ],
+      "source_published_kst": "2026-10-21T20:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설",
+      "telegram_core_fact": "양사는 공동 투자를 통해 전용 공장(팹)을 증설하고 2026년부터 장기 공급을 시작하며 글로벌 AI 인프라 시장 공략을 가속화할 방침이다.",
+      "title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설"
     },
     "source_fact:8f6c5428f54adec4504889c5": {
       "first_seen_kst": "2026-10-13T10:49:34+09:00",
@@ -744315,6 +745637,31 @@
       "telegram_core_fact": "DS단석은 이사회 결의를 거쳐 전북 군산 소재 약 412억원 부지와 시설을 DS오르비온에 출자한다고 20일 공시했다. DS단석이 지속가능항공유(SAF) 전담 자회사인 DS오르비온에 군산 SAF 생산부지와 시설을 현물출자하며 사업 실행체계를 구체화한다고 밝혔다.",
       "title": "DS단석, DS오르비온에 SAF 시설 현물출자…412억원 규모"
     },
+    "source_fact:9e6465da31139cd2b533cc78": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021090000083",
+      "source": "연합뉴스",
+      "source_body_digest": "3e08e833a906d80fa9277f82f155e1d98bbd390554171ff5ffc00a4cc485a3f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c0849f0b11cf629cab57d2b6b04b799361980d8e95f70ec339108b55b606e64",
+      "source_fact_keys": [
+        "source_fact:v1:01382ce4fbfeb904b4470281e35c9f84c535825bae411f19ba0b1e1e0e3f237e",
+        "source_fact:v1:378f275236754a987406a44c46242217bc1a7ced613bbd81d2190befe2558c3d",
+        "source_fact:v1:626e5a7469395be1585014af2df708274bbe3ad93cc9bf64d941c0c5ebbb9415",
+        "source_fact:v1:9a95f8ddcaa3bd711397e4a3295b4704d466b13758f8dbd059d150187cf2d648",
+        "source_fact:v1:a2cc3c64ac665f5823d51c1b98159cbab9d790f735150b4c989d873f024992c5",
+        "source_fact:v1:fca25bdc23b9f5993f968e72dfcc6ab991be9ca27781dbc9729ebe74e2f57897"
+      ],
+      "source_published_kst": "2026-10-21T12:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스",
+      "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
+      "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
+    },
     "source_fact:9e65a97a24e8f2f70a2a1fd5": {
       "first_seen_kst": "2026-10-12T17:17:29+09:00",
       "lanes": {
@@ -746275,6 +747622,34 @@
       "source_title": "국채금리 24년 만에 최고…3대 지수 일제히 하락 [뉴욕증시 브리핑]",
       "telegram_core_fact": "30년물 금리도 5.73%대까지 오르며 24년 만에 가장 높은 수준을 기록했다.",
       "title": "국채금리 24년 만에 최고…3대 지수 일제히 하락 [뉴욕증시 브리핑]"
+    },
+    "source_fact:9f89bd4281337372e37df769": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
     },
     "source_fact:9f920cb8aa1ddb9468970261": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
@@ -750560,6 +751935,31 @@
       "source_title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\" | 연합뉴스",
       "telegram_core_fact": "황기연 수출입은행장이 최근 한화그룹의 지분 확대로 민영화 논란이 불거진 한국항공우주산업(KAI)와 관련해 현재로서 지분 매각 계획이 없다고 밝혔다.",
       "title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\" | 연합뉴스"
+    },
+    "source_fact:a1a229b7d1ade7d46da0d005": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/21/2026102119033954269",
+      "source": "머니투데이",
+      "source_body_digest": "6e900e3da7c476f00e451883e1b7a36877a95b90358b95f34e568287e9891480",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af9ecb2c2887d00b0469a207a04f1a42aa1eae4f6ec632abb7f431be1f99c187",
+      "source_fact_keys": [
+        "source_fact:v1:4977170c5e63cbb0031f35ba3fc8317da378897a9df71e4cec65a456872173de",
+        "source_fact:v1:653d792ed2ce6210484544a15f1e31432d6fd234f69a8cc4e81967fb1b4f5432",
+        "source_fact:v1:9b0253a499e8b7a22e807647a6efa6c3f976ceb63f518e927f354b55e96b8905",
+        "source_fact:v1:b2cf280e711db37f84e975ca635f9daa518e9a33ecb8d34af0a731f0728df5b9",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:e482568acd0e5492d8a9660e7b20907265aba6dd36d7a89795af0ccd6487b670"
+      ],
+      "source_published_kst": "2026-10-21T20:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설",
+      "telegram_core_fact": "양사는 공동 투자를 통해 전용 공장(팹)을 증설하고 2026년부터 장기 공급을 시작하며 글로벌 AI 인프라 시장 공략을 가속화할 방침이다.",
+      "title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설"
     },
     "source_fact:a1a7d222c36133b712ad7805": {
       "first_seen_kst": "2026-10-10T01:24:21+09:00",
@@ -761637,6 +763037,34 @@
       "telegram_core_fact": "반도체 산업이 전례 없는 호황을 누리는 반면, 건설 현장에서는 30만명이 넘는 노동자가 원치 않게 일터를 떠난 것으로 나타났다. 고용계약 종료나 구조조정, 해고 등에 따른 비자발적 이직자가 30만명을 넘어선 것은 2023년 9월(31만 432명) 이후 35개월 만이다.",
       "title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어"
     },
+    "source_fact:a707d72b8aaeb3d6aaf7bf2c": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
+    },
     "source_fact:a70cc60889cf28205aba3f0a": {
       "first_seen_kst": "2026-10-14T06:09:46+09:00",
       "lanes": {
@@ -769457,6 +770885,33 @@
       "source_title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자",
       "telegram_core_fact": "기업공개(IPO)를 준비 중인 앤트로픽이 가파른 매출 성장에 이어 2개 분기 연속 흑자를 기록하며 수익성 개선 성과도 거뒀다.",
       "title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자"
+    },
+    "source_fact:ab1f41c47f6d69243f469ccf": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
     },
     "source_fact:ab26e427af24fa14ba9967e9": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -803735,6 +805190,33 @@
       "source_published_kst": "2026-10-06T20:38+09:00",
       "title": "이 대통령 \"전세사기 피해자 기다리지 않도록\"…보증금 3분의 1 보장"
     },
+    "source_fact:bcf9183c9ba8a2451b4b8682": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
+    },
     "source_fact:bcfb7f978201ab673e314b32": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
       "lanes": {
@@ -805267,6 +806749,30 @@
       "telegram_core_fact": "신현송 한국은행 총재가 최근 물가 상승에 국제유가 등 비용 요인이 크게 작용했다고 인정하면서도 향후 소득 여건 개선에 따른 수요 측 물가 상승 압력에 선제적으로 대응할 필요가 있다고 밝혔다.",
       "title": "신현송 \"소득 개선이 수요 압력 될 것…근원물가 선제 대응 중요\""
     },
+    "source_fact:bdaaee9ba23397e2c9bd0055": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05825286645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "639676c255a7f455a10526e37359d1671c7a792589c19746db3a62f7501a8ff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a46a5dc35b9dcd5b036ac2b82f2793758363825e7feae1d9788b2211016bd54",
+      "source_fact_keys": [
+        "source_fact:v1:4d3dacf886870330670270ce851a5f5a16328f1ef36571132e6d8f5d3d864428",
+        "source_fact:v1:54f71e256b8e99f58e1ad5547250274c5224f1785980af28236b379538618581",
+        "source_fact:v1:8e01323a1621cd653ff79acd4cadf424c830fb2a02ffa12abeb8b6638cf811b0",
+        "source_fact:v1:a524b61777d6b6a1b6621ce4719a7c727f7b26d53cc4c5235af7a78428bdda4c",
+        "source_fact:v1:c72ad1207a9eb6ed215c4d165b95f999cf7cea24a0b7be3e1ce73462ac2d88ea"
+      ],
+      "source_published_kst": "2026-10-21T20:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다",
+      "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
+      "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
+    },
     "source_fact:bdb64f9561dd3cc058c71f41": {
       "first_seen_kst": "2026-10-15T02:55:21+09:00",
       "lanes": {
@@ -805759,6 +807265,34 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "source_fact:bdf8aa39b364211a080eedda": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
     },
     "source_fact:bdfa77990957a5088cd4946b": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
@@ -821272,6 +822806,30 @@
       "telegram_core_fact": "씨어스는 앞서 현지 파트너와 3년간 약 220억원 모비케어 공급계약을 체결했다.",
       "title": "씨어스 \"1100억 규모 CB 발행…해외사업 투입\""
     },
+    "source_fact:c60566246ab512411c452a6d": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05825286645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "639676c255a7f455a10526e37359d1671c7a792589c19746db3a62f7501a8ff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a46a5dc35b9dcd5b036ac2b82f2793758363825e7feae1d9788b2211016bd54",
+      "source_fact_keys": [
+        "source_fact:v1:4d3dacf886870330670270ce851a5f5a16328f1ef36571132e6d8f5d3d864428",
+        "source_fact:v1:54f71e256b8e99f58e1ad5547250274c5224f1785980af28236b379538618581",
+        "source_fact:v1:8e01323a1621cd653ff79acd4cadf424c830fb2a02ffa12abeb8b6638cf811b0",
+        "source_fact:v1:a524b61777d6b6a1b6621ce4719a7c727f7b26d53cc4c5235af7a78428bdda4c",
+        "source_fact:v1:c72ad1207a9eb6ed215c4d165b95f999cf7cea24a0b7be3e1ce73462ac2d88ea"
+      ],
+      "source_published_kst": "2026-10-21T20:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다",
+      "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
+      "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
+    },
     "source_fact:c605d9c862d0ff11723cd007": {
       "first_seen_kst": "2026-10-14T21:45:21+09:00",
       "lanes": {
@@ -834733,6 +836291,34 @@
       "telegram_core_fact": "어빌리티시스템즈(대표 신재일)가 모빌리티 인공지능(AI) 검증 전문기업 플로버(대표 임동현)와 항만 자율주행 기술 고도화 및 검증환경 구축을 위한 업무협약(MOU)을 체결했다고 21일 밝혔다. 양사는 항만 자율주행 시스템의 개발·검증 역량을 강화하고 스마트항만 물류 자동화 분야에서 협력을 확대할 계획이다.",
       "title": "어빌리티시스템즈, 플로버와 맞손…항만 자율주행 시스템 개발·검증체계 구축"
     },
+    "source_fact:cd006c735a3c52c30bdd2d44": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
+    },
     "source_fact:cd0427c097097e51405c95fb": {
       "first_seen_kst": "2026-10-14T18:12:32+09:00",
       "lanes": {
@@ -837084,6 +838670,34 @@
       "source_title": "페이워드, 두바이 VASP 라이선스 최종 승인∙∙∙UAE 시장 공략 본격화",
       "telegram_core_fact": "페이워드가 두바이 규제당국으로부터 가상자산 서비스 제공을 위한 최종 승인을 받으며 현지 시장 진출을 본격화했다.",
       "title": "페이워드, 두바이 VASP 라이선스 최종 승인∙∙∙UAE 시장 공략 본격화"
+    },
+    "source_fact:ce3e7102e2ebf4debc24795a": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
     },
     "source_fact:ce3f1792aadc1f98a88dd31a": {
       "first_seen_kst": "2026-10-19T22:09:23+09:00",
@@ -841051,6 +842665,31 @@
       "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
       "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
       "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
+    },
+    "source_fact:d031c0e0e74367eab8eb4d60": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021090000083",
+      "source": "연합뉴스",
+      "source_body_digest": "3e08e833a906d80fa9277f82f155e1d98bbd390554171ff5ffc00a4cc485a3f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c0849f0b11cf629cab57d2b6b04b799361980d8e95f70ec339108b55b606e64",
+      "source_fact_keys": [
+        "source_fact:v1:01382ce4fbfeb904b4470281e35c9f84c535825bae411f19ba0b1e1e0e3f237e",
+        "source_fact:v1:378f275236754a987406a44c46242217bc1a7ced613bbd81d2190befe2558c3d",
+        "source_fact:v1:626e5a7469395be1585014af2df708274bbe3ad93cc9bf64d941c0c5ebbb9415",
+        "source_fact:v1:9a95f8ddcaa3bd711397e4a3295b4704d466b13758f8dbd059d150187cf2d648",
+        "source_fact:v1:a2cc3c64ac665f5823d51c1b98159cbab9d790f735150b4c989d873f024992c5",
+        "source_fact:v1:fca25bdc23b9f5993f968e72dfcc6ab991be9ca27781dbc9729ebe74e2f57897"
+      ],
+      "source_published_kst": "2026-10-21T12:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스",
+      "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
+      "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
     },
     "source_fact:d03ebc988a84a100299b3203": {
       "first_seen_kst": "2026-10-11T12:33:27+09:00",
@@ -860505,6 +862144,34 @@
       "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
       "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
+    "source_fact:da3d8804747432337c83db62": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
+    },
     "source_fact:da4799fb760dd49e401af0bd": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
       "lanes": {
@@ -875730,6 +877397,33 @@
       "telegram_core_fact": "그루포 아에로멕시코(AERO)가 9월 30일 종료된 3분기 매출액(IFRS)이 분기 기준 사상 최고인 16억1900만 달러로 전년비 13.6% 증가했으나, 영업이익은 1억8960만 달러로 25.0% 감소했다고 19일 발표했다.",
       "title": "그루포 아에로멕시코, 3분기 매출 16억달러 최대..영업익 25% 감소"
     },
+    "source_fact:e1ef2ba7314719a4acdd3d86": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
+    },
     "source_fact:e1f1ab02d8d90201a3c09c5c": {
       "first_seen_kst": "2026-10-18T06:15:10+09:00",
       "lanes": {
@@ -877761,6 +879455,34 @@
       ],
       "source_published_kst": "2026-10-06T07:48+09:00",
       "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
+    },
+    "source_fact:e2feebefedda9c6278fe887a": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
     },
     "source_fact:e3000698650fa6afc2546130": {
       "first_seen_kst": "2026-10-19T11:35:40+09:00",
@@ -896805,6 +898527,34 @@
       "telegram_core_fact": "이영곤 토스증권 리서치센터장도 \"투자자들은 앞으로도 이러한 높은 이익 성장세가 얼마만큼 더 이어질 수 있는 지 주목하고 있다\"며 \"확정실적을 통해 메모리 수급과 가격, HBM, 내년 실적 전망, 주주환원 등에 대한 회사의 구체적인 설명을 확인하는 것이 필요하다\"고 전했다.",
       "title": "D램값 상승·주주환원 기대감… 삼성전자 주가 끌어올릴까"
     },
+    "source_fact:ecd2a69d701513b56ecdaaed": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
+    },
     "source_fact:ecd68d0bc978e1ccd8d21e7f": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -901878,6 +903628,33 @@
       "telegram_core_fact": "대만 기업들은 AI 인프라 투자 확대에 따른 판매량 증가로 실적을 끌어올리고 있는 반면 한국 반도체 기업의 이익은 메모리 가격 상승에 대한 의존도가 높다. 코스콤 CHECK 등에 따르면 코스피는 올해 3분기 19.33% 하락했다.",
       "title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자"
     },
+    "source_fact:ef72479bb19eeee42c1b491e": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
+    },
     "source_fact:ef760207ff29e8d85c0c7a5a": {
       "first_seen_kst": "2026-10-20T08:37:36+09:00",
       "lanes": {
@@ -901900,6 +903677,31 @@
       "source_title": "앰코, 전남광주에 3조 반도체 '통큰 투자'",
       "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지코리아가 전남광주통합특별시에 3조원 규모 생산시설을 구축한다. 당초 1조원 규모였던 투자 계획을 세 배로 확대한 것으로, 국내 외국인투자기업의 단일 투자로는 최대 규모가 될 전망이다.",
       "title": "앰코, 전남광주에 3조 반도체 '통큰 투자'"
+    },
+    "source_fact:ef7ab9cb0dba24b09403028b": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/21/2026102119033954269",
+      "source": "머니투데이",
+      "source_body_digest": "6e900e3da7c476f00e451883e1b7a36877a95b90358b95f34e568287e9891480",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af9ecb2c2887d00b0469a207a04f1a42aa1eae4f6ec632abb7f431be1f99c187",
+      "source_fact_keys": [
+        "source_fact:v1:4977170c5e63cbb0031f35ba3fc8317da378897a9df71e4cec65a456872173de",
+        "source_fact:v1:653d792ed2ce6210484544a15f1e31432d6fd234f69a8cc4e81967fb1b4f5432",
+        "source_fact:v1:9b0253a499e8b7a22e807647a6efa6c3f976ceb63f518e927f354b55e96b8905",
+        "source_fact:v1:b2cf280e711db37f84e975ca635f9daa518e9a33ecb8d34af0a731f0728df5b9",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:e482568acd0e5492d8a9660e7b20907265aba6dd36d7a89795af0ccd6487b670"
+      ],
+      "source_published_kst": "2026-10-21T20:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설",
+      "telegram_core_fact": "양사는 공동 투자를 통해 전용 공장(팹)을 증설하고 2026년부터 장기 공급을 시작하며 글로벌 AI 인프라 시장 공략을 가속화할 방침이다.",
+      "title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설"
     },
     "source_fact:ef7ca30358db767f895f58e3": {
       "first_seen_kst": "2026-10-19T13:56:52+09:00",
@@ -914772,6 +916574,34 @@
       "source_title": "답답한 삼전닉스를 어찌하오리까…증권 센터장 5인에게 물어보니",
       "telegram_core_fact": "박연주 미래에셋증권 AI리서치센터장은 오픈AI 매출 논란에 대해 \"집계 기준의 차이일 뿐, AI 수요 등 펀더멘털은 크게 변하지 않은 상황으로 본다\"고 말했다.",
       "title": "답답한 삼전닉스를 어찌하오리까…증권 센터장 5인에게 물어보니"
+    },
+    "source_fact:f6b997cd6afb85d10ed224a2": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
     },
     "source_fact:f6bd57a90d25c375f09927e3": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -931993,6 +933823,31 @@
       "telegram_core_fact": "안 사장은 개별 메모리의 성능을 높이는 것을 넘어 전체 메모리 계층을 최적화하는 접근이 필요하다고 강조했다.",
       "title": "GPU 확보 넘어 ‘최적화’로⋯AI 추론 시대의 인프라 경쟁 공식"
     },
+    "source_fact:ffef827895e73829ed74fcd8": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/21/2026102119033954269",
+      "source": "머니투데이",
+      "source_body_digest": "6e900e3da7c476f00e451883e1b7a36877a95b90358b95f34e568287e9891480",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af9ecb2c2887d00b0469a207a04f1a42aa1eae4f6ec632abb7f431be1f99c187",
+      "source_fact_keys": [
+        "source_fact:v1:4977170c5e63cbb0031f35ba3fc8317da378897a9df71e4cec65a456872173de",
+        "source_fact:v1:653d792ed2ce6210484544a15f1e31432d6fd234f69a8cc4e81967fb1b4f5432",
+        "source_fact:v1:9b0253a499e8b7a22e807647a6efa6c3f976ceb63f518e927f354b55e96b8905",
+        "source_fact:v1:b2cf280e711db37f84e975ca635f9daa518e9a33ecb8d34af0a731f0728df5b9",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:e482568acd0e5492d8a9660e7b20907265aba6dd36d7a89795af0ccd6487b670"
+      ],
+      "source_published_kst": "2026-10-21T20:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설",
+      "telegram_core_fact": "양사는 공동 투자를 통해 전용 공장(팹)을 증설하고 2026년부터 장기 공급을 시작하며 글로벌 AI 인프라 시장 공략을 가속화할 방침이다.",
+      "title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설"
+    },
     "source_fact:fffc0e19733ea970b257a509": {
       "first_seen_kst": "2026-10-21T16:39:53+09:00",
       "lanes": {
@@ -947589,6 +949444,31 @@
       "source": "헤럴드경제",
       "title": "“세계 최대 반도체 라인” 용인산단…1호 팹, 2028년 첫 삽 뜬다"
     },
+    "title:20c05bdae5c4195f31f4dd8d": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021090000083",
+      "source": "연합뉴스",
+      "source_body_digest": "3e08e833a906d80fa9277f82f155e1d98bbd390554171ff5ffc00a4cc485a3f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c0849f0b11cf629cab57d2b6b04b799361980d8e95f70ec339108b55b606e64",
+      "source_fact_keys": [
+        "source_fact:v1:01382ce4fbfeb904b4470281e35c9f84c535825bae411f19ba0b1e1e0e3f237e",
+        "source_fact:v1:378f275236754a987406a44c46242217bc1a7ced613bbd81d2190befe2558c3d",
+        "source_fact:v1:626e5a7469395be1585014af2df708274bbe3ad93cc9bf64d941c0c5ebbb9415",
+        "source_fact:v1:9a95f8ddcaa3bd711397e4a3295b4704d466b13758f8dbd059d150187cf2d648",
+        "source_fact:v1:a2cc3c64ac665f5823d51c1b98159cbab9d790f735150b4c989d873f024992c5",
+        "source_fact:v1:fca25bdc23b9f5993f968e72dfcc6ab991be9ca27781dbc9729ebe74e2f57897"
+      ],
+      "source_published_kst": "2026-10-21T12:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스",
+      "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
+      "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
+    },
     "title:20c501485e67e3bcfe467875": {
       "first_seen_kst": "2026-10-13T23:03:15+09:00",
       "lanes": {
@@ -956228,6 +958108,31 @@
       "source_title": "KRX 저녁시장 43% 확보⋯전체 파이 키우기는 과제 [애프터마켓 한달 ②]",
       "telegram_core_fact": "전체 거래대금에서 애프터마켓이 차지하는 비중은 23.02%에서 15.94%로 7.08%포인트 하락했다.",
       "title": "KRX 저녁시장 43% 확보⋯전체 파이 키우기는 과제 [애프터마켓 한달 ②]"
+    },
+    "title:319b771126e40497d9b27afc": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/21/2026102119033954269",
+      "source": "머니투데이",
+      "source_body_digest": "6e900e3da7c476f00e451883e1b7a36877a95b90358b95f34e568287e9891480",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af9ecb2c2887d00b0469a207a04f1a42aa1eae4f6ec632abb7f431be1f99c187",
+      "source_fact_keys": [
+        "source_fact:v1:4977170c5e63cbb0031f35ba3fc8317da378897a9df71e4cec65a456872173de",
+        "source_fact:v1:653d792ed2ce6210484544a15f1e31432d6fd234f69a8cc4e81967fb1b4f5432",
+        "source_fact:v1:9b0253a499e8b7a22e807647a6efa6c3f976ceb63f518e927f354b55e96b8905",
+        "source_fact:v1:b2cf280e711db37f84e975ca635f9daa518e9a33ecb8d34af0a731f0728df5b9",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:e482568acd0e5492d8a9660e7b20907265aba6dd36d7a89795af0ccd6487b670"
+      ],
+      "source_published_kst": "2026-10-21T20:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설",
+      "telegram_core_fact": "양사는 공동 투자를 통해 전용 공장(팹)을 증설하고 2026년부터 장기 공급을 시작하며 글로벌 AI 인프라 시장 공략을 가속화할 방침이다.",
+      "title": "삼성전기, 엔비디아 손잡았다…AI 반도체 기판 전용 팹 증설"
     },
     "title:319e84733662651b6ff02cb0": {
       "first_seen_kst": "2026-09-19T00:05:24+09:00",
@@ -968712,6 +970617,33 @@
       "source_title": "넥센타이어, 호주에 네 번째 물류센터…현지 공급망 확대",
       "telegram_core_fact": "넥센타이어가 서호주 퍼스에 물류센터를 신설해 호주 내 공급망을 서부 지역까지 확대했다고 7일 밝혔다. 호주법인의 올해 상반기 매출은 전년 동기보다 50% 이상 증가했다.",
       "title": "넥센타이어, 호주에 네 번째 물류센터…현지 공급망 확대"
+    },
+    "title:4ad7db4cbedffa757267fd81": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.etnews.com/20261021000453",
+      "source": "전자신문",
+      "source_body_digest": "94700a593f8e358c58f6f44f22226de1fe030028f1b989356d559c0abae490b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22f8f9d2b207eddfbc3782f177cb67c3b3140004cb3049d6cc0256533218d71",
+      "source_fact_keys": [
+        "source_fact:v1:183fdaf9214c63dc81b4b6a7e11d828578b73d69bc8d8f3c7532ce24cb984e17",
+        "source_fact:v1:45d3ed334c8b8879bca6f74d28d02b4d73f983fa6ac8099e9d4dc0fc2b0c8d7a",
+        "source_fact:v1:57d4f44db46e6b7b7a18f17552766f928a4370c2002388f541aa403338a90296",
+        "source_fact:v1:5cf15aabb58048e6605abd6be530f8ad529aaee62474fb35d8177c4568880712",
+        "source_fact:v1:69b71df1242dba5295c850ac4039eecf651c4401e24d3502e8d5ebd987c085bf",
+        "source_fact:v1:8a6732fd9dbe8704d98aa2b14b57ea13906ddcb5cb9d2b5cc49b593786770f37",
+        "source_fact:v1:ee0f85e9c689eb30f39cc8ccc1d274ce760412ff44ab1de1826e8dbbb23a1f32",
+        "source_fact:v1:f8be20c3b58f9e42e498242968a852a9fe31055895fd042f66cb684ca5e48a10"
+      ],
+      "source_published_kst": "2026-10-21T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
+      "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
+      "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
     },
     "title:4ad9849598d5795f9d101da3": {
       "first_seen_kst": "2026-10-19T08:28:33+09:00",
@@ -991528,6 +993460,24 @@
       "telegram_core_fact": "코트라는 지난해 유럽연합 포장 및 포장 폐기물 규정의 주요 내용과 올해 실무 문답 자료를 발간하고 규제 본격 시행 전후 두 차례 유럽연합 포장 및 포장 폐기물 규정 대응 화상 설명회를 개최해 우리 기업의 규제 대응을 지원해 왔다.",
       "title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간"
     },
+    "title:7b1c33be966a752cede37c31": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182180",
+      "source": "매일경제",
+      "source_body_digest": "60849133e4d088957286b6892521b44f7cbf02cfb4cf02197772cbef4173f393",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T20:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "오르스타운 파이낸셜, 3분기 희석 EPS 1.17달러..전년비 3.5% 증가",
+      "telegram_core_fact": "오르스타운 파이낸셜(ORRF)은 9월 30일 종료된 3분기 GAAP 기준 순이익이 2280만 달러로 전년비 4.3% 증가했고, 희석 주당순이익(EPS)은 1.17달러로 전년 동기(1.13달러) 대비 3.5% 늘었다고 21일 발표했다.",
+      "title": "오르스타운 파이낸셜, 3분기 희석 EPS 1.17달러..전년비 3.5% 증가"
+    },
     "title:7b3ae65051a5d08e321aceb9": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
       "lanes": {
@@ -1002390,6 +1004340,34 @@
       "source_published_kst": "2026-10-05T22:19+09:00",
       "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
     },
+    "title:91664efabedd1a7052f965ca": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178634",
+      "source": "매일경제",
+      "source_body_digest": "73535e439a2a5da8836b1fc108a20ee7332b09d22eac2cae8a4d3d89d90db72c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:204f3a1618c616a0bd0a6d19adbb756821d4c8ed0689a2dc62904aaca8b284d7",
+      "source_fact_keys": [
+        "source_fact:v1:2c1d6a2ede7449e9a422075034b2df3067da6155f7aacf996a76a79a5f8217fe",
+        "source_fact:v1:3eec5c7e43e1d77eb83c557e5eb02c9cfbfe37d4bdb6c055a6c8d28d13063dca",
+        "source_fact:v1:6d93746e5885c3f0d77496d1a1da87e5e152343f22db4b73526f3377175ed2ce",
+        "source_fact:v1:74a596470331ff1a11f9f13b20b3bb977abb6fc87c06221ecef6ae9602b039a2",
+        "source_fact:v1:8572649bfc0d1c17435252f9af38570226610deeb8c0404dcea1f8cc68c531d2",
+        "source_fact:v1:b90a0da315c9fc78d67386f34bd0b141716881381ba9b37d4ac517fba00169fc",
+        "source_fact:v1:cc7316134ec58d6ef77aac26ba19144b768f12acfe50af22361bbb4ec8b690b1",
+        "source_fact:v1:cdaa5c9c3c3f5afe23871bb61452f71dcaf5045373042011983c0a2ce9707b33",
+        "source_fact:v1:dfc391278c841f241510413364d565df071ca6e24ed546bd0796a10d43b21824"
+      ],
+      "source_published_kst": "2026-10-21T19:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
+      "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
+      "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
+    },
     "title:9167efbf51dd767a45d9b113": {
       "first_seen_kst": "2026-09-25T06:36:26+09:00",
       "lanes": {
@@ -1011831,6 +1013809,30 @@
       "link": "https://www.yna.co.kr/view/AKR20260917195851085",
       "source": "연합뉴스",
       "title": "[2보] 영국, 금리 3.75%로 동결…BOE 총재 \"금리 인상 가능성\" | 연합뉴스"
+    },
+    "title:a4b2a1ec0dd0fa3b11624dba": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05825286645615216&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "639676c255a7f455a10526e37359d1671c7a792589c19746db3a62f7501a8ff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a46a5dc35b9dcd5b036ac2b82f2793758363825e7feae1d9788b2211016bd54",
+      "source_fact_keys": [
+        "source_fact:v1:4d3dacf886870330670270ce851a5f5a16328f1ef36571132e6d8f5d3d864428",
+        "source_fact:v1:54f71e256b8e99f58e1ad5547250274c5224f1785980af28236b379538618581",
+        "source_fact:v1:8e01323a1621cd653ff79acd4cadf424c830fb2a02ffa12abeb8b6638cf811b0",
+        "source_fact:v1:a524b61777d6b6a1b6621ce4719a7c727f7b26d53cc4c5235af7a78428bdda4c",
+        "source_fact:v1:c72ad1207a9eb6ed215c4d165b95f999cf7cea24a0b7be3e1ce73462ac2d88ea"
+      ],
+      "source_published_kst": "2026-10-21T20:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다",
+      "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
+      "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
     },
     "title:a4b5bc8e3c1ce28b50f9eddd": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -1025335,6 +1027337,34 @@
       "source_title": "뜨거운 실적에도 주가는 싸늘…삼전 정리하고 하닉 담을까 [플러스 관심종목]",
       "telegram_core_fact": "잠정 실적을 발표한 삼전의 영업이익률이 55.1%인데 하닉은 무려 78.3%다.",
       "title": "뜨거운 실적에도 주가는 싸늘…삼전 정리하고 하닉 담을까 [플러스 관심종목]"
+    },
+    "title:c1a4b90792316a13d7a87851": {
+      "first_seen_kst": "2026-10-21T21:09:15+09:00",
+      "lanes": {
+        "live": "2026-10-21T21:09:15+09:00"
+      },
+      "last_seen_kst": "2026-10-21T21:09:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182179",
+      "source": "매일경제",
+      "source_body_digest": "3cd5a23d9c670a351cfd940cdde09e0f2d05b82a39a4e07aeb0d86f72edb5d82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f6d76292f4c1cf7a478f592703364958d57b20a2e07556b26c47cf7b403d9d8b",
+      "source_fact_keys": [
+        "source_fact:v1:3d788e258a57fa5024b6964e70edc61e2752e18367668ff59f46e37d0262bd13",
+        "source_fact:v1:4ab083d46aa1a9335264bfa4d011c4ff460a33a2c5b8b27531e93451122199ed",
+        "source_fact:v1:570c6ae9af994389c61cbea9a55458b81ca2e6d49cc696640a5cf3f4bb354bd9",
+        "source_fact:v1:9823f0b7e838f2db066cbf20eb5f445e14e62767b661585987d5781b9a0c11c4",
+        "source_fact:v1:adb06f667aa6c28e8901dc52e7e184a8aed8b2156e5c19fa262f4a62ec4eaf23",
+        "source_fact:v1:be83fbb00020fb78fdd2a088be6031357bd7c2ad485990f0d642d3f7c0acbde1",
+        "source_fact:v1:cb054f5e2e7ee7f12ca1ab8ee3616ebb388efd8e1aeab06f5077373fe9e02c01",
+        "source_fact:v1:e300df19daae293fae67ede0107f9d409ce2c0f11d14bc12175c858797804293",
+        "source_fact:v1:fa7b75d4ec2da17014a0e87d75f2db2ebae1862f9744bc266a9b3730b27c802b"
+      ],
+      "source_published_kst": "2026-10-21T20:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급",
+      "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
+      "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
     },
     "title:c1a8aefb4eec721cd5b413a0": {
       "first_seen_kst": "2026-10-12T09:29:59+09:00",
@@ -1054683,5 +1056713,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-21T20:37:27+09:00"
+  "updated_at_kst": "2026-10-21T21:09:15+09:00"
 }
