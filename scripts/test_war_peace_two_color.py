@@ -568,6 +568,122 @@ class TwoColorTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError,'WAR_ALERT_QUALITY_GATE|WAR_INTEGRITY_GATE'):
             self.presenter.verify_alert()
 
+    def test_election_war_policy_outlook_preserves_stage_and_explicit_actors(self):
+        title="Israel's election may change its leader, but not Iran war policy"
+        row={'title_original':title,'title_ko':'이스라엘 선거 전망'}
+        self.assertEqual(stage.non_military_kind(row),'military_analysis')
+        self.assertEqual(stage.final_color(row),'yellow')
+        self.assertEqual(stage.topic_label(row),'이스라엘·이란 · 선거·전쟁 정책 전망')
+        self.assertEqual(stage._display_headline(row),title)
+        self.assertEqual(presentation.direction(stage,row),'red')
+        row['title_original']=title+'…Russia attacked Ukraine'
+        self.assertIsNone(stage.non_military_kind(row))
+        self.assertEqual(presentation.direction(stage,row),'red')
+
+    def test_sabotage_threat_preserves_warning_source_and_target(self):
+        title="Germany's military warns of 'significant' Russian sabotage threat"
+        row={'title_original':title,'title_ko':title}
+        self.assertEqual(stage.non_military_kind(row),'security_activity')
+        self.assertEqual(stage.topic_label(row),'독일·러시아 · 파괴공작 관련 보도')
+        self.assertEqual(stage.final_color(row),'yellow')
+        self.assertEqual(presentation.direction(stage,row),'red')
+        self.assertEqual(stage._display_headline(row),title)
+
+    def test_saved_policy_outlook_push_full_gate_keeps_four_selected_sources(self):
+        self.fixture=json.loads((Path(__file__).parent/'test_fixtures/war_policy_outlook_39622466859.json').read_text(encoding='utf-8'))
+        (_,_,ids),text,receipt=self.present(tuple(range(len(self.fixture['articles']))))
+        shown=[r for r in receipt['articles'] if r['rendered']]
+        self.assertEqual(ids,['a33dae0cda0efb8ed8e2','b592bb744ced3c857bb1','ae77a16e6fe0613bbdef','72af9f939d0987b42be6'])
+        self.assertEqual([r['classification_color'] for r in shown],[None,'green','red','red'])
+        self.assertEqual([r['semantic_classification_color'] for r in shown],['yellow']*4)
+        self.assertIn('독일·러시아 · 파괴공작 관련 보도',text)
+        self.assertIn('이스라엘·이란 · 선거·전쟁 정책 전망',text)
+        self.assertIn(html.escape("Israel's election may change its leader, but not Iran war policy"),text)
+        self.assertNotIn('이란·호르무즈',text)
+        self.assertNotIn('🟡',text)
+        self.assertEqual(receipt['markets'],self.fixture['markets'])
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.STATE.read_bytes(),self.state_before)
+
+    def test_same_hash_original_policy_outlook_and_actor_omission_rejected(self):
+        f=json.loads((Path(__file__).parent/'test_fixtures/war_policy_outlook_39622466859.json').read_text(encoding='utf-8'))
+        self.watch.ALERT.write_text(f['original_semantic_alert'],encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(f['original_semantic_evidence'],ensure_ascii=False),encoding='utf-8')
+        self.watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in f['articles'] if r['rendered']]}),encoding='utf-8')
+        with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
+            self.presenter.verify_alert()
+
+    def test_conditional_diplomacy_keeps_the_separate_war_choice_warning(self):
+        f=json.loads((Path(__file__).parent/'test_fixtures/war_policy_outlook_39622466859.json').read_text(encoding='utf-8'))['natural_cases']['39657556910']
+        row=next(x for x in f['articles'] if x['id']=='c770c0f5e083fd6ae47d')
+        self.assertEqual(stage.non_military_kind(row),'military_statement')
+        self.assertEqual(stage.topic_label(row),'미국·이란 · 조건부 외교 의향·전쟁 선택 경고')
+        self.assertEqual(stage._display_headline(row),' '.join(row['title_original'].split()))
+        self.assertEqual(presentation.direction(stage,row),'red')
+        self.assertIn('BUT IF US CHOOSES WAR',stage._display_headline(row))
+        row=copy.deepcopy(row);row['title_original']=row['title_original'].split('\n')[0]
+        self.assertEqual(stage.non_military_kind(row),'diplomatic_plan')
+        self.assertEqual(presentation.direction(stage,row),'green')
+        row['title_original']=row['title_original'].replace('IS PREPARED','IS NOT PREPARED')
+        self.assertEqual(presentation.direction(stage,row),'red')
+
+    def test_shipping_sanctions_and_houthi_claim_do_not_invent_geographic_actors(self):
+        row={'title_original':'US sanctions Greece-, Panama-based law firm over aid to Iranian shipping'}
+        self.assertEqual(stage.topic_label(row),'미국·이란·그리스·파나마 · 해운 지원 제재')
+        self.assertEqual(stage._display_headline(row),row['title_original'])
+        self.assertEqual(presentation.direction(stage,row),'red')
+        title='후티 반군은 적의 작전 지휘 센터를 공격했다고 주장했습니다. - Vietnam.vn'
+        row={'title_original':title}
+        self.assertEqual(stage.topic_label(row),'후티 · 공격 주장 보도')
+        self.assertEqual(stage._display_headline(row),title)
+        self.assertEqual(presentation.direction(stage,row),'red')
+
+    def test_resumption_agreement_preparation_and_venue_possibility_are_not_held_talks(self):
+        cases=(('푸틴, 美·우크라와 3자 종전협상 재개 동의…11월 개최 추진 - 마켓인','미국·우크라이나·러시아 · 협상 재개 동의·개최 추진'),
+               ('젤렌스키 “현재 전선에서 휴전 가능”…푸틴도 3자 종전협상 재개 동의 - 한겨레','우크라이나·러시아 · 협상 재개 동의'),
+               ('러시아 "우크라 종전 협상, 내달 중순 UAE 아부다비 개최 가능성" - 뉴스1','우크라이나·러시아 · 협상 개최 가능성'),
+               ('美·中·러 사상 첫 3자 정상회담 가시화… 크렘린궁 “APEC 계기 준비 착수” - 조선비즈 - Chosunbiz','미국·중국·러시아 · 회담 준비·개최 추진'),
+               ('"다음달 푸틴·트럼프·시진핑 3자회담 준비 중"','미국·중국·러시아 · 회담 준비·개최 추진'))
+        for title,topic in cases:
+            with self.subTest(title=title):
+                row={'title_original':title,'title_ko':title}
+                self.assertEqual(stage.non_military_kind(row),'diplomatic_plan')
+                self.assertEqual(stage.topic_label(row),topic)
+                self.assertEqual(presentation.direction(stage,row),'green')
+                self.assertEqual(stage._display_headline(row),title)
+                self.assertEqual(presentation.direction(stage,{'title_original':title+'…러시아 미사일 발사했다'}),'red')
+
+    def test_saved_natural_two_runs_keep_selected_sources_and_full_stage_gate(self):
+        fixture=json.loads((Path(__file__).parent/'test_fixtures/war_policy_outlook_39622466859.json').read_text(encoding='utf-8'))
+        for wid in ('39657556910','39685268322'):
+            with self.subTest(run=wid):
+                self.fixture=fixture['natural_cases'][wid]
+                (_,_,ids),text,receipt=self.present(tuple(range(len(self.fixture['articles']))))
+                self.assertEqual(ids,[r['id'] for r in self.fixture['articles'] if r['rendered']])
+                self.assertEqual(receipt['markets'],self.fixture['markets'])
+                self.assertNotIn('이란·호르무즈',text)
+                self.assertNotIn('사우디·후티',text)
+                self.assertNotIn('🟡',text)
+                if wid=='39657556910':
+                    self.assertIn('조건부 외교 의향·전쟁 선택 경고',text)
+                    self.assertIn('BUT IF US CHOOSES WAR',text)
+                    self.assertIn('미국·이란·그리스·파나마 · 해운 지원 제재',text)
+                else:
+                    self.assertIn('미국·중국·러시아 · 회담 준비·개최 추진',text)
+                self.presenter.verify_alert()
+                self.assertEqual(self.watch.STATE.read_bytes(),self.state_before)
+
+    def test_same_hash_actual_natural_omissions_are_rejected(self):
+        fixture=json.loads((Path(__file__).parent/'test_fixtures/war_policy_outlook_39622466859.json').read_text(encoding='utf-8'))
+        for wid in ('39657556910','39685268322'):
+            with self.subTest(run=wid):
+                f=fixture['natural_cases'][wid]
+                self.watch.ALERT.write_text(f['original_semantic_alert'],encoding='utf-8')
+                self.watch.AUDIT.write_text(json.dumps(f['original_semantic_evidence'],ensure_ascii=False),encoding='utf-8')
+                self.watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in f['articles'] if r['rendered']]}),encoding='utf-8')
+                with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
+                    self.presenter.verify_alert()
+
     def test_production_entry_installs_directional_final_gate(self):
         original = stage.runner.verify_alert
         def entry():
