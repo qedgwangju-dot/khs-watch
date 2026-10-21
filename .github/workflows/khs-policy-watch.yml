@@ -210,6 +210,18 @@ jobs:
           print("nuclear_regression_tests=passed")
           PY
 
+      - name: One-off Temelin official-source smoke check
+        run: |
+          PYTHONPATH=. python - <<'PY'
+          import scripts.khs_nuclear_policy_watch as watch
+          from datetime import datetime
+          now = watch.now_kst()
+          alerts = watch.collect_temelin_milestones(now)
+          print(f"temelin_live_source_smoke=completed time={now.isoformat()} stage_candidates={len(alerts)}")
+          for item in alerts:
+              print(f"temelin_live_candidate stage={item['stage']} source={item['source']} pub={item['published_kst']}")
+          PY
+
       # Maintenance pushes validate only; they do not enable, resume, or dispatch the live watch.
 
   watch:
