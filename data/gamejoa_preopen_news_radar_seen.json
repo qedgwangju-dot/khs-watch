@@ -31456,6 +31456,32 @@
       "source_published_kst": "2026-10-07T14:21+09:00",
       "title": "HD건설기계, 美 데이터센터에 3900억원 규모 발전엔진 공급"
     },
+    "core:5f0ee64c378230b562f36b2f": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178754",
+      "source": "매일경제",
+      "source_body_digest": "a0320e4bc9212880d66fc1ffc826d180cefecc2170dc238c8b32abd8bf203584",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:347b24ff3730c4b1ec4cbdc97fc0b75cfec3d520f88455b95928398b04b59cb1",
+      "source_fact_keys": [
+        "source_fact:v1:4bc96488403c8bc0990b113c204627baece433edc9a5655558c0ebb8f16b56e4",
+        "source_fact:v1:620c24b899a52cb1d8ba3bc405d36f71afb5f92cf8c86980dda12615e97fd73f",
+        "source_fact:v1:7c2ac9fc5088d949367e65eaff7eed665b352d1ef3dff708a73b6cfadfe45322",
+        "source_fact:v1:7c325daa42d2801fb8fa6e2793687d12b9bcf36bb91c69f51d4f0f18fc3e1b71",
+        "source_fact:v1:a976cb57d5e589607d909b1bd143ace1a5b77a41bcfbeabe90cc6ab9acbb08d5",
+        "source_fact:v1:ed606ecf46a0f65b7664ee56459a010225db0561a853eafd0b5b23b771493c97",
+        "source_fact:v1:f7db3233cdce5658953f56b64daec58befc7283b42ead857ac7e2a6dc539e914"
+      ],
+      "source_published_kst": "2026-10-22T03:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가",
+      "telegram_core_fact": "피델리티 D & D 뱅코프(FDBC)가 2026년 9월 30일 종료된 3분기 순이익이 891만8000달러로 전년비 21% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.27달러보다 20.5% 늘었다고 10월 21일 발표했다.",
+      "title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가"
+    },
     "core:5f2dd282a7193ccdb7b01b5a": {
       "first_seen_kst": "2026-10-20T13:07:34+09:00",
       "lanes": {
@@ -37992,6 +38018,29 @@
       "source_title": "[속보]유가 하락에 다우 1% 상승…AI 불안 속 헬스케어·산업주 강세",
       "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 뉴욕증시가 20일(현지시간) 국제유가 하락과 주요 기업들의 실적 호조에 힘입어 대체로 상승 마감했다.",
       "title": "[속보]유가 하락에 다우 1% 상승…AI 불안 속 헬스케어·산업주 강세"
+    },
+    "core:7100dbb146ff06812232b180": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.dt.co.kr/article/12090254",
+      "source": "디지털타임스",
+      "source_body_digest": "aa89490725653b5a24bb195b9b79defab11e576b0d997e27fb3fbd028900305c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:940b0563e7d316a023bc182c090286e2b9919278814e603b2363f26f57d933a9",
+      "source_fact_keys": [
+        "source_fact:v1:1b7ee0fe26ab719a07a0bcccea2587d009152a59d20f70054c621701f7185f89",
+        "source_fact:v1:2af70f197f32f6380a383b97b276732e5ae9a64150c7cb9787186c53b27a6f06",
+        "source_fact:v1:52e1a559b7b687550a4c4786bf5024be9a2af287b9bc7349622d14476c435150",
+        "source_fact:v1:a72a5e56fc9a25e1e0f096ad9797b094af892ceee6ebbf506df1944783169682"
+      ],
+      "source_published_kst": "2026-10-21T06:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증",
+      "telegram_core_fact": "스페이스X는 20일(현지시간) 3분기 매출이 145억8000만달러(약 19조3000억원)로 집계됐다고 밝혔다.",
+      "title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증"
     },
     "core:71069c1d4e6140bef1490b1a": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
@@ -58453,6 +58502,27 @@
       "source_title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안",
       "telegram_core_fact": "삼성물산이 노후 아파트의 기존 골조를 활용해 인허가와 공사기간을 줄이는 리모델링 방식을 서울 서초구 반포푸르지오에 처음 제안했다.",
       "title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안"
+    },
+    "core:ad141ac0af78a186a427e2d7": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638479",
+      "source": "이투데이",
+      "source_body_digest": "9facf7eb510ddef57ba90a423d8cd626dd1ee7ecf4d5c371fb90a17c64ac3dbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5441bf1b0af2f43a689085918df94da33d6949b523767caf48dea79a28b3300",
+      "source_fact_keys": [
+        "source_fact:v1:d0f0205f12d372541271832c379ba390ddb5666cd231c239d1317990a4b4df8b",
+        "source_fact:v1:d9ce118afaa087d78f83a987611f62b86006e441a1a1c1ac5d3b28a266118015"
+      ],
+      "source_published_kst": "2026-10-21T15:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수",
+      "telegram_core_fact": "합병이 이뤄지면 AI 반도체 개발부터 데이터센터 운영, 자율주행 로보택시와 휴머노이드 로봇에 이르기까지 AI 산업의 핵심 공급망을 자체적으로 구축할 수 있다.",
+      "title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수"
     },
     "core:ad3e93e05f702d972909b3f4": {
       "first_seen_kst": "2026-10-17T05:57:10+09:00",
@@ -80743,6 +80813,28 @@
       "telegram_core_fact": "4억6천만원대 뇌물 공여가 확인될 경우 방위사업법 또는 국가계약법에 따라 LIG D&A에 입찰참가 제한 2년 처분이 내려질 수 있다고 방사청은 앞서 예고한 바 있다. 방사청은 20일 정부과천청사에서 방위사업계약심의위원회(이하 위원회)를 개최하고 LIG D&A에 대해 이런 제재 처분을 심의·의결했다고 밝혔다.",
       "title": "방사청, LIG D&A 뇌물·원가부정에 입찰참가 제한 2년 강력제재 | 연합뉴스"
     },
+    "core:f2bb84eb60cb376c0faaf21c": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835656",
+      "source": "뉴시스",
+      "source_body_digest": "0f2beda29d7acbaff572ee97d12d9c54ad48a14f5ddae9daececf5b87202ce8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77bb0d6742e16be80f1c7b054fda076871c9471ab9c9308dc539b362ad748f41",
+      "source_fact_keys": [
+        "source_fact:v1:1a1b3786dbae4b11c85dd6b52e52b8bd7584c10dad7e33a5bf644436d8d9cb79",
+        "source_fact:v1:6d63d9093db39af3b6c52f7a5c7295fca7f66a0462fd7dc7e8e01450c9041c43",
+        "source_fact:v1:eb471f303bb5f82935c129de606f0a75076893c3e130c160450d31ea21805f8d"
+      ],
+      "source_published_kst": "2026-10-21T17:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결",
+      "telegram_core_fact": "문 의장은 \"공모 사업의 신청부터 선정, 사후관리까지 체계적이고 책임 있게 운영하고, 군민의 세금이 효율적으로 쓰일 수 있도록 의회 차원의 점검을 강화하게 된다\"고 말했다.",
+      "title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결"
+    },
     "core:f2cd34616d0e24912e4d12f8": {
       "first_seen_kst": "2026-10-11T15:10:51+09:00",
       "lanes": {
@@ -86885,29 +86977,23 @@
     "event:15edc2f42a80e86acbd68ebd": {
       "first_seen_kst": "2026-10-21T09:27:16+09:00",
       "lanes": {
-        "live": "2026-10-22T01:19:26+09:00"
+        "live": "2026-10-22T05:03:54+09:00"
       },
-      "last_seen_kst": "2026-10-22T01:19:26+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12181261",
-      "source": "매일경제",
-      "source_body_digest": "8a25d85f1900337f7721727730658309a64a84436dbf422152dca09c9287bd27",
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638479",
+      "source": "이투데이",
+      "source_body_digest": "9facf7eb510ddef57ba90a423d8cd626dd1ee7ecf4d5c371fb90a17c64ac3dbe",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0f5f18ac6abdbe50bf4c286a94c9f8c697b731fb8df5b53590e3e3fd60542882",
+      "source_fact_identity": "source_facts:v1:d5441bf1b0af2f43a689085918df94da33d6949b523767caf48dea79a28b3300",
       "source_fact_keys": [
-        "source_fact:v1:3c767c0fce5978222fa5d40c1276e4faac7573f9811d39ff83d22b54dc26873e",
-        "source_fact:v1:445a1e4ce6370f7dfb7fe8a588fb5c75da4ff8c83b38623a646891be418b61e3",
-        "source_fact:v1:499c856dc1ba286596c99ef2e3530b70703753351c0392a4134333f0c0a5fa3b",
-        "source_fact:v1:724e5e97ef98c1b9158623d1e09faeb905704883a89d263daa7a036fb8deb91f",
-        "source_fact:v1:76c3405e5169453e720fafcde328835fd5c32430fd28c53829d45a3b2893a11f",
-        "source_fact:v1:7ba16c10bff609e2438b7e1171c1911218bcd5eb5a3bb692c007e296c5b79f40",
-        "source_fact:v1:a47d9727a847fe2c830609d6ce0cd9c97c33eda46515aee1102ce14877cbcd49",
-        "source_fact:v1:fb8e44c61a2e3731ff872695464efc0aea08d8fd4b32827cdca67b44e46445f3"
+        "source_fact:v1:d0f0205f12d372541271832c379ba390ddb5666cd231c239d1317990a4b4df8b",
+        "source_fact:v1:d9ce118afaa087d78f83a987611f62b86006e441a1a1c1ac5d3b28a266118015"
       ],
-      "source_published_kst": "2026-10-21T06:02+09:00",
+      "source_published_kst": "2026-10-21T15:52+09:00",
       "source_supply_terms": {},
-      "source_title": "듀오스 테크놀러지스 그룹, 올 매출 5000만달러 초과 재확인..55MW 계약",
-      "telegram_core_fact": "재무 실적을 보면 2025년 연간 매출액은 2,700만 달러로 전년(730만 달러) 대비 271% 증가했다.",
-      "title": "듀오스 테크놀러지스 그룹, 올 매출 5000만달러 초과 재확인..55MW 계약"
+      "source_title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수",
+      "telegram_core_fact": "합병이 이뤄지면 AI 반도체 개발부터 데이터센터 운영, 자율주행 로보택시와 휴머노이드 로봇에 이르기까지 AI 산업의 핵심 공급망을 자체적으로 구축할 수 있다.",
+      "title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수"
     },
     "event:165e2bc0e9bf23dbcc77f0e8": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
@@ -100591,23 +100677,24 @@
     "event:c3d30c322db8cbc67673e94b": {
       "first_seen_kst": "2026-10-21T06:55:09+09:00",
       "lanes": {
-        "live": "2026-10-22T00:00:41+09:00",
+        "live": "2026-10-22T05:03:54+09:00",
         "preopen": "2026-10-21T06:55:09+09:00"
       },
-      "last_seen_kst": "2026-10-22T00:00:41+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2638426",
-      "source": "이투데이",
-      "source_body_digest": "ea5913ff84a4287c30a1215eccb7e070b300ef5fe13b234af94cbcd1a16455e9",
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etnews.com/20261021000445",
+      "source": "전자신문",
+      "source_body_digest": "8778fda7e916c829f2b859d5f0e94f3a4c290af9ab0b0e7ffb512454501182fb",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:cbbc540f61d58e807a284ab57e542dbf702f174050c9a231550631e38a315c50",
+      "source_fact_identity": "source_facts:v1:3f30a2c8e749f3a6fb5df35fcadaddebd30171ee84d26fca66ded92076008122",
       "source_fact_keys": [
-        "source_fact:v1:72545d6a32a193f41d136cdc8341751cb24226e2a35b47049ab26e4769befdcc"
+        "source_fact:v1:1f07cef4ecf4a93465786514e4732edb976a92bf10c68e3bc7fc373988c71d73",
+        "source_fact:v1:d426a6dc1b69f307158f1bf60cd6b9530b37d9e714ff0b9f703307db0e429427"
       ],
-      "source_published_kst": "2026-10-21T14:41+09:00",
+      "source_published_kst": "2026-10-21T17:53+09:00",
       "source_supply_terms": {},
-      "source_title": "호반그룹, 핵심 경영진 역할 확대…사업 다각화·미래 성장 가속",
-      "telegram_core_fact": "특히 대한전선 대표이사 재임 기간에는 초고압·해저케이블 등 고부가가치 사업에 대한 투자를 확대하고 글로벌 시장 진출 기반을 강화하는 데 주력했다.",
-      "title": "호반그룹, 핵심 경영진 역할 확대…사업 다각화·미래 성장 가속"
+      "source_title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수",
+      "telegram_core_fact": "세일즈포스 2분기 매출은 113억 5000만 달러로 전년비 11% 증가했습니다.",
+      "title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수"
     },
     "event:c3db04a62a7ba96d685d6941": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
@@ -121376,6 +121463,29 @@
       "telegram_core_fact": "핀텔(291810)은 인천공항 지능형 영상분석시스템 구축사업에 관한 단일판매ㆍ공급계약체결 을 12일에 공시했다.",
       "title": "핀텔 수주공시 - 인천공항 지능형 영상분석시스템 구축사업 7.8억원 (매출액대비 13.4 %)"
     },
+    "fact:2965a1c9c351fc37ffdfb3af": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.dt.co.kr/article/12090254",
+      "source": "디지털타임스",
+      "source_body_digest": "aa89490725653b5a24bb195b9b79defab11e576b0d997e27fb3fbd028900305c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:940b0563e7d316a023bc182c090286e2b9919278814e603b2363f26f57d933a9",
+      "source_fact_keys": [
+        "source_fact:v1:1b7ee0fe26ab719a07a0bcccea2587d009152a59d20f70054c621701f7185f89",
+        "source_fact:v1:2af70f197f32f6380a383b97b276732e5ae9a64150c7cb9787186c53b27a6f06",
+        "source_fact:v1:52e1a559b7b687550a4c4786bf5024be9a2af287b9bc7349622d14476c435150",
+        "source_fact:v1:a72a5e56fc9a25e1e0f096ad9797b094af892ceee6ebbf506df1944783169682"
+      ],
+      "source_published_kst": "2026-10-21T06:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증",
+      "telegram_core_fact": "스페이스X는 20일(현지시간) 3분기 매출이 145억8000만달러(약 19조3000억원)로 집계됐다고 밝혔다.",
+      "title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증"
+    },
     "fact:2978dd9fefc0b468e16b9ceb": {
       "first_seen_kst": "2026-10-14T02:21:39+09:00",
       "lanes": {
@@ -128911,6 +129021,27 @@
       "source_title": "라온피플, 3분기 누적 영업익 12억…전년比 흑자 전환",
       "telegram_core_fact": "인공지능(AI) 전문기업 라온피플은 별도재무제표 기준 3분기 누적 영업이익이 11억8000만원을 기록해 전년비 흑자 전환했다고 21일 공시했다.",
       "title": "라온피플, 3분기 누적 영업익 12억…전년比 흑자 전환"
+    },
+    "fact:3ffd0a2a8816a7824742809d": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638479",
+      "source": "이투데이",
+      "source_body_digest": "9facf7eb510ddef57ba90a423d8cd626dd1ee7ecf4d5c371fb90a17c64ac3dbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5441bf1b0af2f43a689085918df94da33d6949b523767caf48dea79a28b3300",
+      "source_fact_keys": [
+        "source_fact:v1:d0f0205f12d372541271832c379ba390ddb5666cd231c239d1317990a4b4df8b",
+        "source_fact:v1:d9ce118afaa087d78f83a987611f62b86006e441a1a1c1ac5d3b28a266118015"
+      ],
+      "source_published_kst": "2026-10-21T15:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수",
+      "telegram_core_fact": "합병이 이뤄지면 AI 반도체 개발부터 데이터센터 운영, 자율주행 로보택시와 휴머노이드 로봇에 이르기까지 AI 산업의 핵심 공급망을 자체적으로 구축할 수 있다.",
+      "title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수"
     },
     "fact:4041a306f2fa3cdb04f52283": {
       "first_seen_kst": "2026-10-07T19:32:28+09:00",
@@ -187705,6 +187836,28 @@
       "telegram_core_fact": "이마트가 주주가치 제고를 위해 약 758억원 자사주를 소각한다.",
       "title": "이마트, 758억원 규모 자사주 소각…주주환원 약속 '초과이행'"
     },
+    "fact:dadc739378c5e482bb80e9e3": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835656",
+      "source": "뉴시스",
+      "source_body_digest": "0f2beda29d7acbaff572ee97d12d9c54ad48a14f5ddae9daececf5b87202ce8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77bb0d6742e16be80f1c7b054fda076871c9471ab9c9308dc539b362ad748f41",
+      "source_fact_keys": [
+        "source_fact:v1:1a1b3786dbae4b11c85dd6b52e52b8bd7584c10dad7e33a5bf644436d8d9cb79",
+        "source_fact:v1:6d63d9093db39af3b6c52f7a5c7295fca7f66a0462fd7dc7e8e01450c9041c43",
+        "source_fact:v1:eb471f303bb5f82935c129de606f0a75076893c3e130c160450d31ea21805f8d"
+      ],
+      "source_published_kst": "2026-10-21T17:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결",
+      "telegram_core_fact": "문 의장은 \"공모 사업의 신청부터 선정, 사후관리까지 체계적이고 책임 있게 운영하고, 군민의 세금이 효율적으로 쓰일 수 있도록 의회 차원의 점검을 강화하게 된다\"고 말했다.",
+      "title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결"
+    },
     "fact:daf6e19f354fe3d5dbb41296": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
       "lanes": {
@@ -198196,6 +198349,27 @@
       "telegram_core_fact": "이날 파이낸셜타임스(FT)에 따르면 오픈AI는 9월 말 기준 연환산 매출이 약 500억 달러를 기록했다고 투자자들에게 밝혔다.",
       "title": "[TODAY엔비디아]오픈AI의 매출 실망에 230달러로 후퇴…나스닥, 1% 하락"
     },
+    "fact:f5a3314022de62ff84284c11": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etnews.com/20261021000445",
+      "source": "전자신문",
+      "source_body_digest": "8778fda7e916c829f2b859d5f0e94f3a4c290af9ab0b0e7ffb512454501182fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f30a2c8e749f3a6fb5df35fcadaddebd30171ee84d26fca66ded92076008122",
+      "source_fact_keys": [
+        "source_fact:v1:1f07cef4ecf4a93465786514e4732edb976a92bf10c68e3bc7fc373988c71d73",
+        "source_fact:v1:d426a6dc1b69f307158f1bf60cd6b9530b37d9e714ff0b9f703307db0e429427"
+      ],
+      "source_published_kst": "2026-10-21T17:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수",
+      "telegram_core_fact": "세일즈포스 2분기 매출은 113억 5000만 달러로 전년비 11% 증가했습니다.",
+      "title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수"
+    },
     "fact:f5c1b9d511c85b00e8b34a01": {
       "first_seen_kst": "2026-10-21T02:41:49+09:00",
       "lanes": {
@@ -198712,6 +198886,32 @@
       "source_title": "최태원 SK그룹 회장 “반도체 생산능력 서둘러 키워야⋯미ㆍ중 증설 경쟁”",
       "telegram_core_fact": "반도체 수요가 큰 만큼 전남광주뿐 아니라 다른 지역에서도 공장 증설을 검토해야 한다는 취지다.",
       "title": "최태원 SK그룹 회장 “반도체 생산능력 서둘러 키워야⋯미ㆍ중 증설 경쟁”"
+    },
+    "fact:f7a6c060a9bc2a7aae29b268": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178754",
+      "source": "매일경제",
+      "source_body_digest": "a0320e4bc9212880d66fc1ffc826d180cefecc2170dc238c8b32abd8bf203584",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:347b24ff3730c4b1ec4cbdc97fc0b75cfec3d520f88455b95928398b04b59cb1",
+      "source_fact_keys": [
+        "source_fact:v1:4bc96488403c8bc0990b113c204627baece433edc9a5655558c0ebb8f16b56e4",
+        "source_fact:v1:620c24b899a52cb1d8ba3bc405d36f71afb5f92cf8c86980dda12615e97fd73f",
+        "source_fact:v1:7c2ac9fc5088d949367e65eaff7eed665b352d1ef3dff708a73b6cfadfe45322",
+        "source_fact:v1:7c325daa42d2801fb8fa6e2793687d12b9bcf36bb91c69f51d4f0f18fc3e1b71",
+        "source_fact:v1:a976cb57d5e589607d909b1bd143ace1a5b77a41bcfbeabe90cc6ab9acbb08d5",
+        "source_fact:v1:ed606ecf46a0f65b7664ee56459a010225db0561a853eafd0b5b23b771493c97",
+        "source_fact:v1:f7db3233cdce5658953f56b64daec58befc7283b42ead857ac7e2a6dc539e914"
+      ],
+      "source_published_kst": "2026-10-22T03:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가",
+      "telegram_core_fact": "피델리티 D & D 뱅코프(FDBC)가 2026년 9월 30일 종료된 3분기 순이익이 891만8000달러로 전년비 21% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.27달러보다 20.5% 늘었다고 10월 21일 발표했다.",
+      "title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가"
     },
     "fact:f7b5bb0f06be890bcb369a4c": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -206691,6 +206891,28 @@
       "source": "뉴시스",
       "title": "북극해 녹고 중동 항로 흔들리자…북극항로 운항 사상 최대"
     },
+    "link:08da49b948a8496761bac970": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835656",
+      "source": "뉴시스",
+      "source_body_digest": "0f2beda29d7acbaff572ee97d12d9c54ad48a14f5ddae9daececf5b87202ce8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77bb0d6742e16be80f1c7b054fda076871c9471ab9c9308dc539b362ad748f41",
+      "source_fact_keys": [
+        "source_fact:v1:1a1b3786dbae4b11c85dd6b52e52b8bd7584c10dad7e33a5bf644436d8d9cb79",
+        "source_fact:v1:6d63d9093db39af3b6c52f7a5c7295fca7f66a0462fd7dc7e8e01450c9041c43",
+        "source_fact:v1:eb471f303bb5f82935c129de606f0a75076893c3e130c160450d31ea21805f8d"
+      ],
+      "source_published_kst": "2026-10-21T17:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결",
+      "telegram_core_fact": "문 의장은 \"공모 사업의 신청부터 선정, 사후관리까지 체계적이고 책임 있게 운영하고, 군민의 세금이 효율적으로 쓰일 수 있도록 의회 차원의 점검을 강화하게 된다\"고 말했다.",
+      "title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결"
+    },
     "link:08e140914a8d57bdede3fc85": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
       "lanes": {
@@ -208849,6 +209071,29 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "link:0ccf0222b77c08c5f78fe1ba": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.dt.co.kr/article/12090254",
+      "source": "디지털타임스",
+      "source_body_digest": "aa89490725653b5a24bb195b9b79defab11e576b0d997e27fb3fbd028900305c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:940b0563e7d316a023bc182c090286e2b9919278814e603b2363f26f57d933a9",
+      "source_fact_keys": [
+        "source_fact:v1:1b7ee0fe26ab719a07a0bcccea2587d009152a59d20f70054c621701f7185f89",
+        "source_fact:v1:2af70f197f32f6380a383b97b276732e5ae9a64150c7cb9787186c53b27a6f06",
+        "source_fact:v1:52e1a559b7b687550a4c4786bf5024be9a2af287b9bc7349622d14476c435150",
+        "source_fact:v1:a72a5e56fc9a25e1e0f096ad9797b094af892ceee6ebbf506df1944783169682"
+      ],
+      "source_published_kst": "2026-10-21T06:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증",
+      "telegram_core_fact": "스페이스X는 20일(현지시간) 3분기 매출이 145억8000만달러(약 19조3000억원)로 집계됐다고 밝혔다.",
+      "title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증"
     },
     "link:0cd33b490157fc60518e520c": {
       "first_seen_kst": "2026-10-10T00:12:46+09:00",
@@ -236258,6 +236503,32 @@
       "source": "연합뉴스",
       "title": "CXMT, 5세대 D램 공정 양산 돌입…삼성·하이닉스 추격 가속 | 연합뉴스"
     },
+    "link:44c2b24eebd8fc934be56f2c": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178754",
+      "source": "매일경제",
+      "source_body_digest": "a0320e4bc9212880d66fc1ffc826d180cefecc2170dc238c8b32abd8bf203584",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:347b24ff3730c4b1ec4cbdc97fc0b75cfec3d520f88455b95928398b04b59cb1",
+      "source_fact_keys": [
+        "source_fact:v1:4bc96488403c8bc0990b113c204627baece433edc9a5655558c0ebb8f16b56e4",
+        "source_fact:v1:620c24b899a52cb1d8ba3bc405d36f71afb5f92cf8c86980dda12615e97fd73f",
+        "source_fact:v1:7c2ac9fc5088d949367e65eaff7eed665b352d1ef3dff708a73b6cfadfe45322",
+        "source_fact:v1:7c325daa42d2801fb8fa6e2793687d12b9bcf36bb91c69f51d4f0f18fc3e1b71",
+        "source_fact:v1:a976cb57d5e589607d909b1bd143ace1a5b77a41bcfbeabe90cc6ab9acbb08d5",
+        "source_fact:v1:ed606ecf46a0f65b7664ee56459a010225db0561a853eafd0b5b23b771493c97",
+        "source_fact:v1:f7db3233cdce5658953f56b64daec58befc7283b42ead857ac7e2a6dc539e914"
+      ],
+      "source_published_kst": "2026-10-22T03:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가",
+      "telegram_core_fact": "피델리티 D & D 뱅코프(FDBC)가 2026년 9월 30일 종료된 3분기 순이익이 891만8000달러로 전년비 21% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.27달러보다 20.5% 늘었다고 10월 21일 발표했다.",
+      "title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가"
+    },
     "link:44c74fe17993ecf28576bd43": {
       "first_seen_kst": "2026-10-16T14:45:17+09:00",
       "lanes": {
@@ -246804,6 +247075,27 @@
       "source_title": "에피소드컴퍼니, 160억원 유상증자…납입 후 최대주주 변경 예정",
       "telegram_core_fact": "에피소드컴퍼니가 사업 투자 재원 확보와 재무건전성 개선을 위해 160억원 유상증자를 추진한다. 납입 완료 후 최대주주는 하이라인컴퍼니로 변경되며, 지분율은 현재 9.91%에서 증자 완료 후 22.58%로 높아질 예정이다.",
       "title": "에피소드컴퍼니, 160억원 유상증자…납입 후 최대주주 변경 예정"
+    },
+    "link:59e53f3ef811f3aeec40ea0d": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638479",
+      "source": "이투데이",
+      "source_body_digest": "9facf7eb510ddef57ba90a423d8cd626dd1ee7ecf4d5c371fb90a17c64ac3dbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5441bf1b0af2f43a689085918df94da33d6949b523767caf48dea79a28b3300",
+      "source_fact_keys": [
+        "source_fact:v1:d0f0205f12d372541271832c379ba390ddb5666cd231c239d1317990a4b4df8b",
+        "source_fact:v1:d9ce118afaa087d78f83a987611f62b86006e441a1a1c1ac5d3b28a266118015"
+      ],
+      "source_published_kst": "2026-10-21T15:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수",
+      "telegram_core_fact": "합병이 이뤄지면 AI 반도체 개발부터 데이터센터 운영, 자율주행 로보택시와 휴머노이드 로봇에 이르기까지 AI 산업의 핵심 공급망을 자체적으로 구축할 수 있다.",
+      "title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수"
     },
     "link:59eaca2ed154852e43b8b478": {
       "first_seen_kst": "2026-10-19T17:09:04+09:00",
@@ -295361,6 +295653,27 @@
       "telegram_core_fact": "대우건설은 4130억원 용인 첨단시스템반도체 클러스터 국가산업단지 조성공사 1공구 공사를 수주했다고 13일 공시했다.",
       "title": "대우건설, 4130억 규모 공사 수주"
     },
+    "link:bcc0d97cc7ef0cf1e04aefd1": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etnews.com/20261021000445",
+      "source": "전자신문",
+      "source_body_digest": "8778fda7e916c829f2b859d5f0e94f3a4c290af9ab0b0e7ffb512454501182fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f30a2c8e749f3a6fb5df35fcadaddebd30171ee84d26fca66ded92076008122",
+      "source_fact_keys": [
+        "source_fact:v1:1f07cef4ecf4a93465786514e4732edb976a92bf10c68e3bc7fc373988c71d73",
+        "source_fact:v1:d426a6dc1b69f307158f1bf60cd6b9530b37d9e714ff0b9f703307db0e429427"
+      ],
+      "source_published_kst": "2026-10-21T17:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수",
+      "telegram_core_fact": "세일즈포스 2분기 매출은 113억 5000만 달러로 전년비 11% 증가했습니다.",
+      "title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수"
+    },
     "link:bcc86e1d579a5a6b368a3cbe": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
       "lanes": {
@@ -312373,6 +312686,24 @@
       "telegram_core_fact": "아이온큐(IONQ)가 제로 트러스트 보안 기업 엘리시티(Elisity)를 최대 13억 달러 전량 주식 거래로 인수하는 확정 계약을 체결했다고 13일 발표했다.",
       "title": "아이온큐, 엘리시티 13억 달러 전량 주식 인수 계약"
     },
+    "link:e12bced0f37b04e916dac111": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638551",
+      "source": "이투데이",
+      "source_body_digest": "8c1968f3f4217a5f374301fbf45276dee759132cb9e59c2bf0d8db8c02d48965",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T17:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 대원저축은행 인수로 저축은행업 진출⋯금융위 대주주 변경 승인",
+      "telegram_core_fact": "국내 핀테크 기업이 저축은행을 인수한 것은 이번이 처음이다.",
+      "title": "핀다, 대원저축은행 인수로 저축은행업 진출⋯금융위 대주주 변경 승인"
+    },
     "link:e1333ae1cb33b9bd5c3dedec": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
       "lanes": {
@@ -323672,6 +324003,24 @@
       "source_published_kst": "2026-10-06T15:16+09:00",
       "title": "“유럽 첫 상용 SDV 뚫었다”… LG전자 차세대 콕핏 르노 공급"
     },
+    "link:f9221d6af96222616107a2d8": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etnews.com/20261021000444",
+      "source": "전자신문",
+      "source_body_digest": "5e8dd75ae76c32e92f7e26c549acb111db939ee87fb6d111667c164bf286b601",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "제논, 인니 '나이키 신발' 품질검사 AI 양산 검증 통과",
+      "telegram_core_fact": "신발 상판의 품질을 AI로 검사하는 후속 사업도 수주했다.",
+      "title": "제논, 인니 '나이키 신발' 품질검사 AI 양산 검증 통과"
+    },
     "link:f9325a1bcfecc59745e98111": {
       "first_seen_kst": "2026-10-07T22:24:07+09:00",
       "lanes": {
@@ -331317,6 +331666,28 @@
       "source_published_kst": "2026-10-06T16:01+09:00",
       "title": "코스피, 삼전·하닉 자사주 매입 종료 경계감에 약세...코스닥은 강세[fn마감시황]"
     },
+    "original:08fd90b4ff8229031fdc0c33": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835656",
+      "source": "뉴시스",
+      "source_body_digest": "0f2beda29d7acbaff572ee97d12d9c54ad48a14f5ddae9daececf5b87202ce8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77bb0d6742e16be80f1c7b054fda076871c9471ab9c9308dc539b362ad748f41",
+      "source_fact_keys": [
+        "source_fact:v1:1a1b3786dbae4b11c85dd6b52e52b8bd7584c10dad7e33a5bf644436d8d9cb79",
+        "source_fact:v1:6d63d9093db39af3b6c52f7a5c7295fca7f66a0462fd7dc7e8e01450c9041c43",
+        "source_fact:v1:eb471f303bb5f82935c129de606f0a75076893c3e130c160450d31ea21805f8d"
+      ],
+      "source_published_kst": "2026-10-21T17:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결",
+      "telegram_core_fact": "문 의장은 \"공모 사업의 신청부터 선정, 사후관리까지 체계적이고 책임 있게 운영하고, 군민의 세금이 효율적으로 쓰일 수 있도록 의회 차원의 점검을 강화하게 된다\"고 말했다.",
+      "title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결"
+    },
     "original:0906d30dc1490e7d4f4385a2": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
       "lanes": {
@@ -335847,6 +336218,24 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811136",
       "source": "뉴시스",
       "title": "화재보험협회, AI·데이터 인재 공개채용…18일까지 접수"
+    },
+    "original:129989d9e8d1e54d62746f84": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638551",
+      "source": "이투데이",
+      "source_body_digest": "8c1968f3f4217a5f374301fbf45276dee759132cb9e59c2bf0d8db8c02d48965",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T17:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 대원저축은행 인수로 저축은행업 진출⋯금융위 대주주 변경 승인",
+      "telegram_core_fact": "국내 핀테크 기업이 저축은행을 인수한 것은 이번이 처음이다.",
+      "title": "핀다, 대원저축은행 인수로 저축은행업 진출⋯금융위 대주주 변경 승인"
     },
     "original:12b862c2dec6b2ce4f62176f": {
       "first_seen_kst": "2026-10-13T14:32:55+09:00",
@@ -347406,6 +347795,27 @@
       "source_title": "'묻지마 범죄' 막겠다며 신설됐지만…흉기소지 '전조증상'에도 구멍",
       "telegram_core_fact": "정부와 국회는 반복되는 이상동기 강력범죄를 예방하겠다는 목표로 지난해 공공장소 흉기소지죄를 신설했지만, 이번 참극을 막지 못했다.",
       "title": "'묻지마 범죄' 막겠다며 신설됐지만…흉기소지 '전조증상'에도 구멍"
+    },
+    "original:29f9878ccce97c78664ff3f7": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etnews.com/20261021000445",
+      "source": "전자신문",
+      "source_body_digest": "8778fda7e916c829f2b859d5f0e94f3a4c290af9ab0b0e7ffb512454501182fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f30a2c8e749f3a6fb5df35fcadaddebd30171ee84d26fca66ded92076008122",
+      "source_fact_keys": [
+        "source_fact:v1:1f07cef4ecf4a93465786514e4732edb976a92bf10c68e3bc7fc373988c71d73",
+        "source_fact:v1:d426a6dc1b69f307158f1bf60cd6b9530b37d9e714ff0b9f703307db0e429427"
+      ],
+      "source_published_kst": "2026-10-21T17:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수",
+      "telegram_core_fact": "세일즈포스 2분기 매출은 113억 5000만 달러로 전년비 11% 증가했습니다.",
+      "title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수"
     },
     "original:2a171a51efd196f42f480909": {
       "first_seen_kst": "2026-10-02T05:03:05+09:00",
@@ -363523,6 +363933,24 @@
       "source_title": "“캐피탈 기업금융 100조 시대…GPU서버·데이터센터 등 자산관리 역할 확대해야”",
       "telegram_core_fact": "캐피탈사가 축적한 자산가치 평가·관리 역량을 활용해 기업의 설비투자를 지원하고, 이를 위해 중고차 매매와 보험 판매 등 업무범위도 확대해야 한다는 주장이다.",
       "title": "“캐피탈 기업금융 100조 시대…GPU서버·데이터센터 등 자산관리 역할 확대해야”"
+    },
+    "original:4a6bb80561e2ccdbb804db8d": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etnews.com/20261021000444",
+      "source": "전자신문",
+      "source_body_digest": "5e8dd75ae76c32e92f7e26c549acb111db939ee87fb6d111667c164bf286b601",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "제논, 인니 '나이키 신발' 품질검사 AI 양산 검증 통과",
+      "telegram_core_fact": "신발 상판의 품질을 AI로 검사하는 후속 사업도 수주했다.",
+      "title": "제논, 인니 '나이키 신발' 품질검사 AI 양산 검증 통과"
     },
     "original:4a6dd8fa82fedfee221176f3": {
       "first_seen_kst": "2026-10-15T15:07:47+09:00",
@@ -416455,6 +416883,29 @@
       "source_published_kst": "2026-10-06T06:37+09:00",
       "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
     },
+    "original:b8c31f763843c372af8bf669": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.dt.co.kr/article/12090254",
+      "source": "디지털타임스",
+      "source_body_digest": "aa89490725653b5a24bb195b9b79defab11e576b0d997e27fb3fbd028900305c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:940b0563e7d316a023bc182c090286e2b9919278814e603b2363f26f57d933a9",
+      "source_fact_keys": [
+        "source_fact:v1:1b7ee0fe26ab719a07a0bcccea2587d009152a59d20f70054c621701f7185f89",
+        "source_fact:v1:2af70f197f32f6380a383b97b276732e5ae9a64150c7cb9787186c53b27a6f06",
+        "source_fact:v1:52e1a559b7b687550a4c4786bf5024be9a2af287b9bc7349622d14476c435150",
+        "source_fact:v1:a72a5e56fc9a25e1e0f096ad9797b094af892ceee6ebbf506df1944783169682"
+      ],
+      "source_published_kst": "2026-10-21T06:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증",
+      "telegram_core_fact": "스페이스X는 20일(현지시간) 3분기 매출이 145억8000만달러(약 19조3000억원)로 집계됐다고 밝혔다.",
+      "title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증"
+    },
     "original:b8c4e8aa9f19f73138c17aa4": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
       "lanes": {
@@ -432993,6 +433444,27 @@
       "telegram_core_fact": "국방정보통신협회(회장 신인섭)는 최근 엔에스엠과 '국방 IT 발전 및 마이크로데이터센터 협력체계 구축'을 위한 업무협약(MOU)을 체결했다. 엔에스엠은 이 같은 설계를 통해 기존 방식 대비 운영비용 50% 절감, 에너지 사용량 70% 절약, 방진 성능 99%, 방음 성능 30% 개선 등의 효과를 확보했다고 설명했다.",
       "title": "국방정보통신협회-엔에스엠, 국방용 마이크로데이터센터 협력"
     },
+    "original:dc4e3f12a7c057aa4f2b4477": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638479",
+      "source": "이투데이",
+      "source_body_digest": "9facf7eb510ddef57ba90a423d8cd626dd1ee7ecf4d5c371fb90a17c64ac3dbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5441bf1b0af2f43a689085918df94da33d6949b523767caf48dea79a28b3300",
+      "source_fact_keys": [
+        "source_fact:v1:d0f0205f12d372541271832c379ba390ddb5666cd231c239d1317990a4b4df8b",
+        "source_fact:v1:d9ce118afaa087d78f83a987611f62b86006e441a1a1c1ac5d3b28a266118015"
+      ],
+      "source_published_kst": "2026-10-21T15:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수",
+      "telegram_core_fact": "합병이 이뤄지면 AI 반도체 개발부터 데이터센터 운영, 자율주행 로보택시와 휴머노이드 로봇에 이르기까지 AI 산업의 핵심 공급망을 자체적으로 구축할 수 있다.",
+      "title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수"
+    },
     "original:dc4f65a3615fb962a7f61782": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -439471,6 +439943,32 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "트럼프 특사·푸틴, 종전 협상서 '러 석유업체 빅딜' 논의"
+    },
+    "original:ea8e63c2047394d08f2f9039": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178754",
+      "source": "매일경제",
+      "source_body_digest": "a0320e4bc9212880d66fc1ffc826d180cefecc2170dc238c8b32abd8bf203584",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:347b24ff3730c4b1ec4cbdc97fc0b75cfec3d520f88455b95928398b04b59cb1",
+      "source_fact_keys": [
+        "source_fact:v1:4bc96488403c8bc0990b113c204627baece433edc9a5655558c0ebb8f16b56e4",
+        "source_fact:v1:620c24b899a52cb1d8ba3bc405d36f71afb5f92cf8c86980dda12615e97fd73f",
+        "source_fact:v1:7c2ac9fc5088d949367e65eaff7eed665b352d1ef3dff708a73b6cfadfe45322",
+        "source_fact:v1:7c325daa42d2801fb8fa6e2793687d12b9bcf36bb91c69f51d4f0f18fc3e1b71",
+        "source_fact:v1:a976cb57d5e589607d909b1bd143ace1a5b77a41bcfbeabe90cc6ab9acbb08d5",
+        "source_fact:v1:ed606ecf46a0f65b7664ee56459a010225db0561a853eafd0b5b23b771493c97",
+        "source_fact:v1:f7db3233cdce5658953f56b64daec58befc7283b42ead857ac7e2a6dc539e914"
+      ],
+      "source_published_kst": "2026-10-22T03:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가",
+      "telegram_core_fact": "피델리티 D & D 뱅코프(FDBC)가 2026년 9월 30일 종료된 3분기 순이익이 891만8000달러로 전년비 21% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.27달러보다 20.5% 늘었다고 10월 21일 발표했다.",
+      "title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가"
     },
     "original:ea9fed3f49a5d03c9ef81f8c": {
       "first_seen_kst": "2026-10-14T07:46:13+09:00",
@@ -527291,6 +527789,27 @@
       "telegram_core_fact": "대만 등 아시아 시장의 처방 확대가 더해지면 연간 매출 100억원 돌파도 가시권에 들어온다. 현지 파트너사와의 협력을 통해 외연을 넓혀 이를 기반으로 연간 매출 100억원 돌파와 코스닥 상장까지 속도감 있게 완주한다는 전략이다.",
       "title": "디시젠, 온코프리 대만 간다...수출선 다변화로 시장 가치 입증"
     },
+    "source_fact:27ab4f4952f6c03e3795a39f": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etnews.com/20261021000445",
+      "source": "전자신문",
+      "source_body_digest": "8778fda7e916c829f2b859d5f0e94f3a4c290af9ab0b0e7ffb512454501182fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f30a2c8e749f3a6fb5df35fcadaddebd30171ee84d26fca66ded92076008122",
+      "source_fact_keys": [
+        "source_fact:v1:1f07cef4ecf4a93465786514e4732edb976a92bf10c68e3bc7fc373988c71d73",
+        "source_fact:v1:d426a6dc1b69f307158f1bf60cd6b9530b37d9e714ff0b9f703307db0e429427"
+      ],
+      "source_published_kst": "2026-10-21T17:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수",
+      "telegram_core_fact": "세일즈포스 2분기 매출은 113억 5000만 달러로 전년비 11% 증가했습니다.",
+      "title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수"
+    },
     "source_fact:27adfe95339a107d2da9581e": {
       "first_seen_kst": "2026-10-14T14:53:15+09:00",
       "lanes": {
@@ -535972,6 +536491,32 @@
       "source_title": "李대통령, 3기 신도시 계양지구 방문…\"비상시기, 공급 당겨야\" | 연합뉴스",
       "telegram_core_fact": "이 대통령은 이 자리에서 \"2022년부터 3년간 주택 인허가가 감소함에 따라 공급 공백이 발생했다\"며 \"수용과 협의를 동시에 진행하는 등 지금이 비상시기인 만큼 공급 기간을 당겨야 한다\"고 강조했다.",
       "title": "李대통령, 3기 신도시 계양지구 방문…\"비상시기, 공급 당겨야\" | 연합뉴스"
+    },
+    "source_fact:2bec977f332ba938a46e6ea3": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178754",
+      "source": "매일경제",
+      "source_body_digest": "a0320e4bc9212880d66fc1ffc826d180cefecc2170dc238c8b32abd8bf203584",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:347b24ff3730c4b1ec4cbdc97fc0b75cfec3d520f88455b95928398b04b59cb1",
+      "source_fact_keys": [
+        "source_fact:v1:4bc96488403c8bc0990b113c204627baece433edc9a5655558c0ebb8f16b56e4",
+        "source_fact:v1:620c24b899a52cb1d8ba3bc405d36f71afb5f92cf8c86980dda12615e97fd73f",
+        "source_fact:v1:7c2ac9fc5088d949367e65eaff7eed665b352d1ef3dff708a73b6cfadfe45322",
+        "source_fact:v1:7c325daa42d2801fb8fa6e2793687d12b9bcf36bb91c69f51d4f0f18fc3e1b71",
+        "source_fact:v1:a976cb57d5e589607d909b1bd143ace1a5b77a41bcfbeabe90cc6ab9acbb08d5",
+        "source_fact:v1:ed606ecf46a0f65b7664ee56459a010225db0561a853eafd0b5b23b771493c97",
+        "source_fact:v1:f7db3233cdce5658953f56b64daec58befc7283b42ead857ac7e2a6dc539e914"
+      ],
+      "source_published_kst": "2026-10-22T03:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가",
+      "telegram_core_fact": "피델리티 D & D 뱅코프(FDBC)가 2026년 9월 30일 종료된 3분기 순이익이 891만8000달러로 전년비 21% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.27달러보다 20.5% 늘었다고 10월 21일 발표했다.",
+      "title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가"
     },
     "source_fact:2beeb5b7774d341acd621411": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
@@ -547571,6 +548116,32 @@
       "source_title": "사우디 vs 후티 충돌 격화⋯美 직접 개입 가능성까지 부상 [종합]",
       "telegram_core_fact": "예멘 친이란 반군 후티가 사우디 수도 리야드까지 미사일 공격을 확대하고 사우디가 강력 대응을 예고한 가운데 미국도 군사개입 가능성을 시사하면서 확전 우려가 고조됐다.",
       "title": "사우디 vs 후티 충돌 격화⋯美 직접 개입 가능성까지 부상 [종합]"
+    },
+    "source_fact:31b398fd58cd071193ac3f39": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178754",
+      "source": "매일경제",
+      "source_body_digest": "a0320e4bc9212880d66fc1ffc826d180cefecc2170dc238c8b32abd8bf203584",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:347b24ff3730c4b1ec4cbdc97fc0b75cfec3d520f88455b95928398b04b59cb1",
+      "source_fact_keys": [
+        "source_fact:v1:4bc96488403c8bc0990b113c204627baece433edc9a5655558c0ebb8f16b56e4",
+        "source_fact:v1:620c24b899a52cb1d8ba3bc405d36f71afb5f92cf8c86980dda12615e97fd73f",
+        "source_fact:v1:7c2ac9fc5088d949367e65eaff7eed665b352d1ef3dff708a73b6cfadfe45322",
+        "source_fact:v1:7c325daa42d2801fb8fa6e2793687d12b9bcf36bb91c69f51d4f0f18fc3e1b71",
+        "source_fact:v1:a976cb57d5e589607d909b1bd143ace1a5b77a41bcfbeabe90cc6ab9acbb08d5",
+        "source_fact:v1:ed606ecf46a0f65b7664ee56459a010225db0561a853eafd0b5b23b771493c97",
+        "source_fact:v1:f7db3233cdce5658953f56b64daec58befc7283b42ead857ac7e2a6dc539e914"
+      ],
+      "source_published_kst": "2026-10-22T03:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가",
+      "telegram_core_fact": "피델리티 D & D 뱅코프(FDBC)가 2026년 9월 30일 종료된 3분기 순이익이 891만8000달러로 전년비 21% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.27달러보다 20.5% 늘었다고 10월 21일 발표했다.",
+      "title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가"
     },
     "source_fact:31b7cbd985aa272244855b29": {
       "first_seen_kst": "2026-10-10T20:30:39+09:00",
@@ -659599,6 +660170,28 @@
       "telegram_core_fact": "외국인은 올해 코스피 시장에서 누적 197조원 넘게 순매도했다. 2008년 1월 11일 46.35% 이후 약 18년9개월 만에 가장 낮은 수준이다.",
       "title": "107조 벌어도 외국인은 팔았다…삼전 지분율 18년9개월 최저[종합]"
     },
+    "source_fact:6a26cabb634e9d6483a508a6": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835656",
+      "source": "뉴시스",
+      "source_body_digest": "0f2beda29d7acbaff572ee97d12d9c54ad48a14f5ddae9daececf5b87202ce8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77bb0d6742e16be80f1c7b054fda076871c9471ab9c9308dc539b362ad748f41",
+      "source_fact_keys": [
+        "source_fact:v1:1a1b3786dbae4b11c85dd6b52e52b8bd7584c10dad7e33a5bf644436d8d9cb79",
+        "source_fact:v1:6d63d9093db39af3b6c52f7a5c7295fca7f66a0462fd7dc7e8e01450c9041c43",
+        "source_fact:v1:eb471f303bb5f82935c129de606f0a75076893c3e130c160450d31ea21805f8d"
+      ],
+      "source_published_kst": "2026-10-21T17:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결",
+      "telegram_core_fact": "문 의장은 \"공모 사업의 신청부터 선정, 사후관리까지 체계적이고 책임 있게 운영하고, 군민의 세금이 효율적으로 쓰일 수 있도록 의회 차원의 점검을 강화하게 된다\"고 말했다.",
+      "title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결"
+    },
     "source_fact:6a284d65ffbc886c6a07e4a5": {
       "first_seen_kst": "2026-10-20T02:15:18+09:00",
       "lanes": {
@@ -689162,6 +689755,32 @@
       "telegram_core_fact": "KT&G는 튀르키예, 러시아, 카자흐스탄, 인도네시아 등 해외 생산거점을 확대하며 국내를 포함한 글로벌 5각 생산체제를 구축했다.",
       "title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\""
     },
+    "source_fact:79223e9ddf65bf178f7a0e33": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178754",
+      "source": "매일경제",
+      "source_body_digest": "a0320e4bc9212880d66fc1ffc826d180cefecc2170dc238c8b32abd8bf203584",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:347b24ff3730c4b1ec4cbdc97fc0b75cfec3d520f88455b95928398b04b59cb1",
+      "source_fact_keys": [
+        "source_fact:v1:4bc96488403c8bc0990b113c204627baece433edc9a5655558c0ebb8f16b56e4",
+        "source_fact:v1:620c24b899a52cb1d8ba3bc405d36f71afb5f92cf8c86980dda12615e97fd73f",
+        "source_fact:v1:7c2ac9fc5088d949367e65eaff7eed665b352d1ef3dff708a73b6cfadfe45322",
+        "source_fact:v1:7c325daa42d2801fb8fa6e2793687d12b9bcf36bb91c69f51d4f0f18fc3e1b71",
+        "source_fact:v1:a976cb57d5e589607d909b1bd143ace1a5b77a41bcfbeabe90cc6ab9acbb08d5",
+        "source_fact:v1:ed606ecf46a0f65b7664ee56459a010225db0561a853eafd0b5b23b771493c97",
+        "source_fact:v1:f7db3233cdce5658953f56b64daec58befc7283b42ead857ac7e2a6dc539e914"
+      ],
+      "source_published_kst": "2026-10-22T03:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가",
+      "telegram_core_fact": "피델리티 D & D 뱅코프(FDBC)가 2026년 9월 30일 종료된 3분기 순이익이 891만8000달러로 전년비 21% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.27달러보다 20.5% 늘었다고 10월 21일 발표했다.",
+      "title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가"
+    },
     "source_fact:7923e75fd6e5f2992b0436cb": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
       "lanes": {
@@ -696094,6 +696713,29 @@
       "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
       "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
       "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
+    },
+    "source_fact:7cdad523a4ea9cf6a88a1559": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.dt.co.kr/article/12090254",
+      "source": "디지털타임스",
+      "source_body_digest": "aa89490725653b5a24bb195b9b79defab11e576b0d997e27fb3fbd028900305c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:940b0563e7d316a023bc182c090286e2b9919278814e603b2363f26f57d933a9",
+      "source_fact_keys": [
+        "source_fact:v1:1b7ee0fe26ab719a07a0bcccea2587d009152a59d20f70054c621701f7185f89",
+        "source_fact:v1:2af70f197f32f6380a383b97b276732e5ae9a64150c7cb9787186c53b27a6f06",
+        "source_fact:v1:52e1a559b7b687550a4c4786bf5024be9a2af287b9bc7349622d14476c435150",
+        "source_fact:v1:a72a5e56fc9a25e1e0f096ad9797b094af892ceee6ebbf506df1944783169682"
+      ],
+      "source_published_kst": "2026-10-21T06:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증",
+      "telegram_core_fact": "스페이스X는 20일(현지시간) 3분기 매출이 145억8000만달러(약 19조3000억원)로 집계됐다고 밝혔다.",
+      "title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증"
     },
     "source_fact:7ce380b211522599516b7ce2": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
@@ -711002,6 +711644,28 @@
       "telegram_core_fact": "교보문고에 따르면 노벨문학상 수상자가 발표된 지난 8일 오후 8시부터 이날 오전 9시까지 카슨 도서 판매량은 수상자 발표 전 평균 판매량의 203.9배로 늘었다. 올해 노벨문학상을 받은 캐나다 작가 앤 카슨(76)의 작품이 국내 서점가에서 판매 급증세를 이어가고 있다.",
       "title": "노벨문학상 앤 카슨, 서점가 돌풍…교보 판매량 203.9배 ↑"
     },
+    "source_fact:8529a51a1c1176ee91d07cea": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835656",
+      "source": "뉴시스",
+      "source_body_digest": "0f2beda29d7acbaff572ee97d12d9c54ad48a14f5ddae9daececf5b87202ce8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77bb0d6742e16be80f1c7b054fda076871c9471ab9c9308dc539b362ad748f41",
+      "source_fact_keys": [
+        "source_fact:v1:1a1b3786dbae4b11c85dd6b52e52b8bd7584c10dad7e33a5bf644436d8d9cb79",
+        "source_fact:v1:6d63d9093db39af3b6c52f7a5c7295fca7f66a0462fd7dc7e8e01450c9041c43",
+        "source_fact:v1:eb471f303bb5f82935c129de606f0a75076893c3e130c160450d31ea21805f8d"
+      ],
+      "source_published_kst": "2026-10-21T17:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결",
+      "telegram_core_fact": "문 의장은 \"공모 사업의 신청부터 선정, 사후관리까지 체계적이고 책임 있게 운영하고, 군민의 세금이 효율적으로 쓰일 수 있도록 의회 차원의 점검을 강화하게 된다\"고 말했다.",
+      "title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결"
+    },
     "source_fact:8529d02f8cc04e2509419eb2": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -711190,6 +711854,32 @@
       "source_title": "美 증시 반도체 지수 9일 만에 반등...과매도 지적에 저가 매수",
       "telegram_core_fact": "[파이낸셜뉴스] 수요 감소 걱정으로 지난 8거래일 연속 하락했던 미국의 반도체 주식들이 19일(현지시간) 저가 매수를 노리는 자금이 유입되면서 겨우 반등했다. 미국 상장 30개 주요 반도체 종목으로 구성된 필라델피아반도체지수(SOX)는 이날 전 거래일보다 1.6% 상승했다.",
       "title": "美 증시 반도체 지수 9일 만에 반등...과매도 지적에 저가 매수"
+    },
+    "source_fact:853416cf848f584e31907708": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178754",
+      "source": "매일경제",
+      "source_body_digest": "a0320e4bc9212880d66fc1ffc826d180cefecc2170dc238c8b32abd8bf203584",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:347b24ff3730c4b1ec4cbdc97fc0b75cfec3d520f88455b95928398b04b59cb1",
+      "source_fact_keys": [
+        "source_fact:v1:4bc96488403c8bc0990b113c204627baece433edc9a5655558c0ebb8f16b56e4",
+        "source_fact:v1:620c24b899a52cb1d8ba3bc405d36f71afb5f92cf8c86980dda12615e97fd73f",
+        "source_fact:v1:7c2ac9fc5088d949367e65eaff7eed665b352d1ef3dff708a73b6cfadfe45322",
+        "source_fact:v1:7c325daa42d2801fb8fa6e2793687d12b9bcf36bb91c69f51d4f0f18fc3e1b71",
+        "source_fact:v1:a976cb57d5e589607d909b1bd143ace1a5b77a41bcfbeabe90cc6ab9acbb08d5",
+        "source_fact:v1:ed606ecf46a0f65b7664ee56459a010225db0561a853eafd0b5b23b771493c97",
+        "source_fact:v1:f7db3233cdce5658953f56b64daec58befc7283b42ead857ac7e2a6dc539e914"
+      ],
+      "source_published_kst": "2026-10-22T03:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가",
+      "telegram_core_fact": "피델리티 D & D 뱅코프(FDBC)가 2026년 9월 30일 종료된 3분기 순이익이 891만8000달러로 전년비 21% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.27달러보다 20.5% 늘었다고 10월 21일 발표했다.",
+      "title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가"
     },
     "source_fact:8536a446ec765acbb36ea8f8": {
       "first_seen_kst": "2026-10-16T19:25:42+09:00",
@@ -743649,6 +744339,27 @@
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
     },
+    "source_fact:963be3002ea4dc20b677941e": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638479",
+      "source": "이투데이",
+      "source_body_digest": "9facf7eb510ddef57ba90a423d8cd626dd1ee7ecf4d5c371fb90a17c64ac3dbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5441bf1b0af2f43a689085918df94da33d6949b523767caf48dea79a28b3300",
+      "source_fact_keys": [
+        "source_fact:v1:d0f0205f12d372541271832c379ba390ddb5666cd231c239d1317990a4b4df8b",
+        "source_fact:v1:d9ce118afaa087d78f83a987611f62b86006e441a1a1c1ac5d3b28a266118015"
+      ],
+      "source_published_kst": "2026-10-21T15:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수",
+      "telegram_core_fact": "합병이 이뤄지면 AI 반도체 개발부터 데이터센터 운영, 자율주행 로보택시와 휴머노이드 로봇에 이르기까지 AI 산업의 핵심 공급망을 자체적으로 구축할 수 있다.",
+      "title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수"
+    },
     "source_fact:963ca32ff21214c4e5c2460f": {
       "first_seen_kst": "2026-10-21T12:08:47+09:00",
       "lanes": {
@@ -769691,6 +770402,29 @@
       "telegram_core_fact": "AI 데이터센터 투자 확대로 반도체 수요가 이어지는 가운데 D램 가격 상승세와 중국 메모리 업체의 공급 확대가 향후 시장의 주요 변수로 작용할 것이라는 전망이 나왔다.",
       "title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음"
     },
+    "source_fact:a3205783942e86aba267dde7": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.dt.co.kr/article/12090254",
+      "source": "디지털타임스",
+      "source_body_digest": "aa89490725653b5a24bb195b9b79defab11e576b0d997e27fb3fbd028900305c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:940b0563e7d316a023bc182c090286e2b9919278814e603b2363f26f57d933a9",
+      "source_fact_keys": [
+        "source_fact:v1:1b7ee0fe26ab719a07a0bcccea2587d009152a59d20f70054c621701f7185f89",
+        "source_fact:v1:2af70f197f32f6380a383b97b276732e5ae9a64150c7cb9787186c53b27a6f06",
+        "source_fact:v1:52e1a559b7b687550a4c4786bf5024be9a2af287b9bc7349622d14476c435150",
+        "source_fact:v1:a72a5e56fc9a25e1e0f096ad9797b094af892ceee6ebbf506df1944783169682"
+      ],
+      "source_published_kst": "2026-10-21T06:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증",
+      "telegram_core_fact": "스페이스X는 20일(현지시간) 3분기 매출이 145억8000만달러(약 19조3000억원)로 집계됐다고 밝혔다.",
+      "title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증"
+    },
     "source_fact:a3228dfde897d29e62e5c802": {
       "first_seen_kst": "2026-10-12T11:27:57+09:00",
       "lanes": {
@@ -780762,6 +781496,28 @@
       "source_title": "'삼전·닉스' 급락에 단일종목 레버리지 신저가 또 경신 | 연합뉴스",
       "telegram_core_fact": "개인은 이날 KODEX SK하이닉스단일종목레버리지를 422억원, KODEX 삼성전자단일종목레버리지를 248억원 각각 순매수했다. 이중 거래량이 많은 KODEX SK하이닉스단일종목레버리지와 TIGER SK하이닉스단일종목레버리지는 각각 21.70%, 22.13% 내리며 5천285원과 4천470원에 마감했다.",
       "title": "'삼전·닉스' 급락에 단일종목 레버리지 신저가 또 경신 | 연합뉴스"
+    },
+    "source_fact:a88d5a58e2ddd035a0723076": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835656",
+      "source": "뉴시스",
+      "source_body_digest": "0f2beda29d7acbaff572ee97d12d9c54ad48a14f5ddae9daececf5b87202ce8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77bb0d6742e16be80f1c7b054fda076871c9471ab9c9308dc539b362ad748f41",
+      "source_fact_keys": [
+        "source_fact:v1:1a1b3786dbae4b11c85dd6b52e52b8bd7584c10dad7e33a5bf644436d8d9cb79",
+        "source_fact:v1:6d63d9093db39af3b6c52f7a5c7295fca7f66a0462fd7dc7e8e01450c9041c43",
+        "source_fact:v1:eb471f303bb5f82935c129de606f0a75076893c3e130c160450d31ea21805f8d"
+      ],
+      "source_published_kst": "2026-10-21T17:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결",
+      "telegram_core_fact": "문 의장은 \"공모 사업의 신청부터 선정, 사후관리까지 체계적이고 책임 있게 운영하고, 군민의 세금이 효율적으로 쓰일 수 있도록 의회 차원의 점검을 강화하게 된다\"고 말했다.",
+      "title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결"
     },
     "source_fact:a890c76e5ab5ed998e04cf6c": {
       "first_seen_kst": "2026-10-16T18:07:43+09:00",
@@ -805034,6 +805790,27 @@
       "source_published_kst": "2026-10-07T14:17+09:00",
       "title": "반도체 소부장 덜어낸 국민연금…건설·에너지로 눈 돌렸다"
     },
+    "source_fact:b4877cf46aa30b005376b6d3": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etnews.com/20261021000445",
+      "source": "전자신문",
+      "source_body_digest": "8778fda7e916c829f2b859d5f0e94f3a4c290af9ab0b0e7ffb512454501182fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f30a2c8e749f3a6fb5df35fcadaddebd30171ee84d26fca66ded92076008122",
+      "source_fact_keys": [
+        "source_fact:v1:1f07cef4ecf4a93465786514e4732edb976a92bf10c68e3bc7fc373988c71d73",
+        "source_fact:v1:d426a6dc1b69f307158f1bf60cd6b9530b37d9e714ff0b9f703307db0e429427"
+      ],
+      "source_published_kst": "2026-10-21T17:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수",
+      "telegram_core_fact": "세일즈포스 2분기 매출은 113억 5000만 달러로 전년비 11% 증가했습니다.",
+      "title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수"
+    },
     "source_fact:b489ab157d5fd1593a72454d": {
       "first_seen_kst": "2026-10-20T10:11:13+09:00",
       "lanes": {
@@ -828174,6 +828951,29 @@
       "telegram_core_fact": "로이터통신에 따르면 트럼프 대통령은 지난 9일(현지시간) 블라디미르 푸틴 러시아 대통령과의 통화 후 러시아가 즉시 30만톤(t) 이상의 경유를 미국과 글로벌 시장에 공급한다고 자신의 사회관계망서비스(SNS) ‘트루스소셜’을 통해 발표했다.",
       "title": "중간선거 앞둔 트럼프 ‘폭주’…꼬여만 가는 러-우크라戰"
     },
+    "source_fact:c087766a655b6f3b10e59a31": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.dt.co.kr/article/12090254",
+      "source": "디지털타임스",
+      "source_body_digest": "aa89490725653b5a24bb195b9b79defab11e576b0d997e27fb3fbd028900305c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:940b0563e7d316a023bc182c090286e2b9919278814e603b2363f26f57d933a9",
+      "source_fact_keys": [
+        "source_fact:v1:1b7ee0fe26ab719a07a0bcccea2587d009152a59d20f70054c621701f7185f89",
+        "source_fact:v1:2af70f197f32f6380a383b97b276732e5ae9a64150c7cb9787186c53b27a6f06",
+        "source_fact:v1:52e1a559b7b687550a4c4786bf5024be9a2af287b9bc7349622d14476c435150",
+        "source_fact:v1:a72a5e56fc9a25e1e0f096ad9797b094af892ceee6ebbf506df1944783169682"
+      ],
+      "source_published_kst": "2026-10-21T06:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증",
+      "telegram_core_fact": "스페이스X는 20일(현지시간) 3분기 매출이 145억8000만달러(약 19조3000억원)로 집계됐다고 밝혔다.",
+      "title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증"
+    },
     "source_fact:c097ead2dd4c2fa2249f58fd": {
       "first_seen_kst": "2026-10-15T11:11:30+09:00",
       "lanes": {
@@ -842369,6 +843169,29 @@
       "source_title": "트럼프 “日 투자로 美 뉴욕에 반도체 공장 2곳 건설… 한국·대만 약속도 사업화”",
       "telegram_core_fact": "글로벌파운드리도 이날 보도자료를 통해 뉴욕주 몰타에 신설되는 반도체 공장 2곳의 기술 공급·운영 사업자로 선정됐다고 밝혔다.",
       "title": "트럼프 “日 투자로 美 뉴욕에 반도체 공장 2곳 건설… 한국·대만 약속도 사업화”"
+    },
+    "source_fact:c79015c750cd04d3c6c91319": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.dt.co.kr/article/12090254",
+      "source": "디지털타임스",
+      "source_body_digest": "aa89490725653b5a24bb195b9b79defab11e576b0d997e27fb3fbd028900305c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:940b0563e7d316a023bc182c090286e2b9919278814e603b2363f26f57d933a9",
+      "source_fact_keys": [
+        "source_fact:v1:1b7ee0fe26ab719a07a0bcccea2587d009152a59d20f70054c621701f7185f89",
+        "source_fact:v1:2af70f197f32f6380a383b97b276732e5ae9a64150c7cb9787186c53b27a6f06",
+        "source_fact:v1:52e1a559b7b687550a4c4786bf5024be9a2af287b9bc7349622d14476c435150",
+        "source_fact:v1:a72a5e56fc9a25e1e0f096ad9797b094af892ceee6ebbf506df1944783169682"
+      ],
+      "source_published_kst": "2026-10-21T06:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증",
+      "telegram_core_fact": "스페이스X는 20일(현지시간) 3분기 매출이 145억8000만달러(약 19조3000억원)로 집계됐다고 밝혔다.",
+      "title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증"
     },
     "source_fact:c7912799406702c59538cf26": {
       "first_seen_kst": "2026-10-21T06:23:27+09:00",
@@ -870501,6 +871324,27 @@
       "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
       "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
       "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
+    },
+    "source_fact:d600586dcbce007fee0e9787": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638479",
+      "source": "이투데이",
+      "source_body_digest": "9facf7eb510ddef57ba90a423d8cd626dd1ee7ecf4d5c371fb90a17c64ac3dbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5441bf1b0af2f43a689085918df94da33d6949b523767caf48dea79a28b3300",
+      "source_fact_keys": [
+        "source_fact:v1:d0f0205f12d372541271832c379ba390ddb5666cd231c239d1317990a4b4df8b",
+        "source_fact:v1:d9ce118afaa087d78f83a987611f62b86006e441a1a1c1ac5d3b28a266118015"
+      ],
+      "source_published_kst": "2026-10-21T15:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수",
+      "telegram_core_fact": "합병이 이뤄지면 AI 반도체 개발부터 데이터센터 운영, 자율주행 로보택시와 휴머노이드 로봇에 이르기까지 AI 산업의 핵심 공급망을 자체적으로 구축할 수 있다.",
+      "title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수"
     },
     "source_fact:d6031966b2bffc1d516172d7": {
       "first_seen_kst": "2026-10-20T19:58:15+09:00",
@@ -900055,6 +900899,32 @@
       "telegram_core_fact": "후티 반군의 공격으로 사우디 수도 리야드의 국제공항에서 사망자가 속출하는 가운데 양측의 군사적 충돌이 격화하고 있다. 사우디아라비아가 자국 공항과 석유·가스 시설을 잇달아 공격한 예멘 후티 반군에 강력한 대응을 예고했다.",
       "title": "사우디, 후티 반군에 \"엄중 대응\" 경고…공항 공격에 사망자 속출"
     },
+    "source_fact:e4b1656eacce5f8beec65c55": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178754",
+      "source": "매일경제",
+      "source_body_digest": "a0320e4bc9212880d66fc1ffc826d180cefecc2170dc238c8b32abd8bf203584",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:347b24ff3730c4b1ec4cbdc97fc0b75cfec3d520f88455b95928398b04b59cb1",
+      "source_fact_keys": [
+        "source_fact:v1:4bc96488403c8bc0990b113c204627baece433edc9a5655558c0ebb8f16b56e4",
+        "source_fact:v1:620c24b899a52cb1d8ba3bc405d36f71afb5f92cf8c86980dda12615e97fd73f",
+        "source_fact:v1:7c2ac9fc5088d949367e65eaff7eed665b352d1ef3dff708a73b6cfadfe45322",
+        "source_fact:v1:7c325daa42d2801fb8fa6e2793687d12b9bcf36bb91c69f51d4f0f18fc3e1b71",
+        "source_fact:v1:a976cb57d5e589607d909b1bd143ace1a5b77a41bcfbeabe90cc6ab9acbb08d5",
+        "source_fact:v1:ed606ecf46a0f65b7664ee56459a010225db0561a853eafd0b5b23b771493c97",
+        "source_fact:v1:f7db3233cdce5658953f56b64daec58befc7283b42ead857ac7e2a6dc539e914"
+      ],
+      "source_published_kst": "2026-10-22T03:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가",
+      "telegram_core_fact": "피델리티 D & D 뱅코프(FDBC)가 2026년 9월 30일 종료된 3분기 순이익이 891만8000달러로 전년비 21% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.27달러보다 20.5% 늘었다고 10월 21일 발표했다.",
+      "title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가"
+    },
     "source_fact:e4b19ac120df9a2a66e4ccfc": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
       "lanes": {
@@ -901050,6 +901920,32 @@
       "source_title": "가온전선, 美 원전용 케이블 시장 진출…현지 시장 선점",
       "telegram_core_fact": "가온전선이 미국 원전용 케이블 시장에 진출한다. 가온전선은 미국 생산법인 LSCUS가 노스캐롤라이나주 타보로 공장에 원전용 케이블 생산설비를 구축할 계획이라고 12일 밝혔다.",
       "title": "가온전선, 美 원전용 케이블 시장 진출…현지 시장 선점"
+    },
+    "source_fact:e51eb815b5f3267614c31a84": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178754",
+      "source": "매일경제",
+      "source_body_digest": "a0320e4bc9212880d66fc1ffc826d180cefecc2170dc238c8b32abd8bf203584",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:347b24ff3730c4b1ec4cbdc97fc0b75cfec3d520f88455b95928398b04b59cb1",
+      "source_fact_keys": [
+        "source_fact:v1:4bc96488403c8bc0990b113c204627baece433edc9a5655558c0ebb8f16b56e4",
+        "source_fact:v1:620c24b899a52cb1d8ba3bc405d36f71afb5f92cf8c86980dda12615e97fd73f",
+        "source_fact:v1:7c2ac9fc5088d949367e65eaff7eed665b352d1ef3dff708a73b6cfadfe45322",
+        "source_fact:v1:7c325daa42d2801fb8fa6e2793687d12b9bcf36bb91c69f51d4f0f18fc3e1b71",
+        "source_fact:v1:a976cb57d5e589607d909b1bd143ace1a5b77a41bcfbeabe90cc6ab9acbb08d5",
+        "source_fact:v1:ed606ecf46a0f65b7664ee56459a010225db0561a853eafd0b5b23b771493c97",
+        "source_fact:v1:f7db3233cdce5658953f56b64daec58befc7283b42ead857ac7e2a6dc539e914"
+      ],
+      "source_published_kst": "2026-10-22T03:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가",
+      "telegram_core_fact": "피델리티 D & D 뱅코프(FDBC)가 2026년 9월 30일 종료된 3분기 순이익이 891만8000달러로 전년비 21% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.27달러보다 20.5% 늘었다고 10월 21일 발표했다.",
+      "title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가"
     },
     "source_fact:e522c05d80a5679aa00d32ff": {
       "first_seen_kst": "2026-10-10T01:24:21+09:00",
@@ -934566,6 +935462,32 @@
       "telegram_core_fact": "지난 5월 국내 3위 암호화폐거래소 운영사 코인원 지분 20%를 취득한 데 이어 최근 KDB생명 인수 우선협상대상자로 선정됐다. 한국투자금융그룹이 미국 대체투자 전문 운용사 찰스뱅크캐피털파트너스와 합작법인(JV) 설립을 추진한다.",
       "title": "[단독] 한투, 美에 대체투자 운용사 세운다"
     },
+    "source_fact:f6ede24803b6192237565c5e": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178754",
+      "source": "매일경제",
+      "source_body_digest": "a0320e4bc9212880d66fc1ffc826d180cefecc2170dc238c8b32abd8bf203584",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:347b24ff3730c4b1ec4cbdc97fc0b75cfec3d520f88455b95928398b04b59cb1",
+      "source_fact_keys": [
+        "source_fact:v1:4bc96488403c8bc0990b113c204627baece433edc9a5655558c0ebb8f16b56e4",
+        "source_fact:v1:620c24b899a52cb1d8ba3bc405d36f71afb5f92cf8c86980dda12615e97fd73f",
+        "source_fact:v1:7c2ac9fc5088d949367e65eaff7eed665b352d1ef3dff708a73b6cfadfe45322",
+        "source_fact:v1:7c325daa42d2801fb8fa6e2793687d12b9bcf36bb91c69f51d4f0f18fc3e1b71",
+        "source_fact:v1:a976cb57d5e589607d909b1bd143ace1a5b77a41bcfbeabe90cc6ab9acbb08d5",
+        "source_fact:v1:ed606ecf46a0f65b7664ee56459a010225db0561a853eafd0b5b23b771493c97",
+        "source_fact:v1:f7db3233cdce5658953f56b64daec58befc7283b42ead857ac7e2a6dc539e914"
+      ],
+      "source_published_kst": "2026-10-22T03:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가",
+      "telegram_core_fact": "피델리티 D & D 뱅코프(FDBC)가 2026년 9월 30일 종료된 3분기 순이익이 891만8000달러로 전년비 21% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.27달러보다 20.5% 늘었다고 10월 21일 발표했다.",
+      "title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가"
+    },
     "source_fact:f6f2491653e2d3260d569d06": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
       "lanes": {
@@ -956013,6 +956935,28 @@
       "source_published_kst": "2026-10-06T16:01+09:00",
       "title": "코스피, 삼전·하닉 자사주 매입 종료 경계감에 약세...코스닥은 강세[fn마감시황]"
     },
+    "title:08fd90b4ff8229031fdc0c33": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835656",
+      "source": "뉴시스",
+      "source_body_digest": "0f2beda29d7acbaff572ee97d12d9c54ad48a14f5ddae9daececf5b87202ce8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77bb0d6742e16be80f1c7b054fda076871c9471ab9c9308dc539b362ad748f41",
+      "source_fact_keys": [
+        "source_fact:v1:1a1b3786dbae4b11c85dd6b52e52b8bd7584c10dad7e33a5bf644436d8d9cb79",
+        "source_fact:v1:6d63d9093db39af3b6c52f7a5c7295fca7f66a0462fd7dc7e8e01450c9041c43",
+        "source_fact:v1:eb471f303bb5f82935c129de606f0a75076893c3e130c160450d31ea21805f8d"
+      ],
+      "source_published_kst": "2026-10-21T17:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결",
+      "telegram_core_fact": "문 의장은 \"공모 사업의 신청부터 선정, 사후관리까지 체계적이고 책임 있게 운영하고, 군민의 세금이 효율적으로 쓰일 수 있도록 의회 차원의 점검을 강화하게 된다\"고 말했다.",
+      "title": "문승옥 구례군의회 의장, 공모사업 관리 조례안 대표발의·가결"
+    },
     "title:0906d30dc1490e7d4f4385a2": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
       "lanes": {
@@ -960589,6 +961533,24 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811136",
       "source": "뉴시스",
       "title": "화재보험협회, AI·데이터 인재 공개채용…18일까지 접수"
+    },
+    "title:129989d9e8d1e54d62746f84": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638551",
+      "source": "이투데이",
+      "source_body_digest": "8c1968f3f4217a5f374301fbf45276dee759132cb9e59c2bf0d8db8c02d48965",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T17:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "핀다, 대원저축은행 인수로 저축은행업 진출⋯금융위 대주주 변경 승인",
+      "telegram_core_fact": "국내 핀테크 기업이 저축은행을 인수한 것은 이번이 처음이다.",
+      "title": "핀다, 대원저축은행 인수로 저축은행업 진출⋯금융위 대주주 변경 승인"
     },
     "title:12b862c2dec6b2ce4f62176f": {
       "first_seen_kst": "2026-10-13T14:32:55+09:00",
@@ -972400,6 +973362,27 @@
       "source_title": "'묻지마 범죄' 막겠다며 신설됐지만…흉기소지 '전조증상'에도 구멍",
       "telegram_core_fact": "정부와 국회는 반복되는 이상동기 강력범죄를 예방하겠다는 목표로 지난해 공공장소 흉기소지죄를 신설했지만, 이번 참극을 막지 못했다.",
       "title": "'묻지마 범죄' 막겠다며 신설됐지만…흉기소지 '전조증상'에도 구멍"
+    },
+    "title:29f9878ccce97c78664ff3f7": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etnews.com/20261021000445",
+      "source": "전자신문",
+      "source_body_digest": "8778fda7e916c829f2b859d5f0e94f3a4c290af9ab0b0e7ffb512454501182fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f30a2c8e749f3a6fb5df35fcadaddebd30171ee84d26fca66ded92076008122",
+      "source_fact_keys": [
+        "source_fact:v1:1f07cef4ecf4a93465786514e4732edb976a92bf10c68e3bc7fc373988c71d73",
+        "source_fact:v1:d426a6dc1b69f307158f1bf60cd6b9530b37d9e714ff0b9f703307db0e429427"
+      ],
+      "source_published_kst": "2026-10-21T17:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수",
+      "telegram_core_fact": "세일즈포스 2분기 매출은 113억 5000만 달러로 전년비 11% 증가했습니다.",
+      "title": "세일즈포스, AI 마케팅 기업 브레이즈 56억6000만달러에 인수"
     },
     "title:2a171a51efd196f42f480909": {
       "first_seen_kst": "2026-10-02T05:03:05+09:00",
@@ -988792,6 +989775,24 @@
       "source_title": "“캐피탈 기업금융 100조 시대…GPU서버·데이터센터 등 자산관리 역할 확대해야”",
       "telegram_core_fact": "캐피탈사가 축적한 자산가치 평가·관리 역량을 활용해 기업의 설비투자를 지원하고, 이를 위해 중고차 매매와 보험 판매 등 업무범위도 확대해야 한다는 주장이다.",
       "title": "“캐피탈 기업금융 100조 시대…GPU서버·데이터센터 등 자산관리 역할 확대해야”"
+    },
+    "title:4a6bb80561e2ccdbb804db8d": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etnews.com/20261021000444",
+      "source": "전자신문",
+      "source_body_digest": "5e8dd75ae76c32e92f7e26c549acb111db939ee87fb6d111667c164bf286b601",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T17:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "제논, 인니 '나이키 신발' 품질검사 AI 양산 검증 통과",
+      "telegram_core_fact": "신발 상판의 품질을 AI로 검사하는 후속 사업도 수주했다.",
+      "title": "제논, 인니 '나이키 신발' 품질검사 AI 양산 검증 통과"
     },
     "title:4a6dd8fa82fedfee221176f3": {
       "first_seen_kst": "2026-10-15T15:07:47+09:00",
@@ -1042952,6 +1043953,29 @@
       "source_published_kst": "2026-10-06T06:37+09:00",
       "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
     },
+    "title:b8c31f763843c372af8bf669": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.dt.co.kr/article/12090254",
+      "source": "디지털타임스",
+      "source_body_digest": "aa89490725653b5a24bb195b9b79defab11e576b0d997e27fb3fbd028900305c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:940b0563e7d316a023bc182c090286e2b9919278814e603b2363f26f57d933a9",
+      "source_fact_keys": [
+        "source_fact:v1:1b7ee0fe26ab719a07a0bcccea2587d009152a59d20f70054c621701f7185f89",
+        "source_fact:v1:2af70f197f32f6380a383b97b276732e5ae9a64150c7cb9787186c53b27a6f06",
+        "source_fact:v1:52e1a559b7b687550a4c4786bf5024be9a2af287b9bc7349622d14476c435150",
+        "source_fact:v1:a72a5e56fc9a25e1e0f096ad9797b094af892ceee6ebbf506df1944783169682"
+      ],
+      "source_published_kst": "2026-10-21T06:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증",
+      "telegram_core_fact": "스페이스X는 20일(현지시간) 3분기 매출이 145억8000만달러(약 19조3000억원)로 집계됐다고 밝혔다.",
+      "title": "스페이스X 3분기 흑자전환…매출은 전년 대비 161% 급증"
+    },
     "title:b8c4e8aa9f19f73138c17aa4": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
       "lanes": {
@@ -1059804,6 +1060828,27 @@
       "telegram_core_fact": "국방정보통신협회(회장 신인섭)는 최근 엔에스엠과 '국방 IT 발전 및 마이크로데이터센터 협력체계 구축'을 위한 업무협약(MOU)을 체결했다. 엔에스엠은 이 같은 설계를 통해 기존 방식 대비 운영비용 50% 절감, 에너지 사용량 70% 절약, 방진 성능 99%, 방음 성능 30% 개선 등의 효과를 확보했다고 설명했다.",
       "title": "국방정보통신협회-엔에스엠, 국방용 마이크로데이터센터 협력"
     },
+    "title:dc4e3f12a7c057aa4f2b4477": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638479",
+      "source": "이투데이",
+      "source_body_digest": "9facf7eb510ddef57ba90a423d8cd626dd1ee7ecf4d5c371fb90a17c64ac3dbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5441bf1b0af2f43a689085918df94da33d6949b523767caf48dea79a28b3300",
+      "source_fact_keys": [
+        "source_fact:v1:d0f0205f12d372541271832c379ba390ddb5666cd231c239d1317990a4b4df8b",
+        "source_fact:v1:d9ce118afaa087d78f83a987611f62b86006e441a1a1c1ac5d3b28a266118015"
+      ],
+      "source_published_kst": "2026-10-21T15:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수",
+      "telegram_core_fact": "합병이 이뤄지면 AI 반도체 개발부터 데이터센터 운영, 자율주행 로보택시와 휴머노이드 로봇에 이르기까지 AI 산업의 핵심 공급망을 자체적으로 구축할 수 있다.",
+      "title": "머스크, ‘초거대 AI 제국’ 시동⋯테슬라ㆍ스페이스X 합병 승부수"
+    },
     "title:dc4f65a3615fb962a7f61782": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -1066376,6 +1067421,32 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "트럼프 특사·푸틴, 종전 협상서 '러 석유업체 빅딜' 논의"
+    },
+    "title:ea8e63c2047394d08f2f9039": {
+      "first_seen_kst": "2026-10-22T05:03:54+09:00",
+      "lanes": {
+        "live": "2026-10-22T05:03:54+09:00"
+      },
+      "last_seen_kst": "2026-10-22T05:03:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178754",
+      "source": "매일경제",
+      "source_body_digest": "a0320e4bc9212880d66fc1ffc826d180cefecc2170dc238c8b32abd8bf203584",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:347b24ff3730c4b1ec4cbdc97fc0b75cfec3d520f88455b95928398b04b59cb1",
+      "source_fact_keys": [
+        "source_fact:v1:4bc96488403c8bc0990b113c204627baece433edc9a5655558c0ebb8f16b56e4",
+        "source_fact:v1:620c24b899a52cb1d8ba3bc405d36f71afb5f92cf8c86980dda12615e97fd73f",
+        "source_fact:v1:7c2ac9fc5088d949367e65eaff7eed665b352d1ef3dff708a73b6cfadfe45322",
+        "source_fact:v1:7c325daa42d2801fb8fa6e2793687d12b9bcf36bb91c69f51d4f0f18fc3e1b71",
+        "source_fact:v1:a976cb57d5e589607d909b1bd143ace1a5b77a41bcfbeabe90cc6ab9acbb08d5",
+        "source_fact:v1:ed606ecf46a0f65b7664ee56459a010225db0561a853eafd0b5b23b771493c97",
+        "source_fact:v1:f7db3233cdce5658953f56b64daec58befc7283b42ead857ac7e2a6dc539e914"
+      ],
+      "source_published_kst": "2026-10-22T03:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가",
+      "telegram_core_fact": "피델리티 D & D 뱅코프(FDBC)가 2026년 9월 30일 종료된 3분기 순이익이 891만8000달러로 전년비 21% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.27달러보다 20.5% 늘었다고 10월 21일 발표했다.",
+      "title": "피델리티 D & D 뱅코프, 3분기 희석 EPS 1.53달러..전년비 20.5% 증가"
     },
     "title:ea9fed3f49a5d03c9ef81f8c": {
       "first_seen_kst": "2026-10-14T07:46:13+09:00",
@@ -1076598,5 +1077669,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T04:32:22+09:00"
+  "updated_at_kst": "2026-10-22T05:03:54+09:00"
 }
