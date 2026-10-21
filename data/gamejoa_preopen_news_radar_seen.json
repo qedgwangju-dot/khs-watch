@@ -25688,6 +25688,26 @@
       "telegram_core_fact": "대미 전략투자 문제 역시 1호 프로젝트 발표 전까지 가장 어려운 현안 가운데 하나였으며 알래스카 액화천연가스(LNG) 투자 프로젝트도 이에 포함됐다고 설명했다.",
       "title": "강경화 “한미 정보협력, 가장 어려운 현안…美 기대만큼 해소 안돼”"
     },
+    "core:4b18582576b1840ee023e98f": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.dt.co.kr/article/12090424",
+      "source": "디지털타임스",
+      "source_body_digest": "c2f56f379f695b2fc89f3c7f30a3ef0207fb7149a64551284ad6bf4fd4683634",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cc8f7b60839c785b9b606c7cc052cfad3292fc1a803100df57bc92d9ebaa2c5",
+      "source_fact_keys": [
+        "source_fact:v1:d418999bf2586853e5016f04e2cab6acd5caef830f257ebfc199b16746602b8d"
+      ],
+      "source_published_kst": "2026-10-21T16:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”",
+      "telegram_core_fact": "이 사이 중국 양쯔메모리(YMTC)의 2분기 중국 낸드 시장 점유율은 38.5%로 삼성전자(33.5%)를 앞섰고 SK하이닉스 점유율은 20%에서 17%로 떨어졌다고 시장조사업체 옴디아가 밝혔다.",
+      "title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”"
+    },
     "core:4b4d3aaa421ea829db38e3b0": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
       "lanes": {
@@ -55596,6 +55616,37 @@
       "telegram_core_fact": "장영진 한국무역보험공사 사장은 12일 \"지난 9월1일 기준 무역보험 공급액은 198조원으로 전년동기대비 20.4% 증가했고 중소·중견기업 지원 급액은 13% 증가한 82조원을 기록했다\"고 밝혔다.",
       "title": "장영진 무보 사장 \"무역보험 공급액 198조…전년대비 20% 증가\""
     },
+    "core:a27e33628ccaf4174cb6fa31": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
+    },
     "core:a285a5185366b493507ff798": {
       "first_seen_kst": "2026-10-16T18:58:56+09:00",
       "lanes": {
@@ -65822,6 +65873,30 @@
       "telegram_core_fact": "제조업·건설업 등에서 고용이 줄고 보건·복지업이 증가세를 떠받치면서 성장 성과를 폭넓은 일자리 확대로 연결하는 것이 과제로 꼽힌다.",
       "title": "잠재성장률 반등 전망에도 고용은 주춤…성장 온기 확산이 관건"
     },
+    "core:c08baaa2bd1760d28d6cbac8": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01476006645615544",
+      "source": "이데일리",
+      "source_body_digest": "45ababeccd39b4f82f36ae07912e00cb10ecc7ff415bea743da49153e6ee4b44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:655795359ea545df32fc21feb0e4cb363f95a4ff2c36699c8c7e4f5ada316005",
+      "source_fact_keys": [
+        "source_fact:v1:355d2a5d151c6d1be305542e2bad8f09976f43e079cbb6e79d917ddbf8dd6e2c",
+        "source_fact:v1:c99543793613fc20575dff1606b831aef1fd658eada58795b3452d92285aff67",
+        "source_fact:v1:e8ac5f06d26c69418836658e45fe1bdfbc276e7ad612c4882935a575bc089543",
+        "source_fact:v1:ec565d4f76fadf17bf08b42737c685dc3bddaa1b6dbb2a85c6946c253b0224ee",
+        "source_fact:v1:eda6efbd93e96f9b44232ad4f97a26680aafe6600ccc5aede3f003909f9c8a9a"
+      ],
+      "source_published_kst": "2026-10-22T04:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑",
+      "telegram_core_fact": "바이오의약품 개발업체 로이반트사이언시스(ROIV)가 안과질환 치료제의 임상 3상에서 긍정적인 결과를 확보했다는 소식에 주가가 상승하고 있다. 21일(현지시간) 오후2시42분 기준 로이반트사이언시스 주가는 전일대비 3.58% 오른 36.17달러에 거래 중이다.",
+      "title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑"
+    },
     "core:c0963f48a35c2ecc9c98dad1": {
       "first_seen_kst": "2026-10-21T18:59:41+09:00",
       "lanes": {
@@ -68115,6 +68190,35 @@
       "source_title": "크레센트 에너지, 데본 이글포드 자산 38억5000만 달러 인수",
       "telegram_core_fact": "크레센트 에너지(CRGY)가 데본 에너지(Devon Energy)의 이글포드(Eagle Ford) 자산을 순매입가 약 38억5000만 달러에 인수하는 확정 계약을 체결했다고 10월 8일 발표했다.",
       "title": "크레센트 에너지, 데본 이글포드 자산 38억5000만 달러 인수"
+    },
+    "core:c8c3f594281410bb2872545b": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
     },
     "core:c8c591102514df1a110811cf": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
@@ -77009,6 +77113,33 @@
       "source_title": "온라인 플랫폼 원산지 표시 고지 의무화…위반 땐 최대 400만원 과태료",
       "telegram_core_fact": "통신판매중개업자가 입점업체에 원산지 표시 대상과 표시방법, 위반 시 제재 사항 등을 안내하도록 하고, 이를 위반하면 횟수에 따라 최대 400만 원의 과태료를 부과한다.",
       "title": "온라인 플랫폼 원산지 표시 고지 의무화…위반 땐 최대 400만원 과태료"
+    },
+    "core:e32068142237780b83f19545": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
     },
     "core:e33c629c9180ab0885ca3e18": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
@@ -91974,6 +92105,26 @@
       "telegram_core_fact": "넷플릭스 4분기 매출은 134억달러 전망입니다.",
       "title": "[오늘장특징주]스페이스X, 넷플릭스, 코어위브"
     },
+    "event:45128441b747c25a8c9980c7": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.dt.co.kr/article/12090424",
+      "source": "디지털타임스",
+      "source_body_digest": "c2f56f379f695b2fc89f3c7f30a3ef0207fb7149a64551284ad6bf4fd4683634",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cc8f7b60839c785b9b606c7cc052cfad3292fc1a803100df57bc92d9ebaa2c5",
+      "source_fact_keys": [
+        "source_fact:v1:d418999bf2586853e5016f04e2cab6acd5caef830f257ebfc199b16746602b8d"
+      ],
+      "source_published_kst": "2026-10-21T16:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”",
+      "telegram_core_fact": "이 사이 중국 양쯔메모리(YMTC)의 2분기 중국 낸드 시장 점유율은 38.5%로 삼성전자(33.5%)를 앞섰고 SK하이닉스 점유율은 20%에서 17%로 떨어졌다고 시장조사업체 옴디아가 밝혔다.",
+      "title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”"
+    },
     "event:4543efdad39dcd79f5345097": {
       "first_seen_kst": "2026-10-02T05:03:05+09:00",
       "lanes": {
@@ -106334,24 +106485,25 @@
     "event:f9efa5eba70b6eb940669b05": {
       "first_seen_kst": "2026-10-21T06:55:09+09:00",
       "lanes": {
-        "live": "2026-10-21T17:41:44+09:00",
+        "live": "2026-10-22T08:49:50+09:00",
         "preopen": "2026-10-21T06:55:09+09:00"
       },
-      "last_seen_kst": "2026-10-21T17:41:44+09:00",
-      "link": "https://www.mk.co.kr/news/it/12181498",
-      "source": "매일경제",
-      "source_body_digest": "1e54a3c0ba880bb75a30a2a8d3514dd45dfc68b2528d90ea4e1c4f80d5492330",
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026101916264741354",
+      "source": "머니투데이",
+      "source_body_digest": "5f494a5c2024b15be168bea2cc8257fc6316140a5a3b41ebfb98760668607746",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4b29b4e06d815698b280fbb23028f6723f26209ec105dbe2cb693694341f26d7",
+      "source_fact_identity": "source_facts:v1:7830410e143f840aedf80e9c08086ac3b40a7683eb20d77667ff2228bffa2915",
       "source_fact_keys": [
-        "source_fact:v1:4bb2ed68c35b1dce0ca8daf1763cb724cb8e0b638bd0e070de07b8a92bc76e43",
-        "source_fact:v1:6b2856ec4b62d8a4b7b6507cf7e7d11167f041e8e41ae3f2d0f2136a338b1889"
+        "source_fact:v1:2fd999c1dbbd883d5537371d7dcef57339fc7e2f05b67a57279a5c8747d89001",
+        "source_fact:v1:36bc28d9d5b5e29f5973c07205452496eda008f0ee89eb9cd7973a18f6741db8",
+        "source_fact:v1:bf7e9193c7fb68c9dfa702f8a5eca0bcb4871875b69ebce44b06cb491942237b"
       ],
-      "source_published_kst": "2026-10-21T10:36+09:00",
+      "source_published_kst": "2026-10-21T09:26+09:00",
       "source_supply_terms": {},
-      "source_title": "네이버 D2SF, 온디바이스 AI 스타트업 ‘트레이스위브’에 신규 투자",
-      "telegram_core_fact": "네이버 D2SF는 AI가 로봇, 자동차, 스마트글래스, 드론 등 다양한 디바이스로 확산되는 가운데, 제한된 기기 환경에서도 AI 에이전트를 구현할 수 있는 핵심 기술을 보유한 팀이라는 점에 주목해 투자를 결정했다.",
-      "title": "네이버 D2SF, 온디바이스 AI 스타트업 ‘트레이스위브’에 신규 투자"
+      "source_title": "\"그래도 대세는 AI\"…엔비디아·반도체 집중 투자 ETF[머니똑똑]",
+      "telegram_core_fact": "지난 20일 '1Q 엔비디아고정미국AI반도체' ETF가 상장했다.",
+      "title": "\"그래도 대세는 AI\"…엔비디아·반도체 집중 투자 ETF[머니똑똑]"
     },
     "event:fa17cab1a8b30ae4f8f21b8d": {
       "first_seen_kst": "2026-09-27T04:31:07+09:00",
@@ -106852,6 +107004,37 @@
       "source_title": "리사 수 AMD CEO “반도체는 팀 스포츠, 한국은 핵심 파트너”",
       "telegram_core_fact": "리사 수 AMD 최고경영자(CEO)가 한국을 인공지능(AI)과 반도체 공급망에서 핵심적인 파트너로 꼽았다. 최근 수 CEO가 한국을 잇따라 찾는 배경에도 장기적인 공급망 협력이 있다고 설명했다.",
       "title": "리사 수 AMD CEO “반도체는 팀 스포츠, 한국은 핵심 파트너”"
+    },
+    "event:ff20a2d1458d9b2f18e14eb7": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
     },
     "event:ff5ac051a53f599db6640777": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
@@ -113158,6 +113341,33 @@
       ],
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
+    },
+    "fact:10177f1c3156f5a4c3109c2e": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
     },
     "fact:102129d1f2b8073cb1926a03": {
       "first_seen_kst": "2026-10-17T15:31:00+09:00",
@@ -131437,6 +131647,37 @@
       "source_published_kst": "2026-10-06T11:44+09:00",
       "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
     },
+    "fact:42c4d6a541f40d928b8f45f1": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
+    },
     "fact:42e351422d82a3d4b3a79396": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
       "lanes": {
@@ -136111,6 +136352,26 @@
       "source_published_kst": "2026-10-07T15:14+09:00",
       "title": "국토장관 \"서울시와 주택공급 실무협의 지시…사업 지연 풀겠다\""
     },
+    "fact:4fef055960666c5d8e500aa2": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.dt.co.kr/article/12090424",
+      "source": "디지털타임스",
+      "source_body_digest": "c2f56f379f695b2fc89f3c7f30a3ef0207fb7149a64551284ad6bf4fd4683634",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cc8f7b60839c785b9b606c7cc052cfad3292fc1a803100df57bc92d9ebaa2c5",
+      "source_fact_keys": [
+        "source_fact:v1:d418999bf2586853e5016f04e2cab6acd5caef830f257ebfc199b16746602b8d"
+      ],
+      "source_published_kst": "2026-10-21T16:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”",
+      "telegram_core_fact": "이 사이 중국 양쯔메모리(YMTC)의 2분기 중국 낸드 시장 점유율은 38.5%로 삼성전자(33.5%)를 앞섰고 SK하이닉스 점유율은 20%에서 17%로 떨어졌다고 시장조사업체 옴디아가 밝혔다.",
+      "title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”"
+    },
     "fact:50106661ec7e62527f909e8c": {
       "first_seen_kst": "2026-10-14T23:19:07+09:00",
       "lanes": {
@@ -136227,6 +136488,28 @@
       "source_title": "주택연금 구상채권 5년반에 10배로…회수율은 절반으로 뚝 | 연합뉴스",
       "telegram_core_fact": "박성훈 의원은 \"주택연금은 고령층의 중요한 노후 안전망인 만큼 안정적인 공급이 필요하지만, 못 받은 채권이 급속도로 늘고 회수율은 절반 수준으로 떨어졌다\"며 \"사업 확대에만 치중하지 말고 장기적으로 국민 부담으로 전가되지 않도록 리스크 관리와 채권 회수체계도 함께 강화해야 한다\"고 강조했다.",
       "title": "주택연금 구상채권 5년반에 10배로…회수율은 절반으로 뚝 | 연합뉴스"
+    },
+    "fact:5088dc8176f15e69942c401e": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026101916264741354",
+      "source": "머니투데이",
+      "source_body_digest": "5f494a5c2024b15be168bea2cc8257fc6316140a5a3b41ebfb98760668607746",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7830410e143f840aedf80e9c08086ac3b40a7683eb20d77667ff2228bffa2915",
+      "source_fact_keys": [
+        "source_fact:v1:2fd999c1dbbd883d5537371d7dcef57339fc7e2f05b67a57279a5c8747d89001",
+        "source_fact:v1:36bc28d9d5b5e29f5973c07205452496eda008f0ee89eb9cd7973a18f6741db8",
+        "source_fact:v1:bf7e9193c7fb68c9dfa702f8a5eca0bcb4871875b69ebce44b06cb491942237b"
+      ],
+      "source_published_kst": "2026-10-21T09:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"그래도 대세는 AI\"…엔비디아·반도체 집중 투자 ETF[머니똑똑]",
+      "telegram_core_fact": "지난 20일 '1Q 엔비디아고정미국AI반도체' ETF가 상장했다.",
+      "title": "\"그래도 대세는 AI\"…엔비디아·반도체 집중 투자 ETF[머니똑똑]"
     },
     "fact:508cd05f6d5da0fd7f28153b": {
       "first_seen_kst": "2026-10-22T03:23:27+09:00",
@@ -185266,6 +185549,30 @@
       "source_published_kst": "2026-10-07T10:34+09:00",
       "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
     },
+    "fact:cf3b4a6743e7ac9a0b0a665d": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01476006645615544",
+      "source": "이데일리",
+      "source_body_digest": "45ababeccd39b4f82f36ae07912e00cb10ecc7ff415bea743da49153e6ee4b44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:655795359ea545df32fc21feb0e4cb363f95a4ff2c36699c8c7e4f5ada316005",
+      "source_fact_keys": [
+        "source_fact:v1:355d2a5d151c6d1be305542e2bad8f09976f43e079cbb6e79d917ddbf8dd6e2c",
+        "source_fact:v1:c99543793613fc20575dff1606b831aef1fd658eada58795b3452d92285aff67",
+        "source_fact:v1:e8ac5f06d26c69418836658e45fe1bdfbc276e7ad612c4882935a575bc089543",
+        "source_fact:v1:ec565d4f76fadf17bf08b42737c685dc3bddaa1b6dbb2a85c6946c253b0224ee",
+        "source_fact:v1:eda6efbd93e96f9b44232ad4f97a26680aafe6600ccc5aede3f003909f9c8a9a"
+      ],
+      "source_published_kst": "2026-10-22T04:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑",
+      "telegram_core_fact": "바이오의약품 개발업체 로이반트사이언시스(ROIV)가 안과질환 치료제의 임상 3상에서 긍정적인 결과를 확보했다는 소식에 주가가 상승하고 있다. 21일(현지시간) 오후2시42분 기준 로이반트사이언시스 주가는 전일대비 3.58% 오른 36.17달러에 거래 중이다.",
+      "title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑"
+    },
     "fact:cf4dafaf35843bb9b25c2e66": {
       "first_seen_kst": "2026-10-19T16:36:04+09:00",
       "lanes": {
@@ -202643,6 +202950,35 @@
       ],
       "source_published_kst": "2026-10-07T08:49+09:00",
       "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
+    },
+    "fact:fb85465a61005813f8d32978": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
     },
     "fact:fb8922e12c349b7e1d6f6823": {
       "first_seen_kst": "2026-10-10T10:14:41+09:00",
@@ -246591,6 +246927,28 @@
       "telegram_core_fact": "엔비디아(NVIDIA)가 인공지능(AI) 데이터센터의 설치 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 새로운 AI 팩토리 구축 방식을 공개했다.",
       "title": "엔비디아, AI 팩토리 설치 6개월→14일…물·전력까지 아낀다"
     },
+    "link:54564f180d56dac5752a8a4c": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026101916264741354",
+      "source": "머니투데이",
+      "source_body_digest": "5f494a5c2024b15be168bea2cc8257fc6316140a5a3b41ebfb98760668607746",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7830410e143f840aedf80e9c08086ac3b40a7683eb20d77667ff2228bffa2915",
+      "source_fact_keys": [
+        "source_fact:v1:2fd999c1dbbd883d5537371d7dcef57339fc7e2f05b67a57279a5c8747d89001",
+        "source_fact:v1:36bc28d9d5b5e29f5973c07205452496eda008f0ee89eb9cd7973a18f6741db8",
+        "source_fact:v1:bf7e9193c7fb68c9dfa702f8a5eca0bcb4871875b69ebce44b06cb491942237b"
+      ],
+      "source_published_kst": "2026-10-21T09:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"그래도 대세는 AI\"…엔비디아·반도체 집중 투자 ETF[머니똑똑]",
+      "telegram_core_fact": "지난 20일 '1Q 엔비디아고정미국AI반도체' ETF가 상장했다.",
+      "title": "\"그래도 대세는 AI\"…엔비디아·반도체 집중 투자 ETF[머니똑똑]"
+    },
     "link:545879ec2fc2c5721c78b590": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
       "lanes": {
@@ -270074,6 +270432,30 @@
       "source": "연합뉴스",
       "title": "사우디 공급 차질 우려 심화…국제유가 5월 19일 이후 최고 | 연합뉴스"
     },
+    "link:840a5eeea95d1569b24b2902": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01476006645615544",
+      "source": "이데일리",
+      "source_body_digest": "45ababeccd39b4f82f36ae07912e00cb10ecc7ff415bea743da49153e6ee4b44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:655795359ea545df32fc21feb0e4cb363f95a4ff2c36699c8c7e4f5ada316005",
+      "source_fact_keys": [
+        "source_fact:v1:355d2a5d151c6d1be305542e2bad8f09976f43e079cbb6e79d917ddbf8dd6e2c",
+        "source_fact:v1:c99543793613fc20575dff1606b831aef1fd658eada58795b3452d92285aff67",
+        "source_fact:v1:e8ac5f06d26c69418836658e45fe1bdfbc276e7ad612c4882935a575bc089543",
+        "source_fact:v1:ec565d4f76fadf17bf08b42737c685dc3bddaa1b6dbb2a85c6946c253b0224ee",
+        "source_fact:v1:eda6efbd93e96f9b44232ad4f97a26680aafe6600ccc5aede3f003909f9c8a9a"
+      ],
+      "source_published_kst": "2026-10-22T04:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑",
+      "telegram_core_fact": "바이오의약품 개발업체 로이반트사이언시스(ROIV)가 안과질환 치료제의 임상 3상에서 긍정적인 결과를 확보했다는 소식에 주가가 상승하고 있다. 21일(현지시간) 오후2시42분 기준 로이반트사이언시스 주가는 전일대비 3.58% 오른 36.17달러에 거래 중이다.",
+      "title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑"
+    },
     "link:84155f9abf86af410b064f0a": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
       "lanes": {
@@ -279342,6 +279724,35 @@
       "source_published_kst": "2026-10-07T16:35+09:00",
       "title": "AMD 리사 수, 삼성전자-SK하이닉스 반도체 수장 만나..AI 협력 행보 강화"
     },
+    "link:9725f71351c037c3e5295b82": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
+    },
     "link:9728d7b496964301b1a872ee": {
       "first_seen_kst": "2026-10-18T12:31:06+09:00",
       "lanes": {
@@ -281403,6 +281814,37 @@
       "link": "https://www.mt.co.kr/world/2026/10/02/2026100213482612716",
       "source": "머니투데이",
       "title": "\"내란법? 사용할 수 있지\"…중간선거 D-30 트럼프 언급 '파장'"
+    },
+    "link:9b162affe0db516c0c04e2a5": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
     },
     "link:9b17f03a5bcf905fe85a91be": {
       "first_seen_kst": "2026-10-19T20:10:12+09:00",
@@ -317132,6 +317574,26 @@
       "telegram_core_fact": "서울시는 지난 7일 제16차 도시계획위원회를 열고 도로 지분을 이용한 소규모 지분 쪼개기 등 투기성 거래를 선제적으로 차단하기 위해 서울 전역의 지목이 도로인 토지를 토허구역으로 신규지정한다고 8일 밝혔다.",
       "title": "서울 모든 도로, 토허구역 지정…‘도로 쪼개팔기’ 기획부동산 막는다"
     },
+    "link:e39ac34d4e662713a31c6c6f": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.dt.co.kr/article/12090424",
+      "source": "디지털타임스",
+      "source_body_digest": "c2f56f379f695b2fc89f3c7f30a3ef0207fb7149a64551284ad6bf4fd4683634",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cc8f7b60839c785b9b606c7cc052cfad3292fc1a803100df57bc92d9ebaa2c5",
+      "source_fact_keys": [
+        "source_fact:v1:d418999bf2586853e5016f04e2cab6acd5caef830f257ebfc199b16746602b8d"
+      ],
+      "source_published_kst": "2026-10-21T16:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”",
+      "telegram_core_fact": "이 사이 중국 양쯔메모리(YMTC)의 2분기 중국 낸드 시장 점유율은 38.5%로 삼성전자(33.5%)를 앞섰고 SK하이닉스 점유율은 20%에서 17%로 떨어졌다고 시장조사업체 옴디아가 밝혔다.",
+      "title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”"
+    },
     "link:e39bf4b9b0815481f3292aa6": {
       "first_seen_kst": "2026-10-03T08:04:27+09:00",
       "lanes": {
@@ -325179,6 +325641,24 @@
       "telegram_core_fact": "블라디미르 푸틴 러시아 대통령은 15일(현지시간) 우크라이나가 러시아 정유시설에 대한 공격 시도를 계속하고 있지만 유의미한 피해를 입히지는 못했다고 주장했다.",
       "title": "푸틴 \"우크라, 러 대응에 벌써 비명…후원자들에 멈춰달라 요청\""
     },
+    "link:f3f74719a3ad1fd4d2ab6b36": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182334",
+      "source": "매일경제",
+      "source_body_digest": "4c4b969f240ed8410ffb8b6aabd62c2be3f3cdf4e7b3c45ee6ee9f2c31b24ced",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T05:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "비콘 파이낸셜, 3분기 흑자전환..자사주 매입 1억2500만달러",
+      "telegram_core_fact": "이사회는 분기 배당금을 주당 0.3225달러로 결정했다.",
+      "title": "비콘 파이낸셜, 3분기 흑자전환..자사주 매입 1억2500만달러"
+    },
     "link:f3fc04428301b2445589fb31": {
       "first_seen_kst": "2026-10-04T00:26:19+09:00",
       "lanes": {
@@ -328706,6 +329186,33 @@
       "source_title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\"",
       "telegram_core_fact": "노르웨이 노벨위원회는 지난 9일 필라이를 올해 노벨평화상 수상자로 선정했는데, 필라이는 그 몇시간 후 미국의 ICC 제재가 발표된 것은 우연이 아니라며 이는 \"트럼프 대통령이 상을 받지 못한 데 대한 반응\"이라고 말했다.",
       "title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\""
+    },
+    "link:fbf324c2eefaf7516749335f": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
     },
     "link:fc179294df60e688392134d8": {
       "first_seen_kst": "2026-10-03T13:31:23+09:00",
@@ -334458,6 +334965,24 @@
       "source_title": "\"약가 우대 인센티브 안돼\"…억울한 한국산 원료",
       "telegram_core_fact": "관련 업계에 따르면 , 정부는 최근 약가제도 개편을 통해 원료를 자사에서 직접 생산하거나 국산 원료를 사용한 국가필수의약품에 대해 약가를 68% 수준으로 우대하고, 원료 직접생산 의약품의 우대기간도 기존 1년에서 5+5년으로 확대했다.",
       "title": "\"약가 우대 인센티브 안돼\"…억울한 한국산 원료"
+    },
+    "original:07b162528b636cb28aff01d3": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182334",
+      "source": "매일경제",
+      "source_body_digest": "4c4b969f240ed8410ffb8b6aabd62c2be3f3cdf4e7b3c45ee6ee9f2c31b24ced",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T05:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "비콘 파이낸셜, 3분기 흑자전환..자사주 매입 1억2500만달러",
+      "telegram_core_fact": "이사회는 분기 배당금을 주당 0.3225달러로 결정했다.",
+      "title": "비콘 파이낸셜, 3분기 흑자전환..자사주 매입 1억2500만달러"
     },
     "original:07b49306446e10869378b988": {
       "first_seen_kst": "2026-10-22T06:35:46+09:00",
@@ -359081,6 +359606,26 @@
       "telegram_core_fact": "셀트리온은 연결 기준 올해 3분기 영업이익이 전년비 69.2% 늘어난 5100억원, 매출은 45.8% 증가한 1조5000억원으로 잠정 집계됐다고 발표했다.",
       "title": "[ET특징주]셀트리온, 3분기 역대 최대 실적에 상승세"
     },
+    "original:3a7f957e1651493730c5a453": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.dt.co.kr/article/12090424",
+      "source": "디지털타임스",
+      "source_body_digest": "c2f56f379f695b2fc89f3c7f30a3ef0207fb7149a64551284ad6bf4fd4683634",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cc8f7b60839c785b9b606c7cc052cfad3292fc1a803100df57bc92d9ebaa2c5",
+      "source_fact_keys": [
+        "source_fact:v1:d418999bf2586853e5016f04e2cab6acd5caef830f257ebfc199b16746602b8d"
+      ],
+      "source_published_kst": "2026-10-21T16:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”",
+      "telegram_core_fact": "이 사이 중국 양쯔메모리(YMTC)의 2분기 중국 낸드 시장 점유율은 38.5%로 삼성전자(33.5%)를 앞섰고 SK하이닉스 점유율은 20%에서 17%로 떨어졌다고 시장조사업체 옴디아가 밝혔다.",
+      "title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”"
+    },
     "original:3a8292d04a3073e5608afe59": {
       "first_seen_kst": "2026-10-11T14:49:05+09:00",
       "lanes": {
@@ -367977,6 +368522,35 @@
       ],
       "source_published_kst": "2026-10-07T16:01+09:00",
       "title": "6800선으로 내려온 코스피…삼전 실적·FOMC 의사록 등 변동성↑"
+    },
+    "original:4b6ec5658626574caf31a03c": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
     },
     "original:4b833fd2a24d3699fc6aa85c": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -378191,6 +378765,30 @@
       "telegram_core_fact": "삼성자산운용은 인공지능(AI) 에이전트 관련 미국 기업에 투자하는 'KODEX 미국AI에이전트액티브' 상장지수펀드(ETF)를 신규 상장한다고 13일 밝혔다.",
       "title": "삼성운용, 메타·팔란티어 담은 AI 에이전트 ETF 신규 상장 | 연합뉴스"
     },
+    "original:612fd86c062dd2657f309871": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01476006645615544",
+      "source": "이데일리",
+      "source_body_digest": "45ababeccd39b4f82f36ae07912e00cb10ecc7ff415bea743da49153e6ee4b44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:655795359ea545df32fc21feb0e4cb363f95a4ff2c36699c8c7e4f5ada316005",
+      "source_fact_keys": [
+        "source_fact:v1:355d2a5d151c6d1be305542e2bad8f09976f43e079cbb6e79d917ddbf8dd6e2c",
+        "source_fact:v1:c99543793613fc20575dff1606b831aef1fd658eada58795b3452d92285aff67",
+        "source_fact:v1:e8ac5f06d26c69418836658e45fe1bdfbc276e7ad612c4882935a575bc089543",
+        "source_fact:v1:ec565d4f76fadf17bf08b42737c685dc3bddaa1b6dbb2a85c6946c253b0224ee",
+        "source_fact:v1:eda6efbd93e96f9b44232ad4f97a26680aafe6600ccc5aede3f003909f9c8a9a"
+      ],
+      "source_published_kst": "2026-10-22T04:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑",
+      "telegram_core_fact": "바이오의약품 개발업체 로이반트사이언시스(ROIV)가 안과질환 치료제의 임상 3상에서 긍정적인 결과를 확보했다는 소식에 주가가 상승하고 있다. 21일(현지시간) 오후2시42분 기준 로이반트사이언시스 주가는 전일대비 3.58% 오른 36.17달러에 거래 중이다.",
+      "title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑"
+    },
     "original:613332b45e242c8a9f5c647f": {
       "first_seen_kst": "2026-10-17T04:33:11+09:00",
       "lanes": {
@@ -386402,6 +387000,33 @@
       "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
       "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
       "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
+    },
+    "original:72cf31e120a846756be78649": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
     },
     "original:72d5341f201152153c324df4": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -403602,18 +404227,18 @@
     "original:95040a970760d07c828d4069": {
       "first_seen_kst": "2026-10-21T12:08:47+09:00",
       "lanes": {
-        "live": "2026-10-21T12:08:47+09:00"
+        "live": "2026-10-22T08:49:50+09:00"
       },
-      "last_seen_kst": "2026-10-21T12:08:47+09:00",
-      "link": "https://www.mt.co.kr/stock/2026/10/21/2026101916264741354",
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026101916264741354",
       "source": "머니투데이",
-      "source_body_digest": "6c6d38818647f0c8e865a3309807d6d4ae20b1905f5341ac82982bb6353ec954",
+      "source_body_digest": "5f494a5c2024b15be168bea2cc8257fc6316140a5a3b41ebfb98760668607746",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3fab2fb12cdd1ff27472add2caabbc22cb10fe2a209906e7dabb894820aaa956",
+      "source_fact_identity": "source_facts:v1:7830410e143f840aedf80e9c08086ac3b40a7683eb20d77667ff2228bffa2915",
       "source_fact_keys": [
         "source_fact:v1:2fd999c1dbbd883d5537371d7dcef57339fc7e2f05b67a57279a5c8747d89001",
         "source_fact:v1:36bc28d9d5b5e29f5973c07205452496eda008f0ee89eb9cd7973a18f6741db8",
-        "source_fact:v1:79f2a72d13da631e62bc625c3a58dde2f3d8ce000ce65bda065b2378a258cbf4"
+        "source_fact:v1:bf7e9193c7fb68c9dfa702f8a5eca0bcb4871875b69ebce44b06cb491942237b"
       ],
       "source_published_kst": "2026-10-21T09:26+09:00",
       "source_supply_terms": {},
@@ -429883,6 +430508,37 @@
       "source_title": "사우디- 후티 공습격화,.. 리야드공항 폭격에 12명 죽고 309명 부상(종합)",
       "telegram_core_fact": "10일의 공격이 끝난 뒤 후티군은 성명을 발표, 앞으로도 사우디 아라비아에 대한 상응하는 보복조치를 할 준비가 되어 있다면서 군사력 대결 외에 민간 부문에서도 공항, 항만, 기타 공공 시설등에 대한 공격을 주저하지 않겠다고 밝혔다.",
       "title": "사우디- 후티 공습격화,.. 리야드공항 폭격에 12명 죽고 309명 부상(종합)"
+    },
+    "original:cc6ef1d8204af64cd98332ee": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
     },
     "original:cc7d9fd7f3e50f1d43795c0f": {
       "first_seen_kst": "2026-10-14T20:10:22+09:00",
@@ -465435,6 +466091,33 @@
       "source_published_kst": "2026-10-06T10:28+09:00",
       "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
     },
+    "source_fact:05cf34358c4d164f6e6709a5": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
+    },
     "source_fact:05d545a09a8e7b3bd20de127": {
       "first_seen_kst": "2026-10-17T15:31:00+09:00",
       "lanes": {
@@ -468379,6 +469062,37 @@
       ],
       "source_published_kst": "2026-10-06T06:37+09:00",
       "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
+    },
+    "source_fact:0738fe0decb8d1760a9f4128": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
     },
     "source_fact:073929194916d9700da70d2c": {
       "first_seen_kst": "2026-10-16T19:25:42+09:00",
@@ -477273,18 +477987,18 @@
     "source_fact:0c23ef460f988eccbd28aa0c": {
       "first_seen_kst": "2026-10-21T12:08:47+09:00",
       "lanes": {
-        "live": "2026-10-21T12:08:47+09:00"
+        "live": "2026-10-22T08:49:50+09:00"
       },
-      "last_seen_kst": "2026-10-21T12:08:47+09:00",
-      "link": "https://www.mt.co.kr/stock/2026/10/21/2026101916264741354",
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026101916264741354",
       "source": "머니투데이",
-      "source_body_digest": "6c6d38818647f0c8e865a3309807d6d4ae20b1905f5341ac82982bb6353ec954",
+      "source_body_digest": "5f494a5c2024b15be168bea2cc8257fc6316140a5a3b41ebfb98760668607746",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3fab2fb12cdd1ff27472add2caabbc22cb10fe2a209906e7dabb894820aaa956",
+      "source_fact_identity": "source_facts:v1:7830410e143f840aedf80e9c08086ac3b40a7683eb20d77667ff2228bffa2915",
       "source_fact_keys": [
         "source_fact:v1:2fd999c1dbbd883d5537371d7dcef57339fc7e2f05b67a57279a5c8747d89001",
         "source_fact:v1:36bc28d9d5b5e29f5973c07205452496eda008f0ee89eb9cd7973a18f6741db8",
-        "source_fact:v1:79f2a72d13da631e62bc625c3a58dde2f3d8ce000ce65bda065b2378a258cbf4"
+        "source_fact:v1:bf7e9193c7fb68c9dfa702f8a5eca0bcb4871875b69ebce44b06cb491942237b"
       ],
       "source_published_kst": "2026-10-21T09:26+09:00",
       "source_supply_terms": {},
@@ -481902,6 +482616,35 @@
       "telegram_core_fact": "올해 처음 통합 개최하는 이번 행사는 AI 기술 공급기업과 제조기업이 만나 기술 도입과 사업 협력 기회를 모색하는 자리다.",
       "title": "창원서 제조 AI·스마트공장 통합 'The Next AI×SMATOF' 개막 | 연합뉴스"
     },
+    "source_fact:0e652db49f6838d1d384059f": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
+    },
     "source_fact:0e654437ee3672bf15f3aa54": {
       "first_seen_kst": "2026-10-12T22:29:29+09:00",
       "lanes": {
@@ -482295,6 +483038,37 @@
       "source_title": "AI 서버 호황…슈퍼마이크로",
       "telegram_core_fact": "슈퍼마이크로는 이날 잠정 실적 공시를 통해 1분기 매출이 185억∼195억달러(약24조8천억∼26조2천억원)에 이를 것이라고 밝혔다.",
       "title": "AI 서버 호황…슈퍼마이크로"
+    },
+    "source_fact:0ea9c82cade4057f2e54f985": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
     },
     "source_fact:0eadf3e300c48dba49b839cc": {
       "first_seen_kst": "2026-10-20T19:25:45+09:00",
@@ -521450,6 +522224,37 @@
       "telegram_core_fact": "박연주 미래에셋증권 AI리서치센터장은 오픈AI 매출 논란에 대해 \"집계 기준의 차이일 뿐, AI 수요 등 펀더멘털은 크게 변하지 않은 상황으로 본다\"고 말했다.",
       "title": "답답한 삼전닉스를 어찌하오리까…증권 센터장 5인에게 물어보니"
     },
+    "source_fact:221f742930dafbfc24bd2f83": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
+    },
     "source_fact:222580f5ad5dcf4558ab4c7d": {
       "first_seen_kst": "2026-10-21T20:02:19+09:00",
       "lanes": {
@@ -550470,6 +551275,30 @@
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
+    "source_fact:30895df0edeeab6922c8bb23": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01476006645615544",
+      "source": "이데일리",
+      "source_body_digest": "45ababeccd39b4f82f36ae07912e00cb10ecc7ff415bea743da49153e6ee4b44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:655795359ea545df32fc21feb0e4cb363f95a4ff2c36699c8c7e4f5ada316005",
+      "source_fact_keys": [
+        "source_fact:v1:355d2a5d151c6d1be305542e2bad8f09976f43e079cbb6e79d917ddbf8dd6e2c",
+        "source_fact:v1:c99543793613fc20575dff1606b831aef1fd658eada58795b3452d92285aff67",
+        "source_fact:v1:e8ac5f06d26c69418836658e45fe1bdfbc276e7ad612c4882935a575bc089543",
+        "source_fact:v1:ec565d4f76fadf17bf08b42737c685dc3bddaa1b6dbb2a85c6946c253b0224ee",
+        "source_fact:v1:eda6efbd93e96f9b44232ad4f97a26680aafe6600ccc5aede3f003909f9c8a9a"
+      ],
+      "source_published_kst": "2026-10-22T04:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑",
+      "telegram_core_fact": "바이오의약품 개발업체 로이반트사이언시스(ROIV)가 안과질환 치료제의 임상 3상에서 긍정적인 결과를 확보했다는 소식에 주가가 상승하고 있다. 21일(현지시간) 오후2시42분 기준 로이반트사이언시스 주가는 전일대비 3.58% 오른 36.17달러에 거래 중이다.",
+      "title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑"
+    },
     "source_fact:308a5c1522d731d6608e8094": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -563006,6 +563835,26 @@
       "telegram_core_fact": "링스에쿼티스트래터지스의 KC 라즈쿠마르 애널리스트는 지난 8월 보고서에서 \"공급 한계와 고객사 인증 요건 때문에 최근 언론보도만큼 위협이 임박하지는 않다\"며 \"애플이 직면한 D램 수급 부족 사태를 눈에 띄게 줄이지 못할 것\"이라고 지적했다.",
       "title": "中 차세대 D램 실체 있나 \"임박한 위협 아냐\"…\"1년후 다를수도\""
     },
+    "source_fact:36e9fdb27ab86ace773075a2": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.dt.co.kr/article/12090424",
+      "source": "디지털타임스",
+      "source_body_digest": "c2f56f379f695b2fc89f3c7f30a3ef0207fb7149a64551284ad6bf4fd4683634",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cc8f7b60839c785b9b606c7cc052cfad3292fc1a803100df57bc92d9ebaa2c5",
+      "source_fact_keys": [
+        "source_fact:v1:d418999bf2586853e5016f04e2cab6acd5caef830f257ebfc199b16746602b8d"
+      ],
+      "source_published_kst": "2026-10-21T16:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”",
+      "telegram_core_fact": "이 사이 중국 양쯔메모리(YMTC)의 2분기 중국 낸드 시장 점유율은 38.5%로 삼성전자(33.5%)를 앞섰고 SK하이닉스 점유율은 20%에서 17%로 떨어졌다고 시장조사업체 옴디아가 밝혔다.",
+      "title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”"
+    },
     "source_fact:36f02e3570e104e44c30d804": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -567120,6 +567969,37 @@
       "source_title": "트럼프 “러시아·우크라이나, 에너지 휴전 합의”…구체적 내용은 미공개",
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 11일(현지시간) 러시아와 우크라이나가 에너지 시설 공격을 중단하는‘에너지 휴전’에 합의했다고 밝혔다. 트럼프 대통령은 수주 동안 젤렌스키 대통령에게 러시아 에너지 기반시설에 대한 공격을 중단하라고 압박해 왔다.",
       "title": "트럼프 “러시아·우크라이나, 에너지 휴전 합의”…구체적 내용은 미공개"
+    },
+    "source_fact:38e780193b23f8de35753dbc": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
     },
     "source_fact:38e92a8eeb57c357d2e6f604": {
       "first_seen_kst": "2026-10-11T08:42:16+09:00",
@@ -605121,6 +606001,37 @@
       "telegram_core_fact": "러시아의 에너지시설 공습으로 우크라이나 수도 키이우 일부 지역에서 수돗물 공급이 끊긴 가운데, 겨울철 정전이 길어지면 하수가 넘쳐 공중보건 위기로 번질 수 있다는 경고가 나왔다.",
       "title": "러 공습에 키이우 일부 단수…겨울 정전 길어지면 오수 범람 우려"
     },
+    "source_fact:4b9907b56f7541065b8b5d9c": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
+    },
     "source_fact:4b9abac2e9b5d67ff85904ea": {
       "first_seen_kst": "2026-10-14T17:21:42+09:00",
       "lanes": {
@@ -610413,6 +611324,33 @@
       "source_title": "보스반도체, LG전자·하나마이크론과 '차량용 칩렛 반도체' 국산화 맞손",
       "telegram_core_fact": "보스반도체는 산업통상자원부가 주관한 ‘미래차 생태계 구축 협력’ 행사의 일환으로 LG전자, 하나마이크론, 그리고 자동차 및 산업기술 전문기관 4곳과 ‘칩렛 기반 차량용 반도체 국산화 협력을 위한 업무협약(MOU)’을 체결했다고 20일 밝혔다.",
       "title": "보스반도체, LG전자·하나마이크론과 '차량용 칩렛 반도체' 국산화 맞손"
+    },
+    "source_fact:4e61aaf26e3e1453a0e48f7e": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
     },
     "source_fact:4e63e676cf8261572750cd4a": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
@@ -615760,6 +616698,30 @@
       "telegram_core_fact": "미취학 아동을 대상으로 하는 학원 레벨테스트, 이른바 ‘4세 고시 금지법’을 전면 시행했지만 전국 대부분 교육청은 처벌기준도 마련하지 못한 것으로 확인됐다.",
       "title": "‘4세 고시’ 금지에도 꼼수 난무…교육청 행정처분 기준도 미비"
     },
+    "source_fact:50e9e455a1e9470f5f5bb74e": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01476006645615544",
+      "source": "이데일리",
+      "source_body_digest": "45ababeccd39b4f82f36ae07912e00cb10ecc7ff415bea743da49153e6ee4b44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:655795359ea545df32fc21feb0e4cb363f95a4ff2c36699c8c7e4f5ada316005",
+      "source_fact_keys": [
+        "source_fact:v1:355d2a5d151c6d1be305542e2bad8f09976f43e079cbb6e79d917ddbf8dd6e2c",
+        "source_fact:v1:c99543793613fc20575dff1606b831aef1fd658eada58795b3452d92285aff67",
+        "source_fact:v1:e8ac5f06d26c69418836658e45fe1bdfbc276e7ad612c4882935a575bc089543",
+        "source_fact:v1:ec565d4f76fadf17bf08b42737c685dc3bddaa1b6dbb2a85c6946c253b0224ee",
+        "source_fact:v1:eda6efbd93e96f9b44232ad4f97a26680aafe6600ccc5aede3f003909f9c8a9a"
+      ],
+      "source_published_kst": "2026-10-22T04:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑",
+      "telegram_core_fact": "바이오의약품 개발업체 로이반트사이언시스(ROIV)가 안과질환 치료제의 임상 3상에서 긍정적인 결과를 확보했다는 소식에 주가가 상승하고 있다. 21일(현지시간) 오후2시42분 기준 로이반트사이언시스 주가는 전일대비 3.58% 오른 36.17달러에 거래 중이다.",
+      "title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑"
+    },
     "source_fact:50ea1485a087632f83c51fdb": {
       "first_seen_kst": "2026-10-17T03:36:50+09:00",
       "lanes": {
@@ -618871,6 +619833,35 @@
       "source_title": "‘할당관세’ 2653억원 지원해도…농축산물 물가 인하 효과는 0.00272%",
       "telegram_core_fact": "하지만 29개 할당관세 품목의 관세 인하가 국내 최종재 물가에 미친 영향은 0.00272%에 그쳤다.",
       "title": "‘할당관세’ 2653억원 지원해도…농축산물 물가 인하 효과는 0.00272%"
+    },
+    "source_fact:5273c83fbac36e543977206d": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
     },
     "source_fact:52783339bfaeb32c3673371b": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
@@ -627071,6 +628062,37 @@
       "telegram_core_fact": "이재명 대통령이 3기 신도시 주택공급과 관련해 \"주택 공급 기준은 바로 입주여야 한다\"며 공급 속도를 획기적으로 높일 것을 지시했다. 특히 2022년부터 지난해까지 신규 주택 인허가와 착공이 절반 가까이 줄었다는 점을 지적하며 \"신규 공급을 최대한 당겨서 그 간극을 줄여야 한다\"고 했다.",
       "title": "주택 공급 '전격전' 주문한 李…\"주택 공급 기준은 '입주'\""
     },
+    "source_fact:565adf4a56057f14bdd4eb5e": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
+    },
     "source_fact:565c5cef8968b328203134d4": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
       "lanes": {
@@ -631380,18 +632402,18 @@
     "source_fact:5879e86abeccbc87b2630141": {
       "first_seen_kst": "2026-10-21T12:08:47+09:00",
       "lanes": {
-        "live": "2026-10-21T12:08:47+09:00"
+        "live": "2026-10-22T08:49:50+09:00"
       },
-      "last_seen_kst": "2026-10-21T12:08:47+09:00",
-      "link": "https://www.mt.co.kr/stock/2026/10/21/2026101916264741354",
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026101916264741354",
       "source": "머니투데이",
-      "source_body_digest": "6c6d38818647f0c8e865a3309807d6d4ae20b1905f5341ac82982bb6353ec954",
+      "source_body_digest": "5f494a5c2024b15be168bea2cc8257fc6316140a5a3b41ebfb98760668607746",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3fab2fb12cdd1ff27472add2caabbc22cb10fe2a209906e7dabb894820aaa956",
+      "source_fact_identity": "source_facts:v1:7830410e143f840aedf80e9c08086ac3b40a7683eb20d77667ff2228bffa2915",
       "source_fact_keys": [
         "source_fact:v1:2fd999c1dbbd883d5537371d7dcef57339fc7e2f05b67a57279a5c8747d89001",
         "source_fact:v1:36bc28d9d5b5e29f5973c07205452496eda008f0ee89eb9cd7973a18f6741db8",
-        "source_fact:v1:79f2a72d13da631e62bc625c3a58dde2f3d8ce000ce65bda065b2378a258cbf4"
+        "source_fact:v1:bf7e9193c7fb68c9dfa702f8a5eca0bcb4871875b69ebce44b06cb491942237b"
       ],
       "source_published_kst": "2026-10-21T09:26+09:00",
       "source_supply_terms": {},
@@ -667386,6 +668408,35 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "source_fact:6a31fd74c2286cb7eb84e8ec": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
+    },
     "source_fact:6a3484d84ef3ce15f6d254fc": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -668204,6 +669255,30 @@
       "source_title": "구보성 엠비디 대표 “로봇팔까지 연결한 세포배양 자동화, 내년 상용화”",
       "telegram_core_fact": "이달 코스닥 상장을 추진 중인 엠비디는 3차원(3D) 세포배양 플랫폼 기술을 기반으로 정밀의료와 신약개발 지원 사업을 전개하는 기업이다.",
       "title": "구보성 엠비디 대표 “로봇팔까지 연결한 세포배양 자동화, 내년 상용화”"
+    },
+    "source_fact:6aa28d4e7c30f16a8e08c7a4": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01476006645615544",
+      "source": "이데일리",
+      "source_body_digest": "45ababeccd39b4f82f36ae07912e00cb10ecc7ff415bea743da49153e6ee4b44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:655795359ea545df32fc21feb0e4cb363f95a4ff2c36699c8c7e4f5ada316005",
+      "source_fact_keys": [
+        "source_fact:v1:355d2a5d151c6d1be305542e2bad8f09976f43e079cbb6e79d917ddbf8dd6e2c",
+        "source_fact:v1:c99543793613fc20575dff1606b831aef1fd658eada58795b3452d92285aff67",
+        "source_fact:v1:e8ac5f06d26c69418836658e45fe1bdfbc276e7ad612c4882935a575bc089543",
+        "source_fact:v1:ec565d4f76fadf17bf08b42737c685dc3bddaa1b6dbb2a85c6946c253b0224ee",
+        "source_fact:v1:eda6efbd93e96f9b44232ad4f97a26680aafe6600ccc5aede3f003909f9c8a9a"
+      ],
+      "source_published_kst": "2026-10-22T04:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑",
+      "telegram_core_fact": "바이오의약품 개발업체 로이반트사이언시스(ROIV)가 안과질환 치료제의 임상 3상에서 긍정적인 결과를 확보했다는 소식에 주가가 상승하고 있다. 21일(현지시간) 오후2시42분 기준 로이반트사이언시스 주가는 전일대비 3.58% 오른 36.17달러에 거래 중이다.",
+      "title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑"
     },
     "source_fact:6aa41b80f8f142b104f1cc59": {
       "first_seen_kst": "2026-10-18T08:07:27+09:00",
@@ -674778,6 +675853,35 @@
       "telegram_core_fact": "오늘(10일) 한국석유공사 유가정보시스템 오피넷에 따르면 10월 첫째 주 전국 주유소 휘발유 평균 판매가는 지난주보다 리터(L)당 0.4원 내린 1,857.6원이었습니다.",
       "title": "기름값 21주째 하락…휘발유·경유 1,800원대 | 연합뉴스"
     },
+    "source_fact:6de77bf330146e8d0c921263": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
+    },
     "source_fact:6de956e84a1a94fa6461ac9d": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -676201,6 +677305,35 @@
       ],
       "source_published_kst": "2026-10-07T09:28+09:00",
       "title": "현대엔지니어링, 군산 이어 인천 데이터센터 수주…8700억 규모"
+    },
+    "source_fact:6ec9e57fa4b154081bd734d0": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
     },
     "source_fact:6ecb89ca5e900a9da98e5053": {
       "first_seen_kst": "2026-10-21T13:24:59+09:00",
@@ -692783,6 +693916,30 @@
       "source_title": "삼성 美 테일러팹 2나노 양산 임박…'수율 특공대' 파견",
       "telegram_core_fact": "삼성전자가 내년 미국 텍사스주 테일러 파운드리(반도체 위탁생산) 공장의 2나노미터(나노미터·1㎚=10억분의 1m) 반도체 본격 양산을 앞두고 기술 인력과 현지 운영조직 확충에 속도를 내고 있다.",
       "title": "삼성 美 테일러팹 2나노 양산 임박…'수율 특공대' 파견"
+    },
+    "source_fact:771615b7f2d1787807d59bf9": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01476006645615544",
+      "source": "이데일리",
+      "source_body_digest": "45ababeccd39b4f82f36ae07912e00cb10ecc7ff415bea743da49153e6ee4b44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:655795359ea545df32fc21feb0e4cb363f95a4ff2c36699c8c7e4f5ada316005",
+      "source_fact_keys": [
+        "source_fact:v1:355d2a5d151c6d1be305542e2bad8f09976f43e079cbb6e79d917ddbf8dd6e2c",
+        "source_fact:v1:c99543793613fc20575dff1606b831aef1fd658eada58795b3452d92285aff67",
+        "source_fact:v1:e8ac5f06d26c69418836658e45fe1bdfbc276e7ad612c4882935a575bc089543",
+        "source_fact:v1:ec565d4f76fadf17bf08b42737c685dc3bddaa1b6dbb2a85c6946c253b0224ee",
+        "source_fact:v1:eda6efbd93e96f9b44232ad4f97a26680aafe6600ccc5aede3f003909f9c8a9a"
+      ],
+      "source_published_kst": "2026-10-22T04:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑",
+      "telegram_core_fact": "바이오의약품 개발업체 로이반트사이언시스(ROIV)가 안과질환 치료제의 임상 3상에서 긍정적인 결과를 확보했다는 소식에 주가가 상승하고 있다. 21일(현지시간) 오후2시42분 기준 로이반트사이언시스 주가는 전일대비 3.58% 오른 36.17달러에 거래 중이다.",
+      "title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑"
     },
     "source_fact:772680bf410fa23385e654cb": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -732622,6 +733779,37 @@
       "source_published_kst": "2026-10-06T10:42+09:00",
       "title": "에코프로비엠, 삼성SDI와 맞손…전고체 배터리 공동 개발"
     },
+    "source_fact:8be61ef41d5a8aee0f868906": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
+    },
     "source_fact:8bec8499410e1f6246ed0e25": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -751981,6 +753169,35 @@
       "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
       "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
+    "source_fact:961dba39c8f8573a30605ac4": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
+    },
     "source_fact:9621da5220c990a5fc9b719f": {
       "first_seen_kst": "2026-10-15T18:18:04+09:00",
       "lanes": {
@@ -758766,6 +759983,33 @@
       "source_title": "李 \"주택 공급, '속도'가 중요…기준은 '바로 입주'\"",
       "telegram_core_fact": "그러면서 \"계획 수립, 토지 보상, 인허가 등 전 단계에 걸쳐서 속도를 최대한 끌어올려 주시기 바란다\"며 신속한 공급을 위해 금융 인센티브를 획기적으로 늘리는 것도 함께 검토하라고 지시했다.",
       "title": "李 \"주택 공급, '속도'가 중요…기준은 '바로 입주'\""
+    },
+    "source_fact:995fe942573c89d341afa46f": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
     },
     "source_fact:9964552c76bfe80f857817ef": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -769479,6 +770723,33 @@
       "source_title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도",
       "telegram_core_fact": "젤렌스키 대통령은 “러시아가 에너지 수출로 벌어들인 돈을 무기와 공격용 드론 생산에 쓸 것”이라며 미국의 경유 제재 완화 합의를 비판했다.",
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
+    },
+    "source_fact:9e95eafa9b6dd7a2ed68c0ea": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
     },
     "source_fact:9ea79ad9ac94174ff47dfcf9": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
@@ -791237,6 +792508,35 @@
       "telegram_core_fact": "최 회장은 이날 민형배 전남광주시장, 용지를 둘러보고 시 관계자로부터 전력·용수 등 기반시설 확보와 인허가 등 주요 현안에 대한 추진 계획을 듣기도 했다.",
       "title": "'호남팹' 속도전 나선 SK 최태원… \"전력·용수 늦어져도 먼저 건설\""
     },
+    "source_fact:a97d64942bff7321bee409ea": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
+    },
     "source_fact:a98238b05def68d0d413432d": {
       "first_seen_kst": "2026-10-21T20:37:27+09:00",
       "lanes": {
@@ -802979,6 +804279,37 @@
       "telegram_core_fact": "일론 머스크가 이끄는 미국 항공우주 기업 스페이스X가 약 11조원을 들여 이동통신용 주파수를 인수했다.",
       "title": "스페이스X, 11조원에 주파수 인수⋯美 이동통신 시장 진출 본격화"
     },
+    "source_fact:aeef93c7532783f7fd105d2f": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
+    },
     "source_fact:aefaa420e6a38f49b31c2ea2": {
       "first_seen_kst": "2026-10-07T09:22:01+09:00",
       "lanes": {
@@ -814410,6 +815741,37 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "source_fact:b491e1e2ccc9cb1efa353dc1": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
+    },
     "source_fact:b4940167c725ab3dd2743b57": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -822241,6 +823603,33 @@
       "telegram_core_fact": "18일 파이낸셜타임스(FT)가 인용한 규제 정보업체 레그레이어의 자료에 따르면 올해 미국에서 지연·철회되거나 추진에 제동이 걸린 대형 데이터센터 개발 프로젝트는 최소 47건에 달했다.",
       "title": "美 데이터센터 47곳, 올해 사업 제동…\"비용 부담 커진다\""
     },
+    "source_fact:b8a4f4ef46b42e3de44ee50f": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
+    },
     "source_fact:b8b1462590e2bd0fef30ade1": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
       "lanes": {
@@ -826282,6 +827671,30 @@
       "source_title": "폭스바겐그룹, 3분기 누적 인도 601만 대…유럽 전기차 비중 20%로 확대",
       "telegram_core_fact": "폭스바겐그룹이 올해 1~9월 전 세계 고객에게 601만 대를 인도했다.",
       "title": "폭스바겐그룹, 3분기 누적 인도 601만 대…유럽 전기차 비중 20%로 확대"
+    },
+    "source_fact:bae68e5922e5e603df42bd74": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01476006645615544",
+      "source": "이데일리",
+      "source_body_digest": "45ababeccd39b4f82f36ae07912e00cb10ecc7ff415bea743da49153e6ee4b44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:655795359ea545df32fc21feb0e4cb363f95a4ff2c36699c8c7e4f5ada316005",
+      "source_fact_keys": [
+        "source_fact:v1:355d2a5d151c6d1be305542e2bad8f09976f43e079cbb6e79d917ddbf8dd6e2c",
+        "source_fact:v1:c99543793613fc20575dff1606b831aef1fd658eada58795b3452d92285aff67",
+        "source_fact:v1:e8ac5f06d26c69418836658e45fe1bdfbc276e7ad612c4882935a575bc089543",
+        "source_fact:v1:ec565d4f76fadf17bf08b42737c685dc3bddaa1b6dbb2a85c6946c253b0224ee",
+        "source_fact:v1:eda6efbd93e96f9b44232ad4f97a26680aafe6600ccc5aede3f003909f9c8a9a"
+      ],
+      "source_published_kst": "2026-10-22T04:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑",
+      "telegram_core_fact": "바이오의약품 개발업체 로이반트사이언시스(ROIV)가 안과질환 치료제의 임상 3상에서 긍정적인 결과를 확보했다는 소식에 주가가 상승하고 있다. 21일(현지시간) 오후2시42분 기준 로이반트사이언시스 주가는 전일대비 3.58% 오른 36.17달러에 거래 중이다.",
+      "title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑"
     },
     "source_fact:bae99f7d6bcd45c99faaa6ae": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
@@ -858234,6 +859647,35 @@
       "telegram_core_fact": "인수 후에도 순레버리지는 1.4배로 부담이 크지 않고, 수주잔고 3억5000만 달러가 확보돼 즉각적인 실적 기여가 기대되면서 투자심리가 개선되고 있습니다. 3억5750만 달러에 휴즈브라더스를 인수하며 성장세가 빠른 플로리다 시장에 진출한다는 소식이 호재로 작용했습니다.",
       "title": "카디널인프라, 휴즈브라더스 인수로 플로리다 시장 진출 기대감 부각"
     },
+    "source_fact:ca9f3b10a1ee0ec98c433222": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
+    },
     "source_fact:caa34920ef3574aa081a47ba": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
       "lanes": {
@@ -861417,6 +862859,37 @@
       "source_title": "'AI 클라우드 기업' 엘리스그룹, 일반공모 돌입[오늘청약]",
       "telegram_core_fact": "회사에 따르면 올해 상반기 연결 기준 매출액은 344억원, 영업이익은 103억원을 기록했다. 인공지능(AI) 클라우드 기업 엘리스그룹이 오늘(7일)부터 이틀간 코스닥 상장을 위한 일반투자자 대상 공모주 청약을 진행한다.",
       "title": "'AI 클라우드 기업' 엘리스그룹, 일반공모 돌입[오늘청약]"
+    },
+    "source_fact:cc41ac740d46adf26dc1bd5e": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
     },
     "source_fact:cc45347356e146507dea8852": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
@@ -873656,6 +875129,28 @@
       "telegram_core_fact": "안 사장은 'AI 시대, 메모리 기술의 진화 방향'을 주제로 진행한 기조연설에서 AI 추론 수요 확대에 따라 기존 메모리 계층의 성능과 용량 측면에서 새로운 병목이 발생하고 있다고 설명함.",
       "title": "SK하이닉스 안현 사장 '전체 메모리 계층 최적화로 AI 생태계 지속 성장 견인'"
     },
+    "source_fact:d27337c0ffc23ca78f14444c": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026101916264741354",
+      "source": "머니투데이",
+      "source_body_digest": "5f494a5c2024b15be168bea2cc8257fc6316140a5a3b41ebfb98760668607746",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7830410e143f840aedf80e9c08086ac3b40a7683eb20d77667ff2228bffa2915",
+      "source_fact_keys": [
+        "source_fact:v1:2fd999c1dbbd883d5537371d7dcef57339fc7e2f05b67a57279a5c8747d89001",
+        "source_fact:v1:36bc28d9d5b5e29f5973c07205452496eda008f0ee89eb9cd7973a18f6741db8",
+        "source_fact:v1:bf7e9193c7fb68c9dfa702f8a5eca0bcb4871875b69ebce44b06cb491942237b"
+      ],
+      "source_published_kst": "2026-10-21T09:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"그래도 대세는 AI\"…엔비디아·반도체 집중 투자 ETF[머니똑똑]",
+      "telegram_core_fact": "지난 20일 '1Q 엔비디아고정미국AI반도체' ETF가 상장했다.",
+      "title": "\"그래도 대세는 AI\"…엔비디아·반도체 집중 투자 ETF[머니똑똑]"
+    },
     "source_fact:d2751dcdaabdc08af62d2cc2": {
       "first_seen_kst": "2026-10-17T09:15:26+09:00",
       "lanes": {
@@ -874527,6 +876022,37 @@
       "source_title": "LVMH 최대 사업부 매출 5% 뒷걸음…중국 매출 감소·소비자 반발 겹쳐",
       "telegram_core_fact": "세계 최대 명품기업 루이비통모에헤네시(LVMH)의 최대 사업부인 패션·가죽제품 부문 매출이 3분기에 감소했다.",
       "title": "LVMH 최대 사업부 매출 5% 뒷걸음…중국 매출 감소·소비자 반발 겹쳐"
+    },
+    "source_fact:d2ec5bf2b6b64dc44952ac60": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
     },
     "source_fact:d2eccac4bcd1fcaae119e8a9": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -892119,6 +893645,37 @@
       "source_title": "최태원 \"호남 반도체 공장, 용인 3분의 2 규모…최대한 빨리 건설\"",
       "telegram_core_fact": "빠르게 늘어나는 반도체 수요에 대응하기 위해 여건이 갖춰지는 대로 최대한 신속하게 건설하겠다는 의지도 강조했다.",
       "title": "최태원 \"호남 반도체 공장, 용인 3분의 2 규모…최대한 빨리 건설\""
+    },
+    "source_fact:dbcb1cedb3f87d27d71cfe01": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
     },
     "source_fact:dbcde0f6b33a3fd2a80c6bc3": {
       "first_seen_kst": "2026-10-11T10:13:01+09:00",
@@ -913423,6 +914980,33 @@
       "telegram_core_fact": "피델릭스는 Telit Communications Cyprus LTD과 60.9억원 규모 메모리반도체 공급 계약을 공시했다. 기간은 2026년 10월 13일부터 2026년 11월 06일까지다.",
       "title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)"
     },
+    "source_fact:e5f2422f26cb23f3b6491977": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
+    },
     "source_fact:e5f3d9805eb18713dbaf64eb": {
       "first_seen_kst": "2026-10-12T14:17:50+09:00",
       "lanes": {
@@ -932945,6 +934529,35 @@
       "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
       "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
     },
+    "source_fact:eff2af424aa1c8af2dff4369": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
+    },
     "source_fact:eff5161b9edb2ac5e5277298": {
       "first_seen_kst": "2026-10-12T19:29:26+09:00",
       "lanes": {
@@ -933552,6 +935165,35 @@
       "telegram_core_fact": "글로벌 AI 산업의 경쟁 무대가 그래픽처리장치(GPU) 중심의 연산 기술을 넘어 국산 AI 반도체와 데이터센터, 로봇 등으로 확대되고 있다. AI 기술을 실제 산업현장에 적용하는 능력이 새로운 경쟁력으로 떠오르면서 한국의 제조업 기반을 활용한 피지컬 AI와 독자적인 AI 생태계 구축 전략에도 관심이 쏠린다.",
       "title": "GPU 넘어 NPUㆍ데이터센터ㆍ로봇까지⋯AI 기술 패권과 피지컬 AI [미리 보는 테크퀘스트]"
     },
+    "source_fact:f04ef2083bd20bd2e8150b79": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
+    },
     "source_fact:f0576d431f886203e2af48be": {
       "first_seen_kst": "2026-10-18T07:09:00+09:00",
       "lanes": {
@@ -934144,6 +935786,33 @@
       "source_title": "젤렌스키 “미 정보공유 재개에 감사…미국 푸틴 편들면 역사적 실수“",
       "telegram_core_fact": "젤렌스키 대통령은 트럼프 대통령이 대러 제재를 완화해 러시아산 경유 판매 재개를 허용하기로 푸틴 대통령과 합의하자 공개적으로 반발하며 트럼프 대통령을 비판해왔습니다.",
       "title": "젤렌스키 “미 정보공유 재개에 감사…미국 푸틴 편들면 역사적 실수“"
+    },
+    "source_fact:f09b9b4c24b69e131c33c123": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
     },
     "source_fact:f09eb6d25c86994fd7073e28": {
       "first_seen_kst": "2026-10-21T09:03:35+09:00",
@@ -957869,6 +959538,33 @@
       "telegram_core_fact": "박석길 이코노미스트는 11월 인상에 이어 내년 1분기·2분기 0.25%p씩 인상해 최종 금리가 3.75%가 될 것으로 예상했다.",
       "title": "\"10월 넘기고 11월에\"…전문가들, 금리 인상 '숨고르기' 전망 | 연합뉴스"
     },
+    "source_fact:fd4ce24e49a2f7d682cd8304": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
+    },
     "source_fact:fd4fe2f5e9fea576fafe5fd1": {
       "first_seen_kst": "2026-10-14T15:12:25+09:00",
       "lanes": {
@@ -966772,6 +968468,24 @@
       "source_title": "\"약가 우대 인센티브 안돼\"…억울한 한국산 원료",
       "telegram_core_fact": "관련 업계에 따르면 , 정부는 최근 약가제도 개편을 통해 원료를 자사에서 직접 생산하거나 국산 원료를 사용한 국가필수의약품에 대해 약가를 68% 수준으로 우대하고, 원료 직접생산 의약품의 우대기간도 기존 1년에서 5+5년으로 확대했다.",
       "title": "\"약가 우대 인센티브 안돼\"…억울한 한국산 원료"
+    },
+    "title:07b162528b636cb28aff01d3": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182334",
+      "source": "매일경제",
+      "source_body_digest": "4c4b969f240ed8410ffb8b6aabd62c2be3f3cdf4e7b3c45ee6ee9f2c31b24ced",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T05:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "비콘 파이낸셜, 3분기 흑자전환..자사주 매입 1억2500만달러",
+      "telegram_core_fact": "이사회는 분기 배당금을 주당 0.3225달러로 결정했다.",
+      "title": "비콘 파이낸셜, 3분기 흑자전환..자사주 매입 1억2500만달러"
     },
     "title:07b49306446e10869378b988": {
       "first_seen_kst": "2026-10-22T06:35:46+09:00",
@@ -991925,6 +993639,26 @@
       "telegram_core_fact": "셀트리온은 연결 기준 올해 3분기 영업이익이 전년비 69.2% 늘어난 5100억원, 매출은 45.8% 증가한 1조5000억원으로 잠정 집계됐다고 발표했다.",
       "title": "[ET특징주]셀트리온, 3분기 역대 최대 실적에 상승세"
     },
+    "title:3a7f957e1651493730c5a453": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.dt.co.kr/article/12090424",
+      "source": "디지털타임스",
+      "source_body_digest": "c2f56f379f695b2fc89f3c7f30a3ef0207fb7149a64551284ad6bf4fd4683634",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cc8f7b60839c785b9b606c7cc052cfad3292fc1a803100df57bc92d9ebaa2c5",
+      "source_fact_keys": [
+        "source_fact:v1:d418999bf2586853e5016f04e2cab6acd5caef830f257ebfc199b16746602b8d"
+      ],
+      "source_published_kst": "2026-10-21T16:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”",
+      "telegram_core_fact": "이 사이 중국 양쯔메모리(YMTC)의 2분기 중국 낸드 시장 점유율은 38.5%로 삼성전자(33.5%)를 앞섰고 SK하이닉스 점유율은 20%에서 17%로 떨어졌다고 시장조사업체 옴디아가 밝혔다.",
+      "title": "로이터 “삼전·닉스, 중국공장 낸드 첨단 공정화 추진”"
+    },
     "title:3a8292d04a3073e5608afe59": {
       "first_seen_kst": "2026-10-11T14:49:05+09:00",
       "lanes": {
@@ -1000890,6 +1002624,35 @@
       ],
       "source_published_kst": "2026-10-07T16:01+09:00",
       "title": "6800선으로 내려온 코스피…삼전 실적·FOMC 의사록 등 변동성↑"
+    },
+    "title:4b6ec5658626574caf31a03c": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182236",
+      "source": "매일경제",
+      "source_body_digest": "5fa85dced8b80c324c8821dbd6cdec129207e88d4562ecaa0573ceea3cded556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3491311d9fd748f6ae5100819bbeb849a86e326ca553ce2c9c054edaf377627",
+      "source_fact_keys": [
+        "source_fact:v1:1c5a77645ad069a0c1635583ce03f507d5bd47a0f8ea7dd1ad049344c326a17b",
+        "source_fact:v1:67326eff75968253cf498c9fcadb0c04bca0ffb5c90edf09284d6727b02b16b6",
+        "source_fact:v1:675441381cd2c0150a9b6fb8aa0a8f29af84e57a7d89b4c733466b2cb6b316aa",
+        "source_fact:v1:6cf076609de704f24b79715e45d218fb26c07e4d7931f869bfbfb60c7ca471da",
+        "source_fact:v1:6f8a1fd42bcc5087aa273be6a8c3a75b3ca7da7dd8ffadc0cbcb1ba36f4f6e5d",
+        "source_fact:v1:ea79a6adb209f83be914f23566b1da0bd55fd0977f5590586663f6c1e3ad238c",
+        "source_fact:v1:eb9554d80c239e7839023c2c052cb16f0444c6db7e34e46047d3d14c854103e4",
+        "source_fact:v1:ee86d7003445387ff9554210048242193dca0249d215ddb9fcd875d1a9a781c2",
+        "source_fact:v1:f553d2773bc729f8b9d542e1ecff5cc1a7f93d2450ce97c6d5ed51ddd7d61ea5",
+        "source_fact:v1:f9eae746790da9c077e52a8c9a4f604499df59b1de99cb17a434691b21aece7b"
+      ],
+      "source_published_kst": "2026-10-21T22:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동",
+      "telegram_core_fact": "TNL 미디어진(TNMG)이 벡터 어드바이저리 파트너스(Vector Advisory Partners)와 총 625만 달러 전환우선주 투자 계약을 체결했으며, 주주·나스닥·케이맨제도 승인이 완료되면 벡터가 완전희석 보통주 기준 약 80%를 보유해 경영권이 바뀔 전망이라고 10월 21일 발표했다.",
+      "title": "TNL 미디어진, 벡터에 625만 달러 유치..지분 80% 경영권 이동"
     },
     "title:4b833fd2a24d3699fc6aa85c": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -1011382,6 +1013145,30 @@
       "telegram_core_fact": "삼성자산운용은 인공지능(AI) 에이전트 관련 미국 기업에 투자하는 'KODEX 미국AI에이전트액티브' 상장지수펀드(ETF)를 신규 상장한다고 13일 밝혔다.",
       "title": "삼성운용, 메타·팔란티어 담은 AI 에이전트 ETF 신규 상장 | 연합뉴스"
     },
+    "title:612fd86c062dd2657f309871": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01476006645615544",
+      "source": "이데일리",
+      "source_body_digest": "45ababeccd39b4f82f36ae07912e00cb10ecc7ff415bea743da49153e6ee4b44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:655795359ea545df32fc21feb0e4cb363f95a4ff2c36699c8c7e4f5ada316005",
+      "source_fact_keys": [
+        "source_fact:v1:355d2a5d151c6d1be305542e2bad8f09976f43e079cbb6e79d917ddbf8dd6e2c",
+        "source_fact:v1:c99543793613fc20575dff1606b831aef1fd658eada58795b3452d92285aff67",
+        "source_fact:v1:e8ac5f06d26c69418836658e45fe1bdfbc276e7ad612c4882935a575bc089543",
+        "source_fact:v1:ec565d4f76fadf17bf08b42737c685dc3bddaa1b6dbb2a85c6946c253b0224ee",
+        "source_fact:v1:eda6efbd93e96f9b44232ad4f97a26680aafe6600ccc5aede3f003909f9c8a9a"
+      ],
+      "source_published_kst": "2026-10-22T04:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑",
+      "telegram_core_fact": "바이오의약품 개발업체 로이반트사이언시스(ROIV)가 안과질환 치료제의 임상 3상에서 긍정적인 결과를 확보했다는 소식에 주가가 상승하고 있다. 21일(현지시간) 오후2시42분 기준 로이반트사이언시스 주가는 전일대비 3.58% 오른 36.17달러에 거래 중이다.",
+      "title": "[美특징주]로이반트사이언시스, 안과질환 치료제 임상 3상 성공…주가 3%↑"
+    },
     "title:613332b45e242c8a9f5c647f": {
       "first_seen_kst": "2026-10-17T04:33:11+09:00",
       "lanes": {
@@ -1019737,6 +1021524,33 @@
       "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
       "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
       "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
+    },
+    "title:72cf31e120a846756be78649": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022028100008",
+      "source": "연합뉴스",
+      "source_body_digest": "f504f49617398e6637e7019138882705d85f6fddcce033f2bf73413c38b01e63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae25b3692b9a14ab885ab08d22bb80351be02c4df2c05a1a25cc2cbbdda74a2",
+      "source_fact_keys": [
+        "source_fact:v1:16a4594c81529360463ebf926a8802ac75e16443d793ea65a0f60d31800ff490",
+        "source_fact:v1:3d752f7fcc21d702a1cd69bd2d512c1d106f8dd5d31ac3c32520ae5e8604973e",
+        "source_fact:v1:4b92b0590395520d56a2531e607f688ad863a21d136659d574434eef0c5a42cb",
+        "source_fact:v1:7f40bfbb0e9865595b7bd437f670026ed854aa383c92e2aba7755f98bf09ab8e",
+        "source_fact:v1:ae8382c5915ae1555037f9553a535fc38cf7c974308d6e4558c684e771c60164",
+        "source_fact:v1:ba4dca3bc0d58960f9c8bd869d3c055412e53d9c8cf70590d0283dbd8c000204",
+        "source_fact:v1:c1c6c20fe96998e08f75d60e0f1c7e93f99bd9ede320e366c0fe9ed9f5c73d13",
+        "source_fact:v1:e493ba72b27dc05daa2bc287270701398d060bf2df71d0081c892bd1a564c18f"
+      ],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
+      "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
+      "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
     },
     "title:72d5341f201152153c324df4": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -1037232,18 +1039046,18 @@
     "title:95040a970760d07c828d4069": {
       "first_seen_kst": "2026-10-21T12:08:47+09:00",
       "lanes": {
-        "live": "2026-10-21T12:08:47+09:00"
+        "live": "2026-10-22T08:49:50+09:00"
       },
-      "last_seen_kst": "2026-10-21T12:08:47+09:00",
-      "link": "https://www.mt.co.kr/stock/2026/10/21/2026101916264741354",
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026101916264741354",
       "source": "머니투데이",
-      "source_body_digest": "6c6d38818647f0c8e865a3309807d6d4ae20b1905f5341ac82982bb6353ec954",
+      "source_body_digest": "5f494a5c2024b15be168bea2cc8257fc6316140a5a3b41ebfb98760668607746",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3fab2fb12cdd1ff27472add2caabbc22cb10fe2a209906e7dabb894820aaa956",
+      "source_fact_identity": "source_facts:v1:7830410e143f840aedf80e9c08086ac3b40a7683eb20d77667ff2228bffa2915",
       "source_fact_keys": [
         "source_fact:v1:2fd999c1dbbd883d5537371d7dcef57339fc7e2f05b67a57279a5c8747d89001",
         "source_fact:v1:36bc28d9d5b5e29f5973c07205452496eda008f0ee89eb9cd7973a18f6741db8",
-        "source_fact:v1:79f2a72d13da631e62bc625c3a58dde2f3d8ce000ce65bda065b2378a258cbf4"
+        "source_fact:v1:bf7e9193c7fb68c9dfa702f8a5eca0bcb4871875b69ebce44b06cb491942237b"
       ],
       "source_published_kst": "2026-10-21T09:26+09:00",
       "source_supply_terms": {},
@@ -1064309,6 +1066123,37 @@
       "telegram_core_fact": "10일의 공격이 끝난 뒤 후티군은 성명을 발표, 앞으로도 사우디 아라비아에 대한 상응하는 보복조치를 할 준비가 되어 있다면서 군사력 대결 외에 민간 부문에서도 공항, 항만, 기타 공공 시설등에 대한 공격을 주저하지 않겠다고 밝혔다.",
       "title": "사우디- 후티 공습격화,.. 리야드공항 폭격에 12명 죽고 309명 부상(종합)"
     },
+    "title:cc6ef1d8204af64cd98332ee": {
+      "first_seen_kst": "2026-10-22T08:49:50+09:00",
+      "lanes": {
+        "live": "2026-10-22T08:49:50+09:00"
+      },
+      "last_seen_kst": "2026-10-22T08:49:50+09:00",
+      "link": "https://www.hankyung.com/article/2026102274786",
+      "source": "한국경제",
+      "source_body_digest": "8836cc4a5ff18ca206fe874c9585446b3a2927686521917606609d1dea89b0f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c3d6a5c014fdba78d027bd75d8ab1fa7c1f7acecea7bda799790956547db12",
+      "source_fact_keys": [
+        "source_fact:v1:334bfc2e1e4c66338fa4d564767987852441a4b326a12acf71328eb3fe621e8e",
+        "source_fact:v1:59dfeb36fa22dc05866b6791b66e5ce1be9ac69c0c27c74150de9d2b24384765",
+        "source_fact:v1:6b0d7b9ab983b8a542f90a0ba44f6931ef0e2f39d9e55d8f0afe6792fca673fc",
+        "source_fact:v1:6cafd3f161cf41f5343af0f97bdd0cf9a732c3b8695c954c7c47a6402667bcc6",
+        "source_fact:v1:8411fcefd8bf1f321daa68a0e9a24c0b29f0483ea12d5ca7dd39f5e91b52935f",
+        "source_fact:v1:9bd65ac32df026173b453a342625253e6893e5f980808cd2b0002f8bc3bd5ce3",
+        "source_fact:v1:9e183f67f9b16bb82421cde69f948ccafa170cf9ed52fd78458f5ccf88bc98ae",
+        "source_fact:v1:bd7c4daa92a682d67eed682486f90b0149d9fcd18ec72b2d269a3fb822ad3a05",
+        "source_fact:v1:c9b8ac16145317dd4f8c7a7d53655a1621f9da297ab1e37aee2aee82f68aaa47",
+        "source_fact:v1:cd7ee25e448d27af0b3a8bc56f54e046b5e0ff1e7872f071dc089b2a2c95547c",
+        "source_fact:v1:d1c91316f03bcda651f59258c0ac38dd486572973c766be1ff722b5ffc5f8e33",
+        "source_fact:v1:dc19bf57860f11e455794769ef43e904c93ce00fddf28f9a4a75bf373073b56d"
+      ],
+      "source_published_kst": "2026-10-22T08:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움",
+      "telegram_core_fact": "세계 1위 노광장비 업체 ASML의 메모리 반도체 장비 매출이 1년 새 98% 급증한 데다 2028년까지 장비 수요가 공급능력을 웃돌 것으로 예상되면서다.",
+      "title": "\"ASML 메모리 장비 매출 2배…반도체 공급 부족 장기화 신호\"-키움"
+    },
     "title:cc7d9fd7f3e50f1d43795c0f": {
       "first_seen_kst": "2026-10-14T20:10:22+09:00",
       "lanes": {
@@ -1089101,5 +1090946,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T08:28:20+09:00"
+  "updated_at_kst": "2026-10-22T08:49:50+09:00"
 }
