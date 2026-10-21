@@ -48,22 +48,11 @@ def digest(value: str) -> str:
 
 
 def semantic_key(row: dict[str, Any]) -> str:
+    """URL·언론사·기사 제목 해시가 아니라 사업·법령의 의미 있는 상태로 분류."""
     title = base.norm(str(row.get("title", ""))).lower()
-    if "알박기" in title and ("93%" in title or "신청 물량" in title or "신청물량" in title):
-        return "aidc|anti-hoarding|queue-evidence"
-    if "알박기" in title and ("법 개정" in title or "매매 제한" in title or "매각" in title):
-        return "aidc|anti-hoarding|legal-limit"
-    if "입법예고" in title:
-        return "aidc|decree-preannouncement"
-    if any(x in title for x in ("시행령 확정", "시행령 제정", "국무회의", "공포")):
-        return "aidc|decree-final"
-    if any(x in title for x in ("하위법령", "공개토론회", "밑그림")) and "입법예고" not in title:
-        return "aidc|subordinate-rules-design"
-    if "전력계통영향평가" in title or "전력 특례" in title:
-        return "aidc|power-special"
-    if "특구" in title:
-        return "aidc|special-zone"
-    if ("sgc에너지" in title or "sgc ai 인프라" in title) and ("군산" in title or "300mw" in title or "60mw" in title):
+    if ("sgc에너지" in title or "sgc ai 인프라" in title) and (
+        "군산" in title or "300mw" in title or "60mw" in title
+    ):
         if "운영" in title or "시운전" in title:
             return "aidc|sgc-gunsan|operation"
         if "착공" in title:
@@ -73,18 +62,44 @@ def semantic_key(row: dict[str, Any]) -> str:
         if "kt클라우드" in title or "kt cloud" in title:
             return "aidc|sgc-gunsan|operator-partner"
         return "aidc|sgc-gunsan|plan"
-    cleaned = re.sub(r"\s+-\s+[^-]{1,60}$", "", title)
-    cleaned = re.sub(r"[^0-9a-z가-힣]+", " ", cleaned)
-    return f"aidc|fact|{digest(' '.join(cleaned.split()))[:16]}"
+    if "알박기" in title and ("93%" in title or "신청 물량" in title or "신청물량" in title):
+        return "aidc|anti-hoarding|queue-evidence"
+    if "알박기" in title and ("법 개정" in title or "매매 제한" in title or "매각" in title):
+        return "aidc|anti-hoarding|legal-limit"
+    if "세액공제" in title or "자가 소비" in title or "자가소비" in title:
+        return "aidc|tax-credit|eligibility"
+    if "그리드코드" in title or "계통 연계 규정" in title:
+        return "aidc|grid-code|requirements"
+    if "입법예고" in title:
+        return "aidc|decree-preannouncement"
+    if any(x in title for x in ("시행령 확정", "시행령 제정", "국무회의", "시행령 공포")):
+        return "aidc|decree-final"
+    if any(x in title for x in ("하위법령", "공개토론회", "밑그림")):
+        return "aidc|subordinate-rules-design"
+    if "전력계통영향평가" in title or "전력 특례" in title:
+        return "aidc|power-special"
+    if "특구" in title and any(x in title for x in ("지정", "확정", "특례", "지원")):
+        return "aidc|special-zone"
+    if ("전원 인가" in title or "착공" in title or "발주" in title) and "aidc" in title:
+        return "aidc|project-execution|unverified"
 
+    # 알 수 없는 제목을 새 사건으로 자동 등록하지 않는다. 검증 대기만 기록.
+    return "aidc|unclassified"
 
 def event_level(row: dict[str, Any]) -> int:
     key = semantic_key(row)
     if key.startswith("aidc|sgc-gunsan|"):
         stage = key.rsplit("|", 1)[-1]
-        return {"plan": 31, "operator-partner": 41, "contract": 51, "groundbreaking": 61, "operation": 71}.get(stage, 31)
+        return {"plan": 31, "operator-partner": 41, "contract": 51,
+                "groundbreaking": 61, "operation": 71}.get(stage, 31)
+    if key in ("aidc|unclassified", "aidc|project-execution|unverified"):
+        return 0
+    if key in ("aidc|tax-credit|eligibility", "aidc|grid-code|requirements"):
+        # 언론 발언(20)·정부 확정 규칙(65)은 서로 다른 정책 단계.
+        return 65 if row.get("official") and str(row.get("category")) == "시행령 확정" else (
+            45 if row.get("official") else 20
+        )
     return base.event_level(row)
-
 
 def collapse(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     grouped: dict[str, list[dict[str, Any]]] = {}
@@ -188,6 +203,108 @@ def enrich(row: dict[str, Any], session: requests.Session) -> dict[str, Any]:
     return result
 
 
+OFFICIAL_HOSTS = ("msit.go.kr", "korea.kr", "law.go.kr", "mcee.go.kr")
+
+
+def verified_official_url(row: dict[str, Any]) -> bool:
+    from urllib.parse import urlparse
+    host = (urlparse(str(row.get("url", ""))).hostname or "").lower()
+    return bool(row.get("official")) and any(
+        host == root or host.endswith("." + root) for root in OFFICIAL_HOSTS
+    )
+
+
+def material_signature(row: dict[str, Any]) -> str:
+    """입법예고·세제·전력 용량의 실제 상태값만 별도로 지문에 반영한다."""
+    key = str(row.get("event_key") or semantic_key(row))
+    body = str(row.get("article_body") or "").lower()
+    if key == "aidc|tax-credit|eligibility":
+        rate = re.search(r"(\d{1,2}(?:\.\d+)?)\s*%\s*세액공제", body)
+        return "rate=" + (rate.group(1) if rate else "unspecified") + (
+            "|rental" if ("코로케이션" in body or "임대" in body) else ""
+        )
+    if key in ("aidc|power-special", "aidc|grid-code|requirements"):
+        mw = sorted(set(re.findall(r"\d+(?:\.\d+)?\s*(?:mw|gw)", body)))
+        return "|".join(mw[:8]) or "requirements"
+    if key.startswith("aidc|sgc-gunsan|"):
+        mw = sorted(set(re.findall(r"\d+(?:\.\d+)?\s*mw", body)))
+        return "|".join(mw[:8]) or "project-stage"
+    if key in ("aidc|decree-preannouncement", "aidc|decree-final"):
+        return "official-document-" + key.rsplit("|", 1)[-1]
+    return ""
+
+
+def verify_change(row: dict[str, Any]) -> tuple[bool, str]:
+    """검증 실패 또는 제목만으로 만든 상태 변화를 알림에서 거부."""
+    key = str(row.get("event_key") or semantic_key(row))
+    body = " ".join(str(row.get("article_body") or "").lower().split())
+    title = str(row.get("title") or "").lower()
+    official = verified_official_url(row)
+
+    if key in ("aidc|unclassified", "aidc|project-execution|unverified"):
+        return False, "제목 외 구체적인 사업·정책 상태 변화 검증 불가"
+
+    if len(body) < 300:
+        return False, "기사·공식자료 본문 직접 검증 실패"
+
+    if not ("aidc" in body or "인공지능 데이터센터" in body or "ai 데이터센터" in body):
+        return False, "본문의 AIDC 관련성을 검증하지 못함"
+
+    if key == "aidc|tax-credit|eligibility":
+        if not any(x in body for x in ("세액공제", "세액 공제")):
+            return False, "세액공제 조건을 본문에서 확인하지 못함"
+        if not any(x in body for x in ("자가 소비", "자가소비", "임대", "코로케이션", "15%")):
+            return False, "적용 대상·세액공제 수치 확인 실패"
+        return True, "언론: 산업계 세제 개선 요구 / 공식: 확정 변경(확정 여부 별도)"
+
+    if key == "aidc|anti-hoarding|queue-evidence":
+        if not all(x in body for x in ("67.4", "62.8", "93")):
+            return False, "전력 선점 물량 세 수치 교차 확인 실패"
+        return True, "정량 근거 확인"
+    if key == "aidc|anti-hoarding|legal-limit":
+        if not ("법 개정" in body or "법률상 근거" in body or "매매 제한" in body):
+            return False, "사업권 제한 법률 근거를 본문에서 확인하지 못함"
+        return True, "법적 제약 제시"
+
+    if key.startswith("aidc|sgc-gunsan|"):
+        if not ("sgc" in body and "군산" in body):
+            return False, "사업자·현장 교차 확인 실패"
+        stage = key.rsplit("|", 1)[-1]
+        markers = {
+            "plan": ("계획", "추진", "투자"),
+            "operator-partner": ("kt클라우드", "kt cloud"),
+            "contract": ("본계약", "계약 체결", "계약 완료"),
+            "groundbreaking": ("착공", "기공식"),
+            "operation": ("상업운전", "운영 개시", "가동 개시", "시운전"),
+        }
+        if not any(x in body for x in markers[stage]):
+            return False, f"프로젝트 {stage} 단계 본문 증거 없음"
+        return True, "실제 프로젝트 단계 근거 확인"
+
+    if key in ("aidc|decree-preannouncement", "aidc|decree-final"):
+        if not official:
+            return False, "입법예고·확정은 1차 공식 법령으로 재검증 필요"
+        if key.endswith("preannouncement") and not any(x in body for x in ("입법예고", "시행령안")):
+            return False, "공식 입법예고 본문 증거 없음"
+        if key.endswith("final") and not any(x in body for x in ("공포", "국무회의", "시행령 확정", "제정")):
+            return False, "공식 확정 본문 증거 없음"
+        return True, "공식 법령 단계 확인"
+
+    if key == "aidc|subordinate-rules-design":
+        if not any(x in body for x in ("하위법령", "공개토론회", "연구반", "시행령")):
+            return False, "하위법령 설계 공식·보도 근거 부족"
+        return True, "하위법령 설계 관련 사실 확인"
+
+    if key in ("aidc|power-special", "aidc|grid-code|requirements", "aidc|special-zone"):
+        if not official:
+            return False, "의견·보도는 확정 전력 특례/특구/계통 규칙 변경이 아님"
+        if not any(x in body for x in ("확정", "고시", "의결", "공포", "입법예고", "지정", "시행")):
+            return False, "공식 내용의 실질적 변화 근거 부족"
+        return True, "공식 적용 규정 확인"
+
+    return False, "정의되지 않은 신규 사건으로 송출 금지"
+
+
 def has(body: str, *terms: str) -> bool:
     lower = body.lower()
     return any(term.lower() in lower for term in terms)
@@ -251,6 +368,36 @@ def fact_lines(row: dict[str, Any]) -> tuple[list[str], list[str], list[str]]:
         ]
         return new, changed, invest
 
+    if key == "aidc|tax-credit|eligibility":
+        new = [
+            "• <b>2026년 10월 21일 산업계 제도 개선 요구</b>: AIDC 세액공제의 자가소비 요건 때문에 임대형 데이터센터가 혜택에서 제외될 가능성이 제기됨",
+            "• 발표자는 세액공제 <b>15%</b>를 언급했지만, 이는 정부가 새 공제율·적용대상을 확정했다는 뜻이 아님",
+        ]
+        if has(body, "100㎿", "100mw"):
+            new.append(
+                "• 발표자는 100MW AIDC의 생산유발효과 3조5,000억원 등 경제효과를 제시. <b>추정 경제효과와 확정 정부 예산·기업 매출은 별개</b>"
+            )
+        if has(body, "150일", "90일", "40일"):
+            new.append(
+                "• 하위법령 쟁점: 계통영향평가 150일·일부 협의 90일·건축허가·소방동의 40일 등 결정 기한. <b>허가 자동 승인과는 다름</b>"
+            )
+        changed = [
+            "• 9월 9일은 하위법령 설계 논의, 이번은 <b>세액공제의 실제 수혜대상</b>에 대한 업계 문제 제기",
+            "• <b>산업계 요구 단계</b>로, 적용 요건 개정·시행령 확정과 구분해야 함",
+        ]
+        invest = [
+            "• 임대형·외부 서비스형 데이터센터가 공제 대상에 포함되는지가 사업별 세후 투자수익률을 좌우할 수 있음",
+            "• 실제 세액공제 조문·임대형 포함 여부·전력계통 접속·착공과 금융조달을 확인하기 전에는 확정 혜택으로 계산하지 않음",
+        ]
+        return new, changed, invest
+
+    if key == "aidc|grid-code|requirements":
+        return (
+            ["• AIDC 전력계통 연계 기술기준·그리드코드의 공식 적용조건이 새로 확인된 단계"],
+            ["• 산업계 규제완화 건의와 기후에너지환경부의 확정 기술요건은 별개"],
+            ["• 계통 연계·인버터·전력변환장치·안전인증 사양 확정 후 실제 발주에 연결"],
+        )
+
     if key == "aidc|decree-preannouncement":
         return (
             ["• 정부 시행령 초안이 공개돼 <b>AIDC 인정·전력·인허가 특례 문구를 실제 조문으로 검증할 수 있는 단계</b>"],
@@ -283,11 +430,11 @@ def fact_lines(row: dict[str, Any]) -> tuple[list[str], list[str], list[str]]:
         ]
         return new, changed, invest
 
-    title = html.escape(base.norm(str(row.get("title", ""))))
+    # 여기로 온 사건은 알림 게이트에서 차단된다. 제목 재서술을 '새 사실'로 만들지 않는다.
     return (
-        [f"• 새로 확인된 변화: {title}"],
-        ["• 기존 정책 흐름과 비교해 새 숫자·공식화·적용대상 변화가 있는지 후속 확인"],
-        ["• 실제 전원 인가·착공·발주로 이어지는지 확인 전에는 기대감과 확정 매출을 구분"],
+        ["• 직접 검증된 새로운 정책·사업 상태가 없음"],
+        ["• 기사 발행과 정책 변경을 구분"],
+        ["• 실제 공식 조건·전원 인가·착공·발주 확인 후 재평가"],
     )
 
 
@@ -353,6 +500,7 @@ def main() -> int:
     state = base.load_state()
     last_state_time = parse_iso(str(state.get("updated_at", "")))
     now = datetime.now(timezone.utc)
+    migration = int(state.get("dedupe_version") or 0) < 4
     session = requests.Session()
     session.headers.update(HEADERS)
 
@@ -375,57 +523,133 @@ def main() -> int:
 
     events = collapse(recent)
     seen = {str(k): int(v) for k, v in dict(state.get("seen_events", {})).items()}
-    notify: list[dict[str, Any]] = []
+    known_signatures = {str(k): str(v) for k, v in dict(state.get("material_signatures", {})).items()}
+    held: list[str] = []
+    selected: dict[str, Any] | None = None
+    backlog_count = 0
+    ignored_legacy = 0
 
-    for row in events:
-        key = str(row["event_key"])
-        current = event_level(row)
+    for event in events:
+        key = str(event["event_key"])
+        if key == "aidc|unclassified" or key == "aidc|project-execution|unverified":
+            held.append("미분류: 구체적인 사업·정책 상태 추출 필요")
+            continue
+
+        current = event_level(event)
         previous = int(seen.get(key, 0))
-        published = base.parse_date(str(row.get("published", "")))
-        published_utc = published.astimezone(timezone.utc) if published else None
+        if current < previous:
+            continue
 
-        should_notify = current > previous
-        # SGC 군산 실행 감시는 이번 업그레이드 시 현재 알려진 60MW/300MW 기준선을 조용히 저장하고,
-        # 이후 본계약·착공·전원 인가·운영 단계가 올라갈 때만 알린다.
-        if int(state.get("dedupe_version") or 0) < 3 and key.startswith("aidc|sgc-gunsan|"):
-            should_notify = False
-        # v2 전환 시 이미 과거에 처리한 기사들을 새 semantic key 때문에 재전송하지 않는다.
-        if previous == 0 and last_state_time and published_utc and published_utc <= last_state_time:
-            should_notify = False
+        if previous == current and current > 0:
+            # 동일 정책 상태·출처 등급의 후속 기사: 새로운 사실이 아닐 수 있음.
+            # 동일 공식 문서의 수치 변경 감시 대상만 아래에서 추가 검증한다.
+            if key not in (
+                "aidc|tax-credit|eligibility", "aidc|power-special",
+                "aidc|grid-code|requirements", "aidc|decree-final",
+                "aidc|decree-preannouncement",
+            ):
+                continue
 
-        if should_notify:
-            notify.append(row)
-        seen[key] = max(previous, current)
+        members = list(event.get("members") or [event])
+        candidates = sorted(
+            members, key=lambda r: (event_level(r), base.source_score(r)), reverse=True
+        )
+        verified = None
+        reject_reasons: list[str] = []
+        for candidate in candidates[:3]:
+            enriched = enrich(candidate, session)
+            enriched["event_key"] = key
+            ok, reason = verify_change(enriched)
+            if ok:
+                verified = enriched
+                verified["verification"] = reason
+                break
+            reject_reasons.append(reason)
+
+        if verified is None:
+            held.append(f"{key}: {'; '.join(reject_reasons[:2]) or '본문 직접 검증 실패'}")
+            continue
+
+        fact_sig = material_signature(verified)
+        sig_changed = bool(
+            fact_sig and known_signatures.get(key) is not None
+            and known_signatures[key] != fact_sig
+        )
+        should_notify = current > previous or sig_changed
+
+        pub = base.parse_date(str(verified.get("published", "")))
+        pub_utc = pub.astimezone(timezone.utc) if pub else None
+
+        # v4 최초 도입 당시 이전에 전송되었던 지난 기사 재해석으로 인한 일괄 재발송 금지.
+        if migration and last_state_time and pub_utc and pub_utc <= last_state_time:
+            should_notify = False
+            ignored_legacy += 1
+
+        if not should_notify:
+            seen[key] = max(previous, current)
+            if fact_sig:
+                known_signatures.setdefault(key, fact_sig)
+            continue
+
+        if selected is None:
+            selected = verified
+            selected["event_key"] = key
+            selected["event_level"] = current
+            selected["material_signature"] = fact_sig
+        else:
+            # 이번 실행에서 전송할 첫 사건만 소비하고 나머지는 다음 실행에 남긴다.
+            backlog_count += 1
+
+    if selected is not None:
+        key = str(selected["event_key"])
+        seen[key] = max(int(seen.get(key, 0)), int(selected["event_level"]))
+        if selected["material_signature"]:
+            known_signatures[key] = str(selected["material_signature"])
 
     pending = {
         "initialized": True,
         "seen_events": seen,
+        "material_signatures": known_signatures,
         "updated_at": now.isoformat(),
         "source_errors": errors,
-        "dedupe_version": 3,
+        "dedupe_version": 4,
+        "held_for_verification_count": len(held),
+        "held_examples": held[:5],
+        "eligible_backlog_count": backlog_count,
+        "legacy_suppressed_count": ignored_legacy,
     }
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    if notify:
-        selected = enrich(notify[0], session)
+    if selected is not None:
         ALERT.write_text(render(selected), encoding="utf-8")
         meta = {
             "event_key": str(selected["event_key"]),
-            "event_level": event_level(selected),
+            "event_level": int(selected["event_level"]),
+            "material_signature": str(selected["material_signature"]),
             "title": str(selected.get("title", "")),
-            "fingerprint": digest(str(selected.get("event_key", "")) + "|" + str(event_level(selected))),
+            "verification": str(selected.get("verification", "")),
+            "fingerprint": digest(
+                str(selected["event_key"]) + "|" + str(selected["event_level"])
+                + "|" + str(selected["material_signature"])
+            ),
         }
         META.write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     STATUS.write_text(
-        "# 한국 AIDC 정책·전력 특례 감시 v2\n\n"
-        f"- 정책 이벤트: **{len(events)}건**\n"
-        f"- 신규 사실 알림: **{'예' if notify else '아니오'}**\n"
-        f"- 중복 기준: **기사 URL이 아니라 정책 사실·단계**\n"
-        f"- 원천 오류: **{len(errors)}곳**\n",
+        "# 한국 AIDC 정책·전력 특례 감시 v4\n\n"
+        f"- 정책 후보: **{len(events)}건**\n"
+        f"- 검증 후 알림: **{'예' if selected else '아니오'}**\n"
+        f"- 공식·본문 확인 실패 또는 미분류: **{len(held)}건**\n"
+        f"- 다음 실행 보류 사건: **{backlog_count}건**\n"
+        f"- 이전 기사 재전송 차단: **{ignored_legacy}건**\n"
+        f"- 원천 오류: **{len(errors)}곳**\n"
+        "- 트리거: **검증한 사건·공식 상태 변화만, 제목 자체는 제외**\n",
         encoding="utf-8",
     )
-    print(f"aidc_v2_events={len(events)} notify={bool(notify)} errors={len(errors)}")
+    print(
+        f"aidc_v4_events={len(events)} notify={bool(selected)} "
+        f"held={len(held)} backlog={backlog_count} migration={migration} errors={len(errors)}"
+    )
     return 0
 
 
