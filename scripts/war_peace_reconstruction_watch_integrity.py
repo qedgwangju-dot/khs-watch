@@ -223,9 +223,10 @@ def _summit_possibility_reaction(title):
 def _diplomatic_group(title):
     # A three-party summit can discuss Ukraine without inviting Ukraine.
     # Keep the named participants distinct from that discussion's object.
-    if _meeting_uncertainty_headline(title):
+    if _meeting_uncertainty_headline(title) or _meeting_plan_stage(title):
         # A possible venue is not an additional meeting participant.
         title = re.sub(r'(?:중국|中)(?:에)?서', '', title)
+        title = re.sub(r'\b(?:in|at)\s+china\b', '', title)
     if (_summit_proposal_headline(title) or _bargain_question_headline(title)) and not re.search(r'젤렌스키.{0,12}배제하지\s*않', title):
         title = re.sub(r'젤렌스키(?:\s*대통령)?(?:를|는|가)?\s*(?:배제|제외|아닌|빠져라)', '', title)
     trilateral = bool(re.search(r'미\s*[·ㆍ/]?\s*중\s*[·ㆍ/]?\s*러', title))
@@ -237,7 +238,7 @@ def _diplomatic_group(title):
                      r'\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너'),
             ('우크라이나', r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b'),
             ('중국', r'중국|시진핑|\b(?:china|chinese|xi(?:\s+jinping)?)\b'),
-            ('러시아', r'러시아|푸틴|크렘린|라브로프|(?:^|[\s·ㆍ/])러(?=\s|[·ㆍ/]|$)|\b(?:russia\w*|putin|kremlin|lavrov)\b'),
+            ('러시아', r'러시아|푸틴|크렘린|라브로프|(?:^|[\s·ㆍ/,])러(?=\s|[·ㆍ/,]|$)|\b(?:russia\w*|putin|kremlin|lavrov)\b'),
             ('이란', r'이란|\biran(?:ian)?\b'),
             ('파키스탄', r'파키스탄|\bpakistan(?:i)?\b'),
             ('북한', r'북한|김정은|\bnorth\s+korea\b|\bkim\s+jong[ -]?un\b')):
@@ -910,6 +911,9 @@ def _peace_plan_discussion_headline(title):
 def _meeting_plan_stage(title):
     if _summit_proposal_headline(title):
         return None
+    possible = re.search(r'\b(?:could|may|might|would)\s+(?P<neg>not\s+)?meet\b', title)
+    if possible:
+        return 'denied' if possible['neg'] else 'planned'
     match = re.search(r'회담(?:을|를|도)?\s*(?:추진|논의|검토|계획)', title)
     if not match:
         return None
@@ -968,7 +972,7 @@ def _diplomatic_headline_kind(title):
         return 'diplomatic_plan'
     if _diplomatic_deal_statement(title):
         return 'diplomatic_statement'
-    if re.search(r'통화|대화|회담|접촉|(?:종전|평화|휴전)\s*협상|\bpeace\s+talks\b|'
+    if re.search(r'통화|대화|회담|접촉|접견|면담|(?:종전|평화|휴전)\s*협상|\bpeace\s+talks\b|'
                  r'\bforeign ministers?\b.{0,20}\bhold talks\b|\b(?:speaks?|spoke|talks?|talked)\s+(?:to|with)\b|'
                  r'\b(?:calls?|called)\s+(?:(?:u\.s\.|us)\s+)?'
                  r'(?:envoys?|witkoff|kushner|trump|zelenskyy?|zelenskiy)\b(?![\'’]s\b)', title):
