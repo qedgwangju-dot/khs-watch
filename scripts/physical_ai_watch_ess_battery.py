@@ -261,6 +261,39 @@ SODIUM_LGES_BASE = re.compile(
 )
 SODIUM_SDI_BASE = re.compile(r'(?:삼성SDI|Samsung\s*SDI).{0,180}(?:sodium[-\s]*ion|나트륨이온|소듐이온).{0,180}(?:UPS|utility[-\s]*scale|ESS|long\s*lif|장수명|high\s*power|고출력|safety|안전)', re.I)
 SODIUM_SKON_BASE = re.compile(r'(?:SK온|SK\s*On).{0,180}(?:sodium[-\s]*ion|나트륨이온|소듐이온).{0,180}(?:prototype|시제품).{0,80}2027|2027.{0,120}(?:prototype|시제품).{0,140}(?:SK온|SK\s*On)', re.I)
+# 2026-10-13 News1 / 2026-10-21 MoneyS: LGES North American 30 MWh
+# sodium-ESS SAMPLE TEST PLAN, not a completed customer test or shipment.
+# Protect all future official starts/approvals as distinct upgrade events.
+SODIUM_LGES_30MWH = re.compile(r'(?<!\d)30\s*MWh(?!\w)|30\s*메가와트시',re.I)
+SODIUM_LGES_ACTOR = re.compile(r'LG에너지솔루션|LG\s*Energy\s*Solution',re.I)
+SODIUM_LGES_NA = re.compile(r'북미|North\s*America(?:n)?|U\.S\.',re.I)
+SODIUM_LGES_30MWH_SAMPLE = re.compile(r'샘플|sample|고객\s*테스트|customer\s*test|검증|validation|시험',re.I)
+SODIUM_LGES_30MWH_START = re.compile(
+    r'(?:30\s*MWh|30\s*메가와트시).{0,160}(?:샘플|sample|고객\s*시험|'
+    r'고객\s*테스트|sample\s*test|customer\s*test|검증|validation)'
+    r'.{0,55}(?:실제\s*)?(?:시작|개시|착수|started|began|commenced)|'
+    r'(?:샘플|sample|시험|테스트|검증).{0,120}'
+    r'(?:시작|개시|착수|started|began|commenced).{0,100}30\s*MWh',
+    re.I,
+)
+SODIUM_LGES_30MWH_APPROVED = re.compile(
+    r'(?:30\s*MWh|30\s*메가와트시).{0,170}(?:고객\s*승인|품질\s*승인|'
+    r'샘플\s*검증\s*완료|고객\s*평가\s*통과|test\s*passed|'
+    r'customer\s*(?:approved|qualified)|validation\s*completed)|'
+    r'(?:고객\s*승인|품질\s*승인|고객\s*평가\s*통과).{0,130}30\s*MWh',
+    re.I,
+)
+SODIUM_LGES_PRIMARY_SOURCES = {'LG에너지솔루션','LG Energy Solution'}
+
+
+def _is_lges_sodium_30mwh(text: str) -> bool:
+    return bool(
+        SODIUM_LGES_ACTOR.search(text) and SODIUM_RE.search(text)
+        and SODIUM_LGES_30MWH.search(text) and SODIUM_ESS.search(text)
+        and SODIUM_LGES_NA.search(text) and SODIUM_LGES_30MWH_SAMPLE.search(text)
+    )
+
+
 SODIUM_ENERTECH_BASE = re.compile(r'(?:Enertech|에너테크).{0,180}(?:140\s*[-~–]\s*160\s*Wh/kg|140\s*[-~–]\s*160\s*Wh/㎏|2027).{0,180}(?:January|1월|mass\s*production|양산|Chungju|충주)', re.I)
 SODIUM_HINA_BASE = re.compile(
     r'(?:HiNa\s*Battery|中科海钠|하이나배터리).{0,220}(?:339\s*kWh).{0,220}(?:15,?000\s*km|15000\s*km|7\s*months?|7个月)|'
@@ -282,6 +315,17 @@ def _sodium_stage(text: str, source: str = '') -> str:
         return 'reverse'
     if SODIUM_SAFETY_EVENT.search(text):
         return 'safety_event'
+
+    # Media recaps on 10/21 repeat a 10/13 reported sample plan. Even phrases
+    # such as "tests underway" in the media are NOT a company-verified start.
+    # Never promote a future prototype completion or planned first production
+    # in a multi-company article into actual 30 MWh customer approval.
+    if _is_lges_sodium_30mwh(text):
+        if SODIUM_LGES_30MWH_APPROVED.search(text):
+            return 'customer_validation'
+        if SODIUM_LGES_30MWH_START.search(text):
+            return 'lges_30mwh_test_started'
+        return 'known_baseline'
 
     # Current execution baselines already known as of 2026-10-04.
     if SODIUM_CATL_60_BASE.search(text):
@@ -1017,7 +1061,18 @@ def score(item: dict) -> int:
         return _us45x_score(item)
     if group == 'sodium_ion_battery':
         stage = _sodium_stage(text, source)
+        if stage == 'lges_30mwh_test_started':
+            return 'LG에너지솔루션 회사 직접 발표에서 30MWh 고객 시험 실제 착수 확인 · 고객 승인·양산·매출 별도'
+        if stage == 'known_baseline' and _is_lges_sodium_30mwh(text):
+            return '10/13 뉴스1의 2027년 상반기 북미 30MWh 샘플평가 계획을 10/21 기사 재보도 · 시험 착수·승인·양산 미확정'
         if stage in {'','known_baseline','background'}:
+            return 0
+        # Only the company/actual buying customer can upgrade the 30 MWh
+        # planned test to physically commenced testing or customer approval.
+        # Broker or media narratives, including reprints, must stay silent.
+        if (_is_lges_sodium_30mwh(text)
+                and stage in {'lges_30mwh_test_started','customer_validation'}
+                and source not in SODIUM_LGES_PRIMARY_SOURCES):
             return 0
         # A broker estimate, theme blog, or copied table cannot validate an
         # actual change to an OEM mass-production schedule. Require a primary
@@ -1034,6 +1089,7 @@ def score(item: dict) -> int:
             'first_or_batch_shipment': 18,
             'international_or_batch_shipment': 19,
             'customer_validation': 14,
+            'lges_30mwh_test_started': 13,
             'field_validation': 12,
             'price_parity_or_transaction': 16,
             'schedule_change': 13,
@@ -1239,6 +1295,7 @@ def category(text: str, group: str) -> str:
             'first_or_batch_shipment': '나트륨이온 첫·대량 출하',
             'international_or_batch_shipment': '나트륨이온 해외·대량 출하',
             'customer_validation': '한국 나트륨이온 고객 검증·승인',
+            'lges_30mwh_test_started': 'LG엔솔 북미 30MWh 나트륨 ESS 샘플 시험 공식 착수',
             'field_validation': '나트륨이온 현장·주행 검증',
             'price_parity_or_transaction': '나트륨이온 실제 가격·LFP 패리티',
             'schedule_change': '나트륨이온 상용화 일정 변경',
@@ -1318,6 +1375,7 @@ def meaning(cat: str) -> str:
             '나트륨이온 첫·대량 출하': '양산설비가 실제 고객 매출로 전환되는 신호입니다. 출하 GWh·고객·평균판매단가·반복 주문을 확인합니다.',
             '나트륨이온 해외·대량 출하': '중국 내 상용화가 해외 시장으로 확장되는 단계입니다. 지역 인증·운송·보험·현지 시스템 통합과 가격경쟁력을 확인합니다.',
             '한국 나트륨이온 고객 검증·승인': '국내 3사의 개발 단계가 고객 샘플·품질인증·승인으로 넘어가는 매출 선행 신호입니다. 고객 실명·응용처·검증기간·양산 SOP를 추적합니다.',
+            'LG엔솔 북미 30MWh 나트륨 ESS 샘플 시험 공식 착수': '10월 13일 보도된 30MWh 북미 고객 샘플시험 추진 계획에서 LG에너지솔루션 직접 발표로 실제 평가 착수가 확인된 단계입니다. 30MWh는 실증 규모이지 상업 수주나 양산 출하가 아닙니다. 고객 실명·셀 출하량·시험기간·통과 여부·2027년 양산 결정과 실제 매출을 별도로 확인합니다.',
             '나트륨이온 현장·주행 검증': '실험실 성능이 실제 ESS·상용차 환경에서 검증되는 단계입니다. 주행거리·사이클·저온성능·가동시간과 고장률을 봅니다.',
             '나트륨이온 실제 가격·LFP 패리티': '전망이 아니라 계약·거래·견적에서 LFP와 가격 격차가 실제로 좁혀지는지 확인하는 신호입니다. 동일 조건의 원/kWh와 수명·효율을 함께 비교합니다.',
             '나트륨이온 상용화 일정 변경': '2027 상용화·시제품·대량납품 기준선이 앞당겨지거나 뒤로 밀리는 신호입니다. 원인이 소재·수율·고객승인·설비 중 어디인지 분리합니다.',
@@ -1428,6 +1486,7 @@ def risk(cat: str) -> str:
             '나트륨이온 첫·대량 출하': '첫 출하는 반복수요가 아닙니다. 반품·보증충당금·후속 주문·실제 시스템 가동률을 확인합니다.',
             '나트륨이온 해외·대량 출하': '국제 인증·운송조건·보험·현지 화재규정이 중국 내수와 달라 해외 원가가 상승할 수 있습니다.',
             '한국 나트륨이온 고객 검증·승인': '샘플 승인은 본수주와 다릅니다. 검증 통과 뒤에도 전용 소재 공급망과 양산 설비투자가 필요할 수 있습니다.',
+            'LG엔솔 북미 30MWh 나트륨 ESS 샘플 시험 공식 착수': '30MWh 테스트는 고객 구매확약이 아닙니다. 저온성능·하드카본 수율·충방전 효율·셀/팩 열전파·배기·방폭·인증·보험을 6~12개월 동안 확인하며 실패 시 2027 양산 목표가 순연됩니다.',
             '나트륨이온 현장·주행 검증': '단일 실증의 저온성능·안전 결과가 장기 수명과 대규모 ESS 보험비용을 보장하지 않습니다.',
             '나트륨이온 실제 가격·LFP 패리티': '원/kWh만 비교하면 오판할 수 있습니다. 왕복효율·사이클수명·부피·냉각·보험·시스템 비용까지 총소유비용으로 비교해야 합니다.',
             '나트륨이온 상용화 일정 변경': '가장 현실적인 실패 경로는 소재 수급·수율·고객 승인 지연으로 2027 계획이 밀리는 경우입니다.',
@@ -1784,6 +1843,8 @@ def key(item: dict) -> str:
         nums = sorted(_numbers(text))
         suffix = '|'.join(nums[:5]) if nums else 'no-number'
         if sodium_stage == 'known_baseline':
+            if _is_lges_sodium_30mwh(text):
+                return hashlib.sha256(b'sodium|lges|north-america|30mwh|sample-plan-2027h1').hexdigest()
             if SODIUM_CATL_60_BASE.search(text):
                 return hashlib.sha256(b'sodium|catl-hyperstrong|60gwh|3y|2026-04-baseline').hexdigest()
             if SODIUM_CATL_CAP_BASE.search(text):
@@ -1804,6 +1865,8 @@ def key(item: dict) -> str:
                 return hashlib.sha256(b'sodium|enertech|140-160whkg|jan-2027-mp-plan').hexdigest()
             if SODIUM_HINA_BASE.search(text):
                 return hashlib.sha256(b'sodium|hina|339kwh|15000km|7m-baseline').hexdigest()
+        if _is_lges_sodium_30mwh(text) and sodium_stage in {'lges_30mwh_test_started','customer_validation'}:
+            return hashlib.sha256(f'sodium|lges|north-america|30mwh|{sodium_stage}'.encode()).hexdigest()
         return hashlib.sha256(f'sodium|{sodium_stage}|{"-".join(actors) or "no-actor"}|{suffix}'.encode()).hexdigest()
     if group == 'ev_46_series' and ev46_stage:
         customers = '-'.join(_ev46_customer_tags(text)) or 'no-oem'
