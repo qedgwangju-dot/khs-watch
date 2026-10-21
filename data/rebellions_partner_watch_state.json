@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-21T20:36:46+09:00",
+  "last_checked_kst": "2026-10-21T21:26:06+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3431,6 +3431,15 @@
       "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBVR29QNEw3bWNEZ2dtRlVWd2laR0dJWFJvTHVJOGNhRE5mOVVpaUNMZVhYQ2ZDLTVVZlFwbEpRaEdJZkF4cHFiVEtBMGdXcFprb3lvQzRHYnFKOXRtNjByUTA0cTN6SFdF0gFsQVVfeXFMUEVYeExubWozaERCU2h4OGtrM0dVN1pCRzV6WkxhQXFveWN1S25xNVgtWjN2MHhUanB6RnBkT0VrWnp1djZfQXRseGlJZWFBam5IbWpkNmVNeXU0YjFDYXlVOElXM25YTTF1X08t?oc=5",
       "first_seen_kst": "2026-10-21T07:36:27+09:00",
       "suppressed_stale": true
+    },
+    "05c1a12fa7e1b6a9033f86e5": {
+      "title": "리벨리온-네이버클라우드, 사우디 AI 사업 협력 MOU - AI타임스",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9UMEk0T3ZSbnhPNU5OMDBkRDNQSHhTV1ZBb0oyZ1prNlRfQWFsTFNRUGkzR0ZUVmNIay1TWVEtYTh4ZGRUbHZ2TVFIUC0ydWdHd1V0STBYSmxrT3FWNXVaa1dGc256UzA3TUE?oc=5",
+      "summary": "리벨리온-네이버클라우드, 사우디 AI 사업 협력 MOU AI타임스",
+      "event_signature": "navercloud|general|cloud",
+      "material_stage": 1,
+      "first_seen_kst": "2026-10-21T21:26:06+09:00",
+      "suppressed_duplicate": "same_url"
     }
   }
 }
