@@ -117,5 +117,20 @@
     "status": "공식 프레임워크·최종계약 미체결",
     "title": "Westinghouse 공식 한국 지분 5~10% 잠재 투자·비구속 프레임워크"
   },
-  "westinghouse_state_model_version": 3
+  "westinghouse_state_model_version": 3,
+  "temelin_large_nuclear_model_version": 1,
+  "temelin_large_nuclear_events": {
+    "option_2025": {
+      "stage": "option_in_dukovany_epc",
+      "date": "2025-06-04",
+      "status": "두코바니 5·6호기 EPC에 테믈린 추가 2기 선택권 포함·아직 미행사",
+      "link": "https://mpo.gov.cz/en/guidepost/for-the-media/press-releases/epc-contract-for-completion-of-dukovany-has-been-signed--minister-of-industry-and-trade--lukas-vlcek-will-visit-korea-again-in-july--287912/"
+    },
+    "ministerial_20261020": {
+      "stage": "ministerial_interest",
+      "date": "2026-10-20",
+      "status": "제3차 두코바니 이행점검 협의체의 테믈린 후속 협력 희망",
+      "link": "https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/172314/view"
+    }
+  }
 }
