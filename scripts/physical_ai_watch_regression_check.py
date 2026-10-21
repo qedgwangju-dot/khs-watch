@@ -5581,4 +5581,77 @@ try:
 finally:
     base.NOW=_correction_old_now
 
+
+# 59) LGES sodium-ion North American 30MWh trial: previously reported
+# October-13 PLAN, repeated October-21. Planned test is NOT official
+# testing commencement, approval, shipment, mass production or sales.
+lges_na_sodium_plan = make(
+    "LG에너지솔루션 오창 소듐이온 30MWh 북미 ESS 테스트 내년 상반기 계획",
+    "LG에너지솔루션은 오창 파일럿 라인을 구축하고 소듐이온 ESS용 북미 "
+    "고객 대상 30MWh 샘플 테스트를 내년 상반기 추진할 예정이다. "
+    "2027년 첫 양산 목표는 아직 양산 개시 확정이 아니다.",
+    "뉴스1",
+)
+g,s_,c,k = classify(lges_na_sodium_plan)
+assert g=="sodium_ion_battery" and s_ < 11, (g,s_,c)
+assert c.endswith("현재 상용화 기준선"),c
+assert "30mwh" not in c.lower(), "Plan must not be titled as actual approved customer shipment"
+
+lges_na_oct21_reprint = make(
+    "국내 배터리 3사 소금 배터리 시대 연다",
+    "LG에너지솔루션은 충북 청주 오창 소듐이온배터리 파일럿 라인을 구축했다. "
+    "북미 고객사 대상으로 30MWh 규모 ESS용 소듐이온 샘플 테스트를 진행하고 "
+    "내년 첫 양산을 목표로 한다. 삼성SDI는 UPS용 소듐이온을 개발 중이고 "
+    "SK온은 2027년 시제품 개발을 완료하고 2028년 상용화를 추진한다. "
+    "CATL은 HyperStrong과 2026년 4월 3년간 60GWh 공급 협력계약을 체결했다. "
+    "모건스탠리는 2030년 830GWh 시장을 전망한다.",
+    "머니S",
+)
+rg,rs,rc,rk=classify(lges_na_oct21_reprint)
+assert rg=="sodium_ion_battery" and rs<11,(rg,rs,rc)
+assert rk==k, "Same 30MWh test plan on 10/13 and 10/21 must share event key"
+
+lges_press_test_start = make(
+    "LG에너지솔루션, 북미 30MWh 소듐이온 ESS 고객 샘플 시험 개시",
+    "LG에너지솔루션은 북미 고객용 소듐이온 ESS 30MWh 샘플 시험을 "
+    "실제 시작했다고 발표했다. 아직 고객 승인·양산 계약은 없다.",
+    "LG에너지솔루션",
+)
+pg,ps,pc,pk=classify(lges_press_test_start)
+assert pg==g and ps>=11 and pk!=k,(pg,ps,pc,pk)
+assert pc.endswith("LG엔솔 북미 30MWh 나트륨 ESS 샘플 시험 공식 착수"),pc
+assert "상업 수주나 양산 출하가 아닙니다" in base.meaning(pc),base.meaning(pc)
+actual_render_text=lges_press_test_start["title"]+" "+lges_press_test_start["description"]
+assert base.category(actual_render_text,pg)==pc,"Rendered stage must not downgrade to plan"
+
+lges_press_approved = make(
+    "LG에너지솔루션 북미 30MWh 소듐이온 ESS 고객 승인",
+    "LG에너지솔루션은 북미 고객의 소듐이온 ESS 30MWh "
+    "샘플 검증 완료와 고객 승인을 공식 발표했다.",
+    "LG에너지솔루션",
+)
+ag,aps,ac,ak=classify(lges_press_approved)
+assert ag==g and aps>=11 and ak not in {k,pk},(ag,aps,ac,ak)
+assert ac.endswith("한국 나트륨이온 고객 검증·승인"),ac
+assert base.category(lges_press_approved["title"]+" "+lges_press_approved["description"],ag)==ac
+
+lges_media_claim = make(
+    lges_press_approved["title"],
+    lges_press_approved["description"],
+    "익명 뉴스",
+)
+mg,ms,mc,mk=classify(lges_media_claim)
+assert mg==g and ms<11,(mg,ms,mc)
+
+# CATL's existing April 60 GWh actual cooperation and SamsungSDI UPS R&D
+# remain distinct baselines, not new Korean sodium contracts.
+catl_sodium_prior=make(
+    "CATL HyperStrong 60 GWh sodium-ion supply agreement",
+    "CATL and HyperStrong signed 3 year 60GWh ESS sodium-ion cooperation agreement April 27 2026.",
+    "CATL",
+)
+cg,cs,cc,ck=classify(catl_sodium_prior)
+assert cg=="sodium_ion_battery" and cs<11,(cg,cs,cc)
+assert ck != k,"Chinese contracted volume and Korean test plan must have different IDs"
+
 print("Physical-AI watcher regression guards: PASS")
