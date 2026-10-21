@@ -208,6 +208,7 @@ TEMELIN_IAA_SOURCE = "https://commission.europa.eu/news-and-media/news/commissio
 TEMELIN_OFFICIAL_QUERIES = (
     ('한국 정부', 'site:motir.go.kr 테믈린 3 4 원전 when:30d'),
     ('한국 정책브리핑', 'site:korea.kr 테믈린 3 4 when:30d'),
+    ('한국수력원자력', 'site:khnp.co.kr 테믈린 3 4 원전 when:30d'),
     ('체코 정부', 'site:mpo.gov.cz Temelin nuclear new units KHNP when:30d'),
     ('체코 전력회사', 'site:cez.cz Temelin new nuclear units contract when:30d'),
     ('EU 법규', '"Industrial Accelerator Act" "nuclear" enters into force when:30d'),
@@ -2052,7 +2053,7 @@ def _temelin_milestone(title: str) -> str | None:
         return None
     # 단순 회의·계획·기대·추정은 수주 확정 단계로 올리지 않는다.
     if any(x in text for x in (
-        "검토", "추진 여부", "기대", "계획", "예상", "전망", "가능성", "논의", "협력",
+        "검토", "추진 여부", "기대", "계획", "예상", "전망", "가능성", "논의", "협력", "촉구", "요구", "주장",
         "예정", "우선협상 가능", "consider", "proposed", "planned", "expects", "may ",
         "possible", "could", "potential", "option included", "선택권 포함",
     )):
@@ -2088,7 +2089,17 @@ def collect_temelin_milestones(now: dt.datetime) -> list[dict]:
     failures = 0
     for source_name, query in TEMELIN_OFFICIAL_QUERIES:
         try:
-            root = ET.fromstring(fetch_text(_google_news_url(query)))
+            # The policy watch timeout is four minutes. Independent source queries
+            # use a bounded 8-second single attempt so Temelin cannot stall others.
+            rss, failure = shared_fetch_text(
+                _google_news_url(query),
+                "KHS-Temelin-nuclear-watch contact=github-actions",
+                timeout=8,
+                attempts=1,
+            )
+            if failure is not None or not rss:
+                raise RuntimeError(failure or "empty RSS response")
+            root = ET.fromstring(rss)
         except Exception as exc:
             failures += 1
             print(f"temelin_rss_error source={source_name} error={type(exc).__name__}")
@@ -2102,7 +2113,16 @@ def collect_temelin_milestones(now: dt.datetime) -> list[dict]:
             stage = _temelin_milestone(title)
             if not stage:
                 continue
-            published = _hanul4_parse_pub(node.findtext("pubDate") or "", now)
+            published_text = (node.findtext("pubDate") or "").strip()
+            if not published_text:
+                continue
+            try:
+                published = parsedate_to_datetime(published_text)
+                if published.tzinfo is None:
+                    continue
+                published = published.astimezone(UTC)
+            except (TypeError, ValueError, IndexError, OverflowError):
+                continue
             if published <= TEMELIN_CUTOFF_UTC or published > now.astimezone(UTC) + dt.timedelta(minutes=10):
                 continue
             item = {
