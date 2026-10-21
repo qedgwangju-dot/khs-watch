@@ -10125,6 +10125,28 @@
       "telegram_core_fact": "신현송 한국은행 총재가 최근 물가 상승에 국제유가 등 비용 요인이 크게 작용했다고 인정하면서도 향후 소득 여건 개선에 따른 수요 측 물가 상승 압력에 선제적으로 대응할 필요가 있다고 밝혔다.",
       "title": "신현송 \"소득 개선이 수요 압력 될 것…근원물가 선제 대응 중요\""
     },
+    "core:1ea5330b2efe3fde8a818737": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/202610216627L",
+      "source": "한국경제",
+      "source_body_digest": "c72084ac8f2eb9720ce4b8377832532225640b37b5e22777047274bb81a59495",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08f54d4783d1bfb15931915b8f045d3f37be9260ddbbd8af5ea5a4fe3e60a026",
+      "source_fact_keys": [
+        "source_fact:v1:8992c4e9a504bec9bcade36117ae057d88247db750b3c3961d7741438b28df45",
+        "source_fact:v1:9f8e48e3f20010f5362be0f1635201f327246bf4497490658e92c87aec8b6f77",
+        "source_fact:v1:c22f4f1eb55d4082a8154f3b0da2ce873a83af3d34b9211f6b0402679af518ad"
+      ],
+      "source_published_kst": "2026-10-21T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)",
+      "telegram_core_fact": "레이저쎌(412350)은 반도체 본딩 장비 공급에 관한 단일판매ㆍ공급계약체결(자율공시) 을 21일에 공시했다.",
+      "title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)"
+    },
     "core:1eb05f187eda58aa37f97bec": {
       "first_seen_kst": "2026-10-14T15:12:25+09:00",
       "lanes": {
@@ -22645,6 +22667,38 @@
       "telegram_core_fact": "HBM 자체의 성능을 높이는 데서 나아가 데이터 이동 병목을 줄이는 시스템 차원의 기술 경쟁으로 무게추가 이동한 것이다.",
       "title": "[SEDEX 2026] HBM 넘어 시스템으로…삼성·SK, AI 병목 해소 경쟁"
     },
+    "core:41a222ced9bd188df2cbf5d9": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
+    },
     "core:41c5df0a9fce3f2cfcc8bdfc": {
       "first_seen_kst": "2026-10-14T00:59:56+09:00",
       "lanes": {
@@ -23118,6 +23172,26 @@
       "source_title": "서드 코스트 뱅크셰어스, 그레이트플레인스 2억4000만 달러 인수",
       "telegram_core_fact": "서드 코스트 뱅크셰어스(TCBX)가 오클라호마시티에 본사를 둔 그레이트플레인스 뱅크셰어스를 약 2억3960만 달러 전액 주식 거래로 인수하는 최종 합병계약을 체결했으며, 거래 종료 시 합산 총자산이 약 90억 달러를 넘어설 것으로 보인다고 10월 7일 발표했다.",
       "title": "서드 코스트 뱅크셰어스, 그레이트플레인스 2억4000만 달러 인수"
+    },
+    "core:434a36d58c7474800137ed59": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835570",
+      "source": "뉴시스",
+      "source_body_digest": "c9f3e0a988327f06ee87b2f4281637cc315c796f5122904c33337bffb9473ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8528b834c4cc96f757f51721863c1cd2d379b7ab8df07a45c5d9a3da6650e6d5",
+      "source_fact_keys": [
+        "source_fact:v1:c89a9b465b69becf4b74f724c1a2fbff4a7dc87adf0e8103b9ec74d952bf314c"
+      ],
+      "source_published_kst": "2026-10-21T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "화성시 샤인머스캣, 한국산 첫 필리핀 수출…3.6t 선적",
+      "telegram_core_fact": "화성시와 송산농협은 그동안 샤인머스캣 생산량 증가와 소비 부진에 따른 가격 하락 등의 문제를 해결하고 농가 소득을 높이기 위해 해외판로를 개척해왔다.",
+      "title": "화성시 샤인머스캣, 한국산 첫 필리핀 수출…3.6t 선적"
     },
     "core:434c345bcc3a64492ae4d57e": {
       "first_seen_kst": "2026-10-19T13:01:20+09:00",
@@ -42669,6 +42743,33 @@
       "telegram_core_fact": "김인만 김인만부동산경제연구소장은 \"규제의 긍정적인 효과를 찾기 어렵다\"며 \"토허제로 갭투자를 제한했지만 집값은 계속 올랐고 전세 매물 감소와 월세 상승 등 부작용도 나타났다\"고 지적했다.",
       "title": "“서울 전역 일률 규제 한계”…전문가들 완화·폐지 놓고 엇갈려 [서울 토허제 1년③]"
     },
+    "core:7ea406b9d4daaf5edd925a1d": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
+    },
     "core:7eb0d8aedbedbcf557bfc320": {
       "first_seen_kst": "2026-10-14T23:50:23+09:00",
       "lanes": {
@@ -49494,6 +49595,32 @@
       "source_title": "“일본 NTT, 오사카에 앤스로픽 데이터센터 건설 조율 막바지”",
       "telegram_core_fact": "일본 NTT가 미국 앤스로픽을 위해 오사카 지역에 데이터센터를 건설하는 방향으로 최종 조율에 들어갔다고 니혼게이자이신문(닛케이)이 13일 보도했다.",
       "title": "“일본 NTT, 오사카에 앤스로픽 데이터센터 건설 조율 막바지”"
+    },
+    "core:91e79e3afc80cc3931043de3": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/2026102166621",
+      "source": "한국경제",
+      "source_body_digest": "ab723d55a3d262935976f6b9d4e73e7ba9dfd66b149ce90d3cdc8c20933faa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b2b355ef2d9fa3f266016920a9f46d7dca29eb583daa36f91b017a3149f4c58",
+      "source_fact_keys": [
+        "source_fact:v1:062b181171fe074c70d8bf35bfe52e8dee6434658f7e6a1de3c262bb9cf2fa25",
+        "source_fact:v1:18391cb26bd805659e165c2d4ef4976bfa7ace904172065f896da11c260c6052",
+        "source_fact:v1:2848690fc542ac58a3d3b2a95d1421f8e5a7ca8f10ef7b22e7d936523dfb7535",
+        "source_fact:v1:36fe9764e54d21932c2f9ed84740a3d891cac99c301f959a07857805a18b216e",
+        "source_fact:v1:7dce30d285a20d18e21d30d26681cb0fcf210f37200de83fbdbdaa2aec9a3e49",
+        "source_fact:v1:c8e460ddc023214cc747f5f25875ecda5d87593bcea0db387f1b8cd7bd1574c3",
+        "source_fact:v1:ff24d9ec78964a3ee2c8955eb0d25766dad0571d1efebbeb5a2664b3690ee5d7"
+      ],
+      "source_published_kst": "2026-10-21T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "창원 국가산단에 AI·로봇 통합시스템 도입",
+      "telegram_core_fact": "창원국가산업단지 내 가전제품 제조 현장에 인공지능(AI)과 로봇을 활용한 생산관리 통합시스템이 도입된다. 경남 창원시는 산업통상부가 주관하는 ‘기계장비산업기술개발사업’의 AI 팩토리 분야 공모에서 ‘다품종 가변 가전제조 공급망 내 제조품질 고도화를 위한 자율제조 통합솔루션 개발사업’이 선정됐다고 21일 밝혔다.",
+      "title": "창원 국가산단에 AI·로봇 통합시스템 도입"
     },
     "core:91eba9bb5ddb15e36949e986": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
@@ -62368,6 +62495,26 @@
       "source_title": "국내선 남아도는데 국제價 급등…정부, 경유 수출통제 완화 검토",
       "telegram_core_fact": "정부가 중동 전쟁 이후 도입한 석유제품 수출 제한 조치를 경유에 한해 완화하는 방안을 검토 중이다.",
       "title": "국내선 남아도는데 국제價 급등…정부, 경유 수출통제 완화 검토"
+    },
+    "core:ba2d21bc169d53633e4d3cec": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04634646645615216",
+      "source": "이데일리",
+      "source_body_digest": "e6a6ea0557bb83d96da26a74356d45a3fe73f5d67f76925aa92f068607aae121",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a0a01fbe63b2d0f48f1e2c992d454ab37e9763629a1c818d5c98f03feff2a43",
+      "source_fact_keys": [
+        "source_fact:v1:d95480f925fc8f6cd3a97a265de0072da7f63cd0e69d19afdcbf4db378df3bc6"
+      ],
+      "source_published_kst": "2026-10-21T16:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기",
+      "telegram_core_fact": "벤틀리의 2025년 전 세계 총 인도량(1만131대) 기준 SUV인 벤테이가(약 36%)는 컨티넨탈GT(45%)에 이어 판매량 2위를 기록했다.",
+      "title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기"
     },
     "core:ba335f5519c86f36ac119a53": {
       "first_seen_kst": "2026-10-22T03:23:27+09:00",
@@ -79672,6 +79819,24 @@
       "telegram_core_fact": "경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다.",
       "title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대"
     },
+    "core:efce2338a892476691aa5f4f": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182267",
+      "source": "매일경제",
+      "source_body_digest": "20bf56d8ce54b0f32e67f763cc938590fc3ae148f68f5407fe4cf096b90d5729",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "위프로, 2분기 매출 성장과 현금흐름 개선에 투자자 관심 집중",
+      "telegram_core_fact": "2분기 IFRS 매출이 2,475억 루피로 전년 대비 9.1% 증가했고, 영업이익과 현금흐름도 크게 개선되었습니다.",
+      "title": "위프로, 2분기 매출 성장과 현금흐름 개선에 투자자 관심 집중"
+    },
     "core:efd9fb31a837a13aa285b6ef": {
       "first_seen_kst": "2026-10-16T15:46:25+09:00",
       "lanes": {
@@ -87724,27 +87889,34 @@
     "event:2080d78fe0a242cbb97f4a36": {
       "first_seen_kst": "2026-10-21T15:40:18+09:00",
       "lanes": {
-        "live": "2026-10-22T00:00:41+09:00"
+        "live": "2026-10-22T03:57:32+09:00"
       },
-      "last_seen_kst": "2026-10-22T00:00:41+09:00",
-      "link": "https://www.newsis.com/view/NISX20261021_0003835782",
-      "source": "뉴시스",
-      "source_body_digest": "8c1cc53b14de44a2de7010492ccfaaa85fbfda668587d0e56c0d5c5d5791aa4e",
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a840946bb677265c287bb6555e52e429490909bdfdbca8d41f19e86f0a79b655",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
       "source_fact_keys": [
-        "source_fact:v1:1733bf360e858fed4f80f87e5bc39baf91f23ffaa36b53227502c2a0f67c9cdd",
-        "source_fact:v1:216b5d34311a9f19ad2ff49500f71b24b0d3ed5179447b3313f4bf053768a117",
-        "source_fact:v1:5a2440b87cac154ad5fac044acc58230d53131d54930bc711eca2352e304dfb7",
-        "source_fact:v1:603fccfa155d999ac4b98ec24f298a4c268d24879a4431e8e57548dc47e18fa5",
-        "source_fact:v1:6b71938dc909c254c8e5466b259aadd8a9af855caa9e2e3c0bb8adc91543c183",
-        "source_fact:v1:a7b27b33f99bca72886a838d0a6f05f7f6b0c63be93c24067ea22513a564d1a0"
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
       ],
-      "source_published_kst": "2026-10-21T20:01+09:00",
+      "source_published_kst": "2026-10-21T09:00+09:00",
       "source_supply_terms": {},
-      "source_title": "SK하이닉스, 40조원 자사주 매입 완료…한 달 앞당겨 종료",
-      "telegram_core_fact": "자사주 매입: 기간은 8월20일부터 11월19일까지 약 3개월이었으나, 예정보다 한 달가량 앞당겨 종료됐다.",
-      "title": "SK하이닉스, 40조원 자사주 매입 완료…한 달 앞당겨 종료"
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
     },
     "event:20821ea03a137a78bbe5496c": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
@@ -91431,6 +91603,33 @@
       "link": "https://www.etoday.co.kr/news/view/2632257",
       "source": "이투데이",
       "title": "트럼프 “한국과 합의 더욱 좋아져⋯석유 프로젝트에 84억달러 투자”"
+    },
+    "event:5212ef70ddc23118236525d0": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
     },
     "event:5214d80fea4e0016511b4110": {
       "first_seen_kst": "2026-10-14T05:08:50+09:00",
@@ -97245,28 +97444,22 @@
     "event:9bef137881a11a8d7c580ac5": {
       "first_seen_kst": "2026-10-21T12:30:59+09:00",
       "lanes": {
-        "live": "2026-10-21T12:30:59+09:00"
+        "live": "2026-10-22T03:57:32+09:00"
       },
-      "last_seen_kst": "2026-10-21T12:30:59+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01702326645615216",
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04634646645615216",
       "source": "이데일리",
-      "source_body_digest": "9ca573541769189645b42b298ae84a41191549fbb7d79baea7d1e71a29e0658e",
+      "source_body_digest": "e6a6ea0557bb83d96da26a74356d45a3fe73f5d67f76925aa92f068607aae121",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:209c6bb1b7e0ac57da92a3b26296c012754e0ad6147f4ab28c18d2d2c3e14fa7",
+      "source_fact_identity": "source_facts:v1:9a0a01fbe63b2d0f48f1e2c992d454ab37e9763629a1c818d5c98f03feff2a43",
       "source_fact_keys": [
-        "source_fact:v1:25c70e7872aeb5b26b9cafa57a787dd61eafb0d16cea17505a31cd6fb5a83987",
-        "source_fact:v1:4ba92b45957a2d92fa1e33a590b867b80c7bc9aec483a007c52966213ff321f3",
-        "source_fact:v1:510aec4c91078aad5bf824756656e4e949580c94849a174869fcf8581dd287f5",
-        "source_fact:v1:570a7ffdfd10a67276973380449b83cb9c2df0f8c8b454394059914440e5908a",
-        "source_fact:v1:7e6be7ea5a950e298d170d9559bcaa57c52dcd88a3fff9339d8ed55200df132f",
-        "source_fact:v1:7ef881d455d8f1e080866a4b3a748b93421d69b31b7138a36693bef484192662",
-        "source_fact:v1:a566e014b4da19d79353fd307369067320da34455c668abe2ccec5f89e442049"
+        "source_fact:v1:d95480f925fc8f6cd3a97a265de0072da7f63cd0e69d19afdcbf4db378df3bc6"
       ],
-      "source_published_kst": "2026-10-21T05:09+09:00",
+      "source_published_kst": "2026-10-21T16:17+09:00",
       "source_supply_terms": {},
-      "source_title": "[속보]유가 하락에 다우 1% 상승…AI 불안 속 헬스케어·산업주 강세",
-      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 뉴욕증시가 20일(현지시간) 국제유가 하락과 주요 기업들의 실적 호조에 힘입어 대체로 상승 마감했다.",
-      "title": "[속보]유가 하락에 다우 1% 상승…AI 불안 속 헬스케어·산업주 강세"
+      "source_title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기",
+      "telegram_core_fact": "벤틀리의 2025년 전 세계 총 인도량(1만131대) 기준 SUV인 벤테이가(약 36%)는 컨티넨탈GT(45%)에 이어 판매량 2위를 기록했다.",
+      "title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기"
     },
     "event:9bf328f8450ba10e632edd85": {
       "first_seen_kst": "2026-10-03T21:06:13+09:00",
@@ -103827,31 +104020,24 @@
     "event:ed026ccfaf2e5bde22258f03": {
       "first_seen_kst": "2026-10-21T07:55:35+09:00",
       "lanes": {
-        "live": "2026-10-21T09:52:31+09:00"
+        "live": "2026-10-22T03:57:32+09:00"
       },
-      "last_seen_kst": "2026-10-21T09:52:31+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2637875",
-      "source": "이투데이",
-      "source_body_digest": "918e820d661e832bf9c55409dfd4f8afb2832c722732c10ab3d394bdd54232ad",
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/202610216627L",
+      "source": "한국경제",
+      "source_body_digest": "c72084ac8f2eb9720ce4b8377832532225640b37b5e22777047274bb81a59495",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2f625eae33e493c5781644648ba19e3da62199a07ceca8cb8c0bca254abc71bb",
+      "source_fact_identity": "source_facts:v1:08f54d4783d1bfb15931915b8f045d3f37be9260ddbbd8af5ea5a4fe3e60a026",
       "source_fact_keys": [
-        "source_fact:v1:24d4e7dd2f2f431450b036f5c849cfc04dbbcf6338beaaff0328a1f986f68af4",
-        "source_fact:v1:61762a37a92ad086c50130c7b8369cb32c38111b818d7be9ef6defb89ef7d5e4",
-        "source_fact:v1:7684ba2368522fcfae92f599f501bdcb2062304577b8aa87a5b0bcb4d3d3cc8f",
-        "source_fact:v1:7831d3a665647891a0754d77a7ea9bea0e91adcbee59ebd7de775e47761a9291",
-        "source_fact:v1:937d133119d67504bc9987dabb21a9d3e10b0ea8dcdea5427040324d2c055b87",
-        "source_fact:v1:ac67903f28c459856f2f659c7ca8d03d3800b0ae5559f7aaaaff79938f5cd1c5",
-        "source_fact:v1:c25553d05783bafbdb87d3752b9b56db39e17f18e830f6f621eee14abf511a20",
-        "source_fact:v1:c9a8a8b5fbf2d9edec4a89dbb86154adaa58e8b7df7e3b1ab1525500ca8b227c",
-        "source_fact:v1:d3b6086ef42afdd9ade2ffeb85dae3015b0ff6796ffba761e8579e78f1a2be0b",
-        "source_fact:v1:e58e0475fe6cdc94fab3bfdb43ae07384da4c40ec43d3ee7b960374263329f2a"
+        "source_fact:v1:8992c4e9a504bec9bcade36117ae057d88247db750b3c3961d7741438b28df45",
+        "source_fact:v1:9f8e48e3f20010f5362be0f1635201f327246bf4497490658e92c87aec8b6f77",
+        "source_fact:v1:c22f4f1eb55d4082a8154f3b0da2ce873a83af3d34b9211f6b0402679af518ad"
       ],
-      "source_published_kst": "2026-10-21T05:00+09:00",
+      "source_published_kst": "2026-10-21T17:08+09:00",
       "source_supply_terms": {},
-      "source_title": "'쪼개기 상장'과 다른 솔리다임⋯지분 줄어도 주주 몫은 커질 수 있어 [AI 반도체 자본 경쟁]",
-      "telegram_core_fact": "솔리다임은 기존 사업부를 물적분할한 '쪼개기 상장'과 출발점이 다른 데다, 지분 희석이 반드시 주주가치 하락으로 이어지는 것은 아니라는 분석도 나온다.",
-      "title": "'쪼개기 상장'과 다른 솔리다임⋯지분 줄어도 주주 몫은 커질 수 있어 [AI 반도체 자본 경쟁]"
+      "source_title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)",
+      "telegram_core_fact": "레이저쎌(412350)은 반도체 본딩 장비 공급에 관한 단일판매ㆍ공급계약체결(자율공시) 을 21일에 공시했다.",
+      "title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)"
     },
     "event:ed07ec20a704c33f92cbd539": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
@@ -113902,6 +114088,26 @@
       "telegram_core_fact": "이번 8-K는 실적 발표가 아니라 IPO 완료 후 감사를 거친 개시 재무상태표 공시로, 매출액이나 주당순이익 등 실적 수치와 가이던스는 포함되지 않았다.",
       "title": "사우스포트 애퀴지션, IPO 2억1000만 달러 조달..신탁 2억1100만 달러"
     },
+    "fact:156f58dd21db157f831fc4f2": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835570",
+      "source": "뉴시스",
+      "source_body_digest": "c9f3e0a988327f06ee87b2f4281637cc315c796f5122904c33337bffb9473ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8528b834c4cc96f757f51721863c1cd2d379b7ab8df07a45c5d9a3da6650e6d5",
+      "source_fact_keys": [
+        "source_fact:v1:c89a9b465b69becf4b74f724c1a2fbff4a7dc87adf0e8103b9ec74d952bf314c"
+      ],
+      "source_published_kst": "2026-10-21T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "화성시 샤인머스캣, 한국산 첫 필리핀 수출…3.6t 선적",
+      "telegram_core_fact": "화성시와 송산농협은 그동안 샤인머스캣 생산량 증가와 소비 부진에 따른 가격 하락 등의 문제를 해결하고 농가 소득을 높이기 위해 해외판로를 개척해왔다.",
+      "title": "화성시 샤인머스캣, 한국산 첫 필리핀 수출…3.6t 선적"
+    },
     "fact:157226cd6b5bc979e97585bc": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
@@ -117319,6 +117525,32 @@
       "source_title": "사모펀드 만난 프랜차이즈…벼르는 중기장관, 왜?",
       "telegram_core_fact": "관련업계에 따르면 전은수 더불어민주당 의원은 지난 7일 국회 산업통상자원중소벤처기업위원회의 중기부 국정감사에서 \"현재 BHC, 투썸플레이스, 버거킹, 맘스터치 등 외식브랜드 상당수를 사모펀드가 인수했다\"며 \"사모펀드의 투자회수 구조가 프랜차이즈 수익 구조와 결합할 때 위험도가 커질 수 있다\"고 밝혔다.",
       "title": "사모펀드 만난 프랜차이즈…벼르는 중기장관, 왜?"
+    },
+    "fact:1ec38fb03e54e044000b18d2": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/2026102166621",
+      "source": "한국경제",
+      "source_body_digest": "ab723d55a3d262935976f6b9d4e73e7ba9dfd66b149ce90d3cdc8c20933faa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b2b355ef2d9fa3f266016920a9f46d7dca29eb583daa36f91b017a3149f4c58",
+      "source_fact_keys": [
+        "source_fact:v1:062b181171fe074c70d8bf35bfe52e8dee6434658f7e6a1de3c262bb9cf2fa25",
+        "source_fact:v1:18391cb26bd805659e165c2d4ef4976bfa7ace904172065f896da11c260c6052",
+        "source_fact:v1:2848690fc542ac58a3d3b2a95d1421f8e5a7ca8f10ef7b22e7d936523dfb7535",
+        "source_fact:v1:36fe9764e54d21932c2f9ed84740a3d891cac99c301f959a07857805a18b216e",
+        "source_fact:v1:7dce30d285a20d18e21d30d26681cb0fcf210f37200de83fbdbdaa2aec9a3e49",
+        "source_fact:v1:c8e460ddc023214cc747f5f25875ecda5d87593bcea0db387f1b8cd7bd1574c3",
+        "source_fact:v1:ff24d9ec78964a3ee2c8955eb0d25766dad0571d1efebbeb5a2664b3690ee5d7"
+      ],
+      "source_published_kst": "2026-10-21T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "창원 국가산단에 AI·로봇 통합시스템 도입",
+      "telegram_core_fact": "창원국가산업단지 내 가전제품 제조 현장에 인공지능(AI)과 로봇을 활용한 생산관리 통합시스템이 도입된다. 경남 창원시는 산업통상부가 주관하는 ‘기계장비산업기술개발사업’의 AI 팩토리 분야 공모에서 ‘다품종 가변 가전제조 공급망 내 제조품질 고도화를 위한 자율제조 통합솔루션 개발사업’이 선정됐다고 21일 밝혔다.",
+      "title": "창원 국가산단에 AI·로봇 통합시스템 도입"
     },
     "fact:1ed9ce89f48360c6155e0124": {
       "first_seen_kst": "2026-10-15T01:00:58+09:00",
@@ -161255,6 +161487,33 @@
       "telegram_core_fact": "알파칩스는 관계사인 광반도체·광부품 전문기업 포스텍이 최근 미국 양자컴퓨팅 회사로부터 고정밀 광섬유 배열 유닛(FAU) 양산 발주(PO)를 수령했다고 19일 밝혔다.",
       "title": "포스텍, 美 양자컴퓨팅 기업향 고정밀 FAU PO 수령"
     },
+    "fact:9840cb0886ea6427bf4cebdc": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
+    },
     "fact:984b65eb4cf1cdaba8bbf867": {
       "first_seen_kst": "2026-10-12T18:21:27+09:00",
       "lanes": {
@@ -164212,6 +164471,26 @@
       "telegram_core_fact": "9일(현지시간) 포브스에 따르면 스페이스X는 전날 그레인 매니지먼트로부터 전국 단위의 저대역 무선 주파수를 인수하기로 했다.",
       "title": "스페이스X, 저대역 주파수 11조원에 인수…이동통신업계 긴장 | 연합뉴스"
     },
+    "fact:a00c93811a439ef5d5328125": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04634646645615216",
+      "source": "이데일리",
+      "source_body_digest": "e6a6ea0557bb83d96da26a74356d45a3fe73f5d67f76925aa92f068607aae121",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a0a01fbe63b2d0f48f1e2c992d454ab37e9763629a1c818d5c98f03feff2a43",
+      "source_fact_keys": [
+        "source_fact:v1:d95480f925fc8f6cd3a97a265de0072da7f63cd0e69d19afdcbf4db378df3bc6"
+      ],
+      "source_published_kst": "2026-10-21T16:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기",
+      "telegram_core_fact": "벤틀리의 2025년 전 세계 총 인도량(1만131대) 기준 SUV인 벤테이가(약 36%)는 컨티넨탈GT(45%)에 이어 판매량 2위를 기록했다.",
+      "title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기"
+    },
     "fact:a015a96313f67391f9c6dc4c": {
       "first_seen_kst": "2026-10-15T12:05:16+09:00",
       "lanes": {
@@ -165460,6 +165739,38 @@
       "source_title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환",
       "telegram_core_fact": "파두는 19일 잠정 실적 공시를 통해 올해 3분기 매출 1436억원, 영업이익 363억원을 달성했다고 밝혔다.",
       "title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환"
+    },
+    "fact:a3457b900c90caf13250269c": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
     },
     "fact:a34bdc56a22764d055bf420b": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -171490,6 +171801,28 @@
       "source_title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스",
       "telegram_core_fact": "이달 상장지수펀드(ETF) 리밸런싱(재조정) 매매가 8일과 오는 12일 나뉘어 이뤄지는 가운데 단기 수급 충격이 예상된다는 분석이 나왔다. 옵션 만기 리밸런싱을 하는 ETF 편입 종목의 예상 순매매 금액이 평균 거래대금보다 크다면 충격이 커질 수 있다.",
       "title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스"
+    },
+    "fact:b14b420a63fd519918b590de": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/202610216627L",
+      "source": "한국경제",
+      "source_body_digest": "c72084ac8f2eb9720ce4b8377832532225640b37b5e22777047274bb81a59495",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08f54d4783d1bfb15931915b8f045d3f37be9260ddbbd8af5ea5a4fe3e60a026",
+      "source_fact_keys": [
+        "source_fact:v1:8992c4e9a504bec9bcade36117ae057d88247db750b3c3961d7741438b28df45",
+        "source_fact:v1:9f8e48e3f20010f5362be0f1635201f327246bf4497490658e92c87aec8b6f77",
+        "source_fact:v1:c22f4f1eb55d4082a8154f3b0da2ce873a83af3d34b9211f6b0402679af518ad"
+      ],
+      "source_published_kst": "2026-10-21T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)",
+      "telegram_core_fact": "레이저쎌(412350)은 반도체 본딩 장비 공급에 관한 단일판매ㆍ공급계약체결(자율공시) 을 21일에 공시했다.",
+      "title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)"
     },
     "fact:b14b5ab784792a91235fa742": {
       "first_seen_kst": "2026-10-15T17:19:13+09:00",
@@ -211722,6 +212055,28 @@
       "source_published_kst": "2026-10-05T08:01+09:00",
       "title": "[단독]브레인온 ‘세라큐’, 주요 거래처 거래 중단 통보…‘업계 퇴출 수순’"
     },
+    "link:14cb4d7cc7492cf7e2a703fa": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/202610216627L",
+      "source": "한국경제",
+      "source_body_digest": "c72084ac8f2eb9720ce4b8377832532225640b37b5e22777047274bb81a59495",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08f54d4783d1bfb15931915b8f045d3f37be9260ddbbd8af5ea5a4fe3e60a026",
+      "source_fact_keys": [
+        "source_fact:v1:8992c4e9a504bec9bcade36117ae057d88247db750b3c3961d7741438b28df45",
+        "source_fact:v1:9f8e48e3f20010f5362be0f1635201f327246bf4497490658e92c87aec8b6f77",
+        "source_fact:v1:c22f4f1eb55d4082a8154f3b0da2ce873a83af3d34b9211f6b0402679af518ad"
+      ],
+      "source_published_kst": "2026-10-21T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)",
+      "telegram_core_fact": "레이저쎌(412350)은 반도체 본딩 장비 공급에 관한 단일판매ㆍ공급계약체결(자율공시) 을 21일에 공시했다.",
+      "title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)"
+    },
     "link:14cee466867b974c8bc65383": {
       "first_seen_kst": "2026-10-21T18:34:10+09:00",
       "lanes": {
@@ -227156,6 +227511,33 @@
       "telegram_core_fact": "이재용 삼성전자 회장이 홍라희 리움미술관 명예관장으로부터 2조6000억원 상당의 삼성전자 지분을 증여받는다. 현재 이 회장이 보유한 삼성전자 주식은 1억521만9053주로 지분율은 1.58%다.",
       "title": "이재용, 홍라희 삼성전자 주식 2.6조 증여받는다…증여세만 1조 넘어"
     },
+    "link:3200d49bd8292950dcfd391c": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
+    },
     "link:320220412c843e6432cac97f": {
       "first_seen_kst": "2026-10-13T02:02:36+09:00",
       "lanes": {
@@ -231268,6 +231650,38 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "샌디스크, 비싸진 아이폰 1TB 고객 틈새시장 '외장 메모리'로 노린다"
+    },
+    "link:3b2d2aab4aa44d554a43ef74": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
     },
     "link:3b32208d66f43231694e6919": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -246607,6 +247021,26 @@
       "source_title": "CJ, 다우키움과 손잡고 중앙일보 인수전 참여",
       "telegram_core_fact": "하지만 중앙일보는 현재 워크아웃 중으로 주채권은행 관리하에 매각이 진행되는 만큼 인수의향서(LOI)를 제출한 원매자에 한해서만 본입찰 참여를 허용하고 있다.",
       "title": "CJ, 다우키움과 손잡고 중앙일보 인수전 참여"
+    },
+    "link:5a8c3183acffc22eedc9dfe8": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04634646645615216",
+      "source": "이데일리",
+      "source_body_digest": "e6a6ea0557bb83d96da26a74356d45a3fe73f5d67f76925aa92f068607aae121",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a0a01fbe63b2d0f48f1e2c992d454ab37e9763629a1c818d5c98f03feff2a43",
+      "source_fact_keys": [
+        "source_fact:v1:d95480f925fc8f6cd3a97a265de0072da7f63cd0e69d19afdcbf4db378df3bc6"
+      ],
+      "source_published_kst": "2026-10-21T16:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기",
+      "telegram_core_fact": "벤틀리의 2025년 전 세계 총 인도량(1만131대) 기준 SUV인 벤테이가(약 36%)는 컨티넨탈GT(45%)에 이어 판매량 2위를 기록했다.",
+      "title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기"
     },
     "link:5a973ba10e8ed7fbde91f670": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
@@ -263552,6 +263986,26 @@
       "source_published_kst": "2026-10-07T07:48+09:00",
       "title": "트럼프 \"이란 누가 이끄는지 모른다는 게 가장 큰 문제\""
     },
+    "link:7d7dfbc84390357fd1b1378d": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835570",
+      "source": "뉴시스",
+      "source_body_digest": "c9f3e0a988327f06ee87b2f4281637cc315c796f5122904c33337bffb9473ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8528b834c4cc96f757f51721863c1cd2d379b7ab8df07a45c5d9a3da6650e6d5",
+      "source_fact_keys": [
+        "source_fact:v1:c89a9b465b69becf4b74f724c1a2fbff4a7dc87adf0e8103b9ec74d952bf314c"
+      ],
+      "source_published_kst": "2026-10-21T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "화성시 샤인머스캣, 한국산 첫 필리핀 수출…3.6t 선적",
+      "telegram_core_fact": "화성시와 송산농협은 그동안 샤인머스캣 생산량 증가와 소비 부진에 따른 가격 하락 등의 문제를 해결하고 농가 소득을 높이기 위해 해외판로를 개척해왔다.",
+      "title": "화성시 샤인머스캣, 한국산 첫 필리핀 수출…3.6t 선적"
+    },
     "link:7d8b9ebddde16ed10bcb9754": {
       "first_seen_kst": "2026-10-14T22:15:19+09:00",
       "lanes": {
@@ -271721,6 +272175,32 @@
       "source_title": "[ESGX 이슈 5] 블랙스톤, 에너지 전환에 87억달러 조달…구글은 탄소제거 장기계약",
       "telegram_core_fact": "에너지 효율과 인프라 관련 기업 3곳도 인수했다.",
       "title": "[ESGX 이슈 5] 블랙스톤, 에너지 전환에 87억달러 조달…구글은 탄소제거 장기계약"
+    },
+    "link:8f9cb6b38ba218d4742ec9b1": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/2026102166621",
+      "source": "한국경제",
+      "source_body_digest": "ab723d55a3d262935976f6b9d4e73e7ba9dfd66b149ce90d3cdc8c20933faa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b2b355ef2d9fa3f266016920a9f46d7dca29eb583daa36f91b017a3149f4c58",
+      "source_fact_keys": [
+        "source_fact:v1:062b181171fe074c70d8bf35bfe52e8dee6434658f7e6a1de3c262bb9cf2fa25",
+        "source_fact:v1:18391cb26bd805659e165c2d4ef4976bfa7ace904172065f896da11c260c6052",
+        "source_fact:v1:2848690fc542ac58a3d3b2a95d1421f8e5a7ca8f10ef7b22e7d936523dfb7535",
+        "source_fact:v1:36fe9764e54d21932c2f9ed84740a3d891cac99c301f959a07857805a18b216e",
+        "source_fact:v1:7dce30d285a20d18e21d30d26681cb0fcf210f37200de83fbdbdaa2aec9a3e49",
+        "source_fact:v1:c8e460ddc023214cc747f5f25875ecda5d87593bcea0db387f1b8cd7bd1574c3",
+        "source_fact:v1:ff24d9ec78964a3ee2c8955eb0d25766dad0571d1efebbeb5a2664b3690ee5d7"
+      ],
+      "source_published_kst": "2026-10-21T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "창원 국가산단에 AI·로봇 통합시스템 도입",
+      "telegram_core_fact": "창원국가산업단지 내 가전제품 제조 현장에 인공지능(AI)과 로봇을 활용한 생산관리 통합시스템이 도입된다. 경남 창원시는 산업통상부가 주관하는 ‘기계장비산업기술개발사업’의 AI 팩토리 분야 공모에서 ‘다품종 가변 가전제조 공급망 내 제조품질 고도화를 위한 자율제조 통합솔루션 개발사업’이 선정됐다고 21일 밝혔다.",
+      "title": "창원 국가산단에 AI·로봇 통합시스템 도입"
     },
     "link:8f9e4de87d2620ec980bc1a6": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
@@ -322256,6 +322736,24 @@
       "telegram_core_fact": "금융업계와 보안업계에 따르면 최근 신한·KB국민·하나·BNK부산은행 등 주요 은행에서 해킹 공격으로 인한 이용자 정보 유출 피해가 잇따라 확인됐다.",
       "title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]"
     },
+    "link:f71c286336698415b43bb388": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182267",
+      "source": "매일경제",
+      "source_body_digest": "20bf56d8ce54b0f32e67f763cc938590fc3ae148f68f5407fe4cf096b90d5729",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "위프로, 2분기 매출 성장과 현금흐름 개선에 투자자 관심 집중",
+      "telegram_core_fact": "2분기 IFRS 매출이 2,475억 루피로 전년 대비 9.1% 증가했고, 영업이익과 현금흐름도 크게 개선되었습니다.",
+      "title": "위프로, 2분기 매출 성장과 현금흐름 개선에 투자자 관심 집중"
+    },
     "link:f73c523914830b50205135fa": {
       "first_seen_kst": "2026-10-13T02:02:36+09:00",
       "lanes": {
@@ -327739,6 +328237,26 @@
       "source_published_kst": "2026-10-05T10:42+09:00",
       "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
+    "original:027178f7f2d1978391134aad": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04634646645615216",
+      "source": "이데일리",
+      "source_body_digest": "e6a6ea0557bb83d96da26a74356d45a3fe73f5d67f76925aa92f068607aae121",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a0a01fbe63b2d0f48f1e2c992d454ab37e9763629a1c818d5c98f03feff2a43",
+      "source_fact_keys": [
+        "source_fact:v1:d95480f925fc8f6cd3a97a265de0072da7f63cd0e69d19afdcbf4db378df3bc6"
+      ],
+      "source_published_kst": "2026-10-21T16:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기",
+      "telegram_core_fact": "벤틀리의 2025년 전 세계 총 인도량(1만131대) 기준 SUV인 벤테이가(약 36%)는 컨티넨탈GT(45%)에 이어 판매량 2위를 기록했다.",
+      "title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기"
+    },
     "original:027d9372403cf264bfdf617a": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -329798,6 +330316,24 @@
       "link": "https://www.etnews.com/20260926000023",
       "source": "전자신문",
       "title": "상인회장 자격 논란에도 62억원 지원…전통시장 관리체계 '공백'"
+    },
+    "original:06a86ded6e5fac7744dd6378": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182267",
+      "source": "매일경제",
+      "source_body_digest": "20bf56d8ce54b0f32e67f763cc938590fc3ae148f68f5407fe4cf096b90d5729",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "위프로, 2분기 매출 성장과 현금흐름 개선에 투자자 관심 집중",
+      "telegram_core_fact": "2분기 IFRS 매출이 2,475억 루피로 전년 대비 9.1% 증가했고, 영업이익과 현금흐름도 크게 개선되었습니다.",
+      "title": "위프로, 2분기 매출 성장과 현금흐름 개선에 투자자 관심 집중"
     },
     "original:06a8879fc7b71ae9b2af8d2c": {
       "first_seen_kst": "2026-10-13T11:53:28+09:00",
@@ -364838,6 +365374,28 @@
       "source_title": "삼전닉스 대신 방산·반도체 테마형으로…변화하는 레버리지 ETF 판도",
       "telegram_core_fact": "31일부터 단일종목 레버리지 ETF 규제가 시행돼 대형 반도체 쏠림 완화와 코스닥 우량 성장주 수급 회복 가능성이 제기됐습니다.",
       "title": "삼전닉스 대신 방산·반도체 테마형으로…변화하는 레버리지 ETF 판도"
+    },
+    "original:4e39b20c18876a103e73a965": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/202610216627L",
+      "source": "한국경제",
+      "source_body_digest": "c72084ac8f2eb9720ce4b8377832532225640b37b5e22777047274bb81a59495",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08f54d4783d1bfb15931915b8f045d3f37be9260ddbbd8af5ea5a4fe3e60a026",
+      "source_fact_keys": [
+        "source_fact:v1:8992c4e9a504bec9bcade36117ae057d88247db750b3c3961d7741438b28df45",
+        "source_fact:v1:9f8e48e3f20010f5362be0f1635201f327246bf4497490658e92c87aec8b6f77",
+        "source_fact:v1:c22f4f1eb55d4082a8154f3b0da2ce873a83af3d34b9211f6b0402679af518ad"
+      ],
+      "source_published_kst": "2026-10-21T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)",
+      "telegram_core_fact": "레이저쎌(412350)은 반도체 본딩 장비 공급에 관한 단일판매ㆍ공급계약체결(자율공시) 을 21일에 공시했다.",
+      "title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)"
     },
     "original:4e43bf01cb8aea0f9d740ea1": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -405534,6 +406092,33 @@
       "telegram_core_fact": "공정위는 지난 7월 구글이 대형 게임사들과 맺은 앱 마켓 독점 계약이 '독점규제 및 공정거래에 관한 법률' 위반이라고 보고 제재 절차에 착수했다.",
       "title": "경실련 \"구글·국내 게임사 5곳 회계부정 의혹\"…업계 반박 | 연합뉴스"
     },
+    "original:a35bce2f4ca4855fda16d274": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
+    },
     "original:a35c929894c120cf557de70a": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
       "lanes": {
@@ -424140,6 +424725,38 @@
       "telegram_core_fact": "호르무즈 해협을 통과하던 초대형 유조선이 기뢰와 충돌해 폭발하고 화재가 발생했다고 이란이 주장했다.",
       "title": "200만 배럴 싣고 가다 ‘쾅’…호르무즈·걸프만 유조선 잇단 화재"
     },
+    "original:cbd58c6cc7d4b2e3a98946c2": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
+    },
     "original:cbd76b19098a747f8bb68ef6": {
       "first_seen_kst": "2026-10-15T19:21:06+09:00",
       "lanes": {
@@ -429372,6 +429989,32 @@
       "link": "https://www.newsis.com/view/NISX20260923_0003801723",
       "source": "뉴시스",
       "title": "\"주식 시장 조정 끝…10월 중순 반등해 2028년 초까지 상승\" 전문가의 근거는"
+    },
+    "original:d6d71e582254bf708e1ab73c": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/2026102166621",
+      "source": "한국경제",
+      "source_body_digest": "ab723d55a3d262935976f6b9d4e73e7ba9dfd66b149ce90d3cdc8c20933faa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b2b355ef2d9fa3f266016920a9f46d7dca29eb583daa36f91b017a3149f4c58",
+      "source_fact_keys": [
+        "source_fact:v1:062b181171fe074c70d8bf35bfe52e8dee6434658f7e6a1de3c262bb9cf2fa25",
+        "source_fact:v1:18391cb26bd805659e165c2d4ef4976bfa7ace904172065f896da11c260c6052",
+        "source_fact:v1:2848690fc542ac58a3d3b2a95d1421f8e5a7ca8f10ef7b22e7d936523dfb7535",
+        "source_fact:v1:36fe9764e54d21932c2f9ed84740a3d891cac99c301f959a07857805a18b216e",
+        "source_fact:v1:7dce30d285a20d18e21d30d26681cb0fcf210f37200de83fbdbdaa2aec9a3e49",
+        "source_fact:v1:c8e460ddc023214cc747f5f25875ecda5d87593bcea0db387f1b8cd7bd1574c3",
+        "source_fact:v1:ff24d9ec78964a3ee2c8955eb0d25766dad0571d1efebbeb5a2664b3690ee5d7"
+      ],
+      "source_published_kst": "2026-10-21T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "창원 국가산단에 AI·로봇 통합시스템 도입",
+      "telegram_core_fact": "창원국가산업단지 내 가전제품 제조 현장에 인공지능(AI)과 로봇을 활용한 생산관리 통합시스템이 도입된다. 경남 창원시는 산업통상부가 주관하는 ‘기계장비산업기술개발사업’의 AI 팩토리 분야 공모에서 ‘다품종 가변 가전제조 공급망 내 제조품질 고도화를 위한 자율제조 통합솔루션 개발사업’이 선정됐다고 21일 밝혔다.",
+      "title": "창원 국가산단에 AI·로봇 통합시스템 도입"
     },
     "original:d6e00a2254b0c7963eb14247": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
@@ -442436,6 +443079,26 @@
       ],
       "source_published_kst": "2026-10-06T13:26+09:00",
       "title": "[뉴스프레소] 나스닥 사상 최고가…고금리도 못막은 AI 랠리"
+    },
+    "original:f2ef42eebbb1df84a1a32911": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835570",
+      "source": "뉴시스",
+      "source_body_digest": "c9f3e0a988327f06ee87b2f4281637cc315c796f5122904c33337bffb9473ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8528b834c4cc96f757f51721863c1cd2d379b7ab8df07a45c5d9a3da6650e6d5",
+      "source_fact_keys": [
+        "source_fact:v1:c89a9b465b69becf4b74f724c1a2fbff4a7dc87adf0e8103b9ec74d952bf314c"
+      ],
+      "source_published_kst": "2026-10-21T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "화성시 샤인머스캣, 한국산 첫 필리핀 수출…3.6t 선적",
+      "telegram_core_fact": "화성시와 송산농협은 그동안 샤인머스캣 생산량 증가와 소비 부진에 따른 가격 하락 등의 문제를 해결하고 농가 소득을 높이기 위해 해외판로를 개척해왔다.",
+      "title": "화성시 샤인머스캣, 한국산 첫 필리핀 수출…3.6t 선적"
     },
     "original:f306548cd9e80d185a386a19": {
       "first_seen_kst": "2026-10-19T13:56:52+09:00",
@@ -456193,6 +456856,38 @@
       "telegram_core_fact": "도봉구는 지난 19일 방학신동아1단지아파트 재건축 정비 사업 사업시행자(지정개발자)로 대신자산신탁을 최종 지정 결정하고 22일 고시한다.",
       "title": "도봉구 최대 재건축 방학신동아1단지아파트, 사업시행자 확정"
     },
+    "source_fact:04196566fcbb2d8934ca9701": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
+    },
     "source_fact:042544d8bcb6df3e52a23a8f": {
       "first_seen_kst": "2026-10-15T18:47:56+09:00",
       "lanes": {
@@ -462050,6 +462745,38 @@
       "telegram_core_fact": "듀프리토마스쥴리코리아는 2019년 2월 면세점 운영의 일정 비율 이상을 중소·중견기업에 배정하도록 한 당시 관세법에 따라 김해공항 면세점에 중소기업 자격으로 5년짜리 운영권(특허)을 받았다.",
       "title": "김해공항 면세점 업체 운영권 취소한 세관…법원"
     },
+    "source_fact:06fab3adbee6ea26be20ebe1": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
+    },
     "source_fact:0706a07724439f80a1c14fe6": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -464355,6 +465082,38 @@
       "source_title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\"",
       "telegram_core_fact": "노르웨이 노벨위원회는 지난 9일 필라이를 올해 노벨평화상 수상자로 선정했는데, 필라이는 그 몇시간 후 미국의 ICC 제재가 발표된 것은 우연이 아니라며 이는 \"트럼프 대통령이 상을 받지 못한 데 대한 반응\"이라고 말했다.",
       "title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\""
+    },
+    "source_fact:08368f675c74dee9ee19fd29": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
     },
     "source_fact:0837927fb8ad4fc2b3905f57": {
       "first_seen_kst": "2026-10-13T14:32:55+09:00",
@@ -495377,6 +496136,32 @@
       "telegram_core_fact": "이란이 호르무즈 해협을 통과하는 선박들을 겨냥한 새로운 공격 전술을 도입했다고 로이터통신이 이란 고위 관계자들을 인용해 14일(현지시간) 보도했다.",
       "title": "\"유가로 美중간선거 흔든다\"…이란, 해협 활용한 '새 전략' 감행"
     },
+    "source_fact:1895823dbe7556a2378434bd": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/2026102166621",
+      "source": "한국경제",
+      "source_body_digest": "ab723d55a3d262935976f6b9d4e73e7ba9dfd66b149ce90d3cdc8c20933faa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b2b355ef2d9fa3f266016920a9f46d7dca29eb583daa36f91b017a3149f4c58",
+      "source_fact_keys": [
+        "source_fact:v1:062b181171fe074c70d8bf35bfe52e8dee6434658f7e6a1de3c262bb9cf2fa25",
+        "source_fact:v1:18391cb26bd805659e165c2d4ef4976bfa7ace904172065f896da11c260c6052",
+        "source_fact:v1:2848690fc542ac58a3d3b2a95d1421f8e5a7ca8f10ef7b22e7d936523dfb7535",
+        "source_fact:v1:36fe9764e54d21932c2f9ed84740a3d891cac99c301f959a07857805a18b216e",
+        "source_fact:v1:7dce30d285a20d18e21d30d26681cb0fcf210f37200de83fbdbdaa2aec9a3e49",
+        "source_fact:v1:c8e460ddc023214cc747f5f25875ecda5d87593bcea0db387f1b8cd7bd1574c3",
+        "source_fact:v1:ff24d9ec78964a3ee2c8955eb0d25766dad0571d1efebbeb5a2664b3690ee5d7"
+      ],
+      "source_published_kst": "2026-10-21T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "창원 국가산단에 AI·로봇 통합시스템 도입",
+      "telegram_core_fact": "창원국가산업단지 내 가전제품 제조 현장에 인공지능(AI)과 로봇을 활용한 생산관리 통합시스템이 도입된다. 경남 창원시는 산업통상부가 주관하는 ‘기계장비산업기술개발사업’의 AI 팩토리 분야 공모에서 ‘다품종 가변 가전제조 공급망 내 제조품질 고도화를 위한 자율제조 통합솔루션 개발사업’이 선정됐다고 21일 밝혔다.",
+      "title": "창원 국가산단에 AI·로봇 통합시스템 도입"
+    },
     "source_fact:189ede83c8efe46459b972fc": {
       "first_seen_kst": "2026-10-12T14:17:50+09:00",
       "lanes": {
@@ -523249,6 +524034,32 @@
       "telegram_core_fact": "이 대통령은 이 자리에서 \"2022년부터 3년간 주택 인허가가 감소함에 따라 공급 공백이 발생했다\"며 \"수용과 협의를 동시에 진행하는 등 지금이 비상시기인 만큼 공급 기간을 당겨야 한다\"고 강조했다.",
       "title": "李대통령, 3기 신도시 계양지구 방문…\"비상시기, 공급 당겨야\" | 연합뉴스"
     },
+    "source_fact:2620fa7f2e926a136b05ec84": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/2026102166621",
+      "source": "한국경제",
+      "source_body_digest": "ab723d55a3d262935976f6b9d4e73e7ba9dfd66b149ce90d3cdc8c20933faa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b2b355ef2d9fa3f266016920a9f46d7dca29eb583daa36f91b017a3149f4c58",
+      "source_fact_keys": [
+        "source_fact:v1:062b181171fe074c70d8bf35bfe52e8dee6434658f7e6a1de3c262bb9cf2fa25",
+        "source_fact:v1:18391cb26bd805659e165c2d4ef4976bfa7ace904172065f896da11c260c6052",
+        "source_fact:v1:2848690fc542ac58a3d3b2a95d1421f8e5a7ca8f10ef7b22e7d936523dfb7535",
+        "source_fact:v1:36fe9764e54d21932c2f9ed84740a3d891cac99c301f959a07857805a18b216e",
+        "source_fact:v1:7dce30d285a20d18e21d30d26681cb0fcf210f37200de83fbdbdaa2aec9a3e49",
+        "source_fact:v1:c8e460ddc023214cc747f5f25875ecda5d87593bcea0db387f1b8cd7bd1574c3",
+        "source_fact:v1:ff24d9ec78964a3ee2c8955eb0d25766dad0571d1efebbeb5a2664b3690ee5d7"
+      ],
+      "source_published_kst": "2026-10-21T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "창원 국가산단에 AI·로봇 통합시스템 도입",
+      "telegram_core_fact": "창원국가산업단지 내 가전제품 제조 현장에 인공지능(AI)과 로봇을 활용한 생산관리 통합시스템이 도입된다. 경남 창원시는 산업통상부가 주관하는 ‘기계장비산업기술개발사업’의 AI 팩토리 분야 공모에서 ‘다품종 가변 가전제조 공급망 내 제조품질 고도화를 위한 자율제조 통합솔루션 개발사업’이 선정됐다고 21일 밝혔다.",
+      "title": "창원 국가산단에 AI·로봇 통합시스템 도입"
+    },
     "source_fact:26210b875b1081a24b23fe42": {
       "first_seen_kst": "2026-10-21T19:28:26+09:00",
       "lanes": {
@@ -528475,6 +529286,33 @@
       "source_title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\"",
       "telegram_core_fact": "러시아와 에너지 시설 공격을 서로 중단하는 방안을 논의하러 미국을 찾은 우크라이나 대표단이 협상장에서 러시아산 경유 수출 제재 완화 방침을 전달받고 “함정처럼 느껴졌다”고 반발한 것으로 전해졌다.",
       "title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\""
+    },
+    "source_fact:28ba361daa80aabd13389fa5": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
     },
     "source_fact:28bd63ddb306842cdfb5b06d": {
       "first_seen_kst": "2026-10-14T21:14:31+09:00",
@@ -548462,6 +549300,38 @@
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
     },
+    "source_fact:32af1fe0ca3852bee436a798": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
+    },
     "source_fact:32c277dd37a58336eed18a02": {
       "first_seen_kst": "2026-10-12T19:07:06+09:00",
       "lanes": {
@@ -560086,6 +560956,33 @@
       "telegram_core_fact": "TSMC에 따르면 올해 3분기 TSMC 매출은 1조4942억대만달러(약 467억달러)로 전년비 50.9%(대만달러 기준) 증가했다.",
       "title": "TSMC, 3분기도 사상 최대 실적…삼성 파운드리 추격 과제는"
     },
+    "source_fact:38f72d2e4da259546a854c2a": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
+    },
     "source_fact:3900e0113a1057ae4712ab2c": {
       "first_seen_kst": "2026-10-13T10:49:34+09:00",
       "lanes": {
@@ -560126,6 +561023,33 @@
       "source_title": "삼전 역대급 실적에도 외국인 ‘팔자’…코스피 두 달 만에 6300선으로 | 중앙일보",
       "telegram_core_fact": "이경민 대신증권 연구원은 “뚜렷한 상승 모멘텀이 부재한 가운데 외국인 순매도가 이어지며 약세를 보였다”며 “특히 오픈AI의 연환산 매출이 (시장의 기대를 밑도는) 500억 달러 수준이라는 보도가 나오면서 인공지능(AI) 투자심리가 위축됐다”고 진단했다.",
       "title": "삼전 역대급 실적에도 외국인 ‘팔자’…코스피 두 달 만에 6300선으로 | 중앙일보"
+    },
+    "source_fact:3904e9890e6dfc536ed98c02": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
     },
     "source_fact:39128ae0b603a5e5b6ff9dec": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
@@ -564960,6 +565884,33 @@
       "source_title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?",
       "telegram_core_fact": "말레이시아가 한국산 고대역폭메모리(HBM)의 핵심 수출처로 떠올랐다.",
       "title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?"
+    },
+    "source_fact:3b8b719ebeda36613cb82a00": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
     },
     "source_fact:3b8ba95523493666ddc8c759": {
       "first_seen_kst": "2026-10-17T01:51:48+09:00",
@@ -594774,6 +595725,33 @@
       "telegram_core_fact": "유한양행(000100)의 폐암 신약 '렉라자'와 미국 존슨앤드존슨(J&J)의 항암제 '리브리반트' 병용요법이 올해 3분기 글로벌 매출 3억2000만달러(한화 4300억원)를 기록했다.",
       "title": "J&J ‘리브리반트·렉라자’ 병용, 3분기 매출 4300억원…전년比 62% 증가"
     },
+    "source_fact:4a1e0301476613f43943c01c": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
+    },
     "source_fact:4a2049182df6dd7dd8cef459": {
       "first_seen_kst": "2026-10-20T15:49:58+09:00",
       "lanes": {
@@ -599629,6 +600607,38 @@
       ],
       "source_published_kst": "2026-10-06T17:34+09:00",
       "title": "기업 DB, 계열사에만 제공…조사協, 한국평가데이터 공정위 신고"
+    },
+    "source_fact:4cfb1c2df5638cba34f205e9": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
     },
     "source_fact:4d01f48a6e0ad21ced052cf6": {
       "first_seen_kst": "2026-10-20T23:32:55+09:00",
@@ -650010,23 +651020,24 @@
     "source_fact:65ecb13cb4cf286b892fede4": {
       "first_seen_kst": "2026-10-20T12:12:43+09:00",
       "lanes": {
-        "live": "2026-10-20T12:12:43+09:00"
+        "live": "2026-10-22T03:57:32+09:00"
       },
-      "last_seen_kst": "2026-10-20T12:12:43+09:00",
-      "link": "https://www.hankyung.com/article/202610202959L",
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/202610216627L",
       "source": "한국경제",
-      "source_body_digest": "53f4e2d52c9655fd33ea68330cc0d589fd1bd407a524658223fbcc76b47a5462",
+      "source_body_digest": "c72084ac8f2eb9720ce4b8377832532225640b37b5e22777047274bb81a59495",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:00178c371f12657e7eeb618da45b11c1bf61820c3d750b18e7e1c0f3f3517c79",
+      "source_fact_identity": "source_facts:v1:08f54d4783d1bfb15931915b8f045d3f37be9260ddbbd8af5ea5a4fe3e60a026",
       "source_fact_keys": [
-        "source_fact:v1:68ab857f9ab45fb876d4904ad4a0c0bd43a7e2d4d338a1ecb9a2035719afca81",
+        "source_fact:v1:8992c4e9a504bec9bcade36117ae057d88247db750b3c3961d7741438b28df45",
+        "source_fact:v1:9f8e48e3f20010f5362be0f1635201f327246bf4497490658e92c87aec8b6f77",
         "source_fact:v1:c22f4f1eb55d4082a8154f3b0da2ce873a83af3d34b9211f6b0402679af518ad"
       ],
-      "source_published_kst": "2026-10-20T11:30+09:00",
+      "source_published_kst": "2026-10-21T17:08+09:00",
       "source_supply_terms": {},
-      "source_title": "S-Oil 수주공시 - Sour Heavy Kerosene 매매계약 1.16조 (매출액대비 3.4 %)",
-      "telegram_core_fact": "S-Oil(010950)은 Sour Heavy Kerosene 매매계약에 관한 단일판매ㆍ공급계약체결 을 20일에 공시했다.",
-      "title": "S-Oil 수주공시 - Sour Heavy Kerosene 매매계약 1.16조 (매출액대비 3.4 %)"
+      "source_title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)",
+      "telegram_core_fact": "레이저쎌(412350)은 반도체 본딩 장비 공급에 관한 단일판매ㆍ공급계약체결(자율공시) 을 21일에 공시했다.",
+      "title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)"
     },
     "source_fact:65ecfbb76c07604a034e670f": {
       "first_seen_kst": "2026-10-17T17:53:04+09:00",
@@ -668951,6 +669962,38 @@
       "source_published_kst": "2026-10-06T07:29+09:00",
       "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
     },
+    "source_fact:6fa46c7a6d31c1efb9cf0aa5": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
+    },
     "source_fact:6fac7815831a08d2fc5b7195": {
       "first_seen_kst": "2026-10-12T22:29:29+09:00",
       "lanes": {
@@ -687591,6 +688634,38 @@
       "telegram_core_fact": "부당한 보험 갈아타기 유도와 불법 수수료 지급 등이 반복되면서 금융당국의 제재 실효성과 GA의 내부통제를 강화해야 한다는 지적이 나온다.",
       "title": "대형 GA 위법행위 반복…3년간 제재 42건·과태료 73억원"
     },
+    "source_fact:78f6ea35c1391b57a3feafcc": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
+    },
     "source_fact:78fe1f25dbf6588ba22d29cc": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
@@ -693981,6 +695056,33 @@
       "source_title": "K배터리 3사, ESS가 끌고 보상금이 민다…삼성SDI도 3분기 ‘깜짝 실적’ 기대감 [비즈360]",
       "telegram_core_fact": "금융정보업체 에프앤가이드에 따르면 삼성SDI의 3분기 실적 컨센서스는 매출 4조373억원, 영업이익 1654억원이다.",
       "title": "K배터리 3사, ESS가 끌고 보상금이 민다…삼성SDI도 3분기 ‘깜짝 실적’ 기대감 [비즈360]"
+    },
+    "source_fact:7c498c2cf3a56e875f275a56": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
     },
     "source_fact:7c4cd3f1ce1331f964c01c87": {
       "first_seen_kst": "2026-10-19T23:09:43+09:00",
@@ -705447,6 +706549,26 @@
       "source_published_kst": "2026-10-06T04:20+09:00",
       "title": "[美특징주]에스티로더, 성장 회복 기대에 월가 투자의견 ‘매수’ 상향…주가 2%↑"
     },
+    "source_fact:82851f3a48531f4859d0f973": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04634646645615216",
+      "source": "이데일리",
+      "source_body_digest": "e6a6ea0557bb83d96da26a74356d45a3fe73f5d67f76925aa92f068607aae121",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a0a01fbe63b2d0f48f1e2c992d454ab37e9763629a1c818d5c98f03feff2a43",
+      "source_fact_keys": [
+        "source_fact:v1:d95480f925fc8f6cd3a97a265de0072da7f63cd0e69d19afdcbf4db378df3bc6"
+      ],
+      "source_published_kst": "2026-10-21T16:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기",
+      "telegram_core_fact": "벤틀리의 2025년 전 세계 총 인도량(1만131대) 기준 SUV인 벤테이가(약 36%)는 컨티넨탈GT(45%)에 이어 판매량 2위를 기록했다.",
+      "title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기"
+    },
     "source_fact:82857689aeddc5307062b20d": {
       "first_seen_kst": "2026-10-14T18:43:50+09:00",
       "lanes": {
@@ -710897,6 +712019,33 @@
       "telegram_core_fact": "지난달 개장해 이틀간 경마가 진행된 렛츠런파크 영천(영천 경마공원)이 경북도에 29억여원의 첫 수익을 안겼다. 도는 영천 경마장에서 나오는 레저세의 10~20%를 말산업육성기금으로 적립해 말산업에 재투자할 계획이다.",
       "title": "'렛츠런파크 영천' 개장후 이틀 경마 수익은?…29억여원"
     },
+    "source_fact:859867cd57e72d3fca719839": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
+    },
     "source_fact:859a246fc0b0b2d89638b0ea": {
       "first_seen_kst": "2026-10-13T14:05:30+09:00",
       "lanes": {
@@ -714339,6 +715488,38 @@
       "source_title": "로봇 100만대 들인 아마존 창고, 중상 40% 줄고 경상 77% 많았다",
       "telegram_core_fact": "연구 결과 로봇을 도입한 물류센터의 중증 부상은 기존 물류센터보다 40% 적었다. 반면 반복적인 동작에 따른 신체 부담과 관련된 상대적으로 덜 심한 부상은 77% 많았다.",
       "title": "로봇 100만대 들인 아마존 창고, 중상 40% 줄고 경상 77% 많았다"
+    },
+    "source_fact:876598a2c5507573c402320f": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
     },
     "source_fact:87697365dde868fa867b5d2e": {
       "first_seen_kst": "2026-10-14T15:12:25+09:00",
@@ -727870,6 +729051,32 @@
       "source_published_kst": "2026-10-06T11:46+09:00",
       "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
     },
+    "source_fact:8ed6c5c1f4649d8fac2eebaa": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/2026102166621",
+      "source": "한국경제",
+      "source_body_digest": "ab723d55a3d262935976f6b9d4e73e7ba9dfd66b149ce90d3cdc8c20933faa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b2b355ef2d9fa3f266016920a9f46d7dca29eb583daa36f91b017a3149f4c58",
+      "source_fact_keys": [
+        "source_fact:v1:062b181171fe074c70d8bf35bfe52e8dee6434658f7e6a1de3c262bb9cf2fa25",
+        "source_fact:v1:18391cb26bd805659e165c2d4ef4976bfa7ace904172065f896da11c260c6052",
+        "source_fact:v1:2848690fc542ac58a3d3b2a95d1421f8e5a7ca8f10ef7b22e7d936523dfb7535",
+        "source_fact:v1:36fe9764e54d21932c2f9ed84740a3d891cac99c301f959a07857805a18b216e",
+        "source_fact:v1:7dce30d285a20d18e21d30d26681cb0fcf210f37200de83fbdbdaa2aec9a3e49",
+        "source_fact:v1:c8e460ddc023214cc747f5f25875ecda5d87593bcea0db387f1b8cd7bd1574c3",
+        "source_fact:v1:ff24d9ec78964a3ee2c8955eb0d25766dad0571d1efebbeb5a2664b3690ee5d7"
+      ],
+      "source_published_kst": "2026-10-21T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "창원 국가산단에 AI·로봇 통합시스템 도입",
+      "telegram_core_fact": "창원국가산업단지 내 가전제품 제조 현장에 인공지능(AI)과 로봇을 활용한 생산관리 통합시스템이 도입된다. 경남 창원시는 산업통상부가 주관하는 ‘기계장비산업기술개발사업’의 AI 팩토리 분야 공모에서 ‘다품종 가변 가전제조 공급망 내 제조품질 고도화를 위한 자율제조 통합솔루션 개발사업’이 선정됐다고 21일 밝혔다.",
+      "title": "창원 국가산단에 AI·로봇 통합시스템 도입"
+    },
     "source_fact:8ed777aab9d7f30be2dc53f7": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -730306,6 +731513,38 @@
       "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
       "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
       "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
+    },
+    "source_fact:8ffda250530e5030504bfb8f": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
     },
     "source_fact:8fff1e308060e0541aeff118": {
       "first_seen_kst": "2026-10-20T01:09:59+09:00",
@@ -740618,6 +741857,32 @@
       "telegram_core_fact": "김진희 우주항공청 인공위성부문장은 “우주에서 모든 기능이 정상적으로 작동하는지 시험하기 위한 시제기와 시제기에서 개선이 필요한 사항을 검증해 올리는 검증기를 올려 성능을 확인했고, 절차 자동화 등을 거쳐 이번 양산기들의 영상을 조기에 확보했다”고 설명했다.",
       "title": "발사 14시간만에 첫 영상 보낸 초소형군집위성···다음 절차는?"
     },
+    "source_fact:9578cba0bb0c36253f1c4c83": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/2026102166621",
+      "source": "한국경제",
+      "source_body_digest": "ab723d55a3d262935976f6b9d4e73e7ba9dfd66b149ce90d3cdc8c20933faa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b2b355ef2d9fa3f266016920a9f46d7dca29eb583daa36f91b017a3149f4c58",
+      "source_fact_keys": [
+        "source_fact:v1:062b181171fe074c70d8bf35bfe52e8dee6434658f7e6a1de3c262bb9cf2fa25",
+        "source_fact:v1:18391cb26bd805659e165c2d4ef4976bfa7ace904172065f896da11c260c6052",
+        "source_fact:v1:2848690fc542ac58a3d3b2a95d1421f8e5a7ca8f10ef7b22e7d936523dfb7535",
+        "source_fact:v1:36fe9764e54d21932c2f9ed84740a3d891cac99c301f959a07857805a18b216e",
+        "source_fact:v1:7dce30d285a20d18e21d30d26681cb0fcf210f37200de83fbdbdaa2aec9a3e49",
+        "source_fact:v1:c8e460ddc023214cc747f5f25875ecda5d87593bcea0db387f1b8cd7bd1574c3",
+        "source_fact:v1:ff24d9ec78964a3ee2c8955eb0d25766dad0571d1efebbeb5a2664b3690ee5d7"
+      ],
+      "source_published_kst": "2026-10-21T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "창원 국가산단에 AI·로봇 통합시스템 도입",
+      "telegram_core_fact": "창원국가산업단지 내 가전제품 제조 현장에 인공지능(AI)과 로봇을 활용한 생산관리 통합시스템이 도입된다. 경남 창원시는 산업통상부가 주관하는 ‘기계장비산업기술개발사업’의 AI 팩토리 분야 공모에서 ‘다품종 가변 가전제조 공급망 내 제조품질 고도화를 위한 자율제조 통합솔루션 개발사업’이 선정됐다고 21일 밝혔다.",
+      "title": "창원 국가산단에 AI·로봇 통합시스템 도입"
+    },
     "source_fact:957f2d0978633a6d369aada4": {
       "first_seen_kst": "2026-10-12T22:29:29+09:00",
       "lanes": {
@@ -741432,6 +742697,33 @@
       "source_title": "\"엔화 840원도 바닥 아닐 수도…엔·달러 모두 추가 하락 가능성\"",
       "telegram_core_fact": "원·달러 환율이 다음 주 1310원대까지 내려가고, 엔화는 100엔당 840원대에서도 추가 하락할 수 있다는 전문가 전망이 나왔다.",
       "title": "\"엔화 840원도 바닥 아닐 수도…엔·달러 모두 추가 하락 가능성\""
+    },
+    "source_fact:95e09d2f4bae4ff18f0e56a4": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
     },
     "source_fact:95e6780c3f4aea00643317c4": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
@@ -745716,6 +747008,32 @@
       "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
       "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
       "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
+    },
+    "source_fact:97ebfb4239d9ba2281d0de27": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/2026102166621",
+      "source": "한국경제",
+      "source_body_digest": "ab723d55a3d262935976f6b9d4e73e7ba9dfd66b149ce90d3cdc8c20933faa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b2b355ef2d9fa3f266016920a9f46d7dca29eb583daa36f91b017a3149f4c58",
+      "source_fact_keys": [
+        "source_fact:v1:062b181171fe074c70d8bf35bfe52e8dee6434658f7e6a1de3c262bb9cf2fa25",
+        "source_fact:v1:18391cb26bd805659e165c2d4ef4976bfa7ace904172065f896da11c260c6052",
+        "source_fact:v1:2848690fc542ac58a3d3b2a95d1421f8e5a7ca8f10ef7b22e7d936523dfb7535",
+        "source_fact:v1:36fe9764e54d21932c2f9ed84740a3d891cac99c301f959a07857805a18b216e",
+        "source_fact:v1:7dce30d285a20d18e21d30d26681cb0fcf210f37200de83fbdbdaa2aec9a3e49",
+        "source_fact:v1:c8e460ddc023214cc747f5f25875ecda5d87593bcea0db387f1b8cd7bd1574c3",
+        "source_fact:v1:ff24d9ec78964a3ee2c8955eb0d25766dad0571d1efebbeb5a2664b3690ee5d7"
+      ],
+      "source_published_kst": "2026-10-21T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "창원 국가산단에 AI·로봇 통합시스템 도입",
+      "telegram_core_fact": "창원국가산업단지 내 가전제품 제조 현장에 인공지능(AI)과 로봇을 활용한 생산관리 통합시스템이 도입된다. 경남 창원시는 산업통상부가 주관하는 ‘기계장비산업기술개발사업’의 AI 팩토리 분야 공모에서 ‘다품종 가변 가전제조 공급망 내 제조품질 고도화를 위한 자율제조 통합솔루션 개발사업’이 선정됐다고 21일 밝혔다.",
+      "title": "창원 국가산단에 AI·로봇 통합시스템 도입"
     },
     "source_fact:97ed99ac7eda9761bd379797": {
       "first_seen_kst": "2026-10-15T13:08:36+09:00",
@@ -763041,6 +764359,28 @@
       "source_published_kst": "2026-10-06T15:59+09:00",
       "title": "자사주 매입 막바지·솔리다임 상장설 악재? 삼전닉스 1~3%대↓(종합) | 연합뉴스"
     },
+    "source_fact:a0aa30984a57e78432ba3b48": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/202610216627L",
+      "source": "한국경제",
+      "source_body_digest": "c72084ac8f2eb9720ce4b8377832532225640b37b5e22777047274bb81a59495",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08f54d4783d1bfb15931915b8f045d3f37be9260ddbbd8af5ea5a4fe3e60a026",
+      "source_fact_keys": [
+        "source_fact:v1:8992c4e9a504bec9bcade36117ae057d88247db750b3c3961d7741438b28df45",
+        "source_fact:v1:9f8e48e3f20010f5362be0f1635201f327246bf4497490658e92c87aec8b6f77",
+        "source_fact:v1:c22f4f1eb55d4082a8154f3b0da2ce873a83af3d34b9211f6b0402679af518ad"
+      ],
+      "source_published_kst": "2026-10-21T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)",
+      "telegram_core_fact": "레이저쎌(412350)은 반도체 본딩 장비 공급에 관한 단일판매ㆍ공급계약체결(자율공시) 을 21일에 공시했다.",
+      "title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)"
+    },
     "source_fact:a0ae1c473ebe83fec996f6d6": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -776639,6 +777979,32 @@
       "telegram_core_fact": "삼성바이오로직스[207940]는 폴리펩타이드 그룹 인수를 위해 진행한 지분 공개 매수에서 거래 최소 조건을 충족하는 응모가 이뤄졌다고 13일 밝혔다.",
       "title": "삼성바이오, 폴리펩타이드 공개매수서 최소 조건 충족 | 연합뉴스"
     },
+    "source_fact:a72ba1004384a8990e189d48": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/2026102166621",
+      "source": "한국경제",
+      "source_body_digest": "ab723d55a3d262935976f6b9d4e73e7ba9dfd66b149ce90d3cdc8c20933faa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b2b355ef2d9fa3f266016920a9f46d7dca29eb583daa36f91b017a3149f4c58",
+      "source_fact_keys": [
+        "source_fact:v1:062b181171fe074c70d8bf35bfe52e8dee6434658f7e6a1de3c262bb9cf2fa25",
+        "source_fact:v1:18391cb26bd805659e165c2d4ef4976bfa7ace904172065f896da11c260c6052",
+        "source_fact:v1:2848690fc542ac58a3d3b2a95d1421f8e5a7ca8f10ef7b22e7d936523dfb7535",
+        "source_fact:v1:36fe9764e54d21932c2f9ed84740a3d891cac99c301f959a07857805a18b216e",
+        "source_fact:v1:7dce30d285a20d18e21d30d26681cb0fcf210f37200de83fbdbdaa2aec9a3e49",
+        "source_fact:v1:c8e460ddc023214cc747f5f25875ecda5d87593bcea0db387f1b8cd7bd1574c3",
+        "source_fact:v1:ff24d9ec78964a3ee2c8955eb0d25766dad0571d1efebbeb5a2664b3690ee5d7"
+      ],
+      "source_published_kst": "2026-10-21T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "창원 국가산단에 AI·로봇 통합시스템 도입",
+      "telegram_core_fact": "창원국가산업단지 내 가전제품 제조 현장에 인공지능(AI)과 로봇을 활용한 생산관리 통합시스템이 도입된다. 경남 창원시는 산업통상부가 주관하는 ‘기계장비산업기술개발사업’의 AI 팩토리 분야 공모에서 ‘다품종 가변 가전제조 공급망 내 제조품질 고도화를 위한 자율제조 통합솔루션 개발사업’이 선정됐다고 21일 밝혔다.",
+      "title": "창원 국가산단에 AI·로봇 통합시스템 도입"
+    },
     "source_fact:a72c28232342880afc9c36ae": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
       "lanes": {
@@ -783446,6 +784812,38 @@
       "source_title": "아이폰 듀오 '품귀'에 삼성도 웃는다…갤Z폴드8 관심 300%↑",
       "telegram_core_fact": "창 부사장은 \"지난 한 달 동안 삼성 폴더블폰에 대한 구글 검색량이 300% 증가했다\"며 \"삼성의 폴더블 시장 리더십은 어느 때보다 강력하다\"고 말했다. GF증권의 제프 푸 애널리스트는 힌지 공급 제약에 따른 생산 지연을 이유로 올해 아이폰 듀오 출하량 전망치를 기존 700만 대에서 600만 대로 낮췄다.",
       "title": "아이폰 듀오 '품귀'에 삼성도 웃는다…갤Z폴드8 관심 300%↑"
+    },
+    "source_fact:aac956f4b73697dd65fea254": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
     },
     "source_fact:aac961f1fdefc6c500ea2d3b": {
       "first_seen_kst": "2026-10-10T09:31:49+09:00",
@@ -790506,6 +791904,28 @@
       ],
       "source_published_kst": "2026-10-06T16:30+09:00",
       "title": "고려아연, 故 최창걸 명예회장 1주기 추모…“사람·신뢰 철학으로 미래 50년”"
+    },
+    "source_fact:ae0aaa74df53fd97827d5025": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/202610216627L",
+      "source": "한국경제",
+      "source_body_digest": "c72084ac8f2eb9720ce4b8377832532225640b37b5e22777047274bb81a59495",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08f54d4783d1bfb15931915b8f045d3f37be9260ddbbd8af5ea5a4fe3e60a026",
+      "source_fact_keys": [
+        "source_fact:v1:8992c4e9a504bec9bcade36117ae057d88247db750b3c3961d7741438b28df45",
+        "source_fact:v1:9f8e48e3f20010f5362be0f1635201f327246bf4497490658e92c87aec8b6f77",
+        "source_fact:v1:c22f4f1eb55d4082a8154f3b0da2ce873a83af3d34b9211f6b0402679af518ad"
+      ],
+      "source_published_kst": "2026-10-21T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)",
+      "telegram_core_fact": "레이저쎌(412350)은 반도체 본딩 장비 공급에 관한 단일판매ㆍ공급계약체결(자율공시) 을 21일에 공시했다.",
+      "title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)"
     },
     "source_fact:ae0ce1a1d2368981a0c68b4a": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
@@ -837265,6 +838685,26 @@
       "telegram_core_fact": "중국산 전기차에 회사별로 부과되는 EU의 관세(최대 45.3%) 장벽을 넘기 위해 유럽 안에 생산기지와 공급망을 구축하고 있다.",
       "title": "BYD, 헝가리에 유럽 정복 전초기지…27% 관세 피해 현지 생산 승부수"
     },
+    "source_fact:c5fe07033c5ccd89483d1017": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835570",
+      "source": "뉴시스",
+      "source_body_digest": "c9f3e0a988327f06ee87b2f4281637cc315c796f5122904c33337bffb9473ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8528b834c4cc96f757f51721863c1cd2d379b7ab8df07a45c5d9a3da6650e6d5",
+      "source_fact_keys": [
+        "source_fact:v1:c89a9b465b69becf4b74f724c1a2fbff4a7dc87adf0e8103b9ec74d952bf314c"
+      ],
+      "source_published_kst": "2026-10-21T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "화성시 샤인머스캣, 한국산 첫 필리핀 수출…3.6t 선적",
+      "telegram_core_fact": "화성시와 송산농협은 그동안 샤인머스캣 생산량 증가와 소비 부진에 따른 가격 하락 등의 문제를 해결하고 농가 소득을 높이기 위해 해외판로를 개척해왔다.",
+      "title": "화성시 샤인머스캣, 한국산 첫 필리핀 수출…3.6t 선적"
+    },
     "source_fact:c5ff2e2964e78628ec992936": {
       "first_seen_kst": "2026-10-15T09:18:20+09:00",
       "lanes": {
@@ -840977,6 +842417,38 @@
       "source_title": "전기차 수요 둔화ㆍ중국 공세⋯韓배터리 경쟁력 ‘체질개선 시험대’[K배터리 주도권 탈환]",
       "telegram_core_fact": "중국은 리튬 공급망 리스크를 덜어낼 차세대 보급형 '나트륨 배터리'를 2026년 하반기 세계 최초로 양산하고, 2027년에는 '전고체 배터리' 제품까지 출시하겠다는 계획을 밝히며 미래 핵심 기술 패권마저 위협하고 있다.",
       "title": "전기차 수요 둔화ㆍ중국 공세⋯韓배터리 경쟁력 ‘체질개선 시험대’[K배터리 주도권 탈환]"
+    },
+    "source_fact:c7a8ebb15c0b7e1509857b21": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
     },
     "source_fact:c7ab2c8425a1e7da4b118a97": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -852335,6 +853807,38 @@
       "source_title": "환율 악재 그룹株 흔들려도⋯현대모비스 목표가 '선방' 이유",
       "telegram_core_fact": "김창호 연구원은 \"3분기 평균환율은 1418원으로 실적 추정에 적용한 1480원 대비 62원 강세\"라며 \"환율 가정 변화로만 약 3000억원의 영업익 축소가 발생한 것으로 추정된다\"고 분석했다.",
       "title": "환율 악재 그룹株 흔들려도⋯현대모비스 목표가 '선방' 이유"
+    },
+    "source_fact:cdc4b6e5e30f42e6441ecdf0": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
     },
     "source_fact:cdc6e5dcfa0d86141ee00b0e": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
@@ -930006,6 +931510,32 @@
       "telegram_core_fact": "엔비디아가 AI(인공지능) 데이터센터 구축 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 모듈형 인프라 설계를 공개했다. 그는 \"1GW(기가와트) AI 데이터센터에는 500억달러가 들어간다\"며 \"연간 400억달러의 매출이 발생한다고 가정하면 가동이 3개월만 지연돼도 100억달러의 매출 기회를 잃는다\"고 말했다.",
       "title": "엔비디아, 모듈형 AI 데이터센터 설계 공개…구축 기간 6개월→14일"
     },
+    "source_fact:f563b12fc9b13b7b29a8a9fd": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/2026102166621",
+      "source": "한국경제",
+      "source_body_digest": "ab723d55a3d262935976f6b9d4e73e7ba9dfd66b149ce90d3cdc8c20933faa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b2b355ef2d9fa3f266016920a9f46d7dca29eb583daa36f91b017a3149f4c58",
+      "source_fact_keys": [
+        "source_fact:v1:062b181171fe074c70d8bf35bfe52e8dee6434658f7e6a1de3c262bb9cf2fa25",
+        "source_fact:v1:18391cb26bd805659e165c2d4ef4976bfa7ace904172065f896da11c260c6052",
+        "source_fact:v1:2848690fc542ac58a3d3b2a95d1421f8e5a7ca8f10ef7b22e7d936523dfb7535",
+        "source_fact:v1:36fe9764e54d21932c2f9ed84740a3d891cac99c301f959a07857805a18b216e",
+        "source_fact:v1:7dce30d285a20d18e21d30d26681cb0fcf210f37200de83fbdbdaa2aec9a3e49",
+        "source_fact:v1:c8e460ddc023214cc747f5f25875ecda5d87593bcea0db387f1b8cd7bd1574c3",
+        "source_fact:v1:ff24d9ec78964a3ee2c8955eb0d25766dad0571d1efebbeb5a2664b3690ee5d7"
+      ],
+      "source_published_kst": "2026-10-21T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "창원 국가산단에 AI·로봇 통합시스템 도입",
+      "telegram_core_fact": "창원국가산업단지 내 가전제품 제조 현장에 인공지능(AI)과 로봇을 활용한 생산관리 통합시스템이 도입된다. 경남 창원시는 산업통상부가 주관하는 ‘기계장비산업기술개발사업’의 AI 팩토리 분야 공모에서 ‘다품종 가변 가전제조 공급망 내 제조품질 고도화를 위한 자율제조 통합솔루션 개발사업’이 선정됐다고 21일 밝혔다.",
+      "title": "창원 국가산단에 AI·로봇 통합시스템 도입"
+    },
     "source_fact:f5690db55c56a4a30df3f556": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
       "lanes": {
@@ -944533,6 +946063,38 @@
       "telegram_core_fact": "전날 5% 넘게 급락한 데 따른 저가 매수세가 유입된 가운데, 6거래일 연속 순매도했던 외국인도 매수 우위로 돌아섰다.",
       "title": "코스피, 5거래일 연속 하락 뒤 2%대 반등…외국인도 순매수 전환 [투자360]"
     },
+    "source_fact:fd1e7127a80848cd23035dec": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
+    },
     "source_fact:fd23417545f854f53651618c": {
       "first_seen_kst": "2026-10-20T02:15:18+09:00",
       "lanes": {
@@ -951207,6 +952769,26 @@
       "source_published_kst": "2026-10-05T10:42+09:00",
       "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
+    "title:027178f7f2d1978391134aad": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04634646645615216",
+      "source": "이데일리",
+      "source_body_digest": "e6a6ea0557bb83d96da26a74356d45a3fe73f5d67f76925aa92f068607aae121",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a0a01fbe63b2d0f48f1e2c992d454ab37e9763629a1c818d5c98f03feff2a43",
+      "source_fact_keys": [
+        "source_fact:v1:d95480f925fc8f6cd3a97a265de0072da7f63cd0e69d19afdcbf4db378df3bc6"
+      ],
+      "source_published_kst": "2026-10-21T16:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기",
+      "telegram_core_fact": "벤틀리의 2025년 전 세계 총 인도량(1만131대) 기준 SUV인 벤테이가(약 36%)는 컨티넨탈GT(45%)에 이어 판매량 2위를 기록했다.",
+      "title": "벤츠부터 벤틀리·롤스로이스까지… 초고가 車도 '전기 SUV' 인기"
+    },
     "title:027d9372403cf264bfdf617a": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -953298,6 +954880,24 @@
       "link": "https://www.etnews.com/20260926000023",
       "source": "전자신문",
       "title": "상인회장 자격 논란에도 62억원 지원…전통시장 관리체계 '공백'"
+    },
+    "title:06a86ded6e5fac7744dd6378": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12182267",
+      "source": "매일경제",
+      "source_body_digest": "20bf56d8ce54b0f32e67f763cc938590fc3ae148f68f5407fe4cf096b90d5729",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "위프로, 2분기 매출 성장과 현금흐름 개선에 투자자 관심 집중",
+      "telegram_core_fact": "2분기 IFRS 매출이 2,475억 루피로 전년 대비 9.1% 증가했고, 영업이익과 현금흐름도 크게 개선되었습니다.",
+      "title": "위프로, 2분기 매출 성장과 현금흐름 개선에 투자자 관심 집중"
     },
     "title:06a8879fc7b71ae9b2af8d2c": {
       "first_seen_kst": "2026-10-13T11:53:28+09:00",
@@ -989003,6 +990603,28 @@
       "source_title": "삼전닉스 대신 방산·반도체 테마형으로…변화하는 레버리지 ETF 판도",
       "telegram_core_fact": "31일부터 단일종목 레버리지 ETF 규제가 시행돼 대형 반도체 쏠림 완화와 코스닥 우량 성장주 수급 회복 가능성이 제기됐습니다.",
       "title": "삼전닉스 대신 방산·반도체 테마형으로…변화하는 레버리지 ETF 판도"
+    },
+    "title:4e39b20c18876a103e73a965": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/202610216627L",
+      "source": "한국경제",
+      "source_body_digest": "c72084ac8f2eb9720ce4b8377832532225640b37b5e22777047274bb81a59495",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08f54d4783d1bfb15931915b8f045d3f37be9260ddbbd8af5ea5a4fe3e60a026",
+      "source_fact_keys": [
+        "source_fact:v1:8992c4e9a504bec9bcade36117ae057d88247db750b3c3961d7741438b28df45",
+        "source_fact:v1:9f8e48e3f20010f5362be0f1635201f327246bf4497490658e92c87aec8b6f77",
+        "source_fact:v1:c22f4f1eb55d4082a8154f3b0da2ce873a83af3d34b9211f6b0402679af518ad"
+      ],
+      "source_published_kst": "2026-10-21T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)",
+      "telegram_core_fact": "레이저쎌(412350)은 반도체 본딩 장비 공급에 관한 단일판매ㆍ공급계약체결(자율공시) 을 21일에 공시했다.",
+      "title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)"
     },
     "title:4e43bf01cb8aea0f9d740ea1": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -1030565,6 +1032187,33 @@
       "telegram_core_fact": "공정위는 지난 7월 구글이 대형 게임사들과 맺은 앱 마켓 독점 계약이 '독점규제 및 공정거래에 관한 법률' 위반이라고 보고 제재 절차에 착수했다.",
       "title": "경실련 \"구글·국내 게임사 5곳 회계부정 의혹\"…업계 반박 | 연합뉴스"
     },
+    "title:a35bce2f4ca4855fda16d274": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04828166645615216",
+      "source": "이데일리",
+      "source_body_digest": "ada2ddcd276912937d71370642ef1a9a9b8897d8193a65ac22824a9605e0e110",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b519785333d53f6ad64ee48309b43446281015a2a31626d0edb999fe9d625d2",
+      "source_fact_keys": [
+        "source_fact:v1:13d689ea8a2354e58488abd71fdaf1e51d504ab1cf7cdc385acba5506bc763b6",
+        "source_fact:v1:28179fe0b7c5339a2c0d67542d9c2996db0b77851ed121e630066c2d5133601b",
+        "source_fact:v1:41c6bd8cece8242fd8ccde0b83b13b187acb8ce7ccb9b816ab83de8f51151639",
+        "source_fact:v1:494401f3fb6e0d0bb83d004a0a59ab1bfc8d22e69809caa689e550d30f3efbe5",
+        "source_fact:v1:4cb18cebae09c0b5d1af2237af5cdc7c5889c8980b913ee8f794fdbaa732ede0",
+        "source_fact:v1:514dee23d9b9a5eac9676ed49306d7cb12a9180b23f48b3bf3df4347bb338c9a",
+        "source_fact:v1:6156ac002e349b37fba0b6e200d57d7bbda6b167423b26cf538c49a8a28e947b",
+        "source_fact:v1:89d705cb5ea3520f37d93a0cde1525a0efbdcee9b6d9e5d18e091b813dd3b3b9"
+      ],
+      "source_published_kst": "2026-10-21T16:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수",
+      "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
+      "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
+    },
     "title:a35c929894c120cf557de70a": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
       "lanes": {
@@ -1049708,6 +1051357,38 @@
       "telegram_core_fact": "호르무즈 해협을 통과하던 초대형 유조선이 기뢰와 충돌해 폭발하고 화재가 발생했다고 이란이 주장했다.",
       "title": "200만 배럴 싣고 가다 ‘쾅’…호르무즈·걸프만 유조선 잇단 화재"
     },
+    "title:cbd58c6cc7d4b2e3a98946c2": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://busan.fnnews.com/news/202610211816229499",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_keys": [
+        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
+        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
+        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
+        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
+        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
+        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
+        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
+        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
+        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
+        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
+        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
+        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
+        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
+      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
+      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
+    },
     "title:cbd76b19098a747f8bb68ef6": {
       "first_seen_kst": "2026-10-15T19:21:06+09:00",
       "lanes": {
@@ -1054981,6 +1056662,32 @@
       "link": "https://www.newsis.com/view/NISX20260923_0003801723",
       "source": "뉴시스",
       "title": "\"주식 시장 조정 끝…10월 중순 반등해 2028년 초까지 상승\" 전문가의 근거는"
+    },
+    "title:d6d71e582254bf708e1ab73c": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.hankyung.com/article/2026102166621",
+      "source": "한국경제",
+      "source_body_digest": "ab723d55a3d262935976f6b9d4e73e7ba9dfd66b149ce90d3cdc8c20933faa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b2b355ef2d9fa3f266016920a9f46d7dca29eb583daa36f91b017a3149f4c58",
+      "source_fact_keys": [
+        "source_fact:v1:062b181171fe074c70d8bf35bfe52e8dee6434658f7e6a1de3c262bb9cf2fa25",
+        "source_fact:v1:18391cb26bd805659e165c2d4ef4976bfa7ace904172065f896da11c260c6052",
+        "source_fact:v1:2848690fc542ac58a3d3b2a95d1421f8e5a7ca8f10ef7b22e7d936523dfb7535",
+        "source_fact:v1:36fe9764e54d21932c2f9ed84740a3d891cac99c301f959a07857805a18b216e",
+        "source_fact:v1:7dce30d285a20d18e21d30d26681cb0fcf210f37200de83fbdbdaa2aec9a3e49",
+        "source_fact:v1:c8e460ddc023214cc747f5f25875ecda5d87593bcea0db387f1b8cd7bd1574c3",
+        "source_fact:v1:ff24d9ec78964a3ee2c8955eb0d25766dad0571d1efebbeb5a2664b3690ee5d7"
+      ],
+      "source_published_kst": "2026-10-21T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "창원 국가산단에 AI·로봇 통합시스템 도입",
+      "telegram_core_fact": "창원국가산업단지 내 가전제품 제조 현장에 인공지능(AI)과 로봇을 활용한 생산관리 통합시스템이 도입된다. 경남 창원시는 산업통상부가 주관하는 ‘기계장비산업기술개발사업’의 AI 팩토리 분야 공모에서 ‘다품종 가변 가전제조 공급망 내 제조품질 고도화를 위한 자율제조 통합솔루션 개발사업’이 선정됐다고 21일 밝혔다.",
+      "title": "창원 국가산단에 AI·로봇 통합시스템 도입"
     },
     "title:d6e00a2254b0c7963eb14247": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
@@ -1068246,6 +1069953,26 @@
       "source_published_kst": "2026-10-06T13:26+09:00",
       "title": "[뉴스프레소] 나스닥 사상 최고가…고금리도 못막은 AI 랠리"
     },
+    "title:f2ef42eebbb1df84a1a32911": {
+      "first_seen_kst": "2026-10-22T03:57:32+09:00",
+      "lanes": {
+        "live": "2026-10-22T03:57:32+09:00"
+      },
+      "last_seen_kst": "2026-10-22T03:57:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835570",
+      "source": "뉴시스",
+      "source_body_digest": "c9f3e0a988327f06ee87b2f4281637cc315c796f5122904c33337bffb9473ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8528b834c4cc96f757f51721863c1cd2d379b7ab8df07a45c5d9a3da6650e6d5",
+      "source_fact_keys": [
+        "source_fact:v1:c89a9b465b69becf4b74f724c1a2fbff4a7dc87adf0e8103b9ec74d952bf314c"
+      ],
+      "source_published_kst": "2026-10-21T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "화성시 샤인머스캣, 한국산 첫 필리핀 수출…3.6t 선적",
+      "telegram_core_fact": "화성시와 송산농협은 그동안 샤인머스캣 생산량 증가와 소비 부진에 따른 가격 하락 등의 문제를 해결하고 농가 소득을 높이기 위해 해외판로를 개척해왔다.",
+      "title": "화성시 샤인머스캣, 한국산 첫 필리핀 수출…3.6t 선적"
+    },
     "title:f306548cd9e80d185a386a19": {
       "first_seen_kst": "2026-10-19T13:56:52+09:00",
       "lanes": {
@@ -1074641,5 +1076368,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T03:23:27+09:00"
+  "updated_at_kst": "2026-10-22T03:57:32+09:00"
 }
