@@ -272,8 +272,8 @@ SODIUM_LGES_30MWH_START = re.compile(
     r'(?:30\s*MWh|30\s*메가와트시)[^.!?。\n]{0,160}(?:샘플|sample|고객\s*시험|'
     r'고객\s*테스트|sample\s*test|customer\s*test|검증|validation)'
     r'[^.!?。\n]{0,55}(?:실제\s*)?(?:시작|개시|착수|started|began|commenced)|'
-    r'(?:샘플|sample|시험|테스트|검증).{0,120}'
-    r'(?:시작|개시|착수|started|began|commenced).{0,100}30\s*MWh',
+    r'(?:샘플|sample|시험|테스트|검증)[^.!?。\n]{0,120}'
+    r'(?:시작|개시|착수|started|began|commenced)[^.!?。\n]{0,100}30\s*MWh',
     re.I,
 )
 SODIUM_LGES_30MWH_APPROVED = re.compile(
