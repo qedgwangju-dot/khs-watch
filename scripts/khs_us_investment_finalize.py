@@ -131,7 +131,13 @@ def _short_judgment(title: str, tags: str) -> str:
         return "한미 원전 8기 프레임워크는 정부·Westinghouse·Cameco 측 공식 확인 단계. 다만 조건은 비구속이며 최종계약·부지·규제·금융·2025 타협협정 예외·개별 발주가 후속 확정."
     if "원전" in blob:
         return "원전 관련 보도는 한미 공동 팩트시트의 프레임워크 범위와 개별 프로젝트 확정 수준을 구분."
+    if "대미 무역흑자" in blob or "대미무역흑자" in blob:
+        if "실제 초과 확인" in blob:
+            return "대미 무역흑자 1,000억달러 실제 돌파 상태 변화. 대미 관세·투자요구는 별도 공식 문서가 있어야 확정으로 승격."
+        return "2026년 1~9월 대미 흑자 847억달러는 누적 실적. 연간 1,000억달러는 아직 전망이며 관세·알래스카 투자요구 강화는 가능성."
     if "알래스카 lng" in blob or "project north" in blob:
+        if any(x in blob for x in ("5등급", "5 등급", "class 5", "사업비 초기", "비용 추정", "오차 최대", "오차 -50")):
+            return "GaffneyCline 초기 비용 추정(5등급) 상방 오차 +100%는 가능 위험범위일 뿐 실제 공사비 2배 증액이 아님. 정밀설계·자금조달·최종투자결정 확인 필요."
         if "재산세" in blob:
             if "법적 발효" in blob or "실제 시행" in blob:
                 return "알래스카 주 세제 감면 실제 발효 단계. 적용 시설·대체세액·실제 납세액은 별도로 확인하며 한국 투자승인으로 간주하지 않음."
@@ -457,6 +463,17 @@ def _next_checks(flags: dict[str, bool]) -> list[str]:
     return out[:4]
 
 
+def _alaska_cost_risk_context() -> list[str]:
+    return [
+        "<b>알래스카 LNG 사업비 위험·확정 상태</b>",
+        "• 기존 개발사 추정: <b>445억~545억달러</b> · 초기 5등급 오차 상한 +100% 적용 시 <b>890억~1,090억달러</b>는 단순 위험 시나리오. 실제 확정 증액이 아님",
+        "• 실물 병목: 약 1,300km 가스관·가스 처리·액화시설, 정밀설계(FEED)·원가 검증·장기 구매계약·금융종결이 선행돼야 투자 실행",
+        "• 한국 투자: <b>상업적 합리성·국내법 검토 단계</b>. 미국의 540억달러 투자 주장은 한국의 납입 확정이 아님",
+        "• 재산세: 2033년 연 최대 7억4,000만달러 부담 추정·감면 요청 보도와 법률 발효는 별개. 세금 절감도 실제 확정 현금흐름이 아님",
+        '<b>근거</b> · <a href="https://lba.akleg.gov/wp-content/uploads/Key-Issues_Legislative-Policy-Options-for-Alaska-LNG-GaffneyCline-FINAL-COPY-issued-December-2025.pdf">알래스카 주의회 GaffneyCline 보고서</a> · <a href="https://www.reuters.com/world/asia-pacific/alaska-lng-could-cost-more-than-double-gulf-coast-rivals-raising-questions-over-2026-10-01/">Reuters 기존 사업비</a>',
+    ]
+
+
 def _compact_generic(text: str, core, lookup_time: str) -> str | None:
     article_re = re.compile(
         r"(?P<title><b>\d+\.\s+.*?</b>)\n"
@@ -512,7 +529,13 @@ def _compact_generic(text: str, core, lookup_time: str) -> str | None:
 
     if flags["energy"] or flags["alaska"]:
         parts += _official_project_status_block() + [""]
-    if flags["alaska"]:
+    cost_alert = flags["alaska"] and any(
+        x in " ".join(r["title"] for r in records).lower()
+        for x in ("5등급", "5 등급", "초기 비용 추정", "오차 최대", "사업비 2배")
+    )
+    if cost_alert:
+        parts += _alaska_cost_risk_context() + [""]
+    elif flags["alaska"]:
         parts += _alaska_kumkang_context() + [""]
 
     baseline = _current_state_block(flags)
@@ -520,6 +543,13 @@ def _compact_generic(text: str, core, lookup_time: str) -> str | None:
         parts += baseline + [""]
 
     checks = _next_checks(flags)
+    if cost_alert:
+        checks = [
+            "Glenfarne·정밀설계(FEED) 완성 뒤 세부 공사비 공식 재산정과 기존 445억~545억달러 대비 증감",
+            "알래스카 주의회 세법·재산세 감면 실제 발효 및 감면 후 사업 수익성",
+            "LNG 최종 장기구매계약·금융종결·1단계와 2단계 FID·실제 착공",
+            "한국 상업성 심사 완료·투자승인 여부·실제 투자금과 민간자금 분담",
+        ]
     if checks:
         parts += ["<b>다음 확인</b>"] + [f"• {html.escape(x)}" for x in checks] + [""]
 
