@@ -689,8 +689,11 @@ def verify_source_dates_before_notify(
         if modified is not None:
             from datetime import datetime, timezone
             modified_age_hours = (datetime.now(timezone.utc) - modified).total_seconds() / 3600
-        if age is not None and age * 24 > watch.MAX_AGE_HOURS and (
-            modified_age_hours is None or modified_age_hours > watch.MAX_AGE_HOURS
+        # 기사 발견 후 96시간이 지났다는 이유만으로 실제 신규 정책을 버리지 않는다.
+        # 과거 자료 재색인 방어는 30일 기준이며, 개정일이 최근이면 통과시킨다.
+        stale_cutoff_hours = max(watch.MAX_AGE_HOURS, 30 * 24)
+        if age is not None and age * 24 > stale_cutoff_hours and (
+            modified_age_hours is None or modified_age_hours > stale_cutoff_hours
         ):
             print(
                 f"energy_original_stale_suppressed=true key={row.get('event_key', '')} "
