@@ -1239,19 +1239,41 @@ def goldman_prime_public_article(text, published):
         return None
     if not re.search(r"hedge\s+funds?", text, re.I):
         return None
+    # Parse each report's own five-session end date, not the article publication
+    # date. October-only matching silently disabled all future monthly releases.
+    month_pattern = (
+        r"Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|"
+        r"Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?"
+    )
     period = re.search(
-        r"\b(?:five|5)\s+trading\s+(?:sessions|days)\s+(?:through|to|ending)\s+"
-        r"(?:(October|Oct\.?)\s+(\d{1,2})|(\d{1,2})\s+(October|Oct\.?))",
+        rf"\b(?:five|5)\s+trading\s+(?:sessions|days)\s+"
+        rf"(?:through|to|ending|ended(?:\s+on)?)\s+"
+        rf"(?:(?P<month_a>{month_pattern})\.?\s+(?P<day_a>\d{{1,2}})"
+        rf"|(?P<day_b>\d{{1,2}})\s+(?P<month_b>{month_pattern})\.?)",
         text, re.I,
     )
     if not period:
         return None
-    day = period.group(2) or period.group(3)
-    try:
-        observed = date(published.year, 10, int(day))
-    except (ValueError, TypeError):
-        return None
-    if not 0 <= (published - observed).days <= 14:
+    month_token = (period.group("month_a") or period.group("month_b")).lower()
+    month_short = month_token[:3]
+    month_names = ("jan", "feb", "mar", "apr", "may", "jun",
+                   "jul", "aug", "sep", "oct", "nov", "dec")
+    month = month_names.index(month_short) + 1
+    day = int(period.group("day_a") or period.group("day_b"))
+    # An explicit report year must be honored. Otherwise allow only a
+    # published-year or previous-year date within the prior 14 days.
+    year_match = re.match(r"[\s,]+(20\d{2})\b", text[period.end():period.end()+8])
+    years = (int(year_match.group(1)),) if year_match else (published.year, published.year - 1)
+    observed = None
+    for year in years:
+        try:
+            candidate = date(year, month, day)
+        except ValueError:
+            continue
+        if 0 <= (published - candidate).days <= 14:
+            observed = candidate
+            break
+    if observed is None:
         return None
     a = re.search(
         r"\bnet\s+allocation(?:\s+to\s+(?:the\s+)?(?:tech(?:nology)?\s+)?sector)?"
@@ -1330,7 +1352,10 @@ def parse_goldman_prime_public():
     seen_urls = set()
     # Fixed seed articles are corroboration candidates, never proprietary GS source.
     # Bound public search breadth to avoid missing Telegram's 20-minute job deadline.
-    for item in seeds + news_items(GOLDMAN_PRIME_SEARCH)[:16]:
+    # Always exhaust recent discovery BEFORE historical seeds. Otherwise the
+    # 2026-10-15 seed pair hides every later report while it remains fresh.
+    live_candidates = news_items(GOLDMAN_PRIME_SEARCH)[:10]
+    for index, item in enumerate(live_candidates + seeds):
         url = str(item.get("link") or "")
         if not url or url in seen_urls:
             continue
@@ -1366,7 +1391,9 @@ def parse_goldman_prime_public():
             h.removeprefix("www.") for o, a, l, h, _u in records
             if (o, a, l) == key
         }
-        if len(distinct_domains) >= 2:
+        # After checking ALL live results, historical seeds may close a
+        # same-period evidence pair; they must never truncate fresh discovery.
+        if len(distinct_domains) >= 2 and index >= len(live_candidates):
             break
     # Two independent public domains must agree on the observed period and both
     # headline positioning percentages. These are secondary citations, not
