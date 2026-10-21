@@ -498,6 +498,76 @@ class TwoColorTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
             self.presenter.verify_alert()
 
+    def test_supply_exports_with_background_attacks_are_market_reference(self):
+        f=json.loads((Path(__file__).parent/'test_fixtures/war_supply_talk_stage_39619132712.json').read_text(encoding='utf-8'))
+        row=f['articles'][0]
+        self.assertEqual(stage.non_military_kind(row),'oil_market')
+        self.assertIsNone(presentation.direction(stage,row))
+        self.assertEqual(stage._display_headline(row),' '.join(row['title_original'].split()))
+        self.assertIn('exceeded prewar levels',stage._display_headline(row))
+        self.assertIn('despite continued attacks',stage._display_headline(row))
+        self.assertNotIn('원유 물동량 회복',stage.topic_label(row))
+
+    def test_talks_participation_willingness_and_denial_keep_their_stage(self):
+        title='Russia is willing in principle to join new Ukraine peace talks in November, Kremlin says'
+        row={'title_original':title,'title_ko':'러시아는 11월 평화 회담에 참여할 의사가 있다고 밝혔다'}
+        self.assertEqual(stage.non_military_kind(row),'diplomatic_plan')
+        self.assertEqual(stage.topic_label(row),'우크라이나·러시아 · 협상 참여 의향')
+        self.assertEqual(stage._display_headline(row),title)
+        self.assertEqual(presentation.direction(stage,row),'green')
+        row['title_original']=title.replace('is willing','is not willing')
+        self.assertEqual(stage.non_military_kind(row),'diplomatic_position')
+        self.assertIn('협상 참여 의향 부인',stage.topic_label(row))
+        self.assertEqual(presentation.direction(stage,row),'red')
+
+    def test_talks_resumption_request_and_spaced_peace_plan_keep_named_actors(self):
+        title='위트코프, 푸틴에 우크라 3자 종전협상 재개 요청…억류 미국인 석방 - 마켓인'
+        row={'title_original':title,'title_ko':title}
+        self.assertEqual(stage.non_military_kind(row),'diplomatic_plan')
+        self.assertEqual(stage.topic_label(row),'미국·우크라이나·러시아 · 협상 재개 요청')
+        self.assertEqual(presentation.direction(stage,row),'green')
+        row={'title_original':'미 특사, 푸틴에 러·우 종전 구상 전달…3자 회담 재개 논의 - 경향신문'}
+        self.assertEqual(stage.non_military_kind(row),'diplomatic_plan')
+        self.assertEqual(stage.topic_label(row),'미국·우크라이나·러시아 · 종전안 논의·전달')
+        self.assertEqual(presentation.direction(stage,row),'green')
+        row={'title_original':title.replace('재개 요청','재개 요청하지 않았다')}
+        self.assertEqual(presentation.direction(stage,row),'red')
+
+    def test_supply_or_talks_stage_does_not_hide_separate_actual_action(self):
+        for title in ('Middle East oil exports exceeded prewar levels…Russia attacked Ukraine',
+                      'Russia is willing in principle to join Ukraine peace talks…Russia attacked Ukraine',
+                      '미 특사, 푸틴에 러·우 종전 구상 전달…러시아 미사일 발사했다',
+                      '위트코프, 종전협상 재개 요청…러시아 공습했다'):
+            with self.subTest(title=title):
+                self.assertEqual(presentation.direction(stage,{'title_original':title}),'red')
+
+    def test_saved_natural_supply_and_talks_full_gate(self):
+        self.fixture=json.loads((Path(__file__).parent/'test_fixtures/war_supply_talk_stage_39619132712.json').read_text(encoding='utf-8'))
+        (_,_,ids),text,receipt=self.present(tuple(range(len(self.fixture['articles']))))
+        shown=[r for r in receipt['articles'] if r['rendered']]
+        self.assertEqual(ids,['a33dae0cda0efb8ed8e2','539d309243dda80c2b2f','b592bb744ced3c857bb1','bbc4899366754465f5d3'])
+        self.assertEqual([r['classification_color'] for r in shown],[None,'green','green','green'])
+        self.assertEqual(shown[0]['display_section'],'market_reference')
+        self.assertIn('exceeded prewar levels',text)
+        self.assertIn('despite continued attacks',text)
+        self.assertIn('협상 참여 의향',text)
+        self.assertIn('협상 재개 요청',text)
+        self.assertIn('미국·우크라이나·러시아 · 종전안 논의·전달',text)
+        self.assertNotIn('실물물동량',text)
+        self.assertNotIn('🟡',text)
+        self.assertEqual(receipt['markets'],self.fixture['markets'])
+        self.assertEqual(next(r for r in receipt['articles'] if not r['rendered'])['render_withheld'],'origin_publication_stale_or_future')
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.STATE.read_bytes(),self.state_before)
+
+    def test_original_natural_wrong_supply_body_is_still_rejected(self):
+        f=json.loads((Path(__file__).parent/'test_fixtures/war_supply_talk_stage_39619132712.json').read_text(encoding='utf-8'))
+        self.watch.ALERT.write_text(f['original_semantic_alert'],encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(f['original_semantic_evidence'],ensure_ascii=False),encoding='utf-8')
+        self.watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in f['articles'] if r['rendered']]}),encoding='utf-8')
+        with self.assertRaisesRegex(RuntimeError,'WAR_ALERT_QUALITY_GATE|WAR_INTEGRITY_GATE'):
+            self.presenter.verify_alert()
+
     def test_production_entry_installs_directional_final_gate(self):
         original = stage.runner.verify_alert
         def entry():
