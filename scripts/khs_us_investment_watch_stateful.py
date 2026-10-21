@@ -2525,6 +2525,51 @@ def _self_test() -> int:
 
     print("alaska_property_tax_stage_self_test=passed")
     print("alaska_delta_evidence_self_test=passed")
+    # 비용 범위는 확정 증액으로 승격되지 않고, 2개 독립 매체에만 반응한다.
+    cost_reports = _verified_alaska_cost_warning_rows()
+    cost_one, _ = _accepted_facts_for_group("alaska_lng", cost_reports[:1])
+    if any(x.startswith("alaska_cost_") for x in cost_one):
+        raise RuntimeError(f"single cost article wrongly confirmed: {cost_one}")
+    cost_both, _ = _accepted_facts_for_group("alaska_lng", cost_reports)
+    required_cost = {
+        "alaska_cost_estimate_class:5",
+        "alaska_cost_uncertainty_upper_percent:100",
+        "alaska_cost_uncertainty_status:reported",
+    }
+    if not required_cost.issubset(cost_both):
+        raise RuntimeError(f"two-source Class 5 risk missed: {cost_both}")
+    if any(x.startswith(("alaska_project_cost_usd_b:", "alaska_korea_investment_usd_b:")) for x in cost_both):
+        raise RuntimeError(f"cost uncertainty became actual investment: {cost_both}")
+
+    # 1~9월 847억달러는 실적이고 연말 1천억달러는 '확실시' 전망이다.
+    trade_reports = _verified_us_trade_surplus_rows()
+    trade_one, _ = _accepted_facts_for_group("us_trade_surplus", trade_reports[:1])
+    if any(x.startswith("us_trade_surplus_") for x in trade_one):
+        raise RuntimeError(f"one trade article got confirmed: {trade_one}")
+    trade_both, _ = _accepted_facts_for_group("us_trade_surplus", trade_reports)
+    if "us_trade_surplus_2026_month9_100m_usd:847" not in trade_both:
+        raise RuntimeError(f"real nine-month surplus missing: {trade_both}")
+    if "us_trade_surplus_2026_threshold:actual" in trade_both:
+        raise RuntimeError(f"forecast trillion-surplus misread as achieved: {trade_both}")
+    actual_rows = [
+        {
+            "title": "2026년 1~10월 대미 무역흑자 1005억달러 돌파",
+            "source": "연합뉴스",
+            "link": "https://example.com/future-confirmed-1",
+            "published": "2026-11-01",
+        },
+        {
+            "title": "2026년 1~10월 대미 무역흑자 1005억달러 기록",
+            "source": "헤럴드경제",
+            "link": "https://example.com/future-confirmed-2",
+            "published": "2026-11-01",
+        },
+    ]
+    actual_facts, _ = _accepted_facts_for_group("us_trade_surplus", actual_rows)
+    if "us_trade_surplus_2026_threshold:actual" not in actual_facts:
+        raise RuntimeError(f"confirmed threshold event not detected: {actual_facts}")
+
+    print("us_trade_and_alaska_cost_regression=passed")
     print("state_event_guard_self_test=passed")
     return 0
 
