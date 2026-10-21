@@ -173,6 +173,32 @@ def enrich(row: dict[str, Any], session: requests.Session) -> dict[str, Any]:
         if response.url:
             result["url"] = response.url
         soup = BeautifulSoup(response.text, "html.parser")
+        # 기사 발행일은 Google News RSS 색인일 대신 발행사 원문 메타정보를 우선한다.
+        from email.utils import format_datetime
+        for query in (
+            'meta[property="article:published_time"]',
+            'meta[name="article:published_time"]',
+            'meta[name="datePublished"]',
+            'meta[property="og:article:published_time"]',
+            "time[datetime]",
+        ):
+            node = soup.select_one(query)
+            if not node:
+                continue
+            stamp = (node.get("content") or node.get("datetime") or "").strip()
+            if not stamp:
+                continue
+            try:
+                parsed = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+                if parsed.tzinfo is None:
+                    parsed = parsed.replace(tzinfo=KST)
+                if 2024 <= parsed.year <= datetime.now(KST).year + 1:
+                    result["rss_published"] = result.get("published", "")
+                    result["published"] = format_datetime(parsed)
+                    result["date_verified_from_publisher"] = True
+                    break
+            except ValueError:
+                continue
         for node in soup.select("script, style, noscript, nav, footer, header, aside"):
             node.decompose()
         selectors = (
@@ -282,7 +308,11 @@ def verify_change(row: dict[str, Any]) -> tuple[bool, str]:
             return False, "세액공제 조건을 본문에서 확인하지 못함"
         if not any(x in body for x in ("자가 소비", "자가소비", "임대", "코로케이션", "15%")):
             return False, "적용 대상·세액공제 수치 확인 실패"
-        return True, "언론: 산업계 세제 개선 요구 / 공식: 확정 변경(확정 여부 별도)"
+        if official and not any(
+            x in body for x in ("법률 개정", "시행령 개정", "개정안 공포", "규정 확정", "세제개편안 발표")
+        ):
+            return False, "공식 자료여도 세제 적용조건을 바꾼 문서인지 확인할 수 없음"
+        return True, "산업계 세제 개선 요구" if not official else "공식 세제 변경"
 
     if key == "aidc|anti-hoarding|queue-evidence":
         if not all(x in body for x in ("67.4", "62.8", "93")):
@@ -411,7 +441,7 @@ def fact_lines(row: dict[str, Any]) -> tuple[list[str], list[str], list[str]]:
             )
         if has(body, "150일", "90일", "40일"):
             new.append(
-                "• 인허가 일괄처리의 쟁점은 150일·90일·40일 등 처리 기한이며 <b>자동 승인·전원 인가 보장과는 다름</b>"
+                "• 법정 처리 기한은 150일·90일·40일(사유에 따른 1회 최대 30일 연장)이며, <b>기한 내 거부통지가 없을 때 처리 완료로 보는 규정</b>과 실제 전력 공급 보장은 구분"
             )
         changed = [
             "• 기존 하위법령 설계 논의에서 세액공제의 실질적 수혜대상·사업자 유형이 구체적인 논쟁으로 부상",
