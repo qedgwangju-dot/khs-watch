@@ -430,6 +430,45 @@ class TwoColorTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
             self.presenter.verify_alert()
 
+    def test_received_envoy_keeps_all_explicit_actors(self):
+        title='러, 우크라 종전안 가져온 美 특사 접견...억류 미국인 1명 석방'
+        row={'title_original':title,'title_ko':title}
+        self.assertEqual(stage.non_military_kind(row),'diplomatic_contact')
+        self.assertEqual(stage.topic_label(row),'미국·우크라이나·러시아 · 외교 접촉 보도')
+        self.assertEqual(presentation.direction(stage,row),'green')
+
+    def test_possible_meeting_venue_not_added_as_participant(self):
+        title='Putin, at talks with Witkoff, suggests he and Trump could meet in China'
+        row={'title_original':title,'title_ko':title}
+        self.assertEqual(stage.non_military_kind(row),'diplomatic_plan')
+        self.assertEqual(stage.topic_label(row),'미국·러시아 · 회담 추진·논의')
+        self.assertEqual(presentation.direction(stage,row),'green')
+        row={'title_original':'Putin, Trump and Xi could meet in China'}
+        self.assertIn('중국',stage.topic_label(row))
+        row={'title_original':'Putin and Trump could not meet in China'}
+        self.assertEqual(presentation.direction(stage,row),'red')
+        row={'title_original':title+'…Russia attacked Ukraine'}
+        self.assertEqual(presentation.direction(stage,row),'red')
+
+    def test_saved_last_push_actor_and_venue_full_gate(self):
+        self.fixture=json.loads((Path(__file__).parent/'test_fixtures/war_envoy_venue_39585466115.json').read_text(encoding='utf-8'))
+        (_,_,ids),text,receipt=self.present(tuple(range(len(self.fixture['articles']))))
+        self.assertIn('미국·우크라이나·러시아 · 외교 접촉 보도',text)
+        self.assertIn('미국·러시아 · 회담 추진·논의',text)
+        self.assertIn('억류 미국인 1명 석방',text)
+        self.assertEqual(ids,[r['id'] for r in receipt['articles'] if r['rendered']])
+        self.assertEqual(receipt['markets'],self.fixture['markets'])
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.STATE.read_bytes(),self.state_before)
+
+    def test_original_same_hash_actor_and_venue_push_rejected(self):
+        f=json.loads((Path(__file__).parent/'test_fixtures/war_envoy_venue_39585466115.json').read_text(encoding='utf-8'))
+        self.watch.ALERT.write_text(f['original_semantic_alert'],encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(f['original_semantic_evidence'],ensure_ascii=False),encoding='utf-8')
+        self.watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in f['articles'] if r['rendered']]}),encoding='utf-8')
+        with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
+            self.presenter.verify_alert()
+
     def test_production_entry_installs_directional_final_gate(self):
         original = stage.runner.verify_alert
         def entry():
