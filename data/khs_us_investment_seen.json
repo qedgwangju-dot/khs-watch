@@ -345,7 +345,9 @@
     "stateevt_95f14d5c2d3931140281": "2026-10-14T01:19:04.298789+00:00",
     "stateevt_0e79c14e0010e5a9f4aa": "2026-10-14T02:58:28.478258+00:00",
     "stateevt_6c723d274b826022f8f1": "2026-10-17T04:40:10.903987+00:00",
-    "stateevt_60599bf5e149b80833fe": "2026-10-17T12:18:05.211565+00:00"
+    "stateevt_60599bf5e149b80833fe": "2026-10-17T12:18:05.211565+00:00",
+    "stateevt_e46d791c218bfa5ffad7": "2026-10-21T00:07:45.745588+00:00",
+    "stateevt_bf2ae1b505008051da7f": "2026-10-21T00:07:45.745588+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -382,7 +384,9 @@
     "eventstate_alaska_lng_95f14d5c2d3931140281": "2026-10-14T01:19:04.298789+00:00",
     "eventstate_alaska_lng_0e79c14e0010e5a9f4aa": "2026-10-14T02:58:28.478258+00:00",
     "eventstate_alaska_lng_6c723d274b826022f8f1": "2026-10-17T04:40:10.903987+00:00",
-    "eventstate_alaska_lng_60599bf5e149b80833fe": "2026-10-17T12:18:05.211565+00:00"
+    "eventstate_alaska_lng_60599bf5e149b80833fe": "2026-10-17T12:18:05.211565+00:00",
+    "eventstate_alaska_lng_e46d791c218bfa5ffad7": "2026-10-21T00:07:45.745588+00:00",
+    "eventstate_us_trade_surplus_bf2ae1b505008051da7f": "2026-10-21T00:07:45.745588+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -680,6 +684,9 @@
     "alaska_lng": {
       "facts": [
         "alaska_bilateral_status:review_started",
+        "alaska_cost_estimate_class:5",
+        "alaska_cost_uncertainty_status:reported",
+        "alaska_cost_uncertainty_upper_percent:100",
         "alaska_fid_after_commercial_review:reported",
         "alaska_reported_amount_usd_b:50",
         "alaska_taiwan_project_share_reported:30",
@@ -692,6 +699,9 @@
       ],
       "slots": {
         "alaska_lng|alaska_bilateral_status": "alaska_bilateral_status:review_started",
+        "alaska_lng|alaska_cost_estimate_class": "alaska_cost_estimate_class:5",
+        "alaska_lng|alaska_cost_uncertainty_status": "alaska_cost_uncertainty_status:reported",
+        "alaska_lng|alaska_cost_uncertainty_upper_percent": "alaska_cost_uncertainty_upper_percent:100",
         "alaska_lng|alaska_fid_after_commercial_review:reported": "alaska_fid_after_commercial_review:reported",
         "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:50",
         "alaska_lng|alaska_taiwan_project_share_reported": "alaska_taiwan_project_share_reported:30",
@@ -703,27 +713,21 @@
         "alaska_lng|alaska_us_reiteration": "alaska_us_reiteration:2026-10-13"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
-      "updated_at": "2026-10-17T12:18:08.359611+00:00",
-      "last_title": "한국 정부 알래스카 LNG 재산세 감면 요청 보도: 2033년 연간 7억4000만달러 부담 추산",
-      "last_source": "매일경제",
+      "updated_at": "2026-10-21T00:07:49.296321+00:00",
+      "last_title": "한국 70조 내라더니…알래스카 LNG 사업비 2배 늘수도 보고서 파장",
+      "last_source": "머니투데이",
       "evidence": [
         {
-          "source": "매일경제",
-          "title": "한국 정부 알래스카 LNG 재산세 감면 요청 보도: 2033년 연간 7억4000만달러 부담 추산",
-          "link": "https://m.mk.co.kr/news/economy/12177076",
-          "published": "2026-10-15T08:45:00+00:00"
+          "source": "머니투데이",
+          "title": "한국 70조 내라더니…알래스카 LNG 사업비 2배 늘수도 보고서 파장",
+          "link": "https://www.mt.co.kr/world/2026/10/21/2026102103300258722",
+          "published": "2026-10-20T18:36:00+00:00"
         },
         {
-          "source": "매일경제",
-          "title": "[단독] 韓, 연간 최대 1조원 알래스카 LNG 재산세 ‘감면 요청’ - 매일경제",
-          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5adC05ckpTeUxkMmxSX3pZTWxNVlNYY2FzNHFCUjFTSFoxS2ozajFGOTI4azVBMTlPRGh3cWluc3lKOVhzal9tVkgyeDJiV2lpbVMyRg?oc=5",
-          "published": "2026-10-15T08:44:33+00:00"
-        },
-        {
-          "source": "MTN 머니투데이방송",
-          "title": "트럼프 '알래스카 LNG' 압박에…韓, 연간 1조원 재산세 면제 요청 - MTN 머니투데이방송",
-          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1QYUpqY0tTMFpLaENsUFV2UkNMc1VQbk1vVTJPNzYtYTFVYXFDRXJlQ004Wkt6aWdNZU5RVXVpU3VDcE9yOUc3a0lqbGlpY1JQamcySW43Qi1FcFZmZHZV?oc=5",
-          "published": "2026-10-16T04:59:39+00:00"
+          "source": "TJB",
+          "title": "알래스카 LNG, 초기 타당성검토 단계…비용 2배로 늘 수 있어",
+          "link": "https://www.tjb.co.kr/news05/bodo/view/id/105117/version/1",
+          "published": "2026-10-20T23:28:00+00:00"
         }
       ]
     },
@@ -760,6 +764,32 @@
           "title": "재정경제부 확인 2026-10-01 텍사스 엔시날 첫 투자금 24억달러 미국 송금 완료",
           "link": "https://v.daum.net/v/qxaIoHd8vp",
           "published": "2026-10-01T05:30:00+00:00"
+        }
+      ]
+    },
+    "us_trade_surplus": {
+      "facts": [
+        "us_trade_surplus_2026_month9_100m_usd:847"
+      ],
+      "slots": {
+        "us_trade_surplus|us_trade_surplus_2026_month9_100m_usd:847": "us_trade_surplus_2026_month9_100m_usd:847"
+      },
+      "initialized_at": "2026-10-21T00:07:49.303875+00:00",
+      "updated_at": "2026-10-21T00:07:49.303875+00:00",
+      "last_title": "대미 무역흑자 1천억불 눈앞…트럼프 투자 압박에 난감한 정부",
+      "last_source": "연합뉴스",
+      "evidence": [
+        {
+          "source": "헤럴드경제",
+          "title": "사상 첫 대미 무역흑자 1000억달러 돌파 확실…정부, 트럼프 투자 압박에 고심",
+          "link": "https://biz.heraldcorp.com/article/10906018",
+          "published": "2026-10-18T01:07:00+00:00"
+        },
+        {
+          "source": "연합뉴스",
+          "title": "대미 무역흑자 1천억불 눈앞…트럼프 투자 압박에 난감한 정부",
+          "link": "https://www.yna.co.kr/amp/view/AKR20261017041500003",
+          "published": "2026-10-17T21:17:00+00:00"
         }
       ]
     }
