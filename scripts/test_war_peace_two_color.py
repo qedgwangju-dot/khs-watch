@@ -41,6 +41,12 @@ class TwoColorTests(unittest.TestCase):
         with patch.object(self.watch, 'market_source_status', statuses, create=True):
             text = stage.build_alert(rows, markets, at)
         receipt = evidence.alert_receipt(rows, markets, at, text, statuses)
+        if 'original_semantic_evidence' in self.fixture:
+            # The production ZIP preserves body hashes, not the full bodies.
+            # Retain those exact metadata references without inventing text.
+            originals = {row['id']: row for row in self.fixture['articles']}
+            for row in receipt['articles']:
+                row['article_text_sha256'] = originals[row['id']]['article_text_sha256']
         ids = [row['id'] for row in receipt['articles'] if row.get('rendered')]
         self.watch.ALERT.write_text(text, encoding='utf-8')
         self.watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
@@ -245,6 +251,78 @@ class TwoColorTests(unittest.TestCase):
             self.assertFalse((self.folder/filename).exists())
         runtime._clean_rejected(self.watch)
         self.assertFalse(any(self.folder.glob('war_peace_reconstruction_rejected_*')))
+
+    def test_unrealized_attack_plan_after_opposition_is_held(self):
+        for title in (
+            '"네타냐후, 이란 대규모 공습 추진했지만…트럼프 반대에 실행 불발" - 뉴시스',
+            '이스라엘, 최근 대규모 이란 공습 준비했다 불발…트럼프가 제동 - 뉴스1',
+            '네타냐후, 이란 공습 추진했지만…트럼프 제동에 실행 불발',
+        ):
+            with self.subTest(title=title):
+                row = {'title_original': title}
+                self.assertEqual(stage._attack_plan_status(stage._headline(row)), 'held')
+                self.assertEqual(stage.final_color(row), 'yellow')
+                self.assertEqual(presentation.direction(stage, row), 'green')
+                self.assertIn('계획 보류·반대', stage.topic_label(row))
+
+    def test_unrealized_plan_does_not_hide_separate_action_or_plan(self):
+        held = '네타냐후, 이란 공습 추진했지만…트럼프 반대에 실행 불발'
+        for suffix in ('…러시아 공습했다', '…미국 미사일 발사', '…이스라엘 공습 재개 추진'):
+            with self.subTest(suffix=suffix):
+                self.assertEqual(presentation.direction(stage, {'title_original': held + suffix}), 'red')
+        for title in ('네타냐후, 이란 공습 추진했지만 실행 불발은 부인',
+                      '네타냐후, 이란 공습 준비했지만 실행 불발 가능성'):
+            with self.subTest(title=title):
+                self.assertNotEqual(stage._attack_plan_status(stage._headline({'title_original': title})), 'held')
+                self.assertEqual(presentation.direction(stage, {'title_original': title}), 'red')
+
+    def test_future_attack_question_has_explicit_actors_and_analysis_stage(self):
+        title = '미국과 이스라엘은 선거 압력 속에서 이란에 대한 공습을 재개할 것인가? - Vietnam.vn'
+        row = {'title_original': title, 'title_ko': title, 'tags': ['확전']}
+        self.assertEqual(stage.non_military_kind(row), 'military_analysis')
+        self.assertEqual(stage.final_color(row), 'yellow')
+        self.assertEqual(presentation.direction(stage, row), 'red')
+        self.assertEqual(stage.topic_label(row), '미국·이스라엘·이란 · 공습·공격 재개 가능성 해설')
+        self.assertEqual(stage._headline_event_label(row, 'military_analysis'), '공습·공격 재개 가능성 해설')
+        self.assertNotIn('호르무즈', stage.topic_label(row))
+
+    def test_future_attack_question_keeps_separate_completed_action(self):
+        question = '미국과 이스라엘은 이란 공습을 재개할 것인가?'
+        for suffix in ('…러시아는 우크라이나를 공습했다', '…이란 미사일 발사', '…미국 공습 재개했다'):
+            with self.subTest(suffix=suffix):
+                row = {'title_original': question + suffix}
+                self.assertIsNone(stage.non_military_kind(row))
+                self.assertEqual(presentation.direction(stage, row), 'red')
+        row = {'title_original': question + '…네타냐후 이란 공습 재개 추진'}
+        self.assertEqual(stage.non_military_kind(row), 'military_discussion')
+        self.assertIn('계획·추진', stage.topic_label(row))
+        self.assertEqual(presentation.direction(stage, row), 'red')
+
+    def test_latest_natural_saved_inputs_preserve_outcome_and_question(self):
+        self.fixture = json.loads((Path(__file__).parent/'test_fixtures/war_held_plan_question_39578962304.json').read_text(encoding='utf-8'))
+        (_, _, ids), text, receipt = self.present((0, 1, 2, 3))
+        rows = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual([row['classification_color'] for row in rows], ['green', 'green', 'red', 'green'])
+        self.assertEqual(ids, [row['id'] for row in self.fixture['articles'][:4]])
+        self.assertIn('보도시각 불일치', text)
+        self.assertIn('실행 불발', text)
+        self.assertIn('공습·공격 재개 가능성 해설', text)
+        self.assertNotIn('호르무즈', text)
+        self.assertNotIn('🟡', text)
+        self.assertIn('관련:</b> 1건', text)
+        self.assertIn('관련:</b> 3건', text)
+        self.assertEqual(receipt['markets'], self.fixture['markets'])
+        self.assertEqual(self.watch.STATE.read_bytes(), self.state_before)
+        self.presenter.verify_alert()
+
+    def test_original_same_hash_wrong_natural_stage_is_rejected(self):
+        fixture = json.loads((Path(__file__).parent/'test_fixtures/war_held_plan_question_39578962304.json').read_text(encoding='utf-8'))
+        self.watch.ALERT.write_text(fixture['original_semantic_alert'], encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(fixture['original_semantic_evidence'], ensure_ascii=False), encoding='utf-8')
+        ids = [row['id'] for row in fixture['articles'] if row.get('rendered')]
+        self.watch.PENDING.write_text(json.dumps({'ids': ids}), encoding='utf-8')
+        with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
+            self.presenter.verify_alert()
 
     def test_production_entry_installs_directional_final_gate(self):
         original = stage.runner.verify_alert
