@@ -201,12 +201,15 @@ class CurrencyKRWGuardTests(unittest.TestCase):
             '<a href="https://news.google.com/rss/articles/CBMiSGd0a123?oc=5">기사</a> '
             '실제 결제 SGD 120와 USD 5 million'
         )
-        with patch.object(g, "_rate", side_effect=self.fake_rate):
+        with patch.object(g, "_rate", side_effect=self.fake_rate) as fx:
             once = g.enforce_text(sample)
             twice = g.enforce_text(once)
         self.assertIn('CBMiSGd0a123?oc=5', once)
         self.assertIn('SGD 120(약 126,000원)', once)
-        self.assertIn('USD 5 million(약 67억5,000만원)', once)
+        # 5,000,000 * 1,350 = 6,750,000,000 KRW. The existing >=10억원
+        # display rounds to whole 억원; keep that shared presentation policy.
+        self.assertIn('USD 5 million(약 68억원)', once)
+        self.assertEqual([c.args for c in fx.call_args_list], [('SGD',), ('USD',)])
         self.assertEqual(once, twice)
         g.validate_text(twice)
 
@@ -215,6 +218,33 @@ class CurrencyKRWGuardTests(unittest.TestCase):
         with patch.object(g, "_rate", side_effect=AssertionError("not money")):
             self.assertEqual(g.enforce_text(sample), sample)
         g.validate_text(sample)
+
+    def test_iso_plain_amount_preserves_korean_particle_and_idempotency(self):
+        for particle in ('과', '와', '은', '는', '이', '가', '을', '를', '에', '의',
+                         '도', '만', '으로', '으로는', '에서', '에서는',
+                         '까지', '부터', '보다', '보다는'):
+            for currency, amount in (('SGD', '126,000원'), ('USD', '162,000원')):
+                sample = currency + ' 120' + particle + ' 결제'
+                with self.subTest(currency=currency, particle=particle), patch.object(g, '_rate', side_effect=self.fake_rate):
+                    once = g.enforce_text(sample)
+                    self.assertIn(currency + ' 120(약 ' + amount + ')' + particle, once)
+                    self.assertEqual(g.enforce_text(once), once)
+                    g.validate_text(once)
+        with patch.object(g, '_rate', side_effect=self.fake_rate):
+            self.assertIn('USD 5 million(약 68억원)과',
+                          g.enforce_text('USD 5 million과 비용'))
+
+    def test_iso_amount_particle_keeps_fail_closed_and_identifier_boundaries(self):
+        for sample in ('SGD 120와 결제', 'USD 5 million과 비용'):
+            with self.subTest(sample=sample), self.assertRaises(RuntimeError):
+                g.validate_text(sample)
+            with patch.object(g, '_rate', return_value=(None, 'failed')):
+                with self.assertRaises(RuntimeError):
+                    g.enforce_text(sample)
+        for sample in ('SGD 120와이어 식별자', 'USD 120와이어 식별자'):
+            with self.subTest(sample=sample), patch.object(g, '_rate', side_effect=AssertionError('Do not partially convert a word')):
+                with self.assertRaises(RuntimeError):
+                    g.enforce_text(sample)
 
     def test_iso_currency_amounts_get_immediate_krw_parentheses(self):
         with patch.object(g, "_rate", side_effect=self.fake_rate):

@@ -227,7 +227,12 @@ def enforce_text(text: str) -> str:
     iso_pat = re.compile(
         r"(?<![A-Za-z0-9_])(?P<code>USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\s+"
         r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*"
-        r"(?P<unit>trillion|billion|million|bn|mn|T|B|M)?\b(?P<per>/" + PER_UNIT_PATTERN + r")?",
+        r"(?P<unit>trillion|billion|million|bn|mn|T|B|M)?"
+        # Unicode word boundaries do not separate a number from Korean 와/과.
+        # Allow only complete particles, while preserving identifier boundaries.
+        r"(?=\b|(?:으로(?:는|도)?|에서(?:는|도)?|까지(?:는|도)?|"
+        r"부터(?:는|도)?|보다(?:는|도)?|과|와|은|는|이|가|을|를|에|의|도|만)(?=$|[^가-힣]))"
+        r"(?P<per>/" + PER_UNIT_PATTERN + r")?",
         re.I,
     )
     def repl_iso(m):
