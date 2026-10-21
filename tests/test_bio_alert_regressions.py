@@ -302,7 +302,7 @@ class BioAlertRegressionTests(unittest.TestCase):
         with patch.object(basic_guard, "translate_to_korean",
                           side_effect=AssertionError("외부 번역 요청 금지 — 문구는 이미 한국어")):
             rendered = ensure_korean_text(normalize_alert_language(report))
-        for ident in ("Padcev", "KEYNOTE-B15", "EV-304", "MIBC", "EP622"):
+        for ident in ("Padcev", "KEYNOTE-B15", "EV-304", "MIBC", "EP622", "MDASE"):
             self.assertIn(ident, rendered)
         self.assertIn("**2026년 10월 21일**", rendered)
 
