@@ -1,0 +1,718 @@
+{
+  "provenance": {
+    "run_id": 39619132712,
+    "actual_code_sha": "696ed8fd9d9428e29d2c238046f13b62598a7d04",
+    "queried_at_kst": "2026-10-21T23:43:17.031137+09:00",
+    "artifact_id": 12353683567,
+    "zip_sha256": "45d0ab78d248c82848eb8392191e8ff2a972105dd789680b408ae3bb201daa57",
+    "actual_delivery": false,
+    "operating_natural": true,
+    "original_semantic_gate_failed": true,
+    "semantic_snapshot_not_created": true,
+    "full_operating_article_bodies_preserved": false,
+    "later_HTTP_bodies_inserted": false
+  },
+  "articles": [
+    {
+      "id": "a33dae0cda0efb8ed8e2",
+      "title_original": "MORE OIL IS LEAVING THE PERSIAN GULF THAN BEFORE THE WAR\nMiddle East oil exports exceeded prewar levels in the week through October 18, according to Kpler.\nA U.S.-protected shipping system is keeping tankers moving despite continued attacks in the Strait of Hormuz.\nYet oil prices remain elevated...",
+      "title_ko": "Kpler에 따르면 전쟁 전보다 더 많은 석유가 페르시아만에서 빠져나오고 있습니다. 중동 석유 수출량이 10월 18일까지 일주일 동안 전쟁 전 수준을 초과했다고 합니다. 미국이 보호하는 해운 시스템은 호르무즈 해협에서 계속되는 공격에도 불구하고 유조선을 계속 움직이게 하고 있습니다. 그래도 기름값은 계속 오르는데..",
+      "description": "MORE OIL IS LEAVING THE PERSIAN GULF THAN BEFORE THE WAR\nMiddle East oil exports exceeded prewar levels in the week through October 18, according to Kpler.\nA U.S.-protected shipping system is keeping tankers moving despite continued attacks in the Strait of Hormuz.\nYet oil prices remain elevated as shipping costs surge, inventories tighten and traders fear renewed escalation.\n( @WalterBloomberg )",
+      "source": "Walter Bloomberg",
+      "link": "https://t.me/WalterBloomberg/37205",
+      "published": "Wed, 21 Oct 2026 13:20:26 +0000",
+      "score": 100,
+      "tags": [
+        "실물물동량",
+        "원유공급회복",
+        "호르무즈"
+      ],
+      "body_checked": true,
+      "signals_ko": [
+        "🟢 호르무즈 석유 물동량의 기록·급증·회복 신호 — 정식 재개방 여부와 별도로 실제 공급 흐름을 즉시 추적"
+      ],
+      "forced_tags": [
+        "호르무즈",
+        "실물물동량",
+        "원유공급회복"
+      ],
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "ad91e40bf77feadbd105c455745b700787deed8e92452d8b5c50479b989214e6"
+    },
+    {
+      "id": "539d309243dda80c2b2f",
+      "title_original": "Russia is willing in principle to join new Ukraine peace talks in November, Kremlin says",
+      "title_ko": "러시아는 원칙적으로 11월에 새로운 우크라이나 평화 회담에 참여할 의사가 있다고 크렘린궁은 밝혔습니다.",
+      "description": "",
+      "source": "Reuters",
+      "link": "https://www.reuters.com/world/russia-is-willing-principle-join-new-ukraine-peace-talks-november-kremlin-says-2026-10-21/",
+      "published": "2026-10-21T13:41:14.201Z",
+      "score": 12,
+      "tags": [
+        "외교 접촉 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_contact",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "b592bb744ced3c857bb1",
+      "title_original": "위트코프, 푸틴에 우크라 3자 종전협상 재개 요청…억류 미국인 석방 - 마켓인",
+      "title_ko": "위트코프, 푸틴에 우크라 3자 종전협상 재개 요청…억류 미국인 석방 - 마켓인",
+      "description": "위트코프, 푸틴에 우크라 3자 종전협상 재개 요청…억류 미국인 석방 마켓인",
+      "source": "마켓인",
+      "source_url": "https://marketin.edaily.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE80eEhfeThQUW9ubDBuSVpBRDFJTDl6U29uT0hOWDB2MnJLd19oRW5TZzdTY014N3dweDc5SWRLYkMxd0lEVjM2TExvS1RMeE5zRW8yODFvVmo5TkNsZ0hnVGcxbnFRdmthcE42aDRBbGstUG8?oc=5",
+      "published": "Wed, 21 Oct 2026 13:11:57 GMT",
+      "score": 9,
+      "tags": [
+        "외교 접촉 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_contact",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "2d4c11329fbfa1b98522",
+      "title_original": "미 중간선거 앞…이란 “호르무즈서 유조선 3척 기뢰 충돌” - 한겨레",
+      "title_ko": "미 중간선거 앞…이란 “호르무즈서 유조선 3척 기뢰 충돌” - 한겨레",
+      "description": "미 중간선거 앞…이란 “호르무즈서 유조선 3척 기뢰 충돌” 한겨레",
+      "source": "한겨레",
+      "source_url": "https://www.hani.co.kr",
+      "link": "https://www.hani.co.kr/arti/international/international_general/1283532.html",
+      "discovery_url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxObEwwU1RMRGc2T0drRU40c2RDMDMxYVNkZEp0QVZUeWlIR1ZIUE5uVENqWVU5eFl6ZzlhajdtZThjQTNIVTJzWjZMU1hYUkVFcFBNcXRRdThpRWkxTEdXT1pGeDlXaTRkRDlkTlk5ZWROWExGOUphUkp1NEJNVUxBcnln?oc=5",
+      "resolved_url": "https://www.hani.co.kr/arti/international/international_general/1283532.html",
+      "published": "Wed, 21 Oct 2026 18:54:00 +0900",
+      "rss_published": "Wed, 21 Oct 2026 13:19:00 GMT",
+      "source_metadata": {
+        "title": "미 중간선거 앞…이란 “호르무즈서 유조선 3척 기뢰 충돌”",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-21T18:54:00+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-21T18:54:00+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-21T18:54:00+09:00"
+          }
+        ]
+      },
+      "score": 7,
+      "tags": [
+        "선박 기뢰 충돌 보도"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "render_withheld": "origin_publication_stale_or_future",
+      "publication_basis": "publisher",
+      "rendered": false,
+      "article_text_sha256": "549ba53bf793a1f701b56daee35e9dc73fc8ade892130bbc5c82d14f2c731ca4"
+    },
+    {
+      "id": "bbc4899366754465f5d3",
+      "title_original": "미 특사, 푸틴에 러·우 종전 구상 전달…3자 회담 재개 논의 - 경향신문",
+      "title_ko": "미 특사, 푸틴에 러·우 종전 구상 전달…3자 회담 재개 논의 - 경향신문",
+      "description": "미 특사, 푸틴에 러·우 종전 구상 전달…3자 회담 재개 논의 경향신문",
+      "source": "경향신문",
+      "source_url": "https://www.khan.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE14OXp0YVg4MUZSRDhIak9WMUVHVUQwQWdKSW9iVF9HODFNM3dlM1hJV1pFam1hNVFwYzdITnRiOWJrZVhXUTdsV29TX2JVbzBuT2FvU2lvV0VPbUhUbm040gFfQVVfeXFMTXg5enRhWDgxRlJEOEhqT1YxRUdVRDBBZ0pJb2JUX0c4MU0zd2UzWElXWkVqbWE1UXBjN0hOdGI5YmtlWFdRN2xXb1NfYlVvMG5PYW9TaW9XRU9tSFRubTg?oc=5",
+      "published": "Wed, 21 Oct 2026 11:45:00 GMT",
+      "score": 7,
+      "tags": [
+        "협상 추진·논의"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_plan",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29897.25,
+      "pct": 0.7480981626102556,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "23:33 KST",
+      "observed_at_kst": "2026-10-21T23:33:17+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 29675.25,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 29675.25,
+        "chartPreviousClose": 29675.25,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792593197,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792641540,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 97.79000091552734,
+      "pct": -0.030667639002912583,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "23:33 KST",
+      "observed_at_kst": "2026-10-21T23:33:19+09:00",
+      "symbol": "CL=F",
+      "previous_close": 97.82,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 97.82,
+        "chartPreviousClose": 97.82,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792593199,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792641540,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 108.83000183105469,
+      "pct": 0.03676976841131552,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "23:33 KST",
+      "observed_at_kst": "2026-10-21T23:33:15+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 108.79,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 108.79,
+        "chartPreviousClose": 108.79,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792593195,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792555200,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.7509994506836,
+      "pct": 0.0491631849083074,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "23:33 KST",
+      "observed_at_kst": "2026-10-21T23:33:13+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 101.701,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 101.701,
+        "chartPreviousClose": 101.701,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792593193,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792555200,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "original_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟡 <b>발언·제재·외교반응·협상 제약</b>\n🟢 <b>실물 공급회복</b>\n조회 2026-10-21 23:43 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [신규] <b>1. 호르무즈·걸프 · 원유 물동량 회복</b>\n호르무즈 석유 물동량의 기록·급증·회복 신호 — 정식 재개방 여부와 별도로 실제 공급 흐름을 즉시 추적\nRSS 보도 10-21 22:20 KST · <b>82분 경과</b> · 실물물동량 · 원유공급회복 · 호르무즈 · <a href=\"https://t.me/WalterBloomberg/37205\">Walter Bloomberg 원문</a> · RSS 입력 기준·본문 미확인\n\n🟡 [신규] <b>2. 우크라이나·러시아 · 외교 접촉 보도</b>\n러시아는 원칙적으로 11월에 새로운 우크라이나 평화 회담에 참여할 의사가 있다고 크렘린궁은 밝혔습니다.\nRSS 보도 10-21 22:41 KST · <b>62분 경과</b> · 외교 접촉 보도 · <a href=\"https://www.reuters.com/world/russia-is-willing-principle-join-new-ukraine-peace-talks-november-kremlin-says-2026-10-21/\">Reuters 원문</a> · RSS 입력 기준·본문 미확인\n\n🟡 [신규] <b>3. 미국·우크라이나·러시아 · 외교 접촉 보도</b>\n위트코프, 푸틴에 우크라 3자 종전협상 재개 요청…억류 미국인 석방 - 마켓인\nRSS 보도 10-21 22:11 KST · <b>91분 경과</b> · 외교 접촉 보도 · <a href=\"https://news.google.com/rss/articles/CBMic0FVX3lxTE80eEhfeThQUW9ubDBuSVpBRDFJTDl6U29uT0hOWDB2MnJLd19oRW5TZzdTY014N3dweDc5SWRLYkMxd0lEVjM2TExvS1RMeE5zRW8yODFvVmo5TkNsZ0hnVGcxbnFRdmthcE42aDRBbGstUG8?oc=5\">마켓인 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [신규] <b>4. 러시아 · 정상회담 제안·논의</b>\n미 특사, 푸틴에 러·우 종전 구상 전달…3자 회담 재개 논의 - 경향신문\nRSS 보도 10-21 20:45 KST · <b>178분 경과</b> · 협상 추진·논의 · <a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTE14OXp0YVg4MUZSRDhIak9WMUVHVUQwQWdKSW9iVF9HODFNM3dlM1hJV1pFam1hNVFwYzdITnRiOWJrZVhXUTdsV29TX2JVbzBuT2FvU2lvV0VPbUhUbm040gFfQVVfeXFMTXg5enRhWDgxRlJEOEhqT1YxRUdVRDBBZ0pJb2JUX0c4MU0zd2UzWElXWkVqbWE1UXBjN0hOdGI5YmtlWFdRN2xXb1NfYlVvMG5PYW9TaW9XRU9tSFRubTg?oc=5\">경향신문 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,897.25</b>  +0.75% · 제공처 비교종가 대비 · 기준 23:33 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>97.79</b>  -0.03% · 제공처 비교종가 대비 · 기준 23:33 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>108.83</b>  +0.04% · 제공처 비교종가 대비 · 기준 23:33 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.75</b>  +0.05% · 제공처 비교종가 대비 · 기준 23:33 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n",
+  "original_semantic_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟡 <b>발언·제재·외교반응·협상 제약</b>\n🟢 <b>실물 공급회복</b>\n조회 2026-10-21 23:43 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [신규] <b>1. 호르무즈·걸프 · 원유 물동량 회복</b>\n호르무즈 석유 물동량의 기록·급증·회복 신호 — 정식 재개방 여부와 별도로 실제 공급 흐름을 즉시 추적\nRSS 보도 10-21 22:20 KST · <b>82분 경과</b> · 실물물동량 · 원유공급회복 · 호르무즈 · <a href=\"https://t.me/WalterBloomberg/37205\">Walter Bloomberg 원문</a> · RSS 입력 기준·본문 미확인\n\n🟡 [신규] <b>2. 우크라이나·러시아 · 외교 접촉 보도</b>\n러시아는 원칙적으로 11월에 새로운 우크라이나 평화 회담에 참여할 의사가 있다고 크렘린궁은 밝혔습니다.\nRSS 보도 10-21 22:41 KST · <b>62분 경과</b> · 외교 접촉 보도 · <a href=\"https://www.reuters.com/world/russia-is-willing-principle-join-new-ukraine-peace-talks-november-kremlin-says-2026-10-21/\">Reuters 원문</a> · RSS 입력 기준·본문 미확인\n\n🟡 [신규] <b>3. 미국·우크라이나·러시아 · 외교 접촉 보도</b>\n위트코프, 푸틴에 우크라 3자 종전협상 재개 요청…억류 미국인 석방 - 마켓인\nRSS 보도 10-21 22:11 KST · <b>91분 경과</b> · 외교 접촉 보도 · <a href=\"https://news.google.com/rss/articles/CBMic0FVX3lxTE80eEhfeThQUW9ubDBuSVpBRDFJTDl6U29uT0hOWDB2MnJLd19oRW5TZzdTY014N3dweDc5SWRLYkMxd0lEVjM2TExvS1RMeE5zRW8yODFvVmo5TkNsZ0hnVGcxbnFRdmthcE42aDRBbGstUG8?oc=5\">마켓인 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [신규] <b>4. 러시아 · 정상회담 제안·논의</b>\n미 특사, 푸틴에 러·우 종전 구상 전달…3자 회담 재개 논의 - 경향신문\nRSS 보도 10-21 20:45 KST · <b>178분 경과</b> · 협상 추진·논의 · <a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTE14OXp0YVg4MUZSRDhIak9WMUVHVUQwQWdKSW9iVF9HODFNM3dlM1hJV1pFam1hNVFwYzdITnRiOWJrZVhXUTdsV29TX2JVbzBuT2FvU2lvV0VPbUhUbm040gFfQVVfeXFMTXg5enRhWDgxRlJEOEhqT1YxRUdVRDBBZ0pJb2JUX0c4MU0zd2UzWElXWkVqbWE1UXBjN0hOdGI5YmtlWFdRN2xXb1NfYlVvMG5PYW9TaW9XRU9tSFRubTg?oc=5\">경향신문 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,897.25</b>  +0.75% · 제공처 비교종가 대비 · 기준 23:33 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>97.79</b>  -0.03% · 제공처 비교종가 대비 · 기준 23:33 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>108.83</b>  +0.04% · 제공처 비교종가 대비 · 기준 23:33 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.75</b>  +0.05% · 제공처 비교종가 대비 · 기준 23:33 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n",
+  "original_semantic_evidence": {
+    "schema_version": 1,
+    "queried_at_kst": "2026-10-21T23:43:17.031137+09:00",
+    "run_id": "39619132712",
+    "code_sha": "696ed8fd9d9428e29d2c238046f13b62598a7d04",
+    "alert_sha256": "66c755a101b7430369a973d9212b1c57fa13af3ef21b1bd2e0a550517e02c48d",
+    "articles": [
+      {
+        "id": "a33dae0cda0efb8ed8e2",
+        "title_original": "MORE OIL IS LEAVING THE PERSIAN GULF THAN BEFORE THE WAR\nMiddle East oil exports exceeded prewar levels in the week through October 18, according to Kpler.\nA U.S.-protected shipping system is keeping tankers moving despite continued attacks in the Strait of Hormuz.\nYet oil prices remain elevated...",
+        "title_ko": "Kpler에 따르면 전쟁 전보다 더 많은 석유가 페르시아만에서 빠져나오고 있습니다. 중동 석유 수출량이 10월 18일까지 일주일 동안 전쟁 전 수준을 초과했다고 합니다. 미국이 보호하는 해운 시스템은 호르무즈 해협에서 계속되는 공격에도 불구하고 유조선을 계속 움직이게 하고 있습니다. 그래도 기름값은 계속 오르는데..",
+        "description": "MORE OIL IS LEAVING THE PERSIAN GULF THAN BEFORE THE WAR\nMiddle East oil exports exceeded prewar levels in the week through October 18, according to Kpler.\nA U.S.-protected shipping system is keeping tankers moving despite continued attacks in the Strait of Hormuz.\nYet oil prices remain elevated as shipping costs surge, inventories tighten and traders fear renewed escalation.\n( @WalterBloomberg )",
+        "source": "Walter Bloomberg",
+        "link": "https://t.me/WalterBloomberg/37205",
+        "published": "Wed, 21 Oct 2026 13:20:26 +0000",
+        "score": 100,
+        "tags": [
+          "실물물동량",
+          "원유공급회복",
+          "호르무즈"
+        ],
+        "body_checked": true,
+        "signals_ko": [
+          "🟢 호르무즈 석유 물동량의 기록·급증·회복 신호 — 정식 재개방 여부와 별도로 실제 공급 흐름을 즉시 추적"
+        ],
+        "forced_tags": [
+          "호르무즈",
+          "실물물동량",
+          "원유공급회복"
+        ],
+        "classification_color": "red",
+        "body_verified": false,
+        "publication_basis": "discovery_feed",
+        "rendered": true,
+        "article_text_sha256": "ad91e40bf77feadbd105c455745b700787deed8e92452d8b5c50479b989214e6"
+      },
+      {
+        "id": "539d309243dda80c2b2f",
+        "title_original": "Russia is willing in principle to join new Ukraine peace talks in November, Kremlin says",
+        "title_ko": "러시아는 원칙적으로 11월에 새로운 우크라이나 평화 회담에 참여할 의사가 있다고 크렘린궁은 밝혔습니다.",
+        "description": "",
+        "source": "Reuters",
+        "link": "https://www.reuters.com/world/russia-is-willing-principle-join-new-ukraine-peace-talks-november-kremlin-says-2026-10-21/",
+        "published": "2026-10-21T13:41:14.201Z",
+        "score": 12,
+        "tags": [
+          "외교 접촉 보도"
+        ],
+        "body_checked": true,
+        "signals_ko": [],
+        "forced_tags": [],
+        "classification_color": "yellow",
+        "non_military_kind": "diplomatic_contact",
+        "body_verified": false,
+        "publication_basis": "discovery_feed",
+        "rendered": true,
+        "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "b592bb744ced3c857bb1",
+        "title_original": "위트코프, 푸틴에 우크라 3자 종전협상 재개 요청…억류 미국인 석방 - 마켓인",
+        "title_ko": "위트코프, 푸틴에 우크라 3자 종전협상 재개 요청…억류 미국인 석방 - 마켓인",
+        "description": "위트코프, 푸틴에 우크라 3자 종전협상 재개 요청…억류 미국인 석방 마켓인",
+        "source": "마켓인",
+        "source_url": "https://marketin.edaily.co.kr",
+        "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE80eEhfeThQUW9ubDBuSVpBRDFJTDl6U29uT0hOWDB2MnJLd19oRW5TZzdTY014N3dweDc5SWRLYkMxd0lEVjM2TExvS1RMeE5zRW8yODFvVmo5TkNsZ0hnVGcxbnFRdmthcE42aDRBbGstUG8?oc=5",
+        "published": "Wed, 21 Oct 2026 13:11:57 GMT",
+        "score": 9,
+        "tags": [
+          "외교 접촉 보도"
+        ],
+        "body_checked": true,
+        "signals_ko": [],
+        "forced_tags": [],
+        "classification_color": "yellow",
+        "non_military_kind": "diplomatic_contact",
+        "body_verified": false,
+        "publication_basis": "discovery_feed",
+        "rendered": true,
+        "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "2d4c11329fbfa1b98522",
+        "title_original": "미 중간선거 앞…이란 “호르무즈서 유조선 3척 기뢰 충돌” - 한겨레",
+        "title_ko": "미 중간선거 앞…이란 “호르무즈서 유조선 3척 기뢰 충돌” - 한겨레",
+        "description": "미 중간선거 앞…이란 “호르무즈서 유조선 3척 기뢰 충돌” 한겨레",
+        "source": "한겨레",
+        "source_url": "https://www.hani.co.kr",
+        "link": "https://www.hani.co.kr/arti/international/international_general/1283532.html",
+        "discovery_url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxObEwwU1RMRGc2T0drRU40c2RDMDMxYVNkZEp0QVZUeWlIR1ZIUE5uVENqWVU5eFl6ZzlhajdtZThjQTNIVTJzWjZMU1hYUkVFcFBNcXRRdThpRWkxTEdXT1pGeDlXaTRkRDlkTlk5ZWROWExGOUphUkp1NEJNVUxBcnln?oc=5",
+        "resolved_url": "https://www.hani.co.kr/arti/international/international_general/1283532.html",
+        "published": "Wed, 21 Oct 2026 18:54:00 +0900",
+        "rss_published": "Wed, 21 Oct 2026 13:19:00 GMT",
+        "source_metadata": {
+          "title": "미 중간선거 앞…이란 “호르무즈서 유조선 3척 기뢰 충돌”",
+          "publication_status": "verified",
+          "published_at_kst": "2026-10-21T18:54:00+09:00",
+          "publication_candidates": [
+            {
+              "field": "article:published_time",
+              "at_kst": "2026-10-21T18:54:00+09:00"
+            },
+            {
+              "field": "jsonld:datePublished",
+              "at_kst": "2026-10-21T18:54:00+09:00"
+            }
+          ]
+        },
+        "score": 7,
+        "tags": [
+          "선박 기뢰 충돌 보도"
+        ],
+        "body_checked": true,
+        "body_verified": true,
+        "signals_ko": [],
+        "forced_tags": [],
+        "render_withheld": "origin_publication_stale_or_future",
+        "publication_basis": "publisher",
+        "rendered": false,
+        "article_text_sha256": "549ba53bf793a1f701b56daee35e9dc73fc8ade892130bbc5c82d14f2c731ca4"
+      },
+      {
+        "id": "bbc4899366754465f5d3",
+        "title_original": "미 특사, 푸틴에 러·우 종전 구상 전달…3자 회담 재개 논의 - 경향신문",
+        "title_ko": "미 특사, 푸틴에 러·우 종전 구상 전달…3자 회담 재개 논의 - 경향신문",
+        "description": "미 특사, 푸틴에 러·우 종전 구상 전달…3자 회담 재개 논의 경향신문",
+        "source": "경향신문",
+        "source_url": "https://www.khan.co.kr",
+        "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE14OXp0YVg4MUZSRDhIak9WMUVHVUQwQWdKSW9iVF9HODFNM3dlM1hJV1pFam1hNVFwYzdITnRiOWJrZVhXUTdsV29TX2JVbzBuT2FvU2lvV0VPbUhUbm040gFfQVVfeXFMTXg5enRhWDgxRlJEOEhqT1YxRUdVRDBBZ0pJb2JUX0c4MU0zd2UzWElXWkVqbWE1UXBjN0hOdGI5YmtlWFdRN2xXb1NfYlVvMG5PYW9TaW9XRU9tSFRubTg?oc=5",
+        "published": "Wed, 21 Oct 2026 11:45:00 GMT",
+        "score": 7,
+        "tags": [
+          "협상 추진·논의"
+        ],
+        "body_checked": true,
+        "signals_ko": [],
+        "forced_tags": [],
+        "classification_color": "yellow",
+        "non_military_kind": "diplomatic_plan",
+        "body_verified": false,
+        "publication_basis": "discovery_feed",
+        "rendered": true,
+        "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "markets": [
+      {
+        "name": "나스닥100 선물",
+        "price": 29897.25,
+        "pct": 0.7480981626102556,
+        "arrow": "▲",
+        "basis": "제공처 비교종가 대비",
+        "source": "Yahoo Finance 1분봉",
+        "asof": "23:33 KST",
+        "observed_at_kst": "2026-10-21T23:33:17+09:00",
+        "symbol": "NQ=F",
+        "previous_close": 29675.25,
+        "previous_close_field": "chartPreviousClose",
+        "previous_close_date_verified": false,
+        "quote_metadata": {
+          "symbol": "NQ=F",
+          "instrumentType": "FUTURE",
+          "previousClose": 29675.25,
+          "chartPreviousClose": 29675.25,
+          "exchangeTimezoneName": "America/New_York",
+          "regularMarketTime": 1792593197,
+          "currentTradingPeriod": {
+            "pre": {
+              "timezone": "EDT",
+              "start": 1792555200,
+              "end": 1792555200,
+              "gmtoffset": -14400
+            },
+            "regular": {
+              "timezone": "EDT",
+              "start": 1792555200,
+              "end": 1792641540,
+              "gmtoffset": -14400
+            },
+            "post": {
+              "timezone": "EDT",
+              "start": 1792641540,
+              "end": 1792641540,
+              "gmtoffset": -14400
+            }
+          }
+        },
+        "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+        "comparison": null,
+        "verified": false,
+        "verify_note": ""
+      },
+      {
+        "name": "WTI",
+        "price": 97.79000091552734,
+        "pct": -0.030667639002912583,
+        "arrow": "▼",
+        "basis": "제공처 비교종가 대비",
+        "source": "Yahoo Finance 1분봉",
+        "asof": "23:33 KST",
+        "observed_at_kst": "2026-10-21T23:33:19+09:00",
+        "symbol": "CL=F",
+        "previous_close": 97.82,
+        "previous_close_field": "chartPreviousClose",
+        "previous_close_date_verified": false,
+        "quote_metadata": {
+          "symbol": "CL=F",
+          "instrumentType": "FUTURE",
+          "previousClose": 97.82,
+          "chartPreviousClose": 97.82,
+          "exchangeTimezoneName": "America/New_York",
+          "regularMarketTime": 1792593199,
+          "currentTradingPeriod": {
+            "pre": {
+              "timezone": "EDT",
+              "start": 1792555200,
+              "end": 1792555200,
+              "gmtoffset": -14400
+            },
+            "regular": {
+              "timezone": "EDT",
+              "start": 1792555200,
+              "end": 1792641540,
+              "gmtoffset": -14400
+            },
+            "post": {
+              "timezone": "EDT",
+              "start": 1792641540,
+              "end": 1792641540,
+              "gmtoffset": -14400
+            }
+          }
+        },
+        "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+        "comparison": null,
+        "verified": false,
+        "verify_note": ""
+      },
+      {
+        "name": "Brent",
+        "price": 108.83000183105469,
+        "pct": 0.03676976841131552,
+        "arrow": "▲",
+        "basis": "제공처 비교종가 대비",
+        "source": "Yahoo Finance 1분봉",
+        "asof": "23:33 KST",
+        "observed_at_kst": "2026-10-21T23:33:15+09:00",
+        "symbol": "BZ=F",
+        "previous_close": 108.79,
+        "previous_close_field": "chartPreviousClose",
+        "previous_close_date_verified": false,
+        "quote_metadata": {
+          "symbol": "BZ=F",
+          "instrumentType": "FUTURE",
+          "previousClose": 108.79,
+          "chartPreviousClose": 108.79,
+          "exchangeTimezoneName": "America/New_York",
+          "regularMarketTime": 1792593195,
+          "currentTradingPeriod": {
+            "pre": {
+              "timezone": "EDT",
+              "end": 1792555200,
+              "start": 1792555200,
+              "gmtoffset": -14400
+            },
+            "regular": {
+              "timezone": "EDT",
+              "end": 1792641540,
+              "start": 1792555200,
+              "gmtoffset": -14400
+            },
+            "post": {
+              "timezone": "EDT",
+              "end": 1792641540,
+              "start": 1792641540,
+              "gmtoffset": -14400
+            }
+          }
+        },
+        "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+        "comparison": null,
+        "verified": false,
+        "verify_note": ""
+      },
+      {
+        "name": "달러지수",
+        "price": 101.7509994506836,
+        "pct": 0.0491631849083074,
+        "arrow": "▲",
+        "basis": "제공처 비교종가 대비",
+        "source": "Yahoo Finance 1분봉",
+        "asof": "23:33 KST",
+        "observed_at_kst": "2026-10-21T23:33:13+09:00",
+        "symbol": "DX-Y.NYB",
+        "previous_close": 101.701,
+        "previous_close_field": "chartPreviousClose",
+        "previous_close_date_verified": false,
+        "quote_metadata": {
+          "symbol": "DX-Y.NYB",
+          "instrumentType": "INDEX",
+          "previousClose": 101.701,
+          "chartPreviousClose": 101.701,
+          "exchangeTimezoneName": "America/New_York",
+          "regularMarketTime": 1792593193,
+          "currentTradingPeriod": {
+            "pre": {
+              "timezone": "EDT",
+              "end": 1792555200,
+              "start": 1792555200,
+              "gmtoffset": -14400
+            },
+            "regular": {
+              "timezone": "EDT",
+              "end": 1792641540,
+              "start": 1792555200,
+              "gmtoffset": -14400
+            },
+            "post": {
+              "timezone": "EDT",
+              "end": 1792641540,
+              "start": 1792641540,
+              "gmtoffset": -14400
+            }
+          }
+        },
+        "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+        "comparison": null,
+        "verified": false,
+        "verify_note": ""
+      }
+    ],
+    "market_source_status": {
+      "NQ=F": {
+        "name": "나스닥100 선물",
+        "status": "available",
+        "reason": null
+      },
+      "CL=F": {
+        "name": "WTI",
+        "status": "available",
+        "reason": null
+      },
+      "BZ=F": {
+        "name": "Brent",
+        "status": "available",
+        "reason": null
+      },
+      "DX-Y.NYB": {
+        "name": "달러지수",
+        "status": "available",
+        "reason": null
+      }
+    }
+  }
+}
