@@ -123,8 +123,12 @@
     "option_2025": {
       "stage": "option_in_dukovany_epc",
       "date": "2025-06-04",
-      "status": "두코바니 5·6호기 EPC에 테믈린 추가 2기 선택권 포함·아직 미행사",
-      "link": "https://mpo.gov.cz/en/guidepost/for-the-media/press-releases/epc-contract-for-completion-of-dukovany-has-been-signed--minister-of-industry-and-trade--lukas-vlcek-will-visit-korea-again-in-july--287912/"
+      "status": "두코바니 5·6호기 EPC에 테믈린 추가 2기 5년 선택권 포함·아직 미행사",
+      "link": "https://www.cez.cz/nextcez/cs/nove-jaderne-zdroje/elektrarna-temelin-ii/potencialni-dodavatele",
+      "option_tenor_years": 5,
+      "conditional_design": "APR1000",
+      "expected_net_electric_capacity_mw_per_unit": 1000,
+      "contract_source": "https://mpo.gov.cz/en/guidepost/for-the-media/press-releases/epc-contract-for-completion-of-dukovany-has-been-signed--minister-of-industry-and-trade--lukas-vlcek-will-visit-korea-again-in-july--287912/"
     },
     "ministerial_20261020": {
       "stage": "ministerial_interest",
