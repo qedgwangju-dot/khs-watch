@@ -233,7 +233,7 @@ def _diplomatic_group(title):
     actors = []
     for label, pattern in (
             ('미국', r'미국|트럼프|백악관|美|\bwhite\s+house\b|\bu\.s\.|\bunited\s+states\b|'
-                     r'\bus(?=\s+(?:midterms?|elections?|officials?|government|military)\b)|'
+                     r'\bus(?=\s+(?:midterms?|elections?|officials?|government|military|envoys?)\b)|'
                      r'\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너'),
             ('우크라이나', r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b'),
             ('중국', r'중국|시진핑|\b(?:china|chinese|xi(?:\s+jinping)?)\b'),
@@ -891,7 +891,20 @@ def _security_activity_headline(title):
 
 
 def _peace_plan_discussion_headline(title):
-    return bool(re.search(r'(?:종전|평화|휴전)(?:안|구상|초안)(?:을|를)?\s*(?:논의|협의|검토|전달|제시)', title))
+    # Recipients and explicit dates can occur between the plan and its verb.
+    # Keep the match inside one clause; another clause's actual action is
+    # independently retained by non_military_kind and final_color.
+    match = re.search(
+        r'(?:종전|평화|휴전)(?:안|구상|초안)(?:을|를)?[^…;；\n]{0,32}?'
+        r'(?:논의|협의|검토|전달|제시)|'
+        r'\b(?:discuss\w*|deliver\w*|present\w*|hand(?:s|ed)?)\b'
+        r'(?:(?!…|\.{3}|[;；\n]).){0,55}?\b(?:peace|ceasefire)\s+(?:plan|proposal)\b', title)
+    if not match:
+        return False
+    suffix = title[match.end():]
+    prefix = title[max(0, match.start()-35):match.start()]
+    return not (re.match(r'(?:은|는|을|를)?\s*(?:하지\s*않|않겠|부인|거부|사실무근)', suffix)
+                or re.search(r'\b(?:not|never|denies?|denied)\s+(?:\w+\s+){0,2}$', prefix))
 
 
 def _meeting_plan_stage(title):
