@@ -54,12 +54,16 @@ def koreanize_segment(segment: str, seen: set[str] | None = None) -> str:
         # Keep the original identifier and add the Korean gloss only once per alert.
         # If the first visible occurrence already has a parenthetical explanation,
         # treat that term as already explained and leave later occurrences compact.
-        existing = re.search(re.escape(source) + r"\s*\(", out)
-        first = re.search(re.escape(source), out)
+        identifier = re.escape(source)
+        if source == "BTC":
+            # ETF symbols such as BTCO, FBTC, BTCW and GBTC are distinct identifiers.
+            identifier = r"(?<![A-Za-z0-9_])" + identifier + r"(?![A-Za-z0-9_])"
+        existing = re.search(identifier + r"\s*\(", out)
+        first = re.search(identifier, out)
         if first and existing and existing.start() == first.start():
             seen.add(seen_key)
             continue
-        pattern = re.compile(re.escape(source) + r"(?!\s*\()")
+        pattern = re.compile(identifier + r"(?!\s*\()")
         out, count = pattern.subn(replacement, out, count=1)
         if count:
             seen.add(seen_key)
