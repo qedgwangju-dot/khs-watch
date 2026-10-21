@@ -173,11 +173,35 @@ def extract_original_dates(page_html: str, *, now: datetime | None = None) -> di
         if parsed:
             effective = parsed.isoformat()
 
+    # 원문에 연·월·일이 명시된 사건 날짜만 별도로 기록한다.
+    # '지난달', '다음 주' 같은 상대적인 표현을 자동으로 절대 날짜로 바꾸지 않는다.
+    event = ""
+    event_label = ""
+    for label, pattern in (
+        ("계약 체결일", r"계약\s*체결일"),
+        ("착공일", r"착공일"),
+        ("공청회 개최일", r"공청회\s*개최일"),
+        ("회의일", r"회의\s*(?:개최일|일시|일자|날짜)"),
+        ("의결일", r"의결일"),
+        ("행사일", r"행사\s*(?:일시|개최일|날짜)"),
+        ("정책 발표일", r"(?:정부|정책)\s*발표일"),
+    ):
+        match = re.search(r"(?:%s)\s*[:：]?\s*(%s)" % (pattern, _DATE_TEXT), text)
+        if not match:
+            continue
+        parsed = parse_timestamp(match.group(1))
+        if parsed:
+            event = parsed.isoformat()
+            event_label = label
+            break
+
     # 보도자료 수정일은 원문 게시일과 별도로 보존한다.
     return {
         "published": published,
         "modified": modified if modified and modified != published else "",
         "effective": effective,
+        "event": event,
+        "event_label": event_label,
         "published_source": source,
     }
 
@@ -197,6 +221,8 @@ def timeline_lines(
         lines.append(f"원문 게시일  {korean_date(published)}")
     else:
         lines.append("원문 게시일  확인 불가")
+    if record.get("event") and record.get("event_label"):
+        lines.append(f"{record['event_label']}  {korean_date(record['event'])}")
     if modified:
         lines.append(f"원문 수정일  {korean_date(modified)}")
     if effective:
