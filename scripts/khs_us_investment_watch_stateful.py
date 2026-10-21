@@ -639,18 +639,19 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
     stages = {x for x in raw if x.startswith("stage:") and x != "stage:공식정정"}
 
     if family == "us_trade_surplus":
+        report_text = _norm(f"{row.get('title', '')} {row.get('summary', '')}")
         # 1~9월 같은 *실제 누적 기간*과 숫자가 같은 구간에 있어야 한다.
         # '연간 1,000억달러 돌파 확실시'는 실현값으로 사용하지 않는다.
-        period = re.search(r"1\\s*[~∼～\\-–—]\\s*(9|10|11|12)\\s*월", low)
+        period = re.search(r"1\s*[~∼～\-–—]\s*(9|10|11|12)\s*월", report_text)
         if period:
-            window = low[period.start():period.end() + 85]
-            m = re.search(r"(\\d{2,4}(?:,\\d{3})?)\\s*억\\s*(?:달러|불)", window)
+            window = report_text[period.start():period.end() + 85]
+            m = re.search(r"(\d{2,4}(?:,\d{3})?)\s*억\s*(?:달러|불)", window)
             if m:
                 amount = int(m.group(1).replace(",", ""))
                 month = int(period.group(1))
                 if 0 < amount < 5000:
                     facts.add(f"us_trade_surplus_2026_month{month}_100m_usd:{amount}")
-                    speculative = any(x in low for x in (
+                    speculative = any(x in report_text for x in (
                         "확실시", "가능성", "전망", "예상", "눈앞", "넘어설", "넘길 것",
                         "approaching", "expected to", "forecast", "likely to",
                     ))
@@ -942,11 +943,12 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
     if family == "alaska_lng":
         # 비용 추정 오차의 상한(+100%)은 실제 원가 증액이나 한국 분담액이 아니다.
         # GaffneyCline 'Class 5' 위험은 보도/원문 검증 사건으로 분리한다.
-        cost_context = any(x in low for x in ("사업비", "건설비", "공사비", "cost estimate", "cost overrun"))
-        class_five = any(x in low for x in ("5등급", "5 등급", "class 5", "class v", "class-v"))
+        cost_text = _norm(f"{row.get('title', '')} {row.get('summary', '')}")
+        cost_context = any(x in cost_text for x in ("사업비", "건설비", "공사비", "cost estimate", "cost overrun", "비용"))
+        class_five = any(x in cost_text for x in ("5등급", "5 등급", "class 5", "class v", "class-v"))
         reported_upper = (
-            re.search(r"\\+\\s*100\\s*%", low) is not None
-            or any(x in low for x in ("최대 2배", "두 배로 늘", "2배까지 늘", "cost could double"))
+            re.search(r"\+\s*100\s*%", cost_text) is not None
+            or any(x in cost_text for x in ("최대 2배", "두 배로 늘", "2배까지 늘", "cost could double"))
         )
         if cost_context and class_five and reported_upper:
             facts.add("alaska_cost_estimate_class:5")
@@ -1356,7 +1358,7 @@ _FAMILY_LABELS = {
 
 
 def _human_fact(value: str) -> str:
-    match = re.fullmatch(r"us_trade_surplus_2026_month(9|10|11|12)_100m_usd:(\\d+)", value)
+    match = re.fullmatch(r"us_trade_surplus_2026_month(9|10|11|12)_100m_usd:(\d+)", value)
     if match:
         return f"2026년 1~{match.group(1)}월 대미 무역흑자 누적 {match.group(2)}억달러(연간 전망과 구분)"
     labels = {
@@ -2561,13 +2563,15 @@ def _verified_alaska_cost_warning_rows() -> list[dict]:
     # +100%는 Class 5의 추정오차 상한, 실제 증액/한국 확정 분담금이 아니다.
     return [
         {
-            "title": "알래스카 LNG 사업비 GaffneyCline Class 5 5등급 비용 추정, 오차 -50%~+100% 가능성 보도",
+            "title": "한국 70조 내라더니…알래스카 LNG 사업비 2배 늘수도 보고서 파장",
+            "summary": "GaffneyCline 보고서: 알래스카 LNG 사업비 초기 Class 5 비용 추정, 오차 -50%~+100% 가능성",
             "source": "머니투데이",
             "link": "https://www.mt.co.kr/world/2026/10/21/2026102103300258722",
             "published": "2026-10-20T18:36:00+00:00",
         },
         {
-            "title": "알래스카 LNG 초기 5등급 사업비 추정 오차 -50%~+100%, 정밀설계 이전 위험 보도",
+            "title": "알래스카 LNG, 초기 타당성검토 단계…비용 2배로 늘 수 있어",
+            "summary": "GaffneyCline 보고서: 알래스카 LNG 사업비 초기 5등급 오차 -50%~+100%",
             "source": "TJB",
             "link": "https://www.tjb.co.kr/news05/bodo/view/id/105117/version/1",
             "published": "2026-10-20T23:28:00+00:00",
@@ -2579,13 +2583,15 @@ def _verified_us_trade_surplus_rows() -> list[dict]:
     # 1~9월 847억달러는 실적 누적, 연간 1,000억달러는 전망이다.
     return [
         {
-            "title": "2026년 1~9월 대미 무역흑자 847억달러, 연간 1000억달러 돌파 확실시",
+            "title": "사상 첫 대미 무역흑자 1000억달러 돌파 확실…정부, 트럼프 투자 압박에 고심",
+            "summary": "2026년 1~9월 대미 무역흑자 847억달러. 연간 1000억달러 돌파는 전망",
             "source": "헤럴드경제",
             "link": "https://biz.heraldcorp.com/article/10906018",
             "published": "2026-10-18T01:07:00+00:00",
         },
         {
-            "title": "1~9월 대미 무역흑자 847억달러, 연간 1000억달러 눈앞",
+            "title": "대미 무역흑자 1천억불 눈앞…트럼프 투자 압박에 난감한 정부",
+            "summary": "2026년 1~9월 대미 무역흑자 847억달러. 연간 1000억달러 돌파는 전망",
             "source": "연합뉴스",
             "link": "https://www.yna.co.kr/amp/view/AKR20261017041500003",
             "published": "2026-10-17T21:17:00+00:00",
