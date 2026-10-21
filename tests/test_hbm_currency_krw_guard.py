@@ -182,6 +182,40 @@ class CurrencyKRWGuardTests(unittest.TestCase):
         self.assertIn("10억홍콩달러(", out)
         self.assertIn("3억싱가포르달러(", out)
 
+    def test_google_news_url_identifier_is_not_sgd(self):
+        # A real Google News article URL uses opaque base64-like tokens.
+        # "SGd0" (mixed case) used to block all notifications as SGD 0.
+        sample = (
+            '<a href="https://news.google.com/rss/articles/CBMiSGd0abcdUSD9999SGd0?oc=5">'
+            '원문</a> · 필에너지 860억8,000만원 수주'
+        )
+        with patch.object(g, "_rate", side_effect=AssertionError(
+            "URL identifiers must not trigger FX lookup"
+        )):
+            converted = g.enforce_text(sample)
+        self.assertEqual(converted, sample)
+        g.validate_text(converted)
+
+    def test_url_and_real_sgd_amount_are_separated_and_idempotent(self):
+        sample = (
+            '<a href="https://news.google.com/rss/articles/CBMiSGd0a123?oc=5">기사</a> '
+            '실제 결제 SGD 120와 USD 5 million'
+        )
+        with patch.object(g, "_rate", side_effect=self.fake_rate):
+            once = g.enforce_text(sample)
+            twice = g.enforce_text(once)
+        self.assertIn('CBMiSGd0a123?oc=5', once)
+        self.assertIn('SGD 120(약 126,000원)', once)
+        self.assertIn('USD 5 million(약 67억5,000만원)', once)
+        self.assertEqual(once, twice)
+        g.validate_text(twice)
+
+    def test_fake_iso_inside_text_identifier_is_not_money(self):
+        sample = "분석 식별코드 ABCSGd0A123, IDXUSD900, 모든 금액은 원화"
+        with patch.object(g, "_rate", side_effect=AssertionError("not money")):
+            self.assertEqual(g.enforce_text(sample), sample)
+        g.validate_text(sample)
+
     def test_iso_currency_amounts_get_immediate_krw_parentheses(self):
         with patch.object(g, "_rate", side_effect=self.fake_rate):
             out = g.enforce_text("리포트 가격 USD 30,000 / 비용 EUR 2 million")
