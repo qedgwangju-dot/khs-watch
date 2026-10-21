@@ -321,7 +321,7 @@ class BioAlertRegressionTests(unittest.TestCase):
         )
         for line in lines:
             self.assertEqual(guard.ensure_korean_text(line), line)
-        self.assertEqual(guard.ensure_korean_text("FDA가 승인했습니다."), "미국 식품의약국(FDA)가 승인했습니다.")
+        self.assertEqual(guard.ensure_korean_text("FDA 승인"), "미국 식품의약국(FDA) 승인")
 
     def test_qlex_eu_mibc_alert_contains_bold_dated_legal_gate(self):
         rendered = qlex_sender.render_html("\n".join(qlex_watch.eu_mibc_regulatory_lines()))
