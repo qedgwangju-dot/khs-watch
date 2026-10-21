@@ -763,6 +763,10 @@ def render_with_linked_source(rows: list[dict[str, Any]]) -> str:
         else:
             timeline.append("<b>원문 게시일</b>  확인 불가")
             timeline.append(f"<b>검색 노출일(발표일 아님)</b>  {published_date}")
+        if evidence.get("event") and evidence.get("event_label"):
+            timeline.append(
+                f"<b>{html.escape(evidence['event_label'])}</b>  {original_korean_date(evidence['event'])}"
+            )
         if evidence.get("effective"):
             timeline.append(f"<b>법령 시행일</b>  {original_korean_date(evidence['effective'])}")
         body = _replace_in_row(body, title_marker, old_date, "\n".join(timeline))
