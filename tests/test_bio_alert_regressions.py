@@ -317,6 +317,7 @@ class BioAlertRegressionTests(unittest.TestCase):
         lines = (
             "- 원문: https://www.ema.europa.eu/en/medicines/human/variation/keytruda-1",
             "- 원문: https://www.fda.gov/drugs",
+            "https://www.ema.europa.eu/en/medicines/human/variation/keytruda-1",
         )
         for line in lines:
             self.assertEqual(guard.ensure_korean_text(line), line)
