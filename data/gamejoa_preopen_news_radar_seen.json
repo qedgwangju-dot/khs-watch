@@ -5175,6 +5175,28 @@
       "telegram_core_fact": "최근 신한·KB국민·하나·BNK부산은행 및 예가람·웰컴저축은행, 현대캐피탈 등 금융사에서 연쇄적으로 해킹으로 인한 개인정보 유출 피해가 발생했다.",
       "title": "경찰 \"금융기관 해킹 수사 43명으로 확대…수사 공백 없도록 철저\""
     },
+    "core:104c728f1b8e35e3f6a3b3e2": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834357",
+      "source": "뉴시스",
+      "source_body_digest": "9ed51cf31b9d449e1171dfbfba131b0346e6f638874c26a80b46790635499139",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:334090f5fc3fe53297df2ea8e6db7ca8380ea1512872a48c5e9d92e654deba36",
+      "source_fact_keys": [
+        "source_fact:v1:298ba6b1e5270fe21aac5299fccc3892b3819294309de438a716a47d323e2193",
+        "source_fact:v1:765035e51b081d15ef9df198a3d86a1cd05107bae9c67e9fee2a1f8ea9597196",
+        "source_fact:v1:ff1cea197a5a6c8972713f433aea0610388ac27677e351930a97baa75189e04d"
+      ],
+      "source_published_kst": "2026-10-21T08:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액",
+      "telegram_core_fact": "계측제어설비 정비 전문기업 우진엔텍은 기수주한 고리 원자력발전소 3·4호기 정비용역 계약액을 51억원 증액했다고 21일 밝혔다.",
+      "title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액"
+    },
     "core:105f5bfb8f639477da205926": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
       "lanes": {
@@ -10154,6 +10176,26 @@
       "source_title": "매각 요원한 KAI…최대주주 수은 \"아직 계획 없다\"",
       "telegram_core_fact": "한국항공우주산업(KAI)이 수익성 둔화와 수주 부진으로 고전하는 가운데 최대주주인 한국수출입은행이 당장은 지분을 매각할 뜻이 없다고 20일 밝혔다. 올 상반기 매출은 2조2606억원으로 전년비 48% 늘었지만 영업이익은 1156억원으로 감소했다.",
       "title": "매각 요원한 KAI…최대주주 수은 \"아직 계획 없다\""
+    },
+    "core:1f6cdbd861b713f4e147311d": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834346",
+      "source": "뉴시스",
+      "source_body_digest": "710e9b017a420b8b4532c687b55cc614ffb6faeaa1a08c94a6971724c42a2997",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85d7613cc922d7478efc82707e2bff63919f26b1e9d7c4265c654af268b01da5",
+      "source_fact_keys": [
+        "source_fact:v1:5026c895bfb614c793031ca9fc1e34f2da2d568846bf9e2a65c0445a0b31ebe2"
+      ],
+      "source_published_kst": "2026-10-21T08:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "직방, 스마트홈 브랜드 '소마' 출범…자녀 귀가 알리는 도어록 출시",
+      "telegram_core_fact": "직방은 스마트홈 사업 브랜드를 'Soma'로 개편하고, 첫 제품으로 자녀 케어 특화 커넥티드 도어록인 '소마 케어 P1' 을 출시했다고 21일 밝혔다. 이번 브랜드 전환은 지난 2022년 삼성SDS 홈IoT 사업부를 인수한 이후 운영해 온 '직방 스마트홈'을 독립 브랜드로 바꾸는 것이다.",
+      "title": "직방, 스마트홈 브랜드 '소마' 출범…자녀 귀가 알리는 도어록 출시"
     },
     "core:1f7b9d611d949048f8d3bae5": {
       "first_seen_kst": "2026-10-14T23:19:07+09:00",
@@ -21434,6 +21476,26 @@
       "source_title": "9월 자동차 수출·내수 동반 부진…테슬라 모델Y 내수 1위 | 연합뉴스",
       "telegram_core_fact": "9월 친환경차 수출액은 28억9천만달러로 5.9% 증가하며 전체 자동차 수출액의 약 48%를 책임졌다. 9월 업체별 자동차 국내 판매 현황을 보면 테슬라 판매량은 작년 9월 대비 36.4% 증가한 1만2천372대로 현대(4만9천22대), 기아(4만5천963대)에 이어 3위였다.",
       "title": "9월 자동차 수출·내수 동반 부진…테슬라 모델Y 내수 1위 | 연합뉴스"
+    },
+    "core:408c4aa86d8514bd06349399": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833612",
+      "source": "뉴시스",
+      "source_body_digest": "73a8f778767ff5bf5e4391922c44df43dda4c4d88d0c253637e7d8954b6806a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13424757ddd711cef43f5ad98da83910da2979b96d0c1dd1ebe3c7224bdc63bb",
+      "source_fact_keys": [
+        "source_fact:v1:3a6c382f1a484f87958bcb54587edbacf18ebeae6cc58b78971ca1ec926985b0"
+      ],
+      "source_published_kst": "2026-10-21T05:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "HMM, 대형선·피더선 동시 확충…인도·아프리카 항로 공략 '속도'",
+      "telegram_core_fact": "해운업계에 따르면 HMM은 최근 1만3000TEU(1TEU=20피트 컨테이너 1개)급 컨테이너선 8척과 중소형 피더선 4척 등 총 12척을 확보하기 위해 2조1000억원을 투자한다. HMM이 대형 컨테이너선과 중소형 피더선(소규모 컨테이너 운반선)을 동시에 확충하며 글로벌 해상운송망 확대에 속도를 낸다.",
+      "title": "HMM, 대형선·피더선 동시 확충…인도·아프리카 항로 공략 '속도'"
     },
     "core:40b91f4d8bcaa635b5b36fd6": {
       "first_seen_kst": "2026-10-13T14:05:30+09:00",
@@ -40577,6 +40639,28 @@
       "telegram_core_fact": "재무 문제 해결을 위한 한전채 발행과 관련해선 \"한전은 신용등급이 트리플 A 등급으로 한전채를 발행하면 사채 시장에서 일반기업들이 쓸어가기 때문에 일반 기업들의 자금 조달에 큰 문제가 생긴다\"며 \"한전은 할 수 있으면 사채를 발행하지 않는 것이 채권시장에 좋다고 생각하고 있다\"고 생각을 전했다.",
       "title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\""
     },
+    "core:7e1c60ade33d6b16fc7bfc31": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833497",
+      "source": "뉴시스",
+      "source_body_digest": "eb502629bd9b6dfeefe3d3b8ef7369f7781deaabd9958460f07fe00f98c8639c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b9a93cdca9e514fc39b694481a61858606991cc45c95bd53cb2e873863d5df8",
+      "source_fact_keys": [
+        "source_fact:v1:920fabead3aa2d5c2a697f813a96520627aa7f83663ce449c26023908807ecb6",
+        "source_fact:v1:993ad407315766d331ffc8142d6927bc6f2656ed3f2cd9d2f54f85cd63ee4458",
+        "source_fact:v1:d12a0bca699dfd20b3cfd1b4647ffe6d3e98d2062ab80a06c164d5aa98fe6cc6"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크",
+      "telegram_core_fact": "20일 오후 서울 서초구 WSA 와인아카데미에서 열린 '더 오크 아카데미(The Oak Academy)'에서 팀 던컨 실버오크 공동 소유주 겸 최고매출책임자(CRO)는 자체 오크통 제작소를 인수한 이유에 대해 이같이 설명했다.",
+      "title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크"
+    },
     "core:7e2c63517f08a9d8d27799a3": {
       "first_seen_kst": "2026-10-17T06:57:38+09:00",
       "lanes": {
@@ -49731,6 +49815,38 @@
       "telegram_core_fact": "HD현대일렉트릭은 15일 성남시 HD현대 글로벌 R&D 센터에서 LG CNS와 ‘데이터센터 전력 인프라와 스마트팩토리 구축을 위한 상호협력 업무협약’을 체결했다고 밝혔다.",
       "title": "HD현대일렉트릭, LG CNS와 데이터센터·스마트 제조 협력 맞손"
     },
+    "core:9a912647c07f19fd1dc520ea": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
+    },
     "core:9ab032528e1d90317cd43776": {
       "first_seen_kst": "2026-10-15T11:36:50+09:00",
       "lanes": {
@@ -53106,6 +53222,26 @@
       "source_title": "제프리스 파이낸셜, 12개월 순매출 85억 달러..2019년비 119% 증가",
       "telegram_core_fact": "제프리스 파이낸셜(JEF)이 투자자 설명회 자료에서 2026회계연도 3분기(8월 31일 마감) 기준 최근 12개월(LTM) 순매출이 85억 달러로 2019년 대비 119% 증가했고, 전체 주주 귀속 순이익은 9억 달러로 123% 늘었다고 10월 19일 발표했다.",
       "title": "제프리스 파이낸셜, 12개월 순매출 85억 달러..2019년비 119% 증가"
+    },
+    "core:a4c778c5c75618d32d48e6a9": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834280",
+      "source": "뉴시스",
+      "source_body_digest": "87086d5c8e4f62abad9f01154515e85dd952965b2b60ca34636417208e779770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a59bc496c97b37bbc109cd69b7d37b9a52f963a1413e7be29052767aeb05ce8",
+      "source_fact_keys": [
+        "source_fact:v1:e218ba1ccc6b4001b1dd2ddd6b2584bf0a666da28cc753fcff770ce0a8a60d9a"
+      ],
+      "source_published_kst": "2026-10-21T08:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"미국서도 통했다\" 더본코리아 새마을식당, 3년 새 美 매출 70%↑",
+      "telegram_core_fact": "더본코리아에 따르면 미국 텍사스주 캐럴턴에 위치한 새마을식당의 올해 9월 말 기준 월평균 매출은 개점 첫해인 2023년 대비 약 70% 증가했다.",
+      "title": "\"미국서도 통했다\" 더본코리아 새마을식당, 3년 새 美 매출 70%↑"
     },
     "core:a4f5e34357c47c2dff6b4e52": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
@@ -78036,6 +78172,24 @@
       "telegram_core_fact": "중국의 지난 9월 승용차 수출이 1년 전보다 64% 급증한 반면 내수 판매는 27% 감소했다.",
       "title": "中 승용차 수출 64% 급증…내수 27% 감소 속 해외 의존 심화"
     },
+    "core:f6ccc675371464f7839dfde0": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020150100030",
+      "source": "연합뉴스",
+      "source_body_digest": "4aa44dfd76f45d51836df962dc26bba6cde85840bb634dbc60ee5c9d64adff94",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"농어촌기본소득 시범지역 카드매출 29% 증가…청년인구도 늘어\" | 연합뉴스",
+      "telegram_core_fact": "농어촌 기본소득 시범사업을 시행한 지역의 신용카드 매출액이 지난해보다 약 29% 증가하고 청년 인구도 늘어난 것으로 나타났다.",
+      "title": "\"농어촌기본소득 시범지역 카드매출 29% 증가…청년인구도 늘어\" | 연합뉴스"
+    },
     "core:f6d867060309acac77d57e12": {
       "first_seen_kst": "2026-10-15T09:43:41+09:00",
       "lanes": {
@@ -102329,6 +102483,26 @@
       "telegram_core_fact": "지난달 진행된 예비입찰에는 참여하지 않았으나 적격 인수 후보로 선정된 다우키움그룹과 손잡고 본입찰에 나서게 됐다.",
       "title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여"
     },
+    "fact:04283815e304431d1d9d053e": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834280",
+      "source": "뉴시스",
+      "source_body_digest": "87086d5c8e4f62abad9f01154515e85dd952965b2b60ca34636417208e779770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a59bc496c97b37bbc109cd69b7d37b9a52f963a1413e7be29052767aeb05ce8",
+      "source_fact_keys": [
+        "source_fact:v1:e218ba1ccc6b4001b1dd2ddd6b2584bf0a666da28cc753fcff770ce0a8a60d9a"
+      ],
+      "source_published_kst": "2026-10-21T08:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"미국서도 통했다\" 더본코리아 새마을식당, 3년 새 美 매출 70%↑",
+      "telegram_core_fact": "더본코리아에 따르면 미국 텍사스주 캐럴턴에 위치한 새마을식당의 올해 9월 말 기준 월평균 매출은 개점 첫해인 2023년 대비 약 70% 증가했다.",
+      "title": "\"미국서도 통했다\" 더본코리아 새마을식당, 3년 새 美 매출 70%↑"
+    },
     "fact:042b380e7790769f45e4b055": {
       "first_seen_kst": "2026-10-15T03:55:55+09:00",
       "lanes": {
@@ -109000,6 +109174,28 @@
       "source_title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도",
       "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조원을 처음 넘어서며 역대 최대 분기 실적을 기록했다.",
       "title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도"
+    },
+    "fact:158b1eb19359b9d7bf8831a6": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834357",
+      "source": "뉴시스",
+      "source_body_digest": "9ed51cf31b9d449e1171dfbfba131b0346e6f638874c26a80b46790635499139",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:334090f5fc3fe53297df2ea8e6db7ca8380ea1512872a48c5e9d92e654deba36",
+      "source_fact_keys": [
+        "source_fact:v1:298ba6b1e5270fe21aac5299fccc3892b3819294309de438a716a47d323e2193",
+        "source_fact:v1:765035e51b081d15ef9df198a3d86a1cd05107bae9c67e9fee2a1f8ea9597196",
+        "source_fact:v1:ff1cea197a5a6c8972713f433aea0610388ac27677e351930a97baa75189e04d"
+      ],
+      "source_published_kst": "2026-10-21T08:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액",
+      "telegram_core_fact": "계측제어설비 정비 전문기업 우진엔텍은 기수주한 고리 원자력발전소 3·4호기 정비용역 계약액을 51억원 증액했다고 21일 밝혔다.",
+      "title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액"
     },
     "fact:158ede7b75051cc41a22a95a": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -121185,6 +121381,26 @@
       "telegram_core_fact": "유럽연합(EU)의 '포장재 및 포장재 폐기물 규제(PPWR)'가 지난 8월 본격 시행에 들어간 가운데, 정부가 뷰티·푸드·포장재 중소기업의 규제 대응력 강화에 나섰다.",
       "title": "\"유럽 포장재 규제대응 지원\"…중소기업 간담회"
     },
+    "fact:3a733d635865460bce61aba0": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833612",
+      "source": "뉴시스",
+      "source_body_digest": "73a8f778767ff5bf5e4391922c44df43dda4c4d88d0c253637e7d8954b6806a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13424757ddd711cef43f5ad98da83910da2979b96d0c1dd1ebe3c7224bdc63bb",
+      "source_fact_keys": [
+        "source_fact:v1:3a6c382f1a484f87958bcb54587edbacf18ebeae6cc58b78971ca1ec926985b0"
+      ],
+      "source_published_kst": "2026-10-21T05:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "HMM, 대형선·피더선 동시 확충…인도·아프리카 항로 공략 '속도'",
+      "telegram_core_fact": "해운업계에 따르면 HMM은 최근 1만3000TEU(1TEU=20피트 컨테이너 1개)급 컨테이너선 8척과 중소형 피더선 4척 등 총 12척을 확보하기 위해 2조1000억원을 투자한다. HMM이 대형 컨테이너선과 중소형 피더선(소규모 컨테이너 운반선)을 동시에 확충하며 글로벌 해상운송망 확대에 속도를 낸다.",
+      "title": "HMM, 대형선·피더선 동시 확충…인도·아프리카 항로 공략 '속도'"
+    },
     "fact:3a858ac8d19b135778dcd504": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -127958,6 +128174,28 @@
       "source_title": "두나무·네이버 주식교환 일정 연장…주총 2월·교환일 3월로 변경",
       "telegram_core_fact": "네이버는 7일 기재정정공시를 통해 주주총회 예정일을 기존 11월19일에서 내년 2월26일로, 주식교환·이전일을 12월31일에서 내년 3월31일로 변경했다고 밝혔다. 두나무와 네이버파이낸셜의 포괄적 주식교환 일정이 약 3개월 연장됐다.",
       "title": "두나무·네이버 주식교환 일정 연장…주총 2월·교환일 3월로 변경"
+    },
+    "fact:4e7862a89dfb75519aaddb33": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833497",
+      "source": "뉴시스",
+      "source_body_digest": "eb502629bd9b6dfeefe3d3b8ef7369f7781deaabd9958460f07fe00f98c8639c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b9a93cdca9e514fc39b694481a61858606991cc45c95bd53cb2e873863d5df8",
+      "source_fact_keys": [
+        "source_fact:v1:920fabead3aa2d5c2a697f813a96520627aa7f83663ce449c26023908807ecb6",
+        "source_fact:v1:993ad407315766d331ffc8142d6927bc6f2656ed3f2cd9d2f54f85cd63ee4458",
+        "source_fact:v1:d12a0bca699dfd20b3cfd1b4647ffe6d3e98d2062ab80a06c164d5aa98fe6cc6"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크",
+      "telegram_core_fact": "20일 오후 서울 서초구 WSA 와인아카데미에서 열린 '더 오크 아카데미(The Oak Academy)'에서 팀 던컨 실버오크 공동 소유주 겸 최고매출책임자(CRO)는 자체 오크통 제작소를 인수한 이유에 대해 이같이 설명했다.",
+      "title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크"
     },
     "fact:4e89f2d9ad899108fa02980d": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
@@ -169935,6 +170173,38 @@
       "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
       "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
     },
+    "fact:c0725b99455df5f472506f48": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
+    },
     "fact:c07330ec803249d417ad3f78": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -189856,6 +190126,26 @@
       ],
       "source_published_kst": "2026-10-05T22:23+09:00",
       "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
+    },
+    "fact:f6d9de9e535216782c072891": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834346",
+      "source": "뉴시스",
+      "source_body_digest": "710e9b017a420b8b4532c687b55cc614ffb6faeaa1a08c94a6971724c42a2997",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85d7613cc922d7478efc82707e2bff63919f26b1e9d7c4265c654af268b01da5",
+      "source_fact_keys": [
+        "source_fact:v1:5026c895bfb614c793031ca9fc1e34f2da2d568846bf9e2a65c0445a0b31ebe2"
+      ],
+      "source_published_kst": "2026-10-21T08:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "직방, 스마트홈 브랜드 '소마' 출범…자녀 귀가 알리는 도어록 출시",
+      "telegram_core_fact": "직방은 스마트홈 사업 브랜드를 'Soma'로 개편하고, 첫 제품으로 자녀 케어 특화 커넥티드 도어록인 '소마 케어 P1' 을 출시했다고 21일 밝혔다. 이번 브랜드 전환은 지난 2022년 삼성SDS 홈IoT 사업부를 인수한 이후 운영해 온 '직방 스마트홈'을 독립 브랜드로 바꾸는 것이다.",
+      "title": "직방, 스마트홈 브랜드 '소마' 출범…자녀 귀가 알리는 도어록 출시"
     },
     "fact:f6fa51906b6d7890f52e710f": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -229026,6 +229316,38 @@
       "telegram_core_fact": "한국해양과학기술원이 8일 내놓은 현안 보고서를 보면 2010년 5천155t에 달하던 제주 연근해 해조류 생산량은 지난해 154t으로 97% 감소했다. 제주 연안의 바다숲 소멸은 생태계 변화의 신호탄으로, 아열대화를 지속해서 관측해야 한다는 의견이 나왔다.",
       "title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스"
     },
+    "link:4b70870d6e038b96c8a0e0a9": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
+    },
     "link:4b74666d00d22a2c7b2a7a22": {
       "first_seen_kst": "2026-10-13T18:11:03+09:00",
       "lanes": {
@@ -241929,6 +242251,26 @@
       "telegram_core_fact": "로이터 통신에 따르면 MS는 내년에 마이아 300을 100만 개 이상 배치할 수 있다고 밝혔다. 마이크로소프트(MS)가 3세대 자체 인공지능(AI) 칩 '마이아 300'을 공개하고 내년부터 대규모로 배치해 엔비디아 의존도를 낮추기로 했다.",
       "title": "MS, 자체 AI칩 '마이아 300' 공개…\"내년 100만개 이상 배치\" | 연합뉴스"
     },
+    "link:667571a70ce4dd472df10d78": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834346",
+      "source": "뉴시스",
+      "source_body_digest": "710e9b017a420b8b4532c687b55cc614ffb6faeaa1a08c94a6971724c42a2997",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85d7613cc922d7478efc82707e2bff63919f26b1e9d7c4265c654af268b01da5",
+      "source_fact_keys": [
+        "source_fact:v1:5026c895bfb614c793031ca9fc1e34f2da2d568846bf9e2a65c0445a0b31ebe2"
+      ],
+      "source_published_kst": "2026-10-21T08:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "직방, 스마트홈 브랜드 '소마' 출범…자녀 귀가 알리는 도어록 출시",
+      "telegram_core_fact": "직방은 스마트홈 사업 브랜드를 'Soma'로 개편하고, 첫 제품으로 자녀 케어 특화 커넥티드 도어록인 '소마 케어 P1' 을 출시했다고 21일 밝혔다. 이번 브랜드 전환은 지난 2022년 삼성SDS 홈IoT 사업부를 인수한 이후 운영해 온 '직방 스마트홈'을 독립 브랜드로 바꾸는 것이다.",
+      "title": "직방, 스마트홈 브랜드 '소마' 출범…자녀 귀가 알리는 도어록 출시"
+    },
     "link:668184586397db0a72eb59ca": {
       "first_seen_kst": "2026-10-18T09:22:47+09:00",
       "lanes": {
@@ -245842,6 +246184,26 @@
       "telegram_core_fact": "양국이 협력 가능한 함종과 장기 발주 일정, 투자 규모, 정책금융 조건을 구체화하고 실제 선박 인도와 미국 내 고용 창출 등을 기준으로 사업 성과를 평가하자는 것이다.",
       "title": "韓 첫 대미 투자서 조선업 빠진 이유…\"美, 장기 발주 계획 내놔야\""
     },
+    "link:6e5ef4955b74194997fbb996": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833612",
+      "source": "뉴시스",
+      "source_body_digest": "73a8f778767ff5bf5e4391922c44df43dda4c4d88d0c253637e7d8954b6806a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13424757ddd711cef43f5ad98da83910da2979b96d0c1dd1ebe3c7224bdc63bb",
+      "source_fact_keys": [
+        "source_fact:v1:3a6c382f1a484f87958bcb54587edbacf18ebeae6cc58b78971ca1ec926985b0"
+      ],
+      "source_published_kst": "2026-10-21T05:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "HMM, 대형선·피더선 동시 확충…인도·아프리카 항로 공략 '속도'",
+      "telegram_core_fact": "해운업계에 따르면 HMM은 최근 1만3000TEU(1TEU=20피트 컨테이너 1개)급 컨테이너선 8척과 중소형 피더선 4척 등 총 12척을 확보하기 위해 2조1000억원을 투자한다. HMM이 대형 컨테이너선과 중소형 피더선(소규모 컨테이너 운반선)을 동시에 확충하며 글로벌 해상운송망 확대에 속도를 낸다.",
+      "title": "HMM, 대형선·피더선 동시 확충…인도·아프리카 항로 공략 '속도'"
+    },
     "link:6e601c0b0261aa9017717070": {
       "first_seen_kst": "2026-09-21T17:23:09+09:00",
       "lanes": {
@@ -247469,6 +247831,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "거제·통영 호우피해 中企·소상공인 정책자금 우대…금리 1.5%로 인하"
+    },
+    "link:71fcc3629c5a62576f111a1f": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833497",
+      "source": "뉴시스",
+      "source_body_digest": "eb502629bd9b6dfeefe3d3b8ef7369f7781deaabd9958460f07fe00f98c8639c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b9a93cdca9e514fc39b694481a61858606991cc45c95bd53cb2e873863d5df8",
+      "source_fact_keys": [
+        "source_fact:v1:920fabead3aa2d5c2a697f813a96520627aa7f83663ce449c26023908807ecb6",
+        "source_fact:v1:993ad407315766d331ffc8142d6927bc6f2656ed3f2cd9d2f54f85cd63ee4458",
+        "source_fact:v1:d12a0bca699dfd20b3cfd1b4647ffe6d3e98d2062ab80a06c164d5aa98fe6cc6"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크",
+      "telegram_core_fact": "20일 오후 서울 서초구 WSA 와인아카데미에서 열린 '더 오크 아카데미(The Oak Academy)'에서 팀 던컨 실버오크 공동 소유주 겸 최고매출책임자(CRO)는 자체 오크통 제작소를 인수한 이유에 대해 이같이 설명했다.",
+      "title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크"
     },
     "link:7211edcf560acae185f5b5be": {
       "first_seen_kst": "2026-10-20T16:54:02+09:00",
@@ -270212,6 +270596,24 @@
       "telegram_core_fact": "금융위원회가 단일종목 레버리지 상장지수펀드(ETF) 도입 전 스트레스테스트를 시행하지 않았다는 지적에 이억원 금융위 위원장이 투자자 위험성, 시장 영향 등을 점검했다고 반박했다.",
       "title": "'스트레스테스트 미비' 지적에… 이억원 \"레버리지 ETF 위험성 점검했다\"[2026국감]"
     },
+    "link:a1b949a6d29153e3b91204ca": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020150100030",
+      "source": "연합뉴스",
+      "source_body_digest": "4aa44dfd76f45d51836df962dc26bba6cde85840bb634dbc60ee5c9d64adff94",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"농어촌기본소득 시범지역 카드매출 29% 증가…청년인구도 늘어\" | 연합뉴스",
+      "telegram_core_fact": "농어촌 기본소득 시범사업을 시행한 지역의 신용카드 매출액이 지난해보다 약 29% 증가하고 청년 인구도 늘어난 것으로 나타났다.",
+      "title": "\"농어촌기본소득 시범지역 카드매출 29% 증가…청년인구도 늘어\" | 연합뉴스"
+    },
     "link:a1bdc9b3716159336f5ee338": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
       "lanes": {
@@ -271105,6 +271507,28 @@
       "source_title": "신한투자증권, 은퇴 후 현금흐름 관리 위한 ‘신한마음편한RIF’ 판매",
       "telegram_core_fact": "월배당형은 목표 분배율을 기반으로 매월 자동으로 분배금을 지급해 계획적인 현금흐름 관리를 지원한다.",
       "title": "신한투자증권, 은퇴 후 현금흐름 관리 위한 ‘신한마음편한RIF’ 판매"
+    },
+    "link:a3400b627af2c2c66b2a8c8a": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834357",
+      "source": "뉴시스",
+      "source_body_digest": "9ed51cf31b9d449e1171dfbfba131b0346e6f638874c26a80b46790635499139",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:334090f5fc3fe53297df2ea8e6db7ca8380ea1512872a48c5e9d92e654deba36",
+      "source_fact_keys": [
+        "source_fact:v1:298ba6b1e5270fe21aac5299fccc3892b3819294309de438a716a47d323e2193",
+        "source_fact:v1:765035e51b081d15ef9df198a3d86a1cd05107bae9c67e9fee2a1f8ea9597196",
+        "source_fact:v1:ff1cea197a5a6c8972713f433aea0610388ac27677e351930a97baa75189e04d"
+      ],
+      "source_published_kst": "2026-10-21T08:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액",
+      "telegram_core_fact": "계측제어설비 정비 전문기업 우진엔텍은 기수주한 고리 원자력발전소 3·4호기 정비용역 계약액을 51억원 증액했다고 21일 밝혔다.",
+      "title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액"
     },
     "link:a345b2902e90e9200881b732": {
       "first_seen_kst": "2026-10-19T20:38:33+09:00",
@@ -273590,6 +274014,26 @@
       "source_title": "\"앤트로픽-NTT, 오사카에 日 최대 데이터센터 건립 조율\"",
       "telegram_core_fact": "보도에 따르면 NTT의 자회사인 NTT데이터그룹과 앤트로픽이 오사카부 남쪽 해안 지역에 일본 내 인공지능(AI) 서비스 거점으로서 데이터센터를 신설하기 위한 협의를 진행 중이다.",
       "title": "\"앤트로픽-NTT, 오사카에 日 최대 데이터센터 건립 조율\""
+    },
+    "link:a8c532754dc71483a94334e7": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834280",
+      "source": "뉴시스",
+      "source_body_digest": "87086d5c8e4f62abad9f01154515e85dd952965b2b60ca34636417208e779770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a59bc496c97b37bbc109cd69b7d37b9a52f963a1413e7be29052767aeb05ce8",
+      "source_fact_keys": [
+        "source_fact:v1:e218ba1ccc6b4001b1dd2ddd6b2584bf0a666da28cc753fcff770ce0a8a60d9a"
+      ],
+      "source_published_kst": "2026-10-21T08:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"미국서도 통했다\" 더본코리아 새마을식당, 3년 새 美 매출 70%↑",
+      "telegram_core_fact": "더본코리아에 따르면 미국 텍사스주 캐럴턴에 위치한 새마을식당의 올해 9월 말 기준 월평균 매출은 개점 첫해인 2023년 대비 약 70% 증가했다.",
+      "title": "\"미국서도 통했다\" 더본코리아 새마을식당, 3년 새 美 매출 70%↑"
     },
     "link:a8cef0ff475c58080ce12ac5": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
@@ -319170,6 +319614,26 @@
       "telegram_core_fact": "앤트로픽은 당초 이달 중 상장을 추진했으나 일정이 연기되면서, 11월 미국 중간선거 이후 상장할 가능성이 커졌다.",
       "title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연"
     },
+    "original:0b8d961f501780ab3b91bb16": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833612",
+      "source": "뉴시스",
+      "source_body_digest": "73a8f778767ff5bf5e4391922c44df43dda4c4d88d0c253637e7d8954b6806a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13424757ddd711cef43f5ad98da83910da2979b96d0c1dd1ebe3c7224bdc63bb",
+      "source_fact_keys": [
+        "source_fact:v1:3a6c382f1a484f87958bcb54587edbacf18ebeae6cc58b78971ca1ec926985b0"
+      ],
+      "source_published_kst": "2026-10-21T05:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "HMM, 대형선·피더선 동시 확충…인도·아프리카 항로 공략 '속도'",
+      "telegram_core_fact": "해운업계에 따르면 HMM은 최근 1만3000TEU(1TEU=20피트 컨테이너 1개)급 컨테이너선 8척과 중소형 피더선 4척 등 총 12척을 확보하기 위해 2조1000억원을 투자한다. HMM이 대형 컨테이너선과 중소형 피더선(소규모 컨테이너 운반선)을 동시에 확충하며 글로벌 해상운송망 확대에 속도를 낸다.",
+      "title": "HMM, 대형선·피더선 동시 확충…인도·아프리카 항로 공략 '속도'"
+    },
     "original:0b8f0cd0f79fd0a9c90360d3": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -325429,6 +325893,24 @@
       "source_title": "'삼성전자 67만원·하이닉스 470만원'…노무라가 ‘매수’ 꼽은 이유",
       "telegram_core_fact": "인공지능(AI) 기업의 성장 둔화와 자금 조달 우려에도 노무라증권은 삼성전자와 SK하이닉스에 대한 매수 의견을 유지했다. 노무라는 공급 확대가 수요 증가를 따라가지 못하는 현상이 적어도 오는 2028년까지는 이어질 것으로 내다봤다.",
       "title": "'삼성전자 67만원·하이닉스 470만원'…노무라가 ‘매수’ 꼽은 이유"
+    },
+    "original:18d5c73263a9cda6d7f7d43d": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020150100030",
+      "source": "연합뉴스",
+      "source_body_digest": "4aa44dfd76f45d51836df962dc26bba6cde85840bb634dbc60ee5c9d64adff94",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"농어촌기본소득 시범지역 카드매출 29% 증가…청년인구도 늘어\" | 연합뉴스",
+      "telegram_core_fact": "농어촌 기본소득 시범사업을 시행한 지역의 신용카드 매출액이 지난해보다 약 29% 증가하고 청년 인구도 늘어난 것으로 나타났다.",
+      "title": "\"농어촌기본소득 시범지역 카드매출 29% 증가…청년인구도 늘어\" | 연합뉴스"
     },
     "original:18eaef8d3c1b962cf6d1d8fc": {
       "first_seen_kst": "2026-10-12T18:02:18+09:00",
@@ -335615,6 +336097,38 @@
       "source_title": "제이티 수주공시 - Sorter 56.8억원 (매출액대비 14.79 %)",
       "telegram_core_fact": "제이티(089790)는 Sorter에 관한 단일판매ㆍ공급계약체결 을 16일에 공시했다.",
       "title": "제이티 수주공시 - Sorter 56.8억원 (매출액대비 14.79 %)"
+    },
+    "original:2e3aaf125e3afb5b350e217a": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
     },
     "original:2e42d213cb4f8634755f7ba9": {
       "first_seen_kst": "2026-10-10T09:31:49+09:00",
@@ -352701,6 +353215,28 @@
       "source_title": "국가필수의약품 공급 차질 4년 새 2.8배…식약처는 상당수 '조치 불필요'",
       "telegram_core_fact": "일부 의약품은 공급 차질이 반복되고 있지만 식품의약품안전처가 상당수 사례를 별도 조치가 필요하지 않은 것으로 판단하면서 공급 안정화를 위한 관리체계 개선이 필요하다는 지적이 나온다. 그가 제시한 자료에서는 국가필수의약품 공급 중단·부족 보고 56건 가운데 38건이 '조치 불필요'로 분류됐다.",
       "title": "국가필수의약품 공급 차질 4년 새 2.8배…식약처는 상당수 '조치 불필요'"
+    },
+    "original:52da79f6118f667b85014f76": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834357",
+      "source": "뉴시스",
+      "source_body_digest": "9ed51cf31b9d449e1171dfbfba131b0346e6f638874c26a80b46790635499139",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:334090f5fc3fe53297df2ea8e6db7ca8380ea1512872a48c5e9d92e654deba36",
+      "source_fact_keys": [
+        "source_fact:v1:298ba6b1e5270fe21aac5299fccc3892b3819294309de438a716a47d323e2193",
+        "source_fact:v1:765035e51b081d15ef9df198a3d86a1cd05107bae9c67e9fee2a1f8ea9597196",
+        "source_fact:v1:ff1cea197a5a6c8972713f433aea0610388ac27677e351930a97baa75189e04d"
+      ],
+      "source_published_kst": "2026-10-21T08:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액",
+      "telegram_core_fact": "계측제어설비 정비 전문기업 우진엔텍은 기수주한 고리 원자력발전소 3·4호기 정비용역 계약액을 51억원 증액했다고 21일 밝혔다.",
+      "title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액"
     },
     "original:52e0dd680f6a4680eb7ef691": {
       "first_seen_kst": "2026-10-18T06:42:56+09:00",
@@ -377110,6 +377646,26 @@
       "source_published_kst": "2026-10-06T17:45+09:00",
       "title": "LG전자, 르노에 콕핏 솔루션 … 유럽 최초 상용 SDV에 탑재"
     },
+    "original:887f7c59f341ddac22ef0b45": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834346",
+      "source": "뉴시스",
+      "source_body_digest": "710e9b017a420b8b4532c687b55cc614ffb6faeaa1a08c94a6971724c42a2997",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85d7613cc922d7478efc82707e2bff63919f26b1e9d7c4265c654af268b01da5",
+      "source_fact_keys": [
+        "source_fact:v1:5026c895bfb614c793031ca9fc1e34f2da2d568846bf9e2a65c0445a0b31ebe2"
+      ],
+      "source_published_kst": "2026-10-21T08:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "직방, 스마트홈 브랜드 '소마' 출범…자녀 귀가 알리는 도어록 출시",
+      "telegram_core_fact": "직방은 스마트홈 사업 브랜드를 'Soma'로 개편하고, 첫 제품으로 자녀 케어 특화 커넥티드 도어록인 '소마 케어 P1' 을 출시했다고 21일 밝혔다. 이번 브랜드 전환은 지난 2022년 삼성SDS 홈IoT 사업부를 인수한 이후 운영해 온 '직방 스마트홈'을 독립 브랜드로 바꾸는 것이다.",
+      "title": "직방, 스마트홈 브랜드 '소마' 출범…자녀 귀가 알리는 도어록 출시"
+    },
     "original:8883a8a2096ce0cb3390e712": {
       "first_seen_kst": "2026-10-15T17:19:13+09:00",
       "lanes": {
@@ -380240,6 +380796,28 @@
       "source_title": "식약처 \"국제인증표준품 관련 종합안내서 발간\"",
       "telegram_core_fact": "식약처 소속 식품의약품안전평가원은 국제인증표준품(CRM) 및 NDMA 등 니트로사민류 표준품을 포함한 '2026 식품의약품안전처 표준품 종합안내서'를 발간하고 이날부터 표준품 분양을 시작한다고 12일 밝혔다.",
       "title": "식약처 \"국제인증표준품 관련 종합안내서 발간\""
+    },
+    "original:8e8a647f9fc62372569c7eda": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833497",
+      "source": "뉴시스",
+      "source_body_digest": "eb502629bd9b6dfeefe3d3b8ef7369f7781deaabd9958460f07fe00f98c8639c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b9a93cdca9e514fc39b694481a61858606991cc45c95bd53cb2e873863d5df8",
+      "source_fact_keys": [
+        "source_fact:v1:920fabead3aa2d5c2a697f813a96520627aa7f83663ce449c26023908807ecb6",
+        "source_fact:v1:993ad407315766d331ffc8142d6927bc6f2656ed3f2cd9d2f54f85cd63ee4458",
+        "source_fact:v1:d12a0bca699dfd20b3cfd1b4647ffe6d3e98d2062ab80a06c164d5aa98fe6cc6"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크",
+      "telegram_core_fact": "20일 오후 서울 서초구 WSA 와인아카데미에서 열린 '더 오크 아카데미(The Oak Academy)'에서 팀 던컨 실버오크 공동 소유주 겸 최고매출책임자(CRO)는 자체 오크통 제작소를 인수한 이유에 대해 이같이 설명했다.",
+      "title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크"
     },
     "original:8e8cc41eff7274ce285a7be3": {
       "first_seen_kst": "2026-10-17T18:59:01+09:00",
@@ -406136,6 +406714,26 @@
       "link": "https://www.etnews.com/20260928000186",
       "source": "전자신문",
       "title": "통신3사 CEO “개인정보 보호가 기업 최우선 경영 가치”…개인정보위원장과 공동선언문 발표"
+    },
+    "original:c8801c0ab855bd58f33d67b4": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834280",
+      "source": "뉴시스",
+      "source_body_digest": "87086d5c8e4f62abad9f01154515e85dd952965b2b60ca34636417208e779770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a59bc496c97b37bbc109cd69b7d37b9a52f963a1413e7be29052767aeb05ce8",
+      "source_fact_keys": [
+        "source_fact:v1:e218ba1ccc6b4001b1dd2ddd6b2584bf0a666da28cc753fcff770ce0a8a60d9a"
+      ],
+      "source_published_kst": "2026-10-21T08:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"미국서도 통했다\" 더본코리아 새마을식당, 3년 새 美 매출 70%↑",
+      "telegram_core_fact": "더본코리아에 따르면 미국 텍사스주 캐럴턴에 위치한 새마을식당의 올해 9월 말 기준 월평균 매출은 개점 첫해인 2023년 대비 약 70% 증가했다.",
+      "title": "\"미국서도 통했다\" 더본코리아 새마을식당, 3년 새 美 매출 70%↑"
     },
     "original:c8888ce5361e6dcb8e362dd3": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
@@ -434123,6 +434721,26 @@
       "telegram_core_fact": "구체적인 내용은 공개되지 않았지만, 외신 보도를 종합하면 미국의 해상봉쇄 해제, 동결자금 즉시 반환, 이란산 원유 수출 제재 면제, 모든 전선에서 전투 중단 등의 조건을 미국이 이행하면 호르무즈 해협을 재개방하겠다는 내용이 담긴 것으로 추정된다.",
       "title": "이란, 美에 \"호르무즈 개방 '7일 계획' 여전히 유효\" | 연합뉴스"
     },
+    "source_fact:018e5a846f7b8f52f841dd45": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834346",
+      "source": "뉴시스",
+      "source_body_digest": "710e9b017a420b8b4532c687b55cc614ffb6faeaa1a08c94a6971724c42a2997",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85d7613cc922d7478efc82707e2bff63919f26b1e9d7c4265c654af268b01da5",
+      "source_fact_keys": [
+        "source_fact:v1:5026c895bfb614c793031ca9fc1e34f2da2d568846bf9e2a65c0445a0b31ebe2"
+      ],
+      "source_published_kst": "2026-10-21T08:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "직방, 스마트홈 브랜드 '소마' 출범…자녀 귀가 알리는 도어록 출시",
+      "telegram_core_fact": "직방은 스마트홈 사업 브랜드를 'Soma'로 개편하고, 첫 제품으로 자녀 케어 특화 커넥티드 도어록인 '소마 케어 P1' 을 출시했다고 21일 밝혔다. 이번 브랜드 전환은 지난 2022년 삼성SDS 홈IoT 사업부를 인수한 이후 운영해 온 '직방 스마트홈'을 독립 브랜드로 바꾸는 것이다.",
+      "title": "직방, 스마트홈 브랜드 '소마' 출범…자녀 귀가 알리는 도어록 출시"
+    },
     "source_fact:019057c0f7313d8c6f17f106": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
       "lanes": {
@@ -441437,6 +442055,26 @@
       "telegram_core_fact": "한미사이언스 개인 최대주주인 신동국 한양정밀 회장 측이 장외 지분 매입에 따른 공개매수 의무 위반 논란에 입장을 밝혔다.",
       "title": "신동국 측 “특수관계인 거래 제외시 10명 미만”…공개매수 논란 설명"
     },
+    "source_fact:057867eb50f1a91836c754c2": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834280",
+      "source": "뉴시스",
+      "source_body_digest": "87086d5c8e4f62abad9f01154515e85dd952965b2b60ca34636417208e779770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a59bc496c97b37bbc109cd69b7d37b9a52f963a1413e7be29052767aeb05ce8",
+      "source_fact_keys": [
+        "source_fact:v1:e218ba1ccc6b4001b1dd2ddd6b2584bf0a666da28cc753fcff770ce0a8a60d9a"
+      ],
+      "source_published_kst": "2026-10-21T08:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"미국서도 통했다\" 더본코리아 새마을식당, 3년 새 美 매출 70%↑",
+      "telegram_core_fact": "더본코리아에 따르면 미국 텍사스주 캐럴턴에 위치한 새마을식당의 올해 9월 말 기준 월평균 매출은 개점 첫해인 2023년 대비 약 70% 증가했다.",
+      "title": "\"미국서도 통했다\" 더본코리아 새마을식당, 3년 새 美 매출 70%↑"
+    },
     "source_fact:057a0e55f5adeb96c0297921": {
       "first_seen_kst": "2026-10-17T05:57:10+09:00",
       "lanes": {
@@ -442070,6 +442708,38 @@
       "source_title": "젠슨 황 \"위험한 AI 개발 기업엔 반도체 공급 중단\"…속도 조절엔 반대",
       "telegram_core_fact": "젠슨 황 엔비디아 최고경영자(CEO)가 인공지능(AI)을 위험하게 개발하거나 활용하는 기업에 반도체 공급을 중단할 수 있다고 밝혔다.",
       "title": "젠슨 황 \"위험한 AI 개발 기업엔 반도체 공급 중단\"…속도 조절엔 반대"
+    },
+    "source_fact:05e90e95df206ad7614dc45e": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
     },
     "source_fact:05eb2f63f690964f2c1d300b": {
       "first_seen_kst": "2026-10-16T23:32:01+09:00",
@@ -475183,6 +475853,38 @@
       "source_title": "바이오카디아, 심부전 세포치료 학회 발표..FDA 승인 근거 부각",
       "telegram_core_fact": "규제 측면에서는 미 식품의약국(FDA)이 CardiAMP 세포치료 시스템에 대해 세 건의 별도 임상시험에서 카테고리 B 지정을 승인했다.",
       "title": "바이오카디아, 심부전 세포치료 학회 발표..FDA 승인 근거 부각"
+    },
+    "source_fact:17e474ed0fd3df648b1c5751": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
     },
     "source_fact:17e91e4ced04ac1d22458b07": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -509828,6 +510530,38 @@
       "telegram_core_fact": "코스피가 5% 넘게 급락한 지난 13일 개인 투자자들이 레버리지 상장지수펀드(ETF)를 6000억원 넘게 순매수했다. 코스콤 ETF체크에 따르면 코스피가 5.46% 하락한 지난 13일 개인 투자자 가장 많이 산 ETF는 'KODEX 레버리지'로, 순매수액은 3610억원이다.",
       "title": "코스피 5% 폭락한 날 \"레버리지 우르르\"...개미 또 물렸다"
     },
+    "source_fact:298e64ccefb39a00cc7a3fc0": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
+    },
     "source_fact:299279dbac5f0ba4a2c91def": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
       "lanes": {
@@ -523571,6 +524305,38 @@
       "source_title": "삼성 美 테일러팹 2나노 양산 임박…'수율 특공대' 파견",
       "telegram_core_fact": "삼성전자가 내년 미국 텍사스주 테일러 파운드리(반도체 위탁생산) 공장의 2나노미터(나노미터·1㎚=10억분의 1m) 반도체 본격 양산을 앞두고 기술 인력과 현지 운영조직 확충에 속도를 내고 있다.",
       "title": "삼성 美 테일러팹 2나노 양산 임박…'수율 특공대' 파견"
+    },
+    "source_fact:30dcee87dea978587fbef7b2": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
     },
     "source_fact:30ddf151245d54b914f9c198": {
       "first_seen_kst": "2026-10-19T16:36:04+09:00",
@@ -551440,6 +552206,38 @@
       "source_title": "이형일 \"공급망 취약한 고리 선제적으로 발굴·보강해야\" | 연합뉴스",
       "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 12일 \"단기적인 위기대응을 넘어 공급망의 취약한 고리를 선제적으로 발굴하고 보강해 나가야 한다\"고 말했다. 산업군별 '공급망 특허전략맵'을 구축해 기술 확보와 특허 선점이 필요한 분야를 선제적으로 발굴하고, 향후 산업전략 수립에도 활용해 나갈 계획이다.",
       "title": "이형일 \"공급망 취약한 고리 선제적으로 발굴·보강해야\" | 연합뉴스"
+    },
+    "source_fact:4030ba947eaa6df93fd06f17": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
     },
     "source_fact:4038699877abd7b93a047ead": {
       "first_seen_kst": "2026-10-14T03:39:25+09:00",
@@ -583395,6 +584193,38 @@
       "source_title": "하나운용, 엔비디아 25% 담는 AI반도체 ETF 20일 상장",
       "telegram_core_fact": "하나자산운용은 ‘1Q 엔비디아고정미국AI반도체’ 상장지수펀드(ETF)를 20일 신규 상장한다고 19일 밝혔다.",
       "title": "하나운용, 엔비디아 25% 담는 AI반도체 ETF 20일 상장"
+    },
+    "source_fact:508d5cc5020b52cf69b8c71f": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
     },
     "source_fact:5092fdc506dfbb6bd4c542e9": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -629303,6 +630133,38 @@
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
     },
+    "source_fact:68a47340979e61894767f672": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
+    },
     "source_fact:68ac7050ba85a2e1f33ee78f": {
       "first_seen_kst": "2026-10-17T05:25:35+09:00",
       "lanes": {
@@ -640775,6 +641637,28 @@
       ],
       "source_published_kst": "2026-10-07T09:28+09:00",
       "title": "현대엔지니어링, 군산 이어 인천 데이터센터 수주…8700억 규모"
+    },
+    "source_fact:6ecb89ca5e900a9da98e5053": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833497",
+      "source": "뉴시스",
+      "source_body_digest": "eb502629bd9b6dfeefe3d3b8ef7369f7781deaabd9958460f07fe00f98c8639c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b9a93cdca9e514fc39b694481a61858606991cc45c95bd53cb2e873863d5df8",
+      "source_fact_keys": [
+        "source_fact:v1:920fabead3aa2d5c2a697f813a96520627aa7f83663ce449c26023908807ecb6",
+        "source_fact:v1:993ad407315766d331ffc8142d6927bc6f2656ed3f2cd9d2f54f85cd63ee4458",
+        "source_fact:v1:d12a0bca699dfd20b3cfd1b4647ffe6d3e98d2062ab80a06c164d5aa98fe6cc6"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크",
+      "telegram_core_fact": "20일 오후 서울 서초구 WSA 와인아카데미에서 열린 '더 오크 아카데미(The Oak Academy)'에서 팀 던컨 실버오크 공동 소유주 겸 최고매출책임자(CRO)는 자체 오크통 제작소를 인수한 이유에 대해 이같이 설명했다.",
+      "title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크"
     },
     "source_fact:6ecc14812dbe6e58d867ac62": {
       "first_seen_kst": "2026-10-20T13:59:52+09:00",
@@ -657884,6 +658768,38 @@
       "telegram_core_fact": "존 터너스 애플 최고경영자(CEO)가 전 세계적인 메모리 반도체 공급 부족을 '절대적인 위기'로 규정하며 중국산 반도체 도입 가능성을 열어뒀다.",
       "title": "애플 CEO \"메모리 품귀는 절대적 위기\"…중국산 사용 시사"
     },
+    "source_fact:77c1e8a10ce7ea637bb24ff8": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
+    },
     "source_fact:77c44eaec5431c288577d624": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
       "lanes": {
@@ -658485,6 +659401,38 @@
       "source_title": "최태원 '호남 반도체 클러스터' 속도전에…금호건설 24% 급등",
       "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 클러스터 부지를 방문해 생산시설 구축에 속도를 낼 것을 주문했다는 소식이 전해지면서 지역 건설·인프라 관련주에 매수세가 몰린 것으로 풀이된다. 관련 업계에 따르면 최태원 SK그룹 회장은 지난 9일 호남권 반도체 클러스터 부지를 처음으로 방문해 생산시설 구축을 위한 속도전을 주문했다.",
       "title": "최태원 '호남 반도체 클러스터' 속도전에…금호건설 24% 급등"
+    },
+    "source_fact:7818a99f956df0c5a670a5a2": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
     },
     "source_fact:781adf01a4782db47c713c77": {
       "first_seen_kst": "2026-10-21T08:30:35+09:00",
@@ -707268,6 +708216,28 @@
       "telegram_core_fact": "우크라이나 전쟁을 계기로 미국과 유럽 등 주요국이 잇따라 경제 제재에 나서면서 금융망 일부에 대한 접근이 제한되고 브릭스(BRICS) 회원국인 중국∙인도 등과의 자금 거래가 복잡해지자 디지털 루블을 새로운 지급 수단으로 육성해 왔다.",
       "title": "러시아 디지털 루블 계좌 22만 개∙∙∙첫 달 예상치 3배↑"
     },
+    "source_fact:9341d08cfcbadee6a18c9be3": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834357",
+      "source": "뉴시스",
+      "source_body_digest": "9ed51cf31b9d449e1171dfbfba131b0346e6f638874c26a80b46790635499139",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:334090f5fc3fe53297df2ea8e6db7ca8380ea1512872a48c5e9d92e654deba36",
+      "source_fact_keys": [
+        "source_fact:v1:298ba6b1e5270fe21aac5299fccc3892b3819294309de438a716a47d323e2193",
+        "source_fact:v1:765035e51b081d15ef9df198a3d86a1cd05107bae9c67e9fee2a1f8ea9597196",
+        "source_fact:v1:ff1cea197a5a6c8972713f433aea0610388ac27677e351930a97baa75189e04d"
+      ],
+      "source_published_kst": "2026-10-21T08:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액",
+      "telegram_core_fact": "계측제어설비 정비 전문기업 우진엔텍은 기수주한 고리 원자력발전소 3·4호기 정비용역 계약액을 51억원 증액했다고 21일 밝혔다.",
+      "title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액"
+    },
     "source_fact:93448316a2122612a963c7ab": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
       "lanes": {
@@ -716262,6 +717232,28 @@
       "source_title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\"",
       "telegram_core_fact": "트럼프 대통령은 전날 소셜미디어(SNS) 트루스소셜에 \"러시아가 즉시 30만톤 이상의 디젤 연료(경유)를 미국과 세계시장에 공급하기로 했다\"면서 이후에도 추가 공급에 나서면서 총 480만톤을 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
       "title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\""
+    },
+    "source_fact:97df9b00bc5204e336439aeb": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833497",
+      "source": "뉴시스",
+      "source_body_digest": "eb502629bd9b6dfeefe3d3b8ef7369f7781deaabd9958460f07fe00f98c8639c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b9a93cdca9e514fc39b694481a61858606991cc45c95bd53cb2e873863d5df8",
+      "source_fact_keys": [
+        "source_fact:v1:920fabead3aa2d5c2a697f813a96520627aa7f83663ce449c26023908807ecb6",
+        "source_fact:v1:993ad407315766d331ffc8142d6927bc6f2656ed3f2cd9d2f54f85cd63ee4458",
+        "source_fact:v1:d12a0bca699dfd20b3cfd1b4647ffe6d3e98d2062ab80a06c164d5aa98fe6cc6"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크",
+      "telegram_core_fact": "20일 오후 서울 서초구 WSA 와인아카데미에서 열린 '더 오크 아카데미(The Oak Academy)'에서 팀 던컨 실버오크 공동 소유주 겸 최고매출책임자(CRO)는 자체 오크통 제작소를 인수한 이유에 대해 이같이 설명했다.",
+      "title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크"
     },
     "source_fact:97e5fe6f23762f8bfd1c405d": {
       "first_seen_kst": "2026-10-20T20:52:32+09:00",
@@ -726523,6 +727515,38 @@
       ],
       "source_published_kst": "2026-10-07T08:53+09:00",
       "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
+    "source_fact:9d2f262781bdc9a67273f245": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
     },
     "source_fact:9d302d3ebc0bbe86770c01da": {
       "first_seen_kst": "2026-10-11T10:42:03+09:00",
@@ -771226,6 +772250,38 @@
       "telegram_core_fact": "에이플러스에셋이 2030년까지 자기자본이익률(ROE) 15% 이상을 유지하고 총주주환원율을 40% 이상으로 끌어올리겠다는 중장기 계획을 발표했다.",
       "title": "에이플러스에셋, 2030년 ROE 15% 목표…자사주 35억 추가 매입"
     },
+    "source_fact:b449f68cb0eb189b366d4460": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
+    },
     "source_fact:b44d344a839f341d3af244be": {
       "first_seen_kst": "2026-10-16T15:15:48+09:00",
       "lanes": {
@@ -809391,6 +810447,28 @@
       "telegram_core_fact": "특히 고망간강의 상용화 추진에는 장인화 포스코그룹 회장의 선제적인 기술 리더십이 있었던 것으로 전해진다. 포스코가 한화오션과 협력해 고망간강을 액화천연가스(LNG) 운반선 핵심 설비인 LNG 화물창 적용하며 상용화를 본격화한다.",
       "title": "포스코, 한화오션과 고망간강 LNG화물창 상용화…\"장인화 회장, 기술 리더십 결실\""
     },
+    "source_fact:c8881f7a49fbf5b5c1d3ba23": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833497",
+      "source": "뉴시스",
+      "source_body_digest": "eb502629bd9b6dfeefe3d3b8ef7369f7781deaabd9958460f07fe00f98c8639c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b9a93cdca9e514fc39b694481a61858606991cc45c95bd53cb2e873863d5df8",
+      "source_fact_keys": [
+        "source_fact:v1:920fabead3aa2d5c2a697f813a96520627aa7f83663ce449c26023908807ecb6",
+        "source_fact:v1:993ad407315766d331ffc8142d6927bc6f2656ed3f2cd9d2f54f85cd63ee4458",
+        "source_fact:v1:d12a0bca699dfd20b3cfd1b4647ffe6d3e98d2062ab80a06c164d5aa98fe6cc6"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크",
+      "telegram_core_fact": "20일 오후 서울 서초구 WSA 와인아카데미에서 열린 '더 오크 아카데미(The Oak Academy)'에서 팀 던컨 실버오크 공동 소유주 겸 최고매출책임자(CRO)는 자체 오크통 제작소를 인수한 이유에 대해 이같이 설명했다.",
+      "title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크"
+    },
     "source_fact:c88ba038cf048ba4e35b1535": {
       "first_seen_kst": "2026-10-21T02:06:57+09:00",
       "lanes": {
@@ -819350,6 +820428,26 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "source_fact:ce0dfc9c7303e05956c73129": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833612",
+      "source": "뉴시스",
+      "source_body_digest": "73a8f778767ff5bf5e4391922c44df43dda4c4d88d0c253637e7d8954b6806a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13424757ddd711cef43f5ad98da83910da2979b96d0c1dd1ebe3c7224bdc63bb",
+      "source_fact_keys": [
+        "source_fact:v1:3a6c382f1a484f87958bcb54587edbacf18ebeae6cc58b78971ca1ec926985b0"
+      ],
+      "source_published_kst": "2026-10-21T05:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "HMM, 대형선·피더선 동시 확충…인도·아프리카 항로 공략 '속도'",
+      "telegram_core_fact": "해운업계에 따르면 HMM은 최근 1만3000TEU(1TEU=20피트 컨테이너 1개)급 컨테이너선 8척과 중소형 피더선 4척 등 총 12척을 확보하기 위해 2조1000억원을 투자한다. HMM이 대형 컨테이너선과 중소형 피더선(소규모 컨테이너 운반선)을 동시에 확충하며 글로벌 해상운송망 확대에 속도를 낸다.",
+      "title": "HMM, 대형선·피더선 동시 확충…인도·아프리카 항로 공략 '속도'"
+    },
     "source_fact:ce10144fe1f21e0f30358686": {
       "first_seen_kst": "2026-10-21T09:52:31+09:00",
       "lanes": {
@@ -825380,6 +826478,38 @@
       "source_title": "“GPU는 있는데 전기가 없다”⋯美 AIDC 32GW 전력난, HBM 새 변수 [AI 호황의 역설]",
       "telegram_core_fact": "그동안 엔비디아의 그래픽처리장치(GPU)와 고대역폭메모리(HBM) 확보가 AI 인프라 구축의 최대 과제였다면 이제는 확보한 반도체를 실제로 가동할 전력 공급 능력이 관건이 되고 있다.",
       "title": "“GPU는 있는데 전기가 없다”⋯美 AIDC 32GW 전력난, HBM 새 변수 [AI 호황의 역설]"
+    },
+    "source_fact:d11d2fe6e2402c9094a4e248": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
     },
     "source_fact:d1203b4fcce6a114c148f3bc": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
@@ -894597,6 +895727,28 @@
       "telegram_core_fact": "JP모건은 메모리 공급 부족률이 2026년 약 20%, 2027년 19%, 2028년에도 15%에 달할 것으로 전망했다.",
       "title": "머스크 \"마이크론 빼고 메모리 가격 지나쳐\"…삼전닉스 겨냥? [IT썰]"
     },
+    "source_fact:f6130ec7de92f5846ed44cc8": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834357",
+      "source": "뉴시스",
+      "source_body_digest": "9ed51cf31b9d449e1171dfbfba131b0346e6f638874c26a80b46790635499139",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:334090f5fc3fe53297df2ea8e6db7ca8380ea1512872a48c5e9d92e654deba36",
+      "source_fact_keys": [
+        "source_fact:v1:298ba6b1e5270fe21aac5299fccc3892b3819294309de438a716a47d323e2193",
+        "source_fact:v1:765035e51b081d15ef9df198a3d86a1cd05107bae9c67e9fee2a1f8ea9597196",
+        "source_fact:v1:ff1cea197a5a6c8972713f433aea0610388ac27677e351930a97baa75189e04d"
+      ],
+      "source_published_kst": "2026-10-21T08:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액",
+      "telegram_core_fact": "계측제어설비 정비 전문기업 우진엔텍은 기수주한 고리 원자력발전소 3·4호기 정비용역 계약액을 51억원 증액했다고 21일 밝혔다.",
+      "title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액"
+    },
     "source_fact:f61a0bd9f70c43a363fbb5b0": {
       "first_seen_kst": "2026-10-15T12:05:16+09:00",
       "lanes": {
@@ -900432,6 +901584,38 @@
       "telegram_core_fact": "딥시크와 즈푸AI는 각각 화웨이 반도체 10만개 이상을 활용하는 자체 데이터센터를 구축하고 있다. 텐센트는 미국 오라클과 계약을 맺고 동남아시아 데이터센터에서 GPU 10만개를 임대하기로 했다.",
       "title": "딥시크 5시간 먹통…中 AI 폭풍 성장에 반도체는 품귀 [차이나 워치]"
     },
+    "source_fact:f9a11fa08049c0dc1aecf679": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
+    },
     "source_fact:f9a5792619249bb2c235ae46": {
       "first_seen_kst": "2026-10-20T19:58:15+09:00",
       "lanes": {
@@ -901275,6 +902459,28 @@
       "source_title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고",
       "telegram_core_fact": "미국 10년물 국채 금리는 장중 5.36%를 넘어 2002년 이후 최고치를 새로 썼고, 30년물 금리도 5.73%까지 치솟았다. 7일(현지 시각) 미국 국채시장에서 10년물 금리는 장중 전장보다 약 8bp(1bp=0.01%포인트) 오른 5.3640%까지 상승했다.",
       "title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고"
+    },
+    "source_fact:fa3e597a96a873297f4f13f7": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834357",
+      "source": "뉴시스",
+      "source_body_digest": "9ed51cf31b9d449e1171dfbfba131b0346e6f638874c26a80b46790635499139",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:334090f5fc3fe53297df2ea8e6db7ca8380ea1512872a48c5e9d92e654deba36",
+      "source_fact_keys": [
+        "source_fact:v1:298ba6b1e5270fe21aac5299fccc3892b3819294309de438a716a47d323e2193",
+        "source_fact:v1:765035e51b081d15ef9df198a3d86a1cd05107bae9c67e9fee2a1f8ea9597196",
+        "source_fact:v1:ff1cea197a5a6c8972713f433aea0610388ac27677e351930a97baa75189e04d"
+      ],
+      "source_published_kst": "2026-10-21T08:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액",
+      "telegram_core_fact": "계측제어설비 정비 전문기업 우진엔텍은 기수주한 고리 원자력발전소 3·4호기 정비용역 계약액을 51억원 증액했다고 21일 밝혔다.",
+      "title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액"
     },
     "source_fact:fa3f61b6685a361a213264a4": {
       "first_seen_kst": "2026-10-14T12:59:52+09:00",
@@ -917986,6 +919192,26 @@
       "telegram_core_fact": "앤트로픽은 당초 이달 중 상장을 추진했으나 일정이 연기되면서, 11월 미국 중간선거 이후 상장할 가능성이 커졌다.",
       "title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연"
     },
+    "title:0b8d961f501780ab3b91bb16": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833612",
+      "source": "뉴시스",
+      "source_body_digest": "73a8f778767ff5bf5e4391922c44df43dda4c4d88d0c253637e7d8954b6806a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13424757ddd711cef43f5ad98da83910da2979b96d0c1dd1ebe3c7224bdc63bb",
+      "source_fact_keys": [
+        "source_fact:v1:3a6c382f1a484f87958bcb54587edbacf18ebeae6cc58b78971ca1ec926985b0"
+      ],
+      "source_published_kst": "2026-10-21T05:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "HMM, 대형선·피더선 동시 확충…인도·아프리카 항로 공략 '속도'",
+      "telegram_core_fact": "해운업계에 따르면 HMM은 최근 1만3000TEU(1TEU=20피트 컨테이너 1개)급 컨테이너선 8척과 중소형 피더선 4척 등 총 12척을 확보하기 위해 2조1000억원을 투자한다. HMM이 대형 컨테이너선과 중소형 피더선(소규모 컨테이너 운반선)을 동시에 확충하며 글로벌 해상운송망 확대에 속도를 낸다.",
+      "title": "HMM, 대형선·피더선 동시 확충…인도·아프리카 항로 공략 '속도'"
+    },
     "title:0b8f0cd0f79fd0a9c90360d3": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -924374,6 +925600,24 @@
       "source_title": "'삼성전자 67만원·하이닉스 470만원'…노무라가 ‘매수’ 꼽은 이유",
       "telegram_core_fact": "인공지능(AI) 기업의 성장 둔화와 자금 조달 우려에도 노무라증권은 삼성전자와 SK하이닉스에 대한 매수 의견을 유지했다. 노무라는 공급 확대가 수요 증가를 따라가지 못하는 현상이 적어도 오는 2028년까지는 이어질 것으로 내다봤다.",
       "title": "'삼성전자 67만원·하이닉스 470만원'…노무라가 ‘매수’ 꼽은 이유"
+    },
+    "title:18d5c73263a9cda6d7f7d43d": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261020150100030",
+      "source": "연합뉴스",
+      "source_body_digest": "4aa44dfd76f45d51836df962dc26bba6cde85840bb634dbc60ee5c9d64adff94",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"농어촌기본소득 시범지역 카드매출 29% 증가…청년인구도 늘어\" | 연합뉴스",
+      "telegram_core_fact": "농어촌 기본소득 시범사업을 시행한 지역의 신용카드 매출액이 지난해보다 약 29% 증가하고 청년 인구도 늘어난 것으로 나타났다.",
+      "title": "\"농어촌기본소득 시범지역 카드매출 29% 증가…청년인구도 늘어\" | 연합뉴스"
     },
     "title:18eaef8d3c1b962cf6d1d8fc": {
       "first_seen_kst": "2026-10-12T18:02:18+09:00",
@@ -934755,6 +935999,38 @@
       "source_title": "제이티 수주공시 - Sorter 56.8억원 (매출액대비 14.79 %)",
       "telegram_core_fact": "제이티(089790)는 Sorter에 관한 단일판매ㆍ공급계약체결 을 16일에 공시했다.",
       "title": "제이티 수주공시 - Sorter 56.8억원 (매출액대비 14.79 %)"
+    },
+    "title:2e3aaf125e3afb5b350e217a": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261021084635",
+      "source": "지디넷코리아",
+      "source_body_digest": "f1245ab6131b251ec94c670f8e850b76ab6f999e37335c83c010bab01ad04265",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21017989cfc84337ef8bfb7c2a8a80e1ada1604ded36a965758755aaf8fbd5eb",
+      "source_fact_keys": [
+        "source_fact:v1:28100b8636e3e27a78c04d6b6c2932f9f9c722a82eff6e7501f6c4e026de5ef7",
+        "source_fact:v1:32ffa3a276823cf840efeb2781fa5e5dc96a901849e35ec60ce6abcef19d61dd",
+        "source_fact:v1:3650aa85fd5f3a7f00900a247a369a6c93f164dcc6ba338b52f0083f6ed09455",
+        "source_fact:v1:689de95adfe45ff5b81cfdc2cd69511f56c3765103dc176d01d1e00095553523",
+        "source_fact:v1:7888b35df16df018347414341c96bf465a74634b6e49267ebcb1d005277bf905",
+        "source_fact:v1:7ea858088491fb83eebc55f4e0c256ee26d5f0c159d73af60b60686634ff1508",
+        "source_fact:v1:880d5c5f84b03751e72db2c83d739e5bcf84690d0033aca9289af714fc2626e6",
+        "source_fact:v1:96e5e761e2b3cb8a6eafbdda17fce1f11f67c9d39b76ce682fc20b8c32c1aae5",
+        "source_fact:v1:aaad09e2ca666eb1394bc27e5408074199c8e8c553a6f624851f1b5a7ff4c31e",
+        "source_fact:v1:ad41d379c2dbc994de0715c05bd6e02f3fe8a76d3076166cc72ab3324b65ef03",
+        "source_fact:v1:afbfa0f323ff6ed402822180d591f8bbf5484883faf3266ca9aa233158c2b2cd",
+        "source_fact:v1:c6e79937842d7498fc3e83d043b0b55a7af913a2221fe64b31a999e61d8eb08d",
+        "source_fact:v1:d51bf17fa04d4ed23e713dbba9f51547df6e90398e38a9ca2f2a85afb9a039af"
+      ],
+      "source_published_kst": "2026-10-21T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
+      "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
+      "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
     },
     "title:2e42d213cb4f8634755f7ba9": {
       "first_seen_kst": "2026-10-10T09:31:49+09:00",
@@ -952178,6 +953454,28 @@
       "source_title": "국가필수의약품 공급 차질 4년 새 2.8배…식약처는 상당수 '조치 불필요'",
       "telegram_core_fact": "일부 의약품은 공급 차질이 반복되고 있지만 식품의약품안전처가 상당수 사례를 별도 조치가 필요하지 않은 것으로 판단하면서 공급 안정화를 위한 관리체계 개선이 필요하다는 지적이 나온다. 그가 제시한 자료에서는 국가필수의약품 공급 중단·부족 보고 56건 가운데 38건이 '조치 불필요'로 분류됐다.",
       "title": "국가필수의약품 공급 차질 4년 새 2.8배…식약처는 상당수 '조치 불필요'"
+    },
+    "title:52da79f6118f667b85014f76": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834357",
+      "source": "뉴시스",
+      "source_body_digest": "9ed51cf31b9d449e1171dfbfba131b0346e6f638874c26a80b46790635499139",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:334090f5fc3fe53297df2ea8e6db7ca8380ea1512872a48c5e9d92e654deba36",
+      "source_fact_keys": [
+        "source_fact:v1:298ba6b1e5270fe21aac5299fccc3892b3819294309de438a716a47d323e2193",
+        "source_fact:v1:765035e51b081d15ef9df198a3d86a1cd05107bae9c67e9fee2a1f8ea9597196",
+        "source_fact:v1:ff1cea197a5a6c8972713f433aea0610388ac27677e351930a97baa75189e04d"
+      ],
+      "source_published_kst": "2026-10-21T08:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액",
+      "telegram_core_fact": "계측제어설비 정비 전문기업 우진엔텍은 기수주한 고리 원자력발전소 3·4호기 정비용역 계약액을 51억원 증액했다고 21일 밝혔다.",
+      "title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액"
     },
     "title:52e0dd680f6a4680eb7ef691": {
       "first_seen_kst": "2026-10-18T06:42:56+09:00",
@@ -977067,6 +978365,26 @@
       "source_published_kst": "2026-10-06T17:45+09:00",
       "title": "LG전자, 르노에 콕핏 솔루션 … 유럽 최초 상용 SDV에 탑재"
     },
+    "title:887f7c59f341ddac22ef0b45": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834346",
+      "source": "뉴시스",
+      "source_body_digest": "710e9b017a420b8b4532c687b55cc614ffb6faeaa1a08c94a6971724c42a2997",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85d7613cc922d7478efc82707e2bff63919f26b1e9d7c4265c654af268b01da5",
+      "source_fact_keys": [
+        "source_fact:v1:5026c895bfb614c793031ca9fc1e34f2da2d568846bf9e2a65c0445a0b31ebe2"
+      ],
+      "source_published_kst": "2026-10-21T08:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "직방, 스마트홈 브랜드 '소마' 출범…자녀 귀가 알리는 도어록 출시",
+      "telegram_core_fact": "직방은 스마트홈 사업 브랜드를 'Soma'로 개편하고, 첫 제품으로 자녀 케어 특화 커넥티드 도어록인 '소마 케어 P1' 을 출시했다고 21일 밝혔다. 이번 브랜드 전환은 지난 2022년 삼성SDS 홈IoT 사업부를 인수한 이후 운영해 온 '직방 스마트홈'을 독립 브랜드로 바꾸는 것이다.",
+      "title": "직방, 스마트홈 브랜드 '소마' 출범…자녀 귀가 알리는 도어록 출시"
+    },
     "title:8883a8a2096ce0cb3390e712": {
       "first_seen_kst": "2026-10-15T17:19:13+09:00",
       "lanes": {
@@ -980238,6 +981556,28 @@
       "source_title": "식약처 \"국제인증표준품 관련 종합안내서 발간\"",
       "telegram_core_fact": "식약처 소속 식품의약품안전평가원은 국제인증표준품(CRM) 및 NDMA 등 니트로사민류 표준품을 포함한 '2026 식품의약품안전처 표준품 종합안내서'를 발간하고 이날부터 표준품 분양을 시작한다고 12일 밝혔다.",
       "title": "식약처 \"국제인증표준품 관련 종합안내서 발간\""
+    },
+    "title:8e8a647f9fc62372569c7eda": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261020_0003833497",
+      "source": "뉴시스",
+      "source_body_digest": "eb502629bd9b6dfeefe3d3b8ef7369f7781deaabd9958460f07fe00f98c8639c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b9a93cdca9e514fc39b694481a61858606991cc45c95bd53cb2e873863d5df8",
+      "source_fact_keys": [
+        "source_fact:v1:920fabead3aa2d5c2a697f813a96520627aa7f83663ce449c26023908807ecb6",
+        "source_fact:v1:993ad407315766d331ffc8142d6927bc6f2656ed3f2cd9d2f54f85cd63ee4458",
+        "source_fact:v1:d12a0bca699dfd20b3cfd1b4647ffe6d3e98d2062ab80a06c164d5aa98fe6cc6"
+      ],
+      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크",
+      "telegram_core_fact": "20일 오후 서울 서초구 WSA 와인아카데미에서 열린 '더 오크 아카데미(The Oak Academy)'에서 팀 던컨 실버오크 공동 소유주 겸 최고매출책임자(CRO)는 자체 오크통 제작소를 인수한 이유에 대해 이같이 설명했다.",
+      "title": "[현장]\"와인 맛의 비밀은 오크통에\" 나무통까지 직접 만드는 실버오크"
     },
     "title:8e8cc41eff7274ce285a7be3": {
       "first_seen_kst": "2026-10-17T18:59:01+09:00",
@@ -1006894,6 +1008234,26 @@
       "source": "전자신문",
       "title": "통신3사 CEO “개인정보 보호가 기업 최우선 경영 가치”…개인정보위원장과 공동선언문 발표"
     },
+    "title:c8801c0ab855bd58f33d67b4": {
+      "first_seen_kst": "2026-10-21T13:24:59+09:00",
+      "lanes": {
+        "live": "2026-10-21T13:24:59+09:00"
+      },
+      "last_seen_kst": "2026-10-21T13:24:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834280",
+      "source": "뉴시스",
+      "source_body_digest": "87086d5c8e4f62abad9f01154515e85dd952965b2b60ca34636417208e779770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a59bc496c97b37bbc109cd69b7d37b9a52f963a1413e7be29052767aeb05ce8",
+      "source_fact_keys": [
+        "source_fact:v1:e218ba1ccc6b4001b1dd2ddd6b2584bf0a666da28cc753fcff770ce0a8a60d9a"
+      ],
+      "source_published_kst": "2026-10-21T08:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"미국서도 통했다\" 더본코리아 새마을식당, 3년 새 美 매출 70%↑",
+      "telegram_core_fact": "더본코리아에 따르면 미국 텍사스주 캐럴턴에 위치한 새마을식당의 올해 9월 말 기준 월평균 매출은 개점 첫해인 2023년 대비 약 70% 증가했다.",
+      "title": "\"미국서도 통했다\" 더본코리아 새마을식당, 3년 새 美 매출 70%↑"
+    },
     "title:c8888ce5361e6dcb8e362dd3": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
       "lanes": {
@@ -1032813,5 +1034173,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-21T12:53:55+09:00"
+  "updated_at_kst": "2026-10-21T13:24:59+09:00"
 }
