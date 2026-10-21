@@ -15,12 +15,10 @@
     }
   ],
   "official": {
-    "article_confirmed": false,
+    "article_confirmed": true,
     "bastion_partner_primary": false,
     "errors": [
-      "digitalasset: HTTP Error 403: Forbidden",
       "wallet_patent_us: HTTP Error 403: Forbidden",
-      "wallet_patent_news: HTTP Error 403: Forbidden",
       "bastion_partner_primary: HTTP Error 403: Forbidden"
     ],
     "explicit_reversal_confirmed": false,
@@ -33,7 +31,7 @@
     "solana_partner_primary": true,
     "sui_partner_primary": true,
     "wallet_patent_family_confirmed": true,
-    "wallet_patent_news_confirmed": false,
+    "wallet_patent_news_confirmed": true,
     "wallet_patent_us_confirmed": false,
     "wallet_patent_us_crosscheck_confirmed": false
   },
@@ -64,5 +62,5 @@
     "wallet_patent_publication": "US20260212355A1",
     "wallet_patent_publication_date": "2026-07-23"
   },
-  "updated_at_kst": "2026-10-21T10:09:57+09:00"
+  "updated_at_kst": "2026-10-21T14:57:22+09:00"
 }
