@@ -153,6 +153,12 @@ def urllib_parse_host(value: str) -> str:
 def _family(row: dict) -> str:
     low = _norm(f"{row.get('title', '')} {row.get('source', '')}")
 
+    # 무역흑자 실제 누적치와 '연말 돌파 확실시'라는 전망은 별도 사건축.
+    if any(x in low for x in ("대미", "對美", "한국 미국", "korea us", "korean us")) and any(
+        x in low for x in ("무역흑자", "무역수지 흑자", "trade surplus", "trade balance surplus")
+    ):
+        return "us_trade_surplus"
+
     westinghouse = "웨스팅하우스" in low or "westinghouse" in low
     stake = any(
         token in low
@@ -632,6 +638,27 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
     parties = {x for x in raw if x.startswith("party:")}
     stages = {x for x in raw if x.startswith("stage:") and x != "stage:공식정정"}
 
+    if family == "us_trade_surplus":
+        # 1~9월 같은 *실제 누적 기간*과 숫자가 같은 구간에 있어야 한다.
+        # '연간 1,000억달러 돌파 확실시'는 실현값으로 사용하지 않는다.
+        period = re.search(r"1\\s*[~∼～\\-–—]\\s*(9|10|11|12)\\s*월", low)
+        if period:
+            window = low[period.start():period.end() + 85]
+            m = re.search(r"(\\d{2,4}(?:,\\d{3})?)\\s*억\\s*(?:달러|불)", window)
+            if m:
+                amount = int(m.group(1).replace(",", ""))
+                month = int(period.group(1))
+                if 0 < amount < 5000:
+                    facts.add(f"us_trade_surplus_2026_month{month}_100m_usd:{amount}")
+                    speculative = any(x in low for x in (
+                        "확실시", "가능성", "전망", "예상", "눈앞", "넘어설", "넘길 것",
+                        "approaching", "expected to", "forecast", "likely to",
+                    ))
+                    actual_crossing = amount >= 1000 and month >= 10 and not speculative
+                    if actual_crossing:
+                        facts.add("us_trade_surplus_2026_threshold:actual")
+        return facts
+
     if family == "nuclear_build":
         for value in _explicit_total_nuclear_units(low):
             facts.add(f"nuclear_total_units:{value}")
@@ -913,6 +940,18 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
         return facts | parties
 
     if family == "alaska_lng":
+        # 비용 추정 오차의 상한(+100%)은 실제 원가 증액이나 한국 분담액이 아니다.
+        # GaffneyCline 'Class 5' 위험은 보도/원문 검증 사건으로 분리한다.
+        cost_context = any(x in low for x in ("사업비", "건설비", "공사비", "cost estimate", "cost overrun"))
+        class_five = any(x in low for x in ("5등급", "5 등급", "class 5", "class v", "class-v"))
+        reported_upper = (
+            re.search(r"\\+\\s*100\\s*%", low) is not None
+            or any(x in low for x in ("최대 2배", "두 배로 늘", "2배까지 늘", "cost could double"))
+        )
+        if cost_context and class_five and reported_upper:
+            facts.add("alaska_cost_estimate_class:5")
+            facts.add("alaska_cost_uncertainty_upper_percent:100")
+            facts.add("alaska_cost_uncertainty_status:reported")
         project_tax = any(x in low for x in ("알래스카", "alaska lng", "alaska pipeline", "project north"))
         tax_reference = any(x in low for x in ("재산세", "property tax", "property-tax"))
         korea_reference_for_tax = any(x in low for x in ("한국", "korean", "south korea"))
@@ -1159,6 +1198,7 @@ def _fact_slot(family: str, fact: str) -> str:
         "alaska_us_claim_usd_b:", "alaska_us_reiteration:", "alaska_taiwan_project_share_reported:", "alaska_taiwan_offtake_status:",
         "alaska_taiwan_term_reported_years:", "alaska_taiwan_us_investment_claim_usd_b:",
         "alaska_us_permits_reiteration:", "alaska_us_construction_start_claim:",
+        "alaska_cost_estimate_class:", "alaska_cost_uncertainty_upper_percent:", "alaska_cost_uncertainty_status:",
         "alaska_tax_relief_request_status:", "alaska_tax_2033_liability_estimate_usd_m:",
         "alaska_tax_law_status:", "alaska_tax_relief_status:",
         "alaska_glenfarne_fid_status:", "alaska_project_financing_status:",
@@ -1306,6 +1346,7 @@ _FAMILY_LABELS = {
     "energy_package": "대미투자 에너지 패키지",
     "encinal": "텍사스 엔시날 발전사업",
     "alaska_lng": "알래스카 LNG",
+    "us_trade_surplus": "대미 무역흑자·통상 압박",
     "ercot_large_load": "ERCOT 대형부하·계통연계",
     "power_equipment_supply": "가스터빈·증기터빈·HRSG 공급망",
     "nuclear_build": "미국 원전 구성·발주",
@@ -1315,6 +1356,9 @@ _FAMILY_LABELS = {
 
 
 def _human_fact(value: str) -> str:
+    match = re.fullmatch(r"us_trade_surplus_2026_month(9|10|11|12)_100m_usd:(\\d+)", value)
+    if match:
+        return f"2026년 1~{match.group(1)}월 대미 무역흑자 누적 {match.group(2)}억달러(연간 전망과 구분)"
     labels = {
         "official_status:unconfirmed": "정부 공식상태 미확정",
         "official_status:confirmed": "정부 공식확정",
@@ -1347,6 +1391,10 @@ def _human_fact(value: str) -> str:
         "equity_closing_status:completed": "지분투자 종결",
         "encinal_status:confirmed_first": "대미투자 1호 공식 확정",
         "alaska_bilateral_status:review_started": "한미 공식상태 검토 착수",
+        "alaska_cost_estimate_class:5": "알래스카 LNG 사업비 초기 5등급 추정(정밀 설계 전)",
+        "alaska_cost_uncertainty_upper_percent:100": "초기 비용 추정 상방 오차 최대 +100%(확정 증액 아님)",
+        "alaska_cost_uncertainty_status:reported": "GaffneyCline 비용 추정 불확실성 보고·실제 공사비 증액 미확정",
+        "us_trade_surplus_2026_threshold:actual": "2026년 대미 무역흑자 누적 1,000억달러 실제 초과 확인(전망과 별개)",
         "alaska_fid_after_commercial_review:reported": "현지 주의원 발언 보도: Glenfarne FID 이후 한국 별도 상업성 심사, 아직 투자결정 없음",
         "alaska_tax_relief_request_status:reported": "한국이 알래스카 LNG 재산세 감면을 요청했다는 10월15일 단독보도·미국 승인 아님",
         "alaska_tax_relief_request_status:official_confirmed": "한국 정부 원문에서 재산세 감면 요청 확인·미국 승인 아님",
@@ -2507,6 +2555,44 @@ def _verified_alaska_tax_report_rows() -> list[dict]:
     }]
 
 
+def _verified_alaska_cost_warning_rows() -> list[dict]:
+    # 10월 21일 최초 보도와 독립 확인 보도를 한 차례의 '위험 발견'로 기록.
+    # 보고서 원문은 2025년 12월 주의회에 공개된 기존 자료이며
+    # +100%는 Class 5의 추정오차 상한, 실제 증액/한국 확정 분담금이 아니다.
+    return [
+        {
+            "title": "알래스카 LNG 사업비 GaffneyCline Class 5 5등급 비용 추정, 오차 -50%~+100% 가능성 보도",
+            "source": "머니투데이",
+            "link": "https://www.mt.co.kr/world/2026/10/21/2026102103300258722",
+            "published": "2026-10-20T18:36:00+00:00",
+        },
+        {
+            "title": "알래스카 LNG 초기 5등급 사업비 추정 오차 -50%~+100%, 정밀설계 이전 위험 보도",
+            "source": "TJB",
+            "link": "https://www.tjb.co.kr/news05/bodo/view/id/105117/version/1",
+            "published": "2026-10-20T23:28:00+00:00",
+        },
+    ]
+
+
+def _verified_us_trade_surplus_rows() -> list[dict]:
+    # 1~9월 847억달러는 실적 누적, 연간 1,000억달러는 전망이다.
+    return [
+        {
+            "title": "2026년 1~9월 대미 무역흑자 847억달러, 연간 1000억달러 돌파 확실시",
+            "source": "헤럴드경제",
+            "link": "https://biz.heraldcorp.com/article/10906018",
+            "published": "2026-10-18T01:07:00+00:00",
+        },
+        {
+            "title": "1~9월 대미 무역흑자 847억달러, 연간 1000억달러 눈앞",
+            "source": "연합뉴스",
+            "link": "https://www.yna.co.kr/amp/view/AKR20261017041500003",
+            "published": "2026-10-17T21:17:00+00:00",
+        },
+    ]
+
+
 def _verified_alaska_fid_report_rows() -> list[dict]:
     # 검증된 현지 언론 인터뷰 한 건을 일회성 사건증거로 기록하며 URL은 감시하지 않는다.
     return [{
@@ -2659,6 +2745,8 @@ def _rss(query: str) -> list[dict]:
     _RSS_BUFFER.extend(_verified_funding_baseline_rows())
     _RSS_BUFFER.extend(_verified_alaska_fid_report_rows())
     _RSS_BUFFER.extend(_verified_alaska_tax_report_rows())
+    _RSS_BUFFER.extend(_verified_alaska_cost_warning_rows())
+    _RSS_BUFFER.extend(_verified_us_trade_surplus_rows())
     _RSS_BUFFER.extend(_verified_alaska_us_reiteration_rows())
     _RSS_BUFFER.extend(_verified_alaska_taiwan_rally_rows())
     flushed = _collapse_rows(_RSS_BUFFER)
@@ -2727,6 +2815,27 @@ for _source in ["매일경제", "Alaska Public Media", "Alaska Beacon", "Alaska 
     if _source not in core.TRUSTED:
         core.TRUSTED.append(_source)
 for _term in ["감면 요청", "면제 요청", "property tax relief", "tax relief", "tax reform", "HB 381", "HB 4001", "재산세 감면"]:
+    if _term not in core.MATERIAL:
+        core.MATERIAL.append(_term)
+
+# 동일한 대미투자 감시·Telegram·상태파일을 유지하며 비용 재산정과 통상압박만 확장.
+for _query in [
+    '"알래스카 LNG" "사업비" "2배" when:14d',
+    '"알래스카 LNG" 개프니클라인 5등급 100% when:30d',
+    '"GaffneyCline" "Alaska LNG" "Class 5" cost when:30d',
+    '"Alaska LNG" "cost estimate" "FEED" financing when:30d',
+    '"Alaska LNG" revised project cost Glenfarne FID when:30d',
+    '"대미 무역흑자" "1~9월" "847억" when:30d',
+    '"대미 무역흑자" "1~10월" 수출 누적 when:30d',
+    '"대미 무역흑자" "1000억달러" 누적 when:30d',
+    '"한국 미국 무역흑자" "관세" "알래스카" when:30d',
+]:
+    if _query not in core.QUERIES:
+        core.QUERIES.append(_query)
+for _source in ["머니투데이", "TJB", "헤럴드경제", "연합뉴스", "GaffneyCline"]:
+    if _source not in core.TRUSTED:
+        core.TRUSTED.append(_source)
+for _term in ["GaffneyCline", "개프니클라인", "5등급", "Class 5", "Class V", "사업비", "오차", "건설비", "비용 추정", "무역흑자", "무역수지 흑자", "847억", "1000억달러"]:
     if _term not in core.MATERIAL:
         core.MATERIAL.append(_term)
 
