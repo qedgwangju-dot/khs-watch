@@ -269,9 +269,9 @@ SODIUM_LGES_ACTOR = re.compile(r'LG에너지솔루션|LG\s*Energy\s*Solution',re
 SODIUM_LGES_NA = re.compile(r'북미|North\s*America(?:n)?|U\.S\.',re.I)
 SODIUM_LGES_30MWH_SAMPLE = re.compile(r'샘플|sample|고객\s*테스트|customer\s*test|검증|validation|시험',re.I)
 SODIUM_LGES_30MWH_START = re.compile(
-    r'(?:30\s*MWh|30\s*메가와트시).{0,160}(?:샘플|sample|고객\s*시험|'
+    r'(?:30\s*MWh|30\s*메가와트시)[^.!?。\n]{0,160}(?:샘플|sample|고객\s*시험|'
     r'고객\s*테스트|sample\s*test|customer\s*test|검증|validation)'
-    r'.{0,55}(?:실제\s*)?(?:시작|개시|착수|started|began|commenced)|'
+    r'[^.!?。\n]{0,55}(?:실제\s*)?(?:시작|개시|착수|started|began|commenced)|'
     r'(?:샘플|sample|시험|테스트|검증).{0,120}'
     r'(?:시작|개시|착수|started|began|commenced).{0,100}30\s*MWh',
     re.I,
