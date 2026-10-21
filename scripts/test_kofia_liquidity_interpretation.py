@@ -73,7 +73,7 @@ def trial(name, overrides=None, expected=None, forbidden=(), bad_dates=False, co
             "• MMF 설정원본 <b>262.89조</b> (10/7) | 1D +4.93조 | 5D +24.45조\n"
             "• CMA 잔고 <b>105.62조</b> (10/7) | 1D +2.63조 | 5D -0.95조\n"
             "• 신용융자 <b>33.52조</b> (10/7) | 1D -0.04조 | 5D +0.60조\n"
-            "• 미수금 0.93조 | 실제 반대매매 192억원\n"
+            "• 위탁매매 미수금 0.93조 | 미수거래 반대매매 192억원\n"
             "<b>현재 판정</b>\n• 원본 간략 판정\n\n"
             "<b>검증</b>\n• MMF 1D는 공식 전일대비증감과 재계산값 일치 확인\n",
             encoding="utf-8",
@@ -90,6 +90,7 @@ def trial(name, overrides=None, expected=None, forbidden=(), bad_dates=False, co
             "alignment_ready": True,
             "snapshot_date": "20261007",
             "reference_dates": ["20261007","20261006","20261002","20261001","20260930","20260929"],
+            "message_version": "kofia-balances-v4",
         }
         (base / "out/kofia_liquidity_pending_state.json").write_text(json.dumps(state), encoding="utf-8")
         done = subprocess.run(
@@ -238,7 +239,11 @@ def run_all():
         "1D +4.93조 | 5D +24.45조", "1D -4.93조 | 5D +24.45조", 1
     ))
     trial("tampered actual forced-sale amount", corrupt=lambda text: text.replace(
-        "실제 반대매매 192억원", "실제 반대매매 291억원", 1
+        "미수거래 반대매매 192억원", "미수거래 반대매매 291억원", 1
+    ))
+    trial("tampered forced-sale scope label", corrupt=lambda text: text.replace(
+        "위탁매매 미수금 0.93조 | 미수거래 반대매매 192억원",
+        "미수금 0.93조 | 실제 반대매매 192억원", 1
     ))
     trial("mismatched KOFIA dates", bad_dates=True)
     trial("unsupported risk-asset transfer claim", corrupt=lambda text: text.replace(
