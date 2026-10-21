@@ -8,12 +8,18 @@ import requests
 from bs4 import BeautifulSoup
 
 try:
+    from alert_timeline_dates import extract_original_dates, korean_date as original_korean_date, parse_timestamp, verified_age_days
+except ModuleNotFoundError:
+    from scripts.alert_timeline_dates import extract_original_dates, korean_date as original_korean_date, parse_timestamp, verified_age_days
+
+try:
     import korea_energy_mix_watch as watch
 except ModuleNotFoundError:
     from scripts import korea_energy_mix_watch as watch
 
 
 _ORIGINAL_RENDER = watch.render
+_ORIGINAL_SELECT_NOTIFY = watch.select_notify_rows
 _ORIGINAL_TOPIC_MATCH = watch.topic_match
 _ORIGINAL_EVENT_LEVEL = watch.event_level
 # 정책 상태 기반 중복 방지: 기사 발행일은 새 이벤트의 근거가 아니다.
@@ -285,7 +291,7 @@ def _clean_paragraph(value: str) -> str:
     return text
 
 
-def fetch_article_body(url: str) -> tuple[str, str, str]:
+def fetch_article_body(url: str, evidence: dict[str, str] | None = None) -> tuple[str, str, str]:
     resolved = resolve_article_url(url)
     if not resolved:
         return url, "", "원문 URL 없음"
@@ -294,6 +300,8 @@ def fetch_article_body(url: str) -> tuple[str, str, str]:
         response.raise_for_status()
         if response.url and "news.google.com" not in response.url:
             resolved = response.url
+        if evidence is not None:
+            evidence.update(extract_original_dates(response.text))
         soup = BeautifulSoup(response.text, "html.parser")
         for node in soup.select("script, style, noscript, nav, footer, header, aside"):
             node.decompose()
@@ -664,28 +672,100 @@ def interpret_article_body(row: dict[str, Any], body: str, error: str) -> str:
     return "\n".join(lines)
 
 
+def verify_source_dates_before_notify(
+    rows: list[dict[str, Any]],
+    seen_ids: set[str],
+    seen_events: dict[str, int],
+) -> tuple[list[dict[str, Any]], set[str], dict[str, int]]:
+    """원문이 오래된 자료인 경우 Google News 재색인만으로 새 알림을 보내지 않는다."""
+    notify, next_ids, next_events = _ORIGINAL_SELECT_NOTIFY(rows, seen_ids, seen_events)
+    checked: list[dict[str, Any]] = []
+    for row in notify:
+        evidence: dict[str, str] = {}
+        resolved, body, error = fetch_article_body(str(row.get("url", "")), evidence)
+        age = verified_age_days(evidence)
+        modified = parse_timestamp(evidence.get("modified", ""))
+        modified_age_hours = None
+        if modified is not None:
+            from datetime import datetime, timezone
+            modified_age_hours = (datetime.now(timezone.utc) - modified).total_seconds() / 3600
+        if age is not None and age * 24 > watch.MAX_AGE_HOURS and (
+            modified_age_hours is None or modified_age_hours > watch.MAX_AGE_HOURS
+        ):
+            print(
+                f"energy_original_stale_suppressed=true key={row.get('event_key', '')} "
+                f"published={original_korean_date(evidence.get('published', ''))}"
+            )
+            continue
+        checked_row = row.copy()
+        checked_row["_timeline_evidence"] = evidence
+        checked_row["_original_body"] = body
+        checked_row["_original_url"] = resolved
+        checked_row["_original_fetch_error"] = error
+        if not evidence.get("published"):
+            print(
+                f"energy_publication_unverified=true key={row.get('event_key', '')} "
+                "RSS pubDate는 발표일로 표시하지 않음"
+            )
+        checked.append(checked_row)
+    return checked, next_ids, next_events
+
+
+def _replace_in_row(body: str, title_marker: str, before: str, after: str) -> str:
+    start = body.find(title_marker)
+    if start < 0:
+        return body
+    pos = body.find(before, start)
+    if pos < 0:
+        return body
+    return body[:pos] + after + body[pos + len(before):]
+
+
 def render_with_linked_source(rows: list[dict[str, Any]]) -> str:
     body = _ORIGINAL_RENDER(rows)
     for idx, row in enumerate(rows[:5], 1):
         original_url = str(row.get("url", ""))
-        resolved_url, article_body, fetch_error = fetch_article_body(original_url)
+        evidence = dict(row.get("_timeline_evidence") or {})
+        if "_original_body" in row:
+            resolved_url = str(row.get("_original_url") or original_url)
+            article_body = str(row.get("_original_body") or "")
+            fetch_error = str(row.get("_original_fetch_error") or "")
+        else:
+            resolved_url, article_body, fetch_error = fetch_article_body(original_url, evidence)
 
+        shown_title = watch.display_title(str(row.get("title", "")), str(row.get("publisher", "")))
+        title_marker = f"<b>{idx}. {html.escape(shown_title)}</b>"
         publisher = html.escape(str(row.get("publisher", "")))
         original_escaped = html.escape(original_url, quote=True)
         resolved_escaped = html.escape(resolved_url or original_url, quote=True)
         if publisher and (resolved_url or original_url):
             source_line = f"<b>출처</b>  {publisher}"
             linked_source_line = f'<b>출처</b>  <a href="{resolved_escaped}"><b>{publisher}</b></a>'
-            body = body.replace(source_line, linked_source_line, 1)
+            body = _replace_in_row(body, title_marker, source_line, linked_source_line)
 
             link_label = "공식 원문 보기" if row.get("official") else "기사 원문 보기"
             standalone_link = f'\n<a href="{original_escaped}"><b>{link_label}</b></a>'
-            body = body.replace(standalone_link, "", 1)
+            body = _replace_in_row(body, title_marker, standalone_link, "")
+
+        # 날짜의 이름 자체를 증거 수준에 맞게 쓴다. RSS 색인일은 게시일이 아니다.
+        published_date = watch.korean_date(str(row.get("published", "")))
+        old_date = f"<b>발표일</b>  {html.escape(published_date)}"
+        timeline = []
+        if evidence.get("published"):
+            timeline.append(f"<b>원문 게시일</b>  {original_korean_date(evidence['published'])}")
+            if evidence.get("modified"):
+                timeline.append(f"<b>원문 수정일</b>  {original_korean_date(evidence['modified'])}")
+            if published_date != original_korean_date(evidence["published"]):
+                timeline.append(f"<b>검색 노출일(게시일과 다름)</b>  {published_date}")
+        else:
+            timeline.append("<b>원문 게시일</b>  확인 불가")
+            timeline.append(f"<b>검색 노출일(발표일 아님)</b>  {published_date}")
+        if evidence.get("effective"):
+            timeline.append(f"<b>법령 시행일</b>  {original_korean_date(evidence['effective'])}")
+        body = _replace_in_row(body, title_marker, old_date, "\n".join(timeline))
 
         explanation = interpret_article_body(row, article_body, fetch_error)
         marker = "\n<b>투자 판단 포인트</b>"
-        shown_title = watch.display_title(str(row.get("title", "")), str(row.get("publisher", "")))
-        title_marker = f"<b>{idx}. {html.escape(shown_title)}</b>"
         row_start = body.find(title_marker)
         marker_pos = body.find(marker, max(row_start, 0))
         if marker_pos >= 0:
@@ -698,6 +778,7 @@ def main() -> int:
     watch.topic_match = headline_match
     watch.event_key = semantic_event_key
     watch.event_level = semantic_event_level
+    watch.select_notify_rows = verify_source_dates_before_notify
     watch.render = render_with_linked_source
     return watch.main()
 
