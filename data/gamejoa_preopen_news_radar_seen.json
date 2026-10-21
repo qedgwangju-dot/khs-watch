@@ -13622,6 +13622,26 @@
       "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지코리아가 전남광주통합특별시에 3조원 규모 생산시설을 구축한다. 당초 1조원 규모였던 투자 계획을 세 배로 확대한 것으로, 국내 외국인투자기업의 단일 투자로는 최대 규모가 될 전망이다.",
       "title": "앰코, 전남광주에 3조 반도체 '통큰 투자'"
     },
+    "core:29b5da1c6fd90ed59580588f": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021005800091",
+      "source": "연합뉴스",
+      "source_body_digest": "c205a2bbaf296337926ccc93a9459d239be6182600af2bd12b692fa4446f1ce9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8d1952374bbe783caa66548e9239556a967d8ea9c4f4e2e59223a1c91a1140",
+      "source_fact_keys": [
+        "source_fact:v1:d832b44c2cc1f597e03a793082f39054c49557cda4d57f4308c9cdaaa2c9ae8b"
+      ],
+      "source_published_kst": "2026-10-21T05:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 145억8천만 달러…전년대비 161%↑ | 연합뉴스",
+      "telegram_core_fact": "일론 머스크의 우주기업 스페이스X는 3분기 매출이 전년비 161% 성장한 145억8천만 달러를 기록했다고 20일(현지시간) 공시했다.",
+      "title": "스페이스X, 3분기 매출 145억8천만 달러…전년대비 161%↑ | 연합뉴스"
+    },
     "core:29d1be029fa9aa5a0b500ba6": {
       "first_seen_kst": "2026-10-17T09:15:26+09:00",
       "lanes": {
@@ -17541,6 +17561,32 @@
       "telegram_core_fact": "바이오포트는 경영권 인수 직후 생산 설비 확충을 통한 병목 현상 해소와 안정적 공급망 구축에 나선다.",
       "title": "바이오포트, ‘나혼자산다’ 품절 대란 고구마칩 ‘패밀리팜’ 인수… 건강스낵 시장 본격 공략"
     },
+    "core:35bb92695158789f045791b7": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.hankyung.com/article/202610214872i",
+      "source": "한국경제",
+      "source_body_digest": "07efbf8089554b8a5a933e5d67004ef896f7c1fb256694589ac72ba36411e7af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3847c8076e6dea5f68152c97d3eadd07e95ff9f0f44de48fbb97d698201bc624",
+      "source_fact_keys": [
+        "source_fact:v1:17fe6e177b69fbebb6f43059cbc948d5aa6d8bb6749e0e7db2179d2a045f3147",
+        "source_fact:v1:2370d682b5cabf2d335247f941ab3f08add5ff697775fc9ebf0b89a264c586c7",
+        "source_fact:v1:81c7d0229f873544c71d006d34ebb8436e6cd83c51dceeb28a8f4482ba2101e9",
+        "source_fact:v1:984cf2bd659da8534dc2fabb3b428296dea73ce061dc1ceaed9f59eb38bc1c72",
+        "source_fact:v1:ba67a827db6f37237fbebab5287398f2e7a0cce07a0cac73bd4d7b2dcb953236",
+        "source_fact:v1:c6bede0eefca1e5106dd2f190aff736e9cc857fe7c9bb9ed7d409a713e59d903",
+        "source_fact:v1:fba610045914909ea1fac47654ffa23e3cff5049b45f2de697aaf3916ef9edf5"
+      ],
+      "source_published_kst": "2026-10-21T08:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
+      "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
+      "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
+    },
     "core:35bc48d96f01079381d95320": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
       "lanes": {
@@ -18382,6 +18428,28 @@
       "source_title": "메드트로닉, 미니메드 분리 완료..2.5억주 전량 교환",
       "telegram_core_fact": "메드트로닉(MDT)이 보유하던 미니메드 그룹(나스닥: MMED) 잔여 지분 2억5281만3348주 전량을 자사 보통주와 교환하는 방식으로 미니메드 분리를 최종 완료했다고 10월 15일 발표했다.",
       "title": "메드트로닉, 미니메드 분리 완료..2.5억주 전량 교환"
+    },
+    "core:3826e66cfe847b334f96384d": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05257846645614888",
+      "source": "이데일리",
+      "source_body_digest": "7454d15b97bec11d8fd69910c4c03811ba7e47a88cd8615b496898a59707be02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:37c1af54c431e75f4368850a4068bc58da2173c30acd9d780f2a63b6696738da",
+      "source_fact_keys": [
+        "source_fact:v1:a1d1cc69b8418eb586c1f0213b54cf06a68d68387558bbb071e9c2d30f4b528e",
+        "source_fact:v1:b704e2c195e04e5d3dd0751e053b6a1ef038130ab0c317927bdad8b6b1bec72f",
+        "source_fact:v1:efd5a0c76a8457c5022f3dfd7a29cfdf07985c710d9c811df678727e9936b2ee"
+      ],
+      "source_published_kst": "2026-10-20T19:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑",
+      "telegram_core_fact": "미국 산업재 기업 3M(MMM)이 아마존과 최대 60억달러 데이터센터 제품 공급 계약을 체결하면서 20일(현지 시간) 프리마켓에서 상승 중이다.",
+      "title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑"
     },
     "core:3836579c7f6ae0469930dccb": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
@@ -24635,6 +24703,34 @@
       "telegram_core_fact": "최 연구원은 \"만약 시장 하락세가 계속될 경우 은행주 주당순자산가치(BPS), 주당순이익(EPS)의 문제가 아니라 멀티플(평가배수)이 동반 하락할 수밖에 없다\"며 \"결국 은행주 주가 방향성도 시장 상황이 안정화되는 것이 관건\"이라고 짚었다.",
       "title": "신한증권 \"은행주, 반길 수만 없는 아웃퍼폼…시장 안정이 관건\" | 연합뉴스"
     },
+    "core:4cd432f1694702228820b96d": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
+    },
     "core:4cf4041a3593cf131925e0cc": {
       "first_seen_kst": "2026-10-16T18:58:56+09:00",
       "lanes": {
@@ -25304,6 +25400,29 @@
       "source_title": "쎄크, 글로벌 반도체 기업 양산라인 뚫었다…X-ray 검사장비 첫 수주",
       "telegram_core_fact": "쎄크는 자체 개발한 반도체 양산용 인라인(In-line) X-ray 검사장비 '세미 스캔 웨이(Semi-scan Wafer)의 첫 수주에 성공했다고 16일 밝혔다.",
       "title": "쎄크, 글로벌 반도체 기업 양산라인 뚫었다…X-ray 검사장비 첫 수주"
+    },
+    "core:4efd5a17581bc1352eb83121": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.etnews.com/20261021000057",
+      "source": "전자신문",
+      "source_body_digest": "7965a1ab48875f4fe22422fba1ad652293fdb95e1496246b1306e22d0c0823ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf1024a246c41f0b28287ea68365309659d54e6e6c46304f381fbb1e5d55d8df",
+      "source_fact_keys": [
+        "source_fact:v1:55f0ff2e1e1ec4e1ad891f2f5b84adc5d95d9a7f83086c6a83f3d20632426037",
+        "source_fact:v1:a4e9165b32508cd40f6002e92dd74a6baae49ebf3f6408f4d65a77b1d839bf13",
+        "source_fact:v1:a83d961d4adf8a89cace8e877e51e9b1d27c43137469733ead6b1f16d592547f",
+        "source_fact:v1:fc256090cda9002adaf9925f3da62d9dd6b3a51460dbb2c2942c1e572357a8a1"
+      ],
+      "source_published_kst": "2026-10-21T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대",
+      "telegram_core_fact": "이번 협약에 따라 바스프 전자소재 사업부는 대만 타오위안시 관인 사업장 첨단 반도체 소재 생산능력을 대폭 확대한다.",
+      "title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대"
     },
     "core:4f37b64e57c66a6db8869ab6": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
@@ -32993,6 +33112,29 @@
       "source_title": "9월 국고채 금리 일제히 상승…외국인 채권 보유잔고 7.8조 감소",
       "telegram_core_fact": "금융투자협회가 발표한 '9월 장외채권시장 동향'에 따르면 지난달 말 국고채 3년물 금리는 연 4.011%로 전월 말 대비 17.3bp(1bp=0.01%포인트) 상승했다.",
       "title": "9월 국고채 금리 일제히 상승…외국인 채권 보유잔고 7.8조 감소"
+    },
+    "core:68e34d8b8b44b4ec45bff201": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834574",
+      "source": "뉴시스",
+      "source_body_digest": "066ff014396764198496e9626dfc57006fc70866b63dd389ecc89df27780dcad",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:083d7799264e51b53683b6d9dd82e80d990902e2abd8883fd3585eb0819144b2",
+      "source_fact_identity": "source_facts:v1:f036155759ed4ac4cefa8180a31916e2e8e3a1a48f797a8f279e2e2927d65d09",
+      "source_fact_keys": [
+        "source_fact:v1:28953e65487a40000ed6991f53a2b87fdc7c5c390e136d6db8f6468fe20d12bc",
+        "source_fact:v1:7d8428b300fef6badeac9597e6ac0a2479da84c0b027ac0241f4e7296c84aa39",
+        "source_fact:v1:b0de05166b1e7130d8fe9f026b07b92c2f09f223668100538984224fdc2ce893",
+        "source_fact:v1:fdcd2579a224c961c28272e2566aaa8bc90c1b5748bd8c6e57a63a684c798b61"
+      ],
+      "source_published_kst": "2026-10-21T10:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\"",
+      "telegram_core_fact": "LS마린솔루션은 올해 3분기 연결 기준 매출 736억원, 영업이익 69억원, 순이익 62억원의 실적을 기록했다고 21일 밝혔다.",
+      "title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\""
     },
     "core:68ef29cf6002c6846571f5a4": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
@@ -52280,6 +52422,24 @@
       "source_title": "홍라희 명예관장, 이재용 회장에 삼성전자 지분 0.17% 증여..증여세 1.56조원대 추산",
       "telegram_core_fact": "[파이낸셜뉴스] 홍라희 리움미술관 명예관장이 이재용 삼성전자 회장에게 삼성전자 지분 0.17%를 증여한다. 삼성전자는 13일 홍 명예관장이 보유한 삼성전자 주식 1115만8000주(0.17%)를 이 회장에게 증여한다고 공시했다.",
       "title": "홍라희 명예관장, 이재용 회장에 삼성전자 지분 0.17% 증여..증여세 1.56조원대 추산"
+    },
+    "core:a53424c50a9a676485ce0a46": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12181233",
+      "source": "매일경제",
+      "source_body_digest": "10b925d6651359cb3e5bc5f773bcaa29377fb3cf512bb501e06491d67aa00f99",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "애널리 캐피탈 매니지먼트, 3분기 주당순손실 1.36달러..EAD 0.80달러 개선",
+      "telegram_core_fact": "분기 중 순손실이 1.36달러, 기타포괄손실이 0.31달러, 보통주 배당이 0.75달러 감소 요인으로 작용했고 기타 요인이 0.13달러 증가 요인이었다.",
+      "title": "애널리 캐피탈 매니지먼트, 3분기 주당순손실 1.36달러..EAD 0.80달러 개선"
     },
     "core:a53abe06b95c62ffe77117ab": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
@@ -83577,6 +83737,34 @@
       "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
       "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
     },
+    "event:2e1c28e39ca84f19f4f71d14": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
+    },
     "event:2e9a7e78720391c0b0d0dc75": {
       "first_seen_kst": "2026-10-10T22:01:04+09:00",
       "lanes": {
@@ -91114,6 +91302,28 @@
       "source": "뉴시스",
       "title": "뉴욕증시, 강보합 마감…브렌트유 '美 중동 항모 추가'에 4%↑"
     },
+    "event:96c94417612bf0bd4158b720": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05257846645614888",
+      "source": "이데일리",
+      "source_body_digest": "7454d15b97bec11d8fd69910c4c03811ba7e47a88cd8615b496898a59707be02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:37c1af54c431e75f4368850a4068bc58da2173c30acd9d780f2a63b6696738da",
+      "source_fact_keys": [
+        "source_fact:v1:a1d1cc69b8418eb586c1f0213b54cf06a68d68387558bbb071e9c2d30f4b528e",
+        "source_fact:v1:b704e2c195e04e5d3dd0751e053b6a1ef038130ab0c317927bdad8b6b1bec72f",
+        "source_fact:v1:efd5a0c76a8457c5022f3dfd7a29cfdf07985c710d9c811df678727e9936b2ee"
+      ],
+      "source_published_kst": "2026-10-20T19:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑",
+      "telegram_core_fact": "미국 산업재 기업 3M(MMM)이 아마존과 최대 60억달러 데이터센터 제품 공급 계약을 체결하면서 20일(현지 시간) 프리마켓에서 상승 중이다.",
+      "title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑"
+    },
     "event:96ec4866e586fb15e005a7cf": {
       "first_seen_kst": "2026-10-10T00:12:46+09:00",
       "lanes": {
@@ -97131,6 +97341,29 @@
       "source_title": "메모리값 뛰어도…프리미엄 OLED 노트북 시장은 더 커진다",
       "telegram_core_fact": "트렌드포스에 따르면 판매가격 900달러 수준의 노트북 부품원가에서 CPU와 D램, 솔리드스테이트드라이브(SSD)가 차지하는 비중은 올해 3분기 약 68%로 뛰어올랐다.",
       "title": "메모리값 뛰어도…프리미엄 OLED 노트북 시장은 더 커진다"
+    },
+    "event:e36c3899d54dd03f3db62e0b": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834574",
+      "source": "뉴시스",
+      "source_body_digest": "066ff014396764198496e9626dfc57006fc70866b63dd389ecc89df27780dcad",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:083d7799264e51b53683b6d9dd82e80d990902e2abd8883fd3585eb0819144b2",
+      "source_fact_identity": "source_facts:v1:f036155759ed4ac4cefa8180a31916e2e8e3a1a48f797a8f279e2e2927d65d09",
+      "source_fact_keys": [
+        "source_fact:v1:28953e65487a40000ed6991f53a2b87fdc7c5c390e136d6db8f6468fe20d12bc",
+        "source_fact:v1:7d8428b300fef6badeac9597e6ac0a2479da84c0b027ac0241f4e7296c84aa39",
+        "source_fact:v1:b0de05166b1e7130d8fe9f026b07b92c2f09f223668100538984224fdc2ce893",
+        "source_fact:v1:fdcd2579a224c961c28272e2566aaa8bc90c1b5748bd8c6e57a63a684c798b61"
+      ],
+      "source_published_kst": "2026-10-21T10:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\"",
+      "telegram_core_fact": "LS마린솔루션은 올해 3분기 연결 기준 매출 736억원, 영업이익 69억원, 순이익 62억원의 실적을 기록했다고 21일 밝혔다.",
+      "title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\""
     },
     "event:e3838b4fc8ffadd034571cd3": {
       "first_seen_kst": "2026-09-28T05:32:59+09:00",
@@ -106640,6 +106873,28 @@
       "source_published_kst": "2026-10-06T18:17+09:00",
       "title": "한미반도체, 삼성전기서 첫 수주… MSVP 매출 탄력"
     },
+    "fact:139f697d8bd0b69de37e2975": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05257846645614888",
+      "source": "이데일리",
+      "source_body_digest": "7454d15b97bec11d8fd69910c4c03811ba7e47a88cd8615b496898a59707be02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:37c1af54c431e75f4368850a4068bc58da2173c30acd9d780f2a63b6696738da",
+      "source_fact_keys": [
+        "source_fact:v1:a1d1cc69b8418eb586c1f0213b54cf06a68d68387558bbb071e9c2d30f4b528e",
+        "source_fact:v1:b704e2c195e04e5d3dd0751e053b6a1ef038130ab0c317927bdad8b6b1bec72f",
+        "source_fact:v1:efd5a0c76a8457c5022f3dfd7a29cfdf07985c710d9c811df678727e9936b2ee"
+      ],
+      "source_published_kst": "2026-10-20T19:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑",
+      "telegram_core_fact": "미국 산업재 기업 3M(MMM)이 아마존과 최대 60억달러 데이터센터 제품 공급 계약을 체결하면서 20일(현지 시간) 프리마켓에서 상승 중이다.",
+      "title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑"
+    },
     "fact:13a34bd5ab14f4a0a21ce9d6": {
       "first_seen_kst": "2026-10-20T16:22:04+09:00",
       "lanes": {
@@ -115674,6 +115929,29 @@
       "telegram_core_fact": "Fed가 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 모든 참석자는 연방기금금리 목표범위를 0.25%포인트 인상해 연 3.75~4.00%로 높이는 데 찬성했다.",
       "title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]"
     },
+    "fact:2df57ded25cd7077a071fd35": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834574",
+      "source": "뉴시스",
+      "source_body_digest": "066ff014396764198496e9626dfc57006fc70866b63dd389ecc89df27780dcad",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:083d7799264e51b53683b6d9dd82e80d990902e2abd8883fd3585eb0819144b2",
+      "source_fact_identity": "source_facts:v1:f036155759ed4ac4cefa8180a31916e2e8e3a1a48f797a8f279e2e2927d65d09",
+      "source_fact_keys": [
+        "source_fact:v1:28953e65487a40000ed6991f53a2b87fdc7c5c390e136d6db8f6468fe20d12bc",
+        "source_fact:v1:7d8428b300fef6badeac9597e6ac0a2479da84c0b027ac0241f4e7296c84aa39",
+        "source_fact:v1:b0de05166b1e7130d8fe9f026b07b92c2f09f223668100538984224fdc2ce893",
+        "source_fact:v1:fdcd2579a224c961c28272e2566aaa8bc90c1b5748bd8c6e57a63a684c798b61"
+      ],
+      "source_published_kst": "2026-10-21T10:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\"",
+      "telegram_core_fact": "LS마린솔루션은 올해 3분기 연결 기준 매출 736억원, 영업이익 69억원, 순이익 62억원의 실적을 기록했다고 21일 밝혔다.",
+      "title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\""
+    },
     "fact:2e063c29c286b78a3cf58403": {
       "first_seen_kst": "2026-10-21T02:41:49+09:00",
       "lanes": {
@@ -118412,6 +118690,26 @@
       "source_title": "“로봇 D램 수요, 2030년까지 20배 증가”",
       "telegram_core_fact": "고대역폭메모리(HBM)가 인공지능(AI) 데이터센터 수요로 급성장한데 이어 로봇이 삼성전자와 SK하이닉스에 새로운 메모리 수요처로 떠오르고 있다는 분석이다.",
       "title": "“로봇 D램 수요, 2030년까지 20배 증가”"
+    },
+    "fact:36a6cbfc4103cb81ab84e0b9": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021005800091",
+      "source": "연합뉴스",
+      "source_body_digest": "c205a2bbaf296337926ccc93a9459d239be6182600af2bd12b692fa4446f1ce9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8d1952374bbe783caa66548e9239556a967d8ea9c4f4e2e59223a1c91a1140",
+      "source_fact_keys": [
+        "source_fact:v1:d832b44c2cc1f597e03a793082f39054c49557cda4d57f4308c9cdaaa2c9ae8b"
+      ],
+      "source_published_kst": "2026-10-21T05:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 145억8천만 달러…전년대비 161%↑ | 연합뉴스",
+      "telegram_core_fact": "일론 머스크의 우주기업 스페이스X는 3분기 매출이 전년비 161% 성장한 145억8천만 달러를 기록했다고 20일(현지시간) 공시했다.",
+      "title": "스페이스X, 3분기 매출 145억8천만 달러…전년대비 161%↑ | 연합뉴스"
     },
     "fact:36b3b68b84cebfb7cf0eab4c": {
       "first_seen_kst": "2026-10-21T09:27:16+09:00",
@@ -145662,6 +145960,34 @@
       "telegram_core_fact": "셀트리온[068270]은 올해 4분기 6천억원 이상의 영업이익을 달성하겠다고 19일 밝혔다.",
       "title": "셀트리온 \"4분기 영업이익 6천억원 이상 달성 목표\" | 연합뉴스"
     },
+    "fact:86df6d39393d131eac17fe0c": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
+    },
     "fact:86f2e6193181b6cbf0c45a55": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
@@ -150341,6 +150667,32 @@
       "source_title": "러 측도 경유 美 등에 공급 확인…\"10월 30만t 공급\"",
       "telegram_core_fact": "미 재무부는 곧바로 러시아 경유에 대한 제재 해제를 발표했는데, 러시아도 이를 확인한 모습이다.",
       "title": "러 측도 경유 美 등에 공급 확인…\"10월 30만t 공급\""
+    },
+    "fact:93c4ffb670e0de8ed8652681": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.hankyung.com/article/202610214872i",
+      "source": "한국경제",
+      "source_body_digest": "07efbf8089554b8a5a933e5d67004ef896f7c1fb256694589ac72ba36411e7af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3847c8076e6dea5f68152c97d3eadd07e95ff9f0f44de48fbb97d698201bc624",
+      "source_fact_keys": [
+        "source_fact:v1:17fe6e177b69fbebb6f43059cbc948d5aa6d8bb6749e0e7db2179d2a045f3147",
+        "source_fact:v1:2370d682b5cabf2d335247f941ab3f08add5ff697775fc9ebf0b89a264c586c7",
+        "source_fact:v1:81c7d0229f873544c71d006d34ebb8436e6cd83c51dceeb28a8f4482ba2101e9",
+        "source_fact:v1:984cf2bd659da8534dc2fabb3b428296dea73ce061dc1ceaed9f59eb38bc1c72",
+        "source_fact:v1:ba67a827db6f37237fbebab5287398f2e7a0cce07a0cac73bd4d7b2dcb953236",
+        "source_fact:v1:c6bede0eefca1e5106dd2f190aff736e9cc857fe7c9bb9ed7d409a713e59d903",
+        "source_fact:v1:fba610045914909ea1fac47654ffa23e3cff5049b45f2de697aaf3916ef9edf5"
+      ],
+      "source_published_kst": "2026-10-21T08:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
+      "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
+      "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
     },
     "fact:93c53b107f0d5feba71941ab": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -156539,6 +156891,29 @@
       "source_title": "제이피모간체이스, 3분기 희석 EPS 5.57달러..전년비 10% 증가",
       "telegram_core_fact": "제이피모간체이스(JPM)가 3분기 순이익 153억500만 달러, 희석 주당순이익(EPS) 5.57달러를 기록했다고 13일 발표했다.",
       "title": "제이피모간체이스, 3분기 희석 EPS 5.57달러..전년비 10% 증가"
+    },
+    "fact:a4235a31eb36dafd52109285": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.etnews.com/20261021000057",
+      "source": "전자신문",
+      "source_body_digest": "7965a1ab48875f4fe22422fba1ad652293fdb95e1496246b1306e22d0c0823ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf1024a246c41f0b28287ea68365309659d54e6e6c46304f381fbb1e5d55d8df",
+      "source_fact_keys": [
+        "source_fact:v1:55f0ff2e1e1ec4e1ad891f2f5b84adc5d95d9a7f83086c6a83f3d20632426037",
+        "source_fact:v1:a4e9165b32508cd40f6002e92dd74a6baae49ebf3f6408f4d65a77b1d839bf13",
+        "source_fact:v1:a83d961d4adf8a89cace8e877e51e9b1d27c43137469733ead6b1f16d592547f",
+        "source_fact:v1:fc256090cda9002adaf9925f3da62d9dd6b3a51460dbb2c2942c1e572357a8a1"
+      ],
+      "source_published_kst": "2026-10-21T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대",
+      "telegram_core_fact": "이번 협약에 따라 바스프 전자소재 사업부는 대만 타오위안시 관인 사업장 첨단 반도체 소재 생산능력을 대폭 확대한다.",
+      "title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대"
     },
     "fact:a464f8d840f932f7773e56fa": {
       "first_seen_kst": "2026-10-20T09:47:35+09:00",
@@ -206167,6 +206542,29 @@
       "source": "전자신문",
       "title": "통신3사 CEO “개인정보 보호가 기업 최우선 경영 가치”…개인정보위원장과 공동선언문 발표"
     },
+    "link:20eff0abb06665c563e86834": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.etnews.com/20261021000057",
+      "source": "전자신문",
+      "source_body_digest": "7965a1ab48875f4fe22422fba1ad652293fdb95e1496246b1306e22d0c0823ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf1024a246c41f0b28287ea68365309659d54e6e6c46304f381fbb1e5d55d8df",
+      "source_fact_keys": [
+        "source_fact:v1:55f0ff2e1e1ec4e1ad891f2f5b84adc5d95d9a7f83086c6a83f3d20632426037",
+        "source_fact:v1:a4e9165b32508cd40f6002e92dd74a6baae49ebf3f6408f4d65a77b1d839bf13",
+        "source_fact:v1:a83d961d4adf8a89cace8e877e51e9b1d27c43137469733ead6b1f16d592547f",
+        "source_fact:v1:fc256090cda9002adaf9925f3da62d9dd6b3a51460dbb2c2942c1e572357a8a1"
+      ],
+      "source_published_kst": "2026-10-21T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대",
+      "telegram_core_fact": "이번 협약에 따라 바스프 전자소재 사업부는 대만 타오위안시 관인 사업장 첨단 반도체 소재 생산능력을 대폭 확대한다.",
+      "title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대"
+    },
     "link:20f0969249aba7cfd89f1b14": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -222199,6 +222597,29 @@
       "source_published_kst": "2026-10-07T12:19+09:00",
       "title": "SK에너지·현대오일뱅크 44조 정유 담합 심의…과징금 최대 4.6조 가능(종합)"
     },
+    "link:429a60d3efb6a355cd4d3cd0": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834574",
+      "source": "뉴시스",
+      "source_body_digest": "066ff014396764198496e9626dfc57006fc70866b63dd389ecc89df27780dcad",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:083d7799264e51b53683b6d9dd82e80d990902e2abd8883fd3585eb0819144b2",
+      "source_fact_identity": "source_facts:v1:f036155759ed4ac4cefa8180a31916e2e8e3a1a48f797a8f279e2e2927d65d09",
+      "source_fact_keys": [
+        "source_fact:v1:28953e65487a40000ed6991f53a2b87fdc7c5c390e136d6db8f6468fe20d12bc",
+        "source_fact:v1:7d8428b300fef6badeac9597e6ac0a2479da84c0b027ac0241f4e7296c84aa39",
+        "source_fact:v1:b0de05166b1e7130d8fe9f026b07b92c2f09f223668100538984224fdc2ce893",
+        "source_fact:v1:fdcd2579a224c961c28272e2566aaa8bc90c1b5748bd8c6e57a63a684c798b61"
+      ],
+      "source_published_kst": "2026-10-21T10:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\"",
+      "telegram_core_fact": "LS마린솔루션은 올해 3분기 연결 기준 매출 736억원, 영업이익 69억원, 순이익 62억원의 실적을 기록했다고 21일 밝혔다.",
+      "title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\""
+    },
     "link:429ce3f1975bf554a0a99309": {
       "first_seen_kst": "2026-10-10T02:10:54+09:00",
       "lanes": {
@@ -229231,6 +229652,34 @@
       ],
       "source_published_kst": "2026-10-06T17:56+09:00",
       "title": "월가, 앤트로픽 81.5조원 대출 신디케이션 착수…반도체 금융 최대 규모"
+    },
+    "link:51eaffdc2bacd361efa414f3": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
     },
     "link:51ebe736ac19de426840285a": {
       "first_seen_kst": "2026-10-02T06:58:16+09:00",
@@ -250969,6 +251418,28 @@
       ],
       "source_published_kst": "2026-10-07T16:01+09:00",
       "title": "6800선으로 내려온 코스피…삼전 실적·FOMC 의사록 등 변동성↑"
+    },
+    "link:8085e7a1d8f2fd60993f8a5c": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05257846645614888",
+      "source": "이데일리",
+      "source_body_digest": "7454d15b97bec11d8fd69910c4c03811ba7e47a88cd8615b496898a59707be02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:37c1af54c431e75f4368850a4068bc58da2173c30acd9d780f2a63b6696738da",
+      "source_fact_keys": [
+        "source_fact:v1:a1d1cc69b8418eb586c1f0213b54cf06a68d68387558bbb071e9c2d30f4b528e",
+        "source_fact:v1:b704e2c195e04e5d3dd0751e053b6a1ef038130ab0c317927bdad8b6b1bec72f",
+        "source_fact:v1:efd5a0c76a8457c5022f3dfd7a29cfdf07985c710d9c811df678727e9936b2ee"
+      ],
+      "source_published_kst": "2026-10-20T19:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑",
+      "telegram_core_fact": "미국 산업재 기업 3M(MMM)이 아마존과 최대 60억달러 데이터센터 제품 공급 계약을 체결하면서 20일(현지 시간) 프리마켓에서 상승 중이다.",
+      "title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑"
     },
     "link:80966e5002d2d4ae625a569e": {
       "first_seen_kst": "2026-10-17T04:08:20+09:00",
@@ -301976,6 +302447,26 @@
       "source": "머니투데이",
       "title": "육아템 할인, 적립까지...CJ온스타일, 월 990원 '키즈 멤버십' 첫선"
     },
+    "link:ed65e270ba6b25a398a0b1d4": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021005800091",
+      "source": "연합뉴스",
+      "source_body_digest": "c205a2bbaf296337926ccc93a9459d239be6182600af2bd12b692fa4446f1ce9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8d1952374bbe783caa66548e9239556a967d8ea9c4f4e2e59223a1c91a1140",
+      "source_fact_keys": [
+        "source_fact:v1:d832b44c2cc1f597e03a793082f39054c49557cda4d57f4308c9cdaaa2c9ae8b"
+      ],
+      "source_published_kst": "2026-10-21T05:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 145억8천만 달러…전년대비 161%↑ | 연합뉴스",
+      "telegram_core_fact": "일론 머스크의 우주기업 스페이스X는 3분기 매출이 전년비 161% 성장한 145억8천만 달러를 기록했다고 20일(현지시간) 공시했다.",
+      "title": "스페이스X, 3분기 매출 145억8천만 달러…전년대비 161%↑ | 연합뉴스"
+    },
     "link:ed6d666002e7c8d4d2fe0be0": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
       "lanes": {
@@ -307772,6 +308263,32 @@
       "telegram_core_fact": "포스코홀딩스는 염수리튬 2공장 상공정을 준공하고, 2033년 연산 10만톤 생산체제 구축을 공식화했다. 장인화 포스코그룹 회장이 글로벌 핵심광물 확보전 한복판인 아르헨티나에서 리튬 사업의 확장 신호탄을 쐈다.",
       "title": "장인화, 글로벌 자원 확보전 진두지휘…포스코 리튬 2공장 준공"
     },
+    "link:faf5b2c2fc0df6cd77dd3836": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.hankyung.com/article/202610214872i",
+      "source": "한국경제",
+      "source_body_digest": "07efbf8089554b8a5a933e5d67004ef896f7c1fb256694589ac72ba36411e7af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3847c8076e6dea5f68152c97d3eadd07e95ff9f0f44de48fbb97d698201bc624",
+      "source_fact_keys": [
+        "source_fact:v1:17fe6e177b69fbebb6f43059cbc948d5aa6d8bb6749e0e7db2179d2a045f3147",
+        "source_fact:v1:2370d682b5cabf2d335247f941ab3f08add5ff697775fc9ebf0b89a264c586c7",
+        "source_fact:v1:81c7d0229f873544c71d006d34ebb8436e6cd83c51dceeb28a8f4482ba2101e9",
+        "source_fact:v1:984cf2bd659da8534dc2fabb3b428296dea73ce061dc1ceaed9f59eb38bc1c72",
+        "source_fact:v1:ba67a827db6f37237fbebab5287398f2e7a0cce07a0cac73bd4d7b2dcb953236",
+        "source_fact:v1:c6bede0eefca1e5106dd2f190aff736e9cc857fe7c9bb9ed7d409a713e59d903",
+        "source_fact:v1:fba610045914909ea1fac47654ffa23e3cff5049b45f2de697aaf3916ef9edf5"
+      ],
+      "source_published_kst": "2026-10-21T08:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
+      "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
+      "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
+    },
     "link:fb002752b263de4ed40626d7": {
       "first_seen_kst": "2026-10-21T00:42:39+09:00",
       "lanes": {
@@ -309461,6 +309978,24 @@
       "source_title": "바스프, AI 데이터센터·전기차용 고성능 소재 적용 확대",
       "telegram_core_fact": "바스프는 AI 인프라 데이터센터와 고속 커넥티비티, e-모빌리티에 쓰이는 전기·전자(E&E) 부품을 대상으로 울트라손 포트폴리오의 적용을 확대한다고 13일 밝혔다.",
       "title": "바스프, AI 데이터센터·전기차용 고성능 소재 적용 확대"
+    },
+    "link:fee7b244914de5beb8ff2852": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12181233",
+      "source": "매일경제",
+      "source_body_digest": "10b925d6651359cb3e5bc5f773bcaa29377fb3cf512bb501e06491d67aa00f99",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "애널리 캐피탈 매니지먼트, 3분기 주당순손실 1.36달러..EAD 0.80달러 개선",
+      "telegram_core_fact": "분기 중 순손실이 1.36달러, 기타포괄손실이 0.31달러, 보통주 배당이 0.75달러 감소 요인으로 작용했고 기타 요인이 0.13달러 증가 요인이었다.",
+      "title": "애널리 캐피탈 매니지먼트, 3분기 주당순손실 1.36달러..EAD 0.80달러 개선"
     },
     "link:fef4c0c0fe70bb33e806f674": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -322050,6 +322585,26 @@
       "source_title": "\"2030은 S&P500·나스닥에 집중\"…ETF 전문가의 투자 조언",
       "telegram_core_fact": "상장지수펀드(ETF)에 투자할 때는 나이와 은퇴 시점에 따라 전략을 달리해야 한다는 조언이 나왔다.",
       "title": "\"2030은 S&P500·나스닥에 집중\"…ETF 전문가의 투자 조언"
+    },
+    "original:19e40d01d885166cc1a6de65": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021005800091",
+      "source": "연합뉴스",
+      "source_body_digest": "c205a2bbaf296337926ccc93a9459d239be6182600af2bd12b692fa4446f1ce9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8d1952374bbe783caa66548e9239556a967d8ea9c4f4e2e59223a1c91a1140",
+      "source_fact_keys": [
+        "source_fact:v1:d832b44c2cc1f597e03a793082f39054c49557cda4d57f4308c9cdaaa2c9ae8b"
+      ],
+      "source_published_kst": "2026-10-21T05:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 145억8천만 달러…전년대비 161%↑ | 연합뉴스",
+      "telegram_core_fact": "일론 머스크의 우주기업 스페이스X는 3분기 매출이 전년비 161% 성장한 145억8천만 달러를 기록했다고 20일(현지시간) 공시했다.",
+      "title": "스페이스X, 3분기 매출 145억8천만 달러…전년대비 161%↑ | 연합뉴스"
     },
     "original:19f50afe17163e04aada88a4": {
       "first_seen_kst": "2026-10-14T19:42:07+09:00",
@@ -344205,6 +344760,24 @@
       "source": "뉴시스",
       "title": "'공모주 청약 대행 사기' 신라운용·제니스투자 인가 취소…시장서 퇴출"
     },
+    "original:48b48fc033713f778346c518": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12181233",
+      "source": "매일경제",
+      "source_body_digest": "10b925d6651359cb3e5bc5f773bcaa29377fb3cf512bb501e06491d67aa00f99",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "애널리 캐피탈 매니지먼트, 3분기 주당순손실 1.36달러..EAD 0.80달러 개선",
+      "telegram_core_fact": "분기 중 순손실이 1.36달러, 기타포괄손실이 0.31달러, 보통주 배당이 0.75달러 감소 요인으로 작용했고 기타 요인이 0.13달러 증가 요인이었다.",
+      "title": "애널리 캐피탈 매니지먼트, 3분기 주당순손실 1.36달러..EAD 0.80달러 개선"
+    },
     "original:48bc5c3b1abf9b1d486ef344": {
       "first_seen_kst": "2026-10-20T10:42:42+09:00",
       "lanes": {
@@ -352682,6 +353255,28 @@
       "telegram_core_fact": "3분기에 전 세계 스마트폰 출하량이 전년비 20% 감소하여 2012년 이후 최저 수준을 기록했다. 12일(현지시간) 카운터포인트 리서치의 추정치에 따르면 올해 3분기에 전 세계 스마트폰 출하량은 전년 동기보다 20% 감소한 것으로 잠정 집계됐다.",
       "title": "스마트폰 비싸지니…판매 20%↓, 14년 만에 최저"
     },
+    "original:5c6e7ca8db7ed93c5bb4e703": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05257846645614888",
+      "source": "이데일리",
+      "source_body_digest": "7454d15b97bec11d8fd69910c4c03811ba7e47a88cd8615b496898a59707be02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:37c1af54c431e75f4368850a4068bc58da2173c30acd9d780f2a63b6696738da",
+      "source_fact_keys": [
+        "source_fact:v1:a1d1cc69b8418eb586c1f0213b54cf06a68d68387558bbb071e9c2d30f4b528e",
+        "source_fact:v1:b704e2c195e04e5d3dd0751e053b6a1ef038130ab0c317927bdad8b6b1bec72f",
+        "source_fact:v1:efd5a0c76a8457c5022f3dfd7a29cfdf07985c710d9c811df678727e9936b2ee"
+      ],
+      "source_published_kst": "2026-10-20T19:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑",
+      "telegram_core_fact": "미국 산업재 기업 3M(MMM)이 아마존과 최대 60억달러 데이터센터 제품 공급 계약을 체결하면서 20일(현지 시간) 프리마켓에서 상승 중이다.",
+      "title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑"
+    },
     "original:5c7581c804f5714339d73542": {
       "first_seen_kst": "2026-10-16T16:35:36+09:00",
       "lanes": {
@@ -357960,6 +358555,34 @@
       "source_title": "코스피 급락에 미장으로…순매수 1위 반도체 3배 ETF는 40% 급락",
       "telegram_core_fact": "순매수 자금 상당액이 미국 반도체 지수를 3배로 추종하는 레버리지 상장지수펀드(ETF)에 몰렸지만, 해당 상품 가격은 같은 기간 40% 넘게 급락해 투자 손실 우려도 커지고 있다.",
       "title": "코스피 급락에 미장으로…순매수 1위 반도체 3배 ETF는 40% 급락"
+    },
+    "original:6817e1dfd56e1bdd1ab783c9": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
     },
     "original:6819268fb0691ec40d782a96": {
       "first_seen_kst": "2026-10-03T06:34:10+09:00",
@@ -366336,6 +366959,29 @@
       "source_title": "가온전선, 美 원전용 케이블 시장 진출…현지 시장 선점",
       "telegram_core_fact": "가온전선이 미국 원전용 케이블 시장에 진출한다. 가온전선은 미국 생산법인 LSCUS가 노스캐롤라이나주 타보로 공장에 원전용 케이블 생산설비를 구축할 계획이라고 12일 밝혔다.",
       "title": "가온전선, 美 원전용 케이블 시장 진출…현지 시장 선점"
+    },
+    "original:79ef36841cf80f4a6583280b": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.etnews.com/20261021000057",
+      "source": "전자신문",
+      "source_body_digest": "7965a1ab48875f4fe22422fba1ad652293fdb95e1496246b1306e22d0c0823ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf1024a246c41f0b28287ea68365309659d54e6e6c46304f381fbb1e5d55d8df",
+      "source_fact_keys": [
+        "source_fact:v1:55f0ff2e1e1ec4e1ad891f2f5b84adc5d95d9a7f83086c6a83f3d20632426037",
+        "source_fact:v1:a4e9165b32508cd40f6002e92dd74a6baae49ebf3f6408f4d65a77b1d839bf13",
+        "source_fact:v1:a83d961d4adf8a89cace8e877e51e9b1d27c43137469733ead6b1f16d592547f",
+        "source_fact:v1:fc256090cda9002adaf9925f3da62d9dd6b3a51460dbb2c2942c1e572357a8a1"
+      ],
+      "source_published_kst": "2026-10-21T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대",
+      "telegram_core_fact": "이번 협약에 따라 바스프 전자소재 사업부는 대만 타오위안시 관인 사업장 첨단 반도체 소재 생산능력을 대폭 확대한다.",
+      "title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대"
     },
     "original:7a0067a2937fb562b5b5b3bf": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -386017,6 +386663,32 @@
       "source": "전자신문",
       "title": "비큐AI, 'AI 페스타 2026' 참가… 데이터 공급 플랫폼 'RDPGROUP' 주목"
     },
+    "original:a4a96688bd52969c551f528a": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.hankyung.com/article/202610214872i",
+      "source": "한국경제",
+      "source_body_digest": "07efbf8089554b8a5a933e5d67004ef896f7c1fb256694589ac72ba36411e7af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3847c8076e6dea5f68152c97d3eadd07e95ff9f0f44de48fbb97d698201bc624",
+      "source_fact_keys": [
+        "source_fact:v1:17fe6e177b69fbebb6f43059cbc948d5aa6d8bb6749e0e7db2179d2a045f3147",
+        "source_fact:v1:2370d682b5cabf2d335247f941ab3f08add5ff697775fc9ebf0b89a264c586c7",
+        "source_fact:v1:81c7d0229f873544c71d006d34ebb8436e6cd83c51dceeb28a8f4482ba2101e9",
+        "source_fact:v1:984cf2bd659da8534dc2fabb3b428296dea73ce061dc1ceaed9f59eb38bc1c72",
+        "source_fact:v1:ba67a827db6f37237fbebab5287398f2e7a0cce07a0cac73bd4d7b2dcb953236",
+        "source_fact:v1:c6bede0eefca1e5106dd2f190aff736e9cc857fe7c9bb9ed7d409a713e59d903",
+        "source_fact:v1:fba610045914909ea1fac47654ffa23e3cff5049b45f2de697aaf3916ef9edf5"
+      ],
+      "source_published_kst": "2026-10-21T08:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
+      "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
+      "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
+    },
     "original:a4b117c6edc2a71cc20d5ba3": {
       "first_seen_kst": "2026-09-18T00:19:03+09:00",
       "lanes": {
@@ -401922,6 +402594,29 @@
       ],
       "source_published_kst": "2026-10-06T17:57+09:00",
       "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
+    },
+    "original:c978ef6986d782c94be9f48f": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834574",
+      "source": "뉴시스",
+      "source_body_digest": "066ff014396764198496e9626dfc57006fc70866b63dd389ecc89df27780dcad",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:083d7799264e51b53683b6d9dd82e80d990902e2abd8883fd3585eb0819144b2",
+      "source_fact_identity": "source_facts:v1:f036155759ed4ac4cefa8180a31916e2e8e3a1a48f797a8f279e2e2927d65d09",
+      "source_fact_keys": [
+        "source_fact:v1:28953e65487a40000ed6991f53a2b87fdc7c5c390e136d6db8f6468fe20d12bc",
+        "source_fact:v1:7d8428b300fef6badeac9597e6ac0a2479da84c0b027ac0241f4e7296c84aa39",
+        "source_fact:v1:b0de05166b1e7130d8fe9f026b07b92c2f09f223668100538984224fdc2ce893",
+        "source_fact:v1:fdcd2579a224c961c28272e2566aaa8bc90c1b5748bd8c6e57a63a684c798b61"
+      ],
+      "source_published_kst": "2026-10-21T10:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\"",
+      "telegram_core_fact": "LS마린솔루션은 올해 3분기 연결 기준 매출 736억원, 영업이익 69억원, 순이익 62억원의 실적을 기록했다고 21일 밝혔다.",
+      "title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\""
     },
     "original:c97f77dbe90a034ef73973ae": {
       "first_seen_kst": "2026-10-12T20:59:01+09:00",
@@ -469533,6 +470228,34 @@
       "telegram_core_fact": "해양수산부는 8일 열린 제15회 국가정책조정회의에서 이 같은 내용이 담긴 '데이터 기반 연근해어업 관리혁신 및 규제 합리화 방안'을 발표했다.",
       "title": "어획량·조업 위치 데이터로 관리…연근해어업 규제 절반 줄인다"
     },
+    "source_fact:17f587e37b610c329352e7bf": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
+    },
     "source_fact:17fcb9406b27a37177ce9d18": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
       "lanes": {
@@ -489852,6 +490575,34 @@
       "source_title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\"",
       "telegram_core_fact": "포럼 사무국인 한국정보통신진흥협회(KAIT)는 앞으로도 '디지털 인사이트 포럼'을 통해 AI·디지털 산업의 주요 기술·정책 이슈를 선제적으로 발굴하고, AI 인프라 경쟁력 강화를 위한 민관 협력을 지속적으로 확대해 나갈 계획이다.",
       "title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\""
+    },
+    "source_fact:22936c72c136242a987d320d": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
     },
     "source_fact:2293b5c0e2cb52fa773da7d5": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
@@ -523482,6 +524233,26 @@
       "telegram_core_fact": "참석자들은 지역 제조산업과 피지컬AI 기술을 연계할 수 있는 실증·사업화 방안과 기업 육성, 기술 공급기업과 수요기업 간 협력 확대 등을 논의했다.",
       "title": "전북도, 산·학·연·정 전문가 '피지컬AI·로봇' 미래전략 논의"
     },
+    "source_fact:34505a2efadc09edf0f8ae3a": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021005800091",
+      "source": "연합뉴스",
+      "source_body_digest": "c205a2bbaf296337926ccc93a9459d239be6182600af2bd12b692fa4446f1ce9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8d1952374bbe783caa66548e9239556a967d8ea9c4f4e2e59223a1c91a1140",
+      "source_fact_keys": [
+        "source_fact:v1:d832b44c2cc1f597e03a793082f39054c49557cda4d57f4308c9cdaaa2c9ae8b"
+      ],
+      "source_published_kst": "2026-10-21T05:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 145억8천만 달러…전년대비 161%↑ | 연합뉴스",
+      "telegram_core_fact": "일론 머스크의 우주기업 스페이스X는 3분기 매출이 전년비 161% 성장한 145억8천만 달러를 기록했다고 20일(현지시간) 공시했다.",
+      "title": "스페이스X, 3분기 매출 145억8천만 달러…전년대비 161%↑ | 연합뉴스"
+    },
     "source_fact:3457ddbccf08a5ac037542d7": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
       "lanes": {
@@ -525277,6 +526048,28 @@
       "source_title": "[단독] 팀 코리아, 美웨스팅하우스 지분 인수 '兆단위 베팅'",
       "telegram_core_fact": "SK그룹이 조(兆) 단위 자금을 투입해 미국 원전 기업 웨스팅하우스 지분을 인수하는 방안을 검토 중인 것으로 파악됐다.",
       "title": "[단독] 팀 코리아, 美웨스팅하우스 지분 인수 '兆단위 베팅'"
+    },
+    "source_fact:35522ebdf2084200eb85fd94": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05257846645614888",
+      "source": "이데일리",
+      "source_body_digest": "7454d15b97bec11d8fd69910c4c03811ba7e47a88cd8615b496898a59707be02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:37c1af54c431e75f4368850a4068bc58da2173c30acd9d780f2a63b6696738da",
+      "source_fact_keys": [
+        "source_fact:v1:a1d1cc69b8418eb586c1f0213b54cf06a68d68387558bbb071e9c2d30f4b528e",
+        "source_fact:v1:b704e2c195e04e5d3dd0751e053b6a1ef038130ab0c317927bdad8b6b1bec72f",
+        "source_fact:v1:efd5a0c76a8457c5022f3dfd7a29cfdf07985c710d9c811df678727e9936b2ee"
+      ],
+      "source_published_kst": "2026-10-20T19:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑",
+      "telegram_core_fact": "미국 산업재 기업 3M(MMM)이 아마존과 최대 60억달러 데이터센터 제품 공급 계약을 체결하면서 20일(현지 시간) 프리마켓에서 상승 중이다.",
+      "title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑"
     },
     "source_fact:35599221182f0c76744ff751": {
       "first_seen_kst": "2026-10-10T08:48:09+09:00",
@@ -532758,6 +533551,28 @@
       "source_title": "사우디가 오합지졸이었던 후티 반군에 당하는 이유",
       "telegram_core_fact": "킹스칼리지런던의 안보학 선임강사 안드레아스 크리그는 “이란은 후티 반군에 단순히 무기를 공급한 것이 아니라 자체적인 군수산업 역량을 구축하도록 도왔다”며 “이란의 직접적인 무기 공급망이 차단되더라도 이러한 역량을 해체하기는 갈수록 어려워지고 있다”고 설명했다.",
       "title": "사우디가 오합지졸이었던 후티 반군에 당하는 이유"
+    },
+    "source_fact:399005774f318f83cd7824f7": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05257846645614888",
+      "source": "이데일리",
+      "source_body_digest": "7454d15b97bec11d8fd69910c4c03811ba7e47a88cd8615b496898a59707be02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:37c1af54c431e75f4368850a4068bc58da2173c30acd9d780f2a63b6696738da",
+      "source_fact_keys": [
+        "source_fact:v1:a1d1cc69b8418eb586c1f0213b54cf06a68d68387558bbb071e9c2d30f4b528e",
+        "source_fact:v1:b704e2c195e04e5d3dd0751e053b6a1ef038130ab0c317927bdad8b6b1bec72f",
+        "source_fact:v1:efd5a0c76a8457c5022f3dfd7a29cfdf07985c710d9c811df678727e9936b2ee"
+      ],
+      "source_published_kst": "2026-10-20T19:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑",
+      "telegram_core_fact": "미국 산업재 기업 3M(MMM)이 아마존과 최대 60억달러 데이터센터 제품 공급 계약을 체결하면서 20일(현지 시간) 프리마켓에서 상승 중이다.",
+      "title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑"
     },
     "source_fact:39902e224611695d9459bcae": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
@@ -556896,6 +557711,29 @@
       "telegram_core_fact": "추 지사는 착공식에서 \"이번 투자는 평택에서 쌓아온 제조 역량을 바탕으로 생산과 물류, 고객교육까지 기능을 확대하는 뜻깊은 출발\"이라며 \"경기도를 믿고 투자해주신 만큼, 그 믿음에 확실한 성과로 보답하겠다\"고 말했다.",
       "title": "추미애 \"경기도 믿고 투자한 기업에 성과로 보답\"…美 엑셀리스, 평택에 아시아 유일 거점 착공"
     },
+    "source_fact:46f3a21433fa7c8f803be1f9": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834574",
+      "source": "뉴시스",
+      "source_body_digest": "066ff014396764198496e9626dfc57006fc70866b63dd389ecc89df27780dcad",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:083d7799264e51b53683b6d9dd82e80d990902e2abd8883fd3585eb0819144b2",
+      "source_fact_identity": "source_facts:v1:f036155759ed4ac4cefa8180a31916e2e8e3a1a48f797a8f279e2e2927d65d09",
+      "source_fact_keys": [
+        "source_fact:v1:28953e65487a40000ed6991f53a2b87fdc7c5c390e136d6db8f6468fe20d12bc",
+        "source_fact:v1:7d8428b300fef6badeac9597e6ac0a2479da84c0b027ac0241f4e7296c84aa39",
+        "source_fact:v1:b0de05166b1e7130d8fe9f026b07b92c2f09f223668100538984224fdc2ce893",
+        "source_fact:v1:fdcd2579a224c961c28272e2566aaa8bc90c1b5748bd8c6e57a63a684c798b61"
+      ],
+      "source_published_kst": "2026-10-21T10:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\"",
+      "telegram_core_fact": "LS마린솔루션은 올해 3분기 연결 기준 매출 736억원, 영업이익 69억원, 순이익 62억원의 실적을 기록했다고 21일 밝혔다.",
+      "title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\""
+    },
     "source_fact:46f8ad38cba1c9cc6ca68001": {
       "first_seen_kst": "2026-10-15T05:17:25+09:00",
       "lanes": {
@@ -560045,6 +560883,34 @@
       "telegram_core_fact": "엔비디아가 투자한 영국 인공지능(AI) 인프라 기업 엔스케일이 기업공개(IPO)를 앞두고 주요 고객 계약 철회와 기업가치 인하 압박에 직면했다. 로이터통신에 따르면 MS는 지난 18일 엔스케일과 추진하던 영국 에식스주 로턴 부지의 데이터센터 계약에서 철수했다고 밝혔다.",
       "title": "[AI 고속도로] 엔비디아가 투자했는데…英 엔스케일, MS 계약 철회에 몸값도 '흔들'"
     },
+    "source_fact:485795d3f4826ec4fcdac1f1": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
+    },
     "source_fact:485ae0a12c2d0728ddcf36b3": {
       "first_seen_kst": "2026-10-17T04:33:11+09:00",
       "lanes": {
@@ -562639,6 +563505,29 @@
       "source_title": "삼기에너지솔루션즈, 美서 1000억원 규모 하이브리드 부품 수주",
       "telegram_core_fact": "삼기에너지솔루션즈는 미국 법인 삼기아메리카가 글로벌 완성차 업체를 대상으로 총 7440만달러(약 995억원) 하이브리드 부품 공급 프로젝트를 수주했다고 20일 밝혔다.",
       "title": "삼기에너지솔루션즈, 美서 1000억원 규모 하이브리드 부품 수주"
+    },
+    "source_fact:49888f1748498836724cd537": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.etnews.com/20261021000057",
+      "source": "전자신문",
+      "source_body_digest": "7965a1ab48875f4fe22422fba1ad652293fdb95e1496246b1306e22d0c0823ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf1024a246c41f0b28287ea68365309659d54e6e6c46304f381fbb1e5d55d8df",
+      "source_fact_keys": [
+        "source_fact:v1:55f0ff2e1e1ec4e1ad891f2f5b84adc5d95d9a7f83086c6a83f3d20632426037",
+        "source_fact:v1:a4e9165b32508cd40f6002e92dd74a6baae49ebf3f6408f4d65a77b1d839bf13",
+        "source_fact:v1:a83d961d4adf8a89cace8e877e51e9b1d27c43137469733ead6b1f16d592547f",
+        "source_fact:v1:fc256090cda9002adaf9925f3da62d9dd6b3a51460dbb2c2942c1e572357a8a1"
+      ],
+      "source_published_kst": "2026-10-21T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대",
+      "telegram_core_fact": "이번 협약에 따라 바스프 전자소재 사업부는 대만 타오위안시 관인 사업장 첨단 반도체 소재 생산능력을 대폭 확대한다.",
+      "title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대"
     },
     "source_fact:498bfa67a826bd1946b02df0": {
       "first_seen_kst": "2026-10-16T15:15:48+09:00",
@@ -588089,6 +588978,29 @@
       "telegram_core_fact": "글로벌파운드리도 이날 보도자료를 통해 뉴욕주 몰타에 신설되는 반도체 공장 2곳의 기술 공급·운영 사업자로 선정됐다고 밝혔다.",
       "title": "트럼프 “日 투자로 美 뉴욕에 반도체 공장 2곳 건설… 한국·대만 약속도 사업화”"
     },
+    "source_fact:5727b3b112330472b68ce2a3": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.etnews.com/20261021000057",
+      "source": "전자신문",
+      "source_body_digest": "7965a1ab48875f4fe22422fba1ad652293fdb95e1496246b1306e22d0c0823ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf1024a246c41f0b28287ea68365309659d54e6e6c46304f381fbb1e5d55d8df",
+      "source_fact_keys": [
+        "source_fact:v1:55f0ff2e1e1ec4e1ad891f2f5b84adc5d95d9a7f83086c6a83f3d20632426037",
+        "source_fact:v1:a4e9165b32508cd40f6002e92dd74a6baae49ebf3f6408f4d65a77b1d839bf13",
+        "source_fact:v1:a83d961d4adf8a89cace8e877e51e9b1d27c43137469733ead6b1f16d592547f",
+        "source_fact:v1:fc256090cda9002adaf9925f3da62d9dd6b3a51460dbb2c2942c1e572357a8a1"
+      ],
+      "source_published_kst": "2026-10-21T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대",
+      "telegram_core_fact": "이번 협약에 따라 바스프 전자소재 사업부는 대만 타오위안시 관인 사업장 첨단 반도체 소재 생산능력을 대폭 확대한다.",
+      "title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대"
+    },
     "source_fact:572a10e6357e8ee1efdf937c": {
       "first_seen_kst": "2026-10-15T02:27:03+09:00",
       "lanes": {
@@ -600645,6 +601557,32 @@
       "telegram_core_fact": "자유시보와 공상시보 등 대만 언론에 따르면 시장조사업체 트렌드포스는 최근 AI 데이터센터 건설, 데이터센터 간 상호 연결, 대용량 백본망 구축에 따라 올해까지 글로벌 광섬유의 수요와 공급 격차가 1억8천만 코어 킬로미터(Core Kilometer)에 달할 것으로 내다봤다.",
       "title": "대만 시장조사업체 \"광섬유 부족 2028년까지 지속 가능성\" | 연합뉴스"
     },
+    "source_fact:5d27b59e6beac859ff5b006b": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.hankyung.com/article/202610214872i",
+      "source": "한국경제",
+      "source_body_digest": "07efbf8089554b8a5a933e5d67004ef896f7c1fb256694589ac72ba36411e7af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3847c8076e6dea5f68152c97d3eadd07e95ff9f0f44de48fbb97d698201bc624",
+      "source_fact_keys": [
+        "source_fact:v1:17fe6e177b69fbebb6f43059cbc948d5aa6d8bb6749e0e7db2179d2a045f3147",
+        "source_fact:v1:2370d682b5cabf2d335247f941ab3f08add5ff697775fc9ebf0b89a264c586c7",
+        "source_fact:v1:81c7d0229f873544c71d006d34ebb8436e6cd83c51dceeb28a8f4482ba2101e9",
+        "source_fact:v1:984cf2bd659da8534dc2fabb3b428296dea73ce061dc1ceaed9f59eb38bc1c72",
+        "source_fact:v1:ba67a827db6f37237fbebab5287398f2e7a0cce07a0cac73bd4d7b2dcb953236",
+        "source_fact:v1:c6bede0eefca1e5106dd2f190aff736e9cc857fe7c9bb9ed7d409a713e59d903",
+        "source_fact:v1:fba610045914909ea1fac47654ffa23e3cff5049b45f2de697aaf3916ef9edf5"
+      ],
+      "source_published_kst": "2026-10-21T08:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
+      "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
+      "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
+    },
     "source_fact:5d27e893a255f1b880a46204": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -608835,6 +609773,29 @@
       "source_title": "中 보조금 공세 속 태양광 셀 기반 '흔들'…”세액공제로 제조 기반 지켜야\"",
       "telegram_core_fact": "대표적으로 미국은 인플레이션감축법(IRA)에 따라 2023년부터 첨단제조세액공제(AMPC)를 실시했는데 도입 후 2년간 민간 부문에서 태양광 분야에 190억달러 신규 투자가 이뤄졌고, 미국 내 생산이 전무했던 셀도 생산능력이 11GW까지 확대됐다.",
       "title": "中 보조금 공세 속 태양광 셀 기반 '흔들'…”세액공제로 제조 기반 지켜야\""
+    },
+    "source_fact:6226a256e4f6c9551a60aec6": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834574",
+      "source": "뉴시스",
+      "source_body_digest": "066ff014396764198496e9626dfc57006fc70866b63dd389ecc89df27780dcad",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:083d7799264e51b53683b6d9dd82e80d990902e2abd8883fd3585eb0819144b2",
+      "source_fact_identity": "source_facts:v1:f036155759ed4ac4cefa8180a31916e2e8e3a1a48f797a8f279e2e2927d65d09",
+      "source_fact_keys": [
+        "source_fact:v1:28953e65487a40000ed6991f53a2b87fdc7c5c390e136d6db8f6468fe20d12bc",
+        "source_fact:v1:7d8428b300fef6badeac9597e6ac0a2479da84c0b027ac0241f4e7296c84aa39",
+        "source_fact:v1:b0de05166b1e7130d8fe9f026b07b92c2f09f223668100538984224fdc2ce893",
+        "source_fact:v1:fdcd2579a224c961c28272e2566aaa8bc90c1b5748bd8c6e57a63a684c798b61"
+      ],
+      "source_published_kst": "2026-10-21T10:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\"",
+      "telegram_core_fact": "LS마린솔루션은 올해 3분기 연결 기준 매출 736억원, 영업이익 69억원, 순이익 62억원의 실적을 기록했다고 21일 밝혔다.",
+      "title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\""
     },
     "source_fact:622c633e7d2d9785099cb536": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -645900,6 +646861,34 @@
       "telegram_core_fact": "더불어민주당 김현정 의원(경기 평택병)이 SK하이닉스 미국 손자회사 솔리다임의 나스닥 상장 추진에 제동을 걸고 나섰다. 김 의원은 19일 국회 정무위원회 금융감독원 국정감사에서 \"솔리다임 상장 자체보다 SK하이닉스 일반주주 보호장치 없이 해외 상장이 추진되는 점이 문제\"라며 금융당국의 적극적인 대응을 촉구했다.",
       "title": "김현정 의원 \"솔리다임 상장, 주주보호 없이 추진해선 안 돼\""
     },
+    "source_fact:75f4f9ad2526e9de59714d2c": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
+    },
     "source_fact:75f69233a2299966ab62a60a": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -664285,6 +665274,32 @@
       "telegram_core_fact": "HSBC 홍콩법인 트레이더 A씨 등 3명은 2021년 8∼12월 무차입 방식으로 호텔신라 등 9개 상장사 주식 31만8천781주(157억8천468만원)를 공매도한 혐의로 2024년 3월 기소됐다.",
       "title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스"
     },
+    "source_fact:805655416e66061f52454b04": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.hankyung.com/article/202610214872i",
+      "source": "한국경제",
+      "source_body_digest": "07efbf8089554b8a5a933e5d67004ef896f7c1fb256694589ac72ba36411e7af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3847c8076e6dea5f68152c97d3eadd07e95ff9f0f44de48fbb97d698201bc624",
+      "source_fact_keys": [
+        "source_fact:v1:17fe6e177b69fbebb6f43059cbc948d5aa6d8bb6749e0e7db2179d2a045f3147",
+        "source_fact:v1:2370d682b5cabf2d335247f941ab3f08add5ff697775fc9ebf0b89a264c586c7",
+        "source_fact:v1:81c7d0229f873544c71d006d34ebb8436e6cd83c51dceeb28a8f4482ba2101e9",
+        "source_fact:v1:984cf2bd659da8534dc2fabb3b428296dea73ce061dc1ceaed9f59eb38bc1c72",
+        "source_fact:v1:ba67a827db6f37237fbebab5287398f2e7a0cce07a0cac73bd4d7b2dcb953236",
+        "source_fact:v1:c6bede0eefca1e5106dd2f190aff736e9cc857fe7c9bb9ed7d409a713e59d903",
+        "source_fact:v1:fba610045914909ea1fac47654ffa23e3cff5049b45f2de697aaf3916ef9edf5"
+      ],
+      "source_published_kst": "2026-10-21T08:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
+      "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
+      "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
+    },
     "source_fact:8059ac53c90c8e354982452f": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -671674,6 +672689,34 @@
       "source_title": "러, \"우크라 하루 드론 1000개 쏴\"…상트페테르부르그 석유시설 불",
       "telegram_core_fact": "[AP/뉴시스] 우크라이나가 하루 밤 동안 1000개가 넘는 드론을 러시아 여러 지역에 발사 공격했으며 우크라에서 멀리 떨어진 상트페테르부르그의 석유수출 터미널에 화재가 났다. 상트페테르부르그에서 석유 터미널, 루치 석유저장소가 드론에 불이 났다면서 주지사가 1명이 사망하고 5명이 부상했다고 말했다.",
       "title": "러, \"우크라 하루 드론 1000개 쏴\"…상트페테르부르그 석유시설 불"
+    },
+    "source_fact:84d53a7822440f7540be7c23": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
     },
     "source_fact:84d5a05ef6b9e1c3952e45cb": {
       "first_seen_kst": "2026-10-20T20:22:43+09:00",
@@ -692912,6 +693955,34 @@
       "telegram_core_fact": "엘앤씨바이오가 미국 인체조직 전문기업·조직은행과 인체조직 피부 ECM 제품인 '리투오 시리즈'에 대한 820억원 공급계약을 체결했다.",
       "title": "엘앤씨바이오 \"美조직은행과 '리투오' 820억 계약\""
     },
+    "source_fact:909c41958d066e15dbf97cbd": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
+    },
     "source_fact:90aadad3c348717e0bf20269": {
       "first_seen_kst": "2026-10-11T19:59:25+09:00",
       "lanes": {
@@ -694032,6 +695103,32 @@
       "source_title": "앤트로픽 상반기 매출 21.6조원에도 손실은 100억원 넘어 | 연합뉴스",
       "telegram_core_fact": "기업공개(IPO)가 임박한 앤트로픽이 올해 상반기 1500%의 매출 증가세를 보이고도 100조원 이상의 손실을 기록한 것으로 나타났다.",
       "title": "앤트로픽 상반기 매출 21.6조원에도 손실은 100억원 넘어 | 연합뉴스"
+    },
+    "source_fact:91472ef0bd70cc7ffa090f63": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.hankyung.com/article/202610214872i",
+      "source": "한국경제",
+      "source_body_digest": "07efbf8089554b8a5a933e5d67004ef896f7c1fb256694589ac72ba36411e7af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3847c8076e6dea5f68152c97d3eadd07e95ff9f0f44de48fbb97d698201bc624",
+      "source_fact_keys": [
+        "source_fact:v1:17fe6e177b69fbebb6f43059cbc948d5aa6d8bb6749e0e7db2179d2a045f3147",
+        "source_fact:v1:2370d682b5cabf2d335247f941ab3f08add5ff697775fc9ebf0b89a264c586c7",
+        "source_fact:v1:81c7d0229f873544c71d006d34ebb8436e6cd83c51dceeb28a8f4482ba2101e9",
+        "source_fact:v1:984cf2bd659da8534dc2fabb3b428296dea73ce061dc1ceaed9f59eb38bc1c72",
+        "source_fact:v1:ba67a827db6f37237fbebab5287398f2e7a0cce07a0cac73bd4d7b2dcb953236",
+        "source_fact:v1:c6bede0eefca1e5106dd2f190aff736e9cc857fe7c9bb9ed7d409a713e59d903",
+        "source_fact:v1:fba610045914909ea1fac47654ffa23e3cff5049b45f2de697aaf3916ef9edf5"
+      ],
+      "source_published_kst": "2026-10-21T08:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
+      "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
+      "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
     },
     "source_fact:91505f57ee58a82cb866de61": {
       "first_seen_kst": "2026-10-14T15:35:09+09:00",
@@ -725907,6 +727004,32 @@
       "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
       "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
     },
+    "source_fact:a253e29eae1109ddc026080c": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.hankyung.com/article/202610214872i",
+      "source": "한국경제",
+      "source_body_digest": "07efbf8089554b8a5a933e5d67004ef896f7c1fb256694589ac72ba36411e7af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3847c8076e6dea5f68152c97d3eadd07e95ff9f0f44de48fbb97d698201bc624",
+      "source_fact_keys": [
+        "source_fact:v1:17fe6e177b69fbebb6f43059cbc948d5aa6d8bb6749e0e7db2179d2a045f3147",
+        "source_fact:v1:2370d682b5cabf2d335247f941ab3f08add5ff697775fc9ebf0b89a264c586c7",
+        "source_fact:v1:81c7d0229f873544c71d006d34ebb8436e6cd83c51dceeb28a8f4482ba2101e9",
+        "source_fact:v1:984cf2bd659da8534dc2fabb3b428296dea73ce061dc1ceaed9f59eb38bc1c72",
+        "source_fact:v1:ba67a827db6f37237fbebab5287398f2e7a0cce07a0cac73bd4d7b2dcb953236",
+        "source_fact:v1:c6bede0eefca1e5106dd2f190aff736e9cc857fe7c9bb9ed7d409a713e59d903",
+        "source_fact:v1:fba610045914909ea1fac47654ffa23e3cff5049b45f2de697aaf3916ef9edf5"
+      ],
+      "source_published_kst": "2026-10-21T08:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
+      "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
+      "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
+    },
     "source_fact:a2562c1d3194b1fcfba96757": {
       "first_seen_kst": "2026-10-15T00:34:31+09:00",
       "lanes": {
@@ -753948,6 +755071,34 @@
       "telegram_core_fact": "올해 경상수지 흑자가 GDP 대비 20%를 초과하는 4500억 달러 수준으로 예상되는 가운데, 반도체 호황으로 주가가 3000에서 9000으로 급등하자 외국인 기관투자자들이 국내 주식 한도 초과에 따른 리밸런싱(주식 매도)에 나서면서 단기적으로 환율이 급등하는 기현상이 발생했다고 설명했다.",
       "title": "'좋을 때 나쁠 때를 준비해야'…반도체 호황에 대한 이창용의 진단"
     },
+    "source_fact:b0f4dd4a9d6622c37761157b": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
+    },
     "source_fact:b0f582e241c4b62e1c2e494b": {
       "first_seen_kst": "2026-10-18T15:46:48+09:00",
       "lanes": {
@@ -756380,6 +757531,29 @@
       ],
       "source_published_kst": "2026-10-05T05:01+09:00",
       "title": "국회 정무위 6일 국감 돌입…금융권 해킹에 5대 은행장 줄소환되나"
+    },
+    "source_fact:b253e798c160bf79ab4cb927": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834574",
+      "source": "뉴시스",
+      "source_body_digest": "066ff014396764198496e9626dfc57006fc70866b63dd389ecc89df27780dcad",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:083d7799264e51b53683b6d9dd82e80d990902e2abd8883fd3585eb0819144b2",
+      "source_fact_identity": "source_facts:v1:f036155759ed4ac4cefa8180a31916e2e8e3a1a48f797a8f279e2e2927d65d09",
+      "source_fact_keys": [
+        "source_fact:v1:28953e65487a40000ed6991f53a2b87fdc7c5c390e136d6db8f6468fe20d12bc",
+        "source_fact:v1:7d8428b300fef6badeac9597e6ac0a2479da84c0b027ac0241f4e7296c84aa39",
+        "source_fact:v1:b0de05166b1e7130d8fe9f026b07b92c2f09f223668100538984224fdc2ce893",
+        "source_fact:v1:fdcd2579a224c961c28272e2566aaa8bc90c1b5748bd8c6e57a63a684c798b61"
+      ],
+      "source_published_kst": "2026-10-21T10:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\"",
+      "telegram_core_fact": "LS마린솔루션은 올해 3분기 연결 기준 매출 736억원, 영업이익 69억원, 순이익 62억원의 실적을 기록했다고 21일 밝혔다.",
+      "title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\""
     },
     "source_fact:b258db418275044561b28c8f": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -794126,6 +795300,32 @@
       "telegram_core_fact": "이날 미 국채 10년물 금리는 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
       "title": "S&P 사상 최고 하루만에 후퇴…24년만의 금리 발작[뉴욕마감]"
     },
+    "source_fact:c6c0e8c6c9d7819f56bf8b01": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.hankyung.com/article/202610214872i",
+      "source": "한국경제",
+      "source_body_digest": "07efbf8089554b8a5a933e5d67004ef896f7c1fb256694589ac72ba36411e7af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3847c8076e6dea5f68152c97d3eadd07e95ff9f0f44de48fbb97d698201bc624",
+      "source_fact_keys": [
+        "source_fact:v1:17fe6e177b69fbebb6f43059cbc948d5aa6d8bb6749e0e7db2179d2a045f3147",
+        "source_fact:v1:2370d682b5cabf2d335247f941ab3f08add5ff697775fc9ebf0b89a264c586c7",
+        "source_fact:v1:81c7d0229f873544c71d006d34ebb8436e6cd83c51dceeb28a8f4482ba2101e9",
+        "source_fact:v1:984cf2bd659da8534dc2fabb3b428296dea73ce061dc1ceaed9f59eb38bc1c72",
+        "source_fact:v1:ba67a827db6f37237fbebab5287398f2e7a0cce07a0cac73bd4d7b2dcb953236",
+        "source_fact:v1:c6bede0eefca1e5106dd2f190aff736e9cc857fe7c9bb9ed7d409a713e59d903",
+        "source_fact:v1:fba610045914909ea1fac47654ffa23e3cff5049b45f2de697aaf3916ef9edf5"
+      ],
+      "source_published_kst": "2026-10-21T08:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
+      "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
+      "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
+    },
     "source_fact:c6c2187b7a8f4741ab019336": {
       "first_seen_kst": "2026-10-21T06:23:27+09:00",
       "lanes": {
@@ -806366,6 +807566,29 @@
       "source_title": "SK넥실리스, 차세대 배터리용 고접합 카본코팅 동박 개발 | 연합뉴스",
       "telegram_core_fact": "SKC의 이차전지용 동박사업 투자사 SK넥실리스는 20일 차세대 배터리의 핵심 소재로 꼽히는 '고접합 카본 코팅 동박' 기술 개발에 성공했다고 밝혔다. SK넥실리스는 본격적인 양산을 위해 고접합 카본 코팅 동박의 파일럿 생산 시스템 구축에 나선다.",
       "title": "SK넥실리스, 차세대 배터리용 고접합 카본코팅 동박 개발 | 연합뉴스"
+    },
+    "source_fact:cd5b8350b9f4cf7d433f55b2": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.etnews.com/20261021000057",
+      "source": "전자신문",
+      "source_body_digest": "7965a1ab48875f4fe22422fba1ad652293fdb95e1496246b1306e22d0c0823ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf1024a246c41f0b28287ea68365309659d54e6e6c46304f381fbb1e5d55d8df",
+      "source_fact_keys": [
+        "source_fact:v1:55f0ff2e1e1ec4e1ad891f2f5b84adc5d95d9a7f83086c6a83f3d20632426037",
+        "source_fact:v1:a4e9165b32508cd40f6002e92dd74a6baae49ebf3f6408f4d65a77b1d839bf13",
+        "source_fact:v1:a83d961d4adf8a89cace8e877e51e9b1d27c43137469733ead6b1f16d592547f",
+        "source_fact:v1:fc256090cda9002adaf9925f3da62d9dd6b3a51460dbb2c2942c1e572357a8a1"
+      ],
+      "source_published_kst": "2026-10-21T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대",
+      "telegram_core_fact": "이번 협약에 따라 바스프 전자소재 사업부는 대만 타오위안시 관인 사업장 첨단 반도체 소재 생산능력을 대폭 확대한다.",
+      "title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대"
     },
     "source_fact:cd5bddf130ba9265050338e5": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
@@ -835144,6 +836367,32 @@
       "source_published_kst": "2026-10-07T08:00+09:00",
       "title": "한성크린텍, 삼성전기 베트남 공장 230억원 초순수 E&P 계약 체결"
     },
+    "source_fact:dce4150b8f7781830a5b945c": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.hankyung.com/article/202610214872i",
+      "source": "한국경제",
+      "source_body_digest": "07efbf8089554b8a5a933e5d67004ef896f7c1fb256694589ac72ba36411e7af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3847c8076e6dea5f68152c97d3eadd07e95ff9f0f44de48fbb97d698201bc624",
+      "source_fact_keys": [
+        "source_fact:v1:17fe6e177b69fbebb6f43059cbc948d5aa6d8bb6749e0e7db2179d2a045f3147",
+        "source_fact:v1:2370d682b5cabf2d335247f941ab3f08add5ff697775fc9ebf0b89a264c586c7",
+        "source_fact:v1:81c7d0229f873544c71d006d34ebb8436e6cd83c51dceeb28a8f4482ba2101e9",
+        "source_fact:v1:984cf2bd659da8534dc2fabb3b428296dea73ce061dc1ceaed9f59eb38bc1c72",
+        "source_fact:v1:ba67a827db6f37237fbebab5287398f2e7a0cce07a0cac73bd4d7b2dcb953236",
+        "source_fact:v1:c6bede0eefca1e5106dd2f190aff736e9cc857fe7c9bb9ed7d409a713e59d903",
+        "source_fact:v1:fba610045914909ea1fac47654ffa23e3cff5049b45f2de697aaf3916ef9edf5"
+      ],
+      "source_published_kst": "2026-10-21T08:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
+      "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
+      "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
+    },
     "source_fact:dce85ac326c3a37cbdec275a": {
       "first_seen_kst": "2026-10-18T10:36:52+09:00",
       "lanes": {
@@ -837803,6 +839052,29 @@
       "source_title": "\"美, 경윳값 잡으려 러·이란 '그림자 선단' 제재완화도 검토\" | 연합뉴스",
       "telegram_core_fact": "다음 달 중간선거를 앞두고 경윳값이 오르자 도널드 트럼프 미국 대통령이 러시아와 이란의 '그림자 선단'에 대한 제재를 완화하는 방안도 검토 중이라고 파이낸셜타임스(FT)가 15일(현지시간) 보도했다.",
       "title": "\"美, 경윳값 잡으려 러·이란 '그림자 선단' 제재완화도 검토\" | 연합뉴스"
+    },
+    "source_fact:de50e6c0aad8c5f3ffba09ea": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.etnews.com/20261021000057",
+      "source": "전자신문",
+      "source_body_digest": "7965a1ab48875f4fe22422fba1ad652293fdb95e1496246b1306e22d0c0823ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf1024a246c41f0b28287ea68365309659d54e6e6c46304f381fbb1e5d55d8df",
+      "source_fact_keys": [
+        "source_fact:v1:55f0ff2e1e1ec4e1ad891f2f5b84adc5d95d9a7f83086c6a83f3d20632426037",
+        "source_fact:v1:a4e9165b32508cd40f6002e92dd74a6baae49ebf3f6408f4d65a77b1d839bf13",
+        "source_fact:v1:a83d961d4adf8a89cace8e877e51e9b1d27c43137469733ead6b1f16d592547f",
+        "source_fact:v1:fc256090cda9002adaf9925f3da62d9dd6b3a51460dbb2c2942c1e572357a8a1"
+      ],
+      "source_published_kst": "2026-10-21T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대",
+      "telegram_core_fact": "이번 협약에 따라 바스프 전자소재 사업부는 대만 타오위안시 관인 사업장 첨단 반도체 소재 생산능력을 대폭 확대한다.",
+      "title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대"
     },
     "source_fact:de51ccaa56008949542221f6": {
       "first_seen_kst": "2026-10-12T22:07:35+09:00",
@@ -843703,6 +844975,32 @@
       "source_title": "2026 진주 K-기업가정신 국제포럼 개막… AI·우주항공 산업 미래 논의",
       "telegram_core_fact": "포럼에서, 진주지역 우주항공 전문기업인 ANH스트럭쳐와 영국 버티컬 에어로스페이스(Vertical Aerospace) 간 항공기 좌석 공급계약 체결식도 진행됐다.",
       "title": "2026 진주 K-기업가정신 국제포럼 개막… AI·우주항공 산업 미래 논의"
+    },
+    "source_fact:e14702ad97d4f4e21bd013ad": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.hankyung.com/article/202610214872i",
+      "source": "한국경제",
+      "source_body_digest": "07efbf8089554b8a5a933e5d67004ef896f7c1fb256694589ac72ba36411e7af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3847c8076e6dea5f68152c97d3eadd07e95ff9f0f44de48fbb97d698201bc624",
+      "source_fact_keys": [
+        "source_fact:v1:17fe6e177b69fbebb6f43059cbc948d5aa6d8bb6749e0e7db2179d2a045f3147",
+        "source_fact:v1:2370d682b5cabf2d335247f941ab3f08add5ff697775fc9ebf0b89a264c586c7",
+        "source_fact:v1:81c7d0229f873544c71d006d34ebb8436e6cd83c51dceeb28a8f4482ba2101e9",
+        "source_fact:v1:984cf2bd659da8534dc2fabb3b428296dea73ce061dc1ceaed9f59eb38bc1c72",
+        "source_fact:v1:ba67a827db6f37237fbebab5287398f2e7a0cce07a0cac73bd4d7b2dcb953236",
+        "source_fact:v1:c6bede0eefca1e5106dd2f190aff736e9cc857fe7c9bb9ed7d409a713e59d903",
+        "source_fact:v1:fba610045914909ea1fac47654ffa23e3cff5049b45f2de697aaf3916ef9edf5"
+      ],
+      "source_published_kst": "2026-10-21T08:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
+      "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
+      "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
     },
     "source_fact:e14942a7ab26702b205ad562": {
       "first_seen_kst": "2026-10-18T17:16:37+09:00",
@@ -850729,6 +852027,34 @@
       "source_title": "TSMC, 3Q '2나노' 공정 비중 껑충…삼성전자도 첨단공정 경쟁 고삐",
       "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 기업 TSMC가 올해 3분기 첨단 2나노 공정 매출 비중을 늘리면서 첨단 반도체 생산 확대에 속도를 내고 있다.",
       "title": "TSMC, 3Q '2나노' 공정 비중 껑충…삼성전자도 첨단공정 경쟁 고삐"
+    },
+    "source_fact:e4e7f442774f2b6efae6c761": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
     },
     "source_fact:e4ea017c38aa5f8e09df1d14": {
       "first_seen_kst": "2026-10-19T15:46:20+09:00",
@@ -867572,6 +868898,29 @@
       "telegram_core_fact": "TTM 테크놀러지스(TTMI)가 MKS(MKSI)의 적외선 광학 사업부 오피르 옵틱스(Ophir Optics)를 약 6억5000만 달러 전액 현금 거래로 인수하는 확정 계약을 체결했다고 10월 19일 발표했다.",
       "title": "TTM 테크놀러지스, MKS 광학사업 6억5000만 달러 인수"
     },
+    "source_fact:edf4e966975efcc514c9af05": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834574",
+      "source": "뉴시스",
+      "source_body_digest": "066ff014396764198496e9626dfc57006fc70866b63dd389ecc89df27780dcad",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:083d7799264e51b53683b6d9dd82e80d990902e2abd8883fd3585eb0819144b2",
+      "source_fact_identity": "source_facts:v1:f036155759ed4ac4cefa8180a31916e2e8e3a1a48f797a8f279e2e2927d65d09",
+      "source_fact_keys": [
+        "source_fact:v1:28953e65487a40000ed6991f53a2b87fdc7c5c390e136d6db8f6468fe20d12bc",
+        "source_fact:v1:7d8428b300fef6badeac9597e6ac0a2479da84c0b027ac0241f4e7296c84aa39",
+        "source_fact:v1:b0de05166b1e7130d8fe9f026b07b92c2f09f223668100538984224fdc2ce893",
+        "source_fact:v1:fdcd2579a224c961c28272e2566aaa8bc90c1b5748bd8c6e57a63a684c798b61"
+      ],
+      "source_published_kst": "2026-10-21T10:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\"",
+      "telegram_core_fact": "LS마린솔루션은 올해 3분기 연결 기준 매출 736억원, 영업이익 69억원, 순이익 62억원의 실적을 기록했다고 21일 밝혔다.",
+      "title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\""
+    },
     "source_fact:edf64e4405e3ff01840002ff": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
       "lanes": {
@@ -877881,6 +879230,28 @@
       "telegram_core_fact": "사상 최고치 부근까지 오른 주가와 5%를 웃도는 장기금리가 공존하려면 기업들이 높아진 기대를 실적으로 증명해야 한다. 특히 AI에 쏟아부은 막대한 자금이 실제 매출과 이익으로 연결되고 있는지가 이번 실적시즌의 핵심 시험대가 될 전망이다.",
       "title": "사상 최고치 달리던 美증시 제동…AI 랠리 시험대[월스트리트in]"
     },
+    "source_fact:f3d2377798866d8aa4e945c4": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05257846645614888",
+      "source": "이데일리",
+      "source_body_digest": "7454d15b97bec11d8fd69910c4c03811ba7e47a88cd8615b496898a59707be02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:37c1af54c431e75f4368850a4068bc58da2173c30acd9d780f2a63b6696738da",
+      "source_fact_keys": [
+        "source_fact:v1:a1d1cc69b8418eb586c1f0213b54cf06a68d68387558bbb071e9c2d30f4b528e",
+        "source_fact:v1:b704e2c195e04e5d3dd0751e053b6a1ef038130ab0c317927bdad8b6b1bec72f",
+        "source_fact:v1:efd5a0c76a8457c5022f3dfd7a29cfdf07985c710d9c811df678727e9936b2ee"
+      ],
+      "source_published_kst": "2026-10-20T19:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑",
+      "telegram_core_fact": "미국 산업재 기업 3M(MMM)이 아마존과 최대 60억달러 데이터센터 제품 공급 계약을 체결하면서 20일(현지 시간) 프리마켓에서 상승 중이다.",
+      "title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑"
+    },
     "source_fact:f3d616e9e0bdebd5d07bf2cf": {
       "first_seen_kst": "2026-10-08T09:17:31+09:00",
       "lanes": {
@@ -883720,6 +885091,34 @@
       ],
       "source_published_kst": "2026-10-06T08:50+09:00",
       "title": "외식 프랜차이즈, 가맹점 매출 줄 때 본사 매출은 늘었다"
+    },
+    "source_fact:f73517336442b92a83b0cb46": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
     },
     "source_fact:f735c3c4e177175631350b0c": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
@@ -911717,6 +913116,26 @@
       "telegram_core_fact": "상장지수펀드(ETF)에 투자할 때는 나이와 은퇴 시점에 따라 전략을 달리해야 한다는 조언이 나왔다.",
       "title": "\"2030은 S&P500·나스닥에 집중\"…ETF 전문가의 투자 조언"
     },
+    "title:19e40d01d885166cc1a6de65": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021005800091",
+      "source": "연합뉴스",
+      "source_body_digest": "c205a2bbaf296337926ccc93a9459d239be6182600af2bd12b692fa4446f1ce9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8d1952374bbe783caa66548e9239556a967d8ea9c4f4e2e59223a1c91a1140",
+      "source_fact_keys": [
+        "source_fact:v1:d832b44c2cc1f597e03a793082f39054c49557cda4d57f4308c9cdaaa2c9ae8b"
+      ],
+      "source_published_kst": "2026-10-21T05:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 145억8천만 달러…전년대비 161%↑ | 연합뉴스",
+      "telegram_core_fact": "일론 머스크의 우주기업 스페이스X는 3분기 매출이 전년비 161% 성장한 145억8천만 달러를 기록했다고 20일(현지시간) 공시했다.",
+      "title": "스페이스X, 3분기 매출 145억8천만 달러…전년대비 161%↑ | 연합뉴스"
+    },
     "title:19f50afe17163e04aada88a4": {
       "first_seen_kst": "2026-10-14T19:42:07+09:00",
       "lanes": {
@@ -934235,6 +935654,24 @@
       "source": "뉴시스",
       "title": "'공모주 청약 대행 사기' 신라운용·제니스투자 인가 취소…시장서 퇴출"
     },
+    "title:48b48fc033713f778346c518": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12181233",
+      "source": "매일경제",
+      "source_body_digest": "10b925d6651359cb3e5bc5f773bcaa29377fb3cf512bb501e06491d67aa00f99",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "애널리 캐피탈 매니지먼트, 3분기 주당순손실 1.36달러..EAD 0.80달러 개선",
+      "telegram_core_fact": "분기 중 순손실이 1.36달러, 기타포괄손실이 0.31달러, 보통주 배당이 0.75달러 감소 요인으로 작용했고 기타 요인이 0.13달러 증가 요인이었다.",
+      "title": "애널리 캐피탈 매니지먼트, 3분기 주당순손실 1.36달러..EAD 0.80달러 개선"
+    },
     "title:48bc5c3b1abf9b1d486ef344": {
       "first_seen_kst": "2026-10-20T10:42:42+09:00",
       "lanes": {
@@ -942924,6 +944361,28 @@
       "telegram_core_fact": "3분기에 전 세계 스마트폰 출하량이 전년비 20% 감소하여 2012년 이후 최저 수준을 기록했다. 12일(현지시간) 카운터포인트 리서치의 추정치에 따르면 올해 3분기에 전 세계 스마트폰 출하량은 전년 동기보다 20% 감소한 것으로 잠정 집계됐다.",
       "title": "스마트폰 비싸지니…판매 20%↓, 14년 만에 최저"
     },
+    "title:5c6e7ca8db7ed93c5bb4e703": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05257846645614888",
+      "source": "이데일리",
+      "source_body_digest": "7454d15b97bec11d8fd69910c4c03811ba7e47a88cd8615b496898a59707be02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:37c1af54c431e75f4368850a4068bc58da2173c30acd9d780f2a63b6696738da",
+      "source_fact_keys": [
+        "source_fact:v1:a1d1cc69b8418eb586c1f0213b54cf06a68d68387558bbb071e9c2d30f4b528e",
+        "source_fact:v1:b704e2c195e04e5d3dd0751e053b6a1ef038130ab0c317927bdad8b6b1bec72f",
+        "source_fact:v1:efd5a0c76a8457c5022f3dfd7a29cfdf07985c710d9c811df678727e9936b2ee"
+      ],
+      "source_published_kst": "2026-10-20T19:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑",
+      "telegram_core_fact": "미국 산업재 기업 3M(MMM)이 아마존과 최대 60억달러 데이터센터 제품 공급 계약을 체결하면서 20일(현지 시간) 프리마켓에서 상승 중이다.",
+      "title": "[美특징주]3M, 아마존 데이터센터에 제품 공급 계약…개장전 ↑"
+    },
     "title:5c7581c804f5714339d73542": {
       "first_seen_kst": "2026-10-16T16:35:36+09:00",
       "lanes": {
@@ -948349,6 +949808,34 @@
       "source_title": "코스피 급락에 미장으로…순매수 1위 반도체 3배 ETF는 40% 급락",
       "telegram_core_fact": "순매수 자금 상당액이 미국 반도체 지수를 3배로 추종하는 레버리지 상장지수펀드(ETF)에 몰렸지만, 해당 상품 가격은 같은 기간 40% 넘게 급락해 투자 손실 우려도 커지고 있다.",
       "title": "코스피 급락에 미장으로…순매수 1위 반도체 3배 ETF는 40% 급락"
+    },
+    "title:6817e1dfd56e1bdd1ab783c9": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://biz.heraldcorp.com/article/10909588",
+      "source": "헤럴드경제",
+      "source_body_digest": "94da2aaeb5a68f6e177e2b1ebfd37801f048619495b98f18b4ff9904e1b03f63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c8452dc80bce13112912249d00d84caecf9056423d586a9a22be7211f58d9b9",
+      "source_fact_keys": [
+        "source_fact:v1:0db5168dcf84d7afb55191b7f7b90cfc5ad7bf9d6b2f8a10be5932e712bf86c3",
+        "source_fact:v1:1f4d4fcc96309762be5617964b145f7b3f04480b50f9edf5c0d4c9ebab0b5a5e",
+        "source_fact:v1:4a840c2ccf59141e713f2a308229eb59f1141f1498cc4cc03de6580dcbb85c68",
+        "source_fact:v1:7c83e9ca494c78716a1736a4dff611b77744dfbb3cbee378a932766a33d43129",
+        "source_fact:v1:93f6ba18d6c021a5e2c2c899acf7f44197531de24703c7e8502ab21468fb7a65",
+        "source_fact:v1:db085394cc032e894e5494cf56bf2118fed0871a61871cce37089d24a06aacf9",
+        "source_fact:v1:db1479138bc58165d6eaf8fcf4d2520ff4c4de65a5f9abb7943ecd7bdf01a294",
+        "source_fact:v1:e296adb00a99521bbbfe0c5dbbe0a6b400abdd48a3f665518339004b64bd4eb3",
+        "source_fact:v1:f67394e4ea2cc6fc695cf6a90db4968538f074d9111b087b578edc872607e156"
+      ],
+      "source_published_kst": "2026-10-21T10:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판",
+      "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
+      "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
     },
     "title:6819268fb0691ec40d782a96": {
       "first_seen_kst": "2026-10-03T06:34:10+09:00",
@@ -956869,6 +958356,29 @@
       "source_title": "가온전선, 美 원전용 케이블 시장 진출…현지 시장 선점",
       "telegram_core_fact": "가온전선이 미국 원전용 케이블 시장에 진출한다. 가온전선은 미국 생산법인 LSCUS가 노스캐롤라이나주 타보로 공장에 원전용 케이블 생산설비를 구축할 계획이라고 12일 밝혔다.",
       "title": "가온전선, 美 원전용 케이블 시장 진출…현지 시장 선점"
+    },
+    "title:79ef36841cf80f4a6583280b": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.etnews.com/20261021000057",
+      "source": "전자신문",
+      "source_body_digest": "7965a1ab48875f4fe22422fba1ad652293fdb95e1496246b1306e22d0c0823ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf1024a246c41f0b28287ea68365309659d54e6e6c46304f381fbb1e5d55d8df",
+      "source_fact_keys": [
+        "source_fact:v1:55f0ff2e1e1ec4e1ad891f2f5b84adc5d95d9a7f83086c6a83f3d20632426037",
+        "source_fact:v1:a4e9165b32508cd40f6002e92dd74a6baae49ebf3f6408f4d65a77b1d839bf13",
+        "source_fact:v1:a83d961d4adf8a89cace8e877e51e9b1d27c43137469733ead6b1f16d592547f",
+        "source_fact:v1:fc256090cda9002adaf9925f3da62d9dd6b3a51460dbb2c2942c1e572357a8a1"
+      ],
+      "source_published_kst": "2026-10-21T09:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대",
+      "telegram_core_fact": "이번 협약에 따라 바스프 전자소재 사업부는 대만 타오위안시 관인 사업장 첨단 반도체 소재 생산능력을 대폭 확대한다.",
+      "title": "바스프, 대만 경제부와 LOI 체결…2나노 이하 첨단 반도체 소재 투자 확대"
     },
     "title:7a0067a2937fb562b5b5b3bf": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -977000,6 +978510,32 @@
       "telegram_core_fact": "에너지 안보를 확립하기 위해 2030년까지 재생에너지 100기가와트(GW) 생산을 목표로 태양광·풍력 발전 입지 및 사업 부지를 발굴하고, 재생에너지 발전 단가를 인하하기 위한 세부 방안도 마련하기로 했다.",
       "title": "이 대통령 \"에너지, 정치 영향 많이 받아…메가투자 성공 위해 녹색시장 선점 필수\"(종합)"
     },
+    "title:a4a96688bd52969c551f528a": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.hankyung.com/article/202610214872i",
+      "source": "한국경제",
+      "source_body_digest": "07efbf8089554b8a5a933e5d67004ef896f7c1fb256694589ac72ba36411e7af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3847c8076e6dea5f68152c97d3eadd07e95ff9f0f44de48fbb97d698201bc624",
+      "source_fact_keys": [
+        "source_fact:v1:17fe6e177b69fbebb6f43059cbc948d5aa6d8bb6749e0e7db2179d2a045f3147",
+        "source_fact:v1:2370d682b5cabf2d335247f941ab3f08add5ff697775fc9ebf0b89a264c586c7",
+        "source_fact:v1:81c7d0229f873544c71d006d34ebb8436e6cd83c51dceeb28a8f4482ba2101e9",
+        "source_fact:v1:984cf2bd659da8534dc2fabb3b428296dea73ce061dc1ceaed9f59eb38bc1c72",
+        "source_fact:v1:ba67a827db6f37237fbebab5287398f2e7a0cce07a0cac73bd4d7b2dcb953236",
+        "source_fact:v1:c6bede0eefca1e5106dd2f190aff736e9cc857fe7c9bb9ed7d409a713e59d903",
+        "source_fact:v1:fba610045914909ea1fac47654ffa23e3cff5049b45f2de697aaf3916ef9edf5"
+      ],
+      "source_published_kst": "2026-10-21T08:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
+      "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
+      "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
+    },
     "title:a4b117c6edc2a71cc20d5ba3": {
       "first_seen_kst": "2026-09-18T00:19:03+09:00",
       "lanes": {
@@ -993380,6 +994916,29 @@
       ],
       "source_published_kst": "2026-10-06T17:57+09:00",
       "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
+    },
+    "title:c978ef6986d782c94be9f48f": {
+      "first_seen_kst": "2026-10-21T10:25:18+09:00",
+      "lanes": {
+        "live": "2026-10-21T10:25:18+09:00"
+      },
+      "last_seen_kst": "2026-10-21T10:25:18+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003834574",
+      "source": "뉴시스",
+      "source_body_digest": "066ff014396764198496e9626dfc57006fc70866b63dd389ecc89df27780dcad",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:083d7799264e51b53683b6d9dd82e80d990902e2abd8883fd3585eb0819144b2",
+      "source_fact_identity": "source_facts:v1:f036155759ed4ac4cefa8180a31916e2e8e3a1a48f797a8f279e2e2927d65d09",
+      "source_fact_keys": [
+        "source_fact:v1:28953e65487a40000ed6991f53a2b87fdc7c5c390e136d6db8f6468fe20d12bc",
+        "source_fact:v1:7d8428b300fef6badeac9597e6ac0a2479da84c0b027ac0241f4e7296c84aa39",
+        "source_fact:v1:b0de05166b1e7130d8fe9f026b07b92c2f09f223668100538984224fdc2ce893",
+        "source_fact:v1:fdcd2579a224c961c28272e2566aaa8bc90c1b5748bd8c6e57a63a684c798b61"
+      ],
+      "source_published_kst": "2026-10-21T10:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\"",
+      "telegram_core_fact": "LS마린솔루션은 올해 3분기 연결 기준 매출 736억원, 영업이익 69억원, 순이익 62억원의 실적을 기록했다고 21일 밝혔다.",
+      "title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\""
     },
     "title:c97f77dbe90a034ef73973ae": {
       "first_seen_kst": "2026-10-12T20:59:01+09:00",
@@ -1018540,5 +1020099,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-21T09:52:31+09:00"
+  "updated_at_kst": "2026-10-21T10:25:18+09:00"
 }
