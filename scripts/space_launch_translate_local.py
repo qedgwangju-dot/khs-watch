@@ -18,6 +18,9 @@ SOURCE_PREFIX = "• 원문: "
 
 IDENTIFIERS = (
     "Morgan Stanley",
+    "Citizens",
+    "Pivotal Research",
+    "Neutron",
     "Yahoo Finance",
     "Hyundai Rotem",
     "Open Cosmos",
