@@ -26,5 +26,30 @@ class CoinAlertKoreanTermsTest(unittest.TestCase):
         self.assertIn("USDC 잔액", rendered)
 
 
+    def test_actual_crypto_missing_etf_ticker_is_preserved(self):
+        # Derived pre-translation excerpt from run 39523938653 and its saved state.
+        text = "ETF(상장지수펀드) 2026-10-20 · 잠정 10/12 반영 · 미보고 IBIT, BTCO"
+        self.assertEqual(MOD.koreanize_html_visible_text(text), text)
+
+    def test_btc_substrings_do_not_change_other_fund_symbols(self):
+        text = "FBTC BTCO BTCW GBTC"
+        self.assertEqual(MOD.koreanize_html_visible_text(text), text)
+
+    def test_embedded_tickers_do_not_consume_standalone_btc_gloss(self):
+        text = "BTCO FBTC BTCW GBTC · BTC 가격과 BTC 잔액"
+        rendered = MOD.koreanize_html_visible_text(text)
+        self.assertEqual(rendered, "BTCO FBTC BTCW GBTC · BTC(비트코인) 가격과 BTC 잔액")
+
+    def test_embedded_parenthetical_does_not_hide_first_btc(self):
+        text = "BTCO BTCW(상품 코드) FBTC(펀드) · BTC와 BTC"
+        rendered = MOD.koreanize_html_visible_text(text)
+        self.assertEqual(rendered, "BTCO BTCW(상품 코드) FBTC(펀드) · BTC(비트코인)와 BTC")
+
+    def test_btc_ascii_identifier_boundaries_and_html_attributes(self):
+        text = '<a href="https://example.com/BTC?symbol=BTCO" title="BTC">BTCO</a> XBTC BTC2 BTC_value (BTC)는 BTC.'
+        rendered = MOD.koreanize_html_visible_text(text)
+        expected = '<a href="https://example.com/BTC?symbol=BTCO" title="BTC">BTCO</a> XBTC BTC2 BTC_value (BTC(비트코인))는 BTC.'
+        self.assertEqual(rendered, expected)
+
 if __name__ == "__main__":
     unittest.main()
