@@ -11,6 +11,7 @@ import os
 import re
 import urllib.parse
 import urllib.request
+import unicodedata
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from pathlib import Path
@@ -193,6 +194,49 @@ HANUL4_TRUSTED_OUTLETS = (
 HANUL4_OFFICIAL_OUTLETS = (
     "원자력안전위원회", "원안위", "한국수력원자력", "한수원", "정책브리핑",
 )
+
+
+# 체코 테믈린 3·4호기는 2025년 두코바니 EPC의 추가 2기 선택권 단계.
+# 2026-10-20 장관 협의는 정치적 후속 협력 기대이며 옵션 행사/별도 본계약 아님.
+TEMELIN_MODEL_VERSION = 1
+TEMELIN_CUTOFF_UTC = dt.datetime(2026, 10, 20, 5, 45, tzinfo=UTC)
+TEMELIN_OPTION_SOURCE = ("https://mpo.gov.cz/en/guidepost/for-the-media/press-releases/"
+    "epc-contract-for-completion-of-dukovany-has-been-signed--minister-of-industry-and-trade--lukas-vlcek-will-visit-korea-again-in-july--287912/")
+TEMELIN_MEETING_SOURCE = "https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/172314/view"
+TEMELIN_CEZ_SOURCE = "https://www.cez.cz/en/energy-generation/nuclear-power-plants/new-nuclear-power-sources"
+TEMELIN_IAA_SOURCE = "https://commission.europa.eu/news-and-media/news/commission-proposes-new-measures-boost-eu-industry-and-jobs-2026-03-04_en"
+TEMELIN_OFFICIAL_QUERIES = (
+    ('한국 정부', 'site:motir.go.kr 테믈린 3 4 원전 when:30d'),
+    ('한국 정책브리핑', 'site:korea.kr 테믈린 3 4 when:30d'),
+    ('체코 정부', 'site:mpo.gov.cz Temelin nuclear new units KHNP when:30d'),
+    ('체코 전력회사', 'site:cez.cz Temelin new nuclear units contract when:30d'),
+    ('EU 법규', '"Industrial Accelerator Act" "nuclear" enters into force when:30d'),
+)
+TEMELIN_STAGES = {
+    "government_decision": "체코 정부의 테믈린 신규 대형원전 건설 결정",
+    "option_exercised": "테믈린 추가 2기 선택권 행사",
+    "epc_signed": "테믈린 별도 EPC 본계약 체결",
+    "financing_closed": "테믈린 건설 금융조달 확정",
+    "construction_license": "테믈린 3·4호기 건설허가 발급",
+    "equipment_order": "테믈린 3·4호기 핵심 기자재 본발주",
+    "construction_started": "테믈린 3·4호기 착공",
+    "option_ended": "테믈린 선택권 만료·철회",
+    "eu_iaa_enacted": "EU 산업가속화법 원전 조달요건 최종 발효",
+}
+TEMELIN_HISTORICAL_BASELINE = {
+    "option_2025": {
+        "stage": "option_in_dukovany_epc",
+        "date": "2025-06-04",
+        "status": "두코바니 5·6호기 EPC에 테믈린 추가 2기 선택권 포함·아직 미행사",
+        "link": TEMELIN_OPTION_SOURCE,
+    },
+    "ministerial_20261020": {
+        "stage": "ministerial_interest",
+        "date": "2026-10-20",
+        "status": "제3차 두코바니 이행점검 협의체의 테믈린 후속 협력 희망",
+        "link": TEMELIN_MEETING_SOURCE,
+    },
+}
 
 SOURCES = [
     {"name": "Westinghouse strategic partnership", "url": "https://westinghousenuclear.com/strategic-partnership/press-releases/brookfield/"},
@@ -1967,6 +2011,151 @@ def _render_bwrx_us(item: dict, idx: int, now: dt.datetime) -> list[str]:
     ]
 
 
+
+def _temelin_fold(value: str) -> str:
+    value = unicodedata.normalize("NFKD", clean_text(value)).casefold()
+    return re.sub(r"\s+", " ", "".join(x for x in value if not unicodedata.combining(x)))
+
+
+def _temelin_official_publisher(url: str) -> bool:
+    try:
+        host = (urllib.parse.urlsplit(url).hostname or "").lower().rstrip(".")
+    except (ValueError, TypeError):
+        return False
+    approved = (
+        "motir.go.kr", "korea.kr", "mpo.gov.cz", "cez.cz", "gov.cz",
+        "khnp.co.kr", "commission.europa.eu", "ec.europa.eu",
+        "europarl.europa.eu", "consilium.europa.eu", "eur-lex.europa.eu",
+    )
+    return any(host == x or host.endswith("." + x) for x in approved)
+
+
+def _temelin_milestone(title: str) -> str | None:
+    text = _temelin_fold(title)[:300]
+    if ("industrial accelerator act" in text or "산업가속화법" in text) and (
+        "nuclear" in text or "원전" in text or "jader" in text
+    ):
+        return "eu_iaa_enacted" if (
+            any(x in text for x in ("enters into force", "entered into force", "official journal", "최종 발효"))
+            and not any(x in text for x in ("proposed", "proposal", "예정", "검토", "would"))
+        ) else None
+    if "테믈린" not in text and "temelin" not in text:
+        return None
+    if any(x in text for x in ("smr", "small modular", "rolls-royce", "롤스로이스")):
+        return None
+    # 테믈린 1·2호기 가동/정비나 '대형원전' 일반 기사는 후보가 아니다.
+    if not (re.search(r"3\s*(?:[·./,&-]|and|및|a)\s*4", text)
+            or any(x in text for x in ("대형원전", "대형 원전", "new nuclear units", "nove bloky"))):
+        return None
+    # 단순 회의·계획·기대·추정은 수주 확정 단계로 올리지 않는다.
+    if any(x in text for x in (
+        "검토", "추진 여부", "기대", "계획", "예상", "전망", "가능성", "논의", "협력",
+        "예정", "우선협상 가능", "consider", "proposed", "planned", "expects", "may ",
+        "possible", "could", "potential", "option included", "선택권 포함",
+    )):
+        return None
+    rules = (
+        ("option_ended", r"(?:테믈린|temelin).{0,85}(?:옵션|선택권|option).{0,30}(?:만료|취소|철회|expired|cancelled)"),
+        ("construction_started", r"(?:테믈린|temelin).{0,85}(?:실제 착공|착공 개시|construction started|broke ground)"),
+        ("equipment_order", r"(?:테믈린|temelin).{0,85}(?:주기기|원자로|증기발생기|기자재|equipment).{0,35}(?:본발주|발주 확정|order placed)"),
+        ("construction_license", r"(?:테믈린|temelin).{0,85}(?:건설허가 발급|건설허가 승인|construction permit issued|construction license granted)"),
+        ("financing_closed", r"(?:테믈린|temelin).{0,85}(?:금융 종결|자금조달 확정|financing closed|financial close)"),
+        ("epc_signed", r"(?:테믈린|temelin).{0,85}(?:epc|건설 본계약|건설계약).{0,30}(?:체결|서명|signed|executed)"),
+        ("option_exercised", r"(?:테믈린|temelin).{0,85}(?:선택권|옵션|option).{0,25}(?:행사|발동|exercised|activated)"),
+        ("government_decision", r"(?:테믈린|temelin).{0,85}(?:건설 최종 결정|건설 승인|construction approved)"),
+    )
+    for stage, pattern in rules:
+        if re.search(pattern, text):
+            return stage
+    # 문장의 순서가 뒤집힌 국제 발표도 처리한다.
+    if re.search(r"(?:signed|체결).{0,60}epc.{0,65}(?:테믈린|temelin)", text):
+        if "dukovany" not in text and "두코바니" not in text:
+            return "epc_signed"
+    if re.search(r"(?:exercised|행사).{0,60}(?:option|선택권|옵션).{0,70}(?:테믈린|temelin)", text):
+        return "option_exercised"
+    return None
+
+
+def collect_temelin_milestones(now: dt.datetime) -> list[dict]:
+    candidates: dict[str, dict] = {}
+    failures = 0
+    for source_name, query in TEMELIN_OFFICIAL_QUERIES:
+        try:
+            root = ET.fromstring(fetch_text(_google_news_url(query)))
+        except Exception as exc:
+            failures += 1
+            print(f"temelin_rss_error source={source_name} error={type(exc).__name__}")
+            continue
+        for node in root.findall(".//item"):
+            source_node = node.find("source")
+            publisher_url = (source_node.attrib.get("url") or "") if source_node is not None else ""
+            if not _temelin_official_publisher(publisher_url):
+                continue
+            title = _clean_rss_title(node.findtext("title") or "")
+            stage = _temelin_milestone(title)
+            if not stage:
+                continue
+            published = _hanul4_parse_pub(node.findtext("pubDate") or "", now)
+            if published <= TEMELIN_CUTOFF_UTC or published > now.astimezone(UTC) + dt.timedelta(minutes=10):
+                continue
+            item = {
+                "kind": "temelin_large_nuclear", "stage": stage,
+                "status": TEMELIN_STAGES[stage], "title": title,
+                "source": clean_text(source_node.text) or source_name,
+                "publisher_url": publisher_url,
+                "link": clean_text(node.findtext("link") or ""),
+                "published_utc": published.astimezone(UTC).isoformat(timespec="seconds"),
+                "published_kst": published.astimezone(KST).isoformat(timespec="seconds"),
+                "official": True, "verified": True,
+                "verification": "공식기관을 발행자로 표시한 RSS 제목 확인(개별 보도자료 본문 직접 검증과 구별)",
+            }
+            current = candidates.get(stage)
+            if not current or item["published_utc"] > current["published_utc"]:
+                candidates[stage] = item
+    print(f"temelin_official_stage_candidates={len(candidates)} rss_failures={failures}")
+    return sorted(candidates.values(), key=lambda item: item["published_utc"])
+
+
+def _self_test_temelin_milestones() -> None:
+    examples = (
+        ("두코바니 계약에 테믈린 3·4호기 선택권 포함", None),
+        ("두코바니 다음은 테믈린…김정관, 체코서 원전 추가 수주전", None),
+        ("테믈린 3·4호기 건설 여부 검토", None),
+        ("체코 정부, 테믈린 3·4호기 건설 최종 결정", "government_decision"),
+        ("체코 정부, 테믈린 3·4호기 옵션 행사", "option_exercised"),
+        ("ČEZ, 테믈린 3·4호기 EPC 본계약 체결", "epc_signed"),
+        ("ČEZ, 테믈린 3·4호기 건설허가 발급", "construction_license"),
+        ("ČEZ, 테믈린 3·4호기 실제 착공", "construction_started"),
+        ("ČEZ signs early works contract for Temelin SMR with Rolls-Royce", None),
+        ("Industrial Accelerator Act nuclear enters into force", "eu_iaa_enacted"),
+        ("Commission proposed Industrial Accelerator Act for nuclear", None),
+        ("두코바니 5·6호기 EPC 계약 체결", None),
+    )
+    for headline, want in examples:
+        got = _temelin_milestone(headline)
+        if got != want:
+            raise RuntimeError(f"Temelin stage regression {headline!r}: {got!r} != {want!r}")
+    if not _temelin_official_publisher("https://mpo.gov.cz"):
+        raise RuntimeError("Temelin official source whitelist regression")
+    if _temelin_official_publisher("https://mpo.gov.cz.fake.example"):
+        raise RuntimeError("Temelin official source spoofing regression")
+
+
+def _render_temelin_milestone(item: dict, idx: int) -> list[str]:
+    stage = item["stage"]
+    return [
+        f"## {idx}. [공식기관 발행제목 확인] 체코 테믈린 3·4호기",
+        f"- 핵심 변화: {TEMELIN_STAGES[stage]}. {item['title']}",
+        "- 숫자: 잠재 후속 건설 대상 2기. 테믈린 별도 확정 계약금액·한국 기업 신규 수주액은 추가 계약 검증 전까지 미확정입니다.",
+        "- 한국 기업·매출 연결: 한국수력원자력·한국전력기술·두산에너빌리티·현대건설은 두코바니 참여 이력과 테믈린 신규 수주를 구분합니다. 신규 계약·공급 품목·고객 확정 뒤 매출로 분류합니다.",
+        "- 병목·실패모드: 체코 최종 투자결정, 2025년 선택권 행사, 자금조달, 현지 공급망 비중, EU 산업가속화법안 제3국 조달요건, 인허가가 결정적입니다. 테믈린 Rolls-Royce SMR는 별개 사업입니다.",
+        f"- 출처: [{item['source']}]({item['link']}) · {item['published_kst']} · [발행기관]({item['publisher_url']})",
+        f"- 과거 공식 기준선: [2025년 선택권]({TEMELIN_OPTION_SOURCE}) / [2026년 10월 20일 장관 협의]({TEMELIN_MEETING_SOURCE})",
+        "- 다음 확인: 건설 결정 → 옵션 행사 → EPC 본계약 → 금융·허가 → 기자재 본발주 → 착공. EU 원산지·조달 예외 별도 검증",
+        "",
+    ]
+
+
 def load_seen() -> dict:
     if not SEEN_PATH.exists():
         return {"seen": {}, "updated_at_kst": ""}
@@ -2084,6 +2273,8 @@ def render(alerts: list[dict], now: dt.datetime) -> str:
             block = _render_bwrx_us(item, idx, now)
         elif kind == "domestic_reactor_operation":
             block = _render_hanul4_operation(item, idx, now)
+        elif kind == "temelin_large_nuclear":
+            block = _render_temelin_milestone(item, idx)
         else:
             block = _render_direct(item, idx, now)
         if len(alerts) == 1 and block and block[0].startswith("## 1. "):
@@ -2104,6 +2295,7 @@ def main() -> int:
     _self_test_smr_event_state_model()
     _self_test_bwrx_us_event_model()
     _self_test_hanul4_operating_event_model()
+    _self_test_temelin_milestones()
     now = now_kst()
     seen = load_seen()
     initial_seen_snapshot = json.dumps(seen, ensure_ascii=False, sort_keys=True)
@@ -2434,6 +2626,32 @@ def main() -> int:
             f"live_status={latest_hanul4.get('live_status')}"
         )
 
+
+    # 기존 nuclear 상태파일 안에만 테믈린 대형원전 후속사업 기준선을 저장한다.
+    # 두코바니 2025 선택권과 2026/10/20 장관 발언은 소급 신호가 아니다.
+    seen["temelin_large_nuclear_model_version"] = TEMELIN_MODEL_VERSION
+    temelin_events = seen.setdefault("temelin_large_nuclear_events", {})
+    for baseline_key, baseline in TEMELIN_HISTORICAL_BASELINE.items():
+        temelin_events.setdefault(baseline_key, dict(baseline))
+    temelin_candidates = collect_temelin_milestones(now)
+    for candidate in temelin_candidates:
+        milestone = str(candidate["stage"])
+        if milestone in temelin_events:
+            continue
+        candidate["trigger"] = "official_publisher_temelin_execution_milestone"
+        alerts.append(candidate)
+        temelin_events[milestone] = {
+            "stage": milestone,
+            "status": candidate["status"],
+            "title": candidate["title"],
+            "source": candidate["source"],
+            "link": candidate["link"],
+            "published_utc": candidate["published_utc"],
+            "first_seen_kst": now.isoformat(timespec="seconds"),
+            "verification": candidate["verification"],
+        }
+        print(f"temelin_large_state_change=true stage={milestone}")
+
     if not alerts:
         # 기준선 복구·상태모델 전환 같은 내부 상태 변화는 알림이 없어도 반드시 저장한다.
         current_seen_snapshot = json.dumps(seen, ensure_ascii=False, sort_keys=True)
@@ -2451,6 +2669,8 @@ def main() -> int:
         TITLE_PATH.write_text("한국 SMR 특별법·i-SMR 웹감시: 공식 상태 변화\n", encoding="utf-8")
     elif all(item.get("kind") == "domestic_reactor_operation" for item in alerts):
         TITLE_PATH.write_text("국내 원전 운전·재가동 웹감시: 확인된 상태 변화\n", encoding="utf-8")
+    elif all(item.get("kind") == "temelin_large_nuclear" for item in alerts):
+        TITLE_PATH.write_text("체코 테믈린 3·4호기 대형원전 후속 계약·규제 웹감시\n", encoding="utf-8")
     else:
         TITLE_PATH.write_text("원전·Westinghouse·SMR 웹감시: 물질적 상태 변화\n", encoding="utf-8")
     save_seen(seen, now)
