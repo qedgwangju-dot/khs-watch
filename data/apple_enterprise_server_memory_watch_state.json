@@ -14,6 +14,7 @@
     "094beb1dca34efe78b94",
     "09a0982101c4770ca00446f7",
     "0a6ad4d5a2ee737544d0",
+    "0b97305439fc5b476f7d",
     "0bfd6487c7dca0df3060",
     "0c3be72a3d2f1a6278f4",
     "0c41cee8d35cd34119e0",
@@ -145,6 +146,7 @@
     "4e826c96d975425cdfa2ae60",
     "4ee2305d3137fa1382e823b2",
     "4fc25492ad47daf117c9",
+    "4fe80e2b6991b2b7ab96",
     "5013d97c65b30f615572",
     "503fe8a4f90e96299908",
     "5093cf4ee9e345672973",
@@ -262,6 +264,7 @@
     "849197a12e76c47538d9261a",
     "8527fea14ab939739ce3e58e",
     "854fa34494d84983acae",
+    "85a54459493089d2e2f7",
     "85f457a8cc0c485a6802",
     "860b7125b1a0d831eab8",
     "8671c72b10625af82c4e",
@@ -274,6 +277,7 @@
     "8d01c1012ee53ca54d13",
     "8d71e03e3b471d712e3e",
     "8d7e6ae72063fd948edc",
+    "8de67905b06fe5e0a4ca",
     "8e402180cae44865c96f",
     "8e8e40ef62d2f5625d5f",
     "8f23d0651c0dafb523fd",
@@ -324,6 +328,7 @@
     "aa36b03b4662e9f034d9",
     "ac205503412bdc7276d8",
     "ad17c3a9f255df39ca3d",
+    "ad1ce2ee8f0a81e04b4c",
     "ae3d5d77fd5e8219f5cdc69f",
     "ae46ffa3af62719b9d88ff77",
     "ae8bcea7812d9747917352c9",
@@ -445,6 +450,7 @@
     "eca6d9fcf6a54b28f1d6105c",
     "ecf7e7756d44856bf905",
     "ecfd872490045b93ad1dbb53",
+    "ef2aa7667a42c4a5101a",
     "ef43b9b8b3e3060e3a3e",
     "ef812a7af7a09227f9e03f40",
     "ef8840dc8a4fedbbb3282f6d",
@@ -502,7 +508,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-21T11:59:37+09:00",
+  "last_scan_kst": "2026-10-21T17:24:11+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -510,8 +516,6 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 11,
-  "fetch_errors": [
-    "bing_news \"Apple\" \"M8 Ultra\" server: ParseError not well-formed (invalid token): line 1, column 41"
-  ]
+  "fetch_ok": 12,
+  "fetch_errors": []
 }
