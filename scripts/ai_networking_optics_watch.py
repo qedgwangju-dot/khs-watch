@@ -66,7 +66,8 @@ AMAZON_EBO_COMPANY = "3M Amazon Optical EBO"
 FIBER_SPOT_COMPANY = "Optical Fiber Spot & Preform"
 TAIHAN_CABLE_COMPANY = "Taihan Fiberoptic America Deliveries"
 NEW_OPTICAL_INFRA_SCOPES = {AMAZON_EBO_COMPANY, FIBER_SPOT_COMPANY, TAIHAN_CABLE_COMPANY}
-NEW_OPTICAL_INFRA_VERSION = 1
+NEW_OPTICAL_INFRA_VERSION = 2
+TAIHAN_DIRECT_REPORT_URL = "https://m.datatooza.com/article/202610211156265998661c44de84_80"
 NEW_OPTICAL_INFRA_BASELINES = {
     "3m|amazon|2026-10-19-warrant-v1",
     "3m|microsoft|2026-07-15-ebo",
@@ -1505,7 +1506,7 @@ def new_infra_milestone(company: str, title: str) -> tuple[str, str, str] | None
                          r"선적\s*개시|began shipment|begins delivering|commenced deliveries",t,re.I) \
                and not re.search(r"예정|계획|will |expected|목표|전망",t,re.I):
                 return ("대한광통신 미국향 2차 실제 출하", "2차 공급계약과 별도인 실제 제품 인도 개시",
-                        "taihan|2026-10-second-delivery")
+                        "taihan|2026-09-second-shipment")
             return ("대한광통신 미국향 2차 계약", "2026년 6월 약 355억원 기존 계약·미인도분 분리",
                     "taihan|2026-06-second-contract")
         if re.search(r"3차|third|3rd",t,re.I) and re.search(r"공급계약|수주|purchase order|contract",t,re.I):
@@ -1516,6 +1517,27 @@ def new_infra_milestone(company: str, title: str) -> tuple[str, str, str] | None
                     "taihan|acceptance|" + hashlib.sha256(low.encode()).hexdigest()[:16])
         return None
     return None
+
+
+
+def verify_taihan_original_report() -> tuple[bool, str]:
+    # Directly check the original report quoting Taihan's company spokesperson.
+    # This is firsthand press reporting, not an audited revenue filing.
+    try:
+        req=urllib.request.Request(
+            TAIHAN_DIRECT_REPORT_URL,
+            headers={"User-Agent":"Mozilla/5.0 (compatible; optics-watch/1.0)",
+                     "Accept-Language":"ko-KR,ko;q=0.9"},
+        )
+        with urllib.request.urlopen(req,timeout=12) as response:
+            page=response.read(1_200_000).decode("utf-8",errors="replace")
+        body=normalize_text(html.unescape(re.sub(r"<[^>]+>"," ",page)))
+        required=("대한광통신","864심","355억원","9월","출하","10월","매출","TFO")
+        if not all(token in body for token in required):
+            return False, "기사 내용 검증 실패 — 납품 확정 알림 보류"
+        return True, "원문 직접 열람·회사 관계자 9월 출하 취재 확인(분기 실적 공시는 별도)"
+    except Exception as exc:
+        return False, f"원문 직접 열람 실패: {type(exc).__name__}"
 
 
 def new_infra_official_source(item: dict) -> bool:
@@ -1537,6 +1559,9 @@ def new_infra_evidence_verified(item: dict, candidates: list[dict]) -> bool:
     company=item.get("company")
     if company not in NEW_OPTICAL_INFRA_SCOPES:
         return True
+    if company == TAIHAN_CABLE_COMPANY and item.get("firsthand_report_verified") is True:
+        event=new_infra_milestone(company,item.get("title") or "")
+        return bool(event and event[2] == "taihan|2026-09-second-shipment")
     if new_infra_official_source(item):
         return True
     key=new_infra_milestone(company,item.get("title") or "")
@@ -2580,7 +2605,7 @@ def meaning_for(category: str) -> str:
         "광섬유·모재 증설·장기계약": "실제 모재 생산능력 확장, 고객 장기약정, 공급물량과 인도일을 확인해야 반복매출로 연결됩니다.",
         "대한광통신 미국향 1차 수주": "2026년 2월 기존 공급계약이며 재탕 기사를 신규 출하로 분류하지 않습니다.",
         "대한광통신 미국향 2차 계약": "2026년 6월 약 355억원 규모 864심 광케이블 2차 계약입니다. TFO America 계약·물류와 실제 납품·검수·매출은 구분합니다.",
-        "대한광통신 미국향 2차 실제 출하": "기존 2차 공급계약에 따른 실제 공급개시 확인 신호입니다. 수주금액 355억원을 새로 더하지 않고 고객 인수·분기 매출은 별도 확인합니다.",
+        "대한광통신 미국향 2차 실제 출하": "데이터투자의 2026년 10월 21일 회사 관계자 취재에 따르면 기존 355억원 계약분을 9월부터 출하했고 10월부터 매출 반영을 예상했습니다. 이는 신규 계약이 아니며 실제 인식액은 추후 공시 확인이 필요합니다.",
         "대한광통신 미국향 3차 수주": "기존 1·2차와 별도의 신규 계약 원화금액·물량·납기·고객을 검증합니다.",
         "대한광통신 미국향 검수·매출": "864심 광케이블의 실제 인수검사, 수출 매출 인식, 환율·원가·미수금 변화를 점검합니다.",
         "OOI 실제 양산·출하": "연구 시제품에서 실제 패키지 광엔진 생산·인도로 넘어간 물량만 매출 후보입니다. GPU·NVLink CPO 전체 출하와 OOI 공급량은 별개입니다.",
@@ -3159,7 +3184,7 @@ def new_optical_infra_regression_checks() -> None:
     third = "대한광통신 미국향 864심 광케이블 3차 공급계약 수주"
     unrelated = "가온전선 미국 AI 데이터센터 864심 광케이블 2차 공급 개시"
     assert new_infra_milestone(TAIHAN_CABLE_COMPANY, june)[2] == "taihan|2026-06-second-contract"
-    assert new_infra_milestone(TAIHAN_CABLE_COMPANY, october)[2] == "taihan|2026-10-second-delivery"
+    assert new_infra_milestone(TAIHAN_CABLE_COMPANY, october)[2] == "taihan|2026-09-second-shipment"
     assert new_infra_milestone(TAIHAN_CABLE_COMPANY, future)[2] == "taihan|2026-06-second-contract"
     assert new_infra_milestone(TAIHAN_CABLE_COMPANY, third)[0] == "대한광통신 미국향 3차 수주"
     assert new_infra_milestone(TAIHAN_CABLE_COMPANY, unrelated) is None
@@ -3353,6 +3378,8 @@ def main() -> None:
     new_infra_source_ok = {k: False for k in NEW_OPTICAL_INFRA_SCOPES}
     new_infra_source_errors = {k: [] for k in NEW_OPTICAL_INFRA_SCOPES}
     new_infra_event_candidates = {k: 0 for k in NEW_OPTICAL_INFRA_SCOPES}
+    taihan_direct_verified = False
+    taihan_direct_status = "기존 기사 기준선"
 
     cutoff = NOW - dt.timedelta(days=7)
     for company, meta in COMPANIES.items():
@@ -3566,6 +3593,29 @@ def main() -> None:
             })
             all_relevant.append(item)
 
+    # Check the direct reported September shipment if not already sent.
+    # It must not be relabeled as a new 355억원 contract or as booked revenue.
+    if "taihan|2026-09-second-shipment" not in (state.get("seen_story_keys") or []):
+        taihan_direct_verified, taihan_direct_status = verify_taihan_original_report()
+        if taihan_direct_verified:
+            company = TAIHAN_CABLE_COMPANY
+            title = "대한광통신, 美 하이퍼스케일 AI 데이터센터향 광케이블 2차 물량 공급 개시"
+            event = new_infra_milestone(company, title)
+            assert event and event[2] == "taihan|2026-09-second-shipment"
+            all_relevant.append({
+                "company":company, "ticker":COMPANIES[company]["ticker"],
+                "title":title, "source":"데이터투자",
+                "source_url":"https://m.datatooza.com",
+                "link":TAIHAN_DIRECT_REPORT_URL,
+                "published":"2026-10-21T02:59:00+00:00",
+                "score":25, "key":event_key(company,title,"데이터투자"),
+                "stage":event[1], "category":event[0],
+                "firsthand_report_verified":True,
+            })
+            new_infra_event_candidates[company] += 1
+            new_infra_source_ok[company] = True
+        else:
+            errors.append("대한광통신 10/21 원문 직접 검증 보류")
     # Fail closed when the discovery layer is unhealthy. Never advance baselines
     # or silently report "no change" after a broad upstream outage.
     required_successes = max(3, (len(COMPANIES) + 1) // 2)
@@ -3766,6 +3816,8 @@ def main() -> None:
         "new_optical_infra_source_ok": new_infra_source_ok,
         "new_optical_infra_source_errors": new_infra_source_errors,
         "new_optical_infra_event_candidates": new_infra_event_candidates,
+        "taihan_second_shipment_original_verified": taihan_direct_verified,
+        "taihan_second_shipment_original_status": taihan_direct_status,
         "nvidia_ooi_dwdm_source_ok": ooi_source_healthy,
         "nvidia_ooi_dwdm_verified_reference": OOI_VERIFIED_REFERENCE,
         "credo_verified_baseline": CREDO_VERIFIED_BASELINE,
@@ -3962,7 +4014,9 @@ def main() -> None:
             lines.extend([
                 f"<b>{idx}) {html.escape(DISPLAY_NAMES_KO.get(item['company'], item['company']))} ({html.escape(item['ticker'])}) — {html.escape(category)}</b>",
                 f"• 단계: {html.escape(item['stage'])}",
-                ("• 확인 수준: 당사자·공식자료" if new_infra_official_source(item)
+                ("• 확인 수준: 취재 원문 직접 열람·회사 관계자 발언(공식 분기 매출 공시 별도)"
+                 if item.get("firsthand_report_verified") is True
+                 else "• 확인 수준: 당사자·공식자료" if new_infra_official_source(item)
                  else "• 확인 수준: 복수 신뢰매체 교차확인 · 계약·출하 원문 확인 필요")
                 if item['company'] in NEW_OPTICAL_INFRA_SCOPES else (
                 "• 확인 수준: NVIDIA·학술 1차 자료(OOI 시제품·DWDM 256Gb/s 기존 시연과 신규 양산 구분)" if item['company'] == OOI_COMPANY else (
@@ -4036,6 +4090,7 @@ def main() -> None:
         f"- 3M·광섬유·대한광통신 감시 버전: {pending.get('new_optical_infra_watch_version')}",
         f"- 신규 3축 원천조회 정상 여부: {new_infra_source_ok}",
         f"- 신규 3축 기사 후보: {new_infra_event_candidates}",
+        f"- 대한광통신 9월 실제 출하 기사 원문: {taihan_direct_status}",
         f"- 메타 광모듈·공급사 공식자료 감시: {'정상' if meta_source_healthy else '보류·해당 감시축 기준선 미갱신'}",
         f"- 메타 감시 버전: {pending.get('meta_optical_watch_version')}",
         f"- 크레도 광학·NPO 감시: {'정상' if credo_source_healthy else '보류·원천조회 실패 / 기준선 승격 금지'}",
