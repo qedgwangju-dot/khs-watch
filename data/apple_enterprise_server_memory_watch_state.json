@@ -95,6 +95,7 @@
     "2e86edb5c16fb3f28825",
     "2f9580b17b6e48f97495",
     "30b0632f5ebd497c1dabf92e",
+    "31cacf1eed9ade1c41e9",
     "324660e8e43192326715",
     "3250f78cfd1012393a7b043f",
     "33a79777113cae2d8275430a",
@@ -214,6 +215,7 @@
     "6382bc7e267471efc7741a08",
     "63bad288bae065b3dc9d3e9f",
     "6516d59eaf255f849bca164b",
+    "6547ca0d2dba4e5718cf",
     "655576e5a4ce04534b50",
     "6605343879c81df24909",
     "66e3adf297ac42537f3a",
@@ -248,6 +250,7 @@
     "71dcf008fc99934f1d38",
     "72b5fa70146f2a6cbae437a0",
     "730bd89fffdc69b324ea3324",
+    "739a6aa57fae59283987",
     "741fe4b62c5a26e61a0f",
     "747619bfd5f95e15ae003481",
     "753d7058bfc371741087",
@@ -266,6 +269,7 @@
     "7cab29afd8108019b1d40eb2",
     "7d632d0e018db955c39df5ce",
     "7dc24271cb174eb56588e47f",
+    "7e4f24837dbb69116801",
     "7ef5b6915d342a9f023c79d9",
     "7f8a8d6ef392af447e9a",
     "801174da0d80bc515725e933",
@@ -340,6 +344,7 @@
     "a592e006b102171f2e32",
     "a60f187dbad83fdf9c59",
     "a61cfc76cc46063abf4c",
+    "a647c40cbd7e04de5077",
     "a712e67c2781eb0ade83",
     "a7b735bfe58132cb54532108",
     "a8012da6a5a121956685",
@@ -409,6 +414,7 @@
     "c7c08275b3797d9058fd",
     "c7e634928f09f8c936de",
     "c809cfe38eabb4b27756af34",
+    "c90456c684f5668dd4f6",
     "c948b98b01ad3729fa7afe63",
     "c96931b9d637549327d00722",
     "c9e2558dbe86e52d7bb2c805",
@@ -419,6 +425,7 @@
     "cc293e7a88e1cc8ef6086484",
     "ccc9d858a1efe47434e3",
     "ccda62f73ebc7451874f",
+    "cdda086d20e66f439788",
     "cde15de1be438335b656",
     "ce2fde01d7fac270d842939b",
     "ce7b7915175b69a1629b",
@@ -452,6 +459,7 @@
     "dd2d6abeca1a25c87d64",
     "dd36a91f55e321a11f35",
     "dd44dd878e72ce73db25f59b",
+    "dd72412ed6c0b044137a",
     "ddc444e3c9641c448147",
     "de72804a287447299305",
     "df5ab7b5133ac7c1cd85f4bc",
@@ -540,7 +548,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-21T23:01:17+09:00",
+  "last_scan_kst": "2026-10-22T03:33:30+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -548,9 +556,6 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 10,
-  "fetch_errors": [
-    "bing_news \"Apple\" HBM server supplier contrac: ParseError not well-formed (invalid token): line 1, column 41",
-    "bing_news \"Apple\" \"NVLink Fusion\": ParseError not well-formed (invalid token): line 1, column 41"
-  ]
+  "fetch_ok": 12,
+  "fetch_errors": []
 }
