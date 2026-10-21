@@ -27,7 +27,8 @@ on:
     # KST 직접 지정. 새 공식값/수정치가 없으면 Telegram은 보내지 않는다.
     - cron: "5,20,40 7 * * 1-5"
       timezone: "Asia/Seoul"
-    - cron: "5 8-13 * * 1-5"
+    # Direct afternoon polling; independent of Warsh workflow_run fallback.
+    - cron: "5 8-19 * * 1-5"
       timezone: "Asia/Seoul"
   # GitHub schedule 지연/누락 대비 백업. 시간당 실행되는 기존 Warsh 워크플로 완료 시에도
   # KOFIA를 재조회하고 fingerprint가 같으면 중복 발송하지 않는다.
