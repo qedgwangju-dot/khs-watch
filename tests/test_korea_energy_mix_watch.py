@@ -349,7 +349,7 @@ def test_multirow_render_has_one_article_interpretation_per_row(monkeypatch):
     monkeypatch.setattr(
         energy_runner,
         "fetch_article_body",
-        lambda url: (url, "", "본문 추출량 부족"),
+        lambda url, evidence=None: (url, "", "본문 추출량 부족"),
     )
     rows = [
         {
