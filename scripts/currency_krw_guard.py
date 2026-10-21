@@ -61,6 +61,9 @@ SCALE = {
     "만": 10_000,
 }
 PER_UNIT_PATTERN = r"(?:MWh|GWh|kWh|GPU|CPU|module|wafer|month|year|TiB|TB|GB|Gb|kW|MW|GW|Wh|kg|chip|서버|랙|주|개|대|g|t|W)"
+# HTTP/Google News URLs can contain opaque fragments such as "SGd0".
+# Never turn URL identifiers into SGD or other foreign-currency amounts.
+URL_TOKEN_RE = re.compile(r"https?://[^\s<>\"']+", re.I)
 _RATE_CACHE: dict[str, tuple[float | None, str]] = {}
 _USED_FX: dict[str, tuple[float, str]] = {}
 
@@ -126,6 +129,13 @@ def _normalize_existing_separate_krw(text: str) -> str:
 
 
 def enforce_text(text: str) -> str:
+    # Protect URL payload before currency replacement; original links restored.
+    urls: dict[str, str] = {}
+    def protect_url(m: re.Match) -> str:
+        key = f"__KRWURLTOKEN{len(urls)}__"
+        urls[key] = m.group(0)
+        return key
+    text = URL_TOKEN_RE.sub(protect_url, text)
     _USED_FX.clear()
     text = _normalize_existing_separate_krw(text)
 
@@ -215,7 +225,7 @@ def enforce_text(text: str) -> str:
 
     # ISO-code amounts such as USD 30,000, EUR 2 billion, JPY 500 million.
     iso_pat = re.compile(
-        r"(?P<code>USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\s*"
+        r"(?<![A-Za-z0-9_])(?P<code>USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\s+"
         r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*"
         r"(?P<unit>trillion|billion|million|bn|mn|T|B|M)?\b(?P<per>/" + PER_UNIT_PATTERN + r")?",
         re.I,
@@ -305,6 +315,8 @@ def enforce_text(text: str) -> str:
         ]
         text += "\n환율 기준: " + " / ".join(refs) + "\n"
     validate_text(text)
+    for key, url in urls.items():
+        text = text.replace(key, url)
     return text
 
 
@@ -322,7 +334,7 @@ def _money_candidates(text: str):
         r"(?:/" + PER_UNIT_PATTERN + r")?"
     )
     iso = (
-        r"(?:USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\s*"
+        r"(?<![A-Za-z0-9_])(?:USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\s+"
         r"\d[\d,.]*(?:\.\d+)?(?:\s*(?:trillion|billion|million|bn|mn|T|B|M))?"
         r"(?:/" + PER_UNIT_PATTERN + r")?"
     )
@@ -338,9 +350,11 @@ def _money_candidates(text: str):
 
 def validate_text(text: str) -> None:
     unpaired = []
-    for m in _money_candidates(text):
+    # A URL is an opaque identifier, not visible contract or exchange-rate text.
+    visible = URL_TOKEN_RE.sub("", text)
+    for m in _money_candidates(visible):
         token = m.group(0)
-        tail = text[m.end():]
+        tail = visible[m.end():]
         # Exchange-rate basis lines such as 1달러=1,350원 are not monetary
         # values requiring a second KRW conversion.
         if re.match(r"\s*=", tail):
