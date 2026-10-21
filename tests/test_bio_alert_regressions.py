@@ -18,6 +18,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import bio_korean_guard_strict_v2 as guard
 import bio_korean_guard as basic_guard
 import bio_single_runner as bio_runner
+import qlex_sc_conversion_watch as qlex_watch
+import qlex_telegram_send as qlex_sender
 import bio_korean_guard as base_korean_guard
 import optogenetics_translation_watch as optogenetics
 import jemperli_altb4_watch as jem_base
@@ -281,6 +283,46 @@ class BioAlertRegressionTests(unittest.TestCase):
         )
         for phrase in required:
             self.assertIn(phrase, rendered)
+
+    def test_qlex_new_eu_mibc_approval_is_distinct_from_june_approval(self):
+        old = dt.datetime(2026, 10, 21, 10, 44, tzinfo=dt.timezone.utc)
+        new = dt.datetime(2026, 10, 21, 10, 46, tzinfo=dt.timezone.utc)
+        self.assertFalse(qlex_watch.eu_mibc_approval_due({}, old))
+        self.assertTrue(qlex_watch.eu_mibc_approval_due({}, new))
+        self.assertFalse(qlex_watch.eu_mibc_approval_due({
+            "seen_regulatory_events": [qlex_watch.EU_MIBC_REGULATORY_EVENT_ID]
+        }, new))
+        self.assertIn("CISPLATIN_ALL", qlex_watch.EU_MIBC_REGULATORY_EVENT_ID)
+
+    def test_qlex_eu_mibc_alert_contains_bold_dated_legal_gate(self):
+        rendered = qlex_sender.render_html("\n".join(qlex_watch.eu_mibc_regulatory_lines()))
+        for date in ("2026년 6월 24일", "2026년 9월 17일", "2026년 10월 7일", "2026년 10월 21일"):
+            self.assertIn("<b>" + date + "</b>", rendered)
+        self.assertIn("이번 허가만으로 원화 매출이나 마일스톤 확정액을 만들지 않습니다", rendered)
+        self.assertIn("위험비 0.53", rendered)
+        self.assertIn("금지명령의 집행정지·취소가 아닙니다", rendered)
+
+    def test_qlex_eu_mibc_alert_uses_existing_pending_state_until_delivery(self):
+        # 원래 QLEX의 pending->Telegram message_id->state 승격 경로를 그대로 이용한다.
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            with patch.object(qlex_watch, "OUT", root), \
+                patch.object(qlex_watch, "PENDING", root / "pending.json"), \
+                patch.object(qlex_watch, "ALERT", root / "alert.md"), \
+                patch.object(qlex_watch, "STATUS", root / "status.md"), \
+                patch.object(qlex_watch, "eu_mibc_approval_due", return_value=True):
+                state = {"dedupe_version": qlex_watch.DEDUPE_VERSION, "seen_fingerprints": [],
+                         "seen_story_keys": [], "seen_semantic_keys": []}
+                qlex_watch.check([], state)
+                self.assertTrue((root / "alert.md").exists())
+                self.assertIn("<b>2026년 10월 21일</b>", qlex_sender.render_html((root / "alert.md").read_text(encoding="utf-8")))
+                pending = json.loads((root / "pending.json").read_text(encoding="utf-8"))
+                self.assertEqual(pending["seen_regulatory_events"], [qlex_watch.EU_MIBC_REGULATORY_EVENT_ID])
+                (root / "alert.md").unlink()
+                # 재진입에서 이미 배송된 상태를 사용하면 중복 보고를 만들지 않는다.
+                with patch.object(qlex_watch, "eu_mibc_approval_due", return_value=False):
+                    qlex_watch.check([], pending)
+                self.assertFalse((root / "alert.md").exists())
 
     def test_qlex_wac_cumulative_has_krw_formatter(self):
         self.assertEqual(

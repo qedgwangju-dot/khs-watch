@@ -52,6 +52,62 @@ CONVERSION_TERMS = (
 )
 ECONOMIC_TERMS = ("milestone", "royalty", "마일스톤", "로열티")
 
+# 유럽위원회 2026-10-21 최종 승인: 2026-06-24 시스플라틴 부적격자 승인의
+# 단순 재보도가 아닌, 적격 여부 제한을 제거한 새 적응증 확대 사건.
+# Merck 공식 원문과 2026-09-17 EMA CHMP 권고를 교차 검증한 기준선이다.
+EU_MIBC_REGULATORY_EVENT_ID = "EC|KEYTRUDA_SC+PADCEV|MIBC|CISPLATIN_ALL|2026-10-21"
+EU_MIBC_RELEASE_UTC = dt.datetime(2026, 10, 21, 10, 45, tzinfo=UTC)
+EU_MIBC_MERCK_URL = (
+    "https://www.merck.com/news/"
+    "european-commission-approves-keytruda-pembrolizumab-plus-padcev-enfortumab-vedotin-ejfv-"
+    "as-perioperative-treatment-for-adults-with-resectable-muscle-invasive-bladder-cancer-mibc/"
+)
+EU_MIBC_EMA_URL = "https://www.ema.europa.eu/en/medicines/human/variation/keytruda-1"
+EU_MIBC_EUROPE_INJUNCTION_URL = (
+    "https://ir.halozyme.com/news/news-details/2026/"
+    "Halozyme-Wins-Injunction-Stopping-Manufacture-and-Sale-of-Mercks-Keytruda-SC-in-"
+    "Multiple-European-Markets/default.aspx"
+)
+
+
+def eu_mibc_approval_due(state: dict, now_utc: dt.datetime | None = None) -> bool:
+    now = now_utc if now_utc is not None else dt.datetime.now(UTC)
+    if now.tzinfo is None:
+        raise ValueError("유럽 허가 알림 시각은 시간대가 있어야 합니다")
+    return (
+        now.astimezone(UTC) >= EU_MIBC_RELEASE_UTC
+        and EU_MIBC_REGULATORY_EVENT_ID not in set(state.get("seen_regulatory_events") or [])
+    )
+
+
+def eu_mibc_regulatory_lines() -> list[str]:
+    # Telegram 송신기는 **날짜**를 HTML 굵게 표시로 변환한다.
+    # 당국의 적응증 승인과 법원의 별도 특허금지명령, 실제 판매·급여를 혼동하지 않는다.
+    return [
+        "[바이오 감시] KEYTRUDA SC 유럽 방광암 적응증 확대 승인",
+        "",
+        "**유럽위원회, Keytruda+Padcev 병용 수술 전후 치료의 시스플라틴 적격 제한 해제**",
+        "",
+        "- **변화:** 6월에는 시스플라틴 화학요법 부적격 환자만 허가됐지만, 10월에는 적격 여부에 관계없이 절제 가능한 근육 침습성 방광암 성인으로 확대됐습니다.",
+        "- **제형:** Keytruda 정맥주사와 Keytruda SC(미국명 Keytruda Qlex, 알테오젠 ALT-B4 기반)를 포함합니다. Padcev는 항체약물접합체입니다.",
+        "- **허가 범위:** 유럽연합 27개 회원국과 아이슬란드·리히텐슈타인·노르웨이. 각국 급여·실제 판매 개시는 별도입니다.",
+        "- **3상 근거:** KEYNOTE-B15/EV-304에서 무사건생존 관련 사건 위험 47% 감소(위험비 0.53), 사망 위험 35% 감소(위험비 0.65), 병리학적 완전관해율 55.8% 대 32.5%. 이 임상은 정맥주사 Keytruda+Padcev 비교이며 Keytruda SC만의 직접 비교시험으로 해석하지 않습니다.",
+        "",
+        "- **타임라인:**",
+        "• **2026년 6월 24일** 시스플라틴 부적격 환자 대상 유럽 병용요법 승인",
+        "• **2026년 9월 17일** 유럽의약품청 적격 제한 삭제 긍정 의견",
+        "• **2026년 10월 7일** 별도 EP622 특허분쟁으로 유럽 8개국 Keytruda SC 금지명령",
+        "• **2026년 10월 21일** 적격 여부 제한 없는 유럽위원회 확대 승인",
+        "",
+        "- **법적 역풍:** 허가 확대는 기존 EP622 특허 금지명령의 집행정지·취소가 아닙니다. 네덜란드·벨기에·덴마크·프랑스·아일랜드·이탈리아·스웨덴·스위스의 Keytruda SC 제조·판매 등 제한은 별도 법원 절차로 추적합니다.",
+        "- **매출 연결:** 적응증 확대 → 국가별 급여 → 특허 자유실시·출하 → 실제 판매 → 알테오젠 판매 마일스톤·로열티 순서입니다. 이번 허가만으로 원화 매출이나 마일스톤 확정액을 만들지 않습니다.",
+        "- **확정 당사자:** Merck/MSD(Keytruda SC), 화이자·아스텔라스(Padcev 공동개발·사업), 알테오젠(ALT-B4 공급·사용권), Halozyme(별도 MDASE 특허분쟁).",
+        "- **다음 확인:** 국가별 출시·급여·특허 집행정지 및 항소, 유럽 Keytruda SC 판매와 알테오젠 수익인식.",
+        f"- 원문: {EU_MIBC_MERCK_URL}",
+        f"- 원문: {EU_MIBC_EMA_URL}",
+        f"- 원문: {EU_MIBC_EUROPE_INJUNCTION_URL}",
+    ]
+
 
 @dataclass
 class Item:
@@ -398,6 +454,7 @@ def check(items: list[Item], state: dict) -> None:
     seen_fp = set(state.get("seen_fingerprints", []))
     seen_story = set(state.get("seen_story_keys", []))
     seen_semantic = set(state.get("seen_semantic_keys", []))
+    regulatory_due = eu_mibc_approval_due(state)
 
     fresh: list[Item] = []
     silent: list[Item] = []
@@ -424,7 +481,7 @@ def check(items: list[Item], state: dict) -> None:
     pending["seen_semantic_keys"] = cap(seen_semantic)
     pending["last_check_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
 
-    if not fresh:
+    if not fresh and not regulatory_due:
         write_pending(pending)
         STATUS.write_text(
             f"changed=false fresh_alerts=0 stale_or_irrelevant={len(silent)} at={pending['last_check_kst']}\n",
@@ -443,7 +500,15 @@ def check(items: list[Item], state: dict) -> None:
         if len(chosen) >= 6:
             break
 
-    lines = ["[바이오 감시] KEYTRUDA QLEX 새 데이터", ""]
+    lines = eu_mibc_regulatory_lines() if regulatory_due else ["[바이오 감시] KEYTRUDA QLEX 새 데이터", ""]
+    if regulatory_due:
+        existing = set(pending.get("seen_regulatory_events") or [])
+        existing.add(EU_MIBC_REGULATORY_EVENT_ID)
+        pending["seen_regulatory_events"] = sorted(existing)[-200:]
+        pending["last_regulatory_source_url"] = EU_MIBC_MERCK_URL
+        pending["last_regulatory_release_kst"] = "2026-10-21T19:45:00+09:00"
+        if chosen:
+            lines += ["", "**같은 실행에서 확인된 QLEX 신규 수치**", ""]
     for number, item in enumerate(chosen, 1):
         text = item.full
         low = text.lower()
@@ -490,16 +555,17 @@ def check(items: list[Item], state: dict) -> None:
         lines.append(f"- 원문: {item.canonical_url}")
         lines.append("")
 
-    lines += [
-        "판정",
-        "- 총판매액 기준 전환율은 환자 수 기준 점유율과 다릅니다.",
-        "- QLEX 전환율의 절대값보다 10.5% 이후 15%→20%→30~40%로 가는 기울기를 중점 추적합니다.",
-        "- 동일 기사·동일 숫자는 URL이 바뀌거나 재인용돼도 다시 알리지 않습니다.",
-    ]
+    if chosen:
+        lines += [
+            "판정",
+            "- 총판매액 기준 전환율은 환자 수 기준 점유율과 다릅니다.",
+            "- QLEX 전환율의 절대값보다 10.5% 이후 15%→20%→30~40%로 가는 기울기를 중점 추적합니다.",
+            "- 동일 기사·동일 숫자는 URL이 바뀌거나 재인용돼도 다시 알리지 않습니다.",
+        ]
     ALERT.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
     write_pending(pending)
     STATUS.write_text(
-        f"changed=true alerts={len(chosen)} stale_or_irrelevant={len(silent)} at={pending['last_check_kst']}\n",
+        f"changed=true alerts={len(chosen)} regulatory_approval={'true' if regulatory_due else 'false'} stale_or_irrelevant={len(silent)} at={pending['last_check_kst']}\n",
         encoding="utf-8",
     )
 
