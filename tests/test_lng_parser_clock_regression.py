@@ -46,3 +46,82 @@ class ParserClockRegressionTest(unittest.TestCase):
     def test_missing_date_remains_rejected(self):
         with self.assertRaisesRegex(RuntimeError, 'source date not found'):
             monitor._parse_te_korean_detail_v34(TTF.replace('2026년 9월 25일 EU 가스는', ''), 'ttf', now=FIXTURE_NOW)
+
+class LNGMaritimeEvidenceRegressionTest(unittest.TestCase):
+    @staticmethod
+    def item(title, source="Reuters", polarity="worsening", day=19, hour=11, subtype="reroute", official=False):
+        date = dt.datetime(2026, 10, day, hour, tzinfo=dt.timezone.utc)
+        return monitor.core.NewsItem(
+            category="hormuz_shipping",
+            polarity=polarity,
+            subtype=subtype,
+            title=title,
+            source=source,
+            link=f"https://news.google.com/rss/articles/fixture-{source.replace(' ', '-')}",
+            published_utc=date.isoformat(),
+            published_epoch=date.timestamp(),
+            official=official,
+            event_id=f"fixture-{source}-{day}-{hour}",
+        )
+
+    def test_rare_qatar_red_sea_delivery_not_an_LNG_worsening(self):
+        item = self.item("Qatar LNG Cargo Makes Rare Red Sea Journey to Get Gas to Europe", "gCaptain")
+        self.assertIsNone(monitor._hormuz_lng_claim_v34(item))
+        self.assertFalse(monitor._is_lng_relevant_item_v34(item))
+
+    def test_container_ship_attacks_are_not_LNG_shortage_proof(self):
+        item = self.item("Strait of Hormuz scoured for spilt cargo after Iran attacks container ships", "The Guardian")
+        self.assertIsNone(monitor._hormuz_lng_claim_v34(item))
+        self.assertFalse(monitor._is_lng_relevant_item_v34(item))
+
+    def test_the_two_october_19_articles_cannot_confirm_LNG_shortage(self):
+        candidates = [
+            self.item("Qatar LNG Cargo Makes Rare Red Sea Journey to Get Gas to Europe", "gCaptain"),
+            self.item("Strait of Hormuz scoured for spilt cargo after Iran attacks container ships", "The Guardian"),
+        ]
+        self.assertFalse(any(g.get("category") == "hormuz_shipping" for g in monitor.confirmed_news_groups_v34(candidates)))
+
+    def test_two_distinct_LNG_shipping_stories_are_not_the_same_event(self):
+        candidates = [
+            self.item("Qatar LNG tanker struck in Gulf off Qatar", "Reuters"),
+            self.item("Qatar LNG shipping disruption at Strait of Hormuz keeps LNG vessels blocked", "The Guardian"),
+        ]
+        self.assertFalse(any(g.get("category") == "hormuz_shipping" for g in monitor.confirmed_news_groups_v34(candidates)))
+
+    def test_two_independent_same_LNG_shipping_disruption_can_confirm(self):
+        a = self.item("LNG shipping disruption at Strait of Hormuz keeps Qatar LNG vessels outside the strait", "Reuters")
+        b = self.item("Qatar LNG tanker traffic remains disrupted through Strait of Hormuz", "S&P Global Commodity Insights", hour=12)
+        groups = monitor.confirmed_news_groups_v34([a, b])
+        matches = [g for g in groups if g.get("category") == "hormuz_shipping"]
+        self.assertEqual(len(matches), 1)
+        self.assertIn("원문 본문 미열람", matches[0]["verification"])
+        labels = [monitor._title_ko_v34(row) for row in matches[0]["evidence"]]
+        self.assertTrue(all("호르무즈" in label and "LNG" in label for label in labels))
+        self.assertTrue(all("관련 확정 변화" not in label for label in labels))
+
+    def test_stable_fingerprint_across_reprints(self):
+        a = self.item("LNG shipping disruption at Strait of Hormuz keeps Qatar LNG vessels outside the strait", "Reuters")
+        b = self.item("Qatar LNG tanker traffic remains disrupted through Strait of Hormuz", "S&P Global Commodity Insights", hour=12)
+        original = monitor.confirmed_news_groups_v34([a, b])
+        followup = monitor.confirmed_news_groups_v34([
+            self.item(a.title, "Reuters", day=20),
+            self.item(b.title, "S&P Global Commodity Insights", day=20, hour=12),
+        ])
+        self.assertEqual(original[0]["event_id"], followup[0]["event_id"])
+
+    def test_unknown_shipping_title_blocks_generic_korean_certainty(self):
+        row = self.item("Qatar LNG Cargo Makes Rare Red Sea Journey to Get Gas to Europe", "gCaptain")
+        with self.assertRaisesRegex(RuntimeError, "실제 LNG 사건"):
+            monitor._title_ko_v34(row)
+
+    def test_google_news_redirect_is_labeled_as_indirect_source(self):
+        a = self.item("LNG shipping disruption at Strait of Hormuz keeps Qatar LNG vessels outside the strait", "Reuters")
+        b = self.item("Qatar LNG tanker traffic remains disrupted through Strait of Hormuz", "S&P Global Commodity Insights")
+        groups = monitor.confirmed_news_groups_v34([a, b])
+        body = "\n".join(monitor._evidence_lines_v34(groups))
+        self.assertIn("기사 확인(뉴스 경유)", body)
+        self.assertNotIn("관련 확정 변화", body)
+
+    def test_official_one_source_requires_real_LNG_event(self):
+        unrelated = self.item("Oil tankers attacked near Hormuz, gas shipping remains uncertain", "UKMTO", official=True)
+        self.assertFalse(any(g.get("category") == "hormuz_shipping" for g in monitor.confirmed_news_groups_v34([unrelated])))

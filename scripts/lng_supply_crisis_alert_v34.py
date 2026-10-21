@@ -922,17 +922,98 @@ def _canonical_alaska_policy_event_id_v34(group) -> str | None:
     return hashlib.sha256(basis.encode("utf-8")).hexdigest()[:20]
 
 
+def _hormuz_lng_claim_v34(item: core.NewsItem) -> tuple[str, str, str] | None:
+    """Strict LNG-shipping material-event key: (direction, route, event type).
+
+    RSS query inclusion or two different ship stories is not evidence of one
+    confirmed LNG disruption. Absence of a matching physical LNG fact => no alert.
+    """
+    if str(getattr(item, "category", "") or "") != "hormuz_shipping":
+        return None
+    text = core.normalize_text(str(getattr(item, "title", "") or ""))
+    direct_lng = any(term in text for term in (
+        "lng", "liquefied natural gas", "lng carrier", "lng tanker",
+        "qatarenergy", "액화천연가스", "lng 운반선", "lng 선박",
+    ))
+    if not direct_lng:
+        return None
+
+    route = (
+        "hormuz" if any(term in text for term in ("hormuz", "호르무즈"))
+        else "red_sea" if any(term in text for term in ("red sea", "suez", "bab el-mandeb", "홍해", "수에즈"))
+        else "gulf" if any(term in text for term in ("qatar", "fujairah", "sohar", "카타르"))
+        else None
+    )
+    if route is None:
+        return None
+
+    # Arriving, passing, sailing or making a rare voyage is not proof of
+    # worsening transit conditions even when an article mentions security risks.
+    if any(term in text for term in (
+        "rare red sea journey", "journey to get gas", "rare passage",
+        "sails to europe", "sailing to europe", "makes rare",
+    )) and not any(term in text for term in ("forced to reroute", "shipment halted", "cargo cancelled")):
+        return None
+
+    attacked = any(term in text for term in (
+        "lng tanker attacked", "lng carrier attacked", "lng vessel attacked",
+        "lng tanker struck", "lng carrier struck", "lng vessel struck",
+        "attack on lng tanker", "attack on lng carrier",
+        "lng tanker hit", "lng carrier hit",
+        "lng 운반선 피격", "lng 선박 피격", "lng 운반선 공격",
+    ))
+    interrupted = any(term in text for term in (
+        "lng shipping disruption", "lng shipping halted", "lng shipments halted",
+        "lng tanker traffic remains disrupted", "lng tanker traffic disrupted",
+        "lng vessels blocked", "lng carrier blocked", "lng shipping blocked",
+        "lng vessel turns back", "lng tanker turns back",
+        "lng shipments suspended", "lng cargoes cancelled", "lng cargoes canceled",
+        "lng vessel reroutes", "lng tanker reroutes", "lng carriers diverted",
+        "lng tanker diverted", "qatar lng vessels outside",
+        "lng 운송 차질", "lng 선박 운항 중단", "lng 수송 중단",
+        "lng 운반선 우회", "lng 선박 통항 차질",
+    ))
+    restored = any(term in text for term in (
+        "lng shipping resumes", "lng tanker traffic resumes",
+        "lng tanker passage resumes", "lng carriers resume",
+        "lng shipping restored", "lng 운항 재개", "lng 통항 재개",
+    ))
+
+    if attacked:
+        return ("worsening", route, "lng_tanker_attack")
+    if interrupted:
+        return ("worsening", route, "lng_transport_disrupted")
+    if restored:
+        return ("easing", route, "lng_transport_resumed")
+    return None
+
+
+def _shipping_evidence_ko_v34(item: core.NewsItem) -> str:
+    """Conservative, fact-preserving headline labels; no fabricated universal claim."""
+    signal = _hormuz_lng_claim_v34(item)
+    if signal is None:
+        raise RuntimeError("LNG 운송 사건: 기사 제목에서 실제 LNG 사건을 특정하지 못함")
+    direction, route, event = signal
+    place = {
+        "hormuz": "호르무즈",
+        "red_sea": "홍해",
+        "gulf": "카타르 인근 해역",
+    }[route]
+    subject = "카타르 LNG 선박" if "qatar" in core.normalize_text(item.title) or "카타르" in item.title else "LNG 운반선"
+    if event == "lng_tanker_attack":
+        return f"{place} 인근 {subject} 피격 보도"
+    if event == "lng_transport_disrupted":
+        return f"{place} {subject} 운송·통항 차질 보도"
+    if event == "lng_transport_resumed":
+        return f"{place} {subject} 운송·통항 재개 보도"
+    raise RuntimeError(f"검증되지 않은 LNG 운송 사건 종류: {event}")
+
+
 def _is_lng_relevant_item_v34(item: core.NewsItem) -> bool:
     if str(getattr(item, "category", "") or "") != "hormuz_shipping":
         return True
-    text = core.normalize_text(str(getattr(item, "title", "") or ""))
-    if any(term in text for term in LNG_RELEVANCE_TERMS):
-        return True
-    if any(term in text for term in OIL_ONLY_TERMS):
-        return False
-    route_relevant = any(term in text for term in HORMUZ_ROUTE_TERMS)
-    status_relevant = any(term in text for term in HORMUZ_GENERIC_STATUS_TERMS)
-    return route_relevant and status_relevant
+    signal = _hormuz_lng_claim_v34(item)
+    return signal is not None and str(getattr(item, "polarity", "")) == signal[0]
 
 
 def _group_evidence_text(group) -> str:
@@ -986,7 +1067,38 @@ def confirmed_news_groups_v34(items: list[core.NewsItem]):
         group for group in _BASE_CONFIRMED_V34(relevant_items)
         if str(group.get("category") or "") != ALASKA_CATEGORY
     ]
-    base = [group for group in raw_base if not _is_saudi_oil_only_group(group)]
+    base: list[dict] = []
+    for group in raw_base:
+        if _is_saudi_oil_only_group(group):
+            continue
+        if str(group.get("category") or "") == "hormuz_shipping":
+            evidence = list(group.get("evidence") or [])
+            signatures = [_hormuz_lng_claim_v34(item) for item in evidence]
+            if not evidence or any(sig is None for sig in signatures):
+                continue
+            if len(set(signatures)) != 1:
+                continue
+            if signatures[0][0] != str(group.get("polarity") or ""):
+                continue
+            if not any(bool(getattr(item, "official", False)) for item in evidence):
+                if len({core.normalize_text(str(item.source)) for item in evidence}) < 2:
+                    continue
+                if max(float(item.published_epoch) for item in evidence) - min(float(item.published_epoch) for item in evidence) > 36 * 3600:
+                    continue
+            # Stable event-stage fingerprint; repeated RSS articles do not create
+            # a fresh outage unless the route or the physical event stage changes.
+            material = "|".join(signatures[0])
+            if signatures[0][2] == "lng_tanker_attack":
+                # Attacks are separate daily physical incidents, not one endless alert.
+                first = min(float(item.published_epoch) for item in evidence)
+                material += "|" + dt.datetime.fromtimestamp(first, dt.timezone.utc).strftime("%Y-%m-%d")
+            group["event_id"] = hashlib.sha256(("lng-maritime-v35|" + material).encode("utf-8")).hexdigest()[:20]
+            group["verification"] = (
+                "공식 운송 사건 발표" if any(bool(getattr(item, "official", False)) for item in evidence)
+                else "LNG 관련 동일 운송 사건·서로 다른 매체 제목 2곳 일치(원문 본문 미열람)"
+            )
+            group["verified_lng_material"] = material
+        base.append(group)
     for group in base:
         canonical_policy_id = _canonical_alaska_policy_event_id_v34(group)
         if canonical_policy_id:
@@ -1084,6 +1196,8 @@ core.confirmed_news_groups = confirmed_news_groups_v34
 def _title_ko_v34(item: core.NewsItem) -> str:
     raw = str(getattr(item, "title", "") or "").strip()
     normalized = core.normalize_text(raw)
+    if item.category == "hormuz_shipping":
+        return _shipping_evidence_ko_v34(item)
     if item.category == ASIA_DEMAND_CATEGORY:
         if "7.4 billion" in normalized or "$7.4 billion" in normalized or "7 billion" in normalized or "$7 billion" in normalized:
             return "아시아 신흥국 LNG 조달비 급증·장기 수요 재평가"
@@ -1149,7 +1263,8 @@ def _evidence_lines_v34(groups) -> list[str]:
             title = _title_ko_v34(item)
             line = f"• <b>{html.escape(source)}</b> · {html.escape(title)}"
             if link:
-                line += f' · <a href="{html.escape(link, quote=True)}">원문</a>'
+                label = "기사 확인(뉴스 경유)" if "news.google.com/" in link else "원문"
+                line += f' · <a href="{html.escape(link, quote=True)}">{label}</a>'
             lines.append(line)
             if len(lines) >= 3:
                 return lines
@@ -1509,10 +1624,29 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
         body = v32._replace_evidence_text(body, groups)
     else:
         body = v32._replace_evidence_text(body, groups)
+    if any(str(g.get("category") or "") == "hormuz_shipping" for g in groups):
+        body = body.replace(
+            "새로운 LNG 수급·정책 변화 확인",
+            "LNG 운송 관련 동일 사건의 매체 보도 교차 확인",
+        ).replace(
+            "카타르 생산·선적 또는 핵심 해상 통로의 악화가 공식 원문이나 신뢰 매체 교차로 확인됐습니다.",
+            "LNG 운송 관련 개별 사건의 매체 보도가 일치합니다. 카타르 LNG 생산 중단·선적 물량 감소는 별도 확인 전입니다.",
+        ).replace(
+            "공급·운송 악화가 확인돼 유럽과 동북아의 LNG 조달 경쟁이 심해질 수 있습니다.",
+            "LNG 운송 사건 보도는 확인됐지만 실제 수출·도착량 감소와 가격 전이는 추가 검증해야 합니다.",
+        )
     leaks = v32._raw_english_evidence_remaining(body, groups)
     if leaks:
         raise RuntimeError("영문 기사 제목 송출 차단: " + " | ".join(leaks[:3]))
     metadata["version"] = 34
+    metadata["lng_shipping_evidence_audit"] = {
+        "rule": "direct LNG vessel + matching physical incident type + matching sea route + matching direction",
+        "source_gate": "two independent publisher RSS headlines or actual official source",
+        "misleading_generic_summary": "forbidden",
+        "oil_container_tanker_coverage_without_LNG": "not LNG supply evidence",
+        "rare_red_sea_LNG_delivery": "neutral voyage; not an LNG outage",
+        "full_text_claim": "not verified unless publisher direct text actually fetched",
+    }
     metadata.setdefault("refined_fuel_watch", {})["output_guard"] = (
         "fuel-specific Korean evidence + Yahoo/Vitol Korean display + stale EIA fixed-value block"
     )
