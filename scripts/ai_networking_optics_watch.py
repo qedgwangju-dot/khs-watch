@@ -60,6 +60,21 @@ OOI_VERIFIED_REFERENCE = {
     ],
 }
 CREDO_COMPANY = "Credo"
+# Additional commercial optical-infrastructure watchers share the active
+# AI optics workflow, Telegram route, state and schedule.
+AMAZON_EBO_COMPANY = "3M Amazon Optical EBO"
+FIBER_SPOT_COMPANY = "Optical Fiber Spot & Preform"
+TAIHAN_CABLE_COMPANY = "Taihan Fiberoptic America Deliveries"
+NEW_OPTICAL_INFRA_SCOPES = {AMAZON_EBO_COMPANY, FIBER_SPOT_COMPANY, TAIHAN_CABLE_COMPANY}
+NEW_OPTICAL_INFRA_VERSION = 1
+NEW_OPTICAL_INFRA_BASELINES = {
+    "3m|amazon|2026-10-19-warrant-v1",
+    "3m|microsoft|2026-07-15-ebo",
+    "fiber|trendforce|2026-10-19-spot-shortage",
+    "taihan|2026-02-first-order",
+    "taihan|2026-06-second-contract",
+}
+
 # Additional JPMorgan-specified suppliers. Past coverage is NOT a new material event.
 NETWORKING_ADDED_SUPPLIERS = {"Amphenol", "Ciena", "Celestica"}
 NETWORKING_ADDED_FROM_UTC = dt.datetime(2026, 10, 18, 9, 17, tzinfo=dt.timezone.utc)
@@ -133,6 +148,34 @@ COMPANIES = {
         "ticker": "MRVL",
         "aliases": ["Marvell"],
         "query": 'Marvell (optical DSP OR SerDes OR interconnect OR networking OR 800G OR 1.6T OR 3.2T OR CPO OR "co-packaged optics" OR "Celestial AI" OR "photonic fabric" OR "200G/lane" OR DAC OR ACC OR "active copper cable" OR "co-packaged copper")',
+    },
+    "3M Amazon Optical EBO": {
+        "ticker": "MMM/AMZN",
+        "aliases": ["3M", "3M Company", "Amazon", "Microsoft", "Expanded Beam Optical"],
+        "queries": [
+            '("3M" OR "3M Company") (Amazon OR AWS) ("optical connectivity" OR "expanded beam optical" OR warrant OR "data center products") (vest OR agreement OR contract OR purchases OR payments OR sales OR 2026)',
+            '("3M" OR "Expanded Beam Optical") (Amazon OR Microsoft OR EBO) (purchase order OR commercial deployment OR signed OR shipped OR production OR optical ferrule OR 2027)',
+        ],
+    },
+    "Optical Fiber Spot & Preform": {
+        "ticker": "광섬유 수급",
+        "aliases": ["TrendForce", "Optical Fiber", "Fiber Preform"],
+        "queries": [
+            '("TrendForce" OR 集邦) ("optical fiber" OR 光纤 OR 光纖) (spot price OR shortage OR 2028 OR preform OR 92%)',
+            '("optical fiber" OR "fiber preform") (spot price OR shortage OR capacity OR inventory OR lead time) (data center OR AI OR TrendForce)',
+        ],
+    },
+    "Taihan Fiberoptic America Deliveries": {
+        "ticker": "010170.KQ",
+        "aliases": ["대한광통신", "TAIHAN FIBEROPTICS", "TFO America"],
+        "queries": [
+            '"대한광통신" ("864심" OR "초고심수" OR "광케이블" OR "하이퍼스케일") ("공급" OR "출하" OR "선적" OR "2차" OR "계약")',
+            '("TAIHAN FIBEROPTICS" OR "TFO America" OR "대한광통신") (AI OR hyperscale OR 864 OR optical fiber) (delivery OR shipment OR order OR supply)',
+        ],
+        "locales": [
+            {"hl": "ko", "gl": "KR", "ceid": "KR:ko"},
+            {"hl": "en-US", "gl": "US", "ceid": "US:en"},
+        ],
     },
     "Lumentum": {
         "ticker": "LITE",
@@ -406,6 +449,9 @@ DISPLAY_NAMES_KO = {
     "Amphenol": "암페놀",
     "Ciena": "시에나",
     "Celestica": "셀레스티카",
+    "3M Amazon Optical EBO": "3M·아마존 EBO 광연결",
+    "Optical Fiber Spot & Preform": "광섬유·모재 공급·가격",
+    "Taihan Fiberoptic America Deliveries": "대한광통신 미국향 864심 공급",
     "Lumentum": "루멘텀",
     "Lumentum Supply & Capacity": "루멘텀 AI 광부품 공급·증설",
     "Coherent": "코히런트",
@@ -439,6 +485,9 @@ DISPLAY_NAMES_KO = {
 
 TRUSTED_SOURCES = {
     "Reuters", "Bloomberg", "Financial Times", "The Wall Street Journal", "CNBC",
+    "3M", "3M News Center", "3M Investor Relations", "Amazon", "Amazon News",
+    "Microsoft", "Microsoft Source", "대한광통신", "TAIHAN FIBEROPTICS",
+    "TFO America", "데이터투자", "데이터투자(DataToozA)", "뉴시스", "Newsis",
     "DigiTimes", "DIGITIMES", "Investing.com", "Barron's", "MarketWatch",
     "NVIDIA Blog", "NVIDIA Newsroom", "NVIDIA Research", "Optica Publishing Group",
     "Optica", "IEEE Photonics Society", "Broadcom", "Arista Networks", "Marvell",
@@ -588,6 +637,10 @@ SOURCE_PRIORITY = {
     "Reuters": 95, "Bloomberg": 94, "Financial Times": 93,
     "The Wall Street Journal": 93, "CNBC": 88, "DigiTimes": 85, "DIGITIMES": 85,
     "GlobeNewswire": 84, "PR Newswire": 82,
+    "3M": 100, "3M News Center": 100, "3M Investor Relations": 100,
+    "Amazon": 100, "Microsoft Source": 100, "대한광통신": 100,
+    "TAIHAN FIBEROPTICS": 100, "TFO America": 100,
+    "데이터투자": 80, "뉴시스": 85, "Newsis": 85,
     "TrendForce": 92, "GMT GLOBAL INC.": 100, "TOYO Automation": 100,
     "Open Compute Project": 100, "OCP": 100, "iPronics": 100,
     "Lumotive": 100, "nEye": 100, "POLATIS": 100, "HUBER+SUHNER": 100,
@@ -1346,6 +1399,162 @@ def structural_story_key(company: str, title: str) -> str | None:
             return "huawei|open-npo|msa-initial-2026-07"
     return None
 
+
+
+# An SEC warrant vesting threshold is not an unconditional purchase order.
+# The Oct-19 3M/Amazon 8-K and TrendForce Oct-19 fiber report, plus Taihan's
+# Feb/June purchase orders, are pre-existing reference events, not fresh alerts.
+NEW_INFRA_PRIMARY_HOSTS = {
+    AMAZON_EBO_COMPANY: {
+        "sec.gov", "investors.3m.com", "3m.com", "news.3m.com",
+        "amazon.com", "aboutamazon.com", "microsoft.com",
+    },
+    FIBER_SPOT_COMPANY: {"trendforce.com", "trendforce.com.tw", "trendforce.cn"},
+    TAIHAN_CABLE_COMPANY: {
+        "taihanfiber.com", "dart.fss.or.kr", "kind.krx.co.kr",
+    },
+}
+NEW_INFRA_TRUSTED_DOMAINS = {
+    "reuters.com", "bloomberg.com", "wsj.com", "barrons.com",
+    "newsis.com", "yonhapnews.co.kr", "yna.co.kr", "etnews.com",
+    "digitimes.com", "datatooza.com", "trendforce.com",
+    "investors.3m.com", "3m.com", "kind.krx.co.kr", "sec.gov",
+}
+
+
+def new_infra_milestone(company: str, title: str) -> tuple[str, str, str] | None:
+    t = html.unescape(title or "").strip()
+    low = t.lower()
+    if company == AMAZON_EBO_COMPANY:
+        if not re.search(r"(?:\b3m\b|3m company|쓰리엠)", t, re.I):
+            return None
+        if re.search(r"\bamazon\b|\baws\b|아마존", t, re.I):
+            if not re.search(r"optical|data ?cent(?:er|re)|connect|warrant|vesting|sales|purchase|"
+                             r"광연결|광통신|주식매수권|데이터센터", t, re.I):
+                return None
+            # A specific 3M/Amazon announcement dated Oct 19, 2026:
+            # 3,162,015 shares at $164.89, 85% contingent on $6bn actual spend.
+            # Use this as history, not a $6bn confirmed backlog.
+            if re.search(r"vest(?:ed|ing)?|warrant|주식매수권", t, re.I):
+                if re.search(r"(?:has|have|fully|now|already).{0,35}vest(?:ed)?|"
+                             r"vest(?:ed)? after (?:actual )?payments?|"
+                             r"(?:paid|spent|achieved|reached).{0,40}"
+                             r"(?:\$|us\$)?\s*\d+(?:\.\d+)?\s*(?:bn|billion)|"
+                             r"권리확정 완료|누적 구매액.{0,10}달성", t, re.I) \
+                   and not re.search(r"would|if |subject to|once |until |"
+                                     r"up to|could|may |conditional|기준|조건", t, re.I):
+                    amount = re.search(r"(?:\$|us\$)\s*\d+(?:\.\d+)?\s*(?:bn|billion|million|m)\b", t, re.I)
+                    suffix = re.sub(r"\s+", "", amount.group(0)).lower() if amount else "undisclosed"
+                    return ("3M·Amazon 구매 실적·권리확정", "실제 누적 구매액·권리확정 공시", "3m|amazon|warrant-vested|" + suffix)
+                return ("3M·Amazon 주식매수권 계약", "2026년 10월 공시, 구매액 기준이지 확정 수주가 아님", "3m|amazon|2026-10-19-warrant-v1")
+            if re.search(r"(?:new|additional|incremental|follow[- ]on|신규|추가).{0,55}"
+                         r"(?:purchase order|contract|delivery|supply agreement|공급계약|발주|납품)|"
+                         r"(?:purchase order|contract|delivery|공급계약|발주).{0,55}"
+                         r"(?:new|additional|incremental|추가)", t, re.I) and not re.search(
+                         r"would|plans?|expected|forecast|proposal|예정|전망|검토",t,re.I):
+                return ("3M·Amazon 광연결 추가 계약·출하", "기존 주식매수권과 분리한 후속 실물 구매·인도", 
+                        "3m|amazon|incremental|" + hashlib.sha256(low.encode()).hexdigest()[:16])
+            return ("3M·Amazon 주식매수권 계약", "기존 2026년 상업관계·행사조건 발표", "3m|amazon|2026-10-19-warrant-v1")
+        if re.search(r"microsoft|azure|마이크로소프트",t,re.I) and re.search(
+            r"expanded beam|EBO|optical ferrule|광연결",t,re.I):
+            if re.search(r"new order|new shipment|additional contract|추가 수주|추가 공급",t,re.I):
+                return ("3M·Microsoft EBO 추가 납품", "확정 후속 구매·실제 출하 변화", 
+                        "3m|microsoft|additional|" + hashlib.sha256(low.encode()).hexdigest()[:16])
+            return ("3M·Microsoft 기존 EBO 협력", "2026년 7월 최초 공식 협력", "3m|microsoft|2026-07-15-ebo")
+        return None
+
+    if company == FIBER_SPOT_COMPANY:
+        if not re.search(r"optical fiber|optic fiber|fibre|fiber preform|光纖|光纤|"
+                         r"광섬유|광케이블|모재", t,re.I):
+            return None
+        if not re.search(r"spot|price|shortage|deficit|supply|capacity|inventory|preform|"
+                         r"현물|가격|공급|재고|수요|短缺|缺口|報價|报价|產能", t,re.I):
+            return None
+        if re.search(r"trendforce|集邦",t,re.I) and (
+            (re.search(r"2028",t) and re.search(r"spot|shortag|缺口|短缺|공급|가격|報價",t,re.I))
+            or re.search(r"(?:180\s*million|1[,.]?8\s*億|1억8천|5(?:\.\d+)?[- ]?fold)",t,re.I)
+        ) and not re.search(r"revis(?:e|ed|ion)|update(?:d)? forecast|raises? (?:its )?forecast|"
+                            r"new (?:report|estimate)|상향|하향|수정 전망",t,re.I):
+            return ("TrendForce 광섬유 현물·공급 부족", "2026년 10월 19일 기존 보고서, 전망과 계약판매단가 구분",
+                    "fiber|trendforce|2026-10-19-spot-shortage")
+        # Do not mislabel a price quote as a confirmed contract ASP.
+        if re.search(r"revis(?:e|ed|ion)|new price|updated? quote|actual spot|"
+                     r"raises? (?:its )?forecast|가격.{0,15}수정|새 현물가격|가격 상승",t,re.I):
+            return ("광섬유 현물가격·공급 전망 변경", "신규 가격·부족량·재고·생산능력 전망 변경",
+                    "fiber|spot-change|" + hashlib.sha256(low.encode()).hexdigest()[:16])
+        if re.search(r"new (?:capacity|preform plant|factory)|new supply agreement|"
+                     r"long[- ]term (?:supply|agreement)|capacity expansion|"
+                     r"신규 설비|증설 확정|장기 공급계약",t,re.I):
+            return ("광섬유·모재 증설·장기계약", "실제 계약·공장·납기·생산능력 변화",
+                    "fiber|capacity-order|" + hashlib.sha256(low.encode()).hexdigest()[:16])
+        return None
+
+    if company == TAIHAN_CABLE_COMPANY:
+        if not re.search(r"대한광통신|TAIHAN FIBEROPTICS|TFO AMERICA",t,re.I):
+            return None
+        if not re.search(r"광케이블|광섬유|optical fiber|fiber[- ]optic|"
+                         r"864\s*심|864[- ]?fiber|초고심수|UHC|AI 데이터센터",t,re.I):
+            return None
+        if re.search(r"2026.{0,15}(?:2월|02월)|1차.{0,40}(?:계약|수주|확보)",t,re.I):
+            return ("대한광통신 미국향 1차 수주", "2026년 2월 기존 공급계약", "taihan|2026-02-first-order")
+        if re.search(r"2차|second|2nd",t,re.I):
+            if re.search(r"실제.{0,10}(?:납품|출하|선적)|공급\s*개시|납품\s*시작|출하\s*개시|"
+                         r"선적\s*개시|began shipment|begins delivering|commenced deliveries",t,re.I) \
+               and not re.search(r"예정|계획|will |expected|목표|전망",t,re.I):
+                return ("대한광통신 미국향 2차 실제 출하", "2차 공급계약과 별도인 실제 제품 인도 개시",
+                        "taihan|2026-10-second-delivery")
+            return ("대한광통신 미국향 2차 계약", "2026년 6월 약 355억원 기존 계약·미인도분 분리",
+                    "taihan|2026-06-second-contract")
+        if re.search(r"3차|third|3rd",t,re.I) and re.search(r"공급계약|수주|purchase order|contract",t,re.I):
+            return ("대한광통신 미국향 3차 수주", "기존 1·2차 공급과 독립된 신규 계약",
+                    "taihan|third-order|" + hashlib.sha256(low.encode()).hexdigest()[:16])
+        if re.search(r"인수검사|검수완료|재주문|추가 수주|매출 인식|acceptance|invoice",t,re.I):
+            return ("대한광통신 미국향 검수·매출", "고객 인수·정산·반복계약 관련 변화",
+                    "taihan|acceptance|" + hashlib.sha256(low.encode()).hexdigest()[:16])
+        return None
+    return None
+
+
+def new_infra_official_source(item: dict) -> bool:
+    company=item.get("company")
+    host=urllib.parse.urlparse(normalize_text(item.get("source_url") or "")).hostname or ""
+    src=normalize_text(item.get("source") or "").lower()
+    return bool(
+        company in NEW_INFRA_PRIMARY_HOSTS
+        and any(host==d or host.endswith("."+d) for d in NEW_INFRA_PRIMARY_HOSTS[company])
+        and (
+            (company==AMAZON_EBO_COMPANY and re.search(r"\b3m\b|amazon|microsoft|sec",src,re.I))
+            or (company==FIBER_SPOT_COMPANY and re.search(r"trendforce|集邦",src,re.I))
+            or (company==TAIHAN_CABLE_COMPANY and re.search(r"대한광통신|taihan|전자공시|금융감독원|kind|krx",src,re.I))
+        )
+    )
+
+
+def new_infra_evidence_verified(item: dict, candidates: list[dict]) -> bool:
+    company=item.get("company")
+    if company not in NEW_OPTICAL_INFRA_SCOPES:
+        return True
+    if new_infra_official_source(item):
+        return True
+    key=new_infra_milestone(company,item.get("title") or "")
+    if not key:
+        return False
+    # Require 2 independent, credible publishers; multiple Google translations
+    # of the same domain do NOT create fake corroboration.
+    domains=set()
+    for other in candidates:
+        if other.get("company")!=company:
+            continue
+        other_event=new_infra_milestone(company,other.get("title") or "")
+        if not other_event or other_event[2]!=key[2]:
+            continue
+        if source_priority(other.get("source") or "")<75:
+            continue
+        host=urllib.parse.urlparse(other.get("source_url") or "").hostname or ""
+        if not any(host==d or host.endswith("."+d) for d in NEW_INFRA_TRUSTED_DOMAINS):
+            continue
+        domains.add(host.removeprefix("www."))
+    return len(domains)>=2
 
 def source_priority(source: str) -> int:
     source = normalize_text(source)
