@@ -7112,6 +7112,245 @@ if FX249_CORRECTION_RECOVERY not in base.QUERIES:
     base.QUERIES.append(FX249_CORRECTION_RECOVERY)
 
 
+
+# Oct-21 Samsung Electro-Mechanics Mexico camera plant and Samsung
+# Electronics RX leadership visit: distinct evidence gates and semantic keys.
+SAMSUNG_ROBOT_OCT21_RECOVERY="DIRECT_SAMSUNG_ROBOT_OCT21_"
+SAMSUNG_ROBOT_OCT21_EVENTS={
+ "sem_mexico": {
+   "group":"sem_mexico_camera_robot",
+   "source":"아시아투데이",
+   "title":"삼성전기 멕시코 카메라 모듈 설비 재개·2026년 말 양산 목표",
+   "link":"https://www.asiatoday.co.kr/kn/view.php?key=20261021010007137",
+   "description":(
+     "2026-10-21 아시아투데이 보도: 삼성전기가 멕시코 케레타로 "
+     "자동차·휴머노이드 카메라 모듈 공장 설비를 구축 중이며 "
+     "2023년 추진 후 일시 보류됐던 투자 재개, 2026년 말 양산 목표. "
+     "삼성전기 관계자는 계획대로 진행 중이라고 설명했다. "
+     "반기보고서 멕시코법인 대여 한도 4,000만달러와 상반기 누적 실행 "
+     "800만달러는 실제 지출·차입과 구분해 확인해야 한다. "
+     "자동차용 카메라 기존 매출·수주와 휴머노이드 공급은 별개다. "
+     "Tesla Optimus V3 부품 공급 준비는 언론 전언이며 V3 확정 고객 "
+     "발주·휴머노이드 첫 출하·양산 직행수율·매출 인식은 미확인이다. "
+     "추가 생산비용은 공장건설·전력·광학·자동화·검사·냉각·안전·소방 "
+     "등으로 나눠 실제 신규시설투자 공시·설비 검수·출하 시 확인한다."
+   ),
+   "stage":"reported_buildout",
+ },
+ "samsung_rx_visit": {
+   "group":"samsung_rx_leadership_visit",
+   "source":"머니투데이",
+   "title":"이재용, 삼성전자 RX사업추진실 현장점검 다음 주 방문 예정 보도",
+   "link":"https://www.mt.co.kr/index.php/industry/2026/10/21/2026102111544397850",
+   "description":(
+     "2026-10-21 머니투데이 단독 보도: 이재용 삼성전자 회장이 "
+     "이르면 다음 주 우면동 RX사업추진실을 방문해 로봇 팔·손 "
+     "정밀조작 시연 및 CES 2027 준비를 점검할 예정이라고 전했다. "
+     "2026년 7월 조직 신설·기존 로봇 기술 검증은 별개 과거 사실이다. "
+     "10월 21일 현재 실제 방문·시연·고객계약·양산·공장배치는 "
+     "확인되지 않았다. 경영진 방문 예정 기사만으로 신규 실적 또는 "
+     "공식 일정 확정 알림을 발생시키지 않는다."
+   ),
+   "stage":"visit_planned_media",
+ },
+}
+_SRO_PRIMARY_SEM={"삼성전기","Samsung Electro-Mechanics"}
+_SRO_PRIMARY_SAMSUNG={"삼성전자","Samsung Electronics"}
+_SRO_SEM_ID=re.compile(r"삼성전기|Samsung\s*Electro[-\s]*Mechanics",re.I)
+_SRO_RX_ID=re.compile(r"삼성전자|Samsung\s*Electronics|이재용",re.I)
+_SRO_MEXICO=re.compile(r"멕시코|Mexico|케레타로|Quer[eé]taro",re.I)
+_SRO_CAMERA=re.compile(r"카메라\s*모듈|camera\s*module",re.I)
+_SRO_RX=re.compile(r"RX사업추진실|우면동.{0,50}(?:로봇|RX)|Robotics\s*eXperience",re.I)
+_SRO_VISIT_DONE=re.compile(
+ r"(?:실제|공식|현장)\s*(?:방문|점검)\s*(?:완료|실시|마쳤)|"
+ r"방문해.{0,50}(?:시연|점검)\s*(?:확인|마쳤|실시)|"
+ r"(?:visited|completed)\s+(?:the\s+)?RX\s+(?:robotics|lab)",re.I)
+_SRO_SEM_ACTUAL=re.compile(
+ r"(?:실제|첫|초도)\s*(?:양산|생산|출하)\s*(?:개시|시작|완료)|"
+ r"(?:양산|생산)\s*(?:시작|개시|가동)\s*(?:공식\s*)?(?:확인|발표)|"
+ r"started\s+production|first\s+shipments",re.I)
+_SRO_SEM_CONTRACT=re.compile(
+ r"(?:Optimus|옵티머스|휴머노이드).{0,80}(?:정식|확정)\s*(?:공급|구매)\s*계약\s*체결|"
+ r"(?:signed|confirmed)\s+(?:Optimus|humanoid)\s+(?:camera\s*)?(?:supply|purchase)\s+contract",re.I)
+
+def _sro_group(text):
+    if _SRO_SEM_ID.search(text) and _SRO_MEXICO.search(text) and _SRO_CAMERA.search(text):
+        return "sem_mexico_camera_robot"
+    if _SRO_RX_ID.search(text) and _SRO_RX.search(text) and re.search(r"이재용|Lee\s*Jae[-\s]*yong",text,re.I):
+        return "samsung_rx_leadership_visit"
+    return ""
+
+def _sro_stage(item,group):
+    text=" ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    source=item.get("source") or ""
+    if group=="sem_mexico_camera_robot":
+        if source in _SRO_PRIMARY_SEM and _SRO_SEM_CONTRACT.search(text) and not re.search(r"검토|논의|준비|예정|미확정",text,re.I):
+            return "official_robot_contract"
+        if source in _SRO_PRIMARY_SEM and _SRO_SEM_ACTUAL.search(text) and not re.search(r"예정|목표|계획|전망|추진",text,re.I):
+            return "official_production"
+        if source=="아시아투데이" and re.search(r"설비.{0,40}구축|투자.{0,25}재개|양산.{0,20}목표",text,re.I):
+            return "reported_buildout"
+        return "background"
+    if group=="samsung_rx_leadership_visit":
+        if source in _SRO_PRIMARY_SAMSUNG and _SRO_VISIT_DONE.search(text) and not re.search(r"예정|전망|계획|이르면",text,re.I):
+            return "official_visit_done"
+        return "visit_planned_media"
+    return "background"
+
+def _sro_recovery(which):
+    # Single historical baseline. No fabricated precise time.
+    if base.NOW.astimezone(base.KST).date()>dt.date(2026,10,26):
+        return []
+    x=SAMSUNG_ROBOT_OCT21_EVENTS[which]
+    return [{
+      "title":x["title"],"description":x["description"],"link":x["link"],
+      "source":x["source"],"published":None,"direct_recovery":True,
+      "sro_event":which,"sro_expected":x["stage"],
+    }]
+
+_sro_prev_query=base.query_news
+_sro_prev_group=base.topic_group
+_sro_prev_score=base.score
+_sro_prev_category=base.category
+_sro_prev_meaning=base.meaning
+_sro_prev_risk=base.risk
+_sro_prev_verify=base.verification
+_sro_prev_title=base.clean_title
+_sro_prev_tag=base.tag_for
+_sro_prev_key=base.key
+_sro_prev_select=base.select_diverse
+
+def _sro_query(q):
+    for n in SAMSUNG_ROBOT_OCT21_EVENTS:
+        if q==SAMSUNG_ROBOT_OCT21_RECOVERY+n:
+            return _sro_recovery(n)
+    return _sro_prev_query(q)
+
+def _sro_group_wrap(text):
+    return _sro_group(text) or _sro_prev_group(text)
+
+def _sro_score(item):
+    text=" ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    g=_sro_group(text)
+    if not g:return _sro_prev_score(item)
+    stage=_sro_stage(item,g)
+    if item.get("sro_expected") and stage!=item["sro_expected"]:
+        return 0
+    return {
+       "reported_buildout":50,
+       "official_production":78,
+       "official_robot_contract":86,
+       "official_visit_done":66,
+       "visit_planned_media":0,
+       "background":0
+    }.get(stage,0)
+
+def _sro_category(text,group):
+    labels={
+      "sem_mexico_camera_robot":"삼성전기 · 멕시코 카메라 생산설비·로봇 공급 준비 보도",
+      "samsung_rx_leadership_visit":"삼성전자 · RX사업추진실 방문 예정 보도",
+    }
+    return labels.get(group,_sro_prev_category(text,group))
+
+def _sro_meaning(cat):
+    if cat.startswith("삼성전기 · 멕시코"):
+        return (
+          "2023년 추진·투자 보류 이후 멕시코 카메라 모듈 공장 설비 구축 "
+          "재개, 2026년 말 양산 목표가 신규 단계입니다. 자동차용 매출 "
+          "확대 가능성과 Optimus V3 등 휴머노이드용 초도 공급 기대는 "
+          "분리합니다. 반기보고서상 4,000만달러 법인 대여 한도와 "
+          "상반기 누적 800만달러 실행은 공장 전체 설비투자 확정액과 "
+          "다릅니다. 휴머노이드 고객 주문·초도 출하·인식 매출은 미확인입니다."
+        )
+    if cat.startswith("삼성전자 · RX사업추진실"):
+        return (
+          "이재용 회장의 RX 방문은 10/21 현재 '다음 주 예정'이라는 "
+          "언론 보도이며 실제 현장 점검과 로봇 손 정밀작업 시연은 "
+          "향후 회사 발표·현장 확인이 필요한 별도 단계입니다. "
+          "CES 2027은 기존 개발 시간표로 신규 수주·양산이 아닙니다."
+        )
+    return _sro_prev_meaning(cat)
+
+def _sro_risk(cat):
+    if cat.startswith("삼성전기 · 멕시코"):
+        return (
+         "가장 현실적인 실패 경로는 연말 설비 시운전·카메라 캘리브레이션·"
+         "고온 동작 검사·고객 품질승인·수율 확보가 늦어지는 경우입니다. "
+         "6~12개월 첫 출하 여부와 광학 검사시간·재작업률·불량률, "
+         "환율·관세·원산지 조건을 추적합니다. "
+         "Tesla 자동차 카메라 계약과 Optimus V3 직접 로봇 계약은 다른 사건입니다."
+        )
+    if cat.startswith("삼성전자 · RX사업추진실"):
+        return (
+          "경영진 현장 방문이 실현되어도 손 정밀조작 성공률·반복 시연·"
+          "현장 안전인증·가동률·개당 제조원가 개선과 다릅니다. "
+          "6~12개월 실제 방문·시연·CES 공개와 고객 유상 발주를 분리합니다."
+        )
+    return _sro_prev_risk(cat)
+
+def _sro_verify(item,group,text):
+    if group=="sem_mexico_camera_robot":
+        return (
+          "아시아투데이 10/21 업계 취재·회사 관계자 진술, "
+          "삼성전기 공식 전장 카메라 제품 및 2분기 실적자료 교차확인. "
+          "멕시코 대여 한도·누적 실행액은 기사상 반기보고서 인용, "
+          "공장 총투자·Optimus 직접 공급·현지 양산 완료는 미확인."
+        )
+    if group=="samsung_rx_leadership_visit":
+        return (
+          "머니투데이 10/21 방문 예정 취재 · 삼성전자 7월 RX 조직과 "
+          "10/19 개발현황 보도 교차확인 · 방문 완료 공식자료 미확인."
+        )
+    return _sro_prev_verify(item,group,text)
+
+def _sro_title(title,source):
+    return title if "삼성전기 멕시코 카메라" in title else _sro_prev_title(title,source)
+
+def _sro_tag(group):
+    if group=="sem_mexico_camera_robot":return "삼성전기 멕시코 카메라"
+    if group=="samsung_rx_leadership_visit":return "삼성전자 RX 점검"
+    return _sro_prev_tag(group)
+
+def _sro_key(item):
+    text=" ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    g=_sro_group(text)
+    if not g:return _sro_prev_key(item)
+    stage=_sro_stage(item,g)
+    return hashlib.sha256(
+       f"samsung-robot|20261021|{g}|{stage}".encode()
+    ).hexdigest()
+
+def _sro_select(items,seen,force,limit):
+    chosen=_sro_prev_select(items,seen,force,limit)
+    candidates=items if force else [x for x in items if x.get("key") not in seen]
+    hit=next((x for x in candidates if x.get("group")=="sem_mexico_camera_robot"
+              and x.get("score",0)>=11),None)
+    if hit and not any(x.get("key")==hit.get("key") for x in chosen):
+        chosen=([hit,*chosen] if len(chosen)<limit else [hit,*chosen[:-1]])
+    return chosen
+
+base.query_news=_sro_query
+base.topic_group=_sro_group_wrap
+base.score=_sro_score
+base.category=_sro_category
+base.meaning=_sro_meaning
+base.risk=_sro_risk
+base.verification=_sro_verify
+base.clean_title=_sro_title
+base.tag_for=_sro_tag
+base.key=_sro_key
+base.select_diverse=_sro_select
+for _q in (
+ SAMSUNG_ROBOT_OCT21_RECOVERY+"sem_mexico",
+ SAMSUNG_ROBOT_OCT21_RECOVERY+"samsung_rx_visit",
+ '(삼성전기 OR Samsung Electro-Mechanics) (멕시코 OR Queretaro) '
+ '(카메라모듈 OR camera module) (공장 양산 OR 설비 재개 OR 공식 출하 OR 생산 개시)',
+ '(이재용 OR Lee Jae-yong) (RX사업추진실 OR 서울R&D캠퍼스) '
+ '(현장 방문 완료 OR 정밀 작업 시연 OR 공식 일정)',
+):
+    if _q not in base.QUERIES:base.QUERIES.append(_q)
+
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()
