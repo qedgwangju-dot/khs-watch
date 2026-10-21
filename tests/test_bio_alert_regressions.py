@@ -294,6 +294,18 @@ class BioAlertRegressionTests(unittest.TestCase):
         }, new))
         self.assertIn("CISPLATIN_ALL", qlex_watch.EU_MIBC_REGULATORY_EVENT_ID)
 
+    def test_qlex_eu_mibc_brand_identifiers_pass_strict_sender_without_external_translation(self):
+        # 공식 제품·임상 식별자는 보존하고, 일반 영어 설명어 차단 정책은 유지한다.
+        from bio_korean_guard_strict_v2 import ensure_korean_text
+        from qlex_telegram_send import normalize_alert_language
+        report = "\n".join(qlex_watch.eu_mibc_regulatory_lines())
+        with patch.object(basic_guard, "translate_to_korean",
+                          side_effect=AssertionError("외부 번역 요청 금지 — 문구는 이미 한국어")):
+            rendered = ensure_korean_text(normalize_alert_language(report))
+        for ident in ("Padcev", "KEYNOTE-B15", "EV-304", "MIBC", "EP622"):
+            self.assertIn(ident, rendered)
+        self.assertIn("**2026년 10월 21일**", rendered)
+
     def test_qlex_eu_mibc_alert_contains_bold_dated_legal_gate(self):
         rendered = qlex_sender.render_html("\n".join(qlex_watch.eu_mibc_regulatory_lines()))
         for date in ("2026년 6월 24일", "2026년 9월 17일", "2026년 10월 7일", "2026년 10월 21일"):

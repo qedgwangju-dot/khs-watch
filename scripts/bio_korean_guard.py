@@ -12,7 +12,8 @@ UA = 'Mozilla/5.0 (compatible; BioKoreanGuard/1.0)'
 ALLOWED_IDENTIFIERS = (
     'Enhertu', 'Jemperli', 'dostarlimab', 'trastuzumab deruxtecan', 'pertuzumab',
     'Intismeran', 'Intismeran autogene', 'pembrolizumab', 'berahyaluronidase alfa',
-    'KEYTRUDA', 'QLEX', 'ALT-B4', 'Hybrozyme', 'GSK', 'Merck', 'Moderna', 'MRK',
+    'KEYTRUDA', 'QLEX', 'ALT-B4', 'Hybrozyme', 'Padcev', 'KEYNOTE-B15', 'EV-304',
+    'MIBC', 'EP622', 'Halozyme', 'MSD', 'GSK', 'Merck', 'Moderna', 'MRK',
     'AstraZeneca', 'Daiichi Sankyo', 'Tesaro', 'FDA', 'EMA', 'EU', 'EC', 'PDUFA',
     'CHMP', 'Project Orbis', 'ClinicalTrials.gov', 'DESTINY-Breast09', 'DESTINY-Breast05',
     'AZUR-1', 'AZUR-2', 'AZUR-4', 'DOMENICA', 'JADE', 'SAPPHIRE', 'INTerpath-001', 'INTerpath-014',
