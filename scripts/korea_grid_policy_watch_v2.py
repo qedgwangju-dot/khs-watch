@@ -14,6 +14,11 @@ import requests
 from bs4 import BeautifulSoup
 
 try:
+    from alert_timeline_dates import extract_original_dates, korean_date as source_korean_date, parse_timestamp, timeline_lines
+except ModuleNotFoundError:
+    from scripts.alert_timeline_dates import extract_original_dates, korean_date as source_korean_date, parse_timestamp, timeline_lines
+
+try:
     import korea_grid_policy_watch as base
 except ModuleNotFoundError:
     from scripts import korea_grid_policy_watch as base
@@ -90,17 +95,10 @@ def resolve_google_news_url(url: str) -> str:
 
 
 def extract_official_date(html_text: str) -> str:
-    soup = BeautifulSoup(html_text, "html.parser")
-    text = " ".join(soup.get_text(" ", strip=True).split())
-    patterns = (
-        r"(?:작성일|작성일자|등록일|등록일자|게시일|공고일)\s*[:：]?\s*(20\d{2}[.\-/]\d{1,2}[.\-/]\d{1,2})",
-        r"(20\d{2}[.\-/]\d{1,2}[.\-/]\d{1,2})",
-    )
-    for pattern in patterns:
-        match = re.search(pattern, text)
-        if match:
-            return match.group(1)
-    return ""
+    """게시일 라벨·원문 메타정보에 없는 날짜는 발표일로 추정하지 않는다."""
+    evidence = extract_original_dates(html_text)
+    parsed = parse_timestamp(evidence.get("published", ""))
+    return parsed.strftime("%Y-%m-%d") if parsed is not None else ""
 
 
 def article_text(html_text: str) -> str:
@@ -143,9 +141,15 @@ def enrich_item(item: dict[str, Any], session: requests.Session) -> dict[str, An
             if response.url:
                 result["url"] = response.url
                 result["source"] = normalize_source_from_url(response.url, str(result.get("source", "")))
+            evidence = extract_original_dates(response.text)
+            result["timeline_evidence"] = evidence
+            result["rss_published"] = str(result.get("published") or "")
             official_date = extract_official_date(response.text)
             if official_date:
                 result["published"] = official_date
+                result["date_verified_from_original"] = True
+            else:
+                result["date_verified_from_original"] = False
             result["article_text"] = article_text(response.text)
         except requests.RequestException as exc:
             result["enrich_error"] = type(exc).__name__
@@ -275,13 +279,27 @@ def render_report(items: list[dict[str, Any]], errors: list[str]) -> str:
     lines = ["<b>전력망 정책·발주 새 공식 변화</b>"]
     for index, item in enumerate(items[:6], start=1):
         category = str(item.get("category") or "전력망 정책")
-        published = base.format_korean_date(str(item.get("published") or ""))
+        evidence = dict(item.get("timeline_evidence") or {})
+        # 공식 목록 자체에서 읽은 날짜는 증거가 된다. RSS 날짜는 증거가 아니다.
+        url = str(item.get("url") or "")
+        source_name = str(item.get("source") or "")
+        if not evidence.get("published") and "news.google.com" not in url and "공식 검색" not in source_name:
+            if parse_timestamp(str(item.get("published") or "")):
+                evidence["published"] = str(item.get("published"))
+        rss_date = str(item.get("rss_published") or item.get("published") or "")
+        chronology = timeline_lines(evidence, rss_published=rss_date)
+        if evidence.get("published") and rss_date and source_korean_date(evidence["published"]) != source_korean_date(rss_date):
+            chronology.append(f"검색 노출일(게시일과 다름)  {source_korean_date(rss_date)}")
+        chronology_html = [
+            f"<b>{html.escape(line.split('  ', 1)[0])}</b>  {html.escape(line.split('  ', 1)[-1])}"
+            for line in chronology
+        ]
         title = html.escape(base.normalize(str(item.get("title") or "")))
         lines.extend(
             [
                 f"\n<b>{index}. {title}</b>",
                 f"<b>단계</b>  {html.escape(category)}",
-                f"<b>발표일</b>  {published}",
+                *chronology_html,
                 f"<b>출처</b>  {_source_link(item)}",
                 "",
             ]
