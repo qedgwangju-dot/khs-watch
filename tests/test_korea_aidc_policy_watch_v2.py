@@ -88,6 +88,23 @@ class AIDCSemanticRegression(unittest.TestCase):
         a["article_body"] = BODY + " 신청 67.4GW, 데이터센터 62.8GW, 신청 비중 93%."
         self.assertTrue(v2.verify_change(a)[0])
 
+    def test_timeline_does_not_call_rss_reindex_a_publication(self):
+        a = row("AIDC 특별법 하위법령 논의")
+        a["event_key"] = "aidc|subordinate-rules-design"
+        a["timeline_evidence"] = {
+            "published": "2026-09-09T09:00:00+09:00",
+            "modified": "2026-09-10T09:00:00+09:00",
+            "effective": "2027-03-10T00:00:00+09:00",
+            "published_source": "원문 메타정보",
+        }
+        a["rss_published"] = "Wed, 21 Oct 2026 07:00:00 GMT"
+        rendered = v2.render(a)
+        self.assertIn("원문 게시일</b>  2026년 9월 9일", rendered)
+        self.assertIn("원문 수정일</b>  2026년 9월 10일", rendered)
+        self.assertIn("법령 시행일</b>  2027년 3월 10일", rendered)
+        self.assertIn("검색 노출일(게시일과 다름)", rendered)
+        self.assertNotIn("<b>발표일</b>  2026년 10월 21일", rendered)
+
     def test_project_plan_does_not_become_automatic_groundbreaking(self):
         a = row("SGC에너지 군산 AIDC 최대 300MW 계획")
         a["event_key"] = v2.semantic_key(a)
