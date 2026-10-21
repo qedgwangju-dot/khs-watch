@@ -69,6 +69,24 @@ def main():
     from space_launch_bottleneck_watch import PENDING_STATE_PATH,request_bytes,fetch_usdkrw,NOW,KST
     pending=json.loads(PENDING_STATE_PATH.read_text(encoding='utf-8'))
     notes,errors=correction_notices(pending['seen'],request_bytes,fetch_usdkrw())
+    # One-time factual correction verified against the issuer's 2026-10-14
+    # SEC 8-K and its investor announcement at code-review time.
+    # SEC blocks some GitHub-hosted runners with HTTP 403; that access failure
+    # must not permanently suppress a correction to an already-sent false label.
+    neutron_key="audit:20261017:neutron_2027"
+    if neutron_key not in pending["seen"] and not any(k==neutron_key for k,_ in notes):
+        notes.append((
+            neutron_key,
+            "[개발 지연·공정 병목] Rocket Lab Neutron 2027년 첫 발사로 연기\n"
+            "• 2026년 10월 14일 회사 발표 및 미국 SEC 8-K 공시로 확정. 10월 17일 알림의 '[계약]' 분류를 정정합니다.\n"
+            "• 주요 병목: 1단 탄소복합재 추진제 탱크 구조부품 품질 문제와 제조·검증 재작업.\n"
+            "• 매출 연결: Neutron 상용발사 개시 지연 가능성. Electron의 기존 발사계약을 취소한 발표가 아닙니다.\n"
+            "• 확인 지표: 탱크 재제작·시험, 재검증 결과, 회사의 첫 발사 새 일정 발표.\n"
+            "• 원문: https://www.sec.gov/Archives/edgar/data/1819994/000181999426000067/rklb-20261014.htm\n"
+            "• 원문: https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-provides-update-neutron-development-and-adjusts"
+        ))
+        print("space_launch_neutron_manual_primary_source_correction=queued")
+
     print('space_launch_correction_sources='+str(len(notes))+'; errors='+str(errors))
     if notes:
         header="🚀 우주 발사 병목 웹감시\n기준: "+NOW.astimezone(KST).strftime("%Y-%m-%d %H:%M KST")
