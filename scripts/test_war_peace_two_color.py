@@ -204,6 +204,8 @@ class TwoColorTests(unittest.TestCase):
         for suffix in ('…러시아 공습했다', '…미국 미사일 발사'):
             row = {'title_original': '네타냐후, 이란 대규모 폭격하려다 트럼프 반대에 보류' + suffix}
             self.assertEqual(presentation.direction(stage, row), 'red')
+        row = {'title_original': '네타냐후, 이란 공습 계획 보류…러시아 공습 재개 추진'}
+        self.assertEqual(presentation.direction(stage, row), 'red')
 
     def test_attack_plan_denial_and_negated_hold(self):
         row = {'title_original': '네타냐후, 이란 공습 재개 추진 부인'}

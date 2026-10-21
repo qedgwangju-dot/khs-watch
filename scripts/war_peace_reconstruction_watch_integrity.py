@@ -273,11 +273,12 @@ def _attack_plan_spans(title):
 
 def _attack_plan_status(title):
     spans = _attack_plan_spans(title)
+    if any(span.lastgroup == 'planned' and not re.match(
+            r'\s*(?:부인|사실무근|하지\s*않|안\s*했)', title[span.end():]) for span in spans):
+        return 'planned'
     if any(span.lastgroup == 'held' for span in spans):
         return 'held'
-    if spans and all(re.match(r'\s*(?:부인|사실무근|하지\s*않|안\s*했)', title[span.end():]) for span in spans):
-        return 'denied'
-    return 'planned' if spans else None
+    return 'denied' if spans else None
 
 
 def _meeting_participation_request(title):
