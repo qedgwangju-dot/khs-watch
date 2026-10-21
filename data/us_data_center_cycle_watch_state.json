@@ -11,46 +11,50 @@
     "release_schedule_url": "https://www.census.gov/construction/c30/release.html",
     "reported_mom_pct": 7.5,
     "reported_yoy_pct": 73.2,
-    "retrieved_at_utc": "2026-10-01T15:24:15.170598+00:00",
+    "retrieved_at_utc": "2026-10-21T21:58:53.250005+00:00",
     "source": "U.S. Census Bureau Construction Spending",
     "url": "https://www.census.gov/construction/c30/pdf/privsa.pdf",
     "year_ago_saar_musd": 49052
   },
   "dodge": {
-    "article_sha256": "f95051a5c7204276a16b2471047968b6f885821537ce9a28a39e977dd6b23e31",
-    "commercial_12m_change_pct": 48.6,
-    "commercial_change_pct": -37.6,
+    "article_sha256": "d0ffb7cd3385a9351d7751079862fb9e6f36f6e3c3a48c980039ff3b79ee2633",
+    "commercial_12m_change_pct": 47.7,
+    "commercial_change_pct": -18.4,
     "data_center_mention_count": 4,
     "data_center_projects": [
       {
-        "amount_usd_bn": 3.5,
-        "label_ko": "아마존 스택 블랜처드 스테이트 라인 데이터센터(780메가와트)"
+        "amount_usd_bn": 4.6,
+        "label_ko": "South Valley Data Center"
       },
       {
-        "amount_usd_bn": 3.2,
-        "label_ko": "클라크스빌 하이퍼스케일 데이터센터"
+        "amount_usd_bn": 4.3,
+        "label_ko": "Beacon Point Data Center"
+      },
+      {
+        "amount_usd_bn": 2.0,
+        "label_ko": "Vantage V41 Data Center Campus"
       }
     ],
     "index_url": "https://www.construction.com/category/total-construction-starts/",
-    "nonresidential_change_pct": -32.0,
-    "office_dc_change_pct": -31.3,
-    "published": "2026-09-21T15:21:49+00:00",
-    "retrieved_at_utc": "2026-10-01T15:24:15.917402+00:00",
+    "nonresidential_change_pct": -6.3,
+    "office_dc_change_pct": null,
+    "published": "2026-10-21T19:05:15+00:00",
+    "retrieved_at_utc": "2026-10-21T21:58:54.015129+00:00",
     "source": "Dodge Construction Network Total Construction Starts",
-    "title": "Construction Starts Fall Back 24 8 In August",
-    "total_change_pct": -24.8,
-    "total_starts_saar_usd_bn": 1340.0,
-    "url": "https://www.construction.com/construction-starts-fall-back-24-8-in-august/",
-    "utility_change_pct": -11.4,
-    "utility_ytd_change_pct": 69.9
+    "title": "Construction Starts Recede 1 5 In September",
+    "total_change_pct": -1.5,
+    "total_starts_saar_usd_bn": 1330.0,
+    "url": "https://www.construction.com/construction-starts-recede-1-5-in-september/",
+    "utility_change_pct": null,
+    "utility_ytd_change_pct": 70.1
   },
   "format_version": 6,
   "fx": {
-    "basis_kst": "2026-10-01 일일 기준 · ECB/Frankfurter · 조회 2026-10-02 00:24 KST · 보조 API 2026-10-01 · 차이 0.40% · 일중 기준시각 차이 가능",
+    "basis_kst": "2026-10-21 일일 기준 · ECB/Frankfurter · 조회 2026-10-22 06:58 KST · 보조 API 2026-10-21 · 차이 0.12% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "source_type": "교차검증 일일 기준환율",
-    "usdkrw": 1361.27
+    "usdkrw": 1325.57
   },
-  "updated_at_utc": "2026-10-01T15:24:14.406704+00:00",
+  "updated_at_utc": "2026-10-21T21:58:52.408825+00:00",
   "watch": "US data center construction starts vs spending"
 }
