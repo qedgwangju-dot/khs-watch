@@ -16,6 +16,8 @@ on:
       - ".github/workflows/korea-grid-policy-watch.yml"
       - "scripts/korea_grid_policy_watch.py"
       - "scripts/korea_grid_policy_watch_v2.py"
+      - "scripts/alert_timeline_dates.py"
+      - "tests/test_alert_timeline_dates.py"
       - "tests/test_korea_grid_policy_watch.py"
       - "tests/test_korea_grid_policy_watch_v2.py"
       - ".github/korea-grid-policy-trigger"
@@ -49,11 +51,12 @@ jobs:
 
       - name: 문법·단위 테스트
         run: |
-          python -m compileall -q scripts/korea_grid_policy_watch.py scripts/korea_grid_policy_watch_v2.py
-          pytest -q tests/test_korea_grid_policy_watch.py tests/test_korea_grid_policy_watch_v2.py
+          python -m compileall -q scripts/korea_grid_policy_watch.py scripts/korea_grid_policy_watch_v2.py scripts/alert_timeline_dates.py
+          pytest -q tests/test_korea_grid_policy_watch.py tests/test_korea_grid_policy_watch_v2.py tests/test_alert_timeline_dates.py
 
       - name: 전력망 정책·발주 공식 원문 확인
         id: grid
+        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[grid-route-test]')
         shell: bash
         env:
           FORCE_INPUT: ${{ inputs.force_notify || false }}
