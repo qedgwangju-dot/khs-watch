@@ -4584,6 +4584,25 @@ def key(item: dict) -> str:
     if _catl_intilion_oct20_reprint(item):
         return hashlib.sha256(b'catl-intilion|sodium|dach|20261009|3gwh-target|five-years').hexdigest()
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    # Multi-company media recaps of the SAME North American 30MWh sample
+    # test plan may contain an unrelated later "mass production started"
+    # verb. Canonicalize the unconfirmed LGES plan BEFORE nested supplier
+    # wrappers compute news-dependent keys. A subsequent LGES primary
+    # confirmed start or approval keeps its own upgraded event identity.
+    title = item.get('title','')
+    source = item.get('source') or ''
+    if (topic_group(text) == 'sodium_ion_battery'
+            and source not in {'LG에너지솔루션','LG Energy Solution'}
+            and re.search(r'LG에너지솔루션|LG\s*Energy\s*Solution',text,re.I)
+            and re.search(r'30\s*MWh',text,re.I)
+            and re.search(r'소듐이온|나트륨이온|sodium[-\s]*ion',text,re.I)
+            and re.search(r'ESS',text,re.I)
+            and re.search(r'샘플|sample|테스트|test',text,re.I)
+            and re.search(r'내년|2027|계획|예정|목표|추진',text,re.I)
+            and not re.search(r'CATL|HyperStrong|SK온|삼성SDI',title,re.I)):
+        return hashlib.sha256(
+            b'sodium|lges|north-america|30mwh|sample-plan-2027h1'
+        ).hexdigest()
     if topic_group(text) == 'alert_quality_238':
         return hashlib.sha256(
             b'robotis|telegram238|20261019|item1-stock-reaction-correction'
