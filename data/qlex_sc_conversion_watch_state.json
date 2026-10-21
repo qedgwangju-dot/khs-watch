@@ -279,7 +279,7 @@
   "last_conversion": 10.5,
   "last_qlex_sales_m": 463.0,
   "initialized_at_kst": "2026-08-09T13:58:10+09:00",
-  "last_check_kst": "2026-10-21T22:12:30+09:00",
+  "last_check_kst": "2026-10-21T22:32:01+09:00",
   "dedupe_version": 2,
   "seen_fingerprints": [
     "00235a78501b3743d91bb964",
@@ -1365,5 +1365,10 @@
     "fdd425ff875f5817e2861289",
     "feda85b22fe5be768d0756a6",
     "ff088818659c46b260c51b26"
-  ]
+  ],
+  "seen_regulatory_events": [
+    "EC|KEYTRUDA_SC+PADCEV|MIBC|CISPLATIN_ALL|2026-10-21"
+  ],
+  "last_regulatory_source_url": "https://www.merck.com/news/european-commission-approves-keytruda-pembrolizumab-plus-padcev-enfortumab-vedotin-ejfv-as-perioperative-treatment-for-adults-with-resectable-muscle-invasive-bladder-cancer-mibc/",
+  "last_regulatory_release_kst": "2026-10-21T19:45:00+09:00"
 }
