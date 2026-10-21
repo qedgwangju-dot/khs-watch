@@ -5663,8 +5663,8 @@ assert ck != k,"Chinese contracted volume and Korean test plan must have differe
 assert "SAMSUNG_ROBOT_OCT21_RECOVERY=" in watcher.__dict__.get(
     "_watcher_source", Path(__file__).with_name("physical_ai_watch_airan_guard.py").read_text()
 )
-sem_recovery=watcher.query_news(watcher.SAMSUNG_ROBOT_OCT21_RECOVERY+"sem_mexico")
-rx_recovery=watcher.query_news(watcher.SAMSUNG_ROBOT_OCT21_RECOVERY+"samsung_rx_visit")
+sem_recovery=base.query_news(watcher.SAMSUNG_ROBOT_OCT21_RECOVERY+"sem_mexico")
+rx_recovery=base.query_news(watcher.SAMSUNG_ROBOT_OCT21_RECOVERY+"samsung_rx_visit")
 if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,26):
     assert len(sem_recovery)==1 and len(rx_recovery)==1
     sem=sem_recovery[0]
