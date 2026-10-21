@@ -1,0 +1,337 @@
+{
+  "provenance": {
+    "run_id": 39547155058,
+    "actual_code_sha": "3df59681949ca422ce01387ab9b1fa711fc9fa2c",
+    "queried_at_kst": "2026-10-21T14:01:56.333411+09:00",
+    "artifact_id": 12322115957,
+    "artifact_zip_sha256": "83317840e88481f40d8ec7a891322b7fe67efe4c49f6336968ffe93213ead002",
+    "alert_sha256": "87b48a9628459feff3b11fbe53658862010fb8ee439fe4c335f4c473ba30ce00",
+    "operating_dry_run": true,
+    "actual_delivery": false,
+    "full_operating_article_bodies_preserved": false,
+    "later_HTTP_bodies_inserted": false
+  },
+  "articles": [
+    {
+      "id": "877f9a1da6e73bf7e037",
+      "title_original": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 - 한겨레",
+      "title_ko": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 - 한겨레",
+      "description": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나 한겨레",
+      "source": "한겨레",
+      "source_url": "https://www.hani.co.kr",
+      "link": "https://www.hani.co.kr/arti/international/arabafrica/1283257.html",
+      "discovery_url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9LQUJzWWQyc1VueVlIdEhjMHhJZThJMlpjWVdNYTRxNXFUZXlUdC1CcjMxWDJRX2dMLUtMYXk0dmdxV2ZVQXVPbEFwQXpkMUJVNUNKa2NqbkswUmJfaEwxcjQ3V2hkLWxfd1l2MUJIRndPcVk?oc=5",
+      "resolved_url": "https://www.hani.co.kr/arti/international/arabafrica/1283257.html",
+      "published": "Tue, 20 Oct 2026 16:21:00 +0900",
+      "rss_published": "Wed, 21 Oct 2026 02:14:52 GMT",
+      "source_metadata": {
+        "title": "미 국방장관, 네타냐후와 비밀 회동…선거 후 ‘이란 폭격설’ 힘 얻나",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-20T16:21:00+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-20T16:21:00+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-20T16:21:00+09:00"
+          }
+        ]
+      },
+      "score": 10,
+      "tags": [
+        "군사·안보 해설"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "non_military_kind": "military_analysis",
+      "render_withheld": "origin_publication_stale_or_future",
+      "publication_basis": "publisher",
+      "rendered": false,
+      "article_text_sha256": "56f2680557914ebf39012503c7af31f584d966f0110b4d8092ddcbce108e0271"
+    },
+    {
+      "id": "688f952678c32acb97f5",
+      "title_original": "트럼프 특사, 오늘 푸틴과 회담 추진…우크라이나 종전 협상 분수령 - 뉴스워커",
+      "title_ko": "트럼프 특사, 오늘 푸틴과 회담 추진…우크라이나 종전 협상 분수령 - 뉴스워커",
+      "description": "트럼프 특사, 오늘 푸틴과 회담 추진…우크라이나 종전 협상 분수령 뉴스워커",
+      "source": "뉴스워커",
+      "source_url": "https://www.newsworker.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBVakQxX255OUhKWWhlWHpFdktfamxSVnJmSW1uUld0dWJwNWpud2tndDBnTVNmT2ozaVNOMUpWX05yWVRIRkNWZGhheXFPQTJiUk1JWWJTZDc1bkZYVmZwVWpEOE54UDNLMWZ0aENLWHHSAXRBVV95cUxPVkdZOFA5eWpaY2MzN01fdFROWVZiWGxOY0pLTzF1NmltNFh2eURUbDU2eG5PWE9BQXpNUWVsOVlIc0QwRjd6aHhzaVBjbmlHcnlzM0FTYVc1cHNGOWJVMG9SMDRPaVpxZVdZQUhtWjNOZUdNOQ?oc=5",
+      "published": "Wed, 21 Oct 2026 02:23:21 GMT",
+      "score": 7,
+      "tags": [
+        "외교 접촉 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_contact",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "9dc2c6f2254dd75c7b9a",
+      "title_original": "걸프산 원유 수출 공급량 이란 전쟁 이전 수준 회복",
+      "title_ko": "걸프산 원유 수출 공급량 이란 전쟁 이전 수준 회복",
+      "description": "[파이낸셜뉴스] 미국의 보호 아래 임시로 구축된 해상 수송 체계가 작동하면서, 이란의 격렬한 공격 속에서도 페르시아만 일대의 원유 수출량이 전쟁 이전 수준을 넘어선 것으로 나타났다. 20일(현지시간) 월스트리트저널(WSJ)은 선박 추적업체 케플러의 통계에서 지난 18일로 끝난 한 주간 호르무즈 해협 통과 물량과 우회 경로를 포함한 중동 지역의 일평균 원유 유출량은 2400만배럴을 기록했으며 이는 전쟁 전 수치인 2300만배럴을 상회하는 규모라고 보도했다. 호르무즈 해협을 직접 통과하거나 오만만 인근 해상에서 환적된 물량 또한 일평균 약 1400만배럴로, 전쟁 전의 82% 수준까지 회복했다. 이란 혁명수비대(IRGC)가 드론, 미사일, 소형 어선을 활용한 게릴라식 공격을 지속하고 있으나 수송망을 차단하기엔 역부족인 모습이다. 사우디아라비",
+      "source": "파이낸셜뉴스",
+      "link": "https://www.fnnews.com/news/202610211105352998",
+      "discovery_url": "https://www.fnnews.com/news/202610211105352998",
+      "resolved_url": "https://www.fnnews.com/news/202610211105352998",
+      "published": "Wed, 21 Oct 2026 11:33:54 +0900",
+      "rss_published": "Wed,21 Oct 2026 11:33:54 +0900",
+      "source_metadata": {
+        "title": "걸프산 원유 수출 공급량 이란 전쟁 이전 수준 회복",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-21T11:33:54+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-21T11:33:54+09:00"
+          },
+          {
+            "field": "dd:published_time",
+            "at_kst": "2026-10-21T11:33:54+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-21T11:33:54+09:00"
+          },
+          {
+            "field": "visible:입력",
+            "at_kst": "2026-10-21T11:33:00+09:00"
+          }
+        ]
+      },
+      "score": 6,
+      "tags": [
+        "원유 공급·가격 보도"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "oil_market",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "04f4520deb76e31d9fa6fbf21573f18fde2d19aeaeab306e89c314d83e598fa8"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29889.75,
+      "pct": 0.7228245760355856,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "13:51 KST",
+      "observed_at_kst": "2026-10-21T13:51:55+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 29675.25,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 29675.25,
+        "chartPreviousClose": 29675.25,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792558315,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792555200,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 98.98999786376953,
+      "pct": 1.196072238570367,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "13:51 KST",
+      "observed_at_kst": "2026-10-21T13:51:56+09:00",
+      "symbol": "CL=F",
+      "previous_close": 97.82,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 97.82,
+        "chartPreviousClose": 97.82,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792558316,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792555200,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 110.26000213623047,
+      "pct": 1.35122909847456,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "13:50 KST",
+      "observed_at_kst": "2026-10-21T13:50:38+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 108.79,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 108.79,
+        "chartPreviousClose": 108.79,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792558238,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792641540,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.78399658203125,
+      "pct": 0.08160842276010438,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "13:51 KST",
+      "observed_at_kst": "2026-10-21T13:51:00+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 101.701,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 101.701,
+        "chartPreviousClose": 101.701,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792558320,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792641540,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "original_alert": "<b>전쟁·종전·재건 웹감시</b>\n🟡 <b>발언·제재·외교반응·협상 제약</b>\n조회 2026-10-21 14:01 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🟡 [신규] <b>1. 미국·우크라이나·러시아 · 외교 접촉 보도</b>\n트럼프 특사, 오늘 푸틴과 회담 추진…우크라이나 종전 협상 분수령 - 뉴스워커\nRSS 보도 10-21 11:23 KST · <b>158분 경과</b> · 외교 접촉 보도 · <a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTFBVakQxX255OUhKWWhlWHpFdktfamxSVnJmSW1uUld0dWJwNWpud2tndDBnTVNmT2ozaVNOMUpWX05yWVRIRkNWZGhheXFPQTJiUk1JWWJTZDc1bkZYVmZwVWpEOE54UDNLMWZ0aENLWHHSAXRBVV95cUxPVkdZOFA5eWpaY2MzN01fdFROWVZiWGxOY0pLTzF1NmltNFh2eURUbDU2eG5PWE9BQXpNUWVsOVlIc0QwRjd6aHhzaVBjbmlHcnlzM0FTYVc1cHNGOWJVMG9SMDRPaVpxZVdZQUhtWjNOZUdNOQ?oc=5\">뉴스워커 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [신규] <b>2. 원유시장 · 원유 공급·가격 보도</b>\n걸프산 원유 수출 공급량 이란 전쟁 이전 수준 회복\n보도 10-21 11:33 KST · <b>148분 경과</b> · 원유 공급·가격 보도 · <a href=\"https://www.fnnews.com/news/202610211105352998\">파이낸셜뉴스 원문</a>\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,889.75</b>  +0.72% · 제공처 비교종가 대비 · 기준 13:51 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>98.99</b>  +1.20% · 제공처 비교종가 대비 · 기준 13:51 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>110.26</b>  +1.35% · 제공처 비교종가 대비 · 기준 13:50 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.78</b>  +0.08% · 제공처 비교종가 대비 · 기준 13:51 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 외교 접촉 보도 / 원유 공급·가격 보도\n- <b>현재 단계:</b> 운송·공급·가격·압박 목적에 관한 보도 — 별도의 실제 공격·휴전 이행은 각각 확인 필요\n- <b>시장:</b> 기사 속 가격 기간·선박 건수·운송 경로와 실제 공급 차질을 구분\n- <b>다음:</b> 운송·가격 원자료 → 공급·운항 변화 → 별도 군사행동·공식 합의 확인\n"
+}
