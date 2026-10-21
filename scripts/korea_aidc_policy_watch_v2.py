@@ -165,6 +165,7 @@ def enrich(row: dict[str, Any], session: requests.Session) -> dict[str, Any]:
         result["url"] = resolved
     if not resolved or "news.google.com" in resolved:
         result["article_body"] = ""
+        result["enrich_error"] = "Google News 원문 링크 복원 실패"
         return result
     try:
         response = session.get(resolved, headers=HEADERS, timeout=20, allow_redirects=True)
@@ -190,6 +191,30 @@ def enrich(row: dict[str, Any], session: requests.Session) -> dict[str, Any]:
             fallback = [x for x in fallback if len(x) >= 45]
             if sum(map(len, fallback)) > sum(map(len, best)):
                 best = fallback
+        # 언론사 중에는 기사 본문을 p 태그가 아니라 div 섹션으로 제공하는 곳도 있다.
+        # 페이지 전체가 아니라 기사 컨테이너만 대상으로 2차 복원한다.
+        if sum(map(len, best)) < 350:
+            for selector in (
+                "[itemprop='articleBody']", "#articleBody", "#articleView",
+                ".article-body", ".article_body", ".article_view", ".articleView",
+                ".article-content", ".article_content", ".view-content",
+                ".view_body", ".news_body", "article",
+            ):
+                candidates = []
+                for node in soup.select(selector):
+                    chunks = [
+                        clean_paragraph(x) for x in node.get_text("\n", strip=True).splitlines()
+                    ]
+                    chunks = [x for x in chunks if len(x) >= 35]
+                    candidate = "\n".join(chunks)
+                    if 350 <= len(candidate) <= 25000 and (
+                        "AIDC" in candidate or "인공지능 데이터센터" in candidate
+                        or "AI 데이터센터" in candidate
+                    ):
+                        candidates.append(chunks)
+                if candidates:
+                    best = max(candidates, key=lambda x: sum(map(len, x)))
+                    break
         unique: list[str] = []
         seen: set[str] = set()
         for paragraph in best:
@@ -197,9 +222,11 @@ def enrich(row: dict[str, Any], session: requests.Session) -> dict[str, Any]:
                 unique.append(paragraph)
                 seen.add(paragraph)
         result["article_body"] = "\n".join(unique)
+        if len(result["article_body"]) < 300:
+            result["enrich_error"] = f"본문 추출량 부족({len(result['article_body'])}자)"
     except Exception as exc:  # noqa: BLE001
         result["article_body"] = ""
-        result["enrich_error"] = type(exc).__name__
+        result["enrich_error"] = f"{type(exc).__name__}: {str(exc)[:120]}"
     return result
 
 
@@ -573,6 +600,7 @@ def main() -> int:
                 verified = enriched
                 verified["verification"] = reason
                 break
+            reason = str(enriched.get("enrich_error") or reason)
             reject_reasons.append(reason)
 
         if verified is None:
