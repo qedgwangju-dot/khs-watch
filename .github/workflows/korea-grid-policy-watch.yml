@@ -161,6 +161,7 @@ jobs:
 
               stage = ""
               published = ""
+              timeline_rows = []
               source = ""
               content_start = 1
               for i, line in enumerate(block[1:], start=1):
@@ -169,6 +170,10 @@ jobs:
                       stage = s.replace("<b>단계</b>", "", 1).strip()
                   elif s.startswith("<b>발표일</b>"):
                       published = s.replace("<b>발표일</b>", "", 1).strip()
+                      timeline_rows.append(s)
+                  elif s.startswith(("<b>원문 게시일</b>", "<b>원문 수정일</b>",
+                                      "<b>검색 노출일", "<b>법령 시행일</b>")):
+                      timeline_rows.append(s)
                   elif s.startswith("<b>출처</b>"):
                       source = s.replace("<b>출처</b>", "", 1).strip()
                       content_start = i + 1
@@ -223,7 +228,9 @@ jobs:
 
               out.append("")
               out.append("<b>확정 정보</b>")
-              if published:
+              if timeline_rows:
+                  out.extend(f"• {line}" for line in timeline_rows)
+              elif published:
                   out.append(f"• 발표일  {published}")
               if source:
                   out.append(f"• 출처  {source}")
