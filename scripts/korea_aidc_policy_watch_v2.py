@@ -14,9 +14,9 @@ import requests
 from bs4 import BeautifulSoup
 
 try:
-    from alert_timeline_dates import extract_original_dates, parse_timestamp, timeline_lines, verified_age_days
+    from alert_timeline_dates import extract_original_dates, korean_date as source_korean_date, parse_timestamp, timeline_lines, verified_age_days
 except ModuleNotFoundError:
-    from scripts.alert_timeline_dates import extract_original_dates, parse_timestamp, timeline_lines, verified_age_days
+    from scripts.alert_timeline_dates import extract_original_dates, korean_date as source_korean_date, parse_timestamp, timeline_lines, verified_age_days
 
 try:
     import korea_aidc_policy_watch as base
@@ -511,11 +511,9 @@ def render(row: dict[str, Any]) -> str:
     rss_date = str(row.get("rss_published") or row.get("published") or "")
     chronology = timeline_lines(evidence, rss_published=rss_date)
     if evidence.get("published") and evidence.get("published") != rss_date:
-        from alert_timeline_dates import korean_date as _korean_date
-        from scripts.alert_timeline_dates import korean_date as _korean_date_fallback
         # 날짜값 자체가 다를 때만 검색 노출일을 별도 참고값으로 쓴다.
-        if _korean_date_fallback(evidence.get("published")) != _korean_date_fallback(rss_date):
-            chronology.append(f"검색 노출일(게시일과 다름)  {_korean_date_fallback(rss_date)}")
+        if source_korean_date(evidence.get("published")) != source_korean_date(rss_date):
+            chronology.append(f"검색 노출일(게시일과 다름)  {source_korean_date(rss_date)}")
     chronology_html = [f"<b>{html.escape(text.split('  ', 1)[0])}</b>  {html.escape(text.split('  ', 1)[-1])}"
                        for text in chronology]
     return "\n".join([
