@@ -112,6 +112,9 @@ def _display_headline(row):
             or _near_military_authorization(_headline(row))
             or _negotiation_stalemate_headline(_headline(row))
             or _talks_participation_stage(_headline(row))
+            or _war_policy_outlook_headline(_headline(row))
+            or _conditional_diplomacy_stage(_headline(row))
+            or _shipping_sanctions_headline(_headline(row))
             or _ceasefire_proposal_stage(_headline(row))
             or _headline_attack_casualties(row) or _headline_energy_operation(row)):
         # RSS bullet lines remain one ordered headline in the rendered block.
@@ -230,18 +233,22 @@ def _diplomatic_group(title):
         title = re.sub(r'\b(?:in|at)\s+china\b', '', title)
     if (_summit_proposal_headline(title) or _bargain_question_headline(title)) and not re.search(r'젤렌스키.{0,12}배제하지\s*않', title):
         title = re.sub(r'젤렌스키(?:\s*대통령)?(?:를|는|가)?\s*(?:배제|제외|아닌|빠져라)', '', title)
-    trilateral = bool(re.search(r'미\s*[·ㆍ/]?\s*중\s*[·ㆍ/]?\s*러', title))
+    trilateral = bool(re.search(r'(?:미|美)\s*[·ㆍ/]?\s*(?:중|中)\s*[·ㆍ/]?\s*(?:러|露)', title))
     north_russia = bool(re.search(r'(?<![가-힣])북\s*[·ㆍ/]?\s*러(?=\s|$)', title))
     russia_ukraine = bool(re.search(r'(?<![가-힣])러\s*[·ㆍ/]\s*우(?=\s|$)', title))
     actors = []
     for label, pattern in (
             ('미국', r'미국|트럼프|백악관|美|(?<![가-힣])미(?=\s*특사)|\bwhite\s+house\b|\bu\.s\.|\bunited\s+states\b|'
-                     r'\bus(?=\s+(?:midterms?|elections?|officials?|government|military|envoys?)\b)|'
+                     r'\bthe\s+us\b|\bus(?=\s+(?:midterms?|elections?|officials?|government|military|envoys?|sanctions?|imposes?)\b)|'
                      r'\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너'),
             ('우크라이나', r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b'),
             ('중국', r'중국|시진핑|\b(?:china|chinese|xi(?:\s+jinping)?)\b'),
+            ('독일', r'독일|\bgerman(?:y|s)?\b'),
             ('러시아', r'러시아|푸틴|크렘린|라브로프|(?:^|[\s·ㆍ/,])러(?=\s|[·ㆍ/,]|$)|\b(?:russia\w*|putin|kremlin|lavrov)\b'),
+            ('이스라엘', r'이스라엘|네타냐후|\b(?:israel(?:i)?|netanyahu)\b'),
             ('이란', r'이란|\biran(?:ian)?\b'),
+            ('그리스', r'그리스|\b(?:greece|greek)\b'),
+            ('파나마', r'파나마|\bpanama(?:nian)?\b'),
             ('파키스탄', r'파키스탄|\bpakistan(?:i)?\b'),
             ('북한', r'북한|김정은|\bnorth\s+korea\b|\bkim\s+jong[ -]?un\b')):
         if (re.search(pattern, title) or (trilateral and label in ('미국', '중국', '러시아'))
@@ -317,6 +324,7 @@ def _statement_with_actual_action(title):
              or _security_activity_headline(title) or _meeting_plan_stage(title)
              or _attack_plan_spans(title) or _prospective_attack_question_spans(title)
              or _oil_contract_headline(title))
+    stage = stage or _war_policy_outlook_headline(title)
     return bool(stage and re.search(
         r'(?:공습|공격|폭격|타격|요격)(?:을|를)?\s*(?:했다(?!는)|했으며|하고\s*있|진행\s*중)|'
         r'(?:피격|파괴)(?:됐|되었|당했)|'
@@ -327,6 +335,14 @@ def _statement_with_actual_action(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if _shipping_sanctions_headline(title) and kind == 'sanctions':
+        return _diplomatic_group(title) + ' · 해운 지원 제재'
+    if kind is None and _houthi_attack_claim_headline(title):
+        return '후티 · 공격 주장 보도'
+    if kind == 'military_statement' and _conditional_diplomacy_stage(title) == 'warning':
+        return _diplomatic_group(title) + ' · 조건부 외교 의향·전쟁 선택 경고'
+    if kind == 'military_analysis' and _war_policy_outlook_headline(title):
+        return _diplomatic_group(title) + ' · 선거·전쟁 정책 전망'
     if kind == 'military_analysis' and _prospective_attack_question_spans(title):
         actors = [label for label, pattern in (('미국', r'트럼프|미국|美|\b(?:trump|us|united states)\b|\bu\.s\.'),
                   ('이스라엘', r'이스라엘|네타냐후|\b(?:israel|netanyahu)\b'),
@@ -788,7 +804,17 @@ def _prospective_attack_question_spans(title):
         r'\b(?:resume|restart|launch)\s+(?:attacks?|strikes?|airstrikes?)\b[^?？;；]*[?？]', title))
 
 
+def _war_policy_outlook_headline(title):
+    # A forecast contrasting a possible leadership change with policy
+    # continuity does not report a new military operation or an election result.
+    return bool(re.search(r'\belections?\b', title)
+                and re.search(r'\b(?:may|might|could)\s+change\b[^…;；\n]{0,45}\b(?:leader|government)\b', title)
+                and re.search(r'\b(?:but\s+)?not\s+(?:\w+\s+){0,3}war\s+polic(?:y|ies)\b', title))
+
+
 def _military_analysis_headline(title):
+    if _war_policy_outlook_headline(title):
+        return True
     military = re.search(r'미사일|공습|공격|폭격|방패|방공|요격|\b(?:missile|attack|airstrike|shield|defen[cs]e)', title)
     question = re.search(r'왜|어째서|\b(?:why|how)\b', title) and re.search(r'\?|까요|는가|했나', title)
     rumor_question = re.search(r'(?:공격설|공습설|폭격설).{0,20}(?:힘\s*얻나|확산되나|가능성|[?？])', title)
@@ -939,13 +965,59 @@ def _talks_stage_label(title):
     request = _talks_resumption_request_stage(title)
     if request:
         return '협상 재개 요청 부인' if request == 'denied' else '협상 재개 요청'
+    diplomacy = _conditional_diplomacy_stage(title)
+    if diplomacy:
+        return ('조건부 외교 의향·전쟁 선택 경고' if diplomacy == 'warning' else
+                '조건부 외교 재개 의향 부인' if diplomacy == 'denied' else '조건부 외교 재개 의향')
+    schedule = _talks_schedule_stage(title)
+    if schedule:
+        return schedule[0] + (' 부인' if schedule[1] else '')
     return None
 
 
+def _conditional_diplomacy_stage(title):
+    match = re.search(r'\b(?P<neg>not\s+)?(?:ready|prepared|willing)\s+to\s+give\s+diplomacy\s+another\s+chance\b', title)
+    if not match or not re.search(r'\bif\b', title[match.end():]):
+        return None
+    if match['neg']:
+        return 'denied'
+    if (re.search(r'\bif\s+(?:the\s+)?us\s+chooses?\s+war\b', title)
+            and re.search(r'\bstrategic\s+failure\b', title)):
+        return 'warning'
+    return 'planned'
+
+
+def _talks_schedule_stage(title):
+    patterns = (
+        ('협상 재개 동의', r'(?:종전|평화|휴전)\s*(?:협상|회담)(?:을|를)?\s*재개(?:를|을)?\s*동의'),
+        ('협상 개최 가능성', r'(?:협상|회담)[^\n;；]{0,55}?개최\s*(?:가능성|할\s*수도)'),
+        ('회담 준비·개최 추진', r'(?:협상|회담)[^\n;；]{0,55}?(?:개최\s*추진|준비\s*(?:착수|중))'))
+    for label, pattern in patterns:
+        match = re.search(pattern, title)
+        if match:
+            denied = bool(re.match(r'(?:은|는|을|를)?\s*(?:하지\s*않|않겠|아니|부인|거부)', title[match.end():]))
+            if label == '협상 재개 동의' and re.search(r'개최\s*추진', title):
+                label += '·개최 추진'
+            return label, denied
+    return None
+
+
+def _shipping_sanctions_headline(title):
+    return bool(re.search(r'\bsanctions?\b|제재', title) and re.search(r'\bshipping\b|해운', title))
+
+
+def _houthi_attack_claim_headline(title):
+    return bool(re.search(r'후티|\bhouthi', title) and re.search(r'공격했다고\s*주장|\bclaims?\b.{0,40}\battacked\b', title))
+
+
 def _meeting_plan_stage(title):
-    talks = _talks_participation_stage(title) or _talks_resumption_request_stage(title)
+    talks = (_talks_participation_stage(title) or _talks_resumption_request_stage(title)
+             or _conditional_diplomacy_stage(title))
     if talks:
         return 'denied' if talks == 'denied' else 'planned'
+    schedule = _talks_schedule_stage(title)
+    if schedule:
+        return 'denied' if schedule[1] else 'planned'
     if _summit_proposal_headline(title):
         return None
     possible = re.search(r'\b(?:could|may|might|would)\s+(?P<neg>not\s+)?meet\b', title)
@@ -981,6 +1053,8 @@ def _diplomatic_headline_kind(title):
                       r'\b(?:zelenskyy?|zelenskiy|ukrain\w*|trump|witkoff|kushner|iran(?:ian)?|russia\w*|putin|kremlin|lavrov)\b|\bu\.s\.', title)
     if not actor:
         return None
+    if _conditional_diplomacy_stage(title) == 'warning':
+        return 'military_statement'
     meeting_plan = _meeting_plan_stage(title)
     if meeting_plan:
         return 'diplomatic_position' if meeting_plan == 'denied' else 'diplomatic_plan'
@@ -1124,6 +1198,12 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    if _conditional_diplomacy_stage(title) == 'warning' and kind == 'military_statement':
+        return '조건부 외교 의향·전쟁 선택 경고'
+    if kind is None and _houthi_attack_claim_headline(title):
+        return '공격 주장 보도'
+    if kind == 'military_analysis' and _war_policy_outlook_headline(title):
+        return '선거·전쟁 정책 전망'
     if kind == 'security_activity' and _labor_rights_headline(title):
         return '노동·인권 침해 보도'
     if kind == 'oil_market' and _oil_contract_headline(title):
@@ -1165,7 +1245,7 @@ def _headline_event_cache_required(row, kind):
                     'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure')
             or (kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))
-                or _near_military_authorization(_headline(row))))
+                or _near_military_authorization(_headline(row)) or _conditional_diplomacy_stage(_headline(row))))
             or (kind == 'military_discussion' and _attack_plan_spans(_headline(row)))
             or _energy_facility_headline(row)
             or (kind is None and _headline_refinery_action(row))
@@ -1174,6 +1254,7 @@ def _headline_event_cache_required(row, kind):
             or (kind is None and _headline_attack_casualties(row))
             or (kind is None and _headline_energy_operation(row))
             or _maritime_mine_incident(row)
+            or (kind is None and _houthi_attack_claim_headline(_headline(row)))
             or (_maritime_attack_headline(row) and not maritime_attack_tally(row)))
 
 
