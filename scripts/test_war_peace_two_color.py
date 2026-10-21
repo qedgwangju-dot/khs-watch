@@ -324,6 +324,70 @@ class TwoColorTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
             self.presenter.verify_alert()
 
+    def test_oil_export_growth_and_commercial_import_contract_are_market_reference(self):
+        for title in ('이란 공격에도 안 멈췄다…걸프산 원유 수출량 오히려 늘어',
+                      'Indian Oil to trim Middle East oil imports under annual deals amid Iran war'):
+            with self.subTest(title=title):
+                row = {'title_original': title, 'tags': ['확전'], 'signals_ko': ['old attack cache']}
+                self.assertEqual(stage.non_military_kind(row), 'oil_market')
+                self.assertEqual(stage.final_color(row), 'yellow')
+                self.assertIsNone(presentation.direction(stage, row))
+                self.assertNotIn('호르무즈', stage.topic_label(row))
+
+    def test_labor_rights_report_has_only_headline_actors(self):
+        row = {'title_original': '北 노동자들, 러시아 드론 공장서 노예 취급'}
+        self.assertEqual(stage.non_military_kind(row), 'security_activity')
+        self.assertEqual(stage.topic_label(row), '북한·러시아 · 노동·인권 침해 보도')
+        self.assertEqual(stage._headline_event_label(row, 'security_activity'), '노동·인권 침해 보도')
+        self.assertEqual(stage.final_color(row), 'yellow')
+        self.assertEqual(presentation.direction(stage, row), 'red')
+
+    def test_tanker_mine_collision_keeps_claim_quantity_and_subject(self):
+        title = '미 중간선거 앞…이란 “호르무즈서 유조선 3척 기뢰 충돌” - 한겨레'
+        row = {'title_original': title, 'title_ko': title}
+        self.assertEqual(stage.topic_label(row), '이란·호르무즈 · 선박 기뢰 충돌 보도')
+        self.assertEqual(stage.final_color(row), 'red')
+        self.assertEqual(stage._display_headline(row), title)
+        self.assertIn('3척', stage._display_headline(row))
+
+    def test_market_or_labor_context_does_not_hide_separate_actual_attack(self):
+        for title in ('걸프산 원유 수출량 늘어…이란 미사일 발사',
+                      '北 노동자 강제노동 보도…러시아 공습했다',
+                      'Indian Oil trims oil imports under annual deals…Russia attacked Ukraine'):
+            with self.subTest(title=title):
+                self.assertEqual(presentation.direction(stage, {'title_original': title}), 'red')
+
+    def test_saved_push_market_references_remain_in_pending(self):
+        self.fixture = json.loads((Path(__file__).parent/'test_fixtures/war_market_labor_39582589584.json').read_text(encoding='utf-8'))
+        (_, _, ids), text, receipt = self.present((0, 4))
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        refs = [row for row in shown if row['display_section'] == 'market_reference']
+        self.assertEqual({row['id'] for row in refs}, {'239e48f494707aea2549', '9fe2b8bad47ba85bafd0'})
+        self.assertEqual(len(ids), 2)
+        self.assertTrue(all(row['id'] in ids and row['classification_color'] is None for row in refs))
+        self.assertIn('원유 교역·계약 보도', text)
+        self.assertIn('Indian Oil to trim Middle East oil imports under annual deals amid Iran war', text)
+        (_, _, all_ids), text, receipt = self.present(tuple(range(6)))
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual(all_ids, [row['id'] for row in shown])
+        self.assertEqual(len(all_ids), len(set(all_ids)))
+        self.assertIn('북한·러시아 · 노동·인권 침해 보도', text)
+        self.assertIn('이란·호르무즈 · 선박 기뢰 충돌 보도', text)
+        self.assertNotIn('원유 가격에 직접 반영', text)
+        self.assertNotIn('이란·호르무즈 · 우크라이나·러시아', text)
+        self.assertEqual(receipt['markets'], self.fixture['markets'])
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.STATE.read_bytes(), self.state_before)
+
+    def test_original_same_hash_market_labor_push_is_rejected(self):
+        fixture = json.loads((Path(__file__).parent/'test_fixtures/war_market_labor_39582589584.json').read_text(encoding='utf-8'))
+        self.watch.ALERT.write_text(fixture['original_semantic_alert'], encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(fixture['original_semantic_evidence'], ensure_ascii=False), encoding='utf-8')
+        ids = [row['id'] for row in fixture['articles'] if row.get('rendered')]
+        self.watch.PENDING.write_text(json.dumps({'ids': ids}), encoding='utf-8')
+        with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
+            self.presenter.verify_alert()
+
     def test_production_entry_installs_directional_final_gate(self):
         original = stage.runner.verify_alert
         def entry():

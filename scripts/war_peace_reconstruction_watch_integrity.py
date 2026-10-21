@@ -310,7 +310,8 @@ def _statement_with_actual_action(title):
              or _attack_denial_with_blockade(title) or _gold_price_headline(title)
              or _oil_supply_headline(title) or _peace_plan_discussion_headline(title)
              or _security_activity_headline(title) or _meeting_plan_stage(title)
-             or _attack_plan_spans(title) or _prospective_attack_question_spans(title))
+             or _attack_plan_spans(title) or _prospective_attack_question_spans(title)
+             or _oil_contract_headline(title))
     return bool(stage and re.search(
         r'(?:공습|공격|폭격|타격|요격)(?:을|를)?\s*(?:했다(?!는)|했으며|하고\s*있|진행\s*중)|'
         r'(?:피격|파괴)(?:됐|되었|당했)|'
@@ -335,6 +336,10 @@ def _primary_topic(row):
     if kind == 'commodity_market':
         return '금시장 · ' + KIND_LABELS[kind]
     if kind == 'security_activity':
+        if _labor_rights_headline(title):
+            actors = [label for label, pattern in (('북한', r'북한|北|\bnorth korea\b'),
+                      ('러시아', r'러시아|\brussia\w*\b')) if re.search(pattern, title)]
+            return ('·'.join(actors) or _headline_group(title)) + ' · 노동·인권 침해 보도'
         group = _diplomatic_group(title)
         if re.search(r'유럽|\beurop\w*\b', title):
             group += '·유럽'
@@ -389,6 +394,8 @@ def _primary_topic(row):
             places.append('수에즈')
         return ('·'.join(places) or '해상 운송') + ' · ' + KIND_LABELS[kind]
     if kind == 'oil_market':
+        if _oil_contract_headline(title):
+            return '원유시장 · 원유 교역·계약 보도'
         area = '호르무즈' if re.search(r'호르무즈|\bhormuz\b', title) else '원유시장'
         return area + ' · ' + KIND_LABELS[kind]
     if kind == 'oil_pressure':
@@ -418,6 +425,9 @@ def _primary_topic(row):
             return _diplomatic_group(title) + ' · 정보 제공·공유 ' + stage + ' 보도'
         label = '정보 지원·종전 의향 발언' if re.search(r'종전|peace|end.{0,8}war', title) else '지원 정책 발언'
         return _headline_group(title) + ' · ' + label
+    if kind is None and _maritime_mine_incident(row):
+        area = '이란·호르무즈' if re.search(r'이란', title) and re.search(r'호르무즈', title) else '해상'
+        return area + ' · 선박 기뢰 충돌 보도'
     if kind is None and _headline_drone_action(row):
         return _headline_group(title) + ' · 드론 공습 보도'
     if kind is None and _maritime_attack_expansion(row):
@@ -598,11 +608,29 @@ def _maritime_attack_expansion(row):
     return False
 
 
+def _oil_contract_headline(title):
+    return bool(re.search(r'\b(?:oil|crude)\b', title)
+                and re.search(r'\b(?:imports?|exports?)\b', title)
+                and re.search(r'\b(?:deals?|contracts?)\b', title)
+                and re.search(r'\b(?:trim\w*|cut\w*|reduc\w*|increas\w*)\b', title))
+
+
+def _maritime_mine_incident(row):
+    title = _headline(row)
+    return bool(re.search(r'선박|상선|유조선|\b(?:ships?|vessels?|tankers?)\b', title)
+                and re.search(r'기뢰\s*충돌|\bhit\s+(?:a\s+)?mine\b', title)
+                and not re.search(r'충돌.{0,8}(?:부인|하지\s*않|가능성)|[?？]', title))
+
+
 def _oil_shipping_kind(title):
     # Threatened supply recovery is the effect's object, not an attack threat.
     if re.search(r'(?:공격|공습|보복)(?:을|를)?\s*(?:확대\s*)?(?:예고|시사|경고|위협|검토)|'
                  r'\b(?:warns?|threatens?)\b.{0,30}\b(?:attacks?|strikes?)\b', title):
         return None
+    if _oil_contract_headline(title) or (
+            re.search(r'(?:원유|석유)\s*수출(?:량)?', title)
+            and re.search(r'늘어|증가|감소|축소|확대', title)):
+        return 'oil_market'
     if (re.search(r'선박|상선|유조선|\b(?:ships?|vessels?|tankers?)\b', title)
             and re.search(r'우회|경유|귀항|\b(?:rerout\w*|divert\w*)\b', title)
             and not re.search(r'피격|공격|공습|폭격|미사일|\b(?:attack\w*|struck|bombed|missiles?)\b', title)):
@@ -849,7 +877,14 @@ def _oil_supply_headline(title):
                           r'.{0,30}\b(?:recover\w*|rise\w*|fall\w*)\b', title))
 
 
+def _labor_rights_headline(title):
+    return bool(re.search(r'노동자|\bworkers?\b', title)
+                and re.search(r'노예|강제\s*노동|인권\s*침해|인신매매|\b(?:slave|forced labour|forced labor)\b', title))
+
+
 def _security_activity_headline(title):
+    if _labor_rights_headline(title):
+        return True
     # Keep the allegation/denial in the original headline, without promoting
     # sabotage to a newly verified missile strike or to a diplomatic contact.
     return bool(re.search(r'파괴\s*공작|\bsabotage\b', title))
@@ -1034,6 +1069,12 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    if kind == 'security_activity' and _labor_rights_headline(title):
+        return '노동·인권 침해 보도'
+    if kind == 'oil_market' and _oil_contract_headline(title):
+        return '원유 교역·계약 보도'
+    if kind is None and _maritime_mine_incident(row):
+        return '선박 기뢰 충돌 보도'
     if kind == 'military_analysis' and _prospective_attack_question_spans(title):
         return '공습·공격 재개 가능성 해설'
     if kind == 'military_discussion' and _attack_plan_status(title):
@@ -1073,6 +1114,7 @@ def _headline_event_cache_required(row, kind):
             or (kind is None and _maritime_attack_expansion(row))
             or (kind is None and _headline_attack_casualties(row))
             or (kind is None and _headline_energy_operation(row))
+            or _maritime_mine_incident(row)
             or (_maritime_attack_headline(row) and not maritime_attack_tally(row)))
 
 
@@ -1125,6 +1167,8 @@ def score_item(row, now):
 def final_color(row):
     if non_military_kind(row):
         return 'yellow'
+    if _maritime_mine_incident(row):
+        return 'red'
     if _statement_with_actual_action(_headline(row)):
         return 'red'
     if _headline_energy_operation(row):
