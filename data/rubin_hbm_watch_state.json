@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-21T10:48:56+09:00",
+  "updated_at_kst": "2026-10-21T16:54:47+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -215,6 +215,7 @@
     "ec0854ae5cc1e577d7a21818",
     "ee416c90729cbdb83e8db5f8",
     "eed867761a24cbad33b1c104",
+    "efcad40ded64b5b77efa89d5",
     "f07ec9c4d4039ee24a7a82d9",
     "f0b052afbbfcb591daa146d8",
     "f15cdeffa0215c29ff770c9f",
@@ -252,19 +253,17 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 2,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1327.84,
-    "date": "2026-10-20 일일 기준 · ECB/Frankfurter · 조회 2026-10-21 10:49 KST · 보조 API 2026-10-21 · 차이 0.05% · 일중 기준시각 차이 가능",
+    "date": "2026-10-20 일일 기준 · ECB/Frankfurter · 조회 2026-10-21 16:55 KST · 보조 API 2026-10-21 · 차이 0.05% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [
-    "원문 URL 확인 실패: Sammy Fans | Samsung secures long-term agreements for bulk of 2027 DRAM, NAND and HBM supply - Sammy Fans"
-  ],
+  "errors": [],
   "ai_component_leadtime": {
     "as_of": "2026-10-19",
     "source": "https://insights.trendforce.com/p/weekly-radar-006",
@@ -390,14 +389,14 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-21T10:49:13+09:00",
+    "last_checked_at_kst": "2026-10-21T16:55:02+09:00",
     "candidate_count": 3,
     "image_verified_issue": "weekly-radar-006",
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-21T10:49:26+09:00",
+    "checked_at_kst": "2026-10-21T16:55:57+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-19T21:54:05+09:00",
@@ -465,7 +464,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-21",
-    "last_checked_at_kst": "2026-10-21T10:49:15+09:00",
+    "last_checked_at_kst": "2026-10-21T16:55:27+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -524,7 +523,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-21T10:49:15+09:00",
+        "checked_at_kst": "2026-10-21T16:55:27+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -533,7 +532,7 @@
         "rss_coverage_unavailable": false
       },
       "primary_source_audit": {
-        "checked_at_kst": "2026-10-21T07:30:53+09:00",
+        "checked_at_kst": "2026-10-21T16:55:27+09:00",
         "sources": {
           "bnpp_public": {
             "status": "retrieval_unavailable",
@@ -602,7 +601,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-21",
-    "last_checked_at_kst": "2026-10-21T10:49:20+09:00",
+    "last_checked_at_kst": "2026-10-21T16:55:52+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -646,7 +645,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-21T10:49:22+09:00",
+    "last_checked_at_kst": "2026-10-21T16:55:54+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
