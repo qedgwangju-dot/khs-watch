@@ -1229,6 +1229,27 @@
       "telegram_core_fact": "조 시장은 \"삼성전기가 명학산단 잔여 부지에 1단계로 4조2천700억원 투자를, 2단계 투자로 추가 증설을 검토하고 있다\"며 \"3단계 투자는 연서면 국가산단에 하는 방안을 현재 논의하고 있다\"고 설명했다.",
       "title": "세종시장 \"삼성전기, 추가증설 검토…3단계 투자 연서면 국가산단 논의\""
     },
+    "core:048beaf405a41b5e8da1b4ac": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835408",
+      "source": "뉴시스",
+      "source_body_digest": "fbb01438bad9cd4f63ea812a601b754316b27ee74535e5d929ae32dfa26f6c90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a854957383a4de54033a3233b0196faa30d05f4bd5750d2c30b81ca654bd3c45",
+      "source_fact_keys": [
+        "source_fact:v1:1c58ca4cc8e616bdea3b3a16f4fe7f5d3fe96daf1a39b262a5b24ebec1e9cb33",
+        "source_fact:v1:964b10ea0f8603a694084554984c20c7c4c78906ea26c1d231c04a618b4c0fbe"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입",
+      "telegram_core_fact": "울산항만공사는 태양광 발전설비의 효율적인 운영과 체계적인 유지관리를 위해 '인공지능(AI) 기반 태양광 발전설비 모니터링 시스템'을 도입했다고 21일 밝혔다. 울산항만공사에 따르면 이번에 도입된 시스템은 발전량을 실시간으로 측정하는 기존 방식에 빅데이터와 AI 기술을 결합한 것이 특징이다.",
+      "title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입"
+    },
     "core:049a30ca821014e159850ca0": {
       "first_seen_kst": "2026-10-17T04:08:20+09:00",
       "lanes": {
@@ -3230,6 +3251,31 @@
       "source_title": "엘도라도 골드, 스쿠리스 광산 EU 전략프로젝트 지정",
       "telegram_core_fact": "증권가 컨센서스에 따르면 엘도라도 골드의 2026년 예상 매출액은 24억8300만 달러로 전년 대비 36.52% 증가할 전망이다.",
       "title": "엘도라도 골드, 스쿠리스 광산 EU 전략프로젝트 지정"
+    },
+    "core:0ad2fea3c791eb27cdcbf01b": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910319",
+      "source": "헤럴드경제",
+      "source_body_digest": "c43bdfbb5e5de2aa7012bcf323a4079c5aa2c8de474dc4ea52fe8ae3dd07c63a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de398329bf5b4504d3d3c2a829fcd7bf04fab6449ee943374b072087256a783c",
+      "source_fact_keys": [
+        "source_fact:v1:080f992a58d43edbc243002c5e3e1f9bc98d162194d4a326535513f0674f69e6",
+        "source_fact:v1:0dbcac5a157c96151bfba68e2c07c26360e8d94ab1350f99c88c56f779945750",
+        "source_fact:v1:1de771178d2b26358b3af77be6c1790d01dfb02f24e394b620c745fda17fc95d",
+        "source_fact:v1:5dfa5a1ba6f66de076e21f7a44b6864079ff1b776f37e0e7fba4cf6c06cc29ed",
+        "source_fact:v1:736827c5de6025cd34319908fabba3202b7f69059ee46e2f56bc2bef227482b7",
+        "source_fact:v1:eb5b246a023b194e6baba94ede9859e9fe8854f67c5f52311eb19dc6025d51e9"
+      ],
+      "source_published_kst": "2026-10-21T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]",
+      "telegram_core_fact": "우선 LH는 올해 모듈러주택 연간 발주 물량을 당초 목표치(2000가구)를 웃도는 2100가구 수준으로 확대해 초기 시장 공급을 견인할 방침이다.",
+      "title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]"
     },
     "core:0adae6e82e93cd49b06e6fb8": {
       "first_seen_kst": "2026-10-20T23:53:36+09:00",
@@ -11696,6 +11742,24 @@
       "source_title": "오텍, 건자재 업체 노이리움에 냉난방 설비",
       "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
       "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
+    },
+    "core:22d4446a7044c87da4d31ccf": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910306",
+      "source": "헤럴드경제",
+      "source_body_digest": "d6262db103cfa5c3b28f0e84a51e2e110cada79010555dda9423d1fae5d3adfd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T16:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "“1억℃ 초고온도 거뜬” 핵융합 소재 만든다”…핵융합硏·포스코 기술개발 맞손",
+      "telegram_core_fact": "초고온 플라즈마 환경을 견디는 내열소재부터 극저온 초전도자석에 사용되는 특수강까지 핵융합로 핵심 소재의 국산화와 공급망 구축을 추진한다.",
+      "title": "“1억℃ 초고온도 거뜬” 핵융합 소재 만든다”…핵융합硏·포스코 기술개발 맞손"
     },
     "core:22ee196cdd2fa8ca27228aed": {
       "first_seen_kst": "2026-10-12T13:36:34+09:00",
@@ -20823,6 +20887,30 @@
       "telegram_core_fact": "한국투자증권은 네오클라우드 기업 베슬AI와 'GPU 파이낸싱' 업무협약(MOU)을 체결했다고 16일 밝혔다. 방창진 한투증권 PF그룹장은 \"GPU 중심의 AI 컴퓨팅 인프라는 글로벌 금융시장에서 핵심 투자 영역으로 부상하고 있다\"며 \"이번 협약을 계기로 국내 AI 인프라 산업 성장에도 적극 기여하겠다\"고 말했다.",
       "title": "한투증권, 베슬AI와 'GPU 파이낸싱' 협약…AI 인프라 구축"
     },
+    "core:3ce93f033b5c80ff00a22564": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12181781",
+      "source": "매일경제",
+      "source_body_digest": "3b3fb1df788f9fd8b858d5d407d2bfab13c6cea51bcf69fa65a62391e19ab521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00a916166498175bfc943a5098146696bb8dd46fd8ce4eda4c8b05f6c2060888",
+      "source_fact_keys": [
+        "source_fact:v1:1c2d45064952a9a7696360c74e7c0b5a472c9262b090313716a26f0f7842f677",
+        "source_fact:v1:1e7181ecc7148d68c28f71ce0f89409a6e7405154ee3d5a54239ddf386875487",
+        "source_fact:v1:bfd7c01bce6beeaf51b31305b3868ff151a5b6cd17316ea1793dbb41ce47e5b8",
+        "source_fact:v1:c8d90ff314dab995312e010af174f625c406bdb7247ced1bf9cd1c0cd771cf64",
+        "source_fact:v1:d01d788160a6d411565c39f62f762ae777cf660497cfc9aeecc7acc587da1e49"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외",
+      "telegram_core_fact": "산업통상부는 배터리와 디스플레이 등 다른 첨단산업까지 규제 완화 대상을 확대하려 했지만 공정거래위원회가 반대하면서 무산된 것으로 알려졌다.",
+      "title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외"
+    },
     "core:3cebba85c611e969a7065ce8": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
       "lanes": {
@@ -26214,6 +26302,26 @@
       "source_title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]",
       "telegram_core_fact": "김록호 하나증권 연구원은 “삼성전자 2027년 1월 이사회에서 추가 주주환원 방안을 발표한다는 입장이나 3분기 실적 발표에서 추가 주주환원 방안으로 연내 자사주 매입이 언급된다면 매물대 해소에 도움이 될 것”이라고 전망했다.",
       "title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]"
+    },
+    "core:4e811cca7390444bc78e3b65": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835166",
+      "source": "뉴시스",
+      "source_body_digest": "231c5b24ee48dad09d64993793231810a647bdefe4e64041daab581936819212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1be7399b17051032ea30f4918f601ed21c12aa300c92a4b915ff27e809d3870f",
+      "source_fact_keys": [
+        "source_fact:v1:1d07902d3000019f17b01c3da32bafb13b0f47d28534e1c6f36a0d4db839d149"
+      ],
+      "source_published_kst": "2026-10-21T14:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"1200억원 규모\"…오스템임플란트, 영구채 발행",
+      "telegram_core_fact": "오스템임플란트 관계자는 \"이번 신종자본증권 발행은 단순한 자금 조달을 넘어 해외법인의 차입 구조를 개선해 신용도를 높이고 금융비용과 환율 변동 위험을 낮추기 위한 것\"이라고 말했다.",
+      "title": "\"1200억원 규모\"…오스템임플란트, 영구채 발행"
     },
     "core:4e854a0e8e24b0a6704ff696": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
@@ -70161,6 +70269,31 @@
       "source_published_kst": "2026-10-07T11:58+09:00",
       "title": "LG전자, 3분기 누적 매출·영업익 '사상 최대'…가전·전장 호조"
     },
+    "core:d39484f8985be1afa54ae79b": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910308",
+      "source": "헤럴드경제",
+      "source_body_digest": "c935672817f311dd890771af94e44645e8330bc76e38994f2b6a1f9e8b5aaa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d377e6bca7f3590ce4cb80cbc9b8fc63761921d908229ff672f916e092999e23",
+      "source_fact_keys": [
+        "source_fact:v1:5252b775f4d83392a2b7410650aec792edf8d9eb45440faa27511fd1677ea174",
+        "source_fact:v1:6fd3d1ce76e334f7de789682c73a850cd3033003aa86066439e627c9e3a69d34",
+        "source_fact:v1:9fe4778e604200d9db3c55003ce88e10bc3abcb512d51e9e5e98993481d3a6dd",
+        "source_fact:v1:b38d00c0dcf52c243cdffe167a11f21a0c741f7c5cfe3594eb2ac364b7126141",
+        "source_fact:v1:b44055d4c3614b72d8ec05e5f2fcf87ff69fa85cb0997b273c2cd86b813194c2",
+        "source_fact:v1:eda69dd4381d4069af01f6c7cc0faf42509325fcdddc71e828bc3699247244f9"
+      ],
+      "source_published_kst": "2026-10-21T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”",
+      "telegram_core_fact": "스페이스X가 20일(현지시간) 발표한 3분기 실적에서 인공지능(AI) 컴퓨팅 수요가 공급을 압도하고 있다며 신규 컴퓨팅 투자금을 1년 안에 회수할 수 있다고 밝혔다.",
+      "title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”"
+    },
     "core:d39642f4b368142eb3832be1": {
       "first_seen_kst": "2026-10-07T19:47:02+09:00",
       "lanes": {
@@ -78546,6 +78679,28 @@
       "telegram_core_fact": "빅텍은 한화시스템과 81억원 K1E2 포수조준경 열상유닛 공급계약을 체결했다고 19일 공시했다. 계약 기간은 내년 12월 7일까지이며 지난해 매출의 9.78% 규모다.",
       "title": "빅텍, 81억 규모 포수조준경 열상유닛 공급계약"
     },
+    "core:edc5eefbfb7b21eb0268a2f5": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835442",
+      "source": "뉴시스",
+      "source_body_digest": "f6dd07c77500d343ba7f4943a10cf59c21c793334999a335ec15ed6709a3e41c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ee954231e72484db20caf3202cdba63bb86fd51cbecfc950ee5228a67ee9333",
+      "source_fact_keys": [
+        "source_fact:v1:4a7e86e9f3b7d12b0d9453941fa56b6dd6867cdd52938fc59682672532a2c651",
+        "source_fact:v1:54edcca0fc8bf6f2e4cf4504823b95279073dfe8c128b1e77133643b04626b8d",
+        "source_fact:v1:a53fcccfeacb831ef9f940b6f3d0e1696f0a7ce07a6c8cbf2f7e632510b4168c"
+      ],
+      "source_published_kst": "2026-10-21T16:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호",
+      "telegram_core_fact": "LH는 이날 경기남부지역본부에서 모듈러 제조사, 가전사, 전문가들이 참석한 가운데 '모듈러주택 활성화 간담회'를 열어 모듈러 공급 확대와 기술 고도화 방안을 논의했다.",
+      "title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호"
+    },
     "core:edd9233bb1487d7a9073636e": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
       "lanes": {
@@ -86296,6 +86451,30 @@
       "source_title": "골드만삭스 그룹, 3분기 순매출 187억달러..전년비 23% 증가",
       "telegram_core_fact": "골드만삭스 그룹(GS)이 9월 30일 종료된 2026년 3분기 순매출 186억7900만 달러, 순이익 52억9400만 달러, 희석 주당순이익(EPS) 17.01달러를 기록했다고 10월 13일 발표했다.",
       "title": "골드만삭스 그룹, 3분기 순매출 187억달러..전년비 23% 증가"
+    },
+    "event:15290e76b21b5e3b2448dcc6": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12181781",
+      "source": "매일경제",
+      "source_body_digest": "3b3fb1df788f9fd8b858d5d407d2bfab13c6cea51bcf69fa65a62391e19ab521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00a916166498175bfc943a5098146696bb8dd46fd8ce4eda4c8b05f6c2060888",
+      "source_fact_keys": [
+        "source_fact:v1:1c2d45064952a9a7696360c74e7c0b5a472c9262b090313716a26f0f7842f677",
+        "source_fact:v1:1e7181ecc7148d68c28f71ce0f89409a6e7405154ee3d5a54239ddf386875487",
+        "source_fact:v1:bfd7c01bce6beeaf51b31305b3868ff151a5b6cd17316ea1793dbb41ce47e5b8",
+        "source_fact:v1:c8d90ff314dab995312e010af174f625c406bdb7247ced1bf9cd1c0cd771cf64",
+        "source_fact:v1:d01d788160a6d411565c39f62f762ae777cf660497cfc9aeecc7acc587da1e49"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외",
+      "telegram_core_fact": "산업통상부는 배터리와 디스플레이 등 다른 첨단산업까지 규제 완화 대상을 확대하려 했지만 공정거래위원회가 반대하면서 무산된 것으로 알려졌다.",
+      "title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외"
     },
     "event:15edc2f42a80e86acbd68ebd": {
       "first_seen_kst": "2026-10-21T09:27:16+09:00",
@@ -111221,6 +111400,28 @@
       "telegram_core_fact": "윤호중 행정안전부 장관은 17일 부천 공장 화재 진압에 나섰던 소방관이 순직한 데 대해 \"현장의 위험과 어려움을 더욱 세밀히 살피고, 부족한 안전관리 체계를 개선하겠다\"고 밝혔다.",
       "title": "윤호중, 부천 화재 소방관 순직에 \"비통한 마음…안전관리 개선\""
     },
+    "fact:102844a3bf1f74e5610a4334": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835442",
+      "source": "뉴시스",
+      "source_body_digest": "f6dd07c77500d343ba7f4943a10cf59c21c793334999a335ec15ed6709a3e41c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ee954231e72484db20caf3202cdba63bb86fd51cbecfc950ee5228a67ee9333",
+      "source_fact_keys": [
+        "source_fact:v1:4a7e86e9f3b7d12b0d9453941fa56b6dd6867cdd52938fc59682672532a2c651",
+        "source_fact:v1:54edcca0fc8bf6f2e4cf4504823b95279073dfe8c128b1e77133643b04626b8d",
+        "source_fact:v1:a53fcccfeacb831ef9f940b6f3d0e1696f0a7ce07a6c8cbf2f7e632510b4168c"
+      ],
+      "source_published_kst": "2026-10-21T16:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호",
+      "telegram_core_fact": "LH는 이날 경기남부지역본부에서 모듈러 제조사, 가전사, 전문가들이 참석한 가운데 '모듈러주택 활성화 간담회'를 열어 모듈러 공급 확대와 기술 고도화 방안을 논의했다.",
+      "title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호"
+    },
     "fact:1029075beb66dd1131094de8": {
       "first_seen_kst": "2026-10-21T13:57:06+09:00",
       "lanes": {
@@ -123743,6 +123944,26 @@
       "source_title": "엔비디아·앰코, 韓 패키징 증설에 13억달러 계약…美도 확대",
       "telegram_core_fact": "미국 반도체 패키징 기업 앰코테크놀로지와 한국 내 생산시설 확충을 지원하는 13억달러 신규 계약을 체결하고, 미국에서는 반도체 검사시설 구축에 11억달러를 지원한다.",
       "title": "엔비디아·앰코, 韓 패키징 증설에 13억달러 계약…美도 확대"
+    },
+    "fact:32cb9cdcb010d0b294e4b1a5": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835166",
+      "source": "뉴시스",
+      "source_body_digest": "231c5b24ee48dad09d64993793231810a647bdefe4e64041daab581936819212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1be7399b17051032ea30f4918f601ed21c12aa300c92a4b915ff27e809d3870f",
+      "source_fact_keys": [
+        "source_fact:v1:1d07902d3000019f17b01c3da32bafb13b0f47d28534e1c6f36a0d4db839d149"
+      ],
+      "source_published_kst": "2026-10-21T14:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"1200억원 규모\"…오스템임플란트, 영구채 발행",
+      "telegram_core_fact": "오스템임플란트 관계자는 \"이번 신종자본증권 발행은 단순한 자금 조달을 넘어 해외법인의 차입 구조를 개선해 신용도를 높이고 금융비용과 환율 변동 위험을 낮추기 위한 것\"이라고 말했다.",
+      "title": "\"1200억원 규모\"…오스템임플란트, 영구채 발행"
     },
     "fact:32cbc92fd28274666d66b925": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -139496,6 +139717,31 @@
       "source_title": "현대차, 인도에 21조 투자… 글로벌 톱3시장 '국민차' 노린다",
       "telegram_core_fact": "현대자동차가 세계 3대 자동차시장으로 성장한 인도에서 생산능력 확대를 바탕으로 R&D(연구·개발)와 부품공급망을 강화해 글로벌 성장동력 확보에 나선다.",
       "title": "현대차, 인도에 21조 투자… 글로벌 톱3시장 '국민차' 노린다"
+    },
+    "fact:60b5606dc28a4338191951ca": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910308",
+      "source": "헤럴드경제",
+      "source_body_digest": "c935672817f311dd890771af94e44645e8330bc76e38994f2b6a1f9e8b5aaa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d377e6bca7f3590ce4cb80cbc9b8fc63761921d908229ff672f916e092999e23",
+      "source_fact_keys": [
+        "source_fact:v1:5252b775f4d83392a2b7410650aec792edf8d9eb45440faa27511fd1677ea174",
+        "source_fact:v1:6fd3d1ce76e334f7de789682c73a850cd3033003aa86066439e627c9e3a69d34",
+        "source_fact:v1:9fe4778e604200d9db3c55003ce88e10bc3abcb512d51e9e5e98993481d3a6dd",
+        "source_fact:v1:b38d00c0dcf52c243cdffe167a11f21a0c741f7c5cfe3594eb2ac364b7126141",
+        "source_fact:v1:b44055d4c3614b72d8ec05e5f2fcf87ff69fa85cb0997b273c2cd86b813194c2",
+        "source_fact:v1:eda69dd4381d4069af01f6c7cc0faf42509325fcdddc71e828bc3699247244f9"
+      ],
+      "source_published_kst": "2026-10-21T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”",
+      "telegram_core_fact": "스페이스X가 20일(현지시간) 발표한 3분기 실적에서 인공지능(AI) 컴퓨팅 수요가 공급을 압도하고 있다며 신규 컴퓨팅 투자금을 1년 안에 회수할 수 있다고 밝혔다.",
+      "title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”"
     },
     "fact:60bf4a03fd87a3e831973156": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -162166,6 +162412,27 @@
       "telegram_core_fact": "챈은 \"데이터센터 구축, 미국 모델 훈련은 중국에서 수입되는 수많은 데이터센터 부품에 의존한다\"며 미국 공급망 전반에 걸쳐서도 중국산 부품과 연결고리가 나타난다고 평가했다.",
       "title": "\"美기업들, AI 패권 경쟁 벌이면서도 中 공급망 의존\""
     },
+    "fact:9c097120bae4b7151f190b38": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835408",
+      "source": "뉴시스",
+      "source_body_digest": "fbb01438bad9cd4f63ea812a601b754316b27ee74535e5d929ae32dfa26f6c90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a854957383a4de54033a3233b0196faa30d05f4bd5750d2c30b81ca654bd3c45",
+      "source_fact_keys": [
+        "source_fact:v1:1c58ca4cc8e616bdea3b3a16f4fe7f5d3fe96daf1a39b262a5b24ebec1e9cb33",
+        "source_fact:v1:964b10ea0f8603a694084554984c20c7c4c78906ea26c1d231c04a618b4c0fbe"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입",
+      "telegram_core_fact": "울산항만공사는 태양광 발전설비의 효율적인 운영과 체계적인 유지관리를 위해 '인공지능(AI) 기반 태양광 발전설비 모니터링 시스템'을 도입했다고 21일 밝혔다. 울산항만공사에 따르면 이번에 도입된 시스템은 발전량을 실시간으로 측정하는 기존 방식에 빅데이터와 AI 기술을 결합한 것이 특징이다.",
+      "title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입"
+    },
     "fact:9c3471672917f1680af6e735": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -173811,6 +174078,31 @@
       "source_published_kst": "2026-10-06T11:33+09:00",
       "title": "'연산역 수자인 센트리오' 10월 공급…일반분양 139가구"
     },
+    "fact:b855b2a8618dda8dce20613c": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910319",
+      "source": "헤럴드경제",
+      "source_body_digest": "c43bdfbb5e5de2aa7012bcf323a4079c5aa2c8de474dc4ea52fe8ae3dd07c63a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de398329bf5b4504d3d3c2a829fcd7bf04fab6449ee943374b072087256a783c",
+      "source_fact_keys": [
+        "source_fact:v1:080f992a58d43edbc243002c5e3e1f9bc98d162194d4a326535513f0674f69e6",
+        "source_fact:v1:0dbcac5a157c96151bfba68e2c07c26360e8d94ab1350f99c88c56f779945750",
+        "source_fact:v1:1de771178d2b26358b3af77be6c1790d01dfb02f24e394b620c745fda17fc95d",
+        "source_fact:v1:5dfa5a1ba6f66de076e21f7a44b6864079ff1b776f37e0e7fba4cf6c06cc29ed",
+        "source_fact:v1:736827c5de6025cd34319908fabba3202b7f69059ee46e2f56bc2bef227482b7",
+        "source_fact:v1:eb5b246a023b194e6baba94ede9859e9fe8854f67c5f52311eb19dc6025d51e9"
+      ],
+      "source_published_kst": "2026-10-21T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]",
+      "telegram_core_fact": "우선 LH는 올해 모듈러주택 연간 발주 물량을 당초 목표치(2000가구)를 웃도는 2100가구 수준으로 확대해 초기 시장 공급을 견인할 방침이다.",
+      "title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]"
+    },
     "fact:b877dd0b08744e7e4d4b297a": {
       "first_seen_kst": "2026-10-19T11:13:29+09:00",
       "lanes": {
@@ -179263,6 +179555,30 @@
       "source_title": "엔비디아 뛰어넘고 내년 전망도 밝은데…'분기 영업익 100조' 삼성전자, 주가는 왜?",
       "telegram_core_fact": "최근 분기 약 85조원의 영업이익을 기록한 엔비디아보다도 많은 규모다.",
       "title": "엔비디아 뛰어넘고 내년 전망도 밝은데…'분기 영업익 100조' 삼성전자, 주가는 왜?"
+    },
+    "fact:c75c4a3f07dd2e6fb57677e0": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12181781",
+      "source": "매일경제",
+      "source_body_digest": "3b3fb1df788f9fd8b858d5d407d2bfab13c6cea51bcf69fa65a62391e19ab521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00a916166498175bfc943a5098146696bb8dd46fd8ce4eda4c8b05f6c2060888",
+      "source_fact_keys": [
+        "source_fact:v1:1c2d45064952a9a7696360c74e7c0b5a472c9262b090313716a26f0f7842f677",
+        "source_fact:v1:1e7181ecc7148d68c28f71ce0f89409a6e7405154ee3d5a54239ddf386875487",
+        "source_fact:v1:bfd7c01bce6beeaf51b31305b3868ff151a5b6cd17316ea1793dbb41ce47e5b8",
+        "source_fact:v1:c8d90ff314dab995312e010af174f625c406bdb7247ced1bf9cd1c0cd771cf64",
+        "source_fact:v1:d01d788160a6d411565c39f62f762ae777cf660497cfc9aeecc7acc587da1e49"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외",
+      "telegram_core_fact": "산업통상부는 배터리와 디스플레이 등 다른 첨단산업까지 규제 완화 대상을 확대하려 했지만 공정거래위원회가 반대하면서 무산된 것으로 알려졌다.",
+      "title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외"
     },
     "fact:c760fb8eb1d20a1632a818b9": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
@@ -204608,6 +204924,31 @@
       "source": "헤럴드경제",
       "title": "매출 2100억 제조기업도 ‘상폐 걱정’…우진플라임 “시총 하나로 상장유지 판단 아쉬워” [투자360]"
     },
+    "link:076f8960604b5a713ff9b7e1": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910319",
+      "source": "헤럴드경제",
+      "source_body_digest": "c43bdfbb5e5de2aa7012bcf323a4079c5aa2c8de474dc4ea52fe8ae3dd07c63a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de398329bf5b4504d3d3c2a829fcd7bf04fab6449ee943374b072087256a783c",
+      "source_fact_keys": [
+        "source_fact:v1:080f992a58d43edbc243002c5e3e1f9bc98d162194d4a326535513f0674f69e6",
+        "source_fact:v1:0dbcac5a157c96151bfba68e2c07c26360e8d94ab1350f99c88c56f779945750",
+        "source_fact:v1:1de771178d2b26358b3af77be6c1790d01dfb02f24e394b620c745fda17fc95d",
+        "source_fact:v1:5dfa5a1ba6f66de076e21f7a44b6864079ff1b776f37e0e7fba4cf6c06cc29ed",
+        "source_fact:v1:736827c5de6025cd34319908fabba3202b7f69059ee46e2f56bc2bef227482b7",
+        "source_fact:v1:eb5b246a023b194e6baba94ede9859e9fe8854f67c5f52311eb19dc6025d51e9"
+      ],
+      "source_published_kst": "2026-10-21T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]",
+      "telegram_core_fact": "우선 LH는 올해 모듈러주택 연간 발주 물량을 당초 목표치(2000가구)를 웃도는 2100가구 수준으로 확대해 초기 시장 공급을 견인할 방침이다.",
+      "title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]"
+    },
     "link:0772726062aadc80a8556752": {
       "first_seen_kst": "2026-10-16T23:32:01+09:00",
       "lanes": {
@@ -222988,6 +223329,31 @@
       "telegram_core_fact": "허 조사관은 \"스마트워치는 피해자를 아주 제한적으로 보호할 수 있는 조치\"라며 \"피해자 보호 조치에만 의존할 것이 아니라 가해자의 접근 여부를 실질적으로 감시하고 필요하면 격리하는 등 적극적으로 제재해야 한다\"고 말했다.",
       "title": "접근금지 공백, 스마트워치 미작동…'피해자 보호' 허점에 참극"
     },
+    "link:2c9b50409ad2e7fc96c1a2a3": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910308",
+      "source": "헤럴드경제",
+      "source_body_digest": "c935672817f311dd890771af94e44645e8330bc76e38994f2b6a1f9e8b5aaa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d377e6bca7f3590ce4cb80cbc9b8fc63761921d908229ff672f916e092999e23",
+      "source_fact_keys": [
+        "source_fact:v1:5252b775f4d83392a2b7410650aec792edf8d9eb45440faa27511fd1677ea174",
+        "source_fact:v1:6fd3d1ce76e334f7de789682c73a850cd3033003aa86066439e627c9e3a69d34",
+        "source_fact:v1:9fe4778e604200d9db3c55003ce88e10bc3abcb512d51e9e5e98993481d3a6dd",
+        "source_fact:v1:b38d00c0dcf52c243cdffe167a11f21a0c741f7c5cfe3594eb2ac364b7126141",
+        "source_fact:v1:b44055d4c3614b72d8ec05e5f2fcf87ff69fa85cb0997b273c2cd86b813194c2",
+        "source_fact:v1:eda69dd4381d4069af01f6c7cc0faf42509325fcdddc71e828bc3699247244f9"
+      ],
+      "source_published_kst": "2026-10-21T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”",
+      "telegram_core_fact": "스페이스X가 20일(현지시간) 발표한 3분기 실적에서 인공지능(AI) 컴퓨팅 수요가 공급을 압도하고 있다며 신규 컴퓨팅 투자금을 1년 안에 회수할 수 있다고 밝혔다.",
+      "title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”"
+    },
     "link:2cac590958bc4fede5392ff8": {
       "first_seen_kst": "2026-10-10T17:45:55+09:00",
       "lanes": {
@@ -231928,6 +232294,27 @@
       "source_title": "\"규제해도 집값 상승 압력 여전\"…10·15 대책 규제 1년, 남은 변수는?",
       "telegram_core_fact": "대책 시행 1년간 가격·거래량·수요 이동과 임대차 시장 변화를 분석하고 규제 효과와 한계, 향후 시장 변수를 짚는다.",
       "title": "\"규제해도 집값 상승 압력 여전\"…10·15 대책 규제 1년, 남은 변수는?"
+    },
+    "link:3e5fafc16cbe2e26d2ef10c5": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835408",
+      "source": "뉴시스",
+      "source_body_digest": "fbb01438bad9cd4f63ea812a601b754316b27ee74535e5d929ae32dfa26f6c90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a854957383a4de54033a3233b0196faa30d05f4bd5750d2c30b81ca654bd3c45",
+      "source_fact_keys": [
+        "source_fact:v1:1c58ca4cc8e616bdea3b3a16f4fe7f5d3fe96daf1a39b262a5b24ebec1e9cb33",
+        "source_fact:v1:964b10ea0f8603a694084554984c20c7c4c78906ea26c1d231c04a618b4c0fbe"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입",
+      "telegram_core_fact": "울산항만공사는 태양광 발전설비의 효율적인 운영과 체계적인 유지관리를 위해 '인공지능(AI) 기반 태양광 발전설비 모니터링 시스템'을 도입했다고 21일 밝혔다. 울산항만공사에 따르면 이번에 도입된 시스템은 발전량을 실시간으로 측정하는 기존 방식에 빅데이터와 AI 기술을 결합한 것이 특징이다.",
+      "title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입"
     },
     "link:3e69661e4c78bb9d4fa8f819": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -242368,6 +242755,26 @@
       "link": "https://www.mt.co.kr/politics/2026/09/28/2026092816432952073",
       "source": "머니투데이",
       "title": "정무위, 국감 증인 채택 또 불발...野 \"레버리지 ETF 김용범 불러야\""
+    },
+    "link:5449ced6734a376eacf36d21": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835166",
+      "source": "뉴시스",
+      "source_body_digest": "231c5b24ee48dad09d64993793231810a647bdefe4e64041daab581936819212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1be7399b17051032ea30f4918f601ed21c12aa300c92a4b915ff27e809d3870f",
+      "source_fact_keys": [
+        "source_fact:v1:1d07902d3000019f17b01c3da32bafb13b0f47d28534e1c6f36a0d4db839d149"
+      ],
+      "source_published_kst": "2026-10-21T14:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"1200억원 규모\"…오스템임플란트, 영구채 발행",
+      "telegram_core_fact": "오스템임플란트 관계자는 \"이번 신종자본증권 발행은 단순한 자금 조달을 넘어 해외법인의 차입 구조를 개선해 신용도를 높이고 금융비용과 환율 변동 위험을 낮추기 위한 것\"이라고 말했다.",
+      "title": "\"1200억원 규모\"…오스템임플란트, 영구채 발행"
     },
     "link:544e101e59c8a3832783fd18": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
@@ -259928,6 +260335,30 @@
       ],
       "source_published_kst": "2026-10-07T17:16+09:00",
       "title": "핀란드, 구글 데이터센터 2곳 건립 제동…\"환경 훼손 우려\""
+    },
+    "link:78a8862d15832cbcaec72afd": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12181781",
+      "source": "매일경제",
+      "source_body_digest": "3b3fb1df788f9fd8b858d5d407d2bfab13c6cea51bcf69fa65a62391e19ab521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00a916166498175bfc943a5098146696bb8dd46fd8ce4eda4c8b05f6c2060888",
+      "source_fact_keys": [
+        "source_fact:v1:1c2d45064952a9a7696360c74e7c0b5a472c9262b090313716a26f0f7842f677",
+        "source_fact:v1:1e7181ecc7148d68c28f71ce0f89409a6e7405154ee3d5a54239ddf386875487",
+        "source_fact:v1:bfd7c01bce6beeaf51b31305b3868ff151a5b6cd17316ea1793dbb41ce47e5b8",
+        "source_fact:v1:c8d90ff314dab995312e010af174f625c406bdb7247ced1bf9cd1c0cd771cf64",
+        "source_fact:v1:d01d788160a6d411565c39f62f762ae777cf660497cfc9aeecc7acc587da1e49"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외",
+      "telegram_core_fact": "산업통상부는 배터리와 디스플레이 등 다른 첨단산업까지 규제 완화 대상을 확대하려 했지만 공정거래위원회가 반대하면서 무산된 것으로 알려졌다.",
+      "title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외"
     },
     "link:78ad619b46ab40be2949531b": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -314943,6 +315374,46 @@
       "telegram_core_fact": "코스피가 열흘간 19% 급락하는 동안 S&P500(-1.5%)과 나스닥(-4.9%)의 낙폭이 상대적으로 작았던 데다, 원·달러 환율이 1300원대 초반까지 내려서며 투자자들의 환율 부담을 줄여준 점도 매수세를 부추겼다. 'SOXL'는 순매수액만 32억9208만 달러(약 4조4000억원)에 달했다.",
       "title": "국장 탈출해 '미장 3배 레버리지' 탔더니…'SOXL' 열흘 새 -43%"
     },
+    "link:e99fc7f69462b537c15f0df2": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835442",
+      "source": "뉴시스",
+      "source_body_digest": "f6dd07c77500d343ba7f4943a10cf59c21c793334999a335ec15ed6709a3e41c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ee954231e72484db20caf3202cdba63bb86fd51cbecfc950ee5228a67ee9333",
+      "source_fact_keys": [
+        "source_fact:v1:4a7e86e9f3b7d12b0d9453941fa56b6dd6867cdd52938fc59682672532a2c651",
+        "source_fact:v1:54edcca0fc8bf6f2e4cf4504823b95279073dfe8c128b1e77133643b04626b8d",
+        "source_fact:v1:a53fcccfeacb831ef9f940b6f3d0e1696f0a7ce07a6c8cbf2f7e632510b4168c"
+      ],
+      "source_published_kst": "2026-10-21T16:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호",
+      "telegram_core_fact": "LH는 이날 경기남부지역본부에서 모듈러 제조사, 가전사, 전문가들이 참석한 가운데 '모듈러주택 활성화 간담회'를 열어 모듈러 공급 확대와 기술 고도화 방안을 논의했다.",
+      "title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호"
+    },
+    "link:e9b103035ad5a2dc54b13d42": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910306",
+      "source": "헤럴드경제",
+      "source_body_digest": "d6262db103cfa5c3b28f0e84a51e2e110cada79010555dda9423d1fae5d3adfd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T16:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "“1억℃ 초고온도 거뜬” 핵융합 소재 만든다”…핵융합硏·포스코 기술개발 맞손",
+      "telegram_core_fact": "초고온 플라즈마 환경을 견디는 내열소재부터 극저온 초전도자석에 사용되는 특수강까지 핵융합로 핵심 소재의 국산화와 공급망 구축을 추진한다.",
+      "title": "“1억℃ 초고온도 거뜬” 핵융합 소재 만든다”…핵융합硏·포스코 기술개발 맞손"
+    },
     "link:e9b5ac37a7e56e13e903cc47": {
       "first_seen_kst": "2026-10-02T15:05:30+09:00",
       "lanes": {
@@ -348411,6 +348882,30 @@
       "source_published_kst": "2026-10-07T16:50+09:00",
       "title": "“외국인 지역여행 편리하게”…관광공사, 지방공항·항만 연계 캠페인"
     },
+    "original:2f94670d5a32ee495793b386": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12181781",
+      "source": "매일경제",
+      "source_body_digest": "3b3fb1df788f9fd8b858d5d407d2bfab13c6cea51bcf69fa65a62391e19ab521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00a916166498175bfc943a5098146696bb8dd46fd8ce4eda4c8b05f6c2060888",
+      "source_fact_keys": [
+        "source_fact:v1:1c2d45064952a9a7696360c74e7c0b5a472c9262b090313716a26f0f7842f677",
+        "source_fact:v1:1e7181ecc7148d68c28f71ce0f89409a6e7405154ee3d5a54239ddf386875487",
+        "source_fact:v1:bfd7c01bce6beeaf51b31305b3868ff151a5b6cd17316ea1793dbb41ce47e5b8",
+        "source_fact:v1:c8d90ff314dab995312e010af174f625c406bdb7247ced1bf9cd1c0cd771cf64",
+        "source_fact:v1:d01d788160a6d411565c39f62f762ae777cf660497cfc9aeecc7acc587da1e49"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외",
+      "telegram_core_fact": "산업통상부는 배터리와 디스플레이 등 다른 첨단산업까지 규제 완화 대상을 확대하려 했지만 공정거래위원회가 반대하면서 무산된 것으로 알려졌다.",
+      "title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외"
+    },
     "original:2f9cd80f9c7bdfad921dedaa": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -350955,6 +351450,28 @@
       "source_published_kst": "2026-10-06T15:48+09:00",
       "title": "LG이노텍, 美서 HBM 적용 패키지 특허 공개…AI 기판 IP 넓힌다"
     },
+    "original:354eb058379a4ce91f3961b8": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835442",
+      "source": "뉴시스",
+      "source_body_digest": "f6dd07c77500d343ba7f4943a10cf59c21c793334999a335ec15ed6709a3e41c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ee954231e72484db20caf3202cdba63bb86fd51cbecfc950ee5228a67ee9333",
+      "source_fact_keys": [
+        "source_fact:v1:4a7e86e9f3b7d12b0d9453941fa56b6dd6867cdd52938fc59682672532a2c651",
+        "source_fact:v1:54edcca0fc8bf6f2e4cf4504823b95279073dfe8c128b1e77133643b04626b8d",
+        "source_fact:v1:a53fcccfeacb831ef9f940b6f3d0e1696f0a7ce07a6c8cbf2f7e632510b4168c"
+      ],
+      "source_published_kst": "2026-10-21T16:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호",
+      "telegram_core_fact": "LH는 이날 경기남부지역본부에서 모듈러 제조사, 가전사, 전문가들이 참석한 가운데 '모듈러주택 활성화 간담회'를 열어 모듈러 공급 확대와 기술 고도화 방안을 논의했다.",
+      "title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호"
+    },
     "original:35722c9a74c218c2097dbc5d": {
       "first_seen_kst": "2026-10-13T04:02:08+09:00",
       "lanes": {
@@ -351201,6 +351718,26 @@
       "link": "https://www.mt.co.kr/stock/2026/09/18/2026091810570167529",
       "source": "머니투데이",
       "title": "키움운용, 'KIWOOM 200TR ETF' 총보수 연 0.010%로 인하"
+    },
+    "original:36277ad1717f43dce4d51fc7": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835166",
+      "source": "뉴시스",
+      "source_body_digest": "231c5b24ee48dad09d64993793231810a647bdefe4e64041daab581936819212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1be7399b17051032ea30f4918f601ed21c12aa300c92a4b915ff27e809d3870f",
+      "source_fact_keys": [
+        "source_fact:v1:1d07902d3000019f17b01c3da32bafb13b0f47d28534e1c6f36a0d4db839d149"
+      ],
+      "source_published_kst": "2026-10-21T14:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"1200억원 규모\"…오스템임플란트, 영구채 발행",
+      "telegram_core_fact": "오스템임플란트 관계자는 \"이번 신종자본증권 발행은 단순한 자금 조달을 넘어 해외법인의 차입 구조를 개선해 신용도를 높이고 금융비용과 환율 변동 위험을 낮추기 위한 것\"이라고 말했다.",
+      "title": "\"1200억원 규모\"…오스템임플란트, 영구채 발행"
     },
     "original:36339e6e59d0efddfb296c00": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
@@ -383486,6 +384023,24 @@
       "telegram_core_fact": "서한(011370)은 대치동 AIDC 9MW 데이터센터 신축사업에 관한 단일판매ㆍ공급계약체결 을 21일에 공시했다.",
       "title": "서한 수주공시 - 대치동 AIDC 9MW 데이터센터 신축사업 1,296억원 (매출액대비 20.09 %)"
     },
+    "original:79256465a687a00a23cecb23": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910306",
+      "source": "헤럴드경제",
+      "source_body_digest": "d6262db103cfa5c3b28f0e84a51e2e110cada79010555dda9423d1fae5d3adfd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T16:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "“1억℃ 초고온도 거뜬” 핵융합 소재 만든다”…핵융합硏·포스코 기술개발 맞손",
+      "telegram_core_fact": "초고온 플라즈마 환경을 견디는 내열소재부터 극저온 초전도자석에 사용되는 특수강까지 핵융합로 핵심 소재의 국산화와 공급망 구축을 추진한다.",
+      "title": "“1억℃ 초고온도 거뜬” 핵융합 소재 만든다”…핵융합硏·포스코 기술개발 맞손"
+    },
     "original:79259626b36db565ed32643b": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -392969,6 +393524,31 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811635",
       "source": "뉴시스",
       "title": "뉴욕증시, 강보합 마감…브렌트유 '美 중동 항모 추가'에 4%↑"
+    },
+    "original:8c6b95570d5a4bd72958999d": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910319",
+      "source": "헤럴드경제",
+      "source_body_digest": "c43bdfbb5e5de2aa7012bcf323a4079c5aa2c8de474dc4ea52fe8ae3dd07c63a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de398329bf5b4504d3d3c2a829fcd7bf04fab6449ee943374b072087256a783c",
+      "source_fact_keys": [
+        "source_fact:v1:080f992a58d43edbc243002c5e3e1f9bc98d162194d4a326535513f0674f69e6",
+        "source_fact:v1:0dbcac5a157c96151bfba68e2c07c26360e8d94ab1350f99c88c56f779945750",
+        "source_fact:v1:1de771178d2b26358b3af77be6c1790d01dfb02f24e394b620c745fda17fc95d",
+        "source_fact:v1:5dfa5a1ba6f66de076e21f7a44b6864079ff1b776f37e0e7fba4cf6c06cc29ed",
+        "source_fact:v1:736827c5de6025cd34319908fabba3202b7f69059ee46e2f56bc2bef227482b7",
+        "source_fact:v1:eb5b246a023b194e6baba94ede9859e9fe8854f67c5f52311eb19dc6025d51e9"
+      ],
+      "source_published_kst": "2026-10-21T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]",
+      "telegram_core_fact": "우선 LH는 올해 모듈러주택 연간 발주 물량을 당초 목표치(2000가구)를 웃도는 2100가구 수준으로 확대해 초기 시장 공급을 견인할 방침이다.",
+      "title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]"
     },
     "original:8c7592ca8de2462f973cc6ac": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -439204,6 +439784,31 @@
       "telegram_core_fact": "노보 노디스크가 지난해 3분기 20억 덴마크 크로네(약 4013억원) 총 순 매출 혜택을 받으면서 해당 분기 보고 기준 매출은 307억 덴마크 크로네(약 6조1600억원)로 증가했다는 점도 이번 매출 감소세를 한층 부각할 것이라고 그는 지적했다.",
       "title": "[개장전특징주]엔비디아, 웨스턴디지털, 노보 노디스크"
     },
+    "original:efd2fd7d1449b29ed3afb602": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910308",
+      "source": "헤럴드경제",
+      "source_body_digest": "c935672817f311dd890771af94e44645e8330bc76e38994f2b6a1f9e8b5aaa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d377e6bca7f3590ce4cb80cbc9b8fc63761921d908229ff672f916e092999e23",
+      "source_fact_keys": [
+        "source_fact:v1:5252b775f4d83392a2b7410650aec792edf8d9eb45440faa27511fd1677ea174",
+        "source_fact:v1:6fd3d1ce76e334f7de789682c73a850cd3033003aa86066439e627c9e3a69d34",
+        "source_fact:v1:9fe4778e604200d9db3c55003ce88e10bc3abcb512d51e9e5e98993481d3a6dd",
+        "source_fact:v1:b38d00c0dcf52c243cdffe167a11f21a0c741f7c5cfe3594eb2ac364b7126141",
+        "source_fact:v1:b44055d4c3614b72d8ec05e5f2fcf87ff69fa85cb0997b273c2cd86b813194c2",
+        "source_fact:v1:eda69dd4381d4069af01f6c7cc0faf42509325fcdddc71e828bc3699247244f9"
+      ],
+      "source_published_kst": "2026-10-21T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”",
+      "telegram_core_fact": "스페이스X가 20일(현지시간) 발표한 3분기 실적에서 인공지능(AI) 컴퓨팅 수요가 공급을 압도하고 있다며 신규 컴퓨팅 투자금을 1년 안에 회수할 수 있다고 밝혔다.",
+      "title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”"
+    },
     "original:efdca2e1db168d0cffdc8e13": {
       "first_seen_kst": "2026-10-20T05:37:55+09:00",
       "lanes": {
@@ -441511,6 +442116,27 @@
       "source_title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대",
       "telegram_core_fact": "경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다.",
       "title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대"
+    },
+    "original:f49f43dfab5a64c2d56baa32": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835408",
+      "source": "뉴시스",
+      "source_body_digest": "fbb01438bad9cd4f63ea812a601b754316b27ee74535e5d929ae32dfa26f6c90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a854957383a4de54033a3233b0196faa30d05f4bd5750d2c30b81ca654bd3c45",
+      "source_fact_keys": [
+        "source_fact:v1:1c58ca4cc8e616bdea3b3a16f4fe7f5d3fe96daf1a39b262a5b24ebec1e9cb33",
+        "source_fact:v1:964b10ea0f8603a694084554984c20c7c4c78906ea26c1d231c04a618b4c0fbe"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입",
+      "telegram_core_fact": "울산항만공사는 태양광 발전설비의 효율적인 운영과 체계적인 유지관리를 위해 '인공지능(AI) 기반 태양광 발전설비 모니터링 시스템'을 도입했다고 21일 밝혔다. 울산항만공사에 따르면 이번에 도입된 시스템은 발전량을 실시간으로 측정하는 기존 방식에 빅데이터와 AI 기술을 결합한 것이 특징이다.",
+      "title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입"
     },
     "original:f4a013210675941e03fb6f0c": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
@@ -449279,6 +449905,30 @@
       "source_title": "트럼프, 러시아 에너지 연계 '관세 폭탄' 유예…\"경유 가격 때문\"",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 경유가격을 잡기 위해 러시아 에너지 수출 연계 대규모 관세를 면제했다.",
       "title": "트럼프, 러시아 에너지 연계 '관세 폭탄' 유예…\"경유 가격 때문\""
+    },
+    "source_fact:0157d99d27c55e53a546adb1": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12181781",
+      "source": "매일경제",
+      "source_body_digest": "3b3fb1df788f9fd8b858d5d407d2bfab13c6cea51bcf69fa65a62391e19ab521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00a916166498175bfc943a5098146696bb8dd46fd8ce4eda4c8b05f6c2060888",
+      "source_fact_keys": [
+        "source_fact:v1:1c2d45064952a9a7696360c74e7c0b5a472c9262b090313716a26f0f7842f677",
+        "source_fact:v1:1e7181ecc7148d68c28f71ce0f89409a6e7405154ee3d5a54239ddf386875487",
+        "source_fact:v1:bfd7c01bce6beeaf51b31305b3868ff151a5b6cd17316ea1793dbb41ce47e5b8",
+        "source_fact:v1:c8d90ff314dab995312e010af174f625c406bdb7247ced1bf9cd1c0cd771cf64",
+        "source_fact:v1:d01d788160a6d411565c39f62f762ae777cf660497cfc9aeecc7acc587da1e49"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외",
+      "telegram_core_fact": "산업통상부는 배터리와 디스플레이 등 다른 첨단산업까지 규제 완화 대상을 확대하려 했지만 공정거래위원회가 반대하면서 무산된 것으로 알려졌다.",
+      "title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외"
     },
     "source_fact:015dac4254ef98dd72c087c3": {
       "first_seen_kst": "2026-10-15T00:12:18+09:00",
@@ -466832,6 +467482,31 @@
       "telegram_core_fact": "벤데트는 \"얀덱스 등 피격된 데이터센터의 피해가 러시아의 AI 개발을 상당히 지연시킬 것\"이라고 내다봤다.",
       "title": "데이터센터 먼저 친 러시아…우크라 '맞불 드론'에 군사용 AI까지 위협"
     },
+    "source_fact:0ac663e959c53801d4cac7d6": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910308",
+      "source": "헤럴드경제",
+      "source_body_digest": "c935672817f311dd890771af94e44645e8330bc76e38994f2b6a1f9e8b5aaa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d377e6bca7f3590ce4cb80cbc9b8fc63761921d908229ff672f916e092999e23",
+      "source_fact_keys": [
+        "source_fact:v1:5252b775f4d83392a2b7410650aec792edf8d9eb45440faa27511fd1677ea174",
+        "source_fact:v1:6fd3d1ce76e334f7de789682c73a850cd3033003aa86066439e627c9e3a69d34",
+        "source_fact:v1:9fe4778e604200d9db3c55003ce88e10bc3abcb512d51e9e5e98993481d3a6dd",
+        "source_fact:v1:b38d00c0dcf52c243cdffe167a11f21a0c741f7c5cfe3594eb2ac364b7126141",
+        "source_fact:v1:b44055d4c3614b72d8ec05e5f2fcf87ff69fa85cb0997b273c2cd86b813194c2",
+        "source_fact:v1:eda69dd4381d4069af01f6c7cc0faf42509325fcdddc71e828bc3699247244f9"
+      ],
+      "source_published_kst": "2026-10-21T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”",
+      "telegram_core_fact": "스페이스X가 20일(현지시간) 발표한 3분기 실적에서 인공지능(AI) 컴퓨팅 수요가 공급을 압도하고 있다며 신규 컴퓨팅 투자금을 1년 안에 회수할 수 있다고 밝혔다.",
+      "title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”"
+    },
     "source_fact:0aca9a7c2f595fe8ad282458": {
       "first_seen_kst": "2026-10-14T16:58:19+09:00",
       "lanes": {
@@ -468835,6 +469510,28 @@
       "source_title": "프레이트카 아메리카, 3분기 잠정 매출 52% 급감..연간 가이던스 하향",
       "telegram_core_fact": "현재 집계된 2026년 예상 매출액은 4억4514만 달러로 전년 대비 11.15% 감소할 것으로 예상되며, 이는 회사의 새 가이던스 상단인 4억1000만 달러를 웃돈다.",
       "title": "프레이트카 아메리카, 3분기 잠정 매출 52% 급감..연간 가이던스 하향"
+    },
+    "source_fact:0bd825a9da4b4804666f99f9": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835442",
+      "source": "뉴시스",
+      "source_body_digest": "f6dd07c77500d343ba7f4943a10cf59c21c793334999a335ec15ed6709a3e41c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ee954231e72484db20caf3202cdba63bb86fd51cbecfc950ee5228a67ee9333",
+      "source_fact_keys": [
+        "source_fact:v1:4a7e86e9f3b7d12b0d9453941fa56b6dd6867cdd52938fc59682672532a2c651",
+        "source_fact:v1:54edcca0fc8bf6f2e4cf4504823b95279073dfe8c128b1e77133643b04626b8d",
+        "source_fact:v1:a53fcccfeacb831ef9f940b6f3d0e1696f0a7ce07a6c8cbf2f7e632510b4168c"
+      ],
+      "source_published_kst": "2026-10-21T16:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호",
+      "telegram_core_fact": "LH는 이날 경기남부지역본부에서 모듈러 제조사, 가전사, 전문가들이 참석한 가운데 '모듈러주택 활성화 간담회'를 열어 모듈러 공급 확대와 기술 고도화 방안을 논의했다.",
+      "title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호"
     },
     "source_fact:0bdb39a3e0b9e19d60e13fb0": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -522979,6 +523676,30 @@
       "telegram_core_fact": "우리금융그룹이 ‘미래동반성장프로젝트’를 통해 1년 동안 35조원의 달하는 생산적·포용 금융을 공급했다.",
       "title": "우리금융, ‘미래동반성장프로젝트’ 1년 간 35조 공급…임종룡 “공급의 구조적 변화”"
     },
+    "source_fact:26eb3310247961e3b4262fcb": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12181781",
+      "source": "매일경제",
+      "source_body_digest": "3b3fb1df788f9fd8b858d5d407d2bfab13c6cea51bcf69fa65a62391e19ab521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00a916166498175bfc943a5098146696bb8dd46fd8ce4eda4c8b05f6c2060888",
+      "source_fact_keys": [
+        "source_fact:v1:1c2d45064952a9a7696360c74e7c0b5a472c9262b090313716a26f0f7842f677",
+        "source_fact:v1:1e7181ecc7148d68c28f71ce0f89409a6e7405154ee3d5a54239ddf386875487",
+        "source_fact:v1:bfd7c01bce6beeaf51b31305b3868ff151a5b6cd17316ea1793dbb41ce47e5b8",
+        "source_fact:v1:c8d90ff314dab995312e010af174f625c406bdb7247ced1bf9cd1c0cd771cf64",
+        "source_fact:v1:d01d788160a6d411565c39f62f762ae777cf660497cfc9aeecc7acc587da1e49"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외",
+      "telegram_core_fact": "산업통상부는 배터리와 디스플레이 등 다른 첨단산업까지 규제 완화 대상을 확대하려 했지만 공정거래위원회가 반대하면서 무산된 것으로 알려졌다.",
+      "title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외"
+    },
     "source_fact:26ebdcad3774bb58cea2be07": {
       "first_seen_kst": "2026-10-11T21:07:10+09:00",
       "lanes": {
@@ -539317,6 +540038,31 @@
       "source_published_kst": "2026-10-07T06:10+09:00",
       "title": "북한 미사일 부품, 정품 아닌 위조품 대거 사용"
     },
+    "source_fact:2f5e40dba9204559d1ab03c4": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910308",
+      "source": "헤럴드경제",
+      "source_body_digest": "c935672817f311dd890771af94e44645e8330bc76e38994f2b6a1f9e8b5aaa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d377e6bca7f3590ce4cb80cbc9b8fc63761921d908229ff672f916e092999e23",
+      "source_fact_keys": [
+        "source_fact:v1:5252b775f4d83392a2b7410650aec792edf8d9eb45440faa27511fd1677ea174",
+        "source_fact:v1:6fd3d1ce76e334f7de789682c73a850cd3033003aa86066439e627c9e3a69d34",
+        "source_fact:v1:9fe4778e604200d9db3c55003ce88e10bc3abcb512d51e9e5e98993481d3a6dd",
+        "source_fact:v1:b38d00c0dcf52c243cdffe167a11f21a0c741f7c5cfe3594eb2ac364b7126141",
+        "source_fact:v1:b44055d4c3614b72d8ec05e5f2fcf87ff69fa85cb0997b273c2cd86b813194c2",
+        "source_fact:v1:eda69dd4381d4069af01f6c7cc0faf42509325fcdddc71e828bc3699247244f9"
+      ],
+      "source_published_kst": "2026-10-21T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”",
+      "telegram_core_fact": "스페이스X가 20일(현지시간) 발표한 3분기 실적에서 인공지능(AI) 컴퓨팅 수요가 공급을 압도하고 있다며 신규 컴퓨팅 투자금을 1년 안에 회수할 수 있다고 밝혔다.",
+      "title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”"
+    },
     "source_fact:2f65c93c2944f27067544974": {
       "first_seen_kst": "2026-10-20T12:12:43+09:00",
       "lanes": {
@@ -550134,6 +550880,30 @@
       "source_title": "트럼프, 우·러 에너지 휴전 깜짝 발표…젤렌스키 \"처음 듣는 이야기\"",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 정유시설을 서로 공격하지 않기로 합의했다고 11일(현지시간) 발표했다.",
       "title": "트럼프, 우·러 에너지 휴전 깜짝 발표…젤렌스키 \"처음 듣는 이야기\""
+    },
+    "source_fact:34fa9bd3954f51611a860c9e": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12181781",
+      "source": "매일경제",
+      "source_body_digest": "3b3fb1df788f9fd8b858d5d407d2bfab13c6cea51bcf69fa65a62391e19ab521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00a916166498175bfc943a5098146696bb8dd46fd8ce4eda4c8b05f6c2060888",
+      "source_fact_keys": [
+        "source_fact:v1:1c2d45064952a9a7696360c74e7c0b5a472c9262b090313716a26f0f7842f677",
+        "source_fact:v1:1e7181ecc7148d68c28f71ce0f89409a6e7405154ee3d5a54239ddf386875487",
+        "source_fact:v1:bfd7c01bce6beeaf51b31305b3868ff151a5b6cd17316ea1793dbb41ce47e5b8",
+        "source_fact:v1:c8d90ff314dab995312e010af174f625c406bdb7247ced1bf9cd1c0cd771cf64",
+        "source_fact:v1:d01d788160a6d411565c39f62f762ae777cf660497cfc9aeecc7acc587da1e49"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외",
+      "telegram_core_fact": "산업통상부는 배터리와 디스플레이 등 다른 첨단산업까지 규제 완화 대상을 확대하려 했지만 공정거래위원회가 반대하면서 무산된 것으로 알려졌다.",
+      "title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외"
     },
     "source_fact:34fecdc71a092c5f7e9c0b7f": {
       "first_seen_kst": "2026-10-20T20:22:43+09:00",
@@ -601648,6 +602418,31 @@
       "telegram_core_fact": "중국 국가통계국은 19일(현지시간) 3분기 국내총생산(GDP)이 전년비 4.5% 증가했다고 발표했다.",
       "title": "중국 3분기 GDP 4.5% 증가…올해 성장목표 달성 가시화(종합) | 연합뉴스"
     },
+    "source_fact:4eddc265293b1e9fe61afa8b": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910319",
+      "source": "헤럴드경제",
+      "source_body_digest": "c43bdfbb5e5de2aa7012bcf323a4079c5aa2c8de474dc4ea52fe8ae3dd07c63a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de398329bf5b4504d3d3c2a829fcd7bf04fab6449ee943374b072087256a783c",
+      "source_fact_keys": [
+        "source_fact:v1:080f992a58d43edbc243002c5e3e1f9bc98d162194d4a326535513f0674f69e6",
+        "source_fact:v1:0dbcac5a157c96151bfba68e2c07c26360e8d94ab1350f99c88c56f779945750",
+        "source_fact:v1:1de771178d2b26358b3af77be6c1790d01dfb02f24e394b620c745fda17fc95d",
+        "source_fact:v1:5dfa5a1ba6f66de076e21f7a44b6864079ff1b776f37e0e7fba4cf6c06cc29ed",
+        "source_fact:v1:736827c5de6025cd34319908fabba3202b7f69059ee46e2f56bc2bef227482b7",
+        "source_fact:v1:eb5b246a023b194e6baba94ede9859e9fe8854f67c5f52311eb19dc6025d51e9"
+      ],
+      "source_published_kst": "2026-10-21T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]",
+      "telegram_core_fact": "우선 LH는 올해 모듈러주택 연간 발주 물량을 당초 목표치(2000가구)를 웃도는 2100가구 수준으로 확대해 초기 시장 공급을 견인할 방침이다.",
+      "title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]"
+    },
     "source_fact:4edf571602aed326d61c025b": {
       "first_seen_kst": "2026-10-19T07:37:37+09:00",
       "lanes": {
@@ -601987,6 +602782,27 @@
       "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
       "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
       "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
+    },
+    "source_fact:4f0b512b542534478655f0ee": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835408",
+      "source": "뉴시스",
+      "source_body_digest": "fbb01438bad9cd4f63ea812a601b754316b27ee74535e5d929ae32dfa26f6c90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a854957383a4de54033a3233b0196faa30d05f4bd5750d2c30b81ca654bd3c45",
+      "source_fact_keys": [
+        "source_fact:v1:1c58ca4cc8e616bdea3b3a16f4fe7f5d3fe96daf1a39b262a5b24ebec1e9cb33",
+        "source_fact:v1:964b10ea0f8603a694084554984c20c7c4c78906ea26c1d231c04a618b4c0fbe"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입",
+      "telegram_core_fact": "울산항만공사는 태양광 발전설비의 효율적인 운영과 체계적인 유지관리를 위해 '인공지능(AI) 기반 태양광 발전설비 모니터링 시스템'을 도입했다고 21일 밝혔다. 울산항만공사에 따르면 이번에 도입된 시스템은 발전량을 실시간으로 측정하는 기존 방식에 빅데이터와 AI 기술을 결합한 것이 특징이다.",
+      "title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입"
     },
     "source_fact:4f0ddca0c6ce4cef1993aaa0": {
       "first_seen_kst": "2026-10-10T22:01:04+09:00",
@@ -627863,6 +628679,31 @@
       "telegram_core_fact": "Fed가 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 모든 참석자는 연방기금금리 목표범위를 0.25%포인트 인상해 연 3.75~4.00%로 높이는 데 찬성했다.",
       "title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]"
     },
+    "source_fact:5ba2ef74e1af93c69a0c3665": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910319",
+      "source": "헤럴드경제",
+      "source_body_digest": "c43bdfbb5e5de2aa7012bcf323a4079c5aa2c8de474dc4ea52fe8ae3dd07c63a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de398329bf5b4504d3d3c2a829fcd7bf04fab6449ee943374b072087256a783c",
+      "source_fact_keys": [
+        "source_fact:v1:080f992a58d43edbc243002c5e3e1f9bc98d162194d4a326535513f0674f69e6",
+        "source_fact:v1:0dbcac5a157c96151bfba68e2c07c26360e8d94ab1350f99c88c56f779945750",
+        "source_fact:v1:1de771178d2b26358b3af77be6c1790d01dfb02f24e394b620c745fda17fc95d",
+        "source_fact:v1:5dfa5a1ba6f66de076e21f7a44b6864079ff1b776f37e0e7fba4cf6c06cc29ed",
+        "source_fact:v1:736827c5de6025cd34319908fabba3202b7f69059ee46e2f56bc2bef227482b7",
+        "source_fact:v1:eb5b246a023b194e6baba94ede9859e9fe8854f67c5f52311eb19dc6025d51e9"
+      ],
+      "source_published_kst": "2026-10-21T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]",
+      "telegram_core_fact": "우선 LH는 올해 모듈러주택 연간 발주 물량을 당초 목표치(2000가구)를 웃도는 2100가구 수준으로 확대해 초기 시장 공급을 견인할 방침이다.",
+      "title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]"
+    },
     "source_fact:5ba67eb46843c2d7d1f8e0b8": {
       "first_seen_kst": "2026-10-20T02:43:34+09:00",
       "lanes": {
@@ -629410,6 +630251,30 @@
       ],
       "source_published_kst": "2026-10-06T14:13+09:00",
       "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
+    },
+    "source_fact:5c6f59603b98a9780542bc55": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12181781",
+      "source": "매일경제",
+      "source_body_digest": "3b3fb1df788f9fd8b858d5d407d2bfab13c6cea51bcf69fa65a62391e19ab521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00a916166498175bfc943a5098146696bb8dd46fd8ce4eda4c8b05f6c2060888",
+      "source_fact_keys": [
+        "source_fact:v1:1c2d45064952a9a7696360c74e7c0b5a472c9262b090313716a26f0f7842f677",
+        "source_fact:v1:1e7181ecc7148d68c28f71ce0f89409a6e7405154ee3d5a54239ddf386875487",
+        "source_fact:v1:bfd7c01bce6beeaf51b31305b3868ff151a5b6cd17316ea1793dbb41ce47e5b8",
+        "source_fact:v1:c8d90ff314dab995312e010af174f625c406bdb7247ced1bf9cd1c0cd771cf64",
+        "source_fact:v1:d01d788160a6d411565c39f62f762ae777cf660497cfc9aeecc7acc587da1e49"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외",
+      "telegram_core_fact": "산업통상부는 배터리와 디스플레이 등 다른 첨단산업까지 규제 완화 대상을 확대하려 했지만 공정거래위원회가 반대하면서 무산된 것으로 알려졌다.",
+      "title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외"
     },
     "source_fact:5c71494b5c99466001abc531": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -642182,6 +643047,31 @@
       "source_title": "'쪼개기 상장'과 다른 솔리다임⋯지분 줄어도 주주 몫은 커질 수 있어 [AI 반도체 자본 경쟁]",
       "telegram_core_fact": "솔리다임은 기존 사업부를 물적분할한 '쪼개기 상장'과 출발점이 다른 데다, 지분 희석이 반드시 주주가치 하락으로 이어지는 것은 아니라는 분석도 나온다.",
       "title": "'쪼개기 상장'과 다른 솔리다임⋯지분 줄어도 주주 몫은 커질 수 있어 [AI 반도체 자본 경쟁]"
+    },
+    "source_fact:633008902c589d59d4948ce7": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910308",
+      "source": "헤럴드경제",
+      "source_body_digest": "c935672817f311dd890771af94e44645e8330bc76e38994f2b6a1f9e8b5aaa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d377e6bca7f3590ce4cb80cbc9b8fc63761921d908229ff672f916e092999e23",
+      "source_fact_keys": [
+        "source_fact:v1:5252b775f4d83392a2b7410650aec792edf8d9eb45440faa27511fd1677ea174",
+        "source_fact:v1:6fd3d1ce76e334f7de789682c73a850cd3033003aa86066439e627c9e3a69d34",
+        "source_fact:v1:9fe4778e604200d9db3c55003ce88e10bc3abcb512d51e9e5e98993481d3a6dd",
+        "source_fact:v1:b38d00c0dcf52c243cdffe167a11f21a0c741f7c5cfe3594eb2ac364b7126141",
+        "source_fact:v1:b44055d4c3614b72d8ec05e5f2fcf87ff69fa85cb0997b273c2cd86b813194c2",
+        "source_fact:v1:eda69dd4381d4069af01f6c7cc0faf42509325fcdddc71e828bc3699247244f9"
+      ],
+      "source_published_kst": "2026-10-21T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”",
+      "telegram_core_fact": "스페이스X가 20일(현지시간) 발표한 3분기 실적에서 인공지능(AI) 컴퓨팅 수요가 공급을 압도하고 있다며 신규 컴퓨팅 투자금을 1년 안에 회수할 수 있다고 밝혔다.",
+      "title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”"
     },
     "source_fact:6331a70b8782ec6d472b6205": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
@@ -656444,6 +657334,27 @@
       "source_title": "상장 첫날 개인 58억 샀다…SOL 글로벌DRAM반도체플러스, 하반기 반도체 ETF 1위",
       "telegram_core_fact": "신한자산운용은 'SOL 글로벌DRAM반도체플러스 ETF'가 올해 하반기 신규 상장한 반도체 ETF 가운데 상장 첫날 개인 순매수 1위를 기록했다고 8일 밝혔다.",
       "title": "상장 첫날 개인 58억 샀다…SOL 글로벌DRAM반도체플러스, 하반기 반도체 ETF 1위"
+    },
+    "source_fact:6a4195497c78edd8e8472627": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835408",
+      "source": "뉴시스",
+      "source_body_digest": "fbb01438bad9cd4f63ea812a601b754316b27ee74535e5d929ae32dfa26f6c90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a854957383a4de54033a3233b0196faa30d05f4bd5750d2c30b81ca654bd3c45",
+      "source_fact_keys": [
+        "source_fact:v1:1c58ca4cc8e616bdea3b3a16f4fe7f5d3fe96daf1a39b262a5b24ebec1e9cb33",
+        "source_fact:v1:964b10ea0f8603a694084554984c20c7c4c78906ea26c1d231c04a618b4c0fbe"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입",
+      "telegram_core_fact": "울산항만공사는 태양광 발전설비의 효율적인 운영과 체계적인 유지관리를 위해 '인공지능(AI) 기반 태양광 발전설비 모니터링 시스템'을 도입했다고 21일 밝혔다. 울산항만공사에 따르면 이번에 도입된 시스템은 발전량을 실시간으로 측정하는 기존 방식에 빅데이터와 AI 기술을 결합한 것이 특징이다.",
+      "title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입"
     },
     "source_fact:6a49cad1bd5c65ee673c8b8c": {
       "first_seen_kst": "2026-10-14T18:12:32+09:00",
@@ -703024,6 +703935,28 @@
       "telegram_core_fact": "웨더포드 인터내셔널(WFRD)이 3분기 매출액 11억4300만 달러, 희석 주당순이익 1.66달러를 기록했다고 10월 20일 발표했다.",
       "title": "웨더포드 인터내셔널, 3분기 희석EPS 1.66달러..전년비 48% 증가"
     },
+    "source_fact:829f45afef5bdf8825d93ee3": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835442",
+      "source": "뉴시스",
+      "source_body_digest": "f6dd07c77500d343ba7f4943a10cf59c21c793334999a335ec15ed6709a3e41c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ee954231e72484db20caf3202cdba63bb86fd51cbecfc950ee5228a67ee9333",
+      "source_fact_keys": [
+        "source_fact:v1:4a7e86e9f3b7d12b0d9453941fa56b6dd6867cdd52938fc59682672532a2c651",
+        "source_fact:v1:54edcca0fc8bf6f2e4cf4504823b95279073dfe8c128b1e77133643b04626b8d",
+        "source_fact:v1:a53fcccfeacb831ef9f940b6f3d0e1696f0a7ce07a6c8cbf2f7e632510b4168c"
+      ],
+      "source_published_kst": "2026-10-21T16:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호",
+      "telegram_core_fact": "LH는 이날 경기남부지역본부에서 모듈러 제조사, 가전사, 전문가들이 참석한 가운데 '모듈러주택 활성화 간담회'를 열어 모듈러 공급 확대와 기술 고도화 방안을 논의했다.",
+      "title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호"
+    },
     "source_fact:82a45357666545758dc07b3b": {
       "first_seen_kst": "2026-10-21T13:57:06+09:00",
       "lanes": {
@@ -719625,6 +720558,26 @@
       ],
       "source_published_kst": "2026-10-06T11:20+09:00",
       "title": "에이스테크, 4개 차종 적용 차량용 안테나 수주"
+    },
+    "source_fact:8b99a34edb5d23489023cfee": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835166",
+      "source": "뉴시스",
+      "source_body_digest": "231c5b24ee48dad09d64993793231810a647bdefe4e64041daab581936819212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1be7399b17051032ea30f4918f601ed21c12aa300c92a4b915ff27e809d3870f",
+      "source_fact_keys": [
+        "source_fact:v1:1d07902d3000019f17b01c3da32bafb13b0f47d28534e1c6f36a0d4db839d149"
+      ],
+      "source_published_kst": "2026-10-21T14:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"1200억원 규모\"…오스템임플란트, 영구채 발행",
+      "telegram_core_fact": "오스템임플란트 관계자는 \"이번 신종자본증권 발행은 단순한 자금 조달을 넘어 해외법인의 차입 구조를 개선해 신용도를 높이고 금융비용과 환율 변동 위험을 낮추기 위한 것\"이라고 말했다.",
+      "title": "\"1200억원 규모\"…오스템임플란트, 영구채 발행"
     },
     "source_fact:8b9cd1204a73146acad73bee": {
       "first_seen_kst": "2026-10-19T14:48:42+09:00",
@@ -766178,6 +767131,30 @@
       "telegram_core_fact": "이날 기준 올해 외국인의 코스피 누적 순매도는 약 227조원에 이른다. 하나증권 집계에 따르면 코스피 7000~9000 구간에서 개인의 누적 순매수는 약 83조6000억원이다.",
       "title": "“코스피 오르기만 기다렸는데”…개미가 산 83조, 반등 발목 잡나"
     },
+    "source_fact:a37f5acb73dc1e8b7128d2f8": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12181781",
+      "source": "매일경제",
+      "source_body_digest": "3b3fb1df788f9fd8b858d5d407d2bfab13c6cea51bcf69fa65a62391e19ab521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00a916166498175bfc943a5098146696bb8dd46fd8ce4eda4c8b05f6c2060888",
+      "source_fact_keys": [
+        "source_fact:v1:1c2d45064952a9a7696360c74e7c0b5a472c9262b090313716a26f0f7842f677",
+        "source_fact:v1:1e7181ecc7148d68c28f71ce0f89409a6e7405154ee3d5a54239ddf386875487",
+        "source_fact:v1:bfd7c01bce6beeaf51b31305b3868ff151a5b6cd17316ea1793dbb41ce47e5b8",
+        "source_fact:v1:c8d90ff314dab995312e010af174f625c406bdb7247ced1bf9cd1c0cd771cf64",
+        "source_fact:v1:d01d788160a6d411565c39f62f762ae777cf660497cfc9aeecc7acc587da1e49"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외",
+      "telegram_core_fact": "산업통상부는 배터리와 디스플레이 등 다른 첨단산업까지 규제 완화 대상을 확대하려 했지만 공정거래위원회가 반대하면서 무산된 것으로 알려졌다.",
+      "title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외"
+    },
     "source_fact:a382a0d765ffbc4715c5f4ac": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
       "lanes": {
@@ -786312,6 +787289,31 @@
       ],
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "source_fact:ad614d579fb45158f0e9a282": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910319",
+      "source": "헤럴드경제",
+      "source_body_digest": "c43bdfbb5e5de2aa7012bcf323a4079c5aa2c8de474dc4ea52fe8ae3dd07c63a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de398329bf5b4504d3d3c2a829fcd7bf04fab6449ee943374b072087256a783c",
+      "source_fact_keys": [
+        "source_fact:v1:080f992a58d43edbc243002c5e3e1f9bc98d162194d4a326535513f0674f69e6",
+        "source_fact:v1:0dbcac5a157c96151bfba68e2c07c26360e8d94ab1350f99c88c56f779945750",
+        "source_fact:v1:1de771178d2b26358b3af77be6c1790d01dfb02f24e394b620c745fda17fc95d",
+        "source_fact:v1:5dfa5a1ba6f66de076e21f7a44b6864079ff1b776f37e0e7fba4cf6c06cc29ed",
+        "source_fact:v1:736827c5de6025cd34319908fabba3202b7f69059ee46e2f56bc2bef227482b7",
+        "source_fact:v1:eb5b246a023b194e6baba94ede9859e9fe8854f67c5f52311eb19dc6025d51e9"
+      ],
+      "source_published_kst": "2026-10-21T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]",
+      "telegram_core_fact": "우선 LH는 올해 모듈러주택 연간 발주 물량을 당초 목표치(2000가구)를 웃도는 2100가구 수준으로 확대해 초기 시장 공급을 견인할 방침이다.",
+      "title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]"
     },
     "source_fact:ad632d60e6888aed7af99b2d": {
       "first_seen_kst": "2026-10-12T16:29:45+09:00",
@@ -820209,6 +821211,28 @@
       "telegram_core_fact": "KB증권은 마이크론 대만 공장의 파업이 현실화될 경우 글로벌 D램 공급 부족이 심화되면서 삼성전자와 SK하이닉스의 가격 결정력과 공급 협상력이 강화될 수 있다고 21일 밝혔다.",
       "title": "KB證 “마이크론 파업 예고⋯삼성전자·SK하이닉스 반사이익 기대”"
     },
+    "source_fact:bee000d7c088ee981043848f": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835442",
+      "source": "뉴시스",
+      "source_body_digest": "f6dd07c77500d343ba7f4943a10cf59c21c793334999a335ec15ed6709a3e41c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ee954231e72484db20caf3202cdba63bb86fd51cbecfc950ee5228a67ee9333",
+      "source_fact_keys": [
+        "source_fact:v1:4a7e86e9f3b7d12b0d9453941fa56b6dd6867cdd52938fc59682672532a2c651",
+        "source_fact:v1:54edcca0fc8bf6f2e4cf4504823b95279073dfe8c128b1e77133643b04626b8d",
+        "source_fact:v1:a53fcccfeacb831ef9f940b6f3d0e1696f0a7ce07a6c8cbf2f7e632510b4168c"
+      ],
+      "source_published_kst": "2026-10-21T16:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호",
+      "telegram_core_fact": "LH는 이날 경기남부지역본부에서 모듈러 제조사, 가전사, 전문가들이 참석한 가운데 '모듈러주택 활성화 간담회'를 열어 모듈러 공급 확대와 기술 고도화 방안을 논의했다.",
+      "title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호"
+    },
     "source_fact:bee2bf6c1b4fc568dec8f759": {
       "first_seen_kst": "2026-10-14T21:14:31+09:00",
       "lanes": {
@@ -829711,6 +830735,31 @@
       "source_title": "밸류파인더 “MSDI, 구미시와 7000억 미사일 방산단지 추진…전주기 사업 첫발”",
       "telegram_core_fact": "유럽 미사일 전문기업과의 협력을 바탕으로 초기에는 MRO와 라이선스 생산에서 매출을 확보하고 장기적으로 독자 미사일 개발까지 사업을 확대한다는 구상이다.",
       "title": "밸류파인더 “MSDI, 구미시와 7000억 미사일 방산단지 추진…전주기 사업 첫발”"
+    },
+    "source_fact:c393170962ee3504f3a48260": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910319",
+      "source": "헤럴드경제",
+      "source_body_digest": "c43bdfbb5e5de2aa7012bcf323a4079c5aa2c8de474dc4ea52fe8ae3dd07c63a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de398329bf5b4504d3d3c2a829fcd7bf04fab6449ee943374b072087256a783c",
+      "source_fact_keys": [
+        "source_fact:v1:080f992a58d43edbc243002c5e3e1f9bc98d162194d4a326535513f0674f69e6",
+        "source_fact:v1:0dbcac5a157c96151bfba68e2c07c26360e8d94ab1350f99c88c56f779945750",
+        "source_fact:v1:1de771178d2b26358b3af77be6c1790d01dfb02f24e394b620c745fda17fc95d",
+        "source_fact:v1:5dfa5a1ba6f66de076e21f7a44b6864079ff1b776f37e0e7fba4cf6c06cc29ed",
+        "source_fact:v1:736827c5de6025cd34319908fabba3202b7f69059ee46e2f56bc2bef227482b7",
+        "source_fact:v1:eb5b246a023b194e6baba94ede9859e9fe8854f67c5f52311eb19dc6025d51e9"
+      ],
+      "source_published_kst": "2026-10-21T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]",
+      "telegram_core_fact": "우선 LH는 올해 모듈러주택 연간 발주 물량을 당초 목표치(2000가구)를 웃도는 2100가구 수준으로 확대해 초기 시장 공급을 견인할 방침이다.",
+      "title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]"
     },
     "source_fact:c3944be5d1a2d180b6743a93": {
       "first_seen_kst": "2026-10-21T02:06:57+09:00",
@@ -853914,6 +854963,31 @@
       "source_title": "\"해외 사업화 넘어 후속 투자로\"…중진공, AI 스타트업 성장 지원",
       "telegram_core_fact": "중진공은 행사에 앞서 기업별 투자유치 발표자료인 IR 피치덱의 설계·보완과 발표 역량 강화 교육을 지원했다.",
       "title": "\"해외 사업화 넘어 후속 투자로\"…중진공, AI 스타트업 성장 지원"
+    },
+    "source_fact:cfbdd8625a9ed2a7b1bf3beb": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910308",
+      "source": "헤럴드경제",
+      "source_body_digest": "c935672817f311dd890771af94e44645e8330bc76e38994f2b6a1f9e8b5aaa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d377e6bca7f3590ce4cb80cbc9b8fc63761921d908229ff672f916e092999e23",
+      "source_fact_keys": [
+        "source_fact:v1:5252b775f4d83392a2b7410650aec792edf8d9eb45440faa27511fd1677ea174",
+        "source_fact:v1:6fd3d1ce76e334f7de789682c73a850cd3033003aa86066439e627c9e3a69d34",
+        "source_fact:v1:9fe4778e604200d9db3c55003ce88e10bc3abcb512d51e9e5e98993481d3a6dd",
+        "source_fact:v1:b38d00c0dcf52c243cdffe167a11f21a0c741f7c5cfe3594eb2ac364b7126141",
+        "source_fact:v1:b44055d4c3614b72d8ec05e5f2fcf87ff69fa85cb0997b273c2cd86b813194c2",
+        "source_fact:v1:eda69dd4381d4069af01f6c7cc0faf42509325fcdddc71e828bc3699247244f9"
+      ],
+      "source_published_kst": "2026-10-21T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”",
+      "telegram_core_fact": "스페이스X가 20일(현지시간) 발표한 3분기 실적에서 인공지능(AI) 컴퓨팅 수요가 공급을 압도하고 있다며 신규 컴퓨팅 투자금을 1년 안에 회수할 수 있다고 밝혔다.",
+      "title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”"
     },
     "source_fact:cfbe542576ec680f558f53db": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
@@ -881682,6 +882756,31 @@
       "source_published_kst": "2026-10-06T13:24+09:00",
       "title": "통합항공사 뜨자 남은 10.58%…산은, 한진칼 지분 '엑시트 셈법' 관심집중 [fn마켓워치]"
     },
+    "source_fact:de2bb649c886699b2f8fc36d": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910319",
+      "source": "헤럴드경제",
+      "source_body_digest": "c43bdfbb5e5de2aa7012bcf323a4079c5aa2c8de474dc4ea52fe8ae3dd07c63a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de398329bf5b4504d3d3c2a829fcd7bf04fab6449ee943374b072087256a783c",
+      "source_fact_keys": [
+        "source_fact:v1:080f992a58d43edbc243002c5e3e1f9bc98d162194d4a326535513f0674f69e6",
+        "source_fact:v1:0dbcac5a157c96151bfba68e2c07c26360e8d94ab1350f99c88c56f779945750",
+        "source_fact:v1:1de771178d2b26358b3af77be6c1790d01dfb02f24e394b620c745fda17fc95d",
+        "source_fact:v1:5dfa5a1ba6f66de076e21f7a44b6864079ff1b776f37e0e7fba4cf6c06cc29ed",
+        "source_fact:v1:736827c5de6025cd34319908fabba3202b7f69059ee46e2f56bc2bef227482b7",
+        "source_fact:v1:eb5b246a023b194e6baba94ede9859e9fe8854f67c5f52311eb19dc6025d51e9"
+      ],
+      "source_published_kst": "2026-10-21T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]",
+      "telegram_core_fact": "우선 LH는 올해 모듈러주택 연간 발주 물량을 당초 목표치(2000가구)를 웃도는 2100가구 수준으로 확대해 초기 시장 공급을 견인할 방침이다.",
+      "title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]"
+    },
     "source_fact:de38159fc70264c56029088c": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -889944,6 +891043,31 @@
       "telegram_core_fact": "고용노동부가 14일 발표한 ‘9월 고용행정통계로 본 노동시장 동향’에 따르면 지난달 제조업 고용보험 상시가입자는 385만 3000명으로 전년 동월 대비 8000명(0.2%) 증가했다.",
       "title": "제조업 고용 회복…청년은 여전히 '찬바람'"
     },
+    "source_fact:e1fe33e332ca65c88c5f9980": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910308",
+      "source": "헤럴드경제",
+      "source_body_digest": "c935672817f311dd890771af94e44645e8330bc76e38994f2b6a1f9e8b5aaa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d377e6bca7f3590ce4cb80cbc9b8fc63761921d908229ff672f916e092999e23",
+      "source_fact_keys": [
+        "source_fact:v1:5252b775f4d83392a2b7410650aec792edf8d9eb45440faa27511fd1677ea174",
+        "source_fact:v1:6fd3d1ce76e334f7de789682c73a850cd3033003aa86066439e627c9e3a69d34",
+        "source_fact:v1:9fe4778e604200d9db3c55003ce88e10bc3abcb512d51e9e5e98993481d3a6dd",
+        "source_fact:v1:b38d00c0dcf52c243cdffe167a11f21a0c741f7c5cfe3594eb2ac364b7126141",
+        "source_fact:v1:b44055d4c3614b72d8ec05e5f2fcf87ff69fa85cb0997b273c2cd86b813194c2",
+        "source_fact:v1:eda69dd4381d4069af01f6c7cc0faf42509325fcdddc71e828bc3699247244f9"
+      ],
+      "source_published_kst": "2026-10-21T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”",
+      "telegram_core_fact": "스페이스X가 20일(현지시간) 발표한 3분기 실적에서 인공지능(AI) 컴퓨팅 수요가 공급을 압도하고 있다며 신규 컴퓨팅 투자금을 1년 안에 회수할 수 있다고 밝혔다.",
+      "title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”"
+    },
     "source_fact:e201f67120ebd5152aa6f23e": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -895516,6 +896640,31 @@
       ],
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
+    },
+    "source_fact:e4be0816a24b6d5bb8a4c3f1": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910308",
+      "source": "헤럴드경제",
+      "source_body_digest": "c935672817f311dd890771af94e44645e8330bc76e38994f2b6a1f9e8b5aaa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d377e6bca7f3590ce4cb80cbc9b8fc63761921d908229ff672f916e092999e23",
+      "source_fact_keys": [
+        "source_fact:v1:5252b775f4d83392a2b7410650aec792edf8d9eb45440faa27511fd1677ea174",
+        "source_fact:v1:6fd3d1ce76e334f7de789682c73a850cd3033003aa86066439e627c9e3a69d34",
+        "source_fact:v1:9fe4778e604200d9db3c55003ce88e10bc3abcb512d51e9e5e98993481d3a6dd",
+        "source_fact:v1:b38d00c0dcf52c243cdffe167a11f21a0c741f7c5cfe3594eb2ac364b7126141",
+        "source_fact:v1:b44055d4c3614b72d8ec05e5f2fcf87ff69fa85cb0997b273c2cd86b813194c2",
+        "source_fact:v1:eda69dd4381d4069af01f6c7cc0faf42509325fcdddc71e828bc3699247244f9"
+      ],
+      "source_published_kst": "2026-10-21T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”",
+      "telegram_core_fact": "스페이스X가 20일(현지시간) 발표한 3분기 실적에서 인공지능(AI) 컴퓨팅 수요가 공급을 압도하고 있다며 신규 컴퓨팅 투자금을 1년 안에 회수할 수 있다고 밝혔다.",
+      "title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”"
     },
     "source_fact:e4bf4c81db808b54e6f5fbba": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
@@ -920342,6 +921491,31 @@
       "source_title": "중견기업 초격차 기술에 5년간 1000억 지원⋯'10대 날개 프로젝트' 출범",
       "telegram_core_fact": "선정된 과제에 대해서는 독자 기술 개발부터 특허·표준 확보, 판로 개척 및 인증 등 상용화와 해외 진출까지 과제당 최대 5년간 1000억원 규모로 지원한다. 산업통상부는 15일 서울 LW컨벤션센터에서 ‘월드클래스 10대 날개 프로젝트’ 과제 기획·발굴을 위한 원탁회의 출범식을 개최했다고 밝혔다.",
       "title": "중견기업 초격차 기술에 5년간 1000억 지원⋯'10대 날개 프로젝트' 출범"
+    },
+    "source_fact:f1b125abc71347754b124aef": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910319",
+      "source": "헤럴드경제",
+      "source_body_digest": "c43bdfbb5e5de2aa7012bcf323a4079c5aa2c8de474dc4ea52fe8ae3dd07c63a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de398329bf5b4504d3d3c2a829fcd7bf04fab6449ee943374b072087256a783c",
+      "source_fact_keys": [
+        "source_fact:v1:080f992a58d43edbc243002c5e3e1f9bc98d162194d4a326535513f0674f69e6",
+        "source_fact:v1:0dbcac5a157c96151bfba68e2c07c26360e8d94ab1350f99c88c56f779945750",
+        "source_fact:v1:1de771178d2b26358b3af77be6c1790d01dfb02f24e394b620c745fda17fc95d",
+        "source_fact:v1:5dfa5a1ba6f66de076e21f7a44b6864079ff1b776f37e0e7fba4cf6c06cc29ed",
+        "source_fact:v1:736827c5de6025cd34319908fabba3202b7f69059ee46e2f56bc2bef227482b7",
+        "source_fact:v1:eb5b246a023b194e6baba94ede9859e9fe8854f67c5f52311eb19dc6025d51e9"
+      ],
+      "source_published_kst": "2026-10-21T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]",
+      "telegram_core_fact": "우선 LH는 올해 모듈러주택 연간 발주 물량을 당초 목표치(2000가구)를 웃도는 2100가구 수준으로 확대해 초기 시장 공급을 견인할 방침이다.",
+      "title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]"
     },
     "source_fact:f1b942cacdc62af15a8e45cb": {
       "first_seen_kst": "2026-10-13T11:35:08+09:00",
@@ -970356,6 +971530,30 @@
       "source_published_kst": "2026-10-07T16:50+09:00",
       "title": "“외국인 지역여행 편리하게”…관광공사, 지방공항·항만 연계 캠페인"
     },
+    "title:2f94670d5a32ee495793b386": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12181781",
+      "source": "매일경제",
+      "source_body_digest": "3b3fb1df788f9fd8b858d5d407d2bfab13c6cea51bcf69fa65a62391e19ab521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00a916166498175bfc943a5098146696bb8dd46fd8ce4eda4c8b05f6c2060888",
+      "source_fact_keys": [
+        "source_fact:v1:1c2d45064952a9a7696360c74e7c0b5a472c9262b090313716a26f0f7842f677",
+        "source_fact:v1:1e7181ecc7148d68c28f71ce0f89409a6e7405154ee3d5a54239ddf386875487",
+        "source_fact:v1:bfd7c01bce6beeaf51b31305b3868ff151a5b6cd17316ea1793dbb41ce47e5b8",
+        "source_fact:v1:c8d90ff314dab995312e010af174f625c406bdb7247ced1bf9cd1c0cd771cf64",
+        "source_fact:v1:d01d788160a6d411565c39f62f762ae777cf660497cfc9aeecc7acc587da1e49"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외",
+      "telegram_core_fact": "산업통상부는 배터리와 디스플레이 등 다른 첨단산업까지 규제 완화 대상을 확대하려 했지만 공정거래위원회가 반대하면서 무산된 것으로 알려졌다.",
+      "title": "“반도체만 규제푸나”…증손회사 특례서 배터리·디스플레이 제외"
+    },
     "title:2f9cd80f9c7bdfad921dedaa": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -972979,6 +974177,28 @@
       "source_published_kst": "2026-10-06T15:48+09:00",
       "title": "LG이노텍, 美서 HBM 적용 패키지 특허 공개…AI 기판 IP 넓힌다"
     },
+    "title:354eb058379a4ce91f3961b8": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835442",
+      "source": "뉴시스",
+      "source_body_digest": "f6dd07c77500d343ba7f4943a10cf59c21c793334999a335ec15ed6709a3e41c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ee954231e72484db20caf3202cdba63bb86fd51cbecfc950ee5228a67ee9333",
+      "source_fact_keys": [
+        "source_fact:v1:4a7e86e9f3b7d12b0d9453941fa56b6dd6867cdd52938fc59682672532a2c651",
+        "source_fact:v1:54edcca0fc8bf6f2e4cf4504823b95279073dfe8c128b1e77133643b04626b8d",
+        "source_fact:v1:a53fcccfeacb831ef9f940b6f3d0e1696f0a7ce07a6c8cbf2f7e632510b4168c"
+      ],
+      "source_published_kst": "2026-10-21T16:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호",
+      "telegram_core_fact": "LH는 이날 경기남부지역본부에서 모듈러 제조사, 가전사, 전문가들이 참석한 가운데 '모듈러주택 활성화 간담회'를 열어 모듈러 공급 확대와 기술 고도화 방안을 논의했다.",
+      "title": "LH, 모듈러주택 발주 확대…2030년까지 1만6000호"
+    },
     "title:35722c9a74c218c2097dbc5d": {
       "first_seen_kst": "2026-10-13T04:02:08+09:00",
       "lanes": {
@@ -973237,6 +974457,26 @@
       "link": "https://www.mt.co.kr/stock/2026/09/18/2026091810570167529",
       "source": "머니투데이",
       "title": "키움운용, 'KIWOOM 200TR ETF' 총보수 연 0.010%로 인하"
+    },
+    "title:36277ad1717f43dce4d51fc7": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835166",
+      "source": "뉴시스",
+      "source_body_digest": "231c5b24ee48dad09d64993793231810a647bdefe4e64041daab581936819212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1be7399b17051032ea30f4918f601ed21c12aa300c92a4b915ff27e809d3870f",
+      "source_fact_keys": [
+        "source_fact:v1:1d07902d3000019f17b01c3da32bafb13b0f47d28534e1c6f36a0d4db839d149"
+      ],
+      "source_published_kst": "2026-10-21T14:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"1200억원 규모\"…오스템임플란트, 영구채 발행",
+      "telegram_core_fact": "오스템임플란트 관계자는 \"이번 신종자본증권 발행은 단순한 자금 조달을 넘어 해외법인의 차입 구조를 개선해 신용도를 높이고 금융비용과 환율 변동 위험을 낮추기 위한 것\"이라고 말했다.",
+      "title": "\"1200억원 규모\"…오스템임플란트, 영구채 발행"
     },
     "title:36339e6e59d0efddfb296c00": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
@@ -1006163,6 +1007403,24 @@
       "telegram_core_fact": "서한(011370)은 대치동 AIDC 9MW 데이터센터 신축사업에 관한 단일판매ㆍ공급계약체결 을 21일에 공시했다.",
       "title": "서한 수주공시 - 대치동 AIDC 9MW 데이터센터 신축사업 1,296억원 (매출액대비 20.09 %)"
     },
+    "title:79256465a687a00a23cecb23": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910306",
+      "source": "헤럴드경제",
+      "source_body_digest": "d6262db103cfa5c3b28f0e84a51e2e110cada79010555dda9423d1fae5d3adfd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-21T16:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "“1억℃ 초고온도 거뜬” 핵융합 소재 만든다”…핵융합硏·포스코 기술개발 맞손",
+      "telegram_core_fact": "초고온 플라즈마 환경을 견디는 내열소재부터 극저온 초전도자석에 사용되는 특수강까지 핵융합로 핵심 소재의 국산화와 공급망 구축을 추진한다.",
+      "title": "“1억℃ 초고온도 거뜬” 핵융합 소재 만든다”…핵융합硏·포스코 기술개발 맞손"
+    },
     "title:79259626b36db565ed32643b": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -1015795,6 +1017053,31 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811635",
       "source": "뉴시스",
       "title": "뉴욕증시, 강보합 마감…브렌트유 '美 중동 항모 추가'에 4%↑"
+    },
+    "title:8c6b95570d5a4bd72958999d": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910319",
+      "source": "헤럴드경제",
+      "source_body_digest": "c43bdfbb5e5de2aa7012bcf323a4079c5aa2c8de474dc4ea52fe8ae3dd07c63a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de398329bf5b4504d3d3c2a829fcd7bf04fab6449ee943374b072087256a783c",
+      "source_fact_keys": [
+        "source_fact:v1:080f992a58d43edbc243002c5e3e1f9bc98d162194d4a326535513f0674f69e6",
+        "source_fact:v1:0dbcac5a157c96151bfba68e2c07c26360e8d94ab1350f99c88c56f779945750",
+        "source_fact:v1:1de771178d2b26358b3af77be6c1790d01dfb02f24e394b620c745fda17fc95d",
+        "source_fact:v1:5dfa5a1ba6f66de076e21f7a44b6864079ff1b776f37e0e7fba4cf6c06cc29ed",
+        "source_fact:v1:736827c5de6025cd34319908fabba3202b7f69059ee46e2f56bc2bef227482b7",
+        "source_fact:v1:eb5b246a023b194e6baba94ede9859e9fe8854f67c5f52311eb19dc6025d51e9"
+      ],
+      "source_published_kst": "2026-10-21T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]",
+      "telegram_core_fact": "우선 LH는 올해 모듈러주택 연간 발주 물량을 당초 목표치(2000가구)를 웃도는 2100가구 수준으로 확대해 초기 시장 공급을 견인할 방침이다.",
+      "title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]"
     },
     "title:8c7592ca8de2462f973cc6ac": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -1063037,6 +1064320,31 @@
       "telegram_core_fact": "노보 노디스크가 지난해 3분기 20억 덴마크 크로네(약 4013억원) 총 순 매출 혜택을 받으면서 해당 분기 보고 기준 매출은 307억 덴마크 크로네(약 6조1600억원)로 증가했다는 점도 이번 매출 감소세를 한층 부각할 것이라고 그는 지적했다.",
       "title": "[개장전특징주]엔비디아, 웨스턴디지털, 노보 노디스크"
     },
+    "title:efd2fd7d1449b29ed3afb602": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://biz.heraldcorp.com/article/10910308",
+      "source": "헤럴드경제",
+      "source_body_digest": "c935672817f311dd890771af94e44645e8330bc76e38994f2b6a1f9e8b5aaa61",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d377e6bca7f3590ce4cb80cbc9b8fc63761921d908229ff672f916e092999e23",
+      "source_fact_keys": [
+        "source_fact:v1:5252b775f4d83392a2b7410650aec792edf8d9eb45440faa27511fd1677ea174",
+        "source_fact:v1:6fd3d1ce76e334f7de789682c73a850cd3033003aa86066439e627c9e3a69d34",
+        "source_fact:v1:9fe4778e604200d9db3c55003ce88e10bc3abcb512d51e9e5e98993481d3a6dd",
+        "source_fact:v1:b38d00c0dcf52c243cdffe167a11f21a0c741f7c5cfe3594eb2ac364b7126141",
+        "source_fact:v1:b44055d4c3614b72d8ec05e5f2fcf87ff69fa85cb0997b273c2cd86b813194c2",
+        "source_fact:v1:eda69dd4381d4069af01f6c7cc0faf42509325fcdddc71e828bc3699247244f9"
+      ],
+      "source_published_kst": "2026-10-21T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”",
+      "telegram_core_fact": "스페이스X가 20일(현지시간) 발표한 3분기 실적에서 인공지능(AI) 컴퓨팅 수요가 공급을 압도하고 있다며 신규 컴퓨팅 투자금을 1년 안에 회수할 수 있다고 밝혔다.",
+      "title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”"
+    },
     "title:efdca2e1db168d0cffdc8e13": {
       "first_seen_kst": "2026-10-20T05:37:55+09:00",
       "lanes": {
@@ -1065375,6 +1066683,27 @@
       "source_title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대",
       "telegram_core_fact": "경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다.",
       "title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대"
+    },
+    "title:f49f43dfab5a64c2d56baa32": {
+      "first_seen_kst": "2026-10-22T02:27:56+09:00",
+      "lanes": {
+        "live": "2026-10-22T02:27:56+09:00"
+      },
+      "last_seen_kst": "2026-10-22T02:27:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261021_0003835408",
+      "source": "뉴시스",
+      "source_body_digest": "fbb01438bad9cd4f63ea812a601b754316b27ee74535e5d929ae32dfa26f6c90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a854957383a4de54033a3233b0196faa30d05f4bd5750d2c30b81ca654bd3c45",
+      "source_fact_keys": [
+        "source_fact:v1:1c58ca4cc8e616bdea3b3a16f4fe7f5d3fe96daf1a39b262a5b24ebec1e9cb33",
+        "source_fact:v1:964b10ea0f8603a694084554984c20c7c4c78906ea26c1d231c04a618b4c0fbe"
+      ],
+      "source_published_kst": "2026-10-21T16:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입",
+      "telegram_core_fact": "울산항만공사는 태양광 발전설비의 효율적인 운영과 체계적인 유지관리를 위해 '인공지능(AI) 기반 태양광 발전설비 모니터링 시스템'을 도입했다고 21일 밝혔다. 울산항만공사에 따르면 이번에 도입된 시스템은 발전량을 실시간으로 측정하는 기존 방식에 빅데이터와 AI 기술을 결합한 것이 특징이다.",
+      "title": "울산항만공사, AI 기반 태양광 설비 모니터링 시스템 도입"
     },
     "title:f4a013210675941e03fb6f0c": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
@@ -1071070,5 +1072399,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T01:52:01+09:00"
+  "updated_at_kst": "2026-10-22T02:27:56+09:00"
 }
