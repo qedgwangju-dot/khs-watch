@@ -369,25 +369,30 @@ def fact_lines(row: dict[str, Any]) -> tuple[list[str], list[str], list[str]]:
         return new, changed, invest
 
     if key == "aidc|tax-credit|eligibility":
+        rate_match = re.search(r"(\d{1,2}(?:\.\d+)?)\s*%\s*세액공제", lower)
+        rate_label = f"{rate_match.group(1)}%" if rate_match else "공제율 재검증 필요"
+        date_label = base.kdate(str(row.get("published", "")))
+        is_official = verified_official_url(row)
+        status = "정부 공식 세제 적용조건" if is_official else "산업계의 제도 개선 요구"
         new = [
-            "• <b>2026년 10월 21일 산업계 제도 개선 요구</b>: AIDC 세액공제의 자가소비 요건 때문에 임대형 데이터센터가 혜택에서 제외될 가능성이 제기됨",
-            "• 발표자는 세액공제 <b>15%</b>를 언급했지만, 이는 정부가 새 공제율·적용대상을 확정했다는 뜻이 아님",
+            f"• <b>{date_label} {status}</b>: 자가소비 전용과 임대·외부 제공형 AIDC의 세액공제 적용 범위가 핵심 쟁점",
+            f"• 기사에 등장하는 세액공제율은 <b>{rate_label}</b>. 정부의 공식 적용대상 변경인지, 업계 요구인지 반드시 구분",
         ]
         if has(body, "100㎿", "100mw"):
             new.append(
-                "• 발표자는 100MW AIDC의 생산유발효과 3조5,000억원 등 경제효과를 제시. <b>추정 경제효과와 확정 정부 예산·기업 매출은 별개</b>"
+                "• 100MW급 AIDC의 생산유발효과 등은 포럼 발표자가 제시한 추산이며, <b>국가 예산·실제 수주·매출 확정액이 아님</b>"
             )
         if has(body, "150일", "90일", "40일"):
             new.append(
-                "• 하위법령 쟁점: 계통영향평가 150일·일부 협의 90일·건축허가·소방동의 40일 등 결정 기한. <b>허가 자동 승인과는 다름</b>"
+                "• 인허가 일괄처리의 쟁점은 150일·90일·40일 등 처리 기한이며 <b>자동 승인·전원 인가 보장과는 다름</b>"
             )
         changed = [
-            "• 9월 9일은 하위법령 설계 논의, 이번은 <b>세액공제의 실제 수혜대상</b>에 대한 업계 문제 제기",
-            "• <b>산업계 요구 단계</b>로, 적용 요건 개정·시행령 확정과 구분해야 함",
+            "• 기존 하위법령 설계 논의에서 세액공제의 실질적 수혜대상·사업자 유형이 구체적인 논쟁으로 부상",
+            f"• 확인 상태는 <b>{status}</b>이고, 최종 세법 개정·시행령 확정 여부는 별도 추적",
         ]
         invest = [
-            "• 임대형·외부 서비스형 데이터센터가 공제 대상에 포함되는지가 사업별 세후 투자수익률을 좌우할 수 있음",
-            "• 실제 세액공제 조문·임대형 포함 여부·전력계통 접속·착공과 금융조달을 확인하기 전에는 확정 혜택으로 계산하지 않음",
+            "• 임대형·외부 서비스형 데이터센터 포함 여부는 운영사의 세후 투자수익률에 영향을 줄 수 있음",
+            "• 세액공제 법령·적용조건·전력계통 접속·착공·금융조달 확인 전에는 확정 지원금·매출로 계산하지 않음",
         ]
         return new, changed, invest
 
@@ -413,7 +418,9 @@ def fact_lines(row: dict[str, Any]) -> tuple[list[str], list[str], list[str]]:
         )
 
     if key.startswith("aidc|sgc-gunsan|"):
-        new = ["• SGC에너지 군산 AIDC는 <b>1단계 60MW</b> 착공을 시작점으로 수요에 따라 <b>최대 300MW</b>까지 단계 확장하는 직접 사업"]
+        step = key.rsplit("|", 1)[-1]
+        stage_text = {"plan": "계획", "operator-partner": "운영사 참여", "contract": "본계약", "groundbreaking": "착공", "operation": "운영"}.get(step, "사업 진행")
+        new = [f"• SGC에너지 군산 AIDC: <b>{stage_text}</b> 단계. 1단계 <b>60MW</b>, 수요에 따른 최대 <b>300MW</b> 단계적 확장 가능성을 분리해 확인"]
         if has(body, "2028년 1분기", "2028년 1q"):
             new.append("• 1단계 운영 목표는 <b>2028년 1분기</b>로 확인")
         if has(body, "kt클라우드", "kt cloud"):
@@ -447,6 +454,8 @@ def source_link(row: dict[str, Any]) -> str:
 def render(row: dict[str, Any]) -> str:
     title = html.escape(base.norm(str(row.get("title", ""))))
     category = html.escape(str(row.get("category", "AIDC 특별법")))
+    if str(row.get("event_key")) == "aidc|tax-credit|eligibility":
+        category = "공식 세제 변경" if verified_official_url(row) else "산업계 세제 개선 요구"
     new, changed, invest = fact_lines(row)
     project_event = str(row.get("event_key", "")).startswith("aidc|sgc-gunsan|")
     header = "<b>한국 AIDC 사업 실행 새 변화</b>" if project_event else "<b>한국 AIDC 정책·전력 특례 새 변화</b>"
@@ -581,7 +590,7 @@ def main() -> int:
         pub_utc = pub.astimezone(timezone.utc) if pub else None
 
         # v4 최초 도입 당시 이전에 전송되었던 지난 기사 재해석으로 인한 일괄 재발송 금지.
-        if migration and last_state_time and pub_utc and pub_utc <= last_state_time:
+        if migration and (not bool(state.get("initialized")) or (last_state_time and pub_utc and pub_utc <= last_state_time)):
             should_notify = False
             ignored_legacy += 1
 
