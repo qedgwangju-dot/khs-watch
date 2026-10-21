@@ -1,0 +1,329 @@
+{
+  "provenance": {
+    "run_id": 39550874373,
+    "actual_code_sha": "8f844b3294703a160f8d2fc83669378196bcb22a",
+    "queried_at_kst": "2026-10-21T14:41:34.822851+09:00",
+    "artifact_id": 12324185396,
+    "artifact_zip_sha256": "176cec65cde80079e18ecfadf030e1f4962a9bbca3a29c757e24d4f3b9ad5acd",
+    "actual_delivery": false,
+    "DRY_RUN": true,
+    "operating_body_semantic_issue": "attack plans and held bombing were not separated; stage sidecars excluded by existing artifact allowlist",
+    "full_operating_article_bodies_preserved": false,
+    "later_HTTP_bodies_inserted": false
+  },
+  "articles": [
+    {
+      "id": "2aa024821058212d6a27",
+      "title_original": "트럼프, 젤렌스키에 \"종전하라\"…美특사, 푸틴 만나러 러시아행 - 데일리안",
+      "title_ko": "트럼프, 젤렌스키에 \"종전하라\"…美특사, 푸틴 만나러 러시아행 - 데일리안",
+      "description": "트럼프, 젤렌스키에 \"종전하라\"…美특사, 푸틴 만나러 러시아행 데일리안",
+      "source": "데일리안",
+      "source_url": "https://www.dailian.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiogJBVV95cUxOZW1UcWpTRXdsUHlyNHlvWWFkdUZiN21lcjlfNW15ZzhGSEtDVm1xSHNhS25vS0pyRDh0YjRtelAzMlgzNzU3TVBvY1F6SkIxWEtDRDg0LUJGeWdZbHd6NmdPUlNRQ0E2ZF8ycXQ3bWVsS2FBYzJVVC1kU0QxYmgxZHRpUnVsaWs3THpReDZjaDd4dFBVaDlmRjFtSnN0REowSmNyUFJxTkt5ci1PMXA5d1VmdUNlc1I1ZEl1UzRlWDBHNnBiSGs3VVlFd1N4U2ZIcmFvME53emw1X3ZrVEVQVnNQMUFNU3FGVEw2VjVZeC05bm10SU1vNVJkWHdGYXFXbkFkc2NkUUpxSmVjajh0YU03RlpNRmh4RW9JNlplVjJ5QQ?oc=5",
+      "published": "Wed, 21 Oct 2026 05:20:00 GMT",
+      "score": 11,
+      "tags": [
+        "종전·협상"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "semantic_classification_color": "",
+      "display_section": "core"
+    },
+    {
+      "id": "635bb8da0bf6543366f7",
+      "title_original": "\"네타냐후, 이란 대규모 폭격하려다 트럼프 반대에 보류\" - 연합뉴스",
+      "title_ko": "\"네타냐후, 이란 대규모 폭격하려다 트럼프 반대에 보류\" - 연합뉴스",
+      "description": "\"네타냐후, 이란 대규모 폭격하려다 트럼프 반대에 보류\" 연합뉴스",
+      "source": "연합뉴스",
+      "source_url": "https://www.yna.co.kr",
+      "link": "https://www.yna.co.kr/view/AKR20261021108900009",
+      "discovery_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE41ZjZaZzB4eFk4dndwQXJvQjloSkN6cHduVWV1MGZNRUJVSU83a05walZwQ0k4b0ZzUnFsZjZpV2NtYzQ3cmctT2hlNjVXTHgxdGk4dXFpc0NvcEnSAWBBVV95cUxObkl6Z0R0clVtMjRXeWpPdVJNZlVtWHBwTGhhTUtMbFNHZmc3WTVCbDduYWZRWkNsOEJRWFJhWjQwTkM2T25UOVpsLW5lRXJodlZTT3FiUHFwX2VtSGJISVo?oc=5",
+      "resolved_url": "https://www.yna.co.kr/view/AKR20261021108900009",
+      "published": "Wed, 21 Oct 2026 14:31:17 +0900",
+      "rss_published": "Wed, 21 Oct 2026 05:31:17 GMT",
+      "source_metadata": {
+        "title": "\"네타냐후, 이란 대규모 폭격하려다 트럼프 반대에 보류\" | 연합뉴스",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-21T14:31:17+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-21T14:31:17+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-21T14:31:17+09:00"
+          }
+        ]
+      },
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "classification_color": "red",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "4004cdc425b95625f854fab359b54325faaa1054b0b00b192c87fa2293755b23",
+      "semantic_classification_color": "red",
+      "display_section": "core"
+    },
+    {
+      "id": "a1900039c183f19f5c42",
+      "title_original": "네타냐후, 이란에 대한 대규모 공습 재개 추진 - Investing.com 한국어",
+      "title_ko": "네타냐후, 이란에 대한 대규모 공습 재개 추진 - Investing.com 한국어",
+      "description": "네타냐후, 이란에 대한 대규모 공습 재개 추진 Investing.com 한국어",
+      "source": "Investing.com 한국어",
+      "source_url": "https://kr.investing.com",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1WVUpzTEkwZ19WZXVuZG5jSEtYdEgtT29nTkgyMHpBVXo1ckpkYkpfODM4NnpWY2R6UlJxai1obUV2ZTdzal9HRjE3T29NeEZ3RXk2Y0xxNkVyQU9XLWVaSTZDaTU0bmdSSFE?oc=5",
+      "published": "Wed, 21 Oct 2026 05:25:00 GMT",
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "semantic_classification_color": "red",
+      "display_section": "core"
+    },
+    {
+      "id": "e2ce6451c940c5d3d2ef",
+      "title_original": "\"네타냐후, 이란 공격 재개 추진…트럼프는 반대\" - 마켓인",
+      "title_ko": "\"네타냐후, 이란 공격 재개 추진…트럼프는 반대\" - 마켓인",
+      "description": "\"네타냐후, 이란 공격 재개 추진…트럼프는 반대\" 마켓인",
+      "source": "마켓인",
+      "source_url": "https://marketin.edaily.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1WYnVQMGIxaVM2N3Fod0pxd1BCT2wtX1pfVlk3WldzREpIOE9vWXVFc2VIMVZMbUhqbERxdFpwR3BVeFNwQ1NVemgzNzMwSXJBdzZxV0lzZW9nVS01R3JfS1BuSHFUZ3lRbHN4LW9nSWxHMjQ?oc=5",
+      "published": "Wed, 21 Oct 2026 05:28:13 GMT",
+      "score": 7,
+      "tags": [],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "semantic_classification_color": "red",
+      "display_section": "core"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29892.0,
+      "pct": 0.7304066520079866,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "14:31 KST",
+      "observed_at_kst": "2026-10-21T14:31:32+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 29675.25,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 29675.25,
+        "chartPreviousClose": 29675.25,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792560692,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792641540,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 99.04000091552734,
+      "pct": 1.247189649895053,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "14:31 KST",
+      "observed_at_kst": "2026-10-21T14:31:28+09:00",
+      "symbol": "CL=F",
+      "previous_close": 97.82,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 97.82,
+        "chartPreviousClose": 97.82,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792560688,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792641540,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 110.27999877929688,
+      "pct": 1.369610055425019,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "14:30 KST",
+      "observed_at_kst": "2026-10-21T14:30:00+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 108.79,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 108.79,
+        "chartPreviousClose": 108.79,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792560605,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792641540,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.78600311279297,
+      "pct": 0.08358139329305292,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "14:31 KST",
+      "observed_at_kst": "2026-10-21T14:31:37+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 101.701,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 101.701,
+        "chartPreviousClose": 101.701,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792560697,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792641540,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "original_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·타격·확전·압박</b>\n조회 2026-10-21 14:41 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [속보] <b>1. 우크라이나·러시아</b>\n트럼프, 젤렌스키에 &quot;종전하라&quot;…美특사, 푸틴 만나러 러시아행 - 데일리안\nRSS 보도 10-21 14:20 KST · <b>21분 경과</b> · 종전·협상 · <a href=\"https://news.google.com/rss/articles/CBMiogJBVV95cUxOZW1UcWpTRXdsUHlyNHlvWWFkdUZiN21lcjlfNW15ZzhGSEtDVm1xSHNhS25vS0pyRDh0YjRtelAzMlgzNzU3TVBvY1F6SkIxWEtDRDg0LUJGeWdZbHd6NmdPUlNRQ0E2ZF8ycXQ3bWVsS2FBYzJVVC1kU0QxYmgxZHRpUnVsaWs3THpReDZjaDd4dFBVaDlmRjFtSnN0REowSmNyUFJxTkt5ci1PMXA5d1VmdUNlc1I1ZEl1UzRlWDBHNnBiSGs3VVlFd1N4U2ZIcmFvME53emw1X3ZrVEVQVnNQMUFNU3FGVEw2VjVZeC05bm10SU1vNVJkWHdGYXFXbkFkc2NkUUpxSmVjajh0YU03RlpNRmh4RW9JNlplVjJ5QQ?oc=5\">데일리안 검색 링크</a> · 제목 기준·본문 미확인\n\n🔴 [속보] <b>2. 이란·호르무즈</b>\n&quot;네타냐후, 이란 대규모 폭격하려다 트럼프 반대에 보류&quot; - 연합뉴스\n보도 10-21 14:31 KST · <b>10분 경과</b> · 확전 · <a href=\"https://www.yna.co.kr/view/AKR20261021108900009\">연합뉴스 원문</a>\n\n🔴 [속보] <b>3. 이란·호르무즈</b>\n네타냐후, 이란에 대한 대규모 공습 재개 추진 - Investing.com 한국어\nRSS 보도 10-21 14:25 KST · <b>16분 경과</b> · 확전 · <a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE1WVUpzTEkwZ19WZXVuZG5jSEtYdEgtT29nTkgyMHpBVXo1ckpkYkpfODM4NnpWY2R6UlJxai1obUV2ZTdzal9HRjE3T29NeEZ3RXk2Y0xxNkVyQU9XLWVaSTZDaTU0bmdSSFE?oc=5\">Investing.com 한국어 검색 링크</a> · 제목 기준·본문 미확인\n\n🔴 [속보] <b>4. 이란·호르무즈</b>\n&quot;네타냐후, 이란 공격 재개 추진…트럼프는 반대&quot; - 마켓인\nRSS 보도 10-21 14:28 KST · <b>13분 경과</b> · 전쟁 · <a href=\"https://news.google.com/rss/articles/CBMic0FVX3lxTE1WYnVQMGIxaVM2N3Fod0pxd1BCT2wtX1pfVlk3WldzREpIOE9vWXVFc2VIMVZMbUhqbERxdFpwR3BVeFNwQ1NVemgzNzMwSXJBdzZxV0lzZW9nVS01R3JfS1BuSHFUZ3lRbHN4LW9nSWxHMjQ?oc=5\">마켓인 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,892.00</b>  +0.73% · 제공처 비교종가 대비 · 기준 14:31 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>99.04</b>  +1.25% · 제공처 비교종가 대비 · 기준 14:31 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>110.28</b>  +1.37% · 제공처 비교종가 대비 · 기준 14:30 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.79</b>  +0.08% · 제공처 비교종가 대비 · 기준 14:31 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n🔴 <b>공격·타격·확전·압박 관련:</b> 4건\n- <b>표시 기준:</b> 초록은 대화·협상·완화, 빨강은 공격·타격·공격 예고·결렬·압박\n- <b>현재 단계:</b> 제안·발언·예고와 실제 합의·이행·공격 발생은 기사 문구로 구분\n- <b>다음:</b> 공식 행동·합의 이행·공격 발생 여부 재확인\n"
+}

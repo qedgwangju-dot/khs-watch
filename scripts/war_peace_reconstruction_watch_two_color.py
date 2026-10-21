@@ -7,6 +7,7 @@ payload. This module does not collect, send, select articles, or modify state.
 from __future__ import annotations
 
 import copy
+import base64
 import hashlib
 import html
 import json
@@ -75,10 +76,12 @@ def direction(stage, row):
     if kind in REFERENCE_KINDS:
         return None
     adverse = _active_adverse(title)
+    if stage._attack_plan_status(title) == 'held' and not adverse:
+        return 'green'
     if kind == 'sanctions' and not adverse and re.search(
             r'제재.{0,8}(?:해제|완화|철회)|\b(?:lift\w*|ease\w*|remove\w*)\b.{0,20}\bsanctions?\b', title):
         return 'green'
-    if kind in RISK_KINDS or adverse:
+    if kind in RISK_KINDS or adverse or stage._settlement_pressure_headline(title):
         return 'red'
     if color == 'green':
         return 'green'
@@ -118,7 +121,7 @@ def _summary(colors):
     return '\n'.join(lines)
 
 
-def project(stage, semantic_text, semantic_evidence, proof):
+def project(stage, semantic_text, semantic_evidence, proof, snapshot):
     """Deterministic presentation of already selected and verified sources."""
     receipt = copy.deepcopy(semantic_evidence)
     lines = semantic_text.strip().splitlines()
@@ -180,7 +183,7 @@ def project(stage, semantic_text, semantic_evidence, proof):
     visible = html.unescape(re.sub(r'<[^>]+>', '', text))
     if len(visible.encode('utf-16-le')) // 2 > 4000:
         _fail('final display exceeds existing message budget')
-    receipt.update(presentation_policy=POLICY, semantic_proof=proof,
+    receipt.update(presentation_policy=POLICY, semantic_proof=proof, semantic_snapshot=snapshot,
                    alert_sha256=digest(text.strip().encode('utf-8')))
     return text, receipt
 
@@ -203,7 +206,9 @@ class Presenter:
             semantic_text = stage_alert.read_text(encoding='utf-8')
             proof = {'alert_sha256': digest(stage_alert.read_bytes()),
                      'evidence_sha256': digest(stage_evidence.read_bytes())}
-            text, presented = project(stage, semantic_text, receipt, proof)
+            snapshot = {'alert_utf8_base64': base64.b64encode(stage_alert.read_bytes()).decode('ascii'),
+                        'evidence_utf8_base64': base64.b64encode(stage_evidence.read_bytes()).decode('ascii')}
+            text, presented = project(stage, semantic_text, receipt, proof, snapshot)
             watch.ALERT.write_bytes(text.encode('utf-8'))
             watch.AUDIT.write_bytes((json.dumps(presented, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
             receipt = presented
@@ -227,7 +232,9 @@ class Presenter:
                 self.semantic_verify(test_mode=test_mode)
         expected_text, expected_evidence = project(
             stage, stage_alert.read_text(encoding='utf-8'),
-            json.loads(stage_evidence.read_text(encoding='utf-8')), proof)
+            json.loads(stage_evidence.read_text(encoding='utf-8')), proof,
+            {'alert_utf8_base64': base64.b64encode(stage_alert.read_bytes()).decode('ascii'),
+             'evidence_utf8_base64': base64.b64encode(stage_evidence.read_bytes()).decode('ascii')})
         if watch.ALERT.read_text(encoding='utf-8').strip() != expected_text.strip():
             _fail('final body differs from approved directional presentation')
         if receipt != expected_evidence:
