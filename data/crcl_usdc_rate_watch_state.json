@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-21T22:48:54+09:00",
+  "updated_at_kst": "2026-10-22T03:39:51+09:00",
   "circle": {
     "date": "2026-10-19",
     "circulation_usd_b": 71.9,
@@ -51,25 +51,25 @@
   },
   "crcl": {
     "date": "2026-10-21",
-    "close": 87.6,
+    "close": 91.67,
     "prev_date": "2026-10-20",
     "prev_close": 85.87,
-    "daily_pct": 2.02,
+    "daily_pct": 6.75,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
     "crosscheck_date": "2026-10-21",
-    "crosscheck_close": 87.62999725341797,
-    "crosscheck_daily_pct": 2.05,
-    "crosscheck_gap_pct": 0.034,
-    "crosscheck_status": "confirmed"
+    "crosscheck_close": 91.7750015258789,
+    "crosscheck_daily_pct": 6.88,
+    "crosscheck_gap_pct": 0.115,
+    "crosscheck_status": "discrepant"
   },
   "tbx": {
     "date": "2026-10-21",
-    "close": 29.57509994506836,
+    "close": 29.55500030517578,
     "prev_date": "2026-10-20",
     "prev_close": 29.579999923706055,
-    "daily_pct": -0.02
+    "daily_pct": -0.08
   },
   "fx": {
     "rate": 1332.1,
@@ -82,5 +82,7 @@
   },
   "crcl_last_alerted_close_date": "2026-10-20",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "sofr: FRED SOFR has fewer than two valid observations"
+  ]
 }
