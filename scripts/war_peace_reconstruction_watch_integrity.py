@@ -115,6 +115,7 @@ def _display_headline(row):
             or _war_policy_outlook_headline(_headline(row))
             or _conditional_diplomacy_stage(_headline(row))
             or _shipping_sanctions_headline(_headline(row))
+            or _saudi_airport_casualty_report(_headline(row))
             or _ceasefire_proposal_stage(_headline(row))
             or _headline_attack_casualties(row) or _headline_energy_operation(row)):
         # RSS bullet lines remain one ordered headline in the rendered block.
@@ -335,6 +336,11 @@ def _statement_with_actual_action(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if kind is None and _saudi_airport_casualty_report(title):
+        actors = ['사우디']
+        if re.search(r'후티|\bhouthi', title):
+            actors.append('후티')
+        return '·'.join(actors) + ' · 공항 공격·피해 보도'
     if _shipping_sanctions_headline(title) and kind == 'sanctions':
         return _diplomatic_group(title) + ' · 해운 지원 제재'
     if kind is None and _houthi_attack_claim_headline(title):
@@ -972,6 +978,9 @@ def _talks_stage_label(title):
     schedule = _talks_schedule_stage(title)
     if schedule:
         return schedule[0] + (' 부인' if schedule[1] else '')
+    outlook = _settlement_discussion_outlook(title)
+    if outlook:
+        return '종전 논의 부인' if outlook == 'denied' else '종전 논의·전망'
     return None
 
 
@@ -1010,6 +1019,24 @@ def _houthi_attack_claim_headline(title):
     return bool(re.search(r'후티|\bhouthi', title) and re.search(r'공격했다고\s*주장|\bclaims?\b.{0,40}\battacked\b', title))
 
 
+def _settlement_discussion_outlook(title):
+    match = re.search(r'논의|\bdiscuss\w*\b', title)
+    if not (match and re.search(r'트럼프|\btrump\b', title) and re.search(r'푸틴|\bputin\b', title)
+            and re.search(r'종전|평화|휴전|\b(?:peace|ceasefire)\b', title)
+            and not _peace_plan_discussion_headline(title) and not _summit_proposal_headline(title)):
+        return None
+    denied = (re.match(r'(?:은|는|을|를)?\s*(?:하지\s*않|않겠|부인)', title[match.end():])
+              or re.search(r'\b(?:not|never)\s*$', title[:match.start()]))
+    return 'denied' if denied else 'planned'
+
+
+def _saudi_airport_casualty_report(title):
+    return bool(re.search(r'사우디|\bsaudi\b', title) and re.search(r'공항|\bairport\b', title)
+                and re.search(r'공격|피격|\battack\b', title)
+                and re.search(r'사망|부상|\b(?:killed|injured)\b', title)
+                and not re.search(r'가능성|우려|계획|예고|부인|하지\s*않|\b(?:may|might|could|plans?|denies?|denied)\b', title))
+
+
 def _meeting_plan_stage(title):
     talks = (_talks_participation_stage(title) or _talks_resumption_request_stage(title)
              or _conditional_diplomacy_stage(title))
@@ -1018,6 +1045,9 @@ def _meeting_plan_stage(title):
     schedule = _talks_schedule_stage(title)
     if schedule:
         return 'denied' if schedule[1] else 'planned'
+    outlook = _settlement_discussion_outlook(title)
+    if outlook:
+        return outlook
     if _summit_proposal_headline(title):
         return None
     possible = re.search(r'\b(?:could|may|might|would)\s+(?P<neg>not\s+)?meet\b', title)
@@ -1099,7 +1129,8 @@ def non_military_kind(row):
     if mixed_restraint_attack(row):
         return 'mixed_restraint'
     if (_headline_drone_action(row) or _headline_attack_casualties(row)
-            or _maritime_attack_expansion(row) or _headline_energy_operation(row)):
+            or _maritime_attack_expansion(row) or _headline_energy_operation(row)
+            or _saudi_airport_casualty_report(title)):
         return None
     # Require an explicit new-action predicate before background weapon nouns
     # can turn a sanctions listing or a condemnation into a military event.
@@ -1198,6 +1229,8 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    if kind is None and _saudi_airport_casualty_report(title):
+        return '공항 공격·피해 보도'
     if _conditional_diplomacy_stage(title) == 'warning' and kind == 'military_statement':
         return '조건부 외교 의향·전쟁 선택 경고'
     if kind is None and _houthi_attack_claim_headline(title):
@@ -1255,6 +1288,7 @@ def _headline_event_cache_required(row, kind):
             or (kind is None and _headline_energy_operation(row))
             or _maritime_mine_incident(row)
             or (kind is None and _houthi_attack_claim_headline(_headline(row)))
+            or (kind is None and _saudi_airport_casualty_report(_headline(row)))
             or (_maritime_attack_headline(row) and not maritime_attack_tally(row)))
 
 
@@ -1307,6 +1341,8 @@ def score_item(row, now):
 def final_color(row):
     if non_military_kind(row):
         return 'yellow'
+    if _saudi_airport_casualty_report(_headline(row)):
+        return 'red'
     if _maritime_mine_incident(row):
         return 'red'
     if _statement_with_actual_action(_headline(row)):

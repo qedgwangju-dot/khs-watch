@@ -1,0 +1,466 @@
+{
+  "provenance": {
+    "run_id": 39689493215,
+    "actual_code_sha": "3657d598f15b1c29a0eef7a293f08adc1954c3f4",
+    "queried_at_kst": "2026-10-22T07:52:53.489312+09:00",
+    "artifact_id": 12387438675,
+    "zip_sha256": "c0816ea4590af723504708cdc6bbbe2f89950511842a93217d1dd9e7972316d8",
+    "actual_delivery": false,
+    "operating_dry_run": true,
+    "full_operating_article_bodies_preserved": false,
+    "later_HTTP_bodies_inserted": false
+  },
+  "articles": [
+    {
+      "id": "25e193a1aa21821b85fb",
+      "title_original": "트럼프 푸틴과 논의…우크라이나 종전, 어느 때보다 가까워 - 아주경제",
+      "title_ko": "트럼프 푸틴과 논의…우크라이나 종전, 어느 때보다 가까워 - 아주경제",
+      "description": "트럼프 푸틴과 논의…우크라이나 종전, 어느 때보다 가까워 아주경제",
+      "source": "아주경제",
+      "source_url": "https://www.ajunews.com",
+      "link": "https://www.ajunews.com/view/20261022072207717",
+      "discovery_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9HM2dxOWh6cFM5M2lXX0JWbHQ3UFZfVFBEcVliWGtBTHdPcm9XUExyM1ZFWmJpcnhmenhCb1hSck94cHdnTjVQc2d5SFhJdm5BamFJQzBIN2FRd9IBWEFVX3lxTE4xZkNVeVJFNG82c1NTUGFWdmMzOTlYNG82NXhwUm1HbDR4RkpDOUU1bWwxSF9jdDdqSGpZTmxnNWZGVVpTV043RkEzTzZxVS1zTEZ4UlJHYUw?oc=5",
+      "resolved_url": "https://www.ajunews.com/view/20261022072207717",
+      "published": "Thu, 22 Oct 2026 07:25:12 +0900",
+      "rss_published": "Wed, 21 Oct 2026 22:25:12 GMT",
+      "source_metadata": {
+        "title": "트럼프 \"푸틴과 논의…우크라이나 종전, 어느 때보다 가까워\" | 아주경제",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-22T07:25:12+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-22T07:25:12+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-22T07:25:12+09:00"
+          }
+        ]
+      },
+      "score": 11,
+      "tags": [
+        "종전·협상"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "classification_color": "",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "3e3dec730af9623ac1cea19f81cbef20b520517f0a9f6659498e3f8e280478a2"
+    },
+    {
+      "id": "610fee7b2f1c5296019a",
+      "title_original": "Saudi civil aviation says one killed, eight injured in attack on King Fahd airport",
+      "title_ko": "사우디 민간 항공, 킹 파드 공항 공격으로 1명 사망, 8명 부상",
+      "description": "",
+      "source": "Reuters",
+      "link": "https://www.reuters.com/world/saudi-civil-aviation-says-one-killed-eight-injured-attack-king-fahd-airport-2026-10-21/",
+      "published": "2026-10-21T22:21:41.538Z",
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29847.5,
+      "pct": -0.5315426400506529,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "07:42 KST",
+      "observed_at_kst": "2026-10-22T07:42:54+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 30007.0,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 30007.0,
+        "chartPreviousClose": 30007.0,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792622574,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792641540,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 98.0,
+      "pct": 0.8749356664951025,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "07:42 KST",
+      "observed_at_kst": "2026-10-22T07:42:46+09:00",
+      "symbol": "CL=F",
+      "previous_close": 97.15,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 97.15,
+        "chartPreviousClose": 97.15,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792622566,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792555200,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 109.97000122070312,
+      "pct": 1.0567921528240598,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "07:42 KST",
+      "observed_at_kst": "2026-10-22T07:42:00+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 108.82,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 108.82,
+        "chartPreviousClose": 108.82,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792622566,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792641540,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "withheld",
+      "reason": "가격 시각 오래됨·미래 시각",
+      "observed_at_kst": "2026-10-22T07:04:58+09:00"
+    }
+  },
+  "original_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·타격·확전·압박</b>\n조회 2026-10-22 07:52 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [속보] <b>1. 우크라이나·러시아</b>\n트럼프 푸틴과 논의…우크라이나 종전, 어느 때보다 가까워 - 아주경제\n보도 10-22 07:25 KST · <b>27분 경과</b> · 종전·협상 · <a href=\"https://www.ajunews.com/view/20261022072207717\">아주경제 원문</a>\n\n🔴 [신규] <b>2. 사우디·후티</b>\n사우디 민간 항공, 킹 파드 공항 공격으로 1명 사망, 8명 부상\nRSS 보도 10-22 07:21 KST · <b>31분 경과</b> · 확전 · <a href=\"https://www.reuters.com/world/saudi-civil-aviation-says-one-killed-eight-injured-attack-king-fahd-airport-2026-10-21/\">Reuters 원문</a> · RSS 입력 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,847.50</b>  -0.53% · 제공처 비교종가 대비 · 기준 07:42 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>98.00</b>  +0.87% · 제공처 비교종가 대비 · 기준 07:42 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>109.97</b>  +1.06% · 제공처 비교종가 대비 · 기준 07:42 KST · Yahoo Finance 1분봉 BZ=F\n\n시장자료 확인 보류 · 달러지수 (가격 시각 오래됨·미래 시각)\n\n<b>투자 판정</b>\n🔴 <b>공격·타격·확전·압박 관련:</b> 2건\n- <b>표시 기준:</b> 초록은 대화·협상·완화, 빨강은 공격·타격·공격 예고·결렬·압박\n- <b>현재 단계:</b> 제안·발언·예고와 실제 합의·이행·공격 발생은 기사 문구로 구분\n- <b>다음:</b> 공식 행동·합의 이행·공격 발생 여부 재확인\n",
+  "original_semantic_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>\n조회 2026-10-22 07:52 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n[속보] <b>1. 우크라이나·러시아</b>\n트럼프 푸틴과 논의…우크라이나 종전, 어느 때보다 가까워 - 아주경제\n보도 10-22 07:25 KST · <b>27분 경과</b> · 종전·협상 · <a href=\"https://www.ajunews.com/view/20261022072207717\">아주경제 원문</a>\n\n🔴 [신규] <b>2. 사우디·후티</b>\n사우디 민간 항공, 킹 파드 공항 공격으로 1명 사망, 8명 부상\nRSS 보도 10-22 07:21 KST · <b>31분 경과</b> · 확전 · <a href=\"https://www.reuters.com/world/saudi-civil-aviation-says-one-killed-eight-injured-attack-king-fahd-airport-2026-10-21/\">Reuters 원문</a> · RSS 입력 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,847.50</b>  -0.53% · 제공처 비교종가 대비 · 기준 07:42 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>98.00</b>  +0.87% · 제공처 비교종가 대비 · 기준 07:42 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>109.97</b>  +1.06% · 제공처 비교종가 대비 · 기준 07:42 KST · Yahoo Finance 1분봉 BZ=F\n\n시장자료 확인 보류 · 달러지수 (가격 시각 오래됨·미래 시각)\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n",
+  "original_semantic_evidence": {
+    "schema_version": 1,
+    "queried_at_kst": "2026-10-22T07:52:53.489312+09:00",
+    "run_id": "39689493215",
+    "code_sha": "3657d598f15b1c29a0eef7a293f08adc1954c3f4",
+    "alert_sha256": "acd6944fb125bae3216410d873de0eb5a29661c0ef6c8dc66d93853da6dc1657",
+    "articles": [
+      {
+        "id": "25e193a1aa21821b85fb",
+        "title_original": "트럼프 푸틴과 논의…우크라이나 종전, 어느 때보다 가까워 - 아주경제",
+        "title_ko": "트럼프 푸틴과 논의…우크라이나 종전, 어느 때보다 가까워 - 아주경제",
+        "description": "트럼프 푸틴과 논의…우크라이나 종전, 어느 때보다 가까워 아주경제",
+        "source": "아주경제",
+        "source_url": "https://www.ajunews.com",
+        "link": "https://www.ajunews.com/view/20261022072207717",
+        "discovery_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9HM2dxOWh6cFM5M2lXX0JWbHQ3UFZfVFBEcVliWGtBTHdPcm9XUExyM1ZFWmJpcnhmenhCb1hSck94cHdnTjVQc2d5SFhJdm5BamFJQzBIN2FRd9IBWEFVX3lxTE4xZkNVeVJFNG82c1NTUGFWdmMzOTlYNG82NXhwUm1HbDR4RkpDOUU1bWwxSF9jdDdqSGpZTmxnNWZGVVpTV043RkEzTzZxVS1zTEZ4UlJHYUw?oc=5",
+        "resolved_url": "https://www.ajunews.com/view/20261022072207717",
+        "published": "Thu, 22 Oct 2026 07:25:12 +0900",
+        "rss_published": "Wed, 21 Oct 2026 22:25:12 GMT",
+        "source_metadata": {
+          "title": "트럼프 \"푸틴과 논의…우크라이나 종전, 어느 때보다 가까워\" | 아주경제",
+          "publication_status": "verified",
+          "published_at_kst": "2026-10-22T07:25:12+09:00",
+          "publication_candidates": [
+            {
+              "field": "article:published_time",
+              "at_kst": "2026-10-22T07:25:12+09:00"
+            },
+            {
+              "field": "jsonld:datePublished",
+              "at_kst": "2026-10-22T07:25:12+09:00"
+            }
+          ]
+        },
+        "score": 11,
+        "tags": [
+          "종전·협상"
+        ],
+        "body_checked": true,
+        "body_verified": true,
+        "classification_color": "",
+        "publication_basis": "publisher",
+        "rendered": true,
+        "article_text_sha256": "3e3dec730af9623ac1cea19f81cbef20b520517f0a9f6659498e3f8e280478a2"
+      },
+      {
+        "id": "610fee7b2f1c5296019a",
+        "title_original": "Saudi civil aviation says one killed, eight injured in attack on King Fahd airport",
+        "title_ko": "사우디 민간 항공, 킹 파드 공항 공격으로 1명 사망, 8명 부상",
+        "description": "",
+        "source": "Reuters",
+        "link": "https://www.reuters.com/world/saudi-civil-aviation-says-one-killed-eight-injured-attack-king-fahd-airport-2026-10-21/",
+        "published": "2026-10-21T22:21:41.538Z",
+        "score": 10,
+        "tags": [
+          "확전"
+        ],
+        "body_checked": true,
+        "classification_color": "red",
+        "body_verified": false,
+        "publication_basis": "discovery_feed",
+        "rendered": true,
+        "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "markets": [
+      {
+        "name": "나스닥100 선물",
+        "price": 29847.5,
+        "pct": -0.5315426400506529,
+        "arrow": "▼",
+        "basis": "제공처 비교종가 대비",
+        "source": "Yahoo Finance 1분봉",
+        "asof": "07:42 KST",
+        "observed_at_kst": "2026-10-22T07:42:54+09:00",
+        "symbol": "NQ=F",
+        "previous_close": 30007.0,
+        "previous_close_field": "chartPreviousClose",
+        "previous_close_date_verified": false,
+        "quote_metadata": {
+          "symbol": "NQ=F",
+          "instrumentType": "FUTURE",
+          "previousClose": 30007.0,
+          "chartPreviousClose": 30007.0,
+          "exchangeTimezoneName": "America/New_York",
+          "regularMarketTime": 1792622574,
+          "currentTradingPeriod": {
+            "pre": {
+              "timezone": "EDT",
+              "start": 1792555200,
+              "end": 1792555200,
+              "gmtoffset": -14400
+            },
+            "regular": {
+              "timezone": "EDT",
+              "start": 1792555200,
+              "end": 1792641540,
+              "gmtoffset": -14400
+            },
+            "post": {
+              "timezone": "EDT",
+              "start": 1792641540,
+              "end": 1792641540,
+              "gmtoffset": -14400
+            }
+          }
+        },
+        "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+        "comparison": null,
+        "verified": false,
+        "verify_note": ""
+      },
+      {
+        "name": "WTI",
+        "price": 98.0,
+        "pct": 0.8749356664951025,
+        "arrow": "▲",
+        "basis": "제공처 비교종가 대비",
+        "source": "Yahoo Finance 1분봉",
+        "asof": "07:42 KST",
+        "observed_at_kst": "2026-10-22T07:42:46+09:00",
+        "symbol": "CL=F",
+        "previous_close": 97.15,
+        "previous_close_field": "chartPreviousClose",
+        "previous_close_date_verified": false,
+        "quote_metadata": {
+          "symbol": "CL=F",
+          "instrumentType": "FUTURE",
+          "previousClose": 97.15,
+          "chartPreviousClose": 97.15,
+          "exchangeTimezoneName": "America/New_York",
+          "regularMarketTime": 1792622566,
+          "currentTradingPeriod": {
+            "pre": {
+              "timezone": "EDT",
+              "end": 1792555200,
+              "start": 1792555200,
+              "gmtoffset": -14400
+            },
+            "regular": {
+              "timezone": "EDT",
+              "end": 1792641540,
+              "start": 1792555200,
+              "gmtoffset": -14400
+            },
+            "post": {
+              "timezone": "EDT",
+              "end": 1792641540,
+              "start": 1792641540,
+              "gmtoffset": -14400
+            }
+          }
+        },
+        "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+        "comparison": null,
+        "verified": false,
+        "verify_note": ""
+      },
+      {
+        "name": "Brent",
+        "price": 109.97000122070312,
+        "pct": 1.0567921528240598,
+        "arrow": "▲",
+        "basis": "제공처 비교종가 대비",
+        "source": "Yahoo Finance 1분봉",
+        "asof": "07:42 KST",
+        "observed_at_kst": "2026-10-22T07:42:00+09:00",
+        "symbol": "BZ=F",
+        "previous_close": 108.82,
+        "previous_close_field": "chartPreviousClose",
+        "previous_close_date_verified": false,
+        "quote_metadata": {
+          "symbol": "BZ=F",
+          "instrumentType": "FUTURE",
+          "previousClose": 108.82,
+          "chartPreviousClose": 108.82,
+          "exchangeTimezoneName": "America/New_York",
+          "regularMarketTime": 1792622566,
+          "currentTradingPeriod": {
+            "pre": {
+              "timezone": "EDT",
+              "start": 1792555200,
+              "end": 1792555200,
+              "gmtoffset": -14400
+            },
+            "regular": {
+              "timezone": "EDT",
+              "start": 1792555200,
+              "end": 1792641540,
+              "gmtoffset": -14400
+            },
+            "post": {
+              "timezone": "EDT",
+              "start": 1792641540,
+              "end": 1792641540,
+              "gmtoffset": -14400
+            }
+          }
+        },
+        "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+        "comparison": null,
+        "verified": false,
+        "verify_note": ""
+      }
+    ],
+    "market_source_status": {
+      "NQ=F": {
+        "name": "나스닥100 선물",
+        "status": "available",
+        "reason": null
+      },
+      "CL=F": {
+        "name": "WTI",
+        "status": "available",
+        "reason": null
+      },
+      "BZ=F": {
+        "name": "Brent",
+        "status": "available",
+        "reason": null
+      },
+      "DX-Y.NYB": {
+        "name": "달러지수",
+        "status": "withheld",
+        "reason": "가격 시각 오래됨·미래 시각",
+        "observed_at_kst": "2026-10-22T07:04:58+09:00"
+      }
+    }
+  }
+}

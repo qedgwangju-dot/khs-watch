@@ -684,6 +684,51 @@ class TwoColorTests(unittest.TestCase):
                 with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
                     self.presenter.verify_alert()
 
+    def test_named_settlement_discussion_keeps_outlook_and_explicit_actors(self):
+        title='트럼프 푸틴과 논의…우크라이나 종전, 어느 때보다 가까워 - 아주경제'
+        row={'title_original':title,'title_ko':title}
+        self.assertEqual(stage.non_military_kind(row),'diplomatic_plan')
+        self.assertEqual(stage.topic_label(row),'미국·우크라이나·러시아 · 종전 논의·전망')
+        self.assertEqual(stage._display_headline(row),title)
+        self.assertEqual(presentation.direction(stage,row),'green')
+        self.assertEqual(presentation.direction(stage,{'title_original':title+'…러시아 미사일 발사했다'}),'red')
+        row={'title_original':title.replace('논의','논의하지 않았다')}
+        self.assertEqual(stage.non_military_kind(row),'diplomatic_position')
+        self.assertEqual(presentation.direction(stage,row),'red')
+        self.assertIn('종전 논의 부인',stage.topic_label(row))
+
+    def test_saudi_airport_attack_casualties_do_not_impute_houthi_actor(self):
+        title='Saudi civil aviation says one killed, eight injured in attack on King Fahd airport'
+        row={'title_original':title,'title_ko':'사우디 공항 피격 사상자 보도'}
+        self.assertEqual(stage.topic_label(row),'사우디 · 공항 공격·피해 보도')
+        self.assertEqual(stage._display_headline(row),title)
+        self.assertEqual(presentation.direction(stage,row),'red')
+        self.assertNotIn('후티',stage.topic_label(row))
+        row={'title_original':'후티, 사우디 공항 공격으로 1명 사망·8명 부상'}
+        self.assertEqual(stage.topic_label(row),'사우디·후티 · 공항 공격·피해 보도')
+
+    def test_saved_settlement_airport_push_full_gate(self):
+        self.fixture=json.loads((Path(__file__).parent/'test_fixtures/war_settlement_airport_39689493215.json').read_text(encoding='utf-8'))
+        (_,_,ids),text,receipt=self.present(tuple(range(len(self.fixture['articles']))))
+        self.assertEqual(ids,['25e193a1aa21821b85fb','610fee7b2f1c5296019a'])
+        self.assertEqual([r['classification_color'] for r in receipt['articles'] if r['rendered']],['green','red'])
+        self.assertIn('미국·우크라이나·러시아 · 종전 논의·전망',text)
+        self.assertIn('사우디 · 공항 공격·피해 보도',text)
+        self.assertIn('one killed, eight injured',text)
+        self.assertNotIn('후티',text)
+        self.assertNotIn('🟡',text)
+        self.assertEqual(receipt['markets'],self.fixture['markets'])
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.STATE.read_bytes(),self.state_before)
+
+    def test_same_hash_wrong_settlement_color_and_assumed_airport_actor_rejected(self):
+        f=json.loads((Path(__file__).parent/'test_fixtures/war_settlement_airport_39689493215.json').read_text(encoding='utf-8'))
+        self.watch.ALERT.write_text(f['original_semantic_alert'],encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(f['original_semantic_evidence'],ensure_ascii=False),encoding='utf-8')
+        self.watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in f['articles'] if r['rendered']]}),encoding='utf-8')
+        with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
+            self.presenter.verify_alert()
+
     def test_production_entry_installs_directional_final_gate(self):
         original = stage.runner.verify_alert
         def entry():
