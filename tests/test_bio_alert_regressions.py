@@ -305,6 +305,22 @@ class BioAlertRegressionTests(unittest.TestCase):
         for ident in ("Padcev", "KEYNOTE-B15", "EV-304", "MIBC", "EP622", "MDASE"):
             self.assertIn(ident, rendered)
         self.assertIn("**2026년 10월 21일**", rendered)
+        for original_url in (
+            qlex_watch.EU_MIBC_MERCK_URL,
+            qlex_watch.EU_MIBC_EMA_URL,
+            qlex_watch.EU_MIBC_EUROPE_INJUNCTION_URL,
+        ):
+            self.assertIn(original_url, rendered)
+        self.assertNotIn("유럽의약품청(EMA).europa", rendered)
+
+    def test_bio_regulatory_source_urls_are_never_modified_by_korean_normalization(self):
+        lines = (
+            "- 원문: https://www.ema.europa.eu/en/medicines/human/variation/keytruda-1",
+            "- 원문: https://www.fda.gov/drugs",
+        )
+        for line in lines:
+            self.assertEqual(guard.ensure_korean_text(line), line)
+        self.assertEqual(guard.ensure_korean_text("FDA가 승인했습니다."), "미국 식품의약국(FDA)가 승인했습니다.")
 
     def test_qlex_eu_mibc_alert_contains_bold_dated_legal_gate(self):
         rendered = qlex_sender.render_html("\n".join(qlex_watch.eu_mibc_regulatory_lines()))

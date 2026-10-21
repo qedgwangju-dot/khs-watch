@@ -24,6 +24,11 @@ def korean_first_regulatory_terms(text: str) -> str:
 
 
 def strict_translate_line(line: str) -> str:
+    stripped = line.strip()
+    # 규제 약어의 한국어 우선표기는 문장에만 적용한다.
+    # - 원문: 공식 주소는 EMA 등 식별자가 도메인에 들어가므로 절대 재작성하지 않는다.
+    if stripped.startswith("- 원문:") or "원문 뉴스보기" in stripped or re.fullmatch(r"https?://\\S+", stripped):
+        return line
     return korean_first_regulatory_terms(base.strict_translate_line(line))
 
 
