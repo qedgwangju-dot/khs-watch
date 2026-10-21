@@ -729,6 +729,50 @@ class TwoColorTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
             self.presenter.verify_alert()
 
+    def test_detainee_release_easing_retains_explicit_us_russia_and_outlook(self):
+        title='푸틴, 트럼프 요청에 억류 미국인 석방…트럼프 “종전 가장 가까운 시점” - 아시아투데이'
+        row={'title_original':title,'title_ko':title}
+        self.assertEqual(stage.non_military_kind(row),'diplomatic_statement')
+        self.assertEqual(stage.topic_label(row),'미국·러시아 · 억류자 석방·완화 보도')
+        self.assertEqual(presentation.direction(stage,row),'green')
+        self.assertEqual(stage._display_headline(row),title)
+        self.assertEqual(presentation.direction(stage,{'title_original':title+'…러시아 미사일 발사했다'}),'red')
+        self.assertEqual(presentation.direction(stage,{'title_original':title.replace('석방','석방하지 않았다')}),'red')
+        row={'title_original':title.replace('석방','석방 검토')}
+        self.assertEqual(stage.non_military_kind(row),'diplomatic_plan')
+        self.assertIn('석방 계획·논의',stage.topic_label(row))
+
+    def test_named_persian_gulf_hormuz_ships_do_not_add_iran(self):
+        title='페르시아만과 호르무즈 해협서 유조선 2척 피격 - VOA 한국어 홈페이지'
+        row={'title_original':title,'title_ko':title}
+        self.assertEqual(stage.topic_label(row),'페르시아만·호르무즈 · 선박 피격 보도')
+        self.assertEqual(presentation.direction(stage,row),'red')
+        self.assertEqual(stage._display_headline(row),title)
+        self.assertNotIn('이란',stage.topic_label(row))
+
+    def test_actual_release_maritime_four_full_gate_and_selection(self):
+        self.fixture=json.loads((Path(__file__).parent/'test_fixtures/war_release_maritime_39690928966.json').read_text(encoding='utf-8'))
+        (_,_,ids),text,receipt=self.present(tuple(range(len(self.fixture['articles']))))
+        shown=[r for r in receipt['articles'] if r['rendered']]
+        self.assertEqual([r['classification_color'] for r in shown],['red','green','red','green'])
+        self.assertEqual(ids,[r['id'] for r in self.fixture['articles'] if r['rendered']])
+        self.assertIn('미국·러시아 · 억류자 석방·완화 보도',text)
+        self.assertIn('페르시아만·호르무즈 · 선박 피격 보도',text)
+        self.assertNotIn('이란',text)
+        self.assertIn('유조선 2척',text)
+        self.assertIn('종전 가장 가까운 시점',text)
+        self.assertEqual(receipt['markets'],self.fixture['markets'])
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.STATE.read_bytes(),self.state_before)
+
+    def test_same_hash_release_red_and_invented_geography_rejected(self):
+        f=json.loads((Path(__file__).parent/'test_fixtures/war_release_maritime_39690928966.json').read_text(encoding='utf-8'))
+        self.watch.ALERT.write_text(f['original_semantic_alert'],encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(f['original_semantic_evidence'],ensure_ascii=False),encoding='utf-8')
+        self.watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in f['articles'] if r['rendered']]}),encoding='utf-8')
+        with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
+            self.presenter.verify_alert()
+
     def test_production_entry_installs_directional_final_gate(self):
         original = stage.runner.verify_alert
         def entry():
