@@ -1040,6 +1040,9 @@ def official_ooi_source(item: dict) -> bool:
 
 
 def canonical_story_key(company: str, title: str) -> str | None:
+    if company in NEW_OPTICAL_INFRA_SCOPES:
+        event = new_infra_milestone(company, title)
+        return event[2] if event else None
     if company == OOI_COMPANY:
         event = ooi_dwdm_milestone(title)
         return event[2] if event else None
@@ -2113,6 +2116,10 @@ def merge_article_scopes(current: dict, candidate: dict) -> dict:
 def same_underlying_story(a: dict, b: dict) -> bool:
     if a.get("company") != b.get("company"):
         return False
+    if a.get("company") in NEW_OPTICAL_INFRA_SCOPES:
+        ea = new_infra_milestone(a.get("company"), a.get("title") or "")
+        eb = new_infra_milestone(b.get("company"), b.get("title") or "")
+        return bool(ea and eb and ea[2] == eb[2])
     if a.get("company") == POWER_COMPANY:
         return same_power_event(a, b)
 
@@ -2366,6 +2373,9 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company in NEW_OPTICAL_INFRA_SCOPES:
+        event = new_infra_milestone(company, title)
+        return event[0] if event else "근거 검증 대기"
     if company == OOI_COMPANY:
         event = ooi_dwdm_milestone(title)
         return event[0] if event else "OOI·DWDM 단계 검증 필요"
@@ -2560,6 +2570,19 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "3M·Amazon 주식매수권 계약": "SEC 8-K: 최대 316만2,015주·주당 164.89달러·7년. 85%는 광연결·데이터센터 제품 누적 구매 60억달러 권리확정 기준이며 실제 확정 수주잔고가 아닙니다. 나머지 15%는 별도 사건 조건입니다.",
+        "3M·Amazon 구매 실적·권리확정": "실제 누적 구매 실적 및 주식매수권 권리확정 단계와 3M 매출 인식·주식 발행 대금은 구분합니다.",
+        "3M·Amazon 광연결 추가 계약·출하": "기존 계약 이외에 새롭게 확정된 광연결 제품 발주·고객 인도·매출 인식 변화를 추적합니다.",
+        "3M·Microsoft 기존 EBO 협력": "2026년 7월 Microsoft의 3M 확장빔 광연결 기술 도입 발표와 실제 제품 출하는 구분합니다.",
+        "3M·Microsoft EBO 추가 납품": "3M 확장빔 광연결 커넥터의 후속 주문·실제 대량 납품을 확인합니다.",
+        "TrendForce 광섬유 현물·공급 부족": "2026년 수요 5억7,700만 심킬로미터, 부족 1억8,000만, 가동률 92%·재고 1개월, 모재 증설 18~24개월은 TrendForce 추정입니다. 광섬유 현물가격 전망과 계약 평균판매단가는 다릅니다.",
+        "광섬유 현물가격·공급 전망 변경": "저굽힘손실·백본·일반 광섬유의 현물가격과 계약 단가·수요·모재 생산능력 변화를 분리합니다.",
+        "광섬유·모재 증설·장기계약": "실제 모재 생산능력 확장, 고객 장기약정, 공급물량과 인도일을 확인해야 반복매출로 연결됩니다.",
+        "대한광통신 미국향 1차 수주": "2026년 2월 기존 공급계약이며 재탕 기사를 신규 출하로 분류하지 않습니다.",
+        "대한광통신 미국향 2차 계약": "2026년 6월 약 355억원 규모 864심 광케이블 2차 계약입니다. TFO America 계약·물류와 실제 납품·검수·매출은 구분합니다.",
+        "대한광통신 미국향 2차 실제 출하": "기존 2차 공급계약에 따른 실제 공급개시 확인 신호입니다. 수주금액 355억원을 새로 더하지 않고 고객 인수·분기 매출은 별도 확인합니다.",
+        "대한광통신 미국향 3차 수주": "기존 1·2차와 별도의 신규 계약 원화금액·물량·납기·고객을 검증합니다.",
+        "대한광통신 미국향 검수·매출": "864심 광케이블의 실제 인수검사, 수출 매출 인식, 환율·원가·미수금 변화를 점검합니다.",
         "OOI 실제 양산·출하": "연구 시제품에서 실제 패키지 광엔진 생산·인도로 넘어간 물량만 매출 후보입니다. GPU·NVLink CPO 전체 출하와 OOI 공급량은 별개입니다.",
         "OOI 고객·파운드리 검증": "고객·파운드리가 고온 신뢰성·양품률·인터포저 연결성 검증을 통과하면 상용화 가능성이 높아지지만 발주량·매출은 별도 확인해야 합니다.",
         "OOI 연산칩 패키지 실제 통합": "광엔진의 동일 인터포저 실장·칩 간 거리 단축을 실제 GPU/HBM 패키지로 검증한 경우에만 제품화 단계 변화입니다.",
@@ -2695,6 +2718,19 @@ def meaning_for(category: str) -> str:
 
 def risk_for(category: str) -> str:
     mapping = {
+        "3M·Amazon 주식매수권 계약": "60억달러는 구매 의무가 아니므로 실제 구매 미달, 주식 희석, 계약변경·취소를 점검합니다.",
+        "3M·Amazon 구매 실적·권리확정": "권리확정과 매출 인식·현금 유입은 다른 사건이며 고객 구매 지연 위험이 있습니다.",
+        "3M·Amazon 광연결 추가 계약·출하": "커넥터 광결합 손실·오염·검수 지연·보증 비용에 따라 실제 실적이 달라집니다.",
+        "3M·Microsoft 기존 EBO 협력": "공동개발·도입 결정이 실제 수주·반복납품으로 이어지지 않을 수 있습니다.",
+        "3M·Microsoft EBO 추가 납품": "장기 광학 신뢰성, 설치·검수 시간, 현장 세척·교체비가 매출총이익률을 훼손할 수 있습니다.",
+        "TrendForce 광섬유 현물·공급 부족": "현물가격 2.8~5배 이상 전망이 장기 판매 평균단가 상승으로 그대로 전가되지는 않습니다.",
+        "광섬유 현물가격·공급 전망 변경": "모재 수율·재고·증설 18~24개월 지연, 수요 둔화 이후 공급과잉이 역풍입니다.",
+        "광섬유·모재 증설·장기계약": "모재 증착·인발 장비 병목과 케이블 고객 인수검사·납기 차질에 주의해야 합니다.",
+        "대한광통신 미국향 1차 수주": "기존 계약 재보도와 실제 출하를 혼동하면 수주를 중복 계산하게 됩니다.",
+        "대한광통신 미국향 2차 계약": "과거 355억원 계약은 신규 10월 수주가 아니며 매출 인식은 납품·검수 이후입니다.",
+        "대한광통신 미국향 2차 실제 출하": "선적이 시작돼도 운송비·검수지연·품질보증·환율 때문에 분기 이익 반영이 늦을 수 있습니다.",
+        "대한광통신 미국향 3차 수주": "기존 2차 증액정정과 진정한 3차 신규수주를 분리해야 합니다.",
+        "대한광통신 미국향 검수·매출": "광섬유 품질·수율·원자재 원가·고객 채권 회수 위험이 있습니다.",
         "OOI 실제 양산·출하": "GPU/HBM 발열과 광엔진의 고온 수명·휨·광결합 수율이 불량 비용·검사 처리량·반품 및 보증충당금을 키울 수 있습니다.",
         "OOI 고객·파운드리 검증": "고온 동작 검사, 열응력, FAU 정렬·삽입손실, 보험·인증 문제로 채택과 검수·매출 인식이 늦어질 수 있습니다.",
         "OOI 연산칩 패키지 실제 통합": "광엔진이 연산칩과 동일 인터포저를 공유하면 열·휨·수율·교체성 제약이 커져 양산 원가가 높아질 수 있습니다.",
