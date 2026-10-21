@@ -76,7 +76,7 @@ def direction(stage, row):
     if kind in REFERENCE_KINDS:
         return None
     adverse = _active_adverse(title)
-    if stage._attack_plan_status(title) == 'held' and not adverse:
+    if stage._attack_plan_status(title) in ('held', 'denied') and not adverse:
         return 'green'
     if kind == 'sanctions' and not adverse and re.search(
             r'제재.{0,8}(?:해제|완화|철회)|\b(?:lift\w*|ease\w*|remove\w*)\b.{0,20}\bsanctions?\b', title):

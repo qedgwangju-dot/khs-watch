@@ -267,13 +267,17 @@ def _settlement_pressure_headline(title):
 def _attack_plan_spans(title):
     action = r'(?:공습|공격|폭격)(?:을|를)?\s*(?:(?:개시|재개)(?:를|을)?\s*)?'
     return list(re.finditer(
-        r'(?P<held>' + action + r'(?:하려다|추진|계획|검토|준비)[^…;；]{0,70}?(?:보류|취소|철회))|'
+        r'(?P<held>' + action + r'(?:하려다|추진|계획|검토|준비)[^…;；]{0,70}?(?:보류|취소|철회)(?!\s*(?:하지|않|안\s|아니|부인)))|'
         r'(?P<planned>' + action + r'(?:추진|검토|계획|준비))', title))
 
 
 def _attack_plan_status(title):
     spans = _attack_plan_spans(title)
-    return 'held' if any(span.lastgroup == 'held' for span in spans) else 'planned' if spans else None
+    if any(span.lastgroup == 'held' for span in spans):
+        return 'held'
+    if spans and all(re.match(r'\s*(?:부인|사실무근|하지\s*않|안\s*했)', title[span.end():]) for span in spans):
+        return 'denied'
+    return 'planned' if spans else None
 
 
 def _meeting_participation_request(title):
@@ -312,7 +316,7 @@ def _primary_topic(row):
         actors = [label for label, pattern in (('미국', r'트럼프|미국|美|\btrump\b'),
                   ('이스라엘', r'이스라엘|네타냐후|\b(?:israel|netanyahu)\b'),
                   ('이란', r'이란|\biran\b')) if re.search(pattern, title)]
-        label = '공습·공격 계획 보류·반대' if _attack_plan_status(title) == 'held' else '공습·공격 계획·추진'
+        label = {'held': '공습·공격 계획 보류·반대', 'denied': '공습·공격 계획 부인', 'planned': '공습·공격 계획·추진'}[_attack_plan_status(title)]
         return ('·'.join(actors) or _diplomatic_group(title)) + ' · ' + label
     if kind == 'commodity_market':
         return '금시장 · ' + KIND_LABELS[kind]
@@ -1007,7 +1011,7 @@ def _clear_market_event_cache(row):
 def _headline_event_label(row, kind):
     title = _headline(row)
     if kind == 'military_discussion' and _attack_plan_status(title):
-        return '공습·공격 계획 보류·반대' if _attack_plan_status(title) == 'held' else '공습·공격 계획·추진'
+        return {'held': '공습·공격 계획 보류·반대', 'denied': '공습·공격 계획 부인', 'planned': '공습·공격 계획·추진'}[_attack_plan_status(title)]
     meeting_plan = _meeting_plan_stage(title)
     if meeting_plan and kind in ('diplomatic_position', 'diplomatic_plan'):
         return '회담 추진 부인' if meeting_plan == 'denied' else '회담 추진·논의'
