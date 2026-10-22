@@ -142,7 +142,15 @@ class TestIMF(unittest.TestCase):
                 'citi_reported':True,'citi_message_id':90,
                 'delivery_status':'confirmed'}
         def save(state):memory.clear();memory.update(state)
-        with patch.object(imf,'read_state',side_effect=lambda:memory.copy()),\
+        # This one-time follow-up belongs to the Oct 16 release window, not
+        # the wall-clock date when CI happens to be re-run.
+        import datetime as _dt
+        class FixedDatetime(_dt.datetime):
+            @classmethod
+            def now(cls,tz=None):
+                return cls(2026,10,16,12,0,tzinfo=tz)
+        with patch.object(imf,'datetime',FixedDatetime),\
+             patch.object(imf,'read_state',side_effect=lambda:memory.copy()),\
              patch.object(imf,'save',side_effect=save),\
              patch.object(imf,'ai_policy_sources',return_value={
                  'federal':imf.FED_TASKFORCES,'press':imf.AFP_RTHK}),\
