@@ -371,18 +371,13 @@ class WarshSafetyTests(unittest.TestCase):
         self.assertIn("/en/newsroom/press-releases/", result[-1]["url"])
         self.assertTrue(urllib.parse.urlparse(result[-1]["url"]).hostname.endswith("gartner.com"))
 
-    def test_gartner_all_live_sources_fail_keeps_previous_good_headline(self):
-        item = {
-            "title": "Gartner Finds AI Workforces Changing - Gartner",
-            "published": "2026-10-07T10:20:03+00:00",
-            "url": "https://www.gartner.com/en/newsroom/",
-        }
-        state = {"gartner_latest": item}
-        with patch.object(gartner, "official_gartner_items", side_effect=TimeoutError("blocked")), \
-             patch.object(gartner, "rss_gartner_items", side_effect=TimeoutError("blocked")), \
-             patch.object(gartner.base, "load_state", return_value=state):
+    def test_gartner_source_failure_suppresses_reposting(self):
+        # A cache entry is not a newly verified official release. Preserve
+        # it in main's state, but never return it as a fresh article.
+        with patch.object(gartner, "official_rss_items", side_effect=TimeoutError("blocked")), \
+             patch.object(gartner, "official_gartner_items", side_effect=TimeoutError("blocked")):
             result = gartner.structural_gartner_items()
-        self.assertEqual(result, [item])
+        self.assertEqual(result, [])
 
 
     def test_missing_probability_api_fails_closed_without_scraping_or_guessing(self):
