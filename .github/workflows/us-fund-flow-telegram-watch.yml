@@ -21,6 +21,11 @@ on:
         default: "false"
         type: choice
         options: ["false", "true"]
+      tech_proxy_validate_only:
+        description: "Verify IYW and SOXX official data without Telegram delivery"
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: write
@@ -167,7 +172,8 @@ jobs:
           PY
 
   watch:
-    if: github.event_name != 'pull_request'
+    # Suppress unrelated US fund-flow delivery during tech ETF integration-only pushes.
+    if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[tech-etf-proxy-validate]')
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
@@ -393,5 +399,98 @@ jobs:
             out/us_positioning_options_sox_status.md
             out/us_positioning_options_sox_alert.html
             out/us_positioning_options_sox_pending_state.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+  tech-etf-proxy:
+    if: >-
+      ${{
+        github.event_name == 'schedule' ||
+        github.event_name == 'workflow_dispatch' ||
+        (github.event_name == 'push' &&
+         contains(github.event.head_commit.message, '[tech-etf-proxy-validate]'))
+      }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+      TECH_ETF_PROXY_VALIDATE_ONLY: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.tech_proxy_validate_only)) && '1' || '0' }}
+
+    steps:
+      - name: Checkout shared US fund-flow deployment and delivery state
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install official ETF reader dependencies
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4
+
+      - name: Check tech ETF data, split, dates, and Telegram receipt invariants
+        run: |
+          python -m py_compile scripts/us_tech_etf_proxy_watch.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_us_tech_etf_proxy_watch.py' -v
+
+      - name: Collect ETF shares and conditionally alert through existing bot
+        run: |
+          set -o pipefail
+          mkdir -p out
+          rm -f out/us_tech_etf_proxy_run.log out/us_tech_etf_proxy_candidate.html out/us_tech_etf_proxy_receipt.json
+          PYTHONPATH=scripts python scripts/us_tech_etf_proxy_watch.py | tee out/us_tech_etf_proxy_run.log
+          if grep -q '"status": "source_withheld"' out/us_tech_etf_proxy_run.log || grep -q '"status": "fx_withheld"' out/us_tech_etf_proxy_run.log; then
+            echo "::warning::Official tech ETF data or currency verification unavailable. No Telegram sent."
+            exit 1
+          elif grep -q '"status": "sent"' out/us_tech_etf_proxy_run.log; then
+            echo "미 기술주 ETF 발행좌수 경보 전송 · Telegram message_id는 확인증 참조" >> "$GITHUB_STEP_SUMMARY"
+          elif grep -q '"status": "validated"' out/us_tech_etf_proxy_run.log; then
+            echo "IYW·SOXX 검증 완료 · 실제 Telegram 미전송" >> "$GITHUB_STEP_SUMMARY"
+          elif grep -Eq '"status": "(baseline_or_no_signal|duplicate_suppressed)"' out/us_tech_etf_proxy_run.log; then
+            echo "초기 기준점만 저장하거나 조건 미충족·중복 발송 차단" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::error::Tech ETF reader terminated without auditable disposition"
+            exit 1
+          fi
+
+      - name: Commit separate tech ETF baseline or confirmed alert
+        if: success()
+        run: |
+          if [ ! -f data/us_tech_etf_proxy_state.json ]; then
+            echo "검증 모드·조회 실패·중복으로 별도 상태 변경 없음"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/us_tech_etf_proxy_state.json
+          if git diff --cached --quiet; then
+            echo "기존 상태와 동일"
+            exit 0
+          fi
+          git commit -m "Update verified technology ETF creations proxy baseline"
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 3))
+          done
+          exit 1
+
+      - name: Preserve validation and Telegram receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: us-tech-etf-proxy-${{ github.run_id }}
+          path: |
+            out/us_tech_etf_proxy_run.log
+            out/us_tech_etf_proxy_candidate.html
+            out/us_tech_etf_proxy_receipt.json
+            data/us_tech_etf_proxy_state.json
           if-no-files-found: ignore
           retention-days: 14
