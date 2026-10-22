@@ -8,7 +8,7 @@
     "errors": [],
     "material_items": 21,
     "new_material_items": 0,
-    "raw_items": 302,
+    "raw_items": 299,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -735,6 +735,16 @@
       "url": "https://www.php.net/archive/2026.php#2026-10-21-5",
       "vendor": "PHP 재단"
     },
+    "c11671e1cf4be8601e95c49b": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-22T10:13:12.407995+00:00",
+      "published_at": "2026-10-22T08:12:00+00:00",
+      "severity": 3,
+      "source": "Chosunbiz",
+      "title": "Php2shell exposes global PHP servers, spurs urgent updates in Korea and beyond - CHOSUNBIZ - Chosunbiz",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQcVRJOHMtb3pPMWtKX3g3Qng1RmpFaXlfQkhyRk1KYmk5M1hyak1mTzFjcF9OWVQ5TFpxSnN4N1FCN0MzbjFPRXpFd2VOeTVHdDktX1BzZl9FaEFRTFR1NTEzMVZ4ME5IYkRTeDloNzZMZFZDcjMyNGllRWkzNWtsYmlwQk5tNnUtVHpSN2ln0gGOAUFVX3lxTFBxVEk4cy1vek8xa0pfeDdCeDVGakVpeV9CSHJGTUpiaTkzWHJqTWZPMWNwX05ZVDlMWnFKc3g3UUI3QzNuMU9FekV3ZU55NUd0OS1fUHNmX0VoQVFMVHU1MTMxVngwTkhiRFN4OWg3NkxkVkNyMzI0aWVFaTM1a2xiaXBCTm02dS1UelI3aWc?oc=5",
+      "vendor": "PHP 재단"
+    },
     "c5223d4a9baa7651580eb6ca": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
@@ -1006,5 +1016,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-22T18:41:22+09:00"
+  "updated_at_kst": "2026-10-22T19:13:12+09:00"
 }
