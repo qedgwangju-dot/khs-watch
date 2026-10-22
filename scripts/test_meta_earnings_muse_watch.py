@@ -17,6 +17,17 @@ def main():
     assert "2027년 1월 19일" in msg
     assert "2026년 연간 설비투자" in msg
     assert "<a href=" in msg
+    enriched=m.build_q3(1322.54,"2026-10-22","메타 공식 투자자관계",enrichment=True)
+    assert "검산 보강본" in enriched
+    assert "새 분기 발표 아님" in enriched
+    assert "광고 노출 +10%" in enriched and "광고당 평균가격 +14%" in enriched
+    assert "전년 동기 대비 약 +11.4%" in enriched
+    assert m.Q3_MILLIONS["forecast_fcf"]-m.Q3_MILLIONS["free_cash_flow"]==-6400
+    assert m.Q3_MILLIONS["forecast_capex_q3"]-m.Q3_MILLIONS["capex_q3"]==6774
+    assert "실제 유출은 지속" in enriched
+    assert "실제 투자 집행 이연 여부는 확인되지 않았습니다." in enriched
+    assert "FCF" not in enriched or "잉여현금흐름" in enriched
+
     print("Meta financial statements and event regression checks passed.")
 
 if __name__=="__main__":
