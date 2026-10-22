@@ -5,38 +5,10 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 54,
-    "errors": [
-      "Google News RSS 실패: (\"Model Context Protocol\" OR MCP) security vulnerabilit… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: \"AI agent\" \"third-party\" impact security controls… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic) \"tens of thousands\" security inci… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic) model behavior guardrail sandbox … / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell OR NemoClaw) security vu… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) \"security release\" OR \"… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenShell OR Sentry OR BlueField-4) policy bypass sand… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) model release c… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) deployment bloc… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) limited release… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic) \"blocking alignment evaluation\" f… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) (\"affected part… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Safety Case\" f… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"eval awareness… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) monitorability … / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) regression test… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) tool-use traini… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (Anthropic OR Claude) (Mythos OR \"Cyber Verification Pr… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: \"Jamie Dimon\" (Mythos OR Anthropic) cyber risk bank fin… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (JPMorgan OR Citi OR Goldman OR bank OR \"critical infra… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: Anthropic Mythos vulnerabilities critical high severity… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR \"AI lab\") (\"recording device\" O… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: \"Abdulrahman Alfozan\" (detention OR court OR hearing OR… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: site:justice.gov (\"OpenAI\" OR \"AI researcher\") (wiretap… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (Anthropic OR \"AI model\") (\"self-replicating\" OR \"self … / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (\"AI worm\" OR \"self-propagating AI\" OR \"autonomous AI r… / HTTPError: HTTP Error 503: Service Unavailable"
-    ],
-    "material_items": 19,
+    "errors": [],
+    "material_items": 21,
     "new_material_items": 0,
-    "raw_items": 229,
+    "raw_items": 302,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1034,5 +1006,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-22T18:05:02+09:00"
+  "updated_at_kst": "2026-10-22T18:41:22+09:00"
 }
