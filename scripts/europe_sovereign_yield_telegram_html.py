@@ -19,6 +19,7 @@ LINKS = (
     ("• Germany 10Y Trading Economics 보조 시장자료: ", "독일 10년물 시장자료", "tradingeconomics.com"),
     ("• UK 10Y Trading Economics 보조 시장자료: ", "영국 10년물 시장자료", "tradingeconomics.com"),
     ("• AFT France Moody\'s rating calendar: ", "프랑스 국채관리청 Moody’s 공식 신용등급 일정", "www.aft.gouv.fr"),
+    ("• AFT France S&P rating calendar: ", "프랑스 국채관리청 S&P 공식 신용등급 일정", "www.aft.gouv.fr"),
     ("• Briefs France carry story: ", "프랑스 헤지펀드 캐리 청산 보도", "www.briefs.co"),
     ("• France government Moody press: ", "프랑스 재무부 Moody’s 공식 입장", "presse.economie.gouv.fr"),
 )
