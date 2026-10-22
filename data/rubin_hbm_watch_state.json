@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-22T23:00:39+09:00",
+  "updated_at_kst": "2026-10-23T03:43:58+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -93,6 +93,7 @@
     "6b11b11dc56800c8ba33ef81",
     "6b3790289403fb21cb553ae9",
     "6c31c0bc458f7594ee609fbe",
+    "6ca8b0e81b3ce0c8b0b04326",
     "6d5b2615f6eeda6fb7676f49",
     "6ea6cbf3e4695d57b00d7f2f",
     "6f247650f3f44a83f39b47da",
@@ -260,12 +261,14 @@
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1325.57,
-    "date": "2026-10-21 일일 기준 · ECB/Frankfurter · 조회 2026-10-22 23:00 KST · 보조 API 2026-10-22 · 차이 0.04% · 일중 기준시각 차이 가능",
+    "rate": 1324.63,
+    "date": "2026-10-22 일일 기준 · ECB/Frankfurter · 조회 2026-10-23 03:44 KST · 보조 API 2026-10-22 · 차이 0.11% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [],
+  "errors": [
+    "원문 URL 확인 실패: Pluang | SK hynix rated Buy with 47% upside on 2027 HBM price surge potential - Pluang"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-10-19",
     "source": "https://insights.trendforce.com/p/weekly-radar-006",
@@ -391,14 +394,14 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-22T23:00:59+09:00",
+    "last_checked_at_kst": "2026-10-23T03:44:15+09:00",
     "candidate_count": 3,
     "image_verified_issue": "weekly-radar-006",
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-22T23:01:45+09:00",
+    "checked_at_kst": "2026-10-23T03:44:52+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-19T21:54:05+09:00",
@@ -465,8 +468,8 @@
       "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
-    "last_validation_cutoff": "2026-10-22",
-    "last_checked_at_kst": "2026-10-22T23:01:01+09:00",
+    "last_validation_cutoff": "2026-10-23",
+    "last_checked_at_kst": "2026-10-23T03:44:41+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -525,7 +528,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-22T23:01:01+09:00",
+        "checked_at_kst": "2026-10-23T03:44:41+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -602,8 +605,8 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10461",
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
-    "last_checked_cutoff": "2026-10-22",
-    "last_checked_at_kst": "2026-10-22T23:01:39+09:00",
+    "last_checked_cutoff": "2026-10-23",
+    "last_checked_at_kst": "2026-10-23T03:44:46+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -647,7 +650,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-22T23:01:41+09:00",
+    "last_checked_at_kst": "2026-10-23T03:44:48+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
