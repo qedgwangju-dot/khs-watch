@@ -46,7 +46,7 @@ class TechEtfProxyTests(unittest.TestCase):
         self.assertIn("IYW 발행좌수 당일 +1% 이상",x["signals"])
         message=w.render(x,1350,"2026-10-21")
         self.assertIn("추정 설정",message)
-        self.assertIn("개인투자자만의 매매",message)
+        self.assertIn("JP모건 개인 순매수 불균형",message)
         self.assertIn("IYW 공식",message)
         self.assertIn("SOXX 공식",message)
         self.assertIn("억원",message)
@@ -156,6 +156,73 @@ class TechEtfProxyTests(unittest.TestCase):
         self.assertEqual(result["status"],"fx_withheld")
         self.assertEqual(self.state.read_text(),old)
         send.assert_not_called()
+
+    def test_ewy_data_includes_us_listed_korea_etf_and_bilingual_economic_scope(self):
+        def fetch(ticker, meta, retry_budget=None):
+            if ticker == "EWY":
+                return {
+                    "date":"2026-10-21","nav_date":"2026-10-21",
+                    "shares_date":"2026-10-21","nav":190.0,"shares":100_000_000,
+                }
+            return snap()[ticker]
+        data=w.collect(now=dt.datetime(2026,10,22,8,0,tzinfo=dt.timezone.utc),fetcher=fetch)
+        self.assertEqual(set(data),{"IYW","SOXX","EWY"})
+        self.assertEqual(data["EWY"]["date"],"2026-10-21")
+        result=w.calculate(data,prior_state())
+        self.assertIsNone(result["movements"]["EWY"]["shares_delta"])
+        message=w.render(result,1350,"2026-10-21")
+        self.assertIn("EWY 공식",message)
+        self.assertIn("한국거래소 외국인 현물",message)
+
+    def test_ewy_missing_does_not_block_existing_tech_signals_or_erase_history(self):
+        def fetch(ticker, meta, retry_budget=None):
+            if ticker == "EWY":
+                raise TimeoutError("EWY delayed publication")
+            return snap()[ticker]
+        data=w.collect(now=dt.datetime(2026,10,22,8,0,tzinfo=dt.timezone.utc),fetcher=fetch)
+        self.assertEqual(set(data),{"IYW","SOXX"})
+        old=prior_state()
+        old["history"]["EWY"]=[{"date":"2026-10-20","nav":190.0,"shares":10_000_000}]
+        result=w.calculate(data,old)
+        self.assertIn("IYW 발행좌수 당일 +1% 이상",result["signals"])
+        self.assertEqual(result["new_history"]["EWY"],old["history"]["EWY"])
+        self.assertIn("판정 보류",w.render(result,1350,"2026-10-21"))
+
+    def test_three_confirmed_ewy_creations_fire_only_with_all_sessions(self):
+        x=snap()
+        x["EWY"]={
+            "date":"2026-10-21","nav_date":"2026-10-21",
+            "shares_date":"2026-10-21","nav":190.0,"shares":101_500_000,
+        }
+        state=prior_state()
+        state["history"]["EWY"]=[
+            {"date":"2026-10-16","nav":185.0,"shares":100_000_000},
+            {"date":"2026-10-19","nav":187.0,"shares":100_500_000},
+            {"date":"2026-10-20","nav":188.0,"shares":101_000_000},
+        ]
+        result=w.calculate(x,state)
+        self.assertIn("EWY 발행좌수 3거래일 연속 증가", " ".join(result["signals"]))
+        self.assertEqual(result["movements"]["EWY"]["prev_date"],"2026-10-20")
+
+        stale=prior_state()
+        stale["history"]["EWY"]=[
+            {"date":"2026-10-15","nav":185.0,"shares":100_000_000},
+            {"date":"2026-10-19","nav":187.0,"shares":100_500_000},
+            {"date":"2026-10-20","nav":188.0,"shares":101_000_000},
+        ]
+        result2=w.calculate(x,stale)
+        self.assertNotIn("EWY 발행좌수 3거래일 연속 증가", " ".join(result2["signals"]))
+
+    def test_ewy_source_date_mismatch_isolation(self):
+        def fetch(ticker, meta, retry_budget=None):
+            if ticker == "EWY":
+                return {
+                    "date":"2026-10-20","nav_date":"2026-10-20",
+                    "shares_date":"2026-10-20","nav":190.0,"shares":100_000_000,
+                }
+            return snap()[ticker]
+        data=w.collect(now=dt.datetime(2026,10,22,8,0,tzinfo=dt.timezone.utc),fetcher=fetch)
+        self.assertEqual(set(data),{"IYW","SOXX"})
 
     def test_invalid_state_not_silently_reset(self):
         self.state.write_text('{"no-history":true}')
