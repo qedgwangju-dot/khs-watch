@@ -1,5 +1,29 @@
 {
   "seen": {
+    "core:001a383a2014d2ee220fd46a": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.hankyung.com/article/2026102282997",
+      "source": "한국경제",
+      "source_body_digest": "566b6f4a4ae43697d8888c071a1fdd488186b3a6a20566972fb862b4fed46a35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2743495607b5c79db1e29dd1bb09bdfccccc596fa18379030ceea77f7976f2a5",
+      "source_fact_keys": [
+        "source_fact:v1:3e39a70a70695478bc7e025dedaf179b106735503e6d0a73e35a155bcacfe560",
+        "source_fact:v1:66556fd7be8c3c36463f314103b15a96e7c809021a399be447dda775aa9e0a7a",
+        "source_fact:v1:9eccd1bf0c61a3154c5a6c645d46d0314a64c3428491b0496b395c7978503152",
+        "source_fact:v1:b909caa87ccfb73a98a620d43eb3308d7f70fa40c372242e8e6080162956b05d",
+        "source_fact:v1:ccdb73079343a2e0cd7adca8f8579b6fe4ae683348dcf0b7473f326f4c6a7acb"
+      ],
+      "source_published_kst": "2026-10-22T11:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\"",
+      "telegram_core_fact": "금융위원회와 한국거래소가 마련한 중복상장 규제는 원칙적으로 모회사와 자회사의 중복상장을 금지하고 있다.",
+      "title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\""
+    },
     "core:001ce6b0f11b45907ec5a7fb": {
       "first_seen_kst": "2026-10-13T18:41:17+09:00",
       "lanes": {
@@ -6554,6 +6578,34 @@
       "source_title": "발사 14시간만에 첫 영상 보낸 초소형군집위성···다음 절차는?",
       "telegram_core_fact": "김진희 우주항공청 인공위성부문장은 “우주에서 모든 기능이 정상적으로 작동하는지 시험하기 위한 시제기와 시제기에서 개선이 필요한 사항을 검증해 올리는 검증기를 올려 성능을 확인했고, 절차 자동화 등을 거쳐 이번 양산기들의 영상을 조기에 확보했다”고 설명했다.",
       "title": "발사 14시간만에 첫 영상 보낸 초소형군집위성···다음 절차는?"
+    },
+    "core:133f7157f3fae98e14f791ff": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
     },
     "core:1343712ca1205092e09f004c": {
       "first_seen_kst": "2026-10-21T00:42:39+09:00",
@@ -13753,6 +13805,27 @@
       "source_title": "교황, 푸틴과 통화 \"올레시키 인도적 휴전 촉구\"",
       "telegram_core_fact": "레오 14세 교황은 16일(현지 시간) 블라디미르 푸틴 러시아 대통령과 통화하고 우크라이나 점령지에 대한 인도주의적 휴전을 촉구했다고 교황청이 밝혔다.",
       "title": "교황, 푸틴과 통화 \"올레시키 인도적 휴전 촉구\""
+    },
+    "core:262d26b1349776c7ae94e2d9": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10911245",
+      "source": "헤럴드경제",
+      "source_body_digest": "7285531221d5787607eaff3a1ef0389f60555630c9955c2f09e1ec09df1b6d0a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1040e53c281f34dd3e1605b791733d748a8f961befc033fd7850e131c4e0e6c3",
+      "source_fact_keys": [
+        "source_fact:v1:69fec77ce2ccbb1a061d4d9062d50ab5e5373a805d1307e6dcdaef3555c7aeb0",
+        "source_fact:v1:966a0ed85750b9d43499436906c765ef840ee36905904c8550294520e2c530dd"
+      ],
+      "source_published_kst": "2026-10-22T11:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만",
+      "telegram_core_fact": "업계에서도 초진 비대면진료에 지역 제한, 의료기관별 비대면진료 비율 제한 등 규제가 중복된 가운데, 처방 일수까지 7일로 제한하는 것은 의료인 책임 부담과 환자 불편을 가중한다는 비판이 커지고 있다.",
+      "title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만"
     },
     "core:262dea3fe430cf6cb9e4e771": {
       "first_seen_kst": "2026-10-20T03:18:10+09:00",
@@ -29899,6 +29972,31 @@
       "source_title": "실리콘투, 환율이 안정된다면 [베스트 애널리스트 추천 종목]",
       "telegram_core_fact": "예견된 환율 하락의 역풍3분기 연결기준 매출액은 전년 대비 42% 증가한 4250억원, 영업이익은 전년 대비 25% 늘어난 790억원으로 컨센서스 영업이익을 10% 하회할 것으로 추정된다.",
       "title": "실리콘투, 환율이 안정된다면 [베스트 애널리스트 추천 종목]"
+    },
+    "core:54f872be2419ce01cad7a664": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.etnews.com/20261022000178",
+      "source": "전자신문",
+      "source_body_digest": "cb07cc0bd134fee974f4ca738ceeca03e3b48f28e9202f723e16f6bc54e8bfd1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88b968ad24a4be4d262a644c3ec06213eb2aa240935a01d3a219a802c3122487",
+      "source_fact_keys": [
+        "source_fact:v1:4df34d8ece1946972fbf5aa094284338d1cffe54e34c190d3ba396acd73be7eb",
+        "source_fact:v1:557a16eafe1c8c19a53ee39c229ea9de8b020753df0336c7e2dd835629eded30",
+        "source_fact:v1:62c397ab2433f81e6500b46f05473ac695374aa8664b7c81ada265687ec74b6f",
+        "source_fact:v1:78e38805ff3afc4a613c80889cbed2d462723b7f97a7e8a718b8799905921e4e",
+        "source_fact:v1:8d3e4c914d3b78de5f5433fbae410252e31a6544521240cc5f481202835b76d3",
+        "source_fact:v1:e4ec040e21dd0895d32a3a297c78729ba9c5501f797d2ba0f8dc7cbd6090938d"
+      ],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대",
+      "telegram_core_fact": "대동은 자체 개발한 19~140마력 산업용 디젤엔진을 기반으로 장비의 출력, 설치 공간, 작업 환경에 맞춘 파워팩을 공급한다.",
+      "title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대"
     },
     "core:5503f8add3f362a90908a54b": {
       "first_seen_kst": "2026-10-14T18:43:50+09:00",
@@ -46751,6 +46849,27 @@
       "telegram_core_fact": "업계에 따르면 CJ대한통운은 최근 일본 다이와하우스로부터 베트남 동나이성에 있는 2만 843㎡ 규모 물류센터를 인수해 본격적인 가동에 들어갔다. 당시 CJ대한통운은 완전한 독립 경영을 기반으로 물류센터 등 자산 투자를 적극 검토하고, W&D(보관 및 배송) 사업 경쟁력을 현지에 이식하겠다고 강조했다.",
       "title": "CJ대한통운, 베트남 동나이 물류센터 인수…현지 사업 가속 페달"
     },
+    "core:8391ba7ecbe7120297d69a53": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/business/12182669",
+      "source": "매일경제",
+      "source_body_digest": "a0b32a123e705d8e15e19f00db39919d30e3830b3cc7b9fbec8aebd2e5245ecd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a3c11ac460af1de7706df2326e1c3b8ecef82e5e1e71ace3747bac233664d57",
+      "source_fact_keys": [
+        "source_fact:v1:6e564dbe9cac3c06ff2ea38a821aedc2c65bcb49f24ebbd864491f6ffbeb9969",
+        "source_fact:v1:eacffc421ece38da53cc96c5d54685326c117daf7cf42cadef67ebafac6e3a85"
+      ],
+      "source_published_kst": "2026-10-22T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파",
+      "telegram_core_fact": "사업 출범 2년 만에 누적 수주액 1조원을 돌파한 데 이어 발전소 운영까지 사업 영역을 넓혀 새로운 성장동력 확보에 나선다는 전략이다.",
+      "title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파"
+    },
     "core:83963ad235f87b650adb75ba": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
       "lanes": {
@@ -52987,6 +53106,41 @@
       "source_title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여",
       "telegram_core_fact": "1·2차 교육에서는 소송과 강제집행 등 초기 권리구제 절차를, 3·4차 교육에서는 경·공매와 배당을 통한 보증금 회수 방안을 다뤘다.",
       "title": "GH 전세피해지원센터, 안산서 경·공매 교육…올해 4차례 500여명 참여"
+    },
+    "core:952f32ba51ecf71e28557a1b": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
     "core:953ae855b85b4cab5a932db7": {
       "first_seen_kst": "2026-10-10T15:05:36+09:00",
@@ -78878,6 +79032,31 @@
       "telegram_core_fact": "미취학 아동을 대상으로 하는 학원 레벨테스트, 이른바 ‘4세 고시 금지법’을 전면 시행했지만 전국 대부분 교육청은 처벌기준도 마련하지 못한 것으로 확인됐다.",
       "title": "‘4세 고시’ 금지에도 꼼수 난무…교육청 행정처분 기준도 미비"
     },
+    "core:dfca987f84caa2402c765799": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183416",
+      "source": "매일경제",
+      "source_body_digest": "f133e32fa890e839846b80b91f33d72f6e420974f45b55d55fad03b2ab16445d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:560e2d7c35e1a0f277a3e1088eaae90167fa6ec3cc86e29363c58c69efb74766",
+      "source_fact_keys": [
+        "source_fact:v1:14bed27347bacdf3181d8d7920cbce92decb96321344c90c4148b75049841fcb",
+        "source_fact:v1:3a0f7adf895707e649a39ab9c7607283d3014eaf29b7cc0701ec47a6780f575c",
+        "source_fact:v1:888e4353373c2941953183fcd6599fffb7a98362213be722d928fe89d2decfe9",
+        "source_fact:v1:976b6b65f0a73bab7461558da42efd5cb982bd74fc9ba2b4a97a92933f22e9ae",
+        "source_fact:v1:99cc0a86aa4113a63141239fdafd38b640ea8157708858c20527e4da8559f9b9",
+        "source_fact:v1:c61487fa1642287e22d6991e7ca5a9aafc5bbbeba38ebef1d84e27f4f7485522"
+      ],
+      "source_published_kst": "2026-10-22T20:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대",
+      "telegram_core_fact": "유니언 퍼시픽(UNP)은 3분기 매출액이 71억9700만 달러로 전년비 15% 증가했고, 일반회계기준(GAAP) 희석 주당순이익은 3.49달러로 16% 늘었다고 10월 22일 발표했다.",
+      "title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대"
+    },
     "core:dfd4639231a66d72e02e6324": {
       "first_seen_kst": "2026-10-11T07:59:15+09:00",
       "lanes": {
@@ -104040,6 +104219,30 @@
       "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
       "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
     },
+    "event:aa231dff0810df87b0c63812": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.hankyung.com/article/2026102282997",
+      "source": "한국경제",
+      "source_body_digest": "566b6f4a4ae43697d8888c071a1fdd488186b3a6a20566972fb862b4fed46a35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2743495607b5c79db1e29dd1bb09bdfccccc596fa18379030ceea77f7976f2a5",
+      "source_fact_keys": [
+        "source_fact:v1:3e39a70a70695478bc7e025dedaf179b106735503e6d0a73e35a155bcacfe560",
+        "source_fact:v1:66556fd7be8c3c36463f314103b15a96e7c809021a399be447dda775aa9e0a7a",
+        "source_fact:v1:9eccd1bf0c61a3154c5a6c645d46d0314a64c3428491b0496b395c7978503152",
+        "source_fact:v1:b909caa87ccfb73a98a620d43eb3308d7f70fa40c372242e8e6080162956b05d",
+        "source_fact:v1:ccdb73079343a2e0cd7adca8f8579b6fe4ae683348dcf0b7473f326f4c6a7acb"
+      ],
+      "source_published_kst": "2026-10-22T11:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\"",
+      "telegram_core_fact": "금융위원회와 한국거래소가 마련한 중복상장 규제는 원칙적으로 모회사와 자회사의 중복상장을 금지하고 있다.",
+      "title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\""
+    },
     "event:aa4d917b69b7f464faf852e8": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
       "lanes": {
@@ -115110,6 +115313,41 @@
       "telegram_core_fact": "디에스자산운용은 인공지능(AI) 반도체 산업 전반의 주도주에 투자하는 'DS AI반도체액티브' ETF(상장지수펀드)를 13일 유가증권시장에 신규 상장한다고 밝혔다. 'DS AI반도체액티브 ETF'는 AI 반도체 밸류체인 전반을 투자 대상으로 하는 액티브 ETF다.",
       "title": "디에스자산운용, 두번째 ETF 'DS AI반도체액티브' 13일 상장"
     },
+    "fact:09586edf97606d57d8fca22c": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
+    },
     "fact:0977e38e464d6871904bd675": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -115290,6 +115528,27 @@
       "source_title": "재경차관 \"내년 500곳서 피지컬 AI 실증…3.1조 투입\"",
       "telegram_core_fact": "권대영 재정경제부 1차관은 21일 중소기업의 인공지능(AI) 전환 지원과 관련해 \"내년 500곳 이상의 현장에서 피지컬 AI 실증을 추진하겠다\"며 \"내년 피지컬 AI 예산 3조1000억원과 150조원 국민성장펀드, 정책자금을 통해 현장의 AI 투자를 적극 뒷받침하겠다\"고 밝혔다.",
       "title": "재경차관 \"내년 500곳서 피지컬 AI 실증…3.1조 투입\""
+    },
+    "fact:09fa51979a16c4a4011e7854": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/business/12182669",
+      "source": "매일경제",
+      "source_body_digest": "a0b32a123e705d8e15e19f00db39919d30e3830b3cc7b9fbec8aebd2e5245ecd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a3c11ac460af1de7706df2326e1c3b8ecef82e5e1e71ace3747bac233664d57",
+      "source_fact_keys": [
+        "source_fact:v1:6e564dbe9cac3c06ff2ea38a821aedc2c65bcb49f24ebbd864491f6ffbeb9969",
+        "source_fact:v1:eacffc421ece38da53cc96c5d54685326c117daf7cf42cadef67ebafac6e3a85"
+      ],
+      "source_published_kst": "2026-10-22T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파",
+      "telegram_core_fact": "사업 출범 2년 만에 누적 수주액 1조원을 돌파한 데 이어 발전소 운영까지 사업 영역을 넓혀 새로운 성장동력 확보에 나선다는 전략이다.",
+      "title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파"
     },
     "fact:0a2265f27ffb95212de3425c": {
       "first_seen_kst": "2026-10-15T16:25:35+09:00",
@@ -122981,6 +123240,31 @@
       "telegram_core_fact": "특히 미 국채 10년물 금리가 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했고, 30년물 금리도 5.73%대까지 오르며 증시에 부담을 줬다.",
       "title": "삼전 ‘107조 서프라이즈’도 못 막았다…금리 급등·외인 매도에 코스피↓[투자360]"
     },
+    "fact:1c2f0ed4cde8ff680c043fa4": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.etnews.com/20261022000178",
+      "source": "전자신문",
+      "source_body_digest": "cb07cc0bd134fee974f4ca738ceeca03e3b48f28e9202f723e16f6bc54e8bfd1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88b968ad24a4be4d262a644c3ec06213eb2aa240935a01d3a219a802c3122487",
+      "source_fact_keys": [
+        "source_fact:v1:4df34d8ece1946972fbf5aa094284338d1cffe54e34c190d3ba396acd73be7eb",
+        "source_fact:v1:557a16eafe1c8c19a53ee39c229ea9de8b020753df0336c7e2dd835629eded30",
+        "source_fact:v1:62c397ab2433f81e6500b46f05473ac695374aa8664b7c81ada265687ec74b6f",
+        "source_fact:v1:78e38805ff3afc4a613c80889cbed2d462723b7f97a7e8a718b8799905921e4e",
+        "source_fact:v1:8d3e4c914d3b78de5f5433fbae410252e31a6544521240cc5f481202835b76d3",
+        "source_fact:v1:e4ec040e21dd0895d32a3a297c78729ba9c5501f797d2ba0f8dc7cbd6090938d"
+      ],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대",
+      "telegram_core_fact": "대동은 자체 개발한 19~140마력 산업용 디젤엔진을 기반으로 장비의 출력, 설치 공간, 작업 환경에 맞춘 파워팩을 공급한다.",
+      "title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대"
+    },
     "fact:1c2fc74bd9dc1ecc263aa96b": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
       "lanes": {
@@ -127601,6 +127885,34 @@
       "source_title": "신세계免 첫 ‘신면세일’ …화장품·향수 하루매출 46% 급증",
       "telegram_core_fact": "신세계면세점의 첫 정기 ‘메가세일’ 기간동안 화장품·향수의 하루평균 매출이 급증한 것으로 집계됐다.",
       "title": "신세계免 첫 ‘신면세일’ …화장품·향수 하루매출 46% 급증"
+    },
+    "fact:28e04f6940bd404a94691825": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
     },
     "fact:28e0a4248adda0184cc8fd3e": {
       "first_seen_kst": "2026-10-17T11:37:20+09:00",
@@ -142842,6 +143154,27 @@
       "telegram_core_fact": "전월세 매물 부족과 주택 공급 감소, 높은 대출금리가 맞물리면서 집을 살 여력이 부족한 실수요자마저 주택 매수로 내몰릴 수 있다는 경고가 나왔다.",
       "title": "\"전월세 못 구하면 결국 집 산다\"…부동산 '강제 매수' 경고"
     },
+    "fact:53c14f5d4125c02159be7405": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10911245",
+      "source": "헤럴드경제",
+      "source_body_digest": "7285531221d5787607eaff3a1ef0389f60555630c9955c2f09e1ec09df1b6d0a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1040e53c281f34dd3e1605b791733d748a8f961befc033fd7850e131c4e0e6c3",
+      "source_fact_keys": [
+        "source_fact:v1:69fec77ce2ccbb1a061d4d9062d50ab5e5373a805d1307e6dcdaef3555c7aeb0",
+        "source_fact:v1:966a0ed85750b9d43499436906c765ef840ee36905904c8550294520e2c530dd"
+      ],
+      "source_published_kst": "2026-10-22T11:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만",
+      "telegram_core_fact": "업계에서도 초진 비대면진료에 지역 제한, 의료기관별 비대면진료 비율 제한 등 규제가 중복된 가운데, 처방 일수까지 7일로 제한하는 것은 의료인 책임 부담과 환자 불편을 가중한다는 비판이 커지고 있다.",
+      "title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만"
+    },
     "fact:53c701c8d7df9a0d1268e3f3": {
       "first_seen_kst": "2026-10-12T16:08:52+09:00",
       "lanes": {
@@ -150432,6 +150765,31 @@
       "source_title": "스페이스X 3분기 매출 전년대비 161% 급증…시간 외 주가 2%↑",
       "telegram_core_fact": "일론 머스크가 이끄는 우주기업 스페이스X가 인공지능(AI) 사업과 위성 인터넷 서비스 스타링크의 성장에 힘입어 3분기 매출이 전년비 161% 증가했다.",
       "title": "스페이스X 3분기 매출 전년대비 161% 급증…시간 외 주가 2%↑"
+    },
+    "fact:68c4048f3cc435cd2eaaa66b": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183416",
+      "source": "매일경제",
+      "source_body_digest": "f133e32fa890e839846b80b91f33d72f6e420974f45b55d55fad03b2ab16445d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:560e2d7c35e1a0f277a3e1088eaae90167fa6ec3cc86e29363c58c69efb74766",
+      "source_fact_keys": [
+        "source_fact:v1:14bed27347bacdf3181d8d7920cbce92decb96321344c90c4148b75049841fcb",
+        "source_fact:v1:3a0f7adf895707e649a39ab9c7607283d3014eaf29b7cc0701ec47a6780f575c",
+        "source_fact:v1:888e4353373c2941953183fcd6599fffb7a98362213be722d928fe89d2decfe9",
+        "source_fact:v1:976b6b65f0a73bab7461558da42efd5cb982bd74fc9ba2b4a97a92933f22e9ae",
+        "source_fact:v1:99cc0a86aa4113a63141239fdafd38b640ea8157708858c20527e4da8559f9b9",
+        "source_fact:v1:c61487fa1642287e22d6991e7ca5a9aafc5bbbeba38ebef1d84e27f4f7485522"
+      ],
+      "source_published_kst": "2026-10-22T20:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대",
+      "telegram_core_fact": "유니언 퍼시픽(UNP)은 3분기 매출액이 71억9700만 달러로 전년비 15% 증가했고, 일반회계기준(GAAP) 희석 주당순이익은 3.49달러로 16% 늘었다고 10월 22일 발표했다.",
+      "title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대"
     },
     "fact:68d193c61a7f0076a2a2bff5": {
       "first_seen_kst": "2026-10-20T08:05:53+09:00",
@@ -197279,6 +197637,30 @@
       "telegram_core_fact": "보고서에 따르면 삼기에너지솔루션즈의 올해 상반기 연결 매출액은 1133억원, 영업이익은 49억원을 기록했다.",
       "title": "스몰인사이트 \"삼기에너지솔루션즈, 북미 사업 성장축 부상\""
     },
+    "fact:da3e7831a1c74e1a63a332d6": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.hankyung.com/article/2026102282997",
+      "source": "한국경제",
+      "source_body_digest": "566b6f4a4ae43697d8888c071a1fdd488186b3a6a20566972fb862b4fed46a35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2743495607b5c79db1e29dd1bb09bdfccccc596fa18379030ceea77f7976f2a5",
+      "source_fact_keys": [
+        "source_fact:v1:3e39a70a70695478bc7e025dedaf179b106735503e6d0a73e35a155bcacfe560",
+        "source_fact:v1:66556fd7be8c3c36463f314103b15a96e7c809021a399be447dda775aa9e0a7a",
+        "source_fact:v1:9eccd1bf0c61a3154c5a6c645d46d0314a64c3428491b0496b395c7978503152",
+        "source_fact:v1:b909caa87ccfb73a98a620d43eb3308d7f70fa40c372242e8e6080162956b05d",
+        "source_fact:v1:ccdb73079343a2e0cd7adca8f8579b6fe4ae683348dcf0b7473f326f4c6a7acb"
+      ],
+      "source_published_kst": "2026-10-22T11:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\"",
+      "telegram_core_fact": "금융위원회와 한국거래소가 마련한 중복상장 규제는 원칙적으로 모회사와 자회사의 중복상장을 금지하고 있다.",
+      "title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\""
+    },
     "fact:da3f614c146c70e98ab926d1": {
       "first_seen_kst": "2026-10-14T12:34:00+09:00",
       "lanes": {
@@ -229070,6 +229452,30 @@
       "telegram_core_fact": "안철수 국민의힘 의원이 SK하이닉스의 자회사 솔리다임 상장 추진설을 두고 이재명 대통령과 SK그룹을 정면으로 겨냥했다.",
       "title": "“하닉 주주 이익 총수가 ‘슈킹’한다”…안철수 “SK 솔리다임 상장 대통령이 막아야”"
     },
+    "link:203908cbaa0774f642dd1537": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.hankyung.com/article/2026102282997",
+      "source": "한국경제",
+      "source_body_digest": "566b6f4a4ae43697d8888c071a1fdd488186b3a6a20566972fb862b4fed46a35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2743495607b5c79db1e29dd1bb09bdfccccc596fa18379030ceea77f7976f2a5",
+      "source_fact_keys": [
+        "source_fact:v1:3e39a70a70695478bc7e025dedaf179b106735503e6d0a73e35a155bcacfe560",
+        "source_fact:v1:66556fd7be8c3c36463f314103b15a96e7c809021a399be447dda775aa9e0a7a",
+        "source_fact:v1:9eccd1bf0c61a3154c5a6c645d46d0314a64c3428491b0496b395c7978503152",
+        "source_fact:v1:b909caa87ccfb73a98a620d43eb3308d7f70fa40c372242e8e6080162956b05d",
+        "source_fact:v1:ccdb73079343a2e0cd7adca8f8579b6fe4ae683348dcf0b7473f326f4c6a7acb"
+      ],
+      "source_published_kst": "2026-10-22T11:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\"",
+      "telegram_core_fact": "금융위원회와 한국거래소가 마련한 중복상장 규제는 원칙적으로 모회사와 자회사의 중복상장을 금지하고 있다.",
+      "title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\""
+    },
     "link:203e205421bb48e3e882a175": {
       "first_seen_kst": "2026-10-14T07:46:13+09:00",
       "lanes": {
@@ -240662,6 +241068,34 @@
       "source_title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞",
       "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
       "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
+    },
+    "link:35815c5c0aecfe4c4c170a73": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
     },
     "link:3592f106fffe2ca7f93cdd09": {
       "first_seen_kst": "2026-09-27T07:38:21+09:00",
@@ -304463,6 +304897,27 @@
       "telegram_core_fact": "김 이사장은 14일 국회 보건복지위원회 국민연금공단 국정감사에서 남인순 더불어민주당 의원의 관련 질의에 “(유예하지 않았다면) 하루 8000억원어치 주식을 매도해 시장에 심각한 충격을 줬을 것”이라고 답했다.",
       "title": "“국민연금, 삼전닉스 왜 안팔았죠?” 비판…이사장 답변 들어보니"
     },
+    "link:b27962bc1b2b702187fdd3d4": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10911245",
+      "source": "헤럴드경제",
+      "source_body_digest": "7285531221d5787607eaff3a1ef0389f60555630c9955c2f09e1ec09df1b6d0a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1040e53c281f34dd3e1605b791733d748a8f961befc033fd7850e131c4e0e6c3",
+      "source_fact_keys": [
+        "source_fact:v1:69fec77ce2ccbb1a061d4d9062d50ab5e5373a805d1307e6dcdaef3555c7aeb0",
+        "source_fact:v1:966a0ed85750b9d43499436906c765ef840ee36905904c8550294520e2c530dd"
+      ],
+      "source_published_kst": "2026-10-22T11:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만",
+      "telegram_core_fact": "업계에서도 초진 비대면진료에 지역 제한, 의료기관별 비대면진료 비율 제한 등 규제가 중복된 가운데, 처방 일수까지 7일로 제한하는 것은 의료인 책임 부담과 환자 불편을 가중한다는 비판이 커지고 있다.",
+      "title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만"
+    },
     "link:b282471f18dc40f7b2b5c7b5": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
       "lanes": {
@@ -312791,6 +313246,31 @@
       "source_title": "뉴욕증시, AI 투자 우려·국제유가 상승에 혼조 출발… 나스닥 0.5%↓",
       "telegram_core_fact": "AI 인프라 투자 확대가 실제 매출과 이익 증가로 이어지고 있는지가 기술주 향방을 결정할 주요 변수로 꼽힌다.",
       "title": "뉴욕증시, AI 투자 우려·국제유가 상승에 혼조 출발… 나스닥 0.5%↓"
+    },
+    "link:c1e33c6d35afa9123c185604": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183416",
+      "source": "매일경제",
+      "source_body_digest": "f133e32fa890e839846b80b91f33d72f6e420974f45b55d55fad03b2ab16445d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:560e2d7c35e1a0f277a3e1088eaae90167fa6ec3cc86e29363c58c69efb74766",
+      "source_fact_keys": [
+        "source_fact:v1:14bed27347bacdf3181d8d7920cbce92decb96321344c90c4148b75049841fcb",
+        "source_fact:v1:3a0f7adf895707e649a39ab9c7607283d3014eaf29b7cc0701ec47a6780f575c",
+        "source_fact:v1:888e4353373c2941953183fcd6599fffb7a98362213be722d928fe89d2decfe9",
+        "source_fact:v1:976b6b65f0a73bab7461558da42efd5cb982bd74fc9ba2b4a97a92933f22e9ae",
+        "source_fact:v1:99cc0a86aa4113a63141239fdafd38b640ea8157708858c20527e4da8559f9b9",
+        "source_fact:v1:c61487fa1642287e22d6991e7ca5a9aafc5bbbeba38ebef1d84e27f4f7485522"
+      ],
+      "source_published_kst": "2026-10-22T20:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대",
+      "telegram_core_fact": "유니언 퍼시픽(UNP)은 3분기 매출액이 71억9700만 달러로 전년비 15% 증가했고, 일반회계기준(GAAP) 희석 주당순이익은 3.49달러로 16% 늘었다고 10월 22일 발표했다.",
+      "title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대"
     },
     "link:c1e5804aad04f2c9a6c95f13": {
       "first_seen_kst": "2026-10-12T20:59:01+09:00",
@@ -333220,6 +333700,27 @@
       "telegram_core_fact": "일본의 30년 만기 국채금리가 사상 최고 수준으로 치솟으며 연 4%대에 고착화하고 있다.",
       "title": "日, 30년물 국채금리 4.25% 사상 최고"
     },
+    "link:ec0cce30e9104c35b6f66bbc": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/business/12182669",
+      "source": "매일경제",
+      "source_body_digest": "a0b32a123e705d8e15e19f00db39919d30e3830b3cc7b9fbec8aebd2e5245ecd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a3c11ac460af1de7706df2326e1c3b8ecef82e5e1e71ace3747bac233664d57",
+      "source_fact_keys": [
+        "source_fact:v1:6e564dbe9cac3c06ff2ea38a821aedc2c65bcb49f24ebbd864491f6ffbeb9969",
+        "source_fact:v1:eacffc421ece38da53cc96c5d54685326c117daf7cf42cadef67ebafac6e3a85"
+      ],
+      "source_published_kst": "2026-10-22T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파",
+      "telegram_core_fact": "사업 출범 2년 만에 누적 수주액 1조원을 돌파한 데 이어 발전소 운영까지 사업 영역을 넓혀 새로운 성장동력 확보에 나선다는 전략이다.",
+      "title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파"
+    },
     "link:ec0eaad9202cb5c25b5e563b": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -335533,6 +336034,41 @@
       "telegram_core_fact": "송기헌 과방위원장은 \"과징금 부과를 사전 통지한 지 3년이 다 되어가도록 결론이 나지 않고 있다\"며 \"유럽연합(EU)이나 인도 등 해외에서는 이미 제재가 이뤄졌는데 지나치게 지연되고 있다\"고 강하게 비판했다.",
       "title": "3년 끈 '구글·애플 인앱결제' 과징금 이달 결론…X·숏폼 규제 공백도 도마"
     },
+    "link:f0ad3ed1c68ec22c77708538": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
+    },
     "link:f0b318ed2569d771cd15691c": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -336733,6 +337269,31 @@
       "source_title": "고고로, 6200만 달러 규모 신주 발행 소식에 지분 희석 우려 부각",
       "telegram_core_fact": "주당 2.48달러에 약 6180만 달러 신주 발행이 추진되면서 기존 주주의 지분 희석 우려가 커졌습니다. 발행가가 직전 주가보다 낮은 점도 부담이며, 이사 지배 법인 등 최대주주 의존도 높아졌습니다.",
       "title": "고고로, 6200만 달러 규모 신주 발행 소식에 지분 희석 우려 부각"
+    },
+    "link:f340d2b55a8f1b31bada2760": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.etnews.com/20261022000178",
+      "source": "전자신문",
+      "source_body_digest": "cb07cc0bd134fee974f4ca738ceeca03e3b48f28e9202f723e16f6bc54e8bfd1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88b968ad24a4be4d262a644c3ec06213eb2aa240935a01d3a219a802c3122487",
+      "source_fact_keys": [
+        "source_fact:v1:4df34d8ece1946972fbf5aa094284338d1cffe54e34c190d3ba396acd73be7eb",
+        "source_fact:v1:557a16eafe1c8c19a53ee39c229ea9de8b020753df0336c7e2dd835629eded30",
+        "source_fact:v1:62c397ab2433f81e6500b46f05473ac695374aa8664b7c81ada265687ec74b6f",
+        "source_fact:v1:78e38805ff3afc4a613c80889cbed2d462723b7f97a7e8a718b8799905921e4e",
+        "source_fact:v1:8d3e4c914d3b78de5f5433fbae410252e31a6544521240cc5f481202835b76d3",
+        "source_fact:v1:e4ec040e21dd0895d32a3a297c78729ba9c5501f797d2ba0f8dc7cbd6090938d"
+      ],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대",
+      "telegram_core_fact": "대동은 자체 개발한 19~140마력 산업용 디젤엔진을 기반으로 장비의 출력, 설치 공간, 작업 환경에 맞춘 파워팩을 공급한다.",
+      "title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대"
     },
     "link:f34865a26ff043467684eec4": {
       "first_seen_kst": "2026-09-30T23:32:53+09:00",
@@ -358974,6 +359535,27 @@
       "telegram_core_fact": "SK하이닉스와 삼성전자는 800조원을 투자해 군공항에 반도체 클러스터를 조성할 계획이다.",
       "title": "광주 군공항 찾은 최태원, 반도체 투자 우려 '한방에' 불식 | 연합뉴스"
     },
+    "original:20a670f5cbc9a98c56d90593": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/business/12182669",
+      "source": "매일경제",
+      "source_body_digest": "a0b32a123e705d8e15e19f00db39919d30e3830b3cc7b9fbec8aebd2e5245ecd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a3c11ac460af1de7706df2326e1c3b8ecef82e5e1e71ace3747bac233664d57",
+      "source_fact_keys": [
+        "source_fact:v1:6e564dbe9cac3c06ff2ea38a821aedc2c65bcb49f24ebbd864491f6ffbeb9969",
+        "source_fact:v1:eacffc421ece38da53cc96c5d54685326c117daf7cf42cadef67ebafac6e3a85"
+      ],
+      "source_published_kst": "2026-10-22T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파",
+      "telegram_core_fact": "사업 출범 2년 만에 누적 수주액 1조원을 돌파한 데 이어 발전소 운영까지 사업 영역을 넓혀 새로운 성장동력 확보에 나선다는 전략이다.",
+      "title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파"
+    },
     "original:20a76901daa3afcc0d685c88": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -359814,6 +360396,31 @@
       "source_title": "구리시, 22년 만에 상수도 요금 평균 22% 인상 추진 | 연합뉴스",
       "telegram_core_fact": "하수도 요금을 평균 32.1% 인상하는 조례 개정안도 입법 예고됐다.",
       "title": "구리시, 22년 만에 상수도 요금 평균 22% 인상 추진 | 연합뉴스"
+    },
+    "original:22190a96fd7b327d2bdd68eb": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183416",
+      "source": "매일경제",
+      "source_body_digest": "f133e32fa890e839846b80b91f33d72f6e420974f45b55d55fad03b2ab16445d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:560e2d7c35e1a0f277a3e1088eaae90167fa6ec3cc86e29363c58c69efb74766",
+      "source_fact_keys": [
+        "source_fact:v1:14bed27347bacdf3181d8d7920cbce92decb96321344c90c4148b75049841fcb",
+        "source_fact:v1:3a0f7adf895707e649a39ab9c7607283d3014eaf29b7cc0701ec47a6780f575c",
+        "source_fact:v1:888e4353373c2941953183fcd6599fffb7a98362213be722d928fe89d2decfe9",
+        "source_fact:v1:976b6b65f0a73bab7461558da42efd5cb982bd74fc9ba2b4a97a92933f22e9ae",
+        "source_fact:v1:99cc0a86aa4113a63141239fdafd38b640ea8157708858c20527e4da8559f9b9",
+        "source_fact:v1:c61487fa1642287e22d6991e7ca5a9aafc5bbbeba38ebef1d84e27f4f7485522"
+      ],
+      "source_published_kst": "2026-10-22T20:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대",
+      "telegram_core_fact": "유니언 퍼시픽(UNP)은 3분기 매출액이 71억9700만 달러로 전년비 15% 증가했고, 일반회계기준(GAAP) 희석 주당순이익은 3.49달러로 16% 늘었다고 10월 22일 발표했다.",
+      "title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대"
     },
     "original:2234bc3f5316b35be362e922": {
       "first_seen_kst": "2026-10-13T20:49:52+09:00",
@@ -412110,6 +412717,27 @@
       "source": "연합뉴스",
       "title": "한화에어로, 미국 아칸소주에 탄약 생산거점…7년간 3조원 투자 | 연합뉴스"
     },
+    "original:89819f3ccbc439ac10c0b6c5": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10911245",
+      "source": "헤럴드경제",
+      "source_body_digest": "7285531221d5787607eaff3a1ef0389f60555630c9955c2f09e1ec09df1b6d0a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1040e53c281f34dd3e1605b791733d748a8f961befc033fd7850e131c4e0e6c3",
+      "source_fact_keys": [
+        "source_fact:v1:69fec77ce2ccbb1a061d4d9062d50ab5e5373a805d1307e6dcdaef3555c7aeb0",
+        "source_fact:v1:966a0ed85750b9d43499436906c765ef840ee36905904c8550294520e2c530dd"
+      ],
+      "source_published_kst": "2026-10-22T11:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만",
+      "telegram_core_fact": "업계에서도 초진 비대면진료에 지역 제한, 의료기관별 비대면진료 비율 제한 등 규제가 중복된 가운데, 처방 일수까지 7일로 제한하는 것은 의료인 책임 부담과 환자 불편을 가중한다는 비판이 커지고 있다.",
+      "title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만"
+    },
     "original:89987ff253b067a2758ff330": {
       "first_seen_kst": "2026-10-15T04:50:33+09:00",
       "lanes": {
@@ -425740,6 +426368,31 @@
       "source": "전자신문",
       "title": "로보락, 글로벌 로봇청소기 시장 1위…점유율 23.7%"
     },
+    "original:a406ba3d519128beca328ae3": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.etnews.com/20261022000178",
+      "source": "전자신문",
+      "source_body_digest": "cb07cc0bd134fee974f4ca738ceeca03e3b48f28e9202f723e16f6bc54e8bfd1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88b968ad24a4be4d262a644c3ec06213eb2aa240935a01d3a219a802c3122487",
+      "source_fact_keys": [
+        "source_fact:v1:4df34d8ece1946972fbf5aa094284338d1cffe54e34c190d3ba396acd73be7eb",
+        "source_fact:v1:557a16eafe1c8c19a53ee39c229ea9de8b020753df0336c7e2dd835629eded30",
+        "source_fact:v1:62c397ab2433f81e6500b46f05473ac695374aa8664b7c81ada265687ec74b6f",
+        "source_fact:v1:78e38805ff3afc4a613c80889cbed2d462723b7f97a7e8a718b8799905921e4e",
+        "source_fact:v1:8d3e4c914d3b78de5f5433fbae410252e31a6544521240cc5f481202835b76d3",
+        "source_fact:v1:e4ec040e21dd0895d32a3a297c78729ba9c5501f797d2ba0f8dc7cbd6090938d"
+      ],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대",
+      "telegram_core_fact": "대동은 자체 개발한 19~140마력 산업용 디젤엔진을 기반으로 장비의 출력, 설치 공간, 작업 환경에 맞춘 파워팩을 공급한다.",
+      "title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대"
+    },
     "original:a409c5956cdb437129de3fdc": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
       "lanes": {
@@ -437934,6 +438587,34 @@
       "source_published_kst": "2026-10-06T17:40+09:00",
       "title": "亞 최대 동해 AI데이터센터 연내 착공"
     },
+    "original:bd19e678c8ad51718e61a1b3": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
+    },
     "original:bd1af53d25f608c3c17f9d73": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
       "lanes": {
@@ -446173,6 +446854,41 @@
       "source_title": "엔비디아·애플 각각 330억원…트럼프 쏙 빠진 연회장 기부명단 | 연합뉴스",
       "telegram_core_fact": "엔비디아의 경우 중국에 첨단 반도체를 판매할 수 있다는 정부 결정이 나온 지 3개월 만에 최대 기부자가 됐고, 가상화폐 업계도 트럼프 행정부의 규제 완화 혜택을 받고 있다고 WP는 짚었다.",
       "title": "엔비디아·애플 각각 330억원…트럼프 쏙 빠진 연회장 기부명단 | 연합뉴스"
+    },
+    "original:ce3a5c94d35b072911a5e728": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
     "original:ce420fcd8ac5fcc20f003c07": {
       "first_seen_kst": "2026-10-22T17:54:38+09:00",
@@ -467560,6 +468276,30 @@
       "telegram_core_fact": "또 트럼프 대통령이 러시아산 경유의 제한적 공급을 허용하는 대신 추가 제재를 강화하지 않기로 합의하면서 갈등은 한층 격화했다.",
       "title": "젤렌스키 \"트럼프, 사실상 우크라에 러시아 항복 압박\""
     },
+    "original:fa61bfd36675ec78d039dac0": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.hankyung.com/article/2026102282997",
+      "source": "한국경제",
+      "source_body_digest": "566b6f4a4ae43697d8888c071a1fdd488186b3a6a20566972fb862b4fed46a35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2743495607b5c79db1e29dd1bb09bdfccccc596fa18379030ceea77f7976f2a5",
+      "source_fact_keys": [
+        "source_fact:v1:3e39a70a70695478bc7e025dedaf179b106735503e6d0a73e35a155bcacfe560",
+        "source_fact:v1:66556fd7be8c3c36463f314103b15a96e7c809021a399be447dda775aa9e0a7a",
+        "source_fact:v1:9eccd1bf0c61a3154c5a6c645d46d0314a64c3428491b0496b395c7978503152",
+        "source_fact:v1:b909caa87ccfb73a98a620d43eb3308d7f70fa40c372242e8e6080162956b05d",
+        "source_fact:v1:ccdb73079343a2e0cd7adca8f8579b6fe4ae683348dcf0b7473f326f4c6a7acb"
+      ],
+      "source_published_kst": "2026-10-22T11:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\"",
+      "telegram_core_fact": "금융위원회와 한국거래소가 마련한 중복상장 규제는 원칙적으로 모회사와 자회사의 중복상장을 금지하고 있다.",
+      "title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\""
+    },
     "original:fa6419983d4517f901a1eb2d": {
       "first_seen_kst": "2026-09-23T06:51:17+09:00",
       "lanes": {
@@ -473124,6 +473864,31 @@
       "source_title": "[단독]마스턴투자운용·디지털엣지, 1조원대 '파주 데이터센터' 짓는다",
       "telegram_core_fact": "사업 규모는 1조원대로 추산된다. 마스턴투자운용과 글로벌 데이터센터 기업 디지털엣지코리아가 경기도 파주에 데이터센터를 구축한다.",
       "title": "[단독]마스턴투자운용·디지털엣지, 1조원대 '파주 데이터센터' 짓는다"
+    },
+    "source_fact:017165d725e033644ce42b0a": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.etnews.com/20261022000178",
+      "source": "전자신문",
+      "source_body_digest": "cb07cc0bd134fee974f4ca738ceeca03e3b48f28e9202f723e16f6bc54e8bfd1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88b968ad24a4be4d262a644c3ec06213eb2aa240935a01d3a219a802c3122487",
+      "source_fact_keys": [
+        "source_fact:v1:4df34d8ece1946972fbf5aa094284338d1cffe54e34c190d3ba396acd73be7eb",
+        "source_fact:v1:557a16eafe1c8c19a53ee39c229ea9de8b020753df0336c7e2dd835629eded30",
+        "source_fact:v1:62c397ab2433f81e6500b46f05473ac695374aa8664b7c81ada265687ec74b6f",
+        "source_fact:v1:78e38805ff3afc4a613c80889cbed2d462723b7f97a7e8a718b8799905921e4e",
+        "source_fact:v1:8d3e4c914d3b78de5f5433fbae410252e31a6544521240cc5f481202835b76d3",
+        "source_fact:v1:e4ec040e21dd0895d32a3a297c78729ba9c5501f797d2ba0f8dc7cbd6090938d"
+      ],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대",
+      "telegram_core_fact": "대동은 자체 개발한 19~140마력 산업용 디젤엔진을 기반으로 장비의 출력, 설치 공간, 작업 환경에 맞춘 파워팩을 공급한다.",
+      "title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대"
     },
     "source_fact:0179fecd28f3e9b4a9a95702": {
       "first_seen_kst": "2026-10-14T06:09:46+09:00",
@@ -485640,6 +486405,34 @@
       "telegram_core_fact": "대만 캐세이유나이티드은행은 시장 전망을 인용해 TSMC의 3분기 매출을 460억달러(약 62조원)로 내다봤다.",
       "title": "'최대실적 예고' TSMC, 더 멀리 본다…\"60조 매출에 130조 투자\""
     },
+    "source_fact:07746a1b84db6a93ab6b268f": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
+    },
     "source_fact:077583bb0e8a0dc4e7055c15": {
       "first_seen_kst": "2026-10-22T07:32:49+09:00",
       "lanes": {
@@ -487442,6 +488235,41 @@
       "source_title": "트럼프 “러시아·우크라이나, 에너지 휴전 합의”…구체적 내용은 미공개",
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 11일(현지시간) 러시아와 우크라이나가 에너지 시설 공격을 중단하는‘에너지 휴전’에 합의했다고 밝혔다. 트럼프 대통령은 수주 동안 젤렌스키 대통령에게 러시아 에너지 기반시설에 대한 공격을 중단하라고 압박해 왔다.",
       "title": "트럼프 “러시아·우크라이나, 에너지 휴전 합의”…구체적 내용은 미공개"
+    },
+    "source_fact:084b9ed7db0c184a00bc9d03": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
     "source_fact:084ce2e10aa4247da84df30a": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
@@ -528572,6 +529400,30 @@
       "telegram_core_fact": "한국형발사체 누리호가 지난 7일 5차 발사에 성공하며 초소형군집위성 5기와 큐브위성 9기를 우주로 보냈다.",
       "title": "\"누리호 핵심 위성들도 관제···우주데이터센터 시대에도 지상국 필수\""
     },
+    "source_fact:1c6ffa5d5c02de62fbaae746": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.hankyung.com/article/2026102282997",
+      "source": "한국경제",
+      "source_body_digest": "566b6f4a4ae43697d8888c071a1fdd488186b3a6a20566972fb862b4fed46a35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2743495607b5c79db1e29dd1bb09bdfccccc596fa18379030ceea77f7976f2a5",
+      "source_fact_keys": [
+        "source_fact:v1:3e39a70a70695478bc7e025dedaf179b106735503e6d0a73e35a155bcacfe560",
+        "source_fact:v1:66556fd7be8c3c36463f314103b15a96e7c809021a399be447dda775aa9e0a7a",
+        "source_fact:v1:9eccd1bf0c61a3154c5a6c645d46d0314a64c3428491b0496b395c7978503152",
+        "source_fact:v1:b909caa87ccfb73a98a620d43eb3308d7f70fa40c372242e8e6080162956b05d",
+        "source_fact:v1:ccdb73079343a2e0cd7adca8f8579b6fe4ae683348dcf0b7473f326f4c6a7acb"
+      ],
+      "source_published_kst": "2026-10-22T11:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\"",
+      "telegram_core_fact": "금융위원회와 한국거래소가 마련한 중복상장 규제는 원칙적으로 모회사와 자회사의 중복상장을 금지하고 있다.",
+      "title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\""
+    },
     "source_fact:1c73b7bc91e89bb34624d5cd": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
       "lanes": {
@@ -557614,6 +558466,31 @@
       "telegram_core_fact": "한국전력공사가 연내 삼성전자·SK하이닉스와 호남 반도체 산단의 2단계 전력 공급 협약 체결을 추진한다. SK하이닉스의 용인 일반산단은 앞서 협약을 마친 만큼, 내년 삼성전자와의 계약이 체결되면 용인 반도체 클러스터 전체의 전력 공급 계획도 완성되는 셈이다.",
       "title": "[단독]호남 반도체 산단 6GW 전력 공급 협약 연내 확정…용인은 내년 마무리"
     },
+    "source_fact:29dfc9bad3210d9d8b623ce7": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183416",
+      "source": "매일경제",
+      "source_body_digest": "f133e32fa890e839846b80b91f33d72f6e420974f45b55d55fad03b2ab16445d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:560e2d7c35e1a0f277a3e1088eaae90167fa6ec3cc86e29363c58c69efb74766",
+      "source_fact_keys": [
+        "source_fact:v1:14bed27347bacdf3181d8d7920cbce92decb96321344c90c4148b75049841fcb",
+        "source_fact:v1:3a0f7adf895707e649a39ab9c7607283d3014eaf29b7cc0701ec47a6780f575c",
+        "source_fact:v1:888e4353373c2941953183fcd6599fffb7a98362213be722d928fe89d2decfe9",
+        "source_fact:v1:976b6b65f0a73bab7461558da42efd5cb982bd74fc9ba2b4a97a92933f22e9ae",
+        "source_fact:v1:99cc0a86aa4113a63141239fdafd38b640ea8157708858c20527e4da8559f9b9",
+        "source_fact:v1:c61487fa1642287e22d6991e7ca5a9aafc5bbbeba38ebef1d84e27f4f7485522"
+      ],
+      "source_published_kst": "2026-10-22T20:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대",
+      "telegram_core_fact": "유니언 퍼시픽(UNP)은 3분기 매출액이 71억9700만 달러로 전년비 15% 증가했고, 일반회계기준(GAAP) 희석 주당순이익은 3.49달러로 16% 늘었다고 10월 22일 발표했다.",
+      "title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대"
+    },
     "source_fact:29dfe29371cc38003af4abb1": {
       "first_seen_kst": "2026-10-14T16:58:19+09:00",
       "lanes": {
@@ -573995,6 +574872,30 @@
       "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
       "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
     },
+    "source_fact:318548997b9fac761e766e5f": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.hankyung.com/article/2026102282997",
+      "source": "한국경제",
+      "source_body_digest": "566b6f4a4ae43697d8888c071a1fdd488186b3a6a20566972fb862b4fed46a35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2743495607b5c79db1e29dd1bb09bdfccccc596fa18379030ceea77f7976f2a5",
+      "source_fact_keys": [
+        "source_fact:v1:3e39a70a70695478bc7e025dedaf179b106735503e6d0a73e35a155bcacfe560",
+        "source_fact:v1:66556fd7be8c3c36463f314103b15a96e7c809021a399be447dda775aa9e0a7a",
+        "source_fact:v1:9eccd1bf0c61a3154c5a6c645d46d0314a64c3428491b0496b395c7978503152",
+        "source_fact:v1:b909caa87ccfb73a98a620d43eb3308d7f70fa40c372242e8e6080162956b05d",
+        "source_fact:v1:ccdb73079343a2e0cd7adca8f8579b6fe4ae683348dcf0b7473f326f4c6a7acb"
+      ],
+      "source_published_kst": "2026-10-22T11:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\"",
+      "telegram_core_fact": "금융위원회와 한국거래소가 마련한 중복상장 규제는 원칙적으로 모회사와 자회사의 중복상장을 금지하고 있다.",
+      "title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\""
+    },
     "source_fact:318551ebe706ad276377c5e0": {
       "first_seen_kst": "2026-10-14T02:21:39+09:00",
       "lanes": {
@@ -581336,6 +582237,34 @@
       "telegram_core_fact": "SK그룹이 조(兆) 단위 자금을 투입해 미국 원전 기업 웨스팅하우스 지분을 인수하는 방안을 검토 중인 것으로 파악됐다.",
       "title": "[단독] 팀 코리아, 美웨스팅하우스 지분 인수 '兆단위 베팅'"
     },
+    "source_fact:355050226d5bc6912e800846": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
+    },
     "source_fact:35522ebdf2084200eb85fd94": {
       "first_seen_kst": "2026-10-21T10:25:18+09:00",
       "lanes": {
@@ -582380,6 +583309,27 @@
       "telegram_core_fact": "스페이스X가 ‘슈퍼 인텔리전스(SI)’로 이름을 바꾼 AI 부문의 매출은 75억6000만달러로 전년 동기 8억1300만달러보다 약 830% 증가했다.",
       "title": "스페이스X, 상장 후 첫 흑자…AI 매출 9배 폭증하며 스타링크 추월(상보)"
     },
+    "source_fact:35ddf2391e600b5e90e54086": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/business/12182669",
+      "source": "매일경제",
+      "source_body_digest": "a0b32a123e705d8e15e19f00db39919d30e3830b3cc7b9fbec8aebd2e5245ecd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a3c11ac460af1de7706df2326e1c3b8ecef82e5e1e71ace3747bac233664d57",
+      "source_fact_keys": [
+        "source_fact:v1:6e564dbe9cac3c06ff2ea38a821aedc2c65bcb49f24ebbd864491f6ffbeb9969",
+        "source_fact:v1:eacffc421ece38da53cc96c5d54685326c117daf7cf42cadef67ebafac6e3a85"
+      ],
+      "source_published_kst": "2026-10-22T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파",
+      "telegram_core_fact": "사업 출범 2년 만에 누적 수주액 1조원을 돌파한 데 이어 발전소 운영까지 사업 영역을 넓혀 새로운 성장동력 확보에 나선다는 전략이다.",
+      "title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파"
+    },
     "source_fact:35df28eabbce95807fbe2a9c": {
       "first_seen_kst": "2026-10-15T08:51:43+09:00",
       "lanes": {
@@ -583072,6 +584022,41 @@
       "source_title": "알래스카 LNG·301조에 다시 커지는 관세 불확실성",
       "telegram_core_fact": "알래스카 LNG 협상이 원만하게 진행되지 않을 경우 향후 미국이 과잉생산 관련 무역법 301조 조사를 활용해 우리나라에 추가 관세 부과 가능성도 배제할 수 없다는 진단이다.",
       "title": "알래스카 LNG·301조에 다시 커지는 관세 불확실성"
+    },
+    "source_fact:362388a5db8d88e888e196ed": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
     "source_fact:3625363be07c1ed22409eb82": {
       "first_seen_kst": "2026-10-14T12:59:52+09:00",
@@ -602590,6 +603575,41 @@
       "telegram_core_fact": "재무부 당국자들은 이란이 해상 봉쇄망 외곽인 싱가포르·말레이시아·중국 해상의 선박에 보유한 원유는 약 2000만 배럴 수준에 불과하며, 해상 봉쇄 여파로 원유 선적 작업 자체가 사실상 중단된 상태라고 설명했다.",
       "title": "美, 이란 '그림자 선단' 추가 제재…원유 운반선 17척 겨냥"
     },
+    "source_fact:3f7fb8a332b6fdae4bab4c61": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
+    },
     "source_fact:3f820995a0e968c949f30b25": {
       "first_seen_kst": "2026-10-13T02:50:52+09:00",
       "lanes": {
@@ -612524,6 +613544,41 @@
       "telegram_core_fact": "자사주 매입: 기간은 8월20일부터 11월19일까지 약 3개월이었으나, 예정보다 한 달가량 앞당겨 종료됐다.",
       "title": "SK하이닉스, 40조원 자사주 매입 완료…한 달 앞당겨 종료"
     },
+    "source_fact:4438cf0c38daf1e541799f5c": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
+    },
     "source_fact:443cce598a4f3731b4eb5495": {
       "first_seen_kst": "2026-10-22T10:04:49+09:00",
       "lanes": {
@@ -617452,6 +618507,30 @@
       ],
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
+    },
+    "source_fact:468d70712379930437d1059a": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.hankyung.com/article/2026102282997",
+      "source": "한국경제",
+      "source_body_digest": "566b6f4a4ae43697d8888c071a1fdd488186b3a6a20566972fb862b4fed46a35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2743495607b5c79db1e29dd1bb09bdfccccc596fa18379030ceea77f7976f2a5",
+      "source_fact_keys": [
+        "source_fact:v1:3e39a70a70695478bc7e025dedaf179b106735503e6d0a73e35a155bcacfe560",
+        "source_fact:v1:66556fd7be8c3c36463f314103b15a96e7c809021a399be447dda775aa9e0a7a",
+        "source_fact:v1:9eccd1bf0c61a3154c5a6c645d46d0314a64c3428491b0496b395c7978503152",
+        "source_fact:v1:b909caa87ccfb73a98a620d43eb3308d7f70fa40c372242e8e6080162956b05d",
+        "source_fact:v1:ccdb73079343a2e0cd7adca8f8579b6fe4ae683348dcf0b7473f326f4c6a7acb"
+      ],
+      "source_published_kst": "2026-10-22T11:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\"",
+      "telegram_core_fact": "금융위원회와 한국거래소가 마련한 중복상장 규제는 원칙적으로 모회사와 자회사의 중복상장을 금지하고 있다.",
+      "title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\""
     },
     "source_fact:46983aeacc91502fc1d72a64": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
@@ -650725,6 +651804,41 @@
       "telegram_core_fact": "관세청이 북극항로 개척에 필요한 쇄빙선·내빙선을 보세공장 밖에서도 건조할 수 있도록 규제 개선을 추진한다.",
       "title": "관세청, 쇄빙선·내빙선 장외 건조 허용 추진…북극항로 규제 개선"
     },
+    "source_fact:55f101ecf66f314baafbb2d0": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
+    },
     "source_fact:55f3eac9fffe5a4ada0a0e06": {
       "first_seen_kst": "2026-10-08T09:17:31+09:00",
       "lanes": {
@@ -671475,6 +672589,41 @@
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
     },
+    "source_fact:5f3e0a4d959b4ff1ac95e30f": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
+    },
     "source_fact:5f3f95b437c285033cee9de3": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
       "lanes": {
@@ -672093,6 +673242,31 @@
       "source_title": "\"떨어졌을 때 사자더니\"…개미들 저가 매수 속 반대매매 593억원",
       "telegram_core_fact": "실제로 지난 12일 코스피가 3.65% 떨어졌을 때 개인투자자들은 유가증권시장에서 1조4674억원어치를 순매수했다. 코스피가 5.46% 급락한 이날 개인투자자들은 5413억원을 순매수했다.",
       "title": "\"떨어졌을 때 사자더니\"…개미들 저가 매수 속 반대매매 593억원"
+    },
+    "source_fact:5fa4649f4d2cead08bb58e9f": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.etnews.com/20261022000178",
+      "source": "전자신문",
+      "source_body_digest": "cb07cc0bd134fee974f4ca738ceeca03e3b48f28e9202f723e16f6bc54e8bfd1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88b968ad24a4be4d262a644c3ec06213eb2aa240935a01d3a219a802c3122487",
+      "source_fact_keys": [
+        "source_fact:v1:4df34d8ece1946972fbf5aa094284338d1cffe54e34c190d3ba396acd73be7eb",
+        "source_fact:v1:557a16eafe1c8c19a53ee39c229ea9de8b020753df0336c7e2dd835629eded30",
+        "source_fact:v1:62c397ab2433f81e6500b46f05473ac695374aa8664b7c81ada265687ec74b6f",
+        "source_fact:v1:78e38805ff3afc4a613c80889cbed2d462723b7f97a7e8a718b8799905921e4e",
+        "source_fact:v1:8d3e4c914d3b78de5f5433fbae410252e31a6544521240cc5f481202835b76d3",
+        "source_fact:v1:e4ec040e21dd0895d32a3a297c78729ba9c5501f797d2ba0f8dc7cbd6090938d"
+      ],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대",
+      "telegram_core_fact": "대동은 자체 개발한 19~140마력 산업용 디젤엔진을 기반으로 장비의 출력, 설치 공간, 작업 환경에 맞춘 파워팩을 공급한다.",
+      "title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대"
     },
     "source_fact:5fa5863fb73fc551ebe80339": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -680019,6 +681193,30 @@
       "telegram_core_fact": "도미노피자(DPZ)가 2026 회계연도 3분기(9월 6일 종료) 총매출액 11억8560만 달러, 영업이익 2억4180만 달러, 희석 주당순이익(EPS) 4.60달러를 기록했다고 13일 발표했다.",
       "title": "도미노피자, 3분기 희석 EPS 4.60달러..전년비 12.7% 증가"
     },
+    "source_fact:639f08fa82fe6a42a416817a": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.hankyung.com/article/2026102282997",
+      "source": "한국경제",
+      "source_body_digest": "566b6f4a4ae43697d8888c071a1fdd488186b3a6a20566972fb862b4fed46a35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2743495607b5c79db1e29dd1bb09bdfccccc596fa18379030ceea77f7976f2a5",
+      "source_fact_keys": [
+        "source_fact:v1:3e39a70a70695478bc7e025dedaf179b106735503e6d0a73e35a155bcacfe560",
+        "source_fact:v1:66556fd7be8c3c36463f314103b15a96e7c809021a399be447dda775aa9e0a7a",
+        "source_fact:v1:9eccd1bf0c61a3154c5a6c645d46d0314a64c3428491b0496b395c7978503152",
+        "source_fact:v1:b909caa87ccfb73a98a620d43eb3308d7f70fa40c372242e8e6080162956b05d",
+        "source_fact:v1:ccdb73079343a2e0cd7adca8f8579b6fe4ae683348dcf0b7473f326f4c6a7acb"
+      ],
+      "source_published_kst": "2026-10-22T11:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\"",
+      "telegram_core_fact": "금융위원회와 한국거래소가 마련한 중복상장 규제는 원칙적으로 모회사와 자회사의 중복상장을 금지하고 있다.",
+      "title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\""
+    },
     "source_fact:639ff89e381e60f836ca57c0": {
       "first_seen_kst": "2026-10-22T08:01:37+09:00",
       "lanes": {
@@ -680761,6 +681959,31 @@
       "source_title": "중간선거 앞둔 트럼프 ‘폭주’…꼬여만 가는 러-우크라戰",
       "telegram_core_fact": "로이터통신에 따르면 트럼프 대통령은 지난 9일(현지시간) 블라디미르 푸틴 러시아 대통령과의 통화 후 러시아가 즉시 30만톤(t) 이상의 경유를 미국과 글로벌 시장에 공급한다고 자신의 사회관계망서비스(SNS) ‘트루스소셜’을 통해 발표했다.",
       "title": "중간선거 앞둔 트럼프 ‘폭주’…꼬여만 가는 러-우크라戰"
+    },
+    "source_fact:63f27bc3bcf09eeb41d78878": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.etnews.com/20261022000178",
+      "source": "전자신문",
+      "source_body_digest": "cb07cc0bd134fee974f4ca738ceeca03e3b48f28e9202f723e16f6bc54e8bfd1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88b968ad24a4be4d262a644c3ec06213eb2aa240935a01d3a219a802c3122487",
+      "source_fact_keys": [
+        "source_fact:v1:4df34d8ece1946972fbf5aa094284338d1cffe54e34c190d3ba396acd73be7eb",
+        "source_fact:v1:557a16eafe1c8c19a53ee39c229ea9de8b020753df0336c7e2dd835629eded30",
+        "source_fact:v1:62c397ab2433f81e6500b46f05473ac695374aa8664b7c81ada265687ec74b6f",
+        "source_fact:v1:78e38805ff3afc4a613c80889cbed2d462723b7f97a7e8a718b8799905921e4e",
+        "source_fact:v1:8d3e4c914d3b78de5f5433fbae410252e31a6544521240cc5f481202835b76d3",
+        "source_fact:v1:e4ec040e21dd0895d32a3a297c78729ba9c5501f797d2ba0f8dc7cbd6090938d"
+      ],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대",
+      "telegram_core_fact": "대동은 자체 개발한 19~140마력 산업용 디젤엔진을 기반으로 장비의 출력, 설치 공간, 작업 환경에 맞춘 파워팩을 공급한다.",
+      "title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대"
     },
     "source_fact:63f6e85a562ec8e9ff50646e": {
       "first_seen_kst": "2026-10-19T16:36:04+09:00",
@@ -684369,6 +685592,34 @@
       "source_title": "'100조 영업익'에도 삼성전자 주가 주춤…'HBM 가격'에 운명 달렸다",
       "telegram_core_fact": "사상 처음으로 분기 영업이익 '100조 원' 돌파가 유력한 삼성전자 주가가 실적발표를 앞두고 주춤한 모습이다.",
       "title": "'100조 영업익'에도 삼성전자 주가 주춤…'HBM 가격'에 운명 달렸다"
+    },
+    "source_fact:65c723ee06f03ea51a524158": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
     },
     "source_fact:65cd4e4ea427f025e7ae969b": {
       "first_seen_kst": "2026-10-22T11:47:17+09:00",
@@ -695129,6 +696380,41 @@
       "telegram_core_fact": "영풍·MBK파트너스가 고려아연이 신설법인에 공급한 93억6000만원이 원아시아파트너스 관련 기업의 경영권 확보에 사용된 뒤 고려아연 출자 펀드 자금으로 상환됐다는 의혹을 제기했다. 이후 약 3주 뒤 고려아연은 원아시아파트너스가 운용하는 코리아그로쓰제1호 펀드에 96억원을 출자했다.",
       "title": "영풍·MBK \"고려아연 자금 93억원, 원아시아 펀드 통해 '셀프상환' 의혹\""
     },
+    "source_fact:6ad4f678e1c28af175dd926f": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
+    },
     "source_fact:6ad796ed553763c7fd5ac065": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -702371,6 +703657,34 @@
       "source_title": "이환성 세라젬 회장, 전문경영인에게 지분 일부 승계, 기업 미래 맡긴다",
       "telegram_core_fact": "세라젬 창업주 이환성 회장이 전문경영인인 이경수 대표이사를 양자로 입양하고 지분을 승계하기로 했다. 두 사람은 2025년 양자 입양 절차를 완료했으며, 2026년에는 이 대표에게 세라젬 전체 발행주식 10%를 증여하는 1차 지분승계를 마쳤다.",
       "title": "이환성 세라젬 회장, 전문경영인에게 지분 일부 승계, 기업 미래 맡긴다"
+    },
+    "source_fact:6e48f8ff73c9eada71284d8a": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
     },
     "source_fact:6e5d3b6561beefc13ec64d2f": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -714252,6 +715566,31 @@
       "telegram_core_fact": "실적 개선의 핵심은 메모리 가격으로, 유진투자증권은 3·4분기 D램의 평균판매가격이 전 분기 대비 20%, 출하량은 저장용량 기준으로 12% 증가할 것으로 예상했다.",
       "title": "\"SK하이닉스, HBM·범용 메모리 동반 호조..내년도 성장\"-유진證"
     },
+    "source_fact:741c3f5aeaa62ebe1ca7375d": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183416",
+      "source": "매일경제",
+      "source_body_digest": "f133e32fa890e839846b80b91f33d72f6e420974f45b55d55fad03b2ab16445d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:560e2d7c35e1a0f277a3e1088eaae90167fa6ec3cc86e29363c58c69efb74766",
+      "source_fact_keys": [
+        "source_fact:v1:14bed27347bacdf3181d8d7920cbce92decb96321344c90c4148b75049841fcb",
+        "source_fact:v1:3a0f7adf895707e649a39ab9c7607283d3014eaf29b7cc0701ec47a6780f575c",
+        "source_fact:v1:888e4353373c2941953183fcd6599fffb7a98362213be722d928fe89d2decfe9",
+        "source_fact:v1:976b6b65f0a73bab7461558da42efd5cb982bd74fc9ba2b4a97a92933f22e9ae",
+        "source_fact:v1:99cc0a86aa4113a63141239fdafd38b640ea8157708858c20527e4da8559f9b9",
+        "source_fact:v1:c61487fa1642287e22d6991e7ca5a9aafc5bbbeba38ebef1d84e27f4f7485522"
+      ],
+      "source_published_kst": "2026-10-22T20:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대",
+      "telegram_core_fact": "유니언 퍼시픽(UNP)은 3분기 매출액이 71억9700만 달러로 전년비 15% 증가했고, 일반회계기준(GAAP) 희석 주당순이익은 3.49달러로 16% 늘었다고 10월 22일 발표했다.",
+      "title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대"
+    },
     "source_fact:741f2544b2b39b07b0d0cf47": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
       "lanes": {
@@ -714478,6 +715817,31 @@
       "source_title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\"",
       "telegram_core_fact": "김 본부장은 \"최근 내년 양사의 합산 영업이익이 1000조원(삼성전자 600조원, SK하이닉스 400조원)을 상회할 가능성이 높아지면서 실적 컨센서스의 상향 조정이 본격화되고 있다\"고 말했다.",
       "title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\""
+    },
+    "source_fact:742f3a029dce2dd5a0623531": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183416",
+      "source": "매일경제",
+      "source_body_digest": "f133e32fa890e839846b80b91f33d72f6e420974f45b55d55fad03b2ab16445d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:560e2d7c35e1a0f277a3e1088eaae90167fa6ec3cc86e29363c58c69efb74766",
+      "source_fact_keys": [
+        "source_fact:v1:14bed27347bacdf3181d8d7920cbce92decb96321344c90c4148b75049841fcb",
+        "source_fact:v1:3a0f7adf895707e649a39ab9c7607283d3014eaf29b7cc0701ec47a6780f575c",
+        "source_fact:v1:888e4353373c2941953183fcd6599fffb7a98362213be722d928fe89d2decfe9",
+        "source_fact:v1:976b6b65f0a73bab7461558da42efd5cb982bd74fc9ba2b4a97a92933f22e9ae",
+        "source_fact:v1:99cc0a86aa4113a63141239fdafd38b640ea8157708858c20527e4da8559f9b9",
+        "source_fact:v1:c61487fa1642287e22d6991e7ca5a9aafc5bbbeba38ebef1d84e27f4f7485522"
+      ],
+      "source_published_kst": "2026-10-22T20:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대",
+      "telegram_core_fact": "유니언 퍼시픽(UNP)은 3분기 매출액이 71억9700만 달러로 전년비 15% 증가했고, 일반회계기준(GAAP) 희석 주당순이익은 3.49달러로 16% 늘었다고 10월 22일 발표했다.",
+      "title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대"
     },
     "source_fact:74317a6f652cc0e644b2f4a2": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
@@ -716548,6 +717912,41 @@
       "source_title": "이달 수출액 261억달러 ‘역대 최대’ 기록…전체 중 절반은 반도체",
       "telegram_core_fact": "이달 1일부터 10일까지 수출액(통관 기준 잠정치)은 261억달러로, 전년비 102.0% 증가했다.",
       "title": "이달 수출액 261억달러 ‘역대 최대’ 기록…전체 중 절반은 반도체"
+    },
+    "source_fact:753073a76158c579b29e14e8": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
     "source_fact:75387d2b0ac57164039b8abc": {
       "first_seen_kst": "2026-10-11T12:55:39+09:00",
@@ -723412,6 +724811,41 @@
       "source_published_kst": "2026-10-07T09:27+09:00",
       "title": "\"화장품株 주가 조정 과도\"…아모레퍼시픽 5%·한국콜마 5%대 상승"
     },
+    "source_fact:788ab1ac2c9bb657ae4c16ae": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
+    },
     "source_fact:788cb31eeca1dc4feaadfeef": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -726945,6 +728379,34 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:7a183a618a0692c166a2b2da": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
+    },
     "source_fact:7a1ae7337d4d9e0e6dc5e0fa": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -727347,6 +728809,34 @@
       "source_title": "한은 \"토큰화 확산 따른 유동성 분절 우려⋯중앙은행 공급체계 설계해야\"",
       "telegram_core_fact": "윤 실장은 거래량 증가 시 중앙은행이 시장에 유동성을 공급하는 개입 체계를 갖춰야 한다고 강조했다.",
       "title": "한은 \"토큰화 확산 따른 유동성 분절 우려⋯중앙은행 공급체계 설계해야\""
+    },
+    "source_fact:7a51fe2dff8743f93d468df8": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
     },
     "source_fact:7a57abfa54c689ee86b384bb": {
       "first_seen_kst": "2026-10-19T19:37:05+09:00",
@@ -735961,6 +737451,41 @@
       ],
       "source_published_kst": "2026-10-06T12:58+09:00",
       "title": "전세사기 피해 보증금 3분의 1 최소 보장⋯11월 13일 시행"
+    },
+    "source_fact:7eb0eaff1a7b703824dfd998": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
     "source_fact:7eb1d88fc9cc31448f375957": {
       "first_seen_kst": "2026-10-19T13:56:52+09:00",
@@ -758390,6 +759915,31 @@
       "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
       "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
     },
+    "source_fact:89f3f281aeca706bcd6d60c9": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.etnews.com/20261022000178",
+      "source": "전자신문",
+      "source_body_digest": "cb07cc0bd134fee974f4ca738ceeca03e3b48f28e9202f723e16f6bc54e8bfd1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88b968ad24a4be4d262a644c3ec06213eb2aa240935a01d3a219a802c3122487",
+      "source_fact_keys": [
+        "source_fact:v1:4df34d8ece1946972fbf5aa094284338d1cffe54e34c190d3ba396acd73be7eb",
+        "source_fact:v1:557a16eafe1c8c19a53ee39c229ea9de8b020753df0336c7e2dd835629eded30",
+        "source_fact:v1:62c397ab2433f81e6500b46f05473ac695374aa8664b7c81ada265687ec74b6f",
+        "source_fact:v1:78e38805ff3afc4a613c80889cbed2d462723b7f97a7e8a718b8799905921e4e",
+        "source_fact:v1:8d3e4c914d3b78de5f5433fbae410252e31a6544521240cc5f481202835b76d3",
+        "source_fact:v1:e4ec040e21dd0895d32a3a297c78729ba9c5501f797d2ba0f8dc7cbd6090938d"
+      ],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대",
+      "telegram_core_fact": "대동은 자체 개발한 19~140마력 산업용 디젤엔진을 기반으로 장비의 출력, 설치 공간, 작업 환경에 맞춘 파워팩을 공급한다.",
+      "title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대"
+    },
     "source_fact:89f6b91ecebe0c41a69746b4": {
       "first_seen_kst": "2026-10-18T12:31:06+09:00",
       "lanes": {
@@ -764999,6 +766549,41 @@
       "source_title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화",
       "telegram_core_fact": "유니켐(011330)이 미국 유연전자 기술기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수를 위한 본계약을 체결하고 로봇 전자피부 사업 확대에 나선다.",
       "title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화"
+    },
+    "source_fact:8d93ae21b191430bc246d19b": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
     "source_fact:8d95beba315ba54437a7f6a4": {
       "first_seen_kst": "2026-10-21T12:53:55+09:00",
@@ -786874,6 +788459,41 @@
       "telegram_core_fact": "개정안은 과징금 산정기준 근거를 금융기관 검사·제재 규정에서 신용정보업감독규정으로 변경하고, 부과기준율을 손질했다.",
       "title": "금융위, 신정법 위반 중대성 따라 과징금 산정…예측가능성 높여 | 연합뉴스"
     },
+    "source_fact:980767b0dd037fb2cff088fc": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
+    },
     "source_fact:980a43933754fe20e1546d4c": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
       "lanes": {
@@ -790765,6 +792385,30 @@
       "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
       "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
       "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
+    },
+    "source_fact:99ed4adf72149043f7298550": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.hankyung.com/article/2026102282997",
+      "source": "한국경제",
+      "source_body_digest": "566b6f4a4ae43697d8888c071a1fdd488186b3a6a20566972fb862b4fed46a35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2743495607b5c79db1e29dd1bb09bdfccccc596fa18379030ceea77f7976f2a5",
+      "source_fact_keys": [
+        "source_fact:v1:3e39a70a70695478bc7e025dedaf179b106735503e6d0a73e35a155bcacfe560",
+        "source_fact:v1:66556fd7be8c3c36463f314103b15a96e7c809021a399be447dda775aa9e0a7a",
+        "source_fact:v1:9eccd1bf0c61a3154c5a6c645d46d0314a64c3428491b0496b395c7978503152",
+        "source_fact:v1:b909caa87ccfb73a98a620d43eb3308d7f70fa40c372242e8e6080162956b05d",
+        "source_fact:v1:ccdb73079343a2e0cd7adca8f8579b6fe4ae683348dcf0b7473f326f4c6a7acb"
+      ],
+      "source_published_kst": "2026-10-22T11:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\"",
+      "telegram_core_fact": "금융위원회와 한국거래소가 마련한 중복상장 규제는 원칙적으로 모회사와 자회사의 중복상장을 금지하고 있다.",
+      "title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\""
     },
     "source_fact:99f71831c5ccfcc6deb1a863": {
       "first_seen_kst": "2026-10-20T20:22:43+09:00",
@@ -801770,6 +803414,31 @@
       "telegram_core_fact": "도그니스(DOGZ)가 클래스A 보통주 종가가 30영업일 연속 1달러를 밑돌아 나스닥 상장 요건인 최소 매수호가(minimum bid price) 기준을 충족하지 못했다는 통보를 10월 19일 받았다고 10월 20일 발표했다. 해당 규정은 보통주 최소 매수호가를 주당 1달러 이상으로 유지하도록 요구한다.",
       "title": "도그니스, 나스닥 최소 호가 미달 통보..180일 내 1달러 회복해야"
     },
+    "source_fact:9f2fb11b71fa63162187835e": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183416",
+      "source": "매일경제",
+      "source_body_digest": "f133e32fa890e839846b80b91f33d72f6e420974f45b55d55fad03b2ab16445d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:560e2d7c35e1a0f277a3e1088eaae90167fa6ec3cc86e29363c58c69efb74766",
+      "source_fact_keys": [
+        "source_fact:v1:14bed27347bacdf3181d8d7920cbce92decb96321344c90c4148b75049841fcb",
+        "source_fact:v1:3a0f7adf895707e649a39ab9c7607283d3014eaf29b7cc0701ec47a6780f575c",
+        "source_fact:v1:888e4353373c2941953183fcd6599fffb7a98362213be722d928fe89d2decfe9",
+        "source_fact:v1:976b6b65f0a73bab7461558da42efd5cb982bd74fc9ba2b4a97a92933f22e9ae",
+        "source_fact:v1:99cc0a86aa4113a63141239fdafd38b640ea8157708858c20527e4da8559f9b9",
+        "source_fact:v1:c61487fa1642287e22d6991e7ca5a9aafc5bbbeba38ebef1d84e27f4f7485522"
+      ],
+      "source_published_kst": "2026-10-22T20:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대",
+      "telegram_core_fact": "유니언 퍼시픽(UNP)은 3분기 매출액이 71억9700만 달러로 전년비 15% 증가했고, 일반회계기준(GAAP) 희석 주당순이익은 3.49달러로 16% 늘었다고 10월 22일 발표했다.",
+      "title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대"
+    },
     "source_fact:9f31eba1e96d068a62abc764": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
       "lanes": {
@@ -802712,6 +804381,27 @@
       "source_title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’",
       "telegram_core_fact": "코스피가 12일 삼성전자(005930)와 SK하이닉스(000660) 동반 약세로 인해 장중 3% 넘게 급락해 결국 6400선까지 밀렸다.",
       "title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’"
+    },
+    "source_fact:9fb42735bee93fa2fd57493d": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10911245",
+      "source": "헤럴드경제",
+      "source_body_digest": "7285531221d5787607eaff3a1ef0389f60555630c9955c2f09e1ec09df1b6d0a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1040e53c281f34dd3e1605b791733d748a8f961befc033fd7850e131c4e0e6c3",
+      "source_fact_keys": [
+        "source_fact:v1:69fec77ce2ccbb1a061d4d9062d50ab5e5373a805d1307e6dcdaef3555c7aeb0",
+        "source_fact:v1:966a0ed85750b9d43499436906c765ef840ee36905904c8550294520e2c530dd"
+      ],
+      "source_published_kst": "2026-10-22T11:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만",
+      "telegram_core_fact": "업계에서도 초진 비대면진료에 지역 제한, 의료기관별 비대면진료 비율 제한 등 규제가 중복된 가운데, 처방 일수까지 7일로 제한하는 것은 의료인 책임 부담과 환자 불편을 가중한다는 비판이 커지고 있다.",
+      "title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만"
     },
     "source_fact:9fbc4678e14b433ace557d97": {
       "first_seen_kst": "2026-10-14T06:36:25+09:00",
@@ -817424,6 +819114,41 @@
       "telegram_core_fact": "AT&T는 21일(현지시간) 3분기 매출 323억 달러, 조정 주당순이익(EPS) 0.65달러를 기록했다고 발표했다.",
       "title": "통신비 두번 올린 美AT&T, 3분기 매출 5.3% 증가"
     },
+    "source_fact:a633607227c6706e03f65da8": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
+    },
     "source_fact:a637af4ef0a7cde400cd0e9e": {
       "first_seen_kst": "2026-10-17T08:22:42+09:00",
       "lanes": {
@@ -819350,6 +821075,41 @@
       "source_title": "AI 모델 다음은 ‘구현 전쟁’… 빅테크가 LG CNS 찾는 이유 [POWER COMPANY]",
       "telegram_core_fact": "올 상반기 LG CNS의 AI·클라우드 매출은 1조6714억원으로 전체의 약 59%를 차지했다. LG전자와는 휴머노이드 로봇 학습 PoC와 GPU 기반 AI인프라 공급을 포함한 약 1900억원 계약도 맺었다.",
       "title": "AI 모델 다음은 ‘구현 전쟁’… 빅테크가 LG CNS 찾는 이유 [POWER COMPANY]"
+    },
+    "source_fact:a70d225ff2b50c57e6161911": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
     "source_fact:a7115498693358e339de8b03": {
       "first_seen_kst": "2026-10-14T18:43:50+09:00",
@@ -824381,6 +826141,27 @@
       "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
       "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
       "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
+    },
+    "source_fact:a9b5284be1f24e651b4fdbbf": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/business/12182669",
+      "source": "매일경제",
+      "source_body_digest": "a0b32a123e705d8e15e19f00db39919d30e3830b3cc7b9fbec8aebd2e5245ecd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a3c11ac460af1de7706df2326e1c3b8ecef82e5e1e71ace3747bac233664d57",
+      "source_fact_keys": [
+        "source_fact:v1:6e564dbe9cac3c06ff2ea38a821aedc2c65bcb49f24ebbd864491f6ffbeb9969",
+        "source_fact:v1:eacffc421ece38da53cc96c5d54685326c117daf7cf42cadef67ebafac6e3a85"
+      ],
+      "source_published_kst": "2026-10-22T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파",
+      "telegram_core_fact": "사업 출범 2년 만에 누적 수주액 1조원을 돌파한 데 이어 발전소 운영까지 사업 영역을 넓혀 새로운 성장동력 확보에 나선다는 전략이다.",
+      "title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파"
     },
     "source_fact:a9b67fe3b026d150e848e0df": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -842301,6 +844082,41 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 러시아에 구금된 미국인이 석방된 것을 자찬하면서 대러 제재를 완화한 자신의 결정을 거듭 정당화했다.",
       "title": "트럼프, 러 구금 미국인 석방에 \"러 제재했으면 어쩔뻔했나\" | 연합뉴스"
     },
+    "source_fact:b1f401bba2a614e32467a575": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
+    },
     "source_fact:b1f4c03a42c719ed424c0903": {
       "first_seen_kst": "2026-10-15T00:34:31+09:00",
       "lanes": {
@@ -851450,6 +853266,34 @@
       ],
       "source_published_kst": "2026-10-07T07:35+09:00",
       "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
+    },
+    "source_fact:b6560b48b2c7f83a222e65f6": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
     },
     "source_fact:b65b2edbedfb71bad359ddeb": {
       "first_seen_kst": "2026-10-21T07:55:35+09:00",
@@ -875822,6 +877666,41 @@
       "source_title": "한국투자증권, '베슬AI'와 GPU 파이낸싱 업무협약 체결",
       "telegram_core_fact": "한국투자증권은 네오클라우드 기업 베슬AI(VESSL AI)와 'GPU 파이낸싱(GPU Financing)' MOU(업무협약)를 체결했다고 16일 밝혔다. 한국투자증권은 구조화금융 역량을 바탕으로 자금조달을 맡고, 베슬AI는 GPU 클라우드 플랫폼 운영 경험을 살려 사업 실행 전반을 지원하는 구조다.",
       "title": "한국투자증권, '베슬AI'와 GPU 파이낸싱 업무협약 체결"
+    },
+    "source_fact:c23862e7346bc95fae037ae2": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
     "source_fact:c23a38d121161d01604a4091": {
       "first_seen_kst": "2026-10-14T06:09:46+09:00",
@@ -912990,6 +914869,31 @@
       "telegram_core_fact": "트럼프 행정부가 의회의 예산 배정 없이 정부 자금을 지출하는 것을 금지한 적자방지법과, 세금은 의회가 승인한 특정 목적에만 사용하도록 규정한 관련 법률도 위반했다고 지적했다.",
       "title": "美민주당 \"세금으로 정치 광고는 불법\"…트럼프 행정부 제소 | 연합뉴스"
     },
+    "source_fact:d40b37edde680881db3c5357": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183416",
+      "source": "매일경제",
+      "source_body_digest": "f133e32fa890e839846b80b91f33d72f6e420974f45b55d55fad03b2ab16445d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:560e2d7c35e1a0f277a3e1088eaae90167fa6ec3cc86e29363c58c69efb74766",
+      "source_fact_keys": [
+        "source_fact:v1:14bed27347bacdf3181d8d7920cbce92decb96321344c90c4148b75049841fcb",
+        "source_fact:v1:3a0f7adf895707e649a39ab9c7607283d3014eaf29b7cc0701ec47a6780f575c",
+        "source_fact:v1:888e4353373c2941953183fcd6599fffb7a98362213be722d928fe89d2decfe9",
+        "source_fact:v1:976b6b65f0a73bab7461558da42efd5cb982bd74fc9ba2b4a97a92933f22e9ae",
+        "source_fact:v1:99cc0a86aa4113a63141239fdafd38b640ea8157708858c20527e4da8559f9b9",
+        "source_fact:v1:c61487fa1642287e22d6991e7ca5a9aafc5bbbeba38ebef1d84e27f4f7485522"
+      ],
+      "source_published_kst": "2026-10-22T20:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대",
+      "telegram_core_fact": "유니언 퍼시픽(UNP)은 3분기 매출액이 71억9700만 달러로 전년비 15% 증가했고, 일반회계기준(GAAP) 희석 주당순이익은 3.49달러로 16% 늘었다고 10월 22일 발표했다.",
+      "title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대"
+    },
     "source_fact:d40b9b39f733868d4dfcc15d": {
       "first_seen_kst": "2026-10-13T23:03:15+09:00",
       "lanes": {
@@ -949063,6 +950967,31 @@
       "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 기업 TSMC가 올해 3분기 첨단 2나노 공정 매출 비중을 늘리면서 첨단 반도체 생산 확대에 속도를 내고 있다.",
       "title": "TSMC, 3Q '2나노' 공정 비중 껑충…삼성전자도 첨단공정 경쟁 고삐"
     },
+    "source_fact:e4cc0e014961fe72cbae8443": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.etnews.com/20261022000178",
+      "source": "전자신문",
+      "source_body_digest": "cb07cc0bd134fee974f4ca738ceeca03e3b48f28e9202f723e16f6bc54e8bfd1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88b968ad24a4be4d262a644c3ec06213eb2aa240935a01d3a219a802c3122487",
+      "source_fact_keys": [
+        "source_fact:v1:4df34d8ece1946972fbf5aa094284338d1cffe54e34c190d3ba396acd73be7eb",
+        "source_fact:v1:557a16eafe1c8c19a53ee39c229ea9de8b020753df0336c7e2dd835629eded30",
+        "source_fact:v1:62c397ab2433f81e6500b46f05473ac695374aa8664b7c81ada265687ec74b6f",
+        "source_fact:v1:78e38805ff3afc4a613c80889cbed2d462723b7f97a7e8a718b8799905921e4e",
+        "source_fact:v1:8d3e4c914d3b78de5f5433fbae410252e31a6544521240cc5f481202835b76d3",
+        "source_fact:v1:e4ec040e21dd0895d32a3a297c78729ba9c5501f797d2ba0f8dc7cbd6090938d"
+      ],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대",
+      "telegram_core_fact": "대동은 자체 개발한 19~140마력 산업용 디젤엔진을 기반으로 장비의 출력, 설치 공간, 작업 환경에 맞춘 파워팩을 공급한다.",
+      "title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대"
+    },
     "source_fact:e4cc6f6bd530e33004d4841a": {
       "first_seen_kst": "2026-10-19T16:05:04+09:00",
       "lanes": {
@@ -965385,6 +967314,34 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 11일(현지시간) 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔다. 젤렌스키 대통령은 또 이날 저녁 영상 연설에서 러시아가 트럼프 대통령의 발표 이후에도 우크라이나 제2의 도시 하르키우의 열병합발전소를 공격하는 등 에너지 시설 공격을 지속했다고 밝혔다.",
       "title": "트럼프, '러·우 에너지 휴전합의' 했다는데…러는 공습 계속(종합2보) | 연합뉴스"
     },
+    "source_fact:ecb85ca82afe20f02a37481f": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
+    },
     "source_fact:ecbfd92175f62cd0a019d5f8": {
       "first_seen_kst": "2026-10-19T05:12:02+09:00",
       "lanes": {
@@ -981052,6 +983009,31 @@
       "source_published_kst": "2026-10-07T12:02+09:00",
       "title": "우크라 \"한국이 러시아 도왔다\"…외신 인용 韓비판 | 연합뉴스"
     },
+    "source_fact:f4a6f79d01f45b422276ba5c": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.etnews.com/20261022000178",
+      "source": "전자신문",
+      "source_body_digest": "cb07cc0bd134fee974f4ca738ceeca03e3b48f28e9202f723e16f6bc54e8bfd1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88b968ad24a4be4d262a644c3ec06213eb2aa240935a01d3a219a802c3122487",
+      "source_fact_keys": [
+        "source_fact:v1:4df34d8ece1946972fbf5aa094284338d1cffe54e34c190d3ba396acd73be7eb",
+        "source_fact:v1:557a16eafe1c8c19a53ee39c229ea9de8b020753df0336c7e2dd835629eded30",
+        "source_fact:v1:62c397ab2433f81e6500b46f05473ac695374aa8664b7c81ada265687ec74b6f",
+        "source_fact:v1:78e38805ff3afc4a613c80889cbed2d462723b7f97a7e8a718b8799905921e4e",
+        "source_fact:v1:8d3e4c914d3b78de5f5433fbae410252e31a6544521240cc5f481202835b76d3",
+        "source_fact:v1:e4ec040e21dd0895d32a3a297c78729ba9c5501f797d2ba0f8dc7cbd6090938d"
+      ],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대",
+      "telegram_core_fact": "대동은 자체 개발한 19~140마력 산업용 디젤엔진을 기반으로 장비의 출력, 설치 공간, 작업 환경에 맞춘 파워팩을 공급한다.",
+      "title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대"
+    },
     "source_fact:f4a7d4cad88ba1af6a625d79": {
       "first_seen_kst": "2026-10-12T17:17:29+09:00",
       "lanes": {
@@ -986880,6 +988862,31 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:f7b5c7aa7424e35f300cc69b": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183416",
+      "source": "매일경제",
+      "source_body_digest": "f133e32fa890e839846b80b91f33d72f6e420974f45b55d55fad03b2ab16445d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:560e2d7c35e1a0f277a3e1088eaae90167fa6ec3cc86e29363c58c69efb74766",
+      "source_fact_keys": [
+        "source_fact:v1:14bed27347bacdf3181d8d7920cbce92decb96321344c90c4148b75049841fcb",
+        "source_fact:v1:3a0f7adf895707e649a39ab9c7607283d3014eaf29b7cc0701ec47a6780f575c",
+        "source_fact:v1:888e4353373c2941953183fcd6599fffb7a98362213be722d928fe89d2decfe9",
+        "source_fact:v1:976b6b65f0a73bab7461558da42efd5cb982bd74fc9ba2b4a97a92933f22e9ae",
+        "source_fact:v1:99cc0a86aa4113a63141239fdafd38b640ea8157708858c20527e4da8559f9b9",
+        "source_fact:v1:c61487fa1642287e22d6991e7ca5a9aafc5bbbeba38ebef1d84e27f4f7485522"
+      ],
+      "source_published_kst": "2026-10-22T20:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대",
+      "telegram_core_fact": "유니언 퍼시픽(UNP)은 3분기 매출액이 71억9700만 달러로 전년비 15% 증가했고, 일반회계기준(GAAP) 희석 주당순이익은 3.49달러로 16% 늘었다고 10월 22일 발표했다.",
+      "title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대"
+    },
     "source_fact:f7b6c9bb09fd78098a7aaaf4": {
       "first_seen_kst": "2026-10-21T06:23:27+09:00",
       "lanes": {
@@ -988156,6 +990163,27 @@
       ],
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
+    },
+    "source_fact:f86cac6b284820cd094fb0e9": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10911245",
+      "source": "헤럴드경제",
+      "source_body_digest": "7285531221d5787607eaff3a1ef0389f60555630c9955c2f09e1ec09df1b6d0a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1040e53c281f34dd3e1605b791733d748a8f961befc033fd7850e131c4e0e6c3",
+      "source_fact_keys": [
+        "source_fact:v1:69fec77ce2ccbb1a061d4d9062d50ab5e5373a805d1307e6dcdaef3555c7aeb0",
+        "source_fact:v1:966a0ed85750b9d43499436906c765ef840ee36905904c8550294520e2c530dd"
+      ],
+      "source_published_kst": "2026-10-22T11:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만",
+      "telegram_core_fact": "업계에서도 초진 비대면진료에 지역 제한, 의료기관별 비대면진료 비율 제한 등 규제가 중복된 가운데, 처방 일수까지 7일로 제한하는 것은 의료인 책임 부담과 환자 불편을 가중한다는 비판이 커지고 있다.",
+      "title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만"
     },
     "source_fact:f8714f1592f4e42d7c0b094b": {
       "first_seen_kst": "2026-10-19T21:40:31+09:00",
@@ -993429,6 +995457,34 @@
       "source_title": "서학개미, 美반도체 3배 레버리지 폭풍매수",
       "telegram_core_fact": "미국 반도체 기업에 분산 투자하는 '아이셰어스 반도체 ETF'(SOXX)는 같은 기간 5516만달러가 순매수되며 전체 3위에 올랐다. 반도체 지수의 하루 수익률을 3배로 추종하는 레버리지 ETF가 해외 주식 순매수 1위에 오른 가운데 반도체 업종 전반에 투자하는 ETF와 개별 반도체 기업에도 매수세가 집중됐다.",
       "title": "서학개미, 美반도체 3배 레버리지 폭풍매수"
+    },
+    "source_fact:fb3f8a9a7373ace58ccab68b": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
     },
     "source_fact:fb46e67bccccef005ced4cb2": {
       "first_seen_kst": "2026-10-12T13:56:47+09:00",
@@ -1019681,6 +1021737,27 @@
       "telegram_core_fact": "SK하이닉스와 삼성전자는 800조원을 투자해 군공항에 반도체 클러스터를 조성할 계획이다.",
       "title": "광주 군공항 찾은 최태원, 반도체 투자 우려 '한방에' 불식 | 연합뉴스"
     },
+    "title:20a670f5cbc9a98c56d90593": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/business/12182669",
+      "source": "매일경제",
+      "source_body_digest": "a0b32a123e705d8e15e19f00db39919d30e3830b3cc7b9fbec8aebd2e5245ecd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a3c11ac460af1de7706df2326e1c3b8ecef82e5e1e71ace3747bac233664d57",
+      "source_fact_keys": [
+        "source_fact:v1:6e564dbe9cac3c06ff2ea38a821aedc2c65bcb49f24ebbd864491f6ffbeb9969",
+        "source_fact:v1:eacffc421ece38da53cc96c5d54685326c117daf7cf42cadef67ebafac6e3a85"
+      ],
+      "source_published_kst": "2026-10-22T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파",
+      "telegram_core_fact": "사업 출범 2년 만에 누적 수주액 1조원을 돌파한 데 이어 발전소 운영까지 사업 영역을 넓혀 새로운 성장동력 확보에 나선다는 전략이다.",
+      "title": "LG전자, 스마트팩토리 사업 공공 인프라로 확대…2년 만에 수주 1조 돌파"
+    },
     "title:20a76901daa3afcc0d685c88": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -1020545,6 +1022622,31 @@
       "source_title": "구리시, 22년 만에 상수도 요금 평균 22% 인상 추진 | 연합뉴스",
       "telegram_core_fact": "하수도 요금을 평균 32.1% 인상하는 조례 개정안도 입법 예고됐다.",
       "title": "구리시, 22년 만에 상수도 요금 평균 22% 인상 추진 | 연합뉴스"
+    },
+    "title:22190a96fd7b327d2bdd68eb": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183416",
+      "source": "매일경제",
+      "source_body_digest": "f133e32fa890e839846b80b91f33d72f6e420974f45b55d55fad03b2ab16445d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:560e2d7c35e1a0f277a3e1088eaae90167fa6ec3cc86e29363c58c69efb74766",
+      "source_fact_keys": [
+        "source_fact:v1:14bed27347bacdf3181d8d7920cbce92decb96321344c90c4148b75049841fcb",
+        "source_fact:v1:3a0f7adf895707e649a39ab9c7607283d3014eaf29b7cc0701ec47a6780f575c",
+        "source_fact:v1:888e4353373c2941953183fcd6599fffb7a98362213be722d928fe89d2decfe9",
+        "source_fact:v1:976b6b65f0a73bab7461558da42efd5cb982bd74fc9ba2b4a97a92933f22e9ae",
+        "source_fact:v1:99cc0a86aa4113a63141239fdafd38b640ea8157708858c20527e4da8559f9b9",
+        "source_fact:v1:c61487fa1642287e22d6991e7ca5a9aafc5bbbeba38ebef1d84e27f4f7485522"
+      ],
+      "source_published_kst": "2026-10-22T20:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대",
+      "telegram_core_fact": "유니언 퍼시픽(UNP)은 3분기 매출액이 71억9700만 달러로 전년비 15% 증가했고, 일반회계기준(GAAP) 희석 주당순이익은 3.49달러로 16% 늘었다고 10월 22일 발표했다.",
+      "title": "유니언 퍼시픽, 3분기 매출 72억 달러..전년비 15% 증가·사상 최대"
     },
     "title:2234bc3f5316b35be362e922": {
       "first_seen_kst": "2026-10-13T20:49:52+09:00",
@@ -1073901,6 +1076003,27 @@
       "source": "연합뉴스",
       "title": "한화에어로, 미국 아칸소주에 탄약 생산거점…7년간 3조원 투자 | 연합뉴스"
     },
+    "title:89819f3ccbc439ac10c0b6c5": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://biz.heraldcorp.com/article/10911245",
+      "source": "헤럴드경제",
+      "source_body_digest": "7285531221d5787607eaff3a1ef0389f60555630c9955c2f09e1ec09df1b6d0a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1040e53c281f34dd3e1605b791733d748a8f961befc033fd7850e131c4e0e6c3",
+      "source_fact_keys": [
+        "source_fact:v1:69fec77ce2ccbb1a061d4d9062d50ab5e5373a805d1307e6dcdaef3555c7aeb0",
+        "source_fact:v1:966a0ed85750b9d43499436906c765ef840ee36905904c8550294520e2c530dd"
+      ],
+      "source_published_kst": "2026-10-22T11:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만",
+      "telegram_core_fact": "업계에서도 초진 비대면진료에 지역 제한, 의료기관별 비대면진료 비율 제한 등 규제가 중복된 가운데, 처방 일수까지 7일로 제한하는 것은 의료인 책임 부담과 환자 불편을 가중한다는 비판이 커지고 있다.",
+      "title": "비대면 처방 ‘7일’ 제한에, 환자도 업계도 한숨만"
+    },
     "title:89987ff253b067a2758ff330": {
       "first_seen_kst": "2026-10-15T04:50:33+09:00",
       "lanes": {
@@ -1087859,6 +1089982,31 @@
       "source": "전자신문",
       "title": "로보락, 글로벌 로봇청소기 시장 1위…점유율 23.7%"
     },
+    "title:a406ba3d519128beca328ae3": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.etnews.com/20261022000178",
+      "source": "전자신문",
+      "source_body_digest": "cb07cc0bd134fee974f4ca738ceeca03e3b48f28e9202f723e16f6bc54e8bfd1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88b968ad24a4be4d262a644c3ec06213eb2aa240935a01d3a219a802c3122487",
+      "source_fact_keys": [
+        "source_fact:v1:4df34d8ece1946972fbf5aa094284338d1cffe54e34c190d3ba396acd73be7eb",
+        "source_fact:v1:557a16eafe1c8c19a53ee39c229ea9de8b020753df0336c7e2dd835629eded30",
+        "source_fact:v1:62c397ab2433f81e6500b46f05473ac695374aa8664b7c81ada265687ec74b6f",
+        "source_fact:v1:78e38805ff3afc4a613c80889cbed2d462723b7f97a7e8a718b8799905921e4e",
+        "source_fact:v1:8d3e4c914d3b78de5f5433fbae410252e31a6544521240cc5f481202835b76d3",
+        "source_fact:v1:e4ec040e21dd0895d32a3a297c78729ba9c5501f797d2ba0f8dc7cbd6090938d"
+      ],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대",
+      "telegram_core_fact": "대동은 자체 개발한 19~140마력 산업용 디젤엔진을 기반으로 장비의 출력, 설치 공간, 작업 환경에 맞춘 파워팩을 공급한다.",
+      "title": "대동, 산업용 엔진 파워팩 시장 진출…OEM 고객 공략 확대"
+    },
     "title:a409c5956cdb437129de3fdc": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
       "lanes": {
@@ -1100382,6 +1102530,34 @@
       "source_published_kst": "2026-10-06T17:40+09:00",
       "title": "亞 최대 동해 AI데이터센터 연내 착공"
     },
+    "title:bd19e678c8ad51718e61a1b3": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183424",
+      "source": "매일경제",
+      "source_body_digest": "38df036a1b0c07b203a18d7214bed8dc7048b1a1e80c0dacf88b39c915db9938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f15453a06aadcbe5864a6f2fb0c3a85d59837ec5248abf89e89096e87f0c2db",
+      "source_fact_keys": [
+        "source_fact:v1:27b350c785de04f44700ef6b17f7e8c2263a30e3c202e222f1a9440aa7046e8d",
+        "source_fact:v1:4a8bf3d4599f902633b746b50cdd93e56949db9f2c6c5d99438c5928c9d617d9",
+        "source_fact:v1:540f0709966e0d48b418a0f69bd8c96cbcb5c903c99720e826a1667a364a62ce",
+        "source_fact:v1:6356205b7b9471064d9b38a97a8eb7d6a5719baccc5b9240da5cceb111561936",
+        "source_fact:v1:7e2f99a97c5898f61565913da037b22c4764df607688847d02f9e840fd913a30",
+        "source_fact:v1:88c8a5d7ed614525f0476d8f0a24c8c4a79ad30bc7431a88778cf7abe8ab2dee",
+        "source_fact:v1:8b6f518d720924f0b375b722c8dc779b17f09461c250bb1617636ae990ac7d20",
+        "source_fact:v1:a8981af89ea68785b94f01a0b90190f0bebc9dff3a40621fef6d053cff97c51e",
+        "source_fact:v1:c118ab2d73d3687b981ac1e7255b7da2f101cc5a6b4790e5b86c23fbfba1bb10"
+      ],
+      "source_published_kst": "2026-10-22T21:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가",
+      "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
+      "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
+    },
     "title:bd1af53d25f608c3c17f9d73": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
       "lanes": {
@@ -1108884,6 +1111060,41 @@
       "source_title": "엔비디아·애플 각각 330억원…트럼프 쏙 빠진 연회장 기부명단 | 연합뉴스",
       "telegram_core_fact": "엔비디아의 경우 중국에 첨단 반도체를 판매할 수 있다는 정부 결정이 나온 지 3개월 만에 최대 기부자가 됐고, 가상화폐 업계도 트럼프 행정부의 규제 완화 혜택을 받고 있다고 WP는 짚었다.",
       "title": "엔비디아·애플 각각 330억원…트럼프 쏙 빠진 연회장 기부명단 | 연합뉴스"
+    },
+    "title:ce3a5c94d35b072911a5e728": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179570",
+      "source": "매일경제",
+      "source_body_digest": "1614c85a03125a8c6ac5318480f52225874b34b504b867bd1a4badd059241c6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d73de5ae265a55ff9442974ac4fdda2c950b803e7fa2937b291f46192471880c",
+      "source_fact_keys": [
+        "source_fact:v1:28ed3dd5c15237ffca13ccea737dcc5da2b0098afd5553f24ac09c39948fd5c8",
+        "source_fact:v1:2b00de663faf28d2579c98e9e2baa84ba112ae2e4cfec0fc679f496bcab05869",
+        "source_fact:v1:355cda71d35c8c325fa63d4baf0a4bd390de3570a0ecd40daf8d2c17f796b5c6",
+        "source_fact:v1:52a4a917d814862d919d5d28619d216aced1075c63e5eb5b43befe23fa08f48c",
+        "source_fact:v1:5bd0051658209457c7d546719ac8576c69e689d634cf07a4fee85a764c07e7db",
+        "source_fact:v1:6175c374e81fab8da30b947f32f80610acd8bd7aa64bcb4e7176c5247fc23a13",
+        "source_fact:v1:69c3499e5d15d8ba9fadc45803b5f94e36ec44323cdc2206124fe5bfcd16252d",
+        "source_fact:v1:8d783c16638080ee24ce9ac3d35426de02af489ba686fac19f5f9b5a5bdd524d",
+        "source_fact:v1:918dbd9aed907d05671fb13c4c427b8f489bb2f021872577c4b329fbcc7db21d",
+        "source_fact:v1:9756f6ffa79eb81141f69cc1b6a45dcd52122e1961c91cbbf824e4b61ac3e7bf",
+        "source_fact:v1:a6c6218fb247394dd881846aa105ef252b502df11396f19d6585cc2615d3e244",
+        "source_fact:v1:b8f706f1b0d6744b1877f411ab38870bd3b8fdbb89e272fb8d7c42742d5312cd",
+        "source_fact:v1:cc0eb743bbc03ede7baeb48a2c345a9297e45f40ad31c1519e33de05f7678948",
+        "source_fact:v1:d94f1f9c1d7082d8425ec5fea5cb94c24b4d63609af99d5bdc5d939d337c418b",
+        "source_fact:v1:daefb28ba0ed6273b6eed5fdb5c8cd56fdf3f3ef5d429861513d43323bf702ce",
+        "source_fact:v1:dc59ccf2c0232693a3314b21eec998fd01d222deccdfde483042a145294a616c"
+      ],
+      "source_published_kst": "2026-10-22T20:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
+      "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
+      "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
     "title:ce420fcd8ac5fcc20f003c07": {
       "first_seen_kst": "2026-10-22T17:54:38+09:00",
@@ -1130576,6 +1132787,30 @@
       "telegram_core_fact": "또 트럼프 대통령이 러시아산 경유의 제한적 공급을 허용하는 대신 추가 제재를 강화하지 않기로 합의하면서 갈등은 한층 격화했다.",
       "title": "젤렌스키 \"트럼프, 사실상 우크라에 러시아 항복 압박\""
     },
+    "title:fa61bfd36675ec78d039dac0": {
+      "first_seen_kst": "2026-10-22T21:15:04+09:00",
+      "lanes": {
+        "live": "2026-10-22T21:15:04+09:00"
+      },
+      "last_seen_kst": "2026-10-22T21:15:04+09:00",
+      "link": "https://www.hankyung.com/article/2026102282997",
+      "source": "한국경제",
+      "source_body_digest": "566b6f4a4ae43697d8888c071a1fdd488186b3a6a20566972fb862b4fed46a35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2743495607b5c79db1e29dd1bb09bdfccccc596fa18379030ceea77f7976f2a5",
+      "source_fact_keys": [
+        "source_fact:v1:3e39a70a70695478bc7e025dedaf179b106735503e6d0a73e35a155bcacfe560",
+        "source_fact:v1:66556fd7be8c3c36463f314103b15a96e7c809021a399be447dda775aa9e0a7a",
+        "source_fact:v1:9eccd1bf0c61a3154c5a6c645d46d0314a64c3428491b0496b395c7978503152",
+        "source_fact:v1:b909caa87ccfb73a98a620d43eb3308d7f70fa40c372242e8e6080162956b05d",
+        "source_fact:v1:ccdb73079343a2e0cd7adca8f8579b6fe4ae683348dcf0b7473f326f4c6a7acb"
+      ],
+      "source_published_kst": "2026-10-22T11:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\"",
+      "telegram_core_fact": "금융위원회와 한국거래소가 마련한 중복상장 규제는 원칙적으로 모회사와 자회사의 중복상장을 금지하고 있다.",
+      "title": "이억원 \"SK하닉, 솔리다임 미국 상장 시 중복상장 가이드라인 대상\""
+    },
     "title:fa6419983d4517f901a1eb2d": {
       "first_seen_kst": "2026-09-23T06:51:17+09:00",
       "lanes": {
@@ -1133568,5 +1135803,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T20:40:52+09:00"
+  "updated_at_kst": "2026-10-22T21:15:04+09:00"
 }
