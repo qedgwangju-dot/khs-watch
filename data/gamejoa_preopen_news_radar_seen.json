@@ -6383,6 +6383,35 @@
       "telegram_core_fact": "1단계로 브루턴 발행주식의 약 50.5%를 보유한 주주들과 교환 계약을 맺고, 브루턴 1주당 인터내셔널 시웨이스 0.0519주를 지급해 해당 지분을 취득한다.",
       "title": "인터내셔널 시웨이스, 브루턴 3억7000만 달러 인수..VLCC 4척 확보"
     },
+    "core:12b94fb5695db31b06ad3881": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
+    },
     "core:12bb81b22f12d42a05529c0f": {
       "first_seen_kst": "2026-10-17T10:06:46+09:00",
       "lanes": {
@@ -10452,6 +10481,29 @@
       "source_title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 134.4억원 (매출액대비 13.42 %)",
       "telegram_core_fact": "윤성에프앤씨(372170)는 2차전지 믹싱시스템에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 134.4억원이다.",
       "title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 134.4억원 (매출액대비 13.42 %)"
+    },
+    "core:1dd8570d01844b7dbc7b7b86": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1704971/%ED%98%84%EB%8C%80%EC%B0%A8%EC%A6%9D%EA%B6%8C-%EC%9E%90%EC%82%AC%EC%A3%BC-40%EB%A7%8C%EC%A3%BC-%EB%A7%A4%EC%9E%85-%EA%B2%B0%EC%A0%95-2026",
+      "source": "데일리안",
+      "source_body_digest": "c32b7fc8c7a5137041e67d40f1e3db91e209549e92fa80c309763ab8c77a91b6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21792cc31601b198df4c75f4af9e2503c3386afc1d405ead0eb81ca4de693ce2",
+      "source_fact_keys": [
+        "source_fact:v1:52a74f8b001f7aa5067fdc8aa2e3629f09b9acb36c1ce05551ba1a5e396d5452",
+        "source_fact:v1:68ff3db2bc363a3b52ea94a000572ed7e6371f5f73072dfe39d3db34e32f56a9",
+        "source_fact:v1:9347db77f5e4eb7b070cfd80c62e6b088f53c2cc6ef92ca33488d7aa89abd07e",
+        "source_fact:v1:b495dc1f63fbec5ca9da8d51691d3b68048031487c65f71263d5c52f2905c13a"
+      ],
+      "source_published_kst": "2026-10-22T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”",
+      "telegram_core_fact": "현대차증권은 올해부터 총주주환원율(TPR)을 45% 이상으로 높이고, 현금배당과 자사주 매입·소각 등 수단을 다양화하겠다는 입장이다.",
+      "title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”"
     },
     "core:1ddbbef4caafa0b39a74a9ee": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
@@ -52629,6 +52681,27 @@
       "telegram_core_fact": "경기주택도시공사(GH)는 '2026 GH 베이스캠프'에 선정된 판교 입주기업 5개사가 7~16일 미국에서 투자 유치활동을 펼친다고 밝혔다.",
       "title": "'GH 베이스캠프' 5개 기업, 미국서 투자 유치활동 펼친다"
     },
+    "core:933c813fa34fcb60f528a939": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183454",
+      "source": "매일경제",
+      "source_body_digest": "8d8535a16896565d8612d616ef546a6df9c426203c2a099a1c96e5f44290571e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e1ac1ac7eb92fa67908b830d4e710b2493734a08ac21d6042b4eefcd9878fe",
+      "source_fact_keys": [
+        "source_fact:v1:34fed7dba57641cb4bd08df59996a195500ffccba149342de0b38a3b01086b6c",
+        "source_fact:v1:f255196b0f122ed984512943b9c42c2d24abec9be5d1eaa279814420fc9842ea"
+      ],
+      "source_published_kst": "2026-10-22T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 싸이큐리온의 2026년 예상 매출액은 1716만 달러로 전년 대비 13.37% 증가할 전망이다.",
+      "title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%"
+    },
     "core:9347450e856100c2a1727349": {
       "first_seen_kst": "2026-10-16T22:57:47+09:00",
       "lanes": {
@@ -53370,6 +53443,24 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "NH농협금융, 전남ㆍ광주 전략산업 지원 확대…‘금융허브’ 신설"
+    },
+    "core:95a60cb4f17605df84c976f1": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/business/12182880",
+      "source": "매일경제",
+      "source_body_digest": "8ef9e8c2f545bbf1dd87a78b23c99ff6c3f2fd41c9829c83c50e10d0cc9006a3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T15:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "[단독] 삼성전기, 테슬라·엔비디아 3.7조 투자받는다…AI칩기판 라인구축",
+      "telegram_core_fact": "테슬라와 엔비디아가 각각 1조1000억원과 2조 6000억원을 투자해 삼성전기와 인공지능(AI) 반도체용 차세대 기판인 플립칩-볼그리드어레이(FC-BGA) 생산시설을 구축한다. 엔비디아와 테슬라가 삼성전기 공장에 투자를 확정한 것은 AI반도체 차세대 기판인 FC-BGA가 새로운 공급망 병목이 되고 있기 때문이다.",
+      "title": "[단독] 삼성전기, 테슬라·엔비디아 3.7조 투자받는다…AI칩기판 라인구축"
     },
     "core:95a9d9cb92c53d20ef46be41": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
@@ -81206,6 +81297,26 @@
       "telegram_core_fact": "이란 혁명수비대(IRGC)해군은 11일(현지시간) 성명을 발표, 이 날 앞서 호르무즈해협 남단의 봉쇄선을 \"위반\"해서 불법 통과하던 대형 유조선 한 척이 또 해군의 기뢰에 걸려 폭발했다고 밝혔다.",
       "title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \""
     },
+    "core:e58e15d995389e58d28b8359": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022094900056",
+      "source": "연합뉴스",
+      "source_body_digest": "5b15f6ac1811e0891806ba230e69a5766519387c87978b690fc57cd76a58dbe4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e3d32a1f7036f24528e90914978f4861b35fe1abcdee45a0b738433bd776a",
+      "source_fact_keys": [
+        "source_fact:v1:acd136dab20a73e2ced26b0f678df2a7f9cc8452f09d9f81d7eb6de0be95ce59"
+      ],
+      "source_published_kst": "2026-10-22T11:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "제주해경에 '흰수리' 헬기 추가 배치…\"해양사고 대응 강화\" | 연합뉴스",
+      "telegram_core_fact": "제주해양경찰청은 한국항공우주산업이 생산한 국산 '흰수리' 헬기가 이날 배치돼 헬기 보유 대수가 기존 3대에서 4대로 증가했다고 22일 밝혔다. 박배진 제주항공단장은 \"흰수리 헬기의 높은 임무 수행 능력과 신속하고 안전한 비행으로 해양 사고 대응 역량을 강화하겠다\"고 말했다.",
+      "title": "제주해경에 '흰수리' 헬기 추가 배치…\"해양사고 대응 강화\" | 연합뉴스"
+    },
     "core:e59dac5e1397a9de65d0de95": {
       "first_seen_kst": "2026-10-10T01:47:39+09:00",
       "lanes": {
@@ -90723,6 +90834,24 @@
       "source_title": "호르무즈 긴장에 유가 110달러 돌파…AI 불안 겹쳐 美증시 선물↓",
       "telegram_core_fact": "20일(현지시간) CNBC에 따르면 이날 오전 7시38분 기준 미국 서부텍사스산원유(WTI) 11월물 선물은 전장 대비 6.58% 급등한 배럴당 110.48달러에 거래됐다.",
       "title": "호르무즈 긴장에 유가 110달러 돌파…AI 불안 겹쳐 美증시 선물↓"
+    },
+    "event:032a86772cf11890692d2809": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/business/12182880",
+      "source": "매일경제",
+      "source_body_digest": "8ef9e8c2f545bbf1dd87a78b23c99ff6c3f2fd41c9829c83c50e10d0cc9006a3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T15:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "[단독] 삼성전기, 테슬라·엔비디아 3.7조 투자받는다…AI칩기판 라인구축",
+      "telegram_core_fact": "테슬라와 엔비디아가 각각 1조1000억원과 2조 6000억원을 투자해 삼성전기와 인공지능(AI) 반도체용 차세대 기판인 플립칩-볼그리드어레이(FC-BGA) 생산시설을 구축한다. 엔비디아와 테슬라가 삼성전기 공장에 투자를 확정한 것은 AI반도체 차세대 기판인 FC-BGA가 새로운 공급망 병목이 되고 있기 때문이다.",
+      "title": "[단독] 삼성전기, 테슬라·엔비디아 3.7조 투자받는다…AI칩기판 라인구축"
     },
     "event:033917d192b9a4d16c4f65fd": {
       "first_seen_kst": "2026-09-19T08:53:16+09:00",
@@ -155992,6 +156121,35 @@
       "source_published_kst": "2026-10-06T22:35+09:00",
       "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
     },
+    "fact:7523f88ab297cdebfb39c0fa": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
+    },
     "fact:7528305b37cff49698640268": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
       "lanes": {
@@ -171697,6 +171855,26 @@
       "telegram_core_fact": "한국가스공사가 지분 100%를 보유한 주요 해외 자회사 중 대부분이 납입자본의 절반 이상을 잠식당한 것으로 나타났다.",
       "title": "\"가스공사, 해외 자회사 9곳 중 7곳 자본잠식인데 투자 확대\" | 연합뉴스"
     },
+    "fact:9a9798d02e66a9b6b2e499aa": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022094900056",
+      "source": "연합뉴스",
+      "source_body_digest": "5b15f6ac1811e0891806ba230e69a5766519387c87978b690fc57cd76a58dbe4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e3d32a1f7036f24528e90914978f4861b35fe1abcdee45a0b738433bd776a",
+      "source_fact_keys": [
+        "source_fact:v1:acd136dab20a73e2ced26b0f678df2a7f9cc8452f09d9f81d7eb6de0be95ce59"
+      ],
+      "source_published_kst": "2026-10-22T11:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "제주해경에 '흰수리' 헬기 추가 배치…\"해양사고 대응 강화\" | 연합뉴스",
+      "telegram_core_fact": "제주해양경찰청은 한국항공우주산업이 생산한 국산 '흰수리' 헬기가 이날 배치돼 헬기 보유 대수가 기존 3대에서 4대로 증가했다고 22일 밝혔다. 박배진 제주항공단장은 \"흰수리 헬기의 높은 임무 수행 능력과 신속하고 안전한 비행으로 해양 사고 대응 역량을 강화하겠다\"고 말했다.",
+      "title": "제주해경에 '흰수리' 헬기 추가 배치…\"해양사고 대응 강화\" | 연합뉴스"
+    },
     "fact:9aabe4432e421608d27b3fe6": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -183217,6 +183395,27 @@
       ],
       "source_published_kst": "2026-10-06T09:55+09:00",
       "title": "어기구 \"5년간 2천억원 썼는데 연간 조류 정전 2배로\" | 연합뉴스"
+    },
+    "fact:b4be783a547c9a8e8a5ad688": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183454",
+      "source": "매일경제",
+      "source_body_digest": "8d8535a16896565d8612d616ef546a6df9c426203c2a099a1c96e5f44290571e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e1ac1ac7eb92fa67908b830d4e710b2493734a08ac21d6042b4eefcd9878fe",
+      "source_fact_keys": [
+        "source_fact:v1:34fed7dba57641cb4bd08df59996a195500ffccba149342de0b38a3b01086b6c",
+        "source_fact:v1:f255196b0f122ed984512943b9c42c2d24abec9be5d1eaa279814420fc9842ea"
+      ],
+      "source_published_kst": "2026-10-22T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 싸이큐리온의 2026년 예상 매출액은 1716만 달러로 전년 대비 13.37% 증가할 전망이다.",
+      "title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%"
     },
     "fact:b4c10ae91d4e8eff08ae19ec": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
@@ -197168,6 +197367,29 @@
       "source_title": "부산 명지신도시 폐토사 처리 558억원 용역 업체 선정 부실 | 연합뉴스",
       "telegram_core_fact": "13일 국회 국토교통위원회 소속 더불어민주당 안태준 의원이 LH와 국토교통부로부터 제출받은 자료에 따르면, LH는 강서구 명지지구에서 발생한 폐토사 약 59만7천t을 2024년 말까지 처리하기 위해 같은 해 9월 긴급 발주를 거쳐 558억원 용역 계약을 체결했다.",
       "title": "부산 명지신도시 폐토사 처리 558억원 용역 업체 선정 부실 | 연합뉴스"
+    },
+    "fact:d7ead99ad35083f0607609cd": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1704971/%ED%98%84%EB%8C%80%EC%B0%A8%EC%A6%9D%EA%B6%8C-%EC%9E%90%EC%82%AC%EC%A3%BC-40%EB%A7%8C%EC%A3%BC-%EB%A7%A4%EC%9E%85-%EA%B2%B0%EC%A0%95-2026",
+      "source": "데일리안",
+      "source_body_digest": "c32b7fc8c7a5137041e67d40f1e3db91e209549e92fa80c309763ab8c77a91b6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21792cc31601b198df4c75f4af9e2503c3386afc1d405ead0eb81ca4de693ce2",
+      "source_fact_keys": [
+        "source_fact:v1:52a74f8b001f7aa5067fdc8aa2e3629f09b9acb36c1ce05551ba1a5e396d5452",
+        "source_fact:v1:68ff3db2bc363a3b52ea94a000572ed7e6371f5f73072dfe39d3db34e32f56a9",
+        "source_fact:v1:9347db77f5e4eb7b070cfd80c62e6b088f53c2cc6ef92ca33488d7aa89abd07e",
+        "source_fact:v1:b495dc1f63fbec5ca9da8d51691d3b68048031487c65f71263d5c52f2905c13a"
+      ],
+      "source_published_kst": "2026-10-22T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”",
+      "telegram_core_fact": "현대차증권은 올해부터 총주주환원율(TPR)을 45% 이상으로 높이고, 현금배당과 자사주 매입·소각 등 수단을 다양화하겠다는 입장이다.",
+      "title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”"
     },
     "fact:d7f12a01cc22d7d4b4acd39b": {
       "first_seen_kst": "2026-10-11T08:19:03+09:00",
@@ -212504,6 +212726,40 @@
       "telegram_core_fact": "원·달러 환율이 하락했지만 국제 유가가 급등하며 수입물가가 상승 전환했다.",
       "title": "환율 하락했지만 급등한 유가에…수입물가 1.7% 상승"
     },
+    "fact:fe9b89446e89b174879324e0": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
+    },
     "fact:fe9d77d6fc3e2bdfeee68b81": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
       "lanes": {
@@ -214784,6 +215040,40 @@
       "source_title": "'5차 발사' 누리호 만든 한화…뉴스페이스 시대 선봉장으로",
       "telegram_core_fact": "지난 7일 이뤄진 누리호 5차 발사에서 75t급 액체로켓엔진을 비롯한 핵심 부품을 공급했다.",
       "title": "'5차 발사' 누리호 만든 한화…뉴스페이스 시대 선봉장으로"
+    },
+    "link:0376da9a3019bc08eb9ce170": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
     },
     "link:037bcb8e7a8a073d7c466dd1": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -227817,6 +228107,26 @@
       "telegram_core_fact": "투자은행(IB) 업계에 따르면 금융위원회의 국민성장펀드 간접투자 공급 목표는 7조원을 웃돈다. 국민성장펀드가 새로운 출자 수요를 충분히 창출하지 못하면 여러 정책 출자사업에 선정된 GP들이 한정된 민간 자금을 놓고 경쟁하는 구조가 형성될 수 있다.",
       "title": "정책자금 확보해도 '돈 구하기 전쟁'…민간 매칭에 발목 [국민성장펀드 병목]②"
     },
+    "link:1c183917c6f31b821390f699": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022094900056",
+      "source": "연합뉴스",
+      "source_body_digest": "5b15f6ac1811e0891806ba230e69a5766519387c87978b690fc57cd76a58dbe4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e3d32a1f7036f24528e90914978f4861b35fe1abcdee45a0b738433bd776a",
+      "source_fact_keys": [
+        "source_fact:v1:acd136dab20a73e2ced26b0f678df2a7f9cc8452f09d9f81d7eb6de0be95ce59"
+      ],
+      "source_published_kst": "2026-10-22T11:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "제주해경에 '흰수리' 헬기 추가 배치…\"해양사고 대응 강화\" | 연합뉴스",
+      "telegram_core_fact": "제주해양경찰청은 한국항공우주산업이 생산한 국산 '흰수리' 헬기가 이날 배치돼 헬기 보유 대수가 기존 3대에서 4대로 증가했다고 22일 밝혔다. 박배진 제주항공단장은 \"흰수리 헬기의 높은 임무 수행 능력과 신속하고 안전한 비행으로 해양 사고 대응 역량을 강화하겠다\"고 말했다.",
+      "title": "제주해경에 '흰수리' 헬기 추가 배치…\"해양사고 대응 강화\" | 연합뉴스"
+    },
     "link:1c1983e9b2887f37934d64b2": {
       "first_seen_kst": "2026-10-03T16:46:13+09:00",
       "lanes": {
@@ -231103,6 +231413,35 @@
       "source_title": "롯데이노베이트, 베트남서 데이터센터·전기차 충전사업 확대 | 연합뉴스",
       "telegram_core_fact": "양사는 협약을 통해 ▲ 하이퍼스케일 데이터센터 ▲ 전기차 충전사업(CPO) ▲ 사이버보안 ▲ 오프쇼어 IT 서비스 ▲ 클라우드 등 5개 분야에서 협력 기회를 모색한다.",
       "title": "롯데이노베이트, 베트남서 데이터센터·전기차 충전사업 확대 | 연합뉴스"
+    },
+    "link:231ad053cc2aa74fd227f639": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
     },
     "link:232b0187254b6dc54bb4d7f2": {
       "first_seen_kst": "2026-10-22T20:40:52+09:00",
@@ -235711,6 +236050,27 @@
       "source_title": "메리츠證 “아이폰 듀오 사전예약 흥행⋯폴더블 부품 추가 발주 기대”",
       "telegram_core_fact": "채널체크 결과 아이폰 듀오는 외장 힌지와 UTG 등 주요 부품뿐 아니라 최종 조립을 담당하는 주문자상표부착생산(OEM) 단계에서도 수율 부진이 발생하며 생산 확대에 어려움을 겪는 것으로 파악됐다.",
       "title": "메리츠證 “아이폰 듀오 사전예약 흥행⋯폴더블 부품 추가 발주 기대”"
+    },
+    "link:2bd8e7482a60894b413c0173": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183454",
+      "source": "매일경제",
+      "source_body_digest": "8d8535a16896565d8612d616ef546a6df9c426203c2a099a1c96e5f44290571e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e1ac1ac7eb92fa67908b830d4e710b2493734a08ac21d6042b4eefcd9878fe",
+      "source_fact_keys": [
+        "source_fact:v1:34fed7dba57641cb4bd08df59996a195500ffccba149342de0b38a3b01086b6c",
+        "source_fact:v1:f255196b0f122ed984512943b9c42c2d24abec9be5d1eaa279814420fc9842ea"
+      ],
+      "source_published_kst": "2026-10-22T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 싸이큐리온의 2026년 예상 매출액은 1716만 달러로 전년 대비 13.37% 증가할 전망이다.",
+      "title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%"
     },
     "link:2bdbb5594ec1fafd1f408856": {
       "first_seen_kst": "2026-10-04T00:19:00+09:00",
@@ -295576,6 +295936,24 @@
       "telegram_core_fact": "인공지능(AI) 인프라 소프트웨어 전문기업 씨이랩(189330)이 기업의 AI 데이터센터(AIDC) 전환을 지원하기 위한 컨퍼런스를 개최하고 기업 고객 확대에 나섰다.",
       "title": "씨이랩, AI 데이터센터 인프라 컨퍼런스 개최…기업 고객 확대 추진"
     },
+    "link:9ffbce5ea424415399b01aa2": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/business/12182880",
+      "source": "매일경제",
+      "source_body_digest": "8ef9e8c2f545bbf1dd87a78b23c99ff6c3f2fd41c9829c83c50e10d0cc9006a3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T15:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "[단독] 삼성전기, 테슬라·엔비디아 3.7조 투자받는다…AI칩기판 라인구축",
+      "telegram_core_fact": "테슬라와 엔비디아가 각각 1조1000억원과 2조 6000억원을 투자해 삼성전기와 인공지능(AI) 반도체용 차세대 기판인 플립칩-볼그리드어레이(FC-BGA) 생산시설을 구축한다. 엔비디아와 테슬라가 삼성전기 공장에 투자를 확정한 것은 AI반도체 차세대 기판인 FC-BGA가 새로운 공급망 병목이 되고 있기 때문이다.",
+      "title": "[단독] 삼성전기, 테슬라·엔비디아 3.7조 투자받는다…AI칩기판 라인구축"
+    },
     "link:9ffcb40cf288676cedcc79e4": {
       "first_seen_kst": "2026-10-02T09:01:13+09:00",
       "lanes": {
@@ -321689,6 +322067,24 @@
       "telegram_core_fact": "한국타이어가 중국 바이두의 무인 로보택시 플랫폼 ‘아폴로 고(Apollo Go)’에 전기차 전용 타이어 공급을 확대한다.",
       "title": "한국타이어, 바이두 로보택시 ‘아폴로 고’ 타이어 공급 10개 도시로 확대"
     },
+    "link:d1d32168b14ad20586259a69": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638870",
+      "source": "이투데이",
+      "source_body_digest": "35b20dc3d87380aed5e7cc7c7c87c8a9b75d06345d4d14eca4a2edec5ed77f8f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T11:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "기본법 늦는데 과세는 코앞⋯금가분리ㆍ거래소 대주주 규제도 도마 [국감]",
+      "telegram_core_fact": "금융회사와 거래소의 업무 연계, 대주주 규제 완화 과정도 쟁점으로 다뤄졌다.",
+      "title": "기본법 늦는데 과세는 코앞⋯금가분리ㆍ거래소 대주주 규제도 도마 [국감]"
+    },
     "link:d1f563e58aa627dd25763672": {
       "first_seen_kst": "2026-10-11T08:19:03+09:00",
       "lanes": {
@@ -333900,6 +334296,29 @@
       "source_title": "후티, 사우디 공항 미사일 공격…3명 사망·36명 부상",
       "telegram_core_fact": "후티 반군은 지난달 모카를 점령한 뒤 사우디 에너지 시설을 공격하고, 폭 약 29km인 홍해 입구를 지나는 사우디 선박 통행을 위협해왔다.",
       "title": "후티, 사우디 공항 미사일 공격…3명 사망·36명 부상"
+    },
+    "link:eb5e459409de434c1744b329": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1704971/%ED%98%84%EB%8C%80%EC%B0%A8%EC%A6%9D%EA%B6%8C-%EC%9E%90%EC%82%AC%EC%A3%BC-40%EB%A7%8C%EC%A3%BC-%EB%A7%A4%EC%9E%85-%EA%B2%B0%EC%A0%95-2026",
+      "source": "데일리안",
+      "source_body_digest": "c32b7fc8c7a5137041e67d40f1e3db91e209549e92fa80c309763ab8c77a91b6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21792cc31601b198df4c75f4af9e2503c3386afc1d405ead0eb81ca4de693ce2",
+      "source_fact_keys": [
+        "source_fact:v1:52a74f8b001f7aa5067fdc8aa2e3629f09b9acb36c1ce05551ba1a5e396d5452",
+        "source_fact:v1:68ff3db2bc363a3b52ea94a000572ed7e6371f5f73072dfe39d3db34e32f56a9",
+        "source_fact:v1:9347db77f5e4eb7b070cfd80c62e6b088f53c2cc6ef92ca33488d7aa89abd07e",
+        "source_fact:v1:b495dc1f63fbec5ca9da8d51691d3b68048031487c65f71263d5c52f2905c13a"
+      ],
+      "source_published_kst": "2026-10-22T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”",
+      "telegram_core_fact": "현대차증권은 올해부터 총주주환원율(TPR)을 45% 이상으로 높이고, 현금배당과 자사주 매입·소각 등 수단을 다양화하겠다는 입장이다.",
+      "title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”"
     },
     "link:eb6868e81a5e0e6427070e1d": {
       "first_seen_kst": "2026-10-12T15:02:00+09:00",
@@ -357134,6 +357553,24 @@
       "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
       "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
     },
+    "original:1a97e6ff4f0c9dccce4278cc": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/business/12182880",
+      "source": "매일경제",
+      "source_body_digest": "8ef9e8c2f545bbf1dd87a78b23c99ff6c3f2fd41c9829c83c50e10d0cc9006a3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T15:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "[단독] 삼성전기, 테슬라·엔비디아 3.7조 투자받는다…AI칩기판 라인구축",
+      "telegram_core_fact": "테슬라와 엔비디아가 각각 1조1000억원과 2조 6000억원을 투자해 삼성전기와 인공지능(AI) 반도체용 차세대 기판인 플립칩-볼그리드어레이(FC-BGA) 생산시설을 구축한다. 엔비디아와 테슬라가 삼성전기 공장에 투자를 확정한 것은 AI반도체 차세대 기판인 FC-BGA가 새로운 공급망 병목이 되고 있기 때문이다.",
+      "title": "[단독] 삼성전기, 테슬라·엔비디아 3.7조 투자받는다…AI칩기판 라인구축"
+    },
     "original:1aa07593611e9b5f233d28f6": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -358735,6 +359172,24 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811103",
       "source": "뉴시스",
       "title": "스위스 빙하 올해 5.5% 감소 '역대 두 번째'…\"10~15년내 사라질 수도\""
+    },
+    "original:1e5c60e388f60f5a30afdd6b": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638870",
+      "source": "이투데이",
+      "source_body_digest": "35b20dc3d87380aed5e7cc7c7c87c8a9b75d06345d4d14eca4a2edec5ed77f8f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T11:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "기본법 늦는데 과세는 코앞⋯금가분리ㆍ거래소 대주주 규제도 도마 [국감]",
+      "telegram_core_fact": "금융회사와 거래소의 업무 연계, 대주주 규제 완화 과정도 쟁점으로 다뤄졌다.",
+      "title": "기본법 늦는데 과세는 코앞⋯금가분리ㆍ거래소 대주주 규제도 도마 [국감]"
     },
     "original:1e5edf67037df3ecc35f1564": {
       "first_seen_kst": "2026-10-15T00:34:31+09:00",
@@ -391563,6 +392018,29 @@
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
     },
+    "original:5e98bfdbba3f4b4686337683": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1704971/%ED%98%84%EB%8C%80%EC%B0%A8%EC%A6%9D%EA%B6%8C-%EC%9E%90%EC%82%AC%EC%A3%BC-40%EB%A7%8C%EC%A3%BC-%EB%A7%A4%EC%9E%85-%EA%B2%B0%EC%A0%95-2026",
+      "source": "데일리안",
+      "source_body_digest": "c32b7fc8c7a5137041e67d40f1e3db91e209549e92fa80c309763ab8c77a91b6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21792cc31601b198df4c75f4af9e2503c3386afc1d405ead0eb81ca4de693ce2",
+      "source_fact_keys": [
+        "source_fact:v1:52a74f8b001f7aa5067fdc8aa2e3629f09b9acb36c1ce05551ba1a5e396d5452",
+        "source_fact:v1:68ff3db2bc363a3b52ea94a000572ed7e6371f5f73072dfe39d3db34e32f56a9",
+        "source_fact:v1:9347db77f5e4eb7b070cfd80c62e6b088f53c2cc6ef92ca33488d7aa89abd07e",
+        "source_fact:v1:b495dc1f63fbec5ca9da8d51691d3b68048031487c65f71263d5c52f2905c13a"
+      ],
+      "source_published_kst": "2026-10-22T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”",
+      "telegram_core_fact": "현대차증권은 올해부터 총주주환원율(TPR)을 45% 이상으로 높이고, 현금배당과 자사주 매입·소각 등 수단을 다양화하겠다는 입장이다.",
+      "title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”"
+    },
     "original:5e9c0a2b8354c15ff06f0382": {
       "first_seen_kst": "2026-09-19T15:20:13+09:00",
       "lanes": {
@@ -413959,6 +414437,26 @@
       "source": "전자신문",
       "title": "강병준 전자신문 대표, 'KPCA 자랑스런 PCB 반도체 패키징 공로상' 수상"
     },
+    "original:8a8db4a3b4e1477e8cdb7e98": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022094900056",
+      "source": "연합뉴스",
+      "source_body_digest": "5b15f6ac1811e0891806ba230e69a5766519387c87978b690fc57cd76a58dbe4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e3d32a1f7036f24528e90914978f4861b35fe1abcdee45a0b738433bd776a",
+      "source_fact_keys": [
+        "source_fact:v1:acd136dab20a73e2ced26b0f678df2a7f9cc8452f09d9f81d7eb6de0be95ce59"
+      ],
+      "source_published_kst": "2026-10-22T11:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "제주해경에 '흰수리' 헬기 추가 배치…\"해양사고 대응 강화\" | 연합뉴스",
+      "telegram_core_fact": "제주해양경찰청은 한국항공우주산업이 생산한 국산 '흰수리' 헬기가 이날 배치돼 헬기 보유 대수가 기존 3대에서 4대로 증가했다고 22일 밝혔다. 박배진 제주항공단장은 \"흰수리 헬기의 높은 임무 수행 능력과 신속하고 안전한 비행으로 해양 사고 대응 역량을 강화하겠다\"고 말했다.",
+      "title": "제주해경에 '흰수리' 헬기 추가 배치…\"해양사고 대응 강화\" | 연합뉴스"
+    },
     "original:8a9dd14167fdc57c5c468332": {
       "first_seen_kst": "2026-10-21T08:30:35+09:00",
       "lanes": {
@@ -421117,6 +421615,35 @@
       "source_title": "中 차세대 D램 실체 있나 \"임박한 위협 아냐\"…\"1년후 다를수도\"",
       "telegram_core_fact": "링스에쿼티스트래터지스의 KC 라즈쿠마르 애널리스트는 지난 8월 보고서에서 \"공급 한계와 고객사 인증 요건 때문에 최근 언론보도만큼 위협이 임박하지는 않다\"며 \"애플이 직면한 D램 수급 부족 사태를 눈에 띄게 줄이지 못할 것\"이라고 지적했다.",
       "title": "中 차세대 D램 실체 있나 \"임박한 위협 아냐\"…\"1년후 다를수도\""
+    },
+    "original:98776e4c33bdb6c6a215af5e": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
     },
     "original:987c31d91a60a79c125abb16": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -457455,6 +457982,40 @@
       "source": "헤럴드경제",
       "title": "오건영 “금리 오르면 큰일? 이 생각 낭패…투자 포트폴리오 AI로 향해야” [헤럴드머니페스타2026]"
     },
+    "original:e2a5f98b6e56ef53b718f53e": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
+    },
     "original:e2a61138e4293dfec697f092": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -467756,6 +468317,27 @@
       "telegram_core_fact": "물류 산업의 인공지능 전환(AX)은 이제 선택이 아닌 기업 생존과 경쟁력 확보를 위한 필수 과제로, 관련 업계와 협력 확대를 통한 속도감 있는 혁신이 필요하다고 업계 관계자들이 입을 모았다.",
       "title": "상의 55차 물류위원회…\"AI 전환은 선택 아닌 필수\" | 연합뉴스"
     },
+    "original:f7f2e8cf92ecf9fa935c2695": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183454",
+      "source": "매일경제",
+      "source_body_digest": "8d8535a16896565d8612d616ef546a6df9c426203c2a099a1c96e5f44290571e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e1ac1ac7eb92fa67908b830d4e710b2493734a08ac21d6042b4eefcd9878fe",
+      "source_fact_keys": [
+        "source_fact:v1:34fed7dba57641cb4bd08df59996a195500ffccba149342de0b38a3b01086b6c",
+        "source_fact:v1:f255196b0f122ed984512943b9c42c2d24abec9be5d1eaa279814420fc9842ea"
+      ],
+      "source_published_kst": "2026-10-22T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 싸이큐리온의 2026년 예상 매출액은 1716만 달러로 전년 대비 13.37% 증가할 전망이다.",
+      "title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%"
+    },
     "original:f7fd4ba4452afee265d788a1": {
       "first_seen_kst": "2026-10-21T09:52:31+09:00",
       "lanes": {
@@ -477842,6 +478424,29 @@
       "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
       "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
     },
+    "source_fact:02ed3fe315dbf3ef4639df3a": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1704971/%ED%98%84%EB%8C%80%EC%B0%A8%EC%A6%9D%EA%B6%8C-%EC%9E%90%EC%82%AC%EC%A3%BC-40%EB%A7%8C%EC%A3%BC-%EB%A7%A4%EC%9E%85-%EA%B2%B0%EC%A0%95-2026",
+      "source": "데일리안",
+      "source_body_digest": "c32b7fc8c7a5137041e67d40f1e3db91e209549e92fa80c309763ab8c77a91b6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21792cc31601b198df4c75f4af9e2503c3386afc1d405ead0eb81ca4de693ce2",
+      "source_fact_keys": [
+        "source_fact:v1:52a74f8b001f7aa5067fdc8aa2e3629f09b9acb36c1ce05551ba1a5e396d5452",
+        "source_fact:v1:68ff3db2bc363a3b52ea94a000572ed7e6371f5f73072dfe39d3db34e32f56a9",
+        "source_fact:v1:9347db77f5e4eb7b070cfd80c62e6b088f53c2cc6ef92ca33488d7aa89abd07e",
+        "source_fact:v1:b495dc1f63fbec5ca9da8d51691d3b68048031487c65f71263d5c52f2905c13a"
+      ],
+      "source_published_kst": "2026-10-22T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”",
+      "telegram_core_fact": "현대차증권은 올해부터 총주주환원율(TPR)을 45% 이상으로 높이고, 현금배당과 자사주 매입·소각 등 수단을 다양화하겠다는 입장이다.",
+      "title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”"
+    },
     "source_fact:02ee672b324c2472c6990b3c": {
       "first_seen_kst": "2026-10-12T15:20:09+09:00",
       "lanes": {
@@ -484671,6 +485276,29 @@
       "source_title": "세계 경제 떠받친 AI…IMF “금융시장 뇌관 될 수도”",
       "telegram_core_fact": "IMF는 AI 투자 둔화와 국채금리 급등, 대형 사이버공격 등을 금융시장의 단기 충격을 촉발할 수 있는 요인으로 꼽았다.",
       "title": "세계 경제 떠받친 AI…IMF “금융시장 뇌관 될 수도”"
+    },
+    "source_fact:06561c02fc1fadef3372033d": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1704971/%ED%98%84%EB%8C%80%EC%B0%A8%EC%A6%9D%EA%B6%8C-%EC%9E%90%EC%82%AC%EC%A3%BC-40%EB%A7%8C%EC%A3%BC-%EB%A7%A4%EC%9E%85-%EA%B2%B0%EC%A0%95-2026",
+      "source": "데일리안",
+      "source_body_digest": "c32b7fc8c7a5137041e67d40f1e3db91e209549e92fa80c309763ab8c77a91b6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21792cc31601b198df4c75f4af9e2503c3386afc1d405ead0eb81ca4de693ce2",
+      "source_fact_keys": [
+        "source_fact:v1:52a74f8b001f7aa5067fdc8aa2e3629f09b9acb36c1ce05551ba1a5e396d5452",
+        "source_fact:v1:68ff3db2bc363a3b52ea94a000572ed7e6371f5f73072dfe39d3db34e32f56a9",
+        "source_fact:v1:9347db77f5e4eb7b070cfd80c62e6b088f53c2cc6ef92ca33488d7aa89abd07e",
+        "source_fact:v1:b495dc1f63fbec5ca9da8d51691d3b68048031487c65f71263d5c52f2905c13a"
+      ],
+      "source_published_kst": "2026-10-22T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”",
+      "telegram_core_fact": "현대차증권은 올해부터 총주주환원율(TPR)을 45% 이상으로 높이고, 현금배당과 자사주 매입·소각 등 수단을 다양화하겠다는 입장이다.",
+      "title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”"
     },
     "source_fact:065665788e9ca89d67295705": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
@@ -507527,6 +508155,35 @@
       "telegram_core_fact": "중국에서는 HTDK와 협력해 현지 임상 및 인허가 절차를 진행하고 있으며, 대만 사업화와 함께 중화권 시장 진출을 추진하고 있다.",
       "title": "시지바이오 ‘페이스템’, 대만 TFDA 품목허가 획득…현지 공급·의료진 교육 추진"
     },
+    "source_fact:1176dca32b156a0a7a42f640": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
+    },
     "source_fact:1177501ac91bdd55a6deb51b": {
       "first_seen_kst": "2026-10-17T00:51:19+09:00",
       "lanes": {
@@ -508076,6 +508733,35 @@
       "source_title": "AI 병목 뚫어라… 삼성·SK, 차세대 메모리 전략 맞붙었다",
       "telegram_core_fact": "HBM5·맞춤형 HBM으로 연산 효율을 높이고, AMD 등 글로벌 파트너와 메모리 확장 및 시스템 최적화 협력을 강화해 AI 메모리·스토리지 전반으로 경쟁력을 넓힌다는 전략으로 풀이된다.",
       "title": "AI 병목 뚫어라… 삼성·SK, 차세대 메모리 전략 맞붙었다"
+    },
+    "source_fact:11adb0c4bb8c5d8b931211d2": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
     },
     "source_fact:11b617085e1f062da2216eb6": {
       "first_seen_kst": "2026-10-12T22:50:06+09:00",
@@ -522235,6 +522921,40 @@
       "source_title": "메드팩토, 美 FDA서 백토서팁 임상 2상 중용량 환자군 추가 승인",
       "telegram_core_fact": "메드팩토는 ‘백토서팁(Vactosertib)’ 골육종 임상 2상에서 중용량 환자군을 추가하는 임상시험계획(IND) 변경을 미국 식품의약국(FDA)으로부터 승인받았다고 19일 밝혔다.",
       "title": "메드팩토, 美 FDA서 백토서팁 임상 2상 중용량 환자군 추가 승인"
+    },
+    "source_fact:18fba0007e90117a969d13d5": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
     },
     "source_fact:18feca133c9489893bd65ac9": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
@@ -565860,6 +566580,40 @@
       "source_published_kst": "2026-10-06T17:25+09:00",
       "title": "노조, 공정거래법 적용 제외?…교섭 부담 던다지만 他노조 일감 보호는 ‘과제’"
     },
+    "source_fact:2ce2d0925f0143da45c8232a": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
+    },
     "source_fact:2ce6df457e166aa52e58b762": {
       "first_seen_kst": "2026-10-14T17:44:16+09:00",
       "lanes": {
@@ -566530,6 +567284,27 @@
       "source_title": "핀다, 대원저축은행 품고 여수신 기능 탑재…금융위 최종 승인 | 연합뉴스",
       "telegram_core_fact": "핀다의 2대 주주인 JB금융그룹이 전체 인수액 120억원 가운데 40%에 해당하는 지분을 인수했다.",
       "title": "핀다, 대원저축은행 품고 여수신 기능 탑재…금융위 최종 승인 | 연합뉴스"
+    },
+    "source_fact:2d2a9a043f5ffceded1998a6": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183454",
+      "source": "매일경제",
+      "source_body_digest": "8d8535a16896565d8612d616ef546a6df9c426203c2a099a1c96e5f44290571e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e1ac1ac7eb92fa67908b830d4e710b2493734a08ac21d6042b4eefcd9878fe",
+      "source_fact_keys": [
+        "source_fact:v1:34fed7dba57641cb4bd08df59996a195500ffccba149342de0b38a3b01086b6c",
+        "source_fact:v1:f255196b0f122ed984512943b9c42c2d24abec9be5d1eaa279814420fc9842ea"
+      ],
+      "source_published_kst": "2026-10-22T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 싸이큐리온의 2026년 예상 매출액은 1716만 달러로 전년 대비 13.37% 증가할 전망이다.",
+      "title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%"
     },
     "source_fact:2d2fb59619ec0d4af27cd3a0": {
       "first_seen_kst": "2026-10-21T07:24:03+09:00",
@@ -571103,6 +571878,40 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:2f98cb77f2c30535ce913515": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
     },
     "source_fact:2f9cd83a9f17f648a2ae34ac": {
       "first_seen_kst": "2026-10-22T17:54:38+09:00",
@@ -621176,6 +621985,40 @@
       "telegram_core_fact": "러시아와 에너지 시설 공격을 서로 중단하는 방안을 논의하러 미국을 찾은 우크라이나 대표단이 협상장에서 러시아산 경유 수출 제재 완화 방침을 전달받고 “함정처럼 느껴졌다”고 반발한 것으로 전해졌다.",
       "title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\""
     },
+    "source_fact:47509b464dc23c5561dfce7e": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
+    },
     "source_fact:47517289aac1b133c217c770": {
       "first_seen_kst": "2026-10-07T19:47:02+09:00",
       "lanes": {
@@ -643445,6 +644288,35 @@
       "telegram_core_fact": "특히 두산은 단순한 소재 공급업체에서 벗어나 고객사의 차세대 제품 개발 단계부터 참여하는 기술 파트너로 역할을 확대할 방침이다.",
       "title": "[단독]\"50년 CCL 기술로 미래 소재 개발\"…두산, 반도체 영토 키운다"
     },
+    "source_fact:51aeccd94cd10d88fee64635": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
+    },
     "source_fact:51b23f6dd78fdac3630ff028": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
       "lanes": {
@@ -660177,6 +661049,40 @@
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "[2026 국감] 호남 반도체 놓고 여야 격돌…김성환 기후부 장관 “전력·용수 공급 가능”"
     },
+    "source_fact:592e83cb548ba3e4cdc07e12": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
+    },
     "source_fact:5930b23c5a1213705a01da81": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -663235,6 +664141,35 @@
       "source_title": "브릴스, 美 미시간서 로봇 생산 추진…FCC 규제 대응",
       "telegram_core_fact": "브릴스가 미국의 외국산 첨단 로봇 규제 강화에 대응해 미시간 현지에서 자율이동로봇(AMR) 생산을 추진한다.",
       "title": "브릴스, 美 미시간서 로봇 생산 추진…FCC 규제 대응"
+    },
+    "source_fact:5a7560d1c6cc77e0dd612e80": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
     },
     "source_fact:5a7c4c360b7a0590388264d3": {
       "first_seen_kst": "2026-10-20T03:18:10+09:00",
@@ -677643,6 +678578,40 @@
       "telegram_core_fact": "11월과 내년 1분기 추가 인상을 거쳐 기준금리가 현 3.0%에서 3.5%까지 오를 것이라는 전망을 유지했다. 우 연구원은 “11월 금통위에서 내년 상반기 기준금리 경로가 확인되고 추가 인상이 한 차례 정도라는 인식이 자리 잡으면 시장이 안도할 수 있다”며 “국채 공급 감소도 금리 안정에 힘을 보탤 것”이라고 예상했다.",
       "title": "한은 국감 본 채권 전문가들 “11월·내년 1분기 추가 인상”"
     },
+    "source_fact:618bd0df2c889fe16dd2491a": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
+    },
     "source_fact:618e3667ecba0ac9d0f538ee": {
       "first_seen_kst": "2026-10-20T03:53:09+09:00",
       "lanes": {
@@ -680617,6 +681586,40 @@
       "telegram_core_fact": "업계와 외신 등에 따르면 미국 파운드리(반도체 위탁생산) 기업인 글로벌파운드리는 미일 관세 협상 합의에 따라 일본의 대미투자 일환으로 뉴욕주 몰타에 신규 팹을 건설할 것이라고 발표했다.",
       "title": "日, 美 반도체 팹에 대규모 투자…삼성·SK하이닉스 '예의주시'"
     },
+    "source_fact:6302cefa689ab6193ab0f152": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
+    },
     "source_fact:6307a17c657949bf1f10a17e": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
       "lanes": {
@@ -682533,6 +683536,29 @@
       "source_title": "“청년창업 멘토 넘어 성공 동반자로”…KT&G, ‘상상스타트업캠프’ 성과 공유",
       "telegram_core_fact": "KT&G(사장 방경만)가 청년 창업가를 발굴·육성하는 멘토에 그치지 않고 사업모델 완성도를 높여주고 투자유치까지 도와주는 ‘성공의 동반자’로 활약하고 있다.",
       "title": "“청년창업 멘토 넘어 성공 동반자로”…KT&G, ‘상상스타트업캠프’ 성과 공유"
+    },
+    "source_fact:63cc986aa8fdd4a2ad5ec651": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1704971/%ED%98%84%EB%8C%80%EC%B0%A8%EC%A6%9D%EA%B6%8C-%EC%9E%90%EC%82%AC%EC%A3%BC-40%EB%A7%8C%EC%A3%BC-%EB%A7%A4%EC%9E%85-%EA%B2%B0%EC%A0%95-2026",
+      "source": "데일리안",
+      "source_body_digest": "c32b7fc8c7a5137041e67d40f1e3db91e209549e92fa80c309763ab8c77a91b6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21792cc31601b198df4c75f4af9e2503c3386afc1d405ead0eb81ca4de693ce2",
+      "source_fact_keys": [
+        "source_fact:v1:52a74f8b001f7aa5067fdc8aa2e3629f09b9acb36c1ce05551ba1a5e396d5452",
+        "source_fact:v1:68ff3db2bc363a3b52ea94a000572ed7e6371f5f73072dfe39d3db34e32f56a9",
+        "source_fact:v1:9347db77f5e4eb7b070cfd80c62e6b088f53c2cc6ef92ca33488d7aa89abd07e",
+        "source_fact:v1:b495dc1f63fbec5ca9da8d51691d3b68048031487c65f71263d5c52f2905c13a"
+      ],
+      "source_published_kst": "2026-10-22T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”",
+      "telegram_core_fact": "현대차증권은 올해부터 총주주환원율(TPR)을 45% 이상으로 높이고, 현금배당과 자사주 매입·소각 등 수단을 다양화하겠다는 입장이다.",
+      "title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”"
     },
     "source_fact:63d05d6a930a7d2d82a3d08f": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
@@ -699285,6 +700311,40 @@
       "telegram_core_fact": "GA가 소속 설계사에게 지급하는 초년도 수수료가 월 납입보험료 12배 이내로 제한되면서 정착지원금 등을 활용한 영입 경쟁에 제약이 생겼다.",
       "title": "상위 10대 GA, 1200%룰 앞두고 설계사 1만명 늘렸다"
     },
+    "source_fact:6bba5879da96f5fb9550d435": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
+    },
     "source_fact:6bc1586c655881782a5795a4": {
       "first_seen_kst": "2026-10-20T05:02:52+09:00",
       "lanes": {
@@ -703282,6 +704342,35 @@
       "source_title": "세수 부족해 올린 법인세…63조 초과세수에 고개드는 '인하' 요구",
       "telegram_core_fact": "경기 둔화로 기업 이익이 줄어든 데다 법인세율 인하도 세수 감소에 영향을 미쳤다는 설명이었다.",
       "title": "세수 부족해 올린 법인세…63조 초과세수에 고개드는 '인하' 요구"
+    },
+    "source_fact:6da29b3b252bd8fc865aba85": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
     },
     "source_fact:6da9939ad0e79c5b4fabea1e": {
       "first_seen_kst": "2026-10-20T20:22:43+09:00",
@@ -724407,6 +725496,29 @@
       "telegram_core_fact": "IEA의 '글로벌 전기차 전망 2026’에 따르면 지난해 유럽의 중·대형 전기트럭 판매량은 약 1만 7000대로 전년보다 40% 증가했다. 다른 지역의 공급 증가가 이를 일부 상쇄했지만, 글로벌 경유 수출량은 하루 70만 배럴 줄었다.",
       "title": "경윳값 급등에 전기트럭 전환 빨라질까...'탈디젤' 시험대"
     },
+    "source_fact:77cdc44addefbef5d86996f8": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1704971/%ED%98%84%EB%8C%80%EC%B0%A8%EC%A6%9D%EA%B6%8C-%EC%9E%90%EC%82%AC%EC%A3%BC-40%EB%A7%8C%EC%A3%BC-%EB%A7%A4%EC%9E%85-%EA%B2%B0%EC%A0%95-2026",
+      "source": "데일리안",
+      "source_body_digest": "c32b7fc8c7a5137041e67d40f1e3db91e209549e92fa80c309763ab8c77a91b6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21792cc31601b198df4c75f4af9e2503c3386afc1d405ead0eb81ca4de693ce2",
+      "source_fact_keys": [
+        "source_fact:v1:52a74f8b001f7aa5067fdc8aa2e3629f09b9acb36c1ce05551ba1a5e396d5452",
+        "source_fact:v1:68ff3db2bc363a3b52ea94a000572ed7e6371f5f73072dfe39d3db34e32f56a9",
+        "source_fact:v1:9347db77f5e4eb7b070cfd80c62e6b088f53c2cc6ef92ca33488d7aa89abd07e",
+        "source_fact:v1:b495dc1f63fbec5ca9da8d51691d3b68048031487c65f71263d5c52f2905c13a"
+      ],
+      "source_published_kst": "2026-10-22T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”",
+      "telegram_core_fact": "현대차증권은 올해부터 총주주환원율(TPR)을 45% 이상으로 높이고, 현금배당과 자사주 매입·소각 등 수단을 다양화하겠다는 입장이다.",
+      "title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”"
+    },
     "source_fact:77d333ce1468243efa195db8": {
       "first_seen_kst": "2026-10-15T11:11:30+09:00",
       "lanes": {
@@ -724796,6 +725908,35 @@
       "source_title": "최지영 IMF 이사 “韓, 선진국 중 유일하게 재정여력 확대…AI 붐 당장 안 꺾일 것”",
       "telegram_core_fact": "최 이사는 “AI 붐이 내년이나 내후년에 당장 꺾일 것이냐에 대해서는 그렇게 되지 않을 것이라는 시각이 강하다”며 “기업들이 데이터센터를 경쟁적으로 짓고 있는데 건설에 10년 정도 걸릴 수도 있다고 한다”고 말했다.",
       "title": "최지영 IMF 이사 “韓, 선진국 중 유일하게 재정여력 확대…AI 붐 당장 안 꺾일 것”"
+    },
+    "source_fact:77ff3da76d3efb6e9c9e4b57": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
     },
     "source_fact:780803d68268207074b09620": {
       "first_seen_kst": "2026-10-16T19:25:42+09:00",
@@ -743306,6 +744447,40 @@
       "telegram_core_fact": "[파이낸셜뉴스] 국민연금 기금 적립액이 한 달 만에 181조 원가량 감소하며 국내 증시의 향후 수급 향방에 비상이 걸렸다. 실제로 삼성전자와 SK하이닉스의 55조 원 규모 자사주 매입은 각각 97%, 83% 진행돼 사실상 마무리 단계다.",
       "title": "\"한 달 만에 181조가 증발했다\"…국민연금 쇼크, 개미들 떨게 만든 이유"
     },
+    "source_fact:815b9c7b32075f61c9c41f29": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
+    },
     "source_fact:815d008bed72ad85457805fe": {
       "first_seen_kst": "2026-10-20T19:25:45+09:00",
       "lanes": {
@@ -745739,6 +746914,40 @@
       "source_title": "밸류라인, 12년 연속 배당 인상·순이익 증가에 투자자 관심 집중",
       "telegram_core_fact": "이익잉여금도 1억2300만 달러로 8.1% 증가했고, 12년 연속 배당 인상을 결정해 주주환원 의지를 보여줬습니다.",
       "title": "밸류라인, 12년 연속 배당 인상·순이익 증가에 투자자 관심 집중"
+    },
+    "source_fact:825d52ce83c37693f23e9592": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
     },
     "source_fact:825e23d41f3cf2ad83bf1d11": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -748401,6 +749610,40 @@
       "source_title": "AI 모델 다음은 ‘구현 전쟁’… 빅테크가 LG CNS 찾는 이유 [POWER COMPANY]",
       "telegram_core_fact": "올 상반기 LG CNS의 AI·클라우드 매출은 1조6714억원으로 전체의 약 59%를 차지했다. LG전자와는 휴머노이드 로봇 학습 PoC와 GPU 기반 AI인프라 공급을 포함한 약 1900억원 계약도 맺었다.",
       "title": "AI 모델 다음은 ‘구현 전쟁’… 빅테크가 LG CNS 찾는 이유 [POWER COMPANY]"
+    },
+    "source_fact:83da49e6cc9eca2b62423410": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
     },
     "source_fact:83daf859630c8f991ca40bba": {
       "first_seen_kst": "2026-10-22T06:35:46+09:00",
@@ -753877,6 +755120,35 @@
       "source_title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한",
       "telegram_core_fact": "탑 웰스 그룹 홀딩(TWG)이 나스닥 상장 유지 요건인 최소 매수호가 1달러를 30거래일 연속 밑돌아 10월 2일자로 나스닥으로부터 요건 미충족 통지서를 받았으며, 규정 준수 시한은 2027년 3월 31일이라고 10월 6일 발표했다.",
       "title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한"
+    },
+    "source_fact:8676e4aa3a89de9e946f972d": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
     },
     "source_fact:867d12d98e0e8c46347ed3b0": {
       "first_seen_kst": "2026-10-21T06:55:09+09:00",
@@ -775489,6 +776761,35 @@
       "source_title": "엔화, 美 장기금리 저하에 1달러=158엔대 전반 상승 출발",
       "telegram_core_fact": "엔화 환율은 15일 뉴욕 증시 약세 여파로 미국 장기금리 하락에 미일 금리차가 축소하면서 엔 매수, 달러 매도 선행으로 1달러=158엔대 전반으로 올라 시작했다.",
       "title": "엔화, 美 장기금리 저하에 1달러=158엔대 전반 상승 출발"
+    },
+    "source_fact:917341de5672485c806c796a": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
     },
     "source_fact:917a8c24d02c153a81e421a1": {
       "first_seen_kst": "2026-10-20T15:49:58+09:00",
@@ -867753,6 +869054,40 @@
       "telegram_core_fact": "AI 데이터센터 투자 확대로 반도체 수요가 이어지는 가운데 D램 가격 상승세와 중국 메모리 업체의 공급 확대가 향후 시장의 주요 변수로 작용할 것이라는 전망이 나왔다.",
       "title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음"
     },
+    "source_fact:bce7961b1e3291a1bce44270": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
+    },
     "source_fact:bcefa584887a8371876ba9f5": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -871031,6 +872366,40 @@
       "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
       "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
       "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
+    "source_fact:be77cb5110a08b5c519118f9": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
     },
     "source_fact:be786373ca01e97974ff0750": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
@@ -896347,6 +897716,27 @@
       "telegram_core_fact": "중국 관영 신화통신에 따르면 인민은행은 전날 발표한 ‘위안화 환율에 대한 중국 인민은행의 정책 입장’을 통해 “환율 형성 과정에서 시장이 결정적인 역할을 하도록 견지할 것이며 중국은 환율 평가절하를 통해 무역 경쟁 우위를 확보할 필요도 의도도 없고 통화 평가절하를 절대 하지 않는다”고 밝혔다.",
       "title": "中 인민은행, 환율 조작 우려에 발끈 “필요도 없고 할 수도 없어”"
     },
+    "source_fact:ca3dccd333d1421be03a466e": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183454",
+      "source": "매일경제",
+      "source_body_digest": "8d8535a16896565d8612d616ef546a6df9c426203c2a099a1c96e5f44290571e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e1ac1ac7eb92fa67908b830d4e710b2493734a08ac21d6042b4eefcd9878fe",
+      "source_fact_keys": [
+        "source_fact:v1:34fed7dba57641cb4bd08df59996a195500ffccba149342de0b38a3b01086b6c",
+        "source_fact:v1:f255196b0f122ed984512943b9c42c2d24abec9be5d1eaa279814420fc9842ea"
+      ],
+      "source_published_kst": "2026-10-22T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 싸이큐리온의 2026년 예상 매출액은 1716만 달러로 전년 대비 13.37% 증가할 전망이다.",
+      "title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%"
+    },
     "source_fact:ca429f409438a17d64c9896e": {
       "first_seen_kst": "2026-10-14T21:45:21+09:00",
       "lanes": {
@@ -903215,6 +904605,40 @@
       "source_title": "써모 피셔 사이언티픽, 3분기 매출 121억 달러…전년비 9% 증가",
       "telegram_core_fact": "써모 피셔 사이언티픽(TMO)이 9월 26일 종료된 2026년 3분기 매출액이 121억3700만 달러로 전년비 9% 증가했고, Non-GAAP 조정 희석 주당순이익(EPS)은 6.68달러로 15% 늘었다고 10월 21일 발표했다.",
       "title": "써모 피셔 사이언티픽, 3분기 매출 121억 달러…전년비 9% 증가"
+    },
+    "source_fact:cdd7c4fef2a20c758b6a463d": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
     },
     "source_fact:cdd827cfab62dae71c50d629": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
@@ -962006,6 +963430,35 @@
       "telegram_core_fact": "두나무는 네이버 종속회사인 네이버파이낸셜과의 주식교환일을 올해 12월 31일에서 내년 3월 31일로 변경했다고 7일 공시했다. 네이버파이낸셜이 두나무를 완전 자회사로 편입하기 위한 포괄적 주식교환 일정이 내년 3월로 다시 미뤄졌다.",
       "title": "네이버파이낸셜·두나무 주식교환 또다시 연기…“내년 3월에 시행”"
     },
+    "source_fact:e9678f1453e92f0896d6b1c8": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
+    },
     "source_fact:e968d320fd32b1ce0abbe245": {
       "first_seen_kst": "2026-10-21T01:36:25+09:00",
       "lanes": {
@@ -978618,6 +980071,40 @@
       "source_title": "에이루트, 자회사 앤에스알시 경영진 대상 17억 유증…반도체 장비 시너지 제고",
       "telegram_core_fact": "특히 최근 대만 전력반도체 제조사 P사의 생산라인에 투입되는 노광장비 수주 계약을 체결하며 AI 데이터센터 밸류체인에 진입했다.",
       "title": "에이루트, 자회사 앤에스알시 경영진 대상 17억 유증…반도체 장비 시너지 제고"
+    },
+    "source_fact:f17c761cb2cddedae20a6d7a": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
     },
     "source_fact:f17ce8d3c8f07ad861f8f4d8": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
@@ -997012,6 +998499,35 @@
       "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
       "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
     },
+    "source_fact:fb3be269f78398fac92a9337": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
+    },
     "source_fact:fb3c2a394f15d75610a99d99": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -1000659,6 +1002175,26 @@
       "source_title": "후티 공습에 ‘사막의 다보스’ 흔들⋯월가 거물들 사우디행 주저",
       "telegram_core_fact": "WSJ는 후티 반군의 공격과 원유 수출 둔화가 사우디의 경제 전환에 미칠 영향에 월가가 주목하고 있다고 전했다.",
       "title": "후티 공습에 ‘사막의 다보스’ 흔들⋯월가 거물들 사우디행 주저"
+    },
+    "source_fact:fcf544debb5c4a332a492536": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022094900056",
+      "source": "연합뉴스",
+      "source_body_digest": "5b15f6ac1811e0891806ba230e69a5766519387c87978b690fc57cd76a58dbe4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e3d32a1f7036f24528e90914978f4861b35fe1abcdee45a0b738433bd776a",
+      "source_fact_keys": [
+        "source_fact:v1:acd136dab20a73e2ced26b0f678df2a7f9cc8452f09d9f81d7eb6de0be95ce59"
+      ],
+      "source_published_kst": "2026-10-22T11:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "제주해경에 '흰수리' 헬기 추가 배치…\"해양사고 대응 강화\" | 연합뉴스",
+      "telegram_core_fact": "제주해양경찰청은 한국항공우주산업이 생산한 국산 '흰수리' 헬기가 이날 배치돼 헬기 보유 대수가 기존 3대에서 4대로 증가했다고 22일 밝혔다. 박배진 제주항공단장은 \"흰수리 헬기의 높은 임무 수행 능력과 신속하고 안전한 비행으로 해양 사고 대응 역량을 강화하겠다\"고 말했다.",
+      "title": "제주해경에 '흰수리' 헬기 추가 배치…\"해양사고 대응 강화\" | 연합뉴스"
     },
     "source_fact:fcf6073d06def4918facbaa1": {
       "first_seen_kst": "2026-10-21T07:55:35+09:00",
@@ -1020458,6 +1021994,24 @@
       "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
       "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
     },
+    "title:1a97e6ff4f0c9dccce4278cc": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/business/12182880",
+      "source": "매일경제",
+      "source_body_digest": "8ef9e8c2f545bbf1dd87a78b23c99ff6c3f2fd41c9829c83c50e10d0cc9006a3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T15:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "[단독] 삼성전기, 테슬라·엔비디아 3.7조 투자받는다…AI칩기판 라인구축",
+      "telegram_core_fact": "테슬라와 엔비디아가 각각 1조1000억원과 2조 6000억원을 투자해 삼성전기와 인공지능(AI) 반도체용 차세대 기판인 플립칩-볼그리드어레이(FC-BGA) 생산시설을 구축한다. 엔비디아와 테슬라가 삼성전기 공장에 투자를 확정한 것은 AI반도체 차세대 기판인 FC-BGA가 새로운 공급망 병목이 되고 있기 때문이다.",
+      "title": "[단독] 삼성전기, 테슬라·엔비디아 3.7조 투자받는다…AI칩기판 라인구축"
+    },
     "title:1aa07593611e9b5f233d28f6": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -1022079,6 +1023633,24 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811103",
       "source": "뉴시스",
       "title": "스위스 빙하 올해 5.5% 감소 '역대 두 번째'…\"10~15년내 사라질 수도\""
+    },
+    "title:1e5c60e388f60f5a30afdd6b": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638870",
+      "source": "이투데이",
+      "source_body_digest": "35b20dc3d87380aed5e7cc7c7c87c8a9b75d06345d4d14eca4a2edec5ed77f8f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T11:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "기본법 늦는데 과세는 코앞⋯금가분리ㆍ거래소 대주주 규제도 도마 [국감]",
+      "telegram_core_fact": "금융회사와 거래소의 업무 연계, 대주주 규제 완화 과정도 쟁점으로 다뤄졌다.",
+      "title": "기본법 늦는데 과세는 코앞⋯금가분리ㆍ거래소 대주주 규제도 도마 [국감]"
     },
     "title:1e5edf67037df3ecc35f1564": {
       "first_seen_kst": "2026-10-15T00:34:31+09:00",
@@ -1055578,6 +1057150,29 @@
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
     },
+    "title:5e98bfdbba3f4b4686337683": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1704971/%ED%98%84%EB%8C%80%EC%B0%A8%EC%A6%9D%EA%B6%8C-%EC%9E%90%EC%82%AC%EC%A3%BC-40%EB%A7%8C%EC%A3%BC-%EB%A7%A4%EC%9E%85-%EA%B2%B0%EC%A0%95-2026",
+      "source": "데일리안",
+      "source_body_digest": "c32b7fc8c7a5137041e67d40f1e3db91e209549e92fa80c309763ab8c77a91b6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21792cc31601b198df4c75f4af9e2503c3386afc1d405ead0eb81ca4de693ce2",
+      "source_fact_keys": [
+        "source_fact:v1:52a74f8b001f7aa5067fdc8aa2e3629f09b9acb36c1ce05551ba1a5e396d5452",
+        "source_fact:v1:68ff3db2bc363a3b52ea94a000572ed7e6371f5f73072dfe39d3db34e32f56a9",
+        "source_fact:v1:9347db77f5e4eb7b070cfd80c62e6b088f53c2cc6ef92ca33488d7aa89abd07e",
+        "source_fact:v1:b495dc1f63fbec5ca9da8d51691d3b68048031487c65f71263d5c52f2905c13a"
+      ],
+      "source_published_kst": "2026-10-22T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”",
+      "telegram_core_fact": "현대차증권은 올해부터 총주주환원율(TPR)을 45% 이상으로 높이고, 현금배당과 자사주 매입·소각 등 수단을 다양화하겠다는 입장이다.",
+      "title": "현대차증권, 자사주 40만주 매입 결정…“주주환원 방식 다양화”"
+    },
     "title:5e9c0a2b8354c15ff06f0382": {
       "first_seen_kst": "2026-09-19T15:20:13+09:00",
       "lanes": {
@@ -1078411,6 +1080006,26 @@
       "source": "전자신문",
       "title": "강병준 전자신문 대표, 'KPCA 자랑스런 PCB 반도체 패키징 공로상' 수상"
     },
+    "title:8a8db4a3b4e1477e8cdb7e98": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022094900056",
+      "source": "연합뉴스",
+      "source_body_digest": "5b15f6ac1811e0891806ba230e69a5766519387c87978b690fc57cd76a58dbe4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e3d32a1f7036f24528e90914978f4861b35fe1abcdee45a0b738433bd776a",
+      "source_fact_keys": [
+        "source_fact:v1:acd136dab20a73e2ced26b0f678df2a7f9cc8452f09d9f81d7eb6de0be95ce59"
+      ],
+      "source_published_kst": "2026-10-22T11:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "제주해경에 '흰수리' 헬기 추가 배치…\"해양사고 대응 강화\" | 연합뉴스",
+      "telegram_core_fact": "제주해양경찰청은 한국항공우주산업이 생산한 국산 '흰수리' 헬기가 이날 배치돼 헬기 보유 대수가 기존 3대에서 4대로 증가했다고 22일 밝혔다. 박배진 제주항공단장은 \"흰수리 헬기의 높은 임무 수행 능력과 신속하고 안전한 비행으로 해양 사고 대응 역량을 강화하겠다\"고 말했다.",
+      "title": "제주해경에 '흰수리' 헬기 추가 배치…\"해양사고 대응 강화\" | 연합뉴스"
+    },
     "title:8a9dd14167fdc57c5c468332": {
       "first_seen_kst": "2026-10-21T08:30:35+09:00",
       "lanes": {
@@ -1085675,6 +1087290,35 @@
       "source_title": "中 차세대 D램 실체 있나 \"임박한 위협 아냐\"…\"1년후 다를수도\"",
       "telegram_core_fact": "링스에쿼티스트래터지스의 KC 라즈쿠마르 애널리스트는 지난 8월 보고서에서 \"공급 한계와 고객사 인증 요건 때문에 최근 언론보도만큼 위협이 임박하지는 않다\"며 \"애플이 직면한 D램 수급 부족 사태를 눈에 띄게 줄이지 못할 것\"이라고 지적했다.",
       "title": "中 차세대 D램 실체 있나 \"임박한 위협 아냐\"…\"1년후 다를수도\""
+    },
+    "title:98776e4c33bdb6c6a215af5e": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638868",
+      "source": "이투데이",
+      "source_body_digest": "40177a3913283c3bee51e2a25dd1eca31485e724dadd46ca5ed70e70e6c866e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e5e5015b6257c94e7b52bbdc81b97a187e802e362c31cd08fa005a1eab55f3",
+      "source_fact_keys": [
+        "source_fact:v1:0db4bb0e885bf93e3bf552ea560fd8c7c668800214e2f1dc8f450ef762f9ee66",
+        "source_fact:v1:1b66a7d72d8e3c5f06ce93a770202eb70797515298476019d81971eb1c92bf92",
+        "source_fact:v1:1bd3b7e2b817998120e2df422c81c38816364a18a0f7735ddd262c66e06cb2de",
+        "source_fact:v1:39751879e82c244844517da68f330468acf7877c6e2269fd59b70c0316e0cf24",
+        "source_fact:v1:611af1d7654b8b38e30751c5a94830aea20c2df1856d3464dd06e6a4de0a5c83",
+        "source_fact:v1:9149a9eb3368301eedbe28ea0952ba24617c228ae94e52d4a2e5fb979ac1b588",
+        "source_fact:v1:972eb4cc9092f5559ab37e6f384b28767df1686bd09c8e1c44e01472984ce27f",
+        "source_fact:v1:bd447e181e1958bf8d1ced2e6bc922ad48926fe38c9fa53ee3638074314c15f6",
+        "source_fact:v1:d571b2884d63b9bad3db5b72dbb89f1cae8914f714911de42c3a25ddcc5a6206",
+        "source_fact:v1:fe0aff1c7a1dee9823e873ff91b2720d71e758077e86f975e40fd24fcf5f1d66"
+      ],
+      "source_published_kst": "2026-10-22T11:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
+      "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
+      "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
     },
     "title:987c31d91a60a79c125abb16": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -1122880,6 +1124524,40 @@
       "source": "헤럴드경제",
       "title": "오건영 “금리 오르면 큰일? 이 생각 낭패…투자 포트폴리오 AI로 향해야” [헤럴드머니페스타2026]"
     },
+    "title:e2a5f98b6e56ef53b718f53e": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183453",
+      "source": "매일경제",
+      "source_body_digest": "f350d27b944cb726db526532e00297396628786daab425dfcf3ec4f802df74d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f35dd56908c70c2e3ab32e59d1284d043328951bf775b5cf2d7267706b503bc0",
+      "source_fact_keys": [
+        "source_fact:v1:0099086649fb6b29af9798efca5b2e7aeb477ec1ca721bb44f994e0ade971047",
+        "source_fact:v1:1e9e978cebe71b60f28c890433e7b41b42d0fcb055f2bbe00d75da20e646352c",
+        "source_fact:v1:2a75a65725a8ac4537693ad4accee6c0e1ae4a242f2c1632e5ecf3ebd7158745",
+        "source_fact:v1:4ffc5e85735653c2be644b9a5a83bc4d1f45bb0bea866bfb82e2675625dfe492",
+        "source_fact:v1:62dfd61307b379634b0fa5959652c51048ae312c77c2d90c6f4faeab1c207764",
+        "source_fact:v1:7790799b37442a55853e55cd2dfa8d5af678bacb8493f5c7025d002132ffaa87",
+        "source_fact:v1:8025be96a5205da7f5502d46a390e1329c5bf32c15d13b13ac40f773d67677c8",
+        "source_fact:v1:94be3c99024989f09e9ccdba4897114ab5cab9535c72ff91a0377ab671f687ce",
+        "source_fact:v1:9f4ad976fcf65921c14646ea38567f210e4dda2c6fb8f4701c98578d99d8f166",
+        "source_fact:v1:a5ab88789ffe273deb8c144f7cbf016b08ea7b92793047e1dcb18ff89ef53f03",
+        "source_fact:v1:ab15ed3b4275f1f9e44072a94da863a26e2c721ea02801577b041e419287588f",
+        "source_fact:v1:b9b022127183f437cb124c312c7c4f031279c3840908496a065370f2ae73c323",
+        "source_fact:v1:bbbf0df111b696a992fe6aeeb43771afcc418d364d4d0cf6a1f35b430e738a01",
+        "source_fact:v1:c6beb6360fd5795f8f24ff79ba000f4b2092221d2af215f2b5766df5601c3a32",
+        "source_fact:v1:ce1343471bdb2b7873b7f03d720f113232b5e49efe9eca1b008e94e2378c1ef9"
+      ],
+      "source_published_kst": "2026-10-22T21:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
+      "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
+      "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
+    },
     "title:e2a61138e4293dfec697f092": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -1133409,6 +1135087,27 @@
       "telegram_core_fact": "물류 산업의 인공지능 전환(AX)은 이제 선택이 아닌 기업 생존과 경쟁력 확보를 위한 필수 과제로, 관련 업계와 협력 확대를 통한 속도감 있는 혁신이 필요하다고 업계 관계자들이 입을 모았다.",
       "title": "상의 55차 물류위원회…\"AI 전환은 선택 아닌 필수\" | 연합뉴스"
     },
+    "title:f7f2e8cf92ecf9fa935c2695": {
+      "first_seen_kst": "2026-10-22T22:04:33+09:00",
+      "lanes": {
+        "live": "2026-10-22T22:04:33+09:00"
+      },
+      "last_seen_kst": "2026-10-22T22:04:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183454",
+      "source": "매일경제",
+      "source_body_digest": "8d8535a16896565d8612d616ef546a6df9c426203c2a099a1c96e5f44290571e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e1ac1ac7eb92fa67908b830d4e710b2493734a08ac21d6042b4eefcd9878fe",
+      "source_fact_keys": [
+        "source_fact:v1:34fed7dba57641cb4bd08df59996a195500ffccba149342de0b38a3b01086b6c",
+        "source_fact:v1:f255196b0f122ed984512943b9c42c2d24abec9be5d1eaa279814420fc9842ea"
+      ],
+      "source_published_kst": "2026-10-22T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 싸이큐리온의 2026년 예상 매출액은 1716만 달러로 전년 대비 13.37% 증가할 전망이다.",
+      "title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%"
+    },
     "title:f7fd4ba4452afee265d788a1": {
       "first_seen_kst": "2026-10-21T09:52:31+09:00",
       "lanes": {
@@ -1137568,5 +1139267,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T21:42:35+09:00"
+  "updated_at_kst": "2026-10-22T22:04:33+09:00"
 }
