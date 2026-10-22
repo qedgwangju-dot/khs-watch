@@ -603,6 +603,53 @@ jobs:
           print("ai_policy_event_backlog_preservation=PASS")
           PY
 
+      - name: Verify CrowdStrike NVIDIA software vs silicon commercialization stages
+        shell: bash
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          from scripts.ai_safety_policy_watch import (
+              build_alert, cluster_events, crowdstrike_nvidia_publisher_verified,
+              material, normalize, tracked_policy_event_key,
+          )
+          def event(title, source="Reuters", publisher_url="https://www.reuters.com/"):
+              return normalize({
+                  "title": title, "description": title + " with Falcon Guardian OpenShell planned Sentry BlueField-4",
+                  "source": source, "publisher_url": publisher_url,
+                  "url": "https://www.reuters.com/example",
+                  "published_at": "2026-10-21T12:00:00+00:00",
+              })
+          initial = event(
+              "CrowdStrike and NVIDIA Expand AI Agent Security from Software to Silicon",
+              "CrowdStrike", "https://ir.crowdstrike.com/",
+          )
+          initial["url"] = "https://ir.crowdstrike.com/news-releases/"
+          assert initial["official"] and material(initial)
+          assert tracked_policy_event_key(initial) == "crowdstrike_nvidia_guardian:integration_announced"
+          assert initial["entity"] == "CrowdStrike–NVIDIA"
+          assert "보안 통합" in initial["category"]
+          spoofed = event(
+              "CrowdStrike and NVIDIA Expand AI Agent Security from Software to Silicon",
+              "CrowdStrike", "https://evil.example/",
+          )
+          assert not spoofed["official"] and not material(spoofed)
+          assert not crowdstrike_nvidia_publisher_verified(spoofed)
+          will = event("CrowdStrike NVIDIA Falcon Guardian plans to integrate with Sentry")
+          assert tracked_policy_event_key(will) == "crowdstrike_nvidia_guardian:integration_announced"
+          openshell = event("CrowdStrike NVIDIA Falcon Guardian OpenShell integration now available")
+          assert tracked_policy_event_key(openshell) == "crowdstrike_nvidia_guardian:openshell_available_reported"
+          sentry = event("CrowdStrike NVIDIA Falcon Guardian Sentry integration completed")
+          assert tracked_policy_event_key(sentry) == "crowdstrike_nvidia_guardian:sentry_live_reported"
+          contract = event("CrowdStrike NVIDIA Falcon Guardian signs paid customer contract")
+          assert tracked_policy_event_key(contract) == "crowdstrike_nvidia_guardian:paid_customer_reported"
+          independent_stages = [initial, will, openshell, sentry, contract]
+          clusters = cluster_events(independent_stages)
+          assert len(clusters) == 4, "Different product milestones were merged or duplicated"
+          title, body = build_alert([[initial]], dt.datetime(2026,10,22,tzinfo=dt.timezone.utc))
+          assert "CrowdStrike" in body and "계획 단계" in body and "유료" in body
+          print("ai_policy_crowdstrike_openshell_sentry_stage_regression=PASS")
+          PY
+
       - name: Verify OpenShell telemetry index and API rate-limit fallback
         shell: bash
         run: |
