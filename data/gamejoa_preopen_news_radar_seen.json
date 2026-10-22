@@ -9883,6 +9883,30 @@
       "telegram_core_fact": "한화시스템은 향후 초저궤도 SAR 위성과 우주 AI 데이터센터, 위성통신망 등에 약 20조원을 투자할 계획이다.",
       "title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]"
     },
+    "core:1d4009ec2ba2271d55223b31": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638799",
+      "source": "이투데이",
+      "source_body_digest": "09c16d8bff6c58441d7d56274538d3cb05d1732239eb271ec68983274ab00b2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c7a8a50b591d1737d44b4395feb51bcbbf8cd79e6ed1d072a56de24eaae66e",
+      "source_fact_keys": [
+        "source_fact:v1:0a2029986e33a2fa7b92573fe660e433bf3217af49da285f1784ddc07d1f5c05",
+        "source_fact:v1:0bcb3e49922545e640a6551abef6039928dec59b6ef0c58daebd15cbf0bebd52",
+        "source_fact:v1:5f69dd18d3c00b5c46080a44b9f5bdd1ac6e123f574fd9fc386ada20dd7af4c3",
+        "source_fact:v1:a2950216e8ef61b524e1f624cb37de16784abf414fef4ca69fd26fa08bde6534",
+        "source_fact:v1:c714c42ba4662c09dca74dd5d0933835faff6976483595b7400e80537c0d20dd"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색",
+      "telegram_core_fact": "이재용 삼성전자 회장이 아랍에미리트(UAE)를 찾아 에너지 인프라 사업을 점검하고 AI 데이터센터 등 미래 신사업 확대 방안을 논의했다. UAE의 산업 성장에 따른 전력 수요 증가에 대응하기 위한 사업으로 향후 AI 데이터센터 등 첨단산업에 필요한 전력 공급에도 기여할 전망이다.",
+      "title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색"
+    },
     "core:1d487fbe2c57567b6669f329": {
       "first_seen_kst": "2026-10-08T22:29:06+09:00",
       "lanes": {
@@ -11082,6 +11106,28 @@
       "source_title": "오세훈 시장",
       "telegram_core_fact": "오세훈 서울시장이 19일 서울의 주택 공급 부족 원인을 놓고 책임론이 제기되자 박원순 전 시장 시절의 정비구역 해제를 농사에 비유하며 비판했다.",
       "title": "오세훈 시장"
+    },
+    "core:2006992fc34dd9049caf32ff": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etnews.com/20261022000158",
+      "source": "전자신문",
+      "source_body_digest": "a48dc9956256881cdf3204b3b91a45336b54cd7b1c5176e9f75e086d06f807ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc97e91fca3ddddb0ca319f84022961ec188e3ad5d924d65f96647b604f4d19",
+      "source_fact_keys": [
+        "source_fact:v1:1cf345ab6047a9614c8814d992b67245f7ec3ff4d7f014e59cf9db92583351a7",
+        "source_fact:v1:4bb31f31e77113517c0ce7940a085bc6152c7c77e02b0a11dc6ce21b1a6e33ac",
+        "source_fact:v1:5feed80df43069ddb48868594e5e9d03a1d32bf956a5f55dc6f1f6fdccc90f0c"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서",
+      "telegram_core_fact": "UAE 산업 발전에 따른 전력 수요 증가에 대비한 사업으로, 향후 AI 데이터센터 등 첨단 산업의 전력 공급을 뒷받침할 것으로 기대된다.",
+      "title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서"
     },
     "core:201c146fd945d62589925f3f": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
@@ -25389,6 +25435,24 @@
       "source_title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유",
       "telegram_core_fact": "엔비디아는 지난 8월 아폴로와 블랙록, 블랙스톤, 브룩필드, 골드만삭스, KKR 등 글로벌 금융사 6곳과 손잡고 AI 인프라 기업에 5000억달러(약 664조원) 이상을 공급할 수 있는 자금조달 플랫폼을 구축하겠다고 밝혔다. 인공지능(AI) 경쟁의 승패가 기술력뿐 아니라 자금 조달 능력에 달렸다는 분석이 나왔다.",
       "title": "\"AI 경쟁, 결국 돈 싸움\"…엔비디아가 664조원 조달 나선 이유"
+    },
+    "core:48cc2c2f98e1b5b8f3c329ca": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638647",
+      "source": "이투데이",
+      "source_body_digest": "cef40360244efbb8bb65d6169dc6bb3f23605248215ae8e6e101c583d38b1c9b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "국제금값, 인플레이션 우려 속 소폭 반등⋯0.2%↑",
+      "telegram_core_fact": "로이터통신에 따르면 이날 뉴욕상품거래소(COMEX)에서 12월물 금 선물은 전 거래일보다 0.2% 오른 온스당 4150달러에 거래를 마쳤다. 중동발 인플레이션 우려와 미국 연방준비제도(Fed·연준)의 금리 인상 가능성을 주시하는 가운데 최근 하락세에서 벗어나 소폭 반등했다.",
+      "title": "국제금값, 인플레이션 우려 속 소폭 반등⋯0.2%↑"
     },
     "core:48d0b94adba9e4f03329e2a6": {
       "first_seen_kst": "2026-10-10T02:34:57+09:00",
@@ -61615,6 +61679,26 @@
       "telegram_core_fact": "업계에 따르면 비전옥스는 비보의 서브 브랜드 아이쿠(iQOO)가 출시한 'iQOO 네오 12'에 인광보조 열활성화 감광형 형광(pTSF) 기술을 적용한 185㎐ OLED 디스플레이를 공급한다.",
       "title": "中 디스플레이 업계, 고주사율 스마트폰 OLED 공략 가속"
     },
+    "core:b24c96164f2334cfab62c8dd": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003835965",
+      "source": "뉴시스",
+      "source_body_digest": "2f5575b4c0b32aa640733cc5f1ff4e0f86a10a3e3bf99e7105c2f64249b48c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab66e0730b88bc5bfb723a0eb624d37dd7b41498514cae7da9195d4eb77889e6",
+      "source_fact_keys": [
+        "source_fact:v1:ef7bd94a4c254e6ce9e9db2863a26a66d2dc9f5148872511f5a95a5f083581e1"
+      ],
+      "source_published_kst": "2026-10-22T09:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "국토장관 \"월세 걱정 무겁게 듣고 있어…근본 해법은 공급\"",
+      "telegram_core_fact": "홍 장관은 \"근본 해법은 공급이며 전월세 가격 상승의 가장 큰 원인은 착공 부진에 따른 입주 물량 감소\"라고 진단했다. 홍지선 국토교통부 장관은 \"월세 부담에 대한 걱정을 무겁게 듣고 있으며 이를 덜 방안을 계속 찾겠다\"고 밝혔다.",
+      "title": "국토장관 \"월세 걱정 무겁게 듣고 있어…근본 해법은 공급\""
+    },
     "core:b2674c9bfbd1969c83332ca9": {
       "first_seen_kst": "2026-10-22T10:04:49+09:00",
       "lanes": {
@@ -68667,6 +68751,24 @@
       "source_title": "롯데칠성, 대전 자동화 물류센터 가동…전국 물류 거점으로 활용 | 연합뉴스",
       "telegram_core_fact": "롯데칠성음료[005300]는 대전광역시 대덕구에 자동화 물류센터를 준공하고 이달부터 본격 가동한다고 21일 밝혔다. 롯데칠성음료는 대전물류센터를 전국 40여개 물류센터에 제품을 공급하는 중앙 거점이자 충청권 물류 거점으로 활용할 계획이다.",
       "title": "롯데칠성, 대전 자동화 물류센터 가동…전국 물류 거점으로 활용 | 연합뉴스"
+    },
+    "core:c66065ce8fb6f4268cc49d84": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.dt.co.kr/article/12090599",
+      "source": "디지털타임스",
+      "source_body_digest": "2cfe1a157499dde1e28ed62b22ba090322b57b63e8de642bbdc7385486ad65f7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디 공항·유전 잇단 피격…호르무즈 유조선까지 불길",
+      "telegram_core_fact": "사우디아라비아의 국제공항과 핵심 석유 시설이 잇따라 공격받고 호르무즈 해협을 항해하던 유조선들까지 피격되면서 중동 전역의 군사적 긴장이 고조되고 있다.",
+      "title": "사우디 공항·유전 잇단 피격…호르무즈 유조선까지 불길"
     },
     "core:c67f667bed9f076f83db5704": {
       "first_seen_kst": "2026-10-17T03:02:04+09:00",
@@ -79672,6 +79774,39 @@
       "telegram_core_fact": "식약처에 따르면 2022년부터 올 6월 말까지 제약사가 공급중단(부족)을 보고한 의약품 1328개 중 국가필수의약품은 308개로 전체의 23.2%를 차지한다. 돌나라한농제약은 생산시설 노후화와 판매실적 저조 등을 이유로 식약처에 공급 중단을 보고했다.",
       "title": "\"응급실에도 없다\"…공급중단 필수약, 올해만 36개"
     },
+    "core:e7d90405d01a7adb90ee3ac2": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "core:e7f5dcb4edd23758894c52f1": {
       "first_seen_kst": "2026-10-11T08:42:16+09:00",
       "lanes": {
@@ -82283,6 +82418,28 @@
       "source_title": "LS일렉트릭 3분기 최대실적 경신…100분기 연속 흑자",
       "telegram_core_fact": "LS일렉트릭의 3분기 영업이익은 2,335억 원으로 전년비 131.7% 증가했고, 매출은 1조8,778억 원으로 54.4% 늘었습니다.",
       "title": "LS일렉트릭 3분기 최대실적 경신…100분기 연속 흑자"
+    },
+    "core:efbc0c1fe72f333c58f2a1a6": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836818",
+      "source": "뉴시스",
+      "source_body_digest": "016e6a3104b662723382a1020545ac2a2176ec3d86261c7f5ef6528b1db9c622",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:724edfde17a803f96ef4094cdd2f08513e5cedb79fa49873b548ce26ef18fa4e",
+      "source_fact_identity": "source_facts:v1:499bd6cd20e9a8f6d317417755b1fd7be29851dc22ba8f09efe4184fde9ea9a2",
+      "source_fact_keys": [
+        "source_fact:v1:070e829075ce7a23f912411e7f6bc6b724131e47fcf567296ed173af31e9bde9",
+        "source_fact:v1:411d76ff6711536a6032dcefb5f9eca6a28644e58cb457a91f4ad27fe4c5e544",
+        "source_fact:v1:a57b69cc88b61f04c4bca9497dff3c54c4d676c72c5e909bb26d4a01f87fecd7"
+      ],
+      "source_published_kst": "2026-10-22T13:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\"",
+      "telegram_core_fact": "LG디스플레이는 올해 3분기 연결 기준 매출 6조2770억원, 영업이익 2506억원의 실적을 기록했다고 22일 밝혔다.",
+      "title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\""
     },
     "core:efcb251aabaa7160cc873c66": {
       "first_seen_kst": "2026-10-13T18:41:17+09:00",
@@ -98973,6 +99130,28 @@
       "telegram_core_fact": "\"우크라이나 정권이나 유럽의 후원자들 어느 쪽도 협상을 할 준비가 돼 있지 않다는 것은 분명하다\"며 \"우리는 우크라이나가 현재 통제하는 지역에 남아 있는 사람들을 포함해 러시아인과 러시아 문화권 사람들의 권리, 그리고 러시아 역사의 일부가 될 그들의 권리를 위해 싸우고 있다\"고 했다.",
       "title": "러 외무 \"美·이란 갈등 해결 지원 가능…우크라, 협상 준비 안 돼\""
     },
+    "event:8aeceaa5ebdee3e4d93e16f4": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836818",
+      "source": "뉴시스",
+      "source_body_digest": "016e6a3104b662723382a1020545ac2a2176ec3d86261c7f5ef6528b1db9c622",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:724edfde17a803f96ef4094cdd2f08513e5cedb79fa49873b548ce26ef18fa4e",
+      "source_fact_identity": "source_facts:v1:499bd6cd20e9a8f6d317417755b1fd7be29851dc22ba8f09efe4184fde9ea9a2",
+      "source_fact_keys": [
+        "source_fact:v1:070e829075ce7a23f912411e7f6bc6b724131e47fcf567296ed173af31e9bde9",
+        "source_fact:v1:411d76ff6711536a6032dcefb5f9eca6a28644e58cb457a91f4ad27fe4c5e544",
+        "source_fact:v1:a57b69cc88b61f04c4bca9497dff3c54c4d676c72c5e909bb26d4a01f87fecd7"
+      ],
+      "source_published_kst": "2026-10-22T13:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\"",
+      "telegram_core_fact": "LG디스플레이는 올해 3분기 연결 기준 매출 6조2770억원, 영업이익 2506억원의 실적을 기록했다고 22일 밝혔다.",
+      "title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\""
+    },
     "event:8b6e886c14b1bee9c0e010ef": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
       "lanes": {
@@ -103309,6 +103488,24 @@
       "link": "https://www.fnnews.com/news/202609201704467601",
       "source": "파이낸셜뉴스",
       "title": "CXMT, 5세대 D램 공정 양산 돌입...韓 추격 가속"
+    },
+    "event:c268e53d46c135138b3a3036": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.dt.co.kr/article/12090599",
+      "source": "디지털타임스",
+      "source_body_digest": "2cfe1a157499dde1e28ed62b22ba090322b57b63e8de642bbdc7385486ad65f7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디 공항·유전 잇단 피격…호르무즈 유조선까지 불길",
+      "telegram_core_fact": "사우디아라비아의 국제공항과 핵심 석유 시설이 잇따라 공격받고 호르무즈 해협을 항해하던 유조선들까지 피격되면서 중동 전역의 군사적 긴장이 고조되고 있다.",
+      "title": "사우디 공항·유전 잇단 피격…호르무즈 유조선까지 불길"
     },
     "event:c26a94fd068aeb577cdb0146": {
       "first_seen_kst": "2026-10-16T22:28:52+09:00",
@@ -116143,6 +116340,39 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "fact:126283c01a97b4c81c9cd06e": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
     },
     "fact:1268dd848c62224da8bf8c44": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
@@ -147333,6 +147563,28 @@
       "source_published_kst": "2026-10-06T16:47+09:00",
       "title": "상장폐지 기준 강화에 법원 제동…거래소"
     },
+    "fact:69e82f76260f2002bb1e4494": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etnews.com/20261022000158",
+      "source": "전자신문",
+      "source_body_digest": "a48dc9956256881cdf3204b3b91a45336b54cd7b1c5176e9f75e086d06f807ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc97e91fca3ddddb0ca319f84022961ec188e3ad5d924d65f96647b604f4d19",
+      "source_fact_keys": [
+        "source_fact:v1:1cf345ab6047a9614c8814d992b67245f7ec3ff4d7f014e59cf9db92583351a7",
+        "source_fact:v1:4bb31f31e77113517c0ce7940a085bc6152c7c77e02b0a11dc6ce21b1a6e33ac",
+        "source_fact:v1:5feed80df43069ddb48868594e5e9d03a1d32bf956a5f55dc6f1f6fdccc90f0c"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서",
+      "telegram_core_fact": "UAE 산업 발전에 따른 전력 수요 증가에 대비한 사업으로, 향후 AI 데이터센터 등 첨단 산업의 전력 공급을 뒷받침할 것으로 기대된다.",
+      "title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서"
+    },
     "fact:6a0249201aeaf8ca4b13ca65": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
       "lanes": {
@@ -160259,6 +160511,30 @@
       "telegram_core_fact": "광주도시철도 2호선 전동차 및 검수설비 제작·구매 사업은 총 917억6600만원 규모로, ㈜우진산전이 전동차 33편성과 검수설비 88종을 제작·납품한다.",
       "title": "광주 도시철도 2호선 전동차 14일 첫 반입…내년부터 시운전 | 연합뉴스"
     },
+    "fact:8a040d9891bc5ee85cd815b9": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638799",
+      "source": "이투데이",
+      "source_body_digest": "09c16d8bff6c58441d7d56274538d3cb05d1732239eb271ec68983274ab00b2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c7a8a50b591d1737d44b4395feb51bcbbf8cd79e6ed1d072a56de24eaae66e",
+      "source_fact_keys": [
+        "source_fact:v1:0a2029986e33a2fa7b92573fe660e433bf3217af49da285f1784ddc07d1f5c05",
+        "source_fact:v1:0bcb3e49922545e640a6551abef6039928dec59b6ef0c58daebd15cbf0bebd52",
+        "source_fact:v1:5f69dd18d3c00b5c46080a44b9f5bdd1ac6e123f574fd9fc386ada20dd7af4c3",
+        "source_fact:v1:a2950216e8ef61b524e1f624cb37de16784abf414fef4ca69fd26fa08bde6534",
+        "source_fact:v1:c714c42ba4662c09dca74dd5d0933835faff6976483595b7400e80537c0d20dd"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색",
+      "telegram_core_fact": "이재용 삼성전자 회장이 아랍에미리트(UAE)를 찾아 에너지 인프라 사업을 점검하고 AI 데이터센터 등 미래 신사업 확대 방안을 논의했다. UAE의 산업 성장에 따른 전력 수요 증가에 대응하기 위한 사업으로 향후 AI 데이터센터 등 첨단산업에 필요한 전력 공급에도 기여할 전망이다.",
+      "title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색"
+    },
     "fact:8a088fdfe216fc8afd487cc6": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
       "lanes": {
@@ -169249,6 +169525,28 @@
       "source_title": "마스오토, 美 교통부와 자율주행 트럭 상용화 해법 논의",
       "telegram_core_fact": "자율주행 트럭 기업 마스오토가 오는 10월 19일부터 23일까지 강릉 올림픽파크에서 열리는 ‘2026 강릉 ITS 세계총회(ITS World Congress 2026)’에서 미국 교통부(USDOT), 텍사스주 교통부(TxDOT) 등 글로벌 교통 정책 관계자들과 자율주행 트럭 상용화 확대 방안을 논의한다고 밝혔다.",
       "title": "마스오토, 美 교통부와 자율주행 트럭 상용화 해법 논의"
+    },
+    "fact:a0834a423d994983f001019d": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836818",
+      "source": "뉴시스",
+      "source_body_digest": "016e6a3104b662723382a1020545ac2a2176ec3d86261c7f5ef6528b1db9c622",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:724edfde17a803f96ef4094cdd2f08513e5cedb79fa49873b548ce26ef18fa4e",
+      "source_fact_identity": "source_facts:v1:499bd6cd20e9a8f6d317417755b1fd7be29851dc22ba8f09efe4184fde9ea9a2",
+      "source_fact_keys": [
+        "source_fact:v1:070e829075ce7a23f912411e7f6bc6b724131e47fcf567296ed173af31e9bde9",
+        "source_fact:v1:411d76ff6711536a6032dcefb5f9eca6a28644e58cb457a91f4ad27fe4c5e544",
+        "source_fact:v1:a57b69cc88b61f04c4bca9497dff3c54c4d676c72c5e909bb26d4a01f87fecd7"
+      ],
+      "source_published_kst": "2026-10-22T13:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\"",
+      "telegram_core_fact": "LG디스플레이는 올해 3분기 연결 기준 매출 6조2770억원, 영업이익 2506억원의 실적을 기록했다고 22일 밝혔다.",
+      "title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\""
     },
     "fact:a09650b259d494e21ef6f6ce": {
       "first_seen_kst": "2026-10-19T15:46:20+09:00",
@@ -180400,6 +180698,26 @@
       "source_title": "‘푸틴과 경유거래’에 분노한 젤렌스키, ‘트럼프 직격’에 유럽 난감…“자제해달라”",
       "telegram_core_fact": "트럼프 정부 출범 이후 미국은 우크라이나에 재정 지원을 더 이상 하지 않고, 우크라이나와 유럽 동맹국들이 비용을 부담하는 무기만 공급하고 있지만, 미국의 정보와 무기는 우크라이나의 전쟁 수행 역량의 핵심 역할을 하고 있기에 자칫 우크라이나와 미국의 안보 협력 관계가 중단된다면 유럽으로서는 대체할 수 있는 수단이 없다.",
       "title": "‘푸틴과 경유거래’에 분노한 젤렌스키, ‘트럼프 직격’에 유럽 난감…“자제해달라”"
+    },
+    "fact:badda5cee7a755249f1dac55": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003835965",
+      "source": "뉴시스",
+      "source_body_digest": "2f5575b4c0b32aa640733cc5f1ff4e0f86a10a3e3bf99e7105c2f64249b48c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab66e0730b88bc5bfb723a0eb624d37dd7b41498514cae7da9195d4eb77889e6",
+      "source_fact_keys": [
+        "source_fact:v1:ef7bd94a4c254e6ce9e9db2863a26a66d2dc9f5148872511f5a95a5f083581e1"
+      ],
+      "source_published_kst": "2026-10-22T09:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "국토장관 \"월세 걱정 무겁게 듣고 있어…근본 해법은 공급\"",
+      "telegram_core_fact": "홍 장관은 \"근본 해법은 공급이며 전월세 가격 상승의 가장 큰 원인은 착공 부진에 따른 입주 물량 감소\"라고 진단했다. 홍지선 국토교통부 장관은 \"월세 부담에 대한 걱정을 무겁게 듣고 있으며 이를 덜 방안을 계속 찾겠다\"고 밝혔다.",
+      "title": "국토장관 \"월세 걱정 무겁게 듣고 있어…근본 해법은 공급\""
     },
     "fact:bb007d80e3578ca26646443f": {
       "first_seen_kst": "2026-10-15T13:08:36+09:00",
@@ -223764,6 +224082,28 @@
       "telegram_core_fact": "한국해양과학기술원(KIOST)은 국가데이터처 자료를 분석한 결과, 제주 연근해 해조류 생산량이 2010년 5155t에서 지난해 154t으로 15년 만에 97% 감소했다고 8일 밝혔다. 제주 연안의 바다숲을 이루는 해조류가 빠르게 줄어들면서 연안 생태계가 재편되고 있다는 분석이 나왔다.",
       "title": "제주 연안 해조류 15년 새 97% 감소…\"생태계 재편 중\""
     },
+    "link:1fc7fdda465f23bad373b1c0": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etnews.com/20261022000158",
+      "source": "전자신문",
+      "source_body_digest": "a48dc9956256881cdf3204b3b91a45336b54cd7b1c5176e9f75e086d06f807ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc97e91fca3ddddb0ca319f84022961ec188e3ad5d924d65f96647b604f4d19",
+      "source_fact_keys": [
+        "source_fact:v1:1cf345ab6047a9614c8814d992b67245f7ec3ff4d7f014e59cf9db92583351a7",
+        "source_fact:v1:4bb31f31e77113517c0ce7940a085bc6152c7c77e02b0a11dc6ce21b1a6e33ac",
+        "source_fact:v1:5feed80df43069ddb48868594e5e9d03a1d32bf956a5f55dc6f1f6fdccc90f0c"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서",
+      "telegram_core_fact": "UAE 산업 발전에 따른 전력 수요 증가에 대비한 사업으로, 향후 AI 데이터센터 등 첨단 산업의 전력 공급을 뒷받침할 것으로 기대된다.",
+      "title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서"
+    },
     "link:1fd54fddef33012cfa7cd3a9": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -234558,6 +234898,26 @@
       "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 , 이 기간 수출액(통관기준 잠정)은 261억 400만달러로 전년비 102.0% 증가했다.",
       "title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대"
     },
+    "link:33ee743467e802c6dd75fda7": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003835965",
+      "source": "뉴시스",
+      "source_body_digest": "2f5575b4c0b32aa640733cc5f1ff4e0f86a10a3e3bf99e7105c2f64249b48c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab66e0730b88bc5bfb723a0eb624d37dd7b41498514cae7da9195d4eb77889e6",
+      "source_fact_keys": [
+        "source_fact:v1:ef7bd94a4c254e6ce9e9db2863a26a66d2dc9f5148872511f5a95a5f083581e1"
+      ],
+      "source_published_kst": "2026-10-22T09:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "국토장관 \"월세 걱정 무겁게 듣고 있어…근본 해법은 공급\"",
+      "telegram_core_fact": "홍 장관은 \"근본 해법은 공급이며 전월세 가격 상승의 가장 큰 원인은 착공 부진에 따른 입주 물량 감소\"라고 진단했다. 홍지선 국토교통부 장관은 \"월세 부담에 대한 걱정을 무겁게 듣고 있으며 이를 덜 방안을 계속 찾겠다\"고 밝혔다.",
+      "title": "국토장관 \"월세 걱정 무겁게 듣고 있어…근본 해법은 공급\""
+    },
     "link:34019ea656a947385e61a257": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
       "lanes": {
@@ -235454,6 +235814,28 @@
       ],
       "source_published_kst": "2026-10-07T15:28+09:00",
       "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
+    },
+    "link:35ddb6caa2ef6e7487f71cd6": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836818",
+      "source": "뉴시스",
+      "source_body_digest": "016e6a3104b662723382a1020545ac2a2176ec3d86261c7f5ef6528b1db9c622",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:724edfde17a803f96ef4094cdd2f08513e5cedb79fa49873b548ce26ef18fa4e",
+      "source_fact_identity": "source_facts:v1:499bd6cd20e9a8f6d317417755b1fd7be29851dc22ba8f09efe4184fde9ea9a2",
+      "source_fact_keys": [
+        "source_fact:v1:070e829075ce7a23f912411e7f6bc6b724131e47fcf567296ed173af31e9bde9",
+        "source_fact:v1:411d76ff6711536a6032dcefb5f9eca6a28644e58cb457a91f4ad27fe4c5e544",
+        "source_fact:v1:a57b69cc88b61f04c4bca9497dff3c54c4d676c72c5e909bb26d4a01f87fecd7"
+      ],
+      "source_published_kst": "2026-10-22T13:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\"",
+      "telegram_core_fact": "LG디스플레이는 올해 3분기 연결 기준 매출 6조2770억원, 영업이익 2506억원의 실적을 기록했다고 22일 밝혔다.",
+      "title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\""
     },
     "link:35ef4d70412d678859700083": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
@@ -253552,6 +253934,24 @@
       "source_title": "포르쉐, 새 중장기 전략 발표…9000명 감원·사업구조 재편",
       "telegram_core_fact": "포르쉐가 9000개 일자리를 감축하고 일부 사업을 정리하는 내용의 새로운 중장기 전략을 내놨다.",
       "title": "포르쉐, 새 중장기 전략 발표…9000명 감원·사업구조 재편"
+    },
+    "link:5a14f0dc94e98b87e363d091": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638647",
+      "source": "이투데이",
+      "source_body_digest": "cef40360244efbb8bb65d6169dc6bb3f23605248215ae8e6e101c583d38b1c9b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "국제금값, 인플레이션 우려 속 소폭 반등⋯0.2%↑",
+      "telegram_core_fact": "로이터통신에 따르면 이날 뉴욕상품거래소(COMEX)에서 12월물 금 선물은 전 거래일보다 0.2% 오른 온스당 4150달러에 거래를 마쳤다. 중동발 인플레이션 우려와 미국 연방준비제도(Fed·연준)의 금리 인상 가능성을 주시하는 가운데 최근 하락세에서 벗어나 소폭 반등했다.",
+      "title": "국제금값, 인플레이션 우려 속 소폭 반등⋯0.2%↑"
     },
     "link:5a17a8c130acccd0d0b1b1c0": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -274336,6 +274736,30 @@
       "source_published_kst": "2026-10-06T09:54+09:00",
       "title": "올해 청약 경쟁률 작년 절반으로 '뚝'…서울·3기신도시는 100대1"
     },
+    "link:842366d6c0bc49cb7304082d": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638799",
+      "source": "이투데이",
+      "source_body_digest": "09c16d8bff6c58441d7d56274538d3cb05d1732239eb271ec68983274ab00b2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c7a8a50b591d1737d44b4395feb51bcbbf8cd79e6ed1d072a56de24eaae66e",
+      "source_fact_keys": [
+        "source_fact:v1:0a2029986e33a2fa7b92573fe660e433bf3217af49da285f1784ddc07d1f5c05",
+        "source_fact:v1:0bcb3e49922545e640a6551abef6039928dec59b6ef0c58daebd15cbf0bebd52",
+        "source_fact:v1:5f69dd18d3c00b5c46080a44b9f5bdd1ac6e123f574fd9fc386ada20dd7af4c3",
+        "source_fact:v1:a2950216e8ef61b524e1f624cb37de16784abf414fef4ca69fd26fa08bde6534",
+        "source_fact:v1:c714c42ba4662c09dca74dd5d0933835faff6976483595b7400e80537c0d20dd"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색",
+      "telegram_core_fact": "이재용 삼성전자 회장이 아랍에미리트(UAE)를 찾아 에너지 인프라 사업을 점검하고 AI 데이터센터 등 미래 신사업 확대 방안을 논의했다. UAE의 산업 성장에 따른 전력 수요 증가에 대응하기 위한 사업으로 향후 AI 데이터센터 등 첨단산업에 필요한 전력 공급에도 기여할 전망이다.",
+      "title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색"
+    },
     "link:842b312f1e8078a5481f15a1": {
       "first_seen_kst": "2026-10-18T06:15:10+09:00",
       "lanes": {
@@ -279647,6 +280071,39 @@
       "source_title": "폭스바겐그룹, 3분기 누적 600만대 인도…유럽 대기 물량 10대 중 4대 전기차",
       "telegram_core_fact": "폭스바겐그룹은 올해 1~9월 글로벌 인도량 601만대를 기록했다고 13일 밝혔다. 글로벌 기준으로는 3분기까지의 누적 인도량이 전년비 약 9% 감소했다.",
       "title": "폭스바겐그룹, 3분기 누적 600만대 인도…유럽 대기 물량 10대 중 4대 전기차"
+    },
+    "link:8fbbd9abd144dfcd2ecb8692": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
     },
     "link:8fbe2cdc242a0d1483b6b9fc": {
       "first_seen_kst": "2026-10-08T19:27:03+09:00",
@@ -319916,6 +320373,24 @@
       "telegram_core_fact": "환경단체는 메탄 규제를 연기해도 유럽 소비자가 직면한 급등한 에너지 가격 인하에 거의 도움이 되지 않을 것이라고 경고하며, EU가 에너지 안보, 경쟁력을 구실로 친환경 정책에서 후퇴하고 있다고 반발했다.",
       "title": "'에너지 위기' EU, 메탄 배출 규정 시행 1년 연기 제안 | 연합뉴스"
     },
+    "link:dfd6f7cd437157b2fd78ef3e": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.dt.co.kr/article/12090599",
+      "source": "디지털타임스",
+      "source_body_digest": "2cfe1a157499dde1e28ed62b22ba090322b57b63e8de642bbdc7385486ad65f7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디 공항·유전 잇단 피격…호르무즈 유조선까지 불길",
+      "telegram_core_fact": "사우디아라비아의 국제공항과 핵심 석유 시설이 잇따라 공격받고 호르무즈 해협을 항해하던 유조선들까지 피격되면서 중동 전역의 군사적 긴장이 고조되고 있다.",
+      "title": "사우디 공항·유전 잇단 피격…호르무즈 유조선까지 불길"
+    },
     "link:dfdf3755acbf403f6eda73af": {
       "first_seen_kst": "2026-10-21T04:09:57+09:00",
       "lanes": {
@@ -340469,6 +340944,39 @@
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
     },
+    "original:09c2efe5a07836963d161394": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "original:09c874431453e8725fa25ff1": {
       "first_seen_kst": "2026-10-16T19:48:28+09:00",
       "lanes": {
@@ -353534,6 +354042,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T07:00+09:00",
       "title": "美 기관 코인 투자 문턱 낮아진다…SEC, '셀프 커스터디' 허용 추진"
+    },
+    "original:24807bfe008ab55eb126a2a3": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836818",
+      "source": "뉴시스",
+      "source_body_digest": "016e6a3104b662723382a1020545ac2a2176ec3d86261c7f5ef6528b1db9c622",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:724edfde17a803f96ef4094cdd2f08513e5cedb79fa49873b548ce26ef18fa4e",
+      "source_fact_identity": "source_facts:v1:499bd6cd20e9a8f6d317417755b1fd7be29851dc22ba8f09efe4184fde9ea9a2",
+      "source_fact_keys": [
+        "source_fact:v1:070e829075ce7a23f912411e7f6bc6b724131e47fcf567296ed173af31e9bde9",
+        "source_fact:v1:411d76ff6711536a6032dcefb5f9eca6a28644e58cb457a91f4ad27fe4c5e544",
+        "source_fact:v1:a57b69cc88b61f04c4bca9497dff3c54c4d676c72c5e909bb26d4a01f87fecd7"
+      ],
+      "source_published_kst": "2026-10-22T13:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\"",
+      "telegram_core_fact": "LG디스플레이는 올해 3분기 연결 기준 매출 6조2770억원, 영업이익 2506억원의 실적을 기록했다고 22일 밝혔다.",
+      "title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\""
     },
     "original:248971a7623f5a7099f0c990": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -395292,6 +395822,24 @@
       "source_published_kst": "2026-10-07T08:29+09:00",
       "title": "SK證 “KB·신한·하나금융, 주주환원 50%대…금리 상승·환율 하락 수혜”"
     },
+    "original:78b63fa5d4dd5319a5f94566": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.dt.co.kr/article/12090599",
+      "source": "디지털타임스",
+      "source_body_digest": "2cfe1a157499dde1e28ed62b22ba090322b57b63e8de642bbdc7385486ad65f7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디 공항·유전 잇단 피격…호르무즈 유조선까지 불길",
+      "telegram_core_fact": "사우디아라비아의 국제공항과 핵심 석유 시설이 잇따라 공격받고 호르무즈 해협을 항해하던 유조선들까지 피격되면서 중동 전역의 군사적 긴장이 고조되고 있다.",
+      "title": "사우디 공항·유전 잇단 피격…호르무즈 유조선까지 불길"
+    },
     "original:78be7c875e45c8eedbf3d5ad": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -404339,6 +404887,26 @@
       "source_title": "델 테크놀로지스, 산업 현장용 러기드 AI 노트북 2종 공개",
       "telegram_core_fact": "군·경찰과 소방, 정유·석유화학, 제조, 운송 등 산업 현장에서 AI 기반 업무를 확대하고 데이터 분석 및 설비 관리의 효율성을 높이려는 수요에 대응하기 위한 제품이다.",
       "title": "델 테크놀로지스, 산업 현장용 러기드 AI 노트북 2종 공개"
+    },
+    "original:8acb6be44bdbb83142241def": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003835965",
+      "source": "뉴시스",
+      "source_body_digest": "2f5575b4c0b32aa640733cc5f1ff4e0f86a10a3e3bf99e7105c2f64249b48c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab66e0730b88bc5bfb723a0eb624d37dd7b41498514cae7da9195d4eb77889e6",
+      "source_fact_keys": [
+        "source_fact:v1:ef7bd94a4c254e6ce9e9db2863a26a66d2dc9f5148872511f5a95a5f083581e1"
+      ],
+      "source_published_kst": "2026-10-22T09:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "국토장관 \"월세 걱정 무겁게 듣고 있어…근본 해법은 공급\"",
+      "telegram_core_fact": "홍 장관은 \"근본 해법은 공급이며 전월세 가격 상승의 가장 큰 원인은 착공 부진에 따른 입주 물량 감소\"라고 진단했다. 홍지선 국토교통부 장관은 \"월세 부담에 대한 걱정을 무겁게 듣고 있으며 이를 덜 방안을 계속 찾겠다\"고 밝혔다.",
+      "title": "국토장관 \"월세 걱정 무겁게 듣고 있어…근본 해법은 공급\""
     },
     "original:8acd518fd39ffb9f78edd125": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
@@ -415160,6 +415728,30 @@
       "source_title": "[ET특징주]한화생명, 3분기 적자 전망에 하락세",
       "telegram_core_fact": "한화생명이 올해 3분기 적자 전환 전망에 하락세다. 설용진 iM증권 연구원은 한화생명이 올해 3분기 755억원의 순손실을 기록해 지난해 같은 기간 흑자에서 적자로 돌아설 것으로 내다봤다.",
       "title": "[ET특징주]한화생명, 3분기 적자 전망에 하락세"
+    },
+    "original:9feac4eaf7f2c6df8d9ea197": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638799",
+      "source": "이투데이",
+      "source_body_digest": "09c16d8bff6c58441d7d56274538d3cb05d1732239eb271ec68983274ab00b2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c7a8a50b591d1737d44b4395feb51bcbbf8cd79e6ed1d072a56de24eaae66e",
+      "source_fact_keys": [
+        "source_fact:v1:0a2029986e33a2fa7b92573fe660e433bf3217af49da285f1784ddc07d1f5c05",
+        "source_fact:v1:0bcb3e49922545e640a6551abef6039928dec59b6ef0c58daebd15cbf0bebd52",
+        "source_fact:v1:5f69dd18d3c00b5c46080a44b9f5bdd1ac6e123f574fd9fc386ada20dd7af4c3",
+        "source_fact:v1:a2950216e8ef61b524e1f624cb37de16784abf414fef4ca69fd26fa08bde6534",
+        "source_fact:v1:c714c42ba4662c09dca74dd5d0933835faff6976483595b7400e80537c0d20dd"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색",
+      "telegram_core_fact": "이재용 삼성전자 회장이 아랍에미리트(UAE)를 찾아 에너지 인프라 사업을 점검하고 AI 데이터센터 등 미래 신사업 확대 방안을 논의했다. UAE의 산업 성장에 따른 전력 수요 증가에 대응하기 위한 사업으로 향후 AI 데이터센터 등 첨단산업에 필요한 전력 공급에도 기여할 전망이다.",
+      "title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색"
     },
     "original:9feb5b4c2db38f536483a421": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
@@ -428576,6 +429168,24 @@
       "source_title": "외국인·기관 순매도 속 장초반 변동성",
       "telegram_core_fact": "외국인과 기관은 이미 장 초반 각각 6422억원, 3027억원을 순매도했다.",
       "title": "외국인·기관 순매도 속 장초반 변동성"
+    },
+    "original:bbfd1395723b09d5be5d11c0": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638647",
+      "source": "이투데이",
+      "source_body_digest": "cef40360244efbb8bb65d6169dc6bb3f23605248215ae8e6e101c583d38b1c9b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "국제금값, 인플레이션 우려 속 소폭 반등⋯0.2%↑",
+      "telegram_core_fact": "로이터통신에 따르면 이날 뉴욕상품거래소(COMEX)에서 12월물 금 선물은 전 거래일보다 0.2% 오른 온스당 4150달러에 거래를 마쳤다. 중동발 인플레이션 우려와 미국 연방준비제도(Fed·연준)의 금리 인상 가능성을 주시하는 가운데 최근 하락세에서 벗어나 소폭 반등했다.",
+      "title": "국제금값, 인플레이션 우려 속 소폭 반등⋯0.2%↑"
     },
     "original:bbfd1a52d07c86aa948ce6a5": {
       "first_seen_kst": "2026-10-05T14:51:16+09:00",
@@ -455304,6 +455914,28 @@
       "telegram_core_fact": "트루이스트는 “큐니티의 AI 칩 제조 및 패키징에 필수적인 다양한 소재들은 시장 평균을 웃도는 지속 가능한 성장을 뒷받침한다”면서 “첨단 패키징 및 데이터센터 연계 제품군의 강력한 수요와 함께 첨단 노드 응용 분야에서의 소재 집약도 증가로부터 수혜를 받고 있다”고 설명했다.",
       "title": "큐니티, AI 칩 제조 필수 소재로 성장 지속…'매수'-트루이스트"
     },
+    "original:f45b8fa68cb88212d078be8a": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etnews.com/20261022000158",
+      "source": "전자신문",
+      "source_body_digest": "a48dc9956256881cdf3204b3b91a45336b54cd7b1c5176e9f75e086d06f807ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc97e91fca3ddddb0ca319f84022961ec188e3ad5d924d65f96647b604f4d19",
+      "source_fact_keys": [
+        "source_fact:v1:1cf345ab6047a9614c8814d992b67245f7ec3ff4d7f014e59cf9db92583351a7",
+        "source_fact:v1:4bb31f31e77113517c0ce7940a085bc6152c7c77e02b0a11dc6ce21b1a6e33ac",
+        "source_fact:v1:5feed80df43069ddb48868594e5e9d03a1d32bf956a5f55dc6f1f6fdccc90f0c"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서",
+      "telegram_core_fact": "UAE 산업 발전에 따른 전력 수요 증가에 대비한 사업으로, 향후 AI 데이터센터 등 첨단 산업의 전력 공급을 뒷받침할 것으로 기대된다.",
+      "title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서"
+    },
     "original:f460498acdfc1a9237ef5467": {
       "first_seen_kst": "2026-09-21T04:13:31+09:00",
       "lanes": {
@@ -475304,6 +475936,39 @@
       "source_title": "중국 D램 생산능력 내년 31% 급증…메모리 가격 주도권 흔드나 [메모리 패권, 가격전쟁의 서막]",
       "telegram_core_fact": "시장조사업체 카운터포인트리서치와 트렌드포스에 따르면 CXMT의 월간 D램 웨이퍼 생산능력은 현재 약 32만 장에서 내년 42만 장으로 확대될 전망이다.",
       "title": "중국 D램 생산능력 내년 31% 급증…메모리 가격 주도권 흔드나 [메모리 패권, 가격전쟁의 서막]"
+    },
+    "source_fact:073570b8d22997da4f2c843c": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
     },
     "source_fact:073595d1f10eab0f3f99db88": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -502490,6 +503155,39 @@
       "telegram_core_fact": "경남도는 20일 서울 웨스틴조선호텔에서 개최한 '2026 경상남도 투자유치 설명회'를 통해 삼성중공업, 두산에너빌리티 등 17개사와 단일 행사 역대 최대 규모인 2조6430억원대 투자유치 협약을 체결했다고 밝혔다.",
       "title": "경남도, 서울서 17개사와 '2조6430억원 투자 유치 협약'"
     },
+    "source_fact:14e33d7b87b5721d1f905d18": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "source_fact:14e57c030ae4643768013462": {
       "first_seen_kst": "2026-10-21T17:12:46+09:00",
       "lanes": {
@@ -517157,6 +517855,30 @@
       "source_title": "CJ대한통운 건설부문, KT클라우드 안산 AIDC 공사 수주",
       "telegram_core_fact": "CJ대한통운 건설부문이 KT클라우드의 안산 AI 데이터센터 신축공사를 수주하며 데이터센터 시공 사업 확대에 나선다.",
       "title": "CJ대한통운 건설부문, KT클라우드 안산 AIDC 공사 수주"
+    },
+    "source_fact:1c39f2d666fc9838e0082269": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638799",
+      "source": "이투데이",
+      "source_body_digest": "09c16d8bff6c58441d7d56274538d3cb05d1732239eb271ec68983274ab00b2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c7a8a50b591d1737d44b4395feb51bcbbf8cd79e6ed1d072a56de24eaae66e",
+      "source_fact_keys": [
+        "source_fact:v1:0a2029986e33a2fa7b92573fe660e433bf3217af49da285f1784ddc07d1f5c05",
+        "source_fact:v1:0bcb3e49922545e640a6551abef6039928dec59b6ef0c58daebd15cbf0bebd52",
+        "source_fact:v1:5f69dd18d3c00b5c46080a44b9f5bdd1ac6e123f574fd9fc386ada20dd7af4c3",
+        "source_fact:v1:a2950216e8ef61b524e1f624cb37de16784abf414fef4ca69fd26fa08bde6534",
+        "source_fact:v1:c714c42ba4662c09dca74dd5d0933835faff6976483595b7400e80537c0d20dd"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색",
+      "telegram_core_fact": "이재용 삼성전자 회장이 아랍에미리트(UAE)를 찾아 에너지 인프라 사업을 점검하고 AI 데이터센터 등 미래 신사업 확대 방안을 논의했다. UAE의 산업 성장에 따른 전력 수요 증가에 대응하기 위한 사업으로 향후 AI 데이터센터 등 첨단산업에 필요한 전력 공급에도 기여할 전망이다.",
+      "title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색"
     },
     "source_fact:1c3ad0faea430870a97ff6ff": {
       "first_seen_kst": "2026-10-19T10:51:05+09:00",
@@ -531870,6 +532592,28 @@
       "telegram_core_fact": "한세모빌리티는 지난 13일(현지시간) 우즈베키스탄 페르가나에서 100% 출자 자회사인 '한세모빌리티 투란'의 공장 준공식을 개최했다고 15일 밝혔다. 한세예스24그룹의 자동차 부품 계열사 한세모빌리티가 우즈베키스탄에 자동차 제동·조향 부품 생산공장을 준공하고 중앙아시아 시장 공략을 본격화한다.",
       "title": "한세모빌리티, 우즈베키스탄서 車부품공장 준공…중앙아 공략 | 연합뉴스"
     },
+    "source_fact:23560358585287f733db24e0": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etnews.com/20261022000158",
+      "source": "전자신문",
+      "source_body_digest": "a48dc9956256881cdf3204b3b91a45336b54cd7b1c5176e9f75e086d06f807ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc97e91fca3ddddb0ca319f84022961ec188e3ad5d924d65f96647b604f4d19",
+      "source_fact_keys": [
+        "source_fact:v1:1cf345ab6047a9614c8814d992b67245f7ec3ff4d7f014e59cf9db92583351a7",
+        "source_fact:v1:4bb31f31e77113517c0ce7940a085bc6152c7c77e02b0a11dc6ce21b1a6e33ac",
+        "source_fact:v1:5feed80df43069ddb48868594e5e9d03a1d32bf956a5f55dc6f1f6fdccc90f0c"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서",
+      "telegram_core_fact": "UAE 산업 발전에 따른 전력 수요 증가에 대비한 사업으로, 향후 AI 데이터센터 등 첨단 산업의 전력 공급을 뒷받침할 것으로 기대된다.",
+      "title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서"
+    },
     "source_fact:23578fbf17ef6ecc2e892c62": {
       "first_seen_kst": "2026-10-17T11:37:20+09:00",
       "lanes": {
@@ -541474,6 +542218,39 @@
       ],
       "source_published_kst": "2026-10-06T13:05+09:00",
       "title": "\"양자 산업 키우려면 민관협력 필수…韓 강점 제조업에 집중해야\""
+    },
+    "source_fact:27c88f28ba2ab7633edabcea": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
     },
     "source_fact:27cfd10c82ba4884b3a19e02": {
       "first_seen_kst": "2026-10-14T20:10:22+09:00",
@@ -597479,6 +598256,39 @@
       "telegram_core_fact": "그는 \"현대차그룹은 2032년까지 인도에 155억 달러(약 20조원 이상)를 투자해 차세대 제조·혁신·연구개발(R&D)을 발전시키고 인도 정부와의 협력을 강화하기 위한 전담 조직을 설립할 것\"이라고 말했다.",
       "title": "정의선 현대차그룹 회장 \"인도에 강한 확신…생산 넘어 설계·혁신까지 나아갈 것\" [푸네 新공장 준공]"
     },
+    "source_fact:43373f56ecb1dad542a3a5b3": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "source_fact:433de656bab94446d4f01960": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
@@ -625214,6 +626024,28 @@
       "source_title": "키움증권 “한화오션 주식 5092억원어치 추가취득…지분율 2.73%”",
       "telegram_core_fact": "한화시스템이 보유 지분 전량을 매각하기로 한 가운데 키움증권은 주가수익스왑(PRS) 계약을 통해 해당 주식을 취득할 예정이다.",
       "title": "키움증권 “한화오션 주식 5092억원어치 추가취득…지분율 2.73%”"
+    },
+    "source_fact:50852ffd2d32d341f3378deb": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836818",
+      "source": "뉴시스",
+      "source_body_digest": "016e6a3104b662723382a1020545ac2a2176ec3d86261c7f5ef6528b1db9c622",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:724edfde17a803f96ef4094cdd2f08513e5cedb79fa49873b548ce26ef18fa4e",
+      "source_fact_identity": "source_facts:v1:499bd6cd20e9a8f6d317417755b1fd7be29851dc22ba8f09efe4184fde9ea9a2",
+      "source_fact_keys": [
+        "source_fact:v1:070e829075ce7a23f912411e7f6bc6b724131e47fcf567296ed173af31e9bde9",
+        "source_fact:v1:411d76ff6711536a6032dcefb5f9eca6a28644e58cb457a91f4ad27fe4c5e544",
+        "source_fact:v1:a57b69cc88b61f04c4bca9497dff3c54c4d676c72c5e909bb26d4a01f87fecd7"
+      ],
+      "source_published_kst": "2026-10-22T13:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\"",
+      "telegram_core_fact": "LG디스플레이는 올해 3분기 연결 기준 매출 6조2770억원, 영업이익 2506억원의 실적을 기록했다고 22일 밝혔다.",
+      "title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\""
     },
     "source_fact:5088782051da8f49d01ed03a": {
       "first_seen_kst": "2026-10-19T09:33:44+09:00",
@@ -659275,6 +660107,39 @@
       "telegram_core_fact": "필라델피아 반도체 지수는 8거래일 연속 하락세를 이어가며 글로벌 금융위기 당시인 2008년 이후 최장기 연속 하락을 기록했다. 인공지능(AI) 인프라 투자 기업의 부채 우려와 유가 급등 여파로 16일(현지시간) 미국 뉴욕 증시의 주요 지수가 일제히 하락했다.",
       "title": "‘AI발 먹구름’ 美 반도체지수, 금융위기 이후 최장 하락"
     },
+    "source_fact:60936d8cf22370a89394ca69": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "source_fact:60996949d4d453931f814bf3": {
       "first_seen_kst": "2026-10-21T12:30:59+09:00",
       "lanes": {
@@ -662788,6 +663653,28 @@
       ],
       "source_published_kst": "2026-10-07T08:17+09:00",
       "title": "지아이이노베이션 GI-301, 일본 임상 2상 진입 … 10월 첫 환자 투약"
+    },
+    "source_fact:62972696a54aaca1f8c40e9d": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836818",
+      "source": "뉴시스",
+      "source_body_digest": "016e6a3104b662723382a1020545ac2a2176ec3d86261c7f5ef6528b1db9c622",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:724edfde17a803f96ef4094cdd2f08513e5cedb79fa49873b548ce26ef18fa4e",
+      "source_fact_identity": "source_facts:v1:499bd6cd20e9a8f6d317417755b1fd7be29851dc22ba8f09efe4184fde9ea9a2",
+      "source_fact_keys": [
+        "source_fact:v1:070e829075ce7a23f912411e7f6bc6b724131e47fcf567296ed173af31e9bde9",
+        "source_fact:v1:411d76ff6711536a6032dcefb5f9eca6a28644e58cb457a91f4ad27fe4c5e544",
+        "source_fact:v1:a57b69cc88b61f04c4bca9497dff3c54c4d676c72c5e909bb26d4a01f87fecd7"
+      ],
+      "source_published_kst": "2026-10-22T13:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\"",
+      "telegram_core_fact": "LG디스플레이는 올해 3분기 연결 기준 매출 6조2770억원, 영업이익 2506억원의 실적을 기록했다고 22일 밝혔다.",
+      "title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\""
     },
     "source_fact:629ae507842666a537a2a096": {
       "first_seen_kst": "2026-10-14T18:43:50+09:00",
@@ -667582,6 +668469,39 @@
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약"
     },
+    "source_fact:64db1099e7fbb5310db8200c": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "source_fact:64dcb16924646837970d8008": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
       "lanes": {
@@ -670375,6 +671295,39 @@
       "telegram_core_fact": "한국항공우주연구원이 전력 공급 부족 및 전기세 부담으로 밤과 주말에 주로 시험해 온 것으로 드러났다.",
       "title": "한준호 의원 \"항우연 대형시설 시험 주로 주말·밤에…전기 때문\""
     },
+    "source_fact:665ad768389d27672540507a": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "source_fact:665d55aaca459c962f621284": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -671294,6 +672247,39 @@
       "source_title": "리밸런싱 유예하더니…국민연금, 급락장서 대량 매도 | 연합뉴스",
       "telegram_core_fact": "7월부터 리밸런싱이 재개되면서 국민연금은 코스피가 고점 대비 20%에서 30% 낮은 수준에서 거래되는 시점에 오히려 순매도에 나섰습니다. 지난 8월 이후 연기금 등이 유가증권시장에서 순매도한 규모는 약 1조 3천억원에 달합니다.",
       "title": "리밸런싱 유예하더니…국민연금, 급락장서 대량 매도 | 연합뉴스"
+    },
+    "source_fact:66d38e0207eaaa9d48e3b5ed": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
     },
     "source_fact:66d5094bfca83422512eb572": {
       "first_seen_kst": "2026-10-11T06:07:21+09:00",
@@ -713824,6 +714810,30 @@
       "source_published_kst": "2026-10-07T16:59+09:00",
       "title": "삼성전자 실적발표 '운명의 8일'…“트리플 악재” 골드만삭스의 찬물?"
     },
+    "source_fact:7b982262aff39f55eaa191f8": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638799",
+      "source": "이투데이",
+      "source_body_digest": "09c16d8bff6c58441d7d56274538d3cb05d1732239eb271ec68983274ab00b2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c7a8a50b591d1737d44b4395feb51bcbbf8cd79e6ed1d072a56de24eaae66e",
+      "source_fact_keys": [
+        "source_fact:v1:0a2029986e33a2fa7b92573fe660e433bf3217af49da285f1784ddc07d1f5c05",
+        "source_fact:v1:0bcb3e49922545e640a6551abef6039928dec59b6ef0c58daebd15cbf0bebd52",
+        "source_fact:v1:5f69dd18d3c00b5c46080a44b9f5bdd1ac6e123f574fd9fc386ada20dd7af4c3",
+        "source_fact:v1:a2950216e8ef61b524e1f624cb37de16784abf414fef4ca69fd26fa08bde6534",
+        "source_fact:v1:c714c42ba4662c09dca74dd5d0933835faff6976483595b7400e80537c0d20dd"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색",
+      "telegram_core_fact": "이재용 삼성전자 회장이 아랍에미리트(UAE)를 찾아 에너지 인프라 사업을 점검하고 AI 데이터센터 등 미래 신사업 확대 방안을 논의했다. UAE의 산업 성장에 따른 전력 수요 증가에 대응하기 위한 사업으로 향후 AI 데이터센터 등 첨단산업에 필요한 전력 공급에도 기여할 전망이다.",
+      "title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색"
+    },
     "source_fact:7b9bf6edd39ae242652d5fdd": {
       "first_seen_kst": "2026-10-21T18:05:45+09:00",
       "lanes": {
@@ -739264,6 +740274,39 @@
       "telegram_core_fact": "고대역폭메모리(HBM)를 앞세워 인공지능(AI) 메모리 시장을 주도해온 삼성전자와 SK하이닉스에 새로운 변수가 등장했다.",
       "title": "[기획] 中 이어 美도 메모리 신기술… ‘후속카드’ 안보이는 삼전닉스"
     },
+    "source_fact:88b32c9dd6b2336a7a20da27": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "source_fact:88b3ea1096084bc448824d4c": {
       "first_seen_kst": "2026-10-16T21:38:15+09:00",
       "lanes": {
@@ -756968,6 +758011,39 @@
       "telegram_core_fact": "19일(현지시간) AFP통신에 따르면 스리랑카 국영전력공사인 실론전력청(CEB) 대변인 부디카 사마라세카라는 수도 콜롬보에서 취재진에 \"오늘부터 저녁 4시간 동안 섬 전역에 걸쳐 단계적으로 1시간씩 전력 공급을 중단할 것\"이라고 밝혔다.",
       "title": "스리랑카, 화력발전소 고장에 한시적 전력 배급제 시행"
     },
+    "source_fact:91f250a2aab5e81001a41eb7": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "source_fact:91f32ba2ec346e62dc1900ec": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
       "lanes": {
@@ -768598,6 +769674,39 @@
       "telegram_core_fact": "유니켐(011330)이 지분 100% 인수 계약을 체결한 미국 유연 센서 기업 루미아 테크놀로지스(Loomia Technologies)가 로봇 학습용 스마트 장갑의 핵심 센서 설계를 완료하고 상용화를 위한 성능 검증에 착수했다.",
       "title": "루미아테크놀로지스, 물류센터 로봇 학습용 스마트 장갑 핵심 센서 설계 완료"
     },
+    "source_fact:979ce588e5c184dbdc4488a9": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "source_fact:97a30e6a605dd2f5ab786183": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
       "lanes": {
@@ -776028,6 +777137,30 @@
       "source_title": "창원서 제조 AI·스마트공장 통합 'The Next AI×SMATOF' 개막 | 연합뉴스",
       "telegram_core_fact": "올해 처음 통합 개최하는 이번 행사는 AI 기술 공급기업과 제조기업이 만나 기술 도입과 사업 협력 기회를 모색하는 자리다.",
       "title": "창원서 제조 AI·스마트공장 통합 'The Next AI×SMATOF' 개막 | 연합뉴스"
+    },
+    "source_fact:9b4efff01bedd251b1a26573": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638799",
+      "source": "이투데이",
+      "source_body_digest": "09c16d8bff6c58441d7d56274538d3cb05d1732239eb271ec68983274ab00b2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c7a8a50b591d1737d44b4395feb51bcbbf8cd79e6ed1d072a56de24eaae66e",
+      "source_fact_keys": [
+        "source_fact:v1:0a2029986e33a2fa7b92573fe660e433bf3217af49da285f1784ddc07d1f5c05",
+        "source_fact:v1:0bcb3e49922545e640a6551abef6039928dec59b6ef0c58daebd15cbf0bebd52",
+        "source_fact:v1:5f69dd18d3c00b5c46080a44b9f5bdd1ac6e123f574fd9fc386ada20dd7af4c3",
+        "source_fact:v1:a2950216e8ef61b524e1f624cb37de16784abf414fef4ca69fd26fa08bde6534",
+        "source_fact:v1:c714c42ba4662c09dca74dd5d0933835faff6976483595b7400e80537c0d20dd"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색",
+      "telegram_core_fact": "이재용 삼성전자 회장이 아랍에미리트(UAE)를 찾아 에너지 인프라 사업을 점검하고 AI 데이터센터 등 미래 신사업 확대 방안을 논의했다. UAE의 산업 성장에 따른 전력 수요 증가에 대응하기 위한 사업으로 향후 AI 데이터센터 등 첨단산업에 필요한 전력 공급에도 기여할 전망이다.",
+      "title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색"
     },
     "source_fact:9b516b7c99baf225433edc1c": {
       "first_seen_kst": "2026-10-13T00:43:08+09:00",
@@ -833858,6 +834991,28 @@
       "telegram_core_fact": "전년비 각각 126.6%, 782.5% 증가한 수치로, 메모리 가격 상승이 실적 개선의 핵심 동력으로 꼽혔다.",
       "title": "메모리 호황의 역설…저가폰 2.3억대 줄고 프리미엄폰 뜬다"
     },
+    "source_fact:b726b1cdd1fe6d702737ebbf": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836818",
+      "source": "뉴시스",
+      "source_body_digest": "016e6a3104b662723382a1020545ac2a2176ec3d86261c7f5ef6528b1db9c622",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:724edfde17a803f96ef4094cdd2f08513e5cedb79fa49873b548ce26ef18fa4e",
+      "source_fact_identity": "source_facts:v1:499bd6cd20e9a8f6d317417755b1fd7be29851dc22ba8f09efe4184fde9ea9a2",
+      "source_fact_keys": [
+        "source_fact:v1:070e829075ce7a23f912411e7f6bc6b724131e47fcf567296ed173af31e9bde9",
+        "source_fact:v1:411d76ff6711536a6032dcefb5f9eca6a28644e58cb457a91f4ad27fe4c5e544",
+        "source_fact:v1:a57b69cc88b61f04c4bca9497dff3c54c4d676c72c5e909bb26d4a01f87fecd7"
+      ],
+      "source_published_kst": "2026-10-22T13:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\"",
+      "telegram_core_fact": "LG디스플레이는 올해 3분기 연결 기준 매출 6조2770억원, 영업이익 2506억원의 실적을 기록했다고 22일 밝혔다.",
+      "title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\""
+    },
     "source_fact:b732d5876479bad76e9f3696": {
       "first_seen_kst": "2026-10-15T02:27:03+09:00",
       "lanes": {
@@ -840013,6 +841168,39 @@
       "telegram_core_fact": "금융정보업체 에프앤가이드에 따르면 삼성SDI의 3분기 실적 컨센서스는 매출 4조373억원, 영업이익 1654억원이다.",
       "title": "K배터리 3사, ESS가 끌고 보상금이 민다…삼성SDI도 3분기 ‘깜짝 실적’ 기대감 [비즈360]"
     },
+    "source_fact:ba38f3e6604858eac5370299": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "source_fact:ba39489547f8dfdbff6ecc90": {
       "first_seen_kst": "2026-10-11T20:19:08+09:00",
       "lanes": {
@@ -840657,6 +841845,39 @@
       "source_title": "로바이, 中 링커봇과 피지컬 AI 협력…로봇 자가학습 기술 실증 나선다",
       "telegram_core_fact": "피지컬 AI(인공지능) 스타트업 로바이는 중국 다관절 로봇 핸드 전문기업 링커봇(LinkerBot)과 AI 기반 로봇 제어 기술 검증을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
       "title": "로바이, 中 링커봇과 피지컬 AI 협력…로봇 자가학습 기술 실증 나선다"
+    },
+    "source_fact:bab76fcb108ba1f612742318": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
     },
     "source_fact:bab797904e5868692cb9098b": {
       "first_seen_kst": "2026-10-19T19:03:47+09:00",
@@ -854717,6 +855938,28 @@
       "source_title": "김한규 \"SK하이닉스 솔리다임 중복상장, 이사 충실의무 위반 소지\"",
       "telegram_core_fact": "\"이런 중복상장 결정으로 SK하이닉스의 주가가 떨어진다면 하이닉스 이사들이 상법상 선관주의의무를 위반한 것이 될 수 있지 않느냐\"고 물었다. 김한규 더불어민주당 의원이 SK하이닉스의 미국 손자회사 솔리다임이 나스닥 상장을 추진하면서 기존 주주들의 이익이 침해될 수 있다는 지적을 내놨다.",
       "title": "김한규 \"SK하이닉스 솔리다임 중복상장, 이사 충실의무 위반 소지\""
+    },
+    "source_fact:c18c3c06ef28e5cc1395e28f": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etnews.com/20261022000158",
+      "source": "전자신문",
+      "source_body_digest": "a48dc9956256881cdf3204b3b91a45336b54cd7b1c5176e9f75e086d06f807ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc97e91fca3ddddb0ca319f84022961ec188e3ad5d924d65f96647b604f4d19",
+      "source_fact_keys": [
+        "source_fact:v1:1cf345ab6047a9614c8814d992b67245f7ec3ff4d7f014e59cf9db92583351a7",
+        "source_fact:v1:4bb31f31e77113517c0ce7940a085bc6152c7c77e02b0a11dc6ce21b1a6e33ac",
+        "source_fact:v1:5feed80df43069ddb48868594e5e9d03a1d32bf956a5f55dc6f1f6fdccc90f0c"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서",
+      "telegram_core_fact": "UAE 산업 발전에 따른 전력 수요 증가에 대비한 사업으로, 향후 AI 데이터센터 등 첨단 산업의 전력 공급을 뒷받침할 것으로 기대된다.",
+      "title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서"
     },
     "source_fact:c18e2ddb45a4c7aefaa39631": {
       "first_seen_kst": "2026-10-08T22:29:06+09:00",
@@ -893672,6 +894915,39 @@
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령이 18일(현지시간) 백악관 특사 스티브 윗코프, 도널드 트럼프 대통령의 사위 재러드 쿠슈너와 전화통화했다고 악시오스가 보도했다. 악시오스는 약 40분간 이어진 이 통화에서 미국과 우크라이나 간 갈등, 러시아와 평화협상을 재개하려는 미국의 노력을 논의했다고 전했다.",
       "title": "젤렌스키, 미·우크라 갈등 속 윗코프·쿠슈너와 통화 | 연합뉴스"
     },
+    "source_fact:d48e75f61d1287c08c335325": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "source_fact:d49012d260113aab6214d78e": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
       "lanes": {
@@ -903856,6 +905132,26 @@
       ],
       "source_published_kst": "2026-10-06T10:35+09:00",
       "title": "거버넌스포럼, 최태원 회장 SK 지분 매각에 '3%룰 회피' 비판"
+    },
+    "source_fact:d947ade275b4f9ff99a4672c": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003835965",
+      "source": "뉴시스",
+      "source_body_digest": "2f5575b4c0b32aa640733cc5f1ff4e0f86a10a3e3bf99e7105c2f64249b48c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab66e0730b88bc5bfb723a0eb624d37dd7b41498514cae7da9195d4eb77889e6",
+      "source_fact_keys": [
+        "source_fact:v1:ef7bd94a4c254e6ce9e9db2863a26a66d2dc9f5148872511f5a95a5f083581e1"
+      ],
+      "source_published_kst": "2026-10-22T09:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "국토장관 \"월세 걱정 무겁게 듣고 있어…근본 해법은 공급\"",
+      "telegram_core_fact": "홍 장관은 \"근본 해법은 공급이며 전월세 가격 상승의 가장 큰 원인은 착공 부진에 따른 입주 물량 감소\"라고 진단했다. 홍지선 국토교통부 장관은 \"월세 부담에 대한 걱정을 무겁게 듣고 있으며 이를 덜 방안을 계속 찾겠다\"고 밝혔다.",
+      "title": "국토장관 \"월세 걱정 무겁게 듣고 있어…근본 해법은 공급\""
     },
     "source_fact:d949459d169599e9c046a919": {
       "first_seen_kst": "2026-10-21T00:42:39+09:00",
@@ -917617,6 +918913,30 @@
       "source_title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\"",
       "telegram_core_fact": "RTT 뉴스와 마켓워치, dpa 통신에 따르면 독일 연방통계청은 7일 2026년 8월 산업생산이 계절 조정치로 전월 대비 2.0% 증대했다고 발표했다. 유럽 최대 경제국 독일의 8월 산업생산은 건설과 기계·설비 생산 호조에 힘입어 17개월 만에 가장 큰 폭으로 증가했다.",
       "title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\""
+    },
+    "source_fact:e029a5d228895c08172f56f0": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638799",
+      "source": "이투데이",
+      "source_body_digest": "09c16d8bff6c58441d7d56274538d3cb05d1732239eb271ec68983274ab00b2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c7a8a50b591d1737d44b4395feb51bcbbf8cd79e6ed1d072a56de24eaae66e",
+      "source_fact_keys": [
+        "source_fact:v1:0a2029986e33a2fa7b92573fe660e433bf3217af49da285f1784ddc07d1f5c05",
+        "source_fact:v1:0bcb3e49922545e640a6551abef6039928dec59b6ef0c58daebd15cbf0bebd52",
+        "source_fact:v1:5f69dd18d3c00b5c46080a44b9f5bdd1ac6e123f574fd9fc386ada20dd7af4c3",
+        "source_fact:v1:a2950216e8ef61b524e1f624cb37de16784abf414fef4ca69fd26fa08bde6534",
+        "source_fact:v1:c714c42ba4662c09dca74dd5d0933835faff6976483595b7400e80537c0d20dd"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색",
+      "telegram_core_fact": "이재용 삼성전자 회장이 아랍에미리트(UAE)를 찾아 에너지 인프라 사업을 점검하고 AI 데이터센터 등 미래 신사업 확대 방안을 논의했다. UAE의 산업 성장에 따른 전력 수요 증가에 대응하기 위한 사업으로 향후 AI 데이터센터 등 첨단산업에 필요한 전력 공급에도 기여할 전망이다.",
+      "title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색"
     },
     "source_fact:e02abdd6c007a8b20fa70cf0": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
@@ -947243,6 +948563,30 @@
       "telegram_core_fact": "웹케시가 중국 기업의 한국 진출을 돕는 위세얼과 손잡고 국내에 들어온 중국계 기업에 경리 업무 플랫폼 '경리나라'를 공급한다.",
       "title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약"
     },
+    "source_fact:eeb2b5877bc2f4f998aac539": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638799",
+      "source": "이투데이",
+      "source_body_digest": "09c16d8bff6c58441d7d56274538d3cb05d1732239eb271ec68983274ab00b2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c7a8a50b591d1737d44b4395feb51bcbbf8cd79e6ed1d072a56de24eaae66e",
+      "source_fact_keys": [
+        "source_fact:v1:0a2029986e33a2fa7b92573fe660e433bf3217af49da285f1784ddc07d1f5c05",
+        "source_fact:v1:0bcb3e49922545e640a6551abef6039928dec59b6ef0c58daebd15cbf0bebd52",
+        "source_fact:v1:5f69dd18d3c00b5c46080a44b9f5bdd1ac6e123f574fd9fc386ada20dd7af4c3",
+        "source_fact:v1:a2950216e8ef61b524e1f624cb37de16784abf414fef4ca69fd26fa08bde6534",
+        "source_fact:v1:c714c42ba4662c09dca74dd5d0933835faff6976483595b7400e80537c0d20dd"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색",
+      "telegram_core_fact": "이재용 삼성전자 회장이 아랍에미리트(UAE)를 찾아 에너지 인프라 사업을 점검하고 AI 데이터센터 등 미래 신사업 확대 방안을 논의했다. UAE의 산업 성장에 따른 전력 수요 증가에 대응하기 위한 사업으로 향후 AI 데이터센터 등 첨단산업에 필요한 전력 공급에도 기여할 전망이다.",
+      "title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색"
+    },
     "source_fact:eeb2bf25a9052541e723905a": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
       "lanes": {
@@ -949470,6 +950814,28 @@
       ],
       "source_published_kst": "2026-10-06T13:24+09:00",
       "title": "통합항공사 뜨자 남은 10.58%…산은, 한진칼 지분 '엑시트 셈법' 관심집중 [fn마켓워치]"
+    },
+    "source_fact:efa56b6b47274c1ed30921a6": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etnews.com/20261022000158",
+      "source": "전자신문",
+      "source_body_digest": "a48dc9956256881cdf3204b3b91a45336b54cd7b1c5176e9f75e086d06f807ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc97e91fca3ddddb0ca319f84022961ec188e3ad5d924d65f96647b604f4d19",
+      "source_fact_keys": [
+        "source_fact:v1:1cf345ab6047a9614c8814d992b67245f7ec3ff4d7f014e59cf9db92583351a7",
+        "source_fact:v1:4bb31f31e77113517c0ce7940a085bc6152c7c77e02b0a11dc6ce21b1a6e33ac",
+        "source_fact:v1:5feed80df43069ddb48868594e5e9d03a1d32bf956a5f55dc6f1f6fdccc90f0c"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서",
+      "telegram_core_fact": "UAE 산업 발전에 따른 전력 수요 증가에 대비한 사업으로, 향후 AI 데이터센터 등 첨단 산업의 전력 공급을 뒷받침할 것으로 기대된다.",
+      "title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서"
     },
     "source_fact:efa71fbc4349aca5273a28e1": {
       "first_seen_kst": "2026-10-12T20:14:14+09:00",
@@ -985454,6 +986820,39 @@
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
     },
+    "title:09c2efe5a07836963d161394": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638645",
+      "source": "이투데이",
+      "source_body_digest": "cffcd81cf787193cdcb03a7018e0c2af51dd637ec3c10cfb4bf19338ab779989",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:851955c106442f1a818a0dff6697b7e9d7c93d4413efecee649c88a07c44ecb2",
+      "source_fact_keys": [
+        "source_fact:v1:09a0141ce7d24a839cccdeb898dfb861aa8673fb39adf19d8fc4dd9177657ba4",
+        "source_fact:v1:2327a02bb2f66e1b49b0dda48075c2844058489b578ab53a52f6c58d276d5614",
+        "source_fact:v1:322ddb0208c95272d32cd5eba7f1f06d9b2586a2ca9b8b1b143bbaef72f573c1",
+        "source_fact:v1:39af6531a3ba1cf04f7df027d8b0df69faec24d093c7cf32bf506c24d0c6e39e",
+        "source_fact:v1:470525212171c42ab9da9e617898543960a9989d35206af5378b6ca0f6b2cf20",
+        "source_fact:v1:6837aacf16715a21f8a5e3429a0558f9dbc8d055239c734a7df90532832723ff",
+        "source_fact:v1:6c6820b6a45bad4197358591494aa9f98c2fc7f0196e857c26848a41ba887b3a",
+        "source_fact:v1:71fe4334d0e3d83043503715f5831fd1fe053ac0ddf7434d4339f0ca5bb9316a",
+        "source_fact:v1:90b72f1c73aa9afd08097a582f82891caeb23c3d1310367aa17ff2fac7b37d04",
+        "source_fact:v1:9bd5cfc9a1383033df9da645d4d6506847f3148558f39ea3960dd7a7f0b403f6",
+        "source_fact:v1:a333c5de83bffcb471df645061545ed66bc2b845aae3589d04b554b5f9a73731",
+        "source_fact:v1:cb64bc1efe83b6e498ce8472f7dbfef35f3d00c5c27d74b19c24337dd3f8de43",
+        "source_fact:v1:dba62b713e8ba30beb38012c7989bd4fa0b1a19e6a3ace02c2bdb2ef05f57252",
+        "source_fact:v1:f12e72de4e2324a53062f901b2b1b985aa352cfef39c88019a7d9b7b1e65e00e"
+      ],
+      "source_published_kst": "2026-10-22T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”",
+      "telegram_core_fact": "NH투자증권은 22일 중국 배터리 업체 CATL이 판매량 증가에도 불구하고 제품 가격 하락과 비용 부담으로 수익성 악화를 겪고 있다고 분석했다.",
+      "title": "NH투자증권 “CATL, 판매량 급증에도 수익성 악화…소듐이온 배터리로 돌파구”"
+    },
     "title:09c874431453e8725fa25ff1": {
       "first_seen_kst": "2026-10-16T19:48:28+09:00",
       "lanes": {
@@ -998730,6 +1000129,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T07:00+09:00",
       "title": "美 기관 코인 투자 문턱 낮아진다…SEC, '셀프 커스터디' 허용 추진"
+    },
+    "title:24807bfe008ab55eb126a2a3": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836818",
+      "source": "뉴시스",
+      "source_body_digest": "016e6a3104b662723382a1020545ac2a2176ec3d86261c7f5ef6528b1db9c622",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:724edfde17a803f96ef4094cdd2f08513e5cedb79fa49873b548ce26ef18fa4e",
+      "source_fact_identity": "source_facts:v1:499bd6cd20e9a8f6d317417755b1fd7be29851dc22ba8f09efe4184fde9ea9a2",
+      "source_fact_keys": [
+        "source_fact:v1:070e829075ce7a23f912411e7f6bc6b724131e47fcf567296ed173af31e9bde9",
+        "source_fact:v1:411d76ff6711536a6032dcefb5f9eca6a28644e58cb457a91f4ad27fe4c5e544",
+        "source_fact:v1:a57b69cc88b61f04c4bca9497dff3c54c4d676c72c5e909bb26d4a01f87fecd7"
+      ],
+      "source_published_kst": "2026-10-22T13:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\"",
+      "telegram_core_fact": "LG디스플레이는 올해 3분기 연결 기준 매출 6조2770억원, 영업이익 2506억원의 실적을 기록했다고 22일 밝혔다.",
+      "title": "LG디스플레이, 3분기 영업익 2506억…\"환율 하락·칩플레이션 여파\""
     },
     "title:248971a7623f5a7099f0c990": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -1041372,6 +1042793,24 @@
       "source_published_kst": "2026-10-07T08:29+09:00",
       "title": "SK證 “KB·신한·하나금융, 주주환원 50%대…금리 상승·환율 하락 수혜”"
     },
+    "title:78b63fa5d4dd5319a5f94566": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.dt.co.kr/article/12090599",
+      "source": "디지털타임스",
+      "source_body_digest": "2cfe1a157499dde1e28ed62b22ba090322b57b63e8de642bbdc7385486ad65f7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디 공항·유전 잇단 피격…호르무즈 유조선까지 불길",
+      "telegram_core_fact": "사우디아라비아의 국제공항과 핵심 석유 시설이 잇따라 공격받고 호르무즈 해협을 항해하던 유조선들까지 피격되면서 중동 전역의 군사적 긴장이 고조되고 있다.",
+      "title": "사우디 공항·유전 잇단 피격…호르무즈 유조선까지 불길"
+    },
     "title:78be7c875e45c8eedbf3d5ad": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -1050568,6 +1052007,26 @@
       "source_title": "델 테크놀로지스, 산업 현장용 러기드 AI 노트북 2종 공개",
       "telegram_core_fact": "군·경찰과 소방, 정유·석유화학, 제조, 운송 등 산업 현장에서 AI 기반 업무를 확대하고 데이터 분석 및 설비 관리의 효율성을 높이려는 수요에 대응하기 위한 제품이다.",
       "title": "델 테크놀로지스, 산업 현장용 러기드 AI 노트북 2종 공개"
+    },
+    "title:8acb6be44bdbb83142241def": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003835965",
+      "source": "뉴시스",
+      "source_body_digest": "2f5575b4c0b32aa640733cc5f1ff4e0f86a10a3e3bf99e7105c2f64249b48c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab66e0730b88bc5bfb723a0eb624d37dd7b41498514cae7da9195d4eb77889e6",
+      "source_fact_keys": [
+        "source_fact:v1:ef7bd94a4c254e6ce9e9db2863a26a66d2dc9f5148872511f5a95a5f083581e1"
+      ],
+      "source_published_kst": "2026-10-22T09:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "국토장관 \"월세 걱정 무겁게 듣고 있어…근본 해법은 공급\"",
+      "telegram_core_fact": "홍 장관은 \"근본 해법은 공급이며 전월세 가격 상승의 가장 큰 원인은 착공 부진에 따른 입주 물량 감소\"라고 진단했다. 홍지선 국토교통부 장관은 \"월세 부담에 대한 걱정을 무겁게 듣고 있으며 이를 덜 방안을 계속 찾겠다\"고 밝혔다.",
+      "title": "국토장관 \"월세 걱정 무겁게 듣고 있어…근본 해법은 공급\""
     },
     "title:8acd518fd39ffb9f78edd125": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
@@ -1061636,6 +1063095,30 @@
       "source_title": "[ET특징주]한화생명, 3분기 적자 전망에 하락세",
       "telegram_core_fact": "한화생명이 올해 3분기 적자 전환 전망에 하락세다. 설용진 iM증권 연구원은 한화생명이 올해 3분기 755억원의 순손실을 기록해 지난해 같은 기간 흑자에서 적자로 돌아설 것으로 내다봤다.",
       "title": "[ET특징주]한화생명, 3분기 적자 전망에 하락세"
+    },
+    "title:9feac4eaf7f2c6df8d9ea197": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638799",
+      "source": "이투데이",
+      "source_body_digest": "09c16d8bff6c58441d7d56274538d3cb05d1732239eb271ec68983274ab00b2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c7a8a50b591d1737d44b4395feb51bcbbf8cd79e6ed1d072a56de24eaae66e",
+      "source_fact_keys": [
+        "source_fact:v1:0a2029986e33a2fa7b92573fe660e433bf3217af49da285f1784ddc07d1f5c05",
+        "source_fact:v1:0bcb3e49922545e640a6551abef6039928dec59b6ef0c58daebd15cbf0bebd52",
+        "source_fact:v1:5f69dd18d3c00b5c46080a44b9f5bdd1ac6e123f574fd9fc386ada20dd7af4c3",
+        "source_fact:v1:a2950216e8ef61b524e1f624cb37de16784abf414fef4ca69fd26fa08bde6534",
+        "source_fact:v1:c714c42ba4662c09dca74dd5d0933835faff6976483595b7400e80537c0d20dd"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색",
+      "telegram_core_fact": "이재용 삼성전자 회장이 아랍에미리트(UAE)를 찾아 에너지 인프라 사업을 점검하고 AI 데이터센터 등 미래 신사업 확대 방안을 논의했다. UAE의 산업 성장에 따른 전력 수요 증가에 대응하기 위한 사업으로 향후 AI 데이터센터 등 첨단산업에 필요한 전력 공급에도 기여할 전망이다.",
+      "title": "이재용 회장, UAE서 미래 먹거리 점검⋯AIㆍ에너지 신사업 확대 모색"
     },
     "title:9feb5b4c2db38f536483a421": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
@@ -1075405,6 +1076888,24 @@
       "source_title": "외국인·기관 순매도 속 장초반 변동성",
       "telegram_core_fact": "외국인과 기관은 이미 장 초반 각각 6422억원, 3027억원을 순매도했다.",
       "title": "외국인·기관 순매도 속 장초반 변동성"
+    },
+    "title:bbfd1395723b09d5be5d11c0": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638647",
+      "source": "이투데이",
+      "source_body_digest": "cef40360244efbb8bb65d6169dc6bb3f23605248215ae8e6e101c583d38b1c9b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T08:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "국제금값, 인플레이션 우려 속 소폭 반등⋯0.2%↑",
+      "telegram_core_fact": "로이터통신에 따르면 이날 뉴욕상품거래소(COMEX)에서 12월물 금 선물은 전 거래일보다 0.2% 오른 온스당 4150달러에 거래를 마쳤다. 중동발 인플레이션 우려와 미국 연방준비제도(Fed·연준)의 금리 인상 가능성을 주시하는 가운데 최근 하락세에서 벗어나 소폭 반등했다.",
+      "title": "국제금값, 인플레이션 우려 속 소폭 반등⋯0.2%↑"
     },
     "title:bbfd1a52d07c86aa948ce6a5": {
       "first_seen_kst": "2026-10-05T14:51:16+09:00",
@@ -1102615,6 +1104116,28 @@
       "telegram_core_fact": "트루이스트는 “큐니티의 AI 칩 제조 및 패키징에 필수적인 다양한 소재들은 시장 평균을 웃도는 지속 가능한 성장을 뒷받침한다”면서 “첨단 패키징 및 데이터센터 연계 제품군의 강력한 수요와 함께 첨단 노드 응용 분야에서의 소재 집약도 증가로부터 수혜를 받고 있다”고 설명했다.",
       "title": "큐니티, AI 칩 제조 필수 소재로 성장 지속…'매수'-트루이스트"
     },
+    "title:f45b8fa68cb88212d078be8a": {
+      "first_seen_kst": "2026-10-22T14:04:51+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:04:51+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:04:51+09:00",
+      "link": "https://www.etnews.com/20261022000158",
+      "source": "전자신문",
+      "source_body_digest": "a48dc9956256881cdf3204b3b91a45336b54cd7b1c5176e9f75e086d06f807ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc97e91fca3ddddb0ca319f84022961ec188e3ad5d924d65f96647b604f4d19",
+      "source_fact_keys": [
+        "source_fact:v1:1cf345ab6047a9614c8814d992b67245f7ec3ff4d7f014e59cf9db92583351a7",
+        "source_fact:v1:4bb31f31e77113517c0ce7940a085bc6152c7c77e02b0a11dc6ce21b1a6e33ac",
+        "source_fact:v1:5feed80df43069ddb48868594e5e9d03a1d32bf956a5f55dc6f1f6fdccc90f0c"
+      ],
+      "source_published_kst": "2026-10-22T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서",
+      "telegram_core_fact": "UAE 산업 발전에 따른 전력 수요 증가에 대비한 사업으로, 향후 AI 데이터센터 등 첨단 산업의 전력 공급을 뒷받침할 것으로 기대된다.",
+      "title": "이재용, 전쟁 인접국 UAE 현장 찾았다…중동 AI 전력 인프라 선점 나서"
+    },
     "title:f460498acdfc1a9237ef5467": {
       "first_seen_kst": "2026-09-21T04:13:31+09:00",
       "lanes": {
@@ -1108439,5 +1109962,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T13:31:10+09:00"
+  "updated_at_kst": "2026-10-22T14:04:51+09:00"
 }
