@@ -12,6 +12,8 @@ on:
   pull_request:
     paths:
       - "scripts/us_fund_flow_watch.py"
+      - "scripts/us_tech_etf_proxy_watch.py"
+      - "tests/test_us_tech_etf_proxy_watch.py"
       - ".github/workflows/us-fund-flow-telegram-watch.yml"
   workflow_dispatch:
     inputs:
@@ -148,6 +150,12 @@ jobs:
           print("goldman_prime_regressions=passed dynamic_newer_week_and_month_rollover=true")
 
           PY
+
+      - name: Regress public IYW SOXX proxy without bot secrets or sending
+        run: |
+          python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4
+          python -m py_compile scripts/us_tech_etf_proxy_watch.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_us_tech_etf_proxy_watch.py' -v
 
       - name: Diagnose public article access (read-only; no Telegram; no secrets)
         run: |
@@ -416,7 +424,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
-      TECH_ETF_PROXY_VALIDATE_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.tech_proxy_validate_only && '1' || '0' }}
+      TECH_ETF_PROXY_VALIDATE_ONLY: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.tech_proxy_validate_only)) && '1' || '0' }}
 
     steps:
       - name: Checkout shared US fund-flow deployment and delivery state
@@ -432,6 +440,23 @@ jobs:
 
       - name: Install official ETF reader dependencies
         run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4
+
+      - name: Verify correct existing U.S. fund-flow bot (read-only)
+        run: |
+          python - <<'PY'
+          import os, json, urllib.request
+          token=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat=(os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected="khs887900887900008879_bot"
+          if not token or not chat:
+              raise RuntimeError("US fund-flow Telegram secrets missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as r:
+              payload=json.load(r)
+          actual=(payload.get("result") or {}).get("username")
+          if not payload.get("ok") or actual != expected:
+              raise RuntimeError("Wrong Telegram bot attached to public tech ETF proxy")
+          print(f"us_tech_etf_proxy_bot_verified=true bot=@{actual} chat_id_present=true telegram_sent=false")
+          PY
 
       - name: Check tech ETF data, split, dates, and Telegram receipt invariants
         run: |
