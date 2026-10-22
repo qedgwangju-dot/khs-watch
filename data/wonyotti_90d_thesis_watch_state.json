@@ -1,78 +1,78 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-10-22T22:11:17+09:00",
+  "updated_at_kst": "2026-10-22T22:13:36+09:00",
   "crypto": {
     "derivatives": {
       "BTCUSDT": {
-        "funding": 7.2e-05,
-        "index_price": 81661.62,
-        "mark_price": 81627.0,
-        "last_price": 81617.9,
-        "open_interest": 575758272.0,
-        "open_interest_value": 4701653564.31744,
-        "turnover24h": 680086661467.0,
+        "funding": 7e-05,
+        "index_price": 81635.51,
+        "mark_price": 81610.9,
+        "last_price": 81602.8,
+        "open_interest": 575397760.0,
+        "open_interest_value": 4697015645.10976,
+        "turnover24h": 680088051180.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
-        "funding": 3.9e-05,
-        "index_price": 2397.13,
-        "mark_price": 2395.92,
-        "last_price": 2395.45,
-        "open_interest": 78425038.0,
-        "open_interest_value": 1880452033.6526,
-        "turnover24h": 185840520020.0,
+        "funding": 3.5e-05,
+        "index_price": 2397.62,
+        "mark_price": 2396.61,
+        "last_price": 2396.62,
+        "open_interest": 78292190.0,
+        "open_interest_value": 1875982652.247,
+        "turnover24h": 185841219667.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
-        "funding": 5.2e-05,
-        "index_price": 104.266,
-        "mark_price": 104.21,
-        "last_price": 104.16,
-        "open_interest": 8045964.0,
-        "open_interest_value": 839194045.2,
-        "turnover24h": 4515346508.0,
+        "funding": 4.8e-05,
+        "index_price": 104.246,
+        "mark_price": 104.2,
+        "last_price": 104.23,
+        "open_interest": 8059716.0,
+        "open_interest_value": 839580615.72,
+        "turnover24h": 4515350960.0,
         "source": "Gate.io Futures API"
       }
     },
     "prices": {
       "BTC": {
-        "usd": 81627.0,
-        "change24": -2.4454958489255416,
-        "volume24": 37933041532.139404,
+        "usd": 81595.0,
+        "change24": -2.527655143103441,
+        "volume24": 37880336777.44972,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 81627.0,
-          "Coinbase": 81591.99,
-          "Gate.io Spot": 81667.3
+          "CoinGecko": 81595.0,
+          "Coinbase": 81586.25,
+          "Gate.io Spot": 81638.4
         },
-        "dispersion_pct": 0.0922611390838787
+        "dispersion_pct": 0.06391322997731991
       },
       "ETH": {
-        "usd": 2396.74,
-        "change24": -3.4422354253333483,
-        "volume24": 13035314583.62256,
+        "usd": 2395.53,
+        "change24": -3.527808809779145,
+        "volume24": 13020159935.234827,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 2396.74,
-          "Coinbase": 2393.9,
-          "Gate.io Spot": 2397.46
+          "CoinGecko": 2395.32,
+          "Coinbase": 2395.53,
+          "Gate.io Spot": 2397.38
         },
-        "dispersion_pct": 0.14853509350200464
+        "dispersion_pct": 0.08599349622004088
       },
       "SOL": {
-        "usd": 104.22,
-        "change24": -2.8392278664395936,
-        "volume24": 2834043508.3979254,
+        "usd": 104.16,
+        "change24": -2.9032379075686476,
+        "volume24": 2831488761.645555,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 104.22,
-          "Coinbase": 104.16,
-          "Gate.io Spot": 104.24
+          "CoinGecko": 104.16,
+          "Coinbase": 104.12,
+          "Gate.io Spot": 104.25
         },
-        "dispersion_pct": 0.07676069852235493
+        "dispersion_pct": 0.12480798771120916
       }
     },
     "price_verified": true,
@@ -145,7 +145,7 @@
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-10-22T22:12:07+09:00"
+    "checked_at_kst": "2026-10-22T22:14:23+09:00"
   },
   "news_seen": [
     "0643d30144546ab7115120d2",
