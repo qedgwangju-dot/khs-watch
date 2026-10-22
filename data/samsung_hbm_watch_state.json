@@ -2778,7 +2778,7 @@
   "official_observed_this_run": false,
   "_delivery": {
     "id": "52ff7318a5ed48a5285d1897e38db8de4cb4fe5da8116c0edd60988fc0b7f7f9",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-10-23T03:46:14+09:00",
     "chunks": [
       "⚠️ <b>삼성·SK하이닉스 HBM 수출 원자료 조회 장애</b>\n━━━━━━━━━━━━━━━━\n• 대상월: <b>2026년 9월</b>\n• 상태: <b>공식 원자료 조회 실패</b>\n• 전국 HSK10·충남 HSK10·충북 HSK10을 모두 공식 원자료로 잠그기 전에는 새 수치를 만들지 않습니다.\n• 이전 월 수치·지역 HS6·기사 숫자를 최신 확정치로 대체 사용하지 않습니다.\n• 기존 HBM 워크플로가 자동 재조회하며, 원자료 복구 또는 새 확정월 확인 시 다시 알립니다.\n• 장애 확인: 2026-10-23 03:45 KST"
@@ -5558,6 +5558,7 @@
       "export_alert_format_version": 2,
       "official_revision_due": false,
       "official_observed_this_run": false
-    }
+    },
+    "attempt_at_kst": "2026-10-23T03:46:17+09:00"
   }
 }
