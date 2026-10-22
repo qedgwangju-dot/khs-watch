@@ -18,6 +18,8 @@ IR_Q3="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta
 PR_Q3="https://www.prnewswire.com/news-releases/meta-reports-third-quarter-2026-results-302915964.html"
 REUTERS_EXPECTATIONS="https://www.investing.com/news/stock-market-news/metas-ai-spending-muse-assistant-adoption-in-focus-for-quarterly-results-4959432"
 SEC_SUBMISSIONS="https://data.sec.gov/submissions/CIK0001326801.json"
+META_IR_RSS="https://investor.atmeta.com/rss/pressrelease.aspx"
+META_SEC_RSS="https://investor.atmeta.com/rss/SECFiling.aspx?Exchange=CIK&Symbol=0001326801"
 META_FEED="https://about.fb.com/feed/"
 NEWSROOM="https://about.fb.com/news/"
 MUSE="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
@@ -180,35 +182,98 @@ def _news_events():
             continue
         if "about.fb.com" not in urllib.parse.urlparse(url).netloc.lower():
             continue
-        result.append({"key":"muse:"+url.split("?")[0],"title":title,"url":url,"date":str(date)})
+        result.append({"key":"muse:"+url.split("?")[0],
+                       "title":"메타 Muse 이용자·유료화·안전 공식 후속 발표",
+                       "url":url,"date":str(date)})
     return result
 
-def _sec_earnings():
+def _published_date(pub):
     try:
-        data=json.loads(_get(SEC_SUBMISSIONS,timeout=18))
+        stamp=parsedate_to_datetime(pub)
+        return stamp.date()
+    except (ValueError,TypeError):
+        return None
+
+
+def _press_release_events():
+    """Meta's own investor-relations RSS, unlike generic news index results."""
+    try:
+        root=ET.fromstring(_get(META_IR_RSS,timeout=20))
     except Exception as e:
-        print(f"WARN SEC Meta submissions unavailable: {e}")
+        print(f"WARN Meta IR release feed unavailable: {e}")
         return []
-    recent=data.get("filings",{}).get("recent",{})
-    forms=recent.get("form",[])
-    items=recent.get("items",[])
-    dates=recent.get("filingDate",[])
-    accessions=recent.get("accessionNumber",[])
-    out=[]
-    for idx,form in enumerate(forms):
-        if idx>=len(items) or idx>=len(dates) or idx>=len(accessions):break
-        if form not in ("8-K","8-K/A"):
+    result=[]
+    for item in root.findall(".//item"):
+        title=(item.findtext("title") or "").strip()
+        url=(item.findtext("link") or "").strip()
+        day=_published_date(item.findtext("pubDate") or "")
+        if not day or day<=dt.date(2026,10,21) or not url:
             continue
-        if "2.02" not in str(items[idx]):
+        if "investor.atmeta.com" not in urllib.parse.urlparse(url).netloc.lower():
             continue
-        date=dates[idx]
-        if date<"2026-10-22":
+        lower=title.lower()
+        if re.search(r"reports (first|second|third|fourth) quarter",lower) and "results" in lower:
+            label="메타 신규 분기실적 공식 발표 — 상세 숫자 검증 필요"
+        elif "class c" in lower or "stock dividend" in lower:
+            label="메타 클래스 C 주식·주주권리 공식 변화"
+        elif "muse" in lower or "capital expend" in lower or "free cash flow" in lower:
+            label="메타 Muse 사업·설비투자·현금흐름 공식 변화"
+        else:
             continue
-        accession=accessions[idx]
-        url=f"https://www.sec.gov/Archives/edgar/data/1326801/{accession.replace('-','')}/"
-        out.append({"key":"sec-earnings:"+accession,"title":"메타 신규 SEC 실적 공시",
-                    "date":date,"url":url})
-    return out
+        result.append({"key":"meta-ir:"+url.split("?")[0],
+                       "date":str(day),"title":label,"url":url})
+    return result
+
+
+def _sec_earnings():
+    """SEC JSON preferred; IR-hosted SEC RSS is the official-source fallback."""
+    try:
+        data=json.loads(_get(SEC_SUBMISSIONS,timeout=15))
+        recent=data.get("filings",{}).get("recent",{})
+        forms=recent.get("form",[])
+        items=recent.get("items",[])
+        dates=recent.get("filingDate",[])
+        accessions=recent.get("accessionNumber",[])
+        result=[]
+        for idx,form in enumerate(forms):
+            if idx>=len(items) or idx>=len(dates) or idx>=len(accessions):
+                break
+            if form not in ("8-K","8-K/A") or "2.02" not in str(items[idx]):
+                continue
+            if dates[idx]<"2026-10-22":
+                continue
+            acc=accessions[idx]
+            url=f"https://www.sec.gov/Archives/edgar/data/1326801/{acc.replace('-','')}/"
+            result.append({"key":"meta-sec-earnings:"+acc,"title":"메타 신규 SEC 8-K 실적 신고",
+                           "date":dates[idx],"url":url})
+        return result
+    except Exception as e:
+        print(f"WARN SEC direct API unavailable: {e}; trying Meta IR SEC RSS")
+    try:
+        root=ET.fromstring(_get(META_SEC_RSS,timeout=20))
+    except Exception as e:
+        print(f"WARN Meta IR SEC RSS unavailable: {e}")
+        return []
+    result=[]
+    for item in root.findall(".//item"):
+        title=(item.findtext("title") or "").strip()
+        description=(item.findtext("description") or "").strip()
+        url=(item.findtext("link") or "").strip()
+        day=_published_date(item.findtext("pubDate") or "")
+        if not day or day<=dt.date(2026,10,21) or not url:
+            continue
+        if not ("sec.gov" in urllib.parse.urlparse(url).netloc.lower()
+                or "investor.atmeta.com" in urllib.parse.urlparse(url).netloc.lower()):
+            continue
+        hay=(title+" "+description).lower()
+        if "8-k" not in hay or not any(x in hay for x in [
+            "2.02","results of operations","quarter results","earnings"]):
+            continue
+        result.append({"key":"meta-sec-rss:"+url.split("?")[0],
+                       "title":"메타 SEC 신규 분기 실적 신고",
+                       "date":str(day),"url":url})
+    return result
+
 
 def main(probe=False):
     OUT.mkdir(exist_ok=True)
@@ -227,7 +292,7 @@ def main(probe=False):
         notices.append(build_q3(rate,basis,source_label))
         seen.add(Q3_KEY)
 
-    for event in _sec_earnings()+_news_events():
+    for event in _press_release_events()+_sec_earnings()+_news_events():
         key=event["key"]
         if key in seen:
             continue
