@@ -30,6 +30,7 @@ AFT_FR = "https://www.aft.gouv.fr/fr/calendrier-notations-france"
 AFT_TEXT_RECOVERY = "https://r.jina.ai/https://www.aft.gouv.fr/en/frances-credit-ratings"
 ORIGINAL_STORY = "https://www.briefs.co/news/hedge-funds-scramble-as-french-bond-rout-blows-out-spreads/"
 REVIEW_DATE = dt.date(2026, 10, 23)
+SP_REVIEW_DATE = dt.date(2026, 11, 27)
 # AFT official-site indexed table was cross-checked with Reuters on 2026-10-14.
 # This is NOT an AFT live-page fetch. Historical baseline is ONLY for reminders; do
 # not treat it as a live agency rating or a rating decision.
@@ -40,6 +41,14 @@ VERIFIED_AFT_SNAPSHOT = {
     "verified_on": "2026-10-14",
 }
 MILESTONES = {7: "일주일 전", 3: "3일 전", 1: "하루 전", 0: "당일"}
+# Historical AFT index snapshot, independently verified 2026-10-22.
+# Reminder only: must not be mistaken for a live S&P rating action.
+VERIFIED_SP_SNAPSHOT = {
+    "agency": "S&P Global Ratings", "rating": "A+", "outlook": "Stable",
+    "decision_date": "2026-05-29", "next_review": "2026-11-27",
+    "url": AFT_EN, "source_kind": "historical_official_snapshot",
+    "verified_on": "2026-10-22",
+}
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATUS = ROOT / "out" / "france_credit_overlay_status.md"
 
@@ -226,6 +235,20 @@ def credit_events(now: dt.date, old: dict, rating: dict) -> list[dict]:
     return events
 
 
+def sp_review_events(local_day: dt.date, sent_keys: set[str]) -> list[dict]:
+    """Remind on published S&P rating-review dates, not presumed downgrades."""
+    if local_day > SP_REVIEW_DATE:
+        overdue = f"sp_review_unverified_after_due:{SP_REVIEW_DATE.isoformat()}"
+        return [] if overdue in sent_keys else [{"kind": "sp_review_overdue", "key": overdue}]
+    remaining = (SP_REVIEW_DATE - local_day).days
+    if remaining not in MILESTONES:
+        return []
+    key = f"sp_milestone:{SP_REVIEW_DATE.isoformat()}:D-{remaining}"
+    return [] if key in sent_keys else [
+        {"kind": "sp_milestone", "key": key, "days": remaining}
+    ]
+
+
 def money_spread(pending: dict) -> tuple[str, str]:
     data = pending.get("last_values") or {}
     dates = pending.get("last_source_dates") or {}
@@ -268,6 +291,19 @@ def format_event(rating: dict, events: list[dict], pending: dict,
             status = (f"공식 최신 확인 일정: 2026-10-23(프랑스 현지 날짜), "
                       f"등급 {rating['rating']}·전망 {rating['outlook']}.")
         caveat = "등급 강등 확정이 아닌 예정된 심사입니다. 포지션 청산 마감일도 아닙니다."
+    elif any(x["kind"] == "sp_milestone" for x in events):
+        days = min(x["days"] for x in events if x["kind"] == "sp_milestone")
+        name = f"프랑스 S&P 신용등급 검토 D-{days}"
+        status = ("2026-10-22 확인한 프랑스 국채관리청(AFT) 공식 일정: "
+                  "S&P 2026-11-27(현지 날짜). "
+                  "당시 등급 A+·전망 Stable. 날짜 변경 여부와 새 결정은 직접 원문 재검증 필요.")
+        caveat = "심사 예정일은 하향조정 확정이나 캐리 포지션 청산 마감일이 아닙니다."
+    elif any(x["kind"] == "sp_review_overdue" for x in events):
+        name = "프랑스 S&P 신용등급 평가 결과 확인 필요"
+        status = ("2026-11-27 예정된 S&P 평가일 경과. "
+                  "이번 알림에서는 신용등급 결과를 직접 검증하지 못했으므로 "
+                  "하향·유지·전망 변경을 확정하지 않습니다.")
+        caveat = "프랑스 국채관리청·S&P 공식 자료 확인 전까지 미확인 상태입니다."
     elif any(x["kind"] == "review_overdue" for x in events):
         name = "프랑스 신용등급 결과 재검증 필요"
         status = "10월 23일 예정일이 지났지만 신용등급 결과는 공식 원문 접근 제한으로 확인되지 않았습니다."
@@ -278,6 +314,12 @@ def format_event(rating: dict, events: list[dict], pending: dict,
                   "AFT 공식 페이지 검색 색인 확인일은 2026-10-14이며 직접 원문 조회는 제한됐습니다.")
         caveat = "등급 변경이나 시장의 강등 가능성을 확정할 수 없습니다. 공식 결과 조회가 지연될 수 있습니다."
 
+    sp_only = any(x["kind"] in ("sp_milestone", "sp_review_overdue") for x in events)
+    primary_link = ("• AFT France S&P rating calendar: " + AFT_EN if sp_only else
+                    "• AFT France Moody's rating calendar: " + rating["url"])
+    next_boundary = base.next_spread_marker(
+        float(spread.replace("bp", "")) if re.fullmatch(r"\d+(?:\.\d+)?bp", spread) else None
+    )
     msg = "\n".join([
         f"🔔 [프랑스 국채·신용등급] {name}",
         "",
@@ -295,11 +337,11 @@ def format_event(rating: dict, events: list[dict], pending: dict,
         " 재정위기·캐리 청산 전염 가설은 약해집니다.",
         "",
         "■ 먼저 확인할 지표",
-        "• 프랑스-독일 동일 기준일 국채금리차 150bp 재진입 및 일간 변화",
+        f"• 프랑스-독일 동일 기준일 국채금리차 다음 경계 {next_boundary} 및 일간 변화",
         "• 유럽 국채 유동성·매수/매도 호가차·환매조건부채권 거래조건",
         "• 프랑스 10월 23일 공식 신용등급 결과와 2027년 예산 논의",
         "",
-        f"• AFT France Moody's rating calendar: {rating['url']}",
+        primary_link,
         f"• Briefs France carry story: {ORIGINAL_STORY}",
         *([f"• France government Moody press: {next(x for x in events if x['kind'] == 'government_rating_notice')['url']}"]
           if any(x["kind"] == "government_rating_notice" for x in events) else []),
@@ -326,7 +368,7 @@ def add_market_carry_context(existing: str, pending: dict, local_day: dt.date) -
     )
     section = "\n".join([
         "■ 캐리·레버리지 전염 확인",
-        f"• 동일 기준일 프랑스-독일 시장금리차: {gap:.1f}bp ({asof}).",
+        f"• 동일 기준일 프랑스-독일 시장금리차: {gap:.1f}bp ({asof}). 다음 감시 {base.next_spread_marker(gap)}.",
         "• 10월 2일 보도: 프랑스 국채·금리스와프 가격차에 투자한 레버리지 포지션 축소가 관측됐습니다.",
         "• 메모리주에 직접 영향을 줬는지는 미확인입니다."
         " 국채 유동성 악화·달러 및 엔화 변화·기술주 동반 매도가 확인돼야 전염 가설을 강화할 수 있습니다.",
@@ -361,6 +403,7 @@ def main() -> int:
     local_day = now.astimezone(PARIS).date()
     events = credit_events(local_day, existing_credit, rating)
     delivered = set(existing_credit.get("sent_keys") or [])
+    events.extend(sp_review_events(local_day, delivered))
 
     # First-party French Finance Ministry is a backup for the AFT's HTTP 403
     # problem. A ministry response can confirm publication of an official
