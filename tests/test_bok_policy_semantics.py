@@ -5,6 +5,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from bok_rate_signal_upgrade_v3 import policy_flags, event_score
+from bok_mpc_watch_correct import parse_statement_correct, build_alert_correct
+from bok_mpc_watch_final import _main_direction
 
 
 class PolicySemanticsTests(unittest.TestCase):
@@ -44,6 +46,49 @@ class PolicySemanticsTests(unittest.TestCase):
         self.assertTrue(is_new_policy_event(
             {"speaker": "신현송", "date": "2026-10-15", "flags": {"ai_war_inflation": True}}, before
         ))
+
+    def test_october_hold_and_qualitative_forecasts(self):
+        document = {
+            "title": "통화정책방향(2026.10.22)",
+            "url": "https://www.bok.or.kr/portal/bbs/P0000559/view.do?nttId=99999999",
+            "hash": "fixture-only",
+            "text": (
+                "금융통화위원회는 다음 통화정책방향 결정시까지 한국은행 기준금리를 "
+                "현재의 3.00% 수준에서 유지하여 통화정책을 운용하기로 하였다. "
+                "금년 및 내년 성장률은 지난 8월 전망치(각각 3.3%, 2.9%)를 상당폭 상회할 것이다. "
+                "금년 소비자물가 및 근원물가 상승률은 8월 전망치에 대체로 부합하겠으나, "
+                "내년에는 기존 전망치(2.3%, 2.5%)를 상회할 것이다. "
+                "수도권 주택가격의 오름세는 다시 확대되었다. "
+                "금번 기준금리 동결 결정에 대해서는 금융통화위원 7명 모두 찬성하였다. "
+                "별도 시장금리 3.75%는 한국은행 기준금리가 아니다."
+            ),
+        }
+        parsed = parse_statement_correct(document)
+        self.assertEqual((parsed["rate_from"], parsed["rate_to"]), (3.0, 3.0))
+        self.assertEqual(_main_direction(parsed), "동결")
+        self.assertEqual(parsed["vote_for"], 7)
+        self.assertNotIn("growth_this", parsed)
+        self.assertNotIn("cpi_next", parsed)
+        self.assertTrue(parsed["flags"]["growth_above_aug"])
+        self.assertTrue(parsed["flags"]["inflation_next_up"])
+        self.assertTrue(parsed["flags"]["housing_reaccelerating"])
+        alert = build_alert_correct(parsed, None, False)
+        self.assertIn("3.00%", alert)
+        self.assertIn("상당폭 상회", alert)
+        self.assertIn("7명", alert)
+        self.assertIn("새 확정 수치 미제시", alert)
+
+    def test_august_baseline_does_not_gain_false_new_event_flags(self):
+        document = {
+            "title": "통화정책방향(2026.8.27)",
+            "url": "https://www.bok.or.kr/portal/bbs/P0000559/view.do?nttId=11064191",
+            "hash": "aug-fixture",
+            "text": "금융통화위원회는 기준금리를 2.75%에서 3.00%로 상향 조정하였다.",
+        }
+        parsed = parse_statement_correct(document)
+        self.assertEqual((parsed["rate_from"], parsed["rate_to"]), (2.75, 3.0))
+        for key in ("growth_above_aug", "inflation_next_up", "housing_reaccelerating"):
+            self.assertNotIn(key, parsed["flags"])
 
 
 if __name__ == "__main__":

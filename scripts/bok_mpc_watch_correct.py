@@ -40,9 +40,21 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
             ],
         })
     else:
-        m = re.search(r"기준금리를\s*현재의\s*([0-9.]+)%\s*수준에서\s*([0-9.]+)%로", text)
+        # 인상·인하 문장과 "3.00% 수준에서 유지" 동결 문장을 모두 처리한다.
+        # 무관한 시장 금리(예: 3.75%)를 정책금리로 오인하지 않도록 "기준금리를"에 고정한다.
+        m = re.search(
+            r"기준금리를\s*현재의\s*([0-9.]+)\s*%\s*수준에서\s*([0-9.]+)\s*%\s*로",
+            text,
+        )
         if m:
             out["rate_from"], out["rate_to"] = float(m.group(1)), float(m.group(2))
+        else:
+            hold = re.search(
+                r"기준금리를\s*(?:현재의\s*)?([0-9.]+)\s*%\s*(?:수준에서|수준으로|로)\s*유지",
+                text,
+            )
+            if hold:
+                out["rate_from"] = out["rate_to"] = float(hold.group(1))
         m = re.search(r"금년 및 내년 성장률은[^.]{0,320}?상회하는\s*([0-9.]+)%\s*및\s*([0-9.]+)%", text)
         if m:
             out["growth_this"], out["growth_next"] = float(m.group(1)), float(m.group(2))
@@ -52,9 +64,47 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
         m = re.search(r"근원물가 상승률은[^.]{0,320}?상회하는\s*([0-9.]+)%", text)
         if m:
             out["core_this"] = out["core_next"] = float(m.group(1))
-        m = re.search(r"금번 기준금리 (?:인상|동결|인하) 결정에 대해 금융통화위원\s*([0-9]+)\s*명은 찬성", text)
+        m = re.search(
+            r"금번\s*기준금리\s*(?:인상|동결|인하)\s*결정에\s*대해(?:서는)?[^.]{0,90}?금융통화위원\s*([0-9]+)\s*명[^.]{0,25}?찬성",
+            text,
+        )
         if m:
             out["vote_for"] = int(m.group(1))
+
+        # 정성적 상향 전망을 현재의 확정 성장률·물가 숫자로 오인하지 않는다.
+        # 공식 발표문에 새 숫자가 없으면 수치 대신 기존 전망 대비 방향만 기록한다.
+        growth_change = re.search(
+            r"금년\s*및\s*내년\s*성장률은.{0,250}?8월\s*전망치.{0,100}?상당폭\s*상회",
+            text,
+        )
+        if growth_change:
+            out["growth_outlook"] = "8월 전망 상당폭 상회"
+            ref = re.search(
+                r"8월\s*전망치\s*\(\s*각각\s*([0-9.]+)\s*%\s*,\s*([0-9.]+)\s*%\s*\)",
+                growth_change.group(0),
+            )
+            if ref:
+                out["growth_reference_this"] = float(ref.group(1))
+                out["growth_reference_next"] = float(ref.group(2))
+        if re.search(r"금년\s*소비자물가\s*및\s*근원물가\s*상승률은.{0,140}?대체로\s*부합", text):
+            out["inflation_this_near_aug"] = True
+        future_inflation = re.search(
+            r"내년에는.{0,100}?(?:기존|8월)\s*전망치.{0,110}?상회",
+            text,
+        )
+        if future_inflation:
+            out["inflation_next_up"] = True
+            ref = re.search(
+                r"전망치\s*\(\s*([0-9.]+)\s*%\s*,\s*([0-9.]+)\s*%\s*\)",
+                future_inflation.group(0),
+            )
+            if ref:
+                out["cpi_reference_next"] = float(ref.group(1))
+                out["core_reference_next"] = float(ref.group(2))
+        if re.search(r"수도권\s*주택가격.{0,60}?(?:다시\s*확대|오름세.{0,20}?확대)", text):
+            out["housing_accelerating"] = True
+        if re.search(r"(?:두\s*차례|2차례)\s*(?:의\s*)?인상.{0,90}?(?:파급\s*영향|효과|점검)", text):
+            out["prior_hikes_assessment"] = True
 
         opinions: list[dict[str, Any]] = []
         for m in re.finditer(
@@ -86,6 +136,14 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
         "fx_volatility": "높은 환율 변동성" in text,
         "domestic_recovery": "내수 회복" in text or "소비 회복세" in text or "2026.8.27" in stmt["title"],
     }
+    # 거짓값으로 채운 신규 플래그는 기존 8월 사건의 해시를 바꾸므로 true만 추가한다.
+    extra_flags = {
+        "growth_above_aug": bool(out.get("growth_outlook")),
+        "inflation_next_up": bool(out.get("inflation_next_up")),
+        "housing_reaccelerating": bool(out.get("housing_accelerating")),
+        "hold_prior_hikes_effect": bool(out.get("prior_hikes_assessment")),
+    }
+    out["flags"].update({k: v for k, v in extra_flags.items() if v})
     return out
 
 
@@ -163,8 +221,20 @@ def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correctio
         lines.append(f"• 표결: <b>결정 찬성 {p['vote_for']}명{tail}</b>")
     if "growth_this" in p:
         lines.append(f"• 성장률: <b>올해 {p['growth_this']:.1f}% / 내년 {p['growth_next']:.1f}%</b>")
+    if p.get("growth_outlook"):
+        a = p.get("growth_reference_this")
+        b = p.get("growth_reference_next")
+        reference = f"(올해 {a:.1f}% / 내년 {b:.1f}%)" if a is not None and b is not None else ""
+        lines.append(f"• 성장률 방향: <b>8월 전망치{reference} 상당폭 상회</b> (새 확정 수치 미제시)")
     if "cpi_this" in p:
         lines.append(f"• 소비자물가: <b>올해 {p['cpi_this']:.1f}% / 내년 {p['cpi_next']:.1f}%</b>")
+    elif p.get("inflation_this_near_aug"):
+        lines.append("• 올해 물가 전망: <b>8월 소비자물가·근원물가 전망에 대체로 부합</b>")
+    if p.get("inflation_next_up"):
+        a = p.get("cpi_reference_next")
+        b = p.get("core_reference_next")
+        reference = f"(소비자 {a:.1f}% / 근원 {b:.1f}%)" if a is not None and b is not None else ""
+        lines.append(f"• 내년 물가 방향: <b>기존 전망치{reference} 상회</b> (새 확정 수치 미제시)")
     if "core_this" in p:
         lines.append(f"• 근원물가: <b>올해 {p['core_this']:.1f}% / 내년 {p['core_next']:.1f}%</b>")
     if dot:
@@ -201,6 +271,14 @@ def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correctio
         lines.append("• 대신 <b>‘추가 인상의 시기와 속도를 결정’</b>한다는 표현은 유지")
         lines.append("• 최종 정책문단에서 <b>‘높은 환율 변동성’</b>은 빠지고 수도권 집값·가계부채가 직접 남음")
     else:
+        if f.get("growth_above_aug"):
+            lines.append("• <b>성장률이 8월 전망을 상당폭 상회</b>한다는 표현으로 상향")
+        if f.get("inflation_next_up"):
+            lines.append("• <b>내년 소비자물가·근원물가 전망 상회</b> 방향 확인")
+        if f.get("housing_reaccelerating"):
+            lines.append("• <b>수도권 주택가격 오름세 재확대</b>로 금융안정 경계 강화")
+        if f.get("hold_prior_hikes_effect"):
+            lines.append("• <b>앞선 두 차례 인상의 파급효과 점검</b>을 동결 근거로 제시")
         if f.get("preemptive"):
             lines.append("• <b>선제적 물가 대응</b> 문구 확인")
         if f.get("domestic_recovery"):

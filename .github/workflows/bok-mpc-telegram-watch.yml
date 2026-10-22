@@ -61,7 +61,11 @@ jobs:
           rm -f out/bok_mpc_alert.html out/bok_mpc_errors.log
           python -m py_compile scripts/bok_mpc_watch_v2.py scripts/bok_mpc_watch_resilient.py scripts/bok_mpc_watch_correct.py scripts/bok_mpc_watch_final.py scripts/bok_rate_signal_upgrade.py scripts/bok_rate_signal_upgrade_v2.py scripts/bok_rate_signal_upgrade_v3.py
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_bok_policy_semantics.py' -v
-          python scripts/bok_mpc_watch_final.py
+          if ! python scripts/bok_mpc_watch_final.py; then
+            echo "금통위 공식자료 조회·파싱 실패: 알림 전송 및 기준선 갱신 차단" >&2
+            if [ -s out/bok_mpc_errors.log ]; then cat out/bok_mpc_errors.log >&2; fi
+            exit 1
+          fi
           python scripts/bok_rate_signal_upgrade_v3.py
           cat out/bok_mpc_status.md >> "$GITHUB_STEP_SUMMARY"
           if [ -s out/bok_mpc_errors.log ]; then
