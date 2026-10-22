@@ -528,6 +528,67 @@ jobs:
           print("ai_security_replication_alert_language=PASS")
           PY
 
+      - name: Verify PHP2Shell patch and real-world exploitation stages
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_security_web_watch import (
+              PHP_CRITICAL_CVES, build_alert, cluster_alert_events,
+              incident_fact, material, normalize_item, php_critical_stage,
+              same_event,
+          )
+          import datetime as dt
+          patch = {
+              "kind": "official",
+              "query": "PHP official security bulletin",
+              "title": "PHP security release fixes CVE-2026-109618 and CVE-2026-109619",
+              "description": "PHP 8.5.12 8.4.27 8.3.36 8.2.35 fixes unauthenticated remote code execution",
+              "source": "PHP Security Team",
+              "url": "https://www.php.net/archive/2026.php#2026-10-21-5",
+          }
+          normalized = normalize_item(patch)
+          assert material(normalized), "PHP CVE without an AI keyword was dropped"
+          assert php_critical_stage(normalized) == "patch_released"
+          assert normalized["severity"] == 3 and normalized["vendor"] == "PHP 재단"
+          assert "실전 악용 확정 아님" in incident_fact(normalized)
+          assert len(PHP_CRITICAL_CVES) == 2
+          reprint = normalize_item({
+              **patch, "kind": "news", "source": "Reuters",
+              "title": "PHP security release fixes CVE-2026-109618 and CVE-2026-109619 - Reuters",
+              "url": "https://example.org/reprint",
+          })
+          assert material(reprint) and same_event(normalized, reprint)
+          groups = cluster_alert_events([normalized, reprint])
+          assert len(groups) == 1 and len(groups[0]) == 2
+          rumor = normalize_item({
+              **patch, "kind": "news", "source": "Unknown Blog",
+              "title": "PHP vulnerabilities actively exploited in the wild CVE-2026-109618",
+          })
+          assert not material(rumor), "Unknown publisher was trusted"
+          no_wild = normalize_item({
+              **patch, "kind": "news", "source": "Reuters",
+              "title": "No active exploitation found for php2shell CVE-2026-109618",
+          })
+          assert php_critical_stage(no_wild) != "reported_exploitation"
+          reported = normalize_item({
+              **patch, "kind": "news", "source": "Reuters",
+              "title": "PHP CVE-2026-109618 actively exploited in the wild",
+          })
+          assert material(reported)
+          assert php_critical_stage(reported) == "reported_exploitation"
+          assert reported["category"] != normalized["category"]
+          confirmed = normalize_item({
+              **patch, "source": "CISA", "query": "CISA KEV",
+              "title": "PHP CVE-2026-109618 added to exploited vulnerabilities",
+          })
+          assert php_critical_stage(confirmed) == "confirmed_exploitation"
+          assert confirmed["category"] != reported["category"]
+          assert len(cluster_alert_events([normalized, reported, confirmed])) == 3
+          title, body = build_alert([[normalized]], dt.datetime(2026, 10, 22, tzinfo=dt.timezone.utc))
+          assert all(v in title + body for v in ("CVE-2026-109618", "8.5.12", "실전 악용 확정 아님"))
+          print("ai_security_php2shell_stage_and_dedup_regression=PASS")
+          PY
+
       - name: Verify alert overflow deferral
         shell: bash
         run: |
