@@ -773,6 +773,73 @@ class TwoColorTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
             self.presenter.verify_alert()
 
+    def test_english_strike_plan_retains_actors_reported_stage_and_source_text(self):
+        f=json.loads((Path(__file__).parent/'test_fixtures/war_strike_preparation_39701551356.json').read_text(encoding='utf-8'))
+        row=f['articles'][0]
+        self.assertEqual(stage.non_military_kind(row),'military_discussion')
+        self.assertEqual(stage._attack_plan_status(stage._headline(row)),'planned')
+        self.assertEqual(stage.topic_label(row),'미국·이스라엘·이란 · 공습·공격 계획·추진')
+        self.assertEqual(stage._display_headline(row),' '.join(row['title_original'].split()))
+        self.assertEqual(presentation.direction(stage,row),'red')
+        self.assertIn('November 3',stage._display_headline(row))
+        self.assertIn('reportedly',stage._display_headline(row))
+
+    def test_english_attack_plan_denial_and_separate_actual_action(self):
+        for title in ('U.S. and Israel do not plan new Iran strikes after midterms',
+                      'U.S. and Israel deny plans for renewed attacks on Iran'):
+            with self.subTest(title=title):
+                row={'title_original':title}
+                self.assertEqual(stage._attack_plan_status(stage._headline(row)),'denied')
+                self.assertEqual(stage.non_military_kind(row),'military_discussion')
+                self.assertEqual(presentation.direction(stage,row),'green')
+                self.assertEqual(stage._display_headline(row),title)
+        title='U.S. and Israel do not plan new Iran strikes; Russia launched attacks on Ukraine'
+        self.assertIsNone(stage.non_military_kind({'title_original':title}))
+        self.assertEqual(presentation.direction(stage,{'title_original':title}),'red')
+        self.assertIsNone(stage._attack_plan_status('U.S. plans new energy imports after attacks'))
+
+    def test_us_ukraine_russia_abbreviations_and_resumption_readiness_stage(self):
+        cases=(('푸틴, 미·우크라와 종전협상 재개 동의…11월 개최 가능성 - 신아일보','미국·우크라이나·러시아 · 협상 재개 동의'),
+               ('미·러·우, 3자 정상회담 열리나…러시아 "협상 재개 준비 됐다" - 동행미디어 시대','미국·우크라이나·러시아 · 협상 재개 준비'))
+        for title,topic in cases:
+            with self.subTest(title=title):
+                row={'title_original':title}
+                self.assertEqual(stage.non_military_kind(row),'diplomatic_plan')
+                self.assertEqual(stage.topic_label(row),topic)
+                self.assertEqual(presentation.direction(stage,row),'green')
+                self.assertEqual(stage._display_headline(row),title)
+                self.assertEqual(presentation.direction(stage,{'title_original':title+'…러시아 미사일 발사했다'}),'red')
+        row={'title_original':'미·러·우, 러시아 "협상 재개 준비되지 않았다"'}
+        self.assertEqual(stage.non_military_kind(row),'diplomatic_position')
+        self.assertEqual(stage.topic_label(row),'미국·우크라이나·러시아 · 협상 재개 준비 부인')
+        self.assertEqual(presentation.direction(stage,row),'red')
+
+    def test_saved_strike_preparation_natural_full_gate_and_selection(self):
+        self.fixture=json.loads((Path(__file__).parent/'test_fixtures/war_strike_preparation_39701551356.json').read_text(encoding='utf-8'))
+        (_,_,ids),text,receipt=self.present(tuple(range(len(self.fixture['articles']))))
+        shown=[r for r in receipt['articles'] if r['rendered']]
+        self.assertEqual(ids,[r['id'] for r in self.fixture['articles'] if r['rendered']])
+        self.assertEqual([r['classification_color'] for r in shown],['red','green','green','green'])
+        self.assertIn('미국·이스라엘·이란 · 공습·공격 계획·추진',text)
+        self.assertIn('미국·우크라이나·러시아 · 협상 재개 준비',text)
+        self.assertIn(html.escape(' '.join(shown[0]['title_original'].split())),text)
+        self.assertNotIn('후속 협상 실무 의제',text)
+        self.assertNotIn('이란·호르무즈',text)
+        self.assertNotIn('🟡',text)
+        self.assertEqual(receipt['markets'],self.fixture['markets'])
+        self.assertEqual(receipt['market_source_status'],self.fixture['market_source_status'])
+        self.assertTrue(all(not r.get('signals_ko') for r in shown))
+        self.assertEqual(self.watch.STATE.read_bytes(),self.state_before)
+        self.presenter.verify_alert()
+
+    def test_same_hash_actual_strike_cache_and_preparation_omission_rejected(self):
+        f=json.loads((Path(__file__).parent/'test_fixtures/war_strike_preparation_39701551356.json').read_text(encoding='utf-8'))
+        self.watch.ALERT.write_text(f['original_semantic_alert'],encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(f['original_semantic_evidence'],ensure_ascii=False),encoding='utf-8')
+        self.watch.PENDING.write_text(json.dumps({'ids':[r['id'] for r in f['articles'] if r['rendered']]}),encoding='utf-8')
+        with self.assertRaisesRegex(RuntimeError,'WAR_INTEGRITY_GATE'):
+            self.presenter.verify_alert()
+
     def test_production_entry_installs_directional_final_gate(self):
         original = stage.runner.verify_alert
         def entry():

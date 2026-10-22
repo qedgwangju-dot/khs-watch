@@ -1,0 +1,908 @@
+{
+  "provenance": {
+    "run_id": 39701551356,
+    "actual_code_sha": "f092bc9301647e0e90a7d31c5660188e89f9b280",
+    "queried_at_kst": "2026-10-22T09:46:22.392729+09:00",
+    "artifact_id": 12393111142,
+    "operating_HTTP_bytes_preserved": false,
+    "full_publisher_bodies_preserved": false,
+    "later_HTTP_inserted": false
+  },
+  "articles": [
+    {
+      "id": "0aafaa46c0a2a37b8b2a",
+      "title_original": "U.S. AND ISRAEL REPORTEDLY PLAN NEW IRAN STRIKES AFTER MIDTERMS\nThe U.S. and Israel have reportedly developed plans for renewed attacks on Iran after the November 3 elections, according to the New York Times.\nPotential targets include energy infrastructure, nuclear facilities and missile assets....",
+      "title_ko": "뉴욕타임스에 따르면 미국과 이스라엘은 중간선거 이후 새로운 이란 공격을 계획하고 있는 것으로 알려졌다. 미국과 이스라엘은 11월 3일 선거 이후 이란에 대한 새로운 공격 계획을 수립한 것으로 알려졌다. 잠재적 목표에는 에너지 인프라, 핵 시설 및 미사일 자산이 포함됩니다....",
+      "description": "U.S. AND ISRAEL REPORTEDLY PLAN NEW IRAN STRIKES AFTER MIDTERMS\nThe U.S. and Israel have reportedly developed plans for renewed attacks on Iran after the November 3 elections, according to the New York Times.\nPotential targets include energy infrastructure, nuclear facilities and missile assets.\nDefense Secretary Pete Hegseth reportedly discussed the plans with Israeli Prime Minister Benjamin Netanyahu.\n( @WalterBloomberg )",
+      "source": "Walter Bloomberg",
+      "link": "https://t.me/WalterBloomberg/37230",
+      "published": "Wed, 21 Oct 2026 23:39:07 +0000",
+      "score": 47,
+      "tags": [
+        "정치일정",
+        "협상내용",
+        "확전"
+      ],
+      "body_checked": true,
+      "signals_ko": [
+        "후속 협상 실무 의제에 에너지 인프라 포함"
+      ],
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "a73b380ab4c3c46b7a374292b551408c80fad01dd220d9afc679606cc6d9eb69"
+    },
+    {
+      "id": "53c4a4e0b98552945720",
+      "title_original": "푸틴, 美·우크라와 3자 종전협상 재개 동의…9개월만에 열리나 - 연합뉴스",
+      "title_ko": "푸틴, 美·우크라와 3자 종전협상 재개 동의…9개월만에 열리나 - 연합뉴스",
+      "description": "푸틴, 美·우크라와 3자 종전협상 재개 동의…9개월만에 열리나 연합뉴스",
+      "source": "연합뉴스",
+      "source_url": "https://www.yna.co.kr",
+      "link": "https://www.yna.co.kr/view/AKR20261022026300009",
+      "discovery_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4wVG5SMkhlbXpqUXFkdmdicEJrc3RuRkVHQW1nUkxKODI2RVNqMjljZDZ4Y28tbHRpUnNsdzk5VnJWZnNtOHVXSTdZRDRSUGc2MHNyQjBYRUJINjDSAWBBVV95cUxOdUc2OGU0aS01ZTBmRjJCTjFmcGtDeUJ2QTM2MDFhZEw4WXQycjBBd3dNRmJpOG81eURfcnZwVEQ3M0VIeFM3SVRxdjBiSGE2TFhWQ294QVV3UHdZLWVhdTY?oc=5",
+      "resolved_url": "https://www.yna.co.kr/view/AKR20261022026300009",
+      "published": "Thu, 22 Oct 2026 08:42:05 +0900",
+      "rss_published": "Wed, 21 Oct 2026 23:42:05 GMT",
+      "source_metadata": {
+        "title": "푸틴, 美·우크라와 3자 종전협상 재개 동의…9개월만에 열리나 | 연합뉴스",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-22T08:42:05+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-22T08:42:05+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-22T08:42:05+09:00"
+          }
+        ]
+      },
+      "score": 12,
+      "tags": [
+        "협상 재개 동의"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_plan",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "5ce7320968f91cfac211fce0477b2e5f6acd0a487b85cfab15e06a4f27bbed6d"
+    },
+    {
+      "id": "2799848aceb2a4c4f591",
+      "title_original": "푸틴, 미·우크라와 종전협상 재개 동의…11월 개최 가능성 - 신아일보",
+      "title_ko": "푸틴, 미·우크라와 종전협상 재개 동의…11월 개최 가능성 - 신아일보",
+      "description": "푸틴, 미·우크라와 종전협상 재개 동의…11월 개최 가능성 신아일보",
+      "source": "신아일보",
+      "source_url": "https://www.shinailbo.co.kr",
+      "link": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5074640",
+      "discovery_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE05TmFDY3dTckFIYnhVYlBNNE92czFhWWtkOUtsOS05dWZiT0gzenhlaGxQSjZmLXlwUUhkVG5Sd1RLbGRiQUpmdzVJRko3M19tYkRNR0pDVG1rV2QtSWM3UW1xcXcwQzdmY1VlUkFuM3I?oc=5",
+      "resolved_url": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5074640",
+      "published": "Thu, 22 Oct 2026 09:31:57 +0900",
+      "rss_published": "Thu, 22 Oct 2026 00:31:57 GMT",
+      "source_metadata": {
+        "title": "푸틴, 미·우크라와 종전협상 재개 동의…11월 개최 가능성 - 신아일보",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-22T09:31:57+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-22T09:31:57+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-22T09:31:57+09:00"
+          },
+          {
+            "field": "visible:입력",
+            "at_kst": "2026-10-22T09:31:00+09:00"
+          }
+        ]
+      },
+      "score": 11,
+      "tags": [
+        "협상 재개 동의"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_plan",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "938b6be294ced2c01ceeb95a9b0b0e50e4cfebb9d9ff68d60622061b12a2796b"
+    },
+    {
+      "id": "536aeadd30ac6aa8124a",
+      "title_original": "미·러·우, 3자 정상회담 열리나…러시아 \"협상 재개 준비 됐다\" - 동행미디어 시대",
+      "title_ko": "미·러·우, 3자 정상회담 열리나…러시아 \"협상 재개 준비 됐다\" - 동행미디어 시대",
+      "description": "미·러·우, 3자 정상회담 열리나…러시아 \"협상 재개 준비 됐다\" 동행미디어 시대",
+      "source": "동행미디어 시대",
+      "source_url": "https://www.sidae.com",
+      "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE12ZHFycUVEWFdLU2ZBdXVJejAxUmJHd1pCX09EUk5MX1k0SE5jVlBmaU5jTmlpaXV0NDRkdW50UDJ0WlEzWGJLdkc2QWI0Ui1fVUtpUkZXcURQaGpmOGc?oc=5",
+      "published": "Thu, 22 Oct 2026 00:29:35 GMT",
+      "score": 11,
+      "tags": [
+        "외교 접촉 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "yellow",
+      "non_military_kind": "diplomatic_contact",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "2026f261bc22530262f3",
+      "title_original": "러시아, 3자 종전협상 재개 동의한 날에 키이우 폭격…6명 부상 - 한국경제",
+      "title_ko": "러시아, 3자 종전협상 재개 동의한 날에 키이우 폭격…6명 부상 - 한국경제",
+      "description": "러시아, 3자 종전협상 재개 동의한 날에 키이우 폭격…6명 부상 한국경제",
+      "source": "한국경제",
+      "source_url": "https://www.hankyung.com",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5HTWxaNmpZYkNHX0lkSmZZRnVkZTVZRDc3QWdhOTdJUDU1Q1M0eG1zMUVwaTVKODdLUXZkenhyWUZ2NUhPT2hRVmV1TktjUW1uVzZCZ3pIWktBUQ?oc=5",
+      "published": "Thu, 22 Oct 2026 00:30:11 GMT",
+      "score": 11,
+      "tags": [
+        "공습·공격 피해 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "704cf391de130f04f009",
+      "title_original": "젤렌스키, 현재 전선에서 전투 중단이 가장 현실적 종전의 길",
+      "title_ko": "젤렌스키, 현재 전선에서 전투 중단이 가장 현실적 종전의 길",
+      "description": "[파이낸셜뉴스] 볼로디미르 젤렌스키 우크라이나 대통령이 러시아와의 전쟁을 끝내기 위해 현재의 전선에서 전투를 중단하는 것이 가장 현실적인 방안이라며 휴전 협상의 가능성을 열어두었다. 젤렌스키 대통령은 21일(현지시간) 폭스뉴스채널과 가진 인터뷰에서 현재의 전선대로 협정을 맺을 용의가 있느냐는 질문에 \"지금 당장은 전선을 동결해야 하며, 이것이 전쟁을 끝낼 수 있는 실제적인 방법이라고 생각한다\"며 \"우리는 이를 휴전, 즉 동결과 정지라고 부른다\"고 밝혔다. 이번 발언은 스티브 윗코프 미국 특사가 상트페테르부르크에서 블라디미르 푸틴 러시아 대통령과 회담을 가진 직후 나왔다. 젤렌스키 대통령은 우크라이나가 어떤 형식의 협상에도 응할 용의가 있지만, 당사자인 우크라 정부가 반드시 직접 참여해야 한다",
+      "source": "파이낸셜뉴스",
+      "link": "https://www.fnnews.com/news/202610220834375713",
+      "discovery_url": "https://www.fnnews.com/news/202610220834375713",
+      "resolved_url": "https://www.fnnews.com/news/202610220834375713",
+      "published": "Thu, 22 Oct 2026 09:22:37 +0900",
+      "rss_published": "Thu,22 Oct 2026 09:22:37 +0900",
+      "source_metadata": {
+        "title": "젤렌스키, 현재 전선에서 전투 중단이 가장 현실적 종전의 길",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-22T09:22:37+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-22T09:22:37+09:00"
+          },
+          {
+            "field": "dd:published_time",
+            "at_kst": "2026-10-22T09:22:37+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-22T09:22:37+09:00"
+          },
+          {
+            "field": "visible:입력",
+            "at_kst": "2026-10-22T09:22:00+09:00"
+          }
+        ]
+      },
+      "score": 11,
+      "tags": [
+        "종전·협상"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "publication_basis": "publisher",
+      "rendered": false,
+      "article_text_sha256": "9e1d9be12b4ed18b9d0e1bdd717630372df794c7a7c279aa778bc0740bd7d760"
+    },
+    {
+      "id": "4244be74c760abdcf15a",
+      "title_original": "Missiles strike Ukraine's Kyiv, Reuters witness says",
+      "title_ko": "로이터 통신에 따르면 우크라이나의 키예프에 미사일이 발사되고 있다.",
+      "description": "",
+      "source": "Reuters",
+      "link": "https://www.reuters.com/world/europe/missiles-strike-ukraines-kyiv-reuters-witness-says-2026-10-21/",
+      "published": "2026-10-21T23:45:28.54Z",
+      "score": 11,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "4b9a3b0570f1f1bdf956",
+      "title_original": "Driver at Russian-held Zaporizhzhia nuclear plant killed in drone attacks, managers say",
+      "title_ko": "관리자들은 러시아가 보유한 자포리자 (Zaporizhzhia) 원자력 발전소의 운전자가 드론 공격으로 사망했다고 말합니다.",
+      "description": "",
+      "source": "Reuters",
+      "link": "https://www.reuters.com/world/driver-russian-held-zaporizhzhia-nuclear-plant-killed-drone-attacks-managers-say-2026-10-21/",
+      "published": "2026-10-21T23:29:15.758Z",
+      "score": 11,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29782.75,
+      "pct": -0.7473256240210668,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "09:36 KST",
+      "observed_at_kst": "2026-10-22T09:36:33+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 30007.0,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 30007.0,
+        "chartPreviousClose": 30007.0,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792629393,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792641540,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 98.0199966430664,
+      "pct": 0.8955189326468327,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "09:36 KST",
+      "observed_at_kst": "2026-10-22T09:36:32+09:00",
+      "symbol": "CL=F",
+      "previous_close": 97.15,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 97.15,
+        "chartPreviousClose": 97.15,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792629392,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792555200,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792641540,
+            "end": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 110.0,
+      "pct": 1.0843594927403055,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "09:36 KST",
+      "observed_at_kst": "2026-10-22T09:36:02+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 108.82,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 108.82,
+        "chartPreviousClose": 108.82,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792629362,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792555200,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.69999694824219,
+      "pct": -0.07860390229692538,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "09:36 KST",
+      "observed_at_kst": "2026-10-22T09:36:39+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 101.78,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 101.78,
+        "chartPreviousClose": 101.78,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792629399,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792555200,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792555200,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792641540,
+            "start": 1792641540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "original_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·타격·확전·압박</b>\n🟢 <b>대화·협상·완화</b>\n조회 2026-10-22 09:46 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [신규] <b>1. 이란·호르무즈</b>\n후속 협상 실무 의제에 에너지 인프라 포함\nRSS 보도 10-22 08:39 KST · <b>67분 경과</b> · 확전 · <a href=\"https://t.me/WalterBloomberg/37230\">Walter Bloomberg 원문</a> · RSS 입력 기준·본문 미확인\n\n🟢 [신규] <b>2. 미국·우크라이나·러시아 · 협상 재개 동의</b>\n푸틴, 美·우크라와 3자 종전협상 재개 동의…9개월만에 열리나 - 연합뉴스\n보도 10-22 08:42 KST · <b>64분 경과</b> · 협상 재개 동의 · <a href=\"https://www.yna.co.kr/view/AKR20261022026300009\">연합뉴스 원문</a>\n\n🟢 [속보] <b>3. 우크라이나·러시아 · 협상 재개 동의</b>\n푸틴, 미·우크라와 종전협상 재개 동의…11월 개최 가능성 - 신아일보\n보도 10-22 09:31 KST · <b>14분 경과</b> · 협상 재개 동의 · <a href=\"https://www.shinailbo.co.kr/news/articleView.html?idxno=5074640\">신아일보 원문</a>\n\n🟢 [속보] <b>4. 러시아 · 외교 접촉 보도</b>\n미·러·우, 3자 정상회담 열리나…러시아 &quot;협상 재개 준비 됐다&quot; - 동행미디어 시대\nRSS 보도 10-22 09:29 KST · <b>16분 경과</b> · 외교 접촉 보도 · <a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE12ZHFycUVEWFdLU2ZBdXVJejAxUmJHd1pCX09EUk5MX1k0SE5jVlBmaU5jTmlpaXV0NDRkdW50UDJ0WlEzWGJLdkc2QWI0Ui1fVUtpUkZXcURQaGpmOGc?oc=5\">동행미디어 시대 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,782.75</b>  -0.75% · 제공처 비교종가 대비 · 기준 09:36 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>98.02</b>  +0.90% · 제공처 비교종가 대비 · 기준 09:36 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>110.00</b>  +1.08% · 제공처 비교종가 대비 · 기준 09:36 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.70</b>  -0.08% · 제공처 비교종가 대비 · 기준 09:36 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n🔴 <b>공격·타격·확전·압박 관련:</b> 1건\n🟢 <b>대화·협상·완화 관련:</b> 3건\n- <b>표시 기준:</b> 초록은 대화·협상·완화, 빨강은 공격·타격·공격 예고·결렬·압박\n- <b>현재 단계:</b> 제안·발언·예고와 실제 합의·이행·공격 발생은 기사 문구로 구분\n- <b>다음:</b> 공식 행동·합의 이행·공격 발생 여부 재확인\n",
+  "original_semantic_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟡 <b>발언·제재·외교반응·협상 제약</b>\n조회 2026-10-22 09:46 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [신규] <b>1. 이란·호르무즈</b>\n후속 협상 실무 의제에 에너지 인프라 포함\nRSS 보도 10-22 08:39 KST · <b>67분 경과</b> · 확전 · <a href=\"https://t.me/WalterBloomberg/37230\">Walter Bloomberg 원문</a> · RSS 입력 기준·본문 미확인\n\n🟡 [신규] <b>2. 미국·우크라이나·러시아 · 협상 재개 동의</b>\n푸틴, 美·우크라와 3자 종전협상 재개 동의…9개월만에 열리나 - 연합뉴스\n보도 10-22 08:42 KST · <b>64분 경과</b> · 협상 재개 동의 · <a href=\"https://www.yna.co.kr/view/AKR20261022026300009\">연합뉴스 원문</a>\n\n🟡 [속보] <b>3. 우크라이나·러시아 · 협상 재개 동의</b>\n푸틴, 미·우크라와 종전협상 재개 동의…11월 개최 가능성 - 신아일보\n보도 10-22 09:31 KST · <b>14분 경과</b> · 협상 재개 동의 · <a href=\"https://www.shinailbo.co.kr/news/articleView.html?idxno=5074640\">신아일보 원문</a>\n\n🟡 [속보] <b>4. 러시아 · 외교 접촉 보도</b>\n미·러·우, 3자 정상회담 열리나…러시아 &quot;협상 재개 준비 됐다&quot; - 동행미디어 시대\nRSS 보도 10-22 09:29 KST · <b>16분 경과</b> · 외교 접촉 보도 · <a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE12ZHFycUVEWFdLU2ZBdXVJejAxUmJHd1pCX09EUk5MX1k0SE5jVlBmaU5jTmlpaXV0NDRkdW50UDJ0WlEzWGJLdkc2QWI0Ui1fVUtpUkZXcURQaGpmOGc?oc=5\">동행미디어 시대 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,782.75</b>  -0.75% · 제공처 비교종가 대비 · 기준 09:36 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>98.02</b>  +0.90% · 제공처 비교종가 대비 · 기준 09:36 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>110.00</b>  +1.08% · 제공처 비교종가 대비 · 기준 09:36 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.70</b>  -0.08% · 제공처 비교종가 대비 · 기준 09:36 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n",
+  "original_semantic_evidence": {
+    "schema_version": 1,
+    "queried_at_kst": "2026-10-22T09:46:22.392729+09:00",
+    "run_id": "39701551356",
+    "code_sha": "f092bc9301647e0e90a7d31c5660188e89f9b280",
+    "alert_sha256": "503cb099828f7bd9621d17b8dee2db6fb88ccc059702a17102f38afe098b1cf2",
+    "articles": [
+      {
+        "id": "0aafaa46c0a2a37b8b2a",
+        "title_original": "U.S. AND ISRAEL REPORTEDLY PLAN NEW IRAN STRIKES AFTER MIDTERMS\nThe U.S. and Israel have reportedly developed plans for renewed attacks on Iran after the November 3 elections, according to the New York Times.\nPotential targets include energy infrastructure, nuclear facilities and missile assets....",
+        "title_ko": "뉴욕타임스에 따르면 미국과 이스라엘은 중간선거 이후 새로운 이란 공격을 계획하고 있는 것으로 알려졌다. 미국과 이스라엘은 11월 3일 선거 이후 이란에 대한 새로운 공격 계획을 수립한 것으로 알려졌다. 잠재적 목표에는 에너지 인프라, 핵 시설 및 미사일 자산이 포함됩니다....",
+        "description": "U.S. AND ISRAEL REPORTEDLY PLAN NEW IRAN STRIKES AFTER MIDTERMS\nThe U.S. and Israel have reportedly developed plans for renewed attacks on Iran after the November 3 elections, according to the New York Times.\nPotential targets include energy infrastructure, nuclear facilities and missile assets.\nDefense Secretary Pete Hegseth reportedly discussed the plans with Israeli Prime Minister Benjamin Netanyahu.\n( @WalterBloomberg )",
+        "source": "Walter Bloomberg",
+        "link": "https://t.me/WalterBloomberg/37230",
+        "published": "Wed, 21 Oct 2026 23:39:07 +0000",
+        "score": 47,
+        "tags": [
+          "정치일정",
+          "협상내용",
+          "확전"
+        ],
+        "body_checked": true,
+        "signals_ko": [
+          "후속 협상 실무 의제에 에너지 인프라 포함"
+        ],
+        "classification_color": "red",
+        "body_verified": false,
+        "publication_basis": "discovery_feed",
+        "rendered": true,
+        "article_text_sha256": "a73b380ab4c3c46b7a374292b551408c80fad01dd220d9afc679606cc6d9eb69"
+      },
+      {
+        "id": "53c4a4e0b98552945720",
+        "title_original": "푸틴, 美·우크라와 3자 종전협상 재개 동의…9개월만에 열리나 - 연합뉴스",
+        "title_ko": "푸틴, 美·우크라와 3자 종전협상 재개 동의…9개월만에 열리나 - 연합뉴스",
+        "description": "푸틴, 美·우크라와 3자 종전협상 재개 동의…9개월만에 열리나 연합뉴스",
+        "source": "연합뉴스",
+        "source_url": "https://www.yna.co.kr",
+        "link": "https://www.yna.co.kr/view/AKR20261022026300009",
+        "discovery_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4wVG5SMkhlbXpqUXFkdmdicEJrc3RuRkVHQW1nUkxKODI2RVNqMjljZDZ4Y28tbHRpUnNsdzk5VnJWZnNtOHVXSTdZRDRSUGc2MHNyQjBYRUJINjDSAWBBVV95cUxOdUc2OGU0aS01ZTBmRjJCTjFmcGtDeUJ2QTM2MDFhZEw4WXQycjBBd3dNRmJpOG81eURfcnZwVEQ3M0VIeFM3SVRxdjBiSGE2TFhWQ294QVV3UHdZLWVhdTY?oc=5",
+        "resolved_url": "https://www.yna.co.kr/view/AKR20261022026300009",
+        "published": "Thu, 22 Oct 2026 08:42:05 +0900",
+        "rss_published": "Wed, 21 Oct 2026 23:42:05 GMT",
+        "source_metadata": {
+          "title": "푸틴, 美·우크라와 3자 종전협상 재개 동의…9개월만에 열리나 | 연합뉴스",
+          "publication_status": "verified",
+          "published_at_kst": "2026-10-22T08:42:05+09:00",
+          "publication_candidates": [
+            {
+              "field": "article:published_time",
+              "at_kst": "2026-10-22T08:42:05+09:00"
+            },
+            {
+              "field": "jsonld:datePublished",
+              "at_kst": "2026-10-22T08:42:05+09:00"
+            }
+          ]
+        },
+        "score": 12,
+        "tags": [
+          "협상 재개 동의"
+        ],
+        "body_checked": true,
+        "body_verified": true,
+        "signals_ko": [],
+        "forced_tags": [],
+        "classification_color": "yellow",
+        "non_military_kind": "diplomatic_plan",
+        "publication_basis": "publisher",
+        "rendered": true,
+        "article_text_sha256": "5ce7320968f91cfac211fce0477b2e5f6acd0a487b85cfab15e06a4f27bbed6d"
+      },
+      {
+        "id": "2799848aceb2a4c4f591",
+        "title_original": "푸틴, 미·우크라와 종전협상 재개 동의…11월 개최 가능성 - 신아일보",
+        "title_ko": "푸틴, 미·우크라와 종전협상 재개 동의…11월 개최 가능성 - 신아일보",
+        "description": "푸틴, 미·우크라와 종전협상 재개 동의…11월 개최 가능성 신아일보",
+        "source": "신아일보",
+        "source_url": "https://www.shinailbo.co.kr",
+        "link": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5074640",
+        "discovery_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE05TmFDY3dTckFIYnhVYlBNNE92czFhWWtkOUtsOS05dWZiT0gzenhlaGxQSjZmLXlwUUhkVG5Sd1RLbGRiQUpmdzVJRko3M19tYkRNR0pDVG1rV2QtSWM3UW1xcXcwQzdmY1VlUkFuM3I?oc=5",
+        "resolved_url": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5074640",
+        "published": "Thu, 22 Oct 2026 09:31:57 +0900",
+        "rss_published": "Thu, 22 Oct 2026 00:31:57 GMT",
+        "source_metadata": {
+          "title": "푸틴, 미·우크라와 종전협상 재개 동의…11월 개최 가능성 - 신아일보",
+          "publication_status": "verified",
+          "published_at_kst": "2026-10-22T09:31:57+09:00",
+          "publication_candidates": [
+            {
+              "field": "article:published_time",
+              "at_kst": "2026-10-22T09:31:57+09:00"
+            },
+            {
+              "field": "jsonld:datePublished",
+              "at_kst": "2026-10-22T09:31:57+09:00"
+            },
+            {
+              "field": "visible:입력",
+              "at_kst": "2026-10-22T09:31:00+09:00"
+            }
+          ]
+        },
+        "score": 11,
+        "tags": [
+          "협상 재개 동의"
+        ],
+        "body_checked": true,
+        "body_verified": true,
+        "signals_ko": [],
+        "forced_tags": [],
+        "classification_color": "yellow",
+        "non_military_kind": "diplomatic_plan",
+        "publication_basis": "publisher",
+        "rendered": true,
+        "article_text_sha256": "938b6be294ced2c01ceeb95a9b0b0e50e4cfebb9d9ff68d60622061b12a2796b"
+      },
+      {
+        "id": "536aeadd30ac6aa8124a",
+        "title_original": "미·러·우, 3자 정상회담 열리나…러시아 \"협상 재개 준비 됐다\" - 동행미디어 시대",
+        "title_ko": "미·러·우, 3자 정상회담 열리나…러시아 \"협상 재개 준비 됐다\" - 동행미디어 시대",
+        "description": "미·러·우, 3자 정상회담 열리나…러시아 \"협상 재개 준비 됐다\" 동행미디어 시대",
+        "source": "동행미디어 시대",
+        "source_url": "https://www.sidae.com",
+        "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE12ZHFycUVEWFdLU2ZBdXVJejAxUmJHd1pCX09EUk5MX1k0SE5jVlBmaU5jTmlpaXV0NDRkdW50UDJ0WlEzWGJLdkc2QWI0Ui1fVUtpUkZXcURQaGpmOGc?oc=5",
+        "published": "Thu, 22 Oct 2026 00:29:35 GMT",
+        "score": 11,
+        "tags": [
+          "외교 접촉 보도"
+        ],
+        "body_checked": true,
+        "signals_ko": [],
+        "forced_tags": [],
+        "classification_color": "yellow",
+        "non_military_kind": "diplomatic_contact",
+        "body_verified": false,
+        "publication_basis": "discovery_feed",
+        "rendered": true,
+        "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "2026f261bc22530262f3",
+        "title_original": "러시아, 3자 종전협상 재개 동의한 날에 키이우 폭격…6명 부상 - 한국경제",
+        "title_ko": "러시아, 3자 종전협상 재개 동의한 날에 키이우 폭격…6명 부상 - 한국경제",
+        "description": "러시아, 3자 종전협상 재개 동의한 날에 키이우 폭격…6명 부상 한국경제",
+        "source": "한국경제",
+        "source_url": "https://www.hankyung.com",
+        "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5HTWxaNmpZYkNHX0lkSmZZRnVkZTVZRDc3QWdhOTdJUDU1Q1M0eG1zMUVwaTVKODdLUXZkenhyWUZ2NUhPT2hRVmV1TktjUW1uVzZCZ3pIWktBUQ?oc=5",
+        "published": "Thu, 22 Oct 2026 00:30:11 GMT",
+        "score": 11,
+        "tags": [
+          "공습·공격 피해 보도"
+        ],
+        "body_checked": true,
+        "signals_ko": [],
+        "forced_tags": [],
+        "body_verified": false,
+        "publication_basis": "discovery_feed",
+        "rendered": false,
+        "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "704cf391de130f04f009",
+        "title_original": "젤렌스키, 현재 전선에서 전투 중단이 가장 현실적 종전의 길",
+        "title_ko": "젤렌스키, 현재 전선에서 전투 중단이 가장 현실적 종전의 길",
+        "description": "[파이낸셜뉴스] 볼로디미르 젤렌스키 우크라이나 대통령이 러시아와의 전쟁을 끝내기 위해 현재의 전선에서 전투를 중단하는 것이 가장 현실적인 방안이라며 휴전 협상의 가능성을 열어두었다. 젤렌스키 대통령은 21일(현지시간) 폭스뉴스채널과 가진 인터뷰에서 현재의 전선대로 협정을 맺을 용의가 있느냐는 질문에 \"지금 당장은 전선을 동결해야 하며, 이것이 전쟁을 끝낼 수 있는 실제적인 방법이라고 생각한다\"며 \"우리는 이를 휴전, 즉 동결과 정지라고 부른다\"고 밝혔다. 이번 발언은 스티브 윗코프 미국 특사가 상트페테르부르크에서 블라디미르 푸틴 러시아 대통령과 회담을 가진 직후 나왔다. 젤렌스키 대통령은 우크라이나가 어떤 형식의 협상에도 응할 용의가 있지만, 당사자인 우크라 정부가 반드시 직접 참여해야 한다",
+        "source": "파이낸셜뉴스",
+        "link": "https://www.fnnews.com/news/202610220834375713",
+        "discovery_url": "https://www.fnnews.com/news/202610220834375713",
+        "resolved_url": "https://www.fnnews.com/news/202610220834375713",
+        "published": "Thu, 22 Oct 2026 09:22:37 +0900",
+        "rss_published": "Thu,22 Oct 2026 09:22:37 +0900",
+        "source_metadata": {
+          "title": "젤렌스키, 현재 전선에서 전투 중단이 가장 현실적 종전의 길",
+          "publication_status": "verified",
+          "published_at_kst": "2026-10-22T09:22:37+09:00",
+          "publication_candidates": [
+            {
+              "field": "article:published_time",
+              "at_kst": "2026-10-22T09:22:37+09:00"
+            },
+            {
+              "field": "dd:published_time",
+              "at_kst": "2026-10-22T09:22:37+09:00"
+            },
+            {
+              "field": "jsonld:datePublished",
+              "at_kst": "2026-10-22T09:22:37+09:00"
+            },
+            {
+              "field": "visible:입력",
+              "at_kst": "2026-10-22T09:22:00+09:00"
+            }
+          ]
+        },
+        "score": 11,
+        "tags": [
+          "종전·협상"
+        ],
+        "body_checked": true,
+        "body_verified": true,
+        "publication_basis": "publisher",
+        "rendered": false,
+        "article_text_sha256": "9e1d9be12b4ed18b9d0e1bdd717630372df794c7a7c279aa778bc0740bd7d760"
+      },
+      {
+        "id": "4244be74c760abdcf15a",
+        "title_original": "Missiles strike Ukraine's Kyiv, Reuters witness says",
+        "title_ko": "로이터 통신에 따르면 우크라이나의 키예프에 미사일이 발사되고 있다.",
+        "description": "",
+        "source": "Reuters",
+        "link": "https://www.reuters.com/world/europe/missiles-strike-ukraines-kyiv-reuters-witness-says-2026-10-21/",
+        "published": "2026-10-21T23:45:28.54Z",
+        "score": 11,
+        "tags": [
+          "확전"
+        ],
+        "body_checked": true,
+        "body_verified": false,
+        "publication_basis": "discovery_feed",
+        "rendered": false,
+        "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "4b9a3b0570f1f1bdf956",
+        "title_original": "Driver at Russian-held Zaporizhzhia nuclear plant killed in drone attacks, managers say",
+        "title_ko": "관리자들은 러시아가 보유한 자포리자 (Zaporizhzhia) 원자력 발전소의 운전자가 드론 공격으로 사망했다고 말합니다.",
+        "description": "",
+        "source": "Reuters",
+        "link": "https://www.reuters.com/world/driver-russian-held-zaporizhzhia-nuclear-plant-killed-drone-attacks-managers-say-2026-10-21/",
+        "published": "2026-10-21T23:29:15.758Z",
+        "score": 11,
+        "tags": [
+          "확전"
+        ],
+        "body_checked": true,
+        "body_verified": false,
+        "publication_basis": "discovery_feed",
+        "rendered": false,
+        "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "markets": [
+      {
+        "name": "나스닥100 선물",
+        "price": 29782.75,
+        "pct": -0.7473256240210668,
+        "arrow": "▼",
+        "basis": "제공처 비교종가 대비",
+        "source": "Yahoo Finance 1분봉",
+        "asof": "09:36 KST",
+        "observed_at_kst": "2026-10-22T09:36:33+09:00",
+        "symbol": "NQ=F",
+        "previous_close": 30007.0,
+        "previous_close_field": "chartPreviousClose",
+        "previous_close_date_verified": false,
+        "quote_metadata": {
+          "symbol": "NQ=F",
+          "instrumentType": "FUTURE",
+          "previousClose": 30007.0,
+          "chartPreviousClose": 30007.0,
+          "exchangeTimezoneName": "America/New_York",
+          "regularMarketTime": 1792629393,
+          "currentTradingPeriod": {
+            "pre": {
+              "timezone": "EDT",
+              "start": 1792555200,
+              "end": 1792555200,
+              "gmtoffset": -14400
+            },
+            "regular": {
+              "timezone": "EDT",
+              "start": 1792555200,
+              "end": 1792641540,
+              "gmtoffset": -14400
+            },
+            "post": {
+              "timezone": "EDT",
+              "start": 1792641540,
+              "end": 1792641540,
+              "gmtoffset": -14400
+            }
+          }
+        },
+        "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+        "comparison": null,
+        "verified": false,
+        "verify_note": ""
+      },
+      {
+        "name": "WTI",
+        "price": 98.0199966430664,
+        "pct": 0.8955189326468327,
+        "arrow": "▲",
+        "basis": "제공처 비교종가 대비",
+        "source": "Yahoo Finance 1분봉",
+        "asof": "09:36 KST",
+        "observed_at_kst": "2026-10-22T09:36:32+09:00",
+        "symbol": "CL=F",
+        "previous_close": 97.15,
+        "previous_close_field": "chartPreviousClose",
+        "previous_close_date_verified": false,
+        "quote_metadata": {
+          "symbol": "CL=F",
+          "instrumentType": "FUTURE",
+          "previousClose": 97.15,
+          "chartPreviousClose": 97.15,
+          "exchangeTimezoneName": "America/New_York",
+          "regularMarketTime": 1792629392,
+          "currentTradingPeriod": {
+            "pre": {
+              "timezone": "EDT",
+              "start": 1792555200,
+              "end": 1792555200,
+              "gmtoffset": -14400
+            },
+            "regular": {
+              "timezone": "EDT",
+              "start": 1792555200,
+              "end": 1792641540,
+              "gmtoffset": -14400
+            },
+            "post": {
+              "timezone": "EDT",
+              "start": 1792641540,
+              "end": 1792641540,
+              "gmtoffset": -14400
+            }
+          }
+        },
+        "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+        "comparison": null,
+        "verified": false,
+        "verify_note": ""
+      },
+      {
+        "name": "Brent",
+        "price": 110.0,
+        "pct": 1.0843594927403055,
+        "arrow": "▲",
+        "basis": "제공처 비교종가 대비",
+        "source": "Yahoo Finance 1분봉",
+        "asof": "09:36 KST",
+        "observed_at_kst": "2026-10-22T09:36:02+09:00",
+        "symbol": "BZ=F",
+        "previous_close": 108.82,
+        "previous_close_field": "chartPreviousClose",
+        "previous_close_date_verified": false,
+        "quote_metadata": {
+          "symbol": "BZ=F",
+          "instrumentType": "FUTURE",
+          "previousClose": 108.82,
+          "chartPreviousClose": 108.82,
+          "exchangeTimezoneName": "America/New_York",
+          "regularMarketTime": 1792629362,
+          "currentTradingPeriod": {
+            "pre": {
+              "timezone": "EDT",
+              "end": 1792555200,
+              "start": 1792555200,
+              "gmtoffset": -14400
+            },
+            "regular": {
+              "timezone": "EDT",
+              "end": 1792641540,
+              "start": 1792555200,
+              "gmtoffset": -14400
+            },
+            "post": {
+              "timezone": "EDT",
+              "end": 1792641540,
+              "start": 1792641540,
+              "gmtoffset": -14400
+            }
+          }
+        },
+        "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+        "comparison": null,
+        "verified": false,
+        "verify_note": ""
+      },
+      {
+        "name": "달러지수",
+        "price": 101.69999694824219,
+        "pct": -0.07860390229692538,
+        "arrow": "▼",
+        "basis": "제공처 비교종가 대비",
+        "source": "Yahoo Finance 1분봉",
+        "asof": "09:36 KST",
+        "observed_at_kst": "2026-10-22T09:36:39+09:00",
+        "symbol": "DX-Y.NYB",
+        "previous_close": 101.78,
+        "previous_close_field": "chartPreviousClose",
+        "previous_close_date_verified": false,
+        "quote_metadata": {
+          "symbol": "DX-Y.NYB",
+          "instrumentType": "INDEX",
+          "previousClose": 101.78,
+          "chartPreviousClose": 101.78,
+          "exchangeTimezoneName": "America/New_York",
+          "regularMarketTime": 1792629399,
+          "currentTradingPeriod": {
+            "pre": {
+              "timezone": "EDT",
+              "end": 1792555200,
+              "start": 1792555200,
+              "gmtoffset": -14400
+            },
+            "regular": {
+              "timezone": "EDT",
+              "end": 1792641540,
+              "start": 1792555200,
+              "gmtoffset": -14400
+            },
+            "post": {
+              "timezone": "EDT",
+              "end": 1792641540,
+              "start": 1792641540,
+              "gmtoffset": -14400
+            }
+          }
+        },
+        "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+        "comparison": null,
+        "verified": false,
+        "verify_note": ""
+      }
+    ],
+    "market_source_status": {
+      "NQ=F": {
+        "name": "나스닥100 선물",
+        "status": "available",
+        "reason": null
+      },
+      "CL=F": {
+        "name": "WTI",
+        "status": "available",
+        "reason": null
+      },
+      "BZ=F": {
+        "name": "Brent",
+        "status": "available",
+        "reason": null
+      },
+      "DX-Y.NYB": {
+        "name": "달러지수",
+        "status": "available",
+        "reason": null
+      }
+    }
+  }
+}
