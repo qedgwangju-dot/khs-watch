@@ -191,7 +191,7 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
         self.assertIn("날짜 변경 여부와 새 결정", body)
         self.assertIn("다음 경계 175bp", body)
         msg = "\\n".join(render_chunks(body))
-        self.assertIn("프랑스 국채관리청 S&P 공식 신용등급 일정</a>", msg)
+        self.assertIn("프랑스 국채관리청 S&amp;P 공식 신용등급 일정</a>", msg)
         self.assertIn("프랑스 헤지펀드 캐리 청산 보도</a>", msg)
 
     def test_government_notice_does_not_claim_moodys_rating_result(self):
