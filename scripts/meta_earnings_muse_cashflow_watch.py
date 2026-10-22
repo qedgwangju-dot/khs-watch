@@ -16,6 +16,7 @@ from email.utils import parsedate_to_datetime
 
 IR_Q3="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx"
 PR_Q3="https://www.prnewswire.com/news-releases/meta-reports-third-quarter-2026-results-302915964.html"
+REUTERS_EXPECTATIONS="https://www.investing.com/news/stock-market-news/metas-ai-spending-muse-assistant-adoption-in-focus-for-quarterly-results-4959432"
 SEC_SUBMISSIONS="https://data.sec.gov/submissions/CIK0001326801.json"
 META_FEED="https://about.fb.com/feed/"
 NEWSROOM="https://about.fb.com/news/"
@@ -30,6 +31,7 @@ Q3_MILLIONS={
  "legal_charge":9890,"net_income":9860,
  "cash_from_ops":32786,"ppe":33942,"finance_lease":964,
  "free_cash_flow":-2120,
+ "forecast_fcf":-8520,"forecast_capex_q3":41680,
  "foa_revenue":64158,"foa_op":17117,
  "rl_revenue":443,"rl_op":-4129,
  "capex_q3":34906,
@@ -120,13 +122,16 @@ def build_q3(rate,basis,source_label):
       f"• 유형자산 취득 {a('ppe')} + 금융리스 원금상환 {a('finance_lease')}",
       f"• 잉여현금흐름 <b>{a('free_cash_flow')}</b> (실제 마이너스 · 검산 완료)",
       f"• 분기 설비투자·금융리스 원금 합계 {a('capex_q3')}",
-      "• 시장 예상치 대비 개선은 비공식 시장 예상과 분리. 자본지출 이연 여부 공식 미확정.",
+      f"• Reuters의 사전 시장 예상 FCF {a('forecast_fcf')}보다 실제 FCF가 {money(6400,rate)} 개선.",
+      f"• Reuters가 인용한 분기 설비투자 예상 {a('forecast_capex_q3')} 대비 실제 {a('capex_q3')}로 낮았음.",
+      "• 설비투자 예상 하회는 확인되지만 실제 프로젝트 이연 여부는 공식적으로 확정되지 않았습니다.",
       "",
       "<b>2단계 미래 재평가 요인 발굴</b>",
       f"• 4분기 매출 전망 {a('q4_low')}~{a('q4_high')} (현재 환율 가정 전년비 약 1%p 역풍)",
       f"• 2026년 연간 설비투자 전망 {a('fy_capex_low')}~{a('fy_capex_high')}",
       f"• 직전 설비투자 전망 하한 {a('fy_capex_prev_low')}에서 {a('fy_capex_low')}으로 상향",
-      "• Muse 개인용 에이전트 출시(9월) · Muse Wonder 모델 공개(10월): 가입자·유료 전환·반복매출을 분리 추적.",
+      "• Muse 개인용 에이전트 출시(9월) · Muse Wonder 모델 공개(10월): 사용자 수와 유료 전환·반복매출을 구분합니다.",
+      "• Muse 출시 후 첫 약 6주 동안 1,000만명 이상 이용(언론이 인용한 경영진 발언); 유료가입·실제 매출 규모는 미공개.",
       "• 2027년 1월 19일 비의결권 C종 주식 도입 예정 · A/B 1주당 C종 1주 배당 조건.",
       "• C종 주식배당 자체와 향후 신주 발행을 통한 조달·경제적 지분희석은 별개입니다.",
       "",
@@ -137,7 +142,7 @@ def build_q3(rate,basis,source_label):
       "",
       "<b>공식 출처</b>",
       _link("메타 3분기 공식 실적",IR_Q3)+" | "+_link("Muse 제품 발표",MUSE),
-      _link("Muse Wonder 공식 발표",MUSE_WONDER),
+      _link("Muse Wonder 공식 발표",MUSE_WONDER)+" | "+_link("Reuters 시장 예상",REUTERS_EXPECTATIONS),
     ]
     return "\n".join(lines)
 
