@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 18,
+    "material_items": 20,
     "new_material_items": 0,
-    "raw_items": 306,
+    "raw_items": 308,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -775,6 +775,16 @@
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNlQ0QWdXUWFKXzBZcEo1Z1cwRW5QOVhYR3M2aEVtOWVkbl9iZnZnME52cS1Ya0JWXzVmM0JhVUFpZmRTQlhER0Uwc1ZTRmJyNmtVeTJ0MjNLM09OekJZYmJma3d3VUVVcEtUREFqYU00UEE2V25PMjA1UUFTaEhPWg?oc=5",
       "vendor": "PHP 재단"
     },
+    "ceff902e5c4326dbe66991ea": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-22T06:41:26.365037+00:00",
+      "published_at": "2026-10-22T06:34:00+00:00",
+      "severity": 3,
+      "source": "The Hacker News",
+      "title": "Someone Tried to Exploit PHP2Shell 4 Days Before the Vulnerabilities Were Publicly Disclosed - The Hacker News",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPNkl5UTc0aUhRakhnaDdlZnZxUHVzckxNdUFPbXh4elZGLVNRRXpKeGxRSlRRQ3VhRzZ0c1BJekhHa1NRZUdEeFR5NGh0dmtEbW8tYWM1MGNpekJ2SUljUFJjSlJKOVRVTnFRcl9BTHBxU2RLeXgyZy1wUHRQN1ZRMg?oc=5",
+      "vendor": "PHP 재단"
+    },
     "cfaea85e3eaacdbcb71e8fc1": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-26T07:42:53.888012+00:00",
@@ -986,5 +996,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-22T15:21:46+09:00"
+  "updated_at_kst": "2026-10-22T15:41:26+09:00"
 }
