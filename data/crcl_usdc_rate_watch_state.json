@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-22T10:33:14+09:00",
+  "updated_at_kst": "2026-10-22T16:35:55+09:00",
   "circle": {
     "date": "2026-10-19",
     "circulation_usd_b": 71.9,
@@ -13,11 +13,11 @@
     "date": "2026-10-21",
     "sec_yield_7d": 3.85,
     "yield_7d": 3.85,
-    "yield_1d": null,
+    "yield_1d": 3.84,
     "yield_crosscheck_gap_bp": 0.0,
     "visible_nav_date": "2026-10-21",
     "fund_size_usd_m": 60767.5,
-    "fund_size_date": "2026-10-20",
+    "fund_size_date": "2026-10-21",
     "source_url": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund",
     "product": "Circle Reserve Fund",
     "ticker": "USDXX",
@@ -82,7 +82,5 @@
   },
   "crcl_last_alerted_close_date": "2026-10-21",
   "correction_pending": false,
-  "errors": [
-    "sofr: FRED SOFR has fewer than two valid observations"
-  ]
+  "errors": []
 }
