@@ -17,7 +17,7 @@ permissions:
 
 concurrency:
   group: ark-official-daily-trades-telegram
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   watch:
