@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 22,
+    "material_items": 21,
     "new_material_items": 0,
-    "raw_items": 312,
+    "raw_items": 318,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -785,6 +785,16 @@
       "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdkd3VmdwZXVPQjFOZDZRdVE4ZVk4dS1ITklDRDFaUlhoZG1ETU8zRllYSzhuZzJxVjhrcHBCaHJMOUlQaEtid25VUFQ4VjRQUDVxUXdaNk02ZTNfSFppdmhmUFpBbFdNaVlOcEhjazlnaHl6REZ4cnNOQnZiaTk1a2ZpRy1vRTjSAYwBQVVfeXFMTVRRWkJOV3Y2RFVUTXBtN0NhazJUTzhsRVZkWU5zQ0o2ei1lcmFna1dFNnhRcGNiakZzZVNPV1VpVlVZSlQwdHZVZFNkQ2NzV2NiSDJ2TlRRZ0Q5NWtKZDFJVnhwdXFtU3B3U2JJUHd1WkZLUV9zbjlvd2Vza1ZnOEU5MlQ5cDZ2allFY2M?oc=5",
       "vendor": "PHP 재단"
     },
+    "c37d1c122283f83f6c7c34af": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-22T16:20:02.925647+00:00",
+      "published_at": "2026-10-22T14:13:56+00:00",
+      "severity": 3,
+      "source": "GitGuardian Blog",
+      "title": "Responding to php2shell PHP Vulnerability When You Don’t Know What Secrets Are Deployed - GitGuardian Blog",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4xRGVqQzFoSU5vUk12Y19oNFhMU3JiTGZKN2lNZ0IwakU2WU1LZFdFWC1wVm00ZkEwS1J4UUQ4Z0swXzc5TDVsall2VHFVeGIxal8tR2U1Y0ZfcVA5SFBlTV95NDV4dGtpcnpFMHFNZ1E4RFU?oc=5",
+      "vendor": "PHP 재단"
+    },
     "c5223d4a9baa7651580eb6ca": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
@@ -1076,5 +1086,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-23T01:14:20+09:00"
+  "updated_at_kst": "2026-10-23T01:20:02+09:00"
 }
