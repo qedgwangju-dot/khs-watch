@@ -162,6 +162,49 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
         self.assertTrue(all(len(x) <= 3900 for x in chunks))
 
 
+    def test_sp_direct_official_table_parses_actual_rating_and_date(self):
+        sp = watch.parse_sp_official(EXAMPLE_EN)
+        self.assertEqual(sp["rating"], "A+")
+        self.assertEqual(sp["outlook"], "Stable")
+        self.assertEqual(sp["decision_date"], "2026-05-29")
+        self.assertEqual(sp["next_review"], "2026-11-27")
+        with self.assertRaises(ValueError):
+            watch.parse_sp_official("<p>Standard &amp; Poor's downgraded France to BBB</p>")
+
+    def test_sp_live_result_requires_new_official_date_and_only_once(self):
+        prev = dict(watch.VERIFIED_SP_SNAPSHOT)
+        row = {**prev, "rating": "A", "outlook": "Negative",
+               "decision_date": "2026-11-27", "next_review": None,
+               "source_kind": "official_document"}
+        events = watch.sp_review_events(dt.date(2026, 11, 28), set(), row, prev)
+        self.assertEqual(len(events), 1)
+        self.assertEqual(events[0]["kind"], "sp_decision")
+        self.assertEqual(events[0]["rating"], "A")
+        self.assertEqual(
+            watch.sp_review_events(dt.date(2026, 11, 28), {events[0]["key"]}, row, row), []
+        )
+        reported = {**row, "rating": prev["rating"],
+                    "outlook": prev["outlook"]}
+        unchanged = watch.sp_review_events(dt.date(2026, 11, 28),
+                                           set(), reported, prev)
+        self.assertEqual(unchanged[0]["kind"], "sp_decision")
+        self.assertEqual(watch.sp_review_events(dt.date(2026, 11, 28),
+                                               set(), row, row), [])
+
+    def test_sp_unverified_news_cannot_claim_official_downgrade(self):
+        prev = dict(watch.VERIFIED_SP_SNAPSHOT)
+        rumored = {**prev, "rating": "A", "outlook": "Negative",
+                   "decision_date": "2026-11-27",
+                   "source_kind": "secondary_text_recovery"}
+        event = watch.sp_review_events(dt.date(2026, 11, 28), set(), rumored, prev)
+        self.assertEqual(event[0]["kind"], "sp_review_overdue")
+
+    def test_fetch_rating_attaches_live_sp_only_for_verified_official_html(self):
+        rating, errs = watch.fetch_rating(fetch=lambda url: EXAMPLE_EN)
+        self.assertEqual(errs, [])
+        self.assertEqual(rating["sp_rating"]["rating"], "A+")
+        self.assertEqual(rating["sp_rating"]["source_kind"], "official_document")
+
     def test_sp_november_review_milestones_are_deduplicated(self):
         first = watch.sp_review_events(dt.date(2026, 11, 20), set())
         self.assertEqual(first, [{"kind": "sp_milestone",
