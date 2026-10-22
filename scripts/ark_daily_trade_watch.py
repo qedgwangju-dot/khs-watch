@@ -251,7 +251,8 @@ def main(probe=False):
     if not math.isfinite(rate) or rate<=0:
         raise RuntimeError("Invalid USD/KRW quote; do not send an unconverted amount")
     prices=notional.close_prices(latest_rows,latest)
-    print(f"ARK_NOTIONAL_PRICE_COVERAGE={len(prices)}/{len({r[\x27ticker\x27] for r in latest_rows})}")
+    distinct_tickers=len({row["ticker"] for row in latest_rows})
+    print(f"ARK_NOTIONAL_PRICE_COVERAGE={len(prices)}/{distinct_tickers}")
     msg=build(latest_rows,latest,is_revision=changed,rate=rate,basis=fx.basis,
               prices=prices,enrichment=bool(latest==previous_date and state.get("format_version",0)<REPORT_FORMAT_VERSION))
     pathlib.Path("out").mkdir(exist_ok=True)
