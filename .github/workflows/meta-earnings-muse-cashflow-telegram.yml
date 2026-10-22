@@ -9,7 +9,7 @@ on:
     paths:
       - ".github/workflows/meta-earnings-muse-cashflow-telegram.yml"
       - "scripts/meta_earnings_muse_cashflow_watch.py"
-      - "scripts/test_meta_earnings_muse_cashflow_watch.py"
+      - "scripts/test_meta_earnings_muse_watch.py"
 
 permissions:
   contents: write
@@ -40,14 +40,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install no additional dependencies
+      - name: Validate Python runtime
         run: python -V
 
       - name: Validate Meta official numbers, accounting and output
         run: |
           set -euo pipefail
-          python -m py_compile scripts/meta_earnings_muse_cashflow_watch.py scripts/test_meta_earnings_muse_cashflow_watch.py
-          PYTHONPATH=scripts python scripts/test_meta_earnings_muse_cashflow_watch.py
+          python -m py_compile scripts/meta_earnings_muse_cashflow_watch.py scripts/test_meta_earnings_muse_watch.py
+          PYTHONPATH=scripts python scripts/test_meta_earnings_muse_watch.py
 
       - name: Inspect Meta official earnings and material updates
         run: |
@@ -59,7 +59,7 @@ jobs:
             python scripts/meta_earnings_muse_cashflow_watch.py
           fi
 
-      - name: Verify Telegram route and deliver new trade day
+      - name: Verify Telegram route and deliver Meta event
         if: env.META_PROBE_ONLY == 'false'
         shell: bash
         run: |
@@ -68,7 +68,7 @@ jobs:
           import json,os,pathlib,time,urllib.parse,urllib.request
           alert=pathlib.Path("out/meta_ai_earnings_alert.html")
           if not alert.exists():
-              print("No new Meta financial trades; no Telegram message.")
+              print("No new Meta financial event; no Telegram message.")
               raise SystemExit(0)
 
           token=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
@@ -132,7 +132,7 @@ jobs:
         run: |
           set -euo pipefail
           if [ ! -f out/meta_ai_earnings_pending.json ]; then
-            echo "No new trades to checkpoint."
+            echo "No new Meta event to checkpoint."
             exit 0
           fi
           test -f out/meta_ai_earnings_telegram_confirmed.json
@@ -150,7 +150,7 @@ jobs:
               echo "Meta official state unchanged."
               exit 0
             fi
-            git commit -m "Update Meta official daily trade state"
+            git commit -m "Update Meta official earnings and Muse event state"
             if git push origin HEAD:main; then exit 0; fi
             sleep $((attempt*3))
           done
