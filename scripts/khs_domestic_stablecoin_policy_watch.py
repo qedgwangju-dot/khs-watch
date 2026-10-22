@@ -119,7 +119,7 @@ BOK_DIRECT_EVENT_TERMS = [
 ]
 CBDC_TITLE_TERMS = (
     "프로젝트 한강", "예금토큰", "예금 토큰", "CBDC", "중앙은행 디지털화폐",
-    "기관용 디지털화폐", "국고금 디지털", "국고보조금", "디지털화폐",
+    "기관용 디지털화폐", "국고금 디지털", "디지털화폐",
 )
 STABLECOIN_TITLE_TERMS = (
     "스테이블코인", "디지털자산", "가상자산", "지급결제",
@@ -291,10 +291,19 @@ def cbdc_claim_scope(title: str, body: str, source: str) -> dict:
     retail_no_plan = has_any(
         haystack, [
             "일반인용 cbdc를 도입 또는 발행할 계획이 없",
+            "일반인을 대상으로 cbdc를 도입 또는 발행할 계획이 없",
             "범용 cbdc를 검토하지 않",
             "일반인용 cbdc 도입 계획이 없",
             "범용 cbdc 추진하지 않",
         ],
+    ) or (
+        has_any(haystack, [
+            "일반인용 cbdc", "일반인을 대상으로 cbdc", "범용 cbdc",
+        ])
+        and has_any(haystack, [
+            "도입 또는 발행할 계획이 없", "도입 계획이 없",
+            "발행 계획이 없", "추진하지 않", "검토하지 않",
+        ])
     )
     if retail_no_plan:
         status = "범용 CBDC 도입 계획 없음(한국은행 설명)"
