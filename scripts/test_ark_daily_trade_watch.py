@@ -39,6 +39,26 @@ def main():
     assert "거래대금: 체결단가 미공개·종가 추정 불가" not in n.estimated_amount("XE",100,close_price,1350.0)
     assert "거래대금: 체결단가 미공개·종가 추정 불가" in n.estimated_amount("HO",100,close_price,1350.0)
     assert abs(484895 * 10.74 * 1350.0 - 7030492605.0) < 1.0
+    # Independent prices must be from exactly the specified trade date.
+    import json, datetime as dt
+    timestamp=int(dt.datetime(2026,10,20,20,0,tzinfo=dt.timezone.utc).timestamp())
+    old_request=n._request
+    try:
+        def fake_request(url,timeout=8):
+            if "stooq.com" in url:
+                return b"Date,Open,High,Low,Close,Volume\\n2026-10-20,10.10,10.99,10.02,10.74,5000000\\n"
+            if "finance.yahoo.com" in url:
+                return json.dumps({"chart":{"result":[{"timestamp":[timestamp],
+                   "indicators":{"quote":[{"close":[10.74]}]}}]}}).encode()
+            raise AssertionError("Unexpected price source")
+        n._request=fake_request
+        assert n.stooq_close("XE","2026-10-20")==10.74
+        assert n.yahoo_close("XE","2026-10-20")==10.74
+        assert n.close_prices([{"ticker":"XE"}],"2026-10-20")["XE"]["close"]==10.74
+        assert n.stooq_close("XE","2026-10-21") is None
+    finally:
+        n._request=old_request
+
     print("ARK daily trade parser regression tests passed.")
 
 if __name__=="__main__":
