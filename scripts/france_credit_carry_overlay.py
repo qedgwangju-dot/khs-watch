@@ -346,8 +346,11 @@ def main() -> int:
     existing_credit = state.get("france_credit") or {}
     now = dt.datetime.now(KST)
     official, errors = fetch_rating()
+    # A recovery gateway is not equivalent to direct official-source access.
     source_ok = official is not None
-    fail_streak = 0 if source_ok else int(existing_credit.get("source_fail_streak") or 0) + 1
+    direct_official = bool(official and official.get("source_kind") == "official_document")
+    fail_streak = (0 if direct_official else
+                   int(existing_credit.get("source_fail_streak") or 0) + 1)
     # Do not fabricate a live rating when the issuer website and proxy reject
     # automation. Carry forward the date-stamped official snapshot only.
     rating = official if source_ok else {
@@ -383,7 +386,7 @@ def main() -> int:
                                "key": key, "date": government_notice["date"],
                                "url": government_notice["url"],
                                "title": government_notice.get("title", "")})
-    if not source_ok and fail_streak >= 4:
+    if not direct_official and fail_streak >= 4:
         key = "official_rating_source_unavailable:2026-10"
         if key not in delivered:
             events.append({"kind": "source_outage", "key": key})
@@ -397,7 +400,9 @@ def main() -> int:
         "sent_keys": list(existing_credit.get("sent_keys") or [])[-30:],
         "checked_at_kst": now.isoformat(timespec="seconds"),
         "source_fail_streak": fail_streak,
-        "source_access": "official_document" if source_ok else "access_restricted",
+        "source_access": ("official_document" if direct_official
+                          else "secondary_text_recovery" if source_ok
+                          else "access_restricted"),
     }
     if events:
         next_credit["sent_keys"] = (next_credit["sent_keys"] + [e["key"] for e in events])[-30:]
@@ -429,7 +434,7 @@ def main() -> int:
         "\n".join([
             "# 프랑스 신용등급·국채 캐리 감시",
             f"- 조회: {now.isoformat(timespec='seconds')}",
-            f"- 출처 상태: {'공식 원문 조회' if source_ok else '접근 제한·2026-10-14 AFT 검색 색인 참고'}",
+            f"- 출처 상태: {'공식 페이지 직접 확인' if direct_official else '공식 페이지 직접 검증 미완료·보조 복원' if source_ok else '접근 제한·2026-10-14 AFT 검색 색인 참고'}",
             f"- 최근 공식확인: Moody's {rating['rating']}, {rating['outlook']}, {rating['decision_date']}",
             f"- 다음 심사: {rating['next_review'] or '미게시'}",
             f"- 연속 원문 오류: {fail_streak}",
