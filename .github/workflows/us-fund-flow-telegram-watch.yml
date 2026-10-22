@@ -181,7 +181,10 @@ jobs:
 
   watch:
     # Suppress unrelated US fund-flow delivery during tech ETF integration-only pushes.
-    if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[tech-etf-proxy-validate]')
+    if: >-
+      ${{ github.event_name != 'pull_request' &&
+          !contains(github.event.head_commit.message, '[tech-etf-proxy-validate]') &&
+          !contains(github.event.head_commit.message, '[tech-etf-proxy-seed]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
@@ -416,7 +419,8 @@ jobs:
         github.event_name == 'schedule' ||
         github.event_name == 'workflow_dispatch' ||
         (github.event_name == 'push' &&
-         contains(github.event.head_commit.message, '[tech-etf-proxy-validate]'))
+         (contains(github.event.head_commit.message, '[tech-etf-proxy-validate]') ||
+          contains(github.event.head_commit.message, '[tech-etf-proxy-seed]')))
       }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -424,7 +428,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
-      TECH_ETF_PROXY_VALIDATE_ONLY: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.tech_proxy_validate_only)) && '1' || '0' }}
+      TECH_ETF_PROXY_VALIDATE_ONLY: ${{ ((github.event_name == 'push' && contains(github.event.head_commit.message, '[tech-etf-proxy-validate]')) || (github.event_name == 'workflow_dispatch' && inputs.tech_proxy_validate_only)) && '1' || '0' }}
 
     steps:
       - name: Checkout shared US fund-flow deployment and delivery state
