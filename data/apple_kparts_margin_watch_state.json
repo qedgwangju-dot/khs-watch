@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-22T21:35:19+09:00",
+  "updated_at_kst": "2026-10-23T02:39:02+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
   "baseline": {
@@ -212,9 +212,9 @@
   ],
   "last_fx_bucket": "orange",
   "last_fx": {
-    "latest_rate": 1326.14,
+    "latest_rate": 1324.63,
     "latest_date": "2026-10-22",
-    "latest_source": "ExchangeRate-API https://www.exchangerate-api.com",
+    "latest_source": "ECB/Frankfurter",
     "q2_avg": 1500.48,
     "q3_avg": 1417.24,
     "qoq_pct": -5.55,
