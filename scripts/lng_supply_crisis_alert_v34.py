@@ -1872,7 +1872,7 @@ def _gie_storage_quote_v34(parsed: dict[str, object]) -> core.Quote:
 
 def _ecb_quote_v34(parsed: dict[str, object]) -> core.Quote:
     date=dt.date.fromisoformat(str(parsed["date"]))
-    observed=dt.datetime.combine(date,dt.time(15),tzinfo=ZoneInfo("Europe/Frankfurt"))
+    observed=dt.datetime.combine(date,dt.time(15),tzinfo=ZoneInfo("Europe/Brussels"))
     rate=float(parsed["rate"])
     return core.Quote(
         key="eurkrw",symbol="ECB-EURKRW",label="유로·원화 ECB 기준환율",
