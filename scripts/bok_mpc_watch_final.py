@@ -181,6 +181,20 @@ def main_final() -> int:
     previous_event_hash = _old_event_hash(old)
     bootstrap = not bool(old)
     meaningful_changed = bootstrap or previous_event_hash != current_event_hash
+    # 발표문 ID·파싱 원천 해시·금리·표결이 그대로인데
+    # 파서 업그레이드로 새로 인식한 필드만 생긴 경우는 신규 통화정책 결정이 아니다.
+    # 상태 데이터는 조용히 교정하되 동일 발표를 두 번 보내지 않는다.
+    prior = old.get("statement") if isinstance(old.get("statement"), dict) else {}
+    parser_revision_only = bool(
+        not bootstrap
+        and meaningful_changed
+        and _canonical_doc_id(prior) == _canonical_doc_id(parsed)
+        and old.get("statement_hash") == parsed.get("hash")
+        and prior.get("rate_to") == parsed.get("rate_to")
+        and prior.get("vote_for") == parsed.get("vote_for")
+    )
+    if parser_revision_only:
+        meaningful_changed = False
 
     # 진단용: 한국은행 웹페이지 전체 텍스트 해시는 메뉴/동적 영역 때문에 바뀔 수 있다.
     # 이것만 바뀐 경우에는 절대 Telegram을 보내지 않는다.
@@ -197,7 +211,7 @@ def main_final() -> int:
 
     # 의미가 그대로면 상태 파일도 매 실행마다 시간을 갱신하지 않는다.
     # 이렇게 해야 불필요한 Git 커밋과 후속 실행 잡음도 사라진다.
-    if meaningful_changed or not old.get("event_hash"):
+    if meaningful_changed or parser_revision_only or not old.get("event_hash"):
         pending = {
             "updated_at_kst": now.isoformat(timespec="seconds"),
             "event_hash": current_event_hash,
@@ -223,6 +237,8 @@ def main_final() -> int:
         f"- 최신 문서: {parsed.get('title')}",
         f"- 기준금리: {parsed.get('rate_to', '확인 불가')}",
         f"- 성장률: {parsed.get('growth_this', '확인 불가')} / {parsed.get('growth_next', '확인 불가')}",
+        f"- 성장률 전망 방향: {parsed.get('growth_outlook', '공식 신규 전망 미확인')}",
+        f"- 파서 교정으로 동일 문서 중복 발송 차단: {'예' if parser_revision_only else '아니오'}",
         f"- 소비자물가: {parsed.get('cpi_this', '확인 불가')} / {parsed.get('cpi_next', '확인 불가')}",
         f"- 근원물가: {parsed.get('core_this', '확인 불가')} / {parsed.get('core_next', '확인 불가')}",
         f"- 점도표: {(effective_dot or {}).get('counts', '확인 불가')}",

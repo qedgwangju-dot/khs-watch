@@ -45,6 +45,10 @@ def latest_statement_with_fallback() -> dict[str, Any]:
     except Exception:
         pass
 
+    # 8월 27일 하드코딩 백업은 10월 새 회의 이후 최신값이 될 수 없다.
+    # 이 상황에서 8월 결과를 현재 결론으로 재발송하기보다 명시적으로 실패한다.
+    if dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date() >= dt.date(2026, 10, 22):
+        raise RuntimeError("최신 통화정책방향 RSS 조회 실패: 8월 고정 대체문서는 오래되어 사용 차단")
     page = BeautifulSoup(robust_get(CURRENT_OFFICIAL_URL).text, "html.parser")
     text = base.normalize(page.get_text(" ", strip=True))
     if "통화정책방향" not in text or "기준금리" not in text:

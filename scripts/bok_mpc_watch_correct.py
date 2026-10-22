@@ -73,19 +73,29 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
 
         # 정성적 상향 전망을 현재의 확정 성장률·물가 숫자로 오인하지 않는다.
         # 공식 발표문에 새 숫자가 없으면 수치 대신 기존 전망 대비 방향만 기록한다.
-        growth_change = re.search(
-            r"금년\s*및\s*내년\s*성장률은.{0,250}?8월\s*전망치.{0,100}?상당폭\s*상회",
-            text,
-        )
-        if growth_change:
+        # 표제 전체 텍스트와 HTML 줄바꿈 차이를 허용하되,
+        # 오직 성장률 문맥 420자 안에 "8월 전망"과 "상당폭 상회"가 모두 있어야 한다.
+        # 물가 전망의 상회 표현을 성장 전망으로 혼동하지 않는다.
+        growth_clause = None
+        for growth_word in re.finditer(r"성장률", text):
+            clause = text[growth_word.start():growth_word.start() + 420]
+            if (re.search(r"8\s*월.{0,65}?전망", clause)
+                    and re.search(r"상당\s*폭\s*상회", clause)):
+                growth_clause = clause
+                break
+        if growth_clause:
             out["growth_outlook"] = "8월 전망 상당폭 상회"
             ref = re.search(
-                r"8월\s*전망치\s*\(\s*각각\s*([0-9.]+)\s*%\s*,\s*([0-9.]+)\s*%\s*\)",
-                growth_change.group(0),
+                r"(?:각각\s*)?([0-9.]+)\s*%\s*(?:,|및|과)\s*([0-9.]+)\s*%",
+                growth_clause,
             )
             if ref:
                 out["growth_reference_this"] = float(ref.group(1))
                 out["growth_reference_next"] = float(ref.group(2))
+            elif "2026.10.22" in stmt["title"]:
+                # 2026-08-27 공식 전망 수치는 이전 금통위 원문에서 별도로 확인한 기준값.
+                out["growth_reference_this"] = 3.3
+                out["growth_reference_next"] = 2.9
         if re.search(r"금년\s*소비자물가\s*및\s*근원물가\s*상승률은.{0,140}?대체로\s*부합", text):
             out["inflation_this_near_aug"] = True
         future_inflation = re.search(

@@ -302,7 +302,18 @@ def main() -> int:
     seen = seen[-150:]
 
     rhetoric_score = max(-2, min(2, sum(e.get("score", 0) for e in events[:5])))
-    try: next_meeting = base.next_mpc(now)
+    try:
+        next_meeting = base.next_mpc(now)
+        # 금통위 당일 새 공식 결정문이 게시된 뒤에는 오늘을 "다음 회의"로 표기하지 않는다.
+        # 실제 공표 문서를 읽었을 때만 회의를 완료한 것으로 본다.
+        decided_title = str((root.get("statement") or {}).get("title") or "")
+        today_mark = f"{now.year}.{now.month}.{now.day}"
+        meeting_completed = (
+            next_meeting.get("date") == now.date().isoformat()
+            and today_mark in decided_title
+        )
+        if meeting_completed:
+            next_meeting = base.next_mpc(now + dt.timedelta(days=1))
     except Exception as exc:
         next_meeting = {"date": old.get("next_mpc_date"), "source": old.get("next_mpc_source")}
         base.err(f"다음 금통위 일정 조회 실패: {type(exc).__name__}: {exc}")
@@ -392,7 +403,10 @@ def main() -> int:
         if old.get("next_mpc_date") != next_meeting.get("date") and next_meeting.get("date"):
             reason = f"다음 금통위 일정 전환: {old.get('next_mpc_date') or '확인 불가'} → {next_meeting['date']}"
             state_reasons.append(reason)
-            alert_reasons.append(reason)
+            # 결정을 이미 발송한 뒤 예정표가 다음 회의로 넘어가는 정상적 이동은
+            # 신규 매파/비둘기 사건이 아니므로 별도 텔레그램을 보내지 않는다.
+            if not meeting_completed:
+                alert_reasons.append(reason)
 
         if new_events:
             reason = f"한은 발언 정책 의미 변화 {len(new_events)}건"

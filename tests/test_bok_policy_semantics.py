@@ -78,6 +78,22 @@ class PolicySemanticsTests(unittest.TestCase):
         self.assertIn("7명", alert)
         self.assertIn("새 확정 수치 미제시", alert)
 
+    def test_growth_qualitative_wording_variants(self):
+        document = {
+            "title": "통화정책방향(2026.10.22)",
+            "url": "https://www.bok.or.kr/portal/bbs/P0000559/view.do?nttId=99999999",
+            "hash": "growth-variant",
+            "text": (
+                "금융통화위원회는 기준금리를 현재의 3.00% 수준에서 유지한다. "
+                "올해와 내년의 경제성장률 전망에 관한 판단은 8월 경제전망보다 "
+                "상당 폭 상회할 것으로 보이며 향후 여건 변화에 유의한다."
+            ),
+        }
+        p = parse_statement_correct(document)
+        self.assertEqual(p["growth_outlook"], "8월 전망 상당폭 상회")
+        self.assertEqual(p["growth_reference_this"], 3.3)
+        self.assertEqual(p["growth_reference_next"], 2.9)
+
     def test_august_baseline_does_not_gain_false_new_event_flags(self):
         document = {
             "title": "통화정책방향(2026.8.27)",
