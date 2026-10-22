@@ -139,7 +139,29 @@ def calculate(observations, state):
         rows = [x for x in history if x.get("date") != today] + [
             {"date": today, "nav": row["nav"], "shares": row["shares"]}
         ]
-        new_history[ticker] = sorted(rows, key=lambda x: x["date"])[-20:]
+        rows = sorted(rows, key=lambda x: x["date"])[-20:]
+        obs.update({
+            "five_observations_from": None,
+            "five_observations_share_change_pct": None,
+            "five_observations_creation_usd": None,
+        })
+        if len(rows) >= 6:
+            anchor = rows[-6]
+            anchor_date = dt.date.fromisoformat(anchor["date"])
+            gap = (current_date - anchor_date).days
+            cross_split = ticker == "SOXX" and anchor["date"] < "2026-11-05" <= today
+            if 0 < gap <= 10 and not cross_split and not split_guard:
+                share_base = float(anchor["shares"])
+                if share_base > 0:
+                    share_delta_5 = row["shares"] - share_base
+                    pct5 = share_delta_5 / share_base * 100
+                    if -50 <= pct5 <= 65:
+                        obs.update({
+                            "five_observations_from": anchor["date"],
+                            "five_observations_share_change_pct": pct5,
+                            "five_observations_creation_usd": share_delta_5 * row["nav"],
+                        })
+        new_history[ticker] = rows
         movements[ticker] = obs
 
     signals = []
@@ -153,6 +175,15 @@ def calculate(observations, state):
             signals.append(f"{ticker} 발행좌수 당일 +1% 이상")
         if pct <= -1.0 and v <= -100_000_000:
             signals.append(f"{ticker} 발행좌수 당일 -1% 이하")
+    for ticker, m in movements.items():
+        v5 = m["five_observations_creation_usd"]
+        p5 = m["five_observations_share_change_pct"]
+        if v5 is None or p5 is None:
+            continue
+        if p5 >= 2.5 and v5 >= 250_000_000:
+            signals.append(f"{ticker} 최근 5회 발행좌수 +2.5% 이상")
+        if p5 <= -2.5 and v5 <= -250_000_000:
+            signals.append(f"{ticker} 최근 5회 발행좌수 -2.5% 이하")
     a = movements["IYW"]["estimated_creation_value_usd"]
     b = movements["SOXX"]["estimated_creation_value_usd"]
     if a is not None and b is not None and a >= 100_000_000 and b <= -100_000_000:
@@ -197,9 +228,17 @@ def render(result, fx, fx_date):
                 f"/ 비교 {x['prev_date']}→{x['date']}"
             )
         lines.append(f"• <b>{ticker}</b> ({FUNDS[ticker]['label']}): {html.escape(v)}")
+        v5 = x["five_observations_creation_usd"]
+        if v5 is not None:
+            lines.append(
+                f"  최근 5개 관측 간격 ({x['five_observations_from']}→{x['date']}): "
+                f"{x['five_observations_share_change_pct']:+.2f}% "
+                f"· {html.escape(money_usd(v5))} ({html.escape(money_krw(v5, fx))})"
+            )
     lines += [
         "해석: ETF 발행좌수 증감×당일 기준가격을 이용한 <b>설정·환매 대용 추정</b>입니다.",
         "주의: 개인투자자만의 매매·JP모건 5거래일 개인 순매수 불균형·전체 기술주 펀드 순유입액이 아닙니다.",
+        "5회 누적은 최근 6개 동일 ETF의 공식 관측일 간 발행좌수 변화이며, 중간 거래일 자료가 빠지면 산출하지 않습니다.",
         "해당 ETF의 2차시장 거래량과 실제 발행·환매는 다르며, 설정·환매 주체를 개인·기관으로 식별할 수 없습니다.",
         "SOXX는 2026-11-05 예정 주식분할 전후 발행좌수 비교 경보를 보류합니다.",
         f"환율: {fx:,.2f}원/달러 (공식 기준 {html.escape(fx_date)})" if fx else "환율: 확인 불가",
