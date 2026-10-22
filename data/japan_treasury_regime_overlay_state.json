@@ -1,13 +1,13 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-10-22T09:53:06+09:00",
+  "updated_at_kst": "2026-10-23T04:28:30+09:00",
   "levels": {
     "official_funding": 0,
     "structural_repatriation": 1,
     "japan_long_end_fingerprint": 0,
     "event_long_end_breakout": 0,
     "fed_repricing_dominant": 0,
-    "one_off_relief": 0,
+    "one_off_relief": 1,
     "official_private_overlap": 0
   },
   "seen_policy_ids": [],
@@ -27,15 +27,15 @@
       "negative_streak": 5
     },
     "market": {
-      "observed_at_utc": "2026-10-22T00:53:10Z",
-      "usdjpy": 158.22300720214844,
-      "usdjpy_change_pct": -0.08020138709951583,
+      "observed_at_utc": "2026-10-22T19:28:33Z",
+      "usdjpy": 156.8000030517578,
+      "usdjpy_change_pct": -0.8686591695944016,
       "ust2": null,
       "ust2_change_bp": null,
-      "ust10": 5.146,
-      "ust10_change_bp": 2.900040000000015,
-      "ust30": 5.439,
-      "ust30_change_bp": 1.4000000000000234
+      "ust10": 4.953,
+      "ust10_change_bp": -19.29999999999996,
+      "ust30": 5.287,
+      "ust30_change_bp": -15.200000000000014
     }
   }
 }
