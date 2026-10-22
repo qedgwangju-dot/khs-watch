@@ -195,6 +195,19 @@ def build(rows, day, is_revision=False, rate=None, basis="", prices=None, enrich
         "매매대금: 미국 현지 거래일 종가 × 주식 수의 참고 추정액 (실제 체결대금 아님)",
         "",
     ]
+    # Do not call a partial price-covered aggregate the total actual trade amount.
+    if prices and rate:
+        for action,subset in [("매수",buys),("매도",sells)]:
+            quoted=[r for r in subset if r["ticker"] in prices]
+            usd=sum(r["shares"]*prices[r["ticker"]]["close"] for r in quoted)
+            marker="일부 추정 합계" if len(quoted)<len(subset) else "종가 기준 추정 합계"
+            header.append(
+                f"• {action} {marker}: <b>{notional.usd_krw(usd,rate)}</b>"
+                f" · 가격 확인 {len(quoted)}/{len(subset)}개 거래행"
+            )
+    else:
+        header.append("• 거래대금: 장마감 가격 미확인으로 총액 추정 불가")
+
     xe=[r for r in buys if r["ticker"]=="XE"]
     if xe:
         total=sum(r['shares'] for r in xe)
@@ -214,6 +227,7 @@ def build(rows, day, is_revision=False, rate=None, basis="", prices=None, enrich
        "• 공식 매매 알림은 잠정 자료이고 ETF 설정·환매/일부 공모거래 등이 제외될 수 있습니다.",
        "• 매매대금은 공식 거래수량 × 해당일 미국 종가로 계산한 참고 추정액입니다. 실제 체결대금·체결단가는 공개되지 않습니다.",
        "• 종가 확인에 실패하거나 독립 가격 자료가 4% 넘게 다르면 추정액을 표시하지 않습니다.",
+       "• 가격 출처: Stooq·Yahoo Finance의 해당 거래일 종가. 프랑스 상장 탈레스(HO)는 달러 종가로 환산하지 않습니다.",
        "",
        _link("ARK 공식 당일 매매 파일",SOURCE)+" | "+_link("ARK 공식 안내",DISCLOSURE),
     ])
