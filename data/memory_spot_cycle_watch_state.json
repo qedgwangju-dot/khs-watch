@@ -701,7 +701,7 @@
     "6b94edd078b073bf066559a5": {
       "title": "Musk Says China Will Mass-Produce Memory Chips by 2028, Praises Micron's Pricing While Taking Aim at Korean Rivals - BigGo Finance",
       "source": "BigGo Finance",
-      "published_kst": "2026-10-15T15:55:00+09:00",
+      "published_kst": "2026-10-15T21:31:48+09:00",
       "first_seen_kst": "2026-10-16T00:45:27+09:00"
     },
     "95c8565ce309af0dccafdf75": {
@@ -775,11 +775,17 @@
       "source": "뉴스스페이스",
       "published_kst": "2026-10-21T00:11:57+09:00",
       "first_seen_kst": "2026-10-21T15:02:41+09:00"
+    },
+    "4d51e6b7288176d53fc4379a": {
+      "title": "Custom HBM Rises as Advanced Base Dies Elevate TSMC Oct 22, 2026 | PDF AI chipmakers are adopting custom HBM as base dies move to advanced logic nodes, strengthening TSMC's role in the HBM supply chain.",
+      "source": "TrendForce Research",
+      "published_kst": "2026-10-22T09:00:00+09:00",
+      "first_seen_kst": "2026-10-22T22:14:10+09:00"
     }
   },
-  "updated_at_kst": "2026-10-22T16:34:45+09:00",
-  "last_scan_count": 15,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-10-22T22:14:10+09:00",
+  "last_scan_count": 16,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -839,20 +845,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-20T21:34:51+09:00",
+  "last_successful_delivery_kst": "2026-10-22T22:14:26+09:00",
   "telegram_message_ids": [
-    314
+    319
   ],
-  "telegram_message_id": 314,
+  "telegram_message_id": 319,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      314
+      319
     ],
-    "confirmed_at_kst": "2026-10-20T21:34:51+09:00",
-    "alert_signature": "40930a116d8e66b73efbe08ecc70effb142bd69eecc6a6f6e221fbb42f230b3e"
+    "confirmed_at_kst": "2026-10-22T22:14:26+09:00",
+    "alert_signature": "e9b5a5bd65bf6c507fc73c52c7fd88db2c4bad22c08ca13bd17f73a98e419784"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
