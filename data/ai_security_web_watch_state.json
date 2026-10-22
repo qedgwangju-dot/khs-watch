@@ -805,6 +805,16 @@
       "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNaF9oU3RYQTZYazB3MkJkWXczTXotc1BuNzF3QS02LXZ0TmtBdjB4WXhqMVZCUTdVbTlYZ2psbWZOWTV0VHZvclF6SWtWbk9uSFhQR21rZExSRlNkcW4wakZTbkxoRHFsaUtia3hjZXpaRUduckNnTUJLSXh4Wnp4NlB5cnYzUmh4Qm5uZXZMOTVPcmNmRVU4NXU5dUlpVm51YXZ3TDdoYnlGYkJ6cnBsaW9ad25zNE9xYmVJ?oc=5",
       "vendor": "OpenAI"
     },
+    "d6e6ec1384df0c56c95696f1": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-22T04:12:20.317409+00:00",
+      "published_at": "2026-10-21T22:36:26+00:00",
+      "severity": 3,
+      "source": "Amazon Web Services",
+      "title": "Amazon Threat Intelligence identifies PHP2Shell exploitation prior to public disclosure in MadPot - Amazon Web Services",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQQVVWR2dJMXQ5N3plYkRnb1ZMdmVTWlNXS2JseFRMaTV5WmdZVkp3MVhyVk1FQ09XcFQzN3N3Rko3Vl9mTnF3dndiVVVaVU1Rem5Qdk1FU2VzcDJXZjhBeXhURUtRSFNIR3dOc0VadE14ZHQteGltSkd3VzhMbzNEcmhva2xteWVJM1N6T3J4eXc2VUU0VTE1LVhSNzFnRVRnMS12UDJoSFV3QXE5Mnl4VVVHcThUMmdvZEtvMmZ6RjBtVHo0RjdfNkg0UWlEaGN3Smc?oc=5",
+      "vendor": "PHP 재단"
+    },
     "d6eede707b458f6eda9066c7": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-29T01:16:21.323865+00:00",
@@ -966,5 +976,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-22T12:38:23+09:00"
+  "updated_at_kst": "2026-10-22T13:12:20+09:00"
 }
