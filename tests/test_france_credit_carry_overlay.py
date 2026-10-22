@@ -162,6 +162,38 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
         self.assertTrue(all(len(x) <= 3900 for x in chunks))
 
 
+    def test_sp_november_review_milestones_are_deduplicated(self):
+        first = watch.sp_review_events(dt.date(2026, 11, 20), set())
+        self.assertEqual(first, [{"kind": "sp_milestone",
+                                  "key": "sp_milestone:2026-11-27:D-7",
+                                  "days": 7}])
+        self.assertEqual(watch.sp_review_events(dt.date(2026, 11, 20),
+                                                {first[0]["key"]}), [])
+        same_day = watch.sp_review_events(dt.date(2026, 11, 27), set())
+        self.assertEqual(same_day[0]["days"], 0)
+        overdue = watch.sp_review_events(dt.date(2026, 11, 28), set())
+        self.assertEqual(overdue[0]["kind"], "sp_review_overdue")
+        self.assertEqual(watch.sp_review_events(dt.date(2026, 11, 28),
+                                                {overdue[0]["key"]}), [])
+
+    def test_sp_alert_uses_attributed_historical_rating_and_clickable_link(self):
+        from scripts.europe_sovereign_yield_telegram_html import render_chunks
+        rating = dict(watch.VERIFIED_AFT_SNAPSHOT)
+        e = [{"kind": "sp_milestone", "key": "sp_milestone:2026-11-27:D-1",
+              "days": 1}]
+        _, body = watch.format_event(
+            rating, e,
+            {"last_values": {"fr_mkt": 5.06, "de_mkt": 3.35},
+             "last_source_dates": {"fr_mkt": "2026-10-22",
+                                   "de_mkt": "2026-10-22"}, "stale": []},
+            dt.datetime(2026, 11, 26, 12, 0, tzinfo=watch.KST))
+        self.assertIn("S&P 2026-11-27", body)
+        self.assertIn("날짜 변경 여부와 새 결정", body)
+        self.assertIn("다음 경계 175bp", body)
+        msg = "\\n".join(render_chunks(body))
+        self.assertIn("프랑스 국채관리청 S&P 공식 신용등급 일정</a>", msg)
+        self.assertIn("프랑스 헤지펀드 캐리 청산 보도</a>", msg)
+
     def test_government_notice_does_not_claim_moodys_rating_result(self):
         snapshot = dict(watch.VERIFIED_AFT_SNAPSHOT)
         event = [{"kind": "government_rating_notice",
