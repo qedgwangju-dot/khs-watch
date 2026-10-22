@@ -46,7 +46,7 @@ def main():
     try:
         def fake_request(url,timeout=8):
             if "stooq.com" in url:
-                return b"Date,Open,High,Low,Close,Volume\\n2026-10-20,10.10,10.99,10.02,10.74,5000000\\n"
+                return b"Date,Open,High,Low,Close,Volume\n2026-10-20,10.10,10.99,10.02,10.74,5000000\n"
             if "finance.yahoo.com" in url:
                 return json.dumps({"chart":{"result":[{"timestamp":[timestamp],
                    "indicators":{"quote":[{"close":[10.74]}]}}]}}).encode()
