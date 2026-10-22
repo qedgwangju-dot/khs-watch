@@ -191,6 +191,36 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
         self.assertEqual(watch.sp_review_events(dt.date(2026, 11, 28),
                                                set(), row, row), [])
 
+    def test_simultaneous_official_rating_and_government_notice_kept(self):
+        rating = dict(watch.VERIFIED_AFT_SNAPSHOT)
+        rating.update({"rating": "A1", "outlook": "Negative",
+                       "decision_date": "2026-10-23", "source_kind": "official_document"})
+        events = [
+            {"kind": "decision", "key": "decision:2026-10-23:A1:Negative"},
+            {"kind": "government_rating_notice", "key": "government_notice:x",
+             "date": "2026-10-23", "url": "https://presse.economie.gouv.fr/notation-moodys-test/",
+             "title": "Réponse de la France"},
+        ]
+        name, msg = watch.format_event(rating, events, {}, dt.datetime(2026, 10, 24, tzinfo=watch.KST))
+        self.assertIn("Moody’s 공식 신용등급", name)
+        self.assertIn("프랑스 재무부의 별도 공식 대응", msg)
+        self.assertIn("government Moody press: ", msg)
+
+    def test_simultaneous_sp_official_rating_and_government_notice_kept(self):
+        rating = dict(watch.VERIFIED_AFT_SNAPSHOT)
+        events = [
+            {"kind": "sp_decision", "key": "sp_decision:2026-11-27:A:Stable",
+             "rating": "A", "outlook": "Stable", "decision_date": "2026-11-27"},
+            {"kind": "government_rating_notice", "key": "government_notice:y",
+             "date": "2026-11-27", "url": "https://presse.economie.gouv.fr/notation-moodys-test/",
+             "title": "Réponse du gouvernement"},
+        ]
+        name, msg = watch.format_event(rating, events, {},
+                                       dt.datetime(2026, 11, 28, tzinfo=watch.KST))
+        self.assertIn("S&P 공식 신용등급", name)
+        self.assertIn("프랑스 재무부의 별도 공식 대응", msg)
+        self.assertIn("AFT France S&P rating calendar:", msg)
+
     def test_sp_unverified_news_cannot_claim_official_downgrade(self):
         prev = dict(watch.VERIFIED_SP_SNAPSHOT)
         rumored = {**prev, "rating": "A", "outlook": "Negative",
