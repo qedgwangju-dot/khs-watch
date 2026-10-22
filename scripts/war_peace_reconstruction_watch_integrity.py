@@ -237,9 +237,10 @@ def _diplomatic_group(title):
     trilateral = bool(re.search(r'(?:미|美)\s*[·ㆍ/]?\s*(?:중|中)\s*[·ㆍ/]?\s*(?:러|露)', title))
     north_russia = bool(re.search(r'(?<![가-힣])북\s*[·ㆍ/]?\s*러(?=\s|$)', title))
     russia_ukraine = bool(re.search(r'(?<![가-힣])러\s*[·ㆍ/]\s*우(?=\s|$)', title))
+    us_russia_ukraine = bool(re.search(r'(?<![가-힣])미\s*[·ㆍ/]\s*러\s*[·ㆍ/]\s*우(?=\s|[,·ㆍ/]|$)', title))
     actors = []
     for label, pattern in (
-            ('미국', r'미국|트럼프|백악관|美|(?<![가-힣])미(?=\s*특사)|\bwhite\s+house\b|\bu\.s\.|\bunited\s+states\b|'
+            ('미국', r'미국|트럼프|백악관|美|(?<![가-힣])미(?=\s*특사|\s*[·ㆍ/])|\bwhite\s+house\b|\bu\.s\.|\bunited\s+states\b|'
                      r'\bthe\s+us\b|\bus(?=\s+(?:midterms?|elections?|officials?|government|military|envoys?|sanctions?|imposes?)\b)|'
                      r'\b(?:trump|witkoff|kushner)\b|위트코프|쿠슈너'),
             ('우크라이나', r'우크라|젤렌스키|\b(?:ukrain\w*|zelenskyy?|zelenskiy)\b'),
@@ -253,7 +254,8 @@ def _diplomatic_group(title):
             ('파키스탄', r'파키스탄|\bpakistan(?:i)?\b'),
             ('북한', r'북한|김정은|\bnorth\s+korea\b|\bkim\s+jong[ -]?un\b')):
         if (re.search(pattern, title) or (trilateral and label in ('미국', '중국', '러시아'))
-                or (north_russia and label in ('북한', '러시아'))):
+                or (north_russia and label in ('북한', '러시아'))
+                or (us_russia_ukraine and label in ('미국', '우크라이나', '러시아'))):
             actors.append(label)
         elif russia_ukraine and label in ('러시아', '우크라이나'):
             actors.append(label)
@@ -286,10 +288,16 @@ def _attack_plan_spans(title):
     # actual action must retain its own span and direction.
     linked_outcome = (action + r'(?:추진|계획|검토|준비)(?:했지만|했다|하다가)\s*'
                       r'(?:…|\.{3})\s*(?:(?!공습|공격|폭격|…|\.{3}|[;；]).){0,55}?' + outcome)
+    # Bind the plan verb directly to its attack object. Later target/background
+    # nouns must not become a negotiation event or prove a completed strike.
+    english_action = r'(?:(?:new|renewed|iran(?:ian)?|military)\s+){0,3}(?:attacks?|airstrikes?|strikes?)\b'
+    english_plan = (r'(?:plan(?:s|ned)?(?:\s+(?:for|to\s+(?:launch|resume)))?|'
+                    r'(?:developed|prepared|drawn\s+up)\s+plans?\s+for)\s+' + english_action)
+    english_denied = r'\b(?:(?:do|does|did)\s+not\s+|(?:deny|denies|denied)\s+)' + english_plan
     return list(re.finditer(
-        r'(?P<held>' + linked_outcome + r'|' + action +
+        r'(?P<denied>' + english_denied + r')|(?P<held>' + linked_outcome + r'|' + action +
         r'(?:하려다|추진|계획|검토|준비)[^…;；]{0,70}?' + outcome + r')|'
-        r'(?P<planned>' + action + r'(?:추진|검토|계획|준비))', title))
+        r'(?P<planned>' + action + r'(?:추진|검토|계획|준비)|\b' + english_plan + r')', title))
 
 
 def _attack_plan_status(title):
@@ -358,11 +366,8 @@ def _primary_topic(row):
                   ('이란', r'이란|\biran\b')) if re.search(pattern, title)]
         return ('·'.join(actors) or _diplomatic_group(title)) + ' · 공습·공격 재개 가능성 해설'
     if kind == 'military_discussion' and _attack_plan_status(title):
-        actors = [label for label, pattern in (('미국', r'트럼프|미국|美|\btrump\b'),
-                  ('이스라엘', r'이스라엘|네타냐후|\b(?:israel|netanyahu)\b'),
-                  ('이란', r'이란|\biran\b')) if re.search(pattern, title)]
         label = {'held': '공습·공격 계획 보류·반대', 'denied': '공습·공격 계획 부인', 'planned': '공습·공격 계획·추진'}[_attack_plan_status(title)]
-        return ('·'.join(actors) or _diplomatic_group(title)) + ' · ' + label
+        return _diplomatic_group(title) + ' · ' + label
     if kind == 'commodity_market':
         return '금시장 · ' + KIND_LABELS[kind]
     if kind == 'security_activity':
@@ -1006,12 +1011,13 @@ def _conditional_diplomacy_stage(title):
 def _talks_schedule_stage(title):
     patterns = (
         ('협상 재개 동의', r'(?:종전|평화|휴전)\s*(?:협상|회담)(?:을|를)?\s*재개(?:를|을)?\s*동의'),
+        ('협상 재개 준비', r'(?:협상|회담)(?:을|를)?\s*재개\s*준비(?=\s*(?:됐|되|중|완료|착수|하지|안|부인|["“”]|$))'),
         ('협상 개최 가능성', r'(?:협상|회담)[^\n;；]{0,55}?개최\s*(?:가능성|할\s*수도)'),
         ('회담 준비·개최 추진', r'(?:협상|회담)[^\n;；]{0,55}?(?:개최\s*추진|준비\s*(?:착수|중))'))
     for label, pattern in patterns:
         match = re.search(pattern, title)
         if match:
-            denied = bool(re.match(r'(?:은|는|을|를)?\s*(?:하지\s*않|않겠|아니|부인|거부)', title[match.end():]))
+            denied = bool(re.match(r'(?:은|는|을|를)?\s*(?:하지\s*않|되지\s*않|안\s*(?:됐|되)|않겠|아니|부인|거부)', title[match.end():]))
             if label == '협상 재개 동의' and re.search(r'개최\s*추진', title):
                 label += '·개최 추진'
             return label, denied
