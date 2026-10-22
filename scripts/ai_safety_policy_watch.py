@@ -129,6 +129,8 @@ NEWS_QUERIES = [
     '"Cohere" "AISLE" ("letter of intent" OR acquisition OR "definitive agreement" OR closing OR terminated)',
     '"Cohere Cyber" "AISLE" (customer OR contract OR product OR deployment OR license OR subscription)',
     '"Aidan Gomez" "AISLE" (CNBC OR "rogue agents" OR cybersecurity)',
+    '"CrowdStrike" "NVIDIA" "Falcon Guardian" ("OpenShell" OR "Sentry" OR deployment OR integration)',
+    '"Falcon Guardian" "BlueField-4" (availability OR rollout OR paid OR customer OR contract OR Sentry)',
     # FTC civil subpoenas are not findings of liability; follow real enforcement milestones.
     '"FTC" ("OpenAI" OR "Anthropic") (subpoena OR complaint OR settlement OR consent order)',
     '"FTC" ("OpenAI" OR "Anthropic") ("AI agents" OR "AI model") (enforcement OR investigation OR lawsuit)',
@@ -673,6 +675,22 @@ def cohere_aisle_publisher_verified(item: dict) -> bool:
     return host in ("aisle.com", "www.aisle.com")
 
 
+def crowdstrike_nvidia_publisher_verified(item: dict) -> bool:
+    """Company-branded feeds must resolve to the verified issuer domain."""
+    source = str(item.get("source") or "").strip().lower()
+    if not (source.startswith("crowdstrike") or source == "nvidia"):
+        return True
+    link = str(item.get("publisher_url") or "").strip()
+    if not link and item.get("kind") in ("official", "official_direct"):
+        link = str(item.get("url") or "").strip()
+    try:
+        host = (urllib.parse.urlsplit(link).hostname or "").lower()
+    except ValueError:
+        return False
+    domain = "crowdstrike.com" if source.startswith("crowdstrike") else "nvidia.com"
+    return host == domain or host.endswith("." + domain)
+
+
 def source_official(source: str) -> bool:
     low = source.lower()
     return any(x in low for x in OFFICIAL_SOURCE_HINTS)
@@ -738,6 +756,36 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     """
     title = str(item.get("title") or "").lower()
     context = f"{item.get('title','')} {item.get('description','')}".lower()
+
+    # Original Oct-21 collaboration is not a finished Sentry deployment.
+    if (
+        "crowdstrike" in context and "nvidia" in context
+        and any(x in context for x in ("falcon guardian", "openshell", "sentry", "bluefield-4"))
+    ):
+        if any(x in title for x in (
+            "terminates falcon guardian integration", "ends openshell partnership",
+            "cancels sentry integration", "partnership terminated", "협력 종료", "연동 중단",
+        )):
+            return ("crowdstrike_nvidia_guardian", "integration_ended_reported")
+        if any(x in title for x in (
+            "signs paid", "paid enterprise deployment", "paid customer contract",
+            "wins enterprise contract", "commercial contract signed",
+            "유료 고객 계약 체결", "상용 보안 계약 수주",
+        )) and not any(x in title for x in ("may ", "could ", "plans to", "expected to")):
+            return ("crowdstrike_nvidia_guardian", "paid_customer_reported")
+        if any(x in title for x in (
+            "sentry integration completed", "sentry integration now live",
+            "deploys falcon guardian on bluefield", "hardware enforcement now available",
+            "in-silicon enforcement generally available", "sentry 연동 완료",
+        )) and not any(x in title for x in ("will ", "plans", "expected", "may ", "could ")):
+            return ("crowdstrike_nvidia_guardian", "sentry_live_reported")
+        if any(x in title for x in (
+            "openshell integration now available", "falcon guardian generally available",
+            "falcon guardian openshell ga", "openshell integration goes live",
+            "falcon guardian openshell production release", "openshell 상용 통합 완료",
+        )) and not any(x in title for x in ("will ", "plans", "expected", "may ", "could ")):
+            return ("crowdstrike_nvidia_guardian", "openshell_available_reported")
+        return ("crowdstrike_nvidia_guardian", "integration_announced")
 
     # Separate existing civil subpoenas from a later formal complaint,
     # consent order or closure. News attribution is never an FTC ruling.
@@ -942,6 +990,8 @@ def detect_category(text: str) -> str:
         return "FTC 프런티어 AI 소비자보호 조사·집행 단계"
     if "cohere" in low and re.search(r"\baisle\b", low):
         return "Cohere–AISLE AI 보안 인수·상용화 단계"
+    if "crowdstrike" in low and "nvidia" in low and any(x in low for x in ("falcon guardian", "openshell", "sentry", "bluefield-4")):
+        return "CrowdStrike–NVIDIA AI 에이전트 보안 통합 단계"
     if "softbank" in low and "allied universal" in low:
         return "SoftBank–Allied Universal 물리보안·로봇 인수 단계"
     if "anthropic" in low and any(x in low for x in (
@@ -974,6 +1024,8 @@ def detect_entity(text: str) -> str:
         return "FTC–OpenAI" if "openai" in low else "FTC–Anthropic"
     if "cohere" in low and re.search(r"\baisle\b", low):
         return "Cohere–AISLE"
+    if "crowdstrike" in low and "nvidia" in low and any(x in low for x in ("falcon guardian", "openshell", "sentry", "bluefield-4")):
+        return "CrowdStrike–NVIDIA"
     if "softbank" in low and "allied universal" in low:
         return "SoftBank–Allied Universal"
     if "anthropic" in low and any(x in low for x in (
@@ -1069,6 +1121,8 @@ def material(item: dict) -> bool:
     if milestone:
         if milestone[0] == "cohere_aisle" and not cohere_aisle_publisher_verified(item):
             return False
+        if milestone[0] == "crowdstrike_nvidia_guardian" and not crowdstrike_nvidia_publisher_verified(item):
+            return False
         return source_trusted(item.get("source", ""))
     stage = trail_of_bits_mna_stage(item)
     if stage:
@@ -1130,7 +1184,8 @@ def normalize(item: dict) -> dict:
     out["fingerprint"] = fingerprint(item)
     out["category"] = detect_category(combined)
     out["entity"] = detect_entity(combined)
-    out["official"] = source_official(item.get("source","")) and cohere_aisle_publisher_verified(item)
+    out["official"] = (source_official(item.get("source","")) and
+        cohere_aisle_publisher_verified(item) and crowdstrike_nvidia_publisher_verified(item))
     return out
 
 
@@ -1499,7 +1554,14 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "Cohere–AISLE AI 보안 인수·상용화 단계":
+        if rep["category"] == "CrowdStrike–NVIDIA AI 에이전트 보안 통합 단계":
+            stage = tracked_policy_event_stage(rep)
+            detail = stage[1].replace("_", " ") if stage else "추가 검증"
+            lines.append(f"• <b>신규 단계</b>: {html.escape(detail)} · 당사자 공식 발표와 미래 계획을 분리")
+            lines.append("• <b>기술 단계</b>: Falcon Guardian의 NVIDIA OpenShell 통합은 진행 중. NVIDIA Sentry·BlueField-4 반도체 정책 강제 연동은 계획 단계이며 고객 현장 가동 확정 아님")
+            lines.append("• <b>수익구조</b>: 소프트웨어 사용권·유료 기업고객·반복 갱신과 추가 DPU 출하가 실제 확인될 때만 증분 매출로 집계. 계약금액·유료 고객 수·양산 물량 미공개")
+            lines.append("• <b>다음 확인</b>: OpenShell 정식 출시·Sentry 실장·고객 승인·실제 보안 차단·유료계약·신규 출하·유지보수·오탐·성능 비용")
+        elif rep["category"] == "Cohere–AISLE AI 보안 인수·상용화 단계":
             milestone = tracked_policy_event_stage(rep)
             detail = milestone[1].replace("_", " ") if milestone else "추가 검증"
             verification = "당사자 공식 발표" if rep.get("official") else "신뢰보도 · 공식 발표와 별도 검증"
@@ -1623,6 +1685,18 @@ def main() -> int:
                 print(f"ai_policy_new_topic_feed total={len(fetched)} relevant={relevant}")
         except Exception as exc:
             errors.append(f"Google News 실패: {query[:55]} / {type(exc).__name__}: {exc}")
+
+    # Official CrowdStrike Oct-21 announcement, with stable stage dedup.
+    raw.append({
+        "kind": "official",
+        "query": "CrowdStrike first-party Falcon Guardian OpenShell announcement",
+        "title": "CrowdStrike and NVIDIA Expand AI Agent Security from Software to Silicon",
+        "description": "Falcon Guardian integrating with NVIDIA OpenShell software; NVIDIA Sentry BlueField-4 in-silicon enforcement integration planned, not yet a production deployment or paid contract",
+        "source": "CrowdStrike",
+        "publisher_url": "https://ir.crowdstrike.com/",
+        "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-and-nvidia-expand-ai-agent-security-software-silicon",
+        "published_at": "2026-10-21T00:00:00+00:00",
+    })
 
     normalized = {}
     for row in raw:
