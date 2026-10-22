@@ -28,13 +28,17 @@ def parse_utc(value):
     return dt.datetime.fromisoformat(str(value).replace("Z", "+00:00")).astimezone(dt.timezone.utc)
 
 
-def due_decision(event_name, last_monitor_success_at, now=None, threshold_minutes=DEFAULT_FALLBACK_GAP_MINUTES, schedule_expr=None):
+def due_decision(event_name, last_monitor_success_at, now=None, threshold_minutes=DEFAULT_FALLBACK_GAP_MINUTES, schedule_expr=None, last_monitor_attempt_at=None, attempt_cooldown_minutes=20):
     now = now or dt.datetime.now(dt.timezone.utc)
     if now.tzinfo is None:
         raise ValueError("now must be timezone-aware")
     is_backup_schedule = event_name == "schedule" and schedule_expr == BACKUP_SCHEDULE
     if event_name != "workflow_run" and not is_backup_schedule:
         return True, None, "정규 트리거 보존"
+    if last_monitor_attempt_at is not None:
+        age = (now.astimezone(dt.timezone.utc) - last_monitor_attempt_at.astimezone(dt.timezone.utc)).total_seconds() / 60
+        if 0 <= age < attempt_cooldown_minutes:
+            return False, age, "최근 monitor 시도 존재 — 실패 여부와 무관하게 보조 반복 실행 억제"
     if last_monitor_success_at is None:
         return True, None, "직전 monitor 성공 실행을 찾지 못해 보조 실행"
     last = last_monitor_success_at.astimezone(dt.timezone.utc)
@@ -102,6 +106,35 @@ def latest_monitor_success(repo, token, current_run_id):
     return None
 
 
+def latest_monitor_attempt(repo, token, current_run_id):
+    """Throttle fallback storms during partial source outages; never gate primary cron."""
+    workflow = urllib.parse.quote(WORKFLOW_FILE, safe="")
+    url = (
+        f"https://api.github.com/repos/{repo}/actions/workflows/{workflow}/runs"
+        "?branch=main&per_page=20"
+    )
+    runs = (api_json(url, token).get("workflow_runs") or [])[:15]
+    for run in runs:
+        try:
+            rid = int(run.get("id"))
+        except (ValueError, TypeError):
+            continue
+        if rid == int(current_run_id):
+            continue
+        jobs_url = str(run.get("jobs_url") or
+            f"https://api.github.com/repos/{repo}/actions/runs/{rid}/jobs")
+        jobs = api_json(jobs_url, token).get("jobs") or []
+        monitor = next((j for j in jobs if j.get("name") == "monitor"), None)
+        if not monitor or monitor.get("conclusion") == "skipped":
+            continue
+        started = parse_utc(
+            monitor.get("started_at") or run.get("run_started_at")
+        )
+        if started is not None:
+            return {"run_id":rid,"started_at":started,"conclusion":monitor.get("conclusion")}
+    return None
+
+
 def write_output(name, value):
     path = os.getenv("GITHUB_OUTPUT")
     if not path:
@@ -119,6 +152,7 @@ def main():
     token = (os.getenv("GH_TOKEN") or "").strip()
 
     previous = None
+    attempt = None
     error = None
     if event == "workflow_run" or (event == "schedule" and schedule_expr == BACKUP_SCHEDULE):
         if not repo or not token or not current_run:
@@ -126,6 +160,7 @@ def main():
         else:
             try:
                 previous = latest_monitor_success(repo, token, current_run)
+                attempt = latest_monitor_attempt(repo, token, current_run)
             except Exception as exc:
                 error = f"{type(exc).__name__}: {exc}"
 
@@ -137,6 +172,7 @@ def main():
             previous.get("completed_at") if previous else None,
             threshold_minutes=threshold,
             schedule_expr=schedule_expr,
+            last_monitor_attempt_at=attempt.get("started_at") if attempt else None,
         )
 
     write_output("run", "true" if should_run else "false")
@@ -150,6 +186,7 @@ def main():
         "execute": should_run,
         "threshold_minutes": threshold,
         "last_monitor_success_run_id": previous.get("run_id") if previous else None,
+        "last_monitor_attempt_run_id": attempt.get("run_id") if attempt else None,
         "last_monitor_success_at_utc": (
             previous["completed_at"].isoformat() if previous else None
         ),

@@ -65,6 +65,34 @@ class WarshWorkflowCadenceTests(unittest.TestCase):
         self.assertIsNone(lag)
         self.assertIn("보조 실행", reason)
 
+    def test_failed_monitor_attempt_cools_down_fallback(self):
+        last = self.now - dt.timedelta(minutes=3)
+        should, lag, reason = cadence.due_decision(
+            'workflow_run', None, self.now,
+            last_monitor_attempt_at=last, attempt_cooldown_minutes=20
+        )
+        self.assertFalse(should)
+        self.assertAlmostEqual(lag,3)
+        self.assertIn('반복 실행 억제',reason)
+
+    def test_after_attempt_cooldown_fallback_can_retry(self):
+        should, lag, reason = cadence.due_decision(
+            'workflow_run', None, self.now,
+            last_monitor_attempt_at=self.now-dt.timedelta(minutes=26),
+            attempt_cooldown_minutes=20
+        )
+        self.assertTrue(should)
+        self.assertIn('보조 실행',reason)
+
+    def test_primary_schedule_runs_even_after_failed_attempt(self):
+        should, lag, reason = cadence.due_decision(
+            'schedule', None, self.now, schedule_expr='26 * * * *',
+            last_monitor_attempt_at=self.now-dt.timedelta(minutes=1)
+        )
+        self.assertTrue(should)
+        self.assertIn('정규',reason)
+
+
     def test_latest_success_requires_monitor_job_success(self):
         runs = {
             "workflow_runs": [
