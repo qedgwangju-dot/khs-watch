@@ -1,12 +1,12 @@
 {
-  "updated_at_kst": "2026-10-22T11:52:40+09:00",
+  "updated_at_kst": "2026-10-22T11:56:46+09:00",
   "event_hash": "4b5d8504fe1818af61db90805fffecb0152b92e99945b6a4b2f68f2f3e67b71a",
-  "statement_hash": "b24cb634a5181e1db74b1fb441541dbc8645a228bc1e396c54334e53d18743cb",
+  "statement_hash": "93a7e37910260f43aedfbcb446012279031eee0a6adfc185dd4d492882574d35",
   "statement": {
     "title": "통화정책방향(2026.10.22)",
     "url": "https://www.bok.or.kr/portal/bbs/P0000559/view.do?nttId=11065823&menuNo=200690",
-    "hash": "b24cb634a5181e1db74b1fb441541dbc8645a228bc1e396c54334e53d18743cb",
-    "parser_version": 3,
+    "hash": "93a7e37910260f43aedfbcb446012279031eee0a6adfc185dd4d492882574d35",
+    "parser_version": 4,
     "rate_from": 3.0,
     "rate_to": 3.0,
     "vote_for": 7,
@@ -51,7 +51,7 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-10-22T11:52:44+09:00",
+    "updated_at_kst": "2026-10-22T11:56:49+09:00",
     "risk_score": 3,
     "grade_emoji": "🟡",
     "grade_label": "추가인상 가능성 유지",
@@ -83,8 +83,8 @@
       "housing": null,
       "oil": {
         "date": "2026-10-22",
-        "brent_usd": 110.55,
-        "change_5d_pct": 4.37,
+        "brent_usd": 110.52,
+        "change_5d_pct": 4.34,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
