@@ -1743,6 +1743,26 @@ lng_collection_budget.install(
         "brent": lambda: {"brent": _fetch_yahoo_brent_daily_close_v34()},
         "official_bonds": _official_bond_quotes_v34,
     },
+    optional_market_sources={
+        "gie_storage": lambda: {
+            "eu_storage": _gie_storage_quote_v34(
+                _parse_gie_storage_homepage_v34(
+                    core.fetch_bytes(GIE_STORAGE_HOME_V34, timeout=14, attempts=1).decode(
+                        "utf-8",errors="replace"
+                    )
+                )
+            )
+        },
+        "ecb_eurkrw": lambda: {
+            "eurkrw": _ecb_quote_v34(
+                _parse_ecb_eurkrw_v34(
+                    core.fetch_bytes(ECB_EURKRW_DAILY_V34, timeout=12, attempts=1).decode(
+                        "utf-8",errors="replace"
+                    )
+                )
+            )
+        },
+    },
 )
 
 
@@ -2023,7 +2043,8 @@ core.PRICE_SPECS["ttf"]["levels"]=tuple(sorted(set(
     tuple(core.PRICE_SPECS["ttf"]["levels"])+GAS_PRICE_WARNING_LEVELS_V34
 )))
 core.PRICE_SPECS["ttf"]["exit_buffer"]=2.0
-core.fetch_market_quotes=_quotes_with_gie_storage_v34
+# Keep the mandatory collector entrypoint in lng_collection_budget, as required
+# by the existing coverage and no-stale-state tests.
 core.apply_hysteresis=_signals_with_storage_v34
 core.should_alert=_should_alert_with_storage_v34
 core.signal_label=_signal_label_with_storage_v34

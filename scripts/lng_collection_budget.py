@@ -95,8 +95,8 @@ def news_urls(core, early_queries):
     return sources
 
 
-def install(core, *, early_queries, market_sources, total_seconds=420, news_seconds=300,
-            market_seconds=90, workers=8, clock=time.monotonic):
+def install(core, *, early_queries, market_sources, optional_market_sources=None,
+            total_seconds=420, news_seconds=300, market_seconds=90, workers=8, clock=time.monotonic):
     original_run = core.run
     original_news = core.fetch_news_item_set
     original_fetch = core.fetch_bytes
@@ -159,6 +159,21 @@ def install(core, *, early_queries, market_sources, total_seconds=420, news_seco
         missing = {'ttf', 'jkm', 'brent', 'bund10', 'us10'} - quotes.keys()
         if missing:
             raise IncompleteCoverage('required market quotes missing: ' + ', '.join(sorted(missing)))
+        # Public GIE storage and ECB FX are supplementary: failure must never
+        # invent a measurement or block existing mandatory LNG sources.
+        if optional_market_sources:
+            extra_values, extra_coverage = collect(
+                list(optional_market_sources.items()),
+                deadline=min(deadline, clock() + 25),
+                workers=min(3, workers),
+                clock=clock,
+            )
+            report['market_optional'] = extra_coverage
+            save_report()
+            for value in extra_values.values():
+                if not isinstance(value, dict):
+                    raise IncompleteCoverage('optional market result type is not dict')
+                quotes.update(value)
         report["complete"] = True
         save_report()
         return quotes, []
