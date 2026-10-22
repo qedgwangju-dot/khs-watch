@@ -1,24 +1,24 @@
 {
   "account": {
-    "change_1m_trillion_yen": -15.993785726000056,
-    "change_3m_trillion_yen": -13.876155796000035,
+    "change_1m_trillion_yen": -16.298831535999966,
+    "change_3m_trillion_yen": -14.22111147299995,
     "latest": {
-      "date": "2026-10-10",
-      "jgs_trillion_yen": 503.634998862,
-      "total_assets_trillion_yen": 624.63270719,
-      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261010.htm"
+      "date": "2026-10-20",
+      "jgs_trillion_yen": 504.003730754,
+      "total_assets_trillion_yen": 624.977993815,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261020.htm"
     },
     "one_month": {
-      "date": "2026-09-10",
-      "jgs_trillion_yen": 519.628784588,
-      "total_assets_trillion_yen": 644.271593576,
-      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260910.htm"
+      "date": "2026-09-20",
+      "jgs_trillion_yen": 520.30256229,
+      "total_assets_trillion_yen": 641.281336654,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260920.htm"
     },
     "three_month": {
-      "date": "2026-07-10",
-      "jgs_trillion_yen": 517.511154658,
-      "total_assets_trillion_yen": 638.675186572,
-      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260710.htm"
+      "date": "2026-07-20",
+      "jgs_trillion_yen": 518.224842227,
+      "total_assets_trillion_yen": 639.369552506,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260720.htm"
     }
   },
   "classification": {
@@ -106,7 +106,7 @@
   "errors": [],
   "initialized": true,
   "market_stress": {
-    "jgb10": 2.927,
+    "jgb10": 2.923,
     "jgb10_days_ge_3": 0,
     "joint_market_stress": false,
     "weak_auction_10y": false,
@@ -177,5 +177,5 @@
     "plan_revision": false,
     "weak_private_absorption": false
   },
-  "updated_at_kst": "2026-10-22T09:10:25+09:00"
+  "updated_at_kst": "2026-10-22T13:53:31+09:00"
 }

@@ -4,7 +4,7 @@
   "initialized": true,
   "last_policy_rates": {
     "boj_policy_rate": 1.25,
-    "fed_midpoint": 400.0
+    "fed_midpoint": 3.875
   },
   "new_boj_hike_detected": false,
   "reaction_snapshot": null,
@@ -15,7 +15,14 @@
       "detected_at_kst": "2026-10-22T02:58:38+09:00",
       "from_rate": 3.875,
       "to_rate": 400.0
+    },
+    {
+      "bank": "Fed",
+      "delta_pp": -396.125,
+      "detected_at_kst": "2026-10-22T13:53:31+09:00",
+      "from_rate": 400.0,
+      "to_rate": 3.875
     }
   ],
-  "updated_at_kst": "2026-10-22T09:10:25+09:00"
+  "updated_at_kst": "2026-10-22T13:53:31+09:00"
 }
