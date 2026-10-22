@@ -54,7 +54,15 @@ REPLICATION_REFERENCE_URL = "https://www.anthropic.com/research/self-replicating
 REPLICATION_REFERENCE_DATE = "2026-10-12"
 REPLICATION_WATCH_VERSION = 1
 
+# One dated, officially verified 2026-10-21 PHP security release. This is
+# a software vulnerability (not an observed AI attack) discovered with AI help.
+PHP_CRITICAL_CVES = ("CVE-2026-109618", "CVE-2026-109619")
+PHP_CRITICAL_ADVISORY_URL = "https://www.php.net/archive/2026.php#2026-10-21-5"
+PHP_PATCHED_RELEASES = "8.5.12·8.4.27·8.3.36·8.2.35"
+
 NEWS_QUERIES = [
+    '("CVE-2026-109618" OR "CVE-2026-109619" OR "php2shell") (PHP OR patch OR exploitation)',
+    '"php2shell" (CISA OR CERT-EU OR exploit OR update OR attack)',
     '"AI agent" security vulnerability exploit "data leak" "prompt injection"',
     '"Meta Muse" security vulnerability exploit privacy patch',
     '(OpenAI OR ChatGPT OR Codex) security vulnerability exploit "data leak"',
@@ -214,6 +222,7 @@ TRUSTED_SOURCE_HINTS = (
     "bloomberg", "the hacker news", "bleepingcomputer", "securityweek",
     "dark reading", "therecord",
     "the record", "krebs", "mit technology review",
+    "php foundation", "php security team", "enisa", "cert-eu", "ncsc",
     "cisa", "nist", "cert", "project zero", "google security",
     "microsoft security", "microsoft", "meta", "openai", "anthropic",
     "google", "amazon web services", "aws", "apple", "github",
@@ -460,7 +469,7 @@ def parse_cisa_kev(now: dt.datetime) -> list[dict]:
             str(row.get("cveID") or ""),
         ]).strip()
         combined = f" {title} {desc} ".lower()
-        if not is_ai_related(combined):
+        if not is_ai_related(combined) and not php_critical_stage({"title": title, "description": desc}):
             continue
         out.append({
             "kind": "official",
@@ -508,6 +517,54 @@ def is_ai_related(text: str) -> bool:
 def is_security_related(text: str) -> bool:
     low = f" {text.lower()} "
     return any(term in low for term in SECURITY_TERMS)
+
+
+def php_critical_stage(item: dict) -> str | None:
+    """Distinguish a patch, an unverified attack report, and proven exploitation.
+
+    Headlines determine new milestones; descriptions alone cannot convert
+    'could be exploited' or a proof of concept into an actual field breach.
+    """
+    title = str(item.get("title") or "").lower()
+    text = f"{title} {item.get('description','')}".lower()
+    if not (any(cve.lower() in text for cve in PHP_CRITICAL_CVES) or "php2shell" in text):
+        return None
+    if not ("php" in text or "php2shell" in text):
+        return None
+    if item.get("kind") == "official" and item.get("query") == "CISA KEV":
+        return "confirmed_exploitation"
+    confirmed_headline = any(x in title for x in (
+        "confirmed active exploitation", "confirmed exploitation in the wild",
+        "added to known exploited", "cisa adds php", "active attacks confirmed",
+        "실제 악용 확인", "실제 공격 확인",
+    ))
+    reported_headline = any(x in title for x in (
+        "actively exploited", "exploited in the wild", "active exploitation",
+        "real-world exploitation", "under active attack", "in-the-wild attacks",
+        "실제 악용", "실전 공격",
+    ))
+    negated = any(x in title for x in (
+        "no active", "not actively", "no evidence", "not exploited",
+        "no confirmed", "not confirmed", "우려만", "확인되지",
+    ))
+    if not negated and confirmed_headline:
+        source = str(item.get("source") or "").lower()
+        if item.get("kind") == "official" and any(x in source for x in ("cisa", "cert-eu", "enisa", "ncsc")):
+            return "confirmed_exploitation"
+        return "reported_exploitation"
+    if reported_headline and not negated:
+        return "reported_exploitation"
+    if any(x in title for x in (
+        "security release", "patch released", "patched", "updates released",
+        "release fixes", "fixes two", "critical php updates", "php security updates",
+        "issues updates", "versions released", "보안 패치", "패치 배포",
+        "업데이트 배포", "취약점 수정 버전",
+    )) or (
+        item.get("kind") == "official" and
+        all(x in text for x in ("8.5.12", "8.4.27", "8.3.36", "8.2.35"))
+    ):
+        return "patch_released"
+    return "initial_disclosure"
 
 
 def source_trusted(source: str) -> bool:
@@ -824,6 +881,9 @@ def material(item: dict) -> bool:
         return False
     if is_policy_program_announcement(item):
         return False
+    php_stage = php_critical_stage(item)
+    if php_stage:
+        return item.get("kind") in ("official", "official_direct") or source_trusted(item.get("source", ""))
     stage = replication_stage(item)
     if stage:
         return (
@@ -945,6 +1005,7 @@ def normalize_item(item: dict) -> dict:
     out["vendor"] = detect_vendor(combined)
     out["category"] = detect_category(combined)
     stage = replication_stage(item)
+    php_stage = php_critical_stage(item)
     if stage == "research":
         out["category"] = "AI 자율복제·사물인터넷 모의평가"
         sev_num, sev_label = 1, "주의"
@@ -957,6 +1018,16 @@ def normalize_item(item: dict) -> dict:
     elif stage in ("verified_defense", "reported_defense"):
         out["category"] = "AI 웜 탐지·격리·방어 조치"
         sev_num, sev_label = 2, "높음"
+    if php_stage:
+        out["vendor"] = "PHP 재단"
+        out["category"] = {
+            "initial_disclosure": "PHP 취약점 최초 공개·패치 대기",
+            "patch_released": "PHP 코어 취약점·공식 보안패치",
+            "reported_exploitation": "PHP 취약점 실전 악용 보도·추가 검증",
+            "confirmed_exploitation": "PHP 취약점 실전 악용 공식 확인",
+        }[php_stage]
+        sev_num, sev_label = 3, "긴급"
+    out["php_stage"] = php_stage
     out["replication_stage"] = stage
     out["severity"] = sev_num
     out["severity_label"] = sev_label
@@ -1131,6 +1202,9 @@ def event_token_set(text: str) -> set[str]:
 
 
 def same_event(a: dict, b: dict) -> bool:
+    a_php, b_php = php_critical_stage(a), php_critical_stage(b)
+    if a_php or b_php:
+        return bool(a_php and b_php and a_php == b_php)
     if a.get("vendor") != b.get("vendor"):
         return False
     aa = event_token_set(f"{a.get('title','')} {a.get('description','')}")
@@ -1200,6 +1274,13 @@ def source_label(source: str) -> str:
 
 def incident_fact(item: dict) -> str | None:
     text = f" {item.get('title','')} {item.get('description','')} ".lower()
+    php_stage = php_critical_stage(item)
+    if php_stage == "patch_released":
+        return "PHP CVE-2026-109618·109619, 각각 심각도 9.2. 인증 없는 원격 코드 실행 위험. 공식 수정 버전: 8.5.12·8.4.27·8.3.36·8.2.35. 실전 악용 확정 아님"
+    if php_stage == "confirmed_exploitation":
+        return "PHP 취약점의 실제 악용이 공식 악용목록·사고자료로 확인됨. 공격 범위와 침해 서버 수는 별도 검증 필요"
+    if php_stage == "reported_exploitation":
+        return "PHP 취약점 실전 악용 보도. 공식 사고 원천·피해 범위 독립 확인 전까지 확정 공격으로 표시하지 않음"
     replication = replication_stage(item)
     if replication == "research":
         if is_known_replication_research_baseline(item):
@@ -1296,6 +1377,12 @@ def event_heading(cluster: list[dict]) -> str:
 
 def event_impact(cluster: list[dict]) -> str:
     cats = " ".join(item.get("category", "") for item in cluster)
+    if "PHP 취약점 실전 악용 공식 확인" in cats:
+        return "실제 공격 여부와 침해 범위를 공식자료로 분리 확인하고, 외부 노출 서버를 즉시 격리·패치해야 합니다."
+    if "PHP 취약점 실전 악용 보도" in cats:
+        return "공개 재현 코드와 실제 침해는 다릅니다. 공격 피해는 공식 증거 확인 전까지 보도로만 분류합니다."
+    if "PHP 코어 취약점·공식 보안패치" in cats:
+        return "PHP 지원 버전의 공식 수정판을 즉시 적용하고, 8.1 이하 지원 종료 버전 및 제3자 제품의 포함된 PHP도 확인해야 합니다. 실전 감염 확정이 아닙니다."
     if "AI 자율복제·사물인터넷 모의평가" in cats:
         return "공식 모의평가의 하드웨어 유형 성공률·전체 복제 수율·속도와 실제 감염 관측을 분리합니다. 예측은 실전 침해로 판정하지 않습니다."
     if "AI 자율복제·실전 감염 보도·추가검증" in cats:
@@ -1599,6 +1686,17 @@ def main() -> int:
             "published_at": "2026-10-12T00:00:00+00:00",
         })
     raw_items.extend(direct_items)
+    # Pinned first-party release prevents news-RSS outages from silently
+    # omitting this verified urgent patch. The durable stage key stops replays.
+    raw_items.append({
+        "kind": "official",
+        "query": "PHP 2026-10-21 official security bulletin",
+        "title": "PHP security release fixes CVE-2026-109618 and CVE-2026-109619",
+        "description": "PHP Security Team CVSS 9.2 unauthenticated remote code execution; patched in 8.5.12 8.4.27 8.3.36 8.2.35; no verified in-the-wild exploitation in this release",
+        "source": "PHP Security Team",
+        "url": PHP_CRITICAL_ADVISORY_URL,
+        "published_at": "2026-10-21T13:40:00+00:00",
+    })
 
     dedup: dict[str, dict] = {}
     for raw in raw_items:
@@ -1615,6 +1713,7 @@ def main() -> int:
     seen = prune_seen(dict(state.get("seen") or {}), now)
     replication_baseline_suppressed = 0
     insider_stages = dict(state.get("openai_insider_case_stages") or {})
+    php_stages = dict(state.get("php_critical_stages") or {})
     insider_stages.setdefault("initial_oct13_charge", {
         "source_url": "https://www.justice.gov/usao-ndca/pr/saudi-national-arrested-installing-surreptitious-audio-recording-device-openai-san",
         "status": "2026-10-13 initial criminal complaint; allegations, not verdict",
@@ -1626,6 +1725,12 @@ def main() -> int:
             continue
         if is_known_replication_research_baseline(item):
             replication_baseline_suppressed += 1
+            continue
+        php_stage = php_critical_stage(item)
+        if php_stage:
+            if php_stage == "initial_disclosure" or php_stage in php_stages:
+                continue
+            new_items.append(item)
             continue
         stage = openai_insider_case_stage(item)
         if stage:
@@ -1661,6 +1766,17 @@ def main() -> int:
 
     alert_events = cluster_alert_events(new_items)
     deferred_fps = deferred_alert_fingerprints(new_items, alert_events)
+    # Record a PHP lifecycle stage only if the event was selected for delivery.
+    for cluster in alert_events:
+        for item in cluster:
+            php_stage = php_critical_stage(item)
+            if php_stage and php_stage != "initial_disclosure":
+                php_stages.setdefault(php_stage, {
+                    "source_url": item.get("url"),
+                    "source": item.get("source"),
+                    "first_seen_at": now.isoformat(),
+                    "status": "official_release" if item.get("kind") == "official" else "reported_followup",
+                })
 
     # Acquisition lifecycle is a separate, issuer-only signal.  The signing
     # announcement supplied by the user is a known baseline, never a repeat.
@@ -1711,6 +1827,7 @@ def main() -> int:
         "seen": seen,
         "quantum_mna_seen": quantum_seen,
         "openai_insider_case_stages": insider_stages,
+        "php_critical_stages": php_stages,
         "last_collection": {
             "raw_items": len(raw_items),
             "direct_official_items": len(direct_items),
@@ -1753,6 +1870,7 @@ def main() -> int:
         f"- 신규 중요 사건: {len(alert_events)}건",
         f"- 전송 상한 초과 다음 회차 대기: {len(deferred_fps)}건",
         f"- AI 자율복제 기존 연구 중복 차단: {replication_baseline_suppressed}건",
+        f"- PHP 긴급 취약점 확인 단계: {len(php_stages)}건",
         f"- IonQ·Elisity 공식 단계: {len(quantum_updates)}건",
         f"- IonQ·Elisity 신규 단계: {len(new_quantum)}건",
         f"- 수집 오류: {len(errors)}건",
