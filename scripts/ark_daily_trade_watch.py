@@ -15,6 +15,8 @@ import pathlib
 import re
 import urllib.request
 import zoneinfo
+import math
+import ark_notional_enrichment as notional
 
 SOURCE="https://etfs.ark-funds.com/hubfs/idt/trades/ARK_Trades.xls"
 DISCLOSURE="https://www.ark-funds.com/ark-trade-notifications"
@@ -29,6 +31,7 @@ NAMES={
     "HO":"탈레스","CRWV":"코어위브","BABA":"알리바바","DKNG":"드래프트킹스",
 }
 ET=zoneinfo.ZoneInfo("America/New_York")
+REPORT_FORMAT_VERSION=2
 
 def _fetch():
     req=urllib.request.Request(SOURCE, headers={
@@ -178,33 +181,39 @@ def _fingerprint(records):
 def _link(label,url):
     return f'<a href="{html.escape(url,quote=True)}">{html.escape(label)}</a>'
 
-def build(rows, day, is_revision=False):
+def build(rows, day, is_revision=False, rate=None, basis="", prices=None, enrichment=False):
     buys=[r for r in rows if r["action"]=="매수"]
     sells=[r for r in rows if r["action"]=="매도"]
     titles=[("ARKK","혁신"),("ARKQ","자동화·로봇"),("ARKX","우주·방산"),
             ("ARKG","유전체·바이오"),("ARKW","인터넷"),("ARKF","금융기술")]
     header=[
-        "📊 <b>ARK Invest 일별 매매"+(" 수정본" if is_revision else "")+"</b>",
+        "📊 <b>ARK Invest 일별 매매"+(" 금액 보강본" if enrichment else (" 수정본" if is_revision else ""))+"</b>",
         f"<b>거래 기준일: {day} (미국 현지 날짜)</b>",
         f"공시 주체: ARK Invest · 매수 {len(buys)}개 거래행 / 매도 {len(sells)}개 거래행",
         "<b>판정: ARK 공식 잠정 매매 파일 · 분기 13F와 별개</b>",
+        f"원화 환산 기준: 1달러={rate:,.2f}원 ({html.escape(str(basis))})" if rate else "원화 환산 기준: 조회 불가",
+        "매매대금: 미국 현지 거래일 종가 × 주식 수의 참고 추정액 (실제 체결대금 아님)",
         "",
     ]
     xe=[r for r in buys if r["ticker"]=="XE"]
     if xe:
-        header.append(f"• 엑스에너지(XE): {len(xe)}개 펀드 합계 <b>{sum(r['shares'] for r in xe):,}주 매수</b>")
+        total=sum(r['shares'] for r in xe)
+        estimate=notional.estimated_amount('XE',total,prices,rate)
+        header.append(f"• 엑스에너지(XE): {len(xe)}개 펀드 합계 <b>{total:,}주 매수</b> · {estimate}")
     for direction,subset in [("매수",buys),("매도",sells)]:
         header.extend(["",f"<b>{direction} · 펀드별 거래</b>"])
         for fund,_ in titles:
             for r in (r for r in subset if r["fund"]==fund):
                 name=NAMES.get(r["ticker"],r["ticker"])
-                header.append(f"• {fund} | {html.escape(name)}({r['ticker']}) | <b>{r['shares']:,}주 {direction}</b>")
+                amount=notional.estimated_amount(r['ticker'],r['shares'],prices,rate)
+                header.append(f"• {fund} | {html.escape(name)}({r['ticker']}) | <b>{r['shares']:,}주 {direction}</b> · {amount}")
     header.extend([
        "",
        "<b>해석 주의</b>",
        "• 위 수량은 해당 일자의 펀드 거래 수량이며, 총 보유주식 수나 펀드 최종 보유비중이 아닙니다.",
        "• 공식 매매 알림은 잠정 자료이고 ETF 설정·환매/일부 공모거래 등이 제외될 수 있습니다.",
-       "• 매매 파일에 실제 체결단가가 없으면 거래금액이나 원화 금액을 추정해 확정치처럼 표시하지 않습니다.",
+       "• 매매대금은 공식 거래수량 × 해당일 미국 종가로 계산한 참고 추정액입니다. 실제 체결대금·체결단가는 공개되지 않습니다.",
+       "• 종가 확인에 실패하거나 독립 가격 자료가 4% 넘게 다르면 추정액을 표시하지 않습니다.",
        "",
        _link("ARK 공식 당일 매매 파일",SOURCE)+" | "+_link("ARK 공식 안내",DISCLOSURE),
     ])
@@ -228,18 +237,27 @@ def main(probe=False):
     state=_load()
     previous_date=state.get("last_date","")
     previous_digest=state.get("digest","")
-    if latest==previous_date and digest==previous_digest:
+    if (latest==previous_date and digest==previous_digest
+            and state.get("format_version",0)>=REPORT_FORMAT_VERSION):
         print("ARK_TRADE_NO_CHANGE")
         return
     # Avoid sending historical backfill older than the last successful date.
     if previous_date and latest<previous_date:
         raise RuntimeError("ARK official latest trade date older than previously sent date")
     changed=latest==previous_date and bool(previous_digest)
-    msg=build(latest_rows,latest,is_revision=changed)
+    from fx_api import daily_krw
+    fx=daily_krw()
+    rate=float(fx.rate)
+    if not math.isfinite(rate) or rate<=0:
+        raise RuntimeError("Invalid USD/KRW quote; do not send an unconverted amount")
+    prices=notional.close_prices(latest_rows,latest)
+    print(f"ARK_NOTIONAL_PRICE_COVERAGE={len(prices)}/{len({r[\x27ticker\x27] for r in latest_rows})}")
+    msg=build(latest_rows,latest,is_revision=changed,rate=rate,basis=fx.basis,
+              prices=prices,enrichment=bool(latest==previous_date and state.get("format_version",0)<REPORT_FORMAT_VERSION))
     pathlib.Path("out").mkdir(exist_ok=True)
     pathlib.Path("out/ark_trade_alert.html").write_text(msg+"\n",encoding="utf-8")
     pathlib.Path("out/ark_trade_pending.json").write_text(json.dumps({
-      "version":1,"last_date":latest,"digest":digest,
+      "version":1,"last_date":latest,"digest":digest,"format_version":REPORT_FORMAT_VERSION,
       "updated_at":dt.datetime.now(dt.timezone.utc).isoformat()
     },ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("ARK_ALERT_READY")
