@@ -3,13 +3,13 @@
   "last_collection": {
     "deferred_events": 0,
     "errors": [],
-    "material_items": 7,
-    "new_articles": 0,
-    "new_events": 0,
+    "material_items": 8,
+    "new_articles": 1,
+    "new_events": 1,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 154,
+    "raw_items": 166,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -96,7 +96,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-10-22T03:11:50.371115+00:00",
+    "updated_at": "2026-10-22T03:14:11.502813+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -220,6 +220,15 @@
       "title": "SoftBank in talks to buy US security group Allied Universal - Financial Times",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxObzh6bnZfTFFzdEFXbEFldFM5V1VrY1RjdGtiQmhjTlBvV2VNbThiUDNXenlZeC1YZ05pWTQzR1FiYzJQNEl5djF6UExTVUFDN3Axby1YaGxsek1VNldiMXlqUVV5Qk9ESUJRVWE4el9uRm1zbGFvNUhKa3JPc2tHalRzMWk?oc=5"
     },
+    "e01fdbce5cef9d158f5b29f0": {
+      "category": "CrowdStrike–NVIDIA AI 에이전트 보안 통합 단계",
+      "entity": "CrowdStrike–NVIDIA",
+      "first_seen_at": "2026-10-22T03:14:11.502813+00:00",
+      "published_at": "2026-10-21T00:00:00+00:00",
+      "source": "CrowdStrike",
+      "title": "CrowdStrike and NVIDIA Expand AI Agent Security from Software to Silicon",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-and-nvidia-expand-ai-agent-security-software-silicon"
+    },
     "e8fd84957f3bd0c1872f97e0": {
       "category": "Anthropic 프런티어 AI 안전법안 입법 단계",
       "entity": "Anthropic AI 안전법안",
@@ -266,6 +275,12 @@
       "source_url": "https://cohere.com/blog/cohere-and-aisle-sign-letter-of-intent-to-advance-cyber-resilient-sovereign-ai",
       "status": "2026-10-15 Cohere and AISLE signed an LOI only; no definitive contract, closing, price or incremental revenue confirmed"
     },
+    "crowdstrike_nvidia_guardian:integration_announced": {
+      "first_seen_at": "2026-10-22T03:14:11.502813+00:00",
+      "source": "CrowdStrike",
+      "source_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-and-nvidia-expand-ai-agent-security-software-silicon",
+      "status": "trusted_report_not_issuer_or_legislative_confirmation"
+    },
     "ftc_ai_safety_anthropic:subpoenas_reported": {
       "source_url": "https://www.reuters.com/business/us-ftc-subpoenas-openai-anthropic-over-consumer-harms-axios-reports-2026-10-15/",
       "status": "2026-10-15 Axios/Reuters civil subpoena reporting only; investigation is not a liability finding"
@@ -293,11 +308,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-10-22T12:11:50+09:00",
+  "updated_at_kst": "2026-10-22T12:14:11+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-10-22T03:12:27.492453+00:00",
+    "last_success_at": "2026-10-22T03:14:56.608179+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
