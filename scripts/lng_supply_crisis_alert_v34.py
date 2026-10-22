@@ -1745,6 +1745,291 @@ lng_collection_budget.install(
     },
 )
 
+
+# EU winter-gas stress: price thresholds remain independent of supply confirmation.
+# The feed below uses the public GIE homepage, not a cached news headline.
+GIE_STORAGE_HOME_V34 = "https://www.gie.eu/"
+ECB_EURKRW_DAILY_V34 = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+GIE_STORAGE_MAX_AGE_DAYS_V34 = 4
+GAS_PRICE_WARNING_LEVELS_V34 = (90.0, 100.0, 120.0, 150.0)
+_STOR_PREV_FETCH_V34 = core.fetch_market_quotes
+_STOR_PREV_HYSTERESIS_V34 = core.apply_hysteresis
+_STOR_PREV_SHOULD_ALERT_V34 = core.should_alert
+_STOR_PREV_BUILD_V34 = core.build_regular_alert
+_STOR_PREV_FORMAT_V34 = core.format_quote
+_STOR_PREV_LABEL_V34 = core.signal_label
+
+
+def _parse_gie_storage_homepage_v34(raw_html: str, *, now: dt.datetime | None = None) -> dict[str, object]:
+    seen_now = (core.now_utc() if now is None else now).astimezone(core.KST).date()
+    text = _visible_text_v34(raw_html)
+    if "Gas Infrastructure Europe" not in text and "Welcome at GIE" not in text:
+        raise RuntimeError("GIE 출처 식별 실패")
+    match = re.search(
+        r"Status\s+on\s+(\d{1,2}/\d{1,2}/20\d{2})\s+at\s+6\s*AM\s*(?:CEST|CET)",
+        text, flags=re.I
+    )
+    if match is None:
+        raise RuntimeError("GIE 데이터 기준일·기준시각 확인 실패")
+    date = dt.datetime.strptime(match.group(1), "%d/%m/%Y").date()
+    delta = (seen_now - date).days
+    if delta < 0 or delta > GIE_STORAGE_MAX_AGE_DAYS_V34:
+        raise RuntimeError(f"GIE 수치 기준일 지연·미래값 차단: {date}, 경과 {delta}일")
+    block = text[match.end():]
+    if "Country" in block:
+        block = block.split("Country", 1)[0]
+
+    def _region(code: str) -> tuple[float, float]:
+        p = (
+            rf"(?<![A-Za-z]){re.escape(code)}\s+"
+            r"(?:[-+]?\d+(?:\.\d+)?\s+)?"
+            r"(\d+(?:\.\d+)?)\s*TWh\s+stored\s+"
+            r"(\d+(?:\.\d+)?)\s*%\s*full"
+        )
+        found = re.search(p, block, flags=re.I)
+        if found is None:
+            raise RuntimeError(f"GIE {code} 저장량·저장률 동일 행 확인 실패")
+        return float(found.group(1)), float(found.group(2))
+
+    eu_twh, eu_pct = _region("EU")
+    de_twh, de_pct = _region("DE")
+    nl_twh, nl_pct = _region("NL")
+    for code, quantity, ratio in (
+        ("EU",eu_twh,eu_pct), ("DE",de_twh,de_pct), ("NL",nl_twh,nl_pct)
+    ):
+        if not (0 < ratio <= 100 and quantity > 0):
+            raise RuntimeError(f"GIE {code} 저장량·비율 비정상")
+    capacity = eu_twh / (eu_pct / 100.0)
+    if not (1000.0 <= capacity <= 1350.0):
+        raise RuntimeError(f"GIE EU 저장용량 검산 실패: {capacity:.2f}TWh")
+    if not (100 <= de_twh / (de_pct / 100.0) <= 300):
+        raise RuntimeError("GIE 독일 저장용량 검산 실패")
+    if not (100 <= nl_twh / (nl_pct / 100.0) <= 200):
+        raise RuntimeError("GIE 네덜란드 저장용량 검산 실패")
+    return {
+        "date":date.isoformat(), "eu_pct":eu_pct, "eu_twh":eu_twh,
+        "de_pct":de_pct, "de_twh":de_twh,
+        "nl_pct":nl_pct, "nl_twh":nl_twh,
+        "capacity_twh":capacity,
+    }
+
+
+def _parse_ecb_eurkrw_v34(raw_xml: str, *, now: dt.datetime | None = None) -> dict[str, object]:
+    seen_now = (core.now_utc() if now is None else now).astimezone(core.KST).date()
+    import xml.etree.ElementTree as ET
+    root = ET.fromstring(raw_xml)
+    for day in root.iter():
+        if day.attrib.get("time") is None:
+            continue
+        try:
+            dated = dt.date.fromisoformat(day.attrib["time"])
+        except ValueError:
+            continue
+        for item in day.iter():
+            if item.attrib.get("currency") == "KRW":
+                rate = float(item.attrib["rate"])
+                age = (seen_now - dated).days
+                if age < 0 or age > 7 or not (900.0 < rate < 2300.0):
+                    raise RuntimeError("ECB 원·유로 기준일·환율 비정상")
+                return {"date":dated.isoformat(), "rate":rate}
+    raise RuntimeError("ECB 유로·원화 공식 기준환율 없음")
+
+
+def _gie_storage_quote_v34(parsed: dict[str, object]) -> core.Quote:
+    date = dt.date.fromisoformat(str(parsed["date"]))
+    observed = dt.datetime.combine(date,dt.time(6),tzinfo=ZoneInfo("Europe/Brussels"))
+    current = core.now_utc()
+    payload = json.dumps(parsed,ensure_ascii=False,separators=(",",":"))
+    return core.Quote(
+        key="eu_storage", symbol="GIE-AGSI+", label="GIE AGSI+ 유럽연합 가스 저장률",
+        unit="%", price=float(parsed["eu_pct"]),previous_close=float(parsed["eu_pct"]),
+        change_pct=0.0,timestamp_epoch=observed.timestamp(),
+        timestamp_utc=observed.astimezone(core.UTC).isoformat(),
+        age_minutes=max(0,int((current-observed.astimezone(core.UTC)).total_seconds()//60)),
+        source_note=payload,
+    )
+
+
+def _ecb_quote_v34(parsed: dict[str, object]) -> core.Quote:
+    date=dt.date.fromisoformat(str(parsed["date"]))
+    observed=dt.datetime.combine(date,dt.time(15),tzinfo=ZoneInfo("Europe/Frankfurt"))
+    rate=float(parsed["rate"])
+    return core.Quote(
+        key="eurkrw",symbol="ECB-EURKRW",label="유로·원화 ECB 기준환율",
+        unit="원/유로",price=rate,previous_close=rate,
+        change_pct=0.0,timestamp_epoch=observed.timestamp(),
+        timestamp_utc=observed.astimezone(core.UTC).isoformat(),
+        age_minutes=0,source_note=parsed["date"],
+    )
+
+
+def _quotes_with_gie_storage_v34():
+    quotes, errors = _STOR_PREV_FETCH_V34()
+    try:
+        raw=core.fetch_bytes(GIE_STORAGE_HOME_V34,timeout=14,attempts=1)
+        p=_parse_gie_storage_homepage_v34(raw.decode("utf-8",errors="replace"))
+        quotes["eu_storage"]=_gie_storage_quote_v34(p)
+    except Exception as exc:
+        quotes.pop("eu_storage",None)
+        errors.append(f"GIE AGSI 공식 저장률: {type(exc).__name__}: {exc}")
+    try:
+        raw=core.fetch_bytes(ECB_EURKRW_DAILY_V34,timeout=12,attempts=1)
+        fx=_parse_ecb_eurkrw_v34(raw.decode("utf-8",errors="replace"))
+        quotes["eurkrw"]=_ecb_quote_v34(fx)
+    except Exception as exc:
+        quotes.pop("eurkrw",None)
+        errors.append(f"ECB EUR/KRW 환산 제외: {type(exc).__name__}: {exc}")
+    return quotes,errors
+
+
+STORAGE_THRESHOLDS_V34 = {
+    "eu_storage_below_80": ("eu_pct",80.0),
+    "eu_storage_below_75": ("eu_pct",75.0),
+    "eu_storage_below_70": ("eu_pct",70.0),
+    "de_storage_below_65": ("de_pct",65.0),
+    "nl_storage_below_65": ("nl_pct",65.0),
+}
+STORAGE_SIGNAL_LABELS_V34 = {
+    "eu_storage_below_80":"EU 가스 저장률 80% 미만(감시 기준·법정 목표 아님)",
+    "eu_storage_below_75":"EU 가스 저장률 75% 미만",
+    "eu_storage_below_70":"EU 가스 저장률 70% 미만",
+    "de_storage_below_65":"독일 가스 저장률 65% 미만",
+    "nl_storage_below_65":"네덜란드 가스 저장률 65% 미만",
+}
+
+
+def _signals_with_storage_v34(quotes: dict[str,core.Quote],previous_signals: set[str]) -> set[str]:
+    active = _STOR_PREV_HYSTERESIS_V34(quotes,previous_signals)
+    quote = quotes.get("eu_storage")
+    if quote is None:
+        # Loss of the source must not silently clear a prior storage warning.
+        return active
+    try:
+        data=json.loads(quote.source_note)
+    except (ValueError,TypeError) as exc:
+        raise RuntimeError("GIE 저장률 메타데이터 읽기 실패 · 송출 차단") from exc
+    for label,(key,threshold) in STORAGE_THRESHOLDS_V34.items():
+        value=float(data[key])
+        if value < threshold:
+            active.add(label)
+        elif value >= threshold + 0.8:
+            active.discard(label)
+        # 0.8%p buffer prevents alert flapping near each boundary.
+    return active
+
+
+def _should_alert_with_storage_v34(groups, new_signals, cleared_signals):
+    if _STOR_PREV_SHOULD_ALERT_V34(groups,new_signals,cleared_signals):
+        return True
+    return any(x in STORAGE_THRESHOLDS_V34 for x in cleared_signals)
+
+
+def _signal_label_with_storage_v34(signal: str, cleared: bool=False) -> str:
+    if signal in STORAGE_SIGNAL_LABELS_V34:
+        return STORAGE_SIGNAL_LABELS_V34[signal] + (" 해제" if cleared else " 진입")
+    ttf = {
+        "ttf_above_90":"유럽 TTF 추종 가스가격 90유로/MWh 이상",
+        "ttf_above_100":"유럽 TTF 추종 가스가격 100유로/MWh 이상",
+        "ttf_above_120":"유럽 TTF 추종 가스가격 120유로/MWh 이상",
+        "ttf_above_150":"유럽 TTF 추종 가스가격 150유로/MWh 이상",
+    }
+    if signal in ttf:
+        return ttf[signal] + (" 구간 이탈" if cleared else " 구간 진입")
+    return _STOR_PREV_LABEL_V34(signal,cleared)
+
+
+def _format_quote_with_storage_v34(quote: core.Quote) -> str:
+    if quote.key=="eu_storage":
+        data=json.loads(quote.source_note)
+        return (
+            f"GIE AGSI+ EU 저장률 {float(data['eu_pct']):.2f}%({float(data['eu_twh']):.2f}TWh)"
+            f" · 독일 {float(data['de_pct']):.2f}% · 네덜란드 {float(data['nl_pct']):.2f}%"
+            f" · 공식 게시 기준 {data['date']}"
+        )
+    if quote.key=="eurkrw":
+        return f"ECB 유로·원화 기준환율 {quote.price:,.2f}원/유로 · 기준 {quote.source_note}"
+    return _STOR_PREV_FORMAT_V34(quote)
+
+
+def _build_with_gie_storage_v34(groups,quotes,new_signals,cleared_signals):
+    title,body,metadata=_STOR_PREV_BUILD_V34(groups,quotes,new_signals,cleared_signals)
+    watch=set(STORAGE_THRESHOLDS_V34)|{f"ttf_above_{int(x)}" for x in GAS_PRICE_WARNING_LEVELS_V34}
+    triggered=(set(new_signals)|set(cleared_signals))&watch
+    if not triggered:
+        return title,body,metadata
+    title="유럽 천연가스 가격·저장률 경보"
+    stamp=core.now_utc().astimezone(core.KST).strftime("%Y-%m-%d %H:%M KST")
+    lines=[
+        f"<b>유럽 가스 겨울 수급 경보</b> · {stamp}",
+        "",
+        "<b>[핵심 변화]</b>",
+    ]
+    for signal in sorted(triggered):
+        lines.append(f"• {_signal_label_with_storage_v34(signal,cleared=signal in cleared_signals)}")
+    eu=quotes.get("eu_storage")
+    if eu is not None:
+        lines.extend(["","<b>[현재 저장률 · GIE 공식]</b>",f"• {_format_quote_with_storage_v34(eu)}"])
+    else:
+        lines.extend(["","• GIE AGSI+ 공식 저장률 조회 실패 · 과거 숫자 재사용 안 함"])
+
+    price=quotes.get("ttf")
+    fx=quotes.get("eurkrw")
+    if price is not None:
+        p=f"• 유럽 가스가격 추종 공개값 {price.price:.2f}유로/MWh"
+        if fx is not None:
+            p+=f"(약 {price.price*fx.price:,.0f}원/MWh)"
+        else:
+            p+=" · 유로·원화 환율 확인 불가"
+        p+=" · ICE 선물 종가와 구분"
+        lines.append(p)
+        lines.append(f"• {_format_quote_with_storage_v34(price)}")
+    else:
+        lines.append("• 유럽 가스 추종가격 최신 검증값 부재 · 가격 판정 보류")
+
+    lines.extend([
+        "",
+        "<b>[핵심 의미]</b>",
+        "• 저장률 부족은 현재 재고 위험, 가격 90유로 진입은 별도 가격 신호입니다.",
+        "• Goldman Sachs의 150유로/MWh는 페르시아만 LNG 수출이 평시의 25% 이하이고"
+        " 겨울이 평균보다 표준편차 1만큼 추운 두 조건이 겹칠 때의 위험 시나리오입니다.",
+        "• 높은 EU 현물 조달 수요는 한국·일본의 LNG 현물 구매 경쟁을 자극할 수 있습니다.",
+        "",
+        "<b>[다음 확인]</b>",
+        "• 실제 카타르 LNG 선적·호르무즈 통항 → 유럽 저장률·TTF → 아시아 LNG JKM → 한국 가스 도입비",
+        "",
+        '<b>[근거]</b> <a href="https://www.gie.eu/">GIE AGSI+ 공식 저장량</a>'
+        ' · <a href="https://ko.tradingeconomics.com/commodity/eu-natural-gas">유럽 가스가격</a>'
+        ' · <a href="https://za.investing.com/news/stock-market-news/goldman-sees-upside-risks-to-european-gas-on-supply-weather-93CH-4489452">골드만삭스 조건부 전망 보도</a>',
+    ])
+    lead="\n".join(lines)
+    if groups:
+        body=lead+"\n\n"+body
+    else:
+        body=lead
+    if len(body)>12000:
+        raise RuntimeError("유럽 LNG 저장률 경보 본문 과다 · 텔레그램 전송 중단")
+    metadata["europe_gas_storage_v34"]={
+        "official_source":GIE_STORAGE_HOME_V34,
+        "storage_source_date": json.loads(eu.source_note)["date"] if eu is not None else None,
+        "signals":sorted(triggered),
+        "ttf_type":"Trading Economics EU Gas CFD proxy, not ICE futures settlement",
+        "150_eur_scenario":"condition-only; not spot quote or base case",
+        "status":"source-verified" if eu is not None else "source-unavailable",
+    }
+    return title,body,metadata
+
+
+core.PRICE_SPECS["ttf"]["levels"]=tuple(sorted(set(
+    tuple(core.PRICE_SPECS["ttf"]["levels"])+GAS_PRICE_WARNING_LEVELS_V34
+)))
+core.PRICE_SPECS["ttf"]["exit_buffer"]=2.0
+core.fetch_market_quotes=_quotes_with_gie_storage_v34
+core.apply_hysteresis=_signals_with_storage_v34
+core.should_alert=_should_alert_with_storage_v34
+core.signal_label=_signal_label_with_storage_v34
+core.format_quote=_format_quote_with_storage_v34
+core.build_regular_alert=_build_with_gie_storage_v34
+
 if __name__ == "__main__":
     raise SystemExit(core.main())
 

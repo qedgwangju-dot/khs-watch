@@ -16,6 +16,83 @@ JKM = '''실제 이전 최고 최저 날짜 단위 업데이트 주기 25.82 26.
 LNG JKM 25.82 -0.57 -2.14%
 2026년 9월 25일 LNG JKM'''
 
+
+class GIEStorageAlertRegressionTest(unittest.TestCase):
+    @staticmethod
+    def fixture(date="21/10/2026", eu_pct="74.62"):
+        return f"""<html><body><h1>Welcome at GIE - Gas Infrastructure Europe</h1>
+        <p>Status on {date} at 6AM CEST</p>
+        <div>EU 0.01 845.02 TWh stored {eu_pct}% full</div>
+        <div>AT -0.10 69.28 TWh stored 69.09% full</div>
+        <div>DE 0.04 151.36 TWh stored 61.19% full</div>
+        <div>NL 0.09 93.12 TWh stored 64.65% full</div>
+        <div>Country Trend Gas In Storage</div></body></html>"""
+
+    def test_gie_official_same_row_and_date_parsed(self):
+        now=dt.datetime(2026,10,23,0,tzinfo=dt.timezone.utc)
+        p=monitor._parse_gie_storage_homepage_v34(self.fixture(),now=now)
+        self.assertEqual(p["date"],"2026-10-21")
+        self.assertAlmostEqual(p["eu_pct"],74.62)
+        self.assertAlmostEqual(p["de_pct"],61.19)
+        self.assertAlmostEqual(p["nl_pct"],64.65)
+        self.assertAlmostEqual(p["eu_twh"],845.02)
+
+    def test_gie_stale_future_or_incomplete_blocks(self):
+        now=dt.datetime(2026,10,23,0,tzinfo=dt.timezone.utc)
+        with self.assertRaisesRegex(RuntimeError,"기준일 지연"):
+            monitor._parse_gie_storage_homepage_v34(self.fixture("10/10/2026"),now=now)
+        with self.assertRaisesRegex(RuntimeError,"기준일 지연"):
+            monitor._parse_gie_storage_homepage_v34(self.fixture("31/10/2026"),now=now)
+        with self.assertRaisesRegex(RuntimeError,"DE 저장량"):
+            monitor._parse_gie_storage_homepage_v34(self.fixture().replace("DE 0.04 151.36 TWh stored 61.19% full",""),now=now)
+        with self.assertRaisesRegex(RuntimeError,"저장용량 검산"):
+            monitor._parse_gie_storage_homepage_v34(self.fixture(eu_pct="5.00"),now=now)
+
+    def test_storage_risk_enter_and_recovery_dedupe(self):
+        now=dt.datetime(2026,10,23,0,tzinfo=dt.timezone.utc)
+        p=monitor._parse_gie_storage_homepage_v34(self.fixture(),now=now)
+        with patch.object(monitor.core,"now_utc",return_value=now):
+            q=monitor._gie_storage_quote_v34(p)
+        entered=monitor._signals_with_storage_v34({"eu_storage":q},set())
+        self.assertIn("eu_storage_below_75",entered)
+        self.assertIn("eu_storage_below_80",entered)
+        self.assertIn("de_storage_below_65",entered)
+        self.assertIn("nl_storage_below_65",entered)
+        self.assertEqual(monitor._signals_with_storage_v34({"eu_storage":q},entered),entered)
+        self.assertEqual(monitor._signals_with_storage_v34({},entered),entered)
+        self.assertTrue(monitor._should_alert_with_storage_v34([],set(),{"eu_storage_below_75"}))
+
+    def test_price_90_100_and_150_are_not_forecast_alerts(self):
+        thresholds=monitor.core.PRICE_SPECS["ttf"]["levels"]
+        self.assertTrue(all(x in thresholds for x in (90.0,100.0,120.0,150.0)))
+        self.assertIn("TTF 추종",monitor._signal_label_with_storage_v34("ttf_above_90"))
+        self.assertIn("150유로",monitor._signal_label_with_storage_v34("ttf_above_150"))
+
+    def test_ecb_official_rate_and_risk_scenario_context(self):
+        now=dt.datetime(2026,10,23,0,tzinfo=dt.timezone.utc)
+        sample='''<Envelope xmlns="http://www.gesmes.org/xml/2002-08-01">
+          <Cube><Cube time="2026-10-22"><Cube currency="KRW" rate="1489.15"/></Cube></Cube>
+          </Envelope>'''
+        r=monitor._parse_ecb_eurkrw_v34(sample,now=now)
+        self.assertEqual(r["rate"],1489.15)
+        self.assertEqual(r["date"],"2026-10-22")
+        p=monitor._parse_gie_storage_homepage_v34(self.fixture(),now=now)
+        with patch.object(monitor.core,"now_utc",return_value=now):
+            storage=monitor._gie_storage_quote_v34(p)
+        fx=monitor._ecb_quote_v34(r)
+        title,body,meta=monitor._build_with_gie_storage_v34(
+            [],{"eu_storage":storage,"eurkrw":fx},
+            {"eu_storage_below_75"},set()
+        )
+        self.assertIn("저장률 경보",title)
+        self.assertIn("74.62%",body)
+        self.assertIn("61.19%",body)
+        self.assertIn("150유로/MWh",body)
+        self.assertIn("25% 이하",body)
+        self.assertIn("GIE AGSI+",body)
+        self.assertEqual(meta["europe_gas_storage_v34"]["storage_source_date"],"2026-10-21")
+
+
 class ParserClockRegressionTest(unittest.TestCase):
     def test_historical_fixture_self_validation_survives_clock_rollover(self):
         for year in (2026, 2036):
