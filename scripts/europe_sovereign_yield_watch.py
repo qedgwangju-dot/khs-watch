@@ -7,9 +7,9 @@ Primary trigger sources:
 - Germany: Deutsche Bundesbank current 10Y Bund yield (official, daily)
 - UK: Bank of England IUDMNPY 10Y nominal par yield (official, daily)
 
-Italy is deliberately not used as an automated hard trigger until a timely official
-daily endpoint is validated. This prevents a fragile or inferred series from causing
-false alerts.
+Italy's market yield is a secondary observation. It is NOT asserted to be an
+official Italian sovereign yield; country-risk contagion is not inferred from
+its absolute level alone.
 
 The watcher is fail-closed:
 - partial source failures do not make the scheduled job fail,
@@ -58,9 +58,12 @@ UK_CSV = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns
 UA = "khs-watch-europe-sovereign-yield/1.0"
 
 FR_LEVELS = [4.50, 4.75, 5.00]
+# Confirmed October 2026 stress zone: new high thresholds use hysteresis.
+FR_EXTRA_LEVELS = [(5.10, 5.03), (5.25, 5.18)]
 UK_LEVELS = [5.00, 5.25, 5.50]
 DE_LEVELS = [3.25, 3.50, 3.75]
 FR_DE_SPREAD_LEVELS_BP = [100.0, 125.0, 150.0]
+FR_DE_EXTRA_SPREAD_LEVELS_BP = [(170.0, 160.0), (175.0, 165.0), (200.0, 190.0)]
 IT_LEVELS = [4.50, 4.75, 5.00]
 DAILY_MOVE_BP = 10.0
 FIVE_OBS_MOVE_BP = 25.0
@@ -481,6 +484,40 @@ def mark_event(events: list[dict], active: dict, state: dict, key: str, conditio
     active[key] = condition
 
 
+def mark_hysteresis_event(events: list[dict], active: dict, state: dict, key: str,
+                          value: float, enter: float, exit_below: float, label: str,
+                          unit: str) -> None:
+    """Enter high-stress region once; suppress repeated alerts on boundary noise."""
+    if exit_below >= enter:
+        raise ValueError("Hysteresis rearm must be below entry")
+    old = active_prev(state, key)
+    if old:
+        if value <= exit_below:
+            active[key] = False
+            events.append({"type": "clear", "key": key,
+                           "summary": f"{label} 고위험 구간 완화 ({value:.2f}{unit})"})
+        else:
+            active[key] = True
+    elif value >= enter:
+        active[key] = True
+        events.append({"type": "trigger", "key": key,
+                       "summary": f"{label} {enter:.2f}{unit} 이상 관측 ({value:.2f}{unit}; 내부 감시 기준)"})
+    else:
+        active[key] = False
+
+
+def next_spread_marker(spread: float | None) -> str:
+    if spread is None:
+        return "동일 기준일 시장금리차 확인 불가"
+    if spread < 170:
+        return "170bp"
+    if spread < 175:
+        return "175bp"
+    if spread < 200:
+        return "200bp"
+    return "200bp 이상으로 추가 확대 중"
+
+
 def fmt(v: float | None, digits: int = 3) -> str:
     return "확인 불가" if v is None else f"{v:.{digits}f}%"
 
@@ -537,6 +574,8 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
         lines.append(f"   ↳ 독일 10년 시장수익률 {de_mkt.value:.3f}% / 기준일 {de_mkt.date} (Trading Economics 보조 시장자료)")
     if spread_bp is not None:
         lines.append(f"🇫🇷-🇩🇪 동일 시장자료 기준 금리차 {spread_bp:.1f}bp")
+    if it and de_mkt and "it10" not in stale and "de_mkt" not in stale and it.date == de_mkt.date:
+        lines.append(f"🇮🇹-🇩🇪 이탈리아-독일 10년 시장금리차 {(it.value - de_mkt.value)*100:.1f}bp (파급 여부 관찰)")
 
     lines += ["", "■ 무엇이 바뀌었나"]
     for e in events[:8]:
@@ -556,6 +595,7 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
         "",
         "■ 다음 경계",
         "• 감시 기준: 프랑스 TEC10 5.00% / 영국 10년 5.50% / 프랑스-독일 동일 시장자료 금리차 150bp.",
+        f"• 프랑스-독일 시장금리차 다음 추가 감시: {next_spread_marker(spread_bp)} (현재 {f'{spread_bp:.1f}bp' if spread_bp is not None else '확인 불가'}).",
         "• 하루 +10bp 또는 최근 5개 관측치 +25bp면 속도 경보를 별도로 냅니다.",
         "• 속도 경계 해제는 금리 수준의 위험 해소를 뜻하지 않습니다.",
         "• 위 숫자는 ECB·BoE의 공식 위기선이 아니라 변동성 확대를 빨리 잡기 위한 내부 감시 기준입니다.",
@@ -724,6 +764,13 @@ def main() -> int:
                 clear_summary=f"{uk_label} 하루 급등 속도 정상화 ({uk_day:+.1f}bp)",
             )
 
+    if fresh("fr10"):
+        for enter, rearm in FR_EXTRA_LEVELS:
+            mark_hysteresis_event(
+                events, active, state, f"fr10:stress:{enter}",
+                latest["fr10"].value, enter, rearm, "프랑스 공식 TEC10", "%",
+            )
+
     # Comparable spread must use the same market-data methodology/provider.
     # Do NOT mix Banque de France TEC10 with a Bundesbank benchmark and call the
     # arithmetic difference a market risk premium.
@@ -734,6 +781,14 @@ def main() -> int:
                 events, active, state, f"fr_de_market_spread:above:{level}", spread_bp >= level,
                 f"프랑스-독일 10년 시장금리차 {level:.0f}bp 이상 ({spread_bp:.1f}bp)",
                 clear_summary=f"프랑스-독일 10년 시장금리차 {level:.0f}bp 아래 ({spread_bp:.1f}bp)",
+            )
+
+    if spread_bp is not None:
+        for enter, rearm in FR_DE_EXTRA_SPREAD_LEVELS_BP:
+            mark_hysteresis_event(
+                events, active, state, f"fr_de_market_spread:stress:{enter}",
+                spread_bp, enter, rearm,
+                "프랑스-독일 동일 제공사 10년물 금리차", "bp",
             )
 
     coverage = coverage_by_country(latest, stale)
