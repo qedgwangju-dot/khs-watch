@@ -135,6 +135,30 @@ def parse_moodys(html_text: str) -> dict:
             "decision_date": last, "next_review": next_date}
 
 
+def parse_sp_official(html_text: str) -> dict:
+    """Extract the current S&P line only from the official AFT agency table."""
+    table = RatingTable()
+    table.feed(html_text)
+    rows = [x for x in table.rows
+            if x and "standard" in x[0].casefold() and "poor" in x[0].casefold()]
+    if len(rows) != 1 or len(rows[0]) < 5:
+        raise ValueError("Official AFT S&P rating row missing or ambiguous")
+    cells = rows[0]
+    grade = cells[1].strip().replace(" ", "")
+    if not re.fullmatch(r"(?:AAA|AA[+-]?|A[+-]?|BBB[+-]?|BB[+-]?|B[+-]?|CCC[+-]?|CC|C|D)", grade, re.I):
+        raise ValueError("Unrecognized S&P sovereign rating")
+    last = parse_date(cells[3])
+    if not last or not cells[2].strip() or len(cells[2]) > 60:
+        raise ValueError("S&P decision date or outlook unavailable")
+    return {
+        "agency": "S&P Global Ratings",
+        "rating": grade,
+        "outlook": cells[2].strip(),
+        "decision_date": last,
+        "next_review": parse_date(cells[4]),
+    }
+
+
 def parse_aft_text_recovery(text: str) -> dict:
     """Read a text-only rendition of AFT, never a generic third-party headline.
 
@@ -184,9 +208,17 @@ def fetch_rating(*, fetch=None) -> tuple[dict | None, list[str]]:
     errors = []
     for url in (AFT_EN, AFT_FR):
         try:
-            rating = parse_moodys(fetch(url))
+            document = fetch(url)
+            rating = parse_moodys(document)
             rating["url"] = url
             rating["source_kind"] = "official_document"
+            try:
+                sp = parse_sp_official(document)
+                rating["sp_rating"] = {**sp, "url": url,
+                                       "source_kind": "official_document"}
+            except ValueError:
+                # This never upgrades an unverified S&P value into a live rating.
+                pass
             return rating, errors
         except Exception as exc:
             errors.append(f"{url}: {type(exc).__name__} {str(exc)[:180]}")
@@ -235,8 +267,25 @@ def credit_events(now: dt.date, old: dict, rating: dict) -> list[dict]:
     return events
 
 
-def sp_review_events(local_day: dt.date, sent_keys: set[str]) -> list[dict]:
-    """Remind on published S&P rating-review dates, not presumed downgrades."""
+def sp_review_events(local_day: dt.date, sent_keys: set[str],
+                     official: dict | None = None, prior: dict | None = None) -> list[dict]:
+    """Separately label official S&P decisions, scheduled checks and data gaps."""
+    prior = prior or VERIFIED_SP_SNAPSHOT
+    if official and official.get("source_kind") == "official_document":
+        prior_date = str(prior.get("decision_date") or "")
+        new_date = str(official.get("decision_date") or "")
+        changed = (prior.get("rating") != official.get("rating") or
+                   prior.get("outlook") != official.get("outlook"))
+        new_review = bool(prior_date and new_date > prior_date)
+        if (changed or new_review) and new_date >= prior_date:
+            key = f"sp_decision:{new_date}:{official['rating']}:{official['outlook']}"
+            if key not in sent_keys:
+                return [{"kind": "sp_decision", "key": key,
+                         "rating": official["rating"],
+                         "outlook": official["outlook"],
+                         "decision_date": new_date}]
+        if new_date >= SP_REVIEW_DATE.isoformat() and local_day >= SP_REVIEW_DATE:
+            return []
     if local_day > SP_REVIEW_DATE:
         overdue = f"sp_review_unverified_after_due:{SP_REVIEW_DATE.isoformat()}"
         return [] if overdue in sent_keys else [{"kind": "sp_review_overdue", "key": overdue}]
@@ -291,6 +340,13 @@ def format_event(rating: dict, events: list[dict], pending: dict,
             status = (f"공식 최신 확인 일정: 2026-10-23(프랑스 현지 날짜), "
                       f"등급 {rating['rating']}·전망 {rating['outlook']}.")
         caveat = "등급 강등 확정이 아닌 예정된 심사입니다. 포지션 청산 마감일도 아닙니다."
+    elif any(x["kind"] == "sp_decision" for x in events):
+        event = next(x for x in events if x["kind"] == "sp_decision")
+        name = "프랑스 S&P 공식 신용등급 평가 결과"
+        status = (f"프랑스 국채관리청 공식 등급표: "
+                  f"S&P {event['rating']} / 전망 {event['outlook']} / "
+                  f"최근 평가일 {event['decision_date']}.")
+        caveat = "이번 최신 결과는 공식 등급표에 근거하며, 이전 평가와 비교해 등급·전망·평가일 변화를 판단합니다."
     elif any(x["kind"] == "sp_milestone" for x in events):
         days = min(x["days"] for x in events if x["kind"] == "sp_milestone")
         name = f"프랑스 S&P 신용등급 검토 D-{days}"
@@ -314,7 +370,7 @@ def format_event(rating: dict, events: list[dict], pending: dict,
                   "AFT 공식 페이지 검색 색인 확인일은 2026-10-14이며 직접 원문 조회는 제한됐습니다.")
         caveat = "등급 변경이나 시장의 강등 가능성을 확정할 수 없습니다. 공식 결과 조회가 지연될 수 있습니다."
 
-    sp_only = any(x["kind"] in ("sp_milestone", "sp_review_overdue") for x in events)
+    sp_only = any(x["kind"] in ("sp_decision", "sp_milestone", "sp_review_overdue") for x in events)
     primary_link = ("• AFT France S&P rating calendar: " + AFT_EN if sp_only else
                     "• AFT France Moody's rating calendar: " + rating["url"])
     next_boundary = base.next_spread_marker(
@@ -408,7 +464,9 @@ def main() -> int:
     local_day = now.astimezone(PARIS).date()
     events = credit_events(local_day, existing_credit, rating)
     delivered = set(existing_credit.get("sent_keys") or [])
-    events.extend(sp_review_events(local_day, delivered))
+    sp_live = official.get("sp_rating") if direct_official else None
+    sp_previous = existing_credit.get("sp_last_official") or VERIFIED_SP_SNAPSHOT
+    events.extend(sp_review_events(local_day, delivered, sp_live, sp_previous))
 
     # First-party French Finance Ministry is a backup for the AFT's HTTP 403
     # problem. A ministry response can confirm publication of an official
@@ -445,6 +503,7 @@ def main() -> int:
 
     next_credit = {
         "last_official": rating if source_ok else (existing_credit.get("last_official") or VERIFIED_AFT_SNAPSHOT),
+        "sp_last_official": (sp_live if sp_live is not None else sp_previous),
         "sent_keys": list(existing_credit.get("sent_keys") or [])[-30:],
         "checked_at_kst": now.isoformat(timespec="seconds"),
         "source_fail_streak": fail_streak,
@@ -484,6 +543,7 @@ def main() -> int:
             f"- 조회: {now.isoformat(timespec='seconds')}",
             f"- 출처 상태: {'공식 페이지 직접 확인' if direct_official else '공식 페이지 직접 검증 미완료·보조 복원' if source_ok else '접근 제한·2026-10-14 AFT 검색 색인 참고'}",
             f"- 최근 공식확인: Moody's {rating['rating']}, {rating['outlook']}, {rating['decision_date']}",
+            f"- S&P 관측: {sp_live['rating'] + '/' + sp_live['outlook'] + '/' + sp_live['decision_date'] if sp_live else '실시간 공식 등급표 확인 불가 (과거 스냅샷만 보유)'}",
             f"- 다음 심사: {rating['next_review'] or '미게시'}",
             f"- 연속 원문 오류: {fail_streak}",
             f"- 프랑스 재무부 공식 입장: {government_notice['url'] if government_notice else '신규 확인 없음'}",
