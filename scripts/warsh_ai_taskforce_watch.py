@@ -116,14 +116,43 @@ def gartner_title_ko(title: str) -> str:
 
 
 def canonical_gartner_item(item):
-    """Only a directly attributable, dated Gartner Newsroom release can trigger."""
-    raw_url = str(item.get('url') or '').strip()
-    parsed = urllib.parse.urlsplit(raw_url)
-    if (parsed.hostname or '').lower() not in {
-        'gartner.com', 'www.gartner.com', 'gcom.pdo.aws.gartner.com'
-    }:
+    """Normalize the original Gartner press release independent of feed timestamps."""
+    url = urllib.parse.urlsplit(str(item.get('url') or '').strip())
+    host = (url.hostname or '').lower()
+    if host not in {'gartner.com','www.gartner.com','gcom.pdo.aws.gartner.com'}:
         return None
-    path = re.sub(r'/+    """Summarize topic changes in Korean instead of forwarding raw English Fed text."""
+    path = re.sub(r'/+$', '', url.path.lower())
+    m = re.search(r'/en/newsroom/press-releases/(20\d{2})-(\d{1,2})-(\d{1,2})-',path)
+    if not m:
+        return None
+    try:
+        date = datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)), tzinfo=timezone.utc)
+    except ValueError:
+        return None
+    if date.date() > datetime.now(timezone.utc).date():
+        return None
+    title = str(item.get('title') or '').strip()
+    if len(title) < 20:
+        return None
+    return {
+        'key': 'gartner:' + path,
+        'title': title,
+        'url': 'https://www.gartner.com' + path,
+        'published': date.isoformat(),
+    }
+
+
+def gartner_recent_enough(item, now=None):
+    now = now or datetime.now(timezone.utc)
+    try:
+        date = datetime.fromisoformat(item['published'])
+    except (KeyError, ValueError, TypeError):
+        return False
+    return timedelta(0) <= now - date <= timedelta(days=4)
+
+
+def fed_update_ko(core: str):
+    """Summarize topic changes in Korean instead of forwarding raw English Fed text."""
     low=(core or '').lower()
     bullets=[]
     if 'productiv' in low:
@@ -294,117 +323,5 @@ def main():
         'gartner_source_status':new.get('gartner_source_status'),
         'errors':errors,
     }, ensure_ascii=False))
-
-if __name__ == "__main__": main()
-, '', parsed.path.lower())
-    match = re.search(r'/en/newsroom/press-releases/(20\d{2})-(\d{1,2})-(\d{1,2})-', path)
-    if not match:
-        return None
-    try:
-        date = datetime(int(match.group(1)), int(match.group(2)), int(match.group(3)), tzinfo=timezone.utc)
-    except ValueError:
-        return None
-    if date.date() > datetime.now(timezone.utc).date():
-        return None
-    title = str(item.get('title') or '').strip()
-    if len(title) < 20:
-        return None
-    # All mirrors and query-string variants share one permanent Gartner path.
-    normalized_url = 'https://www.gartner.com' + path
-    return {
-        'key': 'gartner:' + path,
-        'title': title,
-        'url': normalized_url,
-        'published': date.isoformat(),
-    }
-
-
-def gartner_recent_enough(item, now=None):
-    now = now or datetime.now(timezone.utc)
-    try:
-        date = datetime.fromisoformat(item['published'])
-    except (KeyError, ValueError, TypeError):
-        return False
-    return timedelta(days=-4) <= now - date <= timedelta(days=4) and date <= now
-
-
-def fed_update_ko(core: str):
-    """Summarize topic changes in Korean instead of forwarding raw English Fed text."""
-    low=(core or '').lower()
-    bullets=[]
-    if 'productiv' in low:
-        bullets.append('• 생산성과 잠재 생산능력 관련 공식 내용에 변화가 확인됐습니다.')
-    if 'job' in low or 'employment' in low:
-        bullets.append('• 고용과 직무 구조에 대한 태스크포스 관련 내용에 변화가 확인됐습니다.')
-    if 'artificial intelligence' in low or 'general-purpose technologies' in low:
-        bullets.append('• AI가 경제의 새로운 생산요소가 될 수 있는지에 관한 공식 검토 내용이 갱신됐습니다.')
-    if 'inflation' in low or 'policy judgment' in low or 'economic impact' in low:
-        bullets.append('• 생산성·고용 변화가 물가와 통화정책 판단에 미치는 영향에 관한 내용이 포함돼 있습니다.')
-    if not bullets:
-        bullets.append('• 연준의 AI 생산성·고용 태스크포스 공식 페이지에 새로운 변화가 확인됐습니다.')
-    return bullets[:4]
-
-
-def send(text: str):
-    if not TOKEN or not CHAT_ID: raise RuntimeError("Telegram token/chat id missing")
-    username = get_bot_username()
-    if username.lower() != EXPECTED_BOT.lower():
-        raise RuntimeError(f"Wrong Telegram bot: expected @{EXPECTED_BOT}, got @{username}")
-    payload = urllib.parse.urlencode({"chat_id": CHAT_ID, "text": text[:4090], "parse_mode":"HTML", "disable_web_page_preview": "true"}).encode("utf-8")
-    req = urllib.request.Request(f"https://api.telegram.org/bot{TOKEN}/sendMessage", data=payload, method="POST")
-    with urllib.request.urlopen(req, timeout=20) as r:
-        result = json.loads(r.read().decode("utf-8"))
-    if not result.get("ok"): raise RuntimeError(f"Telegram send failed: {result}")
-
-
-def load_state():
-    if not STATE_PATH.exists(): return {}
-    try: return json.loads(STATE_PATH.read_text(encoding="utf-8"))
-    except Exception: return {}
-
-
-def save_state(state):
-    STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    state["updated_at_utc"] = datetime.now(timezone.utc).isoformat()
-    STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-
-def fed_message(core):
-    return '\n'.join([
-        '[연준 AI 생산성·고용 태스크포스 변화]','',
-        *fed_update_ko(core), '',
-        '<b>판정</b>',
-        '• AI가 잠재성장률·생산성·고용·중립금리 판단에 실제 반영되는 단계로 넘어가는지 확인합니다.','',
-        '<b>원천</b>',link('미국 연방준비제도 공식자료',FED_URL)
-    ])
-
-
-def gartner_message(item):
-    return '\n'.join([
-        '[AI 고용 구조 전망 변화] Gartner','',
-        f"• {html.escape(gartner_title_ko(item['title']))}",'',
-        '<b>왜 중요하나</b>',
-        '• 워시가 던진 “AI가 노동을 대체하는가, 보완하는가”라는 질문에 직접 연결되는 구조적 고용 전망입니다.',
-        '• Gartner 전망은 매월 고용지표가 아니라 중장기 직무 재설계·재채용·생산성 구조가 바뀔 때만 알립니다.',
-        '• 총고용 숫자보다 직무 변화 속도, 재채용 비용, AI 인력 임금 프리미엄이 기업의 실제 투자수익률을 바꾸는지 확인합니다.','',
-        '<b>원천</b>',link('Gartner 원문',item['url'])
-    ])
-
-
-def main():
-    text = clean_text(fetch(FED_URL)); core = meaningful_text(text); fed_fp=fingerprint(core)
-    gis=gartner_items(); latest=gis[-1] if gis else None
-    old=load_state(); old_fed=old.get('fed_fingerprint') or old.get('fingerprint')
-    first=not bool(old)
-    fed_changed=old_fed not in (None,fed_fp)
-    latest_key=f"{latest['published']}|{latest['title']}" if latest else None
-    old_g=old.get('gartner_latest_key')
-    g_changed=(old_g is not None and latest_key is not None and old_g!=latest_key)
-
-    if FORCE_NOTIFY or (not first and fed_changed):send(fed_message(core))
-    if FORCE_NOTIFY or (not first and g_changed):send(gartner_message(latest))
-
-    save_state({'fed_fingerprint':fed_fp,'gartner_latest_key':latest_key,'gartner_latest':latest})
-    print(json.dumps({'first_run':first,'fed_changed':fed_changed,'gartner_changed':g_changed,'gartner_latest_ko':gartner_title_ko(latest['title']) if latest else None},ensure_ascii=False))
 
 if __name__ == "__main__": main()
