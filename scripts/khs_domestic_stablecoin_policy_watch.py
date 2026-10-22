@@ -321,6 +321,17 @@ def cbdc_claim_scope(title: str, body: str, source: str) -> dict:
     }
 
 
+def cbdc_display_title(scope: dict) -> str:
+    """Keep institutional money and bank deposits distinct from won stablecoins."""
+    if scope.get("retail_cbdc_no_plan_statement"):
+        return "한국은행: 일반인용 CBDC 도입 계획 없음 공식 설명"
+    if scope.get("2030_treasury_target_25pct"):
+        return "국고금 예금토큰 집행: 2030년 25% 정책 목표(발행액 아님)"
+    if scope.get("300eok_pilot_amount"):
+        return "프로젝트 한강: 전기차 충전 보조금 300억원 예금토큰 실증"
+    return "프로젝트 한강: 기관용 CBDC·은행 예금토큰 정책 변화"
+
+
 def stablecoin_title(text: str) -> str:
     if has_any(text, ["발행주체", "발행 주체", "은행 중심", "핀테크", "거래소"]):
         return "국내 디지털자산 정책: 원화 스테이블코인 발행 주체·업권 범위 체크"
@@ -368,19 +379,26 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
         if not is_policy_candidate(haystack, source_name):
             continue
         cbdc_scope = cbdc_claim_scope(title, detail_clean[:8500], source_name)
+        if cbdc_scope and any(x in title for x in ("어떻게 다를까", "Q&A", "오해와 진실", "해명")):
+            # A repeat explanation of existing policy is not a new stage-changing
+            # decision. Continue watching for separately dated formal changes.
+            continue
         policy_hits = matched_terms(haystack, POLICY_TERMS + EVENT_TERMS + ACTOR_TERMS)
         high = has_any(haystack, HIGH_IMPACT_TERMS)
         fingerprint = hashlib.sha256(f"{source_name}|{title}|{link}".encode("utf-8")).hexdigest()[:16]
         summary = clip_text(detail_clean, 360)
         deduped[link] = {
             "source": source_name,
-            "title": stablecoin_title(haystack),
+            "title": cbdc_display_title(cbdc_scope) if cbdc_scope else stablecoin_title(haystack),
             "original_title": clip_text(title, 120),
             "link": link,
             "summary": summary,
             "published_kst": published.isoformat() if published else "",
             "fingerprint": fingerprint,
-            "matched": {"korea_stablecoin_policy": policy_hits[:14] or ["스테이블코인 정책"]},
+            "matched": {
+                "korea_cbdc_deposit_token_policy" if cbdc_scope else "korea_stablecoin_policy":
+                    policy_hits[:14] or (["기관용 CBDC·예금토큰"] if cbdc_scope else ["스테이블코인 정책"])
+            },
             "importance": "상" if high else "중",
             "status": "확정",
             "impacts": ["시간표", "할인율", "수급"],
@@ -390,7 +408,11 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
             "cbdc_policy_watch": bool(cbdc_scope),
             "cbdc_policy_scope": cbdc_scope,
             "stablecoin_policy_check": POLICY_CHECK,
-            "stablecoin_risk_table": RISK_TABLE,
+            "stablecoin_risk_table": (
+                "기관용 CBDC·예금토큰·일반인용 CBDC 구별 / 2030년 국고금 25%는 정책목표 / "
+                "사용처 제한은 목적성 보조금 실증으로 한정 / 실거래·프라이버시·법적 근거 확인"
+                if cbdc_scope else RISK_TABLE
+            ),
             "stablecoin_structure_note": STRUCTURE_NOTE,
             "counter": (
                 "예금토큰은 은행 발행, 기관용 CBDC는 기관 간 결제에 활용. "

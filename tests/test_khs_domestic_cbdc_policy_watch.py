@@ -43,6 +43,28 @@ class CbdcOfficialPolicyWatch(unittest.TestCase):
         self.assertTrue(scope["retail_cbdc_no_plan_statement"])
         self.assertFalse(scope["182_trillion_is_issuance"])
 
+    def test_cbdc_alert_title_never_relabels_bank_deposit_as_stablecoin_law(self):
+        scope = watch.cbdc_claim_scope(
+            "프로젝트 한강 예금토큰 국고금 집행",
+            "2030년 국고금 4분의 1 목표, 300억원 보조금 집행",
+            BOK,
+        )
+        title = watch.cbdc_display_title(scope)
+        self.assertIn("2030년 25%", title)
+        self.assertNotIn("스테이블코인 법안", title)
+        self.assertNotIn("182조 발행", title)
+
+    def test_old_official_march_policy_does_not_realert_in_october(self):
+        title = "국고보조금 예금토큰 지급 시범사업 공식 시행"
+        listing = f'<a href="/portal/bbs/B0000347/view.do?nttId=20260319">{title}</a>'
+        detail = official_html(
+            title, "2026.03.19",
+            "2026년 300억원 EV 충전 보조금 예금토큰 시범. 2030년까지 25% 목표.",
+        )
+        with patch.object(watch, "fetch_text", return_value=(detail, None)):
+            self.assertEqual(watch.parse_links(listing, BOK, URL, NOW), [])
+
+
     def test_lookalike_sites_and_generic_links_rejected(self):
         self.assertFalse(watch.document_title_is_relevant("파일다운로드"))
         self.assertFalse(watch.document_title_is_relevant("중수청, 본청·6개 지방청으로 출범"))
