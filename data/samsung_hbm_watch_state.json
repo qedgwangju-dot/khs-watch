@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-22T10:44:13+09:00",
+  "updated_at_kst": "2026-10-22T16:51:53+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -1700,10 +1700,10 @@
       "ddr5_chip_quote|dramexchange|16|4800/5600": {
         "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
         "axis": "ddr5_chip_quote",
-        "value": 60.867,
+        "value": 61.1,
         "unit": "USD/chip",
         "period": "2026-10",
-        "as_of": "2026-10-21",
+        "as_of": "2026-10-22",
         "evidence": "research",
         "source_url": "https://www.dramexchange.com/",
         "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
@@ -2588,7 +2588,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-22T10:44:13+09:00",
+      "last_checked_at_kst": "2026-10-22T16:51:53+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -2662,7 +2662,7 @@
     "payload_hash": "80cf7e269d0d91f82036693de12cef08ec48b77e8a55c073ed7548e0ed8c94c1"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-22T10:45:16+09:00",
+    "checked_at_kst": "2026-10-22T16:52:50+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
@@ -2755,12 +2755,12 @@
     "target_month": "202609",
     "signature": "86a8d08522a764dc",
     "classes": [],
-    "last_checked_at_kst": "2026-10-22T10:44:13+09:00",
+    "last_checked_at_kst": "2026-10-22T16:51:53+09:00",
     "first_seen_at_kst": "2026-10-16T21:42:48+09:00"
   },
   "official_source_health_version": 3,
   "official_poll_interval_hours": 1,
-  "last_official_poll_attempt_kst": "2026-10-22T10:44:13+09:00",
+  "last_official_poll_attempt_kst": "2026-10-22T16:51:53+09:00",
   "official_availability_notes": [],
   "optional_source_errors": [
     "이천 202609 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
