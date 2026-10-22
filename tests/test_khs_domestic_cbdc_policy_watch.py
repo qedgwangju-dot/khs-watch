@@ -19,6 +19,27 @@ def official_html(title, date, body):
 
 
 class CbdcOfficialPolicyWatch(unittest.TestCase):
+    def test_official_bok_real_wording_no_retail_cbdc(self):
+        scope = watch.cbdc_claim_scope(
+            "프로젝트 한강의 기관용 디지털화폐, 일반인용 CBDC와 어떻게 다를까",
+            "한국은행은 일반인을 대상으로 CBDC를 도입 또는 발행할 계획이 없고 관련 실험도 진행하지 않는다.",
+            BOK,
+        )
+        self.assertTrue(scope["retail_cbdc_no_plan_statement"])
+        self.assertFalse(scope["2030_target_is_issued_money"])
+
+    def test_unrelated_gov_subsidy_not_classed_as_cbdc(self):
+        self.assertFalse(watch.document_title_is_relevant(
+            "국고보조금 지급사업 추진 일정 변경"
+        ))
+        self.assertEqual(
+            watch.cbdc_claim_scope(
+                "국고보조금 지급사업 추진 일정 변경",
+                "정부의 일반 보조금 집행 일정",
+                "Korea Policy Briefing stablecoin search",
+            ), {}
+        )
+
     def test_182_trillion_is_math_not_issuance(self):
         title = "프로젝트 한강과 국고금 집행 정책"
         body = (
