@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-22T10:50:28+09:00",
+  "updated_at_kst": "2026-10-22T15:49:31+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
   "baseline": {
@@ -208,22 +208,21 @@
     "fcd3079ba4981cd589bcc695",
     "fe3f7c8fc0c54648b261f8b4"
   ],
-  "last_fx_bucket": "unknown",
+  "last_fx_bucket": "orange",
   "last_fx": {
     "latest_rate": 1325.57,
     "latest_date": "2026-10-21",
     "latest_source": "ECB/Frankfurter",
-    "q2_avg": null,
-    "q3_avg": null,
-    "qoq_pct": null,
-    "bucket": "unknown",
-    "average_source": "Fed H.10/FRED",
-    "average_error": "RuntimeError"
+    "q2_avg": 1500.48,
+    "q3_avg": 1417.24,
+    "qoq_pct": -5.55,
+    "bucket": "orange",
+    "average_source": "Fed H.10/FRED"
   },
-  "last_scan_items": 27,
+  "last_scan_items": 26,
   "last_signal_count": 0,
   "last_alert": {
-    "at_kst": "2026-09-28T07:38:15+09:00",
+    "at_kst": "2026-10-22T15:49:31+09:00",
     "count": 1
   }
 }
