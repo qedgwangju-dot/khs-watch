@@ -302,6 +302,8 @@ def render(result, fx, fx_date):
                 f"{x['five_observations_share_change_pct']:+.2f}% "
                 f"· {html.escape(money_usd(v5))} ({html.escape(money_krw(v5, fx))})"
             )
+    if "EWY" not in result["movements"]:
+        lines.append("• <b>EWY</b>: 공식값·기준일 동기화 확인 불가 → 한국 ETF 설정·환매 판정 보류")
     lines += [
         "해석: ETF 발행좌수 증감×당일 기준가격을 이용한 <b>설정·환매 대용 추정</b>입니다.",
         "주의: JP모건 개인 순매수 불균형과 이 ETF 발행좌수 추정치는 다릅니다. 개인·기관별 순매수나 전체 기술주 펀드 순유입액이 아닙니다.",
