@@ -35,6 +35,14 @@ FUNDS = {
         "url": "https://www.ishares.com/us/products/239705/ishares-phlx-semiconductor-etf",
     },
 }
+# EWY extends the existing U.S. ETF watcher; no new sender or schedule.
+# Failure to retrieve EWY must not stop legacy IYW/SOXX alerts.
+OPTIONAL_KOREA_FUND = {
+    "EWY": {
+        "label": "미국 상장 한국 주식 ETF",
+        "url": "https://www.ishares.com/us/products/239681/ishares-msci-south-korea-etf",
+    }
+}
 EXPECTED_BOT = "khs887900887900008879_bot"
 ET = ZoneInfo("America/New_York")
 KST = ZoneInfo("Asia/Seoul")
@@ -92,6 +100,19 @@ def collect(now=None, fetcher=ishares.get_ishares):
     latest = latest_us_close(now)
     if date > latest or (latest - date).days > 4:
         raise ValueError(f"ETF official data unavailable/stale: {date} vs US last close {latest}")
+    try:
+        meta = OPTIONAL_KOREA_FUND["EWY"]
+        ewy = fetcher("EWY", meta, retry_budget=budget)
+        if not (ewy.get("date") == ewy.get("nav_date") == ewy.get("shares_date") == date.isoformat()):
+            raise ValueError("EWY and technology ETF official NAV/share dates differ")
+        for col in ("nav", "shares"):
+            v = ewy.get(col)
+            if not isinstance(v, (float, int)) or not math.isfinite(v) or v <= 0:
+                raise ValueError(f"EWY: invalid {col}")
+        fund_rows["EWY"] = ewy
+    except Exception as exc:
+        # Preserve both mandatory technology ETF lanes; never impute stale EWY.
+        print(f"ewy_optional_source_withheld=true type={type(exc).__name__} reason={str(exc)[:150]}")
     return fund_rows
 
 
@@ -101,7 +122,7 @@ def _consecutive_weekday_dates(rows):
     Exchange holidays will withhold the cumulative signal rather than invent
     a closing observation. The daily comparison is unaffected.
     """
-    if len(rows) != 6:
+    if len(rows) < 2:
         return False
     day0 = dt.date.fromisoformat(rows[0]["date"])
     dayn = dt.date.fromisoformat(rows[-1]["date"])
@@ -115,13 +136,21 @@ def _consecutive_weekday_dates(rows):
 
 
 def calculate(observations, state):
-    if {x for x in FUNDS} != set(observations):
+    if not set(FUNDS).issubset(set(observations)):
         raise ValueError("both official technology sector funds required")
+    if set(observations).difference(set(FUNDS), set(OPTIONAL_KOREA_FUND)):
+        raise ValueError("unexpected fund ticker in tech ETF proxy")
     today = next(iter(observations.values()))["date"]
     current_date = dt.date.fromisoformat(today)
-    new_history = {}
+    # Keep verified EWY history when its optional source is temporarily absent.
+    new_history = {
+        t: list(v) for t, v in state.get("history", {}).items()
+        if t == "EWY" and t not in observations
+    }
     movements = {}
-    for ticker in FUNDS:
+    for ticker in ("IYW", "SOXX", "EWY"):
+        if ticker not in observations:
+            continue
         row = observations[ticker]
         history = list(state.get("history", {}).get(ticker, []))
         if history and dt.date.fromisoformat(history[-1]["date"]) > current_date:
@@ -203,6 +232,22 @@ def calculate(observations, state):
             signals.append(f"{ticker} 최근 5회 발행좌수 +2.5% 이상")
         if p5 <= -2.5 and v5 <= -250_000_000:
             signals.append(f"{ticker} 최근 5회 발행좌수 -2.5% 이하")
+    # Additional EWY 3-session continuous creations checkpoint (four
+    # official shares-outstanding observations). Never label these as
+    # Korean foreign-investor trades or licensed retail order imbalance.
+    if "EWY" in movements:
+        ewy_rows = new_history["EWY"]
+        if len(ewy_rows) >= 4 and _consecutive_weekday_dates(ewy_rows[-4:]):
+            recent = ewy_rows[-4:]
+            increments = [
+                recent[i]["shares"] - recent[i-1]["shares"]
+                for i in range(1, 4)
+            ]
+            if all(x > 0 for x in increments):
+                ewy_amount = (recent[-1]["shares"] - recent[0]["shares"]) * recent[-1]["nav"]
+                if ewy_amount >= 150_000_000:
+                    signals.append("EWY 발행좌수 3거래일 연속 증가·누적 1억5천만달러 이상")
+
     a = movements["IYW"]["estimated_creation_value_usd"]
     b = movements["SOXX"]["estimated_creation_value_usd"]
     if a is not None and b is not None and a >= 100_000_000 and b <= -100_000_000:
@@ -234,7 +279,10 @@ def render(result, fx, fx_date):
         f"공식 자료일: <b>{html.escape(result['date'])}</b>",
         "<b>변화:</b> " + (" / ".join(html.escape(x) for x in result["signals"]) if result["signals"] else "조건 미충족"),
     ]
-    for ticker in ("IYW", "SOXX"):
+    all_funds = {**FUNDS, **OPTIONAL_KOREA_FUND}
+    for ticker in ("IYW", "SOXX", "EWY"):
+        if ticker not in result["movements"]:
+            continue
         x = result["movements"][ticker]
         if x["estimated_creation_value_usd"] is None:
             v = "비교 보류" + ("(분할 조정 기간)" if x["split_guard"] else "(연속 자료 부족)")
@@ -246,7 +294,7 @@ def render(result, fx, fx_date):
                 f"/ 발행좌수 {x['outstanding_shares_change_pct']:+.2f}% "
                 f"/ 비교 {x['prev_date']}→{x['date']}"
             )
-        lines.append(f"• <b>{ticker}</b> ({FUNDS[ticker]['label']}): {html.escape(v)}")
+        lines.append(f"• <b>{ticker}</b> ({all_funds[ticker]['label']}): {html.escape(v)}")
         v5 = x["five_observations_creation_usd"]
         if v5 is not None:
             lines.append(
@@ -256,13 +304,15 @@ def render(result, fx, fx_date):
             )
     lines += [
         "해석: ETF 발행좌수 증감×당일 기준가격을 이용한 <b>설정·환매 대용 추정</b>입니다.",
-        "주의: 개인투자자만의 매매·JP모건 5거래일 개인 순매수 불균형·전체 기술주 펀드 순유입액이 아닙니다.",
+        "주의: JP모건 개인 순매수 불균형과 이 ETF 발행좌수 추정치는 다릅니다. 개인·기관별 순매수나 전체 기술주 펀드 순유입액이 아닙니다.",
+        "EWY는 미국 상장 한국 주식 ETF이며, EWY 설정·환매를 한국거래소 외국인 현물 매수·매도로 치환하지 않습니다.",
         "최근 5회 누적은 해당 ETF 공식 발행좌수 6개 연속 평일 관측점만 사용합니다. 휴장·결측이 포함되면 누적 경보를 보류합니다.",
         "해당 ETF의 2차시장 거래량과 실제 발행·환매는 다르며, 설정·환매 주체를 개인·기관으로 식별할 수 없습니다.",
         "SOXX는 2026-11-05 예정 주식분할 전후 발행좌수 비교 경보를 보류합니다.",
         f"환율: {fx:,.2f}원/달러 (공식 기준 {html.escape(fx_date)})" if fx else "환율: 확인 불가",
         f'원천: <a href="{FUNDS["IYW"]["url"]}">IYW 공식</a> · '
-        f'<a href="{FUNDS["SOXX"]["url"]}">SOXX 공식</a>',
+        f'<a href="{FUNDS["SOXX"]["url"]}">SOXX 공식</a> · '
+        f'<a href="{OPTIONAL_KOREA_FUND["EWY"]["url"]}">EWY 공식</a>',
     ]
     out = "\n".join(lines)
     if len(out) >= 3500:
