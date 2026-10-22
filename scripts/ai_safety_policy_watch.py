@@ -1556,7 +1556,14 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
         ]
         if rep["category"] == "CrowdStrike–NVIDIA AI 에이전트 보안 통합 단계":
             stage = tracked_policy_event_stage(rep)
-            detail = stage[1].replace("_", " ") if stage else "추가 검증"
+            labels = {
+                "integration_announced": "협력 확대 공식 발표",
+                "openshell_available_reported": "OpenShell 정식 연동 출시 보도",
+                "sentry_live_reported": "Sentry 반도체 연동 완료 보도",
+                "paid_customer_reported": "유료 기업고객 계약 보도",
+                "integration_ended_reported": "협력 종료 보도",
+            }
+            detail = labels.get(stage[1], "추가 검증") if stage else "추가 검증"
             lines.append(f"• <b>신규 단계</b>: {html.escape(detail)} · 당사자 공식 발표와 미래 계획을 분리")
             lines.append("• <b>기술 단계</b>: Falcon Guardian의 NVIDIA OpenShell 통합은 진행 중. NVIDIA Sentry·BlueField-4 반도체 정책 강제 연동은 계획 단계이며 고객 현장 가동 확정 아님")
             lines.append("• <b>수익구조</b>: 소프트웨어 사용권·유료 기업고객·반복 갱신과 추가 DPU 출하가 실제 확인될 때만 증분 매출로 집계. 계약금액·유료 고객 수·양산 물량 미공개")
@@ -1710,6 +1717,12 @@ def main() -> int:
     tracked_stages = dict(state.get("tracked_policy_event_stages") or {})
     for baseline_key, baseline_info in POLICY_EVENT_BASELINES.items():
         tracked_stages.setdefault(baseline_key, dict(baseline_info))
+    # Correct the issuer-verification status of the previously sent official
+    # collaboration announcement; this is NOT a new stage or resend.
+    recorded = tracked_stages.get("crowdstrike_nvidia_guardian:integration_announced")
+    if (isinstance(recorded, dict) and recorded.get("source") == "CrowdStrike"
+        and str(recorded.get("source_url") or "").startswith("https://ir.crowdstrike.com/")):
+        recorded["status"] = "issuer_official_announced_openshell_integrating_sentry_planned"
     trail_mna_seen.setdefault("initial_talks", {
         "source_url": "https://www.theinformation.com/articles/openai-early-talks-buy-security-startup-trail-bits",
         "status": "The Information 2026-10-13 reported early talks; unconfirmed",
@@ -1837,7 +1850,7 @@ def main() -> int:
                     "source_url": item.get("url"),
                     "source": item.get("source"),
                     "first_seen_at": now.isoformat(),
-                    "status": "trusted_report_not_issuer_or_legislative_confirmation",
+                    "status": "issuer_official" if item.get("official") else "trusted_report_not_issuer_or_legislative_confirmation",
                 })
     first_seen = now.isoformat()
     for item in current:
