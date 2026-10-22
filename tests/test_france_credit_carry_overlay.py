@@ -188,6 +188,8 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
                                    "de_mkt": "2026-10-22"}, "stale": []},
             dt.datetime(2026, 11, 26, 12, 0, tzinfo=watch.KST))
         self.assertIn("S&P 2026-11-27", body)
+        self.assertIn("S&P 2026년 11월 27일 평가 일정", body)
+        self.assertNotIn("프랑스 10월 23일 공식 신용등급", body)
         self.assertIn("날짜 변경 여부와 새 결정", body)
         self.assertIn("다음 경계 175bp", body)
         msg = "\\n".join(render_chunks(body))
