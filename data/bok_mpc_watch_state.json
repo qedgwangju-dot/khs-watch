@@ -51,10 +51,10 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-10-22T13:10:23+09:00",
-    "risk_score": 3,
-    "grade_emoji": "🟡",
-    "grade_label": "추가인상 가능성 유지",
+    "updated_at_kst": "2026-10-22T16:55:40+09:00",
+    "risk_score": 5,
+    "grade_emoji": "🟠",
+    "grade_label": "인상 압력 높음",
     "next_mpc_date": "2026-11-26",
     "next_mpc_source": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?menuNo=200755&mtgSe=A",
     "components": {
@@ -83,58 +83,62 @@
       "housing": null,
       "oil": {
         "date": "2026-10-22",
-        "brent_usd": 110.65,
-        "change_5d_pct": 4.47,
+        "brent_usd": 112.02,
+        "change_5d_pct": 5.76,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
       }
     },
-    "rhetoric_score": 0,
+    "rhetoric_score": 1,
     "recent_rhetoric": [
       {
         "speaker": "신현송",
         "date": "2026-10-22",
         "flags": {
-          "oct_hike_caution": false,
-          "ai_long_rate_financing": false,
-          "next_meeting_hawk": false,
-          "neutral_upper": false,
-          "fvi_leverage": false,
-          "terminal_rate_openness": false,
-          "hike_timing_speed": false,
-          "inflation_target_horizon": false,
-          "two_hikes_effect": false,
-          "k_shaped_low_income": false,
-          "hike_needed": false,
-          "wealth_effect_reassessment": true,
           "middle_east_inflation": false,
-          "ai_investment_duration": false,
-          "inflation_upside": false,
-          "fiscal_reversibility": true,
-          "fx_low_income_purchasing_power": false,
-          "next_meeting_caution": false,
-          "macroprudential_mix": false,
-          "market_rate_independence": false,
-          "demand_inflation": false,
+          "neutral_upper": false,
+          "wealth_effect_reassessment": true,
           "middle_east_cost": false,
+          "fiscal_reversibility": true,
+          "rate_not_only_tool": false,
+          "inflation_upside": true,
+          "inflation_target_horizon": false,
+          "market_rate_independence": false,
+          "fx_low_income_purchasing_power": true,
+          "terminal_rate_openness": true,
+          "hike_timing_speed": false,
+          "hike_needed": false,
+          "demand_inflation": false,
+          "oct_hike_caution": false,
+          "fvi_leverage": false,
+          "next_meeting_caution": false,
+          "two_hikes_effect": false,
           "ai_war_inflation": false,
-          "rate_not_only_tool": false
+          "ai_investment_duration": false,
+          "ai_long_rate_financing": false,
+          "macroprudential_mix": false,
+          "next_meeting_hawk": false,
+          "k_shaped_low_income": false
         },
-        "title": "신현송 \"주가 조정, 실물경제에도 영향…부의 효과 커졌을 가능성\"(상보) - 연합인포맥스",
-        "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5WTjk3ZWVEcVI4MFRfc3puV292ZzhQX0VxRlh3aEoxMGkzajhIekhyeUpVUjljVmpUaTktX2d3bU56NW1mVnNtTWxFbWw3ajJOeVI0dk85WUhvM1NPdnRVdG1ySFFoSjlNSVhaRXJzdmo?oc=5",
-        "source_name": "연합인포맥스",
-        "published_at_kst": "2026-10-22T12:31+09:00",
-        "event_hash": "8ef6b4516db5c05e6997bc503b9d0bc2bbe15776cd98433a49dc1790303bfb74",
-        "score": 0
+        "title": "[이슈] 신현송 한은 총재 \"주가 조정, 소비에 일부 영향…반도체 수출 호조는 긍정적\" - 팍스경제TV",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9CeU5DYkozNFJ4a1UtZ2Q5VW5MS0JzN3ZLQ3k4YmZTdnFrbV9zaGtLRkdwNHpvN3g2YzlvQmVnWkxZTkV1M1pRUUUyaS1xOEhlUnVQOTR4OGxmeTZtZzhsOW0xSXAtRWc?oc=5",
+        "source_name": "팍스경제TV",
+        "published_at_kst": "2026-10-22T16:35+09:00",
+        "event_hash": "190f328493ceff9ee2169237d8ca464d83605b745f3bb9a6975b88b70e25c5b0",
+        "score": 1
       }
     ],
     "seen_rhetoric_hashes": [
-      "8ef6b4516db5c05e6997bc503b9d0bc2bbe15776cd98433a49dc1790303bfb74"
+      "8ef6b4516db5c05e6997bc503b9d0bc2bbe15776cd98433a49dc1790303bfb74",
+      "190f328493ceff9ee2169237d8ca464d83605b745f3bb9a6975b88b70e25c5b0"
     ],
     "seen_policy_flags_by_day": {
       "신현송|2026-10-22": [
         "fiscal_reversibility",
+        "fx_low_income_purchasing_power",
+        "inflation_upside",
+        "terminal_rate_openness",
         "wealth_effect_reassessment"
       ]
     },
