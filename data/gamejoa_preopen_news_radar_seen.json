@@ -13732,6 +13732,34 @@
       "telegram_core_fact": "챈은 \"데이터센터 구축, 미국 모델 훈련은 중국에서 수입되는 수많은 데이터센터 부품에 의존한다\"며 미국 공급망 전반에 걸쳐서도 중국산 부품과 연결고리가 나타난다고 평가했다.",
       "title": "\"美기업들, AI 패권 경쟁 벌이면서도 中 공급망 의존\""
     },
+    "core:26d7bfc03e079a0083cbaf56": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
     "core:26de92d576203a54cae447c2": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
       "lanes": {
@@ -23905,6 +23933,28 @@
       "telegram_core_fact": "LG전자의 3분기 잠정 영업이익은 7818억원으로 전년비 13.5% 증가했지만 시장 기대치 약 1조301억원을 24.1% 밑돌았다.",
       "title": "LG전자, 실적 충격 속 이틀 새 14% 하락…AI 냉각·로봇에 쏠린 시선"
     },
+    "core:43d252dd999db5f8cf6b675f": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261022085909",
+      "source": "지디넷코리아",
+      "source_body_digest": "d8706b1c3005046387f192abdc5946a5db9909e6544b756216516c1577f5c046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46fae892cb9d672449b1f442265ad905034c76682794755d7bf903147c5a5e91",
+      "source_fact_keys": [
+        "source_fact:v1:67ec1cbd383393b1584ddc92d0836aea2c9b449267cdf0fcf3a0afa97d94b48b",
+        "source_fact:v1:7ea57c5ef9bcbcd2626a4d75d08b646ec9c121eaa442b2933f5426c7fd8faf0b",
+        "source_fact:v1:fdde537dbd3ad4f6abd2d510f1c93b3bfaf26e598e3985872b13701219407278"
+      ],
+      "source_published_kst": "2026-10-22T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속",
+      "telegram_core_fact": "21일(현지시간) 오픈AI 공식 블로그에 따르면 오픈AI는 이날 자사 최첨단 AI 모델과 코딩 에이전트 '코덱스'를 구글클라우드 AI 모델 플랫폼 모델 가든에 공급한다고 발표했다.",
+      "title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속"
+    },
     "core:43d5dabda50fd3f84fbb046b": {
       "first_seen_kst": "2026-10-12T17:38:53+09:00",
       "lanes": {
@@ -32505,6 +32555,27 @@
       "source_title": "에코프로비엠, 유상증자 청약률 103.25%…인니 니켈 공급망 구축 속도",
       "telegram_core_fact": "에코프로비엠 관계자는 “이번 청약은 중장기 성장 전략에 대한 주주들의 신뢰를 보여준 결과”라며 “인도네시아 니켈 공급망 구축을 통해 삼원계 양극재의 원가 경쟁력과 공급 안정성을 높이겠다”고 말했다.",
       "title": "에코프로비엠, 유상증자 청약률 103.25%…인니 니켈 공급망 구축 속도"
+    },
+    "core:5fa73c723593ac0d41416a35": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102118192974092",
+      "source": "머니투데이",
+      "source_body_digest": "a80a5854204b3d00f7c46960630f8648dcfa92d285f3e75f37914d3e446a8d87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c5b57a6b068b16174a4f017a7c270d42489da058154642078aee832be3e5999",
+      "source_fact_keys": [
+        "source_fact:v1:b536763007449d5ec9e54f860f393fb3adc3e8f21e74581c49f2cec012e638b5",
+        "source_fact:v1:e29fe3777aeedd867750cae76837ccbc368ee89c4025c132253695ed8443bc59"
+      ],
+      "source_published_kst": "2026-10-22T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?",
+      "telegram_core_fact": "현재 유예 법안이 다수 올라왔지만 만약 추가적으로 법 개정이 이뤄지지 않으면 내년 1월부터 가상자산에 대한 세금을 내야한다.",
+      "title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?"
     },
     "core:5fb69e3207c8223be7e07c95": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
@@ -69018,6 +69089,29 @@
       "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
       "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
     },
+    "core:c880ba75d996fb96a9a4ff3f": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02568246645615544",
+      "source": "이데일리",
+      "source_body_digest": "fcddd5af57ef68f67ad32cbf072d2ebf0324295110fa2431e64f512c60e469d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8a2f9a6f0185a8f5c73c90857de53e2f0d5057dbcac53accf54f77607bacd58",
+      "source_fact_keys": [
+        "source_fact:v1:2b7ef4cee339df4d2c01ba3fbc359bdf9ecdca4375ff05469b25f7648c6133fb",
+        "source_fact:v1:473e772e43005d92fa0dfa519a16ef972dfa3ef59360d3db7cab59264022e9f5",
+        "source_fact:v1:ae231c49e5667b3172e8b9474219f31b21180d2a35a138096b98f800f0c52ca8",
+        "source_fact:v1:b27944afecc5f652c8b8e8ce71a8912ed2fa653e455a58c70db7f996c79469a4"
+      ],
+      "source_published_kst": "2026-10-22T07:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]",
+      "telegram_core_fact": "조선·플랜트 기자재 및 모듈 솔루션 전문기업 영광이 오늘(22일)부터 이틀간 일반투자자 대상 공모주 청약을 진행한다. 올해 상반기 매출액은 591억원, 영업이익은 54억원을 기록했다.",
+      "title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]"
+    },
     "core:c8abfa3f639ecfe6847d6e90": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
       "lanes": {
@@ -73238,6 +73332,35 @@
       "telegram_core_fact": "한국거래소는 DS자산운용, 한국투자신탁운용, 키움투자자산운용, 삼성자산운용의 상장지수펀드(ETF) 4종목을 오는 13일 유가증권시장에 상장한다고 8일 밝혔다.",
       "title": "'반도체 밸류체인 투자' 등 ETF 4종 13일 신규 상장 | 연합뉴스"
     },
+    "core:d56db4e25d2a147aa5bdf6c5": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
+    },
     "core:d577596b8f7cedc59d6f1b21": {
       "first_seen_kst": "2026-10-21T22:56:44+09:00",
       "lanes": {
@@ -75124,6 +75247,28 @@
       "source_title": "AI로 '돈의 역류' 시작됐다…국채금리 24년 만에 최고인데 나스닥은 상승",
       "telegram_core_fact": "미국 국채금리가 24년 만에 최고 수준을 기록했음에도 나스닥 지수가 상승하는 현상은 높은 이자 비용을 감당할 수 있는 특정 성장 분야인 인공지능(AI)으로 자금이 집중되고 있기 때문이라는 분석이 나왔다.",
       "title": "AI로 '돈의 역류' 시작됐다…국채금리 24년 만에 최고인데 나스닥은 상승"
+    },
+    "core:daa05065bb87eb13f9ea77aa": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102200277049143",
+      "source": "머니투데이",
+      "source_body_digest": "ef13922294ff040e1de2fe4e5c1945109e0de9795ba96b430b1c6ea13b98d981",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cde12779e48b1a081cd5590778c64df4236bfcb549fb4b7ceea1fb8105eece2",
+      "source_fact_keys": [
+        "source_fact:v1:9a53891ec43245d7907babb2a8ceb1ce7f07b24d560f69eabecfb17a9320e582",
+        "source_fact:v1:9a867fec83db6cbb54b27d8193eaf5328d22c76f9e2d27c2fd03537089ea9c2e",
+        "source_fact:v1:fb2f3ed5b4412faa76345482da8af91729c6054b7f4f31f241a3a2281d431da7"
+      ],
+      "source_published_kst": "2026-10-22T06:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!",
+      "telegram_core_fact": "알루코는 국내 알루미늄 압출 시장 점유율 1위 기업으로 한화큐셀 미국법인과 태양광 프레임 장기 공급 계약을 체결했다.",
+      "title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!"
     },
     "core:dabe58b06750c3bfd73bd7d2": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
@@ -79785,6 +79930,30 @@
       "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
       "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
       "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
+    },
+    "core:e935f0a3e4b2b9a0c95aa0b5": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02489526645615544",
+      "source": "이데일리",
+      "source_body_digest": "aa9fddbc4e78136386c39107faec4368bd43a925abed1bcad18cf6b9f51e0845",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1b0c69bda9513ee9e4b72915b5be3e9564fce216c2cfc803f91afaf0baaf9c7",
+      "source_fact_keys": [
+        "source_fact:v1:6c0d36b0db6a95a568324de70ce5a6585f3522d3347c5b5bc65130b89eb1f706",
+        "source_fact:v1:8da671e1b45a7da7e420fa43709345c829d0d68075823cc3c7e09c6cf564b8f6",
+        "source_fact:v1:9dfc62221e9900fcd7713ef136d93333b9f74737d85ca12a2827909da71a2151",
+        "source_fact:v1:af5d05542334d2da1b6c39ba98fdcdc06b63306dcb46add5934071428323d7a5",
+        "source_fact:v1:b1bc23c8520a964b4f1b3aaff3dae18ceb283bb01bae08a0ac11c181c1a1d2f4"
+      ],
+      "source_published_kst": "2026-10-22T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]",
+      "telegram_core_fact": "김성포 엠에스바이오 대표이사는 “코스닥 상장을 계기로 생산 인프라와 글로벌 사업 기반을 한층 강화하고 지속적인 신제품 상용화를 통해 글로벌 재생의료 플랫폼 기업으로 도약하겠다”고 말했다. 인체조직·생체소재 기반 재생의료 플랫폼 기업 엠에스바이오가 오늘(22일) 코스닥 시장에 상장한다.",
+      "title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]"
     },
     "core:e9784d047ddaf601e019dc17": {
       "first_seen_kst": "2026-10-21T07:55:35+09:00",
@@ -105086,6 +105255,34 @@
       "telegram_core_fact": "반면 중동전쟁으로 인한 물가 부담과 민생, 산업 경쟁력 등을 고려하면 정부가 전기요금 인상을 결정하기도 쉽지 않다.",
       "title": "한전 \"전기요금 인상 필요\" 정부 \"인하\"…재무구조 개선 관건"
     },
+    "event:d9820c3880bb1a537d8e5f57": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
     "event:d9dd1c9b93405b66406e492f": {
       "first_seen_kst": "2026-10-19T00:10:36+09:00",
       "lanes": {
@@ -108230,27 +108427,24 @@
     "event:ff20a2d1458d9b2f18e14eb7": {
       "first_seen_kst": "2026-10-22T08:49:50+09:00",
       "lanes": {
-        "live": "2026-10-22T11:47:17+09:00"
+        "live": "2026-10-22T12:56:15+09:00"
       },
-      "last_seen_kst": "2026-10-22T11:47:17+09:00",
-      "link": "https://www.hankyung.com/article/202610228302g",
-      "source": "한국경제",
-      "source_body_digest": "340acd64e02ad17c268652cea7be0770e6896b832bd3b7972b661b3206bd18a9",
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102200277049143",
+      "source": "머니투데이",
+      "source_body_digest": "ef13922294ff040e1de2fe4e5c1945109e0de9795ba96b430b1c6ea13b98d981",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:1c99fea6aa941774fe88b8ffe86d23d47d5cb2cdcc718e86aca3b8a2b2c26fec",
+      "source_fact_identity": "source_facts:v1:5cde12779e48b1a081cd5590778c64df4236bfcb549fb4b7ceea1fb8105eece2",
       "source_fact_keys": [
-        "source_fact:v1:2b774490031712a599b022e2acd137788d9e5983f133cf013754d7745dcbb8a3",
-        "source_fact:v1:319cf8e4d08c416259b6ffc8e68180ff8edfdd77b7c83c5808786e0a75cc5f72",
-        "source_fact:v1:52944372016db5b0ff57692791b272d42911b5605219abbcb1aae1434f1b0ad0",
-        "source_fact:v1:5e228c7893e5b297351bcc3eb5ef34bfc975579cd26fbb4c9a925cfa542f32ab",
-        "source_fact:v1:679f48bf41e4a4e7f52eedab159def4ddafae80788af650655404aff2a02b50e",
-        "source_fact:v1:8ba3fd93b0cd5ea8868090c7305f26ddfbd993588278663c1f41c912937285e4"
+        "source_fact:v1:9a53891ec43245d7907babb2a8ceb1ce7f07b24d560f69eabecfb17a9320e582",
+        "source_fact:v1:9a867fec83db6cbb54b27d8193eaf5328d22c76f9e2d27c2fd03537089ea9c2e",
+        "source_fact:v1:fb2f3ed5b4412faa76345482da8af91729c6054b7f4f31f241a3a2281d431da7"
       ],
-      "source_published_kst": "2026-10-22T11:30+09:00",
+      "source_published_kst": "2026-10-22T06:50+09:00",
       "source_supply_terms": {},
-      "source_title": "\"삼전닉스 턱밑 노린다\"…中 YMTC, 낸드 점유율 20% 정조준",
-      "telegram_core_fact": "YMTC는 D램을 포함해 웨이퍼 생산능력을 월 약 50만장 규모까지 늘려 낸드 점유율 20% 목표 달성을 노리고 있다.",
-      "title": "\"삼전닉스 턱밑 노린다\"…中 YMTC, 낸드 점유율 20% 정조준"
+      "source_title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!",
+      "telegram_core_fact": "알루코는 국내 알루미늄 압출 시장 점유율 1위 기업으로 한화큐셀 미국법인과 태양광 프레임 장기 공급 계약을 체결했다.",
+      "title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!"
     },
     "event:ff5ac051a53f599db6640777": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
@@ -108707,6 +108901,28 @@
       "source_title": "3% 내린 하이닉스 사고, 18% 뛴 주성 팔았다…초고수의 ‘역발상’",
       "telegram_core_fact": "반면 하루 만에 18% 넘게 뛴 주성엔지니어링을 비롯해 최근 강세가 뚜렷했던 반도체 장비·기판주는 대거 순매도했다. 투자 수익률 상위 1%의 초고수들이 지난 6일 국내 증시에서 주가가 내린 SK하이닉스와 삼성전자를 가장 많이 순매수한 것으로 나타났다.",
       "title": "3% 내린 하이닉스 사고, 18% 뛴 주성 팔았다…초고수의 ‘역발상’"
+    },
+    "fact:010d6588a2b2d2402abb40a7": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261022085909",
+      "source": "지디넷코리아",
+      "source_body_digest": "d8706b1c3005046387f192abdc5946a5db9909e6544b756216516c1577f5c046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46fae892cb9d672449b1f442265ad905034c76682794755d7bf903147c5a5e91",
+      "source_fact_keys": [
+        "source_fact:v1:67ec1cbd383393b1584ddc92d0836aea2c9b449267cdf0fcf3a0afa97d94b48b",
+        "source_fact:v1:7ea57c5ef9bcbcd2626a4d75d08b646ec9c121eaa442b2933f5426c7fd8faf0b",
+        "source_fact:v1:fdde537dbd3ad4f6abd2d510f1c93b3bfaf26e598e3985872b13701219407278"
+      ],
+      "source_published_kst": "2026-10-22T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속",
+      "telegram_core_fact": "21일(현지시간) 오픈AI 공식 블로그에 따르면 오픈AI는 이날 자사 최첨단 AI 모델과 코딩 에이전트 '코덱스'를 구글클라우드 AI 모델 플랫폼 모델 가든에 공급한다고 발표했다.",
+      "title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속"
     },
     "fact:0119e1517624487f3f6f482e": {
       "first_seen_kst": "2026-10-15T05:17:25+09:00",
@@ -128465,6 +128681,30 @@
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
     },
+    "fact:35d5e425194f469ed1272e4a": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02489526645615544",
+      "source": "이데일리",
+      "source_body_digest": "aa9fddbc4e78136386c39107faec4368bd43a925abed1bcad18cf6b9f51e0845",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1b0c69bda9513ee9e4b72915b5be3e9564fce216c2cfc803f91afaf0baaf9c7",
+      "source_fact_keys": [
+        "source_fact:v1:6c0d36b0db6a95a568324de70ce5a6585f3522d3347c5b5bc65130b89eb1f706",
+        "source_fact:v1:8da671e1b45a7da7e420fa43709345c829d0d68075823cc3c7e09c6cf564b8f6",
+        "source_fact:v1:9dfc62221e9900fcd7713ef136d93333b9f74737d85ca12a2827909da71a2151",
+        "source_fact:v1:af5d05542334d2da1b6c39ba98fdcdc06b63306dcb46add5934071428323d7a5",
+        "source_fact:v1:b1bc23c8520a964b4f1b3aaff3dae18ceb283bb01bae08a0ac11c181c1a1d2f4"
+      ],
+      "source_published_kst": "2026-10-22T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]",
+      "telegram_core_fact": "김성포 엠에스바이오 대표이사는 “코스닥 상장을 계기로 생산 인프라와 글로벌 사업 기반을 한층 강화하고 지속적인 신제품 상용화를 통해 글로벌 재생의료 플랫폼 기업으로 도약하겠다”고 말했다. 인체조직·생체소재 기반 재생의료 플랫폼 기업 엠에스바이오가 오늘(22일) 코스닥 시장에 상장한다.",
+      "title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]"
+    },
     "fact:35dd54ba8043bf67f7ca585c": {
       "first_seen_kst": "2026-10-21T03:15:13+09:00",
       "lanes": {
@@ -132000,6 +132240,29 @@
       "source_title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\"",
       "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
       "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
+    },
+    "fact:3fc6ed7dec4e23a22cfba71b": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02568246645615544",
+      "source": "이데일리",
+      "source_body_digest": "fcddd5af57ef68f67ad32cbf072d2ebf0324295110fa2431e64f512c60e469d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8a2f9a6f0185a8f5c73c90857de53e2f0d5057dbcac53accf54f77607bacd58",
+      "source_fact_keys": [
+        "source_fact:v1:2b7ef4cee339df4d2c01ba3fbc359bdf9ecdca4375ff05469b25f7648c6133fb",
+        "source_fact:v1:473e772e43005d92fa0dfa519a16ef972dfa3ef59360d3db7cab59264022e9f5",
+        "source_fact:v1:ae231c49e5667b3172e8b9474219f31b21180d2a35a138096b98f800f0c52ca8",
+        "source_fact:v1:b27944afecc5f652c8b8e8ce71a8912ed2fa653e455a58c70db7f996c79469a4"
+      ],
+      "source_published_kst": "2026-10-22T07:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]",
+      "telegram_core_fact": "조선·플랜트 기자재 및 모듈 솔루션 전문기업 영광이 오늘(22일)부터 이틀간 일반투자자 대상 공모주 청약을 진행한다. 올해 상반기 매출액은 591억원, 영업이익은 54억원을 기록했다.",
+      "title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]"
     },
     "fact:3fcce3d913b1d933357ca6a6": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
@@ -169337,6 +169600,27 @@
       "telegram_core_fact": "제러미 우 고문은 글로벌 양자컴퓨팅 산업과 기술 발전 동향을 소개하고 금융산업의 주요 활용 사례와 향후 상용화 전망 등을 설명할 예정이다.",
       "title": "금투협, 글로벌 양자컴퓨팅 산업 웨비나 개최…'디웨이브 퀀텀' 전문가 초청"
     },
+    "fact:a26a910ad65abea6abf07f8e": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102118192974092",
+      "source": "머니투데이",
+      "source_body_digest": "a80a5854204b3d00f7c46960630f8648dcfa92d285f3e75f37914d3e446a8d87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c5b57a6b068b16174a4f017a7c270d42489da058154642078aee832be3e5999",
+      "source_fact_keys": [
+        "source_fact:v1:b536763007449d5ec9e54f860f393fb3adc3e8f21e74581c49f2cec012e638b5",
+        "source_fact:v1:e29fe3777aeedd867750cae76837ccbc368ee89c4025c132253695ed8443bc59"
+      ],
+      "source_published_kst": "2026-10-22T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?",
+      "telegram_core_fact": "현재 유예 법안이 다수 올라왔지만 만약 추가적으로 법 개정이 이뤄지지 않으면 내년 1월부터 가상자산에 대한 세금을 내야한다.",
+      "title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?"
+    },
     "fact:a270eea79c9baf6dd5e5608e": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
       "lanes": {
@@ -185512,6 +185796,34 @@
       "telegram_core_fact": "엔비디아 칩을 구매하기 위해 400억달러(약 53조원)를 조달하기로 했다는 보도가 시장의 부도 대비 보험 비용을 끌어올렸다. 스페이스X가 400억달러 자금 조달을 계획하고 있다는 FT 보도가 CDS 스프레드 급등을 촉발했다.",
       "title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\""
     },
+    "fact:c98057b648f772c8d6e677aa": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
     "fact:c99aac8028e27399230566fe": {
       "first_seen_kst": "2026-10-13T02:02:36+09:00",
       "lanes": {
@@ -194805,6 +195117,28 @@
       ],
       "source_published_kst": "2026-10-06T12:32+09:00",
       "title": "\"양자 R&D→상용화로 가속…韓, 산업 연계 강화해야\""
+    },
+    "fact:e1924f8f12cbe95cc03f6989": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102200277049143",
+      "source": "머니투데이",
+      "source_body_digest": "ef13922294ff040e1de2fe4e5c1945109e0de9795ba96b430b1c6ea13b98d981",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cde12779e48b1a081cd5590778c64df4236bfcb549fb4b7ceea1fb8105eece2",
+      "source_fact_keys": [
+        "source_fact:v1:9a53891ec43245d7907babb2a8ceb1ce7f07b24d560f69eabecfb17a9320e582",
+        "source_fact:v1:9a867fec83db6cbb54b27d8193eaf5328d22c76f9e2d27c2fd03537089ea9c2e",
+        "source_fact:v1:fb2f3ed5b4412faa76345482da8af91729c6054b7f4f31f241a3a2281d431da7"
+      ],
+      "source_published_kst": "2026-10-22T06:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!",
+      "telegram_core_fact": "알루코는 국내 알루미늄 압출 시장 점유율 1위 기업으로 한화큐셀 미국법인과 태양광 프레임 장기 공급 계약을 체결했다.",
+      "title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!"
     },
     "fact:e1931b2427c44b7200d06445": {
       "first_seen_kst": "2026-10-22T07:32:49+09:00",
@@ -204173,6 +204507,35 @@
       ],
       "source_published_kst": "2026-10-06T11:45+09:00",
       "title": "파리 첫 진출 현대백화점 ‘더현대 글로벌’ “2030 매장 10개 목표”"
+    },
+    "fact:f8e48870a859ad138928b49b": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
     },
     "fact:f8e8d876f0adccafdad97327": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
@@ -213994,6 +214357,27 @@
       "source_title": "삼전·SK하닉 부진에도…반도체 소부장 강세에 KRX 반도체 11%↑",
       "telegram_core_fact": "KRX 반도체에는 삼성전자와 SK하이닉스를 비롯해 주성엔지니어링, 리노공업, 원익IPS, 심텍, 이오테크닉스 등 소부장 종목이 다수 편입돼 있다. 한국거래소에 따르면 지난 한 달간 KRX 주가지수 가운데 수익률이 가장 높았던 지수는 ‘KRX 반도체’로 11.42% 상승했다.",
       "title": "삼전·SK하닉 부진에도…반도체 소부장 강세에 KRX 반도체 11%↑"
+    },
+    "link:0cf278db14fbf7f3869785a6": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102118192974092",
+      "source": "머니투데이",
+      "source_body_digest": "a80a5854204b3d00f7c46960630f8648dcfa92d285f3e75f37914d3e446a8d87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c5b57a6b068b16174a4f017a7c270d42489da058154642078aee832be3e5999",
+      "source_fact_keys": [
+        "source_fact:v1:b536763007449d5ec9e54f860f393fb3adc3e8f21e74581c49f2cec012e638b5",
+        "source_fact:v1:e29fe3777aeedd867750cae76837ccbc368ee89c4025c132253695ed8443bc59"
+      ],
+      "source_published_kst": "2026-10-22T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?",
+      "telegram_core_fact": "현재 유예 법안이 다수 올라왔지만 만약 추가적으로 법 개정이 이뤄지지 않으면 내년 1월부터 가상자산에 대한 세금을 내야한다.",
+      "title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?"
     },
     "link:0cfb1eb67807f453ad7d4ac8": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
@@ -224450,6 +224834,28 @@
       "source_published_kst": "2026-10-06T12:36+09:00",
       "title": "‘마이데이터 1호’ 뱅크샐러드, 코스닥 예심 청구… FI 시험대"
     },
+    "link:23063152168dfc8e268e531c": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261022085909",
+      "source": "지디넷코리아",
+      "source_body_digest": "d8706b1c3005046387f192abdc5946a5db9909e6544b756216516c1577f5c046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46fae892cb9d672449b1f442265ad905034c76682794755d7bf903147c5a5e91",
+      "source_fact_keys": [
+        "source_fact:v1:67ec1cbd383393b1584ddc92d0836aea2c9b449267cdf0fcf3a0afa97d94b48b",
+        "source_fact:v1:7ea57c5ef9bcbcd2626a4d75d08b646ec9c121eaa442b2933f5426c7fd8faf0b",
+        "source_fact:v1:fdde537dbd3ad4f6abd2d510f1c93b3bfaf26e598e3985872b13701219407278"
+      ],
+      "source_published_kst": "2026-10-22T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속",
+      "telegram_core_fact": "21일(현지시간) 오픈AI 공식 블로그에 따르면 오픈AI는 이날 자사 최첨단 AI 모델과 코딩 에이전트 '코덱스'를 구글클라우드 AI 모델 플랫폼 모델 가든에 공급한다고 발표했다.",
+      "title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속"
+    },
     "link:23180f3a3aa35bd29af10e63": {
       "first_seen_kst": "2026-10-15T10:14:14+09:00",
       "lanes": {
@@ -231751,6 +232157,28 @@
       "source_title": "뮤직비디오 제작사가 등급 매긴다…자율분류 허용",
       "telegram_core_fact": "뮤직비디오 유통의 걸림돌로 지적돼 온 사전 등급심사 규제가 완화된다.",
       "title": "뮤직비디오 제작사가 등급 매긴다…자율분류 허용"
+    },
+    "link:303d5fac277b6c689e47054c": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102200277049143",
+      "source": "머니투데이",
+      "source_body_digest": "ef13922294ff040e1de2fe4e5c1945109e0de9795ba96b430b1c6ea13b98d981",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cde12779e48b1a081cd5590778c64df4236bfcb549fb4b7ceea1fb8105eece2",
+      "source_fact_keys": [
+        "source_fact:v1:9a53891ec43245d7907babb2a8ceb1ce7f07b24d560f69eabecfb17a9320e582",
+        "source_fact:v1:9a867fec83db6cbb54b27d8193eaf5328d22c76f9e2d27c2fd03537089ea9c2e",
+        "source_fact:v1:fb2f3ed5b4412faa76345482da8af91729c6054b7f4f31f241a3a2281d431da7"
+      ],
+      "source_published_kst": "2026-10-22T06:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!",
+      "telegram_core_fact": "알루코는 국내 알루미늄 압출 시장 점유율 1위 기업으로 한화큐셀 미국법인과 태양광 프레임 장기 공급 계약을 체결했다.",
+      "title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!"
     },
     "link:30410d9ce83bf510ea0c5871": {
       "first_seen_kst": "2026-10-21T15:05:59+09:00",
@@ -245066,6 +245494,29 @@
       "telegram_core_fact": "한국해양과학기술원이 8일 내놓은 현안 보고서를 보면 2010년 5천155t에 달하던 제주 연근해 해조류 생산량은 지난해 154t으로 97% 감소했다. 제주 연안의 바다숲 소멸은 생태계 변화의 신호탄으로, 아열대화를 지속해서 관측해야 한다는 의견이 나왔다.",
       "title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스"
     },
+    "link:4b6ee09cfdfc13c91a63ad8f": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02568246645615544",
+      "source": "이데일리",
+      "source_body_digest": "fcddd5af57ef68f67ad32cbf072d2ebf0324295110fa2431e64f512c60e469d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8a2f9a6f0185a8f5c73c90857de53e2f0d5057dbcac53accf54f77607bacd58",
+      "source_fact_keys": [
+        "source_fact:v1:2b7ef4cee339df4d2c01ba3fbc359bdf9ecdca4375ff05469b25f7648c6133fb",
+        "source_fact:v1:473e772e43005d92fa0dfa519a16ef972dfa3ef59360d3db7cab59264022e9f5",
+        "source_fact:v1:ae231c49e5667b3172e8b9474219f31b21180d2a35a138096b98f800f0c52ca8",
+        "source_fact:v1:b27944afecc5f652c8b8e8ce71a8912ed2fa653e455a58c70db7f996c79469a4"
+      ],
+      "source_published_kst": "2026-10-22T07:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]",
+      "telegram_core_fact": "조선·플랜트 기자재 및 모듈 솔루션 전문기업 영광이 오늘(22일)부터 이틀간 일반투자자 대상 공모주 청약을 진행한다. 올해 상반기 매출액은 591억원, 영업이익은 54억원을 기록했다.",
+      "title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]"
+    },
     "link:4b70870d6e038b96c8a0e0a9": {
       "first_seen_kst": "2026-10-21T13:24:59+09:00",
       "lanes": {
@@ -251597,6 +252048,30 @@
       "link": "https://www.yna.co.kr/view/AKR20261002042100008",
       "source": "연합뉴스",
       "title": "삼성전자, 자사주 계획물량 모두 매입…9천억 여유, 300만주 더살듯 | 연합뉴스"
+    },
+    "link:585c779cfd61c76d6843148b": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02489526645615544",
+      "source": "이데일리",
+      "source_body_digest": "aa9fddbc4e78136386c39107faec4368bd43a925abed1bcad18cf6b9f51e0845",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1b0c69bda9513ee9e4b72915b5be3e9564fce216c2cfc803f91afaf0baaf9c7",
+      "source_fact_keys": [
+        "source_fact:v1:6c0d36b0db6a95a568324de70ce5a6585f3522d3347c5b5bc65130b89eb1f706",
+        "source_fact:v1:8da671e1b45a7da7e420fa43709345c829d0d68075823cc3c7e09c6cf564b8f6",
+        "source_fact:v1:9dfc62221e9900fcd7713ef136d93333b9f74737d85ca12a2827909da71a2151",
+        "source_fact:v1:af5d05542334d2da1b6c39ba98fdcdc06b63306dcb46add5934071428323d7a5",
+        "source_fact:v1:b1bc23c8520a964b4f1b3aaff3dae18ceb283bb01bae08a0ac11c181c1a1d2f4"
+      ],
+      "source_published_kst": "2026-10-22T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]",
+      "telegram_core_fact": "김성포 엠에스바이오 대표이사는 “코스닥 상장을 계기로 생산 인프라와 글로벌 사업 기반을 한층 강화하고 지속적인 신제품 상용화를 통해 글로벌 재생의료 플랫폼 기업으로 도약하겠다”고 말했다. 인체조직·생체소재 기반 재생의료 플랫폼 기업 엠에스바이오가 오늘(22일) 코스닥 시장에 상장한다.",
+      "title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]"
     },
     "link:58635095ac49539d011585e1": {
       "first_seen_kst": "2026-10-15T02:55:21+09:00",
@@ -268466,6 +268941,35 @@
       "source_title": "범용D램 공급난 내년 지속… 삼전닉스 가격협상력 커진다",
       "telegram_core_fact": "범용 D램 가격 강세가 메모리 사업의 수익성을 뒷받침하는 동시에, 장기계약을 통한 판매 물량 확보는 생산 및 투자 계획의 예측 가능성을 높일 수 있다는 분석이다.",
       "title": "범용D램 공급난 내년 지속… 삼전닉스 가격협상력 커진다"
+    },
+    "link:7a7318143b88bd49f0c05c84": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
     },
     "link:7a7c28b6469e271186e50373": {
       "first_seen_kst": "2026-10-16T20:49:03+09:00",
@@ -325262,6 +325766,34 @@
       "telegram_core_fact": "인수 금액은 약 2억4700만달러(약 3315억 원)다. HD현대마린솔루션이 글로벌 '선박·육상발전용 엔진' 서비스 전문기업 '골텐스(Goltens)'의 지분 100%를 인수하는 주식매매계약을 체결했다고 8일 공시했다.",
       "title": "HD현대마린솔루션, 美 엔진 기업 '골텐스' 3315억원에 인수"
     },
+    "link:ec4ab8b6b1d35e6dfa1e7687": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
     "link:ec4b9a2a7f65ccc5b7e6561a": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
       "lanes": {
@@ -353590,6 +354122,29 @@
       "source_title": "조국 \"1년 안에 '큰 승부' 봐야…민생·복지, 반도체 수준으로 투자하자\"",
       "telegram_core_fact": "\"그러나 반도체가 역대급 호황을 이끌고 있지만 청년 일자리, 자영업자와 직장인 소득, 내수 활성화는 뒷걸음질치는 상황\"이라며 \"지금 한국에서는 수출 통계의 숫자와 민생 장바구니의 숫자 간의 괴리가 역대급이다. 위쪽 막대는 솟고, 아래쪽 막대는 가라앉는 이른바 'H자형 불평등'\"이라고 말했다.",
       "title": "조국 \"1년 안에 '큰 승부' 봐야…민생·복지, 반도체 수준으로 투자하자\""
+    },
+    "original:2681eecaa4e86f13bb3fa57a": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02568246645615544",
+      "source": "이데일리",
+      "source_body_digest": "fcddd5af57ef68f67ad32cbf072d2ebf0324295110fa2431e64f512c60e469d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8a2f9a6f0185a8f5c73c90857de53e2f0d5057dbcac53accf54f77607bacd58",
+      "source_fact_keys": [
+        "source_fact:v1:2b7ef4cee339df4d2c01ba3fbc359bdf9ecdca4375ff05469b25f7648c6133fb",
+        "source_fact:v1:473e772e43005d92fa0dfa519a16ef972dfa3ef59360d3db7cab59264022e9f5",
+        "source_fact:v1:ae231c49e5667b3172e8b9474219f31b21180d2a35a138096b98f800f0c52ca8",
+        "source_fact:v1:b27944afecc5f652c8b8e8ce71a8912ed2fa653e455a58c70db7f996c79469a4"
+      ],
+      "source_published_kst": "2026-10-22T07:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]",
+      "telegram_core_fact": "조선·플랜트 기자재 및 모듈 솔루션 전문기업 영광이 오늘(22일)부터 이틀간 일반투자자 대상 공모주 청약을 진행한다. 올해 상반기 매출액은 591억원, 영업이익은 54억원을 기록했다.",
+      "title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]"
     },
     "original:2691d649a074f848b9f4f060": {
       "first_seen_kst": "2026-10-22T07:32:49+09:00",
@@ -397373,6 +397928,34 @@
       "source": "이데일리",
       "title": "\"AI 거품론 정면돌파\" 엔비디아, 204조 자사주 베팅한 이유"
     },
+    "original:7f7009353f047cd4d3d72145": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
     "original:7f7bd610f07aac0fcdccc028": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -412459,6 +413042,35 @@
       "source_title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\"",
       "telegram_core_fact": "유철종 전문위원 = 일본 방위성이 우크라이나 방산업체 '스카이폴'(SkyFall)이 생산하는 요격 드론 구매 계약을 체결하고 신속한 도입을 추진 중인 것으로 전해졌다.",
       "title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\""
+    },
+    "original:9cf71dd0b0fc548bcd7bc184": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
     },
     "original:9d00132582c45c327ac81bc4": {
       "first_seen_kst": "2026-10-21T18:59:41+09:00",
@@ -428542,6 +429154,27 @@
       "source_published_kst": "2026-10-06T10:33+09:00",
       "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
     },
+    "original:bf1fca5bf7050315627c20f5": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102118192974092",
+      "source": "머니투데이",
+      "source_body_digest": "a80a5854204b3d00f7c46960630f8648dcfa92d285f3e75f37914d3e446a8d87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c5b57a6b068b16174a4f017a7c270d42489da058154642078aee832be3e5999",
+      "source_fact_keys": [
+        "source_fact:v1:b536763007449d5ec9e54f860f393fb3adc3e8f21e74581c49f2cec012e638b5",
+        "source_fact:v1:e29fe3777aeedd867750cae76837ccbc368ee89c4025c132253695ed8443bc59"
+      ],
+      "source_published_kst": "2026-10-22T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?",
+      "telegram_core_fact": "현재 유예 법안이 다수 올라왔지만 만약 추가적으로 법 개정이 이뤄지지 않으면 내년 1월부터 가상자산에 대한 세금을 내야한다.",
+      "title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?"
+    },
     "original:bf39ada6cc55891af754a9f4": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
       "lanes": {
@@ -437719,6 +438352,30 @@
       "telegram_core_fact": "이경민 대신증권 연구원은 “뚜렷한 상승 모멘텀이 부재한 가운데 외국인 순매도가 이어지며 약세를 보였다”며 “특히 오픈AI의 연환산 매출이 (시장의 기대를 밑도는) 500억 달러 수준이라는 보도가 나오면서 인공지능(AI) 투자심리가 위축됐다”고 진단했다.",
       "title": "삼전 역대급 실적에도 외국인 ‘팔자’…코스피 두 달 만에 6300선으로 | 중앙일보"
     },
+    "original:d28fa358f7b6cf37f095cce0": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02489526645615544",
+      "source": "이데일리",
+      "source_body_digest": "aa9fddbc4e78136386c39107faec4368bd43a925abed1bcad18cf6b9f51e0845",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1b0c69bda9513ee9e4b72915b5be3e9564fce216c2cfc803f91afaf0baaf9c7",
+      "source_fact_keys": [
+        "source_fact:v1:6c0d36b0db6a95a568324de70ce5a6585f3522d3347c5b5bc65130b89eb1f706",
+        "source_fact:v1:8da671e1b45a7da7e420fa43709345c829d0d68075823cc3c7e09c6cf564b8f6",
+        "source_fact:v1:9dfc62221e9900fcd7713ef136d93333b9f74737d85ca12a2827909da71a2151",
+        "source_fact:v1:af5d05542334d2da1b6c39ba98fdcdc06b63306dcb46add5934071428323d7a5",
+        "source_fact:v1:b1bc23c8520a964b4f1b3aaff3dae18ceb283bb01bae08a0ac11c181c1a1d2f4"
+      ],
+      "source_published_kst": "2026-10-22T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]",
+      "telegram_core_fact": "김성포 엠에스바이오 대표이사는 “코스닥 상장을 계기로 생산 인프라와 글로벌 사업 기반을 한층 강화하고 지속적인 신제품 상용화를 통해 글로벌 재생의료 플랫폼 기업으로 도약하겠다”고 말했다. 인체조직·생체소재 기반 재생의료 플랫폼 기업 엠에스바이오가 오늘(22일) 코스닥 시장에 상장한다.",
+      "title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]"
+    },
     "original:d292f8c302011f2c43c44e76": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -444882,6 +445539,28 @@
       "telegram_core_fact": "“씨젠 네트워크라는 울타리를 넘어 독보적인 기술력으로 글로벌 체외진단 무대에서 정당한 가치를 평가받겠다”며 “신제품을 성공시켜 머지않은 시점에 연결 매출 2000억원을 돌파하는 강소 바이오 기업으로 도약하겠다”고 덧붙였다.",
       "title": "오세문 에스지바이오사이언스 대표 “신제품으로 매출 2000억 시대 열 것”"
     },
+    "original:e0efed764fcfa2371ce4e7e6": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102200277049143",
+      "source": "머니투데이",
+      "source_body_digest": "ef13922294ff040e1de2fe4e5c1945109e0de9795ba96b430b1c6ea13b98d981",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cde12779e48b1a081cd5590778c64df4236bfcb549fb4b7ceea1fb8105eece2",
+      "source_fact_keys": [
+        "source_fact:v1:9a53891ec43245d7907babb2a8ceb1ce7f07b24d560f69eabecfb17a9320e582",
+        "source_fact:v1:9a867fec83db6cbb54b27d8193eaf5328d22c76f9e2d27c2fd03537089ea9c2e",
+        "source_fact:v1:fb2f3ed5b4412faa76345482da8af91729c6054b7f4f31f241a3a2281d431da7"
+      ],
+      "source_published_kst": "2026-10-22T06:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!",
+      "telegram_core_fact": "알루코는 국내 알루미늄 압출 시장 점유율 1위 기업으로 한화큐셀 미국법인과 태양광 프레임 장기 공급 계약을 체결했다.",
+      "title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!"
+    },
     "original:e0f269f1322bc59b255061a3": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
       "lanes": {
@@ -447932,6 +448611,28 @@
       "link": "https://www.newsis.com/view/NISX20260923_0003802517",
       "source": "뉴시스",
       "title": "롯데카드, 영업정지 한 달 새 회원 8만명 감소…PLCC로 회복 시동"
+    },
+    "original:e7a9f648aff1d7df732b6598": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261022085909",
+      "source": "지디넷코리아",
+      "source_body_digest": "d8706b1c3005046387f192abdc5946a5db9909e6544b756216516c1577f5c046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46fae892cb9d672449b1f442265ad905034c76682794755d7bf903147c5a5e91",
+      "source_fact_keys": [
+        "source_fact:v1:67ec1cbd383393b1584ddc92d0836aea2c9b449267cdf0fcf3a0afa97d94b48b",
+        "source_fact:v1:7ea57c5ef9bcbcd2626a4d75d08b646ec9c121eaa442b2933f5426c7fd8faf0b",
+        "source_fact:v1:fdde537dbd3ad4f6abd2d510f1c93b3bfaf26e598e3985872b13701219407278"
+      ],
+      "source_published_kst": "2026-10-22T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속",
+      "telegram_core_fact": "21일(현지시간) 오픈AI 공식 블로그에 따르면 오픈AI는 이날 자사 최첨단 AI 모델과 코딩 에이전트 '코덱스'를 구글클라우드 AI 모델 플랫폼 모델 가든에 공급한다고 발표했다.",
+      "title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속"
     },
     "original:e7b07f0adca74254bcf8bfb6": {
       "first_seen_kst": "2026-10-15T11:36:50+09:00",
@@ -479398,6 +480099,34 @@
       "telegram_core_fact": "미국 10년물 국채 금리는 장중 5.36%를 넘어 2002년 이후 최고치를 새로 썼고, 30년물 금리도 5.73%까지 치솟았다. 7일(현지 시각) 미국 국채시장에서 10년물 금리는 장중 전장보다 약 8bp(1bp=0.01%포인트) 오른 5.3640%까지 상승했다.",
       "title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고"
     },
+    "source_fact:0a64f0fab77d9afeb0f652cf": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
     "source_fact:0a65cfc09770abbf76a0604f": {
       "first_seen_kst": "2026-10-13T10:49:34+09:00",
       "lanes": {
@@ -500690,6 +501419,35 @@
       "source_published_kst": "2026-10-07T11:22+09:00",
       "title": "LG전자 3분기 영업익 7천818억…3분기 누적 첫 4조 넘어(종합)"
     },
+    "source_fact:14d66826b9def2d0fce1b460": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
+    },
     "source_fact:14d7e35e3d7f1bc01a97a17c": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
       "lanes": {
@@ -521668,6 +522426,28 @@
       "telegram_core_fact": "지역사회 통합돌봄 첫 실태조사 결과 재택의료센터와 장애인건강주치의, 단기보호 등의 서비스가 수요 대비 공급이 부족한 것으로 나타났다. 방문진료 충족률은 일반지역 25.5%, 인구감소지역 10.7%였고 재택의료센터는 일반지역 20.6%, 인구감소지역 8.3%였다.",
       "title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다"
     },
+    "source_fact:1f7d24d849ae27d0ad844b19": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261022085909",
+      "source": "지디넷코리아",
+      "source_body_digest": "d8706b1c3005046387f192abdc5946a5db9909e6544b756216516c1577f5c046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46fae892cb9d672449b1f442265ad905034c76682794755d7bf903147c5a5e91",
+      "source_fact_keys": [
+        "source_fact:v1:67ec1cbd383393b1584ddc92d0836aea2c9b449267cdf0fcf3a0afa97d94b48b",
+        "source_fact:v1:7ea57c5ef9bcbcd2626a4d75d08b646ec9c121eaa442b2933f5426c7fd8faf0b",
+        "source_fact:v1:fdde537dbd3ad4f6abd2d510f1c93b3bfaf26e598e3985872b13701219407278"
+      ],
+      "source_published_kst": "2026-10-22T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속",
+      "telegram_core_fact": "21일(현지시간) 오픈AI 공식 블로그에 따르면 오픈AI는 이날 자사 최첨단 AI 모델과 코딩 에이전트 '코덱스'를 구글클라우드 AI 모델 플랫폼 모델 가든에 공급한다고 발표했다.",
+      "title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속"
+    },
     "source_fact:1f8094784204ba7d54db4caf": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
       "lanes": {
@@ -539460,6 +540240,35 @@
       "telegram_core_fact": "매년 성장을 거듭해온 국내 하이브리드차 판매가 올해 처음 감소세로 돌아섰다. 한국자동차모빌리티산업협회(KAMA)에 따르면 올해 3분기 누적(1∼9월) 국내 하이브리드차(마일드하이브리드 포함) 신규 등록은 42만1천199대로 작년 동기보다 3.9％ 줄었다.",
       "title": "국내 자동차 시장 지각변동…하이브리드차 판매 처음 감소 | 연합뉴스"
     },
+    "source_fact:278a7b53ee06eba160960628": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
+    },
     "source_fact:278b70295f9a9b0ec3d4d1c2": {
       "first_seen_kst": "2026-10-22T12:22:03+09:00",
       "lanes": {
@@ -548216,6 +549025,35 @@
       "telegram_core_fact": "다만, 강세가 이어지려면 외국인 국채선물 중심의 매수세가 국내 기관의 국고채 현물 보유 확대로 연결돼야 한다는 분석이 나온다.",
       "title": "코스피 급락 속 국고채는 강세…향후 기관 현물 매수가 관건 | 연합뉴스"
     },
+    "source_fact:2bbcebf781b2414715d16e51": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
+    },
     "source_fact:2bbdaf066927ad2b272265bd": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
       "lanes": {
@@ -554709,6 +555547,35 @@
       "source_title": "노무라증권 \"삼전닉스 '매수'…2028년까지 메모리 수요 늘어난다\"",
       "telegram_core_fact": "그러면서 메모리 수요 증가세가 오는 2028년까지 공급 확대 속도를 웃돌 것으로 전망했다.",
       "title": "노무라증권 \"삼전닉스 '매수'…2028년까지 메모리 수요 늘어난다\""
+    },
+    "source_fact:2f1c8b46e99edc04383e59ab": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
     },
     "source_fact:2f1ccf96d52dd3e529406194": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -586627,6 +587494,34 @@
       "telegram_core_fact": "하이트진로에 따르면 기린 이치방 시보리의 2020∼2026년 연평균 판매량 증가율은 82.4%로 추산됐다.",
       "title": "하이트진로, 日맥주 '기린' 전주공장서 생산…판매 확대 추진 | 연합뉴스"
     },
+    "source_fact:3eff4148b40621a301f3cebf": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
     "source_fact:3f000a38464ae64bce36972f": {
       "first_seen_kst": "2026-10-18T09:49:30+09:00",
       "lanes": {
@@ -588526,6 +589421,30 @@
       "source_title": "한전 사장 “호남 반도체 전력망 20%만 한전 부담…삼전닉스가 80% 낸다”",
       "telegram_core_fact": "김동철 한국전력공사 사장은 호남 반도체 클러스터 1단계 전력 공급을 위한 송전설비 구축 비용 중 한전의 부담 비율은 20% 미만이며, 나머지 80% 이상은 실사용자인 삼성전자와 SK하이닉스가 부담한다고 12일 밝혔다.",
       "title": "한전 사장 “호남 반도체 전력망 20%만 한전 부담…삼전닉스가 80% 낸다”"
+    },
+    "source_fact:400273da4edd1ea7ab1c3a8d": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02489526645615544",
+      "source": "이데일리",
+      "source_body_digest": "aa9fddbc4e78136386c39107faec4368bd43a925abed1bcad18cf6b9f51e0845",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1b0c69bda9513ee9e4b72915b5be3e9564fce216c2cfc803f91afaf0baaf9c7",
+      "source_fact_keys": [
+        "source_fact:v1:6c0d36b0db6a95a568324de70ce5a6585f3522d3347c5b5bc65130b89eb1f706",
+        "source_fact:v1:8da671e1b45a7da7e420fa43709345c829d0d68075823cc3c7e09c6cf564b8f6",
+        "source_fact:v1:9dfc62221e9900fcd7713ef136d93333b9f74737d85ca12a2827909da71a2151",
+        "source_fact:v1:af5d05542334d2da1b6c39ba98fdcdc06b63306dcb46add5934071428323d7a5",
+        "source_fact:v1:b1bc23c8520a964b4f1b3aaff3dae18ceb283bb01bae08a0ac11c181c1a1d2f4"
+      ],
+      "source_published_kst": "2026-10-22T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]",
+      "telegram_core_fact": "김성포 엠에스바이오 대표이사는 “코스닥 상장을 계기로 생산 인프라와 글로벌 사업 기반을 한층 강화하고 지속적인 신제품 상용화를 통해 글로벌 재생의료 플랫폼 기업으로 도약하겠다”고 말했다. 인체조직·생체소재 기반 재생의료 플랫폼 기업 엠에스바이오가 오늘(22일) 코스닥 시장에 상장한다.",
+      "title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]"
     },
     "source_fact:4002c8165ad4c150af35103f": {
       "first_seen_kst": "2026-10-22T06:35:46+09:00",
@@ -598177,6 +599096,34 @@
       "source_title": "\"우주 카르텔 아냐?\"…항우연·천문연 전·현직 직원 일감 몰아주기 논란",
       "telegram_core_fact": "우주항공 분야 공공 연구기관에서 직원이 창업하거나 인수한 기업에 수백억원 계약이 집중되고, 감사에서 부적절한 계약 관행이 적발된 이후에도 관련 기업과의 계약이 이어졌다는 지적이 국회에서 제기됐다.",
       "title": "\"우주 카르텔 아냐?\"…항우연·천문연 전·현직 직원 일감 몰아주기 논란"
+    },
+    "source_fact:44b9a58872add3b0143e3b4f": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
     },
     "source_fact:44c41dff83d371f84ff130b7": {
       "first_seen_kst": "2026-10-12T12:56:34+09:00",
@@ -647336,6 +648283,34 @@
       "source_published_kst": "2026-10-07T08:46+09:00",
       "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
     },
+    "source_fact:5bdf471ca3b3e43a8eef2f4d": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
     "source_fact:5be1493f9d1fd8eb5bf9a33a": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
@@ -650912,6 +651887,34 @@
       "telegram_core_fact": "뱅크오브아메리카(BofA)의 스테판 주노 이코노미스트는 앞서 근원 CPI가 0.3%로 집계되면 연방준비제도(연준)의 10월 기준금리 인상 기대가 높아질 것으로 전망한 바 있다.",
       "title": "\"예상 못해\" 美 9월 근원 CPI, 전년비 0.3%↑…10월 금리 인상 힘 받나"
     },
+    "source_fact:5d382515abd61b03d26515f3": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
     "source_fact:5d39b8297b54bf5c5121a75f": {
       "first_seen_kst": "2026-10-16T18:58:56+09:00",
       "lanes": {
@@ -653126,6 +654129,34 @@
       ],
       "source_published_kst": "2026-10-06T06:40+09:00",
       "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
+    },
+    "source_fact:5e7da7186a27411671e8f152": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
     },
     "source_fact:5e7ec8f85205388ce40bcf56": {
       "first_seen_kst": "2026-10-18T05:50:47+09:00",
@@ -682895,6 +683926,34 @@
       "telegram_core_fact": "동맹국과 적대국을 가리지 않고 고율 관세를 부과하며 스스로를 '관세왕'이라고 불러온 도널드 트럼프 미국 대통령이 러시아에 대해서는 예외적인 태도를 보이고 있다는 지적이 나온다.",
       "title": "'관세왕' 트럼프, 러시아엔 또 예외…기존 관세 정책과 대조"
     },
+    "source_fact:6d62c906a775dddc2deca3fb": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
     "source_fact:6d68ab65799bac2834298870": {
       "first_seen_kst": "2026-10-21T22:56:44+09:00",
       "lanes": {
@@ -687949,6 +689008,35 @@
       "source_title": "위고비·마운자로 양강 깨질까…국산 비만약 '에페' 출격 | 연합뉴스",
       "telegram_core_fact": "비만약 시장을 외국 업체가 과점한 가운데 한미약품이 개발한 에페가 최근 식품의약품안전처로부터 국내 45번째 신약으로 허가를 얻었다.",
       "title": "위고비·마운자로 양강 깨질까…국산 비만약 '에페' 출격 | 연합뉴스"
+    },
+    "source_fact:700335b529b9ae5fc5f30eb6": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
     },
     "source_fact:70063af6687ca7cc8cc29684": {
       "first_seen_kst": "2026-10-21T07:24:03+09:00",
@@ -710099,6 +711187,28 @@
       "telegram_core_fact": "반면 하루 만에 18% 넘게 뛴 주성엔지니어링을 비롯해 최근 강세가 뚜렷했던 반도체 장비·기판주는 대거 순매도했다. 투자 수익률 상위 1%의 초고수들이 지난 6일 국내 증시에서 주가가 내린 SK하이닉스와 삼성전자를 가장 많이 순매수한 것으로 나타났다.",
       "title": "3% 내린 하이닉스 사고, 18% 뛴 주성 팔았다…초고수의 ‘역발상’"
     },
+    "source_fact:7aeddd8103f37eb15fb8ae99": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261022085909",
+      "source": "지디넷코리아",
+      "source_body_digest": "d8706b1c3005046387f192abdc5946a5db9909e6544b756216516c1577f5c046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46fae892cb9d672449b1f442265ad905034c76682794755d7bf903147c5a5e91",
+      "source_fact_keys": [
+        "source_fact:v1:67ec1cbd383393b1584ddc92d0836aea2c9b449267cdf0fcf3a0afa97d94b48b",
+        "source_fact:v1:7ea57c5ef9bcbcd2626a4d75d08b646ec9c121eaa442b2933f5426c7fd8faf0b",
+        "source_fact:v1:fdde537dbd3ad4f6abd2d510f1c93b3bfaf26e598e3985872b13701219407278"
+      ],
+      "source_published_kst": "2026-10-22T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속",
+      "telegram_core_fact": "21일(현지시간) 오픈AI 공식 블로그에 따르면 오픈AI는 이날 자사 최첨단 AI 모델과 코딩 에이전트 '코덱스'를 구글클라우드 AI 모델 플랫폼 모델 가든에 공급한다고 발표했다.",
+      "title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속"
+    },
     "source_fact:7af20b4ea75658328d4a026f": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -716215,6 +717325,30 @@
       "source_title": "공화 접전지 후보들의 입장 선회…선거 이후 관세정책 제동걸까 | 연합뉴스",
       "telegram_core_fact": "민주당 상원선거위원회(DSCC)의 조 부시 대변인은 성명에서 \"공화당 상원 후보들이 자신들의 주에 피해를 주면서도 트럼프의 혼란스러운 관세 정책을 무비판적으로 승인했기 때문에 미국인들은 더 많은 비용을 지불하고 있다\"고 지적했다.",
       "title": "공화 접전지 후보들의 입장 선회…선거 이후 관세정책 제동걸까 | 연합뉴스"
+    },
+    "source_fact:7e1cfba1c2d7d752fb2e1607": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02489526645615544",
+      "source": "이데일리",
+      "source_body_digest": "aa9fddbc4e78136386c39107faec4368bd43a925abed1bcad18cf6b9f51e0845",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1b0c69bda9513ee9e4b72915b5be3e9564fce216c2cfc803f91afaf0baaf9c7",
+      "source_fact_keys": [
+        "source_fact:v1:6c0d36b0db6a95a568324de70ce5a6585f3522d3347c5b5bc65130b89eb1f706",
+        "source_fact:v1:8da671e1b45a7da7e420fa43709345c829d0d68075823cc3c7e09c6cf564b8f6",
+        "source_fact:v1:9dfc62221e9900fcd7713ef136d93333b9f74737d85ca12a2827909da71a2151",
+        "source_fact:v1:af5d05542334d2da1b6c39ba98fdcdc06b63306dcb46add5934071428323d7a5",
+        "source_fact:v1:b1bc23c8520a964b4f1b3aaff3dae18ceb283bb01bae08a0ac11c181c1a1d2f4"
+      ],
+      "source_published_kst": "2026-10-22T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]",
+      "telegram_core_fact": "김성포 엠에스바이오 대표이사는 “코스닥 상장을 계기로 생산 인프라와 글로벌 사업 기반을 한층 강화하고 지속적인 신제품 상용화를 통해 글로벌 재생의료 플랫폼 기업으로 도약하겠다”고 말했다. 인체조직·생체소재 기반 재생의료 플랫폼 기업 엠에스바이오가 오늘(22일) 코스닥 시장에 상장한다.",
+      "title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]"
     },
     "source_fact:7e1e082bf495d4ce65899072": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
@@ -737480,6 +738614,28 @@
       "telegram_core_fact": "노무라증권이 20일 발표한 보고서를 통해 AI 관련 기업들의 매출 증가세 둔화와 자금 조달 우려에도 불구하고, 메모리 반도체 수요가 적어도 2028년까지는 공급 증가 속도를 웃돌 것으로 내다봤다.",
       "title": "노무라증권 \"2028년까지 메모리 공급 부족 지속…삼전·닉스 매수\""
     },
+    "source_fact:893606988f414e293a8a91bd": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261022085909",
+      "source": "지디넷코리아",
+      "source_body_digest": "d8706b1c3005046387f192abdc5946a5db9909e6544b756216516c1577f5c046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46fae892cb9d672449b1f442265ad905034c76682794755d7bf903147c5a5e91",
+      "source_fact_keys": [
+        "source_fact:v1:67ec1cbd383393b1584ddc92d0836aea2c9b449267cdf0fcf3a0afa97d94b48b",
+        "source_fact:v1:7ea57c5ef9bcbcd2626a4d75d08b646ec9c121eaa442b2933f5426c7fd8faf0b",
+        "source_fact:v1:fdde537dbd3ad4f6abd2d510f1c93b3bfaf26e598e3985872b13701219407278"
+      ],
+      "source_published_kst": "2026-10-22T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속",
+      "telegram_core_fact": "21일(현지시간) 오픈AI 공식 블로그에 따르면 오픈AI는 이날 자사 최첨단 AI 모델과 코딩 에이전트 '코덱스'를 구글클라우드 AI 모델 플랫폼 모델 가든에 공급한다고 발표했다.",
+      "title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속"
+    },
     "source_fact:89361cc819806767d11e86bf": {
       "first_seen_kst": "2026-10-17T01:51:48+09:00",
       "lanes": {
@@ -741550,6 +742706,30 @@
       "source_title": "독일 IDT 품은 SK바이오…글로벌 백신 영토 넓힌다",
       "telegram_core_fact": "SK바이오사이언스가 독일 백신 위탁개발생산(CDMO) 기업 IDT바이오로지카 인수를 발판으로 글로벌 백신 사업을 확대하고 있다.",
       "title": "독일 IDT 품은 SK바이오…글로벌 백신 영토 넓힌다"
+    },
+    "source_fact:8b5cac4e1618e53224193330": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02489526645615544",
+      "source": "이데일리",
+      "source_body_digest": "aa9fddbc4e78136386c39107faec4368bd43a925abed1bcad18cf6b9f51e0845",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1b0c69bda9513ee9e4b72915b5be3e9564fce216c2cfc803f91afaf0baaf9c7",
+      "source_fact_keys": [
+        "source_fact:v1:6c0d36b0db6a95a568324de70ce5a6585f3522d3347c5b5bc65130b89eb1f706",
+        "source_fact:v1:8da671e1b45a7da7e420fa43709345c829d0d68075823cc3c7e09c6cf564b8f6",
+        "source_fact:v1:9dfc62221e9900fcd7713ef136d93333b9f74737d85ca12a2827909da71a2151",
+        "source_fact:v1:af5d05542334d2da1b6c39ba98fdcdc06b63306dcb46add5934071428323d7a5",
+        "source_fact:v1:b1bc23c8520a964b4f1b3aaff3dae18ceb283bb01bae08a0ac11c181c1a1d2f4"
+      ],
+      "source_published_kst": "2026-10-22T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]",
+      "telegram_core_fact": "김성포 엠에스바이오 대표이사는 “코스닥 상장을 계기로 생산 인프라와 글로벌 사업 기반을 한층 강화하고 지속적인 신제품 상용화를 통해 글로벌 재생의료 플랫폼 기업으로 도약하겠다”고 말했다. 인체조직·생체소재 기반 재생의료 플랫폼 기업 엠에스바이오가 오늘(22일) 코스닥 시장에 상장한다.",
+      "title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]"
     },
     "source_fact:8b5e96eb66aaae994d381677": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
@@ -748004,6 +749184,29 @@
       "source_title": "금리 상승에 떨어진 채권 평가액…보험사 3분기 실적 '먹구름'",
       "telegram_core_fact": "한국은행이 지난 7월과 8월 두 차례 연속 금리를 인상하면서 기준금리는 5월 2.50%에서 7월 2.75%, 8월 3.00%로 상승했다.",
       "title": "금리 상승에 떨어진 채권 평가액…보험사 3분기 실적 '먹구름'"
+    },
+    "source_fact:8edeb64213d5963bafefcccf": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02568246645615544",
+      "source": "이데일리",
+      "source_body_digest": "fcddd5af57ef68f67ad32cbf072d2ebf0324295110fa2431e64f512c60e469d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8a2f9a6f0185a8f5c73c90857de53e2f0d5057dbcac53accf54f77607bacd58",
+      "source_fact_keys": [
+        "source_fact:v1:2b7ef4cee339df4d2c01ba3fbc359bdf9ecdca4375ff05469b25f7648c6133fb",
+        "source_fact:v1:473e772e43005d92fa0dfa519a16ef972dfa3ef59360d3db7cab59264022e9f5",
+        "source_fact:v1:ae231c49e5667b3172e8b9474219f31b21180d2a35a138096b98f800f0c52ca8",
+        "source_fact:v1:b27944afecc5f652c8b8e8ce71a8912ed2fa653e455a58c70db7f996c79469a4"
+      ],
+      "source_published_kst": "2026-10-22T07:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]",
+      "telegram_core_fact": "조선·플랜트 기자재 및 모듈 솔루션 전문기업 영광이 오늘(22일)부터 이틀간 일반투자자 대상 공모주 청약을 진행한다. 올해 상반기 매출액은 591억원, 영업이익은 54억원을 기록했다.",
+      "title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]"
     },
     "source_fact:8ee02a69bf9a432865468be2": {
       "first_seen_kst": "2026-10-21T06:23:27+09:00",
@@ -755835,6 +757038,29 @@
       ],
       "source_published_kst": "2026-10-05T21:34+09:00",
       "title": "北지뢰에 '대북 사이버 독자제재' 내부 검토…외교부·통일부 이견"
+    },
+    "source_fact:92de7ead867ac32ce38c8a8a": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02568246645615544",
+      "source": "이데일리",
+      "source_body_digest": "fcddd5af57ef68f67ad32cbf072d2ebf0324295110fa2431e64f512c60e469d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8a2f9a6f0185a8f5c73c90857de53e2f0d5057dbcac53accf54f77607bacd58",
+      "source_fact_keys": [
+        "source_fact:v1:2b7ef4cee339df4d2c01ba3fbc359bdf9ecdca4375ff05469b25f7648c6133fb",
+        "source_fact:v1:473e772e43005d92fa0dfa519a16ef972dfa3ef59360d3db7cab59264022e9f5",
+        "source_fact:v1:ae231c49e5667b3172e8b9474219f31b21180d2a35a138096b98f800f0c52ca8",
+        "source_fact:v1:b27944afecc5f652c8b8e8ce71a8912ed2fa653e455a58c70db7f996c79469a4"
+      ],
+      "source_published_kst": "2026-10-22T07:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]",
+      "telegram_core_fact": "조선·플랜트 기자재 및 모듈 솔루션 전문기업 영광이 오늘(22일)부터 이틀간 일반투자자 대상 공모주 청약을 진행한다. 올해 상반기 매출액은 591억원, 영업이익은 54억원을 기록했다.",
+      "title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]"
     },
     "source_fact:92ded4dee3ca71901ff46ea5": {
       "first_seen_kst": "2026-10-20T18:31:59+09:00",
@@ -769335,6 +770561,35 @@
       "source_title": "李 \"주택 공급, '속도'가 중요…기준은 '바로 입주'\"",
       "telegram_core_fact": "그러면서 \"계획 수립, 토지 보상, 인허가 등 전 단계에 걸쳐서 속도를 최대한 끌어올려 주시기 바란다\"며 신속한 공급을 위해 금융 인센티브를 획기적으로 늘리는 것도 함께 검토하라고 지시했다.",
       "title": "李 \"주택 공급, '속도'가 중요…기준은 '바로 입주'\""
+    },
+    "source_fact:995aabc8ea646f665a62d3d9": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
     },
     "source_fact:995fe942573c89d341afa46f": {
       "first_seen_kst": "2026-10-22T08:49:50+09:00",
@@ -791202,6 +792457,34 @@
       "telegram_core_fact": "CBIZ(CBZ)는 3분기 매출액이 7억224만 달러로 전년비 1.2% 증가했으며, 일반회계기준(GAAP) 희석 주당순이익은 0.79달러로 64.6% 늘었다고 10월 19일 발표했다.",
       "title": "CBIZ, 3분기 매출 7억200만 달러..GAAP EPS 65%↑"
     },
+    "source_fact:a3e0a36304ec2da450e1d823": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
     "source_fact:a3e4cbe93f99ec1c9d8e47a8": {
       "first_seen_kst": "2026-10-13T05:27:22+09:00",
       "lanes": {
@@ -791856,6 +793139,27 @@
       ],
       "source_published_kst": "2026-10-07T09:31+09:00",
       "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
+    },
+    "source_fact:a425e686d2303ffdd59534ca": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102118192974092",
+      "source": "머니투데이",
+      "source_body_digest": "a80a5854204b3d00f7c46960630f8648dcfa92d285f3e75f37914d3e446a8d87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c5b57a6b068b16174a4f017a7c270d42489da058154642078aee832be3e5999",
+      "source_fact_keys": [
+        "source_fact:v1:b536763007449d5ec9e54f860f393fb3adc3e8f21e74581c49f2cec012e638b5",
+        "source_fact:v1:e29fe3777aeedd867750cae76837ccbc368ee89c4025c132253695ed8443bc59"
+      ],
+      "source_published_kst": "2026-10-22T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?",
+      "telegram_core_fact": "현재 유예 법안이 다수 올라왔지만 만약 추가적으로 법 개정이 이뤄지지 않으면 내년 1월부터 가상자산에 대한 세금을 내야한다.",
+      "title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?"
     },
     "source_fact:a425e8a8661f3da8624b38c7": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
@@ -846584,6 +847888,29 @@
       "telegram_core_fact": "엔화 약세와 에너지 가격 상승으로 수입물가가 20% 넘게 급등한 가운데 기업들이 원가 부담을 제품 가격에 전가하면서 물가 상승 압력이 지속되고 있다.",
       "title": "엔저에 수입물가 24.5% 급등…日 금리 또 올리나"
     },
+    "source_fact:bf1887ee6ae2e81ef74ee507": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02568246645615544",
+      "source": "이데일리",
+      "source_body_digest": "fcddd5af57ef68f67ad32cbf072d2ebf0324295110fa2431e64f512c60e469d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8a2f9a6f0185a8f5c73c90857de53e2f0d5057dbcac53accf54f77607bacd58",
+      "source_fact_keys": [
+        "source_fact:v1:2b7ef4cee339df4d2c01ba3fbc359bdf9ecdca4375ff05469b25f7648c6133fb",
+        "source_fact:v1:473e772e43005d92fa0dfa519a16ef972dfa3ef59360d3db7cab59264022e9f5",
+        "source_fact:v1:ae231c49e5667b3172e8b9474219f31b21180d2a35a138096b98f800f0c52ca8",
+        "source_fact:v1:b27944afecc5f652c8b8e8ce71a8912ed2fa653e455a58c70db7f996c79469a4"
+      ],
+      "source_published_kst": "2026-10-22T07:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]",
+      "telegram_core_fact": "조선·플랜트 기자재 및 모듈 솔루션 전문기업 영광이 오늘(22일)부터 이틀간 일반투자자 대상 공모주 청약을 진행한다. 올해 상반기 매출액은 591억원, 영업이익은 54억원을 기록했다.",
+      "title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]"
+    },
     "source_fact:bf19604cdfe083f606bfea55": {
       "first_seen_kst": "2026-10-14T20:43:11+09:00",
       "lanes": {
@@ -848836,6 +850163,27 @@
       "source_title": "앰코, 광주에 3조 투자 … 패키징 거점 육성",
       "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지가 광주 공장에 대한 투자 규모를 애초 1조원에서 3조원으로 3배 확대한다. 앰코는 이날 2026년부터 2031년까지 총 3조원을 투자하고 2000명을 고용할 계획이라고 발표했다.",
       "title": "앰코, 광주에 3조 투자 … 패키징 거점 육성"
+    },
+    "source_fact:c037b3db79f17f6b383343c7": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102118192974092",
+      "source": "머니투데이",
+      "source_body_digest": "a80a5854204b3d00f7c46960630f8648dcfa92d285f3e75f37914d3e446a8d87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c5b57a6b068b16174a4f017a7c270d42489da058154642078aee832be3e5999",
+      "source_fact_keys": [
+        "source_fact:v1:b536763007449d5ec9e54f860f393fb3adc3e8f21e74581c49f2cec012e638b5",
+        "source_fact:v1:e29fe3777aeedd867750cae76837ccbc368ee89c4025c132253695ed8443bc59"
+      ],
+      "source_published_kst": "2026-10-22T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?",
+      "telegram_core_fact": "현재 유예 법안이 다수 올라왔지만 만약 추가적으로 법 개정이 이뤄지지 않으면 내년 1월부터 가상자산에 대한 세금을 내야한다.",
+      "title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?"
     },
     "source_fact:c0397cedc169e4337199477b": {
       "first_seen_kst": "2026-10-22T07:32:49+09:00",
@@ -852243,6 +853591,35 @@
       "telegram_core_fact": "간밤 미국 뉴욕증시는 ASML의 분기 호실적과 장비 수요 상향에도 불구하고 9월 CPI의 컨센서스 상회, 코어위브(-15.5%)의 회사채 수익률 급등에 따른 AI 신용 위험 재부각, 가트너 보고서발 AI 투자수익률 약화 불안감 등으로 일제히 하락 마감했다.",
       "title": "[오늘의 투자전략] 美 AI주 급락·CPI 충격…\"코스피, 전저점 지지력 시험\""
     },
+    "source_fact:c1d38022dfc37fcabc203adb": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
+    },
     "source_fact:c1d3a6a4a31a6472e1aa9c6c": {
       "first_seen_kst": "2026-10-20T15:49:58+09:00",
       "lanes": {
@@ -852328,6 +853705,35 @@
       "source_title": "국내·외 상관없다…최태원 회장, AI 메모리 호황에 반도체 증설 '속도전'",
       "telegram_core_fact": "최태원 SK그룹 회장이 인공지능(AI)발 메모리 호황이 이어지자, 반도체 캐파(생산능력) 확장을 위한 '속도전'에 나섰다.",
       "title": "국내·외 상관없다…최태원 회장, AI 메모리 호황에 반도체 증설 '속도전'"
+    },
+    "source_fact:c1dc19f112355e43434028e4": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
     },
     "source_fact:c1e1ab62c4fba49c46392440": {
       "first_seen_kst": "2026-10-11T19:59:25+09:00",
@@ -853071,6 +854477,28 @@
       "source_title": "李 \"주택 공급, '속도'가 중요…기준은 '바로 입주'\"",
       "telegram_core_fact": "그러면서 \"계획 수립, 토지 보상, 인허가 등 전 단계에 걸쳐서 속도를 최대한 끌어올려 주시기 바란다\"며 신속한 공급을 위해 금융 인센티브를 획기적으로 늘리는 것도 함께 검토하라고 지시했다.",
       "title": "李 \"주택 공급, '속도'가 중요…기준은 '바로 입주'\""
+    },
+    "source_fact:c24995667470b84251b5e194": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102200277049143",
+      "source": "머니투데이",
+      "source_body_digest": "ef13922294ff040e1de2fe4e5c1945109e0de9795ba96b430b1c6ea13b98d981",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cde12779e48b1a081cd5590778c64df4236bfcb549fb4b7ceea1fb8105eece2",
+      "source_fact_keys": [
+        "source_fact:v1:9a53891ec43245d7907babb2a8ceb1ce7f07b24d560f69eabecfb17a9320e582",
+        "source_fact:v1:9a867fec83db6cbb54b27d8193eaf5328d22c76f9e2d27c2fd03537089ea9c2e",
+        "source_fact:v1:fb2f3ed5b4412faa76345482da8af91729c6054b7f4f31f241a3a2281d431da7"
+      ],
+      "source_published_kst": "2026-10-22T06:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!",
+      "telegram_core_fact": "알루코는 국내 알루미늄 압출 시장 점유율 1위 기업으로 한화큐셀 미국법인과 태양광 프레임 장기 공급 계약을 체결했다.",
+      "title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!"
     },
     "source_fact:c24a16289128e42d2b9de7fb": {
       "first_seen_kst": "2026-10-10T10:34:18+09:00",
@@ -888398,6 +889826,28 @@
       "telegram_core_fact": "KB증권은 20일 삼성전자[005930]가 내년 메모리 생산 예정물량의 약 80%에 대해 장기공급 계약을 체결한 것으로 추정된다며 내년 이익 성장도 확정적이라고 평가했다.",
       "title": "KB증권 \"삼성전자 내년 이익 증가 확정적…물량 80% 장기공급\" | 연합뉴스"
     },
+    "source_fact:d394c3cba07985a6bfed693b": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102200277049143",
+      "source": "머니투데이",
+      "source_body_digest": "ef13922294ff040e1de2fe4e5c1945109e0de9795ba96b430b1c6ea13b98d981",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cde12779e48b1a081cd5590778c64df4236bfcb549fb4b7ceea1fb8105eece2",
+      "source_fact_keys": [
+        "source_fact:v1:9a53891ec43245d7907babb2a8ceb1ce7f07b24d560f69eabecfb17a9320e582",
+        "source_fact:v1:9a867fec83db6cbb54b27d8193eaf5328d22c76f9e2d27c2fd03537089ea9c2e",
+        "source_fact:v1:fb2f3ed5b4412faa76345482da8af91729c6054b7f4f31f241a3a2281d431da7"
+      ],
+      "source_published_kst": "2026-10-22T06:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!",
+      "telegram_core_fact": "알루코는 국내 알루미늄 압출 시장 점유율 1위 기업으로 한화큐셀 미국법인과 태양광 프레임 장기 공급 계약을 체결했다.",
+      "title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!"
+    },
     "source_fact:d395f6d5c899951a5dfa156f": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -889501,6 +890951,30 @@
       "source_title": "즈후, 자사주 19만주 장내매입…승인한도 32% 소진",
       "telegram_core_fact": "중국 온라인 지식 커뮤니티 즈후(ZH)가 10월 9일(현지시간) 뉴욕증권거래소(NYSE)에서 클래스A 보통주 19만4253주를 총 22만5632달러에 장내 매입했으며, 이를 통해 6월 30일 주주 결의로 확보한 자사주 매입 승인 한도의 약 32%를 소진했다고 20일 발표했다.",
       "title": "즈후, 자사주 19만주 장내매입…승인한도 32% 소진"
+    },
+    "source_fact:d4232cfe538b8b9395d6ba07": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02489526645615544",
+      "source": "이데일리",
+      "source_body_digest": "aa9fddbc4e78136386c39107faec4368bd43a925abed1bcad18cf6b9f51e0845",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1b0c69bda9513ee9e4b72915b5be3e9564fce216c2cfc803f91afaf0baaf9c7",
+      "source_fact_keys": [
+        "source_fact:v1:6c0d36b0db6a95a568324de70ce5a6585f3522d3347c5b5bc65130b89eb1f706",
+        "source_fact:v1:8da671e1b45a7da7e420fa43709345c829d0d68075823cc3c7e09c6cf564b8f6",
+        "source_fact:v1:9dfc62221e9900fcd7713ef136d93333b9f74737d85ca12a2827909da71a2151",
+        "source_fact:v1:af5d05542334d2da1b6c39ba98fdcdc06b63306dcb46add5934071428323d7a5",
+        "source_fact:v1:b1bc23c8520a964b4f1b3aaff3dae18ceb283bb01bae08a0ac11c181c1a1d2f4"
+      ],
+      "source_published_kst": "2026-10-22T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]",
+      "telegram_core_fact": "김성포 엠에스바이오 대표이사는 “코스닥 상장을 계기로 생산 인프라와 글로벌 사업 기반을 한층 강화하고 지속적인 신제품 상용화를 통해 글로벌 재생의료 플랫폼 기업으로 도약하겠다”고 말했다. 인체조직·생체소재 기반 재생의료 플랫폼 기업 엠에스바이오가 오늘(22일) 코스닥 시장에 상장한다.",
+      "title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]"
     },
     "source_fact:d42405ab29e74897502d5900": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
@@ -893722,6 +895196,30 @@
       "source_title": "키코프, 3분기 희석 EPS 0.51달러..전년비 24% 증가",
       "telegram_core_fact": "키코프(KEY)는 3분기 계속사업 부문 보통주주 귀속 희석 주당순이익(GAAP)이 0.51달러로 전년비 24.4% 증가했으며, 순이자이익과 비이자이익을 합친 총수익(GAAP)은 20억4400만 달러로 8.4% 늘어 분기 기준 사상 최대를 기록했다고 10월 20일 발표했다.",
       "title": "키코프, 3분기 희석 EPS 0.51달러..전년비 24% 증가"
+    },
+    "source_fact:d6094d2434832fba0c01d8f6": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02489526645615544",
+      "source": "이데일리",
+      "source_body_digest": "aa9fddbc4e78136386c39107faec4368bd43a925abed1bcad18cf6b9f51e0845",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1b0c69bda9513ee9e4b72915b5be3e9564fce216c2cfc803f91afaf0baaf9c7",
+      "source_fact_keys": [
+        "source_fact:v1:6c0d36b0db6a95a568324de70ce5a6585f3522d3347c5b5bc65130b89eb1f706",
+        "source_fact:v1:8da671e1b45a7da7e420fa43709345c829d0d68075823cc3c7e09c6cf564b8f6",
+        "source_fact:v1:9dfc62221e9900fcd7713ef136d93333b9f74737d85ca12a2827909da71a2151",
+        "source_fact:v1:af5d05542334d2da1b6c39ba98fdcdc06b63306dcb46add5934071428323d7a5",
+        "source_fact:v1:b1bc23c8520a964b4f1b3aaff3dae18ceb283bb01bae08a0ac11c181c1a1d2f4"
+      ],
+      "source_published_kst": "2026-10-22T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]",
+      "telegram_core_fact": "김성포 엠에스바이오 대표이사는 “코스닥 상장을 계기로 생산 인프라와 글로벌 사업 기반을 한층 강화하고 지속적인 신제품 상용화를 통해 글로벌 재생의료 플랫폼 기업으로 도약하겠다”고 말했다. 인체조직·생체소재 기반 재생의료 플랫폼 기업 엠에스바이오가 오늘(22일) 코스닥 시장에 상장한다.",
+      "title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]"
     },
     "source_fact:d610dbd8a9a4f2824f1576e2": {
       "first_seen_kst": "2026-10-21T20:02:19+09:00",
@@ -916204,30 +917702,24 @@
     "source_fact:e119cb6f6ba8c57ce82fce54": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
-        "live": "2026-10-08T07:27:34+09:00"
+        "live": "2026-10-22T12:56:15+09:00"
       },
-      "last_seen_kst": "2026-10-08T07:27:34+09:00",
-      "link": "https://www.mt.co.kr/stock/2026/10/08/2026100723047088991",
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102200277049143",
       "source": "머니투데이",
-      "source_body_digest": "2abf5f5a85c90eb4ac2d469f746e254e00cbeec2fb83cf58a9f1d2b2592f697c",
+      "source_body_digest": "ef13922294ff040e1de2fe4e5c1945109e0de9795ba96b430b1c6ea13b98d981",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d468c7902499c671b6bff1d97f1507f9353eebbd028dd8170feba2fd749cac15",
+      "source_fact_identity": "source_facts:v1:5cde12779e48b1a081cd5590778c64df4236bfcb549fb4b7ceea1fb8105eece2",
       "source_fact_keys": [
-        "source_fact:v1:02c7fcbb553429e4f8e62fffb2c583730ec608ca390f1ded0446836fcd45ab50",
-        "source_fact:v1:0c6ba7a1b85af9aa58269f1b432fca3073c70fc51caac214129f2f3912e1d7c8",
-        "source_fact:v1:0edb840833da40f3710cced4b8bf8694be3f0ffc739810e51c85a15167d3ba81",
-        "source_fact:v1:8451ffe1c2061da4133b3f8d25dcfb6f7fefcb1464d04b35473f2d12ed901bfb",
+        "source_fact:v1:9a53891ec43245d7907babb2a8ceb1ce7f07b24d560f69eabecfb17a9320e582",
         "source_fact:v1:9a867fec83db6cbb54b27d8193eaf5328d22c76f9e2d27c2fd03537089ea9c2e",
-        "source_fact:v1:b336c1ae786778230e567b3992780d6f19f9568bc4087dac26e68e1524543680",
-        "source_fact:v1:cf3c2b184ae2dc4b990472171265450d2b9e1e1875e22a65d743300048f26b2c",
-        "source_fact:v1:d6623c930336adeb300b168d0b9556cfad0be1d9c7673b77b360b7eb0eda75b8",
-        "source_fact:v1:dba40aa2436a5979ce2997a39a750e80a5662c9ee1d2fde6ec0f78b9e9822864",
-        "source_fact:v1:e07bbde473e660a464974e690f3eb7a391fdcc646cdf6bc080aa362d7cfe23dc"
+        "source_fact:v1:fb2f3ed5b4412faa76345482da8af91729c6054b7f4f31f241a3a2281d431da7"
       ],
-      "source_published_kst": "2026-10-08T07:05+09:00",
-      "source_title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!",
-      "telegram_core_fact": "SK하이닉스의 용인 1기 팹 가동이 임박함에 따라 케이씨텍과 지앤비에스 에코 등 관련 반도체 설비 기업들이 주목받았다. 한미반도체는 TC본더 장비 공급과 8공장 증설을 추진 중이며 곽동신 회장의 장내매수 소식이 전해졌다.",
-      "title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!"
+      "source_published_kst": "2026-10-22T06:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!",
+      "telegram_core_fact": "알루코는 국내 알루미늄 압출 시장 점유율 1위 기업으로 한화큐셀 미국법인과 태양광 프레임 장기 공급 계약을 체결했다.",
+      "title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!"
     },
     "source_fact:e11b75978bdbc81b8e5f29be": {
       "first_seen_kst": "2026-10-20T06:39:46+09:00",
@@ -917771,6 +919263,35 @@
       "source_title": "로바이, 中 링커봇과 피지컬 AI 협력…로봇 자가학습 기술 실증 나선다",
       "telegram_core_fact": "피지컬 AI(인공지능) 스타트업 로바이는 중국 다관절 로봇 핸드 전문기업 링커봇(LinkerBot)과 AI 기반 로봇 제어 기술 검증을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
       "title": "로바이, 中 링커봇과 피지컬 AI 협력…로봇 자가학습 기술 실증 나선다"
+    },
+    "source_fact:e1c569628b6c3ebaf78fbf31": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
     },
     "source_fact:e1c5a34818fb8c77afd20d92": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
@@ -927147,6 +928668,35 @@
       "source_title": "日닛케이지수, 4.9% 급락…AI·반도체 약세 등 여파(종합) | 연합뉴스",
       "telegram_core_fact": "조성미 이도연 특파원 = 미국 반도체주 하락과 유가 상승 등 여파로 15일 일본 도쿄증시의 닛케이225평균주가(닛케이지수)가 전날 종가 대비 4.9% 하락한 64,425.95로 장을 마감했다.",
       "title": "日닛케이지수, 4.9% 급락…AI·반도체 약세 등 여파(종합) | 연합뉴스"
+    },
+    "source_fact:e63d69cb4131c65365c3152c": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
     },
     "source_fact:e642ad938a7d30e08b3f72ca": {
       "first_seen_kst": "2026-10-17T10:06:46+09:00",
@@ -940652,6 +942202,34 @@
       "source_title": "에스원, 자사주 4500억 매입·소각…기존 자사주도 없앤다",
       "telegram_core_fact": "에스원이 보유 자기주식(자사주) 전량을 소각하고 4500억원 자사주를 추가 매입한다.",
       "title": "에스원, 자사주 4500억 매입·소각…기존 자사주도 없앤다"
+    },
+    "source_fact:ed12920c5a538ee318e19a89": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
     },
     "source_fact:ed1850ae6c34861f95f3af6a": {
       "first_seen_kst": "2026-10-07T23:50:27+09:00",
@@ -964948,6 +966526,29 @@
       "source_title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액",
       "telegram_core_fact": "계측제어설비 정비 전문기업 우진엔텍은 기수주한 고리 원자력발전소 3·4호기 정비용역 계약액을 51억원 증액했다고 21일 밝혔다.",
       "title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액"
+    },
+    "source_fact:fa3eae918f085c5e6a36d046": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02568246645615544",
+      "source": "이데일리",
+      "source_body_digest": "fcddd5af57ef68f67ad32cbf072d2ebf0324295110fa2431e64f512c60e469d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8a2f9a6f0185a8f5c73c90857de53e2f0d5057dbcac53accf54f77607bacd58",
+      "source_fact_keys": [
+        "source_fact:v1:2b7ef4cee339df4d2c01ba3fbc359bdf9ecdca4375ff05469b25f7648c6133fb",
+        "source_fact:v1:473e772e43005d92fa0dfa519a16ef972dfa3ef59360d3db7cab59264022e9f5",
+        "source_fact:v1:ae231c49e5667b3172e8b9474219f31b21180d2a35a138096b98f800f0c52ca8",
+        "source_fact:v1:b27944afecc5f652c8b8e8ce71a8912ed2fa653e455a58c70db7f996c79469a4"
+      ],
+      "source_published_kst": "2026-10-22T07:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]",
+      "telegram_core_fact": "조선·플랜트 기자재 및 모듈 솔루션 전문기업 영광이 오늘(22일)부터 이틀간 일반투자자 대상 공모주 청약을 진행한다. 올해 상반기 매출액은 591억원, 영업이익은 54억원을 기록했다.",
+      "title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]"
     },
     "source_fact:fa3f61b6685a361a213264a4": {
       "first_seen_kst": "2026-10-14T12:59:52+09:00",
@@ -996204,6 +997805,29 @@
       "source_title": "조국 \"1년 안에 '큰 승부' 봐야…민생·복지, 반도체 수준으로 투자하자\"",
       "telegram_core_fact": "\"그러나 반도체가 역대급 호황을 이끌고 있지만 청년 일자리, 자영업자와 직장인 소득, 내수 활성화는 뒷걸음질치는 상황\"이라며 \"지금 한국에서는 수출 통계의 숫자와 민생 장바구니의 숫자 간의 괴리가 역대급이다. 위쪽 막대는 솟고, 아래쪽 막대는 가라앉는 이른바 'H자형 불평등'\"이라고 말했다.",
       "title": "조국 \"1년 안에 '큰 승부' 봐야…민생·복지, 반도체 수준으로 투자하자\""
+    },
+    "title:2681eecaa4e86f13bb3fa57a": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02568246645615544",
+      "source": "이데일리",
+      "source_body_digest": "fcddd5af57ef68f67ad32cbf072d2ebf0324295110fa2431e64f512c60e469d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8a2f9a6f0185a8f5c73c90857de53e2f0d5057dbcac53accf54f77607bacd58",
+      "source_fact_keys": [
+        "source_fact:v1:2b7ef4cee339df4d2c01ba3fbc359bdf9ecdca4375ff05469b25f7648c6133fb",
+        "source_fact:v1:473e772e43005d92fa0dfa519a16ef972dfa3ef59360d3db7cab59264022e9f5",
+        "source_fact:v1:ae231c49e5667b3172e8b9474219f31b21180d2a35a138096b98f800f0c52ca8",
+        "source_fact:v1:b27944afecc5f652c8b8e8ce71a8912ed2fa653e455a58c70db7f996c79469a4"
+      ],
+      "source_published_kst": "2026-10-22T07:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]",
+      "telegram_core_fact": "조선·플랜트 기자재 및 모듈 솔루션 전문기업 영광이 오늘(22일)부터 이틀간 일반투자자 대상 공모주 청약을 진행한다. 올해 상반기 매출액은 591억원, 영업이익은 54억원을 기록했다.",
+      "title": "‘조선·플랜트 모듈 전문기업’ 영광, 일반청약 돌입[오늘청약]"
     },
     "title:2691d649a074f848b9f4f060": {
       "first_seen_kst": "2026-10-22T07:32:49+09:00",
@@ -1040802,6 +1042426,34 @@
       "source": "이데일리",
       "title": "\"AI 거품론 정면돌파\" 엔비디아, 204조 자사주 베팅한 이유"
     },
+    "title:7f7009353f047cd4d3d72145": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645615544",
+      "source": "이데일리",
+      "source_body_digest": "35146c43e3e51996385d356d9a482e05d940be404035663f1f073b571ca7f010",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf33aca762c76f577692c77790cc7c4a132f6927197051fa8725547b6bead1e1",
+      "source_fact_keys": [
+        "source_fact:v1:06dfdb3cf2c3617fee68b815fdc819616d91fcd541c46c9164919288a3641089",
+        "source_fact:v1:5e9b5f99ea253af97ec501d1078fd053a3569f937d24afcc2cdb00e8288c2d60",
+        "source_fact:v1:6c5cda14ab5aae07040830d650ca4e85c0781958023b23442dfa80cfc7e27d23",
+        "source_fact:v1:7cc851d83ce272a0d3b82e76e366559049bebce2164a5bb8227f85b02ef5f785",
+        "source_fact:v1:894c8829fe588099aacddda8d7b22a3be9873dfe7f4d952c14c7c231f9efdec9",
+        "source_fact:v1:99f05a9d73de89b3e2f2b04755dfebd5ed3ff4f0280299bf5eafd3c63f9ca439",
+        "source_fact:v1:b1421715fca7b0a253cb685a6aec81ada7e3545d3ea5b47ed6e2f030209549bf",
+        "source_fact:v1:c3f12aaca28b8190d25feb6908d8cfef50e32973fa6633b4151569deac11c0cf",
+        "source_fact:v1:e4129159a89f44354a6b8271bf4f279525bae187d0e425db9ad4844c2d0bcb4b"
+      ],
+      "source_published_kst": "2026-10-22T07:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
+      "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
+      "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
     "title:7f7bd610f07aac0fcdccc028": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -1056178,6 +1057830,35 @@
       "source_title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\"",
       "telegram_core_fact": "유철종 전문위원 = 일본 방위성이 우크라이나 방산업체 '스카이폴'(SkyFall)이 생산하는 요격 드론 구매 계약을 체결하고 신속한 도입을 추진 중인 것으로 전해졌다.",
       "title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\""
+    },
+    "title:9cf71dd0b0fc548bcd7bc184": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1178783",
+      "source": "매일경제",
+      "source_body_digest": "5bafc81c65de49a1ac8e94dfa6243d0f449f98a7af67068d76a5335426555ab0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:055a2effbbed37869f8a193609b521db8ed3f5e90f483e1eff98d29e7681a411",
+      "source_fact_keys": [
+        "source_fact:v1:236a1a2d88ccd7ad7201f2160a5a841e9bf567e98dc20bf7ed45bca474a7bdbf",
+        "source_fact:v1:392b5445d03fcf3981a2c36216f12f3ff5f49252ce8ffea8870659894718b436",
+        "source_fact:v1:40fa4735298d7a965d0f5aaec9068cb911a8817e82d9db34cf48630fcf8970fe",
+        "source_fact:v1:538b3e38cfede4a50a630d5a56b2d517bef83da8fe476fdfad8529d93ff778e7",
+        "source_fact:v1:5bb58e536f7e4e088e82c02af8b0738494ae2f98776ab2cc1380f5dac2797bb0",
+        "source_fact:v1:6487470a691238e1563d2d0a3879c854f16c96c8dd6fcdc87830648302ec4157",
+        "source_fact:v1:b9edbfa7106d8a207019fd38c09ec82a133ffb032af57820b349f34c4cf9a28c",
+        "source_fact:v1:d2789271bc815bb22044ba565f51ffb98a40231294bd5223455e68b3d9036b07",
+        "source_fact:v1:da60ffeb8b0a39839eec9229cfdce8e689f3285925e3e3d360051a4861650cd5",
+        "source_fact:v1:f655bb9ce0306866941f2127d777e1ea5246081ddb4f88eb405eefd5e8bf71a1"
+      ],
+      "source_published_kst": "2026-10-22T05:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가",
+      "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
+      "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
     },
     "title:9d00132582c45c327ac81bc4": {
       "first_seen_kst": "2026-10-21T18:59:41+09:00",
@@ -1072776,6 +1074457,27 @@
       "source_published_kst": "2026-10-06T10:33+09:00",
       "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
     },
+    "title:bf1fca5bf7050315627c20f5": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102118192974092",
+      "source": "머니투데이",
+      "source_body_digest": "a80a5854204b3d00f7c46960630f8648dcfa92d285f3e75f37914d3e446a8d87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c5b57a6b068b16174a4f017a7c270d42489da058154642078aee832be3e5999",
+      "source_fact_keys": [
+        "source_fact:v1:b536763007449d5ec9e54f860f393fb3adc3e8f21e74581c49f2cec012e638b5",
+        "source_fact:v1:e29fe3777aeedd867750cae76837ccbc368ee89c4025c132253695ed8443bc59"
+      ],
+      "source_published_kst": "2026-10-22T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?",
+      "telegram_core_fact": "현재 유예 법안이 다수 올라왔지만 만약 추가적으로 법 개정이 이뤄지지 않으면 내년 1월부터 가상자산에 대한 세금을 내야한다.",
+      "title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?"
+    },
     "title:bf39ada6cc55891af754a9f4": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
       "lanes": {
@@ -1082142,6 +1083844,30 @@
       "telegram_core_fact": "이경민 대신증권 연구원은 “뚜렷한 상승 모멘텀이 부재한 가운데 외국인 순매도가 이어지며 약세를 보였다”며 “특히 오픈AI의 연환산 매출이 (시장의 기대를 밑도는) 500억 달러 수준이라는 보도가 나오면서 인공지능(AI) 투자심리가 위축됐다”고 진단했다.",
       "title": "삼전 역대급 실적에도 외국인 ‘팔자’…코스피 두 달 만에 6300선으로 | 중앙일보"
     },
+    "title:d28fa358f7b6cf37f095cce0": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02489526645615544",
+      "source": "이데일리",
+      "source_body_digest": "aa9fddbc4e78136386c39107faec4368bd43a925abed1bcad18cf6b9f51e0845",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1b0c69bda9513ee9e4b72915b5be3e9564fce216c2cfc803f91afaf0baaf9c7",
+      "source_fact_keys": [
+        "source_fact:v1:6c0d36b0db6a95a568324de70ce5a6585f3522d3347c5b5bc65130b89eb1f706",
+        "source_fact:v1:8da671e1b45a7da7e420fa43709345c829d0d68075823cc3c7e09c6cf564b8f6",
+        "source_fact:v1:9dfc62221e9900fcd7713ef136d93333b9f74737d85ca12a2827909da71a2151",
+        "source_fact:v1:af5d05542334d2da1b6c39ba98fdcdc06b63306dcb46add5934071428323d7a5",
+        "source_fact:v1:b1bc23c8520a964b4f1b3aaff3dae18ceb283bb01bae08a0ac11c181c1a1d2f4"
+      ],
+      "source_published_kst": "2026-10-22T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]",
+      "telegram_core_fact": "김성포 엠에스바이오 대표이사는 “코스닥 상장을 계기로 생산 인프라와 글로벌 사업 기반을 한층 강화하고 지속적인 신제품 상용화를 통해 글로벌 재생의료 플랫폼 기업으로 도약하겠다”고 말했다. 인체조직·생체소재 기반 재생의료 플랫폼 기업 엠에스바이오가 오늘(22일) 코스닥 시장에 상장한다.",
+      "title": "‘재생의료 플랫폼’ 엠에스바이오, 코스닥 입성[오늘상장]"
+    },
     "title:d292f8c302011f2c43c44e76": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -1089382,6 +1091108,28 @@
       "telegram_core_fact": "“씨젠 네트워크라는 울타리를 넘어 독보적인 기술력으로 글로벌 체외진단 무대에서 정당한 가치를 평가받겠다”며 “신제품을 성공시켜 머지않은 시점에 연결 매출 2000억원을 돌파하는 강소 바이오 기업으로 도약하겠다”고 덧붙였다.",
       "title": "오세문 에스지바이오사이언스 대표 “신제품으로 매출 2000억 시대 열 것”"
     },
+    "title:e0efed764fcfa2371ce4e7e6": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102200277049143",
+      "source": "머니투데이",
+      "source_body_digest": "ef13922294ff040e1de2fe4e5c1945109e0de9795ba96b430b1c6ea13b98d981",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cde12779e48b1a081cd5590778c64df4236bfcb549fb4b7ceea1fb8105eece2",
+      "source_fact_keys": [
+        "source_fact:v1:9a53891ec43245d7907babb2a8ceb1ce7f07b24d560f69eabecfb17a9320e582",
+        "source_fact:v1:9a867fec83db6cbb54b27d8193eaf5328d22c76f9e2d27c2fd03537089ea9c2e",
+        "source_fact:v1:fb2f3ed5b4412faa76345482da8af91729c6054b7f4f31f241a3a2281d431da7"
+      ],
+      "source_published_kst": "2026-10-22T06:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!",
+      "telegram_core_fact": "알루코는 국내 알루미늄 압출 시장 점유율 1위 기업으로 한화큐셀 미국법인과 태양광 프레임 장기 공급 계약을 체결했다.",
+      "title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!"
+    },
     "title:e0f269f1322bc59b255061a3": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
       "lanes": {
@@ -1092485,6 +1094233,28 @@
       "link": "https://www.newsis.com/view/NISX20260923_0003802517",
       "source": "뉴시스",
       "title": "롯데카드, 영업정지 한 달 새 회원 8만명 감소…PLCC로 회복 시동"
+    },
+    "title:e7a9f648aff1d7df732b6598": {
+      "first_seen_kst": "2026-10-22T12:56:15+09:00",
+      "lanes": {
+        "live": "2026-10-22T12:56:15+09:00"
+      },
+      "last_seen_kst": "2026-10-22T12:56:15+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261022085909",
+      "source": "지디넷코리아",
+      "source_body_digest": "d8706b1c3005046387f192abdc5946a5db9909e6544b756216516c1577f5c046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46fae892cb9d672449b1f442265ad905034c76682794755d7bf903147c5a5e91",
+      "source_fact_keys": [
+        "source_fact:v1:67ec1cbd383393b1584ddc92d0836aea2c9b449267cdf0fcf3a0afa97d94b48b",
+        "source_fact:v1:7ea57c5ef9bcbcd2626a4d75d08b646ec9c121eaa442b2933f5426c7fd8faf0b",
+        "source_fact:v1:fdde537dbd3ad4f6abd2d510f1c93b3bfaf26e598e3985872b13701219407278"
+      ],
+      "source_published_kst": "2026-10-22T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속",
+      "telegram_core_fact": "21일(현지시간) 오픈AI 공식 블로그에 따르면 오픈AI는 이날 자사 최첨단 AI 모델과 코딩 에이전트 '코덱스'를 구글클라우드 AI 모델 플랫폼 모델 가든에 공급한다고 발표했다.",
+      "title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속"
     },
     "title:e7b07f0adca74254bcf8bfb6": {
       "first_seen_kst": "2026-10-15T11:36:50+09:00",
@@ -1104382,5 +1106152,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T12:22:03+09:00"
+  "updated_at_kst": "2026-10-22T12:56:15+09:00"
 }
