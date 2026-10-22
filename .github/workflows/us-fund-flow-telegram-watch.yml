@@ -416,7 +416,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
-      TECH_ETF_PROXY_VALIDATE_ONLY: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.tech_proxy_validate_only)) && '1' || '0' }}
+      TECH_ETF_PROXY_VALIDATE_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.tech_proxy_validate_only && '1' || '0' }}
 
     steps:
       - name: Checkout shared US fund-flow deployment and delivery state
