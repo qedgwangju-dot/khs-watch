@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 22,
-    "new_material_items": 0,
-    "raw_items": 325,
+    "material_items": 23,
+    "new_material_items": 1,
+    "raw_items": 322,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -363,6 +363,16 @@
       "source": "TechCrunch",
       "title": "FBI arrests OpenAI employee accused of planting hidden recording device in conference room - TechCrunch",
       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPaUFvbzdDZncxY1I4SXdvTEFiYWt4RC1vdjhKcXkxY3NmZ3dtS1hLZ2lVUUJTNzNoa2ZBeGduYWw2dkNfSHNUTk9LSDVRRG9VQ0dyVHpTM3Q0elh1RG5nczdrSUJMWG5MYVdXNFRLaEtXdHNEbV9nMzhrNF9rcW5fRkt2aHljRmo5SEFobDZlSW5lcDNjaU5CVHdHWjJOampfTWdDYTVaZGZXakFJbjc3R1VzdVVIUC03MjRESkdCWmhwYTg?oc=5",
+      "vendor": "OpenAI"
+    },
+    "4e2029bb8b5d9297636313f0": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-10-22T19:57:35.405490+00:00",
+      "published_at": "2026-10-22T01:05:00+00:00",
+      "severity": 2,
+      "source": "CNBC",
+      "title": "Critical PHP web security flaws spark global alarm as Google, OpenAI and Amazon respond - CNBC",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5aVW9GbzJYU2tyRUZaZXhuYVZLUzNKaURYMF96UUxGelZEQlJuS05hd3V2ajZXYThmYS1nZm1fRTFEZ1RlYzJxY0RDSnd2c0dCTTJ5RTRYa2daejlQYVQzNGhsazViYnk0LTRUQzhobnkwMU5pV0lDMzc1ONIBgAFBVV95cUxPWU1MOW5DRUpvWXNVNExyUzRMdVhsUHVyUWdPcUJmY19wMVVEaDNuVFczazh1VWZ5RE85Z0hOQjZWVm9GTS1pd3BOMjhyZ1dRMzdSM1Y3MHBCS3dYaHlhOVBPMHotVmp0ZVNQbE4wZjdKcVcwQnBwVUd5MlJ0VUZuUg?oc=5",
       "vendor": "OpenAI"
     },
     "4f4d84e4e22995c47e2160a8": {
@@ -1086,5 +1096,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-23T04:21:44+09:00"
+  "updated_at_kst": "2026-10-23T04:57:35+09:00"
 }
