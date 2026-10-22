@@ -38,7 +38,7 @@ def main():
     assert "실제 체결대금 아님" in filled
     assert "거래대금: 체결단가 미공개·종가 추정 불가" not in n.estimated_amount("XE",100,close_price,1350.0)
     assert "거래대금: 체결단가 미공개·종가 추정 불가" in n.estimated_amount("HO",100,close_price,1350.0)
-    assert abs(484895 * 10.74 * 1350.0 - 7030578315.0) < 1.0
+    assert abs(484895 * 10.74 * 1350.0 - 7030492605.0) < 1.0
     print("ARK daily trade parser regression tests passed.")
 
 if __name__=="__main__":
