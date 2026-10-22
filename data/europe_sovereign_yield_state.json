@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-22T23:54:58+09:00",
+  "last_checked_kst": "2026-10-23T00:19:15+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": true,
@@ -22,7 +22,12 @@
     "fr_de_market_spread:above:100.0": true,
     "fr_de_market_spread:above:125.0": true,
     "fr_de_market_spread:above:150.0": true,
-    "it10:daymove:10.0": false
+    "it10:daymove:10.0": false,
+    "fr10:stress:5.1": true,
+    "fr10:stress:5.25": false,
+    "fr_de_market_spread:stress:170.0": true,
+    "fr_de_market_spread:stress:175.0": false,
+    "fr_de_market_spread:stress:200.0": false
   },
   "history": {
     "fr10": [
@@ -226,7 +231,7 @@
       },
       {
         "date": "2026-10-22",
-        "value": 5.06
+        "value": 5.07
       }
     ],
     "de_mkt": [
@@ -326,7 +331,7 @@
       },
       {
         "date": "2026-10-22",
-        "value": 4.62
+        "value": 4.61
       }
     ],
     "uk_mkt": [
@@ -376,7 +381,7 @@
       },
       {
         "date": "2026-10-22",
-        "value": 5.35
+        "value": 5.34
       }
     ]
   },
@@ -401,10 +406,10 @@
     "fr10": 5.126,
     "de10": 3.38,
     "uk10": 5.3516,
-    "fr_mkt": 5.06,
+    "fr_mkt": 5.07,
     "de_mkt": 3.35,
-    "it10": 4.62,
-    "uk_mkt": 5.35
+    "it10": 4.61,
+    "uk_mkt": 5.34
   },
   "last_change_basis": {
     "fr10": "공식자료 이전 관측일 2026-10-21 대비",
@@ -435,8 +440,8 @@
       "milestone:2026-10-23:D-3",
       "milestone:2026-10-23:D-1"
     ],
-    "checked_at_kst": "2026-10-22T23:55:06+09:00",
-    "source_fail_streak": 61,
+    "checked_at_kst": "2026-10-23T00:19:21+09:00",
+    "source_fail_streak": 62,
     "source_access": "access_restricted"
   }
 }
