@@ -2976,6 +2976,27 @@
       "telegram_core_fact": "회사 측에 따르면 이번 계약으로 위너스일렉은 헥사로보틱스가 개발한 보행보조 웨어러블 로봇 시스템 'GLEGYM H40A'의 양산 공정 구축부터 핵심 모듈 생산, 완제품 정밀 조립, 출하 검사까지 전 과정을 독점 전담한다.",
       "title": "위너스일렉-헥사로보틱스, 웨어러블 로봇 OEM 위탁생산 계약"
     },
+    "core:09ab81a7e1b07af23eae3628": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.hankyung.com/article/202610227448g",
+      "source": "한국경제",
+      "source_body_digest": "68b4183fd0aec75998278692f814f8f6552549a7a2ff04b36838197664afef72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e724d2722a2a5045b121a8ffa4661a70d832c7b37ce7a4dfdb0ddef5cc05509",
+      "source_fact_keys": [
+        "source_fact:v1:8565857cf2f8351484e0e318310fa13e3ba7ce476df68ee52a9c183754986903",
+        "source_fact:v1:87695d212915f958bae35624d401e989d4ba41c617c4f77f4e9e6e2965d59a27"
+      ],
+      "source_published_kst": "2026-10-22T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화",
+      "telegram_core_fact": "빈폴골프에 따르면 지난 9월 1일부터 10월 18일까지 빈폴골프 여성 점퍼 매출은 전년비 336% 증가했다.",
+      "title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화"
+    },
     "core:09c19caca5a7de8ca23340e8": {
       "first_seen_kst": "2026-10-21T23:26:54+09:00",
       "lanes": {
@@ -7100,6 +7121,31 @@
       "source_title": "LG전자, 목동 최고급 주거단지에 AI 홈 심는다…B2B 사업 확장",
       "telegram_core_fact": "LG전자가 목동 신축 주거단지에 인공지능(AI) 홈 솔루션과 프리미엄 빌트인 가전을 공급한다.",
       "title": "LG전자, 목동 최고급 주거단지에 AI 홈 심는다…B2B 사업 확장"
+    },
+    "core:14cf04f0e209daf25bd4acad": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021131700030",
+      "source": "연합뉴스",
+      "source_body_digest": "92dff663870d6c05c713e36a04b957dd5bcbe1e0825ca53de87df282212a4ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c82a05faf5f0b7ff5a1de061bcdf5f4bd90dcac1f7a14e8d862286513904278a",
+      "source_fact_keys": [
+        "source_fact:v1:115e99f85a4a269dd1cd67d4822fe4c867574db00eebae95c15ab87cb1030f78",
+        "source_fact:v1:137e727fbce026f2d91f64e3674cf32b65e424da0f4391e097ff32bbb499c3d3",
+        "source_fact:v1:3d528d59c832f348a6fdd9ce0b76c4108f5102fdfdaaa34a196ad68fb357a01f",
+        "source_fact:v1:3fc44a7b69007db4e90b9c7ce020b4852c54a784686f3f3f7a854a5428e1a340",
+        "source_fact:v1:8e94c6eb147aff228fa04c51ae5a8536c39c0ad42cdcea48ad667cf3be010528",
+        "source_fact:v1:e9f8491a819d3ad82c8b2cbe9ad5d6d2c61c055b407496764156e0ec24ad8351"
+      ],
+      "source_published_kst": "2026-10-22T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스",
+      "telegram_core_fact": "22일 국회 농림축산식품해양수산위원회 소속 더불어민주당 임미애 의원이 재정경제부에서 제출받은 '2025년 할당관세 지원실적 및 효과분석' 보고서에 따르면 지난해 할당관세가 적용된 식료품 10개 품목 가운데 소비자가격 인하 효과가 확인된 품목은 파인애플·망고·오렌지 등 3개에 그쳤다.",
+      "title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스"
     },
     "core:14efc1ae5d56ee931c56e29f": {
       "first_seen_kst": "2026-10-19T22:09:23+09:00",
@@ -55831,6 +55877,39 @@
       "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
       "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
     },
+    "core:a0a96961a61799067b8786c3": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "core:a0b51f28540178f266ab834a": {
       "first_seen_kst": "2026-10-20T08:05:53+09:00",
       "lanes": {
@@ -78040,6 +78119,38 @@
       "telegram_core_fact": "800조원대 호남 반도체 클러스터의 용수 해법으로 하수처리수 재이용이 부상하면서 물 확보와 함께 수질과 가격, 관리 책임을 정비해야 한다는 의견이 제시됐다. 정부는 현재 광주 제1하수처리장에서 하루 30만t의 재이용수를 생산해 호남 반도체 산단에 공급하는 방안을 추진 중이다.",
       "title": "호남반도체, 하수 재이용수 뜬다…\"수질·가격·관리정비\""
     },
+    "core:e1dde6bca225e1d1fa2c61f8": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
+    },
     "core:e20b5a59203609ebd841c0c0": {
       "first_seen_kst": "2026-10-14T16:26:08+09:00",
       "lanes": {
@@ -81846,6 +81957,24 @@
       "telegram_core_fact": "감정가가 50억8300만원으로 책정된 해당 아파트는 최저 입찰가가 32억원까지 떨어졌고, 최종적으로 40억2000만원에 낙찰됐다.",
       "title": "\"감정가 50억 아파트, 40억에 낙찰\"…전문가가 본 서울 부동산의 이상 징후"
     },
+    "core:ee338028c3658789fcb3f8ec": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022027300030",
+      "source": "연합뉴스",
+      "source_body_digest": "013d72d586710cc65bf21502685a1c051ec68423e8c04de7b7801b6e6b5ac989",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "오리온, '카스타드' 해외 인기에 생산라인 증설…연3천억원 규모 | 연합뉴스",
+      "telegram_core_fact": "오리온[271560]은 국내외 수요 증가에 대응해 카스타드 생산라인을 한국과 베트남, 인도에서 증설했다고 22일 밝혔다.",
+      "title": "오리온, '카스타드' 해외 인기에 생산라인 증설…연3천억원 규모 | 연합뉴스"
+    },
     "core:ee3bc1c687cc3786a6ee3684": {
       "first_seen_kst": "2026-10-20T21:25:35+09:00",
       "lanes": {
@@ -82754,6 +82883,29 @@
       "source_title": "靑, '러 석유공급' 우크라 주장에 반박…\"사실과 다르고 부적절\" | 연합뉴스",
       "telegram_core_fact": "청와대는 7일 우크라이나가 '한국이 러시아에 경유 등 석유제품을 공급했다'는 외신을 인용해 한국을 비판한 데 대해 \"충분한 사실 확인 없이 대한민국의 관련 정책을 왜곡하거나 국제적 신뢰를 훼손할 수 있는 공개적 언급을 자제해달라\"고 반박했다.",
       "title": "靑, '러 석유공급' 우크라 주장에 반박…\"사실과 다르고 부적절\" | 연합뉴스"
+    },
+    "core:f150cab5f23b5512fcc2ae2b": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.dt.co.kr/article/12090659",
+      "source": "디지털타임스",
+      "source_body_digest": "b5adf9982e6d4e596722d0d2b38657d549cbbb3803878730b3de7f6d907b4df4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f90a58751c2b58c7cea50c1e9f1e61c001cdc1e7ca101d5850f68b82208643",
+      "source_fact_keys": [
+        "source_fact:v1:0a291a7de64fa6324c9dc1a3b312f6f91e334f4500ef2f3982f170f5043c3ffd",
+        "source_fact:v1:4e213a7659a7a1631932ec2cec68ca26c95d7981297860f89886885768a4382f",
+        "source_fact:v1:550bae239cc274b4fe4870d6874c199f47c97edcd952b7a0cb5ddfececcb51eb",
+        "source_fact:v1:608ec21b0ba6c6e5e57b8c73ff0c0e8990e2379ff2024e3a7b8b4240fa5f2a11"
+      ],
+      "source_published_kst": "2026-10-22T14:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”",
+      "telegram_core_fact": "LG디스플레이가 원·달러 환율 하락과 칩플레이션(반도체 등 부품 가격 상승) 등의 영향으로 지난해 대비 영업이익이 40% 넘게 감소했다.",
+      "title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”"
     },
     "core:f154cc6dd3ad5d31708090dd": {
       "first_seen_kst": "2026-10-19T00:41:04+09:00",
@@ -90774,34 +90926,26 @@
     "event:2080d78fe0a242cbb97f4a36": {
       "first_seen_kst": "2026-10-21T15:40:18+09:00",
       "lanes": {
-        "live": "2026-10-22T03:57:32+09:00"
+        "live": "2026-10-22T14:38:13+09:00"
       },
-      "last_seen_kst": "2026-10-22T03:57:32+09:00",
-      "link": "https://busan.fnnews.com/news/202610211816229499",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "5979b1049f6cf8478e1c33a471dcb2e68d51341ae7c8c03a96d9dfd599cc89aa",
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026102118031616786",
+      "source": "머니투데이",
+      "source_body_digest": "7704b0cc7b3bfcca3f1c1dcd0f60b18384cbf968e07d09ab7018f6b559afd485",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a0c656ef2028659916d4ee812952aa947e275d51a6062216a2f0e7cedb33b560",
+      "source_fact_identity": "source_facts:v1:882909ecacf60cb508e589652b0854753710c988b2607df0524b640829c15f8d",
       "source_fact_keys": [
-        "source_fact:v1:025d49dc8041eb0795c86811a9612cdbf5d59bb4e92cdaf20c3c5f575a06fd62",
-        "source_fact:v1:083be37dff32b4a1f0be992325fb1439cdcff470523169299fafae031e2593ed",
-        "source_fact:v1:08420072bf7d23a403c99ea6542bf6b8fef8b511b874a8d0a35e5ccae7717eb5",
-        "source_fact:v1:25aa106ce891aa5229cb5ac6f7e44b653ae63d56447aa5c1748e4b375aaeaf43",
-        "source_fact:v1:549413d3d91159e5c29da70a74cb8a99990ef25067ea392151a63946899e3bae",
-        "source_fact:v1:59c4c6444e977ecc6bd40cac063320c4a6ae83a304c062e1476a86b1822ca626",
-        "source_fact:v1:68ddb73d126a230a60c9b154023702c0ebcca8d5c55b316dfec96b49093177e8",
-        "source_fact:v1:8725e669a688f802dc2fb0c4409e8d8d9ab42d641ebf3aad8f598b47fdf6f380",
-        "source_fact:v1:b011368b1a99008e9217bc95077a44c913d89a1201bb2970920cb0e00e344380",
-        "source_fact:v1:bf2bf8f7c481556ff055392c782f19a127cfc79799548d4a894cc0060f7927ad",
-        "source_fact:v1:cc21e562dc1ff79e51691a2a3fc106eab2f8975ab0748a8c823fbdebb35ffc57",
-        "source_fact:v1:f865d2aec47bb7b0be306703a8be61f5da2a33f09444264b7807b69ddff7fc6a",
-        "source_fact:v1:fa35d2912040b773d111071930c0846a3b9f4e77cb98e9f665accd28a9d1c4fe"
+        "source_fact:v1:2944261f6298208a35b9489dbeaf7be39a2fbed1c6e8b2744a414f478a306f0b",
+        "source_fact:v1:9ee3661236a95e07ef79bc0d9be2d8f38a7c53ff6bc2af56566069a9397f4ec9",
+        "source_fact:v1:ac90762c7510ce28d10be83bdcf7764fe96864384f7ee6d11c88d13234475577",
+        "source_fact:v1:d28e254c1d3ef041368a47939b61ab99524e03003f05af37b08691a125e014f1",
+        "source_fact:v1:f62d2f2eefcabac17bcab67a64a958695bd0c6027a66044c35c9c0e12573df08"
       ],
-      "source_published_kst": "2026-10-21T09:00+09:00",
+      "source_published_kst": "2026-10-21T18:06+09:00",
       "source_supply_terms": {},
-      "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
-      "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
-      "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
+      "source_title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨",
+      "telegram_core_fact": "금융투자업계에 따르면 SK하이닉스는 이날 40조원 자사주 매입을 마무리했다.",
+      "title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨"
     },
     "event:20821ea03a137a78bbe5496c": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
@@ -105139,6 +105283,39 @@
       "telegram_core_fact": "[파이낸셜뉴스] 삼성전자와 SK하이닉스, 마이크론 등 글로벌 D램 3사에 자산의 약 75%를 집중 투자하는 상장지수펀드(ETF)가 국내 증시에 상장했다.",
       "title": "삼성전자·SK하이닉스·마이크론에 75%…글로벌 DRAM ETF 상장"
     },
+    "event:d3fda4dc2c8aec9eb0d16e35": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "event:d43896e2f11c4711cdda0b39": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
       "lanes": {
@@ -119260,6 +119437,30 @@
       "source_title": "코아스템켐온, FDA와 '뉴로나타-알' 임상 논의… 美 진출 '투트랙 접근' 가시화",
       "telegram_core_fact": "코아스템켐온은 지난 17일 미국 식품의약국(FDA)과 뉴로나타 알-주의 임상 2상 결과에 대한 해석을 공유하고, 후속 확증 임상(3b상)과 가속승인 등 후속 개발 전략을 논의했다고 19일 밝혔다.",
       "title": "코아스템켐온, FDA와 '뉴로나타-알' 임상 논의… 美 진출 '투트랙 접근' 가시화"
+    },
+    "fact:196154921cd5e5459e7c15c7": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026102118031616786",
+      "source": "머니투데이",
+      "source_body_digest": "7704b0cc7b3bfcca3f1c1dcd0f60b18384cbf968e07d09ab7018f6b559afd485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:882909ecacf60cb508e589652b0854753710c988b2607df0524b640829c15f8d",
+      "source_fact_keys": [
+        "source_fact:v1:2944261f6298208a35b9489dbeaf7be39a2fbed1c6e8b2744a414f478a306f0b",
+        "source_fact:v1:9ee3661236a95e07ef79bc0d9be2d8f38a7c53ff6bc2af56566069a9397f4ec9",
+        "source_fact:v1:ac90762c7510ce28d10be83bdcf7764fe96864384f7ee6d11c88d13234475577",
+        "source_fact:v1:d28e254c1d3ef041368a47939b61ab99524e03003f05af37b08691a125e014f1",
+        "source_fact:v1:f62d2f2eefcabac17bcab67a64a958695bd0c6027a66044c35c9c0e12573df08"
+      ],
+      "source_published_kst": "2026-10-21T18:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨",
+      "telegram_core_fact": "금융투자업계에 따르면 SK하이닉스는 이날 40조원 자사주 매입을 마무리했다.",
+      "title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨"
     },
     "fact:1969dd64bd5ed5f10623aab4": {
       "first_seen_kst": "2026-10-14T16:58:19+09:00",
@@ -135074,6 +135275,38 @@
       "telegram_core_fact": "기업공개(IPO)를 앞둔 앤트로픽이 기업용 인공지능(AI) 수요 확대에 힘입어 올해 3분기 매출을 전 분기보다 45% 끌어올리고 조정 기준 흑자를 달성했다.",
       "title": "[AI는 지금] 매출 45% 뛰고 흑자…앤트로픽, 성장 이끈 비결은"
     },
+    "fact:46e4592a8c10c30281b72e33": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
+    },
     "fact:46f9fe89b64cf4d7cec5b8bf": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -139990,6 +140223,39 @@
       "telegram_core_fact": "한화생명이 올해 3분기 적자 전환 전망에 하락세다. 설용진 iM증권 연구원은 한화생명이 올해 3분기 755억원의 순손실을 기록해 지난해 같은 기간 흑자에서 적자로 돌아설 것으로 내다봤다.",
       "title": "[ET특징주]한화생명, 3분기 적자 전망에 하락세"
     },
+    "fact:549d6ca455d367577278a84a": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "fact:54a6c8cccbedc40927083e4a": {
       "first_seen_kst": "2026-10-08T11:06:13+09:00",
       "lanes": {
@@ -143007,6 +143273,29 @@
       "source_title": "비나텍, 1230억 규모 데이터센터용 슈퍼커패시터 공급계약",
       "telegram_core_fact": "비나텍은 1230억원 데이터센터용 슈퍼커패시터 공급계약을 체결했다고 19일 공시했다.",
       "title": "비나텍, 1230억 규모 데이터센터용 슈퍼커패시터 공급계약"
+    },
+    "fact:5c1cd93ad5d6af1b5e3c1eb5": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.dt.co.kr/article/12090659",
+      "source": "디지털타임스",
+      "source_body_digest": "b5adf9982e6d4e596722d0d2b38657d549cbbb3803878730b3de7f6d907b4df4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f90a58751c2b58c7cea50c1e9f1e61c001cdc1e7ca101d5850f68b82208643",
+      "source_fact_keys": [
+        "source_fact:v1:0a291a7de64fa6324c9dc1a3b312f6f91e334f4500ef2f3982f170f5043c3ffd",
+        "source_fact:v1:4e213a7659a7a1631932ec2cec68ca26c95d7981297860f89886885768a4382f",
+        "source_fact:v1:550bae239cc274b4fe4870d6874c199f47c97edcd952b7a0cb5ddfececcb51eb",
+        "source_fact:v1:608ec21b0ba6c6e5e57b8c73ff0c0e8990e2379ff2024e3a7b8b4240fa5f2a11"
+      ],
+      "source_published_kst": "2026-10-22T14:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”",
+      "telegram_core_fact": "LG디스플레이가 원·달러 환율 하락과 칩플레이션(반도체 등 부품 가격 상승) 등의 영향으로 지난해 대비 영업이익이 40% 넘게 감소했다.",
+      "title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”"
     },
     "fact:5c34e50aebad6bb8e0016bde": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -158279,6 +158568,31 @@
       "telegram_core_fact": "11일 신한투자증권 이지한 연구원·이동현 연구위원은 리포트를 통해 \"건설장비 업황은 다운사이클을 지나 업사이클에 진입한 것으로 판단된다\"며 \"각국 AI 데이터센터, 인프라 투자, 광산 마이닝 투자 등 비주택 시장 중심으로 건설 장비 수요가 증가할 전망\"이라고 전했다.",
       "title": "[주末머니]\"건설장비, 업사이클 진입\"…증권사 추천 종목은?"
     },
+    "fact:85184cd88555f66bc0139a5c": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021131700030",
+      "source": "연합뉴스",
+      "source_body_digest": "92dff663870d6c05c713e36a04b957dd5bcbe1e0825ca53de87df282212a4ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c82a05faf5f0b7ff5a1de061bcdf5f4bd90dcac1f7a14e8d862286513904278a",
+      "source_fact_keys": [
+        "source_fact:v1:115e99f85a4a269dd1cd67d4822fe4c867574db00eebae95c15ab87cb1030f78",
+        "source_fact:v1:137e727fbce026f2d91f64e3674cf32b65e424da0f4391e097ff32bbb499c3d3",
+        "source_fact:v1:3d528d59c832f348a6fdd9ce0b76c4108f5102fdfdaaa34a196ad68fb357a01f",
+        "source_fact:v1:3fc44a7b69007db4e90b9c7ce020b4852c54a784686f3f3f7a854a5428e1a340",
+        "source_fact:v1:8e94c6eb147aff228fa04c51ae5a8536c39c0ad42cdcea48ad667cf3be010528",
+        "source_fact:v1:e9f8491a819d3ad82c8b2cbe9ad5d6d2c61c055b407496764156e0ec24ad8351"
+      ],
+      "source_published_kst": "2026-10-22T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스",
+      "telegram_core_fact": "22일 국회 농림축산식품해양수산위원회 소속 더불어민주당 임미애 의원이 재정경제부에서 제출받은 '2025년 할당관세 지원실적 및 효과분석' 보고서에 따르면 지난해 할당관세가 적용된 식료품 10개 품목 가운데 소비자가격 인하 효과가 확인된 품목은 파인애플·망고·오렌지 등 3개에 그쳤다.",
+      "title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스"
+    },
     "fact:851a019558107ec8d4b1b8ac": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
       "lanes": {
@@ -167553,6 +167867,27 @@
       "source_title": "미국발 한풍에 코스피·코스닥서 잇단 매도 사이드카 발동",
       "telegram_core_fact": "코스피·코스닥은 각각 5.27%·6.25% 하락해 양 시장에 매도 사이드카가 발동됐다.",
       "title": "미국발 한풍에 코스피·코스닥서 잇단 매도 사이드카 발동"
+    },
+    "fact:9b37b1d3dda28c2e35a0ad62": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.hankyung.com/article/202610227448g",
+      "source": "한국경제",
+      "source_body_digest": "68b4183fd0aec75998278692f814f8f6552549a7a2ff04b36838197664afef72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e724d2722a2a5045b121a8ffa4661a70d832c7b37ce7a4dfdb0ddef5cc05509",
+      "source_fact_keys": [
+        "source_fact:v1:8565857cf2f8351484e0e318310fa13e3ba7ce476df68ee52a9c183754986903",
+        "source_fact:v1:87695d212915f958bae35624d401e989d4ba41c617c4f77f4e9e6e2965d59a27"
+      ],
+      "source_published_kst": "2026-10-22T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화",
+      "telegram_core_fact": "빈폴골프에 따르면 지난 9월 1일부터 10월 18일까지 빈폴골프 여성 점퍼 매출은 전년비 336% 증가했다.",
+      "title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화"
     },
     "fact:9b46421a601161cda3f6e98e": {
       "first_seen_kst": "2026-10-15T18:18:04+09:00",
@@ -212979,6 +213314,31 @@
       "telegram_core_fact": "미 노동부에 따르면 9월 전 품목 CPI는 전달 대비 0.6% 상승했다.",
       "title": "뉴욕증시, CPI 소화하며 혼조 출발"
     },
+    "link:092cca5c188de472f9e516db": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021131700030",
+      "source": "연합뉴스",
+      "source_body_digest": "92dff663870d6c05c713e36a04b957dd5bcbe1e0825ca53de87df282212a4ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c82a05faf5f0b7ff5a1de061bcdf5f4bd90dcac1f7a14e8d862286513904278a",
+      "source_fact_keys": [
+        "source_fact:v1:115e99f85a4a269dd1cd67d4822fe4c867574db00eebae95c15ab87cb1030f78",
+        "source_fact:v1:137e727fbce026f2d91f64e3674cf32b65e424da0f4391e097ff32bbb499c3d3",
+        "source_fact:v1:3d528d59c832f348a6fdd9ce0b76c4108f5102fdfdaaa34a196ad68fb357a01f",
+        "source_fact:v1:3fc44a7b69007db4e90b9c7ce020b4852c54a784686f3f3f7a854a5428e1a340",
+        "source_fact:v1:8e94c6eb147aff228fa04c51ae5a8536c39c0ad42cdcea48ad667cf3be010528",
+        "source_fact:v1:e9f8491a819d3ad82c8b2cbe9ad5d6d2c61c055b407496764156e0ec24ad8351"
+      ],
+      "source_published_kst": "2026-10-22T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스",
+      "telegram_core_fact": "22일 국회 농림축산식품해양수산위원회 소속 더불어민주당 임미애 의원이 재정경제부에서 제출받은 '2025년 할당관세 지원실적 및 효과분석' 보고서에 따르면 지난해 할당관세가 적용된 식료품 10개 품목 가운데 소비자가격 인하 효과가 확인된 품목은 파인애플·망고·오렌지 등 3개에 그쳤다.",
+      "title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스"
+    },
     "link:09443e61b59c4a304bdb5dc5": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
       "lanes": {
@@ -222282,6 +222642,24 @@
       "source": "헤럴드경제",
       "title": "“블록처럼 연결한다” LG전자, AI 데이터센터용 모듈형 냉각 설루션 첫 공개"
     },
+    "link:1ba602963ea6acd73e7b6ce6": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022027300030",
+      "source": "연합뉴스",
+      "source_body_digest": "013d72d586710cc65bf21502685a1c051ec68423e8c04de7b7801b6e6b5ac989",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "오리온, '카스타드' 해외 인기에 생산라인 증설…연3천억원 규모 | 연합뉴스",
+      "telegram_core_fact": "오리온[271560]은 국내외 수요 증가에 대응해 카스타드 생산라인을 한국과 베트남, 인도에서 증설했다고 22일 밝혔다.",
+      "title": "오리온, '카스타드' 해외 인기에 생산라인 증설…연3천억원 규모 | 연합뉴스"
+    },
     "link:1bb44c225793c8c05275516c": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
       "lanes": {
@@ -231175,6 +231553,39 @@
       "telegram_core_fact": "반도체 실적 개선으로 대규모 특별성과급 지급이 예고되면서 삼성전자 직원들의 보상 규모에도 관심이 쏠리고 있다.",
       "title": "“삼성전자 들어온게 인생 최대 업적”…성과급 30억 부부 “진지하게 서민 탈출한 것 같다”"
     },
+    "link:2d5da4090fac5826c5f74637": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "link:2d5ea07895a9ca1dfb2ff315": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
       "lanes": {
@@ -239103,6 +239514,27 @@
       "source": "뉴시스",
       "title": "\"AI 속도 조절론 속에 숨은 의도 있다\"…서울대 교수가 본 빅테크의 셈법"
     },
+    "link:3c852371a16d8cac20208309": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.hankyung.com/article/202610227448g",
+      "source": "한국경제",
+      "source_body_digest": "68b4183fd0aec75998278692f814f8f6552549a7a2ff04b36838197664afef72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e724d2722a2a5045b121a8ffa4661a70d832c7b37ce7a4dfdb0ddef5cc05509",
+      "source_fact_keys": [
+        "source_fact:v1:8565857cf2f8351484e0e318310fa13e3ba7ce476df68ee52a9c183754986903",
+        "source_fact:v1:87695d212915f958bae35624d401e989d4ba41c617c4f77f4e9e6e2965d59a27"
+      ],
+      "source_published_kst": "2026-10-22T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화",
+      "telegram_core_fact": "빈폴골프에 따르면 지난 9월 1일부터 10월 18일까지 빈폴골프 여성 점퍼 매출은 전년비 336% 증가했다.",
+      "title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화"
+    },
     "link:3c8f2e5b2bcedefcc5b2e69d": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
       "lanes": {
@@ -241446,6 +241878,29 @@
       "source_title": "LS \"이수화학, 3분기 영업익 400억원 전망⋯비화학 부문도 흑자전환\"",
       "telegram_core_fact": "상반기에 이미 화학 부문을 중심으로 1164억원의 영업이익을 거둔 가운데 9~10월 원유와 등유 가격이 다시 강세를 보이며 제품 가격도 상승하고 있다.",
       "title": "LS \"이수화학, 3분기 영업익 400억원 전망⋯비화학 부문도 흑자전환\""
+    },
+    "link:412daf1e18a7fccf891f4d5c": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.dt.co.kr/article/12090659",
+      "source": "디지털타임스",
+      "source_body_digest": "b5adf9982e6d4e596722d0d2b38657d549cbbb3803878730b3de7f6d907b4df4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f90a58751c2b58c7cea50c1e9f1e61c001cdc1e7ca101d5850f68b82208643",
+      "source_fact_keys": [
+        "source_fact:v1:0a291a7de64fa6324c9dc1a3b312f6f91e334f4500ef2f3982f170f5043c3ffd",
+        "source_fact:v1:4e213a7659a7a1631932ec2cec68ca26c95d7981297860f89886885768a4382f",
+        "source_fact:v1:550bae239cc274b4fe4870d6874c199f47c97edcd952b7a0cb5ddfececcb51eb",
+        "source_fact:v1:608ec21b0ba6c6e5e57b8c73ff0c0e8990e2379ff2024e3a7b8b4240fa5f2a11"
+      ],
+      "source_published_kst": "2026-10-22T14:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”",
+      "telegram_core_fact": "LG디스플레이가 원·달러 환율 하락과 칩플레이션(반도체 등 부품 가격 상승) 등의 영향으로 지난해 대비 영업이익이 40% 넘게 감소했다.",
+      "title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”"
     },
     "link:413dc32d636b5e485fb4e699": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -323022,6 +323477,30 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "4대 과기원 수시 '역대 최대'…AI·반도체 열풍에 '3만명' 몰려"
     },
+    "link:e4eb73f9e76c85b2dc99b08d": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026102118031616786",
+      "source": "머니투데이",
+      "source_body_digest": "7704b0cc7b3bfcca3f1c1dcd0f60b18384cbf968e07d09ab7018f6b559afd485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:882909ecacf60cb508e589652b0854753710c988b2607df0524b640829c15f8d",
+      "source_fact_keys": [
+        "source_fact:v1:2944261f6298208a35b9489dbeaf7be39a2fbed1c6e8b2744a414f478a306f0b",
+        "source_fact:v1:9ee3661236a95e07ef79bc0d9be2d8f38a7c53ff6bc2af56566069a9397f4ec9",
+        "source_fact:v1:ac90762c7510ce28d10be83bdcf7764fe96864384f7ee6d11c88d13234475577",
+        "source_fact:v1:d28e254c1d3ef041368a47939b61ab99524e03003f05af37b08691a125e014f1",
+        "source_fact:v1:f62d2f2eefcabac17bcab67a64a958695bd0c6027a66044c35c9c0e12573df08"
+      ],
+      "source_published_kst": "2026-10-21T18:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨",
+      "telegram_core_fact": "금융투자업계에 따르면 SK하이닉스는 이날 40조원 자사주 매입을 마무리했다.",
+      "title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨"
+    },
     "link:e4edec671d7ac5ab5f1179c9": {
       "first_seen_kst": "2026-10-02T07:36:51+09:00",
       "lanes": {
@@ -331072,6 +331551,38 @@
       "source_title": "우주데이터센터 경쟁 치열한데 韓 예산 부족···\"궤도 실증 시급\"",
       "telegram_core_fact": "우주청은 2030년까지 핵심기술의 우주 실증 이력을 확보하고, 국내 연구개발 성과를 검증플랫폼 위성에 탑재해 누리호로 발사하는 방안을 검토하고 있다.",
       "title": "우주데이터센터 경쟁 치열한데 韓 예산 부족···\"궤도 실증 시급\""
+    },
+    "link:f50f0a9b2057f344dd466d93": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
     },
     "link:f520413e08710a33dc48454a": {
       "first_seen_kst": "2026-10-21T22:01:46+09:00",
@@ -340186,6 +340697,30 @@
       "source_title": "메모리 오르니 \"가격 낮춰라\" 압박·사양 조절도..K디스플레이 기회?",
       "telegram_core_fact": "유비리서치는 \"메모리는 공급이 빠듯해 세트(완제품) 업체가 가격을 협상할 여지가 거의 없는 반면 OLED 패널은 생산능력이 늘고 있어 단가 인하를 요구하기 쉽다\"고 밝혔다.",
       "title": "메모리 오르니 \"가격 낮춰라\" 압박·사양 조절도..K디스플레이 기회?"
+    },
+    "original:084ab98b6dbd2675f50c939c": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026102118031616786",
+      "source": "머니투데이",
+      "source_body_digest": "7704b0cc7b3bfcca3f1c1dcd0f60b18384cbf968e07d09ab7018f6b559afd485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:882909ecacf60cb508e589652b0854753710c988b2607df0524b640829c15f8d",
+      "source_fact_keys": [
+        "source_fact:v1:2944261f6298208a35b9489dbeaf7be39a2fbed1c6e8b2744a414f478a306f0b",
+        "source_fact:v1:9ee3661236a95e07ef79bc0d9be2d8f38a7c53ff6bc2af56566069a9397f4ec9",
+        "source_fact:v1:ac90762c7510ce28d10be83bdcf7764fe96864384f7ee6d11c88d13234475577",
+        "source_fact:v1:d28e254c1d3ef041368a47939b61ab99524e03003f05af37b08691a125e014f1",
+        "source_fact:v1:f62d2f2eefcabac17bcab67a64a958695bd0c6027a66044c35c9c0e12573df08"
+      ],
+      "source_published_kst": "2026-10-21T18:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨",
+      "telegram_core_fact": "금융투자업계에 따르면 SK하이닉스는 이날 40조원 자사주 매입을 마무리했다.",
+      "title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨"
     },
     "original:085616fb98bac4caabb33b2b": {
       "first_seen_kst": "2026-10-12T23:57:10+09:00",
@@ -391210,6 +391745,38 @@
       "telegram_core_fact": "LG전자는 미국 AI 데이터센터 인프라 기업 에어와 5조원 규모 칠러 공급 계약을 체결했다.",
       "title": "[단독] 메모리 넘어 AI 부품·전력기기 확보전…빅테크 '5년 계약' 줄섰다"
     },
+    "original:6fac9d2d81e092af46517480": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
+    },
     "original:6fb8881bf9e8e6881d137e7d": {
       "first_seen_kst": "2026-10-01T23:10:43+09:00",
       "lanes": {
@@ -396806,6 +397373,27 @@
       "source_title": "전월세난 잡아라…정부 “내년까지 수도권 공적주택 10만호 입주 추진” [부동산360]",
       "telegram_core_fact": "그간 추진해 온 공급 기반 마련 성과를 바탕으로 실제 입주 물량 확대로 이어지도록 주요 정책 과제들을 속도감 있게 이행하겠다는 계획이다.",
       "title": "전월세난 잡아라…정부 “내년까지 수도권 공적주택 10만호 입주 추진” [부동산360]"
+    },
+    "original:7aa3e69ee7c4340af94911a4": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.hankyung.com/article/202610227448g",
+      "source": "한국경제",
+      "source_body_digest": "68b4183fd0aec75998278692f814f8f6552549a7a2ff04b36838197664afef72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e724d2722a2a5045b121a8ffa4661a70d832c7b37ce7a4dfdb0ddef5cc05509",
+      "source_fact_keys": [
+        "source_fact:v1:8565857cf2f8351484e0e318310fa13e3ba7ce476df68ee52a9c183754986903",
+        "source_fact:v1:87695d212915f958bae35624d401e989d4ba41c617c4f77f4e9e6e2965d59a27"
+      ],
+      "source_published_kst": "2026-10-22T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화",
+      "telegram_core_fact": "빈폴골프에 따르면 지난 9월 1일부터 10월 18일까지 빈폴골프 여성 점퍼 매출은 전년비 336% 증가했다.",
+      "title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화"
     },
     "original:7ab19b5b17eab0378d21bb47": {
       "first_seen_kst": "2026-10-15T12:36:21+09:00",
@@ -417229,6 +417817,24 @@
       "source": "연합뉴스",
       "title": "美 9월 고용 2만9천명 증가 그쳐…10월 금리인상 베팅 감소(종합) | 연합뉴스"
     },
+    "original:a32e050a124d96fc1b0ab184": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022027300030",
+      "source": "연합뉴스",
+      "source_body_digest": "013d72d586710cc65bf21502685a1c051ec68423e8c04de7b7801b6e6b5ac989",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "오리온, '카스타드' 해외 인기에 생산라인 증설…연3천억원 규모 | 연합뉴스",
+      "telegram_core_fact": "오리온[271560]은 국내외 수요 증가에 대응해 카스타드 생산라인을 한국과 베트남, 인도에서 증설했다고 22일 밝혔다.",
+      "title": "오리온, '카스타드' 해외 인기에 생산라인 증설…연3천억원 규모 | 연합뉴스"
+    },
     "original:a339367f9861736c164d0668": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
       "lanes": {
@@ -433244,6 +433850,39 @@
       "telegram_core_fact": "지난 16일 기준 이달 국내 투자자들의 미국 주식 순매수액은 약 39억달러(약 5조2000억원)다. 한국예탁결제원에 따르면 지난 15일 기준 국내 투자자들의 미국 주식 보관금액은 1889억달러(약 251조원)로, 지난 6일(2009억달러·약 267조원)보다 일주일여 만에 120억달러(약 16조원) 줄었다.",
       "title": "미국 주식 쓸어 담았는데 또 이 업종을…서학개미 잔고 16조 증발"
     },
+    "original:c4e2388df6c2993b43b4453e": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "original:c4ff6fd91f10fcb196be0bf4": {
       "first_seen_kst": "2026-10-13T21:34:27+09:00",
       "lanes": {
@@ -434260,6 +434899,29 @@
       "source_title": "“같은 바다인데 사용료 수십 배 차이”…대한상의, 규제 개선 75건 건의",
       "telegram_core_fact": "대한상의는 지역기업들이 제기한 규제합리화 과제 75건을 민관합동 규제합리화추진단에 제출했다고 15일 밝혔다.",
       "title": "“같은 바다인데 사용료 수십 배 차이”…대한상의, 규제 개선 75건 건의"
+    },
+    "original:c7796bb70b9a05f1e4294599": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.dt.co.kr/article/12090659",
+      "source": "디지털타임스",
+      "source_body_digest": "b5adf9982e6d4e596722d0d2b38657d549cbbb3803878730b3de7f6d907b4df4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f90a58751c2b58c7cea50c1e9f1e61c001cdc1e7ca101d5850f68b82208643",
+      "source_fact_keys": [
+        "source_fact:v1:0a291a7de64fa6324c9dc1a3b312f6f91e334f4500ef2f3982f170f5043c3ffd",
+        "source_fact:v1:4e213a7659a7a1631932ec2cec68ca26c95d7981297860f89886885768a4382f",
+        "source_fact:v1:550bae239cc274b4fe4870d6874c199f47c97edcd952b7a0cb5ddfececcb51eb",
+        "source_fact:v1:608ec21b0ba6c6e5e57b8c73ff0c0e8990e2379ff2024e3a7b8b4240fa5f2a11"
+      ],
+      "source_published_kst": "2026-10-22T14:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”",
+      "telegram_core_fact": "LG디스플레이가 원·달러 환율 하락과 칩플레이션(반도체 등 부품 가격 상승) 등의 영향으로 지난해 대비 영업이익이 40% 넘게 감소했다.",
+      "title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”"
     },
     "original:c784497b71d87908d1c95817": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
@@ -449880,6 +450542,31 @@
       "source": "뉴시스",
       "title": "롯데카드, 영업정지 한 달 새 회원 8만명 감소…PLCC로 회복 시동"
     },
+    "original:e7a8f6a2c4d7c5569cfa1ec6": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021131700030",
+      "source": "연합뉴스",
+      "source_body_digest": "92dff663870d6c05c713e36a04b957dd5bcbe1e0825ca53de87df282212a4ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c82a05faf5f0b7ff5a1de061bcdf5f4bd90dcac1f7a14e8d862286513904278a",
+      "source_fact_keys": [
+        "source_fact:v1:115e99f85a4a269dd1cd67d4822fe4c867574db00eebae95c15ab87cb1030f78",
+        "source_fact:v1:137e727fbce026f2d91f64e3674cf32b65e424da0f4391e097ff32bbb499c3d3",
+        "source_fact:v1:3d528d59c832f348a6fdd9ce0b76c4108f5102fdfdaaa34a196ad68fb357a01f",
+        "source_fact:v1:3fc44a7b69007db4e90b9c7ce020b4852c54a784686f3f3f7a854a5428e1a340",
+        "source_fact:v1:8e94c6eb147aff228fa04c51ae5a8536c39c0ad42cdcea48ad667cf3be010528",
+        "source_fact:v1:e9f8491a819d3ad82c8b2cbe9ad5d6d2c61c055b407496764156e0ec24ad8351"
+      ],
+      "source_published_kst": "2026-10-22T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스",
+      "telegram_core_fact": "22일 국회 농림축산식품해양수산위원회 소속 더불어민주당 임미애 의원이 재정경제부에서 제출받은 '2025년 할당관세 지원실적 및 효과분석' 보고서에 따르면 지난해 할당관세가 적용된 식료품 10개 품목 가운데 소비자가격 인하 효과가 확인된 품목은 파인애플·망고·오렌지 등 3개에 그쳤다.",
+      "title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스"
+    },
     "original:e7a9f648aff1d7df732b6598": {
       "first_seen_kst": "2026-10-22T12:56:15+09:00",
       "lanes": {
@@ -465339,6 +466026,38 @@
       "telegram_core_fact": "소식통 1명은 SK하이닉스가 다롄 공장에서 최대 240단까지 생산할 수 있는 허가를 받았으며, 300단 이상 칩의 연구개발(R&D)을 위해 미 정부에 승인을 요청할 수 있다고 전했다.",
       "title": "\"삼성·SK하이닉스, 中공장 첨단화\"…YMTC에 밀리자 반격"
     },
+    "source_fact:01f923b124034aa0a91b96b7": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
+    },
     "source_fact:01fae6c0e92bf7ba3d62b4f8": {
       "first_seen_kst": "2026-10-14T12:59:52+09:00",
       "lanes": {
@@ -477378,6 +478097,39 @@
       "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
       "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
     },
+    "source_fact:08001e56f6b5a44f61ad1d39": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "source_fact:080393c43d4ee607fe3460cc": {
       "first_seen_kst": "2026-10-14T07:46:13+09:00",
       "lanes": {
@@ -479843,6 +480595,30 @@
       "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
       "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
     },
+    "source_fact:09484c02bc0eda2b598ac789": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026102118031616786",
+      "source": "머니투데이",
+      "source_body_digest": "7704b0cc7b3bfcca3f1c1dcd0f60b18384cbf968e07d09ab7018f6b559afd485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:882909ecacf60cb508e589652b0854753710c988b2607df0524b640829c15f8d",
+      "source_fact_keys": [
+        "source_fact:v1:2944261f6298208a35b9489dbeaf7be39a2fbed1c6e8b2744a414f478a306f0b",
+        "source_fact:v1:9ee3661236a95e07ef79bc0d9be2d8f38a7c53ff6bc2af56566069a9397f4ec9",
+        "source_fact:v1:ac90762c7510ce28d10be83bdcf7764fe96864384f7ee6d11c88d13234475577",
+        "source_fact:v1:d28e254c1d3ef041368a47939b61ab99524e03003f05af37b08691a125e014f1",
+        "source_fact:v1:f62d2f2eefcabac17bcab67a64a958695bd0c6027a66044c35c9c0e12573df08"
+      ],
+      "source_published_kst": "2026-10-21T18:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨",
+      "telegram_core_fact": "금융투자업계에 따르면 SK하이닉스는 이날 40조원 자사주 매입을 마무리했다.",
+      "title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨"
+    },
     "source_fact:0948d5611baf3b7c9b19c694": {
       "first_seen_kst": "2026-10-14T14:53:15+09:00",
       "lanes": {
@@ -481079,6 +481855,38 @@
       "source_title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향",
       "telegram_core_fact": "한 업계 관계자 A는 \"삼성전자가 최근 협력사에 연간 스마트폰 출하량 2억 3000만대 초반에 해당하는 4분기 부품 발주량을 통보했다\"며 \"당초 부품업계에서 기대했던 (스마트폰 출하량 전망치) 2억 4000만대보다 적다\"고 밝혔다.",
       "title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향"
+    },
+    "source_fact:0a05b3383b482efcde84669c": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
     },
     "source_fact:0a086fc93d23f52b478e2c06": {
       "first_seen_kst": "2026-10-12T22:07:35+09:00",
@@ -482767,6 +483575,38 @@
       "source_title": "경유값 2배 뛰었는데 물량은 제자리…수출 상한에 발 묶인 정유업계",
       "telegram_core_fact": "국내 공급에 차질이 없는 범위에서 수출 제한을 완화해야 한다는 지적이 나온다.",
       "title": "경유값 2배 뛰었는데 물량은 제자리…수출 상한에 발 묶인 정유업계"
+    },
+    "source_fact:0b1943e7facec9b95951a6f5": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
     },
     "source_fact:0b1e98928f6167350bfedb6d": {
       "first_seen_kst": "2026-10-14T17:21:42+09:00",
@@ -536929,6 +537769,38 @@
       "telegram_core_fact": "앨리 파이낸셜(ALLY)은 2026년 3분기 GAAP 기준 희석 주당순이익(EPS)이 1.30달러로 전년 동기(1.18달러) 대비 10% 증가했고, GAAP 기준 총순매출은 23억3200만 달러로 8% 늘었다고 10월 20일 발표했다.",
       "title": "앨리 파이낸셜, 3분기 GAAP 주당순이익 1.30달러..전년비 10% 증가"
     },
+    "source_fact:2551f6e0582ea151472aacd4": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
+    },
     "source_fact:255288ea0f8f17e9953231a3": {
       "first_seen_kst": "2026-10-19T06:35:52+09:00",
       "lanes": {
@@ -544654,6 +545526,39 @@
       "telegram_core_fact": "현대엘리베이터가 현대무벡스 지분 일부를 매각하고 1700억원 자사주를 소각하며 자산 효율화와 주주환원에 나선다.",
       "title": "현대엘리베이터, 현대무벡스 지분 1160억 어치 팔고 1700억 자사주 소각"
     },
+    "source_fact:28e45ca81b359e60b5601b01": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "source_fact:28e7f32de7a43ca7b14f03ac": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -551054,6 +551959,29 @@
       "source_title": "[인터뷰] 장재훈 현대차그룹 부회장 \"인도에 21조원 투자…60%는 생산시설, 20%는 AI 등 신사업\"",
       "telegram_core_fact": "장재훈 현대차그룹 부회장은 14일(현지시간) 인도 마하라슈트라주 푸네 신공장 준공식 이후 열린 기자간담회에서 \"노후 시설 등 생산과 관련된 시설들을 업그레이드하고 증설하는 부분이 전체 투자의 60% 정도 될 것\"이라고 밝혔다.",
       "title": "[인터뷰] 장재훈 현대차그룹 부회장 \"인도에 21조원 투자…60%는 생산시설, 20%는 AI 등 신사업\""
+    },
+    "source_fact:2bd57f65e4dd8fc9b1224ed9": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.dt.co.kr/article/12090659",
+      "source": "디지털타임스",
+      "source_body_digest": "b5adf9982e6d4e596722d0d2b38657d549cbbb3803878730b3de7f6d907b4df4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f90a58751c2b58c7cea50c1e9f1e61c001cdc1e7ca101d5850f68b82208643",
+      "source_fact_keys": [
+        "source_fact:v1:0a291a7de64fa6324c9dc1a3b312f6f91e334f4500ef2f3982f170f5043c3ffd",
+        "source_fact:v1:4e213a7659a7a1631932ec2cec68ca26c95d7981297860f89886885768a4382f",
+        "source_fact:v1:550bae239cc274b4fe4870d6874c199f47c97edcd952b7a0cb5ddfececcb51eb",
+        "source_fact:v1:608ec21b0ba6c6e5e57b8c73ff0c0e8990e2379ff2024e3a7b8b4240fa5f2a11"
+      ],
+      "source_published_kst": "2026-10-22T14:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”",
+      "telegram_core_fact": "LG디스플레이가 원·달러 환율 하락과 칩플레이션(반도체 등 부품 가격 상승) 등의 영향으로 지난해 대비 영업이익이 40% 넘게 감소했다.",
+      "title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”"
     },
     "source_fact:2bd8da5a8ad49cce00e0253d": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
@@ -560622,6 +561550,39 @@
       "source_title": "주러대사 “현대차·기아, 러시아 시장 복귀 방안 살펴볼 수도”",
       "telegram_core_fact": "현대차·기아는 2022년 러시아·우크라이나 전쟁 발발 전까지 러시아 자동차 판매량 2위와 3위를 기록하는 등 승승장구해왔다.",
       "title": "주러대사 “현대차·기아, 러시아 시장 복귀 방안 살펴볼 수도”"
+    },
+    "source_fact:30b40b69eb80ec4c208366ca": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
     },
     "source_fact:30b475d61c34427d0c564efb": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
@@ -570812,6 +571773,38 @@
       ],
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "[미국 주식 돋보기] 데이터센터 전력 구원투수 '비코' 고공행진"
+    },
+    "source_fact:35cc344b3dd7d8b0b04714ad": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
     },
     "source_fact:35cc77daabbd78a0c19f1afa": {
       "first_seen_kst": "2026-10-12T06:42:49+09:00",
@@ -617314,6 +618307,39 @@
       "telegram_core_fact": "특히 두산은 단순한 소재 공급업체에서 벗어나 고객사의 차세대 제품 개발 단계부터 참여하는 기술 파트너로 역할을 확대할 방침이다.",
       "title": "[단독]\"50년 CCL 기술로 미래 소재 개발\"…두산, 반도체 영토 키운다"
     },
+    "source_fact:4c6c3f9c9092b0b7a92547f0": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "source_fact:4c6deb9b9863239af12b94dd": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
       "lanes": {
@@ -622788,6 +623814,31 @@
       "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
       "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
       "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
+    },
+    "source_fact:4ee29bc6e562e831dd37a863": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021131700030",
+      "source": "연합뉴스",
+      "source_body_digest": "92dff663870d6c05c713e36a04b957dd5bcbe1e0825ca53de87df282212a4ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c82a05faf5f0b7ff5a1de061bcdf5f4bd90dcac1f7a14e8d862286513904278a",
+      "source_fact_keys": [
+        "source_fact:v1:115e99f85a4a269dd1cd67d4822fe4c867574db00eebae95c15ab87cb1030f78",
+        "source_fact:v1:137e727fbce026f2d91f64e3674cf32b65e424da0f4391e097ff32bbb499c3d3",
+        "source_fact:v1:3d528d59c832f348a6fdd9ce0b76c4108f5102fdfdaaa34a196ad68fb357a01f",
+        "source_fact:v1:3fc44a7b69007db4e90b9c7ce020b4852c54a784686f3f3f7a854a5428e1a340",
+        "source_fact:v1:8e94c6eb147aff228fa04c51ae5a8536c39c0ad42cdcea48ad667cf3be010528",
+        "source_fact:v1:e9f8491a819d3ad82c8b2cbe9ad5d6d2c61c055b407496764156e0ec24ad8351"
+      ],
+      "source_published_kst": "2026-10-22T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스",
+      "telegram_core_fact": "22일 국회 농림축산식품해양수산위원회 소속 더불어민주당 임미애 의원이 재정경제부에서 제출받은 '2025년 할당관세 지원실적 및 효과분석' 보고서에 따르면 지난해 할당관세가 적용된 식료품 10개 품목 가운데 소비자가격 인하 효과가 확인된 품목은 파인애플·망고·오렌지 등 3개에 그쳤다.",
+      "title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스"
     },
     "source_fact:4ee384f04d72fee9f1ce1d38": {
       "first_seen_kst": "2026-10-15T01:29:03+09:00",
@@ -629803,6 +630854,31 @@
       "telegram_core_fact": "블룸버그(Bloomberg)에 따르면 앤트로픽은 이르면 11월 중순 기업공개(IPO)를 추진한다.",
       "title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표"
     },
+    "source_fact:52414a4fe649b6877e2ac722": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021131700030",
+      "source": "연합뉴스",
+      "source_body_digest": "92dff663870d6c05c713e36a04b957dd5bcbe1e0825ca53de87df282212a4ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c82a05faf5f0b7ff5a1de061bcdf5f4bd90dcac1f7a14e8d862286513904278a",
+      "source_fact_keys": [
+        "source_fact:v1:115e99f85a4a269dd1cd67d4822fe4c867574db00eebae95c15ab87cb1030f78",
+        "source_fact:v1:137e727fbce026f2d91f64e3674cf32b65e424da0f4391e097ff32bbb499c3d3",
+        "source_fact:v1:3d528d59c832f348a6fdd9ce0b76c4108f5102fdfdaaa34a196ad68fb357a01f",
+        "source_fact:v1:3fc44a7b69007db4e90b9c7ce020b4852c54a784686f3f3f7a854a5428e1a340",
+        "source_fact:v1:8e94c6eb147aff228fa04c51ae5a8536c39c0ad42cdcea48ad667cf3be010528",
+        "source_fact:v1:e9f8491a819d3ad82c8b2cbe9ad5d6d2c61c055b407496764156e0ec24ad8351"
+      ],
+      "source_published_kst": "2026-10-22T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스",
+      "telegram_core_fact": "22일 국회 농림축산식품해양수산위원회 소속 더불어민주당 임미애 의원이 재정경제부에서 제출받은 '2025년 할당관세 지원실적 및 효과분석' 보고서에 따르면 지난해 할당관세가 적용된 식료품 10개 품목 가운데 소비자가격 인하 효과가 확인된 품목은 파인애플·망고·오렌지 등 3개에 그쳤다.",
+      "title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스"
+    },
     "source_fact:524ccc44d9e0245e8cacfa64": {
       "first_seen_kst": "2026-10-20T12:12:43+09:00",
       "lanes": {
@@ -631537,6 +632613,39 @@
       "source_title": "美·우크라 갈등 풀리나…트럼프 \"이제 종전 합의할 때\" 압박",
       "telegram_core_fact": "트럼프 대통령은 이날 백악관에서 기자들과 만나 우크라이나에 막대한 지원을 제공했다면서 이제는 합의할 때라고 거듭 촉구했다. 미국과 우크라이나가 정보 공유 재개를 계기로 관계 복원의 실마리를 찾았지만, 러시아의 영토 요구와 트럼프 대통령의 대우크라이나 압박이 이어지면서 종전 협상의 돌파구 마련은 여전히 불투명하다.",
       "title": "美·우크라 갈등 풀리나…트럼프 \"이제 종전 합의할 때\" 압박"
+    },
+    "source_fact:53338bcd6688a52a408d2019": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
     },
     "source_fact:533424f7a908570fe1803528": {
       "first_seen_kst": "2026-10-11T08:42:16+09:00",
@@ -642827,6 +643936,38 @@
       "source_title": "[단독]'사기의혹' 애즈위메이크...'가짜매출 기업' 지분 산 뒤 매출 폭증",
       "telegram_core_fact": "애즈위메이크 회계기록에는 2024년 캐시카우를 상대로 잡은 4억8000만원 상당의 용역매출 기록이 있는 것으로 파악됐다.",
       "title": "[단독]'사기의혹' 애즈위메이크...'가짜매출 기업' 지분 산 뒤 매출 폭증"
+    },
+    "source_fact:5876daeb9d0db1c25a945ef4": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
     },
     "source_fact:5878d7e3727f9c9d8241252e": {
       "first_seen_kst": "2026-10-09T18:57:38+09:00",
@@ -685424,6 +686565,39 @@
       "telegram_core_fact": "한지영 키움증권 연구원은 “중국 CXMT발 미국 반도체주 약세 여파가 장 초반 변동성을 유발하겠지만 미국 10년물 금리 상승세 진정과 최근 연쇄 급락에 따른 기술적·저가 매수세 유입 등에 힘입어 장중 반등을 시도할 것으로 전망한다”고 말했다.",
       "title": "中 CXMT 충격에 삼전·SK하닉 급락…프리마켓 반도체 ‘휘청’"
     },
+    "source_fact:6d0720583a8e8a96f0a5dce3": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "source_fact:6d0b2e745cc86427130f8936": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
       "lanes": {
@@ -690645,6 +691819,39 @@
       "source_title": "스페이스X, 우주기업에서 AI 기업으로…머스크는 1조달러 꿈꾼다(종합)",
       "telegram_core_fact": "20일(현지시간) 스페이스X가 발표한 3분기 실적에 따르면 AI를 담당하는 초지능(SI) 사업부 매출은 75억6000만달러(약 10조210억원)로 전년비 830% 급증했다.",
       "title": "스페이스X, 우주기업에서 AI 기업으로…머스크는 1조달러 꿈꾼다(종합)"
+    },
+    "source_fact:6fb985488a26f4d42a5b005e": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
     },
     "source_fact:6fb9b7ea35500ebf6f43568a": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -723958,6 +725165,29 @@
       "source_published_kst": "2026-10-06T17:24+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 LFP 양극재 6조원어치 공급"
     },
+    "source_fact:80779137d2db614d2a8b1a42": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.dt.co.kr/article/12090659",
+      "source": "디지털타임스",
+      "source_body_digest": "b5adf9982e6d4e596722d0d2b38657d549cbbb3803878730b3de7f6d907b4df4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f90a58751c2b58c7cea50c1e9f1e61c001cdc1e7ca101d5850f68b82208643",
+      "source_fact_keys": [
+        "source_fact:v1:0a291a7de64fa6324c9dc1a3b312f6f91e334f4500ef2f3982f170f5043c3ffd",
+        "source_fact:v1:4e213a7659a7a1631932ec2cec68ca26c95d7981297860f89886885768a4382f",
+        "source_fact:v1:550bae239cc274b4fe4870d6874c199f47c97edcd952b7a0cb5ddfececcb51eb",
+        "source_fact:v1:608ec21b0ba6c6e5e57b8c73ff0c0e8990e2379ff2024e3a7b8b4240fa5f2a11"
+      ],
+      "source_published_kst": "2026-10-22T14:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”",
+      "telegram_core_fact": "LG디스플레이가 원·달러 환율 하락과 칩플레이션(반도체 등 부품 가격 상승) 등의 영향으로 지난해 대비 영업이익이 40% 넘게 감소했다.",
+      "title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”"
+    },
     "source_fact:8079204db73ab0c5284087b0": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
       "lanes": {
@@ -725132,6 +726362,38 @@
       "source_title": "[유미's 픽] 신성장 동력은 해외 데이터센터…LG CNS·롯데이노베이트의 승부수",
       "telegram_core_fact": "정해창 대신증권 연구원은 \"인도네시아 JV의 데이터센터 가동과 수익화 일정이 구체화되면 2027년 실적과 중장기 성장성을 가늠할 수 있을 것\"이라면서도 \"설비투자에 따른 감가상각비 부담도 점검할 필요가 있다\"고 밝혔다. LG CNS와 롯데이노베이트가 데이터센터 설계·구축·운영(DBO) 사업 무대를 해외로 넓히고 있다.",
       "title": "[유미's 픽] 신성장 동력은 해외 데이터센터…LG CNS·롯데이노베이트의 승부수"
+    },
+    "source_fact:812a4b25f80043b7ce459c46": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
     },
     "source_fact:812c9597c6a22d606277e1b5": {
       "first_seen_kst": "2026-10-13T23:22:47+09:00",
@@ -735107,6 +736369,31 @@
       "telegram_core_fact": "일본의 제어기기 업체 오므론이 미국의 산업용 컴퓨터 제조사 온로직을 6억7500만달러에 인수했다. 미국과 중국이 앞서가는 생성형 AI 개발과 달리, 피지컬 AI 분야에서는 제조업의 경험과 지식을 활용할 수 있는 일본이 강점을 지닌 것으로 평가된다고 닛케이는 설명했다.",
       "title": "日 오므론, 美 온로직 인수⋯공장 ‘피지컬 AI’ 박차"
     },
+    "source_fact:8600b4a533234e84f165e801": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021131700030",
+      "source": "연합뉴스",
+      "source_body_digest": "92dff663870d6c05c713e36a04b957dd5bcbe1e0825ca53de87df282212a4ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c82a05faf5f0b7ff5a1de061bcdf5f4bd90dcac1f7a14e8d862286513904278a",
+      "source_fact_keys": [
+        "source_fact:v1:115e99f85a4a269dd1cd67d4822fe4c867574db00eebae95c15ab87cb1030f78",
+        "source_fact:v1:137e727fbce026f2d91f64e3674cf32b65e424da0f4391e097ff32bbb499c3d3",
+        "source_fact:v1:3d528d59c832f348a6fdd9ce0b76c4108f5102fdfdaaa34a196ad68fb357a01f",
+        "source_fact:v1:3fc44a7b69007db4e90b9c7ce020b4852c54a784686f3f3f7a854a5428e1a340",
+        "source_fact:v1:8e94c6eb147aff228fa04c51ae5a8536c39c0ad42cdcea48ad667cf3be010528",
+        "source_fact:v1:e9f8491a819d3ad82c8b2cbe9ad5d6d2c61c055b407496764156e0ec24ad8351"
+      ],
+      "source_published_kst": "2026-10-22T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스",
+      "telegram_core_fact": "22일 국회 농림축산식품해양수산위원회 소속 더불어민주당 임미애 의원이 재정경제부에서 제출받은 '2025년 할당관세 지원실적 및 효과분석' 보고서에 따르면 지난해 할당관세가 적용된 식료품 10개 품목 가운데 소비자가격 인하 효과가 확인된 품목은 파인애플·망고·오렌지 등 3개에 그쳤다.",
+      "title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스"
+    },
     "source_fact:86090eafa6e4d2b62cefb77f": {
       "first_seen_kst": "2026-10-09T22:13:37+09:00",
       "lanes": {
@@ -735764,6 +737051,38 @@
       "source_title": "\"국장은 불안해\"…ETF 투자금 4조원 몰린 곳은?",
       "telegram_core_fact": "최근 한달간 머니마켓·단기금리형 ETF 5종에 4조원 넘는 자금이 유입되며 수익률보다 안정성과 유동성을 중시하는 모습이다. 최근 1개월간 자금 순유입 상위 10개 ETF 중 현금성·단기금리형 상품 5종에 총 4조1599억원이 유입됐다.",
       "title": "\"국장은 불안해\"…ETF 투자금 4조원 몰린 곳은?"
+    },
+    "source_fact:866f4092107a12e4b030dc74": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
     },
     "source_fact:866f7fc8f0d8e06136ac2d5d": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -765050,6 +766369,38 @@
       "telegram_core_fact": "도미노피자(DPZ)가 2026 회계연도 3분기(9월 6일 종료) 총매출액 11억8560만 달러, 영업이익 2억4180만 달러, 희석 주당순이익(EPS) 4.60달러를 기록했다고 13일 발표했다.",
       "title": "도미노피자, 3분기 희석 EPS 4.60달러..전년비 12.7% 증가"
     },
+    "source_fact:958845bbc36907ac73404208": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
+    },
     "source_fact:9589ce2c5d14506bd755902b": {
       "first_seen_kst": "2026-10-15T09:43:41+09:00",
       "lanes": {
@@ -781747,6 +783098,39 @@
       "source_published_kst": "2026-10-06T21:16+09:00",
       "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
     },
+    "source_fact:9d6ea686904a97a5716340f3": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "source_fact:9d6f2986329668697a6a1e9a": {
       "first_seen_kst": "2026-10-17T08:22:42+09:00",
       "lanes": {
@@ -795396,6 +796780,39 @@
       "telegram_core_fact": "도널드 트럼프 미 대통령이 다음 달 중간 선거를 앞두고 치솟은 경유가 인하를 위해 러시아와 경유 공급 계약을 체결했다고 밝혔으나 경유 가격을 내리는 데는 큰 도움이 되지 않을 것이라고 미 월스트리트저널(WSJ)이 12일(현지시각) 보도했다.",
       "title": "\"트럼프 러 경유 수입, 가격 인하엔 턱없이 부족\"-WSJ"
     },
+    "source_fact:a3e7771dcb8e840f85b318bf": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "source_fact:a3ef38aff2120562eafafcd4": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
       "lanes": {
@@ -800761,6 +802178,38 @@
       "source_published_kst": "2026-10-06T15:10+09:00",
       "title": "파운드리發 반도체값 도미노 인상 예고…TSMC, 내년 파운드리 단가 10% 올린다"
     },
+    "source_fact:a6582d21935134ef79626ce8": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
+    },
     "source_fact:a6611730d40cff0e508e7a6e": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
@@ -801500,6 +802949,39 @@
       ],
       "source_published_kst": "2026-10-07T12:02+09:00",
       "title": "우크라 \"한국이 러시아 도왔다\"…외신 인용 韓비판 | 연합뉴스"
+    },
+    "source_fact:a6bc8896f9b4f1a3897a7806": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
     },
     "source_fact:a6c0b860ea931c844d527c2f": {
       "first_seen_kst": "2026-10-12T13:36:34+09:00",
@@ -811469,6 +812951,30 @@
       "source_title": "“새폰 샀는데 뜯어보니 중고네요”…선넘은 메모리 재사용, 이유가",
       "telegram_core_fact": "시장조사업체 카운터포인트리서치에 따르면 중국의 스마트폰 제조업체들은 지난 2분기 이후 메모리 가격 급등과 공급 부진을 이유로 생산 목표를 낮췄다.",
       "title": "“새폰 샀는데 뜯어보니 중고네요”…선넘은 메모리 재사용, 이유가"
+    },
+    "source_fact:abb1541af1cf130be33593e1": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026102118031616786",
+      "source": "머니투데이",
+      "source_body_digest": "7704b0cc7b3bfcca3f1c1dcd0f60b18384cbf968e07d09ab7018f6b559afd485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:882909ecacf60cb508e589652b0854753710c988b2607df0524b640829c15f8d",
+      "source_fact_keys": [
+        "source_fact:v1:2944261f6298208a35b9489dbeaf7be39a2fbed1c6e8b2744a414f478a306f0b",
+        "source_fact:v1:9ee3661236a95e07ef79bc0d9be2d8f38a7c53ff6bc2af56566069a9397f4ec9",
+        "source_fact:v1:ac90762c7510ce28d10be83bdcf7764fe96864384f7ee6d11c88d13234475577",
+        "source_fact:v1:d28e254c1d3ef041368a47939b61ab99524e03003f05af37b08691a125e014f1",
+        "source_fact:v1:f62d2f2eefcabac17bcab67a64a958695bd0c6027a66044c35c9c0e12573df08"
+      ],
+      "source_published_kst": "2026-10-21T18:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨",
+      "telegram_core_fact": "금융투자업계에 따르면 SK하이닉스는 이날 40조원 자사주 매입을 마무리했다.",
+      "title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨"
     },
     "source_fact:abb159b505aedd26c56ef39a": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
@@ -828990,6 +830496,30 @@
       "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
       "telegram_core_fact": "문 연구원도 “반도체 기업들의 실적 호조에 따른 달러 공급이 내년에도 지속될 것으로 예상된다”며 “현재 1350원으로 제시한 내년 연평균 환율 전망치도 11월 연간 전망에서 하향 조정할 가능성이 높다”고 내다봤다.",
       "title": "반도체 수출 호황에…달러 넘치는 외환시장"
+    },
+    "source_fact:b415657b780e0d82b03ac25d": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026102118031616786",
+      "source": "머니투데이",
+      "source_body_digest": "7704b0cc7b3bfcca3f1c1dcd0f60b18384cbf968e07d09ab7018f6b559afd485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:882909ecacf60cb508e589652b0854753710c988b2607df0524b640829c15f8d",
+      "source_fact_keys": [
+        "source_fact:v1:2944261f6298208a35b9489dbeaf7be39a2fbed1c6e8b2744a414f478a306f0b",
+        "source_fact:v1:9ee3661236a95e07ef79bc0d9be2d8f38a7c53ff6bc2af56566069a9397f4ec9",
+        "source_fact:v1:ac90762c7510ce28d10be83bdcf7764fe96864384f7ee6d11c88d13234475577",
+        "source_fact:v1:d28e254c1d3ef041368a47939b61ab99524e03003f05af37b08691a125e014f1",
+        "source_fact:v1:f62d2f2eefcabac17bcab67a64a958695bd0c6027a66044c35c9c0e12573df08"
+      ],
+      "source_published_kst": "2026-10-21T18:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨",
+      "telegram_core_fact": "금융투자업계에 따르면 SK하이닉스는 이날 40조원 자사주 매입을 마무리했다.",
+      "title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨"
     },
     "source_fact:b415cf971839f4400d71535a": {
       "first_seen_kst": "2026-10-13T18:41:17+09:00",
@@ -848983,6 +850513,39 @@
       "source_published_kst": "2026-10-06T13:06+09:00",
       "title": "美 소비자신뢰지수 12년 최저인데 가계지출 6.1%↑…실질소비도 늘었다"
     },
+    "source_fact:be21243f0f67e6fef9f9bfb5": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "source_fact:be219ba43f0f39018238e71b": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -849182,6 +850745,29 @@
       "source_title": "한화 필리 등 트럼프 '제조업 부활책' 시험대…고비용에 난항",
       "telegram_core_fact": "한국 기업 한화는 필라델피아의 필리조선소를 인수한 뒤 50억 달러를 투자해 상선 생산량을 연간 2척에서 20척으로 확대하겠다고 밝혔다. 백악관 측은 WSJ에 \"역사적인 투자를 유치하고 고임금 일자리를 창출하고 제조업을 미국으로 되돌려 놓는 검증된 실력을 갖추고 있다\"고 밝혔다.",
       "title": "한화 필리 등 트럼프 '제조업 부활책' 시험대…고비용에 난항"
+    },
+    "source_fact:be4481ddc13facc181934260": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.dt.co.kr/article/12090659",
+      "source": "디지털타임스",
+      "source_body_digest": "b5adf9982e6d4e596722d0d2b38657d549cbbb3803878730b3de7f6d907b4df4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f90a58751c2b58c7cea50c1e9f1e61c001cdc1e7ca101d5850f68b82208643",
+      "source_fact_keys": [
+        "source_fact:v1:0a291a7de64fa6324c9dc1a3b312f6f91e334f4500ef2f3982f170f5043c3ffd",
+        "source_fact:v1:4e213a7659a7a1631932ec2cec68ca26c95d7981297860f89886885768a4382f",
+        "source_fact:v1:550bae239cc274b4fe4870d6874c199f47c97edcd952b7a0cb5ddfececcb51eb",
+        "source_fact:v1:608ec21b0ba6c6e5e57b8c73ff0c0e8990e2379ff2024e3a7b8b4240fa5f2a11"
+      ],
+      "source_published_kst": "2026-10-22T14:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”",
+      "telegram_core_fact": "LG디스플레이가 원·달러 환율 하락과 칩플레이션(반도체 등 부품 가격 상승) 등의 영향으로 지난해 대비 영업이익이 40% 넘게 감소했다.",
+      "title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”"
     },
     "source_fact:be4a800112a2010b31d4d81b": {
       "first_seen_kst": "2026-10-12T16:29:45+09:00",
@@ -852694,6 +854280,27 @@
       "source_title": "지멘스, 韓 반도체·조선·배터리 AI 공략…“내년 제조 AI 도입 본격화”",
       "telegram_core_fact": "지멘스는 산업용 AI 에이전트를 넘어 로봇과 공장을 자율적으로 운영하는 피지컬 AI 분야로도 사업을 확대하고 있다.",
       "title": "지멘스, 韓 반도체·조선·배터리 AI 공략…“내년 제조 AI 도입 본격화”"
+    },
+    "source_fact:c005e52a5f51164a2fa0031b": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.hankyung.com/article/202610227448g",
+      "source": "한국경제",
+      "source_body_digest": "68b4183fd0aec75998278692f814f8f6552549a7a2ff04b36838197664afef72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e724d2722a2a5045b121a8ffa4661a70d832c7b37ce7a4dfdb0ddef5cc05509",
+      "source_fact_keys": [
+        "source_fact:v1:8565857cf2f8351484e0e318310fa13e3ba7ce476df68ee52a9c183754986903",
+        "source_fact:v1:87695d212915f958bae35624d401e989d4ba41c617c4f77f4e9e6e2965d59a27"
+      ],
+      "source_published_kst": "2026-10-22T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화",
+      "telegram_core_fact": "빈폴골프에 따르면 지난 9월 1일부터 10월 18일까지 빈폴골프 여성 점퍼 매출은 전년비 336% 증가했다.",
+      "title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화"
     },
     "source_fact:c005f01cb434d59a20e6148e": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
@@ -874661,6 +876268,39 @@
       "telegram_core_fact": "19일(현지시간) 파이낸셜타임스(FT)에 따르면 규제정보업체 레그레이어가 집계한 결과 이달 기준 올해 미국 내 47개의 대형 데이터센터 프로젝트가 지연·철회하거나 승인을 받지 못했다.",
       "title": "빚으로 키운 美 AI 데이터센터…美 3곳 중 1곳 '무산 위기'"
     },
+    "source_fact:ca7adcc076b35cb8a6259bc2": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "source_fact:ca89659351a8235fbaf769f4": {
       "first_seen_kst": "2026-10-20T02:43:34+09:00",
       "lanes": {
@@ -877820,6 +879460,31 @@
       "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
       "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
       "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
+    "source_fact:cc10e78e37aea9659b04b22a": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021131700030",
+      "source": "연합뉴스",
+      "source_body_digest": "92dff663870d6c05c713e36a04b957dd5bcbe1e0825ca53de87df282212a4ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c82a05faf5f0b7ff5a1de061bcdf5f4bd90dcac1f7a14e8d862286513904278a",
+      "source_fact_keys": [
+        "source_fact:v1:115e99f85a4a269dd1cd67d4822fe4c867574db00eebae95c15ab87cb1030f78",
+        "source_fact:v1:137e727fbce026f2d91f64e3674cf32b65e424da0f4391e097ff32bbb499c3d3",
+        "source_fact:v1:3d528d59c832f348a6fdd9ce0b76c4108f5102fdfdaaa34a196ad68fb357a01f",
+        "source_fact:v1:3fc44a7b69007db4e90b9c7ce020b4852c54a784686f3f3f7a854a5428e1a340",
+        "source_fact:v1:8e94c6eb147aff228fa04c51ae5a8536c39c0ad42cdcea48ad667cf3be010528",
+        "source_fact:v1:e9f8491a819d3ad82c8b2cbe9ad5d6d2c61c055b407496764156e0ec24ad8351"
+      ],
+      "source_published_kst": "2026-10-22T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스",
+      "telegram_core_fact": "22일 국회 농림축산식품해양수산위원회 소속 더불어민주당 임미애 의원이 재정경제부에서 제출받은 '2025년 할당관세 지원실적 및 효과분석' 보고서에 따르면 지난해 할당관세가 적용된 식료품 10개 품목 가운데 소비자가격 인하 효과가 확인된 품목은 파인애플·망고·오렌지 등 3개에 그쳤다.",
+      "title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스"
     },
     "source_fact:cc1108348713c851ab21376e": {
       "first_seen_kst": "2026-10-21T09:52:31+09:00",
@@ -894404,6 +896069,38 @@
       "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
       "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
     },
+    "source_fact:d43d20e5771aae405de947e2": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
+    },
     "source_fact:d43de6206b890a85475c8405": {
       "first_seen_kst": "2026-10-12T20:59:01+09:00",
       "lanes": {
@@ -896152,6 +897849,27 @@
       ],
       "source_published_kst": "2026-10-06T15:45+09:00",
       "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
+    },
+    "source_fact:d52afb7077cbd50bda3bae87": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.hankyung.com/article/202610227448g",
+      "source": "한국경제",
+      "source_body_digest": "68b4183fd0aec75998278692f814f8f6552549a7a2ff04b36838197664afef72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e724d2722a2a5045b121a8ffa4661a70d832c7b37ce7a4dfdb0ddef5cc05509",
+      "source_fact_keys": [
+        "source_fact:v1:8565857cf2f8351484e0e318310fa13e3ba7ce476df68ee52a9c183754986903",
+        "source_fact:v1:87695d212915f958bae35624d401e989d4ba41c617c4f77f4e9e6e2965d59a27"
+      ],
+      "source_published_kst": "2026-10-22T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화",
+      "telegram_core_fact": "빈폴골프에 따르면 지난 9월 1일부터 10월 18일까지 빈폴골프 여성 점퍼 매출은 전년비 336% 증가했다.",
+      "title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화"
     },
     "source_fact:d52bc57b679a7d5bb2a81bf9": {
       "first_seen_kst": "2026-10-20T06:39:46+09:00",
@@ -899408,6 +901126,30 @@
       "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
       "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
       "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
+    },
+    "source_fact:d689db4f5e64b185ca48165f": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026102118031616786",
+      "source": "머니투데이",
+      "source_body_digest": "7704b0cc7b3bfcca3f1c1dcd0f60b18384cbf968e07d09ab7018f6b559afd485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:882909ecacf60cb508e589652b0854753710c988b2607df0524b640829c15f8d",
+      "source_fact_keys": [
+        "source_fact:v1:2944261f6298208a35b9489dbeaf7be39a2fbed1c6e8b2744a414f478a306f0b",
+        "source_fact:v1:9ee3661236a95e07ef79bc0d9be2d8f38a7c53ff6bc2af56566069a9397f4ec9",
+        "source_fact:v1:ac90762c7510ce28d10be83bdcf7764fe96864384f7ee6d11c88d13234475577",
+        "source_fact:v1:d28e254c1d3ef041368a47939b61ab99524e03003f05af37b08691a125e014f1",
+        "source_fact:v1:f62d2f2eefcabac17bcab67a64a958695bd0c6027a66044c35c9c0e12573df08"
+      ],
+      "source_published_kst": "2026-10-21T18:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨",
+      "telegram_core_fact": "금융투자업계에 따르면 SK하이닉스는 이날 40조원 자사주 매입을 마무리했다.",
+      "title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨"
     },
     "source_fact:d68de7dc7179449ac5d56183": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -903068,6 +904810,39 @@
       "source_published_kst": "2026-10-07T06:33+09:00",
       "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
     },
+    "source_fact:d84ae4b8e68555d7dade2f00": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "source_fact:d84ece4ff21dc6eb8627603a": {
       "first_seen_kst": "2026-10-11T06:07:21+09:00",
       "lanes": {
@@ -905083,6 +906858,29 @@
       "source_title": "축구 김영권, '日활동 때 소득세 8억 부과' 불복 소송서 패소",
       "telegram_core_fact": "당국은 김씨가 중국에서 축구선수로 활동하면서 냈던 세금 중 공제받지 못하고 이월된 금액을 이후 일본으로 이적해 활동하던 기간의 국내 소득세에서 공제하는 식으로 해당 시행령 규정을 위반했다고 판단한 것이다.",
       "title": "축구 김영권, '日활동 때 소득세 8억 부과' 불복 소송서 패소"
+    },
+    "source_fact:d93bf643771272ec018366c5": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.dt.co.kr/article/12090659",
+      "source": "디지털타임스",
+      "source_body_digest": "b5adf9982e6d4e596722d0d2b38657d549cbbb3803878730b3de7f6d907b4df4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f90a58751c2b58c7cea50c1e9f1e61c001cdc1e7ca101d5850f68b82208643",
+      "source_fact_keys": [
+        "source_fact:v1:0a291a7de64fa6324c9dc1a3b312f6f91e334f4500ef2f3982f170f5043c3ffd",
+        "source_fact:v1:4e213a7659a7a1631932ec2cec68ca26c95d7981297860f89886885768a4382f",
+        "source_fact:v1:550bae239cc274b4fe4870d6874c199f47c97edcd952b7a0cb5ddfececcb51eb",
+        "source_fact:v1:608ec21b0ba6c6e5e57b8c73ff0c0e8990e2379ff2024e3a7b8b4240fa5f2a11"
+      ],
+      "source_published_kst": "2026-10-22T14:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”",
+      "telegram_core_fact": "LG디스플레이가 원·달러 환율 하락과 칩플레이션(반도체 등 부품 가격 상승) 등의 영향으로 지난해 대비 영업이익이 40% 넘게 감소했다.",
+      "title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”"
     },
     "source_fact:d94314f54a350baddccccfbc": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
@@ -910296,6 +912094,39 @@
       "source_title": "복지부ㆍWHO, 송도에 백신 생산 실습교육장 개소",
       "telegram_core_fact": "보건복지부와 세계보건기구(WHO)가 중ㆍ저소득국의 백신ㆍ바이오의약품 생산 역량을 강화하기 위한 글로벌 인력 양성 기반을 확대한다.",
       "title": "복지부ㆍWHO, 송도에 백신 생산 실습교육장 개소"
+    },
+    "source_fact:dc064547f794778467e3f6f4": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
     },
     "source_fact:dc0a4138e09e60913b9cc815": {
       "first_seen_kst": "2026-10-12T00:21:39+09:00",
@@ -921249,6 +923080,30 @@
       "source_title": "중동 플랜트 수주 40% 급감…美 189%↑ 최대시장 부상",
       "telegram_core_fact": "중동 전쟁 장기화로 올해 국내 기업의 중동 플랜트 수주가 40% 가까이 줄었다. 반면 미주 지역 수주는 189% 급증해 최대 시장으로 떠올랐다.",
       "title": "중동 플랜트 수주 40% 급감…美 189%↑ 최대시장 부상"
+    },
+    "source_fact:e1374661ecdaecb87468149b": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026102118031616786",
+      "source": "머니투데이",
+      "source_body_digest": "7704b0cc7b3bfcca3f1c1dcd0f60b18384cbf968e07d09ab7018f6b559afd485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:882909ecacf60cb508e589652b0854753710c988b2607df0524b640829c15f8d",
+      "source_fact_keys": [
+        "source_fact:v1:2944261f6298208a35b9489dbeaf7be39a2fbed1c6e8b2744a414f478a306f0b",
+        "source_fact:v1:9ee3661236a95e07ef79bc0d9be2d8f38a7c53ff6bc2af56566069a9397f4ec9",
+        "source_fact:v1:ac90762c7510ce28d10be83bdcf7764fe96864384f7ee6d11c88d13234475577",
+        "source_fact:v1:d28e254c1d3ef041368a47939b61ab99524e03003f05af37b08691a125e014f1",
+        "source_fact:v1:f62d2f2eefcabac17bcab67a64a958695bd0c6027a66044c35c9c0e12573df08"
+      ],
+      "source_published_kst": "2026-10-21T18:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨",
+      "telegram_core_fact": "금융투자업계에 따르면 SK하이닉스는 이날 40조원 자사주 매입을 마무리했다.",
+      "title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨"
     },
     "source_fact:e1381c326ab7dfb5bcf089e3": {
       "first_seen_kst": "2026-10-17T09:37:15+09:00",
@@ -936682,6 +938537,31 @@
       ],
       "source_published_kst": "2026-10-07T11:22+09:00",
       "title": "LG전자 3분기 영업익 7천818억…3분기 누적 첫 4조 넘어(종합)"
+    },
+    "source_fact:e89d73c06c89ce7b3f8bbc37": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021131700030",
+      "source": "연합뉴스",
+      "source_body_digest": "92dff663870d6c05c713e36a04b957dd5bcbe1e0825ca53de87df282212a4ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c82a05faf5f0b7ff5a1de061bcdf5f4bd90dcac1f7a14e8d862286513904278a",
+      "source_fact_keys": [
+        "source_fact:v1:115e99f85a4a269dd1cd67d4822fe4c867574db00eebae95c15ab87cb1030f78",
+        "source_fact:v1:137e727fbce026f2d91f64e3674cf32b65e424da0f4391e097ff32bbb499c3d3",
+        "source_fact:v1:3d528d59c832f348a6fdd9ce0b76c4108f5102fdfdaaa34a196ad68fb357a01f",
+        "source_fact:v1:3fc44a7b69007db4e90b9c7ce020b4852c54a784686f3f3f7a854a5428e1a340",
+        "source_fact:v1:8e94c6eb147aff228fa04c51ae5a8536c39c0ad42cdcea48ad667cf3be010528",
+        "source_fact:v1:e9f8491a819d3ad82c8b2cbe9ad5d6d2c61c055b407496764156e0ec24ad8351"
+      ],
+      "source_published_kst": "2026-10-22T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스",
+      "telegram_core_fact": "22일 국회 농림축산식품해양수산위원회 소속 더불어민주당 임미애 의원이 재정경제부에서 제출받은 '2025년 할당관세 지원실적 및 효과분석' 보고서에 따르면 지난해 할당관세가 적용된 식료품 10개 품목 가운데 소비자가격 인하 효과가 확인된 품목은 파인애플·망고·오렌지 등 3개에 그쳤다.",
+      "title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스"
     },
     "source_fact:e8a5601b9f73e9332ee354a6": {
       "first_seen_kst": "2026-10-10T12:36:00+09:00",
@@ -958321,6 +960201,38 @@
       "telegram_core_fact": "사우디아라비아 주도 연합군이 예멘 수도 사나 등 친(親)이란 무장 세력 후티 본거지의 에너지 시설 등에 광범위한 공습을 가했다.",
       "title": "사우디 연합군, 후티 석유시설 공습…\"공항공격 대가 치를것\"(종합)"
     },
+    "source_fact:f3ad39f2525ff2be72622595": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
+    },
     "source_fact:f3afe8d1e04ffdb1e1b92f9a": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -962117,6 +964029,38 @@
       "source_title": "라온시큐어, 로봇에 '디지털 신분증' 부여…피지컬AI 보안기술 개발",
       "telegram_core_fact": "이정아 라온시큐어 대표는 “국가 모바일 신분증으로 검증한 인증 기술을 로봇의 영역까지 확장해, 산업 현장에서 AI와 기계를 안심하고 맡길 수 있는 보안 기준을 만들겠다”고 말했다.",
       "title": "라온시큐어, 로봇에 '디지털 신분증' 부여…피지컬AI 보안기술 개발"
+    },
+    "source_fact:f5af068971ba99c363671beb": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
     },
     "source_fact:f5b1ea2c4e1fcab3ccd64378": {
       "first_seen_kst": "2026-10-14T06:09:46+09:00",
@@ -978542,6 +980486,31 @@
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
     },
+    "source_fact:fe3a943d1ea20763731db89f": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021131700030",
+      "source": "연합뉴스",
+      "source_body_digest": "92dff663870d6c05c713e36a04b957dd5bcbe1e0825ca53de87df282212a4ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c82a05faf5f0b7ff5a1de061bcdf5f4bd90dcac1f7a14e8d862286513904278a",
+      "source_fact_keys": [
+        "source_fact:v1:115e99f85a4a269dd1cd67d4822fe4c867574db00eebae95c15ab87cb1030f78",
+        "source_fact:v1:137e727fbce026f2d91f64e3674cf32b65e424da0f4391e097ff32bbb499c3d3",
+        "source_fact:v1:3d528d59c832f348a6fdd9ce0b76c4108f5102fdfdaaa34a196ad68fb357a01f",
+        "source_fact:v1:3fc44a7b69007db4e90b9c7ce020b4852c54a784686f3f3f7a854a5428e1a340",
+        "source_fact:v1:8e94c6eb147aff228fa04c51ae5a8536c39c0ad42cdcea48ad667cf3be010528",
+        "source_fact:v1:e9f8491a819d3ad82c8b2cbe9ad5d6d2c61c055b407496764156e0ec24ad8351"
+      ],
+      "source_published_kst": "2026-10-22T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스",
+      "telegram_core_fact": "22일 국회 농림축산식품해양수산위원회 소속 더불어민주당 임미애 의원이 재정경제부에서 제출받은 '2025년 할당관세 지원실적 및 효과분석' 보고서에 따르면 지난해 할당관세가 적용된 식료품 10개 품목 가운데 소비자가격 인하 효과가 확인된 품목은 파인애플·망고·오렌지 등 3개에 그쳤다.",
+      "title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스"
+    },
     "source_fact:fe3b14f84f06947507a77835": {
       "first_seen_kst": "2026-10-20T10:42:42+09:00",
       "lanes": {
@@ -986036,6 +988005,30 @@
       "source_title": "메모리 오르니 \"가격 낮춰라\" 압박·사양 조절도..K디스플레이 기회?",
       "telegram_core_fact": "유비리서치는 \"메모리는 공급이 빠듯해 세트(완제품) 업체가 가격을 협상할 여지가 거의 없는 반면 OLED 패널은 생산능력이 늘고 있어 단가 인하를 요구하기 쉽다\"고 밝혔다.",
       "title": "메모리 오르니 \"가격 낮춰라\" 압박·사양 조절도..K디스플레이 기회?"
+    },
+    "title:084ab98b6dbd2675f50c939c": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/21/2026102118031616786",
+      "source": "머니투데이",
+      "source_body_digest": "7704b0cc7b3bfcca3f1c1dcd0f60b18384cbf968e07d09ab7018f6b559afd485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:882909ecacf60cb508e589652b0854753710c988b2607df0524b640829c15f8d",
+      "source_fact_keys": [
+        "source_fact:v1:2944261f6298208a35b9489dbeaf7be39a2fbed1c6e8b2744a414f478a306f0b",
+        "source_fact:v1:9ee3661236a95e07ef79bc0d9be2d8f38a7c53ff6bc2af56566069a9397f4ec9",
+        "source_fact:v1:ac90762c7510ce28d10be83bdcf7764fe96864384f7ee6d11c88d13234475577",
+        "source_fact:v1:d28e254c1d3ef041368a47939b61ab99524e03003f05af37b08691a125e014f1",
+        "source_fact:v1:f62d2f2eefcabac17bcab67a64a958695bd0c6027a66044c35c9c0e12573df08"
+      ],
+      "source_published_kst": "2026-10-21T18:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨",
+      "telegram_core_fact": "금융투자업계에 따르면 SK하이닉스는 이날 40조원 자사주 매입을 마무리했다.",
+      "title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨"
     },
     "title:085616fb98bac4caabb33b2b": {
       "first_seen_kst": "2026-10-12T23:57:10+09:00",
@@ -1038081,6 +1040074,38 @@
       "telegram_core_fact": "LG전자는 미국 AI 데이터센터 인프라 기업 에어와 5조원 규모 칠러 공급 계약을 체결했다.",
       "title": "[단독] 메모리 넘어 AI 부품·전력기기 확보전…빅테크 '5년 계약' 줄섰다"
     },
+    "title:6fac9d2d81e092af46517480": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.fnnews.com/news/202610220828271360",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad4be38c23a3019df8ba6d1e9d800c426f9f7e51469086ec4d8e6128547a4dcb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0896148beb2be8ba468b3848ff63d27b6c75ec3d1224d3e3c7d2eef54f953573",
+      "source_fact_keys": [
+        "source_fact:v1:0894b59c413fbc2d0b255bf435f2459df9e13b6976a4b3db5a8d6021550c913f",
+        "source_fact:v1:153673413f98d78c302535228f8adb233ac5b66fa6c912c6b7490a6ff627d8e2",
+        "source_fact:v1:21c865ee2215480f4e1ed227614c245dcb66ec2093d2a03e4132374bd486d6af",
+        "source_fact:v1:276b698771f34e31ca0deec4e7c57671ef9187754e7b1ff74c9ffce6598c0d54",
+        "source_fact:v1:55044a655ebb2b4c4ab166913bbe94a624cb5a44717bc4104051878d1160cd91",
+        "source_fact:v1:570861389d99c538771053c6d319f2fa665de086e68321e701c2c15d46fd06e3",
+        "source_fact:v1:5a0ea5408884e8c2d159d997de4f2d920b6d83c88d93cbf1b11fe03448699d5c",
+        "source_fact:v1:5d7f4c24f20d7ccdddb7e7ecae617852fb6fb43c1fb9122432acec35322c5d06",
+        "source_fact:v1:9a93c8b583b91a7ec1bdd384c7ff09e049cf21203af038a014b9884e7630df47",
+        "source_fact:v1:a3976785cfc8283576a9efe6bea8c80160d616b89d20969db6f2186f7a7a49af",
+        "source_fact:v1:a8d3e36017d206637920d8a692e035148c796336855a5bfba0e52f64f80983d6",
+        "source_fact:v1:b3daf78bed759a46848cfe6eee566938af792211c27c042ddb7e73853686eca5",
+        "source_fact:v1:bdaa8d35a2888fea995fb80ba9289bdaf4a04e9e2ed062f522ee8d65cf0ff632"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화",
+      "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
+      "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
+    },
     "title:6fb8881bf9e8e6881d137e7d": {
       "first_seen_kst": "2026-10-01T23:10:43+09:00",
       "lanes": {
@@ -1043777,6 +1045802,27 @@
       "source_title": "전월세난 잡아라…정부 “내년까지 수도권 공적주택 10만호 입주 추진” [부동산360]",
       "telegram_core_fact": "그간 추진해 온 공급 기반 마련 성과를 바탕으로 실제 입주 물량 확대로 이어지도록 주요 정책 과제들을 속도감 있게 이행하겠다는 계획이다.",
       "title": "전월세난 잡아라…정부 “내년까지 수도권 공적주택 10만호 입주 추진” [부동산360]"
+    },
+    "title:7aa3e69ee7c4340af94911a4": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.hankyung.com/article/202610227448g",
+      "source": "한국경제",
+      "source_body_digest": "68b4183fd0aec75998278692f814f8f6552549a7a2ff04b36838197664afef72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e724d2722a2a5045b121a8ffa4661a70d832c7b37ce7a4dfdb0ddef5cc05509",
+      "source_fact_keys": [
+        "source_fact:v1:8565857cf2f8351484e0e318310fa13e3ba7ce476df68ee52a9c183754986903",
+        "source_fact:v1:87695d212915f958bae35624d401e989d4ba41c617c4f77f4e9e6e2965d59a27"
+      ],
+      "source_published_kst": "2026-10-22T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화",
+      "telegram_core_fact": "빈폴골프에 따르면 지난 9월 1일부터 10월 18일까지 빈폴골프 여성 점퍼 매출은 전년비 336% 증가했다.",
+      "title": "빈폴골프, 여성 점퍼 매출 336% '껑충'…시착 마케팅 강화"
     },
     "title:7ab19b5b17eab0378d21bb47": {
       "first_seen_kst": "2026-10-15T12:36:21+09:00",
@@ -1064629,6 +1066675,24 @@
       "source": "연합뉴스",
       "title": "美 9월 고용 2만9천명 증가 그쳐…10월 금리인상 베팅 감소(종합) | 연합뉴스"
     },
+    "title:a32e050a124d96fc1b0ab184": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022027300030",
+      "source": "연합뉴스",
+      "source_body_digest": "013d72d586710cc65bf21502685a1c051ec68423e8c04de7b7801b6e6b5ac989",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T08:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "오리온, '카스타드' 해외 인기에 생산라인 증설…연3천억원 규모 | 연합뉴스",
+      "telegram_core_fact": "오리온[271560]은 국내외 수요 증가에 대응해 카스타드 생산라인을 한국과 베트남, 인도에서 증설했다고 22일 밝혔다.",
+      "title": "오리온, '카스타드' 해외 인기에 생산라인 증설…연3천억원 규모 | 연합뉴스"
+    },
     "title:a336a59e4f0817080c7eacf4": {
       "first_seen_kst": "2026-10-12T13:56:47+09:00",
       "lanes": {
@@ -1081101,6 +1083165,39 @@
       "telegram_core_fact": "지난 16일 기준 이달 국내 투자자들의 미국 주식 순매수액은 약 39억달러(약 5조2000억원)다. 한국예탁결제원에 따르면 지난 15일 기준 국내 투자자들의 미국 주식 보관금액은 1889억달러(약 251조원)로, 지난 6일(2009억달러·약 267조원)보다 일주일여 만에 120억달러(약 16조원) 줄었다.",
       "title": "미국 주식 쓸어 담았는데 또 이 업종을…서학개미 잔고 16조 증발"
     },
+    "title:c4e2388df6c2993b43b4453e": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/22/2026102208239670659",
+      "source": "머니투데이",
+      "source_body_digest": "641f44eb3ddba4e719378093fb2b8fd54a087c46f4bcdf29066daa90d9f63c87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fced7df9bd80dbf3a7858562b7d247f111ad4cfb2a0f41a021d6c94f149b5f2",
+      "source_fact_keys": [
+        "source_fact:v1:01b425c128edfa802f77f2e62ae853d09dae40c8101b95a4cf897e40013b18d7",
+        "source_fact:v1:28bb4ede693c0fd0a04b037dc6e5673716656d95e625314d531b9d6fbd9341a5",
+        "source_fact:v1:43b4a68b8c80226b10b2e2c31928e375f42ee949525faae4e0a328aca17fdb17",
+        "source_fact:v1:8157aea0fd304142c1c8d6ac03a393bb4cb2e3bcf1f415bf082481d5fb2ab0e0",
+        "source_fact:v1:919c8823de47b0cdc16c66791d4382bb9894c0519828cc6730d037632326b489",
+        "source_fact:v1:9248d6505b3e88ab670e5f230d96ca3cb4724fe2e969b9777220d0096a22864a",
+        "source_fact:v1:9badd4f4e4f4a0d558f069d49ed3481d9f6ae7a15229c79011444b151af5c82f",
+        "source_fact:v1:aedb242bfd94dd062bf83325a99a88588639ddd327192ab72690a87aea1af658",
+        "source_fact:v1:cc6a1e7f6efecccc859ac1dc67083f985f6150d598cc3e5e135f6bdfada06b7b",
+        "source_fact:v1:d4a8b57fcbd972cbab0db6e415b3b0ee50b2199bfdf76eca0cf831cbea43efb8",
+        "source_fact:v1:dc10a4b8ccdd7070abe5465abc175f5cfb60012958c6ca2b47d725459d280f6b",
+        "source_fact:v1:e766dcaad120486dde356a389d82ede01e9aa10f95db518e0f564c5ba99a9890",
+        "source_fact:v1:e82d04acaf6028d686fde31d8121775c70aec7923f2444bf6ffd1c6318fdedbc",
+        "source_fact:v1:fb1352f8bc0800c5f6dbcf5d833c905904037994aabc94e6596b40245ae073c0"
+      ],
+      "source_published_kst": "2026-10-22T08:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망",
+      "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
+      "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
+    },
     "title:c4ff6fd91f10fcb196be0bf4": {
       "first_seen_kst": "2026-10-13T21:34:27+09:00",
       "lanes": {
@@ -1082138,6 +1084235,29 @@
       "source_title": "“같은 바다인데 사용료 수십 배 차이”…대한상의, 규제 개선 75건 건의",
       "telegram_core_fact": "대한상의는 지역기업들이 제기한 규제합리화 과제 75건을 민관합동 규제합리화추진단에 제출했다고 15일 밝혔다.",
       "title": "“같은 바다인데 사용료 수십 배 차이”…대한상의, 규제 개선 75건 건의"
+    },
+    "title:c7796bb70b9a05f1e4294599": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.dt.co.kr/article/12090659",
+      "source": "디지털타임스",
+      "source_body_digest": "b5adf9982e6d4e596722d0d2b38657d549cbbb3803878730b3de7f6d907b4df4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f90a58751c2b58c7cea50c1e9f1e61c001cdc1e7ca101d5850f68b82208643",
+      "source_fact_keys": [
+        "source_fact:v1:0a291a7de64fa6324c9dc1a3b312f6f91e334f4500ef2f3982f170f5043c3ffd",
+        "source_fact:v1:4e213a7659a7a1631932ec2cec68ca26c95d7981297860f89886885768a4382f",
+        "source_fact:v1:550bae239cc274b4fe4870d6874c199f47c97edcd952b7a0cb5ddfececcb51eb",
+        "source_fact:v1:608ec21b0ba6c6e5e57b8c73ff0c0e8990e2379ff2024e3a7b8b4240fa5f2a11"
+      ],
+      "source_published_kst": "2026-10-22T14:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”",
+      "telegram_core_fact": "LG디스플레이가 원·달러 환율 하락과 칩플레이션(반도체 등 부품 가격 상승) 등의 영향으로 지난해 대비 영업이익이 40% 넘게 감소했다.",
+      "title": "LGD, 3분기 영업익 41%↓…“환율·칩플레이션 영향”"
     },
     "title:c784497b71d87908d1c95817": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
@@ -1097993,6 +1100113,31 @@
       "source": "뉴시스",
       "title": "롯데카드, 영업정지 한 달 새 회원 8만명 감소…PLCC로 회복 시동"
     },
+    "title:e7a8f6a2c4d7c5569cfa1ec6": {
+      "first_seen_kst": "2026-10-22T14:38:13+09:00",
+      "lanes": {
+        "live": "2026-10-22T14:38:13+09:00"
+      },
+      "last_seen_kst": "2026-10-22T14:38:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021131700030",
+      "source": "연합뉴스",
+      "source_body_digest": "92dff663870d6c05c713e36a04b957dd5bcbe1e0825ca53de87df282212a4ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c82a05faf5f0b7ff5a1de061bcdf5f4bd90dcac1f7a14e8d862286513904278a",
+      "source_fact_keys": [
+        "source_fact:v1:115e99f85a4a269dd1cd67d4822fe4c867574db00eebae95c15ab87cb1030f78",
+        "source_fact:v1:137e727fbce026f2d91f64e3674cf32b65e424da0f4391e097ff32bbb499c3d3",
+        "source_fact:v1:3d528d59c832f348a6fdd9ce0b76c4108f5102fdfdaaa34a196ad68fb357a01f",
+        "source_fact:v1:3fc44a7b69007db4e90b9c7ce020b4852c54a784686f3f3f7a854a5428e1a340",
+        "source_fact:v1:8e94c6eb147aff228fa04c51ae5a8536c39c0ad42cdcea48ad667cf3be010528",
+        "source_fact:v1:e9f8491a819d3ad82c8b2cbe9ad5d6d2c61c055b407496764156e0ec24ad8351"
+      ],
+      "source_published_kst": "2026-10-22T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스",
+      "telegram_core_fact": "22일 국회 농림축산식품해양수산위원회 소속 더불어민주당 임미애 의원이 재정경제부에서 제출받은 '2025년 할당관세 지원실적 및 효과분석' 보고서에 따르면 지난해 할당관세가 적용된 식료품 10개 품목 가운데 소비자가격 인하 효과가 확인된 품목은 파인애플·망고·오렌지 등 3개에 그쳤다.",
+      "title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스"
+    },
     "title:e7a9f648aff1d7df732b6598": {
       "first_seen_kst": "2026-10-22T12:56:15+09:00",
       "lanes": {
@@ -1109962,5 +1112107,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T14:04:51+09:00"
+  "updated_at_kst": "2026-10-22T14:38:13+09:00"
 }
