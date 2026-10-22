@@ -51,6 +51,40 @@ class TechEtfProxyTests(unittest.TestCase):
         self.assertIn("SOXX 공식",message)
         self.assertIn("억원",message)
 
+    def test_five_consecutive_observations_detects_real_issuance_trend(self):
+        dates=("2026-10-14","2026-10-15","2026-10-16","2026-10-19","2026-10-20")
+        old=prior_state()
+        old["history"]["IYW"]=[
+            {"date":day,"nav":250.0,"shares":95_000_000+i*500_000}
+            for i,day in enumerate(dates)
+        ]
+        old["history"]["SOXX"]=[
+            {"date":day,"nav":490.0,"shares":80_000_000}
+            for day in dates
+        ]
+        result=w.calculate(snap("2026-10-21",iyw_shares=100_000_000),old)
+        self.assertIn("IYW 최근 5회 발행좌수 +2.5% 이상",result["signals"])
+        self.assertEqual(result["movements"]["IYW"]["five_observations_from"],"2026-10-14")
+        self.assertAlmostEqual(result["movements"]["IYW"]["five_observations_share_change_pct"],100*5/95)
+        body=w.render(result,1350,"2026-10-21")
+        self.assertIn("최근 5개 관측 간격",body)
+        self.assertIn("억원",body)
+
+    def test_missing_weekday_blocks_five_session_extrapolation(self):
+        dates=("2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-20")
+        old=prior_state()
+        old["history"]["IYW"]=[
+            {"date":day,"nav":250.0,"shares":95_000_000+i*500_000}
+            for i,day in enumerate(dates)
+        ]
+        old["history"]["SOXX"]=[
+            {"date":day,"nav":490.0,"shares":80_000_000}
+            for day in dates
+        ]
+        result=w.calculate(snap("2026-10-21"),old)
+        self.assertIsNone(result["movements"]["IYW"]["five_observations_creation_usd"])
+        self.assertNotIn("IYW 최근 5회 발행좌수 +2.5% 이상",result["signals"])
+
     def test_different_nav_and_share_dates_fail_closed(self):
         def bad(t,meta,retry_budget=None):
             x=snap()[t]
