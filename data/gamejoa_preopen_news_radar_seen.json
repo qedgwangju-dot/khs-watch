@@ -16181,6 +16181,31 @@
       "source_published_kst": "2026-10-07T15:28+09:00",
       "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
     },
+    "core:2c9424caea136ba4269595df": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638783",
+      "source": "이투데이",
+      "source_body_digest": "56a6bcbf9b9ac0feec55ddbba29d7e0fb9ba997f4d222ce462715f76e98f7db4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3058e67f52e757e8ccf0f6e26465af0cd8d66c5e87e32cede9783687847bc45",
+      "source_fact_keys": [
+        "source_fact:v1:0417313b946814533e694e03f2f9edc9406144ae1fa1635cb05460b26648ed0c",
+        "source_fact:v1:2003ee4ca254d6ca2e4000e4bb69a376f6970bbb3db27796b0ec5c3831853e3c",
+        "source_fact:v1:2a76fcae7a8deaefee85a3ce0961433df49ae2e87fc42cc9f927e9146883f307",
+        "source_fact:v1:3ced3684859bc4547411683ae5a9ba667863a254c66d1717b2d2259ada9c3b2b",
+        "source_fact:v1:ed18b17f4f1d8c364ac6b3323e95d522f14f9768010f4361cc00896391a205f7",
+        "source_fact:v1:f3fd5f26371738dfae4b0d5d69dce65d6aabb71f2fb91b75c0b9bdbce199837c"
+      ],
+      "source_published_kst": "2026-10-22T10:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\"",
+      "telegram_core_fact": "씨어스는 이번 용인 신공장 개소로 평택 본사와 용인 신공장을 연계한 주요 생산기반을 확보한 만큼, 향후 스마트팩토리 고도화와 글로벌사업 확대에 투자 역량을 집중할 방침이다.",
+      "title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\""
+    },
     "core:2ca5b4f1afaf788246d2f090": {
       "first_seen_kst": "2026-10-14T02:21:39+09:00",
       "lanes": {
@@ -16966,6 +16991,44 @@
       "source_title": "모아타운 공사비 거품 뺀다… 서울시·SH, 소규모 정비 검증 도입",
       "telegram_core_fact": "사업시행계획 인가 전 시공사가 선정된 곳은 공사비가 10% 이상, 인가 이후 선정된 사업장은 5% 이상 증액될 때가 검증 대상이다.",
       "title": "모아타운 공사비 거품 뺀다… 서울시·SH, 소규모 정비 검증 도입"
+    },
+    "core:2f21ba69cc1a5b7d883f4763": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "core:2f3997808c6c56f51b297cd4": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
@@ -20855,6 +20918,34 @@
       "source_title": "“이제 국장투자 더는 못하겠습니다”…3분기 거래대금 34% 급감",
       "telegram_core_fact": "3분기 장내 주식시장 일평균 거래대금은 77조2800억원으로 전 분기(117조2310억원)보다 34.1% 줄었다. 한국예탁결제원에 따르면 올해 3분기 일평균 주식 결제대금은 8조7800억원으로 전 분기 10조210원보다 12.4% 감소했다.",
       "title": "“이제 국장투자 더는 못하겠습니다”…3분기 거래대금 34% 급감"
+    },
+    "core:3a456f77d776aa1786ce91ae": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
     },
     "core:3a532c29ad4eb447cf087d9b": {
       "first_seen_kst": "2026-10-22T00:00:41+09:00",
@@ -26279,6 +26370,34 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 8일(현지 시간) 블라디미르 푸틴 러시아 대통령과 통화에서 \"러시아가 즉시 30만톤 이상의 디젤 연료(경유)를 미국과 세계시장에 공급하기로 합의됐다\"고 발표했다.",
       "title": "트럼프 \"푸틴과 러시아 경유 미국·세계 시장 공급 합의\""
     },
+    "core:4a2bf79f31f0e62aaa521e34": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
+    },
     "core:4a30a0788a15ba93889fc524": {
       "first_seen_kst": "2026-10-15T17:49:30+09:00",
       "lanes": {
@@ -27409,6 +27528,29 @@
       "source_title": "민형배 \"내년 농어촌기본소득 전면시행…통합지원금 활용 가능\"",
       "telegram_core_fact": "발언, 확대 시행을 위한 협의 구상 단계이지만 민 시장이 통합지원금 활용 가능성까지 열어두면서 논의는 구체화될 전망이다.",
       "title": "민형배 \"내년 농어촌기본소득 전면시행…통합지원금 활용 가능\""
+    },
+    "core:4d9989b6c140f63016cd258c": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836289",
+      "source": "뉴시스",
+      "source_body_digest": "f3a9546894e9b21e066e20a6310439030a64f0f1bd802134967cb64eaca79d58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44373c6ae2d0023fc1d5432c592436472422e274f10ea1adf9dc7866c10e10fb",
+      "source_fact_keys": [
+        "source_fact:v1:1f8bf67bdfbbe2d804a2bc97af3e26bac9a972e8b6fe4a606c6fb42110a8610f",
+        "source_fact:v1:411d86598b3470ab934ec69b1353adfe547a36c53b1c56d3d6a54491f695a977",
+        "source_fact:v1:7d237d018d4c674064ed41711952d8eb7829520f23a369aa33261d7d6e2d49b8",
+        "source_fact:v1:b4df255aa02e458a17cc0363e80fe3f220bc0938f28e0bfe399b2e503af3134c"
+      ],
+      "source_published_kst": "2026-10-22T10:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축",
+      "telegram_core_fact": "충주시는 22일 충주시청 중회의실에서 서울다이나믹스㈜와 이같은 내용의 산업용 자율작업 로봇 생산거점 구축을 위한 투자협약을 했다. 충북 충주시 산척면 동충주산업단지에 산업용 자율작업 로봇(피지컬 AI 로봇) 생산거점이 들어선다.",
+      "title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축"
     },
     "core:4dbb452139cb038212440def": {
       "first_seen_kst": "2026-10-19T13:01:20+09:00",
@@ -56264,6 +56406,24 @@
       "source_title": "중동·우크라 '쌍끌이 악재'에 유가 급등…WTI 100달러 돌파",
       "telegram_core_fact": "뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI) 역시 3.51% 급등한 배럴당 101.41달러를 기록, 7거래일 연속 상승세를 이어가며 지난 9월17일 이후 최고가를 경신했다.",
       "title": "중동·우크라 '쌍끌이 악재'에 유가 급등…WTI 100달러 돌파"
+    },
+    "core:a02f2146bceca8ab812c4773": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022057800003",
+      "source": "연합뉴스",
+      "source_body_digest": "e1dc8e3183986814edd6377687a3a11fd3f0493d9175731cc351f839f1df8081",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에쓰오일, 통합 제조운영 관리시스템 고도화…샤힌공장에도 적용 | 연합뉴스",
+      "telegram_core_fact": "에쓰오일은 통합 제조 운영 관리 시스템 'S-imoms'을 고도화하고 샤힌 공장에 확대 적용했다고 밝혔다. 이번 2단계(Phase-2) 고도화에서는 주요 설루션 간 데이터 연계를 강화하고 각 시스템에 분산된 설비 운전·성능 정보를 통합 관리·분석해 설비 신뢰성과 운영 효율을 높일 수 있도록 했다.",
+      "title": "에쓰오일, 통합 제조운영 관리시스템 고도화…샤힌공장에도 적용 | 연합뉴스"
     },
     "core:a0416a17296860cf5267f659": {
       "first_seen_kst": "2026-10-22T15:55:18+09:00",
@@ -103228,6 +103388,44 @@
       "telegram_core_fact": "CNBC 등에 따르면 12월 인도분 브렌트유는 ICE 선물거래소에서 전장 대비 0.37달러(0.35%) 상승한 배럴당 106.06달러에 거래를 마쳤다.",
       "title": "국제유가, IEA 공급 경고·중동 긴장에 상승…브렌트유, 배럴당 106달러"
     },
+    "event:ab3d02ace648487f1d39890c": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
     "event:ab44daef1c35547cdb993477": {
       "first_seen_kst": "2026-10-04T19:09:35+09:00",
       "lanes": {
@@ -110063,30 +110261,30 @@
     "event:fcb66871eb6308f34171ea78": {
       "first_seen_kst": "2026-10-22T16:54:41+09:00",
       "lanes": {
-        "live": "2026-10-22T16:54:41+09:00"
+        "live": "2026-10-22T18:25:24+09:00"
       },
-      "last_seen_kst": "2026-10-22T16:54:41+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=03155366645615544",
-      "source": "이데일리",
-      "source_body_digest": "f3dc3d101e1087724c00b3356f463adcd3b1c094e3dee145b2fe85d2959436cf",
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:28c4c072990621c7ec6c90dec06b70c831687da4eb18b36b11a5cfbcef92332c",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
       "source_fact_keys": [
-        "source_fact:v1:0bbfdae12b853941e9762e7d69fb007f1da97788774d7987d423aa9e25fc71aa",
-        "source_fact:v1:297df85097a254abd595d3cd5484937bcd90bd6e807c7c102ec5a61f71a36fef",
-        "source_fact:v1:39cfda5c4b6d9993dcbd7d4b12b22fe12fd2ac8aa83769ad20064ccf8420df34",
-        "source_fact:v1:5e54d1299f1fe2130622540dfd233077a83d43b8fd63b788de7250fc8d5cbaac",
-        "source_fact:v1:be626a2ad733a9248f1c93f00f02bd2ffbbc08b46f858a12aa56d76bd75a5bcf",
-        "source_fact:v1:cb0e97f95452fc8e16d3cbd0ddd3d15842d4d1c5fc9e27712592f338b5aceb76",
-        "source_fact:v1:cecd8e88523db017ff8010be83f866aae77a1d9e87d8c807ce62e1ac9f174645",
-        "source_fact:v1:e63c5b919cef0fe50831ced9e043c3d232f899f52e30d503ed2535fe5d9e826b",
-        "source_fact:v1:f2e22a5110495aadf503c3884547a0797f5b67de653712b45b5711bb0dadfd2f"
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
       ],
-      "source_published_kst": "2026-10-22T09:50+09:00",
+      "source_published_kst": "2026-10-22T10:05+09:00",
       "source_supply_terms": {},
-      "source_title": "토스증권 리서치센터 “AI 시대, 일본 반도체 소부장의 저력 조명”",
-      "telegram_core_fact": "국내 메모리 반도체 업체들의 HBM 생산량이 늘어날수록 일본 소부장 기업들의 수주도 늘어나는 상호보완적 구조인 동시에, 양국의 소부장 기업 간 주도권 다툼도 한층 치열해지고 있다는 이유에서다.",
-      "title": "토스증권 리서치센터 “AI 시대, 일본 반도체 소부장의 저력 조명”"
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
     },
     "event:fcd2006e3cdc810ec981340b": {
       "first_seen_kst": "2026-10-16T15:15:48+09:00",
@@ -116441,6 +116639,34 @@
       "source_title": "'개구리 삶기 전략'…러시아 동유럽 도발에 나토 동맹 시험대 | 연합뉴스",
       "telegram_core_fact": "나토 내부에서는 흑해 감시·정찰 활동 강화, 무인 시스템을 활용한 상선 호위, 러시아 '그림자 함대' 선박에 대한 나포 확대, 추가 경제 제재 및 외교관 추방 등의 대응 카드가 거론되고 있다.",
       "title": "'개구리 삶기 전략'…러시아 동유럽 도발에 나토 동맹 시험대 | 연합뉴스"
+    },
+    "fact:0f34b506f6581c8d67847baf": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
     },
     "fact:0f3e5636333bbf7c3e4db29c": {
       "first_seen_kst": "2026-10-21T07:24:03+09:00",
@@ -127480,6 +127706,44 @@
       "source_title": "\"머스크는 국보\"…트럼프, 우주정책 서명 전 스페이스X 채권 대거 매수",
       "telegram_core_fact": "트럼프 대통령은 스페이스X 채권 매수 이틀 뒤인 8월20일 상업용 우주 운송 확대를 위한 국가 우주 운송 정책에 서명했다.",
       "title": "\"머스크는 국보\"…트럼프, 우주정책 서명 전 스페이스X 채권 대거 매수"
+    },
+    "fact:2c4082ae70ea02560244e8c9": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "fact:2c42447564e18a6c8e768f8b": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -144546,6 +144810,34 @@
       "telegram_core_fact": "2024년 착공한 대전물류센터는 약 30개월의 공사를 거쳐 건축면적 약 3700평, 연면적 약 6000평 규모로 조성됐다.",
       "title": "\"생산부터 출고까지 한 번에\" 롯데칠성, 대전 자동화 물류센터 가동"
     },
+    "fact:5b4dc11659e665fd0850a603": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
+    },
     "fact:5b59cadb30ac5f2d0aa55ad7": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -155136,6 +155428,31 @@
       "source_title": "KGM, 유럽 탄소규제 선제 대응…후시파트너스와 MOU",
       "telegram_core_fact": "이용헌 KGM 연구기획센터장 상무는 “이번 협약은 협력사와 함께 유럽 탄소 규제에 선제적으로 대응하기 위한 첫걸음을 뗀 것으로 의미가 있다”며 “앞으로 실증으로 마련한 산정 체계를 공급망 전반으로 확대해 수출 경쟁력을 높여 나가겠다”고 말했다.",
       "title": "KGM, 유럽 탄소규제 선제 대응…후시파트너스와 MOU"
+    },
+    "fact:77acfb3043d08b17acd60fd8": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638783",
+      "source": "이투데이",
+      "source_body_digest": "56a6bcbf9b9ac0feec55ddbba29d7e0fb9ba997f4d222ce462715f76e98f7db4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3058e67f52e757e8ccf0f6e26465af0cd8d66c5e87e32cede9783687847bc45",
+      "source_fact_keys": [
+        "source_fact:v1:0417313b946814533e694e03f2f9edc9406144ae1fa1635cb05460b26648ed0c",
+        "source_fact:v1:2003ee4ca254d6ca2e4000e4bb69a376f6970bbb3db27796b0ec5c3831853e3c",
+        "source_fact:v1:2a76fcae7a8deaefee85a3ce0961433df49ae2e87fc42cc9f927e9146883f307",
+        "source_fact:v1:3ced3684859bc4547411683ae5a9ba667863a254c66d1717b2d2259ada9c3b2b",
+        "source_fact:v1:ed18b17f4f1d8c364ac6b3323e95d522f14f9768010f4361cc00896391a205f7",
+        "source_fact:v1:f3fd5f26371738dfae4b0d5d69dce65d6aabb71f2fb91b75c0b9bdbce199837c"
+      ],
+      "source_published_kst": "2026-10-22T10:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\"",
+      "telegram_core_fact": "씨어스는 이번 용인 신공장 개소로 평택 본사와 용인 신공장을 연계한 주요 생산기반을 확보한 만큼, 향후 스마트팩토리 고도화와 글로벌사업 확대에 투자 역량을 집중할 방침이다.",
+      "title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\""
     },
     "fact:77b5e69e2c5c68044000a1c6": {
       "first_seen_kst": "2026-10-15T19:53:29+09:00",
@@ -190364,6 +190681,29 @@
       "source_title": "\"규제해도 집값 상승 압력 여전\"…10·15 대책 규제 1년, 남은 변수는?",
       "telegram_core_fact": "대책 시행 1년간 가격·거래량·수요 이동과 임대차 시장 변화를 분석하고 규제 효과와 한계, 향후 시장 변수를 짚는다.",
       "title": "\"규제해도 집값 상승 압력 여전\"…10·15 대책 규제 1년, 남은 변수는?"
+    },
+    "fact:cd5ba04faf67d993a9a7db35": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836289",
+      "source": "뉴시스",
+      "source_body_digest": "f3a9546894e9b21e066e20a6310439030a64f0f1bd802134967cb64eaca79d58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44373c6ae2d0023fc1d5432c592436472422e274f10ea1adf9dc7866c10e10fb",
+      "source_fact_keys": [
+        "source_fact:v1:1f8bf67bdfbbe2d804a2bc97af3e26bac9a972e8b6fe4a606c6fb42110a8610f",
+        "source_fact:v1:411d86598b3470ab934ec69b1353adfe547a36c53b1c56d3d6a54491f695a977",
+        "source_fact:v1:7d237d018d4c674064ed41711952d8eb7829520f23a369aa33261d7d6e2d49b8",
+        "source_fact:v1:b4df255aa02e458a17cc0363e80fe3f220bc0938f28e0bfe399b2e503af3134c"
+      ],
+      "source_published_kst": "2026-10-22T10:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축",
+      "telegram_core_fact": "충주시는 22일 충주시청 중회의실에서 서울다이나믹스㈜와 이같은 내용의 산업용 자율작업 로봇 생산거점 구축을 위한 투자협약을 했다. 충북 충주시 산척면 동충주산업단지에 산업용 자율작업 로봇(피지컬 AI 로봇) 생산거점이 들어선다.",
+      "title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축"
     },
     "fact:cd60be7b8407e493e0ffca2f": {
       "first_seen_kst": "2026-10-17T06:31:57+09:00",
@@ -240926,6 +241266,31 @@
       "telegram_core_fact": "파두는 19일 잠정 실적 공시를 통해 올해 3분기 매출 1436억원, 영업이익 363억원을 달성했다고 밝혔다.",
       "title": "파두, 3분기 영업익 363억원 ‘역대 최대’…전년比 흑자전환"
     },
+    "link:39dc06bc8d5caeae7b119dfe": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638783",
+      "source": "이투데이",
+      "source_body_digest": "56a6bcbf9b9ac0feec55ddbba29d7e0fb9ba997f4d222ce462715f76e98f7db4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3058e67f52e757e8ccf0f6e26465af0cd8d66c5e87e32cede9783687847bc45",
+      "source_fact_keys": [
+        "source_fact:v1:0417313b946814533e694e03f2f9edc9406144ae1fa1635cb05460b26648ed0c",
+        "source_fact:v1:2003ee4ca254d6ca2e4000e4bb69a376f6970bbb3db27796b0ec5c3831853e3c",
+        "source_fact:v1:2a76fcae7a8deaefee85a3ce0961433df49ae2e87fc42cc9f927e9146883f307",
+        "source_fact:v1:3ced3684859bc4547411683ae5a9ba667863a254c66d1717b2d2259ada9c3b2b",
+        "source_fact:v1:ed18b17f4f1d8c364ac6b3323e95d522f14f9768010f4361cc00896391a205f7",
+        "source_fact:v1:f3fd5f26371738dfae4b0d5d69dce65d6aabb71f2fb91b75c0b9bdbce199837c"
+      ],
+      "source_published_kst": "2026-10-22T10:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\"",
+      "telegram_core_fact": "씨어스는 이번 용인 신공장 개소로 평택 본사와 용인 신공장을 연계한 주요 생산기반을 확보한 만큼, 향후 스마트팩토리 고도화와 글로벌사업 확대에 투자 역량을 집중할 방침이다.",
+      "title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\""
+    },
     "link:39e3f42e4c695f50280eccdb": {
       "first_seen_kst": "2026-10-09T20:24:58+09:00",
       "lanes": {
@@ -250164,6 +250529,24 @@
       "source_title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사",
       "telegram_core_fact": "이란 이슬람혁명수비대(IRGC)가 호르무즈 해협을 통과하는 해저 통신케이블에 대한 공격 가능성을 시사하며 적대국들을 향해 경고했다.",
       "title": "이란혁명수비대, 호르무즈 해저케이블 공격 가능성 또 시사"
+    },
+    "link:4c9eef2618816edf892c87e6": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836322",
+      "source": "뉴시스",
+      "source_body_digest": "075cb30f8f0d5ae67311ab285431cd378b5f06e4491fddc1054658c4e6a19be3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T10:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"생산능력 1.6배 확대\"…씨어스, 용인공장 개소",
+      "telegram_core_fact": "이번 신공장 개소로 웨어러블 패치 생산능력은 기존보다 약 1.6배 확대됐다.",
+      "title": "\"생산능력 1.6배 확대\"…씨어스, 용인공장 개소"
     },
     "link:4ca79cfae2e6d27ab6a6d365": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -277251,6 +277634,34 @@
       "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
       "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
     },
+    "link:81803280788adb7c7b0b547a": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
+    },
     "link:818497b309df99ea3bd0839b": {
       "first_seen_kst": "2026-10-13T13:27:52+09:00",
       "lanes": {
@@ -277821,6 +278232,34 @@
       "source_title": "\"우주 카르텔 아냐?\"…항우연·천문연 전·현직 직원 일감 몰아주기 논란",
       "telegram_core_fact": "우주항공 분야 공공 연구기관에서 직원이 창업하거나 인수한 기업에 수백억원 계약이 집중되고, 감사에서 부적절한 계약 관행이 적발된 이후에도 관련 기업과의 계약이 이어졌다는 지적이 국회에서 제기됐다.",
       "title": "\"우주 카르텔 아냐?\"…항우연·천문연 전·현직 직원 일감 몰아주기 논란"
+    },
+    "link:82cfdb007cbf4dbd8d68fc5f": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
     },
     "link:82dbebfa4ae4de53eb7ec8e3": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
@@ -291402,6 +291841,24 @@
       "telegram_core_fact": "서 상무는 \"반도체 업종의 부진과 외국인 수급 부담으로 장 초반 약세가 이어질 것으로 예상한다\"면서도 \"다만 관련 악재들이 전일 상당 부분 선반영됐고, 중국 창신메모리의 기술 진전이 즉각적인 공급 증가나 메모리 가격 하락을 의미하지 않는다는 점에서 낙폭 축소와 반발 매수 유입 가능성도 높은 상황\"이라고 밝혔다.",
       "title": "[마켓뷰] 美반도체 약세에 추가 하락? 반발매수?…코스피 향배는 | 연합뉴스"
     },
+    "link:9de36b8ed554ff29ba2bb8c4": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022057800003",
+      "source": "연합뉴스",
+      "source_body_digest": "e1dc8e3183986814edd6377687a3a11fd3f0493d9175731cc351f839f1df8081",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에쓰오일, 통합 제조운영 관리시스템 고도화…샤힌공장에도 적용 | 연합뉴스",
+      "telegram_core_fact": "에쓰오일은 통합 제조 운영 관리 시스템 'S-imoms'을 고도화하고 샤힌 공장에 확대 적용했다고 밝혔다. 이번 2단계(Phase-2) 고도화에서는 주요 설루션 간 데이터 연계를 강화하고 각 시스템에 분산된 설비 운전·성능 정보를 통합 관리·분석해 설비 신뢰성과 운영 효율을 높일 수 있도록 했다.",
+      "title": "에쓰오일, 통합 제조운영 관리시스템 고도화…샤힌공장에도 적용 | 연합뉴스"
+    },
     "link:9deeabcf8a28b4b863162736": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
       "lanes": {
@@ -296914,6 +297371,34 @@
       "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
       "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
     },
+    "link:a83aba946b47650fc1286e04": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
+    },
     "link:a83dda3b2930af9118f97316": {
       "first_seen_kst": "2026-10-15T13:40:20+09:00",
       "lanes": {
@@ -301089,6 +301574,29 @@
       ],
       "source_published_kst": "2026-10-06T16:30+09:00",
       "title": "고려아연, 故 최창걸 명예회장 1주기 추모…“사람·신뢰 철학으로 미래 50년”"
+    },
+    "link:afda26e06aef3af6771cd5dc": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836289",
+      "source": "뉴시스",
+      "source_body_digest": "f3a9546894e9b21e066e20a6310439030a64f0f1bd802134967cb64eaca79d58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44373c6ae2d0023fc1d5432c592436472422e274f10ea1adf9dc7866c10e10fb",
+      "source_fact_keys": [
+        "source_fact:v1:1f8bf67bdfbbe2d804a2bc97af3e26bac9a972e8b6fe4a606c6fb42110a8610f",
+        "source_fact:v1:411d86598b3470ab934ec69b1353adfe547a36c53b1c56d3d6a54491f695a977",
+        "source_fact:v1:7d237d018d4c674064ed41711952d8eb7829520f23a369aa33261d7d6e2d49b8",
+        "source_fact:v1:b4df255aa02e458a17cc0363e80fe3f220bc0938f28e0bfe399b2e503af3134c"
+      ],
+      "source_published_kst": "2026-10-22T10:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축",
+      "telegram_core_fact": "충주시는 22일 충주시청 중회의실에서 서울다이나믹스㈜와 이같은 내용의 산업용 자율작업 로봇 생산거점 구축을 위한 투자협약을 했다. 충북 충주시 산척면 동충주산업단지에 산업용 자율작업 로봇(피지컬 AI 로봇) 생산거점이 들어선다.",
+      "title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축"
     },
     "link:afeebbcba212dea60417dfcf": {
       "first_seen_kst": "2026-10-16T21:38:15+09:00",
@@ -312981,6 +313489,44 @@
       "link": "https://www.fnnews.com/news/202610020701299645",
       "source": "파이낸셜뉴스",
       "title": "마이크론이 연 반도체 실적시즌…'삼성전자 HBM4·범용D램'에 쏠린 눈"
+    },
+    "link:c770d375020a562ad80cf751": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "link:c777962fd597ff8ff2cb4220": {
       "first_seen_kst": "2026-10-15T01:29:03+09:00",
@@ -345640,6 +346186,24 @@
       "telegram_core_fact": "특히 조준희 회장의 올해 매수 단가는 1만2000원대부터 6000원대까지 고르게 분포해, 특정 가격대를 노린 매수가 아니라 연중 꾸준히 지분을 늘려왔다는 점에서 경영진의 의지가 분명하게 드러났다는 평가다.",
       "title": "유라클 경영진, 올해 지분율 1.3% 늘렸다… '책임경영' 의지 재확인"
     },
+    "original:0b01de667d70823e48940d95": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022057800003",
+      "source": "연합뉴스",
+      "source_body_digest": "e1dc8e3183986814edd6377687a3a11fd3f0493d9175731cc351f839f1df8081",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에쓰오일, 통합 제조운영 관리시스템 고도화…샤힌공장에도 적용 | 연합뉴스",
+      "telegram_core_fact": "에쓰오일은 통합 제조 운영 관리 시스템 'S-imoms'을 고도화하고 샤힌 공장에 확대 적용했다고 밝혔다. 이번 2단계(Phase-2) 고도화에서는 주요 설루션 간 데이터 연계를 강화하고 각 시스템에 분산된 설비 운전·성능 정보를 통합 관리·분석해 설비 신뢰성과 운영 효율을 높일 수 있도록 했다.",
+      "title": "에쓰오일, 통합 제조운영 관리시스템 고도화…샤힌공장에도 적용 | 연합뉴스"
+    },
     "original:0b06ef32623eda5f69bf0cff": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
       "lanes": {
@@ -349500,6 +350064,24 @@
       "source_title": "\"돈 안돼\" 백신·항암제 공급중단…올해만 47건",
       "telegram_core_fact": "11일 국회 보건복지위원회 허종식 더불어민주당 의원이 식품의약품안전처로부터 제출 받은 '2021년~2026 공급중단·부족 의약품 목록'에 따르면 올해 상반기(1~6월) 접수된 공급중단·부족 의약품 135건 가운데 34.8%인 47건이 '채산성 문제(20건)' 또는 '판매부진'(27건) 때문인 것으로 나타났다.",
       "title": "\"돈 안돼\" 백신·항암제 공급중단…올해만 47건"
+    },
+    "original:12ff33d3b68284ec57b60614": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836322",
+      "source": "뉴시스",
+      "source_body_digest": "075cb30f8f0d5ae67311ab285431cd378b5f06e4491fddc1054658c4e6a19be3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T10:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"생산능력 1.6배 확대\"…씨어스, 용인공장 개소",
+      "telegram_core_fact": "이번 신공장 개소로 웨어러블 패치 생산능력은 기존보다 약 1.6배 확대됐다.",
+      "title": "\"생산능력 1.6배 확대\"…씨어스, 용인공장 개소"
     },
     "original:13033811a3efb229a60b0983": {
       "first_seen_kst": "2026-10-15T16:50:59+09:00",
@@ -353658,6 +354240,34 @@
       "link": "https://view.asiae.co.kr/article/2026100208371446664",
       "source": "아시아경제",
       "title": "SBVA, 글로벌 AI 기업 데이터브릭스에 투자…50억달러 규모 라운드"
+    },
+    "original:1b680ddca067f7233f3e9dff": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
     },
     "original:1b9431f178a0e6b7d617b20d": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
@@ -367208,6 +367818,34 @@
       "telegram_core_fact": "자사주 매입: 기간은 8월20일부터 11월19일까지 약 3개월이었으나, 예정보다 한 달가량 앞당겨 종료됐다.",
       "title": "SK하이닉스, 40조원 자사주 매입 완료…한 달 앞당겨 종료"
     },
+    "original:35b4b3098a960f8c558b7ada": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
+    },
     "original:35b50eaac98952f9400b52d0": {
       "first_seen_kst": "2026-10-18T10:14:44+09:00",
       "lanes": {
@@ -367911,6 +368549,29 @@
       "source_title": "컴투스, '제우스: 오만의 신' 출시 50일 성과 공개…'모두를 위한 경쟁' 통했다",
       "telegram_core_fact": "지난 8월 26일 서비스를 시작한 ‘제우스: 오만의 신’은 출시 18시간 만에 구글·애플 앱마켓 매출 1위를 기록했다.",
       "title": "컴투스, '제우스: 오만의 신' 출시 50일 성과 공개…'모두를 위한 경쟁' 통했다"
+    },
+    "original:3778209043226f8cfdf9f0d3": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836289",
+      "source": "뉴시스",
+      "source_body_digest": "f3a9546894e9b21e066e20a6310439030a64f0f1bd802134967cb64eaca79d58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44373c6ae2d0023fc1d5432c592436472422e274f10ea1adf9dc7866c10e10fb",
+      "source_fact_keys": [
+        "source_fact:v1:1f8bf67bdfbbe2d804a2bc97af3e26bac9a972e8b6fe4a606c6fb42110a8610f",
+        "source_fact:v1:411d86598b3470ab934ec69b1353adfe547a36c53b1c56d3d6a54491f695a977",
+        "source_fact:v1:7d237d018d4c674064ed41711952d8eb7829520f23a369aa33261d7d6e2d49b8",
+        "source_fact:v1:b4df255aa02e458a17cc0363e80fe3f220bc0938f28e0bfe399b2e503af3134c"
+      ],
+      "source_published_kst": "2026-10-22T10:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축",
+      "telegram_core_fact": "충주시는 22일 충주시청 중회의실에서 서울다이나믹스㈜와 이같은 내용의 산업용 자율작업 로봇 생산거점 구축을 위한 투자협약을 했다. 충북 충주시 산척면 동충주산업단지에 산업용 자율작업 로봇(피지컬 AI 로봇) 생산거점이 들어선다.",
+      "title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축"
     },
     "original:377a260355253957ea81cb23": {
       "first_seen_kst": "2026-10-12T03:42:08+09:00",
@@ -405317,6 +405978,31 @@
       "link": "https://www.yna.co.kr/view/AKR20260923128300054",
       "source": "연합뉴스",
       "title": "전통 제조업에서 반도체·AI로…전남광주 산업지도 다시 그린다 | 연합뉴스"
+    },
+    "original:8263aeab121cddc006b1af15": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638783",
+      "source": "이투데이",
+      "source_body_digest": "56a6bcbf9b9ac0feec55ddbba29d7e0fb9ba997f4d222ce462715f76e98f7db4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3058e67f52e757e8ccf0f6e26465af0cd8d66c5e87e32cede9783687847bc45",
+      "source_fact_keys": [
+        "source_fact:v1:0417313b946814533e694e03f2f9edc9406144ae1fa1635cb05460b26648ed0c",
+        "source_fact:v1:2003ee4ca254d6ca2e4000e4bb69a376f6970bbb3db27796b0ec5c3831853e3c",
+        "source_fact:v1:2a76fcae7a8deaefee85a3ce0961433df49ae2e87fc42cc9f927e9146883f307",
+        "source_fact:v1:3ced3684859bc4547411683ae5a9ba667863a254c66d1717b2d2259ada9c3b2b",
+        "source_fact:v1:ed18b17f4f1d8c364ac6b3323e95d522f14f9768010f4361cc00896391a205f7",
+        "source_fact:v1:f3fd5f26371738dfae4b0d5d69dce65d6aabb71f2fb91b75c0b9bdbce199837c"
+      ],
+      "source_published_kst": "2026-10-22T10:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\"",
+      "telegram_core_fact": "씨어스는 이번 용인 신공장 개소로 평택 본사와 용인 신공장을 연계한 주요 생산기반을 확보한 만큼, 향후 스마트팩토리 고도화와 글로벌사업 확대에 투자 역량을 집중할 방침이다.",
+      "title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\""
     },
     "original:826749039a57a9e941330d46": {
       "first_seen_kst": "2026-10-04T06:52:27+09:00",
@@ -448467,6 +449153,44 @@
       "telegram_core_fact": "니콜렛 뱅크셰어스(NIC)가 3분기(9월 30일 종료) GAAP 기준 순이익 6370만 달러로 전년 동기 4170만 달러 대비 52.7% 증가했고, 희석 주당순이익(GAAP)은 2.96달러로 전년 동기 2.73달러보다 8.4% 늘었다고 10월 20일 발표했다.",
       "title": "니콜렛 뱅크셰어스, 3분기 희석 EPS 2.96달러..전년비 8.4% 증가"
     },
+    "original:d968064d0c42f0cc7fc3fdee": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
     "original:d96a1efd51069aca03322bba": {
       "first_seen_kst": "2026-10-12T16:50:12+09:00",
       "lanes": {
@@ -478307,6 +479031,34 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:05a84f1c5478835c9feb01a0": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
+    },
     "source_fact:05a86d645663d0854b3e7bd6": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
       "lanes": {
@@ -485471,6 +486223,44 @@
       "source_title": "환율, 2년래 최저 찍고 10원 ‘쑥’…중동 불안·AI 고점론 영향",
       "telegram_core_fact": "서울 외환시장에 따르면 이날 주간거래(오후 3시 30분 기준)에서 환율은 전 거래일보다 10.0원 급등한 1345.1원에 거래됐다.",
       "title": "환율, 2년래 최저 찍고 10원 ‘쑥’…중동 불안·AI 고점론 영향"
+    },
+    "source_fact:093fa27447a878c84f1a3fb7": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "source_fact:0941feefadf3c4d934fa87e0": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
@@ -493878,6 +494668,29 @@
       "telegram_core_fact": "이번 행사에서 바이젠셀은 재생의료 분야의 임상 및 사업화 경험이 축적된 일본 시장을 중심으로 글로벌 제약·바이오 기업들과 파트너링 미팅을 진행하고, 주요 파이프라인의 기술이전 및 공동개발 등 다양한 사업협력 가능성을 모색할 계획이다.",
       "title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진"
     },
+    "source_fact:0d832bbb6a3e7c2ab03ee6f7": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836289",
+      "source": "뉴시스",
+      "source_body_digest": "f3a9546894e9b21e066e20a6310439030a64f0f1bd802134967cb64eaca79d58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44373c6ae2d0023fc1d5432c592436472422e274f10ea1adf9dc7866c10e10fb",
+      "source_fact_keys": [
+        "source_fact:v1:1f8bf67bdfbbe2d804a2bc97af3e26bac9a972e8b6fe4a606c6fb42110a8610f",
+        "source_fact:v1:411d86598b3470ab934ec69b1353adfe547a36c53b1c56d3d6a54491f695a977",
+        "source_fact:v1:7d237d018d4c674064ed41711952d8eb7829520f23a369aa33261d7d6e2d49b8",
+        "source_fact:v1:b4df255aa02e458a17cc0363e80fe3f220bc0938f28e0bfe399b2e503af3134c"
+      ],
+      "source_published_kst": "2026-10-22T10:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축",
+      "telegram_core_fact": "충주시는 22일 충주시청 중회의실에서 서울다이나믹스㈜와 이같은 내용의 산업용 자율작업 로봇 생산거점 구축을 위한 투자협약을 했다. 충북 충주시 산척면 동충주산업단지에 산업용 자율작업 로봇(피지컬 AI 로봇) 생산거점이 들어선다.",
+      "title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축"
+    },
     "source_fact:0d858bf830e1a4d0bbacec25": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
       "lanes": {
@@ -494011,6 +494824,34 @@
       ],
       "source_published_kst": "2026-10-06T11:42+09:00",
       "title": "대전급식비 전국 꼴찌수준…허태정 시장 \"15%까지 인상\""
+    },
+    "source_fact:0d8b53f14a50942120723f61": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
     },
     "source_fact:0d93fbf3b8d27e380f09605b": {
       "first_seen_kst": "2026-10-21T18:34:10+09:00",
@@ -501232,6 +502073,44 @@
       "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.89달러(2.06%) 오른 배럴당 93.74달러에 마감했다.",
       "title": "국제유가, 사우디 공항 피격에 상승⋯WTI 2%↑[상보]"
     },
+    "source_fact:10d91cd07f00a7d17844077f": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
     "source_fact:10e264e5c22047cad415288c": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
       "lanes": {
@@ -504166,6 +505045,34 @@
       ],
       "source_published_kst": "2026-10-07T15:13+09:00",
       "title": "日유가보조금 10조원 넘게 투입…\"재정압박·현실왜곡 부작용\" | 연합뉴스"
+    },
+    "source_fact:1288f6f449b09ee37dc76049": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
     },
     "source_fact:1289f56082cd322f39969a24": {
       "first_seen_kst": "2026-10-13T02:02:36+09:00",
@@ -517426,6 +518333,44 @@
       "telegram_core_fact": "농림축산식품부가 포도 수출 1억달러(약 1천351억원) 달성을 위해 생산자와 수출업체 간 표준거래계약서를 도입하고 검역·물류 지원을 확대한다. 농식품부는 경상북도와 함께 15일 경북 상주시의 포도 농장 도영농원에서 '포도 수출 1억달러 도약 현장 결의 행사'를 열었다고 밝혔다.",
       "title": "농식품부, 포도 수출 1억달러 달성 추진…표준계약서 도입 | 연합뉴스"
     },
+    "source_fact:19596e2f5fa5177f128bdbf1": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
     "source_fact:195a2956d4cc6931dfd20610": {
       "first_seen_kst": "2026-10-21T07:55:35+09:00",
       "lanes": {
@@ -527719,6 +528664,34 @@
       "source_published_kst": "2026-10-07T12:50+09:00",
       "title": "반도체 호황에 기업 곳간 ‘최대’…가계는 예금 빼 주식으로"
     },
+    "source_fact:1dffd7ac3a0cb6c9c4656580": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
+    },
     "source_fact:1e04108cd1288f19c2837940": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
       "lanes": {
@@ -529844,6 +530817,44 @@
       "telegram_core_fact": "한국전력공사가 연내 삼성전자·SK하이닉스와 호남 반도체 산단의 2단계 전력 공급 협약 체결을 추진한다. SK하이닉스의 용인 일반산단은 앞서 협약을 마친 만큼, 내년 삼성전자와의 계약이 체결되면 용인 반도체 클러스터 전체의 전력 공급 계획도 완성되는 셈이다.",
       "title": "[단독]호남 반도체 산단 6GW 전력 공급 협약 연내 확정…용인은 내년 마무리"
     },
+    "source_fact:1f458f9a277f8a22e39f1428": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
     "source_fact:1f48f472e499a3ccf1291540": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -530161,6 +531172,44 @@
       "source_title": "\"인도에 약 21조원 베팅\"…현대차그룹, 미래차 성장거점으로 키운다 [푸네 新공장 준공]",
       "telegram_core_fact": "현대차는 14일(현지시간) 인도 마하라슈트라주 탈레가온에서 열린 푸네 신공장 준공식에서 이 같은 내용의 중장기 투자계획을 발표했다. 현대차는 이날 준공한 푸네 신공장의 연간 생산능력을 현재 17만대에서 2028년 25만대, 2030년 32만대까지 확대할 계획이다.",
       "title": "\"인도에 약 21조원 베팅\"…현대차그룹, 미래차 성장거점으로 키운다 [푸네 新공장 준공]"
+    },
+    "source_fact:1f7bb0d0f844813bf4a4bb8d": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "source_fact:1f7ccad15dca469b318fbc6f": {
       "first_seen_kst": "2026-10-13T16:01:00+09:00",
@@ -536434,6 +537483,29 @@
       "telegram_core_fact": "인공지능(AI) 투자로 반도체 장비 수요가 늘어난 가운데, 일본의 주요 반도체 소부장 기업들의 평균 연봉도 큰 폭으로 증가한 것으로 나타났다.",
       "title": "일본 반도체 연봉도 뛰었다…디스코 평균 1억6000만원 육박"
     },
+    "source_fact:222bd9b5d34ed7b3371cbfad": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836289",
+      "source": "뉴시스",
+      "source_body_digest": "f3a9546894e9b21e066e20a6310439030a64f0f1bd802134967cb64eaca79d58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44373c6ae2d0023fc1d5432c592436472422e274f10ea1adf9dc7866c10e10fb",
+      "source_fact_keys": [
+        "source_fact:v1:1f8bf67bdfbbe2d804a2bc97af3e26bac9a972e8b6fe4a606c6fb42110a8610f",
+        "source_fact:v1:411d86598b3470ab934ec69b1353adfe547a36c53b1c56d3d6a54491f695a977",
+        "source_fact:v1:7d237d018d4c674064ed41711952d8eb7829520f23a369aa33261d7d6e2d49b8",
+        "source_fact:v1:b4df255aa02e458a17cc0363e80fe3f220bc0938f28e0bfe399b2e503af3134c"
+      ],
+      "source_published_kst": "2026-10-22T10:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축",
+      "telegram_core_fact": "충주시는 22일 충주시청 중회의실에서 서울다이나믹스㈜와 이같은 내용의 산업용 자율작업 로봇 생산거점 구축을 위한 투자협약을 했다. 충북 충주시 산척면 동충주산업단지에 산업용 자율작업 로봇(피지컬 AI 로봇) 생산거점이 들어선다.",
+      "title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축"
+    },
     "source_fact:222ec6974f48596e4b4b8f68": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
       "lanes": {
@@ -536755,6 +537827,29 @@
       "source_title": "최태원 이어 산업장관도 찾았다…호남 반도체 추진 점검(종합)",
       "telegram_core_fact": "전은옥 시 반도체산업지원정책관은 \"최 회장에 이어 김 장관이 직접 현장을 찾아준 만큼 반도체 클러스터 조성에 더욱 속도가 붙을 것으로 기대한다\"면서 \"기업이 원하는 부지가 투자 일정에 맞춰 공급되고, 전력·용수 등 기반시설도 차질 없이 구축될 수 있도록 정부·관계기관과 긴밀히 협력하겠다\"고 밝혔다.",
       "title": "최태원 이어 산업장관도 찾았다…호남 반도체 추진 점검(종합)"
+    },
+    "source_fact:2259464f60bf3ac343b85892": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836289",
+      "source": "뉴시스",
+      "source_body_digest": "f3a9546894e9b21e066e20a6310439030a64f0f1bd802134967cb64eaca79d58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44373c6ae2d0023fc1d5432c592436472422e274f10ea1adf9dc7866c10e10fb",
+      "source_fact_keys": [
+        "source_fact:v1:1f8bf67bdfbbe2d804a2bc97af3e26bac9a972e8b6fe4a606c6fb42110a8610f",
+        "source_fact:v1:411d86598b3470ab934ec69b1353adfe547a36c53b1c56d3d6a54491f695a977",
+        "source_fact:v1:7d237d018d4c674064ed41711952d8eb7829520f23a369aa33261d7d6e2d49b8",
+        "source_fact:v1:b4df255aa02e458a17cc0363e80fe3f220bc0938f28e0bfe399b2e503af3134c"
+      ],
+      "source_published_kst": "2026-10-22T10:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축",
+      "telegram_core_fact": "충주시는 22일 충주시청 중회의실에서 서울다이나믹스㈜와 이같은 내용의 산업용 자율작업 로봇 생산거점 구축을 위한 투자협약을 했다. 충북 충주시 산척면 동충주산업단지에 산업용 자율작업 로봇(피지컬 AI 로봇) 생산거점이 들어선다.",
+      "title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축"
     },
     "source_fact:226d3fd3616e8e2a5537f6e5": {
       "first_seen_kst": "2026-10-11T10:13:01+09:00",
@@ -552039,6 +553134,44 @@
       "source_title": "'애플 효과' OLED 출하량 늘었지만…삼성·LGD 3분기 성적표 주목",
       "telegram_core_fact": "시장조사업체 유비리서치에 따르면 올해 3분기 삼성디스플레이의 스마트폰·폴더블폰용 OLED 출하량은 9135만대로 전 분기 대비 7.8% 증가했다.",
       "title": "'애플 효과' OLED 출하량 늘었지만…삼성·LGD 3분기 성적표 주목"
+    },
+    "source_fact:2951853963c4fa89f49f09b8": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "source_fact:2953da1d6a5bc46263c2c115": {
       "first_seen_kst": "2026-10-21T02:06:57+09:00",
@@ -572155,6 +573288,29 @@
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
+    "source_fact:32e47e4057d85895c264b06c": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836289",
+      "source": "뉴시스",
+      "source_body_digest": "f3a9546894e9b21e066e20a6310439030a64f0f1bd802134967cb64eaca79d58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44373c6ae2d0023fc1d5432c592436472422e274f10ea1adf9dc7866c10e10fb",
+      "source_fact_keys": [
+        "source_fact:v1:1f8bf67bdfbbe2d804a2bc97af3e26bac9a972e8b6fe4a606c6fb42110a8610f",
+        "source_fact:v1:411d86598b3470ab934ec69b1353adfe547a36c53b1c56d3d6a54491f695a977",
+        "source_fact:v1:7d237d018d4c674064ed41711952d8eb7829520f23a369aa33261d7d6e2d49b8",
+        "source_fact:v1:b4df255aa02e458a17cc0363e80fe3f220bc0938f28e0bfe399b2e503af3134c"
+      ],
+      "source_published_kst": "2026-10-22T10:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축",
+      "telegram_core_fact": "충주시는 22일 충주시청 중회의실에서 서울다이나믹스㈜와 이같은 내용의 산업용 자율작업 로봇 생산거점 구축을 위한 투자협약을 했다. 충북 충주시 산척면 동충주산업단지에 산업용 자율작업 로봇(피지컬 AI 로봇) 생산거점이 들어선다.",
+      "title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축"
+    },
     "source_fact:32e9f35d0fcfe696a310c70a": {
       "first_seen_kst": "2026-10-15T09:43:41+09:00",
       "lanes": {
@@ -573812,6 +574968,44 @@
       "source_title": "앤트로픽 IPO 전에 선점…\"오픈AI, 40조원 투자유치에 속도\" | 연합뉴스",
       "telegram_core_fact": "오픈AI가 경쟁사 앤트로픽의 기업공개(IPO)를 앞두고 약 300억달러(약 40조3천억원) 투자 유치를 서두르고 있다고 로이터 통신이 19일(현지시간) 사정에 정통한 두 관계자를 인용해 보도했다.",
       "title": "앤트로픽 IPO 전에 선점…\"오픈AI, 40조원 투자유치에 속도\" | 연합뉴스"
+    },
+    "source_fact:33de20c0c88785996ea4d941": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "source_fact:33defe36ae539c79ae831207": {
       "first_seen_kst": "2026-10-19T04:40:52+09:00",
@@ -583539,6 +584733,34 @@
       "telegram_core_fact": "세이프 프로 그룹(SPAI)이 9월 30일 종료된 2026년 3분기 잠정 매출액이 250만 달러를 넘어서 전년 동기 10만1422달러 대비 2300% 이상 증가할 것으로 예상된다고 7일 발표했다.",
       "title": "세이프 프로 그룹, 3분기 잠정매출 250만달러..전년비 2300%↑"
     },
+    "source_fact:38aa700f2ac3cb3e7636dc2b": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
+    },
     "source_fact:38ad297f7efcfd0e7932efd7": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
       "lanes": {
@@ -585382,6 +586604,34 @@
       "telegram_core_fact": "비만약 시장을 외국 업체가 과점한 가운데 한미약품이 개발한 에페가 최근 식품의약품안전처로부터 국내 45번째 신약으로 허가를 얻었다.",
       "title": "위고비·마운자로 양강 깨질까…국산 비만약 '에페' 출격 | 연합뉴스"
     },
+    "source_fact:39a3fde638a871c22924f684": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
+    },
     "source_fact:39a62655d20b2f6f0913430b": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
       "lanes": {
@@ -587058,6 +588308,44 @@
       "source_title": "日 오므론, 美 온로직 인수⋯공장 ‘피지컬 AI’ 박차",
       "telegram_core_fact": "일본의 제어기기 업체 오므론이 미국의 산업용 컴퓨터 제조사 온로직을 6억7500만달러에 인수했다. 미국과 중국이 앞서가는 생성형 AI 개발과 달리, 피지컬 AI 분야에서는 제조업의 경험과 지식을 활용할 수 있는 일본이 강점을 지닌 것으로 평가된다고 닛케이는 설명했다.",
       "title": "日 오므론, 美 온로직 인수⋯공장 ‘피지컬 AI’ 박차"
+    },
+    "source_fact:3a6ce35e6e5045314cb6e4a9": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "source_fact:3a6ecf73568b26effd4c0a3f": {
       "first_seen_kst": "2026-10-07T19:47:02+09:00",
@@ -600884,6 +602172,31 @@
       "telegram_core_fact": "정부가 반도체·재생에너지 등 첨단산업 핵심품목을 경제안보품목으로 추가 지정하고 핵심광물과 소재·부품·장비 등 100개 내외 품목을 집중 관리한다. 내년 정부 예산안에 반영한 2000억원을 바탕으로 공급망 중요도가 높지만 민간 단독 투자가 어려운 해외 생산기지 확보 사업에 대한 투자도 확대한다.",
       "title": "정부, 경제안보품목 확대…핵심광물·소부장 100개 집중 관리"
     },
+    "source_fact:413d56408665bafa794b868a": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638783",
+      "source": "이투데이",
+      "source_body_digest": "56a6bcbf9b9ac0feec55ddbba29d7e0fb9ba997f4d222ce462715f76e98f7db4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3058e67f52e757e8ccf0f6e26465af0cd8d66c5e87e32cede9783687847bc45",
+      "source_fact_keys": [
+        "source_fact:v1:0417313b946814533e694e03f2f9edc9406144ae1fa1635cb05460b26648ed0c",
+        "source_fact:v1:2003ee4ca254d6ca2e4000e4bb69a376f6970bbb3db27796b0ec5c3831853e3c",
+        "source_fact:v1:2a76fcae7a8deaefee85a3ce0961433df49ae2e87fc42cc9f927e9146883f307",
+        "source_fact:v1:3ced3684859bc4547411683ae5a9ba667863a254c66d1717b2d2259ada9c3b2b",
+        "source_fact:v1:ed18b17f4f1d8c364ac6b3323e95d522f14f9768010f4361cc00896391a205f7",
+        "source_fact:v1:f3fd5f26371738dfae4b0d5d69dce65d6aabb71f2fb91b75c0b9bdbce199837c"
+      ],
+      "source_published_kst": "2026-10-22T10:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\"",
+      "telegram_core_fact": "씨어스는 이번 용인 신공장 개소로 평택 본사와 용인 신공장을 연계한 주요 생산기반을 확보한 만큼, 향후 스마트팩토리 고도화와 글로벌사업 확대에 투자 역량을 집중할 방침이다.",
+      "title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\""
+    },
     "source_fact:41421bb95a849898518f3814": {
       "first_seen_kst": "2026-10-14T21:14:31+09:00",
       "lanes": {
@@ -607265,6 +608578,31 @@
       ],
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "샌프란시스코 연은 총재 \"AI발 인플레, 단발성 아닐 수도\""
+    },
+    "source_fact:4435b2d128e181bce8c3f8a2": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638783",
+      "source": "이투데이",
+      "source_body_digest": "56a6bcbf9b9ac0feec55ddbba29d7e0fb9ba997f4d222ce462715f76e98f7db4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3058e67f52e757e8ccf0f6e26465af0cd8d66c5e87e32cede9783687847bc45",
+      "source_fact_keys": [
+        "source_fact:v1:0417313b946814533e694e03f2f9edc9406144ae1fa1635cb05460b26648ed0c",
+        "source_fact:v1:2003ee4ca254d6ca2e4000e4bb69a376f6970bbb3db27796b0ec5c3831853e3c",
+        "source_fact:v1:2a76fcae7a8deaefee85a3ce0961433df49ae2e87fc42cc9f927e9146883f307",
+        "source_fact:v1:3ced3684859bc4547411683ae5a9ba667863a254c66d1717b2d2259ada9c3b2b",
+        "source_fact:v1:ed18b17f4f1d8c364ac6b3323e95d522f14f9768010f4361cc00896391a205f7",
+        "source_fact:v1:f3fd5f26371738dfae4b0d5d69dce65d6aabb71f2fb91b75c0b9bdbce199837c"
+      ],
+      "source_published_kst": "2026-10-22T10:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\"",
+      "telegram_core_fact": "씨어스는 이번 용인 신공장 개소로 평택 본사와 용인 신공장을 연계한 주요 생산기반을 확보한 만큼, 향후 스마트팩토리 고도화와 글로벌사업 확대에 투자 역량을 집중할 방침이다.",
+      "title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\""
     },
     "source_fact:443817c43e3e81d757305c84": {
       "first_seen_kst": "2026-10-22T00:00:41+09:00",
@@ -614791,6 +616129,31 @@
       "source_title": "삼성, 반도체 성과급 내년 3월 말 지급⋯8천만원 연봉시 최대 7.5억 [종합]",
       "telegram_core_fact": "성과급은 세금과 보험료 등을 공제한 뒤 삼성전자 자사주로 지급한다.",
       "title": "삼성, 반도체 성과급 내년 3월 말 지급⋯8천만원 연봉시 최대 7.5억 [종합]"
+    },
+    "source_fact:47a217cf7075d21c5a6543f1": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638783",
+      "source": "이투데이",
+      "source_body_digest": "56a6bcbf9b9ac0feec55ddbba29d7e0fb9ba997f4d222ce462715f76e98f7db4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3058e67f52e757e8ccf0f6e26465af0cd8d66c5e87e32cede9783687847bc45",
+      "source_fact_keys": [
+        "source_fact:v1:0417313b946814533e694e03f2f9edc9406144ae1fa1635cb05460b26648ed0c",
+        "source_fact:v1:2003ee4ca254d6ca2e4000e4bb69a376f6970bbb3db27796b0ec5c3831853e3c",
+        "source_fact:v1:2a76fcae7a8deaefee85a3ce0961433df49ae2e87fc42cc9f927e9146883f307",
+        "source_fact:v1:3ced3684859bc4547411683ae5a9ba667863a254c66d1717b2d2259ada9c3b2b",
+        "source_fact:v1:ed18b17f4f1d8c364ac6b3323e95d522f14f9768010f4361cc00896391a205f7",
+        "source_fact:v1:f3fd5f26371738dfae4b0d5d69dce65d6aabb71f2fb91b75c0b9bdbce199837c"
+      ],
+      "source_published_kst": "2026-10-22T10:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\"",
+      "telegram_core_fact": "씨어스는 이번 용인 신공장 개소로 평택 본사와 용인 신공장을 연계한 주요 생산기반을 확보한 만큼, 향후 스마트팩토리 고도화와 글로벌사업 확대에 투자 역량을 집중할 방침이다.",
+      "title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\""
     },
     "source_fact:47a27ca85741a6f5bb4a4b0c": {
       "first_seen_kst": "2026-10-13T23:22:47+09:00",
@@ -644716,6 +646079,34 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 국제 제재로 거래가 금지된 러시아산 경유(디젤)를 미국과 세계 시장에 대규모로 공급하겠다고 발표했다.",
       "title": "경유값 급등에 표심 흔들…러시아産 들여오는 트럼프"
     },
+    "source_fact:55c2091fa4fae5fbb91b41d3": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
+    },
     "source_fact:55c42d61b59741f9709ef82e": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -652719,6 +654110,31 @@
       "telegram_core_fact": "포스코스틸리온 관계자는 \"이번 공급 승인은 포스코그룹의 글로벌 네트워크와 원소재 기술력, 당사의 표면 구현 역량이 시너지를 낸 결과\"라며 \"미국 통상 장벽을 극복하고 GE 공급망 진입에 성공한 것을 계기로 향후 북미 프리미엄 가전 소재 시장에서의 입지를 더욱 확대해 나가겠다\"고 말했다.",
       "title": "포스코스틸리온, 미국 GE 가전용 컬러강판 공급 승인 획득 | 연합뉴스"
     },
+    "source_fact:595658fd1f762fc83b940acc": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638783",
+      "source": "이투데이",
+      "source_body_digest": "56a6bcbf9b9ac0feec55ddbba29d7e0fb9ba997f4d222ce462715f76e98f7db4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3058e67f52e757e8ccf0f6e26465af0cd8d66c5e87e32cede9783687847bc45",
+      "source_fact_keys": [
+        "source_fact:v1:0417313b946814533e694e03f2f9edc9406144ae1fa1635cb05460b26648ed0c",
+        "source_fact:v1:2003ee4ca254d6ca2e4000e4bb69a376f6970bbb3db27796b0ec5c3831853e3c",
+        "source_fact:v1:2a76fcae7a8deaefee85a3ce0961433df49ae2e87fc42cc9f927e9146883f307",
+        "source_fact:v1:3ced3684859bc4547411683ae5a9ba667863a254c66d1717b2d2259ada9c3b2b",
+        "source_fact:v1:ed18b17f4f1d8c364ac6b3323e95d522f14f9768010f4361cc00896391a205f7",
+        "source_fact:v1:f3fd5f26371738dfae4b0d5d69dce65d6aabb71f2fb91b75c0b9bdbce199837c"
+      ],
+      "source_published_kst": "2026-10-22T10:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\"",
+      "telegram_core_fact": "씨어스는 이번 용인 신공장 개소로 평택 본사와 용인 신공장을 연계한 주요 생산기반을 확보한 만큼, 향후 스마트팩토리 고도화와 글로벌사업 확대에 투자 역량을 집중할 방침이다.",
+      "title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\""
+    },
     "source_fact:595830db414468b12a8513f1": {
       "first_seen_kst": "2026-10-19T16:36:04+09:00",
       "lanes": {
@@ -653635,6 +655051,44 @@
       "source_title": "패러데이퓨처, 로봇사업 2억 달러 가치 FFR 이전 확정에 주목",
       "telegram_core_fact": "로봇사업을 2억 달러 가치로 상장 자회사 FFR에 이전하는 확정계약을 체결했고, 종결 후에도 FFR 지분 65.7%를 유지합니다. 로봇사업 가치가 시장에서 재평가될 것이라는 기대가 커졌고, 수령 신주에 18개월 락업이 적용돼 지분 구조도 안정적이라는 평가에 매수세가 몰리고 있습니다.",
       "title": "패러데이퓨처, 로봇사업 2억 달러 가치 FFR 이전 확정에 주목"
+    },
+    "source_fact:59c24f4a1a4540503d69a46f": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "source_fact:59c38edb8c189521b5992938": {
       "first_seen_kst": "2026-10-12T11:27:57+09:00",
@@ -662798,6 +664252,44 @@
       "telegram_core_fact": "OK금융그룹이 예별손해보험 인수를 위한 주식매매계약(SPA)을 체결하며 손해보험업 진출에 나선다.",
       "title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입"
     },
+    "source_fact:5da223712f580ec9d6fa1692": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
     "source_fact:5da2e24825742be1916e23e7": {
       "first_seen_kst": "2026-10-07T22:13:12+09:00",
       "lanes": {
@@ -667190,6 +668682,44 @@
       ],
       "source_published_kst": "2026-10-06T13:24+09:00",
       "title": "통합항공사 뜨자 남은 10.58%…산은, 한진칼 지분 '엑시트 셈법' 관심집중 [fn마켓워치]"
+    },
+    "source_fact:60288d3fe18385c75022d4e1": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "source_fact:602d98f3ed8079b3674eee1b": {
       "first_seen_kst": "2026-10-13T20:01:17+09:00",
@@ -694197,6 +695727,34 @@
       "telegram_core_fact": "홈 뱅크셰어(HOMB)는 3분기(7~9월) GAAP 기준 순이익이 1억2950만 달러로 전년비 4.7% 늘어 분기 기준 사상 최대를 기록했으며, 희석 주당순이익(EPS)은 0.65달러로 전년 동기(0.63달러)보다 3.2% 증가했다고 14일(현지시간) 발표했다.",
       "title": "홈 뱅크셰어, 3분기 순이익 1억3000만 달러..역대 최고"
     },
+    "source_fact:6d38b729324fb88bfd1f8435": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
+    },
     "source_fact:6d4112833d0cfbc2b90bf64c": {
       "first_seen_kst": "2026-10-19T08:00:35+09:00",
       "lanes": {
@@ -709775,6 +711333,34 @@
       "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
       "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
     },
+    "source_fact:74ce396a1b51a209327cc755": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
+    },
     "source_fact:74ceb09ff1171bedd8b4100f": {
       "first_seen_kst": "2026-10-22T15:55:18+09:00",
       "lanes": {
@@ -714289,6 +715875,34 @@
       "source_title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자",
       "telegram_core_fact": "대만 기업들은 AI 인프라 투자 확대에 따른 판매량 증가로 실적을 끌어올리고 있는 반면 한국 반도체 기업의 이익은 메모리 가격 상승에 대한 의존도가 높다. 코스콤 CHECK 등에 따르면 코스피는 올해 3분기 19.33% 하락했다.",
       "title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자"
+    },
+    "source_fact:770c615782d3b3ba8e5fbf77": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
     },
     "source_fact:770db2718285cd19d68a6d28": {
       "first_seen_kst": "2026-10-20T02:43:34+09:00",
@@ -737315,6 +738929,44 @@
       "telegram_core_fact": "향후 글로벌 AI 인프라 경쟁에서는 중국의 대규모 데이터센터 건설 계획이 실제 가동으로 얼마나 이어지는지와 미국의 전력망 제약이 어떻게 작용하는지가 주요 변수로 남을 전망이다.",
       "title": "중국, 남아도는 전력으로 AI 승부…데이터센터 건설 가속"
     },
+    "source_fact:82ac6d123b1c3ae2c62072af": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
     "source_fact:82afd745683ae0347fed3a1d": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -738680,6 +740332,72 @@
       "source_title": "러 측도 경유 美 등에 공급 확인…\"10월 30만t 공급\"",
       "telegram_core_fact": "미 재무부는 곧바로 러시아 경유에 대한 제재 해제를 발표했는데, 러시아도 이를 확인한 모습이다.",
       "title": "러 측도 경유 美 등에 공급 확인…\"10월 30만t 공급\""
+    },
+    "source_fact:835ee2546abcd134f857d292": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
+    "source_fact:8361134ecd6421d904ebd63a": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
     },
     "source_fact:83615d695019abf3890963b8": {
       "first_seen_kst": "2026-10-14T02:42:17+09:00",
@@ -740759,6 +742477,44 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:84cc3afcdcc6cb039f2f0b4e": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "source_fact:84ce72fccb5ae274054096ca": {
       "first_seen_kst": "2026-10-11T12:55:39+09:00",
@@ -742883,6 +744639,44 @@
       "source_title": "3700억원 아리랑 6호, 5년 가까이 지상 대기…발사 지연에 예산 부담 가중",
       "telegram_core_fact": "이 의원 역시 \"앞으로 국가위성 해외 발사계약을 체결할 때 장기 지연에 따른 위험과 비용을 제대로 반영해야 한다\"며 지연배상과 실손보전, 대체발사, 계약해지권 등을 명시한 표준 가이드라인 마련을 촉구했다.",
       "title": "3700억원 아리랑 6호, 5년 가까이 지상 대기…발사 지연에 예산 부담 가중"
+    },
+    "source_fact:859ad647fb02cf6d12db9d95": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "source_fact:859d0c7ed20bc194d6ce27f0": {
       "first_seen_kst": "2026-10-13T20:01:17+09:00",
@@ -763437,6 +765231,34 @@
       "source_title": "네이버파이낸셜·두나무 결합, 내년 3월로 재연기…“기업결합·규제절차 영향”(종합)",
       "telegram_core_fact": "공정거래위원회의 기업결합 심사를 비롯해 금융당국의 대주주 변경 승인 등 정부 인허가 절차가 길어지고 있는 데다, 국회 내 디지털자산기본법 제정 논의 지연 등이 복합적으로 작용한 결과로 풀이된다.",
       "title": "네이버파이낸셜·두나무 결합, 내년 3월로 재연기…“기업결합·규제절차 영향”(종합)"
+    },
+    "source_fact:901cbfd48dab7e63ea37e904": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
     },
     "source_fact:901e1bae20ace244e42191f2": {
       "first_seen_kst": "2026-10-11T14:49:05+09:00",
@@ -789671,6 +791493,34 @@
       "source_published_kst": "2026-10-05T12:02+09:00",
       "title": "LTE 대역서 5G 기지국 쓴다…용도전환 제도 기반 마련"
     },
+    "source_fact:9cb541ccab82cb68791390ab": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
+    },
     "source_fact:9cb649ebce5165c75b08e7bd": {
       "first_seen_kst": "2026-10-17T00:21:55+09:00",
       "lanes": {
@@ -812063,6 +813913,34 @@
       "telegram_core_fact": "21일 한국은행이 발표한 ‘2026년 9월 생산자물가지수(잠정)’에 따르면 지난달 생산자물가지수는 129.78(2020년=100)로 전월 대비 0.2% 상승했다.",
       "title": "전기요금·먹거리 뛰자 9월 생산자물가 0.2%↑…두 달째 상승"
     },
+    "source_fact:a71c60942c8c088fbda11fb5": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
+    },
     "source_fact:a7213d9b3089de8bc8806d33": {
       "first_seen_kst": "2026-10-17T05:57:10+09:00",
       "lanes": {
@@ -819711,6 +821589,31 @@
       "telegram_core_fact": "전년비 각각 126.6%, 782.5% 증가한 수치로, 메모리 가격 상승이 실적 개선의 핵심 동력으로 꼽혔다.",
       "title": "메모리 호황의 역설…저가폰 2.3억대 줄고 프리미엄폰 뜬다"
     },
+    "source_fact:aaf07d44babb95cf5e3fae9f": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638783",
+      "source": "이투데이",
+      "source_body_digest": "56a6bcbf9b9ac0feec55ddbba29d7e0fb9ba997f4d222ce462715f76e98f7db4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3058e67f52e757e8ccf0f6e26465af0cd8d66c5e87e32cede9783687847bc45",
+      "source_fact_keys": [
+        "source_fact:v1:0417313b946814533e694e03f2f9edc9406144ae1fa1635cb05460b26648ed0c",
+        "source_fact:v1:2003ee4ca254d6ca2e4000e4bb69a376f6970bbb3db27796b0ec5c3831853e3c",
+        "source_fact:v1:2a76fcae7a8deaefee85a3ce0961433df49ae2e87fc42cc9f927e9146883f307",
+        "source_fact:v1:3ced3684859bc4547411683ae5a9ba667863a254c66d1717b2d2259ada9c3b2b",
+        "source_fact:v1:ed18b17f4f1d8c364ac6b3323e95d522f14f9768010f4361cc00896391a205f7",
+        "source_fact:v1:f3fd5f26371738dfae4b0d5d69dce65d6aabb71f2fb91b75c0b9bdbce199837c"
+      ],
+      "source_published_kst": "2026-10-22T10:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\"",
+      "telegram_core_fact": "씨어스는 이번 용인 신공장 개소로 평택 본사와 용인 신공장을 연계한 주요 생산기반을 확보한 만큼, 향후 스마트팩토리 고도화와 글로벌사업 확대에 투자 역량을 집중할 방침이다.",
+      "title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\""
+    },
     "source_fact:aaf413cdc2ae8d13e9ecd6ab": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -823178,6 +825081,44 @@
       "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
       "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
     },
+    "source_fact:ac6d0f47d7488632a0d6e131": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
     "source_fact:ac6f778515ec19a1b5de1bed": {
       "first_seen_kst": "2026-10-14T15:54:32+09:00",
       "lanes": {
@@ -826253,6 +828194,31 @@
       "source_title": "‘고점’서 족쇄 채운 국민연금, 급락장 속수무책…“국민 노후자금 날려” 비판",
       "telegram_core_fact": "실제로 국민연금의 국내주식 평가액은 4월 말 419조5000억원에서 6월 말 543조2000억원으로 약 123조7000억원 증가했다. 국민연금 국내 주식 평가액은 7월 말 418조6000억원으로 한 달 전보다 약 124조6천억원 감소했다.",
       "title": "‘고점’서 족쇄 채운 국민연금, 급락장 속수무책…“국민 노후자금 날려” 비판"
+    },
+    "source_fact:adda5182596c5d3956430a65": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638783",
+      "source": "이투데이",
+      "source_body_digest": "56a6bcbf9b9ac0feec55ddbba29d7e0fb9ba997f4d222ce462715f76e98f7db4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3058e67f52e757e8ccf0f6e26465af0cd8d66c5e87e32cede9783687847bc45",
+      "source_fact_keys": [
+        "source_fact:v1:0417313b946814533e694e03f2f9edc9406144ae1fa1635cb05460b26648ed0c",
+        "source_fact:v1:2003ee4ca254d6ca2e4000e4bb69a376f6970bbb3db27796b0ec5c3831853e3c",
+        "source_fact:v1:2a76fcae7a8deaefee85a3ce0961433df49ae2e87fc42cc9f927e9146883f307",
+        "source_fact:v1:3ced3684859bc4547411683ae5a9ba667863a254c66d1717b2d2259ada9c3b2b",
+        "source_fact:v1:ed18b17f4f1d8c364ac6b3323e95d522f14f9768010f4361cc00896391a205f7",
+        "source_fact:v1:f3fd5f26371738dfae4b0d5d69dce65d6aabb71f2fb91b75c0b9bdbce199837c"
+      ],
+      "source_published_kst": "2026-10-22T10:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\"",
+      "telegram_core_fact": "씨어스는 이번 용인 신공장 개소로 평택 본사와 용인 신공장을 연계한 주요 생산기반을 확보한 만큼, 향후 스마트팩토리 고도화와 글로벌사업 확대에 투자 역량을 집중할 방침이다.",
+      "title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\""
     },
     "source_fact:addcc2a12581a086d2e7cc36": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -896707,6 +898673,44 @@
       "telegram_core_fact": "이란 국영 TV는 \"유조선이 원유 200만 배럴을 싣고 있었다\"며 \"모든 레이더와 항법 장치를 끈 상태\"라고 밝혔다. 이란이 내달 3일 치러질 미국 중간선거에서 도널드 트럼프 미국 대통령에 정치적 타격을 주려 종전 협상을 미루고 있다고 로이터통신이 20일(현지시간) 보도했다.",
       "title": "이란, '어디 중간선거까지 두고 보자' 전략?…종전 협상 미루는 속내"
     },
+    "source_fact:cfee385cf877ef682070cc95": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
     "source_fact:cff2a0649d13bb2b1b619741": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
@@ -904582,6 +906586,44 @@
       "source_title": "씨앤엠, 코스닥 상장 추진…로봇·데이터센터·방산 사업 확대",
       "telegram_core_fact": "모션 솔루션 기업 씨앤엠이 금융위원회에 증권신고서를 제출하고 11월 코스닥 상장을 추진한다고 19일 밝혔다.",
       "title": "씨앤엠, 코스닥 상장 추진…로봇·데이터센터·방산 사업 확대"
+    },
+    "source_fact:d3f52096ff932e2dc8ab82ce": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "source_fact:d3f966863e9697e7e313d3d0": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
@@ -916658,6 +918700,34 @@
       "source_title": "PC, 메모리 대란 한숨 돌렸다…내년 'AI B2B' 승부수",
       "telegram_core_fact": "주요 PC 기업은 메모리 제조사와 장기공급계약(LTA)을 체결, 기업소비자간거래(B2C)용 PC 판매 위축에도 상대적으로 수요가 견고한 기업간거래(B2B)용 PC 공급을 확대해 수익성을 확보한다는 전략이다.",
       "title": "PC, 메모리 대란 한숨 돌렸다…내년 'AI B2B' 승부수"
+    },
+    "source_fact:d96c8f94c986b4c331e81133": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
     },
     "source_fact:d9743f7afe05e038904523c3": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
@@ -952003,6 +954073,34 @@
       "telegram_core_fact": "내년에 지상 실증 예산으로만 21억원을 편성했는데, 국내 기업이 생산한 우주 부품의 상용화를 위해선 신속한 궤도 위 실증이 필요하다는 이유에서다. 그는 “그마저도 방열 전력제어 기술의 지상 검증에 그치고 있다”면서 “우주 부품은 궤도에서 실제 작동한 실적, '우주 해리티지'가 없으면 공급망에 들어가지 못한다”고 말했다.",
       "title": "[2026 국감]“국산 부품 우주 실증 시급한데, 내년 예산은 지상 실증 21억 그쳐”"
     },
+    "source_fact:ea72f23f8775fcf503efb924": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
+    },
     "source_fact:ea81b762e1dbaaf1ec2a9a9e": {
       "first_seen_kst": "2026-10-11T23:10:29+09:00",
       "lanes": {
@@ -953659,6 +955757,34 @@
       "source_title": "BKV, 1200MW 가스발전설비 확보와 비용 90% 보전 계약에 주목",
       "telegram_core_fact": "텍사스 발전 프로젝트용 1,200MW 가스발전설비 공급계약을 체결했고 2028년 9월부터 인도가 시작됩니다.",
       "title": "BKV, 1200MW 가스발전설비 확보와 비용 90% 보전 계약에 주목"
+    },
+    "source_fact:eb3bffeae657e5c776db9bba": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
     },
     "source_fact:eb40eeabc8d726e17cffa6b8": {
       "first_seen_kst": "2026-10-15T16:50:59+09:00",
@@ -957834,6 +959960,44 @@
       "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
       "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
       "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
+    },
+    "source_fact:ed47ce563bf6cde7c14bc8f8": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
     },
     "source_fact:ed50cf839d98f9cf706a7673": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
@@ -978909,6 +981073,34 @@
       "telegram_core_fact": "특히 AMD와의 공동 시연은 메모리 기업의 역할이 단순한 반도체 공급에서 AI 시스템 설계와 최적화 영역으로 확대되고 있음을 보여준다.",
       "title": "AI가 바꾼 메모리 경쟁…삼성은 '확장성', 중국은 '집적도' 승부"
     },
+    "source_fact:f8325dbf510d9fb953d0dca2": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
+    },
     "source_fact:f83a5d22097dd7a11a3a4c6d": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -999749,6 +1001941,24 @@
       "telegram_core_fact": "특히 조준희 회장의 올해 매수 단가는 1만2000원대부터 6000원대까지 고르게 분포해, 특정 가격대를 노린 매수가 아니라 연중 꾸준히 지분을 늘려왔다는 점에서 경영진의 의지가 분명하게 드러났다는 평가다.",
       "title": "유라클 경영진, 올해 지분율 1.3% 늘렸다… '책임경영' 의지 재확인"
     },
+    "title:0b01de667d70823e48940d95": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022057800003",
+      "source": "연합뉴스",
+      "source_body_digest": "e1dc8e3183986814edd6377687a3a11fd3f0493d9175731cc351f839f1df8081",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T10:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에쓰오일, 통합 제조운영 관리시스템 고도화…샤힌공장에도 적용 | 연합뉴스",
+      "telegram_core_fact": "에쓰오일은 통합 제조 운영 관리 시스템 'S-imoms'을 고도화하고 샤힌 공장에 확대 적용했다고 밝혔다. 이번 2단계(Phase-2) 고도화에서는 주요 설루션 간 데이터 연계를 강화하고 각 시스템에 분산된 설비 운전·성능 정보를 통합 관리·분석해 설비 신뢰성과 운영 효율을 높일 수 있도록 했다.",
+      "title": "에쓰오일, 통합 제조운영 관리시스템 고도화…샤힌공장에도 적용 | 연합뉴스"
+    },
     "title:0b06ef32623eda5f69bf0cff": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
       "lanes": {
@@ -1003637,6 +1005847,24 @@
       "source_title": "\"돈 안돼\" 백신·항암제 공급중단…올해만 47건",
       "telegram_core_fact": "11일 국회 보건복지위원회 허종식 더불어민주당 의원이 식품의약품안전처로부터 제출 받은 '2021년~2026 공급중단·부족 의약품 목록'에 따르면 올해 상반기(1~6월) 접수된 공급중단·부족 의약품 135건 가운데 34.8%인 47건이 '채산성 문제(20건)' 또는 '판매부진'(27건) 때문인 것으로 나타났다.",
       "title": "\"돈 안돼\" 백신·항암제 공급중단…올해만 47건"
+    },
+    "title:12ff33d3b68284ec57b60614": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836322",
+      "source": "뉴시스",
+      "source_body_digest": "075cb30f8f0d5ae67311ab285431cd378b5f06e4491fddc1054658c4e6a19be3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T10:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"생산능력 1.6배 확대\"…씨어스, 용인공장 개소",
+      "telegram_core_fact": "이번 신공장 개소로 웨어러블 패치 생산능력은 기존보다 약 1.6배 확대됐다.",
+      "title": "\"생산능력 1.6배 확대\"…씨어스, 용인공장 개소"
     },
     "title:13033811a3efb229a60b0983": {
       "first_seen_kst": "2026-10-15T16:50:59+09:00",
@@ -1007936,6 +1010164,34 @@
       "link": "https://view.asiae.co.kr/article/2026100208371446664",
       "source": "아시아경제",
       "title": "SBVA, 글로벌 AI 기업 데이터브릭스에 투자…50억달러 규모 라운드"
+    },
+    "title:1b680ddca067f7233f3e9dff": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022090351008?section=market-plus/all",
+      "source": "연합뉴스",
+      "source_body_digest": "44d0628517d01946a512b2a2b2e389aeaca74f790513a449e1773244f90e03c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8bf1df4da304024d21c564a9d592136c3ac8b7f1448054baf881d29152de484",
+      "source_fact_keys": [
+        "source_fact:v1:057228b675c06c97135d96688f8f0a9ad9ff13926079c8627793192b895758cb",
+        "source_fact:v1:1d12579c84d424caaf18979380ebacc21d218bf00b53d793886d6f0ae73dd790",
+        "source_fact:v1:3c4854b759c22bb26025f841a0d78a13afe0a3d90c1b49967f5cbe4cd88e446f",
+        "source_fact:v1:4f5cd68b9a3346833615544bcc910383563ef3189c0f1d7bad9cdd6706c83fd1",
+        "source_fact:v1:63f9fe69d52da7a7600671e23a057a62e60eb8066486145952b8b7c1b74a1c1f",
+        "source_fact:v1:83b455491ff24c76f89f25da796e870aebedd950c953356c0d7384fc42c36f4d",
+        "source_fact:v1:e85629d4a105df7f2b13e4bef68aff0a1ecc7904933bf5f92f6049265fbedc20",
+        "source_fact:v1:ecf5297cdfcf8742bf81db4dbd110f1957d8d117d2a0a90ccd34b35e35b1b9c9",
+        "source_fact:v1:fb0a37a58e747f5b730e2a3efe65a439b90d08024cd119144e2773d7cd298799"
+      ],
+      "source_published_kst": "2026-10-22T17:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스",
+      "telegram_core_fact": "영풍 측은 앞서 고려아연이 경영권 분쟁 과정에서 당시 주가보다 높은 주당 89만원에 자사주를 공개매수해 회사에 6천732억원 상당의 손해를 끼쳤다며 소송을 제기했다.",
+      "title": "고려아연 자사주소송 1심 결과에 \"합리적 판단\" VS \"즉각 항소\"(종합) | 연합뉴스"
     },
     "title:1b9431f178a0e6b7d617b20d": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
@@ -1021720,6 +1023976,34 @@
       "telegram_core_fact": "자사주 매입: 기간은 8월20일부터 11월19일까지 약 3개월이었으나, 예정보다 한 달가량 앞당겨 종료됐다.",
       "title": "SK하이닉스, 40조원 자사주 매입 완료…한 달 앞당겨 종료"
     },
+    "title:35b4b3098a960f8c558b7ada": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638753",
+      "source": "이투데이",
+      "source_body_digest": "32ab6a4fd0260e394eaacbb767953373282ef55860fc1fa9a7e194da6e8a1ae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e87d4fa153ab44783dd09786544fe1583c91c4466285aa037d97d1e27a469144",
+      "source_fact_keys": [
+        "source_fact:v1:11de84e53d97247987a81dfd3890355d5c1077087b036e8fbf5771d9e6b8c6a9",
+        "source_fact:v1:682d95dfa9812835c0f5df8af6f4b8be559ebb516c71ab4844ea2d4b5b557c4e",
+        "source_fact:v1:6cff5d66d904c5fe67bcc1152c31b4275028505f657ed1542be90f5a797d267e",
+        "source_fact:v1:7322f33483eaf12fd7314d23e051b70225f9b7d14f1960996d7cb20bf81b172e",
+        "source_fact:v1:a33b8eb16b3aff25670fd894c95cc33fc06e0384f811eb5edb7ce3543cdd03f5",
+        "source_fact:v1:b33e170626066015b87002c53efca60e615a72cdc6efac7c0b7de931a0a5c6de",
+        "source_fact:v1:c254104bee40a39a87e1c726cbd1a28207591220fd30f55d91bde18c0adfa6e4",
+        "source_fact:v1:dc15968a90c843c451273125aa84b04998a6c79ada7017b130a38a3b3a6494a9",
+        "source_fact:v1:f9d23e4389920799c3b825bf09850f0edb989546d8beecf62da2dbc9c4fb4317"
+      ],
+      "source_published_kst": "2026-10-22T10:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명",
+      "telegram_core_fact": "토스증권 리서치센터는 일본 반도체 소재·부품·장비 산업의 경쟁력과 글로벌 AI 공급망 내 역할을 분석한 리포트 ‘다녀왔습니다, 일본’을 발간했다. 토스증권에 따르면 이번 리포트는 도쿄일렉트론(TEL), 레이저텍, 이비덴 등 일본 주요 반도체 소부장 기업 10여 곳을 직접 만나 확인한 동향과 기술 경쟁력을 담았다.",
+      "title": "토스증권, ‘다녀왔습니다, 일본’ 리포트 발간⋯日 반도체 소부장 조명"
+    },
     "title:35b50eaac98952f9400b52d0": {
       "first_seen_kst": "2026-10-18T10:14:44+09:00",
       "lanes": {
@@ -1022465,6 +1024749,29 @@
       "source_title": "컴투스, '제우스: 오만의 신' 출시 50일 성과 공개…'모두를 위한 경쟁' 통했다",
       "telegram_core_fact": "지난 8월 26일 서비스를 시작한 ‘제우스: 오만의 신’은 출시 18시간 만에 구글·애플 앱마켓 매출 1위를 기록했다.",
       "title": "컴투스, '제우스: 오만의 신' 출시 50일 성과 공개…'모두를 위한 경쟁' 통했다"
+    },
+    "title:3778209043226f8cfdf9f0d3": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836289",
+      "source": "뉴시스",
+      "source_body_digest": "f3a9546894e9b21e066e20a6310439030a64f0f1bd802134967cb64eaca79d58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44373c6ae2d0023fc1d5432c592436472422e274f10ea1adf9dc7866c10e10fb",
+      "source_fact_keys": [
+        "source_fact:v1:1f8bf67bdfbbe2d804a2bc97af3e26bac9a972e8b6fe4a606c6fb42110a8610f",
+        "source_fact:v1:411d86598b3470ab934ec69b1353adfe547a36c53b1c56d3d6a54491f695a977",
+        "source_fact:v1:7d237d018d4c674064ed41711952d8eb7829520f23a369aa33261d7d6e2d49b8",
+        "source_fact:v1:b4df255aa02e458a17cc0363e80fe3f220bc0938f28e0bfe399b2e503af3134c"
+      ],
+      "source_published_kst": "2026-10-22T10:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축",
+      "telegram_core_fact": "충주시는 22일 충주시청 중회의실에서 서울다이나믹스㈜와 이같은 내용의 산업용 자율작업 로봇 생산거점 구축을 위한 투자협약을 했다. 충북 충주시 산척면 동충주산업단지에 산업용 자율작업 로봇(피지컬 AI 로봇) 생산거점이 들어선다.",
+      "title": "동충주산단에 산업용 자율작업 로봇 생산거점 구축"
     },
     "title:377a260355253957ea81cb23": {
       "first_seen_kst": "2026-10-12T03:42:08+09:00",
@@ -1060626,6 +1062933,31 @@
       "link": "https://www.yna.co.kr/view/AKR20260923128300054",
       "source": "연합뉴스",
       "title": "전통 제조업에서 반도체·AI로…전남광주 산업지도 다시 그린다 | 연합뉴스"
+    },
+    "title:8263aeab121cddc006b1af15": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638783",
+      "source": "이투데이",
+      "source_body_digest": "56a6bcbf9b9ac0feec55ddbba29d7e0fb9ba997f4d222ce462715f76e98f7db4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3058e67f52e757e8ccf0f6e26465af0cd8d66c5e87e32cede9783687847bc45",
+      "source_fact_keys": [
+        "source_fact:v1:0417313b946814533e694e03f2f9edc9406144ae1fa1635cb05460b26648ed0c",
+        "source_fact:v1:2003ee4ca254d6ca2e4000e4bb69a376f6970bbb3db27796b0ec5c3831853e3c",
+        "source_fact:v1:2a76fcae7a8deaefee85a3ce0961433df49ae2e87fc42cc9f927e9146883f307",
+        "source_fact:v1:3ced3684859bc4547411683ae5a9ba667863a254c66d1717b2d2259ada9c3b2b",
+        "source_fact:v1:ed18b17f4f1d8c364ac6b3323e95d522f14f9768010f4361cc00896391a205f7",
+        "source_fact:v1:f3fd5f26371738dfae4b0d5d69dce65d6aabb71f2fb91b75c0b9bdbce199837c"
+      ],
+      "source_published_kst": "2026-10-22T10:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\"",
+      "telegram_core_fact": "씨어스는 이번 용인 신공장 개소로 평택 본사와 용인 신공장을 연계한 주요 생산기반을 확보한 만큼, 향후 스마트팩토리 고도화와 글로벌사업 확대에 투자 역량을 집중할 방침이다.",
+      "title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\""
     },
     "title:826749039a57a9e941330d46": {
       "first_seen_kst": "2026-10-04T06:52:27+09:00",
@@ -1104778,6 +1107110,44 @@
       "telegram_core_fact": "니콜렛 뱅크셰어스(NIC)가 3분기(9월 30일 종료) GAAP 기준 순이익 6370만 달러로 전년 동기 4170만 달러 대비 52.7% 증가했고, 희석 주당순이익(GAAP)은 2.96달러로 전년 동기 2.73달러보다 8.4% 늘었다고 10월 20일 발표했다.",
       "title": "니콜렛 뱅크셰어스, 3분기 희석 EPS 2.96달러..전년비 8.4% 증가"
     },
+    "title:d968064d0c42f0cc7fc3fdee": {
+      "first_seen_kst": "2026-10-22T18:25:24+09:00",
+      "lanes": {
+        "live": "2026-10-22T18:25:24+09:00"
+      },
+      "last_seen_kst": "2026-10-22T18:25:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837428",
+      "source": "뉴시스",
+      "source_body_digest": "53695f188c390ed8c4118a66e0f767f2f99df9d694681af11af23f4445d9ede6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c23a5f4391c597a168aca76579637be91a9e004ab73123303f772e3d6be9c18",
+      "source_fact_keys": [
+        "source_fact:v1:06a646733da170505c091c555444e1980e97df2d5ca49ebcf32679ebca2622d1",
+        "source_fact:v1:3a85b2643d7973c65cbe4a127b81aaeae3b24c21d720425f05aacbce26d4037d",
+        "source_fact:v1:4cc93b6fc5126902a80c0a8bada728d46718fdf26eaeb93aab14a44ed3b91238",
+        "source_fact:v1:5b411f267e3a7be630bd4c0bfdfb8f9ea31bc0e8533d3acda74d0a5bcccfaf39",
+        "source_fact:v1:63e16ba7ff74ff88293d20c2479d74ac207f00eada42b68893bebae00a6d4d23",
+        "source_fact:v1:751bc19639a630e6649c63385ff3836b719eb3aa2237471144f8b589966e8625",
+        "source_fact:v1:752f573a7846bc0de49f452366b78c234c83d61238e7c98cfe00409ceffb663b",
+        "source_fact:v1:76361fdd48c0007f502dd9d007d4b333682fb2dcc1c6ef4c21d64e15837fdfb9",
+        "source_fact:v1:7fc34814fbbcc7f588bd82894464d27001ab15a8c7a322e5278ddc7f954171f7",
+        "source_fact:v1:9b7c43a01c22e6d386d59249d7eca186dee45a611b9f902dc52074f86be231ef",
+        "source_fact:v1:9ef95b78810af6d3f73c339dab5eff1ce3b5e296e6f3a746cd9b25d337e084ec",
+        "source_fact:v1:adfebf1e1ac53a0abe4b8b36fbec6850f5e1e61c0e75472670bff904cff36cb6",
+        "source_fact:v1:bf09861e54294fd9623ac952c1e0f127b3f8939d878dcfe9314c14040e90ca1e",
+        "source_fact:v1:c7cb5924fe5ca048d5e4d7934567b5c49a51899099f8c503454f856e37548279",
+        "source_fact:v1:d2581843e3f90359207164baf0f821027f8ea758eaa9cbc28fd6457c24fde1ae",
+        "source_fact:v1:dea7e6415f671441068012e6fcfa48a541d80429a698ad8ea1dfb5a0d792e51b",
+        "source_fact:v1:e7d1ece744373652f6d6cbca951074d291f0c1e9b5c6c4bcdc6a1a35b26c9e2d",
+        "source_fact:v1:f6c26be900b0a4b823bb6d2e84b695b855fe114a529ccc8d71dfb99b953cbe68",
+        "source_fact:v1:fb9344c8c5895b71cddf5e2ba0bcec356a3d82dc7f8f2cf26e72ef68e9ac107d"
+      ],
+      "source_published_kst": "2026-10-22T18:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
+      "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
     "title:d96a1efd51069aca03322bba": {
       "first_seen_kst": "2026-10-12T16:50:12+09:00",
       "lanes": {
@@ -1123702,5 +1126072,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T17:54:38+09:00"
+  "updated_at_kst": "2026-10-22T18:25:24+09:00"
 }
