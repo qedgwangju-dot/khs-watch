@@ -8,6 +8,8 @@ on:
     paths:
       - ".github/workflows/khs-policy-watch.yml"
       - "scripts/khs_policy_watch.py"
+      - "scripts/khs_domestic_stablecoin_policy_watch.py"
+      - "tests/test_khs_domestic_cbdc_policy_watch.py"
       - "scripts/khs_policy_alert_explainer.py"
       - "scripts/khs_policy_alert_guardrails.py"
       - "scripts/khs_policy_alert_router.py"
@@ -74,6 +76,8 @@ jobs:
       - name: Validate policy regression tests
         run: |
           python -m py_compile scripts/khs_policy_watch.py
+          python -m py_compile scripts/khs_domestic_stablecoin_policy_watch.py
+          PYTHONPATH=. python -m unittest tests.test_khs_domestic_cbdc_policy_watch -v
           python -m py_compile scripts/khs_policy_alert_explainer.py
           python -m py_compile scripts/khs_policy_alert_guardrails.py
           python -m py_compile scripts/khs_trusted_policy_news_watch.py
@@ -269,6 +273,7 @@ jobs:
           python -m py_compile scripts/khs_policy_alert_router.py
           python -m py_compile scripts/khs_domestic_telecom_policy_watch.py
           python -m py_compile scripts/khs_domestic_stablecoin_policy_watch.py
+          PYTHONPATH=. python -m unittest tests.test_khs_domestic_cbdc_policy_watch -v
           python -m py_compile scripts/khs_korea_nuclear_siting_policy_watch.py
           python -m py_compile scripts/khs_domestic_nuclear_siting_postprocess.py
           python -m py_compile scripts/khs_transformer_tariff_policy_watch.py

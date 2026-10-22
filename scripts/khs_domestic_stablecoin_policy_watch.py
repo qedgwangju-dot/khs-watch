@@ -67,6 +67,10 @@ SOURCES = [
         "https://www.bok.or.kr/portal/bbs/B0000232/list.do?menuNo=200706",
     ),
     (
+        "Bank of Korea CBDC and deposit-token blog",
+        "https://www.bok.or.kr/portal/bbs/B0000347/list.do?menuNo=201106",
+    ),
+    (
         "Korea FIU virtual asset notices",
         "https://www.kofiu.go.kr/kor/notification/notice.do",
     ),
@@ -113,6 +117,19 @@ BOK_DIRECT_EVENT_TERMS = [
     "준비자산", "상환청구권", "허용", "규제", "법안", "입법",
     "2단계법", "상용화", "확정된 바", "정해진 바",
 ]
+CBDC_TITLE_TERMS = (
+    "프로젝트 한강", "예금토큰", "예금 토큰", "CBDC", "중앙은행 디지털화폐",
+    "기관용 디지털화폐", "국고금 디지털", "국고보조금", "디지털화폐",
+)
+STABLECOIN_TITLE_TERMS = (
+    "스테이블코인", "디지털자산", "가상자산", "지급결제",
+    "디지털 금융", "디지털금융", "원화코인",
+)
+CBDC_EVENT_TERMS = (
+    "실거래", "사업", "시행", "참여", "도입", "승인", "발표",
+    "사용처", "지급", "발행", "국고금", "정산", "확대", "중단",
+    "프로그램", "실증", "검토", "개인정보", "국채",
+)
 SECTORS = [
     "금융/자본시장/스테이블코인",
     "은행/핀테크/결제",
@@ -209,8 +226,94 @@ def is_policy_candidate(text: str, source_name: str) -> bool:
         ("Financial Services Commission", "Korea Policy", "Bank of Korea", "National Assembly")
     )
     if source_name.startswith("Bank of Korea"):
-        return has_actor and has_any(text, BOK_DIRECT_POLICY_TERMS) and has_any(text, BOK_DIRECT_EVENT_TERMS)
+        cbdc_terms = list(CBDC_TITLE_TERMS)
+        return has_actor and (
+            (has_any(text, BOK_DIRECT_POLICY_TERMS) and has_any(text, BOK_DIRECT_EVENT_TERMS))
+            or (has_any(text, cbdc_terms) and has_any(text, list(CBDC_EVENT_TERMS)))
+        )
     return has_policy and has_event and has_actor
+
+
+def document_title_is_relevant(title: str) -> bool:
+    """Require the article heading itself, not a shared navigation/sidebar."""
+    normalized = clean_text(title)
+    if len(normalized) < 10:
+        return False
+    lower = normalized.lower()
+    if any(word in lower for word in (
+        "파일다운로드", "download", "첨부파일", "목록", "더보기",
+    )):
+        return False
+    return (
+        has_any(normalized, list(CBDC_TITLE_TERMS))
+        or has_any(normalized, list(STABLECOIN_TITLE_TERMS))
+    )
+
+
+def official_document_date(title: str, detail_clean: str) -> dt.datetime | None:
+    """Read date near the actual heading; never from unrelated listing context."""
+    compact_title = clean_text(title)
+    pos = detail_clean.find(compact_title)
+    if pos < 0:
+        return None
+    after_title = detail_clean[pos + len(compact_title): pos + len(compact_title) + 600]
+    return parse_date(after_title)
+
+
+def cbdc_claim_scope(title: str, body: str, source: str) -> dict:
+    """Extract published *policy type*, not a speculative issuance amount."""
+    haystack = clean_text(f"{title} {body}")
+    if not has_any(title, list(CBDC_TITLE_TERMS)):
+        return {}
+    gov_source = source.startswith((
+        "Bank of Korea", "Korea Policy Briefing",
+        "Financial Services Commission",
+    ))
+    if not gov_source:
+        return {}
+    target_25pct = (
+        "2030" in haystack
+        and "국고금" in haystack
+        and has_any(haystack, ["25%", "4분의 1", "4분의1", "4분의 1을"])
+    )
+    subsidy = (
+        has_any(haystack, ["보조금", "국고금"])
+        and has_any(haystack, ["예금토큰", "예금 토큰", "디지털화폐"])
+    )
+    restricted_spending = subsidy and has_any(
+        haystack, ["사용처", "부정수급", "목적성 지급", "지급 조건", "지급조건"]
+    )
+    retail_no_plan = has_any(
+        haystack, [
+            "일반인용 cbdc를 도입 또는 발행할 계획이 없",
+            "범용 cbdc를 검토하지 않",
+            "일반인용 cbdc 도입 계획이 없",
+            "범용 cbdc 추진하지 않",
+        ],
+    )
+    if retail_no_plan:
+        status = "범용 CBDC 도입 계획 없음(한국은행 설명)"
+    elif target_25pct:
+        status = "2030년 국고금 집행 25% 정책 목표(발행·매출 확정 아님)"
+    elif subsidy:
+        status = "기관용 디지털화폐·예금토큰 국고금 실증"
+    else:
+        status = "공식 디지털화폐 정책 문서(상용화 별도 검증)"
+    pilot_300eok = subsidy and (
+        "300억원" in haystack or "300억 원" in haystack
+    )
+    return {
+        "official_source": True,
+        "policy_type": status,
+        "2030_treasury_target_25pct": target_25pct,
+        "2030_target_is_issued_money": False,
+        "182_trillion_is_issuance": False,
+        "retail_cbdc_no_plan_statement": retail_no_plan,
+        "bank_deposit_token_not_retail_cbdc": True,
+        "purpose_restriction_limited_to_program": restricted_spending,
+        "300eok_pilot_amount": pilot_300eok,
+        "implemented_for_all_citizen_spending": False,
+    }
 
 
 def stablecoin_title(text: str) -> str:
@@ -231,12 +334,16 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
         if detail_fetches >= MAX_DETAIL_LINKS_PER_SOURCE:
             break
         title = clean_text(match.group("label"))
-        if len(title) < 5:
+        if not document_title_is_relevant(title):
             continue
         href = html.unescape(match.group("href"))
         link = urllib.parse.urljoin(source_url, href)
-        link_lower = link.lower()
-        if not any(domain in link_lower for domain in ("fsc.go.kr", "korea.kr", "bok.or.kr", "kofiu.go.kr")):
+        parsed_link = urllib.parse.urlsplit(link)
+        if parsed_link.hostname not in ("www.fsc.go.kr", "fsc.go.kr", "www.korea.kr", "korea.kr", "www.bok.or.kr", "bok.or.kr", "www.kofiu.go.kr", "kofiu.go.kr"):
+            continue
+        if any(term in parsed_link.path.lower() for term in ("/getfile", "/download", "/filedown")):
+            continue
+        if parsed_link.path.lower().endswith((".pdf", ".hwp", ".hwpx", ".zip")):
             continue
         context = clean_text(text[max(0, match.start() - 600): match.end() + 1500])
         if not is_policy_candidate(f"{title} {context}", source_name):
@@ -244,19 +351,22 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
 
         detail_fetches += 1
         detail_text, detail_error = fetch_text(link, timeout=6, attempts=1)
-        detail_clean = clean_text(detail_text or "") if not detail_error else ""
-        haystack = f"{title} {context} {detail_clean[:9000]}"
-        if not is_policy_candidate(haystack, source_name):
+        if detail_error or not detail_text:
+            # A snippet alone cannot establish a dated official policy change.
             continue
-        published = parse_date(haystack)
+        detail_clean = clean_text(detail_text)
+        published = official_document_date(title, detail_clean)
         age = age_hours(published, now)
         if age is None or age < -1 or age > MAX_AGE_HOURS:
             continue
-
+        haystack = f"{title} {detail_clean[:9000]}"
+        if not is_policy_candidate(haystack, source_name):
+            continue
+        cbdc_scope = cbdc_claim_scope(title, detail_clean[:8500], source_name)
         policy_hits = matched_terms(haystack, POLICY_TERMS + EVENT_TERMS + ACTOR_TERMS)
         high = has_any(haystack, HIGH_IMPACT_TERMS)
         fingerprint = hashlib.sha256(f"{source_name}|{title}|{link}".encode("utf-8")).hexdigest()[:16]
-        summary = clip_text(detail_clean or context, 360)
+        summary = clip_text(detail_clean, 360)
         deduped[link] = {
             "source": source_name,
             "title": stablecoin_title(haystack),
@@ -272,10 +382,17 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
             "paths": ["정책 타임라인", "규제 강도", "금융 인프라 재편", "표준 선점", "테마 수급"],
             "sectors": SECTORS[:],
             "domestic_stablecoin_policy_watch": True,
+            "cbdc_policy_watch": bool(cbdc_scope),
+            "cbdc_policy_scope": cbdc_scope,
             "stablecoin_policy_check": POLICY_CHECK,
             "stablecoin_risk_table": RISK_TABLE,
             "stablecoin_structure_note": STRUCTURE_NOTE,
-            "counter": COUNTER,
+            "counter": (
+                "예금토큰은 은행 발행, 기관용 CBDC는 기관 간 결제에 활용. "
+                "2030년 국고금 25%는 목표이지 CBDC 182조원 발행 확정이 아니며, "
+                "특정 보조금 사용처 제한을 일반 예금 통제로 확대 해석해서는 안 됩니다."
+                if cbdc_scope else COUNTER
+            ),
             "reflection": "중간",
         }
     return list(deduped.values())
@@ -298,8 +415,13 @@ def save_seen(seen: dict, now: dt.datetime) -> None:
 
 def semantic_key(item: dict) -> str:
     if item.get("domestic_stablecoin_policy_watch"):
-        title = clean_text(item.get("title") or "")
-        return "stablecoin:" + re.sub(r"\s+", " ", title).strip().lower()
+        # Do not deduplicate every different announcement into four fixed template
+        # titles. Distinct official documents on different dates remain distinct.
+        original = clean_text(item.get("original_title") or item.get("title") or "")
+        normalized = re.sub(r"[^0-9A-Za-z가-힣]+", "", original).lower()[:150]
+        published = str(item.get("published_kst") or "")[:10]
+        group = "cbdc" if item.get("cbdc_policy_watch") else "stablecoin"
+        return f"{group}:event:{normalized}:{published}"
     return str(item.get("fingerprint") or item.get("link") or item.get("title") or "")
 
 
@@ -412,7 +534,11 @@ def main() -> int:
             break
 
     if not new_alerts:
-        print(f"domestic_stablecoin_alerts=0 candidates={len(candidates)}")
+        print(
+            f"domestic_stablecoin_alerts=0 candidates={len(candidates)} "
+            f"official_cbdc_candidates={sum(bool(x.get('cbdc_policy_watch')) for x in candidates)} "
+            "known_baseline=2030_national_treasury_25pct_target;retail_cbdc_not_planned"
+        )
         return 0
 
     existing = load_existing_alerts()
