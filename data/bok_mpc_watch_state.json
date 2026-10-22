@@ -1,40 +1,35 @@
 {
-  "updated_at_kst": "2026-08-31T07:46:26+09:00",
-  "event_hash": "e222e005fae1377bab566b51f945208fef832d154c76e7a7f2cbc137aeab753c",
-  "statement_hash": "23dfdc22b23c43172d19a5bf9cd6ccf628d9f1e527e680a2af018e9b053df66b",
+  "updated_at_kst": "2026-10-22T11:45:06+09:00",
+  "event_hash": "779046cd0688c6c54635823d542728824c0fd5cc03423b64a879c81b623ad54e",
+  "statement_hash": "4b964e151d0a2dcf60ed0ec710767d9b8d0c3fad56aa8f999c5c7c7c56e6ea8e",
   "statement": {
-    "title": "통화정책방향(2026.8.27)",
-    "url": "https://www.bok.or.kr/portal/bbs/P0000559/view.do?nttId=11064191&menuNo=200690",
-    "hash": "23dfdc22b23c43172d19a5bf9cd6ccf628d9f1e527e680a2af018e9b053df66b",
+    "title": "통화정책방향(2026.10.22)",
+    "url": "https://www.bok.or.kr/portal/bbs/P0000559/view.do?nttId=11065823&menuNo=200690",
+    "hash": "4b964e151d0a2dcf60ed0ec710767d9b8d0c3fad56aa8f999c5c7c7c56e6ea8e",
     "parser_version": 3,
-    "rate_from": 2.75,
+    "rate_from": 3.0,
     "rate_to": 3.0,
-    "growth_this": 3.3,
-    "growth_next": 2.9,
-    "cpi_this": 2.7,
-    "cpi_next": 2.3,
-    "core_this": 2.5,
-    "core_next": 2.5,
-    "vote_for": 6,
-    "minority_hold": true,
-    "minority_hold_names": [
-      "황건일"
-    ],
-    "minority_opinions": [
-      {
-        "name": "황건일",
-        "direction": "동결",
-        "target_rate": 2.75
-      }
-    ],
+    "vote_for": 7,
+    "inflation_this_near_aug": true,
+    "inflation_next_up": true,
+    "cpi_reference_next": 2.3,
+    "core_reference_next": 2.5,
+    "housing_accelerating": true,
+    "prior_hikes_assessment": true,
+    "minority_opinions": [],
+    "minority_hold_names": [],
+    "minority_hold": false,
     "flags": {
-      "preemptive": true,
+      "preemptive": false,
       "hike_bias": false,
       "timing_speed": true,
       "housing": true,
       "household_debt": true,
       "fx_volatility": false,
-      "domestic_recovery": true
+      "domestic_recovery": true,
+      "inflation_next_up": true,
+      "housing_reaccelerating": true,
+      "hold_prior_hikes_effect": true
     }
   },
   "dotplot_hash": "8715069b2cce873761db745666024bc7e552e5b1deef2bae2b0562b974dd9d3b",
@@ -52,7 +47,7 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-10-21T14:15:30+09:00",
+    "updated_at_kst": "2026-10-22T11:45:09+09:00",
     "risk_score": 3,
     "grade_emoji": "🟡",
     "grade_label": "추가인상 가능성 유지",
@@ -83,9 +78,9 @@
       },
       "housing": null,
       "oil": {
-        "date": "2026-10-21",
-        "brent_usd": 109.94,
-        "change_5d_pct": 3.66,
+        "date": "2026-10-22",
+        "brent_usd": 110.57,
+        "change_5d_pct": 4.39,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
@@ -93,15 +88,7 @@
     },
     "rhetoric_score": 0,
     "recent_rhetoric": [],
-    "seen_rhetoric_hashes": [
-      "5be88233156f29ad1bc2ecc1a91836e3822516286e2c5ed7f0d36c0f802c6568",
-      "cfc9ecc85da2f4cf06e52a4322dc9c7e5764e4f4b5d5a6c343b20b7ddf0d2528",
-      "ad545aa8be16789c3671c193ac08c6fa147a71715fb91d72f7beca8a715b37db",
-      "ad81263a3c3bb5781f6ba3237105edbd837203acb68c22e800c1e543fd3799fe",
-      "57aded834a024a00c16d363981585008c32cc28e1a8c36533c7aad84c363dce2",
-      "9c33539c399590b5f53d579f39a71bc6ff9006244fdb6245bae5899f52ad4e3e",
-      "7ef77925b729fb9b737fbda1514142e5caac66d5f655e0cd5eadbd22be23e3d9"
-    ],
+    "seen_rhetoric_hashes": [],
     "notification_policy": {
       "score_only_change_suppressed": true,
       "oil_relief_to_neutral_suppressed": true,
