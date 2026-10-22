@@ -40530,6 +40530,30 @@
       "telegram_core_fact": "주요 배터리 고객사의 유럽 공장과 북미 프로젝트 공급이 확대되면서 ESS 부품 등 전체 수주잔고는 약 7000억원으로 늘었다.",
       "title": "HT로보틱스, 북미 ESS 엔드플레이트 누적 생산 200만개 돌파…美 공급망 점검"
     },
+    "core:75aff90d5166a35a40c26c34": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021160100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4ca3c65c6b29758b0fa1aa12736755c608962786bcd4cb6bc645e26bfdbc207e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8219abb9b2bdd5c274ab66c1f3f7d99ea45b5b38a3729add4d40d7c8f10ec93",
+      "source_fact_keys": [
+        "source_fact:v1:0f4e3070446182b43eba94695fcb8ba17cccf714abb43e5fa404f9853fc07601",
+        "source_fact:v1:75bd0b1351e7ad568f851771e7cb060c060c0b3daf3244adc89574db0cf12ac3",
+        "source_fact:v1:b3d81458f8d6b660fe291f15ef3ec1cadbe5b01205f4d6f3f03f49335c276555",
+        "source_fact:v1:d474945310716ecbc5599fcfc0e48f64c81129b50be264b8a1060ab7c519cf66",
+        "source_fact:v1:d692a7d0c88cfa2d3b05a7f6f121abff98b36f93e9581bbda2ff2a9ae54d0923"
+      ],
+      "source_published_kst": "2026-10-22T05:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스",
+      "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
+      "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
+    },
     "core:75b0c18fd022758e7a3a09ff": {
       "first_seen_kst": "2026-10-15T05:17:25+09:00",
       "lanes": {
@@ -67921,6 +67945,39 @@
       "telegram_core_fact": "올해 들어 8월까지 쌓인 경상수지 흑자도 2800억달러에 육박했다. 반도체 수출 증가세가 더욱 강해지면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
       "title": "[속보] '반도체 강세' 8월 경상흑자 461억달러…누적 2800억달러 육박"
     },
+    "core:c31844aafae5813c54d4ed21": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
+      "source": "뉴시스",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
+      "source_fact_keys": [
+        "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
+        "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
+        "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
+        "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
+        "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
+        "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
+        "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
+        "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
+        "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
+        "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
+        "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
+      ],
+      "source_published_kst": "2026-10-22T11:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
+    },
     "core:c338755242ee48e182f26b96": {
       "first_seen_kst": "2026-10-18T06:15:10+09:00",
       "lanes": {
@@ -73309,6 +73366,26 @@
       "telegram_core_fact": "블룸버그통신에 따르면 중국 국가통계국은 3분기 국내총생산(GDP)이 전년비 4.5% 증가했다고 발표했다. 1~3분기 전체 증가율은 4.6%로 집계돼 중국 정부가 연간 목표치로 제시한 4.5~5%에 부합했다.",
       "title": "중국, 3분기 경제성장률 4.5%⋯예상 웃돌았지만 소비·투자 냉랭 [종합]"
     },
+    "core:d4749be2693d3e607a627888": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836118",
+      "source": "뉴시스",
+      "source_body_digest": "824952e09694bb78eb7cdf7eb0d66674e6e70bc2785cb37aa2c2092ffb97cdad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b712238e9e81ea1fcf8fee93770888ca8bf55b276d340ab929e68d75d50ff77",
+      "source_fact_keys": [
+        "source_fact:v1:2ccaa0e301e2555601eabb473d372841c63ecb7eeb146b659a42d14ac4325096"
+      ],
+      "source_published_kst": "2026-10-22T09:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "선익시스템, 평택 브레인시티 신공장 준공",
+      "telegram_core_fact": "선익시스템 관계자는 \"평택 브레인시티 공장 준공은 앞으로 열릴 시장을 준비하는 선제적 투자\"라며 \"축적된 기술력에 확대된 생산기반을 더해 성장 기회를 실적으로 연결하고, 실적 공백과 변동성을 줄이며 지속적으로 성장하는 기업으로 도약하겠다\"고 강조했다.",
+      "title": "선익시스템, 평택 브레인시티 신공장 준공"
+    },
     "core:d479d27e038aa0339c0644eb": {
       "first_seen_kst": "2026-10-09T18:57:38+09:00",
       "lanes": {
@@ -74408,6 +74485,31 @@
       "telegram_core_fact": "상반기에 이미 화학 부문을 중심으로 1164억원의 영업이익을 거둔 가운데 9~10월 원유와 등유 가격이 다시 강세를 보이며 제품 가격도 상승하고 있다.",
       "title": "LS \"이수화학, 3분기 영업익 400억원 전망⋯비화학 부문도 흑자전환\""
     },
+    "core:d742701b74bcf7ed43323ef9": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022030900003",
+      "source": "연합뉴스",
+      "source_body_digest": "f8c6c070dac67ee4355b988cede843e6771f3946c43aa19d72adb2faaeef1ddd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff0b11cf88ef83537b7504efdec8e2fb8f6f98015aeed471ee717a0eafcdf78b",
+      "source_fact_keys": [
+        "source_fact:v1:00acea072444f3d4d2dd15d98a34946e22f451d1d936457d7416742132021873",
+        "source_fact:v1:0cd579a0e495132c75ee00bdd36a42c418bfd1571c1c78ff9471127c9557fd85",
+        "source_fact:v1:172bcdd18860a247005def17549e5cb9aa294c3692eea2bf2bedf7583282d5df",
+        "source_fact:v1:1fa1d2f4f9f8cbb3836f09f9c69732ac241da1881944430f565ac5c9aae99dc2",
+        "source_fact:v1:e94183625b1b1bb93f02a919acf3982085b6f50844afe8f6820f4dd811c3f719",
+        "source_fact:v1:ff1a85cb527c9dc486d57cc98a68c4ca070f23ae4bb7d2c076c1d437b6c1d964"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스",
+      "telegram_core_fact": "독일 과학기술 기업 머크의 한국법인인 한국머크는 22일 충청북도 음성 사업장에서 신규 이산화이염화몰리브덴(MoO₂Cl₂) 생산설비 개소식을 개최한다고 밝혔다. 머크는 이번 음성 신규 공장에서 생산되는 몰리브덴 전구체를 전부 한국 고객사에 제공해 '현지 생산·현지 공급' 체계를 구축한다.",
+      "title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스"
+    },
     "core:d742b21391d08cec36b57634": {
       "first_seen_kst": "2026-10-20T04:27:47+09:00",
       "lanes": {
@@ -74578,6 +74680,36 @@
       "source_title": "사우스포트 애퀴지션, IPO 2억1000만 달러 조달..신탁 2억1100만 달러",
       "telegram_core_fact": "이번 8-K는 실적 발표가 아니라 IPO 완료 후 감사를 거친 개시 재무상태표 공시로, 매출액이나 주당순이익 등 실적 수치와 가이던스는 포함되지 않았다.",
       "title": "사우스포트 애퀴지션, IPO 2억1000만 달러 조달..신탁 2억1100만 달러"
+    },
+    "core:d7b217b63bfbdc7c52a9e8ea": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
     },
     "core:d7d26a2a9cc8927bd95d33cd": {
       "first_seen_kst": "2026-10-19T07:37:37+09:00",
@@ -78431,6 +78563,29 @@
       "source_title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”",
       "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 기업 해외 수주를 지원하도록 3조원 해외건설 전략펀드를 신설하겠다고 12일 밝혔다.",
       "title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”"
+    },
+    "core:e2a42af2b807e7efec5b81e1": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837006",
+      "source": "뉴시스",
+      "source_body_digest": "c7ec2d7a559201f44438d87303b5b76158397a00ffcee0538fec3933950c6596",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb8b0eadf747b58625fe7070f56126e23c45b22ad88d394f15ac2cde6dfcc719",
+      "source_fact_keys": [
+        "source_fact:v1:086ecc8d72d72c2b2cb2ae72d19b7fb76d1e9119d52e16c1f2efe784a5ebf891",
+        "source_fact:v1:0ae6a5db2d32063cc4dcae5b8758e4a408454dd07283aad5397df9859c099cff",
+        "source_fact:v1:baebed569f336601c1e93ab228323f44beeeae12b4ebfd8db80845d8655119a3",
+        "source_fact:v1:dde515a6a484ceecf036609ccc18f519a6c29d90b9d34d67d153995238eef2a7"
+      ],
+      "source_published_kst": "2026-10-22T15:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\"",
+      "telegram_core_fact": "한국은행 금융통화위원회가 22일 기준 금리를 3.00%로 동결한 가운데 글로벌 자산운용사 스테이트 스트리트는 금통위가 다음 달 기준금리를 한 차례 더 인상해 내년 말까지 최종 금리 3.25%를 유지할 것으로 내다봤다.",
+      "title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\""
     },
     "core:e2cda9d1f706abf343e505c0": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
@@ -83850,6 +84005,26 @@
       "source_title": "미장은 올랐는데 내 ETF는 -7%…서학개미 수익률 ‘환헤지’에 엇갈렸다",
       "telegram_core_fact": "같은 기간 미국 S&P500지수와 나스닥100지수가 모두 3% 안팎의 상승률을 기록했다는 점을 고려하면 환율이 상품 수익률에 미친 영향이 두드러진다.",
       "title": "미장은 올랐는데 내 ETF는 -7%…서학개미 수익률 ‘환헤지’에 엇갈렸다"
+    },
+    "core:f3baca2e52660bf2bd2a5fe4": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638677",
+      "source": "이투데이",
+      "source_body_digest": "d3f827a8af59dad9af3d103b8371a8b6a8da63ad2def8220a175fec221746441",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7569c8a28a835247e22694e8e82e1608d204eb8a487137ed9c9d6214e5d06974",
+      "source_fact_keys": [
+        "source_fact:v1:295da2e4bf0b979d0a35ab32f45542f880cde8c9961f1a274f1af024946a79d5"
+      ],
+      "source_published_kst": "2026-10-22T09:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "FNC엔터, YG플러스와 음원ㆍ음반 유통 계약⋯글로벌 공급망 적극 활용",
+      "telegram_core_fact": "FNC엔터, YG플러스와 음원·음반 유통 계약을 체결했다고 밝혔다. 특히 전 세계 190여 개국에 구축된 주요 디지털 스트리밍 플랫폼(DSP) 직계약 인프라 및 해외 음반 유통 네트워크를 통한 피지컬 앨범의 글로벌 공급망을 적극 활용할 방침이다.",
+      "title": "FNC엔터, YG플러스와 음원ㆍ음반 유통 계약⋯글로벌 공급망 적극 활용"
     },
     "core:f3bb3bf6b78536d728fbfa4e": {
       "first_seen_kst": "2026-10-19T19:03:47+09:00",
@@ -92053,24 +92228,35 @@
     "event:2d7251db758bdbc067f95a80": {
       "first_seen_kst": "2026-10-22T08:28:20+09:00",
       "lanes": {
-        "live": "2026-10-22T13:31:10+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T13:31:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261022_0003835960",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
       "source": "뉴시스",
-      "source_body_digest": "35177d58de6b69312004208a6d308c998199ca69af72400fb1f21d2e522d97f0",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4d059e125c3ada330ddf9e89c7a83794236592775b7bd21457891573144d5f35",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
       "source_fact_keys": [
-        "source_fact:v1:10e37ac096e08a766b4b99e387f326d20ab0bdc77e38d6bef372c4f6c4d676fd",
-        "source_fact:v1:931c34d6dd976cb7a3c6227780bab65c24c81c27d55ca9cd5fddf4ccf9c71645",
-        "source_fact:v1:fe5de21d264c56c23289db782084ad4855ac6a062b055ada45d28b617e689146"
+        "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
+        "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
+        "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
+        "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
+        "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
+        "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
+        "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
+        "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
+        "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
+        "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
+        "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
       ],
-      "source_published_kst": "2026-10-22T08:06+09:00",
+      "source_published_kst": "2026-10-22T11:47+09:00",
       "source_supply_terms": {},
-      "source_title": "루멘스바이오스, 폴라리스우노 전환사채·지분 인수",
-      "telegram_core_fact": "루멘스바이오스는 가발용 합성원사 전문기업 폴라리스우노의 전환사채와 기존 주식을 총 572억5000만원에 인수하는 계약을 체결했다고 22일 밝혔다.",
-      "title": "루멘스바이오스, 폴라리스우노 전환사채·지분 인수"
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "event:2da188b8d971de076b20a5df": {
       "first_seen_kst": "2026-09-18T13:11:00+09:00",
@@ -97977,20 +98163,25 @@
     "event:7be6f80fbb97d313ca0deaa6": {
       "first_seen_kst": "2026-10-22T12:22:03+09:00",
       "lanes": {
-        "live": "2026-10-22T12:22:03+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T12:22:03+09:00",
-      "link": "https://www.etnews.com/20261022000088",
-      "source": "전자신문",
-      "source_body_digest": "f8d4fc58c0d67ff846f2abf4f684be57447496f9f197dbd229da9325baba50a7",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837006",
+      "source": "뉴시스",
+      "source_body_digest": "c7ec2d7a559201f44438d87303b5b76158397a00ffcee0538fec3933950c6596",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-22T09:53+09:00",
+      "source_fact_identity": "source_facts:v1:bb8b0eadf747b58625fe7070f56126e23c45b22ad88d394f15ac2cde6dfcc719",
+      "source_fact_keys": [
+        "source_fact:v1:086ecc8d72d72c2b2cb2ae72d19b7fb76d1e9119d52e16c1f2efe784a5ebf891",
+        "source_fact:v1:0ae6a5db2d32063cc4dcae5b8758e4a408454dd07283aad5397df9859c099cff",
+        "source_fact:v1:baebed569f336601c1e93ab228323f44beeeae12b4ebfd8db80845d8655119a3",
+        "source_fact:v1:dde515a6a484ceecf036609ccc18f519a6c29d90b9d34d67d153995238eef2a7"
+      ],
+      "source_published_kst": "2026-10-22T15:03+09:00",
       "source_supply_terms": {},
-      "source_title": "한은, 기준금리 3.00% 동결…연속 인상 멈췄지만 긴축 불씨 여전",
-      "telegram_core_fact": "한국은행이 기준금리를 연 3.00%로 동결했다.",
-      "title": "한은, 기준금리 3.00% 동결…연속 인상 멈췄지만 긴축 불씨 여전"
+      "source_title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\"",
+      "telegram_core_fact": "한국은행 금융통화위원회가 22일 기준 금리를 3.00%로 동결한 가운데 글로벌 자산운용사 스테이트 스트리트는 금통위가 다음 달 기준금리를 한 차례 더 인상해 내년 말까지 최종 금리 3.25%를 유지할 것으로 내다봤다.",
+      "title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\""
     },
     "event:7c2bd713b7c96a8d06a9fd4b": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -103636,20 +103827,26 @@
     "event:c268e53d46c135138b3a3036": {
       "first_seen_kst": "2026-10-22T14:04:51+09:00",
       "lanes": {
-        "live": "2026-10-22T14:04:51+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T14:04:51+09:00",
-      "link": "https://www.dt.co.kr/article/12090599",
-      "source": "디지털타임스",
-      "source_body_digest": "2cfe1a157499dde1e28ed62b22ba090322b57b63e8de642bbdc7385486ad65f7",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021160100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4ca3c65c6b29758b0fa1aa12736755c608962786bcd4cb6bc645e26bfdbc207e",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-22T11:16+09:00",
+      "source_fact_identity": "source_facts:v1:e8219abb9b2bdd5c274ab66c1f3f7d99ea45b5b38a3729add4d40d7c8f10ec93",
+      "source_fact_keys": [
+        "source_fact:v1:0f4e3070446182b43eba94695fcb8ba17cccf714abb43e5fa404f9853fc07601",
+        "source_fact:v1:75bd0b1351e7ad568f851771e7cb060c060c0b3daf3244adc89574db0cf12ac3",
+        "source_fact:v1:b3d81458f8d6b660fe291f15ef3ec1cadbe5b01205f4d6f3f03f49335c276555",
+        "source_fact:v1:d474945310716ecbc5599fcfc0e48f64c81129b50be264b8a1060ab7c519cf66",
+        "source_fact:v1:d692a7d0c88cfa2d3b05a7f6f121abff98b36f93e9581bbda2ff2a9ae54d0923"
+      ],
+      "source_published_kst": "2026-10-22T05:51+09:00",
       "source_supply_terms": {},
-      "source_title": "사우디 공항·유전 잇단 피격…호르무즈 유조선까지 불길",
-      "telegram_core_fact": "사우디아라비아의 국제공항과 핵심 석유 시설이 잇따라 공격받고 호르무즈 해협을 항해하던 유조선들까지 피격되면서 중동 전역의 군사적 긴장이 고조되고 있다.",
-      "title": "사우디 공항·유전 잇단 피격…호르무즈 유조선까지 불길"
+      "source_title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스",
+      "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
+      "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
     },
     "event:c26a94fd068aeb577cdb0146": {
       "first_seen_kst": "2026-10-16T22:28:52+09:00",
@@ -118857,6 +119054,36 @@
       "source_title": "한국투자증권, 퇴직연금 적립금 44.8% 증가…18조5000억원 돌파",
       "telegram_core_fact": "근로자가 직접 운용하는 DC형과 IRP 적립금은 하반기 국내외 증시 조정으로 실적배당형 상품의 평가금액이 일시적으로 줄어드는 상황에서도 증가세를 이어갔다.",
       "title": "한국투자증권, 퇴직연금 적립금 44.8% 증가…18조5000억원 돌파"
+    },
+    "fact:1835d17812bd08225323246e": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
     },
     "fact:18492f8418902b4696031909": {
       "first_seen_kst": "2026-10-21T09:52:31+09:00",
@@ -155082,6 +155309,26 @@
       "telegram_core_fact": "김대현 국립원예특작과학원장은 \"준고랭지 여름철 배추 재배 적지를 확대하고 신품종·신기술을 확산해 여름철 배추의 안정적인 생산·공급 기반을 더 강화해 나가겠다\"고 말했다. 농촌진흥청은 여름철 배추 수급 불안에 대응하기 위해 '준고랭지 여름철 배추 안정 생산 체계 구축 사업'을 한다고 8일 밝혔다.",
       "title": "'이상기후 대응' 농진청, 여름철 배추 재배 적지 확대 등 지원 | 연합뉴스"
     },
+    "fact:7c10b72f4b9bf0282d8ceb8d": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638677",
+      "source": "이투데이",
+      "source_body_digest": "d3f827a8af59dad9af3d103b8371a8b6a8da63ad2def8220a175fec221746441",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7569c8a28a835247e22694e8e82e1608d204eb8a487137ed9c9d6214e5d06974",
+      "source_fact_keys": [
+        "source_fact:v1:295da2e4bf0b979d0a35ab32f45542f880cde8c9961f1a274f1af024946a79d5"
+      ],
+      "source_published_kst": "2026-10-22T09:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "FNC엔터, YG플러스와 음원ㆍ음반 유통 계약⋯글로벌 공급망 적극 활용",
+      "telegram_core_fact": "FNC엔터, YG플러스와 음원·음반 유통 계약을 체결했다고 밝혔다. 특히 전 세계 190여 개국에 구축된 주요 디지털 스트리밍 플랫폼(DSP) 직계약 인프라 및 해외 음반 유통 네트워크를 통한 피지컬 앨범의 글로벌 공급망을 적극 활용할 방침이다.",
+      "title": "FNC엔터, YG플러스와 음원ㆍ음반 유통 계약⋯글로벌 공급망 적극 활용"
+    },
     "fact:7c2689c7742495f7ad415305": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -166106,6 +166353,30 @@
       ],
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
+    },
+    "fact:96a624ee68ceb1dd659b3368": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021160100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4ca3c65c6b29758b0fa1aa12736755c608962786bcd4cb6bc645e26bfdbc207e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8219abb9b2bdd5c274ab66c1f3f7d99ea45b5b38a3729add4d40d7c8f10ec93",
+      "source_fact_keys": [
+        "source_fact:v1:0f4e3070446182b43eba94695fcb8ba17cccf714abb43e5fa404f9853fc07601",
+        "source_fact:v1:75bd0b1351e7ad568f851771e7cb060c060c0b3daf3244adc89574db0cf12ac3",
+        "source_fact:v1:b3d81458f8d6b660fe291f15ef3ec1cadbe5b01205f4d6f3f03f49335c276555",
+        "source_fact:v1:d474945310716ecbc5599fcfc0e48f64c81129b50be264b8a1060ab7c519cf66",
+        "source_fact:v1:d692a7d0c88cfa2d3b05a7f6f121abff98b36f93e9581bbda2ff2a9ae54d0923"
+      ],
+      "source_published_kst": "2026-10-22T05:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스",
+      "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
+      "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
     },
     "fact:96b3a68d4035c76a9998c9a1": {
       "first_seen_kst": "2026-10-06T23:29:45+09:00",
@@ -178777,6 +179048,26 @@
       "source_title": "현대ENG, 인천 데이터센터 공사 수주",
       "telegram_core_fact": "현대엔지니어링은 인천 서해구 원창동 데이터센터 신축 사업(투시도)을 수주했다고 7일 밝혔다.",
       "title": "현대ENG, 인천 데이터센터 공사 수주"
+    },
+    "fact:b40a7fb91a04b0396c0535a2": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836118",
+      "source": "뉴시스",
+      "source_body_digest": "824952e09694bb78eb7cdf7eb0d66674e6e70bc2785cb37aa2c2092ffb97cdad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b712238e9e81ea1fcf8fee93770888ca8bf55b276d340ab929e68d75d50ff77",
+      "source_fact_keys": [
+        "source_fact:v1:2ccaa0e301e2555601eabb473d372841c63ecb7eeb146b659a42d14ac4325096"
+      ],
+      "source_published_kst": "2026-10-22T09:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "선익시스템, 평택 브레인시티 신공장 준공",
+      "telegram_core_fact": "선익시스템 관계자는 \"평택 브레인시티 공장 준공은 앞으로 열릴 시장을 준비하는 선제적 투자\"라며 \"축적된 기술력에 확대된 생산기반을 더해 성장 기회를 실적으로 연결하고, 실적 공백과 변동성을 줄이며 지속적으로 성장하는 기업으로 도약하겠다\"고 강조했다.",
+      "title": "선익시스템, 평택 브레인시티 신공장 준공"
     },
     "fact:b431b5d317381707b06d489f": {
       "first_seen_kst": "2026-10-19T22:09:23+09:00",
@@ -198252,6 +198543,39 @@
       "telegram_core_fact": "도널드 트럼프 미 대통령이 9일(현지시각) 블라디미르 푸틴 러시아 대통령과 러시아의 경유 미국 수출을 늘리기로 한 합의했음에도 미국의 경유 가격이 의미 있게 내려갈 가능성은 희박하다고 전문가들이 전망하고 있다.",
       "title": "\"트럼프 러 경유 수입 합의, 가격 인하 효과 미미\""
     },
+    "fact:e65ce7e79ec48b7b253778d1": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
+      "source": "뉴시스",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
+      "source_fact_keys": [
+        "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
+        "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
+        "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
+        "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
+        "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
+        "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
+        "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
+        "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
+        "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
+        "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
+        "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
+      ],
+      "source_published_kst": "2026-10-22T11:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
+    },
     "fact:e687b1e7108f5d2fb9b5990e": {
       "first_seen_kst": "2026-10-18T09:22:47+09:00",
       "lanes": {
@@ -200833,6 +201157,29 @@
       "source_title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\"",
       "telegram_core_fact": "주주환원이 꾸준히 이어지는지, 실제로 벌어들인 현금 흐름을 바탕으로 하는지, 발표에 그치지 않고 자사주 소각 등 실제 행동으로 연결되는지를 본다는 것이다.",
       "title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\""
+    },
+    "fact:ed2672edd6385756877e5828": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837006",
+      "source": "뉴시스",
+      "source_body_digest": "c7ec2d7a559201f44438d87303b5b76158397a00ffcee0538fec3933950c6596",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb8b0eadf747b58625fe7070f56126e23c45b22ad88d394f15ac2cde6dfcc719",
+      "source_fact_keys": [
+        "source_fact:v1:086ecc8d72d72c2b2cb2ae72d19b7fb76d1e9119d52e16c1f2efe784a5ebf891",
+        "source_fact:v1:0ae6a5db2d32063cc4dcae5b8758e4a408454dd07283aad5397df9859c099cff",
+        "source_fact:v1:baebed569f336601c1e93ab228323f44beeeae12b4ebfd8db80845d8655119a3",
+        "source_fact:v1:dde515a6a484ceecf036609ccc18f519a6c29d90b9d34d67d153995238eef2a7"
+      ],
+      "source_published_kst": "2026-10-22T15:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\"",
+      "telegram_core_fact": "한국은행 금융통화위원회가 22일 기준 금리를 3.00%로 동결한 가운데 글로벌 자산운용사 스테이트 스트리트는 금통위가 다음 달 기준금리를 한 차례 더 인상해 내년 말까지 최종 금리 3.25%를 유지할 것으로 내다봤다.",
+      "title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\""
     },
     "fact:ed29674d8cfb5d7701e32c08": {
       "first_seen_kst": "2026-10-13T02:27:34+09:00",
@@ -204864,6 +205211,31 @@
       "source_title": "최태원 SK그룹 회장 “반도체 생산능력 서둘러 키워야⋯미ㆍ중 증설 경쟁”",
       "telegram_core_fact": "반도체 수요가 큰 만큼 전남광주뿐 아니라 다른 지역에서도 공장 증설을 검토해야 한다는 취지다.",
       "title": "최태원 SK그룹 회장 “반도체 생산능력 서둘러 키워야⋯미ㆍ중 증설 경쟁”"
+    },
+    "fact:f7a5b75cdc2acac3a7ed65f6": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022030900003",
+      "source": "연합뉴스",
+      "source_body_digest": "f8c6c070dac67ee4355b988cede843e6771f3946c43aa19d72adb2faaeef1ddd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff0b11cf88ef83537b7504efdec8e2fb8f6f98015aeed471ee717a0eafcdf78b",
+      "source_fact_keys": [
+        "source_fact:v1:00acea072444f3d4d2dd15d98a34946e22f451d1d936457d7416742132021873",
+        "source_fact:v1:0cd579a0e495132c75ee00bdd36a42c418bfd1571c1c78ff9471127c9557fd85",
+        "source_fact:v1:172bcdd18860a247005def17549e5cb9aa294c3692eea2bf2bedf7583282d5df",
+        "source_fact:v1:1fa1d2f4f9f8cbb3836f09f9c69732ac241da1881944430f565ac5c9aae99dc2",
+        "source_fact:v1:e94183625b1b1bb93f02a919acf3982085b6f50844afe8f6820f4dd811c3f719",
+        "source_fact:v1:ff1a85cb527c9dc486d57cc98a68c4ca070f23ae4bb7d2c076c1d437b6c1d964"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스",
+      "telegram_core_fact": "독일 과학기술 기업 머크의 한국법인인 한국머크는 22일 충청북도 음성 사업장에서 신규 이산화이염화몰리브덴(MoO₂Cl₂) 생산설비 개소식을 개최한다고 밝혔다. 머크는 이번 음성 신규 공장에서 생산되는 몰리브덴 전구체를 전부 한국 고객사에 제공해 '현지 생산·현지 공급' 체계를 구축한다.",
+      "title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스"
     },
     "fact:f7a6c060a9bc2a7aae29b268": {
       "first_seen_kst": "2026-10-22T05:03:54+09:00",
@@ -236340,6 +236712,29 @@
       "telegram_core_fact": "트럼프 대통령은 9일(현지시간) 푸틴 대통령과 통화한 뒤 러시아가 미국과 세계 시장에 경유 30만t 이상을 즉시 공급하기로 했다고 발표했다.",
       "title": "트럼프, 젤렌스키와 갈등 끝 푸틴과 경유 거래⋯종전 협상도 난항"
     },
+    "link:361465261ef20b969933220b": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837006",
+      "source": "뉴시스",
+      "source_body_digest": "c7ec2d7a559201f44438d87303b5b76158397a00ffcee0538fec3933950c6596",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb8b0eadf747b58625fe7070f56126e23c45b22ad88d394f15ac2cde6dfcc719",
+      "source_fact_keys": [
+        "source_fact:v1:086ecc8d72d72c2b2cb2ae72d19b7fb76d1e9119d52e16c1f2efe784a5ebf891",
+        "source_fact:v1:0ae6a5db2d32063cc4dcae5b8758e4a408454dd07283aad5397df9859c099cff",
+        "source_fact:v1:baebed569f336601c1e93ab228323f44beeeae12b4ebfd8db80845d8655119a3",
+        "source_fact:v1:dde515a6a484ceecf036609ccc18f519a6c29d90b9d34d67d153995238eef2a7"
+      ],
+      "source_published_kst": "2026-10-22T15:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\"",
+      "telegram_core_fact": "한국은행 금융통화위원회가 22일 기준 금리를 3.00%로 동결한 가운데 글로벌 자산운용사 스테이트 스트리트는 금통위가 다음 달 기준금리를 한 차례 더 인상해 내년 말까지 최종 금리 3.25%를 유지할 것으로 내다봤다.",
+      "title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\""
+    },
     "link:36194bf496464fa4c8898493": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
       "lanes": {
@@ -236711,6 +237106,31 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
+    },
+    "link:36ea3b016fa6352d43ce1c87": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022030900003",
+      "source": "연합뉴스",
+      "source_body_digest": "f8c6c070dac67ee4355b988cede843e6771f3946c43aa19d72adb2faaeef1ddd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff0b11cf88ef83537b7504efdec8e2fb8f6f98015aeed471ee717a0eafcdf78b",
+      "source_fact_keys": [
+        "source_fact:v1:00acea072444f3d4d2dd15d98a34946e22f451d1d936457d7416742132021873",
+        "source_fact:v1:0cd579a0e495132c75ee00bdd36a42c418bfd1571c1c78ff9471127c9557fd85",
+        "source_fact:v1:172bcdd18860a247005def17549e5cb9aa294c3692eea2bf2bedf7583282d5df",
+        "source_fact:v1:1fa1d2f4f9f8cbb3836f09f9c69732ac241da1881944430f565ac5c9aae99dc2",
+        "source_fact:v1:e94183625b1b1bb93f02a919acf3982085b6f50844afe8f6820f4dd811c3f719",
+        "source_fact:v1:ff1a85cb527c9dc486d57cc98a68c4ca070f23ae4bb7d2c076c1d437b6c1d964"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스",
+      "telegram_core_fact": "독일 과학기술 기업 머크의 한국법인인 한국머크는 22일 충청북도 음성 사업장에서 신규 이산화이염화몰리브덴(MoO₂Cl₂) 생산설비 개소식을 개최한다고 밝혔다. 머크는 이번 음성 신규 공장에서 생산되는 몰리브덴 전구체를 전부 한국 고객사에 제공해 '현지 생산·현지 공급' 체계를 구축한다.",
+      "title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스"
     },
     "link:3704c27f4ec3330ea0352415": {
       "first_seen_kst": "2026-10-13T22:04:42+09:00",
@@ -252058,6 +252478,39 @@
       "source_title": "허츠 글로벌 홀딩스, 자회사 오로 8000만달러 투자유치..독립 성장 속도",
       "telegram_core_fact": "허츠 글로벌 홀딩스(HTZ)는 모빌리티 자회사 오로 모빌리티(Oro Mobility)가 코언 프라이빗 벤처스, 서레어스 오퍼튜니티스, 나이트헤드 캐피털 매니지먼트 계열 펀드 등으로 구성된 컨소시엄으로부터 8000만 달러 전략적 지분 투자를 유치했다고 10월 20일 발표했다.",
       "title": "허츠 글로벌 홀딩스, 자회사 오로 8000만달러 투자유치..독립 성장 속도"
+    },
+    "link:55b8708ae517633594da5092": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
+      "source": "뉴시스",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
+      "source_fact_keys": [
+        "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
+        "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
+        "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
+        "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
+        "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
+        "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
+        "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
+        "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
+        "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
+        "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
+        "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
+      ],
+      "source_published_kst": "2026-10-22T11:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "link:55c13fc6009c5f63d1c0225f": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -289686,6 +290139,26 @@
       "source_published_kst": "2026-10-06T18:21+09:00",
       "title": "\"'한국형 테마섹' 키우는데 본점은 전북?\"…KIC '서울 명문화' 목소리"
     },
+    "link:a0bab0550f66e6af59f243b2": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638677",
+      "source": "이투데이",
+      "source_body_digest": "d3f827a8af59dad9af3d103b8371a8b6a8da63ad2def8220a175fec221746441",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7569c8a28a835247e22694e8e82e1608d204eb8a487137ed9c9d6214e5d06974",
+      "source_fact_keys": [
+        "source_fact:v1:295da2e4bf0b979d0a35ab32f45542f880cde8c9961f1a274f1af024946a79d5"
+      ],
+      "source_published_kst": "2026-10-22T09:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "FNC엔터, YG플러스와 음원ㆍ음반 유통 계약⋯글로벌 공급망 적극 활용",
+      "telegram_core_fact": "FNC엔터, YG플러스와 음원·음반 유통 계약을 체결했다고 밝혔다. 특히 전 세계 190여 개국에 구축된 주요 디지털 스트리밍 플랫폼(DSP) 직계약 인프라 및 해외 음반 유통 네트워크를 통한 피지컬 앨범의 글로벌 공급망을 적극 활용할 방침이다.",
+      "title": "FNC엔터, YG플러스와 음원ㆍ음반 유통 계약⋯글로벌 공급망 적극 활용"
+    },
     "link:a0c41f829f92fd3a52e56d16": {
       "first_seen_kst": "2026-10-20T15:49:58+09:00",
       "lanes": {
@@ -292745,6 +293218,36 @@
       "telegram_core_fact": "라온피플은 별도재무제표 기준 3분기 영업이익이 11억8000만원으로 분기 연속 흑자와 함께 누적 영업이익 역시 흑자전환했다고 21일 공시했다.",
       "title": "라온피플, 생성형 AI 플랫폼 ‘오딘AI’ 매출 920% 증가…3분기 누적 영업익 ‘흑자전환’"
     },
+    "link:a6c1c3fa65429f7a1f3d16d1": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
+    },
     "link:a6c8970c6e0975bec4b28531": {
       "first_seen_kst": "2026-10-21T20:37:27+09:00",
       "lanes": {
@@ -294504,6 +295007,26 @@
       "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
       "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
       "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
+    },
+    "link:a9e05511b4bef9ee4b93a223": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836118",
+      "source": "뉴시스",
+      "source_body_digest": "824952e09694bb78eb7cdf7eb0d66674e6e70bc2785cb37aa2c2092ffb97cdad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b712238e9e81ea1fcf8fee93770888ca8bf55b276d340ab929e68d75d50ff77",
+      "source_fact_keys": [
+        "source_fact:v1:2ccaa0e301e2555601eabb473d372841c63ecb7eeb146b659a42d14ac4325096"
+      ],
+      "source_published_kst": "2026-10-22T09:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "선익시스템, 평택 브레인시티 신공장 준공",
+      "telegram_core_fact": "선익시스템 관계자는 \"평택 브레인시티 공장 준공은 앞으로 열릴 시장을 준비하는 선제적 투자\"라며 \"축적된 기술력에 확대된 생산기반을 더해 성장 기회를 실적으로 연결하고, 실적 공백과 변동성을 줄이며 지속적으로 성장하는 기업으로 도약하겠다\"고 강조했다.",
+      "title": "선익시스템, 평택 브레인시티 신공장 준공"
     },
     "link:a9ec726b6c7ab95507c62f6d": {
       "first_seen_kst": "2026-10-17T20:19:17+09:00",
@@ -308051,6 +308574,30 @@
       "source_title": "\"1GW AI 데이터센터 한 곳에 연간 세수 9109억원 가능…지역경제 성장 엔진\"",
       "telegram_core_fact": "정부가 3대 메가프로젝트 중 하나로 추진하는 AIDC 18.4GW에도 같은 기준을 적용하면 연간 법인세는 약 15조2000억원, 법인지방소득세는 약 1조5000억원에 이른다.",
       "title": "\"1GW AI 데이터센터 한 곳에 연간 세수 9109억원 가능…지역경제 성장 엔진\""
+    },
+    "link:c4bf04a646599627d0e022b4": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021160100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4ca3c65c6b29758b0fa1aa12736755c608962786bcd4cb6bc645e26bfdbc207e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8219abb9b2bdd5c274ab66c1f3f7d99ea45b5b38a3729add4d40d7c8f10ec93",
+      "source_fact_keys": [
+        "source_fact:v1:0f4e3070446182b43eba94695fcb8ba17cccf714abb43e5fa404f9853fc07601",
+        "source_fact:v1:75bd0b1351e7ad568f851771e7cb060c060c0b3daf3244adc89574db0cf12ac3",
+        "source_fact:v1:b3d81458f8d6b660fe291f15ef3ec1cadbe5b01205f4d6f3f03f49335c276555",
+        "source_fact:v1:d474945310716ecbc5599fcfc0e48f64c81129b50be264b8a1060ab7c519cf66",
+        "source_fact:v1:d692a7d0c88cfa2d3b05a7f6f121abff98b36f93e9581bbda2ff2a9ae54d0923"
+      ],
+      "source_published_kst": "2026-10-22T05:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스",
+      "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
+      "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
     },
     "link:c4c0585f969902c24c2b1bf3": {
       "first_seen_kst": "2026-09-24T06:13:58+09:00",
@@ -346976,6 +347523,36 @@
       "source_published_kst": "2026-10-06T09:49+09:00",
       "title": "카카오모빌리티, AI 배차·관제 기술 국방에 적용…고려대와 ‘국방 AX’ 협력"
     },
+    "original:150e8ccf0709eff33e2caac6": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
+    },
     "original:1521b3a8b7948a573d311adc": {
       "first_seen_kst": "2026-09-28T09:55:33+09:00",
       "lanes": {
@@ -355264,6 +355841,30 @@
       "source_title": "한병도 \"吳, 서울 공급 부족 남 탓 말고 국토부와 협의·대안 제시해야\"",
       "telegram_core_fact": "한병도 더불어민주당 원내대표가 서울시 국감을 앞두고 오세훈 시장을 향해 \"남 탓만 할 것이 아니라 국토부와의 협의를 통해 공급 속도전을 뒷받침할 책임 있는 대안을 제시해야 한다\"고 했다.",
       "title": "한병도 \"吳, 서울 공급 부족 남 탓 말고 국토부와 협의·대안 제시해야\""
+    },
+    "original:2589f6748f224276dace69d8": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021160100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4ca3c65c6b29758b0fa1aa12736755c608962786bcd4cb6bc645e26bfdbc207e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8219abb9b2bdd5c274ab66c1f3f7d99ea45b5b38a3729add4d40d7c8f10ec93",
+      "source_fact_keys": [
+        "source_fact:v1:0f4e3070446182b43eba94695fcb8ba17cccf714abb43e5fa404f9853fc07601",
+        "source_fact:v1:75bd0b1351e7ad568f851771e7cb060c060c0b3daf3244adc89574db0cf12ac3",
+        "source_fact:v1:b3d81458f8d6b660fe291f15ef3ec1cadbe5b01205f4d6f3f03f49335c276555",
+        "source_fact:v1:d474945310716ecbc5599fcfc0e48f64c81129b50be264b8a1060ab7c519cf66",
+        "source_fact:v1:d692a7d0c88cfa2d3b05a7f6f121abff98b36f93e9581bbda2ff2a9ae54d0923"
+      ],
+      "source_published_kst": "2026-10-22T05:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스",
+      "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
+      "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
     },
     "original:259092dd05f9d40b22fd2949": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
@@ -372624,6 +373225,26 @@
       "source_published_kst": "2026-10-04T14:42+09:00",
       "title": "법원 ‘시가총액 상폐룰 제동’…“시총 회복 거래일 조건 과도”"
     },
+    "original:4794e39936d955d37ef29617": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836118",
+      "source": "뉴시스",
+      "source_body_digest": "824952e09694bb78eb7cdf7eb0d66674e6e70bc2785cb37aa2c2092ffb97cdad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b712238e9e81ea1fcf8fee93770888ca8bf55b276d340ab929e68d75d50ff77",
+      "source_fact_keys": [
+        "source_fact:v1:2ccaa0e301e2555601eabb473d372841c63ecb7eeb146b659a42d14ac4325096"
+      ],
+      "source_published_kst": "2026-10-22T09:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "선익시스템, 평택 브레인시티 신공장 준공",
+      "telegram_core_fact": "선익시스템 관계자는 \"평택 브레인시티 공장 준공은 앞으로 열릴 시장을 준비하는 선제적 투자\"라며 \"축적된 기술력에 확대된 생산기반을 더해 성장 기회를 실적으로 연결하고, 실적 공백과 변동성을 줄이며 지속적으로 성장하는 기업으로 도약하겠다\"고 강조했다.",
+      "title": "선익시스템, 평택 브레인시티 신공장 준공"
+    },
     "original:4796061bd6a7385ce87da439": {
       "first_seen_kst": "2026-09-25T15:10:44+09:00",
       "lanes": {
@@ -383793,6 +384414,26 @@
       "source_title": "이억원 \"금리인상기, 정책서민금융 금리 낮추고 공급 확대\" | 연합뉴스",
       "telegram_core_fact": "이억원 금융위원장은 8일 서민·취약계층을 위해 \"정책서민금융의 금리수준을 낮추고 신상품 출시 등 공급을 지속적으로 확대하겠다\"고 밝혔다.",
       "title": "이억원 \"금리인상기, 정책서민금융 금리 낮추고 공급 확대\" | 연합뉴스"
+    },
+    "original:5f1d53575395750720f27af6": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638677",
+      "source": "이투데이",
+      "source_body_digest": "d3f827a8af59dad9af3d103b8371a8b6a8da63ad2def8220a175fec221746441",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7569c8a28a835247e22694e8e82e1608d204eb8a487137ed9c9d6214e5d06974",
+      "source_fact_keys": [
+        "source_fact:v1:295da2e4bf0b979d0a35ab32f45542f880cde8c9961f1a274f1af024946a79d5"
+      ],
+      "source_published_kst": "2026-10-22T09:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "FNC엔터, YG플러스와 음원ㆍ음반 유통 계약⋯글로벌 공급망 적극 활용",
+      "telegram_core_fact": "FNC엔터, YG플러스와 음원·음반 유통 계약을 체결했다고 밝혔다. 특히 전 세계 190여 개국에 구축된 주요 디지털 스트리밍 플랫폼(DSP) 직계약 인프라 및 해외 음반 유통 네트워크를 통한 피지컬 앨범의 글로벌 공급망을 적극 활용할 방침이다.",
+      "title": "FNC엔터, YG플러스와 음원ㆍ음반 유통 계약⋯글로벌 공급망 적극 활용"
     },
     "original:5f1da59bfd23f240b0e48983": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
@@ -401843,6 +402484,39 @@
       "telegram_core_fact": "WTO는 중동 분쟁이 에너지 가격 상승과 운송 경로 차질을 통해 무역에 계속해서 부담을 줄 것으로 예상하면서도 세계 국내총생산(GDP)이 올해 2.6%, 다음해 2.9% 각각 성장할 것으로 전망했다.",
       "title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\""
     },
+    "original:8405ded5a3cad3b233959dbf": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
+      "source": "뉴시스",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
+      "source_fact_keys": [
+        "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
+        "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
+        "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
+        "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
+        "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
+        "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
+        "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
+        "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
+        "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
+        "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
+        "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
+      ],
+      "source_published_kst": "2026-10-22T11:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
+    },
     "original:8408c16564b7dc40df30b336": {
       "first_seen_kst": "2026-10-18T11:10:24+09:00",
       "lanes": {
@@ -416656,6 +417330,29 @@
       ],
       "source_published_kst": "2026-10-06T14:11+09:00",
       "title": "장기임대 늘리겠다는데⋯기업형 임대는 여전히 ‘사업성 벽’"
+    },
+    "original:a0cbf5cfc202d946d6ed9581": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837006",
+      "source": "뉴시스",
+      "source_body_digest": "c7ec2d7a559201f44438d87303b5b76158397a00ffcee0538fec3933950c6596",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb8b0eadf747b58625fe7070f56126e23c45b22ad88d394f15ac2cde6dfcc719",
+      "source_fact_keys": [
+        "source_fact:v1:086ecc8d72d72c2b2cb2ae72d19b7fb76d1e9119d52e16c1f2efe784a5ebf891",
+        "source_fact:v1:0ae6a5db2d32063cc4dcae5b8758e4a408454dd07283aad5397df9859c099cff",
+        "source_fact:v1:baebed569f336601c1e93ab228323f44beeeae12b4ebfd8db80845d8655119a3",
+        "source_fact:v1:dde515a6a484ceecf036609ccc18f519a6c29d90b9d34d67d153995238eef2a7"
+      ],
+      "source_published_kst": "2026-10-22T15:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\"",
+      "telegram_core_fact": "한국은행 금융통화위원회가 22일 기준 금리를 3.00%로 동결한 가운데 글로벌 자산운용사 스테이트 스트리트는 금통위가 다음 달 기준금리를 한 차례 더 인상해 내년 말까지 최종 금리 3.25%를 유지할 것으로 내다봤다.",
+      "title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\""
     },
     "original:a0ccb8e6a9d7c7237ff21ce9": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
@@ -456948,6 +457645,31 @@
       "telegram_core_fact": "그동안 엔비디아의 그래픽처리장치(GPU)와 고대역폭메모리(HBM) 확보가 AI 인프라 구축의 최대 과제였다면 이제는 확보한 반도체를 실제로 가동할 전력 공급 능력이 관건이 되고 있다.",
       "title": "“GPU는 있는데 전기가 없다”⋯美 AIDC 32GW 전력난, HBM 새 변수 [AI 호황의 역설]"
     },
+    "original:f52c7ce95d27c446033bdb49": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022030900003",
+      "source": "연합뉴스",
+      "source_body_digest": "f8c6c070dac67ee4355b988cede843e6771f3946c43aa19d72adb2faaeef1ddd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff0b11cf88ef83537b7504efdec8e2fb8f6f98015aeed471ee717a0eafcdf78b",
+      "source_fact_keys": [
+        "source_fact:v1:00acea072444f3d4d2dd15d98a34946e22f451d1d936457d7416742132021873",
+        "source_fact:v1:0cd579a0e495132c75ee00bdd36a42c418bfd1571c1c78ff9471127c9557fd85",
+        "source_fact:v1:172bcdd18860a247005def17549e5cb9aa294c3692eea2bf2bedf7583282d5df",
+        "source_fact:v1:1fa1d2f4f9f8cbb3836f09f9c69732ac241da1881944430f565ac5c9aae99dc2",
+        "source_fact:v1:e94183625b1b1bb93f02a919acf3982085b6f50844afe8f6820f4dd811c3f719",
+        "source_fact:v1:ff1a85cb527c9dc486d57cc98a68c4ca070f23ae4bb7d2c076c1d437b6c1d964"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스",
+      "telegram_core_fact": "독일 과학기술 기업 머크의 한국법인인 한국머크는 22일 충청북도 음성 사업장에서 신규 이산화이염화몰리브덴(MoO₂Cl₂) 생산설비 개소식을 개최한다고 밝혔다. 머크는 이번 음성 신규 공장에서 생산되는 몰리브덴 전구체를 전부 한국 고객사에 제공해 '현지 생산·현지 공급' 체계를 구축한다.",
+      "title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스"
+    },
     "original:f54f49f90459a0bb6372fc17": {
       "first_seen_kst": "2026-10-22T00:55:31+09:00",
       "lanes": {
@@ -470112,6 +470834,30 @@
       "telegram_core_fact": "도봉구는 지난 19일 방학신동아1단지아파트 재건축 정비 사업 사업시행자(지정개발자)로 대신자산신탁을 최종 지정 결정하고 22일 고시한다.",
       "title": "도봉구 최대 재건축 방학신동아1단지아파트, 사업시행자 확정"
     },
+    "source_fact:0413815782139f9643926da4": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021160100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4ca3c65c6b29758b0fa1aa12736755c608962786bcd4cb6bc645e26bfdbc207e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8219abb9b2bdd5c274ab66c1f3f7d99ea45b5b38a3729add4d40d7c8f10ec93",
+      "source_fact_keys": [
+        "source_fact:v1:0f4e3070446182b43eba94695fcb8ba17cccf714abb43e5fa404f9853fc07601",
+        "source_fact:v1:75bd0b1351e7ad568f851771e7cb060c060c0b3daf3244adc89574db0cf12ac3",
+        "source_fact:v1:b3d81458f8d6b660fe291f15ef3ec1cadbe5b01205f4d6f3f03f49335c276555",
+        "source_fact:v1:d474945310716ecbc5599fcfc0e48f64c81129b50be264b8a1060ab7c519cf66",
+        "source_fact:v1:d692a7d0c88cfa2d3b05a7f6f121abff98b36f93e9581bbda2ff2a9ae54d0923"
+      ],
+      "source_published_kst": "2026-10-22T05:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스",
+      "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
+      "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
+    },
     "source_fact:04196566fcbb2d8934ca9701": {
       "first_seen_kst": "2026-10-22T03:57:32+09:00",
       "lanes": {
@@ -473766,6 +474512,29 @@
       "source_title": "피에스케이홀딩스, 내년 매출 75% 성장 전망…목표가 26만원-신한",
       "telegram_core_fact": "12일 김형태 신한투자증권 연구원은 피에스케이홀딩스의 내년 매출액을 5001억원으로 전년 대비 75% 증가하고, 영업이익은 2005억원으로 77% 늘어날 것으로 추정했다.",
       "title": "피에스케이홀딩스, 내년 매출 75% 성장 전망…목표가 26만원-신한"
+    },
+    "source_fact:05db56eee5d974aec5d30fae": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837006",
+      "source": "뉴시스",
+      "source_body_digest": "c7ec2d7a559201f44438d87303b5b76158397a00ffcee0538fec3933950c6596",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb8b0eadf747b58625fe7070f56126e23c45b22ad88d394f15ac2cde6dfcc719",
+      "source_fact_keys": [
+        "source_fact:v1:086ecc8d72d72c2b2cb2ae72d19b7fb76d1e9119d52e16c1f2efe784a5ebf891",
+        "source_fact:v1:0ae6a5db2d32063cc4dcae5b8758e4a408454dd07283aad5397df9859c099cff",
+        "source_fact:v1:baebed569f336601c1e93ab228323f44beeeae12b4ebfd8db80845d8655119a3",
+        "source_fact:v1:dde515a6a484ceecf036609ccc18f519a6c29d90b9d34d67d153995238eef2a7"
+      ],
+      "source_published_kst": "2026-10-22T15:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\"",
+      "telegram_core_fact": "한국은행 금융통화위원회가 22일 기준 금리를 3.00%로 동결한 가운데 글로벌 자산운용사 스테이트 스트리트는 금통위가 다음 달 기준금리를 한 차례 더 인상해 내년 말까지 최종 금리 3.25%를 유지할 것으로 내다봤다.",
+      "title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\""
     },
     "source_fact:05dd59cc478dd7deaf411c6c": {
       "first_seen_kst": "2026-10-15T11:36:50+09:00",
@@ -489725,32 +490494,35 @@
     "source_fact:0df4fcfd572d9d0ad2814858": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
       "lanes": {
-        "live": "2026-10-22T13:31:10+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T13:31:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261022_0003836474",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
       "source": "뉴시스",
-      "source_body_digest": "5ddabe2c8dc016bdc9dabafa6e71d2e58d07b0811d5175620bc84787e977f023",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0b223888549a1bd6a9b97ed9b8f17dfb68854b1a85337bdeb5a8ad9ed6acbaac",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
       "source_fact_keys": [
         "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
         "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
         "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
         "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
         "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
         "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
         "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
         "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
         "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
         "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
         "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
       ],
-      "source_published_kst": "2026-10-22T11:08+09:00",
+      "source_published_kst": "2026-10-22T11:47+09:00",
       "source_supply_terms": {},
-      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소",
-      "telegram_core_fact": "영풍이 고려아연의 자사주 공개매수가 회사에 손해를 끼쳤다며 최윤범 고려아연 회장 등을 상대로 제기한 주주대표소송 1심에서 패소했다.",
-      "title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소"
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:0dfb68d03955829f29ea4e91": {
       "first_seen_kst": "2026-10-13T23:22:47+09:00",
@@ -497454,32 +498226,35 @@
     "source_fact:118ce230a44ab61e650f6303": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
       "lanes": {
-        "live": "2026-10-22T13:31:10+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T13:31:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261022_0003836474",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
       "source": "뉴시스",
-      "source_body_digest": "5ddabe2c8dc016bdc9dabafa6e71d2e58d07b0811d5175620bc84787e977f023",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0b223888549a1bd6a9b97ed9b8f17dfb68854b1a85337bdeb5a8ad9ed6acbaac",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
       "source_fact_keys": [
         "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
         "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
         "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
         "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
         "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
         "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
         "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
         "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
         "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
         "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
         "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
       ],
-      "source_published_kst": "2026-10-22T11:08+09:00",
+      "source_published_kst": "2026-10-22T11:47+09:00",
       "source_supply_terms": {},
-      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소",
-      "telegram_core_fact": "영풍이 고려아연의 자사주 공개매수가 회사에 손해를 끼쳤다며 최윤범 고려아연 회장 등을 상대로 제기한 주주대표소송 1심에서 패소했다.",
-      "title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소"
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:118ec1c69855c7715fb8605a": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -511205,6 +511980,36 @@
       "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
       "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
     },
+    "source_fact:18c3a6b0341ba2d6572ceddc": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
+    },
     "source_fact:18c3d24fb7252455a0b8a96e": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -516579,32 +517384,35 @@
     "source_fact:1b65323274bee086ddfee6de": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
       "lanes": {
-        "live": "2026-10-22T13:31:10+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T13:31:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261022_0003836474",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
       "source": "뉴시스",
-      "source_body_digest": "5ddabe2c8dc016bdc9dabafa6e71d2e58d07b0811d5175620bc84787e977f023",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0b223888549a1bd6a9b97ed9b8f17dfb68854b1a85337bdeb5a8ad9ed6acbaac",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
       "source_fact_keys": [
         "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
         "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
         "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
         "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
         "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
         "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
         "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
         "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
         "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
         "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
         "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
       ],
-      "source_published_kst": "2026-10-22T11:08+09:00",
+      "source_published_kst": "2026-10-22T11:47+09:00",
       "source_supply_terms": {},
-      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소",
-      "telegram_core_fact": "영풍이 고려아연의 자사주 공개매수가 회사에 손해를 끼쳤다며 최윤범 고려아연 회장 등을 상대로 제기한 주주대표소송 1심에서 패소했다.",
-      "title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소"
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:1b6d53afab9276081645dc28": {
       "first_seen_kst": "2026-10-19T18:10:50+09:00",
@@ -539659,6 +540467,29 @@
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
     },
+    "source_fact:261a676409a622c2a5f92ab8": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837006",
+      "source": "뉴시스",
+      "source_body_digest": "c7ec2d7a559201f44438d87303b5b76158397a00ffcee0538fec3933950c6596",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb8b0eadf747b58625fe7070f56126e23c45b22ad88d394f15ac2cde6dfcc719",
+      "source_fact_keys": [
+        "source_fact:v1:086ecc8d72d72c2b2cb2ae72d19b7fb76d1e9119d52e16c1f2efe784a5ebf891",
+        "source_fact:v1:0ae6a5db2d32063cc4dcae5b8758e4a408454dd07283aad5397df9859c099cff",
+        "source_fact:v1:baebed569f336601c1e93ab228323f44beeeae12b4ebfd8db80845d8655119a3",
+        "source_fact:v1:dde515a6a484ceecf036609ccc18f519a6c29d90b9d34d67d153995238eef2a7"
+      ],
+      "source_published_kst": "2026-10-22T15:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\"",
+      "telegram_core_fact": "한국은행 금융통화위원회가 22일 기준 금리를 3.00%로 동결한 가운데 글로벌 자산운용사 스테이트 스트리트는 금통위가 다음 달 기준금리를 한 차례 더 인상해 내년 말까지 최종 금리 3.25%를 유지할 것으로 내다봤다.",
+      "title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\""
+    },
     "source_fact:261ab2967293f240efc4a117": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -543786,6 +544617,39 @@
       "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
       "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
       "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
+    "source_fact:2815b67b272e07da2ec2f010": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
+      "source": "뉴시스",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
+      "source_fact_keys": [
+        "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
+        "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
+        "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
+        "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
+        "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
+        "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
+        "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
+        "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
+        "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
+        "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
+        "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
+      ],
+      "source_published_kst": "2026-10-22T11:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:2816343aacaef217687b1210": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
@@ -568941,32 +569805,35 @@
     "source_fact:3447af70f431903f51a0dd8e": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
       "lanes": {
-        "live": "2026-10-22T13:31:10+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T13:31:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261022_0003836474",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
       "source": "뉴시스",
-      "source_body_digest": "5ddabe2c8dc016bdc9dabafa6e71d2e58d07b0811d5175620bc84787e977f023",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0b223888549a1bd6a9b97ed9b8f17dfb68854b1a85337bdeb5a8ad9ed6acbaac",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
       "source_fact_keys": [
         "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
         "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
         "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
         "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
         "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
         "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
         "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
         "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
         "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
         "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
         "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
       ],
-      "source_published_kst": "2026-10-22T11:08+09:00",
+      "source_published_kst": "2026-10-22T11:47+09:00",
       "source_supply_terms": {},
-      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소",
-      "telegram_core_fact": "영풍이 고려아연의 자사주 공개매수가 회사에 손해를 끼쳤다며 최윤범 고려아연 회장 등을 상대로 제기한 주주대표소송 1심에서 패소했다.",
-      "title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소"
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:344e5416bc0b02913c06a6ab": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
@@ -572807,6 +573674,39 @@
       "source_title": "\"SK하이닉스, HBM·범용 메모리 동반 호조..내년도 성장\"-유진證",
       "telegram_core_fact": "실적 개선의 핵심은 메모리 가격으로, 유진투자증권은 3·4분기 D램의 평균판매가격이 전 분기 대비 20%, 출하량은 저장용량 기준으로 12% 증가할 것으로 예상했다.",
       "title": "\"SK하이닉스, HBM·범용 메모리 동반 호조..내년도 성장\"-유진證"
+    },
+    "source_fact:3629186dc6aa120189d424cb": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
+      "source": "뉴시스",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
+      "source_fact_keys": [
+        "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
+        "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
+        "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
+        "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
+        "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
+        "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
+        "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
+        "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
+        "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
+        "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
+        "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
+      ],
+      "source_published_kst": "2026-10-22T11:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:36375597436326a173c0b9c2": {
       "first_seen_kst": "2026-10-14T00:59:56+09:00",
@@ -577743,6 +578643,36 @@
       "source_title": "솔루스첨단소재, 4분기 전지박 판가 50% 이상 인상…“2027년 수익성 개선 본격화”",
       "telegram_core_fact": "솔루스첨단소재는 글로벌 주요 고객사를 대상으로 올해 4분기 전지박 평균 판매가격을 전 분기 대비 50% 이상 인상하기로 했다고 19일 밝혔다 4분기부터 인상된 단가가 실적에 본격 반영되는 가운데, 공장 가동률 상승에 따른 생산량 확대와 제조 효율화 효과가 맞물려 수익성 빠르게 개선될 것으로 전망하고 있다.",
       "title": "솔루스첨단소재, 4분기 전지박 판가 50% 이상 인상…“2027년 수익성 개선 본격화”"
+    },
+    "source_fact:389ea272d2f19db7bffbe2d7": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
     },
     "source_fact:38a03fd832227091316877b9": {
       "first_seen_kst": "2026-10-12T19:52:19+09:00",
@@ -584791,6 +585721,29 @@
       "telegram_core_fact": "사우스캐롤라이나주 렉싱턴에 본사를 둔 지역은행지주사 퍼스트 커뮤니티(FCCO)가 2026년 3분기 일반회계기준(GAAP) 순이익 804만4000달러, 희석 주당순이익(EPS) 0.85달러를 기록했다고 10월 21일 발표했다.",
       "title": "퍼스트 커뮤니티, 3분기 희석 EPS 0.85달러..전년비 27% 증가"
     },
+    "source_fact:3c39b6fe070eb9ccdad691dd": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837006",
+      "source": "뉴시스",
+      "source_body_digest": "c7ec2d7a559201f44438d87303b5b76158397a00ffcee0538fec3933950c6596",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb8b0eadf747b58625fe7070f56126e23c45b22ad88d394f15ac2cde6dfcc719",
+      "source_fact_keys": [
+        "source_fact:v1:086ecc8d72d72c2b2cb2ae72d19b7fb76d1e9119d52e16c1f2efe784a5ebf891",
+        "source_fact:v1:0ae6a5db2d32063cc4dcae5b8758e4a408454dd07283aad5397df9859c099cff",
+        "source_fact:v1:baebed569f336601c1e93ab228323f44beeeae12b4ebfd8db80845d8655119a3",
+        "source_fact:v1:dde515a6a484ceecf036609ccc18f519a6c29d90b9d34d67d153995238eef2a7"
+      ],
+      "source_published_kst": "2026-10-22T15:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\"",
+      "telegram_core_fact": "한국은행 금융통화위원회가 22일 기준 금리를 3.00%로 동결한 가운데 글로벌 자산운용사 스테이트 스트리트는 금통위가 다음 달 기준금리를 한 차례 더 인상해 내년 말까지 최종 금리 3.25%를 유지할 것으로 내다봤다.",
+      "title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\""
+    },
     "source_fact:3c3bf4bde867025a303b9fd2": {
       "first_seen_kst": "2026-10-22T01:52:01+09:00",
       "lanes": {
@@ -590240,6 +591193,36 @@
       "telegram_core_fact": "최 연구원은 \"만약 시장 하락세가 계속될 경우 은행주 주당순자산가치(BPS), 주당순이익(EPS)의 문제가 아니라 멀티플(평가배수)이 동반 하락할 수밖에 없다\"며 \"결국 은행주 주가 방향성도 시장 상황이 안정화되는 것이 관건\"이라고 짚었다.",
       "title": "신한증권 \"은행주, 반길 수만 없는 아웃퍼폼…시장 안정이 관건\" | 연합뉴스"
     },
+    "source_fact:3ee0f9c452ef5299684d5e69": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
+    },
     "source_fact:3ee189d84742379993cc096f": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
@@ -591353,6 +592336,26 @@
       ],
       "source_published_kst": "2026-10-07T09:55+09:00",
       "title": "그래피, 메가젠과 20억 규모 보철 솔루션 공급 계약"
+    },
+    "source_fact:3f5fd5ae5ce1e327d1b9cf50": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836118",
+      "source": "뉴시스",
+      "source_body_digest": "824952e09694bb78eb7cdf7eb0d66674e6e70bc2785cb37aa2c2092ffb97cdad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b712238e9e81ea1fcf8fee93770888ca8bf55b276d340ab929e68d75d50ff77",
+      "source_fact_keys": [
+        "source_fact:v1:2ccaa0e301e2555601eabb473d372841c63ecb7eeb146b659a42d14ac4325096"
+      ],
+      "source_published_kst": "2026-10-22T09:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "선익시스템, 평택 브레인시티 신공장 준공",
+      "telegram_core_fact": "선익시스템 관계자는 \"평택 브레인시티 공장 준공은 앞으로 열릴 시장을 준비하는 선제적 투자\"라며 \"축적된 기술력에 확대된 생산기반을 더해 성장 기회를 실적으로 연결하고, 실적 공백과 변동성을 줄이며 지속적으로 성장하는 기업으로 도약하겠다\"고 강조했다.",
+      "title": "선익시스템, 평택 브레인시티 신공장 준공"
     },
     "source_fact:3f63b43aecc6ca3d7b8746aa": {
       "first_seen_kst": "2026-10-17T02:26:33+09:00",
@@ -598965,32 +599968,35 @@
     "source_fact:43064d5e33f7667ee722fd87": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
       "lanes": {
-        "live": "2026-10-22T13:31:10+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T13:31:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261022_0003836474",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
       "source": "뉴시스",
-      "source_body_digest": "5ddabe2c8dc016bdc9dabafa6e71d2e58d07b0811d5175620bc84787e977f023",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0b223888549a1bd6a9b97ed9b8f17dfb68854b1a85337bdeb5a8ad9ed6acbaac",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
       "source_fact_keys": [
         "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
         "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
         "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
         "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
         "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
         "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
         "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
         "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
         "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
         "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
         "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
       ],
-      "source_published_kst": "2026-10-22T11:08+09:00",
+      "source_published_kst": "2026-10-22T11:47+09:00",
       "source_supply_terms": {},
-      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소",
-      "telegram_core_fact": "영풍이 고려아연의 자사주 공개매수가 회사에 손해를 끼쳤다며 최윤범 고려아연 회장 등을 상대로 제기한 주주대표소송 1심에서 패소했다.",
-      "title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소"
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:430848568c15ca8797ce409c": {
       "first_seen_kst": "2026-10-18T07:09:00+09:00",
@@ -602194,6 +603200,36 @@
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
       "telegram_core_fact": "10년 만기 국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
+    },
+    "source_fact:44c884416b12fe48a5ffd53d": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
     },
     "source_fact:44cd00d41674ef0869fe9229": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
@@ -613381,6 +614417,36 @@
       "source_title": "美, 이란 '그림자 선단' 17척 제재…경제 압박 가속",
       "telegram_core_fact": "도널드 트럼프 미국 행정부가 이란산 원유 등을 밀수해온 이른바 '그림자 선단'을 추가로 적발해 제재에 나섰다. 미 재무부 해외자산통제국(OFAC)은 8일(현지 시간) 미국 제재를 회피해 이란 원유와 석유화학 제품을 운송하는데 관여한 유조선 17척과 관련 선사들을 제재한다고 밝혔다.",
       "title": "美, 이란 '그림자 선단' 17척 제재…경제 압박 가속"
+    },
+    "source_fact:49a55c7db3f7320fc1daa82e": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
     },
     "source_fact:49a7876b2c2729d9bb6286e3": {
       "first_seen_kst": "2026-10-11T20:19:08+09:00",
@@ -640174,32 +641240,35 @@
     "source_fact:56ba6b489a981c1acc0b54f9": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
       "lanes": {
-        "live": "2026-10-22T13:31:10+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T13:31:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261022_0003836474",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
       "source": "뉴시스",
-      "source_body_digest": "5ddabe2c8dc016bdc9dabafa6e71d2e58d07b0811d5175620bc84787e977f023",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0b223888549a1bd6a9b97ed9b8f17dfb68854b1a85337bdeb5a8ad9ed6acbaac",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
       "source_fact_keys": [
         "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
         "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
         "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
         "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
         "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
         "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
         "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
         "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
         "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
         "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
         "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
       ],
-      "source_published_kst": "2026-10-22T11:08+09:00",
+      "source_published_kst": "2026-10-22T11:47+09:00",
       "source_supply_terms": {},
-      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소",
-      "telegram_core_fact": "영풍이 고려아연의 자사주 공개매수가 회사에 손해를 끼쳤다며 최윤범 고려아연 회장 등을 상대로 제기한 주주대표소송 1심에서 패소했다.",
-      "title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소"
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:56c7c133c1f65c739e08db6e": {
       "first_seen_kst": "2026-10-20T05:37:55+09:00",
@@ -650076,6 +651145,36 @@
       "source_title": "스위스 FINMA, 첫 ‘비트코인 현물 ETF’ 승인∙∙∙시세 변동 위험 여전",
       "telegram_core_fact": "승인된 ETF를 통해 투자하더라도 비트코인의 시장 위험은 여전히 매우 높은 데다 암호화폐의 급격한 가격 변동으로 투자금의 상당 부분을 잃을 수 있다고 지적했다. FINMA는 비트코인을 중심으로 암호화폐 투자에 관심이 높아지는 가운데 다수의 운용사가 비트코인 ETF 승인 신청서를 제출했거나 신청 계획을 발표했다고 설명했다.",
       "title": "스위스 FINMA, 첫 ‘비트코인 현물 ETF’ 승인∙∙∙시세 변동 위험 여전"
+    },
+    "source_fact:5b14be3b6a03afc8c66cb50f": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
     },
     "source_fact:5b1cc56c508f7f5873133691": {
       "first_seen_kst": "2026-10-13T11:35:08+09:00",
@@ -670377,6 +671476,31 @@
       "source_published_kst": "2026-10-05T10:35+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 바이오 ‘10대 거래’ 선정"
     },
+    "source_fact:65301132d6d4e01795a2829c": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022030900003",
+      "source": "연합뉴스",
+      "source_body_digest": "f8c6c070dac67ee4355b988cede843e6771f3946c43aa19d72adb2faaeef1ddd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff0b11cf88ef83537b7504efdec8e2fb8f6f98015aeed471ee717a0eafcdf78b",
+      "source_fact_keys": [
+        "source_fact:v1:00acea072444f3d4d2dd15d98a34946e22f451d1d936457d7416742132021873",
+        "source_fact:v1:0cd579a0e495132c75ee00bdd36a42c418bfd1571c1c78ff9471127c9557fd85",
+        "source_fact:v1:172bcdd18860a247005def17549e5cb9aa294c3692eea2bf2bedf7583282d5df",
+        "source_fact:v1:1fa1d2f4f9f8cbb3836f09f9c69732ac241da1881944430f565ac5c9aae99dc2",
+        "source_fact:v1:e94183625b1b1bb93f02a919acf3982085b6f50844afe8f6820f4dd811c3f719",
+        "source_fact:v1:ff1a85cb527c9dc486d57cc98a68c4ca070f23ae4bb7d2c076c1d437b6c1d964"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스",
+      "telegram_core_fact": "독일 과학기술 기업 머크의 한국법인인 한국머크는 22일 충청북도 음성 사업장에서 신규 이산화이염화몰리브덴(MoO₂Cl₂) 생산설비 개소식을 개최한다고 밝혔다. 머크는 이번 음성 신규 공장에서 생산되는 몰리브덴 전구체를 전부 한국 고객사에 제공해 '현지 생산·현지 공급' 체계를 구축한다.",
+      "title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스"
+    },
     "source_fact:6531885f4c1bf78357ef05e1": {
       "first_seen_kst": "2026-10-19T20:10:12+09:00",
       "lanes": {
@@ -679007,6 +680131,31 @@
       "source_published_kst": "2026-10-05T10:20+09:00",
       "title": "[반도체 라이징 스타]<6>엑시나, 스스로 계산하는 메모리로 AI 인프라 비용 낮춘다"
     },
+    "source_fact:6952f67bd4c116a27abb818e": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022030900003",
+      "source": "연합뉴스",
+      "source_body_digest": "f8c6c070dac67ee4355b988cede843e6771f3946c43aa19d72adb2faaeef1ddd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff0b11cf88ef83537b7504efdec8e2fb8f6f98015aeed471ee717a0eafcdf78b",
+      "source_fact_keys": [
+        "source_fact:v1:00acea072444f3d4d2dd15d98a34946e22f451d1d936457d7416742132021873",
+        "source_fact:v1:0cd579a0e495132c75ee00bdd36a42c418bfd1571c1c78ff9471127c9557fd85",
+        "source_fact:v1:172bcdd18860a247005def17549e5cb9aa294c3692eea2bf2bedf7583282d5df",
+        "source_fact:v1:1fa1d2f4f9f8cbb3836f09f9c69732ac241da1881944430f565ac5c9aae99dc2",
+        "source_fact:v1:e94183625b1b1bb93f02a919acf3982085b6f50844afe8f6820f4dd811c3f719",
+        "source_fact:v1:ff1a85cb527c9dc486d57cc98a68c4ca070f23ae4bb7d2c076c1d437b6c1d964"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스",
+      "telegram_core_fact": "독일 과학기술 기업 머크의 한국법인인 한국머크는 22일 충청북도 음성 사업장에서 신규 이산화이염화몰리브덴(MoO₂Cl₂) 생산설비 개소식을 개최한다고 밝혔다. 머크는 이번 음성 신규 공장에서 생산되는 몰리브덴 전구체를 전부 한국 고객사에 제공해 '현지 생산·현지 공급' 체계를 구축한다.",
+      "title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스"
+    },
     "source_fact:6953050d749a996df3380bb9": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
       "lanes": {
@@ -686425,6 +687574,31 @@
       "telegram_core_fact": "스타벅스 매출은 탱크데이 논란 직후 한 주(5월 21∼27일) 동안 전주보다 23.5% 줄어 급감한 뒤 저점인 6월 4∼10일 주에는 전년 같은 주보다 33.2% 감소했다.",
       "title": "\"스벅은 타격 여전…버거킹은 '암살자들' 불매운동에도 매출↑\" | 연합뉴스"
     },
+    "source_fact:6ce2b46a60f4a299bf4aa3e7": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022030900003",
+      "source": "연합뉴스",
+      "source_body_digest": "f8c6c070dac67ee4355b988cede843e6771f3946c43aa19d72adb2faaeef1ddd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff0b11cf88ef83537b7504efdec8e2fb8f6f98015aeed471ee717a0eafcdf78b",
+      "source_fact_keys": [
+        "source_fact:v1:00acea072444f3d4d2dd15d98a34946e22f451d1d936457d7416742132021873",
+        "source_fact:v1:0cd579a0e495132c75ee00bdd36a42c418bfd1571c1c78ff9471127c9557fd85",
+        "source_fact:v1:172bcdd18860a247005def17549e5cb9aa294c3692eea2bf2bedf7583282d5df",
+        "source_fact:v1:1fa1d2f4f9f8cbb3836f09f9c69732ac241da1881944430f565ac5c9aae99dc2",
+        "source_fact:v1:e94183625b1b1bb93f02a919acf3982085b6f50844afe8f6820f4dd811c3f719",
+        "source_fact:v1:ff1a85cb527c9dc486d57cc98a68c4ca070f23ae4bb7d2c076c1d437b6c1d964"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스",
+      "telegram_core_fact": "독일 과학기술 기업 머크의 한국법인인 한국머크는 22일 충청북도 음성 사업장에서 신규 이산화이염화몰리브덴(MoO₂Cl₂) 생산설비 개소식을 개최한다고 밝혔다. 머크는 이번 음성 신규 공장에서 생산되는 몰리브덴 전구체를 전부 한국 고객사에 제공해 '현지 생산·현지 공급' 체계를 구축한다.",
+      "title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스"
+    },
     "source_fact:6ce3b34908ac58e9ae571d66": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
       "lanes": {
@@ -691728,6 +692902,30 @@
       "telegram_core_fact": "아자이 방가 세계은행(WB) 총재는 중동전쟁 이후 이란이 호르무즈 해협을 봉쇄해 전 세계 석유 공급량의 20%가량이 차단됐을 때 세계 경제 성장세가 우려했던 것보다는 안정적으로 유지됐지만 최근 다시 압박이 가중되고 있다고 진단했다.",
       "title": "IMF·WB 연차총회 태국서 개막…중동전쟁·공공부채·AI 논의 | 연합뉴스"
     },
+    "source_fact:6fa04158ab58673f7ed5980f": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021160100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4ca3c65c6b29758b0fa1aa12736755c608962786bcd4cb6bc645e26bfdbc207e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8219abb9b2bdd5c274ab66c1f3f7d99ea45b5b38a3729add4d40d7c8f10ec93",
+      "source_fact_keys": [
+        "source_fact:v1:0f4e3070446182b43eba94695fcb8ba17cccf714abb43e5fa404f9853fc07601",
+        "source_fact:v1:75bd0b1351e7ad568f851771e7cb060c060c0b3daf3244adc89574db0cf12ac3",
+        "source_fact:v1:b3d81458f8d6b660fe291f15ef3ec1cadbe5b01205f4d6f3f03f49335c276555",
+        "source_fact:v1:d474945310716ecbc5599fcfc0e48f64c81129b50be264b8a1060ab7c519cf66",
+        "source_fact:v1:d692a7d0c88cfa2d3b05a7f6f121abff98b36f93e9581bbda2ff2a9ae54d0923"
+      ],
+      "source_published_kst": "2026-10-22T05:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스",
+      "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
+      "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
+    },
     "source_fact:6fa0b3735250e5a4f1a1fb6b": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -693792,32 +694990,35 @@
     "source_fact:708fc9409b58069e18e0986f": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
       "lanes": {
-        "live": "2026-10-22T13:31:10+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T13:31:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261022_0003836474",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
       "source": "뉴시스",
-      "source_body_digest": "5ddabe2c8dc016bdc9dabafa6e71d2e58d07b0811d5175620bc84787e977f023",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0b223888549a1bd6a9b97ed9b8f17dfb68854b1a85337bdeb5a8ad9ed6acbaac",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
       "source_fact_keys": [
         "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
         "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
         "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
         "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
         "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
         "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
         "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
         "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
         "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
         "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
         "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
       ],
-      "source_published_kst": "2026-10-22T11:08+09:00",
+      "source_published_kst": "2026-10-22T11:47+09:00",
       "source_supply_terms": {},
-      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소",
-      "telegram_core_fact": "영풍이 고려아연의 자사주 공개매수가 회사에 손해를 끼쳤다며 최윤범 고려아연 회장 등을 상대로 제기한 주주대표소송 1심에서 패소했다.",
-      "title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소"
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:7091e6b0c9522669d20bc33c": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -698591,6 +699792,30 @@
       "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
       "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
     },
+    "source_fact:73090f57d962a4c0bf2af28e": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021160100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4ca3c65c6b29758b0fa1aa12736755c608962786bcd4cb6bc645e26bfdbc207e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8219abb9b2bdd5c274ab66c1f3f7d99ea45b5b38a3729add4d40d7c8f10ec93",
+      "source_fact_keys": [
+        "source_fact:v1:0f4e3070446182b43eba94695fcb8ba17cccf714abb43e5fa404f9853fc07601",
+        "source_fact:v1:75bd0b1351e7ad568f851771e7cb060c060c0b3daf3244adc89574db0cf12ac3",
+        "source_fact:v1:b3d81458f8d6b660fe291f15ef3ec1cadbe5b01205f4d6f3f03f49335c276555",
+        "source_fact:v1:d474945310716ecbc5599fcfc0e48f64c81129b50be264b8a1060ab7c519cf66",
+        "source_fact:v1:d692a7d0c88cfa2d3b05a7f6f121abff98b36f93e9581bbda2ff2a9ae54d0923"
+      ],
+      "source_published_kst": "2026-10-22T05:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스",
+      "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
+      "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
+    },
     "source_fact:730912750e74ab3f3272810d": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -703169,6 +704394,36 @@
       "source_title": "투자 고수들, '삼전닉스' 매수 줄였다…반도체 장비·배터리로 확산 [1% 고수의 선택]",
       "telegram_core_fact": "■반도체 온기, 부품·장비주로 확산 11일 키움증권이 제공하는 '수익률 상위 고객(직전 3개월 수익률 상위 2만5000명) 매매 상세 현황'에 따르면 수익률 상위 투자자들이 지난 6~8일 가장 많이 순매수한 종목은 SK하이닉스로, 순매수액은 572억원이었다.",
       "title": "투자 고수들, '삼전닉스' 매수 줄였다…반도체 장비·배터리로 확산 [1% 고수의 선택]"
+    },
+    "source_fact:7538a99e89a011440c1f6052": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
     },
     "source_fact:7543e9f727a0d3e7c87bec64": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -739063,32 +740318,35 @@
     "source_fact:877838bebfeb45faf37f4fa0": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
       "lanes": {
-        "live": "2026-10-22T13:31:10+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T13:31:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261022_0003836474",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
       "source": "뉴시스",
-      "source_body_digest": "5ddabe2c8dc016bdc9dabafa6e71d2e58d07b0811d5175620bc84787e977f023",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0b223888549a1bd6a9b97ed9b8f17dfb68854b1a85337bdeb5a8ad9ed6acbaac",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
       "source_fact_keys": [
         "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
         "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
         "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
         "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
         "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
         "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
         "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
         "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
         "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
         "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
         "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
       ],
-      "source_published_kst": "2026-10-22T11:08+09:00",
+      "source_published_kst": "2026-10-22T11:47+09:00",
       "source_supply_terms": {},
-      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소",
-      "telegram_core_fact": "영풍이 고려아연의 자사주 공개매수가 회사에 손해를 끼쳤다며 최윤범 고려아연 회장 등을 상대로 제기한 주주대표소송 1심에서 패소했다.",
-      "title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소"
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:8785deb51b9654a327319410": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
@@ -746793,6 +748051,36 @@
       "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
       "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
+    "source_fact:8b79c1c98182ea056b51f345": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
+    },
     "source_fact:8b7a21f5acefb163ef91cbab": {
       "first_seen_kst": "2026-10-14T00:12:03+09:00",
       "lanes": {
@@ -754029,32 +755317,35 @@
     "source_fact:8f6952a2148c88bba39fb068": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
       "lanes": {
-        "live": "2026-10-22T13:31:10+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T13:31:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261022_0003836474",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
       "source": "뉴시스",
-      "source_body_digest": "5ddabe2c8dc016bdc9dabafa6e71d2e58d07b0811d5175620bc84787e977f023",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0b223888549a1bd6a9b97ed9b8f17dfb68854b1a85337bdeb5a8ad9ed6acbaac",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
       "source_fact_keys": [
         "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
         "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
         "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
         "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
         "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
         "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
         "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
         "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
         "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
         "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
         "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
       ],
-      "source_published_kst": "2026-10-22T11:08+09:00",
+      "source_published_kst": "2026-10-22T11:47+09:00",
       "source_supply_terms": {},
-      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소",
-      "telegram_core_fact": "영풍이 고려아연의 자사주 공개매수가 회사에 손해를 끼쳤다며 최윤범 고려아연 회장 등을 상대로 제기한 주주대표소송 1심에서 패소했다.",
-      "title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소"
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:8f6a4d6ae99b13125033cd99": {
       "first_seen_kst": "2026-10-21T04:09:57+09:00",
@@ -793059,6 +794350,31 @@
       "telegram_core_fact": "글로벌 반도체 후공정 기업인 앰코테크놀로지가 총 3조원을 투자해 광주 후공정 생산라인 증설에 들어간다.",
       "title": "앰코, 광주공장 3조원 증축 착공…서남권 반도체 첫 신호탄"
     },
+    "source_fact:a23ca7b306858e9ca534c078": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022030900003",
+      "source": "연합뉴스",
+      "source_body_digest": "f8c6c070dac67ee4355b988cede843e6771f3946c43aa19d72adb2faaeef1ddd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff0b11cf88ef83537b7504efdec8e2fb8f6f98015aeed471ee717a0eafcdf78b",
+      "source_fact_keys": [
+        "source_fact:v1:00acea072444f3d4d2dd15d98a34946e22f451d1d936457d7416742132021873",
+        "source_fact:v1:0cd579a0e495132c75ee00bdd36a42c418bfd1571c1c78ff9471127c9557fd85",
+        "source_fact:v1:172bcdd18860a247005def17549e5cb9aa294c3692eea2bf2bedf7583282d5df",
+        "source_fact:v1:1fa1d2f4f9f8cbb3836f09f9c69732ac241da1881944430f565ac5c9aae99dc2",
+        "source_fact:v1:e94183625b1b1bb93f02a919acf3982085b6f50844afe8f6820f4dd811c3f719",
+        "source_fact:v1:ff1a85cb527c9dc486d57cc98a68c4ca070f23ae4bb7d2c076c1d437b6c1d964"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스",
+      "telegram_core_fact": "독일 과학기술 기업 머크의 한국법인인 한국머크는 22일 충청북도 음성 사업장에서 신규 이산화이염화몰리브덴(MoO₂Cl₂) 생산설비 개소식을 개최한다고 밝혔다. 머크는 이번 음성 신규 공장에서 생산되는 몰리브덴 전구체를 전부 한국 고객사에 제공해 '현지 생산·현지 공급' 체계를 구축한다.",
+      "title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스"
+    },
     "source_fact:a24446c9f52399eb7ef4677d": {
       "first_seen_kst": "2026-10-20T03:18:10+09:00",
       "lanes": {
@@ -793750,6 +795066,29 @@
       ],
       "source_published_kst": "2026-10-07T17:16+09:00",
       "title": "핀란드, 구글 데이터센터 2곳 건립 제동…\"환경 훼손 우려\""
+    },
+    "source_fact:a2952953bdb9437e9dc5bc56": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837006",
+      "source": "뉴시스",
+      "source_body_digest": "c7ec2d7a559201f44438d87303b5b76158397a00ffcee0538fec3933950c6596",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb8b0eadf747b58625fe7070f56126e23c45b22ad88d394f15ac2cde6dfcc719",
+      "source_fact_keys": [
+        "source_fact:v1:086ecc8d72d72c2b2cb2ae72d19b7fb76d1e9119d52e16c1f2efe784a5ebf891",
+        "source_fact:v1:0ae6a5db2d32063cc4dcae5b8758e4a408454dd07283aad5397df9859c099cff",
+        "source_fact:v1:baebed569f336601c1e93ab228323f44beeeae12b4ebfd8db80845d8655119a3",
+        "source_fact:v1:dde515a6a484ceecf036609ccc18f519a6c29d90b9d34d67d153995238eef2a7"
+      ],
+      "source_published_kst": "2026-10-22T15:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\"",
+      "telegram_core_fact": "한국은행 금융통화위원회가 22일 기준 금리를 3.00%로 동결한 가운데 글로벌 자산운용사 스테이트 스트리트는 금통위가 다음 달 기준금리를 한 차례 더 인상해 내년 말까지 최종 금리 3.25%를 유지할 것으로 내다봤다.",
+      "title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\""
     },
     "source_fact:a295c65ba13fb3b06fe77cc1": {
       "first_seen_kst": "2026-10-20T19:58:15+09:00",
@@ -804777,6 +806116,36 @@
       "telegram_core_fact": "트럼프 대통령의 발언이 나온 이후 유가 상승폭은 일부 줄었지만, 중동의 원유 공급 불안이 이어지면서 국제유가는 결국 4% 넘게 오른 채 거래를 마쳤다.",
       "title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등"
     },
+    "source_fact:a78fa01cf7256e242ebb5f72": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
+    },
     "source_fact:a790126f15040e6b0ac0f113": {
       "first_seen_kst": "2026-10-12T09:29:59+09:00",
       "lanes": {
@@ -807492,6 +808861,31 @@
       "source_title": "“AI 기술은 앞서가는데 데이터센터가 없다”…세레브라스 CEO의 경고",
       "telegram_core_fact": "앤드루 펠드먼 세레브라스 CEO는 13일(현지시간) 미국 샌프란시스코에서 열린 ‘테크크런치 디스럽트 2026’ 대담에서 “AI 수요는 엄청난 속도로 증가하고 있다”면서도 “지난 몇 년간 AI 업계는 데이터센터가 들어서는 지역사회와 제대로 협력하지 못했다”고 밝혔다.",
       "title": "“AI 기술은 앞서가는데 데이터센터가 없다”…세레브라스 CEO의 경고"
+    },
+    "source_fact:a92942d4b7121258d7c73a67": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022030900003",
+      "source": "연합뉴스",
+      "source_body_digest": "f8c6c070dac67ee4355b988cede843e6771f3946c43aa19d72adb2faaeef1ddd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff0b11cf88ef83537b7504efdec8e2fb8f6f98015aeed471ee717a0eafcdf78b",
+      "source_fact_keys": [
+        "source_fact:v1:00acea072444f3d4d2dd15d98a34946e22f451d1d936457d7416742132021873",
+        "source_fact:v1:0cd579a0e495132c75ee00bdd36a42c418bfd1571c1c78ff9471127c9557fd85",
+        "source_fact:v1:172bcdd18860a247005def17549e5cb9aa294c3692eea2bf2bedf7583282d5df",
+        "source_fact:v1:1fa1d2f4f9f8cbb3836f09f9c69732ac241da1881944430f565ac5c9aae99dc2",
+        "source_fact:v1:e94183625b1b1bb93f02a919acf3982085b6f50844afe8f6820f4dd811c3f719",
+        "source_fact:v1:ff1a85cb527c9dc486d57cc98a68c4ca070f23ae4bb7d2c076c1d437b6c1d964"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스",
+      "telegram_core_fact": "독일 과학기술 기업 머크의 한국법인인 한국머크는 22일 충청북도 음성 사업장에서 신규 이산화이염화몰리브덴(MoO₂Cl₂) 생산설비 개소식을 개최한다고 밝혔다. 머크는 이번 음성 신규 공장에서 생산되는 몰리브덴 전구체를 전부 한국 고객사에 제공해 '현지 생산·현지 공급' 체계를 구축한다.",
+      "title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스"
     },
     "source_fact:a92cf1780a1265df64bf0af9": {
       "first_seen_kst": "2026-10-08T18:24:19+09:00",
@@ -820808,6 +822202,36 @@
       ],
       "source_published_kst": "2026-10-06T15:02+09:00",
       "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
+    },
+    "source_fact:af735ae52a93b065f79561a7": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
     },
     "source_fact:af77431cbd741c61d27eaca3": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
@@ -892664,6 +894088,30 @@
       "telegram_core_fact": "후티 반군은 지난달 모카 등 홍해 연안을 장악해 사우디아라비아 석유 수송선 공격 능력을 강화하고 세계 에너지 가격을 더욱 혼란에 빠뜨린 바 있다.",
       "title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로"
     },
+    "source_fact:d28ad695fceaebb80c8420b7": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021160100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4ca3c65c6b29758b0fa1aa12736755c608962786bcd4cb6bc645e26bfdbc207e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8219abb9b2bdd5c274ab66c1f3f7d99ea45b5b38a3729add4d40d7c8f10ec93",
+      "source_fact_keys": [
+        "source_fact:v1:0f4e3070446182b43eba94695fcb8ba17cccf714abb43e5fa404f9853fc07601",
+        "source_fact:v1:75bd0b1351e7ad568f851771e7cb060c060c0b3daf3244adc89574db0cf12ac3",
+        "source_fact:v1:b3d81458f8d6b660fe291f15ef3ec1cadbe5b01205f4d6f3f03f49335c276555",
+        "source_fact:v1:d474945310716ecbc5599fcfc0e48f64c81129b50be264b8a1060ab7c519cf66",
+        "source_fact:v1:d692a7d0c88cfa2d3b05a7f6f121abff98b36f93e9581bbda2ff2a9ae54d0923"
+      ],
+      "source_published_kst": "2026-10-22T05:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스",
+      "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
+      "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
+    },
     "source_fact:d2911c9c04d32922b7590c37": {
       "first_seen_kst": "2026-10-10T06:41:01+09:00",
       "lanes": {
@@ -904769,6 +906217,31 @@
       "source_title": "수출 5억달러 눈앞 'K-톡신' 족쇄 풀리나…국가핵심기술 해제 '속도'",
       "telegram_core_fact": "국내 기업은 톡신 해외 기술수출이나 현지 생산시설·합작법인 설립, 투자 유치 때마다 정부 승인을 필수로 거쳐야 했다.",
       "title": "수출 5억달러 눈앞 'K-톡신' 족쇄 풀리나…국가핵심기술 해제 '속도'"
+    },
+    "source_fact:d8437c53047c90ac999dd858": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022030900003",
+      "source": "연합뉴스",
+      "source_body_digest": "f8c6c070dac67ee4355b988cede843e6771f3946c43aa19d72adb2faaeef1ddd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff0b11cf88ef83537b7504efdec8e2fb8f6f98015aeed471ee717a0eafcdf78b",
+      "source_fact_keys": [
+        "source_fact:v1:00acea072444f3d4d2dd15d98a34946e22f451d1d936457d7416742132021873",
+        "source_fact:v1:0cd579a0e495132c75ee00bdd36a42c418bfd1571c1c78ff9471127c9557fd85",
+        "source_fact:v1:172bcdd18860a247005def17549e5cb9aa294c3692eea2bf2bedf7583282d5df",
+        "source_fact:v1:1fa1d2f4f9f8cbb3836f09f9c69732ac241da1881944430f565ac5c9aae99dc2",
+        "source_fact:v1:e94183625b1b1bb93f02a919acf3982085b6f50844afe8f6820f4dd811c3f719",
+        "source_fact:v1:ff1a85cb527c9dc486d57cc98a68c4ca070f23ae4bb7d2c076c1d437b6c1d964"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스",
+      "telegram_core_fact": "독일 과학기술 기업 머크의 한국법인인 한국머크는 22일 충청북도 음성 사업장에서 신규 이산화이염화몰리브덴(MoO₂Cl₂) 생산설비 개소식을 개최한다고 밝혔다. 머크는 이번 음성 신규 공장에서 생산되는 몰리브덴 전구체를 전부 한국 고객사에 제공해 '현지 생산·현지 공급' 체계를 구축한다.",
+      "title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스"
     },
     "source_fact:d84778969ea5db2f230e82c9": {
       "first_seen_kst": "2026-10-08T22:29:06+09:00",
@@ -919178,6 +920651,39 @@
       "source_title": "알파칩스, 자회사 포스텍 美 양자컴퓨팅 기업 첫 양산 수주…광반도체 공급망 진입",
       "telegram_core_fact": "포스텍은 이번 수주를 통해 자체 개발한 고정밀 다채널 광섬유 배열 기술이 양자컴퓨팅 분야의 실제 생산공정에 적용되는 첫 공급 사례를 확보하게 됐다.",
       "title": "알파칩스, 자회사 포스텍 美 양자컴퓨팅 기업 첫 양산 수주…광반도체 공급망 진입"
+    },
+    "source_fact:df7124f718ce1f53ae7af68a": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
+      "source": "뉴시스",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
+      "source_fact_keys": [
+        "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
+        "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
+        "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
+        "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
+        "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
+        "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
+        "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
+        "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
+        "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
+        "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
+        "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
+      ],
+      "source_published_kst": "2026-10-22T11:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:df76737be654c3224cb1b0c9": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -935804,32 +937310,35 @@
     "source_fact:e759f9358c8dfcab5bd3b277": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
       "lanes": {
-        "live": "2026-10-22T13:31:10+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T13:31:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261022_0003836474",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
       "source": "뉴시스",
-      "source_body_digest": "5ddabe2c8dc016bdc9dabafa6e71d2e58d07b0811d5175620bc84787e977f023",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0b223888549a1bd6a9b97ed9b8f17dfb68854b1a85337bdeb5a8ad9ed6acbaac",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
       "source_fact_keys": [
         "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
         "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
         "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
         "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
         "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
         "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
         "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
         "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
         "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
         "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
         "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
       ],
-      "source_published_kst": "2026-10-22T11:08+09:00",
+      "source_published_kst": "2026-10-22T11:47+09:00",
       "source_supply_terms": {},
-      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소",
-      "telegram_core_fact": "영풍이 고려아연의 자사주 공개매수가 회사에 손해를 끼쳤다며 최윤범 고려아연 회장 등을 상대로 제기한 주주대표소송 1심에서 패소했다.",
-      "title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소"
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:e75b41fef3097007d13d5a58": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
@@ -937834,6 +939343,30 @@
       "source_title": "美 AI 데이터센터, 올해 47곳 '제동'…\"10조달러 투자 붐 균열\"",
       "telegram_core_fact": "18일(현지시간) 파이낸셜타임스(FT)는 규제 정보회사 '레그레이어' 데이터를 통해 \"미국 AI 데이터센터를 짓는 대형 프로젝트가 올해만 최소 47개가 지연되거나 철회됐다\"고 보도했다.",
       "title": "美 AI 데이터센터, 올해 47곳 '제동'…\"10조달러 투자 붐 균열\""
+    },
+    "source_fact:e8563cb0ba971ba433051869": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021160100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4ca3c65c6b29758b0fa1aa12736755c608962786bcd4cb6bc645e26bfdbc207e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8219abb9b2bdd5c274ab66c1f3f7d99ea45b5b38a3729add4d40d7c8f10ec93",
+      "source_fact_keys": [
+        "source_fact:v1:0f4e3070446182b43eba94695fcb8ba17cccf714abb43e5fa404f9853fc07601",
+        "source_fact:v1:75bd0b1351e7ad568f851771e7cb060c060c0b3daf3244adc89574db0cf12ac3",
+        "source_fact:v1:b3d81458f8d6b660fe291f15ef3ec1cadbe5b01205f4d6f3f03f49335c276555",
+        "source_fact:v1:d474945310716ecbc5599fcfc0e48f64c81129b50be264b8a1060ab7c519cf66",
+        "source_fact:v1:d692a7d0c88cfa2d3b05a7f6f121abff98b36f93e9581bbda2ff2a9ae54d0923"
+      ],
+      "source_published_kst": "2026-10-22T05:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스",
+      "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
+      "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
     },
     "source_fact:e85d34b3fe63f6402046a170": {
       "first_seen_kst": "2026-10-14T16:26:08+09:00",
@@ -942800,32 +944333,35 @@
     "source_fact:eac24363554efab8be078981": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
       "lanes": {
-        "live": "2026-10-22T13:31:10+09:00"
+        "live": "2026-10-22T15:08:48+09:00"
       },
-      "last_seen_kst": "2026-10-22T13:31:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261022_0003836474",
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
       "source": "뉴시스",
-      "source_body_digest": "5ddabe2c8dc016bdc9dabafa6e71d2e58d07b0811d5175620bc84787e977f023",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0b223888549a1bd6a9b97ed9b8f17dfb68854b1a85337bdeb5a8ad9ed6acbaac",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
       "source_fact_keys": [
         "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
         "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
         "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
         "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
         "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
         "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
         "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
         "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
         "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
         "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
         "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
       ],
-      "source_published_kst": "2026-10-22T11:08+09:00",
+      "source_published_kst": "2026-10-22T11:47+09:00",
       "source_supply_terms": {},
-      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소",
-      "telegram_core_fact": "영풍이 고려아연의 자사주 공개매수가 회사에 손해를 끼쳤다며 최윤범 고려아연 회장 등을 상대로 제기한 주주대표소송 1심에서 패소했다.",
-      "title": "영풍, '자사주 공개매수 맞불' 고려아연 상대 주주대표 소송 1심 패소"
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "source_fact:eacffb41b195a76f5ab83037": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
@@ -959592,6 +961128,36 @@
       "source_published_kst": "2026-10-07T08:30+09:00",
       "title": "인천시, 글로벌캠퍼스에 피지컬 AI 실증센터 구축 | 연합뉴스"
     },
+    "source_fact:f3573d9f41f0642ce4d9291e": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
+    },
     "source_fact:f35cecd3931de404813158d1": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
       "lanes": {
@@ -960282,6 +961848,26 @@
       ],
       "source_published_kst": "2026-10-07T10:06+09:00",
       "title": "골드만삭스 “삼성전자 8일 요동친다”…매도 요인 3개나 겹쳤다는데"
+    },
+    "source_fact:f3b0535d85a2bb86caca033a": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638677",
+      "source": "이투데이",
+      "source_body_digest": "d3f827a8af59dad9af3d103b8371a8b6a8da63ad2def8220a175fec221746441",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7569c8a28a835247e22694e8e82e1608d204eb8a487137ed9c9d6214e5d06974",
+      "source_fact_keys": [
+        "source_fact:v1:295da2e4bf0b979d0a35ab32f45542f880cde8c9961f1a274f1af024946a79d5"
+      ],
+      "source_published_kst": "2026-10-22T09:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "FNC엔터, YG플러스와 음원ㆍ음반 유통 계약⋯글로벌 공급망 적극 활용",
+      "telegram_core_fact": "FNC엔터, YG플러스와 음원·음반 유통 계약을 체결했다고 밝혔다. 특히 전 세계 190여 개국에 구축된 주요 디지털 스트리밍 플랫폼(DSP) 직계약 인프라 및 해외 음반 유통 네트워크를 통한 피지컬 앨범의 글로벌 공급망을 적극 활용할 방침이다.",
+      "title": "FNC엔터, YG플러스와 음원ㆍ음반 유통 계약⋯글로벌 공급망 적극 활용"
     },
     "source_fact:f3b0668af8c47698cc0e9733": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -994385,6 +995971,36 @@
       "source_published_kst": "2026-10-06T09:49+09:00",
       "title": "카카오모빌리티, AI 배차·관제 기술 국방에 적용…고려대와 ‘국방 AX’ 협력"
     },
+    "title:150e8ccf0709eff33e2caac6": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638980",
+      "source": "이투데이",
+      "source_body_digest": "9676921479bf80ba76114ba5238e0689572ad27a1dd2d5e5c77a038821cb5a48",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3558a1ae3d5486884f4bbd435e2112566fde8687063ce7456705a7ca45fa780",
+      "source_fact_keys": [
+        "source_fact:v1:043e4ab3f71ad2d17895c04939644ee07e8894c75162b634b386afb01ad42db6",
+        "source_fact:v1:0b93fb9481b5db629f3a2fc0fe2db1982244ac6d5f6d245d1847f1e63bd56d2f",
+        "source_fact:v1:0e8dd9aabe7a6d71251cfa556bcfcfb4eb70fcb93cfad4b7e1419fa7b551960f",
+        "source_fact:v1:1c38e91492b28f0872e7fbce057f3ba24c07c35b47d4767b66090c6129d5f141",
+        "source_fact:v1:4d64dc48d927d92624d6b4a97ce35bf370c1549e409addda393a88ac0e19c3ea",
+        "source_fact:v1:6aae04e4787cdc29a30bae06543b7fc46eaba5a423b59fa587ab3ab670ca1957",
+        "source_fact:v1:a035c27173c38c626d54050f41379a23e25a14b5562a0ac28961958f853aeb7e",
+        "source_fact:v1:b76bdd033886f84369a53c7c936718ad07e1dca7833fe0545f127b3208c880bd",
+        "source_fact:v1:bca217c1440ce01fcd611473140568fdb983f993183dbfe9d6fa24647762930a",
+        "source_fact:v1:c3f52f88b4bffbcdb9f102bc96264d3d74e2fd62d090d893584837bfbe15ab38",
+        "source_fact:v1:fa571092d815cc10b904954f5a9809258c998d5ff62665d67a3d50d0839dde4a"
+      ],
+      "source_published_kst": "2026-10-22T14:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주",
+      "telegram_core_fact": "당시 회사는 2025년부터 3개년간 당기순이익의 50% 이상을 현금배당과 자사주 매입·소각 등 주주환원 재원으로 투입하겠다는 중장기 로드맵을 발표했다.",
+      "title": "감성코퍼레이션, 자사주 63만주 전량 소각 결정…올해만 총 127만주"
+    },
     "title:1521b3a8b7948a573d311adc": {
       "first_seen_kst": "2026-09-28T09:55:33+09:00",
       "lanes": {
@@ -1002838,6 +1004454,30 @@
       "source_title": "한병도 \"吳, 서울 공급 부족 남 탓 말고 국토부와 협의·대안 제시해야\"",
       "telegram_core_fact": "한병도 더불어민주당 원내대표가 서울시 국감을 앞두고 오세훈 시장을 향해 \"남 탓만 할 것이 아니라 국토부와의 협의를 통해 공급 속도전을 뒷받침할 책임 있는 대안을 제시해야 한다\"고 했다.",
       "title": "한병도 \"吳, 서울 공급 부족 남 탓 말고 국토부와 협의·대안 제시해야\""
+    },
+    "title:2589f6748f224276dace69d8": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261021160100002",
+      "source": "연합뉴스",
+      "source_body_digest": "4ca3c65c6b29758b0fa1aa12736755c608962786bcd4cb6bc645e26bfdbc207e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8219abb9b2bdd5c274ab66c1f3f7d99ea45b5b38a3729add4d40d7c8f10ec93",
+      "source_fact_keys": [
+        "source_fact:v1:0f4e3070446182b43eba94695fcb8ba17cccf714abb43e5fa404f9853fc07601",
+        "source_fact:v1:75bd0b1351e7ad568f851771e7cb060c060c0b3daf3244adc89574db0cf12ac3",
+        "source_fact:v1:b3d81458f8d6b660fe291f15ef3ec1cadbe5b01205f4d6f3f03f49335c276555",
+        "source_fact:v1:d474945310716ecbc5599fcfc0e48f64c81129b50be264b8a1060ab7c519cf66",
+        "source_fact:v1:d692a7d0c88cfa2d3b05a7f6f121abff98b36f93e9581bbda2ff2a9ae54d0923"
+      ],
+      "source_published_kst": "2026-10-22T05:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스",
+      "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
+      "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
     },
     "title:259092dd05f9d40b22fd2949": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
@@ -1020509,6 +1022149,26 @@
       "source_published_kst": "2026-10-04T14:42+09:00",
       "title": "법원 ‘시가총액 상폐룰 제동’…“시총 회복 거래일 조건 과도”"
     },
+    "title:4794e39936d955d37ef29617": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836118",
+      "source": "뉴시스",
+      "source_body_digest": "824952e09694bb78eb7cdf7eb0d66674e6e70bc2785cb37aa2c2092ffb97cdad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b712238e9e81ea1fcf8fee93770888ca8bf55b276d340ab929e68d75d50ff77",
+      "source_fact_keys": [
+        "source_fact:v1:2ccaa0e301e2555601eabb473d372841c63ecb7eeb146b659a42d14ac4325096"
+      ],
+      "source_published_kst": "2026-10-22T09:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "선익시스템, 평택 브레인시티 신공장 준공",
+      "telegram_core_fact": "선익시스템 관계자는 \"평택 브레인시티 공장 준공은 앞으로 열릴 시장을 준비하는 선제적 투자\"라며 \"축적된 기술력에 확대된 생산기반을 더해 성장 기회를 실적으로 연결하고, 실적 공백과 변동성을 줄이며 지속적으로 성장하는 기업으로 도약하겠다\"고 강조했다.",
+      "title": "선익시스템, 평택 브레인시티 신공장 준공"
+    },
     "title:4796061bd6a7385ce87da439": {
       "first_seen_kst": "2026-09-25T15:10:44+09:00",
       "lanes": {
@@ -1031978,6 +1033638,26 @@
       "source_title": "이억원 \"금리인상기, 정책서민금융 금리 낮추고 공급 확대\" | 연합뉴스",
       "telegram_core_fact": "이억원 금융위원장은 8일 서민·취약계층을 위해 \"정책서민금융의 금리수준을 낮추고 신상품 출시 등 공급을 지속적으로 확대하겠다\"고 밝혔다.",
       "title": "이억원 \"금리인상기, 정책서민금융 금리 낮추고 공급 확대\" | 연합뉴스"
+    },
+    "title:5f1d53575395750720f27af6": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638677",
+      "source": "이투데이",
+      "source_body_digest": "d3f827a8af59dad9af3d103b8371a8b6a8da63ad2def8220a175fec221746441",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7569c8a28a835247e22694e8e82e1608d204eb8a487137ed9c9d6214e5d06974",
+      "source_fact_keys": [
+        "source_fact:v1:295da2e4bf0b979d0a35ab32f45542f880cde8c9961f1a274f1af024946a79d5"
+      ],
+      "source_published_kst": "2026-10-22T09:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "FNC엔터, YG플러스와 음원ㆍ음반 유통 계약⋯글로벌 공급망 적극 활용",
+      "telegram_core_fact": "FNC엔터, YG플러스와 음원·음반 유통 계약을 체결했다고 밝혔다. 특히 전 세계 190여 개국에 구축된 주요 디지털 스트리밍 플랫폼(DSP) 직계약 인프라 및 해외 음반 유통 네트워크를 통한 피지컬 앨범의 글로벌 공급망을 적극 활용할 방침이다.",
+      "title": "FNC엔터, YG플러스와 음원ㆍ음반 유통 계약⋯글로벌 공급망 적극 활용"
     },
     "title:5f1da59bfd23f240b0e48983": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
@@ -1050363,6 +1052043,39 @@
       "telegram_core_fact": "WTO는 중동 분쟁이 에너지 가격 상승과 운송 경로 차질을 통해 무역에 계속해서 부담을 줄 것으로 예상하면서도 세계 국내총생산(GDP)이 올해 2.6%, 다음해 2.9% 각각 성장할 것으로 전망했다.",
       "title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\""
     },
+    "title:8405ded5a3cad3b233959dbf": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
+      "source": "뉴시스",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
+      "source_fact_keys": [
+        "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
+        "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
+        "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
+        "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
+        "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
+        "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
+        "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
+        "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
+        "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
+        "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
+        "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
+      ],
+      "source_published_kst": "2026-10-22T11:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
+    },
     "title:8408c16564b7dc40df30b336": {
       "first_seen_kst": "2026-10-18T11:10:24+09:00",
       "lanes": {
@@ -1065503,6 +1067216,29 @@
       "source_published_kst": "2026-10-06T14:11+09:00",
       "title": "장기임대 늘리겠다는데⋯기업형 임대는 여전히 ‘사업성 벽’"
     },
+    "title:a0cbf5cfc202d946d6ed9581": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003837006",
+      "source": "뉴시스",
+      "source_body_digest": "c7ec2d7a559201f44438d87303b5b76158397a00ffcee0538fec3933950c6596",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb8b0eadf747b58625fe7070f56126e23c45b22ad88d394f15ac2cde6dfcc719",
+      "source_fact_keys": [
+        "source_fact:v1:086ecc8d72d72c2b2cb2ae72d19b7fb76d1e9119d52e16c1f2efe784a5ebf891",
+        "source_fact:v1:0ae6a5db2d32063cc4dcae5b8758e4a408454dd07283aad5397df9859c099cff",
+        "source_fact:v1:baebed569f336601c1e93ab228323f44beeeae12b4ebfd8db80845d8655119a3",
+        "source_fact:v1:dde515a6a484ceecf036609ccc18f519a6c29d90b9d34d67d153995238eef2a7"
+      ],
+      "source_published_kst": "2026-10-22T15:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\"",
+      "telegram_core_fact": "한국은행 금융통화위원회가 22일 기준 금리를 3.00%로 동결한 가운데 글로벌 자산운용사 스테이트 스트리트는 금통위가 다음 달 기준금리를 한 차례 더 인상해 내년 말까지 최종 금리 3.25%를 유지할 것으로 내다봤다.",
+      "title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\""
+    },
     "title:a0ccb8e6a9d7c7237ff21ce9": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
       "lanes": {
@@ -1073035,6 +1074771,39 @@
       "source_title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스",
       "telegram_core_fact": "이번 15-1/05 광구 생산 개시로 SK어스온은 2003년 원유 생산을 시작한 15-1 광구에 이어 베트남 내 생산 거점을 확대하는 데 성공하고, 안정적인 수익 창출을 기대하고 있다.",
       "title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스"
+    },
+    "title:aed1c93dd6f7c4e6c491999e": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836642",
+      "source": "뉴시스",
+      "source_body_digest": "e2ce2236d0f247011076c84c5a83211a1f50bc4501359a41135f3c64d629eea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2ab7a3125d7fa133a31461f646c8acbd8590c5a34228b9e973d94f79d954252",
+      "source_fact_keys": [
+        "source_fact:v1:075014af35485dea384d18e6e1b9cbc07e063832bb1f07cb3246fa1bd9c65692",
+        "source_fact:v1:2577cef03dd05b27000fcad6d1b794ab0c366d4668a65f14af70008c630ce890",
+        "source_fact:v1:4929335d6cc1e07a8f051d12045bf755d90702d78b203062bff5dce903c9aeb2",
+        "source_fact:v1:602c7051bfc3eff15d6f70724aa925a3004bf73fe36d22b80e3cf0998458e61a",
+        "source_fact:v1:654b3b3a9e926ec038eea9d94ee51ce614a873e94bc4c891c1dcbef3decb8380",
+        "source_fact:v1:6d84fb13ef417c541b9c4b38984a807e3cd1c83550592bf7497218453e6403fd",
+        "source_fact:v1:91116f3d956b8d75ea404f6360426f1ff3ab30ff910a431f46a393bce172f1b7",
+        "source_fact:v1:ae3d01dea0f51fc9783e043dd1c7464fec58c9bca439ba82b8496536703f6132",
+        "source_fact:v1:ccb63daa3240c3d29e71fdacb19c90ae36ff13c221b0b36305facbeb7681e58f",
+        "source_fact:v1:d3a8b9ed71900a2d907f4e4959a3c8b24c168a5952ff160407cc7665d2bbb25c",
+        "source_fact:v1:defbbb09515dda6ea9f9ff39c2a5d299e7cdf2ddfdc0ecda1473ac1d880a9482",
+        "source_fact:v1:e97ddf8857dd319b0684ccb6c6c5a54af1d5ec1003a86931e057c7dbd533e9fc",
+        "source_fact:v1:f50cecb88133338de8f3d61fa39ec16e1519464bd89541dac4752c2e459297fb",
+        "source_fact:v1:f7285290352c8a0fa98b0be45fc4900e5c80b08dbc9b03da81922f2755b74df1"
+      ],
+      "source_published_kst": "2026-10-22T11:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
+      "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
+      "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
     "title:aed4491d9f002af261106b1e": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
@@ -1106608,6 +1108377,31 @@
       "telegram_core_fact": "그동안 엔비디아의 그래픽처리장치(GPU)와 고대역폭메모리(HBM) 확보가 AI 인프라 구축의 최대 과제였다면 이제는 확보한 반도체를 실제로 가동할 전력 공급 능력이 관건이 되고 있다.",
       "title": "“GPU는 있는데 전기가 없다”⋯美 AIDC 32GW 전력난, HBM 새 변수 [AI 호황의 역설]"
     },
+    "title:f52c7ce95d27c446033bdb49": {
+      "first_seen_kst": "2026-10-22T15:08:48+09:00",
+      "lanes": {
+        "live": "2026-10-22T15:08:48+09:00"
+      },
+      "last_seen_kst": "2026-10-22T15:08:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261022030900003",
+      "source": "연합뉴스",
+      "source_body_digest": "f8c6c070dac67ee4355b988cede843e6771f3946c43aa19d72adb2faaeef1ddd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff0b11cf88ef83537b7504efdec8e2fb8f6f98015aeed471ee717a0eafcdf78b",
+      "source_fact_keys": [
+        "source_fact:v1:00acea072444f3d4d2dd15d98a34946e22f451d1d936457d7416742132021873",
+        "source_fact:v1:0cd579a0e495132c75ee00bdd36a42c418bfd1571c1c78ff9471127c9557fd85",
+        "source_fact:v1:172bcdd18860a247005def17549e5cb9aa294c3692eea2bf2bedf7583282d5df",
+        "source_fact:v1:1fa1d2f4f9f8cbb3836f09f9c69732ac241da1881944430f565ac5c9aae99dc2",
+        "source_fact:v1:e94183625b1b1bb93f02a919acf3982085b6f50844afe8f6820f4dd811c3f719",
+        "source_fact:v1:ff1a85cb527c9dc486d57cc98a68c4ca070f23ae4bb7d2c076c1d437b6c1d964"
+      ],
+      "source_published_kst": "2026-10-22T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스",
+      "telegram_core_fact": "독일 과학기술 기업 머크의 한국법인인 한국머크는 22일 충청북도 음성 사업장에서 신규 이산화이염화몰리브덴(MoO₂Cl₂) 생산설비 개소식을 개최한다고 밝혔다. 머크는 이번 음성 신규 공장에서 생산되는 몰리브덴 전구체를 전부 한국 고객사에 제공해 '현지 생산·현지 공급' 체계를 구축한다.",
+      "title": "독일 머크, 충북 음성에 몰리브덴 전구체 신규 생산설비 개소 | 연합뉴스"
+    },
     "title:f532b6b562205394bfc25587": {
       "first_seen_kst": "2026-10-12T17:17:29+09:00",
       "lanes": {
@@ -1112107,5 +1113901,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-22T14:38:13+09:00"
+  "updated_at_kst": "2026-10-22T15:08:48+09:00"
 }
