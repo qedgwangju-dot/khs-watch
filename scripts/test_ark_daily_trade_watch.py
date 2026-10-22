@@ -59,6 +59,39 @@ def main():
     finally:
         n._request=old_request
 
+    # Full Oct 20 ARK direction/fund coverage: no rows silently omitted.
+    # The trade-notice shares are exact; prices in the output remain estimates.
+    rows_20261020 = [
+        ("ARKK","Buy","XE",292022),("ARKQ","Buy","XE",126437),
+        ("ARKX","Buy","XE",66436),("ARKQ","Buy","OKLO",150998),
+        ("ARKX","Buy","LUNR",120900),("ARKG","Buy","IAM",101248),
+        ("ARKG","Buy","SCTX",10832),("ARKK","Buy","PACB",225455),
+        ("ARKG","Buy","PACB",77416),
+        ("ARKK","Sell","PLTR",27790),("ARKK","Sell","SHOP",24430),
+        ("ARKQ","Sell","TER",15964),("ARKQ","Sell","ESLT",1428),
+        ("ARKX","Sell","ESLT",1500),("ARKG","Sell","PSNL",385778),
+    ]
+    full = ("date,fund,direction,ticker,cusip,name,shares,% of etf\\n" +
+            "".join(
+                f"10/20/2026,{fund},{action},{ticker},000000,{ticker},{shares},0.1\\n"
+                for fund,action,ticker,shares in rows_20261020
+            )).encode()
+    parsed = w.parse(full)
+    assert len(parsed)==len(rows_20261020)
+    assert sum(r["shares"] for r in parsed if r["ticker"]=="XE" and r["action"]=="매수")==484895
+    assert sum(r["shares"] for r in parsed if r["ticker"]=="PACB" and r["action"]=="매수")==302871
+    assert {(r["fund"],r["ticker"]) for r in parsed if r["ticker"]=="ESLT"}=={("ARKQ","ESLT"),("ARKX","ESLT")}
+    all_note = w.build(parsed,"2026-10-20",rate=1322.35,basis="2026-10-22",
+                       prices={"XE":{"close":10.74,"source":"검산"}})
+    assert "ARKX | 엑스에너지(XE)" in all_note
+    assert "ARKK | 팩바이오(PACB)" in all_note
+    assert "ARKG | 팩바이오(PACB)" in all_note
+    assert "ARKX | 엘빗 시스템즈(ESLT)" in all_note
+    assert "ARKQ | 엘빗 시스템즈(ESLT)" in all_note
+    assert "당일 종가 기준 추정" in all_note
+    assert "가격 확인 3/9개 거래행" in all_note
+    assert "실제 체결단가·실제 체결대금" in all_note
+
     print("ARK daily trade parser regression tests passed.")
 
 if __name__=="__main__":
