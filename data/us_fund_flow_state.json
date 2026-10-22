@@ -1,6 +1,6 @@
 {
   "seen": {
-    "ICI|mmf": "7d62c9b24f7147fa249adbf6f39bc9457f72a7e794e5d287dc78cf0b278636bb",
+    "ICI|mmf": "c74fdbe2b237ba409f2d1626063ed0872de5268b138d59e41bf8a74b2cdd78cd",
     "FINRA|margin": "b821af0c360e808de172b9db2034d0a5abdff56be88dcbb9b2694aeb20f952c4",
     "ICI|combined": "1f787f3eb7e310857552da1c89ffd96145828013c7837536a3768e749627bc00",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
@@ -12,12 +12,12 @@
     "ICI|mmf": {
       "source": "ICI",
       "kind": "mmf",
-      "period": "October 14, 2026",
-      "published": "October 15, 2026",
+      "period": "October 21, 2026",
+      "published": "October 22, 2026",
       "url": "https://www.ici.org/research/stats/mmf",
       "metrics": {
-        "assets_trillion": 7.92308,
-        "weekly_change_bn": -40.46
+        "assets_trillion": 7.94457,
+        "weekly_change_bn": 21.49
       },
       "quality_checks": [
         "same_week",
@@ -25,7 +25,7 @@
         "table_change",
         "prose_level"
       ],
-      "fingerprint": "7d62c9b24f7147fa249adbf6f39bc9457f72a7e794e5d287dc78cf0b278636bb"
+      "fingerprint": "c74fdbe2b237ba409f2d1626063ed0872de5268b138d59e41bf8a74b2cdd78cd"
     },
     "FINRA|margin": {
       "source": "FINRA",
@@ -111,11 +111,11 @@
         "mmf_bn": 153.81
       },
       "evidence": {
-        "us": "billion, their largest weekly inflow in four weeks. Investors also added a net $6.16 billion to Asian equity funds, but withdrew $5.11 billion from US funds. Among sectoral funds, technology, util",
+        "us": "Investors withdrew a net $5.11 billion from US equity funds during the week in their first weekly net sales since September 16, LSEG Lipper data showed.",
         "global": "CNA Games Guess Word Crack the word, one row at a time Buzzword Create words using the given letters Mini Sudoku Tiny puzzle, mighty brain teaser Mini Crossword Small grid, big challenge Word Search Spot as many words as you can Show More Show Less Investors, meanwhile, made net purchases of $560 million in global equity funds — the smallest weekly inflow in three weeks.",
         "mmf": "Investors bought global money market funds of a net $153.81 billion during the week, registering their largest weekly net purchase since May 6, LSEG Lipper data showed."
       },
-      "us_equity_url": "https://www.channelnewsasia.com/business/money-market-funds-attract-massive-inflows-bond-selloff-bit-6445901",
+      "us_equity_url": "https://www.investing.com/news/stock-market-news/us-equity-funds-witness-first-weekly-outflow-in-three-weeks-4940766",
       "fingerprint": "322bb6e2516a3f327007042522d224c50a05c059d5697b540dd5b8be9b515502"
     },
     "Goldman Prime 공개보도 교차검증|goldman_prime": {
@@ -124,32 +124,32 @@
       "period": "October 15, 2026",
       "reference_week": "2026-10-15",
       "reference_week_verified": true,
-      "published": "2026-10-21",
-      "url": "https://www.investing.com/news/stock-market-news/hedge-funds-cut-tech-stocks-at-record-pace-goldman-says-4958101",
+      "published": "2026-10-22",
+      "url": "https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade",
       "comparison_note": "복수 공개 보도의 인용치. Goldman 고객 전용 원자료·업종별 표준편차 수치 미확보",
       "metrics": {
         "tech_net_allocation_pct": 23.5,
         "net_leverage_pct": 48.6
       },
       "crosschecked_sources": [
-        "https://www.investing.com/news/stock-market-news/hedge-funds-cut-tech-stocks-at-record-pace-goldman-says-4958101",
-        "https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade"
+        "https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade",
+        "https://www.tokenpost.com/news/investing/35230"
       ],
       "fingerprint": "68150cc88049a070fc72f73d87ae8d9bf1bde0db4db25ba3088f92a6dfba5a61"
     }
   },
-  "updated_at_kst": "2026-10-22T02:12:41.505049+09:00",
+  "updated_at_kst": "2026-10-23T06:35:35.546730+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-10-21",
-    "sp500_last_value": 7763.75,
+    "sp500_last_date": "2026-10-22",
+    "sp500_last_value": 7663.43017578125,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -0.71,
+    "sp500_drawdown_pct": -1.99,
     "hartnett_tracking_version": "2026-10-09-v1",
-    "hartnett_treasury_date": "2026-10-21",
-    "hartnett_10y_pct": 5.13,
-    "hartnett_10y_5d_bp": -6.0,
+    "hartnett_treasury_date": "2026-10-22",
+    "hartnett_10y_pct": 4.96,
+    "hartnett_10y_5d_bp": -14.0,
     "hartnett_bond_level": "below_5_30",
     "hartnett_bond_momentum": "neutral",
     "hartnett_fed_target_upper_pct": 4.0,
