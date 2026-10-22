@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-23T03:43:58+09:00",
+  "updated_at_kst": "2026-10-23T07:35:10+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -15,6 +15,7 @@
     "11a202510cd997dfa3504821",
     "11b0887a69d7d15b6128314d",
     "1202365a1778261a06c785b3",
+    "128e2c1a79000b5cc361d4e6",
     "160b71780027009949391286",
     "171462b92b4f33a8c0aab2b6",
     "1914475064f5fc1fb3b5041f",
@@ -262,12 +263,12 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1324.63,
-    "date": "2026-10-22 일일 기준 · ECB/Frankfurter · 조회 2026-10-23 03:44 KST · 보조 API 2026-10-22 · 차이 0.11% · 일중 기준시각 차이 가능",
+    "date": "2026-10-22 일일 기준 · ECB/Frankfurter · 조회 2026-10-23 07:35 KST · 보조 API 2026-10-22 · 차이 0.11% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
   "errors": [
-    "원문 URL 확인 실패: Pluang | SK hynix rated Buy with 47% upside on 2027 HBM price surge potential - Pluang"
+    "원문 URL 확인 실패: Wccftech | Micron’s DDR6 Doubles DDR5 Bandwidth While LPDDR6 Delivers 35% Better Power Efficiency, Both Built On Its Upcoming 1δ DRAM Node, vHBM Goes Vertical & G11 NAND Goes Beyond 400 Layers - Wccftech"
   ],
   "ai_component_leadtime": {
     "as_of": "2026-10-19",
@@ -394,14 +395,14 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-23T03:44:15+09:00",
+    "last_checked_at_kst": "2026-10-23T07:35:25+09:00",
     "candidate_count": 3,
     "image_verified_issue": "weekly-radar-006",
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-23T03:44:52+09:00",
+    "checked_at_kst": "2026-10-23T07:35:59+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-19T21:54:05+09:00",
@@ -469,7 +470,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-23",
-    "last_checked_at_kst": "2026-10-23T03:44:41+09:00",
+    "last_checked_at_kst": "2026-10-23T07:35:28+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -528,7 +529,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-23T03:44:41+09:00",
+        "checked_at_kst": "2026-10-23T07:35:28+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -537,7 +538,7 @@
         "rss_coverage_unavailable": false
       },
       "primary_source_audit": {
-        "checked_at_kst": "2026-10-22T23:01:01+09:00",
+        "checked_at_kst": "2026-10-23T07:35:28+09:00",
         "sources": {
           "bnpp_public": {
             "status": "retrieval_unavailable",
@@ -606,7 +607,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-23",
-    "last_checked_at_kst": "2026-10-23T03:44:46+09:00",
+    "last_checked_at_kst": "2026-10-23T07:35:53+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -650,7 +651,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-23T03:44:48+09:00",
+    "last_checked_at_kst": "2026-10-23T07:35:55+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
