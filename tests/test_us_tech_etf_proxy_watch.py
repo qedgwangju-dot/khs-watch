@@ -49,7 +49,7 @@ class TechEtfProxyTests(unittest.TestCase):
         self.assertIn("개인투자자만의 매매",message)
         self.assertIn("IYW 공식",message)
         self.assertIn("SOXX 공식",message)
-        self.assertIn("원화",message)
+        self.assertIn("억원",message)
 
     def test_different_nav_and_share_dates_fail_closed(self):
         def bad(t,meta,retry_budget=None):
