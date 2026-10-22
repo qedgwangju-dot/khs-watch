@@ -95,6 +95,25 @@ def collect(now=None, fetcher=ishares.get_ishares):
     return fund_rows
 
 
+def _consecutive_weekday_dates(rows):
+    """Conservative 5D guard: require every intervening Monday-Friday date.
+
+    Exchange holidays will withhold the cumulative signal rather than invent
+    a closing observation. The daily comparison is unaffected.
+    """
+    if len(rows) != 6:
+        return False
+    day0 = dt.date.fromisoformat(rows[0]["date"])
+    dayn = dt.date.fromisoformat(rows[-1]["date"])
+    dates = []
+    cursor = day0
+    while cursor <= dayn:
+        if cursor.weekday() < 5:
+            dates.append(cursor.isoformat())
+        cursor += dt.timedelta(days=1)
+    return dates == [x["date"] for x in rows]
+
+
 def calculate(observations, state):
     if {x for x in FUNDS} != set(observations):
         raise ValueError("both official technology sector funds required")
@@ -150,7 +169,7 @@ def calculate(observations, state):
             anchor_date = dt.date.fromisoformat(anchor["date"])
             gap = (current_date - anchor_date).days
             cross_split = ticker == "SOXX" and anchor["date"] < "2026-11-05" <= today
-            if 0 < gap <= 10 and not cross_split and not split_guard:
+            if 0 < gap <= 10 and _consecutive_weekday_dates(rows[-6:]) and not cross_split and not split_guard:
                 share_base = float(anchor["shares"])
                 if share_base > 0:
                     share_delta_5 = row["shares"] - share_base
@@ -238,7 +257,7 @@ def render(result, fx, fx_date):
     lines += [
         "해석: ETF 발행좌수 증감×당일 기준가격을 이용한 <b>설정·환매 대용 추정</b>입니다.",
         "주의: 개인투자자만의 매매·JP모건 5거래일 개인 순매수 불균형·전체 기술주 펀드 순유입액이 아닙니다.",
-        "5회 누적은 최근 6개 동일 ETF의 공식 관측일 간 발행좌수 변화이며, 중간 거래일 자료가 빠지면 산출하지 않습니다.",
+        "최근 5회 누적은 해당 ETF 공식 발행좌수 6개 연속 평일 관측점만 사용합니다. 휴장·결측이 포함되면 누적 경보를 보류합니다.",
         "해당 ETF의 2차시장 거래량과 실제 발행·환매는 다르며, 설정·환매 주체를 개인·기관으로 식별할 수 없습니다.",
         "SOXX는 2026-11-05 예정 주식분할 전후 발행좌수 비교 경보를 보류합니다.",
         f"환율: {fx:,.2f}원/달러 (공식 기준 {html.escape(fx_date)})" if fx else "환율: 확인 불가",
