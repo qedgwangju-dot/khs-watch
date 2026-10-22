@@ -46,7 +46,7 @@ def _all_rows(payload):
     """Accept ARK Excel 97, modern xlsx and CSV/text under a .xls URL."""
     if payload.startswith(b"\xd0\xcf\x11\xe0"):
         import xlrd
-        book=xlrd.open_workbook(file_contents=payload)
+        book=xlrd.open_workbook(file_contents=payload, ignore_workbook_corruption=True)
         return [[sh.cell_value(i,j) for j in range(sh.ncols)]
                 for sh in book.sheets() for i in range(sh.nrows)]
     if payload.startswith(b"PK\x03\x04"):
