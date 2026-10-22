@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-22T19:49:44+09:00",
+  "last_checked_kst": "2026-10-22T20:58:44+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3461,6 +3461,15 @@
       "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBycU9QQjNhZjdlU2poX29uY2FkQnpOd0pVa09HWkM3c2RuSi1tQ1FidjAzTVZBZmFHTE1qZUJFVnhieGlPMVNzRHVTVnhQcU14aWRrdS03X2JfRl9MZTZz?oc=5",
       "first_seen_kst": "2026-10-22T16:10:28+09:00",
       "suppressed_stale": true
+    },
+    "2cdf603d911c0df6c75062c9": {
+      "title": "KT클라우드, 공공 클라우드에 리벨리온 NPU 적용 서버 출시 - 뉴시스",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5ZVDVQUWRfSDFpMkxNUTFiNWJ6WFluUDR5Y0NNVHNHZGJ6dkJ3dklNekIwR2ZfR0tnVDlDZlZLTTR3ZVVrazFQTk1fWVNWel9EcnJ2M1gyOU8xY1NVcldyUtIBeEFVX3lxTFBSbllLUlF5eG92blRXRTBuT2EwTHFtRFRFSDhQWUxmRzRkc2kxTzU3eHBUYkZ5Z2licldpcEJaR0F1S2xFU0tQU05KckVtLXNVNFhBRkMwdFZMRlM3czd1X0UyMXc1bHRWVWdraVp4X1JZOXI4LUJ5MQ?oc=5",
+      "summary": "KT클라우드, 공공 클라우드에 리벨리온 NPU 적용 서버 출시 뉴시스",
+      "event_signature": "ktcloud|npu|cloud",
+      "material_stage": 0,
+      "first_seen_kst": "2026-10-22T20:58:44+09:00",
+      "suppressed_duplicate": "same_url"
     }
   }
 }
