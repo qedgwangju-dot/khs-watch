@@ -12410,6 +12410,24 @@
       "telegram_core_fact": "텍사스 발전 프로젝트용 1,200MW 가스발전설비 공급계약을 체결했고 2028년 9월부터 인도가 시작됩니다.",
       "title": "BKV, 1200MW 가스발전설비 확보와 비용 90% 보전 계약에 주목"
     },
+    "core:21c3aa124cefe4865fae6338": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183572",
+      "source": "매일경제",
+      "source_body_digest": "01b0888edb6418195b6268b617a21b2ad18a5344b709129d04feb7a886949a0f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T01:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔브이알, 3분기 희석 EPS 89.45달러..전년비 20% 감소",
+      "telegram_core_fact": "미국 주택건설·모기지 업체 엔브이알(NVR)이 3분기(9월 30일 종료) 순이익 2억4860만 달러, 희석 주당순이익 89.45달러, 연결 매출액 24억 달러를 기록했다고 10월 22일 발표했다.",
+      "title": "엔브이알, 3분기 희석 EPS 89.45달러..전년비 20% 감소"
+    },
     "core:21c625566757a36778ba28d7": {
       "first_seen_kst": "2026-10-13T04:02:08+09:00",
       "lanes": {
@@ -13640,6 +13658,26 @@
       "source_title": "김정관, 392조 충청권 투자 점검…\"인허가·전력·용수 확실하게 뒷받침\"",
       "telegram_core_fact": "김 장관은 그간의 TF 논의 결과를 토대로 기업별 투자 진행 상황과 애로사항, 지방정부의 인허가 추진 상황 등을 종합적으로 점검했다.",
       "title": "김정관, 392조 충청권 투자 점검…\"인허가·전력·용수 확실하게 뒷받침\""
+    },
+    "core:24fa8739d1ddcbba86253050": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=07025766645615544",
+      "source": "이데일리",
+      "source_body_digest": "b22c84a5c386f7f665e64e3daac09649938ee69c7f99a71a26a41d8cadd962a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae405d05ca1865494cc1f5a0fad29969b38b4b5d117e5d07afac30b6381cb51",
+      "source_fact_keys": [
+        "source_fact:v1:f765d487ccae3b43fd45ad03e3bcbcdaaf17a57e8e99ce439f3dfdcbb00b1c56"
+      ],
+      "source_published_kst": "2026-10-22T22:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "레드햇-엔비디아, 에이전틱 AI 보안 맞손",
+      "telegram_core_fact": "레드햇은 엔비디아와 협력을 확대해 ‘레드햇 AI 팩토리 위드 엔비디아’를 기반으로 엔터프라이즈 에이전틱 AI의 보안과 운영 기반을 확대한다고 22일 밝혔다. 레드햇이 엔비디아와 손잡고 기업용 에이전틱 인공지능(AI)의 보안과 추론 인프라를 강화한다.",
+      "title": "레드햇-엔비디아, 에이전틱 AI 보안 맞손"
     },
     "core:25025ef53bf0155900dd484d": {
       "first_seen_kst": "2026-10-12T23:37:27+09:00",
@@ -26475,6 +26513,33 @@
       "source_title": "[BioS]씨어스, 'AI 부정맥' UAE 아부다비 보건부 IRB 승인",
       "telegram_core_fact": "현재 UAE 국가 건강검진 프로그램에는 부정맥 스크리닝 검사가 포함돼 있지 않으며, 씨어스는 지난해말 입찰을 통해 이 사업의 유일한 사업자로 선정됐다.",
       "title": "[BioS]씨어스, 'AI 부정맥' UAE 아부다비 보건부 IRB 승인"
+    },
+    "core:4899f5313f877480771e3892": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
     },
     "core:48c00064dbbbe787f092999e": {
       "first_seen_kst": "2026-10-20T00:33:17+09:00",
@@ -56411,6 +56476,24 @@
       "telegram_core_fact": "마쓰모토 히로시 픽재팬 선임연구원은 \"최근 닛케이225지수 상승은 기업 이익 증가 전망에 따른 것이었다\"며 \"금리 상승을 계기로 시장 변동성이 커진 만큼 (투자자들은) 경계할 필요가 있다\"고 말했다.",
       "title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]"
     },
+    "core:9d065fce5e3cc89ec3ba1bfc": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638699",
+      "source": "이투데이",
+      "source_body_digest": "eb660664d41af7ab6f2508578549d3c696fb3e257402497ebb37b162a059a08a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 세계 최대 시화조력발전소 AI 전환 추진…수자원공사와 협력",
+      "telegram_core_fact": "LG전자가 한국수자원공사(K-water)와 손잡고 발전용량 기준 세계 최대 규모인 시화조력발전소의 AI 전환을 추진한다. LG전자는 22일 경기도 안산시 시화조력문화관에서 한국수자원공사와 ‘시화호 AI 조력발전소 추진을 위한 기술협력 업무협약’을 체결했다고 밝혔다.",
+      "title": "LG전자, 세계 최대 시화조력발전소 AI 전환 추진…수자원공사와 협력"
+    },
     "core:9d1fe497a7f7bcd8aadaf60a": {
       "first_seen_kst": "2026-10-21T11:47:49+09:00",
       "lanes": {
@@ -60352,6 +60435,30 @@
       "source_title": "웨더포드, 3분기 EPS 48% 증가·현금흐름 개선에 강세",
       "telegram_core_fact": "3분기 희석 EPS가 1.66달러로 전년보다 48% 증가했고, 조정 EBITDA 마진은 22.2%로 개선됐습니다. 조정 잉여현금흐름도 57% 늘었으며 2030년 만기 채권을 전액 상환해 연 이자비용 2000만 달러 절감이 기대되면서 수익성과 재무 체질 개선이 부각되고 있습니다.",
       "title": "웨더포드, 3분기 EPS 48% 증가·현금흐름 개선에 강세"
+    },
+    "core:a9010cdd8e04fcfd49ef9e14": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183178",
+      "source": "매일경제",
+      "source_body_digest": "185927297166800d7e95c8b43cc61b7dd46cdc0cc559f12852dccd6acf6f25e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e511467ec601a4701031c04798c9cff27f3ce8c3798415b04b129539d387e50f",
+      "source_fact_keys": [
+        "source_fact:v1:1004e2306587c42bd3aa56e60aa2acd61860094c1e774b8a25474fb8a02447fb",
+        "source_fact:v1:24e311ae4866d18e0480ff42bde2850efc5dd0d2bf10541b23fea58e66daf470",
+        "source_fact:v1:5cad057ea47ebcba1a4a3d9dc17ae48f3fe7d09d598f6029342046d6e8fa46a7",
+        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55",
+        "source_fact:v1:d564784e3621ecb1e98f78632e08c895f8a2ed099857a46f13d15d5954a6abf6"
+      ],
+      "source_published_kst": "2026-10-22T17:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다",
+      "telegram_core_fact": "지수가 상승했더라도 환노출형 상품은 원화 강세에 따른 환차손으로 손실을 기록한 반면 환헤지형 상품은 지수 상승분을 오롯이 반영하며 수익률 차이가 10%포인트 가까이 벌어진 모습이다.",
+      "title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다"
     },
     "core:a90e7599741cf68589c03fc7": {
       "first_seen_kst": "2026-10-13T00:43:08+09:00",
@@ -75575,6 +75682,24 @@
       "source_title": "[단독]대중교통 요금심의 받는다던 한강버스…서울시, 뒤늦게 \"대상 아니다\"",
       "telegram_core_fact": "고찬양 민주당 시의원(강서1)은 지난 16일 물가대책위 심의 대상에 한강버스 요금을 명시하는 물가심의 의무화 조례 개정안을 대표 발의했다.",
       "title": "[단독]대중교통 요금심의 받는다던 한강버스…서울시, 뒤늦게 \"대상 아니다\""
+    },
+    "core:d3c8733cdad25124da9369ff": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://biz.heraldcorp.com/article/10911421",
+      "source": "헤럴드경제",
+      "source_body_digest": "3c071b75b50327efe9d8297ff929cf14023de35a011cb2af47b6cdeddbc71944",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T14:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "한솔PNS, AJ솔루션테크 자산관리 시스템 구축…AI 활용 기반 확보",
+      "telegram_core_fact": "한솔PNS는 AJ솔루션테크의 자산관리 시스템 ‘SAM(Solutiontech Asset Management)’ 구축 사업을 완료했다고 22일 밝혔다. 이번에 구축된 SAM은 한솔PNS의 설비자산관리 시스템 ‘PAM(Plant Asset Management)’을 기반으로 개발됐다.",
+      "title": "한솔PNS, AJ솔루션테크 자산관리 시스템 구축…AI 활용 기반 확보"
     },
     "core:d3cefd823defda5cac7b336c": {
       "first_seen_kst": "2026-10-20T23:08:51+09:00",
@@ -171743,6 +171868,26 @@
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
     },
+    "fact:96d675cb34422b2c957faa18": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=07025766645615544",
+      "source": "이데일리",
+      "source_body_digest": "b22c84a5c386f7f665e64e3daac09649938ee69c7f99a71a26a41d8cadd962a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae405d05ca1865494cc1f5a0fad29969b38b4b5d117e5d07afac30b6381cb51",
+      "source_fact_keys": [
+        "source_fact:v1:f765d487ccae3b43fd45ad03e3bcbcdaaf17a57e8e99ce439f3dfdcbb00b1c56"
+      ],
+      "source_published_kst": "2026-10-22T22:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "레드햇-엔비디아, 에이전틱 AI 보안 맞손",
+      "telegram_core_fact": "레드햇은 엔비디아와 협력을 확대해 ‘레드햇 AI 팩토리 위드 엔비디아’를 기반으로 엔터프라이즈 에이전틱 AI의 보안과 운영 기반을 확대한다고 22일 밝혔다. 레드햇이 엔비디아와 손잡고 기업용 에이전틱 인공지능(AI)의 보안과 추론 인프라를 강화한다.",
+      "title": "레드햇-엔비디아, 에이전틱 AI 보안 맞손"
+    },
     "fact:96fedd44bde85ee6e2e00fe4": {
       "first_seen_kst": "2026-10-11T08:42:16+09:00",
       "lanes": {
@@ -190799,6 +190944,30 @@
       "telegram_core_fact": "12일 국회 정무위원회 국정감사에서 더불어민주당 한민수 의원은 \"납품 과정에서 불필요한 벤더 끼어들기로 소비자 가격은 인상, 가맹 점주 마진이 하락하고 있다\"며 \"사실상 통제 장치가 없는 것 아닌가\"라고 밝혔다.",
       "title": "한민수 \"GS리테일, 불필요한 벤더 끼워 넣어…통행세 챙겨준 꼴\" | 연합뉴스"
     },
+    "fact:c48c446d51c840d7f8b6acb4": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183178",
+      "source": "매일경제",
+      "source_body_digest": "185927297166800d7e95c8b43cc61b7dd46cdc0cc559f12852dccd6acf6f25e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e511467ec601a4701031c04798c9cff27f3ce8c3798415b04b129539d387e50f",
+      "source_fact_keys": [
+        "source_fact:v1:1004e2306587c42bd3aa56e60aa2acd61860094c1e774b8a25474fb8a02447fb",
+        "source_fact:v1:24e311ae4866d18e0480ff42bde2850efc5dd0d2bf10541b23fea58e66daf470",
+        "source_fact:v1:5cad057ea47ebcba1a4a3d9dc17ae48f3fe7d09d598f6029342046d6e8fa46a7",
+        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55",
+        "source_fact:v1:d564784e3621ecb1e98f78632e08c895f8a2ed099857a46f13d15d5954a6abf6"
+      ],
+      "source_published_kst": "2026-10-22T17:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다",
+      "telegram_core_fact": "지수가 상승했더라도 환노출형 상품은 원화 강세에 따른 환차손으로 손실을 기록한 반면 환헤지형 상품은 지수 상승분을 오롯이 반영하며 수익률 차이가 10%포인트 가까이 벌어진 모습이다.",
+      "title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다"
+    },
     "fact:c492c05444e98e44b5961267": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
       "lanes": {
@@ -196103,6 +196272,33 @@
       "telegram_core_fact": "12일 관세청이 발표한 '2026년 10월 1~10일 수출입 현황(잠정치)'에 따르면 이 기간 수출액은 261억400만달러로 전년비 102.0% 증가했다.",
       "title": "10월 초순 수출 261억불 '역대 최대'⋯반도체 171% 급증[상보]"
     },
+    "fact:d14e529c6a63414f86cdc206": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
+    },
     "fact:d171f885b6c25545fb1f24d5": {
       "first_seen_kst": "2026-10-20T12:12:43+09:00",
       "lanes": {
@@ -196429,6 +196625,29 @@
       "source_title": "넘버즈인, 숫자 마스크팩 1억 장 판매… 국내외 유통 채널 확대",
       "telegram_core_fact": "판매량은 2022년부터 2026년 10월까지 숫자 마스크팩 전 제품의 판매 실적을 합산한 수치로, 회사 자체 집계를 기준으로 한다.",
       "title": "넘버즈인, 숫자 마스크팩 1억 장 판매… 국내외 유통 채널 확대"
+    },
+    "fact:d215670b48b85f1f3f6a63d5": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179718",
+      "source": "매일경제",
+      "source_body_digest": "380dbb7a2052f560275e02667e92825a6e5977f7bd0f6ed1e5b59867df00e9de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce3ba329c8bcccf831f160602b9f549970eccae9035f1434cbc31d4992edad86",
+      "source_fact_keys": [
+        "source_fact:v1:0e6b0bcda1d465cf2c3659d28735de80e91798e08e64c5df404aa3bccb65801c",
+        "source_fact:v1:1807ce00462d72e297aa225ecf2f30d1bc35c956b1d1eaf32d36fc8b636063e3",
+        "source_fact:v1:5b0306c420cbbb875509f1c669dd96e4e45eb35c690a3ad2012bf06ccd200b66",
+        "source_fact:v1:c1bba5245e05be562ad11143e0ce391bc08cdc026c137b66fcd71efe58845a43"
+      ],
+      "source_published_kst": "2026-10-23T01:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소",
+      "telegram_core_fact": "1~9월 누적 총매출은 3억8156만 달러로 전년 동기보다 5.0% 증가했다.",
+      "title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소"
     },
     "fact:d216f359d263bbdd17b2c2f0": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -243008,6 +243227,26 @@
       "telegram_core_fact": "피지컬 AI(인공지능) 스타트업 로바이는 중국 다관절 로봇 핸드 전문기업 링커봇(LinkerBot)과 AI 기반 로봇 제어 기술 검증을 위한 업무협약(MOU)을 체결했다고 19일 밝혔다.",
       "title": "로바이, 中 링커봇과 피지컬 AI 협력…로봇 자가학습 기술 실증 나선다"
     },
+    "link:34736ceab6ab2fd7a5e16a99": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=07025766645615544",
+      "source": "이데일리",
+      "source_body_digest": "b22c84a5c386f7f665e64e3daac09649938ee69c7f99a71a26a41d8cadd962a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae405d05ca1865494cc1f5a0fad29969b38b4b5d117e5d07afac30b6381cb51",
+      "source_fact_keys": [
+        "source_fact:v1:f765d487ccae3b43fd45ad03e3bcbcdaaf17a57e8e99ce439f3dfdcbb00b1c56"
+      ],
+      "source_published_kst": "2026-10-22T22:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "레드햇-엔비디아, 에이전틱 AI 보안 맞손",
+      "telegram_core_fact": "레드햇은 엔비디아와 협력을 확대해 ‘레드햇 AI 팩토리 위드 엔비디아’를 기반으로 엔터프라이즈 에이전틱 AI의 보안과 운영 기반을 확대한다고 22일 밝혔다. 레드햇이 엔비디아와 손잡고 기업용 에이전틱 인공지능(AI)의 보안과 추론 인프라를 강화한다.",
+      "title": "레드햇-엔비디아, 에이전틱 AI 보안 맞손"
+    },
     "link:34793a8d012b1a9c0620987b": {
       "first_seen_kst": "2026-10-16T20:17:17+09:00",
       "lanes": {
@@ -257371,6 +257610,24 @@
       "source_title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안",
       "telegram_core_fact": "삼성물산이 노후 아파트의 기존 골조를 활용해 인허가와 공사기간을 줄이는 리모델링 방식을 서울 서초구 반포푸르지오에 처음 제안했다.",
       "title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안"
+    },
+    "link:5130fee56b5f47ac84a62826": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183572",
+      "source": "매일경제",
+      "source_body_digest": "01b0888edb6418195b6268b617a21b2ad18a5344b709129d04feb7a886949a0f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T01:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔브이알, 3분기 희석 EPS 89.45달러..전년비 20% 감소",
+      "telegram_core_fact": "미국 주택건설·모기지 업체 엔브이알(NVR)이 3분기(9월 30일 종료) 순이익 2억4860만 달러, 희석 주당순이익 89.45달러, 연결 매출액 24억 달러를 기록했다고 10월 22일 발표했다.",
+      "title": "엔브이알, 3분기 희석 EPS 89.45달러..전년비 20% 감소"
     },
     "link:5134888d95c22e7ead2708b4": {
       "first_seen_kst": "2026-10-04T04:29:39+09:00",
@@ -284207,6 +284464,29 @@
       "source_published_kst": "2026-10-07T08:53+09:00",
       "title": "LS에코에너지, AI 데이터센터용 버스덕트 설비 투자…생산능력 2배 늘린다"
     },
+    "link:8547f1998084db58a757eedf": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179718",
+      "source": "매일경제",
+      "source_body_digest": "380dbb7a2052f560275e02667e92825a6e5977f7bd0f6ed1e5b59867df00e9de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce3ba329c8bcccf831f160602b9f549970eccae9035f1434cbc31d4992edad86",
+      "source_fact_keys": [
+        "source_fact:v1:0e6b0bcda1d465cf2c3659d28735de80e91798e08e64c5df404aa3bccb65801c",
+        "source_fact:v1:1807ce00462d72e297aa225ecf2f30d1bc35c956b1d1eaf32d36fc8b636063e3",
+        "source_fact:v1:5b0306c420cbbb875509f1c669dd96e4e45eb35c690a3ad2012bf06ccd200b66",
+        "source_fact:v1:c1bba5245e05be562ad11143e0ce391bc08cdc026c137b66fcd71efe58845a43"
+      ],
+      "source_published_kst": "2026-10-23T01:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소",
+      "telegram_core_fact": "1~9월 누적 총매출은 3억8156만 달러로 전년 동기보다 5.0% 증가했다.",
+      "title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소"
+    },
     "link:854ccff6191ad5cd8c6f06c5": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -292772,6 +293052,24 @@
       "source_event_identity": "",
       "title": "한은 “10월 소비자물가 3% 안팎 전망…상승 압력 여전”"
     },
+    "link:96b54ea2d8c5525ee45b937e": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://biz.heraldcorp.com/article/10911421",
+      "source": "헤럴드경제",
+      "source_body_digest": "3c071b75b50327efe9d8297ff929cf14023de35a011cb2af47b6cdeddbc71944",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T14:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "한솔PNS, AJ솔루션테크 자산관리 시스템 구축…AI 활용 기반 확보",
+      "telegram_core_fact": "한솔PNS는 AJ솔루션테크의 자산관리 시스템 ‘SAM(Solutiontech Asset Management)’ 구축 사업을 완료했다고 22일 밝혔다. 이번에 구축된 SAM은 한솔PNS의 설비자산관리 시스템 ‘PAM(Plant Asset Management)’을 기반으로 개발됐다.",
+      "title": "한솔PNS, AJ솔루션테크 자산관리 시스템 구축…AI 활용 기반 확보"
+    },
     "link:96b586001aa45f17d00a6b01": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -295592,6 +295890,33 @@
       "link": "https://www.mk.co.kr/news/business/12156227",
       "source": "매일경제",
       "title": "“경영진 4명, 자사주 4억원어치 매입”…KG모빌리티플랫폼, 책임경영 강화"
+    },
+    "link:9ba2ab1c2fa9b6f3085660f7": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
     },
     "link:9ba43eafd2497f1d02cd0759": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
@@ -308502,6 +308827,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:20+09:00",
       "title": "경북도, 美 유타주정부·유타대와 맞손…AI·반도체 협력 확대"
+    },
+    "link:b3931bf6f17fed774f5f97f9": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638699",
+      "source": "이투데이",
+      "source_body_digest": "eb660664d41af7ab6f2508578549d3c696fb3e257402497ebb37b162a059a08a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 세계 최대 시화조력발전소 AI 전환 추진…수자원공사와 협력",
+      "telegram_core_fact": "LG전자가 한국수자원공사(K-water)와 손잡고 발전용량 기준 세계 최대 규모인 시화조력발전소의 AI 전환을 추진한다. LG전자는 22일 경기도 안산시 시화조력문화관에서 한국수자원공사와 ‘시화호 AI 조력발전소 추진을 위한 기술협력 업무협약’을 체결했다고 밝혔다.",
+      "title": "LG전자, 세계 최대 시화조력발전소 AI 전환 추진…수자원공사와 협력"
     },
     "link:b3a48f4fb23c9fde2167787c": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -329800,6 +330143,30 @@
       "telegram_core_fact": "산업통상부는 13일 ‘2026년 제6차 산업융합 규제특례심의위원회’를 열고 4족보행 로봇의 보행자도로 순찰을 최초로 허용하는 실증특례를 승인했다고 밝혔다.",
       "title": "'4족보행 로봇' 도심 순찰길 열린다…정부, 규제 문턱 낮춘다"
     },
+    "link:dd902ce71488ea5e424a1fea": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183178",
+      "source": "매일경제",
+      "source_body_digest": "185927297166800d7e95c8b43cc61b7dd46cdc0cc559f12852dccd6acf6f25e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e511467ec601a4701031c04798c9cff27f3ce8c3798415b04b129539d387e50f",
+      "source_fact_keys": [
+        "source_fact:v1:1004e2306587c42bd3aa56e60aa2acd61860094c1e774b8a25474fb8a02447fb",
+        "source_fact:v1:24e311ae4866d18e0480ff42bde2850efc5dd0d2bf10541b23fea58e66daf470",
+        "source_fact:v1:5cad057ea47ebcba1a4a3d9dc17ae48f3fe7d09d598f6029342046d6e8fa46a7",
+        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55",
+        "source_fact:v1:d564784e3621ecb1e98f78632e08c895f8a2ed099857a46f13d15d5954a6abf6"
+      ],
+      "source_published_kst": "2026-10-22T17:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다",
+      "telegram_core_fact": "지수가 상승했더라도 환노출형 상품은 원화 강세에 따른 환차손으로 손실을 기록한 반면 환헤지형 상품은 지수 상승분을 오롯이 반영하며 수익률 차이가 10%포인트 가까이 벌어진 모습이다.",
+      "title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다"
+    },
     "link:dd9a34e232977f894a742eba": {
       "first_seen_kst": "2026-10-08T15:53:45+09:00",
       "lanes": {
@@ -348903,6 +349270,24 @@
       "source_title": "식약처 \"위장관기질종양 희귀의약품 품목허가\"",
       "telegram_core_fact": "식약처가 위장관기질종양 치료 희귀의약품을 허가했다. 식약처는 수입 희귀의약품인 오노약품의 '퀸락정50㎎'(성분명 리프레티닙)을 허가했다고 16일 밝혔다.",
       "title": "식약처 \"위장관기질종양 희귀의약품 품목허가\""
+    },
+    "original:042eb8cbe45343b4b7da3b82": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638699",
+      "source": "이투데이",
+      "source_body_digest": "eb660664d41af7ab6f2508578549d3c696fb3e257402497ebb37b162a059a08a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 세계 최대 시화조력발전소 AI 전환 추진…수자원공사와 협력",
+      "telegram_core_fact": "LG전자가 한국수자원공사(K-water)와 손잡고 발전용량 기준 세계 최대 규모인 시화조력발전소의 AI 전환을 추진한다. LG전자는 22일 경기도 안산시 시화조력문화관에서 한국수자원공사와 ‘시화호 AI 조력발전소 추진을 위한 기술협력 업무협약’을 체결했다고 밝혔다.",
+      "title": "LG전자, 세계 최대 시화조력발전소 AI 전환 추진…수자원공사와 협력"
     },
     "original:0431673b5bef8b6c1ab5ebc8": {
       "first_seen_kst": "2026-10-05T05:59:37+09:00",
@@ -371245,6 +371630,30 @@
       "source_title": "우크라, 트럼프 만류에도 푸틴 고향 인프라 역대급 공습",
       "telegram_core_fact": "트럼프 대통령은 지난주 러시아와의 '경유 딜'에 합의하고 대러 제재를 전격 유예했고, 우크라이나는 이런 결정에 크게 반발한 바 있다.",
       "title": "우크라, 트럼프 만류에도 푸틴 고향 인프라 역대급 공습"
+    },
+    "original:2f1e035ee1a62524d8c183cd": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183178",
+      "source": "매일경제",
+      "source_body_digest": "185927297166800d7e95c8b43cc61b7dd46cdc0cc559f12852dccd6acf6f25e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e511467ec601a4701031c04798c9cff27f3ce8c3798415b04b129539d387e50f",
+      "source_fact_keys": [
+        "source_fact:v1:1004e2306587c42bd3aa56e60aa2acd61860094c1e774b8a25474fb8a02447fb",
+        "source_fact:v1:24e311ae4866d18e0480ff42bde2850efc5dd0d2bf10541b23fea58e66daf470",
+        "source_fact:v1:5cad057ea47ebcba1a4a3d9dc17ae48f3fe7d09d598f6029342046d6e8fa46a7",
+        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55",
+        "source_fact:v1:d564784e3621ecb1e98f78632e08c895f8a2ed099857a46f13d15d5954a6abf6"
+      ],
+      "source_published_kst": "2026-10-22T17:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다",
+      "telegram_core_fact": "지수가 상승했더라도 환노출형 상품은 원화 강세에 따른 환차손으로 손실을 기록한 반면 환헤지형 상품은 지수 상승분을 오롯이 반영하며 수익률 차이가 10%포인트 가까이 벌어진 모습이다.",
+      "title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다"
     },
     "original:2f285de5f8ea506d2ffd1442": {
       "first_seen_kst": "2026-10-17T10:06:46+09:00",
@@ -410129,6 +410538,26 @@
       "source_published_kst": "2026-10-05T22:51+09:00",
       "title": "[美특징주]PTC, 슈나이더 일렉트릭 피인수 소식에 주가 '급등'"
     },
+    "original:7c87bf8f49e22d3c75c814d9": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=07025766645615544",
+      "source": "이데일리",
+      "source_body_digest": "b22c84a5c386f7f665e64e3daac09649938ee69c7f99a71a26a41d8cadd962a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae405d05ca1865494cc1f5a0fad29969b38b4b5d117e5d07afac30b6381cb51",
+      "source_fact_keys": [
+        "source_fact:v1:f765d487ccae3b43fd45ad03e3bcbcdaaf17a57e8e99ce439f3dfdcbb00b1c56"
+      ],
+      "source_published_kst": "2026-10-22T22:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "레드햇-엔비디아, 에이전틱 AI 보안 맞손",
+      "telegram_core_fact": "레드햇은 엔비디아와 협력을 확대해 ‘레드햇 AI 팩토리 위드 엔비디아’를 기반으로 엔터프라이즈 에이전틱 AI의 보안과 운영 기반을 확대한다고 22일 밝혔다. 레드햇이 엔비디아와 손잡고 기업용 에이전틱 인공지능(AI)의 보안과 추론 인프라를 강화한다.",
+      "title": "레드햇-엔비디아, 에이전틱 AI 보안 맞손"
+    },
     "original:7c88246afd9fbb1715a8d6fe": {
       "first_seen_kst": "2026-10-22T23:34:47+09:00",
       "lanes": {
@@ -419578,6 +420007,29 @@
       "source_title": "美 물가 충격·코어위브 신용위험…\"AI 전방위 신용위험 확산 가능성은 낮아\"",
       "telegram_core_fact": "박상현 iM증권 연구원은 15일 보고서에서 “9월 소비자물가지수(CPI)는 시장 예상에 부합하는 전월 대비 0.6% 상승을 기록했지만, 근원 CPI는 예상치를 0.1%포인트 웃도는 0.3% 올랐다”며 “단순히 소폭 상회한 것으로 치부할 수도 있지만, 금융시장은 이를 물가 압력의 확산으로 인식했다”고 밝혔다.",
       "title": "美 물가 충격·코어위브 신용위험…\"AI 전방위 신용위험 확산 가능성은 낮아\""
+    },
+    "original:8e11e3150f1d546269ffb124": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179718",
+      "source": "매일경제",
+      "source_body_digest": "380dbb7a2052f560275e02667e92825a6e5977f7bd0f6ed1e5b59867df00e9de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce3ba329c8bcccf831f160602b9f549970eccae9035f1434cbc31d4992edad86",
+      "source_fact_keys": [
+        "source_fact:v1:0e6b0bcda1d465cf2c3659d28735de80e91798e08e64c5df404aa3bccb65801c",
+        "source_fact:v1:1807ce00462d72e297aa225ecf2f30d1bc35c956b1d1eaf32d36fc8b636063e3",
+        "source_fact:v1:5b0306c420cbbb875509f1c669dd96e4e45eb35c690a3ad2012bf06ccd200b66",
+        "source_fact:v1:c1bba5245e05be562ad11143e0ce391bc08cdc026c137b66fcd71efe58845a43"
+      ],
+      "source_published_kst": "2026-10-23T01:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소",
+      "telegram_core_fact": "1~9월 누적 총매출은 3억8156만 달러로 전년 동기보다 5.0% 증가했다.",
+      "title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소"
     },
     "original:8e159e7ac4ee0e1545f961a1": {
       "first_seen_kst": "2026-10-14T13:28:53+09:00",
@@ -445474,6 +445926,24 @@
       "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
       "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
     },
+    "original:c260322ddefdde385949c28a": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183572",
+      "source": "매일경제",
+      "source_body_digest": "01b0888edb6418195b6268b617a21b2ad18a5344b709129d04feb7a886949a0f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T01:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔브이알, 3분기 희석 EPS 89.45달러..전년비 20% 감소",
+      "telegram_core_fact": "미국 주택건설·모기지 업체 엔브이알(NVR)이 3분기(9월 30일 종료) 순이익 2억4860만 달러, 희석 주당순이익 89.45달러, 연결 매출액 24억 달러를 기록했다고 10월 22일 발표했다.",
+      "title": "엔브이알, 3분기 희석 EPS 89.45달러..전년비 20% 감소"
+    },
     "original:c28f17666206cd556bca69a3": {
       "first_seen_kst": "2026-10-20T21:48:37+09:00",
       "lanes": {
@@ -448531,6 +449001,24 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "밸류파인더 “메타케어, 저용량 탈모치료제 출시 임박…헬스케어 플랫폼 확장”"
+    },
+    "original:c95aab8a6d4dabe56def98d3": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://biz.heraldcorp.com/article/10911421",
+      "source": "헤럴드경제",
+      "source_body_digest": "3c071b75b50327efe9d8297ff929cf14023de35a011cb2af47b6cdeddbc71944",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T14:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "한솔PNS, AJ솔루션테크 자산관리 시스템 구축…AI 활용 기반 확보",
+      "telegram_core_fact": "한솔PNS는 AJ솔루션테크의 자산관리 시스템 ‘SAM(Solutiontech Asset Management)’ 구축 사업을 완료했다고 22일 밝혔다. 이번에 구축된 SAM은 한솔PNS의 설비자산관리 시스템 ‘PAM(Plant Asset Management)’을 기반으로 개발됐다.",
+      "title": "한솔PNS, AJ솔루션테크 자산관리 시스템 구축…AI 활용 기반 확보"
     },
     "original:c9670dcf9f2ac9ec379082b3": {
       "first_seen_kst": "2026-10-18T16:18:39+09:00",
@@ -458864,6 +459352,33 @@
       "source_title": "전남광주시의회 '동복댐·법정전입금·군공항' 점검…시장과 신경전(종합)",
       "telegram_core_fact": "전남광주통합특별시의원들이 시정질문을 통해 반도체 용수 공급에 따른 화순 동복댐 증고와 교육청 법정전입금 미편성, 군공항 이전에 따른 주민 수용성 확대, 도시철도 2호선 개통 연장 등을 집중 점검했다.",
       "title": "전남광주시의회 '동복댐·법정전입금·군공항' 점검…시장과 신경전(종합)"
+    },
+    "original:dd05679e5025dba830c91e65": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
     },
     "original:dd06487e345698509b47749d": {
       "first_seen_kst": "2026-10-15T16:25:35+09:00",
@@ -476540,6 +477055,29 @@
       "telegram_core_fact": "넷플릭스(NFLX)가 3분기 매출액 128억7400만 달러로 전년비 12% 증가했고, 영업이익은 44억5900만 달러로 37% 늘었으며 희석 주당순이익(EPS)은 0.87달러로 49% 증가했다고 10월 20일 발표했다.",
       "title": "넷플릭스, 3분기 매출 129억달러 12%↑..광고전망 하향"
     },
+    "source_fact:006a58f49c63ee3d06f9faba": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179718",
+      "source": "매일경제",
+      "source_body_digest": "380dbb7a2052f560275e02667e92825a6e5977f7bd0f6ed1e5b59867df00e9de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce3ba329c8bcccf831f160602b9f549970eccae9035f1434cbc31d4992edad86",
+      "source_fact_keys": [
+        "source_fact:v1:0e6b0bcda1d465cf2c3659d28735de80e91798e08e64c5df404aa3bccb65801c",
+        "source_fact:v1:1807ce00462d72e297aa225ecf2f30d1bc35c956b1d1eaf32d36fc8b636063e3",
+        "source_fact:v1:5b0306c420cbbb875509f1c669dd96e4e45eb35c690a3ad2012bf06ccd200b66",
+        "source_fact:v1:c1bba5245e05be562ad11143e0ce391bc08cdc026c137b66fcd71efe58845a43"
+      ],
+      "source_published_kst": "2026-10-23T01:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소",
+      "telegram_core_fact": "1~9월 누적 총매출은 3억8156만 달러로 전년 동기보다 5.0% 증가했다.",
+      "title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소"
+    },
     "source_fact:006bdf20c467cbe5e7064225": {
       "first_seen_kst": "2026-10-21T10:53:33+09:00",
       "lanes": {
@@ -483017,6 +483555,30 @@
       "telegram_core_fact": "스페이스X는 3분기 매출액이 지난해 같은 기간과 견줘 161% 급증한 145억8천만 달러(약 19조3천억원)를 기록했다고 20일(현지시간) 공시했다.",
       "title": "스페이스X, 3분기 매출 161% 급증…AI 견인에 흑자 전환까지(종합) | 연합뉴스"
     },
+    "source_fact:037454563c1fd473cdc81a65": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183178",
+      "source": "매일경제",
+      "source_body_digest": "185927297166800d7e95c8b43cc61b7dd46cdc0cc559f12852dccd6acf6f25e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e511467ec601a4701031c04798c9cff27f3ce8c3798415b04b129539d387e50f",
+      "source_fact_keys": [
+        "source_fact:v1:1004e2306587c42bd3aa56e60aa2acd61860094c1e774b8a25474fb8a02447fb",
+        "source_fact:v1:24e311ae4866d18e0480ff42bde2850efc5dd0d2bf10541b23fea58e66daf470",
+        "source_fact:v1:5cad057ea47ebcba1a4a3d9dc17ae48f3fe7d09d598f6029342046d6e8fa46a7",
+        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55",
+        "source_fact:v1:d564784e3621ecb1e98f78632e08c895f8a2ed099857a46f13d15d5954a6abf6"
+      ],
+      "source_published_kst": "2026-10-22T17:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다",
+      "telegram_core_fact": "지수가 상승했더라도 환노출형 상품은 원화 강세에 따른 환차손으로 손실을 기록한 반면 환헤지형 상품은 지수 상승분을 오롯이 반영하며 수익률 차이가 10%포인트 가까이 벌어진 모습이다.",
+      "title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다"
+    },
     "source_fact:037c11ac722ac631259a461e": {
       "first_seen_kst": "2026-10-15T17:19:13+09:00",
       "lanes": {
@@ -487838,26 +488400,26 @@
     "source_fact:05e4c0ed39504a56a6503be0": {
       "first_seen_kst": "2026-10-22T11:13:08+09:00",
       "lanes": {
-        "live": "2026-10-22T11:13:08+09:00"
+        "live": "2026-10-23T01:29:09+09:00"
       },
-      "last_seen_kst": "2026-10-22T11:13:08+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12182593",
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183178",
       "source": "매일경제",
-      "source_body_digest": "bd98e570932d6bfcb2e66f7f90fefc5155842e440b801cb8e543f4081cf1298a",
+      "source_body_digest": "185927297166800d7e95c8b43cc61b7dd46cdc0cc559f12852dccd6acf6f25e0",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a6dbfd737fd59ccd44d4de41922e06c74e6dc56cb2952f124e918f5ddd32b94d",
+      "source_fact_identity": "source_facts:v1:e511467ec601a4701031c04798c9cff27f3ce8c3798415b04b129539d387e50f",
       "source_fact_keys": [
-        "source_fact:v1:0920e12102c5f22a01ffcb88bafb4cf93ff22c947eb12bfc7c382330433a2c8b",
         "source_fact:v1:1004e2306587c42bd3aa56e60aa2acd61860094c1e774b8a25474fb8a02447fb",
         "source_fact:v1:24e311ae4866d18e0480ff42bde2850efc5dd0d2bf10541b23fea58e66daf470",
-        "source_fact:v1:6074f401411153789dd99709ccf03c549d89e6e714cbd86b5e2dcbf8bf7f9cc1",
-        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55"
+        "source_fact:v1:5cad057ea47ebcba1a4a3d9dc17ae48f3fe7d09d598f6029342046d6e8fa46a7",
+        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55",
+        "source_fact:v1:d564784e3621ecb1e98f78632e08c895f8a2ed099857a46f13d15d5954a6abf6"
       ],
-      "source_published_kst": "2026-10-22T10:20+09:00",
+      "source_published_kst": "2026-10-22T17:39+09:00",
       "source_supply_terms": {},
-      "source_title": "미장은 올랐는데 내 ETF는 -7%…서학개미 수익률 ‘환헤지’에 엇갈렸다",
-      "telegram_core_fact": "같은 기간 미국 S&P500지수와 나스닥100지수가 모두 3% 안팎의 상승률을 기록했다는 점을 고려하면 환율이 상품 수익률에 미친 영향이 두드러진다.",
-      "title": "미장은 올랐는데 내 ETF는 -7%…서학개미 수익률 ‘환헤지’에 엇갈렸다"
+      "source_title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다",
+      "telegram_core_fact": "지수가 상승했더라도 환노출형 상품은 원화 강세에 따른 환차손으로 손실을 기록한 반면 환헤지형 상품은 지수 상승분을 오롯이 반영하며 수익률 차이가 10%포인트 가까이 벌어진 모습이다.",
+      "title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다"
     },
     "source_fact:05e90e95df206ad7614dc45e": {
       "first_seen_kst": "2026-10-21T13:24:59+09:00",
@@ -506558,6 +507120,33 @@
       "source_title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과",
       "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
       "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
+    },
+    "source_fact:0f1e05bb2f55f1d086097d53": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
     },
     "source_fact:0f1e5a1cdd7d868e2538a4ee": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
@@ -538683,6 +539272,33 @@
       "source_title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'",
       "telegram_core_fact": "삼성전자는 올해 3분기 연결 기준 잠정 영업이익이 107조4000억원으로 집계됐다고 8일 공시했다.",
       "title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'"
+    },
+    "source_fact:1e6b516a57404161a4f33fc9": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
     },
     "source_fact:1e6e1ec7d6d173b5247a5f19": {
       "first_seen_kst": "2026-10-13T08:59:28+09:00",
@@ -585925,6 +586541,29 @@
       "telegram_core_fact": "YMTC의 글로벌 낸드 매출 점유율은 지난해 1분기 9%에서 올해 1분기 14%로 5%포인트 상승했다.",
       "title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격"
     },
+    "source_fact:342ba9f882af297ee239398d": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179718",
+      "source": "매일경제",
+      "source_body_digest": "380dbb7a2052f560275e02667e92825a6e5977f7bd0f6ed1e5b59867df00e9de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce3ba329c8bcccf831f160602b9f549970eccae9035f1434cbc31d4992edad86",
+      "source_fact_keys": [
+        "source_fact:v1:0e6b0bcda1d465cf2c3659d28735de80e91798e08e64c5df404aa3bccb65801c",
+        "source_fact:v1:1807ce00462d72e297aa225ecf2f30d1bc35c956b1d1eaf32d36fc8b636063e3",
+        "source_fact:v1:5b0306c420cbbb875509f1c669dd96e4e45eb35c690a3ad2012bf06ccd200b66",
+        "source_fact:v1:c1bba5245e05be562ad11143e0ce391bc08cdc026c137b66fcd71efe58845a43"
+      ],
+      "source_published_kst": "2026-10-23T01:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소",
+      "telegram_core_fact": "1~9월 누적 총매출은 3억8156만 달러로 전년 동기보다 5.0% 증가했다.",
+      "title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소"
+    },
     "source_fact:3430e514debc78c3a8f03f2f": {
       "first_seen_kst": "2026-10-09T20:24:58+09:00",
       "lanes": {
@@ -588446,6 +589085,33 @@
       "source_title": "인디펜던트 뱅크, 3분기 GAAP EPS 1.90달러..전년비 175% 증가",
       "telegram_core_fact": "인디펜던트 뱅크(INDB)가 3분기 일반회계기준(GAAP) 순이익 8970만 달러, 희석 주당순이익 1.90달러를 기록해 분기 사상 최대 실적을 달성했다고 10월 15일 발표했다.",
       "title": "인디펜던트 뱅크, 3분기 GAAP EPS 1.90달러..전년비 175% 증가"
+    },
+    "source_fact:358cb6cca3a0923f875f8b53": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
     },
     "source_fact:3590310bf437e78b463cdeba": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -622919,6 +623585,29 @@
       "telegram_core_fact": "에퀴팩스(EFX)가 2026년 3분기(9월 30일 종료) 매출액(영업수익) 16억9250만 달러로 전년비 10% 증가했고, 일반회계기준(GAAP) 희석 주당순이익은 1.79달러로 39% 늘었다고 10월 20일 발표했다.",
       "title": "에퀴팩스, 3분기 매출 17억달러 10%↑…연간 전망 하향"
     },
+    "source_fact:45d4e08e2686cdbdf805c2bf": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179718",
+      "source": "매일경제",
+      "source_body_digest": "380dbb7a2052f560275e02667e92825a6e5977f7bd0f6ed1e5b59867df00e9de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce3ba329c8bcccf831f160602b9f549970eccae9035f1434cbc31d4992edad86",
+      "source_fact_keys": [
+        "source_fact:v1:0e6b0bcda1d465cf2c3659d28735de80e91798e08e64c5df404aa3bccb65801c",
+        "source_fact:v1:1807ce00462d72e297aa225ecf2f30d1bc35c956b1d1eaf32d36fc8b636063e3",
+        "source_fact:v1:5b0306c420cbbb875509f1c669dd96e4e45eb35c690a3ad2012bf06ccd200b66",
+        "source_fact:v1:c1bba5245e05be562ad11143e0ce391bc08cdc026c137b66fcd71efe58845a43"
+      ],
+      "source_published_kst": "2026-10-23T01:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소",
+      "telegram_core_fact": "1~9월 누적 총매출은 3억8156만 달러로 전년 동기보다 5.0% 증가했다.",
+      "title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소"
+    },
     "source_fact:45d6ba0067bbf23ed00f1eb2": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -638468,6 +639157,33 @@
       "source_title": "엘링턴 크레딧, 월 배당 주당 0.08달러 선언..11월 30일 지급",
       "telegram_core_fact": "엘링턴 크레딧(EARN)이 이사회에서 보통주 1주당 0.08달러의 월간 배당을 결정했다고 7일(현지시간) 발표했다.",
       "title": "엘링턴 크레딧, 월 배당 주당 0.08달러 선언..11월 30일 지급"
+    },
+    "source_fact:4cf927dcb9fdd4269cbf61ee": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
     },
     "source_fact:4cfa632100fdc57f2e663b8d": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
@@ -654180,6 +654896,33 @@
       "source_title": "\"러시아 제재 해제 안 한다\"…EU, 젤렌스키 지지 결집",
       "telegram_core_fact": "안토니우 코스타 EU 정상회의 상임의장은 \"지금은 우크라이나 지지를 철회할 때가 아니다. 러시아 제재를 완화할 때도 아니다\"라며 \"오히려 우크라이나 지원을 확대하고 러시아 압박을 강화할 때\"라고 말했다.",
       "title": "\"러시아 제재 해제 안 한다\"…EU, 젤렌스키 지지 결집"
+    },
+    "source_fact:541ae0480cb1690217e0767c": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
     },
     "source_fact:541cdfa17a100f833d7f9945": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -703942,6 +704685,33 @@
       ],
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
+    },
+    "source_fact:6b17e1cc82cbe365261a896e": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
     },
     "source_fact:6b1c48c96d61e87bc3a9108f": {
       "first_seen_kst": "2026-10-15T18:18:04+09:00",
@@ -785859,26 +786629,26 @@
     "source_fact:93336f43199c3508099be23b": {
       "first_seen_kst": "2026-10-22T11:13:08+09:00",
       "lanes": {
-        "live": "2026-10-22T11:13:08+09:00"
+        "live": "2026-10-23T01:29:09+09:00"
       },
-      "last_seen_kst": "2026-10-22T11:13:08+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12182593",
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183178",
       "source": "매일경제",
-      "source_body_digest": "bd98e570932d6bfcb2e66f7f90fefc5155842e440b801cb8e543f4081cf1298a",
+      "source_body_digest": "185927297166800d7e95c8b43cc61b7dd46cdc0cc559f12852dccd6acf6f25e0",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a6dbfd737fd59ccd44d4de41922e06c74e6dc56cb2952f124e918f5ddd32b94d",
+      "source_fact_identity": "source_facts:v1:e511467ec601a4701031c04798c9cff27f3ce8c3798415b04b129539d387e50f",
       "source_fact_keys": [
-        "source_fact:v1:0920e12102c5f22a01ffcb88bafb4cf93ff22c947eb12bfc7c382330433a2c8b",
         "source_fact:v1:1004e2306587c42bd3aa56e60aa2acd61860094c1e774b8a25474fb8a02447fb",
         "source_fact:v1:24e311ae4866d18e0480ff42bde2850efc5dd0d2bf10541b23fea58e66daf470",
-        "source_fact:v1:6074f401411153789dd99709ccf03c549d89e6e714cbd86b5e2dcbf8bf7f9cc1",
-        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55"
+        "source_fact:v1:5cad057ea47ebcba1a4a3d9dc17ae48f3fe7d09d598f6029342046d6e8fa46a7",
+        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55",
+        "source_fact:v1:d564784e3621ecb1e98f78632e08c895f8a2ed099857a46f13d15d5954a6abf6"
       ],
-      "source_published_kst": "2026-10-22T10:20+09:00",
+      "source_published_kst": "2026-10-22T17:39+09:00",
       "source_supply_terms": {},
-      "source_title": "미장은 올랐는데 내 ETF는 -7%…서학개미 수익률 ‘환헤지’에 엇갈렸다",
-      "telegram_core_fact": "같은 기간 미국 S&P500지수와 나스닥100지수가 모두 3% 안팎의 상승률을 기록했다는 점을 고려하면 환율이 상품 수익률에 미친 영향이 두드러진다.",
-      "title": "미장은 올랐는데 내 ETF는 -7%…서학개미 수익률 ‘환헤지’에 엇갈렸다"
+      "source_title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다",
+      "telegram_core_fact": "지수가 상승했더라도 환노출형 상품은 원화 강세에 따른 환차손으로 손실을 기록한 반면 환헤지형 상품은 지수 상승분을 오롯이 반영하며 수익률 차이가 10%포인트 가까이 벌어진 모습이다.",
+      "title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다"
     },
     "source_fact:933e4ad5a16cf2772c81177a": {
       "first_seen_kst": "2026-10-17T09:37:15+09:00",
@@ -810719,26 +811489,26 @@
     "source_fact:9ecc550644fc288e90d512dc": {
       "first_seen_kst": "2026-10-22T11:13:08+09:00",
       "lanes": {
-        "live": "2026-10-22T11:13:08+09:00"
+        "live": "2026-10-23T01:29:09+09:00"
       },
-      "last_seen_kst": "2026-10-22T11:13:08+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12182593",
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183178",
       "source": "매일경제",
-      "source_body_digest": "bd98e570932d6bfcb2e66f7f90fefc5155842e440b801cb8e543f4081cf1298a",
+      "source_body_digest": "185927297166800d7e95c8b43cc61b7dd46cdc0cc559f12852dccd6acf6f25e0",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a6dbfd737fd59ccd44d4de41922e06c74e6dc56cb2952f124e918f5ddd32b94d",
+      "source_fact_identity": "source_facts:v1:e511467ec601a4701031c04798c9cff27f3ce8c3798415b04b129539d387e50f",
       "source_fact_keys": [
-        "source_fact:v1:0920e12102c5f22a01ffcb88bafb4cf93ff22c947eb12bfc7c382330433a2c8b",
         "source_fact:v1:1004e2306587c42bd3aa56e60aa2acd61860094c1e774b8a25474fb8a02447fb",
         "source_fact:v1:24e311ae4866d18e0480ff42bde2850efc5dd0d2bf10541b23fea58e66daf470",
-        "source_fact:v1:6074f401411153789dd99709ccf03c549d89e6e714cbd86b5e2dcbf8bf7f9cc1",
-        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55"
+        "source_fact:v1:5cad057ea47ebcba1a4a3d9dc17ae48f3fe7d09d598f6029342046d6e8fa46a7",
+        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55",
+        "source_fact:v1:d564784e3621ecb1e98f78632e08c895f8a2ed099857a46f13d15d5954a6abf6"
       ],
-      "source_published_kst": "2026-10-22T10:20+09:00",
+      "source_published_kst": "2026-10-22T17:39+09:00",
       "source_supply_terms": {},
-      "source_title": "미장은 올랐는데 내 ETF는 -7%…서학개미 수익률 ‘환헤지’에 엇갈렸다",
-      "telegram_core_fact": "같은 기간 미국 S&P500지수와 나스닥100지수가 모두 3% 안팎의 상승률을 기록했다는 점을 고려하면 환율이 상품 수익률에 미친 영향이 두드러진다.",
-      "title": "미장은 올랐는데 내 ETF는 -7%…서학개미 수익률 ‘환헤지’에 엇갈렸다"
+      "source_title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다",
+      "telegram_core_fact": "지수가 상승했더라도 환노출형 상품은 원화 강세에 따른 환차손으로 손실을 기록한 반면 환헤지형 상품은 지수 상승분을 오롯이 반영하며 수익률 차이가 10%포인트 가까이 벌어진 모습이다.",
+      "title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다"
     },
     "source_fact:9edbb68d6cd37bf8550349a2": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
@@ -860375,6 +861145,29 @@
       "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
       "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
     },
+    "source_fact:b59c9ceb27f53fb4053fd44f": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179718",
+      "source": "매일경제",
+      "source_body_digest": "380dbb7a2052f560275e02667e92825a6e5977f7bd0f6ed1e5b59867df00e9de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce3ba329c8bcccf831f160602b9f549970eccae9035f1434cbc31d4992edad86",
+      "source_fact_keys": [
+        "source_fact:v1:0e6b0bcda1d465cf2c3659d28735de80e91798e08e64c5df404aa3bccb65801c",
+        "source_fact:v1:1807ce00462d72e297aa225ecf2f30d1bc35c956b1d1eaf32d36fc8b636063e3",
+        "source_fact:v1:5b0306c420cbbb875509f1c669dd96e4e45eb35c690a3ad2012bf06ccd200b66",
+        "source_fact:v1:c1bba5245e05be562ad11143e0ce391bc08cdc026c137b66fcd71efe58845a43"
+      ],
+      "source_published_kst": "2026-10-23T01:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소",
+      "telegram_core_fact": "1~9월 누적 총매출은 3억8156만 달러로 전년 동기보다 5.0% 증가했다.",
+      "title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소"
+    },
     "source_fact:b5a235457d286531b2ebaa1d": {
       "first_seen_kst": "2026-10-16T21:59:28+09:00",
       "lanes": {
@@ -862470,6 +863263,26 @@
       "source_title": "\"호주발 데이터센터 잇단 IPO 철회가 AI 인프라주 급락 촉발\" | 연합뉴스",
       "telegram_core_fact": "엔비디아와 블랙스톤의 지원을 받아 호주 사상 두번째 규모인 440억호주달러(약 41조원)의 기업가치를 내세우며 IPO에 나섰던 데이터센터 운영업체 퍼머스는 지난 10일 IPO 계획을 전격 철회했다.",
       "title": "\"호주발 데이터센터 잇단 IPO 철회가 AI 인프라주 급락 촉발\" | 연합뉴스"
+    },
+    "source_fact:b6e73e817604b1c017628cda": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=07025766645615544",
+      "source": "이데일리",
+      "source_body_digest": "b22c84a5c386f7f665e64e3daac09649938ee69c7f99a71a26a41d8cadd962a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae405d05ca1865494cc1f5a0fad29969b38b4b5d117e5d07afac30b6381cb51",
+      "source_fact_keys": [
+        "source_fact:v1:f765d487ccae3b43fd45ad03e3bcbcdaaf17a57e8e99ce439f3dfdcbb00b1c56"
+      ],
+      "source_published_kst": "2026-10-22T22:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "레드햇-엔비디아, 에이전틱 AI 보안 맞손",
+      "telegram_core_fact": "레드햇은 엔비디아와 협력을 확대해 ‘레드햇 AI 팩토리 위드 엔비디아’를 기반으로 엔터프라이즈 에이전틱 AI의 보안과 운영 기반을 확대한다고 22일 밝혔다. 레드햇이 엔비디아와 손잡고 기업용 에이전틱 인공지능(AI)의 보안과 추론 인프라를 강화한다.",
+      "title": "레드햇-엔비디아, 에이전틱 AI 보안 맞손"
     },
     "source_fact:b6e9b77eca6a479621e4ec80": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
@@ -914191,6 +915004,33 @@
       "source_title": "델 테크놀로지스, 엔비디아와 손잡고 데스크사이드부터 데이터센터까지 에이전틱 AI 인프라 확대",
       "telegram_core_fact": "데스크사이드 개발 환경부터 데이터센터까지 아우르는 AI 솔루션과 컴퓨팅 인프라를 확대하고, 기업이 자체적으로 소유·관리하는 환경에서 AI를 개발하고 운영할 수 있도록 지원한다.",
       "title": "델 테크놀로지스, 엔비디아와 손잡고 데스크사이드부터 데이터센터까지 에이전틱 AI 인프라 확대"
+    },
+    "source_fact:cf40f1fb3c41f09d16a034fa": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
     },
     "source_fact:cf429112e7f404616f687658": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -980115,6 +980955,30 @@
       "telegram_core_fact": "이충헌 밸류파인더 대표는 우주항공 고객사와 10년 장기 공급계약을 체결하고 니켈 제련소 투자를 진행 중인 스피어를 주목했다.",
       "title": "[오늘 이 종목] 우주항공 장기계약 스피어 · 북미 ESS 수혜 신흥에스이씨'주목'"
     },
+    "source_fact:ee65674a2404ee8914c5d577": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183178",
+      "source": "매일경제",
+      "source_body_digest": "185927297166800d7e95c8b43cc61b7dd46cdc0cc559f12852dccd6acf6f25e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e511467ec601a4701031c04798c9cff27f3ce8c3798415b04b129539d387e50f",
+      "source_fact_keys": [
+        "source_fact:v1:1004e2306587c42bd3aa56e60aa2acd61860094c1e774b8a25474fb8a02447fb",
+        "source_fact:v1:24e311ae4866d18e0480ff42bde2850efc5dd0d2bf10541b23fea58e66daf470",
+        "source_fact:v1:5cad057ea47ebcba1a4a3d9dc17ae48f3fe7d09d598f6029342046d6e8fa46a7",
+        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55",
+        "source_fact:v1:d564784e3621ecb1e98f78632e08c895f8a2ed099857a46f13d15d5954a6abf6"
+      ],
+      "source_published_kst": "2026-10-22T17:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다",
+      "telegram_core_fact": "지수가 상승했더라도 환노출형 상품은 원화 강세에 따른 환차손으로 손실을 기록한 반면 환헤지형 상품은 지수 상승분을 오롯이 반영하며 수익률 차이가 10%포인트 가까이 벌어진 모습이다.",
+      "title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다"
+    },
     "source_fact:ee6c7ed0c7347e4616314f74": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
       "lanes": {
@@ -1009460,6 +1010324,33 @@
       "telegram_core_fact": "이교석 신영증권 연구원은 “원화 강세는 완제품을 원화로 매입해 외화를 벌어들이는 구조가 주를 이루는 뷰티 브랜드와 유통 밴더사에 부정적 영향이 클 것”이라며 “원·달러 환율이 5% 하락하면 에이피알 등은 영업이익률이 1%포인트 안팎 떨어질 것”이라고 분석했다.",
       "title": "잘 팔렸지만 환율 하락에 '발목'…K뷰티, 3분기 눈높이 하향"
     },
+    "source_fact:fd23759e3234aa2e7dc1f12e": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
+    },
     "source_fact:fd23d8221aa35e2ae2462699": {
       "first_seen_kst": "2026-10-15T07:08:31+09:00",
       "lanes": {
@@ -1017204,6 +1018095,24 @@
       "source_title": "식약처 \"위장관기질종양 희귀의약품 품목허가\"",
       "telegram_core_fact": "식약처가 위장관기질종양 치료 희귀의약품을 허가했다. 식약처는 수입 희귀의약품인 오노약품의 '퀸락정50㎎'(성분명 리프레티닙)을 허가했다고 16일 밝혔다.",
       "title": "식약처 \"위장관기질종양 희귀의약품 품목허가\""
+    },
+    "title:042eb8cbe45343b4b7da3b82": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638699",
+      "source": "이투데이",
+      "source_body_digest": "eb660664d41af7ab6f2508578549d3c696fb3e257402497ebb37b162a059a08a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 세계 최대 시화조력발전소 AI 전환 추진…수자원공사와 협력",
+      "telegram_core_fact": "LG전자가 한국수자원공사(K-water)와 손잡고 발전용량 기준 세계 최대 규모인 시화조력발전소의 AI 전환을 추진한다. LG전자는 22일 경기도 안산시 시화조력문화관에서 한국수자원공사와 ‘시화호 AI 조력발전소 추진을 위한 기술협력 업무협약’을 체결했다고 밝혔다.",
+      "title": "LG전자, 세계 최대 시화조력발전소 AI 전환 추진…수자원공사와 협력"
     },
     "title:0431673b5bef8b6c1ab5ebc8": {
       "first_seen_kst": "2026-10-05T05:59:37+09:00",
@@ -1039946,6 +1040855,30 @@
       "source_title": "우크라, 트럼프 만류에도 푸틴 고향 인프라 역대급 공습",
       "telegram_core_fact": "트럼프 대통령은 지난주 러시아와의 '경유 딜'에 합의하고 대러 제재를 전격 유예했고, 우크라이나는 이런 결정에 크게 반발한 바 있다.",
       "title": "우크라, 트럼프 만류에도 푸틴 고향 인프라 역대급 공습"
+    },
+    "title:2f1e035ee1a62524d8c183cd": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183178",
+      "source": "매일경제",
+      "source_body_digest": "185927297166800d7e95c8b43cc61b7dd46cdc0cc559f12852dccd6acf6f25e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e511467ec601a4701031c04798c9cff27f3ce8c3798415b04b129539d387e50f",
+      "source_fact_keys": [
+        "source_fact:v1:1004e2306587c42bd3aa56e60aa2acd61860094c1e774b8a25474fb8a02447fb",
+        "source_fact:v1:24e311ae4866d18e0480ff42bde2850efc5dd0d2bf10541b23fea58e66daf470",
+        "source_fact:v1:5cad057ea47ebcba1a4a3d9dc17ae48f3fe7d09d598f6029342046d6e8fa46a7",
+        "source_fact:v1:ca0454fbf79c49254fab4e2e0700cabcd51c072b18fccf00931335444466ea55",
+        "source_fact:v1:d564784e3621ecb1e98f78632e08c895f8a2ed099857a46f13d15d5954a6abf6"
+      ],
+      "source_published_kst": "2026-10-22T17:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다",
+      "telegram_core_fact": "지수가 상승했더라도 환노출형 상품은 원화 강세에 따른 환차손으로 손실을 기록한 반면 환헤지형 상품은 지수 상승분을 오롯이 반영하며 수익률 차이가 10%포인트 가까이 벌어진 모습이다.",
+      "title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다"
     },
     "title:2f285de5f8ea506d2ffd1442": {
       "first_seen_kst": "2026-10-17T10:06:46+09:00",
@@ -1079652,6 +1080585,26 @@
       "source_published_kst": "2026-10-05T22:51+09:00",
       "title": "[美특징주]PTC, 슈나이더 일렉트릭 피인수 소식에 주가 '급등'"
     },
+    "title:7c87bf8f49e22d3c75c814d9": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=07025766645615544",
+      "source": "이데일리",
+      "source_body_digest": "b22c84a5c386f7f665e64e3daac09649938ee69c7f99a71a26a41d8cadd962a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ae405d05ca1865494cc1f5a0fad29969b38b4b5d117e5d07afac30b6381cb51",
+      "source_fact_keys": [
+        "source_fact:v1:f765d487ccae3b43fd45ad03e3bcbcdaaf17a57e8e99ce439f3dfdcbb00b1c56"
+      ],
+      "source_published_kst": "2026-10-22T22:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "레드햇-엔비디아, 에이전틱 AI 보안 맞손",
+      "telegram_core_fact": "레드햇은 엔비디아와 협력을 확대해 ‘레드햇 AI 팩토리 위드 엔비디아’를 기반으로 엔터프라이즈 에이전틱 AI의 보안과 운영 기반을 확대한다고 22일 밝혔다. 레드햇이 엔비디아와 손잡고 기업용 에이전틱 인공지능(AI)의 보안과 추론 인프라를 강화한다.",
+      "title": "레드햇-엔비디아, 에이전틱 AI 보안 맞손"
+    },
     "title:7c88246afd9fbb1715a8d6fe": {
       "first_seen_kst": "2026-10-22T23:34:47+09:00",
       "lanes": {
@@ -1089249,6 +1090202,29 @@
       "source_title": "美 물가 충격·코어위브 신용위험…\"AI 전방위 신용위험 확산 가능성은 낮아\"",
       "telegram_core_fact": "박상현 iM증권 연구원은 15일 보고서에서 “9월 소비자물가지수(CPI)는 시장 예상에 부합하는 전월 대비 0.6% 상승을 기록했지만, 근원 CPI는 예상치를 0.1%포인트 웃도는 0.3% 올랐다”며 “단순히 소폭 상회한 것으로 치부할 수도 있지만, 금융시장은 이를 물가 압력의 확산으로 인식했다”고 밝혔다.",
       "title": "美 물가 충격·코어위브 신용위험…\"AI 전방위 신용위험 확산 가능성은 낮아\""
+    },
+    "title:8e11e3150f1d546269ffb124": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1179718",
+      "source": "매일경제",
+      "source_body_digest": "380dbb7a2052f560275e02667e92825a6e5977f7bd0f6ed1e5b59867df00e9de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce3ba329c8bcccf831f160602b9f549970eccae9035f1434cbc31d4992edad86",
+      "source_fact_keys": [
+        "source_fact:v1:0e6b0bcda1d465cf2c3659d28735de80e91798e08e64c5df404aa3bccb65801c",
+        "source_fact:v1:1807ce00462d72e297aa225ecf2f30d1bc35c956b1d1eaf32d36fc8b636063e3",
+        "source_fact:v1:5b0306c420cbbb875509f1c669dd96e4e45eb35c690a3ad2012bf06ccd200b66",
+        "source_fact:v1:c1bba5245e05be562ad11143e0ce391bc08cdc026c137b66fcd71efe58845a43"
+      ],
+      "source_published_kst": "2026-10-23T01:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소",
+      "telegram_core_fact": "1~9월 누적 총매출은 3억8156만 달러로 전년 동기보다 5.0% 증가했다.",
+      "title": "브랜디와인 리얼티 트러, 3분기 총매출 1억2600만 달러..Core FFO 12% 감소"
     },
     "title:8e159e7ac4ee0e1545f961a1": {
       "first_seen_kst": "2026-10-14T13:28:53+09:00",
@@ -1115882,6 +1116858,24 @@
       "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
       "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
     },
+    "title:c260322ddefdde385949c28a": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183572",
+      "source": "매일경제",
+      "source_body_digest": "01b0888edb6418195b6268b617a21b2ad18a5344b709129d04feb7a886949a0f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T01:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔브이알, 3분기 희석 EPS 89.45달러..전년비 20% 감소",
+      "telegram_core_fact": "미국 주택건설·모기지 업체 엔브이알(NVR)이 3분기(9월 30일 종료) 순이익 2억4860만 달러, 희석 주당순이익 89.45달러, 연결 매출액 24억 달러를 기록했다고 10월 22일 발표했다.",
+      "title": "엔브이알, 3분기 희석 EPS 89.45달러..전년비 20% 감소"
+    },
     "title:c28f17666206cd556bca69a3": {
       "first_seen_kst": "2026-10-20T21:48:37+09:00",
       "lanes": {
@@ -1119044,6 +1120038,24 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "밸류파인더 “메타케어, 저용량 탈모치료제 출시 임박…헬스케어 플랫폼 확장”"
+    },
+    "title:c95aab8a6d4dabe56def98d3": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://biz.heraldcorp.com/article/10911421",
+      "source": "헤럴드경제",
+      "source_body_digest": "3c071b75b50327efe9d8297ff929cf14023de35a011cb2af47b6cdeddbc71944",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-22T14:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "한솔PNS, AJ솔루션테크 자산관리 시스템 구축…AI 활용 기반 확보",
+      "telegram_core_fact": "한솔PNS는 AJ솔루션테크의 자산관리 시스템 ‘SAM(Solutiontech Asset Management)’ 구축 사업을 완료했다고 22일 밝혔다. 이번에 구축된 SAM은 한솔PNS의 설비자산관리 시스템 ‘PAM(Plant Asset Management)’을 기반으로 개발됐다.",
+      "title": "한솔PNS, AJ솔루션테크 자산관리 시스템 구축…AI 활용 기반 확보"
     },
     "title:c9670dcf9f2ac9ec379082b3": {
       "first_seen_kst": "2026-10-18T16:18:39+09:00",
@@ -1129493,6 +1130505,33 @@
       "source_title": "전남광주시의회 '동복댐·법정전입금·군공항' 점검…시장과 신경전(종합)",
       "telegram_core_fact": "전남광주통합특별시의원들이 시정질문을 통해 반도체 용수 공급에 따른 화순 동복댐 증고와 교육청 법정전입금 미편성, 군공항 이전에 따른 주민 수용성 확대, 도시철도 2호선 개통 연장 등을 집중 점검했다.",
       "title": "전남광주시의회 '동복댐·법정전입금·군공항' 점검…시장과 신경전(종합)"
+    },
+    "title:dd05679e5025dba830c91e65": {
+      "first_seen_kst": "2026-10-23T01:29:09+09:00",
+      "lanes": {
+        "live": "2026-10-23T01:29:09+09:00"
+      },
+      "last_seen_kst": "2026-10-23T01:29:09+09:00",
+      "link": "https://www.etnews.com/20261022000281",
+      "source": "전자신문",
+      "source_body_digest": "5703fb09ac30386c347c9e007c5b5aa47f7e47d96418265fe52409ac10c92212",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c55b42e91e2186aafcda78e9231d7333c2b214bbf5fb2fe46e160f98c38cc2f3",
+      "source_fact_keys": [
+        "source_fact:v1:1be4b786eaa6e10a4fb5977f792d0fd9a4cd64d8e3826eeada088db82222c17c",
+        "source_fact:v1:45533d988869f46ebacdeadb9fbd41cdf1064a8a34965c3f03647d4c388d380c",
+        "source_fact:v1:67738fb3b592d9a9a7542fbb287c0ed2c5d8f7aa496d47fa8a610157a456f05f",
+        "source_fact:v1:84ce9f0cd7f80d2fa71375c0dd33717176d1a44c08f462c9cdc559546aa83878",
+        "source_fact:v1:9f9c0c0c3cc90a84d5949220b9993d1db5dbc7adc99cb0668f402b4351bb4904",
+        "source_fact:v1:b7d3c1a72d75b4407d6baa5bbff0c82756af4e0bc439f43ece8d1e07f0c66313",
+        "source_fact:v1:b7dc6502f406882fc5546552f5706cf5c59e8273a9d6d6ecca4886fcd278907e",
+        "source_fact:v1:d7173d400b46240618402a3f7c6d272c1c273f6c4876ff45a02f844a823e6ebd"
+      ],
+      "source_published_kst": "2026-10-22T14:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
+      "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
+      "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
     },
     "title:dd06487e345698509b47749d": {
       "first_seen_kst": "2026-10-15T16:25:35+09:00",
@@ -1146837,5 +1147876,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-23T01:05:59+09:00"
+  "updated_at_kst": "2026-10-23T01:29:09+09:00"
 }
