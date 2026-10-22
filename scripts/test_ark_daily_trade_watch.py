@@ -71,9 +71,9 @@ def main():
         ("ARKQ","Sell","TER",15964),("ARKQ","Sell","ESLT",1428),
         ("ARKX","Sell","ESLT",1500),("ARKG","Sell","PSNL",385778),
     ]
-    full = ("date,fund,direction,ticker,cusip,name,shares,% of etf\\n" +
+    full = ("date,fund,direction,ticker,cusip,name,shares,% of etf\n" +
             "".join(
-                f"10/20/2026,{fund},{action},{ticker},000000,{ticker},{shares},0.1\\n"
+                f"10/20/2026,{fund},{action},{ticker},000000,{ticker},{shares},0.1\n"
                 for fund,action,ticker,shares in rows_20261020
             )).encode()
     parsed = w.parse(full)
