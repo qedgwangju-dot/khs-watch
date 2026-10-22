@@ -27,6 +27,7 @@ jobs:
       TELEGRAM_CHAT_ID: ${{ secrets.THIRTEENF_TELEGRAM_CHAT_ID }}
       EXPECTED_BOT: "khs887988798879_bot"
       META_PROBE_ONLY: "false"
+      META_SOURCE_PRIORITY: "official_ir_then_company_press_release"
 
     steps:
       - name: Checkout
