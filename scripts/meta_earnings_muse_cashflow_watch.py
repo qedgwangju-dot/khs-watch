@@ -69,12 +69,16 @@ def _fx():
 def money(millions,rate):
     usd=abs(millions)*1_000_000
     value=millions*1_000_000*rate
-    if usd>=1_000_000_000:
-        shown=f"{abs(millions)/1000:,.3f}십억달러"
-    elif usd>=1_000_000:
-        shown=f"{abs(millions):,.0f}백만달러"
-    else:
-        shown=f"{usd:,.0f}달러"
+    eok,rem=divmod(int(usd),100_000_000)
+    man,rest=divmod(rem,10_000)
+    parts=[]
+    if eok:
+        parts.append(f"{eok:,}억")
+    if man:
+        parts.append(f"{man:,}만")
+    if rest:
+        parts.append(f"{rest:,}")
+    shown="".join(parts)+"달러"
     if value<0:
         shown="-"+shown
     won=abs(value)
@@ -128,7 +132,7 @@ def build_q3(rate,basis,source_label):
       "",
       "<b>숨은 역풍·실패모드</b>",
       "• 신규 AI 서비스의 실사용량·유료 전환이 느리면 설비투자가 현금흐름을 더 압박할 수 있습니다.",
-      "• 99억달러 법률 비용은 본업 광고 성장과 구분하되, 실제 향후 지급 일정·추가 소송 위험을 확인합니다.",
+      f"• 법률 관련 비용 {a('legal_charge')}은 본업 광고 성장과 구분하되, 실제 지급 일정·추가 소송 위험을 확인합니다.",
       "• Muse 개인정보·에이전트 행동 안전, 데이터센터 전력·냉각·고객 채택 지연도 감시합니다.",
       "",
       "<b>공식 출처</b>",
