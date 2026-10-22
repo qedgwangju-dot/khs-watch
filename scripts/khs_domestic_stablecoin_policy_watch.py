@@ -226,10 +226,15 @@ def is_policy_candidate(text: str, source_name: str) -> bool:
         ("Financial Services Commission", "Korea Policy", "Bank of Korea", "National Assembly")
     )
     if source_name.startswith("Bank of Korea"):
-        cbdc_terms = list(CBDC_TITLE_TERMS)
         return has_actor and (
             (has_any(text, BOK_DIRECT_POLICY_TERMS) and has_any(text, BOK_DIRECT_EVENT_TERMS))
-            or (has_any(text, cbdc_terms) and has_any(text, list(CBDC_EVENT_TERMS)))
+            or (
+                has_any(text, [
+                    "프로젝트 한강", "예금토큰", "예금 토큰", "일반인용 CBDC",
+                    "기관용 CBDC", "국고보조금", "국고금 집행", "CBDC",
+                ])
+                and has_any(text, list(CBDC_EVENT_TERMS))
+            )
         )
     return has_policy and has_event and has_actor
 
