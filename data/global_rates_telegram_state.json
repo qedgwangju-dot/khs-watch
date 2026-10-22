@@ -1,14 +1,14 @@
 {
   "risk_level": 0,
   "risk_label": "관찰",
-  "market_direction": "↘ 엔캐리 청산 쪽으로 기울기",
-  "market_direction_reason": "엔화 강세 + 미·일 금리차 축소/미국2Y 하락 신호",
-  "updated_at_kst": "2026-10-23T04:50:09+09:00",
+  "market_direction": "↔ 엔화 강세, 청산 확인은 아직",
+  "market_direction_reason": "엔화 강세 단독이며 금리차·전염 신호가 부족",
+  "updated_at_kst": "2026-10-23T05:52:07+09:00",
   "signals": {
     "jgb10_3": false,
     "jgb_curve_up": false,
     "us_jp_2y_spread_narrow": false,
-    "us_2y_down": true,
+    "us_2y_down": false,
     "yen_strong_level": false,
     "yen_surge": false,
     "vix_spike": false,
