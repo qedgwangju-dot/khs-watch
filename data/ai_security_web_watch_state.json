@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 22,
+    "material_items": 23,
     "new_material_items": 0,
-    "raw_items": 316,
+    "raw_items": 317,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -163,6 +163,16 @@
       "source": "GitGuardian Blog",
       "title": "Responding to php2shell When You Don’t Know Your Secrets - GitGuardian Blog",
       "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4xRGVqQzFoSU5vUk12Y19oNFhMU3JiTGZKN2lNZ0IwakU2WU1LZFdFWC1wVm00ZkEwS1J4UUQ4Z0swXzc5TDVsall2VHFVeGIxal8tR2U1Y0ZfcVA5SFBlTV95NDV4dGtpcnpFMHFNZ1E4RFU?oc=5",
+      "vendor": "PHP 재단"
+    },
+    "2c125f4fe8714fe9eebfb768": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-22T15:54:36.269286+00:00",
+      "published_at": "2026-10-22T13:09:12+00:00",
+      "severity": 3,
+      "source": "BleepingComputer",
+      "title": "Amazon says PHP2Shell exploitation began 4 days before patches - BleepingComputer",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQZ2RULUR5d3hlak5UMkdEU1pfWUdNblVMeW9GNHdQUjRfY2NFY3VDWjFqUDd5dGtLY3ZRc1NTdEpsc0l0NExMTS1wSnlXbjdwRGp3YThTa3NjMnNDM1BodXc3dlhlNW12RlJIcE5wcGlYR3Q3NGFNQzZPWmtZOE9ldXhVaXhIcGp2V0oyMzRIRmQwb0dUdHk5dkFCdWRxckI1blNpX0RHRWdxT0lub19F0gG0AUFVX3lxTE5RSnJzd1VuY1dmWnJtb29hajNFR1o4R0NuOTdKaHkzalFQbmZrNkhlYkROcVNJaG02SnZYdWhZcjNiTnRqWU9oYUN0TmRFSXVxa05tNWxHbnliTDdlUUJydWxpaWdCX2k3WDN2Z1QxdU5LZ01ianFSS1lJZWl1Y3ZfSUxfZzBtVU15SDY0UDlPZndIQVo0ZlB1bGU3MGs5LW1UaUFreTkyOXVzTkJndHM5Y0ItNQ?oc=5",
       "vendor": "PHP 재단"
     },
     "2d7cc4a2547a23aef929ff76": {
@@ -635,6 +645,16 @@
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxONVl0SzhGa2IyTHliZXlVSl9jcFY4V1NmUG5YN1F3WWsyUG1jSzhlMzNwZ3M2V2hmZWhfWS1pcFFkYmwtc2RZeTdJLVpRTkwxMmE4YjZkdHV3bUlZenBxeUhUa0tIU0VGeGtyTktPSGt5Z3VnUVRudWZ0VlNzSHJjc3hsY0puM0RTanBmSkJ3?oc=5",
       "vendor": "OpenAI"
     },
+    "a13afb10ee69417f867e3268": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-22T15:54:36.269286+00:00",
+      "published_at": "2026-10-22T12:20:23+00:00",
+      "severity": 3,
+      "source": "SecurityWeek",
+      "title": "Tech and Security Companies Respond to PHP2Shell Vulnerabilities - SecurityWeek",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOTW1nbzFMUERKZEQyUGVEUk1ta3BjYjhTR0Y3TDhHdmVNeFYyV21CeUhNRDN2bWxHUFJsUEN1ampfVHpWSEZjUExuOGVaaEFBMlhzUktabmx3bnYxUkMwd2t3bnZKY3d6dmc1Tk9yQ0ljSHdVMlpwaGpMUW96Ukt1VEhyc3ZfT0tHbzNSWFFiSmNBZzBWaWNHLUdR0gGfAUFVX3lxTE1ueHhuS01fQlpGRll4eHB3OWpCVlhjaGZiLTJpdmhtTmdVQ1FBcUFxajNJYlNZWlQxSFBtNlpqSXpCc0NGMlF1ekV2amZad2ZVS3prYnBwRG9uRWF0SktreXU5bFY3OFlEb3d4SlYtdElDdjN1S2RiS0Zhd0tfM3F6WVdZNXBIcmVTRjJpOWp0Z25fMUNiTVNfQmhkWGhJRQ?oc=5",
+      "vendor": "PHP 재단"
+    },
     "a1fedb9a2d305e454694748b": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-14T19:09:03.989413+00:00",
@@ -1056,5 +1076,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-23T00:48:09+09:00"
+  "updated_at_kst": "2026-10-23T00:54:36+09:00"
 }
