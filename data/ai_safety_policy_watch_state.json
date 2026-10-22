@@ -6,10 +6,8 @@
     "material_items": 8,
     "new_articles": 0,
     "new_events": 0,
-    "official_page_skips": [
-      "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
-    ],
-    "raw_items": 165,
+    "official_page_skips": [],
+    "raw_items": 173,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -59,8 +57,8 @@
     },
     "OpenAI 프런티어 학습 Safety Case": {
       "candidate_count": 1,
-      "candidate_digest": "de5da960915045b69a00375b144a3889993012b398553d487b3fa5506d2a27cb",
-      "candidate_first_seen_at": "2026-10-22T01:56:20.137296+00:00",
+      "candidate_digest": "f494dc11ca99eb6dd98d40951c01e9a690549d23ba9a8b597f45a8f01e6a4278",
+      "candidate_first_seen_at": "2026-10-22T16:53:08.173472+00:00",
       "digest": "c3dad5287446cbd87a55b87e9ee7ab81a0f6328bbc57af16648c81a9cee60ca0",
       "updated_at": "2026-10-02T09:50:44.703222+00:00",
       "url": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training/"
@@ -96,7 +94,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-10-22T16:51:13.316466+00:00",
+    "updated_at": "2026-10-22T16:53:08.173472+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -308,11 +306,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-10-23T01:51:13+09:00",
+  "updated_at_kst": "2026-10-23T01:53:08+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-10-22T16:51:52.143817+00:00",
+    "last_success_at": "2026-10-22T16:53:57.247492+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
