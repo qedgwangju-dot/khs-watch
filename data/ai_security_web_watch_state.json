@@ -8,7 +8,7 @@
     "errors": [],
     "material_items": 18,
     "new_material_items": 0,
-    "raw_items": 301,
+    "raw_items": 306,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -895,6 +895,16 @@
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOajFqRHlNMUttN0pzY014QnFwZTlIeDhnaUpuZU9XMjFicHNVUXpOTUFZWUM2Uk94NFdsbVVuNjNWMzNNM29mN3JITnNZY1cydThONGJnZk55dnh0VUNtSHlDSFhGVlpGSFZUVV9iSmpxVUVGejVwUWhVOGstc2FDSWtSSzM2RkJxWkFxS3pqemVKMlFRZDR0SGNERTM1TW1DSmZZcWFXZzNELUZoeDNsc3ZnVUjSAbQBQVVfeXFMTmoxakR5TTFLbTdKc2NNeEJxcGU5SHg4Z2lKbmVPVzIxYnBzVVF6Tk1BWVlDNlJPeDRXbG1VbjYzVjMzTTNvZjdySE5zWWNXMnU4TjRiZ2ZOeXZ4dFVDbUh5Q0hYRlZaRkhWVFVfYkpqcVVFRno1cFFoVThrLXNhQ0lrUkszNkZCcVpBcUt6anplSjJRUWQ0dEhjREUzNU1tQ0pmWXFhV2czRC1GaHgzbHN2Z1VI?oc=5",
       "vendor": "OpenAI"
     },
+    "e812896929594b077b9a68a5": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-22T06:21:46.441067+00:00",
+      "published_at": "2026-10-21T16:50:40+00:00",
+      "severity": 3,
+      "source": "SecurityWeek",
+      "title": "PHP2Shell Patches Land as First Exploitation Attempts Hit Sensors - SecurityWeek",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNaFoxZkxQS1BGRVVfWHF5R3Azd2xvb3VuR3ZibU44Mk51RVF1UjE2YUZ6elRaVmtTaGxfdTcwMjU4bDh3QTRabUtJdmd0MlVXYURSMnhSSlJKS2Z0ZWRvb2VIM29aMU5GR2g3WFMzeGdfaG5xaEdmSlkxRG8zby1xWWQ5LU5vZHlaallOWTFCMmJuQkduWW4tdS1tcw?oc=5",
+      "vendor": "PHP 재단"
+    },
     "e8f9fec166c7df21157fead0": {
       "category": "AI 자율복제·사물인터넷 모의평가",
       "first_seen_at": "2026-10-14T15:21:21.863443+00:00",
@@ -976,5 +986,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-22T14:54:13+09:00"
+  "updated_at_kst": "2026-10-22T15:21:46+09:00"
 }
