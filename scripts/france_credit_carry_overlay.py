@@ -320,6 +320,11 @@ def format_event(rating: dict, events: list[dict], pending: dict,
     next_boundary = base.next_spread_marker(
         float(spread.replace("bp", "")) if re.fullmatch(r"\d+(?:\.\d+)?bp", spread) else None
     )
+    rating_checkpoint = (
+        "• S&P 2026년 11월 27일 평가 일정과 2027년 예산 논의(현재 확정 등급 변동 아님)"
+        if sp_only else
+        "• Moody's 2026년 10월 23일 평가 결과 검증과 2027년 예산 논의"
+    )
     msg = "\n".join([
         f"🔔 [프랑스 국채·신용등급] {name}",
         "",
@@ -339,7 +344,7 @@ def format_event(rating: dict, events: list[dict], pending: dict,
         "■ 먼저 확인할 지표",
         f"• 프랑스-독일 동일 기준일 국채금리차 다음 경계 {next_boundary} 및 일간 변화",
         "• 유럽 국채 유동성·매수/매도 호가차·환매조건부채권 거래조건",
-        "• 프랑스 10월 23일 공식 신용등급 결과와 2027년 예산 논의",
+        rating_checkpoint,
         "",
         primary_link,
         f"• Briefs France carry story: {ORIGINAL_STORY}",
