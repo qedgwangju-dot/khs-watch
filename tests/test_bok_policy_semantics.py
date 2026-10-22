@@ -73,7 +73,7 @@ class PolicySemanticsTests(unittest.TestCase):
         self.assertTrue(parsed["flags"]["inflation_next_up"])
         self.assertTrue(parsed["flags"]["housing_reaccelerating"])
         alert = build_alert_correct(parsed, None, False)
-        self.assertIn("3.00%", alert)
+        self.assertIn("3%", alert)  # 텔레그램의 기존 금리 표기는 소수점 .00을 생략
         self.assertIn("상당폭 상회", alert)
         self.assertIn("7명", alert)
         self.assertIn("새 확정 수치 미제시", alert)
