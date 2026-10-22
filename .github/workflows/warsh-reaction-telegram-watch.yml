@@ -44,6 +44,7 @@ on:
       - 'scripts/warsh_market_watch_v2.py'
       - 'scripts/warsh_ai_taskforce_watch.py'
       - 'scripts/warsh_ai_taskforce_watch_v2.py'
+      - 'tests/test_warsh_gartner_dedup.py'
       - 'scripts/warsh_new_axes_watch.py'
       - 'scripts/warsh_new_axes_watch_v2.py'
       - 'scripts/warsh_new_axes_watch_v3.py'
@@ -253,7 +254,12 @@ jobs:
           run_watch scripts/warsh_speech_watch.py
           run_watch scripts/warsh_inflation_market_watch.py
           run_watch scripts/warsh_market_watch_v2.py
-          run_watch scripts/warsh_ai_taskforce_watch_v2.py
+          if python -m unittest discover -s tests -p 'test_warsh_gartner_dedup.py' -v; then
+            run_watch scripts/warsh_ai_taskforce_watch_v2.py
+          else
+            echo "::error::Gartner 중복 방지 회귀검증 실패 — 해당 감시만 전송 보류"
+            MACRO_RC=1
+          fi
           run_watch scripts/warsh_new_axes_watch_v4.py
           run_watch scripts/warsh_pce_trend_watch.py
           run_watch scripts/warsh_curve_ownership_watch_v2.py

@@ -104,32 +104,66 @@ def rss_gartner_items():
     return items
 
 
-def structural_gartner_items():
-    errors=[]
-    try:
-        return official_gartner_items()
-    except Exception as exc:
-        errors.append(f"official={type(exc).__name__}:{exc}")
-    try:
-        items=rss_gartner_items()
-        if items:
-            print(json.dumps({
-                "gartner_source_status":"공식 Newsroom 실패·Google News RSS 보조",
-                "items":len(items),
-            },ensure_ascii=False))
-            return items
-        errors.append("rss=no relevant items")
-    except Exception as exc:
-        errors.append(f"rss={type(exc).__name__}")
+OFFICIAL_RSS = (
+    "https://www.gartner.com/en/newsroom/rss",
+    "https://www.gartner.com/newsroom/rss",
+)
 
-    cached=(base.load_state() or {}).get("gartner_latest")
+
+def official_rss_items():
+    errors = []
+    for rss_url in OFFICIAL_RSS:
+        try:
+            root = ET.fromstring(base.fetch(rss_url))
+            nodes = root.findall('./channel/item')
+            if not nodes:
+                nodes = root.findall('.//{http://www.w3.org/2005/Atom}entry')
+            items = []
+            for node in nodes[:100]:
+                title = html.unescape((node.findtext('title') or
+                    node.findtext('{http://www.w3.org/2005/Atom}title') or '').strip())
+                link = (node.findtext('link') or '').strip()
+                if not link:
+                    atom_link = node.find('{http://www.w3.org/2005/Atom}link')
+                    link = (atom_link.get('href') or '') if atom_link is not None else ''
+                if not high_signal(title):
+                    continue
+                # Canonical URL must be an official original article, not a
+                # Google News token whose pubDate can resurface weeks later.
+                original = base.canonical_gartner_item({'title':title,'url':link})
+                if original is None:
+                    continue
+                items.append(original)
+            if items:
+                print(json.dumps({
+                    'gartner_source_status':'Gartner 공식 뉴스 RSS',
+                    'items':len(items),
+                }, ensure_ascii=False))
+                return items
+            errors.append(rss_url + ':유효한 공식 보도자료 없음')
+        except Exception as exc:
+            errors.append(rss_url + ':' + type(exc).__name__)
+    raise RuntimeError(' / '.join(errors))
+
+
+def structural_gartner_items():
+    errors = []
+    try:
+        return official_rss_items()
+    except Exception as exc:
+        errors.append('공식 RSS: ' + type(exc).__name__)
+    try:
+        official = official_gartner_items()
+        if official:
+            return official
+    except Exception as exc:
+        errors.append('공식 Newsroom: ' + type(exc).__name__)
+    # Do not switch the delivery source to Google News: Google may supply
+    # different URLs/timestamps for the same already-published article.
     print(json.dumps({
-        "gartner_source_status":"공식 Newsroom·RSS 모두 실패·기준선 보존",
-        "errors":errors,
-        "cached_baseline":bool(cached),
-    },ensure_ascii=False))
-    if isinstance(cached,dict) and all(cached.get(k) for k in ("title","published","url")):
-        return [cached]
+        'gartner_source_status':'공식 원천 불가·기준선 보존·보조 기사 발송 중단',
+        'errors':errors,
+    }, ensure_ascii=False))
     return []
 
 
