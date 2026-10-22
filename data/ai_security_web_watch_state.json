@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 19,
+    "material_items": 21,
     "new_material_items": 0,
-    "raw_items": 289,
+    "raw_items": 304,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -254,6 +254,16 @@
       "title": "FBI arrests Saudi OpenAI employee who allegedly planted recording device in conference room - CNBC",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNckJQNWJCVWJZSzdEUVRzWHZyZ2I0amJxTVVqX1ltcmZtSGxKWkRUVUdEWnp4Wm9HSUctWlFGNk9mOTQwVXBVd3A4SzQ0YXB3WHFfaE9YaE1mX3ZUZ1BpWWU2dDhIRXd1NENRaTAxdHdaRTFYNm5tVEZxWFQ4anpvdXo2anrSAYoBQVVfeXFMTzdwQXJjWlRmTlVDNXhWSzhsOTBHbjJpVENKRXVsUzhOR28zMjhIbGJxRFNtMTVxQVpqZlFscXhFMmx5eFhJcHRiLXJuSkhiQkZRV0tqSENqdE5TMXpxNy02c1pZb1UxNldGUkIzc3lLNTJaN1Q1QzNfVF9MX1N6bzc3dkRkNGQ0WU53?oc=5",
       "vendor": "OpenAI"
+    },
+    "429647f9fabb765703fa3b99": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-22T08:45:21.242017+00:00",
+      "published_at": "2026-10-22T08:12:00+00:00",
+      "severity": 3,
+      "source": "Chosunbiz",
+      "title": "Php2shell exposes global PHP servers, spurs urgent updates in Korea and beyond - CHOSUNBIZ - Chosunbiz",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5iOGFka1AyS0FURmxrUVpzMGVwTk10Sk1QUGZsSDdZQzVUV3NTUUIyaElhYmxTMm5lemNlQVBTTmxJSjJzRENZai1YYkhzSXZWcWdfSGNGcFVQN0RfSXh5eW9PZUNqNmMya0oyQlVTbFNFSENOancwV05B0gGOAUFVX3lxTFBxVEk4cy1vek8xa0pfeDdCeDVGakVpeV9CSHJGTUpiaTkzWHJqTWZPMWNwX05ZVDlMWnFKc3g3UUI3QzNuMU9FekV3ZU55NUd0OS1fUHNmX0VoQVFMVHU1MTMxVngwTkhiRFN4OWg3NkxkVkNyMzI0aWVFaTM1a2xiaXBCTm02dS1UelI3aWc?oc=5",
+      "vendor": "PHP 재단"
     },
     "42b9f5d042ce9a7a68c83ed1": {
       "category": "취약점·패치",
@@ -996,5 +1006,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-22T17:10:17+09:00"
+  "updated_at_kst": "2026-10-22T17:45:21+09:00"
 }
