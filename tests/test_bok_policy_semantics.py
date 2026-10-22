@@ -47,6 +47,42 @@ class PolicySemanticsTests(unittest.TestCase):
             {"speaker": "신현송", "date": "2026-10-15", "flags": {"ai_war_inflation": True}}, before
         ))
 
+
+    def test_wealth_effect_does_not_imply_a_rate_cut_or_hike(self):
+        flags = policy_flags(
+            "신현송 최근 반도체 주가 조정이 일시적 소비 조정으로 이어지고 "
+            "부의 효과가 과거보다 커졌을 가능성"
+        )
+        self.assertTrue(flags["wealth_effect_reassessment"])
+        self.assertFalse(flags["next_meeting_hawk"])
+        self.assertEqual(event_score(flags), 0)
+        self.assertFalse(policy_flags("신현송 반도체 호황과 수출 증가")["wealth_effect_reassessment"])
+
+    def test_market_rate_fiscal_ai_fx_and_inflation_signals(self):
+        flags = policy_flags(
+            "신현송 시장 금리를 참고하지만 따라갈 필요는 없으며 "
+            "최종금리는 열린 마음으로 판단한다"
+        )
+        self.assertTrue(flags["market_rate_independence"])
+        self.assertTrue(flags["terminal_rate_openness"])
+        self.assertFalse(flags["next_meeting_hawk"])
+        self.assertEqual(event_score(flags), 0)
+        self.assertTrue(policy_flags("신현송 일시적 재원으로 재정지출 확대, 되돌리기 어려워")["fiscal_reversibility"])
+        self.assertTrue(policy_flags("신현송 AI 투자재원 확보 경쟁으로 국채와 회사채가 경쟁해 장기금리 상승")["ai_long_rate_financing"])
+        self.assertTrue(policy_flags("신현송 원화 강세시 1분위 저소득층 구매력 개선")["fx_low_income_purchasing_power"])
+        self.assertTrue(policy_flags("신현송 내후년이면 물가 목표 수준에 가까이 갈 것")["inflation_target_horizon"])
+
+    def test_material_same_day_event_dedup(self):
+        from bok_rate_signal_upgrade_v3 import is_new_policy_event
+        earlier = {"speaker": "신현송", "date": "2026-10-22", "flags": {"two_hikes_effect": True}}
+        new = {"speaker": "신현송", "date": "2026-10-22",
+               "flags": {"two_hikes_effect": True, "wealth_effect_reassessment": True}}
+        self.assertTrue(is_new_policy_event(new, earlier))
+        self.assertFalse(is_new_policy_event(new, new))
+        self.assertFalse(is_new_policy_event(
+            {**new, "flags": {**new["flags"], "ai_war_inflation": True}}, new
+        ))
+
     def test_october_hold_and_qualitative_forecasts(self):
         document = {
             "title": "통화정책방향(2026.10.22)",

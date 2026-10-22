@@ -11,9 +11,49 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import bok_rate_signal_upgrade as base
 
 
+MATERIAL_POLICY_FLAGS = frozenset({
+    "wealth_effect_reassessment", "market_rate_independence",
+    "terminal_rate_openness", "fiscal_reversibility",
+    "ai_long_rate_financing", "fx_low_income_purchasing_power",
+    "inflation_target_horizon",
+})
+
+
 def policy_flags(blob: str) -> dict[str, bool]:
     f = base.flags(blob)
     f.update({
+        # 주가의 소비 파급 가능성은 기준금리 인하·인상의 확정 발언이 아니다.
+        "wealth_effect_reassessment": bool(
+            re.search(r"주가|주식|반도체", blob)
+            and re.search(r"소비|실물경제|부의\s*효과", blob)
+            and re.search(r"조정|하락|위축|과거보다|커졌|확대", blob)
+        ),
+        "market_rate_independence": bool(
+            re.search(r"시장\s*금리", blob)
+            and re.search(r"따라갈\s*필요(?:는|가)?\s*없|시장\s*금리[^.!?。]{0,50}추종하지|시장\s*금리[^.!?。]{0,50}따라가지\s*않", blob)
+        ),
+        "terminal_rate_openness": bool(
+            re.search(r"최종\s*금리|종착\s*금리", blob)
+            and re.search(r"열린\s*마음|유연|확정[^.!?。]{0,15}아니", blob)
+        ),
+        "fiscal_reversibility": bool(
+            re.search(r"재정|최고\s*가격제|일시적\s*재원", blob)
+            and re.search(r"되돌리|지속\s*가능|부작용|장기화|오래\s*지속", blob)
+        ),
+        "ai_long_rate_financing": bool(
+            re.search(r"AI|인공지능", blob, re.I)
+            and re.search(r"장기\s*금리|회사채|국채|투자\s*재원", blob)
+        ),
+        "fx_low_income_purchasing_power": bool(
+            re.search(r"원화|환율", blob)
+            and re.search(r"저소득|1\s*분위", blob)
+            and re.search(r"구매력", blob)
+        ),
+        "inflation_target_horizon": bool(
+            re.search(r"내후년|2028\s*년", blob)
+            and re.search(r"물가", blob)
+            and re.search(r"목표|2\s*%", blob)
+        ),
         "hike_timing_speed": bool(re.search(r"(?:추가\s*)?(?:기준금리\s*)?인상의?\s*시기와\s*속도", blob)),
         "k_shaped_low_income": bool(re.search(r"K\s*[-·]?\s*자형|양극화", blob, re.I) and re.search(r"저소득|취약계층", blob) and re.search(r"물가|인플레이션", blob)),
         "ai_war_inflation": bool(re.search(r"AI|인공지능", blob, re.I) and re.search(r"중동|전쟁", blob) and re.search(r"물가|인플레이션", blob)),
@@ -45,8 +85,11 @@ def is_new_policy_event(new: dict, previous: dict | None) -> bool:
         return True
     was = previous.get("flags") or {}
     now_flags = new.get("flags") or {}
-    # 같은 날이라도 '다음 회의 직접 인상'이라는 새로 확인된 의미는 독립 중대 사건이다.
-    return bool(now_flags.get("next_meeting_hawk") and not was.get("next_meeting_hawk"))
+    # 기사 재인용과 코드 재분류는 차단하되 실제 새 정책 의미는 같은 날에도 인지한다.
+    return any(
+        now_flags.get(key) and not was.get(key)
+        for key in (MATERIAL_POLICY_FLAGS | {"next_meeting_hawk"})
+    )
 
 
 def event_score(f: dict[str, bool]) -> int:
@@ -73,6 +116,11 @@ def rhetoric(now: dt.datetime) -> list[dict]:
         '한국은행 통화신용정책보고서 추가 인상 시기 속도',
         '한국은행 박종우 금리 물가 금융안정',
         '한국은행 김종화 추가 인상 시기 속도',
+        '신현송 한국은행 주가 조정 부의 효과 실물경제 소비',
+        '신현송 시장금리 최종금리 따라갈 필요 열린 마음',
+        '신현송 재정지출 최고가격제 일시적 재원 지속가능성',
+        '신현송 인공지능 투자재원 회사채 국채 장기금리',
+        '신현송 원화 강세 저소득층 구매력 물가 목표 내후년',
     )
     rows = []
     cutoff = now - dt.timedelta(days=5)
@@ -207,6 +255,13 @@ def build_message(state: dict, reasons: list[str], new_events: list[dict]) -> st
             if f.get("k_shaped_low_income"): tags.append("K자형 양극화·저소득층 물가부담")
             if f.get("fvi_leverage"): tags.append("금융취약성지수·레버리지 선제관리")
             if f.get("ai_investment_duration"): tags.append("AI 투자 지속성·파급효과")
+            if f.get("wealth_effect_reassessment"): tags.append("주가 조정의 소비·실물경제 파급 가능성")
+            if f.get("market_rate_independence"): tags.append("시장금리와 기준금리 결정은 별개")
+            if f.get("terminal_rate_openness"): tags.append("최종 기준금리 경로 미확정")
+            if f.get("fiscal_reversibility"): tags.append("재정지출·가격통제 장기화 위험")
+            if f.get("ai_long_rate_financing"): tags.append("AI 투자재원 경쟁·장기금리 압력")
+            if f.get("fx_low_income_purchasing_power"): tags.append("원화 강세의 저소득층 구매력 개선 가능성")
+            if f.get("inflation_target_horizon"): tags.append("물가 목표 수렴 시점 장기화 전망")
             if f.get("next_meeting_caution") or f.get("oct_hike_caution"): tags.append("다음 회의 즉시 인상 확정 아님")
             if f.get("two_hikes_effect"): tags.append("7·8월 인상 효과 확인 필요")
             if f.get("rate_not_only_tool") or f.get("macroprudential_mix"): tags.append("금융안정은 정책조합 병행")
@@ -289,17 +344,40 @@ def main() -> int:
 
     seen = list(old.get("seen_rhetoric_hashes") or [])
     seen_set = set(seen)
-    prior_events = {(e.get("speaker"), e.get("date")): e for e in old.get("recent_rhetoric") or []}
-    new_events = [
-        e for e in events
-        if e["event_hash"] not in seen_set
-        and is_new_policy_event(e, prior_events.get((e.get("speaker"), e.get("date"))))
-    ]
-    if boot: new_events = []
+    # 제목이나 RSS 검색결과가 바뀌어도 이미 본 정책 의미는 다시 발송하지 않는다.
+    seen_by_day = {
+        str(key): sorted(set(value))
+        for key, value in (old.get("seen_policy_flags_by_day") or {}).items()
+        if isinstance(value, list)
+    }
+    for previous in old.get("recent_rhetoric") or []:
+        key = f"{previous.get('speaker')}|{previous.get('date')}"
+        flags = {k for k, v in (previous.get("flags") or {}).items() if v}
+        seen_by_day[key] = sorted(set(seen_by_day.get(key, [])) | flags)
+    proposed_events = []
     for e in events:
+        key = f"{e.get('speaker')}|{e.get('date')}"
+        previously_seen = seen_by_day.get(key)
+        prior = (
+            {"speaker": e.get("speaker"), "date": e.get("date"),
+             "flags": {k: True for k in previously_seen}}
+            if previously_seen else None
+        )
+        if e["event_hash"] not in seen_set and is_new_policy_event(e, prior):
+            proposed_events.append(e)
+        flags = {k for k, v in (e.get("flags") or {}).items() if v}
+        seen_by_day[key] = sorted(set(seen_by_day.get(key, [])) | flags)
         if e["event_hash"] not in seen_set:
             seen.append(e["event_hash"]); seen_set.add(e["event_hash"])
     seen = seen[-150:]
+    cutoff = (now.date() - dt.timedelta(days=14)).isoformat()
+    seen_by_day = {
+        key: value for key, value in seen_by_day.items()
+        if key.rsplit("|", 1)[-1] >= cutoff
+    }
+    # 코드 업그레이드 자체만으로 과거 뉴스 재전송 금지.
+    topic_bootstrap = not bool(old.get("topic_policy_version"))
+    new_events = [] if (boot or topic_bootstrap) else proposed_events
 
     rhetoric_score = max(-2, min(2, sum(e.get("score", 0) for e in events[:5])))
     meeting_completed = False
@@ -333,6 +411,8 @@ def main() -> int:
         "rhetoric_score": rhetoric_score,
         "recent_rhetoric": events[:5],
         "seen_rhetoric_hashes": seen,
+        "seen_policy_flags_by_day": seen_by_day,
+        "topic_policy_version": 1,
     }
 
     # 상태 계산과 텔레그램 알림 트리거를 분리한다.
@@ -432,10 +512,15 @@ def main() -> int:
         "oil_relief_to_neutral_suppressed": True,
         "oil_alert_requires_positive_pressure_bucket": True,
         "official_data_or_policy_event_priority": True,
+        "material_same_day_dedup_by_speaker_date": True,
+        "new_topics_bootstrap_without_replay": True,
     }
 
     # 상태는 재계산 변화가 있으면 조용히 갱신한다. 알림 여부와는 분리한다.
-    state_change = boot or migration or bool(state_reasons or new_events)
+    state_change = (
+        boot or migration or topic_bootstrap or bool(state_reasons or new_events)
+        or seen_by_day != (old.get("seen_policy_flags_by_day") or {})
+    )
     root["rate_signal_upgrade"] = candidate if state_change else old
     base.PENDING.write_text(json.dumps(root, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     with base.STATUS.open("a", encoding="utf-8") as f:
