@@ -134,6 +134,53 @@ class EuropeSovereignYieldWatchTests(unittest.TestCase):
     def test_official_france_change_is_exact(self):
         self.assertAlmostEqual(watch.bp(4.898, 4.834), 6.4)
 
+    def test_france_extra_5_10_hysteresis_does_not_chatter(self):
+        original = {"active": {}}
+        active = {}
+        events = []
+        watch.mark_hysteresis_event(events, active, original, "fr10:stress:5.1",
+                                   5.126, 5.10, 5.03, "프랑스 공식 TEC10", "%")
+        self.assertEqual(len(events), 1)
+        self.assertEqual(events[0]["type"], "trigger")
+        next_state = {"active": dict(active)}
+        events_next = []
+        watch.mark_hysteresis_event(events_next, dict(active), next_state,
+                                   "fr10:stress:5.1", 5.06, 5.10, 5.03, "프랑스 공식 TEC10", "%")
+        self.assertEqual(events_next, [])
+        clear_events, clear_active = [], dict(active)
+        watch.mark_hysteresis_event(clear_events, clear_active, next_state,
+                                   "fr10:stress:5.1", 5.02, 5.10, 5.03, "프랑스 공식 TEC10", "%")
+        self.assertEqual(clear_events[0]["type"], "clear")
+        self.assertFalse(clear_active["fr10:stress:5.1"])
+
+    def test_170bp_spread_first_crossing_and_next_marker(self):
+        events, active, state = [], {}, {"active": {}}
+        watch.mark_hysteresis_event(events, active, state, "spread:170",
+                                   171.0, 170.0, 160.0, "프랑스-독일 금리차", "bp")
+        self.assertEqual(events[0]["type"], "trigger")
+        self.assertEqual(watch.next_spread_marker(171.0), "175bp")
+        self.assertEqual(watch.next_spread_marker(173.58), "175bp")
+        self.assertEqual(watch.next_spread_marker(175.01), "200bp")
+        self.assertEqual(watch.next_spread_marker(None),
+                         "동일 기준일 시장금리차 확인 불가")
+        second = []
+        watch.mark_hysteresis_event(second, dict(active), {"active": active},
+                                   "spread:170", 169, 170, 160, "프랑스-독일 금리차", "bp")
+        self.assertEqual(second, [])
+
+    def test_italy_spread_requires_same_day(self):
+        o = {
+            "de_mkt": watch.Obs("de_mkt", "독일 10년", "2026-10-22", 3.35, "m"),
+            "it10": watch.Obs("it10", "이탈리아 10년", "2026-10-22", 4.62, "m"),
+        }
+        _, body, _ = watch.build_alert(o, {"it10_day_bp": 3.0}, None, [], [], [],
+                                      dt.datetime(2026, 10, 22, 23, tzinfo=ZoneInfo("Asia/Seoul")))
+        self.assertIn("이탈리아-독일 10년 시장금리차 127.0bp", body)
+        o["de_mkt"].date = "2026-10-21"
+        _, body, _ = watch.build_alert(o, {}, None, [], [], [],
+                                      dt.datetime(2026, 10, 22, 23, tzinfo=ZoneInfo("Asia/Seoul")))
+        self.assertNotIn("이탈리아-독일 10년 시장금리차", body)
+
     def test_alert_explains_policy_vs_market_rate(self):
         latest = {
             "fr10": watch.Obs("fr10", "프랑스 10년", "2026-10-07", 4.834, "fr"),
