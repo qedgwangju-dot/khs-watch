@@ -28,6 +28,21 @@ def main():
     assert "실제 투자 집행 이연 여부는 확인되지 않았습니다." in enriched
     assert "FCF" not in enriched or "잉여현금흐름" in enriched
 
+    # Preserve official financial statement classification over popular earnings commentary.
+    # The one-off legal charge does not measure core ads demand, while FCF remains negative.
+    official_revenue = 64601
+    prior_revenue = 51242
+    assert round((official_revenue/prior_revenue-1)*100,1)==26.1
+    assert m.Q3_MILLIONS["op_income"] < m.Q3_MILLIONS["prior_op_income"]
+    assert m.Q3_MILLIONS["free_cash_flow"] < 0
+    assert m.Q3_MILLIONS["forecast_fcf"] == -8520
+    # 8.52B forecast vs -2.12B actual = 6.40B, not 6.30B.
+    assert m.Q3_MILLIONS["free_cash_flow"]-m.Q3_MILLIONS["forecast_fcf"]==6400
+    assert m.Q3_MILLIONS["fy_capex_low"]-m.Q3_MILLIONS["fy_capex_prev_low"]==5000
+    assert "해당 비용 제외 영업이익" in enriched
+    assert "전년 높은 세율 기저효과" in enriched
+    assert "환율 제외 성장률도 +26%" in enriched
+
     print("Meta financial statements and event regression checks passed.")
 
 if __name__=="__main__":
