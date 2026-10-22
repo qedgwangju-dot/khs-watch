@@ -27,6 +27,7 @@ MUSE_WONDER="https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
 STATE=pathlib.Path("data/meta_earnings_muse_cashflow_watch_state.json")
 OUT=pathlib.Path("out")
 Q3_KEY="meta-q3-2026-official-2026-10-21"
+Q3_ENRICHMENT_KEY="meta-q3-2026-official-earnings-verified-bridge-v2"
 Q3_MILLIONS={
  "revenue":64601,"prior_revenue":51242,
  "op_income":12988,"prior_op_income":20535,
@@ -98,23 +99,24 @@ def money(millions,rate):
 def _link(label,url):
     return f'<a href="{html.escape(url,quote=True)}">{html.escape(label)}</a>'
 
-def build_q3(rate,basis,source_label):
+def build_q3(rate,basis,source_label,enrichment=False):
     a=lambda key:money(Q3_MILLIONS[key],rate)
     clean_op=Q3_MILLIONS["op_income"]+Q3_MILLIONS["legal_charge"]
     adj_margin=clean_op/Q3_MILLIONS["revenue"]*100
     fcf_check=Q3_MILLIONS["cash_from_ops"]-Q3_MILLIONS["ppe"]-Q3_MILLIONS["finance_lease"]
     assert fcf_check==Q3_MILLIONS["free_cash_flow"]
     lines=[
-      "📊 <b>메타(META) 2026년 3분기 실적·Muse·AI 설비투자</b>",
-      "<b>판정: 10월 21일 공식 실적 신규 발표 · 분기 실적과 일회성 비용 분리</b>",
+      "📊 <b>메타(META) 2026년 3분기 실적·Muse·AI 설비투자"+(" 검산 보강본" if enrichment else "")+"</b>",
+      "<b>판정: 10월 21일 메타 공식 발표 · 기존 3분기 실적의 수치 검산 보강(새 분기 발표 아님)</b>" if enrichment else "<b>판정: 10월 21일 공식 실적 신규 발표 · 분기 실적과 일회성 비용 분리</b>",
       f"원천 검증: {html.escape(source_label)}",
       f"환율: 1달러={rate:,.2f}원 ({html.escape(str(basis))})",
       "",
       "<b>1단계 현재 숫자 추적 — 3분기(7~9월) 단독</b>",
       f"• 매출 {a('revenue')} / 전년 동기 +26% (환율 제외 성장률도 +26%)",
+      "• 앱 제품군 일평균 이용자 36억4,000만명(+3%); 광고 노출 +10% · 광고당 평균가격 +14%.",
       f"• 영업이익 {a('op_income')} / 전년 동기 -37% · 영업이익률 20%(전년 40%)",
       f"• 법률 합의 관련 비용 {a('legal_charge')} 포함(일회성 회계 비용)",
-      f"• 해당 비용 제외 영업이익 {money(clean_op,rate)} · 단순 조정 영업이익률 약 {adj_margin:.1f}%",
+      f"• 해당 비용 제외 영업이익 {money(clean_op,rate)} · 단순 조정 영업이익률 약 {adj_margin:.1f}% (전년 동기 대비 약 +11.4%)",
       f"• 순이익 {a('net_income')} · 전년 대비 +264% (전년 높은 세율 기저효과 주의)",
       f"• 앱 사업 매출 {a('foa_revenue')} · 사업부 영업이익 {a('foa_op')}",
       f"• 리얼리티랩스 매출 {a('rl_revenue')} · 사업부 영업손실 {a('rl_op')}",
@@ -124,23 +126,25 @@ def build_q3(rate,basis,source_label):
       f"• 유형자산 취득 {a('ppe')} + 금융리스 원금상환 {a('finance_lease')}",
       f"• 잉여현금흐름 <b>{a('free_cash_flow')}</b> (실제 마이너스 · 검산 완료)",
       f"• 분기 설비투자·금융리스 원금 합계 {a('capex_q3')}",
-      f"• Reuters의 사전 시장 예상 FCF {a('forecast_fcf')}보다 실제 FCF가 {money(6400,rate)} 개선.",
-      f"• Reuters가 인용한 분기 설비투자 예상 {a('forecast_capex_q3')} 대비 실제 {a('capex_q3')}로 낮았음.",
-      "• 설비투자 예상 하회는 확인되지만 실제 프로젝트 이연 여부는 공식적으로 확정되지 않았습니다.",
+      f"• Reuters가 10월 20일 보도한 사전 시장 예상 잉여현금흐름 {a('forecast_fcf')} 대비 실제는 {money(6400,rate)} 개선 (실제 유출은 지속).",
+      f"• Reuters·Visible Alpha의 분기 설비투자 예상 {a('forecast_capex_q3')} 대비 실제 {a('capex_q3')} (차이 {money(6774,rate)}).",
+      "• 잉여현금흐름 예상 대비 개선을 전부 영업현금 창출력 증가라고 보면 안 됩니다. 설비투자 예상 하회가 67억7,400만달러지만 실제 투자 집행 이연 여부는 확인되지 않았습니다.",
       "",
       "<b>2단계 미래 재평가 요인 발굴</b>",
       f"• 4분기 매출 전망 {a('q4_low')}~{a('q4_high')} (현재 환율 가정 전년비 약 1%p 역풍)",
       f"• 2026년 연간 설비투자 전망 {a('fy_capex_low')}~{a('fy_capex_high')}",
       f"• 직전 설비투자 전망 하한 {a('fy_capex_prev_low')}에서 {a('fy_capex_low')}으로 상향",
       "• Muse 개인용 에이전트 출시(9월) · Muse Wonder 모델 공개(10월): 사용자 수와 유료 전환·반복매출을 구분합니다.",
-      "• Muse 출시 후 첫 약 6주 동안 1,000만명 이상 이용(언론이 인용한 경영진 발언); 유료가입·실제 매출 규모는 미공개.",
+      "• Muse 출시 후 약 6주 동안 미국·캐나다 1,000만개 이상 계정(Reuters가 인용한 경영진 발언); 유료 가입·반복매출 규모는 확인 필요.",
       "• 2027년 1월 19일 비의결권 C종 주식 도입 예정 · A/B 1주당 C종 1주 배당 조건.",
+      "• 사업부 주력인 광고 매출과 Muse 신사업 매출은 서로 다른 현금창출 단계입니다.",
       "• C종 주식배당 자체와 향후 신주 발행을 통한 조달·경제적 지분희석은 별개입니다.",
       "",
       "<b>숨은 역풍·실패모드</b>",
       "• 신규 AI 서비스의 실사용량·유료 전환이 느리면 설비투자가 현금흐름을 더 압박할 수 있습니다.",
       f"• 법률 관련 비용 {a('legal_charge')}은 본업 광고 성장과 구분하되, 실제 지급 일정·추가 소송 위험을 확인합니다.",
       "• Muse 개인정보·에이전트 행동 안전, 데이터센터 전력·냉각·고객 채택 지연도 감시합니다.",
+      "• 위험 구간: 6개월(투자 집행·FCF 악화 여부), 12개월(Muse 유료화·매출), 24개월(새 AI 설비의 투자수익률·감가상각).",
       "",
       "<b>공식 출처</b>",
       _link("메타 3분기 공식 실적",IR_Q3)+" | "+_link("Muse 제품 발표",MUSE),
@@ -291,6 +295,12 @@ def main(probe=False):
         rate,basis=_fx()
         notices.append(build_q3(rate,basis,source_label))
         seen.add(Q3_KEY)
+        seen.add(Q3_ENRICHMENT_KEY)
+    elif Q3_ENRICHMENT_KEY not in seen:
+        # One-time source-backed improvement: no second "new earnings" misclassification.
+        rate,basis=_fx()
+        notices.append(build_q3(rate,basis,source_label,enrichment=True))
+        seen.add(Q3_ENRICHMENT_KEY)
 
     for event in _press_release_events()+_sec_earnings()+_news_events():
         key=event["key"]
