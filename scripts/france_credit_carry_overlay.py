@@ -322,6 +322,13 @@ def format_event(rating: dict, events: list[dict], pending: dict,
         status = (f"공식자료 기준 Moody’s {rating['rating']} / 전망 {rating['outlook']} / "
                   f"최근 결정일 {rating['decision_date']}.")
         caveat = "등급 변동·전망 변경 여부는 이전 공식 기록과 비교해 판단합니다."
+    elif any(x["kind"] == "sp_decision" for x in events):
+        event = next(x for x in events if x["kind"] == "sp_decision")
+        name = "프랑스 S&P 공식 신용등급 평가 결과"
+        status = (f"프랑스 국채관리청 공식 등급표: "
+                  f"S&P {event['rating']} / 전망 {event['outlook']} / "
+                  f"최근 평가일 {event['decision_date']}.")
+        caveat = "이번 최신 결과는 공식 등급표에 근거하며, 이전 평가와 비교해 등급·전망·평가일 변화를 판단합니다."
     elif any(x["kind"] == "government_rating_notice" for x in events):
         notice = next(x for x in events if x["kind"] == "government_rating_notice")
         name = "프랑스 재무부의 Moody’s 신용등급 관련 공식 입장"
@@ -340,13 +347,6 @@ def format_event(rating: dict, events: list[dict], pending: dict,
             status = (f"공식 최신 확인 일정: 2026-10-23(프랑스 현지 날짜), "
                       f"등급 {rating['rating']}·전망 {rating['outlook']}.")
         caveat = "등급 강등 확정이 아닌 예정된 심사입니다. 포지션 청산 마감일도 아닙니다."
-    elif any(x["kind"] == "sp_decision" for x in events):
-        event = next(x for x in events if x["kind"] == "sp_decision")
-        name = "프랑스 S&P 공식 신용등급 평가 결과"
-        status = (f"프랑스 국채관리청 공식 등급표: "
-                  f"S&P {event['rating']} / 전망 {event['outlook']} / "
-                  f"최근 평가일 {event['decision_date']}.")
-        caveat = "이번 최신 결과는 공식 등급표에 근거하며, 이전 평가와 비교해 등급·전망·평가일 변화를 판단합니다."
     elif any(x["kind"] == "sp_milestone" for x in events):
         days = min(x["days"] for x in events if x["kind"] == "sp_milestone")
         name = f"프랑스 S&P 신용등급 검토 D-{days}"
@@ -370,7 +370,9 @@ def format_event(rating: dict, events: list[dict], pending: dict,
                   "AFT 공식 페이지 검색 색인 확인일은 2026-10-14이며 직접 원문 조회는 제한됐습니다.")
         caveat = "등급 변경이나 시장의 강등 가능성을 확정할 수 없습니다. 공식 결과 조회가 지연될 수 있습니다."
 
-    sp_only = any(x["kind"] in ("sp_decision", "sp_milestone", "sp_review_overdue") for x in events)
+    # Link and subject must follow the event that was actually chosen above.
+    # Mixed event batches may contain an independent government response.
+    sp_only = name.startswith("프랑스 S&P")
     primary_link = ("• AFT France S&P rating calendar: " + AFT_EN if sp_only else
                     "• AFT France Moody's rating calendar: " + rating["url"])
     next_boundary = base.next_spread_marker(
@@ -381,6 +383,23 @@ def format_event(rating: dict, events: list[dict], pending: dict,
         if sp_only else
         "• Moody's 2026년 10월 23일 평가 결과 검증과 2027년 예산 논의"
     )
+    companion = []
+    for event in events:
+        if event["kind"] == "sp_decision" and not name.startswith("프랑스 S&P"):
+            companion.append(
+                f"• 별도 S&P 공식 결과: {event['rating']}·전망 {event['outlook']} "
+                f"({event['decision_date']}); 출처: 프랑스 국채관리청"
+            )
+        elif event["kind"] == "government_rating_notice" and name != "프랑스 재무부의 Moody’s 신용등급 관련 공식 입장":
+            companion.append(
+                f"• 프랑스 재무부의 별도 공식 대응 발표: {event['date']} "
+                "(신용등급 결과와 구분)"
+            )
+        elif event["kind"] == "source_outage" and "조회 장애" not in name:
+            companion.append("• 공식 AFT 신용등급표 접근 제한: 등급 변경 확정 불가")
+        elif event["kind"] in ("review_overdue", "sp_review_overdue") and "확인 필요" not in name:
+            companion.append("• 다른 신용평가 일정의 결과는 직접 공식 확인이 필요합니다")
+    companion_section = ["", "■ 함께 발생한 별도 이벤트", *companion] if companion else []
     msg = "\n".join([
         f"🔔 [프랑스 국채·신용등급] {name}",
         "",
@@ -388,6 +407,7 @@ def format_event(rating: dict, events: list[dict], pending: dict,
         f"• {status}",
         f"• 같은 제공사 기준 프랑스-독일 10년 금리차: {spread} (기준일 {date}).",
         f"• 주의: {caveat}",
+        *companion_section,
         "",
         "■ 캐리거래와 글로벌 시장 연결",
         "• 보도된 구조: 프랑스 국채와 금리스와프 사이 가격 차이에 레버리지 투자 → "
@@ -403,6 +423,8 @@ def format_event(rating: dict, events: list[dict], pending: dict,
         rating_checkpoint,
         "",
         primary_link,
+        *([f"• AFT France S&P rating calendar: {AFT_EN}"]
+          if any(x["kind"] == "sp_decision" for x in events) and not sp_only else []),
         f"• Briefs France carry story: {ORIGINAL_STORY}",
         *([f"• France government Moody press: {next(x for x in events if x['kind'] == 'government_rating_notice')['url']}"]
           if any(x["kind"] == "government_rating_notice" for x in events) else []),
