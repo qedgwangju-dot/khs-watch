@@ -6,7 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from bok_rate_signal_upgrade_v3 import policy_flags, event_score
 from bok_mpc_watch_correct import parse_statement_correct, build_alert_correct
-from bok_mpc_watch_final import _main_direction
+from bok_mpc_watch_final import _main_direction, parser_only_enrichment
 
 
 class PolicySemanticsTests(unittest.TestCase):
@@ -77,6 +77,28 @@ class PolicySemanticsTests(unittest.TestCase):
         self.assertIn("상당폭 상회", alert)
         self.assertIn("7명", alert)
         self.assertIn("새 확정 수치 미제시", alert)
+
+    def test_parser_upgrade_does_not_resend_same_policy_document(self):
+        before = {
+            "title": "통화정책방향(2026.10.22)",
+            "url": "https://www.bok.or.kr/portal/bbs/P0000559/view.do?nttId=11065823",
+            "parser_version": 3,
+            "rate_from": 3.0, "rate_to": 3.0, "vote_for": 7,
+            "flags": {"timing_speed": True, "housing": True},
+        }
+        after = dict(before)
+        after.update(parser_version=4, hash="changed-dynamic-web-content")
+        after["flags"] = {
+            "timing_speed": True, "housing": True,
+            "growth_above_aug": True,
+        }
+        self.assertTrue(parser_only_enrichment(before, after, None, None))
+        self.assertFalse(parser_only_enrichment({**before, "vote_for": 6}, after, None, None))
+        self.assertFalse(parser_only_enrichment(before, {**after, "rate_to": 3.25}, None, None))
+        self.assertFalse(parser_only_enrichment(
+            before, {**after, "flags": {**after["flags"], "unexpected_new_signal": True}},
+            None, None,
+        ))
 
     def test_growth_qualitative_wording_variants(self):
         document = {

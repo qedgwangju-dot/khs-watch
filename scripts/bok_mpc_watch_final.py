@@ -148,6 +148,36 @@ def _old_event_hash(old: dict[str, Any]) -> str | None:
         return None
 
 
+
+PARSER_ENRICHMENT_FLAGS = frozenset({
+    "growth_above_aug", "inflation_next_up", "housing_reaccelerating",
+    "hold_prior_hikes_effect",
+})
+
+
+def parser_only_enrichment(prior: dict[str, Any], current: dict[str, Any],
+                           prior_dot: dict[str, Any] | None,
+                           current_dot: dict[str, Any] | None) -> bool:
+    """새 문서·표결·정책 변화가 아니라 파서 버전 갱신으로 보강된 내용인지 검증."""
+    if not prior or _canonical_doc_id(prior) != _canonical_doc_id(current):
+        return False
+    if int(current.get("parser_version") or 0) <= int(prior.get("parser_version") or 0):
+        return False
+    for field in ("rate_from", "rate_to", "growth_this", "growth_next",
+                  "cpi_this", "cpi_next", "core_this", "core_next", "vote_for"):
+        if prior.get(field) != current.get(field):
+            return False
+    if _semantic_statement(prior)["minority_opinions"] != _semantic_statement(current)["minority_opinions"]:
+        return False
+    if _semantic_dotplot(prior_dot) != _semantic_dotplot(current_dot):
+        return False
+    previous_flags = prior.get("flags") or {}
+    next_flags = current.get("flags") or {}
+    if any(next_flags.get(key) != value for key, value in previous_flags.items()):
+        return False
+    added = set(next_flags) - set(previous_flags)
+    return added <= PARSER_ENRICHMENT_FLAGS
+
 def main_final() -> int:
     for path in (base.ALERT_PATH, base.ERROR_PATH):
         path.unlink(missing_ok=True)
@@ -185,13 +215,18 @@ def main_final() -> int:
     # 파서 업그레이드로 새로 인식한 필드만 생긴 경우는 신규 통화정책 결정이 아니다.
     # 상태 데이터는 조용히 교정하되 동일 발표를 두 번 보내지 않는다.
     prior = old.get("statement") if isinstance(old.get("statement"), dict) else {}
-    parser_revision_only = bool(
+    parser_revision_only = (
+        meaningful_changed
+        and parser_only_enrichment(
+            prior, parsed,
+            old.get("dotplot") if isinstance(old.get("dotplot"), dict) else None,
+            effective_dot,
+        )
+    )
+    parser_metadata_changed = (
         not bootstrap
-        and meaningful_changed
+        and prior.get("parser_version") != parsed.get("parser_version")
         and _canonical_doc_id(prior) == _canonical_doc_id(parsed)
-        and old.get("statement_hash") == parsed.get("hash")
-        and prior.get("rate_to") == parsed.get("rate_to")
-        and prior.get("vote_for") == parsed.get("vote_for")
     )
     if parser_revision_only:
         meaningful_changed = False
@@ -211,7 +246,7 @@ def main_final() -> int:
 
     # 의미가 그대로면 상태 파일도 매 실행마다 시간을 갱신하지 않는다.
     # 이렇게 해야 불필요한 Git 커밋과 후속 실행 잡음도 사라진다.
-    if meaningful_changed or parser_revision_only or not old.get("event_hash"):
+    if meaningful_changed or parser_revision_only or parser_metadata_changed or not old.get("event_hash"):
         pending = {
             "updated_at_kst": now.isoformat(timespec="seconds"),
             "event_hash": current_event_hash,

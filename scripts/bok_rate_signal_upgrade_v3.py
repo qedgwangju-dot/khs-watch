@@ -302,6 +302,7 @@ def main() -> int:
     seen = seen[-150:]
 
     rhetoric_score = max(-2, min(2, sum(e.get("score", 0) for e in events[:5])))
+    meeting_completed = False
     try:
         next_meeting = base.next_mpc(now)
         # 금통위 당일 새 공식 결정문이 게시된 뒤에는 오늘을 "다음 회의"로 표기하지 않는다.

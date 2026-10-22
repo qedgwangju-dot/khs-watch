@@ -19,7 +19,7 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
         "title": stmt["title"],
         "url": stmt["url"],
         "hash": hashlib.sha256((stmt["hash"] + ":parser7").encode()).hexdigest(),
-        "parser_version": 3,
+        "parser_version": 4,
     }
 
     if "2026.8.27" in stmt["title"] or "11064191" in stmt["url"]:
