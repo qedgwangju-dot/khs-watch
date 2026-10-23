@@ -13,26 +13,13 @@
   "vix_official_crosscheck_date": "2026-10-21",
   "vix_official_same_day": false,
   "vix_official_lag_days": 1,
-  "vix_cboe_quote_date": "2026-10-22",
-  "vix_cboe_quote_same_day": true,
-  "vix_cboe_quote_diff": 0.0,
+  "vix_cboe_quote_date": "2026-10-23",
+  "vix_cboe_quote_same_day": false,
+  "vix_cboe_quote_diff": null,
   "vix_crosscheck_max_abs_diff": 3.051757815342171e-07,
   "etf_final_close_source": "StockAnalysis / S&P Global Market Intelligence",
   "etf_final_close_date": "2026-10-22",
-  "settlement_overrides": {
-    "산업재": {
-      "yahoo": 166.73,
-      "final": 166.71
-    },
-    "소재": {
-      "yahoo": 51.69,
-      "final": 51.71
-    },
-    "부동산": {
-      "yahoo": 42.52,
-      "final": 42.53
-    }
-  },
+  "settlement_overrides": {},
   "breadth_warning": false,
   "rsp_warning": false,
   "iwm_warning": false,
@@ -97,19 +84,19 @@
       "5d": 2.3195425825183635
     },
     "산업재": {
-      "1d": -0.9506253828069466,
-      "3d": 0.01800295508598282,
-      "5d": -0.7028407850010354
+      "1d": -0.9387425473901034,
+      "3d": 0.030001995690032146,
+      "5d": -0.6909282231613245
     },
     "소재": {
-      "1d": 0.7599382453135739,
-      "3d": 1.4916569689501724,
-      "5d": 2.274522538514967
+      "1d": 0.7209670837412308,
+      "3d": 1.4524027987823152,
+      "5d": 2.2349655775640853
     },
     "부동산": {
-      "1d": 1.1174479585429609,
-      "3d": 2.0638393780770814,
-      "5d": 1.2860164323597267
+      "1d": 1.0936724005936371,
+      "3d": 2.0398412968689605,
+      "5d": 1.2622012392178528
     },
     "기술": {
       "1d": -3.2884234151443703,
