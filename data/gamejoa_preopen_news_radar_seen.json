@@ -1390,6 +1390,34 @@
       "telegram_core_fact": "부산 부산진구 전포동 일대에서 정전이 발생해 주택과 상가 등 610호에 전기 공급이 끊겼다가 30분 만에 복구됐다. 한국전력 부산울산본부에 따르면 이날 오후 4시10분께 부산진구 전포동 일대 주택과 상가 등 610호에 전기 공급이 중단됐다.",
       "title": "부산 전포동 주택·상가 610호 정전…\"까마귀가 전선 접촉\""
     },
+    "core:04ad09651f9d054bbfff3b19": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
+    },
     "core:04bc0c0588089397aefd3f25": {
       "first_seen_kst": "2026-10-08T16:54:07+09:00",
       "lanes": {
@@ -1498,6 +1526,34 @@
       "source_title": "AI 데이터센터 몸값 시험대…엔비디아 투자받은 퍼머스 IPO 철회",
       "telegram_core_fact": "엔비디아의 투자를 유치하고 오픈AI·메타와 대규모 AI 인프라 계약을 맺으며 호주 증시의 대형 기업공개(IPO) 후보로 주목받았던 데이터센터 기업 퍼머스(Firmus)가 상장 계획을 철회했다.",
       "title": "AI 데이터센터 몸값 시험대…엔비디아 투자받은 퍼머스 IPO 철회"
+    },
+    "core:04fcce44ae0d92d4ca4d071d": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
     },
     "core:0507ab4275a27ef99e0d7acb": {
       "first_seen_kst": "2026-10-12T15:43:01+09:00",
@@ -51804,6 +51860,24 @@
       "telegram_core_fact": "3분기 생산량이 2,954대로 전분기보다 38.1% 줄어 지난해 1분기 이후 가장 낮은 수준을 기록했습니다. 인도량도 3,806대로 전년 동기보다 6.7% 감소했습니다.",
       "title": "루시드, 3분기 생산 38% 감축에 보급형 신차 연기까지 겹치며 투자심리 위축"
     },
+    "core:884fa97e2f8655c9f97013c9": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837995",
+      "source": "뉴시스",
+      "source_body_digest": "99df3905b5533e7f618ae201edde808e1e0c5acc393ccba94c06b81e0fe2c5bd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T09:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"소파와 마사지 베드 한번에\"…두달 만에 74%↑",
+      "telegram_core_fact": "리플랙스 마사지 소파베드는 9월 판매량이 출시 첫 달인 7월 대비 약 74% 증가하는 등 판매 증가세를 보이고 있다. 세라젬이 소파와 마사지 베드 기능을 모두 갖춘 '리플랙스 마사지 소파베드'를 홈쇼핑서 처음 선보인다.",
+      "title": "\"소파와 마사지 베드 한번에\"…두달 만에 74%↑"
+    },
     "core:8851c2879568b52b46dbbeb8": {
       "first_seen_kst": "2026-10-23T08:39:33+09:00",
       "lanes": {
@@ -59162,6 +59236,27 @@
       "source_title": "박현숙 세포바이오 대표 “국내 2상 넘어 日 임상 준비…파트너와 공동개발 논의”[바이오재팬 2026]",
       "telegram_core_fact": "박 대표는 “마스터·워킹 셀뱅크와 제조·품질관리(CMC) 기술, 국내 우수의약품제조및품질관리기준(GMP) 센터를 통해 임상·상업용 동결 완제품을 을괄 생산 및 공급한다”며 “반면 일본 파트너사는 현지 임상 네트워크를 기반으로 PMDA 임상시험 진행과 의약품·조건부 품목허가 및 유통망 구축을 전담하게 된다”고 말했다.",
       "title": "박현숙 세포바이오 대표 “국내 2상 넘어 日 임상 준비…파트너와 공동개발 논의”[바이오재팬 2026]"
+    },
+    "core:9c150193a69c5667997f53ad": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12184176",
+      "source": "매일경제",
+      "source_body_digest": "97749c94c5b267c7b8f17f5435af28bed3c4dcf316cfba744f96e43160e68329",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3e9b7f39765aaf02980cb9fe0b7581662a45317a086ec514fd39cede7fece4b",
+      "source_fact_keys": [
+        "source_fact:v1:988981725bc3081803afc2ba734fb97787ebe0f4e0193e7ac06c77582e901258",
+        "source_fact:v1:b575c2448b3cafafabc12567cf099e3667a73f61b9c0c02e612bd707187f862f"
+      ],
+      "source_published_kst": "2026-10-23T15:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑",
+      "telegram_core_fact": "하나금융지주는 23일 3분기 연결 잠정 영업이익이 1조6312억6700만원으로 전년비 10.35% 증가했다고 공시했다.",
+      "title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑"
     },
     "core:9c332fa668a866eb9317d124": {
       "first_seen_kst": "2026-10-14T23:19:07+09:00",
@@ -77644,6 +77739,26 @@
       "source_title": "생산자물가 두 달 연속 상승⋯배추 43%·주택용전력 13% '쑥'",
       "telegram_core_fact": "한은에 따르면 9월 국내 생산자물가지수(잠정)는 129.78(2020년=100)로 전월(129.58) 대비 0.2% 상승한 것으로 집계됐다.",
       "title": "생산자물가 두 달 연속 상승⋯배추 43%·주택용전력 13% '쑥'"
+    },
+    "core:cecd92dbbe9f3facadf6d26d": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mt.co.kr/culture/2026/10/23/2026102309123381215",
+      "source": "머니투데이",
+      "source_body_digest": "50edae8e8ffef661d2eb153111422d011800a08dc0ec8a3f47a45a3dd2aeb3fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dc7ccfc1e355bfb4e7c1040143e4c3daac3c5b698d8136bf3c518df2d9d38d9",
+      "source_fact_keys": [
+        "source_fact:v1:8a6f92b0c40de81252f9a48c81bcb42720e2e846132918741564deb1c0536324"
+      ],
+      "source_published_kst": "2026-10-23T09:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점",
+      "telegram_core_fact": "올해 8~9월 롯데호텔앤리조트의 어메니티 매출은 지난해 같은 기간의 약 4.5배를 기록했다.",
+      "title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점"
     },
     "core:cede6ac5a564776100db3445": {
       "first_seen_kst": "2026-10-15T06:45:50+09:00",
@@ -100952,6 +101067,34 @@
       ],
       "source_published_kst": "2026-10-06T15:03+09:00",
       "title": "“연봉 최대 2배” 중국행 삼전닉스 기술인재의 결말"
+    },
+    "event:34a887192afeb6d22a6ad5ba": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
     },
     "event:34c6f9de54f69bbf83e60c0f": {
       "first_seen_kst": "2026-10-16T14:45:17+09:00",
@@ -162481,6 +162624,26 @@
       "telegram_core_fact": "마니시 바티아 마이크론 최고운영책임자(COO)도 최근 신규 대만 타이중 공장의 2027년 생산 능력이 이미 전량 매진되었으며, 2028년까지 HBM 수요 증가율이 전체 DRAM 시장을 상회할 것으로 전망한다고 밝혔다.",
       "title": "[美특징주]마이크론, AI 수요·HBM 호재 타고 반등…'대만 노조 파업' 변수는 여전"
     },
+    "fact:6f7f7be4c64f3c7b712e1209": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mt.co.kr/culture/2026/10/23/2026102309123381215",
+      "source": "머니투데이",
+      "source_body_digest": "50edae8e8ffef661d2eb153111422d011800a08dc0ec8a3f47a45a3dd2aeb3fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dc7ccfc1e355bfb4e7c1040143e4c3daac3c5b698d8136bf3c518df2d9d38d9",
+      "source_fact_keys": [
+        "source_fact:v1:8a6f92b0c40de81252f9a48c81bcb42720e2e846132918741564deb1c0536324"
+      ],
+      "source_published_kst": "2026-10-23T09:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점",
+      "telegram_core_fact": "올해 8~9월 롯데호텔앤리조트의 어메니티 매출은 지난해 같은 기간의 약 4.5배를 기록했다.",
+      "title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점"
+    },
     "fact:6f848352c66b0cf747626760": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
       "lanes": {
@@ -168145,6 +168308,34 @@
       "telegram_core_fact": "국제 금값이 유가 상승에 따른 인플레이션 우려와 미국의 금리 인상 전망에 밀려 2개월여 만에 최저 수준으로 떨어졌다. 한국거래소(KRX) 금시장에 따르면 22일 국내 금시세(99.99%·1㎏ 기준)는 1g당 17만4290원에 거래를 마쳤다.",
       "title": "휘청인 국제 금값…국내 금시세는?"
     },
+    "fact:7d254348d968bfa83cd6edb0": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
+    },
     "fact:7d2bbee2ba2dbd6b8eb53129": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
@@ -172560,6 +172751,27 @@
       "source_title": "HD현대마린솔루션, 美 엔진 기업 '골텐스' 3315억원에 인수",
       "telegram_core_fact": "인수 금액은 약 2억4700만달러(약 3315억 원)다. HD현대마린솔루션이 글로벌 '선박·육상발전용 엔진' 서비스 전문기업 '골텐스(Goltens)'의 지분 100%를 인수하는 주식매매계약을 체결했다고 8일 공시했다.",
       "title": "HD현대마린솔루션, 美 엔진 기업 '골텐스' 3315억원에 인수"
+    },
+    "fact:875f41b0f029d6e871183ea0": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12184176",
+      "source": "매일경제",
+      "source_body_digest": "97749c94c5b267c7b8f17f5435af28bed3c4dcf316cfba744f96e43160e68329",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3e9b7f39765aaf02980cb9fe0b7581662a45317a086ec514fd39cede7fece4b",
+      "source_fact_keys": [
+        "source_fact:v1:988981725bc3081803afc2ba734fb97787ebe0f4e0193e7ac06c77582e901258",
+        "source_fact:v1:b575c2448b3cafafabc12567cf099e3667a73f61b9c0c02e612bd707187f862f"
+      ],
+      "source_published_kst": "2026-10-23T15:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑",
+      "telegram_core_fact": "하나금융지주는 23일 3분기 연결 잠정 영업이익이 1조6312억6700만원으로 전년비 10.35% 증가했다고 공시했다.",
+      "title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑"
     },
     "fact:87604eef7798ce45c6d7ec3f": {
       "first_seen_kst": "2026-10-21T12:30:59+09:00",
@@ -210544,6 +210756,34 @@
       "telegram_core_fact": "다음 달 상장 예정인 앤트로픽이 투자 적격 등급 바로 아래의 신용 등급을 획득한 것으로 뒤늦게 알려졌다. 앤트로픽은 향후 10년간 컴퓨팅 자원과 인프라에 5000억 달러 이상을 투자할 것으로 예상되는 만큼, 상장 후 신용등급이 업계 전반의 AI 투자 지속 여부에 중요한 변수로 작용할 전망이다.",
       "title": "앤트로픽, 신용등급 'BB+' 획득…투자 적격 바로 아래"
     },
+    "fact:df137d09c1465b2f41a5be47": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
+    },
     "fact:df23709f932093a68a8ec16c": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
       "lanes": {
@@ -228424,6 +228664,34 @@
       "telegram_core_fact": "디스커버리의 바이오 검사 역량에 루닛의 AI 병리 분석 기술을 더해 글로벌 제약 기업들에 표준화된 조직 관련 데이터를 제공하는 것이 이번 협업의 골자다. 검체 공급부터 분자병리, 유전체, 단백체 분석까지 신약 개발의 전 단계를 아우르는 검사 시스템을 갖추고 있는 것이 특징이다.",
       "title": "루닛, 美 디스커버리와 맞손…글로벌 제약사에 AI 병리 분석 공급"
     },
+    "link:073bdf70b2fcc4f90c3997b8": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
+    },
     "link:0740c943dfb0fcf723674953": {
       "first_seen_kst": "2026-10-07T22:24:07+09:00",
       "lanes": {
@@ -242997,6 +243265,26 @@
       "source_title": "中, 전기차 수출 세금환급 축소…해외 생산 가속화",
       "telegram_core_fact": "중국 경제매체 차이롄서에 따르면 중국 재정부는 전일 일부 제품의 수출 세금환급 정책을 조정하는 공고를 발표했다.",
       "title": "中, 전기차 수출 세금환급 축소…해외 생산 가속화"
+    },
+    "link:22565d91f36397107db521d7": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mt.co.kr/culture/2026/10/23/2026102309123381215",
+      "source": "머니투데이",
+      "source_body_digest": "50edae8e8ffef661d2eb153111422d011800a08dc0ec8a3f47a45a3dd2aeb3fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dc7ccfc1e355bfb4e7c1040143e4c3daac3c5b698d8136bf3c518df2d9d38d9",
+      "source_fact_keys": [
+        "source_fact:v1:8a6f92b0c40de81252f9a48c81bcb42720e2e846132918741564deb1c0536324"
+      ],
+      "source_published_kst": "2026-10-23T09:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점",
+      "telegram_core_fact": "올해 8~9월 롯데호텔앤리조트의 어메니티 매출은 지난해 같은 기간의 약 4.5배를 기록했다.",
+      "title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점"
     },
     "link:2282259fc25098bb6092f53f": {
       "first_seen_kst": "2026-10-21T00:42:39+09:00",
@@ -262130,6 +262418,34 @@
       "telegram_core_fact": "HUG가 공급 물량을 늘리더라도 입주자 모집과 계약 단계에서 지연이 발생하면 주거 지원 효과가 늦어질 수밖에 없다. HUG는 올해 총 3600가구 이상을 공급할 계획으로, 지난해 공급 실적 1800가구의 두 배 규모다.",
       "title": "[단독]집 있어도 입주자 모집까지 8개월…HUG 든든전세 공급 하세월"
     },
+    "link:44d0252801be41150f0ac8d8": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
+    },
     "link:44d2f951371c63b3f963d5b6": {
       "first_seen_kst": "2026-10-15T01:00:58+09:00",
       "lanes": {
@@ -276953,6 +277269,24 @@
       "telegram_core_fact": "특히 내년부터 여성농업인 복지바우처 지원금을 연 20만원에서 25만원으로 인상하고, 사용 가능 업종도 39개에서 53개로 확대한다.",
       "title": "강원 여성농업인 700여명 홍천서 한자리에…복지바우처 확대 | 연합뉴스"
     },
+    "link:5fba081ed16105dd9157fe56": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839035",
+      "source": "뉴시스",
+      "source_body_digest": "32997a64264542ade9b28978436d04887a94722b8cd9610bceaf0c4d2b1b6655",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T16:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
+      "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
+    },
     "link:5fd4879e9cf4677393f03d72": {
       "first_seen_kst": "2026-10-12T13:36:34+09:00",
       "lanes": {
@@ -285969,6 +286303,27 @@
       "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
       "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
     },
+    "link:70ae653e93d4ca57ae0bbf24": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12184176",
+      "source": "매일경제",
+      "source_body_digest": "97749c94c5b267c7b8f17f5435af28bed3c4dcf316cfba744f96e43160e68329",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3e9b7f39765aaf02980cb9fe0b7581662a45317a086ec514fd39cede7fece4b",
+      "source_fact_keys": [
+        "source_fact:v1:988981725bc3081803afc2ba734fb97787ebe0f4e0193e7ac06c77582e901258",
+        "source_fact:v1:b575c2448b3cafafabc12567cf099e3667a73f61b9c0c02e612bd707187f862f"
+      ],
+      "source_published_kst": "2026-10-23T15:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑",
+      "telegram_core_fact": "하나금융지주는 23일 3분기 연결 잠정 영업이익이 1조6312억6700만원으로 전년비 10.35% 증가했다고 공시했다.",
+      "title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑"
+    },
     "link:70bc75c047a176ef3b7959cf": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -290209,6 +290564,24 @@
       ],
       "source_published_kst": "2026-10-06T09:55+09:00",
       "title": "어기구 \"5년간 2천억원 썼는데 연간 조류 정전 2배로\" | 연합뉴스"
+    },
+    "link:7969d3d33b781724ca823935": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261023085859",
+      "source": "지디넷코리아",
+      "source_body_digest": "6c21895ef75161e4879c0b45909ace188951a89ef29261e90fbc6e2dde6ea817",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T09:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 발리 첫 전기버스 공급…카운티 일렉트릭 11대",
+      "telegram_core_fact": "현대자동차가 인도네시아 발리에 처음 도입되는 전기버스를 공급했다.",
+      "title": "현대차, 발리 첫 전기버스 공급…카운티 일렉트릭 11대"
     },
     "link:796a2aab6b5d80e990d47db7": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -300191,6 +300564,24 @@
       "source_title": "日 5개월 연속 무역적자…\"韓 등 반도체 투자 덕에 적자 폭 줄였다\"",
       "telegram_core_fact": "일본 무역수지가 유가 상승 여파로 5개월 연속 적자를 이어갔다.",
       "title": "日 5개월 연속 무역적자…\"韓 등 반도체 투자 덕에 적자 폭 줄였다\""
+    },
+    "link:8ca49e352d5fe379b39b8131": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837995",
+      "source": "뉴시스",
+      "source_body_digest": "99df3905b5533e7f618ae201edde808e1e0c5acc393ccba94c06b81e0fe2c5bd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T09:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"소파와 마사지 베드 한번에\"…두달 만에 74%↑",
+      "telegram_core_fact": "리플랙스 마사지 소파베드는 9월 판매량이 출시 첫 달인 7월 대비 약 74% 증가하는 등 판매 증가세를 보이고 있다. 세라젬이 소파와 마사지 베드 기능을 모두 갖춘 '리플랙스 마사지 소파베드'를 홈쇼핑서 처음 선보인다.",
+      "title": "\"소파와 마사지 베드 한번에\"…두달 만에 74%↑"
     },
     "link:8cb7a73de70e07256ec33345": {
       "first_seen_kst": "2026-09-27T01:53:16+09:00",
@@ -438126,6 +438517,34 @@
       "telegram_core_fact": "GC녹십자엠에스 관계자는 \"이번 협약은 기존 혈당측정기 중심의 GCFiT 제품군을 연속혈당측정기 분야까지 확대하는 계기\"라며 \"유웰과 긴밀하게 협력해 국내 인허가와 시장 진입을 추진하고 소비자의 다양한 혈당관리 수요에 대응할 수 있도록 제품군을 지속 확대하겠다\"고 말했다.",
       "title": "GC녹십자엠에스, 中 유웰 손잡고 연속혈당측정기 국내 도입 추진"
     },
+    "original:90970db740b5d7177fb5ce7a": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
+    },
     "original:90a276e623903ceb65d7de8f": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -464951,6 +465370,24 @@
       "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
       "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
     },
+    "original:c4fb4b40ba711e53f50d23ee": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839035",
+      "source": "뉴시스",
+      "source_body_digest": "32997a64264542ade9b28978436d04887a94722b8cd9610bceaf0c4d2b1b6655",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T16:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
+      "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
+    },
     "original:c4ff6fd91f10fcb196be0bf4": {
       "first_seen_kst": "2026-10-13T21:34:27+09:00",
       "lanes": {
@@ -474099,6 +474536,24 @@
       "telegram_core_fact": "SK하이닉스가 고대역폭메모리(HBM) 발열을 줄일 차세대 기술 'iHBM' 적용·생산 대응을 위해 공급망과 협의에 착수했다.",
       "title": "SK하이닉스, 발열 잡는 'iHBM' 공급망 협의 착수…HBM 선두 수성 승부수"
     },
+    "original:d674c53d637c01f814d47e46": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261023085859",
+      "source": "지디넷코리아",
+      "source_body_digest": "6c21895ef75161e4879c0b45909ace188951a89ef29261e90fbc6e2dde6ea817",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T09:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 발리 첫 전기버스 공급…카운티 일렉트릭 11대",
+      "telegram_core_fact": "현대자동차가 인도네시아 발리에 처음 도입되는 전기버스를 공급했다.",
+      "title": "현대차, 발리 첫 전기버스 공급…카운티 일렉트릭 11대"
+    },
     "original:d67b76aabaa80489d7e8140c": {
       "first_seen_kst": "2026-10-15T12:05:16+09:00",
       "lanes": {
@@ -480867,6 +481322,34 @@
       "telegram_core_fact": "카펜터 테크놀러지(CRS)가 2027 회계연도 1분기(2026년 7~9월) 매출액 7억9820만 달러, 영업이익 1억9640만 달러, 희석 주당순이익 3.25달러를 기록했다고 10월 22일 발표했다.",
       "title": "카펜터 테크놀러지, 1분기 희석 EPS 3.25달러..전년비 34% 증가"
     },
+    "original:e36188c07dda3db5078c7abb": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
+    },
     "original:e36c59c8b9beccb4b029aa16": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -482036,6 +482519,26 @@
       "link": "https://www.mt.co.kr/stock/2026/09/29/2026092915185551845",
       "source": "머니투데이",
       "title": "디어유, 150억원 자사주 취득 후 전량 소각 \"중장기 기업가치 제고\""
+    },
+    "original:e5763359dfa3a3213746bdc4": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mt.co.kr/culture/2026/10/23/2026102309123381215",
+      "source": "머니투데이",
+      "source_body_digest": "50edae8e8ffef661d2eb153111422d011800a08dc0ec8a3f47a45a3dd2aeb3fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dc7ccfc1e355bfb4e7c1040143e4c3daac3c5b698d8136bf3c518df2d9d38d9",
+      "source_fact_keys": [
+        "source_fact:v1:8a6f92b0c40de81252f9a48c81bcb42720e2e846132918741564deb1c0536324"
+      ],
+      "source_published_kst": "2026-10-23T09:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점",
+      "telegram_core_fact": "올해 8~9월 롯데호텔앤리조트의 어메니티 매출은 지난해 같은 기간의 약 4.5배를 기록했다.",
+      "title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점"
     },
     "original:e57bfbd5794fc15c35a9fb6f": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -485045,6 +485548,27 @@
       "source_published_kst": "2026-10-06T06:31+09:00",
       "title": "GKL, 해외서 고객 접촉 논란…\"현지법·중국 형법 저촉 소지\" | 연합뉴스"
     },
+    "original:eb84b8fdfeae810d5ce3572d": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12184176",
+      "source": "매일경제",
+      "source_body_digest": "97749c94c5b267c7b8f17f5435af28bed3c4dcf316cfba744f96e43160e68329",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3e9b7f39765aaf02980cb9fe0b7581662a45317a086ec514fd39cede7fece4b",
+      "source_fact_keys": [
+        "source_fact:v1:988981725bc3081803afc2ba734fb97787ebe0f4e0193e7ac06c77582e901258",
+        "source_fact:v1:b575c2448b3cafafabc12567cf099e3667a73f61b9c0c02e612bd707187f862f"
+      ],
+      "source_published_kst": "2026-10-23T15:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑",
+      "telegram_core_fact": "하나금융지주는 23일 3분기 연결 잠정 영업이익이 1조6312억6700만원으로 전년비 10.35% 증가했다고 공시했다.",
+      "title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑"
+    },
     "original:eb891864ea0854f80c8d9be7": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -486491,6 +487015,24 @@
       "source_title": "경기도 양식어가 42곳에 유용미생물 2만6680리터… 확대 필요 4.9점",
       "telegram_core_fact": "연구소는 올해 4~9월 11개 시군 42개 양식어가에 유용미생물 2만6680L를 무상 공급했다.",
       "title": "경기도 양식어가 42곳에 유용미생물 2만6680리터… 확대 필요 4.9점"
+    },
+    "original:eed773851738112fe882360d": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837995",
+      "source": "뉴시스",
+      "source_body_digest": "99df3905b5533e7f618ae201edde808e1e0c5acc393ccba94c06b81e0fe2c5bd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T09:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"소파와 마사지 베드 한번에\"…두달 만에 74%↑",
+      "telegram_core_fact": "리플랙스 마사지 소파베드는 9월 판매량이 출시 첫 달인 7월 대비 약 74% 증가하는 등 판매 증가세를 보이고 있다. 세라젬이 소파와 마사지 베드 기능을 모두 갖춘 '리플랙스 마사지 소파베드'를 홈쇼핑서 처음 선보인다.",
+      "title": "\"소파와 마사지 베드 한번에\"…두달 만에 74%↑"
     },
     "original:eed9634e585241cc823b387d": {
       "first_seen_kst": "2026-10-22T16:21:26+09:00",
@@ -541095,6 +541637,34 @@
       "source_published_kst": "2026-10-06T11:23+09:00",
       "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
     },
+    "source_fact:153d0bd139a2db28052df8a1": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
+    },
     "source_fact:1544127dd33ad75af2d2abda": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
       "lanes": {
@@ -546742,6 +547312,34 @@
       "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
       "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
     },
+    "source_fact:17e6badc678cd71963693dd8": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
+    },
     "source_fact:17e91e4ced04ac1d22458b07": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -549926,6 +550524,34 @@
       "source_title": "키움證 “삼성전기 계약은 BT기판 쇼티지 신호탄⋯대덕전자·심텍 수혜”",
       "telegram_core_fact": "키움증권은 삼성전기의 대규모 공급계약 공시가 비티(BT)기판 공급 부족의 시작을 알리는 신호라며 향후 물량 증가와 가격 인상이 동시에 나타나는 실적 상승 사이클이 본격화할 것으로 전망한다고 20일 밝혔다.",
       "title": "키움證 “삼성전기 계약은 BT기판 쇼티지 신호탄⋯대덕전자·심텍 수혜”"
+    },
+    "source_fact:197770d31a8f5a6e560239a7": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
     },
     "source_fact:197809c69bdbeb6d2fdc6a62": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
@@ -582342,6 +582968,34 @@
       "source_title": "델 테크놀로지스, 엔비디아와 손잡고 데스크사이드부터 데이터센터까지 에이전틱 AI 인프라 확대",
       "telegram_core_fact": "데스크사이드 개발 환경부터 데이터센터까지 아우르는 AI 솔루션과 컴퓨팅 인프라를 확대하고, 기업이 자체적으로 소유·관리하는 환경에서 AI를 개발하고 운영할 수 있도록 지원한다.",
       "title": "델 테크놀로지스, 엔비디아와 손잡고 데스크사이드부터 데이터센터까지 에이전틱 AI 인프라 확대"
+    },
+    "source_fact:2767e777c7e2f1841a4ce0f1": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
     },
     "source_fact:276a772eecd31feaa3b0301f": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
@@ -622674,6 +623328,34 @@
       "telegram_core_fact": "반면 비교 대상인 64GB 맥북 프로와 32GB RTX 5090은 메모리 용량 부족으로 해당 모델을 구동하지 못했다.",
       "title": "엔비디아 'RTX 스파크' 국내 출시…AI 작업 속도 맥북 프로 2배"
     },
+    "source_fact:39739364001b0905f0ae5b8d": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
+    },
     "source_fact:397401dbb495f736320af07b": {
       "first_seen_kst": "2026-10-21T22:01:46+09:00",
       "lanes": {
@@ -657904,6 +658586,34 @@
       "telegram_core_fact": "[AP/뉴시스] 우크라이나가 하루 밤 동안 1000개가 넘는 드론을 러시아 여러 지역에 발사 공격했으며 우크라에서 멀리 떨어진 상트페테르부르그의 석유수출 터미널에 화재가 났다. 상트페테르부르그에서 석유 터미널, 루치 석유저장소가 드론에 불이 났다면서 주지사가 1명이 사망하고 5명이 부상했다고 말했다.",
       "title": "러, \"우크라 하루 드론 1000개 쏴\"…상트페테르부르그 석유시설 불"
     },
+    "source_fact:491b93e5d2413424e5f53020": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
+    },
     "source_fact:491d1ac01dc9aa63d1122d96": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
       "lanes": {
@@ -658678,6 +659388,34 @@
       "source_title": "유진로봇, AMR 넘어 휴머노이드 사업으로 본격 확장",
       "telegram_core_fact": "유진로봇 박성주 대표이사는 “유진로봇의 휴머노이드 사업은 기존 AMR 중심의 로보타이제이션 사업을 ‘작업 수행’ 영역까지 한 단계 확장하는 전략”이라며 “이번 국책과제를 중요한 실증 기반으로 삼아 현장에서 기술과 사업성을 검증하고 추후 휴머노이드와 피지컬 AI를 기업의 새로운 성장동력으로 육성해 나가겠다”고 밝혔다.",
       "title": "유진로봇, AMR 넘어 휴머노이드 사업으로 본격 확장"
+    },
+    "source_fact:497ae3eadb53eb6f5d62ea98": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
     },
     "source_fact:497f95f91f520b3aaebf2ffe": {
       "first_seen_kst": "2026-10-20T14:54:10+09:00",
@@ -676286,6 +677024,34 @@
       "source_published_kst": "2026-10-07T08:44+09:00",
       "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
     },
+    "source_fact:515fdd058c28a2fd7c07aa0c": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
+    },
     "source_fact:516327d15ef463eef1d03c17": {
       "first_seen_kst": "2026-10-20T19:03:19+09:00",
       "lanes": {
@@ -688237,6 +689003,34 @@
       "source_title": "[10·15 대책 1년] 1년 새 서울 중하위권 뜨고 강남은 위축 | 연합뉴스",
       "telegram_core_fact": "서울 전역과 경기 12개 지역을 규제지역과 토지거래허가구역으로 묶고 주택 가액대별로 주택담보대출 한도를 차등화한 10·15 대책이 발표된 지 1년이 지났다.",
       "title": "[10·15 대책 1년] 1년 새 서울 중하위권 뜨고 강남은 위축 | 연합뉴스"
+    },
+    "source_fact:56930f039c6f3a25ef4b2a2f": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
     },
     "source_fact:5694eedb7fa6fb3d0068c81a": {
       "first_seen_kst": "2026-10-19T20:38:33+09:00",
@@ -777218,6 +778012,34 @@
       "source_published_kst": "2026-10-05T22:50+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 해외CB 가격 확정..표면금리 0%"
     },
+    "source_fact:7e941b86c0fee7d2d9bad4e2": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
+    },
     "source_fact:7e9520ad33bd3b4e368c6199": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
       "lanes": {
@@ -779736,6 +780558,34 @@
       "source_title": "[개장전특징주]엔비디아, 웨스턴디지털, 노보 노디스크",
       "telegram_core_fact": "노보 노디스크가 지난해 3분기 20억 덴마크 크로네(약 4013억원) 총 순 매출 혜택을 받으면서 해당 분기 보고 기준 매출은 307억 덴마크 크로네(약 6조1600억원)로 증가했다는 점도 이번 매출 감소세를 한층 부각할 것이라고 그는 지적했다.",
       "title": "[개장전특징주]엔비디아, 웨스턴디지털, 노보 노디스크"
+    },
+    "source_fact:800218638daa6b778298672d": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
     },
     "source_fact:800723ccc6fd39b78357235d": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
@@ -785726,6 +786576,34 @@
       ],
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약"
+    },
+    "source_fact:82bcc2085c6fd655f8b86502": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
     },
     "source_fact:82be382c9a0c094fc90655ba": {
       "first_seen_kst": "2026-10-08T15:53:45+09:00",
@@ -833941,6 +834819,34 @@
       "source_title": "한미반도체, 美 실리콘밸리에 법인 설립… 곽동신 회장 “ 고객 밀착 기술 지원”",
       "telegram_core_fact": "곽동신 한미반도체 회장은 \"미국은 세계 AI 산업과 첨단 반도체 기술을 이끄는 중요한 시장\"이라며 \"한미USA는 미국 현지 고객에게 밀착 기술 지원을 제공하고, 글로벌 반도체 기업들과 협력을 확대해 세계 시장에서 경쟁력을 더욱 강화해 나가겠다\"고 말했다.",
       "title": "한미반도체, 美 실리콘밸리에 법인 설립… 곽동신 회장 “ 고객 밀착 기술 지원”"
+    },
+    "source_fact:994c72a7bc8de112e81aa439": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
     },
     "source_fact:994dc5be873976a561370616": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
@@ -882419,6 +883325,34 @@
       "telegram_core_fact": "네팔 정부는 대홍수 사망자 유족에게 가족 중 첫 희생자에 대해 약 20만 네팔루피(약 174만원), 추가 사망자 1명 당 10만 네팔루피(약 86만8천원)의 보상금을 각각 지급하고 있으며, 이와 별도로 최대 2만5천 네팔루피(약 21만7천원)의 장례 비용을 지원하고 있다.",
       "title": "네팔, 실종자 5000명 곧 사망처리…유족 지원·상속 가능해진다"
     },
+    "source_fact:ae971b2ef2a6919b28f55185": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
+    },
     "source_fact:ae97d3ab8cd0b8a7b12667ac": {
       "first_seen_kst": "2026-10-16T19:48:28+09:00",
       "lanes": {
@@ -899527,6 +900461,34 @@
       "telegram_core_fact": "이 위원장은 \"그렇지 않다\"고 거듭 부인하며 \"해외에서는 투자할 수 있는 상품을 국내에서는 막고 있다는 문제 제기가 이전부터 있었고, 관계부처 협의로 결정했다\"고 답했다.",
       "title": "이억원 \"레버리지ETF, 靑 지시 없었다… 부처 협의 후 도입\" [李정부 2년차 국감]"
     },
+    "source_fact:b63f7e8e529b738e0d602143": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
+    },
     "source_fact:b63f9713036f27aa7beb7a36": {
       "first_seen_kst": "2026-10-20T17:57:17+09:00",
       "lanes": {
@@ -908114,6 +909076,26 @@
       "telegram_core_fact": "금융정보업체 에프앤가이드에 따르면 삼성SDI의 3분기 실적 컨센서스는 매출 4조373억원, 영업이익 1654억원이다.",
       "title": "K배터리 3사, ESS가 끌고 보상금이 민다…삼성SDI도 3분기 ‘깜짝 실적’ 기대감 [비즈360]"
     },
+    "source_fact:ba329c5a9653981843fb46cf": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mt.co.kr/culture/2026/10/23/2026102309123381215",
+      "source": "머니투데이",
+      "source_body_digest": "50edae8e8ffef661d2eb153111422d011800a08dc0ec8a3f47a45a3dd2aeb3fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dc7ccfc1e355bfb4e7c1040143e4c3daac3c5b698d8136bf3c518df2d9d38d9",
+      "source_fact_keys": [
+        "source_fact:v1:8a6f92b0c40de81252f9a48c81bcb42720e2e846132918741564deb1c0536324"
+      ],
+      "source_published_kst": "2026-10-23T09:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점",
+      "telegram_core_fact": "올해 8~9월 롯데호텔앤리조트의 어메니티 매출은 지난해 같은 기간의 약 4.5배를 기록했다.",
+      "title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점"
+    },
     "source_fact:ba38f3e6604858eac5370299": {
       "first_seen_kst": "2026-10-22T14:04:51+09:00",
       "lanes": {
@@ -909987,6 +910969,27 @@
       ],
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
+    },
+    "source_fact:bb316ee6f2c6b091d9f6b12f": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12184176",
+      "source": "매일경제",
+      "source_body_digest": "97749c94c5b267c7b8f17f5435af28bed3c4dcf316cfba744f96e43160e68329",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3e9b7f39765aaf02980cb9fe0b7581662a45317a086ec514fd39cede7fece4b",
+      "source_fact_keys": [
+        "source_fact:v1:988981725bc3081803afc2ba734fb97787ebe0f4e0193e7ac06c77582e901258",
+        "source_fact:v1:b575c2448b3cafafabc12567cf099e3667a73f61b9c0c02e612bd707187f862f"
+      ],
+      "source_published_kst": "2026-10-23T15:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑",
+      "telegram_core_fact": "하나금융지주는 23일 3분기 연결 잠정 영업이익이 1조6312억6700만원으로 전년비 10.35% 증가했다고 공시했다.",
+      "title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑"
     },
     "source_fact:bb31c383887dcdab1b8faa78": {
       "first_seen_kst": "2026-10-12T14:17:50+09:00",
@@ -925366,6 +926369,34 @@
       ],
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
+    "source_fact:c21418e6c1c8e537e89ee374": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
     },
     "source_fact:c216e34b8e9b62e3fe53a855": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
@@ -982469,6 +983500,27 @@
       "telegram_core_fact": "빠르게 늘어나는 반도체 수요에 대응하기 위해 여건이 갖춰지는 대로 최대한 신속하게 건설하겠다는 의지도 강조했다.",
       "title": "최태원 \"호남 반도체 공장, 용인 3분의 2 규모…최대한 빨리 건설\""
     },
+    "source_fact:dbcaef68889ccf97917dcdb6": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12184176",
+      "source": "매일경제",
+      "source_body_digest": "97749c94c5b267c7b8f17f5435af28bed3c4dcf316cfba744f96e43160e68329",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3e9b7f39765aaf02980cb9fe0b7581662a45317a086ec514fd39cede7fece4b",
+      "source_fact_keys": [
+        "source_fact:v1:988981725bc3081803afc2ba734fb97787ebe0f4e0193e7ac06c77582e901258",
+        "source_fact:v1:b575c2448b3cafafabc12567cf099e3667a73f61b9c0c02e612bd707187f862f"
+      ],
+      "source_published_kst": "2026-10-23T15:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑",
+      "telegram_core_fact": "하나금융지주는 23일 3분기 연결 잠정 영업이익이 1조6312억6700만원으로 전년비 10.35% 증가했다고 공시했다.",
+      "title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑"
+    },
     "source_fact:dbcb1cedb3f87d27d71cfe01": {
       "first_seen_kst": "2026-10-22T08:49:50+09:00",
       "lanes": {
@@ -998343,6 +999395,34 @@
       "source_title": "레이언스, AI 반도체 검사 수요 확대에 AXI 사업 성장 가속",
       "telegram_core_fact": "레이언스의 서영권 대표는 \"2026년 AXI 사업은 매출 성장뿐 아니라 수익성 측면에서도 의미 있는 성과를 달성했다\"며 \"AI 반도체와 첨단 전자산업 확대에 따른 검사 수요 증가를 기반으로 글로벌 시장 공략을 더욱 강화할 계획\"이라고 말했다.",
       "title": "레이언스, AI 반도체 검사 수요 확대에 AXI 사업 성장 가속"
+    },
+    "source_fact:e2aab1e29d0fa18a8bd01e5a": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
     },
     "source_fact:e2ae461927cc621ffdfed3df": {
       "first_seen_kst": "2026-10-23T10:58:03+09:00",
@@ -1032705,6 +1033785,34 @@
       "source_title": "\"SK하이닉스 솔리다임, 내년 美IPO 위한 주관사 선정\"",
       "telegram_core_fact": "올해 8월 솔리다임은 코어위브와 기업용 솔리드스테이트드라이브(SSD) 용량 공급 계약을 체결했다.",
       "title": "\"SK하이닉스 솔리다임, 내년 美IPO 위한 주관사 선정\""
+    },
+    "source_fact:f25d0d6288fe3da5ed502c2d": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
     },
     "source_fact:f25d217c728a058b289b837b": {
       "first_seen_kst": "2026-10-13T10:49:34+09:00",
@@ -1139326,6 +1140434,34 @@
       "telegram_core_fact": "GC녹십자엠에스 관계자는 \"이번 협약은 기존 혈당측정기 중심의 GCFiT 제품군을 연속혈당측정기 분야까지 확대하는 계기\"라며 \"유웰과 긴밀하게 협력해 국내 인허가와 시장 진입을 추진하고 소비자의 다양한 혈당관리 수요에 대응할 수 있도록 제품군을 지속 확대하겠다\"고 말했다.",
       "title": "GC녹십자엠에스, 中 유웰 손잡고 연속혈당측정기 국내 도입 추진"
     },
+    "title:90970db740b5d7177fb5ce7a": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05487446645615872",
+      "source": "이데일리",
+      "source_body_digest": "25099125b5ab7a64b34671a46a325b4f9590e86ed854f4797a849c540a4a3d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d7e00fa69cb57e76796f83a0e55b22be651e30a1905482130f52fc9fc1fc1b",
+      "source_fact_keys": [
+        "source_fact:v1:1ec9d19d48c017dcc2b590306f628ee475a61cbc77694cf0528d6333e28ebf0b",
+        "source_fact:v1:2393e1e88a29d99bf4c13988d95197278485b6e92b815ff07e38a9622feae946",
+        "source_fact:v1:54257daecdfb1a9527ac99bfdd546838e1f11cce44605ecc71fb890a8f837024",
+        "source_fact:v1:5557bfcd23599b48e8b413c4355f93f84778a65550c7db94b8e3f16b3d245d7d",
+        "source_fact:v1:7b987002e3b1aa159d75d5ac7b4cbe98636ada7063112c76b8c4eafcbb66fa55",
+        "source_fact:v1:8db51a5b93c53ebb23e0efaf2d9629d2a1a14c6abc1756bae77b5758263c8e90",
+        "source_fact:v1:a7ada17b198e3bc7a0f2cd9407d449b6578b8cef5258b525b9af1361c6278d4d",
+        "source_fact:v1:e041c80658d6a05ea82a062e67c9c10adfb4a08a64fe02f22e10d927d3b4c999",
+        "source_fact:v1:e5ffd14e779eae539df1eb4b9fc5bf1686dd69faddd796dda2308c973217cb8e"
+      ],
+      "source_published_kst": "2026-10-23T16:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'",
+      "telegram_core_fact": "16조원 규모 자본을 내세운 한국투자공사(KIC) 전략형 국부펀드가 출범을 앞두고 '실탄 논란'에 직면했다. 전략형 국부펀드 재원으로 거론되는 국책은행 지분 약 16조원은 실제 투자에 즉시 투입할 수 있는 현금과 거리가 있다는 설명이다.",
+      "title": "16조원 있지만 당장 쓸 돈 '1조원'…KIC 국부펀드 '실탄 논란'"
+    },
     "title:90a276e623903ceb65d7de8f": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -1166952,6 +1168088,24 @@
       "telegram_core_fact": "네오티스가 글로벌 AI 공급망의 쇼티지 심화와 선제적인 캐파 증설에 힘입어 2년째 반등세를 이어갔다.",
       "title": "[더벨][네오티스 퀀텀점프]쇼티지 지속, 엔비디아·AMD·테슬라향 탄탄한 공급망"
     },
+    "title:c4fb4b40ba711e53f50d23ee": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839035",
+      "source": "뉴시스",
+      "source_body_digest": "32997a64264542ade9b28978436d04887a94722b8cd9610bceaf0c4d2b1b6655",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T16:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
+      "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
+    },
     "title:c4ff6fd91f10fcb196be0bf4": {
       "first_seen_kst": "2026-10-13T21:34:27+09:00",
       "lanes": {
@@ -1176245,6 +1177399,24 @@
       "telegram_core_fact": "SK하이닉스가 고대역폭메모리(HBM) 발열을 줄일 차세대 기술 'iHBM' 적용·생산 대응을 위해 공급망과 협의에 착수했다.",
       "title": "SK하이닉스, 발열 잡는 'iHBM' 공급망 협의 착수…HBM 선두 수성 승부수"
     },
+    "title:d674c53d637c01f814d47e46": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261023085859",
+      "source": "지디넷코리아",
+      "source_body_digest": "6c21895ef75161e4879c0b45909ace188951a89ef29261e90fbc6e2dde6ea817",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T09:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 발리 첫 전기버스 공급…카운티 일렉트릭 11대",
+      "telegram_core_fact": "현대자동차가 인도네시아 발리에 처음 도입되는 전기버스를 공급했다.",
+      "title": "현대차, 발리 첫 전기버스 공급…카운티 일렉트릭 11대"
+    },
     "title:d67b76aabaa80489d7e8140c": {
       "first_seen_kst": "2026-10-15T12:05:16+09:00",
       "lanes": {
@@ -1183071,6 +1184243,34 @@
       "telegram_core_fact": "카펜터 테크놀러지(CRS)가 2027 회계연도 1분기(2026년 7~9월) 매출액 7억9820만 달러, 영업이익 1억9640만 달러, 희석 주당순이익 3.25달러를 기록했다고 10월 22일 발표했다.",
       "title": "카펜터 테크놀러지, 1분기 희석 EPS 3.25달러..전년비 34% 증가"
     },
+    "title:e36188c07dda3db5078c7abb": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639271",
+      "source": "이투데이",
+      "source_body_digest": "1331b49551d4715f1c6daef281c2b973ef6c82fd05c981bdd92423221bbc05d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12d499f0030e432896d24a221747cd013ff0572d7a0b3f0fa06ed47819a30acb",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a807b3a9158afdc9bd5d7312d2287600f7ff2cf16f07d9d4f15c3841859e1",
+        "source_fact:v1:1dbaa13605faf640c7fd7a7263ccb879ad259e857b106a5ea1f634ced7602a08",
+        "source_fact:v1:24bc7207f87df7d38a3675b048eb4dde8576ae1202f2641602dd1b36d81540d6",
+        "source_fact:v1:613be9b73495375bf9edccd6c76f6cb5594669f2aa179920838048455a8b5aec",
+        "source_fact:v1:871bc13f20ce4961db554441e67fb209d54e22871369c3d7f85abc21ee8d8f33",
+        "source_fact:v1:a23f2de2cf261b654893d048a27fc1df3c91bc05a6ea61897e9973ef9f9b5a3d",
+        "source_fact:v1:ac70c2dffb965db439951c6b0b9e6aebb60c231c430319f569021d40e236dd2d",
+        "source_fact:v1:d37b88b74c4318ec5a8eb80a336e9ac949ecce58221d591b8c6716af0d09427a",
+        "source_fact:v1:dce9ad9fc7e9a9583fdacd0a6a3504bbda22eb0bb586a573f2d2dbd3ad2a91d5"
+      ],
+      "source_published_kst": "2026-10-23T09:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”",
+      "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
+      "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
+    },
     "title:e36c59c8b9beccb4b029aa16": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -1184240,6 +1185440,44 @@
       "link": "https://www.mt.co.kr/stock/2026/09/29/2026092915185551845",
       "source": "머니투데이",
       "title": "디어유, 150억원 자사주 취득 후 전량 소각 \"중장기 기업가치 제고\""
+    },
+    "title:e5763359dfa3a3213746bdc4": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mt.co.kr/culture/2026/10/23/2026102309123381215",
+      "source": "머니투데이",
+      "source_body_digest": "50edae8e8ffef661d2eb153111422d011800a08dc0ec8a3f47a45a3dd2aeb3fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dc7ccfc1e355bfb4e7c1040143e4c3daac3c5b698d8136bf3c518df2d9d38d9",
+      "source_fact_keys": [
+        "source_fact:v1:8a6f92b0c40de81252f9a48c81bcb42720e2e846132918741564deb1c0536324"
+      ],
+      "source_published_kst": "2026-10-23T09:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점",
+      "telegram_core_fact": "올해 8~9월 롯데호텔앤리조트의 어메니티 매출은 지난해 같은 기간의 약 4.5배를 기록했다.",
+      "title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점"
+    },
+    "title:e5778d18d83d17721d0c17a9": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839035",
+      "source": "뉴시스",
+      "source_body_digest": "32997a64264542ade9b28978436d04887a94722b8cd9610bceaf0c4d2b1b6655",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T16:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
+      "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
     },
     "title:e57bfbd5794fc15c35a9fb6f": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -1187327,6 +1188565,27 @@
       "source_published_kst": "2026-10-06T06:31+09:00",
       "title": "GKL, 해외서 고객 접촉 논란…\"현지법·중국 형법 저촉 소지\" | 연합뉴스"
     },
+    "title:eb84b8fdfeae810d5ce3572d": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12184176",
+      "source": "매일경제",
+      "source_body_digest": "97749c94c5b267c7b8f17f5435af28bed3c4dcf316cfba744f96e43160e68329",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3e9b7f39765aaf02980cb9fe0b7581662a45317a086ec514fd39cede7fece4b",
+      "source_fact_keys": [
+        "source_fact:v1:988981725bc3081803afc2ba734fb97787ebe0f4e0193e7ac06c77582e901258",
+        "source_fact:v1:b575c2448b3cafafabc12567cf099e3667a73f61b9c0c02e612bd707187f862f"
+      ],
+      "source_published_kst": "2026-10-23T15:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑",
+      "telegram_core_fact": "하나금융지주는 23일 3분기 연결 잠정 영업이익이 1조6312억6700만원으로 전년비 10.35% 증가했다고 공시했다.",
+      "title": "하나금융지주, 3분기 영업익 1조6312억6700만원…전년比 10.35% ↑"
+    },
     "title:eb891864ea0854f80c8d9be7": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -1188806,6 +1190065,24 @@
       "source_title": "경기도 양식어가 42곳에 유용미생물 2만6680리터… 확대 필요 4.9점",
       "telegram_core_fact": "연구소는 올해 4~9월 11개 시군 42개 양식어가에 유용미생물 2만6680L를 무상 공급했다.",
       "title": "경기도 양식어가 42곳에 유용미생물 2만6680리터… 확대 필요 4.9점"
+    },
+    "title:eed773851738112fe882360d": {
+      "first_seen_kst": "2026-10-23T17:05:56+09:00",
+      "lanes": {
+        "live": "2026-10-23T17:05:56+09:00"
+      },
+      "last_seen_kst": "2026-10-23T17:05:56+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837995",
+      "source": "뉴시스",
+      "source_body_digest": "99df3905b5533e7f618ae201edde808e1e0c5acc393ccba94c06b81e0fe2c5bd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T09:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"소파와 마사지 베드 한번에\"…두달 만에 74%↑",
+      "telegram_core_fact": "리플랙스 마사지 소파베드는 9월 판매량이 출시 첫 달인 7월 대비 약 74% 증가하는 등 판매 증가세를 보이고 있다. 세라젬이 소파와 마사지 베드 기능을 모두 갖춘 '리플랙스 마사지 소파베드'를 홈쇼핑서 처음 선보인다.",
+      "title": "\"소파와 마사지 베드 한번에\"…두달 만에 74%↑"
     },
     "title:eed9634e585241cc823b387d": {
       "first_seen_kst": "2026-10-22T16:21:26+09:00",
@@ -1197981,5 +1199258,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-23T16:42:18+09:00"
+  "updated_at_kst": "2026-10-23T17:05:56+09:00"
 }
