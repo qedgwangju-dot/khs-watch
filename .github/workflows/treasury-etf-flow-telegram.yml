@@ -2,6 +2,10 @@ name: Treasury ETF Fund Flow Telegram
 
 on:
   schedule:
+    - cron: "30 7 * * *"
+      timezone: "Asia/Seoul"
+    - cron: "45 7 * * *"
+      timezone: "Asia/Seoul"
     - cron: "30,35,40 8 * * *"
       timezone: "Asia/Seoul"
     - cron: "0,15,30,45 9-11 * * *"
@@ -56,6 +60,7 @@ jobs:
       TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
       TREASURY_REPORT_VALIDATE_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.validate_only && '1' || '0' }}
+      TREASURY_DAILY_DIGEST: ${{ github.event_name == 'schedule' && (github.event.schedule == '30 7 * * *' || github.event.schedule == '45 7 * * *') && '1' || '0' }}
 
     steps:
       - name: Checkout latest delivery state
@@ -64,7 +69,7 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Skip already delivered U.S. market day before running external requests
+      - name: Check whether today's Treasury report is already delivered
         id: delivery_gate
         run: |
           python3 - <<'PY'
@@ -72,24 +77,34 @@ jobs:
           import json
           import os
           from pathlib import Path
+          import sys
           from zoneinfo import ZoneInfo
+
+          sys.path.insert(0, "scripts")
+          from treasury_credit_flow_delivery import should_run_delivery
 
           source_date = dt.datetime.now(ZoneInfo("America/New_York")).date()
           while source_date.weekday() >= 5:
               source_date -= dt.timedelta(days=1)
+          delivery_date_kst = dt.datetime.now(ZoneInfo("Asia/Seoul")).date().isoformat()
           p = Path("data/treasury_etf_flow_state.json")
           state = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
-          last = state.get("last_delivery") or {}
+          daily_digest = os.getenv("TREASURY_DAILY_DIGEST") == "1"
           validation_mode = os.getenv("TREASURY_REPORT_VALIDATE_ONLY") == "1"
-          already_sent = (
-              last.get("treasury_date") == source_date.isoformat()
-              and last.get("bot_username") == "khs8879887988798879_bot"
-              and bool(last.get("message_ids"))
+          should_run = should_run_delivery(
+              state,
+              source_date.isoformat(),
+              delivery_date_kst,
+              daily_digest=daily_digest,
+              validate_only=validation_mode,
           )
-          skip = already_sent and not validation_mode
-          print(f"treasury_early_delivery_gate source_date={source_date} already_sent={already_sent} skip={skip}")
+          print(
+              "treasury_delivery_gate "
+              f"source_date={source_date.isoformat()} delivery_date_kst={delivery_date_kst} "
+              f"daily_digest={daily_digest} should_run={should_run}"
+          )
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
-              out.write(f"should_run={'false' if skip else 'true'}\n")
+              out.write(f"should_run={'true' if should_run else 'false'}\n")
           PY
 
       - name: Set up Python
@@ -107,6 +122,8 @@ jobs:
         run: |
           python -m py_compile scripts/treasury_etf_flow_watch.py
           python -m py_compile scripts/treasury_credit_flow_watch_ishares.py
+          python -m py_compile scripts/treasury_credit_flow_delivery.py
+          python -m py_compile scripts/treasury_credit_flow_daily_status.py
           python -m py_compile scripts/treasury_credit_flow_watch_readable.py
           python -m py_compile scripts/treasury_credit_flow_watch_marketstress.py
           python -m py_compile scripts/treasury_credit_flow_watch_refinancing.py
@@ -215,7 +232,19 @@ jobs:
           python scripts/treasury_credit_flow_watch_refinancing.py | tee out/treasury_runtime_status.log
           if grep -q 'report_withheld' out/treasury_runtime_status.log; then
             echo "::warning::Treasury daily report withheld: official source dates or fields are not yet aligned."
-            echo "공식자료가 아직 일치하지 않아 투자 보고를 보류했습니다. 실제 Telegram 송출은 하지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+            if [ "$TREASURY_DAILY_DIGEST" = "1" ]; then
+              python scripts/treasury_credit_flow_daily_status.py | tee -a out/treasury_runtime_status.log
+              if grep -q 'daily_status_notification_sent=true' out/treasury_runtime_status.log; then
+                echo "공식 자료 검증 미통과를 알리고 07:45 KST 재시도를 예고했습니다. 전체 수치 보고는 보류했습니다." >> "$GITHUB_STEP_SUMMARY"
+              elif grep -q 'daily_status_notification_suppressed=true' out/treasury_runtime_status.log; then
+                echo "오늘의 자료 보류 알림은 이미 확인됐습니다. 전체 보고 검증은 계속 보류했습니다." >> "$GITHUB_STEP_SUMMARY"
+              else
+                echo "::error::Daily source-hold notice produced no auditable send or dedupe result."
+                exit 1
+              fi
+            else
+              echo "공식자료가 아직 일치하지 않아 투자 보고를 보류했습니다. 이 실행은 일일 정기 발송 시간이 아니므로 Telegram 상태 알림은 보내지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+            fi
           elif grep -q 'treasury_report_validation_only=true' out/treasury_runtime_status.log; then
             echo "실제 공개자료 조회 및 한국어 보고서 검증 완료. 검증 실행이므로 Telegram 미전송." >> "$GITHUB_STEP_SUMMARY"
           elif grep -Eq 'duplicate_delivery_suppressed=true|same_market_day_delivery_suppressed=true' out/treasury_runtime_status.log; then
