@@ -48,6 +48,16 @@ AI_FORCE_ALERT_PATH = OUT_DIR / "khs_ai_force_policy_alert.md"
 AI_FORCE_TITLE_PATH = OUT_DIR / "khs_ai_force_policy_title.txt"
 
 OFFICIAL_DIRECT_STORIES = {
+    "us_dhs_deepseek_federal_civilian_exclusion": (
+        ("https://www.govinfo.gov/content/pkg/FR-2026-10-20/html/2026-21447.htm",
+         "Notice of Order Regarding Exclusion and Removal of DeepSeek Products From Federal Civilian Executive Branch Information Technology Systems and Procurements",
+         "U.S. DHS / Federal Register"),
+    ),
+    "us_treasury_coins_biotechnology_outbound_nprm": (
+        ("https://home.treasury.gov/news/press-releases/sb0667",
+         "Treasury Issues Proposed Rule to Implement Comprehensive Outbound Investment National Security Act",
+         "U.S. Department of the Treasury"),
+    ),
     # Primary evidence: 2026-10-07 Treasury release, not a robot-maker SDN designation.
     "us_treasury_outbound_ai_robotics_enforcement": (
         # Treasury-managed GovDelivery bulletin carries the identical 2026-10-07
@@ -98,6 +108,10 @@ OFFICIAL_DIRECT_STORIES = {
 }
 
 OFFICIAL_API_STORIES = {
+    "us_dhs_deepseek_federal_civilian_exclusion": (
+        ("https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=DeepSeek&order=newest&per_page=100",
+         "2026-21447", "미 국토안보부 연방관보"),
+    ),
     "us_fcc_upper_c_band_auction115": (
         (
             "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=Auction+115+Upper+C-Band&order=newest&per_page=20",
@@ -277,6 +291,8 @@ RULE_MAX_AGE_HOURS = {
     # becoming false "new official stage" alerts.
     "us_fcc_foreign_energy_inverter_ban": 24 * 90,
     # Recover the Treasury enforcement release once, not each time it is reprinted.
+    "us_dhs_deepseek_federal_civilian_exclusion": 24 * 35,
+    "us_treasury_coins_biotechnology_outbound_nprm": 24 * 55,
     "us_treasury_outbound_ai_robotics_enforcement": 24 * 14,
     # One-time recovery for the 2026-10-01 Morgan Stanley 3.2T/65% research
     # story that predates the international outlet parser fix.
@@ -883,6 +899,54 @@ STORY_RULES = (
         impacts=("시간표", "수급", "돈 버는 능력"),
         paths=("정책 타임라인", "수급", "중국 대체 공급망"),
         follow_up="오늘 바뀐 것은 확정 매출이 아니라 정책 시간표·테마 수급입니다. 공식 상무부 발표, 관세/수입제한 품목, OSC 대출 조건을 후속 확인해야 합니다.",
+    ),
+    StoryRule(
+        key="us_dhs_deepseek_federal_civilian_exclusion",
+        title="미 국토안보부, DeepSeek 연방 민간기관 조달 배제·설치 제품 제거",
+        google_queries=(
+            '"2026-21447" DeepSeek DHS federal civilian',
+            '"DHS-2026-0628" DeepSeek FASCSA federal agencies',
+            "Reuters DeepSeek DHS government procurement removal October 2026",
+        ),
+        required_groups=(
+            ("deepseek",),
+            ("federal civilian", "civilian agencies", "federal agencies", "연방 민간"),
+            ("exclusion", "remove", "removal", "ban", "order", "procurement"),
+            ("homeland security", "dhs", "federal register", "govinfo", "국토안보부", "연방관보"),
+        ),
+        core="미 국토안보부는 DeepSeek 관련 제품·서비스를 연방 민간기관 신규 조달에서 배제하고 기존 정보시스템에서 제거하도록 명령했습니다.",
+        impact="미 연방 공공 AI 조달·정보보안·중국 AI 대체 | 돈 버는 능력·할인율·시간표",
+        point="연방기관의 모델 교체·검증·보안 서비스 구매 가능성은 있지만, 한국 기업의 직접 수주·매출은 별도로 확인해야 합니다.",
+        counter="미국 모든 민간기업·개인 사용자에 대한 전면 사용금지가 아닙니다.",
+        sectors="AI 클라우드, 모델 보안검증, 공공 정보시스템",
+        impacts=("돈 버는 능력", "할인율", "시간표"),
+        paths=("공식 명령", "연방정부 조달", "기존 제품 제거", "예외"),
+        follow_up="DHS-2026-0628 예외·정정, CISA 집행지침, 기관별 제거·대체 조달 계약을 확인합니다.",
+        trusted_sources=("Reuters", "AP News", "Federal Register", "U.S. Department of Homeland Security"),
+    ),
+    StoryRule(
+        key="us_treasury_coins_biotechnology_outbound_nprm",
+        title="미 재무부, 중국 생명공학 대외투자 신고·금지 규칙 제안",
+        google_queries=(
+            'site:home.treasury.gov/news/press-releases/sb0667 biotechnology COINS October 22',
+            '"COINS Act" "biotechnology" "outbound investment" Treasury',
+            'Reuters Treasury proposed rule Chinese biotech outbound investment final December 2026',
+        ),
+        required_groups=(
+            ("treasury", "department of the treasury", "미 재무부"),
+            ("biotechnology", "biotech", "biopharma", "생명공학", "바이오"),
+            ("outbound investment", "coins act", "oisp", "대외투자"),
+            ("proposed", "rule", "regulations", "prohibit", "notification", "exemption", "규칙", "금지", "신고"),
+        ),
+        core="미 재무부는 2026년 10월 22일 COINS Act에 따라 생명공학을 대외투자 신고·금지 규칙안에 추가했습니다.",
+        impact="중국 신약·바이오·뇌-컴퓨터 인터페이스 지분투자·합작·벤처자금 | 할인율·시간표",
+        point="미국인의 민감 분야 지분투자·합작거래에는 신고·금지 위험이 커질 수 있으나, 순수 기술도입 사용권 계약과 실제 투자 거래를 구분해야 합니다.",
+        counter="현재 규칙 제안 단계이며 12월 7일 의견수렴 후 확정됩니다. 모든 바이오 기술도입 계약이 즉시 금지되는 것은 아닙니다.",
+        sectors="중국 바이오기업, 신약개발, 세포·유전자 치료, 뇌-컴퓨터 인터페이스, 벤처투자",
+        impacts=("할인율", "자본조달", "시간표"),
+        paths=("공식 규칙안", "의견수렴", "신고·금지", "예외·최종 시행"),
+        follow_up="2026년 12월 7일 의견제출 마감, 최종 규칙·발효일, 대상 기술·국가·지분 및 사용권 계약 예외를 추적합니다.",
+        trusted_sources=("Reuters", "Financial Times", "Bloomberg", "Associated Press", "U.S. Department of the Treasury"),
     ),
     StoryRule(
         key="us_treasury_outbound_ai_robotics_enforcement",
@@ -1593,6 +1657,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             "source": source_label,
             "published_kst": published.isoformat(timespec="seconds"),
             "priority": 0,
+            "official_api_verified": True,
         })
         print(f"trusted_policy_news=official_api_verified key={rule.key} document={document_number} title={title!r}")
 
@@ -1681,6 +1746,29 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             if verified:
                 title = expected_title
                 description = clean_text(raw)[:50000]
+
+        # Do not accept a truncated abstract, challenge page or a different
+        # policy release as confirmation of these exact first-party events.
+        if rule.key in {
+            "us_dhs_deepseek_federal_civilian_exclusion",
+            "us_treasury_coins_biotechnology_outbound_nprm",
+        }:
+            body_text = clean_text(raw).lower()
+            if rule.key == "us_dhs_deepseek_federal_civilian_exclusion":
+                evidence = ("2026-21447", "dhs-2026-0628", "deepseek",
+                            "federal civilian", "homeland security", "removal")
+                baseline_date = dt.datetime(2026, 10, 20, tzinfo=KST)
+            else:
+                evidence = ("treasury issues proposed rule to implement comprehensive outbound investment",
+                            "october 22, 2026", "biotechnology", "coins act")
+                baseline_date = dt.datetime(2026, 10, 22, tzinfo=KST)
+            if not all(marker in body_text for marker in evidence):
+                print(f"trusted_policy_news=official_direct_rejected key={rule.key} reason=source_identity_mismatch")
+                continue
+            title = expected_title
+            description = clean_text(raw)[:50000]
+            published = published or baseline_date
+            verified = True
 
         haystack = f"{title} {source_label} {description}"
         if (
@@ -1950,6 +2038,34 @@ def semantic_policy_event_key(item: dict) -> str:
             for key in ("title", "description", "link", "source")
         )
     ).lower()
+    # Fixed policy identities are stable across news reprints, while genuinely
+    # new final/exception/implementation documents get a separate event key.
+    if "deepseek" in text and any(
+        word in text for word in ("homeland security", "dhs", "federal civilian", "dhs-2026-0628")
+    ):
+        if any(word in title_text for word in ("exemption granted", "grants exception", "waiver granted")):
+            return "us-dhs-deepseek-exemption-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
+        if any(word in title_text for word in ("amended order", "rescinds order", "revokes order")):
+            return "us-dhs-deepseek-amendment-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
+        if any(word in title_text for word in ("removal complete", "compliance completed", "fully implemented")):
+            return "us-dhs-deepseek-implementation-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
+        return "us-dhs-deepseek-order-2026-10-20"
+
+    if (
+        any(word in text for word in ("treasury", "department of the treasury", "미 재무부"))
+        and any(word in text for word in ("biotechnology", "biotech", "생명공학"))
+        and any(word in text for word in ("coins act", "outbound investment", "oisp"))
+    ):
+        for stage, keywords in (
+            ("final", ("final rule", "final regulations", "rule finalized", "최종 규칙")),
+            ("effective", ("takes effect", "rule effective", "effective date", "발효", "시행")),
+            ("comment-extension", ("extends comment", "comment period extended", "deadline extended")),
+            ("exemption", ("exemption clarified", "licensing exemption", "license exemption")),
+        ):
+            if any(word in title_text for word in keywords):
+                return "us-treasury-coins-biotech-" + stage + "-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
+        return "us-treasury-coins-biotech-nprm-2026-10-22"
+
     # Distinguish outbound-investment penalties from export bans or OFAC sanctions.
     # Title plus party markers prevents recycled press coverage from generating alerts.
     outbound_terms = ("outbound investment", "outbound program", "oisp", "31 cfr part 850")
@@ -2492,6 +2608,8 @@ def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
         "us_dow_project_meridian_future_warfare",
         "us_dow_autonomous_warfare_execution",
         "us_treasury_outbound_ai_robotics_enforcement",
+        "us_dhs_deepseek_federal_civilian_exclusion",
+        "us_treasury_coins_biotechnology_outbound_nprm",
     }:
         grouped: dict[str, list[dict]] = {}
         for item in items:
@@ -3083,6 +3201,63 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
         }
     title = str(items[0].get("title", ""))
     semantic_key = semantic_policy_event_key(items[0])
+    if rule.key in {
+        "us_dhs_deepseek_federal_civilian_exclusion",
+        "us_treasury_coins_biotechnology_outbound_nprm",
+    }:
+        official = any(item.get("official_direct_verified") is True
+                       or item.get("official_api_verified") is True for item in items)
+        deepseek = rule.key == "us_dhs_deepseek_federal_civilian_exclusion"
+        baseline_key = (
+            "us-dhs-deepseek-order-2026-10-20" if deepseek
+            else "us-treasury-coins-biotech-nprm-2026-10-22"
+        )
+        baseline = semantic_key == baseline_key
+        baseline_date = "2026년 10월 20일" if deepseek else "2026년 10월 22일"
+        if deepseek:
+            facts = [
+                "DHS-2026-0628·연방관보 2026-21447: 연방 민간기관의 DeepSeek 계열 제품·서비스 신규 조달 배제.",
+                "기존 정보시스템의 DeepSeek 및 그 구현을 사용해 개발한 제3자 제품·서비스 제거명령.",
+            ]
+            timeline = "2026년 7월 24일 명령 발령 → 2026년 10월 20일 관보 공고 → 기관별 제품 제거·조달 이행 및 예외 확인"
+            scope = "연방 민간 행정부 기관 대상 조치로, 모든 미국 민간 사용자에 대한 사용금지가 아닙니다."
+        else:
+            facts = [
+                "생명공학을 민감 기술 대외투자 신고·금지 대상에 추가하는 COINS Act 후속 규칙안.",
+                "지분투자·합작거래와 기술도입 사용권 거래를 구분하며 실제 예외는 최종 규칙에서 확인해야 합니다.",
+                "미 재무부 발표 기준 의견제출 마감일 2026년 12월 7일.",
+            ]
+            timeline = "2025년 12월 COINS Act 입법 → 2026년 10월 22일 규칙안 → 12월 7일 의견제출 마감 → 최종 규칙·시행일 대기"
+            scope = "모든 중국 바이오기업·사용권 계약에 대한 즉각적인 전면 투자금지로 해석하지 않습니다."
+        return {
+            "title": rule.title if baseline else rule.title + " · 후속 규제 단계",
+            "core": rule.core if official and baseline else (
+                "후속 규제 변화가 보도됐으나 공식 원문·시행 조건 확인이 필요합니다."
+                if not baseline else "관련 규제 보도이며 공식 원문 확인이 필요합니다."
+            ),
+            "stage": ("공식 원문 확인: 조달 배제·제거명령"
+                      if deepseek and official and baseline else
+                      "공식 원문 확인: 규칙 제안 단계·최종 시행일 미확정"
+                      if official and baseline else
+                      "후속 단계. 공식 원문·수정 범위 확인 필요" if official
+                      else "보도 단계. 공식 원문 미확인"),
+            "event_date": baseline_date if baseline else "",
+            "event_date_label": "관보 공고일" if deepseek else "재무부 발표일",
+            "show_publication_date": not baseline,
+            "actual_bullets": facts if baseline else ["실제 변경된 내용과 적용 시점은 후속 원문에서 별도 검증합니다."],
+            "timeline": timeline,
+            "scope_note": scope,
+            "korea_candidates": "한국 관련 기업의 이번 조치 직접 수주·매출은 공개자료로 별도 확인해야 합니다.",
+            "next": rule.follow_up,
+            "investment": rule.point,
+            "korea": "국내 상장사 직접 수주·매출 미확인.",
+            "priced_in": "규제 확정 여부와 실제 사업 계약을 구분해야 합니다.",
+            "counter": rule.counter,
+            "failure": "예외·적용 범위 축소·전환 지연으로 기대 매출이 발생하지 않을 수 있습니다.",
+            "impacts": rule.impacts,
+            "paths": rule.paths,
+            "sectors": rule.sectors,
+        }
     if (
         rule.key == "us_treasury_outbound_ai_robotics_enforcement"
         and semantic_key == "us-treasury-oisp-amidi-noematrix-notification-penalty-2026-10-07"
@@ -3859,6 +4034,20 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
+    if rule.key == "us_dhs_deepseek_federal_civilian_exclusion" and any(
+        (item.get("official_api_verified") is True
+         and "2026-21447" in str(item.get("link") or ""))
+        or (item.get("official_direct_verified") is True
+            and "govinfo.gov/content/pkg/FR-2026-10-20/html/2026-21447.htm" in str(item.get("link") or ""))
+        for item in items
+    ):
+        return "공식 확인", "미 연방관보 2026-21447·DHS-2026-0628 직접 검증"
+    if rule.key == "us_treasury_coins_biotechnology_outbound_nprm" and any(
+        item.get("official_direct_verified") is True
+        and str(item.get("link") or "").rstrip("/") == "https://home.treasury.gov/news/press-releases/sb0667"
+        for item in items
+    ):
+        return "공식 확인", "미 재무부 2026년 10월 22일 규칙안 원문 직접 검증"
     if rule.key in MOFCOM_2026_POLICY_NOTICES and any(
         item.get("official_direct_verified") is True
         and item.get("mofcom_notice_key") == rule.key
@@ -4030,6 +4219,39 @@ def _self_test_mofcom_2026_notices() -> None:
         assert not semantic_policy_event_key(spoofed).startswith("china-mofcom-2026-notice-")
         assert item_story_profile(rules[key], [official])["event_date"] == "2026년 10월 19일"
         assert item_story_profile(rules[key], [effective])["event_date"] == "2026년 11월 18일"
+
+def _self_test_deepseek_and_biotech_policy_events() -> None:
+    rules = {r.key: r for r in STORY_RULES}
+    deep = rules["us_dhs_deepseek_federal_civilian_exclusion"]
+    bio = rules["us_treasury_coins_biotechnology_outbound_nprm"]
+    d = {
+        "title": "Notice of Order Regarding Exclusion and Removal of DeepSeek Products From Federal Civilian Executive Branch Information Technology Systems and Procurements",
+        "description": "DHS Homeland Security excludes DeepSeek from federal civilian agency procurements and orders removal.",
+        "source": "미 국토안보부 연방관보", "link": "https://www.federalregister.gov/d/2026-21447",
+        "published_kst": "2026-10-20T00:00:00+09:00", "official_api_verified": True,
+    }
+    b = {
+        "title": "Treasury Issues Proposed Rule to Implement Comprehensive Outbound Investment National Security Act",
+        "description": "Treasury proposes COINS Act outbound investment biotechnology rules and notifications.",
+        "source": "U.S. Department of the Treasury",
+        "link": "https://home.treasury.gov/news/press-releases/sb0667",
+        "published_kst": "2026-10-22T00:00:00+09:00", "official_direct_verified": True,
+    }
+    for rule, item in ((deep, d), (bio, b)):
+        assert has_required_terms(" ".join([item["title"], item["description"], item["source"]]), rule)
+        assert alert_confirmation_status(rule, [item])[0] == "공식 확인"
+        assert alert_confirmation_status(rule, [{**item, "official_api_verified": False, "official_direct_verified": False}])[0] == "공식 확인 전"
+    assert semantic_policy_event_key(d) == "us-dhs-deepseek-order-2026-10-20"
+    assert semantic_policy_event_key(b) == "us-treasury-coins-biotech-nprm-2026-10-22"
+    reprint = {**b, "title": "Treasury proposes outbound China biotechnology investments rule",
+               "link": "https://example.org/reprint", "source": "Reuters",
+               "official_direct_verified": False}
+    assert story_event_fingerprint(bio, [b]) == story_event_fingerprint(bio, [reprint])
+    final = {**b, "title": "Treasury issues final rule on biotechnology outbound investment"}
+    assert story_event_fingerprint(bio, [b]) != story_event_fingerprint(bio, [final])
+    assert len(alert_item_groups(bio, [b, final])) == 2
+    assert "12월 7일" in str(item_story_profile(bio, [b])["timeline"])
+
 
 def _self_test_us_treasury_outbound_event_model() -> None:
     rule = next(r for r in STORY_RULES if r.key == "us_treasury_outbound_ai_robotics_enforcement")
@@ -4313,6 +4535,8 @@ def main() -> int:
     # busy-news day. Prioritize these three *unseen* rule families for the
     # existing three-item Telegram bundle, preserving recency within each tier.
     requested_policy_priority = {
+        "us_dhs_deepseek_federal_civilian_exclusion": 12,
+        "us_treasury_coins_biotechnology_outbound_nprm": 11,
         "us_treasury_outbound_ai_robotics_enforcement": 3,
         "us_fcc_chinese_optical_transceiver_ban": 2,
         "uk_china_ev_tariff_review": 1,
@@ -4391,6 +4615,8 @@ def main() -> int:
         # message-title receipt in khs_policy_seen_finalize.py.
         # A failed/blocked send must not permanently consume this first penalty.
         if alert["rule"].key in {
+            "us_dhs_deepseek_federal_civilian_exclusion",
+            "us_treasury_coins_biotechnology_outbound_nprm",
             "us_treasury_outbound_ai_robotics_enforcement",
             "us_fcc_chinese_optical_transceiver_ban",
             "uk_china_ev_tariff_review",
@@ -4419,6 +4645,7 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    _self_test_deepseek_and_biotech_policy_events()
     _self_test_mofcom_2026_notices()
     _self_test_us_treasury_outbound_event_model()
     _self_test_fcc_optical_transceiver_event_model()

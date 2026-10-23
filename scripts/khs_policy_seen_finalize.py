@@ -19,6 +19,8 @@ TRUSTED_STATE_PATH = DATA / "khs_trusted_policy_news_seen.json"
 OISP_RULE_KEY = "us_treasury_outbound_ai_robotics_enforcement"
 DELIVERY_GATED_RULE_KEYS = {
     OISP_RULE_KEY,
+    "us_dhs_deepseek_federal_civilian_exclusion",
+    "us_treasury_coins_biotechnology_outbound_nprm",
     "us_fcc_chinese_optical_transceiver_ban",
     "uk_china_ev_tariff_review",
     # One owner and one delivery-gated receipt for the three 2026-10-19 MOFCOM notices.
