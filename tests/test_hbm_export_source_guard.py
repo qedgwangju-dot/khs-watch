@@ -232,6 +232,29 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         self.assertIn("대체 사용하지 않습니다", out)
         self.assertIn("연결시간초과", out)
 
+    def test_non_monthly_hsk10_period_is_reported_as_validation_hold(self):
+        errors = [
+            "지역 금액 단위 검증 보류: invalid:non_monthly_period",
+            "지역 금액 단위 검증 보류: invalid:non_monthly_period",
+        ]
+        out = w.build_official_source_health_alert(self.now, "202609", errors)
+        self.assertEqual(w._official_error_classes(errors), ["월별 기간 검증 보류"])
+        self.assertTrue(w._official_validation_hold_only(errors))
+        self.assertIn("원자료 월별 검증 보류", out)
+        self.assertIn("공식 API 응답은 받았지만", out)
+        self.assertIn("대상월의 월별 기간을 검증하지 못했습니다", out)
+        self.assertIn("새 수치를 만들지 않습니다", out)
+        self.assertNotIn("조회 장애", out)
+        self.assertNotIn("조회 실패", out)
+
+    def test_validation_hold_recovery_is_not_called_lookup_recovery(self):
+        out = w.build_official_source_health_alert(
+            self.now, "202609", [], recovered=True, validation_recovered=True
+        )
+        self.assertIn("월별 검증 보류 해소", out)
+        self.assertIn("월별 기간 검증을 통과했습니다", out)
+        self.assertNotIn("조회 복구", out)
+
     def test_error_signature_is_stable_for_same_failure_class(self):
         a = w._official_health_signature("202609", [
             "공공데이터포털 전국 API 실패: ConnectTimeout",

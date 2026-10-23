@@ -40,7 +40,7 @@ OFFICIAL_ERROR_POLL_HOURS = 1
 OFFICIAL_PUBLISHED_POLL_HOURS = 24
 OFFICIAL_ERROR_RENOTIFY_HOURS = 6
 OFFICIAL_PUBLICATION_EXPECTED_DAY = 15
-OFFICIAL_SOURCE_HEALTH_VERSION = 3
+OFFICIAL_SOURCE_HEALTH_VERSION = 4
 EXPORT_ALERT_FORMAT_VERSION = 3
 COMPARE_VERSION = 5
 EVENT_STATE_VERSION = 2
@@ -2896,7 +2896,7 @@ def event_summary(e: dict) -> list[str]:
 def _official_poll_due(state: dict, now: datetime) -> tuple[bool, int]:
     target_month = _previous_month(now)
     health = state.get("official_source_health") or {}
-    if health.get("status") in ("error", "partial"):
+    if health.get("status") in ("error", "partial", "validation_hold"):
         interval = OFFICIAL_ERROR_POLL_HOURS
     else:
         interval = (
@@ -2924,7 +2924,9 @@ def _official_error_classes(errors: list[str]) -> list[str]:
     classes = set()
     for error in errors:
         low = (error or "").lower()
-        if "connecttimeout" in low or "connection" in low:
+        if "invalid:non_monthly_period" in low:
+            classes.add("월별 기간 검증 보류")
+        elif "connecttimeout" in low or "connection" in low:
             classes.add("연결시간초과")
         elif "readtimeout" in low or "timeout" in low or "오류 05" in low:
             classes.add("응답시간초과")
@@ -2941,13 +2943,26 @@ def _official_error_classes(errors: list[str]) -> list[str]:
     return sorted(classes)
 
 
+def _official_validation_hold_only(errors: list[str]) -> bool:
+    return _official_error_classes(errors) == ["월별 기간 검증 보류"]
+
+
 def _official_health_signature(target_month: str, errors: list[str]) -> str:
     payload = target_month + "|" + "|".join(_official_error_classes(errors))
     return hashlib.sha256(payload.encode()).hexdigest()[:16]
 
 
-def build_official_source_health_alert(now: datetime, target_month: str, errors: list[str], *, recovered: bool = False) -> str:
+def build_official_source_health_alert(now: datetime, target_month: str, errors: list[str], *, recovered: bool = False, validation_recovered: bool = False) -> str:
     classes = _official_error_classes(errors)
+    if recovered and validation_recovered:
+        return "\n".join([
+            "✅ <b>삼성·SK하이닉스 HBM 수출 원자료 월별 검증 보류 해소</b>",
+            "━━━━━━━━━━━━━━━━",
+            f"• 대상월: <b>{target_month[:4]}년 {int(target_month[4:])}월</b>",
+            "• 공식 응답에서 대상월의 월별 기간 검증을 통과했습니다.",
+            "• 수출 수치는 전국 HSK10·충남 HSK10·충북 HSK10을 모두 확인한 뒤에만 확정합니다.",
+            f"• 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
+        ]) + "\n"
     if recovered:
         return "\n".join([
             "✅ <b>삼성·SK하이닉스 HBM 수출 원자료 조회 복구</b>",
@@ -2958,17 +2973,28 @@ def build_official_source_health_alert(now: datetime, target_month: str, errors:
             "• 새 확정월이 확인되면 월간 수출 비교 알림을 별도로 전송합니다.",
             f"• 복구 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
         ]) + "\n"
-    err_text = " · ".join(classes) if classes else "공식 원자료 조회 실패"
-    return "\n".join([
-        "⚠️ <b>삼성·SK하이닉스 HBM 수출 원자료 조회 장애</b>",
+    validation_hold = _official_validation_hold_only(errors)
+    err_text = " · ".join(classes) if classes else "원인 분류 미확정"
+    headline = (
+        "⚠️ <b>삼성·SK하이닉스 HBM 수출 원자료 월별 검증 보류</b>"
+        if validation_hold
+        else "⚠️ <b>삼성·SK하이닉스 HBM 수출 원자료 조회 장애</b>"
+    )
+    lines = [
+        headline,
         "━━━━━━━━━━━━━━━━",
         f"• 대상월: <b>{target_month[:4]}년 {int(target_month[4:])}월</b>",
         f"• 상태: <b>{html.escape(err_text)}</b>",
+    ]
+    if validation_hold:
+        lines.append("• 공식 API 응답은 받았지만 충남·충북 HSK10 응답에서 대상월의 월별 기간을 검증하지 못했습니다.")
+    lines.extend([
         "• 전국 HSK10·충남 HSK10·충북 HSK10을 모두 공식 원자료로 잠그기 전에는 새 수치를 만들지 않습니다.",
         "• 이전 월 수치·지역 HS6·기사 숫자를 최신 확정치로 대체 사용하지 않습니다.",
         "• 기존 HBM 워크플로가 자동 재조회하며, 원자료 복구 또는 새 확정월 확인 시 다시 알립니다.",
-        f"• 장애 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
-    ]) + "\n"
+        f"• 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
+    ])
+    return "\n".join(lines) + "\n"
 
 
 def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: dict) -> str:
@@ -3631,9 +3657,10 @@ def _main() -> None:
             }
         elif official is None and official_errors:
             sig = _official_health_signature(official_target_month, official_errors)
+            source_health_status = "validation_hold" if _official_validation_hold_only(official_errors) else "error"
             source_health_state = {
                 "version": OFFICIAL_SOURCE_HEALTH_VERSION,
-                "status": "error",
+                "status": source_health_status,
                 "target_month": official_target_month,
                 "signature": sig,
                 "classes": _official_error_classes(official_errors),
@@ -3644,12 +3671,14 @@ def _main() -> None:
                     else now.isoformat(timespec="seconds")
                 ),
             }
-            if previous_source_health.get("signature") != sig or previous_source_health.get("status") != "error":
+            if previous_source_health.get("signature") != sig or previous_source_health.get("status") not in ("error", "validation_hold"):
                 source_health_alert = build_official_source_health_alert(
                     now, official_target_month, official_errors
                 )
         elif official is not None:
-            was_error = previous_source_health.get("status") == "error"
+            previous_health_status = previous_source_health.get("status")
+            was_error = previous_health_status == "error"
+            was_validation_hold = previous_health_status == "validation_hold"
             waiting_publication = official_month != official_target_month
             source_health_state = {
                 "version": OFFICIAL_SOURCE_HEALTH_VERSION,
@@ -3661,6 +3690,10 @@ def _main() -> None:
             if was_error and not official_errors:
                 source_health_alert = build_official_source_health_alert(
                     now, official_target_month, [], recovered=True
+                )
+            elif was_validation_hold and not official_errors and not waiting_publication:
+                source_health_alert = build_official_source_health_alert(
+                    now, official_target_month, [], recovered=True, validation_recovered=True
                 )
             elif (
                 waiting_publication
@@ -3712,7 +3745,7 @@ def _main() -> None:
                 "• 아래 수치는 원자료를 다시 조회해 계산한 교정값이며, 과거 잘못 표시된 지역 금액은 최신 기준선으로 사용하지 않습니다.",
                 "",
             ]) + monthly_text
-        if source_health_alert and previous_source_health.get("status") == "error":
+        if source_health_alert and previous_source_health.get("status") in ("error", "validation_hold"):
             monthly_text = source_health_alert + "\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n" + monthly_text
         ALERT.write_text(monthly_text, encoding="utf-8")
         state["last_monthly_digest"] = month_key
