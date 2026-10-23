@@ -18,6 +18,11 @@ on:
     - cron: "12 23,1 * * 1-5"
     # Backups for GitHub scheduled-event delay/drop. State fingerprints dedupe sends.
     - cron: "27 23,1 * * 1-5"
+    # Daily KST morning snapshot, including unchanged days, with a 15-minute retry.
+    - cron: "30 7 * * *"
+      timezone: "Asia/Seoul"
+    - cron: "45 7 * * *"
+      timezone: "Asia/Seoul"
   workflow_dispatch:
     inputs:
       force_send:
@@ -33,7 +38,7 @@ permissions:
 
 concurrency:
   group: us-positioning-telegram-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   watch:
@@ -44,7 +49,8 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
       ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
-      FORCE_SEND: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_send == 'true' && 'true' || 'false' }}
+      DAILY_DIGEST: ${{ github.event_name == 'schedule' && (github.event.schedule == '30 7 * * *' || github.event.schedule == '45 7 * * *') && 'true' || 'false' }}
+      FORCE_SEND: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_send == 'true' && 'true' || github.event_name == 'schedule' && (github.event.schedule == '30 7 * * *' || github.event.schedule == '45 7 * * *') && 'true' || 'false' }}
 
     steps:
       - name: Checkout
@@ -78,7 +84,7 @@ jobs:
 
       - name: Query positioning sources
         run: |
-          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_presentation.py scripts/us_positioning_horizons.py scripts/us_positioning_context.py scripts/us_positioning_amounts.py scripts/us_positioning_fx.py
+          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_presentation.py scripts/us_positioning_delivery.py scripts/us_positioning_horizons.py scripts/us_positioning_context.py scripts/us_positioning_amounts.py scripts/us_positioning_fx.py
           for attempt in 1 2 3; do
             rm -f out/us_positioning_alert.html out/us_positioning_status.md out/us_positioning_pending_state.json out/us_positioning_telegram_confirmed.json
             if python scripts/us_positioning_watch.py; then
@@ -91,7 +97,7 @@ jobs:
           exit 1
 
       - name: Watchdog existing Treasury CTA route
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' && github.event.schedule != '30 7 * * *' && github.event.schedule != '45 7 * * *'
         env:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
