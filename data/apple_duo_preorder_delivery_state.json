@@ -106,7 +106,7 @@
     "at_kst": "2026-10-18T15:15:07+09:00",
     "kind": "correction"
   },
-  "updated_at_kst": "2026-10-24T00:59:26+09:00",
+  "updated_at_kst": "2026-10-24T01:13:12+09:00",
   "errors": [],
   "market_sku_latest": {},
   "market_day_latest": {},
@@ -129,5 +129,6 @@
   ],
   "false_august_correction_sent": true,
   "august_false_alert_corrected_at_kst": "2026-10-18T15:15:07+09:00",
-  "seen_improvement_fact_keys": []
+  "seen_improvement_fact_keys": [],
+  "verified_extended_months": []
 }
