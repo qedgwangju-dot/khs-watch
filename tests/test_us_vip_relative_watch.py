@@ -99,7 +99,10 @@ class VipRelativeRegression(unittest.TestCase):
 
     def test_missing_exact_session_must_withhold(self):
         g,s,last=market_rows()
-        del s[sorted(s)[-4]]
+        deleted = sorted(s)[-4]
+        del s[deleted]
+        oldest = dt.date.fromisoformat(min(s))
+        s[(oldest - dt.timedelta(days=1)).isoformat()] = {"close": 100, "volume": 50000000}
         with self.assertRaisesRegex(w.SourceError,"missing or unmatched"):
             w.evaluate(g,s,last)
 
