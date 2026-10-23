@@ -438,7 +438,7 @@ def _explicit_far_future_eta(blob: str, published: dt.datetime) -> dict | None:
     if (when-published.date()).days <= 180 or (when-published.date()).days > 500:
         return None
     text = blob.lower()
-    has_us = bool(re.search(r"\b(?:u\.s\.|united states|usa)\b",text))
+    has_us = bool(re.search(r"(?:\bu\.s\.(?=\W|$)|\bunited states\b|\busa\b)",text))
     has_korea = bool(re.search(r"\b(?:korea|한국|대한민국)\b",text))
     market = "미국" if has_us and not has_korea else ("한국" if has_korea and not has_us else None)
     if not market:
