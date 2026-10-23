@@ -2927,6 +2927,11 @@ def _official_poll_due(state: dict, now: datetime) -> tuple[bool, int]:
     return (now - last >= timedelta(hours=interval)), interval
 
 
+def _dedupe_error_messages(errors: list[str]) -> list[str]:
+    """Keep one copy of each identical source error without losing distinct causes."""
+    return list(dict.fromkeys(errors))
+
+
 def _official_error_classes(errors: list[str]) -> list[str]:
     classes = set()
     for error in errors:
@@ -3628,6 +3633,7 @@ def _main() -> None:
     official_target_month = _previous_month(now)
     if now.day >= MONTHLY_DAY and official_poll_attempted:
         official, official_errors = fetch_official_hbm_pack(now)
+        official_errors = _dedupe_error_messages(official_errors)
         newest_confirmed = max(str(state.get(key) or "") for key in ("last_official_alert_month", "last_successful_official_month"))
         if official and official["month"] < newest_confirmed:
             official_errors = list(official_errors) + ["최신월 후퇴 검증 보류: 이미 확인한 월보다 이전 월만 조회됨"]
