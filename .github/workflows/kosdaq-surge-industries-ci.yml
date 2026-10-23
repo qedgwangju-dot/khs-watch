@@ -16,6 +16,8 @@ on:
       - "scripts/test_market_flow_channels.py"
       - "scripts/probe_market_flow_channels.py"
       - "scripts/kospi_unified_industry_collector.py"
+      - "scripts/ls_live_source_gate.py"
+      - "scripts/test_ls_live_source_gate.py"
       - ".github/workflows/kosdaq-surge-industries-ci.yml"
   push:
     branches: [main]
@@ -33,10 +35,21 @@ on:
       - "scripts/test_market_flow_channels.py"
       - "scripts/probe_market_flow_channels.py"
       - "scripts/kospi_unified_industry_collector.py"
+      - "scripts/ls_live_source_gate.py"
+      - "scripts/test_ls_live_source_gate.py"
       - ".github/workflows/kosdaq-surge-industries-ci.yml"
+
+  workflow_dispatch:
+    inputs:
+      run_live_source_probes:
+        description: "Run sequential read-only LS source probes only when no other LS consumer is active"
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   regression:
@@ -53,6 +66,8 @@ jobs:
         run: |
           python -m py_compile scripts/kosdaq_surge_industries.py scripts/probe_kosdaq_surge_industries.py scripts/kospi_unified_industry_collector.py scripts/kospi_shock_episode_watch.py
           python -m py_compile scripts/probe_market_surge_industries.py
+          python -m py_compile scripts/ls_live_source_gate.py scripts/test_ls_live_source_gate.py
+          python scripts/test_ls_live_source_gate.py
           python scripts/test_kosdaq_surge_industries.py
           python scripts/test_market_flow_channels.py
           python scripts/test_market_investment_trust.py
@@ -61,50 +76,53 @@ jobs:
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
 
-  native_source:
-    if: github.event_name == 'push'
+  live_source:
+    if: github.event_name == 'workflow_dispatch' && inputs.run_live_source_probes == true
     runs-on: ubuntu-latest
-    timeout-minutes: 8
-    env:
-      LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
-      LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
+    timeout-minutes: 12
+    concurrency:
+      group: ${{ github.repository }}-ls-live-source-ci
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      actions: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m pip install --disable-pip-version-check --quiet requests exchange_calendars
-      - name: Audit dated industry source without messages or production state
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check --quiet requests exchange_calendars
+      - name: Gate shared LS source quota
+        id: source_gate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          RUN_LIVE_SOURCE_PROBES: ${{ inputs.run_live_source_probes }}
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          CURRENT_RUN_ID: ${{ github.run_id }}
+        run: python scripts/ls_live_source_gate.py
+      - name: Audit dated native industry source
+        if: steps.source_gate.outputs.allow == 'true'
+        env:
+          LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+          LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
         run: python scripts/probe_kosdaq_surge_industries.py --native --journal out/kosdaq_native_industry_probe.jsonl --out out/kosdaq_native_industry_probe.json
+      - name: Read both market flow channels
+        if: steps.source_gate.outputs.allow == 'true'
+        env:
+          LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+          LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
+        run: python scripts/probe_market_flow_channels.py
       - name: Preserve source audit
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: kosdaq-native-source-${{ github.run_id }}
+          name: market-source-audit-${{ github.run_id }}
           path: |
             out/kosdaq_native_industry_probe.jsonl
             out/kosdaq_native_industry_probe.json
+            out/market_flow_channel_probe.json
+          if-no-files-found: ignore
           retention-days: 7
 
-  market_flow_source:
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    env:
-      LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
-      LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: python -m pip install --disable-pip-version-check --quiet requests exchange_calendars
-      - name: Read both market channels without events or delivery
-        run: python scripts/probe_market_flow_channels.py
-      - name: Preserve exact product and market response evidence
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: market-flow-channels-${{ github.run_id }}
-          path: out/market_flow_channel_probe.json
-          retention-days: 7

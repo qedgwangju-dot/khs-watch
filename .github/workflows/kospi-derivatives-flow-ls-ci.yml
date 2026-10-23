@@ -44,6 +44,12 @@ on:
       - "scripts/probe_market_flow_channels.py"
       - "scripts/krx_session_calendar.py"
   workflow_dispatch:
+    inputs:
+      run_live_source_probes:
+        description: "Run one read-only LS source check only when the market is open and no other LS consumer is active"
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -59,14 +65,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    env:
-      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
-      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
-      TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
-      TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
-      LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
-      LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
-
+    concurrency:
+      group: ${{ github.repository }}-ls-live-source-ci
+      cancel-in-progress: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -81,6 +82,10 @@ jobs:
 
       - name: Audit market alert destination without sending
         env:
+          EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
           MARKET_ALERT_DELIVERY_DIR: out/market_alert_route_audit
         run: python scripts/market_alert_delivery.py --audit-route
 
@@ -90,7 +95,8 @@ jobs:
 
       - name: Run regression tests
         run: |
-          python -m py_compile scripts/market_program_close.py scripts/test_market_program_close.py
+          python -m py_compile scripts/market_program_close.py scripts/test_market_program_close.py scripts/ls_live_source_gate.py scripts/test_ls_live_source_gate.py
+          python scripts/test_ls_live_source_gate.py
           python scripts/test_market_program_close.py
           python scripts/test_market_close_pair.py
           python scripts/test_market_alert_delivery.py
@@ -106,22 +112,56 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import yaml
-          wf=yaml.safe_load(Path(".github/workflows/kospi-derivatives-flow-ls-ci.yml").read_text(encoding="utf-8"))
-          cc=wf.get("concurrency") or {}
+
+          ci=yaml.safe_load(Path(".github/workflows/kospi-derivatives-flow-ls-ci.yml").read_text(encoding="utf-8"))
+          qd=yaml.safe_load(Path(".github/workflows/kosdaq-surge-industries-ci.yml").read_text(encoding="utf-8"))
+          cc=ci.get("concurrency") or {}
           assert "github.event_name" in str(cc.get("group","")), "CI push/schedule share cancellation group"
           assert "github.event_name == 'push'" in str(cc.get("cancel-in-progress","")), "CI scheduled run may be cancelled by a new push"
-          steps=wf["jobs"]["test"]["steps"]
-          by_name={step.get("name"):step for step in steps}
-          scheduled_only="github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'"
+          ci_on=ci.get("on") or ci.get(True) or {}
+          ci_input=((ci_on.get("workflow_dispatch") or {}).get("inputs") or {}).get("run_live_source_probes") or {}
+          assert ci_input.get("type")=="boolean" and ci_input.get("default") is False, ci_input
+          ci_job=ci["jobs"]["test"]
+          ci_group=(ci_job.get("concurrency") or {}).get("group")
+          assert ci_group=="${{ github.repository }}-ls-live-source-ci", ci_group
+          assert not ({"LS_OPENAPI_APP_KEY","LS_OPENAPI_APP_SECRET","TELEGRAM_BOT_TOKEN"} & set(ci_job.get("env") or {})), "live credentials leak into every CI step"
+          ci_steps=ci_job["steps"]
+          ci_by_name={step.get("name"):step for step in ci_steps}
           live_steps=("Probe live KOSDAQ investor feed",
                       "Probe KOSDAQ five-minute inflows and deployed worker age",
                       "Probe live KOSDAQ composite index and minute-bar source",
-                      "Probe KOSDAQ enrichment market-isolated source APIs")
+                      "Probe KOSDAQ enrichment market-isolated source APIs",
+                      "Verify LS REST prices and flow snapshot",
+                      "Verify integrated sector/theme/stock/ETF enrichment APIs",
+                      "Verify full event enrichment path",
+                      "Probe unified KRX+NXT realtime flow",
+                      "Verify live unified industry collector")
           for name in live_steps:
-              assert by_name[name].get("if")==scheduled_only, (name,by_name[name].get("if"))
-          assert "github.event_name == 'schedule'" in by_name["Inspect last completed KRX session chart outside trading hours"].get("if","")
-          print("ci_schedule_push_concurrency_isolation_valid=true")
-          print("ci_live_source_probes_schedule_or_manual_only_valid=true")
+              condition=str(ci_by_name[name].get("if",""))
+              assert "env.KOSPI_SKIP_LIVE_TESTS != '1'" in condition, (name,condition)
+          gate=ci_by_name["Select market-hours live validation"]
+          assert "scripts/ls_live_source_gate.py" in gate.get("run",""), "shared-source gate missing"
+          assert "GH_TOKEN" in (gate.get("env") or {}) and "CURRENT_RUN_ID" in (gate.get("env") or {}), gate.get("env")
+          history=ci_by_name["Inspect last completed KRX session chart outside trading hours"]
+          assert "env.KOSPI_HISTORY_PROBE_ALLOWED == '1'" in str(history.get("if","")), history.get("if")
+
+          qd_on=qd.get("on") or qd.get(True) or {}
+          qd_input=((qd_on.get("workflow_dispatch") or {}).get("inputs") or {}).get("run_live_source_probes") or {}
+          assert qd_input.get("type")=="boolean" and qd_input.get("default") is False, qd_input
+          qd_regression=qd["jobs"]["regression"]
+          assert "push" in qd_on and "pull_request" in qd_on, qd_on
+          live=qd["jobs"]["live_source"]
+          assert "workflow_dispatch" in str(live.get("if","")) and "inputs.run_live_source_probes == true" in str(live.get("if","")), live.get("if")
+          qd_group=(live.get("concurrency") or {}).get("group")
+          assert qd_group==ci_group, qd_group
+          live_steps={step.get("name"):step for step in live["steps"]}
+          assert "scripts/ls_live_source_gate.py" in live_steps["Gate shared LS source quota"]["run"]
+          for name in ("Audit dated native industry source", "Read both market flow channels"):
+              assert "steps.source_gate.outputs.allow == 'true'" in str(live_steps[name].get("if","")), (name,live_steps[name].get("if"))
+          assert not ({"LS_OPENAPI_APP_KEY","LS_OPENAPI_APP_SECRET"} & set(live.get("env") or {})), "LS credentials must be scoped to source steps"
+          print("ci_live_source_schedule_gated=true")
+          print("ci_ci_source_jobs_serialized=true")
+          print("ci_credentials_step_scoped=true")
           PY
 
       - name: Verify failure notifier syntax and independent handoff
@@ -195,31 +235,17 @@ jobs:
       - name: Select market-hours live validation
         env:
           EVENT_NAME: ${{ github.event_name }}
-        run: |
-          PYTHONPATH=scripts python - <<'PY'
-          import datetime as dt
-          import os
-          from zoneinfo import ZoneInfo
-          from krx_session_calendar import session_state
-          live_event=os.environ.get("EVENT_NAME") in {"schedule","workflow_dispatch"}
-          now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
-          session=session_state(now)
-          # 외부 시세·수급 API는 예약/수동 실전검증에서만 호출한다.
-          # 코드 push는 오프라인 회귀만 실행해 같은 LS 키의 production watcher와 겹치지 않는다.
-          live=bool(
-              live_event
-              and
-              session["is_session"] and session["open"] is not None
-              and session["close"] is not None
-              and session["open"] <= now <= session["close"]
-          )
-          with open(os.environ["GITHUB_ENV"],"a",encoding="utf-8") as out:
-              out.write(f"KOSPI_SKIP_LIVE_TESTS={'0' if live else '1'}\n")
-          print(f"kospi_live_ci_gate=true event={os.environ.get('EVENT_NAME')} date={now.date()} live={live} skipped={not live}")
-          PY
+          RUN_LIVE_SOURCE_PROBES: ${{ inputs.run_live_source_probes }}
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          CURRENT_RUN_ID: ${{ github.run_id }}
+        run: python scripts/ls_live_source_gate.py
 
       - name: Probe live KOSDAQ investor feed
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
+        env:
+          LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+          LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
         run: |
           PYTHONPATH=scripts python - <<'PY'
           import datetime as dt, time
@@ -246,8 +272,10 @@ jobs:
           PY
 
       - name: Probe KOSDAQ five-minute inflows and deployed worker age
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
         env:
+          LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+          LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
         run: |
@@ -347,7 +375,10 @@ jobs:
           PY
 
       - name: Probe live KOSDAQ composite index and minute-bar source
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
+        env:
+          LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+          LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
         run: |
           PYTHONPATH=scripts python - <<'PY'
           import datetime as dt
@@ -379,7 +410,10 @@ jobs:
           PY
 
       - name: Probe KOSDAQ enrichment market-isolated source APIs
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
+        env:
+          LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+          LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
         run: |
           PYTHONPATH=scripts python - <<'PY'
           import datetime as dt
@@ -760,6 +794,9 @@ jobs:
 
       - name: Verify LS REST prices and flow snapshot
         if: env.KOSPI_SKIP_LIVE_TESTS != '1'
+        env:
+          LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+          LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json
           python scripts/kospi_shock_episode_watch.py --test --test-seconds 45
@@ -789,7 +826,10 @@ jobs:
           PY
 
       - name: Inspect last completed KRX session chart outside trading hours
-        if: (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && env.KOSPI_SKIP_LIVE_TESTS == '1'
+        if: env.KOSPI_HISTORY_PROBE_ALLOWED == '1'
+        env:
+          LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+          LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
         run: |
           PYTHONPATH=scripts python - <<'PY'
           import datetime as dt
@@ -847,6 +887,9 @@ jobs:
 
       - name: Verify integrated sector/theme/stock/ETF enrichment APIs
         if: env.KOSPI_SKIP_LIVE_TESTS != '1'
+        env:
+          LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+          LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
         run: |
           rm -f out/kospi_shock_enrichment_probe.json
           python scripts/kospi_shock_enrichment.py --probe
@@ -868,6 +911,9 @@ jobs:
 
       - name: Verify full event enrichment path
         if: env.KOSPI_SKIP_LIVE_TESTS != '1'
+        env:
+          LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+          LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
         run: |
           rm -f out/kospi_shock_enrichment_latest.json
           python scripts/kospi_shock_enrichment.py --smoke
@@ -888,6 +934,9 @@ jobs:
 
       - name: Probe unified KRX+NXT realtime flow
         if: env.KOSPI_SKIP_LIVE_TESTS != '1'
+        env:
+          LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+          LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
         run: |
           rm -f out/ls_unified_flow_probe.json
           python -m py_compile scripts/ls_unified_flow_probe.py
@@ -895,6 +944,9 @@ jobs:
 
       - name: Verify live unified industry collector
         if: env.KOSPI_SKIP_LIVE_TESTS != '1'
+        env:
+          LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+          LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
         run: |
           rm -f out/kospi_industry_flow_ci.jsonl
           DAY=$(TZ=Asia/Seoul date +%u)
@@ -1203,3 +1255,4 @@ jobs:
           else:
               raise RuntimeError(last_error or "Validation Telegram send failed")
           PY
+
