@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-23T07:36:19+09:00",
+  "updated_at_kst": "2026-10-23T10:45:54+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -2588,7 +2588,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-23T07:36:19+09:00",
+      "last_checked_at_kst": "2026-10-23T10:45:54+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -2662,7 +2662,7 @@
     "payload_hash": "420dd8f2d5d68dea731bf4bee29eb4dcaa7a13f54aade69318c903de48250865"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-23T07:37:15+09:00",
+    "checked_at_kst": "2026-10-23T10:46:55+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
@@ -2755,12 +2755,12 @@
     "target_month": "202609",
     "signature": "86a8d08522a764dc",
     "classes": [],
-    "last_checked_at_kst": "2026-10-23T07:36:19+09:00",
+    "last_checked_at_kst": "2026-10-23T10:45:54+09:00",
     "first_seen_at_kst": "2026-10-23T03:45:14+09:00"
   },
   "official_source_health_version": 3,
   "official_poll_interval_hours": 1,
-  "last_official_poll_attempt_kst": "2026-10-23T07:36:19+09:00",
+  "last_official_poll_attempt_kst": "2026-10-23T10:45:54+09:00",
   "official_availability_notes": [],
   "optional_source_errors": [
     "이천 202609 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
