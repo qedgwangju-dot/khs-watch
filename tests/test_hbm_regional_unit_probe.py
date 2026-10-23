@@ -8,6 +8,15 @@ import samsung_hbm_watch as watch
 
 
 class RegionalUnitProbeCompletenessTests(unittest.TestCase):
+    def test_duplicate_cause_is_kept_once_and_distinct_causes_remain(self):
+        error = "지역 금액 단위 검증 보류: 지역 HSK10 확인 실패: 44: invalid:non_monthly_period | 43: invalid:non_monthly_period"
+        distinct = "공공데이터포털 전국 API 202609 invalid:wrong_month"
+        self.assertEqual(
+            watch._dedupe_error_messages([error, error, distinct]),
+            [error, distinct],
+        )
+
+
     def test_second_province_is_checked_after_first_request_fails_closed(self):
         calls = []
 
