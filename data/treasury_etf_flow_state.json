@@ -489,6 +489,21 @@
         "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
         "fetched_at_kst": "2026-10-22T09:11:13+09:00",
         "flow_usd": 56889000.0
+      },
+      {
+        "ticker": "SHY",
+        "label": "미 국채 1~3년",
+        "date": "2026-10-22",
+        "nav_date": "2026-10-22",
+        "shares_date": "2026-10-22",
+        "nav": 81.5,
+        "shares": 334400000.0,
+        "sec_yield": 4.68,
+        "nav_change_pct": 0.27,
+        "net_assets": 27252150410.0,
+        "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
+        "fetched_at_kst": "2026-10-23T10:48:48+09:00",
+        "flow_usd": -16300000.0
       }
     ],
     "IEF": [
@@ -994,6 +1009,21 @@
         "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
         "fetched_at_kst": "2026-10-22T09:11:13+09:00",
         "flow_usd": -252588000.0
+      },
+      {
+        "ticker": "IEF",
+        "label": "미 국채 7~10년",
+        "date": "2026-10-22",
+        "nav_date": "2026-10-22",
+        "shares_date": "2026-10-22",
+        "nav": 91.18,
+        "shares": 455600000.0,
+        "sec_yield": 5.04,
+        "nav_change_pct": 1.09,
+        "net_assets": 41543653108.0,
+        "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
+        "fetched_at_kst": "2026-10-23T10:48:49+09:00",
+        "flow_usd": 36472000.0
       }
     ],
     "TLT": [
@@ -1499,6 +1529,21 @@
         "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
         "fetched_at_kst": "2026-10-22T09:11:14+09:00",
         "flow_usd": 64176000.0
+      },
+      {
+        "ticker": "TLT",
+        "label": "미 국채 20년 이상",
+        "date": "2026-10-22",
+        "nav_date": "2026-10-22",
+        "shares_date": "2026-10-22",
+        "nav": 81.71,
+        "shares": 589400000.0,
+        "sec_yield": 5.4,
+        "nav_change_pct": 1.85,
+        "net_assets": 48157690582.0,
+        "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
+        "fetched_at_kst": "2026-10-23T10:48:50+09:00",
+        "flow_usd": -155249000.0
       }
     ],
     "LQD": [
@@ -1977,6 +2022,23 @@
         "oas_bps": 89.89,
         "oas_date": "2026-10-20",
         "flow_usd": 82504000.0
+      },
+      {
+        "ticker": "LQD",
+        "label": "미 투자등급 회사채",
+        "date": "2026-10-22",
+        "nav_date": "2026-10-22",
+        "shares_date": "2026-10-22",
+        "nav": 104.2,
+        "shares": 284900000.0,
+        "sec_yield": 6.03,
+        "nav_change_pct": 1.04,
+        "net_assets": 29686201579.0,
+        "source": "https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf",
+        "fetched_at_kst": "2026-10-23T10:48:50+09:00",
+        "oas_bps": 90.86,
+        "oas_date": "2026-10-21",
+        "flow_usd": 531420000.0
       }
     ],
     "HYG": [
@@ -2455,22 +2517,39 @@
         "oas_bps": 293.34,
         "oas_date": "2026-10-20",
         "flow_usd": 238297000.0
+      },
+      {
+        "ticker": "HYG",
+        "label": "미 고수익 회사채",
+        "date": "2026-10-22",
+        "nav_date": "2026-10-22",
+        "shares_date": "2026-10-22",
+        "nav": 76.87,
+        "shares": 214700000.0,
+        "sec_yield": 7.39,
+        "nav_change_pct": 0.01,
+        "net_assets": 16504847235.0,
+        "source": "https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf",
+        "fetched_at_kst": "2026-10-23T10:48:52+09:00",
+        "oas_bps": 287.23,
+        "oas_date": "2026-10-21",
+        "flow_usd": 30748000.0
       }
     ]
   },
   "last_delivery": {
-    "at_kst": "2026-10-22T09:11:11+09:00",
+    "at_kst": "2026-10-23T10:48:47+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      466
+      476
     ],
     "overall": "혼조·추가 확인",
     "treasury_flow": "국채 만기별 자금 혼조",
     "credit_flow": "자금유입·신용가격 혼조",
-    "curve_regime": "베어 플래트닝",
-    "treasury_date": "2026-10-21",
-    "credit_oas_date": "2026-10-20",
+    "curve_regime": "불 플래트닝",
+    "treasury_date": "2026-10-22",
+    "credit_oas_date": "2026-10-21",
     "format": "treasury-credit-ishares-oas-v3",
-    "data_fingerprint": "c573e8f629233e3d89690f833c6982b3239047bcf6c1a0e93f21a9b131eab10f"
+    "data_fingerprint": "f8ac65d813a6212a088af2d1a14392c574894667f0fa633e5f992123633be14d"
   }
 }
