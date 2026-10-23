@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-23T17:21:19+09:00",
+  "updated_at_kst": "2026-10-23T17:38:58+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -319,7 +319,6 @@
   "official_month": "202609",
   "official_data_ok": false,
   "official_errors": [
-    "지역 금액 단위 검증 보류: 지역 HSK10 확인 실패: 44: invalid:non_monthly_period | 43: invalid:non_monthly_period",
     "지역 금액 단위 검증 보류: 지역 HSK10 확인 실패: 44: invalid:non_monthly_period | 43: invalid:non_monthly_period"
   ],
   "last_official_alert_month": "202609",
@@ -2588,7 +2587,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-23T17:21:19+09:00",
+      "last_checked_at_kst": "2026-10-23T17:38:58+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -2662,8 +2661,8 @@
     "payload_hash": "c889d8fe2837d5ba5b6759333b0da5cfca3372dbbf670443ecc1b99ce565d2f2"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-23T17:22:30+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-10-23T17:40:00+09:00",
+    "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
   "state_corrections": [
@@ -2757,12 +2756,12 @@
     "classes": [
       "월별 기간 검증 보류"
     ],
-    "last_checked_at_kst": "2026-10-23T17:21:19+09:00",
+    "last_checked_at_kst": "2026-10-23T17:38:58+09:00",
     "first_seen_at_kst": "2026-10-23T17:21:19+09:00"
   },
   "official_source_health_version": 4,
   "official_poll_interval_hours": 1,
-  "last_official_poll_attempt_kst": "2026-10-23T17:21:19+09:00",
+  "last_official_poll_attempt_kst": "2026-10-23T17:38:58+09:00",
   "official_availability_notes": [],
   "optional_source_errors": [
     "이천 202609 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
