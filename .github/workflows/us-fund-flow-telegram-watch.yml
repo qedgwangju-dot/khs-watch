@@ -528,6 +528,7 @@ jobs:
           retention-days: 14
 
   vip-relative-proxy:
+    # One-time live duplicate verification: Oct 22 message 1222 must not resend.
     if: >-
       ${{
         github.event_name == 'schedule' ||
