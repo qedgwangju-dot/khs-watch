@@ -212,6 +212,16 @@ class ExportRuntimeIntegrityTests(unittest.TestCase):
         self.assertEqual(repeated["official_source_health"]["status"], "validation_hold")
         self.assertEqual(repeated_text, "")
 
+    def test_monthly_period_validation_recovery_uses_specific_alert(self):
+        p = pack()
+        state = self.notified_state(p)
+        state["official_source_health"] = {"status": "validation_hold", "target_month": "202609"}
+        saved, text = self.run_main(state, p, [], poll=True)
+        self.assertEqual(saved["official_source_health"]["status"], "ok")
+        self.assertIn("원자료 월별 검증 보류 해소", text)
+        self.assertNotIn("원자료 조회 복구", text)
+        self.assertFalse(saved["monthly_due"])
+
     def test_missing_annual_comparison_is_partial_not_full_recovery(self):
         p=pack();p['series'].pop('202509')
         state=dict(official_source_health={'status':'error'})

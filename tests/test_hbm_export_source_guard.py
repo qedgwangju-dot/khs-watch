@@ -247,6 +247,14 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         self.assertNotIn("조회 장애", out)
         self.assertNotIn("조회 실패", out)
 
+    def test_validation_hold_recovery_is_not_called_lookup_recovery(self):
+        out = w.build_official_source_health_alert(
+            self.now, "202609", [], recovered=True, validation_recovered=True
+        )
+        self.assertIn("월별 검증 보류 해소", out)
+        self.assertIn("월별 기간 검증을 통과했습니다", out)
+        self.assertNotIn("조회 복구", out)
+
     def test_error_signature_is_stable_for_same_failure_class(self):
         a = w._official_health_signature("202609", [
             "공공데이터포털 전국 API 실패: ConnectTimeout",

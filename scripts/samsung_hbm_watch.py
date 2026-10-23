@@ -2952,8 +2952,17 @@ def _official_health_signature(target_month: str, errors: list[str]) -> str:
     return hashlib.sha256(payload.encode()).hexdigest()[:16]
 
 
-def build_official_source_health_alert(now: datetime, target_month: str, errors: list[str], *, recovered: bool = False) -> str:
+def build_official_source_health_alert(now: datetime, target_month: str, errors: list[str], *, recovered: bool = False, validation_recovered: bool = False) -> str:
     classes = _official_error_classes(errors)
+    if recovered and validation_recovered:
+        return "\n".join([
+            "✅ <b>삼성·SK하이닉스 HBM 수출 원자료 월별 검증 보류 해소</b>",
+            "━━━━━━━━━━━━━━━━",
+            f"• 대상월: <b>{target_month[:4]}년 {int(target_month[4:])}월</b>",
+            "• 공식 응답에서 대상월의 월별 기간 검증을 통과했습니다.",
+            "• 수출 수치는 전국 HSK10·충남 HSK10·충북 HSK10을 모두 확인한 뒤에만 확정합니다.",
+            f"• 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
+        ]) + "\n"
     if recovered:
         return "\n".join([
             "✅ <b>삼성·SK하이닉스 HBM 수출 원자료 조회 복구</b>",
@@ -3667,7 +3676,9 @@ def _main() -> None:
                     now, official_target_month, official_errors
                 )
         elif official is not None:
-            was_error = previous_source_health.get("status") in ("error", "validation_hold")
+            previous_health_status = previous_source_health.get("status")
+            was_error = previous_health_status == "error"
+            was_validation_hold = previous_health_status == "validation_hold"
             waiting_publication = official_month != official_target_month
             source_health_state = {
                 "version": OFFICIAL_SOURCE_HEALTH_VERSION,
@@ -3679,6 +3690,10 @@ def _main() -> None:
             if was_error and not official_errors:
                 source_health_alert = build_official_source_health_alert(
                     now, official_target_month, [], recovered=True
+                )
+            elif was_validation_hold and not official_errors and not waiting_publication:
+                source_health_alert = build_official_source_health_alert(
+                    now, official_target_month, [], recovered=True, validation_recovered=True
                 )
             elif (
                 waiting_publication
