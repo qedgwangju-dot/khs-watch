@@ -23,7 +23,7 @@ on:
       - "scripts/apple_duo_rolling_target_watch.py"
       - "scripts/test_apple_duo_rolling_target_watch.py"
   schedule:
-    - cron: "7,22,37,52 * * * *"
+    - cron: "7-59/15 * * * *"
   workflow_dispatch:
     inputs:
       force_notify:

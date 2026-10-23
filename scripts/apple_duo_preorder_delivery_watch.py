@@ -37,6 +37,7 @@ APPLE = "https://www.apple.com/kr/newsroom/2026/10/open-up-to-new-possibilities-
 AI = "https://appleinsider.com/articles/26/10/16/iphone-duo-sells-out-moments-after-pre-orders-begin"
 MR = "https://www.macrumors.com/2026/10/16/iphone-duo-preorder-shipping-wait-times/"
 VERGE = "https://www.theverge.com/tech/1012805/apple-iphone-duo-preorder-delay"
+OCT19_IMPROVEMENT = "https://www.macrumors.com/2026/10/19/apple-starts-moving-up-iphone-duo-delivery-dates/"
 QUERY = [
     ("ko", '"아이폰 듀오" 사전 예약 품절 배송 예정일'),
     ("ko", '"아이폰 듀오" 배송 지연 11월 12월 2027년'),
@@ -391,6 +392,8 @@ def _preorder_improvement_alert(changes: list[dict]) -> str:
         "━━━━━━━━━━━━━━━━",
         "• 신규 주문이 아닌 일부 기존 예약자의 개별 배송 예상일 변화입니다.",
     ]
+    if any(ch["item"].get("historical_recovery") for ch in changes):
+        lines.append("• 2026년 10월 19일 기보도 내용을 누락 복구한 것으로, 오늘 새로 발생한 배송 변경이 아닙니다.")
     for ch in changes:
         row=ch["item"]
         lines.extend([
@@ -538,6 +541,32 @@ def _publisher_article_text(link: str, source: str) -> str:
         return ""
     value=re.sub(r"<(?:script|style|nav)[^>]*>.*?</(?:script|style|nav)>"," ",block.group(1),flags=re.I|re.S)
     return _clean(value)[:16000]
+
+
+def _recover_verified_oct19_advance(rows: list[dict], errors: list[str]) -> list[dict]:
+    """Recover a historical advance only from the original publisher's article.
+
+    Called only while no successful improvement receipt exists.
+    Never turn a Google News snippet into an alert.
+    """
+    full = _publisher_article_text(OCT19_IMPROVEMENT, "MacRumors")
+    if not full:
+        errors.append("2026-10-19 MacRumors direct improvement article unavailable")
+        return rows
+    low = full.lower()
+    if not ("iphone duo" in low and "delivery" in low and "in the u.s." in low):
+        errors.append("2026-10-19 MacRumors improvement source content did not validate")
+        return rows
+    rows.append({
+        "title": "Apple Starts Moving Up iPhone Duo Delivery Dates",
+        "description": full,
+        "source": "MacRumors",
+        "link": OCT19_IMPROVEMENT,
+        "published_at_kst": "2026-10-20T04:31:00+09:00",
+        "publisher_direct": True,
+        "historical_recovery": True,
+    })
+    return rows
 
 
 def _collect() -> tuple[list[dict],list[str]]:
@@ -822,6 +851,8 @@ def main() -> None:
     now=dt.datetime.now(KST)
     state=_load()
     rows,errors=_collect()
+    if state.get("initial_alert_sent") and not state.get("seen_improvement_fact_keys"):
+        rows=_recover_verified_oct19_advance(rows,errors)
     first=not state.get("initial_alert_sent")
     alerts=[]
     improvements=[]

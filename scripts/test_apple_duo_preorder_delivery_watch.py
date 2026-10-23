@@ -421,6 +421,33 @@ class DuoPreorderTests(unittest.TestCase):
         self.assertIn("미국:2027-08",m._merge_delivery_state(old,new)["verified_extended_months"])
 
 
+    def test_historical_improvement_recovery_requires_direct_publisher_article(self):
+        from unittest.mock import patch
+        direct=(
+            "In the U.S., a customer's iPhone Duo pre-order initially showed "
+            "December delivery, but the store now shows November 20 to November 30. "
+            "In Japan, original December 3 to December 10 delivery is now October 24."
+        )
+        with patch.object(m, "_publisher_article_text", return_value=direct) as original:
+            rows=m._recover_verified_oct19_advance([], [])
+        original.assert_called_once_with(m.OCT19_IMPROVEMENT,"MacRumors")
+        self.assertEqual(len(rows),1)
+        self.assertTrue(rows[0]["publisher_direct"])
+        self.assertTrue(rows[0]["historical_recovery"])
+        self.assertEqual(rows[0]["link"],m.OCT19_IMPROVEMENT)
+        changes=m._new_preorder_improvements(rows,{})
+        self.assertGreaterEqual(len(changes),1)
+        self.assertIn("2026년 10월 19일 기보도",m._preorder_improvement_alert(changes))
+
+    def test_historical_improvement_recovery_fails_closed_when_unreadable(self):
+        from unittest.mock import patch
+        errors=[]
+        with patch.object(m,"_publisher_article_text",return_value=""):
+            rows=m._recover_verified_oct19_advance([],errors)
+        self.assertEqual(rows,[])
+        self.assertEqual(len(errors),1)
+
+
 if __name__=="__main__":
     result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(DuoPreorderTests))
     if not result.wasSuccessful():
