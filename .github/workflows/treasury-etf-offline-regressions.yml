@@ -5,6 +5,8 @@ on:
     paths:
       - scripts/treasury_etf_flow_watch.py
       - scripts/treasury_credit_flow_watch_ishares.py
+      - scripts/treasury_credit_flow_delivery.py
+      - scripts/treasury_credit_flow_daily_status.py
       - scripts/treasury_credit_flow_watch_refinancing.py
       - tests/test_treasury_daily_report_integrity.py
       - tests/test_treasury_real_yield_signal.py
@@ -45,6 +47,9 @@ jobs:
           PYTHONPATH: scripts
           TREASURY_REPORT_VALIDATE_ONLY: "1"
         run: |
+          python -m py_compile scripts/treasury_credit_flow_watch_ishares.py
+          python -m py_compile scripts/treasury_credit_flow_delivery.py
+          python -m py_compile scripts/treasury_credit_flow_daily_status.py
           python - <<'PY'
           import socket
           import unittest
