@@ -11934,6 +11934,12 @@ def normalize_alert_for_output(alert: dict) -> dict:
         ):
             out.pop(key, None)
         repaired_core = verified_alert_core(out, str(out.get("source_title") or out.get("news") or ""))
+        investigation = listed_company_investigation_observation(
+            str(out.get("source_title") or out.get("news") or ""),
+            str(out.get("source_body") or out.get("source_abstract") or ""),
+        )
+        if investigation:
+            repaired_core = investigation["core"]
         if repaired_core:
             out["telegram_core_fact"] = repaired_core
             out["policy_plain_summary"] = repaired_core
@@ -12212,6 +12218,49 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
     ))
     if personal_strategy and not company_execution and not observed_market_change and not new_policy_instrument:
         return 'personal_investment_strategy_without_observed_market_event'
+    local_water_resolution = bool(
+        re.search(r"농업\s*용수|농업용수", title)
+        and re.search(r"민원|마을|주민", combined)
+        and re.search(r"해결|조정|보충|지원", title)
+    )
+    local_water_has_equity_channel = bool(re.search(
+        r"상장사|상장\s*기업|코스피|코스닥|나스닥|농산물\s*가격|곡물\s*가격|수출량|생산\s*차질|"
+        r"공급\s*(?:중단|차질)|주가|ticker|listed company|commodity price|export volume|crop loss",
+        combined, re.I,
+    ))
+    if local_water_resolution and not local_water_has_equity_channel:
+        return 'local_water_mediation_without_listed_market_transmission'
+    policy_consultation_only = bool(
+        re.search(r"세액공제|세제\s*지원|세제\s*혜택|tax\s*credit", title, re.I)
+        and re.search(r"협의|논의|검토|추진|사각지대|consult|discuss|review", title, re.I)
+        and not new_policy_instrument
+        and not explicit_policy_action_in_headline
+        and not company_execution
+    )
+    if policy_consultation_only:
+        return 'tax_policy_consultation_without_instrument_budget_or_execution'
+    unlinked_battle_update = bool(
+        re.search(r"공방전|미사일\s*(?:공격|공습)|드론\s*공격|교전|전투\s*재개|집속탄", title, re.I)
+        and re.search(r"러시아|우크라이나|이란|이스라엘|가자|Russia|Ukraine|Iran|Israel|Gaza", combined, re.I)
+    )
+    battle_market_terms = (
+        r"유가|원유|브렌트|WTI|천연가스|LNG|곡물\s*가격|해운|운임|유조선|호르무즈|"
+        r"수출\s*(?:금지|중단|제한)|공급\s*(?:차질|중단)|제재\s*(?:발표|시행)|"
+        r"시장\s*(?:급락|급등)|주가\s*(?:하락|상승)|국채\s*금리|환율|risk\s*premium|"
+        r"oil\s+price|shipping|tanker|supply\s+(?:disruption|cut)|sanction|treasury\s+yield"
+    )
+    battle_sentences = [title, *re.split(r"(?<=[.!?])\s+|[\r\n]+", body)]
+    title_has_conflict = bool(re.search(
+        r"러시아|우크라이나|이란|이스라엘|가자|Russia|Ukraine|Iran|Israel|Gaza", title, re.I,
+    ))
+    battle_market_channel = any(
+        re.search(battle_market_terms, sentence, re.I)
+        and (re.search(r"러시아|우크라이나|이란|이스라엘|가자|Russia|Ukraine|Iran|Israel|Gaza", sentence, re.I)
+             or (title_has_conflict and sentence != title))
+        for sentence in battle_sentences
+    )
+    if unlinked_battle_update and not battle_market_channel:
+        return 'military_update_without_observed_market_or_supply_channel'
     official_praise_only = bool(
         re.search(r'대통령|장관|정부|부처|위원장|청장|minister|president|government', combined, re.I)
         and re.search(r'모범(?:적)?|칭찬|훌륭|좋은\s*(?:대표적\s*)?사례|상생\s*최고|great\s+example|best\s+model', combined, re.I)
@@ -12435,12 +12484,96 @@ def source_market_materiality(alert: dict) -> dict:
     body = str(alert.get("source_body") or alert.get("source_abstract") or "")
     if not alert.get("body_verified"):
         body = ""
-    return market_materiality.assess(
+    result = market_materiality.assess(
         title,
         article_summary_body(body),
         source_url=str(alert.get("link") or ""),
         published=str(alert.get("published") or ""),
     )
+    investigation = listed_company_investigation_observation(title, body)
+    if investigation and result.get("disposition") == "keep":
+        result = dict(result)
+        result.update(
+            disposition="keep",
+            priority=2,
+            axes=["earnings", "timeline"],
+            evidence=[{
+                "kind": "policy_scope_or_stage",
+                "stage": "reported_investigation",
+                "source_excerpt": investigation["investigation_sentence"],
+            }],
+            focus=80,
+            reason="verified_listed_issuer_regulatory_investigation",
+            news_value_rank=3,
+            transmission_scope_rank=1,
+            transmission_scope_reason="issuer_specific_regulatory_risk",
+            equity_publication={
+                "eligible": True,
+                "reason": "named_listed_issuer_regulatory_action",
+                "evidence_kinds": ["policy_scope_or_stage"],
+            },
+        )
+    return result
+
+
+def listed_company_investigation_observation(title: str, body: str) -> dict:
+    """Use the reported investigation, not an unrelated company-background sentence."""
+    issuer_match = re.search(r"([A-Za-z0-9가-힣·&]{2,40})\s*(?:현장\s*)?(?:조사|수사)", title)
+    if not issuer_match:
+        return {}
+    issuer = issuer_match.group(1).strip()
+    if not re.search(
+        r"\[\s*\d{6}\s*\]|\(\s*\d{6}\s*\)|상장\s*(?:사|기업)|코스피|코스닥|유가증권시장|"
+        r"(?:NASDAQ|NYSE)\s*:\s*[A-Z]{1,6}(?![A-Za-z])",
+        body, re.I,
+    ):
+        return {}
+    if not re.search(r"공정위|공정거래위원회|금융위|금융위원회|금감원|검찰|경찰|거래소|감독원|FTC|SEC|DOJ", title + " " + body, re.I):
+        return {}
+    if not re.search(r"담합|입찰|혐의|불공정|회계|공시|investigation|probe|antitrust", title, re.I):
+        return {}
+    sentences = market_materiality.source_sentences(market_materiality.source_reported_body(body))
+    investigation_sentence = next((sentence for sentence in sentences if
+        issuer in sentence
+        and re.search(r"공정위|공정거래위원회|금융위|금융위원회|금감원|검찰|경찰|거래소|감독원|FTC|SEC|DOJ", sentence, re.I)
+        and re.search(r"조사|수사|담합|입찰|혐의|불공정|회계|공시|investigation|probe|antitrust", sentence, re.I)
+    ), "")
+    denial_sentence = next((sentence for sentence in sentences if
+        issuer in sentence and re.search(r"혐의.{0,16}(?:부인|사실이\s*아니)|의혹.{0,16}(?:사실이\s*아니|부인)|deny|denies|denied", sentence, re.I)
+    ), "")
+    if not investigation_sentence:
+        return {}
+    allegation_match = re.search(
+        r"['\"“](.{2,60}?(?:담합|입찰|혐의|의혹|불공정|회계|공시).{0,20})['\"”]",
+        title,
+    )
+    allegation = allegation_match.group(1).strip() if allegation_match else "관련 혐의"
+    return {
+        "issuer": issuer,
+        "investigation_sentence": investigation_sentence,
+        "denial_sentence": denial_sentence,
+        "core": (
+            f"당국이 {issuer}의 {allegation}에 대해 조사했고, 회사는 혐의를 부인했습니다."
+            if denial_sentence else f"당국이 {issuer}의 {allegation}에 대해 조사했습니다."
+        ),
+    }
+
+
+def live_headline_materiality_reason(alert: dict) -> str:
+    if os.getenv("RADAR_RUN_MODE", "").strip().lower() != "live" or not alert.get("body_verified"):
+        return ""
+    title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
+    audit = alert.get("market_materiality") or source_market_materiality(alert)
+    kinds = {str(item.get("kind") or "") for item in audit.get("evidence") or []}
+    if "commercial_order" in kinds and not re.search(
+        r"계약|수주|발주|공급|납품|낙찰|order|contract|award|supplier|supply", title, re.I,
+    ):
+        return "contract_fact_is_incidental_to_noncontract_headline"
+    if "customer_supply_start" in kinds and not re.search(
+        r"공급|납품|수주|발주|양산|출하|도입|채택|계약|판매|매출|supply|ship|order|adopt|launch", title, re.I,
+    ) and not verified_live_milestone_exception(alert, title):
+        return "background_customer_description_not_headline_event"
+    return ""
 
 
 def verified_live_milestone_exception(alert: dict, text: str) -> bool:
@@ -12688,6 +12821,10 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
         routine_reason = low_impact_live_publication_reason(alert, now)
         if routine_reason:
             alert['_exclusion_reason'] = 'low_impact_live_publication:' + routine_reason
+            continue
+        headline_reason = live_headline_materiality_reason(alert)
+        if headline_reason:
+            alert["_exclusion_reason"] = "headline_materiality:" + headline_reason
             continue
         if (os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
                 and alert["market_materiality"].get("news_value_rank", 0) < 3
@@ -13440,7 +13577,15 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         errors.append("company_profile_not_news_core")
     if alert.get("korean_business_news"):
         source_audit = market_materiality.assess(title, source, published=published)
-        if source_audit["disposition"] != "keep" or not source_audit["evidence"]:
+        investigation = listed_company_investigation_observation(title, source)
+        investigation_core_alignment = bool(
+            investigation
+            and market_materiality.canonical_source_fact(investigation["core"])
+            == market_materiality.canonical_source_fact(core)
+            and source_audit["disposition"] == "keep"
+            and source_audit["evidence"]
+        )
+        if (source_audit["disposition"] != "keep" or not source_audit["evidence"]) and not investigation_core_alignment:
             errors.append("article_without_headline_market_change_evidence")
         core_audit = market_materiality.assess(title, core, published=published)
         # The economic transmission may be in the full report rather than its
@@ -13510,7 +13655,7 @@ def source_core_fact_errors(alert: dict) -> list[str]:
             and expected_observation
             and market_materiality.canonical_source_fact(expected_observation) == market_materiality.canonical_source_fact(observation_core)
         )
-        if (core_audit["disposition"] != "keep" or not core_audit["evidence"]) and not source_bound_deployment and not analyst_forecast_alignment and not primary_alignment:
+        if (core_audit["disposition"] != "keep" or not core_audit["evidence"]) and not source_bound_deployment and not analyst_forecast_alignment and not primary_alignment and not investigation_core_alignment:
             errors.append("core_without_market_change_evidence")
     if core.count("“") != core.count("”"):
         errors.append("orphaned_source_quote")

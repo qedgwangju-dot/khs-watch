@@ -4476,6 +4476,29 @@ class IncrementalNewsTests(unittest.TestCase):
             self.assertFalse(fresh)
             self.assertEqual(len(skipped), 1)
 
+    def test_syndicated_long_summaries_deduplicate_on_shared_specific_headline_claim(self):
+        first = alert(
+            '젠슨황 "2029년 메모리 공급과잉 없다"…中 CXMT엔 "열린 마음"',
+            'CNBC 인터뷰에서 젠슨 황은 2029년 메모리 공급과잉 가능성을 일축했다. 중국 CXMT와의 거래 가능성도 언급했다.',
+            'https://www.inews24.com/view/2018266',
+        )
+        repeat = alert(
+            '젠슨황 "2029년 메모리 공급과잉 없다…메모리는 다다익선" | 연합뉴스',
+            '젠슨 황 엔비디아 CEO가 일각에서 제기된 2029년 메모리 공급과잉 우려를 일축했다.',
+            'https://www.yna.co.kr/view/AKR20261023004200091',
+        )
+        self.assertTrue(materiality.same_headline_event(
+            first['source_title'], repeat['source_title'],
+            first['telegram_core_fact'], repeat['telegram_core_fact'],
+        ))
+        with tempfile.TemporaryDirectory() as folder, patch.object(
+            telegram, 'SEEN_PATH', Path(folder) / 'seen.json'
+        ), patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            telegram.record_seen_alerts([first], NOW)
+            fresh, skipped = telegram.filter_previously_seen_alerts([repeat], NOW + dt.timedelta(hours=7), 'live')
+        self.assertFalse(fresh)
+        self.assertEqual(len(skipped), 1)
+
     def test_off_window_preopen_report_is_labeled_as_validation_not_0630_digest(self):
         now = dt.datetime(2026, 10, 8, 15, 25, tzinfo=NOW.tzinfo)
         with patch.dict(os.environ, {"RADAR_RUN_MODE": "preopen"}), \
@@ -6888,6 +6911,119 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
         ):
             self.assertEqual(radar.quality_display_alerts([candidate], 7), [])
         self.assertEqual(candidate["_exclusion_reason"], "live_quality_floor_below_rank_3_without_market_wide_scope")
+
+    def test_oct23_production_noise_is_withheld_and_headline_contract_must_be_primary(self):
+        now = dt.datetime(2026, 10, 23, 20, 30, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        candidates = [
+            alert(
+                "AIDC 임대형 세액공제 사각지대…재정당국과 신속 협의",
+                "업계는 임대형 AI 데이터센터가 현행 세액공제 대상에서 빠질 수 있다고 주장했다. "
+                "배경훈 부총리는 재정당국과 신속히 협의하겠다고 말했다. "
+                "구체적인 제도 변경, 세액공제 규모, 시행 일정은 제시되지 않았다.",
+                "https://example.com/aidc-tax-consultation",
+            ),
+            alert(
+                "권익위, 서천군 기산면 농업용수 부족 민원 조정으로 해결",
+                "국민권익위원회는 충남 서천군 7개 마을 농업용수 부족 민원을 조정으로 해결했다. "
+                "수문을 열어 농업용수를 보충하기로 했다.",
+                "https://example.com/local-water-mediation",
+            ),
+            alert(
+                "러·우, 3자협상 재개 논의 중 치열한 공방전…집속탄 미사일도",
+                "우크라이나와 러시아가 미사일 공격을 주고받았고 전선에서 교전이 이어졌다. "
+                "양측 발표는 전황과 피해 상황을 전했다.",
+                "https://example.com/battle-recap",
+            ),
+            alert(
+                "[영상] '극초음속 무장' 14조짜리 美스텔스구축함 3번함…해상시험 준비",
+                "HII는 미 해군과 구축함 해상시험 지원을 위한 9천9백만 달러 계약을 체결했다. "
+                "기사는 구축함 3번함의 해상시험 준비 상황을 다뤘다.",
+                "https://example.com/destroyer-trial-background-contract",
+            ),
+        ]
+        audit = {
+            "disposition": "keep", "priority": 2, "news_value_rank": 4,
+            "transmission_scope_rank": 3, "focus": 80, "axes": ["earnings"],
+            "reason": "production-regression-fixture", "evidence": [],
+        }
+
+        def materiality_for(candidate):
+            value = dict(audit)
+            if "스텔스구축함" in candidate["source_title"]:
+                value["evidence"] = [{"kind": "commercial_order", "source_excerpt": "배경 계약"}]
+            return value
+
+        with (
+            patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}),
+            patch.object(radar.telegram, "display_alerts", side_effect=lambda items, _limit: items),
+            patch.object(radar.base, "kst_now", return_value=now),
+            patch.object(radar, "source_market_materiality", side_effect=materiality_for),
+        ):
+            self.assertEqual(radar.quality_display_alerts(candidates, 10), [])
+
+        self.assertTrue(candidates[0]["_exclusion_reason"].endswith(
+            "tax_policy_consultation_without_instrument_budget_or_execution"))
+        self.assertTrue(candidates[1]["_exclusion_reason"].endswith(
+            "local_water_mediation_without_listed_market_transmission"))
+        self.assertTrue(candidates[2]["_exclusion_reason"].endswith(
+            "military_update_without_observed_market_or_supply_channel"))
+        self.assertEqual(candidates[3]["_exclusion_reason"],
+                         "headline_materiality:contract_fact_is_incidental_to_noncontract_headline")
+
+        real_contract = alert(
+            "미 해군, HII와 구축함 해상시험 9천9백만달러 계약",
+            "미 해군은 HII와 구축함 해상시험 지원 계약을 체결했다.",
+            "https://example.com/foreground-contract",
+        )
+        real_contract["market_materiality"] = {
+            "evidence": [{"kind": "commercial_order", "source_excerpt": "공급 계약 체결"}],
+        }
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            self.assertEqual(radar.live_headline_materiality_reason(real_contract), "")
+
+        current_war_energy_shock = alert(
+            "이란 미사일 공격에 브렌트유 7% 급등",
+            "이란의 미사일 공격이 확대되자 브렌트유가 7% 급등했다.",
+            "https://example.com/war-energy-shock",
+        )
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            self.assertEqual(radar.low_impact_live_publication_reason(current_war_energy_shock, now), "")
+
+    def test_listed_issuer_investigation_core_uses_the_headline_event_and_denial(self):
+        title = "공정위, '식자재 입찰 담합 의혹' CJ프레시웨이 현장 조사"
+        body = (
+            "공정거래위원회는 CJ프레시웨이[051500]의 식자재 입찰 담합 의혹과 관련해 현장 조사에 착수했다. "
+            "CJ프레시웨이는 입찰 담합 혐의를 부인했다. "
+            "CJ프레시웨이는 CJ그룹 계열사로 학교와 기업 구내식당에 식자재를 공급한다."
+        )
+        item = alert(title, body, "https://www.yna.co.kr/view/AKR20261023082200002")
+        normalized = radar.normalize_alert_for_output(item)
+        core = normalized["telegram_core_fact"]
+        self.assertIn("CJ프레시웨이", core)
+        self.assertIn("입찰 담합 의혹", core)
+        self.assertIn("조사", core)
+        self.assertIn("혐의를 부인", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS, core)
+        self.assertFalse(radar.source_core_fact_errors(normalized), core)
+        audit = radar.source_market_materiality(item)
+        self.assertEqual(audit["reason"], "verified_listed_issuer_regulatory_investigation", audit)
+        self.assertEqual(audit["evidence"][0]["kind"], "policy_scope_or_stage", audit)
+
+        foreign_title = "SEC, '회계 공시 의혹' 아크미디어 현장 조사"
+        foreign_body = (
+            "SEC는 NYSE: ACM인 아크미디어의 회계 공시 의혹을 조사하고 있다. "
+            "아크미디어는 관련 의혹을 부인했다."
+        )
+        foreign_observation = radar.listed_company_investigation_observation(foreign_title, foreign_body)
+        self.assertIn("회계 공시 의혹", foreign_observation["core"])
+        self.assertNotIn("식자재", foreign_observation["core"])
+        self.assertEqual(
+            radar.listed_company_investigation_observation(
+                foreign_title, foreign_body.replace("NYSE: ACM", "해외 기업")
+            ),
+            {},
+        )
 
     def test_live_rank_rescues_confirmed_market_transactions_and_quantified_flows(self):
         cases = (

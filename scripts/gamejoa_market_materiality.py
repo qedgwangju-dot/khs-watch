@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 138
+VERSION = 139
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -1103,11 +1103,26 @@ def same_headline_event(title_a: str, title_b: str, fact_a: str = "", fact_b: st
         return {word for word in found if word not in stop and len(word) > 1}
 
     left, right = tokens(f"{title_a} {fact_a}"), tokens(f"{title_b} {fact_b}")
-    if min(len(left), len(right)) < 5:
-        return False
-    common = left & right
-    overlap = len(common) / min(len(left), len(right))
-    jaccard = len(common) / len(left | right)
+    if min(len(left), len(right)) >= 5:
+        common = left & right
+        overlap = len(common) / min(len(left), len(right))
+        jaccard = len(common) / len(left | right)
+    else:
+        common, overlap, jaccard = set(), 0, 0
+
+    # Long syndicated summaries often add different background details. Keep
+    # the headline claim as an independent duplicate signal in that case.
+    headline_left, headline_right = tokens(title_a), tokens(title_b)
+    headline_common = headline_left & headline_right
+    headline_min_size = min(len(headline_left), len(headline_right))
+    headline_union = headline_left | headline_right
+    headline_overlap = len(headline_common) / headline_min_size if headline_min_size else 0
+    headline_jaccard = len(headline_common) / len(headline_union) if headline_union else 0
+    headline_claim_match = (
+        len(headline_common) >= 4
+        and headline_overlap >= 0.5
+        and headline_jaccard >= 0.32
+    )
 
     quantity = (
         r"\d[\d,.]*\s*조\s*\d[\d,.]*\s*억(?:\s*\d[\d,.]*\s*만)?\s*원?"
@@ -1188,11 +1203,12 @@ def same_headline_event(title_a: str, title_b: str, fact_a: str = "", fact_b: st
     title_amounts_equivalent = equivalent_rounded_amount(
         financial_amounts(title_a), financial_amounts(title_b),
     )
-    if (
-        len(common) < 5
-        or overlap < 0.45
-        or (jaccard < 0.32 and not title_amounts_equivalent)
-    ):
+    full_event_match = (
+        len(common) >= 5
+        and overlap >= 0.45
+        and (jaccard >= 0.32 or title_amounts_equivalent)
+    )
+    if not full_event_match and not headline_claim_match:
         return False
 
     if title_measures_a and title_measures_b and title_measures_a != title_measures_b:
