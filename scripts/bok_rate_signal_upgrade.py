@@ -216,11 +216,15 @@ def housing():
     p = get(REB_LIST); soup = BeautifulSoup(p.text, "html.parser"); link = None; title = ""
     for a in soup.find_all("a", href=True):
         x = norm(a.get_text(" ", strip=True))
-        if "주간 아파트가격 동향" in x: title, link = x, urllib.parse.urljoin(p.url, a["href"]); break
+        if re.search(r"주간\s*아파트\s*가격\s*동향", x): title, link = x, urllib.parse.urljoin(p.url, a["href"]); break
     if not link: raise RuntimeError("한국부동산원 최신 주간자료 링크 조회 실패")
     d = get(link); t = norm(BeautifulSoup(d.text, "html.parser").get_text(" ", strip=True)); m = re.search(r"(20\d{2})년\s*(\d{1,2})월\s*(\d+)주", title + " " + t)
     vals = {"seoul_wow": rate_after(t, "서울"), "gangbuk_wow": rate_after(t, r"강북\s*14개구"),
             "gangnam_wow": rate_after(t, r"강남\s*11개구"), "gyeonggi_wow": rate_after(t, "경기"), "capital_wow": rate_after(t, "수도권")}
+    if vals["seoul_wow"] is None or all(
+        vals[k] is None for k in ("gangbuk_wow", "gangnam_wow", "gyeonggi_wow")
+    ):
+        raise RuntimeError("한국부동산원 보도자료 본문에서 최신 주간 매매가격 상세값 확인 불가: 확산 점수 보류")
     pos = sum(1 for k in ("gangbuk_wow", "gangnam_wow", "gyeonggi_wow") if vals[k] is not None and vals[k] > 0)
     return {"period": f"{m.group(1)}-{int(m.group(2)):02d}-{m.group(3)}주" if m else None, **vals, "positive_axes": pos,
             "broad_diffusion": bool((vals["seoul_wow"] or 0) > 0 and pos >= 2), "source": d.url, "source_tier": "공식"}
@@ -307,7 +311,10 @@ def ip(x):
     p = 2 if x.get("core_yoy", 0) >= 3 else 1 if x.get("core_yoy", 0) >= 2.5 else 0
     return p + (1 if x.get("core_reaccelerating") or x.get("headline_reaccelerating") else 0)
 def hp(x): return (1 if x and x.get("mortgage_trn", 0) >= 4 else 0) + (1 if x and x.get("mortgage_reaccelerating") else 0)
-def rp(x): return 2 if x and x.get("broad_diffusion") else 1 if x and x.get("seoul_wow", 0) > 0 else -1 if x else 0
+def rp(x):
+    if not x or x.get("seoul_wow") is None:
+        return 0  # 공식 주간 통계 미확인 상태를 '집값 하락'으로 오해하지 않음
+    return 2 if x.get("broad_diffusion") else 1 if x["seoul_wow"] > 0 else -1
 def op(x):
     ch = x.get("change_5d_pct") if x else None
     return 2 if ch is not None and ch >= 10 else 1 if ch is not None and ch >= 5 else -1 if ch is not None and ch <= -5 else 0

@@ -33,6 +33,13 @@ class PolicySemanticsTests(unittest.TestCase):
         self.assertEqual(result["mortgage_prev_trn"], 4.3)
         self.assertFalse(result["mortgage_reaccelerating"])
 
+    def test_housing_missing_rate_must_not_be_scored_as_easing(self):
+        from bok_rate_signal_upgrade import rp
+        self.assertEqual(rp(None), 0)
+        self.assertEqual(rp({"seoul_wow": None, "broad_diffusion": False}), 0)
+        self.assertEqual(rp({"seoul_wow": -0.1, "broad_diffusion": False}), -1)
+        self.assertEqual(rp({"seoul_wow": 0.2, "broad_diffusion": False}), 1)
+
     def test_bad_monthly_source_does_not_pass_recency_guard(self):
         from bok_rate_signal_upgrade import monthly_cutoff
         from datetime import datetime
