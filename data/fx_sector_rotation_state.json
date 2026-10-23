@@ -1,7 +1,61 @@
 {
   "date": "2026-10-23",
-  "fx_samples": [],
+  "fx_samples": [
+    {
+      "ts": "2026-10-23T09:53:16+09:00",
+      "value": 1322.8
+    }
+  ],
   "sent_level": 0,
   "sent_weakening": false,
-  "last_signal": null
+  "last_signal": null,
+  "latest": {
+    "checked_at": "2026-10-23T09:53:16+09:00",
+    "market_phase": "정규장",
+    "fx": {
+      "value": 1322.8,
+      "prev_close": 1324.2,
+      "naver_prev_close": 1326.5,
+      "date": "2026-10-23",
+      "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
+      "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
+      "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20261022153700353",
+      "basis_error": null,
+      "basis_reused": false
+    },
+    "session_low": 1322.8,
+    "rebound_krw": 0.0,
+    "rebound_pct": 0.0,
+    "daily_krw": -1.400000000000091,
+    "daily_pct": -0.10572421084429351,
+    "kospi_pct": -2.12,
+    "ship": {
+      "avg": -3.6799999999999997,
+      "positive": 0,
+      "relative": -1.5599999999999996,
+      "valid": 4,
+      "confirmed": false
+    },
+    "defense": {
+      "avg": -2.915,
+      "positive": 0,
+      "relative": -0.7949999999999999,
+      "valid": 4,
+      "confirmed": false
+    },
+    "auto": {
+      "avg": -2.1925,
+      "positive": 0,
+      "relative": -0.07249999999999979,
+      "valid": 4,
+      "confirmed": false
+    },
+    "counter": {
+      "avg": -1.8375,
+      "positive": 0,
+      "relative": 0.2825000000000002,
+      "valid": 4,
+      "confirmed": false
+    }
+  }
 }
