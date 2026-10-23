@@ -7,7 +7,6 @@ import treasury_credit_flow_watch_ishares as watch
 import treasury_etf_flow_watch as base
 from treasury_credit_flow_delivery import (
     daily_delivery_complete,
-    daily_status_notification_complete,
     should_send_daily_status,
 )
 
