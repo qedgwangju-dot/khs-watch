@@ -1799,6 +1799,16 @@
       "status": "공식 확인 전",
       "title": "트럼프 대통령 직접 발언, 시장 영향 정책 신호"
     },
+    "901dc2cfb20b0adbcaed8f3b": {
+      "first_seen_kst": "2026-10-23T19:35:42+09:00",
+      "key": "us_dhs_deepseek_federal_civilian_exclusion",
+      "sources": [
+        "미 국토안보부 연방관보",
+        "U.S. DHS / Federal Register"
+      ],
+      "status": "공식 확인",
+      "title": "미 국토안보부, DeepSeek 연방 민간기관 조달 배제·설치 제품 제거"
+    },
     "91540e2b4ffd38e670e10437": {
       "first_seen_kst": "2026-10-04T11:47:00+09:00",
       "key": "us_dow_autonomous_warfare_execution",
@@ -3348,5 +3358,5 @@
       "title": "트럼프 대통령 직접 발언, 시장 영향 정책 신호"
     }
   },
-  "updated_at_kst": "2026-10-23T07:40:06+09:00"
+  "updated_at_kst": "2026-10-23T19:35:42+09:00"
 }
