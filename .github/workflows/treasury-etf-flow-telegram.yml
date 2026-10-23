@@ -229,17 +229,41 @@ jobs:
           set -o pipefail
           mkdir -p out
           rm -f out/treasury_etf_flow_status.md out/treasury_etf_flow_telegram.txt out/treasury_runtime_status.log
-          python scripts/treasury_credit_flow_watch_refinancing.py | tee out/treasury_runtime_status.log
-          if grep -q 'report_withheld' out/treasury_runtime_status.log; then
+          if python scripts/treasury_credit_flow_watch_refinancing.py | tee out/treasury_runtime_status.log; then
+            watcher_exit=0
+          else
+            watcher_exit=$?
+          fi
+          if [ "$watcher_exit" -ne 0 ]; then
+            echo "::warning::Treasury report execution did not complete cleanly."
+            if [ "$TREASURY_DAILY_DIGEST" = "1" ]; then
+              if TREASURY_STATUS_REASON=workflow_step_failed python scripts/treasury_credit_flow_daily_status.py | tee -a out/treasury_runtime_status.log; then
+                if grep -Eq 'daily_status_notification_(sent|suppressed)=true' out/treasury_runtime_status.log; then
+                  echo "정기 보고 실행 실패를 상태 알림으로 알렸거나 이미 확인된 오늘 발송으로 중복을 막았습니다. 07:45 KST 재시도합니다." >> "$GITHUB_STEP_SUMMARY"
+                else
+                  echo "::error::Daily execution-failure notice produced no auditable send or dedupe result."
+                  exit 1
+                fi
+              else
+                echo "::error::Daily execution-failure notice could not be confirmed."
+                exit 1
+              fi
+            else
+              echo "::error::Treasury watcher failed outside the daily report window."
+              exit "$watcher_exit"
+            fi
+          elif grep -q 'report_withheld' out/treasury_runtime_status.log; then
             echo "::warning::Treasury daily report withheld: official source dates or fields are not yet aligned."
             if [ "$TREASURY_DAILY_DIGEST" = "1" ]; then
-              python scripts/treasury_credit_flow_daily_status.py | tee -a out/treasury_runtime_status.log
-              if grep -q 'daily_status_notification_sent=true' out/treasury_runtime_status.log; then
-                echo "공식 자료 검증 미통과를 알리고 07:45 KST 재시도를 예고했습니다. 전체 수치 보고는 보류했습니다." >> "$GITHUB_STEP_SUMMARY"
-              elif grep -q 'daily_status_notification_suppressed=true' out/treasury_runtime_status.log; then
-                echo "오늘의 자료 보류 알림은 이미 확인됐습니다. 전체 보고 검증은 계속 보류했습니다." >> "$GITHUB_STEP_SUMMARY"
+              if python scripts/treasury_credit_flow_daily_status.py | tee -a out/treasury_runtime_status.log; then
+                if grep -Eq 'daily_status_notification_(sent|suppressed)=true' out/treasury_runtime_status.log; then
+                  echo "공식 자료 검증 미통과를 알리고 07:45 KST 재시도를 예고했습니다. 전체 수치 보고는 보류했습니다." >> "$GITHUB_STEP_SUMMARY"
+                else
+                  echo "::error::Daily source-hold notice produced no auditable send or dedupe result."
+                  exit 1
+                fi
               else
-                echo "::error::Daily source-hold notice produced no auditable send or dedupe result."
+                echo "::error::Daily source-hold notice could not be confirmed."
                 exit 1
               fi
             else
@@ -247,14 +271,32 @@ jobs:
             fi
           elif grep -q 'treasury_report_validation_only=true' out/treasury_runtime_status.log; then
             echo "실제 공개자료 조회 및 한국어 보고서 검증 완료. 검증 실행이므로 Telegram 미전송." >> "$GITHUB_STEP_SUMMARY"
-          elif grep -Eq 'duplicate_delivery_suppressed=true|same_market_day_delivery_suppressed=true' out/treasury_runtime_status.log; then
-            echo "같은 미국 영업일 보고가 이미 전송되어 중복을 차단했습니다." >> "$GITHUB_STEP_SUMMARY"
+          elif grep -Eq 'duplicate_delivery_suppressed=true|same_market_day_delivery_suppressed=true|daily_delivery_suppressed=true' out/treasury_runtime_status.log; then
+            echo "오늘의 보고가 이미 전송되어 중복을 차단했습니다." >> "$GITHUB_STEP_SUMMARY"
           elif grep -q 'telegram_delivery_confirmed=true' out/treasury_runtime_status.log; then
             echo "Telegram API 전송 응답 확인. 상세 message_id는 실행 로그와 상태 파일을 참조하십시오." >> "$GITHUB_STEP_SUMMARY"
           elif grep -q 'treasury_fallback_noop=true' out/treasury_runtime_status.log; then
             echo "해당 시간대에는 일일 보고 재조회가 필요하지 않아 종료했습니다." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "::error::Treasury watcher exited without an explicit delivery, duplicate, waiting, or validation result."
+            exit 1
+          fi
+
+      - name: Send daily status notice if an earlier step failed
+        id: daily_failure_notice
+        if: ${{ failure() && env.TREASURY_DAILY_DIGEST == '1' && steps.delivery_gate.outputs.should_run == 'true' }}
+        run: |
+          set -o pipefail
+          mkdir -p out
+          if TREASURY_STATUS_REASON=workflow_step_failed python scripts/treasury_credit_flow_daily_status.py | tee -a out/treasury_runtime_status.log; then
+            if grep -Eq 'daily_status_notification_(sent|suppressed)=true' out/treasury_runtime_status.log; then
+              echo "이전 정기 보고 단계 실패를 상태 알림으로 알렸거나 이미 확인된 오늘 발송으로 중복을 막았습니다." >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "::error::Daily failure notice produced no auditable send or dedupe result."
+              exit 1
+            fi
+          else
+            echo "::error::Daily failure notice could not be confirmed."
             exit 1
           fi
 
@@ -268,7 +310,7 @@ jobs:
           fi
 
       - name: Commit daily baseline/history
-        if: ${{ success() && steps.delivery_gate.outputs.should_run == 'true' }}
+        if: ${{ always() && steps.delivery_gate.outputs.should_run == 'true' && (success() || steps.daily_failure_notice.outcome == 'success') }}
         run: |
           if [ ! -f data/treasury_etf_flow_state.json ]; then
             exit 0
