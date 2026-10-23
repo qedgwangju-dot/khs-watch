@@ -33,6 +33,19 @@ class PolicySemanticsTests(unittest.TestCase):
         self.assertEqual(result["mortgage_prev_trn"], 4.3)
         self.assertFalse(result["mortgage_reaccelerating"])
 
+    def test_official_policy_score_resists_news_headline_churn(self):
+        from bok_rate_signal_upgrade_v3 import official_statement_score
+        statement = {
+            "title": "통화정책방향(2026.10.22)",
+            "flags": {"timing_speed": True, "inflation_next_up": True}
+        }
+        self.assertEqual(official_statement_score(statement), 1)
+        self.assertEqual(official_statement_score({**statement, "flags": {}}), 0)
+        self.assertEqual(official_statement_score({
+            "title": "신현송 매파 발언 기사",
+            "flags": {"timing_speed": True, "inflation_next_up": True}
+        }), 0)
+
     def test_housing_missing_rate_must_not_be_scored_as_easing(self):
         from bok_rate_signal_upgrade import rp
         self.assertEqual(rp(None), 0)

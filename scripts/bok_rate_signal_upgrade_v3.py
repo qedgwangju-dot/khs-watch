@@ -260,8 +260,24 @@ def rhetoric(now: dt.datetime) -> list[dict]:
     return sorted(out, key=lambda x: x["published_at_kst"], reverse=True)
 
 
+def official_statement_score(statement: dict | None) -> int:
+    """뉴스 제목/인용 중복과 무관하게 공식 금통위 통방문만 정책점수로 사용."""
+    if not statement or not str(statement.get("title") or "").startswith("통화정책방향"):
+        return 0
+    f = statement.get("flags") or {}
+    if f.get("inflation_next_up") and (f.get("timing_speed") or f.get("hike_bias")):
+        return 1
+    return 0
+
+
 def has_direct_next_meeting_hawk(events: list[dict]) -> bool:
-    return any(e.get("flags", {}).get("next_meeting_hawk") for e in events)
+    # 뉴스기사에 미래 인상 기대가 실렸다는 사실만으로
+    # 다음 금통위 인상 경보를 확정하지 않는다.
+    return any(
+        e.get("flags", {}).get("next_meeting_hawk")
+        and str(e.get("source_name") or "").strip() == "한국은행"
+        for e in events
+    )
 
 
 def grade(score: int, inf: dict | None, hh: dict | None, oilx: dict | None, events: list[dict]) -> tuple[str, str]:
@@ -512,7 +528,9 @@ def main() -> int:
         if e.get("date", "") >= "2026-10-23"
     ]
 
-    rhetoric_score = max(-2, min(2, sum(e.get("score", 0) for e in events[:5])))
+    # 기존 뉴스기사 순서·제목 변경으로 2→3점이 오락가락하던 문제 차단.
+    # 발언은 알림 설명에 활용하고 위험점수에는 공식 통방문만 반영.
+    rhetoric_score = official_statement_score(root.get("statement"))
     meeting_completed = False
     try:
         next_meeting = base.next_mpc(now)
@@ -545,6 +563,7 @@ def main() -> int:
         "next_mpc_source": next_meeting.get("source"),
         "components": current,
         "rhetoric_score": rhetoric_score,
+        "rhetoric_score_source": "한국은행 공식 통화정책방향(뉴스 검색점수 제외)",
         "recent_rhetoric": events[:5],
         "seen_rhetoric_hashes": seen,
         "seen_policy_flags_by_day": seen_by_day,
@@ -661,6 +680,7 @@ def main() -> int:
         "fresh_official_only_scoring": True,
         "completed_daily_oil_candles_only": True,
         "source_period_validation": True,
+        "headline_independent_policy_score": True,
     }
 
     # 상태는 재계산 변화가 있으면 조용히 갱신한다. 알림 여부와는 분리한다.
