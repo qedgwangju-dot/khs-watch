@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "initial_alert_sent": false,
+  "seen": [],
+  "seen_fact_keys": [
+    "duo:rolling_12mo:2026-10-22:digitimes:from_9.7_to_14.0"
+  ],
+  "metrics": {
+    "period_basis": "rolling_first_12_months",
+    "start_end_dates_confirmed": false,
+    "report_date": "2026-10-22",
+    "reporting_root": "digitimes_2026-10-22",
+    "previous_target_m": 9.7,
+    "reported_target_m": 14,
+    "reported_increase_m": 4.3,
+    "reported_change_pct": 44.3,
+    "source_status": "DigiTimes 공급망 보도·Apple 공식 목표 확인 안 됨",
+    "apple_officially_confirmed": false,
+    "actual_shipments_m": null,
+    "named_suppliers_with_verified_incremental_po": [],
+    "calendar_2026_counterpoint_forecast_m": 6,
+    "calendar_2026_trendforce_forecast_m": 5,
+    "first_preorder_date": "2026-10-16",
+    "retail_launch_date": "2026-10-23",
+    "app_showcase_korea": "Apple 공식 2026-10-22 개발자 앱 소개: 카카오톡·WEBTOON·NAVER SERIES·카카오페이지·BAND"
+  },
+  "last_scan_items": 0,
+  "last_new_signals": 0,
+  "last_alert": null
+}
