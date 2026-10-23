@@ -38,6 +38,7 @@ AI = "https://appleinsider.com/articles/26/10/16/iphone-duo-sells-out-moments-af
 MR = "https://www.macrumors.com/2026/10/16/iphone-duo-preorder-shipping-wait-times/"
 VERGE = "https://www.theverge.com/tech/1012805/apple-iphone-duo-preorder-delay"
 OCT19_IMPROVEMENT = "https://www.macrumors.com/2026/10/19/apple-starts-moving-up-iphone-duo-delivery-dates/"
+OCT19_ALTERNATIVE = "https://9to5mac.com/2026/10/19/some-iphone-duo-orders-getting-moved-up-to-earlier-dates/"
 QUERY = [
     ("ko", '"아이폰 듀오" 사전 예약 품절 배송 예정일'),
     ("ko", '"아이폰 듀오" 배송 지연 11월 12월 2027년'),
@@ -48,6 +49,7 @@ QUERY = [
 FEEDS = [
     ("MacRumors", "https://feeds.macrumors.com/MacRumors-All"),
     ("AppleInsider", "https://appleinsider.com/rss/news/"),
+    ("9to5Mac", "https://9to5mac.com/feed/"),
     ("The Verge", "https://www.theverge.com/rss/index.xml"),
 ]
 HIGH = ("reuters", "bloomberg", "the verge", "financial times", "nikkei", "apple newsroom")
@@ -119,7 +121,7 @@ _NOND_ELIVERY_WORD_RE = re.compile(
 )
 
 
-def _month_and_day(phrase: str, pub: dt.datetime) -> tuple[str, str, str | None] | None:
+def _month_and_day(phrase: str, pub: dt.datetime, allow_launch: bool = False) -> tuple[str, str, str | None] | None:
     s = phrase.lower()
     names = {
         "october":10, "oct":10, "november":11, "nov":11,
@@ -164,7 +166,7 @@ def _month_and_day(phrase: str, pub: dt.datetime) -> tuple[str, str, str | None]
         d = dt.date(year, mo, day or 1)
     except ValueError:
         return None
-    if d <= LAUNCH:
+    if d < LAUNCH or (d == LAUNCH and not allow_launch):
         return None
     if (d - pub.date()).days > 180:
         return None
@@ -250,6 +252,7 @@ def _direct_publisher_link(row: dict) -> bool:
     source = (row.get("source") or "").lower()
     hosts = {
         "macrumors": "macrumors.com",
+        "9to5mac": "9to5mac.com",
         "appleinsider": "appleinsider.com",
         "the verge": "theverge.com",
         "reuters": "reuters.com",
@@ -315,7 +318,7 @@ def _new_preorder_improvements(rows: list[dict], state: dict) -> list[dict]:
                 continue
             tokens: list[dict] = []
             for match in _ADVANCE_DATE_RE.finditer(part):
-                info = _month_and_day(match.group(0), pub)
+                info = _month_and_day(match.group(0), pub, allow_launch=True)
                 if info is None:
                     continue
                 nearby = part[max(0,match.start()-65):match.end()+30].lower()
@@ -524,6 +527,7 @@ def _publisher_article_text(link: str, source: str) -> str:
     host=(urlparse(link).hostname or "").lower()
     permitted={
         "macrumors.com":("macrumors.com","www.macrumors.com"),
+        "9to5mac":("9to5mac.com","www.9to5mac.com"),
         "appleinsider":("appleinsider.com","www.appleinsider.com"),
         "the verge":("theverge.com","www.theverge.com"),
     }
@@ -544,28 +548,34 @@ def _publisher_article_text(link: str, source: str) -> str:
 
 
 def _recover_verified_oct19_advance(rows: list[dict], errors: list[str]) -> list[dict]:
-    """Recover a historical advance only from the original publisher's article.
-
-    Called only while no successful improvement receipt exists.
-    Never turn a Google News snippet into an alert.
-    """
-    full = _publisher_article_text(OCT19_IMPROVEMENT, "MacRumors")
-    if not full:
-        errors.append("2026-10-19 MacRumors direct improvement article unavailable")
-        return rows
-    low = full.lower()
-    if not ("iphone duo" in low and "delivery" in low and "in the u.s." in low):
-        errors.append("2026-10-19 MacRumors improvement source content did not validate")
-        return rows
-    rows.append({
-        "title": "Apple Starts Moving Up iPhone Duo Delivery Dates",
-        "description": full,
-        "source": "MacRumors",
-        "link": OCT19_IMPROVEMENT,
-        "published_at_kst": "2026-10-20T04:31:00+09:00",
-        "publisher_direct": True,
-        "historical_recovery": True,
-    })
+    """Read original publisher pages. No unverified aggregator snippets."""
+    sources = (
+        ("MacRumors", OCT19_IMPROVEMENT,
+         "Apple Starts Moving Up iPhone Duo Delivery Dates", "2026-10-20T04:31:00+09:00"),
+        ("9to5Mac", OCT19_ALTERNATIVE,
+         "Some iPhone Duo orders getting moved up to earlier dates", "2026-10-19T22:19:00+09:00"),
+    )
+    recovered=0
+    for publisher,url,title,published in sources:
+        full=_publisher_article_text(url,publisher)
+        if not full:
+            continue
+        low=full.lower()
+        if not ("iphone duo" in low and "delivery" in low):
+            continue
+        if publisher=="MacRumors" and "in the u.s." not in low:
+            continue
+        if publisher=="9to5Mac" and not ("japan" in low and "december" in low
+                                         and "october 23" in low and "moved up" in low):
+            continue
+        rows.append({
+            "title":title,"description":full,"source":publisher,"link":url,
+            "published_at_kst":published,"publisher_direct":True,
+            "historical_recovery":True,
+        })
+        recovered+=1
+    if not recovered:
+        errors.append("2026-10-19 preorder improvement original publisher texts unavailable")
     return rows
 
 

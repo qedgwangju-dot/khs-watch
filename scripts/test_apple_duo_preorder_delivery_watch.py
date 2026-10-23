@@ -428,9 +428,9 @@ class DuoPreorderTests(unittest.TestCase):
             "December delivery, but the store now shows November 20 to November 30. "
             "In Japan, original December 3 to December 10 delivery is now October 24."
         )
-        with patch.object(m, "_publisher_article_text", return_value=direct) as original:
+        with patch.object(m, "_publisher_article_text", side_effect=lambda url,source: direct if source=="MacRumors" else "") as original:
             rows=m._recover_verified_oct19_advance([], [])
-        original.assert_called_once_with(m.OCT19_IMPROVEMENT,"MacRumors")
+        original.assert_any_call(m.OCT19_IMPROVEMENT,"MacRumors")
         self.assertEqual(len(rows),1)
         self.assertTrue(rows[0]["publisher_direct"])
         self.assertTrue(rows[0]["historical_recovery"])
@@ -446,6 +446,32 @@ class DuoPreorderTests(unittest.TestCase):
             rows=m._recover_verified_oct19_advance([],errors)
         self.assertEqual(rows,[])
         self.assertEqual(len(errors),1)
+
+
+    def test_launch_day_delivery_is_valid_only_for_existing_preorder_advances(self):
+        pub=self.pub()
+        self.assertIsNone(m._month_and_day("October 23, 2026",pub))
+        self.assertEqual(m._month_and_day("October 23, 2026",pub,allow_launch=True)[2],
+                         "2026-10-23")
+        row={
+            "title":"Some iPhone Duo orders getting moved up to earlier dates",
+            "description":"In Japan, original delivery December 3 to December 10. Now delivery October 23, 2026.",
+            "source":"9to5Mac","publisher_direct":True,
+            "link":"https://9to5mac.com/2026/10/19/some-iphone-duo-orders-getting-moved-up-to-earlier-dates/",
+            "published_at_kst":"2026-10-20T04:31:00+09:00",
+        }
+        changes=m._new_preorder_improvements([row],{})
+        self.assertEqual(len(changes),1)
+        self.assertIn("10월 23일",changes[0]["new"])
+
+    def test_9to5mac_first_party_articles_are_not_google_redirects(self):
+        self.assertTrue(m._direct_publisher_link({
+            "source":"9to5Mac",
+            "link":"https://9to5mac.com/2026/10/19/some-iphone-duo-orders-getting-moved-up-to-earlier-dates/",
+        }))
+        self.assertFalse(m._direct_publisher_link({
+            "source":"9to5Mac","link":"https://news.google.com/rss/articles/example",
+        }))
 
 
 if __name__=="__main__":
