@@ -117,6 +117,7 @@ jobs:
           PYTHONPATH=. python - <<'PY'
           import scripts.khs_trusted_policy_news_watch as m
           m._self_test_us_treasury_outbound_event_model()
+          m._self_test_deepseek_and_biotech_policy_events()
           m._self_test_defense_future_warfare_event_model()
           m._self_test_fcc_optical_transceiver_event_model()
           m._self_test_mofcom_2026_notices()
