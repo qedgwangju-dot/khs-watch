@@ -13,6 +13,7 @@ import treasury_credit_flow_watch_refinancing as report
 import treasury_credit_flow_watch_marketstress as stress
 import treasury_etf_flow_watch as base
 import treasury_credit_flow_delivery as delivery
+import treasury_credit_flow_daily_status as daily_status
 
 
 def example():
@@ -362,6 +363,16 @@ class TreasuryReportIntegrity(unittest.TestCase):
         self.assertIn("10-30년 불 스티프닝", explanation)
         self.assertAlmostEqual(s210[2], -1.0)
         self.assertAlmostEqual(s1030[2], 4.0)
+
+
+    def test_daily_status_sender_distinguishes_execution_failure_from_source_hold(self):
+        when = dt.datetime(2026, 10, 23, 7, 30, tzinfo=ZoneInfo("Asia/Seoul"))
+        failure = daily_status.build_status_message(when, "workflow_step_failed")
+        source_hold = daily_status.build_status_message(when, "official_source_date_or_field_validation_withheld")
+        self.assertIn("실행이 정상 완료되지 않아", failure)
+        self.assertIn("이전 날짜의 수치로 대체하지 않습니다", failure)
+        self.assertIn("공식 자료의 기준일 또는 필드 검증", source_hold)
+        self.assertIn("07:45 KST에 재시도", failure)
 
 
 if __name__ == "__main__":
