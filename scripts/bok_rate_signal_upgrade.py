@@ -24,8 +24,9 @@ ALERT = OUT / "bok_mpc_alert.html"
 STATUS = OUT / "bok_mpc_status.md"
 ERROR = OUT / "bok_mpc_errors.log"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; khs-bok-rate-signal/1.0)", "Accept-Language": "ko-KR,ko;q=0.9"}
-FSC_LIST = "https://www.fsc.go.kr/no010101"
-FSC_FALLBACK = "https://www.fsc.go.kr/no010101/87675"
+FSC_LIST = "https://www.fsc.go.kr/no010101?srchText=가계대출"
+# 검색목록 조회 장애 시의 예비 주소. 발표월 검증 없이는 사용하지 않는다.
+FSC_FALLBACK = "https://www.fsc.go.kr/no010101/87939"
 CPI_HOME = "https://mods.go.kr/cpi/"
 CPI_FALLBACK = "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156777515"
 REB_LIST = "https://www.reb.or.kr/reb/na/ntt/selectNttList.do?mi=9565&bbsId=1154"
@@ -62,7 +63,7 @@ def period(text):
     m = re.search(r"(20\d{2})년\s*(\d{1,2})월", text); return f"{m.group(1)}-{int(m.group(2)):02d}" if m else None
 def signed(s):
     if not s: return None
-    neg = s.strip().startswith(("-", "△", "▲")); m = re.search(r"[0-9]+(?:\.[0-9]+)?", s.replace(",", ""))
+    neg = s.strip().startswith(("-", "−", "△", "▲")); m = re.search(r"[0-9]+(?:\.[0-9]+)?", s.replace(",", ""))
     return (-1 if neg else 1) * float(m.group()) if m else None
 
 def list_link(url, key, domain):
@@ -74,24 +75,111 @@ def list_link(url, key, domain):
     return None
 
 
+def monthly_cutoff(now, release_day=16):
+    """발표 시점 뒤에 과거 월 수치를 현재로 사용하지 않기 위한 최소 기준월."""
+    first = now.date().replace(day=1)
+    prior = first - dt.timedelta(days=1)
+    if now.day >= release_day:
+        return prior.strftime("%Y-%m")
+    prior2 = prior.replace(day=1) - dt.timedelta(days=1)
+    return prior2.strftime("%Y-%m")
+
+
+def parse_household_text(t, source):
+    title = re.search(r"(20\d{2})년\s*(\d{1,2})월\s*가계대출\s*동향", t)
+    if not title:
+        raise RuntimeError("금융위원회 보도자료의 대상월 식별 실패")
+    month = f"{title.group(1)}-{int(title.group(2)):02d}"
+    mt = re.search(
+        r"(?:全|전)\s*금융권\s*가계대출\s*(?:은|이)?\s*"
+        r".{0,115}?([+△▲−-]?\s*[0-9]+(?:\.[0-9]+)?)\s*조원\s*(증가|감소|순감)",
+        t,
+    )
+    mm = re.search(
+        r"주택담보대출\s*(?:은|이)?\s*"
+        r"([+△▲−-]?\s*[0-9]+(?:\.[0-9]+)?)\s*조원\s*증가"
+        r".{0,120}?전월\s*\(\s*([+△▲−-]?\s*[0-9]+(?:\.[0-9]+)?)\s*조원",
+        t,
+    )
+    if not mt or not mm:
+        raise RuntimeError("금융위원회 가계대출 핵심 수치·비교월 파싱 실패")
+    total = signed(mt.group(1))
+    if mt.group(2) in ("감소", "순감"):
+        total = -abs(total)
+    elif total < 0:
+        raise RuntimeError("가계대출 증가 방향과 부호 불일치")
+    mort, prev = signed(mm.group(1)), signed(mm.group(2))
+    if mort is None or prev is None or mort < 0 or prev < 0:
+        raise RuntimeError("주택담보대출 증가 수치 부호 오류")
+    return {
+        "period": month, "total_trn": total, "mortgage_trn": mort,
+        "mortgage_prev_trn": prev, "mortgage_reaccelerating": mort > prev,
+        "source": source, "source_tier": "공식",
+    }
+
+
 def household():
-    try: u = list_link(FSC_LIST, "가계대출 동향", "fsc.go.kr")
-    except Exception: u = None
-    p = get(u or FSC_FALLBACK); t = norm(BeautifulSoup(p.text, "html.parser").get_text(" ", strip=True))
-    mt = re.search(r"(?:全|전)\s*금융권\s*가계대출.{0,180}?([+△▲-]?\s*[0-9.]+)\s*조원\s*증가", t)
-    mm = re.search(r"주택담보대출.{0,140}?([+△▲-]?\s*[0-9.]+)\s*조원\s*증가.{0,120}?전월\s*\(\s*([+△▲-]?\s*[0-9.]+)\s*조원", t)
-    if not mt or not mm: raise RuntimeError("금융위원회 가계대출 핵심 수치 파싱 실패")
-    total, mort, prev = signed(mt.group(1)), signed(mm.group(1)), signed(mm.group(2))
-    return {"period": period(t), "total_trn": total, "mortgage_trn": mort, "mortgage_prev_trn": prev,
-            "mortgage_reaccelerating": prev is not None and mort > prev, "source": p.url, "source_tier": "공식"}
+    urls = []
+    try:
+        found = list_link(FSC_LIST, "가계대출 동향", "fsc.go.kr")
+        if found:
+            urls.append(found)
+    except Exception as exc:
+        err(f"금융위 최신 자료 목록 조회 실패: {type(exc).__name__}: {exc}")
+    if FSC_FALLBACK not in urls:
+        urls.append(FSC_FALLBACK)
+    records = []
+    for url in urls:
+        try:
+            p = get(url)
+            text = norm(BeautifulSoup(p.text, "html.parser").get_text(" ", strip=True))
+            records.append(parse_household_text(text, p.url))
+        except Exception as exc:
+            err(f"금융위 후보 문서 검증 실패({url}): {type(exc).__name__}: {exc}")
+    if not records:
+        raise RuntimeError("금융위 가계대출 공식 문서·수치 조회 실패")
+    result = max(records, key=lambda row: row["period"])
+    cutoff = monthly_cutoff(dt.datetime.now(KST), release_day=16)
+    if result["period"] < cutoff:
+        raise RuntimeError(
+            f"금융위 가계대출 최신월 미달: {result['period']} < {cutoff} (옛 자료 사용 차단)"
+        )
+    return result
+
+
+def parse_cpi_text(t, source):
+    heading = re.search(r"(20\d{2})년\s*(\d{1,2})월\s*소비자물가동향", t)
+    if not heading:
+        raise RuntimeError("물가 보도자료 제목에서 기준월 확인 실패")
+    month_num = int(heading.group(2))
+    month = f"{heading.group(1)}-{month_num:02d}"
+    # 보도자료 내 과거월·근원지수 2.8%를 전체 소비자물가로 잘못 집는 문제 방지.
+    headline_re = re.compile(
+        rf"(?<!\d)0?{month_num}월\s*소비자물가지수\s*(?:는|가)?"
+        rf".{{0,160}}?전년동월대비\s*([0-9]+(?:\.[0-9]+)?)\s*%"
+    )
+    matches = [float(match.group(1)) for match in headline_re.finditer(t)]
+    core = re.search(
+        r"식료품\s*및\s*에너지\s*제외\s*지수\s*(?:는|가)?"
+        r".{0,170}?전년동월대비\s*([0-9]+(?:\.[0-9]+)?)\s*%",
+        t,
+    )
+    if not matches or not core:
+        raise RuntimeError("당월 전체·근원물가 지표의 문장별 대조 실패")
+    if len(set(matches)) != 1:
+        raise RuntimeError("동일 기준월 전체물가 수치가 문서 안에서 불일치")
+    return {
+        "period": month, "headline_yoy": matches[0],
+        "core_yoy": float(core.group(1)), "source": source,
+        "source_tier": "공식",
+    }
 
 
 def parse_cpi(u):
-    p = get(u); t = norm(BeautifulSoup(p.text, "html.parser").get_text(" ", strip=True))
-    h = re.search(r"소비자물가지수.{0,200}?전년동월대비\s*([0-9.]+)%\s*상승", t)
-    c = re.search(r"식료품\s*및\s*에너지제외지수.{0,180}?전년동월대비\s*([0-9.]+)%", t)
-    if not h or not c: raise RuntimeError("소비자물가 핵심 수치 파싱 실패")
-    return {"period": period(t), "headline_yoy": float(h.group(1)), "core_yoy": float(c.group(1)), "source": p.url, "source_tier": "공식"}
+    p = get(u)
+    text = norm(BeautifulSoup(p.text, "html.parser").get_text(" ", strip=True))
+    return parse_cpi_text(text, p.url)
+
 
 def inflation():
     urls = []
@@ -112,6 +200,9 @@ def inflation():
         except Exception: pass
     if not rows: raise RuntimeError("최신 소비자물가 공식자료 조회 실패")
     rows.sort(key=lambda x: x["period"], reverse=True); cur = rows[0]; prev = rows[1] if len(rows) > 1 else None
+    cutoff = monthly_cutoff(dt.datetime.now(KST), release_day=5)
+    if cur["period"] < cutoff:
+        raise RuntimeError(f"물가 최신월 미달: {cur['period']} < {cutoff} (옛 자료 사용 차단)")
     cur["prev_headline_yoy"] = prev.get("headline_yoy") if prev else None; cur["prev_core_yoy"] = prev.get("core_yoy") if prev else None
     cur["headline_reaccelerating"] = bool(prev and cur["headline_yoy"] >= prev["headline_yoy"] + 0.1)
     cur["core_reaccelerating"] = bool(prev and cur["core_yoy"] >= prev["core_yoy"] + 0.1)
@@ -136,13 +227,33 @@ def housing():
 
 
 def oil():
-    u = "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=10d&interval=1d&includePrePost=false"; j = get(u).json(); r = ((j.get("chart") or {}).get("result") or [None])[0]
-    if not r: raise RuntimeError("브렌트유 시계열 없음")
-    ts = r.get("timestamp") or []; cl = (((r.get("indicators") or {}).get("quote") or [{}])[0].get("close") or [])
-    z = [(a, float(b)) for a, b in zip(ts, cl) if b is not None]
-    if len(z) < 2: raise RuntimeError("브렌트유 유효 종가 부족")
-    base = z[-6][1] if len(z) >= 6 else z[0][1]; change = (z[-1][1] / base - 1) * 100
-    return {"date": dt.datetime.fromtimestamp(z[-1][0], dt.timezone.utc).date().isoformat(), "brent_usd": round(z[-1][1], 2), "change_5d_pct": round(change, 2), "source": "Yahoo Finance BZ=F", "source_tier": "시장자료"}
+    u = "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=15d&interval=1d&includePrePost=false"
+    j = get(u).json()
+    result = ((j.get("chart") or {}).get("result") or [None])[0]
+    if not result:
+        raise RuntimeError("브렌트유 시계열 없음")
+    timestamps = result.get("timestamp") or []
+    closes = (((result.get("indicators") or {}).get("quote") or [{}])[0].get("close") or [])
+    cutoff = dt.datetime.now(dt.timezone.utc).date()
+    # 당일 미완성 일봉은 제외한다. 그렇지 않으면 5거래일 기준점이
+    # 장중 교체되어 소폭 가격변화에도 경보점수가 급변한다.
+    valid = [
+        (stamp, float(price))
+        for stamp, price in zip(timestamps, closes)
+        if price is not None
+        and dt.datetime.fromtimestamp(stamp, dt.timezone.utc).date() < cutoff
+    ]
+    if len(valid) < 6:
+        raise RuntimeError("브렌트유 확정 일봉 6개 미만: 당일 미완성 가격 사용 차단")
+    base_close = valid[-6][1]
+    change = (valid[-1][1] / base_close - 1) * 100
+    return {
+        "date": dt.datetime.fromtimestamp(valid[-1][0], dt.timezone.utc).date().isoformat(),
+        "brent_usd": round(valid[-1][1], 2),
+        "change_5d_pct": round(change, 2),
+        "price_type": "최근 확정 일봉 종가",
+        "source": "Yahoo Finance BZ=F", "source_tier": "시장자료",
+    }
 
 
 def news(q, limit=25):

@@ -286,6 +286,9 @@ def oil_alert_transition(old_oil: dict | None, new_oil: dict | None) -> str | No
     """
     if not old_oil or not new_oil:
         return None
+    # 서로 다른 확정 거래일에만 상승압력 변화를 재판정한다.
+    if str(new_oil.get("date") or "") <= str(old_oil.get("date") or ""):
+        return None
     old_bucket = max(0, base.op(old_oil))
     new_bucket = max(0, base.op(new_oil))
     ch = new_oil.get("change_5d_pct")
@@ -322,15 +325,22 @@ def build_message(state: dict, reasons: list[str], new_events: list[dict], new_p
             )
         lines.append("• 신규 추정치·방법론은 공식 연구 본문 확인 전에는 확정 수치로 표시하지 않습니다.")
     lines += ["", "<b>① 현재 숫자</b>"]
-    if inf:
+    if inf and not inf.get("stale"):
         prev = inf.get("prev_core_yoy")
         tail = f" / 직전 {prev:.1f}%" if isinstance(prev, (int, float)) else ""
-        lines.append(f"• 소비자물가 <b>{inf['headline_yoy']:.1f}%</b> / 식료품·에너지 제외 근원 <b>{inf['core_yoy']:.1f}%{tail}</b>")
-    if hh:
-        lines.append(f"• 전 금융권 가계대출 <b>{hh['total_trn']:+.1f}조원</b> — 총량은 둔화")
-        lines.append(f"• 주택담보대출 <b>{hh['mortgage_trn']:+.1f}조원</b> / 직전 <b>{hh['mortgage_prev_trn']:+.1f}조원</b> — <b>재가속</b>")
-    if oi:
-        lines.append(f"• 브렌트 선물(시장참고) <b>${oi['brent_usd']:.2f}</b> / 최근 5거래일 <b>{oi['change_5d_pct']:+.1f}%</b>")
+        lines.append(f"• {inf.get('period')} 소비자물가 <b>{inf['headline_yoy']:.1f}%</b> / 식료품·에너지 제외 근원 <b>{inf['core_yoy']:.1f}%{tail}</b>")
+    else:
+        lines.append("• 소비자물가: 최신 공식 수치 검증 실패 / 이전값 점수 제외")
+    if hh and not hh.get("stale"):
+        trend = "증가폭 확대" if hh.get("mortgage_reaccelerating") else "증가폭 둔화" if hh["mortgage_trn"] < hh["mortgage_prev_trn"] else "증가폭 유지"
+        lines.append(f"• {hh.get('period')} 전 금융권 가계대출 <b>{hh['total_trn']:+.1f}조원</b>")
+        lines.append(f"• 주택담보대출 <b>{hh['mortgage_trn']:+.1f}조원</b> / 직전 <b>{hh['mortgage_prev_trn']:+.1f}조원</b> — <b>{trend}</b>")
+    else:
+        lines.append("• 가계대출: 최신 공식 수치 검증 실패 / 이전값 점수 제외")
+    if oi and not oi.get("stale"):
+        lines.append(f"• 브렌트 선물({html.escape(oi.get('price_type') or '시장자료')}) <b>${oi['brent_usd']:.2f}</b> / 최근 확정 5거래일 <b>{oi['change_5d_pct']:+.1f}%</b>")
+    else:
+        lines.append("• 브렌트 선물: 확정 일봉 확인 실패 / 이전값 점수 제외")
     if hs:
         lines.append("• 주택가격 확산: <b>" + ("확산 조건 충족" if hs.get("broad_diffusion") else "광범위 확산 조건 미충족") + "</b>")
     else:
@@ -369,16 +379,18 @@ def build_message(state: dict, reasons: list[str], new_events: list[dict], new_p
 
     lines += ["", "<b>③ 최종 판정</b>"]
     drivers = []
-    if inf and inf.get("core_reaccelerating") and inf.get("core_yoy", 0) >= 3.0:
+    if inf and not inf.get("stale") and inf.get("core_reaccelerating") and inf.get("core_yoy", 0) >= 3.0:
         drivers.append("근원물가")
-    if hh and hh.get("mortgage_reaccelerating") and hh.get("mortgage_trn", 0) >= 4:
+    if hh and not hh.get("stale") and hh.get("mortgage_reaccelerating") and hh.get("mortgage_trn", 0) >= 4:
         drivers.append("주택담보대출")
-    if oi and base.op(oi) > 0:
+    if oi and not oi.get("stale") and base.op(oi) > 0:
         drivers.append("유가 상승")
     if state.get("rhetoric_score", 0) > 0:
-        drivers.append("한은 매파 발언")
+        drivers.append("한은 물가·긴축 관련 발언")
     driver_text = "·".join(drivers) if drivers else "현재 정책조건"
-    if state["grade_emoji"] == "🔴":
+    if state["grade_emoji"] == "⚪":
+        verdict = "공식 최신 자료 확인 전이므로 금리인상 위험등급을 확정하지 않음"
+    elif state["grade_emoji"] == "🔴":
         verdict = f"{driver_text}에 더해 다음 회의를 직접 겨냥한 매파 강화까지 확인돼 인상 경보 조건 충족"
     elif state["grade_emoji"] == "🟠":
         verdict = f"{driver_text} 때문에 인상 압력이 높은 상태지만, 다음 회의 즉시 인상을 단정할 단계는 아님"
@@ -433,6 +445,13 @@ def main() -> int:
                 got[name] = None
                 base.err(f"추가인상 위험감시 {name} 조회 실패: {type(exc).__name__}: {exc}")
     current = {name: base.safe(got.get(name), oc.get(name)) for name in component_fns}
+    # 수집에 실패한 과거값은 상태에는 남기더라도 '현재 점수'에서 제거한다.
+    valid = {
+        name: (record if record and not record.get("stale") else None)
+        for name, record in current.items()
+    }
+    if not valid.get("inflation") or not valid.get("household"):
+        base.err("물가 또는 가계대출의 최신 공식자료가 없어 인상 위험등급 판정 보류")
 
     try: events = rhetoric(now)
     except Exception as exc:
@@ -511,8 +530,11 @@ def main() -> int:
         next_meeting = {"date": old.get("next_mpc_date"), "source": old.get("next_mpc_source")}
         base.err(f"다음 금통위 일정 조회 실패: {type(exc).__name__}: {exc}")
 
-    risk_score = base.ip(current.get("inflation")) + base.hp(current.get("household")) + base.rp(current.get("housing")) + base.op(current.get("oil")) + rhetoric_score
-    grade_emoji, grade_label = grade(risk_score, current.get("inflation"), current.get("household"), current.get("oil"), events)
+    risk_score = base.ip(valid.get("inflation")) + base.hp(valid.get("household")) + base.rp(valid.get("housing")) + base.op(valid.get("oil")) + rhetoric_score
+    if not valid.get("inflation") or not valid.get("household"):
+        grade_emoji, grade_label = "⚪", "최신 공식자료 부족·판정 보류"
+    else:
+        grade_emoji, grade_label = grade(risk_score, valid.get("inflation"), valid.get("household"), valid.get("oil"), events)
     candidate = {
         "version": 3,
         "updated_at_kst": now.isoformat(timespec="seconds"),
@@ -559,7 +581,8 @@ def main() -> int:
         if current.get("inflation") and not same(
             oc.get("inflation"), current["inflation"], ["period", "headline_yoy", "core_yoy"]
         ):
-            reason = f"물가 공식치 갱신: CPI {current['inflation']['headline_yoy']:.1f}% / 근원 {current['inflation']['core_yoy']:.1f}%"
+            qualifier = "수치 정정" if oc.get("inflation") and oc["inflation"].get("period") == current["inflation"].get("period") else "신규 발표"
+            reason = f"물가 공식 {qualifier}: CPI {current['inflation']['headline_yoy']:.1f}% / 근원 {current['inflation']['core_yoy']:.1f}%"
             state_reasons.append(reason)
             alert_reasons.append(reason)
 
@@ -635,6 +658,9 @@ def main() -> int:
         "new_topics_bootstrap_without_replay": True,
         "official_working_paper_id_dedup": True,
         "official_paper_first_scan_no_replay": True,
+        "fresh_official_only_scoring": True,
+        "completed_daily_oil_candles_only": True,
+        "source_period_validation": True,
     }
 
     # 상태는 재계산 변화가 있으면 조용히 갱신한다. 알림 여부와는 분리한다.
@@ -642,6 +668,7 @@ def main() -> int:
         boot or migration or topic_bootstrap or bool(state_reasons or new_events)
         or seen_by_day != (old.get("seen_policy_flags_by_day") or {})
         or paper_state != paper_previous
+        or any((oc.get(key) or {}).get("stale") != (current.get(key) or {}).get("stale") for key in component_fns)
     )
     root["rate_signal_upgrade"] = candidate if state_change else old
     base.PENDING.write_text(json.dumps(root, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

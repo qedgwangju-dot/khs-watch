@@ -10,6 +10,45 @@ from bok_mpc_watch_final import _main_direction, parser_only_enrichment
 
 
 class PolicySemanticsTests(unittest.TestCase):
+    def test_september_cpi_distinguishes_headline_from_core_and_older_months(self):
+        from bok_rate_signal_upgrade import parse_cpi_text
+        txt = ("2026년 9월 소비자물가동향 "
+               "지난달 소비자물가지수는 전년동월대비 3.1% 상승했다. "
+               "□ 9월 소비자물가지수는 전월대비 0.3%, 전년동월대비 2.9% 각각 상승 "
+               "□ 식료품및에너지제외지수는 전월대비 0.1% 하락, 전년동월대비 2.8% 상승")
+        result = parse_cpi_text(txt, "https://mods.go.kr/board.es?list_no=447322")
+        self.assertEqual(result["period"], "2026-09")
+        self.assertEqual(result["headline_yoy"], 2.9)
+        self.assertEqual(result["core_yoy"], 2.8)
+
+    def test_household_september_decline_and_mortgage_slowdown(self):
+        from bok_rate_signal_upgrade import parse_household_text
+        txt = ("2026년 9월 가계대출 동향(잠정) "
+               "’26.9월 全 금융권 가계대출 은 △2.2조원 감소 하여 올해 첫 순감. "
+               "주택담보대출 은 +3.3조원 증가 하여 전월(+4.3조원) 대비 증가폭 축소.")
+        result = parse_household_text(txt, "https://www.fsc.go.kr/no010101/87939")
+        self.assertEqual(result["period"], "2026-09")
+        self.assertEqual(result["total_trn"], -2.2)
+        self.assertEqual(result["mortgage_trn"], 3.3)
+        self.assertEqual(result["mortgage_prev_trn"], 4.3)
+        self.assertFalse(result["mortgage_reaccelerating"])
+
+    def test_bad_monthly_source_does_not_pass_recency_guard(self):
+        from bok_rate_signal_upgrade import monthly_cutoff
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        now = datetime(2026, 10, 23, tzinfo=ZoneInfo("Asia/Seoul"))
+        self.assertEqual(monthly_cutoff(now, release_day=16), "2026-09")
+        self.assertEqual(monthly_cutoff(now, release_day=5), "2026-09")
+
+    def test_new_oil_bar_gate_does_not_send_same_day_threshold_alert(self):
+        from bok_rate_signal_upgrade_v3 import oil_alert_transition
+        old = {"date": "2026-10-22", "change_5d_pct": 6.84}
+        intraday = {"date": "2026-10-22", "change_5d_pct": 3.49}
+        self.assertIsNone(oil_alert_transition(old, intraday))
+        completed_next = {"date": "2026-10-23", "change_5d_pct": 3.49}
+        self.assertIsNotNone(oil_alert_transition(old, completed_next))
+
     def test_k_shaped_household_inflation(self):
         text = "신현송 총재: 한국 경제 K자형 양극화 뚜렷, 저소득층에 인플레이션 피해 집중"
         self.assertTrue(policy_flags(text)["k_shaped_low_income"])
