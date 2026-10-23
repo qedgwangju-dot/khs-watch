@@ -186,6 +186,32 @@ class ExportRuntimeIntegrityTests(unittest.TestCase):
         self.assertEqual(saved['official_source_health']['status'],'waiting_publication')
         self.assertFalse(saved['monthly_due'])
 
+    def test_saved_non_monthly_period_failure_is_validation_hold_and_dedupes(self):
+        errors = [
+            "지역 금액 단위 검증 보류: invalid:non_monthly_period",
+            "지역 금액 단위 검증 보류: invalid:non_monthly_period",
+        ]
+        previous = dict(official_source_health={"status": "error", "signature": "legacy-generic-failure"})
+        saved, text = self.run_main(previous, None, errors, poll=True)
+        self.assertEqual(saved["official_source_health"]["status"], "validation_hold")
+        self.assertEqual(saved["official_source_health"]["classes"], ["월별 기간 검증 보류"])
+        self.assertIn("원자료 월별 검증 보류", text)
+        self.assertNotIn("조회 장애", text)
+        self.assertFalse(saved["monthly_due"])
+        self.assertFalse(saved["official_observed_this_run"])
+        due, interval = w._official_poll_due({
+            "official_source_health": saved["official_source_health"],
+            "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION,
+            "compare_version": w.COMPARE_VERSION,
+            "export_alert_format_version": w.EXPORT_ALERT_FORMAT_VERSION,
+        }, self.now)
+        self.assertTrue(due)
+        self.assertEqual(interval, 1)
+
+        repeated, repeated_text = self.run_main(saved, None, errors, poll=True)
+        self.assertEqual(repeated["official_source_health"]["status"], "validation_hold")
+        self.assertEqual(repeated_text, "")
+
     def test_missing_annual_comparison_is_partial_not_full_recovery(self):
         p=pack();p['series'].pop('202509')
         state=dict(official_source_health={'status':'error'})
