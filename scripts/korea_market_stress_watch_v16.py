@@ -123,13 +123,28 @@ def _sanitized_final_history(market: str) -> list[dict[str, Any]]:
     return [{"date": d, "daily_eok": v} for d, v in sorted(by_date.items())][-10:]
 
 
+def _three_day_from_confirmed_dates(market: str, trade_date: str, by_date: dict[str, float]) -> float | None:
+    """Reject stale 3-day sums when a real KRX trading date is missing.
+
+    A missing date is not a zero-flow day. Index history is used ONLY to
+    establish the last three actual trading dates, never to invent a flow.
+    """
+    try:
+        expected = sorted(d for d in _recent_trade_dates(market) if d <= trade_date)[-3:]
+    except Exception:
+        return None
+    if len(expected) != 3 or expected[-1] != trade_date:
+        return None
+    if any(day not in by_date for day in expected):
+        return None
+    return sum(float(by_date[day]) for day in expected)
+
+
 def _recompute_three_day(market: str, trade_date: str, daily_eok: float) -> tuple[float | None, list[dict[str, Any]]]:
     by_date = {row["date"]: float(row["daily_eok"]) for row in _sanitized_final_history(market)}
     by_date[trade_date] = float(daily_eok)
     rows = [{"date": d, "daily_eok": v} for d, v in sorted(by_date.items()) if d <= trade_date][-10:]
-    if len(rows) < 3:
-        return None, rows
-    return sum(float(row["daily_eok"]) for row in rows[-3:]), rows
+    return _three_day_from_confirmed_dates(market, trade_date, by_date), rows
 
 
 def _canonicalize_flow(original, market: str, now: dt.datetime) -> dict[str, Any]:
@@ -473,16 +488,18 @@ def _persist_candidates_and_final_history() -> None:
                     "LS증권 t1601 확정 대체값" if cand.get("stable") else "LS증권 t1601 잠정 대체값"
                 )
 
-            eligible = [row for row in rows if not trade_date or row["date"] <= trade_date]
-            if trade_date and trade_date in by_date and len(eligible) >= 3:
-                three = sum(float(x["daily_eok"]) for x in eligible[-3:])
+            three = _three_day_from_confirmed_dates(market, trade_date, by_date) if trade_date and trade_date in by_date else None
+            if three is not None and cand.get("stable"):
                 flow["three_day_eok"] = three
                 flow["three_day_krw"] = int(round(three * 100_000_000))
                 flow["three_day_available"] = True
-                flow["finality"] = "확정" if cand.get("stable") else "잠정"
+                flow["finality"] = "확정"
             else:
+                flow["three_day_eok"] = None
+                flow["three_day_krw"] = None
                 flow["three_day_available"] = False
-                flow["finality"] = "잠정"
+                flow["finality"] = "확정" if cand.get("stable") else "잠정"
+                flow["three_day_unavailable_reason"] = "실제 최근 3거래일의 확정 일별수급이 전부 있어야 누적 판정 가능"
             snap[key] = flow
 
     today = dt.datetime.now(watch.KST).date().isoformat()
