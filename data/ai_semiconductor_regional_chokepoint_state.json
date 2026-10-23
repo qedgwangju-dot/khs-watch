@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-24T00:55:22+09:00",
-  "last_scan_count": 5,
+  "updated_at_kst": "2026-10-24T04:57:40+09:00",
+  "last_scan_count": 6,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
     "vintage": "3Q26",
@@ -114,7 +114,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "1a3e5915b65cf2f57776be9e",
@@ -123,6 +123,7 @@
     "2cd2b0f9d66a3572fe285d81",
     "2e4ce20f85e2413b949cc500",
     "2ff967f0a83d4f9d09737f69",
+    "3721dcaa772b61f44f972d28",
     "3c256fe8dff8e167b043d264",
     "51e0a57c2a721f4c77c22710",
     "54bea3d4ab4510e9d52b3b53",
@@ -146,7 +147,14 @@
     "f3274f98949ddbb5ad284b00"
   ],
   "delivered_event_keys": [],
-  "last_held": [],
+  "last_held": [
+    {
+      "event_key": "taiwan|capacity|TSMC|euv",
+      "source": "BigGo Finance",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-10-23T20:08:00+09:00"
+    }
+  ],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
   "telegram_message_ids": [
     292
