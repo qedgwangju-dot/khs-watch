@@ -124,12 +124,14 @@ def market_clock_epoch(value: Any, fallback_ts: float | None = None) -> float | 
     elif len(digits) == 8:
         digits = digits[:6]
     try:
-        now = dt.datetime.now(KST)
-        point = dt.datetime(now.year, now.month, now.day,
+        # HHMMSS has no date. Infer the date from the associated receive/reference
+        # timestamp so replayed inputs do not depend on the machine's wall clock.
+        ref = fallback_ts if fallback_ts is not None else time.time()
+        reference = dt.datetime.fromtimestamp(ref, KST)
+        point = dt.datetime(reference.year, reference.month, reference.day,
                             int(digits[:2]), int(digits[2:4]), int(digits[4:6]),
                             tzinfo=KST)
         ts = point.timestamp()
-        ref = fallback_ts if fallback_ts is not None else time.time()
         # 오래되거나 유효하지 않은 자료는 새 HTTP 조회 시각으로 위장하지 않는다.
         if abs(ts - ref) > 6 * 60 * 60:
             return None
