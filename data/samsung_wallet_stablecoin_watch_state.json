@@ -2,12 +2,6 @@
   "correction_pending": false,
   "evidence": [
     {
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNSkZfa3RhWmVwUXpQV080M1NFMDB4QjE1STRvNWZ5eW1VQUNhQ3QzU3dwUWg0V0RxREZnWVhYS3Q0MEhVX0ZOOVpCeHdhSU1HMTRMR0Q5RzZTWmdEcWdZSWI3M1l2ZWZkbkwxUVFkQ3dUc0Y5bkcyQlRQVHJEYXVjbEQ3WTFMcmd6V1dPMWRHTkJVVzRSTUhLWVRKb1J0V0hlZVNSbEJn?oc=5",
-      "published_utc": "2026-10-20T18:19:37+00:00",
-      "source": "Google News RSS",
-      "title": "Samsung wallet stablecoin rollout could lift Solana and Sui exposure in the U.S. - Traders Union"
-    },
-    {
       "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE0xNWJrYzk4ZkJGTDNmdy1SY204Um82UlpMZmpVU19pSzJBQnRNZm9JRlh1bFo2RHdCUjFQeFdGbDNJcDhaczZ1M1JFVzIyRnM?oc=5",
       "published_utc": "2026-10-22T22:00:00+00:00",
       "source": "Google News RSS",
@@ -35,7 +29,7 @@
     ],
     "explicit_reversal_confirmed": false,
     "job_fetch_ok": true,
-    "job_stablecoin_confirmed": true,
+    "job_stablecoin_confirmed": false,
     "kbw_executive_crosscheck_confirmed": true,
     "kbw_executive_primary_confirmed": true,
     "pilot_live_confirmed": false,
@@ -52,7 +46,7 @@
     "executive_default_feature_confirmation": true,
     "explicit_reversal_confirmed": false,
     "job_exists": true,
-    "official_job_scope_now": true,
+    "official_job_scope_now": false,
     "partner_primary_confirmed": true,
     "partner_primary_sources": [
       "Solana",
@@ -74,5 +68,5 @@
     "wallet_patent_publication": "US20260212355A1",
     "wallet_patent_publication_date": "2026-07-23"
   },
-  "updated_at_kst": "2026-10-23T21:44:06+09:00"
+  "updated_at_kst": "2026-10-24T02:31:50+09:00"
 }
