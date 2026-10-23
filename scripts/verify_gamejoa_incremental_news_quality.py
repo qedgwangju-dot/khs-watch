@@ -6989,6 +6989,99 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
         with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
             self.assertEqual(radar.low_impact_live_publication_reason(current_war_energy_shock, now), "")
 
+    def test_oct23_identical_hd_hyundai_kiewit_shipyard_jv_is_cross_publisher_duplicate(self):
+        first_title = "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
+        first_core = (
+            "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. "
+            "한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 '그린필드' 투자를 택했다."
+        )
+        second_title = "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
+        second_core = (
+            "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. "
+            "필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다."
+        )
+        self.assertTrue(materiality.same_headline_event(first_title, second_title, first_core, second_core))
+
+        first_signature = materiality.executed_joint_venture_signatures(first_core)
+        different_partner = materiality.executed_joint_venture_signatures(
+            first_core.replace("키윗(Kiewit)", "삼성전자")
+        )
+        mou_stage = materiality.executed_joint_venture_signatures(
+            first_core.replace("설립 계약을 체결", "설립 MOU를 체결")
+        )
+        self.assertTrue(first_signature)
+        self.assertFalse(first_signature & different_partner)
+        self.assertFalse(first_signature & mou_stage)
+
+    def test_live_filter_skips_routine_single_issuer_quarterly_dividends_but_keeps_major_shift(self):
+        routine_cases = (
+            (
+                "머피 USA, 분기배당 0.72달러로 11% 인상",
+                "미국 주유소·편의점 운영업체 머피 USA(MUSA)는 이사회가 보통주 1주당 분기 현금배당금을 "
+                "0.72달러로 결정했다고 발표했다. 직전 분기보다 11% 인상됐고 시가배당률은 0.5% 안팎이다.",
+            ),
+            (
+                "아르다 메탈 패키징, 분기배당 주당 0.10달러…예상 배당률 8.71%",
+                "아르다 메탈 패키징(AMBP)이 이사회에서 보통주 1주당 0.10달러의 분기 중간배당을 승인했다고 발표했다. "
+                "예상 배당률은 8.71%다.",
+            ),
+        )
+        now = dt.datetime(2026, 10, 23, 20, 30, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            for index, (title, body) in enumerate(routine_cases):
+                with self.subTest(title=title):
+                    item = alert(title, body, f"https://example.com/routine-dividend-{index}")
+                    self.assertEqual(
+                        radar.low_impact_live_publication_reason(item, now),
+                        "routine_single_issuer_quarterly_dividend_without_material_policy_change",
+                    )
+            material_change = alert(
+                "삼성전자, 분기배당 2배 인상…주주환원 정책 전환",
+                "삼성전자는 분기배당을 두 배로 늘리고 주주환원 정책을 전환한다고 발표했다.",
+                "https://example.com/material-dividend-policy-change",
+            )
+            self.assertEqual(radar.low_impact_live_publication_reason(material_change, now), "")
+
+            frontier_ai = alert(
+                "배경훈, 독파모와 분리해 프론티어 AI 지원…1만 GPU 별도 공모·출자",
+                "정부는 기존 독파모의 GPU 1000장 수준 지원과 별도로 1만 장 이상 규모의 프론티어 AI 지원을 추진한다. "
+                "기존 출연 방식 대신 별도 공모·출자 구조로 전환하지만 구체적인 출자 구조와 SPC 설립 여부는 미확정이다.",
+                "https://example.com/frontier-ai-support-structure",
+            )
+            self.assertEqual(radar.low_impact_live_publication_reason(frontier_ai, now), "")
+            frontier_core = radar.verified_alert_core(frontier_ai, frontier_ai["source_title"])
+            self.assertIn("1만장 이상 GPU", frontier_core)
+            self.assertIn("별도 공모·출자", frontier_core)
+            self.assertIn("SPC 등 세부 투자구조는 미정", frontier_core)
+            self.assertTrue(radar.core_sentence_is_complete(frontier_core), frontier_core)
+            self.assertFalse(
+                radar.source_core_fact_errors({**frontier_ai, "telegram_core_fact": frontier_core}),
+                frontier_core,
+            )
+
+    def test_skydance_investment_core_reports_acquisition_debt_and_financing_pressure(self):
+        title = "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연"
+        body = (
+            "일론 머스크 테슬라 최고경영자가 스카이댄스에 10억달러를 투자했다고 CNBC가 소식통을 인용해 보도했다. "
+            "머스크의 투자는 스카이댄스가 추진하는 자금 조달 계획의 일환이다. "
+            "파라마운트는 워너브러더스 디스커버리(WBD) 인수를 위해 520억 달러 규모 신규 부채를 조달했으며 "
+            "일부는 금리가 9%에 육박한다. AP통신에 따르면 스카이댄스의 예상 순부채는 800억 달러로 추산된다."
+        )
+        item = alert(title, body, "https://www.newsis.com/view/NISX20261023_0003837719")
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("10억달러", core)
+        self.assertIn("520억달러 신규차입", core)
+        self.assertIn("9%에 육박", core)
+        self.assertIn("예상 순부채는 800억달러", core)
+        self.assertNotIn("엘리슨", core)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), core)
+
+        stale_relationship_only = (
+            "일론 머스크 테슬라 최고경영자가 스카이댄스에 10억달러를 투자했다고 CNBC가 보도했다. "
+            "래리 엘리슨은 과거 머스크의 트위터 인수에 투자했다."
+        )
+        self.assertEqual(radar.skydance_acquisition_financing_core(title, stale_relationship_only), "")
+
     def test_listed_issuer_investigation_core_uses_the_headline_event_and_denial(self):
         title = "공정위, '식자재 입찰 담합 의혹' CJ프레시웨이 현장 조사"
         body = (

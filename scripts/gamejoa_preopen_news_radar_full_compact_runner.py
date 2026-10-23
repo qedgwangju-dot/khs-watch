@@ -6264,6 +6264,52 @@ def lg_cloid_humanoid_launch_core(title: str, body: str, published: str = "") ->
     return fact if core_sentence_is_complete(fact) else ""
 
 
+def skydance_acquisition_financing_core(title: str, body: str) -> str:
+    """Keep the debt and funding facts, not the celebrity relationship tail."""
+    if not re.search(r"머스크", title, re.I) or not re.search(r"스카이댄스", title, re.I):
+        return ""
+    source = article_summary_body(body)
+    has_musk_investment = bool(re.search(r"머스크.{0,100}10억\s*달러.{0,45}투자", source, re.I))
+    has_wbd_debt = bool(
+        re.search(r"(?:워너브러더스|WBD).{0,35}인수", source, re.I)
+        and re.search(r"520억\s*달러.{0,35}신규\s*부채", source, re.I)
+    )
+    has_financing_stress = bool(
+        re.search(r"금리.{0,20}9\s*%에\s*육박", source)
+        and re.search(r"예상\s*순부채.{0,25}800억\s*달러", source)
+    )
+    if not (has_musk_investment and has_wbd_debt and has_financing_stress):
+        return ""
+    fact = (
+        "CNBC 보도상 머스크의 10억달러 투자는 WBD 인수 뒤 520억달러 신규차입한 스카이댄스의 자금조달이다. "
+        "일부 차입금리는 9%에 육박하고 예상 순부채는 800억달러다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def frontier_ai_support_structure_core(title: str, body: str) -> str:
+    """Summarize the verified GPU scale and funding-process change, not the quote."""
+    if not re.search(r"프론티어\s*AI", title, re.I) or not re.search(r"독파모", title):
+        return ""
+    source = article_summary_body(body)
+    has_scale_comparison = bool(
+        re.search(r"독파모[^.!?\n]{0,90}GPU\s*1,?000\s*장", source, re.I)
+        and re.search(r"1만\s*장\s*이상", source)
+    )
+    has_structure_change = bool(
+        re.search(r"별도\s*공모", source)
+        and re.search(r"출연[^.!?\n]{0,35}출자|출자[^.!?\n]{0,35}(?:분리|전환|별도)", source)
+        and re.search(r"SPC.{0,30}(?:미확정|논의|아직)", source)
+    )
+    if not has_scale_comparison or not has_structure_change:
+        return ""
+    fact = (
+        "정부는 1만장 이상 GPU를 지원하는 프론티어 AI 사업을 독파모와 분리해 별도 공모·출자로 전환했으며, "
+        "SPC 등 세부 투자구조는 미정이다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
 def detailed_article_core(title: str, body: str, published: str = "") -> str:
     raw_body = str(body or "")
     if core_has_ui_garbage(raw_body):
@@ -6283,9 +6329,11 @@ def detailed_article_core(title: str, body: str, published: str = "") -> str:
                 raw_body = body_tail
     body = article_summary_body(raw_body)
     for event_core in (
+        skydance_acquisition_financing_core(title, body),
         hormuz_carrier_share_core(title, body),
         american_airlines_fuel_guidance_core(title, body),
         meta_ai_investment_selloff_core(title, body),
+        frontier_ai_support_structure_core(title, body),
     ):
         if event_core:
             return event_core
@@ -12148,6 +12196,19 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
             return 'unconfirmed_buyback_completion_commentary'
     combined = f'{title} {body}'
     market_link_terms = r'상장사|상장\s*기업|코스피|코스닥|나스닥|뉴욕증권거래소|증권거래소|티커|종목코드|listed company|public company|stock exchange'
+    routine_quarterly_dividend = bool(re.search(
+        r'분기\s*배당|quarterly\s+(?:cash\s+)?dividend|interim\s+dividend', title, re.I,
+    ))
+    material_dividend_change = bool(re.search(
+        r'특별\s*배당|일회성\s*배당|최초\s*배당|배당\s*(?:재개|중단|삭감|폐지)|'
+        r'배당\s*(?:정책|성향).{0,25}(?:변경|전환|확대|축소)|'
+        r'(?:배당|dividend|payout).{0,25}(?:두\s*배|2\s*배|50\s*%\s*(?:인상|증가|증액)|'
+        r'[5-9]\d\s*%\s*(?:인상|증가|증액)|100\s*%\s*(?:인상|증가|증액))',
+        combined, re.I,
+    ))
+    if routine_quarterly_dividend and not material_dividend_change:
+        return 'routine_single_issuer_quarterly_dividend_without_material_policy_change'
+
     personal_criminal_case = bool(
         re.search(r'징역|실형|유죄|기소|구속|벌금형|선고', title)
         and re.search(r'대표|사업자|업체|법인', combined)
@@ -13283,6 +13344,8 @@ def verified_alert_core(alert: dict, title: str) -> str:
         if alert.get("body_verified"):
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
             for event_core in (
+                skydance_acquisition_financing_core(source_title or title, body),
+                frontier_ai_support_structure_core(source_title or title, body),
                 hormuz_carrier_share_core(source_title or title, body),
                 american_airlines_fuel_guidance_core(source_title or title, body),
                 meta_ai_investment_selloff_core(source_title or title, body),
@@ -13441,6 +13504,10 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     published = str(alert.get("published") or "")
     event_specific_core = lg_cloid_humanoid_launch_core(title, source, published)
     if not event_specific_core:
+        event_specific_core = skydance_acquisition_financing_core(title, source)
+    if not event_specific_core:
+        event_specific_core = frontier_ai_support_structure_core(title, source)
+    if not event_specific_core:
         event_specific_core = hormuz_carrier_share_core(title, source)
     if not event_specific_core:
         event_specific_core = american_airlines_fuel_guidance_core(title, source)
@@ -13497,7 +13564,11 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         errors.append("covered_call_market_size_or_population_mismatch")
     if any(market_materiality.HISTORICAL_ACTION.search(row) for row in market_materiality.source_sentences(core)):
         errors.append('historical_action_replaces_current_headline_event')
-    expected_observation = lg_cloid_humanoid_launch_core(title, source, published)
+    expected_observation = skydance_acquisition_financing_core(title, source)
+    if not expected_observation:
+        expected_observation = frontier_ai_support_structure_core(title, source)
+    if not expected_observation:
+        expected_observation = lg_cloid_humanoid_launch_core(title, source, published)
     if not expected_observation:
         expected_observation = source_headline_event_fact(title, source)
     observation_core = re.sub(r"\((?:약[^)]*|원화\s*환산\s*확인\s*불가)\)", "", core)
