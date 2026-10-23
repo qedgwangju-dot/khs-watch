@@ -15,7 +15,7 @@
     "maplight|nobel-optogenetics-bridge",
     "maplight|portfolio|discovery-paused"
   ],
-  "last_checked_kst": "2026-10-24T02:06:54+09:00",
+  "last_checked_kst": "2026-10-24T04:23:20+09:00",
   "nobel_2026_verified": true,
   "seen_event_keys": [
     "d3e43c74900cbe45ced82930",
@@ -30,10 +30,10 @@
     "00ed4a9deda349c6d10d12e3",
     "89edfd25162fb70a90bc15ef",
     "3b9006d3c6cdc45c8b4799ae",
-    "f9150ec8a2689f8d887bf8b4",
     "a168e38fecc4618002c9078e",
     "7068d58d13d508a32621ac78",
-    "c5b07942c2f87f613c2d6534"
+    "c5b07942c2f87f613c2d6534",
+    "f9150ec8a2689f8d887bf8b4"
   ],
   "trial_snapshots": {
     "NCT06460844": {
@@ -303,10 +303,8 @@
     }
   },
   "cns_trial_ids": [],
-  "relevant_press_events": 11,
-  "source_errors": [
-    "Augelux Therapeutics: TimeoutError"
-  ],
+  "relevant_press_events": 13,
+  "source_errors": [],
   "maplight_source_errors": [
     "MapLight 공식 RSS: HTTPError status=403 retryable=false attempts=1; source=https://ir.maplightrx.com/rss/news-releases.xml"
   ],
