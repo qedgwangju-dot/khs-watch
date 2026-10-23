@@ -58,6 +58,10 @@ class Offline(unittest.TestCase):
 
 
 class SourceFields(Offline):
+    def test_time_only_market_timestamp_uses_reference_date(self):
+        expected=dt.datetime(2026,10,20,14,10,tzinfo=watch.KST).timestamp()
+        self.assertEqual(watch.market_clock_epoch('14100000',NOW),expected)
+
     def test_spot_current_keeps_exact_sv03_in_both_markets(self):
         for market,code in [('1','001'),('3','301')]:
             body={'t1602OutBlock':{'ex_upcode':'U'+code},'t1602OutBlock1':[
