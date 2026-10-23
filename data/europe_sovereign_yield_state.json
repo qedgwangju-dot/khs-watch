@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-24T00:53:24+09:00",
+  "last_checked_kst": "2026-10-24T04:55:33+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": true,
@@ -301,7 +301,7 @@
       },
       {
         "date": "2026-10-23",
-        "value": 3.35
+        "value": 3.36
       }
     ],
     "it10": [
@@ -435,7 +435,7 @@
     "de10": 3.33,
     "uk10": 5.3337,
     "fr_mkt": 5.04,
-    "de_mkt": 3.35,
+    "de_mkt": 3.36,
     "it10": 4.59,
     "uk_mkt": 5.37
   },
@@ -479,8 +479,8 @@
       "milestone:2026-10-23:D-1",
       "milestone:2026-10-23:D-0"
     ],
-    "checked_at_kst": "2026-10-24T00:53:30+09:00",
-    "source_fail_streak": 76,
+    "checked_at_kst": "2026-10-24T04:55:38+09:00",
+    "source_fail_streak": 77,
     "source_access": "access_restricted"
   }
 }
