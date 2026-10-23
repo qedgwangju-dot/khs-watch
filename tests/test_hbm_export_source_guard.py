@@ -191,18 +191,20 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         self.assertTrue(due)
         self.assertEqual(interval, 3)
 
-    def test_regional_data_go_row_is_exact_hsk10(self):
-        xml = """<response><header><resultCode>00</resultCode><resultMsg>OK</resultMsg></header>
-        <body><items><item><priodTitle>2026.09</priodTitle><hsSgn>8542323000</hsSgn>
-        <expUsdAmt>2234567</expUsdAmt></item></items></body></response>"""
-        with patch.object(w, "_request_with_retry", return_value=_Resp(xml)), \
-             patch.object(w, "_resolve_sido_unit", return_value=({"unit": "thousand_usd", "status": "test_explicit_unit_contract"}, "")):
+    def test_regional_source_uses_kstat_request_scoped_hsk10_usd(self):
+        row = {"month": "202609", "hs": w.HBM_HSK10, "region_code": "44",
+               "amount_usd": 2234567, "raw_amount_unit": "usd",
+               "scope": "regional_hsk10_request_scoped",
+               "source": "K-stat 한국무역협회(제공기관: 관세청)"}
+        proof = {"status": "official_kstat_request_scoped_source", "month": "202609", "unit": "usd"}
+        with patch.object(w, "_resolve_sido_source", return_value=(proof, "")), \
+             patch.object(w, "_fetch_kstat_sido_month", return_value=(row, "")):
             row, err = w.fetch_data_go_sido_month("202609", "44")
         self.assertEqual(err, "")
         self.assertEqual(row["hs"], "8542323000")
-        self.assertEqual(row["scope"], "regional_hsk10_exact")
-        self.assertEqual(row["amount_usd"], 2234567000)
-        self.assertEqual(row["raw_amount_unit"], "thousand_usd")
+        self.assertEqual(row["scope"], "regional_hsk10_request_scoped")
+        self.assertEqual(row["amount_usd"], 2234567)
+        self.assertEqual(row["raw_amount_unit"], "usd")
 
     def test_hs6_fallback_cannot_be_promoted_to_exact_regional_metric(self):
         national = {
@@ -214,7 +216,7 @@ class HBMExportSourceGuardTests(unittest.TestCase):
             "hs": w.REGION_HS6, "source": "official fallback", "scope": "regional_hs6_fallback",
         }
         with patch.object(w, "fetch_data_go_item_month", return_value=(national, "")), \
-             patch.object(w, "fetch_data_go_sido_month", return_value=(None, "공공데이터포털 시도 API 실패: ConnectTimeout")), \
+             patch.object(w, "fetch_kstat_sido_month", return_value=(None, "K-stat 시도 API 실패: ConnectTimeout")), \
              patch.object(w, "fetch_kcs_region_month", return_value=(hs6, "")), \
              patch.object(w, "fetch_data_go_country_item_month", return_value=(None, "공공데이터포털 국가별 품목 API MY 실패: ConnectTimeout")):
             pack, errors = w.fetch_official_hbm_pack(self.now)
@@ -232,6 +234,49 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         self.assertIn("대체 사용하지 않습니다", out)
         self.assertIn("연결시간초과", out)
 
+    def test_recovery_alert_names_kstat_and_keeps_response_identity_limit(self):
+        out = w.build_official_source_health_alert(
+            self.now, "202609", [], recovered=True, validation_recovered=True,
+            regional_source_mode="kstat_request_scoped",
+        )
+        self.assertIn("월별 검증 보류 해소", out)
+        self.assertIn("K-stat(제공기관: 관세청)", out)
+        self.assertIn("월·HS 코드를 회신하지 않아", out)
+        self.assertNotIn("공식 응답에서 대상월의 월별 기간 검증을 통과했습니다.", out)
+
+    def test_same_month_regional_source_change_is_a_material_revision(self):
+        source = {
+            "samsung_chungnam": {"source": "Data.go"},
+            "hynix_chungbuk": {"source": "Data.go"},
+        }
+        current = {
+            "month": "202609", "hs": w.HBM_HSK10, "region_hs": w.HBM_HSK10,
+            "series": {
+                "202609": {
+                    "national_amount": 10.0, "national_weight": 2.0,
+                    "samsung_region_amount": 3.0, "hynix_chungbuk_amount": 4.0,
+                    "malaysia_amount": None, "malaysia_weight": None,
+                    "regional_sources": {
+                        "samsung_chungnam": {"source": "K-stat"},
+                        "hynix_chungbuk": {"source": "K-stat"},
+                    },
+                },
+            },
+        }
+        previous = w.official_snapshot(dict(current, series={
+            "202609": dict(current["series"]["202609"], regional_sources=source)
+        }))
+        state = {
+            "last_official_alert_month": "202609",
+            "last_official_alert_snapshot": previous,
+            "last_official_notified_values": previous,
+            "compare_version": w.COMPARE_VERSION,
+            "export_alert_format_version": w.EXPORT_ALERT_FORMAT_VERSION,
+        }
+        decision = w.official_monthly_decision(state, current)
+        self.assertTrue(decision["revision"])
+        self.assertTrue(decision["due"])
+
     def test_non_monthly_hsk10_period_is_reported_as_validation_hold(self):
         errors = [
             "지역 금액 단위 검증 보류: invalid:non_monthly_period",
@@ -246,6 +291,29 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         self.assertIn("새 수치를 만들지 않습니다", out)
         self.assertNotIn("조회 장애", out)
         self.assertNotIn("조회 실패", out)
+
+    def test_kstat_month_not_selectable_is_reported_without_claiming_sheet_response(self):
+        errors = [
+            "invalid:kstat_reference_requested_month_unavailable",
+            "invalid:kstat_reference_requested_month_unavailable",
+        ]
+        out = w.build_official_source_health_alert(self.now, "202609", errors)
+        self.assertEqual(w._official_error_classes(errors), ["월별 기간 검증 보류"])
+        self.assertTrue(w._official_validation_hold_only(errors))
+        self.assertIn("K-stat 공개 조회기간 선택 항목에 대상월이 없어", out)
+        self.assertNotIn("공식 API 응답은 받았지만", out)
+        self.assertNotIn("조회 장애", out)
+
+    def test_kstat_missing_province_rows_are_reported_as_regional_validation_hold(self):
+        errors = [
+            "invalid:kstat_reference_province_rows_missing",
+            "invalid:kstat_reference_province_rows_missing",
+        ]
+        out = w.build_official_source_health_alert(self.now, "202609", errors)
+        self.assertEqual(w._official_error_classes(errors), ["지역 HSK10 행 검증 보류"])
+        self.assertTrue(w._official_validation_hold_only(errors))
+        self.assertIn("충남·충북 HSK10 시·도 행을 모두 확인하지 못해", out)
+        self.assertNotIn("조회 장애", out)
 
     def test_validation_hold_recovery_is_not_called_lookup_recovery(self):
         out = w.build_official_source_health_alert(

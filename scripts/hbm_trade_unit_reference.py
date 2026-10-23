@@ -1,8 +1,9 @@
-"""Public K-stat province rows for a same-month Customs unit comparison.
+"""Public K-stat province rows selected by an exact monthly HSK10 request.
 
-No source amount is reused as a newer month's value.  K-stat's sheet response
-does not echo the requested month or HSK, so its weaker request-scoped identity
-is retained explicitly.  All HTTP goes through the injected request function.
+K-stat's sheet response does not echo the requested month or HSK, so its
+request-scoped identity limit is retained explicitly. No source amount is
+reused as another month's value. All HTTP goes through the injected request
+function.
 """
 
 from __future__ import annotations
@@ -67,7 +68,7 @@ def _response_bytes(response, limit):
     return content
 
 
-def _form_contract(content):
+def _form_contract(content, target_month=None):
     html = content.decode("utf-8")
     soup = BeautifulSoup(html, "html.parser")
     forms = soup.select('form[name="form1"]')
@@ -116,9 +117,17 @@ def _form_contract(content):
         defaults = re.findall(r"setSelect\(f\.s_" + field + r"\s*,\s*['\"]([0-9]+)['\"]\s*\)", html)
         if defaults != [expected]:
             raise _ReferenceError("latest_month_default_contract")
-    month = _month(latest_year + latest_month)
-    if month is None:
+    latest_available_month = _month(latest_year + latest_month)
+    if latest_available_month is None:
         raise _ReferenceError("calendar_month")
+    if target_month is None:
+        month = latest_available_month
+    else:
+        month = _month(target_month)
+        if month is None:
+            raise _ReferenceError("calendar_month")
+        if month[:4] not in years or month[4:] not in months:
+            raise _ReferenceError("requested_month_unavailable")
     columns = re.search(r"initdata\.Cols\s*=\s*\[(.*?)\];", html, re.S)
     if columns is None or tuple(re.findall(r"SaveName\s*:\s*['\"]([^'\"]+)", columns[1])) != COLUMNS:
         raise _ReferenceError("sheet_columns_changed")
@@ -137,7 +146,7 @@ def _form_contract(content):
     params.update({name: value for name, (value, _) in contracts.items()})
     params.update(
         event_udap="Search", searchType="SHEET", pageNum="1",
-        s_item_value=HS, s_year=latest_year, s_month=latest_month,
+        s_item_value=HS, s_year=month[:4], s_month=month[4:],
         s_sort="THIS_EXP_AMT", s_sort_val="DESC", p_measure="1", p_field="금액",
     )
     if params.get("auth_info", "") != "":
@@ -176,16 +185,20 @@ def _sheet_rows(content):
     return selected
 
 
-def fetch_reference(request_fn):
-    """Return the latest publicly selectable monthly USD province reference.
+def fetch_reference(request_fn, target_month=None):
+    """Return publicly selectable monthly USD province rows for one month.
 
     ``request_fn`` must have the existing retry helper's method/url/data/headers
-    signature.  The caller records every response in its own HTTP ledger.
+    signature. ``target_month`` is an exact YYYYMM target; when omitted, the
+    latest month selected by K-stat's server-rendered form is used. The caller
+    records every response in its own HTTP ledger.
     """
     try:
-        form_bytes = _response_bytes(request_fn("GET", FORM_URL, headers=dict(_HEADERS)), 2_000_000)
-        month, params = _form_contract(form_bytes)
-        sheet_bytes = _response_bytes(request_fn("POST", SHEET_URL, data=params, headers=dict(_HEADERS)), 1_000_000)
+        form_response = request_fn("GET", FORM_URL, headers=dict(_HEADERS))
+        form_bytes = _response_bytes(form_response, 2_000_000)
+        month, params = _form_contract(form_bytes, target_month=target_month)
+        sheet_response = request_fn("POST", SHEET_URL, data=params, headers=dict(_HEADERS))
+        sheet_bytes = _response_bytes(sheet_response, 1_000_000)
         selected = _sheet_rows(sheet_bytes)
     except _ReferenceError as exc:
         return None, "invalid:kstat_reference_" + str(exc)
@@ -202,6 +215,10 @@ def fetch_reference(request_fn):
         "selected_rows": {customs: selected[code]["selected_row"] for customs, (code, _) in REGIONS.items()},
         "request_scope_no_response_echo": True,
         "identity_limit": "XML has no month/HS echo; month and HSK are the validated public request scope.",
+        "evidence_attempt_ids": {
+            "form": getattr(form_response, "_hbm_trade_attempt_id", None),
+            "sheet": getattr(sheet_response, "_hbm_trade_attempt_id", None),
+        },
         "provider_request": {"form_url": FORM_URL, "sheet_url": SHEET_URL, "method": "POST", "data": params, "headers": dict(_HEADERS)},
         "source_sha256": {"form": hashlib.sha256(form_bytes).hexdigest(), "sheet": hashlib.sha256(sheet_bytes).hexdigest()},
     }, ""
