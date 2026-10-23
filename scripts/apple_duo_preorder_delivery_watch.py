@@ -262,6 +262,152 @@ def _direct_publisher_link(row: dict) -> bool:
             return host == expected or host.endswith("." + expected)
     return False
 
+
+# An existing pre-order brought forward is NOT a new-order shipping delay.
+_ADVANCE_TITLE_RE = re.compile(
+    r"moving up|moved up|bump(?:ed|ing|s)? up|earlier deliver|"
+    r"delivery dates? (?:improv|advanc)|배송.{0,15}앞당|배송.{0,15}단축|앞당겨", re.I)
+_ADVANCE_DATE_RE = re.compile(
+    r"\b(?:" + _MONTH_NAMES + r")\b(?:\s+\d{1,2})?(?:,?\s*20\d{2})?", re.I)
+_ADVANCE_OLD_RE = re.compile(
+    r"\b(?:initial(?:ly)?|original(?:ly)?|previous(?:ly)?|used\s+to|before)\b|"
+    r"당초|기존|이전|처음", re.I)
+_ADVANCE_NEW_RE = re.compile(
+    r"\b(?:now|currently|earlier|moved\s+up|bumped\s+up)\b|앞당|현재|지금|변경", re.I)
+_ADVANCE_MARKET_SPLIT_RE = re.compile(
+    r"(?=(?:In the U\.S\.,|In the United States,|In Japan,|In South Korea,|"
+    r"미국에서는|일본에서는|한국에서는))", re.I)
+
+
+def _is_preorder_improvement_article(row: dict) -> bool:
+    title = str(row.get("title") or "")
+    return bool(("iphone duo" in title.lower() or "아이폰 듀오" in title)
+                and _ADVANCE_TITLE_RE.search(title))
+
+
+def _new_preorder_improvements(rows: list[dict], state: dict) -> list[dict]:
+    """Require a direct publisher plus old/new dates of one existing customer.
+
+    Historic seen_ids are scan receipts, not proof that an improvement was sent.
+    """
+    known = set(state.get("seen_improvement_fact_keys") or [])
+    changes: list[dict] = []
+    for row in rows:
+        if not _is_preorder_improvement_article(row):
+            continue
+        if row.get("publisher_direct") is not True or _rank(row.get("source") or "") < 2:
+            continue
+        try:
+            pub = dt.datetime.fromisoformat(row["published_at_kst"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        whole = f"{row.get('title') or ''}. {row.get('description') or ''}"
+        for part in _ADVANCE_MARKET_SPLIT_RE.split(whole):
+            header = part[:55].lower()
+            if re.match(r"in the u\.s\.,|in the united states,|미국에서는", header):
+                market = "미국"
+            elif re.match(r"in japan,|일본에서는", header):
+                market = "일본"
+            elif re.match(r"in south korea,|한국에서는", header):
+                market = "한국"
+            else:
+                continue
+            tokens: list[dict] = []
+            for match in _ADVANCE_DATE_RE.finditer(part):
+                info = _month_and_day(match.group(0), pub)
+                if info is None:
+                    continue
+                nearby = part[max(0,match.start()-65):match.end()+30].lower()
+                if (re.search(r"\bpick.?up\b|\bwalk.?in\b|매장\s*수령|픽업", nearby)
+                        and not re.search(r"deliver|ship|배송|배달", nearby)):
+                    continue
+                preceding = part[max(0,match.start()-105):match.start()]
+                cues = ([(m.end(),"old") for m in _ADVANCE_OLD_RE.finditer(preceding)]
+                        + [(m.end(),"new") for m in _ADVANCE_NEW_RE.finditer(preceding)])
+                if not cues:
+                    continue
+                role = max(cues,key=lambda a:a[0])[1]
+                year,month = (int(n) for n in info[0].split("-"))
+                d = dt.date.fromisoformat(info[2] or f"{year:04d}-{month:02d}-01")
+                tokens.append({
+                    "start":match.start(),"end":match.end(),"month":info[0],"date":d,
+                    "role":role,"first_day":d.day if info[2] else None,
+                    "last_day":d.day if info[2] else None,"label":info[1],
+                })
+            merged: list[dict] = []
+            for tok in tokens:
+                if (merged and tok["month"]==merged[-1]["month"]
+                        and tok["role"]==merged[-1]["role"]
+                        and merged[-1]["last_day"] is not None
+                        and tok["last_day"] is not None
+                        and re.fullmatch(r"\s*(?:(?:to|through|and)|[-–—~])\s*",
+                                         part[merged[-1]["end"]:tok["start"]],re.I)):
+                    p=merged[-1]
+                    p["end"]=tok["end"]
+                    p["date"]=tok["date"]
+                    p["last_day"]=tok["last_day"]
+                    year,month=(int(n) for n in p["month"].split("-"))
+                    p["label"]=f"{year}년 {month}월 {p['first_day']}~{p['last_day']}일"
+                else:
+                    merged.append(dict(tok))
+            pairs=[]
+            for old in merged:
+                if old["role"]!="old":
+                    continue
+                for new in merged:
+                    if new["role"]!="new":
+                        continue
+                    distance=abs(old["start"]-new["start"])
+                    if distance>240 or new["date"]>=old["date"]:
+                        continue
+                    if (old["month"]==new["month"]
+                            and (old["date"]-new["date"]).days<7):
+                        continue
+                    pairs.append((distance,old,new))
+            pairs.sort(key=lambda p:p[0])
+            used_old,used_new=set(),set()
+            for _,old,new in pairs:
+                if old["start"] in used_old or new["start"] in used_new:
+                    continue
+                used_old.add(old["start"]);used_new.add(new["start"])
+                key=f"advance:{market}:{old['label']}->{new['label']}"
+                if key in known:
+                    continue
+                known.add(key)
+                excerpt=part[max(0,min(old["start"],new["start"])-65):
+                             min(len(part),max(old["end"],new["end"])+50)]
+                changes.append({
+                    "market":market,"old":old["label"],"new":new["label"],
+                    "item":row,"fact_key":key,"change_type":"기존 예약 배송 앞당김",
+                    "eta_evidence":re.sub(r"\s+"," ",excerpt).strip()[:245],
+                })
+    state["seen_improvement_fact_keys"]=sorted(known)[-400:]
+    return changes
+
+
+def _preorder_improvement_alert(changes: list[dict]) -> str:
+    lines=[
+        "📦 <b>[iPhone Duo 기존 예약 배송 앞당김 | 언론 보도]</b>",
+        "━━━━━━━━━━━━━━━━",
+        "• 신규 주문이 아닌 일부 기존 예약자의 개별 배송 예상일 변화입니다.",
+    ]
+    for ch in changes:
+        row=ch["item"]
+        lines.extend([
+            f"• {html.escape(ch['market'])} / 구성·색상 별도 확인 필요: "
+            f"{html.escape(ch['old'])} → {html.escape(ch['new'])}",
+            f"  └ {html.escape(row.get('source') or '')} · "
+            f"{html.escape(row.get('published_at_kst') or '')}",
+            f"  └ 근거: {html.escape(ch['eta_evidence'])}",
+            f'<a href="{html.escape(row.get("link") or "",quote=True)}">배송 앞당김 원문</a>',
+        ])
+    lines.extend([
+        "• 다른 고객, 국가, 색상, 저장용량 또는 신규 주문 배송일로 일반화할 수 없습니다.",
+        "• Apple 개별 주문의 실시간 배송일과 실제 출고·수령은 별도 확인 대상입니다.",
+    ])
+    return "\n".join(lines)+"\n"
+
+
 def _needs_august_correction(state: dict) -> bool:
     return (
         not bool(state.get("false_august_correction_sent"))
@@ -401,7 +547,9 @@ def _collect() -> tuple[list[dict],list[str]]:
             if _rank(source)<2 or not any(k in blob for k in ("preorder","pre-order","shipping","delivery","ship","sold out","backorder","배송","예약","품절","출고")):
                 continue
             if (source_name and article_fetches < 5 and
-                    _month_and_day(title+" "+desc,pub) is None):
+                    (_month_and_day(title+" "+desc,pub) is None
+                     or (_is_preorder_improvement_article({"title":title})
+                         and len(_ADVANCE_DATE_RE.findall(title+" "+desc)) < 2))):
                 article_fetches+=1
                 full=_publisher_article_text(link,source_name)
                 if full and ("iphone duo" in full.lower() or "아이폰 듀오" in full.lower()):
@@ -466,7 +614,7 @@ def _merge_delivery_state(remote: dict, local: dict) -> dict:
     merged["false_august_correction_sent"] = bool(
         remote.get("false_august_correction_sent") or local.get("false_august_correction_sent")
     )
-    for key in ("seen_ids", "seen_fact_keys"):
+    for key in ("seen_ids", "seen_fact_keys", "seen_improvement_fact_keys"):
         merged[key] = sorted(set(remote.get(key) or []) | set(local.get(key) or []))[-1800:]
     # Preserve quarantine and audit history across concurrent scan commits.
     audit = list(remote.get("quarantined_delivery_claims") or [])
@@ -490,6 +638,7 @@ def _load() -> dict:
         raise RuntimeError("Preorder delivery state invalid; fail closed")
     val.setdefault("seen_ids",[])
     val.setdefault("seen_fact_keys",[])
+    val.setdefault("seen_improvement_fact_keys", [])
     val.setdefault("market_latest",{"미국":"2027-01"})
     val.setdefault("market_day_latest",{})
     val.setdefault("market_sku_day_latest",{})
@@ -504,6 +653,9 @@ def _new_delivery_signals(rows: list[dict], state: dict) -> tuple[list[dict],set
     market_dates=dict(state.get("market_day_latest") or {})
     new=[]
     for row in rows:
+        if _is_preorder_improvement_article(row):
+            seen.add(_fingerprint(row))
+            continue
         fp=_fingerprint(row)
         if fp in seen:
             continue
@@ -596,6 +748,7 @@ def main() -> None:
     rows,errors=_collect()
     first=not state.get("initial_alert_sent")
     alerts=[]
+    improvements=[]
     if first:
         alerts.append(_initial_alert())
         state["initial_alert_sent"]=True
@@ -609,8 +762,11 @@ def main() -> None:
     else:
         updates,seen=_new_delivery_signals(rows,state)
         state["seen_ids"]=sorted(seen)[-800:]
+        improvements=_new_preorder_improvements(rows,state)
         if updates:
             alerts.append(_update_alert(updates))
+        if improvements:
+            alerts.append(_preorder_improvement_alert(improvements))
     state=_sanitize_delivery_state(state)
     correction_pending = _needs_august_correction(state)
     if correction_pending:
@@ -619,9 +775,10 @@ def main() -> None:
         state["august_false_alert_corrected_at_kst"] = now.isoformat(timespec="seconds")
     state.update({"schema_version":2,"updated_at_kst":now.isoformat(timespec="seconds"),
                   "last_scan_items":len(rows),"errors":errors[-20:],
-                  "last_signal_count":len(updates) if not first else 0,
+                  "last_signal_count":(len(updates)+len(improvements)) if not first else 0,
                   "last_alert":{"at_kst":now.isoformat(timespec="seconds"),
-                                "kind":"correction" if correction_pending else ("baseline" if first else "extension")}
+                                "kind":"correction" if correction_pending else ("baseline" if first else
+                                          ("delivery_advance" if improvements and not updates else "extension"))}
                                 if alerts else state.get("last_alert")})
     PENDING.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     if alerts:

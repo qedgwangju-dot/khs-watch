@@ -335,6 +335,58 @@ class DuoPreorderTests(unittest.TestCase):
         self.assertFalse(m._needs_august_correction(state))
 
 
+    def test_existing_preorder_advances_are_distinct_from_new_order_delay(self):
+        row={
+            "title":"Apple Starts Moving Up iPhone Duo Delivery Dates",
+            "description":(
+                "In the U.S., a customer said his iPhone Duo pre-order initially "
+                "showed a December delivery estimate, but the store now shows an "
+                "earlier delivery estimate of between November 20 and November 30. "
+                "In Japan, a customer says an iPhone Duo is now estimated to be "
+                "delivered on October 24. The original delivery estimate was "
+                "December 3 to December 10."
+            ),
+            "source":"MacRumors",
+            "link":"https://www.macrumors.com/2026/10/19/apple-starts-moving-up-iphone-duo-delivery-dates/",
+            "publisher_direct":True,
+            "published_at_kst":"2026-10-20T04:31:00+09:00",
+        }
+        st={"market_latest":{"미국":"2027-01"},"seen_ids":[],"seen_fact_keys":[]}
+        changes=m._new_preorder_improvements([row],st)
+        self.assertEqual({x["market"] for x in changes},{"미국","일본"})
+        self.assertEqual(m._new_preorder_improvements([row],st),[])
+        delays,_=m._new_delivery_signals([row],st)
+        self.assertEqual(delays,[])
+        self.assertEqual(st["market_latest"]["미국"],"2027-01")
+
+    def test_advance_requires_direct_source_and_two_date_estimates(self):
+        row={"title":"Apple Starts Moving Up iPhone Duo Delivery Dates",
+             "description":"In the U.S., a pre-order is now arriving November 20.",
+             "source":"MacRumors","publisher_direct":True,
+             "link":"https://www.macrumors.com/2026/10/19/apple-starts-moving-up-iphone-duo-delivery-dates/",
+             "published_at_kst":"2026-10-20T04:31:00+09:00"}
+        self.assertEqual(m._new_preorder_improvements([row],{}),[])
+        row["description"]=(
+            "In the U.S., initial December 1 to December 8 delivery "
+            "estimate; now seeing November 16 to November 23."
+        )
+        row["publisher_direct"]=False
+        self.assertEqual(m._new_preorder_improvements([row],{}),[])
+        row["publisher_direct"]=True
+        changes=m._new_preorder_improvements([row],{})
+        self.assertEqual(len(changes),1)
+        self.assertIn("12월 1~8일",changes[0]["old"])
+        self.assertIn("11월 16~23일",changes[0]["new"])
+
+    def test_advance_state_receipts_union_across_concurrent_runs(self):
+        r={"updated_at_kst":"2026-10-23T12:00:00+09:00",
+           "seen_improvement_fact_keys":["advance:미국:A->B"]}
+        l={"updated_at_kst":"2026-10-23T12:01:00+09:00",
+           "seen_improvement_fact_keys":["advance:일본:C->D"]}
+        merged=m._merge_delivery_state(r,l)
+        self.assertEqual(len(merged["seen_improvement_fact_keys"]),2)
+
+
 if __name__=="__main__":
     result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(DuoPreorderTests))
     if not result.wasSuccessful():

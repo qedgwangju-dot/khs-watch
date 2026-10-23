@@ -261,20 +261,28 @@ jobs:
               with urllib.request.urlopen(req, timeout=25) as response:
                   result = json.loads(response.read().decode("utf-8"))
               if not result.get("ok"):
-                  raise RuntimeError(f"Telegram rejected message: {result}")
-              ids.append((result.get("result") or {}).get("message_id"))
+                  raise RuntimeError("Telegram rejected message")
+              delivered = result.get("result") or {}
+              returned_chat_id = (delivered.get("chat") or {}).get("id")
+              if returned_chat_id is None or str(returned_chat_id) != str(chat_id):
+                  raise RuntimeError("Telegram response chat.id differs from configured destination")
+              message_id = delivered.get("message_id")
+              if not isinstance(message_id, int):
+                  raise RuntimeError("Telegram response lacks valid message_id")
+              ids.append(message_id)
 
           confirmed = {
               "status": "confirmed",
               "bot_username": username,
               "message_ids": ids,
+              "chat_id_verified": True,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
           pathlib.Path("out/apple_duo_supply_watch_telegram_confirmed.json").write_text(
               json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
               encoding="utf-8",
           )
-          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={ids}")
+          print(f"telegram_delivery_confirmed=true chat_id_verified=true bot=@{username} message_ids={ids}")
           PY
 
       - name: Persist no-alert scan state
