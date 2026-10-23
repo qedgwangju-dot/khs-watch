@@ -806,6 +806,24 @@
       "status": "공식 확인 전",
       "title": "트럼프 대통령 직접 발언, 시장 영향 정책 신호"
     },
+    "3f95ef8835674032bead7ed5": {
+      "first_seen_kst": "2026-10-24T00:28:56+09:00",
+      "key": "us_fcc_hisilicon_first_component_enforcement",
+      "sources": [
+        "Federal Communications Commission"
+      ],
+      "status": "공식 확인",
+      "title": "미 FCC, HiSilicon 감시용 반도체 내장 영상기기 2종 인증 차단"
+    },
+    "3fab059a1e347dc06ef41951": {
+      "first_seen_kst": "2026-10-24T00:28:56+09:00",
+      "key": "us_fcc_intel_agv_one_year_waiver",
+      "sources": [
+        "Federal Communications Commission"
+      ],
+      "status": "공식 확인",
+      "title": "미 FCC, Intel 반도체 공장 AGV의 유지·개조에 1년 예외 부여"
+    },
     "404a64a0e72dd6011eeed39a": {
       "first_seen_kst": "2026-10-04T09:34:29+09:00",
       "key": "us_fcc_satellite_spectrum_abundance",
@@ -3358,5 +3376,5 @@
       "title": "트럼프 대통령 직접 발언, 시장 영향 정책 신호"
     }
   },
-  "updated_at_kst": "2026-10-23T19:35:42+09:00"
+  "updated_at_kst": "2026-10-24T00:28:56+09:00"
 }
