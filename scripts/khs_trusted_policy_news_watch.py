@@ -107,6 +107,20 @@ OFFICIAL_DIRECT_STORIES = {
     ),
 }
 
+# Verified FCC event identities: use first-party documents, not headline reprints.
+FCC_VERIFIED_CASES = {
+    "us_fcc_hisilicon_first_component_enforcement": {
+        "url": "https://docs.fcc.gov/public/attachments/DOC-426130A1.txt",
+        "date": "October 22, 2026",
+        "markers": ("fcc blocks two devices containing foreign surveillance chips", "hisilicon", "dashboard camera", "wireless video transmitter"),
+    },
+    "us_fcc_intel_agv_one_year_waiver": {
+        "url": "https://docs.fcc.gov/public/attachments/DA-26-1146A1.txt",
+        "date": "October 22, 2026",
+        "markers": ("da 26-1146", "intel", "automated guided vehicles", "waiver"),
+    },
+}
+
 OFFICIAL_API_STORIES = {
     "us_dhs_deepseek_federal_civilian_exclusion": (
         ("https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=DeepSeek&order=newest&per_page=100",
@@ -264,6 +278,12 @@ ANALYST_DIRECT_STORIES = {
 }
 
 DIRECT_STORY_URLS = {
+    "us_treasury_coins_biotechnology_outbound_nprm": (
+        ("https://apnews.com/article/b742c292ff8eb19e6a4c8cf03d4d66b9",
+         "https://apnews.com/article/b742c292ff8eb19e6a4c8cf03d4d66b9"),
+        ("https://www.reuters.com/world/us-treasury-drops-venezuela-countries-facing-outbound-us-investment-restrictions-2026-10-22/",
+         "https://www.reuters.com/world/us-treasury-drops-venezuela-countries-facing-outbound-us-investment-restrictions-2026-10-22/"),
+    ),
     "us_fcc_chinese_optical_transceiver_ban": (
         (
             "https://www.devdiscourse.com/article/politics/3959328-exclusive-trump-administration-drafting-ban-on-chinese-data-center-devices-sources-say",
@@ -293,6 +313,8 @@ RULE_MAX_AGE_HOURS = {
     # Recover the Treasury enforcement release once, not each time it is reprinted.
     "us_dhs_deepseek_federal_civilian_exclusion": 24 * 35,
     "us_treasury_coins_biotechnology_outbound_nprm": 24 * 55,
+    "us_fcc_hisilicon_first_component_enforcement": 24 * 14,
+    "us_fcc_intel_agv_one_year_waiver": 24 * 14,
     "us_treasury_outbound_ai_robotics_enforcement": 24 * 14,
     # One-time recovery for the 2026-10-01 Morgan Stanley 3.2T/65% research
     # story that predates the international outlet parser fix.
@@ -925,12 +947,61 @@ STORY_RULES = (
         trusted_sources=("Reuters", "AP News", "Federal Register", "U.S. Department of Homeland Security"),
     ),
     StoryRule(
+        key="us_fcc_hisilicon_first_component_enforcement",
+        title="미 FCC, HiSilicon 감시용 반도체 내장 영상기기 2종 인증 차단",
+        google_queries=(
+            '"FCC Blocks Two Devices Containing Foreign Surveillance Chips" HiSilicon',
+            '"HiSilicon" "dashboard camera" "wireless video transmitter" FCC October 2026',
+            'Reuters FCC HiSilicon first enforcement Covered List components October 22 2026',
+        ),
+        required_groups=(
+            ("fcc", "federal communications commission"),
+            ("hisilicon", "하이실리콘"),
+            ("dashboard camera", "dashcam", "차량용 블랙박스"),
+            ("wireless video transmitter", "wireless video", "무선 영상 송신기"),
+        ),
+        core="FCC는 Huawei 계열 HiSilicon 감시용 반도체가 탑재된 차량용 블랙박스와 무선 영상 송신기 각 1종의 장비 승인을 차단했습니다.",
+        impact="미국 영상보안·무선기기 인증, 반도체 원산지 검증·대체 설계 | 할인율·시간표·돈 버는 능력",
+        point="완제품 브랜드가 아닌 내장 핵심 반도체의 제조사를 심사한 첫 집행입니다. 대체 칩 인증·재설계 발주가 실제 매출로 이어지는지 별도 확인합니다.",
+        counter="해당 기기 2종의 장비 승인 차단이며 모든 HiSilicon 탑재 제품과 기존 기기의 일괄 회수·판매금지가 아닙니다. 차단된 브랜드·모델·계약금액은 공개자료상 미확인입니다.",
+        sectors="영상보안 장비, 차량용 카메라, 영상처리 반도체, 미국 장비인증",
+        impacts=("할인율", "시간표", "돈 버는 능력"),
+        paths=("FCC 장비인증", "Covered List 부품", "대체 칩 설계", "고객 재인증"),
+        follow_up="차단 기기의 업체명·FCC ID 공개, 추가 제품의 승인 거부·예외·항고, 대체 칩 고객인증·실제 수주를 추적합니다.",
+        trusted_sources=("Reuters", "Associated Press", "Federal Communications Commission"),
+    ),
+    StoryRule(
+        key="us_fcc_intel_agv_one_year_waiver",
+        title="미 FCC, Intel 반도체 공장 AGV의 유지·개조에 1년 예외 부여",
+        google_queries=(
+            '"DA 26-1146" Intel AGV waiver October 22 2026',
+            'FCC grants Intel one-year waiver automated guided vehicles Reuters 2026',
+        ),
+        required_groups=(
+            ("fcc", "federal communications commission"),
+            ("intel",),
+            ("agv", "automated guided vehicles", "무인운반차량"),
+            ("waiver", "exemption", "면제"),
+        ),
+        core="FCC는 Intel 미국 반도체 공장의 특정 무인운반차량(AGV)에 하드웨어·소프트웨어·펌웨어 변경을 허용하는 1년 예외를 부여했습니다.",
+        impact="반도체 공장 자동이송·기존 장비 운영 연속성 | 설비투자·시간표·돈 버는 능력",
+        point="규제 적용 시 기존 운반장비 교체·중단 위험이 있었지만, 예외가 부여된 장비는 승인 범위에서 유지·개조가 가능합니다.",
+        counter="Intel이 지정한 특정 AGV에 한정된 예외이며 다른 반도체 공장·모든 해외 제조 AGV의 포괄 면제가 아닙니다.",
+        sectors="반도체 공장, 무인운반차량, 청정실 자동화·설비 유지보수",
+        impacts=("시간표", "돈 버는 능력", "할인율"),
+        paths=("FCC 한시적 예외", "AGV 유지보수", "공장 가동", "대체 장비 검증"),
+        follow_up="2027년 10월 예외 만료 전 갱신·정정, 다른 공장의 동일 장비 승인과 실제 교체 발주를 추적합니다.",
+        trusted_sources=("Reuters", "Federal Communications Commission"),
+    ),
+    StoryRule(
         key="us_treasury_coins_biotechnology_outbound_nprm",
         title="미 재무부, 중국 등 우려국 생명공학 대외투자 신고·금지 규칙 제안",
         google_queries=(
             'site:home.treasury.gov/news/press-releases/sb0667 biotechnology COINS October 22',
             '"COINS Act" "biotechnology" "outbound investment" Treasury',
             'Reuters Treasury proposed rule Chinese biotech outbound investment final December 2026',
+            'Associated Press Treasury proposes rule China biotechnology outbound investment COINS October 22 2026',
+            'Reuters US Treasury 2026 October 22 biotechnology outbound investment Venezuela',
         ),
         required_groups=(
             ("treasury", "department of the treasury", "미 재무부"),
@@ -1561,6 +1632,40 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             return [item]
         return []
 
+    # Exact new FCC enforcement/waiver cases are authenticated against the
+    # official document body and event date; do not invent a model or contract.
+    fcc_case = FCC_VERIFIED_CASES.get(rule.key)
+    if fcc_case:
+        try:
+            raw = fetch_text(fcc_case["url"], timeout=12)
+            body = clean_text(raw)
+            low = body.lower()
+            expected_date = fcc_case["date"].lower()
+            verified = (
+                expected_date in low
+                and all(marker in low for marker in fcc_case["markers"])
+                and has_required_terms(f"{rule.title} Federal Communications Commission {body}", rule)
+            )
+            if verified:
+                published = dt.datetime.strptime(fcc_case["date"], "%B %d, %Y").replace(tzinfo=KST)
+                if (now - published).total_seconds() / 3600 <= max_age_hours_for_rule(rule):
+                    items.append({
+                        "title": rule.title,
+                        "description": body[:50000],
+                        "link": fcc_case["url"],
+                        "source": "Federal Communications Commission",
+                        "published_kst": published.isoformat(timespec="seconds"),
+                        "published_precision": "date",
+                        "priority": 0,
+                        "official_direct_verified": True,
+                    })
+                    seen_links.add(fcc_case["url"])
+                    print(f"trusted_policy_news=fcc_case_verified key={rule.key}")
+            else:
+                print(f"trusted_policy_news=fcc_case_rejected key={rule.key} reason=source_identity_mismatch")
+        except Exception as exc:
+            print(f"trusted_policy_news=fcc_case_failed key={rule.key} error={type(exc).__name__}: {exc}")
+
     # Some FCC Commission items are available first as official plain-text
     # attachments. Read those exact documents before falling back to news RSS.
     for fetch_url, canonical_url, document_number, source_label in OFFICIAL_TEXT_STORIES.get(rule.key, ()):
@@ -1853,6 +1958,8 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             expected_title = (
                 "EXCLUSIVE-Trump administration drafting ban on Chinese data center devices, sources say"
                 if rule.key == "us_fcc_chinese_optical_transceiver_ban"
+                else "US Treasury proposes a rule to crack down on high-tech investments in China, other adversaries"
+                if rule.key == "us_treasury_coins_biotechnology_outbound_nprm" and "apnews.com" in fetch_url
                 else rule.title
             )
             detail = extract_article_detail(raw, expected_title)
@@ -1862,7 +1969,12 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         title = clean_text(detail.get("title"))
         description = clean_text(f"{detail.get('abstract') or ''} {detail.get('body') or ''}")
         published = parse_pub_date(detail.get("published_kst"))
-        haystack = f"{title} Devdiscourse Reuters {description}"
+        source_label = (
+            "Associated Press" if "apnews.com" in fetch_url
+            else "Reuters" if "reuters.com" in fetch_url
+            else "Devdiscourse (Reuters 보도 인용)"
+        )
+        haystack = f"{title} {source_label} {description}"
         if is_space_pv_pia_base_rehash_text(haystack):
             print(f"trusted_policy_news=historical_space_pv_rehash key={rule.key} title={title!r}")
             continue
@@ -1872,7 +1984,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         if (
             not detail.get("body_verified")
             or not published
-            or (now - published).total_seconds() / 3600 > MAX_AGE_HOURS
+            or (now - published).total_seconds() / 3600 > max_age_hours_for_rule(rule)
             or not has_required_terms(haystack, rule)
         ):
             print(f"trusted_policy_news=direct_rejected key={rule.key} verified={detail.get('body_verified')!r}")
@@ -1882,7 +1994,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             "title": title,
             "description": description,
             "link": canonical_url,
-            "source": "Devdiscourse (Reuters 보도 인용)",
+            "source": source_label,
             "published_kst": published.isoformat(timespec="seconds"),
             "priority": SOURCE_PRIORITY.get("reuters", 0),
         })
@@ -2038,6 +2150,20 @@ def semantic_policy_event_key(item: dict) -> str:
             for key in ("title", "description", "link", "source")
         )
     ).lower()
+    # Preserve distinct FCC enforcement and plant-waiver cases across reprints.
+    if ("hisilicon" in text or "하이실리콘" in text) and "fcc" in text and (
+        "dashboard camera" in text or "차량용 블랙박스" in text
+    ) and ("wireless video transmitter" in text or "무선 영상 송신기" in text):
+        if any(token in title_text for token in ("rescinds", "revokes", "appeal upheld", "철회", "추가 승인", "해제")):
+            return "us-fcc-hisilicon-component-followup-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
+        return "us-fcc-hisilicon-component-first-enforcement-2026-10-22"
+    if "intel" in text and "fcc" in text and (
+        "agv" in text or "automated guided vehicle" in text or "무인운반차량" in text
+    ) and ("waiver" in text or "면제" in text):
+        if any(token in title_text for token in ("extends", "extension", "rescinds", "expires", "revokes", "연장", "철회", "만료")):
+            return "us-fcc-intel-agv-waiver-followup-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
+        return "us-fcc-intel-agv-one-year-waiver-2026-10-22"
+
     # Fixed policy identities are stable across news reprints, while genuinely
     # new final/exception/implementation documents get a separate event key.
     if "deepseek" in text and any(
@@ -2610,6 +2736,8 @@ def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
         "us_treasury_outbound_ai_robotics_enforcement",
         "us_dhs_deepseek_federal_civilian_exclusion",
         "us_treasury_coins_biotechnology_outbound_nprm",
+        "us_fcc_hisilicon_first_component_enforcement",
+        "us_fcc_intel_agv_one_year_waiver",
     }:
         grouped: dict[str, list[dict]] = {}
         for item in items:
@@ -3170,6 +3298,41 @@ def korean_trump_story_title(title: str) -> str:
 def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] | None:
     if not items:
         return None
+    if rule.key in FCC_VERIFIED_CASES:
+        official = any(
+            item.get("official_direct_verified") is True
+            and str(item.get("link") or "") == FCC_VERIFIED_CASES[rule.key]["url"]
+            for item in items
+        )
+        hisilicon = rule.key == "us_fcc_hisilicon_first_component_enforcement"
+        return {
+            "title": rule.title,
+            "core": rule.core,
+            "stage": "FCC 공식 원문 확인·집행 또는 예외 결정" if official else "신뢰 보도 단계·FCC 원문 검증 필요",
+            "event_date": "2026년 10월 22일",
+            "event_date_label": "FCC 발표일",
+            "show_publication_date": False,
+            "actual_bullets": (
+                ["차량용 블랙박스 1종과 무선 영상 송신기 1종의 장비 인증 차단.", "제한 대상 부품은 Huawei 계열 HiSilicon 감시용 칩. 제품 제조사·모델·가격은 미공개."]
+                if hisilicon else
+                ["Intel 미국 반도체 공장 내 기존 AGV의 지정된 하드웨어·소프트웨어·펌웨어 변경을 1년간 허용.", "해당 특정 장비만 적용. 새 AGV의 포괄적 수입·판매 승인은 아님."]
+            ),
+            "timeline": (
+                "2026년 10월 13일 새 부품 심사 규칙 발효 → 2026년 10월 22일 특정 기기 2종 첫 승인 차단 → 이후 추가 차단·이의신청 감시"
+                if hisilicon else
+                "2026년 10월 16일 Intel 예외 신청 → 2026년 10월 22일 FCC 1년 예외 승인 → 2027년 10월 만료·갱신 여부 확인"
+            ),
+            "scope_note": rule.counter,
+            "korea_candidates": "국내 상장기업 직접 수주·매출은 확인된 계약에 한해 분류합니다.",
+            "next": rule.follow_up,
+            "investment": rule.point,
+            "priced_in": "공식 조치·예외만 확인됐으며 대체 부품·장비 주문은 별도로 검증해야 합니다.",
+            "counter": rule.counter,
+            "failure": "부품·장비 제조사 식별 오류, 대체 공급 품질·인증 지연, 기존 설비 유지보수 제약을 점검합니다.",
+            "impacts": rule.impacts,
+            "paths": rule.paths,
+            "sectors": rule.sectors,
+        }
     if rule.key in MOFCOM_2026_POLICY_NOTICES:
         item = items[0]
         if item.get("official_direct_verified") is not True:
@@ -4034,6 +4197,12 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
+    if rule.key in FCC_VERIFIED_CASES and any(
+        item.get("official_direct_verified") is True
+        and str(item.get("link") or "") == FCC_VERIFIED_CASES[rule.key]["url"]
+        for item in items
+    ):
+        return "공식 확인", "FCC 해당 조치 원문·적용대상·발표일 직접 검증"
     if rule.key == "us_dhs_deepseek_federal_civilian_exclusion" and any(
         (item.get("official_api_verified") is True
          and "2026-21447" in str(item.get("link") or ""))
@@ -4220,6 +4389,28 @@ def _self_test_mofcom_2026_notices() -> None:
         assert item_story_profile(rules[key], [official])["event_date"] == "2026년 10월 19일"
         assert item_story_profile(rules[key], [effective])["event_date"] == "2026년 11월 18일"
 
+def _self_test_fcc_component_and_agv_cases() -> None:
+    rules = {r.key: r for r in STORY_RULES}
+    observed = []
+    for key, spec in FCC_VERIFIED_CASES.items():
+        rule = rules[key]
+        item = {
+            "title": rule.title,
+            "description": "Federal Communications Commission " + " ".join(spec["markers"]),
+            "link": spec["url"], "source": "Federal Communications Commission",
+            "published_kst": "2026-10-22T00:00:00+09:00",
+            "official_direct_verified": True,
+        }
+        assert has_required_terms(" ".join((item["title"], item["description"], item["source"])), rule)
+        assert alert_confirmation_status(rule, [item])[0] == "공식 확인"
+        assert alert_confirmation_status(rule, [{**item, "official_direct_verified": False}])[0] == "공식 확인 전"
+        key_id = semantic_policy_event_key(item)
+        assert key_id.startswith("us-fcc-")
+        observed.append(key_id)
+        repeated = {**item, "source": "Reuters", "link": "https://example.org/reprint", "official_direct_verified": False}
+        assert story_event_fingerprint(rule, [item]) == story_event_fingerprint(rule, [repeated])
+    assert len(set(observed)) == 2
+
 def _self_test_deepseek_and_biotech_policy_events() -> None:
     rules = {r.key: r for r in STORY_RULES}
     deep = rules["us_dhs_deepseek_federal_civilian_exclusion"]
@@ -4251,6 +4442,7 @@ def _self_test_deepseek_and_biotech_policy_events() -> None:
     assert story_event_fingerprint(bio, [b]) != story_event_fingerprint(bio, [final])
     assert len(alert_item_groups(bio, [b, final])) == 2
     assert "12월 7일" in str(item_story_profile(bio, [b])["timeline"])
+    _self_test_fcc_component_and_agv_cases()
 
 
 def _self_test_us_treasury_outbound_event_model() -> None:
@@ -4537,6 +4729,8 @@ def main() -> int:
     requested_policy_priority = {
         "us_dhs_deepseek_federal_civilian_exclusion": 12,
         "us_treasury_coins_biotechnology_outbound_nprm": 11,
+        "us_fcc_hisilicon_first_component_enforcement": 13,
+        "us_fcc_intel_agv_one_year_waiver": 12,
         "us_treasury_outbound_ai_robotics_enforcement": 3,
         "us_fcc_chinese_optical_transceiver_ban": 2,
         "uk_china_ev_tariff_review": 1,
@@ -4610,20 +4804,13 @@ def main() -> int:
             if path.exists():
                 path.unlink()
 
+    # General policy events are never consumed at collection time, even if
+    # more than three candidates exist. The finalizer acknowledges only events
+    # actually included in the Telegram bundle after a confirmed message_id.
+    # Preserve the existing AI-force lane behavior, but do not mark overflow.
+    selected_ai_fingerprints = {alert["fingerprint"] for alert in ai_force_alerts[:1]}
     for alert in alerts:
-        # OISP reports are acknowledged only by the confirmed Telegram
-        # message-title receipt in khs_policy_seen_finalize.py.
-        # A failed/blocked send must not permanently consume this first penalty.
-        if alert["rule"].key in {
-            "us_dhs_deepseek_federal_civilian_exclusion",
-            "us_treasury_coins_biotechnology_outbound_nprm",
-            "us_treasury_outbound_ai_robotics_enforcement",
-            "us_fcc_chinese_optical_transceiver_ban",
-            "uk_china_ev_tariff_review",
-            "china_mofcom_2026_drone_controls",
-            "china_mofcom_2026_tunnel_machine_controls",
-            "china_mofcom_2026_dredging_controls",
-        }:
+        if alert["fingerprint"] not in selected_ai_fingerprints:
             continue
         seen_entry = {
             "key": alert["rule"].key,

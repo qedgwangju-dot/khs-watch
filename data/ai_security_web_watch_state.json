@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 22,
+    "material_items": 23,
     "new_material_items": 0,
-    "raw_items": 353,
+    "raw_items": 338,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -354,6 +354,16 @@
       "title": "‘You don’t want rogue agents’: Jamie Dimon bars outside AI agents like Meta’s Muse from JPMorgan accounts - Fortune",
       "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE94cE9GNVdLZHZWM01ydmVLc2lVQVh5Z3BoLURNRFdVREFZVWFJOEltLVR3YXkwclZ5MnBQYXMxTHJVOGE5STM1VlF5azhEd0ZGWUV6dEFLQ0dXTlMwVUNzdURjZDVXZHl4VEJjVm83T1pFb2RnbjZJSjhjaTk?oc=5",
       "vendor": "AI 생태계"
+    },
+    "4b2bb6970529773711faf0a6": {
+      "category": "PHP 코어 취약점·공식 보안패치",
+      "first_seen_at": "2026-10-23T12:44:14.497714+00:00",
+      "published_at": "2026-10-23T11:25:00+00:00",
+      "severity": 3,
+      "source": "The Hacker News",
+      "title": "PHP Warns of Another Unpatched RCE Two Days After Emergency PHP2Shell Patches - The Hacker News",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOa1ZSODRXV0ZXTTJ1TFh6S19mRXJ0Yld5b3dDd1F2RnMwTXZ2Y1EyMm83ak05WVF3NndRRXhtczJBeG9tVmxWZXRCa2lHYjVkVzFUM0Y1dTFsbXoxaHpzY0lTQzRZeEpWQ2dmdkxBcWphV0gyeGNYNWtDZE1QWHpRSnRB?oc=5",
+      "vendor": "PHP 재단"
     },
     "4bcef357fe35e54a5c41b0a4": {
       "category": "Safety Case·학습 승인 게이트",
@@ -885,6 +895,16 @@
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPNkl5UTc0aUhRakhnaDdlZnZxUHVzckxNdUFPbXh4elZGLVNRRXpKeGxRSlRRQ3VhRzZ0c1BJekhHa1NRZUdEeFR5NGh0dmtEbW8tYWM1MGNpekJ2SUljUFJjSlJKOVRVTnFRcl9BTHBxU2RLeXgyZy1wUHRQN1ZRMg?oc=5",
       "vendor": "PHP 재단"
     },
+    "cf445d175024ee3b196fa144": {
+      "category": "PHP 코어 취약점·공식 보안패치",
+      "first_seen_at": "2026-10-23T11:42:44.315096+00:00",
+      "published_at": "2026-10-23T11:25:00+00:00",
+      "severity": 3,
+      "source": "The Hacker News",
+      "title": "URGENT - PHP Warns of Another Unpatched RCE Two Days After Emergency PHP2Shell Patches - The Hacker News",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOa1ZSODRXV0ZXTTJ1TFh6S19mRXJ0Yld5b3dDd1F2RnMwTXZ2Y1EyMm83ak05WVF3NndRRXhtczJBeG9tVmxWZXRCa2lHYjVkVzFUM0Y1dTFsbXoxaHpzY0lTQzRZeEpWQ2dmdkxBcWphV0gyeGNYNWtDZE1QWHpRSnRB?oc=5",
+      "vendor": "PHP 재단"
+    },
     "cf659945040aac754b8f2e52": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T13:14:00.838325+00:00",
@@ -1116,5 +1136,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-23T20:17:46+09:00"
+  "updated_at_kst": "2026-10-23T21:54:17+09:00"
 }
