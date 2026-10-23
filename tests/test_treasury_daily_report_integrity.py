@@ -12,6 +12,7 @@ import treasury_credit_flow_watch_ishares as w
 import treasury_credit_flow_watch_refinancing as report
 import treasury_credit_flow_watch_marketstress as stress
 import treasury_etf_flow_watch as base
+import treasury_credit_flow_delivery as delivery
 
 
 def example():
@@ -312,6 +313,55 @@ class TreasuryReportIntegrity(unittest.TestCase):
         current = report._jpm_30y_signal(5.60)
         self.assertIn("신규 돌파 여부는", current)
         self.assertNotIn("신규 돌파 아님", current)
+
+
+    def test_daily_receipt_is_korean_date_scoped_and_preserves_source_dedupe(self):
+        state = {
+            "last_delivery": {
+                "treasury_date": "2026-10-22",
+                "daily_delivery_date_kst": "2026-10-23",
+                "message_ids": [476],
+                "bot_username": "khs8879887988798879_bot",
+            }
+        }
+        self.assertTrue(delivery.source_delivery_complete(state, "2026-10-22"))
+        self.assertTrue(delivery.daily_delivery_complete(state, "2026-10-23"))
+        self.assertFalse(delivery.should_run_delivery(
+            state, "2026-10-22", "2026-10-23", daily_digest=True
+        ))
+        self.assertTrue(delivery.should_run_delivery(
+            state, "2026-10-22", "2026-10-24", daily_digest=True
+        ))
+        self.assertFalse(delivery.should_run_delivery(
+            state, "2026-10-22", "2026-10-24", daily_digest=False
+        ))
+        self.assertTrue(delivery.should_run_delivery(
+            state, "2026-10-22", "2026-10-23", daily_digest=True, validate_only=True
+        ))
+
+    def test_daily_source_hold_notice_dedupes_without_blocking_later_report(self):
+        state = {
+            "daily_status_notification": {
+                "date_kst": "2026-10-23",
+                "message_ids": [477],
+                "bot_username": "khs8879887988798879_bot",
+            }
+        }
+        self.assertFalse(delivery.should_send_daily_status(state, "2026-10-23"))
+        self.assertTrue(delivery.should_send_daily_status(state, "2026-10-24"))
+        self.assertTrue(delivery.should_run_delivery(
+            state, "2026-10-22", "2026-10-23", daily_digest=True
+        ))
+
+    def test_curve_reports_opposing_bull_moves_by_segment(self):
+        current = {"2Y": 4.65, "10Y": 4.96, "30Y": 5.29}
+        previous = {"2Y": 4.81, "10Y": 5.13, "30Y": 5.42}
+        name, explanation, s210, s1030 = w.curve_regime(current, previous)
+        self.assertEqual(name, "수익률곡선 구간별 혼조")
+        self.assertIn("2-10년 불 플래트닝", explanation)
+        self.assertIn("10-30년 불 스티프닝", explanation)
+        self.assertEqual(s210[2], -1.0)
+        self.assertEqual(s1030[2], 4.0)
 
 
 if __name__ == "__main__":
