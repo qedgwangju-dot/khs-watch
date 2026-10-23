@@ -686,19 +686,26 @@ def _resolve_sido_unit():
     reference, error = fetch_reference(request_reference)
     api_rows, api_ids = {}, {}
     if reference:
+        regional_errors = []
         for code in ("44", "43"):
-            response, rows, error = _fetch_data_go_sido_raw(reference["month"], code)
-            if error:
-                break
-            row, error = choose_exact_row(rows, reference["month"], HBM_HSK10,
+            response, rows, request_error = _fetch_data_go_sido_raw(reference["month"], code)
+            if request_error:
+                regional_errors.append(f"{code}: {request_error}")
+                continue
+            row, selection_error = choose_exact_row(rows, reference["month"], HBM_HSK10,
                 region=code, value_fields=("expUsdAmt",), unit="unverified", weight_fields=())
             attempt_id = getattr(response, "_hbm_trade_attempt_id", None)
             if _TRADE_EVIDENCE is not None and attempt_id:
-                _TRADE_EVIDENCE.mark_selection(attempt_id, row, error)
-            if error or row is None:
-                break
+                _TRADE_EVIDENCE.mark_selection(attempt_id, row, selection_error)
+            if selection_error or row is None:
+                regional_errors.append(f"{code}: {selection_error or 'exact HSK10 row missing'}")
+                continue
             api_rows[code], api_ids[code] = row, attempt_id
-        if not error:
+        if regional_errors:
+            error = "지역 HSK10 확인 실패: " + " | ".join(regional_errors)
+        elif set(api_rows) != {"44", "43"}:
+            error = "같은 월 전국 HSK10 원자료 대조로 두 지역 행을 모두 확인하지 못함"
+        else:
             proof, error = reconcile_unit(api_rows, reference)
             if proof:
                 proof.update(reference_attempt_ids=reference_ids, api_attempt_ids=api_ids)
