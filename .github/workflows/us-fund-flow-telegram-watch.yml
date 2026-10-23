@@ -554,3 +554,98 @@ jobs:
             data/us_tech_etf_proxy_state.json
           if-no-files-found: ignore
           retention-days: 14
+
+  vip-relative-proxy:
+    if: >-
+      ${{
+        github.event_name == 'schedule' ||
+        github.event_name == 'workflow_dispatch' ||
+        (github.event_name == 'push' &&
+         contains(github.event.head_commit.message, '[tech-etf-proxy-validate]'))
+      }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+      GVIP_RELATIVE_VALIDATE_ONLY: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.tech_proxy_validate_only)) && '1' || '0' }}
+
+    steps:
+      - name: Checkout official Nasdaq comparison and last delivery receipt
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install official Nasdaq reader
+        run: python -m pip install --disable-pip-version-check --quiet requests
+
+      - name: Validate GVIP relative-price and safe delivery contracts
+        run: |
+          python -m py_compile scripts/us_vip_relative_watch.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_us_vip_relative_watch.py' -v
+
+      - name: Evaluate independent GVIP SPY 75-trading-session relative proxy
+        run: |
+          set -o pipefail
+          mkdir -p out
+          rm -f out/us_vip_relative_runtime.log out/us_vip_relative_candidate.html out/us_vip_relative_receipt.json
+          PYTHONPATH=scripts python scripts/us_vip_relative_watch.py | tee out/us_vip_relative_runtime.log
+          if grep -q '"status": "source_withheld"' out/us_vip_relative_runtime.log; then
+            echo "::warning::GVIP/SPY official source missing or inconsistent; no Telegram sent."
+            exit 1
+          elif grep -q '"status": "validated"' out/us_vip_relative_runtime.log; then
+            echo "GVIP/SPY 75거래일 공식 종가 비교 성공 · 테스트 Telegram 미전송" >> "$GITHUB_STEP_SUMMARY"
+          elif grep -q '"status": "sent"' out/us_vip_relative_runtime.log; then
+            test -f out/us_vip_relative_receipt.json || { echo "::error::Confirmed receipt missing"; exit 1; }
+            echo "GVIP/SPY 상대성과 경보 · Telegram message_id 확인증 기록" >> "$GITHUB_STEP_SUMMARY"
+          elif grep -q '"status": "baseline_or_no_change"' out/us_vip_relative_runtime.log; then
+            echo "GVIP/SPY 75거래일 공식값 확인 · 신규 악화·완화 구간 없음" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::error::GVIP signal exited without auditable status"
+            exit 1
+          fi
+
+      - name: Commit GVIP observation or acknowledged send only
+        if: success()
+        run: |
+          if [ ! -f data/us_vip_relative_state.json ]; then
+            echo "GVIP 검증 모드 또는 원천 오류: 운영 상태 변경 없음"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp data/us_vip_relative_state.json /tmp/us_vip_relative_state.json
+          for attempt in 1 2 3; do
+            git fetch --quiet origin main
+            git reset --hard origin/main
+            cp /tmp/us_vip_relative_state.json data/us_vip_relative_state.json
+            git add data/us_vip_relative_state.json
+            if git diff --cached --quiet; then
+              echo "GVIP 상태 실질 변경 없음"
+              exit 0
+            fi
+            git commit -m "Save verified GVIP relative price observation and Telegram receipt"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Upload public VIP proxy verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: us-gvip-relative-${{ github.run_id }}
+          path: |
+            out/us_vip_relative_runtime.log
+            out/us_vip_relative_candidate.html
+            out/us_vip_relative_receipt.json
+            data/us_vip_relative_state.json
+          if-no-files-found: ignore
+          retention-days: 14
