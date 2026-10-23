@@ -1196,6 +1196,8 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
         "skhynix_earnings_consensus",
         "fomc_rate_outlook",
         "korea_public_fund_asset_flow",
+        "korea_nvidia_ai_ecosystem",
+        "china_memory_ipo",
     }
     publisher_domains = {
         "파이낸셜뉴스": "fnnews.com",
@@ -1512,7 +1514,11 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
         with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
             selected = compact.quality_display_alerts([alert], 1)
         if expected_kind in live_floor_exclusions:
-            if selected or alert.get("_exclusion_reason") != "live_quality_floor_below_rank_3_without_market_wide_scope":
+            allowed_exclusion_reasons = {
+                "live_quality_floor_below_rank_3_without_market_wide_scope",
+                "live_quality_floor:unquantified_commentary_or_forecast_without_new_market_fact",
+            }
+            if selected or alert.get("_exclusion_reason") not in allowed_exclusion_reasons:
                 errors.append(
                     f"low-signal article did not fail closed in live selection: {title} / "
                     f"{alert.get('_exclusion_reason') or alert.get('guardrail_note')}"

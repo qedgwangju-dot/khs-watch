@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 137
+VERSION = 138
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3420,6 +3420,146 @@ def korea_semiconductor_selloff_episode_identity(alert: dict) -> str:
     return f"source_event:v2:korea_equity_selloff_episode:{day.group(1)}"
 
 
+def solidigm_listing_stage_observation(title: str, body: str, published: str) -> str:
+    """Keep IPO preparation distinct from withdrawal while grouping publisher reprints."""
+    if not re.search(r"솔리다임|solidigm", title, re.I):
+        return ""
+    year = re.match(r"(20\d{2})", published or "")
+    if not year:
+        return ""
+    lead = " ".join(source_sentences(source_reported_body(body))[:5])
+    text = f"{title} {lead}"
+    if not re.search(r"(?:미국|나스닥|증시).{0,18}상장|상장.{0,18}(?:미국|나스닥|증시)|\bIPO\b|기업공개", text, re.I):
+        return ""
+    if re.search(r"(?:상장|기업공개|\bIPO\b).{0,24}(?:철회|중단)|(?:철회|중단).{0,24}(?:상장|기업공개|\bIPO\b)|\bwithdraw(?:s|n|al)?\b", text, re.I):
+        return f"{year.group(1)}:withdrawn"
+    if re.search(r"(?:상장|기업공개|\bIPO\b).{0,24}(?:추진|검토|예정|주관사|준비)|주관사.{0,20}선정", text, re.I):
+        return f"{year.group(1)}:preparation"
+    return ""
+
+
+def gm_vac_contract_termination_observation(title: str, body: str) -> dict:
+    """Bind the GM-VAC contract cancellation headline to its current source facts."""
+    title_text = re.sub(r"\s+", " ", str(title or ""))
+    if not (
+        re.search(r"(?<![A-Za-z])GM(?![A-Za-z])", title_text, re.I)
+        and re.search(r"희토류|영구자석|VAC|바쿰슈멜체", title_text, re.I)
+        and re.search(r"계약.{0,12}(?:해지|취소)|(?:해지|취소).{0,12}계약", title_text)
+    ):
+        return {}
+    rows = source_sentences(source_article_body(source_reported_body(body)))
+    termination = next((row for row in rows if
+        re.search(r"(?<![A-Za-z])GM(?![A-Za-z])", row, re.I)
+        and re.search(r"VAC|바쿰슈멜체|e-VAC", row, re.I)
+        and re.search(r"(?:장기\s*)?(?:구매\s*계약|공급\s*계약|계약)", row)
+        and re.search(r"(?:7월\s*1일|2026[./-]7[./-]1)", row)
+        and re.search(r"해지|취소", row)
+    ), "")
+    arbitration = next((row for row in rows if
+        re.search(r"VAC|바쿰슈멜체|e-VAC", row, re.I)
+        and re.search(r"GM", row, re.I)
+        and re.search(r"손해배상", row)
+        and re.search(r"중재", row)
+        and re.search(r"착수|제기", row)
+    ), "")
+    if not termination or not arbitration:
+        return {}
+    return {
+        "stage": "contract_terminated_and_arbitration_started",
+        "source_excerpt": f"{termination} {arbitration}",
+    }
+
+
+def hormuz_carrier_share_observation(title: str, body: str) -> dict:
+    """Capture a carrier's measured share of crude transiting Hormuz."""
+    if not (re.search(r"장금상선|SINOKOR|시노코", title, re.I)
+            and re.search(r"호르무즈", title)
+            and re.search(r"원유", title)
+            and re.search(r"\d+(?:\.\d+)?\s*%", title)):
+        return {}
+    amount = r"(?:\d[\d,]*\s*억\s*)?\d[\d,]*\s*만"
+    source = re.sub(r"\s+", " ", source_article_body(source_reported_body(body)))
+    carrier = re.search(rf"총\s*(?P<value>{amount})\s*배럴을\s*운송", source)
+    total = re.search(rf"총량\s*(?P<value>{amount})\s*배럴의\s*약\s*(?P<share>\d+(?:\.\d+)?)\s*%", source)
+    comparison = re.search(rf"합산인\s*(?P<value>{amount})\s*배럴을\s*(?:상회|웃돌|넘)", source)
+    month = re.search(r"(?P<month>\d{1,2})월\s*호르무즈", f"{title} {source}")
+    if not (carrier and total and comparison and month):
+        return {}
+    return {
+        "month": month["month"],
+        "carrier_barrels": re.sub(r"\s+", "", carrier["value"]),
+        "corridor_barrels": re.sub(r"\s+", "", total["value"]),
+        "share_pct": total["share"],
+        "next_three_barrels": re.sub(r"\s+", "", comparison["value"]),
+        "source_excerpt": " ".join((carrier.group(0), total.group(0), comparison.group(0))),
+    }
+
+
+def american_airlines_fuel_guidance_observation(title: str, body: str) -> dict:
+    """Bind AA's fuel-cost shock to its annual loss outlook and fare stance."""
+    if not (re.search(r"아메리칸\s*항공|American Airlines", title, re.I)
+            and re.search(r"항공료|항공\s*운임|운임", title)):
+        return {}
+    source = source_article_body(source_reported_body(body))
+    fuel = re.search(
+        r"항공유\s*가격\s*상승으로\s*3분기에만\s*(?P<cost>\d[\d,.]*\s*억\s*달러)[^.!?]{0,50}?추가\s*비용",
+        source,
+    )
+    annual_loss = re.search(
+        r"연간\s*실적\s*전망을\s*주당\s*(?P<loss>\d+(?:\.\d+)?\s*[~∼-]\s*\d+(?:\.\d+)?\s*달러)\s*손실로\s*낮췄",
+        source,
+    )
+    fare_stance = re.search(r"연료\s*가격이\s*내려(?:가)?도\s*항공\s*운임은\s*대체로\s*지금\s*수준에\s*머물", source)
+    if not (fuel and annual_loss and fare_stance):
+        return {}
+    return {
+        "fuel_cost": re.sub(r"\s+", "", fuel["cost"]),
+        "annual_loss_per_share": re.sub(r"\s+", "", annual_loss["loss"]),
+        "source_excerpt": source[max(0, fuel.start() - 80):annual_loss.end()],
+    }
+
+
+def meta_ai_investment_selloff_observation(title: str, body: str) -> dict:
+    """Keep the reported Meta market-cap loss tied to the AI funding catalyst."""
+    if not (re.search(r"메타|Meta", title, re.I)
+            and re.search(r"AI\s*투자", title, re.I)):
+        return {}
+    market_cap = re.search(r"(?P<amount>\d[\d,.]*\s*억\s*달러)\s*(?:증발|감소|줄어)", title)
+    source = source_article_body(source_reported_body(body))
+    funding = re.search(
+        r"AI\)?\s*투자.{0,60}자금\s*조달|자금\s*조달.{0,60}AI\)?\s*투자",
+        source,
+        re.I | re.S,
+    )
+    selloff = re.search(r"주가가\s*7(?:\.0)?\s*%\s*급락", source)
+    if not (market_cap and funding and selloff):
+        return {}
+    return {
+        "market_cap_lost": re.sub(r"\s+", "", market_cap["amount"]),
+        "stock_drop_pct": "7",
+        "source_excerpt": source[max(0, funding.start() - 80):selloff.end()],
+    }
+
+
+def residential_contractor_preference_survey_reason(title: str, body: str) -> str:
+    """Reject resident preference rankings unless a real award or contract is reported."""
+    rows = source_sentences(source_article_body(source_reported_body(body)))
+    foreground = f"{title} {' '.join(rows[:8])}"
+    survey_rank = bool(
+        re.search(r"재건축|재개발|정비사업", title)
+        and re.search(r"시공사|건설사", title)
+        and re.search(r"인기|선호|설문|\b1위\b", title)
+        and re.search(r"설문\s*조사|주민.{0,20}설문|응답자", foreground)
+        and re.search(r"(?:맡기고\s*싶|선호|선택할\s*의사|응답했다)", foreground)
+    )
+    actual_award = bool(re.search(
+        r"(?:시공사|건설사).{0,35}(?:선정(?:했다|됐다|되었다|완료)|낙찰|우선협상대상자로\s*선정|도급계약.{0,10}체결)|"
+        r"(?:선정(?:했다|됐다|되었다)|낙찰|우선협상대상자로\s*선정).{0,35}(?:시공사|건설사)",
+        " ".join(rows),
+    ))
+    return "resident_contractor_preference_survey_without_award_or_contract" if survey_rank and not actual_award else ""
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
@@ -3428,6 +3568,19 @@ def source_event_identity(alert: dict) -> str:
     """
     title = str(alert.get('source_title') or alert.get('original_news') or alert.get('news') or '')
     body = str(alert.get('source_body') or '') if alert.get('body_verified') else ''
+    solidigm_listing = solidigm_listing_stage_observation(title, body, str(alert.get('published') or ''))
+    if solidigm_listing:
+        return f"source_event:v2:solidigm_ipo:{solidigm_listing}"
+    for event, observation in (
+        ("gm_vac_contract_termination", gm_vac_contract_termination_observation(title, body)),
+        ("hormuz_carrier_share", hormuz_carrier_share_observation(title, body)),
+        ("american_airlines_fuel_guidance", american_airlines_fuel_guidance_observation(title, body)),
+        ("meta_ai_investment_selloff", meta_ai_investment_selloff_observation(title, body)),
+    ):
+        if observation:
+            terms = {key: value for key, value in observation.items() if key != "source_excerpt"}
+            digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+            return f"source_event:v2:{event}:{digest}"
     energy_supply = public_energy_supply_assurance_observation(
         title, body, str(alert.get('published') or ''),
     )
@@ -4666,11 +4819,22 @@ def equity_publication_assessment(
     source_rows = source_sentences(body)
     lead = " ".join(source_rows[:5])
     headline_and_lead = f"{title} {lead}"
+    if hormuz_carrier_share_observation(title, body):
+        return {"eligible": True, "reason": "measured_hormuz_crude_carrier_share"}
+    if american_airlines_fuel_guidance_observation(title, body):
+        return {"eligible": True, "reason": "airline_fuel_cost_and_earnings_guidance"}
+    if meta_ai_investment_selloff_observation(title, body):
+        return {"eligible": True, "reason": "measured_meta_ai_funding_market_selloff"}
     openai_repricing = openai_revenue_market_repricing_observation(title, body)
     if openai_repricing and {"earnings_or_guidance", "market_price_or_flow"} <= kinds:
         return {
             "eligible": True,
             "reason": "measured_ai_market_reaction_to_revenue_basis_clarification",
+        }
+    if gm_vac_contract_termination_observation(title, body):
+        return {
+            "eligible": True,
+            "reason": "verified_gm_vac_contract_termination_and_damages_arbitration",
         }
     literary_award_book_sales = bool(
         re.search(r"노벨문학상|문학상", title)
@@ -5320,8 +5484,11 @@ def equity_publication_assessment(
                     and not PAST_ACTION.search(item['source_excerpt']) for item in evidence)
     if local_demolition and not new_order:
         return {'eligible': False, 'reason': 'local_demolition_notice_with_only_historical_contractor'}
-    anniversary_memorial = re.search(r'추모식|\d+주기\s*추모|별세.{0,15}\d+주기', title + ' ' + reported_lead)
-    if anniversary_memorial and not economic_execution and not new_order:
+    anniversary_memorial = re.search(
+        r'추모식|\d+주기\s*추모|별세.{0,15}\d+주기|(?:故|고)\s*[^.!?]{0,24}\d+\s*주기',
+        title + ' ' + reported_lead,
+    )
+    if anniversary_memorial and not current_hard_execution and not new_order and not quantified_primary_fact:
         return {'eligible': False, 'reason': 'anniversary_memorial_reuses_historical_business_profile'}
     ownership_scenario = (re.search(r'지분', title) and re.search(
         r'엑시트\s*셈법|매각\s*방식|인수\s*셈법|거래\s*시나리오', title))
@@ -5731,6 +5898,75 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
     result = {"version": VERSION, "disposition": "review", "priority": 1, "axes": [], "evidence": []}
     if not title or not body:
         result["reason"] = "source_evidence_unavailable"
+        return result
+    event_overrides = (
+        (
+            hormuz_carrier_share_observation(title, body),
+            "energy_geopolitics_or_supply_risk",
+            ["earnings", "supply", "timeline"],
+            "measured_hormuz_crude_carrier_share",
+            4,
+            3,
+        ),
+        (
+            american_airlines_fuel_guidance_observation(title, body),
+            "earnings_or_guidance",
+            ["earnings", "timeline"],
+            "airline_fuel_cost_and_earnings_guidance",
+            4,
+            3,
+        ),
+        (
+            meta_ai_investment_selloff_observation(title, body),
+            "market_price_or_flow",
+            ["price", "earnings"],
+            "measured_meta_ai_funding_market_selloff",
+            4,
+            2,
+        ),
+    )
+    for observation, kind, axes, reason, rank, scope in event_overrides:
+        if not observation:
+            continue
+        result.update(
+            disposition="keep",
+            priority=3,
+            axes=axes,
+            evidence=[{
+                "kind": kind,
+                "stage": "reported_change",
+                "source_excerpt": observation["source_excerpt"],
+            }],
+            reason="source_change_evidence",
+            news_value_rank=rank,
+            transmission_scope_rank=scope,
+            transmission_scope_reason=reason,
+            equity_publication={"eligible": True, "reason": reason},
+        )
+        return result
+    contractor_survey_reason = residential_contractor_preference_survey_reason(title, body)
+    if contractor_survey_reason:
+        result.update(disposition="exclude", priority=0, reason=contractor_survey_reason)
+        return result
+    book_promotion = re.search(
+        r"^\s*(?:\[?BOOKS?\]?\b|신간\b|도서\s*(?:소개|출간)|책\s*(?:소개|으로\s*읽는)|서평\b|북리뷰\b)",
+        title,
+        re.I,
+    )
+    book_rows = source_sentences(body)[:5]
+    book_current_market_fact = any(
+        not PAST_ACTION.search(row)
+        and (NEW_EXECUTION.search(row) or FORMAL_POLICY_EXECUTION.search(row)
+             or (QUANTITY.search(row) and re.search(
+                 r"매출|영업이익|순이익|가이던스|수주|공급\s*계약|시장\s*점유율|점유율|설비투자|CAPEX|관세|금리|환율|예산", row, re.I,
+             )))
+        for row in book_rows
+    )
+    if book_promotion and not DIRECT_HEADLINE_CHANGE.search(title) and not book_current_market_fact:
+        result.update(
+            disposition="exclude", priority=0,
+            reason="book_or_reading_guide_without_current_market_event",
+        )
         return result
     cultural_ai_source = f"{title} {body[:2500]}"
     if (CULTURAL_AI_REENACTMENT.search(cultural_ai_source)
@@ -6829,6 +7065,13 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
             "kind": "physical_supply_or_capacity",
             "stage": google_ppa["stage"],
             "source_excerpt": google_ppa["source_excerpt"],
+        })]
+    gm_vac_cancellation = gm_vac_contract_termination_observation(title, body)
+    if gm_vac_cancellation:
+        matches = [(3, 100, 0, ["earnings", "timeline"], {
+            "kind": "commercial_order",
+            "stage": gm_vac_cancellation["stage"],
+            "source_excerpt": gm_vac_cancellation["source_excerpt"],
         })]
     if matches:
         matches.sort(key=lambda item: item[:3], reverse=True)

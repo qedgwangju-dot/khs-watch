@@ -5089,6 +5089,327 @@ class IncrementalNewsTests(unittest.TestCase):
         )
         self.assertLess(price_move['priority'], 2, price_move)
 
+    def test_attachment_book_and_founder_memorial_recaps_are_not_live_market_events(self):
+        book = materiality.assess(
+            'BOOKS 엔비디아 이후의 승자는… AI 반도체 판도 읽는 법',
+            '구글과 아마존 등 빅테크 기업들이 막대한 반도체 구매 비용과 특정 공급사 의존도를 낮추기 위해 자체 AI 칩 개발에 뛰어들고 있다. '
+            '새로운 AI 반도체 기업들도 엔비디아의 아성에 도전하며 시장 판도를 흔들고 있다. '
+            '이들은 엔비디아 이후의 승자가 되기 위해 경쟁하고 있다.',
+            published='2026-10-17T10:00:00+09:00',
+        )
+        self.assertEqual(book['disposition'], 'exclude', book)
+        self.assertEqual(book['reason'], 'book_or_reading_guide_without_current_market_event', book)
+
+        memorial = materiality.assess(
+            '故 삼성 이건희 6주기…“5년, 10년 후 무엇으로 먹고살 것인가”',
+            '고(故) 이건희 삼성 회장 6주기를 맞아 미래 먹거리에 대한 화두가 재조명되고 있다. '
+            '인공지능 확산으로 반도체와 스마트폰, 가전, 소프트웨어 경계가 허물어지고 메모리 시장의 무게중심이 고대역폭메모리로 이동하고 있다. '
+            '삼성전자 역시 HBM4 등을 준비하며 시장 변화에 대응하고 있다.',
+            published='2026-10-22T12:00:00+09:00',
+        )
+        self.assertFalse(
+            memorial['disposition'] == 'keep' and memorial['priority'] >= 2,
+            memorial,
+        )
+        self.assertLess(memorial['priority'], 2, memorial)
+        self.assertFalse(memorial['equity_publication']['eligible'], memorial)
+        self.assertEqual(
+            memorial['equity_publication']['reason'],
+            'anniversary_memorial_reuses_historical_business_profile',
+            memorial,
+        )
+
+    def test_cultural_ai_reenactment_and_mismatched_core_never_reach_telegram(self):
+        title = "[진주소식]저작권박물관, '웃으면 복이와요' AI 재현 영상 등"
+        body = (
+            '당시 방송 영상은 전해지지 않지만, 연출자 김형진과 백재현, '
+            '동국대 대학미디어센터 학생들이 AI 기술을 활용해 이를 영화로 재현했다.'
+        )
+        item = alert(title, body, 'https://www.newsis.com/view/NISX20261017_0003829839')
+        item['telegram_core_fact'] = '하태경은 금융위 AI 투자 반대를 비판하며 삼성전자·SK하이닉스 반등 가능성을 언급했다.'
+        assessment = radar.source_market_materiality(item)
+        self.assertEqual(assessment['disposition'], 'exclude', assessment)
+        self.assertEqual(assessment['reason'], 'noncommercial_cultural_ai_reenactment', assessment)
+        self.assertFalse(radar.source_output_aligned(item))
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([item], 5), [])
+
+        title_only = {**item, 'body_verified': False, 'source_body': '', 'source_abstract': ''}
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([title_only], 5), [])
+
+    def test_bundang_contractor_preference_poll_is_rejected_but_actual_award_is_not(self):
+        title = '분당 재건축 시공사 인기 1위 삼성물산…2위는 DL이앤씨'
+        body = (
+            '분당 주민 574명 온·오프라인 설문조사. 정비사업 커뮤니티 플랫폼 컨센트와 홍보법인 동서남북은 '
+            '분당 아파트 입주민 574명을 대상으로 설문조사를 진행했다. 분당 주민에게 재건축을 맡기고 싶은 '
+            '건설사를 물어본 결과 삼성물산이 49%로 1위를 차지했고 DL이앤씨 14%, 현대건설 13%였다. '
+            '통상 재건축 시공사를 선정할 때 중요한 요소로는 시공사 재무 건전성과 신용등급도 있다. '
+            '시행 방식은 61%가 신탁 방식을 선호한다고 답했다. 분담금을 20% 더 내더라도 하이엔드 브랜드를 '
+            '선택하겠다는 응답은 81%였다.'
+        )
+        audit = materiality.assess(title, body, published='2026-10-23T10:07:00+09:00')
+        self.assertEqual(audit['disposition'], 'exclude', audit)
+        self.assertEqual(
+            audit['reason'],
+            'resident_contractor_preference_survey_without_award_or_contract',
+            audit,
+        )
+        item = alert(title, body, 'https://www.newsis.com/view/NISX20261023_0003838136')
+        item['published'] = '2026-10-23T10:07:00+09:00'
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([item], 5), [])
+
+        award_body = body + ' 삼성물산은 24일 정자동 A구역 조합 총회에서 시공사로 선정됐고, 조합과 도급계약을 체결했다.'
+        self.assertEqual(materiality.residential_contractor_preference_survey_reason(title, award_body), '')
+
+    def test_gm_vac_termination_article_keeps_current_event_and_rewrites_core(self):
+        title = "'전기차 속도조절' GM, 獨 희토류 영구자석업체와 계약 해지 | 연합뉴스"
+        termination = (
+            "미 증권거래위원회(SEC)에 제출된 공시 문건과 소식통에 따르면 GM은 독일의 자석 제조업체 "
+            "바쿰슈멜체(VAC)의 미국 법인 'e-VAC 마그네틱스'와 지난 7월 1일자로 장기 구매계약을 해지했고, "
+            'VAC는 GM을 상대로 계약 부당 해지에 따른 손해배상을 청구하는 중재 절차에 착수했다.'
+        )
+        historical = (
+            '두 회사는 2023년 GM의 전기차 모터용 영구자석 장기계약을 체결했고, VAC는 5억달러를 투자해 '
+            '연산 2천t 공장을 완공했다.'
+        )
+        body = (
+            '미국 제너럴모터스(GM)가 전기차용 희토류 영구자석 공급업체와 맺은 장기 구매계약을 취소해 '
+            f'양측이 중재 절차를 밟고 있다. {termination} {historical}'
+        )
+        expected = 'GM은 VAC 미국법인과의 영구자석 장기구매계약을 7월 1일자로 해지했고, VAC는 손해배상 중재에 착수했다.'
+        item = alert(title, body, 'https://www.yna.co.kr/view/AKR20261023054700009')
+        item['published'] = '2026-10-23T17:00:00+09:00'
+        item['telegram_core_fact'] = historical
+        audit = radar.source_market_materiality(item)
+        self.assertEqual(audit['disposition'], 'keep', audit)
+        self.assertGreaterEqual(audit['priority'], 2, audit)
+        self.assertEqual(audit['evidence'][0]['stage'], 'contract_terminated_and_arbitration_started')
+        self.assertIn('headline_actor_population_period_or_standard_mismatch', radar.source_core_fact_errors(item))
+        self.assertEqual(radar.verified_alert_core(item, title), expected)
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=NOW):
+            selected = radar.quality_display_alerts([item], 5)
+        self.assertEqual(len(selected), 1, selected)
+        self.assertEqual(selected[0]['telegram_core_fact'], expected)
+        self.assertEqual(radar.source_core_fact_errors(selected[0]), [])
+
+    def test_oct23_shipping_airline_and_meta_cores_preserve_market_facts_and_dedupe(self):
+        shipping_title = '장금상선, 9월 호르무즈 원유 37% 운송…2~4위 합보다 비중 커'
+        shipping_body = (
+            '이후 전쟁 장기화로 호르무즈 해협 통항이 막히자, 주요 산유국은 저장 시설 포화로 인한 감산을 막기 위해 '
+            '장금상선에 막대한 용선료를 내고 유조선을 임차한 것으로 알려졌다. '
+            '장금상선 소속 선박은 9월 호르무즈 해협에서 총 1억560만 배럴을 운송한 것으로 집계된다. '
+            '이는 9월 호르무즈 해협을 통과한 원유 총량 2억8630만 배럴의 약 37%이자, '
+            '2~4위 업체 운송량 합산인 9730만 배럴을 상회한다고 매체는 분석했다.'
+        )
+        shipping_core = (
+            '장금상선은 9월 호르무즈 통과 원유 1억560만배럴(전체 2억8630만배럴의 약 37%)을 '
+            '운송해 2~4위 합산 9730만배럴을 웃돌았다.'
+        )
+        airline_title = '아메리칸항공 "유가 내려도 항공료 안 내려"…내년 추가인상 전망도'
+        airline_body = (
+            '미국 아메리칸항공은 국제 유가가 떨어지더라도 항공 운임은 이란 전쟁 이전 수준으로 돌아가지 않을 것이라고 경고했다. '
+            '미국 아메리칸항공은 연료 가격이 내려도 항공 운임은 대체로 지금 수준에 머물 것이라고 밝혔다. '
+            '항공유 가격 상승으로 3분기에만 19억 달러(약 2조 5100억 원)의 추가 비용이 발생하면서 '
+            '연간 실적 전망을 주당 1~1.60달러 손실로 낮췄다.'
+        )
+        airline_core = (
+            '아메리칸항공은 3분기 항공유 추가비용 19억달러로 연간 주당 1~1.60달러 손실 전망으로 낮췄고, '
+            '유가가 내려도 운임은 현 수준을 유지한다고 밝혔다.'
+        )
+        meta_title = '메타 시총 1240억달러 증발…AI 투자 불안에 나스닥 급락·국채 급등'
+        meta_body = (
+            '메타의 대규모 AI 투자자금 조달 계획이 미국 기술주 급락과 국채 가격 급등을 촉발했다. '
+            '메타는 향후 수년에 걸쳐 AI 투자에 필요한 수천억 달러의 자금을 조달해야 한다고 밝힌 뒤 '
+            '주가가 7.0% 급락했다.'
+        )
+        meta_core = '메타는 AI 투자자금 조달 부담이 커진 뒤 주가가 7% 급락했고, 시가총액 1240억달러가 증발했다.'
+
+        cases = (
+            (shipping_title, shipping_body, shipping_core, 'https://www.newsis.com/view/NISX20261023_0003838927', '37%'),
+            (airline_title, airline_body, airline_core, 'https://www.news1.kr/world/usa-canada/6329592', '19억'),
+            (meta_title, meta_body, meta_core, 'https://www.hankyung.com/article/202610230174i', '7.0%'),
+        )
+        for title, body, expected, url, evidence_metric in cases:
+            item = alert(title, body, url)
+            item['published'] = '2026-10-23T17:00:00+09:00'
+            with self.subTest(title=title):
+                audit = radar.source_market_materiality(item)
+                self.assertEqual(audit['disposition'], 'keep', audit)
+                self.assertEqual(audit['priority'], 3, audit)
+                self.assertEqual(audit['news_value_rank'], 4, audit)
+                self.assertTrue(audit['equity_publication']['eligible'], audit)
+                self.assertIn(evidence_metric, audit['evidence'][0]['source_excerpt'])
+                self.assertEqual(radar.verified_alert_core(item, title), expected)
+                self.assertEqual(radar.source_core_fact_errors({**item, 'telegram_core_fact': expected}), [])
+                with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=NOW):
+                    selected = radar.quality_display_alerts([item], 5)
+                self.assertEqual(len(selected), 1, selected)
+                self.assertEqual(selected[0]['telegram_core_fact'], expected)
+
+        shipping = alert(shipping_title, shipping_body, cases[0][3])
+        shipping_reprint = alert('호르무즈 원유 37% 실어 나른 장금상선…2~4위보다 운송량 많아', shipping_body, cases[0][3])
+        self.assertEqual(materiality.source_event_identity(shipping), materiality.source_event_identity(shipping_reprint))
+        self.assertNotEqual(
+            materiality.source_event_identity(shipping),
+            materiality.source_event_identity({**shipping, 'source_body': shipping_body.replace('37%', '38%')}),
+        )
+
+        airline = alert(airline_title, airline_body, cases[1][3])
+        airline_reprint = alert('아메리칸항공, 연료비 부담에 연간 적자 전망…항공료는 유지', airline_body, cases[1][3])
+        self.assertEqual(materiality.source_event_identity(airline), materiality.source_event_identity(airline_reprint))
+        self.assertNotEqual(
+            materiality.source_event_identity(airline),
+            materiality.source_event_identity({**airline, 'source_body': airline_body.replace('19억 달러', '20억 달러')}),
+        )
+
+        meta = alert(meta_title, meta_body, cases[2][3])
+        meta_reprint = alert('메타 주가 7% 하락…AI 투자 조달 우려에 시총 1240억달러 감소', meta_body, cases[2][3])
+        self.assertEqual(materiality.source_event_identity(meta), materiality.source_event_identity(meta_reprint))
+        self.assertNotEqual(
+            materiality.source_event_identity(meta),
+            materiality.source_event_identity({**meta, 'source_title': meta_title.replace('1240억달러', '1200억달러')}),
+        )
+
+    def test_unquantified_sector_commentary_is_blocked_but_major_executive_supply_signal_survives(self):
+        weak = alert(
+            '증권가 "AI 반도체 슈퍼사이클 더 간다"…삼전닉스 주목',
+            '증권가 관계자는 AI 투자 확대가 이어질 것으로 보고 삼성전자와 SK하이닉스의 실적 개선이 계속될 것이라고 전망했다.',
+        )
+        weak_audit = {
+            'evidence': [{
+                'kind': 'sector_demand_outlook',
+                'stage': 'early_signal',
+                'source_excerpt': 'AI 투자 확대가 이어질 것으로 보고 메모리 수요가 늘어날 것이라고 전망했다.',
+            }],
+        }
+        leader = alert(
+            '젠슨 황 "2029년 메모리 공급과잉 없다"…中 CXMT엔 "열린 마음"',
+            '젠슨 황 엔비디아 최고경영자(CEO)가 인공지능(AI) 데이터센터의 메모리 수요가 계속 늘어날 것이라며 '
+            '2029년 메모리 공급과잉 우려를 일축했다.',
+        )
+        leader_audit = {
+            'evidence': [
+                {'kind': 'sector_demand_outlook', 'stage': 'early_signal',
+                 'source_excerpt': '엔비디아 CEO가 메모리 수요 증가와 2029년 공급과잉 우려를 언급했다.'},
+                {'kind': 'technology_or_clinical_stage', 'stage': 'early_signal',
+                 'source_excerpt': '엔비디아 CEO가 메모리 수요 증가와 2029년 공급과잉 우려를 언급했다.'},
+            ],
+        }
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            with patch.object(radar, 'source_market_materiality', return_value=weak_audit):
+                self.assertEqual(
+                    radar.live_nonactionable_outlook_reason(weak),
+                    'unquantified_commentary_or_forecast_without_new_market_fact',
+                )
+            with patch.object(radar, 'source_market_materiality', return_value=leader_audit):
+                self.assertEqual(radar.live_nonactionable_outlook_reason(leader), '')
+
+    def test_verified_strategic_meetings_and_specific_supply_milestones_survive_outlook_floor(self):
+        soft_audit = {
+            'evidence': [{
+                'kind': 'customer_discussions',
+                'stage': 'early_signal',
+                'source_excerpt': '구체적인 계약이나 물량은 공개되지 않았습니다.',
+            }],
+        }
+        cases = (
+            (
+                '이재용, 오픈AI 본사서 샘 올트먼 만났다',
+                '이재용 삼성전자 회장과 샘 올트먼 오픈AI CEO가 만나 HBM·D램·첨단 파운드리 협력 가능성을 논의했다. '
+                '구체적인 계약이나 공급 물량은 공개되지 않았다.',
+            ),
+            (
+                '정의선, 엔비디아 본사서 젠슨 황과 회동',
+                '정의선 현대차그룹 회장과 젠슨 황 엔비디아 CEO가 만났다. '
+                '두 사람은 자율주행·로봇·제조 AI 협력 방향을 논의했으며 신규 공급계약은 발표하지 않았다.',
+            ),
+            (
+                '애플, 아이폰에 CXMT칩 테스트',
+                '애플이 아이폰용 메모리 공급망 평가 과정에서 CXMT의 D램을 테스트하고 있다. '
+                '양산 채택이나 공급계약은 아직 확인되지 않았다.',
+            ),
+            (
+                '엔비디아, 루빈 울트라 HBM4E 12단 사양 하향 검토',
+                '엔비디아가 루빈 울트라 가속기에 적용할 HBM4E 12단 사양을 낮추는 방안을 검토 중이다. '
+                '최종 사양과 공급사 배정은 확정되지 않았다.',
+            ),
+            (
+                'SK하이닉스, 미국 인디애나 첨단패키징 팹 27일 착공',
+                'SK하이닉스는 미국 인디애나주 첨단패키징 팹을 27일 착공하고 2028년 하반기 양산을 목표로 한다.',
+            ),
+        )
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            for index, (title, body) in enumerate(cases):
+                item = alert(title, body, f'https://example.com/verified-market-milestone-{index}')
+                with self.subTest(title=title), patch.object(
+                    radar, 'source_market_materiality', return_value=soft_audit,
+                ):
+                    self.assertEqual(radar.live_nonactionable_outlook_reason(item), '')
+
+            generic = alert(
+                'K기업들, 엔비디아와 AI 반도체 생태계 협력 확대',
+                '국내 기업들이 엔비디아와 AI 반도체 및 인프라 협력을 확대할 전망이다.',
+            )
+            with patch.object(radar, 'source_market_materiality', return_value=soft_audit):
+                self.assertEqual(
+                    radar.live_nonactionable_outlook_reason(generic),
+                    'unquantified_commentary_or_forecast_without_new_market_fact',
+                )
+
+    def test_solidigm_ipo_withdrawal_reprints_dedupe_but_stage_change_survives(self):
+        prepared = {
+            'source_title': '솔리다임, 美 상장 추진…주관사단 선정',
+            'source_body': 'SK하이닉스 자회사 솔리다임은 내년 미국 증시 상장을 추진하기 위해 주관사단을 선정했다.',
+            'body_verified': True,
+            'published': '2026-10-08T12:00:00+09:00',
+        }
+        withdrawal_body = (
+            'SK하이닉스는 자회사 솔리다임의 생산능력 확대와 경쟁력 강화를 위해 다양한 자금조달 방안을 검토해 왔으나 '
+            '현재로서는 미국 증시 상장을 추진하지 않기로 했다고 밝혔다.'
+        )
+        withdrawal_a = {
+            **prepared,
+            'source_title': 'SK하이닉스, 손자회사 솔리다임 미국 증시 상장 철회',
+            'source_body': withdrawal_body,
+            'published': '2026-10-23T10:00:00+09:00',
+        }
+        withdrawal_b = {
+            **withdrawal_a,
+            'source_title': '솔리다임 상장 검토 중단…SK하이닉스, 대체 자금조달 모색',
+            'source_body': withdrawal_body.replace('추진하지 않기로 했다고 밝혔다', '상장 검토를 중단했다고 밝혔다'),
+            'published': '2026-10-23T10:05:00+09:00',
+        }
+        prepared_identity = materiality.source_event_identity(prepared)
+        withdrawn_identity = materiality.source_event_identity(withdrawal_a)
+        self.assertTrue(prepared_identity.startswith('source_event:v2:solidigm_ipo:'))
+        self.assertTrue(withdrawn_identity.startswith('source_event:v2:solidigm_ipo:'))
+        self.assertNotEqual(prepared_identity, withdrawn_identity)
+        self.assertEqual(withdrawn_identity, materiality.source_event_identity(withdrawal_b))
+        title_only_withdrawal = {**withdrawal_a, 'body_verified': False}
+        self.assertEqual(materiality.source_event_identity(title_only_withdrawal), withdrawn_identity)
+
+        now = dt.datetime(2026, 10, 23, 10, 10, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        first = alert(withdrawal_a['source_title'], withdrawal_a['source_body'],
+                      'https://www.etnews.com/20261023000005')
+        second = alert(withdrawal_b['source_title'], withdrawal_b['source_body'],
+                       'https://www.yna.co.kr/view/AKR20261023030400008')
+        first['published'] = withdrawal_a['published']
+        second['published'] = withdrawal_b['published']
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=now):
+            selected = radar.quality_display_alerts([first, second], 5)
+        self.assertEqual(len(selected), 1, selected)
+        self.assertEqual(materiality.source_event_identity(selected[0]), withdrawn_identity)
+
+        unverified = alert(withdrawal_a['source_title'], withdrawal_a['source_body'],
+                           'https://www.etnews.com/20261023000005')
+        unverified['body_verified'] = False
+        unverified['source_body'] = ''
+        unverified['source_abstract'] = ''
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=now):
+            self.assertEqual(radar.quality_display_alerts([unverified], 5), [])
+
     def test_attributed_us_russia_europe_gas_sales_exploration_is_early_not_confirmed(self):
         title = 'Reuters: 미국과 러시아, 우크라이나 전쟁 중 유럽 가스 판매 모색'
         body = (

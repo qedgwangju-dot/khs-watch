@@ -2998,12 +2998,68 @@ def smartphone_memory_mix_core(title: str, body: str) -> str:
     return fact if core_sentence_is_complete(fact) else ""
 
 
+def hormuz_carrier_share_core(title: str, body: str) -> str:
+    observation = market_materiality.hormuz_carrier_share_observation(title, body)
+    if not observation:
+        return ""
+    fact = (
+        f"장금상선은 {observation['month']}월 호르무즈 통과 원유 "
+        f"{observation['carrier_barrels']}배럴(전체 {observation['corridor_barrels']}배럴의 "
+        f"약 {observation['share_pct']}%)을 운송해 2~4위 합산 "
+        f"{observation['next_three_barrels']}배럴을 웃돌았다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def american_airlines_fuel_guidance_core(title: str, body: str) -> str:
+    observation = market_materiality.american_airlines_fuel_guidance_observation(title, body)
+    if not observation:
+        return ""
+    fact = (
+        f"아메리칸항공은 3분기 항공유 추가비용 {observation['fuel_cost']}로 "
+        f"연간 주당 {observation['annual_loss_per_share']} 손실 전망으로 낮췄고, "
+        "유가가 내려도 운임은 현 수준을 유지한다고 밝혔다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def meta_ai_investment_selloff_core(title: str, body: str) -> str:
+    observation = market_materiality.meta_ai_investment_selloff_observation(title, body)
+    if not observation:
+        return ""
+    fact = (
+        f"메타는 AI 투자자금 조달 부담이 커진 뒤 주가가 {observation['stock_drop_pct']}% 급락했고, "
+        f"시가총액 {observation['market_cap_lost']}가 증발했다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def gm_vac_contract_termination_core(title: str, body: str) -> str:
+    if not market_materiality.gm_vac_contract_termination_observation(title, body):
+        return ""
+    fact = (
+        "GM은 VAC 미국법인과의 영구자석 장기구매계약을 7월 1일자로 해지했고, "
+        "VAC는 손해배상 중재에 착수했다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
     flat_source = re.sub(r"\s+", " ", source)
+    for event_core in (
+        hormuz_carrier_share_core(title, source),
+        american_airlines_fuel_guidance_core(title, source),
+        meta_ai_investment_selloff_core(title, source),
+    ):
+        if event_core:
+            return event_core
+    gm_vac_core = gm_vac_contract_termination_core(title, source)
+    if gm_vac_core:
+        return gm_vac_core
     foreign_ownership = market_materiality.foreign_ownership_share_change_observation(title, source)
     if foreign_ownership:
         fact = (
@@ -6226,6 +6282,16 @@ def detailed_article_core(title: str, body: str, published: str = "") -> str:
             if body_tail.strip():
                 raw_body = body_tail
     body = article_summary_body(raw_body)
+    for event_core in (
+        hormuz_carrier_share_core(title, body),
+        american_airlines_fuel_guidance_core(title, body),
+        meta_ai_investment_selloff_core(title, body),
+    ):
+        if event_core:
+            return event_core
+    gm_vac_core = gm_vac_contract_termination_core(title, body)
+    if gm_vac_core:
+        return gm_vac_core
     humanoid_launch_core = lg_cloid_humanoid_launch_core(title, body, published)
     if humanoid_launch_core:
         return humanoid_launch_core
@@ -10502,19 +10568,26 @@ def source_output_aligned(alert: dict) -> bool:
                 observation and "컨센서스" in observation and "하향 조정" in observation
                 and market_materiality.canonical_source_fact(observation) == market_materiality.canonical_source_fact(summary)
             )
-        event_specific_core = iea_existing_stock_release_core(
-            str(alert.get("source_title") or ""),
-            article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or "")),
-        )
+        event_title = str(alert.get("source_title") or "")
+        event_body = article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or ""))
+        event_specific_core = hormuz_carrier_share_core(event_title, event_body)
+        if not event_specific_core:
+            event_specific_core = american_airlines_fuel_guidance_core(event_title, event_body)
+        if not event_specific_core:
+            event_specific_core = meta_ai_investment_selloff_core(event_title, event_body)
+        if not event_specific_core:
+            event_specific_core = gm_vac_contract_termination_core(event_title, event_body)
+        if not event_specific_core:
+            event_specific_core = iea_existing_stock_release_core(event_title, event_body)
         if not event_specific_core:
             event_specific_core = fomc_minutes_guidance_core(
-                str(alert.get("source_title") or ""),
-                article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or "")),
+                event_title,
+                event_body,
             )
         if not event_specific_core:
             event_specific_core = ranked_product_export_core(
-                str(alert.get("source_title") or ""),
-                article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or "")),
+                event_title,
+                event_body,
             )
         event_specific_observation = {}
         if alert.get("body_verified"):
@@ -12370,6 +12443,114 @@ def source_market_materiality(alert: dict) -> dict:
     )
 
 
+def verified_live_milestone_exception(alert: dict, text: str) -> bool:
+    """Preserve verified strategic events that matter without a numeric value."""
+    title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
+    body = market_materiality.source_reported_body(str(alert.get("source_body") or ""))
+    if not body:
+        return False
+
+    strategic_topics = re.search(
+        r"HBM|D\s*램|DRAM|파운드리|반도체|자율주행|로봇|데이터센터|AI",
+        f"{title} {body}",
+        re.I,
+    )
+    strategic_leadership_pair = (
+        (re.search(r"이재용", title) and re.search(r"샘\s*올트먼|오픈AI", title, re.I))
+        or (re.search(r"정의선", title) and re.search(r"젠슨\s*황|엔비디아", title, re.I))
+    )
+    actual_meeting = bool(
+        re.search(r"만났|회동했|회담했|대면했|met with", body, re.I)
+        or (
+            re.search(r"만났|회동|회담", title)
+            and strategic_leadership_pair
+            and re.search(r"논의했|협의했|discussed", body, re.I)
+        )
+    )
+    if strategic_leadership_pair and actual_meeting and strategic_topics:
+        return True
+
+    specific_apple_test = (
+        re.search(r"애플|Apple", text, re.I)
+        and re.search(r"아이폰|iPhone", text, re.I)
+        and re.search(r"CXMT|창신메모리", text, re.I)
+        and re.search(r"테스트|시험|평가", body)
+    )
+    specific_hbm_spec_review = (
+        re.search(r"엔비디아|NVIDIA", text, re.I)
+        and re.search(r"루빈\s*울트라|Rubin\s*Ultra", text, re.I)
+        and re.search(r"HBM4E", text, re.I)
+        and re.search(r"12\s*단|12-Hi|12-high", text, re.I)
+        and re.search(r"사양.{0,16}(?:하향|낮추|변경|검토)|(?:하향|낮추).{0,16}사양", body)
+    )
+    dated_fab_execution = (
+        re.search(r"SK\s*하이닉스|SK\s*Hynix", text, re.I)
+        and re.search(r"인디애나|Indiana", text, re.I)
+        and re.search(r"첨단\s*패키징|advanced\s*packaging", text, re.I)
+        and re.search(r"착공", body)
+        and re.search(r"2028년|2028\s*(?:년|하반기|말)", body)
+    )
+    return bool(specific_apple_test or specific_hbm_spec_review or dated_fab_execution)
+
+
+def live_nonactionable_outlook_reason(alert: dict) -> str:
+    """Keep live sends from being filled by unquantified commentary alone."""
+    if (os.getenv("RADAR_RUN_MODE", "").strip().lower() != "live"
+            or not alert.get("body_verified")):
+        return ""
+    audit = alert.get("market_materiality") or source_market_materiality(alert)
+    evidence = audit.get("evidence") or []
+    if not evidence:
+        return ""
+    soft_kinds = {
+        "analyst_revision",
+        "customer_discussions",
+        "industrial_architecture_adoption",
+        "industrial_partnership_execution",
+        "market_outlook",
+        "model_operating_specification",
+        "research_validation_result",
+        "sector_demand_outlook",
+        "technology_or_clinical_stage",
+    }
+    if not {str(item.get("kind") or "") for item in evidence} <= soft_kinds:
+        return ""
+    text = " ".join((
+        str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or ""),
+        market_materiality.source_reported_body(str(alert.get("source_body") or "")),
+        *[str(item.get("source_excerpt") or "") for item in evidence],
+    ))
+    material_metric = re.search(
+        r"\d[\d,.]*\s*(?:%|퍼센트|bp|bps|조\s*원|조원|천억\s*원|천억원|억\s*원|억원|"
+        r"백만\s*달러|million\s+dollars?|billion\s+dollars?|달러|원|배럴|톤|만\s*대|대|"
+        r"MW|GW|TWh|GWh|MWh|GB|TB|개\s*(?:사|국|월)|건)",
+        text,
+        re.I,
+    )
+    if material_metric:
+        return ""
+    if verified_live_milestone_exception(alert, text):
+        return ""
+    named_market_leader = re.search(
+        r"엔비디아|NVIDIA|삼성전자|SK\s*하이닉스|마이크론|Micron|TSMC|AMD|Intel|인텔",
+        text,
+        re.I,
+    )
+    executive_statement = re.search(
+        r"최고경영자|\bCEO\b|회장|대표이사|chief executive",
+        text,
+        re.I,
+    ) and re.search(r"말했|밝혔|주장|전망|예상|언급|일축|said|stated|expects?|forecasts?", text, re.I)
+    dated_supply_claim = re.search(r"20\d{2}년|내년|향후\s*\d+년", text) and re.search(
+        r"메모리|HBM|반도체|수요|공급|품귀|과잉|shortage|supply|demand|memory",
+        text,
+        re.I,
+    )
+    if named_market_leader and executive_statement and dated_supply_claim:
+        return ""
+    return "unquantified_commentary_or_forecast_without_new_market_fact"
+
+
 def verified_materiality_axes(alert: dict) -> list[str]:
     """Verified source changes must survive legacy sector/label keyword gates."""
     audit = source_market_materiality(alert)
@@ -12567,6 +12748,10 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
         if not source_output_aligned(normalized):
             core_errors = source_core_fact_errors(normalized)
             alert["_exclusion_reason"] = "core_fact_guard:" + ",".join(core_errors) if core_errors else "source_body_mismatch"
+            continue
+        outlook_reason = live_nonactionable_outlook_reason(normalized)
+        if outlook_reason:
+            alert["_exclusion_reason"] = "live_quality_floor:" + outlook_reason
             continue
         normalized["stock_market_channels"] = stock_market_channels(normalized)
         if not has_stock_market_link(normalized):
@@ -12960,6 +13145,16 @@ def verified_alert_core(alert: dict, title: str) -> str:
     if is_business:
         if alert.get("body_verified"):
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+            for event_core in (
+                hormuz_carrier_share_core(source_title or title, body),
+                american_airlines_fuel_guidance_core(source_title or title, body),
+                meta_ai_investment_selloff_core(source_title or title, body),
+            ):
+                if event_core and valid_source_fact(event_core):
+                    return event_core
+            gm_vac_core = gm_vac_contract_termination_core(source_title or title, body)
+            if gm_vac_core and valid_source_fact(gm_vac_core):
+                return gm_vac_core
             smartphone_mix = smartphone_memory_mix_core(source_title or title, body)
             if smartphone_mix and valid_source_fact(smartphone_mix):
                 return smartphone_mix
@@ -13108,6 +13303,14 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         errors.append("promotional_tail_not_headline_market_fact")
     published = str(alert.get("published") or "")
     event_specific_core = lg_cloid_humanoid_launch_core(title, source, published)
+    if not event_specific_core:
+        event_specific_core = hormuz_carrier_share_core(title, source)
+    if not event_specific_core:
+        event_specific_core = american_airlines_fuel_guidance_core(title, source)
+    if not event_specific_core:
+        event_specific_core = meta_ai_investment_selloff_core(title, source)
+    if not event_specific_core:
+        event_specific_core = gm_vac_contract_termination_core(title, source)
     if not event_specific_core:
         event_specific_core = smartphone_memory_mix_core(title, source)
     if not event_specific_core:
