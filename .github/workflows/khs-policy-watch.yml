@@ -215,6 +215,45 @@ jobs:
           print("nuclear_regression_tests=passed")
           PY
 
+      - name: Validate new policy official-source access
+        continue-on-error: true
+        timeout-minutes: 3
+        env:
+          KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+          KHS_SOURCE_PROXY_FIRST: "true"
+          KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+          KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
+        run: |
+          PYTHONPATH=. python - <<'PY'
+          import json
+          from scripts.khs_trusted_policy_news_watch import fetch_text, clean_text
+
+          endpoints = (
+              ("deepseek_federal_register", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=DeepSeek&order=newest&per_page=100", "2026-21447"),
+              ("deepseek_govinfo", "https://www.govinfo.gov/content/pkg/FR-2026-10-20/html/2026-21447.htm", "DHS-2026-0628"),
+              ("treasury_coins_biotech", "https://home.treasury.gov/news/press-releases/sb0667", "biotechnology"),
+          )
+          verified = {}
+          for label, url, marker in endpoints:
+              try:
+                  raw = fetch_text(url, timeout=10)
+                  text = clean_text(raw).lower()
+                  if label == "deepseek_federal_register":
+                      data = json.loads(raw)
+                      ok = any(str(row.get("document_number")) == "2026-21447"
+                               and "DeepSeek" in str(row.get("title", "")) for row in data.get("results", []))
+                  else:
+                      ok = marker.lower() in text and "deepseek" in text if label == "deepseek_govinfo" else marker.lower() in text and "coins act" in text
+                  verified[label] = bool(ok)
+                  print(f"policy_primary_source_check={label} matched={str(bool(ok)).lower()}")
+              except Exception as exc:
+                  verified[label] = False
+                  print(f"policy_primary_source_check={label} fetch_failed={type(exc).__name__}: {exc}")
+          assert (verified["deepseek_federal_register"] or verified["deepseek_govinfo"]), "DHS DeepSeek official source not reachable"
+          assert verified["treasury_coins_biotech"], "Treasury biotech official source not reachable"
+          print("policy_primary_source_check=passed both_policy_families=2")
+          PY
+
       # Maintenance pushes validate only; they do not enable, resume, or dispatch the live watch.
 
   watch:
