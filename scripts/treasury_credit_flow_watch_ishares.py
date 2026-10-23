@@ -14,6 +14,7 @@ import requests
 from bs4 import BeautifulSoup
 
 import treasury_etf_flow_watch as base
+from treasury_credit_flow_delivery import should_run_delivery, source_delivery_complete
 
 KST = ZoneInfo("Asia/Seoul")
 
@@ -103,6 +104,20 @@ def fmt_bp(v):
     return f"{arrow(v)} {v:+.0f}bp"
 
 
+def _segment_curve_regime(short_change, long_change, spread_change):
+    if short_change > 0 and long_change > 0:
+        if spread_change < 0:
+            return "베어 플래트닝"
+        if spread_change > 0:
+            return "베어 스티프닝"
+    elif short_change < 0 and long_change < 0:
+        if spread_change < 0:
+            return "불 플래트닝"
+        if spread_change > 0:
+            return "불 스티프닝"
+    return None
+
+
 def curve_regime(cur, prev):
     if not prev:
         return "판정 대기", "직전 거래일 자료 부족", None, None
@@ -114,21 +129,26 @@ def curve_regime(cur, prev):
     s1030_prev = (prev["30Y"] - prev["10Y"]) * 100
     ds1030 = s1030_now - s1030_prev
 
-    if d2 > 0 and d10 > 0 and ds210 < 0:
-        name = "베어 플래트닝"
-        easy = "금리↑ + 단기금리 상승폭이 더 큼 → Fed 고금리 장기화·추가 긴축 위험을 더 반영하는 패턴"
-    elif d2 > 0 and d10 > 0 and ds210 > 0:
-        name = "베어 스티프닝"
-        easy = "금리↑ + 장기금리 상승폭이 더 큼 → 재정·국채 공급·인플레이션·기간프리미엄 부담이 커지는 패턴"
-    elif d2 < 0 and d10 < 0 and ds210 > 0:
-        name = "불 스티프닝"
-        easy = "금리↓ + 단기금리 하락폭이 더 큼 → Fed 인하·경기둔화 기대를 더 반영하는 패턴"
-    elif d2 < 0 and d10 < 0 and ds210 < 0:
-        name = "불 플래트닝"
-        easy = "금리↓ + 장기금리 하락폭이 더 큼 → 장기 성장·물가 기대 약화를 더 반영하는 패턴"
+    front_regime = _segment_curve_regime(d2, d10, ds210)
+    back_regime = _segment_curve_regime(d10, d30, ds1030)
+    explanations = {
+        "베어 플래트닝": "금리↑ + 앞단 상승폭이 더 큼",
+        "베어 스티프닝": "금리↑ + 뒷단 상승폭이 더 큼",
+        "불 플래트닝": "금리↓ + 뒷단 하락폭이 더 큼",
+        "불 스티프닝": "금리↓ + 앞단 하락폭이 더 큼",
+    }
+    if front_regime and back_regime and front_regime == back_regime:
+        name = front_regime
+        easy = explanations[name] + " → 금리곡선 구간이 같은 방향으로 움직이는 패턴"
+    elif front_regime and back_regime:
+        name = "수익률곡선 구간별 혼조"
+        easy = (
+            f"2-10년 {front_regime} · 10-30년 {back_regime} "
+            "→ 금리곡선 구간별 움직임이 엇갈리는 패턴"
+        )
     else:
         name = "커브 트위스트·혼조"
-        easy = "2년·10년 금리가 한 방향으로 정렬되지 않음 → Fed와 장기 재정·성장 요인 분리 확인"
+        easy = "금리 방향이나 구간별 기울기가 한 가지 형태로 정렬되지 않아 구간별 확인이 필요"
 
     if ds1030 > 0.5:
         back = "10년-30년 금리차 확대 → 30년물이 상대적으로 더 약함 → 재정·장기채 공급·기간프리미엄 부담 강화"
@@ -148,7 +168,6 @@ def curve_regime(cur, prev):
     else:
         driver = "오늘의 주도축: 금리곡선만으로 Fed·재정 중 한쪽 원인을 확정하기 어려움"
     return name, easy, (s210_now, s210_prev, ds210), (s1030_now, s1030_prev, ds1030, back, driver)
-
 
 def etf_interpretation(ticker, price, flow):
     if ticker == "SHY":
@@ -397,13 +416,7 @@ def _us_latest_weekday(now):
 
 
 def _delivery_complete_for_date(state, source_date):
-    last = (state or {}).get("last_delivery") or {}
-    return (
-        bool(source_date)
-        and last.get("treasury_date") == source_date
-        and bool(last.get("message_ids"))
-        and last.get("bot_username") == "khs8879887988798879_bot"
-    )
+    return source_delivery_complete(state, source_date)
 
 
 def main():
@@ -418,12 +431,23 @@ def main():
             print(f"treasury_fallback_noop=true kst={now:%H:%M} reason=outside_0820_1600")
             return
     expected_market_date = _us_latest_weekday(now)
-    if not validate_only and _delivery_complete_for_date(state, expected_market_date):
-        print(
-            "same_market_day_delivery_suppressed=true "
-            f"market_date={expected_market_date} "
-            f"last_message_ids={(state.get('last_delivery') or {}).get('message_ids')}"
-        )
+    daily_digest = os.getenv("TREASURY_DAILY_DIGEST", "").strip().lower() in ("1", "true", "yes")
+    delivery_date_kst = now.date().isoformat()
+    if not should_run_delivery(
+        state, expected_market_date, delivery_date_kst, daily_digest, validate_only=validate_only
+    ):
+        if daily_digest:
+            print(
+                "daily_delivery_suppressed=true "
+                f"delivery_date_kst={delivery_date_kst} "
+                f"last_message_ids={(state.get('last_delivery') or {}).get('message_ids')}"
+            )
+        else:
+            print(
+                "same_market_day_delivery_suppressed=true "
+                f"market_date={expected_market_date} "
+                f"last_message_ids={(state.get('last_delivery') or {}).get('message_ids')}"
+            )
         return
     fx = base.get_usdkrw()
     curve, prev_curve = get_curve_pair()
@@ -699,13 +723,22 @@ def main():
     ).hexdigest()
     last_delivery = state.get("last_delivery") or {}
     event_name = os.getenv("GITHUB_EVENT_NAME", "").strip()
-    if _delivery_complete_for_date(state, curve["date"]):
+    if not should_run_delivery(
+        state, curve["date"], delivery_date_kst, daily_digest, validate_only=False
+    ):
         base.save_state(state)
-        print(
-            "duplicate_delivery_suppressed=true "
-            f"event={event_name or 'unknown'} treasury_date={curve['date']} "
-            f"fingerprint={data_fingerprint[:12]} last_message_ids={last_delivery.get('message_ids')}"
-        )
+        if daily_digest:
+            print(
+                "daily_delivery_suppressed=true "
+                f"event={event_name or 'unknown'} delivery_date_kst={delivery_date_kst} "
+                f"fingerprint={data_fingerprint[:12]} last_message_ids={last_delivery.get('message_ids')}"
+            )
+        else:
+            print(
+                "duplicate_delivery_suppressed=true "
+                f"event={event_name or 'unknown'} treasury_date={curve['date']} "
+                f"fingerprint={data_fingerprint[:12]} last_message_ids={last_delivery.get('message_ids')}"
+            )
         return
 
     username, ids = send_exact(text)
@@ -716,6 +749,9 @@ def main():
         "format": "treasury-credit-ishares-oas-v3",
         "data_fingerprint": data_fingerprint,
     }
+    # A successful morning or explicitly scheduled daily report counts for this Korean day.
+    if daily_digest or now.hour * 60 + now.minute >= 7 * 60 + 30:
+        state["last_delivery"]["daily_delivery_date_kst"] = delivery_date_kst
     base.save_state(state)
     print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={ids} overall={o_head} treasury={t_head} credit={c_head} curve={regime} fingerprint={data_fingerprint[:12]}")
 
