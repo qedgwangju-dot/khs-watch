@@ -9971,6 +9971,32 @@
       "source_published_kst": "2026-10-07T15:40+09:00",
       "title": "유가·금리 반등에 실적 경계감…코스피, 6800선 마감"
     },
+    "core:1a4e03b961c5af6b68e88010": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
+      "source_fact_keys": [
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
+      ],
+      "source_published_kst": "2026-10-23T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
+    },
     "core:1a574af2369700a99753e593": {
       "first_seen_kst": "2026-10-21T18:34:10+09:00",
       "lanes": {
@@ -36893,6 +36919,31 @@
       "source_title": "대형 신작 흥행에 모바일 MMORPG 매출 반등… 9월 1년 만에 최고치",
       "telegram_core_fact": "데이터 분석업체 센서타워에 따르면 올해 상반기 대체로 4X 전략 게임에 밀렸던 MMORPG 월간 매출은 6월부터 회복세로 돌아섰고, 9월엔 약 1년 만의 최고치를 기록했다.",
       "title": "대형 신작 흥행에 모바일 MMORPG 매출 반등… 9월 1년 만에 최고치"
+    },
+    "core:5edcb2a0298e3274a0f565bb": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639432",
+      "source": "이투데이",
+      "source_body_digest": "771a4392ded7359f3d0dae13d5b849b9803fb33dcb41bec49b7bd8effa008874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bf042d789f76a946f43d49f256d8c8330f9f9e87b043d5ae404378aa1a5dd92",
+      "source_fact_keys": [
+        "source_fact:v1:1398229c4b85e3b41266123d392626d2d67d726eca517c60294d8a5f293737b0",
+        "source_fact:v1:1b1d7816b305f75139bd13f7fcef99eabb4a99ee5de2eade6e39a12bf85ba5f3",
+        "source_fact:v1:6e0becdb6c177438fca5670677adf57c4ef2e53088111fb37565a725e096501d",
+        "source_fact:v1:6e2ff5c4cc5b99df983ac6a0a070f0587e90b4612d617a2e2a6bb105a3bea0fa",
+        "source_fact:v1:8f252c9e50a6649ff8660f898078a51ae87cb59b44c6e14dfc1b5b9e43605f0b",
+        "source_fact:v1:c3c3b91fa60f85eabf16ae6efcb37e600d12664a0ccddf8ccb75880dc5572a3f"
+      ],
+      "source_published_kst": "2026-10-23T14:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”",
+      "telegram_core_fact": "이 대통령은 “최근에 발의된 초광역 특구법에는 단일 법률로는 역대 최대인 300여 개의 규제 특례가 담겨 있다고 한다”며 국회의 신속한 심사와 함께 법 제정 이전에 개선할 수 있는 규제부터 선제적으로 정비할 것을 당부했다.",
+      "title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”"
     },
     "core:5efb2216ddcefa46b50e6941": {
       "first_seen_kst": "2026-10-23T11:57:46+09:00",
@@ -70382,6 +70433,34 @@
       "telegram_core_fact": "세구엘라 광산의 광부 봉쇄와 장비 문제로 생산에 차질이 생긴 점이 부담으로 작용했습니다. 3분기 금환산 생산량이 6만9665온스로 전년보다 3.9%, 전분기보다 3.5% 줄었습니다.",
       "title": "포르투나마이닝, 3분기 금 생산 감소와 세구엘라 광산 차질 부각에 약세"
     },
+    "core:b46355502f1dd1600d99b0d4": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
+    },
     "core:b466869b3d25e125f3e4fe90": {
       "first_seen_kst": "2026-10-12T15:02:00+09:00",
       "lanes": {
@@ -75005,6 +75084,31 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "SK에너지·현대오일뱅크, 44조원대 유류 담합 혐의…공정위, 제재 착수"
+    },
+    "core:bf1fb3851f9685f3e469a1c2": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839351",
+      "source": "뉴시스",
+      "source_body_digest": "70cda9a9d8d925ebea8a2b4eb44b78fb1e0b442a6d38e6db8aad2768e56934a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:482fa1f9b8cc3d3e86eeb039f6ac12ea4fb41dfe809b5b90de67142c3422a2a5",
+      "source_fact_keys": [
+        "source_fact:v1:013aab8ea8170e0d6174b89657213b08fd9ad348f25d11b7737bc59ad9c91a43",
+        "source_fact:v1:7324e5e9f9623ac835c2b10835a8c0859755c43df2cf7a2883e62c4b8c2181d6",
+        "source_fact:v1:8c4b87910c0e9b966b19f38813819882e6acd5f002f84ddd5c37d8714e5bee6e",
+        "source_fact:v1:baf74dba8795e655cefaca62d58f0dcc3b0bc60eba6d8f02fffd65c65ce78121",
+        "source_fact:v1:bb81c90236576e3530a38d16b13a6b70ceade61469baf932b06e8bed04ee5d57",
+        "source_fact:v1:f39f97fa5ef28a15754e2c77729df41b9323e3111772131266ee6ff9cb336d55"
+      ],
+      "source_published_kst": "2026-10-23T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\"",
+      "telegram_core_fact": "영국 체감경기를 반영하는 2026년 10월 종합 구매관리자 지수(PMI 속보치)는 53.1로 8개월 만에 최고치를 기록했다고 마켓워치, RTT 뉴스, BBC, MSN이 23일 보도했다. 10월 제조업 PMI는 52.8로 9월 51.9에서 0.9 포인트 상승했다.",
+      "title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\""
     },
     "core:bf33644fa9842a0fe2acc713": {
       "first_seen_kst": "2026-10-13T19:06:12+09:00",
@@ -79958,6 +80062,24 @@
       "source_title": "델, 엔비디아와 기업용 AI 협력 확대…차세대 서버·데이터센터 공개",
       "telegram_core_fact": "차세대 서버와 모듈형 데이터센터, 데스크사이드 AI 제품군을 선보이며 기업의 AI 도입 수요에 대응한다.",
       "title": "델, 엔비디아와 기업용 AI 협력 확대…차세대 서버·데이터센터 공개"
+    },
+    "core:cc4bf71a22a2ed0f6ade850d": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023169451109",
+      "source": "연합뉴스",
+      "source_body_digest": "0927a526062c3472a6b9ebd09a40ebcfe46a4dc103c996164a64f8ba844987e4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T23:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프·푸틴 경유딜 후 러시아산 경유 4만t 첫 미국행\"(종합) | 연합뉴스",
+      "telegram_core_fact": "그러면서 러시아가 즉시 경유 30만t, 다음 달 50만t 이상을 수출하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 말했다. 도널드 트럼프 미국 대통령은 이달 9일 러시아산 경유를 미국이 수입할 수 있도록 한시적 대러 석유수출 제재 면제를 발표했다.",
+      "title": "\"트럼프·푸틴 경유딜 후 러시아산 경유 4만t 첫 미국행\"(종합) | 연합뉴스"
     },
     "core:cc7141c211ee579aa6f356a7": {
       "first_seen_kst": "2026-10-19T05:12:02+09:00",
@@ -89618,6 +89740,38 @@
       "telegram_core_fact": "1라운드 진출자는 1인당 최대 100만원 범위에서 필요한 AI 솔루션을 이용할 수 있다. 중기부는 12일 '모두의 창업' 도전자에게 제공할 AI 솔루션 공급기업 50개사와 103개 솔루션을 공개한다고 11일 밝혔다.",
       "title": "중기부, 2차 '모두의 창업' AI 솔루션 103개 선정…1인당 100만원 지원"
     },
+    "core:e5245ca3b8c30b2ef607ea0e": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
+    },
     "core:e5471dbce36d60dc2c54ead8": {
       "first_seen_kst": "2026-10-17T22:48:00+09:00",
       "lanes": {
@@ -94367,6 +94521,24 @@
       "source_title": "中 CXMT, 서버용 차세대 D램 출시 예고…韓 반도체 추격",
       "telegram_core_fact": "트렌드포스에 따르면 올해 2분기 매출 기준 CXMT의 D램 시장점유율은 전 분기 7.6%에서 9.5%로 상승했다.",
       "title": "中 CXMT, 서버용 차세대 D램 출시 예고…韓 반도체 추격"
+    },
+    "core:f25b99a139e0acedeaf36313": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639274",
+      "source": "이투데이",
+      "source_body_digest": "ab642cf043a19a01fe2ea539eca79c9aed88c7fc33b22f66c7fb342e263e7ea9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 산단 조성 10→5년…초광역특구에 320개 규제특례",
+      "telegram_core_fact": "현재 반도체 산단은 산업단지계획 수립과 환경영향평가 등 인허가, 토지보상, 설계·시공 등이 순차 진행돼 조성에 통상 10년 이상 걸리는데, 정부는 인허가, 보상, 설계를 동시 추진하는 방식으로 산단 조성부터 공장 가동까지 걸리는 기간을 5년 내로 줄일 계획이다.",
+      "title": "반도체 산단 조성 10→5년…초광역특구에 320개 규제특례"
     },
     "core:f26285302eabe1748d556ab5": {
       "first_seen_kst": "2026-10-22T08:01:37+09:00",
@@ -99990,23 +100162,35 @@
     "event:015a6b41230481c533957cc9": {
       "first_seen_kst": "2026-10-23T09:14:52+09:00",
       "lanes": {
-        "live": "2026-10-23T13:00:02+09:00"
+        "live": "2026-10-23T13:00:02+09:00",
+        "preopen": "2026-10-24T06:52:10+09:00"
       },
-      "last_seen_kst": "2026-10-23T13:00:02+09:00",
-      "link": "https://www.newsis.com/view/NISX20261023_0003838151",
-      "source": "뉴시스",
-      "source_body_digest": "84730a2daea9b8362b682c4f0eee3e8c069c8e7c0dff9801c4c227f4458a67bc",
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3c08eda7c3acbec2544f8265d95809e5b6b30a5abbfc0a7e3372f49a9bb14e66",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
       "source_fact_keys": [
-        "source_fact:v1:6569d42712265b1dd4c85017a4439cfae715751a1591de8806e8cb298afefb34",
-        "source_fact:v1:fe79d88cf7c1f06c1b598ca6016871ea213de52f63c26b0ee8d57e3d97d5cdeb"
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
       ],
-      "source_published_kst": "2026-10-23T12:52+09:00",
+      "source_published_kst": "2026-10-23T11:01+09:00",
       "source_supply_terms": {},
-      "source_title": "AI 투자 우려 다시 고개…투자자들, 기술주 팔고 美 국채 샀다",
-      "telegram_core_fact": "바클레이즈의 미국 인플레이션 전략 책임자 존 힐은 \"오늘 국채 가격 상승세는 최근 발표된 경제 지표 때문이 아니다\"라며 \"전적으로 AI 투자에 잠재적인 균열이 생길 가능성과 관련이 있다\"고 분석했다.",
-      "title": "AI 투자 우려 다시 고개…투자자들, 기술주 팔고 美 국채 샀다"
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
     },
     "event:0214c45f4cf3a894a1e3ff7f": {
       "first_seen_kst": "2026-10-08T09:17:31+09:00",
@@ -101435,22 +101619,29 @@
     "event:11fb8f22fe25e6d1e341cdac": {
       "first_seen_kst": "2026-10-23T06:00:11+09:00",
       "lanes": {
-        "live": "2026-10-24T04:25:00+09:00"
+        "live": "2026-10-24T04:25:00+09:00",
+        "preopen": "2026-10-24T06:52:10+09:00"
       },
-      "last_seen_kst": "2026-10-24T04:25:00+09:00",
-      "link": "https://www.hankyung.com/article/2026102399666",
-      "source": "한국경제",
-      "source_body_digest": "ebd11971307d56789c145f0a46facb2ff659e4a3cbccf3fc025e559d7b5b6645",
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:e497b10b21f94405db5961d5f3f258fd02708929aeee35ab2b3715d38aaf66b4",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
       "source_fact_keys": [
-        "source_fact:v1:970d0f1fcbbb2f4fa5f9469152a2ab8442561ef36c7432c1604c97a4a538f3c4"
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
       ],
-      "source_published_kst": "2026-10-23T07:16+09:00",
+      "source_published_kst": "2026-10-23T07:03+09:00",
       "source_supply_terms": {},
-      "source_title": "AI 투자 불안에 나스닥 2.6% 급락…반도체지수 6.7%↓ [뉴욕증시 브리핑]",
-      "telegram_core_fact": "메타는 시장 예상을 뛰어넘는 3분기 실적을 발표했지만, AI 투자 확대에 필요한 자금을 확보하기 위해 의결권 없는 새로운 종류의 주식을 발행할 계획이라고 밝혔다.",
-      "title": "AI 투자 불안에 나스닥 2.6% 급락…반도체지수 6.7%↓ [뉴욕증시 브리핑]"
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
     },
     "event:120b5906e9015b019d5cf2f1": {
       "first_seen_kst": "2026-10-17T06:57:38+09:00",
@@ -104502,25 +104693,31 @@
     "event:305be8b1ace26478219e8774": {
       "first_seen_kst": "2026-10-23T10:22:46+09:00",
       "lanes": {
-        "live": "2026-10-23T17:48:25+09:00"
+        "live": "2026-10-23T17:48:25+09:00",
+        "preopen": "2026-10-24T06:52:10+09:00"
       },
-      "last_seen_kst": "2026-10-23T17:48:25+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261023030400008",
-      "source": "연합뉴스",
-      "source_body_digest": "05743d093c11130a19762628fc7acedad2e9545aa12907cfbc86220c92329fa6",
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:7a5a1683f7acc0ea19dbddd48b99a1fb66889d2265290646bf8d3018533f44f5",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
       "source_fact_keys": [
-        "source_fact:v1:06e29304f71f340f8d6e221b68b6772cc6300a9a06e452ebd08badf1828c12d9",
-        "source_fact:v1:2fdaf3bf0ce870b97f95cd6e81c4fa7587e06ac80680ca64a6aaec245fa44428",
-        "source_fact:v1:a99f4236c9e26fa8201657e015f24bc187a721ac4be0bb141a295f3da551473f",
-        "source_fact:v1:f2cd9ba775944bb0e11f3313d490bc95d1315ae9803e21653e9bf01f378e01d8"
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
       ],
-      "source_published_kst": "2026-10-23T08:39+09:00",
+      "source_published_kst": "2026-10-23T14:53+09:00",
       "source_supply_terms": {},
-      "source_title": "\"솔리다임 상장검토 중단, 반도체 투심 회복 기여할 듯\" | 연합뉴스",
-      "telegram_core_fact": "한지영 키움증권 연구원은 23일 \"국내 증시는 메타의 신용불안 우려에 따른 미국 인공지능(AI)주 조정, 유가 부담 등으로 하락 출발할 전망\"이라면서도 \"SK하이닉스의 솔리다임 기업공개(IPO) 검토 중단 공시는 반도체에 대한 투자심리 호전에 기여할 듯하다\"고 말했다.",
-      "title": "\"솔리다임 상장검토 중단, 반도체 투심 회복 기여할 듯\" | 연합뉴스"
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
     },
     "event:30d005c2cc4116208b75798e": {
       "first_seen_kst": "2026-09-20T01:03:05+09:00",
@@ -127750,6 +127947,38 @@
       "telegram_core_fact": "시장조사업체 트렌드포스는 올해 4·4분기 모든 낸드 플래시 제품군의 계약 가격이 전 분기 대비 15~20% 상승할 것으로 예상했다.",
       "title": "삼전닉스 '낸드' 잭팟 터진다… 로봇용 D램도 기대감 솔솔"
     },
+    "fact:0d30255169e15f42c606aaba": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
+    },
     "fact:0d3382f63587134831ece1d0": {
       "first_seen_kst": "2026-10-22T09:39:54+09:00",
       "lanes": {
@@ -141551,6 +141780,32 @@
       "source_title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]",
       "telegram_core_fact": "Fed가 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 모든 참석자는 연방기금금리 목표범위를 0.25%포인트 인상해 연 3.75~4.00%로 높이는 데 찬성했다.",
       "title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]"
+    },
+    "fact:2defc1d8ab4d4fc2e9b71f48": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
+      "source_fact_keys": [
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
+      ],
+      "source_published_kst": "2026-10-23T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
     },
     "fact:2df57ded25cd7077a071fd35": {
       "first_seen_kst": "2026-10-21T10:25:18+09:00",
@@ -176725,6 +176980,34 @@
       "telegram_core_fact": "세계 1위 반도체 위탁생산(파운드리) 업체인 대만 TSMC의 신규 공장 건설 현장에서 근로자 4명이 숨지는 사고가 발생하면서 대만 전역의 신축 공장 철골 작업이 중단됐다.",
       "title": "TSMC 가오슝 공장 건설현장서 4명 사망…대만 전역 철골 작업 중단"
     },
+    "fact:84250013a2846538ff256c96": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
+    },
     "fact:842a4c496e5bd8e462d6cab1": {
       "first_seen_kst": "2026-10-19T15:22:07+09:00",
       "lanes": {
@@ -187776,6 +188059,31 @@
       "source_title": "\"가격 올려도 잘 팔릴걸\" 애플 주가 25% 뛰더니...시총 5조달러 돌파",
       "telegram_core_fact": "왐시 모한 뱅크오브아메리카(BofA) 애널리스트는 \"투자자들이 애플 기기 구매자들이 더 높은 가격을 기꺼이 지불할 것이라 믿기 때문\"이라며 \"덕분에 마진이 하락하더라도 애플이 전체 이익을 유지하거나 그 이상을 창출할 수 있게 된다\"고 설명했다.",
       "title": "\"가격 올려도 잘 팔릴걸\" 애플 주가 25% 뛰더니...시총 5조달러 돌파"
+    },
+    "fact:9b49ad216389967199d0fa27": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839351",
+      "source": "뉴시스",
+      "source_body_digest": "70cda9a9d8d925ebea8a2b4eb44b78fb1e0b442a6d38e6db8aad2768e56934a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:482fa1f9b8cc3d3e86eeb039f6ac12ea4fb41dfe809b5b90de67142c3422a2a5",
+      "source_fact_keys": [
+        "source_fact:v1:013aab8ea8170e0d6174b89657213b08fd9ad348f25d11b7737bc59ad9c91a43",
+        "source_fact:v1:7324e5e9f9623ac835c2b10835a8c0859755c43df2cf7a2883e62c4b8c2181d6",
+        "source_fact:v1:8c4b87910c0e9b966b19f38813819882e6acd5f002f84ddd5c37d8714e5bee6e",
+        "source_fact:v1:baf74dba8795e655cefaca62d58f0dcc3b0bc60eba6d8f02fffd65c65ce78121",
+        "source_fact:v1:bb81c90236576e3530a38d16b13a6b70ceade61469baf932b06e8bed04ee5d57",
+        "source_fact:v1:f39f97fa5ef28a15754e2c77729df41b9323e3111772131266ee6ff9cb336d55"
+      ],
+      "source_published_kst": "2026-10-23T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\"",
+      "telegram_core_fact": "영국 체감경기를 반영하는 2026년 10월 종합 구매관리자 지수(PMI 속보치)는 53.1로 8개월 만에 최고치를 기록했다고 마켓워치, RTT 뉴스, BBC, MSN이 23일 보도했다. 10월 제조업 PMI는 52.8로 9월 51.9에서 0.9 포인트 상승했다.",
+      "title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\""
     },
     "fact:9b5193992f009334af906317": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
@@ -211838,6 +212146,31 @@
       "source_title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대",
       "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
       "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
+    },
+    "fact:d15c0f27aabfaf1b644b787b": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639432",
+      "source": "이투데이",
+      "source_body_digest": "771a4392ded7359f3d0dae13d5b849b9803fb33dcb41bec49b7bd8effa008874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bf042d789f76a946f43d49f256d8c8330f9f9e87b043d5ae404378aa1a5dd92",
+      "source_fact_keys": [
+        "source_fact:v1:1398229c4b85e3b41266123d392626d2d67d726eca517c60294d8a5f293737b0",
+        "source_fact:v1:1b1d7816b305f75139bd13f7fcef99eabb4a99ee5de2eade6e39a12bf85ba5f3",
+        "source_fact:v1:6e0becdb6c177438fca5670677adf57c4ef2e53088111fb37565a725e096501d",
+        "source_fact:v1:6e2ff5c4cc5b99df983ac6a0a070f0587e90b4612d617a2e2a6bb105a3bea0fa",
+        "source_fact:v1:8f252c9e50a6649ff8660f898078a51ae87cb59b44c6e14dfc1b5b9e43605f0b",
+        "source_fact:v1:c3c3b91fa60f85eabf16ae6efcb37e600d12664a0ccddf8ccb75880dc5572a3f"
+      ],
+      "source_published_kst": "2026-10-23T14:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”",
+      "telegram_core_fact": "이 대통령은 “최근에 발의된 초광역 특구법에는 단일 법률로는 역대 최대인 300여 개의 규제 특례가 담겨 있다고 한다”며 국회의 신속한 심사와 함께 법 제정 이전에 개선할 수 있는 규제부터 선제적으로 정비할 것을 당부했다.",
+      "title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”"
     },
     "fact:d171f885b6c25545fb1f24d5": {
       "first_seen_kst": "2026-10-20T12:12:43+09:00",
@@ -254015,6 +254348,24 @@
       "source": "뉴시스",
       "title": "영국, 러시아 제재 31건 발표…\"한국 사할린-2 LNG 수입은 제재 면제\""
     },
+    "link:27727450fd4d155ffeeb4815": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639274",
+      "source": "이투데이",
+      "source_body_digest": "ab642cf043a19a01fe2ea539eca79c9aed88c7fc33b22f66c7fb342e263e7ea9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 산단 조성 10→5년…초광역특구에 320개 규제특례",
+      "telegram_core_fact": "현재 반도체 산단은 산업단지계획 수립과 환경영향평가 등 인허가, 토지보상, 설계·시공 등이 순차 진행돼 조성에 통상 10년 이상 걸리는데, 정부는 인허가, 보상, 설계를 동시 추진하는 방식으로 산단 조성부터 공장 가동까지 걸리는 기간을 5년 내로 줄일 계획이다.",
+      "title": "반도체 산단 조성 10→5년…초광역특구에 320개 규제특례"
+    },
     "link:2777e79d7346d501e6628806": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
       "lanes": {
@@ -262464,6 +262815,38 @@
       "telegram_core_fact": "퍼스트서비스(FSV)는 3분기(7~9월) 매출액이 15억3170만 달러로 전년비 6% 증가했고, 비GAAP 조정 주당순이익은 1.89달러로 7% 늘었으나 GAAP 희석 주당순이익은 0.99달러로 전년 동기 1.24달러보다 20% 감소했다고 10월 22일 발표했다.",
       "title": "퍼스트서비스, 3분기 매출 15억3000만 달러..전년비 6% 증가"
     },
+    "link:358df09ed921c06be570a94b": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
+    },
     "link:3592f106fffe2ca7f93cdd09": {
       "first_seen_kst": "2026-09-27T07:38:21+09:00",
       "lanes": {
@@ -262822,6 +263205,32 @@
       "source_title": "아메리칸항공 \"유가 내려도 항공료 안 내려\"…내년 추가인상 전망도",
       "telegram_core_fact": "미국 아메리칸항공이 국제 유가가 떨어지더라도 항공 운임은 이란 전쟁 이전 수준으로 돌아가지 않을 것이라고 경고했다.",
       "title": "아메리칸항공 \"유가 내려도 항공료 안 내려\"…내년 추가인상 전망도"
+    },
+    "link:3629ab07ba4c145681cf9b70": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
+      "source_fact_keys": [
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
+      ],
+      "source_published_kst": "2026-10-23T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
     },
     "link:366bd9b8bd5732c9ee590bcf": {
       "first_seen_kst": "2026-10-21T21:32:59+09:00",
@@ -283783,6 +284192,31 @@
       ],
       "source_published_kst": "2026-10-06T07:12+09:00",
       "title": "美 국채금리 급등에도 상승 마감…나스닥 사상 최고치 [뉴욕증시 브리핑]"
+    },
+    "link:5b9c196f46f3f2fd7352d62e": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839351",
+      "source": "뉴시스",
+      "source_body_digest": "70cda9a9d8d925ebea8a2b4eb44b78fb1e0b442a6d38e6db8aad2768e56934a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:482fa1f9b8cc3d3e86eeb039f6ac12ea4fb41dfe809b5b90de67142c3422a2a5",
+      "source_fact_keys": [
+        "source_fact:v1:013aab8ea8170e0d6174b89657213b08fd9ad348f25d11b7737bc59ad9c91a43",
+        "source_fact:v1:7324e5e9f9623ac835c2b10835a8c0859755c43df2cf7a2883e62c4b8c2181d6",
+        "source_fact:v1:8c4b87910c0e9b966b19f38813819882e6acd5f002f84ddd5c37d8714e5bee6e",
+        "source_fact:v1:baf74dba8795e655cefaca62d58f0dcc3b0bc60eba6d8f02fffd65c65ce78121",
+        "source_fact:v1:bb81c90236576e3530a38d16b13a6b70ceade61469baf932b06e8bed04ee5d57",
+        "source_fact:v1:f39f97fa5ef28a15754e2c77729df41b9323e3111772131266ee6ff9cb336d55"
+      ],
+      "source_published_kst": "2026-10-23T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\"",
+      "telegram_core_fact": "영국 체감경기를 반영하는 2026년 10월 종합 구매관리자 지수(PMI 속보치)는 53.1로 8개월 만에 최고치를 기록했다고 마켓워치, RTT 뉴스, BBC, MSN이 23일 보도했다. 10월 제조업 PMI는 52.8로 9월 51.9에서 0.9 포인트 상승했다.",
+      "title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\""
     },
     "link:5ba0650bbef215cebff6e068": {
       "first_seen_kst": "2026-10-17T00:21:55+09:00",
@@ -306179,6 +306613,31 @@
       "telegram_core_fact": "반도체를 중심으로 설비투자가 확대되면서 잠재성장률 반등도 \"임박했다\"고 평가했다.",
       "title": "이형일 \"올해 성장률 3.4~3.6% 가능…잠재성장률 반등 임박\""
     },
+    "link:847e36a940292b4524fe0aca": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639432",
+      "source": "이투데이",
+      "source_body_digest": "771a4392ded7359f3d0dae13d5b849b9803fb33dcb41bec49b7bd8effa008874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bf042d789f76a946f43d49f256d8c8330f9f9e87b043d5ae404378aa1a5dd92",
+      "source_fact_keys": [
+        "source_fact:v1:1398229c4b85e3b41266123d392626d2d67d726eca517c60294d8a5f293737b0",
+        "source_fact:v1:1b1d7816b305f75139bd13f7fcef99eabb4a99ee5de2eade6e39a12bf85ba5f3",
+        "source_fact:v1:6e0becdb6c177438fca5670677adf57c4ef2e53088111fb37565a725e096501d",
+        "source_fact:v1:6e2ff5c4cc5b99df983ac6a0a070f0587e90b4612d617a2e2a6bb105a3bea0fa",
+        "source_fact:v1:8f252c9e50a6649ff8660f898078a51ae87cb59b44c6e14dfc1b5b9e43605f0b",
+        "source_fact:v1:c3c3b91fa60f85eabf16ae6efcb37e600d12664a0ccddf8ccb75880dc5572a3f"
+      ],
+      "source_published_kst": "2026-10-23T14:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”",
+      "telegram_core_fact": "이 대통령은 “최근에 발의된 초광역 특구법에는 단일 법률로는 역대 최대인 300여 개의 규제 특례가 담겨 있다고 한다”며 국회의 신속한 심사와 함께 법 제정 이전에 개선할 수 있는 규제부터 선제적으로 정비할 것을 당부했다.",
+      "title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”"
+    },
     "link:848086147302273a8fc47d9d": {
       "first_seen_kst": "2026-10-13T16:01:00+09:00",
       "lanes": {
@@ -308413,6 +308872,24 @@
       "link": "https://www.etnews.com/20261001000338",
       "source": "전자신문",
       "title": "KEA “대미 투자 합의 환영…사업 협력 확대해야”"
+    },
+    "link:88d80a010969894074907bfa": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023169451109",
+      "source": "연합뉴스",
+      "source_body_digest": "0927a526062c3472a6b9ebd09a40ebcfe46a4dc103c996164a64f8ba844987e4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T23:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프·푸틴 경유딜 후 러시아산 경유 4만t 첫 미국행\"(종합) | 연합뉴스",
+      "telegram_core_fact": "그러면서 러시아가 즉시 경유 30만t, 다음 달 50만t 이상을 수출하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 말했다. 도널드 트럼프 미국 대통령은 이달 9일 러시아산 경유를 미국이 수입할 수 있도록 한시적 대러 석유수출 제재 면제를 발표했다.",
+      "title": "\"트럼프·푸틴 경유딜 후 러시아산 경유 4만t 첫 미국행\"(종합) | 연합뉴스"
     },
     "link:88e6c8d043b55c24abfdab5b": {
       "first_seen_kst": "2026-10-15T09:43:41+09:00",
@@ -323930,6 +324407,34 @@
       "source_title": "신한지주, 롯데손해보험 인수 \"아직은 물음표\"…추가 증자 가능성-iM",
       "telegram_core_fact": "설용진 iM증권 연구원은 14일 보고서에서 “신한지주는 전날 롯데손해보험 지분 77.04%를 6933억원에 인수하는 주식매매계약(SPA)을 체결했다”며 “지분율을 감안한 전체 기업가치는 9000억원에 달한다”고 밝혔다.",
       "title": "신한지주, 롯데손해보험 인수 \"아직은 물음표\"…추가 증자 가능성-iM"
+    },
+    "link:a4948e124b16e6a5edd82a10": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
     },
     "link:a494ad3f5777f95456262176": {
       "first_seen_kst": "2026-09-28T00:53:05+09:00",
@@ -379822,6 +380327,38 @@
       "source": "이데일리",
       "title": "\"단일종목 레버리지 상품, 개인이 손대면 안 됐어\"[만났습니다②]"
     },
+    "original:0c8596f0a168a3f195c4dbce": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
+    },
     "original:0c8606d0e62c15bdcdc879fb": {
       "first_seen_kst": "2026-10-02T16:06:36+09:00",
       "lanes": {
@@ -388450,6 +388987,24 @@
       "telegram_core_fact": "최근 분기 약 85조원의 영업이익을 기록한 엔비디아보다도 많은 규모다.",
       "title": "엔비디아 뛰어넘고 내년 전망도 밝은데…'분기 영업익 100조' 삼성전자, 주가는 왜?"
     },
+    "original:1cf77e8b0340a55633503ddc": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023169451109",
+      "source": "연합뉴스",
+      "source_body_digest": "0927a526062c3472a6b9ebd09a40ebcfe46a4dc103c996164a64f8ba844987e4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T23:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프·푸틴 경유딜 후 러시아산 경유 4만t 첫 미국행\"(종합) | 연합뉴스",
+      "telegram_core_fact": "그러면서 러시아가 즉시 경유 30만t, 다음 달 50만t 이상을 수출하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 말했다. 도널드 트럼프 미국 대통령은 이달 9일 러시아산 경유를 미국이 수입할 수 있도록 한시적 대러 석유수출 제재 면제를 발표했다.",
+      "title": "\"트럼프·푸틴 경유딜 후 러시아산 경유 4만t 첫 미국행\"(종합) | 연합뉴스"
+    },
     "original:1d0953268493cd34b75116fb": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
       "lanes": {
@@ -390031,6 +390586,31 @@
       "link": "https://zdnet.co.kr/view/?no=20261001100039",
       "source": "지디넷코리아",
       "title": "세미파이브, 모빌린트와 산업 로봇용 AI 반도체 개발 계약 체결"
+    },
+    "original:1fa12014a89cc051c00e5c6c": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639432",
+      "source": "이투데이",
+      "source_body_digest": "771a4392ded7359f3d0dae13d5b849b9803fb33dcb41bec49b7bd8effa008874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bf042d789f76a946f43d49f256d8c8330f9f9e87b043d5ae404378aa1a5dd92",
+      "source_fact_keys": [
+        "source_fact:v1:1398229c4b85e3b41266123d392626d2d67d726eca517c60294d8a5f293737b0",
+        "source_fact:v1:1b1d7816b305f75139bd13f7fcef99eabb4a99ee5de2eade6e39a12bf85ba5f3",
+        "source_fact:v1:6e0becdb6c177438fca5670677adf57c4ef2e53088111fb37565a725e096501d",
+        "source_fact:v1:6e2ff5c4cc5b99df983ac6a0a070f0587e90b4612d617a2e2a6bb105a3bea0fa",
+        "source_fact:v1:8f252c9e50a6649ff8660f898078a51ae87cb59b44c6e14dfc1b5b9e43605f0b",
+        "source_fact:v1:c3c3b91fa60f85eabf16ae6efcb37e600d12664a0ccddf8ccb75880dc5572a3f"
+      ],
+      "source_published_kst": "2026-10-23T14:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”",
+      "telegram_core_fact": "이 대통령은 “최근에 발의된 초광역 특구법에는 단일 법률로는 역대 최대인 300여 개의 규제 특례가 담겨 있다고 한다”며 국회의 신속한 심사와 함께 법 제정 이전에 개선할 수 있는 규제부터 선제적으로 정비할 것을 당부했다.",
+      "title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”"
     },
     "original:1fa19311dd45f838dece3212": {
       "first_seen_kst": "2026-10-13T18:11:03+09:00",
@@ -410073,6 +410653,34 @@
       "telegram_core_fact": "국제유가와 미국 국채금리가 치솟은 데다 현물 상장지수펀드(ETF)에서 자금까지 빠져나가면서 투자심리를 위축시켰다는 분석이다.",
       "title": "비트코인 왜 또 빠지나…유가·국채금리·ETF '3중 악재'"
     },
+    "original:42ece1ed8eafecc9ce0cfbf3": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
+    },
     "original:42f6a03c807721e6594d71e0": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
       "lanes": {
@@ -420390,6 +420998,24 @@
       "source_title": "앱코 투자 美 불스아이, 뉴욕 벤처 서밋 혁신기업 선정",
       "telegram_core_fact": "코스닥 상장사 앱코가 지분을 보유한 미국 의료 인공지능(AI) 기업 불스아이 바이오디바이스가 미국 뉴욕에서 열리는 벤처 투자 행사에서 혁신기업으로 선정됐다. 앱코는 불스아이가 ‘2026 뉴욕 벤처 서밋’(New York Venture Summit)의 ‘톱 이노베이터’로 선정됐다고 16일 밝혔다.",
       "title": "앱코 투자 美 불스아이, 뉴욕 벤처 서밋 혁신기업 선정"
+    },
+    "original:55e1f55d6212c61c6e40a29a": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639274",
+      "source": "이투데이",
+      "source_body_digest": "ab642cf043a19a01fe2ea539eca79c9aed88c7fc33b22f66c7fb342e263e7ea9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 산단 조성 10→5년…초광역특구에 320개 규제특례",
+      "telegram_core_fact": "현재 반도체 산단은 산업단지계획 수립과 환경영향평가 등 인허가, 토지보상, 설계·시공 등이 순차 진행돼 조성에 통상 10년 이상 걸리는데, 정부는 인허가, 보상, 설계를 동시 추진하는 방식으로 산단 조성부터 공장 가동까지 걸리는 기간을 5년 내로 줄일 계획이다.",
+      "title": "반도체 산단 조성 10→5년…초광역특구에 320개 규제특례"
     },
     "original:55e40dc136142fb3d260ddbf": {
       "first_seen_kst": "2026-10-23T15:16:59+09:00",
@@ -473707,6 +474333,31 @@
       "telegram_core_fact": "존 터너스 애플 최고경영자(CEO)가 전 세계적인 메모리 반도체 공급 부족을 '절대적인 위기'로 규정하며 중국산 반도체 도입 가능성을 열어뒀다.",
       "title": "애플 CEO \"메모리 품귀는 절대적 위기\"…중국산 사용 시사"
     },
+    "original:b8ef090ae26c1e5e6ff249d0": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839351",
+      "source": "뉴시스",
+      "source_body_digest": "70cda9a9d8d925ebea8a2b4eb44b78fb1e0b442a6d38e6db8aad2768e56934a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:482fa1f9b8cc3d3e86eeb039f6ac12ea4fb41dfe809b5b90de67142c3422a2a5",
+      "source_fact_keys": [
+        "source_fact:v1:013aab8ea8170e0d6174b89657213b08fd9ad348f25d11b7737bc59ad9c91a43",
+        "source_fact:v1:7324e5e9f9623ac835c2b10835a8c0859755c43df2cf7a2883e62c4b8c2181d6",
+        "source_fact:v1:8c4b87910c0e9b966b19f38813819882e6acd5f002f84ddd5c37d8714e5bee6e",
+        "source_fact:v1:baf74dba8795e655cefaca62d58f0dcc3b0bc60eba6d8f02fffd65c65ce78121",
+        "source_fact:v1:bb81c90236576e3530a38d16b13a6b70ceade61469baf932b06e8bed04ee5d57",
+        "source_fact:v1:f39f97fa5ef28a15754e2c77729df41b9323e3111772131266ee6ff9cb336d55"
+      ],
+      "source_published_kst": "2026-10-23T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\"",
+      "telegram_core_fact": "영국 체감경기를 반영하는 2026년 10월 종합 구매관리자 지수(PMI 속보치)는 53.1로 8개월 만에 최고치를 기록했다고 마켓워치, RTT 뉴스, BBC, MSN이 23일 보도했다. 10월 제조업 PMI는 52.8로 9월 51.9에서 0.9 포인트 상승했다.",
+      "title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\""
+    },
     "original:b905e5388e69e3de7b9c3bdf": {
       "first_seen_kst": "2026-10-20T12:12:43+09:00",
       "lanes": {
@@ -493188,6 +493839,32 @@
       "source_title": "앨리 파이낸셜, 3분기 GAAP 주당순이익 1.30달러..전년비 10% 증가",
       "telegram_core_fact": "앨리 파이낸셜(ALLY)은 2026년 3분기 GAAP 기준 희석 주당순이익(EPS)이 1.30달러로 전년 동기(1.18달러) 대비 10% 증가했고, GAAP 기준 총순매출은 23억3200만 달러로 8% 늘었다고 10월 20일 발표했다.",
       "title": "앨리 파이낸셜, 3분기 GAAP 주당순이익 1.30달러..전년비 10% 증가"
+    },
+    "original:dd0d9e186c65cdd3c235efa0": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
+      "source_fact_keys": [
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
+      ],
+      "source_published_kst": "2026-10-23T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
     },
     "original:dd19b753037b29c1f83c2686": {
       "first_seen_kst": "2026-10-10T01:06:33+09:00",
@@ -519914,6 +520591,31 @@
       "source_title": "롯데백화점, 창원 첫 '무신사 스탠다드' 매장 연다",
       "telegram_core_fact": "제휴 카페 이용 고객에게는 무신사 스탠다드 롯데백화점 창원점 10% 할인 쿠폰을, 매장 구매 고객에게는 제휴 카페 할인 쿠폰북을 제공해 쇼핑과 지역 카페 방문을 잇는다. 롯데백화점 창원점의 올해 3분기 영패션·영캐주얼 매출은 전년비 약 20% 증가했고, 젊은 층의 방문도 꾸준히 늘고 있다.",
       "title": "롯데백화점, 창원 첫 '무신사 스탠다드' 매장 연다"
+    },
+    "source_fact:03eeff767b64eebcdb2f4546": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839351",
+      "source": "뉴시스",
+      "source_body_digest": "70cda9a9d8d925ebea8a2b4eb44b78fb1e0b442a6d38e6db8aad2768e56934a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:482fa1f9b8cc3d3e86eeb039f6ac12ea4fb41dfe809b5b90de67142c3422a2a5",
+      "source_fact_keys": [
+        "source_fact:v1:013aab8ea8170e0d6174b89657213b08fd9ad348f25d11b7737bc59ad9c91a43",
+        "source_fact:v1:7324e5e9f9623ac835c2b10835a8c0859755c43df2cf7a2883e62c4b8c2181d6",
+        "source_fact:v1:8c4b87910c0e9b966b19f38813819882e6acd5f002f84ddd5c37d8714e5bee6e",
+        "source_fact:v1:baf74dba8795e655cefaca62d58f0dcc3b0bc60eba6d8f02fffd65c65ce78121",
+        "source_fact:v1:bb81c90236576e3530a38d16b13a6b70ceade61469baf932b06e8bed04ee5d57",
+        "source_fact:v1:f39f97fa5ef28a15754e2c77729df41b9323e3111772131266ee6ff9cb336d55"
+      ],
+      "source_published_kst": "2026-10-23T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\"",
+      "telegram_core_fact": "영국 체감경기를 반영하는 2026년 10월 종합 구매관리자 지수(PMI 속보치)는 53.1로 8개월 만에 최고치를 기록했다고 마켓워치, RTT 뉴스, BBC, MSN이 23일 보도했다. 10월 제조업 PMI는 52.8로 9월 51.9에서 0.9 포인트 상승했다.",
+      "title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\""
     },
     "source_fact:03f6d395b07f6cbd534127ac": {
       "first_seen_kst": "2026-10-08T09:17:31+09:00",
@@ -566432,6 +567134,38 @@
       "source_title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가",
       "telegram_core_fact": "2028년에 3분기 매출은 10억6675만 달러 전망입니다.",
       "title": "배저미터, 3분기 GAAP 희석 EPS 1.24달러..전년비 4% 증가"
+    },
+    "source_fact:18fc5e2c94a3c5d0ec392920": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
     },
     "source_fact:18feca133c9489893bd65ac9": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
@@ -630594,6 +631328,32 @@
       "telegram_core_fact": "현대차·기아는 2026년 11월 개발을 목표로 하고 있으며, 2027년 6월 화성 공장에서 양산 검증을 시작한 뒤 울산 등으로 확대할 계획이다.",
       "title": "AI가 판단하고 로봇이 움직여 車만든다…현대차·기아 2032년 자율공장 도입"
     },
+    "source_fact:347fc5e56e0c5390de680441": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
+      "source_fact_keys": [
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
+      ],
+      "source_published_kst": "2026-10-23T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
+    },
     "source_fact:348316a3d6249837679d2975": {
       "first_seen_kst": "2026-10-13T08:34:55+09:00",
       "lanes": {
@@ -635247,6 +636007,34 @@
       "source_title": "[현장]SK하이닉스 안현 사장 \"또 다른 메모리 병목 발생…3D 적층 D램·HBF로 돌파해야\"",
       "telegram_core_fact": "그는 \"AI 연산량 뿐만 아니라 모델 가중치와 중간 데이터의 저장·이동 수요도 함께 증가하고 있다\"며 \"HBM, D램, SSD 등 메모리 계층에 데이터를 분산해 저장해야 하는데, 이 과정에서 새로운 성능 및 전력 소모의 병목이 생기고 있다\"고 설명했다.",
       "title": "[현장]SK하이닉스 안현 사장 \"또 다른 메모리 병목 발생…3D 적층 D램·HBF로 돌파해야\""
+    },
+    "source_fact:368edb256bb725ca4341da92": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
     },
     "source_fact:36988db2efd379a2d542fe2e": {
       "first_seen_kst": "2026-10-21T12:30:59+09:00",
@@ -653128,6 +653916,31 @@
       "source_published_kst": "2026-10-06T08:45+09:00",
       "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
     },
+    "source_fact:3e7067e2e188f72abc578c71": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839351",
+      "source": "뉴시스",
+      "source_body_digest": "70cda9a9d8d925ebea8a2b4eb44b78fb1e0b442a6d38e6db8aad2768e56934a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:482fa1f9b8cc3d3e86eeb039f6ac12ea4fb41dfe809b5b90de67142c3422a2a5",
+      "source_fact_keys": [
+        "source_fact:v1:013aab8ea8170e0d6174b89657213b08fd9ad348f25d11b7737bc59ad9c91a43",
+        "source_fact:v1:7324e5e9f9623ac835c2b10835a8c0859755c43df2cf7a2883e62c4b8c2181d6",
+        "source_fact:v1:8c4b87910c0e9b966b19f38813819882e6acd5f002f84ddd5c37d8714e5bee6e",
+        "source_fact:v1:baf74dba8795e655cefaca62d58f0dcc3b0bc60eba6d8f02fffd65c65ce78121",
+        "source_fact:v1:bb81c90236576e3530a38d16b13a6b70ceade61469baf932b06e8bed04ee5d57",
+        "source_fact:v1:f39f97fa5ef28a15754e2c77729df41b9323e3111772131266ee6ff9cb336d55"
+      ],
+      "source_published_kst": "2026-10-23T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\"",
+      "telegram_core_fact": "영국 체감경기를 반영하는 2026년 10월 종합 구매관리자 지수(PMI 속보치)는 53.1로 8개월 만에 최고치를 기록했다고 마켓워치, RTT 뉴스, BBC, MSN이 23일 보도했다. 10월 제조업 PMI는 52.8로 9월 51.9에서 0.9 포인트 상승했다.",
+      "title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\""
+    },
     "source_fact:3e709b63f4d342bedf8e6a06": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
       "lanes": {
@@ -664095,6 +664908,34 @@
       "telegram_core_fact": "미 국채 금리 급등은 즉각 유럽으로 전파돼 영국 30년물 금리가 다시 6%선을 돌파했고, 프랑스 30년물도 하루 만에 최대 14bp(1bp=0.01%p) 올랐다.",
       "title": "美 30년물 국채금리 24년만에 최고치 재경신"
     },
+    "source_fact:433e74dce2fbc4894c87113e": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
+    },
     "source_fact:43439bb4ece6960bf6650deb": {
       "first_seen_kst": "2026-10-21T07:55:35+09:00",
       "lanes": {
@@ -673596,6 +674437,34 @@
       "telegram_core_fact": "네오클라우드는 대규모 설비투자 못지않게 수천~수만 개의 GPU를 지연 없이 안정적으로 연결하고 자원을 효율적으로 배분하는 운영 소프트웨어 기술이 핵심이다.",
       "title": "베슬AI, 2027년까지 GPU 5만장 확보 목표...네오클라우드 전환 승부수"
     },
+    "source_fact:4771b00e23a7cadc5cb7a4e8": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
+    },
     "source_fact:477226e6b9323acd71352bdd": {
       "first_seen_kst": "2026-10-19T10:00:18+09:00",
       "lanes": {
@@ -678662,6 +679531,32 @@
       ],
       "source_published_kst": "2026-10-06T17:45+09:00",
       "title": "삼성전기, MLCC 또 장기계약"
+    },
+    "source_fact:496742f41320fec913b68716": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
+      "source_fact_keys": [
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
+      ],
+      "source_published_kst": "2026-10-23T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
     },
     "source_fact:496dda2c24f7a79c444580fd": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
@@ -728630,6 +729525,31 @@
       "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
       "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
     },
+    "source_fact:5e7e2e19d57638e74fc41e39": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839351",
+      "source": "뉴시스",
+      "source_body_digest": "70cda9a9d8d925ebea8a2b4eb44b78fb1e0b442a6d38e6db8aad2768e56934a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:482fa1f9b8cc3d3e86eeb039f6ac12ea4fb41dfe809b5b90de67142c3422a2a5",
+      "source_fact_keys": [
+        "source_fact:v1:013aab8ea8170e0d6174b89657213b08fd9ad348f25d11b7737bc59ad9c91a43",
+        "source_fact:v1:7324e5e9f9623ac835c2b10835a8c0859755c43df2cf7a2883e62c4b8c2181d6",
+        "source_fact:v1:8c4b87910c0e9b966b19f38813819882e6acd5f002f84ddd5c37d8714e5bee6e",
+        "source_fact:v1:baf74dba8795e655cefaca62d58f0dcc3b0bc60eba6d8f02fffd65c65ce78121",
+        "source_fact:v1:bb81c90236576e3530a38d16b13a6b70ceade61469baf932b06e8bed04ee5d57",
+        "source_fact:v1:f39f97fa5ef28a15754e2c77729df41b9323e3111772131266ee6ff9cb336d55"
+      ],
+      "source_published_kst": "2026-10-23T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\"",
+      "telegram_core_fact": "영국 체감경기를 반영하는 2026년 10월 종합 구매관리자 지수(PMI 속보치)는 53.1로 8개월 만에 최고치를 기록했다고 마켓워치, RTT 뉴스, BBC, MSN이 23일 보도했다. 10월 제조업 PMI는 52.8로 9월 51.9에서 0.9 포인트 상승했다.",
+      "title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\""
+    },
     "source_fact:5e7ec8f85205388ce40bcf56": {
       "first_seen_kst": "2026-10-18T05:50:47+09:00",
       "lanes": {
@@ -731661,6 +732581,32 @@
       "source_title": "[올댓차이나] 9월 中 소비자물가 0.9%↑…\"연휴 소비에도 예상 하회\"",
       "telegram_core_fact": "경제통과 재신쾌보, 인베스팅 닷컴, 트레이딩 이코노믹스에 따르면 중국 국가통계국은 14일 체감경기를 반영하는 9월 소비자 물가지수(CPI)가 전년 동월보다 0.9% 상승했다고 발표했다.",
       "title": "[올댓차이나] 9월 中 소비자물가 0.9%↑…\"연휴 소비에도 예상 하회\""
+    },
+    "source_fact:601a44bab2e7cba6daf1c734": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
+      "source_fact_keys": [
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
+      ],
+      "source_published_kst": "2026-10-23T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
     },
     "source_fact:601ad368b2feed4c49698541": {
       "first_seen_kst": "2026-10-12T16:29:45+09:00",
@@ -752741,6 +753687,31 @@
       "telegram_core_fact": "외국인은 올해 코스피에서 약 199조원을 순매도했다. 삼성전자와 SK하이닉스 두 회사를 제외해도 순이익이 119.7% 증가했다.",
       "title": "100일간 50조원 팔았다 … 코스피, 외국인 엑소더스에 속수무책"
     },
+    "source_fact:6948ebce9fae2368c187b63b": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639432",
+      "source": "이투데이",
+      "source_body_digest": "771a4392ded7359f3d0dae13d5b849b9803fb33dcb41bec49b7bd8effa008874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bf042d789f76a946f43d49f256d8c8330f9f9e87b043d5ae404378aa1a5dd92",
+      "source_fact_keys": [
+        "source_fact:v1:1398229c4b85e3b41266123d392626d2d67d726eca517c60294d8a5f293737b0",
+        "source_fact:v1:1b1d7816b305f75139bd13f7fcef99eabb4a99ee5de2eade6e39a12bf85ba5f3",
+        "source_fact:v1:6e0becdb6c177438fca5670677adf57c4ef2e53088111fb37565a725e096501d",
+        "source_fact:v1:6e2ff5c4cc5b99df983ac6a0a070f0587e90b4612d617a2e2a6bb105a3bea0fa",
+        "source_fact:v1:8f252c9e50a6649ff8660f898078a51ae87cb59b44c6e14dfc1b5b9e43605f0b",
+        "source_fact:v1:c3c3b91fa60f85eabf16ae6efcb37e600d12664a0ccddf8ccb75880dc5572a3f"
+      ],
+      "source_published_kst": "2026-10-23T14:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”",
+      "telegram_core_fact": "이 대통령은 “최근에 발의된 초광역 특구법에는 단일 법률로는 역대 최대인 300여 개의 규제 특례가 담겨 있다고 한다”며 국회의 신속한 심사와 함께 법 제정 이전에 개선할 수 있는 규제부터 선제적으로 정비할 것을 당부했다.",
+      "title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”"
+    },
     "source_fact:6951b4a7382f9633dc8fb906": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -765887,6 +766858,38 @@
       "telegram_core_fact": "나토 내부에서는 흑해 감시·정찰 활동 강화, 무인 시스템을 활용한 상선 호위, 러시아 '그림자 함대' 선박에 대한 나포 확대, 추가 경제 제재 및 외교관 추방 등의 대응 카드가 거론되고 있다.",
       "title": "'개구리 삶기 전략'…러시아 동유럽 도발에 나토 동맹 시험대 | 연합뉴스"
     },
+    "source_fact:6f157062c38236c8c1df0cd3": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
+    },
     "source_fact:6f176c664b856ca7676f28b6": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
       "lanes": {
@@ -767412,6 +768415,38 @@
       "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
       "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
       "title": "엠엑스온, 전사 공급망 관리 체계 구축"
+    },
+    "source_fact:6fd4a871a12d9dff24b6f32a": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
     },
     "source_fact:6fd4ef1257101fa051496a90": {
       "first_seen_kst": "2026-10-19T23:09:43+09:00",
@@ -781084,6 +782119,31 @@
       "telegram_core_fact": "핀텔(291810)은 인천공항 지능형 영상분석시스템 구축사업에 관한 단일판매ㆍ공급계약체결 을 12일에 공시했다.",
       "title": "핀텔 수주공시 - 인천공항 지능형 영상분석시스템 구축사업 7.8억원 (매출액대비 13.4 %)"
     },
+    "source_fact:75dc7c3e7f1ad6ee553f622f": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839351",
+      "source": "뉴시스",
+      "source_body_digest": "70cda9a9d8d925ebea8a2b4eb44b78fb1e0b442a6d38e6db8aad2768e56934a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:482fa1f9b8cc3d3e86eeb039f6ac12ea4fb41dfe809b5b90de67142c3422a2a5",
+      "source_fact_keys": [
+        "source_fact:v1:013aab8ea8170e0d6174b89657213b08fd9ad348f25d11b7737bc59ad9c91a43",
+        "source_fact:v1:7324e5e9f9623ac835c2b10835a8c0859755c43df2cf7a2883e62c4b8c2181d6",
+        "source_fact:v1:8c4b87910c0e9b966b19f38813819882e6acd5f002f84ddd5c37d8714e5bee6e",
+        "source_fact:v1:baf74dba8795e655cefaca62d58f0dcc3b0bc60eba6d8f02fffd65c65ce78121",
+        "source_fact:v1:bb81c90236576e3530a38d16b13a6b70ceade61469baf932b06e8bed04ee5d57",
+        "source_fact:v1:f39f97fa5ef28a15754e2c77729df41b9323e3111772131266ee6ff9cb336d55"
+      ],
+      "source_published_kst": "2026-10-23T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\"",
+      "telegram_core_fact": "영국 체감경기를 반영하는 2026년 10월 종합 구매관리자 지수(PMI 속보치)는 53.1로 8개월 만에 최고치를 기록했다고 마켓워치, RTT 뉴스, BBC, MSN이 23일 보도했다. 10월 제조업 PMI는 52.8로 9월 51.9에서 0.9 포인트 상승했다.",
+      "title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\""
+    },
     "source_fact:75ddd0e038028e8ced14d5be": {
       "first_seen_kst": "2026-10-18T17:16:37+09:00",
       "lanes": {
@@ -784313,6 +785373,31 @@
       "source_title": "중기부, 2차 '모두의 창업' AI 솔루션 103개 선정…1인당 100만원 지원",
       "telegram_core_fact": "1라운드 진출자는 1인당 최대 100만원 범위에서 필요한 AI 솔루션을 이용할 수 있다. 중기부는 12일 '모두의 창업' 도전자에게 제공할 AI 솔루션 공급기업 50개사와 103개 솔루션을 공개한다고 11일 밝혔다.",
       "title": "중기부, 2차 '모두의 창업' AI 솔루션 103개 선정…1인당 100만원 지원"
+    },
+    "source_fact:7754827cffddda7b61992f7b": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639432",
+      "source": "이투데이",
+      "source_body_digest": "771a4392ded7359f3d0dae13d5b849b9803fb33dcb41bec49b7bd8effa008874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bf042d789f76a946f43d49f256d8c8330f9f9e87b043d5ae404378aa1a5dd92",
+      "source_fact_keys": [
+        "source_fact:v1:1398229c4b85e3b41266123d392626d2d67d726eca517c60294d8a5f293737b0",
+        "source_fact:v1:1b1d7816b305f75139bd13f7fcef99eabb4a99ee5de2eade6e39a12bf85ba5f3",
+        "source_fact:v1:6e0becdb6c177438fca5670677adf57c4ef2e53088111fb37565a725e096501d",
+        "source_fact:v1:6e2ff5c4cc5b99df983ac6a0a070f0587e90b4612d617a2e2a6bb105a3bea0fa",
+        "source_fact:v1:8f252c9e50a6649ff8660f898078a51ae87cb59b44c6e14dfc1b5b9e43605f0b",
+        "source_fact:v1:c3c3b91fa60f85eabf16ae6efcb37e600d12664a0ccddf8ccb75880dc5572a3f"
+      ],
+      "source_published_kst": "2026-10-23T14:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”",
+      "telegram_core_fact": "이 대통령은 “최근에 발의된 초광역 특구법에는 단일 법률로는 역대 최대인 300여 개의 규제 특례가 담겨 있다고 한다”며 국회의 신속한 심사와 함께 법 제정 이전에 개선할 수 있는 규제부터 선제적으로 정비할 것을 당부했다.",
+      "title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”"
     },
     "source_fact:775b15206a97ff52c95d0e9b": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
@@ -794562,6 +795647,32 @@
       "telegram_core_fact": "블룸버그통신에 따르면 국제에너지기구(IEA)는 최근 이사회를 열고 2000만 배럴 경유를 포함한 1억 배럴의 비축유를 신속히 방출하기로 결정했다. 일부 회원국이 당초 약속했던 물량보다 더 많은 비축유를 방출하면서, 최종적인 공급은 당초 목표였던 4억 배럴을 상회할 것으로 보인다.",
       "title": "꼬여만 가는 중동·러우戰 향방…글로벌 에너지 시장은 '안갯속'"
     },
+    "source_fact:7bd1e66ec67218790e872ebb": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
+      "source_fact_keys": [
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
+      ],
+      "source_published_kst": "2026-10-23T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
+    },
     "source_fact:7bd3b84c4843132536fda46f": {
       "first_seen_kst": "2026-10-13T09:41:33+09:00",
       "lanes": {
@@ -799117,6 +800228,38 @@
       "telegram_core_fact": "스포츠레이더 그룹(SRAD)이 자회사 시너지 스포츠(Synergy Sports)의 코칭·스카우팅 사업부인 아트리움 스포츠(Atrium Sports)를 팀웍스 이노베이션스(Teamworks Innovations)에 현금 1억7000만 달러를 받고 매각하는 확정 계약을 체결했다고 7일 발표했다.",
       "title": "스포츠레이더 그룹, 코칭사업 1억7000만 달러 매각…핵심 집중"
     },
+    "source_fact:7df39d2445580d220f7cb8a3": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
+    },
     "source_fact:7df5d03d49d17fad9f6f267b": {
       "first_seen_kst": "2026-10-14T13:56:06+09:00",
       "lanes": {
@@ -801183,6 +802326,38 @@
       "source_title": "차이나 위차이 인터내셔, 광시전예와 ADI 합작법인 설립..지분 34% 확보",
       "telegram_core_fact": "차이나 위차이 인터내셔널(CYD)은 전액 출자 자회사 광시위차이주조유한공사가 광시전예신소재와 오스템퍼드 연성주철(ADI) 열처리 사업을 위한 합작법인 광시아오베이과기를 설립했으며, 지분 34%를 확보했다고 10월 20일 발표했다.",
       "title": "차이나 위차이 인터내셔, 광시전예와 ADI 합작법인 설립..지분 34% 확보"
+    },
+    "source_fact:7edbf4cf7d18f8c7bc584dce": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
     },
     "source_fact:7ee08a1ac11a9bbe056283b1": {
       "first_seen_kst": "2026-10-12T15:43:01+09:00",
@@ -817441,6 +818616,32 @@
       "source_published_kst": "2026-10-07T08:12+09:00",
       "title": "원유 풀려도 배가 없다…비톨 “유가 200달러 갈 수도”"
     },
+    "source_fact:865128301bf38e7611941695": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
+      "source_fact_keys": [
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
+      ],
+      "source_published_kst": "2026-10-23T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
+    },
     "source_fact:8657bee623a3a48d5a8a0dfc": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
       "lanes": {
@@ -819876,6 +821077,31 @@
       "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
       "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
       "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
+    },
+    "source_fact:877931077e2d6af7e076bf10": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839351",
+      "source": "뉴시스",
+      "source_body_digest": "70cda9a9d8d925ebea8a2b4eb44b78fb1e0b442a6d38e6db8aad2768e56934a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:482fa1f9b8cc3d3e86eeb039f6ac12ea4fb41dfe809b5b90de67142c3422a2a5",
+      "source_fact_keys": [
+        "source_fact:v1:013aab8ea8170e0d6174b89657213b08fd9ad348f25d11b7737bc59ad9c91a43",
+        "source_fact:v1:7324e5e9f9623ac835c2b10835a8c0859755c43df2cf7a2883e62c4b8c2181d6",
+        "source_fact:v1:8c4b87910c0e9b966b19f38813819882e6acd5f002f84ddd5c37d8714e5bee6e",
+        "source_fact:v1:baf74dba8795e655cefaca62d58f0dcc3b0bc60eba6d8f02fffd65c65ce78121",
+        "source_fact:v1:bb81c90236576e3530a38d16b13a6b70ceade61469baf932b06e8bed04ee5d57",
+        "source_fact:v1:f39f97fa5ef28a15754e2c77729df41b9323e3111772131266ee6ff9cb336d55"
+      ],
+      "source_published_kst": "2026-10-23T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\"",
+      "telegram_core_fact": "영국 체감경기를 반영하는 2026년 10월 종합 구매관리자 지수(PMI 속보치)는 53.1로 8개월 만에 최고치를 기록했다고 마켓워치, RTT 뉴스, BBC, MSN이 23일 보도했다. 10월 제조업 PMI는 52.8로 9월 51.9에서 0.9 포인트 상승했다.",
+      "title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\""
     },
     "source_fact:8785deb51b9654a327319410": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
@@ -839676,6 +840902,34 @@
       "telegram_core_fact": "안 사장은 'AI 시대, 메모리 기술의 진화 방향'을 주제로 진행한 기조연설에서 AI 추론 수요 확대에 따라 기존 메모리 계층의 성능과 용량 측면에서 새로운 병목이 발생하고 있다고 설명함.",
       "title": "SK하이닉스 안현 사장 '전체 메모리 계층 최적화로 AI 생태계 지속 성장 견인'"
     },
+    "source_fact:90d4aeaa4db49480a551fed6": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
+    },
     "source_fact:90d74670dc91a0e22bede338": {
       "first_seen_kst": "2026-10-17T00:21:55+09:00",
       "lanes": {
@@ -841591,6 +842845,38 @@
       "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
       "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
       "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
+    },
+    "source_fact:91ba0b493f838b19410b7c61": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
     },
     "source_fact:91bac39879606ae9cfa54104": {
       "first_seen_kst": "2026-10-21T05:10:02+09:00",
@@ -847076,6 +848362,31 @@
       "source_title": "[단독] 팀 코리아, 美웨스팅하우스 지분 인수 '兆단위 베팅'",
       "telegram_core_fact": "SK그룹이 조(兆) 단위 자금을 투입해 미국 원전 기업 웨스팅하우스 지분을 인수하는 방안을 검토 중인 것으로 파악됐다.",
       "title": "[단독] 팀 코리아, 美웨스팅하우스 지분 인수 '兆단위 베팅'"
+    },
+    "source_fact:94277cc71ce89d6abe286bd2": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639432",
+      "source": "이투데이",
+      "source_body_digest": "771a4392ded7359f3d0dae13d5b849b9803fb33dcb41bec49b7bd8effa008874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bf042d789f76a946f43d49f256d8c8330f9f9e87b043d5ae404378aa1a5dd92",
+      "source_fact_keys": [
+        "source_fact:v1:1398229c4b85e3b41266123d392626d2d67d726eca517c60294d8a5f293737b0",
+        "source_fact:v1:1b1d7816b305f75139bd13f7fcef99eabb4a99ee5de2eade6e39a12bf85ba5f3",
+        "source_fact:v1:6e0becdb6c177438fca5670677adf57c4ef2e53088111fb37565a725e096501d",
+        "source_fact:v1:6e2ff5c4cc5b99df983ac6a0a070f0587e90b4612d617a2e2a6bb105a3bea0fa",
+        "source_fact:v1:8f252c9e50a6649ff8660f898078a51ae87cb59b44c6e14dfc1b5b9e43605f0b",
+        "source_fact:v1:c3c3b91fa60f85eabf16ae6efcb37e600d12664a0ccddf8ccb75880dc5572a3f"
+      ],
+      "source_published_kst": "2026-10-23T14:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”",
+      "telegram_core_fact": "이 대통령은 “최근에 발의된 초광역 특구법에는 단일 법률로는 역대 최대인 300여 개의 규제 특례가 담겨 있다고 한다”며 국회의 신속한 심사와 함께 법 제정 이전에 개선할 수 있는 규제부터 선제적으로 정비할 것을 당부했다.",
+      "title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”"
     },
     "source_fact:94329069d86e7c84118ec247": {
       "first_seen_kst": "2026-10-23T10:22:46+09:00",
@@ -857908,6 +859219,34 @@
       "source_title": "LIG D&A, 입찰제한에 법적대응 예고…수주·개발 차질 비상 | 연합뉴스",
       "telegram_core_fact": "검찰은 LIG D&A 관계자들이 평가 조작을 발판으로 1조7천억원 '한국형 전자전기' 핵심 기술 사업을 수주한 것으로 보고 있다.",
       "title": "LIG D&A, 입찰제한에 법적대응 예고…수주·개발 차질 비상 | 연합뉴스"
+    },
+    "source_fact:98da13fbcb51d14ba6f9128f": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
     },
     "source_fact:98dbae57ffa9e33f8a91f0f3": {
       "first_seen_kst": "2026-10-14T06:58:10+09:00",
@@ -881449,6 +882788,34 @@
       "telegram_core_fact": "부산항만공사와 부산대 법학전문대학원은 14일 '해사법무 및 항만정책 분야 전문인력 양성과 협력체계 구축'을 위한 업무협약을 했다고 밝혔다. 부산항만공사는 부산항의 개발·관리·운영 업무를 수행하는 공공기관으로 항만 관련 법령을 비롯해 국유재산, 계약 등 다양한 법률·제도에 대한 이해와 판단을 요구하는 업무를 많이 한다.",
       "title": "부산항만공사, 부산대 법학전문대학원과 업무협약 | 연합뉴스"
     },
+    "source_fact:a2ea6ad79db3da4ece20cf3d": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
+    },
     "source_fact:a2eac3485bba2964232d1884": {
       "first_seen_kst": "2026-10-15T14:35:05+09:00",
       "lanes": {
@@ -886225,6 +887592,38 @@
       "source_title": "LS일렉, 美 빅테크에 데이터센터 배전 솔루션 공급…1700억 규모",
       "telegram_core_fact": "LS일렉트릭이 미국 빅테크 기업과 약 1700억원 데이터센터 배전 솔루션 공급계약을 체결했다.",
       "title": "LS일렉, 美 빅테크에 데이터센터 배전 솔루션 공급…1700억 규모"
+    },
+    "source_fact:a4b5d29c22b4bdbe65990309": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
     },
     "source_fact:a4b819ad1991de68e6666879": {
       "first_seen_kst": "2026-10-20T13:59:52+09:00",
@@ -895983,6 +897382,38 @@
       "telegram_core_fact": "삼성전자가 3분기 100조원이 넘는 영업이익을 기록하며 깜짝 실적을 냈으나 외국인 투자자들의 매도세와 옵션 만기일 영향이 겹쳐 주가는 지루한 움직임을 보였다.",
       "title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나"
     },
+    "source_fact:a92da8a6551f55b6beeb0cc3": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
+    },
     "source_fact:a92f4e8c897a70dc82620d4f": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
       "lanes": {
@@ -904694,6 +906125,34 @@
       "source_published_kst": "2026-10-05T03:42+09:00",
       "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
     },
+    "source_fact:acbdb05af338ecec86a39807": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
+    },
     "source_fact:acbecbaa935250dc553e2bda": {
       "first_seen_kst": "2026-10-10T05:10:14+09:00",
       "lanes": {
@@ -908336,6 +909795,32 @@
       "telegram_core_fact": "한 주(10월 12일~10월 16일) 국내 제약·바이오 업계에서 주목받은 임상 및 품목 허가 소식이다.",
       "title": "[임상 업데이트] 압타바이오, 아이수지낙시브 2상 1차 지표 달성"
     },
+    "source_fact:ae61812978eb42f27875079e": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
+      "source_fact_keys": [
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
+      ],
+      "source_published_kst": "2026-10-23T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
+    },
     "source_fact:ae68aa936669669cdf9a8166": {
       "first_seen_kst": "2026-10-14T17:21:42+09:00",
       "lanes": {
@@ -910006,6 +911491,38 @@
       "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
       "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
       "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
+    },
+    "source_fact:af062a75307e89917a2db8c7": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
     },
     "source_fact:af067df9b6ff8ea6538d85f4": {
       "first_seen_kst": "2026-10-15T07:08:31+09:00",
@@ -913057,6 +914574,31 @@
       "source_title": "‘솔리다임 미국 상장 못하나’ 해외 IPO 추진 기업들 촉각 [투자360]",
       "telegram_core_fact": "금융투자업계에 따르면 이찬진 금융감독원장은 전날 국회 정무위원회 국정감사에서 솔리다임의 미국 증시 상장 추진과 관련해 금융위원회와 금감원 모두 중복상장에 저촉된다는 판단을 하고 있다는 취지로 밝혔다.",
       "title": "‘솔리다임 미국 상장 못하나’ 해외 IPO 추진 기업들 촉각 [투자360]"
+    },
+    "source_fact:b06b6d6fbb5b7b9cc67d03e0": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839351",
+      "source": "뉴시스",
+      "source_body_digest": "70cda9a9d8d925ebea8a2b4eb44b78fb1e0b442a6d38e6db8aad2768e56934a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:482fa1f9b8cc3d3e86eeb039f6ac12ea4fb41dfe809b5b90de67142c3422a2a5",
+      "source_fact_keys": [
+        "source_fact:v1:013aab8ea8170e0d6174b89657213b08fd9ad348f25d11b7737bc59ad9c91a43",
+        "source_fact:v1:7324e5e9f9623ac835c2b10835a8c0859755c43df2cf7a2883e62c4b8c2181d6",
+        "source_fact:v1:8c4b87910c0e9b966b19f38813819882e6acd5f002f84ddd5c37d8714e5bee6e",
+        "source_fact:v1:baf74dba8795e655cefaca62d58f0dcc3b0bc60eba6d8f02fffd65c65ce78121",
+        "source_fact:v1:bb81c90236576e3530a38d16b13a6b70ceade61469baf932b06e8bed04ee5d57",
+        "source_fact:v1:f39f97fa5ef28a15754e2c77729df41b9323e3111772131266ee6ff9cb336d55"
+      ],
+      "source_published_kst": "2026-10-23T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\"",
+      "telegram_core_fact": "영국 체감경기를 반영하는 2026년 10월 종합 구매관리자 지수(PMI 속보치)는 53.1로 8개월 만에 최고치를 기록했다고 마켓워치, RTT 뉴스, BBC, MSN이 23일 보도했다. 10월 제조업 PMI는 52.8로 9월 51.9에서 0.9 포인트 상승했다.",
+      "title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\""
     },
     "source_fact:b06d0f8427aca64b2be6bba9": {
       "first_seen_kst": "2026-10-09T20:24:58+09:00",
@@ -918487,6 +920029,31 @@
       "source_title": "반도체특별시 첫발, 3조대 앰코 광주공장 증설 19일 착공",
       "telegram_core_fact": "글로벌 반도체 후공정 기업 앰코테크놀로지코리아(엠코)가 3조원대 광주공장 증설 공사 착공에 나선다.",
       "title": "반도체특별시 첫발, 3조대 앰코 광주공장 증설 19일 착공"
+    },
+    "source_fact:b2bb51e25ade07a58182b237": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639432",
+      "source": "이투데이",
+      "source_body_digest": "771a4392ded7359f3d0dae13d5b849b9803fb33dcb41bec49b7bd8effa008874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bf042d789f76a946f43d49f256d8c8330f9f9e87b043d5ae404378aa1a5dd92",
+      "source_fact_keys": [
+        "source_fact:v1:1398229c4b85e3b41266123d392626d2d67d726eca517c60294d8a5f293737b0",
+        "source_fact:v1:1b1d7816b305f75139bd13f7fcef99eabb4a99ee5de2eade6e39a12bf85ba5f3",
+        "source_fact:v1:6e0becdb6c177438fca5670677adf57c4ef2e53088111fb37565a725e096501d",
+        "source_fact:v1:6e2ff5c4cc5b99df983ac6a0a070f0587e90b4612d617a2e2a6bb105a3bea0fa",
+        "source_fact:v1:8f252c9e50a6649ff8660f898078a51ae87cb59b44c6e14dfc1b5b9e43605f0b",
+        "source_fact:v1:c3c3b91fa60f85eabf16ae6efcb37e600d12664a0ccddf8ccb75880dc5572a3f"
+      ],
+      "source_published_kst": "2026-10-23T14:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”",
+      "telegram_core_fact": "이 대통령은 “최근에 발의된 초광역 특구법에는 단일 법률로는 역대 최대인 300여 개의 규제 특례가 담겨 있다고 한다”며 국회의 신속한 심사와 함께 법 제정 이전에 개선할 수 있는 규제부터 선제적으로 정비할 것을 당부했다.",
+      "title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”"
     },
     "source_fact:b2bb5c84f07a559dc7c94340": {
       "first_seen_kst": "2026-10-23T05:11:11+09:00",
@@ -937385,6 +938952,38 @@
       "source_published_kst": "2026-10-07T11:25+09:00",
       "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
     },
+    "source_fact:bb13d143f7db287da66a7b54": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
+    },
     "source_fact:bb14a1eb1c8d3c6d4a9c33e2": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -953180,6 +954779,38 @@
       "source_published_kst": "2026-10-06T17:14+09:00",
       "title": "알테오젠, 국민성장펀드 등 2천억원 규모 투자 유치(종합) | 연합뉴스"
     },
+    "source_fact:c1f8f4efd9026127abc82de5": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
+    },
     "source_fact:c1fa25dba1002b7b14daf5b4": {
       "first_seen_kst": "2026-10-14T23:50:23+09:00",
       "lanes": {
@@ -964119,6 +965750,32 @@
       ],
       "source_published_kst": "2026-10-06T10:44+09:00",
       "title": "유진투자증권, 연말 절세·자산관리 이벤트…최대 200만원 혜택"
+    },
+    "source_fact:c6a698cc8a2b9c98a55b6dbd": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
+      "source_fact_keys": [
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
+      ],
+      "source_published_kst": "2026-10-23T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
     },
     "source_fact:c6a7dcfe5c1b03736f1130d5": {
       "first_seen_kst": "2026-10-21T03:15:13+09:00",
@@ -979538,6 +981195,34 @@
       "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
       "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
+    "source_fact:cd6042dc82a48938b1ec9144": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
+    },
     "source_fact:cd64a2063b09fe6aee82420e": {
       "first_seen_kst": "2026-10-14T20:43:11+09:00",
       "lanes": {
@@ -982403,6 +984088,38 @@
       "source_title": "웨더포드 인터내셔널, 3분기 희석EPS 1.66달러..전년비 48% 증가",
       "telegram_core_fact": "웨더포드 인터내셔널(WFRD)이 3분기 매출액 11억4300만 달러, 희석 주당순이익 1.66달러를 기록했다고 10월 20일 발표했다.",
       "title": "웨더포드 인터내셔널, 3분기 희석EPS 1.66달러..전년비 48% 증가"
+    },
+    "source_fact:cec00a18dc424de78b8f51aa": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
     },
     "source_fact:cec379166f1ac6943c51add2": {
       "first_seen_kst": "2026-10-12T02:27:00+09:00",
@@ -991093,6 +992810,31 @@
       "source_title": "롯데이노베이트, 베트남서 데이터센터·전기차 충전사업 확대 | 연합뉴스",
       "telegram_core_fact": "양사는 협약을 통해 ▲ 하이퍼스케일 데이터센터 ▲ 전기차 충전사업(CPO) ▲ 사이버보안 ▲ 오프쇼어 IT 서비스 ▲ 클라우드 등 5개 분야에서 협력 기회를 모색한다.",
       "title": "롯데이노베이트, 베트남서 데이터센터·전기차 충전사업 확대 | 연합뉴스"
+    },
+    "source_fact:d26dd017669878f00b8c753e": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639432",
+      "source": "이투데이",
+      "source_body_digest": "771a4392ded7359f3d0dae13d5b849b9803fb33dcb41bec49b7bd8effa008874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bf042d789f76a946f43d49f256d8c8330f9f9e87b043d5ae404378aa1a5dd92",
+      "source_fact_keys": [
+        "source_fact:v1:1398229c4b85e3b41266123d392626d2d67d726eca517c60294d8a5f293737b0",
+        "source_fact:v1:1b1d7816b305f75139bd13f7fcef99eabb4a99ee5de2eade6e39a12bf85ba5f3",
+        "source_fact:v1:6e0becdb6c177438fca5670677adf57c4ef2e53088111fb37565a725e096501d",
+        "source_fact:v1:6e2ff5c4cc5b99df983ac6a0a070f0587e90b4612d617a2e2a6bb105a3bea0fa",
+        "source_fact:v1:8f252c9e50a6649ff8660f898078a51ae87cb59b44c6e14dfc1b5b9e43605f0b",
+        "source_fact:v1:c3c3b91fa60f85eabf16ae6efcb37e600d12664a0ccddf8ccb75880dc5572a3f"
+      ],
+      "source_published_kst": "2026-10-23T14:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”",
+      "telegram_core_fact": "이 대통령은 “최근에 발의된 초광역 특구법에는 단일 법률로는 역대 최대인 300여 개의 규제 특례가 담겨 있다고 한다”며 국회의 신속한 심사와 함께 법 제정 이전에 개선할 수 있는 규제부터 선제적으로 정비할 것을 당부했다.",
+      "title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”"
     },
     "source_fact:d26e099e101a7cb926ab4c87": {
       "first_seen_kst": "2026-10-14T16:58:19+09:00",
@@ -1004176,6 +1005918,34 @@
       "source_title": "“주가 떨어져야 더 받는다?”…삼성 직원 글에 주주들 ‘부글부글’- 매경ECONOMY",
       "telegram_core_fact": "삼성전자 주가가 지난 15일 하루 만에 9% 이상 내린 가운데 일부 직원으로 추정되는 이들이 주가가 떨어져야 이득이라는 글을 올려 갑론을박이 벌어졌다. 삼성전자 노사는 올해 DS부문 영업이익의 10.5%를 재원으로 내년 3월 말에서 4월 초 사이 성과급을 추가 지급할 예정이다.",
       "title": "“주가 떨어져야 더 받는다?”…삼성 직원 글에 주주들 ‘부글부글’- 매경ECONOMY"
+    },
+    "source_fact:d809b29050f1e8a5a5d39811": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
     },
     "source_fact:d80a1fc2e287808c6fe59021": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
@@ -1026722,6 +1028492,38 @@
       "telegram_core_fact": "그루포 아에로멕시코(AERO)가 9월 30일 종료된 3분기 매출액(IFRS)이 분기 기준 사상 최고인 16억1900만 달러로 전년비 13.6% 증가했으나, 영업이익은 1억8960만 달러로 25.0% 감소했다고 19일 발표했다.",
       "title": "그루포 아에로멕시코, 3분기 매출 16억달러 최대..영업익 25% 감소"
     },
+    "source_fact:e1ebac83419e4b47715de582": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
+    },
     "source_fact:e1ef2ba7314719a4acdd3d86": {
       "first_seen_kst": "2026-10-21T21:09:15+09:00",
       "lanes": {
@@ -1029468,6 +1031270,31 @@
       "source_title": "꼬여만 가는 중동·러우戰 향방…글로벌 에너지 시장은 '안갯속'",
       "telegram_core_fact": "블룸버그통신에 따르면 국제에너지기구(IEA)는 최근 이사회를 열고 2000만 배럴 경유를 포함한 1억 배럴의 비축유를 신속히 방출하기로 결정했다. 일부 회원국이 당초 약속했던 물량보다 더 많은 비축유를 방출하면서, 최종적인 공급은 당초 목표였던 4억 배럴을 상회할 것으로 보인다.",
       "title": "꼬여만 가는 중동·러우戰 향방…글로벌 에너지 시장은 '안갯속'"
+    },
+    "source_fact:e3222402aa010f27264a3233": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639432",
+      "source": "이투데이",
+      "source_body_digest": "771a4392ded7359f3d0dae13d5b849b9803fb33dcb41bec49b7bd8effa008874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bf042d789f76a946f43d49f256d8c8330f9f9e87b043d5ae404378aa1a5dd92",
+      "source_fact_keys": [
+        "source_fact:v1:1398229c4b85e3b41266123d392626d2d67d726eca517c60294d8a5f293737b0",
+        "source_fact:v1:1b1d7816b305f75139bd13f7fcef99eabb4a99ee5de2eade6e39a12bf85ba5f3",
+        "source_fact:v1:6e0becdb6c177438fca5670677adf57c4ef2e53088111fb37565a725e096501d",
+        "source_fact:v1:6e2ff5c4cc5b99df983ac6a0a070f0587e90b4612d617a2e2a6bb105a3bea0fa",
+        "source_fact:v1:8f252c9e50a6649ff8660f898078a51ae87cb59b44c6e14dfc1b5b9e43605f0b",
+        "source_fact:v1:c3c3b91fa60f85eabf16ae6efcb37e600d12664a0ccddf8ccb75880dc5572a3f"
+      ],
+      "source_published_kst": "2026-10-23T14:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”",
+      "telegram_core_fact": "이 대통령은 “최근에 발의된 초광역 특구법에는 단일 법률로는 역대 최대인 300여 개의 규제 특례가 담겨 있다고 한다”며 국회의 신속한 심사와 함께 법 제정 이전에 개선할 수 있는 규제부터 선제적으로 정비할 것을 당부했다.",
+      "title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”"
     },
     "source_fact:e322b97699083a48906f1cfb": {
       "first_seen_kst": "2026-10-16T18:28:57+09:00",
@@ -1100032,6 +1101859,38 @@
       "source": "이데일리",
       "title": "\"단일종목 레버리지 상품, 개인이 손대면 안 됐어\"[만났습니다②]"
     },
+    "title:0c8596f0a168a3f195c4dbce": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12183925",
+      "source": "매일경제",
+      "source_body_digest": "02c6ab35b948a8336c1a94f254a4715027a91ac0a936c9580cb5ac6d7743c88f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c2f12a33a9b16521554219d18964138727a6b1ab4a405c67cff81719fefc1279",
+      "source_fact_keys": [
+        "source_fact:v1:08059a9e0d2c5499baa86cf23d61dd9047b4f4c7613b128d74716aa3b3d9c9cd",
+        "source_fact:v1:1c8c0b6ee84a97774dce38b73433900ec3eba0361afab9c8f756e2f6ac208e07",
+        "source_fact:v1:450e80e5b514097b67f5aa8667760bea1085a547c28f95b3a37bbf593406e373",
+        "source_fact:v1:64ebaa21758d25b61965a3e91181049544324bec7a81cc1bb409ded94dff5a57",
+        "source_fact:v1:653b6bfc1db7c388462693493ff15a02d6e623d687437348a69af3efa3a8cef3",
+        "source_fact:v1:714677c143ebca78c8d56a9eb130d1b5ac27d1e96400da3798d066b28be2e743",
+        "source_fact:v1:783bfc17d86dbbaf25eba253a76f6566195cceb7106029649d788a94c733e75b",
+        "source_fact:v1:875cecea1ffdb992c8ba5eb509ac4f165bc9284649f873eaadd8a9c72b0357a4",
+        "source_fact:v1:a129494e29f29ce2c31c27c993b01f7c05c73663e5334ef57fca2d25fc4fa458",
+        "source_fact:v1:b330dd71d4990be78fcd2ba7439257eeba7041eea1996bb0e2a515ac8f4f219d",
+        "source_fact:v1:c389539c4097c7e55c4d1a42357892626d57b6f59c82efc5b4abf3455727da6a",
+        "source_fact:v1:cde9502206bdc0dc87a727a5e02a283c086ada2a6cec72c00a6165f488642463",
+        "source_fact:v1:eee69c74703eec2b4615d3edfabb204a15a3d1b25ff93729f116714d9b6ec606"
+      ],
+      "source_published_kst": "2026-10-23T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY",
+      "telegram_core_fact": "과거에는 기업이 성장하면 생산시설과 인력을 함께 늘렸지만, AI 시대에는 매출과 이익이 증가해도 고용이 비례해 늘어난다는 보장이 없다. 기업의 인사 혁신만으로는 인사이더와 아웃사이더 사이 격차를 해소하기 어려운 만큼, AI 시대 노동 정책의 새판을 짤 때라는 목소리도 높다.",
+      "title": "AI 시대 新계급 갈등…인사이더 vs 아웃사이더 [스페셜 리포트]- 매경ECONOMY"
+    },
     "title:0c8606d0e62c15bdcdc879fb": {
       "first_seen_kst": "2026-10-02T16:06:36+09:00",
       "lanes": {
@@ -1108829,6 +1110688,24 @@
       "telegram_core_fact": "최근 분기 약 85조원의 영업이익을 기록한 엔비디아보다도 많은 규모다.",
       "title": "엔비디아 뛰어넘고 내년 전망도 밝은데…'분기 영업익 100조' 삼성전자, 주가는 왜?"
     },
+    "title:1cf77e8b0340a55633503ddc": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023169451109",
+      "source": "연합뉴스",
+      "source_body_digest": "0927a526062c3472a6b9ebd09a40ebcfe46a4dc103c996164a64f8ba844987e4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T23:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"트럼프·푸틴 경유딜 후 러시아산 경유 4만t 첫 미국행\"(종합) | 연합뉴스",
+      "telegram_core_fact": "그러면서 러시아가 즉시 경유 30만t, 다음 달 50만t 이상을 수출하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 말했다. 도널드 트럼프 미국 대통령은 이달 9일 러시아산 경유를 미국이 수입할 수 있도록 한시적 대러 석유수출 제재 면제를 발표했다.",
+      "title": "\"트럼프·푸틴 경유딜 후 러시아산 경유 4만t 첫 미국행\"(종합) | 연합뉴스"
+    },
     "title:1d0953268493cd34b75116fb": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
       "lanes": {
@@ -1110410,6 +1112287,31 @@
       "link": "https://zdnet.co.kr/view/?no=20261001100039",
       "source": "지디넷코리아",
       "title": "세미파이브, 모빌린트와 산업 로봇용 AI 반도체 개발 계약 체결"
+    },
+    "title:1fa12014a89cc051c00e5c6c": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639432",
+      "source": "이투데이",
+      "source_body_digest": "771a4392ded7359f3d0dae13d5b849b9803fb33dcb41bec49b7bd8effa008874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bf042d789f76a946f43d49f256d8c8330f9f9e87b043d5ae404378aa1a5dd92",
+      "source_fact_keys": [
+        "source_fact:v1:1398229c4b85e3b41266123d392626d2d67d726eca517c60294d8a5f293737b0",
+        "source_fact:v1:1b1d7816b305f75139bd13f7fcef99eabb4a99ee5de2eade6e39a12bf85ba5f3",
+        "source_fact:v1:6e0becdb6c177438fca5670677adf57c4ef2e53088111fb37565a725e096501d",
+        "source_fact:v1:6e2ff5c4cc5b99df983ac6a0a070f0587e90b4612d617a2e2a6bb105a3bea0fa",
+        "source_fact:v1:8f252c9e50a6649ff8660f898078a51ae87cb59b44c6e14dfc1b5b9e43605f0b",
+        "source_fact:v1:c3c3b91fa60f85eabf16ae6efcb37e600d12664a0ccddf8ccb75880dc5572a3f"
+      ],
+      "source_published_kst": "2026-10-23T14:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”",
+      "telegram_core_fact": "이 대통령은 “최근에 발의된 초광역 특구법에는 단일 법률로는 역대 최대인 300여 개의 규제 특례가 담겨 있다고 한다”며 국회의 신속한 심사와 함께 법 제정 이전에 개선할 수 있는 규제부터 선제적으로 정비할 것을 당부했다.",
+      "title": "李대통령 “3대 메가프로젝트·초광역특구 규제 직접 챙길 것…지역 성장동력 확보”"
     },
     "title:1fa19311dd45f838dece3212": {
       "first_seen_kst": "2026-10-13T18:11:03+09:00",
@@ -1130822,6 +1132724,34 @@
       "telegram_core_fact": "국제유가와 미국 국채금리가 치솟은 데다 현물 상장지수펀드(ETF)에서 자금까지 빠져나가면서 투자심리를 위축시켰다는 분석이다.",
       "title": "비트코인 왜 또 빠지나…유가·국채금리·ETF '3중 악재'"
     },
+    "title:42ece1ed8eafecc9ce0cfbf3": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12184150",
+      "source": "매일경제",
+      "source_body_digest": "6e4147ae1d6937331d7b30b7999db6f84b5704aedfe3438cc33c302ec8f3ef68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2163fc00d44a5f24d3d724f38ef71c453e3374a3d6d658f6ce73ba27ed4c34e5",
+      "source_fact_keys": [
+        "source_fact:v1:04e9cd87dd468be3f1018381c428f4101132440eef9570fc6655276edd9bf40a",
+        "source_fact:v1:0e395c267d39e58d325651b16e7e6e9527a0a8a17d4cae6cdea5e417dfeee3b1",
+        "source_fact:v1:28a68d7b8bdc8425c17eb42b32a740af37f7bad7fe8ec7bc2c16b375d78e999b",
+        "source_fact:v1:5a68560192ac1402463d3366b791cf7467559ae42d7986a85584f0679db3718f",
+        "source_fact:v1:7e136cf536eb08fef99f50ed90c2a21ee764c182c6d1f2e1155e0f759bda2e4c",
+        "source_fact:v1:c336ad4bfa549fe2e149e2709001e789748ae71aab74d80139a88384b73f59ca",
+        "source_fact:v1:cb2802359e1d505bc61c8cf9a63dc4012eeb375c106437409ca875fefc25d334",
+        "source_fact:v1:d5636d3671ddd88bce5bfd676ac908e8644cdcd63e0f5108f68a5617e2d3e32c",
+        "source_fact:v1:e0687d49e11ecb322fe45ddf97c3a48a2b750090044364508aaaabf1be90fa9f"
+      ],
+      "source_published_kst": "2026-10-23T14:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승",
+      "telegram_core_fact": "원화의 실질 가치가 3개월새 11.7% 상승한 것으로 확인됐다. 23일 국제결제은행(BIS)이 집계한 원화 실질실효환율(2020=100)은 9월 92.73으로 6월(83.03) 대비 11.7% 상승했다.",
+      "title": "원화 실질가치 3개월새 11.7% 껑충…금융위기 이후 17년만에 최대 상승"
+    },
     "title:42f6a03c807721e6594d71e0": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
       "lanes": {
@@ -1141400,6 +1143330,24 @@
       "source_title": "앱코 투자 美 불스아이, 뉴욕 벤처 서밋 혁신기업 선정",
       "telegram_core_fact": "코스닥 상장사 앱코가 지분을 보유한 미국 의료 인공지능(AI) 기업 불스아이 바이오디바이스가 미국 뉴욕에서 열리는 벤처 투자 행사에서 혁신기업으로 선정됐다. 앱코는 불스아이가 ‘2026 뉴욕 벤처 서밋’(New York Venture Summit)의 ‘톱 이노베이터’로 선정됐다고 16일 밝혔다.",
       "title": "앱코 투자 美 불스아이, 뉴욕 벤처 서밋 혁신기업 선정"
+    },
+    "title:55e1f55d6212c61c6e40a29a": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639274",
+      "source": "이투데이",
+      "source_body_digest": "ab642cf043a19a01fe2ea539eca79c9aed88c7fc33b22f66c7fb342e263e7ea9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T14:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 산단 조성 10→5년…초광역특구에 320개 규제특례",
+      "telegram_core_fact": "현재 반도체 산단은 산업단지계획 수립과 환경영향평가 등 인허가, 토지보상, 설계·시공 등이 순차 진행돼 조성에 통상 10년 이상 걸리는데, 정부는 인허가, 보상, 설계를 동시 추진하는 방식으로 산단 조성부터 공장 가동까지 걸리는 기간을 5년 내로 줄일 계획이다.",
+      "title": "반도체 산단 조성 10→5년…초광역특구에 320개 규제특례"
     },
     "title:55e40dc136142fb3d260ddbf": {
       "first_seen_kst": "2026-10-23T15:16:59+09:00",
@@ -1195999,6 +1197947,31 @@
       "telegram_core_fact": "존 터너스 애플 최고경영자(CEO)가 전 세계적인 메모리 반도체 공급 부족을 '절대적인 위기'로 규정하며 중국산 반도체 도입 가능성을 열어뒀다.",
       "title": "애플 CEO \"메모리 품귀는 절대적 위기\"…중국산 사용 시사"
     },
+    "title:b8ef090ae26c1e5e6ff249d0": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839351",
+      "source": "뉴시스",
+      "source_body_digest": "70cda9a9d8d925ebea8a2b4eb44b78fb1e0b442a6d38e6db8aad2768e56934a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:482fa1f9b8cc3d3e86eeb039f6ac12ea4fb41dfe809b5b90de67142c3422a2a5",
+      "source_fact_keys": [
+        "source_fact:v1:013aab8ea8170e0d6174b89657213b08fd9ad348f25d11b7737bc59ad9c91a43",
+        "source_fact:v1:7324e5e9f9623ac835c2b10835a8c0859755c43df2cf7a2883e62c4b8c2181d6",
+        "source_fact:v1:8c4b87910c0e9b966b19f38813819882e6acd5f002f84ddd5c37d8714e5bee6e",
+        "source_fact:v1:baf74dba8795e655cefaca62d58f0dcc3b0bc60eba6d8f02fffd65c65ce78121",
+        "source_fact:v1:bb81c90236576e3530a38d16b13a6b70ceade61469baf932b06e8bed04ee5d57",
+        "source_fact:v1:f39f97fa5ef28a15754e2c77729df41b9323e3111772131266ee6ff9cb336d55"
+      ],
+      "source_published_kst": "2026-10-23T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\"",
+      "telegram_core_fact": "영국 체감경기를 반영하는 2026년 10월 종합 구매관리자 지수(PMI 속보치)는 53.1로 8개월 만에 최고치를 기록했다고 마켓워치, RTT 뉴스, BBC, MSN이 23일 보도했다. 10월 제조업 PMI는 52.8로 9월 51.9에서 0.9 포인트 상승했다.",
+      "title": "10월 영국 종합 PMI 53.1·1.1P↑…\"AI 수요 호조\""
+    },
     "title:b905e5388e69e3de7b9c3bdf": {
       "first_seen_kst": "2026-10-20T12:12:43+09:00",
       "lanes": {
@@ -1215795,6 +1217768,32 @@
       "telegram_core_fact": "앨리 파이낸셜(ALLY)은 2026년 3분기 GAAP 기준 희석 주당순이익(EPS)이 1.30달러로 전년 동기(1.18달러) 대비 10% 증가했고, GAAP 기준 총순매출은 23억3200만 달러로 8% 늘었다고 10월 20일 발표했다.",
       "title": "앨리 파이낸셜, 3분기 GAAP 주당순이익 1.30달러..전년비 10% 증가"
     },
+    "title:dd0d9e186c65cdd3c235efa0": {
+      "first_seen_kst": "2026-10-24T06:52:10+09:00",
+      "lanes": {
+        "preopen": "2026-10-24T06:52:10+09:00"
+      },
+      "last_seen_kst": "2026-10-24T06:52:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639161",
+      "source": "이투데이",
+      "source_body_digest": "f9d49ebaa9c4611ba85db43595a8f24d973e46d5bb0271c16b87608a3508e872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:488e506bf76e2a40fce500ca32a3b15022109e8c971a96578336a7af952eaf84",
+      "source_fact_keys": [
+        "source_fact:v1:0e5fe870df3603029e65d61dfe9ec084b1d1cec234d02b21ad53e6d626636963",
+        "source_fact:v1:1a21b8a50f8440f2c34e86fb0910d38712a887e7dfd3e6f4ef5c62509b521127",
+        "source_fact:v1:2cd329e55e468487660bd3d7f2716dd6c0296e3d16c935fce6cbfaef464d2f99",
+        "source_fact:v1:668a920eeed8c7cf068c49ed829875ab0b683fb1fc76f78bfeadacbdb52c7a34",
+        "source_fact:v1:6692095914ae4a9c2f3b6c6ff33dbae4ea82e1cca406652c1d82ae42be0df70c",
+        "source_fact:v1:8bded04991a3171f3a856a477846e40e71ffc3b44af3289c661b9e3e0c64a444",
+        "source_fact:v1:b66feaab66c016dd75c8eea2fde3fdebf6fefec8ab758663bb281b9ba250fd5f"
+      ],
+      "source_published_kst": "2026-10-23T07:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동",
+      "telegram_core_fact": "10년물 금리는 이달 7일 장중 5.3645%까지 올라 2002년 4월 이후 최고치를 기록했다가 최근 하락세로 돌아섰다.",
+      "title": "미국 10년물 국채금리, 한 달 만에 5% 밑으로⋯AIㆍ중동 불안에 국채로 자금 이동"
+    },
     "title:dd19b753037b29c1f83c2686": {
       "first_seen_kst": "2026-10-10T01:06:33+09:00",
       "lanes": {
@@ -1234389,5 +1236388,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-24T06:19:32+09:00"
+  "updated_at_kst": "2026-10-24T06:52:10+09:00"
 }
