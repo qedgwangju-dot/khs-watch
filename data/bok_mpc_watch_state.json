@@ -51,7 +51,7 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-10-23T10:53:27+09:00",
+    "updated_at_kst": "2026-10-23T13:07:25+09:00",
     "risk_score": 5,
     "grade_emoji": "🟠",
     "grade_label": "인상 압력 높음",
@@ -68,7 +68,7 @@
         "prev_core_yoy": 3.4,
         "headline_reaccelerating": false,
         "core_reaccelerating": false,
-        "stale": false
+        "stale": true
       },
       "household": {
         "period": "2026-08",
@@ -78,13 +78,13 @@
         "mortgage_reaccelerating": true,
         "source": "https://www.fsc.go.kr/no010101/87675",
         "source_tier": "공식",
-        "stale": false
+        "stale": true
       },
       "housing": null,
       "oil": {
-        "date": "2026-10-23",
-        "brent_usd": 113.66,
-        "change_5d_pct": 7.31,
+        "date": "2026-10-22",
+        "brent_usd": 113.17,
+        "change_5d_pct": 6.84,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
@@ -96,66 +96,76 @@
         "speaker": "신현송",
         "date": "2026-10-23",
         "flags": {
-          "ai_investment_duration": false,
           "middle_east_inflation": false,
           "two_hikes_effect": false,
-          "hike_timing_speed": false,
-          "inflation_target_horizon": false,
-          "ai_long_rate_financing": false,
-          "fvi_leverage": false,
-          "fx_low_income_purchasing_power": false,
-          "oct_hike_caution": false,
-          "terminal_rate_openness": false,
+          "productive_investment_rates": false,
           "market_rate_independence": false,
-          "macroprudential_mix": false,
-          "next_meeting_caution": false,
+          "fvi_leverage": false,
+          "ai_long_rate_financing": false,
+          "hike_timing_speed": false,
           "hike_needed": false,
-          "rate_not_only_tool": false,
-          "inflation_upside": false,
-          "demand_inflation": false,
-          "middle_east_cost": false,
-          "neutral_upper": false,
-          "wealth_effect_reassessment": false,
-          "ai_war_inflation": false,
-          "next_meeting_hawk": false,
+          "oct_hike_caution": false,
+          "macroprudential_mix": false,
+          "potential_working_paper_expected": true,
           "fiscal_reversibility": true,
-          "k_shaped_low_income": false
+          "tfp_innovation": false,
+          "ai_war_inflation": false,
+          "k_shaped_low_income": false,
+          "next_meeting_hawk": false,
+          "inflation_target_horizon": false,
+          "fx_low_income_purchasing_power": false,
+          "neutral_upper": false,
+          "next_meeting_caution": false,
+          "middle_east_cost": false,
+          "ai_investment_duration": false,
+          "inflation_upside": false,
+          "potential_growth_reassessment": true,
+          "demand_inflation": false,
+          "rate_not_only_tool": false,
+          "wealth_effect_reassessment": false,
+          "terminal_rate_openness": false,
+          "secular_stagnation_reassessment": false
         },
         "title": "신현송, 정부 확장 재정 기조 '경고'…\"지속되면 되돌리기 어려워\" - 데일리안",
-        "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9LSG8wcEhabWxDTzlkYV9HeXlWQjM0QmFlemFBektuM2dDalBhbWdCSnlIT2I0aTkzUHlZMVdfZTRoeE9ZTll3bW1fR19JQ2ktZGROXw?oc=5",
+        "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxQUFpxQXRFbzFsMXVOM2tUNzlscWRGNnk5aDBTTVNZQm1aQ3FOYUx5dUp2OC1oU0RhNHRrSXQ4UG0tQlIzc1ByM3JxdXhkVDZvdU1TUDIyeDRIU016bVhYYm9ncE1VWWk1REJvU3ctdk81R3I4dThtR1VSd2pCeUNvTXI2V0l2N0JCbGFsWmE0Xy1sMVZuRFNXZWhnX2ZOcmVKV1Vmd3ltLW80Rlh2Rk4yYXcxRWNfRWU2dHRDeXZlN3pDOUdQUXEtTldiUGtYeFY1RHJIUjRkX3RIbGlGVXdLbS04WFQ1dnZlUXBsSDJSM1NGWjBRenl0LW1Kbzgzb3hVVmgxb3RYbndPdlFmNTd1SG1WYndtZ1gx?oc=5",
         "source_name": "데일리안",
         "published_at_kst": "2026-10-23T10:03+09:00",
-        "event_hash": "0b564e52b7ba1ee885af46fe48633e5876261941fde381b457e7c9d5f89e5a73",
+        "event_hash": "d60e9984082c26225733450b9109c29c4f6664f4d57fe1222758911c696121dd",
         "score": 0
       },
       {
         "speaker": "신현송",
         "date": "2026-10-22",
         "flags": {
-          "ai_investment_duration": false,
           "middle_east_inflation": false,
           "two_hikes_effect": false,
-          "hike_timing_speed": false,
-          "inflation_target_horizon": false,
-          "ai_long_rate_financing": false,
-          "fvi_leverage": false,
-          "fx_low_income_purchasing_power": true,
-          "oct_hike_caution": false,
-          "terminal_rate_openness": true,
+          "productive_investment_rates": false,
           "market_rate_independence": false,
-          "macroprudential_mix": false,
-          "next_meeting_caution": false,
+          "fvi_leverage": false,
+          "ai_long_rate_financing": false,
+          "hike_timing_speed": false,
           "hike_needed": false,
-          "rate_not_only_tool": false,
-          "inflation_upside": true,
-          "demand_inflation": false,
-          "middle_east_cost": false,
-          "neutral_upper": false,
-          "wealth_effect_reassessment": true,
-          "ai_war_inflation": false,
-          "next_meeting_hawk": false,
+          "oct_hike_caution": false,
+          "macroprudential_mix": false,
+          "potential_working_paper_expected": false,
           "fiscal_reversibility": true,
-          "k_shaped_low_income": false
+          "tfp_innovation": false,
+          "ai_war_inflation": false,
+          "k_shaped_low_income": false,
+          "next_meeting_hawk": false,
+          "inflation_target_horizon": false,
+          "fx_low_income_purchasing_power": true,
+          "neutral_upper": false,
+          "next_meeting_caution": false,
+          "middle_east_cost": false,
+          "ai_investment_duration": false,
+          "inflation_upside": true,
+          "potential_growth_reassessment": false,
+          "demand_inflation": false,
+          "rate_not_only_tool": false,
+          "wealth_effect_reassessment": true,
+          "terminal_rate_openness": true,
+          "secular_stagnation_reassessment": false
         },
         "title": "신현송 \"긴축 기조 계속\"…성장·물가 상방 압력에 추가 인상 무게(종합) - 포쓰저널",
         "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9vZ2pON3ZIbkxqck5HRTV0SzQtd3JZSGNNU05WSmpPSFdyeU1wV0hSNXlaTHFiWGdkY2dZZ0NCWFdCNlZFYzVMMXVZRlYyN0pQOW1tQUs4SnRBWXAtSGRFejdyQkU?oc=5",
@@ -168,7 +178,8 @@
     "seen_rhetoric_hashes": [
       "8ef6b4516db5c05e6997bc503b9d0bc2bbe15776cd98433a49dc1790303bfb74",
       "190f328493ceff9ee2169237d8ca464d83605b745f3bb9a6975b88b70e25c5b0",
-      "0b564e52b7ba1ee885af46fe48633e5876261941fde381b457e7c9d5f89e5a73"
+      "0b564e52b7ba1ee885af46fe48633e5876261941fde381b457e7c9d5f89e5a73",
+      "d60e9984082c26225733450b9109c29c4f6664f4d57fe1222758911c696121dd"
     ],
     "seen_policy_flags_by_day": {
       "신현송|2026-10-22": [
@@ -179,17 +190,26 @@
         "wealth_effect_reassessment"
       ],
       "신현송|2026-10-23": [
-        "fiscal_reversibility"
+        "fiscal_reversibility",
+        "potential_growth_reassessment",
+        "potential_working_paper_expected"
       ]
     },
     "topic_policy_version": 1,
+    "official_potential_research": {
+      "initialized": true,
+      "seen_ids": [],
+      "source": "https://www.bok.or.kr/imerEng/bbs/B0000268/list.do?menuNo=600354&pageIndex=1"
+    },
     "notification_policy": {
       "score_only_change_suppressed": true,
       "oil_relief_to_neutral_suppressed": true,
       "oil_alert_requires_positive_pressure_bucket": true,
       "official_data_or_policy_event_priority": true,
       "material_same_day_dedup_by_speaker_date": true,
-      "new_topics_bootstrap_without_replay": true
+      "new_topics_bootstrap_without_replay": true,
+      "official_working_paper_id_dedup": true,
+      "official_paper_first_scan_no_replay": true
     }
   }
 }
