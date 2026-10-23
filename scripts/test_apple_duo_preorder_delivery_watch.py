@@ -488,7 +488,7 @@ class DuoPreorderTests(unittest.TestCase):
         )
         with (patch.object(m,"FEEDS",[("9to5Mac","https://9to5mac.com/feed/")]),
               patch.object(m,"QUERY",[]),
-              patch.object(m,"_request",return_value=xml.encode("utf-8")))
+              patch.object(m,"_request",return_value=xml.encode("utf-8"))):
             items,errors=m._collect()
         self.assertEqual(errors,[])
         self.assertEqual(len(items),1)
