@@ -60,12 +60,20 @@ def parse_nasdaq(ticker: str, data: dict) -> dict:
     parsed = {}
     for row in rows:
         try:
-            date = dt.datetime.strptime(row["date"], "%m/%d/%Y").date().isoformat()
-            close = float(str(row["close"]).replace(",", "").replace("$", ""))
-            volume_raw = str(row.get("volume") or "0").replace(",", "").strip()
-            volume = int(volume_raw) if volume_raw not in ("--", "") else 0
+            date = dt.datetime.strptime(str(row["date"]).strip(), "%m/%d/%Y").date().isoformat()
+            close = float(str(row["close"]).replace(",", "").replace("$", "").strip())
         except (KeyError, TypeError, ValueError) as exc:
-            raise SourceError(ticker + ": malformed Nasdaq quote row") from exc
+            raise SourceError(
+                f"{ticker}: malformed Nasdaq quote row date={str(row.get('date'))[:16]} "
+                f"close={str(row.get('close'))[:24]}"
+            ) from exc
+        # Historical trading volume is sometimes a non-numeric placeholder;
+        # it is not a price and is never imputed as an actual trade count.
+        try:
+            volume_raw = str(row.get("volume") or "0").replace(",", "").strip()
+            volume = int(float(volume_raw)) if volume_raw not in ("--", "", "N/A") else 0
+        except (TypeError, ValueError):
+            volume = 0
         if not math.isfinite(close) or close <= 0:
             raise SourceError(ticker + ": invalid close")
         if date in parsed and abs(parsed[date]["close"] - close) > 0.001:
