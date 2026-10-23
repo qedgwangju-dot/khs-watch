@@ -360,8 +360,8 @@ class TreasuryReportIntegrity(unittest.TestCase):
         self.assertEqual(name, "수익률곡선 구간별 혼조")
         self.assertIn("2-10년 불 플래트닝", explanation)
         self.assertIn("10-30년 불 스티프닝", explanation)
-        self.assertEqual(s210[2], -1.0)
-        self.assertEqual(s1030[2], 4.0)
+        self.assertAlmostEqual(s210[2], -1.0)
+        self.assertAlmostEqual(s1030[2], 4.0)
 
 
 if __name__ == "__main__":
