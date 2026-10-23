@@ -1,19 +1,19 @@
 {
-  "notified_rank": 1,
-  "last_source_date": "20261019",
-  "last_alert_signature": "5a7c65ee5845f59f5af39397f666831a54e2f6df4ee922e6f91f6a6d5cd1883c",
-  "transition": "최초 기준선",
-  "last_alert_at_kst": "2026-10-19T19:46:58+09:00",
-  "cp_cd_bp": 47.0,
-  "aa_spread_bp": 68.3,
+  "notified_rank": 2,
+  "last_source_date": "20261023",
+  "last_alert_signature": "2c60173bd30b5c58794cf0c946cb5440d448821fffbd2411d92488f2fe345921",
+  "transition": "위험 상승",
+  "last_alert_at_kst": "2026-10-23T23:15:43+09:00",
+  "cp_cd_bp": 51.0,
+  "aa_spread_bp": 68.9,
   "source": "https://ecos.bok.or.kr/#/SearchStat",
   "stat_code": "817Y002",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs8879887988798879_bot",
-    "message_id": 457,
-    "delivered_at_kst": "2026-10-19T19:47:04+09:00",
-    "message_sha256": "f9d787e97e8cdb28288395453b73c7707f39253b601e7eac76ec995b858ddbb1",
-    "run_id": "39239760509"
+    "message_id": 483,
+    "delivered_at_kst": "2026-10-23T23:15:47+09:00",
+    "message_sha256": "d4c27729e0dd5af44424389a5c09551c5e3610372822d8544059b29ff8c11046",
+    "run_id": "39967815140"
   }
 }
