@@ -110,7 +110,18 @@ jobs:
           cc=wf.get("concurrency") or {}
           assert "github.event_name" in str(cc.get("group","")), "CI push/schedule share cancellation group"
           assert "github.event_name == 'push'" in str(cc.get("cancel-in-progress","")), "CI scheduled run may be cancelled by a new push"
+          steps=wf["jobs"]["test"]["steps"]
+          by_name={step.get("name"):step for step in steps}
+          scheduled_only="github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'"
+          live_steps=("Probe live KOSDAQ investor feed",
+                      "Probe KOSDAQ five-minute inflows and deployed worker age",
+                      "Probe live KOSDAQ composite index and minute-bar source",
+                      "Probe KOSDAQ enrichment market-isolated source APIs")
+          for name in live_steps:
+              assert by_name[name].get("if")==scheduled_only, (name,by_name[name].get("if"))
+          assert "github.event_name == 'schedule'" in by_name["Inspect last completed KRX session chart outside trading hours"].get("if","")
           print("ci_schedule_push_concurrency_isolation_valid=true")
+          print("ci_live_source_probes_schedule_or_manual_only_valid=true")
           PY
 
       - name: Verify failure notifier syntax and independent handoff
@@ -182,26 +193,33 @@ jobs:
           PY
 
       - name: Select market-hours live validation
+        env:
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           PYTHONPATH=scripts python - <<'PY'
           import datetime as dt
           import os
           from zoneinfo import ZoneInfo
           from krx_session_calendar import session_state
+          live_event=os.environ.get("EVENT_NAME") in {"schedule","workflow_dispatch"}
           now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
           session=session_state(now)
-          # 실시간 가격·체결·수급 정합성 시험은 실제 정규장 시간에만 의미가 있다.
+          # 외부 시세·수급 API는 예약/수동 실전검증에서만 호출한다.
+          # 코드 push는 오프라인 회귀만 실행해 같은 LS 키의 production watcher와 겹치지 않는다.
           live=bool(
+              live_event
+              and
               session["is_session"] and session["open"] is not None
               and session["close"] is not None
               and session["open"] <= now <= session["close"]
           )
           with open(os.environ["GITHUB_ENV"],"a",encoding="utf-8") as out:
               out.write(f"KOSPI_SKIP_LIVE_TESTS={'0' if live else '1'}\n")
-          print(f"kospi_live_ci_gate=true date={now.date()} live={live} skipped={not live}")
+          print(f"kospi_live_ci_gate=true event={os.environ.get('EVENT_NAME')} date={now.date()} live={live} skipped={not live}")
           PY
 
       - name: Probe live KOSDAQ investor feed
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
           PYTHONPATH=scripts python - <<'PY'
           import datetime as dt, time
@@ -228,6 +246,7 @@ jobs:
           PY
 
       - name: Probe KOSDAQ five-minute inflows and deployed worker age
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
@@ -328,6 +347,7 @@ jobs:
           PY
 
       - name: Probe live KOSDAQ composite index and minute-bar source
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
           PYTHONPATH=scripts python - <<'PY'
           import datetime as dt
@@ -359,6 +379,7 @@ jobs:
           PY
 
       - name: Probe KOSDAQ enrichment market-isolated source APIs
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
           PYTHONPATH=scripts python - <<'PY'
           import datetime as dt
@@ -768,7 +789,7 @@ jobs:
           PY
 
       - name: Inspect last completed KRX session chart outside trading hours
-        if: env.KOSPI_SKIP_LIVE_TESTS == '1'
+        if: (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && env.KOSPI_SKIP_LIVE_TESTS == '1'
         run: |
           PYTHONPATH=scripts python - <<'PY'
           import datetime as dt
