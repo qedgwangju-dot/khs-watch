@@ -175,7 +175,10 @@ def decide(snapshot, state):
         bands = {"상대성과 -10%p 이하": 1, "상대성과 -15%p 이하": 2,
                  "상대성과 -20%p 이하": 3}
         if bands[band] > bands.get(old_band, 0):
-            return "인기 보유종목 ETF 상대 약세 확대"
+            return (
+                "인기 보유종목 ETF 상대 약세 확인"
+                if not old_band else "인기 보유종목 ETF 상대 약세 확대"
+            )
     if band == "상대성과 -5%p 초과" and old_band in (
         "상대성과 -10%p 이하", "상대성과 -15%p 이하", "상대성과 -20%p 이하"):
         return "인기 보유종목 ETF 상대 약세 완화"
@@ -194,8 +197,8 @@ def render(snapshot, verdict):
         "<b>헤지펀드 인기 보유종목 ETF 상대성과 감시</b>",
         f"<b>판정: {html.escape(verdict)}</b>",
         f"미국 정규장 기준: {q['start']} → {q['end']} (75거래일)",
-        f"• GVIP: {q['gvip_start']:.2f} → {q['gvip_end']:.2f}달러 ({q['gvip_return']:+.2f}%)",
-        f"• SPY: {q['spy_start']:.2f} → {q['spy_end']:.2f}달러 ({q['spy_return']:+.2f}%)",
+        f"• GVIP 75거래일 가격수익률: {q['gvip_return']:+.2f}%",
+        f"• SPY 75거래일 가격수익률: {q['spy_return']:+.2f}%",
         f"<b>75거래일 가격수익률 차이: {q['relative_pp']:+.2f}%p</b>",
         f"상대가격비율 변화(별도 계산): {q['ratio_return_pct']:+.2f}%",
         "해석: GVIP의 인기 롱 보유종목 가격성과가 미국 대형주 시장과 얼마나 벌어졌는지 보는 공개시장 대용 지표.",
