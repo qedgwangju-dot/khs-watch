@@ -5306,6 +5306,58 @@ class IncrementalNewsTests(unittest.TestCase):
             with patch.object(radar, 'source_market_materiality', return_value=leader_audit):
                 self.assertEqual(radar.live_nonactionable_outlook_reason(leader), '')
 
+    def test_verified_strategic_meetings_and_specific_supply_milestones_survive_outlook_floor(self):
+        soft_audit = {
+            'evidence': [{
+                'kind': 'customer_discussions',
+                'stage': 'early_signal',
+                'source_excerpt': '구체적인 계약이나 물량은 공개되지 않았습니다.',
+            }],
+        }
+        cases = (
+            (
+                '이재용, 오픈AI 본사서 샘 올트먼 만났다',
+                '이재용 삼성전자 회장과 샘 올트먼 오픈AI CEO가 만나 HBM·D램·첨단 파운드리 협력 가능성을 논의했다. '
+                '구체적인 계약이나 공급 물량은 공개되지 않았다.',
+            ),
+            (
+                '정의선, 엔비디아 본사서 젠슨 황과 회동',
+                '정의선 현대차그룹 회장과 젠슨 황 엔비디아 CEO가 만났다. '
+                '두 사람은 자율주행·로봇·제조 AI 협력 방향을 논의했으며 신규 공급계약은 발표하지 않았다.',
+            ),
+            (
+                '애플, 아이폰에 CXMT칩 테스트',
+                '애플이 아이폰용 메모리 공급망 평가 과정에서 CXMT의 D램을 테스트하고 있다. '
+                '양산 채택이나 공급계약은 아직 확인되지 않았다.',
+            ),
+            (
+                '엔비디아, 루빈 울트라 HBM4E 12단 사양 하향 검토',
+                '엔비디아가 루빈 울트라 가속기에 적용할 HBM4E 12단 사양을 낮추는 방안을 검토 중이다. '
+                '최종 사양과 공급사 배정은 확정되지 않았다.',
+            ),
+            (
+                'SK하이닉스, 미국 인디애나 첨단패키징 팹 27일 착공',
+                'SK하이닉스는 미국 인디애나주 첨단패키징 팹을 27일 착공하고 2028년 하반기 양산을 목표로 한다.',
+            ),
+        )
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            for index, (title, body) in enumerate(cases):
+                item = alert(title, body, f'https://example.com/verified-market-milestone-{index}')
+                with self.subTest(title=title), patch.object(
+                    radar, 'source_market_materiality', return_value=soft_audit,
+                ):
+                    self.assertEqual(radar.live_nonactionable_outlook_reason(item), '')
+
+            generic = alert(
+                'K기업들, 엔비디아와 AI 반도체 생태계 협력 확대',
+                '국내 기업들이 엔비디아와 AI 반도체 및 인프라 협력을 확대할 전망이다.',
+            )
+            with patch.object(radar, 'source_market_materiality', return_value=soft_audit):
+                self.assertEqual(
+                    radar.live_nonactionable_outlook_reason(generic),
+                    'unquantified_commentary_or_forecast_without_new_market_fact',
+                )
+
     def test_solidigm_ipo_withdrawal_reprints_dedupe_but_stage_change_survives(self):
         prepared = {
             'source_title': '솔리다임, 美 상장 추진…주관사단 선정',

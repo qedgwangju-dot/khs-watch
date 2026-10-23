@@ -12443,6 +12443,56 @@ def source_market_materiality(alert: dict) -> dict:
     )
 
 
+def verified_live_milestone_exception(alert: dict, text: str) -> bool:
+    """Preserve verified strategic events that matter without a numeric value."""
+    title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
+    body = market_materiality.source_reported_body(str(alert.get("source_body") or ""))
+    if not body:
+        return False
+
+    strategic_topics = re.search(
+        r"HBM|D\s*램|DRAM|파운드리|반도체|자율주행|로봇|데이터센터|AI",
+        f"{title} {body}",
+        re.I,
+    )
+    strategic_leadership_pair = (
+        (re.search(r"이재용", title) and re.search(r"샘\s*올트먼|오픈AI", title, re.I))
+        or (re.search(r"정의선", title) and re.search(r"젠슨\s*황|엔비디아", title, re.I))
+    )
+    actual_meeting = bool(
+        re.search(r"만났|회동했|회담했|대면했|met with", body, re.I)
+        or (
+            re.search(r"만났|회동|회담", title)
+            and strategic_leadership_pair
+            and re.search(r"논의했|협의했|discussed", body, re.I)
+        )
+    )
+    if strategic_leadership_pair and actual_meeting and strategic_topics:
+        return True
+
+    specific_apple_test = (
+        re.search(r"애플|Apple", text, re.I)
+        and re.search(r"아이폰|iPhone", text, re.I)
+        and re.search(r"CXMT|창신메모리", text, re.I)
+        and re.search(r"테스트|시험|평가", body)
+    )
+    specific_hbm_spec_review = (
+        re.search(r"엔비디아|NVIDIA", text, re.I)
+        and re.search(r"루빈\s*울트라|Rubin\s*Ultra", text, re.I)
+        and re.search(r"HBM4E", text, re.I)
+        and re.search(r"12\s*단|12-Hi|12-high", text, re.I)
+        and re.search(r"사양.{0,16}(?:하향|낮추|변경|검토)|(?:하향|낮추).{0,16}사양", body)
+    )
+    dated_fab_execution = (
+        re.search(r"SK\s*하이닉스|SK\s*Hynix", text, re.I)
+        and re.search(r"인디애나|Indiana", text, re.I)
+        and re.search(r"첨단\s*패키징|advanced\s*packaging", text, re.I)
+        and re.search(r"착공", body)
+        and re.search(r"2028년|2028\s*(?:년|하반기|말)", body)
+    )
+    return bool(specific_apple_test or specific_hbm_spec_review or dated_fab_execution)
+
+
 def live_nonactionable_outlook_reason(alert: dict) -> str:
     """Keep live sends from being filled by unquantified commentary alone."""
     if (os.getenv("RADAR_RUN_MODE", "").strip().lower() != "live"
@@ -12478,6 +12528,8 @@ def live_nonactionable_outlook_reason(alert: dict) -> str:
         re.I,
     )
     if material_metric:
+        return ""
+    if verified_live_milestone_exception(alert, text):
         return ""
     named_market_leader = re.search(
         r"엔비디아|NVIDIA|삼성전자|SK\s*하이닉스|마이크론|Micron|TSMC|AMD|Intel|인텔",
