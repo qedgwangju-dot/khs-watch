@@ -408,6 +408,51 @@ def _preorder_improvement_alert(changes: list[dict]) -> str:
     return "\n".join(lines)+"\n"
 
 
+
+_FUTURE_ETA_RE = re.compile(
+    r"(?:new(?:ly)?\s+(?:online\s+)?orders?|신규\s*(?:온라인\s*)?주문)"
+    r"[^.!?\n]{0,85}?(?:shipping|delivery|ships?|배송|출고)"
+    r"[^.!?\n]{0,40}?"
+    r"(?P<month>october|november|december|january|february|march|april|may|june|july|august|september)"
+    r"\s+(?:(?P<day>\d{1,2}),?\s+)?(?P<year>20\d{2})\b", re.I
+)
+
+
+def _explicit_far_future_eta(blob: str, published: dt.datetime) -> dict | None:
+    """Read only a dated future NEW-online-order delivery claim."""
+    if not ("iphone duo" in blob.lower() or "아이폰 듀오" in blob):
+        return None
+    hit = _FUTURE_ETA_RE.search(blob)
+    if hit is None:
+        return None
+    names = {month:idx for idx,month in enumerate((
+        "january","february","march","april","may","june","july","august",
+        "september","october","november","december"),1)}
+    year = int(hit.group("year"))
+    month = names[hit.group("month").lower()]
+    day = int(hit.group("day")) if hit.group("day") else None
+    try:
+        when = dt.date(year,month,day or 1)
+    except ValueError:
+        return None
+    if (when-published.date()).days <= 180 or (when-published.date()).days > 500:
+        return None
+    text = blob.lower()
+    has_us = bool(re.search(r"\b(?:u\.s\.|united states|usa)\b",text))
+    has_korea = bool(re.search(r"\b(?:korea|한국|대한민국)\b",text))
+    market = "미국" if has_us and not has_korea else ("한국" if has_korea and not has_us else None)
+    if not market:
+        return None
+    label = (f"{year}년 {month}월 {day}일" if day else
+             f"{year}년 {month}월(정확한 일자 확인 불가)")
+    return {
+        "market":market,"month":f"{year:04d}-{month:02d}",
+        "exact_date":when.isoformat() if day else None,
+        "label":label,"capacity":"구성 미확인","colour":"색상 미확인",
+        "eta_evidence":re.sub(r"\s+"," ",hit.group(0))[:175],
+    }
+
+
 def _needs_august_correction(state: dict) -> bool:
     return (
         not bool(state.get("false_august_correction_sent"))
@@ -566,15 +611,18 @@ def _sanitize_delivery_state(val: dict) -> dict:
     # incorrectly inferred from a historical "late August" production passage).
     val.setdefault("quarantined_delivery_claims", [])
     cutoff = PREORDER.date() + dt.timedelta(days=180)
-    def impossible_month(month: str) -> bool:
+    verified=set(val.get("verified_extended_months") or [])
+    def impossible_month(month: str,market: str = "") -> bool:
+        if market and f"{market}:{month}" in verified:
+            return False
         try:
-            d = dt.date.fromisoformat(str(month)[:7] + "-01")
+            d=dt.date.fromisoformat(str(month)[:7]+"-01")
         except Exception:
             return False
-        return d > cutoff or str(month) == "2027-08"
+        return d > cutoff or str(month)=="2027-08"
     latest = val.setdefault("market_latest", {"미국": "2027-01"})
     for key, month in list(latest.items()):
-        if month and impossible_month(str(month)):
+        if month and impossible_month(str(month),key):
             if not any(x.get("market") == key and x.get("reported_month") == month
                        for x in val["quarantined_delivery_claims"]):
                 val["quarantined_delivery_claims"].append({
@@ -585,7 +633,7 @@ def _sanitize_delivery_state(val: dict) -> dict:
     for name in ("market_sku_latest",):
         values = val.setdefault(name, {})
         for key, month in list(values.items()):
-            if month and impossible_month(str(month)):
+            if month and impossible_month(str(month),key.split("|")[0]):
                 values.pop(key, None)
     for name in ("market_day_latest", "market_sku_day_latest"):
         dates = val.setdefault(name, {})
@@ -595,11 +643,13 @@ def _sanitize_delivery_state(val: dict) -> dict:
             except ValueError:
                 dates.pop(key, None)
                 continue
-            if date > cutoff:
+            if (date > cutoff and
+                    f"{key.split('|')[0]}:{date.strftime('%Y-%m')}" not in verified):
                 dates.pop(key, None)
     val["seen_fact_keys"] = [
         key for key in val.get("seen_fact_keys", [])
-        if not any(impossible_month(month) for month in re.findall(r"20\d{2}-\d{2}", str(key)))
+        if not any(impossible_month(month,str(key).split("|")[0].split(":")[0])
+                   for month in re.findall(r"20\d{2}-\d{2}",str(key)))
     ]
     val["schema_version"] = max(int(val.get("schema_version") or 1), 2)
     return val
@@ -614,7 +664,7 @@ def _merge_delivery_state(remote: dict, local: dict) -> dict:
     merged["false_august_correction_sent"] = bool(
         remote.get("false_august_correction_sent") or local.get("false_august_correction_sent")
     )
-    for key in ("seen_ids", "seen_fact_keys", "seen_improvement_fact_keys"):
+    for key in ("seen_ids", "seen_fact_keys", "seen_improvement_fact_keys", "verified_extended_months"):
         merged[key] = sorted(set(remote.get(key) or []) | set(local.get(key) or []))[-1800:]
     # Preserve quarantine and audit history across concurrent scan commits.
     audit = list(remote.get("quarantined_delivery_claims") or [])
@@ -652,6 +702,25 @@ def _new_delivery_signals(rows: list[dict], state: dict) -> tuple[list[dict],set
     sku_dates=dict(state.get("market_sku_day_latest") or {})
     market_dates=dict(state.get("market_day_latest") or {})
     new=[]
+
+    # A very distant shipment report must be tied to two different direct
+    # publisher domains. Identical RSS reposts do not count as corroboration.
+    future_sources: dict[tuple[str,str],set[str]]={}
+    for report in rows:
+        if (report.get("publisher_direct") is not True
+                or _rank(report.get("source") or "") < 2
+                or _is_preorder_improvement_article(report)):
+            continue
+        try:
+            published=dt.datetime.fromisoformat(report["published_at_kst"])
+        except (KeyError,TypeError,ValueError):
+            continue
+        body=f"{report.get('title') or ''}. {report.get('description') or ''}"
+        candidate=_explicit_far_future_eta(body,published)
+        if candidate:
+            domain=(urlparse(report.get("link") or "").hostname or "").lower().removeprefix("www.")
+            if domain:
+                future_sources.setdefault((candidate["market"],candidate["month"]),set()).add(domain)
     for row in rows:
         if _is_preorder_improvement_article(row):
             seen.add(_fingerprint(row))
@@ -667,6 +736,13 @@ def _new_delivery_signals(rows: list[dict], state: dict) -> tuple[list[dict],set
         body=f"{row['title']}. {row.get('description','')}"
         pub=dt.datetime.fromisoformat(row["published_at_kst"])
         info=_shipping_event(body,pub)
+        if info is None and row.get("publisher_direct") is True:
+            far=_explicit_far_future_eta(body,pub)
+            if far and len(future_sources.get((far["market"],far["month"]),set()))>=2:
+                info=far
+                confirmed=set(state.get("verified_extended_months") or [])
+                confirmed.add(f"{far['market']}:{far['month']}")
+                state["verified_extended_months"]=sorted(confirmed)
         if info is None:
             continue
         market=info["market"]

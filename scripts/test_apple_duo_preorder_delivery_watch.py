@@ -387,6 +387,40 @@ class DuoPreorderTests(unittest.TestCase):
         self.assertEqual(len(merged["seen_improvement_fact_keys"]),2)
 
 
+    def test_future_eta_requires_two_independent_direct_sources(self):
+        title="iPhone Duo U.S. new online orders shipping August 15, 2027."
+        a={"title":title,"description":"new online orders shipping August 15, 2027.",
+           "source":"MacRumors","publisher_direct":True,
+           "link":"https://www.macrumors.com/2026/10/24/future/",
+           "published_at_kst":"2026-10-24T00:30:00+09:00"}
+        b=dict(a,source="The Verge",link="https://www.theverge.com/tech/future")
+        st={"market_latest":{"미국":"2027-01"},"seen_ids":[],"seen_fact_keys":[]}
+        single,_=m._new_delivery_signals([a],st)
+        self.assertEqual(single,[])
+        self.assertEqual(st["market_latest"]["미국"],"2027-01")
+        st={"market_latest":{"미국":"2027-01"},"seen_ids":[],"seen_fact_keys":[]}
+        two,_=m._new_delivery_signals([a,b],st)
+        self.assertEqual(len(two),1)
+        self.assertEqual(st["market_latest"]["미국"],"2027-08")
+        self.assertIn("미국:2027-08",st["verified_extended_months"])
+        m._sanitize_delivery_state(st)
+        self.assertEqual(st["market_latest"]["미국"],"2027-08")
+
+    def test_prior_august_misread_stays_quarantined(self):
+        st={"market_latest":{"미국":"2027-08"},
+            "seen_fact_keys":["미국:2027-08"],"quarantined_delivery_claims":[]}
+        m._sanitize_delivery_state(st)
+        self.assertEqual(st["market_latest"]["미국"],"2027-01")
+        self.assertTrue(st["quarantined_delivery_claims"])
+
+    def test_future_evidence_survives_concurrent_state_merge(self):
+        old={"updated_at_kst":"2026-10-24T00:30:00+09:00",
+             "verified_extended_months":["미국:2027-08"]}
+        new={"updated_at_kst":"2026-10-24T00:31:00+09:00",
+             "verified_extended_months":[]}
+        self.assertIn("미국:2027-08",m._merge_delivery_state(old,new)["verified_extended_months"])
+
+
 if __name__=="__main__":
     result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(DuoPreorderTests))
     if not result.wasSuccessful():
