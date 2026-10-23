@@ -1,0 +1,25 @@
+{
+  "last_observation": {
+    "end": "2026-10-22",
+    "start": "2026-07-08",
+    "sessions": 75,
+    "gvip_start": 178.269,
+    "gvip_end": 160.371,
+    "spy_start": 745.4,
+    "spy_end": 763.96,
+    "gvip_return": -10.0399,
+    "spy_return": 2.4899,
+    "relative_pp": -12.5298,
+    "ratio_return_pct": -12.2254,
+    "gvip_end_volume": 8715,
+    "band": "상대성과 -10%p 이하"
+  },
+  "last_alert": {
+    "end": "2026-10-22",
+    "band": "상대성과 -10%p 이하",
+    "message_id": 1222,
+    "bot_username": "khs887900887900008879_bot",
+    "relative_pp": -12.5298,
+    "sent_at_kst": "2026-10-23T14:15:07+09:00"
+  }
+}
