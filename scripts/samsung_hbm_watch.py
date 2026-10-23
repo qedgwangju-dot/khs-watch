@@ -72,8 +72,8 @@ REGIONS = {
     "hynix_icheon": {"name": "이천", "kind": "sgg", "sido": "41", "sgg": "41500"},
 }
 
-# Resolve the regional API unit from fresh same-month source evidence every
-# official poll. No historic scaling assumption is a verified unit contract.
+# Bind both regional series to the public K-stat monthly USD request scope.
+# Preserve its response-echo identity limit and never infer a scale by magnitude.
 _TRADE_EVIDENCE = None
 _SIDO_SOURCE_RESULT = None
 _SIDO_KSTAT_REFERENCE_CACHE = {}
@@ -3968,7 +3968,7 @@ def _main() -> None:
     official_revision_due = monthly_decision["revision"]
     monthly_due = monthly_decision["due"] or malaysia_revision_due
 
-    regional_unit_correction_due = bool(
+    regional_source_correction_due = bool(
         official
         and int(state.get("compare_version") or 0) < COMPARE_VERSION
         and state.get("last_official_alert_month") == official_month
@@ -3987,7 +3987,7 @@ def _main() -> None:
             monthly_text = "📌 <b>같은 기준월의 공식 수출 원자료·비교월 개정</b>\n• 직전 실제 발송의 날짜별 원값과 달라 다시 계산했습니다.\n\n" + monthly_text
         elif monthly_decision["availability"]:
             monthly_text = "📌 <b>같은 기준월의 미확인 원자료 추가 확인</b>\n• 직전 알림에서 확인되지 않았던 원값을 이번 실행에서 확인했습니다.\n\n" + monthly_text
-        if regional_unit_correction_due:
+        if regional_source_correction_due:
             monthly_text = "\n".join([
                 "⚠️ <b>정정 — 삼성·SK하이닉스 지역 원자료 확인 방식</b>",
                 "• 충남·충북은 K-stat(제공기관: 관세청)의 시·도 HSK10 월별 USD 요청 범위와 응답 지역 행으로 확인했습니다.",
@@ -4004,7 +4004,7 @@ def _main() -> None:
         previous_values = state.get("last_official_notified_values") or state.get("last_official_alert_snapshot")
         state["last_official_alert_snapshot"] = monthly_decision["snapshot"]
         state["last_official_notified_values"] = _merge_notified_values(previous_values, monthly_decision["snapshot"])
-        if regional_unit_correction_due:
+        if regional_source_correction_due:
             corrections = list(state.get("state_corrections") or [])
             corrections.append({
                 "type": "regional_export_source_scope",
