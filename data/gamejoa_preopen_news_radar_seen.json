@@ -1796,6 +1796,24 @@
       "source_published_kst": "2026-10-07T09:47+09:00",
       "title": "8월 공장·창고 거래 규모 대폭 증가…거래량은 감소"
     },
+    "core:059a68f08b26bb17cf940926": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183682",
+      "source": "매일경제",
+      "source_body_digest": "f8c483c453cddbf1502084be32bc40f0e9d9c40ac9b63ebfa5d049fa3267a82d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T05:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "머피 USA, 분기배당 0.72달러로 11% 인상",
+      "telegram_core_fact": "미국 주유소·편의점 운영업체 머피 USA(MUSA)는 이사회가 보통주 1주당 분기 현금배당금을 0.72달러(연환산 2.88달러)로 결정했다고 10월 22일 발표했다.",
+      "title": "머피 USA, 분기배당 0.72달러로 11% 인상"
+    },
     "core:05a510d48eba62461eedbb72": {
       "first_seen_kst": "2026-10-20T23:08:51+09:00",
       "lanes": {
@@ -17608,6 +17626,36 @@
       "source_title": "금감원, PEF운용사 30곳 내부통제 점검…\"사회적물의 사건 예방\" | 연합뉴스",
       "telegram_core_fact": "지난 3월 '기관전용 사모펀드 업무집행사원 표준내부통제 기준'을 발표하고 약 반년이 지난 시점에서 점검을 통해 자율규제 체계·문화가 자리 잡게 유도한다는 취지다.",
       "title": "금감원, PEF운용사 30곳 내부통제 점검…\"사회적물의 사건 예방\" | 연합뉴스"
+    },
+    "core:2bdbfee65fe54dafd7607ee8": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
     },
     "core:2bf8f07bc459ef9865148b82": {
       "first_seen_kst": "2026-10-08T11:06:13+09:00",
@@ -44050,6 +44098,31 @@
       "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
       "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
     },
+    "core:73649d93d1f46be23d654755": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838484",
+      "source": "뉴시스",
+      "source_body_digest": "4661e68f48d6ee7b0f3e163a904fc2e12b51033c53ea1a5891a140cd6b7584d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc9be233fb307414c5ea56b0c50bc754a22b4f27282760088018a2690b5372c3",
+      "source_fact_keys": [
+        "source_fact:v1:073e9a9b2c7daad6a72bb265726f599016adb79ade7260e3f56deda593913451",
+        "source_fact:v1:216d4a18bb745c284de7d3a3bacc038f67cde75a068694c1837c78cdb88476e3",
+        "source_fact:v1:2ae08a830ae54f9837a999e468a4060169430f21b67a4291cbb65e32727d2912",
+        "source_fact:v1:757b6bc7848bfe67db3793a99c4a46e68e8c5b84e3621f558f98252cd1f5b0b1",
+        "source_fact:v1:bad3e5bf43829d95046fc1d44b724e392396a9fc9dccdd27b908626199324434",
+        "source_fact:v1:f3f4b8bc5ff7e0da71093be73441e68824c945789664cbeda938d0796b2994f7"
+      ],
+      "source_published_kst": "2026-10-23T12:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\"",
+      "telegram_core_fact": "배 부총리는 \"특정 기업 몰아주기가 될 수 있기 때문에 새로 사업을 공고하고 출자 형식으로 가는 게 맞겠다고 판단했다\"고 덧붙였다.",
+      "title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\""
+    },
     "core:7397f0d9df3ff0b019cff9fd": {
       "first_seen_kst": "2026-10-16T18:28:57+09:00",
       "lanes": {
@@ -49342,6 +49415,24 @@
       "source_title": "日닛케이지수, 4.9% 급락…AI·반도체 약세 등 여파(종합) | 연합뉴스",
       "telegram_core_fact": "조성미 이도연 특파원 = 미국 반도체주 하락과 유가 상승 등 여파로 15일 일본 도쿄증시의 닛케이225평균주가(닛케이지수)가 전날 종가 대비 4.9% 하락한 64,425.95로 장을 마감했다.",
       "title": "日닛케이지수, 4.9% 급락…AI·반도체 약세 등 여파(종합) | 연합뉴스"
+    },
+    "core:804531b79f8ae9cc390d287c": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183550",
+      "source": "매일경제",
+      "source_body_digest": "461ab37869e039b088081ad34195968e4509da7f8ee5f40ae7179987c5fa1630",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "아르다 메탈 패키징, 분기배당 주당 0.10달러 승인..예상 배당률 8.71%",
+      "telegram_core_fact": "아르다 메탈 패키징(AMBP)이 이사회에서 보통주 1주당 0.10달러의 분기 중간배당을 승인했다고 10월 22일(현지시간) 발표했다.",
+      "title": "아르다 메탈 패키징, 분기배당 주당 0.10달러 승인..예상 배당률 8.71%"
     },
     "core:804758b2255a9520e1102e30": {
       "first_seen_kst": "2026-10-21T13:57:06+09:00",
@@ -73212,6 +73303,28 @@
       "telegram_core_fact": "국내 메모리 반도체 업체들의 HBM 생산량이 늘어날수록 일본 소부장 기업들의 수주도 늘어나는 상호보완적 구조인 동시에, 양국의 소부장 기업 간 주도권 다툼도 한층 치열해지고 있다는 이유에서다.",
       "title": "토스증권 리서치센터 “AI 시대, 일본 반도체 소부장의 저력 조명”"
     },
+    "core:bf5cf73bcd6a27b4af400f6a": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023035700003",
+      "source": "연합뉴스",
+      "source_body_digest": "60d9d37f4a37e1b0bcee8c07c698a18e06624baf928e31410156f311f9b4aa44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acfa7c75a07759e047297172e74d098f498028af48ba584002482947c56b6279",
+      "source_fact_keys": [
+        "source_fact:v1:85a7a64b225e477b5693ca9e83d479dfea13e0e79574787a1d704be0d798640b",
+        "source_fact:v1:9f4c10b4ac61d9ed977a58faa9a4a8c29ed4aca3d4cb84df4b319fc38a206955",
+        "source_fact:v1:eef40f87f538eaa4729af85504f81f95a2dce1d77d6b4c3f2a1b7d04f40ccb15"
+      ],
+      "source_published_kst": "2026-10-23T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스",
+      "telegram_core_fact": "SM그룹의 제조·서비스부문 계열사 SM국일(옛 국일제지)이 2차전지·반도체 생산장비 전문기업 대진기계 인수를 위한 우선협상대상자로 선정됐다고 23일 밝혔다.",
+      "title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스"
+    },
     "core:bf6cbb253758a13586ec64dc": {
       "first_seen_kst": "2026-10-21T02:06:57+09:00",
       "lanes": {
@@ -82745,6 +82858,24 @@
       "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
       "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
     },
+    "core:d939eff769ad830efce4870c": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837719",
+      "source": "뉴시스",
+      "source_body_digest": "3fcd9b81a2bbdb7211d5e83de34d54ca752b7bace1421494affc61c9139cb999",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T05:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연",
+      "telegram_core_fact": "일론 머스크 테슬라 최고경영자(CEO)가 미국 거대 미디어 기업 '스카이댄스'에 10억달러를 투자했다고 CNBC가 22일(현지시간) 소식통을 인용해 보도했다. 래리 엘리슨은 머스크가 2022년 트위터를 인수할 당시 10억달러를 투자했다.",
+      "title": "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연"
+    },
     "core:d964447acf0cf82fb5bfa52c": {
       "first_seen_kst": "2026-10-14T13:28:53+09:00",
       "lanes": {
@@ -91260,6 +91391,40 @@
       "source_title": "이재용, UAE 발전소 현장 찾아…중동서 AI·에너지 신사업 확대 모색",
       "telegram_core_fact": "이재용 삼성전자 회장이 아랍에미리트(UAE)를 찾아 발전소 건설현장을 점검하고 인공지능(AI) 데이터센터와 에너지 인프라 등 미래 신사업 확대 방안을 논의했다. 삼성E&A 역시 지난해 UAE에서 2조5000억원 이상이 투입되는 TA‘ZIZ 메탄올 프로젝트를 수주하는 등 중동 에너지 시장에서 사업을 확대하고 있다.",
       "title": "이재용, UAE 발전소 현장 찾아…중동서 AI·에너지 신사업 확대 모색"
+    },
+    "core:f07c398435b0e9ead9b87b48": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "core:f0a2d666b7968790911bbf46": {
       "first_seen_kst": "2026-10-12T19:07:06+09:00",
@@ -102007,23 +102172,36 @@
     "event:316c11a78873c269a3b1773d": {
       "first_seen_kst": "2026-10-23T13:50:43+09:00",
       "lanes": {
-        "live": "2026-10-23T17:26:50+09:00"
+        "live": "2026-10-23T21:02:19+09:00"
       },
-      "last_seen_kst": "2026-10-23T17:26:50+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261023054700009",
-      "source": "연합뉴스",
-      "source_body_digest": "2061eddec81c008a2421aa71bb2abdacd3dd6b515b282ed43b11d3e70062450a",
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:10ee36b194ebebc1b52f367b1b707786157275a1e75dbb8e2716f9725132fdb6",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
       "source_fact_keys": [
-        "source_fact:v1:22f2821c29cc942d36c5cf561dbe81ac2c986d046d10504e72be3ad22924835f",
-        "source_fact:v1:92d5eba7d389e44da8f7c0d0e1162cbad7a9742dcdf7ff364080b7475871ef14"
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
       ],
-      "source_published_kst": "2026-10-23T09:59+09:00",
+      "source_published_kst": "2026-10-23T13:07+09:00",
       "source_supply_terms": {},
-      "source_title": "'전기차 속도조절' GM, 獨 희토류 영구자석업체와 계약 해지 | 연합뉴스",
-      "telegram_core_fact": "두 회사는 2023년 GM의 전기차 모터용 영구자석을 공급하는 장기계약을 체결해 VAC는 미 사우스캐롤라이나주에 5억달러(약 7천억원)를 투자해 연간 2천t을 생산할 수 있는 공장을 완공했다.",
-      "title": "'전기차 속도조절' GM, 獨 희토류 영구자석업체와 계약 해지 | 연합뉴스"
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "event:31a898aa0e9d7bb8503966fb": {
       "first_seen_kst": "2026-10-15T13:08:36+09:00",
@@ -156265,6 +156443,31 @@
       "telegram_core_fact": "삼성바이오로직스가 \"폴리펩타이드그룹 지분 공개매수에 응한 물량이 지난 12일을 기준으로 매수 대상 주식의 87.9%에 달했다\"며 \"거래 수락 최소 조건인 66.7%를 이미 넘어섰다\"고 13일 밝혔다.",
       "title": "삼성바이오 '2.7조 투입 M&A' 순항…최종 인수만 남았다"
     },
+    "fact:5ac420081205f031b1dbbb17": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838484",
+      "source": "뉴시스",
+      "source_body_digest": "4661e68f48d6ee7b0f3e163a904fc2e12b51033c53ea1a5891a140cd6b7584d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc9be233fb307414c5ea56b0c50bc754a22b4f27282760088018a2690b5372c3",
+      "source_fact_keys": [
+        "source_fact:v1:073e9a9b2c7daad6a72bb265726f599016adb79ade7260e3f56deda593913451",
+        "source_fact:v1:216d4a18bb745c284de7d3a3bacc038f67cde75a068694c1837c78cdb88476e3",
+        "source_fact:v1:2ae08a830ae54f9837a999e468a4060169430f21b67a4291cbb65e32727d2912",
+        "source_fact:v1:757b6bc7848bfe67db3793a99c4a46e68e8c5b84e3621f558f98252cd1f5b0b1",
+        "source_fact:v1:bad3e5bf43829d95046fc1d44b724e392396a9fc9dccdd27b908626199324434",
+        "source_fact:v1:f3f4b8bc5ff7e0da71093be73441e68824c945789664cbeda938d0796b2994f7"
+      ],
+      "source_published_kst": "2026-10-23T12:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\"",
+      "telegram_core_fact": "배 부총리는 \"특정 기업 몰아주기가 될 수 있기 때문에 새로 사업을 공고하고 출자 형식으로 가는 게 맞겠다고 판단했다\"고 덧붙였다.",
+      "title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\""
+    },
     "fact:5afc8de31fa897684f49d2d5": {
       "first_seen_kst": "2026-10-17T09:15:26+09:00",
       "lanes": {
@@ -169494,6 +169697,28 @@
       "telegram_core_fact": "삼성전기가 글로벌 대형 고객사와 3605억원 메모리 반도체용 패키지기판 장기공급계약(LTA)을 체결했다고 19일 밝혔다.",
       "title": "삼성전기, 3605억 규모 패키지기판 공급…올해 누적 계약만 4.3조"
     },
+    "fact:7b28156614c39b8353e80a63": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023035700003",
+      "source": "연합뉴스",
+      "source_body_digest": "60d9d37f4a37e1b0bcee8c07c698a18e06624baf928e31410156f311f9b4aa44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acfa7c75a07759e047297172e74d098f498028af48ba584002482947c56b6279",
+      "source_fact_keys": [
+        "source_fact:v1:85a7a64b225e477b5693ca9e83d479dfea13e0e79574787a1d704be0d798640b",
+        "source_fact:v1:9f4c10b4ac61d9ed977a58faa9a4a8c29ed4aca3d4cb84df4b319fc38a206955",
+        "source_fact:v1:eef40f87f538eaa4729af85504f81f95a2dce1d77d6b4c3f2a1b7d04f40ccb15"
+      ],
+      "source_published_kst": "2026-10-23T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스",
+      "telegram_core_fact": "SM그룹의 제조·서비스부문 계열사 SM국일(옛 국일제지)이 2차전지·반도체 생산장비 전문기업 대진기계 인수를 위한 우선협상대상자로 선정됐다고 23일 밝혔다.",
+      "title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스"
+    },
     "fact:7b3eb373303024612028aec1": {
       "first_seen_kst": "2026-10-20T13:59:52+09:00",
       "lanes": {
@@ -172798,6 +173023,40 @@
       "source_title": "[영상] '극초음속 무장' 14조짜리 美스텔스구축함 3번함…해상시험 준비 | 연합뉴스",
       "telegram_core_fact": "미국 최대 군함 건조업체 헌팅턴잉걸스인더스트리(HII)는 지난 19일(현지시간) 산하 잉걸스조선소가 린든 B. 존슨함의 해상시험을 위한 9천900만달러 추가 계약을 미 해군에서 수주했다고 밝혔습니다.",
       "title": "[영상] '극초음속 무장' 14조짜리 美스텔스구축함 3번함…해상시험 준비 | 연합뉴스"
+    },
+    "fact:83a08f5ccef28dbc466fedd2": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "fact:83b91f9b72d2622f75496f6c": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
@@ -176207,6 +176466,36 @@
       "source_title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스",
       "telegram_core_fact": "우리은행은 수출기업이 시설자금 대출을 신청할 경우 최대 15%의 추가 한도를 지원한다.",
       "title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스"
+    },
+    "fact:8a0db96713ff09bc89874ca0": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
     },
     "fact:8a1661fe80811999d3440882": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -257781,6 +258070,24 @@
       "source": "이투데이",
       "title": "이더커넥트 2026, 폐회사 하는 이종재 이투데이 대표 [포토]"
     },
+    "link:377181867376207fbb05033f": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183682",
+      "source": "매일경제",
+      "source_body_digest": "f8c483c453cddbf1502084be32bc40f0e9d9c40ac9b63ebfa5d049fa3267a82d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T05:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "머피 USA, 분기배당 0.72달러로 11% 인상",
+      "telegram_core_fact": "미국 주유소·편의점 운영업체 머피 USA(MUSA)는 이사회가 보통주 1주당 분기 현금배당금을 0.72달러(연환산 2.88달러)로 결정했다고 10월 22일 발표했다.",
+      "title": "머피 USA, 분기배당 0.72달러로 11% 인상"
+    },
     "link:377352ff0fc6a8e0af644124": {
       "first_seen_kst": "2026-10-22T09:39:54+09:00",
       "lanes": {
@@ -258767,6 +259074,24 @@
       "source_title": "원화코인 제도화 늦어지는 사이…달러 스테이블코인, 국내 결제망 파고든다",
       "telegram_core_fact": "서클은 국내 원화 스테이블코인 발행사와 협력해 글로벌 달러 결제망을 연결하겠다는 전략도 공개했다. 금융감독원 제출 자료에 따르면 올해 1~7월 국내 5대 가상자산거래소의 스테이블코인 거래대금은 80조7199억원에 달했다.",
       "title": "원화코인 제도화 늦어지는 사이…달러 스테이블코인, 국내 결제망 파고든다"
+    },
+    "link:392370665a6e999b3ab55198": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183550",
+      "source": "매일경제",
+      "source_body_digest": "461ab37869e039b088081ad34195968e4509da7f8ee5f40ae7179987c5fa1630",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "아르다 메탈 패키징, 분기배당 주당 0.10달러 승인..예상 배당률 8.71%",
+      "telegram_core_fact": "아르다 메탈 패키징(AMBP)이 이사회에서 보통주 1주당 0.10달러의 분기 중간배당을 승인했다고 10월 22일(현지시간) 발표했다.",
+      "title": "아르다 메탈 패키징, 분기배당 주당 0.10달러 승인..예상 배당률 8.71%"
     },
     "link:3926c72cd63631826a995f43": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -278074,6 +278399,40 @@
       "source_title": "AI 호황에도 소비 회복 더뎌…고유가·실질임금 정체에 체감경기 온도차",
       "telegram_core_fact": "KDI는 고유가 등 공급 측 요인에 따른 물가 상승 압력이 높은 수준을 유지하는 반면, 기조적인 임금 상승세는 미약해 소비 여건 개선이 제약되고 있다고 평가했다.",
       "title": "AI 호황에도 소비 회복 더뎌…고유가·실질임금 정체에 체감경기 온도차"
+    },
+    "link:5c3bf17d1144954b6a47e388": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "link:5c41d8444ecc29e43853954e": {
       "first_seen_kst": "2026-10-20T06:12:02+09:00",
@@ -318695,6 +319054,36 @@
       "telegram_core_fact": "엔케이는 주가안정, 주주가치 제고를 위해 30억원 자사주 취득 신탁계약을 체결했다고 20일 밝혔다.",
       "title": "엔케이, 30억 규모 자사주 매입 조기 완료…추가 신탁계약 체결"
     },
+    "link:a7892056bb8d7592bf64ffd2": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
+    },
     "link:a79716f47b4090c1946126b8": {
       "first_seen_kst": "2026-10-22T15:55:18+09:00",
       "lanes": {
@@ -325691,6 +326080,24 @@
       "source_title": "사우디 연합군, 후티 석유시설 공습…\"공항공격 대가 치를것\"(종합)",
       "telegram_core_fact": "사우디아라비아 주도 연합군이 예멘 수도 사나 등 친(親)이란 무장 세력 후티 본거지의 에너지 시설 등에 광범위한 공습을 가했다.",
       "title": "사우디 연합군, 후티 석유시설 공습…\"공항공격 대가 치를것\"(종합)"
+    },
+    "link:b4849d6294de2d3eb0dfdee8": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837719",
+      "source": "뉴시스",
+      "source_body_digest": "3fcd9b81a2bbdb7211d5e83de34d54ca752b7bace1421494affc61c9139cb999",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T05:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연",
+      "telegram_core_fact": "일론 머스크 테슬라 최고경영자(CEO)가 미국 거대 미디어 기업 '스카이댄스'에 10억달러를 투자했다고 CNBC가 22일(현지시간) 소식통을 인용해 보도했다. 래리 엘리슨은 머스크가 2022년 트위터를 인수할 당시 10억달러를 투자했다.",
+      "title": "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연"
     },
     "link:b4921eb6e5160986e651cb17": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
@@ -333701,6 +334108,31 @@
       "source_title": "반도체주 급락에도 원화 '강세'…수출 달러 공급이 관건",
       "telegram_core_fact": "안기태 NH투자증권 이코노미스트는 “인공지능(AI) 관련 투자가 확대되는 가운데 한국의 수출 증가율도 높아지고 있다”며 “수출 확대가 설비투자와 정부지출 증가로 이어지면서 한국 경제성장률은 올해 3.5%, 내년 3.0%로 2년 연속 3% 이상을 기록할 것”이라고 전망했다.",
       "title": "반도체주 급락에도 원화 '강세'…수출 달러 공급이 관건"
+    },
+    "link:c24151983a2280a5185dec5e": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838484",
+      "source": "뉴시스",
+      "source_body_digest": "4661e68f48d6ee7b0f3e163a904fc2e12b51033c53ea1a5891a140cd6b7584d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc9be233fb307414c5ea56b0c50bc754a22b4f27282760088018a2690b5372c3",
+      "source_fact_keys": [
+        "source_fact:v1:073e9a9b2c7daad6a72bb265726f599016adb79ade7260e3f56deda593913451",
+        "source_fact:v1:216d4a18bb745c284de7d3a3bacc038f67cde75a068694c1837c78cdb88476e3",
+        "source_fact:v1:2ae08a830ae54f9837a999e468a4060169430f21b67a4291cbb65e32727d2912",
+        "source_fact:v1:757b6bc7848bfe67db3793a99c4a46e68e8c5b84e3621f558f98252cd1f5b0b1",
+        "source_fact:v1:bad3e5bf43829d95046fc1d44b724e392396a9fc9dccdd27b908626199324434",
+        "source_fact:v1:f3f4b8bc5ff7e0da71093be73441e68824c945789664cbeda938d0796b2994f7"
+      ],
+      "source_published_kst": "2026-10-23T12:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\"",
+      "telegram_core_fact": "배 부총리는 \"특정 기업 몰아주기가 될 수 있기 때문에 새로 사업을 공고하고 출자 형식으로 가는 게 맞겠다고 판단했다\"고 덧붙였다.",
+      "title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\""
     },
     "link:c24e5d97fca7ff5c73ba57bc": {
       "first_seen_kst": "2026-10-20T07:06:59+09:00",
@@ -353932,6 +354364,28 @@
       "source_title": "국장 탈출해 '미장 3배 레버리지' 탔더니…'SOXL' 열흘 새 -43%",
       "telegram_core_fact": "코스피가 열흘간 19% 급락하는 동안 S&P500(-1.5%)과 나스닥(-4.9%)의 낙폭이 상대적으로 작았던 데다, 원·달러 환율이 1300원대 초반까지 내려서며 투자자들의 환율 부담을 줄여준 점도 매수세를 부추겼다. 'SOXL'는 순매수액만 32억9208만 달러(약 4조4000억원)에 달했다.",
       "title": "국장 탈출해 '미장 3배 레버리지' 탔더니…'SOXL' 열흘 새 -43%"
+    },
+    "link:e99ccc28ef28d6cb5729e5ec": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023035700003",
+      "source": "연합뉴스",
+      "source_body_digest": "60d9d37f4a37e1b0bcee8c07c698a18e06624baf928e31410156f311f9b4aa44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acfa7c75a07759e047297172e74d098f498028af48ba584002482947c56b6279",
+      "source_fact_keys": [
+        "source_fact:v1:85a7a64b225e477b5693ca9e83d479dfea13e0e79574787a1d704be0d798640b",
+        "source_fact:v1:9f4c10b4ac61d9ed977a58faa9a4a8c29ed4aca3d4cb84df4b319fc38a206955",
+        "source_fact:v1:eef40f87f538eaa4729af85504f81f95a2dce1d77d6b4c3f2a1b7d04f40ccb15"
+      ],
+      "source_published_kst": "2026-10-23T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스",
+      "telegram_core_fact": "SM그룹의 제조·서비스부문 계열사 SM국일(옛 국일제지)이 2차전지·반도체 생산장비 전문기업 대진기계 인수를 위한 우선협상대상자로 선정됐다고 23일 밝혔다.",
+      "title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스"
     },
     "link:e99fc7f69462b537c15f0df2": {
       "first_seen_kst": "2026-10-22T02:27:56+09:00",
@@ -408982,6 +409436,24 @@
       "source_published_kst": "2026-10-07T10:47+09:00",
       "title": "곽동신 한미반도체 회장, 자사주 누적 702억원 취득"
     },
+    "original:5088cea9365a27d2709143f2": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837719",
+      "source": "뉴시스",
+      "source_body_digest": "3fcd9b81a2bbdb7211d5e83de34d54ca752b7bace1421494affc61c9139cb999",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T05:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연",
+      "telegram_core_fact": "일론 머스크 테슬라 최고경영자(CEO)가 미국 거대 미디어 기업 '스카이댄스'에 10억달러를 투자했다고 CNBC가 22일(현지시간) 소식통을 인용해 보도했다. 래리 엘리슨은 머스크가 2022년 트위터를 인수할 당시 10억달러를 투자했다.",
+      "title": "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연"
+    },
     "original:5095d7554c951f4dd78a3d0b": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
       "lanes": {
@@ -410575,6 +411047,24 @@
       ],
       "source_published_kst": "2026-10-06T17:11+09:00",
       "title": "[영상] '성공률 80% 도전' 누리호 5차 발사…역대 최다 위성 15기 탑재 | 연합뉴스"
+    },
+    "original:53caad57b8ba5bb6ab7587c7": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183550",
+      "source": "매일경제",
+      "source_body_digest": "461ab37869e039b088081ad34195968e4509da7f8ee5f40ae7179987c5fa1630",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "아르다 메탈 패키징, 분기배당 주당 0.10달러 승인..예상 배당률 8.71%",
+      "telegram_core_fact": "아르다 메탈 패키징(AMBP)이 이사회에서 보통주 1주당 0.10달러의 분기 중간배당을 승인했다고 10월 22일(현지시간) 발표했다.",
+      "title": "아르다 메탈 패키징, 분기배당 주당 0.10달러 승인..예상 배당률 8.71%"
     },
     "original:53ce36c1cd7207365e62a2a7": {
       "first_seen_kst": "2026-10-21T23:26:54+09:00",
@@ -418179,6 +418669,40 @@
       "source_title": "한국인들 즐겨입는 유니클로…일본서 가격 오른다는데?",
       "telegram_core_fact": "유니클로는 그동안 대규모 생산과 공급망 효율화를 통해 비용 상승분을 흡수해왔지만, 엔저와 원가 부담이 이어지면서 가격 조정이 불가피해진 것으로 풀이된다.",
       "title": "한국인들 즐겨입는 유니클로…일본서 가격 오른다는데?"
+    },
+    "original:622faa427394ebfe9a141460": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "original:6253e1c15dbc6f9926accbbe": {
       "first_seen_kst": "2026-10-03T11:43:26+09:00",
@@ -458468,6 +458992,28 @@
       "telegram_core_fact": "AI 데이터센터 투자 확대로 반도체 수요가 이어지는 가운데 D램 가격 상승세와 중국 메모리 업체의 공급 확대가 향후 시장의 주요 변수로 작용할 것이라는 전망이 나왔다.",
       "title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음"
     },
+    "original:ad4555466268de7cd4e6b491": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023035700003",
+      "source": "연합뉴스",
+      "source_body_digest": "60d9d37f4a37e1b0bcee8c07c698a18e06624baf928e31410156f311f9b4aa44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acfa7c75a07759e047297172e74d098f498028af48ba584002482947c56b6279",
+      "source_fact_keys": [
+        "source_fact:v1:85a7a64b225e477b5693ca9e83d479dfea13e0e79574787a1d704be0d798640b",
+        "source_fact:v1:9f4c10b4ac61d9ed977a58faa9a4a8c29ed4aca3d4cb84df4b319fc38a206955",
+        "source_fact:v1:eef40f87f538eaa4729af85504f81f95a2dce1d77d6b4c3f2a1b7d04f40ccb15"
+      ],
+      "source_published_kst": "2026-10-23T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스",
+      "telegram_core_fact": "SM그룹의 제조·서비스부문 계열사 SM국일(옛 국일제지)이 2차전지·반도체 생산장비 전문기업 대진기계 인수를 위한 우선협상대상자로 선정됐다고 23일 밝혔다.",
+      "title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스"
+    },
     "original:ad4e0e004ba1b4fb1cbfead3": {
       "first_seen_kst": "2026-10-03T11:19:18+09:00",
       "lanes": {
@@ -472041,6 +472587,36 @@
       "telegram_core_fact": "한솔PNS는 AJ솔루션테크의 자산관리 시스템 ‘SAM(Solutiontech Asset Management)’ 구축 사업을 완료했다고 22일 밝혔다. 이번에 구축된 SAM은 한솔PNS의 설비자산관리 시스템 ‘PAM(Plant Asset Management)’을 기반으로 개발됐다.",
       "title": "한솔PNS, AJ솔루션테크 자산관리 시스템 구축…AI 활용 기반 확보"
     },
+    "original:c960d96cdcd30b773850c4d8": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
+    },
     "original:c9670dcf9f2ac9ec379082b3": {
       "first_seen_kst": "2026-10-18T16:18:39+09:00",
       "lanes": {
@@ -476258,6 +476834,31 @@
       "source_title": "기름값 21주째 하락…휘발유·경유 1800원대",
       "telegram_core_fact": "한국석유공사 유가정보시스템 오피넷에 따르면 10월 첫째 주(10월 4일∼8일) 전국 주유소 휘발유 평균 판매가는 지난주보다 L당 0.4원 내린 1857.6원이었다.",
       "title": "기름값 21주째 하락…휘발유·경유 1800원대"
+    },
+    "original:d0f5c8f82fcf88abd358db75": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838484",
+      "source": "뉴시스",
+      "source_body_digest": "4661e68f48d6ee7b0f3e163a904fc2e12b51033c53ea1a5891a140cd6b7584d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc9be233fb307414c5ea56b0c50bc754a22b4f27282760088018a2690b5372c3",
+      "source_fact_keys": [
+        "source_fact:v1:073e9a9b2c7daad6a72bb265726f599016adb79ade7260e3f56deda593913451",
+        "source_fact:v1:216d4a18bb745c284de7d3a3bacc038f67cde75a068694c1837c78cdb88476e3",
+        "source_fact:v1:2ae08a830ae54f9837a999e468a4060169430f21b67a4291cbb65e32727d2912",
+        "source_fact:v1:757b6bc7848bfe67db3793a99c4a46e68e8c5b84e3621f558f98252cd1f5b0b1",
+        "source_fact:v1:bad3e5bf43829d95046fc1d44b724e392396a9fc9dccdd27b908626199324434",
+        "source_fact:v1:f3f4b8bc5ff7e0da71093be73441e68824c945789664cbeda938d0796b2994f7"
+      ],
+      "source_published_kst": "2026-10-23T12:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\"",
+      "telegram_core_fact": "배 부총리는 \"특정 기업 몰아주기가 될 수 있기 때문에 새로 사업을 공고하고 출자 형식으로 가는 게 맞겠다고 판단했다\"고 덧붙였다.",
+      "title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\""
     },
     "original:d0f6b7a03e2f3d88a3b3582b": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
@@ -481511,6 +482112,24 @@
       "source_title": "롯데백화점, 더 강한 외국인 혜택 ‘롯데 투어리스트 멤버십x체크인서울’ 선봬",
       "telegram_core_fact": "업계 최초 외국인 매출 1조원을 달성한 롯데백화점이 외국인 전용 쇼핑 혜택 카드인 ‘롯데 투어리스트 멤버십’ 혜택을 확대 개편한 ‘롯데 투어리스트 멤버십 x 체크인서울’을 선보인다.",
       "title": "롯데백화점, 더 강한 외국인 혜택 ‘롯데 투어리스트 멤버십x체크인서울’ 선봬"
+    },
+    "original:d9e4514c412c120239281812": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183682",
+      "source": "매일경제",
+      "source_body_digest": "f8c483c453cddbf1502084be32bc40f0e9d9c40ac9b63ebfa5d049fa3267a82d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T05:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "머피 USA, 분기배당 0.72달러로 11% 인상",
+      "telegram_core_fact": "미국 주유소·편의점 운영업체 머피 USA(MUSA)는 이사회가 보통주 1주당 분기 현금배당금을 0.72달러(연환산 2.88달러)로 결정했다고 10월 22일 발표했다.",
+      "title": "머피 USA, 분기배당 0.72달러로 11% 인상"
     },
     "original:d9e4b5544a75a523c06fd34c": {
       "first_seen_kst": "2026-09-29T17:47:48+09:00",
@@ -504721,6 +505340,31 @@
       ],
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
+    },
+    "source_fact:01cc022dcf1fa1024c29c8e5": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838484",
+      "source": "뉴시스",
+      "source_body_digest": "4661e68f48d6ee7b0f3e163a904fc2e12b51033c53ea1a5891a140cd6b7584d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc9be233fb307414c5ea56b0c50bc754a22b4f27282760088018a2690b5372c3",
+      "source_fact_keys": [
+        "source_fact:v1:073e9a9b2c7daad6a72bb265726f599016adb79ade7260e3f56deda593913451",
+        "source_fact:v1:216d4a18bb745c284de7d3a3bacc038f67cde75a068694c1837c78cdb88476e3",
+        "source_fact:v1:2ae08a830ae54f9837a999e468a4060169430f21b67a4291cbb65e32727d2912",
+        "source_fact:v1:757b6bc7848bfe67db3793a99c4a46e68e8c5b84e3621f558f98252cd1f5b0b1",
+        "source_fact:v1:bad3e5bf43829d95046fc1d44b724e392396a9fc9dccdd27b908626199324434",
+        "source_fact:v1:f3f4b8bc5ff7e0da71093be73441e68824c945789664cbeda938d0796b2994f7"
+      ],
+      "source_published_kst": "2026-10-23T12:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\"",
+      "telegram_core_fact": "배 부총리는 \"특정 기업 몰아주기가 될 수 있기 때문에 새로 사업을 공고하고 출자 형식으로 가는 게 맞겠다고 판단했다\"고 덧붙였다.",
+      "title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\""
     },
     "source_fact:01cc2182c13aaa840197a66e": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
@@ -548618,6 +549262,40 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 경유 가격을 잡기 위해 러시아산 경유의 미국 수입 등을 허용하는 한시적인 대러 제재 완화 조치를 발표했다.",
       "title": "중간선거 앞 기름값 급등에…트럼프, 대러 제재 풀고 경유 수입"
     },
+    "source_fact:1619e95932e819747fa9e2eb": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
+    },
     "source_fact:161ab13882d08365c5d13415": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -576083,6 +576761,40 @@
       "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
       "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
     },
+    "source_fact:2212fd7ede085b59f201f549": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
+    },
     "source_fact:22151cc678ba325aef027e49": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -586545,6 +587257,31 @@
       "source_title": "삼진식품, 중국 상하이 핵심 상권에 ‘화동 1호점’ 오픈 현지 유통망 확대 본격화",
       "telegram_core_fact": "오프라인 매장으로 브랜드 경험을 넓히는 동시에 코스트코·허마·로손 등 주요 유통채널을 통해 제품 공급망을 확대하며 중국 사업의 외연을 넓히고 있다.",
       "title": "삼진식품, 중국 상하이 핵심 상권에 ‘화동 1호점’ 오픈 현지 유통망 확대 본격화"
+    },
+    "source_fact:267990089c90ff466caed156": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838484",
+      "source": "뉴시스",
+      "source_body_digest": "4661e68f48d6ee7b0f3e163a904fc2e12b51033c53ea1a5891a140cd6b7584d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc9be233fb307414c5ea56b0c50bc754a22b4f27282760088018a2690b5372c3",
+      "source_fact_keys": [
+        "source_fact:v1:073e9a9b2c7daad6a72bb265726f599016adb79ade7260e3f56deda593913451",
+        "source_fact:v1:216d4a18bb745c284de7d3a3bacc038f67cde75a068694c1837c78cdb88476e3",
+        "source_fact:v1:2ae08a830ae54f9837a999e468a4060169430f21b67a4291cbb65e32727d2912",
+        "source_fact:v1:757b6bc7848bfe67db3793a99c4a46e68e8c5b84e3621f558f98252cd1f5b0b1",
+        "source_fact:v1:bad3e5bf43829d95046fc1d44b724e392396a9fc9dccdd27b908626199324434",
+        "source_fact:v1:f3f4b8bc5ff7e0da71093be73441e68824c945789664cbeda938d0796b2994f7"
+      ],
+      "source_published_kst": "2026-10-23T12:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\"",
+      "telegram_core_fact": "배 부총리는 \"특정 기업 몰아주기가 될 수 있기 때문에 새로 사업을 공고하고 출자 형식으로 가는 게 맞겠다고 판단했다\"고 덧붙였다.",
+      "title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\""
     },
     "source_fact:2679d74965bc2acac67970ae": {
       "first_seen_kst": "2026-10-19T12:29:34+09:00",
@@ -600559,6 +601296,40 @@
       "source_title": "크레센트 에너지, 10억달러 주식공모 추진..KKR 5억달러 참여 의향",
       "telegram_core_fact": "크레센트 에너지(CRGY)가 디본 에너지의 이글포드 자산 인수 자금 조달을 위해 클래스A 보통주 10억 달러 인수단 주도 공모를 시작했으며, KKR 계열사가 최대 5억 달러어치 매수 의향을 밝혔다고 8일(현지시간) 발표했다.",
       "title": "크레센트 에너지, 10억달러 주식공모 추진..KKR 5억달러 참여 의향"
+    },
+    "source_fact:2c7afb9b83b53da7f8bbf93b": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "source_fact:2c7b688182d146d37469f8ea": {
       "first_seen_kst": "2026-10-19T22:09:23+09:00",
@@ -619133,6 +619904,31 @@
       "source_published_kst": "2026-10-07T09:55+09:00",
       "title": "그래피, 메가젠과 20억 규모 보철 솔루션 공급 계약"
     },
+    "source_fact:34f005de197b8be2daf3083f": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838484",
+      "source": "뉴시스",
+      "source_body_digest": "4661e68f48d6ee7b0f3e163a904fc2e12b51033c53ea1a5891a140cd6b7584d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc9be233fb307414c5ea56b0c50bc754a22b4f27282760088018a2690b5372c3",
+      "source_fact_keys": [
+        "source_fact:v1:073e9a9b2c7daad6a72bb265726f599016adb79ade7260e3f56deda593913451",
+        "source_fact:v1:216d4a18bb745c284de7d3a3bacc038f67cde75a068694c1837c78cdb88476e3",
+        "source_fact:v1:2ae08a830ae54f9837a999e468a4060169430f21b67a4291cbb65e32727d2912",
+        "source_fact:v1:757b6bc7848bfe67db3793a99c4a46e68e8c5b84e3621f558f98252cd1f5b0b1",
+        "source_fact:v1:bad3e5bf43829d95046fc1d44b724e392396a9fc9dccdd27b908626199324434",
+        "source_fact:v1:f3f4b8bc5ff7e0da71093be73441e68824c945789664cbeda938d0796b2994f7"
+      ],
+      "source_published_kst": "2026-10-23T12:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\"",
+      "telegram_core_fact": "배 부총리는 \"특정 기업 몰아주기가 될 수 있기 때문에 새로 사업을 공고하고 출자 형식으로 가는 게 맞겠다고 판단했다\"고 덧붙였다.",
+      "title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\""
+    },
     "source_fact:34f16d3f9040317f74777df0": {
       "first_seen_kst": "2026-10-08T11:06:13+09:00",
       "lanes": {
@@ -637529,6 +638325,36 @@
       "source_title": "수도권 집값 상승에 분양시장 기대 개선…지방은 미분양에 악화 | 연합뉴스",
       "telegram_core_fact": "연구원은 기준금리 인상과 대출규제로 자금조달 부담이 이어지는 가운데서도 전월세난 심화 등으로 한강벨트 이외 수도권 지역의 아파트 가격 상승세가 지속되면서 주택사업자들의 분양시장 기대심리가 개선된 것으로 분석했다.",
       "title": "수도권 집값 상승에 분양시장 기대 개선…지방은 미분양에 악화 | 연합뉴스"
+    },
+    "source_fact:3d13fd52457aefa2f3cda7cc": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
     },
     "source_fact:3d1b5cdb3bf2c35856bb1818": {
       "first_seen_kst": "2026-10-23T15:44:53+09:00",
@@ -668269,6 +669095,40 @@
       "source_title": "러, 우크라군 관련 시설·화물선 공격…트럼프 “에너지 휴전” 발표 뒤에도 공습",
       "telegram_core_fact": "도널드 트럼프 대통령은 이날 러시아와 우크라이나가 에너지 시설 공격을 중단하는 ‘에너지 휴전’에 합의했다고 발표했다. [모스크바·워싱턴=신화·AP/뉴시스] 러시아군이 우크라이나군 관련 데이터센터와 군수물자 보관시설, 화물선 등을 공격하고 전선에서 정착촌 4곳을 추가로 점령했다고 러시아 국방부가 11일(현지시간) 밝혔다.",
       "title": "러, 우크라군 관련 시설·화물선 공격…트럼프 “에너지 휴전” 발표 뒤에도 공습"
+    },
+    "source_fact:4a73afba1da095e6596751e2": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "source_fact:4a74b73df045fd34194de6ad": {
       "first_seen_kst": "2026-10-19T08:28:33+09:00",
@@ -704363,6 +705223,28 @@
       "source_published_kst": "2026-10-07T10:11+09:00",
       "title": "KT&G, 인니 신공장 돌린다…연 350억개비 ‘해외 최대 생산기지’로"
     },
+    "source_fact:5a177640e84f320db75d8f2d": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023035700003",
+      "source": "연합뉴스",
+      "source_body_digest": "60d9d37f4a37e1b0bcee8c07c698a18e06624baf928e31410156f311f9b4aa44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acfa7c75a07759e047297172e74d098f498028af48ba584002482947c56b6279",
+      "source_fact_keys": [
+        "source_fact:v1:85a7a64b225e477b5693ca9e83d479dfea13e0e79574787a1d704be0d798640b",
+        "source_fact:v1:9f4c10b4ac61d9ed977a58faa9a4a8c29ed4aca3d4cb84df4b319fc38a206955",
+        "source_fact:v1:eef40f87f538eaa4729af85504f81f95a2dce1d77d6b4c3f2a1b7d04f40ccb15"
+      ],
+      "source_published_kst": "2026-10-23T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스",
+      "telegram_core_fact": "SM그룹의 제조·서비스부문 계열사 SM국일(옛 국일제지)이 2차전지·반도체 생산장비 전문기업 대진기계 인수를 위한 우선협상대상자로 선정됐다고 23일 밝혔다.",
+      "title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스"
+    },
     "source_fact:5a17eb16632959882dd75d83": {
       "first_seen_kst": "2026-10-23T19:07:25+09:00",
       "lanes": {
@@ -731466,6 +732348,40 @@
       "telegram_core_fact": "한국항공우주연구원이 전력 공급 부족 및 전기세 부담으로 밤과 주말에 주로 시험해 온 것으로 드러났다.",
       "title": "한준호 의원 \"항우연 대형시설 시험 주로 주말·밤에…전기 때문\""
     },
+    "source_fact:664516d056c0fbfcfbd28391": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
+    },
     "source_fact:6658ab6989732e556505b752": {
       "first_seen_kst": "2026-10-22T23:00:45+09:00",
       "lanes": {
@@ -744290,6 +745206,36 @@
       "telegram_core_fact": "해상 봉쇄망을 뚫고 이란산 원유를 밀수출하던 유령선들을 대거 제재 명단에 올리면서 이란의 경제적 숨통을 완전히 끊겠다는 구상이다.",
       "title": "유령선 17척의 비밀…미국 ‘경제적 고립 작전’에 이란 숨통 막히나 [밀리터리노트]"
     },
+    "source_fact:6bd6ab5f48aa93a9507616d1": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
+    },
     "source_fact:6bdcc676f3ca5c20a9a1a8fe": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
       "lanes": {
@@ -752663,6 +753609,40 @@
       "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
       "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
       "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
+    "source_fact:6fc0e098bce1f474d4ee824e": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "source_fact:6fc1de950b16659e6616282f": {
       "first_seen_kst": "2026-10-10T12:12:57+09:00",
@@ -783076,6 +784056,31 @@
       "source_published_kst": "2026-10-06T17:10+09:00",
       "title": "퓨처드라이브, KES 2026서 '텔레드라이브' 전시…AI 보조 원격주행으로 차량·무인장비 운영 지원"
     },
+    "source_fact:7d8e4ec7cb3d08b1e220a458": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838484",
+      "source": "뉴시스",
+      "source_body_digest": "4661e68f48d6ee7b0f3e163a904fc2e12b51033c53ea1a5891a140cd6b7584d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc9be233fb307414c5ea56b0c50bc754a22b4f27282760088018a2690b5372c3",
+      "source_fact_keys": [
+        "source_fact:v1:073e9a9b2c7daad6a72bb265726f599016adb79ade7260e3f56deda593913451",
+        "source_fact:v1:216d4a18bb745c284de7d3a3bacc038f67cde75a068694c1837c78cdb88476e3",
+        "source_fact:v1:2ae08a830ae54f9837a999e468a4060169430f21b67a4291cbb65e32727d2912",
+        "source_fact:v1:757b6bc7848bfe67db3793a99c4a46e68e8c5b84e3621f558f98252cd1f5b0b1",
+        "source_fact:v1:bad3e5bf43829d95046fc1d44b724e392396a9fc9dccdd27b908626199324434",
+        "source_fact:v1:f3f4b8bc5ff7e0da71093be73441e68824c945789664cbeda938d0796b2994f7"
+      ],
+      "source_published_kst": "2026-10-23T12:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\"",
+      "telegram_core_fact": "배 부총리는 \"특정 기업 몰아주기가 될 수 있기 때문에 새로 사업을 공고하고 출자 형식으로 가는 게 맞겠다고 판단했다\"고 덧붙였다.",
+      "title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\""
+    },
     "source_fact:7d8efd2397631cffcbf93490": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -788598,6 +789603,36 @@
       "telegram_core_fact": "호남 반도체 클러스터 예정지인 광주 군공항에 최태원 SK그룹 회장에 이어 정부 관계부처 장관들의 발길이 이어지고 있다. 최 회장은 호남 반도체 공장 건설을 최대한 서두르고, 투자를 확대할 수 있다는 의지도 보였다.",
       "title": "최태원 이어 산업·국방·국토장관 군공항행…호남 반도체 점검 | 연합뉴스"
     },
+    "source_fact:80533d49df5792741089af86": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
+    },
     "source_fact:805628999cef69f8f3070ad6": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
       "lanes": {
@@ -790476,6 +791511,36 @@
       ],
       "source_published_kst": "2026-10-06T15:10+09:00",
       "title": "파운드리發 반도체값 도미노 인상 예고…TSMC, 내년 파운드리 단가 10% 올린다"
+    },
+    "source_fact:8146e7b2a6ccbb798e3195c5": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
     },
     "source_fact:8147298db4917a7c14bb33c2": {
       "first_seen_kst": "2026-10-19T08:28:33+09:00",
@@ -804261,6 +805326,40 @@
       "telegram_core_fact": "우크라이나 프라우다에 따르면 미국과 우크라이나, 유럽, 북대서양조약기구(NATO·나토) 대표들이 러우전쟁 종식을 위한 공통안 마련을 위해 진행한 협상은 당초 이틀 일정으로 예정됐으나 트럼프 대통령이 대러 경유 제재 완화를 발표한 9일 하루 만에 조기 종료됐다.",
       "title": "美 특사, 우크라·유럽 대러 공동안 마련까지 모스크바행 보류"
     },
+    "source_fact:8770d3154da9c07ffa3bcf37": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
+    },
     "source_fact:877528d62bacec9982eaae72": {
       "first_seen_kst": "2026-10-20T10:42:42+09:00",
       "lanes": {
@@ -804935,6 +806034,40 @@
       "source_title": "“코스피 9000 찍자 예금 깨고 ‘반도체 ETF’에 다 걸었는데” 김 차장, 폭락 장서 생존했을까 [이연부]",
       "telegram_core_fact": "투자 상품으로는 주변의 추천을 받아 국내 반도체 관련 상장지수펀드(ETF)를 집중적으로 매수했다. 코스피 지수가 9000을 넘어 1만을 넘어선다는 국내외 경제 전문가의 전망과 달리 한때 6000초반까지 떨어졌다.",
       "title": "“코스피 9000 찍자 예금 깨고 ‘반도체 ETF’에 다 걸었는데” 김 차장, 폭락 장서 생존했을까 [이연부]"
+    },
+    "source_fact:87cd97cf8f3f2d1c51d4abe0": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "source_fact:87ce3a1a9320c0fcb4f35fa9": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
@@ -837547,6 +838680,40 @@
       "telegram_core_fact": "총사업비의 75%를 대출로 조달하는 3천959억원 장성 데이터센터 건립사업에 전남광주통합특별시가 48억원을 출자하기로 하면서 사업성 검증에 대한 요구가 시의회에서 나왔다. 상임위 심사에서는 2030년 데이터센터 매각을 전제로 통합시 몫의 청산이익이 62억원으로 예상돼 사업성 검증이 필요하다는 지적이 제기됐다.",
       "title": "전남광주시, 장성데이터센터 출자에 시의회서 '사업성' 우려 | 연합뉴스"
     },
+    "source_fact:970f870408361e7d264f44bc": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
+    },
     "source_fact:971109ec90a7f719d9cec33f": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -838823,6 +839990,28 @@
       "source_title": "현대차, 인도에 21조 투자… 글로벌 톱3시장 '국민차' 노린다",
       "telegram_core_fact": "현대자동차가 세계 3대 자동차시장으로 성장한 인도에서 생산능력 확대를 바탕으로 R&D(연구·개발)와 부품공급망을 강화해 글로벌 성장동력 확보에 나선다.",
       "title": "현대차, 인도에 21조 투자… 글로벌 톱3시장 '국민차' 노린다"
+    },
+    "source_fact:979a50f9965c29b893ec83b1": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023035700003",
+      "source": "연합뉴스",
+      "source_body_digest": "60d9d37f4a37e1b0bcee8c07c698a18e06624baf928e31410156f311f9b4aa44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acfa7c75a07759e047297172e74d098f498028af48ba584002482947c56b6279",
+      "source_fact_keys": [
+        "source_fact:v1:85a7a64b225e477b5693ca9e83d479dfea13e0e79574787a1d704be0d798640b",
+        "source_fact:v1:9f4c10b4ac61d9ed977a58faa9a4a8c29ed4aca3d4cb84df4b319fc38a206955",
+        "source_fact:v1:eef40f87f538eaa4729af85504f81f95a2dce1d77d6b4c3f2a1b7d04f40ccb15"
+      ],
+      "source_published_kst": "2026-10-23T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스",
+      "telegram_core_fact": "SM그룹의 제조·서비스부문 계열사 SM국일(옛 국일제지)이 2차전지·반도체 생산장비 전문기업 대진기계 인수를 위한 우선협상대상자로 선정됐다고 23일 밝혔다.",
+      "title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스"
     },
     "source_fact:979bee9e94e74aaa58f385d8": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
@@ -852458,6 +853647,31 @@
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
     },
+    "source_fact:9d8734c3a17ce3690944a1d4": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838484",
+      "source": "뉴시스",
+      "source_body_digest": "4661e68f48d6ee7b0f3e163a904fc2e12b51033c53ea1a5891a140cd6b7584d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc9be233fb307414c5ea56b0c50bc754a22b4f27282760088018a2690b5372c3",
+      "source_fact_keys": [
+        "source_fact:v1:073e9a9b2c7daad6a72bb265726f599016adb79ade7260e3f56deda593913451",
+        "source_fact:v1:216d4a18bb745c284de7d3a3bacc038f67cde75a068694c1837c78cdb88476e3",
+        "source_fact:v1:2ae08a830ae54f9837a999e468a4060169430f21b67a4291cbb65e32727d2912",
+        "source_fact:v1:757b6bc7848bfe67db3793a99c4a46e68e8c5b84e3621f558f98252cd1f5b0b1",
+        "source_fact:v1:bad3e5bf43829d95046fc1d44b724e392396a9fc9dccdd27b908626199324434",
+        "source_fact:v1:f3f4b8bc5ff7e0da71093be73441e68824c945789664cbeda938d0796b2994f7"
+      ],
+      "source_published_kst": "2026-10-23T12:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\"",
+      "telegram_core_fact": "배 부총리는 \"특정 기업 몰아주기가 될 수 있기 때문에 새로 사업을 공고하고 출자 형식으로 가는 게 맞겠다고 판단했다\"고 덧붙였다.",
+      "title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\""
+    },
     "source_fact:9d88a83ba5b02d294364ded1": {
       "first_seen_kst": "2026-10-23T11:32:52+09:00",
       "lanes": {
@@ -855030,6 +856244,28 @@
       "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
       "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
       "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
+    },
+    "source_fact:9ea3f6e42e4fde5a15a66c71": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023035700003",
+      "source": "연합뉴스",
+      "source_body_digest": "60d9d37f4a37e1b0bcee8c07c698a18e06624baf928e31410156f311f9b4aa44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acfa7c75a07759e047297172e74d098f498028af48ba584002482947c56b6279",
+      "source_fact_keys": [
+        "source_fact:v1:85a7a64b225e477b5693ca9e83d479dfea13e0e79574787a1d704be0d798640b",
+        "source_fact:v1:9f4c10b4ac61d9ed977a58faa9a4a8c29ed4aca3d4cb84df4b319fc38a206955",
+        "source_fact:v1:eef40f87f538eaa4729af85504f81f95a2dce1d77d6b4c3f2a1b7d04f40ccb15"
+      ],
+      "source_published_kst": "2026-10-23T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스",
+      "telegram_core_fact": "SM그룹의 제조·서비스부문 계열사 SM국일(옛 국일제지)이 2차전지·반도체 생산장비 전문기업 대진기계 인수를 위한 우선협상대상자로 선정됐다고 23일 밝혔다.",
+      "title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스"
     },
     "source_fact:9ea79ad9ac94174ff47dfcf9": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
@@ -883340,6 +884576,36 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
       "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
+    "source_fact:ab09b10ed6758033cf38c117": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
+    },
     "source_fact:ab0ad642ae2fcef70f35caa8": {
       "first_seen_kst": "2026-10-13T04:02:08+09:00",
       "lanes": {
@@ -893983,6 +895249,36 @@
       "telegram_core_fact": "박상현 iM증권 연구원은 \"금융시장은 코어 CPI 0.1%p 상회를 유가 상승발 물가 압력의 전방위 확산으로 받아들였다\"며 \"10월 동결 가능성은 높지만 12월에 이어 내년 1월 FOMC 회의에서 추가 인상이 단행될 확률이 50%를 웃돌고 있다. 결국 긴축 지속 여부는 유가 불안 장기화에 달렸다\"고 짚었다.",
       "title": "韓증시 때린 美 '물가 쇼크'…증권가 \"금리 추가 인상·AI 신용 비상\""
     },
+    "source_fact:afb062437f2f594571129ba2": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
+    },
     "source_fact:afb07c481e6b983faf1a14e6": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -894485,6 +895781,31 @@
       "source_title": "커뮤니티 트러스트 뱅코프, 3분기 희석 EPS 1.43달러..전년비 8.3% 증가",
       "telegram_core_fact": "커뮤니티 트러스트 뱅코프(CTBI)는 올해 3분기(7~9월) 희석 주당순이익이 1.43달러로 전년 동기 1.32달러보다 8.3% 늘었고, 순이익은 2589만 달러로 전년 동기 2391만 달러 대비 8.3% 증가했다고 10월 21일 발표했다.",
       "title": "커뮤니티 트러스트 뱅코프, 3분기 희석 EPS 1.43달러..전년비 8.3% 증가"
+    },
+    "source_fact:aff51f63a0c0dde7a04ee077": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838484",
+      "source": "뉴시스",
+      "source_body_digest": "4661e68f48d6ee7b0f3e163a904fc2e12b51033c53ea1a5891a140cd6b7584d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc9be233fb307414c5ea56b0c50bc754a22b4f27282760088018a2690b5372c3",
+      "source_fact_keys": [
+        "source_fact:v1:073e9a9b2c7daad6a72bb265726f599016adb79ade7260e3f56deda593913451",
+        "source_fact:v1:216d4a18bb745c284de7d3a3bacc038f67cde75a068694c1837c78cdb88476e3",
+        "source_fact:v1:2ae08a830ae54f9837a999e468a4060169430f21b67a4291cbb65e32727d2912",
+        "source_fact:v1:757b6bc7848bfe67db3793a99c4a46e68e8c5b84e3621f558f98252cd1f5b0b1",
+        "source_fact:v1:bad3e5bf43829d95046fc1d44b724e392396a9fc9dccdd27b908626199324434",
+        "source_fact:v1:f3f4b8bc5ff7e0da71093be73441e68824c945789664cbeda938d0796b2994f7"
+      ],
+      "source_published_kst": "2026-10-23T12:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\"",
+      "telegram_core_fact": "배 부총리는 \"특정 기업 몰아주기가 될 수 있기 때문에 새로 사업을 공고하고 출자 형식으로 가는 게 맞겠다고 판단했다\"고 덧붙였다.",
+      "title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\""
     },
     "source_fact:aff67002a42c33bb3eebd65a": {
       "first_seen_kst": "2026-10-22T06:06:48+09:00",
@@ -907164,6 +908485,36 @@
       "telegram_core_fact": "[파이낸셜뉴스]한화엔진이 삼성중공업과 1322억원 선박용 엔진 공급 계약을 체결하며 중장기 일감을 추가 확보했다.",
       "title": "한화엔진, 삼성重에 1322억 선박엔진 공급계약"
     },
+    "source_fact:b54d75f1b371ce1d3d544e32": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
+    },
     "source_fact:b54db251d0ddea6f442b9733": {
       "first_seen_kst": "2026-10-19T08:00:35+09:00",
       "lanes": {
@@ -908105,6 +909456,40 @@
       "source_title": "엔케이, 30억 규모 자사주 매입 조기 완료…추가 신탁계약 체결",
       "telegram_core_fact": "엔케이는 주가안정, 주주가치 제고를 위해 30억원 자사주 취득 신탁계약을 체결했다고 20일 밝혔다.",
       "title": "엔케이, 30억 규모 자사주 매입 조기 완료…추가 신탁계약 체결"
+    },
+    "source_fact:b5f977f12099296e4c05d97a": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "source_fact:b5faf395d6492e56463b1b1c": {
       "first_seen_kst": "2026-10-21T15:40:18+09:00",
@@ -913719,6 +915104,36 @@
       "source_title": "코스피 7% 급락·외인 투매에 달러·원 환율도 상승(종합)",
       "telegram_core_fact": "외국인 반도체 순매도가 이어지며 코스피가 7% 넘게 급락한 여파에 달러·원 환율은 오전 10시 무렵 1353.0원까지 치솟았다.",
       "title": "코스피 7% 급락·외인 투매에 달러·원 환율도 상승(종합)"
+    },
+    "source_fact:b87a739fe20ab4cd84c48825": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
     },
     "source_fact:b87ba1ba1dbc008f52f8e075": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
@@ -921835,6 +923250,40 @@
       "telegram_core_fact": "이번 자금 조달로 발행되는 신주는 제3자배정 77만5740주, 소액공모 40만2144주 등 총 117만7884주다.",
       "title": "이브이첨단소재, 최대주주 유증 등 85억 자금 조달 완료…책임경영 본격화"
     },
+    "source_fact:bc28471ca55c71baad71fb0d": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
+    },
     "source_fact:bc28a7d630235dc2d2f3455e": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -926660,6 +928109,40 @@
       "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
       "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
       "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
+    "source_fact:be75e7e62f611d153428c8ae": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "source_fact:be77cb5110a08b5c519118f9": {
       "first_seen_kst": "2026-10-22T22:04:33+09:00",
@@ -947476,6 +948959,36 @@
       "source_title": "한화 필리 등 트럼프 '제조업 부활책' 시험대…고비용에 난항",
       "telegram_core_fact": "한국 기업 한화는 필라델피아의 필리조선소를 인수한 뒤 50억 달러를 투자해 상선 생산량을 연간 2척에서 20척으로 확대하겠다고 밝혔다. 백악관 측은 WSJ에 \"역사적인 투자를 유치하고 고임금 일자리를 창출하고 제조업을 미국으로 되돌려 놓는 검증된 실력을 갖추고 있다\"고 밝혔다.",
       "title": "한화 필리 등 트럼프 '제조업 부활책' 시험대…고비용에 난항"
+    },
+    "source_fact:c77bc301ac2c1f5d558761fc": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
     },
     "source_fact:c77c9b8bf453f2d74a0b0edf": {
       "first_seen_kst": "2026-10-23T00:33:48+09:00",
@@ -969112,6 +970625,40 @@
       "telegram_core_fact": "그동안 엔비디아의 그래픽처리장치(GPU)와 고대역폭메모리(HBM) 확보가 AI 인프라 구축의 최대 과제였다면 이제는 확보한 반도체를 실제로 가동할 전력 공급 능력이 관건이 되고 있다.",
       "title": "“GPU는 있는데 전기가 없다”⋯美 AIDC 32GW 전력난, HBM 새 변수 [AI 호황의 역설]"
     },
+    "source_fact:d118b7ec8e0efb8bcad9df43": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
+    },
     "source_fact:d1195835b7829181095c6510": {
       "first_seen_kst": "2026-10-23T13:50:43+09:00",
       "lanes": {
@@ -973135,6 +974682,36 @@
       "telegram_core_fact": "김 장관은 \"기업 투자가 적기에 이뤄질 수 있도록 부지 조성, 전력·용수 공급 인프라의 차질없는 확보, 주민 수용성 제고 등에 만전을 기해달라\"며 \"서남권의 대규모 기업 투자가 지역의 산업생태계 확충으로 이어질 수 있도록 반도체 소부장, 연구개발(R&D), 인재 양성 등 지원방안도 구체화해 나갈 계획\"이라고 말했다.",
       "title": "김정관 산업장관, 호남 반도체 부지 현장점검"
     },
+    "source_fact:d2fe9004e74921816db3d4cb": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
+    },
     "source_fact:d302a73211f88af7487ff95e": {
       "first_seen_kst": "2026-10-22T11:47:17+09:00",
       "lanes": {
@@ -974945,6 +976522,40 @@
       "source_title": "EU, 中 하이브리드 수출 빗장 강화⋯K-배터리 반사이익 기대 [관세 장벽과 쿼터의 역습]",
       "telegram_core_fact": "유럽연합(EU)이 중국산 하이브리드 차량에 대한 수입 제한에 나서면서 국내 배터리업계의 유럽 시장 점유율 회복 기대감이 커지고 있다.",
       "title": "EU, 中 하이브리드 수출 빗장 강화⋯K-배터리 반사이익 기대 [관세 장벽과 쿼터의 역습]"
+    },
+    "source_fact:d3ded8fa448bd2ae9ed885a6": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "source_fact:d3df8c1a4a8c973113011c8d": {
       "first_seen_kst": "2026-10-16T06:50:52+09:00",
@@ -1030535,6 +1032146,40 @@
       "source_published_kst": "2026-10-05T22:19+09:00",
       "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
     },
+    "source_fact:ec8be8d0dbca44133389d4a5": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
+    },
     "source_fact:ec8d3e10c3f5c592cc9da0cc": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -1033997,6 +1035642,36 @@
       "source_title": "바로니스 시스템즈, 63억 달러에 피인수..주당 49.75달러 현금",
       "telegram_core_fact": "바로니스 시스템즈(VRNS)가 토마 브라보(Thoma Bravo) 포트폴리오 기업인 프루프포인트(Proofpoint)에 약 63억 달러 전액 현금 거래로 인수되는 최종 계약을 체결했다고 15일(현지시간) 발표했다.",
       "title": "바로니스 시스템즈, 63억 달러에 피인수..주당 49.75달러 현금"
+    },
+    "source_fact:ee2117f4d9c39aedef56a784": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
     },
     "source_fact:ee23f840db24efda3cb9710e": {
       "first_seen_kst": "2026-10-15T19:53:29+09:00",
@@ -1116310,6 +1117985,24 @@
       "source_published_kst": "2026-10-07T10:47+09:00",
       "title": "곽동신 한미반도체 회장, 자사주 누적 702억원 취득"
     },
+    "title:5088cea9365a27d2709143f2": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837719",
+      "source": "뉴시스",
+      "source_body_digest": "3fcd9b81a2bbdb7211d5e83de34d54ca752b7bace1421494affc61c9139cb999",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T05:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연",
+      "telegram_core_fact": "일론 머스크 테슬라 최고경영자(CEO)가 미국 거대 미디어 기업 '스카이댄스'에 10억달러를 투자했다고 CNBC가 22일(현지시간) 소식통을 인용해 보도했다. 래리 엘리슨은 머스크가 2022년 트위터를 인수할 당시 10억달러를 투자했다.",
+      "title": "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연"
+    },
     "title:5095d7554c951f4dd78a3d0b": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
       "lanes": {
@@ -1117966,6 +1119659,24 @@
       ],
       "source_published_kst": "2026-10-06T17:11+09:00",
       "title": "[영상] '성공률 80% 도전' 누리호 5차 발사…역대 최다 위성 15기 탑재 | 연합뉴스"
+    },
+    "title:53caad57b8ba5bb6ab7587c7": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183550",
+      "source": "매일경제",
+      "source_body_digest": "461ab37869e039b088081ad34195968e4509da7f8ee5f40ae7179987c5fa1630",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T00:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "아르다 메탈 패키징, 분기배당 주당 0.10달러 승인..예상 배당률 8.71%",
+      "telegram_core_fact": "아르다 메탈 패키징(AMBP)이 이사회에서 보통주 1주당 0.10달러의 분기 중간배당을 승인했다고 10월 22일(현지시간) 발표했다.",
+      "title": "아르다 메탈 패키징, 분기배당 주당 0.10달러 승인..예상 배당률 8.71%"
     },
     "title:53ce36c1cd7207365e62a2a7": {
       "first_seen_kst": "2026-10-21T23:26:54+09:00",
@@ -1125725,6 +1127436,40 @@
       "source_title": "한국인들 즐겨입는 유니클로…일본서 가격 오른다는데?",
       "telegram_core_fact": "유니클로는 그동안 대규모 생산과 공급망 효율화를 통해 비용 상승분을 흡수해왔지만, 엔저와 원가 부담이 이어지면서 가격 조정이 불가피해진 것으로 풀이된다.",
       "title": "한국인들 즐겨입는 유니클로…일본서 가격 오른다는데?"
+    },
+    "title:622faa427394ebfe9a141460": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610230953b",
+      "source": "한국경제",
+      "source_body_digest": "ddae066eb36957daa453c65ce999030d618fc48d98d8ed257a18b61a1b34d726",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c0736783b3f0b7fa8364da619d7842f043935230d8b837141aa826e63d47f9b",
+      "source_fact_keys": [
+        "source_fact:v1:03675dec1b78a898bcd046f385bf2050c1121c421413a9b4d451a9fb63cef076",
+        "source_fact:v1:0b9a040fee377b968b89ca7f17b8254740d2ba3314bce72cb25a1f945981963b",
+        "source_fact:v1:1d5cf95f444f76e25169d2862d4c5e84d8133fe2aad5c4e9a9c1672dd25d6978",
+        "source_fact:v1:3c528ed1ef08f1ea81a22b7ab42714a0ccdf9007cb8075dcf1945a5fd4a3a401",
+        "source_fact:v1:3ff1e53beb1480367034503fafd9cd2e183dcebd4f4f42fb2deca80c54f87f37",
+        "source_fact:v1:468448c16de2316e40c6eed0372013d5a3f6d39b867f06e7a3db1ccfa625f566",
+        "source_fact:v1:4a60f69dd94259a87cf1af24db17e4639845ed8b06b125ed0382b9c68eed68fd",
+        "source_fact:v1:5d6e14c00f96b6a1bec4f0729de0e83782b513acfb8686cd1ce578fb215e5abc",
+        "source_fact:v1:64896830a329345499c9a69f2f81033cc9beab19a5f8adf71ee7e5b73e1965bc",
+        "source_fact:v1:6cbd79e5be35214de7509dc7575b86abac4f9c9ea9d95311a11726e9e6d883ed",
+        "source_fact:v1:7a2ca3893119bf83de90a945b4f220bcdc326b58700f3b718ae04c2ded31cc01",
+        "source_fact:v1:81e3906a6e5bf12b352e8e3e4d17f220be6e240b0edd48c88b26662a3fdb65d4",
+        "source_fact:v1:a3b6f2ffd607b75800415853d17852721a32daa5ad1acf51da261c4f4bfe3641",
+        "source_fact:v1:ced83c69780c49e74778530013b042fbec33a77e5cba8fd9d9d96b23c5c6a1c6",
+        "source_fact:v1:f1362c716a512f46215995d4109e4f5bd004c2af7f4ec493223241472eb7986c"
+      ],
+      "source_published_kst": "2026-10-23T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁",
+      "telegram_core_fact": "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. 한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 ‘그린필드’ 투자를 택했다.",
+      "title": "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
     },
     "title:6253e1c15dbc6f9926accbbe": {
       "first_seen_kst": "2026-10-03T11:43:26+09:00",
@@ -1155122,6 +1156867,36 @@
       "telegram_core_fact": "무보는 전국의 지사 네트워크를 가동해 지자체 및 지역별 수출지원기관이 공동으로 개최하는 수출지원 간담회에 지속적으로 참여하고 있다고 14일 밝혔다. 무보는 지난달 열린 '대구·경북 통상진흥기관협의회' 등 주요 지역 간담회에서 원자재 가격 상승, 환율 변동성 확대, 물류비 가중 등에 따른 현장 고충을 청취했다.",
       "title": "무보, 지역별 간담회 돌며 수출기업 현장 소통 강화"
     },
+    "title:98036fc46bdd2892bcad11a7": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
+    },
     "title:980862602e09a374f9816e0c": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -1166918,6 +1168693,28 @@
       "source_title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음",
       "telegram_core_fact": "AI 데이터센터 투자 확대로 반도체 수요가 이어지는 가운데 D램 가격 상승세와 중국 메모리 업체의 공급 확대가 향후 시장의 주요 변수로 작용할 것이라는 전망이 나왔다.",
       "title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음"
+    },
+    "title:ad4555466268de7cd4e6b491": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023035700003",
+      "source": "연합뉴스",
+      "source_body_digest": "60d9d37f4a37e1b0bcee8c07c698a18e06624baf928e31410156f311f9b4aa44",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acfa7c75a07759e047297172e74d098f498028af48ba584002482947c56b6279",
+      "source_fact_keys": [
+        "source_fact:v1:85a7a64b225e477b5693ca9e83d479dfea13e0e79574787a1d704be0d798640b",
+        "source_fact:v1:9f4c10b4ac61d9ed977a58faa9a4a8c29ed4aca3d4cb84df4b319fc38a206955",
+        "source_fact:v1:eef40f87f538eaa4729af85504f81f95a2dce1d77d6b4c3f2a1b7d04f40ccb15"
+      ],
+      "source_published_kst": "2026-10-23T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스",
+      "telegram_core_fact": "SM그룹의 제조·서비스부문 계열사 SM국일(옛 국일제지)이 2차전지·반도체 생산장비 전문기업 대진기계 인수를 위한 우선협상대상자로 선정됐다고 23일 밝혔다.",
+      "title": "SM국일, ESS 장비 전문 대진기계 인수 우선협상대상자 선정 | 연합뉴스"
     },
     "title:ad4e0e004ba1b4fb1cbfead3": {
       "first_seen_kst": "2026-10-03T11:19:18+09:00",
@@ -1180885,6 +1182682,36 @@
       "telegram_core_fact": "한솔PNS는 AJ솔루션테크의 자산관리 시스템 ‘SAM(Solutiontech Asset Management)’ 구축 사업을 완료했다고 22일 밝혔다. 이번에 구축된 SAM은 한솔PNS의 설비자산관리 시스템 ‘PAM(Plant Asset Management)’을 기반으로 개발됐다.",
       "title": "한솔PNS, AJ솔루션테크 자산관리 시스템 구축…AI 활용 기반 확보"
     },
+    "title:c960d96cdcd30b773850c4d8": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180086",
+      "source": "매일경제",
+      "source_body_digest": "c2a7a57aa81430489bca8a0f926729ff251b0d5b9f195410e03d94bf85bfe8a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:980a53de5bda46b10b84dcc55517706fa0f1faeb64413633675cf84f5f01a0d9",
+      "source_fact_keys": [
+        "source_fact:v1:6516ab4287470bd5b556d0e3033df507a1b4a25e16012bef6fd669ada3be2a00",
+        "source_fact:v1:6643f33533f18d7c86bebe2c322bb6561cfa0a934e9b3fb7f07d3d9dd1d5b07b",
+        "source_fact:v1:7a36937de82f4cd7fdf6f699778ee8214f83cba1883295c118dd448a295023aa",
+        "source_fact:v1:7ccac6ad0ce331e86392dbb957ef81675c18c1c0347556a9586ce19acc09c406",
+        "source_fact:v1:8bd3cded923db5e176dee89419a2061c0e2f84897ba72de7910f6d58e43b744c",
+        "source_fact:v1:b5d22c1568e6ae145a48a8dee31d4bbc064102726b4920d9a683af9fb0004fd1",
+        "source_fact:v1:b660cc8518ddcf8c14260e6e24456e8ea911f25f48a22e2f4b30fa9ecdccb186",
+        "source_fact:v1:d0911c706ce1f6b660064eb39245c5afe9bdaa47cc43d3f2c1b8353a735dbc11",
+        "source_fact:v1:d6e0d0d00ffa3d6eb997ce9f253d1d0e88bc56deec598c05e3cb1b0faaf77afb",
+        "source_fact:v1:efa4403353b6edf06684997004a2d9d81533105235c69e5455cf0aee86f7d813",
+        "source_fact:v1:efd76b2bb469b867ab0294bd3e01184baf90da5007505e7b48f0d0e7cab770fc"
+      ],
+      "source_published_kst": "2026-10-23T11:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)",
+      "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
+      "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
+    },
     "title:c9670dcf9f2ac9ec379082b3": {
       "first_seen_kst": "2026-10-18T16:18:39+09:00",
       "lanes": {
@@ -1185167,6 +1186994,31 @@
       "source_title": "기름값 21주째 하락…휘발유·경유 1800원대",
       "telegram_core_fact": "한국석유공사 유가정보시스템 오피넷에 따르면 10월 첫째 주(10월 4일∼8일) 전국 주유소 휘발유 평균 판매가는 지난주보다 L당 0.4원 내린 1857.6원이었다.",
       "title": "기름값 21주째 하락…휘발유·경유 1800원대"
+    },
+    "title:d0f5c8f82fcf88abd358db75": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838484",
+      "source": "뉴시스",
+      "source_body_digest": "4661e68f48d6ee7b0f3e163a904fc2e12b51033c53ea1a5891a140cd6b7584d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc9be233fb307414c5ea56b0c50bc754a22b4f27282760088018a2690b5372c3",
+      "source_fact_keys": [
+        "source_fact:v1:073e9a9b2c7daad6a72bb265726f599016adb79ade7260e3f56deda593913451",
+        "source_fact:v1:216d4a18bb745c284de7d3a3bacc038f67cde75a068694c1837c78cdb88476e3",
+        "source_fact:v1:2ae08a830ae54f9837a999e468a4060169430f21b67a4291cbb65e32727d2912",
+        "source_fact:v1:757b6bc7848bfe67db3793a99c4a46e68e8c5b84e3621f558f98252cd1f5b0b1",
+        "source_fact:v1:bad3e5bf43829d95046fc1d44b724e392396a9fc9dccdd27b908626199324434",
+        "source_fact:v1:f3f4b8bc5ff7e0da71093be73441e68824c945789664cbeda938d0796b2994f7"
+      ],
+      "source_published_kst": "2026-10-23T12:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\"",
+      "telegram_core_fact": "배 부총리는 \"특정 기업 몰아주기가 될 수 있기 때문에 새로 사업을 공고하고 출자 형식으로 가는 게 맞겠다고 판단했다\"고 덧붙였다.",
+      "title": "배경훈 \"프론티어 AI, 특정 기업 몰아주기 우려에 독파모와 분리 추진\""
     },
     "title:d0f6b7a03e2f3d88a3b3582b": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
@@ -1190449,6 +1192301,24 @@
       "source_title": "롯데백화점, 더 강한 외국인 혜택 ‘롯데 투어리스트 멤버십x체크인서울’ 선봬",
       "telegram_core_fact": "업계 최초 외국인 매출 1조원을 달성한 롯데백화점이 외국인 전용 쇼핑 혜택 카드인 ‘롯데 투어리스트 멤버십’ 혜택을 확대 개편한 ‘롯데 투어리스트 멤버십 x 체크인서울’을 선보인다.",
       "title": "롯데백화점, 더 강한 외국인 혜택 ‘롯데 투어리스트 멤버십x체크인서울’ 선봬"
+    },
+    "title:d9e4514c412c120239281812": {
+      "first_seen_kst": "2026-10-23T21:02:19+09:00",
+      "lanes": {
+        "live": "2026-10-23T21:02:19+09:00"
+      },
+      "last_seen_kst": "2026-10-23T21:02:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12183682",
+      "source": "매일경제",
+      "source_body_digest": "f8c483c453cddbf1502084be32bc40f0e9d9c40ac9b63ebfa5d049fa3267a82d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-23T05:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "머피 USA, 분기배당 0.72달러로 11% 인상",
+      "telegram_core_fact": "미국 주유소·편의점 운영업체 머피 USA(MUSA)는 이사회가 보통주 1주당 분기 현금배당금을 0.72달러(연환산 2.88달러)로 결정했다고 10월 22일 발표했다.",
+      "title": "머피 USA, 분기배당 0.72달러로 11% 인상"
     },
     "title:d9e4b5544a75a523c06fd34c": {
       "first_seen_kst": "2026-09-29T17:47:48+09:00",
@@ -1210363,5 +1212233,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-23T20:28:32+09:00"
+  "updated_at_kst": "2026-10-23T21:02:19+09:00"
 }
