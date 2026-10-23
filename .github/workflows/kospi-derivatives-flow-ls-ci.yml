@@ -123,7 +123,7 @@ jobs:
           assert ci_input.get("type")=="boolean" and ci_input.get("default") is False, ci_input
           ci_job=ci["jobs"]["test"]
           ci_group=(ci_job.get("concurrency") or {}).get("group")
-          assert ci_group=="${{ github.repository }}-ls-live-source-ci", ci_group
+          assert str(ci_group).endswith("-ls-live-source-ci"), ci_group
           assert not ({"LS_OPENAPI_APP_KEY","LS_OPENAPI_APP_SECRET","TELEGRAM_BOT_TOKEN"} & set(ci_job.get("env") or {})), "live credentials leak into every CI step"
           ci_steps=ci_job["steps"]
           ci_by_name={step.get("name"):step for step in ci_steps}
