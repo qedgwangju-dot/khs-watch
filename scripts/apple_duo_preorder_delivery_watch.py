@@ -617,6 +617,12 @@ def _collect() -> tuple[list[dict],list[str]]:
             else:
                 title=_clean(n.findtext("title"))
                 desc=_clean(n.findtext("description"))
+                # Publisher-owned RSS content is first-party evidence. Ordinary
+                # search snippets remain discovery-only and cannot trigger alerts.
+                if source_name and _is_preorder_improvement_article({"title":title}):
+                    encoded=n.findtext("{http://purl.org/rss/1.0/modules/content/}encoded")
+                    if encoded and ("iphone duo" in encoded.lower() or "아이폰 듀오" in encoded):
+                        desc=_clean(encoded)[:16000]
                 pub=_date(n.findtext("pubDate"))
                 link=_clean(n.findtext("link"))
             source_tag=n.find("source")

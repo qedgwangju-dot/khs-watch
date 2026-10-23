@@ -474,6 +474,29 @@ class DuoPreorderTests(unittest.TestCase):
         }))
 
 
+    def test_publisher_owned_rss_article_body_preserves_improved_order_dates(self):
+        from unittest.mock import patch
+        xml=(
+            '<rss xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><item>'
+            '<title>Some iPhone Duo orders getting moved up to earlier dates</title>'
+            '<description>Short delivery news summary</description>'
+            '<link>https://9to5mac.com/2026/10/19/some-iphone-duo-orders-getting-moved-up-to-earlier-dates/</link>'
+            '<pubDate>Mon, 19 Oct 2026 19:31:00 GMT</pubDate>'
+            '<content:encoded><![CDATA[In Japan, a customer had an iPhone Duo '
+            'original delivery December 3 to December 10. Now delivery October 23, 2026.]]>'
+            '</content:encoded></item></channel></rss>'
+        )
+        with patch.object(m,"FEEDS",[("9to5Mac","https://9to5mac.com/feed/")]), \\
+             patch.object(m,"QUERY",[]), \\
+             patch.object(m,"_request",return_value=xml.encode("utf-8")):
+            items,errors=m._collect()
+        self.assertEqual(errors,[])
+        self.assertEqual(len(items),1)
+        self.assertTrue(items[0]["publisher_direct"])
+        self.assertIn("original delivery December",items[0]["description"])
+        self.assertEqual(len(m._new_preorder_improvements(items,{})),1)
+
+
 if __name__=="__main__":
     result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(DuoPreorderTests))
     if not result.wasSuccessful():
