@@ -1,7 +1,28 @@
 {
   "schema_version": 1,
-  "initial_alert_sent": false,
-  "seen": [],
+  "initial_alert_sent": true,
+  "seen": [
+    "029277b6902a83b448911c6e",
+    "15d08ff970b15f1bb215fad4",
+    "184a62b210e4f6c0498eaad7",
+    "18a5476a120ac02f31d2b3d0",
+    "241129142d6df708d87a5670",
+    "2f63974624f08b01ad858c61",
+    "5ce63323f02822514505f63d",
+    "5f422033eca244b7fdd8fedb",
+    "7d1631992ebfdf9feb5dfbe6",
+    "81135b91670cfe1d97a27298",
+    "8275666930787c376b34f620",
+    "8c437efede3a83d394a6953f",
+    "92df41e22679643b3b110a25",
+    "9aa9735ab723b3d381f3e2af",
+    "9df2d78718e1150183821ae2",
+    "d634644002c2034b481c9edf",
+    "eb5505beaa2599939fc1d5f8",
+    "ebecb36c635686d1c69c97dc",
+    "f5b1ba8008934879c7e3f0eb",
+    "fe3c3bd208632a9edca1b9e1"
+  ],
   "seen_fact_keys": [
     "duo:rolling_12mo:2026-10-22:digitimes:from_9.7_to_14.0"
   ],
@@ -24,7 +45,12 @@
     "retail_launch_date": "2026-10-23",
     "app_showcase_korea": "Apple 공식 2026-10-22 개발자 앱 소개: 카카오톡·WEBTOON·NAVER SERIES·카카오페이지·BAND"
   },
-  "last_scan_items": 0,
+  "last_scan_items": 20,
   "last_new_signals": 0,
-  "last_alert": null
+  "last_alert": {
+    "at_kst": "2026-10-23T11:58:44+09:00",
+    "kind": "first_baseline"
+  },
+  "updated_at_kst": "2026-10-23T11:58:44+09:00",
+  "errors": []
 }
