@@ -11,6 +11,7 @@ import copy
 import hashlib
 import json
 import pathlib
+import re
 import socket
 import sys
 import tempfile
@@ -55,6 +56,31 @@ def api_xml(row):
     return ET.tostring(response, encoding="utf-8", xml_declaration=True)
 
 
+def kstat_xml(chungnam_amount, chungbuk_amount, *, omit_region=None):
+    root = ET.Element("SHEET")
+    data = ET.SubElement(root, "DATA")
+    regions = (("44", "31", "충남", chungnam_amount), ("43", "36", "충북", chungbuk_amount))
+    for rank, customs, code, name, amount in ((i + 1, *row) for i, row in enumerate(regions)):
+        if customs == omit_region:
+            continue
+        values = {column: "" for column in reference.COLUMNS}
+        values.update(RN=str(rank), ROW_CODE=code, KOR_NAME=name, THIS_EXP_AMT=str(amount))
+        tr = ET.SubElement(data, "TR")
+        for column in reference.COLUMNS:
+            ET.SubElement(tr, "TD").text = values[column]
+    return ET.tostring(root, encoding="utf-8", xml_declaration=True)
+
+
+def form_with_september(form):
+    form, count = re.subn(
+        rb'(<select name="s_month"[^>]*>.*?<option[^>]*value="08"[^>]*>8</option>)',
+        rb'\1\n<option value="09">9</option>', form, count=1, flags=re.S,
+    )
+    if count != 1:
+        raise AssertionError("fixture month selector contract not found")
+    return form.replace(b"setSelect(f.s_month, '08');", b"setSelect(f.s_month, '09');")
+
+
 class Response:
     def __init__(self, content, content_type="application/xml"):
         self.content = content
@@ -75,9 +101,10 @@ class ExportDeliveryEvidenceTests(unittest.TestCase):
         self.addCleanup(temporary.cleanup)
         self.out = pathlib.Path(temporary.name)
         self.now = datetime(2026, 10, 16, 1, 0, tzinfo=ZoneInfo("Asia/Seoul"))
-        self.form = (FIXTURES / "hbm_kstat_province_form_20261016.html").read_bytes()
+        self.form = form_with_september((FIXTURES / "hbm_kstat_province_form_20261016.html").read_bytes())
         self.sheet = (FIXTURES / "hbm_kstat_province_202608.xml").read_bytes()
-        self.unit_raw_override = {}
+        self.kstat_amount_override = {}
+        self.kstat_omit_region = {}
         self.row_mutator = None
         self.calls = []
         self.state_path = watch.STATE
@@ -92,7 +119,8 @@ class ExportDeliveryEvidenceTests(unittest.TestCase):
         self.addCleanup(stack.close)
         stack.enter_context(patch.object(watch, "OUT", self.out))
         stack.enter_context(patch.object(watch, "_TRADE_EVIDENCE", self.ledger))
-        stack.enter_context(patch.object(watch, "_SIDO_UNIT_RESULT", None))
+        stack.enter_context(patch.object(watch, "_SIDO_SOURCE_RESULT", None))
+        stack.enter_context(patch.object(watch, "_SIDO_KSTAT_REFERENCE_CACHE", {}))
         stack.enter_context(patch.object(watch, "DATA_GO_KEY", "offline-key-never-used-on-network"))
         stack.enter_context(patch.object(watch, "save_state", side_effect=AssertionError("operating state writes forbidden")))
         stack.enter_context(patch.object(watch, "load_state", side_effect=AssertionError("operating state reads forbidden")))
@@ -114,10 +142,19 @@ class ExportDeliveryEvidenceTests(unittest.TestCase):
         if method == "GET" and url == reference.FORM_URL:
             return Response(self.form, "text/html; charset=utf-8")
         if method == "POST" and url == reference.SHEET_URL:
-            self.assertEqual(data["s_month"], "08")
+            month = str(data["s_year"]) + str(data["s_month"])
+            self.assertEqual(data["p_cond_in_gb"], "2")
+            self.assertEqual(data["s_item_type"], "HS")
+            self.assertEqual(data["s_item_value"], HS)
+            self.assertEqual(data["s_field"], "AMT")
             self.assertEqual(data["s_monthsum_gb"], "1")
             self.assertEqual(data["s_measure"], "1")
-            return Response(self.sheet, "text/xml; charset=utf-8")
+            values = MONTHS[month]
+            amounts = {code: self.kstat_amount_override.get((month, code), values[code])
+                       for code in ("44", "43")}
+            return Response(kstat_xml(amounts["44"], amounts["43"],
+                                      omit_region=self.kstat_omit_region.get(month)),
+                            "text/xml; charset=utf-8")
         if method == "POST" and url == watch.KCS_REGION_URL:
             # Optional Icheon HS6 is explicitly unavailable in this fixture.
             self.assertEqual(data["hsSgn"], watch.REGION_HS6)
@@ -133,11 +170,7 @@ class ExportDeliveryEvidenceTests(unittest.TestCase):
         if url == watch.DATA_GO_ITEM_URL:
             row = {"year": month, "hsCode": HS, "expDlr": values["national"], "expWgt": values["kg"]}
         elif url == watch.DATA_GO_SIDO_ITEM_URL:
-            code = params["sidoCd"]
-            amount = self.unit_raw_override.get(code) if month == "202608" else None
-            if amount is None:
-                amount = str(Decimal(values[code]) / Decimal(1000))
-            row = {"priodTitle": month, "hsSgn": HS, "sidoCd": code, "expUsdAmt": amount}
+            raise AssertionError("regional HSK10 must use the exact K-stat request scope")
         else:
             self.assertEqual(params["cntyCd"], "MY")
             row = {"year": month, "hsCd": HS, "statCd": "MY", "statCdCntnKor1": "말레이시아",
@@ -150,9 +183,10 @@ class ExportDeliveryEvidenceTests(unittest.TestCase):
         official, errors = watch.fetch_official_hbm_pack(self.now)
         self.assertIsNotNone(official, errors)
         self.assertEqual(errors, [])
-        proof, error = watch._resolve_sido_unit()
+        proof, error = watch._resolve_sido_source()
         self.assertEqual(error, "")
-        self.assertEqual(proof["month"], "202608")
+        self.assertEqual(proof["status"], "official_kstat_request_scoped_source")
+        self.assertIn(proof["month"], MONTHS)
         binding = watch._write_trade_validation(self.now, official, errors, True, RATE, FX_BASIS)
         candidate = {"monthly_due": True, "last_official_alert_snapshot": watch.official_snapshot(official),
                      "official_export_evidence": binding}
@@ -195,18 +229,25 @@ class ExportDeliveryEvidenceTests(unittest.TestCase):
         # This is the production final gate, not a mocked approval result.
         self.assertIsNone(watch.validate_monthly_payload(text, candidate, self.out))
 
-    def test_reference_month_only_proves_unit_and_never_replaces_current_month(self):
+    def test_exact_kstat_request_scope_supplies_same_month_regional_usd_values(self):
         official, candidate, text = self.prepared()
-        proof, error = watch._resolve_sido_unit()
+        proof, error = watch._resolve_sido_source()
         self.assertEqual(error, "")
-        self.assertEqual(proof["factor_to_usd"], "1000")
+        self.assertEqual(proof["status"], "official_kstat_request_scoped_source")
+        self.assertEqual(proof["factor_to_usd"], "1")
         self.assertEqual(official["month"], "202609")
         self.assertEqual(official["series"]["202609"]["samsung_region_amount"], 7_840_000_000)
-        self.assertNotEqual(official["series"]["202609"]["samsung_region_amount"], 7_496_336_046)
+        self.assertEqual(official["series"]["202608"]["samsung_region_amount"], 7_496_336_046)
+        self.assertTrue(all("K-stat" in official["series"][m]["regional_sources"]["samsung_chungnam"]["source"]
+                            for m in MONTHS))
+        self.assertTrue(all("K-stat" in official["series"][m]["regional_sources"]["hynix_chungbuk"]["source"]
+                            for m in MONTHS))
         self.assertEqual(candidate["last_official_alert_snapshot"]["month"], "202609")
         self.assertIn("2026년 9월", text)
-        self.assertEqual(sum(url == reference.FORM_URL for _, url, _, _ in self.calls), 1)
-        self.assertEqual(sum(url == reference.SHEET_URL for _, url, _, _ in self.calls), 1)
+        self.assertIn("K-stat 한국무역협회(제공기관: 관세청)", text)
+        self.assertIn("응답 본문은 월·HS 코드를 회신하지 않아 요청 범위가 식별 근거입니다.", text)
+        self.assertEqual(sum(url == reference.SHEET_URL for _, url, _, _ in self.calls), len(MONTHS))
+        self.assertFalse(any(url == watch.DATA_GO_SIDO_ITEM_URL for _, url, _, _ in self.calls))
         self.assertIsNone(watch.validate_monthly_payload(text, candidate, self.out))
 
     def test_swapping_province_amounts_between_sections_is_rejected(self):
@@ -272,48 +313,32 @@ class ExportDeliveryEvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "exact response operands mismatch"):
             watch.validate_monthly_payload(text, candidate, self.out)
 
-    def test_mismatched_reference_scale_holds_without_current_month_fetch(self):
-        self.unit_raw_override["44"] = "7"
-        proof, error = watch._resolve_sido_unit()
-        self.assertIsNone(proof)
-        self.assertIn("unit_cross_provider_mismatch", error)
-        calls = len(self.calls)
-        row, held = watch.fetch_data_go_sido_month("202609", "44")
+    def test_regional_series_never_mixes_data_go_and_kstat_amounts(self):
+        self.kstat_amount_override[("202609", "44")] = "7000000000"
+        official, _, _ = self.prepared()
+        self.assertEqual(official["series"]["202609"]["samsung_region_amount"], 7_000_000_000)
+        self.assertFalse(any(url == watch.DATA_GO_SIDO_ITEM_URL for _, url, _, _ in self.calls))
+
+    def test_kstat_source_usd_values_are_never_scaled_by_amount_magnitude(self):
+        self.kstat_amount_override[("202609", "44")] = "1"
+        self.kstat_amount_override[("202609", "43")] = "1"
+        row, error = watch.fetch_kstat_sido_month("202609", "44")
+        self.assertEqual(error, "")
+        self.assertEqual(row["raw_amount_decimal"], "1")
+        self.assertEqual(row["amount_usd"], 1.0)
+
+    def test_missing_current_province_row_holds_and_preserves_raw_response(self):
+        self.kstat_omit_region["202609"] = "44"
+        row, error = watch.fetch_kstat_sido_month("202609", "44")
         self.assertIsNone(row)
-        self.assertEqual(held, error)
-        self.assertEqual(len(self.calls), calls)
-        binding = watch._write_trade_validation(self.now, None, [error], False, RATE, FX_BASIS)
-        self.assertEqual(self.read_documents()[1]["phase"], "held")
-        with self.assertRaisesRegex(ValueError, "source evidence binding invalid"):
-            watch.validate_monthly_payload("삼성전자 vs SK하이닉스 HBM 수출 방향", {"monthly_due": True, "official_export_evidence": binding}, self.out)
-
-    def test_ambiguous_reference_scale_is_held_instead_of_guessed(self):
-        # Synthetic small-value variant deliberately makes both 1 and 1000
-        # satisfy the tolerance; neither may become the operating contract.
-        self.sheet = self.sheet.replace(b"7496336046", b"1").replace(b"1404330188", b"1")
-        self.unit_raw_override = {"44": "1", "43": "1"}
-        proof, error = watch._resolve_sido_unit()
-        self.assertIsNone(proof)
-        self.assertIn("unit_factor_not_unique", error)
-        self.assertEqual(watch._SIDO_UNIT_RESULT, (None, error))
-
-    def test_missing_current_response_identity_prevents_full_pack(self):
-        def remove_month(url, month, params, row):
-            if url == watch.DATA_GO_SIDO_ITEM_URL and month == "202609" and params["sidoCd"] == "44":
-                row.pop("priodTitle")
-            return row
-        self.row_mutator = remove_month
-        official, errors = watch.fetch_official_hbm_pack(self.now)
-        self.assertIsNone(official)
-        self.assertTrue(any("response_month_missing" in error for error in errors))
+        self.assertIn("province_rows_missing", error)
         target = [a for a in self.ledger.as_dict()["attempts"]
-                  if a["request"]["url"] == watch.DATA_GO_SIDO_ITEM_URL
-                  and a["request"]["params"].get("strtYymm") == "202609"
-                  and a["request"]["params"].get("sidoCd") == "44"]
+                  if a["request"]["url"] == reference.SHEET_URL
+                  and a["request"]["data"].get("s_year") == "2026"
+                  and a["request"]["data"].get("s_month") == "09"]
         self.assertEqual(len(target), 1)
         self.assertTrue(target[0]["response"]["raw_preserved"])
-        self.assertEqual(target[0]["selection"]["status"], "invalid")
-        self.assertIsNone(target[0]["selection"]["normalized"])
+        self.assertIn("202609", target[0]["request"]["data"]["s_year"] + target[0]["request"]["data"]["s_month"])
 
 
 if __name__ == "__main__":

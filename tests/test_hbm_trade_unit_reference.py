@@ -22,11 +22,11 @@ class UnitReferenceTests(unittest.TestCase):
         self.sheet = (FIXTURES / "hbm_kstat_province_202608.xml").read_bytes()
         self.calls = []
 
-    def fetch(self, form=None, sheet=None):
+    def fetch(self, form=None, sheet=None, target_month=None):
         def request(method, url, **kwargs):
             self.calls.append((method, url, kwargs))
             return Response((self.form if form is None else form) if method == "GET" else (self.sheet if sheet is None else sheet))
-        return ref.fetch_reference(request)
+        return ref.fetch_reference(request, target_month=target_month)
 
     def rows(self, factor="1000"):
         pack, error = self.fetch()
@@ -49,6 +49,17 @@ class UnitReferenceTests(unittest.TestCase):
                             "s_year": "2026", "s_month": "08", "s_field": "AMT", "s_monthsum_gb": "1",
                             "s_measure": "1", "p_measure": "1"}.items():
             self.assertEqual(data[name], value)
+
+    def test_explicit_target_month_is_sent_without_changing_identity_claim(self):
+        pack, error = self.fetch(target_month="202607")
+        self.assertEqual(error, "")
+        self.assertEqual(pack["month"], "202607")
+        self.assertTrue(pack["request_scope_no_response_echo"])
+        self.assertIn("request scope", pack["identity_limit"])
+        data = self.calls[1][2]["data"]
+        self.assertEqual(data["s_year"], "2026")
+        self.assertEqual(data["s_month"], "07")
+        self.assertEqual(data["s_item_value"], ref.HS)
 
     def test_changed_selection_contract_or_columns_rejected_before_post(self):
         for old, new in ((b"US$, %", b"EUR, %"), (">당월<".encode(), ">누계<".encode()),

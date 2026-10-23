@@ -15,10 +15,11 @@ import subprocess
 import base64
 import time
 from datetime import datetime, timedelta, timezone
+from decimal import Decimal
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
 from hbm_trade_integrity import TradeEvidence, choose_exact_row
-from hbm_trade_unit_reference import fetch_reference, reconcile_unit
+from hbm_trade_unit_reference import fetch_reference, SHEET_URL as KSTAT_SHEET_URL
 
 try:
     from googlenewsdecoder import gnewsdecoder
@@ -41,7 +42,7 @@ OFFICIAL_PUBLISHED_POLL_HOURS = 24
 OFFICIAL_ERROR_RENOTIFY_HOURS = 6
 OFFICIAL_PUBLICATION_EXPECTED_DAY = 15
 OFFICIAL_SOURCE_HEALTH_VERSION = 4
-EXPORT_ALERT_FORMAT_VERSION = 3
+EXPORT_ALERT_FORMAT_VERSION = 4
 COMPARE_VERSION = 5
 EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
@@ -74,12 +75,14 @@ REGIONS = {
 # Resolve the regional API unit from fresh same-month source evidence every
 # official poll. No historic scaling assumption is a verified unit contract.
 _TRADE_EVIDENCE = None
-_SIDO_UNIT_RESULT = None
+_SIDO_SOURCE_RESULT = None
+_SIDO_KSTAT_REFERENCE_CACHE = {}
 
 
 def _start_trade_evidence():
-    global _TRADE_EVIDENCE, _SIDO_UNIT_RESULT
-    _SIDO_UNIT_RESULT = None
+    global _TRADE_EVIDENCE, _SIDO_SOURCE_RESULT, _SIDO_KSTAT_REFERENCE_CACHE
+    _SIDO_SOURCE_RESULT = None
+    _SIDO_KSTAT_REFERENCE_CACHE = {}
     try:
         code_sha = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True, timeout=5).strip()
     except Exception:
@@ -671,11 +674,30 @@ def _fetch_data_go_sido_raw(month: str, sido_cd: str):
     return r, rows, ""
 
 
-def _resolve_sido_unit():
-    """Reconcile the two provinces against the same publicly selectable month."""
-    global _SIDO_UNIT_RESULT
-    if _SIDO_UNIT_RESULT is not None:
-        return _SIDO_UNIT_RESULT
+def _kstat_reference_selection(reference):
+    if not _kstat_sido_source_proof(reference):
+        return None
+    return {
+        "provider": reference["provider"],
+        "month": reference["month"],
+        "hs": reference["hs"],
+        "unit": reference["unit"],
+        "monthly_not_cumulative": reference["monthly_not_cumulative"],
+        "request_scope_no_response_echo": reference["request_scope_no_response_echo"],
+        "source_region_codes": reference["source_region_codes"],
+        "amounts_usd": reference["amounts_usd"],
+        "selected_rows": reference["selected_rows"],
+        "source_sha256": reference["source_sha256"],
+        "evidence_attempt_ids": reference.get("evidence_attempt_ids") or {},
+    }
+
+
+def _load_kstat_sido_reference(month=None):
+    """Fetch one exact public K-stat month and preserve its two response ids."""
+    global _SIDO_KSTAT_REFERENCE_CACHE
+    key = month or "__latest__"
+    if key in _SIDO_KSTAT_REFERENCE_CACHE:
+        return _SIDO_KSTAT_REFERENCE_CACHE[key]
     reference_ids = []
 
     def request_reference(*args, **kwargs):
@@ -683,54 +705,158 @@ def _resolve_sido_unit():
         reference_ids.append(getattr(response, "_hbm_trade_attempt_id", None))
         return response
 
-    reference, error = fetch_reference(request_reference)
-    api_rows, api_ids = {}, {}
+    reference, error = fetch_reference(request_reference, target_month=month)
     if reference:
-        regional_errors = []
-        for code in ("44", "43"):
-            response, rows, request_error = _fetch_data_go_sido_raw(reference["month"], code)
-            if request_error:
-                regional_errors.append(f"{code}: {request_error}")
-                continue
-            row, selection_error = choose_exact_row(rows, reference["month"], HBM_HSK10,
-                region=code, value_fields=("expUsdAmt",), unit="unverified", weight_fields=())
-            attempt_id = getattr(response, "_hbm_trade_attempt_id", None)
-            if _TRADE_EVIDENCE is not None and attempt_id:
-                _TRADE_EVIDENCE.mark_selection(attempt_id, row, selection_error)
-            if selection_error or row is None:
-                regional_errors.append(f"{code}: {selection_error or 'exact HSK10 row missing'}")
-                continue
-            api_rows[code], api_ids[code] = row, attempt_id
-        if regional_errors:
-            error = "지역 HSK10 확인 실패: " + " | ".join(regional_errors)
-        elif set(api_rows) != {"44", "43"}:
-            error = "같은 월 전국 HSK10 원자료 대조로 두 지역 행을 모두 확인하지 못함"
-        else:
-            proof, error = reconcile_unit(api_rows, reference)
-            if proof:
-                proof.update(reference_attempt_ids=reference_ids, api_attempt_ids=api_ids)
-                _SIDO_UNIT_RESULT = (proof, "")
-                return _SIDO_UNIT_RESULT
-    _SIDO_UNIT_RESULT = (None, "지역 금액 단위 검증 보류: " + (error or "같은 월 원자료 대조 불가"))
-    return _SIDO_UNIT_RESULT
+        reference["evidence_attempt_ids"] = {
+            "form": reference_ids[0] if reference_ids else None,
+            "sheet": reference_ids[1] if len(reference_ids) > 1 else None,
+        }
+        if not _kstat_sido_source_proof(reference):
+            result = (None, "invalid:K-stat 시·도 HSK10 원응답 계약 불완전")
+            _SIDO_KSTAT_REFERENCE_CACHE[key] = result
+            return result
+        selection = _kstat_reference_selection(reference)
+        if _TRADE_EVIDENCE is not None:
+            form_attempt = reference["evidence_attempt_ids"]["form"]
+            sheet_attempt = reference["evidence_attempt_ids"]["sheet"]
+            if form_attempt:
+                _TRADE_EVIDENCE.mark_selection(
+                    form_attempt,
+                    {"provider": reference["provider"], "month": reference["month"],
+                     "hs": reference["hs"], "form_contract": "validated"},
+                    validation_status="validated_request_form",
+                )
+            if sheet_attempt:
+                _TRADE_EVIDENCE.mark_selection(
+                    sheet_attempt, selection,
+                    validation_status="selected_under_request_scoped_identity",
+                )
+        result = (reference, "")
+        _SIDO_KSTAT_REFERENCE_CACHE[reference["month"]] = result
+        if month is None:
+            _SIDO_KSTAT_REFERENCE_CACHE["__latest__"] = result
+    else:
+        result = (None, error or "K-stat 시·도 HSK10 월별 조회 실패")
+        _SIDO_KSTAT_REFERENCE_CACHE[key] = result
+    return result
+
+
+def _kstat_sido_source_proof(reference):
+    if not isinstance(reference, dict) or (
+        reference.get("provider") != "K-stat 한국무역협회"
+        or reference.get("hs") != HBM_HSK10
+        or reference.get("unit") != "usd"
+        or reference.get("monthly_not_cumulative") is not True
+        or reference.get("request_scope_no_response_echo") is not True
+        or reference.get("source_region_codes") != {"44": "31", "43": "36"}
+        or set(reference.get("amounts_usd") or {}) != {"44", "43"}
+        or set(reference.get("selected_rows") or {}) != {"44", "43"}
+        or not isinstance(reference.get("source_sha256"), dict)
+        or set(reference["source_sha256"]) != {"form", "sheet"}
+        or any(not re.fullmatch(r"[0-9a-f]{64}", str(v)) for v in reference["source_sha256"].values())
+        or not isinstance(reference.get("evidence_attempt_ids"), dict)
+        or any(not reference["evidence_attempt_ids"].get(k) for k in ("form", "sheet"))
+    ):
+        return None
+    for customs, (row_code, region_name) in {"44": ("31", "충남"), "43": ("36", "충북")}.items():
+        row = reference["selected_rows"].get(customs)
+        try:
+            amount = Decimal(str(reference["amounts_usd"][customs]))
+        except Exception:
+            return None
+        if (not amount.is_finite() or amount <= 0 or not isinstance(row, dict)
+                or row.get("ROW_CODE") != row_code or row.get("KOR_NAME") != region_name):
+            return None
+    return {
+        "status": "official_kstat_request_scoped_source",
+        "provider": reference["provider"],
+        "month": reference["month"],
+        "hs": reference["hs"],
+        "unit": reference["unit"],
+        "factor_to_usd": "1",
+        "monthly_not_cumulative": True,
+        "request_scope_no_response_echo": True,
+        "source_region_codes": reference["source_region_codes"],
+        "amounts_usd": reference["amounts_usd"],
+        "reference_attempt_ids": [
+            reference.get("evidence_attempt_ids", {}).get("form"),
+            reference.get("evidence_attempt_ids", {}).get("sheet"),
+        ],
+        "reference_source_sha256": reference["source_sha256"],
+        "identity_limit": reference["identity_limit"],
+    }
+
+
+def _fetch_kstat_sido_month(month: str, sido_cd: str):
+    reference, error = _load_kstat_sido_reference(month)
+    if error or reference is None:
+        return None, error or f"K-stat 시·도 HSK10 {month} 조회 실패"
+    if reference.get("month") != month:
+        return None, f"K-stat 시·도 HSK10 기준월 불일치: 요청 {month}, 응답 범위 {reference.get('month')}"
+    if sido_cd not in ("44", "43") or sido_cd not in reference.get("amounts_usd", {}):
+        return None, f"K-stat 시·도 HSK10 지역 확인 실패: {sido_cd}"
+    amount = reference["amounts_usd"][sido_cd]
+    row = reference["selected_rows"][sido_cd]
+    attempt_id = reference.get("evidence_attempt_ids", {}).get("sheet")
+    return {
+        "month": month,
+        "hs": HBM_HSK10,
+        "region_code": sido_cd,
+        "raw_amount": float(amount),
+        "raw_amount_text": str(amount),
+        "raw_amount_decimal": str(amount),
+        "raw_amount_field": "THIS_EXP_AMT",
+        "raw_amount_unit": "usd",
+        "amount_usd": float(amount),
+        "weight_kg": None,
+        "weight_status": "not_returned",
+        "unit_proof": {"status": "kstat_selected_usd_contract", "unit": "usd", "factor_to_usd": "1"},
+        "identity_proof": {
+            "month": {"status": "request_scope_no_response_echo", "requested_month": month},
+            "hs": {"status": "request_scope_no_response_echo", "requested_code": HBM_HSK10},
+            "region": {"status": "response_echo_matched", "requested_code": sido_cd,
+                       "response_fields": {"ROW_CODE": row["ROW_CODE"], "KOR_NAME": row["KOR_NAME"]}},
+        },
+        "selected_row": row,
+        "source": "K-stat 한국무역협회(제공기관: 관세청)",
+        "source_url": KSTAT_SHEET_URL,
+        "scope": "regional_hsk10_request_scoped",
+        "api": False,
+        "evidence_attempt_id": attempt_id,
+        "source_evidence_attempt_ids": reference.get("evidence_attempt_ids") or {},
+        "source_sha256": reference.get("source_sha256") or {},
+        "request_scope_no_response_echo": True,
+        "identity_limit": reference.get("identity_limit"),
+    }, ""
+
+
+def _resolve_sido_source(month=None):
+    """Prove the public K-stat request scope and its stated USD unit."""
+    global _SIDO_SOURCE_RESULT
+    if _SIDO_SOURCE_RESULT is not None:
+        cached_proof, _cached_error = _SIDO_SOURCE_RESULT
+        if cached_proof and (month is None or cached_proof.get("month") == month):
+            return _SIDO_SOURCE_RESULT
+    reference, error = _load_kstat_sido_reference(month)
+    source_proof = _kstat_sido_source_proof(reference)
+    if source_proof:
+        _SIDO_SOURCE_RESULT = (source_proof, "")
+        return _SIDO_SOURCE_RESULT
+    # Do not cache a miss for a different month. A month absent from the form
+    # may be awaiting publication while an older exact month remains available.
+    return None, "지역 K-stat HSK10 월별 범위 검증 보류: " + (error or "원응답 계약 불일치")
+
+
+def fetch_kstat_sido_month(month: str, sido_cd: str) -> tuple[dict | None, str]:
+    proof, error = _resolve_sido_source(month)
+    if proof is None:
+        return None, error
+    return _fetch_kstat_sido_month(month, sido_cd)
 
 
 def fetch_data_go_sido_month(month: str, sido_cd: str) -> tuple[dict | None, str]:
-    if not DATA_GO_KEY:
-        return None, "공공데이터포털 API 키 미설정"
-    proof, error = _resolve_sido_unit()
-    if proof is None:
-        return None, error
-    r, rows, error = _fetch_data_go_sido_raw(month, sido_cd)
-    if error:
-        return None, error
-
-    selected, err = _select_trade_response(r, rows, month, region=sido_cd,
-        value_fields=("expUsdAmt",), unit=proof["unit"], unit_proof=proof, weight_fields=())
-    if selected:
-        selected.update(source="공공데이터포털 관세청 시도별 품목별 수출입실적 API", api=True,
-                        scope="regional_hsk10_exact")
-    return selected, f"공공데이터포털 시도 API {sido_cd} {month} {err}" if err else ""
+    """Compatibility wrapper; production regional values use exact K-stat scope."""
+    return fetch_kstat_sido_month(month, sido_cd)
 
 
 def fetch_data_go_country_item_month(month: str, cnty_cd: str = MALAYSIA_COUNTRY_CODE) -> tuple[dict | None, str]:
@@ -915,12 +1041,12 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
 
         for key in ("samsung_chungnam", "hynix_chungbuk"):
             region = REGIONS[key]
-            row, err = fetch_data_go_sido_month(candidate, region["sido"])
+            row, err = fetch_kstat_sido_month(candidate, region["sido"])
             if row:
                 rows[key] = row
             else:
-                # KCS website fallback is HS6, not the same metric as the
-                # Data.go regional HSK10 series. Keep it as diagnostics only;
+                # KCS regional fallback is HS6, not the same metric as the
+                # K-stat province HSK10 series. Keep it as diagnostics only;
                 # never silently substitute it for the exact company proxy.
                 local_errors.append(err)
                 fallback, fallback_err = fetch_kcs_region_month(candidate, region, session=session)
@@ -979,7 +1105,7 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
 
         for key in ("samsung_chungnam", "hynix_chungbuk"):
             region = REGIONS[key]
-            row, err = fetch_data_go_sido_month(month, region["sido"])
+            row, err = fetch_kstat_sido_month(month, region["sido"])
             if row:
                 rows[key] = row
             else:
@@ -1026,6 +1152,12 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
             "icheon_weight": ic.get("weight_kg") if ic else None,
             "malaysia_amount": my["amount_usd"] if my else None,
             "malaysia_weight": my.get("weight_kg") if my else None,
+            "regional_sources": {
+                "samsung_chungnam": {"source": sam.get("source"), "scope": sam.get("scope"),
+                                     "identity_limit": sam.get("identity_limit")},
+                "hynix_chungbuk": {"source": cb.get("source"), "scope": cb.get("scope"),
+                                   "identity_limit": cb.get("identity_limit")},
+            },
         }
 
     series = {
@@ -1126,6 +1258,10 @@ def official_monthly_decision(state: dict, official: dict | None) -> dict:
                 if value is not None:
                     revision |= old_value is not None and value != old_value
                     availability |= old_value is None
+            current_sources = values.get("regional_sources")
+            previous_sources = old_values.get("regional_sources")
+            if current_sources is not None and previous_sources is not None:
+                revision |= current_sources != previous_sources
     format_upgrade = bool(same_month and int(state.get("export_alert_format_version") or 0) < EXPORT_ALERT_FORMAT_VERSION)
     return {
         "due": not same_month or revision or availability or format_upgrade or int(state.get("compare_version") or 0) < COMPARE_VERSION,
@@ -1153,7 +1289,7 @@ def _write_trade_validation(now, official, errors, monthly_due, rate, fx_basis):
         "snapshot": official_snapshot(official) if official else None,
         "source_evidence_sha256": hashlib.sha256(evidence_path.read_bytes()).hexdigest() if evidence_path.exists() else None,
         "bindings": {}, "fx": {"rate": rate, "basis": fx_basis},
-        "regional_unit_proof": _SIDO_UNIT_RESULT[0] if _SIDO_UNIT_RESULT else None,
+        "regional_source_proof": _SIDO_SOURCE_RESULT[0] if _SIDO_SOURCE_RESULT else None,
     }
     if official:
         proof["bindings"] = {
@@ -1165,7 +1301,7 @@ def _write_trade_validation(now, official, errors, monthly_due, rate, fx_basis):
         core_months = [official["month"], _month_shift(official["month"], -1), _month_shift(official["month"], -3)]
         core_roles = ("national_hsk10", "samsung_chungnam", "hynix_chungbuk")
         bound = all(proof["bindings"].get(month, {}).get(role) for month in core_months for role in core_roles)
-        proof["phase"] = "verified_core" if bound and proof["regional_unit_proof"] else "held_unbound_source"
+        proof["phase"] = "verified_core" if bound and proof["regional_source_proof"] else "held_unbound_source"
     path = OUT / "hbm_export_validation.json"
     path.write_text(json.dumps(proof, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     return {"validation_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
@@ -1183,8 +1319,8 @@ def _preserved_response(attempt):
     return raw
 
 
-def _validate_sido_unit(proof, attempts):
-    """Replay the public unit reference and Customs operands without HTTP."""
+def _validate_sido_source(proof, attempts):
+    """Replay the request-scoped K-stat source proof without HTTP."""
     if not isinstance(proof, dict):
         raise ValueError("HBM regional unit evidence missing")
     ids = iter(proof.get("reference_attempt_ids") or [])
@@ -1199,11 +1335,17 @@ def _validate_sido_unit(proof, attempts):
                 or request["params"] != (kwargs.get("params") or {})
                 or request["data"] != (kwargs.get("data") or {})):
             raise ValueError("HBM unit reference request mismatch")
-        return SimpleNamespace(status_code=200, content=_preserved_response(attempt))
+        return SimpleNamespace(status_code=200, content=_preserved_response(attempt),
+                               _hbm_trade_attempt_id=attempt["attempt_id"])
 
-    reference, error = fetch_reference(request_saved)
+    reference, error = fetch_reference(request_saved, target_month=proof.get("month"))
     if error or reference is None or next(ids, None) is not None:
         raise ValueError("HBM public unit reference invalid")
+    if proof.get("status") == "official_kstat_request_scoped_source":
+        recalculated = _kstat_sido_source_proof(reference)
+        if recalculated is None or recalculated != proof:
+            raise ValueError("HBM direct K-stat regional source proof mismatch")
+        return recalculated
     rows = {}
     for code in ("44", "43"):
         attempt = attempts.get((proof.get("api_attempt_ids") or {}).get(code))
@@ -1254,7 +1396,7 @@ def validate_monthly_payload(text, candidate, out_dir=None):
     if snapshot != candidate.get("last_official_alert_snapshot"):
         raise ValueError("HBM monthly source snapshot mismatch")
     attempts = {a["attempt_id"]: a for a in ledger["attempts"]}
-    regional_unit = _validate_sido_unit(proof.get("regional_unit_proof"), attempts)
+    regional_source = _validate_sido_source(proof.get("regional_source_proof"), attempts)
     fields = {"national_hsk10": ("national_amount", "national_weight"),
               "samsung_chungnam": ("samsung_region_amount", "samsung_region_weight"),
               "hynix_chungbuk": ("hynix_chungbuk_amount", "hynix_chungbuk_weight"),
@@ -1270,12 +1412,44 @@ def validate_monthly_payload(text, candidate, out_dir=None):
                 raise ValueError("HBM monthly original source bytes missing")
             raw = _preserved_response(attempt)
             selected = attempt["selection"]["normalized"]
-            rows = (json.loads(raw).get("items") or []) if raw.lstrip().startswith(b"{") else _xml_rows(ET.fromstring(raw))
             region = "44" if role == "samsung_chungnam" else "43" if role == "hynix_chungbuk" else "41" if role == "hynix_icheon" else None
             request = attempt["request"]
             endpoint = request["url"]
+            if endpoint == KSTAT_SHEET_URL:
+                if region not in ("44", "43") or not isinstance(selected, dict):
+                    raise ValueError("HBM K-stat regional role invalid")
+                evidence_ids = selected.get("evidence_attempt_ids") or {}
+                form_id, sheet_id = evidence_ids.get("form"), evidence_ids.get("sheet")
+                if not form_id or not sheet_id or str(sheet_id) != str(attempt_id):
+                    raise ValueError("HBM K-stat request evidence ids missing")
+                replay_ids = iter((form_id, sheet_id))
+
+                def request_saved_kstat(method, url, **kwargs):
+                    from types import SimpleNamespace
+                    saved_id = next(replay_ids, None)
+                    saved = attempts.get(saved_id)
+                    if not saved:
+                        raise ValueError("HBM K-stat regional source response missing")
+                    saved_request = saved["request"]
+                    if (saved_request["method"] != method or saved_request["url"] != url
+                            or saved_request["params"] != (kwargs.get("params") or {})
+                            or saved_request["data"] != (kwargs.get("data") or {})):
+                        raise ValueError("HBM K-stat exact month/HS request scope mismatch")
+                    return SimpleNamespace(status_code=200, content=_preserved_response(saved),
+                                           _hbm_trade_attempt_id=saved["attempt_id"])
+
+                reference, reference_error = fetch_reference(request_saved_kstat, target_month=month)
+                if (reference_error or reference is None or next(replay_ids, None) is not None
+                        or selected != _kstat_reference_selection(reference)):
+                    raise ValueError("HBM K-stat regional response selection mismatch")
+                source_amount = Decimal(reference["amounts_usd"][region])
+                if (Decimal(str(values[amount_key])) != source_amount
+                        or values.get(weight_key) is not None):
+                    raise ValueError("HBM K-stat regional source operands mismatch")
+                continue
+            rows = (json.loads(raw).get("items") or []) if raw.lstrip().startswith(b"{") else _xml_rows(ET.fromstring(raw))
             expected = ((KCS_REGION_URL, "expUsdAmt", "thousand_usd") if role == "hynix_icheon" else
-                        (DATA_GO_SIDO_ITEM_URL, "expUsdAmt", regional_unit["unit"]) if region else
+                        (DATA_GO_SIDO_ITEM_URL, "expUsdAmt", regional_source["unit"]) if region else
                         (DATA_GO_COUNTRY_ITEM_URL, "expDlr", "usd") if role == "malaysia_hsk10" else
                         (KCS_ITEM_URL, "expUsdAmt", "thousand_usd") if endpoint == KCS_ITEM_URL else
                         (DATA_GO_ITEM_URL, "expDlr", "usd"))
@@ -2938,6 +3112,10 @@ def _official_error_classes(errors: list[str]) -> list[str]:
         low = (error or "").lower()
         if "invalid:non_monthly_period" in low:
             classes.add("월별 기간 검증 보류")
+        elif "kstat_reference_requested_month_unavailable" in low:
+            classes.add("월별 기간 검증 보류")
+        elif "kstat_reference_province_rows_missing" in low:
+            classes.add("지역 HSK10 행 검증 보류")
         elif "connecttimeout" in low or "connection" in low:
             classes.add("연결시간초과")
         elif "readtimeout" in low or "timeout" in low or "오류 05" in low:
@@ -2956,7 +3134,8 @@ def _official_error_classes(errors: list[str]) -> list[str]:
 
 
 def _official_validation_hold_only(errors: list[str]) -> bool:
-    return _official_error_classes(errors) == ["월별 기간 검증 보류"]
+    classes = set(_official_error_classes(errors))
+    return bool(classes) and classes.issubset({"월별 기간 검증 보류", "지역 HSK10 행 검증 보류"})
 
 
 def _official_health_signature(target_month: str, errors: list[str]) -> str:
@@ -2964,15 +3143,53 @@ def _official_health_signature(target_month: str, errors: list[str]) -> str:
     return hashlib.sha256(payload.encode()).hexdigest()[:16]
 
 
-def build_official_source_health_alert(now: datetime, target_month: str, errors: list[str], *, recovered: bool = False, validation_recovered: bool = False) -> str:
+def _official_regional_source_mode(official: dict | None) -> str | None:
+    if not isinstance(official, dict):
+        return None
+    current = (official.get("series") or {}).get(official.get("month"), {})
+    sources = current.get("regional_sources") or {}
+    items = [sources.get(role) for role in ("samsung_chungnam", "hynix_chungbuk")]
+    if not all(isinstance(item, dict) and item.get("source") for item in items):
+        return None
+    names = [str(item["source"]) for item in items]
+    if all("K-stat" in name for name in names):
+        return "kstat_request_scoped"
+    if len(set(names)) == 1 and "공공데이터포털" in names[0]:
+        return "data_go_exact"
+    return "mixed_or_unknown"
+
+
+def build_official_source_health_alert(now: datetime, target_month: str, errors: list[str], *, recovered: bool = False, validation_recovered: bool = False, regional_source_mode: str | None = None) -> str:
     classes = _official_error_classes(errors)
+    if recovered and regional_source_mode == "kstat_request_scoped":
+        title = ("삼성·SK하이닉스 HBM 수출 원자료 월별 검증 보류 해소"
+                 if validation_recovered else "삼성·SK하이닉스 HBM 수출 원자료 조회 복구")
+        return "\n".join([
+            f"✅ <b>{title}</b>",
+            "━━━━━━━━━━━━━━━━",
+            f"• 대상월: <b>{target_month[:4]}년 {int(target_month[4:])}월</b>",
+            "• 전국 HSK10은 관세청 원자료로 확인했습니다.",
+            "• 충남·충북은 K-stat(제공기관: 관세청) 시·도 HSK10 월별 USD 요청 범위로 확인했습니다.",
+            "• 지역 응답 본문은 월·HS 코드를 회신하지 않아 요청 조건과 응답 지역 행이 식별 근거입니다.",
+            f"• 복구 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
+        ]) + "\n"
     if recovered and validation_recovered:
+        if regional_source_mode == "kstat_request_scoped":
+            recovery_detail = [
+                "• 전국 HSK10은 관세청 원자료로 확인했습니다.",
+                "• 충남·충북은 K-stat(제공기관: 관세청) 시·도 HSK10 월별 USD 조회 범위를 확인했습니다.",
+                "• 지역 응답 본문은 월·HS 코드를 회신하지 않아 검증된 요청 조건과 지역 행으로 식별했습니다.",
+            ]
+        else:
+            recovery_detail = [
+                "• 공식 응답에서 대상월의 월별 기간 검증을 통과했습니다.",
+                "• 수출 수치는 전국 HSK10·충남 HSK10·충북 HSK10을 모두 확인한 뒤에만 확정합니다.",
+            ]
         return "\n".join([
             "✅ <b>삼성·SK하이닉스 HBM 수출 원자료 월별 검증 보류 해소</b>",
             "━━━━━━━━━━━━━━━━",
             f"• 대상월: <b>{target_month[:4]}년 {int(target_month[4:])}월</b>",
-            "• 공식 응답에서 대상월의 월별 기간 검증을 통과했습니다.",
-            "• 수출 수치는 전국 HSK10·충남 HSK10·충북 HSK10을 모두 확인한 뒤에만 확정합니다.",
+            *recovery_detail,
             f"• 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
         ]) + "\n"
     if recovered:
@@ -2986,6 +3203,10 @@ def build_official_source_health_alert(now: datetime, target_month: str, errors:
             f"• 복구 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
         ]) + "\n"
     validation_hold = _official_validation_hold_only(errors)
+    error_texts = [str(error).lower() for error in errors]
+    non_monthly_period = any("invalid:non_monthly_period" in error for error in error_texts)
+    kstat_month_unavailable = any("kstat_reference_requested_month_unavailable" in error for error in error_texts)
+    kstat_province_rows_missing = any("kstat_reference_province_rows_missing" in error for error in error_texts)
     err_text = " · ".join(classes) if classes else "원인 분류 미확정"
     headline = (
         "⚠️ <b>삼성·SK하이닉스 HBM 수출 원자료 월별 검증 보류</b>"
@@ -2998,8 +3219,12 @@ def build_official_source_health_alert(now: datetime, target_month: str, errors:
         f"• 대상월: <b>{target_month[:4]}년 {int(target_month[4:])}월</b>",
         f"• 상태: <b>{html.escape(err_text)}</b>",
     ]
-    if validation_hold:
+    if non_monthly_period:
         lines.append("• 공식 API 응답은 받았지만 충남·충북 HSK10 응답에서 대상월의 월별 기간을 검증하지 못했습니다.")
+    if kstat_month_unavailable:
+        lines.append("• K-stat 공개 조회기간 선택 항목에 대상월이 없어 지역 HSK10 월별 원자료 검증을 보류했습니다.")
+    if kstat_province_rows_missing:
+        lines.append("• K-stat 응답에서 충남·충북 HSK10 시·도 행을 모두 확인하지 못해 월별 원자료 검증을 보류했습니다.")
     lines.extend([
         "• 전국 HSK10·충남 HSK10·충북 HSK10을 모두 공식 원자료로 잠그기 전에는 새 수치를 만들지 않습니다.",
         "• 이전 월 수치·지역 HS6·기사 숫자를 최신 확정치로 대체 사용하지 않습니다.",
@@ -3072,6 +3297,16 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
         f"• 비교월: 전월 {prev_m[:4]}-{prev_m[4:]} → {month[:4]}-{month[4:]} / 3개월 전 {prev_q[:4]}-{prev_q[4:]} → {month[:4]}-{month[4:]}",
         "• 3개월 전 대비는 두 단일 월의 비교이며 3개월 누계가 아닙니다. 전월 ±20% 이상이고 3개월 전 대비도 같은 방향이면 강한 증감, 전월 ±5% 미만은 소폭 증감입니다.",
     ]
+    regional_sources = cur.get("regional_sources") or {}
+    regional_source_names = sorted({
+        str(item.get("source") or "") for item in regional_sources.values()
+        if isinstance(item, dict) and item.get("source")
+    })
+    if any("K-stat" in name for name in regional_source_names):
+        lines.append("• 지역 HSK10 자료원: " + " / ".join(html.escape(name) for name in regional_source_names))
+        lines.append("• K-stat 지역 응답은 대상월·HSK10·시·도·당월 USD 요청 조건으로 조회했고, 응답 본문은 월·HS 코드를 회신하지 않아 요청 범위가 식별 근거입니다.")
+    elif regional_source_names:
+        lines.append("• 지역 HSK10 자료원: " + " / ".join(html.escape(name) for name in regional_source_names))
     if official.get("icheon_public_available") and cur.get("icheon_amount") is not None:
         lines.append("⚪ <b>SK하이닉스 이천</b>: 공개 보조치 확인 · 충북 HSK10과 코드 단위가 다르면 <b>합산하지 않습니다.</b>")
     else:
@@ -3221,12 +3456,12 @@ def build_event_alert(events: list[dict], now: datetime) -> str:
 
 
 def main() -> None:
-    global _TRADE_EVIDENCE, _SIDO_UNIT_RESULT
+    global _TRADE_EVIDENCE, _SIDO_SOURCE_RESULT
     try:
         _main()
     finally:
         _TRADE_EVIDENCE = None
-        _SIDO_UNIT_RESULT = None
+        _SIDO_SOURCE_RESULT = None
 
 
 def _main() -> None:
@@ -3702,11 +3937,13 @@ def _main() -> None:
             }
             if was_error and not official_errors:
                 source_health_alert = build_official_source_health_alert(
-                    now, official_target_month, [], recovered=True
+                    now, official_target_month, [], recovered=True,
+                    regional_source_mode=_official_regional_source_mode(official),
                 )
             elif was_validation_hold and not official_errors and not waiting_publication:
                 source_health_alert = build_official_source_health_alert(
-                    now, official_target_month, [], recovered=True, validation_recovered=True
+                    now, official_target_month, [], recovered=True, validation_recovered=True,
+                    regional_source_mode=_official_regional_source_mode(official),
                 )
             elif (
                 waiting_publication
@@ -3752,10 +3989,10 @@ def _main() -> None:
             monthly_text = "📌 <b>같은 기준월의 미확인 원자료 추가 확인</b>\n• 직전 알림에서 확인되지 않았던 원값을 이번 실행에서 확인했습니다.\n\n" + monthly_text
         if regional_unit_correction_due:
             monthly_text = "\n".join([
-                "⚠️ <b>정정 — 삼성·SK하이닉스 지역 수출금액 단위</b>",
-                "• 관세청 시도별 API 금액은 K-stat의 같은 월·품목·두 시도 원값과 대조해 확인한 단위로 환산했습니다.",
-                "• 응답 금액의 크기만으로 환산계수를 고르는 경로를 제거했습니다.",
-                "• 아래 수치는 원자료를 다시 조회해 계산한 교정값이며, 과거 잘못 표시된 지역 금액은 최신 기준선으로 사용하지 않습니다.",
+                "⚠️ <b>정정 — 삼성·SK하이닉스 지역 원자료 확인 방식</b>",
+                "• 충남·충북은 K-stat(제공기관: 관세청)의 시·도 HSK10 월별 USD 요청 범위와 응답 지역 행으로 확인했습니다.",
+                "• K-stat 응답 본문은 대상월과 HS 코드를 회신하지 않으므로 검증된 공개 요청 조건이 월·품목 식별 근거입니다.",
+                "• 지역 응답 금액 크기로 환산계수를 추정하지 않으며, 아래 값은 각 월 원응답에서 다시 읽은 값입니다.",
                 "",
             ]) + monthly_text
         if source_health_alert and previous_source_health.get("status") in ("error", "validation_hold"):
@@ -3770,11 +4007,12 @@ def _main() -> None:
         if regional_unit_correction_due:
             corrections = list(state.get("state_corrections") or [])
             corrections.append({
-                "type": "regional_export_amount_unit",
-                "from": "legacy regional amount unit assumption",
-                "to": "same-month two-province source unit reconciliation",
+                "type": "regional_export_source_scope",
+                "from": "Data.go regional series with cross-source unit reconciliation",
+                "to": "K-stat monthly SIDO HSK10 USD request-scoped series",
                 "corrected_at_kst": now.isoformat(timespec="seconds"),
                 "official_month": official_month,
+                "identity_limit": "K-stat response body does not echo month or HS code",
             })
             state["state_corrections"] = corrections[-20:]
         # Do not consume pending topic-state changes behind a monthly alert.
