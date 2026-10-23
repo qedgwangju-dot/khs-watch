@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
 from us_positioning_presentation import PRESENTATION_VERSION, render_alert, render_detail_document
+from us_positioning_delivery import daily_digest_due, daily_event_label
 from us_positioning_horizons import months_before, price_month_windows, position_month_windows
 
 ROOT = Path.cwd()
@@ -25,6 +26,8 @@ DETAIL = OUT / "us_positioning_detail.html"
 STATUS = OUT / "us_positioning_status.md"
 PENDING = OUT / "us_positioning_pending_state.json"
 STATE = DATA / "us_positioning_state.json"
+DAILY_DIGEST = (os.getenv("DAILY_DIGEST") or "").lower() in ("1", "true", "yes")
+DAILY_DIGEST_DATE_KST = datetime.now(ZoneInfo("Asia/Seoul")).date()
 
 for p in (ALERT, DETAIL, STATUS, PENDING):
     try:
@@ -115,6 +118,16 @@ def load_state():
         return json.loads(STATE.read_text(encoding="utf-8"))
     except Exception:
         return {"seen": {}, "values": {}}
+
+
+if DAILY_DIGEST and not daily_digest_due(load_state(), DAILY_DIGEST_DATE_KST):
+    STATUS.write_text(
+        "# US Positioning Watch\n\n"
+        f"- daily_digest_already_sent: true\n- date_kst: {DAILY_DIGEST_DATE_KST.isoformat()}\n",
+        encoding="utf-8",
+    )
+    print("us_positioning_alert_ready=false daily_digest_already_sent=true")
+    raise SystemExit(0)
 
 
 def fp(core):
@@ -1535,6 +1548,7 @@ STATUS.write_text(
             f"- presentation_changed: {presentation_changed}",
             f"- quality_gate_ok: {quality_gate_ok}",
             f"- freshness_gate_ok: {not freshness_problems}",
+            f"- daily_digest: {DAILY_DIGEST}",
             *[
                 f"- {x['source']} {x['period']} {x['fingerprint'][:12]} metrics={json.dumps(x['metrics'], ensure_ascii=False)}"
                 for x in results
@@ -1547,6 +1561,7 @@ STATUS.write_text(
 )
 
 force = (os.getenv("FORCE_SEND") or "").lower() in ("1", "true", "yes")
+force = force or DAILY_DIGEST
 if quality_gate_ok and (updates or force or presentation_changed):
     prior_sox = (state.get("values", {}) or {}).get("Nasdaq SOX|sox")
     prior_cftc = (state.get("values", {}) or {}).get("CFTC|cot")
@@ -1564,8 +1579,12 @@ if quality_gate_ok and (updates or force or presentation_changed):
         same_period_changed(prior_cboe, cboe),
         same_period_changed(prior_cftc, cftc),
     ])
-    event_label = "정정·보강" if correction else "신규 변화"
-    if presentation_changed and not updates:
+    event_label = (
+        daily_event_label(updates, correction)
+        if DAILY_DIGEST
+        else ("정정·보강" if correction else "신규 변화")
+    )
+    if presentation_changed and not updates and not DAILY_DIGEST:
         event_label = "요약형 전환"
 
     # The full analysis is an artifact, outside the Telegram sending path.
@@ -1591,6 +1610,8 @@ if quality_gate_ok and (updates or force or presentation_changed):
         ns["values"][key] = x
     ns["updated_at_kst"] = datetime.now(timezone(timedelta(hours=9))).isoformat()
     ns["presentation_version"] = PRESENTATION_VERSION
+    if DAILY_DIGEST:
+        ns["daily_digest_sent_date_kst"] = DAILY_DIGEST_DATE_KST.isoformat()
     PENDING.write_text(
         json.dumps(ns, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
@@ -1599,6 +1620,8 @@ if quality_gate_ok and (updates or force or presentation_changed):
 else:
     if not quality_gate_ok:
         print("us_positioning_alert_ready=false quality_gate_failed=true")
+    elif DAILY_DIGEST and not daily_digest_due(state, DAILY_DIGEST_DATE_KST):
+        print("us_positioning_alert_ready=false daily_digest_already_sent=true")
     else:
         print("us_positioning_alert_ready=false unchanged=true")
 
