@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-23T07:21:41+09:00",
+  "updated_at_kst": "2026-10-23T10:31:55+09:00",
   "circle": {
     "date": "2026-10-19",
     "circulation_usd_b": 71.9,
@@ -78,9 +78,11 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,325.69원, 차이 0.01%"
+    "crosscheck": "Yahoo Finance 교차검증 접근 불가"
   },
   "crcl_last_alerted_close_date": "2026-10-22",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "usdxx: BlackRock USDXX fetch failed on all official URLs: https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-10-22 sec=[(datetime.date(2026, 10, 21), 3.85), (datetime.date(2026, 10, 21), 3.85)] seven=[(datetime.date(2026, 10, 21), 3.85)] | https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-10-22 sec=[(datetime.date(2026, 10, 21), 3.85), (datetime.date(2026, 10, 21), 3.85)] seven=[(datetime.date(2026, 10, 21), 3.85)]"
+  ]
 }
