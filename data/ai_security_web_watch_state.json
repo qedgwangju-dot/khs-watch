@@ -8,7 +8,7 @@
     "errors": [],
     "material_items": 24,
     "new_material_items": 0,
-    "raw_items": 355,
+    "raw_items": 354,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -54,6 +54,16 @@
       "title": "Watch OpenAI Employee Arrested Over Hidden Recording Device - Bloomberg.com",
       "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPalA3b3Q0ZDAyYVd1X0g0SFhHcGtfTW9EZ1RkNkc2NWw0MF9sTURaQ0U0X09Jamd4d1lGaHhwUm1LMzhXd0I2OUgzNkJDMDc5MS1aYWE3TjhVdnVrVmZmczV4YXJsVDJJOU51bEI3QVRnLTdiYlUzN012ZXJfYWFkS1VFaG1uNkt6dU5BZ3h1Y2hwTFFNTk9RM0w5czJtMFpFQW95YnhKZERGNHRE?oc=5",
       "vendor": "OpenAI"
+    },
+    "035b19ad0746530155ca1939": {
+      "category": "PHP 코어 취약점·공식 보안패치",
+      "first_seen_at": "2026-10-23T14:44:06.151949+00:00",
+      "published_at": "2026-10-23T11:25:00+00:00",
+      "severity": 3,
+      "source": "The Hacker News",
+      "title": "PHP Warns of Another Unpatched RCE Risk Two Days After Emergency PHP2Shell Patches - The Hacker News",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOa1ZSODRXV0ZXTTJ1TFh6S19mRXJ0Yld5b3dDd1F2RnMwTXZ2Y1EyMm83ak05WVF3NndRRXhtczJBeG9tVmxWZXRCa2lHYjVkVzFUM0Y1dTFsbXoxaHpzY0lTQzRZeEpWQ2dmdkxBcWphV0gyeGNYNWtDZE1QWHpRSnRB?oc=5",
+      "vendor": "PHP 재단"
     },
     "0780878b05fa415e43ff112d": {
       "category": "PHP 취약점 최초 공개·패치 대기",
@@ -1146,5 +1156,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-23T23:08:55+09:00"
+  "updated_at_kst": "2026-10-23T23:44:06+09:00"
 }
