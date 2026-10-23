@@ -528,7 +528,6 @@ jobs:
           retention-days: 14
 
   vip-relative-proxy:
-    # One-time live duplicate verification: Oct 22 message 1222 must not resend.
     if: >-
       ${{
         github.event_name == 'schedule' ||
@@ -542,7 +541,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
-      GVIP_RELATIVE_VALIDATE_ONLY: ${{ ((github.event_name == 'push' && !contains(github.event.head_commit.message, '[gvip-proxy-send]')) || (github.event_name == 'workflow_dispatch' && inputs.tech_proxy_validate_only)) && '1' || '0' }}
+      GVIP_RELATIVE_VALIDATE_ONLY: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.tech_proxy_validate_only)) && '1' || '0' }}
 
     steps:
       - name: Checkout official Nasdaq comparison and last delivery receipt
