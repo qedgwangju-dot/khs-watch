@@ -31,6 +31,7 @@ CONSTRUCTIVE_KINDS = frozenset(('diplomatic_contact', 'diplomatic_plan',
                                 'diplomatic_appeal', 'trade_proposal',
                                 'support_statement', 'attack_pause',
                                 'ceasefire_position', 'diplomatic_position'))
+DIPLOMATIC_TAGS = frozenset(('종전·협상', '휴전·평화'))
 ITEM_START = re.compile(r'^[🔴🟢🟡]?\s*\[(?:신규|속보|후속)\]\s*<b>\d+\.')
 ADVERSE = re.compile(
     r'압박|제재|결렬|교착|지연|미루|붕괴|무너|걷어찼|거부|배제|봉쇄|보복|'
@@ -65,6 +66,35 @@ def _active_adverse(title):
     return False
 
 
+def _explicit_ceasefire_progress(title):
+    """Recognize a reported ceasefire confirmation or active date coordination."""
+    negative = re.search(
+        r'\b(?:no|not|never|den\w*|reject\w*|refus\w*)\b.{0,35}'
+        r'\b(?:cease[- ]?fire|truce)\b|'
+        r'\b(?:cease[- ]?fire|truce)\b.{0,35}'
+        r'\b(?:not|never|den\w*|reject\w*|refus\w*|unconfirmed|unverified)\b|'
+        r'(?:휴전|정전).{0,20}(?:아니|부인|거부|불발|미확인|확인되지 않)', title)
+    if negative:
+        return False
+    separate_attack = re.search(
+        r'\b(?:resum\w*|launch\w*|conduct\w*|start\w*|carry(?:ing)?\s+out)\b'
+        r'.{0,35}\b(?:attacks?|airstrikes?|strikes?|bombardments?)\b|'
+        r'\b(?:attacks?|airstrikes?|strikes?|bombardments?)\b.{0,20}'
+        r'\b(?:resum\w*|launch\w*|continu\w*)\b|'
+        r'(?:공습|공격|폭격|포격)(?:을|를|이|가)?\s*(?:재개|감행|실시|시작)|'
+        r'(?:재개|감행|실시|시작).{0,12}(?:공습|공격|폭격|포격)', title)
+    if separate_attack:
+        return False
+    return bool(re.search(
+        r'\b(?:confirm\w*|coordinat\w*|cooperat\w*|collaborat\w*|agree\w*|'
+        r'implement\w*|extend\w*|resume\w*)\b.{0,80}'
+        r'\b(?:cease[- ]?fire|truce)\b|'
+        r'\b(?:cease[- ]?fire|truce)\b.{0,80}'
+        r'\b(?:confirm\w*|coordinat\w*|cooperat\w*|collaborat\w*|agree\w*|'
+        r'implement\w*|extend\w*|resume\w*)\b|'
+        r'(?:휴전|정전).{0,40}(?:확인|조율|협의|협력|합의|발효|연장|재개)', title))
+
+
 def direction(stage, row):
     """Return a display color, or None for a neutral market reference."""
     kind = stage.non_military_kind(row)
@@ -97,6 +127,14 @@ def direction(stage, row):
                 or stage._ceasefire_proposal_stage(title) == 'denied'
                 or stage._summit_openness_denied(title)):
             return 'red'
+        return 'green'
+    # The event classifier can leave a title-only ceasefire item untyped. When
+    # the source carries the explicit diplomacy tag and the headline reports
+    # confirmation/coordination, use the approved green direction. Keep the
+    # body-verification status visible; this is a headline-stage classification.
+    tags = {str(tag).strip() for tag in row.get('tags', [])}
+    if (tags & DIPLOMATIC_TAGS and not adverse
+            and _explicit_ceasefire_progress(title)):
         return 'green'
     if re.search(r'공격.{0,12}(?:않겠|안\s*할|중단)|긴장\s*완화|'
                  r'\b(?:will not attack|de.escalat\w*)\b', title):
