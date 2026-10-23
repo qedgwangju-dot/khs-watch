@@ -463,6 +463,41 @@ jobs:
           python -m py_compile scripts/us_tech_etf_proxy_watch.py
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_us_tech_etf_proxy_watch.py' -v
 
+      - name: Probe public GVIP/SPY 75-session relative-performance source without sending
+        if: github.event_name == 'push' && contains(github.event.head_commit.message, '[tech-etf-proxy-validate]')
+        run: |
+          python - <<'PY'
+          import json, requests
+          for ticker in ("GVIP", "SPY"):
+              url=f"https://api.nasdaq.com/api/quote/{ticker}/historical"
+              try:
+                  r=requests.get(
+                      url,
+                      params={
+                          "assetclass":"etf",
+                          "fromdate":"2026-05-15",
+                          "todate":"2026-10-22",
+                          "limit":200,
+                      },
+                      headers={
+                          "User-Agent":"Mozilla/5.0",
+                          "Accept":"application/json",
+                          "Origin":"https://www.nasdaq.com",
+                      },
+                      timeout=(6,18),
+                  )
+                  d=r.json()
+                  rows=(((d.get("data") or {}).get("tradesTable") or {}).get("rows") or [])
+                  print("gvip_proxy_source",json.dumps({
+                      "ticker":ticker,"http":r.status_code,
+                      "rCode":(d.get("status") or {}).get("rCode"),
+                      "rows":len(rows),"first_rows":rows[:2],"oldest_rows":rows[-2:],
+                      "message":(d.get("status") or {}).get("bCodeMessage"),
+                  },ensure_ascii=False))
+              except Exception as e:
+                  print(f"gvip_proxy_source ticker={ticker} error={type(e).__name__}: {str(e)[:200]}")
+          PY
+
       - name: Collect ETF shares and conditionally alert through existing bot
         run: |
           set -o pipefail
