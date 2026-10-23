@@ -212,6 +212,16 @@ def _premium_share(blob: str) -> float | None:
 
 def _million_forecast(blob: str) -> float | None:
     low = blob.lower().replace(",", "")
+    # Analyst calendar-year outlook ≠ first-12-month supplier build target.
+    if any(x in low for x in (
+        "12-month", "12 months", "12 month", "first year",
+        "12개월", "첫 1년", "첫해", "1년간",
+    )) and any(x in low for x in DUO_MARKERS):
+        return None
+    if ("44%" in low or "44 percent" in low) and any(x in low for x in (
+        "14 million", "1400만", "14m units",
+    )) and any(x in low for x in DUO_MARKERS):
+        return None
     if not any(x in low for x in DUO_MARKERS):
         return None
     if not any(x in low for x in FORECAST_MARKERS):

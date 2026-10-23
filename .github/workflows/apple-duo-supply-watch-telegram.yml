@@ -20,6 +20,8 @@ on:
       - "scripts/test_apple_premium_demand_duo_forecast_watch.py"
       - "scripts/apple_iphone18_pro_orders_watch.py"
       - "scripts/test_apple_iphone18_pro_orders_watch.py"
+      - "scripts/apple_duo_rolling_target_watch.py"
+      - "scripts/test_apple_duo_rolling_target_watch.py"
   schedule:
     - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
@@ -80,6 +82,9 @@ jobs:
           python -m py_compile scripts/apple_iphone18_pro_orders_watch.py
           python -m py_compile scripts/test_apple_iphone18_pro_orders_watch.py
           python scripts/test_apple_iphone18_pro_orders_watch.py
+          python -m py_compile scripts/apple_duo_rolling_target_watch.py
+          python -m py_compile scripts/test_apple_duo_rolling_target_watch.py
+          python scripts/test_apple_duo_rolling_target_watch.py
 
       - name: Validate Telegram route without sending
         env:
@@ -145,6 +150,9 @@ jobs:
       - name: Scan iPhone 18 Pro component order revisions
         run: python scripts/apple_iphone18_pro_orders_watch.py
 
+      - name: Scan Duo first-12-month supply target revisions
+        run: python scripts/apple_duo_rolling_target_watch.py
+
       - name: Publish watcher summary
         if: always()
         run: |
@@ -180,6 +188,10 @@ jobs:
           if [ -f out/apple_iphone18_pro_orders_status.md ]; then
             printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/apple_iphone18_pro_orders_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/apple_duo_rolling_target_status.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/apple_duo_rolling_target_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f out/apple_duo_supply_watch_telegram.txt ]; then
             printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
@@ -297,6 +309,10 @@ jobs:
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') == '' && hashFiles('out/apple_iphone18_pro_orders_pending_state.json') != ''
         run: cp out/apple_iphone18_pro_orders_pending_state.json data/apple_iphone18_pro_orders_state.json
 
+      - name: Persist no-alert Duo rolling-target state
+        if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') == '' && hashFiles('out/apple_duo_rolling_target_pending_state.json') != ''
+        run: cp out/apple_duo_rolling_target_pending_state.json data/apple_duo_rolling_target_state.json
+
       - name: Persist state only after confirmed Telegram delivery
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_duo_supply_watch_pending_state.json') != ''
         run: cp out/apple_duo_supply_watch_pending_state.json data/apple_duo_supply_watch_state.json
@@ -329,6 +345,10 @@ jobs:
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_iphone18_pro_orders_pending_state.json') != ''
         run: cp out/apple_iphone18_pro_orders_pending_state.json data/apple_iphone18_pro_orders_state.json
 
+      - name: Persist Duo rolling-target state after confirmed Telegram delivery
+        if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_duo_rolling_target_pending_state.json') != ''
+        run: cp out/apple_duo_rolling_target_pending_state.json data/apple_duo_rolling_target_state.json
+
       - name: Commit watcher state with concurrent-safe merge
         if: success()
         run: |
@@ -348,6 +368,7 @@ jobs:
               "apple_kparts_margin_watch_state.json",
               "apple_premium_demand_duo_forecast_state.json",
               "apple_iphone18_pro_orders_state.json",
+              "apple_duo_rolling_target_state.json",
           ]
           local={}
           for name in names:
@@ -406,9 +427,18 @@ jobs:
                   official=next((c[field] for c in candidates if "공식" in str(c.get(field,"")) and "미확정" not in str(c.get(field,""))),None)
                   if official:
                       merged.setdefault("metrics",{})[field]=official
+              # 12-month supplier targets are not finished-device calendar forecasts.
+              if name == "apple_duo_rolling_target_state.json":
+                  verified = next((
+                      x.get("metrics") for x in (remote,draft)
+                      if isinstance(x.get("metrics"),dict)
+                      and x["metrics"].get("apple_officially_confirmed") is True
+                  ), None)
+                  if verified:
+                      merged.setdefault("metrics",{}).update(verified)
               path.write_text(json.dumps(merged,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           PY
-            git add data/apple_duo_supply_watch_state.json data/apple_duo_panel_leading_state.json data/apple_duo_demand_competition_state.json data/apple_duo_preorder_delivery_state.json data/apple_foldable_market_access_state.json data/apple_kparts_margin_watch_state.json data/apple_premium_demand_duo_forecast_state.json data/apple_iphone18_pro_orders_state.json
+            git add data/apple_duo_supply_watch_state.json data/apple_duo_panel_leading_state.json data/apple_duo_demand_competition_state.json data/apple_duo_preorder_delivery_state.json data/apple_foldable_market_access_state.json data/apple_kparts_margin_watch_state.json data/apple_premium_demand_duo_forecast_state.json data/apple_iphone18_pro_orders_state.json data/apple_duo_rolling_target_state.json
             if git diff --cached --quiet; then
               echo "apple_duo_state_checkpoint=unchanged_or_already_merged"
               exit 0
@@ -448,6 +478,9 @@ jobs:
             out/apple_iphone18_pro_orders_status.md
             out/apple_iphone18_pro_orders_alert.html
             out/apple_iphone18_pro_orders_pending_state.json
+            out/apple_duo_rolling_target_status.md
+            out/apple_duo_rolling_target_alert.html
+            out/apple_duo_rolling_target_pending_state.json
             out/apple_duo_supply_watch_telegram.txt
             out/apple_duo_supply_watch_pending_state.json
             out/apple_duo_panel_leading_pending_state.json

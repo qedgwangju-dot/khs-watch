@@ -400,6 +400,19 @@ def collect() -> tuple[list[dict], list[str]]:
 
 
 def _signal(item: dict, state: dict) -> dict | None:
+    horizon_blob = (f"{item.get('title','')} {item.get('description','')}").lower()
+    if ("iphone duo" in horizon_blob or "아이폰 듀오" in horizon_blob) and (
+        any(x in horizon_blob for x in (
+            "12-month", "12 months", "12 month", "first year",
+            "12개월", "첫 1년", "첫해", "1년간",
+        )) or (("44%" in horizon_blob or "44 percent" in horizon_blob)
+               and any(x in horizon_blob for x in (
+                   "14 million", "14m units", "1400만", "1,400만",
+               )))
+    ):
+        # This is a reported build target, NOT direct preorder sell-through.
+        return None
+
     blob = f"{item['title']} {item.get('description','')} {item.get('source','')}"
     low = blob.lower()
     rank = _source_rank(item.get("source", ""))

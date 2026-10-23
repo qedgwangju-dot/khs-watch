@@ -70,6 +70,19 @@ class DuoRollingTargetTests(unittest.TestCase):
         self.assertEqual(m.BASELINE["period_basis"],"rolling_first_12_months")
         self.assertEqual(m.BASELINE["calendar_2026_counterpoint_forecast_m"],6.0)
         self.assertEqual(m.BASELINE["calendar_2026_trendforce_forecast_m"],5.0)
+    def test_rolling_target_not_oled_panel_units(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "duo_panel_guard", ROOT / "scripts" / "apple_duo_panel_leading_watch.py"
+        )
+        panel = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(panel)
+        row = self.item(
+            "DigiTimes iPhone Duo 12-month build target 14 million up 44%",
+            "Foxconn suppliers include Samsung Display OLED panels.",
+        )
+        self.assertEqual(panel._extract_metrics(row), {})
+
     def test_source_root_is_not_independent_media(self):
         row=self.item("DigiTimes iPhone Duo 14 million 12 months","44%","MacRumors")
         self.assertEqual(m._original_root(row),"digitimes_2026-10-22")

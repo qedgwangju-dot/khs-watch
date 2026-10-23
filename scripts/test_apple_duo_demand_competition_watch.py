@@ -89,6 +89,16 @@ class AppleDuoDemandRegressionTests(unittest.TestCase):
                 "published_at_kst": "2026-10-16T21:10:00+09:00"}
         self.assertIsNone(m._signal(item, self.base_state()))
 
+    def test_44percent_duo_build_target_not_direct_preorder_sales(self):
+        item = {
+            "title": "Apple iPhone Duo 12-month build target boosted 44% to 14 million",
+            "description": "After strong preorders, Foxconn supplier component orders from 9.7 million.",
+            "source": "Reuters",
+            "published_at_kst": "2026-10-22T12:00:00+09:00",
+            "link": "https://example.org/duo",
+        }
+        self.assertIsNone(m._signal(item, self.base_state()))
+
     def test_notebookcheck_cannot_trigger_demand_alert_alone(self):
         item = {
             "title": "Surprise! Galaxy Z Fold 8 sees 10% sales jump after Apple's iPhone Duo launch",

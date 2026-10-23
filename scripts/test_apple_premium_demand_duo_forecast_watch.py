@@ -87,6 +87,15 @@ class ApplePremiumDemandForecastTests(unittest.TestCase):
         self.assertGreaterEqual(signal["stage"], 2)
         self.assertEqual(signal["changes"]["counterpoint_duo_forecast_m"], 8.0)
 
+    def test_twelve_month_target_not_counterpoint_calendar_forecast(self):
+        item = self.item(
+            "DigiTimes: Apple iPhone Duo 12-month shipment target 14 million, up 44%",
+            "Counterpoint 2026 estimated 6 million units; Foxconn raised target from 9.7 million.",
+            "Reuters",
+        )
+        self.assertIsNone(m._million_forecast(item["title"] + " " + item["description"]))
+        self.assertIsNone(m._signal(item, self.state()))
+
     def test_low_source_cannot_trigger(self):
         item = self.item(
             "iPhone 18 Pro China sales jump 30%",

@@ -219,6 +219,17 @@ def _first(patterns: list[str], text: str) -> float | None:
 
 def _extract_metrics(item: dict) -> dict[str, float]:
     text = _normalize(f"{item['title']} {item.get('description','')}")
+    # Do not turn a 12-month finished-device TARGET into 14m OLED panels.
+    if any(x in text for x in (
+        "12-month", "12 months", "first year", "12개월", "첫 1년", "첫해",
+    )) and any(x in text for x in (
+        "iphone duo", "폴더블 아이폰", "아이폰 듀오",
+    )):
+        return {}
+    if "44%" in text and any(x in text for x in (
+        "14 million", "1400만", "1,400만",
+    )) and "duo" in text:
+        return {}
     out = {}
     checks = {
         "apple_panel_share_pct": [

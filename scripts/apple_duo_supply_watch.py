@@ -212,6 +212,23 @@ def _is_apple_duo(blob: str) -> bool:
     return any(name in low for name in DUO_MARKERS)
 
 
+def _is_duo_rolling_target_report(blob: str) -> bool:
+    # DigiTimes' first-12-month build target is not calendar-2026 shipments,
+    # SDC panel units or actual finished-device output. A dedicated typed
+    # monitor owns these stories.
+    low = blob.lower()
+    if not _is_apple_duo(low):
+        return False
+    horizon = any(x in low for x in (
+        "12-month", "12 months", "12 month", "first year",
+        "first 12", "one-year", "12개월", "첫 1년", "첫해", "1년간",
+    ))
+    famous_44 = ("44%" in low or "44 percent" in low) and any(x in low for x in (
+        "14 million", "14m units", "1400만", "1,400만",
+    ))
+    return horizon or famous_44
+
+
 def _is_cross_product_article(item: dict) -> bool:
     # Conservative in mixed stories: if the same story cites iPhone 18 Pro
     # component numbers and Duo, do not copy Pro numbers into Duo metrics.
@@ -294,6 +311,8 @@ def _extract_percentages(blob: str) -> list[float]:
 
 
 def _fact_keys(blob: str) -> set[str]:
+    if _is_duo_rolling_target_report(blob):
+        return set()
     low = blob.lower()
     topics = _classify(low)
     keys: set[str] = set()
@@ -349,7 +368,8 @@ def _translate_to_ko(text: str) -> str:
 
 def _meaningful(item: dict, state: dict) -> tuple[bool, str, str]:
     blob = f"{item['title']} {item.get('description', '')} {item.get('source', '')}".lower()
-    if not _is_apple_duo(blob) or _is_cross_product_article(item):
+    if (not _is_apple_duo(blob) or _is_cross_product_article(item)
+            or _is_duo_rolling_target_report(blob)):
         return False, "", ""
     if not any(x in blob for x in PRODUCTION_MARKERS | COMPONENT_MARKERS):
         return False, "", ""
@@ -512,7 +532,8 @@ def _baseline_dt(state: dict) -> dt.datetime:
 
 def _update_metrics(state: dict, item: dict) -> None:
     blob = f"{item['title']} {item.get('description', '')}".lower()
-    if not _is_apple_duo(blob) or _is_cross_product_article(item):
+    if (not _is_apple_duo(blob) or _is_cross_product_article(item)
+            or _is_duo_rolling_target_report(blob)):
         return
     topics = _classify(blob)
     metrics = state.setdefault("metrics", {})

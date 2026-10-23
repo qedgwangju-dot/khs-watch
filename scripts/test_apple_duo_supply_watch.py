@@ -114,6 +114,20 @@ class AppleDuoSupplyRegressionTests(unittest.TestCase):
         self.assertFalse(m._is_apple_duo("Apple iPhone 18 Pro Max camera order lowered"))
         self.assertTrue(m._is_apple_duo("Apple's foldable iPhone production increased"))
 
+    def test_12month_target_does_not_change_2026_finished_shipments(self):
+        item = {
+            "title": "DigiTimes iPhone Duo shipment target 9.7 to 14 million in first 12 months up 44%",
+            "description": "Foxconn supplier assembly, OLED panels, and hinge output expanded.",
+            "source": "DigiTimes",
+        }
+        state = self.state()
+        before = dict(state["metrics"])
+        meaningful, _, _ = m._meaningful(item, state)
+        self.assertFalse(meaningful)
+        m._update_metrics(state, item)
+        self.assertEqual(state["metrics"], before)
+        self.assertEqual(m._fact_keys(item["title"] + " " + item["description"]), set())
+
     def test_fact_key_dedupes_same_assembly_yield(self):
         keys = m._fact_keys("Foxconn assembly yield for iPhone Duo is 60%")
         self.assertIn("assembly_yield_60", keys)
