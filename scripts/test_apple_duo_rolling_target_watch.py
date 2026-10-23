@@ -103,6 +103,37 @@ class DuoRollingTargetTests(unittest.TestCase):
     def test_no_duo_pro_cross_product(self):
         self.assertIsNone(m._typed_target(
             "Apple iPhone 18 Pro target 14 million units over 12 months orders revised"))
+    def test_two_no_change_scans_never_resend_baseline(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as folder:
+            root=pathlib.Path(folder)
+            current={
+                "schema_version":1,"initial_alert_sent":True,
+                "seen":[],"seen_fact_keys":[m.BASELINE_FACT],
+                "metrics":dict(m.BASELINE),"last_alert":{"at_kst":"2026-10-23T10:00:00+09:00","kind":"first_baseline"},
+            }
+            data=root/"state.json"
+            data.write_text(__import__("json").dumps(current),encoding="utf-8")
+            item=self.item(
+                "Apple iPhone Duo 12-month target 14 million after 44% boost",
+                "DigiTimes repeats its earlier supplier forecast from 9.7 million units.",
+                "MacRumors","https://www.macrumors.com",
+            )
+            with (patch.object(m,"DATA",data),
+                  patch.object(m,"PENDING",root/"pending.json"),
+                  patch.object(m,"STATUS",root/"status.md"),
+                  patch.object(m,"FRAGMENT",root/"alert.html"),
+                  patch.object(m,"TELEGRAM",root/"telegram.txt"),
+                  patch.object(m,"collect",return_value=([item],[]))):
+                for _ in range(2):
+                    m.main()
+                    result=__import__("json").loads((root/"pending.json").read_text(encoding="utf-8"))
+                    self.assertEqual(result["last_new_signals"],0)
+                    self.assertEqual(result["metrics"]["reported_target_m"],14.0)
+                    self.assertFalse((root/"telegram.txt").exists())
+                    self.assertFalse((root/"alert.html").exists())
+                    data.write_text(__import__("json").dumps(result),encoding="utf-8")
+
     def test_corrupt_state_fails_closed(self):
         with tempfile.TemporaryDirectory() as path:
             file=pathlib.Path(path)/"state.json"
