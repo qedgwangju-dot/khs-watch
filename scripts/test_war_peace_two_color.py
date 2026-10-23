@@ -177,6 +177,95 @@ class TwoColorTests(unittest.TestCase):
                 row = {'title_original': title, 'title_ko': title}
                 self.assertEqual(presentation.direction(stage, row), expected)
 
+    def test_saved_unverified_ceasefire_headlines_are_green_not_default_red(self):
+        # These two exact rows were sent by natural run 39982159473. Both had
+        # an explicit diplomacy tag, no verified article body, no recognized
+        # event kind, and an empty semantic color; the old fallback painted
+        # them red solely because direction() defaulted unknowns to red.
+        cases = (
+            {
+                'id': 'daaaa24132fd5fc5d15c',
+                'title_original': 'Kremlin confirms Oleshky ceasefire, says working with Ukraine on evacuation timing',
+                'title_ko': '크렘린은 Oleshky 휴전을 확인하고 대피시기에 대해 우크라이나와 협력하고 있다고 밝혔습니다.',
+                'source': 'Reuters',
+                'link': 'https://www.reuters.com/world/europe/kremlin-confirms-oleshky-ceasefire-says-working-with-ukraine-evacuation-timing-2026-10-23/',
+                'tags': ['종전·협상'], 'body_checked': True, 'body_verified': False,
+            },
+            {
+                'id': '3d8a691a4e8947180e4b',
+                'title_original': '크렘린궁 "러시아·우크라이나군, 휴전 날짜 조율 중" - 블루밍비트',
+                'title_ko': '크렘린궁 "러시아·우크라이나군, 휴전 날짜 조율 중" - 블루밍비트',
+                'description': '크렘린궁 "러시아·우크라이나군, 휴전 날짜 조율 중" 블루밍비트',
+                'source': '블루밍비트', 'source_url': 'https://bloomingbit.io',
+                'link': 'https://news.google.com/rss/articles/CBMiUEFVX3lxTE5qY0RERUhDQnZVLVlTWjZ5SGJvLWNvOXFJd0FOTjBScnVEMktqMTJGaEJwcHJHN2EyaUZYWVpJeXVzVGVneTI0M0NwYks0anVS?oc=5',
+                'tags': ['종전·협상'], 'body_checked': True, 'body_verified': False,
+            },
+        )
+        for row in cases:
+            with self.subTest(article_id=row['id']):
+                self.assertFalse(row['body_verified'])
+                self.assertIsNone(stage.non_military_kind(row))
+                self.assertEqual(stage.final_color(row), '')
+                self.assertEqual(presentation.direction(stage, row), 'green')
+
+        adverse = (
+            'Kremlin delays ceasefire talks',
+            'Kremlin denies ceasefire date coordination',
+            'Russia resumed attacks as ceasefire talks continue',
+        )
+        for title in adverse:
+            with self.subTest(title=title):
+                row = {'title_original': title, 'tags': ['종전·협상'], 'body_verified': False}
+                self.assertEqual(presentation.direction(stage, row), 'red')
+
+    def test_saved_unverified_ceasefire_rows_render_green_without_claiming_body_verification(self):
+        rows = [
+            {
+                'id': 'daaaa24132fd5fc5d15c',
+                'title_original': 'Kremlin confirms Oleshky ceasefire, says working with Ukraine on evacuation timing',
+                'title_ko': '크렘린은 Oleshky 휴전을 확인하고 대피시기에 대해 우크라이나와 협력하고 있다고 밝혔습니다.',
+                'source': 'Reuters',
+                'link': 'https://www.reuters.com/world/europe/kremlin-confirms-oleshky-ceasefire-says-working-with-ukraine-evacuation-timing-2026-10-23/',
+                'tags': ['종전·협상'], 'rendered': True, 'body_checked': True,
+                'body_verified': False, 'classification_color': '',
+                'article_text_sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+            },
+            {
+                'id': '3d8a691a4e8947180e4b',
+                'title_original': '크렘린궁 "러시아·우크라이나군, 휴전 날짜 조율 중" - 블루밍비트',
+                'title_ko': '크렘린궁 "러시아·우크라이나군, 휴전 날짜 조율 중" - 블루밍비트',
+                'description': '크렘린궁 "러시아·우크라이나군, 휴전 날짜 조율 중" 블루밍비트',
+                'source': '블루밍비트',
+                'link': 'https://news.google.com/rss/articles/CBMiUEFVX3lxTE5qY0RERUhDQnZVLVlTWjZ5SGJvLWNvOXFJd0FOTjBScnVEMktqMTJGaEJwcHJHN2EyaUZYWVpJeXVzVGVneTI0M0NwYks0anVS?oc=5',
+                'tags': ['종전·협상'], 'rendered': True, 'body_checked': True,
+                'body_verified': False, 'classification_color': '',
+                'article_text_sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+            },
+        ]
+        semantic = [
+            '<b>조회</b> 2026-10-24 00:54 KST',
+            '🔴 <b>공격·타격·확전·압박</b>',
+            '<b>핵심 변화</b>',
+            '🔴 [속보] <b>1. Kremlin confirms Oleshky ceasefire, says working with Ukraine on evacuation timing</b>',
+            '<a href="' + rows[0]['link'] + '">Reuters</a>',
+            'RSS 입력 기준·본문 미확인',
+            '🔴 [속보] <b>2. 크렘린궁 "러시아·우크라이나군, 휴전 날짜 조율 중" - 블루밍비트</b>',
+            '<a href="' + rows[1]['link'] + '">블루밍비트</a>',
+            '제목 기준·본문 미확인',
+            '<b>투자 판정</b>',
+            '- 기존 의미 단계',
+        ]
+        text, receipt = presentation.project(
+            stage, '\n'.join(semantic), {'articles': rows}, {}, {})
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual([row['classification_color'] for row in shown], ['green', 'green'])
+        self.assertEqual([row['semantic_classification_color'] for row in shown], ['', ''])
+        self.assertTrue(all(row['body_verified'] is False for row in shown))
+        self.assertIn('🟢 <b>대화·협상·완화</b>', text)
+        self.assertNotIn('🔴 <b>공격·타격·확전·압박</b>', text)
+        self.assertIn('본문 미확인', text)
+        self.assertIn('대화·협상·완화 관련:</b> 2건', text)
+
     def test_stage_proof_required_on_repeat(self):
         self.present()
         (self.folder/presentation.STAGE_EVIDENCE).unlink()
