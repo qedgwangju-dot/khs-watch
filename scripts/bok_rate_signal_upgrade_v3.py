@@ -180,6 +180,11 @@ def event_score(f: dict[str, bool]) -> int:
     return max(-2, min(2, hawk - dove))
 
 
+def representative_priority(flags: dict[str, bool], source_rank: int) -> tuple[int, int]:
+    """같은 날 다수 발언을 합치더라도 이번에 잡힌 정책 신호를 설명하는 제목을 우선한다."""
+    return (sum(bool(flags.get(k)) for k in MATERIAL_POLICY_FLAGS), -source_rank)
+
+
 def rhetoric(now: dt.datetime) -> list[dict]:
     queries = (
         '신현송 한국은행 총재 K자형 양극화 AI 중동 물가',
@@ -225,6 +230,7 @@ def rhetoric(now: dt.datetime) -> list[dict]:
             continue
         key = (speaker, r["published"].date().isoformat())
         rank = 0 if "한국은행" in r["source_name"] else 1 if "연합뉴스" in r["source_name"] else 2
+        priority = representative_priority(f, rank)
         if key not in merged:
             merged[key] = {
                 "speaker": speaker,
@@ -235,12 +241,13 @@ def rhetoric(now: dt.datetime) -> list[dict]:
                 "source_name": r["source_name"],
                 "published_at_kst": r["published"].isoformat(timespec="minutes"),
                 "rank": rank,
+                "priority": priority,
             }
         else:
             cur = merged[key]
             cur["flags"] = {k: bool(cur["flags"].get(k) or f.get(k)) for k in set(cur["flags"]) | set(f)}
-            if rank < cur["rank"]:
-                cur.update({"title": r["title"], "link": r["link"], "source_name": r["source_name"], "published_at_kst": r["published"].isoformat(timespec="minutes"), "rank": rank})
+            if priority > cur["priority"]:
+                cur.update({"title": r["title"], "link": r["link"], "source_name": r["source_name"], "published_at_kst": r["published"].isoformat(timespec="minutes"), "rank": rank, "priority": priority})
 
     out = []
     for row in merged.values():
@@ -248,6 +255,7 @@ def rhetoric(now: dt.datetime) -> list[dict]:
         row["event_hash"] = hashlib.sha256(json.dumps(semantic, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
         row["score"] = event_score(row["flags"])
         row.pop("rank", None)
+        row.pop("priority", None)
         out.append(row)
     return sorted(out, key=lambda x: x["published_at_kst"], reverse=True)
 

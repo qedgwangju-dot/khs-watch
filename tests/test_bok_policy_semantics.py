@@ -102,6 +102,17 @@ class PolicySemanticsTests(unittest.TestCase):
         self.assertFalse(flags["potential_working_paper_expected"])
         self.assertFalse(flags["tfp_innovation"])
 
+    def test_representative_headline_matches_the_new_growth_signal(self):
+        from bok_rate_signal_upgrade_v3 import representative_priority
+        fiscal = policy_flags("신현송 재정지출 오래 지속되면 되돌리기 어렵다")
+        growth = policy_flags(
+            "신현송 AI 투자로 잠재성장률 변곡점, 연말 연구자료 공개"
+        )
+        self.assertGreater(representative_priority(growth, 2),
+                           representative_priority(fiscal, 2))
+        self.assertTrue(representative_priority(growth, 2) >
+                        representative_priority(fiscal, 1))
+    
     def test_official_paper_parser_and_identifier(self):
         from bok_rate_signal_upgrade_v3 import parse_bok_research_listing
         fixture = """
