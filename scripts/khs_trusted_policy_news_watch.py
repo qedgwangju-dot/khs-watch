@@ -926,7 +926,7 @@ STORY_RULES = (
     ),
     StoryRule(
         key="us_treasury_coins_biotechnology_outbound_nprm",
-        title="미 재무부, 중국 생명공학 대외투자 신고·금지 규칙 제안",
+        title="미 재무부, 중국 등 우려국 생명공학 대외투자 신고·금지 규칙 제안",
         google_queries=(
             'site:home.treasury.gov/news/press-releases/sb0667 biotechnology COINS October 22',
             '"COINS Act" "biotechnology" "outbound investment" Treasury',
@@ -942,7 +942,7 @@ STORY_RULES = (
         impact="중국 신약·바이오·뇌-컴퓨터 인터페이스 지분투자·합작·벤처자금 | 할인율·시간표",
         point="미국인의 민감 분야 지분투자·합작거래에는 신고·금지 위험이 커질 수 있으나, 순수 기술도입 사용권 계약과 실제 투자 거래를 구분해야 합니다.",
         counter="현재 규칙 제안 단계이며 12월 7일 의견수렴 후 확정됩니다. 모든 바이오 기술도입 계약이 즉시 금지되는 것은 아닙니다.",
-        sectors="중국 바이오기업, 신약개발, 세포·유전자 치료, 뇌-컴퓨터 인터페이스, 벤처투자",
+        sectors="중국 등 우려국 바이오기업, 신약개발, 세포·유전자 치료, 뇌-컴퓨터 인터페이스, 벤처투자",
         impacts=("할인율", "자본조달", "시간표"),
         paths=("공식 규칙안", "의견수렴", "신고·금지", "예외·최종 시행"),
         follow_up="2026년 12월 7일 의견제출 마감, 최종 규칙·발효일, 대상 기술·국가·지분 및 사용권 계약 예외를 추적합니다.",
@@ -3217,10 +3217,10 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
         if deepseek:
             facts = [
                 "DHS-2026-0628·연방관보 2026-21447: 연방 민간기관의 DeepSeek 계열 제품·서비스 신규 조달 배제.",
-                "기존 정보시스템의 DeepSeek 및 그 구현을 사용해 개발한 제3자 제품·서비스 제거명령.",
+                "기존 정보시스템의 DeepSeek 및 그 구현을 사용해 개발한 제3자 제품·서비스 제거명령. 2026년 7월 24일 발령 당시부터 효력.",
             ]
             timeline = "2026년 7월 24일 명령 발령 → 2026년 10월 20일 관보 공고 → 기관별 제품 제거·조달 이행 및 예외 확인"
-            scope = "연방 민간 행정부 기관 대상 조치로, 모든 미국 민간 사용자에 대한 사용금지가 아닙니다."
+            scope = "연방 민간 행정부 기관 대상이며 국가안보 시스템·특별보안정보 시스템은 제외됩니다. 기관별 예외 신청 가능. 미국 민간 사용자 전면 금지는 아닙니다."
         else:
             facts = [
                 "생명공학을 민감 기술 대외투자 신고·금지 대상에 추가하는 COINS Act 후속 규칙안.",
@@ -3228,7 +3228,7 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
                 "미 재무부 발표 기준 의견제출 마감일 2026년 12월 7일.",
             ]
             timeline = "2025년 12월 COINS Act 입법 → 2026년 10월 22일 규칙안 → 12월 7일 의견제출 마감 → 최종 규칙·시행일 대기"
-            scope = "모든 중국 바이오기업·사용권 계약에 대한 즉각적인 전면 투자금지로 해석하지 않습니다."
+            scope = "중국 등 우려국의 모든 바이오기업·사용권 계약에 대한 즉각적인 전면 투자금지로 해석하지 않습니다."
         return {
             "title": rule.title if baseline else rule.title + " · 후속 규제 단계",
             "core": rule.core if official and baseline else (
