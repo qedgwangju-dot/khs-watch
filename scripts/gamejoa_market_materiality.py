@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 138
+VERSION = 140
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -1074,6 +1074,56 @@ def canonical_source_fact(text: str) -> str:
     return re.sub(r"[^a-z0-9가-힣.%+\-]", "", text.casefold()).rstrip(".")
 
 
+def executed_joint_venture_signatures(text: str) -> set[tuple[str, str, str, str, str]]:
+    """Identify a signed JV from its parties, operating scope, and geography."""
+    if (
+        not text
+        or not re.search(r"합작(?:법인|사)", text)
+        or not re.search(r"체결|서명|signed", text, re.I)
+    ):
+        return set()
+    issuer_pattern = re.compile(
+        r"^\s*([A-Z]{1,5}[가-힣]+|[가-힣A-Za-z0-9]{2,24})(?:\([^)]{1,18}\))?(?:은|는|이|가)\s",
+        re.I,
+    )
+    counterparty_pattern = re.compile(
+        r"(?P<party>(?:[가-힣]{2,}(?:\([A-Za-z][A-Za-z0-9 .&-]*\))?|"
+        r"[A-Z][A-Za-z0-9.&-]*(?:\s+[A-Z][A-Za-z0-9.&-]*){0,3}))\s*(?:와|과)\s*"
+        r"(?:조선\s*)?합작(?:법인|사)", re.I,
+    )
+    scopes = (
+        ("shipbuilding", r"조선|shipyard|shipbuilding"),
+        ("semiconductor", r"반도체|semiconductor"),
+        ("data_center", r"데이터센터|data\s*cent(?:er|re)"),
+        ("battery", r"배터리|battery"),
+        ("energy", r"에너지|발전|energy|power\s+plant"),
+        ("robotics", r"로봇|robot(?:ics)?"),
+        ("aerospace", r"우주|위성|aerospace|satellite"),
+    )
+
+    def party_key(value: str) -> str:
+        value = re.sub(r"\([A-Za-z][A-Za-z0-9 .&-]*\)", "", value)
+        return re.sub(r"[^a-z0-9가-힣]", "", value.casefold())
+
+    found: set[tuple[str, str, str, str, str]] = set()
+    for sentence in re.split(r"(?<=[.!?])\s+|[\r\n]+", text or ""):
+        if not re.search(r"합작(?:법인|사)", sentence) or not re.search(r"체결|서명|signed", sentence, re.I):
+            continue
+        issuer = issuer_pattern.match(sentence)
+        counterparty = counterparty_pattern.search(sentence)
+        scope = next((name for name, pattern in scopes if re.search(pattern, sentence, re.I)), "")
+        if not issuer or not counterparty or not scope:
+            continue
+        legal_stage = "mou" if re.search(r"(?<![A-Za-z])MOU(?![A-Za-z])|업무협약|양해각서", sentence, re.I) else "contract"
+        issuer_key = party_key(issuer.group(1))
+        counterparty_key = party_key(counterparty.group("party"))
+        if not issuer_key or not counterparty_key or issuer_key == counterparty_key:
+            continue
+        geography = "us" if re.search(r"미국|\bU\.S\.?\b|\bUSA\b|\bUnited States\b", sentence, re.I) else ""
+        found.add((issuer_key, counterparty_key, scope, geography, legal_stage))
+    return found
+
+
 def same_headline_event(title_a: str, title_b: str, fact_a: str = "", fact_b: str = "") -> bool:
     """Conservatively match same-day headline variants without merging new stages."""
     stop = {
@@ -1103,11 +1153,26 @@ def same_headline_event(title_a: str, title_b: str, fact_a: str = "", fact_b: st
         return {word for word in found if word not in stop and len(word) > 1}
 
     left, right = tokens(f"{title_a} {fact_a}"), tokens(f"{title_b} {fact_b}")
-    if min(len(left), len(right)) < 5:
-        return False
-    common = left & right
-    overlap = len(common) / min(len(left), len(right))
-    jaccard = len(common) / len(left | right)
+    if min(len(left), len(right)) >= 5:
+        common = left & right
+        overlap = len(common) / min(len(left), len(right))
+        jaccard = len(common) / len(left | right)
+    else:
+        common, overlap, jaccard = set(), 0, 0
+
+    # Long syndicated summaries often add different background details. Keep
+    # the headline claim as an independent duplicate signal in that case.
+    headline_left, headline_right = tokens(title_a), tokens(title_b)
+    headline_common = headline_left & headline_right
+    headline_min_size = min(len(headline_left), len(headline_right))
+    headline_union = headline_left | headline_right
+    headline_overlap = len(headline_common) / headline_min_size if headline_min_size else 0
+    headline_jaccard = len(headline_common) / len(headline_union) if headline_union else 0
+    headline_claim_match = (
+        len(headline_common) >= 4
+        and headline_overlap >= 0.5
+        and headline_jaccard >= 0.32
+    )
 
     quantity = (
         r"\d[\d,.]*\s*조\s*\d[\d,.]*\s*억(?:\s*\d[\d,.]*\s*만)?\s*원?"
@@ -1188,12 +1253,26 @@ def same_headline_event(title_a: str, title_b: str, fact_a: str = "", fact_b: st
     title_amounts_equivalent = equivalent_rounded_amount(
         financial_amounts(title_a), financial_amounts(title_b),
     )
-    if (
-        len(common) < 5
-        or overlap < 0.45
-        or (jaccard < 0.32 and not title_amounts_equivalent)
-    ):
+    full_event_match = (
+        len(common) >= 5
+        and overlap >= 0.45
+        and (jaccard >= 0.32 or title_amounts_equivalent)
+    )
+    jv_event_match = bool(
+        executed_joint_venture_signatures(fact_a)
+        & executed_joint_venture_signatures(fact_b)
+    )
+    if not full_event_match and not headline_claim_match and not jv_event_match:
         return False
+
+    if jv_event_match:
+        def without_calendar_measures(text: str) -> str:
+            return re.sub(r"\d[\d,.]*\s*(?:일|개월|년)\b", " ", text or "")
+
+        title_measures_a = set(re.findall(quantity, without_calendar_measures(title_a), re.I))
+        title_measures_b = set(re.findall(quantity, without_calendar_measures(title_b), re.I))
+        fact_measures_a = set(re.findall(quantity, without_calendar_measures(fact_a), re.I))
+        fact_measures_b = set(re.findall(quantity, without_calendar_measures(fact_b), re.I))
 
     if title_measures_a and title_measures_b and title_measures_a != title_measures_b:
         if (

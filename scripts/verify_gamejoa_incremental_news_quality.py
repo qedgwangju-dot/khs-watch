@@ -4476,6 +4476,29 @@ class IncrementalNewsTests(unittest.TestCase):
             self.assertFalse(fresh)
             self.assertEqual(len(skipped), 1)
 
+    def test_syndicated_long_summaries_deduplicate_on_shared_specific_headline_claim(self):
+        first = alert(
+            '젠슨황 "2029년 메모리 공급과잉 없다"…中 CXMT엔 "열린 마음"',
+            'CNBC 인터뷰에서 젠슨 황은 2029년 메모리 공급과잉 가능성을 일축했다. 중국 CXMT와의 거래 가능성도 언급했다.',
+            'https://www.inews24.com/view/2018266',
+        )
+        repeat = alert(
+            '젠슨황 "2029년 메모리 공급과잉 없다…메모리는 다다익선" | 연합뉴스',
+            '젠슨 황 엔비디아 CEO가 일각에서 제기된 2029년 메모리 공급과잉 우려를 일축했다.',
+            'https://www.yna.co.kr/view/AKR20261023004200091',
+        )
+        self.assertTrue(materiality.same_headline_event(
+            first['source_title'], repeat['source_title'],
+            first['telegram_core_fact'], repeat['telegram_core_fact'],
+        ))
+        with tempfile.TemporaryDirectory() as folder, patch.object(
+            telegram, 'SEEN_PATH', Path(folder) / 'seen.json'
+        ), patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            telegram.record_seen_alerts([first], NOW)
+            fresh, skipped = telegram.filter_previously_seen_alerts([repeat], NOW + dt.timedelta(hours=7), 'live')
+        self.assertFalse(fresh)
+        self.assertEqual(len(skipped), 1)
+
     def test_off_window_preopen_report_is_labeled_as_validation_not_0630_digest(self):
         now = dt.datetime(2026, 10, 8, 15, 25, tzinfo=NOW.tzinfo)
         with patch.dict(os.environ, {"RADAR_RUN_MODE": "preopen"}), \
@@ -6888,6 +6911,212 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
         ):
             self.assertEqual(radar.quality_display_alerts([candidate], 7), [])
         self.assertEqual(candidate["_exclusion_reason"], "live_quality_floor_below_rank_3_without_market_wide_scope")
+
+    def test_oct23_production_noise_is_withheld_and_headline_contract_must_be_primary(self):
+        now = dt.datetime(2026, 10, 23, 20, 30, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        candidates = [
+            alert(
+                "AIDC 임대형 세액공제 사각지대…재정당국과 신속 협의",
+                "업계는 임대형 AI 데이터센터가 현행 세액공제 대상에서 빠질 수 있다고 주장했다. "
+                "배경훈 부총리는 재정당국과 신속히 협의하겠다고 말했다. "
+                "구체적인 제도 변경, 세액공제 규모, 시행 일정은 제시되지 않았다.",
+                "https://example.com/aidc-tax-consultation",
+            ),
+            alert(
+                "권익위, 서천군 기산면 농업용수 부족 민원 조정으로 해결",
+                "국민권익위원회는 충남 서천군 7개 마을 농업용수 부족 민원을 조정으로 해결했다. "
+                "수문을 열어 농업용수를 보충하기로 했다.",
+                "https://example.com/local-water-mediation",
+            ),
+            alert(
+                "러·우, 3자협상 재개 논의 중 치열한 공방전…집속탄 미사일도",
+                "우크라이나와 러시아가 미사일 공격을 주고받았고 전선에서 교전이 이어졌다. "
+                "양측 발표는 전황과 피해 상황을 전했다.",
+                "https://example.com/battle-recap",
+            ),
+            alert(
+                "[영상] '극초음속 무장' 14조짜리 美스텔스구축함 3번함…해상시험 준비",
+                "HII는 미 해군과 구축함 해상시험 지원을 위한 9천9백만 달러 계약을 체결했다. "
+                "기사는 구축함 3번함의 해상시험 준비 상황을 다뤘다.",
+                "https://example.com/destroyer-trial-background-contract",
+            ),
+        ]
+        audit = {
+            "disposition": "keep", "priority": 2, "news_value_rank": 4,
+            "transmission_scope_rank": 3, "focus": 80, "axes": ["earnings"],
+            "reason": "production-regression-fixture", "evidence": [],
+        }
+
+        def materiality_for(candidate):
+            value = dict(audit)
+            if "스텔스구축함" in candidate["source_title"]:
+                value["evidence"] = [{"kind": "commercial_order", "source_excerpt": "배경 계약"}]
+            return value
+
+        with (
+            patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}),
+            patch.object(radar.telegram, "display_alerts", side_effect=lambda items, _limit: items),
+            patch.object(radar.base, "kst_now", return_value=now),
+            patch.object(radar, "source_market_materiality", side_effect=materiality_for),
+        ):
+            self.assertEqual(radar.quality_display_alerts(candidates, 10), [])
+
+        self.assertTrue(candidates[0]["_exclusion_reason"].endswith(
+            "tax_policy_consultation_without_instrument_budget_or_execution"))
+        self.assertTrue(candidates[1]["_exclusion_reason"].endswith(
+            "local_water_mediation_without_listed_market_transmission"))
+        self.assertTrue(candidates[2]["_exclusion_reason"].endswith(
+            "military_update_without_observed_market_or_supply_channel"))
+        self.assertEqual(candidates[3]["_exclusion_reason"],
+                         "headline_materiality:contract_fact_is_incidental_to_noncontract_headline")
+
+        real_contract = alert(
+            "미 해군, HII와 구축함 해상시험 9천9백만달러 계약",
+            "미 해군은 HII와 구축함 해상시험 지원 계약을 체결했다.",
+            "https://example.com/foreground-contract",
+        )
+        real_contract["market_materiality"] = {
+            "evidence": [{"kind": "commercial_order", "source_excerpt": "공급 계약 체결"}],
+        }
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            self.assertEqual(radar.live_headline_materiality_reason(real_contract), "")
+
+        current_war_energy_shock = alert(
+            "이란 미사일 공격에 브렌트유 7% 급등",
+            "이란의 미사일 공격이 확대되자 브렌트유가 7% 급등했다.",
+            "https://example.com/war-energy-shock",
+        )
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            self.assertEqual(radar.low_impact_live_publication_reason(current_war_energy_shock, now), "")
+
+    def test_oct23_identical_hd_hyundai_kiewit_shipyard_jv_is_cross_publisher_duplicate(self):
+        first_title = "김동관은 인수, 정기선은 신설…HD현대·한화, 美 조선업 선점 경쟁"
+        first_core = (
+            "HD현대는 미국 대형 건설·엔지니어링·인프라 기업 키윗(Kiewit)과 조선 합작법인(JV) 설립 계약을 체결했다고 23일 밝혔다. "
+            "한화가 기존 조선소를 인수해 생산기반을 확보했다면, HD현대는 미국 현지 기업과 손잡고 새 생산시설을 구축하는 '그린필드' 투자를 택했다."
+        )
+        second_title = "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
+        second_core = (
+            "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. "
+            "필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다."
+        )
+        self.assertTrue(materiality.same_headline_event(first_title, second_title, first_core, second_core))
+
+        first_signature = materiality.executed_joint_venture_signatures(first_core)
+        different_partner = materiality.executed_joint_venture_signatures(
+            first_core.replace("키윗(Kiewit)", "삼성전자")
+        )
+        mou_stage = materiality.executed_joint_venture_signatures(
+            first_core.replace("설립 계약을 체결", "설립 MOU를 체결")
+        )
+        self.assertTrue(first_signature)
+        self.assertFalse(first_signature & different_partner)
+        self.assertFalse(first_signature & mou_stage)
+
+    def test_live_filter_skips_routine_single_issuer_quarterly_dividends_but_keeps_major_shift(self):
+        routine_cases = (
+            (
+                "머피 USA, 분기배당 0.72달러로 11% 인상",
+                "미국 주유소·편의점 운영업체 머피 USA(MUSA)는 이사회가 보통주 1주당 분기 현금배당금을 "
+                "0.72달러로 결정했다고 발표했다. 직전 분기보다 11% 인상됐고 시가배당률은 0.5% 안팎이다.",
+            ),
+            (
+                "아르다 메탈 패키징, 분기배당 주당 0.10달러…예상 배당률 8.71%",
+                "아르다 메탈 패키징(AMBP)이 이사회에서 보통주 1주당 0.10달러의 분기 중간배당을 승인했다고 발표했다. "
+                "예상 배당률은 8.71%다.",
+            ),
+        )
+        now = dt.datetime(2026, 10, 23, 20, 30, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            for index, (title, body) in enumerate(routine_cases):
+                with self.subTest(title=title):
+                    item = alert(title, body, f"https://example.com/routine-dividend-{index}")
+                    self.assertEqual(
+                        radar.low_impact_live_publication_reason(item, now),
+                        "routine_single_issuer_quarterly_dividend_without_material_policy_change",
+                    )
+            material_change = alert(
+                "삼성전자, 분기배당 2배 인상…주주환원 정책 전환",
+                "삼성전자는 분기배당을 두 배로 늘리고 주주환원 정책을 전환한다고 발표했다.",
+                "https://example.com/material-dividend-policy-change",
+            )
+            self.assertEqual(radar.low_impact_live_publication_reason(material_change, now), "")
+
+            frontier_ai = alert(
+                "배경훈, 독파모와 분리해 프론티어 AI 지원…1만 GPU 별도 공모·출자",
+                "정부는 기존 독파모의 GPU 1000장 수준 지원과 별도로 1만 장 이상 규모의 프론티어 AI 지원을 추진한다. "
+                "기존 출연 방식 대신 별도 공모·출자 구조로 전환하지만 구체적인 출자 구조와 SPC 설립 여부는 미확정이다.",
+                "https://example.com/frontier-ai-support-structure",
+            )
+            self.assertEqual(radar.low_impact_live_publication_reason(frontier_ai, now), "")
+            frontier_core = radar.verified_alert_core(frontier_ai, frontier_ai["source_title"])
+            self.assertIn("1만장 이상 GPU", frontier_core)
+            self.assertIn("별도 공모·출자", frontier_core)
+            self.assertIn("SPC 등 세부 투자구조는 미정", frontier_core)
+            self.assertTrue(radar.core_sentence_is_complete(frontier_core), frontier_core)
+            self.assertFalse(
+                radar.source_core_fact_errors({**frontier_ai, "telegram_core_fact": frontier_core}),
+                frontier_core,
+            )
+
+    def test_skydance_investment_core_reports_acquisition_debt_and_financing_pressure(self):
+        title = "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연"
+        body = (
+            "일론 머스크 테슬라 최고경영자가 스카이댄스에 10억달러를 투자했다고 CNBC가 소식통을 인용해 보도했다. "
+            "머스크의 투자는 스카이댄스가 추진하는 자금 조달 계획의 일환이다. "
+            "파라마운트는 워너브러더스 디스커버리(WBD) 인수를 위해 520억 달러 규모 신규 부채를 조달했으며 "
+            "일부는 금리가 9%에 육박한다. AP통신에 따르면 스카이댄스의 예상 순부채는 800억 달러로 추산된다."
+        )
+        item = alert(title, body, "https://www.newsis.com/view/NISX20261023_0003837719")
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("10억달러", core)
+        self.assertIn("520억달러 신규차입", core)
+        self.assertIn("9%에 육박", core)
+        self.assertIn("예상 순부채는 800억달러", core)
+        self.assertNotIn("엘리슨", core)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), core)
+
+        stale_relationship_only = (
+            "일론 머스크 테슬라 최고경영자가 스카이댄스에 10억달러를 투자했다고 CNBC가 보도했다. "
+            "래리 엘리슨은 과거 머스크의 트위터 인수에 투자했다."
+        )
+        self.assertEqual(radar.skydance_acquisition_financing_core(title, stale_relationship_only), "")
+
+    def test_listed_issuer_investigation_core_uses_the_headline_event_and_denial(self):
+        title = "공정위, '식자재 입찰 담합 의혹' CJ프레시웨이 현장 조사"
+        body = (
+            "공정거래위원회는 CJ프레시웨이[051500]의 식자재 입찰 담합 의혹과 관련해 현장 조사에 착수했다. "
+            "CJ프레시웨이는 입찰 담합 혐의를 부인했다. "
+            "CJ프레시웨이는 CJ그룹 계열사로 학교와 기업 구내식당에 식자재를 공급한다."
+        )
+        item = alert(title, body, "https://www.yna.co.kr/view/AKR20261023082200002")
+        normalized = radar.normalize_alert_for_output(item)
+        core = normalized["telegram_core_fact"]
+        self.assertIn("CJ프레시웨이", core)
+        self.assertIn("입찰 담합 의혹", core)
+        self.assertIn("조사", core)
+        self.assertIn("혐의를 부인", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS, core)
+        self.assertFalse(radar.source_core_fact_errors(normalized), core)
+        audit = radar.source_market_materiality(item)
+        self.assertEqual(audit["reason"], "verified_listed_issuer_regulatory_investigation", audit)
+        self.assertEqual(audit["evidence"][0]["kind"], "policy_scope_or_stage", audit)
+
+        foreign_title = "SEC, '회계 공시 의혹' 아크미디어 현장 조사"
+        foreign_body = (
+            "SEC는 NYSE: ACM인 아크미디어의 회계 공시 의혹을 조사하고 있다. "
+            "아크미디어는 관련 의혹을 부인했다."
+        )
+        foreign_observation = radar.listed_company_investigation_observation(foreign_title, foreign_body)
+        self.assertIn("회계 공시 의혹", foreign_observation["core"])
+        self.assertNotIn("식자재", foreign_observation["core"])
+        self.assertEqual(
+            radar.listed_company_investigation_observation(
+                foreign_title, foreign_body.replace("NYSE: ACM", "해외 기업")
+            ),
+            {},
+        )
 
     def test_live_rank_rescues_confirmed_market_transactions_and_quantified_flows(self):
         cases = (
