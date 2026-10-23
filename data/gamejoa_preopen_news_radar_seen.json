@@ -15705,6 +15705,28 @@
       "telegram_core_fact": "가계대출 총량 규제까지 고려하면 RWA 상향 시 금융권은 주담대 한도를 축소하거나 가산금리 인상 카드를 꺼내들 것이란 관측이다.",
       "title": "주담대 위험가중치 25% 되면…은행, 금리 올릴까 한도 줄일까"
     },
+    "core:28a14310deee74035e15f10a": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639234",
+      "source": "이투데이",
+      "source_body_digest": "3e2e2726e51b62a49a35c03bbeb5c3b9d22c40c52f516b33e72376b3668f847c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2361be08c685daa1003705fc77dc9da4fde47f88ff698a15ae4334d1ad0b6d3",
+      "source_fact_keys": [
+        "source_fact:v1:98a6b0fd4fb369b09612517e2dfbcc34608b609fce849df3fa481876941b7dab",
+        "source_fact:v1:9a6f08bbda4882bdbd26a5a296aa8ee120f4381a1a8791e1ff31f9b8744ac466",
+        "source_fact:v1:c633e57158aa887adabd86eac3b2d5ff56241c365f517bc35f8563b5c449363f"
+      ],
+      "source_published_kst": "2026-10-23T09:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략",
+      "telegram_core_fact": "현대차는 22일(현지시간) 인도네시아 발리 독립기념탑에서 열린 '전기버스 및 충전 인프라 보급 프로젝트 출범식'에서 카운티 일렉트릭 전기버스 11대를 발리 주정부에 공급했다고 23일 밝혔다.",
+      "title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략"
+    },
     "core:28a74e4f14462e77fa04f53b": {
       "first_seen_kst": "2026-10-22T12:22:03+09:00",
       "lanes": {
@@ -27804,6 +27826,41 @@
       "telegram_core_fact": "올해 코스닥에 입성한 새내기주의 상장 이후 수익률이 시장을 평균 40%P 넘게 밑돌았다. 신규 상장기업의 부진이 두드러지면서 혁신기업 유입으로 시장 신뢰를 높이겠다는 정부의 '다산다사' 정책이 시험대에 올랐다.",
       "title": "시장보다 40%P 더 떨어진 새내기주…코스닥 '다산다사' 정책 시험대"
     },
+    "core:48bf18cd2da375d39c80379a": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "core:48c00064dbbbe787f092999e": {
       "first_seen_kst": "2026-10-20T00:33:17+09:00",
       "lanes": {
@@ -32341,6 +32398,26 @@
       "source_title": "배민, ‘K-GX’ 프로젝트 참여…전기 이륜차 보급 확대 나선다",
       "telegram_core_fact": "현재 국토부 규제샌드박스 승인을 받아 서울 강남·서초·송파·강동구에서 약 80대 규모로 운영 중인 전기 이륜차 LED 배달통 광고 실증사업도 민관협력 사례로 발전시킬 계획이다.",
       "title": "배민, ‘K-GX’ 프로젝트 참여…전기 이륜차 보급 확대 나선다"
+    },
+    "core:55bbc5a76ce03ff40e1eec0b": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023036400055",
+      "source": "연합뉴스",
+      "source_body_digest": "38a6d7ec7805062bbb274cd5ec4ce9ada6d04713036f8e4232234a79587c9b80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fb05a9452ed27b52f89fa63f9c89a583b7bb58e834a9badc8541c08efbaf416",
+      "source_fact_keys": [
+        "source_fact:v1:1e0e29e0769d28047342c6724cb80b3ae5079254a1234061437261cfd092927c"
+      ],
+      "source_published_kst": "2026-10-23T09:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스",
+      "telegram_core_fact": "국회 농림축산식품해양수산위원회 소속 더불어민주당 윤준병 의원(전북 정읍·고창)이 23일 수협중앙회로부터 제출받은 자료에 따르면 올해 8월 기준 수협유통의 당기순손실은 34억4천700만원으로 집계됐다.",
+      "title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스"
     },
     "core:55bbc97a2810b921733fa050": {
       "first_seen_kst": "2026-10-19T18:10:50+09:00",
@@ -37776,6 +37853,26 @@
       "source_title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소",
       "telegram_core_fact": "TSMC는 지난달 매출이 5,118억5,700만 대만달러로, 지난해 같은 달보다 54.6% 증가했다고 오늘(8일) 밝혔습니다.",
       "title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소"
+    },
+    "core:65dbba9e9bd355e702ead908": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836822",
+      "source": "뉴시스",
+      "source_body_digest": "ad7af2a85375456d96c405680988924322388169566561872506cd17661fab6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb97bd8db1a772be89fe68532d09db7626ee96beef9df7e02be00c395c2d0571",
+      "source_fact_keys": [
+        "source_fact:v1:228c4119863dd1503e08636b140d95de959a439fc0a42bd0e462ad23010a564b"
+      ],
+      "source_published_kst": "2026-10-23T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"전기차는 잘 나가는데\"…中BYD 첫 PHEV '씨라이언 6'는 주춤 왜?",
+      "telegram_core_fact": "중국 자동차 브랜드 BYD가 국내 시장에 출시한 플러그인 하이브리드(PHEV) 차량 판매량이 출시 한 달 만에 감소세로 전환했다.",
+      "title": "\"전기차는 잘 나가는데\"…中BYD 첫 PHEV '씨라이언 6'는 주춤 왜?"
     },
     "core:65e6669df5fc0dc86f6d284b": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
@@ -50758,6 +50855,26 @@
       "telegram_core_fact": "베터 홈 앤 파이낸스 홀딩(BETR)은 2026년 9월 30일 종료된 3분기 잠정 총순매출액(Total Net Revenues)이 4510만 달러로 전년비 8.6% 증가했지만, 앞서 제시한 가이던스 하단(4900만~5200만 달러)에는 못 미쳤다고 14일 발표했다.",
       "title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회"
     },
+    "core:86c458a1806df51140bebb17": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837846",
+      "source": "뉴시스",
+      "source_body_digest": "93f676f642179eee41f36f47570ff89f5f858b43f9b63023fd380c7c5bafa351",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a9ccfb1aaa83b78ab3113d836b1c335719948ef750556ff902212261b5ec2bd",
+      "source_fact_keys": [
+        "source_fact:v1:99f68890c79ede9a92777b5e42a9f631f7099b8c2d1aafb35d4abce93cafe7a6"
+      ],
+      "source_published_kst": "2026-10-23T08:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "탑런토탈솔루션 中 법인, 차량용 디스플레이 BLU 수주",
+      "telegram_core_fact": "전장·디스플레이 전문기업 탑런토탈솔루션은 중국 남경법인(TRCN)이 글로벌 전장기업 아우모비오(AUMOVIO)로부터 차량용 디스플레이 백라이트유닛(BLU) 공급 프로젝트를 수주했다고 23일 밝혔다.",
+      "title": "탑런토탈솔루션 中 법인, 차량용 디스플레이 BLU 수주"
+    },
     "core:86ca17d84df5facc8cd56fd1": {
       "first_seen_kst": "2026-10-12T15:20:09+09:00",
       "lanes": {
@@ -52730,6 +52847,34 @@
       "source_title": "\"3대 메가 프로젝트, 글로벌 AI 핵심 병목 선점할 승부수\"",
       "telegram_core_fact": "보고서는 현재 미국과 중국 간 AI 패권 경쟁 속에서 반도체 첨단 패키징, 데이터센터 전력기기·전력망, 로봇 정밀 구동 부품 등 핵심 영역마다 공급 부족 등 심각한 병목 현상이 빚어지고 있다고 진단했다. 산업연구원은 15일 발표한 '메가 프로젝트의 전략적 함의와 산업정책 과제' 보고서를 통해 이같이 밝혔다.",
       "title": "\"3대 메가 프로젝트, 글로벌 AI 핵심 병목 선점할 승부수\""
+    },
+    "core:8b8f2ccccaa47429606b5492": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
     },
     "core:8b96a58e61c31c130441eb62": {
       "first_seen_kst": "2026-10-21T00:42:39+09:00",
@@ -69927,6 +70072,26 @@
       "source_title": "사우디- 후티 공습격화,.. 리야드공항 폭격에 12명 죽고 309명 부상(종합)",
       "telegram_core_fact": "10일의 공격이 끝난 뒤 후티군은 성명을 발표, 앞으로도 사우디 아라비아에 대한 상응하는 보복조치를 할 준비가 되어 있다면서 군사력 대결 외에 민간 부문에서도 공항, 항만, 기타 공공 시설등에 대한 공격을 주저하지 않겠다고 밝혔다.",
       "title": "사우디- 후티 공습격화,.. 리야드공항 폭격에 12명 죽고 309명 부상(종합)"
+    },
+    "core:bacacd1b0f55d5e2fe5c3655": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://biz.heraldcorp.com/article/10912130",
+      "source": "헤럴드경제",
+      "source_body_digest": "dc1d1b173263adf4ceef4bada61bbee27a1be8bc831b1cbdbb71d2924489f91c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dae73b5fe471d70e564b13280e9d7468d0dfaf7b6c346156bb233f143f4ad05",
+      "source_fact_keys": [
+        "source_fact:v1:5f135fc2e139e899087a7974d534707a485c1f4ba15a56cbf248a52b0ba8580d"
+      ],
+      "source_published_kst": "2026-10-23T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, ‘AI 프론티어’ 출범…전사적 AX 가속화",
+      "telegram_core_fact": "한국토지주택공사(LH)가 신속한 주택 공급과 업무 효율성을 극대화하기 위해 직원 주도의 인공지능(AI) 혁신 조직을 본격적으로 가동한다.",
+      "title": "LH, ‘AI 프론티어’ 출범…전사적 AX 가속화"
     },
     "core:bad4309f2ad25f422dbc33f7": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
@@ -107345,6 +107510,26 @@
       "source": "파이낸셜뉴스",
       "title": "마이크론 훈풍이 고금리 이겼다…코스피, 다시 7000선 근접 마감"
     },
+    "event:89f53c76dc9d528abb990a8f": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023036400055",
+      "source": "연합뉴스",
+      "source_body_digest": "38a6d7ec7805062bbb274cd5ec4ce9ada6d04713036f8e4232234a79587c9b80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fb05a9452ed27b52f89fa63f9c89a583b7bb58e834a9badc8541c08efbaf416",
+      "source_fact_keys": [
+        "source_fact:v1:1e0e29e0769d28047342c6724cb80b3ae5079254a1234061437261cfd092927c"
+      ],
+      "source_published_kst": "2026-10-23T09:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스",
+      "telegram_core_fact": "국회 농림축산식품해양수산위원회 소속 더불어민주당 윤준병 의원(전북 정읍·고창)이 23일 수협중앙회로부터 제출받은 자료에 따르면 올해 8월 기준 수협유통의 당기순손실은 34억4천700만원으로 집계됐다.",
+      "title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스"
+    },
     "event:8a87c7fdf2df4ded76281e4a": {
       "first_seen_kst": "2026-10-20T05:37:55+09:00",
       "lanes": {
@@ -132094,6 +132279,26 @@
       "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
       "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
       "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
+    },
+    "fact:22d5e37e6bff4530e67327ce": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837846",
+      "source": "뉴시스",
+      "source_body_digest": "93f676f642179eee41f36f47570ff89f5f858b43f9b63023fd380c7c5bafa351",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a9ccfb1aaa83b78ab3113d836b1c335719948ef750556ff902212261b5ec2bd",
+      "source_fact_keys": [
+        "source_fact:v1:99f68890c79ede9a92777b5e42a9f631f7099b8c2d1aafb35d4abce93cafe7a6"
+      ],
+      "source_published_kst": "2026-10-23T08:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "탑런토탈솔루션 中 법인, 차량용 디스플레이 BLU 수주",
+      "telegram_core_fact": "전장·디스플레이 전문기업 탑런토탈솔루션은 중국 남경법인(TRCN)이 글로벌 전장기업 아우모비오(AUMOVIO)로부터 차량용 디스플레이 백라이트유닛(BLU) 공급 프로젝트를 수주했다고 23일 밝혔다.",
+      "title": "탑런토탈솔루션 中 법인, 차량용 디스플레이 BLU 수주"
     },
     "fact:22ed30198d0a2c61b729e7b9": {
       "first_seen_kst": "2026-10-13T21:34:27+09:00",
@@ -161538,6 +161743,26 @@
       "telegram_core_fact": "이란이 호르무즈 해협을 통과하는 선박들을 겨냥한 새로운 공격 전술을 도입했다고 로이터통신이 이란 고위 관계자들을 인용해 14일(현지시간) 보도했다.",
       "title": "\"유가로 美중간선거 흔든다\"…이란, 해협 활용한 '새 전략' 감행"
     },
+    "fact:6ec739840e6215e50b44ced8": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023036400055",
+      "source": "연합뉴스",
+      "source_body_digest": "38a6d7ec7805062bbb274cd5ec4ce9ada6d04713036f8e4232234a79587c9b80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fb05a9452ed27b52f89fa63f9c89a583b7bb58e834a9badc8541c08efbaf416",
+      "source_fact_keys": [
+        "source_fact:v1:1e0e29e0769d28047342c6724cb80b3ae5079254a1234061437261cfd092927c"
+      ],
+      "source_published_kst": "2026-10-23T09:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스",
+      "telegram_core_fact": "국회 농림축산식품해양수산위원회 소속 더불어민주당 윤준병 의원(전북 정읍·고창)이 23일 수협중앙회로부터 제출받은 자료에 따르면 올해 8월 기준 수협유통의 당기순손실은 34억4천700만원으로 집계됐다.",
+      "title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스"
+    },
     "fact:6ecc0d031bff7e8d359e3b76": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -163593,6 +163818,26 @@
       "source_title": "모다모다, 누적 판매 1000만 개 돌파…새치 넘어 두피·볼륨까지",
       "telegram_core_fact": "모다모다에 따르면 블랙 샴푸 제품군의 누적 판매량은 664만 개로 전체 판매량의 약 66%를 차지한다.",
       "title": "모다모다, 누적 판매 1000만 개 돌파…새치 넘어 두피·볼륨까지"
+    },
+    "fact:7463b30913b6a6c39e748965": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836822",
+      "source": "뉴시스",
+      "source_body_digest": "ad7af2a85375456d96c405680988924322388169566561872506cd17661fab6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb97bd8db1a772be89fe68532d09db7626ee96beef9df7e02be00c395c2d0571",
+      "source_fact_keys": [
+        "source_fact:v1:228c4119863dd1503e08636b140d95de959a439fc0a42bd0e462ad23010a564b"
+      ],
+      "source_published_kst": "2026-10-23T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"전기차는 잘 나가는데\"…中BYD 첫 PHEV '씨라이언 6'는 주춤 왜?",
+      "telegram_core_fact": "중국 자동차 브랜드 BYD가 국내 시장에 출시한 플러그인 하이브리드(PHEV) 차량 판매량이 출시 한 달 만에 감소세로 전환했다.",
+      "title": "\"전기차는 잘 나가는데\"…中BYD 첫 PHEV '씨라이언 6'는 주춤 왜?"
     },
     "fact:7463e890865f7be395d9eadb": {
       "first_seen_kst": "2026-10-07T22:24:07+09:00",
@@ -194239,6 +194484,26 @@
       "telegram_core_fact": "리사 수 AMD 최고경영자(CEO)가 한국을 인공지능(AI)과 반도체 공급망에서 핵심적인 파트너로 꼽았다. 최근 수 CEO가 한국을 잇따라 찾는 배경에도 장기적인 공급망 협력이 있다고 설명했다.",
       "title": "리사 수 AMD CEO “반도체는 팀 스포츠, 한국은 핵심 파트너”"
     },
+    "fact:baba9feabd7b772d31fd7e44": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://biz.heraldcorp.com/article/10912130",
+      "source": "헤럴드경제",
+      "source_body_digest": "dc1d1b173263adf4ceef4bada61bbee27a1be8bc831b1cbdbb71d2924489f91c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dae73b5fe471d70e564b13280e9d7468d0dfaf7b6c346156bb233f143f4ad05",
+      "source_fact_keys": [
+        "source_fact:v1:5f135fc2e139e899087a7974d534707a485c1f4ba15a56cbf248a52b0ba8580d"
+      ],
+      "source_published_kst": "2026-10-23T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, ‘AI 프론티어’ 출범…전사적 AX 가속화",
+      "telegram_core_fact": "한국토지주택공사(LH)가 신속한 주택 공급과 업무 효율성을 극대화하기 위해 직원 주도의 인공지능(AI) 혁신 조직을 본격적으로 가동한다.",
+      "title": "LH, ‘AI 프론티어’ 출범…전사적 AX 가속화"
+    },
     "fact:babd5da4b0e2424d6c8a9e13": {
       "first_seen_kst": "2026-10-23T09:48:17+09:00",
       "lanes": {
@@ -203817,6 +204082,41 @@
       "telegram_core_fact": "로이터는 \"선박 정보와 미 재무부 제재 명단을 대조한 결과, 7월 이후 오만만을 빠져나간 LPG 운반선 8척 중 6척과 항공유 운반선 1척은 이란산 석유 및 석유화학제품 운송을 이유로 미국의 제재 대상에 오른 선박\"이라고 설명했다. 셸리 연구원은 이들 선박이 운송한 LPG 물량을 약 410만 배럴로 추산했다.",
       "title": "\"美 해상봉쇄에도 이란산 LPG·항공유 해외 반출\""
     },
+    "fact:d13a218136b6fe6f5c309cbb": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "fact:d13c3cc225ba8238c13b91e4": {
       "first_seen_kst": "2026-10-20T04:27:47+09:00",
       "lanes": {
@@ -206864,6 +207164,28 @@
       "source_title": "튀르키예, 기준금리 36%로 1%P↓…\"9개월 만에 인하\"",
       "telegram_core_fact": "마켓워치와 RTT 뉴스, dpa 통신은 23일 튀르키예 중앙은행은 전날 금융정책 회의를 열어 기준금리인 7일물 환매조건부채권(레포) 금리 종전 37.0%에서 36.1%로 1.0% 포인트 인하하기로 결정했다고 전했다.",
       "title": "튀르키예, 기준금리 36%로 1%P↓…\"9개월 만에 인하\""
+    },
+    "fact:d82a9f377abbacf031eb53bd": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639234",
+      "source": "이투데이",
+      "source_body_digest": "3e2e2726e51b62a49a35c03bbeb5c3b9d22c40c52f516b33e72376b3668f847c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2361be08c685daa1003705fc77dc9da4fde47f88ff698a15ae4334d1ad0b6d3",
+      "source_fact_keys": [
+        "source_fact:v1:98a6b0fd4fb369b09612517e2dfbcc34608b609fce849df3fa481876941b7dab",
+        "source_fact:v1:9a6f08bbda4882bdbd26a5a296aa8ee120f4381a1a8791e1ff31f9b8744ac466",
+        "source_fact:v1:c633e57158aa887adabd86eac3b2d5ff56241c365f517bc35f8563b5c449363f"
+      ],
+      "source_published_kst": "2026-10-23T09:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략",
+      "telegram_core_fact": "현대차는 22일(현지시간) 인도네시아 발리 독립기념탑에서 열린 '전기버스 및 충전 인프라 보급 프로젝트 출범식'에서 카운티 일렉트릭 전기버스 11대를 발리 주정부에 공급했다고 23일 밝혔다.",
+      "title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략"
     },
     "fact:d837b6f05b7434837c585149": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
@@ -215485,6 +215807,34 @@
       ],
       "source_published_kst": "2026-10-07T11:07+09:00",
       "title": "[2보] LG전자 3분기 영업익 7천818억…작년비 13.5% 증가 | 연합뉴스"
+    },
+    "fact:ecc7af0ee67318a5c1f202d2": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
     },
     "fact:ecd38736f9bccacf067189e9": {
       "first_seen_kst": "2026-10-18T18:38:30+09:00",
@@ -238731,6 +239081,26 @@
       "source_published_kst": "2026-10-06T11:44+09:00",
       "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
     },
+    "link:1bc43a14b7c036ac93e570c1": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837846",
+      "source": "뉴시스",
+      "source_body_digest": "93f676f642179eee41f36f47570ff89f5f858b43f9b63023fd380c7c5bafa351",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a9ccfb1aaa83b78ab3113d836b1c335719948ef750556ff902212261b5ec2bd",
+      "source_fact_keys": [
+        "source_fact:v1:99f68890c79ede9a92777b5e42a9f631f7099b8c2d1aafb35d4abce93cafe7a6"
+      ],
+      "source_published_kst": "2026-10-23T08:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "탑런토탈솔루션 中 법인, 차량용 디스플레이 BLU 수주",
+      "telegram_core_fact": "전장·디스플레이 전문기업 탑런토탈솔루션은 중국 남경법인(TRCN)이 글로벌 전장기업 아우모비오(AUMOVIO)로부터 차량용 디스플레이 백라이트유닛(BLU) 공급 프로젝트를 수주했다고 23일 밝혔다.",
+      "title": "탑런토탈솔루션 中 법인, 차량용 디스플레이 BLU 수주"
+    },
     "link:1bd3858237d1b5786e38c5a8": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
       "lanes": {
@@ -256604,6 +256974,26 @@
       "telegram_core_fact": "특히 AMD와의 공동 시연은 메모리 기업의 역할이 단순한 반도체 공급에서 AI 시스템 설계와 최적화 영역으로 확대되고 있음을 보여준다.",
       "title": "AI가 바꾼 메모리 경쟁…삼성은 '확장성', 중국은 '집적도' 승부"
     },
+    "link:3c4d6850aeae7fea29e63d17": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023036400055",
+      "source": "연합뉴스",
+      "source_body_digest": "38a6d7ec7805062bbb274cd5ec4ce9ada6d04713036f8e4232234a79587c9b80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fb05a9452ed27b52f89fa63f9c89a583b7bb58e834a9badc8541c08efbaf416",
+      "source_fact_keys": [
+        "source_fact:v1:1e0e29e0769d28047342c6724cb80b3ae5079254a1234061437261cfd092927c"
+      ],
+      "source_published_kst": "2026-10-23T09:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스",
+      "telegram_core_fact": "국회 농림축산식품해양수산위원회 소속 더불어민주당 윤준병 의원(전북 정읍·고창)이 23일 수협중앙회로부터 제출받은 자료에 따르면 올해 8월 기준 수협유통의 당기순손실은 34억4천700만원으로 집계됐다.",
+      "title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스"
+    },
     "link:3c56967c3466ddd0b8fa334b": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
       "lanes": {
@@ -257274,6 +257664,26 @@
       "source_title": "SEMI “반도체 1조달러 돌파, 2035년 3조달러 간다”",
       "telegram_core_fact": "개막 포문을 연 조 스토쿠나스 국제반도체장비재료협회(SEMI) 북미 사장은 1조달러 매출 조기 돌파를 공식 선언하며 축하 건배를 제의했다. 올해 행사는 당초 예상보다 4년 앞당겨 달성한 '글로벌 반도체 매출 1조달러 조기 돌파'의 축제 분위기 속에서 출발했다.",
       "title": "SEMI “반도체 1조달러 돌파, 2035년 3조달러 간다”"
+    },
+    "link:3da1fd8f21b6040731c29b5d": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836822",
+      "source": "뉴시스",
+      "source_body_digest": "ad7af2a85375456d96c405680988924322388169566561872506cd17661fab6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb97bd8db1a772be89fe68532d09db7626ee96beef9df7e02be00c395c2d0571",
+      "source_fact_keys": [
+        "source_fact:v1:228c4119863dd1503e08636b140d95de959a439fc0a42bd0e462ad23010a564b"
+      ],
+      "source_published_kst": "2026-10-23T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"전기차는 잘 나가는데\"…中BYD 첫 PHEV '씨라이언 6'는 주춤 왜?",
+      "telegram_core_fact": "중국 자동차 브랜드 BYD가 국내 시장에 출시한 플러그인 하이브리드(PHEV) 차량 판매량이 출시 한 달 만에 감소세로 전환했다.",
+      "title": "\"전기차는 잘 나가는데\"…中BYD 첫 PHEV '씨라이언 6'는 주춤 왜?"
     },
     "link:3db4446cd6bf6256fe0429ca": {
       "first_seen_kst": "2026-10-15T03:55:55+09:00",
@@ -279774,6 +280184,41 @@
       "telegram_core_fact": "전성우 파인메딕스 대표는 “이번 계약은 파인메딕스가 확보한 제품 개발·인허가·생산 역량을 글로벌 의료기기 기업으로부터 인정받았다는 점에서 의미가 크다”며 “상반기 실적 개선과 해외 매출 증가에 이어 이번 ODM 계약을 시작으로 미국과 중남미 시장에서 후속 주문과 매출 성과를 쌓아 나갈 것”이라고 말했다.",
       "title": "파인메딕스, 英 크레오 메디컬과 29억 ODM 계약…미국·중남미 공략"
     },
+    "link:67d0da1d60f098ba9032e2a6": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "link:67e2108c62f593dfc369608e": {
       "first_seen_kst": "2026-10-12T16:50:12+09:00",
       "lanes": {
@@ -289810,6 +290255,26 @@
       "source": "뉴시스",
       "title": "뉴욕증시, 국채금리 급등에 하락 출발…브렌트유 3% 상승세"
     },
+    "link:7ae000bc34017d64943a8169": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://biz.heraldcorp.com/article/10912130",
+      "source": "헤럴드경제",
+      "source_body_digest": "dc1d1b173263adf4ceef4bada61bbee27a1be8bc831b1cbdbb71d2924489f91c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dae73b5fe471d70e564b13280e9d7468d0dfaf7b6c346156bb233f143f4ad05",
+      "source_fact_keys": [
+        "source_fact:v1:5f135fc2e139e899087a7974d534707a485c1f4ba15a56cbf248a52b0ba8580d"
+      ],
+      "source_published_kst": "2026-10-23T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, ‘AI 프론티어’ 출범…전사적 AX 가속화",
+      "telegram_core_fact": "한국토지주택공사(LH)가 신속한 주택 공급과 업무 효율성을 극대화하기 위해 직원 주도의 인공지능(AI) 혁신 조직을 본격적으로 가동한다.",
+      "title": "LH, ‘AI 프론티어’ 출범…전사적 AX 가속화"
+    },
     "link:7ae34b751dd7c27efe7290af": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
       "lanes": {
@@ -290001,6 +290466,28 @@
       "source_title": "부품 하나만 없어도 데이터센터 '올스톱'",
       "telegram_core_fact": "인공지능(AI) 부품업계의 장기공급계약(LTA) 관행은 결국 오픈AI, 구글, 마이크로소프트(MS) 등 미국 빅테크가 AI 데이터센터 속도전을 벌인 결과로 풀이된다. 문제는 이 중 단 하나만 빠져도 AI 데이터센터 가동 자체가 불가능하다는 점이다.",
       "title": "부품 하나만 없어도 데이터센터 '올스톱'"
+    },
+    "link:7b3f95a9b3a68d966eb16df8": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639234",
+      "source": "이투데이",
+      "source_body_digest": "3e2e2726e51b62a49a35c03bbeb5c3b9d22c40c52f516b33e72376b3668f847c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2361be08c685daa1003705fc77dc9da4fde47f88ff698a15ae4334d1ad0b6d3",
+      "source_fact_keys": [
+        "source_fact:v1:98a6b0fd4fb369b09612517e2dfbcc34608b609fce849df3fa481876941b7dab",
+        "source_fact:v1:9a6f08bbda4882bdbd26a5a296aa8ee120f4381a1a8791e1ff31f9b8744ac466",
+        "source_fact:v1:c633e57158aa887adabd86eac3b2d5ff56241c365f517bc35f8563b5c449363f"
+      ],
+      "source_published_kst": "2026-10-23T09:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략",
+      "telegram_core_fact": "현대차는 22일(현지시간) 인도네시아 발리 독립기념탑에서 열린 '전기버스 및 충전 인프라 보급 프로젝트 출범식'에서 카운티 일렉트릭 전기버스 11대를 발리 주정부에 공급했다고 23일 밝혔다.",
+      "title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략"
     },
     "link:7b41cae1649f6b10ec00b9e9": {
       "first_seen_kst": "2026-10-20T03:18:10+09:00",
@@ -322965,6 +323452,34 @@
       "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
       "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
       "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
+    "link:b81ba7883772c243b17384ec": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
     },
     "link:b8207feefeaf100f570aaf39": {
       "first_seen_kst": "2026-10-19T13:01:20+09:00",
@@ -378086,6 +378601,34 @@
       "telegram_core_fact": "이재용 삼성전자 회장이 모친인 홍라희(사진) 리움미술관 명예관장의 삼성전자 주식 1115만8000주(0.17%)를 증여받는다고 13일 공시했다. 증여 완료 시 이 회장의 주식 수는 1억1637만7053주, 지분율은 1.75%로 늘어나며 홍 관장의 지분율은 0.98%에서 0.81%로 감소한다.",
       "title": "홍라희, 삼성 지분 2.6조 이재용에 증여 | 중앙일보"
     },
+    "original:22f9b22b46dd31279742560d": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
+    },
     "original:22fbef94a308c03c03f5cf2b": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -383174,6 +383717,26 @@
       ],
       "source_published_kst": "2026-10-06T14:29+09:00",
       "title": "에스넷시스템, 델 사업 성장세…실적 확대 견인"
+    },
+    "original:2be48d57dfcab2bc4d86d0d4": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836822",
+      "source": "뉴시스",
+      "source_body_digest": "ad7af2a85375456d96c405680988924322388169566561872506cd17661fab6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb97bd8db1a772be89fe68532d09db7626ee96beef9df7e02be00c395c2d0571",
+      "source_fact_keys": [
+        "source_fact:v1:228c4119863dd1503e08636b140d95de959a439fc0a42bd0e462ad23010a564b"
+      ],
+      "source_published_kst": "2026-10-23T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"전기차는 잘 나가는데\"…中BYD 첫 PHEV '씨라이언 6'는 주춤 왜?",
+      "telegram_core_fact": "중국 자동차 브랜드 BYD가 국내 시장에 출시한 플러그인 하이브리드(PHEV) 차량 판매량이 출시 한 달 만에 감소세로 전환했다.",
+      "title": "\"전기차는 잘 나가는데\"…中BYD 첫 PHEV '씨라이언 6'는 주춤 왜?"
     },
     "original:2be93164862a1055278764a5": {
       "first_seen_kst": "2026-10-18T12:31:06+09:00",
@@ -391393,6 +391956,28 @@
       "source_title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'",
       "telegram_core_fact": "브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. CDS는 스페이스X가 194bp에서 1bp로, 오라클은 40bp 오른 81bp로 상승했습니다.",
       "title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'"
+    },
+    "original:3bf7c3146aab3c611d9e623a": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639234",
+      "source": "이투데이",
+      "source_body_digest": "3e2e2726e51b62a49a35c03bbeb5c3b9d22c40c52f516b33e72376b3668f847c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2361be08c685daa1003705fc77dc9da4fde47f88ff698a15ae4334d1ad0b6d3",
+      "source_fact_keys": [
+        "source_fact:v1:98a6b0fd4fb369b09612517e2dfbcc34608b609fce849df3fa481876941b7dab",
+        "source_fact:v1:9a6f08bbda4882bdbd26a5a296aa8ee120f4381a1a8791e1ff31f9b8744ac466",
+        "source_fact:v1:c633e57158aa887adabd86eac3b2d5ff56241c365f517bc35f8563b5c449363f"
+      ],
+      "source_published_kst": "2026-10-23T09:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략",
+      "telegram_core_fact": "현대차는 22일(현지시간) 인도네시아 발리 독립기념탑에서 열린 '전기버스 및 충전 인프라 보급 프로젝트 출범식'에서 카운티 일렉트릭 전기버스 11대를 발리 주정부에 공급했다고 23일 밝혔다.",
+      "title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략"
     },
     "original:3bf8f1f47b955dcf7ee06843": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -417777,6 +418362,26 @@
       "source": "연합뉴스",
       "title": "19년간 못판 상업용지…LH 미매각 토지 규모 21.9조원 기록 | 연합뉴스"
     },
+    "original:6e068778c5bb657b175cf6fe": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837846",
+      "source": "뉴시스",
+      "source_body_digest": "93f676f642179eee41f36f47570ff89f5f858b43f9b63023fd380c7c5bafa351",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a9ccfb1aaa83b78ab3113d836b1c335719948ef750556ff902212261b5ec2bd",
+      "source_fact_keys": [
+        "source_fact:v1:99f68890c79ede9a92777b5e42a9f631f7099b8c2d1aafb35d4abce93cafe7a6"
+      ],
+      "source_published_kst": "2026-10-23T08:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "탑런토탈솔루션 中 법인, 차량용 디스플레이 BLU 수주",
+      "telegram_core_fact": "전장·디스플레이 전문기업 탑런토탈솔루션은 중국 남경법인(TRCN)이 글로벌 전장기업 아우모비오(AUMOVIO)로부터 차량용 디스플레이 백라이트유닛(BLU) 공급 프로젝트를 수주했다고 23일 밝혔다.",
+      "title": "탑런토탈솔루션 中 법인, 차량용 디스플레이 BLU 수주"
+    },
     "original:6e16cdff5fb430d46c6bfe37": {
       "first_seen_kst": "2026-10-01T23:05:38+09:00",
       "lanes": {
@@ -422462,6 +423067,26 @@
       "link": "https://www.newsis.com/view/NISX20260917_0003794038",
       "source": "뉴시스",
       "title": "\"86주 연속 서울 집값 상승\"…과거엔 '이것' 나오자 꺾였다"
+    },
+    "original:76c0f894d6c2069993501d31": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023036400055",
+      "source": "연합뉴스",
+      "source_body_digest": "38a6d7ec7805062bbb274cd5ec4ce9ada6d04713036f8e4232234a79587c9b80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fb05a9452ed27b52f89fa63f9c89a583b7bb58e834a9badc8541c08efbaf416",
+      "source_fact_keys": [
+        "source_fact:v1:1e0e29e0769d28047342c6724cb80b3ae5079254a1234061437261cfd092927c"
+      ],
+      "source_published_kst": "2026-10-23T09:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스",
+      "telegram_core_fact": "국회 농림축산식품해양수산위원회 소속 더불어민주당 윤준병 의원(전북 정읍·고창)이 23일 수협중앙회로부터 제출받은 자료에 따르면 올해 8월 기준 수협유통의 당기순손실은 34억4천700만원으로 집계됐다.",
+      "title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스"
     },
     "original:76c1b3bc81ee5a0a05abd3cd": {
       "first_seen_kst": "2026-10-20T22:42:26+09:00",
@@ -447445,6 +448070,26 @@
       "link": "https://www.etoday.co.kr/news/view/2632092",
       "source": "이투데이",
       "title": "더네이쳐홀딩스, 경영진 3억2000만원 자사주 매입…실적 개선 총력"
+    },
+    "original:a56274ccc8a0bca7a26a1e99": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://biz.heraldcorp.com/article/10912130",
+      "source": "헤럴드경제",
+      "source_body_digest": "dc1d1b173263adf4ceef4bada61bbee27a1be8bc831b1cbdbb71d2924489f91c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dae73b5fe471d70e564b13280e9d7468d0dfaf7b6c346156bb233f143f4ad05",
+      "source_fact_keys": [
+        "source_fact:v1:5f135fc2e139e899087a7974d534707a485c1f4ba15a56cbf248a52b0ba8580d"
+      ],
+      "source_published_kst": "2026-10-23T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, ‘AI 프론티어’ 출범…전사적 AX 가속화",
+      "telegram_core_fact": "한국토지주택공사(LH)가 신속한 주택 공급과 업무 효율성을 극대화하기 위해 직원 주도의 인공지능(AI) 혁신 조직을 본격적으로 가동한다.",
+      "title": "LH, ‘AI 프론티어’ 출범…전사적 AX 가속화"
     },
     "original:a5677a624eaf89af2860e785": {
       "first_seen_kst": "2026-10-13T10:49:34+09:00",
@@ -484276,6 +484921,41 @@
       "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
       "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
     },
+    "original:eda99ac8fb4b243f230d38bb": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "original:edb5925e3d74375d286813d7": {
       "first_seen_kst": "2026-10-12T13:56:47+09:00",
       "lanes": {
@@ -494489,6 +495169,34 @@
       "telegram_core_fact": "감정가가 50억8300만원으로 책정된 해당 아파트는 최저 입찰가가 32억원까지 떨어졌고, 최종적으로 40억2000만원에 낙찰됐다.",
       "title": "\"감정가 50억 아파트, 40억에 낙찰\"…전문가가 본 서울 부동산의 이상 징후"
     },
+    "source_fact:008d5563f85e4bbf76e61ac9": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
+    },
     "source_fact:008e06c56aca01a508448513": {
       "first_seen_kst": "2026-10-23T13:50:43+09:00",
       "lanes": {
@@ -504112,6 +504820,34 @@
       "source_title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심",
       "telegram_core_fact": "나녹스(NNOX)는 9월 30일 종료된 2026년 3분기 예비 매출액이 430만~440만 달러로 전년 동기 340만 달러 대비 약 26~29% 증가한 것으로 추정되지만, 현금성 자산 급감으로 계속기업 존속 능력에 중대한 의구심이 제기된다고 10월 16일 발표했다.",
       "title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심"
+    },
+    "source_fact:05245753cf99bc0f219711e6": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
     },
     "source_fact:05270980478bb9045cd59873": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -514925,6 +515661,28 @@
       "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
       "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
     },
+    "source_fact:0a3371f07a8af19f925ca7fe": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639234",
+      "source": "이투데이",
+      "source_body_digest": "3e2e2726e51b62a49a35c03bbeb5c3b9d22c40c52f516b33e72376b3668f847c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2361be08c685daa1003705fc77dc9da4fde47f88ff698a15ae4334d1ad0b6d3",
+      "source_fact_keys": [
+        "source_fact:v1:98a6b0fd4fb369b09612517e2dfbcc34608b609fce849df3fa481876941b7dab",
+        "source_fact:v1:9a6f08bbda4882bdbd26a5a296aa8ee120f4381a1a8791e1ff31f9b8744ac466",
+        "source_fact:v1:c633e57158aa887adabd86eac3b2d5ff56241c365f517bc35f8563b5c449363f"
+      ],
+      "source_published_kst": "2026-10-23T09:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략",
+      "telegram_core_fact": "현대차는 22일(현지시간) 인도네시아 발리 독립기념탑에서 열린 '전기버스 및 충전 인프라 보급 프로젝트 출범식'에서 카운티 일렉트릭 전기버스 11대를 발리 주정부에 공급했다고 23일 밝혔다.",
+      "title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략"
+    },
     "source_fact:0a3f6c3320401b03af263508": {
       "first_seen_kst": "2026-10-18T06:15:10+09:00",
       "lanes": {
@@ -516511,6 +517269,34 @@
       "source_title": "방사청, '뇌물 부정' LIG D&A에 입찰 제한 24개월 처분…법정 최고 수준",
       "telegram_core_fact": "방위사업청이 뇌물 및 원가 부정 사건에 연루된 LIG 디펜스&에어로스페이스(D&A)에 대해 법정 최고 수준의 제재인 '입찰 참가 자격 제한 24개월(2년)' 처분을 내리기로 결정했다.",
       "title": "방사청, '뇌물 부정' LIG D&A에 입찰 제한 24개월 처분…법정 최고 수준"
+    },
+    "source_fact:0b07e8f28ffaf3f270461089": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
     },
     "source_fact:0b1449bd65751a66cdc66404": {
       "first_seen_kst": "2026-10-11T19:59:25+09:00",
@@ -540150,6 +540936,41 @@
       "telegram_core_fact": "금융감독원 전자공시시스템에 따르면 삼성전자는 전날 자기주식취득결과보고서를 제출하고 총 15조원 자사주 매입을 완료했다고 밝혔다.",
       "title": "“삼전 쓸어담던 큰손 빠지니 폭락?”…‘자사주 매입 끝’ 증시, 누가 받치나"
     },
+    "source_fact:15df5052843b13a5dd98770b": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "source_fact:15df795ba4ee3120525df956": {
       "first_seen_kst": "2026-10-16T21:59:28+09:00",
       "lanes": {
@@ -552036,6 +552857,34 @@
       "source_title": "코스맥스 `계절성을 깨트리다` 증권사 발표에 강세…3.52%",
       "telegram_core_fact": "당일 하나증권 박종대 애널리스트는 '계절성을 깨트리다' 라고 목표가를 380,000원으로 상향 조정한 바 있다.",
       "title": "코스맥스 `계절성을 깨트리다` 증권사 발표에 강세…3.52%"
+    },
+    "source_fact:1b4fb8f6e764aea6eb879438": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
     },
     "source_fact:1b52f8b206bb59f9e6dd447f": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
@@ -568799,6 +569648,34 @@
       "source_title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\"",
       "telegram_core_fact": "포럼 사무국인 한국정보통신진흥협회(KAIT)는 앞으로도 '디지털 인사이트 포럼'을 통해 AI·디지털 산업의 주요 기술·정책 이슈를 선제적으로 발굴하고, AI 인프라 경쟁력 강화를 위한 민관 협력을 지속적으로 확대해 나갈 계획이다.",
       "title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\""
+    },
+    "source_fact:228be11e0ad38251d3c50168": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
     },
     "source_fact:22936c72c136242a987d320d": {
       "first_seen_kst": "2026-10-21T10:25:18+09:00",
@@ -596057,6 +596934,41 @@
       "telegram_core_fact": "조사 결과에 따르면 3분기 제조업의 시황(89) BSI가 전분기(90)와 비슷한 수준을 보였고 매출(87) BSI는 전분기(93) 대비 6포인트(p) 하락한 것으로 나타났다.",
       "title": "제조업 경기 3분기 '악화'…4분기 전망도 회복 기대감↓"
     },
+    "source_fact:2e6cd8736dff269284a23af7": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "source_fact:2e71dbc7ea9159aaef1979fb": {
       "first_seen_kst": "2026-10-22T10:36:33+09:00",
       "lanes": {
@@ -601014,6 +601926,34 @@
       "source_title": "크레센트 에너지, 데본 이글포드 자산 38억5000만 달러 인수",
       "telegram_core_fact": "크레센트 에너지(CRGY)가 데본 에너지(Devon Energy)의 이글포드(Eagle Ford) 자산을 순매입가 약 38억5000만 달러에 인수하는 확정 계약을 체결했다고 10월 8일 발표했다.",
       "title": "크레센트 에너지, 데본 이글포드 자산 38억5000만 달러 인수"
+    },
+    "source_fact:30c1b9fc67c846d954b57c30": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
     },
     "source_fact:30c1f5357d4490f9f986238f": {
       "first_seen_kst": "2026-10-14T20:10:22+09:00",
@@ -621964,6 +622904,41 @@
       "telegram_core_fact": "AI·고성능컴퓨팅(HPC)용 디지털 인프라 개발·운영업체 호스트 디지털(HOST)이 이사회 만장일치로 최대 1500만 달러 자사주 매입 프로그램을 승인했다고 10월 20일 발표했다.",
       "title": "호스트 디지털, 1500만 달러 자사주 매입 승인..1년 내 시행"
     },
+    "source_fact:3a48a286e14419275cdd6464": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "source_fact:3a48f78c8f189b9c3829b760": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
       "lanes": {
@@ -628077,6 +629052,41 @@
       "telegram_core_fact": "연구원은 기준금리 인상과 대출규제로 자금조달 부담이 이어지는 가운데서도 전월세난 심화 등으로 한강벨트 이외 수도권 지역의 아파트 가격 상승세가 지속되면서 주택사업자들의 분양시장 기대심리가 개선된 것으로 분석했다.",
       "title": "수도권 집값 상승에 분양시장 기대 개선…지방은 미분양에 악화 | 연합뉴스"
     },
+    "source_fact:3d1b5cdb3bf2c35856bb1818": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "source_fact:3d1bd36c6193e8aa7677b476": {
       "first_seen_kst": "2026-10-19T10:00:18+09:00",
       "lanes": {
@@ -629836,6 +630846,28 @@
       "source_title": "'매수 사이드카 발동' 코스닥, 5% 넘게 치솟으며 800선 탈환…코스피도 3%대 강세",
       "telegram_core_fact": "코스피가 3.69% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
       "title": "'매수 사이드카 발동' 코스닥, 5% 넘게 치솟으며 800선 탈환…코스피도 3%대 강세"
+    },
+    "source_fact:3dfba8f258fc5788ecefa01a": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639234",
+      "source": "이투데이",
+      "source_body_digest": "3e2e2726e51b62a49a35c03bbeb5c3b9d22c40c52f516b33e72376b3668f847c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2361be08c685daa1003705fc77dc9da4fde47f88ff698a15ae4334d1ad0b6d3",
+      "source_fact_keys": [
+        "source_fact:v1:98a6b0fd4fb369b09612517e2dfbcc34608b609fce849df3fa481876941b7dab",
+        "source_fact:v1:9a6f08bbda4882bdbd26a5a296aa8ee120f4381a1a8791e1ff31f9b8744ac466",
+        "source_fact:v1:c633e57158aa887adabd86eac3b2d5ff56241c365f517bc35f8563b5c449363f"
+      ],
+      "source_published_kst": "2026-10-23T09:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략",
+      "telegram_core_fact": "현대차는 22일(현지시간) 인도네시아 발리 독립기념탑에서 열린 '전기버스 및 충전 인프라 보급 프로젝트 출범식'에서 카운티 일렉트릭 전기버스 11대를 발리 주정부에 공급했다고 23일 밝혔다.",
+      "title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략"
     },
     "source_fact:3e02d498cc363815edec49cc": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
@@ -649777,6 +650809,34 @@
       "telegram_core_fact": "LS마린솔루션은 올해 3분기 연결 기준 매출 736억원, 영업이익 69억원, 순이익 62억원의 실적을 기록했다고 21일 밝혔다.",
       "title": "LS마린솔루션, 3분기 영업익 69억원 '전년比 235%↑'…\"해외사업 확대 주효\""
     },
+    "source_fact:46f437a204db1db645ffb339": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
+    },
     "source_fact:46f8ad38cba1c9cc6ca68001": {
       "first_seen_kst": "2026-10-15T05:17:25+09:00",
       "lanes": {
@@ -658748,6 +659808,41 @@
       "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
       "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
       "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
+    },
+    "source_fact:4a8fccd1b21f8107805d3b99": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
     },
     "source_fact:4a919c3b7288d33a11ac6877": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -683935,6 +685030,41 @@
       "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
       "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
+    "source_fact:55f2243018e0ec915a258dfa": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "source_fact:55f3eac9fffe5a4ada0a0e06": {
       "first_seen_kst": "2026-10-08T09:17:31+09:00",
       "lanes": {
@@ -695021,6 +696151,26 @@
       "source_title": "경유값 2배 뛰었는데 물량은 제자리…수출 상한에 발 묶인 정유업계",
       "telegram_core_fact": "국내 공급에 차질이 없는 범위에서 수출 제한을 완화해야 한다는 지적이 나온다.",
       "title": "경유값 2배 뛰었는데 물량은 제자리…수출 상한에 발 묶인 정유업계"
+    },
+    "source_fact:5a69053db535556e8c193674": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023036400055",
+      "source": "연합뉴스",
+      "source_body_digest": "38a6d7ec7805062bbb274cd5ec4ce9ada6d04713036f8e4232234a79587c9b80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fb05a9452ed27b52f89fa63f9c89a583b7bb58e834a9badc8541c08efbaf416",
+      "source_fact_keys": [
+        "source_fact:v1:1e0e29e0769d28047342c6724cb80b3ae5079254a1234061437261cfd092927c"
+      ],
+      "source_published_kst": "2026-10-23T09:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스",
+      "telegram_core_fact": "국회 농림축산식품해양수산위원회 소속 더불어민주당 윤준병 의원(전북 정읍·고창)이 23일 수협중앙회로부터 제출받은 자료에 따르면 올해 8월 기준 수협유통의 당기순손실은 34억4천700만원으로 집계됐다.",
+      "title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스"
     },
     "source_fact:5a6efd9becdbbdc9c5e05930": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
@@ -743415,6 +744565,26 @@
       "telegram_core_fact": "2028년 매출액은 2억6791만 달러로 9.19% 늘어날 것으로 예상된다.",
       "title": "리차드슨 일렉트로닉스, 1분기 매출 6490만 달러..전년비 19% 증가"
     },
+    "source_fact:707a70f382b031375741037e": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836822",
+      "source": "뉴시스",
+      "source_body_digest": "ad7af2a85375456d96c405680988924322388169566561872506cd17661fab6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb97bd8db1a772be89fe68532d09db7626ee96beef9df7e02be00c395c2d0571",
+      "source_fact_keys": [
+        "source_fact:v1:228c4119863dd1503e08636b140d95de959a439fc0a42bd0e462ad23010a564b"
+      ],
+      "source_published_kst": "2026-10-23T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"전기차는 잘 나가는데\"…中BYD 첫 PHEV '씨라이언 6'는 주춤 왜?",
+      "telegram_core_fact": "중국 자동차 브랜드 BYD가 국내 시장에 출시한 플러그인 하이브리드(PHEV) 차량 판매량이 출시 한 달 만에 감소세로 전환했다.",
+      "title": "\"전기차는 잘 나가는데\"…中BYD 첫 PHEV '씨라이언 6'는 주춤 왜?"
+    },
     "source_fact:70808481248ce059f3b792cd": {
       "first_seen_kst": "2026-10-16T20:17:17+09:00",
       "lanes": {
@@ -757821,6 +758991,34 @@
       "source_title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자",
       "telegram_core_fact": "대만 기업들은 AI 인프라 투자 확대에 따른 판매량 증가로 실적을 끌어올리고 있는 반면 한국 반도체 기업의 이익은 메모리 가격 상승에 대한 의존도가 높다. 코스콤 CHECK 등에 따르면 코스피는 올해 3분기 19.33% 하락했다.",
       "title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자"
+    },
+    "source_fact:7700d4dba9aae9b3e339cd3a": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
     },
     "source_fact:770c615782d3b3ba8e5fbf77": {
       "first_seen_kst": "2026-10-22T18:25:24+09:00",
@@ -780462,6 +781660,28 @@
       "telegram_core_fact": "웨스턴 디지털(WDC)이 회계연도 2027 1분기(10월 2일 종료) 매출액이 43억8100만 달러로 전년비 55% 증가했고, non-GAAP 희석 주당순이익은 4.64달러로 161% 늘었다고 10월 22일 발표했다.",
       "title": "웨스턴 디지털, 1분기 매출 43억8100만 달러..전년비 55% 증가"
     },
+    "source_fact:81c1138c7bd3a479681765af": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639234",
+      "source": "이투데이",
+      "source_body_digest": "3e2e2726e51b62a49a35c03bbeb5c3b9d22c40c52f516b33e72376b3668f847c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2361be08c685daa1003705fc77dc9da4fde47f88ff698a15ae4334d1ad0b6d3",
+      "source_fact_keys": [
+        "source_fact:v1:98a6b0fd4fb369b09612517e2dfbcc34608b609fce849df3fa481876941b7dab",
+        "source_fact:v1:9a6f08bbda4882bdbd26a5a296aa8ee120f4381a1a8791e1ff31f9b8744ac466",
+        "source_fact:v1:c633e57158aa887adabd86eac3b2d5ff56241c365f517bc35f8563b5c449363f"
+      ],
+      "source_published_kst": "2026-10-23T09:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략",
+      "telegram_core_fact": "현대차는 22일(현지시간) 인도네시아 발리 독립기념탑에서 열린 '전기버스 및 충전 인프라 보급 프로젝트 출범식'에서 카운티 일렉트릭 전기버스 11대를 발리 주정부에 공급했다고 23일 밝혔다.",
+      "title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략"
+    },
     "source_fact:81c1d6e3e5b39e99994d78bb": {
       "first_seen_kst": "2026-10-19T22:09:23+09:00",
       "lanes": {
@@ -789399,6 +790619,41 @@
       "source_title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’",
       "telegram_core_fact": "코스피가 12일 삼성전자(005930)와 SK하이닉스(000660) 동반 약세로 인해 장중 3% 넘게 급락해 결국 6400선까지 밀렸다.",
       "title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’"
+    },
+    "source_fact:85dd74ae13d00fcaad41dfc6": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
     },
     "source_fact:85e583032f57e2d3779e473f": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
@@ -803562,6 +804817,41 @@
       "source_title": "“역시 주주환원은 뒷전입니까”…코스피 자사주 매입, 삼전닉스 뺐더니 줄었다",
       "telegram_core_fact": "11일 금융감독원 OpenDART 공시자료 집계 결과 올해 1월 1일부터 9월 28일까지 코스피 상장사의 자기주식 직접취득 결정액은 74조629억원으로 집계됐다.",
       "title": "“역시 주주환원은 뒷전입니까”…코스피 자사주 매입, 삼전닉스 뺐더니 줄었다"
+    },
+    "source_fact:8cb99bd7bf7f174fcca9570f": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
     },
     "source_fact:8cbc55bfb1a6a7102d4042ef": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
@@ -844491,6 +845781,41 @@
       "source_published_kst": "2026-10-07T09:52+09:00",
       "title": "한화 AI 에너지 관리 시스템, 美 ‘차세대 신기술’ 선정…전력비 최대 25% 절감"
     },
+    "source_fact:9f67b670354cf97ff73b319a": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "source_fact:9f6eab862843bea6ce079ea2": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -852731,6 +854056,26 @@
       "source_title": "올리브영, '배송준비중 취소 불가' 물류 관행 깼다…고객 문의 90% 감소",
       "telegram_core_fact": "배달대행사 응답 지연이나 장애가 발생해도 고객의 취소 처리가 외부 시스템에 종속되지 않도록 후속 작업을 분리하는 등 물류·주문·결제 시스템의 정합성도 강화한 것으로 알려졌다.",
       "title": "올리브영, '배송준비중 취소 불가' 물류 관행 깼다…고객 문의 90% 감소"
+    },
+    "source_fact:a3035cbbd9d87f6f43ed66df": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837846",
+      "source": "뉴시스",
+      "source_body_digest": "93f676f642179eee41f36f47570ff89f5f858b43f9b63023fd380c7c5bafa351",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a9ccfb1aaa83b78ab3113d836b1c335719948ef750556ff902212261b5ec2bd",
+      "source_fact_keys": [
+        "source_fact:v1:99f68890c79ede9a92777b5e42a9f631f7099b8c2d1aafb35d4abce93cafe7a6"
+      ],
+      "source_published_kst": "2026-10-23T08:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "탑런토탈솔루션 中 법인, 차량용 디스플레이 BLU 수주",
+      "telegram_core_fact": "전장·디스플레이 전문기업 탑런토탈솔루션은 중국 남경법인(TRCN)이 글로벌 전장기업 아우모비오(AUMOVIO)로부터 차량용 디스플레이 백라이트유닛(BLU) 공급 프로젝트를 수주했다고 23일 밝혔다.",
+      "title": "탑런토탈솔루션 中 법인, 차량용 디스플레이 BLU 수주"
     },
     "source_fact:a3044f517bf6d8ddb19677f6": {
       "first_seen_kst": "2026-10-12T15:43:01+09:00",
@@ -873750,6 +875095,41 @@
       "source_title": "4대 은행, SK하이닉스와 반도체 공급망에 2조원 금융지원",
       "telegram_core_fact": "KB국민·신한·하나·우리 등 4대 은행이 SK하이닉스, 한국무역보험공사와 함께 반도체 협력업체에 총 2조원 수출공급망 금융을 공급한다.",
       "title": "4대 은행, SK하이닉스와 반도체 공급망에 2조원 금융지원"
+    },
+    "source_fact:ac33dc8ef07c7c9689dd7e4b": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
     },
     "source_fact:ac34c20a565e578741aa586f": {
       "first_seen_kst": "2026-10-14T17:21:42+09:00",
@@ -916089,6 +917469,41 @@
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
     },
+    "source_fact:bf8a182b5f3cd79eb8a9743b": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "source_fact:bf8c7ee8a79c7f1e01ed9fc2": {
       "first_seen_kst": "2026-10-20T22:10:05+09:00",
       "lanes": {
@@ -920224,6 +921639,41 @@
       ],
       "source_published_kst": "2026-10-06T15:52+09:00",
       "title": "국내 주식형 ETF 리밸런싱 8일 집중…\"삼전 비중축소 전망\""
+    },
+    "source_fact:c16f2a76413a18fea6f28d27": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
     },
     "source_fact:c1717a160819e1abf2642bba": {
       "first_seen_kst": "2026-10-19T12:29:34+09:00",
@@ -938421,6 +939871,41 @@
       "telegram_core_fact": "블룸버그통신에 따르면 월러 이사는 “경제지표가 예상대로 나온다면 인플레이션을 2% 목표치로 더 신속하게 되돌리기 위해 추가 금리 인상이 필요할 것으로 예상한다”고 말했다.",
       "title": "연준 무살렘·월러 \"추가 금리 인상 필요\"…시점엔 유연성"
     },
+    "source_fact:c9417131a11742b399d2e92d": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "source_fact:c942d23269e67fda2f4dd226": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -952516,6 +954001,41 @@
       "telegram_core_fact": "최근 신한·KB국민·하나·BNK부산은행 및 예가람·웰컴저축은행, 현대캐피탈 등 금융사에서 연쇄적으로 해킹으로 인한 개인정보 유출 피해가 발생했다.",
       "title": "경찰 \"금융기관 해킹 수사 43명으로 확대…수사 공백 없도록 철저\""
     },
+    "source_fact:cfc2c1a4ae740fec5ef2e0a8": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "source_fact:cfc782bbb951e12602976b2f": {
       "first_seen_kst": "2026-10-15T03:55:55+09:00",
       "lanes": {
@@ -958489,6 +960009,41 @@
       "source_title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로",
       "telegram_core_fact": "후티 반군은 지난달 모카 등 홍해 연안을 장악해 사우디아라비아 석유 수송선 공격 능력을 강화하고 세계 에너지 가격을 더욱 혼란에 빠뜨린 바 있다.",
       "title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로"
+    },
+    "source_fact:d28493b1a22b84fe8a6d9096": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
     },
     "source_fact:d28ad695fceaebb80c8420b7": {
       "first_seen_kst": "2026-10-22T15:08:48+09:00",
@@ -980269,6 +981824,34 @@
       "source_title": "신한금융, 롯데손보 6933억원에 인수…지분 77% 확보",
       "telegram_core_fact": "신한금융은 13일 사모펀드 운용사 JKL파트너스가 보유한 롯데손보 지분 77.04%를 6933억원에 인수하는 주식매매계약(SPA)을 체결했다고 밝혔다.",
       "title": "신한금융, 롯데손보 6933억원에 인수…지분 77% 확보"
+    },
+    "source_fact:dc8dba40b9affdb10d3a8175": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
     },
     "source_fact:dc8fa9526f833b2354efbed1": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
@@ -1048136,6 +1049719,26 @@
       "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍은 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 공시했다.",
       "title": "쎄노텍, 129억 규모 이차전지 첨가제 공급계약"
     },
+    "source_fact:fbeebc553a4d1af30e0c443f": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://biz.heraldcorp.com/article/10912130",
+      "source": "헤럴드경제",
+      "source_body_digest": "dc1d1b173263adf4ceef4bada61bbee27a1be8bc831b1cbdbb71d2924489f91c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dae73b5fe471d70e564b13280e9d7468d0dfaf7b6c346156bb233f143f4ad05",
+      "source_fact_keys": [
+        "source_fact:v1:5f135fc2e139e899087a7974d534707a485c1f4ba15a56cbf248a52b0ba8580d"
+      ],
+      "source_published_kst": "2026-10-23T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, ‘AI 프론티어’ 출범…전사적 AX 가속화",
+      "telegram_core_fact": "한국토지주택공사(LH)가 신속한 주택 공급과 업무 효율성을 극대화하기 위해 직원 주도의 인공지능(AI) 혁신 조직을 본격적으로 가동한다.",
+      "title": "LH, ‘AI 프론티어’ 출범…전사적 AX 가속화"
+    },
     "source_fact:fbf069f6a87d78f3a4ce397c": {
       "first_seen_kst": "2026-10-13T19:06:12+09:00",
       "lanes": {
@@ -1048664,6 +1050267,41 @@
       "source_title": "TSMC, 3Q '2나노' 공정 비중 껑충…삼성전자도 첨단공정 경쟁 고삐",
       "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 기업 TSMC가 올해 3분기 첨단 2나노 공정 매출 비중을 늘리면서 첨단 반도체 생산 확대에 속도를 내고 있다.",
       "title": "TSMC, 3Q '2나노' 공정 비중 껑충…삼성전자도 첨단공정 경쟁 고삐"
+    },
+    "source_fact:fc17719289bd39340eb0ba41": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
     },
     "source_fact:fc1804eea3ce8f625f53f062": {
       "first_seen_kst": "2026-10-15T02:55:21+09:00",
@@ -1075675,6 +1077313,34 @@
       "telegram_core_fact": "이재용 삼성전자 회장이 모친인 홍라희(사진) 리움미술관 명예관장의 삼성전자 주식 1115만8000주(0.17%)를 증여받는다고 13일 공시했다. 증여 완료 시 이 회장의 주식 수는 1억1637만7053주, 지분율은 1.75%로 늘어나며 홍 관장의 지분율은 0.98%에서 0.81%로 감소한다.",
       "title": "홍라희, 삼성 지분 2.6조 이재용에 증여 | 중앙일보"
     },
+    "title:22f9b22b46dd31279742560d": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838002",
+      "source": "뉴시스",
+      "source_body_digest": "43aa3755848b1d0280714ea340d92596605e23158941e8350df62ff38749500c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd02cc28a3761611f8ff540b53e26b0e63e42a9ca37eec6aba76a66302be72fb",
+      "source_fact_keys": [
+        "source_fact:v1:2b8a5bf64e1c459b522a1ca4fcbc8c74792353a5f539f5140e61433c41056d49",
+        "source_fact:v1:320532b295d2e47d19a7338f55686acf6afadac9e5e203a1ab740d7012b14562",
+        "source_fact:v1:7ebad4eb6e66f13423932266984d5894f45412e17069cb8a1aa1d537be6133ff",
+        "source_fact:v1:94475f5a0225ba2eac88e4e009d0889e0222e6000827af57428a93bcafa9cde5",
+        "source_fact:v1:c31751c71f839094b7a7c7d76ee5d332fa717d83afd03bee932bf80b6a3ba861",
+        "source_fact:v1:cd7d641405499666bd21400731df121bb1944cbfa6d7c856569e53335e742bfa",
+        "source_fact:v1:d41118a173845aaae45ec4671b6d4c84101d615b157cc100bbb40cb077bc65b5",
+        "source_fact:v1:dc7d1ef7e2e5121deaeb151f386a974e6095f81d613ffe16dbd3a52b2690ef78",
+        "source_fact:v1:f306ff2d78b88e112b0ce70b240ad7db84faab94748ab76ac9e3f743c1f41e16"
+      ],
+      "source_published_kst": "2026-10-23T09:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원",
+      "telegram_core_fact": "시는 지난해 조례를 개정해 투자유치 보조금 지원 한도를 기존 2억원에서 5억 원으로 확대했다.",
+      "title": "안산시, '투자유치 1호' 인테그리스코리아에 5억원 지원"
+    },
     "title:22fbef94a308c03c03f5cf2b": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -1080850,6 +1082516,26 @@
       ],
       "source_published_kst": "2026-10-06T14:29+09:00",
       "title": "에스넷시스템, 델 사업 성장세…실적 확대 견인"
+    },
+    "title:2be48d57dfcab2bc4d86d0d4": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261022_0003836822",
+      "source": "뉴시스",
+      "source_body_digest": "ad7af2a85375456d96c405680988924322388169566561872506cd17661fab6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb97bd8db1a772be89fe68532d09db7626ee96beef9df7e02be00c395c2d0571",
+      "source_fact_keys": [
+        "source_fact:v1:228c4119863dd1503e08636b140d95de959a439fc0a42bd0e462ad23010a564b"
+      ],
+      "source_published_kst": "2026-10-23T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"전기차는 잘 나가는데\"…中BYD 첫 PHEV '씨라이언 6'는 주춤 왜?",
+      "telegram_core_fact": "중국 자동차 브랜드 BYD가 국내 시장에 출시한 플러그인 하이브리드(PHEV) 차량 판매량이 출시 한 달 만에 감소세로 전환했다.",
+      "title": "\"전기차는 잘 나가는데\"…中BYD 첫 PHEV '씨라이언 6'는 주춤 왜?"
     },
     "title:2be93164862a1055278764a5": {
       "first_seen_kst": "2026-10-18T12:31:06+09:00",
@@ -1089275,6 +1090961,28 @@
       "source_title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'",
       "telegram_core_fact": "브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. CDS는 스페이스X가 194bp에서 1bp로, 오라클은 40bp 오른 81bp로 상승했습니다.",
       "title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'"
+    },
+    "title:3bf7c3146aab3c611d9e623a": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639234",
+      "source": "이투데이",
+      "source_body_digest": "3e2e2726e51b62a49a35c03bbeb5c3b9d22c40c52f516b33e72376b3668f847c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2361be08c685daa1003705fc77dc9da4fde47f88ff698a15ae4334d1ad0b6d3",
+      "source_fact_keys": [
+        "source_fact:v1:98a6b0fd4fb369b09612517e2dfbcc34608b609fce849df3fa481876941b7dab",
+        "source_fact:v1:9a6f08bbda4882bdbd26a5a296aa8ee120f4381a1a8791e1ff31f9b8744ac466",
+        "source_fact:v1:c633e57158aa887adabd86eac3b2d5ff56241c365f517bc35f8563b5c449363f"
+      ],
+      "source_published_kst": "2026-10-23T09:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략",
+      "telegram_core_fact": "현대차는 22일(현지시간) 인도네시아 발리 독립기념탑에서 열린 '전기버스 및 충전 인프라 보급 프로젝트 출범식'에서 카운티 일렉트릭 전기버스 11대를 발리 주정부에 공급했다고 23일 밝혔다.",
+      "title": "현대차, 인니 발리에 전기버스 공급…친환경 상용차 공략"
     },
     "title:3bf8f1f47b955dcf7ee06843": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -1116201,6 +1117909,26 @@
       "source": "연합뉴스",
       "title": "19년간 못판 상업용지…LH 미매각 토지 규모 21.9조원 기록 | 연합뉴스"
     },
+    "title:6e068778c5bb657b175cf6fe": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003837846",
+      "source": "뉴시스",
+      "source_body_digest": "93f676f642179eee41f36f47570ff89f5f858b43f9b63023fd380c7c5bafa351",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a9ccfb1aaa83b78ab3113d836b1c335719948ef750556ff902212261b5ec2bd",
+      "source_fact_keys": [
+        "source_fact:v1:99f68890c79ede9a92777b5e42a9f631f7099b8c2d1aafb35d4abce93cafe7a6"
+      ],
+      "source_published_kst": "2026-10-23T08:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "탑런토탈솔루션 中 법인, 차량용 디스플레이 BLU 수주",
+      "telegram_core_fact": "전장·디스플레이 전문기업 탑런토탈솔루션은 중국 남경법인(TRCN)이 글로벌 전장기업 아우모비오(AUMOVIO)로부터 차량용 디스플레이 백라이트유닛(BLU) 공급 프로젝트를 수주했다고 23일 밝혔다.",
+      "title": "탑런토탈솔루션 中 법인, 차량용 디스플레이 BLU 수주"
+    },
     "title:6e16cdff5fb430d46c6bfe37": {
       "first_seen_kst": "2026-10-01T23:05:38+09:00",
       "lanes": {
@@ -1120962,6 +1122690,26 @@
       "link": "https://www.newsis.com/view/NISX20260917_0003794038",
       "source": "뉴시스",
       "title": "\"86주 연속 서울 집값 상승\"…과거엔 '이것' 나오자 꺾였다"
+    },
+    "title:76c0f894d6c2069993501d31": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023036400055",
+      "source": "연합뉴스",
+      "source_body_digest": "38a6d7ec7805062bbb274cd5ec4ce9ada6d04713036f8e4232234a79587c9b80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fb05a9452ed27b52f89fa63f9c89a583b7bb58e834a9badc8541c08efbaf416",
+      "source_fact_keys": [
+        "source_fact:v1:1e0e29e0769d28047342c6724cb80b3ae5079254a1234061437261cfd092927c"
+      ],
+      "source_published_kst": "2026-10-23T09:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스",
+      "telegram_core_fact": "국회 농림축산식품해양수산위원회 소속 더불어민주당 윤준병 의원(전북 정읍·고창)이 23일 수협중앙회로부터 제출받은 자료에 따르면 올해 8월 기준 수협유통의 당기순손실은 34억4천700만원으로 집계됐다.",
+      "title": "윤준병 \"수협유통 자본잠식률 95%…완전 자본잠식 눈앞\" | 연합뉴스"
     },
     "title:76c1b3bc81ee5a0a05abd3cd": {
       "first_seen_kst": "2026-10-20T22:42:26+09:00",
@@ -1146539,6 +1148287,26 @@
       "link": "https://www.etoday.co.kr/news/view/2632092",
       "source": "이투데이",
       "title": "더네이쳐홀딩스, 경영진 3억2000만원 자사주 매입…실적 개선 총력"
+    },
+    "title:a56274ccc8a0bca7a26a1e99": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://biz.heraldcorp.com/article/10912130",
+      "source": "헤럴드경제",
+      "source_body_digest": "dc1d1b173263adf4ceef4bada61bbee27a1be8bc831b1cbdbb71d2924489f91c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dae73b5fe471d70e564b13280e9d7468d0dfaf7b6c346156bb233f143f4ad05",
+      "source_fact_keys": [
+        "source_fact:v1:5f135fc2e139e899087a7974d534707a485c1f4ba15a56cbf248a52b0ba8580d"
+      ],
+      "source_published_kst": "2026-10-23T08:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH, ‘AI 프론티어’ 출범…전사적 AX 가속화",
+      "telegram_core_fact": "한국토지주택공사(LH)가 신속한 주택 공급과 업무 효율성을 극대화하기 위해 직원 주도의 인공지능(AI) 혁신 조직을 본격적으로 가동한다.",
+      "title": "LH, ‘AI 프론티어’ 출범…전사적 AX 가속화"
     },
     "title:a5677a624eaf89af2860e785": {
       "first_seen_kst": "2026-10-13T10:49:34+09:00",
@@ -1184107,6 +1185875,41 @@
       "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
       "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
     },
+    "title:eda99ac8fb4b243f230d38bb": {
+      "first_seen_kst": "2026-10-23T15:44:53+09:00",
+      "lanes": {
+        "live": "2026-10-23T15:44:53+09:00"
+      },
+      "last_seen_kst": "2026-10-23T15:44:53+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12183044",
+      "source": "매일경제",
+      "source_body_digest": "09adee015b641c0038885bf60626807a140033626a8b4a61ed864892839a222e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d7095050e651fc9fbae67994369381d43ffa90279ff50e04665463c82cae4d6",
+      "source_fact_keys": [
+        "source_fact:v1:0c33628ad6c95373103bb7a3a2aa83efabe3affd9440f9c4bebe6f5bc6c5c422",
+        "source_fact:v1:1408f34e7e4635295be8fee42cc8a1f5a804b7f9ce0ad0c8ef9883262d960c62",
+        "source_fact:v1:33950a2a7437119d987a48187fc671fe4ea3488e3e20a5a2ab63dcef33fcb6e7",
+        "source_fact:v1:3e7ffc9114a03898a6a941324421ae5690216dd485ac58ca81e3768ecc8a0fe8",
+        "source_fact:v1:437a61e32599a3db366cd2f411e3b902f7dd4f9ed6d9d855527042f5cd289e73",
+        "source_fact:v1:4a404b69fbee7dd717d577ba7864c3c510fc7fbec43942e293646c50c688ee06",
+        "source_fact:v1:4ca3b90ad0a2fd018712a3480a8aa656955f6e90a8f440f302179656eb0ac4af",
+        "source_fact:v1:91c911690932b186eee01d86036465b424d92ecc07ef99e6082e3e2fbd935810",
+        "source_fact:v1:ab67ae32cd7b3c982b25c06eb010a6dd65e50db9256e45a6034485ea30b8d3a7",
+        "source_fact:v1:ac164c74501a5759e4ab077bfe64091fc5a28970ba343e3988736ea97f3c1b84",
+        "source_fact:v1:b55a2aa58936c4431222d769940639987a3f569e900125dcf156e8bcb93d8ce2",
+        "source_fact:v1:b5d68b8b1dea6f678d43d2a76ac82639c887cb89eed2014f98cf948d6d9b16e3",
+        "source_fact:v1:c4a0d654aa8760cec71f2cda0d188e090bfcb7baf7325a7564ec6b6422f9d0ce",
+        "source_fact:v1:c52af50a18c193847cb54e4142e94e2ffb3c7d83ee718a41e5ed2ed85ac65fd8",
+        "source_fact:v1:d0e04b26109e45f69789c406083c2a7499b34a84240d1f52accaadf0b22cdf56",
+        "source_fact:v1:e6fb3dc43e293048f8e62b2f3433e8bc07f39c364db03c409cb6287f2dda6cef"
+      ],
+      "source_published_kst": "2026-10-23T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략",
+      "telegram_core_fact": "SK에코플랜트가 반도체 공장 건설에서 쌓은 기술력을 바탕으로 인공지능(AI) 데이터센터 시장 공략에 박차를 가하고 있다. SK에코플랜트는 반도체 공장에서 확보한 기계·전기·배관(MEP) 통합관리 기술을 데이터센터 건설에 적용해 사업을 확대할 계획이다.",
+      "title": "SK에코플랜트, 반도체 공장 시공 기술로 AI 데이터센터 시장 공략"
+    },
     "title:edb5925e3d74375d286813d7": {
       "first_seen_kst": "2026-10-12T13:56:47+09:00",
       "lanes": {
@@ -1193597,5 +1195400,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-23T15:16:59+09:00"
+  "updated_at_kst": "2026-10-23T15:44:53+09:00"
 }
