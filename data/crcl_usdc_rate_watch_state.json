@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-23T16:32:46+09:00",
+  "updated_at_kst": "2026-10-23T22:27:38+09:00",
   "circle": {
     "date": "2026-10-19",
     "circulation_usd_b": 71.9,
@@ -30,11 +30,11 @@
     }
   },
   "sofr": {
-    "date": "2026-10-21",
-    "rate": 3.88,
-    "prev_date": "2026-10-20",
+    "date": "2026-10-22",
+    "rate": 3.9,
+    "prev_date": "2026-10-21",
     "prev_rate": 3.88,
-    "daily_bp": 0.0,
+    "daily_bp": 2.0,
     "source": "FRED 재게시·원출처 Federal Reserve Bank of New York",
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
