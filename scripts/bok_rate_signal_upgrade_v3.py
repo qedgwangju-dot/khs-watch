@@ -6,6 +6,8 @@ import hashlib
 import html
 import json
 import re
+from urllib.parse import parse_qs, urljoin, urlparse
+from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import bok_rate_signal_upgrade as base
@@ -16,12 +18,83 @@ MATERIAL_POLICY_FLAGS = frozenset({
     "terminal_rate_openness", "fiscal_reversibility",
     "ai_long_rate_financing", "fx_low_income_purchasing_power",
     "inflation_target_horizon",
+    "potential_growth_reassessment", "secular_stagnation_reassessment",
+    "tfp_innovation", "productive_investment_rates",
+    "potential_working_paper_expected",
 })
+
+
+BOK_WORKING_PAPERS_URL = (
+    "https://www.bok.or.kr/imerEng/bbs/B0000268/list.do"
+    "?menuNo=600354&pageIndex=1"
+)
+RESEARCH_SUBJECT_RE = re.compile(
+    r"잠재\s*(?:성장률|성장|산출)|총요소\s*생산성|"
+    r"potential\s+(?:growth|output)|total\s+factor\s+productivity", re.I
+)
+
+
+def parse_bok_research_listing(page: str, source: str = BOK_WORKING_PAPERS_URL) -> list[dict]:
+    """한국은행 공식 연구논문 목록의 확인된 게시물 식별자만 수집한다."""
+    soup = BeautifulSoup(page, "html.parser")
+    found, publications = 0, {}
+    for anchor in soup.find_all("a", href=True):
+        title = base.norm(anchor.get_text(" ", strip=True))
+        target = urljoin(source, anchor.get("href") or "")
+        url = urlparse(target)
+        if url.hostname not in {"www.bok.or.kr", "bok.or.kr"}:
+            continue
+        if "/bbs/B0000268/view.do" not in url.path:
+            continue
+        doc_id = parse_qs(url.query).get("nttId", [""])[0]
+        if not doc_id or not doc_id.isdigit() or not title:
+            continue
+        found += 1
+        if RESEARCH_SUBJECT_RE.search(title):
+            publications[doc_id] = {
+                "id": doc_id, "title": title, "url": target,
+                "source": "한국은행 연구논문 공식 목록",
+            }
+    if found < 2:
+        raise RuntimeError("한국은행 연구논문 목록의 문서 링크 확인 불가")
+    return list(publications.values())
+
+
+def official_paper_transition(previous: dict | None, fetched: list[dict] | None) -> tuple[dict, list[dict]]:
+    """첫 성공 조회는 과거 문서의 기준선만 잡고 알리지 않는다. 조회 실패는 기존 상태 보존."""
+    if fetched is None:
+        return dict(previous or {}), []
+    before = previous or {}
+    old_ids = set(before.get("seen_ids") or [])
+    new_papers = [doc for doc in fetched if doc["id"] not in old_ids] if before.get("initialized") else []
+    combined = sorted(old_ids | {doc["id"] for doc in fetched})
+    return {"initialized": True, "seen_ids": combined,
+            "source": BOK_WORKING_PAPERS_URL}, new_papers
 
 
 def policy_flags(blob: str) -> dict[str, bool]:
     f = base.flags(blob)
     f.update({
+        "potential_growth_reassessment": bool(
+            re.search(r"잠재\s*(?:성장률|성장경로)|성장\s*경로", blob)
+            and re.search(r"AI|인공지능|투자|혁신|변곡점|상승|제고|높|반등|재평가|새로운", blob, re.I)
+        ),
+        "secular_stagnation_reassessment": bool(
+            re.search(r"장기\s*침체|secular\s+stagnation", blob, re.I)
+            and re.search(r"흔들|재평가|탈피|전환|극복|벗어나", blob)
+        ),
+        "tfp_innovation": bool(
+            re.search(r"총요소\s*생산성|\bTFP\b", blob, re.I)
+            and re.search(r"혁신|증가|상승|높|생산성\s*제고|개선", blob)
+        ),
+        "productive_investment_rates": bool(
+            re.search(r"투자\s*수익률|투자재원\s*확보\s*경쟁", blob)
+            and re.search(r"장기\s*금리|투자|재평가|상승|자본조달", blob)
+        ),
+        "potential_working_paper_expected": bool(
+            re.search(r"잠재\s*성장률", blob)
+            and re.search(r"워킹\s*페이퍼|working\s*paper|연말|연내|추정치\s*공개", blob, re.I)
+        ),
         # 주가의 소비 파급 가능성은 기준금리 인하·인상의 확정 발언이 아니다.
         "wealth_effect_reassessment": bool(
             re.search(r"주가|주식|반도체", blob)
@@ -121,6 +194,9 @@ def rhetoric(now: dt.datetime) -> list[dict]:
         '신현송 재정지출 최고가격제 일시적 재원 지속가능성',
         '신현송 인공지능 투자재원 회사채 국채 장기금리',
         '신현송 원화 강세 저소득층 구매력 물가 목표 내후년',
+        '신현송 잠재성장률 AI 투자 연말 워킹페이퍼 총요소생산성',
+        '신현송 한국 장기침체론 흔들 성장경로 잠재성장 변곡점',
+        '신현송 IMF 투자수익률 장기금리 자금조달 경쟁 총요소생산성',
     )
     rows = []
     cutoff = now - dt.timedelta(days=5)
@@ -212,7 +288,7 @@ def oil_alert_transition(old_oil: dict | None, new_oil: dict | None) -> str | No
     return None
 
 
-def build_message(state: dict, reasons: list[str], new_events: list[dict]) -> str:
+def build_message(state: dict, reasons: list[str], new_events: list[dict], new_papers: list[dict] | None = None) -> str:
     c = state["components"]
     inf, hh, hs, oi = c.get("inflation"), c.get("household"), c.get("housing"), c.get("oil")
     lines = [
@@ -229,6 +305,14 @@ def build_message(state: dict, reasons: list[str], new_events: list[dict]) -> st
     if reasons:
         lines += ["", "<b>이번에 달라진 점</b>"] + ["• " + html.escape(x) for x in reasons[:6]]
 
+    if new_papers:
+        lines += ["", "<b>한국은행 신규 연구자료 공식 게시 확인</b>"]
+        for paper in new_papers[:3]:
+            lines.append(
+                f'• <a href="{html.escape(paper["url"], quote=True)}">'
+                f'{html.escape(paper["title"])}</a>'
+            )
+        lines.append("• 신규 추정치·방법론은 공식 연구 본문 확인 전에는 확정 수치로 표시하지 않습니다.")
     lines += ["", "<b>① 현재 숫자</b>"]
     if inf:
         prev = inf.get("prev_core_yoy")
@@ -255,6 +339,11 @@ def build_message(state: dict, reasons: list[str], new_events: list[dict]) -> st
             if f.get("k_shaped_low_income"): tags.append("K자형 양극화·저소득층 물가부담")
             if f.get("fvi_leverage"): tags.append("금융취약성지수·레버리지 선제관리")
             if f.get("ai_investment_duration"): tags.append("AI 투자 지속성·파급효과")
+            if f.get("potential_growth_reassessment"): tags.append("AI 투자에 따른 잠재성장률 재평가 가능성")
+            if f.get("secular_stagnation_reassessment"): tags.append("세계 장기침체론 재검토")
+            if f.get("tfp_innovation"): tags.append("총요소생산성·혁신에 따른 구조적 성장")
+            if f.get("productive_investment_rates"): tags.append("투자수익률·투자재원 경쟁과 장기금리")
+            if f.get("potential_working_paper_expected"): tags.append("연말 한국은행 잠재성장률 연구자료 공개 예고(아직 확정치 아님)")
             if f.get("wealth_effect_reassessment"): tags.append("주가 조정의 소비·실물경제 파급 가능성")
             if f.get("market_rate_independence"): tags.append("시장금리와 기준금리 결정은 별개")
             if f.get("terminal_rate_openness"): tags.append("최종 기준금리 경로 미확정")
@@ -342,6 +431,18 @@ def main() -> int:
         events = []
         base.err(f"추가인상 위험감시 rhetoric 조회 실패: {type(exc).__name__}: {exc}")
 
+    # 연말 재추정 연구논문은 뉴스 기사와 별개로 공식 게시물 식별자를 직접 확인한다.
+    paper_previous = old.get("official_potential_research") if isinstance(old.get("official_potential_research"), dict) else {}
+    paper_checked = False
+    try:
+        listing = base.get(BOK_WORKING_PAPERS_URL, timeout=22)
+        fetched_papers = parse_bok_research_listing(listing.text)
+        paper_checked = True
+    except Exception as exc:
+        fetched_papers = None
+        base.err(f"한국은행 잠재성장률 공식 연구자료 목록 조회 실패: {type(exc).__name__}: {exc}")
+    paper_state, new_papers = official_paper_transition(paper_previous, fetched_papers)
+
     seen = list(old.get("seen_rhetoric_hashes") or [])
     seen_set = set(seen)
     # 제목이나 RSS 검색결과가 바뀌어도 이미 본 정책 의미는 다시 발송하지 않는다.
@@ -378,6 +479,11 @@ def main() -> int:
     # 코드 업그레이드 자체만으로 과거 뉴스 재전송 금지.
     topic_bootstrap = not bool(old.get("topic_policy_version"))
     new_events = [] if (boot or topic_bootstrap) else proposed_events
+    # 새 분류는 실제 발언 당일 이후에만 재통지하며 과거 기사 재해석은 알리지 않는다.
+    new_events = [
+        e for e in new_events
+        if e.get("date", "") >= "2026-10-23"
+    ]
 
     rhetoric_score = max(-2, min(2, sum(e.get("score", 0) for e in events[:5])))
     meeting_completed = False
@@ -413,6 +519,7 @@ def main() -> int:
         "seen_rhetoric_hashes": seen,
         "seen_policy_flags_by_day": seen_by_day,
         "topic_policy_version": 1,
+        "official_potential_research": paper_state,
     }
 
     # 상태 계산과 텔레그램 알림 트리거를 분리한다.
@@ -493,11 +600,15 @@ def main() -> int:
             reason = f"한은 발언 정책 의미 변화 {len(new_events)}건"
             state_reasons.append(reason)
             alert_reasons.append(reason)
+        if new_papers:
+            reason = f"한국은행 잠재성장률·생산성 연구자료 공식 신규 공개 {len(new_papers)}건"
+            state_reasons.append(reason)
+            alert_reasons.append(reason)
 
     # 코드 버전 변경 자체는 신규 정책 이벤트가 아니다.
-    notify = bool(alert_reasons or new_events) and not migration
+    notify = bool(alert_reasons or new_events or new_papers) and not migration
     if notify:
-        msg = build_message(candidate, alert_reasons, new_events)
+        msg = build_message(candidate, alert_reasons, new_events, new_papers)
         if base.ALERT.exists() and base.ALERT.stat().st_size:
             base.ALERT.write_text(
                 base.ALERT.read_text(encoding="utf-8").rstrip() + "\n\n──────────\n\n" + msg + "\n",
@@ -514,12 +625,15 @@ def main() -> int:
         "official_data_or_policy_event_priority": True,
         "material_same_day_dedup_by_speaker_date": True,
         "new_topics_bootstrap_without_replay": True,
+        "official_working_paper_id_dedup": True,
+        "official_paper_first_scan_no_replay": True,
     }
 
     # 상태는 재계산 변화가 있으면 조용히 갱신한다. 알림 여부와는 분리한다.
     state_change = (
         boot or migration or topic_bootstrap or bool(state_reasons or new_events)
         or seen_by_day != (old.get("seen_policy_flags_by_day") or {})
+        or paper_state != paper_previous
     )
     root["rate_signal_upgrade"] = candidate if state_change else old
     base.PENDING.write_text(json.dumps(root, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -535,6 +649,7 @@ def main() -> int:
             f"- 다음 회의 직접 매파 강화: {'예' if has_direct_next_meeting_hawk(events) else '아니오'}\n"
             f"- 실제 상태 변경: {'예' if state_change else '아니오'}\n"
             f"- 텔레그램 알림 발생: {'예' if notify else '아니오'}\n"
+            f"- 한국은행 잠재성장률 공식 연구자료 목록: {'확인' if paper_checked else '조회 실패'} / 신규 {len(new_papers)}건\n"
             f"- 점수만 변한 경우 알림 억제: 예\n"
         )
     return 0

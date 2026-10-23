@@ -83,6 +83,63 @@ class PolicySemanticsTests(unittest.TestCase):
             {**new, "flags": {**new["flags"], "ai_war_inflation": True}}, new
         ))
 
+
+    def test_potential_growth_tfp_and_working_paper_are_not_a_rate_hike(self):
+        text = ("신현송 총재는 AI 투자로 한국 경제의 잠재성장률이 변곡점을 맞고 "
+                "장기침체론이 흔들린다고 말했다. 혁신을 통한 총요소생산성 증가가 중요하고 "
+                "연말에 잠재성장률 워킹페이퍼 공개 예정. IMF에서는 장기금리 상승이 "
+                "투자수익률 재평가 때문이라는 공감대가 있었다.")
+        flags = policy_flags(text)
+        for name in ("potential_growth_reassessment", "secular_stagnation_reassessment",
+                     "tfp_innovation", "productive_investment_rates",
+                     "potential_working_paper_expected"):
+            self.assertTrue(flags[name], name)
+        self.assertEqual(event_score(flags), 0)
+        self.assertFalse(flags["next_meeting_hawk"])
+
+    def test_generic_growth_does_not_trigger_potential_paper(self):
+        flags = policy_flags("신현송 총재가 올해 수출 성장률 개선과 금리 동결을 설명")
+        self.assertFalse(flags["potential_working_paper_expected"])
+        self.assertFalse(flags["tfp_innovation"])
+
+    def test_official_paper_parser_and_identifier(self):
+        from bok_rate_signal_upgrade_v3 import parse_bok_research_listing
+        fixture = """
+        <a href="/imerEng/bbs/B0000268/view.do?menuNo=600354&amp;nttId=101&amp;pageIndex=1">
+        BOK Working Paper No.2026-15, Co-movement of Long-Term Interest Rates</a>
+        <a href="/imerEng/bbs/B0000268/view.do?menuNo=600354&amp;nttId=102&amp;pageIndex=1">
+        BOK Working Paper No.2026-16, Potential Growth and Total Factor Productivity in Korea</a>
+        <a href="https://example.com/imerEng/bbs/B0000268/view.do?nttId=999">
+        Potential Growth of Korea</a>
+        """
+        docs = parse_bok_research_listing(fixture)
+        self.assertEqual([x["id"] for x in docs], ["102"])
+        self.assertIn("nttId=102", docs[0]["url"])
+
+    def test_official_paper_first_scan_and_repeated_scan_not_alerted(self):
+        from bok_rate_signal_upgrade_v3 import official_paper_transition
+        paper = {"id": "102", "title": "Potential Growth", "url": "https://www.bok.or.kr/xxx"}
+        state, alerts = official_paper_transition(None, [paper])
+        self.assertTrue(state["initialized"])
+        self.assertEqual(alerts, [])
+        again, alerts2 = official_paper_transition(state, [paper])
+        self.assertEqual(alerts2, [])
+        self.assertEqual(again, state)
+        failed, alerts3 = official_paper_transition(again, None)
+        self.assertEqual(failed, state)
+        self.assertEqual(alerts3, [])
+
+    def test_official_paper_new_item_only_once(self):
+        from bok_rate_signal_upgrade_v3 import official_paper_transition
+        state, _ = official_paper_transition(None, [{"id": "100", "title": "older"}])
+        state2, fresh = official_paper_transition(state, [
+            {"id": "100", "title": "older"},
+            {"id": "200", "title": "new potential growth"},
+        ])
+        self.assertEqual([x["id"] for x in fresh], ["200"])
+        _, repeated = official_paper_transition(state2, [{"id": "200", "title": "new potential growth"}])
+        self.assertEqual(repeated, [])
+
     def test_october_hold_and_qualitative_forecasts(self):
         document = {
             "title": "통화정책방향(2026.10.22)",
