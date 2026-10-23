@@ -83,6 +83,15 @@ class VipRelativeRegression(unittest.TestCase):
         with self.assertRaises(w.SourceError):
             w.parse_nasdaq("GVIP", j)
 
+    def test_nasdaq_non_numeric_volume_is_not_a_price_error(self):
+        payload = NasdaqResponse("GVIP", market_rows()[0]).json()
+        rows = payload["data"]["tradesTable"]["rows"]
+        rows[3]["volume"] = "N/A"
+        parsed = w.parse_nasdaq("GVIP", payload)
+        date_key = dt.datetime.strptime(rows[3]["date"], "%m/%d/%Y").date().isoformat()
+        self.assertEqual(parsed[date_key]["volume"], 0)
+        self.assertGreater(parsed[date_key]["close"], 0)
+
     def test_returns_are_arithmetic_percent_points_not_basket_snapshot(self):
         out=fixture()
         self.assertEqual(out["sessions"],75)
