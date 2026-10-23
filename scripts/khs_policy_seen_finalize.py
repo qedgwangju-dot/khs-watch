@@ -28,6 +28,15 @@ DELIVERY_GATED_RULE_KEYS = {
     "china_mofcom_2026_tunnel_machine_controls",
     "china_mofcom_2026_dredging_controls",
 }
+# Every trusted-policy event actually included in the policy Telegram bundle
+# must be acknowledged only after a matching Telegram message_id, not at
+# collection time. Synthetic/unknown rule keys remain excluded.
+try:
+    from scripts.khs_trusted_policy_news_watch import STORY_RULES
+except ImportError:  # pragma: no cover - direct script invocation
+    from khs_trusted_policy_news_watch import STORY_RULES
+DELIVERY_GATED_RULE_KEYS.update(rule.key for rule in STORY_RULES)
+
 SURVIVING_ALERT_PATHS = (
     OUT / "khs_policy_watch_alerts.json",
     OUT / "khs_korea_presidential_personnel_alerts.json",
