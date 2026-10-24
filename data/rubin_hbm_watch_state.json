@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-24T07:28:41+09:00",
+  "updated_at_kst": "2026-10-24T10:48:09+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -23,6 +23,7 @@
     "1a7355b983f5d9b5a7d4a97f",
     "1a740e6eaff99a7fffe1b7b7",
     "1a8be449fd3cd46cde801b14",
+    "1a9998eba9afa33949fb43d7",
     "1c09265e8f45e99145774f55",
     "1d73fe7c9d557e36b9b18ff5",
     "1dd83b5311279ef155add2d2",
@@ -68,6 +69,7 @@
     "4b73bb88fb40e3828bb21a66",
     "4b8c3d29872054d9955cd52b",
     "4d6b3e75273924248c11b1c1",
+    "4fe97fd15d2908c836b720ee",
     "5010456efcf2a9cd4b3c6336",
     "5023a6731fb7ba7cd4a95b5d",
     "508271da4f03e4e64f5e8e39",
@@ -79,6 +81,7 @@
     "5981ac46be8c309fddca3975",
     "59dea53db71c13bdf6c120ef",
     "5a6acc82cc352f26a7561f06",
+    "5a919378cc8c5c69bbc44976",
     "5a97726e2e93fc7408e02754",
     "5e6a78122af20808ecf8415c",
     "614278a656e9a7eadee8a062",
@@ -225,6 +228,7 @@
     "efcad40ded64b5b77efa89d5",
     "f07ec9c4d4039ee24a7a82d9",
     "f0b052afbbfcb591daa146d8",
+    "f149fb302a8de6d41a39688f",
     "f15cdeffa0215c29ff770c9f",
     "f1e101b56179570d50af9fb3",
     "f27eab85dd6d16478032af2f",
@@ -260,13 +264,13 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 4,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1324.45,
-    "date": "2026-10-23 일일 기준 · ECB/Frankfurter · 조회 2026-10-24 07:28 KST · 보조 API 2026-10-23 · 차이 0.04% · 일중 기준시각 차이 가능",
+    "date": "2026-10-23 일일 기준 · ECB/Frankfurter · 조회 2026-10-24 10:48 KST · 보조 API 2026-10-24 · 차이 0.02% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -396,14 +400,14 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-24T07:28:57+09:00",
+    "last_checked_at_kst": "2026-10-24T10:48:26+09:00",
     "candidate_count": 3,
     "image_verified_issue": "weekly-radar-006",
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-24T07:29:34+09:00",
+    "checked_at_kst": "2026-10-24T10:49:21+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-19T21:54:05+09:00",
@@ -471,7 +475,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-24",
-    "last_checked_at_kst": "2026-10-24T07:29:23+09:00",
+    "last_checked_at_kst": "2026-10-24T10:48:49+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -530,7 +534,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-24T07:29:23+09:00",
+        "checked_at_kst": "2026-10-24T10:48:49+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -539,7 +543,7 @@
         "rss_coverage_unavailable": false
       },
       "primary_source_audit": {
-        "checked_at_kst": "2026-10-24T03:35:43+09:00",
+        "checked_at_kst": "2026-10-24T10:48:49+09:00",
         "sources": {
           "bnpp_public": {
             "status": "retrieval_unavailable",
@@ -608,7 +612,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-24",
-    "last_checked_at_kst": "2026-10-24T07:29:28+09:00",
+    "last_checked_at_kst": "2026-10-24T10:49:15+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -652,7 +656,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-24T07:29:30+09:00",
+    "last_checked_at_kst": "2026-10-24T10:49:17+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
