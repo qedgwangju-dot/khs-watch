@@ -1983,7 +1983,7 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("27달러 위험 프리미엄",MODULE.oil_treasury_risk_alert_text(first,now,None))
         nextday=now+dt.timedelta(days=1)
         b.update(date="2026-10-27",prev_date="2026-10-26",price=116.5,prev_price=116.0)
-        t.update(date="2026-10-27",prev_date="2026-10-26",yield=4.92,prev_yield=4.80)
+        t.update({"date":"2026-10-27","prev_date":"2026-10-26","yield":4.92,"prev_yield":4.80})
         self.assertIsNone(MODULE.detect_oil_treasury_risk_signal(b,t,{},nextday))
         state={"alerted_events":{first["event_id"]:now.astimezone(MODULE.KST).isoformat()}}
         second=MODULE.detect_oil_treasury_risk_signal(b,t,state,nextday)
