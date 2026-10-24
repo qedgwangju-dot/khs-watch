@@ -24,7 +24,8 @@
     "ust30:jpm_up:5.78:latched": false,
     "ust30:jpm_up:6.0:latched": false,
     "ust30:jpm_down:5.25:latched": false,
-    "ust30:jpm_down:5.15:latched": false
+    "ust30:jpm_down:5.15:latched": false,
+    "ust10:above:5.0": true
   },
   "last_source_dates": {
     "jgb2": "2026/10/22",
@@ -52,7 +53,7 @@
     }
   },
   "classification": "미국 장기채 스트레스",
-  "updated_at_kst": "2026-10-24T17:44:54+09:00",
+  "updated_at_kst": "2026-10-24T19:28:32+09:00",
   "date_alignment": {
     "jgb2_date": "2026/10/22",
     "ust2_date": "2026-10-23",
