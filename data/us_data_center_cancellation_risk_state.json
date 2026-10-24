@@ -2,7 +2,7 @@
   "initialized": true,
   "format_version": 1,
   "baseline": {
-    "phantom_load_pct": 19.0,
+    "phantom_load_pct": 19,
     "restudy_min_months": 6,
     "restudy_one_year_plus": true,
     "pjm_2024_dc_transmission_projects": 130,
@@ -36,26 +36,26 @@
   "ai_credit_quote_source": "신뢰 매체 헤드라인. TRACE 개별채권 실시간 시세 미연결",
   "ms_finance_reference": {
     "as_of": "2026-10-16",
-    "bond_yield_start_2026_below_pct": 5.0,
-    "bond_yield_oct_16_approx_pct": 7.0,
-    "issuance_difficulty_borrowing_rate_near_pct": 8.0,
-    "dc_abs_2026_ytd_usd_b": 15.0,
-    "dc_cmbs_2026_ytd_usd_b": 7.0,
+    "bond_yield_start_2026_below_pct": 5,
+    "bond_yield_oct_16_approx_pct": 7,
+    "issuance_difficulty_borrowing_rate_near_pct": 8,
+    "dc_abs_2026_ytd_usd_b": 15,
+    "dc_cmbs_2026_ytd_usd_b": 7,
     "future_dc_abs_cmbs_issuance_usd_b_range": [
-      120.0,
-      150.0
+      120,
+      150
     ],
-    "us_power_current_gw_estimate": 60.0,
-    "us_power_2028_gw_forecast": 150.0,
+    "us_power_current_gw_estimate": 60,
+    "us_power_2028_gw_forecast": 150,
     "us_power_2028_shortfall_pct": [
-      30.0,
-      40.0
+      30,
+      40
     ],
     "us_power_2028_shortfall_scenario_gw": [
-      90.0,
-      105.0
+      90,
+      105
     ],
-    "jll_north_america_h1_2026_vacancy_pct": 1.0,
+    "jll_north_america_h1_2026_vacancy_pct": 1,
     "cbre_primary_market_h1_2026_vacancy_pct": 1.4,
     "cbre_primary_3_to_10mw_asking_rent_h1_growth_pct": 8.3,
     "primary_sources": [
@@ -86,5 +86,6 @@
     "contract_value_disclosed": false,
     "news_link": "https://www.reuters.com/business/media-telecom/microsoft-pulls-out-uk-data-center-deal-with-nscale-telegraph-reports-2026-10-18/",
     "historical_official_link": "https://www.nscale.com/press-releases/nscale-uk-ai-infrastructure-announcement"
-  }
+  },
+  "ai_credit_baseline_confirmed_at_utc": "2026-10-24T09:20:04+00:00"
 }
