@@ -8,6 +8,8 @@ on:
     paths:
       - ".github/workflows/thirteenf-sector-telegram.yml"
       - "scripts/thirteenf_sector_watch_entry.py"
+      - "scripts/thirteenf_sector_rank.py"
+      - "scripts/test_thirteenf_sector_rank.py"
       - "scripts/thirteenf_context_watch.py"
       - "scripts/test_thirteenf_context_watch.py"
   workflow_dispatch:
@@ -54,6 +56,9 @@ jobs:
         run: |
           python -m py_compile scripts/thirteenf_sector_watch.py
           python -m py_compile scripts/thirteenf_sector_watch_entry.py
+          python -m py_compile scripts/thirteenf_sector_rank.py
+          python -m py_compile scripts/test_thirteenf_sector_rank.py
+          PYTHONPATH=scripts python scripts/test_thirteenf_sector_rank.py
           python -m py_compile scripts/thirteenf_context_watch.py
           python -m py_compile scripts/test_thirteenf_context_watch.py
           PYTHONPATH=scripts python scripts/test_thirteenf_context_watch.py
