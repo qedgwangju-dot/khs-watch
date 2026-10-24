@@ -631,7 +631,16 @@ jobs:
                       raise SystemExit(
                           f"Telegram send failed for {p.name}: HTTP {r.status_code} / {desc}"
                       )
-                  message_ids.append(data["result"]["message_id"])
+                  receipt = data.get("result") or {}
+                  reply_chat_id = (receipt.get("chat") or {}).get("id")
+                  reply_message_id = receipt.get("message_id")
+                  if reply_chat_id is None or not isinstance(reply_message_id, int) or reply_message_id <= 0:
+                      raise RuntimeError("Telegram sent but chat.id/message_id receipt is incomplete")
+                  configured_chat_id = str(chat).strip()
+                  if configured_chat_id.lstrip("-").isdigit() and str(reply_chat_id) != configured_chat_id:
+                      raise RuntimeError("Telegram acknowledged a different chat.id; refusing confirmation")
+                  message_ids.append(reply_message_id)
+                  print("telegram_api_receipt_verified=true chat_id_present=true chat_id_matches_config=true")
                   time.sleep(1)
 
               print(
