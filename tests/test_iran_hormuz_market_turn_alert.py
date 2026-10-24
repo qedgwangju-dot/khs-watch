@@ -1698,6 +1698,61 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertEqual(selected[0], "east_west_pipeline_recovery")
         self.assertIn("걸프오브오만 STS 우회 물류 급증·병목", duplicates)
 
+    def test_doe_oct22_funding_no_delek_attribution_and_first_party_gate(self):
+        now=dt.datetime(2026,10,25,1,tzinfo=dt.timezone.utc)
+        html="""<html><body>October 22, 2026
+        Energy Department to Use Defense Production Act Funding to Restart American Refinery and Expand Refining Capacity.
+        up to $150 million in Defense Production Act Title III funding for refining, storage, logistics.
+        $1 billion has been appropriated for energy-related projects.
+        The selection process is ongoing and will be announced in the near future.
+        </body></html>"""
+        row=MODULE.parse_doe_oct22_refinery_program(html,now)
+        self.assertEqual(row.event_kind,"us_dpa_refinery_funding_oct22")
+        self.assertEqual(MODULE.event_id(row.event_kind,[row]),MODULE.DOE_OCT22_REFINERY_EVENT_ID)
+        self.assertEqual(MODULE.confirm_event([row])[0],row.event_kind)
+        body=MODULE.build_physical_flow_alert_body(row.event_kind,[row],None,now)
+        self.assertIn("Delek 타일러 공장의 확정 수령액",body)
+        self.assertIn("아직 선정 중",body)
+        forged=MODULE.NewsItem(row.title,"인터넷 게시글","https://example.com",row.published_utc,row.published_epoch,row.event_kind)
+        self.assertIsNone(MODULE.confirm_event([forged]))
+        with self.assertRaises(ValueError):
+            MODULE.event_id(row.event_kind,[forged])
+        with self.assertRaises(RuntimeError):
+            MODULE.parse_doe_oct22_refinery_program(html.replace("selection process is ongoing","recipients were selected"),now)
+
+    def test_doe_oct22_funding_immutable_100days(self):
+        now=dt.datetime(2027,2,20,tzinfo=dt.timezone.utc)
+        old=dt.datetime(2026,10,25,tzinfo=dt.timezone.utc)
+        eid=MODULE.DOE_OCT22_REFINERY_EVENT_ID
+        self.assertTrue(MODULE.event_recently_alerted(
+            {"alerted_events":{eid:old.astimezone(MODULE.KST).isoformat()}},eid,now))
+
+    @staticmethod
+    def _eia_2026_oct16_reversal_fixture():
+        return """<html><body>Weekly Stocks Thousand Barrels
+        09/11/26 09/18/26 09/25/26 10/02/26 10/09/26 10/16/26
+        Total Crude Oil and Petroleum Products (Incl. SPR)
+        1,536,205 1,535,908 1,528,080 1,520,383 1,506,999 1,498,245
+        Crude Oil (Including SPR) 708,386 710,950 711,087 707,117 698,560 695,200
+        Commercial Crude Oil (Excl. Lease Stock)
+        423,429 426,398 427,320 424,134 415,577 412,517
+        SPR 284,957 284,552 283,767 282,983 282,983 282,683
+        Total Motor Gasoline 207,732 206,046 204,362 204,744 208,262 205,310
+        Distillate Fuel Oil 107,859 107,431 105,180 105,138 102,611 104,286
+        </body></html>"""
+
+    def test_eia_oct16_inventory_reversal_is_meaningful(self):
+        now=dt.datetime(2026,10,22,10,tzinfo=dt.timezone.utc)
+        row=MODULE.parse_eia_weekly_stock_balance(self._eia_2026_oct16_reversal_fixture(),now)
+        m=MODULE._eia_stock_metrics([row])
+        self.assertEqual((m["c_delta"],m["g_delta"],m["d_delta"],m["spr_delta"]),
+                         (-3060,-2952,1675,-300))
+
+    def test_eia_oct16_old_news_cannot_fire_on_oct25(self):
+        now=dt.datetime(2026,10,25,1,tzinfo=dt.timezone.utc)
+        with self.assertRaisesRegex(RuntimeError,"기간 초과"):
+            MODULE.parse_eia_weekly_stock_balance(self._eia_2026_oct16_reversal_fixture(),now)
+
     def test_iea_secondary_evidence_requires_two_publishers(self):
         now = dt.datetime(2026, 10, 17, 8, tzinfo=dt.timezone.utc)
         report = (
