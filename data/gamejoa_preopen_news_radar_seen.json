@@ -92339,6 +92339,35 @@
       "telegram_core_fact": "반면 중동전쟁으로 인한 물가 부담과 민생, 산업 경쟁력 등을 고려하면 정부가 전기요금 인상을 결정하기도 쉽지 않다.",
       "title": "한전 \"전기요금 인상 필요\" 정부 \"인하\"…재무구조 개선 관건"
     },
+    "core:e558d09005b6230c478c4066": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
+    },
     "core:e55c350c5adb600653c8f973": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
       "lanes": {
@@ -121841,6 +121870,35 @@
       "source_title": "10년 끈 차헬스케어 IPO, 의무 사라졌다…회수 부담은 모회사에[차바이오 딥시크①]",
       "telegram_core_fact": "금융당국이 물적분할 자회사의 중복상장 규제를 대폭 강화한 상황까지 감안하면 ‘2027년 IPO’라는 목표가 실제로 가능할지에 의구심이 제기된다.",
       "title": "10년 끈 차헬스케어 IPO, 의무 사라졌다…회수 부담은 모회사에[차바이오 딥시크①]"
+    },
+    "event:d802b72b513d09eaa0391956": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
     },
     "event:d812265cdfa6d6eb53781072": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -230476,6 +230534,35 @@
       "source_title": "인터엑스, 증권신고서 제출…12월 코스닥 상장 목표",
       "telegram_core_fact": "다음 달 30일부터 오는 12월 4일까지 기관투자자를 대상으로 수요예측을 진행하고, 12월 9~10일 일반청약을 거쳐 연내 코스닥 상장을 목표로 하고 있다.",
       "title": "인터엑스, 증권신고서 제출…12월 코스닥 상장 목표"
+    },
+    "fact:ee9bc393bb8b3a9636488939": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
     },
     "fact:ee9e83b7c0d437421b4780f6": {
       "first_seen_kst": "2026-10-12T15:02:00+09:00",
@@ -366424,6 +366511,35 @@
       "telegram_core_fact": "리오틴토(RIO)는 3분기 연결 기준 구리 생산량이 20만5000t으로 전년 동기와 같은 수준을 유지했고, 오유톨고이 구리 생산량은 전년비 27% 늘었으며 전 세계 철광석 판매량은 9080만t으로 3% 증가했다고 14일(현지시간) 발표했다.",
       "title": "리오틴토, 3분기 구리 20만5000t 보합..오유톨고이 27%↑"
     },
+    "link:e23af396e719cd801e241ca1": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
+    },
     "link:e23f0af3af22349fc2744bd8": {
       "first_seen_kst": "2026-10-24T05:26:28+09:00",
       "lanes": {
@@ -465844,6 +465960,35 @@
       "source": "이데일리",
       "title": "\"中정유업체들, 석유제품 수출 중단…재고 확보 목적\""
     },
+    "original:94c33b765e00cba38f682cbb": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
+    },
     "original:94cf702b78050caed1c01c84": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
       "lanes": {
@@ -552100,6 +552245,35 @@
       "telegram_core_fact": "키움증권은 삼성전기의 대규모 공급계약 공시가 비티(BT)기판 공급 부족의 시작을 알리는 신호라며 향후 물량 증가와 가격 인상이 동시에 나타나는 실적 상승 사이클이 본격화할 것으로 전망한다고 20일 밝혔다.",
       "title": "키움證 “삼성전기 계약은 BT기판 쇼티지 신호탄⋯대덕전자·심텍 수혜”"
     },
+    "source_fact:0c94d62433f70c572cad2a95": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
+    },
     "source_fact:0c95806219bb8843869b60ab": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
       "lanes": {
@@ -608941,6 +609115,35 @@
       "telegram_core_fact": "후티 반군은 지난달 모카를 점령한 뒤 사우디 에너지 시설을 공격하고, 폭 약 29km인 홍해 입구를 지나는 사우디 선박 통행을 위협해왔다.",
       "title": "후티, 사우디 공항 미사일 공격…3명 사망·36명 부상"
     },
+    "source_fact:24bb70932cf563d3df922979": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
+    },
     "source_fact:24c1e026c4e0ae8c87f26ed2": {
       "first_seen_kst": "2026-10-18T09:22:47+09:00",
       "lanes": {
@@ -620886,6 +621089,35 @@
       ],
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
+    },
+    "source_fact:297eaebf683f5e5d8a04e6e2": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
     },
     "source_fact:2987669abe700246742a261d": {
       "first_seen_kst": "2026-10-14T16:58:19+09:00",
@@ -700610,6 +700842,35 @@
       "telegram_core_fact": "[파이낸셜뉴스] 수요 감소 걱정으로 지난 8거래일 연속 하락했던 미국의 반도체 주식들이 19일(현지시간) 저가 매수를 노리는 자금이 유입되면서 겨우 반등했다. 미국 상장 30개 주요 반도체 종목으로 구성된 필라델피아반도체지수(SOX)는 이날 전 거래일보다 1.6% 상승했다.",
       "title": "美 증시 반도체 지수 9일 만에 반등...과매도 지적에 저가 매수"
     },
+    "source_fact:4b70f65e969d11016a173d1c": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
+    },
     "source_fact:4b7112eacee9f62c5bdb1e72": {
       "first_seen_kst": "2026-10-23T02:56:16+09:00",
       "lanes": {
@@ -768333,6 +768594,35 @@
       "telegram_core_fact": "금융권에 따르면 하나금융지주의 올해 3분기 연결 기준 누적 당기순이익은 3조6243억원으로 전년비 5.6% 증가하며 역대 최대 실적을 달성했다.",
       "title": "우리·하나금융, 3분기 누적 실적 호조…주주환원 확대 속도"
     },
+    "source_fact:6807aab18accbbc5d99b9b9f": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
+    },
     "source_fact:6808c73cac86c0d52f23dc4b": {
       "first_seen_kst": "2026-10-12T12:09:58+09:00",
       "lanes": {
@@ -801429,6 +801719,35 @@
       ],
       "source_published_kst": "2026-10-07T11:25+09:00",
       "title": "홍지선 국토장관 “비아파트 주거사다리 효과, 충분히 검토 못해” [국감]"
+    },
+    "source_fact:764a0ee28afda922e8325859": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
     },
     "source_fact:764af5a84a1cbc46ab19dcc4": {
       "first_seen_kst": "2026-10-24T13:43:04+09:00",
@@ -906780,6 +907099,35 @@
       "source_title": "한화에어로스페이스 K9 자주포 제식명에 'XM1776'",
       "telegram_core_fact": "한화에어로스페이스는 올해 8월 미국 육군 기동전술화포(MTC) 사업의 K9MH 시제품 공급 계약을 체결 후 이달 시제 1호기를 납품했다.",
       "title": "한화에어로스페이스 K9 자주포 제식명에 'XM1776'"
+    },
+    "source_fact:a41e867999e983c75d2fa6cc": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
     },
     "source_fact:a4215282a20e25f7d7a6f239": {
       "first_seen_kst": "2026-10-18T08:07:27+09:00",
@@ -1014900,6 +1015248,35 @@
       "telegram_core_fact": "키움증권은 삼성전기의 대규모 공급계약 공시가 비티(BT)기판 공급 부족의 시작을 알리는 신호라며 향후 물량 증가와 가격 인상이 동시에 나타나는 실적 상승 사이클이 본격화할 것으로 전망한다고 20일 밝혔다.",
       "title": "키움證 “삼성전기 계약은 BT기판 쇼티지 신호탄⋯대덕전자·심텍 수혜”"
     },
+    "source_fact:d1e133c9d50f8bbb50a7c505": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
+    },
     "source_fact:d1e1826fd601740f616af2d1": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -1022104,6 +1022481,35 @@
       "source_title": "4개월째 묶인 기름값 상한…16일 11차 최고가격 동결 '촉각'",
       "telegram_core_fact": "당시 양기욱 산업부 산업자원안보실장은 \"국제유가 상황을 살피면서 서민 물가 부담과 지난 최고가격 지정 동향, 환율 하락 추세 등을 종합적으로 고려해 민생 안정에 무게를 두고 이번 최고가격 동결을 결정했다\"고 설명했다.",
       "title": "4개월째 묶인 기름값 상한…16일 11차 최고가격 동결 '촉각'"
+    },
+    "source_fact:d51a0ccf50eb10dfb2dc3bf2": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
     },
     "source_fact:d5227f51cc291e3849ca0bcb": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
@@ -1061111,6 +1061517,35 @@
       "source_title": "HD현대重 등 조선·원자력 분야 12개 기관 ‘SMR 해양 기술 실증센터’ 출범",
       "telegram_core_fact": "HD현대중공업을 비롯한 국내 조선·원자력 분야 주요 기업과 대학 등 12개 기관은 지난 6일 울산과학기술원(UNIST)에서 ‘SMR 해양 기술 실증센터’ 출범을 위한 업무협약을 체결했다고 7일(수) 밝혔다.",
       "title": "HD현대重 등 조선·원자력 분야 12개 기관 ‘SMR 해양 기술 실증센터’ 출범"
+    },
+    "source_fact:e59bd22bf20181c9c4f5ff6e": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
     },
     "source_fact:e59c5312205966a8e1e04abf": {
       "first_seen_kst": "2026-10-23T18:41:16+09:00",
@@ -1205629,6 +1206064,35 @@
       "source": "이데일리",
       "title": "\"中정유업체들, 석유제품 수출 중단…재고 확보 목적\""
     },
+    "title:94c33b765e00cba38f682cbb": {
+      "first_seen_kst": "2026-10-25T03:16:17+09:00",
+      "lanes": {
+        "live": "2026-10-25T03:16:17+09:00"
+      },
+      "last_seen_kst": "2026-10-25T03:16:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
+      "source": "뉴시스",
+      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_keys": [
+        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
+        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
+        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
+        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
+        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
+        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
+        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
+        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
+        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
+        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+      ],
+      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
+      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
+      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
+    },
     "title:94cf702b78050caed1c01c84": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
       "lanes": {
@@ -1265081,5 +1265545,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-25T00:24:20+09:00"
+  "updated_at_kst": "2026-10-25T03:16:17+09:00"
 }
