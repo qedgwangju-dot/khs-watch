@@ -2551,5 +2551,14 @@
     "credit_oas_date": "2026-10-21",
     "format": "treasury-credit-ishares-oas-v3",
     "data_fingerprint": "f8ac65d813a6212a088af2d1a14392c574894667f0fa633e5f992123633be14d"
+  },
+  "daily_status_notification": {
+    "date_kst": "2026-10-24",
+    "at_kst": "2026-10-24T09:59:06+09:00",
+    "bot_username": "khs8879887988798879_bot",
+    "message_ids": [
+      489
+    ],
+    "reason": "workflow_step_failed"
   }
 }
