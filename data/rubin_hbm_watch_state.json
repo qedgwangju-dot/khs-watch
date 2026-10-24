@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-24T21:51:58+09:00",
+  "updated_at_kst": "2026-10-25T01:48:20+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -270,7 +270,7 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1324.45,
-    "date": "2026-10-23 일일 기준 · ECB/Frankfurter · 조회 2026-10-24 21:52 KST · 보조 API 2026-10-24 · 차이 0.02% · 일중 기준시각 차이 가능",
+    "date": "2026-10-23 일일 기준 · ECB/Frankfurter · 조회 2026-10-25 01:48 KST · 보조 API 2026-10-24 · 차이 0.02% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -400,14 +400,14 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-24T21:52:15+09:00",
+    "last_checked_at_kst": "2026-10-25T01:48:38+09:00",
     "candidate_count": 3,
     "image_verified_issue": "weekly-radar-006",
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-24T21:53:32+09:00",
+    "checked_at_kst": "2026-10-25T01:49:36+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-19T21:54:05+09:00",
@@ -474,8 +474,8 @@
       "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
-    "last_validation_cutoff": "2026-10-24",
-    "last_checked_at_kst": "2026-10-24T21:53:00+09:00",
+    "last_validation_cutoff": "2026-10-25",
+    "last_checked_at_kst": "2026-10-25T01:49:23+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -534,7 +534,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-24T21:53:00+09:00",
+        "checked_at_kst": "2026-10-25T01:49:23+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -611,8 +611,8 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10461",
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
-    "last_checked_cutoff": "2026-10-24",
-    "last_checked_at_kst": "2026-10-24T21:53:26+09:00",
+    "last_checked_cutoff": "2026-10-25",
+    "last_checked_at_kst": "2026-10-25T01:49:30+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -656,7 +656,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-24T21:53:28+09:00",
+    "last_checked_at_kst": "2026-10-25T01:49:32+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
