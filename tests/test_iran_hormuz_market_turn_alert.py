@@ -1941,5 +1941,62 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("실패 경로", body)
 
 
+    def test_oil_rate_treasury_parse_dates_and_reject_bad_table(self):
+        table = ("<table><tr><th>Date</th><th>2 Yr</th><th>10 Yr</th></tr>"
+                 "<tr><td>10/22/2026</td><td>4.6</td><td>5.12</td></tr>"
+                 "<tr><td>10/23/2026</td><td>4.5</td><td>4.97</td></tr></table>")
+        rows = MODULE.parse_treasury_ten_year_rows(table)
+        self.assertEqual(rows[dt.date(2026,10,23)],4.97)
+        with self.assertRaises(RuntimeError):
+            MODULE.parse_treasury_ten_year_rows("<table><tr><td>10/23/2026</td><td>4.97</td></tr></table>")
+
+    def test_oil_rate_brent_parsing_does_not_reuse_live_meta(self):
+        import calendar
+        t=lambda day:calendar.timegm(dt.datetime(2026,10,day,18).timetuple())
+        payload={"chart":{"result":[{
+            "meta":{"exchangeTimezoneName":"Europe/London","regularMarketPrice":200},
+            "timestamp":[t(22),t(23)],
+            "indicators":{"quote":[{"close":[110.0,114.0]}]},
+        }]}}
+        row=MODULE.parse_daily_brent_yahoo(payload)
+        self.assertEqual(row["date"],"2026-10-23")
+        self.assertEqual(row["prev_date"],"2026-10-22")
+        self.assertEqual(row["price"],114.0)
+
+    def test_oil_rate_signal_future_only_and_dates_must_match(self):
+        ny=MODULE.ZoneInfo("America/New_York")
+        now=dt.datetime(2026,10,26,18,tzinfo=ny)
+        b={"date":"2026-10-22","prev_date":"2026-10-21","price":114.0,"prev_price":110.0}
+        t={"date":"2026-10-22","prev_date":"2026-10-21","yield":4.90,"prev_yield":5.05}
+        self.assertIsNone(MODULE.detect_oil_treasury_risk_signal(b,t,{},now))
+        b["date"]="2026-10-26"
+        self.assertIsNone(MODULE.detect_oil_treasury_risk_signal(b,t,{},now))
+
+    def test_oil_rate_signal_reversal_needs_prior_confirmed_event(self):
+        ny=MODULE.ZoneInfo("America/New_York")
+        now=dt.datetime(2026,10,26,18,tzinfo=ny)
+        b={"date":"2026-10-26","prev_date":"2026-10-23","price":116.0,"prev_price":112.0}
+        t={"date":"2026-10-26","prev_date":"2026-10-23","yield":4.80,"prev_yield":4.96}
+        first=MODULE.detect_oil_treasury_risk_signal(b,t,{},now)
+        self.assertEqual(first["regime"],"안전자산선호")
+        self.assertEqual(first["event_id"],"oil_treasury_regime:2026-10-26:안전자산선호")
+        self.assertIn("27달러 위험 프리미엄",MODULE.oil_treasury_risk_alert_text(first,now,None))
+        nextday=now+dt.timedelta(days=1)
+        b.update(date="2026-10-27",prev_date="2026-10-26",price=116.5,prev_price=116.0)
+        t.update(date="2026-10-27",prev_date="2026-10-26",yield=4.92,prev_yield=4.80)
+        self.assertIsNone(MODULE.detect_oil_treasury_risk_signal(b,t,{},nextday))
+        state={"alerted_events":{first["event_id"]:now.astimezone(MODULE.KST).isoformat()}}
+        second=MODULE.detect_oil_treasury_risk_signal(b,t,state,nextday)
+        self.assertEqual(second["regime"],"금리반등")
+        self.assertFalse(MODULE.event_recently_alerted(state,second["event_id"],nextday))
+
+    def test_oil_rate_physical_alert_only_on_material_divergence(self):
+        now=dt.datetime(2026,10,26,18,tzinfo=dt.timezone.utc)
+        oil=MODULE.Quote("BZ=F","Brent","달러/배럴",116,111,5,4.50,"",now.timestamp())
+        text=MODULE.enhance_physical_oil_alert("ex_iran_crude_prewar_recovery","본문",oil)
+        self.assertIn("원유 물량·가격 괴리",text)
+        self.assertEqual(MODULE.enhance_physical_oil_alert("delek_tyler_dpa","본문",oil),"본문")
+
+
 if __name__ == "__main__":
     unittest.main()

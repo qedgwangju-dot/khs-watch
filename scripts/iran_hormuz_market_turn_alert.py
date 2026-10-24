@@ -3250,6 +3250,226 @@ def market_confirms(us2y: Quote, dxy: Quote) -> bool:
     return us2y.price < us2y.previous_close and dxy.price < dxy.previous_close
 
 
+
+# 기존 이란·호르무즈 경로를 사용하는 유가-미국채 교차 신호.
+# 변경 전(2026-10-26) 관측치는 신규 알림으로 재발송하지 않는다.
+OIL_RATE_START_DAY = dt.date(2026, 10, 26)
+OIL_RATE_TREASURY_URL = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView"
+
+
+def parse_treasury_ten_year_rows(raw_html: str) -> dict[dt.date, float]:
+    parsed: dict[dt.date, float] = {}
+    column = None
+    for tr in re.findall(r"<tr\b[^>]*>(.*?)</tr\s*>", raw_html, re.I | re.S):
+        cells = [
+            re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", cell))).strip()
+            for cell in re.findall(r"<(?:td|th)\b[^>]*>(.*?)</(?:td|th)\s*>", tr, re.I | re.S)
+        ]
+        if not cells:
+            continue
+        names = [re.sub(r"[\s.]+", "", x).lower() for x in cells]
+        if "date" in names and "10yr" in names:
+            column = names.index("10yr")
+        elif column is not None and len(cells) > column and re.fullmatch(r"\d{2}/\d{2}/\d{4}", cells[0]):
+            date = dt.datetime.strptime(cells[0], "%m/%d/%Y").date()
+            value = finite_number(cells[column])
+            if value is None or not 0 < value < 15:
+                continue
+            if date in parsed and abs(parsed[date] - value) > 0.001:
+                raise RuntimeError("동일 기준일 미국 10년물 금리 원문 충돌")
+            parsed[date] = value
+    if not parsed:
+        raise RuntimeError("미국 재무부 공식 10년물 표 해석 실패")
+    return parsed
+
+
+def fetch_us_treasury_ten_year_pair(current: dt.datetime) -> dict:
+    today = current.astimezone(ZoneInfo("America/New_York")).date()
+    def monthly(year: int, month: int) -> dict:
+        url = (f"{OIL_RATE_TREASURY_URL}?type=daily_treasury_yield_curve"
+               f"&field_tdr_date_value={year}{month:02d}")
+        return parse_treasury_ten_year_rows(
+            fetch_bytes(url, timeout=8, attempts=1).decode("utf-8", errors="replace")
+        )
+    values = monthly(today.year, today.month)
+    if today.day <= 5:
+        last_month = today.replace(day=1) - dt.timedelta(days=1)
+        try:
+            values.update(monthly(last_month.year, last_month.month))
+        except (RuntimeError, ValueError, OSError):
+            pass
+    ordered = sorted(x for x in values if x <= today)
+    if len(ordered) < 2:
+        raise RuntimeError("미국 10년물 금리 직전 거래일 불명")
+    day, prev = ordered[-1], ordered[-2]
+    return {"date": day.isoformat(), "prev_date": prev.isoformat(),
+            "yield": values[day], "prev_yield": values[prev]}
+
+
+def parse_daily_brent_yahoo(payload: dict) -> dict:
+    result = (payload.get("chart", {}).get("result") or [None])[0]
+    if result is None:
+        raise RuntimeError("Brent 선물 종가 자료 없음")
+    tzname = (result.get("meta") or {}).get("exchangeTimezoneName") or "UTC"
+    try:
+        tz = ZoneInfo(tzname)
+    except (KeyError, ValueError) as exc:
+        raise RuntimeError("Brent 선물 거래소 시간대 불명") from exc
+    stamps = result.get("timestamp") or []
+    q = (result.get("indicators") or {}).get("quote") or []
+    closes = q[0].get("close") or [] if q else []
+    values: dict[dt.date, float] = {}
+    for stamp, close in zip(stamps, closes):
+        t, p = finite_number(stamp), finite_number(close)
+        if t is not None and p is not None and 25 < p < 250:
+            date = dt.datetime.fromtimestamp(t, tz=UTC).astimezone(tz).date()
+            values[date] = p
+    days = sorted(values)
+    if len(days) < 2:
+        raise RuntimeError("Brent 종가 비교 거래일 부족")
+    day, prev = days[-1], days[-2]
+    return {"date": day.isoformat(), "prev_date": prev.isoformat(),
+            "price": values[day], "prev_price": values[prev]}
+
+
+def fetch_brent_daily_verified() -> dict:
+    params = urllib.parse.urlencode({"interval": "1d", "range": "10d", "includePrePost": "false"})
+    values = []
+    for host in YAHOO_BASES:
+        endpoint = f"{host}/BZ%3DF?{params}"
+        payload = json.loads(fetch_bytes(endpoint, timeout=8, attempts=1).decode("utf-8"))
+        values.append(parse_daily_brent_yahoo(payload))
+    a, b = values
+    if a["date"] != b["date"] or a["prev_date"] != b["prev_date"]:
+        raise RuntimeError("Brent 동일 제공자 두 조회경로 거래일 불일치")
+    for key in ("price", "prev_price"):
+        if abs(a[key] / b[key] - 1) > 0.002:
+            raise RuntimeError("Brent 두 조회경로 종가 불일치")
+    return a
+
+
+def detect_oil_treasury_risk_signal(brent: dict, treasury: dict, state: dict,
+                                    current: dt.datetime) -> dict | None:
+    if brent["date"] != treasury["date"] or brent["prev_date"] != treasury["prev_date"]:
+        return None  # 날짜가 다른 금리·유가를 묶지 않는다.
+    observation = dt.date.fromisoformat(brent["date"])
+    ny = current.astimezone(ZoneInfo("America/New_York"))
+    if observation < OIL_RATE_START_DAY or not 0 <= (ny.date() - observation).days <= 2:
+        return None
+    if observation == ny.date() and ny.hour < 17:
+        return None  # 장중 잠정 일봉을 종가로 오인하지 않음.
+    price, prev = float(brent["price"]), float(brent["prev_price"])
+    y10, prior_y10 = float(treasury["yield"]), float(treasury["prev_yield"])
+    if not (25 < price < 250 and 25 < prev < 250 and 0 < y10 < 15 and 0 < prior_y10 < 15):
+        return None
+    oil_pct, yield_bp = (price / prev - 1) * 100, (y10 - prior_y10) * 100
+    regime = None
+    if oil_pct >= 2.0 and yield_bp <= -10.0:
+        regime = "안전자산선호"
+    elif price >= 100.0 and yield_bp >= 10.0:
+        for key, raw in (state.get("alerted_events") or {}).items():
+            if not (str(key).startswith("oil_treasury_regime:") and str(key).endswith(":안전자산선호")):
+                continue
+            stamp = _parse_kst_timestamp(raw)
+            if stamp is not None and 0 <= (current.astimezone(KST) - stamp).total_seconds() <= 14 * 86400:
+                regime = "금리반등"
+                break
+    if regime is None:
+        return None
+    return {"regime": regime, "date": observation.isoformat(),
+            "event_id": f"oil_treasury_regime:{observation.isoformat()}:{regime}",
+            "brent_usd": price, "brent_pct": oil_pct,
+            "us10y_pct": y10, "us10y_bp": yield_bp}
+
+
+def oil_treasury_risk_alert_text(signal: dict, current: dt.datetime,
+                                 fx: Quote | None) -> str:
+    if signal["regime"] == "안전자산선호":
+        diagnosis = "유가 상승에도 미국 국채금리가 하락했습니다. 에너지 물가 우려보다 안전자산 매수세가 강했을 가능성이 있습니다."
+        reverse = "프랑스 재정불안·AI 주식 급락이 진정된 뒤 국채금리가 반등하는지 확인합니다."
+    else:
+        diagnosis = "최근 확인된 유가 상승·금리 하락 신호 이후 미국 국채금리가 반등했습니다."
+        reverse = "안전자산 매수세 되돌림과 에너지 물가 우려 재확대를 구분해야 합니다."
+    krw = (f" · 원화 약 {round(signal['brent_usd'] * fx.price):,}원/배럴"
+           if fx is not None else " · 원화 환산 최신값 확인 불가")
+    return "\n".join([
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"), "",
+        "[현재 숫자]",
+        f"미국 거래일         {signal['date']}",
+        f"ICE Brent 추종 선물  {signal['brent_usd']:.2f}달러/배럴{krw} · 전일 {signal['brent_pct']:+.2f}%",
+        f"미국 10년물 공식금리 {signal['us10y_pct']:.3f}% · 전일 {signal['us10y_bp']:+.1f}bp",
+        "", "[핵심]", diagnosis, reverse,
+        "유가·금리의 동시 움직임은 확인 사실이지만 구체적인 매수 주체와 프랑스·AI 영향은 별도 확인이 필요합니다.",
+        "", "[다음 확인]",
+        "프랑스 10년물과 독일 10년물 금리차, 미 국채 2년물·실질금리·기대인플레이션",
+        "AI 관련주와 나스닥, 선박 공격·중동 실제 원유 수출·정제품 수출·운임·보험",
+        "", "[주의]",
+        "Brent 선물가격은 실물 현물거래 가격과 다릅니다.",
+        "배럴당 27달러 위험 프리미엄은 산정 주체·방식이 검증되지 않아 확정값으로 사용하지 않습니다.",
+        "", "[근거]",
+        f"미 재무부: {OIL_RATE_TREASURY_URL}",
+        "Yahoo Finance BZ=F 일봉(동일 제공자 두 조회경로 대조)",
+    ]).strip() + "\n"
+
+
+def enhance_physical_oil_alert(kind: str, body: str, oil: Quote | None) -> str:
+    physical = ("oil_flow_recovery", "ex_iran_crude_prewar_recovery",
+                "regional_export_recovery", "crude_product_divergence",
+                "tankertrackers_7country_crude_mtd")
+    if kind not in physical or oil is None or oil.symbol != "BZ=F":
+        return body
+    if oil.price < 100.0 or oil.change_pct < 2.0:
+        return body
+    return body.rstrip() + "\n\n" + "\n".join([
+        "[원유 물량·가격 괴리]",
+        f"Brent 선물 {oil.price:.2f}달러/배럴 · 전일 {oil.change_pct:+.2f}%",
+        "원유 수출 회복과 가격 상승의 병존을 확인하되 물량 기준일과 시장가격 기준일은 별도로 표시합니다.",
+        "정제품 부족·유조선 공격·우회 운임·보험료가 남아 있어 원유 수출 회복만으로 정상화로 판단하지 않습니다.",
+        "미래 공급 차질을 예상한 선제 구매는 가능성이지 확인된 실제 주문량은 아닙니다.",
+        "배럴당 27달러 위험 프리미엄은 출처·산식 미확인으로 확정 가격에서 제외합니다.",
+    ]) + "\n"
+
+
+def maybe_create_oil_treasury_signal(current: dt.datetime, state: dict) -> bool:
+    if current.astimezone(ZoneInfo("America/New_York")).date() < OIL_RATE_START_DAY:
+        return False
+    try:
+        t = fetch_us_treasury_ten_year_pair(current)
+        b = fetch_brent_daily_verified()
+        signal = detect_oil_treasury_risk_signal(b, t, state, current)
+    except (RuntimeError, ValueError, KeyError, TypeError, OSError, json.JSONDecodeError) as exc:
+        print(f"oil_treasury_source_diagnostic={type(exc).__name__}: {str(exc)[:240]}", flush=True)
+        return False  # 신규 시장 신호 수집 실패가 기존 원유 감시를 막지 않음.
+    if signal is None or event_recently_alerted(state, signal["event_id"], current):
+        return False
+    fx = None
+    try:
+        q = fetch_quote(SYMBOLS["usdkrw"])
+        if quote_is_fresh(q, current, 240):
+            fx = q
+    except Exception as exc:
+        print(f"oil_treasury_fx_diagnostic={type(exc).__name__}", flush=True)
+    title = ("유가 상승·미 국채금리 하락 동시 감지"
+             if signal["regime"] == "안전자산선호"
+             else "유가 고공행진 중 미 국채금리 반등 감지")
+    market = {"brent_usd": b["price"], "brent_date": b["date"],
+              "us10y_pct": t["yield"], "us10y_date": t["date"],
+              "usdkrw": asdict(fx) if fx else None}
+    alert = {"event_kind": "oil_treasury_regime", "event_id": signal["event_id"],
+             "created_at_kst": current.astimezone(KST).isoformat(timespec="seconds"),
+             "signal": signal, "market": market}
+    pending = build_pending_state(state, signal["event_id"],
+                                  "oil_treasury_regime", current, market)
+    TITLE_PATH.write_text(title + "\n", encoding="utf-8")
+    BODY_PATH.write_text(oil_treasury_risk_alert_text(signal, current, fx), encoding="utf-8")
+    ALERT_JSON_PATH.write_text(json.dumps(alert, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    PENDING_STATE_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    write_summary(["# 이란·호르무즈 시장 전환 감시",
+                   f"새 시장 신호: {signal['regime']}",
+                   f"두 공식/시장 지표 비교 거래일: {signal['date']}",
+                   "결과: Telegram 실제 전송 조건 충족"])
+    return True
+
 def load_state(path: pathlib.Path = STATE_PATH) -> dict:
     if not path.exists():
         return {"last_alert_at_kst": None, "last_event_kind": None, "last_event_id": None}
@@ -5655,6 +5875,8 @@ def run_monitor(current: dt.datetime) -> int:
         return 0
 
     state = load_state()
+    if maybe_create_oil_treasury_signal(current, state):
+        return 0
     news_items, news_errors = fetch_news(current)
     confirmed_candidates = confirm_events(news_items)
     # Audit event selection and public-source failures without Telegram secrets or token logs.
@@ -5743,6 +5965,7 @@ def run_monitor(current: dt.datetime) -> int:
         if fx is not None and not quote_is_fresh(fx, current, max_age_minutes):
             fx = None
         body = build_physical_flow_alert_body(kind, news_rows, oil, current, fx)
+        body = enhance_physical_oil_alert(kind, body, oil)
         if kind == "venezuela_nabep_equipment":
             title = "베네수엘라 NABEP 시추장비 도착·투자 이행"
         elif kind == "venezuela_oil_investment":

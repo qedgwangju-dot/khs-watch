@@ -150,17 +150,28 @@ jobs:
           if not result.get("ok"):
               raise RuntimeError(f"Telegram rejected message: {result}")
 
+          delivered = result.get("result") or {}
+          delivered_chat = delivered.get("chat") or {}
+          delivered_chat_id = delivered_chat.get("id")
+          if delivered_chat_id is None or delivered.get("message_id") is None:
+              raise RuntimeError("Telegram response missing chat.id or message_id")
+          if chat_id.lstrip("-").isdigit() and str(delivered_chat_id) != chat_id:
+              raise RuntimeError("Telegram chat.id mismatch")
+          if chat_id.startswith("@") and str(delivered_chat.get("username") or "").lower() != chat_id[1:].lower():
+              raise RuntimeError("Telegram destination username mismatch")
           confirmed = {
               "status": "confirmed",
               "bot": f"@{actual}",
-              "message_id": result.get("result", {}).get("message_id"),
+              "chat_id": delivered_chat_id,
+              "chat_id_verified": True,
+              "message_id": delivered.get("message_id"),
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
           pathlib.Path("out/iran_hormuz_market_turn_telegram_confirmed.json").write_text(
               json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
               encoding="utf-8",
           )
-          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={confirmed['message_id']}")
+          print(f"telegram_delivery_confirmed=true bot=@{actual} chat_id_verified=true message_id={confirmed['message_id']}")
           PY
 
       - name: Finalize alert state
