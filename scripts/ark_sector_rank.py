@@ -249,11 +249,13 @@ def _net_line(totals, rate, money_fmt):
 
 
 def snapshot(day, digest, totals):
-    complete=all(x["buy_rows"] == x["buy_priced"] and
-                 x["sell_rows"] == x["sell_priced"] for x in totals.values())
+    buy_complete=all(x["buy_rows"] == x["buy_priced"] for x in totals.values())
+    sell_complete=all(x["sell_rows"] == x["sell_priced"] for x in totals.values())
     return {
         "date": day, "digest": digest,
-        "complete": complete,
+        "complete": buy_complete and sell_complete,
+        "buy_complete": buy_complete,
+        "sell_complete": sell_complete,
         "buy_usd": {key:round(v["매수"],6) for key,v in totals.items() if v["buy_rows"]},
         "sell_usd": {key:round(v["매도"],6) for key,v in totals.items() if v["sell_rows"]},
         "buy_rows": {key:v["buy_rows"] for key,v in totals.items() if v["buy_rows"]},
@@ -268,26 +270,39 @@ def merged_history(state_history, current, max_days=20):
 
 
 def recent_average_lines(history, rate, money_fmt):
-    complete=[x for x in history if x.get("complete")]
-    if not complete:
-        return ["", "<b>최근 관측일 업종별 일평균 매수</b>",
-                "• 종가가 모두 확인된 거래일이 없어 일평균 산출 불가"]
-    eligible=complete[-min(len(complete),20):]
-    days=len(eligible)
-    amounts=defaultdict(float)
-    for entry in eligible:
-        for sector, usd in entry.get("buy_usd",{}).items():
-            if sector != SECTOR_UNKNOWN:
-                amounts[sector]+=float(usd)
-    ranked=sorted(amounts.items(),key=lambda kv:(-kv[1],kv[0]))
-    lines=["",f"<b>최근 관측 {days}거래일 업종별 일평균 매수 추정</b>"]
-    for rank,(sec,amount) in enumerate(ranked[:5],1):
-        lines.append(f"• {rank}위 {html.escape(sec)}: {_amount(amount/days,rate,money_fmt)} /일")
-    if days<5:
-        lines.append(f"• 아직 5거래일 평균은 산출하지 않습니다. 관측 {days}/5거래일")
-    elif days<20:
-        lines.append(f"• 20거래일 평균 산출 전 · 누적 {days}/20거래일")
-    lines.append("• 같은 날짜 수정본은 하루 한 번으로 계산하며, 공식매매 파일 미확보 과거일은 소급 추정하지 않습니다.")
+    # Buy-side averages do not require every sell-side quote to be available.
+    valid = [x for x in history if x.get("buy_complete", x.get("complete"))]
+    if not valid:
+        return ["", "<b>매수 업종 최근 일평균</b>",
+                "• 매수 거래의 종가가 모두 확인된 거래일이 없어 평균 산출 불가"]
+
+    def mean_lines(entries, heading, max_rank=5):
+        n = len(entries)
+        sums=defaultdict(float)
+        for day in entries:
+            for name,value in day.get("buy_usd",{}).items():
+                if name != SECTOR_UNKNOWN:
+                    sums[name]+=float(value)
+        ranked=sorted(sums.items(),key=lambda kv:(-kv[1],kv[0]))
+        out=[heading]
+        if not ranked:
+            out.append("• 분류 확인된 매수 업종이 없습니다.")
+        for i,(sec,total) in enumerate(ranked[:max_rank],1):
+            out.append(f"• {i}위 {html.escape(sec)}: {_amount(total/n,rate,money_fmt)} /거래일")
+        return out
+
+    count=len(valid)
+    lines=["", "<b>매수 업종 최근 일평균 · 펀드 전체 합산</b>"]
+    if count<5:
+        lines += mean_lines(valid, f"• 누적 관측 {count}거래일 기준 임시 평균", 3)
+        lines.append(f"• 5거래일 평균 아직 미산출: {count}/5일 확보")
+    else:
+        lines += mean_lines(valid[-5:], "• 최근 5거래일 업종별 일평균", 5)
+    if count>=20:
+        lines += mean_lines(valid[-20:], "• 최근 20거래일 업종별 일평균", 5)
+    else:
+        lines.append(f"• 20거래일 평균 아직 미산출: {count}/20일 확보")
+    lines.append("• 같은 날짜 수정본은 1거래일로 대체하며, 미확보 과거 자료를 임의 보충하지 않습니다.")
     return lines
 
 
