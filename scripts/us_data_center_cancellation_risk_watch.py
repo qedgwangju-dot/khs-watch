@@ -909,7 +909,8 @@ STATUS.write_text(
     f"- AI 신용경보: **{'감시 활성' if credit_initialized or credit_source_ok else '원천 장애·기준선 보류'}** · 신규 **{len(credit_new)}건** · RSS 응답 **{NEWS_SCAN_HEALTH['ai_credit_rss_ok']}/6** · TRACE 실시간 시세 **미연결**\n"
     f"- 코로케이션 공실률·임대료 신규 보도: **{sum(1 for x in new_items if x.get('theme') == '코로케이션 공실률·임대료 변화')}건** · 자료별 표본 구분\n"
     f"- Morgan Stanley 금융 관점 1회 보강: **{'예' if ms_finance_due else '중복 제외'}** · 실시간 채권시세 미연결\n"
-    f"- 알림: **{'예' if should_alert else '아니오'}**\n    encoding="utf-8",
+    f"- 알림: **{'예' if should_alert else '아니오'}**\n",
+    encoding="utf-8",
 )
 print(
     f"cancellation_risk baseline={BASELINE['phantom_load_pct']}% "
