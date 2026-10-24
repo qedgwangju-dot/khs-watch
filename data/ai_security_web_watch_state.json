@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 25,
+    "material_items": 26,
     "new_material_items": 0,
-    "raw_items": 321,
+    "raw_items": 323,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -715,6 +715,16 @@
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxONVl0SzhGa2IyTHliZXlVSl9jcFY4V1NmUG5YN1F3WWsyUG1jSzhlMzNwZ3M2V2hmZWhfWS1pcFFkYmwtc2RZeTdJLVpRTkwxMmE4YjZkdHV3bUlZenBxeUhUa0tIU0VGeGtyTktPSGt5Z3VnUVRudWZ0VlNzSHJjc3hsY0puM0RTanBmSkJ3?oc=5",
       "vendor": "OpenAI"
     },
+    "99e8521fbbb2b9720f0005ff": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-24T09:52:48.810856+00:00",
+      "published_at": "2026-10-22T21:54:07+00:00",
+      "severity": 3,
+      "source": "Palo Alto Networks",
+      "title": "How Cortex Cloud Protects Against PHP2Shell Vulnerabilities From Code to Cloud - Palo Alto Networks",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOLVdCLUxMajNxel9fVnMxUkpLbUZ6U2Q5NzMwWUJlZXFUQWdob0VfUlBCWGFwQUhDT1hKUEMtV09kNkd5S3JQMDVvNlZBTW93SGxkVkw3ejVLcTl6aWdWLS15YmFSUEhRbmhmS2Y2SmFqSEoxQnpma285U2FVM3hsQzYtaUg4Nzg2bkdBWFJfOUFUMXhHN3hKNzhjTFRIY094ZVh3T0V0Ylpick1jSHhZR0tWMDF4VjNfdWxKblZYUFdPQ0xFbnpXbjN1aGk?oc=5",
+      "vendor": "PHP 재단"
+    },
     "a13afb10ee69417f867e3268": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T15:54:36.269286+00:00",
@@ -1176,5 +1186,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-24T18:47:32+09:00"
+  "updated_at_kst": "2026-10-24T18:52:48+09:00"
 }
