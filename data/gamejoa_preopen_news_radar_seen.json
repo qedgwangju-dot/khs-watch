@@ -87617,6 +87617,32 @@
       "telegram_core_fact": "이란 반관영 메흐르통신에 따르면 아라그치 장관은 이날 이라크 바그다드에서 열린 이슬람협력기구(OIC) 외교장관회의에서 \"이란은 호르무즈 해협의 안전하고 안정적인 항행을 보장한다는 입장을 유지하고 있다\"면서 \"해상 항행 차질과 불안정은 미국과 이스라엘의 공격적 행동, 미국의 봉쇄와 강압적 조치의 결과\"라고 말했다.",
       "title": "이란 외무 \"호르무즈 재개방, 美 선택에 달려…대화 문 열렸다\""
     },
+    "core:d9f6962d8c798b4f0d142fc9": {
+      "first_seen_kst": "2026-10-25T04:28:55+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:28:55+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
+      "source_fact_keys": [
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
+      ],
+      "source_published_kst": "2026-10-25T02:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
+    },
     "core:da023be794757b895d2ac0b8": {
       "first_seen_kst": "2026-10-10T10:14:41+09:00",
       "lanes": {
@@ -121914,31 +121940,28 @@
     "event:d802b72b513d09eaa0391956": {
       "first_seen_kst": "2026-10-25T03:16:17+09:00",
       "lanes": {
-        "live": "2026-10-25T03:16:17+09:00"
+        "live": "2026-10-25T04:28:55+09:00"
       },
-      "last_seen_kst": "2026-10-25T03:16:17+09:00",
-      "link": "https://www.newsis.com/view/NISX20261025_0003839739",
-      "source": "뉴시스",
-      "source_body_digest": "4c9cffc31ec71b226bf6a697743fc063cb43c377df2ba6389d2fb561d07df9f8",
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:cea4d701c15da1d21890ae233b77db99cdaa43d89cac3430aa01e915f39f66d1",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
       "source_fact_keys": [
-        "source_fact:v1:1aab724739df6a890bf16961b5fd9ffcf37df6377c0564d455483b6f3aa34f1e",
-        "source_fact:v1:49300aaf1264c883fc77db6578122ae04686489e181714cb2acc98280935e26a",
-        "source_fact:v1:514d385df45cd904357b92f1cfa5287347f6142a8a839498d29c1cb05029b3a7",
-        "source_fact:v1:579e7277b3ce2ef27f2c3962fc38f1122e831690f7918e164a4eaf46acd4702c",
-        "source_fact:v1:6c78058a671d65740fc3929be76ca84d2835f6f510f5b89ecb52ee6f2985733f",
-        "source_fact:v1:7234052e8094ab750e243cf5f0af1ef0344351e1e48d18ac270b16908ae03201",
-        "source_fact:v1:7309b2eb651b5b1139b4487ae0ce58ff3d372d9dc42e703fc2988eab24659b07",
-        "source_fact:v1:af1cef54af62732b8c6b6dd0e1bb9c6b4b506ea941a76424e9656d0067f2b79a",
-        "source_fact:v1:b7f05aba7a19ebf35a4d84038bcb6e7d18c1d7cc2837634dbf404b61402dd54e",
-        "source_fact:v1:f509f7242a6ed33899082a55566392eadbb2fa03f456376a146250eac1bec43d"
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
       ],
-      "source_published_kst": "2026-10-25T02:50+09:00",
+      "source_published_kst": "2026-10-25T02:05+09:00",
       "source_supply_terms": {},
-      "source_title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화",
-      "telegram_core_fact": "AFP통신 등에 따르면 사우디 주도 연합군은 이날 후티 반군이 사우디 서부 도시 타이프와 얀부를 향해 발사한 탄도미사일 2발을 요격해 파괴했다고 밝혔다. 후티 반군이 운영하는 알마시라 방송은 사우디가 예멘 수도 사나와 홍해 연안 항구도시 호데이다를 잇달아 공습해 최소 16명이 숨졌다고 보도했다.",
-      "title": "사우디·예멘 후티, 미사일·공습 맞대응…충돌 격화"
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
     },
     "event:d812265cdfa6d6eb53781072": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -159031,6 +159054,32 @@
       "source_title": "AI 투자 불안에 나스닥 2.6% 급락…반도체지수 6.7%↓ [뉴욕증시 브리핑]",
       "telegram_core_fact": "메타는 시장 예상을 뛰어넘는 3분기 실적을 발표했지만, AI 투자 확대에 필요한 자금을 확보하기 위해 의결권 없는 새로운 종류의 주식을 발행할 계획이라고 밝혔다.",
       "title": "AI 투자 불안에 나스닥 2.6% 급락…반도체지수 6.7%↓ [뉴욕증시 브리핑]"
+    },
+    "fact:4f211e5ddc0922393dbd740e": {
+      "first_seen_kst": "2026-10-25T04:28:55+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:28:55+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
+      "source_fact_keys": [
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
+      ],
+      "source_published_kst": "2026-10-25T02:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
     },
     "fact:4f3cee43967883b9a0571878": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
@@ -322191,6 +322240,32 @@
       "telegram_core_fact": "미국 반도체 패키징 기업 앰코테크놀로지와 한국 내 생산시설 확충을 지원하는 13억달러 신규 계약을 체결하고, 미국에서는 반도체 검사시설 구축에 11억달러를 지원한다.",
       "title": "엔비디아·앰코, 韓 패키징 증설에 13억달러 계약…美도 확대"
     },
+    "link:942017396245b4ee51d98e83": {
+      "first_seen_kst": "2026-10-25T04:28:55+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:28:55+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
+      "source_fact_keys": [
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
+      ],
+      "source_published_kst": "2026-10-25T02:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
+    },
     "link:9420bc0a6b179b2a7f6d23f7": {
       "first_seen_kst": "2026-10-22T06:06:48+09:00",
       "lanes": {
@@ -470745,6 +470820,32 @@
       "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
       "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
     },
+    "original:9cfb097d7b632acf54f97b3d": {
+      "first_seen_kst": "2026-10-25T04:28:55+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:28:55+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
+      "source_fact_keys": [
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
+      ],
+      "source_published_kst": "2026-10-25T02:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
+    },
     "original:9d00132582c45c327ac81bc4": {
       "first_seen_kst": "2026-10-21T18:59:41+09:00",
       "lanes": {
@@ -599253,6 +599354,32 @@
       "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
       "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
       "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
+    },
+    "source_fact:20a5cd15b249837bc19c75ab": {
+      "first_seen_kst": "2026-10-25T04:28:55+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:28:55+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
+      "source_fact_keys": [
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
+      ],
+      "source_published_kst": "2026-10-25T02:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
     },
     "source_fact:20a67fa8cbd47b100a559e9f": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
@@ -780692,6 +780819,32 @@
       "telegram_core_fact": "반면 국민의힘이 주장하는 54조원은 씨티글로벌마켓증권이 레버리지 ETF 시장의 규모 변화와 신규 자금 유입 등을 이용해 추정한 금액이다.",
       "title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?"
     },
+    "source_fact:6d16156ef7ad189f1d462cc3": {
+      "first_seen_kst": "2026-10-25T04:28:55+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:28:55+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
+      "source_fact_keys": [
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
+      ],
+      "source_published_kst": "2026-10-25T02:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
+    },
     "source_fact:6d199b929a884dc60ffa7817": {
       "first_seen_kst": "2026-10-17T10:36:25+09:00",
       "lanes": {
@@ -812592,6 +812745,32 @@
       "source_title": "대신운용, 고배당 펀드 출시 일주일 만에 설정액 1천억 돌파 | 연합뉴스",
       "telegram_core_fact": "지난 6일 출시된 이 펀드는 배당과 자사주 매입 등 주주환원에 적극적인 기업 가운데 저평가된 우량주를 골라 투자한다.",
       "title": "대신운용, 고배당 펀드 출시 일주일 만에 설정액 1천억 돌파 | 연합뉴스"
+    },
+    "source_fact:7ae8d8b2dcb456897b872516": {
+      "first_seen_kst": "2026-10-25T04:28:55+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:28:55+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
+      "source_fact_keys": [
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
+      ],
+      "source_published_kst": "2026-10-25T02:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
     },
     "source_fact:7aed573d498e6705ed5c1cbd": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
@@ -894275,6 +894454,32 @@
       "telegram_core_fact": "전세 거래가 위축된 배경으로는 전세자금대출 규제 강화와 신규 입주물량 감소, 기존 세입자의 계약 갱신 확대 등이 꼽힌다.",
       "title": "서울 아파트 월세 비중 첫 50% 돌파…전세 거래 급감에 '역전' [종합]"
     },
+    "source_fact:9ebe48f93f6bc178c8df1f67": {
+      "first_seen_kst": "2026-10-25T04:28:55+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:28:55+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
+      "source_fact_keys": [
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
+      ],
+      "source_published_kst": "2026-10-25T02:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
+    },
     "source_fact:9ec28c54ac72dac0b4feb471": {
       "first_seen_kst": "2026-10-22T21:42:35+09:00",
       "lanes": {
@@ -959880,6 +960085,32 @@
       "telegram_core_fact": "엔스케일은 앞서 미국 증권거래위원회(SEC)에 제출한 IPO 신청서에서 모나크 데이터센터 단지가 완공 시 총 전력 용량을 8기가와트 이상으로 확대할 수 있도록 설계됐고, 앤트로픽과 446억달러 AI 인프라 공급 계약을 체결했다고 밝힌 바 있다.",
       "title": "\"英 엔스케일, 앤트로픽과 추가계약 논의\"…IPO 연기 우려 해소되나"
     },
+    "source_fact:ba6a90b0854a0c1e2723fe38": {
+      "first_seen_kst": "2026-10-25T04:28:55+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:28:55+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
+      "source_fact_keys": [
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
+      ],
+      "source_published_kst": "2026-10-25T02:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
+    },
     "source_fact:ba786e6b551b6cccffd49022": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
@@ -997353,6 +997584,32 @@
       ],
       "source_published_kst": "2026-10-06T18:00+09:00",
       "title": "박스피 갇힌 코스피, 11월 연말 랠리 올까?"
+    },
+    "source_fact:ca2d3e7a54d15ce0deac7c9e": {
+      "first_seen_kst": "2026-10-25T04:28:55+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:28:55+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
+      "source_fact_keys": [
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
+      ],
+      "source_published_kst": "2026-10-25T02:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
     },
     "source_fact:ca30945777cf2053e734433d": {
       "first_seen_kst": "2026-10-21T07:55:35+09:00",
@@ -1088507,6 +1088764,32 @@
       "source_title": "유니클로, 엔저·원가 상승에 일본 내 가격 평균 4% 인상 | 연합뉴스",
       "telegram_core_fact": "일본 의류 브랜드 유니클로가 원재료비 상승과 엔화 약세의 영향으로 올 가을·겨울 상품의 일본 내 가격을 평균 약 4% 인상한다고 밝혔다. 그간 대량 생산을 통해 높은 원가를 흡수해왔으나, 엔저 영향으로 가격 인상을 단행한 것으로 풀이된다.",
       "title": "유니클로, 엔저·원가 상승에 일본 내 가격 평균 4% 인상 | 연합뉴스"
+    },
+    "source_fact:f108a3293b55e92ed5b25cdd": {
+      "first_seen_kst": "2026-10-25T04:28:55+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:28:55+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
+      "source_fact_keys": [
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
+      ],
+      "source_published_kst": "2026-10-25T02:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
     },
     "source_fact:f11144be5264218fba68ef7f": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
@@ -1211032,6 +1211315,32 @@
       "telegram_core_fact": "램리서치(LRCX)가 9월 27일 종료된 2027회계연도 1분기(9월 분기) 매출액이 82억2000만 달러로 전년비 54% 증가했고, GAAP 기준 희석 주당순이익은 2.19달러로 전년 동기(1.24달러)보다 77% 늘었다고 10월 21일 발표했다.",
       "title": "램리서치, 1분기 매출액 82억 달러..전년비 54% 증가"
     },
+    "title:9cfb097d7b632acf54f97b3d": {
+      "first_seen_kst": "2026-10-25T04:28:55+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:28:55+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:28:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "74a6aa0885a4508060687d2b9ac2b87251b225a00cad70a9f418ac93eca6d8de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f51bba047af148a92df72a5114395b0f7e2fe68e25927af0920e755661ca00b7",
+      "source_fact_keys": [
+        "source_fact:v1:52a9b57fb731287e192f6f9beada1b1efcb49af401275bc3e6593caf03b03a8a",
+        "source_fact:v1:6817f4e45ba72a225fee87d807ab5233cf58d58d0b3fd20c57d9f3b291d715fd",
+        "source_fact:v1:6b59cbdd7f439eeb2bbc8cbe35e828499ca48891e4ac5fb436389638b03c52b2",
+        "source_fact:v1:77804d0c74cc62d6a76d1d914627f6dde061e43d43602a375283816961f8d3fb",
+        "source_fact:v1:83f2b33c0f996354c1fb71952fc493ecd62079c979e81da1d4b50d76697d04b9",
+        "source_fact:v1:95df3983dda21ff96b6948277f673527ea9e9d56f135b082b8f7091373e1910c",
+        "source_fact:v1:ba3f5bee76f65bd6fedee240304d2e3e1dfd03c67e593d7cfdf3e98a85aefd9e"
+      ],
+      "source_published_kst": "2026-10-25T02:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스",
+      "telegram_core_fact": "예멘의 친이란 반군 후티가 사우디아라비아의 대규모 공습에 대한 보복으로 리야드 킹 칼리드 국제공항과 핵심 에너지 인프라인 동서 원유 송유관을 전격 타격했다고 24일(현지시간) 밝혔다.",
+      "title": "후티 반군 \"사우디 수도 리야드 공항·동서 송유관 등 타격\" | 연합뉴스"
+    },
     "title:9d00132582c45c327ac81bc4": {
       "first_seen_kst": "2026-10-21T18:59:41+09:00",
       "lanes": {
@@ -1265685,5 +1265994,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-25T04:07:21+09:00"
+  "updated_at_kst": "2026-10-25T04:28:55+09:00"
 }
