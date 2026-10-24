@@ -5716,4 +5716,50 @@ assert sum(x.get("published")==_ipo_stamp and x.get("group")=="hyundai_atlas_rol
 assert any(x.get("key") == "other-day-event" for x in _ipo_selection), _ipo_selection
 assert any(x.get("key") == "distinct-news" for x in _ipo_selection), _ipo_selection
 
+
+# 2026-10-25 physical-AI verified transitions, stale press recaps and first-party gates.
+_now_robot26 = base.NOW
+try:
+    base.NOW = dt.datetime(2026,10,25,3,0,tzinfo=dt.timezone.utc)
+    _robot26_keys = set()
+    for event_id in watcher.R26_PRIORITY:
+        event = watcher.R26_EVENTS[event_id]
+        rows = watcher.query_news(watcher.R26_PREFIX + event_id)
+        assert len(rows) == 1, (event_id, rows)
+        row = rows[0]
+        group,points,cat,event_key = classify(row)
+        assert group == event["group"] and points >= 11 and cat == event["category"], (event_id,group,points,cat)
+        assert base.meaning(cat) and base.risk(cat) and base.verification(row,group,row["description"])
+        assert event_key not in _robot26_keys, "distinct milestones must never share state key"
+        _robot26_keys.add(event_key)
+        duplicate = dict(row, link="https://example.com/another-republished-link",
+                         source="검증 없는 금융 블로그", r26_verified=False)
+        dgroup,dscore,dcat,dkey = classify(duplicate)
+        assert dgroup == group and dscore < 11 and dkey == event_key, (event_id,dgroup,dscore,dkey)
+        assert event["stage"] == watcher._r26_stage(row,event_id)
+    # A published product demo is not a supply contract or customer production.
+    _hsb_news = make("LG이노텍 NVIDIA HSB 로봇 카메라 개발 검토",
+                     "300만 화소 HSB 공개와 향후 양산·고객 계약 기대",
+                     "무명테마블로그")
+    g,s,c,k=classify(_hsb_news)
+    assert g == "lge_nvidia_hsb_robot_sensing" and s < 11, (g,s,c)
+    # Official actual milestone must not dedup into the existing launch baseline.
+    _tesla_actual = make("Tesla Optimus Fremont first customer deliveries began",
+                         "Tesla official first external deliveries began for paid factory customers.",
+                         "Tesla")
+    g,s,c,k = classify(_tesla_actual)
+    assert g == "tesla_optimus_q3_fremont" and s >= 11, (g,s,c)
+    assert k != base.key(watcher.query_news(watcher.R26_PREFIX+"tesla_fremont")[0])
+    # Aspirational dates and 2028 Shanghai factory target do not create later stages.
+    _policy_plan = make("상하이 산업서비스 AI 2027~2028년 지원",
+                        "上海 工业服务业 人工智能 每项目最高2000万元 拟部署机器人8000台",
+                        "자체 블로그")
+    g,s,c,k=classify(_policy_plan)
+    assert g == "shanghai_physical_ai_2027_policy" and s < 11, (g,s,c)
+    base.NOW = dt.datetime(2026,10,31,3,0,tzinfo=dt.timezone.utc)
+    for event_id in watcher.R26_PRIORITY:
+        assert watcher.query_news(watcher.R26_PREFIX+event_id)==[],event_id
+finally:
+    base.NOW=_now_robot26
+
 print("Physical-AI watcher regression guards: PASS")

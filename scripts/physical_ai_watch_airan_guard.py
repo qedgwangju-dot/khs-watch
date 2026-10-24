@@ -7387,6 +7387,387 @@ for _q in (
     if _q not in base.QUERIES:base.QUERIES.append(_q)
 
 
+
+# 2026-10-21..23 evidence-locked milestone upgrades on the EXISTING robot route.
+# These are dated initial changes, not a free license to re-alert press rewrites.
+# No new workflow, Telegram destination, state file or scheduling configuration.
+R26_PREFIX = "DIRECT_ROBOT_OCT25_MILESTONE_"
+R26_EVENTS = {
+    "tesla_fremont": {
+        "group": "tesla_optimus_q3_fremont",
+        "stage": "production_quality_started",
+        "source": "Tesla SEC filing",
+        "title": "테슬라 Optimus 프리몬트 양산용 라인 생산 개시 · 판매량 미확인",
+        "link": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026066738/exhibit9914.htm",
+        "description": (
+            "2026-10-21 Tesla Q3 2026 공식 실적자료: Optimus production began "
+            "on high-volume lines at Fremont; first production-quality units. "
+            "이는 로봇 양산급 제조공정의 생산 개시이지 주당 2만대 달성이나 "
+            "외부 고객 인도가 아니다. 생산 대수, 수율, 손의 수명, 실제 무인 "
+            "작업 성공률, 고객 구매계약과 인식 매출은 미공개다. "
+            "Optimus Academy 1만~2만대와 AI5 2027년 4월경 탑재, "
+            "2027년 말 외부 판매는 어닝콜 전망과 계획으로 분리한다. "
+            "테슬라의 2026년 CAPEX 공시 전망은 250억달러 초과에서 "
+            "200억달러 초과로 낮아졌다. 새로운 확정 지출액 200억달러는 "
+            "아니며 2026년 1~9월 실제 자본지출은 130억1천만달러다. "
+            "한국 부품 기업의 테슬라 직접 공급계약은 별도 공식 검증 필요."
+        ),
+        "category": "테슬라 · 프리몬트 Optimus 양산 품질 생산 개시",
+        "meaning": (
+            "대량생산용 설비에서 첫 양산 품질 로봇을 제조하기 시작했습니다. "
+            "2026년 설비투자 하한 전망은 250억달러(약 33조1,150억원) 초과에서 "
+            "200억달러(약 26조4,920억원) 초과로 조정됐습니다. "
+            "현재 로봇 생산·판매 대수와 외부 고객 매출은 확인되지 않았습니다. "
+            "주당 생산량→수율→고객 검증→유상 인도의 순서로 추적합니다."
+        ),
+        "risk": (
+            "로봇 손·액추에이터 수명, 실작업 실패·안전, 생산 수율과 검사시간이 "
+            "병목입니다. 1~2만대 학습용 물량과 주당 2만대는 실적이 아닌 목표이며, "
+            "AI5 및 외부 인도 일정 지연은 6~12개월 조기경보입니다."
+        ),
+    },
+    "lge_hsb": {
+        "group": "lge_nvidia_hsb_robot_sensing",
+        "stage": "official_hsb_product_unveiled",
+        "source": "LG이노텍",
+        "title": "LG이노텍·엔비디아, HSB 탑재 300만 화소 카메라·MVS 공식 공개",
+        "link": "https://news.lginnotek.com/1675",
+        "description": (
+            "2026-10-22 LG이노텍 공식 보도자료. GTC Berlin에서 NVIDIA "
+            "Holoscan Sensor Bridge(HSB) 적용 300만 화소 카메라 및 "
+            "멀티모달 비전 시스템(MVS)을 공개했다. 카메라·라이다·레이더 "
+            "센서데이터를 CPU를 우회해 AI 컴퓨터로 전달한다. "
+            "LG이노텍의 기존 북미 로봇 고객용 카메라 모듈 양산과 "
+            "새 HSB 제품 양산은 다른 사실이다. "
+            "2027년 CES·GTC 추가 솔루션 공개는 계획이고, "
+            "이번 HSB 제품의 실명 고객, 양산 출하 물량, 매출은 미공개다."
+        ),
+        "category": "LG이노텍·엔비디아 · HSB 센싱 제품 공식 공개",
+        "meaning": (
+            "300만 화소 카메라와 카메라·라이다·레이더 통합 인지장치를 "
+            "NVIDIA HSB에 연결한 실물 제품을 공개했습니다. "
+            "기존 북미 로봇 고객 카메라 양산은 확인되지만 HSB 신제품의 "
+            "확정 공급계약·납품대수·매출은 분리해 확인해야 합니다."
+        ),
+        "risk": (
+            "센서 동기화·지연시간·발열·전력·정렬·신뢰성·고객 인증이 병목입니다. "
+            "2027년 신제품 공개 계획을 2026년 고객 양산으로 승격하지 않습니다."
+        ),
+    },
+    "mobilint_lge": {
+        "group": "mobilint_lge_humanoid_npu",
+        "stage": "government_rd_selected",
+        "source": "한국산업기술기획평가원 보도자료 소개",
+        "title": "모빌린트·LG전자·노타 휴머노이드용 NPU 국책 연구개발 과제 확인",
+        "link": "https://www.keit.re.kr/board.es?act=view&bid=0007&list_no=128498&mid=a10201010000",
+        "description": (
+            "2026-10-22 보도와 한국산업기술기획평가원의 기사 소개. "
+            "산업통상부 K-온디바이스 AI 반도체 기술개발사업의 "
+            "휴머노이드용 AI 가속기 세부과제. 모빌린트가 NPU·가속기 "
+            "모듈·소프트웨어를 개발하며 LG전자 휴머노이드에 적용 검증을 "
+            "계획하고 노타가 AI 모델 최적화에 참여한다. "
+            "연구개발 선정은 로봇 양산 납품 또는 유상 매출이 아니다. "
+            "세부 과제 보조금과 고객 계약액은 확인되지 않았다."
+        ),
+        "category": "모빌린트·LG전자·노타 · 휴머노이드 NPU 연구개발 단계",
+        "meaning": (
+            "LG전자 수요 로봇 환경과 국내 NPU·모델 최적화 기업이 연결된 "
+            "구체적인 국책 연구개발입니다. 향후 샘플→전력·발열 검증→"
+            "로봇 제어 신뢰성→고객 승인→유상 양산계약 순서로 확인합니다."
+        ),
+        "risk": (
+            "배터리 전력한도, NPU 발열·추론 지연, VLM·VLA 동시 실행, "
+            "보행진동 신뢰성, 실시간 안전제어가 실패모드입니다. "
+            "LG전자 시험 완료 전까지 매출 확정으로 보지 않습니다."
+        ),
+    },
+    "nvidia_flora": {
+        "group": "nvidia_flora_robot_data",
+        "stage": "official_open_model_release",
+        "source": "NVIDIA Research",
+        "title": "NVIDIA Flora 로봇 학습자료 자동 주석 기술 공식 공개",
+        "link": "https://research.nvidia.com/labs/gear/flora/",
+        "description": (
+            "NVIDIA Research 공식 Flora 공개. 로봇 학습용 영상에 "
+            "시간표지 설명, 행동 성공 여부, 실패 원인 등을 주석화하는 "
+            "오픈 모델 묶음이다. 회사는 GB300 가속기 512개를 활용해 "
+            "하루 영상 20만 시간에 주석을 달았고 특정 비교 API 대비 "
+            "약 125배 낮은 비용을 제시했다. "
+            "이는 로봇 제조비 125분의 1이나 GPU 서버 512대가 아니며 "
+            "유상 고객계약·상용 로봇 매출도 미공개다."
+        ),
+        "category": "엔비디아 · Flora 로봇 학습자료 모델 공개",
+        "meaning": (
+            "하루 영상 20만 시간을 GB300 가속기 512개로 주석 처리한 "
+            "엔비디아 연구 성과입니다. 약 125배 비용 차이는 특정 "
+            "상용 API와의 자동 주석 비용 비교로 로봇 생산비와 무관합니다."
+        ),
+        "risk": (
+            "잘못된 행동 성공 판정·학습자료 편향·현실 작업 전이 실패와 "
+            "다른 환경에서의 재현성 검증이 필요합니다. "
+            "오픈소스 공개와 유상 반복매출을 분리합니다."
+        ),
+    },
+    "shanghai_policy": {
+        "group": "shanghai_physical_ai_2027_policy",
+        "stage": "official_action_plan_published",
+        "source": "상하이시 경제정보화위원회",
+        "title": "상하이 2027~2028년 산업서비스 AI 계획 공식 공포 · 과제별 최대 2천만 위안",
+        "link": "https://www.sheitc.sh.gov.cn/cyfz/20261023/60be152d6aa74cc7a4f91ce0504c4d82.html",
+        "description": (
+            "2026-10-23 상하이시 경제정보화위원회 공식 계획. "
+            "산업서비스업 AI 도입 관련 세계모델·멀티모달 물리인지·"
+            "로봇 자율의사결정 등 연구개발에 과제당 최고 2000만 위안 "
+            "지원 가능. 지급 완료 금액이나 시 전체 총예산이 아니다. "
+            "2028년 공장 내 휴머노이드 8000대 배치는 10월 16일 공개된 "
+            "별도 차세대 지능형 제조 실행계획의 목표이며 새 확정 발주가 "
+            "아니다. 향후 공고·심사·수혜기업 선정·조달·실제 배치를 추적."
+        ),
+        "category": "상하이 · 산업서비스 AI 2027~2028년 정책 공포",
+        "meaning": (
+            "물리적 AI·세계모델·산업용 AI 소프트웨어 등 해당 분야에서 "
+            "과제별 지원 상한 2천만 위안(약 39억7,920만원)을 제시했습니다. "
+            "8천대는 별도 기존 정책의 2028년 배치 목표이지 낙찰 대수가 아닙니다."
+        ),
+        "risk": (
+            "정부 모집공고·자격·지방 재정 집행·기술 검증·현장 안전인증·"
+            "공장 설치 시차 때문에 배정과 실제 로봇 구매는 다릅니다."
+        ),
+    },
+    "raon_factory": {
+        "group": "raon_wafer_robot_yongin_factory",
+        "stage": "actual_factory_groundbreaking",
+        "source": "라온로보틱스 발표·디일렉",
+        "title": "라온로보틱스 용인 웨이퍼 이송로봇 신공장 실제 착공",
+        "link": "https://www.thelec.kr/news/articleView.html?idxno=64213",
+        "description": (
+            "2026-10-20 용인공장 실제 착공, 10월 23일 회사 제공 "
+            "현장사진과 복수 보도로 확인. 투자총액 약 600억원, "
+            "이전 8월 공시 토지매입 약 274억원은 총액과 중복 합산하지 "
+            "않는다. 연면적 23861제곱미터, 기존 수원사업장 약 3배 크기. "
+            "2027년 말 준공, 2028년 초 이전은 목표. "
+            "반도체 웨이퍼 이송로봇 사업이며 Tesla Optimus 공급계약 "
+            "또는 휴머노이드 부품 양산과 무관하다. 향후 실제 증설 "
+            "생산능력·고객수주·가동률과 차입·감가상각을 분리해 확인."
+        ),
+        "category": "라온로보틱스 · 용인 이송로봇 신공장 실제 착공",
+        "meaning": (
+            "총투자계획 약 600억원, 기존 사업장 대비 3배 규모의 "
+            "웨이퍼 이송로봇 신공장을 착공했습니다. "
+            "기존 토지매입 공시 약 274억원은 총액의 일부이지 추가 "
+            "사업비가 아닙니다. 준공 목표는 2027년 말입니다."
+        ),
+        "risk": (
+            "2026년 상반기 현금성자산 약 85억원 보도 대비 투자액이 "
+            "크므로 차입·공사비·감가상각과 수주 대비 가동률을 봅니다. "
+            "웨이퍼 이송로봇을 테슬라 휴머노이드 직접 공급으로 분류하지 않습니다."
+        ),
+    },
+}
+R26_PRIORITY = [
+    "tesla_fremont", "lge_hsb", "mobilint_lge",
+    "shanghai_policy", "raon_factory", "nvidia_flora",
+]
+R26_PRESS = {
+    "tesla_fremont": {"Tesla", "Tesla Investor Relations", "Tesla SEC filing"},
+    "lge_hsb": {"LG이노텍", "LG Innotek", "LG Innotek Newsroom"},
+    "mobilint_lge": {"모빌린트", "Mobilint", "LG전자", "LG Electronics"},
+    "nvidia_flora": {"NVIDIA", "NVIDIA Research"},
+    "shanghai_policy": {"상하이시 경제정보화위원회", "上海市经济和信息化委员会"},
+    "raon_factory": {"라온로보틱스", "Raon Robotics"},
+}
+R26_SEARCHES = [
+    '(Tesla OR 테슬라) (Optimus OR 옵티머스) (Fremont OR 프리몬트) (production-quality OR 생산개시 OR 양산품질 OR 실제 출하 OR 수율)',
+    '(Tesla OR 테슬라) (Optimus OR 옵티머스) (AI5 OR Academy OR 외부 고객 인도) (탑재 완료 OR 고객계약 체결 OR actually delivered OR completed)',
+    '(LG이노텍 OR LG Innotek) (NVIDIA OR 엔비디아) (HSB OR Holoscan Sensor Bridge OR 멀티모달 비전) (공급계약 OR 양산 OR 고객검증 OR 2027)',
+    '(모빌린트 OR Mobilint) (LG전자 OR LG Electronics) (휴머노이드 OR humanoid) (NPU OR 가속기) (검증 완료 OR 유상계약 OR 고객 승인 OR 양산)',
+    '(NVIDIA OR 엔비디아) (Flora OR 플로라) (로봇 데이터 OR 주석 OR 20만시간 OR 512 GB300 OR 실제 상용)',
+    '(上海 OR 상하이 OR Shanghai) (工业服务业 OR 산업서비스업 OR industrial services) (物理AI OR 피지컬AI OR 具身智能) (2000万元 OR 2천만위안 OR 实际拨付 OR 보조금)',
+    '(라온로보틱스 OR Raon Robotics) (용인 OR Yongin) (신공장 OR factory OR 600억원) (착공 OR 실제 가동 OR 준공 OR 투자변경)',
+]
+
+def _r26_match(text: str) -> str:
+    t = text.casefold()
+    if (("tesla" in t or "테슬라" in t)
+        and ("optimus" in t or "옵티머스" in t)
+        and (any(k in t for k in ("fremont", "프리몬트", "production-quality"))
+             or any(k in t for k in ("외부 첫 인도 완료", "first external deliveries began",
+                                      "ai5 integration completed", "ai5 실제 탑재 완료")))):
+        return "tesla_fremont"
+    if ("lg이노텍" in t or "lg innotek" in t) and any(
+            k in t for k in ("hsb", "holoscan sensor bridge", "멀티모달 비전")):
+        return "lge_hsb"
+    if ("모빌린트" in t or "mobilint" in t) and ("lg전자" in t or "lg electronics" in t) and any(
+            k in t for k in ("npu", "휴머노이드", "humanoid")):
+        return "mobilint_lge"
+    if ("nvidia" in t or "엔비디아" in t) and ("flora" in t or "플로라" in t):
+        return "nvidia_flora"
+    if (any(k in t for k in ("上海", "상하이", "shanghai"))
+        and any(k in t for k in ("工业服务业", "산업서비스", "industrial service"))
+        and any(k in t for k in ("ai", "人工智能", "物理ai", "피지컬"))):
+        return "shanghai_policy"
+    if ("라온로보틱스" in t or "raon robotics" in t) and any(
+            k in t for k in ("용인", "yongin")) and any(
+            k in t for k in ("공장", "factory")):
+        return "raon_factory"
+    return ""
+
+def _r26_stage(item: dict, eid: str) -> str:
+    if item.get("r26_stage"):
+        return item["r26_stage"]
+    text = " ".join(str(item.get(k) or "") for k in ("title","description"))
+    source = str(item.get("source") or "")
+    if source not in R26_PRESS[eid]:
+        return R26_EVENTS[eid]["stage"]
+    if eid == "tesla_fremont":
+        if re.search(r"first external deliveries began|외부 첫 인도 완료|외부 고객.{0,35}첫 인도 완료", text, re.I):
+            return "first_customer_deliveries_actual"
+        if re.search(r"AI5 integration completed|AI5 실제 탑재 완료", text, re.I):
+            return "ai5_real_integration"
+        if re.search(r"(?:주당 2만대|20,?000 robots per week).{0,50}(?:실제 달성|achieved)", text, re.I):
+            return "weekly_20000_actually_achieved"
+    if eid == "lge_hsb" and re.search(
+        r"(?:HSB|Holoscan Sensor Bridge|MVS).{0,100}"
+        r"(?:유상 공급계약 체결|실제 양산 시작|signed supply contract|mass production began)", text, re.I
+    ):
+        return "hsb_customer_order_or_sop_actual"
+    if eid == "mobilint_lge" and re.search(
+        r"LG전자.{0,90}(?:고객 검증 완료|성능 검증 통과|유상 납품계약 체결)"
+        r"|NPU.{0,70}(?:실제 양산 시작|mass production began)", text, re.I
+    ):
+        return "lge_robot_npu_qualification_or_order"
+    if eid == "nvidia_flora" and re.search(
+        r"(?:Flora|플로라).{0,120}(?:유상 상용 계약 체결|paid production deployment confirmed)", text, re.I
+    ):
+        return "flora_paid_customer_actual"
+    if eid == "shanghai_policy" and re.search(
+        r"(?:보조금|지원금|资助).{0,65}(?:실제 지급 완료|拨付完成|grant disbursed)", text, re.I
+    ):
+        return "named_grant_disbursed"
+    if eid == "raon_factory" and re.search(
+        r"신공장.{0,65}(?:준공 완료|정식 가동 개시|공장 실제 가동 시작)"
+        r"|new factory.{0,65}(?:commissioned|began operation)", text, re.I
+    ):
+        return "new_factory_operational_actual"
+    return R26_EVENTS[eid]["stage"]
+
+_r26_old_query = base.query_news
+_r26_old_group = base.topic_group
+_r26_old_score = base.score
+_r26_old_category = base.category
+_r26_old_key = base.key
+_r26_old_meaning = base.meaning
+_r26_old_risk = base.risk
+_r26_old_verification = base.verification
+_r26_old_tag = base.tag_for
+_r26_old_select = base.select_diverse
+
+def _r26_query(q: str) -> list[dict]:
+    if q.startswith(R26_PREFIX):
+        event_id = q[len(R26_PREFIX):]
+        if event_id not in R26_EVENTS or base.NOW.astimezone(base.KST).date() > dt.date(2026,10,29):
+            return []
+        event = R26_EVENTS[event_id]
+        return [dict(
+            title=event["title"], description=event["description"],
+            link=event["link"], source=event["source"], published=None,
+            r26_verified=True, r26_stage=event["stage"],
+        )]
+    return _r26_old_query(q)
+
+def _r26_group(text: str) -> str | None:
+    name = _r26_match(text)
+    return R26_EVENTS[name]["group"] if name else _r26_old_group(text)
+
+def _r26_score(item: dict) -> int:
+    text = " ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    name = _r26_match(text)
+    if not name:
+        return _r26_old_score(item)
+    if item.get("r26_verified"):
+        return 25
+    if (item.get("source") in R26_PRESS[name]
+        and _r26_stage(item, name) != R26_EVENTS[name]["stage"]):
+        return 21
+    # An article repeating an old plan or a theme name cannot be a new contract.
+    return 0
+
+def _r26_key(item: dict) -> str:
+    text = " ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    name = _r26_match(text)
+    if not name:
+        return _r26_old_key(item)
+    return hashlib.sha256(
+        f"robot26|{name}|{_r26_stage(item, name)}".encode("utf-8")
+    ).hexdigest()
+
+def _r26_category(text: str, group: str) -> str:
+    for name, event in R26_EVENTS.items():
+        if group == event["group"]:
+            return event["category"]
+    return _r26_old_category(text, group)
+
+def _r26_meaning(category: str) -> str:
+    for event in R26_EVENTS.values():
+        if category == event["category"]:
+            return event["meaning"]
+    return _r26_old_meaning(category)
+
+def _r26_risk(category: str) -> str:
+    for event in R26_EVENTS.values():
+        if category == event["category"]:
+            return event["risk"]
+    return _r26_old_risk(category)
+
+def _r26_verification(item: dict, group: str, text: str) -> str:
+    for name, event in R26_EVENTS.items():
+        if group == event["group"]:
+            if item.get("r26_verified"):
+                return ("1차 출처 또는 회사 발표 기반 복수 매체 확인 · "
+                        "계약·매출 단계는 별도 검증")
+            return "회사 공식 후속 이정표 · 계획과 실제 완료 분리 확인 필요"
+    return _r26_old_verification(item, group, text)
+
+def _r26_tag(group: str) -> str:
+    tags = {
+        "tesla_optimus_q3_fremont": "테슬라",
+        "lge_nvidia_hsb_robot_sensing": "LG이노텍",
+        "mobilint_lge_humanoid_npu": "모빌린트",
+        "nvidia_flora_robot_data": "엔비디아",
+        "shanghai_physical_ai_2027_policy": "상하이 정책",
+        "raon_wafer_robot_yongin_factory": "라온로보틱스",
+    }
+    return tags.get(group) or _r26_old_tag(group)
+
+def _r26_select(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
+    chosen = _r26_old_select(items, seen, force, limit)
+    candidates = items if force else [x for x in items if x.get("key") not in seen]
+    # Prevent six confirmed dated upgrades from being buried under repeated
+    # investment-commentary stories. All selections still respect seen keys.
+    for name in reversed(R26_PRIORITY):
+        group = R26_EVENTS[name]["group"]
+        hit = next((x for x in candidates if x.get("group") == group and
+                    x.get("score", 0) >= 11), None)
+        if hit and not any(x.get("key") == hit.get("key") for x in chosen):
+            chosen = [hit] + chosen
+            chosen = chosen[:limit]
+    return chosen
+
+base.query_news = _r26_query
+base.topic_group = _r26_group
+base.score = _r26_score
+base.key = _r26_key
+base.category = _r26_category
+base.meaning = _r26_meaning
+base.risk = _r26_risk
+base.verification = _r26_verification
+base.tag_for = _r26_tag
+base.select_diverse = _r26_select
+for _q in [*(R26_PREFIX + k for k in R26_EVENTS), *R26_SEARCHES]:
+    if _q not in base.QUERIES:
+        base.QUERIES.append(_q)
+
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()
