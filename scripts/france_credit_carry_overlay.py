@@ -332,9 +332,15 @@ def format_event(rating: dict, events: list[dict], pending: dict,
     elif any(x["kind"] == "government_rating_notice" for x in events):
         notice = next(x for x in events if x["kind"] == "government_rating_notice")
         name = "프랑스 재무부의 Moody’s 신용등급 관련 공식 입장"
-        status = (f"{notice['date']} 프랑스 재무부의 Moody’s 관련 공식 보도자료가 공개됐습니다. "
-                  "신용등급과 전망의 최종 확정값은 Moody’s 직접 발표 또는 AFT 최신 자료 "
-                  "검증 전까지 표시하지 않습니다.")
+        government_result = (
+            "프랑스 재무부의 공식 발표는 Moody’s Aa3·부정적 전망 유지를 전합니다. "
+            if notice.get("reported_rating_by_government") == "Aa3"
+            and notice.get("reported_outlook_by_government") == "Negative"
+            else "프랑스 재무부의 공식 보도자료가 공개됐습니다. "
+        )
+        status = (f"{notice['date']} {government_result}"
+                  "이는 정부 발표에 근거한 내용이며 Moody’s 직접 결정문 또는 "
+                  "프랑스 국채관리청 최신 등급표와는 별도로 구분합니다.")
         caveat = "정부의 대응 발표 확인과 Moody’s 신용등급 결정문 직접 확인은 서로 다른 단계입니다."
     elif any(x["kind"] == "milestone" for x in events):
         days = min(x["days"] for x in events if x["kind"] == "milestone")
@@ -513,7 +519,9 @@ def main() -> int:
                 events.append({"kind": "government_rating_notice",
                                "key": key, "date": government_notice["date"],
                                "url": government_notice["url"],
-                               "title": government_notice.get("title", "")})
+                               "title": government_notice.get("title", ""),
+                               "reported_rating_by_government": government_notice.get("reported_rating_by_government"),
+                               "reported_outlook_by_government": government_notice.get("reported_outlook_by_government")})
     if not direct_official and fail_streak >= 4:
         key = "official_rating_source_unavailable:2026-10"
         if key not in delivered:

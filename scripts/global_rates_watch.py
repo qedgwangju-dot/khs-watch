@@ -360,6 +360,15 @@ def pct_change(new: float, old: float) -> float:
     return (new / old - 1.0) * 100.0
 
 
+def ten_year_five_pct_event(event_type: str, yield_pct: float) -> str:
+    """An official close at exactly 5.00% is NOT a yield in the 4% range."""
+    if event_type == "clear" and 0 <= yield_pct < 5.0:
+        return f"미국 10년 국채 5.00% 하향 돌파 → 4%대 진입: {yield_pct:.3f}%"
+    if event_type == "trigger" and yield_pct >= 5.0:
+        return f"미국 10년 국채 5.00% 재돌파 → 5%대 재진입: {yield_pct:.3f}%"
+    raise ValueError("5% boundary event and official yield do not agree")
+
+
 def render_level(level: float) -> str:
     text = f"{level:.2f}"
     return text.rstrip("0").rstrip(".")
@@ -529,7 +538,9 @@ def main() -> int:
         return "5.15% 이하 → 채권 반전 신호 강화"
 
     eval_above("jgb10", [3.00], "일본 10년 JGB")
-    eval_above("ust10", [4.50, 4.70, 4.75], "미국 10년 국채")
+    # 5.00 is a *strict* 4%/5% boundary. Existing previous-value state
+    # initializes the new key, preventing a spurious backfilled alert.
+    eval_above("ust10", [4.50, 4.70, 4.75, 5.00], "미국 10년 국채")
     eval_above("ust30", [5.00, 5.30], "미국 30년 국채")
     # JPM 30Y threshold events have one independent source-of-truth sender:
     # scripts/treasury_30y_jpm_level_alert.py.  Keep this global-rates
@@ -641,6 +652,9 @@ def main() -> int:
         metric = e["metric"]
         if metric == "boe_mpc_decision":
             event_lines.append(f"- {e['label']}")
+            continue
+        if metric == "ust10" and e.get("level") == 5.00:
+            event_lines.append("- " + ten_year_five_pct_event(e["type"], float(e["value"])))
             continue
         if metric == "ust30_jpm":
             direction_ko = "상향 돌파" if e.get("direction") == "up" else "하향 돌파"

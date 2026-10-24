@@ -1,5 +1,7 @@
 import unittest
 
+from global_rates_watch import ten_year_five_pct_event
+
 from global_rates_freshness_guard import (
     annotate_report,
     apply_guard,
@@ -9,6 +11,15 @@ from global_rates_freshness_guard import (
 
 
 class GlobalRatesFreshnessGuardTest(unittest.TestCase):
+    def test_official_ust_5pct_boundary_is_strict_and_bidirectional(self):
+        self.assertIn("4%대 진입: 4.960%", ten_year_five_pct_event("clear", 4.96))
+        self.assertIn("5%대 재진입: 5.000%", ten_year_five_pct_event("trigger", 5.00))
+        self.assertIn("5%대 재진입: 5.010%", ten_year_five_pct_event("trigger", 5.01))
+        with self.assertRaises(ValueError):
+            ten_year_five_pct_event("clear", 5.00)
+        with self.assertRaises(ValueError):
+            ten_year_five_pct_event("trigger", 4.99)
+
     def base(self):
         pending = {
             "last_values": {"jgb2": 1.719, "ust2": 4.34, "us_jp_2y_spread": 2.621, "usdjpy": 159.97, "usdjpy_daily_change_pct": 0.45},

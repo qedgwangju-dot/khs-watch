@@ -16,6 +16,7 @@ from html.parser import HTMLParser
 from zoneinfo import ZoneInfo
 
 SEARCH_URL = "https://presse.economie.gouv.fr/?s=Moody"
+DIRECT_NOTICE_URL = "https://presse.economie.gouv.fr/notation-moodys-reaction-de-roland-lescure/"
 HOST = "presse.economie.gouv.fr"
 PARIS = ZoneInfo("Europe/Paris")
 REVIEW_DATE = dt.date(2026, 10, 23)
@@ -37,7 +38,7 @@ def ministry_search_links(document: str) -> list[tuple[str, str]]:
         label = plain_text(inner)
         if not re.search(r"moody['’]?s|moody", label, re.I):
             continue
-        if not re.search(r"notation|note|rating", label, re.I):
+        if not re.search(r"notation|note|rating|r[eé]action", label, re.I):
             continue
         url = urllib.parse.urljoin(SEARCH_URL, html.unescape(link))
         parsed = urllib.parse.urlsplit(url)
@@ -82,25 +83,43 @@ def validate_ministry_notice(document: str, url: str, now: dt.datetime) -> dict 
         return None
     text = plain_text(document)
     if not (re.search(r"Moody", text, re.I) and
-            re.search(r"notation|note souveraine|rating", text, re.I) and
+            re.search(r"notation|note souveraine|note de la france|rating", text, re.I) and
             re.search(r"\bFrance\b", text, re.I)):
         return None
-    return {
+    notice = {
         "kind": "government_rating_notice",
         "date": published.isoformat(),
         "url": url,
         "source_kind": "official_government_press",
         "source_scope": "French government press statement; not Moody's issuer rating action",
     }
+    # A first-party government quote may report the result, but is not the
+    # rating agency's own source. Do not promote it to official_document.
+    if re.search(r"maintenir\s+la\s+note\s+de\s+la\s+France\s+à\s+Aa3\s+avec\s+perspective\s+n[eé]gative", text, re.I):
+        notice["reported_rating_by_government"] = "Aa3"
+        notice["reported_outlook_by_government"] = "Negative"
+    return notice
 
 
 def discover_ministry_notice(fetch, now: dt.datetime) -> tuple[dict | None, list[str]]:
     errors = []
+    # The official 23 October press title says "Réaction" rather than
+    # "notation": the general search page can miss it. Check its canonical
+    # published URL first; never infer a rating result from HTTP success alone.
+    try:
+        document = fetch(DIRECT_NOTICE_URL)
+        notice = validate_ministry_notice(document, DIRECT_NOTICE_URL, now)
+        if notice:
+            notice["title"] = "Moody's : réaction de Roland Lescure"
+            return notice, errors
+    except Exception as e:
+        errors.append(f"French Finance Ministry direct notice: {type(e).__name__} {str(e)[:110]}")
     try:
         html_index = fetch(SEARCH_URL)
         candidates = ministry_search_links(html_index)
     except Exception as e:
-        return None, [f"French Finance Ministry search: {type(e).__name__} {str(e)[:110]}"]
+        errors.append(f"French Finance Ministry search: {type(e).__name__} {str(e)[:110]}")
+        return None, errors
     for url, title in candidates:
         try:
             candidate = validate_ministry_notice(fetch(url), url, now)
