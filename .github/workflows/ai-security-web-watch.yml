@@ -586,7 +586,42 @@ jobs:
           assert len(cluster_alert_events([normalized, reported, confirmed])) == 3
           title, body = build_alert([[normalized]], dt.datetime(2026, 10, 22, tzinfo=dt.timezone.utc))
           assert all(v in title + body for v in ("CVE-2026-109618", "8.5.12", "실전 악용 확정 아님"))
+          followup = normalize_item({
+              "kind": "official",
+              "title": "PHP informational advisory CVE-2026-115560 session upload progress unpatched",
+              "description": "Separate RCE risk. Next regular release to provide full fix",
+              "source": "PHP Security Team",
+              "url": "https://www.php.net/archive/2026.php#2026-10-23-1",
+          })
+          assert material(followup) and followup["severity"] == 2
+          assert php_critical_stage(followup) == "session_advisory"
+          assert "정기 수정 대기" in incident_fact(followup)
+          misleading = normalize_item({
+              **followup, "kind": "news", "source": "The Hacker News",
+              "title": "PHP Warns of Another Unpatched RCE Two Days After Emergency PHP2Shell Patches",
+          })
+          assert php_critical_stage(misleading) == "session_advisory"
+          eventual_patch = normalize_item({
+              **followup, "title": "PHP security release fixes CVE-2026-115560",
+          })
+          assert php_critical_stage(eventual_patch) == "session_patch_released"
+          assert len(cluster_alert_events([followup, eventual_patch])) == 2
+          exploitation = normalize_item({
+              **followup, "kind": "news", "source": "Reuters",
+              "title": "PHP CVE-2026-115560 actively exploited in the wild",
+          })
+          assert php_critical_stage(exploitation) == "session_exploitation_reported"
+          attempt_count = normalize_item({
+              **patch, "kind": "news", "source": "Reuters",
+              "title": "PHP2Shell 10 million attack attempts recorded by Cloudflare",
+          })
+          assert php_critical_stage(attempt_count) == "attempts_10m_reported"
+          assert "실제 침해 성공 건수와 다름" in incident_fact(attempt_count)
+          assert php_critical_stage({
+              **patch, "title": "PHP2Shell remains unpatched in old unsupported versions",
+          }) == "initial_disclosure"
           print("ai_security_php2shell_stage_and_dedup_regression=PASS")
+          print("ai_security_php_followup_and_attack_attempts_regression=PASS")
           PY
 
       - name: Verify alert overflow deferral

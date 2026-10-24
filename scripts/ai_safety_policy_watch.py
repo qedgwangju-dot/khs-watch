@@ -70,6 +70,8 @@ NEWS_QUERIES = [
     '"사이버보안 특화 AI" 네이버클라우드 과기정통부 NIPA',
     '"특화 인공지능 파운데이션 모델" 사이버 보안 B200',
     '"AI 보안모델" 조달 실증 수주 계약',
+    '"PHP" "사이버위기 경보" (과학기술정보통신부 OR 과기정통부 OR KISA) (상향 OR 하향 OR 해제)',
+    '"PHP" (범부처 종합대책 OR 의무 점검 OR 정부 지원 예산 OR 보안 의무화) (확정 OR 발표 OR 시행)',
     '네이버클라우드 S2W 샌즈랩 LG CNS 사이버보안 AI 계약 실증',
     '"AI 안전연구소" 한국 국제 표준 평가',
     # English company / paid-contract paths.
@@ -140,6 +142,14 @@ NEWS_QUERIES = [
 # These existing stages are silently seeded so syndicated reprints cannot
 # masquerade as a new agreement or an enacted rule.
 POLICY_EVENT_BASELINES = {
+    "php_korea_response:caution_elevated_20261022": {
+        "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148974113",
+        "status": "2026-10-22 12:00 KST: 민간 분야 사이버위기 경보 관심→주의 상향; 기존 기준선",
+    },
+    "php_korea_response:comprehensive_plan_proposed_20261023": {
+        "source_url": "https://imnews.imbc.com/news/2026/econo/article/6860231_36933.html",
+        "status": "2026-10-23 범부처 종합대책 마련·조직 정비 검토 발언; 시행 확정 아님",
+    },
     "cohere_aisle:letter_of_intent_announced": {
         "source_url": "https://cohere.com/blog/cohere-and-aisle-sign-letter-of-intent-to-advance-cyber-resilient-sovereign-ai",
         "status": "2026-10-15 Cohere and AISLE signed an LOI only; no definitive contract, closing, price or incremental revenue confirmed",
@@ -180,7 +190,7 @@ TRUSTED_SOURCE_HINTS = (
     "서울경제", "디지털데일리", "디지털타임스", "the verge",
     "techcrunch", "wired", "securityweek", "palo alto", "unit 42",
     "associated press", "ap news", "guardian", "cbs news", "wall street journal", "wsj",
-    "crowdstrike", "ibm", "nvidia", "microsoft",
+    "crowdstrike", "ibm", "nvidia", "microsoft", "mbc", "ytn",
     "trail of bits", "trailofbits.com", "cnbc",
 )
 
@@ -749,6 +759,38 @@ def trail_of_bits_mna_stage(item: dict) -> str | None:
 
 
 
+def is_php_korea_policy(item: dict) -> bool:
+    text = f" {item.get('title','')} {item.get('description','')} ".lower()
+    return (
+        any(x in text for x in ("php2shell", "php 취약점", "php 보안", "php vulnerability"))
+        and any(x in text for x in (
+            "과기정통부", "과학기술정보통신부", "kisa",
+            "한국인터넷진흥원", "대한민국 정책브리핑", "정부", "사이버위기",
+            "ministry", "cyber alert",
+        ))
+    )
+
+
+def php_korea_publisher_verified(item: dict) -> bool:
+    """Official ministry-branded syndicated news must resolve to the issuer."""
+    if not is_php_korea_policy(item):
+        return True
+    source = str(item.get("source") or "").lower()
+    if not any(x in source for x in (
+        "과기정통부", "과학기술정보통신부", "kisa",
+        "한국인터넷진흥원", "대한민국 정책브리핑",
+    )):
+        return True
+    url = str(item.get("publisher_url") or item.get("url") or "")
+    try:
+        host = (urllib.parse.urlsplit(url).hostname or "").lower()
+    except ValueError:
+        return False
+    return any(host == d or host.endswith("." + d) for d in (
+        "msit.go.kr", "kisa.or.kr", "korea.kr",
+    ))
+
+
 def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     """Classify a new *reported* milestone from the headline, never from a
     speculative paragraph about what could happen. No issuer/legislative
@@ -756,6 +798,29 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     """
     title = str(item.get("title") or "").lower()
     context = f"{item.get('title','')} {item.get('description','')}".lower()
+
+    # The known October 22/23 notices are historical baselines, not fresh
+    # regulations or a second emergency broadcast.
+    if is_php_korea_policy(item):
+        if any(x in title for x in ("사이버위기 경보 해제", "사이버위기경보 해제", "경보 해제", "warning lifted")):
+            return ("php_korea_response", "warning_lifted_reported")
+        if any(x in title for x in ("사이버위기 경보 하향", "경보 하향", "warning lowered")):
+            return ("php_korea_response", "warning_lowered_reported")
+        if any(x in title for x in ("'심각'", "‘심각’", " 심각 단계", "경보 심각", "critical alert")) and any(x in title for x in ("상향", "발령", "raised", "declared")):
+            return ("php_korea_response", "critical_elevated_reported")
+        if any(x in title for x in ("'경계'", "‘경계’", " 경계 단계", "경보 경계", "alert level warning")) and any(x in title for x in ("상향", "발령", "raised", "declared")):
+            return ("php_korea_response", "warning_elevated_reported")
+        if any(x in title for x in ("'주의'", "‘주의’", " 주의 단계", "경보 주의", "alert raised to caution")) and any(x in title for x in ("상향", "발령", "raised")):
+            return ("php_korea_response", "caution_elevated_20261022")
+        if any(x in title for x in ("의무 점검", "점검 의무화", "패치 의무화", "mandatory patch", "mandatory inspection")) and any(x in title for x in ("시행", "확정", "명령", "의무화", "ordered", "enacted")):
+            return ("php_korea_response", "mandatory_remediation_reported")
+        if "종합대책" in title and any(x in title for x in ("확정", "발표", "공표", "시행")) and not any(x in title for x in ("예정", "검토", "마련할", "계획", "추진")):
+            return ("php_korea_response", "comprehensive_plan_released_reported")
+        if any(x in title for x in ("추가 예산 확정", "보안 예산 편성", "긴급 지원금 확정")):
+            return ("php_korea_response", "funding_announced_reported")
+        if "종합대책" in title and any(x in title for x in ("마련할", "마련 필요", "검토", "준비", "계획", "추진")):
+            return ("php_korea_response", "comprehensive_plan_proposed_20261023")
+        return None
 
     # Original Oct-21 collaboration is not a finished Sentry deployment.
     if (
@@ -988,6 +1053,8 @@ def detect_category(text: str) -> str:
         t in low for t in ("subpoena", "complaint", "investigation", "sues", "settlement", "consent order")
     ):
         return "FTC 프런티어 AI 소비자보호 조사·집행 단계"
+    if is_php_korea_policy({"title": text}):
+        return "국내 PHP 보안위기 대응·정책 단계"
     if "cohere" in low and re.search(r"\baisle\b", low):
         return "Cohere–AISLE AI 보안 인수·상용화 단계"
     if "crowdstrike" in low and "nvidia" in low and any(x in low for x in ("falcon guardian", "openshell", "sentry", "bluefield-4")):
@@ -1022,6 +1089,8 @@ def detect_entity(text: str) -> str:
         if "openai" in low and "anthropic" in low:
             return "FTC–OpenAI·Anthropic"
         return "FTC–OpenAI" if "openai" in low else "FTC–Anthropic"
+    if is_php_korea_policy({"title": text}):
+        return "과학기술정보통신부·한국인터넷진흥원"
     if "cohere" in low and re.search(r"\baisle\b", low):
         return "Cohere–AISLE"
     if "crowdstrike" in low and "nvidia" in low and any(x in low for x in ("falcon guardian", "openshell", "sentry", "bluefield-4")):
@@ -1121,6 +1190,8 @@ def material(item: dict) -> bool:
     if milestone:
         if milestone[0] == "cohere_aisle" and not cohere_aisle_publisher_verified(item):
             return False
+        if milestone[0] == "php_korea_response" and not php_korea_publisher_verified(item):
+            return False
         if milestone[0] == "crowdstrike_nvidia_guardian" and not crowdstrike_nvidia_publisher_verified(item):
             return False
         return source_trusted(item.get("source", ""))
@@ -1185,7 +1256,8 @@ def normalize(item: dict) -> dict:
     out["category"] = detect_category(combined)
     out["entity"] = detect_entity(combined)
     out["official"] = (source_official(item.get("source","")) and
-        cohere_aisle_publisher_verified(item) and crowdstrike_nvidia_publisher_verified(item))
+        cohere_aisle_publisher_verified(item) and crowdstrike_nvidia_publisher_verified(item)
+        and php_korea_publisher_verified(item))
     return out
 
 
@@ -1554,7 +1626,22 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "CrowdStrike–NVIDIA AI 에이전트 보안 통합 단계":
+        if rep["category"] == "국내 PHP 보안위기 대응·정책 단계":
+            stage = tracked_policy_event_stage(rep)
+            labels = {
+                "warning_elevated_reported": "사이버위기 경보 경계 상향 보도",
+                "critical_elevated_reported": "사이버위기 경보 심각 상향 보도",
+                "warning_lowered_reported": "사이버위기 경보 하향 보도",
+                "warning_lifted_reported": "사이버위기 경보 해제 보도",
+                "mandatory_remediation_reported": "보안 점검·수정 의무화 보도",
+                "comprehensive_plan_released_reported": "범부처 종합대책 발표 보도",
+                "funding_announced_reported": "PHP 취약점 대응 예산 편성 보도",
+            }
+            detail = labels.get(stage[1], "정부 추가 대응") if stage else "정부 추가 대응"
+            lines.append(f"• <b>신규 정책 단계</b>: {html.escape(detail)} · 공식 정부 문서의 실제 시행 여부 별도 검증")
+            lines.append("• <b>기존 기준선</b>: 10월 22일 관심→주의, 10월 23일 종합대책 검토 발언은 재발송하지 않음")
+            lines.append("• <b>다음 확인</b>: 과기정통부·KISA 공식 경보·법적 의무·대상·기한·예산·조달·실제 침해 규모")
+        elif rep["category"] == "CrowdStrike–NVIDIA AI 에이전트 보안 통합 단계":
             stage = tracked_policy_event_stage(rep)
             labels = {
                 "integration_announced": "협력 확대 공식 발표",

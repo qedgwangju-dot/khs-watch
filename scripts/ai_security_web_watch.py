@@ -59,10 +59,14 @@ REPLICATION_WATCH_VERSION = 1
 PHP_CRITICAL_CVES = ("CVE-2026-109618", "CVE-2026-109619")
 PHP_CRITICAL_ADVISORY_URL = "https://www.php.net/archive/2026.php#2026-10-21-5"
 PHP_PATCHED_RELEASES = "8.5.12·8.4.27·8.3.36·8.2.35"
+PHP_SESSION_CVE = "CVE-2026-115560"
+PHP_SESSION_ADVISORY_URL = "https://www.php.net/archive/2026.php#2026-10-23-1"
 
 NEWS_QUERIES = [
     '("CVE-2026-109618" OR "CVE-2026-109619" OR "php2shell") (PHP OR patch OR exploitation)',
     '"php2shell" (CISA OR CERT-EU OR exploit OR update OR attack)',
+    '"CVE-2026-115560" PHP (advisory OR patch OR fix OR exploit)',
+    '("php2shell" OR "CVE-2026-109618") ("10 million" OR "100 million") attack attempts',
     '"AI agent" security vulnerability exploit "data leak" "prompt injection"',
     '"Meta Muse" security vulnerability exploit privacy patch',
     '(OpenAI OR ChatGPT OR Codex) security vulnerability exploit "data leak"',
@@ -527,10 +531,46 @@ def php_critical_stage(item: dict) -> str | None:
     """
     title = str(item.get("title") or "").lower()
     text = f"{title} {item.get('description','')}".lower()
+    session_cve = PHP_SESSION_CVE.lower()
+    pair_in_title = any(cve.lower() in title for cve in PHP_CRITICAL_CVES)
+    # The Oct-23 advisory is separate from the already-patched Oct-21 pair.
+    # Determine which CVE the headline is actually about.
+    if session_cve in text and (session_cve in title or not pair_in_title):
+        if item.get("kind") == "official" and item.get("query") == "CISA KEV":
+            return "session_exploitation_confirmed"
+        official_confirmed = any(x in title for x in (
+            "confirmed active exploitation", "confirmed exploitation in the wild",
+            "added to known exploited", "active attacks confirmed",
+            "실제 악용 확인",
+        ))
+        if official_confirmed:
+            source = str(item.get("source") or "").lower()
+            if item.get("kind") == "official" and any(x in source for x in ("cisa", "cert-eu", "enisa", "ncsc")):
+                return "session_exploitation_confirmed"
+            return "session_exploitation_reported"
+        if any(x in title for x in ("actively exploited", "exploited in the wild", "active exploitation", "under active attack", "실전 공격")) and not any(x in title for x in ("no active", "not actively", "no evidence", "unconfirmed")):
+            return "session_exploitation_reported"
+        patched = any(x in title for x in (
+            "fixes cve-2026-115560", "fixed cve-2026-115560",
+            "patch released for cve-2026-115560",
+            "cve-2026-115560 patched", "cve-2026-115560 수정 완료",
+        )) or ("session upload progress" in title and any(x in title for x in ("security release fixes", "patch released", "fix released")))
+        pending = any(x in title for x in (
+            "unpatched", "not yet patched", "no patch", "next release",
+            "will fix", "to be fixed", "예정", "미수정", "패치 대기",
+        ))
+        if patched and not pending:
+            return "session_patch_released"
+        return "session_advisory"
     if not (any(cve.lower() in text for cve in PHP_CRITICAL_CVES) or "php2shell" in text):
         return None
     if not ("php" in text or "php2shell" in text):
         return None
+    if any(x in title for x in ("attack attempts", "exploit attempts", "공격 시도")):
+        if any(x in title for x in ("100 million", "hundred million", "1억")):
+            return "attempts_100m_reported"
+        if any(x in title for x in ("10 million", "ten million", "1천만", "1000만")):
+            return "attempts_10m_reported"
     if item.get("kind") == "official" and item.get("query") == "CISA KEV":
         return "confirmed_exploitation"
     confirmed_headline = any(x in title for x in (
@@ -554,6 +594,11 @@ def php_critical_stage(item: dict) -> str | None:
         return "reported_exploitation"
     if reported_headline and not negated:
         return "reported_exploitation"
+    if any(x in title for x in (
+        "unpatched", "not yet patched", "no patch available", "patch pending",
+        "awaiting fix", "미수정", "패치 대기",
+    )):
+        return "initial_disclosure"
     if any(x in title for x in (
         "security release", "patch released", "patched", "updates released",
         "release fixes", "fixes two", "critical php updates", "php security updates",
@@ -1025,8 +1070,17 @@ def normalize_item(item: dict) -> dict:
             "patch_released": "PHP 코어 취약점·공식 보안패치",
             "reported_exploitation": "PHP 취약점 실전 악용 보도·추가 검증",
             "confirmed_exploitation": "PHP 취약점 실전 악용 공식 확인",
+            "attempts_10m_reported": "PHP 공격 시도 1천만 건 이상 보도·피해 미확정",
+            "attempts_100m_reported": "PHP 공격 시도 1억 건 이상 보도·피해 미확정",
+            "session_advisory": "PHP 세션 처리 별도 취약점·정기 수정 대기",
+            "session_patch_released": "PHP 세션 처리 별도 취약점·패치 배포",
+            "session_exploitation_reported": "PHP 세션 처리 취약점·실전 악용 보도",
+            "session_exploitation_confirmed": "PHP 세션 처리 취약점·실전 악용 공식 확인",
         }[php_stage]
-        sev_num, sev_label = 3, "긴급"
+        sev_num, sev_label = (3, "긴급") if php_stage in (
+            "patch_released", "reported_exploitation", "confirmed_exploitation",
+            "session_exploitation_confirmed",
+        ) else (2, "높음")
     out["php_stage"] = php_stage
     out["replication_stage"] = stage
     out["severity"] = sev_num
@@ -1275,6 +1329,16 @@ def source_label(source: str) -> str:
 def incident_fact(item: dict) -> str | None:
     text = f" {item.get('title','')} {item.get('description','')} ".lower()
     php_stage = php_critical_stage(item)
+    if php_stage == "session_advisory":
+        return "PHP CVE-2026-115560: 특수 세션 직렬화 설정에서만 가능한 별도 원격 코드 실행 위험. 정기 수정 대기. 임시 권고: session.upload_progress.enabled=0. 기존 2건과 구분"
+    if php_stage == "session_patch_released":
+        return "PHP CVE-2026-115560 별도 수정 버전 배포 보도. 공식 버전·벤더 백포트·적용 여부 확인 필요"
+    if php_stage == "session_exploitation_reported":
+        return "PHP CVE-2026-115560 실전 악용 보도. 공식 원천 확인 전 공격 성공으로 단정하지 않음"
+    if php_stage == "session_exploitation_confirmed":
+        return "PHP CVE-2026-115560 공식기관 실전 악용 확인. 피해 시스템과 침해 범위 별도 검증 필요"
+    if php_stage in ("attempts_10m_reported", "attempts_100m_reported"):
+        return "PHP2Shell 공격 시도 급증 보도. 차단·탐지된 시도 횟수는 실제 침해 성공 건수와 다름"
     if php_stage == "patch_released":
         return "PHP CVE-2026-109618·109619, 각각 심각도 9.2. 인증 없는 원격 코드 실행 위험. 공식 수정 버전: 8.5.12·8.4.27·8.3.36·8.2.35. 실전 악용 확정 아님"
     if php_stage == "confirmed_exploitation":
@@ -1714,6 +1778,12 @@ def main() -> int:
     replication_baseline_suppressed = 0
     insider_stages = dict(state.get("openai_insider_case_stages") or {})
     php_stages = dict(state.get("php_critical_stages") or {})
+    # Existing Oct-23 official disclosure is a historical baseline, not a new
+    # patch or confirmed attack. Preserve every prior stage/seen entry.
+    php_stages.setdefault("session_advisory", {
+        "source_url": PHP_SESSION_ADVISORY_URL,
+        "status": "2026-10-23 informational advisory; regular fix pending",
+    })
     insider_stages.setdefault("initial_oct13_charge", {
         "source_url": "https://www.justice.gov/usao-ndca/pr/saudi-national-arrested-installing-surreptitious-audio-recording-device-openai-san",
         "status": "2026-10-13 initial criminal complaint; allegations, not verdict",

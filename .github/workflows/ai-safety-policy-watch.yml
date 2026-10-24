@@ -603,6 +603,40 @@ jobs:
           print("ai_policy_event_backlog_preservation=PASS")
           PY
 
+      - name: Verify PHP cyber policy milestones and issuer source
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_safety_policy_watch import (
+              POLICY_EVENT_BASELINES, cluster_events, material, normalize, tracked_policy_event_key,
+          )
+          def event(title, source="연합뉴스", url="https://www.yna.co.kr/view/example"):
+              return normalize({
+                  "kind": "news", "title": title,
+                  "description": "정부 과기정통부 PHP 보안 대응 발표",
+                  "source": source, "url": url, "publisher_url": url,
+              })
+          caution = event("과기정통부 PHP 취약점 사이버위기 경보 '주의'로 상향")
+          proposed = event("배경훈 PHP 취약점 범부처 종합대책 마련할 것")
+          assert tracked_policy_event_key(caution) == "php_korea_response:caution_elevated_20261022"
+          assert tracked_policy_event_key(proposed) == "php_korea_response:comprehensive_plan_proposed_20261023"
+          assert tracked_policy_event_key(caution) in POLICY_EVENT_BASELINES
+          assert tracked_policy_event_key(proposed) in POLICY_EVENT_BASELINES
+          warning = event("과기정통부 PHP 보안 취약점 사이버위기 경보 '경계'로 상향")
+          enacted = event("정부 PHP 취약점 범부처 종합대책 확정 발표")
+          assert tracked_policy_event_key(warning) == "php_korea_response:warning_elevated_reported"
+          assert tracked_policy_event_key(enacted) == "php_korea_response:comprehensive_plan_released_reported"
+          assert len(cluster_events([caution, proposed, warning, enacted])) == 4
+          assert tracked_policy_event_key(event("과기정통부 PHP 취약점 기존 주의 경보 유지")) is None
+          fake = event("과기정통부 PHP 취약점 사이버위기 경보 '경계'로 상향",
+                       source="과학기술정보통신부", url="https://fake.example/alert")
+          assert not fake["official"] and not material(fake)
+          real = event("과기정통부 PHP 취약점 사이버위기 경보 '경계'로 상향",
+                       source="과학기술정보통신부", url="https://www.msit.go.kr/example")
+          assert real["official"] and material(real)
+          print("ai_policy_php_government_stage_and_source_regression=PASS")
+          PY
+
       - name: Verify CrowdStrike NVIDIA software vs silicon commercialization stages
         shell: bash
         run: |
