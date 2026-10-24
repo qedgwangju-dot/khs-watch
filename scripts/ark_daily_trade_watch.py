@@ -17,6 +17,7 @@ import urllib.request
 import zoneinfo
 import math
 import ark_notional_enrichment as notional
+import ark_sector_rank as sector_rank
 
 SOURCE="https://etfs.ark-funds.com/hubfs/idt/trades/ARK_Trades.xls"
 DISCLOSURE="https://www.ark-funds.com/ark-trade-notifications"
@@ -33,7 +34,7 @@ NAMES={
     "FRNM":"프리놈","XYZ":"블록","RBLX":"로블록스",
 }
 ET=zoneinfo.ZoneInfo("America/New_York")
-REPORT_FORMAT_VERSION=2
+REPORT_FORMAT_VERSION=3
 
 def _fetch():
     req=urllib.request.Request(SOURCE, headers={
@@ -183,13 +184,14 @@ def _fingerprint(records):
 def _link(label,url):
     return f'<a href="{html.escape(url,quote=True)}">{html.escape(label)}</a>'
 
-def build(rows, day, is_revision=False, rate=None, basis="", prices=None, enrichment=False):
+def build(rows, day, is_revision=False, rate=None, basis="", prices=None, enrichment=False,
+          history=None, digest="", sector_upgrade=False):
     buys=[r for r in rows if r["action"]=="매수"]
     sells=[r for r in rows if r["action"]=="매도"]
     titles=[("ARKK","혁신"),("ARKQ","자동화·로봇"),("ARKX","우주·방산"),
             ("ARKG","유전체·바이오"),("ARKW","인터넷"),("ARKF","금융기술")]
     header=[
-        "📊 <b>ARK Invest 일별 매매"+(" 금액 보강본" if enrichment else (" 수정본" if is_revision else ""))+"</b>",
+        "📊 <b>ARK Invest 일별 매매"+(" 업종 순위 보강본" if sector_upgrade else (" 금액 보강본" if enrichment else (" 수정본" if is_revision else "")))+"</b>",
         f"<b>거래 기준일: {day} (미국 현지 날짜)</b>",
         f"공시 주체: ARK Invest · 매수 {len(buys)}개 거래행 / 매도 {len(sells)}개 거래행",
         "<b>판정: ARK 공식 잠정 매매 파일 · 분기 13F와 별개</b>",
@@ -211,6 +213,16 @@ def build(rows, day, is_revision=False, rate=None, basis="", prices=None, enrich
             )
     else:
         header.append("• 거래대금: 장마감 가격 미확인으로 총액 추정 불가")
+
+    if rate:
+        ranked, _, _ = sector_rank.build_sector_digest(
+            rows, prices or {}, rate, notional.usd_krw,
+            history=history, day=day, digest=digest,
+        )
+        header.extend(ranked)
+    else:
+        header.extend(["", "<b>업종별 매수 순위</b>",
+                       "• 현재 환율·종가가 확인되지 않아 금액 순위를 산출할 수 없습니다."])
 
     xe=[r for r in buys if r["ticker"]=="XE"]
     if xe:
@@ -271,12 +283,18 @@ def main(probe=False):
     prices=notional.close_prices(latest_rows,latest)
     distinct_tickers=len({row["ticker"] for row in latest_rows})
     print(f"ARK_NOTIONAL_PRICE_COVERAGE={len(prices)}/{distinct_tickers}")
+    rank_upgrade=bool(latest==previous_date and state.get("format_version",0)<REPORT_FORMAT_VERSION)
     msg=build(latest_rows,latest,is_revision=changed,rate=rate,basis=fx.basis,
-              prices=prices,enrichment=bool(latest==previous_date and state.get("format_version",0)<REPORT_FORMAT_VERSION))
+              prices=prices,enrichment=False,
+              history=state.get("sector_history",[]),digest=digest,sector_upgrade=rank_upgrade)
     pathlib.Path("out").mkdir(exist_ok=True)
     pathlib.Path("out/ark_trade_alert.html").write_text(msg+"\n",encoding="utf-8")
+    aggregated_sectors, _ = sector_rank.aggregate(latest_rows,prices)
+    current_sector_snapshot = sector_rank.snapshot(latest,digest,aggregated_sectors)
+    sector_history = sector_rank.merged_history(state.get("sector_history",[]),current_sector_snapshot)
     pathlib.Path("out/ark_trade_pending.json").write_text(json.dumps({
       "version":1,"last_date":latest,"digest":digest,"format_version":REPORT_FORMAT_VERSION,
+      "sector_history":sector_history,
       "updated_at":dt.datetime.now(dt.timezone.utc).isoformat()
     },ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("ARK_ALERT_READY")
