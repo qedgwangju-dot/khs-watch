@@ -29,6 +29,8 @@ NAMES={
     "PACB":"팩바이오","PLTR":"팔란티어","SHOP":"쇼피파이",
     "TER":"테라다인","ESLT":"엘빗 시스템즈","PSNL":"퍼스널리스",
     "HO":"탈레스","CRWV":"코어위브","BABA":"알리바바","DKNG":"드래프트킹스",
+    "META":"메타 플랫폼스","ISRG":"인튜이티브 서지컬",
+    "FRNM":"프리놈","XYZ":"블록","RBLX":"로블록스",
 }
 ET=zoneinfo.ZoneInfo("America/New_York")
 REPORT_FORMAT_VERSION=2
@@ -195,6 +197,8 @@ def build(rows, day, is_revision=False, rate=None, basis="", prices=None, enrich
         "매매대금: 미국 현지 거래일 종가 × 주식 수의 참고 추정액 (실제 체결대금 아님)",
         "",
     ]
+    # The official ARK trade file contains share quantities but no executed fill prices.
+    # NEVER substitute zero or an unverified filled-notional for missing ticker prices.
     # Do not call a partial price-covered aggregate the total actual trade amount.
     if prices and rate:
         for action,subset in [("매수",buys),("매도",sells)]:
