@@ -66,6 +66,38 @@ def _active_adverse(title):
     return False
 
 
+def _separate_attack_headline(title):
+    """An explicit current attack in the headline wins over any easing clause."""
+    return bool(re.search(
+        r'\b(?:resum\w*|launch\w*|conduct\w*|start\w*|carry(?:ing)?\s+out)\b'
+        r'.{0,35}\b(?:attacks?|airstrikes?|strikes?|bombardments?)\b|'
+        r'\b(?:attacks?|airstrikes?|strikes?|bombardments?)\b.{0,20}'
+        r'\b(?:resum\w*|launch\w*|continu\w*)\b|'
+        r'(?:공습|공격|폭격|포격)(?:을|를|이|가)?\s*(?:재개|감행|실시|시작)|'
+        r'(?:재개|감행|실시|시작).{0,12}(?:공습|공격|폭격|포격)', title))
+
+
+def _explicit_easing_restoration(title):
+    """Recognize a headline reporting that a restriction or service was restored."""
+    if _active_adverse(title) or _separate_attack_headline(title):
+        return False
+    return bool(re.search(
+        r'\b(?:speed|service|access|connectivity|network|operations?)\s+'
+        r'(?:restrictions?|limitations?|limits?)\b.{0,45}'
+        r'\b(?:lifted|removed|eased|relaxed|restored|reinstated)\b|'
+        r'\b(?:restrictions?|limitations?|limits?)\b.{0,45}'
+        r'\b(?:lifted|removed|eased|relaxed)\b|'
+        r'\b(?:lifted|removed|eased|relaxed)\b.{0,45}'
+        r'\b(?:restrictions?|limitations?|limits?)\b|'
+        r'\b(?:service|speed|access|connectivity|network)\b.{0,40}'
+        r'\b(?:restored|resumed|reinstated|reopened)\b|'
+        r'(?:속도|서비스|접속|연결|네트워크).{0,20}'
+        r'(?:제한|차단|중단).{0,18}(?:해제|완화|복구|재개)|'
+        r'(?:제한|차단|중단).{0,20}(?:해제|완화|복구|재개).{0,20}'
+        r'(?:속도|서비스|접속|연결|네트워크)|'
+        r'(?:속도|서비스|접속|연결|네트워크).{0,20}(?:복구|정상화|재개|회복)', title))
+
+
 def _explicit_ceasefire_progress(title):
     """Recognize a reported ceasefire confirmation or active date coordination."""
     negative = re.search(
@@ -76,14 +108,7 @@ def _explicit_ceasefire_progress(title):
         r'(?:휴전|정전).{0,20}(?:아니|부인|거부|불발|미확인|확인되지 않)', title)
     if negative:
         return False
-    separate_attack = re.search(
-        r'\b(?:resum\w*|launch\w*|conduct\w*|start\w*|carry(?:ing)?\s+out)\b'
-        r'.{0,35}\b(?:attacks?|airstrikes?|strikes?|bombardments?)\b|'
-        r'\b(?:attacks?|airstrikes?|strikes?|bombardments?)\b.{0,20}'
-        r'\b(?:resum\w*|launch\w*|continu\w*)\b|'
-        r'(?:공습|공격|폭격|포격)(?:을|를|이|가)?\s*(?:재개|감행|실시|시작)|'
-        r'(?:재개|감행|실시|시작).{0,12}(?:공습|공격|폭격|포격)', title)
-    if separate_attack:
+    if _separate_attack_headline(title):
         return False
     return bool(re.search(
         r'\b(?:confirm\w*|coordinat\w*|cooperat\w*|collaborat\w*|agree\w*|'
@@ -106,6 +131,11 @@ def direction(stage, row):
     if kind in REFERENCE_KINDS:
         return None
     adverse = _active_adverse(title)
+    # A headline-confirmed easing/restoration is green even if inherited
+    # background tags would otherwise fall through to the red default. A
+    # separate current attack or adverse clause still keeps the item red.
+    if _explicit_easing_restoration(title) and not adverse:
+        return 'green'
     if stage._attack_plan_status(title) in ('held', 'denied') and not adverse:
         return 'green'
     if kind == 'sanctions' and not adverse and re.search(

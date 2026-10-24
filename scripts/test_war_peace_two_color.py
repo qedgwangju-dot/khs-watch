@@ -266,6 +266,43 @@ class TwoColorTests(unittest.TestCase):
         self.assertIn('본문 미확인', text)
         self.assertIn('대화·협상·완화 관련:</b> 2건', text)
 
+    def test_saved_starlink_speed_restriction_restoration_is_green_despite_background_attack_tags(self):
+        row = json.loads((Path(__file__).parent/'test_fixtures/war_starlink_restriction_lift_40087506788.json').read_text(encoding='utf-8'))
+        self.assertFalse(row['body_verified'])
+        self.assertIn('확전', row['forced_tags'])
+        self.assertIsNone(stage.non_military_kind(row))
+        self.assertEqual(presentation.direction(stage, row), 'green')
+
+        block = [
+            '🔴 [신규] <b>1. ' + html.escape(row['title_original'], quote=False) + '</b>',
+            '<a href="' + row['link'] + '">Axios 원문</a>',
+            'RSS 입력 기준·본문 미확인',
+        ]
+        semantic_text = '\n'.join([
+            '<b>전쟁·종전·재건 웹감시</b>',
+            '🔴 <b>공격·타격·확전·압박</b>',
+            '조회 2026-10-24 19:51 KST',
+            '<b>핵심 변화</b>',
+            *block,
+            '<b>투자 판정</b>',
+            '- 이전 분류 요약',
+        ])
+        text, receipt = presentation.project(stage, semantic_text, {'articles': [row]}, {}, {})
+        projected = receipt['articles'][0]
+        self.assertEqual(projected['classification_color'], 'green')
+        self.assertFalse(projected['body_verified'])
+        self.assertIn('🟢 [신규]', text)
+        self.assertNotIn('🔴 [신규]', text)
+        self.assertIn('RSS 입력 기준·본문 미확인', text)
+
+    def test_separate_current_attack_keeps_red_when_restriction_is_lifted(self):
+        row = {
+            'title_original': 'Starlink speed restrictions lifted as Russia resumes attacks on Ukraine',
+            'tags': ['종전·협상'],
+            'body_verified': False,
+        }
+        self.assertEqual(presentation.direction(stage, row), 'red')
+
     def test_stage_proof_required_on_repeat(self):
         self.present()
         (self.folder/presentation.STAGE_EVIDENCE).unlink()
