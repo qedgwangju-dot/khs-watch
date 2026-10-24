@@ -55,6 +55,7 @@ TRUSTED_DOMAINS = (
     "datacenterknowledge.com", "reuters.com", "utilitydive.com", "rtoinsider.com",
     "datacenterdynamics.com", "publicpower.org", "bisnow.com",
     "ft.com", "wsj.com", "axios.com", "bloomberg.com",
+    "morningstar.com", "sec.gov", "finra.org", "spglobal.com", "fitchratings.com", "moodys.com",
 )
 
 NEWS_QUERIES = (
@@ -70,6 +71,13 @@ NEWS_QUERIES = (
     'data center refinancing credit spread covenant default investor bond yields 2026',
     '"Microsoft" "Nscale" "Loughton" data centre contract termination grid Reuters Telegraph',
     '"Nscale" "Loughton" "Microsoft" power connection withdrawal customer alternative 2026',
+    # Independent AI credit lane: issuer debt, project liens, and actual lender exposure.
+    '"CoreWeave" unsecured notes bonds yield credit spread 2026',
+    '"CoreWeave" "Applied Digital" secured bonds yield spread',
+    '"APLD ComputeCo" secured bonds trading yield',
+    '"Applied Digital" Ellendale bond downgrade spread',
+    '"CoreWeave" global bank exposure losses lending credit risks',
+    '"AI data center" bond refinancing collateral lender contagion',
 )
 
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
@@ -221,6 +229,52 @@ def source_label(source: str, url: str = "") -> str:
     return normalize(source)[:40] or domain_of(url)[:40]
 
 
+
+def ai_credit_signal(title: str) -> str | None:
+    """Do not call bank research opinions realized bank losses or coupons market yields."""
+    low = normalize(html.unescape(title)).lower()
+    ai = any(k in low for k in (
+        "coreweave", "applied digital", "apld computeco", "ellendale",
+        "ai data center", "ai data centre", "ai infrastructure", "neocloud",
+    ))
+    debt = any(k in low for k in (
+        "bond", "notes", "debt", "credit", "lender", "loan", "yield", "spread",
+        "financing", "refinancing", "default", "collateral",
+    ))
+    if not (ai and debt):
+        return None
+    change = any(k in low for k in (
+        "yield", "spread", "selloff", "sell-off", "slump", "rising", "falls",
+        "surge", "jump", "widen", "narrow", "downgrad", "upgrad", "default",
+        "distress", "refinanc", "financing", "loss", "exposure", "borrow",
+        "lending", "credit risk", "funding", "notes offering",
+    ))
+    if not change:
+        return None
+    if any(k in low for k in ("bank", "lender", "private credit")) and any(
+        k in low for k in ("exposure", "loss", "credit risk", "contagion", "default")
+    ):
+        return "은행 대출·익스포저 보도(실제 손실 여부 별도 확인)"
+    if "coreweave" in low and any(k in low for k in ("applied digital", "apld computeco", "ellendale")):
+        return "발행사 회사채 대 시설 담보채 차별화"
+    if "coreweave" in low:
+        return "CoreWeave 발행사 신용"
+    if any(k in low for k in ("applied digital", "apld computeco", "ellendale")):
+        return "Applied Digital 프로젝트 금융"
+    return "AI 인프라 금융시장"
+
+
+def ai_credit_gap_single_headline(title: str) -> int | None:
+    """Only compute an unadjusted headline comparison when both yields are explicit."""
+    low = normalize(title).lower()
+    cr = re.search(r"coreweave.{0,105}?\byields?\s*(?:of|at|near|around|roughly|about)?\s*(\d{1,2}(?:\.\d+)?)\s*%", low)
+    ap = re.search(r"(?:applied digital|apld computeco).{0,105}?\byields?\s*(?:of|at|near|around|roughly|about)?\s*(\d{1,2}(?:\.\d+)?)\s*%", low)
+    if not (cr and ap):
+        return None
+    a, b = float(cr.group(1)), float(ap.group(1))
+    return round((a - b) * 100) if 0 < a < 40 and 0 < b < 40 else None
+
+
 def classify(text: str) -> str:
     low = (text or "").lower().replace("data-center", "data center").replace("data-centre", "data centre")
     if all(x in low for x in ("microsoft", "nscale")) and any(x in low for x in ("loughton", "essex")) and any(
@@ -229,6 +283,8 @@ def classify(text: str) -> str:
         # Contract withdrawal reporting is not a cancelled data-center project,
         # not an official Microsoft termination announcement.
         return "고객 이용계약 철회 보도"
+    if ai_credit_signal(low):
+        return "AI 채권·담보채 신용변화"
     # Financial pipeline risk is distinct from an actual cancelled project.
     if any(k in low for k in ("data center", "data centre", "datacenter", "ai infrastructure")) and any(
         k in low for k in (
@@ -255,6 +311,8 @@ def classify(text: str) -> str:
 def is_meaningful(title: str, source: str, domain: str) -> bool:
     low = f"{title} {source}".lower().replace("data-center", "data center").replace("data-centre", "data centre")
     theme = classify(low)
+    if theme == "AI 채권·담보채 신용변화":
+        return trusted(domain)
     if theme == "고객 이용계약 철회 보도":
         # A named customer exit at 50MW is material even below the generic
         # US project cancellation screen of 250MW.
@@ -331,6 +389,7 @@ def translate_title(text: str, theme: str, source: str) -> str:
         "Phantom load·수요전망": "데이터센터 Phantom load·수요전망 관련 신규 자료",
         "비용보호·준비도 규칙": "대형부하 비용보호·준비도 규칙 관련 신규 자료",
         "자금조달·계획 실현 위험": "데이터센터 자금조달·사업 실현 위험 관련 신규 자료",
+        "AI 채권·담보채 신용변화": "AI 발행사 회사채·프로젝트 담보채 신용위험 관련 신규 자료",
     }
     return f"{source} · {labels.get(theme, '데이터센터 취소·지연 위험 관련 신규 자료')}"
 
@@ -396,6 +455,10 @@ def nscale_is_same_initial_retelling(title: str, published: dt.datetime) -> bool
 
 def regression_checks() -> None:
     assert classify("Microsoft pulls out of UK data-center deal with Nscale in Loughton") == "고객 이용계약 철회 보도"
+    assert classify("CoreWeave senior unsecured bonds yield 16% after sell-off") == "AI 채권·담보채 신용변화"
+    assert ai_credit_signal("JPMorgan upgrades CoreWeave stock to buy") is None
+    assert ai_credit_gap_single_headline("CoreWeave 2030 bonds yield 15%, Applied Digital 2030 secured bonds yield 8%") == 700
+    assert ai_credit_gap_single_headline("CoreWeave issues 9.75% notes and Applied Digital issues 9.25% secured notes") is None
     assert is_meaningful(
         "Microsoft pulls out of UK data-center deal with Nscale in Loughton",
         "Reuters", "reuters.com"
@@ -465,7 +528,7 @@ def collect_news() -> list[dict]:
             if not is_meaningful(title, source, domain):
                 continue
             theme = classify(f"{title} {source}")
-            if theme == "자금조달·계획 실현 위험":
+            if theme in {"자금조달·계획 실현 위험", "AI 채권·담보채 신용변화"}:
                 if published.astimezone(dt.timezone.utc) < (
                     dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=FINANCING_NEWS_MAX_AGE_HOURS)
                 ):
@@ -505,6 +568,7 @@ def source_priority(item: dict) -> tuple[int, int, str]:
     theme_order = {
         "고객 이용계약 철회 보도": -2,
         "자금조달·계획 실현 위험": -1,
+        "AI 채권·담보채 신용변화": -2,
         "프로젝트 취소·지연": 0,
         "재심사·접속승계": 1,
         "매몰·송전비용": 2,
@@ -531,7 +595,15 @@ items = collect_news()
 items.sort(key=source_priority)
 old_seen = list(old.get("seen_ids", []))
 old_ids = set(old_seen)
-new_items = [x for x in items if x["id"] not in old_ids]
+credit_items = [x for x in items if x["theme"] == "AI 채권·담보채 신용변화"]
+credit_initialized = bool(old.get("ai_credit_initialized", False))
+credit_seen_prev = list(old.get("ai_credit_seen_ids", []))
+credit_seen_old = set(credit_seen_prev)
+# First deployment silently baselines all recent credit headlines; no historical resend.
+credit_new = [x for x in credit_items if x["id"] not in credit_seen_old] if credit_initialized else []
+regular_new = [x for x in items if x["theme"] != "AI 채권·담보채 신용변화" and x["id"] not in old_ids]
+new_items = regular_new + credit_new
+credit_seen = list(dict.fromkeys(credit_seen_prev + [x["id"] for x in credit_items]))[-SEEN_ID_LIMIT:]
 baseline_run = not old.get("initialized")
 format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
 should_alert = baseline_run or format_upgrade or bool(new_items)
@@ -546,6 +618,10 @@ pending = {
     "fx_source": fx_source,
     "fx_checked_utc": fx_checked,
     "updated_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+    "ai_credit_initialized": True,
+    "ai_credit_seen_ids": credit_seen,
+    "ai_credit_last_new_count": len(credit_new),
+    "ai_credit_quote_source": "신뢰 매체 헤드라인. TRACE 개별채권 실시간 시세 미연결",
     "nscale_loughton": {
         "event_key": NSCALE_ANCHOR_KEY,
         "site": "Loughton, Essex, UK",
@@ -575,6 +651,8 @@ if should_alert:
         headline = "✅ 데이터센터 취소·지연·계통비용 위험 감시 시작"
     elif nscale_new:
         headline = "⚠️ Microsoft–Nscale 영국 데이터센터 이용계약 철회 보도"
+    elif credit_new and not regular_new:
+        headline = "AI 회사채·시설 담보채 신용위험 변화"
     else:
         headline = "⚠️ 미국 데이터센터 취소·지연·계통비용 변화"
 
@@ -687,6 +765,24 @@ if should_alert:
         if len(new_items) > len(chosen):
             msg.append(f"• 나머지 {len(new_items)-len(chosen)}건은 중복·추적 상태에 저장해 다음 변화 판정에 반영")
 
+
+    if credit_new:
+        msg += ["", "<b>AI 회사채·시설 담보채 차별화 확인</b>"]
+        for item in credit_new[:5]:
+            kind = ai_credit_signal(item["title"])
+            gap = ai_credit_gap_single_headline(item["title"])
+            msg.append(f"• {h(kind or '신용위험 변화')} · {h(item['source'])} · 보도 제목 기준")
+            if gap is not None:
+                msg.append(
+                    f"  같은 보도 내 두 수익률의 단순 차이 <b>{gap:+,}bp</b> "
+                    "(채권 만기·발행주체·담보·선순위 차이 미보정)"
+                )
+        msg.append("• CoreWeave 발행사 무담보채와 APLD ComputeCo 데이터센터 담보채는 채무자·담보가 다름")
+        msg.append("• 15%와 8%는 WSJ 10월 19일 당시 관측치이며 현재 시세나 고정 경보 임계값이 아님")
+        msg.append("• 개별 채권의 동시 TRACE 시세가 없으면 현재 금리차를 임의 계산하지 않음")
+        msg.append("• 은행 위험은 대출 익스포저 추정과 실제 손실·충당금을 구분")
+        msg.append(f"• {a('CoreWeave SEC 채무', 'https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm')} · {a('APLD SEC 담보채', 'https://www.sec.gov/Archives/edgar/data/1144879/000114487926000059/apld-20260831.htm')}")
+
     msg += ["", "<b>📊 투자 판단</b>"]
     msg.append("• 실행률 │ 신청 MW보다 보증금·부지·전력계약·송전착공·실제 데이터센터 착공·전원 인가 MW를 우선")
     msg.append("• 비용 │ 개발사 매몰비용과 유틸리티 송전·변전 투자비를 분리해 확인")
@@ -712,10 +808,11 @@ STATUS.write_text(
     f"- PJM 2024 DC 송전사업: **{BASELINE['pjm_2024_dc_transmission_projects']}건 / ${BASELINE['pjm_2024_dc_transmission_usd_b']}B**\n"
     f"- 신규 의미자료: **{len(new_items)}건**\n"
     f"- Reuters–Nscale 로턴 철회 보도: **{'신규' if any(x.get('nscale_loughton_media_anchor') for x in new_items) else '중복 제외/해당 없음'}**\n"
+    f"- AI 발행사·담보채 신용경보: **감시 활성** · 신규 **{len(credit_new)}건** · TRACE 개별 실시간 시세 **미연결**\n"
     f"- 알림: **{'예' if should_alert else '아니오'}**\n",
     encoding="utf-8",
 )
 print(
     f"cancellation_risk baseline={BASELINE['phantom_load_pct']}% "
-    f"new={len(new_items)} alert={should_alert}"
+    f"new={len(new_items)} credit_new={len(credit_new)} credit_baselined={not credit_initialized} alert={should_alert}"
 )
