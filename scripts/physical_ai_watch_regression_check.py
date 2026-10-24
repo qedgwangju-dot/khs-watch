@@ -5764,4 +5764,42 @@ try:
 finally:
     base.NOW=_now_robot26
 
+# The final shortlist must retain all six verified R26 events even when
+# legacy selection already includes the LAST R26 event (Flora).
+_now_r26_selection = base.NOW
+try:
+    base.NOW = dt.datetime(2026,10,25,3,0,tzinfo=dt.timezone.utc)
+    _r26_candidates = []
+    for _name in watcher.R26_PRIORITY:
+        _event = base.query_news(watcher.R26_PREFIX + _name)[0]
+        _text = _event["title"]+" "+_event.get("description","")+" "+_event.get("source","")
+        _event = dict(_event, group=base.topic_group(_text),
+                      score=base.score(_event), key=base.key(_event))
+        _r26_candidates.append(_event)
+    _chosen = base.select_diverse(_r26_candidates, set(), False, 8)
+    assert len(_chosen) == 6, _chosen
+    assert {x["group"] for x in _chosen} == {watcher.R26_EVENTS[n]["group"] for n in watcher.R26_PRIORITY}
+    # Full shortlist with 8 old filler stories must still include 6 upgrades.
+    _other_news = [dict(_r26_candidates[0], group="robotis", key=f"old-noise-{k}",
+                        score=13, title=f"older robot headline {k}") for k in range(8)]
+    _chosen = base.select_diverse(_other_news+_r26_candidates, set(), False, 8)
+    assert {watcher.R26_EVENTS[n]["group"] for n in watcher.R26_PRIORITY}.issubset(
+        {x["group"] for x in _chosen}), _chosen
+finally:
+    base.NOW=_now_r26_selection
+
+_fake_sent = (
+    "<b>신규 고신호 2건</b>\n━━━━━━━━━━━━━━━━━━\n"
+    "<b>1. 22만5000원…로봇 양산·해외 수요 점검</b>\n"
+    "──────────────────\n"
+    "<b>2. 로봇 고객 공급계약 체결</b>\n"
+    "──────────────────\n"
+    "<b>판정 기준</b> 새 사실만\n"
+)
+_usable = watcher._drop_stock_price_sections(_fake_sent)
+assert "22만5000원" not in _usable, _usable
+assert "신규 고신호 1건" in _usable and "고객 공급계약" in _usable, _usable
+assert watcher._r26_category("베어로보틱스 키노-2 신제품 공개", "lg_robotics") == watcher.R26_KINO_CAT
+assert "외부 고객 수주나" in base.meaning(watcher.R26_KINO_CAT)
+
 print("Physical-AI watcher regression guards: PASS")

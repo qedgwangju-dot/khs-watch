@@ -5232,6 +5232,14 @@ def _correct_jpm_sri_krw_at_source_rate(text: str) -> str:
     return '──────────────────'.join(fixed)
 
 
+def _r26_price_outlook_title(title: str) -> bool:
+    # Example of a stock-price-level article masquerading as a robot order:
+    # "22만5000원…로봇 양산·해외 수요 점검" (no dated binding contract).
+    return bool(re.search(r"(?:^|\s)\d{1,3}만\d{1,4}원", title)
+                and re.search(r"주가|시장|전망|수요|점검|로봇|양산", title)
+                and not OCT15_REAL_EVENT_HEADLINE.search(title))
+
+
 def _drop_stock_price_sections(text: str) -> str:
     """Last-mile defense: strip stock-only headlines before Telegram sends.
 
@@ -5257,6 +5265,7 @@ def _drop_stock_price_sections(text: str) -> str:
                         )
                         or (_FINAL_STOCK_ONLY_NEWS.search(title)
                             and not _FINAL_SUBSTANTIVE_CHANGE.search(title))
+                        or _r26_price_outlook_title(title)
                     )):
                 print('Final Telegram stock-only/marketing headline excluded:', title)
                 removed += 1
@@ -7461,7 +7470,10 @@ R26_EVENTS = {
         "title": "모빌린트·LG전자·노타 휴머노이드용 NPU 국책 연구개발 과제 확인",
         "link": "https://www.keit.re.kr/board.es?act=view&bid=0007&list_no=128498&mid=a10201010000",
         "description": (
-            "2026-10-22 보도와 한국산업기술기획평가원의 기사 소개. "
+            "2026-09-08 노타 컨소시엄 공식 발표가 선행됐고, "
+            "2026-10-22 모빌린트 참여 역할 보도·한국산업기술기획평가원 소개로 "
+            "내용이 구체화했다. 이미 선정된 같은 과제의 반복 발표이지 "
+            "10월 22일 신규 유상 공급계약이 아니다. "
             "산업통상부 K-온디바이스 AI 반도체 기술개발사업의 "
             "휴머노이드용 AI 가속기 세부과제. 모빌린트가 NPU·가속기 "
             "모듈·소프트웨어를 개발하며 LG전자 휴머노이드에 적용 검증을 "
@@ -7735,7 +7747,13 @@ R26_UPGRADE_MESSAGES = {
         "착공 계획에서 준공 또는 생산시설 실제 가동으로 진전된 단계입니다. 생산능력·수주·가동률을 확인합니다.",
         "감가상각 부담과 매출 증가 사이 시차를 분리하며 테슬라 부품 공급으로 추정하지 않습니다."),
 }
+R26_KINO_CAT = "베어로보틱스 · 키노-2 신제품 공개 보도(유상 주문 미확인)"
+
 def _r26_category(text: str, group: str) -> str:
+    if (group == "lg_robotics"
+        and re.search(r"베어로보틱스|Bear Robotics", text, re.I)
+        and re.search(r"키노[- ]?2|Kino[- ]?2", text, re.I)):
+        return R26_KINO_CAT
     for name, event in R26_EVENTS.items():
         if group == event["group"]:
             official = next(iter(R26_PRESS[name]))
@@ -7744,6 +7762,10 @@ def _r26_category(text: str, group: str) -> str:
     return _r26_old_category(text, group)
 
 def _r26_meaning(category: str) -> str:
+    if category == R26_KINO_CAT:
+        return ("베어로보틱스 키노-2 로봇의 성능 개선 발표는 제품 이정표입니다. "
+                "AXIUM 액추에이터 외부 고객 수주나 독립 유상 매출을 "
+                "확정한 발표가 아니므로 분리해 확인합니다.")
     for value in R26_UPGRADE_MESSAGES.values():
         if category == value[0]:
             return value[1]
@@ -7753,6 +7775,9 @@ def _r26_meaning(category: str) -> str:
     return _r26_old_meaning(category)
 
 def _r26_risk(category: str) -> str:
+    if category == R26_KINO_CAT:
+        return ("시연 성능 향상이 실제 고객 환경 가동률·운영비·정비비 절감을 "
+                "입증하는지 검증합니다. 고객명·구매계약·실제 납품을 구분합니다.")
     for value in R26_UPGRADE_MESSAGES.values():
         if category == value[0]:
             return value[2]
@@ -7784,16 +7809,21 @@ def _r26_tag(group: str) -> str:
 def _r26_select(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _r26_old_select(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get("key") not in seen]
-    # Prevent six confirmed dated upgrades from being buried under repeated
-    # investment-commentary stories. All selections still respect seen keys.
-    for name in reversed(R26_PRIORITY):
+    # Reserve slots for each distinct confirmed milestone FIRST. The prior
+    # prepend-if-absent loop let an already-selected late-priority item get
+    # truncated when five other priority events were prepended afterwards.
+    priority: list[dict] = []
+    priority_keys: set[str] = set()
+    for name in R26_PRIORITY:
         group = R26_EVENTS[name]["group"]
-        hit = next((x for x in candidates if x.get("group") == group and
-                    x.get("score", 0) >= 11), None)
-        if hit and not any(x.get("key") == hit.get("key") for x in chosen):
-            chosen = [hit] + chosen
-            chosen = chosen[:limit]
-    return chosen
+        hit = next((x for x in candidates if x.get("group") == group
+                    and x.get("score", 0) >= 11
+                    and x.get("key") not in priority_keys), None)
+        if hit:
+            priority.append(hit)
+            priority_keys.add(hit["key"])
+    result = priority + [x for x in chosen if x.get("key") not in priority_keys]
+    return result[:limit]
 
 base.query_news = _r26_query
 base.topic_group = _r26_group
