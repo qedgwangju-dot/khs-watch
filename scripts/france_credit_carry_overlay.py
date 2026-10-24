@@ -339,8 +339,8 @@ def format_event(rating: dict, events: list[dict], pending: dict,
             else "프랑스 재무부의 공식 보도자료가 공개됐습니다. "
         )
         status = (f"{notice['date']} {government_result}"
-                  "이는 정부 발표에 근거한 내용이며 Moody’s 직접 결정문 또는 "
-                  "프랑스 국채관리청 최신 등급표와는 별도로 구분합니다.")
+                  "이는 정부 공식 입장이며 Moody’s 직접 발표·결정문 또는 프랑스 국채관리청 "
+                  "최신 등급표의 검증 전까지 별도 출처로 구분합니다.")
         caveat = "정부의 대응 발표 확인과 Moody’s 신용등급 결정문 직접 확인은 서로 다른 단계입니다."
     elif any(x["kind"] == "milestone" for x in events):
         days = min(x["days"] for x in events if x["kind"] == "milestone")
