@@ -2433,7 +2433,7 @@ def _iea_reprints_cross_checked(rows: list[NewsItem]) -> bool:
 
 def _eia_stock_row(text: str, label: str, n: int=6) -> list[int]:
     token=r"\d{1,3}(?:,\d{3})+"
-    pattern=rf"(?<![A-Za-z]){re.escape(label)}\s+((?:{token}\s+){{{n}}})"
+    pattern=rf"(?<![A-Za-z]){re.escape(label)}\s+((?:{token}\s+){{{n-1}}}{token})(?=\s|$)"
     match=re.search(pattern,text,flags=re.I)
     if not match:
         raise RuntimeError(f"EIA 주간 기준일과 행의 {n}개 수치 불일치: {label}")
@@ -3122,6 +3122,7 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
         ):
             # Two arbitrary article names must never be treated as confirmation.
             continue
+        doe_primary = kind == "us_dpa_refinery_funding_oct22" and _doe_oct22_first_party(selected)
         eia_primary = kind == "eia_refining_crack_watch" and any(
             row.source == EIA_REFINING_SOURCE
             and row.link == EIA_REFINING_WEEKLY_URL
@@ -3134,7 +3135,7 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             for row in selected
         )
 
-        if len(selected) >= minimum_sources or has_primary_data or regional_primary or tanker_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary or saudi_minister_direct or saudi_minister_report or saudi_official_advanced or new_official_primary or iea_secondary_cross_checked:
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or tanker_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or doe_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary or saudi_minister_direct or saudi_minister_report or saudi_official_advanced or new_official_primary or iea_secondary_cross_checked:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
 
     candidates.sort(key=lambda value: value[0], reverse=True)
