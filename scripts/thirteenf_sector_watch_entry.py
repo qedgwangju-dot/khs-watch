@@ -7,6 +7,7 @@ import os
 import urllib.request
 
 import thirteenf_sector_watch as watch
+import thirteenf_sector_rank as sector_rank
 
 # SEC 13F 감시 대상 확장.
 # 금융기관은 특정 CEO의 개인 베팅으로 오해하지 않도록 법인 공시 주체명으로 표시한다.
@@ -139,6 +140,13 @@ def build_message_with_owner(label, filing, previous, changes, info_url):
     rate, basis = ensure_fx()
     lines.insert(1, f"포트폴리오 공시 주체: {owner}")
     lines.insert(2, f"원화 환산 기준: 1달러={rate:,.2f}원 ({basis})")
+
+    # Industry rankings are quarter-end *position-change reference values*.
+    # The filing gives holdings, not execution prices or exact purchased cash.
+    ranked = sector_rank.build_ranking(changes, money_with_krw).splitlines()
+    anchor = next((i for i,line in enumerate(lines)
+                   if line.strip()=="▶ 산업별 매수·매도 방향"), len(lines))
+    lines[anchor:anchor] = ranked + [""]
     return "\n".join(lines)
 
 
