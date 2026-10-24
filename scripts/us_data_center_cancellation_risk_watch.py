@@ -684,6 +684,7 @@ pending = {
     "ai_credit_seen_ids": credit_seen,
     "ai_credit_last_new_count": len(credit_new),
     "ai_credit_quote_source": "신뢰 매체 헤드라인. TRACE 개별채권 실시간 시세 미연결",
+    "ai_credit_baseline_confirmed_at_utc": old.get("ai_credit_baseline_confirmed_at_utc"),
     "ms_finance_reference": MS_FINANCE_REFERENCE,
     "ms_finance_addendum_id": MS_FINANCE_EVENT if ms_finance_due else old.get("ms_finance_addendum_id"),
     "ms_finance_addendum_at_utc": (
@@ -711,6 +712,8 @@ pending = {
         "historical_official_link": NSCALE_OFFICIAL_2025,
     },
 }
+if old.get("ai_credit_baseline_confirmed_at_utc") and pending.get("ai_credit_baseline_confirmed_at_utc") != old["ai_credit_baseline_confirmed_at_utc"]:
+    raise RuntimeError("AI credit verified baseline timestamp would be lost")
 PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 if should_alert:
