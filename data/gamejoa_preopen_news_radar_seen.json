@@ -13317,6 +13317,28 @@
       "telegram_core_fact": "메사 래버러토리(MLAB)가 글로벌 구조조정과 샌디에이고 시설 축소, 외부 지출 감축을 통해 연간 영업비용을 약 930만 달러 줄이고, 이 가운데 약 430만 달러를 성장 부문에 재투자해 순 연간 비용을 약 500만 달러 절감하는 계획을 13일 발표했다.",
       "title": "메사 래버러토리, 인력 6% 감축..연 930만 달러 비용 절감"
     },
+    "core:212154f83e898e2c3f99fec6": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102318201",
+      "source": "한국경제",
+      "source_body_digest": "876d107d15a86058d0e5e56396e41ae768b1c024765b822747e8b169670cd0b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c700d959fe0453aaecac1e9fd499056e28f26ce2ab3fc13885f6ab24369afde6",
+      "source_fact_keys": [
+        "source_fact:v1:3f8ec6a8269c9e7029db815f94cdcee0abf0ae3fd83c45eef358425d1279e6ca",
+        "source_fact:v1:835fa27befb66e7786d826040a02403ff434e1a46d274318f98a5b2651a8507b",
+        "source_fact:v1:e612a219789774b6d005c950215386908985af459af7fec82d52ef5ff205e63b"
+      ],
+      "source_published_kst": "2026-10-23T18:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'",
+      "telegram_core_fact": "딜로이트안진의 경영자문 매출은 3개 사업연도 동안 2600억원에서 2200억원대로 감소세를 보였다.",
+      "title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'"
+    },
     "core:2131d7a780f21aac2b2d6c7e": {
       "first_seen_kst": "2026-10-15T11:36:50+09:00",
       "lanes": {
@@ -37693,6 +37715,32 @@
       "source_published_kst": "2026-10-07T14:21+09:00",
       "title": "HD건설기계, 美 데이터센터에 3900억원 규모 발전엔진 공급"
     },
+    "core:5f09fbad0193a18ea1b25559": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/24/2026102314440866912",
+      "source": "머니투데이",
+      "source_body_digest": "f69cdb16d944cc800902bf8ec1df7082e5f3b23e8f36aafd892c684736631468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3dd60da1afcd85efc1439058cbc0fc7fde0352a4fc78a49ff8b59e8a4525d44",
+      "source_fact_keys": [
+        "source_fact:v1:32bb613e33c99900ffb2d858cf02e4ee355ac3ca0b6a6f14b0df797f0b521927",
+        "source_fact:v1:581f0090e04f313ec080bcc49094c2dcfdd70fab340f07b3e00e8a97ceed9e18",
+        "source_fact:v1:6c3eec8ae07c5a65e07cdd5444f505e406122f8d7915d53e3b1ec6d22ced1468",
+        "source_fact:v1:7507ba5f15b784c90d1eb15dace57d4adabaccf36d558fc92b36eae73a0a301d",
+        "source_fact:v1:d1a7adb036ce86f41da8cfaf061a304738d798dd66dea79bc8d951c020d327aa",
+        "source_fact:v1:ebcf0572527a1268c287175845dffddeaa710fa186ae6a2a633e82993b6025c6",
+        "source_fact:v1:ec1d9180b49a4a83e7846d1bccfa72b84b3b9123ac1b0935f7c97a80494be845"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?",
+      "telegram_core_fact": "이런 가운데 종합 숙박 솔루션 스타트업 더휴식이 최근 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다.",
+      "title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?"
+    },
     "core:5f0ee64c378230b562f36b2f": {
       "first_seen_kst": "2026-10-22T05:03:54+09:00",
       "lanes": {
@@ -51118,6 +51166,28 @@
       "source_title": "델 테크놀로지스, 산업 현장용 러기드 AI 노트북 2종 공개",
       "telegram_core_fact": "군·경찰과 소방, 정유·석유화학, 제조, 운송 등 산업 현장에서 AI 기반 업무를 확대하고 데이터 분석 및 설비 관리의 효율성을 높이려는 수요에 대응하기 위한 제품이다.",
       "title": "델 테크놀로지스, 산업 현장용 러기드 AI 노트북 2종 공개"
+    },
+    "core:7f2fdbcf69d53f95ab7655a8": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261024044500109",
+      "source": "연합뉴스",
+      "source_body_digest": "ed6c914c01634c3a449adffccdaf0dde94a3b5c912b692d5cabb7e769d55bec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0cb8e6401eb3621f51f4a0ebf387ab216c4f420dcae9323d66f0aabd68b329b",
+      "source_fact_keys": [
+        "source_fact:v1:5519356982e3461cb96b2064640b331d6459b406671e67eef945c62051345bf2",
+        "source_fact:v1:60c147aa1dcb79b82f41aa377c30aa6bae6da58af1a4e3795b865ba8c33e441f",
+        "source_fact:v1:9f8b7bbb10ff4f06979407a5cf647ef7337f9b4a2959d47dd39a23a4ac079f47"
+      ],
+      "source_published_kst": "2026-10-24T17:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스",
+      "telegram_core_fact": "하지만 이달 중순 도널드 트럼프 미국 대통령이 제안한 '에너지 휴전', 미·러 '경유딜'을 두고 미국과 부딪힌 이후 스타실드에 속도 제한이 걸리면서 우크라이나 측은 상당한 피해를 본 것으로 전해졌다.",
+      "title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스"
     },
     "core:7f305c1742ec1ceb733e710b": {
       "first_seen_kst": "2026-10-14T15:35:09+09:00",
@@ -108995,6 +109065,28 @@
       "source_title": "LG전자 3분기 실적 컨센서스 하회…증권가 \"일시적 요인, 본업 건재\"",
       "telegram_core_fact": "LG전자는 3분기 연결기준 매출 23조 8270억원, 영업이익 7822억원 잠정실적을 기록했다.",
       "title": "LG전자 3분기 실적 컨센서스 하회…증권가 \"일시적 요인, 본업 건재\""
+    },
+    "event:484796ff485804fca4be7714": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261024044500109",
+      "source": "연합뉴스",
+      "source_body_digest": "ed6c914c01634c3a449adffccdaf0dde94a3b5c912b692d5cabb7e769d55bec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0cb8e6401eb3621f51f4a0ebf387ab216c4f420dcae9323d66f0aabd68b329b",
+      "source_fact_keys": [
+        "source_fact:v1:5519356982e3461cb96b2064640b331d6459b406671e67eef945c62051345bf2",
+        "source_fact:v1:60c147aa1dcb79b82f41aa377c30aa6bae6da58af1a4e3795b865ba8c33e441f",
+        "source_fact:v1:9f8b7bbb10ff4f06979407a5cf647ef7337f9b4a2959d47dd39a23a4ac079f47"
+      ],
+      "source_published_kst": "2026-10-24T17:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스",
+      "telegram_core_fact": "하지만 이달 중순 도널드 트럼프 미국 대통령이 제안한 '에너지 휴전', 미·러 '경유딜'을 두고 미국과 부딪힌 이후 스타실드에 속도 제한이 걸리면서 우크라이나 측은 상당한 피해를 본 것으로 전해졌다.",
+      "title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스"
     },
     "event:48792edca243a064689f724e": {
       "first_seen_kst": "2026-10-22T09:17:40+09:00",
@@ -169649,6 +169741,28 @@
       "telegram_core_fact": "삼성전자는 이날 프리마켓 개장 직전 연결 기준 올해 3분기 매출 195조원, 영업이익 107조4000억원의 3분기 잠정 실적을 발표했다.",
       "title": "삼성전자, 3분기 호실적에 프리마켓서 1.5% 상승…SK하닉도 1%↑"
     },
+    "fact:6aacb00ed2e97c8ec4400f86": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261024044500109",
+      "source": "연합뉴스",
+      "source_body_digest": "ed6c914c01634c3a449adffccdaf0dde94a3b5c912b692d5cabb7e769d55bec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0cb8e6401eb3621f51f4a0ebf387ab216c4f420dcae9323d66f0aabd68b329b",
+      "source_fact_keys": [
+        "source_fact:v1:5519356982e3461cb96b2064640b331d6459b406671e67eef945c62051345bf2",
+        "source_fact:v1:60c147aa1dcb79b82f41aa377c30aa6bae6da58af1a4e3795b865ba8c33e441f",
+        "source_fact:v1:9f8b7bbb10ff4f06979407a5cf647ef7337f9b4a2959d47dd39a23a4ac079f47"
+      ],
+      "source_published_kst": "2026-10-24T17:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스",
+      "telegram_core_fact": "하지만 이달 중순 도널드 트럼프 미국 대통령이 제안한 '에너지 휴전', 미·러 '경유딜'을 두고 미국과 부딪힌 이후 스타실드에 속도 제한이 걸리면서 우크라이나 측은 상당한 피해를 본 것으로 전해졌다.",
+      "title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스"
+    },
     "fact:6ab8f659e51840e09af844bc": {
       "first_seen_kst": "2026-10-21T12:30:59+09:00",
       "lanes": {
@@ -170726,6 +170840,32 @@
       "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
       "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
       "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
+    "fact:6d0b66bf193a44f59936e154": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/24/2026102314440866912",
+      "source": "머니투데이",
+      "source_body_digest": "f69cdb16d944cc800902bf8ec1df7082e5f3b23e8f36aafd892c684736631468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3dd60da1afcd85efc1439058cbc0fc7fde0352a4fc78a49ff8b59e8a4525d44",
+      "source_fact_keys": [
+        "source_fact:v1:32bb613e33c99900ffb2d858cf02e4ee355ac3ca0b6a6f14b0df797f0b521927",
+        "source_fact:v1:581f0090e04f313ec080bcc49094c2dcfdd70fab340f07b3e00e8a97ceed9e18",
+        "source_fact:v1:6c3eec8ae07c5a65e07cdd5444f505e406122f8d7915d53e3b1ec6d22ced1468",
+        "source_fact:v1:7507ba5f15b784c90d1eb15dace57d4adabaccf36d558fc92b36eae73a0a301d",
+        "source_fact:v1:d1a7adb036ce86f41da8cfaf061a304738d798dd66dea79bc8d951c020d327aa",
+        "source_fact:v1:ebcf0572527a1268c287175845dffddeaa710fa186ae6a2a633e82993b6025c6",
+        "source_fact:v1:ec1d9180b49a4a83e7846d1bccfa72b84b3b9123ac1b0935f7c97a80494be845"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?",
+      "telegram_core_fact": "이런 가운데 종합 숙박 솔루션 스타트업 더휴식이 최근 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다.",
+      "title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?"
     },
     "fact:6d104308ff4bf7e4187e02c0": {
       "first_seen_kst": "2026-10-23T23:29:22+09:00",
@@ -198256,6 +198396,28 @@
       "source_title": "[특징주] 반도체 급락에도…호남 반도체株 금호전기·금호건설 급등",
       "telegram_core_fact": "한국거래소 기준 13일 오전 9시55분 금호전기는 18.79% 오른 1만3150원, 금호건설은 6.79% 오른 1만4310원에 거래됐다. 등락률은 전 거래일 대비다.",
       "title": "[특징주] 반도체 급락에도…호남 반도체株 금호전기·금호건설 급등"
+    },
+    "fact:aa1dc6c6342e28e2666e1858": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102318201",
+      "source": "한국경제",
+      "source_body_digest": "876d107d15a86058d0e5e56396e41ae768b1c024765b822747e8b169670cd0b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c700d959fe0453aaecac1e9fd499056e28f26ce2ab3fc13885f6ab24369afde6",
+      "source_fact_keys": [
+        "source_fact:v1:3f8ec6a8269c9e7029db815f94cdcee0abf0ae3fd83c45eef358425d1279e6ca",
+        "source_fact:v1:835fa27befb66e7786d826040a02403ff434e1a46d274318f98a5b2651a8507b",
+        "source_fact:v1:e612a219789774b6d005c950215386908985af459af7fec82d52ef5ff205e63b"
+      ],
+      "source_published_kst": "2026-10-23T18:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'",
+      "telegram_core_fact": "딜로이트안진의 경영자문 매출은 3개 사업연도 동안 2600억원에서 2200억원대로 감소세를 보였다.",
+      "title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'"
     },
     "fact:aa2bfddc685f477f149c11d4": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
@@ -242095,6 +242257,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련'"
+    },
+    "link:07b0f31bd730eb6695c963c6": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261024044500109",
+      "source": "연합뉴스",
+      "source_body_digest": "ed6c914c01634c3a449adffccdaf0dde94a3b5c912b692d5cabb7e769d55bec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0cb8e6401eb3621f51f4a0ebf387ab216c4f420dcae9323d66f0aabd68b329b",
+      "source_fact_keys": [
+        "source_fact:v1:5519356982e3461cb96b2064640b331d6459b406671e67eef945c62051345bf2",
+        "source_fact:v1:60c147aa1dcb79b82f41aa377c30aa6bae6da58af1a4e3795b865ba8c33e441f",
+        "source_fact:v1:9f8b7bbb10ff4f06979407a5cf647ef7337f9b4a2959d47dd39a23a4ac079f47"
+      ],
+      "source_published_kst": "2026-10-24T17:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스",
+      "telegram_core_fact": "하지만 이달 중순 도널드 트럼프 미국 대통령이 제안한 '에너지 휴전', 미·러 '경유딜'을 두고 미국과 부딪힌 이후 스타실드에 속도 제한이 걸리면서 우크라이나 측은 상당한 피해를 본 것으로 전해졌다.",
+      "title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스"
     },
     "link:07b182f628b472fef7eee77d": {
       "first_seen_kst": "2026-10-23T10:22:46+09:00",
@@ -297071,6 +297255,28 @@
       "source_published_kst": "2026-10-07T09:56+09:00",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표"
     },
+    "link:6868db54569701f3e929a1b0": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102318201",
+      "source": "한국경제",
+      "source_body_digest": "876d107d15a86058d0e5e56396e41ae768b1c024765b822747e8b169670cd0b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c700d959fe0453aaecac1e9fd499056e28f26ce2ab3fc13885f6ab24369afde6",
+      "source_fact_keys": [
+        "source_fact:v1:3f8ec6a8269c9e7029db815f94cdcee0abf0ae3fd83c45eef358425d1279e6ca",
+        "source_fact:v1:835fa27befb66e7786d826040a02403ff434e1a46d274318f98a5b2651a8507b",
+        "source_fact:v1:e612a219789774b6d005c950215386908985af459af7fec82d52ef5ff205e63b"
+      ],
+      "source_published_kst": "2026-10-23T18:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'",
+      "telegram_core_fact": "딜로이트안진의 경영자문 매출은 3개 사업연도 동안 2600억원에서 2200억원대로 감소세를 보였다.",
+      "title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'"
+    },
     "link:686ef5a64628b8389f1081f3": {
       "first_seen_kst": "2026-10-05T17:16:33+09:00",
       "lanes": {
@@ -311457,6 +311663,32 @@
       "source_title": "대한전선, 美서 '자재 공급만' 1200억 초고압 전력망 턴키 수주",
       "telegram_core_fact": "대한전선이 미국에서 대규모 초고압 전력망 턴키 프로젝트를 수주했다.",
       "title": "대한전선, 美서 '자재 공급만' 1200억 초고압 전력망 턴키 수주"
+    },
+    "link:818e3d468eab3129a38a0e2e": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/24/2026102314440866912",
+      "source": "머니투데이",
+      "source_body_digest": "f69cdb16d944cc800902bf8ec1df7082e5f3b23e8f36aafd892c684736631468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3dd60da1afcd85efc1439058cbc0fc7fde0352a4fc78a49ff8b59e8a4525d44",
+      "source_fact_keys": [
+        "source_fact:v1:32bb613e33c99900ffb2d858cf02e4ee355ac3ca0b6a6f14b0df797f0b521927",
+        "source_fact:v1:581f0090e04f313ec080bcc49094c2dcfdd70fab340f07b3e00e8a97ceed9e18",
+        "source_fact:v1:6c3eec8ae07c5a65e07cdd5444f505e406122f8d7915d53e3b1ec6d22ced1468",
+        "source_fact:v1:7507ba5f15b784c90d1eb15dace57d4adabaccf36d558fc92b36eae73a0a301d",
+        "source_fact:v1:d1a7adb036ce86f41da8cfaf061a304738d798dd66dea79bc8d951c020d327aa",
+        "source_fact:v1:ebcf0572527a1268c287175845dffddeaa710fa186ae6a2a633e82993b6025c6",
+        "source_fact:v1:ec1d9180b49a4a83e7846d1bccfa72b84b3b9123ac1b0935f7c97a80494be845"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?",
+      "telegram_core_fact": "이런 가운데 종합 숙박 솔루션 스타트업 더휴식이 최근 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다.",
+      "title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?"
     },
     "link:81956712c572700175dbd56a": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
@@ -389239,6 +389471,32 @@
       "source_published_kst": "2026-10-06T12:12+09:00",
       "title": "경찰, 삼성전자 노조위원장 '장인 업체 일감 몰아주기' 의혹 수사 착수"
     },
+    "original:0e58a2ef2aed7a7d75013785": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/24/2026102314440866912",
+      "source": "머니투데이",
+      "source_body_digest": "f69cdb16d944cc800902bf8ec1df7082e5f3b23e8f36aafd892c684736631468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3dd60da1afcd85efc1439058cbc0fc7fde0352a4fc78a49ff8b59e8a4525d44",
+      "source_fact_keys": [
+        "source_fact:v1:32bb613e33c99900ffb2d858cf02e4ee355ac3ca0b6a6f14b0df797f0b521927",
+        "source_fact:v1:581f0090e04f313ec080bcc49094c2dcfdd70fab340f07b3e00e8a97ceed9e18",
+        "source_fact:v1:6c3eec8ae07c5a65e07cdd5444f505e406122f8d7915d53e3b1ec6d22ced1468",
+        "source_fact:v1:7507ba5f15b784c90d1eb15dace57d4adabaccf36d558fc92b36eae73a0a301d",
+        "source_fact:v1:d1a7adb036ce86f41da8cfaf061a304738d798dd66dea79bc8d951c020d327aa",
+        "source_fact:v1:ebcf0572527a1268c287175845dffddeaa710fa186ae6a2a633e82993b6025c6",
+        "source_fact:v1:ec1d9180b49a4a83e7846d1bccfa72b84b3b9123ac1b0935f7c97a80494be845"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?",
+      "telegram_core_fact": "이런 가운데 종합 숙박 솔루션 스타트업 더휴식이 최근 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다.",
+      "title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?"
+    },
     "original:0e5d0610c693217fe42b5bba": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -396524,6 +396782,28 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T09:11+09:00",
       "title": "JW중외제약 “엠파가드, 임상 3상서 기존 치료보다 혈당 낮춰”"
+    },
+    "original:1c9c57c867a29a81a6bd6f7f": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261024044500109",
+      "source": "연합뉴스",
+      "source_body_digest": "ed6c914c01634c3a449adffccdaf0dde94a3b5c912b692d5cabb7e769d55bec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0cb8e6401eb3621f51f4a0ebf387ab216c4f420dcae9323d66f0aabd68b329b",
+      "source_fact_keys": [
+        "source_fact:v1:5519356982e3461cb96b2064640b331d6459b406671e67eef945c62051345bf2",
+        "source_fact:v1:60c147aa1dcb79b82f41aa377c30aa6bae6da58af1a4e3795b865ba8c33e441f",
+        "source_fact:v1:9f8b7bbb10ff4f06979407a5cf647ef7337f9b4a2959d47dd39a23a4ac079f47"
+      ],
+      "source_published_kst": "2026-10-24T17:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스",
+      "telegram_core_fact": "하지만 이달 중순 도널드 트럼프 미국 대통령이 제안한 '에너지 휴전', 미·러 '경유딜'을 두고 미국과 부딪힌 이후 스타실드에 속도 제한이 걸리면서 우크라이나 측은 상당한 피해를 본 것으로 전해졌다.",
+      "title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스"
     },
     "original:1c9f26259dd72e0451951ee6": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -426673,6 +426953,28 @@
       "source_title": "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연",
       "telegram_core_fact": "일론 머스크 테슬라 최고경영자(CEO)가 미국 거대 미디어 기업 '스카이댄스'에 10억달러를 투자했다고 CNBC가 22일(현지시간) 소식통을 인용해 보도했다. 래리 엘리슨은 머스크가 2022년 트위터를 인수할 당시 10억달러를 투자했다.",
       "title": "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연"
+    },
+    "original:50910ea85604774140ad0b02": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102318201",
+      "source": "한국경제",
+      "source_body_digest": "876d107d15a86058d0e5e56396e41ae768b1c024765b822747e8b169670cd0b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c700d959fe0453aaecac1e9fd499056e28f26ce2ab3fc13885f6ab24369afde6",
+      "source_fact_keys": [
+        "source_fact:v1:3f8ec6a8269c9e7029db815f94cdcee0abf0ae3fd83c45eef358425d1279e6ca",
+        "source_fact:v1:835fa27befb66e7786d826040a02403ff434e1a46d274318f98a5b2651a8507b",
+        "source_fact:v1:e612a219789774b6d005c950215386908985af459af7fec82d52ef5ff205e63b"
+      ],
+      "source_published_kst": "2026-10-23T18:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'",
+      "telegram_core_fact": "딜로이트안진의 경영자문 매출은 3개 사업연도 동안 2600억원에서 2200억원대로 감소세를 보였다.",
+      "title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'"
     },
     "original:5095d7554c951f4dd78a3d0b": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
@@ -573425,6 +573727,28 @@
       "telegram_core_fact": "김인중 한국농어촌공사 사장은 14일 나주호 용수의 반도체 산업 공급에 따른 농업용수 부족 우려에 대체시설을 통해 연간 1억t 이상의 농업용수를 확보할 계획이라고 밝혔다. 김 사장은 나주호에서 반도체 산업용수로 하루 10만t을 공급하는 계획에 따라 연간 약 3650만t의 농업용수가 줄어들게 된다고 설명했다.",
       "title": "김인중 \"나주호 용수 대체시설로 농업용수 1억t 이상 확보 계획\""
     },
+    "source_fact:16bcd8d010d22c44669281db": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261024044500109",
+      "source": "연합뉴스",
+      "source_body_digest": "ed6c914c01634c3a449adffccdaf0dde94a3b5c912b692d5cabb7e769d55bec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0cb8e6401eb3621f51f4a0ebf387ab216c4f420dcae9323d66f0aabd68b329b",
+      "source_fact_keys": [
+        "source_fact:v1:5519356982e3461cb96b2064640b331d6459b406671e67eef945c62051345bf2",
+        "source_fact:v1:60c147aa1dcb79b82f41aa377c30aa6bae6da58af1a4e3795b865ba8c33e441f",
+        "source_fact:v1:9f8b7bbb10ff4f06979407a5cf647ef7337f9b4a2959d47dd39a23a4ac079f47"
+      ],
+      "source_published_kst": "2026-10-24T17:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스",
+      "telegram_core_fact": "하지만 이달 중순 도널드 트럼프 미국 대통령이 제안한 '에너지 휴전', 미·러 '경유딜'을 두고 미국과 부딪힌 이후 스타실드에 속도 제한이 걸리면서 우크라이나 측은 상당한 피해를 본 것으로 전해졌다.",
+      "title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스"
+    },
     "source_fact:16bdb13e3bd0bbe999ab6fe6": {
       "first_seen_kst": "2026-10-19T14:20:34+09:00",
       "lanes": {
@@ -579358,6 +579682,28 @@
       ],
       "source_published_kst": "2026-10-06T22:35+09:00",
       "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
+    },
+    "source_fact:194deb5c5d4f7c3e9457ef51": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102318201",
+      "source": "한국경제",
+      "source_body_digest": "876d107d15a86058d0e5e56396e41ae768b1c024765b822747e8b169670cd0b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c700d959fe0453aaecac1e9fd499056e28f26ce2ab3fc13885f6ab24369afde6",
+      "source_fact_keys": [
+        "source_fact:v1:3f8ec6a8269c9e7029db815f94cdcee0abf0ae3fd83c45eef358425d1279e6ca",
+        "source_fact:v1:835fa27befb66e7786d826040a02403ff434e1a46d274318f98a5b2651a8507b",
+        "source_fact:v1:e612a219789774b6d005c950215386908985af459af7fec82d52ef5ff205e63b"
+      ],
+      "source_published_kst": "2026-10-23T18:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'",
+      "telegram_core_fact": "딜로이트안진의 경영자문 매출은 3개 사업연도 동안 2600억원에서 2200억원대로 감소세를 보였다.",
+      "title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'"
     },
     "source_fact:1950927a572dfc05571b4915": {
       "first_seen_kst": "2026-10-16T16:08:38+09:00",
@@ -615510,6 +615856,32 @@
       "telegram_core_fact": "외부 클라우드와 AI 모델에 의존하던 방식에서 벗어나 자체 인프라를 병행하는 기업이 늘면서, 필요한 장소에 빠르게 구축하고 수요에 따라 확장할 수 있는 모듈형 AI 데이터센터(AIDC)도 대안으로 부상한 모습이다. 국내에선 엘리스그룹이 모듈형 데이터센터와 클라우드 소프트웨어를 결합한 AI 인프라 사업을 추진 중이다.",
       "title": "[AI 고속도로] 기업 AI도 프라이빗 시대…'모듈형 데이터센터'가 뜬다"
     },
+    "source_fact:2851de5f215978e8bd351737": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/24/2026102314440866912",
+      "source": "머니투데이",
+      "source_body_digest": "f69cdb16d944cc800902bf8ec1df7082e5f3b23e8f36aafd892c684736631468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3dd60da1afcd85efc1439058cbc0fc7fde0352a4fc78a49ff8b59e8a4525d44",
+      "source_fact_keys": [
+        "source_fact:v1:32bb613e33c99900ffb2d858cf02e4ee355ac3ca0b6a6f14b0df797f0b521927",
+        "source_fact:v1:581f0090e04f313ec080bcc49094c2dcfdd70fab340f07b3e00e8a97ceed9e18",
+        "source_fact:v1:6c3eec8ae07c5a65e07cdd5444f505e406122f8d7915d53e3b1ec6d22ced1468",
+        "source_fact:v1:7507ba5f15b784c90d1eb15dace57d4adabaccf36d558fc92b36eae73a0a301d",
+        "source_fact:v1:d1a7adb036ce86f41da8cfaf061a304738d798dd66dea79bc8d951c020d327aa",
+        "source_fact:v1:ebcf0572527a1268c287175845dffddeaa710fa186ae6a2a633e82993b6025c6",
+        "source_fact:v1:ec1d9180b49a4a83e7846d1bccfa72b84b3b9123ac1b0935f7c97a80494be845"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?",
+      "telegram_core_fact": "이런 가운데 종합 숙박 솔루션 스타트업 더휴식이 최근 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다.",
+      "title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?"
+    },
     "source_fact:285872d34fdcc8545c79ce30": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
       "lanes": {
@@ -622873,6 +623245,28 @@
       "source_title": "[올댓차이나] 홍콩 9월 인플레율 1.9%로 가속…실업률 3.9%·0.1%P 악화",
       "telegram_core_fact": "동망과 경제통, 홍콩 스탠더드에 따르면 홍콩 특구정부 통계처는 22일 9월 종합 소비자 물가지수(CPI)가 전년 동월보다 1.9% 상승했다고 발표했다.",
       "title": "[올댓차이나] 홍콩 9월 인플레율 1.9%로 가속…실업률 3.9%·0.1%P 악화"
+    },
+    "source_fact:2b3f6428aa06bdf4830ac1a1": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261024044500109",
+      "source": "연합뉴스",
+      "source_body_digest": "ed6c914c01634c3a449adffccdaf0dde94a3b5c912b692d5cabb7e769d55bec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0cb8e6401eb3621f51f4a0ebf387ab216c4f420dcae9323d66f0aabd68b329b",
+      "source_fact_keys": [
+        "source_fact:v1:5519356982e3461cb96b2064640b331d6459b406671e67eef945c62051345bf2",
+        "source_fact:v1:60c147aa1dcb79b82f41aa377c30aa6bae6da58af1a4e3795b865ba8c33e441f",
+        "source_fact:v1:9f8b7bbb10ff4f06979407a5cf647ef7337f9b4a2959d47dd39a23a4ac079f47"
+      ],
+      "source_published_kst": "2026-10-24T17:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스",
+      "telegram_core_fact": "하지만 이달 중순 도널드 트럼프 미국 대통령이 제안한 '에너지 휴전', 미·러 '경유딜'을 두고 미국과 부딪힌 이후 스타실드에 속도 제한이 걸리면서 우크라이나 측은 상당한 피해를 본 것으로 전해졌다.",
+      "title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스"
     },
     "source_fact:2b41a4a213b67c96ddb27a6b": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -656527,6 +656921,28 @@
       "source_title": "'제2도약' 현대차 푸네에 신공장…인도서 연간 100만대 생산체제 | 연합뉴스",
       "telegram_core_fact": "푸네 신공장의 본격 가동으로 현대차는 인도 현지에서 기존 첸나이 1·2공장(82만4천대)을 포함해 100만대에 가까운 연간 생산능력을 확보하게 됐다. 1996년 인도에 현지 법인을 설립한 현대차는 현지에서 연간 60만대 안팎을 판매하는 자동차 브랜드로 성장했다.",
       "title": "'제2도약' 현대차 푸네에 신공장…인도서 연간 100만대 생산체제 | 연합뉴스"
+    },
+    "source_fact:39e9bbfac08c4acb2213fade": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102318201",
+      "source": "한국경제",
+      "source_body_digest": "876d107d15a86058d0e5e56396e41ae768b1c024765b822747e8b169670cd0b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c700d959fe0453aaecac1e9fd499056e28f26ce2ab3fc13885f6ab24369afde6",
+      "source_fact_keys": [
+        "source_fact:v1:3f8ec6a8269c9e7029db815f94cdcee0abf0ae3fd83c45eef358425d1279e6ca",
+        "source_fact:v1:835fa27befb66e7786d826040a02403ff434e1a46d274318f98a5b2651a8507b",
+        "source_fact:v1:e612a219789774b6d005c950215386908985af459af7fec82d52ef5ff205e63b"
+      ],
+      "source_published_kst": "2026-10-23T18:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'",
+      "telegram_core_fact": "딜로이트안진의 경영자문 매출은 3개 사업연도 동안 2600억원에서 2200억원대로 감소세를 보였다.",
+      "title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'"
     },
     "source_fact:39ec7618205c30ebd6414f90": {
       "first_seen_kst": "2026-10-22T01:19:26+09:00",
@@ -753706,6 +754122,32 @@
       "source_published_kst": "2026-10-06T13:28+09:00",
       "title": "세계 반도체 매출, 1조 달러 넘어섰다…18개월 연속 성장"
     },
+    "source_fact:631052aaf5d78e323ff09ee2": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/24/2026102314440866912",
+      "source": "머니투데이",
+      "source_body_digest": "f69cdb16d944cc800902bf8ec1df7082e5f3b23e8f36aafd892c684736631468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3dd60da1afcd85efc1439058cbc0fc7fde0352a4fc78a49ff8b59e8a4525d44",
+      "source_fact_keys": [
+        "source_fact:v1:32bb613e33c99900ffb2d858cf02e4ee355ac3ca0b6a6f14b0df797f0b521927",
+        "source_fact:v1:581f0090e04f313ec080bcc49094c2dcfdd70fab340f07b3e00e8a97ceed9e18",
+        "source_fact:v1:6c3eec8ae07c5a65e07cdd5444f505e406122f8d7915d53e3b1ec6d22ced1468",
+        "source_fact:v1:7507ba5f15b784c90d1eb15dace57d4adabaccf36d558fc92b36eae73a0a301d",
+        "source_fact:v1:d1a7adb036ce86f41da8cfaf061a304738d798dd66dea79bc8d951c020d327aa",
+        "source_fact:v1:ebcf0572527a1268c287175845dffddeaa710fa186ae6a2a633e82993b6025c6",
+        "source_fact:v1:ec1d9180b49a4a83e7846d1bccfa72b84b3b9123ac1b0935f7c97a80494be845"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?",
+      "telegram_core_fact": "이런 가운데 종합 숙박 솔루션 스타트업 더휴식이 최근 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다.",
+      "title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?"
+    },
     "source_fact:6310843d10e22d7a1b2fa46b": {
       "first_seen_kst": "2026-10-22T20:40:52+09:00",
       "lanes": {
@@ -777143,6 +777585,32 @@
       "telegram_core_fact": "코스피·코스닥은 각각 4.06%·2.46% 하락해 양 시장에 매도 사이드카가 발동됐다.",
       "title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락"
     },
+    "source_fact:6d00c66141d9265e52ad88df": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/24/2026102314440866912",
+      "source": "머니투데이",
+      "source_body_digest": "f69cdb16d944cc800902bf8ec1df7082e5f3b23e8f36aafd892c684736631468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3dd60da1afcd85efc1439058cbc0fc7fde0352a4fc78a49ff8b59e8a4525d44",
+      "source_fact_keys": [
+        "source_fact:v1:32bb613e33c99900ffb2d858cf02e4ee355ac3ca0b6a6f14b0df797f0b521927",
+        "source_fact:v1:581f0090e04f313ec080bcc49094c2dcfdd70fab340f07b3e00e8a97ceed9e18",
+        "source_fact:v1:6c3eec8ae07c5a65e07cdd5444f505e406122f8d7915d53e3b1ec6d22ced1468",
+        "source_fact:v1:7507ba5f15b784c90d1eb15dace57d4adabaccf36d558fc92b36eae73a0a301d",
+        "source_fact:v1:d1a7adb036ce86f41da8cfaf061a304738d798dd66dea79bc8d951c020d327aa",
+        "source_fact:v1:ebcf0572527a1268c287175845dffddeaa710fa186ae6a2a633e82993b6025c6",
+        "source_fact:v1:ec1d9180b49a4a83e7846d1bccfa72b84b3b9123ac1b0935f7c97a80494be845"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?",
+      "telegram_core_fact": "이런 가운데 종합 숙박 솔루션 스타트업 더휴식이 최근 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다.",
+      "title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?"
+    },
     "source_fact:6d034889912f762f0e3cd5d5": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
       "lanes": {
@@ -796552,6 +797020,28 @@
       "telegram_core_fact": "퍼스트 뱅코프(FBP)가 3분기(7~9월) 일반회계기준(GAAP) 순이익 9610만 달러, 희석 주당순이익 0.63달러를 기록했다고 10월 22일 발표했다.",
       "title": "퍼스트 뱅코프, 3분기 순이익 9610만 달러..배당 25% 인상"
     },
+    "source_fact:757feff4d4bf7a10318528a3": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261024044500109",
+      "source": "연합뉴스",
+      "source_body_digest": "ed6c914c01634c3a449adffccdaf0dde94a3b5c912b692d5cabb7e769d55bec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0cb8e6401eb3621f51f4a0ebf387ab216c4f420dcae9323d66f0aabd68b329b",
+      "source_fact_keys": [
+        "source_fact:v1:5519356982e3461cb96b2064640b331d6459b406671e67eef945c62051345bf2",
+        "source_fact:v1:60c147aa1dcb79b82f41aa377c30aa6bae6da58af1a4e3795b865ba8c33e441f",
+        "source_fact:v1:9f8b7bbb10ff4f06979407a5cf647ef7337f9b4a2959d47dd39a23a4ac079f47"
+      ],
+      "source_published_kst": "2026-10-24T17:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스",
+      "telegram_core_fact": "하지만 이달 중순 도널드 트럼프 미국 대통령이 제안한 '에너지 휴전', 미·러 '경유딜'을 두고 미국과 부딪힌 이후 스타실드에 속도 제한이 걸리면서 우크라이나 측은 상당한 피해를 본 것으로 전해졌다.",
+      "title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스"
+    },
     "source_fact:75833c90f2d4a4b80f32b6d9": {
       "first_seen_kst": "2026-10-14T18:12:32+09:00",
       "lanes": {
@@ -802415,6 +802905,32 @@
       "source_title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”",
       "telegram_core_fact": "영풍·MBK는 22일 서울중앙지방법원의 1심 선고 이후 입장문을 내고 “이번 판결은 이사의 광범위한 경영 재량권과 외형적인 절차 이행만을 앞세운 나머지 자기주식 공개매수가 재무 건전성과 주주가치에 미친 실질적 해악을 간과했다”고 주장했다.",
       "title": "영풍·MBK, 고려아연 주주대표소송 1심 패소에 “즉각 항소”"
+    },
+    "source_fact:77ffa017f3559ff40be8bf50": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/24/2026102314440866912",
+      "source": "머니투데이",
+      "source_body_digest": "f69cdb16d944cc800902bf8ec1df7082e5f3b23e8f36aafd892c684736631468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3dd60da1afcd85efc1439058cbc0fc7fde0352a4fc78a49ff8b59e8a4525d44",
+      "source_fact_keys": [
+        "source_fact:v1:32bb613e33c99900ffb2d858cf02e4ee355ac3ca0b6a6f14b0df797f0b521927",
+        "source_fact:v1:581f0090e04f313ec080bcc49094c2dcfdd70fab340f07b3e00e8a97ceed9e18",
+        "source_fact:v1:6c3eec8ae07c5a65e07cdd5444f505e406122f8d7915d53e3b1ec6d22ced1468",
+        "source_fact:v1:7507ba5f15b784c90d1eb15dace57d4adabaccf36d558fc92b36eae73a0a301d",
+        "source_fact:v1:d1a7adb036ce86f41da8cfaf061a304738d798dd66dea79bc8d951c020d327aa",
+        "source_fact:v1:ebcf0572527a1268c287175845dffddeaa710fa186ae6a2a633e82993b6025c6",
+        "source_fact:v1:ec1d9180b49a4a83e7846d1bccfa72b84b3b9123ac1b0935f7c97a80494be845"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?",
+      "telegram_core_fact": "이런 가운데 종합 숙박 솔루션 스타트업 더휴식이 최근 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다.",
+      "title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?"
     },
     "source_fact:780803d68268207074b09620": {
       "first_seen_kst": "2026-10-16T19:25:42+09:00",
@@ -834547,6 +835063,28 @@
       ],
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:862373519eafdb4e18dd1008": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102318201",
+      "source": "한국경제",
+      "source_body_digest": "876d107d15a86058d0e5e56396e41ae768b1c024765b822747e8b169670cd0b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c700d959fe0453aaecac1e9fd499056e28f26ce2ab3fc13885f6ab24369afde6",
+      "source_fact_keys": [
+        "source_fact:v1:3f8ec6a8269c9e7029db815f94cdcee0abf0ae3fd83c45eef358425d1279e6ca",
+        "source_fact:v1:835fa27befb66e7786d826040a02403ff434e1a46d274318f98a5b2651a8507b",
+        "source_fact:v1:e612a219789774b6d005c950215386908985af459af7fec82d52ef5ff205e63b"
+      ],
+      "source_published_kst": "2026-10-23T18:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'",
+      "telegram_core_fact": "딜로이트안진의 경영자문 매출은 3개 사업연도 동안 2600억원에서 2200억원대로 감소세를 보였다.",
+      "title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'"
     },
     "source_fact:8623fdef2680ae58336f9d08": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
@@ -953993,6 +954531,32 @@
       "telegram_core_fact": "나스닥(NDAQ)은 3분기 순매출(매출액에서 거래기반비용을 뺀 금액)이 14억8100만 달러로 전년비 13% 증가했고, 비일반회계기준(non-GAAP) 희석 주당순이익은 1.04달러로 18% 늘었다고 10월 22일 발표했다.",
       "title": "나스닥, 3분기 순매출 14억8100만 달러..전년비 13% 증가"
     },
+    "source_fact:b966729f2370f7696e2a1c90": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/24/2026102314440866912",
+      "source": "머니투데이",
+      "source_body_digest": "f69cdb16d944cc800902bf8ec1df7082e5f3b23e8f36aafd892c684736631468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3dd60da1afcd85efc1439058cbc0fc7fde0352a4fc78a49ff8b59e8a4525d44",
+      "source_fact_keys": [
+        "source_fact:v1:32bb613e33c99900ffb2d858cf02e4ee355ac3ca0b6a6f14b0df797f0b521927",
+        "source_fact:v1:581f0090e04f313ec080bcc49094c2dcfdd70fab340f07b3e00e8a97ceed9e18",
+        "source_fact:v1:6c3eec8ae07c5a65e07cdd5444f505e406122f8d7915d53e3b1ec6d22ced1468",
+        "source_fact:v1:7507ba5f15b784c90d1eb15dace57d4adabaccf36d558fc92b36eae73a0a301d",
+        "source_fact:v1:d1a7adb036ce86f41da8cfaf061a304738d798dd66dea79bc8d951c020d327aa",
+        "source_fact:v1:ebcf0572527a1268c287175845dffddeaa710fa186ae6a2a633e82993b6025c6",
+        "source_fact:v1:ec1d9180b49a4a83e7846d1bccfa72b84b3b9123ac1b0935f7c97a80494be845"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?",
+      "telegram_core_fact": "이런 가운데 종합 숙박 솔루션 스타트업 더휴식이 최근 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다.",
+      "title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?"
+    },
     "source_fact:b966cba0ed871ddc3e9b623a": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
       "lanes": {
@@ -1042829,6 +1043393,32 @@
       "telegram_core_fact": "EU 이사회는 12일(현지시간) 성명을 통해 이런 조치를 발표하고, 이들이 북한의 핵무기·탄도미사일 프로그램과 관련한 활동을 지원·촉진하거나 유엔 제재를 위반하거나 회피한 책임이 있는 개인과 단체라고 밝혔다.",
       "title": "EU, 北미사일 기술자 등 개인 3명·단체 4곳 대북 제재 추가 | 연합뉴스"
     },
+    "source_fact:df97dec437d17ade7ecc986e": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/24/2026102314440866912",
+      "source": "머니투데이",
+      "source_body_digest": "f69cdb16d944cc800902bf8ec1df7082e5f3b23e8f36aafd892c684736631468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3dd60da1afcd85efc1439058cbc0fc7fde0352a4fc78a49ff8b59e8a4525d44",
+      "source_fact_keys": [
+        "source_fact:v1:32bb613e33c99900ffb2d858cf02e4ee355ac3ca0b6a6f14b0df797f0b521927",
+        "source_fact:v1:581f0090e04f313ec080bcc49094c2dcfdd70fab340f07b3e00e8a97ceed9e18",
+        "source_fact:v1:6c3eec8ae07c5a65e07cdd5444f505e406122f8d7915d53e3b1ec6d22ced1468",
+        "source_fact:v1:7507ba5f15b784c90d1eb15dace57d4adabaccf36d558fc92b36eae73a0a301d",
+        "source_fact:v1:d1a7adb036ce86f41da8cfaf061a304738d798dd66dea79bc8d951c020d327aa",
+        "source_fact:v1:ebcf0572527a1268c287175845dffddeaa710fa186ae6a2a633e82993b6025c6",
+        "source_fact:v1:ec1d9180b49a4a83e7846d1bccfa72b84b3b9123ac1b0935f7c97a80494be845"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?",
+      "telegram_core_fact": "이런 가운데 종합 숙박 솔루션 스타트업 더휴식이 최근 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다.",
+      "title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?"
+    },
     "source_fact:df9929d2c1059ca7e2d76460": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
       "lanes": {
@@ -1096156,6 +1096746,32 @@
       "source_published_kst": "2026-10-06T16:57+09:00",
       "title": "[BioS]알테오젠, 국민성장펀드 등 2000억 유치..\"新동력 확보\""
     },
+    "source_fact:f6972d1b4167e0fb3737a894": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/24/2026102314440866912",
+      "source": "머니투데이",
+      "source_body_digest": "f69cdb16d944cc800902bf8ec1df7082e5f3b23e8f36aafd892c684736631468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3dd60da1afcd85efc1439058cbc0fc7fde0352a4fc78a49ff8b59e8a4525d44",
+      "source_fact_keys": [
+        "source_fact:v1:32bb613e33c99900ffb2d858cf02e4ee355ac3ca0b6a6f14b0df797f0b521927",
+        "source_fact:v1:581f0090e04f313ec080bcc49094c2dcfdd70fab340f07b3e00e8a97ceed9e18",
+        "source_fact:v1:6c3eec8ae07c5a65e07cdd5444f505e406122f8d7915d53e3b1ec6d22ced1468",
+        "source_fact:v1:7507ba5f15b784c90d1eb15dace57d4adabaccf36d558fc92b36eae73a0a301d",
+        "source_fact:v1:d1a7adb036ce86f41da8cfaf061a304738d798dd66dea79bc8d951c020d327aa",
+        "source_fact:v1:ebcf0572527a1268c287175845dffddeaa710fa186ae6a2a633e82993b6025c6",
+        "source_fact:v1:ec1d9180b49a4a83e7846d1bccfa72b84b3b9123ac1b0935f7c97a80494be845"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?",
+      "telegram_core_fact": "이런 가운데 종합 숙박 솔루션 스타트업 더휴식이 최근 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다.",
+      "title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?"
+    },
     "source_fact:f69834434ac37fa7978b9a24": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -1125141,6 +1125757,32 @@
       "source_published_kst": "2026-10-06T12:12+09:00",
       "title": "경찰, 삼성전자 노조위원장 '장인 업체 일감 몰아주기' 의혹 수사 착수"
     },
+    "title:0e58a2ef2aed7a7d75013785": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/24/2026102314440866912",
+      "source": "머니투데이",
+      "source_body_digest": "f69cdb16d944cc800902bf8ec1df7082e5f3b23e8f36aafd892c684736631468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3dd60da1afcd85efc1439058cbc0fc7fde0352a4fc78a49ff8b59e8a4525d44",
+      "source_fact_keys": [
+        "source_fact:v1:32bb613e33c99900ffb2d858cf02e4ee355ac3ca0b6a6f14b0df797f0b521927",
+        "source_fact:v1:581f0090e04f313ec080bcc49094c2dcfdd70fab340f07b3e00e8a97ceed9e18",
+        "source_fact:v1:6c3eec8ae07c5a65e07cdd5444f505e406122f8d7915d53e3b1ec6d22ced1468",
+        "source_fact:v1:7507ba5f15b784c90d1eb15dace57d4adabaccf36d558fc92b36eae73a0a301d",
+        "source_fact:v1:d1a7adb036ce86f41da8cfaf061a304738d798dd66dea79bc8d951c020d327aa",
+        "source_fact:v1:ebcf0572527a1268c287175845dffddeaa710fa186ae6a2a633e82993b6025c6",
+        "source_fact:v1:ec1d9180b49a4a83e7846d1bccfa72b84b3b9123ac1b0935f7c97a80494be845"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?",
+      "telegram_core_fact": "이런 가운데 종합 숙박 솔루션 스타트업 더휴식이 최근 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다.",
+      "title": "한방에 200억 베팅 받았다…돈 잘 버는 호텔 스타트업 어디?"
+    },
     "title:0e5d0610c693217fe42b5bba": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -1132567,6 +1133209,28 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T09:11+09:00",
       "title": "JW중외제약 “엠파가드, 임상 3상서 기존 치료보다 혈당 낮춰”"
+    },
+    "title:1c9c57c867a29a81a6bd6f7f": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261024044500109",
+      "source": "연합뉴스",
+      "source_body_digest": "ed6c914c01634c3a449adffccdaf0dde94a3b5c912b692d5cabb7e769d55bec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0cb8e6401eb3621f51f4a0ebf387ab216c4f420dcae9323d66f0aabd68b329b",
+      "source_fact_keys": [
+        "source_fact:v1:5519356982e3461cb96b2064640b331d6459b406671e67eef945c62051345bf2",
+        "source_fact:v1:60c147aa1dcb79b82f41aa377c30aa6bae6da58af1a4e3795b865ba8c33e441f",
+        "source_fact:v1:9f8b7bbb10ff4f06979407a5cf647ef7337f9b4a2959d47dd39a23a4ac079f47"
+      ],
+      "source_published_kst": "2026-10-24T17:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스",
+      "telegram_core_fact": "하지만 이달 중순 도널드 트럼프 미국 대통령이 제안한 '에너지 휴전', 미·러 '경유딜'을 두고 미국과 부딪힌 이후 스타실드에 속도 제한이 걸리면서 우크라이나 측은 상당한 피해를 본 것으로 전해졌다.",
+      "title": "우크라 \"스타실드 정상 복구…시속 400㎞ 이상에서 작동\" | 연합뉴스"
     },
     "title:1c9f26259dd72e0451951ee6": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -1163263,6 +1163927,28 @@
       "source_title": "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연",
       "telegram_core_fact": "일론 머스크 테슬라 최고경영자(CEO)가 미국 거대 미디어 기업 '스카이댄스'에 10억달러를 투자했다고 CNBC가 22일(현지시간) 소식통을 인용해 보도했다. 래리 엘리슨은 머스크가 2022년 트위터를 인수할 당시 10억달러를 투자했다.",
       "title": "머스크, 美 '미디어 공룡' 스카이댄스에 10억달러 투자…엘리슨家와 인연"
+    },
+    "title:50910ea85604774140ad0b02": {
+      "first_seen_kst": "2026-10-24T18:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-24T18:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-24T18:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102318201",
+      "source": "한국경제",
+      "source_body_digest": "876d107d15a86058d0e5e56396e41ae768b1c024765b822747e8b169670cd0b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c700d959fe0453aaecac1e9fd499056e28f26ce2ab3fc13885f6ab24369afde6",
+      "source_fact_keys": [
+        "source_fact:v1:3f8ec6a8269c9e7029db815f94cdcee0abf0ae3fd83c45eef358425d1279e6ca",
+        "source_fact:v1:835fa27befb66e7786d826040a02403ff434e1a46d274318f98a5b2651a8507b",
+        "source_fact:v1:e612a219789774b6d005c950215386908985af459af7fec82d52ef5ff205e63b"
+      ],
+      "source_published_kst": "2026-10-23T18:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'",
+      "telegram_core_fact": "딜로이트안진의 경영자문 매출은 3개 사업연도 동안 2600억원에서 2200억원대로 감소세를 보였다.",
+      "title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'"
     },
     "title:5095d7554c951f4dd78a3d0b": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
@@ -1260883,5 +1261569,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-24T17:15:17+09:00"
+  "updated_at_kst": "2026-10-24T18:06:35+09:00"
 }
