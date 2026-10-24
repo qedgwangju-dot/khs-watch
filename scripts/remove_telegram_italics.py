@@ -137,6 +137,45 @@ def main() -> None:
     # Migration-suppressed alerts are the exception: their Telegram delivery was
     # already confirmed, so preserve pending state to lock that delivered baseline.
     for alert_path, pending_path, confirmed_path in STATE_GATES:
+        # A new finance-only watcher must save its first silent *seen-headline*
+        # baseline. Without this narrow exception the legacy silent-state
+        # freeze silently overwrites its dedupe keys with the old JSON forever.
+        # Merge only AI-credit keys; preserve all previous cancellation keys
+        # and never mark an unsent financing alert as delivered.
+        if (
+            alert_path.name == "us_data_center_cancellation_risk_alert.txt"
+            and pending_path.exists() and confirmed_path.exists()
+            and not (alert_path.exists() and alert_path.read_text(encoding="utf-8").strip())
+        ):
+            confirmed = load_json(confirmed_path)
+            candidate = load_json(pending_path)
+            if (
+                not confirmed.get("ai_credit_initialized")
+                and candidate.get("ai_credit_initialized")
+                and int(candidate.get("ai_credit_rss_success_count", 0) or 0) > 0
+                and int(candidate.get("ai_credit_last_new_count", 0) or 0) == 0
+            ):
+                keys = (
+                    "ai_credit_initialized", "ai_credit_seen_ids",
+                    "ai_credit_rss_success_count", "ai_credit_rss_failure_count",
+                    "ai_credit_last_new_count", "ai_credit_quote_source",
+                )
+                merged = dict(confirmed)
+                for key in keys:
+                    if key in candidate:
+                        merged[key] = candidate[key]
+                merged["ai_credit_baseline_confirmed_at_utc"] = candidate.get("updated_at_utc")
+                pending_path.write_text(
+                    json.dumps(merged, ensure_ascii=False, indent=2) + "\n",
+                    encoding="utf-8",
+                )
+                migration_suppressed.add(alert_path.name)
+                print(
+                    "ai_credit_silent_baseline_persist=true"
+                    f" initial_seen_ids={len(merged.get('ai_credit_seen_ids', []))}"
+                    " existing_cancellation_seen_ids_preserved=true"
+                )
+                continue
         if alert_path.name in migration_suppressed:
             continue
         if alert_path.exists() and alert_path.read_text(encoding="utf-8").strip():
