@@ -13,30 +13,25 @@
   "vix_official_crosscheck_date": "2026-10-22",
   "vix_official_same_day": false,
   "vix_official_lag_days": 1,
-  "vix_cboe_quote_date": "2026-10-23",
-  "vix_cboe_quote_same_day": true,
-  "vix_cboe_quote_diff": 0.0,
+  "vix_cboe_quote_date": "2026-10-24",
+  "vix_cboe_quote_same_day": false,
+  "vix_cboe_quote_diff": null,
   "vix_crosscheck_max_abs_diff": 6.866455066756316e-07,
   "etf_final_close_source": "StockAnalysis / S&P Global Market Intelligence",
   "etf_final_close_date": "2026-10-23",
-  "settlement_overrides": {
-    "S&P500": {
-      "yahoo": 759.97,
-      "final": 759.85
-    }
-  },
+  "settlement_overrides": {},
   "breadth_warning": false,
   "rsp_warning": false,
   "iwm_warning": false,
-  "rsp_rel_5d": 1.5898437410604482,
-  "iwm_rel_5d": 2.408929500826995,
+  "rsp_rel_5d": 1.574121500641179,
+  "iwm_rel_5d": 2.393207260407726,
   "sector_up_1d": 3,
   "sector_up_5d": 8,
   "returns": {
     "S&P500": {
-      "1d": -0.5379891426836148,
-      "3d": -1.1962795577659335,
-      "5d": -0.44546347854569346
+      "1d": -0.5222815144637294,
+      "3d": -1.1806758906565462,
+      "5d": -0.4297412381264243
     },
     "동일가중 S&P500": {
       "1d": -0.7698658286616089,
