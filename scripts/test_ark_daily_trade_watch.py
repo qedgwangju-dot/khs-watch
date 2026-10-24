@@ -92,6 +92,28 @@ def main():
     assert "가격 확인 3/9개 거래행" in all_note
     assert "실제 체결단가·실제 체결대금" in all_note
 
+    # Official share quantities are never presented as exact cash spent.
+    # All selected names must be visible in Korean with the trade date and a
+    # dollar amount immediately followed by converted KRW when a price exists.
+    new_rows=[
+        {"date":"2026-10-22","fund":"ARKK","ticker":"META","action":"매수","shares":28069,"pct":0.2901},
+        {"date":"2026-10-22","fund":"ARKG","ticker":"SCTX","action":"매수","shares":99254,"pct":0.0877},
+        {"date":"2026-10-22","fund":"ARKG","ticker":"FRNM","action":"매수","shares":35377,"pct":0.0229},
+        {"date":"2026-10-22","fund":"ARKQ","ticker":"TER","action":"매도","shares":5222,"pct":0.1},
+    ]
+    close={"META":{"close":697.50,"source":"검산"},
+           "SCTX":{"close":19.34,"source":"검산"}}
+    report=w.build(new_rows,"2026-10-22",rate=1342.78,basis="검산",prices=close)
+    assert "메타 플랫폼스(META)" in report
+    assert "스크라이브 테라퓨틱스(SCTX)" in report
+    assert "프리놈(FRNM)" in report
+    assert "테라다인(TER)" in report
+    assert "28,069주 매수" in report
+    assert "종가 기준 추정" in report
+    assert "달러(약 " in report
+    assert "가격 확인 2/3개 거래행" in report
+    assert "거래대금: 체결단가 미공개·종가 추정 불가" in report
+
     print("ARK daily trade parser regression tests passed.")
 
 if __name__=="__main__":
