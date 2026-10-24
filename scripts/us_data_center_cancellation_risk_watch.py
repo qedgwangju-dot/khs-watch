@@ -29,6 +29,29 @@ FT_OFFICIAL_POST = "https://bsky.app/profile/financialtimes.com/post/3my4rbhlidz
 NSCALE_REUTERS = "https://www.reuters.com/business/media-telecom/microsoft-pulls-out-uk-data-center-deal-with-nscale-telegraph-reports-2026-10-18/"
 NSCALE_OFFICIAL_2025 = "https://www.nscale.com/press-releases/nscale-uk-ai-infrastructure-announcement"
 NSCALE_MSFT_OTHER_REGIONS = "https://www.nscale.com/press-releases/nscale-microsoft-2025"
+MS_FINANCE_URL = "https://www.morganstanley.com/insights/podcasts/thoughts-on-the-market/credit-markets-ai-boom-financing-carolyn-campbell"
+JLL_COLO_URL = "https://www.jll.com/en-us/newsroom/data-center-demand-exceeds-expectations-in-h1-2026"
+CBRE_COLO_URL = "https://www.cbre.com/insights/books/north-america-data-center-trends-h1-2026"
+MS_FINANCE_EVENT = "ms-data-center-financing-colocation-20261016-context-addendum"
+MS_FINANCE_REFERENCE = {
+    "as_of": "2026-10-16",
+    "bond_yield_start_2026_below_pct": 5.0,
+    "bond_yield_oct_16_approx_pct": 7.0,
+    "issuance_difficulty_borrowing_rate_near_pct": 8.0,
+    "dc_abs_2026_ytd_usd_b": 15.0,
+    "dc_cmbs_2026_ytd_usd_b": 7.0,
+    "future_dc_abs_cmbs_issuance_usd_b_range": [120.0, 150.0],
+    "us_power_current_gw_estimate": 60.0,
+    "us_power_2028_gw_forecast": 150.0,
+    "us_power_2028_shortfall_pct": [30.0, 40.0],
+    "us_power_2028_shortfall_scenario_gw": [90.0, 105.0],
+    "jll_north_america_h1_2026_vacancy_pct": 1.0,
+    "cbre_primary_market_h1_2026_vacancy_pct": 1.4,
+    "cbre_primary_3_to_10mw_asking_rent_h1_growth_pct": 8.3,
+    "primary_sources": [MS_FINANCE_URL, JLL_COLO_URL, CBRE_COLO_URL],
+    "source_status": "2026-10-25 검증한 과거 발행처 원자료 기준; 실시간 채권시세 미연결",
+}
+
 NSCALE_EVENT_DAY_UTC = dt.datetime(2026, 10, 18, 10, 1, tzinfo=dt.timezone.utc)
 NSCALE_EVENT_MAX_AGE_HOURS = 72
 NSCALE_ANCHOR_KEY = "nscale-microsoft-loughton-reported-termination-2026-10-18"
@@ -55,6 +78,7 @@ TRUSTED_DOMAINS = (
     "datacenterknowledge.com", "reuters.com", "utilitydive.com", "rtoinsider.com",
     "datacenterdynamics.com", "publicpower.org", "bisnow.com",
     "ft.com", "wsj.com", "axios.com", "bloomberg.com",
+    "morganstanley.com", "jll.com", "cbre.com",
     "morningstar.com", "sec.gov", "finra.org", "spglobal.com", "fitchratings.com", "moodys.com",
 )
 
@@ -71,6 +95,9 @@ NEWS_QUERIES = (
     'data center refinancing credit spread covenant default investor bond yields 2026',
     '"Microsoft" "Nscale" "Loughton" data centre contract termination grid Reuters Telegraph',
     '"Nscale" "Loughton" "Microsoft" power connection withdrawal customer alternative 2026',
+    # Historical sources are baselines, not reannounced as a live market move.
+    'Morgan Stanley data center ABS CMBS bonds borrowing costs finance outlook',
+    'CBRE JLL North America data center colocation vacancy rental rates growth',
     # Independent AI credit lane: issuer debt, project liens, and actual lender exposure.
     '"CoreWeave" unsecured notes bonds yield credit spread 2026',
     '"CoreWeave" "Applied Digital" secured bonds yield spread',
@@ -107,6 +134,10 @@ def h(text) -> str:
 
 def a(label: str, url: str) -> str:
     return f'<a href="{h(url)}">{h(label)}</a>'
+
+
+def ms_finance_addendum_due(old: dict, first: bool) -> bool:
+    return not first and old.get("ms_finance_addendum_id") != MS_FINANCE_EVENT
 
 
 def load_json(path: Path) -> dict:
@@ -286,6 +317,10 @@ def classify(text: str) -> str:
         return "고객 이용계약 철회 보도"
     if ai_credit_signal(low):
         return "AI 채권·담보채 신용변화"
+    if any(t in low for t in ("data center", "data centre", "datacenter", "colocation")) and any(
+        t in low for t in ("vacancy", "asking rent", "rental rate")
+    ):
+        return "코로케이션 공실률·임대료 변화"
     # Financial pipeline risk is distinct from an actual cancelled project.
     if any(k in low for k in ("data center", "data centre", "datacenter", "ai infrastructure")) and any(
         k in low for k in (
@@ -314,6 +349,12 @@ def is_meaningful(title: str, source: str, domain: str) -> bool:
     theme = classify(low)
     if theme == "AI 채권·담보채 신용변화":
         return trusted(domain)
+    if theme == "코로케이션 공실률·임대료 변화":
+        directional = any(t in low for t in (
+            "rose", "rise", "rising", "fell", "fall", "declin", "drop",
+            "surge", "jump", "record low", "record-low", "record high"
+        ))
+        return trusted(domain) and directional and bool(re.search(r"\b\d+(?:\.\d+)?\s*%", low))
     if theme == "고객 이용계약 철회 보도":
         # A named customer exit at 50MW is material even below the generic
         # US project cancellation screen of 250MW.
@@ -391,6 +432,7 @@ def translate_title(text: str, theme: str, source: str) -> str:
         "비용보호·준비도 규칙": "대형부하 비용보호·준비도 규칙 관련 신규 자료",
         "자금조달·계획 실현 위험": "데이터센터 자금조달·사업 실현 위험 관련 신규 자료",
         "AI 채권·담보채 신용변화": "AI 발행사 회사채·프로젝트 담보채 신용위험 관련 신규 자료",
+        "코로케이션 공실률·임대료 변화": "데이터센터 공실률·임대료의 실질 변화",
     }
     return f"{source} · {labels.get(theme, '데이터센터 취소·지연 위험 관련 신규 자료')}"
 
@@ -455,6 +497,14 @@ def nscale_is_same_initial_retelling(title: str, published: dt.datetime) -> bool
 
 
 def regression_checks() -> None:
+    assert ms_finance_addendum_due({"initialized": True}, False)
+    assert not ms_finance_addendum_due({"ms_finance_addendum_id": MS_FINANCE_EVENT}, False)
+    assert not ms_finance_addendum_due({}, True)
+    assert MS_FINANCE_REFERENCE["us_power_2028_gw_forecast"] * 0.6 == 90
+    assert MS_FINANCE_REFERENCE["us_power_2028_gw_forecast"] * 0.7 == 105
+    assert classify("CBRE data center vacancy fell to 1.4%") == "코로케이션 공실률·임대료 변화"
+    assert is_meaningful("CBRE data center vacancy fell to 1.4%", "CBRE", "cbre.com")
+    assert not is_meaningful("CBRE data center trend overview", "CBRE", "cbre.com")
     assert classify("Microsoft pulls out of UK data-center deal with Nscale in Loughton") == "고객 이용계약 철회 보도"
     assert classify("CoreWeave senior unsecured bonds yield 16% after sell-off") == "AI 채권·담보채 신용변화"
     assert ai_credit_signal("JPMorgan upgrades CoreWeave stock to buy") is None
@@ -576,6 +626,7 @@ def source_priority(item: dict) -> tuple[int, int, str]:
         "고객 이용계약 철회 보도": -2,
         "자금조달·계획 실현 위험": -1,
         "AI 채권·담보채 신용변화": -2,
+        "코로케이션 공실률·임대료 변화": 0,
         "프로젝트 취소·지연": 0,
         "재심사·접속승계": 1,
         "매몰·송전비용": 2,
@@ -614,7 +665,8 @@ new_items = regular_new + credit_new
 credit_seen = list(dict.fromkeys(credit_seen_prev + [x["id"] for x in credit_items]))[-SEEN_ID_LIMIT:] if credit_source_ok else credit_seen_prev
 baseline_run = not old.get("initialized")
 format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
-should_alert = baseline_run or format_upgrade or bool(new_items)
+ms_finance_due = ms_finance_addendum_due(old, baseline_run)
+should_alert = baseline_run or format_upgrade or bool(new_items) or ms_finance_due
 
 seen = list(dict.fromkeys(old_seen + [x["id"] for x in items]))[-SEEN_ID_LIMIT:]
 pending = {
@@ -632,6 +684,12 @@ pending = {
     "ai_credit_seen_ids": credit_seen,
     "ai_credit_last_new_count": len(credit_new),
     "ai_credit_quote_source": "신뢰 매체 헤드라인. TRACE 개별채권 실시간 시세 미연결",
+    "ms_finance_reference": MS_FINANCE_REFERENCE,
+    "ms_finance_addendum_id": MS_FINANCE_EVENT if ms_finance_due else old.get("ms_finance_addendum_id"),
+    "ms_finance_addendum_at_utc": (
+        dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+        if ms_finance_due else old.get("ms_finance_addendum_at_utc")
+    ),
     "nscale_loughton": {
         "event_key": NSCALE_ANCHOR_KEY,
         "site": "Loughton, Essex, UK",
@@ -663,6 +721,8 @@ if should_alert:
         headline = "⚠️ Microsoft–Nscale 영국 데이터센터 이용계약 철회 보도"
     elif credit_new and not regular_new:
         headline = "AI 회사채·시설 담보채 신용위험 변화"
+    elif ms_finance_due and not new_items:
+        headline = "Morgan Stanley 데이터센터 금융·코로케이션 관점 보강"
     else:
         headline = "⚠️ 미국 데이터센터 취소·지연·계통비용 변화"
 
@@ -793,6 +853,34 @@ if should_alert:
         msg.append("• 은행 위험은 대출 익스포저 추정과 실제 손실·충당금을 구분")
         msg.append(f"• {a('CoreWeave SEC 채무', 'https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm')} · {a('APLD SEC 담보채', 'https://www.sec.gov/Archives/edgar/data/1144879/000114487926000059/apld-20260831.htm')}")
 
+    if ms_finance_due:
+        msg += ["", "<b>2026년 10월 16일 Morgan Stanley 공식자료 관점 보강 · 1회</b>"]
+        msg.append("• 우량 데이터센터 담보채 수익률: 2026년 연초 5% 미만 → 10월 16일 약 7%. 8% 근처는 현재 조건에서 증권화 발행 어려움(전략가 판단·실시간 현재 금리 아님)")
+        msg.append(
+            f"• 금리 +2%p 재조달 감도: 차입금 10억달러({h(krw_from_usd(1e9, fx))}) 기준"
+            f" 연간 이자 2,000만달러({h(krw_from_usd(20e6, fx))}) 추가. 기존 고정금리 차입금이 즉시 변동하지는 않음"
+        )
+        msg.append(
+            f"• 2026년 10월 16일 기준 발행: 데이터센터 ABS 약 150억달러({h(krw_from_usd(15e9, fx))}),"
+            f" CMBS 약 70억달러({h(krw_from_usd(7e9, fx))})."
+            " 이는 신규 설비투자액이나 인식 매출액이 아님"
+        )
+        msg.append(
+            f"• 향후 수년간 증권화 발행 전망 1,200억달러({h(krw_from_usd(120e9, fx))})"
+            f"~1,500억달러({h(krw_from_usd(150e9, fx))}). JLL 전체 AI 회사채 발행과 합산 금지"
+        )
+        msg.append("• 미국 전력용량: Morgan Stanley 추정 약 60GW → 2028년 전망 150GW. 전력 제약으로 30~40% 적으면 90~105GW 시나리오, 완공·전원 인가 확정치 아님")
+        msg.append("• 공실률 기준 분리: JLL 북미 전체 2026년 상반기 1.0%, CBRE 북미 주요 도매시장 1.4%. 시장·표본이 달라 차이를 시계열 변화로 사용 금지")
+        msg.append("• 임대료: CBRE 북미 주요 시장 3~10MW 공급계약 호가 2026년 상반기 +8.3%. 호가·신규 체결임대료·기존 장기고정 계약의 매출은 다름")
+        msg.append("• 수익구조: 다수 고객·짧은 임대기간의 코로케이션은 임대료 상승 반영이 빠를 수 있음. 실제 계약·전력 확보·임대료 재협상·현금회수로 재검증")
+        msg.append("• 실패 경로: 차입금리 상승 → 준공 이후 금융대체 지연 → 프로젝트 현금흐름 부담 → 후속 착공 지연. 금리와 전력 접속 병목을 별개로 감시")
+        msg.append("• 후속 감시: 신규 신뢰 보도의 채권·담보채 신용 변화 및 방향성 있는 코로케이션 공실률·임대료 변화. TRACE 실시간 금리감시와 8% 자동 돌파판정은 미구축")
+        msg.append(
+            f"• {a('Morgan Stanley 발행처 원문', MS_FINANCE_URL)} · "
+            f"{a('JLL 북미 2026년 상반기', JLL_COLO_URL)} · "
+            f"{a('CBRE 북미 주요 시장 2026년 상반기', CBRE_COLO_URL)}"
+        )
+
     msg += ["", "<b>📊 투자 판단</b>"]
     msg.append("• 실행률 │ 신청 MW보다 보증금·부지·전력계약·송전착공·실제 데이터센터 착공·전원 인가 MW를 우선")
     msg.append("• 비용 │ 개발사 매몰비용과 유틸리티 송전·변전 투자비를 분리해 확인")
@@ -819,10 +907,11 @@ STATUS.write_text(
     f"- 신규 의미자료: **{len(new_items)}건**\n"
     f"- Reuters–Nscale 로턴 철회 보도: **{'신규' if any(x.get('nscale_loughton_media_anchor') for x in new_items) else '중복 제외/해당 없음'}**\n"
     f"- AI 신용경보: **{'감시 활성' if credit_initialized or credit_source_ok else '원천 장애·기준선 보류'}** · 신규 **{len(credit_new)}건** · RSS 응답 **{NEWS_SCAN_HEALTH['ai_credit_rss_ok']}/6** · TRACE 실시간 시세 **미연결**\n"
-    f"- 알림: **{'예' if should_alert else '아니오'}**\n",
-    encoding="utf-8",
+    f"- 코로케이션 공실률·임대료 신규 보도: **{sum(1 for x in new_items if x.get('theme') == '코로케이션 공실률·임대료 변화')}건** · 자료별 표본 구분\n"
+    f"- Morgan Stanley 금융 관점 1회 보강: **{'예' if ms_finance_due else '중복 제외'}** · 실시간 채권시세 미연결\n"
+    f"- 알림: **{'예' if should_alert else '아니오'}**\n    encoding="utf-8",
 )
 print(
     f"cancellation_risk baseline={BASELINE['phantom_load_pct']}% "
-    f"new={len(new_items)} credit_new={len(credit_new)} credit_feeds_ok={NEWS_SCAN_HEALTH['ai_credit_rss_ok']} credit_baselined={not credit_initialized} alert={should_alert}"
+    f"new={len(new_items)} credit_new={len(credit_new)} credit_feeds_ok={NEWS_SCAN_HEALTH['ai_credit_rss_ok']} credit_baselined={not credit_initialized} ms_finance_addendum={ms_finance_due} alert={should_alert}"
 )
