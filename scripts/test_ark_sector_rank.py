@@ -53,7 +53,7 @@ def main():
     assert "270,693주" in msg and "169,498주" in msg
     assert "매도금액 상위 업종" in msg
     assert "순매도 우위" in msg
-    assert "최근 관측 1거래일" in msg and "관측 1/5거래일" in msg
+    assert "누적 관측 1거래일" in msg and "1/5일 확보" in msg
     assert snapshot["complete"] is True
 
     # Revising the same date must replace the previous day's snapshot, not double count.
@@ -93,9 +93,29 @@ def main():
             "buy_usd":{"바이오·헬스케어":1000000*(i+1)},
             "sell_usd":{},"buy_rows":{"바이오·헬스케어":2}})
     rolling="\n".join(sector.recent_average_lines(three,rate,notional.usd_krw))
-    assert "최근 관측 3거래일" in rolling
+    assert "누적 관측 3거래일" in rolling
     assert notional.usd_krw(2_000_000,rate) in rolling
-    assert "관측 3/5거래일" in rolling
+    assert "3/5일 확보" in rolling
+
+    twenty = []
+    for i in range(20):
+        twenty.append({
+            "date":f"2026-09-{i+1:02d}",
+            "digest":str(i), "complete":True, "buy_complete":True,
+            "sell_complete":False,
+            "buy_usd":{"바이오·헬스케어":2_000_000,"AI·클라우드·기업용 소프트웨어":1_000_000},
+            "sell_usd":{},
+            "buy_rows":{"바이오·헬스케어":4},
+        })
+    five_and_twenty="\n".join(sector.recent_average_lines(twenty,rate,notional.usd_krw))
+    assert "최근 5거래일 업종별 일평균" in five_and_twenty
+    assert "최근 20거래일 업종별 일평균" in five_and_twenty
+    assert notional.usd_krw(2_000_000,rate) in five_and_twenty
+
+    # Missing sell prices must not invalidate a fully-priced buy-side average.
+    buy_only_snapshot = sector.snapshot("2026-10-23","partial",sector.aggregate(rows,partial)[0])
+    assert buy_only_snapshot["complete"] is False
+    assert buy_only_snapshot["buy_complete"] is False
 
     full = watch.build(rows,"2026-10-23",rate=rate,basis="검산",
              prices=prices,history=[],digest="test",sector_upgrade=True)
