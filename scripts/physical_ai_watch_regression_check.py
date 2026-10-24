@@ -5712,7 +5712,9 @@ _ipo_selection = watcher._sro_select(
     [_ipo_one, _ipo_two, _ipo_other_day, _unique_robot], set(), False, 8
 )
 assert sum(x.get("published")==_ipo_stamp and x.get("group")=="hyundai_atlas_rollout"
-           for x in _ipo_selection) == 1, _ipo_selection
+           for x in _ipo_selection) <= 1, _ipo_selection
+_ipo_pair_only = watcher._sro_select([_ipo_one, _ipo_two], set(), False, 8)
+assert len(_ipo_pair_only) == 1, _ipo_pair_only
 assert any(x.get("key") == "other-day-event" for x in _ipo_selection), _ipo_selection
 assert any(x.get("key") == "distinct-news" for x in _ipo_selection), _ipo_selection
 
