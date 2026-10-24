@@ -755,12 +755,16 @@ if should_alert:
         msg.append("• Phantom load 제거로 공식 수요전망이 10% 이상 또는 1GW 이상 하향될 때")
     else:
         msg += ["<b>🧭 한눈에</b>"]
+        if ms_finance_due:
+            msg.append("• <b>금융</b> │ 우량 데이터센터 채권 금리 5% 미만 → 약 <b>7%</b>; 8% 접근 시 조달 부담 확대")
+            msg.append("• <b>전력</b> │ 미국 약 <b>60GW → 2028년 150GW</b> 전망. 공급 제약 시 <b>90~105GW</b>")
+            msg.append("• <b>임대</b> │ 공실률 JLL 1.0% / CBRE 1.4%(표본 다름), CBRE 3~10MW 호가 +8.3%")
         if new_items:
             first = new_items[0]
             src = first.get("source", "")
             title_ko = translate_title(first.get("title", ""), first.get("theme", "기타"), src)
-            msg.append(f"• 이번 핵심 변화 │ {a(title_ko, first.get('url',''))}")
-        msg.append("• 판단 기준 │ 취소 → stranded cost → restudy → 추가 CAPEX·금융비용 → IRR 악화 경로 확인")
+            msg.append(f"• <b>이번 추가 변화</b> │ {a(title_ko, first.get('url',''))}")
+        msg.append("• <b>판단 기준</b> │ 계약 철회 → 매몰비용 → 전력 접속 재심사 → 추가 설비투자·금융비용 → 내부수익률 하락")
 
     if nscale_new:
         msg += ["", "<b>⚠️ 영국 로턴: 계약 철회 보도·전원 인가 병목</b>"]
@@ -857,38 +861,60 @@ if should_alert:
         msg.append(f"• {a('CoreWeave SEC 채무', 'https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm')} · {a('APLD SEC 담보채', 'https://www.sec.gov/Archives/edgar/data/1144879/000114487926000059/apld-20260831.htm')}")
 
     if ms_finance_due:
-        msg += ["", "<b>2026년 10월 16일 Morgan Stanley 공식자료 관점 보강 · 1회</b>"]
-        msg.append("• 우량 데이터센터 담보채 수익률: 2026년 연초 5% 미만 → 10월 16일 약 7%. 8% 근처는 현재 조건에서 증권화 발행 어려움(전략가 판단·실시간 현재 금리 아님)")
+        msg += ["", "<b>① 차입금리·이자부담 | 10월 16일 기준</b>"]
+        msg.append("• <b>우량 데이터센터 채권 수익률</b>")
+        msg.append("  2026년 연초 <b>5% 미만</b> → 10월 16일 <b>약 7%</b>.")
+        msg.append("• <b>8% 위험구간</b> │ 차입비용이 8%에 접근하면 증권화 발행이 어려워진다는 Morgan Stanley 전략가 판단.")
+        msg.append("  10월 16일 분석이며 실시간 현재 금리·자동 돌파판정이 아님.")
+        msg.append("• <b>차입금리 +2%포인트 재조달 감도</b>")
         msg.append(
-            f"• 금리 +2%p 재조달 감도: 차입금 10억달러({h(krw_from_usd(1e9, fx))}) 기준"
-            f" 연간 이자 2,000만달러({h(krw_from_usd(20e6, fx))}) 추가. 기존 고정금리 차입금이 즉시 변동하지는 않음"
+            f"  차입 10억달러({h(krw_from_usd(1e9, fx))}) × 2%p"
+            f" = 추가 연이자 2,000만달러({h(krw_from_usd(20e6, fx))})."
         )
-        msg.append(
-            f"• 2026년 10월 16일 기준 발행: 데이터센터 ABS 약 150억달러({h(krw_from_usd(15e9, fx))}),"
-            f" CMBS 약 70억달러({h(krw_from_usd(7e9, fx))})."
-            " 이는 신규 설비투자액이나 인식 매출액이 아님"
-        )
-        msg.append(
-            f"• 향후 수년간 증권화 발행 전망 1,200억달러({h(krw_from_usd(120e9, fx))})"
-            f"~1,500억달러({h(krw_from_usd(150e9, fx))}). JLL 전체 AI 회사채 발행과 합산 금지"
-        )
-        msg.append("• 미국 전력용량: Morgan Stanley 추정 약 60GW → 2028년 전망 150GW. 전력 제약으로 30~40% 적으면 90~105GW 시나리오, 완공·전원 인가 확정치 아님")
-        msg.append("• 공실률 기준 분리: JLL 북미 전체 2026년 상반기 1.0%, CBRE 북미 주요 도매시장 1.4%. 시장·표본이 달라 차이를 시계열 변화로 사용 금지")
-        msg.append("• 임대료: CBRE 북미 주요 시장 3~10MW 공급계약 호가 2026년 상반기 +8.3%. 호가·신규 체결임대료·기존 장기고정 계약의 매출은 다름")
-        msg.append("• 수익구조: 다수 고객·짧은 임대기간의 코로케이션은 임대료 상승 반영이 빠를 수 있음. 실제 계약·전력 확보·임대료 재협상·현금회수로 재검증")
-        msg.append("• 실패 경로: 차입금리 상승 → 준공 이후 금융대체 지연 → 프로젝트 현금흐름 부담 → 후속 착공 지연. 금리와 전력 접속 병목을 별개로 감시")
-        msg.append("• 후속 감시: 신규 신뢰 보도의 채권·담보채 신용 변화 및 방향성 있는 코로케이션 공실률·임대료 변화. TRACE 실시간 금리감시와 8% 자동 돌파판정은 미구축")
-        msg.append(
-            f"• {a('Morgan Stanley 발행처 원문', MS_FINANCE_URL)} · "
-            f"{a('JLL 북미 2026년 상반기', JLL_COLO_URL)} · "
-            f"{a('CBRE 북미 주요 시장 2026년 상반기', CBRE_COLO_URL)}"
-        )
+        msg.append("  이미 발행한 고정금리 부채 전체가 즉시 재가격되지는 않음.")
 
-    msg += ["", "<b>📊 투자 판단</b>"]
-    msg.append("• 실행률 │ 신청 MW보다 보증금·부지·전력계약·송전착공·실제 데이터센터 착공·전원 인가 MW를 우선")
-    msg.append("• 비용 │ 개발사 매몰비용과 유틸리티 송전·변전 투자비를 분리해 확인")
-    msg.append("• 후속사업자 │ 같은 부지라도 부하규모·접속점·가동시점이 달라지면 재심사 가능성을 확인")
-    msg.append("• 조기경보 │ 대형 취소→restudy 증가→COD 지연→금융비용 상승이 연속으로 나타나는지 추적")
+        msg += ["", "<b>② 금융시장 발행 규모 · 미래 전망 분리</b>"]
+        msg.append("• <b>2026년 10월 16일 기준 발행</b>")
+        msg.append(f"  데이터센터 자산유동화증권(ABS) 약 150억달러({h(krw_from_usd(15e9, fx))}).")
+        msg.append(f"  상업용 부동산 저당증권(CMBS) 약 70억달러({h(krw_from_usd(7e9, fx))}).")
+        msg.append("• <b>향후 수년간 증권화 발행 전망</b>")
+        msg.append(
+            f"  1,200억달러({h(krw_from_usd(120e9, fx))})"
+            f"~1,500억달러({h(krw_from_usd(150e9, fx))})."
+        )
+        msg.append("• <b>중복·회계 구분</b> │ 발행액은 신규 건설비·인식 매출이 아님.")
+        msg.append("  JLL의 전체 AI 회사채 통계와 집계범위가 다르므로 합산 금지.")
+
+        msg += ["", "<b>③ 실제 전력 확보 · 전망과 가동 구분</b>"]
+        msg.append("• <b>미국 전력용량 전망</b> │ 현재 약 <b>60GW</b> → 2028년 <b>150GW</b>.")
+        msg.append("• <b>공급 제약</b> │ 전망보다 30~40% 부족할 경우 <b>90~105GW</b> 시나리오.")
+        msg.append("  계획·건설 중·전원 인가·실제 가동 용량은 다른 숫자.")
+
+        msg += ["", "<b>④ 코로케이션 · 빠른 임대료 재가격 여부</b>"]
+        msg.append("• <b>2026년 상반기 북미 공실률</b>")
+        msg.append("  JLL 전체 <b>1.0%</b> / CBRE 주요 도매시장 <b>1.4%</b>.")
+        msg.append("  조사범위·표본이 달라 두 수치 차이를 공실률 변동으로 해석 금지.")
+        msg.append("• <b>CBRE 3~10MW 임대료 호가</b> │ 상반기 <b>+8.3%</b>.")
+        msg.append("  호가·실제 신규 임대계약 단가·기존 장기고정 임대매출은 구분.")
+        msg.append("• <b>반복매출 가능성</b> │ 다수 업종 임차인·상대적으로 짧은 임대기간은 재가격에 유리.")
+        msg.append("  실제 계약·전력 확보·갱신 단가·현금 회수가 확인돼야 실적 개선으로 판단.")
+
+        msg += ["", "<b>⑤ 실패 경로 · 후속 확인</b>"]
+        msg.append("• <b>금융 실패</b> │ 차입금리 상승 → 준공 후 차입금 대체 지연 → 현금흐름 악화 → 후속 착공 지연.")
+        msg.append("• <b>전력 실패</b> │ 변전소·송전선·전원 인가 지연. 금융 위험과 별개로 감시.")
+        msg.append("• <b>추적 대상</b> │ 새 회사채·담보채 금리 및 신용 변화, 금융종결, 공실률, 갱신 임대료.")
+        msg.append("  TRACE 실시간 금리 조회와 8% 돌파 자동 경보는 미구축.")
+
+        msg += ["", "<b>🔗 Morgan Stanley 관점의 공식 출처</b>"]
+        msg.append(f"• {a('Morgan Stanley · 금융·전력 전망', MS_FINANCE_URL)}")
+        msg.append(f"• {a('JLL · 북미 2026년 상반기 조사', JLL_COLO_URL)}")
+        msg.append(f"• {a('CBRE · 북미 주요시장 2026년 상반기', CBRE_COLO_URL)}")
+
+    msg += ["", "<b>📊 실제 투자 판단</b>"]
+    msg.append("• <b>실행률</b> │ 전력 신청 MW보다 보증금·부지·전력계약·송전 착공·현장 착공·전원 인가 MW를 우선")
+    msg.append("• <b>비용</b> │ 개발사 매몰비용과 전력회사의 송전·변전 투자비 분리")
+    msg.append("• <b>후속 사업자</b> │ 부하 규모·접속점·가동일이 달라지면 재심사 가능성 확인")
+    msg.append("• <b>조기 경보</b> │ 대형 계약 취소 → 접속 재심사 증가 → 전원 인가 지연 → 차입비용 상승")
 
     msg += ["", "<b>💱 환율</b>"]
     msg.append(f"• <b>1달러 = {fx:,.2f}원</b> │ {h(fx_source)} │ {h(fx_checked)} UTC")
@@ -900,6 +926,19 @@ if should_alert:
     msg.append(f"• {a('FERC · 대형부하 Cost Recovery·준비도 개편', FERC_LARGE_LOAD)}")
     msg.append(f"• {a('FERC · Cost Recovery Agreement 설명', FERC_ROSNER)}")
 
+    if ms_finance_due:
+        complete = "\n".join(msg)
+        required = (
+            "5% 미만", "7%", "8%", "2%포인트", "2,000만달러",
+            "150억달러", "70억달러", "1,200억달러", "1,500억달러",
+            "60GW", "150GW", "30~40%", "90~105GW",
+            "1.0%", "1.4%", "+8.3%", "TRACE",
+            MS_FINANCE_URL, JLL_COLO_URL, CBRE_COLO_URL,
+            DCK_RIPPLE, CAPGEMINI, FERC_LARGE_LOAD, FERC_ROSNER,
+        )
+        missing = [term for term in required if term not in complete]
+        if missing:
+            raise RuntimeError(f"금융·코로케이션 알림 원문 수치·출처 누락: {missing}")
     ALERT.write_text("\n".join(msg).strip() + "\n", encoding="utf-8")
 
 STATUS.write_text(
