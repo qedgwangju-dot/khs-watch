@@ -5223,6 +5223,35 @@
       "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
       "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
+    "core:0e2a2761903ebccf3d5273dc": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
+    },
     "core:0e2a4d81ef221771b29ea181": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
       "lanes": {
@@ -124546,29 +124575,31 @@
     "event:f69ccc1e134516fcd7bf66c1": {
       "first_seen_kst": "2026-10-24T13:43:04+09:00",
       "lanes": {
-        "live": "2026-10-24T13:43:04+09:00"
+        "live": "2026-10-24T20:48:40+09:00"
       },
-      "last_seen_kst": "2026-10-24T13:43:04+09:00",
-      "link": "https://www.newsis.com/view/NISX20261023_0003838882",
-      "source": "뉴시스",
-      "source_body_digest": "e411fecde803a70fe2764f8ef611982528cfa90a91e40e76bcb1f701bda9488a",
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f4decc89aba9b0fa364f8a64f700100f9e6f156c486fb1601a8104340090f84a",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
       "source_fact_keys": [
-        "source_fact:v1:086db5f92410b6840bae2f654ea2a4dd2fee47f6963c466577dd71b9a7ba8813",
-        "source_fact:v1:0b740e87bbbddcb149ca0bd4345fdf8ee37e0e646abaf2413ec8579e2cc04160",
-        "source_fact:v1:1f6fdf6a7b1b59fe4157d6a865e1e6d728d68553db6ea41759534127aea201bd",
-        "source_fact:v1:6ed5c271dc82a41bbec5793e7846f825c5fd478cf41e619bd7363740baf8a8d2",
-        "source_fact:v1:8d5ed503d0191bf950140ec532b6fded5c315df92891f8999a57a773d9e0dd0e",
-        "source_fact:v1:a4bfcc05bde41b6b193483505481fb4afeaa4a1eba387b6d071777e45959149e",
-        "source_fact:v1:d8138829afd494c6bc45703560c2f70c01d328dfb3037989e010a7ffab5a4483",
-        "source_fact:v1:f73cd6f6e6f28e413a53a7d128cf168d6b4a730cb3866f6e63eb2d0ec44ee3dc"
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
       ],
-      "source_published_kst": "2026-10-24T09:00+09:00",
+      "source_published_kst": "2026-10-24T08:00+09:00",
       "source_supply_terms": {},
-      "source_title": "美 조선업 재건 뛰어든 K조선…HD현대·한화, 현지 생산 '박차'",
-      "telegram_core_fact": "국내에서 축적한 선박 설계·건조 기술을 미국 생산 현장에 접목하면서 K조선의 역할도 확대되는 모습이다.",
-      "title": "美 조선업 재건 뛰어든 K조선…HD현대·한화, 현지 생산 '박차'"
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
     },
     "event:f6b2c37dfd717b5dfad1f883": {
       "event_alias_evidence_message_id": 2339,
@@ -210825,6 +210856,35 @@
       "source_title": "프랑스·독일, 내연기관차 규제 완화·역내 생산 확대 '대타협' 임박",
       "telegram_core_fact": "프랑스와 독일이 유럽내 내연기관차 퇴출 규제를 완화하는 대신 역내 자동차 생산 규정을 강화하는 대타협에 나설 전망이라고 파이낸셜타임스(FT)가 12일(현지시간) 보도했다.",
       "title": "프랑스·독일, 내연기관차 규제 완화·역내 생산 확대 '대타협' 임박"
+    },
+    "fact:c44e2d2c3a4ed1475e393e1e": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
     },
     "fact:c45e6587ddab3dad0003d6c3": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
@@ -308183,6 +308243,35 @@
       "source_title": "퍼스트 캐피탈, 3분기 희석 EPS 1.53달러..전년비 14% 증가",
       "telegram_core_fact": "퍼스트 캐피탈(FCAP)은 9월 30일 종료된 3분기 순이익이 510만 달러로 전년 동기(448만 달러) 대비 14.0% 증가했고, 희석 주당순이익(EPS)은 1.53달러로 전년 동기 1.34달러보다 14.2% 늘었다고 10월 23일 발표했다.",
       "title": "퍼스트 캐피탈, 3분기 희석 EPS 1.53달러..전년비 14% 증가"
+    },
+    "link:7b8303a7d31ab8f0f811d142": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
     },
     "link:7b8cf5f9dc480131511f1037": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
@@ -481210,6 +481299,35 @@
       "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
       "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
     },
+    "original:b1bfb825aed541a7ad087b32": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
+    },
     "original:b1c5db8478caa3ab2cb4e85d": {
       "first_seen_kst": "2026-10-18T17:16:37+09:00",
       "lanes": {
@@ -556395,6 +556513,35 @@
       "source_title": "얼라이드 골드, 쿠르무크 아샤시레 고품위 금맥 확인..가동 임박",
       "telegram_core_fact": "쿠르무크 가동 직전에 고품위 시추 결과가 나와 초기 고품위 구간 이후 생산 지속성에 대한 우려를 덜어줘요.",
       "title": "얼라이드 골드, 쿠르무크 아샤시레 고품위 금맥 확인..가동 임박"
+    },
+    "source_fact:0ee5778fdeb6961facc1bf13": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
     },
     "source_fact:0eea7c982f3f8bb811cd773f": {
       "first_seen_kst": "2026-10-23T09:14:52+09:00",
@@ -674835,6 +674982,35 @@
       "source_published_kst": "2026-10-07T17:12+09:00",
       "title": "8월 공장·창고 거래액 1.4조원…거래 줄어도 금액은 연중 최고"
     },
+    "source_fact:41731fea6ef298b9882efb2e": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
+    },
     "source_fact:4173c24d778267ec1e447a3d": {
       "first_seen_kst": "2026-10-12T22:07:35+09:00",
       "lanes": {
@@ -789067,6 +789243,35 @@
       "telegram_core_fact": "3분기 IBM의 소프트웨어 부문 매출은 78억달러로 전년비 8% 증가했다.",
       "title": "IBM, 실적 예상치 상회…\"AI 사업 성과 가시화\""
     },
+    "source_fact:71caccb5fd59931cab1ff5fe": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
+    },
     "source_fact:71d0e18cef0e0da85a990032": {
       "first_seen_kst": "2026-10-12T19:07:06+09:00",
       "lanes": {
@@ -818717,6 +818922,35 @@
       "source_title": "CNB 파이낸셜, 우선주 분기배당 주당 17.81달러 결정",
       "telegram_core_fact": "CNB 파이낸셜(CCNE)이 A시리즈 우선주(Series A Preferred Stock)에 대해 주당 17.8125달러의 분기 현금배당을 결정했으며, 이에 따라 나스닥 상장 예탁주식(CCNEP) 1주당 0.4453125달러가 지급된다고 10월 13일 발표했다.",
       "title": "CNB 파이낸셜, 우선주 분기배당 주당 17.81달러 결정"
+    },
+    "source_fact:7e725928e8b810465fb1dfd3": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
     },
     "source_fact:7e741dea9ca125c81c5d5f9f": {
       "first_seen_kst": "2026-10-12T22:07:35+09:00",
@@ -954861,6 +955095,35 @@
       "telegram_core_fact": "배당금을 먼저 확정하고 배당 기준일을 정하는 '선배당 후투자' 방식이 확산하면서 결산 배당일이 2~4월 봄철로 분산되고 있다.",
       "title": "1억 넣으면 월 200만원 나온다는데…배당 부자들만 몰래 쓰는 '세금 0원' 기술"
     },
+    "source_fact:b91ae487b5adf0fee183b9b0": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
+    },
     "source_fact:b91d11206c91d8cda3578b90": {
       "first_seen_kst": "2026-10-24T09:49:05+09:00",
       "lanes": {
@@ -974472,6 +974735,35 @@
       "telegram_core_fact": "유튜브와 블로그 등 온라인 보험광고의 심의 규정 위반이 최근 4년 반 동안 4만7000건을 넘어선 것으로 나타났지만, 제재금을 부과받은 기관은 10곳에 그쳤다.",
       "title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐"
     },
+    "source_fact:c1ba99a472fef8ba9e9d83b0": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
+    },
     "source_fact:c1baaa71b4a11b61f4fc9d34": {
       "first_seen_kst": "2026-10-18T09:22:47+09:00",
       "lanes": {
@@ -979538,6 +979830,35 @@
       "telegram_core_fact": "삼성전자에 공급하는 범용 메모리 검사장비와 SK하이닉스의 HBM 테스터 수주가 잇따르고, 중장기적으로도 두 회사가 설비투자를 확대할 것이라는 기대도 주가에 반영된 것으로 풀이된다.",
       "title": "\"삼전 개미 한숨 쉴 때 주가 3배 폭등\"…고수들 몰린 '이 회사'[종목e슈]"
     },
+    "source_fact:c399c5c0e5eb383aab1cb573": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
+    },
     "source_fact:c39b7e236845d4a1eb8fe709": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -982948,6 +983269,35 @@
       "source_title": "AI가 판단하는 공장…삼성전자의 2030년 제조 혁신 청사진은? [미리 보는 테크퀘스트]",
       "telegram_core_fact": "삼성전자가 AI을 활용해 생산부터 품질관리, 설비 운영까지 스스로 판단하고 실행하는 'AI 자율공장' 구축에 속도를 낸다.",
       "title": "AI가 판단하는 공장…삼성전자의 2030년 제조 혁신 청사진은? [미리 보는 테크퀘스트]"
+    },
+    "source_fact:c51f4e046059766040dcf62c": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
     },
     "source_fact:c521c2075bb793ec7fc76300": {
       "first_seen_kst": "2026-10-13T07:02:46+09:00",
@@ -1049424,6 +1049774,35 @@
       "telegram_core_fact": "캐세이 제너럴 뱅코프(CATY)가 9월 30일 종료된 3분기 GAAP 기준 순이익 9520만 달러, 희석 주당순이익(EPS) 1.43달러를 기록했다고 10월 21일 발표했다.",
       "title": "캐세이 제너럴 뱅코프, 3분기 희석 EPS 1.43달러..전년비 26.5% 증가"
     },
+    "source_fact:e188abe2149d313b8141bd76": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
+    },
     "source_fact:e1900ce845cf16ada95a475c": {
       "first_seen_kst": "2026-10-09T19:43:36+09:00",
       "lanes": {
@@ -1055376,6 +1055755,35 @@
       "source_title": "전남창조경제혁신센터, 지역 유망 스타트업 투자유치 역량 강화 'IR 피칭 DAY' 성료",
       "telegram_core_fact": "전남창조경제혁신센터(대표 강정범)는 지난 19일부터 20일까지 이틀간 여수 벨메르 호텔에서 도내 유망 스타트업의 투자유치 역량 강화를 위한 '2026년 전남 스타트업 액셀러레이팅(4기) 투자 유치(IR) 피칭 DAY'를 성공적으로 개최했다.",
       "title": "전남창조경제혁신센터, 지역 유망 스타트업 투자유치 역량 강화 'IR 피칭 DAY' 성료"
+    },
+    "source_fact:e3f3d7fd566b68fa7293332a": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
     },
     "source_fact:e3f6714de4b0f76d72d0b6c9": {
       "first_seen_kst": "2026-10-12T02:27:00+09:00",
@@ -1220149,6 +1220557,35 @@
       "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
       "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
     },
+    "title:b1bfb825aed541a7ad087b32": {
+      "first_seen_kst": "2026-10-24T20:48:40+09:00",
+      "lanes": {
+        "live": "2026-10-24T20:48:40+09:00"
+      },
+      "last_seen_kst": "2026-10-24T20:48:40+09:00",
+      "link": "https://www.etnews.com/20261023000356",
+      "source": "전자신문",
+      "source_body_digest": "37626243c72ca4a68db27461bb9635977355014aff2e7962446f4cdfb331f0aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27f701d91fcad5edb8781a42cdecaf2f350c9f34210363c4696416476ec5702a",
+      "source_fact_keys": [
+        "source_fact:v1:1119fd7c40ba1322bbf4b5e03d431fd4513ce06bce734ca6cce907ba9f29619d",
+        "source_fact:v1:514ea968575b2ba9bfcd452eb15b82591d83d451e549ad5a8132d6b96cd887ce",
+        "source_fact:v1:7acfea5f186f59f9fcdc8eefebdc2bd106f9cd11074307e5d6a24cc579717a44",
+        "source_fact:v1:8928325c0898a789edf15d731bd3e63db096988cca1edf53253f7404fc563e2b",
+        "source_fact:v1:b5c690aea14d205df2b792b58449e22c59ab4aa2a15d655596259228ae915d8f",
+        "source_fact:v1:c281a77feb77d537e2106b6eaf8022ae50a14ff2c05c323751ddaecd4acea570",
+        "source_fact:v1:d331b9e2666762eba02d6e967e7b3b52861a47fbcc8352d8998ca53de551f80a",
+        "source_fact:v1:dc35ce5a2781c31fa2c6d8ed615d238e9bd38b4af4cf9382aa671f9e01713848",
+        "source_fact:v1:e619371ae917591431d2be568332b55283b433390628dfdec6b038d9e6170d91",
+        "source_fact:v1:f86762f5423dfea5e214d92390907f724ace8d6a5400797321480ee8709837bc"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외",
+      "telegram_core_fact": "통상적인 신약 기술도입 계약은 제외될 것으로 보이지만 자본 투입과 공동개발이 결합한 거래에 대한 규제 적용 불확실성은 커질 전망이다. 반면 기술도입, 중국 기업에 지분투자를 하거나 개발비와 이익을 나누는 복합적인 계약은 거래 구조에 따라 규제 적용 여부가 쟁점이 될 여지가 있다.",
+      "title": "美, 中 바이오 '지분·합작투자' 규제 예고… 신약 기술도입은 제외"
+    },
     "title:b1c5db8478caa3ab2cb4e85d": {
       "first_seen_kst": "2026-10-18T17:16:37+09:00",
       "lanes": {
@@ -1262804,5 +1263241,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-24T20:27:04+09:00"
+  "updated_at_kst": "2026-10-24T20:48:40+09:00"
 }
