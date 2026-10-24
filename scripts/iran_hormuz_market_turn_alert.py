@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+from concurrent.futures import ThreadPoolExecutor
 import email.utils
 import hashlib
 import html
@@ -2786,11 +2787,19 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
     max_age_hours = int(os.getenv("IRAN_HORMUZ_MAX_NEWS_AGE_HOURS", "72"))
     items: list[NewsItem] = []
     errors: list[str] = []
-    for query in NEWS_QUERIES:
+    # Preserve the same complete search set, source TTL and output ordering,
+    # while bounding wall-clock exposure to slow/blocked Google RSS requests.
+    def _one_news_feed(query: str) -> tuple[list[NewsItem], str | None]:
         try:
-            items.extend(parse_rss(fetch_bytes(google_news_url(query), timeout=4, attempts=1), current, max_age_hours))
+            parsed = parse_rss(fetch_bytes(google_news_url(query), timeout=4, attempts=1), current, max_age_hours)
+            return parsed, None
         except Exception as exc:
-            errors.append(str(exc))
+            return [], f"Google 뉴스 검색 {query[:65]}: {type(exc).__name__}: {str(exc)[:130]}"
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        for rows, failure in pool.map(_one_news_feed, NEWS_QUERIES):
+            items.extend(rows)
+            if failure:
+                errors.append(failure)
 
     # Previously published NABEP equipment milestone; one alert per factual
     # dated event. Do not re-stamp Oct-13 corporate claims as today's production.

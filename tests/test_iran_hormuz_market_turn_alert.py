@@ -2013,5 +2013,13 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertEqual(MODULE.parse_daily_brent_yahoo(chart)["date"],"2026-10-27")
 
 
+    def test_google_rss_parallelism_bounded_preserves_queries_and_timeout(self):
+        import inspect
+        body=inspect.getsource(MODULE.fetch_news)
+        self.assertIn("ThreadPoolExecutor(max_workers=6)",body)
+        self.assertIn("pool.map(_one_news_feed, NEWS_QUERIES)",body)
+        self.assertIn("fetch_bytes(google_news_url(query), timeout=4, attempts=1)",body)
+
+
 if __name__ == "__main__":
     unittest.main()
