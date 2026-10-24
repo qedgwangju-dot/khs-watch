@@ -7329,7 +7329,41 @@ def _sro_select(items,seen,force,limit):
               and x.get("score",0)>=11),None)
     if hit and not any(x.get("key")==hit.get("key") for x in chosen):
         chosen=([hit,*chosen] if len(chosen)<limit else [hit,*chosen[:-1]])
-    return chosen
+    # Two Google News URLs may describe the same outlet story and stage.
+    # Suppress only identical rendered titles, outlets, event groups and minutes.
+    def _delivery_signature(item):
+        source = str(item.get("source") or "")
+        title = base.clean_title(str(item.get("title") or ""), source)
+        normalize = lambda value: re.sub(r"\\s+", " ", str(value or "")).strip().casefold()
+        return (
+            normalize(item.get("group")),
+            normalize(title),
+            normalize(source),
+            str(item.get("published") or "")[:16],
+        )
+
+    delivery_signatures = set()
+    unique = []
+    for item in chosen:
+        signature = _delivery_signature(item)
+        if signature in delivery_signatures:
+            continue
+        delivery_signatures.add(signature)
+        unique.append(item)
+
+    # Keep the original number of slots when a distinct candidate remains.
+    if len(unique) < len(chosen):
+        for item in candidates:
+            if len(unique) >= len(chosen):
+                break
+            if any(other.get("key") == item.get("key") for other in unique):
+                continue
+            signature = _delivery_signature(item)
+            if signature in delivery_signatures:
+                continue
+            delivery_signatures.add(signature)
+            unique.append(item)
+    return unique
 
 base.query_news=_sro_query
 base.topic_group=_sro_group_wrap

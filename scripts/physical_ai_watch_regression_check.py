@@ -5692,4 +5692,28 @@ if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,26):
 else:
     assert sem_recovery==[] and rx_recovery==[]
 
+# Duplicate syndicated Google RSS URLs must not use two Telegram slots.
+_ipo_stamp = "2026-10-23T05:32:00+00:00"
+_ipo_one = dict(
+    title="보스턴다이내믹스 기업공개 일정·조건 변화",
+    description="IPO timetable article version A",
+    source="머니투데이", published=_ipo_stamp,
+    group="hyundai_atlas_rollout", score=13, key="duplicate-feed-a",
+    link="https://news.google.com/rss/articles/one",
+)
+_ipo_two = dict(_ipo_one, key="duplicate-feed-b",
+                link="https://news.google.com/rss/articles/two",
+                description="IPO timetable article version B")
+_ipo_other_day = dict(_ipo_one, key="other-day-event",
+                      published="2026-10-24T05:32:00+00:00")
+_unique_robot = dict(_ipo_one, key="distinct-news", group="robotis",
+                     title="로보티즈 별개 수주 발표")
+_ipo_selection = watcher._sro_select(
+    [_ipo_one, _ipo_two, _ipo_other_day, _unique_robot], set(), False, 8
+)
+assert sum(x.get("published")==_ipo_stamp and x.get("group")=="hyundai_atlas_rollout"
+           for x in _ipo_selection) == 1, _ipo_selection
+assert any(x.get("key") == "other-day-event" for x in _ipo_selection), _ipo_selection
+assert any(x.get("key") == "distinct-news" for x in _ipo_selection), _ipo_selection
+
 print("Physical-AI watcher regression guards: PASS")
