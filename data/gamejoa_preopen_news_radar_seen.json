@@ -39124,6 +39124,28 @@
       "telegram_core_fact": "그린파워 모터(GP)가 보통주 종가가 30거래일 연속 나스닥 최소 매수호가 요건인 주당 1달러를 밑돌아 나스닥 상장 규정 미준수 통지를 받았다고 10월 16일 발표했다.",
       "title": "그린파워 모터, 나스닥 상장요건 미달 통보..180일 내 1달러 회복 필요"
     },
+    "core:62a9eeb853138a73dd4e4ddb": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839362",
+      "source": "뉴시스",
+      "source_body_digest": "8e1a6b33647a837f0ac323dc05bc001490bf86a57166e49d3bebd6fc6978c5d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27fe1ec0bfe485f583c37c904409071805b236e40005f8b292221af6b7e645ad",
+      "source_fact_keys": [
+        "source_fact:v1:69cf565f9309ade0fe770f4a162e9ab4ea6aa9298a425599a5556b2ad7ea0c35",
+        "source_fact:v1:82a1f0a37ca0ecc69f943a3f68867e9fe96b488ae5d95546620cac47f8b518ed",
+        "source_fact:v1:fd51b6846897469cfd6332dea00c2e905ff537a5c496e1a00b33a6557c92881c"
+      ],
+      "source_published_kst": "2026-10-24T05:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\"",
+      "telegram_core_fact": "아나돌루통신에 따르면 트럼프 대통령은 이날 플로리다주에서 유세를 가지고 이란과의 협상 문제를 언급하며 이같이 밝혔다.",
+      "title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\""
+    },
     "core:62ab3f71d87f24aa6a595864": {
       "first_seen_kst": "2026-10-13T10:05:20+09:00",
       "lanes": {
@@ -76689,6 +76711,35 @@
       "source_published_kst": "2026-10-07T16:09+09:00",
       "title": "코스피, 美금리 반등·삼전 실적 경계에 하락…6,800선 턱걸이(종합) | 연합뉴스"
     },
+    "core:bf48deebd1005cb6d1dbff8a": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
+    },
     "core:bf55c2057483db437bef599f": {
       "first_seen_kst": "2026-10-22T16:54:41+09:00",
       "lanes": {
@@ -112328,25 +112379,31 @@
     "event:73280e769b7e6e793432feca": {
       "first_seen_kst": "2026-10-24T12:16:57+09:00",
       "lanes": {
-        "live": "2026-10-24T14:37:56+09:00"
+        "live": "2026-10-24T15:44:19+09:00"
       },
-      "last_seen_kst": "2026-10-24T14:37:56+09:00",
-      "link": "https://biz.heraldcorp.com/article/10913475",
-      "source": "헤럴드경제",
-      "source_body_digest": "e96273f2bf38cf2530cd0dc0495e3ec4f7ffe36df8a9c53769c53f00c8aab2d4",
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2e6f53c9dd7607b5f0f4c64d79600b80f3813f9ec1d51b9a4eba4a72753379b4",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
       "source_fact_keys": [
-        "source_fact:v1:8217e127c8c990df28ca988cfd5d5c7e63f5e37421f1bcbdc88f86ff65657df4",
-        "source_fact:v1:b3b254a0b56ab464b032ed4d4a608618a7c563ac1fe4159b3e812ada24068e64",
-        "source_fact:v1:b7db7edd91ca7cd9cda410a704615a43065e3a54237418dd839e3a1588425ac6",
-        "source_fact:v1:d957658c4cbe9e1876f19b3bd03c3d4bba7a0645931b0866472cd8e11965c5a5"
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
       ],
-      "source_published_kst": "2026-10-24T14:02+09:00",
+      "source_published_kst": "2026-10-24T15:20+09:00",
       "source_supply_terms": {},
-      "source_title": "“5년치 전기료 미리 내달라”…‘삼전닉스’에 손 벌린 한전 , 전기료 인상 현실화?",
-      "telegram_core_fact": "연합인포맥스가 최근 증권사들의 실적 전망을 집계한 결과, 한전의 올해 3분기 영업이익은 2조6966억원으로 전년 동기보다 52.29% 감소할 것으로 예상됐다. 같은 기간 매출은 27조6057억원으로 0.12% 증가하는 데 그칠 전망이다.",
-      "title": "“5년치 전기료 미리 내달라”…‘삼전닉스’에 손 벌린 한전 , 전기료 인상 현실화?"
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
     },
     "event:737fe99c2c9fb0d5156361d2": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
@@ -114960,24 +115017,24 @@
     "event:900350979076bbea800020b9": {
       "first_seen_kst": "2026-10-24T03:26:54+09:00",
       "lanes": {
-        "live": "2026-10-24T14:37:56+09:00"
+        "live": "2026-10-24T15:44:19+09:00"
       },
-      "last_seen_kst": "2026-10-24T14:37:56+09:00",
-      "link": "https://magazine.hankyung.com/business/article/202610242283b",
-      "source": "한국경제",
-      "source_body_digest": "eff8e9c78c9c09c9f82f24f970d67b5a4d9e2a30a109af0a9c65bc7af04d21c9",
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839362",
+      "source": "뉴시스",
+      "source_body_digest": "8e1a6b33647a837f0ac323dc05bc001490bf86a57166e49d3bebd6fc6978c5d3",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:5198eb465128c7078204b49beb836b2450c59dbfe6ecde250d7285d9f591d2d4",
+      "source_fact_identity": "source_facts:v1:27fe1ec0bfe485f583c37c904409071805b236e40005f8b292221af6b7e645ad",
       "source_fact_keys": [
-        "source_fact:v1:599916f5da7dd00c319b6093e95a40fb8ef64104c59bc4f95f5a3f7ac131ad7a",
-        "source_fact:v1:8c7a9fc40c5d7a2eaf396d5723bb1699e6a3be6243d45f733957983d2a203e9c",
-        "source_fact:v1:e4a43dc0d8be87ae8aa826aa105bbd981a3c6cc4c9e7f1ad163292def428b266"
+        "source_fact:v1:69cf565f9309ade0fe770f4a162e9ab4ea6aa9298a425599a5556b2ad7ea0c35",
+        "source_fact:v1:82a1f0a37ca0ecc69f943a3f68867e9fe96b488ae5d95546620cac47f8b518ed",
+        "source_fact:v1:fd51b6846897469cfd6332dea00c2e905ff537a5c496e1a00b33a6557c92881c"
       ],
-      "source_published_kst": "2026-10-24T09:19+09:00",
+      "source_published_kst": "2026-10-24T05:39+09:00",
       "source_supply_terms": {},
-      "source_title": "기름값 23주 연속 하락…휘발유·경유 1800원대",
-      "telegram_core_fact": "한국석유공사 유가정보시스템 오피넷에 따르면 10월 셋째 주(18∼22일) 전국 주유소 휘발유 평균 판매가는 지난주보다 L당 0.5원 내린 1857.1원이었다.",
-      "title": "기름값 23주 연속 하락…휘발유·경유 1800원대"
+      "source_title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\"",
+      "telegram_core_fact": "아나돌루통신에 따르면 트럼프 대통령은 이날 플로리다주에서 유세를 가지고 이란과의 협상 문제를 언급하며 이같이 밝혔다.",
+      "title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\""
     },
     "event:9022e10a9278ce251c4d0a3f": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
@@ -165752,6 +165809,35 @@
       "telegram_core_fact": "올레녹스는 와일드보이와 IPD 지분 100% 인수를 마무리했고, 대금 2170만 달러는 대부분 우선주로 지급해 현금 부담을 줄였습니다.",
       "title": "올레녹스, 가스·전력 자산 인수 완료로 AI 전력 성장 기대감 부각"
     },
+    "fact:62bd4a4110f6bfd98eb0681a": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
+    },
     "fact:62c0cfc69fc4fee05d5539b1": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -212836,6 +212922,28 @@
       "source_title": "공공시장 입지 확대 나서는 주연테크, 해군 PC 공급사업 수주",
       "telegram_core_fact": "PC 제조기업 '주연테크'가 해군본부와 약 44억원 사무자동화장비 공급 계약을 최근 체결하며 공공부문 사업 확대에 나섰다.",
       "title": "공공시장 입지 확대 나서는 주연테크, 해군 PC 공급사업 수주"
+    },
+    "fact:cb023b5d6bed68b7c8f9d5e8": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839362",
+      "source": "뉴시스",
+      "source_body_digest": "8e1a6b33647a837f0ac323dc05bc001490bf86a57166e49d3bebd6fc6978c5d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27fe1ec0bfe485f583c37c904409071805b236e40005f8b292221af6b7e645ad",
+      "source_fact_keys": [
+        "source_fact:v1:69cf565f9309ade0fe770f4a162e9ab4ea6aa9298a425599a5556b2ad7ea0c35",
+        "source_fact:v1:82a1f0a37ca0ecc69f943a3f68867e9fe96b488ae5d95546620cac47f8b518ed",
+        "source_fact:v1:fd51b6846897469cfd6332dea00c2e905ff537a5c496e1a00b33a6557c92881c"
+      ],
+      "source_published_kst": "2026-10-24T05:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\"",
+      "telegram_core_fact": "아나돌루통신에 따르면 트럼프 대통령은 이날 플로리다주에서 유세를 가지고 이란과의 협상 문제를 언급하며 이같이 밝혔다.",
+      "title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\""
     },
     "fact:cb0c513ffc343e53317703b7": {
       "first_seen_kst": "2026-10-23T18:41:16+09:00",
@@ -291400,6 +291508,28 @@
       "telegram_core_fact": "향후 10년간 1600조원 대형 투자 계획이 담긴 메가 프로젝트가 메모리 반도체와 첨단 패키징, 컴퓨팅 인프라, 제조 데이터, 피지컬 AI로 이어지는 전략적 AI 회랑을 구축하는 승부수라는 분석이다.",
       "title": "\"1600조 메가 프로젝트, 투자 넘어 산업판 바꿔야\""
     },
+    "link:5ec007d4cb2d5e2471a6b45e": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839362",
+      "source": "뉴시스",
+      "source_body_digest": "8e1a6b33647a837f0ac323dc05bc001490bf86a57166e49d3bebd6fc6978c5d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27fe1ec0bfe485f583c37c904409071805b236e40005f8b292221af6b7e645ad",
+      "source_fact_keys": [
+        "source_fact:v1:69cf565f9309ade0fe770f4a162e9ab4ea6aa9298a425599a5556b2ad7ea0c35",
+        "source_fact:v1:82a1f0a37ca0ecc69f943a3f68867e9fe96b488ae5d95546620cac47f8b518ed",
+        "source_fact:v1:fd51b6846897469cfd6332dea00c2e905ff537a5c496e1a00b33a6557c92881c"
+      ],
+      "source_published_kst": "2026-10-24T05:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\"",
+      "telegram_core_fact": "아나돌루통신에 따르면 트럼프 대통령은 이날 플로리다주에서 유세를 가지고 이란과의 협상 문제를 언급하며 이같이 밝혔다.",
+      "title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\""
+    },
     "link:5ec10cd6d954bb9b28a3cb1c": {
       "first_seen_kst": "2026-10-12T21:44:29+09:00",
       "lanes": {
@@ -294292,6 +294422,35 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=05103686645608656",
       "source": "이데일리",
       "title": "\"내년·내후년 HBM 수급 더 빠듯\"…삼전닉스 200조 분기 영업익 시대"
+    },
+    "link:651d06898cf466e9b614f626": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
     },
     "link:6533853b5ad0e88aeed88308": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
@@ -437333,6 +437492,35 @@
       "telegram_core_fact": "\"앞으로 인공지능과 디지털화 분야의 기술과 자원을 활용해 선전 왈츠의 연구개발 역량과 운영 효율을 높이는 방안을 모색할 것\"이라며 \"장기적인 사업 성장을 이끌고 주주에게 지속 가능한 가치를 창출하겠다\"고 밝혔다. 인수 대상 회사는 선전 왈츠 지분 99%를 간접 보유하고 있다.",
       "title": "아이푸, 광학필름 선전 왈츠 인수 4500만 달러 규모"
     },
+    "original:66378d770587498173d0c227": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
+    },
     "original:663791d2fd28acb7e84acee6": {
       "first_seen_kst": "2026-10-17T09:37:15+09:00",
       "lanes": {
@@ -474497,6 +474685,28 @@
       "source_title": "\"성과급 최소 30억, 서민 탈출한 듯\"…삼성전자 '사내부부' 직원 글",
       "telegram_core_fact": "업계에 따르면 삼성전자 DS부문은 지난 7일 특별경영성과급 세부 기준과 지급 일정을 공지했다.",
       "title": "\"성과급 최소 30억, 서민 탈출한 듯\"…삼성전자 '사내부부' 직원 글"
+    },
+    "original:a90ee2fa5e4f2f87a0e09647": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839362",
+      "source": "뉴시스",
+      "source_body_digest": "8e1a6b33647a837f0ac323dc05bc001490bf86a57166e49d3bebd6fc6978c5d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27fe1ec0bfe485f583c37c904409071805b236e40005f8b292221af6b7e645ad",
+      "source_fact_keys": [
+        "source_fact:v1:69cf565f9309ade0fe770f4a162e9ab4ea6aa9298a425599a5556b2ad7ea0c35",
+        "source_fact:v1:82a1f0a37ca0ecc69f943a3f68867e9fe96b488ae5d95546620cac47f8b518ed",
+        "source_fact:v1:fd51b6846897469cfd6332dea00c2e905ff537a5c496e1a00b33a6557c92881c"
+      ],
+      "source_published_kst": "2026-10-24T05:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\"",
+      "telegram_core_fact": "아나돌루통신에 따르면 트럼프 대통령은 이날 플로리다주에서 유세를 가지고 이란과의 협상 문제를 언급하며 이같이 밝혔다.",
+      "title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\""
     },
     "original:a92e7f09f142e207e8c701d6": {
       "first_seen_kst": "2026-10-21T15:40:18+09:00",
@@ -536917,6 +537127,35 @@
       "telegram_core_fact": "상장 추진 소식이 전해진 이후 SK하이닉스 주가는 급락세를 타 이달 들어 지난달 말 대비 30%가량 폭락했다.",
       "title": "\"솔리다임 상장 철회했는데 20조는?\"…하이닉스 '플랜B' 뭐길래"
     },
+    "source_fact:07155e182400a4f54caf0926": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
+    },
     "source_fact:0715ff904e694f00249047ba": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
@@ -555899,6 +556138,35 @@
       "source_title": "한은 \"물가, 상당 기간 목표 수준 웃돌 전망\"",
       "telegram_core_fact": "12일 한은이 국회 재정경제기획위원회(재경위)에 제출한 업무현황에 따르면 물가는 그간 높아진 비용 압력의 전이가 지속되고 소득 여건 개선에 따라 수요 측 압력도 점차 커지며 상당 기간 목표 수준을 상회하는 높은 오름세를 나타낼 전망이다.",
       "title": "한은 \"물가, 상당 기간 목표 수준 웃돌 전망\""
+    },
+    "source_fact:0f8c664548cbccb356ae0f32": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
     },
     "source_fact:0f8c666845dde59603d77ddf": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
@@ -607013,6 +607281,35 @@
       "telegram_core_fact": "대만은 마이크론의 주요 D램 및 고대역폭메모리(HBM) 생산거점인 만큼 실제 파업이 발생할 경우 생산 운영에 영향을 미칠 가능성이 있어 향후 협상 결과에 업계의 관심이 쏠린다.",
       "title": "삼전닉스 성과급이 불붙였나…마이크론 대만노조 파업 찬성 99%"
     },
+    "source_fact:255a7d6acf701a3d54b760e2": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
+    },
     "source_fact:256078146dbd40e6a34c4597": {
       "first_seen_kst": "2026-10-22T20:05:56+09:00",
       "lanes": {
@@ -617442,6 +617739,35 @@
       "source_title": "韓대기업 잇단 해외 빅딜…다시 글로벌 대형 IB의 시간",
       "telegram_core_fact": "IB업계 관계자는 “국내 매물은 가격대가 만만찮고 중복 상장 금지 등 규제도 까다롭다”며 “요즘 M&A를 노리는 국내 대기업은 해외만 쳐다본다”고 말했다.",
       "title": "韓대기업 잇단 해외 빅딜…다시 글로벌 대형 IB의 시간"
+    },
+    "source_fact:2993ffb0f0378c86d7f839b8": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
     },
     "source_fact:299f53f3832ee95b2e0261e4": {
       "first_seen_kst": "2026-10-17T08:46:34+09:00",
@@ -641442,6 +641768,28 @@
       "source_title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등",
       "telegram_core_fact": "트럼프 대통령의 발언이 나온 이후 유가 상승폭은 일부 줄었지만, 중동의 원유 공급 불안이 이어지면서 국제유가는 결국 4% 넘게 오른 채 거래를 마쳤다.",
       "title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등"
+    },
+    "source_fact:33e99a9d951b9bb092cb41d3": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839362",
+      "source": "뉴시스",
+      "source_body_digest": "8e1a6b33647a837f0ac323dc05bc001490bf86a57166e49d3bebd6fc6978c5d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27fe1ec0bfe485f583c37c904409071805b236e40005f8b292221af6b7e645ad",
+      "source_fact_keys": [
+        "source_fact:v1:69cf565f9309ade0fe770f4a162e9ab4ea6aa9298a425599a5556b2ad7ea0c35",
+        "source_fact:v1:82a1f0a37ca0ecc69f943a3f68867e9fe96b488ae5d95546620cac47f8b518ed",
+        "source_fact:v1:fd51b6846897469cfd6332dea00c2e905ff537a5c496e1a00b33a6557c92881c"
+      ],
+      "source_published_kst": "2026-10-24T05:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\"",
+      "telegram_core_fact": "아나돌루통신에 따르면 트럼프 대통령은 이날 플로리다주에서 유세를 가지고 이란과의 협상 문제를 언급하며 이같이 밝혔다.",
+      "title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\""
     },
     "source_fact:33ee95dca6e60ceff291be0d": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
@@ -722018,6 +722366,35 @@
       "telegram_core_fact": "영풍·MBK파트너스가 고려아연이 신설법인에 공급한 93억6000만원이 원아시아파트너스 관련 기업의 경영권 확보에 사용된 뒤 고려아연 출자 펀드 자금으로 상환됐다는 의혹을 제기했다. 이후 약 3주 뒤 고려아연은 원아시아파트너스가 운용하는 코리아그로쓰제1호 펀드에 96억원을 출자했다.",
       "title": "영풍·MBK \"고려아연 자금 93억원, 원아시아 펀드 통해 '셀프상환' 의혹\""
     },
+    "source_fact:562ec471d590438b710363d9": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
+    },
     "source_fact:562fd7b355fa12c4b21e53b3": {
       "first_seen_kst": "2026-10-24T09:19:28+09:00",
       "lanes": {
@@ -790875,6 +791252,35 @@
       "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
       "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
     },
+    "source_fact:73d8ca72f78ccc5f7424bfcb": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
+    },
     "source_fact:73dc5ae5495bf73691a21ed8": {
       "first_seen_kst": "2026-10-20T16:54:02+09:00",
       "lanes": {
@@ -799181,6 +799587,28 @@
       "source_title": "뉴젠IVF 그룹, 상반기 순손실 808만달러..적자전환",
       "telegram_core_fact": "뉴젠IVF 그룹(NIVF)은 6월 30일 종료된 2026년 상반기 매출액이 192만4900달러로 전년비 4.7% 감소했고, 순손실은 807만9400달러로 전년 동기 69만8000달러 순이익에서 적자 전환했다고 10월 7일 발표했다.",
       "title": "뉴젠IVF 그룹, 상반기 순손실 808만달러..적자전환"
+    },
+    "source_fact:774e8dd047671d839cd5788a": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839362",
+      "source": "뉴시스",
+      "source_body_digest": "8e1a6b33647a837f0ac323dc05bc001490bf86a57166e49d3bebd6fc6978c5d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27fe1ec0bfe485f583c37c904409071805b236e40005f8b292221af6b7e645ad",
+      "source_fact_keys": [
+        "source_fact:v1:69cf565f9309ade0fe770f4a162e9ab4ea6aa9298a425599a5556b2ad7ea0c35",
+        "source_fact:v1:82a1f0a37ca0ecc69f943a3f68867e9fe96b488ae5d95546620cac47f8b518ed",
+        "source_fact:v1:fd51b6846897469cfd6332dea00c2e905ff537a5c496e1a00b33a6557c92881c"
+      ],
+      "source_published_kst": "2026-10-24T05:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\"",
+      "telegram_core_fact": "아나돌루통신에 따르면 트럼프 대통령은 이날 플로리다주에서 유세를 가지고 이란과의 협상 문제를 언급하며 이같이 밝혔다.",
+      "title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\""
     },
     "source_fact:7752c426e0fce5f1e92f9c7d": {
       "first_seen_kst": "2026-10-11T13:18:03+09:00",
@@ -822706,6 +823134,28 @@
       "source_title": "[유미's 픽] 신성장 동력은 해외 데이터센터…LG CNS·롯데이노베이트의 승부수",
       "telegram_core_fact": "정해창 대신증권 연구원은 \"인도네시아 JV의 데이터센터 가동과 수익화 일정이 구체화되면 2027년 실적과 중장기 성장성을 가늠할 수 있을 것\"이라면서도 \"설비투자에 따른 감가상각비 부담도 점검할 필요가 있다\"고 밝혔다. LG CNS와 롯데이노베이트가 데이터센터 설계·구축·운영(DBO) 사업 무대를 해외로 넓히고 있다.",
       "title": "[유미's 픽] 신성장 동력은 해외 데이터센터…LG CNS·롯데이노베이트의 승부수"
+    },
+    "source_fact:81ba17e9be16fbd023505b8f": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839362",
+      "source": "뉴시스",
+      "source_body_digest": "8e1a6b33647a837f0ac323dc05bc001490bf86a57166e49d3bebd6fc6978c5d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27fe1ec0bfe485f583c37c904409071805b236e40005f8b292221af6b7e645ad",
+      "source_fact_keys": [
+        "source_fact:v1:69cf565f9309ade0fe770f4a162e9ab4ea6aa9298a425599a5556b2ad7ea0c35",
+        "source_fact:v1:82a1f0a37ca0ecc69f943a3f68867e9fe96b488ae5d95546620cac47f8b518ed",
+        "source_fact:v1:fd51b6846897469cfd6332dea00c2e905ff537a5c496e1a00b33a6557c92881c"
+      ],
+      "source_published_kst": "2026-10-24T05:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\"",
+      "telegram_core_fact": "아나돌루통신에 따르면 트럼프 대통령은 이날 플로리다주에서 유세를 가지고 이란과의 협상 문제를 언급하며 이같이 밝혔다.",
+      "title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\""
     },
     "source_fact:81bd420ce163d76f68c8bea0": {
       "first_seen_kst": "2026-10-23T05:32:14+09:00",
@@ -846327,6 +846777,35 @@
       "source_published_kst": "2026-10-06T19:18+09:00",
       "title": "“발전공기업 최초”…남부발전, 한국형 녹색분류체계 기반 녹색여신 약정 체결"
     },
+    "source_fact:8c63ac251228c14988c7826f": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
+    },
     "source_fact:8c65eefd3e5226eb47bd90d6": {
       "first_seen_kst": "2026-10-12T17:38:53+09:00",
       "lanes": {
@@ -856960,6 +857439,35 @@
       ],
       "source_published_kst": "2026-10-06T06:28+09:00",
       "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
+    },
+    "source_fact:913f07e095470a5fbc9e3d93": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
     },
     "source_fact:914222778ecedeedb92c24c4": {
       "first_seen_kst": "2026-10-12T22:07:35+09:00",
@@ -873273,6 +873781,35 @@
       "telegram_core_fact": "반면 매출 비중이 약 59%인 미주는 매출액이 10억100만 달러로 24.7% 급증했지만 조정 EBITDA는 1억2200만 달러로 3.2% 감소했다.",
       "title": "아르다 메탈 패키징, 3분기 매출 17억 달러 19%↑..조정 EBITDA 2% 증가 그쳐"
     },
+    "source_fact:984efd40d52bc24094c98c97": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
+    },
     "source_fact:984f9fd3592c64cc5aa1d0a3": {
       "first_seen_kst": "2026-10-11T17:31:47+09:00",
       "lanes": {
@@ -880853,6 +881390,35 @@
       "source_title": "우리금융, 올해 누적 순익 2.66조원…전년比 4.93% 감소",
       "telegram_core_fact": "지배기업 소유주지분 기준으로는 3분기 누적 순이익이 2조 6581억원으로 지난해 같은 기간(2조7859억원)보다 4.93% 감소했다.",
       "title": "우리금융, 올해 누적 순익 2.66조원…전년比 4.93% 감소"
+    },
+    "source_fact:9b92f10abd7c66a1044fae94": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
     },
     "source_fact:9b984358a04d085bb9e6aa83": {
       "first_seen_kst": "2026-10-12T15:20:09+09:00",
@@ -1172674,6 +1173240,35 @@
       "telegram_core_fact": "\"앞으로 인공지능과 디지털화 분야의 기술과 자원을 활용해 선전 왈츠의 연구개발 역량과 운영 효율을 높이는 방안을 모색할 것\"이라며 \"장기적인 사업 성장을 이끌고 주주에게 지속 가능한 가치를 창출하겠다\"고 밝혔다. 인수 대상 회사는 선전 왈츠 지분 99%를 간접 보유하고 있다.",
       "title": "아이푸, 광학필름 선전 왈츠 인수 4500만 달러 규모"
     },
+    "title:66378d770587498173d0c227": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12184815",
+      "source": "매일경제",
+      "source_body_digest": "598e5c4f863a353c1e5bee6aeeb27545ffe4d2bccb67d2e3c9f68eb63a93ba8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86e4eaf33e929f6a84d639bf9217d2bdb6e9fd3213ff8e5a1ff2c6abbe02417d",
+      "source_fact_keys": [
+        "source_fact:v1:0178563d3f7ba90ea13766b32a3bc65ed4688c40382a68c7f28b20ea76a0e291",
+        "source_fact:v1:0eda0edc1864505b971e011625ab327a1ad0183fb14b031d0def83af51b25f67",
+        "source_fact:v1:1d091cdfec98f42b4c72d919b7b7da4a77eb2aec4e144a3c5f75eaa547afcf50",
+        "source_fact:v1:34ff67cf0c6bf885d70f535d221d3b40ef53c8942b44c4fb9cf6466b55467ca0",
+        "source_fact:v1:78378fc2f2a44b24fc40e7675760f3eefe8d4c036e93c880c489c80007ba47a1",
+        "source_fact:v1:98aa58f90e037b12eb39a02451bc38c99aac726ba25e7e37fe3b3e48d8e422b7",
+        "source_fact:v1:9f3187f2be1875cb1e3fbd3f1f1f8890c11ad678a8345c6ff515168927ea6018",
+        "source_fact:v1:a4a465520bef2576ab9cda24d35aec093035de94a775e87bace3e8ca0db36670",
+        "source_fact:v1:d89bb4811bd85717a8fe14af501e4d0c4c847252b8e2cbadc7e8b39ff6561ba6",
+        "source_fact:v1:dfbbc32fbb0fceefd249c5fde4e6cc75398beabf32ff77a45a9d027e451c8f86"
+      ],
+      "source_published_kst": "2026-10-24T15:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]",
+      "telegram_core_fact": "경쟁사인 삼성전자와 SK하이닉스 직원들이 영업이익의 10%에 달하는 성과급을 받는다는 소식이 전해지면서 대만에서도 노조의 집단 행동이 벌어졌습니다. 우리 반도체 기업들은 세후이익도 아닌 영업이익에서 10%라는 비율을 노조에 성과급으로 지급합니다.",
+      "title": "삼전닉스 성과급 7억 vs 대만 마이크론 1.5억.. 차이 큰 이유는 [반도체플러스]"
+    },
     "title:663791d2fd28acb7e84acee6": {
       "first_seen_kst": "2026-10-17T09:37:15+09:00",
       "lanes": {
@@ -1210669,6 +1211264,28 @@
       "source_title": "\"성과급 최소 30억, 서민 탈출한 듯\"…삼성전자 '사내부부' 직원 글",
       "telegram_core_fact": "업계에 따르면 삼성전자 DS부문은 지난 7일 특별경영성과급 세부 기준과 지급 일정을 공지했다.",
       "title": "\"성과급 최소 30억, 서민 탈출한 듯\"…삼성전자 '사내부부' 직원 글"
+    },
+    "title:a90ee2fa5e4f2f87a0e09647": {
+      "first_seen_kst": "2026-10-24T15:44:19+09:00",
+      "lanes": {
+        "live": "2026-10-24T15:44:19+09:00"
+      },
+      "last_seen_kst": "2026-10-24T15:44:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839362",
+      "source": "뉴시스",
+      "source_body_digest": "8e1a6b33647a837f0ac323dc05bc001490bf86a57166e49d3bebd6fc6978c5d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:27fe1ec0bfe485f583c37c904409071805b236e40005f8b292221af6b7e645ad",
+      "source_fact_keys": [
+        "source_fact:v1:69cf565f9309ade0fe770f4a162e9ab4ea6aa9298a425599a5556b2ad7ea0c35",
+        "source_fact:v1:82a1f0a37ca0ecc69f943a3f68867e9fe96b488ae5d95546620cac47f8b518ed",
+        "source_fact:v1:fd51b6846897469cfd6332dea00c2e905ff537a5c496e1a00b33a6557c92881c"
+      ],
+      "source_published_kst": "2026-10-24T05:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\"",
+      "telegram_core_fact": "아나돌루통신에 따르면 트럼프 대통령은 이날 플로리다주에서 유세를 가지고 이란과의 협상 문제를 언급하며 이같이 밝혔다.",
+      "title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\""
     },
     "title:a92e7f09f142e207e8c701d6": {
       "first_seen_kst": "2026-10-21T15:40:18+09:00",
@@ -1258245,5 +1258862,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-24T15:07:39+09:00"
+  "updated_at_kst": "2026-10-24T15:44:19+09:00"
 }
