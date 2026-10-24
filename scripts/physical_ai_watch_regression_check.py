@@ -3561,6 +3561,16 @@ finally:
 
 
 
+def _historical_one_shot_query(query: str) -> list[dict]:
+    """Check date-limited historical recoveries without replaying them today."""
+    previous_now = base.NOW
+    try:
+        base.NOW = dt.datetime(2026, 10, 20, 10, 0, tzinfo=dt.timezone.utc)
+        return watcher.query_news(query)
+    finally:
+        base.NOW = previous_now
+
+
 # 57) CATL–INTILION 3GWh/5y: joint DEVELOPMENT target only;
 # no confirmed procurement, 10+3 GWh sum or current revenue.
 ci=make("CATL INTILION sodium-ion 3 GWh five-year cooperation",
@@ -3598,7 +3608,7 @@ ci_rumor=dict(ci_contract,source='익명 시장게시글')
 rg,rs,rc,rk=classify(ci_rumor)
 assert rg==cg and rs<11,(rg,rs,rc)
 
-ci_rec=watcher.query_news(watcher.CATL_INTILION_RECOVERY)
+ci_rec=_historical_one_shot_query(watcher.CATL_INTILION_RECOVERY)
 assert len(ci_rec)==1 and ci_rec[0]['published'] is None,ci_rec
 ci_rg,ci_rs,ci_rc,ci_rk=classify(ci_rec[0])
 assert ci_rg==cg and ci_rs>=11 and ci_rc==cc and ci_rk==ck,(ci_rg,ci_rs,ci_rc)
@@ -3649,7 +3659,7 @@ pg,ps,pc,pk=classify(paid)
 assert pg==dg and ps>=11 and pc=='Dexmate–LG CNS · 공식 유료 공급계약',(pg,ps,pc)
 assert pk!=dk
 
-dex_rec=watcher.query_news(watcher.DEXMATE_LG_RECOVERY)
+dex_rec=_historical_one_shot_query(watcher.DEXMATE_LG_RECOVERY)
 assert len(dex_rec)==1 and dex_rec[0]['source']=='이데일리' and dex_rec[0]['published'] is None,dex_rec
 rg,rs,rc,rk=classify(dex_rec[0])
 assert rg==dg and rs>=11 and rc==dc and rk==dk,(rg,rs,rc,rk)
@@ -4037,7 +4047,7 @@ new_event_specs = (
 )
 keys = set()
 for event_id, expected_group, expected_stage, expected_category in new_event_specs:
-    samples = watcher.query_news(watcher.ROBOT_OCT16_PREFIX + event_id)
+    samples = _historical_one_shot_query(watcher.ROBOT_OCT16_PREFIX + event_id)
     assert len(samples) == 1, (event_id,samples)
     item = samples[0]
     assert item.get('published') is None, "Date-only press coverage needs no fabricated hour"
@@ -4083,7 +4093,7 @@ brils_reprint = make(
     '이데일리',
 )
 bg, bs, bc, bk = classify(brils_reprint)
-brils_original = watcher.query_news(
+brils_original = _historical_one_shot_query(
     watcher.ROBOT_OCT16_PREFIX + 'brils_us_amr_production_plan'
 )[0]
 assert bg == 'brils_us_localization' and bs >= 11, (bg,bs,bc)
@@ -4114,7 +4124,7 @@ rx_press_copy = make(
     '이데일리',
 )
 hg, hs, hc, hk = classify(rx_press_copy)
-rx_original = watcher.query_news(
+rx_original = _historical_one_shot_query(
     watcher.ROBOT_OCT16_PREFIX + 'hyundai_rx_strategy_team'
 )[0]
 assert hg == 'hyundai_robot_rx_team' and hs>=11 and hk==base.key(rx_original), (hg,hs,hk)
@@ -4132,7 +4142,7 @@ lg_report_clone = make(
     'ZDNet korea',
 )
 lg,ls,lc,lk=classify(lg_report_clone)
-lg_original=watcher.query_news(
+lg_original=_historical_one_shot_query(
     watcher.ROBOT_OCT16_PREFIX+'lg_robot_software_platform_team'
 )[0]
 assert lg=='lge_robot_sw_platform' and ls>=11 and lk==base.key(lg_original),(lg,ls,lk)
