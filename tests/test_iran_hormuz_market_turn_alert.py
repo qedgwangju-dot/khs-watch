@@ -1998,5 +1998,20 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertEqual(MODULE.enhance_physical_oil_alert("delek_tyler_dpa","본문",oil),"본문")
 
 
+    def test_oil_rate_future_partial_candle_excluded_by_treasury_day(self):
+        import calendar
+        stamp=lambda day:calendar.timegm(dt.datetime(2026,10,day,18).timetuple())
+        chart={"chart":{"result":[{
+            "meta":{"exchangeTimezoneName":"Europe/London"},
+            "timestamp":[stamp(23),stamp(26),stamp(27)],
+            "indicators":{"quote":[{"close":[112.0,116.0,123.0]}]},
+        }]}}
+        selected=MODULE.parse_daily_brent_yahoo(chart,target_date="2026-10-26")
+        self.assertEqual(selected["date"],"2026-10-26")
+        self.assertEqual(selected["prev_date"],"2026-10-23")
+        self.assertEqual(selected["price"],116.0)
+        self.assertEqual(MODULE.parse_daily_brent_yahoo(chart)["date"],"2026-10-27")
+
+
 if __name__ == "__main__":
     unittest.main()

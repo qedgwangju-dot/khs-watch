@@ -3306,7 +3306,7 @@ def fetch_us_treasury_ten_year_pair(current: dt.datetime) -> dict:
             "yield": values[day], "prev_yield": values[prev]}
 
 
-def parse_daily_brent_yahoo(payload: dict) -> dict:
+def parse_daily_brent_yahoo(payload: dict, target_date: str | None = None) -> dict:
     result = (payload.get("chart", {}).get("result") or [None])[0]
     if result is None:
         raise RuntimeError("Brent 선물 종가 자료 없음")
@@ -3324,7 +3324,13 @@ def parse_daily_brent_yahoo(payload: dict) -> dict:
         if t is not None and p is not None and 25 < p < 250:
             date = dt.datetime.fromtimestamp(t, tz=UTC).astimezone(tz).date()
             values[date] = p
-    days = sorted(values)
+    # ICE may already publish a partial candle for the following trading day.
+    # Select the oil session matching the latest *published Treasury* date.
+    if target_date is not None:
+        limit = dt.date.fromisoformat(target_date)
+        days = sorted(x for x in values if x <= limit)
+    else:
+        days = sorted(values)
     if len(days) < 2:
         raise RuntimeError("Brent 종가 비교 거래일 부족")
     day, prev = days[-1], days[-2]
@@ -3332,13 +3338,13 @@ def parse_daily_brent_yahoo(payload: dict) -> dict:
             "price": values[day], "prev_price": values[prev]}
 
 
-def fetch_brent_daily_verified() -> dict:
+def fetch_brent_daily_verified(target_date: str | None = None) -> dict:
     params = urllib.parse.urlencode({"interval": "1d", "range": "10d", "includePrePost": "false"})
     values = []
     for host in YAHOO_BASES:
         endpoint = f"{host}/BZ%3DF?{params}"
         payload = json.loads(fetch_bytes(endpoint, timeout=8, attempts=1).decode("utf-8"))
-        values.append(parse_daily_brent_yahoo(payload))
+        values.append(parse_daily_brent_yahoo(payload, target_date=target_date))
     a, b = values
     if a["date"] != b["date"] or a["prev_date"] != b["prev_date"]:
         raise RuntimeError("Brent 동일 제공자 두 조회경로 거래일 불일치")
@@ -3435,7 +3441,7 @@ def maybe_create_oil_treasury_signal(current: dt.datetime, state: dict) -> bool:
         return False
     try:
         t = fetch_us_treasury_ten_year_pair(current)
-        b = fetch_brent_daily_verified()
+        b = fetch_brent_daily_verified(t["date"])
         signal = detect_oil_treasury_risk_signal(b, t, state, current)
     except (RuntimeError, ValueError, KeyError, TypeError, OSError, json.JSONDecodeError) as exc:
         print(f"oil_treasury_source_diagnostic={type(exc).__name__}: {str(exc)[:240]}", flush=True)
