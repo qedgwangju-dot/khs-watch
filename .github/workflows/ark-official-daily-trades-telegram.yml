@@ -10,7 +10,9 @@ on:
       - ".github/workflows/ark-official-daily-trades-telegram.yml"
       - "scripts/ark_daily_trade_watch.py"
       - "scripts/ark_notional_enrichment.py"
+      - "scripts/ark_sector_rank.py"
       - "scripts/test_ark_daily_trade_watch.py"
+      - "scripts/test_ark_sector_rank.py"
 
 permissions:
   contents: write
@@ -47,8 +49,9 @@ jobs:
       - name: Validate source parser and financial table
         run: |
           set -euo pipefail
-          python -m py_compile scripts/ark_daily_trade_watch.py scripts/ark_notional_enrichment.py scripts/test_ark_daily_trade_watch.py
+          python -m py_compile scripts/ark_daily_trade_watch.py scripts/ark_notional_enrichment.py scripts/ark_sector_rank.py scripts/test_ark_daily_trade_watch.py scripts/test_ark_sector_rank.py
           PYTHONPATH=scripts python scripts/test_ark_daily_trade_watch.py
+          PYTHONPATH=scripts python scripts/test_ark_sector_rank.py
 
       - name: Inspect official ARK daily trade file
         run: |
