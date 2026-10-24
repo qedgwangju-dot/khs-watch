@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-22T04:38:57+09:00",
-  "last_event_kind": "eia_refining_crack_watch",
-  "last_event_id": "eia_refining_crack_watch:f98097630624922d",
+  "last_alert_at_kst": "2026-10-25T01:21:02+09:00",
+  "last_event_kind": "us_dpa_refinery_funding_oct22",
+  "last_event_id": "us_dpa_refinery_funding_oct22:2026-10-22-program",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-10-13T21:23:53+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-10-13T21:11:24+09:00",
@@ -39,30 +39,11 @@
     "iea_oct15_reserve_execution:2026-10-15-330-100-20plus": "2026-10-18T03:53:56+09:00",
     "venezuela_oil_investment:2026-10-17-plan-76b-250rig-17fields": "2026-10-18T14:48:45+09:00",
     "venezuela_nabep_equipment:2026-10-13-two-arrived-eleven-deploying-sixty-purchased": "2026-10-18T19:06:09+09:00",
-    "eia_refining_crack_watch:f98097630624922d": "2026-10-22T04:38:57+09:00"
+    "eia_refining_crack_watch:f98097630624922d": "2026-10-22T04:38:57+09:00",
+    "us_dpa_refinery_funding_oct22:2026-10-22-program": "2026-10-25T01:21:02+09:00"
   },
   "last_market": {
-    "oil": {
-      "symbol": "BZ=F",
-      "label": "Brent",
-      "unit": "달러/배럴",
-      "price": 109.43,
-      "previous_close": 108.79,
-      "change": 0.6400000000000006,
-      "change_pct": 0.5882893648313269,
-      "timestamp_utc": "2026-10-21T19:29:43Z",
-      "timestamp_epoch": 1792610983.0
-    },
-    "usdkrw": {
-      "symbol": "KRW=X",
-      "label": "원·달러",
-      "unit": "원/달러",
-      "price": 1326.03,
-      "previous_close": 1326.83,
-      "change": -0.7999999999999545,
-      "change_pct": -0.06029408439664121,
-      "timestamp_utc": "2026-10-21T19:39:42Z",
-      "timestamp_epoch": 1792611582.0
-    }
+    "oil": null,
+    "usdkrw": null
   }
 }
