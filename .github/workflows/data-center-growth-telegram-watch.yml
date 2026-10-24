@@ -62,6 +62,8 @@ jobs:
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.DATA_CENTER_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.DATA_CENTER_TELEGRAM_CHAT_ID }}
+      GLOBAL_RATES_TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+      GLOBAL_RATES_TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       AIDC_TELEGRAM_BOT_TOKEN: ${{ secrets.ENERGY_MIX_TELEGRAM_BOT_TOKEN }}
       AIDC_TELEGRAM_CHAT_ID: ${{ secrets.ENERGY_MIX_TELEGRAM_CHAT_ID }}
       AIDC_FALLBACK_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
@@ -484,6 +486,20 @@ jobs:
                           ],
                       ]
                   }
+                  # Preserve existing data-center delivery for ordinary risk stories.
+                  # For a credit-only alert, reuse the *existing* rates/bond bot.
+                  if text.startswith("<b>AI 회사채·시설 담보채 신용위험 변화</b>"):
+                      credit_token = os.environ.get("GLOBAL_RATES_TELEGRAM_BOT_TOKEN", "").strip()
+                      credit_chat = os.environ.get("GLOBAL_RATES_TELEGRAM_CHAT_ID", "").strip()
+                      if not credit_token or not credit_chat:
+                          raise RuntimeError("Existing global-rates credit bot/chat secrets missing")
+                      check = requests.get(f"https://api.telegram.org/bot{credit_token}/getMe", timeout=20).json()
+                      actual_credit_bot = str(check.get("result", {}).get("username", "")).lower()
+                      if not check.get("ok") or actual_credit_bot != "khs8879887988798879_bot":
+                          raise RuntimeError("Existing global-rates bot identity mismatch; no send")
+                      token, chat = credit_token, credit_chat
+                      payload["chat_id"] = credit_chat
+                      route_label = "global-rates-credit"
               elif p.name == "us_ai_data_center_buildout_alert.txt":
                   payload["parse_mode"] = "HTML"
                   payload["link_preview_options"] = {"is_disabled": True}
@@ -646,6 +662,18 @@ jobs:
           cp out/ai_dc_tam_revision_pending_state.json "$tmpdir/ai_dc_tam_revision_state.json"
           cp out/us_hyperscaler_company_risk_pending_state.json "$tmpdir/us_hyperscaler_company_risk_state.json"
 
+
+          # Validate the event baseline *before* attempting a repository commit.
+          python - "$tmpdir/us_data_center_cancellation_risk_state.json" <<'PY'
+          import json, pathlib, sys
+          data = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"))
+          if not data.get("ai_credit_initialized"):
+              raise SystemExit("AI credit source baseline absent; refusing to claim state persistence")
+          if "ai_credit_seen_ids" not in data:
+              raise SystemExit("AI credit dedupe keys missing from pending state")
+          print("ai_credit_pending_integrity=ok seen_ids_count=" + str(len(data["ai_credit_seen_ids"])))
+          PY
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
@@ -702,6 +730,25 @@ jobs:
             echo "Failed to save data-center states after 3 latest-main retries" >&2
             exit 1
           fi
+
+
+          # Validate the actual pushed branch state, not merely the local file.
+          git fetch origin main
+          python - <<'PY'
+          import json, subprocess
+          raw = subprocess.check_output(
+              ["git", "show", "origin/main:data/us_data_center_cancellation_risk_state.json"],
+              text=True,
+          )
+          data = json.loads(raw)
+          if not data.get("ai_credit_initialized") or "ai_credit_seen_ids" not in data:
+              raise SystemExit("AI credit state NOT persisted to origin/main")
+          print(
+              "ai_credit_remote_state_verified=true"
+              f" seen_ids_count={len(data['ai_credit_seen_ids'])}"
+              f" updated_at={data.get('updated_at_utc')}"
+          )
+          PY
 
       - name: Upload watcher status
         if: always()
