@@ -22253,6 +22253,33 @@
       "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
       "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
     },
+    "core:35b033d6139d72815536f53d": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
+    },
     "core:35b1196f811f5e97c07d4d3a": {
       "first_seen_kst": "2026-10-22T09:17:40+09:00",
       "lanes": {
@@ -111093,6 +111120,33 @@
       "source": "매일경제",
       "title": "“엔비디아, 내년 칩 판매량 2배로 늘어날 것”…젠슨 황이 밝힌 이유는"
     },
+    "event:5eb1372b2543962a09877db1": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
+    },
     "event:5ec61e16ac6e684e8106fd4c": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
       "lanes": {
@@ -155508,6 +155562,33 @@
       "source_title": "피에스케이홀딩스, 내년 매출 75% 성장 전망…목표가 26만원-신한",
       "telegram_core_fact": "12일 김형태 신한투자증권 연구원은 피에스케이홀딩스의 내년 매출액을 5001억원으로 전년 대비 75% 증가하고, 영업이익은 2005억원으로 77% 늘어날 것으로 추정했다.",
       "title": "피에스케이홀딩스, 내년 매출 75% 성장 전망…목표가 26만원-신한"
+    },
+    "fact:478ff9091798023b5f84330a": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
     },
     "fact:47c45cbcf0a14eae90da1737": {
       "first_seen_kst": "2026-10-23T06:33:28+09:00",
@@ -368145,6 +368226,33 @@
       "source": "머니투데이",
       "title": "\"삼성전자, 3Q 예상 영업익 107조…환율·D램 강세 둔화\"-키움"
     },
+    "link:e67ff8a1ccbd73caeec1f9da": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
+    },
     "link:e6886f9b2b2ef3a34aeb8aac": {
       "first_seen_kst": "2026-10-03T02:51:01+09:00",
       "lanes": {
@@ -465202,6 +465310,33 @@
       "telegram_core_fact": "기관은 이달 들어 코스닥 시장에서만 8023억원을 순매수했다.",
       "title": "코스닥 반등 이끄는 기관⋯‘반도체 소부장’ 바구니에 담았다"
     },
+    "original:94ec88efe57fad134aca79a6": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
+    },
     "original:94ecfa7520f17aff0c27c42b": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
       "lanes": {
@@ -542753,6 +542888,33 @@
       "telegram_core_fact": "글로벌 금융자문사 라자드가 지난 7월 발표한 발전원별 비용 비교 보고서에 따르면 보조금을 반영하지 않은 균등화발전비용은 대규모 태양광이 메가와트시(MWh)당 40~98달러, 육상풍력이 37~99달러로 가스복합화력(51~129달러)보다 낮은 범위에 형성돼있다.",
       "title": "美석유 본산 텍사스 채운 태양광·풍력…\"이유? 가장 싸고 빨라서\""
     },
+    "source_fact:08b471bb27b3b348eeb4cfc1": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
+    },
     "source_fact:08b49354b95472d1449b36b0": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -597562,6 +597724,33 @@
       ],
       "source_published_kst": "2026-10-07T00:06+09:00",
       "title": "美 8월 무역적자 1056억원…작년 3월 이후 최대"
+    },
+    "source_fact:2085b9bc888c465b4ad142eb": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
     },
     "source_fact:2085e403df0fb376231e865e": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
@@ -664488,6 +664677,33 @@
       "telegram_core_fact": "이충재 한국투자증권 연구원은 \"미국 전기차 판매 부진으로 줄어든 매출은 늘어난 ESS 판매량이 상쇄했다\"며 \"3분기 전사 설비 가동률은 66%로 상반기 52.8%에서 대폭 증가했다\"고 설명했다.",
       "title": "상반기 부진 딛고 수익률 상위권 차지한 ETF는?"
     },
+    "source_fact:3cae4f4f8429e143b9d7fd5b": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
+    },
     "source_fact:3cb3a42d8d3aa75f759b25c4": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -669496,6 +669712,33 @@
       "source_title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스",
       "telegram_core_fact": "이런 가운데 반복적으로 담합 사건에 이름을 올리는 사업자에 제재 실효성을 높여야 한다는 지적도 나온다.",
       "title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스"
+    },
+    "source_fact:3eefcce47adf7b7cbde85c53": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
     },
     "source_fact:3ef60a8de64728cd3a1d507d": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
@@ -695817,6 +696060,33 @@
       "source_title": "[SEDEX 2026]SK하이닉스, HBM만으로는 부족…'신개념 AI 메모리' 꺼냈다",
       "telegram_core_fact": "D램을 수직으로 쌓아 대역폭을 끌어올린 HBM처럼 낸드를 수직 적층한 '고대역폭낸드플래시(HBF)'가 주인공이다.",
       "title": "[SEDEX 2026]SK하이닉스, HBM만으로는 부족…'신개념 AI 메모리' 꺼냈다"
+    },
+    "source_fact:49cb749b6a5b70435568553a": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
     },
     "source_fact:49ce69a3bac6848e0aa82c89": {
       "first_seen_kst": "2026-10-24T14:37:56+09:00",
@@ -763536,6 +763806,33 @@
       "telegram_core_fact": "글로벌파운드리도 이날 보도자료를 통해 뉴욕주 몰타에 신설되는 반도체 공장 2곳의 기술 공급·운영 사업자로 선정됐다고 밝혔다.",
       "title": "트럼프 “日 투자로 美 뉴욕에 반도체 공장 2곳 건설… 한국·대만 약속도 사업화”"
     },
+    "source_fact:66b7f61a48593db51fc005f4": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
+    },
     "source_fact:66b957a175b85d20e70c0005": {
       "first_seen_kst": "2026-10-19T13:26:21+09:00",
       "lanes": {
@@ -826822,6 +827119,33 @@
       "source_title": "LG엔솔, 전기차 70만대분 캐나다 리튬 확보",
       "telegram_core_fact": "LG에너지솔루션은 8일 북미 리튬 생산기업 엘레브라 리튬과 리튬 정광 장기 공급계약을 체결했다고 밝혔다.",
       "title": "LG엔솔, 전기차 70만대분 캐나다 리튬 확보"
+    },
+    "source_fact:820de8074a197386c71843ab": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
     },
     "source_fact:820f873776565df5e11c0c66": {
       "first_seen_kst": "2026-10-16T21:12:58+09:00",
@@ -911488,6 +911812,33 @@
       "source_title": "트럼프·푸틴 경유 합의 흔들리나…우크라 드론, 수개월 못 고칠 러 정제설비 노렸다",
       "telegram_core_fact": "합의에 따라 러시아가 세계 시장에 공급하기로 제시한 경유 물량은 10월 하루 평균 약 7만5000배럴, 11월 약 12만4000배럴이다.",
       "title": "트럼프·푸틴 경유 합의 흔들리나…우크라 드론, 수개월 못 고칠 러 정제설비 노렸다"
+    },
+    "source_fact:a68a9460a7fdf0c632c89161": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
     },
     "source_fact:a68af34228c9274755eed275": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
@@ -1203934,6 +1204285,33 @@
       "telegram_core_fact": "기관은 이달 들어 코스닥 시장에서만 8023억원을 순매수했다.",
       "title": "코스닥 반등 이끄는 기관⋯‘반도체 소부장’ 바구니에 담았다"
     },
+    "title:94ec88efe57fad134aca79a6": {
+      "first_seen_kst": "2026-10-24T22:11:43+09:00",
+      "lanes": {
+        "live": "2026-10-24T22:11:43+09:00"
+      },
+      "last_seen_kst": "2026-10-24T22:11:43+09:00",
+      "link": "https://www.etnews.com/20261024000037",
+      "source": "전자신문",
+      "source_body_digest": "a85d5b5b4260fb81d4cda4ac966981c0142d00436d4c20542ef3ba3a22d76106",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20b15bbf784218e0732eda1b1d61599b320cf6746d140ddad29464a14d5e1307",
+      "source_fact_keys": [
+        "source_fact:v1:437dd1ce55201c7d6110d772c35de51d9fb2f5f999f22516499f86ee77ebf47f",
+        "source_fact:v1:570144d3860356d5b22a6c13eeae16575ad6a84a2f5dd2c5c5c31a86b7e2bab6",
+        "source_fact:v1:96bd239de67afd90be7ffc34903709d1307318a2214794f48cdf3cd8760a555f",
+        "source_fact:v1:97229a75e80cf0daaee43073aec7bdc235309e2a357018259cd16bc10d4e23d0",
+        "source_fact:v1:bb65d4c5640624dac6473ae2a5e6b5de2528262e323988db11d785e4c5530251",
+        "source_fact:v1:bf1f91a00bc93ed811b1aa34853321f5aaec05882ab87c186d3fee1871016be2",
+        "source_fact:v1:e14f843a573626eed1ab4192800ab93aa716e914b302d0e62b0b1a4d7a530d2e",
+        "source_fact:v1:e9d4d39d43e9b79e7c4ac293d36d9482e44a433fde2f4f52c6b3cfc143405b04"
+      ],
+      "source_published_kst": "2026-10-24T21:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
+      "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
+      "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
+    },
     "title:94ecfa7520f17aff0c27c42b": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
       "lanes": {
@@ -1263241,5 +1263619,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-24T20:48:40+09:00"
+  "updated_at_kst": "2026-10-24T22:11:43+09:00"
 }
