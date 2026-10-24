@@ -589,7 +589,7 @@ jobs:
           followup = normalize_item({
               "kind": "official",
               "title": "PHP informational advisory CVE-2026-115560 session upload progress unpatched",
-              "description": "Separate RCE risk. Next regular release to provide full fix",
+              "description": "Separate RCE risk CVE-2026-115560. Next regular release to provide full fix",
               "source": "PHP Security Team",
               "url": "https://www.php.net/archive/2026.php#2026-10-23-1",
           })
