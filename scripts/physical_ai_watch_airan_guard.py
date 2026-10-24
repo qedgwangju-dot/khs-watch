@@ -7620,7 +7620,7 @@ def _r26_stage(item: dict, eid: str) -> str:
     if source not in R26_PRESS[eid]:
         return R26_EVENTS[eid]["stage"]
     if eid == "tesla_fremont":
-        if re.search(r"first external deliveries began|외부 첫 인도 완료|외부 고객.{0,35}첫 인도 완료", text, re.I):
+        if re.search(r"first external deliveries began|first customer deliveries began|외부 첫 인도 완료|외부 고객.{0,35}첫 인도 완료", text, re.I):
             return "first_customer_deliveries_actual"
         if re.search(r"AI5 integration completed|AI5 실제 탑재 완료", text, re.I):
             return "ai5_real_integration"
@@ -7701,19 +7701,61 @@ def _r26_key(item: dict) -> str:
         f"robot26|{name}|{_r26_stage(item, name)}".encode("utf-8")
     ).hexdigest()
 
+R26_UPGRADE_MESSAGES = {
+    ("tesla_fremont", "first_customer_deliveries_actual"): (
+        "테슬라 Optimus · 외부 고객 첫 실제 인도",
+        "테슬라 공식 첫 외부 고객 인도 이정표입니다. 고객명·납품대수·단가·검수 및 유상 매출 인식이 확인되는지 추적합니다.",
+        "첫 인도는 로봇의 24시간 무인 운영·안전인증·보증기간 완성을 뜻하지 않습니다."),
+    ("tesla_fremont", "ai5_real_integration"): (
+        "테슬라 Optimus · AI5 로봇 실제 탑재 확인",
+        "예정된 AI5 기술이 실제 로봇 탑재로 진행된 단계입니다. 실제 구동대수와 작업 성능 및 전력 소비를 확인합니다.",
+        "시제품 탑재와 상업적 고객 인도·주당 대량생산을 분리합니다."),
+    ("tesla_fremont", "weekly_20000_actually_achieved"): (
+        "테슬라 Optimus · 실제 주당 2만대 생산 달성",
+        "목표였던 주당 2만대 생산이 공식 실적 수치로 상향된 단계입니다. 수율·출하·검수·판매를 추적합니다.",
+        "생산 대수와 정상 출하·회계상 인식 매출은 서로 다릅니다."),
+    ("lge_hsb", "hsb_customer_order_or_sop_actual"): (
+        "LG이노텍 · HSB 로봇 센싱 고객계약·양산 확인",
+        "기술 공개에서 실제 고객 주문 또는 HSB 제품 양산 단계로 전진했습니다. 고객·수량·품목별 금액을 확인합니다.",
+        "기존 일반 카메라 모듈의 양산을 HSB 신제품 매출로 중복 계산하지 않습니다."),
+    ("mobilint_lge", "lge_robot_npu_qualification_or_order"): (
+        "모빌린트·LG전자 · 로봇 NPU 고객 검증·발주 실제 진전",
+        "국책 연구개발에서 LG전자 검증 완료 또는 유상 계약으로 진전된 이정표입니다. 모듈 수량·단가·생산능력을 확인합니다.",
+        "고객 평가 완료와 최종 상용 로봇 양산은 분리합니다."),
+    ("nvidia_flora", "flora_paid_customer_actual"): (
+        "엔비디아 Flora · 유상 상용 고객 적용 확인",
+        "오픈 연구 모델이 실제 유상 고객 환경에 적용된 단계입니다. 사용권 또는 서비스 과금 구조를 확인합니다.",
+        "연구 벤치마크 비용 비교를 반복매출 확정치로 취급하지 않습니다."),
+    ("shanghai_policy", "named_grant_disbursed"): (
+        "상하이 피지컬 AI · 지원금 실제 지급 확인",
+        "보조금 상한 발표에서 실제 수혜처 지급으로 진전된 단계입니다. 기업명·프로젝트·금액과 조달 계약을 확인합니다.",
+        "보조금 지급과 최종 로봇 구매대수·제조사 매출은 다릅니다."),
+    ("raon_factory", "new_factory_operational_actual"): (
+        "라온로보틱스 · 용인 신공장 실제 가동 개시",
+        "착공 계획에서 준공 또는 생산시설 실제 가동으로 진전된 단계입니다. 생산능력·수주·가동률을 확인합니다.",
+        "감가상각 부담과 매출 증가 사이 시차를 분리하며 테슬라 부품 공급으로 추정하지 않습니다."),
+}
 def _r26_category(text: str, group: str) -> str:
     for name, event in R26_EVENTS.items():
         if group == event["group"]:
-            return event["category"]
+            official = next(iter(R26_PRESS[name]))
+            stage = _r26_stage({"title":text,"source":official},name)
+            return R26_UPGRADE_MESSAGES.get((name,stage),(event["category"],))[0]
     return _r26_old_category(text, group)
 
 def _r26_meaning(category: str) -> str:
+    for value in R26_UPGRADE_MESSAGES.values():
+        if category == value[0]:
+            return value[1]
     for event in R26_EVENTS.values():
         if category == event["category"]:
             return event["meaning"]
     return _r26_old_meaning(category)
 
 def _r26_risk(category: str) -> str:
+    for value in R26_UPGRADE_MESSAGES.values():
+        if category == value[0]:
+            return value[2]
     for event in R26_EVENTS.values():
         if category == event["category"]:
             return event["risk"]
