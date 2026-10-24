@@ -83,6 +83,7 @@ NEWS_QUERIES = (
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 FORMAT_VERSION = 1
 NEWS_ALERT_MAX_AGE_DAYS = 7
+NEWS_SCAN_HEALTH = {"ai_credit_rss_ok": 0, "ai_credit_rss_failed": 0}
 SEEN_ID_LIMIT = 5000
 
 
@@ -252,7 +253,7 @@ def ai_credit_signal(title: str) -> str | None:
     if not change:
         return None
     if any(k in low for k in ("bank", "lender", "private credit")) and any(
-        k in low for k in ("exposure", "loss", "credit risk", "contagion", "default")
+        k in low for k in ("exposure", "loss", "risk", "contagion", "default")
     ):
         return "은행 대출·익스포저 보도(실제 손실 여부 별도 확인)"
     if "coreweave" in low and any(k in low for k in ("applied digital", "apld computeco", "ellendale")):
@@ -457,6 +458,7 @@ def regression_checks() -> None:
     assert classify("Microsoft pulls out of UK data-center deal with Nscale in Loughton") == "고객 이용계약 철회 보도"
     assert classify("CoreWeave senior unsecured bonds yield 16% after sell-off") == "AI 채권·담보채 신용변화"
     assert ai_credit_signal("JPMorgan upgrades CoreWeave stock to buy") is None
+    assert ai_credit_signal("CoreWeave debt selloff poses limited risk to global banks") == "은행 대출·익스포저 보도(실제 손실 여부 별도 확인)"
     assert ai_credit_gap_single_headline("CoreWeave 2030 bonds yield 15%, Applied Digital 2030 secured bonds yield 8%") == 700
     assert ai_credit_gap_single_headline("CoreWeave issues 9.75% notes and Applied Digital issues 9.25% secured notes") is None
     assert is_meaningful(
@@ -498,12 +500,17 @@ def regression_checks() -> None:
 def collect_news() -> list[dict]:
     out = []
     for query in NEWS_QUERIES:
+        is_credit_query = query in NEWS_QUERIES[-6:]
         url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({
             "q": query, "hl": "en-US", "gl": "US", "ceid": "US:en",
         })
         try:
             root = ET.fromstring(fetch(url, 25).content)
+            if is_credit_query:
+                NEWS_SCAN_HEALTH["ai_credit_rss_ok"] += 1
         except Exception:
+            if is_credit_query:
+                NEWS_SCAN_HEALTH["ai_credit_rss_failed"] += 1
             continue
         for item in root.findall("./channel/item")[:25]:
             title = normalize(item.findtext("title") or "")
@@ -541,7 +548,7 @@ def collect_news() -> list[dict]:
                 continue
             stable_id = (
                 sig("financing-news", source_label(source, source_url).lower(), normalize(title).lower())
-                if theme == "자금조달·계획 실현 위험"
+                if theme in {"자금조달·계획 실현 위험", "AI 채권·담보채 신용변화"}
                 else sig(title, link)
             )
             out.append({
@@ -597,13 +604,14 @@ old_seen = list(old.get("seen_ids", []))
 old_ids = set(old_seen)
 credit_items = [x for x in items if x["theme"] == "AI 채권·담보채 신용변화"]
 credit_initialized = bool(old.get("ai_credit_initialized", False))
+credit_source_ok = NEWS_SCAN_HEALTH["ai_credit_rss_ok"] > 0
 credit_seen_prev = list(old.get("ai_credit_seen_ids", []))
 credit_seen_old = set(credit_seen_prev)
 # First deployment silently baselines all recent credit headlines; no historical resend.
-credit_new = [x for x in credit_items if x["id"] not in credit_seen_old] if credit_initialized else []
+credit_new = [x for x in credit_items if x["id"] not in credit_seen_old] if credit_initialized and credit_source_ok else []
 regular_new = [x for x in items if x["theme"] != "AI 채권·담보채 신용변화" and x["id"] not in old_ids]
 new_items = regular_new + credit_new
-credit_seen = list(dict.fromkeys(credit_seen_prev + [x["id"] for x in credit_items]))[-SEEN_ID_LIMIT:]
+credit_seen = list(dict.fromkeys(credit_seen_prev + [x["id"] for x in credit_items]))[-SEEN_ID_LIMIT:] if credit_source_ok else credit_seen_prev
 baseline_run = not old.get("initialized")
 format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
 should_alert = baseline_run or format_upgrade or bool(new_items)
@@ -618,7 +626,9 @@ pending = {
     "fx_source": fx_source,
     "fx_checked_utc": fx_checked,
     "updated_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-    "ai_credit_initialized": True,
+    "ai_credit_initialized": bool(credit_initialized or credit_source_ok),
+    "ai_credit_rss_success_count": NEWS_SCAN_HEALTH["ai_credit_rss_ok"],
+    "ai_credit_rss_failure_count": NEWS_SCAN_HEALTH["ai_credit_rss_failed"],
     "ai_credit_seen_ids": credit_seen,
     "ai_credit_last_new_count": len(credit_new),
     "ai_credit_quote_source": "신뢰 매체 헤드라인. TRACE 개별채권 실시간 시세 미연결",
@@ -808,11 +818,11 @@ STATUS.write_text(
     f"- PJM 2024 DC 송전사업: **{BASELINE['pjm_2024_dc_transmission_projects']}건 / ${BASELINE['pjm_2024_dc_transmission_usd_b']}B**\n"
     f"- 신규 의미자료: **{len(new_items)}건**\n"
     f"- Reuters–Nscale 로턴 철회 보도: **{'신규' if any(x.get('nscale_loughton_media_anchor') for x in new_items) else '중복 제외/해당 없음'}**\n"
-    f"- AI 발행사·담보채 신용경보: **감시 활성** · 신규 **{len(credit_new)}건** · TRACE 개별 실시간 시세 **미연결**\n"
+    f"- AI 신용경보: **{'감시 활성' if credit_initialized or credit_source_ok else '원천 장애·기준선 보류'}** · 신규 **{len(credit_new)}건** · RSS 응답 **{NEWS_SCAN_HEALTH['ai_credit_rss_ok']}/6** · TRACE 실시간 시세 **미연결**\n"
     f"- 알림: **{'예' if should_alert else '아니오'}**\n",
     encoding="utf-8",
 )
 print(
     f"cancellation_risk baseline={BASELINE['phantom_load_pct']}% "
-    f"new={len(new_items)} credit_new={len(credit_new)} credit_baselined={not credit_initialized} alert={should_alert}"
+    f"new={len(new_items)} credit_new={len(credit_new)} credit_feeds_ok={NEWS_SCAN_HEALTH['ai_credit_rss_ok']} credit_baselined={not credit_initialized} alert={should_alert}"
 )
