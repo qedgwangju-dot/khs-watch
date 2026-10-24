@@ -75,3 +75,28 @@ def render_chunks(body: str, *, limit: int = 3900) -> list[str]:
     if not chunks or any(not x or len(x) > limit for x in chunks):
         raise ValueError("Telegram message chunk size validation failed")
     return chunks
+
+
+def verified_telegram_message_id(reply: dict, intended_chat_id: str) -> int:
+    """Verify actual Telegram recipient and positive message ID before checkpointing."""
+    if not isinstance(reply, dict) or reply.get("ok") is not True:
+        raise ValueError("Telegram did not confirm successful send")
+    message = reply.get("result")
+    if not isinstance(message, dict):
+        raise ValueError("Telegram response has no message result")
+    mid = message.get("message_id")
+    if type(mid) is not int or mid <= 0:
+        raise ValueError("Telegram response lacks valid message_id")
+    chat = message.get("chat")
+    if not isinstance(chat, dict) or type(chat.get("id")) is not int:
+        raise ValueError("Telegram response lacks numeric chat.id")
+    target = str(intended_chat_id).strip()
+    if target and (target.isdigit() or (target[0] == "-" and target[1:].isdigit())):
+        matching = chat["id"] == int(target)
+    elif target.startswith("@") and len(target) > 1:
+        matching = str(chat.get("username") or "").lower() == target[1:].lower()
+    else:
+        raise ValueError("Unsupported Telegram destination format")
+    if not matching:
+        raise ValueError("Telegram acknowledged a different destination chat")
+    return mid

@@ -1,5 +1,5 @@
 import unittest
-from scripts.europe_sovereign_yield_telegram_html import render_chunks, render_line, LINKS
+from scripts.europe_sovereign_yield_telegram_html import render_chunks, render_line, LINKS, verified_telegram_message_id
 
 
 class EuropeYieldTelegramHtmlTests(unittest.TestCase):
@@ -84,6 +84,24 @@ class EuropeYieldTelegramHtmlTests(unittest.TestCase):
             render_chunks("")
         with self.assertRaises(ValueError):
             render_chunks("Z" * 4000, limit=3900)
+
+    def test_telegram_ack_requires_actual_chat_id_and_positive_message_id(self):
+        reply = {"ok": True, "result": {
+            "message_id": 113, "chat": {"id": -10012345, "username": "my_channel"}}}
+        self.assertEqual(verified_telegram_message_id(reply, "-10012345"), 113)
+        self.assertEqual(verified_telegram_message_id(reply, "@my_channel"), 113)
+        for target in ["-10067890", "@other_channel", ""]:
+            with self.assertRaises(ValueError):
+                verified_telegram_message_id(reply, target)
+        bad = [
+            {"ok": False, "result": reply["result"]},
+            {"ok": True, "result": {"chat": {"id": -10012345}}},
+            {"ok": True, "result": {"message_id": True, "chat": {"id": -10012345}}},
+            {"ok": True, "result": {"message_id": 113, "chat": {}}},
+        ]
+        for item in bad:
+            with self.assertRaises(ValueError):
+                verified_telegram_message_id(item, "-10012345")
 
 
 if __name__ == "__main__":

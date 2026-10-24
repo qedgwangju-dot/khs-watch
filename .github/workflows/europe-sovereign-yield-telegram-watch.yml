@@ -116,7 +116,7 @@ jobs:
           if not identity.get("ok") or actual.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot configured: expected @{expected}, got @{actual or 'unknown'}")
 
-          from scripts.europe_sovereign_yield_telegram_html import render_chunks
+          from scripts.europe_sovereign_yield_telegram_html import render_chunks, verified_telegram_message_id
 
           body = pathlib.Path("out/europe_sovereign_yield_alert.md").read_text(encoding="utf-8").strip()
           # One headline: body already carries the alert title and risk status.
@@ -145,21 +145,23 @@ jobs:
               )
               with urllib.request.urlopen(req, timeout=25) as r:
                   result = json.loads(r.read().decode("utf-8"))
-              if not result.get("ok"):
-                  raise RuntimeError(f"Telegram rejected European yield message: {result}")
-              ids.append((result.get("result") or {}).get("message_id"))
+              try:
+                  ids.append(verified_telegram_message_id(result, chat_id))
+              except ValueError as exc:
+                  raise RuntimeError(f"European yield Telegram receipt invalid: {exc}") from exc
 
           confirmed = {
               "status": "confirmed",
               "lane": "europe_sovereign_yields",
               "bot_username": actual,
+              "chat_id_verified": True,
               "message_ids": ids,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
           pathlib.Path("out/europe_sovereign_yield_telegram_confirmed.json").write_text(
               json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
           )
-          print(f"telegram_delivery_confirmed=true lane=europe_sovereign_yields bot=@{actual} message_ids={ids}")
+          print(f"telegram_delivery_confirmed=true lane=europe_sovereign_yields bot=@{actual} chat_id_verified=true message_ids={ids}")
           PY
 
       - name: Finalize state only after safe run or confirmed delivery
