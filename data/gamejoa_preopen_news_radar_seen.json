@@ -5170,6 +5170,37 @@
       "telegram_core_fact": "kt cloud는 자체 보유 데이터센터인 50㎿(메가와트) ‘안산 AI 데이터센터’ 착공에 나선다고 22일 밝혔다.",
       "title": "kt cloud, 50㎿ 규모 안산 AI 데이터센터 착공…2031년 1GW 공급 박차"
     },
+    "core:0e2782279b9345ae4d6d9f7b": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
+    },
     "core:0e2a4d81ef221771b29ea181": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
       "lanes": {
@@ -18051,6 +18082,26 @@
       "source_title": "\"예상 못해\" 美 9월 근원 CPI, 전년비 0.3%↑…10월 금리 인상 힘 받나",
       "telegram_core_fact": "뱅크오브아메리카(BofA)의 스테판 주노 이코노미스트는 앞서 근원 CPI가 0.3%로 집계되면 연방준비제도(연준)의 10월 기준금리 인상 기대가 높아질 것으로 전망한 바 있다.",
       "title": "\"예상 못해\" 美 9월 근원 CPI, 전년비 0.3%↑…10월 금리 인상 힘 받나"
+    },
+    "core:2ba0989046e7df320222f9a8": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180529",
+      "source": "매일경제",
+      "source_body_digest": "cac7bd41f114ba3878c55be1fc56c17668b5ad62d122c6bae1299342a985f342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:747e0688da13054dba5f16b7b07f61916d907702fb3dc2b63ae5eca1f4a73694",
+      "source_fact_keys": [
+        "source_fact:v1:9d3eccf37eb4715c3930b28ce7b9ffb144b3d69bd74fe331cd8c1e810e643da5"
+      ],
+      "source_published_kst": "2026-10-24T06:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "아이폰 듀오, 첫날부터 세계 곳곳서 품귀…",
+      "telegram_core_fact": "미국 일간 월스트리트저널(WSJ)과 로이터 통신은 이날 애플 새 스마트폰 아이폰 듀오 판매가 시작되면서 싱가포르와 중국 상하이(上海), 영국 런던, 미국 샌프란시스코 등 전 세계 매장에 줄이 늘어섰고, 순식간에 품귀 현상이 빚어졌다고 보도했다.",
+      "title": "아이폰 듀오, 첫날부터 세계 곳곳서 품귀…"
     },
     "core:2ba2a0f47a7ae3f1256ac1c4": {
       "first_seen_kst": "2026-10-15T17:49:30+09:00",
@@ -31932,6 +31983,34 @@
       "telegram_core_fact": "의약품 수입 의존도를 낮추려는 인니 정부의 규제 기조 속에서 대웅제약은 2027년부터 현지 생산 및 공급 체계를 가동함으로써 향후 강화될 현지 진출 장벽을 선제적으로 넘어선다는 전략이다.",
       "title": "'할랄' 빗장 건 인니…대웅, 현지생산으로 승부수"
     },
+    "core:50136c48557c632b419c1e77": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
+    },
     "core:501801cd9407da0be76ebdc4": {
       "first_seen_kst": "2026-10-15T02:55:21+09:00",
       "lanes": {
@@ -41913,6 +41992,37 @@
       "source_title": "\"美, 러 정유시설 공격 멈추라며 우크라에 무기공급 차단 위협\" | 연합뉴스",
       "telegram_core_fact": "미국이 우크라이나에 러시아 정유시설 공격을 중단하지 않으면 미국산 무기의 공급 통로를 차단하겠다고 위협했다고 영국 파이낸셜타임스(FT)가 11일(현지시간) 보도했다.",
       "title": "\"美, 러 정유시설 공격 멈추라며 우크라에 무기공급 차단 위협\" | 연합뉴스"
+    },
+    "core:6a0f7737e9ca7e468810fa5f": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
     },
     "core:6a1b4ab7f9c17706661d5824": {
       "first_seen_kst": "2026-10-17T01:51:48+09:00",
@@ -81491,6 +81601,27 @@
       "telegram_core_fact": "퍼스트 유나이티드(FUNC)는 3분기(7~9월) 일반회계기준(GAAP) 희석 주당순이익이 1.11달러로 전년 동기 1.07달러보다 3.7% 늘었고, 순이익은 718만1000달러로 전년 동기 694만8000달러 대비 3.4% 증가했다고 10월 19일 발표했다.",
       "title": "퍼스트 유나이티드, 3분기 희석 EPS 1.11달러..전년비 3.7% 증가"
     },
+    "core:cdd7446baefdfa334671efaf": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639224",
+      "source": "이투데이",
+      "source_body_digest": "ab87ff16a458d214e9a4678aac95856991ed4c5e78b11d272a4d98c3dec47ded",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0fc16b1d9757a687637c5d72ad01d412d8dd7eca81d94b0971d14d38447bb1d4",
+      "source_fact_keys": [
+        "source_fact:v1:43cd6a96e6b30368703c9562fe96f15b544487c588600bb4f4b86f818837c5fb",
+        "source_fact:v1:64f82c6196298bdf5f194aeb044fbd956b4aa871fdf1d7e614a3989feec3297b"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세",
+      "telegram_core_fact": "수도권 주택시장 규제가 강화되면서 상대적으로 규제 부담이 적은 지역의 아파트값 상승세가 두드러지고 있다.",
+      "title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세"
+    },
     "core:cddff1393fd94c2f8b3b92d0": {
       "first_seen_kst": "2026-10-15T16:50:59+09:00",
       "lanes": {
@@ -112170,6 +112301,37 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
       "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
     },
+    "event:7bb7f9224e66ec78042b2c33": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
+    },
     "event:7be6f80fbb97d313ca0deaa6": {
       "first_seen_kst": "2026-10-22T12:22:03+09:00",
       "lanes": {
@@ -114104,25 +114266,33 @@
     "event:900350979076bbea800020b9": {
       "first_seen_kst": "2026-10-24T03:26:54+09:00",
       "lanes": {
-        "live": "2026-10-24T11:14:26+09:00"
+        "live": "2026-10-24T11:50:33+09:00"
       },
-      "last_seen_kst": "2026-10-24T11:14:26+09:00",
-      "link": "https://www.newsis.com/view/NISX20261024_0003839378",
-      "source": "뉴시스",
-      "source_body_digest": "f2c9d20fb8477b11e8cc7f3d6e8d465da19647b5b57230ea1ddf1a788fd24f8e",
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:cc26e4b1dcfcec0f57ce7a97ec3c4d3a9c3fcc419ff83b666168a02f5121503d",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
       "source_fact_keys": [
-        "source_fact:v1:026297bf11f7116a0c660460d13b0d54719fb5e924e2272bea6b9394145247dc",
-        "source_fact:v1:06d5dd4527c96ce8c163279296a7cce4d1c6660c83c72d6a9dc2b9c3aff00de0",
-        "source_fact:v1:b840249f66a6515b41759c21a840a29f0819a963970073c9c70f9d867f7931cb",
-        "source_fact:v1:d08b903cabb61c787ebaab65c392c45a7d85c554c77e6905af3463cce452c3db"
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
       ],
-      "source_published_kst": "2026-10-24T07:38+09:00",
+      "source_published_kst": "2026-10-24T07:22+09:00",
       "source_supply_terms": {},
-      "source_title": "왈츠 미 유엔 대사 \"이란 전쟁 1년 이상 더 갈 수 있다\"",
-      "telegram_core_fact": "왈츠는 “미국이 앞으로도 상당 기간 이란 항구들에 대한 봉쇄를 유지할 수 있다”면서 이란에 대한 경제적 압박 작전을 “강화하고 있다”고 밝혔다.",
-      "title": "왈츠 미 유엔 대사 \"이란 전쟁 1년 이상 더 갈 수 있다\""
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
     },
     "event:9022e10a9278ce251c4d0a3f": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
@@ -128607,6 +128777,37 @@
       "telegram_core_fact": "후티의 사우디 공격으로 중동 지역의 원유 공급 차질 우려가 커지면서 국제유가는 급등했고, 브렌트유는 5개월 만에 최고치를 찍었습니다.",
       "title": "후티 \"사우디 국방부 등 타격\"…중동 불안에 유가 '껑충' | 연합뉴스"
     },
+    "fact:0b21b2e7279fc32ec0f9c905": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
+    },
     "fact:0b28147bbbb2ca16afc71150": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
       "lanes": {
@@ -131142,6 +131343,27 @@
       "source_title": "뉴욕증시, 유가 하락·기술주 반등에 상승 출발…나스닥 0.34%↑",
       "telegram_core_fact": "미국 뉴욕증시가 9일(현지 시간) 국제유가 하락과 기술주 반등에 힘입어 일제히 상승 출발했다.",
       "title": "뉴욕증시, 유가 하락·기술주 반등에 상승 출발…나스닥 0.34%↑"
+    },
+    "fact:10400db0fde20fe96e900470": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639224",
+      "source": "이투데이",
+      "source_body_digest": "ab87ff16a458d214e9a4678aac95856991ed4c5e78b11d272a4d98c3dec47ded",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0fc16b1d9757a687637c5d72ad01d412d8dd7eca81d94b0971d14d38447bb1d4",
+      "source_fact_keys": [
+        "source_fact:v1:43cd6a96e6b30368703c9562fe96f15b544487c588600bb4f4b86f818837c5fb",
+        "source_fact:v1:64f82c6196298bdf5f194aeb044fbd956b4aa871fdf1d7e614a3989feec3297b"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세",
+      "telegram_core_fact": "수도권 주택시장 규제가 강화되면서 상대적으로 규제 부담이 적은 지역의 아파트값 상승세가 두드러지고 있다.",
+      "title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세"
     },
     "fact:104c86e22dd8f0a719f674f6": {
       "first_seen_kst": "2026-10-17T05:25:35+09:00",
@@ -136640,6 +136862,27 @@
       ],
       "source_published_kst": "2026-10-07T08:04+09:00",
       "title": "SK온, 포드 최고 품질 인증… 헝가리 공장, 2년 만에 Q1 획득"
+    },
+    "fact:1cf3d431ead2d5510cc8fcc8": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01823686645616200",
+      "source": "이데일리",
+      "source_body_digest": "e4f1c826d5a2da2d3c4948b266fe2db7ecd197c180ffc38ecd433d095d89f379",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e6694a074309e9a28734c6408025f45c03c4cd2476832af850f5cdaf0c2ae38",
+      "source_fact_keys": [
+        "source_fact:v1:c2385e609a95d1146450fb32ced84c5816bbcf6ddf5106b44c20b99d40fd1ddb",
+        "source_fact:v1:ef478fd7fff6e9be5590be0b682874a7b5641fe64b2f6bb262da2eca6ff3f779"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "글로벌 해운운임 상승폭 축소…정점 다왔나",
+      "telegram_core_fact": "글로벌 해운운임이 올해 가파르게 이어지던 상승폭을 줄이며 안정 단계에 접어들고 있다.",
+      "title": "글로벌 해운운임 상승폭 축소…정점 다왔나"
     },
     "fact:1cf85b59b7d16f60eb6b2e18": {
       "first_seen_kst": "2026-10-10T14:26:20+09:00",
@@ -159320,6 +159563,26 @@
       "source_published_kst": "2026-10-06T09:29+09:00",
       "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
     },
+    "fact:5586e932378e6cc8bee50ac5": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180529",
+      "source": "매일경제",
+      "source_body_digest": "cac7bd41f114ba3878c55be1fc56c17668b5ad62d122c6bae1299342a985f342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:747e0688da13054dba5f16b7b07f61916d907702fb3dc2b63ae5eca1f4a73694",
+      "source_fact_keys": [
+        "source_fact:v1:9d3eccf37eb4715c3930b28ce7b9ffb144b3d69bd74fe331cd8c1e810e643da5"
+      ],
+      "source_published_kst": "2026-10-24T06:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "아이폰 듀오, 첫날부터 세계 곳곳서 품귀…",
+      "telegram_core_fact": "미국 일간 월스트리트저널(WSJ)과 로이터 통신은 이날 애플 새 스마트폰 아이폰 듀오 판매가 시작되면서 싱가포르와 중국 상하이(上海), 영국 런던, 미국 샌프란시스코 등 전 세계 매장에 줄이 늘어섰고, 순식간에 품귀 현상이 빚어졌다고 보도했다.",
+      "title": "아이폰 듀오, 첫날부터 세계 곳곳서 품귀…"
+    },
     "fact:55911940da5b029845c42811": {
       "first_seen_kst": "2026-10-22T09:39:54+09:00",
       "lanes": {
@@ -162568,6 +162831,34 @@
       ],
       "source_published_kst": "2026-10-06T17:53+09:00",
       "title": "[단독] 2년前 문제 된 공사방식 또 꺼낸 대우건설…업계 \"안전성 우려\""
+    },
+    "fact:5d0fdf48bdde7a21a97fced9": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
+      "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
+        "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
+        "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
+        "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
+        "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
+        "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
+      ],
+      "source_published_kst": "2026-10-23T16:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
+      "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
     },
     "fact:5d1043f89339619ddf7083c1": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -177019,6 +177310,37 @@
       "source_title": "한전 사장 “호남 반도체 전력망 20%만 한전 부담…삼전닉스가 80% 낸다”",
       "telegram_core_fact": "김동철 한국전력공사 사장은 호남 반도체 클러스터 1단계 전력 공급을 위한 송전설비 구축 비용 중 한전의 부담 비율은 20% 미만이며, 나머지 80% 이상은 실사용자인 삼성전자와 SK하이닉스가 부담한다고 12일 밝혔다.",
       "title": "한전 사장 “호남 반도체 전력망 20%만 한전 부담…삼전닉스가 80% 낸다”"
+    },
+    "fact:7f426f736b4da4563de1042d": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "fact:7f475d997629182bd1138c23": {
       "first_seen_kst": "2026-10-19T13:56:52+09:00",
@@ -221632,6 +221954,34 @@
       "telegram_core_fact": "한국주택협회 회원사들의 올해 1~9월 누적 분양 물량이 전년비 25% 증가한 것으로 나타났다. 월별 분양실적을 보면 1월 7421가구에서 2월 7853가구, 3월 1만3764가구로 증가한 뒤 4월에는 2만5105가구를 기록하며 올해 들어 가장 많은 물량이 공급됐다.",
       "title": "한국주택협회 회원사, 신규 분양 11만 가구 돌파⋯전년比 25% 증가"
     },
+    "fact:e1c17d1907d7129c632e262e": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
+    },
     "fact:e1c250b9ef4ad4edd472c35e": {
       "first_seen_kst": "2026-10-15T11:11:30+09:00",
       "lanes": {
@@ -256877,6 +257227,27 @@
       "source": "뉴시스",
       "title": "나무AX 子 에스케이팩, 피지컬 AI 자율제조 R&D 과제 선정"
     },
+    "link:2693a65ceaca3bcb4c3439c2": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639224",
+      "source": "이투데이",
+      "source_body_digest": "ab87ff16a458d214e9a4678aac95856991ed4c5e78b11d272a4d98c3dec47ded",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0fc16b1d9757a687637c5d72ad01d412d8dd7eca81d94b0971d14d38447bb1d4",
+      "source_fact_keys": [
+        "source_fact:v1:43cd6a96e6b30368703c9562fe96f15b544487c588600bb4f4b86f818837c5fb",
+        "source_fact:v1:64f82c6196298bdf5f194aeb044fbd956b4aa871fdf1d7e614a3989feec3297b"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세",
+      "telegram_core_fact": "수도권 주택시장 규제가 강화되면서 상대적으로 규제 부담이 적은 지역의 아파트값 상승세가 두드러지고 있다.",
+      "title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세"
+    },
     "link:26954e401dfeab6843248cd2": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
       "lanes": {
@@ -268271,6 +268642,34 @@
       "source_title": "이 대통령 \"부동산 공급, 2028년 넘어 정상화…'집값 잡으려 세금 올렸다' 사실 아냐\"",
       "telegram_core_fact": "부동산 세제 강화 목적에 대해서는 \"조세 정의에 관한 것\"이라며 \"돈 벌면 세금 내지 않나. 이상하게 부동산 투자하면 세금 거의 없다시피 한다\"고 지적했다.",
       "title": "이 대통령 \"부동산 공급, 2028년 넘어 정상화…'집값 잡으려 세금 올렸다' 사실 아냐\""
+    },
+    "link:39c0ca3559e1f91c975a0cc2": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
     },
     "link:39d23de8a815f87861496626": {
       "first_seen_kst": "2026-10-19T11:35:40+09:00",
@@ -326888,6 +327287,34 @@
       "telegram_core_fact": "박종찬 한국형발사체 고도화사업단장은 \"1·2·3단 엔진 연소시간이 기존 노미널 기준값(설계 기준값)보다 모두 약간씩 짧아졌다\"며 \"성능이 개선됐다고 표현하기보다는 예상했던 성능범위 안에서 더 좋은 방향의 마진(성능 여유)이 나온 것\"이라고 설명했다.",
       "title": "한국형발사체 '누리호' 정시 이륙… 목표 궤도 안착 [뉴시스Pic]"
     },
+    "link:a29f557afe9250ce1ebb3222": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
+      "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
+        "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
+        "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
+        "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
+        "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
+        "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
+      ],
+      "source_published_kst": "2026-10-23T16:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
+      "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
+    },
     "link:a29f94e79c89d4fdcadceabb": {
       "first_seen_kst": "2026-10-21T21:09:15+09:00",
       "lanes": {
@@ -340786,6 +341213,26 @@
       "telegram_core_fact": "신문에 따르면 미쓰비시중공업은 오카야마(岡山)현 다마노(玉野)시에 위치한 그룹사 미쓰비시중공 마리타임시스템즈의 본사 공장에서 길이 약 250m의 선대를 재가동할 방침이다.",
       "title": "\"日미쓰비시중공업, '휴면' 오카야마 조선라인 재가동\""
     },
+    "link:bb6a626a7b7dce0d3ce0bc3d": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180529",
+      "source": "매일경제",
+      "source_body_digest": "cac7bd41f114ba3878c55be1fc56c17668b5ad62d122c6bae1299342a985f342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:747e0688da13054dba5f16b7b07f61916d907702fb3dc2b63ae5eca1f4a73694",
+      "source_fact_keys": [
+        "source_fact:v1:9d3eccf37eb4715c3930b28ce7b9ffb144b3d69bd74fe331cd8c1e810e643da5"
+      ],
+      "source_published_kst": "2026-10-24T06:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "아이폰 듀오, 첫날부터 세계 곳곳서 품귀…",
+      "telegram_core_fact": "미국 일간 월스트리트저널(WSJ)과 로이터 통신은 이날 애플 새 스마트폰 아이폰 듀오 판매가 시작되면서 싱가포르와 중국 상하이(上海), 영국 런던, 미국 샌프란시스코 등 전 세계 매장에 줄이 늘어섰고, 순식간에 품귀 현상이 빚어졌다고 보도했다.",
+      "title": "아이폰 듀오, 첫날부터 세계 곳곳서 품귀…"
+    },
     "link:bb6a6d9121b33449e1c902ed": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -353910,6 +354357,37 @@
       "telegram_core_fact": "미 재무부는 곧바로 러시아 경유에 대한 제재 해제를 발표했는데, 러시아도 이를 확인한 모습이다.",
       "title": "러 측도 경유 美 등에 공급 확인…\"10월 30만t 공급\""
     },
+    "link:d253ef32a0b5123f8ec0c2a1": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
+    },
     "link:d259b1bec6fd1f27306b8984": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
       "lanes": {
@@ -355239,6 +355717,27 @@
       "link": "https://www.mt.co.kr/world/2026/10/02/2026100208340213181",
       "source": "머니투데이",
       "title": "\"더 시간이 필요할 수도\"...연준 부의장, 추가 금리인상 '신중론'"
+    },
+    "link:d4c3a702027da19a577ad36d": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01823686645616200",
+      "source": "이데일리",
+      "source_body_digest": "e4f1c826d5a2da2d3c4948b266fe2db7ecd197c180ffc38ecd433d095d89f379",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e6694a074309e9a28734c6408025f45c03c4cd2476832af850f5cdaf0c2ae38",
+      "source_fact_keys": [
+        "source_fact:v1:c2385e609a95d1146450fb32ced84c5816bbcf6ddf5106b44c20b99d40fd1ddb",
+        "source_fact:v1:ef478fd7fff6e9be5590be0b682874a7b5641fe64b2f6bb262da2eca6ff3f779"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "글로벌 해운운임 상승폭 축소…정점 다왔나",
+      "telegram_core_fact": "글로벌 해운운임이 올해 가파르게 이어지던 상승폭을 줄이며 안정 단계에 접어들고 있다.",
+      "title": "글로벌 해운운임 상승폭 축소…정점 다왔나"
     },
     "link:d4e5240f02c4ed548f5ab0a6": {
       "first_seen_kst": "2026-10-15T13:08:36+09:00",
@@ -376073,6 +376572,37 @@
       "telegram_core_fact": "국민연금이 기업의 자기주식(자사주) 보유·처분 계획에 대한 의결권 행사 기준을 강화한다.",
       "title": "국민연금, 자사주 보유·처분 의결권 기준 강화"
     },
+    "link:fcebb69792d1330666580018": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
+    },
     "link:fcf251b5fa13378c2f03cfc7": {
       "first_seen_kst": "2026-10-16T23:57:27+09:00",
       "lanes": {
@@ -382574,6 +383104,26 @@
       "source_title": "나노, 48억 규모 고밀도 SCR 촉매 공급 계약",
       "telegram_core_fact": "선택적촉매환원(SCR) 촉매 전문기업 나노는 글로벌 배기가스 후처리 엔지니어링 기업으로부터 약 318만 유로(48억원) 고밀도 SCR 촉매 공급 발주(PO)를 확보했다고 12일 밝혔다. 나노는 이번 공급계약으로 글로벌 고객사의 다양한 산업별 제품군에 고밀도셀 촉매 공급을 확대할 것으로 기대하고 있다.",
       "title": "나노, 48억 규모 고밀도 SCR 촉매 공급 계약"
+    },
+    "original:0937a2ae6494d5c61ed0bbd0": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180529",
+      "source": "매일경제",
+      "source_body_digest": "cac7bd41f114ba3878c55be1fc56c17668b5ad62d122c6bae1299342a985f342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:747e0688da13054dba5f16b7b07f61916d907702fb3dc2b63ae5eca1f4a73694",
+      "source_fact_keys": [
+        "source_fact:v1:9d3eccf37eb4715c3930b28ce7b9ffb144b3d69bd74fe331cd8c1e810e643da5"
+      ],
+      "source_published_kst": "2026-10-24T06:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "아이폰 듀오, 첫날부터 세계 곳곳서 품귀…",
+      "telegram_core_fact": "미국 일간 월스트리트저널(WSJ)과 로이터 통신은 이날 애플 새 스마트폰 아이폰 듀오 판매가 시작되면서 싱가포르와 중국 상하이(上海), 영국 런던, 미국 샌프란시스코 등 전 세계 매장에 줄이 늘어섰고, 순식간에 품귀 현상이 빚어졌다고 보도했다.",
+      "title": "아이폰 듀오, 첫날부터 세계 곳곳서 품귀…"
     },
     "original:0939372fc14ac70061a8aa9a": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
@@ -392219,6 +392769,27 @@
       "source_title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”",
       "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 기업 해외 수주를 지원하도록 3조원 해외건설 전략펀드를 신설하겠다고 12일 밝혔다.",
       "title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”"
+    },
+    "original:1b3259340acf253b96b1b9ed": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639224",
+      "source": "이투데이",
+      "source_body_digest": "ab87ff16a458d214e9a4678aac95856991ed4c5e78b11d272a4d98c3dec47ded",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0fc16b1d9757a687637c5d72ad01d412d8dd7eca81d94b0971d14d38447bb1d4",
+      "source_fact_keys": [
+        "source_fact:v1:43cd6a96e6b30368703c9562fe96f15b544487c588600bb4f4b86f818837c5fb",
+        "source_fact:v1:64f82c6196298bdf5f194aeb044fbd956b4aa871fdf1d7e614a3989feec3297b"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세",
+      "telegram_core_fact": "수도권 주택시장 규제가 강화되면서 상대적으로 규제 부담이 적은 지역의 아파트값 상승세가 두드러지고 있다.",
+      "title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세"
     },
     "original:1b3ce221f9b8d52fc53526cc": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
@@ -433297,6 +433868,34 @@
       "source_event_identity": "",
       "title": "SK쉴더스, AWS '위협탐지 및 대응' 컴피턴시 국내 첫 획득"
     },
+    "original:64378aebd3eeb61c66978068": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
+    },
     "original:644aa878d6b3d1f51b0f63f1": {
       "first_seen_kst": "2026-10-02T15:29:23+09:00",
       "lanes": {
@@ -436367,6 +436966,27 @@
       "source_title": "TSMC \"3나노 공장 또 짓는다\"…삼성, 'GAA 2나노' 승부수로 맞불",
       "telegram_core_fact": "자유시보, 경제일보 등 대만 주요 언론에 따르면 웨이저자 TSMC 회장은 최근 열린 3분기 실적설명회에서 고객사의 강한 수요에 맞춰 타이난에 3㎚ 공장을 신설하고 2028년부터 양산에 들어가겠다고 밝혔다.",
       "title": "TSMC \"3나노 공장 또 짓는다\"…삼성, 'GAA 2나노' 승부수로 맞불"
+    },
+    "original:6a14c709d89124557b421671": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01823686645616200",
+      "source": "이데일리",
+      "source_body_digest": "e4f1c826d5a2da2d3c4948b266fe2db7ecd197c180ffc38ecd433d095d89f379",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e6694a074309e9a28734c6408025f45c03c4cd2476832af850f5cdaf0c2ae38",
+      "source_fact_keys": [
+        "source_fact:v1:c2385e609a95d1146450fb32ced84c5816bbcf6ddf5106b44c20b99d40fd1ddb",
+        "source_fact:v1:ef478fd7fff6e9be5590be0b682874a7b5641fe64b2f6bb262da2eca6ff3f779"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "글로벌 해운운임 상승폭 축소…정점 다왔나",
+      "telegram_core_fact": "글로벌 해운운임이 올해 가파르게 이어지던 상승폭을 줄이며 안정 단계에 접어들고 있다.",
+      "title": "글로벌 해운운임 상승폭 축소…정점 다왔나"
     },
     "original:6a168c38b200c84df54dee2c": {
       "first_seen_kst": "2026-10-20T19:25:45+09:00",
@@ -474995,6 +475615,37 @@
       "source": "이투데이",
       "title": "G7, 비축유 1억배럴 푼다⋯경유값 급등에 ‘긴급 처방’"
     },
+    "original:af795085d971d71fd1315d17": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
+    },
     "original:af955117e5de57543c545b8d": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
       "lanes": {
@@ -485632,16 +486283,26 @@
     "original:c4fb4b40ba711e53f50d23ee": {
       "first_seen_kst": "2026-10-23T17:05:56+09:00",
       "lanes": {
-        "live": "2026-10-23T17:05:56+09:00"
+        "live": "2026-10-24T11:50:33+09:00"
       },
-      "last_seen_kst": "2026-10-23T17:05:56+09:00",
-      "link": "https://www.newsis.com/view/NISX20261023_0003839035",
-      "source": "뉴시스",
-      "source_body_digest": "32997a64264542ade9b28978436d04887a94722b8cd9610bceaf0c4d2b1b6655",
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-23T16:44+09:00",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
+      "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
+        "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
+        "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
+        "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
+        "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
+        "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
+      ],
+      "source_published_kst": "2026-10-23T16:45+09:00",
       "source_supply_terms": {},
       "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
       "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
@@ -488464,6 +489125,37 @@
       "source_title": "8월 日 경기일치 지수 118.7·1.9P↓…\"반년 만에 하락\"",
       "telegram_core_fact": "8월 지수 하락은 구마모토 지진과 태풍 여파로 자동차와 알루미늄 건자재 생산이 감소하면서 광공업용 생산재 출하지수와 내구소비재 출하지수, 수출수량지수 등이 하락한 게 영향을 미쳤다.",
       "title": "8월 日 경기일치 지수 118.7·1.9P↓…\"반년 만에 하락\""
+    },
+    "original:ca89415aaf3629e7dd0b2b98": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "original:ca8d925543b2be37355af320": {
       "first_seen_kst": "2026-10-21T15:05:59+09:00",
@@ -535570,6 +536262,34 @@
       "telegram_core_fact": "외국인은 올해 코스피에서 약 199조원을 순매도했다. 삼성전자와 SK하이닉스 두 회사를 제외해도 순이익이 119.7% 증가했다.",
       "title": "100일간 50조원 팔았다 … 코스피, 외국인 엑소더스에 속수무책"
     },
+    "source_fact:0811bd847739e10cd6f8a42d": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
+      "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
+        "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
+        "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
+        "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
+        "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
+        "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
+      ],
+      "source_published_kst": "2026-10-23T16:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
+      "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
+    },
     "source_fact:0812d155f5b6a21d29068b9b": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
       "lanes": {
@@ -538367,6 +539087,37 @@
       "source_title": "블랙스톤 COO “AI 수요 따라잡기 바빠”⋯거품론 반박",
       "telegram_core_fact": "존 그레이 블랙스톤 사장 겸 최고운영책임자(COO)는 AI 수요가 공급 능력을 웃돌 정도로 빠르게 늘고 있다며 최근 고조되고 있는 AI 거품론을 반박했다. 그레이는 22일(현지시간) 블룸버그TV와의 인터뷰에서 3분기 실적을 공개한 뒤 “AI 붐이 거품으로 변할까봐 투자자들이 걱정할 필요는 없다”고 말했다.",
       "title": "블랙스톤 COO “AI 수요 따라잡기 바빠”⋯거품론 반박"
+    },
+    "source_fact:0958a4ad9fcd411f8028bba3": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "source_fact:095b7423ad6e999c73f99111": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -545073,6 +545824,37 @@
       ],
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "레드 로빈 고메 버거, 1억1500만 달러 대출 재융자 완료..2031년 만기"
+    },
+    "source_fact:0c7d510dc5d9019484b50b90": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "source_fact:0c811d05a34432292c4d77bb": {
       "first_seen_kst": "2026-10-21T07:24:03+09:00",
@@ -552340,6 +553122,37 @@
       "source_title": "스리랑카, 화력발전소 고장에 한시적 전력 배급제 시행",
       "telegram_core_fact": "19일(현지시간) AFP통신에 따르면 스리랑카 국영전력공사인 실론전력청(CEB) 대변인 부디카 사마라세카라는 수도 콜롬보에서 취재진에 \"오늘부터 저녁 4시간 동안 섬 전역에 걸쳐 단계적으로 1시간씩 전력 공급을 중단할 것\"이라고 밝혔다.",
       "title": "스리랑카, 화력발전소 고장에 한시적 전력 배급제 시행"
+    },
+    "source_fact:0f9a607803cc2d28d6b5b244": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
     },
     "source_fact:0f9c16421edc601c9c9ceb27": {
       "first_seen_kst": "2026-10-20T19:03:19+09:00",
@@ -593577,6 +594390,34 @@
       "telegram_core_fact": "트럼프 대통령은 지난주 러시아와의 '경유 딜'에 합의하고 대러 제재를 전격 유예했고, 우크라이나는 이런 결정에 크게 반발한 바 있다.",
       "title": "우크라, 트럼프 만류에도 푸틴 고향 인프라 역대급 공습"
     },
+    "source_fact:21940103a7b43c0546933910": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
+    },
     "source_fact:219591f1e44ccd948face47c": {
       "first_seen_kst": "2026-10-23T09:14:52+09:00",
       "lanes": {
@@ -597347,28 +598188,30 @@
     "source_fact:23264f7b4180d3e63d588800": {
       "first_seen_kst": "2026-10-23T15:16:59+09:00",
       "lanes": {
-        "live": "2026-10-23T15:16:59+09:00"
+        "live": "2026-10-24T11:50:33+09:00"
       },
-      "last_seen_kst": "2026-10-23T15:16:59+09:00",
-      "link": "https://www.newsis.com/view/NISX20261023_0003838680",
-      "source": "뉴시스",
-      "source_body_digest": "aeb478dce837dc33bb8c455b09faae0c1b2b1a79544e1b231332993a2dc1a3e9",
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:10d6b3677e07cdbe2ec9af053270ae4c12bb4c44bc8cee46af3ffcb4c9d85001",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
       "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
         "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
-        "source_fact:v1:3daf47ba8c2339e13a6e059e697d281483a7c1404ec0260ab2545b4fd2a84881",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
         "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
         "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
         "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
         "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
-        "source_fact:v1:f08ffbb374c28bc79f9aa74c093526a2887172f084c210cdee3396048e8a20c5"
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
       ],
-      "source_published_kst": "2026-10-23T15:10+09:00",
+      "source_published_kst": "2026-10-23T16:45+09:00",
       "source_supply_terms": {},
-      "source_title": "하나금융, 3분기 누적 순익 3.6조 '역대 최대'…올해 9500억 자사주 매입·소각",
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
       "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
-      "title": "하나금융, 3분기 누적 순익 3.6조 '역대 최대'…올해 9500억 자사주 매입·소각"
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
     },
     "source_fact:2329b2cfbcfab0f6ffbf1ab6": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
@@ -601407,6 +602250,34 @@
       "telegram_core_fact": "전체 매출의 76%가 해외에서 발생하는 가운데 오리온은 한국과 베트남, 인도의 생산시설을 증설하며 공급 확대에 나섰다.",
       "title": "오리온 카스타드, 해외서 더 잘 팔린다…3개국 생산라인 증설"
     },
+    "source_fact:24d5160e323078ef0d09ecc0": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
+    },
     "source_fact:24d54dd6c8739275979184c4": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
       "lanes": {
@@ -602527,6 +603398,27 @@
       ],
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
+    "source_fact:25478294267b6d89a42c95c1": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639224",
+      "source": "이투데이",
+      "source_body_digest": "ab87ff16a458d214e9a4678aac95856991ed4c5e78b11d272a4d98c3dec47ded",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0fc16b1d9757a687637c5d72ad01d412d8dd7eca81d94b0971d14d38447bb1d4",
+      "source_fact_keys": [
+        "source_fact:v1:43cd6a96e6b30368703c9562fe96f15b544487c588600bb4f4b86f818837c5fb",
+        "source_fact:v1:64f82c6196298bdf5f194aeb044fbd956b4aa871fdf1d7e614a3989feec3297b"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세",
+      "telegram_core_fact": "수도권 주택시장 규제가 강화되면서 상대적으로 규제 부담이 적은 지역의 아파트값 상승세가 두드러지고 있다.",
+      "title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세"
     },
     "source_fact:2548f069988591d387091470": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
@@ -605217,6 +606109,37 @@
       "source_title": "농식품부, 포도 수출 1억달러 달성 추진…표준계약서 도입 | 연합뉴스",
       "telegram_core_fact": "농림축산식품부가 포도 수출 1억달러(약 1천351억원) 달성을 위해 생산자와 수출업체 간 표준거래계약서를 도입하고 검역·물류 지원을 확대한다. 농식품부는 경상북도와 함께 15일 경북 상주시의 포도 농장 도영농원에서 '포도 수출 1억달러 도약 현장 결의 행사'를 열었다고 밝혔다.",
       "title": "농식품부, 포도 수출 1억달러 달성 추진…표준계약서 도입 | 연합뉴스"
+    },
+    "source_fact:2639aaff5e358163d7ed32f7": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "source_fact:263a2258970fcec73ca38244": {
       "first_seen_kst": "2026-10-14T15:54:32+09:00",
@@ -613027,6 +613950,37 @@
       "source_title": "코스피 5% 폭락한 날 \"레버리지 우르르\"...개미 또 물렸다",
       "telegram_core_fact": "코스피가 5% 넘게 급락한 지난 13일 개인 투자자들이 레버리지 상장지수펀드(ETF)를 6000억원 넘게 순매수했다. 코스콤 ETF체크에 따르면 코스피가 5.46% 하락한 지난 13일 개인 투자자 가장 많이 산 ETF는 'KODEX 레버리지'로, 순매수액은 3610억원이다.",
       "title": "코스피 5% 폭락한 날 \"레버리지 우르르\"...개미 또 물렸다"
+    },
+    "source_fact:298b2f140a008f9fb3fa1f58": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
     },
     "source_fact:298e64ccefb39a00cc7a3fc0": {
       "first_seen_kst": "2026-10-21T13:24:59+09:00",
@@ -631526,28 +632480,30 @@
     "source_fact:315be5062b75f5f73c55c591": {
       "first_seen_kst": "2026-10-23T15:16:59+09:00",
       "lanes": {
-        "live": "2026-10-23T15:16:59+09:00"
+        "live": "2026-10-24T11:50:33+09:00"
       },
-      "last_seen_kst": "2026-10-23T15:16:59+09:00",
-      "link": "https://www.newsis.com/view/NISX20261023_0003838680",
-      "source": "뉴시스",
-      "source_body_digest": "aeb478dce837dc33bb8c455b09faae0c1b2b1a79544e1b231332993a2dc1a3e9",
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:10d6b3677e07cdbe2ec9af053270ae4c12bb4c44bc8cee46af3ffcb4c9d85001",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
       "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
         "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
-        "source_fact:v1:3daf47ba8c2339e13a6e059e697d281483a7c1404ec0260ab2545b4fd2a84881",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
         "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
         "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
         "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
         "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
-        "source_fact:v1:f08ffbb374c28bc79f9aa74c093526a2887172f084c210cdee3396048e8a20c5"
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
       ],
-      "source_published_kst": "2026-10-23T15:10+09:00",
+      "source_published_kst": "2026-10-23T16:45+09:00",
       "source_supply_terms": {},
-      "source_title": "하나금융, 3분기 누적 순익 3.6조 '역대 최대'…올해 9500억 자사주 매입·소각",
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
       "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
-      "title": "하나금융, 3분기 누적 순익 3.6조 '역대 최대'…올해 9500억 자사주 매입·소각"
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
     },
     "source_fact:315e4ee195373b176c3f4bd9": {
       "first_seen_kst": "2026-10-17T19:47:24+09:00",
@@ -642144,6 +643100,37 @@
       "source_title": "알래스카 LNG·301조에 다시 커지는 관세 불확실성",
       "telegram_core_fact": "알래스카 LNG 협상이 원만하게 진행되지 않을 경우 향후 미국이 과잉생산 관련 무역법 301조 조사를 활용해 우리나라에 추가 관세 부과 가능성도 배제할 수 없다는 진단이다.",
       "title": "알래스카 LNG·301조에 다시 커지는 관세 불확실성"
+    },
+    "source_fact:361f5fac491bbebb31585d0a": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
     },
     "source_fact:3620bd390ba0632c75f875fc": {
       "first_seen_kst": "2026-10-22T21:42:35+09:00",
@@ -663110,6 +664097,37 @@
       "telegram_core_fact": "신현송 한국은행 총재가 최근 물가 상승에 국제유가 등 비용 요인이 크게 작용했다고 인정하면서도 향후 소득 여건 개선에 따른 수요 측 물가 상승 압력에 선제적으로 대응할 필요가 있다고 밝혔다.",
       "title": "신현송 \"소득 개선이 수요 압력 될 것…근원물가 선제 대응 중요\""
     },
+    "source_fact:3f4e10c30faa26cb592c2259": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
+    },
     "source_fact:3f505d354111d055d92b0aa0": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
@@ -673870,6 +674888,37 @@
       "telegram_core_fact": "홈 뱅코프(HBCP)는 3분기 순이익이 1010만 달러, 희석 주당순이익(EPS)이 1.28달러로 집계돼 전년비 각각 18.3%, 19.5% 감소했다고 19일 발표했다. 2026년 예상 주당배당금은 1.28달러, 예상 시가배당률은 1.94%다.",
       "title": "홈 뱅코프, 3분기 EPS 1.28달러..전년비 19.5% 감소"
     },
+    "source_fact:43fd929a3eb987f070f1d1ee": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
+    },
     "source_fact:440495c50ec4904db8873b56": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
       "lanes": {
@@ -680974,6 +682023,37 @@
       "source_title": "바이코, 3분기 매출 78.5% 급증과 로열티 호조에 투자자 관심 집중",
       "telegram_core_fact": "로열티 매출이 206.6% 급증하며 영업이익률 36.6%를 달성했고, 수주잔고도 4억600만 달러까지 쌓였습니다.",
       "title": "바이코, 3분기 매출 78.5% 급증과 로열티 호조에 투자자 관심 집중"
+    },
+    "source_fact:473939125ee08b49c3ce928d": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "source_fact:473aeec943544e5cdddf1f1e": {
       "first_seen_kst": "2026-10-17T22:48:00+09:00",
@@ -696438,28 +697518,30 @@
     "source_fact:4db786fbc2b5a2e3a7df3b31": {
       "first_seen_kst": "2026-10-23T15:16:59+09:00",
       "lanes": {
-        "live": "2026-10-23T15:16:59+09:00"
+        "live": "2026-10-24T11:50:33+09:00"
       },
-      "last_seen_kst": "2026-10-23T15:16:59+09:00",
-      "link": "https://www.newsis.com/view/NISX20261023_0003838680",
-      "source": "뉴시스",
-      "source_body_digest": "aeb478dce837dc33bb8c455b09faae0c1b2b1a79544e1b231332993a2dc1a3e9",
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:10d6b3677e07cdbe2ec9af053270ae4c12bb4c44bc8cee46af3ffcb4c9d85001",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
       "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
         "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
-        "source_fact:v1:3daf47ba8c2339e13a6e059e697d281483a7c1404ec0260ab2545b4fd2a84881",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
         "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
         "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
         "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
         "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
-        "source_fact:v1:f08ffbb374c28bc79f9aa74c093526a2887172f084c210cdee3396048e8a20c5"
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
       ],
-      "source_published_kst": "2026-10-23T15:10+09:00",
+      "source_published_kst": "2026-10-23T16:45+09:00",
       "source_supply_terms": {},
-      "source_title": "하나금융, 3분기 누적 순익 3.6조 '역대 최대'…올해 9500억 자사주 매입·소각",
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
       "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
-      "title": "하나금융, 3분기 누적 순익 3.6조 '역대 최대'…올해 9500억 자사주 매입·소각"
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
     },
     "source_fact:4db9ab457f739bd53ac4097f": {
       "first_seen_kst": "2026-10-08T10:43:48+09:00",
@@ -703720,6 +704802,37 @@
       "telegram_core_fact": "유나이티드헬스 그룹(UNH)은 3분기 매출액이 1126억9400만 달러로 전년비 0.4% 감소했지만, 영업이익은 65억6300만 달러로 52.1% 늘고 GAAP 희석 주당순이익(EPS)은 4.56달러로 76.1% 증가했다고 10월 13일 발표했다.",
       "title": "유나이티드헬스 그룹, 3분기 희석 EPS 4.56달러..전년비 76% 증가"
     },
+    "source_fact:50acc07be5495c0fe60bd573": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
+    },
     "source_fact:50acc156a3438b7b2d3d8656": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -705932,6 +707045,37 @@
       "source_title": "금융지주 상반기 순익 17.6조…증권 73% 뛰고 은행은 8% 감소",
       "telegram_core_fact": "국내 금융지주회사의 올해 상반기 순이익이 17조6000억원으로 전년비 13.7% 증가했다.",
       "title": "금융지주 상반기 순익 17.6조…증권 73% 뛰고 은행은 8% 감소"
+    },
+    "source_fact:518a4e79962d5385a843718d": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "source_fact:518ec47ab3ff8c5bd9d64bc4": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
@@ -708727,6 +709871,37 @@
       "source_title": "“엔화 지금이 제일 싸” 일본여행 경비 모으기? 엔화예금 한달 새 5000억↑ [머니뭐니]",
       "telegram_core_fact": "원/엔 환율이 100엔당 840원대 초반까지 떨어지자 5대 은행의 엔화예금 잔액이 한 달여 사이 6% 가까이 증가했다. 금융권에 따르면 , KB국민·신한·하나·우리·NH농협 등 5대 은행의 엔화예금 잔액은 이달 7일 1조1439억엔으로 집계됐다.",
       "title": "“엔화 지금이 제일 싸” 일본여행 경비 모으기? 엔화예금 한달 새 5000억↑ [머니뭐니]"
+    },
+    "source_fact:52b429f823ee2e457086ad88": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "source_fact:52b808610e92b52dbedade88": {
       "first_seen_kst": "2026-10-20T00:04:45+09:00",
@@ -713399,6 +714574,37 @@
       "source_title": "[AI 고속도로] 엔비디아가 투자했는데…英 엔스케일, MS 계약 철회에 몸값도 '흔들'",
       "telegram_core_fact": "엔비디아가 투자한 영국 인공지능(AI) 인프라 기업 엔스케일이 기업공개(IPO)를 앞두고 주요 고객 계약 철회와 기업가치 인하 압박에 직면했다. 로이터통신에 따르면 MS는 지난 18일 엔스케일과 추진하던 영국 에식스주 로턴 부지의 데이터센터 계약에서 철수했다고 밝혔다.",
       "title": "[AI 고속도로] 엔비디아가 투자했는데…英 엔스케일, MS 계약 철회에 몸값도 '흔들'"
+    },
+    "source_fact:54a5325828b6ad3e942d97a6": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
     },
     "source_fact:54a832ab99968a2cd3e335fa": {
       "first_seen_kst": "2026-10-23T23:29:22+09:00",
@@ -752856,6 +754062,34 @@
       "telegram_core_fact": "지난달 30일 서울 태평로에 있는 규제합리화위원회 사무실에서 만난 그는 “규제 차르에게 대통령이 권한을 주고, 국무회의에도 참관할 수 있도록 해서 낡은 규제를 풀어야 한다”고 제안했다.",
       "title": "박용진 “부처간 꼬여있는 규제, 풀려면 ‘차르’ 필요” | 중앙일보"
     },
+    "source_fact:6585db01e8c6c4e1306e8e70": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
+      "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
+        "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
+        "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
+        "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
+        "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
+        "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
+      ],
+      "source_published_kst": "2026-10-23T16:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
+      "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
+    },
     "source_fact:65865c267f9a04bde81b2968": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
       "lanes": {
@@ -754713,6 +755947,37 @@
       "source_title": "푸르덴셜 파이낸셜, 日 자회사 신규영업 2027년 1월까지 정지",
       "telegram_core_fact": "증권가 컨센서스에 따르면 푸르덴셜 파이낸셜의 매출액은 2026년 594억 달러로 전년 대비 2.2% 감소한 뒤 2027년 605억 달러(+1.81%), 2028년 619억 달러(+2.27%)로 소폭 늘어날 전망이다.",
       "title": "푸르덴셜 파이낸셜, 日 자회사 신규영업 2027년 1월까지 정지"
+    },
+    "source_fact:66760ec8febc259d101e56d1": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "source_fact:667c4b8f8fe45d1361c61c8d": {
       "first_seen_kst": "2026-10-19T12:29:34+09:00",
@@ -758590,6 +759855,34 @@
       "source_title": "스피어, 인니서 고순도 니켈 본격 양산…우주항공ㆍ방산 공급망 수직계열화 완성",
       "telegram_core_fact": "글로벌 핵심 산업 공급망 관리(SCM) 전문 기업 스피어가 인도네시아 제련소 가동을 통해 핵심 원소재 확보부터 글로벌 수출로 이어지는 밸류체인 수직계열화를 본격화한다.",
       "title": "스피어, 인니서 고순도 니켈 본격 양산…우주항공ㆍ방산 공급망 수직계열화 완성"
+    },
+    "source_fact:67f86994ea89e8b1ddb260a3": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
     },
     "source_fact:67f8e5ba9e4b28d60c633f06": {
       "first_seen_kst": "2026-10-16T14:45:17+09:00",
@@ -790617,6 +791910,37 @@
       "source_published_kst": "2026-10-06T09:18+09:00",
       "title": "정부 GPU 4224장 풀었더니 1만3712장 신청…70%가 못 받아"
     },
+    "source_fact:75e72307b126ff8886ab0115": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
+    },
     "source_fact:75e9704214df63796c90ff9c": {
       "first_seen_kst": "2026-10-15T02:55:21+09:00",
       "lanes": {
@@ -794934,6 +796258,27 @@
       "source_title": "안현 SK하이닉스 사장 “AI 병목, 전체 메모리 계층 최적화로 풀어야”",
       "telegram_core_fact": "안 사장은 AI 추론 수요 확대에 따라 기존 메모리 계층에서 성능과 용량 측면의 병목이 나타나고 있다고 진단했다.",
       "title": "안현 SK하이닉스 사장 “AI 병목, 전체 메모리 계층 최적화로 풀어야”"
+    },
+    "source_fact:77d4f3e92ef8f45a0a19c337": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01823686645616200",
+      "source": "이데일리",
+      "source_body_digest": "e4f1c826d5a2da2d3c4948b266fe2db7ecd197c180ffc38ecd433d095d89f379",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e6694a074309e9a28734c6408025f45c03c4cd2476832af850f5cdaf0c2ae38",
+      "source_fact_keys": [
+        "source_fact:v1:c2385e609a95d1146450fb32ced84c5816bbcf6ddf5106b44c20b99d40fd1ddb",
+        "source_fact:v1:ef478fd7fff6e9be5590be0b682874a7b5641fe64b2f6bb262da2eca6ff3f779"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "글로벌 해운운임 상승폭 축소…정점 다왔나",
+      "telegram_core_fact": "글로벌 해운운임이 올해 가파르게 이어지던 상승폭을 줄이며 안정 단계에 접어들고 있다.",
+      "title": "글로벌 해운운임 상승폭 축소…정점 다왔나"
     },
     "source_fact:77d68980c4b8b9013dd28f9f": {
       "first_seen_kst": "2026-10-13T02:02:36+09:00",
@@ -806276,6 +807621,37 @@
       "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
       "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
       "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
+    },
+    "source_fact:7cd5b7ecc840d21c5c493930": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
     },
     "source_fact:7cdad523a4ea9cf6a88a1559": {
       "first_seen_kst": "2026-10-22T05:03:54+09:00",
@@ -835885,6 +837261,34 @@
       "telegram_core_fact": "선박 소유·에너지 운송 업체 AI옥토(AIOK)가 이사회에서 보통주 1주당 3.50달러의 일회성 특별배당을 결의했다고 10월 23일 발표했다.",
       "title": "AI옥토, 주당 3.5달러 특별배당 결의..현금·주식 선택"
     },
+    "source_fact:8a28d28913a999a413046a8b": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
+      "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
+        "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
+        "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
+        "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
+        "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
+        "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
+      ],
+      "source_published_kst": "2026-10-23T16:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
+      "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
+    },
     "source_fact:8a30fdc0a7d21be5e332324f": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -836853,6 +838257,34 @@
       "source_title": "올해 쌀 생산량 0.6% 감소 전망…재배면적 축소 영향",
       "telegram_core_fact": "올해 쌀 생산량이 지난해보다 0.6%, 벼 재배면적은 1.1% 가량 감소할 것으로 전망됐다. 8일 국가데이터가 발표한 '2026년 쌀 예상생산량조사 결과'를 보면 올해 쌀 생산량은 351만8000t으로 전년(353만9000t)보다 2만1000t(0.6%) 감소할 것으로 전망됐다.",
       "title": "올해 쌀 생산량 0.6% 감소 전망…재배면적 축소 영향"
+    },
+    "source_fact:8ac0157c3d362850c8a7d0dd": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
     },
     "source_fact:8ac2eeec1f46a18b010a8c3e": {
       "first_seen_kst": "2026-10-14T20:10:22+09:00",
@@ -897611,6 +899043,27 @@
       "telegram_core_fact": "마코 루비오 미국 국무장관이 도널드 트럼프 대통령의 대러시아 제재 시행 유예는 세계 경제에 미칠 영향을 분석하기 위한 조치라고 밝혔다.",
       "title": "루비오 \"트럼프, 세계 경제 영향 분석 위해 대러 제재 유예\""
     },
+    "source_fact:a52219e872ca8d8f4b849179": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639224",
+      "source": "이투데이",
+      "source_body_digest": "ab87ff16a458d214e9a4678aac95856991ed4c5e78b11d272a4d98c3dec47ded",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0fc16b1d9757a687637c5d72ad01d412d8dd7eca81d94b0971d14d38447bb1d4",
+      "source_fact_keys": [
+        "source_fact:v1:43cd6a96e6b30368703c9562fe96f15b544487c588600bb4f4b86f818837c5fb",
+        "source_fact:v1:64f82c6196298bdf5f194aeb044fbd956b4aa871fdf1d7e614a3989feec3297b"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세",
+      "telegram_core_fact": "수도권 주택시장 규제가 강화되면서 상대적으로 규제 부담이 적은 지역의 아파트값 상승세가 두드러지고 있다.",
+      "title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세"
+    },
     "source_fact:a522e9ea9b7223f45706e8f9": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -922935,6 +924388,37 @@
       "telegram_core_fact": "전북연구원은 최근 발간한 이슈브리핑 제354호 '버려지던 열, 새만금에서 새로운 에너지로'에서 탄소중립 경쟁이 재생에너지 생산 확대에서 저장·전환·활용 효율을 높이는 방향으로 확장되고 있다는 점에 주목했다.",
       "title": "전북연구원, 새만금 미활용열 회수·재사용 '에너지 낭비 제로 국가 통합실증' 제안"
     },
+    "source_fact:afda1263a8e08603d1134751": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
+    },
     "source_fact:afdf9d8baf1bbd0300aebc82": {
       "first_seen_kst": "2026-10-19T18:36:47+09:00",
       "lanes": {
@@ -926067,6 +927551,37 @@
       "source_title": "中 CXMT 충격에 삼전·SK하닉 급락…프리마켓 반도체 ‘휘청’",
       "telegram_core_fact": "한지영 키움증권 연구원은 “중국 CXMT발 미국 반도체주 약세 여파가 장 초반 변동성을 유발하겠지만 미국 10년물 금리 상승세 진정과 최근 연쇄 급락에 따른 기술적·저가 매수세 유입 등에 힘입어 장중 반등을 시도할 것으로 전망한다”고 말했다.",
       "title": "中 CXMT 충격에 삼전·SK하닉 급락…프리마켓 반도체 ‘휘청’"
+    },
+    "source_fact:b1225e4b15aec0313c899690": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
     },
     "source_fact:b126af5d0e3b098067baa8e3": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
@@ -957034,28 +958549,30 @@
     "source_fact:bea27970248acaab0f50d3cc": {
       "first_seen_kst": "2026-10-23T15:16:59+09:00",
       "lanes": {
-        "live": "2026-10-23T15:16:59+09:00"
+        "live": "2026-10-24T11:50:33+09:00"
       },
-      "last_seen_kst": "2026-10-23T15:16:59+09:00",
-      "link": "https://www.newsis.com/view/NISX20261023_0003838680",
-      "source": "뉴시스",
-      "source_body_digest": "aeb478dce837dc33bb8c455b09faae0c1b2b1a79544e1b231332993a2dc1a3e9",
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:10d6b3677e07cdbe2ec9af053270ae4c12bb4c44bc8cee46af3ffcb4c9d85001",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
       "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
         "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
-        "source_fact:v1:3daf47ba8c2339e13a6e059e697d281483a7c1404ec0260ab2545b4fd2a84881",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
         "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
         "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
         "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
         "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
-        "source_fact:v1:f08ffbb374c28bc79f9aa74c093526a2887172f084c210cdee3396048e8a20c5"
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
       ],
-      "source_published_kst": "2026-10-23T15:10+09:00",
+      "source_published_kst": "2026-10-23T16:45+09:00",
       "source_supply_terms": {},
-      "source_title": "하나금융, 3분기 누적 순익 3.6조 '역대 최대'…올해 9500억 자사주 매입·소각",
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
       "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
-      "title": "하나금융, 3분기 누적 순익 3.6조 '역대 최대'…올해 9500억 자사주 매입·소각"
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
     },
     "source_fact:bea5df003a808c3ab75baa2a": {
       "first_seen_kst": "2026-10-23T02:21:19+09:00",
@@ -997680,6 +999197,34 @@
       "source_published_kst": "2026-10-07T08:45+09:00",
       "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
     },
+    "source_fact:cfda31ce90786bff58f2743a": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
+    },
     "source_fact:cfdcc733a6bfbe84a97305b5": {
       "first_seen_kst": "2026-10-23T17:26:50+09:00",
       "lanes": {
@@ -1009777,6 +1011322,34 @@
       "telegram_core_fact": "구글은 미국 원전 운영사와 장기 전력공급 계약을 체결하고 기존 원전의 출력증강을 통해 추가 전력을 확보하기로 했다.",
       "title": "[ESGX 용어 5] 탄소집약도·원전 출력증강·계통영향평가·준수 또는 설명·GST"
     },
+    "source_fact:d536f7a69803eda8cef5fa4a": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
+    },
     "source_fact:d538675b96cf00c271894d88": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
       "lanes": {
@@ -1012403,6 +1013976,34 @@
       "source_title": "가전 고르고 포장까지…롯데하이마트, 물류센터에 휴머노이드 투입",
       "telegram_core_fact": "롯데하이마트가 가전 물류 현장에 사람을 닮은 휴머노이드 로봇을 투입한다. 롯데하이마트는 5월 정부의 ‘AI 응용제품 신속 상용화 지원사업’에 선정돼 근력 증강 웨어러블 로봇의 가전 물류 적용을 추진하고 있다.",
       "title": "가전 고르고 포장까지…롯데하이마트, 물류센터에 휴머노이드 투입"
+    },
+    "source_fact:d62ba9e9f41c998dbdd01d5b": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
     },
     "source_fact:d6301d4741e6acf6090b0e9f": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
@@ -1019731,6 +1021332,34 @@
       "source_title": "삼성바이오, 폴리펩타이드 공개매수서 최소 조건 충족 | 연합뉴스",
       "telegram_core_fact": "삼성바이오로직스[207940]는 폴리펩타이드 그룹 인수를 위해 진행한 지분 공개 매수에서 거래 최소 조건을 충족하는 응모가 이뤄졌다고 13일 밝혔다.",
       "title": "삼성바이오, 폴리펩타이드 공개매수서 최소 조건 충족 | 연합뉴스"
+    },
+    "source_fact:d9549dce068ea9e44cb07814": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
     },
     "source_fact:d957c0ba7cf4c17b0f1ca21b": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
@@ -1054199,6 +1055828,37 @@
       "telegram_core_fact": "신현송 한국은행 총재가 지난 7·8월 두 차례 연속 기준금리 인상으로 미국보다 선제적으로 대응해 경제적 비용을 줄였다고 평가했다.",
       "title": "신현송 \"선제 금리인상 적절…정부 예산안, 성장률 0.5%p 높여\""
     },
+    "source_fact:e865ea3d7439b1dc74230c38": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
+    },
     "source_fact:e86ee6b99d3922704f6601df": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
       "lanes": {
@@ -1055333,28 +1056993,30 @@
     "source_fact:e8db1ce7359e34d2871ea8e8": {
       "first_seen_kst": "2026-10-23T15:16:59+09:00",
       "lanes": {
-        "live": "2026-10-23T15:16:59+09:00"
+        "live": "2026-10-24T11:50:33+09:00"
       },
-      "last_seen_kst": "2026-10-23T15:16:59+09:00",
-      "link": "https://www.newsis.com/view/NISX20261023_0003838680",
-      "source": "뉴시스",
-      "source_body_digest": "aeb478dce837dc33bb8c455b09faae0c1b2b1a79544e1b231332993a2dc1a3e9",
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:10d6b3677e07cdbe2ec9af053270ae4c12bb4c44bc8cee46af3ffcb4c9d85001",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
       "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
         "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
-        "source_fact:v1:3daf47ba8c2339e13a6e059e697d281483a7c1404ec0260ab2545b4fd2a84881",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
         "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
         "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
         "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
         "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
-        "source_fact:v1:f08ffbb374c28bc79f9aa74c093526a2887172f084c210cdee3396048e8a20c5"
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
       ],
-      "source_published_kst": "2026-10-23T15:10+09:00",
+      "source_published_kst": "2026-10-23T16:45+09:00",
       "source_supply_terms": {},
-      "source_title": "하나금융, 3분기 누적 순익 3.6조 '역대 최대'…올해 9500억 자사주 매입·소각",
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
       "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
-      "title": "하나금융, 3분기 누적 순익 3.6조 '역대 최대'…올해 9500억 자사주 매입·소각"
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
     },
     "source_fact:e8dc76e9f4ab6486cc83f8e8": {
       "first_seen_kst": "2026-10-16T20:17:17+09:00",
@@ -1055402,6 +1057064,37 @@
       "source_title": "\"유럽 포장재 규제대응 지원\"…중소기업 간담회",
       "telegram_core_fact": "유럽연합(EU)의 '포장재 및 포장재 폐기물 규제(PPWR)'가 지난 8월 본격 시행에 들어간 가운데, 정부가 뷰티·푸드·포장재 중소기업의 규제 대응력 강화에 나섰다.",
       "title": "\"유럽 포장재 규제대응 지원\"…중소기업 간담회"
+    },
+    "source_fact:e8df507b64f44d0e461c92cf": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "source_fact:e8df945dea9428ff4439da6b": {
       "first_seen_kst": "2026-10-20T07:37:12+09:00",
@@ -1057524,6 +1059217,34 @@
       "source_title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\"",
       "telegram_core_fact": "첨단 바이오 인프라 전문기업 오리엔트바이오는 고품질 특정병원체 부재(SPF) 연구용 토끼의 공급을 확대하며 국내 제약·바이오 기업과 연구기관의 비임상 연구 수요에 대응 중이라고 12일 밝혔다.",
       "title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\""
+    },
+    "source_fact:e9b5db1ce10ac07b7a3e13ed": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
     },
     "source_fact:e9b963c07d0bc4b37398d693": {
       "first_seen_kst": "2026-10-19T23:09:43+09:00",
@@ -1061325,6 +1063046,27 @@
       "source_title": "데커스 아웃도어, 2분기 희석EPS 2.31달러 27%↑..가이던스 상향",
       "telegram_core_fact": "데커스 아웃도어(DECK)는 2027 회계연도 2분기(2026년 7~9월) 매출액이 14억8100만 달러로 전년비 3.5% 늘어 분기 기준 사상 최대를 기록했고, 희석 주당순이익은 2.31달러로 27% 증가했다고 10월 22일 발표했다.",
       "title": "데커스 아웃도어, 2분기 희석EPS 2.31달러 27%↑..가이던스 상향"
+    },
+    "source_fact:eb694674e3cbb96c45a6baaf": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01823686645616200",
+      "source": "이데일리",
+      "source_body_digest": "e4f1c826d5a2da2d3c4948b266fe2db7ecd197c180ffc38ecd433d095d89f379",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e6694a074309e9a28734c6408025f45c03c4cd2476832af850f5cdaf0c2ae38",
+      "source_fact_keys": [
+        "source_fact:v1:c2385e609a95d1146450fb32ced84c5816bbcf6ddf5106b44c20b99d40fd1ddb",
+        "source_fact:v1:ef478fd7fff6e9be5590be0b682874a7b5641fe64b2f6bb262da2eca6ff3f779"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "글로벌 해운운임 상승폭 축소…정점 다왔나",
+      "telegram_core_fact": "글로벌 해운운임이 올해 가파르게 이어지던 상승폭을 줄이며 안정 단계에 접어들고 있다.",
+      "title": "글로벌 해운운임 상승폭 축소…정점 다왔나"
     },
     "source_fact:eb6c89813834a7382a9c2031": {
       "first_seen_kst": "2026-10-22T23:00:45+09:00",
@@ -1065169,6 +1066911,37 @@
       "source_title": "에스원, 자사주 4500억 매입·소각…기존 자사주도 없앤다",
       "telegram_core_fact": "에스원이 보유 자기주식(자사주) 전량을 소각하고 4500억원 자사주를 추가 매입한다.",
       "title": "에스원, 자사주 4500억 매입·소각…기존 자사주도 없앤다"
+    },
+    "source_fact:ed119325493bdb4e3f8e5405": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "source_fact:ed12920c5a538ee318e19a89": {
       "first_seen_kst": "2026-10-22T12:56:15+09:00",
@@ -1077075,6 +1078848,37 @@
       "telegram_core_fact": "메타는 올해 3분기에만 AI 모델 개발과 이를 뒷받침할 데이터센터 구축 등에 349억1000만달러의 자본지출(Capex)을 집행했다.",
       "title": "‘그래도 믿을 건 AI’ 스페이스X 이어 메타도 주가 쑥쑥…투자 심리 개선 기대 [투자360]"
     },
+    "source_fact:f25fdf957b04fb7735613307": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
+    },
     "source_fact:f260b38abe771dc01d108fe1": {
       "first_seen_kst": "2026-10-14T19:15:46+09:00",
       "lanes": {
@@ -1079996,6 +1081800,37 @@
       "source_title": "美 관세·中 기술통제…’비중국 공급망' 韓 태양광 몸값 오른다",
       "telegram_core_fact": "중국이 미국의 규제를 피해 동남아시아에 생산 거점을 마련하고 태양광 제품 물량을 쏟아내자 미국은 지난해 6월 캄보디아, 말레이시아, 태국, 베트남산 태양광 제품에 반덤핑·상계관세를 부과했다.",
       "title": "美 관세·中 기술통제…’비중국 공급망' 韓 태양광 몸값 오른다"
+    },
+    "source_fact:f3b62ee5b54f8402277258f6": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
     },
     "source_fact:f3bbbf57fc253179589b3a6e": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
@@ -1090617,6 +1092452,34 @@
       "telegram_core_fact": "워런트, 주식보상 계획용 유보 주식, 상환을 선택하는 DAAQ 투자자를 제외하면 합병 완료 후 법인 지분의 약 70%를 보유하게 된다.",
       "title": "DIGITAL ASSET ACQUISITIO, 스웨덴 우라늄 타이탄과 합병..기업가치 3억2000만 달러"
     },
+    "source_fact:f90665ca027b11b9b48acb24": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
+      "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
+        "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
+        "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
+        "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
+        "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
+        "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
+      ],
+      "source_published_kst": "2026-10-23T16:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
+      "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
+      "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
+    },
     "source_fact:f907c0d42931deb369726cfe": {
       "first_seen_kst": "2026-10-14T17:21:42+09:00",
       "lanes": {
@@ -1094226,6 +1096089,26 @@
       "telegram_core_fact": "젤렌스키 대통령은 “러시아가 에너지 수출로 벌어들인 돈을 무기와 공격용 드론 생산에 쓸 것”이라며 미국의 경유 제재 완화 합의를 비판했다.",
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     },
+    "source_fact:faaa2d2866eb818f8f26a0b4": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180529",
+      "source": "매일경제",
+      "source_body_digest": "cac7bd41f114ba3878c55be1fc56c17668b5ad62d122c6bae1299342a985f342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:747e0688da13054dba5f16b7b07f61916d907702fb3dc2b63ae5eca1f4a73694",
+      "source_fact_keys": [
+        "source_fact:v1:9d3eccf37eb4715c3930b28ce7b9ffb144b3d69bd74fe331cd8c1e810e643da5"
+      ],
+      "source_published_kst": "2026-10-24T06:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "아이폰 듀오, 첫날부터 세계 곳곳서 품귀…",
+      "telegram_core_fact": "미국 일간 월스트리트저널(WSJ)과 로이터 통신은 이날 애플 새 스마트폰 아이폰 듀오 판매가 시작되면서 싱가포르와 중국 상하이(上海), 영국 런던, 미국 샌프란시스코 등 전 세계 매장에 줄이 늘어섰고, 순식간에 품귀 현상이 빚어졌다고 보도했다.",
+      "title": "아이폰 듀오, 첫날부터 세계 곳곳서 품귀…"
+    },
     "source_fact:faaa4fb15a6c79e4c49d132d": {
       "first_seen_kst": "2026-10-20T05:02:52+09:00",
       "lanes": {
@@ -1095042,6 +1096925,37 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "source_fact:fb0a0a7448231836dc26869d": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "source_fact:fb0b680bf6fbb48a04badce8": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -1111523,6 +1113437,26 @@
       "telegram_core_fact": "선택적촉매환원(SCR) 촉매 전문기업 나노는 글로벌 배기가스 후처리 엔지니어링 기업으로부터 약 318만 유로(48억원) 고밀도 SCR 촉매 공급 발주(PO)를 확보했다고 12일 밝혔다. 나노는 이번 공급계약으로 글로벌 고객사의 다양한 산업별 제품군에 고밀도셀 촉매 공급을 확대할 것으로 기대하고 있다.",
       "title": "나노, 48억 규모 고밀도 SCR 촉매 공급 계약"
     },
+    "title:0937a2ae6494d5c61ed0bbd0": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1180529",
+      "source": "매일경제",
+      "source_body_digest": "cac7bd41f114ba3878c55be1fc56c17668b5ad62d122c6bae1299342a985f342",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:747e0688da13054dba5f16b7b07f61916d907702fb3dc2b63ae5eca1f4a73694",
+      "source_fact_keys": [
+        "source_fact:v1:9d3eccf37eb4715c3930b28ce7b9ffb144b3d69bd74fe331cd8c1e810e643da5"
+      ],
+      "source_published_kst": "2026-10-24T06:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "아이폰 듀오, 첫날부터 세계 곳곳서 품귀…",
+      "telegram_core_fact": "미국 일간 월스트리트저널(WSJ)과 로이터 통신은 이날 애플 새 스마트폰 아이폰 듀오 판매가 시작되면서 싱가포르와 중국 상하이(上海), 영국 런던, 미국 샌프란시스코 등 전 세계 매장에 줄이 늘어섰고, 순식간에 품귀 현상이 빚어졌다고 보도했다.",
+      "title": "아이폰 듀오, 첫날부터 세계 곳곳서 품귀…"
+    },
     "title:0939372fc14ac70061a8aa9a": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
       "lanes": {
@@ -1121354,6 +1123288,27 @@
       "source_title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”",
       "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 기업 해외 수주를 지원하도록 3조원 해외건설 전략펀드를 신설하겠다고 12일 밝혔다.",
       "title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”"
+    },
+    "title:1b3259340acf253b96b1b9ed": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639224",
+      "source": "이투데이",
+      "source_body_digest": "ab87ff16a458d214e9a4678aac95856991ed4c5e78b11d272a4d98c3dec47ded",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0fc16b1d9757a687637c5d72ad01d412d8dd7eca81d94b0971d14d38447bb1d4",
+      "source_fact_keys": [
+        "source_fact:v1:43cd6a96e6b30368703c9562fe96f15b544487c588600bb4f4b86f818837c5fb",
+        "source_fact:v1:64f82c6196298bdf5f194aeb044fbd956b4aa871fdf1d7e614a3989feec3297b"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세",
+      "telegram_core_fact": "수도권 주택시장 규제가 강화되면서 상대적으로 규제 부담이 적은 지역의 아파트값 상승세가 두드러지고 있다.",
+      "title": "규제 피한 수도권 집값 '들썩'⋯부천·화성 이어 의정부도 상승세"
     },
     "title:1b3ce221f9b8d52fc53526cc": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
@@ -1163241,6 +1165196,34 @@
       "source_event_identity": "",
       "title": "SK쉴더스, AWS '위협탐지 및 대응' 컴피턴시 국내 첫 획득"
     },
+    "title:64378aebd3eeb61c66978068": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102421587",
+      "source": "한국경제",
+      "source_body_digest": "064fe44a5c8cf5b2686bb7f971f9c84780a41c2f7b11ed8668ed181b9e82ca5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbdfaebb46b54b310f294148aabbca503a5fe5c606bbd449ea226690f964ea30",
+      "source_fact_keys": [
+        "source_fact:v1:2aba14e4d927de4dd712792dabb5fc582c30d0b569a4aa768e43775ed651ed2d",
+        "source_fact:v1:40ecc3921faaf19f255c389f3a16414fcf85df67d50746059cb654c132f19ae8",
+        "source_fact:v1:6b8f47c0f8b7f386c98fda4c57522b12394054c6dde7170062f78445082d3bc6",
+        "source_fact:v1:a6d806a1958a8c61fb9b71cbbf6d9ae53df2879363b8dbf79b81e4f27abf2a41",
+        "source_fact:v1:ae11b324e2c208baf5133c6853a639f72fcf1f292a32f9a95497815b2087b3d3",
+        "source_fact:v1:c191026fd62ecd74ec74ee13157c65c568d2c2ab77476573462637f8a7a896da",
+        "source_fact:v1:dc21cfb9761765d3516249852f12c8a0ca0c6d23b2f79026190e569351146d53",
+        "source_fact:v1:ee99d8755536172908a08ed0763e6e86bac8c886f34af01ef5f814befb86806b",
+        "source_fact:v1:f5669a0f80dd02f7dec18daddb51c93b16527df235e6eb7c8581a8e8307de75f"
+      ],
+      "source_published_kst": "2026-10-24T07:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
+      "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
+      "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
+    },
     "title:644aa878d6b3d1f51b0f63f1": {
       "first_seen_kst": "2026-10-02T15:29:23+09:00",
       "lanes": {
@@ -1166347,6 +1168330,27 @@
       "source_title": "TSMC \"3나노 공장 또 짓는다\"…삼성, 'GAA 2나노' 승부수로 맞불",
       "telegram_core_fact": "자유시보, 경제일보 등 대만 주요 언론에 따르면 웨이저자 TSMC 회장은 최근 열린 3분기 실적설명회에서 고객사의 강한 수요에 맞춰 타이난에 3㎚ 공장을 신설하고 2028년부터 양산에 들어가겠다고 밝혔다.",
       "title": "TSMC \"3나노 공장 또 짓는다\"…삼성, 'GAA 2나노' 승부수로 맞불"
+    },
+    "title:6a14c709d89124557b421671": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01823686645616200",
+      "source": "이데일리",
+      "source_body_digest": "e4f1c826d5a2da2d3c4948b266fe2db7ecd197c180ffc38ecd433d095d89f379",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e6694a074309e9a28734c6408025f45c03c4cd2476832af850f5cdaf0c2ae38",
+      "source_fact_keys": [
+        "source_fact:v1:c2385e609a95d1146450fb32ced84c5816bbcf6ddf5106b44c20b99d40fd1ddb",
+        "source_fact:v1:ef478fd7fff6e9be5590be0b682874a7b5641fe64b2f6bb262da2eca6ff3f779"
+      ],
+      "source_published_kst": "2026-10-24T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "글로벌 해운운임 상승폭 축소…정점 다왔나",
+      "telegram_core_fact": "글로벌 해운운임이 올해 가파르게 이어지던 상승폭을 줄이며 안정 단계에 접어들고 있다.",
+      "title": "글로벌 해운운임 상승폭 축소…정점 다왔나"
     },
     "title:6a168c38b200c84df54dee2c": {
       "first_seen_kst": "2026-10-20T19:25:45+09:00",
@@ -1205931,6 +1207935,37 @@
       "source": "이투데이",
       "title": "G7, 비축유 1억배럴 푼다⋯경유값 급등에 ‘긴급 처방’"
     },
+    "title:af795085d971d71fd1315d17": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01797446645616200",
+      "source": "이데일리",
+      "source_body_digest": "ea9df1025b8b0d78187df79d36018698929aa173b463d6b68b02168905d5b0a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0e562859e8793b4f2ef3fe7aabc42de22690edf04779b2c6e446e0eab70ac892",
+      "source_fact_keys": [
+        "source_fact:v1:196a2826e60b1b659dfa1eb028bf47b75acf6b112a61e3bd30ec08e3cb399c3d",
+        "source_fact:v1:2cbce807ffb3813ad5b01c9293c92deb463e580cfe991e7bf56de095f15f2eee",
+        "source_fact:v1:3d9bcf7d6921c70381b362dcd7a8dff51e6ac3ce0a21e32c29b3d79063b03461",
+        "source_fact:v1:4793df47a8b14ee83edec3892b1c98967196df3edb6a925867b0bf69c20c936b",
+        "source_fact:v1:63d9c83e18ffd34fa27badc847608e9b1cbe3bff320462be64bf4ce9e3e16cb7",
+        "source_fact:v1:6515b31d1a1f967074074a9bf79b53a9e13724ed46ff19b32813bbacd02e3650",
+        "source_fact:v1:651af1a570714a57f9d7852b987df37f5109bb3f48560110db4457c52f35404c",
+        "source_fact:v1:7dc3f81282d57f55bd4cfa5009db3200b1961e78639badf13cbc1783fcdbdfc1",
+        "source_fact:v1:8a8eeb86a2f95e457d7ba2e49fd14a760ea816440605fa547aa6531a716686ef",
+        "source_fact:v1:ab1323464a4df92843cb62c33e316b8da7facfe3d2ca0bc731505c241ad1873b",
+        "source_fact:v1:b26e703cd6dbafe8d933050be885c301dd5e0ffb25578c93a59b27067de52185",
+        "source_fact:v1:d8ec29848836c02407036e625f7b188255d32d7ed65f2aced410d19db341d1f1"
+      ],
+      "source_published_kst": "2026-10-24T07:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\"",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국이 이란과의 전쟁이 장기화하더라도 이란 항구에 대한 해상 봉쇄를 유지하고 경제적 압박을 강화할 수 있다는 입장을 밝혔다.",
+      "title": "이란 전쟁 내년에도 계속?…美유엔대사 \"장기 봉쇄 가능\""
+    },
     "title:af955117e5de57543c545b8d": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
       "lanes": {
@@ -1216839,16 +1218874,26 @@
     "title:c4fb4b40ba711e53f50d23ee": {
       "first_seen_kst": "2026-10-23T17:05:56+09:00",
       "lanes": {
-        "live": "2026-10-23T17:05:56+09:00"
+        "live": "2026-10-24T11:50:33+09:00"
       },
-      "last_seen_kst": "2026-10-23T17:05:56+09:00",
-      "link": "https://www.newsis.com/view/NISX20261023_0003839035",
-      "source": "뉴시스",
-      "source_body_digest": "32997a64264542ade9b28978436d04887a94722b8cd9610bceaf0c4d2b1b6655",
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-23T16:44+09:00",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
+      "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
+        "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
+        "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
+        "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
+        "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
+        "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
+      ],
+      "source_published_kst": "2026-10-23T16:45+09:00",
       "source_supply_terms": {},
       "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
       "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
@@ -1219763,6 +1221808,37 @@
       "source_title": "8월 日 경기일치 지수 118.7·1.9P↓…\"반년 만에 하락\"",
       "telegram_core_fact": "8월 지수 하락은 구마모토 지진과 태풍 여파로 자동차와 알루미늄 건자재 생산이 감소하면서 광공업용 생산재 출하지수와 내구소비재 출하지수, 수출수량지수 등이 하락한 게 영향을 미쳤다.",
       "title": "8월 日 경기일치 지수 118.7·1.9P↓…\"반년 만에 하락\""
+    },
+    "title:ca89415aaf3629e7dd0b2b98": {
+      "first_seen_kst": "2026-10-24T11:50:33+09:00",
+      "lanes": {
+        "live": "2026-10-24T11:50:33+09:00"
+      },
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261023114200003",
+      "source": "연합뉴스",
+      "source_body_digest": "2744971ccebd2fe0aeb8d6b827040d7265e38bcb92ceb5c1b5b7da9c26f09489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e4f7b2533e24bf36dc269156c7cb1053e06f48346ad816d1430e8968409245f",
+      "source_fact_keys": [
+        "source_fact:v1:09bb64b8001b5965d63b9dd058e98252cbc0f82c8f5b62a84d44496ac2c0dd26",
+        "source_fact:v1:431fe0c9d9226b729ee2a0dfff608a9b859b9aacdf7f3d8535bcc61d7a175b91",
+        "source_fact:v1:4bba3725144807d43fd478e08048d8d3838e841a186b24a8b2920ed5aeeb351f",
+        "source_fact:v1:5cf2beff7dce1100e5a1c2d450b18a7e00cba67b347eceaabbffea2a6dca5ccf",
+        "source_fact:v1:64cd1d497d03e6677d57fd14cbd6705fd0f6da4850c922dcb8f9b7414c05ebd9",
+        "source_fact:v1:900dbdbbeb9abb4caebf2811500969361a422a54ba803998d6f2226e45e75907",
+        "source_fact:v1:9fae69218ed8c46dd907cb796b2427da6655d21e5af9d26dc157084f4e4a0955",
+        "source_fact:v1:a50bde2a607e4ce0501e07cd3c6154502be1200541b48d3aea81b189654b5c0d",
+        "source_fact:v1:b10967916830fb0109892eedf1db5f466d1eabc90f3bea53ae3b323867cd8ce0",
+        "source_fact:v1:b345e2ea9ddd4b056a22ac1f2e5f0a6b8eb05406693daaa6c029005dfe59a094",
+        "source_fact:v1:d72c263c8584cadf8a496bc0834f856e691c5e92955de636c5cefc5bebedbe08",
+        "source_fact:v1:d85e3a5a9044a681ea3cc1165fc4dc7365c9942e00341b9a4fb07d6a8d8e75a4"
+      ],
+      "source_published_kst": "2026-10-24T08:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 시대의 핵심 인프라인 메모리 반도체를 둘러싼 업계의 경쟁이 고대역폭메모리(HBM) 성능 개선을 넘어 차세대 메모리 기술로 확대되고 있다.",
+      "title": "HBM만으론 부족한 AI인프라…삼전닉스, 차세대 메모리 전쟁 | 연합뉴스"
     },
     "title:ca8d925543b2be37355af320": {
       "first_seen_kst": "2026-10-21T15:05:59+09:00",
@@ -1235041,16 +1237117,26 @@
     "title:e5778d18d83d17721d0c17a9": {
       "first_seen_kst": "2026-10-23T17:05:56+09:00",
       "lanes": {
-        "live": "2026-10-23T17:05:56+09:00"
+        "live": "2026-10-24T11:50:33+09:00"
       },
-      "last_seen_kst": "2026-10-23T17:05:56+09:00",
-      "link": "https://www.newsis.com/view/NISX20261023_0003839035",
-      "source": "뉴시스",
-      "source_body_digest": "32997a64264542ade9b28978436d04887a94722b8cd9610bceaf0c4d2b1b6655",
+      "last_seen_kst": "2026-10-24T11:50:33+09:00",
+      "link": "https://www.fnnews.com/news/202610231645353367",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "82ebd79f733db3aa953ee82e000ba9f735a5b35b2485cde3b300fc81c7577d2e",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-23T16:44+09:00",
+      "source_fact_identity": "source_facts:v1:04c4550ed6ed0c82c6dbf5fa4347eb2dab89ee31142b481a45a1744384672f75",
+      "source_fact_keys": [
+        "source_fact:v1:0be8c84105aa136a3af163befd4fe9b9447b4a59ccdb0af8aeba5d5bda3d5797",
+        "source_fact:v1:23622135bf33c923d7f768019f170b0139b546d89703306d1ee82a40154268fd",
+        "source_fact:v1:3b2a826c1b3ccf3cc8c689359df6f11304463835b6359f54bf9d5aadd00a051e",
+        "source_fact:v1:6b0480dba3df01875f4de2514691889b8f00084b1dd03857ffc307d95b9a0674",
+        "source_fact:v1:bc944556a082778a34525c795eea8f3861b6572089e561cd63b3c7dd190d394a",
+        "source_fact:v1:d217a4ef4a72db9c12aeaec93af2e0336acef76e9238573d5cece97ddeedab4c",
+        "source_fact:v1:d951208e85efe8dc20df5998a7357133d039832f65593c6195cc418f9d8f7e1a",
+        "source_fact:v1:da94ba49074deb9829c5e875059cb4e8b501c1da29b93691ad280ae5a3dc061a",
+        "source_fact:v1:df6421d10ed6eb5cf90c320ef69e62bd9d87f612fccbd5f1ef0702d1d33dfe70"
+      ],
+      "source_published_kst": "2026-10-23T16:45+09:00",
       "source_supply_terms": {},
       "source_title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)",
       "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
@@ -1249405,5 +1251491,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-24T11:14:26+09:00"
+  "updated_at_kst": "2026-10-24T11:50:33+09:00"
 }
