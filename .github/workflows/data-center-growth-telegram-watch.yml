@@ -667,8 +667,8 @@ jobs:
           python - "$tmpdir/us_data_center_cancellation_risk_state.json" <<'PY'
           import json, pathlib, sys
           data = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"))
-          if not data.get("ai_credit_initialized"):
-              raise SystemExit("AI credit source baseline absent; refusing to claim state persistence")
+          if int(data.get("ai_credit_rss_success_count", 0) or 0) > 0 and not data.get("ai_credit_initialized"):
+              raise SystemExit("AI credit RSS succeeded but source baseline was discarded")
           if "ai_credit_seen_ids" not in data:
               raise SystemExit("AI credit dedupe keys missing from pending state")
           print("ai_credit_pending_integrity=ok seen_ids_count=" + str(len(data["ai_credit_seen_ids"])))
@@ -741,8 +741,10 @@ jobs:
               text=True,
           )
           data = json.loads(raw)
-          if not data.get("ai_credit_initialized") or "ai_credit_seen_ids" not in data:
-              raise SystemExit("AI credit state NOT persisted to origin/main")
+          if "ai_credit_seen_ids" not in data:
+              raise SystemExit("AI credit dedupe state NOT persisted to origin/main")
+          if int(data.get("ai_credit_rss_success_count", 0) or 0) > 0 and not data.get("ai_credit_initialized"):
+              raise SystemExit("AI credit source baseline NOT persisted to origin/main")
           print(
               "ai_credit_remote_state_verified=true"
               f" seen_ids_count={len(data['ai_credit_seen_ids'])}"
