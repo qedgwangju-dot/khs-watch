@@ -7334,7 +7334,7 @@ def _sro_select(items,seen,force,limit):
     def _delivery_signature(item):
         source = str(item.get("source") or "")
         title = base.clean_title(str(item.get("title") or ""), source)
-        normalize = lambda value: re.sub(r"\\s+", " ", str(value or "")).strip().casefold()
+        normalize = lambda value: " ".join(str(value or "").split()).casefold()
         return (
             normalize(item.get("group")),
             normalize(title),
