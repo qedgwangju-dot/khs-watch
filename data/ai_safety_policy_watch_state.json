@@ -3,13 +3,13 @@
   "last_collection": {
     "deferred_events": 0,
     "errors": [],
-    "material_items": 4,
+    "material_items": 7,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 102,
+    "raw_items": 145,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -96,7 +96,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-10-24T14:04:10.583498+00:00",
+    "updated_at": "2026-10-24T14:08:02.576205+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -164,6 +164,15 @@
       "title": "Anthropic pitches AI safety bill that may block a model if 50+ people could be killed - TechCrunch",
       "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQaDFyYXc1VXhSNWszSTJjeHpqMzhfNnJyaU44UURVY2tKdl9PdVh1TXRnQ3lrRktDV1VhMEttU25ERGFKaXFKZmlsN0tZZDlGWVhPM0VKMXA1VHZlN0pja1BNSExXUnFTRUtES2xoM3hXdG95MDNSSjFDZTFOck1ZaXlVMDZwMW56VWlRVzVXTzY5TmdrZnoxVG51ZmhGQl8zeC1DeTcwalM3RzhISi1ncUE1Z2FXYUZOTXlB?oc=5"
     },
+    "8a0bdb307b0fc71d8f71a8e7": {
+      "category": "국내 PHP 보안위기 대응·정책 단계",
+      "entity": "과학기술정보통신부·한국인터넷진흥원",
+      "first_seen_at": "2026-10-24T14:08:02.576205+00:00",
+      "published_at": "2026-10-22T05:53:33+00:00",
+      "source": "MTN 머니투데이방송",
+      "title": "과기정통부, PHP 보안 우려에 민간 분야 사이버위기 경보 '주의'로 상향 - MTN 머니투데이방송",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE04MldTXzI5bkRWNUhCc1V4QUdBRUxSd0Z3U0lubGRRbG5GRlJwX3FBU1BSdXBnWGZhejIzNVN5YXlLRkJ0MkVSTy01aWkxTmJXTW5ZQ09hWm9jVVNpMXJB?oc=5"
+    },
     "abe1c24c8dd0a1db248cc299": {
       "category": "법규·의무 보고·감사",
       "entity": "AI 안전·보안 생태계",
@@ -229,6 +238,15 @@
       "title": "SoftBank in talks to buy US security group Allied Universal - Financial Times",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxObzh6bnZfTFFzdEFXbEFldFM5V1VrY1RjdGtiQmhjTlBvV2VNbThiUDNXenlZeC1YZ05pWTQzR1FiYzJQNEl5djF6UExTVUFDN3Axby1YaGxsek1VNldiMXlqUVV5Qk9ESUJRVWE4el9uRm1zbGFvNUhKa3JPc2tHalRzMWk?oc=5"
     },
+    "d1eab42cef5a64ecbc0f9861": {
+      "category": "국내 PHP 보안위기 대응·정책 단계",
+      "entity": "과학기술정보통신부·한국인터넷진흥원",
+      "first_seen_at": "2026-10-24T14:08:02.576205+00:00",
+      "published_at": "2026-10-22T06:11:01+00:00",
+      "source": "연합뉴스",
+      "title": "전 세계 PHP 보안 비상…정부, 사이버위기 경보 '주의' 상향 - 연합뉴스",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE83TDljdU9iUmR0WExxc1QwMXp2RDFvSmlOanlCMlZWTXM5TDR3RTYyTmhUM19USmdNQUg3MDl5dklVaTRjSEt1VWo3bzY1UE5XU2lqTjAyMjFzdm_SAWBBVV95cUxQaU4zZ0xBMVJEdlo2VXpjLUhSNGhWbk1IZG56SW91bDFPRUtvS3VEZUtoazNYcTZ2ellUYzRMS1RvSktrYldEbl9taHB2ajRaSko4SnpYMWtmczd0ZXFsdlk?oc=5"
+    },
     "e01fdbce5cef9d158f5b29f0": {
       "category": "CrowdStrike–NVIDIA AI 에이전트 보안 통합 단계",
       "entity": "CrowdStrike–NVIDIA",
@@ -255,6 +273,15 @@
       "source": "Bloomberg.com",
       "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Bloomberg.com",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcENENWdpRlloLVpNclIyQWpIM3JSV3VHZklqOWZlQ0NJYnB2TWg2ZlhPMndNbS1qM2pWM0dTTVFZQ2l1SmxTT1h3VjZJNVpXTWhZTHRnLThqYm9UeFJ4ZEp0U3JROG1sUFJrN3Z6SEFKN2tPcU5teHZ6cU9JUDh4X1laZVZJMkZNNXNSZnJlZDdOX0dFMlM5REZCSGRHR3AydkdCbUY3RU9zYTRoNzdz?oc=5"
+    },
+    "ed4cc9754cf818c1f9bb020b": {
+      "category": "국내 PHP 보안위기 대응·정책 단계",
+      "entity": "과학기술정보통신부·한국인터넷진흥원",
+      "first_seen_at": "2026-10-24T14:08:02.576205+00:00",
+      "published_at": "2026-10-22T04:31:02+00:00",
+      "source": "서울경제",
+      "title": "PHP 보안 우려에 정부, 사이버 위기 경보 ‘관심’→‘주의’ 상향 - 서울경제",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1wMHg0aGtwSktCU0M0YWZRa1pKMjVuZy1rQU5DTkFJNVBKbXpsaWtjd0RXSnpwSjJBa1NjWFYtdFJhbmJJTno4d2pUSUt0NUMtRlHSAVNBVV95cUxOaU1iSWM3ZDhoUHZFU0c2WXhmMGhCcUcyVnYzYVB2VnJHY1NfMFJnMWZJVW82NXVERW5FWGJ5LWxFMGo3YTlEbjZuXzQxTW01dWZaRQ?oc=5"
     },
     "ef69717d7372f63293bcdad3": {
       "category": "법규·의무 보고·감사",
@@ -302,6 +329,14 @@
       "source_url": "https://www.reuters.com/business/us-ftc-subpoenas-openai-anthropic-over-consumer-harms-axios-reports-2026-10-15/",
       "status": "2026-10-15 Axios/Reuters civil subpoena reporting only; investigation is not a liability finding"
     },
+    "php_korea_response:caution_elevated_20261022": {
+      "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148974113",
+      "status": "2026-10-22 12:00 KST: 민간 분야 사이버위기 경보 관심→주의 상향; 기존 기준선"
+    },
+    "php_korea_response:comprehensive_plan_proposed_20261023": {
+      "source_url": "https://imnews.imbc.com/news/2026/econo/article/6860231_36933.html",
+      "status": "2026-10-23 범부처 종합대책 마련·조직 정비 검토 발언; 시행 확정 아님"
+    },
     "softbank_allied:initial_talks_reported": {
       "source_url": "https://www.ft.com/content/e44a17f9-5be0-4a78-89fb-41c4578838ca",
       "status": "2026-10-17 FT / 2026-10-16 Bloomberg and Reuters early discussions; no signed deal"
@@ -317,11 +352,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-10-24T23:04:10+09:00",
+  "updated_at_kst": "2026-10-24T23:08:02+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-10-24T14:04:53.860507+00:00",
+    "last_success_at": "2026-10-24T14:08:42.978099+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
