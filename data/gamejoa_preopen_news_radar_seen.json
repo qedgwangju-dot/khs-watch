@@ -14392,6 +14392,26 @@
       "telegram_core_fact": "아이온큐(IONQ)가 제로 트러스트 보안 기업 엘리시티(Elisity)를 최대 13억 달러 전량 주식 거래로 인수하는 확정 계약을 체결했다고 13일 발표했다.",
       "title": "아이온큐, 엘리시티 13억 달러 전량 주식 인수 계약"
     },
+    "core:230118768a990e03b54c802f": {
+      "first_seen_kst": "2026-10-25T04:07:21+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:07:21+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:07:21+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261024160155",
+      "source": "지디넷코리아",
+      "source_body_digest": "6b7576578cc7c8fd07d2c08d114e0fa13c36ed35386cfc3fb4322263873b7dd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2feaceaf2f7a5181fbd3e66d1932062dfd9f01c9222cd67e336e8fdb4be3906e",
+      "source_fact_keys": [
+        "source_fact:v1:8238a03f3e3a5da1b2148f612678f8c9d65de932d157b3d90974878d52d5c146"
+      ],
+      "source_published_kst": "2026-10-24T22:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\"",
+      "telegram_core_fact": "SCMP는 \"캠브리콘 2분기 매출은 전년비 76% 증가했는데, 3분기 성장세는 이보다 가팔랐다\"며 \"자립 가능한 AI 컴퓨팅 생태계를 개발하려는 중국 정부 전략에 힘입은 결과\"라고 평가했다.",
+      "title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\""
+    },
     "core:2305347a7ab5207bd7b0ce36": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
       "lanes": {
@@ -102740,6 +102760,26 @@
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령이 19일(현지시간) 러시아 정유시설 공격을 중단하는 대가로 미국에 패트리엇 요격미사일 지원을 요구했다.",
       "title": "종전론 배제될라…젤렌스키 \"美 패트리엇 주면 러 공격 중단\" | 연합뉴스"
     },
+    "event:002b2e3fb1bb13f36ecb83c3": {
+      "first_seen_kst": "2026-10-25T04:07:21+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:07:21+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:07:21+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261024160155",
+      "source": "지디넷코리아",
+      "source_body_digest": "6b7576578cc7c8fd07d2c08d114e0fa13c36ed35386cfc3fb4322263873b7dd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2feaceaf2f7a5181fbd3e66d1932062dfd9f01c9222cd67e336e8fdb4be3906e",
+      "source_fact_keys": [
+        "source_fact:v1:8238a03f3e3a5da1b2148f612678f8c9d65de932d157b3d90974878d52d5c146"
+      ],
+      "source_published_kst": "2026-10-24T22:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\"",
+      "telegram_core_fact": "SCMP는 \"캠브리콘 2분기 매출은 전년비 76% 증가했는데, 3분기 성장세는 이보다 가팔랐다\"며 \"자립 가능한 AI 컴퓨팅 생태계를 개발하려는 중국 정부 전략에 힘입은 결과\"라고 평가했다.",
+      "title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\""
+    },
     "event:003f3fec92db8753529b09aa": {
       "first_seen_kst": "2026-10-01T18:06:18+09:00",
       "lanes": {
@@ -148644,6 +148684,26 @@
       "source_title": "반도체 수출 170.9%↑…10월 초순 수출, '역대 최대'(상보)",
       "telegram_core_fact": "관세청이 12일 발표한 '2026년 10월 1~10일 수출입 현황'에 따르면 이 기간 수출액은 261억달러로 전년동기대비 102.0% 급증했다.",
       "title": "반도체 수출 170.9%↑…10월 초순 수출, '역대 최대'(상보)"
+    },
+    "fact:35a369fa1a3e7aee074b5157": {
+      "first_seen_kst": "2026-10-25T04:07:21+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:07:21+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:07:21+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261024160155",
+      "source": "지디넷코리아",
+      "source_body_digest": "6b7576578cc7c8fd07d2c08d114e0fa13c36ed35386cfc3fb4322263873b7dd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2feaceaf2f7a5181fbd3e66d1932062dfd9f01c9222cd67e336e8fdb4be3906e",
+      "source_fact_keys": [
+        "source_fact:v1:8238a03f3e3a5da1b2148f612678f8c9d65de932d157b3d90974878d52d5c146"
+      ],
+      "source_published_kst": "2026-10-24T22:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\"",
+      "telegram_core_fact": "SCMP는 \"캠브리콘 2분기 매출은 전년비 76% 증가했는데, 3분기 성장세는 이보다 가팔랐다\"며 \"자립 가능한 AI 컴퓨팅 생태계를 개발하려는 중국 정부 전략에 힘입은 결과\"라고 평가했다.",
+      "title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\""
     },
     "fact:35c3bf68ddd1992813edce68": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
@@ -343296,6 +343356,26 @@
       "source_published_kst": "2026-10-07T07:49+09:00",
       "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
     },
+    "link:b7b3210553a585e1a9ef059e": {
+      "first_seen_kst": "2026-10-25T04:07:21+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:07:21+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:07:21+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261024160155",
+      "source": "지디넷코리아",
+      "source_body_digest": "6b7576578cc7c8fd07d2c08d114e0fa13c36ed35386cfc3fb4322263873b7dd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2feaceaf2f7a5181fbd3e66d1932062dfd9f01c9222cd67e336e8fdb4be3906e",
+      "source_fact_keys": [
+        "source_fact:v1:8238a03f3e3a5da1b2148f612678f8c9d65de932d157b3d90974878d52d5c146"
+      ],
+      "source_published_kst": "2026-10-24T22:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\"",
+      "telegram_core_fact": "SCMP는 \"캠브리콘 2분기 매출은 전년비 76% 증가했는데, 3분기 성장세는 이보다 가팔랐다\"며 \"자립 가능한 AI 컴퓨팅 생태계를 개발하려는 중국 정부 전략에 힘입은 결과\"라고 평가했다.",
+      "title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\""
+    },
     "link:b7c2d915dc3b37117e41736d": {
       "first_seen_kst": "2026-10-12T22:07:35+09:00",
       "lanes": {
@@ -479399,6 +479479,26 @@
       "source_title": "실리콘투, 환율이 안정된다면 [베스트 애널리스트 추천 종목]",
       "telegram_core_fact": "예견된 환율 하락의 역풍3분기 연결기준 매출액은 전년 대비 42% 증가한 4250억원, 영업이익은 전년 대비 25% 늘어난 790억원으로 컨센서스 영업이익을 10% 하회할 것으로 추정된다.",
       "title": "실리콘투, 환율이 안정된다면 [베스트 애널리스트 추천 종목]"
+    },
+    "original:aca1ca9e29f6e3887a488d83": {
+      "first_seen_kst": "2026-10-25T04:07:21+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:07:21+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:07:21+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261024160155",
+      "source": "지디넷코리아",
+      "source_body_digest": "6b7576578cc7c8fd07d2c08d114e0fa13c36ed35386cfc3fb4322263873b7dd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2feaceaf2f7a5181fbd3e66d1932062dfd9f01c9222cd67e336e8fdb4be3906e",
+      "source_fact_keys": [
+        "source_fact:v1:8238a03f3e3a5da1b2148f612678f8c9d65de932d157b3d90974878d52d5c146"
+      ],
+      "source_published_kst": "2026-10-24T22:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\"",
+      "telegram_core_fact": "SCMP는 \"캠브리콘 2분기 매출은 전년비 76% 증가했는데, 3분기 성장세는 이보다 가팔랐다\"며 \"자립 가능한 AI 컴퓨팅 생태계를 개발하려는 중국 정부 전략에 힘입은 결과\"라고 평가했다.",
+      "title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\""
     },
     "original:aca94b789f8edc1535b0b7e2": {
       "first_seen_kst": "2026-10-23T17:26:50+09:00",
@@ -850414,6 +850514,26 @@
       "telegram_core_fact": "올레녹스(OLOX)가 캐나다 브리티시컬럼비아주 천연가스 자산을 보유한 와일드보이 홀딩스와 텍사스 전력 개발 플랫폼 IPD 인더스트리 지분 100% 인수를 완료했으며, 인수대금 2170만 달러는 거의 전액 시리즈F 우선주로 지급됐다고 20일 발표했다.",
       "title": "올레녹스, 가스·전력 자산 인수 완료..2170만 달러"
     },
+    "source_fact:8bdb43b9dc485996decf5587": {
+      "first_seen_kst": "2026-10-25T04:07:21+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:07:21+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:07:21+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261024160155",
+      "source": "지디넷코리아",
+      "source_body_digest": "6b7576578cc7c8fd07d2c08d114e0fa13c36ed35386cfc3fb4322263873b7dd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2feaceaf2f7a5181fbd3e66d1932062dfd9f01c9222cd67e336e8fdb4be3906e",
+      "source_fact_keys": [
+        "source_fact:v1:8238a03f3e3a5da1b2148f612678f8c9d65de932d157b3d90974878d52d5c146"
+      ],
+      "source_published_kst": "2026-10-24T22:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\"",
+      "telegram_core_fact": "SCMP는 \"캠브리콘 2분기 매출은 전년비 76% 증가했는데, 3분기 성장세는 이보다 가팔랐다\"며 \"자립 가능한 AI 컴퓨팅 생태계를 개발하려는 중국 정부 전략에 힘입은 결과\"라고 평가했다.",
+      "title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\""
+    },
     "source_fact:8bde96b56d59ca18819856d4": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
       "lanes": {
@@ -1219900,6 +1220020,26 @@
       "telegram_core_fact": "예견된 환율 하락의 역풍3분기 연결기준 매출액은 전년 대비 42% 증가한 4250억원, 영업이익은 전년 대비 25% 늘어난 790억원으로 컨센서스 영업이익을 10% 하회할 것으로 추정된다.",
       "title": "실리콘투, 환율이 안정된다면 [베스트 애널리스트 추천 종목]"
     },
+    "title:aca1ca9e29f6e3887a488d83": {
+      "first_seen_kst": "2026-10-25T04:07:21+09:00",
+      "lanes": {
+        "live": "2026-10-25T04:07:21+09:00"
+      },
+      "last_seen_kst": "2026-10-25T04:07:21+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261024160155",
+      "source": "지디넷코리아",
+      "source_body_digest": "6b7576578cc7c8fd07d2c08d114e0fa13c36ed35386cfc3fb4322263873b7dd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2feaceaf2f7a5181fbd3e66d1932062dfd9f01c9222cd67e336e8fdb4be3906e",
+      "source_fact_keys": [
+        "source_fact:v1:8238a03f3e3a5da1b2148f612678f8c9d65de932d157b3d90974878d52d5c146"
+      ],
+      "source_published_kst": "2026-10-24T22:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\"",
+      "telegram_core_fact": "SCMP는 \"캠브리콘 2분기 매출은 전년비 76% 증가했는데, 3분기 성장세는 이보다 가팔랐다\"며 \"자립 가능한 AI 컴퓨팅 생태계를 개발하려는 중국 정부 전략에 힘입은 결과\"라고 평가했다.",
+      "title": "'중국판 엔비디아' 캠브리콘, 매출 급등…\"국산화 노력 수혜\""
+    },
     "title:aca94b789f8edc1535b0b7e2": {
       "first_seen_kst": "2026-10-23T17:26:50+09:00",
       "lanes": {
@@ -1265545,5 +1265685,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-25T03:16:17+09:00"
+  "updated_at_kst": "2026-10-25T04:07:21+09:00"
 }
