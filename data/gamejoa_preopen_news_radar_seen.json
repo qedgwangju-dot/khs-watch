@@ -66509,6 +66509,29 @@
       "telegram_core_fact": "알래스카 LNG 개발사인 글렌판은 사업비를 445억~545억달러(약 59조~72조원)로 추산했다.",
       "title": "트럼프 韓참여 압박 알래스카 LNG⋯사업비 최대 2배 가능성 [종합]"
     },
+    "core:a51a58fbcb019d11ba3f73a3": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839720",
+      "source": "뉴시스",
+      "source_body_digest": "f9f1d750a3710502d3dcd8a9e0d87ad7f5f8f97a73de0d37a66701baebdc6c5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7ac7f828cbbee02dc20f37e936abf3ab3903873844b79ccf1f2026f6578fa17d",
+      "source_fact_keys": [
+        "source_fact:v1:4dfdb1864de717bfaccff7933280bfa592a846a40b9d8eda8d6f3d358aeb6a52",
+        "source_fact:v1:8b800f3e589007e91aa49b0fa69eac8503695056fc3a12310ba30eab3014307c",
+        "source_fact:v1:99ba15acfbbf77ca2298fc4e361dcff054a69fc2cee7d9f77e5a72884aeb8c66",
+        "source_fact:v1:bdbf8a476262040287f864a16a909c51fc2a81d84dc6ea77e7e646db03168d69"
+      ],
+      "source_published_kst": "2026-10-24T22:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\"",
+      "telegram_core_fact": "23일(현지 시간) 월스트리트저널(WSJ)은 관련 작전 계획을 잘 아는 미국 당국자들을 인용해 미군이 향후 수주 내 트럼프 대통령의 이란 추가 공격 결정에 대비해 중동 지역에서 군사적 충돌이 확대될 가능성에 대비하고 있다고 보도했다.",
+      "title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\""
+    },
     "core:a53424c50a9a676485ce0a46": {
       "first_seen_kst": "2026-10-21T10:25:18+09:00",
       "lanes": {
@@ -66851,6 +66874,29 @@
       "source_title": "한성크린텍, 삼성전기 베트남 공장 230억원 초순수 E&P 계약 체결",
       "telegram_core_fact": "한성크린텍은 삼성이앤에이와 삼성전기 베트남 공장 초순수 시스템 설계·조달(E&P) 계약을 230억원에 체결했다. 계약기간은 2027년 6월 30일까지다.",
       "title": "한성크린텍, 삼성전기 베트남 공장 230억원 초순수 E&P 계약 체결"
+    },
+    "core:a6bacc61acfd750847ebd5dc": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.mk.co.kr/news/world/12184707",
+      "source": "매일경제",
+      "source_body_digest": "3ff8e36e9ca1927f78812315149a5f0e0bf11df8edd9e13ee5f0d4578c6614e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b06d0680e74bd43169a1e6e69c35f086a1ab9495ea599436aca194107c62570d",
+      "source_fact_keys": [
+        "source_fact:v1:12d3643056f8d8ec31bf571d8af9d10b5a89e17d8a9e6fe7cb394a104a242432",
+        "source_fact:v1:1fda5baca7ba75a1bdc10b0d4cd97054fe5635d9999d80b9114f4c570899108e",
+        "source_fact:v1:730fd0db091853f1321fec75eb2e721bb01a97cc236cddddbf4233e56f995ea4",
+        "source_fact:v1:df9929ee85909d4425bde066123e31ae21d08db9cfa109fb3d689c43925e40b3"
+      ],
+      "source_published_kst": "2026-10-24T06:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 발언과 최근 미국과 이스라엘이 중간선거 이후 이란을 다시 공격하기 위한 계획을 마련했다는 뉴욕타임스(NYT)의 보도가 나오면서 국제 유가가 급등했다.",
+      "title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”"
     },
     "core:a6cf60ef4a420fe946e9ecd4": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
@@ -112710,24 +112756,25 @@
     "event:6f83dcee24ad00789a6a6542": {
       "first_seen_kst": "2026-10-24T05:00:02+09:00",
       "lanes": {
-        "live": "2026-10-24T10:14:54+09:00"
+        "live": "2026-10-24T23:12:08+09:00"
       },
-      "last_seen_kst": "2026-10-24T10:14:54+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2639635",
-      "source": "이투데이",
-      "source_body_digest": "fa555ad6e9f5119e707e7bbd29f6d76840e6723260f47075765186354befeb8a",
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839720",
+      "source": "뉴시스",
+      "source_body_digest": "f9f1d750a3710502d3dcd8a9e0d87ad7f5f8f97a73de0d37a66701baebdc6c5b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:08cd6e25ba5c23f0adc72917b00157bb38e3531ec17f02b3329cb3c1406d79c6",
+      "source_fact_identity": "source_facts:v1:7ac7f828cbbee02dc20f37e936abf3ab3903873844b79ccf1f2026f6578fa17d",
       "source_fact_keys": [
-        "source_fact:v1:2478a93c1f2481eb77fcd177d18cb05997174c180c5bca5a9ca17ef5ed674d01",
-        "source_fact:v1:5a70164cc8ccc40f6fbedc1b9ff4726c4948b8b1a2aac68c7708218cac5b0460",
-        "source_fact:v1:885a8980519d243bb5519383382c13cf42fd402860a72e7afa4d6033a17ca5c6"
+        "source_fact:v1:4dfdb1864de717bfaccff7933280bfa592a846a40b9d8eda8d6f3d358aeb6a52",
+        "source_fact:v1:8b800f3e589007e91aa49b0fa69eac8503695056fc3a12310ba30eab3014307c",
+        "source_fact:v1:99ba15acfbbf77ca2298fc4e361dcff054a69fc2cee7d9f77e5a72884aeb8c66",
+        "source_fact:v1:bdbf8a476262040287f864a16a909c51fc2a81d84dc6ea77e7e646db03168d69"
       ],
-      "source_published_kst": "2026-10-24T06:56+09:00",
+      "source_published_kst": "2026-10-24T22:44+09:00",
       "source_supply_terms": {},
-      "source_title": "트럼프, 대이란 추가 공격 시사…“또 한 번 작은 ‘장대한 분노’ 작전할 수도” [상보]",
-      "telegram_core_fact": "도널드 트럼프 미국 대통령이 23일(현지시간) 이란이 협상에 응하지 않을 경우 추가 군사작전을 벌일 수 있다고 경고했다.",
-      "title": "트럼프, 대이란 추가 공격 시사…“또 한 번 작은 ‘장대한 분노’ 작전할 수도” [상보]"
+      "source_title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\"",
+      "telegram_core_fact": "23일(현지 시간) 월스트리트저널(WSJ)은 관련 작전 계획을 잘 아는 미국 당국자들을 인용해 미군이 향후 수주 내 트럼프 대통령의 이란 추가 공격 결정에 대비해 중동 지역에서 군사적 충돌이 확대될 가능성에 대비하고 있다고 보도했다.",
+      "title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\""
     },
     "event:6ff0a8713180ba1ab0e9bf44": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
@@ -115619,24 +115666,25 @@
     "event:900350979076bbea800020b9": {
       "first_seen_kst": "2026-10-24T03:26:54+09:00",
       "lanes": {
-        "live": "2026-10-24T15:44:19+09:00"
+        "live": "2026-10-24T23:12:08+09:00"
       },
-      "last_seen_kst": "2026-10-24T15:44:19+09:00",
-      "link": "https://www.newsis.com/view/NISX20261024_0003839362",
-      "source": "뉴시스",
-      "source_body_digest": "8e1a6b33647a837f0ac323dc05bc001490bf86a57166e49d3bebd6fc6978c5d3",
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.mk.co.kr/news/world/12184707",
+      "source": "매일경제",
+      "source_body_digest": "3ff8e36e9ca1927f78812315149a5f0e0bf11df8edd9e13ee5f0d4578c6614e8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:27fe1ec0bfe485f583c37c904409071805b236e40005f8b292221af6b7e645ad",
+      "source_fact_identity": "source_facts:v1:b06d0680e74bd43169a1e6e69c35f086a1ab9495ea599436aca194107c62570d",
       "source_fact_keys": [
-        "source_fact:v1:69cf565f9309ade0fe770f4a162e9ab4ea6aa9298a425599a5556b2ad7ea0c35",
-        "source_fact:v1:82a1f0a37ca0ecc69f943a3f68867e9fe96b488ae5d95546620cac47f8b518ed",
-        "source_fact:v1:fd51b6846897469cfd6332dea00c2e905ff537a5c496e1a00b33a6557c92881c"
+        "source_fact:v1:12d3643056f8d8ec31bf571d8af9d10b5a89e17d8a9e6fe7cb394a104a242432",
+        "source_fact:v1:1fda5baca7ba75a1bdc10b0d4cd97054fe5635d9999d80b9114f4c570899108e",
+        "source_fact:v1:730fd0db091853f1321fec75eb2e721bb01a97cc236cddddbf4233e56f995ea4",
+        "source_fact:v1:df9929ee85909d4425bde066123e31ae21d08db9cfa109fb3d689c43925e40b3"
       ],
-      "source_published_kst": "2026-10-24T05:39+09:00",
+      "source_published_kst": "2026-10-24T06:21+09:00",
       "source_supply_terms": {},
-      "source_title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\"",
-      "telegram_core_fact": "아나돌루통신에 따르면 트럼프 대통령은 이날 플로리다주에서 유세를 가지고 이란과의 협상 문제를 언급하며 이같이 밝혔다.",
-      "title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\""
+      "source_title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 발언과 최근 미국과 이스라엘이 중간선거 이후 이란을 다시 공격하기 위한 계획을 마련했다는 뉴욕타임스(NYT)의 보도가 나오면서 국제 유가가 급등했다.",
+      "title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”"
     },
     "event:9022e10a9278ce251c4d0a3f": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
@@ -153425,6 +153473,29 @@
       "source_title": "노던 오일&가스, 3분기 설비투자 2억5000만 달러·자사주 매입",
       "telegram_core_fact": "노던 오일&가스(NOG)가 3분기 설비투자(CapEx)를 비예산 인수 제외 기준 2억5000만~2억5300만 달러로 예상하고, 3분기 중 자사주 66만7989주를 약 1600만 달러에 매입했다고 13일 발표했다.",
       "title": "노던 오일&가스, 3분기 설비투자 2억5000만 달러·자사주 매입"
+    },
+    "fact:420ca6c34dbe30515481d23a": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.mk.co.kr/news/world/12184707",
+      "source": "매일경제",
+      "source_body_digest": "3ff8e36e9ca1927f78812315149a5f0e0bf11df8edd9e13ee5f0d4578c6614e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b06d0680e74bd43169a1e6e69c35f086a1ab9495ea599436aca194107c62570d",
+      "source_fact_keys": [
+        "source_fact:v1:12d3643056f8d8ec31bf571d8af9d10b5a89e17d8a9e6fe7cb394a104a242432",
+        "source_fact:v1:1fda5baca7ba75a1bdc10b0d4cd97054fe5635d9999d80b9114f4c570899108e",
+        "source_fact:v1:730fd0db091853f1321fec75eb2e721bb01a97cc236cddddbf4233e56f995ea4",
+        "source_fact:v1:df9929ee85909d4425bde066123e31ae21d08db9cfa109fb3d689c43925e40b3"
+      ],
+      "source_published_kst": "2026-10-24T06:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 발언과 최근 미국과 이스라엘이 중간선거 이후 이란을 다시 공격하기 위한 계획을 마련했다는 뉴욕타임스(NYT)의 보도가 나오면서 국제 유가가 급등했다.",
+      "title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”"
     },
     "fact:420dc2b7d71f6fe7fef1773a": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
@@ -233727,6 +233798,29 @@
       "telegram_core_fact": "올해 들어 전기차 시장이 빠르게 성장하고 있지만 판매 확대가 국내 완성차 5사의 생산 증가로 이어지지는 않고 있다는 지적이 나온다.",
       "title": "보조금 받아 中 전기차 산다…완성차업계 “생산 지원은 달라야” [제조업 지원 대전환]"
     },
+    "fact:f5d9f2bd46eb5c380d00a3f1": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839720",
+      "source": "뉴시스",
+      "source_body_digest": "f9f1d750a3710502d3dcd8a9e0d87ad7f5f8f97a73de0d37a66701baebdc6c5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7ac7f828cbbee02dc20f37e936abf3ab3903873844b79ccf1f2026f6578fa17d",
+      "source_fact_keys": [
+        "source_fact:v1:4dfdb1864de717bfaccff7933280bfa592a846a40b9d8eda8d6f3d358aeb6a52",
+        "source_fact:v1:8b800f3e589007e91aa49b0fa69eac8503695056fc3a12310ba30eab3014307c",
+        "source_fact:v1:99ba15acfbbf77ca2298fc4e361dcff054a69fc2cee7d9f77e5a72884aeb8c66",
+        "source_fact:v1:bdbf8a476262040287f864a16a909c51fc2a81d84dc6ea77e7e646db03168d69"
+      ],
+      "source_published_kst": "2026-10-24T22:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\"",
+      "telegram_core_fact": "23일(현지 시간) 월스트리트저널(WSJ)은 관련 작전 계획을 잘 아는 미국 당국자들을 인용해 미군이 향후 수주 내 트럼프 대통령의 이란 추가 공격 결정에 대비해 중동 지역에서 군사적 충돌이 확대될 가능성에 대비하고 있다고 보도했다.",
+      "title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\""
+    },
     "fact:f5ecdaf7b0c2954cbdef6d69": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
       "lanes": {
@@ -256591,6 +256685,29 @@
       "source_title": "삼표산업, 에스지오텍과 지반 보수 신공법 개발 업무협약 체결",
       "telegram_core_fact": "삼표산업은 지반 보수 전문기업 에스지오텍과 지반 보수 공법 공동 개발 및 기술 협력을 위한 업무협약(MOU)을 체결했다고 8일 밝혔다. 삼표산업이 성수대교와 올림픽대교 단차 보수 현장에 적용한 특수몰탈을 활용해 지반 보수 신공법 개발에 나선다.",
       "title": "삼표산업, 에스지오텍과 지반 보수 신공법 개발 업무협약 체결"
+    },
+    "link:204b01edb7024977dfddba80": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839720",
+      "source": "뉴시스",
+      "source_body_digest": "f9f1d750a3710502d3dcd8a9e0d87ad7f5f8f97a73de0d37a66701baebdc6c5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7ac7f828cbbee02dc20f37e936abf3ab3903873844b79ccf1f2026f6578fa17d",
+      "source_fact_keys": [
+        "source_fact:v1:4dfdb1864de717bfaccff7933280bfa592a846a40b9d8eda8d6f3d358aeb6a52",
+        "source_fact:v1:8b800f3e589007e91aa49b0fa69eac8503695056fc3a12310ba30eab3014307c",
+        "source_fact:v1:99ba15acfbbf77ca2298fc4e361dcff054a69fc2cee7d9f77e5a72884aeb8c66",
+        "source_fact:v1:bdbf8a476262040287f864a16a909c51fc2a81d84dc6ea77e7e646db03168d69"
+      ],
+      "source_published_kst": "2026-10-24T22:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\"",
+      "telegram_core_fact": "23일(현지 시간) 월스트리트저널(WSJ)은 관련 작전 계획을 잘 아는 미국 당국자들을 인용해 미군이 향후 수주 내 트럼프 대통령의 이란 추가 공격 결정에 대비해 중동 지역에서 군사적 충돌이 확대될 가능성에 대비하고 있다고 보도했다.",
+      "title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\""
     },
     "link:205be1ab811412ead9104e3a": {
       "first_seen_kst": "2026-10-19T05:12:02+09:00",
@@ -366641,6 +366758,29 @@
       "source": "매일경제",
       "title": "코스피 30% 반등했지만…ETF 투자자, 지수형 30% 반도체 80% 물렸다"
     },
+    "link:e3379ff277bacdba409a71a3": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.mk.co.kr/news/world/12184707",
+      "source": "매일경제",
+      "source_body_digest": "3ff8e36e9ca1927f78812315149a5f0e0bf11df8edd9e13ee5f0d4578c6614e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b06d0680e74bd43169a1e6e69c35f086a1ab9495ea599436aca194107c62570d",
+      "source_fact_keys": [
+        "source_fact:v1:12d3643056f8d8ec31bf571d8af9d10b5a89e17d8a9e6fe7cb394a104a242432",
+        "source_fact:v1:1fda5baca7ba75a1bdc10b0d4cd97054fe5635d9999d80b9114f4c570899108e",
+        "source_fact:v1:730fd0db091853f1321fec75eb2e721bb01a97cc236cddddbf4233e56f995ea4",
+        "source_fact:v1:df9929ee85909d4425bde066123e31ae21d08db9cfa109fb3d689c43925e40b3"
+      ],
+      "source_published_kst": "2026-10-24T06:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 발언과 최근 미국과 이스라엘이 중간선거 이후 이란을 다시 공격하기 위한 계획을 마련했다는 뉴욕타임스(NYT)의 보도가 나오면서 국제 유가가 급등했다.",
+      "title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”"
+    },
     "link:e3416f14d4d3d2d7c039a0e8": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
       "lanes": {
@@ -418678,6 +418818,29 @@
       "telegram_core_fact": "분기 배당도 주당 0.34달러로 6.3% 인상되어 주주환원 확대에 대한 기대가 커졌습니다.",
       "title": "카스 인터내셔널 시스템, 3분기 EPS 19% 증가에 배당 인상까지 더해져 주목"
     },
+    "original:414ef69cc8a6b5d9106f367a": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.mk.co.kr/news/world/12184707",
+      "source": "매일경제",
+      "source_body_digest": "3ff8e36e9ca1927f78812315149a5f0e0bf11df8edd9e13ee5f0d4578c6614e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b06d0680e74bd43169a1e6e69c35f086a1ab9495ea599436aca194107c62570d",
+      "source_fact_keys": [
+        "source_fact:v1:12d3643056f8d8ec31bf571d8af9d10b5a89e17d8a9e6fe7cb394a104a242432",
+        "source_fact:v1:1fda5baca7ba75a1bdc10b0d4cd97054fe5635d9999d80b9114f4c570899108e",
+        "source_fact:v1:730fd0db091853f1321fec75eb2e721bb01a97cc236cddddbf4233e56f995ea4",
+        "source_fact:v1:df9929ee85909d4425bde066123e31ae21d08db9cfa109fb3d689c43925e40b3"
+      ],
+      "source_published_kst": "2026-10-24T06:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 발언과 최근 미국과 이스라엘이 중간선거 이후 이란을 다시 공격하기 위한 계획을 마련했다는 뉴욕타임스(NYT)의 보도가 나오면서 국제 유가가 급등했다.",
+      "title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”"
+    },
     "original:4151aacfff37f9d9a956b1ab": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
       "lanes": {
@@ -420803,6 +420966,29 @@
       "source_title": "[올댓차이나] 홍콩 9월 인플레율 1.9%로 가속…실업률 3.9%·0.1%P 악화",
       "telegram_core_fact": "동망과 경제통, 홍콩 스탠더드에 따르면 홍콩 특구정부 통계처는 22일 9월 종합 소비자 물가지수(CPI)가 전년 동월보다 1.9% 상승했다고 발표했다.",
       "title": "[올댓차이나] 홍콩 9월 인플레율 1.9%로 가속…실업률 3.9%·0.1%P 악화"
+    },
+    "original:447ac6722745afd8247a3ce9": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839720",
+      "source": "뉴시스",
+      "source_body_digest": "f9f1d750a3710502d3dcd8a9e0d87ad7f5f8f97a73de0d37a66701baebdc6c5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7ac7f828cbbee02dc20f37e936abf3ab3903873844b79ccf1f2026f6578fa17d",
+      "source_fact_keys": [
+        "source_fact:v1:4dfdb1864de717bfaccff7933280bfa592a846a40b9d8eda8d6f3d358aeb6a52",
+        "source_fact:v1:8b800f3e589007e91aa49b0fa69eac8503695056fc3a12310ba30eab3014307c",
+        "source_fact:v1:99ba15acfbbf77ca2298fc4e361dcff054a69fc2cee7d9f77e5a72884aeb8c66",
+        "source_fact:v1:bdbf8a476262040287f864a16a909c51fc2a81d84dc6ea77e7e646db03168d69"
+      ],
+      "source_published_kst": "2026-10-24T22:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\"",
+      "telegram_core_fact": "23일(현지 시간) 월스트리트저널(WSJ)은 관련 작전 계획을 잘 아는 미국 당국자들을 인용해 미군이 향후 수주 내 트럼프 대통령의 이란 추가 공격 결정에 대비해 중동 지역에서 군사적 충돌이 확대될 가능성에 대비하고 있다고 보도했다.",
+      "title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\""
     },
     "original:4480ce9efaa11ba3067a020d": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -541342,6 +541528,29 @@
       "telegram_core_fact": "스테이트스트리트(STT)는 3분기 희석 주당순이익(EPS)이 3.69달러로 전년비 33% 증가했고, 총수익(Total revenue)은 40억400만 달러로 13%, 순이익은 10억9000만 달러로 27% 각각 늘었다고 10월 14일 발표했다.",
       "title": "스테이트스트리트, 3분기 EPS 3.69달러..전년비 33% 증가"
     },
+    "source_fact:07f454756210105a626df2f5": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839720",
+      "source": "뉴시스",
+      "source_body_digest": "f9f1d750a3710502d3dcd8a9e0d87ad7f5f8f97a73de0d37a66701baebdc6c5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7ac7f828cbbee02dc20f37e936abf3ab3903873844b79ccf1f2026f6578fa17d",
+      "source_fact_keys": [
+        "source_fact:v1:4dfdb1864de717bfaccff7933280bfa592a846a40b9d8eda8d6f3d358aeb6a52",
+        "source_fact:v1:8b800f3e589007e91aa49b0fa69eac8503695056fc3a12310ba30eab3014307c",
+        "source_fact:v1:99ba15acfbbf77ca2298fc4e361dcff054a69fc2cee7d9f77e5a72884aeb8c66",
+        "source_fact:v1:bdbf8a476262040287f864a16a909c51fc2a81d84dc6ea77e7e646db03168d69"
+      ],
+      "source_published_kst": "2026-10-24T22:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\"",
+      "telegram_core_fact": "23일(현지 시간) 월스트리트저널(WSJ)은 관련 작전 계획을 잘 아는 미국 당국자들을 인용해 미군이 향후 수주 내 트럼프 대통령의 이란 추가 공격 결정에 대비해 중동 지역에서 군사적 충돌이 확대될 가능성에 대비하고 있다고 보도했다.",
+      "title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\""
+    },
     "source_fact:07fbe91d504810d05003f026": {
       "first_seen_kst": "2026-10-14T04:36:31+09:00",
       "lanes": {
@@ -554314,6 +554523,29 @@
       "source_title": "삼전닉스 앞섰다는 中창신메모리 발표…\"AI주 차익실현 빌미로\"",
       "telegram_core_fact": "창신메모리 역시 이날 중국 증시에서 장중 최대 5.3% 하락했다가 한국시간 오후 3시45분 기준 낙폭을 3%대로 다소 줄였다.",
       "title": "삼전닉스 앞섰다는 中창신메모리 발표…\"AI주 차익실현 빌미로\""
+    },
+    "source_fact:0da69890a12701067b3e9223": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.mk.co.kr/news/world/12184707",
+      "source": "매일경제",
+      "source_body_digest": "3ff8e36e9ca1927f78812315149a5f0e0bf11df8edd9e13ee5f0d4578c6614e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b06d0680e74bd43169a1e6e69c35f086a1ab9495ea599436aca194107c62570d",
+      "source_fact_keys": [
+        "source_fact:v1:12d3643056f8d8ec31bf571d8af9d10b5a89e17d8a9e6fe7cb394a104a242432",
+        "source_fact:v1:1fda5baca7ba75a1bdc10b0d4cd97054fe5635d9999d80b9114f4c570899108e",
+        "source_fact:v1:730fd0db091853f1321fec75eb2e721bb01a97cc236cddddbf4233e56f995ea4",
+        "source_fact:v1:df9929ee85909d4425bde066123e31ae21d08db9cfa109fb3d689c43925e40b3"
+      ],
+      "source_published_kst": "2026-10-24T06:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 발언과 최근 미국과 이스라엘이 중간선거 이후 이란을 다시 공격하기 위한 계획을 마련했다는 뉴욕타임스(NYT)의 보도가 나오면서 국제 유가가 급등했다.",
+      "title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”"
     },
     "source_fact:0daa487b37a2d849aea8317c": {
       "first_seen_kst": "2026-10-21T22:01:46+09:00",
@@ -586466,6 +586698,29 @@
       ],
       "source_published_kst": "2026-10-06T11:14+09:00",
       "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
+    },
+    "source_fact:1bc060a543297f574504bd1f": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839720",
+      "source": "뉴시스",
+      "source_body_digest": "f9f1d750a3710502d3dcd8a9e0d87ad7f5f8f97a73de0d37a66701baebdc6c5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7ac7f828cbbee02dc20f37e936abf3ab3903873844b79ccf1f2026f6578fa17d",
+      "source_fact_keys": [
+        "source_fact:v1:4dfdb1864de717bfaccff7933280bfa592a846a40b9d8eda8d6f3d358aeb6a52",
+        "source_fact:v1:8b800f3e589007e91aa49b0fa69eac8503695056fc3a12310ba30eab3014307c",
+        "source_fact:v1:99ba15acfbbf77ca2298fc4e361dcff054a69fc2cee7d9f77e5a72884aeb8c66",
+        "source_fact:v1:bdbf8a476262040287f864a16a909c51fc2a81d84dc6ea77e7e646db03168d69"
+      ],
+      "source_published_kst": "2026-10-24T22:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\"",
+      "telegram_core_fact": "23일(현지 시간) 월스트리트저널(WSJ)은 관련 작전 계획을 잘 아는 미국 당국자들을 인용해 미군이 향후 수주 내 트럼프 대통령의 이란 추가 공격 결정에 대비해 중동 지역에서 군사적 충돌이 확대될 가능성에 대비하고 있다고 보도했다.",
+      "title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\""
     },
     "source_fact:1bc0f884649da9b1fd45e9f7": {
       "first_seen_kst": "2026-10-14T21:45:21+09:00",
@@ -742374,6 +742629,29 @@
       "telegram_core_fact": "고려아연이 영풍·MBK파트너스 측이 제기한 주주대표소송과 손해배상소송 등 총 2건에서 잇따라 승소했다. 영풍·MBK 측은 자사주 공개매수 소송 판결에 유감을 표하며 즉각 항소하겠다는 입장이다.",
       "title": "고려아연, 주주대표소송 등 2건 잇따른 승소…영풍·MBK는 항소"
     },
+    "source_fact:5ce20bbb838c482ff3a0e69e": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.mk.co.kr/news/world/12184707",
+      "source": "매일경제",
+      "source_body_digest": "3ff8e36e9ca1927f78812315149a5f0e0bf11df8edd9e13ee5f0d4578c6614e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b06d0680e74bd43169a1e6e69c35f086a1ab9495ea599436aca194107c62570d",
+      "source_fact_keys": [
+        "source_fact:v1:12d3643056f8d8ec31bf571d8af9d10b5a89e17d8a9e6fe7cb394a104a242432",
+        "source_fact:v1:1fda5baca7ba75a1bdc10b0d4cd97054fe5635d9999d80b9114f4c570899108e",
+        "source_fact:v1:730fd0db091853f1321fec75eb2e721bb01a97cc236cddddbf4233e56f995ea4",
+        "source_fact:v1:df9929ee85909d4425bde066123e31ae21d08db9cfa109fb3d689c43925e40b3"
+      ],
+      "source_published_kst": "2026-10-24T06:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 발언과 최근 미국과 이스라엘이 중간선거 이후 이란을 다시 공격하기 위한 계획을 마련했다는 뉴욕타임스(NYT)의 보도가 나오면서 국제 유가가 급등했다.",
+      "title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”"
+    },
     "source_fact:5ce597d7695075b0e00f2d39": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
       "lanes": {
@@ -777365,6 +777643,29 @@
       "source_title": "'이상기후 대응' 농진청, 여름철 배추 재배 적지 확대 등 지원 | 연합뉴스",
       "telegram_core_fact": "김대현 국립원예특작과학원장은 \"준고랭지 여름철 배추 재배 적지를 확대하고 신품종·신기술을 확산해 여름철 배추의 안정적인 생산·공급 기반을 더 강화해 나가겠다\"고 말했다. 농촌진흥청은 여름철 배추 수급 불안에 대응하기 위해 '준고랭지 여름철 배추 안정 생산 체계 구축 사업'을 한다고 8일 밝혔다.",
       "title": "'이상기후 대응' 농진청, 여름철 배추 재배 적지 확대 등 지원 | 연합뉴스"
+    },
+    "source_fact:6c209ef542df0ca3d8e8891c": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.mk.co.kr/news/world/12184707",
+      "source": "매일경제",
+      "source_body_digest": "3ff8e36e9ca1927f78812315149a5f0e0bf11df8edd9e13ee5f0d4578c6614e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b06d0680e74bd43169a1e6e69c35f086a1ab9495ea599436aca194107c62570d",
+      "source_fact_keys": [
+        "source_fact:v1:12d3643056f8d8ec31bf571d8af9d10b5a89e17d8a9e6fe7cb394a104a242432",
+        "source_fact:v1:1fda5baca7ba75a1bdc10b0d4cd97054fe5635d9999d80b9114f4c570899108e",
+        "source_fact:v1:730fd0db091853f1321fec75eb2e721bb01a97cc236cddddbf4233e56f995ea4",
+        "source_fact:v1:df9929ee85909d4425bde066123e31ae21d08db9cfa109fb3d689c43925e40b3"
+      ],
+      "source_published_kst": "2026-10-24T06:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 발언과 최근 미국과 이스라엘이 중간선거 이후 이란을 다시 공격하기 위한 계획을 마련했다는 뉴욕타임스(NYT)의 보도가 나오면서 국제 유가가 급등했다.",
+      "title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”"
     },
     "source_fact:6c22658f5c2cab6eace702b6": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
@@ -915882,6 +916183,29 @@
       "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
       "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
+    "source_fact:a83cffab7b78f698302d575d": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.mk.co.kr/news/world/12184707",
+      "source": "매일경제",
+      "source_body_digest": "3ff8e36e9ca1927f78812315149a5f0e0bf11df8edd9e13ee5f0d4578c6614e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b06d0680e74bd43169a1e6e69c35f086a1ab9495ea599436aca194107c62570d",
+      "source_fact_keys": [
+        "source_fact:v1:12d3643056f8d8ec31bf571d8af9d10b5a89e17d8a9e6fe7cb394a104a242432",
+        "source_fact:v1:1fda5baca7ba75a1bdc10b0d4cd97054fe5635d9999d80b9114f4c570899108e",
+        "source_fact:v1:730fd0db091853f1321fec75eb2e721bb01a97cc236cddddbf4233e56f995ea4",
+        "source_fact:v1:df9929ee85909d4425bde066123e31ae21d08db9cfa109fb3d689c43925e40b3"
+      ],
+      "source_published_kst": "2026-10-24T06:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 발언과 최근 미국과 이스라엘이 중간선거 이후 이란을 다시 공격하기 위한 계획을 마련했다는 뉴욕타임스(NYT)의 보도가 나오면서 국제 유가가 급등했다.",
+      "title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”"
+    },
     "source_fact:a83ee6fe688536ba916b2978": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
@@ -1045308,6 +1045632,29 @@
       "telegram_core_fact": "서울시는 2028년까지 착공을 목표로 하는 85개 핵심공급 전략사업, 약 8만5000가구의 공정을 밀착 관리하고 있다.",
       "title": "오세훈, 올해 3만 가구 착공 총력⋯“정비사업 직접 챙긴다”"
     },
+    "source_fact:df82533460a3dfcc270b79f6": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839720",
+      "source": "뉴시스",
+      "source_body_digest": "f9f1d750a3710502d3dcd8a9e0d87ad7f5f8f97a73de0d37a66701baebdc6c5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7ac7f828cbbee02dc20f37e936abf3ab3903873844b79ccf1f2026f6578fa17d",
+      "source_fact_keys": [
+        "source_fact:v1:4dfdb1864de717bfaccff7933280bfa592a846a40b9d8eda8d6f3d358aeb6a52",
+        "source_fact:v1:8b800f3e589007e91aa49b0fa69eac8503695056fc3a12310ba30eab3014307c",
+        "source_fact:v1:99ba15acfbbf77ca2298fc4e361dcff054a69fc2cee7d9f77e5a72884aeb8c66",
+        "source_fact:v1:bdbf8a476262040287f864a16a909c51fc2a81d84dc6ea77e7e646db03168d69"
+      ],
+      "source_published_kst": "2026-10-24T22:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\"",
+      "telegram_core_fact": "23일(현지 시간) 월스트리트저널(WSJ)은 관련 작전 계획을 잘 아는 미국 당국자들을 인용해 미군이 향후 수주 내 트럼프 대통령의 이란 추가 공격 결정에 대비해 중동 지역에서 군사적 충돌이 확대될 가능성에 대비하고 있다고 보도했다.",
+      "title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\""
+    },
     "source_fact:df83fb9a85b9481b28c2d4fa": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -1114664,6 +1115011,29 @@
       "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
       "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
     },
+    "source_fact:fd82a562cf59325d6a141d80": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839720",
+      "source": "뉴시스",
+      "source_body_digest": "f9f1d750a3710502d3dcd8a9e0d87ad7f5f8f97a73de0d37a66701baebdc6c5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7ac7f828cbbee02dc20f37e936abf3ab3903873844b79ccf1f2026f6578fa17d",
+      "source_fact_keys": [
+        "source_fact:v1:4dfdb1864de717bfaccff7933280bfa592a846a40b9d8eda8d6f3d358aeb6a52",
+        "source_fact:v1:8b800f3e589007e91aa49b0fa69eac8503695056fc3a12310ba30eab3014307c",
+        "source_fact:v1:99ba15acfbbf77ca2298fc4e361dcff054a69fc2cee7d9f77e5a72884aeb8c66",
+        "source_fact:v1:bdbf8a476262040287f864a16a909c51fc2a81d84dc6ea77e7e646db03168d69"
+      ],
+      "source_published_kst": "2026-10-24T22:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\"",
+      "telegram_core_fact": "23일(현지 시간) 월스트리트저널(WSJ)은 관련 작전 계획을 잘 아는 미국 당국자들을 인용해 미군이 향후 수주 내 트럼프 대통령의 이란 추가 공격 결정에 대비해 중동 지역에서 군사적 충돌이 확대될 가능성에 대비하고 있다고 보도했다.",
+      "title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\""
+    },
     "source_fact:fd9171dbcf2ba8dfe1979c7e": {
       "first_seen_kst": "2026-10-14T17:21:42+09:00",
       "lanes": {
@@ -1156931,6 +1157301,29 @@
       "telegram_core_fact": "분기 배당도 주당 0.34달러로 6.3% 인상되어 주주환원 확대에 대한 기대가 커졌습니다.",
       "title": "카스 인터내셔널 시스템, 3분기 EPS 19% 증가에 배당 인상까지 더해져 주목"
     },
+    "title:414ef69cc8a6b5d9106f367a": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.mk.co.kr/news/world/12184707",
+      "source": "매일경제",
+      "source_body_digest": "3ff8e36e9ca1927f78812315149a5f0e0bf11df8edd9e13ee5f0d4578c6614e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b06d0680e74bd43169a1e6e69c35f086a1ab9495ea599436aca194107c62570d",
+      "source_fact_keys": [
+        "source_fact:v1:12d3643056f8d8ec31bf571d8af9d10b5a89e17d8a9e6fe7cb394a104a242432",
+        "source_fact:v1:1fda5baca7ba75a1bdc10b0d4cd97054fe5635d9999d80b9114f4c570899108e",
+        "source_fact:v1:730fd0db091853f1321fec75eb2e721bb01a97cc236cddddbf4233e56f995ea4",
+        "source_fact:v1:df9929ee85909d4425bde066123e31ae21d08db9cfa109fb3d689c43925e40b3"
+      ],
+      "source_published_kst": "2026-10-24T06:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 발언과 최근 미국과 이스라엘이 중간선거 이후 이란을 다시 공격하기 위한 계획을 마련했다는 뉴욕타임스(NYT)의 보도가 나오면서 국제 유가가 급등했다.",
+      "title": "도널드 트럼프 “이란에 또 한 번 ‘거대한 분노’ 작전을 할 수도 있다”"
+    },
     "title:4151aacfff37f9d9a956b1ab": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
       "lanes": {
@@ -1159078,6 +1159471,29 @@
       "source_title": "[올댓차이나] 홍콩 9월 인플레율 1.9%로 가속…실업률 3.9%·0.1%P 악화",
       "telegram_core_fact": "동망과 경제통, 홍콩 스탠더드에 따르면 홍콩 특구정부 통계처는 22일 9월 종합 소비자 물가지수(CPI)가 전년 동월보다 1.9% 상승했다고 발표했다.",
       "title": "[올댓차이나] 홍콩 9월 인플레율 1.9%로 가속…실업률 3.9%·0.1%P 악화"
+    },
+    "title:447ac6722745afd8247a3ce9": {
+      "first_seen_kst": "2026-10-24T23:12:08+09:00",
+      "lanes": {
+        "live": "2026-10-24T23:12:08+09:00"
+      },
+      "last_seen_kst": "2026-10-24T23:12:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261024_0003839720",
+      "source": "뉴시스",
+      "source_body_digest": "f9f1d750a3710502d3dcd8a9e0d87ad7f5f8f97a73de0d37a66701baebdc6c5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7ac7f828cbbee02dc20f37e936abf3ab3903873844b79ccf1f2026f6578fa17d",
+      "source_fact_keys": [
+        "source_fact:v1:4dfdb1864de717bfaccff7933280bfa592a846a40b9d8eda8d6f3d358aeb6a52",
+        "source_fact:v1:8b800f3e589007e91aa49b0fa69eac8503695056fc3a12310ba30eab3014307c",
+        "source_fact:v1:99ba15acfbbf77ca2298fc4e361dcff054a69fc2cee7d9f77e5a72884aeb8c66",
+        "source_fact:v1:bdbf8a476262040287f864a16a909c51fc2a81d84dc6ea77e7e646db03168d69"
+      ],
+      "source_published_kst": "2026-10-24T22:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\"",
+      "telegram_core_fact": "23일(현지 시간) 월스트리트저널(WSJ)은 관련 작전 계획을 잘 아는 미국 당국자들을 인용해 미군이 향후 수주 내 트럼프 대통령의 이란 추가 공격 결정에 대비해 중동 지역에서 군사적 충돌이 확대될 가능성에 대비하고 있다고 보도했다.",
+      "title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\""
     },
     "title:4480ce9efaa11ba3067a020d": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -1264003,5 +1264419,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-24T22:41:02+09:00"
+  "updated_at_kst": "2026-10-24T23:12:08+09:00"
 }
