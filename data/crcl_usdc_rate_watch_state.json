@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-24T14:54:10+09:00",
+  "updated_at_kst": "2026-10-24T20:00:42+09:00",
   "circle": {
     "date": "2026-10-22",
     "circulation_usd_b": 72.0,
@@ -51,17 +51,17 @@
   },
   "crcl": {
     "date": "2026-10-23",
-    "close": 85.86,
+    "close": 85.91,
     "prev_date": "2026-10-22",
     "prev_close": 86.62,
-    "daily_pct": -0.88,
+    "daily_pct": -0.82,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
     "crosscheck_date": "2026-10-23",
     "crosscheck_close": 85.91000366210938,
     "crosscheck_daily_pct": -0.82,
-    "crosscheck_gap_pct": 0.058,
+    "crosscheck_gap_pct": 0.0,
     "crosscheck_status": "confirmed"
   },
   "tbx": {
