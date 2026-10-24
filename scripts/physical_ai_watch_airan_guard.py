@@ -7624,6 +7624,31 @@ def _r26_match(text: str) -> str:
         return "raon_factory"
     return ""
 
+def _r26_sihwa(text: str) -> bool:
+    return bool(re.search(r"LG전자|LG Electronics", text, re.I)
+                and re.search(r"시화(?:호)?|Sihwa", text, re.I)
+                and re.search(r"조력발전소|tidal.{0,12}(?:power|plant)", text, re.I))
+
+
+def _r26_sihwa_stage(item: dict) -> str:
+    # 2026-10-22 LG Electronics/K-water *MOU* is NOT a paid project award.
+    source = str(item.get("source") or "")
+    content = " ".join(str(item.get(k) or "") for k in ("title","description"))
+    if source in {"LG전자","LG Electronics","한국수자원공사","K-water"}:
+        if re.search(
+            r"(?:시화(?:호)?|Sihwa).{0,190}"
+            r"(?:유상 공급계약 체결|본계약 체결|실제 시스템 가동 완료|signed binding supply contract)"
+            r"|(?:유상 공급계약 체결|본계약 체결|signed binding supply contract).{0,190}"
+            r"(?:시화(?:호)?|Sihwa)", content, re.I
+        ):
+            return "binding_award_or_operations_actual"
+    return "oct22_cooperation_mou_only"
+
+
+R26_SIHWA_MOU_CAT = "LG전자·한국수자원공사 · 시화호 AI 조력발전소 기술협력 MOU"
+R26_SIHWA_ORDER_CAT = "LG전자·한국수자원공사 · 시화호 AI 조력발전소 실제 유상 계약·가동"
+
+
 def _r26_stage(item: dict, eid: str) -> str:
     if item.get("r26_stage"):
         return item["r26_stage"]
@@ -7688,11 +7713,24 @@ def _r26_query(q: str) -> list[dict]:
     return _r26_old_query(q)
 
 def _r26_group(text: str) -> str | None:
+    if _r26_sihwa(text):
+        return "lg_sihwa_tidal_ai"
     name = _r26_match(text)
     return R26_EVENTS[name]["group"] if name else _r26_old_group(text)
 
 def _r26_score(item: dict) -> int:
     text = " ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    if _r26_sihwa(text):
+        return (23 if _r26_sihwa_stage(item) ==
+                "binding_award_or_operations_actual" else 0)
+    # Editorial battery-opportunity recaps need new contractual or quantitative
+    # evidence; a supply-chain "opportunity" alone is never a new order.
+    title = str(item.get("title") or "")
+    if (item.get("source") not in base.OFFICIAL_OR_PRIMARY
+        and re.search(r"ESS|BESS|에너지저장", title, re.I)
+        and re.search(r"경쟁 격화|공급망 재편|수혜 기대|기회", title)
+        and not OCT15_REAL_EVENT_HEADLINE.search(title)):
+        return 0
     name = _r26_match(text)
     if not name:
         return _r26_old_score(item)
@@ -7706,6 +7744,10 @@ def _r26_score(item: dict) -> int:
 
 def _r26_key(item: dict) -> str:
     text = " ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    if _r26_sihwa(text):
+        return hashlib.sha256(
+            f"lge|sihwa|tidal-ai|{_r26_sihwa_stage(item)}".encode("utf-8")
+        ).hexdigest()
     name = _r26_match(text)
     if not name:
         return _r26_old_key(item)
@@ -7750,6 +7792,10 @@ R26_UPGRADE_MESSAGES = {
 R26_KINO_CAT = "베어로보틱스 · 키노-2 신제품 공개 보도(유상 주문 미확인)"
 
 def _r26_category(text: str, group: str) -> str:
+    if group == "lg_sihwa_tidal_ai":
+        return R26_SIHWA_ORDER_CAT if (
+            re.search(r"유상 공급계약 체결|본계약 체결|실제 시스템 가동 완료|signed binding supply contract",
+                      text, re.I)) else R26_SIHWA_MOU_CAT
     if (group == "lg_robotics"
         and re.search(r"베어로보틱스|Bear Robotics", text, re.I)
         and re.search(r"키노[- ]?2|Kino[- ]?2", text, re.I)):
@@ -7762,6 +7808,13 @@ def _r26_category(text: str, group: str) -> str:
     return _r26_old_category(text, group)
 
 def _r26_meaning(category: str) -> str:
+    if category == R26_SIHWA_MOU_CAT:
+        return ("2026-10-22 LG전자·K-water 기술협력 MOU는 공공 인프라 AI "
+                "실증 협력 검토이지 발주·양산·매출이 아닙니다. 스마트팩토리 "
+                "기존 누적 수주 1조원과 이번 MOU의 확정계약액을 분리합니다.")
+    if category == R26_SIHWA_ORDER_CAT:
+        return ("기존 시화호 협력에서 실제 유상 발주 또는 운영 개시로 "
+                "진전한 단계입니다. 계약액·장비 공급·검수·유지보수 대금을 확인합니다.")
     if category == R26_KINO_CAT:
         return ("베어로보틱스 키노-2 로봇의 성능 개선 발표는 제품 이정표입니다. "
                 "AXIUM 액추에이터 외부 고객 수주나 독립 유상 매출을 "
@@ -7775,6 +7828,10 @@ def _r26_meaning(category: str) -> str:
     return _r26_old_meaning(category)
 
 def _r26_risk(category: str) -> str:
+    if category in {R26_SIHWA_MOU_CAT,R26_SIHWA_ORDER_CAT}:
+        return ("발전소 데이터 통합·설비 안전·현장 실증·원격관제 신뢰성, "
+                "조달 절차, 본계약 체결 및 가동 시점이 핵심 병목입니다. "
+                "MOU와 수주·실제 매출을 중복 집계하지 않습니다.")
     if category == R26_KINO_CAT:
         return ("시연 성능 향상이 실제 고객 환경 가동률·운영비·정비비 절감을 "
                 "입증하는지 검증합니다. 고객명·구매계약·실제 납품을 구분합니다.")
@@ -7787,6 +7844,9 @@ def _r26_risk(category: str) -> str:
     return _r26_old_risk(category)
 
 def _r26_verification(item: dict, group: str, text: str) -> str:
+    if group == "lg_sihwa_tidal_ai":
+        return ("LG전자 2026-10-22 공식 MOU · 개별 유상 공급계약은 "
+                "별도 공식 공시·조달 결과 확인 필요")
     for name, event in R26_EVENTS.items():
         if group == event["group"]:
             if item.get("r26_verified"):
@@ -7797,6 +7857,7 @@ def _r26_verification(item: dict, group: str, text: str) -> str:
 
 def _r26_tag(group: str) -> str:
     tags = {
+        "lg_sihwa_tidal_ai": "LG전자·K-water",
         "tesla_optimus_q3_fremont": "테슬라",
         "lge_nvidia_hsb_robot_sensing": "LG이노텍",
         "mobilint_lge_humanoid_npu": "모빌린트",

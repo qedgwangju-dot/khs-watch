@@ -5802,4 +5802,36 @@ assert "신규 고신호 1건" in _usable and "고객 공급계약" in _usable, 
 assert watcher._r26_category("베어로보틱스 키노-2 신제품 공개", "lg_robotics") == watcher.R26_KINO_CAT
 assert "외부 고객 수주나" in base.meaning(watcher.R26_KINO_CAT)
 
+# One signed 2026-10-22 LG/K-water cooperation MOU recapped by multiple
+# publishers must NEVER become 4 separate new customer-order alerts.
+_sihwa_one = make(
+    "LG전자 시화호 조력발전소 AI 전환·로봇 사업 협력",
+    "LG전자는 K-water와 시화호 조력발전소 기술협력 MOU 체결, "
+    "AI 디지털트윈 실증과 패트롤 로봇 적용 가능성 검토.",
+    "연합뉴스")
+_sihwa_two = make(
+    "LG전자, 세계 최대 시화호 조력발전소 스마트팩토리 수주 확대 기대",
+    "LG전자, 시화호 조력발전소 AI 전환 양해각서. "
+    "스마트팩토리 누적 수주 1조원은 기존 회사 전체 사업 실적.",
+    "지디넷코리아")
+_sihwa_official_mou = make(
+    "LG전자 K-water 시화호 조력발전소 AI 기술협력 MOU 체결",
+    "LG전자·한국수자원공사 시화호 조력발전소에 AI 로봇 실증 협력 추진",
+    "LG전자")
+_sihwa_rows = [classify(x) for x in (_sihwa_one,_sihwa_two,_sihwa_official_mou)]
+assert all(x[0]=="lg_sihwa_tidal_ai" and x[1]<11 for x in _sihwa_rows), _sihwa_rows
+assert len({x[3] for x in _sihwa_rows})==1, _sihwa_rows
+assert all(x[2]==watcher.R26_SIHWA_MOU_CAT for x in _sihwa_rows)
+_sihwa_real = make(
+    "LG전자 시화호 조력발전소 유상 공급계약 체결",
+    "LG전자 한국수자원공사 시화호 조력발전소 유상 공급계약 체결 "
+    "고객 부품 공급 업무 본계약 발표.",
+    "LG전자")
+g,s,c,k=classify(_sihwa_real)
+assert g=="lg_sihwa_tidal_ai" and s>=11 and k!=_sihwa_rows[0][3], (g,s,c,k)
+assert c==watcher.R26_SIHWA_ORDER_CAT,(c,k)
+_ess_editorial = make("ESS 경쟁 격화…美·유럽 공급망 재편에 K-배터리 기회",
+                      "에너지저장장치 가격 기대감과 공급망 재편 수혜 의견", "매일일보")
+assert classify(_ess_editorial)[1]<11, classify(_ess_editorial)
+
 print("Physical-AI watcher regression guards: PASS")
