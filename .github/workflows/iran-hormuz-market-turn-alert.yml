@@ -57,6 +57,24 @@ jobs:
           python -m py_compile scripts/iran_hormuz_market_turn_alert.py
           python -m unittest tests/test_iran_hormuz_market_turn_alert.py -v
 
+      - name: Probe official Treasury and Brent sources without sending
+        if: github.event_name == 'push'
+        run: |
+          python - <<'PY'
+          from scripts import iran_hormuz_market_turn_alert as app
+          now = app.now_utc()
+          for label, get in (
+              ("treasury_10y", lambda: app.fetch_us_treasury_ten_year_pair(now)),
+              ("brent_daily", lambda: app.fetch_brent_daily_verified()),
+          ):
+              try:
+                  values = get()
+                  print(f"oil_rate_source_probe {label}=ok date={values['date']}")
+              except Exception as exc:
+                  print(f"oil_rate_source_probe {label}=unavailable reason={type(exc).__name__}:{str(exc)[:220]}")
+          print("oil_rate_source_probe read_only=true sent=false state_changed=false")
+          PY
+
       - name: Check Iran Hormuz market turn conditions
         run: python scripts/iran_hormuz_market_turn_alert.py
 
