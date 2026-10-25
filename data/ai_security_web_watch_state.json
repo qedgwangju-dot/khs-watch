@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 26,
+    "material_items": 27,
     "new_material_items": 0,
-    "raw_items": 346,
+    "raw_items": 342,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -39,6 +39,16 @@
     }
   },
   "seen": {
+    "017f37277526a9e501f85be2": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-25T00:11:20.489843+00:00",
+      "published_at": "2026-10-23T18:01:03+00:00",
+      "severity": 2,
+      "source": "Palo Alto Networks",
+      "title": "Mitigating PHP2Shell Vulnerabilities (CVE-2026-109618 & CVE-2026-109619) With the Cortex Platform - Palo Alto Networks",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQemFiaDAxRzZFSFhQdXotSjNoZHBrYmM2MHF5RlN1Z1d4OVNYOVM3OXV3bC1SQ1RBb193NTdISkJwLUZlalBLN1pHSl8zcXJua0ptbjVUVmNlNHU3TWppek0yNDlYLXlaVk10QmZGV1lBWVUtQlJ0RnBHSWJiRlVicDZSUGlMWFpEODJmUWg1aWNGRnB1bGNwb21USE51YUxYNjNCTC1vMzc1ck80bU1MWXRxWEg4M1AyS1ZqRy1WRFluTEk?oc=5",
+      "vendor": "PHP 재단"
+    },
     "027ea08934406a07812d619d": {
       "category": "에이전트 비정렬·제3자 영향",
       "first_seen_at": "2026-09-28T17:33:35.045895+00:00",
@@ -1200,5 +1210,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-25T08:36:04+09:00"
+  "updated_at_kst": "2026-10-25T09:11:20+09:00"
 }
