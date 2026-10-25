@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 27,
+    "material_items": 28,
     "new_material_items": 0,
-    "raw_items": 342,
+    "raw_items": 356,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -148,6 +148,16 @@
       "title": "FBI arrests Saudi OpenAI employee who allegedly planted recording device in conference room - CNBC",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNckJQNWJCVWJZSzdEUVRzWHZyZ2I0amJxTVVqX1ltcmZtSGxKWkRUVUdEWnp4Wm9HSUctWlFGNk9mOTQwVXBVd3A4SzQ0YXB3WHFfaE9YaE1mX3ZUZ1BpWWU2dDhIRXd1NENRaTAxdHdaRTFYNm5tVEZxWFQ4anpvdXo2ano?oc=5",
       "vendor": "OpenAI"
+    },
+    "1a68c42d6f189b30e3c5bbe9": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-25T00:46:13.759064+00:00",
+      "published_at": "2026-10-23T12:24:17+00:00",
+      "severity": 2,
+      "source": "BBC",
+      "title": "PHP: What is it and why did it spark a global cyber security scramble? - BBC",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA1V0VTbm4wQ3BmN1hGMnNiSFRrU3FMTlNGcEV4Nzl4RVgzRk9NNjZIWXVkaWdFVElIZVRQUGdjbWZ6Wk1CUHM5djJJMGxqZVFlVjJqQ2tjUWRoZTg?oc=5",
+      "vendor": "PHP 재단"
     },
     "1b969810fcde7595b38cf390": {
       "category": "AI 자율복제·사물인터넷 모의평가",
@@ -1210,5 +1220,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-25T09:20:56+09:00"
+  "updated_at_kst": "2026-10-25T09:46:13+09:00"
 }
