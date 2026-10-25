@@ -469,10 +469,12 @@ STORY_RULES = (
         ),
         required_groups=(
             ("商务部", "mofcom", "ministry of commerce", "china", "중국"),
-            ("生物医药", "biotechnology", "biomedicine", "biopharma", "바이오"),
-            ("人工智能", "artificial intelligence", "ai", "인공지능"),
-            ("光伏", "photovoltaic", "solar", "태양광"),
-            ("技术出口", "export technology", "export controls", "export restrictions", "export ban", "出口前登记", "수출"),
+            # A later amendment may cover ONLY biotech, AI, or photovoltaics.
+            # Do not silently lose a single-sector final restriction.
+            ("生物医药", "biotechnology", "biomedicine", "biopharma", "바이오",
+             "人工智能", "artificial intelligence", "인공지능", "光伏", "photovoltaic", "solar", "태양광"),
+            ("技术出口", "export technology", "export controls", "export restrictions", "export ban",
+             "出口前登记", "技术目录", "export catalogue", "technology catalogue", "수출"),
         ),
         core="중국은 인공지능 23개·바이오의약 5개·태양광 12개 등 40개 기술의 수출목록 개정을 제안하고, 해당 기술의 수출 전 임시 등록을 10월 16일부터 시행했습니다.",
         impact="세포·유전자 치료, 소핵산 의약품, 인공지능 모델·태양광 공정 기술의 해외 이전·기술도입 및 계약 일정 | 돈 버는 능력·할인율·시간표",
@@ -2250,9 +2252,11 @@ def semantic_policy_event_key(item: dict) -> str:
         )
     ).lower()
     if (
-        any(s in text for s in ("中国禁止出口限制出口技术目录", "technology export catalogue", "technologies prohibited or restricted from export"))
-        and any(s in text for s in ("生物医药", "biotechnology", "biomedicine", "바이오"))
-        and any(s in text for s in ("人工智能", "artificial intelligence", "ai", "인공지능"))
+        any(s in text for s in ("中国禁止出口限制出口技术目录", "technology export catalogue",
+                                "technologies prohibited or restricted from export", "技术出口目录", "technology export restrictions"))
+        and any(s in text for s in ("生物医药", "biotechnology", "biomedicine", "바이오",
+                                    "人工智能", "artificial intelligence", "인공지능",
+                                    "光伏", "photovoltaic", "태양광"))
     ):
         if any(s in title_text for s in ("正式修订", "正式发布", "修订发布", "final rule", "final catalogue", "finalized")):
             return "china-mofcom-technology-catalogue-final-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
@@ -4556,6 +4560,13 @@ def _self_test_mofcom_tech_48() -> None:
     assert "11월 15일" in str(item_story_profile(rule, [item])["timeline"])
     assert "금지 제안 14개" in " ".join(item_story_profile(rule, [item])["actual_bullets"])
     assert semantic_policy_event_key(item) != "china-mofcom-2026-notice-49-announced"
+    biotech_only = {
+        "title": "China adopts final technology export catalogue for biotechnology",
+        "description": "China finalizes the technology export catalogue with biotechnology restrictions.",
+        "source": "Reuters", "published_kst": "2026-11-18T14:00:00+09:00",
+    }
+    assert semantic_policy_event_key(biotech_only).startswith("china-mofcom-technology-catalogue-final-")
+    assert has_required_terms(" ".join((biotech_only["title"], biotech_only["description"], biotech_only["source"])), rule)
     assert rule.key in {r.key for r in STORY_RULES}
     later = {**item, "title": "China adopts final catalogue for biotechnology and AI technology export",
              "description": "China finalizes the technologies prohibited or restricted from export catalogue covering biotechnology and artificial intelligence.",
