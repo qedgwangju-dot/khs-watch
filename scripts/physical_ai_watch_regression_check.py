@@ -5850,7 +5850,7 @@ for eid,group,category in _r27_expected:
     g,s,c,k=classify(row[0])
     assert g==group and s>=11 and c==category,(eid,g,s,c)
     assert k not in {i[3] for i in _r27_baseline}
-    _r27_baseline.append((g,s,c,k,row[0]))
+    _r27_baseline.append((g,s,c,k,dict(row[0],group=g,score=s,key=k)))
 assert len(watcher.R27_LIVE_QUERIES)==5
 _m_reprint=make("Microduck 4000 sales after NVIDIA keynote",
                 "Microduck 10000 earlier preorders, 15 motors",

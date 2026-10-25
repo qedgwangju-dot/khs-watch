@@ -8049,7 +8049,7 @@ def _r27_stage(item: dict, eid: str) -> str:
     if eid == "cells":
         if re.search(r'첫\s*배터리\s*셀\s*출하\s*완료|first\s*cell\s*shipment\s*completed',t,re.I):
             return "4680_first_customer_shipment_actual"
-        if (re.search(r'4680.{0,85}(?:양산\s*개시|생산\s*시작|started\s*(?:mass\s*)?production)',t,re.I)
+        if (re.search(r'4680.{0,85}(?:양산\s*개시|생산\s*시작|started\s*(?:mass\s*)?production|cell\s*production\s*started|production\s*started)',t,re.I)
             and not re.search(r'예정|계획|목표|will\s*start|planned|expected',t,re.I)):
             return "4680_cell_production_actual"
         return "18gwh_planned_only"
