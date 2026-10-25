@@ -60,6 +60,7 @@ class GdpRow:
     govt: float | None
     net_exports: float | None
     cipi: float
+    quarter: str | None = None
 
 
 class TextExtractor(HTMLParser):
@@ -286,6 +287,7 @@ def fetch_contrib_rows_fred() -> list[GdpRow]:
         govt=parsed["GOVCONTRIBNOW"],
         net_exports=parsed["CHNGNETEXPORTSCONTRIBNOW"],
         cipi=parsed["CHNGNETINVENTCONTRIBNOW"],
+        quarter=f"{period[:4]}-Q{(int(period[5:7])-1)//3+1}",
     )
     older = (load_state().get("latest") or {})
     result = []
@@ -299,6 +301,7 @@ def fetch_contrib_rows_fred() -> list[GdpRow]:
             nonres=oldnum("nonres"), residential=oldnum("residential"),
             govt=oldnum("govt"), net_exports=oldnum("net_exports"),
             cipi=float(older["cipi"]),
+            quarter=str(older.get("quarter") or "") or None,
         ))
     result.append(current)
     return result
@@ -473,6 +476,16 @@ def main() -> int:
 
     latest = rows[-1]
     prev = rows[-2] if len(rows) >= 2 else None
+    if not latest.quarter and meta.get("year") and meta.get("quarter"):
+        # Fallback Excel lacks a stable quarter label. Use verified official
+        # commentary only if its headline matches the workbook estimate.
+        try:
+            if abs(float(meta.get("headline", "999")) - latest.gdp) < 0.15:
+                latest.quarter = f"{meta['year']}-{meta['quarter']}"
+        except ValueError:
+            pass
+    is_rollover = bool(prev and latest.quarter and prev.quarter and latest.quarter != prev.quarter)
+    comparison_prev = None if is_rollover else prev
     if latest.gdp != latest.gdp or latest.cipi != latest.cipi:
         raise RuntimeError("GDPNow contains NaN")
     if dt.date.fromisoformat(latest.date) > now.date():
@@ -496,7 +509,10 @@ def main() -> int:
     is_baseline = not prior_key
     is_new = bool(prior_key) and not same_core
 
-    if same_core:
+    # Migrate older baseline records to an explicit model quarter without
+    # emitting a synthetic "new GDPNow" message.
+    metadata_upgrade = bool(same_core and latest.quarter and not old_row.get("quarter"))
+    if same_core and not metadata_upgrade:
         pending = state
     else:
         pending = {
@@ -504,6 +520,7 @@ def main() -> int:
             "latest": {
                 "date": latest.date,
                 "release": latest.release,
+                "quarter": latest.quarter,
                 "gdp": latest.gdp,
                 "cipi": latest.cipi,
                 "final_sales": final_sales,
@@ -559,9 +576,9 @@ def main() -> int:
         return 0
 
     quarter = f"{meta.get('year', '')} {meta.get('quarter', '')}".strip() or "현재 분기"
-    delta = latest.gdp - prev.gdp if prev else None
-    inv_delta = latest.cipi - prev.cipi if prev else None
-    final_prev = (prev.gdp - prev.cipi) if prev else None
+    delta = latest.gdp - comparison_prev.gdp if comparison_prev else None
+    inv_delta = latest.cipi - comparison_prev.cipi if comparison_prev else None
+    final_prev = (comparison_prev.gdp - comparison_prev.cipi) if comparison_prev else None
     final_delta = final_sales - final_prev if final_prev is not None else None
 
     verdicts: list[str] = []
@@ -589,7 +606,7 @@ def main() -> int:
         "",
         "<b>핵심 숫자</b>",
         f"• GDPNow: <b>{latest.gdp:.2f}% SAAR</b>"
-        + (f" (직전 {prev.gdp:.2f}%, {delta:+.2f}%p)" if prev else ""),
+        + (f" (직전 {comparison_prev.gdp:.2f}%, {delta:+.2f}%p)" if comparison_prev else ""),
         f"• 재고 기여도(CIPI): <b>{latest.cipi:+.2f}%p</b>"
         + (f" (직전 대비 {inv_delta:+.2f}%p)" if inv_delta is not None else ""),
         f"• 재고 제외 최종판매: <b>{final_sales:.2f}%</b> = GDP {latest.gdp:.2f} - CIPI {latest.cipi:.2f}"
