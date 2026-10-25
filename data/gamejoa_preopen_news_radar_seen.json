@@ -25441,6 +25441,27 @@
       "telegram_core_fact": "헬머리치 & 페인(HP)이 2026 회계연도 4분기(7~9월) 북미·국제·해상 솔루션 3개 부문의 직접마진(비GAAP 기준)이 기존 가이던스 범위 상단 또는 그 근처에 이를 것으로 예상하며, 국제 솔루션 부문 직접마진은 약 4500만 달러에 달할 전망이라고 10월 7일 발표했다.",
       "title": "헬머리치 & 페인, 4분기 직접마진 가이던스 상단 근접..국제 4500만 달러"
     },
+    "core:3b3b6dca280f4889fc751f62": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102639787",
+      "source": "한국경제",
+      "source_body_digest": "48b17fb42200b878451f1b7f3ef1a91b747055364c8adc49d3d7894ad6c65bfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a2d42db1568440812f844e81a7a5b2af6895ffc39c8ae2bccb83bd253afafa",
+      "source_fact_keys": [
+        "source_fact:v1:51ba756cca56b655ffeeac33be71ede4f08fb707edb6adf8493a40544f13059d",
+        "source_fact:v1:97d38600c9f4047d8d4d1db0596cb78774f26dd845ec16ab5f7e04c882db1128"
+      ],
+      "source_published_kst": "2026-10-26T07:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목",
+      "telegram_core_fact": "WSJ은 한국과 일본 등 동맹국들이 미국 투자를 확대하려면 미 국방부의 안정적인 발주 수요가 뒷받침돼야 한다고 지적했다.",
+      "title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목"
+    },
     "core:3b6a104eeb7dc142dde8315b": {
       "first_seen_kst": "2026-10-23T09:48:17+09:00",
       "lanes": {
@@ -56213,6 +56234,29 @@
       "telegram_core_fact": "심 상무는 AI 모델이 대형화하고 추론 과정에서 처리해야 할 데이터와 KV캐시(임시저장 키값) 용량이 급증하면서 메모리 대역폭을 넘어 용량 확장과 데이터 저장 기술이 핵심으로 부상함에 따라 이들 전략이 중요해졌다고 설명했다.",
       "title": "삼성전자, AI 모델 대형화와 추론 과정 처리 맞춤형 새 메모리 전략 공개…속도·확장성·영속성 초점"
     },
+    "core:86da4239913215c2a2aacfb2": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639814",
+      "source": "이투데이",
+      "source_body_digest": "fed3000273b6ce79cb967a22b185651aa133a51219b7488771726495dbab0c6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9c597cba0f29d3396a6a03ede081aff28e19482a9b712383ce3a175a3c0facb",
+      "source_fact_keys": [
+        "source_fact:v1:6681c0694ee7b1be0ab0d7c04702641fb05fa5b566f5c5a503edb5d1223faa8e",
+        "source_fact:v1:bfac1e5e5c91611979b711222fb09614d90b72f301e281e4cf262ca049714c3d",
+        "source_fact:v1:d1efa9f6ce95ecaa9be4bc5204340a2fe9e30d406593aa8d7d8d281614887a8d",
+        "source_fact:v1:f314a483e914ed727a054292b74e3c31b2bf585796a1b6242cbc281b8e378753"
+      ],
+      "source_published_kst": "2026-10-26T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\"",
+      "telegram_core_fact": "키움증권이 LG디스플레이에 대해 낮은 환율과 칩플레이션(반도체 가격 상승) 등으로 비우호적인 대외환경이 이어지고 있으나 주요 거래선향 물량을 바탕으로 향후 반등 여건을 갖춰나가고 있다며, 투자의견 '매수'를 유지하고 목표주가는 1만1000원으로 유지했다.",
+      "title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\""
+    },
     "core:86e94b8e05e41137954bec86": {
       "first_seen_kst": "2026-10-19T18:36:47+09:00",
       "lanes": {
@@ -65964,6 +66008,38 @@
       "telegram_core_fact": "크레센트 에너지(CRGY)가 디본 에너지의 이글포드 자산 인수 자금 조달을 위해 클래스A 보통주 10억 달러 인수단 주도 공모를 시작했으며, KKR 계열사가 최대 5억 달러어치 매수 의향을 밝혔다고 8일(현지시간) 발표했다.",
       "title": "크레센트 에너지, 10억달러 주식공모 추진..KKR 5억달러 참여 의향"
     },
+    "core:9ea7634c7be28a01703cf216": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
+    },
     "core:9eabd4f716cc09955728925a": {
       "first_seen_kst": "2026-10-11T05:18:57+09:00",
       "lanes": {
@@ -68675,6 +68751,29 @@
       "source_title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\"",
       "telegram_core_fact": "23일(현지 시간) 월스트리트저널(WSJ)은 관련 작전 계획을 잘 아는 미국 당국자들을 인용해 미군이 향후 수주 내 트럼프 대통령의 이란 추가 공격 결정에 대비해 중동 지역에서 군사적 충돌이 확대될 가능성에 대비하고 있다고 보도했다.",
       "title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\""
+    },
+    "core:a525cbe83661d39f8d35fad8": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639772",
+      "source": "이투데이",
+      "source_body_digest": "635c52a4fa7c0eab1d9b95d9ec875dcafa32b179ed563271c98ad5f1ee5fb5cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2af15e94f5b99abe249f9678b4643c9f7e1fee21144ac40d4e1edded4784dcd",
+      "source_fact_keys": [
+        "source_fact:v1:10c8e820c562c0f36b847c049d491ef3629a413888ad9bf628b5110f4c71167e",
+        "source_fact:v1:3970333d76844ed4f6e6073109f97341aeef714dbc9eeb9cb41daccf0fcf7283",
+        "source_fact:v1:4431e282589798e923d447e1dab1ac063c4623c4d62bbbbb247c30f99f70711e",
+        "source_fact:v1:4c8a56c6c795af2a582e009776c9a9a486bc56dfa15a4eca3fb5ddbfc04ce225"
+      ],
+      "source_published_kst": "2026-10-25T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결",
+      "telegram_core_fact": "그 이유로 정유시설 공격을 포함해 러시아 영토에서 임무를 수행하는 드론은 시속 70~90㎞ 이하 속도로 비행한다는 점을 언급했다.",
+      "title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결"
     },
     "core:a5275bf97f65e3427ed3ec0f": {
       "first_seen_kst": "2026-10-25T09:55:02+09:00",
@@ -112067,31 +112166,35 @@
     "event:380aa6a0bdbb488e14b12730": {
       "first_seen_kst": "2026-10-25T06:53:27+09:00",
       "lanes": {
-        "live": "2026-10-25T15:00:08+09:00",
+        "live": "2026-10-26T07:52:33+09:00",
         "preopen": "2026-10-25T06:53:27+09:00"
       },
-      "last_seen_kst": "2026-10-25T15:00:08+09:00",
-      "link": "https://www.fnnews.com/news/202610251333075536",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "b0e307922349c3dc9aaa3cd63b548c64088fe94bd3971d5326d921229aa22e94",
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f48806007169e6aac290868c0c0f64ce80d113775031e1c66924caef66339560",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
       "source_fact_keys": [
-        "source_fact:v1:082e9116aa7e9d68ad2ba1887c308d2f60b3a140655a0999bd53a62062578157",
-        "source_fact:v1:25a51c020e043629cc0000cd19b6b976d338aa04cb45445bc27d3f698a52441c",
-        "source_fact:v1:280884ea9a31d204cd5ccd839c93fae2364f3e3ac7512ce35c8cae3f122d6d4a",
-        "source_fact:v1:4443c35b400987d052f631c711127b9cc0d826fcd84b005a5ff949532969521f",
-        "source_fact:v1:63db56095904da3a1a2df12b733825942400fbcca2553810f6f390b902379f61",
-        "source_fact:v1:a89e59c9c81a935fa0b34d2e63d9efcf491dcce56d66acfb1ad701862f43b628",
-        "source_fact:v1:cda983ceefa0bc64fed10f35872a4f0812bbeec7c84f2763a25ce7ceb64b74b8",
-        "source_fact:v1:ec5abaadd62ff2f0560cf19e4df338b03ad946af05fc1628a3eb2849705ec57b",
-        "source_fact:v1:f5ac90d6d7b24020da8f91ff9a97fbb9d0dbaf2335a8dbb398ced70c7157a02d"
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
       ],
-      "source_published_kst": "2026-10-25T14:33+09:00",
+      "source_published_kst": "2026-10-25T10:45+09:00",
       "source_supply_terms": {},
-      "source_title": "\"주식 모르면 이거 사라며?\"…개인 ETF 80조 담았다",
-      "telegram_core_fact": "[파이낸셜뉴스] 국내 증시가 약세를 이어가는 가운데 올해 개인투자자의 상장지수펀드(ETF) 순매수액이 처음으로 80조원을 넘어섰다. 한국거래소 등에 따르면 올해 들어 지난 23일까지 개인의 ETF 순매수액은 80조191억원으로 집계됐다.",
-      "title": "\"주식 모르면 이거 사라며?\"…개인 ETF 80조 담았다"
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
     },
     "event:3916b390a6002b3d5cb5b447": {
       "first_seen_kst": "2026-09-18T16:49:31+09:00",
@@ -112427,6 +112530,29 @@
       "source_title": "[속보]반도체주 반등에 나스닥 1.1% 상승…AI 불안은 여전",
       "telegram_core_fact": "지난주 AI 투자 확대에 따른 자금 조달 부담과 고금리 우려로 급락했던 기술주에 저가 매수세가 유입되면서 나스닥지수는 1% 넘게 상승했다. 투자자들은 AI 관련 투자 확대가 실제 매출과 이익 증가로 이어지고 있는지 확인할 것으로 보인다.",
       "title": "[속보]반도체주 반등에 나스닥 1.1% 상승…AI 불안은 여전"
+    },
+    "event:3cfb00dc6506bfa0dae34cac": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639772",
+      "source": "이투데이",
+      "source_body_digest": "635c52a4fa7c0eab1d9b95d9ec875dcafa32b179ed563271c98ad5f1ee5fb5cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2af15e94f5b99abe249f9678b4643c9f7e1fee21144ac40d4e1edded4784dcd",
+      "source_fact_keys": [
+        "source_fact:v1:10c8e820c562c0f36b847c049d491ef3629a413888ad9bf628b5110f4c71167e",
+        "source_fact:v1:3970333d76844ed4f6e6073109f97341aeef714dbc9eeb9cb41daccf0fcf7283",
+        "source_fact:v1:4431e282589798e923d447e1dab1ac063c4623c4d62bbbbb247c30f99f70711e",
+        "source_fact:v1:4c8a56c6c795af2a582e009776c9a9a486bc56dfa15a4eca3fb5ddbfc04ce225"
+      ],
+      "source_published_kst": "2026-10-25T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결",
+      "telegram_core_fact": "그 이유로 정유시설 공격을 포함해 러시아 영토에서 임무를 수행하는 드론은 시속 70~90㎞ 이하 속도로 비행한다는 점을 언급했다.",
+      "title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결"
     },
     "event:3d1bb0fb7eddea2b8246e987": {
       "first_seen_kst": "2026-09-28T21:10:36+09:00",
@@ -118527,6 +118653,27 @@
       ],
       "source_published_kst": "2026-10-05T08:55+09:00",
       "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
+    },
+    "event:8128a2d10d6290f4f79a5add": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102639787",
+      "source": "한국경제",
+      "source_body_digest": "48b17fb42200b878451f1b7f3ef1a91b747055364c8adc49d3d7894ad6c65bfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a2d42db1568440812f844e81a7a5b2af6895ffc39c8ae2bccb83bd253afafa",
+      "source_fact_keys": [
+        "source_fact:v1:51ba756cca56b655ffeeac33be71ede4f08fb707edb6adf8493a40544f13059d",
+        "source_fact:v1:97d38600c9f4047d8d4d1db0596cb78774f26dd845ec16ab5f7e04c882db1128"
+      ],
+      "source_published_kst": "2026-10-26T07:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목",
+      "telegram_core_fact": "WSJ은 한국과 일본 등 동맹국들이 미국 투자를 확대하려면 미 국방부의 안정적인 발주 수요가 뒷받침돼야 한다고 지적했다.",
+      "title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목"
     },
     "event:8148c662861a648098f6a4fb": {
       "first_seen_kst": "2026-09-24T11:54:33+09:00",
@@ -133923,6 +134070,29 @@
       "source_title": "오세훈 \"朴 시절 정비구역 389곳 해제… 43만가구 공급 기회 증발\"",
       "telegram_core_fact": "시는 과거 정비구역 해제와 신규 지정의 둔화가 장기간의 사업절차를 거쳐 현재의 공급감소로 이어졌다고 진단했다.",
       "title": "오세훈 \"朴 시절 정비구역 389곳 해제… 43만가구 공급 기회 증발\""
+    },
+    "fact:089ffc1a84cbeefea2c958f8": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639814",
+      "source": "이투데이",
+      "source_body_digest": "fed3000273b6ce79cb967a22b185651aa133a51219b7488771726495dbab0c6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9c597cba0f29d3396a6a03ede081aff28e19482a9b712383ce3a175a3c0facb",
+      "source_fact_keys": [
+        "source_fact:v1:6681c0694ee7b1be0ab0d7c04702641fb05fa5b566f5c5a503edb5d1223faa8e",
+        "source_fact:v1:bfac1e5e5c91611979b711222fb09614d90b72f301e281e4cf262ca049714c3d",
+        "source_fact:v1:d1efa9f6ce95ecaa9be4bc5204340a2fe9e30d406593aa8d7d8d281614887a8d",
+        "source_fact:v1:f314a483e914ed727a054292b74e3c31b2bf585796a1b6242cbc281b8e378753"
+      ],
+      "source_published_kst": "2026-10-26T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\"",
+      "telegram_core_fact": "키움증권이 LG디스플레이에 대해 낮은 환율과 칩플레이션(반도체 가격 상승) 등으로 비우호적인 대외환경이 이어지고 있으나 주요 거래선향 물량을 바탕으로 향후 반등 여건을 갖춰나가고 있다며, 투자의견 '매수'를 유지하고 목표주가는 1만1000원으로 유지했다.",
+      "title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\""
     },
     "fact:08c338d3913c9211b86d133d": {
       "first_seen_kst": "2026-10-26T06:42:55+09:00",
@@ -189558,6 +189728,38 @@
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "샌프란시스코 연은 총재 \"AI발 인플레, 단발성 아닐 수도\""
     },
+    "fact:86706b297c351a684607708e": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
+    },
     "fact:8682b92b8a6b99d90bed2b77": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -210676,6 +210878,29 @@
       "source_title": "韓中, 공급망 핫라인 가동…새만금 투자 협력 확대 논의",
       "telegram_core_fact": "한국과 중국 통상당국이 주요 산업 품목의 안정적인 공급망 관리와 새만금 산업단지 투자 확대를 위한 협력 방안을 논의했다. 이번 회의에서 양측은 새만금과 후이저우 산업단지의 지원제도와 투자 인센티브를 공유하고 상대국 산업단지에 진출하는 기업의 편의를 확대하는 방안을 논의했다.",
       "title": "韓中, 공급망 핫라인 가동…새만금 투자 협력 확대 논의"
+    },
+    "fact:b3485bd1003101f86b8c0bb6": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639772",
+      "source": "이투데이",
+      "source_body_digest": "635c52a4fa7c0eab1d9b95d9ec875dcafa32b179ed563271c98ad5f1ee5fb5cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2af15e94f5b99abe249f9678b4643c9f7e1fee21144ac40d4e1edded4784dcd",
+      "source_fact_keys": [
+        "source_fact:v1:10c8e820c562c0f36b847c049d491ef3629a413888ad9bf628b5110f4c71167e",
+        "source_fact:v1:3970333d76844ed4f6e6073109f97341aeef714dbc9eeb9cb41daccf0fcf7283",
+        "source_fact:v1:4431e282589798e923d447e1dab1ac063c4623c4d62bbbbb247c30f99f70711e",
+        "source_fact:v1:4c8a56c6c795af2a582e009776c9a9a486bc56dfa15a4eca3fb5ddbfc04ce225"
+      ],
+      "source_published_kst": "2026-10-25T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결",
+      "telegram_core_fact": "그 이유로 정유시설 공격을 포함해 러시아 영토에서 임무를 수행하는 드론은 시속 70~90㎞ 이하 속도로 비행한다는 점을 언급했다.",
+      "title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결"
     },
     "fact:b36e41d0b34858c8fe5aa4d1": {
       "first_seen_kst": "2026-10-18T17:16:37+09:00",
@@ -232724,6 +232949,27 @@
       "telegram_core_fact": "모션 솔루션 기업 씨앤엠이 금융위원회에 증권신고서를 제출하고 11월 코스닥 상장을 추진한다고 19일 밝혔다.",
       "title": "씨앤엠, 코스닥 상장 추진…로봇·데이터센터·방산 사업 확대"
     },
+    "fact:e2388f6dfdc910c6b272940e": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102639787",
+      "source": "한국경제",
+      "source_body_digest": "48b17fb42200b878451f1b7f3ef1a91b747055364c8adc49d3d7894ad6c65bfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a2d42db1568440812f844e81a7a5b2af6895ffc39c8ae2bccb83bd253afafa",
+      "source_fact_keys": [
+        "source_fact:v1:51ba756cca56b655ffeeac33be71ede4f08fb707edb6adf8493a40544f13059d",
+        "source_fact:v1:97d38600c9f4047d8d4d1db0596cb78774f26dd845ec16ab5f7e04c882db1128"
+      ],
+      "source_published_kst": "2026-10-26T07:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목",
+      "telegram_core_fact": "WSJ은 한국과 일본 등 동맹국들이 미국 투자를 확대하려면 미 국방부의 안정적인 발주 수요가 뒷받침돼야 한다고 지적했다.",
+      "title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목"
+    },
     "fact:e24a9aa82feb36fc49a78e8f": {
       "first_seen_kst": "2026-10-24T05:52:40+09:00",
       "lanes": {
@@ -253211,6 +253457,24 @@
       "source_published_kst": "2026-10-05T12:01+09:00",
       "title": "지재처, 메가프로젝트 분야 신규 상품명 72개 추가한다"
     },
+    "link:0a6c336a4d2c882027d26af2": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.mk.co.kr/news/society/12185055",
+      "source": "매일경제",
+      "source_body_digest": "8d0ccb1a0c4bae64eea5d72d815697694219dcfa0f38df64c145e71c753470a8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "자사주, 소각이 끝이 아니다…공시·처분까지 챙겨야 [바른 컴플라이언스 리포트]",
+      "telegram_core_fact": "자사주가 자사주 취득·소각을 발표했습니다.",
+      "title": "자사주, 소각이 끝이 아니다…공시·처분까지 챙겨야 [바른 컴플라이언스 리포트]"
+    },
     "link:0a70b0f9c5afa9612e88eb7a": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
@@ -265485,6 +265749,27 @@
       "source_title": "\"수급·中반도체 추격 우려\"…美금리·빅테크 실적 주목 | 연합뉴스",
       "telegram_core_fact": "특히 미국 금리의 향방을 가늠할 이번 주 소비자물가지수 발표와 AI 투자 지속 여부를 확인할 빅테크 기업들의 실적 발표에 관심이 쏠립니다.",
       "title": "\"수급·中반도체 추격 우려\"…美금리·빅테크 실적 주목 | 연합뉴스"
+    },
+    "link:2098ac66c73309bddd706d04": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102639787",
+      "source": "한국경제",
+      "source_body_digest": "48b17fb42200b878451f1b7f3ef1a91b747055364c8adc49d3d7894ad6c65bfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a2d42db1568440812f844e81a7a5b2af6895ffc39c8ae2bccb83bd253afafa",
+      "source_fact_keys": [
+        "source_fact:v1:51ba756cca56b655ffeeac33be71ede4f08fb707edb6adf8493a40544f13059d",
+        "source_fact:v1:97d38600c9f4047d8d4d1db0596cb78774f26dd845ec16ab5f7e04c882db1128"
+      ],
+      "source_published_kst": "2026-10-26T07:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목",
+      "telegram_core_fact": "WSJ은 한국과 일본 등 동맹국들이 미국 투자를 확대하려면 미 국방부의 안정적인 발주 수요가 뒷받침돼야 한다고 지적했다.",
+      "title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목"
     },
     "link:209d9dfaf8885643274b8019": {
       "first_seen_kst": "2026-10-04T19:34:44+09:00",
@@ -303677,6 +303962,29 @@
       "link": "https://www.yna.co.kr/view/AKR20260922182600008",
       "source": "연합뉴스",
       "title": "셀리드, 30억원 유상증자…센트러스트투자조합 등에 3자 배정 | 연합뉴스"
+    },
+    "link:609d7b4f405e076ad70c311d": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639814",
+      "source": "이투데이",
+      "source_body_digest": "fed3000273b6ce79cb967a22b185651aa133a51219b7488771726495dbab0c6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9c597cba0f29d3396a6a03ede081aff28e19482a9b712383ce3a175a3c0facb",
+      "source_fact_keys": [
+        "source_fact:v1:6681c0694ee7b1be0ab0d7c04702641fb05fa5b566f5c5a503edb5d1223faa8e",
+        "source_fact:v1:bfac1e5e5c91611979b711222fb09614d90b72f301e281e4cf262ca049714c3d",
+        "source_fact:v1:d1efa9f6ce95ecaa9be4bc5204340a2fe9e30d406593aa8d7d8d281614887a8d",
+        "source_fact:v1:f314a483e914ed727a054292b74e3c31b2bf585796a1b6242cbc281b8e378753"
+      ],
+      "source_published_kst": "2026-10-26T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\"",
+      "telegram_core_fact": "키움증권이 LG디스플레이에 대해 낮은 환율과 칩플레이션(반도체 가격 상승) 등으로 비우호적인 대외환경이 이어지고 있으나 주요 거래선향 물량을 바탕으로 향후 반등 여건을 갖춰나가고 있다며, 투자의견 '매수'를 유지하고 목표주가는 1만1000원으로 유지했다.",
+      "title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\""
     },
     "link:60b6b500b027fb67b466adca": {
       "first_seen_kst": "2026-10-23T20:28:32+09:00",
@@ -343763,6 +344071,29 @@
       "source_title": "우리투자증권, 3분기 누적 순이익 282억…전년比 27.3% 증가",
       "telegram_core_fact": "우리투자증권은 올해 3분기 누적 당기순이익이 282억 원으로 전년비 27.3% 증가했다고 23일 밝혔다.",
       "title": "우리투자증권, 3분기 누적 순이익 282억…전년比 27.3% 증가"
+    },
+    "link:a5e9f87a054974bf18731375": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639772",
+      "source": "이투데이",
+      "source_body_digest": "635c52a4fa7c0eab1d9b95d9ec875dcafa32b179ed563271c98ad5f1ee5fb5cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2af15e94f5b99abe249f9678b4643c9f7e1fee21144ac40d4e1edded4784dcd",
+      "source_fact_keys": [
+        "source_fact:v1:10c8e820c562c0f36b847c049d491ef3629a413888ad9bf628b5110f4c71167e",
+        "source_fact:v1:3970333d76844ed4f6e6073109f97341aeef714dbc9eeb9cb41daccf0fcf7283",
+        "source_fact:v1:4431e282589798e923d447e1dab1ac063c4623c4d62bbbbb247c30f99f70711e",
+        "source_fact:v1:4c8a56c6c795af2a582e009776c9a9a486bc56dfa15a4eca3fb5ddbfc04ce225"
+      ],
+      "source_published_kst": "2026-10-25T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결",
+      "telegram_core_fact": "그 이유로 정유시설 공격을 포함해 러시아 영토에서 임무를 수행하는 드론은 시속 70~90㎞ 이하 속도로 비행한다는 점을 언급했다.",
+      "title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결"
     },
     "link:a60b5ef4b16a996a38b388cc": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
@@ -385375,6 +385706,38 @@
       "source_title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”",
       "telegram_core_fact": "이재명 대통령이 11일 서울·수도권의 주택건설 인허가와 착공이 회복되고 있다며 주택 공급이 조만간 정상화될 것으로 전망했다.",
       "title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”"
+    },
+    "link:ee74b1350acf2478d6c5ba2e": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
     },
     "link:ee7fbee9eed33954983f8bba": {
       "first_seen_kst": "2026-10-16T17:33:02+09:00",
@@ -438339,6 +438702,29 @@
       "telegram_core_fact": "지난 6일 출시된 이 펀드는 배당과 자사주 매입 등 주주환원에 적극적인 기업 가운데 저평가된 우량주를 골라 투자한다.",
       "title": "대신운용, 고배당 펀드 출시 일주일 만에 설정액 1천억 돌파 | 연합뉴스"
     },
+    "original:4b005ffb7dd51ee00816ed43": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639814",
+      "source": "이투데이",
+      "source_body_digest": "fed3000273b6ce79cb967a22b185651aa133a51219b7488771726495dbab0c6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9c597cba0f29d3396a6a03ede081aff28e19482a9b712383ce3a175a3c0facb",
+      "source_fact_keys": [
+        "source_fact:v1:6681c0694ee7b1be0ab0d7c04702641fb05fa5b566f5c5a503edb5d1223faa8e",
+        "source_fact:v1:bfac1e5e5c91611979b711222fb09614d90b72f301e281e4cf262ca049714c3d",
+        "source_fact:v1:d1efa9f6ce95ecaa9be4bc5204340a2fe9e30d406593aa8d7d8d281614887a8d",
+        "source_fact:v1:f314a483e914ed727a054292b74e3c31b2bf585796a1b6242cbc281b8e378753"
+      ],
+      "source_published_kst": "2026-10-26T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\"",
+      "telegram_core_fact": "키움증권이 LG디스플레이에 대해 낮은 환율과 칩플레이션(반도체 가격 상승) 등으로 비우호적인 대외환경이 이어지고 있으나 주요 거래선향 물량을 바탕으로 향후 반등 여건을 갖춰나가고 있다며, 투자의견 '매수'를 유지하고 목표주가는 1만1000원으로 유지했다.",
+      "title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\""
+    },
     "original:4b037e70451f5bd20b29a9b7": {
       "first_seen_kst": "2026-10-19T06:35:52+09:00",
       "lanes": {
@@ -447495,6 +447881,27 @@
       "telegram_core_fact": "제약업계에 따르면 존슨앤드존슨(J&J)의 최근 실적 발표에서 렉라자(성분명 레이저티닙)와 리브리반트(성분명 아미반타맙) 병용 요법의 3분기 매출은 3억2000만달러(약 4275억원)로 집계됐다.",
       "title": "폐암치료제 렉라자 병용요법, 매출 3억달러 첫 돌파"
     },
+    "original:5c057df0c45a87d524612513": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102639787",
+      "source": "한국경제",
+      "source_body_digest": "48b17fb42200b878451f1b7f3ef1a91b747055364c8adc49d3d7894ad6c65bfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a2d42db1568440812f844e81a7a5b2af6895ffc39c8ae2bccb83bd253afafa",
+      "source_fact_keys": [
+        "source_fact:v1:51ba756cca56b655ffeeac33be71ede4f08fb707edb6adf8493a40544f13059d",
+        "source_fact:v1:97d38600c9f4047d8d4d1db0596cb78774f26dd845ec16ab5f7e04c882db1128"
+      ],
+      "source_published_kst": "2026-10-26T07:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목",
+      "telegram_core_fact": "WSJ은 한국과 일본 등 동맹국들이 미국 투자를 확대하려면 미 국방부의 안정적인 발주 수요가 뒷받침돼야 한다고 지적했다.",
+      "title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목"
+    },
     "original:5c0dc890a942501adb1de689": {
       "first_seen_kst": "2026-10-15T00:34:31+09:00",
       "lanes": {
@@ -450670,6 +451077,29 @@
       ],
       "source_published_kst": "2026-10-07T08:31+09:00",
       "title": "한성크린텍, 삼성전기 베트남 공장 초순수 시스템 230억원 수주"
+    },
+    "original:6118b9e0003d33a814fa16ae": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639772",
+      "source": "이투데이",
+      "source_body_digest": "635c52a4fa7c0eab1d9b95d9ec875dcafa32b179ed563271c98ad5f1ee5fb5cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2af15e94f5b99abe249f9678b4643c9f7e1fee21144ac40d4e1edded4784dcd",
+      "source_fact_keys": [
+        "source_fact:v1:10c8e820c562c0f36b847c049d491ef3629a413888ad9bf628b5110f4c71167e",
+        "source_fact:v1:3970333d76844ed4f6e6073109f97341aeef714dbc9eeb9cb41daccf0fcf7283",
+        "source_fact:v1:4431e282589798e923d447e1dab1ac063c4623c4d62bbbbb247c30f99f70711e",
+        "source_fact:v1:4c8a56c6c795af2a582e009776c9a9a486bc56dfa15a4eca3fb5ddbfc04ce225"
+      ],
+      "source_published_kst": "2026-10-25T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결",
+      "telegram_core_fact": "그 이유로 정유시설 공격을 포함해 러시아 영토에서 임무를 수행하는 드론은 시속 70~90㎞ 이하 속도로 비행한다는 점을 언급했다.",
+      "title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결"
     },
     "original:612c2a226d287d6faa6a919a": {
       "first_seen_kst": "2026-10-13T09:21:17+09:00",
@@ -482803,6 +483233,24 @@
       "telegram_core_fact": "강원대학교를 중심으로 한 5개 대학이 지난 3년간 축적한 교육·산학협력 성과를 기반으로 AI데이터센터(AIDC) 전주기 인재양성 체계 구축에 나선다.",
       "title": "“AI데이터센터 운영 인재 키운다”…강원대 등 5개 대학, 교육·산학협력 성과 공유"
     },
+    "original:99b233115c03501a1ab35d18": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.mk.co.kr/news/society/12185055",
+      "source": "매일경제",
+      "source_body_digest": "8d0ccb1a0c4bae64eea5d72d815697694219dcfa0f38df64c145e71c753470a8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "자사주, 소각이 끝이 아니다…공시·처분까지 챙겨야 [바른 컴플라이언스 리포트]",
+      "telegram_core_fact": "자사주가 자사주 취득·소각을 발표했습니다.",
+      "title": "자사주, 소각이 끝이 아니다…공시·처분까지 챙겨야 [바른 컴플라이언스 리포트]"
+    },
     "original:99d5484d7b2523a18dca1fb7": {
       "first_seen_kst": "2026-10-19T22:09:23+09:00",
       "lanes": {
@@ -495607,6 +496055,38 @@
       "source_title": "버려지는 열 재활용…전북연구원, 기업 기술 '새만금 적용' 제안 | 연합뉴스",
       "telegram_core_fact": "새만금은 대규모 재생에너지 생산 기반, 산업단지, 새만금항, 스마트수변도시 등 다양한 에너지 수요처를 갖고 있어 미사용 열 활용 기술을 검증 및 실증, 발전시키기에 최적지라는 것이다.",
       "title": "버려지는 열 재활용…전북연구원, 기업 기술 '새만금 적용' 제안 | 연합뉴스"
+    },
+    "original:af553c21efd5937dccb6096c": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
     },
     "original:af57e3618ab1ceac75f25039": {
       "first_seen_kst": "2026-10-17T12:40:29+09:00",
@@ -540785,6 +541265,38 @@
       "telegram_core_fact": "금융권에 따르면 신한금융지주는 이날 JKL파트너스가 보유한 롯데손보 지분 77.04%를 6933억 원에 인수하는 주식매매계약(SPA)을 체결했다. 이번에 신한금융이 인수하는 JKL파트너스의 롯데손보 지분 77.04%에 대한 매각가는 6933억 원이다.",
       "title": "롯데손보, 7년 만에 신한 품으로…JKL, 투입액 밑도는 가격에 매각"
     },
+    "source_fact:0072c61e11e7797a72e67816": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
+    },
     "source_fact:007b52e99ddf87dd8daf1ec9": {
       "first_seen_kst": "2026-10-21T07:55:35+09:00",
       "lanes": {
@@ -548534,6 +549046,38 @@
       "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
       "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
       "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
+    },
+    "source_fact:03c24c62459c4f9e5400d7be": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
     },
     "source_fact:03d59bceb722a53f5a748098": {
       "first_seen_kst": "2026-10-20T17:22:47+09:00",
@@ -647070,6 +647614,38 @@
       "telegram_core_fact": "NH투자증권 자료에 따르면 LS전선과 국내·해외 종속회사를 합산한 수주잔고는 2022년 1분기 3조원대에서 올해 2분기 9조원대까지 확대됐다.",
       "title": "NH證 “LS, NAV 대비 66% 할인⋯과도한 저평가 구간”"
     },
+    "source_fact:2c533853eaa1071efbccb89e": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
+    },
     "source_fact:2c55dae65df06184c5945a05": {
       "first_seen_kst": "2026-10-23T16:11:36+09:00",
       "lanes": {
@@ -661385,6 +661961,29 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:322c9ef6c04ed48aa0d1b45b": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639772",
+      "source": "이투데이",
+      "source_body_digest": "635c52a4fa7c0eab1d9b95d9ec875dcafa32b179ed563271c98ad5f1ee5fb5cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2af15e94f5b99abe249f9678b4643c9f7e1fee21144ac40d4e1edded4784dcd",
+      "source_fact_keys": [
+        "source_fact:v1:10c8e820c562c0f36b847c049d491ef3629a413888ad9bf628b5110f4c71167e",
+        "source_fact:v1:3970333d76844ed4f6e6073109f97341aeef714dbc9eeb9cb41daccf0fcf7283",
+        "source_fact:v1:4431e282589798e923d447e1dab1ac063c4623c4d62bbbbb247c30f99f70711e",
+        "source_fact:v1:4c8a56c6c795af2a582e009776c9a9a486bc56dfa15a4eca3fb5ddbfc04ce225"
+      ],
+      "source_published_kst": "2026-10-25T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결",
+      "telegram_core_fact": "그 이유로 정유시설 공격을 포함해 러시아 영토에서 임무를 수행하는 드론은 시속 70~90㎞ 이하 속도로 비행한다는 점을 언급했다.",
+      "title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결"
     },
     "source_fact:322dd0b34693b9bc9dba75f9": {
       "first_seen_kst": "2026-10-23T01:05:59+09:00",
@@ -689844,6 +690443,27 @@
       "telegram_core_fact": "베터웨어 드 멕시코(BWMX)는 9월 30일 종료된 2026년 3분기 순매출액이 48억3230만 멕시코 페소로 전년비 43.1% 증가해 분기 기준 사상 최고치를 기록했고, 같은 기간 EBITDA는 10억840만 페소로 39.6% 늘었다고 10월 22일 발표했다.",
       "title": "베터웨어 드 멕시코, 3분기 매출 48억 페소..전년비 43% 증가"
     },
+    "source_fact:3e47a78f9aa503b3e8cb8944": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102639787",
+      "source": "한국경제",
+      "source_body_digest": "48b17fb42200b878451f1b7f3ef1a91b747055364c8adc49d3d7894ad6c65bfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a2d42db1568440812f844e81a7a5b2af6895ffc39c8ae2bccb83bd253afafa",
+      "source_fact_keys": [
+        "source_fact:v1:51ba756cca56b655ffeeac33be71ede4f08fb707edb6adf8493a40544f13059d",
+        "source_fact:v1:97d38600c9f4047d8d4d1db0596cb78774f26dd845ec16ab5f7e04c882db1128"
+      ],
+      "source_published_kst": "2026-10-26T07:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목",
+      "telegram_core_fact": "WSJ은 한국과 일본 등 동맹국들이 미국 투자를 확대하려면 미 국방부의 안정적인 발주 수요가 뒷받침돼야 한다고 지적했다.",
+      "title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목"
+    },
     "source_fact:3e523cf9387db3089eaf8833": {
       "first_seen_kst": "2026-10-21T22:01:46+09:00",
       "lanes": {
@@ -713317,6 +713937,29 @@
       ],
       "source_published_kst": "2026-10-06T00:10+09:00",
       "title": "\"숫자와 스토리 모두 찾아야\"…월가 트레이더·퀀트 우승자의 투자 전략"
+    },
+    "source_fact:47eafe6183114fb63dac0683": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639772",
+      "source": "이투데이",
+      "source_body_digest": "635c52a4fa7c0eab1d9b95d9ec875dcafa32b179ed563271c98ad5f1ee5fb5cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2af15e94f5b99abe249f9678b4643c9f7e1fee21144ac40d4e1edded4784dcd",
+      "source_fact_keys": [
+        "source_fact:v1:10c8e820c562c0f36b847c049d491ef3629a413888ad9bf628b5110f4c71167e",
+        "source_fact:v1:3970333d76844ed4f6e6073109f97341aeef714dbc9eeb9cb41daccf0fcf7283",
+        "source_fact:v1:4431e282589798e923d447e1dab1ac063c4623c4d62bbbbb247c30f99f70711e",
+        "source_fact:v1:4c8a56c6c795af2a582e009776c9a9a486bc56dfa15a4eca3fb5ddbfc04ce225"
+      ],
+      "source_published_kst": "2026-10-25T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결",
+      "telegram_core_fact": "그 이유로 정유시설 공격을 포함해 러시아 영토에서 임무를 수행하는 드론은 시속 70~90㎞ 이하 속도로 비행한다는 점을 언급했다.",
+      "title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결"
     },
     "source_fact:47eb35c2b6a9e63a865bb9a2": {
       "first_seen_kst": "2026-10-21T10:53:33+09:00",
@@ -786842,6 +787485,29 @@
       "telegram_core_fact": "오시스코 골드 그룹(OGG)은 원자재 트레이딩 대기업 트라피구라의 캐나다 계열사 유리온 인베스트먼츠 홀딩스(Urion)를 상대로 한 약 3000만 달러 규모 전략적 지분투자를 완료하고, 보통주 955만4141주를 주당 3.14달러에 발행했다고 9일 발표했다.",
       "title": "오시스코 골드 그룹, 트라피구라 계열 3000만 달러 투자 유치 완료"
     },
+    "source_fact:6604dcdce3a30216e918a766": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639814",
+      "source": "이투데이",
+      "source_body_digest": "fed3000273b6ce79cb967a22b185651aa133a51219b7488771726495dbab0c6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9c597cba0f29d3396a6a03ede081aff28e19482a9b712383ce3a175a3c0facb",
+      "source_fact_keys": [
+        "source_fact:v1:6681c0694ee7b1be0ab0d7c04702641fb05fa5b566f5c5a503edb5d1223faa8e",
+        "source_fact:v1:bfac1e5e5c91611979b711222fb09614d90b72f301e281e4cf262ca049714c3d",
+        "source_fact:v1:d1efa9f6ce95ecaa9be4bc5204340a2fe9e30d406593aa8d7d8d281614887a8d",
+        "source_fact:v1:f314a483e914ed727a054292b74e3c31b2bf585796a1b6242cbc281b8e378753"
+      ],
+      "source_published_kst": "2026-10-26T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\"",
+      "telegram_core_fact": "키움증권이 LG디스플레이에 대해 낮은 환율과 칩플레이션(반도체 가격 상승) 등으로 비우호적인 대외환경이 이어지고 있으나 주요 거래선향 물량을 바탕으로 향후 반등 여건을 갖춰나가고 있다며, 투자의견 '매수'를 유지하고 목표주가는 1만1000원으로 유지했다.",
+      "title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\""
+    },
     "source_fact:66070b15d467b2dc0c42263e": {
       "first_seen_kst": "2026-10-24T05:00:02+09:00",
       "lanes": {
@@ -808289,6 +808955,38 @@
       "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
       "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
     },
+    "source_fact:6ee44fe19319ac9e7b5709d6": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
+    },
     "source_fact:6ee5cd06aa2b02615d84b191": {
       "first_seen_kst": "2026-10-20T22:10:05+09:00",
       "lanes": {
@@ -815992,6 +816690,38 @@
       "source_title": "RLI, 3분기 영업EPS 0.86달러..전년비 4.9% 증가",
       "telegram_core_fact": "RLI(RLI)는 3분기 비GAAP 기준 주당영업이익이 0.86달러로 전년 동기 0.82달러보다 4.9% 증가했으며, 합산비율은 86.2를 기록했다고 21일(현지시간) 발표했다.",
       "title": "RLI, 3분기 영업EPS 0.86달러..전년비 4.9% 증가"
+    },
+    "source_fact:7273adcf9a5ca106eb9bd318": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
     },
     "source_fact:7274dadb63cb78ae2a60ac67": {
       "first_seen_kst": "2026-10-16T18:07:43+09:00",
@@ -824035,6 +824765,38 @@
       "source_title": "[오늘의 증시]美 반도체 약세에…코스피 하락세 이어지나",
       "telegram_core_fact": "MSCI 한국 증시 ETF는 4.02% 하락한 가운데 필라델피아 반도체 지수도 2.67% 내렸다. 미국 뉴욕증시가 주요 기업들의 실적 발표와 물가 지표 공개를 앞두고 혼조세로 마감한 가운데 13일 국내증시 또한 약세를 이어갈 것으로 전망된다.",
       "title": "[오늘의 증시]美 반도체 약세에…코스피 하락세 이어지나"
+    },
+    "source_fact:759a0da449cdf8ffd8cf4bf3": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
     },
     "source_fact:759e8475608d0d248cd6da2e": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -872713,6 +873475,38 @@
       "telegram_core_fact": "하나금융그룹이 올해 3분기까지 3조6243억원의 당기순이익을 달성했다.",
       "title": "하나금융, 3분기 누적 순익 3.6조…자사주 매입·소각도 '역대 최대'(종합)"
     },
+    "source_fact:8a2db0d308b444338273691c": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
+    },
     "source_fact:8a30fdc0a7d21be5e332324f": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -884625,6 +885419,38 @@
       ],
       "source_published_kst": "2026-10-07T07:38+09:00",
       "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
+    },
+    "source_fact:8f9cf72dbc6c82e7d1fbe49b": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
     },
     "source_fact:8f9db9e98feee63bb9c01b3e": {
       "first_seen_kst": "2026-10-13T14:54:18+09:00",
@@ -912432,6 +913258,38 @@
       "telegram_core_fact": "도널드 트럼프 미 대통령이 다음 달 중간 선거를 앞두고 치솟은 경유가 인하를 위해 러시아와 경유 공급 계약을 체결했다고 밝혔으나 경유 가격을 내리는 데는 큰 도움이 되지 않을 것이라고 미 월스트리트저널(WSJ)이 12일(현지시각) 보도했다.",
       "title": "\"트럼프 러 경유 수입, 가격 인하엔 턱없이 부족\"-WSJ"
     },
+    "source_fact:9b2a8ab5660cfba590a88c08": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
+    },
     "source_fact:9b2bd2303ad0ddaa5390cca3": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -914492,6 +915350,38 @@
       "source_title": "호르무즈 긴장에 유가 110달러 돌파…AI 불안 겹쳐 美증시 선물↓",
       "telegram_core_fact": "20일(현지시간) CNBC에 따르면 이날 오전 7시38분 기준 미국 서부텍사스산원유(WTI) 11월물 선물은 전장 대비 6.58% 급등한 배럴당 110.48달러에 거래됐다.",
       "title": "호르무즈 긴장에 유가 110달러 돌파…AI 불안 겹쳐 美증시 선물↓"
+    },
+    "source_fact:9bf72fcc59422f3cd224e1d4": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
     },
     "source_fact:9bf76b2766b9b0a96ba6b65b": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
@@ -962321,6 +963211,29 @@
       "source_title": "로봇 관제 넘어 물류·휴머노이드로…클로봇, 글로벌 톱5 도전",
       "telegram_core_fact": "제조·물류·서비스 등 10개 이상 산업에서 고객사 130곳 이상을 확보했고 지난해 매출은 약 414억원이었다. 로봇 소프트웨어·통합관제 전문기업 클로봇이 두산로지스틱스솔루션(DLS) 인수를 발판으로 물류자동화 사업을 확대한다.",
       "title": "로봇 관제 넘어 물류·휴머노이드로…클로봇, 글로벌 톱5 도전"
+    },
+    "source_fact:af3eb19b5dbe7545f98bcb6c": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639814",
+      "source": "이투데이",
+      "source_body_digest": "fed3000273b6ce79cb967a22b185651aa133a51219b7488771726495dbab0c6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9c597cba0f29d3396a6a03ede081aff28e19482a9b712383ce3a175a3c0facb",
+      "source_fact_keys": [
+        "source_fact:v1:6681c0694ee7b1be0ab0d7c04702641fb05fa5b566f5c5a503edb5d1223faa8e",
+        "source_fact:v1:bfac1e5e5c91611979b711222fb09614d90b72f301e281e4cf262ca049714c3d",
+        "source_fact:v1:d1efa9f6ce95ecaa9be4bc5204340a2fe9e30d406593aa8d7d8d281614887a8d",
+        "source_fact:v1:f314a483e914ed727a054292b74e3c31b2bf585796a1b6242cbc281b8e378753"
+      ],
+      "source_published_kst": "2026-10-26T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\"",
+      "telegram_core_fact": "키움증권이 LG디스플레이에 대해 낮은 환율과 칩플레이션(반도체 가격 상승) 등으로 비우호적인 대외환경이 이어지고 있으나 주요 거래선향 물량을 바탕으로 향후 반등 여건을 갖춰나가고 있다며, 투자의견 '매수'를 유지하고 목표주가는 1만1000원으로 유지했다.",
+      "title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\""
     },
     "source_fact:af3f5680d5451e21ea59d959": {
       "first_seen_kst": "2026-10-23T10:58:03+09:00",
@@ -1022682,6 +1023595,29 @@
       "telegram_core_fact": "한국투자신탁운용은 13일 만기매칭형 채권 상장지수펀드(ETF)인 ‘ACE 29-11회사채(AA-이상)액티브 ETF’를 신규 상장한다고 밝혔다.",
       "title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자"
     },
+    "source_fact:c7d21fe56c741a4f7b8e7802": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639772",
+      "source": "이투데이",
+      "source_body_digest": "635c52a4fa7c0eab1d9b95d9ec875dcafa32b179ed563271c98ad5f1ee5fb5cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2af15e94f5b99abe249f9678b4643c9f7e1fee21144ac40d4e1edded4784dcd",
+      "source_fact_keys": [
+        "source_fact:v1:10c8e820c562c0f36b847c049d491ef3629a413888ad9bf628b5110f4c71167e",
+        "source_fact:v1:3970333d76844ed4f6e6073109f97341aeef714dbc9eeb9cb41daccf0fcf7283",
+        "source_fact:v1:4431e282589798e923d447e1dab1ac063c4623c4d62bbbbb247c30f99f70711e",
+        "source_fact:v1:4c8a56c6c795af2a582e009776c9a9a486bc56dfa15a4eca3fb5ddbfc04ce225"
+      ],
+      "source_published_kst": "2026-10-25T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결",
+      "telegram_core_fact": "그 이유로 정유시설 공격을 포함해 러시아 영토에서 임무를 수행하는 드론은 시속 70~90㎞ 이하 속도로 비행한다는 점을 언급했다.",
+      "title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결"
+    },
     "source_fact:c7d3fba1b0e3888cc381514a": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -1036110,6 +1037046,29 @@
       "telegram_core_fact": "김창호 연구원은 \"3분기 평균환율은 1418원으로 실적 추정에 적용한 1480원 대비 62원 강세\"라며 \"환율 가정 변화로만 약 3000억원의 영업익 축소가 발생한 것으로 추정된다\"고 분석했다.",
       "title": "환율 악재 그룹株 흔들려도⋯현대모비스 목표가 '선방' 이유"
     },
+    "source_fact:cdbf3ac499da852917252379": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639772",
+      "source": "이투데이",
+      "source_body_digest": "635c52a4fa7c0eab1d9b95d9ec875dcafa32b179ed563271c98ad5f1ee5fb5cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2af15e94f5b99abe249f9678b4643c9f7e1fee21144ac40d4e1edded4784dcd",
+      "source_fact_keys": [
+        "source_fact:v1:10c8e820c562c0f36b847c049d491ef3629a413888ad9bf628b5110f4c71167e",
+        "source_fact:v1:3970333d76844ed4f6e6073109f97341aeef714dbc9eeb9cb41daccf0fcf7283",
+        "source_fact:v1:4431e282589798e923d447e1dab1ac063c4623c4d62bbbbb247c30f99f70711e",
+        "source_fact:v1:4c8a56c6c795af2a582e009776c9a9a486bc56dfa15a4eca3fb5ddbfc04ce225"
+      ],
+      "source_published_kst": "2026-10-25T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결",
+      "telegram_core_fact": "그 이유로 정유시설 공격을 포함해 러시아 영토에서 임무를 수행하는 드론은 시속 70~90㎞ 이하 속도로 비행한다는 점을 언급했다.",
+      "title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결"
+    },
     "source_fact:cdc410725a3e7309125df7a7": {
       "first_seen_kst": "2026-10-23T05:32:14+09:00",
       "lanes": {
@@ -1045195,6 +1046154,27 @@
       "source_title": "현대차그룹, 레벨4 자율주행 트럭 실증…\"고속도로·도심 400㎞ 달린다\"",
       "telegram_core_fact": "박상현 현대차·기아 상용LCM담당 부사장은 \"레벨 4 자율주행 대형트럭의 상용화를 위한 기술 기반을 단계적으로 마련해 나갈 것\"이라고 밝혔다. 현대자동차·기아가 레벨 4 자율주행 대형트럭 물류 운송 사업 실증을 위해 기술 검증에 돌입한다.",
       "title": "현대차그룹, 레벨4 자율주행 트럭 실증…\"고속도로·도심 400㎞ 달린다\""
+    },
+    "source_fact:d13ffc7366e728f6b2029178": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102639787",
+      "source": "한국경제",
+      "source_body_digest": "48b17fb42200b878451f1b7f3ef1a91b747055364c8adc49d3d7894ad6c65bfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a2d42db1568440812f844e81a7a5b2af6895ffc39c8ae2bccb83bd253afafa",
+      "source_fact_keys": [
+        "source_fact:v1:51ba756cca56b655ffeeac33be71ede4f08fb707edb6adf8493a40544f13059d",
+        "source_fact:v1:97d38600c9f4047d8d4d1db0596cb78774f26dd845ec16ab5f7e04c882db1128"
+      ],
+      "source_published_kst": "2026-10-26T07:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목",
+      "telegram_core_fact": "WSJ은 한국과 일본 등 동맹국들이 미국 투자를 확대하려면 미 국방부의 안정적인 발주 수요가 뒷받침돼야 한다고 지적했다.",
+      "title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목"
     },
     "source_fact:d1406ab71e6497d0340e1974": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
@@ -1066747,6 +1067727,38 @@
       "source_title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가",
       "telegram_core_fact": "뱅크유나이티드(BKU)가 3분기(9월 30일 종료) 일반회계기준(GAAP) 순이익 7220만 달러, 희석 주당순이익(EPS) 1.01달러를 기록했다고 10월 21일 발표했다.",
       "title": "뱅크유나이티드, 3분기 희석 EPS 1.01달러..전년비 6% 증가"
+    },
+    "source_fact:da43cd610f81bf0ec7409d24": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
     },
     "source_fact:da4799fb760dd49e401af0bd": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
@@ -1104124,6 +1105136,38 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
     },
+    "source_fact:e9b1326716eb1e41b2205fa5": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
+    },
     "source_fact:e9b44188c1a7408516b1723e": {
       "first_seen_kst": "2026-10-13T19:06:12+09:00",
       "lanes": {
@@ -1110480,6 +1111524,38 @@
       "source_title": "신현송 \"선제 금리인상 적절…정부 예산안, 성장률 0.5%p 높여\"",
       "telegram_core_fact": "신현송 한국은행 총재가 지난 7·8월 두 차례 연속 기준금리 인상으로 미국보다 선제적으로 대응해 경제적 비용을 줄였다고 평가했다.",
       "title": "신현송 \"선제 금리인상 적절…정부 예산안, 성장률 0.5%p 높여\""
+    },
+    "source_fact:ec5bb065903bc6953eb45dbf": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
     },
     "source_fact:ec5bde531946484eeca45caf": {
       "first_seen_kst": "2026-10-25T14:08:27+09:00",
@@ -1136202,6 +1137278,29 @@
       "telegram_core_fact": "장 연구원은 \"결국 어닝 서프라이즈는 본업 수익성 개선에 의한 것\"이라며 \"미국향 전력기기와 전력 인프라 매출 증가가 실적 개선을 이끌었다\"고 설명했다.",
       "title": "한국투자證, “LS일렉트릭, 美가 이끈 어닝 서프라이즈⋯4분기도 좋다”"
     },
+    "source_fact:f796355c26ff91c6ba5dacc1": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639814",
+      "source": "이투데이",
+      "source_body_digest": "fed3000273b6ce79cb967a22b185651aa133a51219b7488771726495dbab0c6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9c597cba0f29d3396a6a03ede081aff28e19482a9b712383ce3a175a3c0facb",
+      "source_fact_keys": [
+        "source_fact:v1:6681c0694ee7b1be0ab0d7c04702641fb05fa5b566f5c5a503edb5d1223faa8e",
+        "source_fact:v1:bfac1e5e5c91611979b711222fb09614d90b72f301e281e4cf262ca049714c3d",
+        "source_fact:v1:d1efa9f6ce95ecaa9be4bc5204340a2fe9e30d406593aa8d7d8d281614887a8d",
+        "source_fact:v1:f314a483e914ed727a054292b74e3c31b2bf585796a1b6242cbc281b8e378753"
+      ],
+      "source_published_kst": "2026-10-26T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\"",
+      "telegram_core_fact": "키움증권이 LG디스플레이에 대해 낮은 환율과 칩플레이션(반도체 가격 상승) 등으로 비우호적인 대외환경이 이어지고 있으나 주요 거래선향 물량을 바탕으로 향후 반등 여건을 갖춰나가고 있다며, 투자의견 '매수'를 유지하고 목표주가는 1만1000원으로 유지했다.",
+      "title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\""
+    },
     "source_fact:f7967d60a8fb519bf9786a47": {
       "first_seen_kst": "2026-10-24T05:26:28+09:00",
       "lanes": {
@@ -1138777,6 +1139876,29 @@
       "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
       "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
       "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
+    "source_fact:f8d9fd5bad19b9ea77b7582a": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639814",
+      "source": "이투데이",
+      "source_body_digest": "fed3000273b6ce79cb967a22b185651aa133a51219b7488771726495dbab0c6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9c597cba0f29d3396a6a03ede081aff28e19482a9b712383ce3a175a3c0facb",
+      "source_fact_keys": [
+        "source_fact:v1:6681c0694ee7b1be0ab0d7c04702641fb05fa5b566f5c5a503edb5d1223faa8e",
+        "source_fact:v1:bfac1e5e5c91611979b711222fb09614d90b72f301e281e4cf262ca049714c3d",
+        "source_fact:v1:d1efa9f6ce95ecaa9be4bc5204340a2fe9e30d406593aa8d7d8d281614887a8d",
+        "source_fact:v1:f314a483e914ed727a054292b74e3c31b2bf585796a1b6242cbc281b8e378753"
+      ],
+      "source_published_kst": "2026-10-26T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\"",
+      "telegram_core_fact": "키움증권이 LG디스플레이에 대해 낮은 환율과 칩플레이션(반도체 가격 상승) 등으로 비우호적인 대외환경이 이어지고 있으나 주요 거래선향 물량을 바탕으로 향후 반등 여건을 갖춰나가고 있다며, 투자의견 '매수'를 유지하고 목표주가는 1만1000원으로 유지했다.",
+      "title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\""
     },
     "source_fact:f8e19832ae08eea77afee0fa": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
@@ -1200275,6 +1201397,29 @@
       "telegram_core_fact": "지난 6일 출시된 이 펀드는 배당과 자사주 매입 등 주주환원에 적극적인 기업 가운데 저평가된 우량주를 골라 투자한다.",
       "title": "대신운용, 고배당 펀드 출시 일주일 만에 설정액 1천억 돌파 | 연합뉴스"
     },
+    "title:4b005ffb7dd51ee00816ed43": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639814",
+      "source": "이투데이",
+      "source_body_digest": "fed3000273b6ce79cb967a22b185651aa133a51219b7488771726495dbab0c6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9c597cba0f29d3396a6a03ede081aff28e19482a9b712383ce3a175a3c0facb",
+      "source_fact_keys": [
+        "source_fact:v1:6681c0694ee7b1be0ab0d7c04702641fb05fa5b566f5c5a503edb5d1223faa8e",
+        "source_fact:v1:bfac1e5e5c91611979b711222fb09614d90b72f301e281e4cf262ca049714c3d",
+        "source_fact:v1:d1efa9f6ce95ecaa9be4bc5204340a2fe9e30d406593aa8d7d8d281614887a8d",
+        "source_fact:v1:f314a483e914ed727a054292b74e3c31b2bf585796a1b6242cbc281b8e378753"
+      ],
+      "source_published_kst": "2026-10-26T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\"",
+      "telegram_core_fact": "키움증권이 LG디스플레이에 대해 낮은 환율과 칩플레이션(반도체 가격 상승) 등으로 비우호적인 대외환경이 이어지고 있으나 주요 거래선향 물량을 바탕으로 향후 반등 여건을 갖춰나가고 있다며, 투자의견 '매수'를 유지하고 목표주가는 1만1000원으로 유지했다.",
+      "title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\""
+    },
     "title:4b037e70451f5bd20b29a9b7": {
       "first_seen_kst": "2026-10-19T06:35:52+09:00",
       "lanes": {
@@ -1209666,6 +1210811,27 @@
       "telegram_core_fact": "제약업계에 따르면 존슨앤드존슨(J&J)의 최근 실적 발표에서 렉라자(성분명 레이저티닙)와 리브리반트(성분명 아미반타맙) 병용 요법의 3분기 매출은 3억2000만달러(약 4275억원)로 집계됐다.",
       "title": "폐암치료제 렉라자 병용요법, 매출 3억달러 첫 돌파"
     },
+    "title:5c057df0c45a87d524612513": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.hankyung.com/article/2026102639787",
+      "source": "한국경제",
+      "source_body_digest": "48b17fb42200b878451f1b7f3ef1a91b747055364c8adc49d3d7894ad6c65bfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a2d42db1568440812f844e81a7a5b2af6895ffc39c8ae2bccb83bd253afafa",
+      "source_fact_keys": [
+        "source_fact:v1:51ba756cca56b655ffeeac33be71ede4f08fb707edb6adf8493a40544f13059d",
+        "source_fact:v1:97d38600c9f4047d8d4d1db0596cb78774f26dd845ec16ab5f7e04c882db1128"
+      ],
+      "source_published_kst": "2026-10-26T07:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목",
+      "telegram_core_fact": "WSJ은 한국과 일본 등 동맹국들이 미국 투자를 확대하려면 미 국방부의 안정적인 발주 수요가 뒷받침돼야 한다고 지적했다.",
+      "title": "WSJ \"트럼프 美조선업 부활의 핵심은 한화오션\"…현지 투자 주목"
+    },
     "title:5c0dc890a942501adb1de689": {
       "first_seen_kst": "2026-10-15T00:34:31+09:00",
       "lanes": {
@@ -1212908,6 +1214074,29 @@
       ],
       "source_published_kst": "2026-10-07T08:31+09:00",
       "title": "한성크린텍, 삼성전기 베트남 공장 초순수 시스템 230억원 수주"
+    },
+    "title:6118b9e0003d33a814fa16ae": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639772",
+      "source": "이투데이",
+      "source_body_digest": "635c52a4fa7c0eab1d9b95d9ec875dcafa32b179ed563271c98ad5f1ee5fb5cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2af15e94f5b99abe249f9678b4643c9f7e1fee21144ac40d4e1edded4784dcd",
+      "source_fact_keys": [
+        "source_fact:v1:10c8e820c562c0f36b847c049d491ef3629a413888ad9bf628b5110f4c71167e",
+        "source_fact:v1:3970333d76844ed4f6e6073109f97341aeef714dbc9eeb9cb41daccf0fcf7283",
+        "source_fact:v1:4431e282589798e923d447e1dab1ac063c4623c4d62bbbbb247c30f99f70711e",
+        "source_fact:v1:4c8a56c6c795af2a582e009776c9a9a486bc56dfa15a4eca3fb5ddbfc04ce225"
+      ],
+      "source_published_kst": "2026-10-25T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결",
+      "telegram_core_fact": "그 이유로 정유시설 공격을 포함해 러시아 영토에서 임무를 수행하는 드론은 시속 70~90㎞ 이하 속도로 비행한다는 점을 언급했다.",
+      "title": "우크라 스타실드 정상화⋯드론 시속 400㎞도 연결"
     },
     "title:612c2a226d287d6faa6a919a": {
       "first_seen_kst": "2026-10-13T09:21:17+09:00",
@@ -1245712,6 +1246901,24 @@
       "telegram_core_fact": "강원대학교를 중심으로 한 5개 대학이 지난 3년간 축적한 교육·산학협력 성과를 기반으로 AI데이터센터(AIDC) 전주기 인재양성 체계 구축에 나선다.",
       "title": "“AI데이터센터 운영 인재 키운다”…강원대 등 5개 대학, 교육·산학협력 성과 공유"
     },
+    "title:99b233115c03501a1ab35d18": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://www.mk.co.kr/news/society/12185055",
+      "source": "매일경제",
+      "source_body_digest": "8d0ccb1a0c4bae64eea5d72d815697694219dcfa0f38df64c145e71c753470a8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "자사주, 소각이 끝이 아니다…공시·처분까지 챙겨야 [바른 컴플라이언스 리포트]",
+      "telegram_core_fact": "자사주가 자사주 취득·소각을 발표했습니다.",
+      "title": "자사주, 소각이 끝이 아니다…공시·처분까지 챙겨야 [바른 컴플라이언스 리포트]"
+    },
     "title:99d5484d7b2523a18dca1fb7": {
       "first_seen_kst": "2026-10-19T22:09:23+09:00",
       "lanes": {
@@ -1258881,6 +1260088,38 @@
       "source_title": "버려지는 열 재활용…전북연구원, 기업 기술 '새만금 적용' 제안 | 연합뉴스",
       "telegram_core_fact": "새만금은 대규모 재생에너지 생산 기반, 산업단지, 새만금항, 스마트수변도시 등 다양한 에너지 수요처를 갖고 있어 미사용 열 활용 기술을 검증 및 실증, 발전시키기에 최적지라는 것이다.",
       "title": "버려지는 열 재활용…전북연구원, 기업 기술 '새만금 적용' 제안 | 연합뉴스"
+    },
+    "title:af553c21efd5937dccb6096c": {
+      "first_seen_kst": "2026-10-26T07:52:33+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:52:33+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:52:33+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/25/UWBV4B37MRBBBPOBUJMEYWWOXM/",
+      "source": "조선비즈",
+      "source_body_digest": "a1e53b753ab8cff11dc7b75f6c7e3b7ee9de79805ac1c10d0983411558de021d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468d6dad741f39e0091a897446644745dc69fe675f4f80a7a47bc4295e1bedf7",
+      "source_fact_keys": [
+        "source_fact:v1:141f8a6745b849689c41928990dfc43e030081e01316d45eaff0e0f861d73aff",
+        "source_fact:v1:24cf4105d9577df6741cb82013d4ad5a55eae961da0d9f39356cf0ef0952ff11",
+        "source_fact:v1:3c441696effbb7b550c7e92c77f5564d3651a40b08347b883a995c398bb17abe",
+        "source_fact:v1:3dd0b17def9da0f7c92dae11dd57a69f92a3607198e5a0e953344ca4577a30ab",
+        "source_fact:v1:4010572a7c370cc50ee81fd86400c27c97f20567e736029073f174c45a48b233",
+        "source_fact:v1:6a8c7868d08da22613a5e27aa3b9088136f3e1ee3d3c895c395c5a1a040a51ab",
+        "source_fact:v1:94245830a8548bbfe2030827d41315c84b86dd4ab52c9bc36e8cd1c401f72172",
+        "source_fact:v1:9e4dabac1cc1159efa124b6bd6c199b9ec9094e6c16b3c46c6a72aae7316d196",
+        "source_fact:v1:a66adeccc11fe9c1c205455cd538a5d28e07b116e7361611389a2064b8e63ec4",
+        "source_fact:v1:b6337c3f2a552d7b70905417626a642c18912c66d557b573b4735f4e0c7faa47",
+        "source_fact:v1:b81faee5499034da7655e84d2486f859e7ae021d3af541b0d3462327c3b6edd9",
+        "source_fact:v1:bf03d3ecc3a3079d89bc412bb3ab62e8cc8c580ee5983937ade416f1a2b6b460",
+        "source_fact:v1:ea3b71eac8f1d5f1bbe9c011d8e2132ecf27a4a718c6e352df128a0cfbf0f699"
+      ],
+      "source_published_kst": "2026-10-25T10:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
+      "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
+      "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
     },
     "title:af57e3618ab1ceac75f25039": {
       "first_seen_kst": "2026-10-17T12:40:29+09:00",
@@ -1303945,5 +1305184,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-26T07:17:46+09:00"
+  "updated_at_kst": "2026-10-26T07:52:33+09:00"
 }
