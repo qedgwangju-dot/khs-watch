@@ -83,4 +83,19 @@ class TestSpxOfficialAndRisks(unittest.TestCase):
         x=data(ratio=2.5,vix=19.45)
         self.assertEqual(m.stage(x["ratio"],x["vix"]),0)
 
+    def test_official_same_day_revision_is_detected_and_noise_is_not(self):
+        old=data()
+        same=dict(old)
+        changed=dict(old,puts=old["puts"]+100,ratio=1.2483)
+        self.assertFalse(m.changed_metrics(old,same))
+        self.assertTrue(m.changed_metrics(old,changed))
+        self.assertFalse(m.changed_metrics(None,changed))
+        self.assertFalse(m.changed_metrics(old,{**old,"last_checked":"ignored"}))
+    def test_same_day_new_risk_level_triggers_only_if_joint_confirmed(self):
+        old=data(ratio=1.25,vix=19.45)
+        revised=dict(old,ratio=1.50,vix=26.0)
+        self.assertTrue(m.changed_metrics(old,revised))
+        self.assertEqual(m.stage(revised["ratio"],revised["vix"]),1)
+        self.assertEqual(m.stage(old["ratio"],old["vix"]),0)
+
 if __name__=="__main__":unittest.main()
