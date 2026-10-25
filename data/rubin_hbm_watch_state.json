@@ -1119,7 +1119,7 @@
   },
   "_delivery": {
     "id": "63174c980650064fafebeaa079f0e9e192907d5cd7c9fd28078c9aa97578af7c",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-10-25T19:54:44+09:00",
     "chunks": [
       "<b>MLCC 납기 악화 — 삼성전기 제조사·유통 별도 추적</b>\n• 2026년 10월 삼성전기 주문 납기 <b>52주</b> (DIGITIMES 보도).\n• 일부 유통 채널 제품은 최장 <b>61주</b> (같은 제조사 전체 제품 아님).\n• TrendForce 10/19 산업 지표: <b>35주</b> (산업 공통 평균 범위).\n• 중요: 35주→52주를 산업 리드타임 악화(+17주)로 계산하지 않음.\n• 9월 '30주 이상'도 정확한 직전값이 없어 +22주 확정 계산 금지.\n• 삼성전기 공식: AI 서버용 MLCC <b>1조 722억원</b> 2027년 1~12월 공급계약.\n• 2Q26 컴포넌트 매출 1조6,494억원(분기), 전사 매출 3조4,572억원·영업이익 4,404억원.\n• 상반기 가동률 91%는 보도치. 제품별 생산·고객 단가와 다름.\n• 세종·베트남 설비투자 6조7,800억원은 <b>FC-BGA 기판용</b>, MLCC와 분리.\n• 다음 확인: 10/28 3분기 잠정실적, MLCC 평균판매단가·생산능력·필리핀 공장 일정.\n• <a href=\"https://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=772371\">납기 보도</a> / <a href=\"https://sem.samsung.com/kr/newsroom/news/view.do?id=10501\">공식 공급계약</a>\n\n<b>CASPA 2026 반도체 공급·금융 병목 검증 알림</b>\n• 10월 23일 Dylan Patel·Stacy Rasgon 대담. 계약 공시가 아닌 발언·전망.\n• 기판·PCB 소재, HBM, 광학 연결이 주요 병목. 자금조달과 전력 접속은 별도 제약.\n• HBM의 웨이퍼 사용량은 DDR5 같은 용량 대비 <b>3~4배</b>; 전달문 '34배'는 원문 오기.\n• 네오클라우드 금융비용 13~15%는 대담에서 제시한 일부 사례이지 산업 전체 일률 금리 아님.\n• NVIDIA·Sharon AI 수익배분과 신용지원 협력은 SEC 공시 확인. 최대 4만 GPU/72MW는 계획.\n• 차세대 반도체 장비는 소재·밸브·질량유량제어기·PCB까지 병목 전이 가능.\n• 1GW 전체 구축비 추정: 400억달러(약 52조9,780억원)→600억달러(약 79조4,670억원) 이상(약 79조4,670억원 이상).\n• 설계업체 마진 제외 부품비 추정 200억달러(약 26조4,890억원); 건설·전력 포함 총비와 분모가 다름.\n• 환율: 1달러=1,324.45원 (기존 검증 환율 기준, 보조 추산).\n• 수익배분율·GPU당 3.50달러(약 4,636원)는 대담 진술이며 계약상 정산단위 공개자료와 미대조.\n• 다음 확인: 수주→발주→클린룸 설치·수율, 금융 종결·차입비용·실제 전원 인가.\n• <a href=\"https://newsletter.chipstrat.com/p/my-conversation-with-dylan-patel\">진행자 공개 원문</a> / <a href=\"https://www.sec.gov/Archives/edgar/data/2068385/000149315226037203/forms-1a.htm\">Sharon AI SEC 공시</a>\n\n환율 기준: USD/KRW 1,324.4500원 · 2026-10-23 일일 기준 · ECB/Frankfurter · 조회 2026-10-25 19:54 KST · 보조 API 2026-10-25 · 차이 0.03% · 일중 기준시각 차이 가능"
@@ -2280,6 +2280,7 @@
         "official_spec_url": "https://news.skhynix.co.kr/hbf-at-fms-2026/",
         "status": "reported_target_not_official_final_not_commercial"
       }
-    }
+    },
+    "attempt_at_kst": "2026-10-25T19:54:46+09:00"
   }
 }
