@@ -432,6 +432,10 @@ def is_domestic_telecom(text: str, item: dict) -> bool:
     )
 
 
+def is_crypto_tax(text: str, item: dict) -> bool:
+    return bool(item.get("crypto_tax_policy_watch"))
+
+
 def is_stablecoin(text: str, item: dict) -> bool:
     if bool(item.get("domestic_stablecoin_policy_watch")) or "korea_stablecoin_policy" in (item.get("matched") or {}):
         return True
@@ -985,6 +989,20 @@ def ensure_explained(item: dict) -> dict:
             priced_in="중간. 통신비 인하 압박은 오래된 리스크지만 구체 제도 변경이 나오면 이익 추정 조정이 가능합니다.",
             counter="요금 인하가 실제 시행되지 않거나 AI 인프라 매출 증가가 ARPU 둔화를 상쇄하면 주가 영향은 제한됩니다.",
             failure_signal="요금제·선택약정·단통법 후속 조치가 없거나 통신사 B2B/AI 인프라 매출이 방어하면 규제 악재가 약해집니다.",
+        )
+    elif is_crypto_tax(text, item):
+        put(
+            item,
+            importance="상",
+            impacts=["할인율", "수급", "시간표"],
+            paths=["세법 심사", "거래소 수급", "가상자산 과세 위험"],
+            sectors=["가상자산거래소/디지털자산"],
+            policy_plain_summary="청와대 관계자 발언에 근거한 2026-10-25 재유예 방향 보도이며, 소득세법 개정 완료가 아님. 현행 시행 예정일은 2027-01-01.",
+            investment_view="재유예 기대는 거래 심리에 우호적이나 세금 면제 확정이나 거래소 이익 증가 확정은 아닙니다.",
+            korea_market_impact="국내 가상자산 투자자와 거래소의 과세 기대에 영향. 2029년·2030년 시행안이 혼재하며 국회 심사가 관건입니다.",
+            priced_in="정책 기대는 선반영될 수 있으나 입법 확정 전에는 유동성·거래대금 변동 확인 필요.",
+            counter="정부·여야의 유예 입장만으로 법률 시행일이 바뀌지 않으며, 실제 개정안이 통과·공포돼야 합니다.",
+            failure_signal="당정협의 결렬, 국회 심사 장기화, 시행일 변경 없이 2027년 1월 과세 시행.",
         )
     elif is_stablecoin(text, item):
         put(
