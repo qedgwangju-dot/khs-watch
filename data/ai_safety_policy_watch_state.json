@@ -9,7 +9,7 @@
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 120,
+    "raw_items": 129,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -96,7 +96,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-10-25T08:35:44.254873+00:00",
+    "updated_at": "2026-10-25T09:10:54.988267+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -190,6 +190,15 @@
       "source": "Bloomberg",
       "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Bloomberg",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcENENWdpRlloLVpNclIyQWpIM3JSV3VHZklqOWZlQ0NJYnB2TWg2ZlhPMndNbS1qM2pWM0dTTVFZQ2l1SmxTT1h3VjZJNVpXTWhZTHRnLThqYm9UeFJ4ZEp0U3JROG1sUFJrN3Z6SEFKN2tPcU5teHZ6cU9JUDh4X1laZVZJMkZNNXNSZnJlZDdOX0dFMlM5REZCSGRHR3AydkdCbUY3RU9zYTRoNzdz?oc=5"
+    },
+    "b8222b47bb3f325fd1464a5a": {
+      "category": "국내 PHP 보안위기 대응·정책 단계",
+      "entity": "과학기술정보통신부·한국인터넷진흥원",
+      "first_seen_at": "2026-10-25T09:10:54.988267+00:00",
+      "published_at": "2026-10-22T04:31:02+00:00",
+      "source": "서울경제",
+      "title": "PHP 보안 우려에 정부, 사이버 위기 경보 ‘관심’→‘주의’ 상향 - 서울경제",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5pTWJJYzdkOGhQdkVTRzZZeGYwaEJxRzJWdjNhUHZWckdjU18wUmcxZklVbzY1dURFbkVYYnktbEUwajdhOURuNm5fNDFNbTV1ZlpF0gFTQVVfeXFMTmlNYkljN2Q4aFB2RVNHNll4ZjBoQnFHMlZ2M2FQdlZyR2NTXzBSZzFmSVVvNjV1REVuRVhieS1sRTBqN2E5RG42bl80MU1tNXVmWkU?oc=5"
     },
     "c014f738636ffc4db3b2ada2": {
       "category": "미국 Super Intelligence Force 정책지휘체계",
@@ -352,11 +361,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-10-25T17:35:44+09:00",
+  "updated_at_kst": "2026-10-25T18:10:54+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-10-25T08:36:25.059173+00:00",
+    "last_success_at": "2026-10-25T09:11:35.259123+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
