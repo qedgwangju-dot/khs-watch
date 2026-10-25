@@ -9,6 +9,7 @@ on:
       - "scripts/gdpnow_intraday_rate_reaction.py"
       - "scripts/gdpnow_add_market_reaction.py"
       - "scripts/gdpnow_watch_health.py"
+      - "scripts/gdpnow_state_merge_guard.py"
       - "tests/test_gdpnow_alert_contract.py"
   schedule:
     # Atlanta Fed updates are event driven; 15-minute polling catches a new official update quickly.
@@ -36,6 +37,20 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Load latest confirmed monitor state
+        if: ${{ github.ref == 'refs/heads/main' }}
+        shell: bash
+        run: |
+          # A workflow dispatched from an earlier commit must never read stale
+          # dedup/health JSON from that commit while newer runs have finished.
+          set -euo pipefail
+          git fetch --quiet origin main
+          for file in data/gdpnow_long_rates_state.json data/gdpnow_watch_health_state.json; do
+            if git cat-file -e "origin/main:$file" 2>/dev/null; then
+              git show "origin/main:$file" > "$file"
+            fi
+          done
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -52,6 +67,7 @@ jobs:
           python -m py_compile scripts/gdpnow_intraday_rate_reaction.py
           python -m py_compile scripts/gdpnow_add_market_reaction.py
           python -m py_compile scripts/gdpnow_watch_health.py
+          python -m py_compile scripts/gdpnow_state_merge_guard.py
           # Production polling must not be held hostage by aging, simulated
           # test fixtures. Run full regressions on any code push/manual run;
           # on a scheduled poll validate syntax then check live source data.
@@ -280,10 +296,10 @@ jobs:
             git fetch --quiet origin main
             git reset --hard --quiet origin/main
             if [ -f "$tempdir/gdp.json" ]; then
-              cp "$tempdir/gdp.json" data/gdpnow_long_rates_state.json
+              python scripts/gdpnow_state_merge_guard.py gdp "$tempdir/gdp.json" data/gdpnow_long_rates_state.json
             fi
             if [ -f "$tempdir/health.json" ]; then
-              cp "$tempdir/health.json" data/gdpnow_watch_health_state.json
+              python scripts/gdpnow_state_merge_guard.py health "$tempdir/health.json" data/gdpnow_watch_health_state.json
             fi
             git add data/gdpnow_long_rates_state.json data/gdpnow_watch_health_state.json 2>/dev/null || true
             if git diff --cached --quiet; then
