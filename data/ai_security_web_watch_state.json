@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 19,
+    "material_items": 20,
     "new_material_items": 0,
-    "raw_items": 283,
+    "raw_items": 274,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1079,6 +1079,16 @@
       "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNaXhSVVJIeXcwUjlOOF95dERQMFY4Qm9sdWRScEFpbUZmaG9Va2J3Y1Fhb21ZeUdXemxZdlpVbV8wd1hXSXFJY2tockkzcWZMSmE2a09zTzhjLXFYSkdtTGdDazNvUXZBNnd6WUdXZ0swdGxBejhiY0xDQk84aXZ1WXA1WUp6TnRqY1RlVE1QNE5VUWs1dmhkYmozeUp0Y3RSQjdQTndtX1p4bVlIeHVBS09xcTJ6RG1JMTlpLXYxUkhGRy1RaUN3OEJn0gHKAUFVX3lxTE1peFJVUkh5dzBSOU44X3l0RFAwVjhCb2x1ZFJwQWltRmZob1VrYndjUWFvbVl5R1d6bFl2WlVtXzB3WFdJcUlja2hySTNxZkxKYTZrT3NPOGMtcVhKR21MZ0NrM29RdkE2d3pZR1dnSzB0bEF6OGJjTENCTzhpdnVZcDVZSnpOdGpjVGVUTVA0TlVRazV2aGRiajN5SnRjdFJCN1BOd21fWnhtWUh4dUFLT3FxMnpEbUkxOWktdjFSSEZHLVFpQ3c4Qmc?oc=5",
       "vendor": "OpenAI"
     },
+    "dacc6cf46236f5bdd04db21e": {
+      "category": "PHP 코어 취약점·공식 보안패치",
+      "first_seen_at": "2026-10-25T21:23:23.198936+00:00",
+      "published_at": "2026-10-25T20:39:10+00:00",
+      "severity": 3,
+      "source": "Startup Fortune",
+      "title": "Cloudflare's CEO Says Worse Bugs Than PHP2Shell Are Already Being Patched - Startup Fortune",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPaUk4MHFHb1A1LUlObzhPS3BhTWkwSUVCQXp6RDlQYlg1Wmg3Qld6TzB6R0Q1NzNCb0J3RXg2QW5sVmVnVVJHOURJWGh5NG5OT21lb184d2lFeVhIRE1YYzFQTkNUTjdGZEI5N3dUUHpJRG9TWW5ad3FsUkh6Rk51My1pRnNzYnFSMWVEeFBnVHBDZHhLTHFwZEtVTlhGUGd1dGc?oc=5",
+      "vendor": "PHP 재단"
+    },
     "e05a0a9da81bfbd209141474": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-19T20:18:42.810985+00:00",
@@ -1240,5 +1250,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-26T05:47:38+09:00"
+  "updated_at_kst": "2026-10-26T06:23:23+09:00"
 }
