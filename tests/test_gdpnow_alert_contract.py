@@ -15,6 +15,7 @@ import gdpnow_long_rates_watch as watch
 import gdpnow_long_rates_reformat as formatter
 import gdpnow_watch_health as health
 import gdpnow_intraday_rate_reaction as intraday
+import gdpnow_state_merge_guard as state_merge
 
 SERIES=[
     "GDPNOW","PCECONTRIBNOW","EQUIPCONTRIBNOW","IPPCONTRIBNOW",
@@ -159,6 +160,21 @@ class WatchContractTests(unittest.TestCase):
         old.quarter=new.quarter="2026-Q3"
         label, _, _=formatter.rate_signal(new, old)
         self.assertIn("상승",label)
+
+    def test_monotonic_gdp_state_prevents_regression(self):
+        current={"latest":{"date":"2026-10-20"},"checked_at_kst":"2026-10-26T01:55:00+09:00"}
+        older={"latest":{"date":"2026-10-15"},"checked_at_kst":"2026-10-26T01:59:00+09:00"}
+        self.assertFalse(state_merge.should_replace("gdp",older,current))
+        current_same_date_older_check={"latest":{"date":"2026-10-20"},"checked_at_kst":"2026-10-26T01:54:00+09:00"}
+        self.assertFalse(state_merge.should_replace("gdp",current_same_date_older_check,current))
+        newer={"latest":{"date":"2026-10-27"},"checked_at_kst":"2026-10-27T01:50:00+09:00"}
+        self.assertTrue(state_merge.should_replace("gdp",newer,current))
+
+    def test_monotonic_health_prevents_stale_failed_status(self):
+        healthy={"failing":False,"last_status_change_kst":"2026-10-26T01:56:30+09:00"}
+        old_failed={"failing":True,"last_status_change_kst":"2026-10-26T01:55:00+09:00"}
+        self.assertFalse(state_merge.should_replace("health",old_failed,healthy))
+        self.assertTrue(state_merge.should_replace("health",healthy,old_failed))
 
     def test_yield_units_cboe_and_yahoo_normalized(self):
         self.assertAlmostEqual(intraday.normalize_yahoo_yield(52.94), 5.294)
