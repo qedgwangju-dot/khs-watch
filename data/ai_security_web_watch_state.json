@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 18,
+    "material_items": 19,
     "new_material_items": 0,
-    "raw_items": 273,
+    "raw_items": 270,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -679,6 +679,16 @@
       "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBfU2lySGdfMVprRm5nUmxNVVEzYjFPQTRhWV9VNzlJNlVZbWFmMVN4UE1uOFFqbVE4UFBvaWwydHUzT2VhRTVaSWVDeVhGbVpHQnEw?oc=5",
       "vendor": "PHP 재단"
     },
+    "869166849ebcbdba745779bb": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-25T22:32:17.508186+00:00",
+      "published_at": "2026-10-23T13:47:22+00:00",
+      "severity": 2,
+      "source": "Unit 42",
+      "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 25) - Unit 42",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBaSXRUMkVsWkF3TjhoV29oTXdyZHhrMGZINFBHNVVrNmZubTA4SkFzMzlWMlNMLW15ZWdISDJYeURJbVdpTFB5ZzNTU21aazFfTmc4R0VkLWVyMVY4S1JRYTZ5UjJqWk82SlR5Q0ZMOTJrNEJVeXNV?oc=5",
+      "vendor": "PHP 재단"
+    },
     "88d65434b1f26800a658640b": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
@@ -1250,5 +1260,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-26T06:57:58+09:00"
+  "updated_at_kst": "2026-10-26T07:32:17+09:00"
 }
