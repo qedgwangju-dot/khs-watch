@@ -704,9 +704,8 @@ def main() -> int:
                 seen.setdefault(item["_id"], NOW.isoformat())
                 seen.setdefault(item["_semantic_id"], NOW.isoformat())
         else:
-            # Only the actually selected item can advance the delivery state.
-            # Telegram sending must succeed before the workflow commits this
-            # pending file. Other candidate IDs remain eligible next scan.
+            # Only the actual selected item is eligible for eventual state
+            # commit, never all matching RSS headlines.
             for selected_category, chosen in selected:
                 if selected_category.key == category.key:
                     seen.setdefault(chosen["_id"], NOW.isoformat())
@@ -769,7 +768,6 @@ def self_test() -> int:
     assert event_signature(category, {"title": "NASA Crew-15 Dragon Falcon 9", "description": "", "source": "NASA"}) == "nasa_dragon"
     assert event_signature(category, {"title": "Falcon 9 Starship phaseout", "description": "", "source": "Reuters"}) == "falcon_transition"
     assert "falcon_transition" in [x.key for x in CATEGORIES]
-    assert 'for item in candidates:' in main.__code__.co_consts or True
     assert "korea_orbital_ai" in [x.key for x in CATEGORIES]
     assert "space_investment" in [x.key for x in CATEGORIES]
     assert "2028년" in next(x for x in CATEGORIES if x.key == "korea_orbital_ai").meaning
