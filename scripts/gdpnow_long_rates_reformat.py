@@ -57,6 +57,13 @@ def rate_signal(latest, prev) -> tuple[str, str, list[str]]:
             ["첫 관측치는 기준점으로 저장하고 다음 업데이트부터 방향을 판정합니다."],
         )
 
+    if latest.quarter and prev.quarter and latest.quarter != prev.quarter:
+        return (
+            "⚪ 분기 전환 — 금리 방향 판단 유보",
+            f"{prev.quarter} 전망과 {latest.quarter} 최초 전망은 서로 다른 경제기간입니다. 성장률 차이를 한 번의 금리 충격으로 판정하지 않습니다.",
+            ["새 분기 첫 전망을 기준선으로 저장하고 같은 분기의 다음 갱신부터 구성 변화를 비교합니다."],
+        )
+
     gdp_d = latest.gdp - prev.gdp
     inv_d = latest.cipi - prev.cipi
     final_d = (latest.gdp - latest.cipi) - (prev.gdp - prev.cipi)
@@ -170,16 +177,19 @@ def main() -> int:
         snapshot = json.loads((ROOT / "out" / "gdpnow_long_rates_rows.json").read_text(encoding="utf-8"))
         latest = GdpRow(**snapshot["latest"])
         prev = GdpRow(**snapshot["previous"]) if snapshot.get("previous") else None
-        if prev and (dt.date.fromisoformat(latest.date) - dt.date.fromisoformat(prev.date)).days > 14:
+        rollover = bool(prev and latest.quarter and prev.quarter and latest.quarter != prev.quarter)
+        if rollover:
+            signal_label, signal_thesis, signal_reasons = rate_signal(latest, prev)
+        elif prev and (dt.date.fromisoformat(latest.date) - dt.date.fromisoformat(prev.date)).days > 14:
             signal_label = "⚪ 장기금리 방향 판단 유보 (누락 기간 복구)"
             signal_thesis = f"기존 마지막 수집일 {prev.date}부터 {latest.date}까지 업데이트가 누락됐습니다. 누적 차이를 단일 발표의 금리 재료로 해석하지 않습니다."
             signal_reasons = ["공식 최신값으로 기준선을 복구하고 다음 신규 업데이트부터 직전 관측치와 비교합니다."]
         else:
             signal_label, signal_thesis, signal_reasons = rate_signal(latest, prev)
         latest_private = private_final_contribution(latest)
-        prev_private = private_final_contribution(prev) if prev else None
+        prev_private = private_final_contribution(prev) if prev and not rollover else None
         private_delta = (latest_private - prev_private) if latest_private is not None and prev_private is not None else None
-        net_delta = (latest.net_exports - prev.net_exports) if prev and latest.net_exports is not None and prev.net_exports is not None else None
+        net_delta = (latest.net_exports - prev.net_exports) if prev and not rollover and latest.net_exports is not None and prev.net_exports is not None else None
     except Exception as exc:
         signal_label = "⚪ 장기금리 영향 판단 유보"
         signal_thesis = f"GDP 구성 재검증 실패로 방향을 단정하지 않습니다: {type(exc).__name__}"
