@@ -126,6 +126,64 @@ class CbdcOfficialPolicyWatch(unittest.TestCase):
         with patch.object(watch, "fetch_text", return_value=(None, "HTTP 403")):
             self.assertEqual(watch.parse_links(listing, BOK, URL, NOW), [])
 
+    def test_crypto_tax_report_never_counts_as_enacted_law(self):
+        now = dt.datetime(2026, 10, 25, 15, 5, tzinfo=ZoneInfo("Asia/Seoul"))
+        sedaily = (
+            "Presidential Office Decides to Delay Crypto Tax Again. "
+            "Published 2026.10.25, presidential office decided to postpone "
+            "crypto tax scheduled Jan 2027. CARF from 2029."
+        )
+        coinness = (
+            "October 25, 2026. South Korea presidential office decides to delay "
+            "crypto tax again. 2029."
+        )
+        nts = (
+            "가상자산은 소득세법 개정에 따라 '27.1.1. 이후 양도·대여분부터 "
+            "기타소득으로 분리과세됩니다."
+        )
+        a = watch.crypto_tax_report_candidate(sedaily, coinness, nts, now)
+        self.assertIsNotNone(a)
+        self.assertEqual(a["crypto_tax_stage"], "reported_position_not_enacted")
+        self.assertEqual(a["crypto_tax_legal_effective_date"], "2027-01-01")
+        self.assertEqual(a["status"], "언론 보도 · 법 개정 전")
+        self.assertTrue(a["crypto_tax_guidance_rechecked"])
+        self.assertFalse("공포 완료" in a["summary"])
+        self.assertIn("2029", a["summary"])
+        self.assertIn("2030", a["summary"])
+        from khs_policy_alert_explainer import ensure_explained
+        ensure_explained(a)
+        self.assertIn("국회", a["counter"])
+        self.assertNotIn("원화 스테이블코인", a["policy_plain_summary"])
+
+    def test_crypto_tax_report_missing_or_stale_sources_do_not_alert(self):
+        now = dt.datetime(2026, 10, 25, 15, 5, tzinfo=ZoneInfo("Asia/Seoul"))
+        self.assertIsNone(watch.crypto_tax_report_candidate(
+            "<h1>Bitcoin crypto tax presidential office 2029</h1>",
+            "", "", now
+        ))
+        old = dt.datetime(2026, 10, 30, 9, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        valid = (
+            "Published 2026.10.25 presidential office delays crypto tax "
+            "until 2029. postpone the Jan 2027 tax."
+        )
+        self.assertIsNone(watch.crypto_tax_report_candidate(valid, None, None, old))
+
+    def test_crypto_tax_semantic_key_does_not_duplicate_reprint(self):
+        base = {
+            "domestic_stablecoin_policy_watch": True,
+            "crypto_tax_policy_watch": True,
+            "crypto_tax_stage": "reported_position_not_enacted",
+            "title": "가상자산 과세 재유예 방향 보도 · 법률 개정 미확정",
+        }
+        first = {**base, "link": watch.CRYPTO_TAX_PRIMARY_REPORT, "fingerprint": "news1"}
+        reprint = {**base, "link": watch.CRYPTO_TAX_SECONDARY_REPORT, "fingerprint": "news2"}
+        self.assertEqual(watch.semantic_key(first), watch.semantic_key(reprint))
+        self.assertNotEqual(
+            watch.semantic_key(first),
+            watch.semantic_key({"domestic_stablecoin_policy_watch": True, "title": "프로젝트 한강 국고금"})
+        )
+        self.assertEqual(len(watch.merge_policy_duplicates([first, reprint])), 1)
+
     def test_different_official_events_not_collapsed(self):
         base = dict(domestic_stablecoin_policy_watch=True, cbdc_policy_watch=True, published_kst=NOW.isoformat())
         a = dict(base, title="공식 문서", original_title="프로젝트 한강 예금토큰 실거래 확대", link="https://www.bok.or.kr/a", fingerprint="a")
