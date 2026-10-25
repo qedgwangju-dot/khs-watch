@@ -17,16 +17,16 @@
     "unwind::일본 단기금리 상승": false,
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
-  "fx_age_seconds": 103703.836591959,
+  "fx_age_seconds": 122528.64453911781,
   "fx_signal_eligible": false,
   "initialized": true,
   "policy_path": {
     "cftc_net_short": 22890.0,
     "cftc_net_short_change": 0.0,
     "cftc_net_short_pct_oi": 6.03733175784207,
-    "checked_at_kst": "2026-10-25T10:43:37+09:00",
+    "checked_at_kst": "2026-10-25T15:57:19+09:00",
     "elevated_vol": false,
-    "fx_vol_ratio": 0.917558737347373,
+    "fx_vol_ratio": 0.9175187106885749,
     "gradual_absorption": true,
     "hawkish_repricing_proxy": false,
     "initialized": true,
@@ -58,7 +58,7 @@
   },
   "real_rate_overlay": {
     "available": false,
-    "checked_at_kst": "2026-10-25T10:43:39+09:00",
+    "checked_at_kst": "2026-10-25T15:57:20+09:00",
     "errors": [
       "RuntimeError: proxy race timeout=20s HTTPError: HTTP Error 403: Forbidden | direct race timeout=10s HTTPError: HTTP Error 503: Service Unavailable"
     ],
@@ -80,16 +80,16 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-10-25T10:43:30+09:00"
+    "updated_at_kst": "2026-10-25T15:57:13+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-10-25T10:42:46+09:00",
+  "updated_at_kst": "2026-10-25T15:56:29+09:00",
   "values": {
     "cftc_net_short": 22890,
     "cftc_net_short_pct_oi": 6.03733175784207,
-    "fx_12h_5m_sigma_bps": 2.702068943325817,
-    "fx_vol_ratio": 0.917558737347373,
+    "fx_12h_5m_sigma_bps": 2.700310068064457,
+    "fx_vol_ratio": 0.9175187106885749,
     "jgb2": 1.914,
     "mof_latest_2w_outward_trillion_yen": -1.1341,
     "mof_prior_2w_outward_trillion_yen": 0.5274,
