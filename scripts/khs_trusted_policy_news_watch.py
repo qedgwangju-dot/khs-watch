@@ -196,6 +196,23 @@ OFFICIAL_TEXT_STORIES = {
 # announcements. The Ministry's older /zcfb/blgg/gg/ index does not list all
 # current policy categories. Read the exact primary release, then the separate
 # official Ministry-hosted mirror if necessary. Never infer a ban from a headline.
+# Announcement 48 is distinct from the 49-51 export-control notices:
+# its proposed prohibited/restricted catalogue is NOT yet final, but the
+# temporary pre-export technology registration is already in force.
+MOFCOM_TECH_48 = {
+    "key": "china_mofcom_2026_technology_catalogue48",
+    "urls": (
+        "https://www.mofcom.gov.cn/zfxxgk/fdzdgknr/ztfl/blgg/art/2026/art_718071a95e6948cdb652e2f08f422673.html",
+        "https://www.mofcom.gov.cn/xwfb/xwfyrth/art/2026/art_d7661dbf62794345a221404f82a25959.html",
+    ),
+    "markers": ("2026年第48号", "中国禁止出口限制出口技术目录", "人工智能", "生物医药", "光伏", "出口前登记"),
+    "source": "중국 상무부·과학기술부",
+}
+
+def mofcom_tech_48_body_verified(raw: str) -> bool:
+    plain = re.sub(r"\\s+", "", clean_text(raw)).lower()
+    return all(marker.lower() in plain for marker in MOFCOM_TECH_48["markers"])
+
 MOFCOM_2026_POLICY_NOTICES = {
     "china_mofcom_2026_drone_controls": {
         "number": "49",
@@ -313,6 +330,7 @@ RULE_MAX_AGE_HOURS = {
     # Recover the Treasury enforcement release once, not each time it is reprinted.
     "us_dhs_deepseek_federal_civilian_exclusion": 24 * 35,
     "us_treasury_coins_biotechnology_outbound_nprm": 24 * 55,
+    "china_mofcom_2026_technology_catalogue48": 24 * 75,
     "us_fcc_hisilicon_first_component_enforcement": 24 * 14,
     "us_fcc_intel_agv_one_year_waiver": 24 * 14,
     "us_treasury_outbound_ai_robotics_enforcement": 24 * 14,
@@ -434,6 +452,31 @@ class StoryRule:
 
 
 STORY_RULES = (
+    StoryRule(
+        key="china_mofcom_2026_technology_catalogue48",
+        title="중국, 바이오·AI·태양광 기술 40개 수출목록 개정안과 수출 전 등록 시행",
+        google_queries=(
+            '"商务部 科技部公告2026年第48号" "出口前登记" 生物医药',
+            'China MOFCOM October 16 2026 biotechnology AI photovoltaics export technology catalogue preregistration',
+            'China technology export catalogue biotech 40 technology list final licensing October November 2026 Reuters',
+        ),
+        required_groups=(
+            ("商务部", "mofcom", "ministry of commerce", "china", "중국"),
+            ("生物医药", "biotechnology", "biomedicine", "biopharma", "바이오"),
+            ("人工智能", "artificial intelligence", "ai", "인공지능"),
+            ("光伏", "photovoltaic", "solar", "태양광"),
+            ("技术出口", "export technology", "export controls", "export restrictions", "export ban", "出口前登记", "수출"),
+        ),
+        core="중국은 인공지능 23개·바이오의약 5개·태양광 12개 등 40개 기술의 수출목록 개정을 제안하고, 해당 기술의 수출 전 임시 등록을 10월 16일부터 시행했습니다.",
+        impact="세포·유전자 치료, 소핵산 의약품, 인공지능 모델·태양광 공정 기술의 해외 이전·기술도입 및 계약 일정 | 돈 버는 능력·할인율·시간표",
+        point="수출금지 14개와 제한 26개는 최종 개정안의 제안 범위이며 현재의 등록 의무와 구분합니다. 지식재산권 이전, 중국 내 기술의 해외 사용권 부여, 해외 주체로의 기술 지배권 변경은 현재 등록 검토 대상입니다.",
+        counter="모든 중국 바이오 신약·라이선스 계약이 금지된 것은 아닙니다. 소유권 이전 없는 일부 사용권에는 관리 제외 또는 자동허가의 편의 조치가 적용될 수 있습니다.",
+        sectors="바이오의약품, 세포·유전자 치료, 소핵산 의약품, 인공지능 모델, 태양광 기술 수출",
+        impacts=("돈 버는 능력", "할인율", "시간표"),
+        paths=("제48호 공고", "수출 전 등록", "수출금지·제한 목록 의견수렴", "최종 개정·허가 예외", "기술도입 계약"),
+        follow_up="2026년 11월 15일 중국 의견수렴 마감, 최종 목록의 14개·26개 범위와 시행일, 임시 등록 종료·기술이전 허가·바이오 사용권 예외 변경 및 실제 계약 영향을 확인합니다.",
+        trusted_sources=("Reuters", "Associated Press", "South China Morning Post", "Xinhua"),
+    ),
     StoryRule(
         key="china_mofcom_2026_drone_controls",
         title="중국, 드론·자율비행 기술 수출통제 기준 조정 공고 제49호",
@@ -1632,6 +1675,36 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             return [item]
         return []
 
+    if rule.key == MOFCOM_TECH_48["key"]:
+        published = dt.datetime(2026, 10, 16, 16, tzinfo=KST)
+        if (now - published).total_seconds() / 3600 <= max_age_hours_for_rule(rule):
+            for url in MOFCOM_TECH_48["urls"]:
+                try:
+                    raw = fetch_text(url, timeout=12)
+                except Exception as exc:
+                    print(f"trusted_policy_news=mofcom_tech_48_primary_failed error={type(exc).__name__}: {exc}")
+                    continue
+                if not mofcom_tech_48_body_verified(raw):
+                    print("trusted_policy_news=mofcom_tech_48_primary_rejected reason=document_or_scope_mismatch")
+                    continue
+                body = clean_text(raw)
+                if not has_required_terms(f"{rule.title} {body}", rule):
+                    continue
+                print("trusted_policy_news=mofcom_tech_48_primary_verified notice=48")
+                return [{
+                    "title": rule.title,
+                    "description": body[:45000],
+                    "link": url,
+                    "source": MOFCOM_TECH_48["source"],
+                    "published_kst": published.isoformat(timespec="seconds"),
+                    "published_precision": "date",
+                    "priority": 0,
+                    "official_direct_verified": True,
+                    "mofcom_tech_48_stage": "draft-with-registration-active",
+                }]
+        # Keep trusted-publication fallbacks reachable if the Ministry blocks
+        # the runner. A news item never inherits the official-verification flag.
+
     # Exact new FCC enforcement/waiver cases are authenticated against the
     # official document body and event date; do not invent a model or contract.
     fcc_case = FCC_VERIFIED_CASES.get(rule.key)
@@ -2143,6 +2216,8 @@ def semantic_policy_event_key(item: dict) -> str:
         stage = str(item.get("mofcom_stage") or "announced")
         if stage in {"announced", "effective-date-arrived"}:
             return f"china-mofcom-2026-notice-{number}-{stage}"
+    if item.get("mofcom_tech_48_stage") == "draft-with-registration-active" and item.get("official_direct_verified") is True:
+        return "china-mofcom-2026-technology-48-draft-preregistration-2026-10-16"
     title_text = clean_text(str(item.get("title") or "")).lower()
     text = clean_text(
         " ".join(
@@ -2150,6 +2225,16 @@ def semantic_policy_event_key(item: dict) -> str:
             for key in ("title", "description", "link", "source")
         )
     ).lower()
+    if (
+        any(s in text for s in ("中国禁止出口限制出口技术目录", "technology export catalogue", "technologies prohibited or restricted from export"))
+        and any(s in text for s in ("生物医药", "biotechnology", "biomedicine", "바이오"))
+        and any(s in text for s in ("人工智能", "artificial intelligence", "ai", "인공지능"))
+    ):
+        if any(s in title_text for s in ("正式修订", "正式发布", "修订发布", "final rule", "final catalogue", "finalized")):
+            return "china-mofcom-technology-catalogue-final-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
+        if any(s in title_text for s in ("延长征求意见", "comment period extended", "意见期限延长", "延期")):
+            return "china-mofcom-technology-catalogue-comment-extension-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
+        return "china-mofcom-2026-technology-48-draft-preregistration-2026-10-16"
     # Preserve distinct FCC enforcement and plant-waiver cases across reprints.
     if ("hisilicon" in text or "하이실리콘" in text) and "fcc" in text and (
         "dashboard camera" in text or "차량용 블랙박스" in text
@@ -2738,6 +2823,7 @@ def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
         "us_treasury_coins_biotechnology_outbound_nprm",
         "us_fcc_hisilicon_first_component_enforcement",
         "us_fcc_intel_agv_one_year_waiver",
+        "china_mofcom_2026_technology_catalogue48",
     }:
         grouped: dict[str, list[dict]] = {}
         for item in items:
@@ -3298,6 +3384,39 @@ def korean_trump_story_title(title: str) -> str:
 def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] | None:
     if not items:
         return None
+    if rule.key == MOFCOM_TECH_48["key"]:
+        official = any(
+            item.get("official_direct_verified") is True
+            and str(item.get("link") or "") in MOFCOM_TECH_48["urls"]
+            and item.get("mofcom_tech_48_stage") == "draft-with-registration-active"
+            for item in items
+        )
+        return {
+            "title": rule.title,
+            "core": rule.core,
+            "stage": "중국 제48호 공고 확인: 수출 전 임시 등록 시행·40개 목록 개정은 제안 단계" if official
+                     else "신뢰 보도 확인·제48호 공식 원문 직접 검증 필요",
+            "event_date": "2026년 10월 16일",
+            "event_date_label": "중국 공고·등록 시행일",
+            "show_publication_date": False,
+            "actual_bullets": [
+                "인공지능 23개·바이오의약 5개·태양광 12개 등 40개 기술 중 금지 제안 14개·제한 제안 26개.",
+                "최종 목록 개정 전에도 해당 기술의 수출 전 등록이 적용되며 기존에 시작했지만 미완료인 수출에도 적용.",
+                "기술 소유권 해외 이전, 중국 내 기술의 해외 사용권 부여, 외국 주체로의 실제 지배권 변경을 등록 대상으로 제시.",
+                "세포·유전자 치료·소핵산 의약품 기술은 소유권을 넘기지 않는 일부 사용권에 제외·자동허가 편의 가능.",
+            ],
+            "timeline": "2026년 10월 16일 수출 전 등록 시행·40개 기술 제안 → 2026년 11월 15일 중국 의견수렴 마감 → 최종 목록·시행일 발표 대기",
+            "scope_note": rule.counter,
+            "korea_candidates": "한국 기업·미국 제약사의 특정 기술도입 계약 변경과 직접 매출은 별도 확인 대상입니다.",
+            "next": rule.follow_up,
+            "investment": rule.point,
+            "priced_in": "제안된 금지·제한 목록 전체가 시행됐다고 가정하지 않습니다. 실제 기술이전 계약 변경과 현금 회수가 핵심입니다.",
+            "counter": rule.counter,
+            "failure": "기술이전 유형 오분류·등록 지연·허가 거부·공동개발 계약 재협상으로 기술도입 및 임상 일정이 늦어질 수 있습니다.",
+            "impacts": rule.impacts,
+            "paths": rule.paths,
+            "sectors": rule.sectors,
+        }
     if rule.key in FCC_VERIFIED_CASES:
         official = any(
             item.get("official_direct_verified") is True
@@ -4197,6 +4316,13 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
+    if rule.key == MOFCOM_TECH_48["key"] and any(
+        item.get("official_direct_verified") is True
+        and item.get("mofcom_tech_48_stage") == "draft-with-registration-active"
+        and str(item.get("link") or "") in MOFCOM_TECH_48["urls"]
+        for item in items
+    ):
+        return "공식 확인", "중국 상무부·과학기술부 2026년 제48호 공고 원문 확인"
     if rule.key in FCC_VERIFIED_CASES and any(
         item.get("official_direct_verified") is True
         and str(item.get("link") or "") == FCC_VERIFIED_CASES[rule.key]["url"]
@@ -4354,7 +4480,31 @@ def render_auction115_compact_body(now: dt.datetime) -> str:
 
 
 
+def _self_test_mofcom_tech_48() -> None:
+    rule = next(r for r in STORY_RULES if r.key == MOFCOM_TECH_48["key"])
+    example = " ".join(MOFCOM_TECH_48["markers"]) + " 40项技术 23项 5项 12项 2026年10月16日 11月15日"
+    assert mofcom_tech_48_body_verified(example)
+    assert not mofcom_tech_48_body_verified(example.replace("第48号", "第49号"))
+    item = {
+        "title": rule.title, "description": example, "source": MOFCOM_TECH_48["source"],
+        "link": MOFCOM_TECH_48["urls"][0],
+        "published_kst": "2026-10-16T16:00:00+09:00",
+        "official_direct_verified": True,
+        "mofcom_tech_48_stage": "draft-with-registration-active",
+    }
+    assert has_required_terms(rule.title + " " + example, rule)
+    assert alert_confirmation_status(rule, [item])[0] == "공식 확인"
+    assert alert_confirmation_status(rule, [{**item, "official_direct_verified": False}])[0] == "공식 확인 전"
+    expected = "china-mofcom-2026-technology-48-draft-preregistration-2026-10-16"
+    assert semantic_policy_event_key(item) == expected
+    assert semantic_policy_event_key({**item, "link": MOFCOM_TECH_48["urls"][1]}) == expected
+    assert "11월 15일" in str(item_story_profile(rule, [item])["timeline"])
+    assert "금지 제안 14개" in " ".join(item_story_profile(rule, [item])["actual_bullets"])
+    assert semantic_policy_event_key(item) != "china-mofcom-2026-notice-49-announced"
+    assert rule.key in {r.key for r in STORY_RULES}
+
 def _self_test_mofcom_2026_notices() -> None:
+    _self_test_mofcom_tech_48()
     rules = {rule.key: rule for rule in STORY_RULES}
     before = dt.datetime(2026, 10, 20, 9, tzinfo=KST)
     after = dt.datetime(2026, 11, 18, 9, tzinfo=KST)
@@ -4729,6 +4879,7 @@ def main() -> int:
     requested_policy_priority = {
         "us_dhs_deepseek_federal_civilian_exclusion": 12,
         "us_treasury_coins_biotechnology_outbound_nprm": 11,
+        "china_mofcom_2026_technology_catalogue48": 10,
         "us_fcc_hisilicon_first_component_enforcement": 13,
         "us_fcc_intel_agv_one_year_waiver": 12,
         "us_treasury_outbound_ai_robotics_enforcement": 3,
