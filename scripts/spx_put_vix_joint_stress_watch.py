@@ -81,7 +81,9 @@ def parse_vix_csv(raw):
     for r in reader:
         fields={k.strip().upper():v for k,v in r.items() if isinstance(k,str)}
         try:
-            d=dt.date.fromisoformat(fields["DATE"].strip())
+            rawdate=fields["DATE"].strip()
+            try: d=dt.date.fromisoformat(rawdate)
+            except ValueError: d=dt.datetime.strptime(rawdate,"%m/%d/%Y").date()
             val=float(fields["CLOSE"])
             if not math.isfinite(val) or not 0<=val<=150: continue
         except (KeyError,ValueError):
