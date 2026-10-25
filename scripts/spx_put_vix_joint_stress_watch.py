@@ -297,3 +297,5 @@ if __name__=="__main__":
     except Exception as e:
         print("spx_watch_error="+type(e).__name__+": "+str(e),file=sys.stderr)
         sys.exit(1)
+
+# 검증용 시점: 2026-10-25. 한 번만 발송하는 형식 시험이며 실제 시장위험 경보 상태는 불변.
