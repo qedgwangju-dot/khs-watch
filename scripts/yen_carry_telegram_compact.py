@@ -266,7 +266,22 @@ def direction_call(payload: dict, pending: dict | None = None) -> tuple[str, str
     else:
         impact = "⚪ 위험자산 영향 중립"
 
-    return f"{risk_emoji} 엔캐리 | {title_dir}", direction, impact
+    return f"{risk_emoji} 엔캐리 현재방향 | {title_dir}", direction, impact
+
+
+def plain_direction_summary(direction: str) -> str:
+    """Translate the directional label into one plain-language current-state sentence."""
+    if "방향 판정 보류" in direction:
+        return "현재 방향은 보류 — 실시간 USD/JPY 최신값이 확보될 때까지 구조 위험만 유지"
+    if "청산·유지 신호 충돌" in direction or "신호 충돌" in direction:
+        return "현재 방향은 혼조 — 엔화·금리차 신호가 서로 충돌해 한쪽으로 확정하지 않음"
+    if "청산" in direction:
+        return "지금은 캐리 유지보다 청산 방향이 우세"
+    if "유지·재구축" in direction:
+        return "지금은 청산보다 캐리 유지·재구축 방향이 우세"
+    if "중립" in direction:
+        return "현재는 중립 — 청산·재구축 어느 쪽도 우세하지 않음"
+    return "현재 방향은 추가 확인 필요"
 
 
 def unwind_risk_line(payload: dict, sections: dict[str, list[str]]) -> str:
@@ -567,20 +582,48 @@ def main() -> int:
     if not checked:
         checked = f"조회 시각: {dt.datetime.now(KST).strftime('%Y-%m-%d %H:%M KST')}"
 
+    plain = plain_direction_summary(direction)
+
+    direction_core = key_reasons[:4]
+    structural_core: list[str] = []
+    if jgb:
+        structural_core.append(jgb)
+    if cftc:
+        structural_core.append(cftc)
+    if auction and len(structural_core) < 2:
+        structural_core.append(auction)
+
     lines: list[str] = [
-        "판정",
-        f"▶ 현재 방향 │ {direction}",
+        "현재 판정",
+        f"▶ 결론 │ {plain}",
+        f"▶ 방향 │ {direction}",
         f"▶ 청산 위험 │ {unwind_text}",
-        f"▶ 시장 영향 │ {risk_asset}",
+        f"▶ 위험자산 │ {risk_asset}",
         "",
-        *policy_block,
-        "이번 변화",
-        *([f"• {x}" for x in change_items] if change_items else ["• 새 단계 변화 없음"]),
+        "방향을 만든 핵심",
+        *[f"• {x}" for x in direction_core],
+    ]
+
+    if structural_core:
+        lines += [
+            "",
+            "구조적 위험",
+            *[f"• {x}" for x in structural_core],
+        ]
+
+    if change_items:
+        lines += [
+            "",
+            "이번 변화",
+            *[f"• {x}" for x in change_items],
+        ]
+
+    if policy_block:
+        lines += ["", *policy_block[:-1]]
+
+    lines += [
         "",
-        "핵심 근거",
-        *[f"• {x}" for x in key_reasons],
-        "",
-        "반전 조건",
+        "방향이 바뀌는 조건",
         *[f"• {x}" for x in next_alert],
         "",
         "출처",
