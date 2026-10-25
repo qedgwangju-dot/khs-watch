@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-25T06:53:52.967845+00:00",
+  "updated_at": "2026-10-25T08:37:51.232037+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -639,9 +639,14 @@
     "a1d1e389ec43a2ce9ceccfb6235bd54c787e70b0f8a3c9ddf8fc8a201f682600",
     "00091d86e5327e0b8fd4a31b75747be0eb9ac9e9977653913a24ddba7bda1e05",
     "12e061ee037f7d67f70f5ef1e378e59d1ead930721b0feea72d214f32ccd1f30",
-    "b69eb8f4f6c74b275f501d57f7de34c22366fa7ae990355d102e39338be2584a"
+    "b69eb8f4f6c74b275f501d57f7de34c22366fa7ae990355d102e39338be2584a",
+    "8cfbc8d6664f8ff8254f989cdcd3455c958867f3570216718c43f8542864e54f",
+    "41dd56e66c7c3bbe0c9dc8b00e16189f3dba0202275b758f0ca63d344aa1553e"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "8cfbc8d6664f8ff8254f989cdcd3455c958867f3570216718c43f8542864e54f",
+    "41dd56e66c7c3bbe0c9dc8b00e16189f3dba0202275b758f0ca63d344aa1553e"
+  ],
   "groups": [
     "airan",
     "alert_quality_246",
@@ -653,7 +658,6 @@
     "eka_dexterous_funding",
     "ess_battery",
     "ess_outdoor_policy",
-    "humanoid_component_global",
     "hyundai_atlas_rollout",
     "hyundai_robot_rx_team",
     "jpm_sri_2026",
@@ -661,14 +665,15 @@
     "lg_robotics",
     "lge_nvidia_hsb_robot_sensing",
     "lge_robot_sw_platform",
+    "microduck_pollen_robotis_orders",
     "mobilint_lge_humanoid_npu",
     "nvidia_flora_robot_data",
-    "nvidia_robotics_exec",
     "raon_wafer_robot_yongin_factory",
     "robotis",
     "sem_mexico_camera_robot",
     "shanghai_physical_ai_2027_policy",
     "tesla_agm_2026",
+    "tesla_giga_berlin_modely_week",
     "tesla_optimus_q3_fremont",
     "vw_europe_battery_recall"
   ]
