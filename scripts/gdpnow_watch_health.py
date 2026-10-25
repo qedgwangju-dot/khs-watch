@@ -66,6 +66,7 @@ def send_message(message: str) -> int:
 def main() -> int:
     now = dt.datetime.now(KST)
     day = now.date().isoformat()
+    validation_outcome = (os.getenv("VALIDATION_OUTCOME") or "success").lower()
     source_outcome = (os.getenv("SOURCE_OUTCOME") or "").lower()
     send_outcome = (os.getenv("SEND_OUTCOME") or "").lower()
     has_alert = (os.getenv("HAS_ALERT") or "no").lower() == "yes"
@@ -73,6 +74,7 @@ def main() -> int:
     format_outcome = (os.getenv("FORMAT_OUTCOME") or "").lower()
     enrichment_outcome = (os.getenv("ENRICH_OUTCOME") or "").lower()
     route_outcome = (os.getenv("ROUTE_OUTCOME") or "").lower()
+    validation_good = validation_outcome == "success"
     source_good = source_outcome == "success"
     if has_alert:
         delivery_good = all(v == "success" for v in (
@@ -81,7 +83,7 @@ def main() -> int:
         ))
     else:
         delivery_good = send_outcome == "skipped"
-    failing = not source_good or not delivery_good
+    failing = not validation_good or not source_good or not delivery_good
     prior = state_read()
     new = dict(prior)
 
@@ -90,7 +92,14 @@ def main() -> int:
         if not prior.get("failing"):
             new["failure_since"] = now.isoformat(timespec="seconds")
         if prior.get("last_failure_alert_date") != day:
-            which = "GDPNow 공식 자료 조회·검증 실패" if not source_good else "텔레그램 발송/경로 검증 실패"
+            if validation_outcome == "failure":
+                which = "자동 회귀검증 실패 — 공식자료 조회 단계는 실행되지 않았음"
+            elif not validation_good:
+                which = "자동검증 단계 미실행 — 원천자료 조회 여부 확인 필요"
+            elif not source_good:
+                which = "GDPNow 공식 자료 조회 단계 실패"
+            else:
+                which = "금리·유가 분석 또는 텔레그램 전송 단계 실패"
             message = (
                 "[GDPNow 감시 장애]\n"
                 f"기준: {now.strftime('%Y-%m-%d %H:%M KST')}\n"
@@ -117,6 +126,8 @@ def main() -> int:
         new["failure_since"] = None
         print(f"gdpnow_health_recovery_notification_confirmed={msgid}")
     if new != prior:
+        new["last_status_change_kst"] = now.isoformat(timespec="seconds")
+        new["last_validation_outcome"] = validation_outcome
         new["last_source_outcome"] = source_outcome
         new["last_telegram_outcome"] = send_outcome
         PENDING.write_text(json.dumps(new, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
