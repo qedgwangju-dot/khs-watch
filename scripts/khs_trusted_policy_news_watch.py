@@ -1045,7 +1045,7 @@ STORY_RULES = (
     ),
     StoryRule(
         key="us_treasury_coins_biotechnology_outbound_nprm",
-        title="미 재무부, 중국 등 우려국 생명공학 대외투자 신고·금지 규칙 제안",
+        title="미 재무부, 중국 등 우려국 생명공학 투자 금지 규칙안 제안",
         google_queries=(
             'site:home.treasury.gov/news/press-releases/sb0667 biotechnology COINS October 22',
             '"COINS Act" "biotechnology" "outbound investment" Treasury',
@@ -1059,9 +1059,9 @@ STORY_RULES = (
             ("outbound investment", "coins act", "oisp", "대외투자"),
             ("proposed", "rule", "regulations", "prohibit", "notification", "exemption", "규칙", "금지", "신고"),
         ),
-        core="미 재무부는 2026년 10월 22일 COINS Act에 따라 생명공학을 대외투자 신고·금지 규칙안에 추가했습니다.",
+        core="미 재무부는 2026년 10월 22일 COINS Act에 따라 중국 등 우려국의 특정 생명공학 기술에 대한 미국인 투자 금지 규정을 제안했습니다. 제안된 생명공학 분야에는 단순 신고 단계가 없으며, 다른 기술 분야의 신고·금지 체계와 구분해야 합니다.",
         impact="중국 신약·바이오·뇌-컴퓨터 인터페이스 지분투자·합작·벤처자금 | 할인율·시간표",
-        point="미국인의 민감 분야 지분투자·합작거래에는 신고·금지 위험이 커질 수 있으나, 순수 기술도입 사용권 계약과 실제 투자 거래를 구분해야 합니다.",
+        point="바이오 기술의 지분투자·특정 합작거래는 금지 대상이 될 수 있지만, 바이오 부문에 신고만 하는 별도 단계는 제안되지 않았습니다. 순수 기술도입 사용권 계약과 지분 취득·공동투자를 구분해야 합니다.",
         counter="현재 규칙 제안 단계이며 12월 7일 의견수렴 후 확정됩니다. 모든 바이오 기술도입 계약이 즉시 금지되는 것은 아닙니다.",
         sectors="중국 등 우려국 바이오기업, 신약개발, 세포·유전자 치료, 뇌-컴퓨터 인터페이스, 벤처투자",
         impacts=("할인율", "자본조달", "시간표"),
@@ -3557,8 +3557,8 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
             scope = "연방 민간 행정부 기관 대상이며 국가안보 시스템·특별보안정보 시스템은 제외됩니다. 기관별 예외 신청 가능. 미국 민간 사용자 전면 금지는 아닙니다."
         else:
             facts = [
-                "생명공학을 민감 기술 대외투자 신고·금지 대상에 추가하는 COINS Act 후속 규칙안.",
-                "지분투자·합작거래와 기술도입 사용권 거래를 구분하며 실제 예외는 최종 규칙에서 확인해야 합니다.",
+                "생명공학은 규칙안에서 금지 기술에만 포함되고 신고 전용 단계는 두지 않았습니다. 여타 반도체·고성능 컴퓨팅 등 부문에는 신고와 금지 구분이 남습니다.",
+                "지분투자·특정 합작·전환형 투자거래와 순수 기술도입 사용권 계약을 구분하며 공동개발·공동판매 계약의 지분 및 통제권 조건을 확인해야 합니다.",
                 "미 재무부 발표 기준 의견제출 마감일 2026년 12월 7일.",
             ]
             timeline = "2025년 12월 COINS Act 입법 → 2026년 10월 22일 규칙안 → 12월 7일 의견제출 마감 → 최종 규칙·시행일 대기"
@@ -4652,6 +4652,8 @@ def _self_test_deepseek_and_biotech_policy_events() -> None:
     assert story_event_fingerprint(bio, [b]) != story_event_fingerprint(bio, [final])
     assert len(alert_item_groups(bio, [b, final])) == 2
     assert "12월 7일" in str(item_story_profile(bio, [b])["timeline"])
+    assert "신고 전용 단계는" in bio.core
+    assert "금지 기술에만" in " ".join(item_story_profile(bio, [b])["actual_bullets"])
     _self_test_fcc_component_and_agv_cases()
 
 
