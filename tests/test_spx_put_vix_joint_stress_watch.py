@@ -10,8 +10,9 @@ m=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 
 def data(date="2026-10-23",ratio=1.25,vix=19.45):
-    c=2000000
-    return dict(date=date,ratio=ratio,vix=vix,puts=int(round(c*ratio)),
+    # Preserve Cboe's exact 2026-10-23 counts (published P/C rounded to 1.25).
+    c,p=(2199681,2745718) if ratio==1.25 else (2000000,int(round(2000000*ratio)))
+    return dict(date=date,ratio=ratio,vix=vix,puts=p,
       calls=c,oi_puts=14117301,oi_calls=9566355,
       source=m.CBOE_URL.format(date=date))
 
