@@ -168,6 +168,36 @@ class CbdcOfficialPolicyWatch(unittest.TestCase):
         )
         self.assertIsNone(watch.crypto_tax_report_candidate(valid, None, None, old))
 
+    def test_nts_guidance_changes_only_after_real_date_shift(self):
+        now = dt.datetime(2026, 10, 25, 15, 5, tzinfo=ZoneInfo("Asia/Seoul"))
+        old = (
+            "가상자산은 소득세법 개정('24.12.)에 따라 '27.1.1. "
+            "이후 양도·대여분부터 기타소득으로 분리과세됩니다."
+        )
+        new = (
+            "가상자산은 소득세법 개정에 따라 '29.1.1. "
+            "이후 양도·대여분부터 기타소득으로 분리과세됩니다."
+        )
+        self.assertEqual(watch.crypto_tax_guidance_stage(old), "2027-01-01")
+        self.assertIsNone(watch.crypto_tax_guidance_update_candidate(old,now))
+        changed = watch.crypto_tax_guidance_update_candidate(new,now)
+        self.assertIsNotNone(changed)
+        self.assertEqual(changed["crypto_tax_stage"], "nts_guidance_changed_2029-01-01")
+        self.assertIn("국회·공포 교차확인 전",changed["status"])
+        self.assertNotIn("법 개정 확정",changed["status"])
+
+    def test_nts_unrelated_carf_year_does_not_trigger_new_tax_effective_date(self):
+        now = dt.datetime(2026,10,25,15,5,tzinfo=ZoneInfo("Asia/Seoul"))
+        p = (
+            "미국 2029년 CARF 가입 일정 안내. 가상자산 소득세는 "
+            "소득세법 개정에 따라 '27.1.1. 이후 양도분부터 분리과세."
+        )
+        self.assertEqual(watch.crypto_tax_guidance_stage(p),"2027-01-01")
+        self.assertIsNone(watch.crypto_tax_guidance_update_candidate(p,now))
+        self.assertIsNone(watch.crypto_tax_guidance_update_candidate(
+            "국세청 공지: CARF 2029년 참여 일정", now
+        ))
+
     def test_crypto_tax_semantic_key_does_not_duplicate_reprint(self):
         base = {
             "domestic_stablecoin_policy_watch": True,
