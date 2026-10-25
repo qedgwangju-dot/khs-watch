@@ -122,6 +122,13 @@ FCC_VERIFIED_CASES = {
 }
 
 OFFICIAL_API_STORIES = {
+    # Official Federal Register publication of the 2026-10-22 COINS proposal
+    # is scheduled for 2026-10-26 (FR document 2026-21786). Read the full
+    # official text, not only the metadata abstract, before confirming biotech.
+    "us_treasury_coins_biotechnology_outbound_nprm": (
+        ("https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=Outbound+Investment+Security+Program+Regulations&order=newest&per_page=20",
+         "2026-21786", "미 연방관보·미 재무부"),
+    ),
     "us_dhs_deepseek_federal_civilian_exclusion": (
         ("https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=DeepSeek&order=newest&per_page=100",
          "2026-21447", "미 국토안보부 연방관보"),
@@ -210,7 +217,7 @@ MOFCOM_TECH_48 = {
 }
 
 def mofcom_tech_48_body_verified(raw: str) -> bool:
-    plain = re.sub(r"\\s+", "", clean_text(raw)).lower()
+    plain = re.sub(r"\s+", "", clean_text(raw)).lower()
     return all(marker.lower() in plain for marker in MOFCOM_TECH_48["markers"])
 
 MOFCOM_2026_POLICY_NOTICES = {
@@ -1815,6 +1822,21 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         description = clean_text(str(matched_row.get("abstract") or matched_row.get("excerpt") or ""))
         link = clean_text(str(matched_row.get("html_url") or matched_row.get("pdf_url") or fetch_url))
         published = parse_pub_date(str(matched_row.get("publication_date") or ""))
+        if rule.key == "us_treasury_coins_biotechnology_outbound_nprm":
+            full_text_url = str(matched_row.get("raw_text_url") or "")
+            if not full_text_url.startswith("https://www.federalregister.gov/"):
+                print("trusted_policy_news=coins_fr_rejected reason=missing_official_full_text")
+                continue
+            try:
+                description = clean_text(fetch_text(full_text_url, timeout=15))[:50000]
+            except Exception as exc:
+                print(f"trusted_policy_news=coins_fr_full_text_failed error={type(exc).__name__}: {exc}")
+                continue
+            lower = description.lower()
+            required = ("outbound investment", "comprehensive outbound investment national security", "biotechnology", "proposed rule")
+            if not all(marker in lower for marker in required):
+                print("trusted_policy_news=coins_fr_rejected reason=identity_or_biotech_scope_mismatch")
+                continue
         haystack = f"{title} {source_label} {description}"
         if (
             not title
@@ -4338,11 +4360,13 @@ def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, 
     ):
         return "공식 확인", "미 연방관보 2026-21447·DHS-2026-0628 직접 검증"
     if rule.key == "us_treasury_coins_biotechnology_outbound_nprm" and any(
-        item.get("official_direct_verified") is True
-        and str(item.get("link") or "").rstrip("/") == "https://home.treasury.gov/news/press-releases/sb0667"
+        (item.get("official_direct_verified") is True
+         and str(item.get("link") or "").rstrip("/") == "https://home.treasury.gov/news/press-releases/sb0667")
+        or (item.get("official_api_verified") is True
+            and "2026-21786" in str(item.get("link") or ""))
         for item in items
     ):
-        return "공식 확인", "미 재무부 2026년 10월 22일 규칙안 원문 직접 검증"
+        return "공식 확인", "미 재무부 10월 22일 규칙안 또는 연방관보 2026-21786 원문 검증"
     if rule.key in MOFCOM_2026_POLICY_NOTICES and any(
         item.get("official_direct_verified") is True
         and item.get("mofcom_notice_key") == rule.key
@@ -4484,6 +4508,7 @@ def _self_test_mofcom_tech_48() -> None:
     rule = next(r for r in STORY_RULES if r.key == MOFCOM_TECH_48["key"])
     example = " ".join(MOFCOM_TECH_48["markers"]) + " 40项技术 23项 5项 12项 2026年10月16日 11月15日"
     assert mofcom_tech_48_body_verified(example)
+    assert mofcom_tech_48_body_verified(example.replace("中国禁止出口限制出口技术目录", "中国禁止出口 限制出口技术目录"))
     assert not mofcom_tech_48_body_verified(example.replace("第48号", "第49号"))
     item = {
         "title": rule.title, "description": example, "source": MOFCOM_TECH_48["source"],
