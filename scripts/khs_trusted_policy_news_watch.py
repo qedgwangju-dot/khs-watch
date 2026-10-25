@@ -1825,7 +1825,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         link = clean_text(str(matched_row.get("html_url") or matched_row.get("pdf_url") or fetch_url))
         published = parse_pub_date(str(matched_row.get("publication_date") or ""))
         if rule.key == "us_treasury_coins_biotechnology_outbound_nprm":
-            full_text_url = str(matched_row.get("raw_text_url") or "")
+            full_text_url = str(matched_row.get("raw_text_url") or matched_row.get("html_url") or "")
             if not full_text_url.startswith("https://www.federalregister.gov/"):
                 print("trusted_policy_news=coins_fr_rejected reason=missing_official_full_text")
                 continue
