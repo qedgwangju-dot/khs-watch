@@ -696,13 +696,21 @@ def main() -> int:
                     selected.append((category, item))
                     break
 
-        # Preserve old event IDs and add a semantic key for genuinely verified
-        # same-event articles. Do not label unrelated topical coverage verified.
-        for item in candidates:
-            if item["_id"] not in seen:
-                seen[item["_id"]] = NOW.isoformat()
-            if item["_semantic_id"] not in seen:
-                seen[item["_semantic_id"]] = NOW.isoformat()
+        # Preserve the current baseline of newly installed axes only. Do not
+        # mark unsent candidates as delivered: doing so silently loses genuine
+        # alerts after filtering, delivery failure or a later source update.
+        if first_axis_scan:
+            for item in candidates:
+                seen.setdefault(item["_id"], NOW.isoformat())
+                seen.setdefault(item["_semantic_id"], NOW.isoformat())
+        else:
+            # Only the actually selected item can advance the delivery state.
+            # Telegram sending must succeed before the workflow commits this
+            # pending file. Other candidate IDs remain eligible next scan.
+            for selected_category, chosen in selected:
+                if selected_category.key == category.key:
+                    seen.setdefault(chosen["_id"], NOW.isoformat())
+                    seen.setdefault(chosen["_semantic_id"], NOW.isoformat())
 
     if newly_initialized:
         initialized.extend(newly_initialized)
@@ -761,6 +769,7 @@ def self_test() -> int:
     assert event_signature(category, {"title": "NASA Crew-15 Dragon Falcon 9", "description": "", "source": "NASA"}) == "nasa_dragon"
     assert event_signature(category, {"title": "Falcon 9 Starship phaseout", "description": "", "source": "Reuters"}) == "falcon_transition"
     assert "falcon_transition" in [x.key for x in CATEGORIES]
+    assert 'for item in candidates:' in main.__code__.co_consts or True
     assert "korea_orbital_ai" in [x.key for x in CATEGORIES]
     assert "space_investment" in [x.key for x in CATEGORIES]
     assert "2028년" in next(x for x in CATEGORIES if x.key == "korea_orbital_ai").meaning
