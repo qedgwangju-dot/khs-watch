@@ -54,7 +54,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      DRY_RUN: ${{ (github.event_name == 'push' && !contains(github.event.head_commit.message,'[format-sample]')) || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true) }}
+      # Code changes are dry-run only. One-off [baseline-bootstrap] stores current verified data without notification.
+      DRY_RUN: ${{ (github.event_name == 'push' && !contains(github.event.head_commit.message,'[format-sample]') && !contains(github.event.head_commit.message,'[baseline-bootstrap]')) || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true) }}
       FORMAT_SAMPLE_SEND: ${{ github.event_name == 'push' && contains(github.event.head_commit.message,'[format-sample]') && 'true' || 'false' }}
     steps:
       - uses: actions/checkout@v4
