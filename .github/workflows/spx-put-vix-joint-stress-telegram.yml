@@ -1,0 +1,133 @@
+name: US SPX Put + VIX Joint Stress Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/spx-put-vix-joint-stress-telegram.yml"
+      - "scripts/spx_put_vix_joint_stress_watch.py"
+      - "tests/test_spx_put_vix_joint_stress_watch.py"
+  pull_request:
+    paths:
+      - ".github/workflows/spx-put-vix-joint-stress-telegram.yml"
+      - "scripts/spx_put_vix_joint_stress_watch.py"
+      - "tests/test_spx_put_vix_joint_stress_watch.py"
+  schedule:
+    # KST Tuesday-Saturday 10:15, 11:15 and 12:15.
+    # Wait for US close and Cboe official end-of-day options/VIX history publication.
+    - cron: "15 10-12 * * 2-6"
+      timezone: "Asia/Seoul"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        type: boolean
+        required: false
+        default: true
+        description: "Verify official data and report; do not send Telegram"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: us-spx-put-vix-joint-stress-watch
+  cancel-in-progress: false
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate official-date alignment, joint thresholds and delivery format
+        run: |
+          python -m py_compile scripts/spx_put_vix_joint_stress_watch.py
+          python -m unittest discover -s tests -p 'test_spx_put_vix_joint_stress_watch.py' -v
+  monitor:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: offline
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      DRY_RUN: ${{ (github.event_name == 'push' && !contains(github.event.head_commit.message,'[format-sample]')) || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true) }}
+      FORMAT_SAMPLE_SEND: ${{ github.event_name == 'push' && contains(github.event.head_commit.message,'[format-sample]') && 'true' || 'false' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Synchronize official main baseline
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install official source collectors
+        run: python -m pip install --disable-pip-version-check --quiet "exchange_calendars>=4.5,<5" beautifulsoup4 playwright
+      - name: Query fresh dated Cboe SPX and official VIX history
+        env:
+          FORMAT_PREVIEW: ${{ env.DRY_RUN }}
+          FORMAT_SAMPLE_SEND: ${{ env.FORMAT_SAMPLE_SEND }}
+        run: python scripts/spx_put_vix_joint_stress_watch.py
+      - name: Preview report without delivery for all code pushes
+        if: env.DRY_RUN == 'true' && hashFiles('out/spx_put_vix_joint_stress/report.html') != ''
+        run: |
+          echo "검증 전용 / 텔레그램 전송 없음" >> "$GITHUB_STEP_SUMMARY"
+          cat out/spx_put_vix_joint_stress/report.html >> "$GITHUB_STEP_SUMMARY"
+      - name: Deliver only verified new joint-risk transition
+        if: env.DRY_RUN != 'true' && hashFiles('out/spx_put_vix_joint_stress/report.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+          FORMAT_SAMPLE_SEND: ${{ env.FORMAT_SAMPLE_SEND }}
+        run: python scripts/spx_put_vix_joint_stress_watch.py --send
+      - name: Persist official data baseline and confirmed transition
+        if: success() && env.DRY_RUN != 'true' && env.FORMAT_SAMPLE_SEND != 'true' && hashFiles('out/spx_put_vix_joint_stress/pending_state.json') != ''
+        run: |
+          set -e
+          if test -f out/spx_put_vix_joint_stress/report.html &&
+             ! test -f out/spx_put_vix_joint_stress/telegram_receipt.json; then
+            echo "Telegram result is not verified; state cannot advance" >&2
+            exit 1
+          fi
+          cp out/spx_put_vix_joint_stress/pending_state.json /tmp/spx_put_vix_joint_pending.json
+          git config user.name "spx-put-vix-watch[bot]"
+          git config user.email "spx-put-vix-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p data
+            cp /tmp/spx_put_vix_joint_pending.json data/spx_put_vix_joint_stress_state.json
+            git add data/spx_put_vix_joint_stress_state.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Save verified SPX/VIX joint-stress status"
+            if git push origin HEAD:main; then
+              echo "spx_vix_state_saved=true"
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "Failed to persist after confirmation; review before potential duplicate" >&2
+          exit 1
+      - name: Verify optional one-off format sample (does not change alert state)
+        if: success() && env.FORMAT_SAMPLE_SEND == 'true'
+        run: |
+          test -f out/spx_put_vix_joint_stress/telegram_receipt.json
+          echo "샘플 발송 본문 확인 완료; 시장 경보 상태 유지" >> "$GITHUB_STEP_SUMMARY"
+          cat out/spx_put_vix_joint_stress/telegram_receipt.json >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve audit artifacts without credentials
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spx-put-vix-joint-risk-${{ github.run_id }}
+          path: |
+            out/spx_put_vix_joint_stress/audit.json
+            out/spx_put_vix_joint_stress/report.html
+            out/spx_put_vix_joint_stress/pending_state.json
+            out/spx_put_vix_joint_stress/telegram_receipt.json
+          if-no-files-found: ignore
+          retention-days: 21
