@@ -90724,6 +90724,31 @@
       "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
       "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
     },
+    "core:db6bc535f815f7ff47769244": {
+      "first_seen_kst": "2026-10-25T23:45:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T23:45:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T23:45:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638862",
+      "source": "이투데이",
+      "source_body_digest": "9e64e4789d39240d0e2c5c3933d906cddc97cff40df7d23a4b57ebc1b9ec9e30",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a11012d310cb8823e7e333232155b1ff44e801b49325a098a7905cfc0f5a1838",
+      "source_fact_keys": [
+        "source_fact:v1:0fb9a19c9c77335b20dfa52537c8b8438b0529d2cf1a721b355c8047468fe7a1",
+        "source_fact:v1:2483fbe25bed840f4defbfa93f9a59a0b3f9426fe81cfa47b069563b03f22dcb",
+        "source_fact:v1:27b3947750e98b1c8ca20523656a10b7837e8846e6afc7b3a1dac915f7aa92a7",
+        "source_fact:v1:8a9f17565a1827aa4e6b7fc39c8ff548d142a67f5d0a0cc63e7fa11159193b6a",
+        "source_fact:v1:ae11f9768f88c76c20216e16cfb615c8b1ebb13c514f220e235b5d5c97df1d41",
+        "source_fact:v1:d034a506185c45d0196410912c39b467b2dd7cde1e5e8f4189245cca5f242bf7"
+      ],
+      "source_published_kst": "2026-10-25T16:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'",
+      "telegram_core_fact": "노조는 국내 사업 축소 가능성을 우려하며 신차 배정 조기 확정과 하이브리드차 생산을 요구했지만 GM 측은 신중한 입장을 보였다.",
+      "title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'"
+    },
     "core:db730c0da906c807605a7520": {
       "first_seen_kst": "2026-10-12T08:26:25+09:00",
       "lanes": {
@@ -188018,6 +188043,31 @@
       "source_title": "[뉴스줌인]기약 없는 코스피 外人이탈…한 해 200조 팔아치웠다",
       "telegram_core_fact": "코스피·코스닥은 각각 5.46%·1.43% 하락해 양 시장에 매도 사이드카가 발동됐다.",
       "title": "[뉴스줌인]기약 없는 코스피 外人이탈…한 해 200조 팔아치웠다"
+    },
+    "fact:86034eb82ce6bef40fb0589b": {
+      "first_seen_kst": "2026-10-25T23:45:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T23:45:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T23:45:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638862",
+      "source": "이투데이",
+      "source_body_digest": "9e64e4789d39240d0e2c5c3933d906cddc97cff40df7d23a4b57ebc1b9ec9e30",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a11012d310cb8823e7e333232155b1ff44e801b49325a098a7905cfc0f5a1838",
+      "source_fact_keys": [
+        "source_fact:v1:0fb9a19c9c77335b20dfa52537c8b8438b0529d2cf1a721b355c8047468fe7a1",
+        "source_fact:v1:2483fbe25bed840f4defbfa93f9a59a0b3f9426fe81cfa47b069563b03f22dcb",
+        "source_fact:v1:27b3947750e98b1c8ca20523656a10b7837e8846e6afc7b3a1dac915f7aa92a7",
+        "source_fact:v1:8a9f17565a1827aa4e6b7fc39c8ff548d142a67f5d0a0cc63e7fa11159193b6a",
+        "source_fact:v1:ae11f9768f88c76c20216e16cfb615c8b1ebb13c514f220e235b5d5c97df1d41",
+        "source_fact:v1:d034a506185c45d0196410912c39b467b2dd7cde1e5e8f4189245cca5f242bf7"
+      ],
+      "source_published_kst": "2026-10-25T16:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'",
+      "telegram_core_fact": "노조는 국내 사업 축소 가능성을 우려하며 신차 배정 조기 확정과 하이브리드차 생산을 요구했지만 GM 측은 신중한 입장을 보였다.",
+      "title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'"
     },
     "fact:860d888825bf10124d5b7cac": {
       "first_seen_kst": "2026-10-17T00:51:19+09:00",
@@ -295161,6 +295211,31 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04349286645608984",
       "source": "이데일리",
       "title": "장동혁 \"李 쌈짓돈 미래대응기금 재검토…재정준칙 법제화해야\""
+    },
+    "link:557ade215302d5e00b97507b": {
+      "first_seen_kst": "2026-10-25T23:45:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T23:45:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T23:45:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638862",
+      "source": "이투데이",
+      "source_body_digest": "9e64e4789d39240d0e2c5c3933d906cddc97cff40df7d23a4b57ebc1b9ec9e30",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a11012d310cb8823e7e333232155b1ff44e801b49325a098a7905cfc0f5a1838",
+      "source_fact_keys": [
+        "source_fact:v1:0fb9a19c9c77335b20dfa52537c8b8438b0529d2cf1a721b355c8047468fe7a1",
+        "source_fact:v1:2483fbe25bed840f4defbfa93f9a59a0b3f9426fe81cfa47b069563b03f22dcb",
+        "source_fact:v1:27b3947750e98b1c8ca20523656a10b7837e8846e6afc7b3a1dac915f7aa92a7",
+        "source_fact:v1:8a9f17565a1827aa4e6b7fc39c8ff548d142a67f5d0a0cc63e7fa11159193b6a",
+        "source_fact:v1:ae11f9768f88c76c20216e16cfb615c8b1ebb13c514f220e235b5d5c97df1d41",
+        "source_fact:v1:d034a506185c45d0196410912c39b467b2dd7cde1e5e8f4189245cca5f242bf7"
+      ],
+      "source_published_kst": "2026-10-25T16:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'",
+      "telegram_core_fact": "노조는 국내 사업 축소 가능성을 우려하며 신차 배정 조기 확정과 하이브리드차 생산을 요구했지만 GM 측은 신중한 입장을 보였다.",
+      "title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'"
     },
     "link:557c5e25c1942d205b363ee2": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
@@ -417745,6 +417820,31 @@
       "source_title": "디엘지, 일본 기업의 한국기업 M&A 자문 성공 마무리",
       "telegram_core_fact": "법무법인 디엘지(DLG Law LLC)가 일본 도쿄증권거래소 상장사 크라비아(CRAVIA)의 국내 엔터테인먼트 기업(레드스타트이엔엠, Redstart ENM) 지분 인수 거래에서 M&A 어드바이저리 및 법률자문을 수행, 거래를 성공적으로 마무리했다.",
       "title": "디엘지, 일본 기업의 한국기업 M&A 자문 성공 마무리"
+    },
+    "original:2c97d16a3fc2c4e28b1c937e": {
+      "first_seen_kst": "2026-10-25T23:45:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T23:45:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T23:45:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638862",
+      "source": "이투데이",
+      "source_body_digest": "9e64e4789d39240d0e2c5c3933d906cddc97cff40df7d23a4b57ebc1b9ec9e30",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a11012d310cb8823e7e333232155b1ff44e801b49325a098a7905cfc0f5a1838",
+      "source_fact_keys": [
+        "source_fact:v1:0fb9a19c9c77335b20dfa52537c8b8438b0529d2cf1a721b355c8047468fe7a1",
+        "source_fact:v1:2483fbe25bed840f4defbfa93f9a59a0b3f9426fe81cfa47b069563b03f22dcb",
+        "source_fact:v1:27b3947750e98b1c8ca20523656a10b7837e8846e6afc7b3a1dac915f7aa92a7",
+        "source_fact:v1:8a9f17565a1827aa4e6b7fc39c8ff548d142a67f5d0a0cc63e7fa11159193b6a",
+        "source_fact:v1:ae11f9768f88c76c20216e16cfb615c8b1ebb13c514f220e235b5d5c97df1d41",
+        "source_fact:v1:d034a506185c45d0196410912c39b467b2dd7cde1e5e8f4189245cca5f242bf7"
+      ],
+      "source_published_kst": "2026-10-25T16:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'",
+      "telegram_core_fact": "노조는 국내 사업 축소 가능성을 우려하며 신차 배정 조기 확정과 하이브리드차 생산을 요구했지만 GM 측은 신중한 입장을 보였다.",
+      "title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'"
     },
     "original:2ca10855e65b8ee993cfa81c": {
       "first_seen_kst": "2026-10-18T21:11:21+09:00",
@@ -577823,6 +577923,31 @@
       "telegram_core_fact": "사업은 울산 AI 데이터센터를 출발점으로 영남권에 2GW 이상 클러스터를 조성하고, 충청권과 서남권으로 확대한다.",
       "title": "SK하이퍼, AI 데이터센터 투자 유치 추진… 첫 5GW 구축에 463조원 예상"
     },
+    "source_fact:1148937fd61c8e2a72ff163c": {
+      "first_seen_kst": "2026-10-25T23:45:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T23:45:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T23:45:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638862",
+      "source": "이투데이",
+      "source_body_digest": "9e64e4789d39240d0e2c5c3933d906cddc97cff40df7d23a4b57ebc1b9ec9e30",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a11012d310cb8823e7e333232155b1ff44e801b49325a098a7905cfc0f5a1838",
+      "source_fact_keys": [
+        "source_fact:v1:0fb9a19c9c77335b20dfa52537c8b8438b0529d2cf1a721b355c8047468fe7a1",
+        "source_fact:v1:2483fbe25bed840f4defbfa93f9a59a0b3f9426fe81cfa47b069563b03f22dcb",
+        "source_fact:v1:27b3947750e98b1c8ca20523656a10b7837e8846e6afc7b3a1dac915f7aa92a7",
+        "source_fact:v1:8a9f17565a1827aa4e6b7fc39c8ff548d142a67f5d0a0cc63e7fa11159193b6a",
+        "source_fact:v1:ae11f9768f88c76c20216e16cfb615c8b1ebb13c514f220e235b5d5c97df1d41",
+        "source_fact:v1:d034a506185c45d0196410912c39b467b2dd7cde1e5e8f4189245cca5f242bf7"
+      ],
+      "source_published_kst": "2026-10-25T16:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'",
+      "telegram_core_fact": "노조는 국내 사업 축소 가능성을 우려하며 신차 배정 조기 확정과 하이브리드차 생산을 요구했지만 GM 측은 신중한 입장을 보였다.",
+      "title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'"
+    },
     "source_fact:114918ef365626923bc4ff29": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
       "lanes": {
@@ -616367,6 +616492,31 @@
       "source_title": "D램값 상승·주주환원 기대감… 삼성전자 주가 끌어올릴까",
       "telegram_core_fact": "이영곤 토스증권 리서치센터장도 \"투자자들은 앞으로도 이러한 높은 이익 성장세가 얼마만큼 더 이어질 수 있는 지 주목하고 있다\"며 \"확정실적을 통해 메모리 수급과 가격, HBM, 내년 실적 전망, 주주환원 등에 대한 회사의 구체적인 설명을 확인하는 것이 필요하다\"고 전했다.",
       "title": "D램값 상승·주주환원 기대감… 삼성전자 주가 끌어올릴까"
+    },
+    "source_fact:21b278d505c4dc3a14e4eabc": {
+      "first_seen_kst": "2026-10-25T23:45:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T23:45:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T23:45:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638862",
+      "source": "이투데이",
+      "source_body_digest": "9e64e4789d39240d0e2c5c3933d906cddc97cff40df7d23a4b57ebc1b9ec9e30",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a11012d310cb8823e7e333232155b1ff44e801b49325a098a7905cfc0f5a1838",
+      "source_fact_keys": [
+        "source_fact:v1:0fb9a19c9c77335b20dfa52537c8b8438b0529d2cf1a721b355c8047468fe7a1",
+        "source_fact:v1:2483fbe25bed840f4defbfa93f9a59a0b3f9426fe81cfa47b069563b03f22dcb",
+        "source_fact:v1:27b3947750e98b1c8ca20523656a10b7837e8846e6afc7b3a1dac915f7aa92a7",
+        "source_fact:v1:8a9f17565a1827aa4e6b7fc39c8ff548d142a67f5d0a0cc63e7fa11159193b6a",
+        "source_fact:v1:ae11f9768f88c76c20216e16cfb615c8b1ebb13c514f220e235b5d5c97df1d41",
+        "source_fact:v1:d034a506185c45d0196410912c39b467b2dd7cde1e5e8f4189245cca5f242bf7"
+      ],
+      "source_published_kst": "2026-10-25T16:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'",
+      "telegram_core_fact": "노조는 국내 사업 축소 가능성을 우려하며 신차 배정 조기 확정과 하이브리드차 생산을 요구했지만 GM 측은 신중한 입장을 보였다.",
+      "title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'"
     },
     "source_fact:21b4b887ef347ac1c07d6cb6": {
       "first_seen_kst": "2026-10-22T08:28:20+09:00",
@@ -722803,6 +722953,31 @@
       "telegram_core_fact": "삼성전기가 글로벌 인공지능(AI) 반도체 시장을 주도하는 엔비디아와 손잡고 차세대 AI 반도체 패키지기판 공급망 강화에 나선다. 이번 협력에 따라 양사는 공동 투자를 통해 삼성전기 세종·부산 사업장에 AI 반도체 패키지기판 전용 생산라인을 증설한다.",
       "title": "삼성전기, 엔비디아와 AI 반도체 깐부 됐다…AI 기판 장기 공급"
     },
+    "source_fact:4d8db0a44cfdace3568d1f02": {
+      "first_seen_kst": "2026-10-25T23:45:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T23:45:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T23:45:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638862",
+      "source": "이투데이",
+      "source_body_digest": "9e64e4789d39240d0e2c5c3933d906cddc97cff40df7d23a4b57ebc1b9ec9e30",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a11012d310cb8823e7e333232155b1ff44e801b49325a098a7905cfc0f5a1838",
+      "source_fact_keys": [
+        "source_fact:v1:0fb9a19c9c77335b20dfa52537c8b8438b0529d2cf1a721b355c8047468fe7a1",
+        "source_fact:v1:2483fbe25bed840f4defbfa93f9a59a0b3f9426fe81cfa47b069563b03f22dcb",
+        "source_fact:v1:27b3947750e98b1c8ca20523656a10b7837e8846e6afc7b3a1dac915f7aa92a7",
+        "source_fact:v1:8a9f17565a1827aa4e6b7fc39c8ff548d142a67f5d0a0cc63e7fa11159193b6a",
+        "source_fact:v1:ae11f9768f88c76c20216e16cfb615c8b1ebb13c514f220e235b5d5c97df1d41",
+        "source_fact:v1:d034a506185c45d0196410912c39b467b2dd7cde1e5e8f4189245cca5f242bf7"
+      ],
+      "source_published_kst": "2026-10-25T16:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'",
+      "telegram_core_fact": "노조는 국내 사업 축소 가능성을 우려하며 신차 배정 조기 확정과 하이브리드차 생산을 요구했지만 GM 측은 신중한 입장을 보였다.",
+      "title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'"
+    },
     "source_fact:4d92bb3b85de37ab1742b761": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -725101,6 +725276,31 @@
       "source_title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스",
       "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
       "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
+    },
+    "source_fact:4e61bf8b2210475f16dfe6c0": {
+      "first_seen_kst": "2026-10-25T23:45:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T23:45:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T23:45:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638862",
+      "source": "이투데이",
+      "source_body_digest": "9e64e4789d39240d0e2c5c3933d906cddc97cff40df7d23a4b57ebc1b9ec9e30",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a11012d310cb8823e7e333232155b1ff44e801b49325a098a7905cfc0f5a1838",
+      "source_fact_keys": [
+        "source_fact:v1:0fb9a19c9c77335b20dfa52537c8b8438b0529d2cf1a721b355c8047468fe7a1",
+        "source_fact:v1:2483fbe25bed840f4defbfa93f9a59a0b3f9426fe81cfa47b069563b03f22dcb",
+        "source_fact:v1:27b3947750e98b1c8ca20523656a10b7837e8846e6afc7b3a1dac915f7aa92a7",
+        "source_fact:v1:8a9f17565a1827aa4e6b7fc39c8ff548d142a67f5d0a0cc63e7fa11159193b6a",
+        "source_fact:v1:ae11f9768f88c76c20216e16cfb615c8b1ebb13c514f220e235b5d5c97df1d41",
+        "source_fact:v1:d034a506185c45d0196410912c39b467b2dd7cde1e5e8f4189245cca5f242bf7"
+      ],
+      "source_published_kst": "2026-10-25T16:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'",
+      "telegram_core_fact": "노조는 국내 사업 축소 가능성을 우려하며 신차 배정 조기 확정과 하이브리드차 생산을 요구했지만 GM 측은 신중한 입장을 보였다.",
+      "title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'"
     },
     "source_fact:4e63c58072c714f716e7e6c2": {
       "first_seen_kst": "2026-10-25T18:34:20+09:00",
@@ -821121,6 +821321,31 @@
       "source_title": "라이브 네이션, 7억3000만 달러·6억 유로 선순위채 가격 결정",
       "telegram_core_fact": "라이브 네이션(LYV)이 표면금리 7.125%의 2032년 만기 달러화 선순위 채권 7억3000만 달러와 표면금리 6.125%의 2032년 만기 유로화 선순위 채권 6억 유로의 발행 가격을 결정했다고 9일(현지시간) 발표했다.",
       "title": "라이브 네이션, 7억3000만 달러·6억 유로 선순위채 가격 결정"
+    },
+    "source_fact:76144d7bccfec54d7ea71e11": {
+      "first_seen_kst": "2026-10-25T23:45:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T23:45:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T23:45:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638862",
+      "source": "이투데이",
+      "source_body_digest": "9e64e4789d39240d0e2c5c3933d906cddc97cff40df7d23a4b57ebc1b9ec9e30",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a11012d310cb8823e7e333232155b1ff44e801b49325a098a7905cfc0f5a1838",
+      "source_fact_keys": [
+        "source_fact:v1:0fb9a19c9c77335b20dfa52537c8b8438b0529d2cf1a721b355c8047468fe7a1",
+        "source_fact:v1:2483fbe25bed840f4defbfa93f9a59a0b3f9426fe81cfa47b069563b03f22dcb",
+        "source_fact:v1:27b3947750e98b1c8ca20523656a10b7837e8846e6afc7b3a1dac915f7aa92a7",
+        "source_fact:v1:8a9f17565a1827aa4e6b7fc39c8ff548d142a67f5d0a0cc63e7fa11159193b6a",
+        "source_fact:v1:ae11f9768f88c76c20216e16cfb615c8b1ebb13c514f220e235b5d5c97df1d41",
+        "source_fact:v1:d034a506185c45d0196410912c39b467b2dd7cde1e5e8f4189245cca5f242bf7"
+      ],
+      "source_published_kst": "2026-10-25T16:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'",
+      "telegram_core_fact": "노조는 국내 사업 축소 가능성을 우려하며 신차 배정 조기 확정과 하이브리드차 생산을 요구했지만 GM 측은 신중한 입장을 보였다.",
+      "title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'"
     },
     "source_fact:761621a9ab79d85fd35ec6e0": {
       "first_seen_kst": "2026-10-21T07:24:03+09:00",
@@ -926857,6 +927082,31 @@
       "source_title": "루닛, 美 디스커버리와 협력…글로벌 제약사에 AI 병리 분석 공급",
       "telegram_core_fact": "루닛이 미국 디스커버리 라이프 사이언스와 손잡고 글로벌 제약사의 신약 개발 과정에 인공지능(AI) 병리 분석 기술 공급을 확대한다.",
       "title": "루닛, 美 디스커버리와 협력…글로벌 제약사에 AI 병리 분석 공급"
+    },
+    "source_fact:a2e06bda3a0fe73272b317c0": {
+      "first_seen_kst": "2026-10-25T23:45:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T23:45:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T23:45:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638862",
+      "source": "이투데이",
+      "source_body_digest": "9e64e4789d39240d0e2c5c3933d906cddc97cff40df7d23a4b57ebc1b9ec9e30",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a11012d310cb8823e7e333232155b1ff44e801b49325a098a7905cfc0f5a1838",
+      "source_fact_keys": [
+        "source_fact:v1:0fb9a19c9c77335b20dfa52537c8b8438b0529d2cf1a721b355c8047468fe7a1",
+        "source_fact:v1:2483fbe25bed840f4defbfa93f9a59a0b3f9426fe81cfa47b069563b03f22dcb",
+        "source_fact:v1:27b3947750e98b1c8ca20523656a10b7837e8846e6afc7b3a1dac915f7aa92a7",
+        "source_fact:v1:8a9f17565a1827aa4e6b7fc39c8ff548d142a67f5d0a0cc63e7fa11159193b6a",
+        "source_fact:v1:ae11f9768f88c76c20216e16cfb615c8b1ebb13c514f220e235b5d5c97df1d41",
+        "source_fact:v1:d034a506185c45d0196410912c39b467b2dd7cde1e5e8f4189245cca5f242bf7"
+      ],
+      "source_published_kst": "2026-10-25T16:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'",
+      "telegram_core_fact": "노조는 국내 사업 축소 가능성을 우려하며 신차 배정 조기 확정과 하이브리드차 생산을 요구했지만 GM 측은 신중한 입장을 보였다.",
+      "title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'"
     },
     "source_fact:a2e2b836fd4df239fd468762": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -1175497,6 +1175747,31 @@
       "telegram_core_fact": "법무법인 디엘지(DLG Law LLC)가 일본 도쿄증권거래소 상장사 크라비아(CRAVIA)의 국내 엔터테인먼트 기업(레드스타트이엔엠, Redstart ENM) 지분 인수 거래에서 M&A 어드바이저리 및 법률자문을 수행, 거래를 성공적으로 마무리했다.",
       "title": "디엘지, 일본 기업의 한국기업 M&A 자문 성공 마무리"
     },
+    "title:2c97d16a3fc2c4e28b1c937e": {
+      "first_seen_kst": "2026-10-25T23:45:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T23:45:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T23:45:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2638862",
+      "source": "이투데이",
+      "source_body_digest": "9e64e4789d39240d0e2c5c3933d906cddc97cff40df7d23a4b57ebc1b9ec9e30",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a11012d310cb8823e7e333232155b1ff44e801b49325a098a7905cfc0f5a1838",
+      "source_fact_keys": [
+        "source_fact:v1:0fb9a19c9c77335b20dfa52537c8b8438b0529d2cf1a721b355c8047468fe7a1",
+        "source_fact:v1:2483fbe25bed840f4defbfa93f9a59a0b3f9426fe81cfa47b069563b03f22dcb",
+        "source_fact:v1:27b3947750e98b1c8ca20523656a10b7837e8846e6afc7b3a1dac915f7aa92a7",
+        "source_fact:v1:8a9f17565a1827aa4e6b7fc39c8ff548d142a67f5d0a0cc63e7fa11159193b6a",
+        "source_fact:v1:ae11f9768f88c76c20216e16cfb615c8b1ebb13c514f220e235b5d5c97df1d41",
+        "source_fact:v1:d034a506185c45d0196410912c39b467b2dd7cde1e5e8f4189245cca5f242bf7"
+      ],
+      "source_published_kst": "2026-10-25T16:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'",
+      "telegram_core_fact": "노조는 국내 사업 축소 가능성을 우려하며 신차 배정 조기 확정과 하이브리드차 생산을 요구했지만 GM 측은 신중한 입장을 보였다.",
+      "title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'"
+    },
     "title:2ca10855e65b8ee993cfa81c": {
       "first_seen_kst": "2026-10-18T21:11:21+09:00",
       "lanes": {
@@ -1297241,5 +1297516,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-25T23:11:30+09:00"
+  "updated_at_kst": "2026-10-25T23:45:03+09:00"
 }
