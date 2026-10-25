@@ -36,6 +36,16 @@ UA = os.getenv("SEC_USER_AGENT", "KHS-domestic-stablecoin-policy-watch contact=g
 STABLECOIN_QUERY = urllib.parse.quote("스테이블코인")
 DIGITAL_ASSET_QUERY = urllib.parse.quote("디지털자산")
 VIRTUAL_ASSET_QUERY = urllib.parse.quote("가상자산")
+# Dedicated policy-reported tax stage. These links are evidence, NOT proof of
+# an enacted tax postponement. Existing CBDC/stablecoin official lane is unchanged.
+CRYPTO_TAX_PRIMARY_REPORT = "https://en.sedaily.com/politics/2026/10/25/presidential-office-decides-to-delay-crypto-tax-again"
+CRYPTO_TAX_SECONDARY_REPORT = "https://coinness.com/en/news/1172857"
+CRYPTO_TAX_OFFICIAL_GUIDANCE = "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=238935"
+CRYPTO_TAX_CARF_OECD = "https://www.oecd.org/content/dam/oecd/en/networks/global-forum-tax-transparency/commitments-carf.pdf"
+CRYPTO_TAX_BILL_2029 = "https://community.lawmaking.go.kr/gcom/nsmLmSts/out/2220914/detailRP"
+CRYPTO_TAX_BILL_CARF = "https://lawwatch.kr/bills/22-2221923"
+CRYPTO_TAX_BILL_2030 = "https://lnp.nanet.go.kr/policy/assemblyBodo/detail.do?controlNo=196915"
+CRYPTO_TAX_REPORT_TIME = dt.datetime(2026, 10, 25, 12, 2, tzinfo=KST)
 
 SOURCES = [
     (
@@ -434,6 +444,131 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
     return list(deduped.values())
 
 
+def crypto_tax_report_candidate(
+    primary: str | None,
+    secondary: str | None,
+    official_guidance: str | None,
+    now: dt.datetime,
+) -> dict | None:
+    """News-reported presidential preference ≠ amendment passed or tax waived."""
+    hours = age_hours(CRYPTO_TAX_REPORT_TIME, now)
+    if hours is None or hours < -1 or hours > MAX_AGE_HOURS:
+        return None
+
+    p = clean_text(primary).lower()
+    s = clean_text(secondary).lower()
+    # Pin exact 2026-10-25 article; site sidebars alone cannot become a
+    # presidential decision. Secondary copy is supplementary, not official.
+    primary_ok = bool(
+        "2026.10.25" in p
+        and "presidential office" in p
+        and "crypto tax" in p
+        and ("delay" in p or "postpone" in p)
+        and "2029" in p
+    )
+    secondary_ok = bool(
+        ("october 25, 2026" in s or "oct. 25" in s or "oct 25" in s)
+        and "presidential office" in s
+        and "crypto tax" in s
+        and ("delay" in s or "postpone" in s)
+        and "2029" in s
+    )
+    if not primary_ok and not secondary_ok:
+        return None
+
+    nts = clean_text(official_guidance).lower()
+    nts_baseline_confirmed = bool(
+        "가상자산" in nts
+        and "27.1.1" in nts.replace(" ", "")
+        and ("과세" in nts or "분리과세" in nts)
+    )
+    if primary_ok:
+        link, source = CRYPTO_TAX_PRIMARY_REPORT, "서울경제(보도)"
+    else:
+        link, source = CRYPTO_TAX_SECONDARY_REPORT, "CoinNess(서울경제 보도 재인용)"
+    support = "동일 보도 재인용 확인" if primary_ok and secondary_ok else "원문 한 곳만 확인"
+    legal_status = (
+        "국세청 시행 안내 2027-01-01 유지"
+        if nts_baseline_confirmed
+        else "국세청 원문 접근 또는 시행일 직접 재확인 실패"
+    )
+    summary = (
+        "2026-10-25 청와대 관계자를 인용한 언론보도: 2027-01-01 예정 가상자산소득 과세를 "
+        "추가 유예하는 방향으로 논의. 아직 시행일 변경 법률은 통과·공포되지 않음. "
+        "유예 방안은 2029년(김상훈안·박민규 CARF 연동안)과 2030년(김재섭안)으로 다름. "
+        f"{legal_status}. {support}. "
+        "언론 보도·당정 입장과 국회 의결·법률 공포는 구별."
+    )
+    return {
+        "source": source,
+        "title": "가상자산 과세 재유예 방향 보도 · 법률 개정 미확정",
+        "title_ko": "가상자산 과세 재유예 방향 보도 · 법률 개정 미확정",
+        "original_title": "靑, 가상자산 과세 재유예 결론…청년 여론·美 CARF 고려",
+        "link": link,
+        "summary": summary,
+        "published_kst": CRYPTO_TAX_REPORT_TIME.isoformat(),
+        "fingerprint": "crypto-tax:presidential-policy-report:2026-10-25",
+        "matched": {
+            "korea_crypto_tax_policy": [
+                "언론보도: 청와대 관계자 과세 재유예 방향",
+                "법률상 현재 예정일 2027-01-01",
+                "2029·2030 시행 개정안은 국회 계류",
+            ]
+        },
+        "status": "언론 보도 · 법 개정 전",
+        "importance": "상",
+        "impacts": ["할인율", "수급", "시간표"],
+        "paths": ["국회 입법 단계", "세금/규제 위험", "거래소 투자심리"],
+        "sectors": ["가상자산거래소/디지털자산"],
+        "domestic_stablecoin_policy_watch": True,
+        "crypto_tax_policy_watch": True,
+        "crypto_tax_stage": "reported_position_not_enacted",
+        "crypto_tax_legal_effective_date": "2027-01-01",
+        "crypto_tax_guidance_rechecked": nts_baseline_confirmed,
+        "crypto_tax_support_reprint": secondary_ok,
+        "crypto_tax_bill_numbers": ["2220914", "2221570", "2221923"],
+        "crypto_tax_legal_links": [
+            CRYPTO_TAX_OFFICIAL_GUIDANCE,
+            CRYPTO_TAX_BILL_2029, CRYPTO_TAX_BILL_CARF, CRYPTO_TAX_BILL_2030,
+            CRYPTO_TAX_CARF_OECD,
+        ],
+        "policy_plain_summary": (
+            "청와대 관계자 발언에 대한 재유예 방향 보도이며 법 개정 확정이 아님. "
+            "현행 과세 개시 예정일 2027-01-01, 공제 250만원, 국세 20% 및 지방세 포함 22%."
+        ),
+        "investment_view": "세금 부담이 연기될 기대는 투자심리에 우호적이나 법 통과 전이므로 확정 세제 혜택으로 판단 금지.",
+        "counter": "2027년 시행 예정 현행 법률은 유효하며 당정 합의·국회 의결·공포가 아직 필요.",
+        "reflection": "미확정",
+    }
+
+
+def crypto_tax_news_candidates(now: dt.datetime) -> list[dict]:
+    if not (-1 <= (age_hours(CRYPTO_TAX_REPORT_TIME, now) or -2) <= MAX_AGE_HOURS):
+        return []
+
+    verified = {}
+    for key, url in (
+        ("primary", CRYPTO_TAX_PRIMARY_REPORT),
+        ("secondary", CRYPTO_TAX_SECONDARY_REPORT),
+        ("nts", CRYPTO_TAX_OFFICIAL_GUIDANCE),
+    ):
+        body, error = fetch_text(url, timeout=7, attempts=1)
+        verified[key] = body if error is None else None
+        if error:
+            print(f"crypto_tax_source_warning={key} error={error}")
+    candidate = crypto_tax_report_candidate(
+        verified["primary"], verified["secondary"], verified["nts"], now
+    )
+    if candidate:
+        print(
+            "crypto_tax_stage=reported_position_not_enacted "
+            f"nts_rechecked={str(candidate['crypto_tax_guidance_rechecked']).lower()} "
+            f"reprint_found={str(candidate['crypto_tax_support_reprint']).lower()}"
+        )
+        return [candidate]
+    return []
+
+
 def load_seen() -> dict:
     if not SEEN_PATH.exists():
         return {"seen": {}, "updated_at_kst": ""}
@@ -450,6 +585,8 @@ def save_seen(seen: dict, now: dt.datetime) -> None:
 
 
 def semantic_key(item: dict) -> str:
+    if item.get("crypto_tax_policy_watch"):
+        return f"crypto-tax:{item.get('crypto_tax_stage') or 'unknown'}:2026-10-25"
     if item.get("domestic_stablecoin_policy_watch"):
         # Do not deduplicate every different announcement into four fixed template
         # titles. Distinct official documents on different dates remain distinct.
@@ -545,6 +682,9 @@ def main() -> int:
             print(f"domestic_stablecoin_source_failed source={source_name} error={error}")
             continue
         candidates.extend(parse_links(text or "", source_name, effective_url, now))
+    # Reported presidential policy direction is deliberately kept separate
+    # from BOK/CBDC official policy and from a law being enacted.
+    candidates.extend(crypto_tax_news_candidates(now))
     candidates = merge_policy_duplicates(candidates)
 
     seen = load_seen()
