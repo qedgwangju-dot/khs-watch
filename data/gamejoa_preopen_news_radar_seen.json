@@ -3595,6 +3595,26 @@
       "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
       "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
     },
+    "core:0a801973b92d8131b344e7e4": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025049600051",
+      "source": "연합뉴스",
+      "source_body_digest": "5cdfb2e5282fa4807bf38be776e2c54cff916ab1ec682061696c2eb337e0933b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4477b7790fd6905841b4c4a2b20657fb26a9895a5a3b76366cc937c949b56f90",
+      "source_fact_keys": [
+        "source_fact:v1:7844fba5b20d34fab9daf231739de5aff48482ba48e91f87699733ac93f3e511"
+      ],
+      "source_published_kst": "2026-10-25T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산 동해선 일광∼월내 구간 나무 쓰러져…열차 지연 | 연합뉴스",
+      "telegram_core_fact": "태풍 '참피'의 영향으로 비가 내리고 있는 부산 동해선 철도 구간에서 나무가 쓰러져 전력 공급에 장애가 발생하면서 열차 운행이 지연됐다. 한국철도공사(코레일)에 따르면 이날 오후 7시 21분께 동해선 일광역∼월내역 구간에서 선로변 나무가 쓰러지면서 전차선에 장애가 발생했다.",
+      "title": "부산 동해선 일광∼월내 구간 나무 쓰러져…열차 지연 | 연합뉴스"
+    },
     "core:0a83c9f9e4d3e99900c4da93": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -22168,6 +22188,32 @@
       "telegram_core_fact": "미 국채 금리 급등은 즉각 유럽으로 전파돼 영국 30년물 금리가 다시 6%선을 돌파했고, 프랑스 30년물도 하루 만에 최대 14bp(1bp=0.01%p) 올랐다.",
       "title": "美 30년물 국채금리 24년만에 최고치 재경신"
     },
+    "core:33e587da94c0f8e0a508b809": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.etnews.com/20261023000244",
+      "source": "전자신문",
+      "source_body_digest": "5844446c87e2c6c25267279e9df72883631acdada3285a708546ec54cd5feccd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:976cbc8da46baee8c09ed56b8829c43e10182d94b427d9800f42ff5660b4f9a7",
+      "source_fact_keys": [
+        "source_fact:v1:32e1a23514609bfeb1bf46335efffb25d1ac39eb6d5342b28307e556e510f53b",
+        "source_fact:v1:90006908d8190432121e1273263af5e1d930d63ada55f8ccdbcde83653d0d12c",
+        "source_fact:v1:94f4e6817119ab575d1790241476c0ac4eb7727ddeb645a2c7470ae196b720e7",
+        "source_fact:v1:9a3a4b20a6d66af959739977272d3682f91294019ab2b5a3b12a3f94fbe6e1e6",
+        "source_fact:v1:c0845e11947aac81eb0f511c7712932b8ebcf1eea68dbc21fc455f1e7152be26",
+        "source_fact:v1:e33803498d649a1acf7db1e833f165752dfccc29728e2ebe936a201edb241a88",
+        "source_fact:v1:e9307bbe7f37ccc481bfed25bc77985bc5c56140e187a49bb300eb258ea92bc7"
+      ],
+      "source_published_kst": "2026-10-25T14:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장",
+      "telegram_core_fact": "산업 현장의 인공지능(AI) 활용이 확대되면서 로봇과 설비, 센서, AI 시스템을 안정적으로 연결하는 통신 인프라의 중요성이 커지는 만큼 관련 시장에 대한 축적된 경험을 바탕으로 이 시장을 공략한다는 복안이다.",
+      "title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장"
+    },
     "core:33e726d33f3edf9a0d5c43db": {
       "first_seen_kst": "2026-10-23T17:26:50+09:00",
       "lanes": {
@@ -25278,6 +25324,37 @@
       "source_title": "지방소멸대응기금 500억원 첫 평가 배분…강원·충남 각각 66억원",
       "telegram_core_fact": "올해부터는 1500억원을 산식에 따라 배분하고, 500억원은 투자계획 평가에 따라 차등 지원한다.",
       "title": "지방소멸대응기금 500억원 첫 평가 배분…강원·충남 각각 66억원"
+    },
+    "core:3b709ae604b882f44c07c8ad": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
     },
     "core:3b733f364cecb61d0441ac23": {
       "first_seen_kst": "2026-10-13T11:12:56+09:00",
@@ -80603,6 +80680,31 @@
       "telegram_core_fact": "이 평가는 중앙행정, 지방정부, 공공기관을 대상으로 국가 공간정보(토지이용규제정보 등) 품질 수준을 진단 평가해 오류 수준 개선을 위해 이뤄진다.",
       "title": "예산군, 국토부 공간정보 품질관리 수준 평가서 '만점'"
     },
+    "core:c2dbed17af0c4f0d45733901": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01111926645616528",
+      "source": "이데일리",
+      "source_body_digest": "9b48224208255d431691eeee143938120abc86415883e19a3a4c3425cc8d42ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79acd4cd9a3a301fdaf93c9af6c3deeb4f250886f9dafb1216ad0d33c7037458",
+      "source_fact_keys": [
+        "source_fact:v1:231f75b4417d1afa294001a7ad8699389bb26e6ec185fd252d618486b5c40025",
+        "source_fact:v1:522394c99e8c149e4839d6e673348a71b414b69e25e83bda499cafd1a61e69eb",
+        "source_fact:v1:56c3b0eef8263e3c4dd0b30eb9c4f93ba717d8780c6c71c218932662af8ce937",
+        "source_fact:v1:7fa3f5b67a2f3373901372690cb50afd76560f8c83091ec80680f77d327058ce",
+        "source_fact:v1:8a76813df04b34132c23abddc7ad91f791d9bb5d90994fb7da52959ec5159468",
+        "source_fact:v1:a77c094f8098dee83f309e6832a03e40701dd9502f27f5af61cf39337b3e30c4"
+      ],
+      "source_published_kst": "2026-10-25T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]",
+      "telegram_core_fact": "연방준비제도(Fed·연준)의 추가 금리 인상 가능성과 국제유가 급등이 달러 강세 압력을 높이는 가운데 반도체 수출 호조에 따른 국내 경기 개선과 원화 강세 흐름이 이어질지가 관건이다.",
+      "title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]"
+    },
     "core:c2fc76891642c107df9a2460": {
       "first_seen_kst": "2026-10-24T03:52:20+09:00",
       "lanes": {
@@ -92980,6 +93082,31 @@
       "telegram_core_fact": "소방청은 20일 경기 부천 공장 화재로 소방관이 순직한 사고와 관련해 사고 원인을 철저히 규명하고, 유사 사고 재발을 막기 위해 이날부터 소방합동조사단을 가동한다고 밝혔다.",
       "title": "소방청, '부천 화재 순직' 합동조사단 가동…원인 규명"
     },
+    "core:e1178af1ba31db95e9f6fdac": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01354646645616528",
+      "source": "이데일리",
+      "source_body_digest": "824329970ca065333e83b1dc0bf0a905bd641ca1eabf19662b9d6eee40da452a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:480caab346c22dc6d3234640068369dbe22cd5d2cbcc993013e455aa0e5b3b4e",
+      "source_fact_keys": [
+        "source_fact:v1:05888cee3e69db192ee6be92ea2a3e0b567cf069e34f43f97af358ec4ac50f08",
+        "source_fact:v1:37c3b28cac1a112d51f4e1a74d118d8743bebcb42c1f5b978d0d0bc93fed8175",
+        "source_fact:v1:85b00ae02aaad6d640103d459502e87e85f63d845783b5ebabd47d776c35dd31",
+        "source_fact:v1:96b14ada7d99cc17c2de770bb41e247aedb61d66c9c07c0f32bf8eced14a3730",
+        "source_fact:v1:adf14e178c1f2198945a8b6e020cbcb0682b45e090f900cd559496bbc0929eff",
+        "source_fact:v1:f9cccb9d8d1154a2e26447e775f18f590ae64ad1a0160d538d78eccc0abaa35a"
+      ],
+      "source_published_kst": "2026-10-25T10:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]",
+      "telegram_core_fact": "내년 2월 토큰증권 제도 시행에 맞춰 그동안 축적한 가축투자계약증권 발행·청산 경험을 바탕으로 STO 시장에 본격 진출하겠다는 구상이다.",
+      "title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]"
+    },
     "core:e118bce6dc53a5292077e310": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
       "lanes": {
@@ -95255,6 +95382,34 @@
       "source_title": "한국투자證, “LS일렉트릭, 美가 이끈 어닝 서프라이즈⋯4분기도 좋다”",
       "telegram_core_fact": "장 연구원은 \"결국 어닝 서프라이즈는 본업 수익성 개선에 의한 것\"이라며 \"미국향 전력기기와 전력 인프라 매출 증가가 실적 개선을 이끌었다\"고 설명했다.",
       "title": "한국투자證, “LS일렉트릭, 美가 이끈 어닝 서프라이즈⋯4분기도 좋다”"
+    },
+    "core:e73e531764b62c8c7d8e4502": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
     },
     "core:e74824cb89f4d1fefb656266": {
       "first_seen_kst": "2026-10-14T22:15:19+09:00",
@@ -99109,6 +99264,26 @@
       "source_title": "HD현대, 설계·건조부터 기술이전까지 … K함정 글로벌 영토 확장",
       "telegram_core_fact": "국내 최고 수준의 이지스구축함 설계·건조 역량을 기반으로 필리핀과 페루 등에서 수출 실적을 확대하는 동시에 현지 공동 생산과 기술이전, 미국과의 조선 협력까지 사업 영역을 넓히고 있다.",
       "title": "HD현대, 설계·건조부터 기술이전까지 … K함정 글로벌 영토 확장"
+    },
+    "core:f0f5169684e4314ee5300bbb": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003840223",
+      "source": "뉴시스",
+      "source_body_digest": "95ccf50df3ca24d4595d297788d6041f71363ffc336998f04ac755c596b8c7a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3ae8cc8b5742913c56387bb1d92125674f9e49bfa628746fe32211adddc5fa4",
+      "source_fact_keys": [
+        "source_fact:v1:1077f53d400d5c3b9556bb9dad34774bc21f8531542296cdfa1855da60597ad4"
+      ],
+      "source_published_kst": "2026-10-25T20:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "독도사랑주유소, 100만ℓ 저유고 개소…유류 유통 혁신 나선다",
+      "telegram_core_fact": "여러 주유소의 수요를 모아 유류를 공동 구매하고, 구매 협상력과 공급 효율성을 높이는 방식으로 유통 구조 개선을 모색하고 있다.",
+      "title": "독도사랑주유소, 100만ℓ 저유고 개소…유류 유통 혁신 나선다"
     },
     "core:f0fcb875a9f811054b868957": {
       "first_seen_kst": "2026-10-24T07:28:21+09:00",
@@ -125151,27 +125326,30 @@
     "event:d802b72b513d09eaa0391956": {
       "first_seen_kst": "2026-10-25T03:16:17+09:00",
       "lanes": {
-        "live": "2026-10-25T17:53:48+09:00"
+        "live": "2026-10-25T20:53:01+09:00"
       },
-      "last_seen_kst": "2026-10-25T17:53:48+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2639774",
-      "source": "이투데이",
-      "source_body_digest": "133a4474ce2a64bcc6d3075a4bc174babea185ae29903e24e242a20f696782a7",
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:8524b127ae1e8cd63e19b5795fab0912f0e4252fab7814682c2bba3cd82782dc",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
       "source_fact_keys": [
-        "source_fact:v1:14b417971b96d300432bf0bf2563522350405831cff4b8311874629b2e3c237f",
-        "source_fact:v1:40dcab131d45796fc0be9454f66fd9dc1cca15bc067a35c38f10035107b8ddc4",
-        "source_fact:v1:5c0074e956a6d8d69ab902f161f28f49d9bcd689eb28d86d298f9ba4dea6f5b7",
-        "source_fact:v1:850d744b543ace3ac843d4126df111962ffb34405a8c60e7017ea92b1b08a0a1",
-        "source_fact:v1:bd046a9e3b17bd51b4d3267ef390d9706c92a744c51c82b5433801593ae1018a",
-        "source_fact:v1:e2381f4507f9c09ca708a276a70bc2911d170073775d09e5476d20d99501fd69"
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
       ],
-      "source_published_kst": "2026-10-25T16:53+09:00",
+      "source_published_kst": "2026-10-25T20:26+09:00",
       "source_supply_terms": {},
-      "source_title": "사우디 리야드공항 재개 첫날 폭발음⋯“후티 미사일 요격”",
-      "telegram_core_fact": "후티는 전날에도 리야드 공항과 사우디의 동서 원유 송유관, 아람코 석유시설 등을 공격했다고 주장했다.",
-      "title": "사우디 리야드공항 재개 첫날 폭발음⋯“후티 미사일 요격”"
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
     },
     "event:d812265cdfa6d6eb53781072": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -138933,6 +139111,26 @@
       "telegram_core_fact": "계측제어설비 정비 전문기업 우진엔텍은 기수주한 고리 원자력발전소 3·4호기 정비용역 계약액을 51억원 증액했다고 21일 밝혔다.",
       "title": "우진엔텍, 고리 원전 3·4호기 정비용역 계약 51억 증액"
     },
+    "fact:158d7037c71e9ca8580fc395": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025049600051",
+      "source": "연합뉴스",
+      "source_body_digest": "5cdfb2e5282fa4807bf38be776e2c54cff916ab1ec682061696c2eb337e0933b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4477b7790fd6905841b4c4a2b20657fb26a9895a5a3b76366cc937c949b56f90",
+      "source_fact_keys": [
+        "source_fact:v1:7844fba5b20d34fab9daf231739de5aff48482ba48e91f87699733ac93f3e511"
+      ],
+      "source_published_kst": "2026-10-25T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산 동해선 일광∼월내 구간 나무 쓰러져…열차 지연 | 연합뉴스",
+      "telegram_core_fact": "태풍 '참피'의 영향으로 비가 내리고 있는 부산 동해선 철도 구간에서 나무가 쓰러져 전력 공급에 장애가 발생하면서 열차 운행이 지연됐다. 한국철도공사(코레일)에 따르면 이날 오후 7시 21분께 동해선 일광역∼월내역 구간에서 선로변 나무가 쓰러지면서 전차선에 장애가 발생했다.",
+      "title": "부산 동해선 일광∼월내 구간 나무 쓰러져…열차 지연 | 연합뉴스"
+    },
     "fact:158ede7b75051cc41a22a95a": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
       "lanes": {
@@ -149401,6 +149599,31 @@
       "telegram_core_fact": "지난주 코스피 지수는 외국인과 기관의 대규모 동반 매도세와 삼성전자의 셀온(Sell-on, 호재 속 가격하락) 물량 출회에 타격을 입으며 직전 주 대비 5% 이상 하락한 6620선으로 밀려났다.",
       "title": "[주간수급리포트] 6620선 주저앉은 코스피…삼전 셀온·외인 팔자에 5% '뚝'"
     },
+    "fact:2e37cb647801d59f3a0a296c": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01111926645616528",
+      "source": "이데일리",
+      "source_body_digest": "9b48224208255d431691eeee143938120abc86415883e19a3a4c3425cc8d42ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79acd4cd9a3a301fdaf93c9af6c3deeb4f250886f9dafb1216ad0d33c7037458",
+      "source_fact_keys": [
+        "source_fact:v1:231f75b4417d1afa294001a7ad8699389bb26e6ec185fd252d618486b5c40025",
+        "source_fact:v1:522394c99e8c149e4839d6e673348a71b414b69e25e83bda499cafd1a61e69eb",
+        "source_fact:v1:56c3b0eef8263e3c4dd0b30eb9c4f93ba717d8780c6c71c218932662af8ce937",
+        "source_fact:v1:7fa3f5b67a2f3373901372690cb50afd76560f8c83091ec80680f77d327058ce",
+        "source_fact:v1:8a76813df04b34132c23abddc7ad91f791d9bb5d90994fb7da52959ec5159468",
+        "source_fact:v1:a77c094f8098dee83f309e6832a03e40701dd9502f27f5af61cf39337b3e30c4"
+      ],
+      "source_published_kst": "2026-10-25T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]",
+      "telegram_core_fact": "연방준비제도(Fed·연준)의 추가 금리 인상 가능성과 국제유가 급등이 달러 강세 압력을 높이는 가운데 반도체 수출 호조에 따른 국내 경기 개선과 원화 강세 흐름이 이어질지가 관건이다.",
+      "title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]"
+    },
     "fact:2e3b2e3dee7b9dc8bbaf431b": {
       "first_seen_kst": "2026-10-21T13:57:06+09:00",
       "lanes": {
@@ -153708,6 +153931,37 @@
       "source_title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약",
       "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
       "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
+    },
+    "fact:38bfe52a9539ff35a162bbbd": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
     },
     "fact:38c9980365b6191fe22e0548": {
       "first_seen_kst": "2026-10-10T04:46:38+09:00",
@@ -174964,6 +175218,32 @@
       "source_published_kst": "2026-10-05T07:31+09:00",
       "title": "태극기 스니커즈에 호랑이 티셔츠까지…패션에 스민 '한국' | 연합뉴스"
     },
+    "fact:6b33f84b43dd85aa75e2916c": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.etnews.com/20261023000244",
+      "source": "전자신문",
+      "source_body_digest": "5844446c87e2c6c25267279e9df72883631acdada3285a708546ec54cd5feccd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:976cbc8da46baee8c09ed56b8829c43e10182d94b427d9800f42ff5660b4f9a7",
+      "source_fact_keys": [
+        "source_fact:v1:32e1a23514609bfeb1bf46335efffb25d1ac39eb6d5342b28307e556e510f53b",
+        "source_fact:v1:90006908d8190432121e1273263af5e1d930d63ada55f8ccdbcde83653d0d12c",
+        "source_fact:v1:94f4e6817119ab575d1790241476c0ac4eb7727ddeb645a2c7470ae196b720e7",
+        "source_fact:v1:9a3a4b20a6d66af959739977272d3682f91294019ab2b5a3b12a3f94fbe6e1e6",
+        "source_fact:v1:c0845e11947aac81eb0f511c7712932b8ebcf1eea68dbc21fc455f1e7152be26",
+        "source_fact:v1:e33803498d649a1acf7db1e833f165752dfccc29728e2ebe936a201edb241a88",
+        "source_fact:v1:e9307bbe7f37ccc481bfed25bc77985bc5c56140e187a49bb300eb258ea92bc7"
+      ],
+      "source_published_kst": "2026-10-25T14:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장",
+      "telegram_core_fact": "산업 현장의 인공지능(AI) 활용이 확대되면서 로봇과 설비, 센서, AI 시스템을 안정적으로 연결하는 통신 인프라의 중요성이 커지는 만큼 관련 시장에 대한 축적된 경험을 바탕으로 이 시장을 공략한다는 복안이다.",
+      "title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장"
+    },
     "fact:6b34619c9d5a93dd1dc24cde": {
       "first_seen_kst": "2026-10-14T17:21:42+09:00",
       "lanes": {
@@ -191405,6 +191685,31 @@
       "telegram_core_fact": "22일 장 마감 후 3분기 실적 발표를 앞두고 매출 10억7000만 달러, EPS 0.67달러의 시장 기대가 형성되며 매수세가 유입된 것으로 보입니다.",
       "title": "블룸에너지, 3분기 실적 발표 앞두고 AI 데이터센터 전력 수요 기대감에 주목"
     },
+    "fact:8e203d1d7923a6cb4b1ceb8c": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01354646645616528",
+      "source": "이데일리",
+      "source_body_digest": "824329970ca065333e83b1dc0bf0a905bd641ca1eabf19662b9d6eee40da452a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:480caab346c22dc6d3234640068369dbe22cd5d2cbcc993013e455aa0e5b3b4e",
+      "source_fact_keys": [
+        "source_fact:v1:05888cee3e69db192ee6be92ea2a3e0b567cf069e34f43f97af358ec4ac50f08",
+        "source_fact:v1:37c3b28cac1a112d51f4e1a74d118d8743bebcb42c1f5b978d0d0bc93fed8175",
+        "source_fact:v1:85b00ae02aaad6d640103d459502e87e85f63d845783b5ebabd47d776c35dd31",
+        "source_fact:v1:96b14ada7d99cc17c2de770bb41e247aedb61d66c9c07c0f32bf8eced14a3730",
+        "source_fact:v1:adf14e178c1f2198945a8b6e020cbcb0682b45e090f900cd559496bbc0929eff",
+        "source_fact:v1:f9cccb9d8d1154a2e26447e775f18f590ae64ad1a0160d538d78eccc0abaa35a"
+      ],
+      "source_published_kst": "2026-10-25T10:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]",
+      "telegram_core_fact": "내년 2월 토큰증권 제도 시행에 맞춰 그동안 축적한 가축투자계약증권 발행·청산 경험을 바탕으로 STO 시장에 본격 진출하겠다는 구상이다.",
+      "title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]"
+    },
     "fact:8e30624b01d4db34d0f99362": {
       "first_seen_kst": "2026-10-14T23:50:23+09:00",
       "lanes": {
@@ -196413,6 +196718,26 @@
       "source_title": "이란 혁명수비대 \"호르무즈서 유조선 2척 기뢰 충돌…운항 중단\" | 연합뉴스",
       "telegram_core_fact": "혁명수비대 공보실은 성명에서 \"호르무즈 해협 남부 통항 구역에서 이란 해군이 부설한 기뢰가 폭발해 규정을 위반한 유조선 2척에 화재가 발생하고 운항이 중단됐다\"고 밝혔다.",
       "title": "이란 혁명수비대 \"호르무즈서 유조선 2척 기뢰 충돌…운항 중단\" | 연합뉴스"
+    },
+    "fact:9884ca44a409120974415318": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003840223",
+      "source": "뉴시스",
+      "source_body_digest": "95ccf50df3ca24d4595d297788d6041f71363ffc336998f04ac755c596b8c7a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3ae8cc8b5742913c56387bb1d92125674f9e49bfa628746fe32211adddc5fa4",
+      "source_fact_keys": [
+        "source_fact:v1:1077f53d400d5c3b9556bb9dad34774bc21f8531542296cdfa1855da60597ad4"
+      ],
+      "source_published_kst": "2026-10-25T20:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "독도사랑주유소, 100만ℓ 저유고 개소…유류 유통 혁신 나선다",
+      "telegram_core_fact": "여러 주유소의 수요를 모아 유류를 공동 구매하고, 구매 협상력과 공급 효율성을 높이는 방식으로 유통 구조 개선을 모색하고 있다.",
+      "title": "독도사랑주유소, 100만ℓ 저유고 개소…유류 유통 혁신 나선다"
     },
     "fact:9894155c41ad7d80e4f5ce82": {
       "first_seen_kst": "2026-10-13T05:27:22+09:00",
@@ -210628,6 +210953,34 @@
       "source_title": "삼전 360조 쏟아붓는 용인…반도체 공장 어떻게 들어서나",
       "telegram_core_fact": "삼성전자가 14일부터 16일까지 서울 코엑스에서 열리는 반도체대전(SEDEX) 2026에서 약 360조원을 투자하는 용인 반도체 국가산업단지의 청사진을 공개한다. 용인 반도체 국가산업단지는 2027년 부지 조성과 착공을 시작해 2029년 10월 첫 생산라인 가동을 목표로 조성이 추진되고 있다.",
       "title": "삼전 360조 쏟아붓는 용인…반도체 공장 어떻게 들어서나"
+    },
+    "fact:b6c7f1935797a21e2d2a9afb": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
     },
     "fact:b6dbe054fd10207b4ffc242c": {
       "first_seen_kst": "2026-10-10T01:47:39+09:00",
@@ -246378,6 +246731,31 @@
       "telegram_core_fact": "공정가치 변동분과 포트폴리오 대출 매각 손익을 제외한 대출 매각 순이익은 1152만 달러로 전년 동기(1749만 달러)보다 34% 적었으며, 주거용 모기지 금리고정약정(IRLC) 물량 감소가 원인이다.",
       "title": "노스포인트 뱅크셰어스, 3분기 희석 EPS 0.39달러..32% 감소·모기지 매각 추진"
     },
+    "link:033132dfba3bf34dee2507bb": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01111926645616528",
+      "source": "이데일리",
+      "source_body_digest": "9b48224208255d431691eeee143938120abc86415883e19a3a4c3425cc8d42ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79acd4cd9a3a301fdaf93c9af6c3deeb4f250886f9dafb1216ad0d33c7037458",
+      "source_fact_keys": [
+        "source_fact:v1:231f75b4417d1afa294001a7ad8699389bb26e6ec185fd252d618486b5c40025",
+        "source_fact:v1:522394c99e8c149e4839d6e673348a71b414b69e25e83bda499cafd1a61e69eb",
+        "source_fact:v1:56c3b0eef8263e3c4dd0b30eb9c4f93ba717d8780c6c71c218932662af8ce937",
+        "source_fact:v1:7fa3f5b67a2f3373901372690cb50afd76560f8c83091ec80680f77d327058ce",
+        "source_fact:v1:8a76813df04b34132c23abddc7ad91f791d9bb5d90994fb7da52959ec5159468",
+        "source_fact:v1:a77c094f8098dee83f309e6832a03e40701dd9502f27f5af61cf39337b3e30c4"
+      ],
+      "source_published_kst": "2026-10-25T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]",
+      "telegram_core_fact": "연방준비제도(Fed·연준)의 추가 금리 인상 가능성과 국제유가 급등이 달러 강세 압력을 높이는 가운데 반도체 수출 호조에 따른 국내 경기 개선과 원화 강세 흐름이 이어질지가 관건이다.",
+      "title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]"
+    },
     "link:033d8ea6cf59577ccde31b44": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
       "lanes": {
@@ -254638,6 +255016,34 @@
       "source_title": "제논, 증권신고서 제출…“상장 통해 글로벌 AX 기업 도약”",
       "telegram_core_fact": "제논이 금융위원회에 증권신고서를 제출하고 코스닥 상장을 위한 공모 절차에 착수했다. 올해 상반기 별도 기준 매출은 117억6000만원으로 전년 동기 27억3000만원 대비 4.3배 증가했다.",
       "title": "제논, 증권신고서 제출…“상장 통해 글로벌 AX 기업 도약”"
+    },
+    "link:10e2e9909c01e278940569d7": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
     },
     "link:10f98eb81662d293d90a28fe": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
@@ -286048,6 +286454,31 @@
       "source": "머니투데이",
       "title": "'영업익 5% 과징금' 산안법 통과..재계 \"중소·중견기업 존폐 영향\""
     },
+    "link:46db5b2c7c0212f4f06f34bd": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01354646645616528",
+      "source": "이데일리",
+      "source_body_digest": "824329970ca065333e83b1dc0bf0a905bd641ca1eabf19662b9d6eee40da452a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:480caab346c22dc6d3234640068369dbe22cd5d2cbcc993013e455aa0e5b3b4e",
+      "source_fact_keys": [
+        "source_fact:v1:05888cee3e69db192ee6be92ea2a3e0b567cf069e34f43f97af358ec4ac50f08",
+        "source_fact:v1:37c3b28cac1a112d51f4e1a74d118d8743bebcb42c1f5b978d0d0bc93fed8175",
+        "source_fact:v1:85b00ae02aaad6d640103d459502e87e85f63d845783b5ebabd47d776c35dd31",
+        "source_fact:v1:96b14ada7d99cc17c2de770bb41e247aedb61d66c9c07c0f32bf8eced14a3730",
+        "source_fact:v1:adf14e178c1f2198945a8b6e020cbcb0682b45e090f900cd559496bbc0929eff",
+        "source_fact:v1:f9cccb9d8d1154a2e26447e775f18f590ae64ad1a0160d538d78eccc0abaa35a"
+      ],
+      "source_published_kst": "2026-10-25T10:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]",
+      "telegram_core_fact": "내년 2월 토큰증권 제도 시행에 맞춰 그동안 축적한 가축투자계약증권 발행·청산 경험을 바탕으로 STO 시장에 본격 진출하겠다는 구상이다.",
+      "title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]"
+    },
     "link:46e05ef27da424fd0eb617c7": {
       "first_seen_kst": "2026-10-19T11:35:40+09:00",
       "lanes": {
@@ -290679,6 +291110,37 @@
       "source": "연합뉴스",
       "title": "앵커형 중견기업 키운다…10대 초격차 기술 확보에 1조원(종합) | 연합뉴스"
     },
+    "link:4f584b6de7821a0043b43a38": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
+    },
     "link:4f5c57b2050d7a8e362f4718": {
       "first_seen_kst": "2026-10-03T06:13:51+09:00",
       "lanes": {
@@ -291752,6 +292214,32 @@
       "source_title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유",
       "telegram_core_fact": "특등급 국산콩 두유는 출시 두 달여 만에 누적 판매량 120만개를 돌파하면서 수요 증가에 대응해 생산량을 기존 대비 5배로 확대하기도 했다.",
       "title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유"
+    },
+    "link:511a1a2172663ba338204406": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.etnews.com/20261023000244",
+      "source": "전자신문",
+      "source_body_digest": "5844446c87e2c6c25267279e9df72883631acdada3285a708546ec54cd5feccd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:976cbc8da46baee8c09ed56b8829c43e10182d94b427d9800f42ff5660b4f9a7",
+      "source_fact_keys": [
+        "source_fact:v1:32e1a23514609bfeb1bf46335efffb25d1ac39eb6d5342b28307e556e510f53b",
+        "source_fact:v1:90006908d8190432121e1273263af5e1d930d63ada55f8ccdbcde83653d0d12c",
+        "source_fact:v1:94f4e6817119ab575d1790241476c0ac4eb7727ddeb645a2c7470ae196b720e7",
+        "source_fact:v1:9a3a4b20a6d66af959739977272d3682f91294019ab2b5a3b12a3f94fbe6e1e6",
+        "source_fact:v1:c0845e11947aac81eb0f511c7712932b8ebcf1eea68dbc21fc455f1e7152be26",
+        "source_fact:v1:e33803498d649a1acf7db1e833f165752dfccc29728e2ebe936a201edb241a88",
+        "source_fact:v1:e9307bbe7f37ccc481bfed25bc77985bc5c56140e187a49bb300eb258ea92bc7"
+      ],
+      "source_published_kst": "2026-10-25T14:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장",
+      "telegram_core_fact": "산업 현장의 인공지능(AI) 활용이 확대되면서 로봇과 설비, 센서, AI 시스템을 안정적으로 연결하는 통신 인프라의 중요성이 커지는 만큼 관련 시장에 대한 축적된 경험을 바탕으로 이 시장을 공략한다는 복안이다.",
+      "title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장"
     },
     "link:511c0fd414a5715fb8ad1690": {
       "first_seen_kst": "2026-10-20T16:22:04+09:00",
@@ -311685,6 +312173,26 @@
       "telegram_core_fact": "이 시각 현재 개인과 기관은 각각 855억원, 209억원어치 주식을 순매수하고 있고 외국인은 1092억원어치 주식을 순매도 중이다.",
       "title": "바닥 찍었나?...8거래일만 고개 든 코스피, 외국인 매도는 여전"
     },
+    "link:72e2b8b97b2e21024fa2e03d": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025049600051",
+      "source": "연합뉴스",
+      "source_body_digest": "5cdfb2e5282fa4807bf38be776e2c54cff916ab1ec682061696c2eb337e0933b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4477b7790fd6905841b4c4a2b20657fb26a9895a5a3b76366cc937c949b56f90",
+      "source_fact_keys": [
+        "source_fact:v1:7844fba5b20d34fab9daf231739de5aff48482ba48e91f87699733ac93f3e511"
+      ],
+      "source_published_kst": "2026-10-25T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산 동해선 일광∼월내 구간 나무 쓰러져…열차 지연 | 연합뉴스",
+      "telegram_core_fact": "태풍 '참피'의 영향으로 비가 내리고 있는 부산 동해선 철도 구간에서 나무가 쓰러져 전력 공급에 장애가 발생하면서 열차 운행이 지연됐다. 한국철도공사(코레일)에 따르면 이날 오후 7시 21분께 동해선 일광역∼월내역 구간에서 선로변 나무가 쓰러지면서 전차선에 장애가 발생했다.",
+      "title": "부산 동해선 일광∼월내 구간 나무 쓰러져…열차 지연 | 연합뉴스"
+    },
     "link:72f49c74c69871f3a6f65662": {
       "first_seen_kst": "2026-10-22T23:34:47+09:00",
       "lanes": {
@@ -320721,6 +321229,37 @@
       "source_title": "삼전닉스 '낸드' 잭팟 터진다… 로봇용 D램도 기대감 솔솔",
       "telegram_core_fact": "시장조사업체 트렌드포스는 올해 4·4분기 모든 낸드 플래시 제품군의 계약 가격이 전 분기 대비 15~20% 상승할 것으로 예상했다.",
       "title": "삼전닉스 '낸드' 잭팟 터진다… 로봇용 D램도 기대감 솔솔"
+    },
+    "link:825eda4bd4c3de2cf976d3b2": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
     },
     "link:82623cd0d9da90b2af32976f": {
       "first_seen_kst": "2026-10-19T10:51:05+09:00",
@@ -385863,6 +386402,26 @@
       "source": "연합뉴스",
       "title": "\"中국유자본, '美수출통제 대상' 엔비디아 AI칩 구매 지원\" | 연합뉴스"
     },
+    "link:f4b94b96c7ecd51bd65af69f": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003840223",
+      "source": "뉴시스",
+      "source_body_digest": "95ccf50df3ca24d4595d297788d6041f71363ffc336998f04ac755c596b8c7a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3ae8cc8b5742913c56387bb1d92125674f9e49bfa628746fe32211adddc5fa4",
+      "source_fact_keys": [
+        "source_fact:v1:1077f53d400d5c3b9556bb9dad34774bc21f8531542296cdfa1855da60597ad4"
+      ],
+      "source_published_kst": "2026-10-25T20:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "독도사랑주유소, 100만ℓ 저유고 개소…유류 유통 혁신 나선다",
+      "telegram_core_fact": "여러 주유소의 수요를 모아 유류를 공동 구매하고, 구매 협상력과 공급 효율성을 높이는 방식으로 유통 구조 개선을 모색하고 있다.",
+      "title": "독도사랑주유소, 100만ℓ 저유고 개소…유류 유통 혁신 나선다"
+    },
     "link:f4bb3d24b4c4f19e5a447639": {
       "first_seen_kst": "2026-10-22T07:32:49+09:00",
       "lanes": {
@@ -394848,6 +395407,26 @@
       "link": "https://www.mt.co.kr/finance/2026/09/20/2026091715274866375",
       "source": "머니투데이",
       "title": "은행 방카슈랑스 '활기'…저축성보험 자금 유입에 생보사도 '반색'"
+    },
+    "original:056be3e8383d4389e1893897": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003840223",
+      "source": "뉴시스",
+      "source_body_digest": "95ccf50df3ca24d4595d297788d6041f71363ffc336998f04ac755c596b8c7a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3ae8cc8b5742913c56387bb1d92125674f9e49bfa628746fe32211adddc5fa4",
+      "source_fact_keys": [
+        "source_fact:v1:1077f53d400d5c3b9556bb9dad34774bc21f8531542296cdfa1855da60597ad4"
+      ],
+      "source_published_kst": "2026-10-25T20:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "독도사랑주유소, 100만ℓ 저유고 개소…유류 유통 혁신 나선다",
+      "telegram_core_fact": "여러 주유소의 수요를 모아 유류를 공동 구매하고, 구매 협상력과 공급 효율성을 높이는 방식으로 유통 구조 개선을 모색하고 있다.",
+      "title": "독도사랑주유소, 100만ℓ 저유고 개소…유류 유통 혁신 나선다"
     },
     "original:056cc41381d554b21b08ac5f": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -420116,6 +420695,26 @@
       "link": "https://www.yna.co.kr/view/AKR20260923077900003",
       "source": "연합뉴스",
       "title": "\"억대 성과급 놓칠라\"…삼전닉스 육아휴직률 첫 동반 하락 | 연합뉴스"
+    },
+    "original:32494dd912b0881fccc23353": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025049600051",
+      "source": "연합뉴스",
+      "source_body_digest": "5cdfb2e5282fa4807bf38be776e2c54cff916ab1ec682061696c2eb337e0933b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4477b7790fd6905841b4c4a2b20657fb26a9895a5a3b76366cc937c949b56f90",
+      "source_fact_keys": [
+        "source_fact:v1:7844fba5b20d34fab9daf231739de5aff48482ba48e91f87699733ac93f3e511"
+      ],
+      "source_published_kst": "2026-10-25T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산 동해선 일광∼월내 구간 나무 쓰러져…열차 지연 | 연합뉴스",
+      "telegram_core_fact": "태풍 '참피'의 영향으로 비가 내리고 있는 부산 동해선 철도 구간에서 나무가 쓰러져 전력 공급에 장애가 발생하면서 열차 운행이 지연됐다. 한국철도공사(코레일)에 따르면 이날 오후 7시 21분께 동해선 일광역∼월내역 구간에서 선로변 나무가 쓰러지면서 전차선에 장애가 발생했다.",
+      "title": "부산 동해선 일광∼월내 구간 나무 쓰러져…열차 지연 | 연합뉴스"
     },
     "original:324c6380946b892e4518fbfd": {
       "first_seen_kst": "2026-10-16T17:33:02+09:00",
@@ -468250,6 +468849,31 @@
       "telegram_core_fact": "올해는 SK실트론 지분 70.6%를 두산에 매각하는 계약을 체결하는 등 자산 포트폴리오 재편을 추진하고 있다. 고금리 환경에서 외부 차입 부담을 줄이는 동시에 인공지능(AI)·방산·이차전지·태양광 등 핵심 사업에 자금을 집중하기 위함으로 풀이된다.",
       "title": "차입 대신 지분으로 실탄 확보…기업들, AI·방산·배터리에 쏟는다"
     },
+    "original:8690711445892ee516fa8c3d": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01354646645616528",
+      "source": "이데일리",
+      "source_body_digest": "824329970ca065333e83b1dc0bf0a905bd641ca1eabf19662b9d6eee40da452a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:480caab346c22dc6d3234640068369dbe22cd5d2cbcc993013e455aa0e5b3b4e",
+      "source_fact_keys": [
+        "source_fact:v1:05888cee3e69db192ee6be92ea2a3e0b567cf069e34f43f97af358ec4ac50f08",
+        "source_fact:v1:37c3b28cac1a112d51f4e1a74d118d8743bebcb42c1f5b978d0d0bc93fed8175",
+        "source_fact:v1:85b00ae02aaad6d640103d459502e87e85f63d845783b5ebabd47d776c35dd31",
+        "source_fact:v1:96b14ada7d99cc17c2de770bb41e247aedb61d66c9c07c0f32bf8eced14a3730",
+        "source_fact:v1:adf14e178c1f2198945a8b6e020cbcb0682b45e090f900cd559496bbc0929eff",
+        "source_fact:v1:f9cccb9d8d1154a2e26447e775f18f590ae64ad1a0160d538d78eccc0abaa35a"
+      ],
+      "source_published_kst": "2026-10-25T10:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]",
+      "telegram_core_fact": "내년 2월 토큰증권 제도 시행에 맞춰 그동안 축적한 가축투자계약증권 발행·청산 경험을 바탕으로 STO 시장에 본격 진출하겠다는 구상이다.",
+      "title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]"
+    },
     "original:8690e74a79ab505ea2d804a7": {
       "first_seen_kst": "2026-10-21T22:34:18+09:00",
       "lanes": {
@@ -480331,6 +480955,37 @@
       "source_title": "하림, 김제·정읍 사료공장 20% 증설 완료…공급망 병목 해소",
       "telegram_core_fact": "하림은 김제·정읍 사료공장의 생산·저장 능력을 20% 확대하는 '사료 CAPA UP 20%' 프로젝트를 완료하고 지난 16일 준공식을 열었다고 19일 밝혔다.",
       "title": "하림, 김제·정읍 사료공장 20% 증설 완료…공급망 병목 해소"
+    },
+    "original:9b794ee9b6945e362508a21c": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
     },
     "original:9b7af5e6c712c80bdb6c7c0d": {
       "first_seen_kst": "2026-10-21T01:36:25+09:00",
@@ -494024,6 +494679,32 @@
       "source": "디지털타임스",
       "title": "최태원, 9440억 SK지분 매각 추진…‘노소영 재산분할’ 소요 자금 마련"
     },
+    "original:b32a187c74e9e5639cfe2b33": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.etnews.com/20261023000244",
+      "source": "전자신문",
+      "source_body_digest": "5844446c87e2c6c25267279e9df72883631acdada3285a708546ec54cd5feccd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:976cbc8da46baee8c09ed56b8829c43e10182d94b427d9800f42ff5660b4f9a7",
+      "source_fact_keys": [
+        "source_fact:v1:32e1a23514609bfeb1bf46335efffb25d1ac39eb6d5342b28307e556e510f53b",
+        "source_fact:v1:90006908d8190432121e1273263af5e1d930d63ada55f8ccdbcde83653d0d12c",
+        "source_fact:v1:94f4e6817119ab575d1790241476c0ac4eb7727ddeb645a2c7470ae196b720e7",
+        "source_fact:v1:9a3a4b20a6d66af959739977272d3682f91294019ab2b5a3b12a3f94fbe6e1e6",
+        "source_fact:v1:c0845e11947aac81eb0f511c7712932b8ebcf1eea68dbc21fc455f1e7152be26",
+        "source_fact:v1:e33803498d649a1acf7db1e833f165752dfccc29728e2ebe936a201edb241a88",
+        "source_fact:v1:e9307bbe7f37ccc481bfed25bc77985bc5c56140e187a49bb300eb258ea92bc7"
+      ],
+      "source_published_kst": "2026-10-25T14:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장",
+      "telegram_core_fact": "산업 현장의 인공지능(AI) 활용이 확대되면서 로봇과 설비, 센서, AI 시스템을 안정적으로 연결하는 통신 인프라의 중요성이 커지는 만큼 관련 시장에 대한 축적된 경험을 바탕으로 이 시장을 공략한다는 복안이다.",
+      "title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장"
+    },
     "original:b32d64675b2007477d8f0404": {
       "first_seen_kst": "2026-10-12T15:02:00+09:00",
       "lanes": {
@@ -494110,6 +494791,31 @@
       "source_title": "경찰, '딸 의혹 무마' 한동훈 고발건 서울청 이관…검토 착수",
       "telegram_core_fact": "서울청 관계자는 \"내용을 면밀히 검토한 후 사건을 배당할 예정\"이라고 밝혔다.",
       "title": "경찰, '딸 의혹 무마' 한동훈 고발건 서울청 이관…검토 착수"
+    },
+    "original:b33322d58ccc537f11b8a316": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01111926645616528",
+      "source": "이데일리",
+      "source_body_digest": "9b48224208255d431691eeee143938120abc86415883e19a3a4c3425cc8d42ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79acd4cd9a3a301fdaf93c9af6c3deeb4f250886f9dafb1216ad0d33c7037458",
+      "source_fact_keys": [
+        "source_fact:v1:231f75b4417d1afa294001a7ad8699389bb26e6ec185fd252d618486b5c40025",
+        "source_fact:v1:522394c99e8c149e4839d6e673348a71b414b69e25e83bda499cafd1a61e69eb",
+        "source_fact:v1:56c3b0eef8263e3c4dd0b30eb9c4f93ba717d8780c6c71c218932662af8ce937",
+        "source_fact:v1:7fa3f5b67a2f3373901372690cb50afd76560f8c83091ec80680f77d327058ce",
+        "source_fact:v1:8a76813df04b34132c23abddc7ad91f791d9bb5d90994fb7da52959ec5159468",
+        "source_fact:v1:a77c094f8098dee83f309e6832a03e40701dd9502f27f5af61cf39337b3e30c4"
+      ],
+      "source_published_kst": "2026-10-25T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]",
+      "telegram_core_fact": "연방준비제도(Fed·연준)의 추가 금리 인상 가능성과 국제유가 급등이 달러 강세 압력을 높이는 가운데 반도체 수출 호조에 따른 국내 경기 개선과 원화 강세 흐름이 이어질지가 관건이다.",
+      "title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]"
     },
     "original:b3460327ae81747a3e5a67cb": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
@@ -519389,6 +520095,34 @@
       "source_title": "최지영 IMF 이사 “韓, 선진국 중 유일하게 재정여력 확대…AI 붐 당장 안 꺾일 것”",
       "telegram_core_fact": "최 이사는 “AI 붐이 내년이나 내후년에 당장 꺾일 것이냐에 대해서는 그렇게 되지 않을 것이라는 시각이 강하다”며 “기업들이 데이터센터를 경쟁적으로 짓고 있는데 건설에 10년 정도 걸릴 수도 있다고 한다”고 말했다.",
       "title": "최지영 IMF 이사 “韓, 선진국 중 유일하게 재정여력 확대…AI 붐 당장 안 꺾일 것”"
+    },
+    "original:e1366ee56e3bf4c2387eb5a1": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
     },
     "original:e13e192fe29460a31f0f46bc": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
@@ -553462,6 +554196,31 @@
       "telegram_core_fact": "임광현 국세청장은 13일 오후 세종시 국세청 본청에서 열린 국회 재정경제기획위원회(재경위) 국정감사에서 임이자 국민의힘 의원(정책위의장)이 가상자산 과세 고시 발표 등 준비 상황에 대해 질의하자, “올 11월 그때 쯤에 할 수 있도록 준비는 해놓고 있다”고 답했다.",
       "title": "[속보]국세청장 “가상자산 과세, 11월 고시 발표 준비”"
     },
+    "source_fact:079e722e33127ca156a84ab2": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01354646645616528",
+      "source": "이데일리",
+      "source_body_digest": "824329970ca065333e83b1dc0bf0a905bd641ca1eabf19662b9d6eee40da452a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:480caab346c22dc6d3234640068369dbe22cd5d2cbcc993013e455aa0e5b3b4e",
+      "source_fact_keys": [
+        "source_fact:v1:05888cee3e69db192ee6be92ea2a3e0b567cf069e34f43f97af358ec4ac50f08",
+        "source_fact:v1:37c3b28cac1a112d51f4e1a74d118d8743bebcb42c1f5b978d0d0bc93fed8175",
+        "source_fact:v1:85b00ae02aaad6d640103d459502e87e85f63d845783b5ebabd47d776c35dd31",
+        "source_fact:v1:96b14ada7d99cc17c2de770bb41e247aedb61d66c9c07c0f32bf8eced14a3730",
+        "source_fact:v1:adf14e178c1f2198945a8b6e020cbcb0682b45e090f900cd559496bbc0929eff",
+        "source_fact:v1:f9cccb9d8d1154a2e26447e775f18f590ae64ad1a0160d538d78eccc0abaa35a"
+      ],
+      "source_published_kst": "2026-10-25T10:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]",
+      "telegram_core_fact": "내년 2월 토큰증권 제도 시행에 맞춰 그동안 축적한 가축투자계약증권 발행·청산 경험을 바탕으로 STO 시장에 본격 진출하겠다는 구상이다.",
+      "title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]"
+    },
     "source_fact:07a00521090e5bb5e8b83a19": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
       "lanes": {
@@ -568061,6 +568820,37 @@
       "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
       "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
       "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
+    "source_fact:0dd8783eaad3a6bc689f8421": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
     },
     "source_fact:0dda8a51cdaab7b146bfb0f2": {
       "first_seen_kst": "2026-10-14T23:19:07+09:00",
@@ -588543,6 +589333,37 @@
       "telegram_core_fact": "웨이 회장은 \"TSMC가 과거에는 공정 생산능력이 목표치에 도달하면 생산능력을 확대하지 않는 것이 원칙이었다\"며 \"하지만 향후 수년간 3나노 수요가 상당히 강할 것이라는 자체 평가에 따라 고객사 생산능력에 대한 지원을 확대하기 위해 타이난에 3나노 공장을 추가로 건설해 2028년부터 양산에 나설 계획\"이라고 설명했다.",
       "title": "삼성전자 어쩌나…TSMC \"3나노 공장 추가 건설, 2028년 양산\""
     },
+    "source_fact:16a37cd05089330f74016064": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
+    },
     "source_fact:16a48cc002bd6ac48ee9797d": {
       "first_seen_kst": "2026-10-15T08:21:08+09:00",
       "lanes": {
@@ -598121,6 +598942,34 @@
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약"
     },
+    "source_fact:1ab0b69aba5e8e348a313cd2": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
+    },
     "source_fact:1ab451cd2a3b9d3a0a21152c": {
       "first_seen_kst": "2026-10-10T22:01:04+09:00",
       "lanes": {
@@ -601310,6 +602159,31 @@
       ],
       "source_published_kst": "2026-10-07T06:04+09:00",
       "title": "[속보] 국제유가, 강보합⋯WTI 0.01% ↑"
+    },
+    "source_fact:1bee2374a51dcb567e44fb4e": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01111926645616528",
+      "source": "이데일리",
+      "source_body_digest": "9b48224208255d431691eeee143938120abc86415883e19a3a4c3425cc8d42ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79acd4cd9a3a301fdaf93c9af6c3deeb4f250886f9dafb1216ad0d33c7037458",
+      "source_fact_keys": [
+        "source_fact:v1:231f75b4417d1afa294001a7ad8699389bb26e6ec185fd252d618486b5c40025",
+        "source_fact:v1:522394c99e8c149e4839d6e673348a71b414b69e25e83bda499cafd1a61e69eb",
+        "source_fact:v1:56c3b0eef8263e3c4dd0b30eb9c4f93ba717d8780c6c71c218932662af8ce937",
+        "source_fact:v1:7fa3f5b67a2f3373901372690cb50afd76560f8c83091ec80680f77d327058ce",
+        "source_fact:v1:8a76813df04b34132c23abddc7ad91f791d9bb5d90994fb7da52959ec5159468",
+        "source_fact:v1:a77c094f8098dee83f309e6832a03e40701dd9502f27f5af61cf39337b3e30c4"
+      ],
+      "source_published_kst": "2026-10-25T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]",
+      "telegram_core_fact": "연방준비제도(Fed·연준)의 추가 금리 인상 가능성과 국제유가 급등이 달러 강세 압력을 높이는 가운데 반도체 수출 호조에 따른 국내 경기 개선과 원화 강세 흐름이 이어질지가 관건이다.",
+      "title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]"
     },
     "source_fact:1bef504c103f6619f5ab42f4": {
       "first_seen_kst": "2026-10-12T16:50:12+09:00",
@@ -604599,6 +605473,34 @@
       "source_title": "대한항공, 반도체 화물수요 덕에 3Q 매출 '분기최대'…영업익은 고유가 불구 12%↑",
       "telegram_core_fact": "대한항공은 별도재무제표 기준 올해 3분기 영업이익이 4212억원으로 지난해 동기 3763억원보다 449억원, 12% 증가한 것으로 잠정 집계됐다고 15일 밝혔다.",
       "title": "대한항공, 반도체 화물수요 덕에 3Q 매출 '분기최대'…영업익은 고유가 불구 12%↑"
+    },
+    "source_fact:1d276f7776f9e10438509664": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
     },
     "source_fact:1d28c41a50f838ba83d42486": {
       "first_seen_kst": "2026-10-23T05:32:14+09:00",
@@ -619281,6 +620183,32 @@
       "source_title": "신한투자증권 \"SK네트웍스, 3분기 일회성 비용에 실적 둔화…투자 성과 주목\"",
       "telegram_core_fact": "한승훈 신한투자증권 연구원은 SK네트웍스의 3분기 연결 영업이익을 전년비 45.3% 감소한 122억원으로 추정했다.",
       "title": "신한투자증권 \"SK네트웍스, 3분기 일회성 비용에 실적 둔화…투자 성과 주목\""
+    },
+    "source_fact:234373340fcdf44f1f268fa0": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.etnews.com/20261023000244",
+      "source": "전자신문",
+      "source_body_digest": "5844446c87e2c6c25267279e9df72883631acdada3285a708546ec54cd5feccd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:976cbc8da46baee8c09ed56b8829c43e10182d94b427d9800f42ff5660b4f9a7",
+      "source_fact_keys": [
+        "source_fact:v1:32e1a23514609bfeb1bf46335efffb25d1ac39eb6d5342b28307e556e510f53b",
+        "source_fact:v1:90006908d8190432121e1273263af5e1d930d63ada55f8ccdbcde83653d0d12c",
+        "source_fact:v1:94f4e6817119ab575d1790241476c0ac4eb7727ddeb645a2c7470ae196b720e7",
+        "source_fact:v1:9a3a4b20a6d66af959739977272d3682f91294019ab2b5a3b12a3f94fbe6e1e6",
+        "source_fact:v1:c0845e11947aac81eb0f511c7712932b8ebcf1eea68dbc21fc455f1e7152be26",
+        "source_fact:v1:e33803498d649a1acf7db1e833f165752dfccc29728e2ebe936a201edb241a88",
+        "source_fact:v1:e9307bbe7f37ccc481bfed25bc77985bc5c56140e187a49bb300eb258ea92bc7"
+      ],
+      "source_published_kst": "2026-10-25T14:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장",
+      "telegram_core_fact": "산업 현장의 인공지능(AI) 활용이 확대되면서 로봇과 설비, 센서, AI 시스템을 안정적으로 연결하는 통신 인프라의 중요성이 커지는 만큼 관련 시장에 대한 축적된 경험을 바탕으로 이 시장을 공략한다는 복안이다.",
+      "title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장"
     },
     "source_fact:2343fb11843ad47cf4b5bd30": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
@@ -641444,6 +642372,37 @@
       "telegram_core_fact": "이 대통령은 이 자리에서 \"2022년부터 3년간 주택 인허가가 감소함에 따라 공급 공백이 발생했다\"며 \"수용과 협의를 동시에 진행하는 등 지금이 비상시기인 만큼 공급 기간을 당겨야 한다\"고 강조했다.",
       "title": "李대통령, 3기 신도시 계양지구 방문…\"비상시기, 공급 당겨야\" | 연합뉴스"
     },
+    "source_fact:2be825d281cad52b5338c6e2": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
+    },
     "source_fact:2beb08ebb6cc0adb312346f9": {
       "first_seen_kst": "2026-10-23T14:47:30+09:00",
       "lanes": {
@@ -645465,6 +646424,31 @@
       "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
       "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
+    },
+    "source_fact:2d9609be6a5bc97d4018eba3": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01354646645616528",
+      "source": "이데일리",
+      "source_body_digest": "824329970ca065333e83b1dc0bf0a905bd641ca1eabf19662b9d6eee40da452a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:480caab346c22dc6d3234640068369dbe22cd5d2cbcc993013e455aa0e5b3b4e",
+      "source_fact_keys": [
+        "source_fact:v1:05888cee3e69db192ee6be92ea2a3e0b567cf069e34f43f97af358ec4ac50f08",
+        "source_fact:v1:37c3b28cac1a112d51f4e1a74d118d8743bebcb42c1f5b978d0d0bc93fed8175",
+        "source_fact:v1:85b00ae02aaad6d640103d459502e87e85f63d845783b5ebabd47d776c35dd31",
+        "source_fact:v1:96b14ada7d99cc17c2de770bb41e247aedb61d66c9c07c0f32bf8eced14a3730",
+        "source_fact:v1:adf14e178c1f2198945a8b6e020cbcb0682b45e090f900cd559496bbc0929eff",
+        "source_fact:v1:f9cccb9d8d1154a2e26447e775f18f590ae64ad1a0160d538d78eccc0abaa35a"
+      ],
+      "source_published_kst": "2026-10-25T10:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]",
+      "telegram_core_fact": "내년 2월 토큰증권 제도 시행에 맞춰 그동안 축적한 가축투자계약증권 발행·청산 경험을 바탕으로 STO 시장에 본격 진출하겠다는 구상이다.",
+      "title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]"
     },
     "source_fact:2d99ca48fe8676efa518f4d0": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
@@ -660286,6 +661270,31 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 원유·천연가스 주요 수입국에 대한 고율관세 부과를 전격 취소한 것을 놓고 미 공화당과 행정부가 내분 양상을 드러내고 있다.",
       "title": "트럼프 '러 에너지 유화책'에 공화 반발기류…美여권 내분 양상(종합) | 연합뉴스"
     },
+    "source_fact:33e1167b9d2547d16712127f": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01111926645616528",
+      "source": "이데일리",
+      "source_body_digest": "9b48224208255d431691eeee143938120abc86415883e19a3a4c3425cc8d42ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79acd4cd9a3a301fdaf93c9af6c3deeb4f250886f9dafb1216ad0d33c7037458",
+      "source_fact_keys": [
+        "source_fact:v1:231f75b4417d1afa294001a7ad8699389bb26e6ec185fd252d618486b5c40025",
+        "source_fact:v1:522394c99e8c149e4839d6e673348a71b414b69e25e83bda499cafd1a61e69eb",
+        "source_fact:v1:56c3b0eef8263e3c4dd0b30eb9c4f93ba717d8780c6c71c218932662af8ce937",
+        "source_fact:v1:7fa3f5b67a2f3373901372690cb50afd76560f8c83091ec80680f77d327058ce",
+        "source_fact:v1:8a76813df04b34132c23abddc7ad91f791d9bb5d90994fb7da52959ec5159468",
+        "source_fact:v1:a77c094f8098dee83f309e6832a03e40701dd9502f27f5af61cf39337b3e30c4"
+      ],
+      "source_published_kst": "2026-10-25T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]",
+      "telegram_core_fact": "연방준비제도(Fed·연준)의 추가 금리 인상 가능성과 국제유가 급등이 달러 강세 압력을 높이는 가운데 반도체 수출 호조에 따른 국내 경기 개선과 원화 강세 흐름이 이어질지가 관건이다.",
+      "title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]"
+    },
     "source_fact:33e575caa72cbc27c0a28d54": {
       "first_seen_kst": "2026-10-21T04:09:57+09:00",
       "lanes": {
@@ -669565,6 +670574,31 @@
       "telegram_core_fact": "협약에 따라 연천군과 한국전력공사는 급증하는 전력수요에 선제적으로 대응하고 안정적인 전력공급 기반을 마련하기 위해 상호 협력체계를 구축해 개발사업 추진 시 전력공급설비 구축 방안을 사전에 협의하고 변전소 부지 확보와 인허가, 주민 수용성 제고를 위해 공동 노력하기로 뜻을 모았다.",
       "title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'"
     },
+    "source_fact:37ca8b24241df7c258c1d133": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01354646645616528",
+      "source": "이데일리",
+      "source_body_digest": "824329970ca065333e83b1dc0bf0a905bd641ca1eabf19662b9d6eee40da452a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:480caab346c22dc6d3234640068369dbe22cd5d2cbcc993013e455aa0e5b3b4e",
+      "source_fact_keys": [
+        "source_fact:v1:05888cee3e69db192ee6be92ea2a3e0b567cf069e34f43f97af358ec4ac50f08",
+        "source_fact:v1:37c3b28cac1a112d51f4e1a74d118d8743bebcb42c1f5b978d0d0bc93fed8175",
+        "source_fact:v1:85b00ae02aaad6d640103d459502e87e85f63d845783b5ebabd47d776c35dd31",
+        "source_fact:v1:96b14ada7d99cc17c2de770bb41e247aedb61d66c9c07c0f32bf8eced14a3730",
+        "source_fact:v1:adf14e178c1f2198945a8b6e020cbcb0682b45e090f900cd559496bbc0929eff",
+        "source_fact:v1:f9cccb9d8d1154a2e26447e775f18f590ae64ad1a0160d538d78eccc0abaa35a"
+      ],
+      "source_published_kst": "2026-10-25T10:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]",
+      "telegram_core_fact": "내년 2월 토큰증권 제도 시행에 맞춰 그동안 축적한 가축투자계약증권 발행·청산 경험을 바탕으로 STO 시장에 본격 진출하겠다는 구상이다.",
+      "title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]"
+    },
     "source_fact:37cad6c366a51644fe9b2a06": {
       "first_seen_kst": "2026-10-10T03:26:28+09:00",
       "lanes": {
@@ -672996,6 +674030,37 @@
       "source_title": "TTM 테크놀러지스, MKS 광학사업 6억5000만 달러 인수",
       "telegram_core_fact": "TTM 테크놀러지스(TTMI)가 MKS(MKSI)의 적외선 광학 사업부 오피르 옵틱스(Ophir Optics)를 약 6억5000만 달러 전액 현금 거래로 인수하는 확정 계약을 체결했다고 10월 19일 발표했다.",
       "title": "TTM 테크놀러지스, MKS 광학사업 6억5000만 달러 인수"
+    },
+    "source_fact:395464af18518b4055c999c3": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
     },
     "source_fact:395c396094958e25cb5a770d": {
       "first_seen_kst": "2026-10-22T07:32:49+09:00",
@@ -684200,6 +685265,34 @@
       "telegram_core_fact": "에스엠국일은 전기차와 내연기관 차량에 적용되는 전선 피복지를 중심으로 모빌리티용 고기능성 특수지 사업을 확대한다고 8일 밝혔다. 에스엠국일은 기존 고객사 공급을 확대하는 동시에 신규 고객사를 발굴해 자동차용 전선 피복지 매출을 늘릴 계획이다.",
       "title": "에스엠국일, 자동차용 전선 피복지 사업 확대…전기차·내연기관 적용처 넓힌다"
     },
+    "source_fact:3e1aa392111d852092f682cf": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
+    },
     "source_fact:3e1d887b72a0bd0625900fae": {
       "first_seen_kst": "2026-10-24T12:47:38+09:00",
       "lanes": {
@@ -693711,6 +694804,34 @@
       "telegram_core_fact": "김 사장은 한국이 웨스팅하우스 지분 5~10%를 인수하기로 한 데 대해서는 “지분을 확보하면 웨스팅하우스의 관계가 좋아지고 미국 정부와도 원만해져 앞으로 미국과 제3국 시장에 진출하는 데 도움이 될 것”이라고 내다봤다.",
       "title": "한전 사장 “원전 1기당 웨스팅하우스 로열티 2.7조원, 다 지급 아니다”"
     },
+    "source_fact:421b382dff9238906c6a064e": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
+    },
     "source_fact:421bea5e5b4523258576419a": {
       "first_seen_kst": "2026-10-10T16:15:55+09:00",
       "lanes": {
@@ -697917,6 +699038,37 @@
       "source_title": "사우디- 후티 공습격화,.. 리야드공항 폭격에 12명 죽고 309명 부상(종합)",
       "telegram_core_fact": "10일의 공격이 끝난 뒤 후티군은 성명을 발표, 앞으로도 사우디 아라비아에 대한 상응하는 보복조치를 할 준비가 되어 있다면서 군사력 대결 외에 민간 부문에서도 공항, 항만, 기타 공공 시설등에 대한 공격을 주저하지 않겠다고 밝혔다.",
       "title": "사우디- 후티 공습격화,.. 리야드공항 폭격에 12명 죽고 309명 부상(종합)"
+    },
+    "source_fact:43b60c6b3f496e57f5cae84f": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
     },
     "source_fact:43b6f7822d5d8610db48a298": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -712263,6 +713415,37 @@
       "source_title": "[단독] AI 서버 배터리 ‘불티’…삼성SDI, 말레이서 원통형 LFP 내년 6월 양산",
       "telegram_core_fact": "업계에 따르면 삼성SDI는 최근 이러한 내용의 신규 투자를 결정하고 말레이시아 제2공장에 AI 서버용 배터리백업유닛(BBU)에 들어갈 LFP 양극 극판 생산설비 구축에 나섰다.",
       "title": "[단독] AI 서버 배터리 ‘불티’…삼성SDI, 말레이서 원통형 LFP 내년 6월 양산"
+    },
+    "source_fact:49832a7c4c4d60bc167c8984": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
     },
     "source_fact:49853a5ec53c65ee041f877b": {
       "first_seen_kst": "2026-10-14T21:14:31+09:00",
@@ -757436,6 +758619,32 @@
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한 주에 10% 뛴 광통신 ETF…\"AI 데이터센터 전력난이 복병\""
     },
+    "source_fact:5bd47a45bf00d8018ef06bbb": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.etnews.com/20261023000244",
+      "source": "전자신문",
+      "source_body_digest": "5844446c87e2c6c25267279e9df72883631acdada3285a708546ec54cd5feccd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:976cbc8da46baee8c09ed56b8829c43e10182d94b427d9800f42ff5660b4f9a7",
+      "source_fact_keys": [
+        "source_fact:v1:32e1a23514609bfeb1bf46335efffb25d1ac39eb6d5342b28307e556e510f53b",
+        "source_fact:v1:90006908d8190432121e1273263af5e1d930d63ada55f8ccdbcde83653d0d12c",
+        "source_fact:v1:94f4e6817119ab575d1790241476c0ac4eb7727ddeb645a2c7470ae196b720e7",
+        "source_fact:v1:9a3a4b20a6d66af959739977272d3682f91294019ab2b5a3b12a3f94fbe6e1e6",
+        "source_fact:v1:c0845e11947aac81eb0f511c7712932b8ebcf1eea68dbc21fc455f1e7152be26",
+        "source_fact:v1:e33803498d649a1acf7db1e833f165752dfccc29728e2ebe936a201edb241a88",
+        "source_fact:v1:e9307bbe7f37ccc481bfed25bc77985bc5c56140e187a49bb300eb258ea92bc7"
+      ],
+      "source_published_kst": "2026-10-25T14:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장",
+      "telegram_core_fact": "산업 현장의 인공지능(AI) 활용이 확대되면서 로봇과 설비, 센서, AI 시스템을 안정적으로 연결하는 통신 인프라의 중요성이 커지는 만큼 관련 시장에 대한 축적된 경험을 바탕으로 이 시장을 공략한다는 복안이다.",
+      "title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장"
+    },
     "source_fact:5bd4b0fac9d039678ddb2d63": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -762542,6 +763751,34 @@
       "source_published_kst": "2026-10-06T12:52+09:00",
       "title": "술·약물 복용 후 수상레저기구 운전 '철퇴'…주취 조종 첫 적발, 최대 5년 징역"
     },
+    "source_fact:5d9cf2e7295a66cb93d730c5": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
+    },
     "source_fact:5d9d4dfa7dee7ac944501ed8": {
       "first_seen_kst": "2026-10-14T19:15:46+09:00",
       "lanes": {
@@ -762603,6 +763840,31 @@
       "source_title": "엔비디아 젠슨 황, 메모리 공급 과잉 우려에 \"많으면 좋다\"",
       "telegram_core_fact": "[파이낸셜뉴스] 미국의 인공지능(AI) 반도체 기업 엔비디아의 젠슨 황 최고경영자(CEO)가 AI 가속기 등에 쓰이는 메모리 반도체를 두고 과잉 공급을 걱정할 필요가 없다고 말했다.",
       "title": "엔비디아 젠슨 황, 메모리 공급 과잉 우려에 \"많으면 좋다\""
+    },
+    "source_fact:5d9f6fed6ef2d44ca25ef423": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01354646645616528",
+      "source": "이데일리",
+      "source_body_digest": "824329970ca065333e83b1dc0bf0a905bd641ca1eabf19662b9d6eee40da452a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:480caab346c22dc6d3234640068369dbe22cd5d2cbcc993013e455aa0e5b3b4e",
+      "source_fact_keys": [
+        "source_fact:v1:05888cee3e69db192ee6be92ea2a3e0b567cf069e34f43f97af358ec4ac50f08",
+        "source_fact:v1:37c3b28cac1a112d51f4e1a74d118d8743bebcb42c1f5b978d0d0bc93fed8175",
+        "source_fact:v1:85b00ae02aaad6d640103d459502e87e85f63d845783b5ebabd47d776c35dd31",
+        "source_fact:v1:96b14ada7d99cc17c2de770bb41e247aedb61d66c9c07c0f32bf8eced14a3730",
+        "source_fact:v1:adf14e178c1f2198945a8b6e020cbcb0682b45e090f900cd559496bbc0929eff",
+        "source_fact:v1:f9cccb9d8d1154a2e26447e775f18f590ae64ad1a0160d538d78eccc0abaa35a"
+      ],
+      "source_published_kst": "2026-10-25T10:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]",
+      "telegram_core_fact": "내년 2월 토큰증권 제도 시행에 맞춰 그동안 축적한 가축투자계약증권 발행·청산 경험을 바탕으로 STO 시장에 본격 진출하겠다는 구상이다.",
+      "title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]"
     },
     "source_fact:5da1ef98d1f29ee9a43d539a": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -770215,6 +771477,34 @@
       "source_title": "젠슨황 \"2029년 메모리 공급과잉 없다…메모리는 다다익선\" | 연합뉴스",
       "telegram_core_fact": "젠슨 황 엔비디아 최고경영자(CEO)가 일각에서 제기된 2029년 메모리 공급과잉 우려를 일축했다.",
       "title": "젠슨황 \"2029년 메모리 공급과잉 없다…메모리는 다다익선\" | 연합뉴스"
+    },
+    "source_fact:615201f9c5b1f1ff17647399": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
     },
     "source_fact:615da93c5679b0dde9b59ad8": {
       "first_seen_kst": "2026-10-23T23:29:22+09:00",
@@ -817865,6 +819155,34 @@
       "telegram_core_fact": "엘앤에프는 JHC가 생산한 블랙매스를 후처리 전문기업과 연계해 핵심광물을 회수하고 이를 다시 양극재 원료로 활용하는 순환형 밸류체인을 구축하고 있다.",
       "title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수"
     },
+    "source_fact:75841eb302e0215127bdbc25": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
+    },
     "source_fact:7586742eaf7b6f48c80d4b04": {
       "first_seen_kst": "2026-10-22T21:42:35+09:00",
       "lanes": {
@@ -822960,6 +824278,31 @@
       "source_title": "[ET시선]삼성바이오 노조, 글로벌 CDMO '골든타임' 무게 알아야",
       "telegram_core_fact": "삼성바이오로직스 노조는 회사가 협상에 진전을 보이지 않았다며 2차 총파업을 예고했다.",
       "title": "[ET시선]삼성바이오 노조, 글로벌 CDMO '골든타임' 무게 알아야"
+    },
+    "source_fact:77a1567d33b57ca220ba4d09": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01111926645616528",
+      "source": "이데일리",
+      "source_body_digest": "9b48224208255d431691eeee143938120abc86415883e19a3a4c3425cc8d42ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79acd4cd9a3a301fdaf93c9af6c3deeb4f250886f9dafb1216ad0d33c7037458",
+      "source_fact_keys": [
+        "source_fact:v1:231f75b4417d1afa294001a7ad8699389bb26e6ec185fd252d618486b5c40025",
+        "source_fact:v1:522394c99e8c149e4839d6e673348a71b414b69e25e83bda499cafd1a61e69eb",
+        "source_fact:v1:56c3b0eef8263e3c4dd0b30eb9c4f93ba717d8780c6c71c218932662af8ce937",
+        "source_fact:v1:7fa3f5b67a2f3373901372690cb50afd76560f8c83091ec80680f77d327058ce",
+        "source_fact:v1:8a76813df04b34132c23abddc7ad91f791d9bb5d90994fb7da52959ec5159468",
+        "source_fact:v1:a77c094f8098dee83f309e6832a03e40701dd9502f27f5af61cf39337b3e30c4"
+      ],
+      "source_published_kst": "2026-10-25T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]",
+      "telegram_core_fact": "연방준비제도(Fed·연준)의 추가 금리 인상 가능성과 국제유가 급등이 달러 강세 압력을 높이는 가운데 반도체 수출 호조에 따른 국내 경기 개선과 원화 강세 흐름이 이어질지가 관건이다.",
+      "title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]"
     },
     "source_fact:77a54d3fee18fe7832688ade": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
@@ -833256,6 +834599,37 @@
       "telegram_core_fact": "트럼프 대통령은 자신이 시행한 관세 정책 성과라고 과시했다.",
       "title": "트럼프, 아우디 美조지아 5.6조 공장 발표…\"관세 덕분\""
     },
+    "source_fact:7bdaefd47dbca7d8283cc3ce": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
+    },
     "source_fact:7be082036b951e9eee45a9ea": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -842065,6 +843439,34 @@
       "source_title": "전남광주시의회 '동복댐·법정전입금·군공항' 점검…시장과 신경전(종합)",
       "telegram_core_fact": "전남광주통합특별시의원들이 시정질문을 통해 반도체 용수 공급에 따른 화순 동복댐 증고와 교육청 법정전입금 미편성, 군공항 이전에 따른 주민 수용성 확대, 도시철도 2호선 개통 연장 등을 집중 점검했다.",
       "title": "전남광주시의회 '동복댐·법정전입금·군공항' 점검…시장과 신경전(종합)"
+    },
+    "source_fact:7fcb9743b375966ce6b32aae": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
     },
     "source_fact:7fcc2af673882184757a8807": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
@@ -856108,6 +857510,37 @@
       "source_title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속",
       "telegram_core_fact": "해외 판매가 전체 인도량의 23%에 육박함에 따라 립모터의 국제적 상승세는 악세라의 ADAS 칩 적용을 중국 밖으로 확대하는 데 든든한 토대가 된다. 양산 개시 이후 악세라의 ADAS 칩은 월 5만 대가 넘는 차량에 탑재되는 수준으로 빠르게 확대됐다.",
       "title": "악세라의 ADAS 칩, 립모터와 함께 유럽 상륙하며 글로벌 확장 가속"
+    },
+    "source_fact:85cdd31474ef1373dc6a42d3": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
     },
     "source_fact:85cf5e66dc1e78c0eb3efc11": {
       "first_seen_kst": "2026-10-14T19:15:46+09:00",
@@ -920935,6 +922368,26 @@
       "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 총수익(순이자이익+비이자수익) 65억6200만 달러, 순이익 20억9700만 달러, 희석 주당순이익(EPS) 4.97달러를 기록했다고 10월 15일 발표했다.",
       "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
     },
+    "source_fact:a1331ddfa51afc4722d91e61": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025049600051",
+      "source": "연합뉴스",
+      "source_body_digest": "5cdfb2e5282fa4807bf38be776e2c54cff916ab1ec682061696c2eb337e0933b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4477b7790fd6905841b4c4a2b20657fb26a9895a5a3b76366cc937c949b56f90",
+      "source_fact_keys": [
+        "source_fact:v1:7844fba5b20d34fab9daf231739de5aff48482ba48e91f87699733ac93f3e511"
+      ],
+      "source_published_kst": "2026-10-25T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산 동해선 일광∼월내 구간 나무 쓰러져…열차 지연 | 연합뉴스",
+      "telegram_core_fact": "태풍 '참피'의 영향으로 비가 내리고 있는 부산 동해선 철도 구간에서 나무가 쓰러져 전력 공급에 장애가 발생하면서 열차 운행이 지연됐다. 한국철도공사(코레일)에 따르면 이날 오후 7시 21분께 동해선 일광역∼월내역 구간에서 선로변 나무가 쓰러지면서 전차선에 장애가 발생했다.",
+      "title": "부산 동해선 일광∼월내 구간 나무 쓰러져…열차 지연 | 연합뉴스"
+    },
     "source_fact:a139dc657ce8c09e452bb7fc": {
       "first_seen_kst": "2026-10-22T20:40:52+09:00",
       "lanes": {
@@ -925499,6 +926952,31 @@
       "source_title": "국채금리 24년 만에 최고…3대 지수 일제히 하락 [뉴욕증시 브리핑]",
       "telegram_core_fact": "30년물 금리도 5.73%대까지 오르며 24년 만에 가장 높은 수준을 기록했다.",
       "title": "국채금리 24년 만에 최고…3대 지수 일제히 하락 [뉴욕증시 브리핑]"
+    },
+    "source_fact:a30f0991282d6b8537943c17": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01111926645616528",
+      "source": "이데일리",
+      "source_body_digest": "9b48224208255d431691eeee143938120abc86415883e19a3a4c3425cc8d42ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79acd4cd9a3a301fdaf93c9af6c3deeb4f250886f9dafb1216ad0d33c7037458",
+      "source_fact_keys": [
+        "source_fact:v1:231f75b4417d1afa294001a7ad8699389bb26e6ec185fd252d618486b5c40025",
+        "source_fact:v1:522394c99e8c149e4839d6e673348a71b414b69e25e83bda499cafd1a61e69eb",
+        "source_fact:v1:56c3b0eef8263e3c4dd0b30eb9c4f93ba717d8780c6c71c218932662af8ce937",
+        "source_fact:v1:7fa3f5b67a2f3373901372690cb50afd76560f8c83091ec80680f77d327058ce",
+        "source_fact:v1:8a76813df04b34132c23abddc7ad91f791d9bb5d90994fb7da52959ec5159468",
+        "source_fact:v1:a77c094f8098dee83f309e6832a03e40701dd9502f27f5af61cf39337b3e30c4"
+      ],
+      "source_published_kst": "2026-10-25T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]",
+      "telegram_core_fact": "연방준비제도(Fed·연준)의 추가 금리 인상 가능성과 국제유가 급등이 달러 강세 압력을 높이는 가운데 반도체 수출 호조에 따른 국내 경기 개선과 원화 강세 흐름이 이어질지가 관건이다.",
+      "title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]"
     },
     "source_fact:a3101cacce4357c757f9dc0f": {
       "first_seen_kst": "2026-10-15T11:36:50+09:00",
@@ -933551,6 +935029,31 @@
       ],
       "source_published_kst": "2026-10-06T11:47+09:00",
       "title": "재경부 국감, '대미투자' 여야 질타…野 \"사업성 미달시 국정조사 사안\""
+    },
+    "source_fact:a62ad4410a5f97a88ecbe056": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01111926645616528",
+      "source": "이데일리",
+      "source_body_digest": "9b48224208255d431691eeee143938120abc86415883e19a3a4c3425cc8d42ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79acd4cd9a3a301fdaf93c9af6c3deeb4f250886f9dafb1216ad0d33c7037458",
+      "source_fact_keys": [
+        "source_fact:v1:231f75b4417d1afa294001a7ad8699389bb26e6ec185fd252d618486b5c40025",
+        "source_fact:v1:522394c99e8c149e4839d6e673348a71b414b69e25e83bda499cafd1a61e69eb",
+        "source_fact:v1:56c3b0eef8263e3c4dd0b30eb9c4f93ba717d8780c6c71c218932662af8ce937",
+        "source_fact:v1:7fa3f5b67a2f3373901372690cb50afd76560f8c83091ec80680f77d327058ce",
+        "source_fact:v1:8a76813df04b34132c23abddc7ad91f791d9bb5d90994fb7da52959ec5159468",
+        "source_fact:v1:a77c094f8098dee83f309e6832a03e40701dd9502f27f5af61cf39337b3e30c4"
+      ],
+      "source_published_kst": "2026-10-25T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]",
+      "telegram_core_fact": "연방준비제도(Fed·연준)의 추가 금리 인상 가능성과 국제유가 급등이 달러 강세 압력을 높이는 가운데 반도체 수출 호조에 따른 국내 경기 개선과 원화 강세 흐름이 이어질지가 관건이다.",
+      "title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]"
     },
     "source_fact:a62b823fcab4df23fa00f303": {
       "first_seen_kst": "2026-10-18T17:16:37+09:00",
@@ -951969,6 +953472,34 @@
       "telegram_core_fact": "해성디에스는 약 1900억원을 투자해 패널 공법 기반 패키지 기판 생산능력을 구축하고 있으며, 2029년에는 연간 2000~3000억원 신규 생산능력(CAPA) 확보가 예상된다고 부연했다.",
       "title": "\"반도체 기판 가격 또 오른다…대덕전자·심텍 등 수천억 투자\"-하나"
     },
+    "source_fact:add3f20d7f1952dcf01645c4": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
+    },
     "source_fact:add4fc3a3ad824be02527115": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -957724,6 +959255,32 @@
       ],
       "source_published_kst": "2026-10-07T05:22+09:00",
       "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
+    },
+    "source_fact:b0441cd0dfd0b755e85ad431": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.etnews.com/20261023000244",
+      "source": "전자신문",
+      "source_body_digest": "5844446c87e2c6c25267279e9df72883631acdada3285a708546ec54cd5feccd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:976cbc8da46baee8c09ed56b8829c43e10182d94b427d9800f42ff5660b4f9a7",
+      "source_fact_keys": [
+        "source_fact:v1:32e1a23514609bfeb1bf46335efffb25d1ac39eb6d5342b28307e556e510f53b",
+        "source_fact:v1:90006908d8190432121e1273263af5e1d930d63ada55f8ccdbcde83653d0d12c",
+        "source_fact:v1:94f4e6817119ab575d1790241476c0ac4eb7727ddeb645a2c7470ae196b720e7",
+        "source_fact:v1:9a3a4b20a6d66af959739977272d3682f91294019ab2b5a3b12a3f94fbe6e1e6",
+        "source_fact:v1:c0845e11947aac81eb0f511c7712932b8ebcf1eea68dbc21fc455f1e7152be26",
+        "source_fact:v1:e33803498d649a1acf7db1e833f165752dfccc29728e2ebe936a201edb241a88",
+        "source_fact:v1:e9307bbe7f37ccc481bfed25bc77985bc5c56140e187a49bb300eb258ea92bc7"
+      ],
+      "source_published_kst": "2026-10-25T14:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장",
+      "telegram_core_fact": "산업 현장의 인공지능(AI) 활용이 확대되면서 로봇과 설비, 센서, AI 시스템을 안정적으로 연결하는 통신 인프라의 중요성이 커지는 만큼 관련 시장에 대한 축적된 경험을 바탕으로 이 시장을 공략한다는 복안이다.",
+      "title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장"
     },
     "source_fact:b049e900540e1a5afc57229e": {
       "first_seen_kst": "2026-10-13T00:22:20+09:00",
@@ -987704,6 +989261,32 @@
       "telegram_core_fact": "해양수산부가 연간 약 2조원 항만·연안정비 사업 예산이 차질 없이 집행될 수 있도록 전국 주요 사업장을 대상으로 현장점검에 나선다.",
       "title": "해수부, 2조원 항만·연안정비 예산 집행 현장점검"
     },
+    "source_fact:bcb6e73c3e3bace33b935cc1": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.etnews.com/20261023000244",
+      "source": "전자신문",
+      "source_body_digest": "5844446c87e2c6c25267279e9df72883631acdada3285a708546ec54cd5feccd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:976cbc8da46baee8c09ed56b8829c43e10182d94b427d9800f42ff5660b4f9a7",
+      "source_fact_keys": [
+        "source_fact:v1:32e1a23514609bfeb1bf46335efffb25d1ac39eb6d5342b28307e556e510f53b",
+        "source_fact:v1:90006908d8190432121e1273263af5e1d930d63ada55f8ccdbcde83653d0d12c",
+        "source_fact:v1:94f4e6817119ab575d1790241476c0ac4eb7727ddeb645a2c7470ae196b720e7",
+        "source_fact:v1:9a3a4b20a6d66af959739977272d3682f91294019ab2b5a3b12a3f94fbe6e1e6",
+        "source_fact:v1:c0845e11947aac81eb0f511c7712932b8ebcf1eea68dbc21fc455f1e7152be26",
+        "source_fact:v1:e33803498d649a1acf7db1e833f165752dfccc29728e2ebe936a201edb241a88",
+        "source_fact:v1:e9307bbe7f37ccc481bfed25bc77985bc5c56140e187a49bb300eb258ea92bc7"
+      ],
+      "source_published_kst": "2026-10-25T14:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장",
+      "telegram_core_fact": "산업 현장의 인공지능(AI) 활용이 확대되면서 로봇과 설비, 센서, AI 시스템을 안정적으로 연결하는 통신 인프라의 중요성이 커지는 만큼 관련 시장에 대한 축적된 경험을 바탕으로 이 시장을 공략한다는 복안이다.",
+      "title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장"
+    },
     "source_fact:bcbc81ea3203f460d369c3fd": {
       "first_seen_kst": "2026-10-21T12:08:47+09:00",
       "lanes": {
@@ -994716,6 +996299,32 @@
       "source_title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자",
       "telegram_core_fact": "키움투자자산운용은 13일 'KIWOOM 글로벌MLCC&AI기판TOP4+ ETF'를 유가증권시장에 신규 상장한다고 12일 밝혔다.",
       "title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자"
+    },
+    "source_fact:bfcfcab3d126ad5c4ddc9fa4": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.etnews.com/20261023000244",
+      "source": "전자신문",
+      "source_body_digest": "5844446c87e2c6c25267279e9df72883631acdada3285a708546ec54cd5feccd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:976cbc8da46baee8c09ed56b8829c43e10182d94b427d9800f42ff5660b4f9a7",
+      "source_fact_keys": [
+        "source_fact:v1:32e1a23514609bfeb1bf46335efffb25d1ac39eb6d5342b28307e556e510f53b",
+        "source_fact:v1:90006908d8190432121e1273263af5e1d930d63ada55f8ccdbcde83653d0d12c",
+        "source_fact:v1:94f4e6817119ab575d1790241476c0ac4eb7727ddeb645a2c7470ae196b720e7",
+        "source_fact:v1:9a3a4b20a6d66af959739977272d3682f91294019ab2b5a3b12a3f94fbe6e1e6",
+        "source_fact:v1:c0845e11947aac81eb0f511c7712932b8ebcf1eea68dbc21fc455f1e7152be26",
+        "source_fact:v1:e33803498d649a1acf7db1e833f165752dfccc29728e2ebe936a201edb241a88",
+        "source_fact:v1:e9307bbe7f37ccc481bfed25bc77985bc5c56140e187a49bb300eb258ea92bc7"
+      ],
+      "source_published_kst": "2026-10-25T14:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장",
+      "telegram_core_fact": "산업 현장의 인공지능(AI) 활용이 확대되면서 로봇과 설비, 센서, AI 시스템을 안정적으로 연결하는 통신 인프라의 중요성이 커지는 만큼 관련 시장에 대한 축적된 경험을 바탕으로 이 시장을 공략한다는 복안이다.",
+      "title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장"
     },
     "source_fact:bfd2f53b8acd5d40484c7bca": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
@@ -1033825,6 +1035434,32 @@
       "telegram_core_fact": "오픈AI 매출은 500억달러 전망입니다.",
       "title": "“앤스로픽 상장 전 실탄 확보”⋯오픈AI, 300억달러 유치전"
     },
+    "source_fact:cf9794659a67b3cd447b6301": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.etnews.com/20261023000244",
+      "source": "전자신문",
+      "source_body_digest": "5844446c87e2c6c25267279e9df72883631acdada3285a708546ec54cd5feccd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:976cbc8da46baee8c09ed56b8829c43e10182d94b427d9800f42ff5660b4f9a7",
+      "source_fact_keys": [
+        "source_fact:v1:32e1a23514609bfeb1bf46335efffb25d1ac39eb6d5342b28307e556e510f53b",
+        "source_fact:v1:90006908d8190432121e1273263af5e1d930d63ada55f8ccdbcde83653d0d12c",
+        "source_fact:v1:94f4e6817119ab575d1790241476c0ac4eb7727ddeb645a2c7470ae196b720e7",
+        "source_fact:v1:9a3a4b20a6d66af959739977272d3682f91294019ab2b5a3b12a3f94fbe6e1e6",
+        "source_fact:v1:c0845e11947aac81eb0f511c7712932b8ebcf1eea68dbc21fc455f1e7152be26",
+        "source_fact:v1:e33803498d649a1acf7db1e833f165752dfccc29728e2ebe936a201edb241a88",
+        "source_fact:v1:e9307bbe7f37ccc481bfed25bc77985bc5c56140e187a49bb300eb258ea92bc7"
+      ],
+      "source_published_kst": "2026-10-25T14:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장",
+      "telegram_core_fact": "산업 현장의 인공지능(AI) 활용이 확대되면서 로봇과 설비, 센서, AI 시스템을 안정적으로 연결하는 통신 인프라의 중요성이 커지는 만큼 관련 시장에 대한 축적된 경험을 바탕으로 이 시장을 공략한다는 복안이다.",
+      "title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장"
+    },
     "source_fact:cf97e5b4aea46611328ef3d7": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
       "lanes": {
@@ -1044886,6 +1046521,37 @@
       "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
       "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
     },
+    "source_fact:d44c967a051ed3f10d9661bf": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
+    },
     "source_fact:d4517727ea1b67e0944c3553": {
       "first_seen_kst": "2026-10-25T09:29:31+09:00",
       "lanes": {
@@ -1051880,6 +1053546,31 @@
       "source_title": "AI 투자·물가 압력에…美 금리 또 오른다?[주末머니]",
       "telegram_core_fact": "특히 이번 의사록에서는 AI 투자 확대가 경제성장을 견인하는 동시에 기업의 비용과 총수요를 높여 중기적으로 물가 압력을 확대할 수 있다는 점이 부각됐다.",
       "title": "AI 투자·물가 압력에…美 금리 또 오른다?[주末머니]"
+    },
+    "source_fact:d70e2123b3bfdf88da17b6c2": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01354646645616528",
+      "source": "이데일리",
+      "source_body_digest": "824329970ca065333e83b1dc0bf0a905bd641ca1eabf19662b9d6eee40da452a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:480caab346c22dc6d3234640068369dbe22cd5d2cbcc993013e455aa0e5b3b4e",
+      "source_fact_keys": [
+        "source_fact:v1:05888cee3e69db192ee6be92ea2a3e0b567cf069e34f43f97af358ec4ac50f08",
+        "source_fact:v1:37c3b28cac1a112d51f4e1a74d118d8743bebcb42c1f5b978d0d0bc93fed8175",
+        "source_fact:v1:85b00ae02aaad6d640103d459502e87e85f63d845783b5ebabd47d776c35dd31",
+        "source_fact:v1:96b14ada7d99cc17c2de770bb41e247aedb61d66c9c07c0f32bf8eced14a3730",
+        "source_fact:v1:adf14e178c1f2198945a8b6e020cbcb0682b45e090f900cd559496bbc0929eff",
+        "source_fact:v1:f9cccb9d8d1154a2e26447e775f18f590ae64ad1a0160d538d78eccc0abaa35a"
+      ],
+      "source_published_kst": "2026-10-25T10:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]",
+      "telegram_core_fact": "내년 2월 토큰증권 제도 시행에 맞춰 그동안 축적한 가축투자계약증권 발행·청산 경험을 바탕으로 STO 시장에 본격 진출하겠다는 구상이다.",
+      "title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]"
     },
     "source_fact:d710b42832011acfab2ced5e": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -1087561,6 +1089252,32 @@
       "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
       "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
     },
+    "source_fact:e5fb195c12cddafd1a329ca6": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.etnews.com/20261023000244",
+      "source": "전자신문",
+      "source_body_digest": "5844446c87e2c6c25267279e9df72883631acdada3285a708546ec54cd5feccd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:976cbc8da46baee8c09ed56b8829c43e10182d94b427d9800f42ff5660b4f9a7",
+      "source_fact_keys": [
+        "source_fact:v1:32e1a23514609bfeb1bf46335efffb25d1ac39eb6d5342b28307e556e510f53b",
+        "source_fact:v1:90006908d8190432121e1273263af5e1d930d63ada55f8ccdbcde83653d0d12c",
+        "source_fact:v1:94f4e6817119ab575d1790241476c0ac4eb7727ddeb645a2c7470ae196b720e7",
+        "source_fact:v1:9a3a4b20a6d66af959739977272d3682f91294019ab2b5a3b12a3f94fbe6e1e6",
+        "source_fact:v1:c0845e11947aac81eb0f511c7712932b8ebcf1eea68dbc21fc455f1e7152be26",
+        "source_fact:v1:e33803498d649a1acf7db1e833f165752dfccc29728e2ebe936a201edb241a88",
+        "source_fact:v1:e9307bbe7f37ccc481bfed25bc77985bc5c56140e187a49bb300eb258ea92bc7"
+      ],
+      "source_published_kst": "2026-10-25T14:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장",
+      "telegram_core_fact": "산업 현장의 인공지능(AI) 활용이 확대되면서 로봇과 설비, 센서, AI 시스템을 안정적으로 연결하는 통신 인프라의 중요성이 커지는 만큼 관련 시장에 대한 축적된 경험을 바탕으로 이 시장을 공략한다는 복안이다.",
+      "title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장"
+    },
     "source_fact:e5fe4f2ddb0fdb88dbb07159": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
@@ -1104965,6 +1106682,37 @@
       "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
       "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
     },
+    "source_fact:ed4e0402b4eacf0cf89018d6": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
+    },
     "source_fact:ed50cf839d98f9cf706a7673": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
       "lanes": {
@@ -1106917,6 +1108665,26 @@
       "source_title": "영상제작부터 의료기기까지 잇단 초기투자…프롭테크 후기 메가딜도",
       "telegram_core_fact": "프롭테크 기반 종합숙박솔루션 기업 더휴식이 650억원 프리IPO(상장 전 지분투자) 투자를 유치했다고 20일 밝혔다. 기존 주주의 구주 매출 150억원이 포함됐으며, 이를 포함한 더휴식의 누적 투자유치금액은 1078억원에 달한다.",
       "title": "영상제작부터 의료기기까지 잇단 초기투자…프롭테크 후기 메가딜도"
+    },
+    "source_fact:ee3471ebb0fa9209fa4b0f71": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003840223",
+      "source": "뉴시스",
+      "source_body_digest": "95ccf50df3ca24d4595d297788d6041f71363ffc336998f04ac755c596b8c7a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3ae8cc8b5742913c56387bb1d92125674f9e49bfa628746fe32211adddc5fa4",
+      "source_fact_keys": [
+        "source_fact:v1:1077f53d400d5c3b9556bb9dad34774bc21f8531542296cdfa1855da60597ad4"
+      ],
+      "source_published_kst": "2026-10-25T20:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "독도사랑주유소, 100만ℓ 저유고 개소…유류 유통 혁신 나선다",
+      "telegram_core_fact": "여러 주유소의 수요를 모아 유류를 공동 구매하고, 구매 협상력과 공급 효율성을 높이는 방식으로 유통 구조 개선을 모색하고 있다.",
+      "title": "독도사랑주유소, 100만ℓ 저유고 개소…유류 유통 혁신 나선다"
     },
     "source_fact:ee34b4c89c75446ab5dd8dad": {
       "first_seen_kst": "2026-10-21T02:06:57+09:00",
@@ -1125591,6 +1127359,31 @@
       "telegram_core_fact": "스페이스X 3분기 매출은 145억7500만달러로 전년비 161% 증가했습니다.",
       "title": "AI로 돈 번 스페이스X…韓 우주株 덩달아 '들썩'[종목e슈]"
     },
+    "source_fact:f656c18600ed106d7742c498": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01111926645616528",
+      "source": "이데일리",
+      "source_body_digest": "9b48224208255d431691eeee143938120abc86415883e19a3a4c3425cc8d42ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79acd4cd9a3a301fdaf93c9af6c3deeb4f250886f9dafb1216ad0d33c7037458",
+      "source_fact_keys": [
+        "source_fact:v1:231f75b4417d1afa294001a7ad8699389bb26e6ec185fd252d618486b5c40025",
+        "source_fact:v1:522394c99e8c149e4839d6e673348a71b414b69e25e83bda499cafd1a61e69eb",
+        "source_fact:v1:56c3b0eef8263e3c4dd0b30eb9c4f93ba717d8780c6c71c218932662af8ce937",
+        "source_fact:v1:7fa3f5b67a2f3373901372690cb50afd76560f8c83091ec80680f77d327058ce",
+        "source_fact:v1:8a76813df04b34132c23abddc7ad91f791d9bb5d90994fb7da52959ec5159468",
+        "source_fact:v1:a77c094f8098dee83f309e6832a03e40701dd9502f27f5af61cf39337b3e30c4"
+      ],
+      "source_published_kst": "2026-10-25T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]",
+      "telegram_core_fact": "연방준비제도(Fed·연준)의 추가 금리 인상 가능성과 국제유가 급등이 달러 강세 압력을 높이는 가운데 반도체 수출 호조에 따른 국내 경기 개선과 원화 강세 흐름이 이어질지가 관건이다.",
+      "title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]"
+    },
     "source_fact:f658aca944e99af8767a2aad": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
       "lanes": {
@@ -1130191,6 +1131984,31 @@
       "source_title": "‘빅테크 빌려준 돈 떼일라’…AI發 '돈맥경화' 우려",
       "telegram_core_fact": "회사채 위험프리미엄 확대가 차입 부담을 높이고 다시 투자와 수익 창출을 늦추는 ‘돈맥경화’로 이어질 수 있다는 우려가 나온다. 22일 미 국채 10년물 금리는 AI 관련주 급락에 따른 안전자산 선호로 4.96% 안팎까지 내려왔다.",
       "title": "‘빅테크 빌려준 돈 떼일라’…AI發 '돈맥경화' 우려"
+    },
+    "source_fact:f8aa5b5d51206c6b482acb21": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01354646645616528",
+      "source": "이데일리",
+      "source_body_digest": "824329970ca065333e83b1dc0bf0a905bd641ca1eabf19662b9d6eee40da452a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:480caab346c22dc6d3234640068369dbe22cd5d2cbcc993013e455aa0e5b3b4e",
+      "source_fact_keys": [
+        "source_fact:v1:05888cee3e69db192ee6be92ea2a3e0b567cf069e34f43f97af358ec4ac50f08",
+        "source_fact:v1:37c3b28cac1a112d51f4e1a74d118d8743bebcb42c1f5b978d0d0bc93fed8175",
+        "source_fact:v1:85b00ae02aaad6d640103d459502e87e85f63d845783b5ebabd47d776c35dd31",
+        "source_fact:v1:96b14ada7d99cc17c2de770bb41e247aedb61d66c9c07c0f32bf8eced14a3730",
+        "source_fact:v1:adf14e178c1f2198945a8b6e020cbcb0682b45e090f900cd559496bbc0929eff",
+        "source_fact:v1:f9cccb9d8d1154a2e26447e775f18f590ae64ad1a0160d538d78eccc0abaa35a"
+      ],
+      "source_published_kst": "2026-10-25T10:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]",
+      "telegram_core_fact": "내년 2월 토큰증권 제도 시행에 맞춰 그동안 축적한 가축투자계약증권 발행·청산 경험을 바탕으로 STO 시장에 본격 진출하겠다는 구상이다.",
+      "title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]"
     },
     "source_fact:f8b1acf1c057bba51ebd749d": {
       "first_seen_kst": "2026-10-07T04:29:18+09:00",
@@ -1141278,6 +1143096,37 @@
       "telegram_core_fact": "SK하이닉스의 미국 자회사 솔리다임의 나스닥 상장(IPO) 추진 소식에 중복상장 논란이 일고 있다.",
       "title": "중복상장 안막는 선진시장…설명책임·이해상충 관리로 규율"
     },
+    "source_fact:fd349490b726bc85ee43af3b": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
+    },
     "source_fact:fd354c4db12ab3971fcfe3b9": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
       "lanes": {
@@ -1147592,6 +1149441,37 @@
       "telegram_core_fact": "CBIZ(CBZ)는 3분기 매출액이 7억224만 달러로 전년비 1.2% 증가했으며, 일반회계기준(GAAP) 희석 주당순이익은 0.79달러로 64.6% 늘었다고 10월 19일 발표했다.",
       "title": "CBIZ, 3분기 매출 7억200만 달러..GAAP EPS 65%↑"
     },
+    "source_fact:ffffc99d0f19ea07f4f856d1": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
+    },
     "title:000517c957293e2c0fc97bc3": {
       "first_seen_kst": "2026-10-17T11:37:20+09:00",
       "lanes": {
@@ -1150736,6 +1152616,26 @@
       "link": "https://www.mt.co.kr/finance/2026/09/20/2026091715274866375",
       "source": "머니투데이",
       "title": "은행 방카슈랑스 '활기'…저축성보험 자금 유입에 생보사도 '반색'"
+    },
+    "title:056be3e8383d4389e1893897": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003840223",
+      "source": "뉴시스",
+      "source_body_digest": "95ccf50df3ca24d4595d297788d6041f71363ffc336998f04ac755c596b8c7a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3ae8cc8b5742913c56387bb1d92125674f9e49bfa628746fe32211adddc5fa4",
+      "source_fact_keys": [
+        "source_fact:v1:1077f53d400d5c3b9556bb9dad34774bc21f8531542296cdfa1855da60597ad4"
+      ],
+      "source_published_kst": "2026-10-25T20:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "독도사랑주유소, 100만ℓ 저유고 개소…유류 유통 혁신 나선다",
+      "telegram_core_fact": "여러 주유소의 수요를 모아 유류를 공동 구매하고, 구매 협상력과 공급 효율성을 높이는 방식으로 유통 구조 개선을 모색하고 있다.",
+      "title": "독도사랑주유소, 100만ℓ 저유고 개소…유류 유통 혁신 나선다"
     },
     "title:056cc41381d554b21b08ac5f": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -1176404,6 +1178304,26 @@
       "link": "https://www.yna.co.kr/view/AKR20260923077900003",
       "source": "연합뉴스",
       "title": "\"억대 성과급 놓칠라\"…삼전닉스 육아휴직률 첫 동반 하락 | 연합뉴스"
+    },
+    "title:32494dd912b0881fccc23353": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025049600051",
+      "source": "연합뉴스",
+      "source_body_digest": "5cdfb2e5282fa4807bf38be776e2c54cff916ab1ec682061696c2eb337e0933b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4477b7790fd6905841b4c4a2b20657fb26a9895a5a3b76366cc937c949b56f90",
+      "source_fact_keys": [
+        "source_fact:v1:7844fba5b20d34fab9daf231739de5aff48482ba48e91f87699733ac93f3e511"
+      ],
+      "source_published_kst": "2026-10-25T20:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산 동해선 일광∼월내 구간 나무 쓰러져…열차 지연 | 연합뉴스",
+      "telegram_core_fact": "태풍 '참피'의 영향으로 비가 내리고 있는 부산 동해선 철도 구간에서 나무가 쓰러져 전력 공급에 장애가 발생하면서 열차 운행이 지연됐다. 한국철도공사(코레일)에 따르면 이날 오후 7시 21분께 동해선 일광역∼월내역 구간에서 선로변 나무가 쓰러지면서 전차선에 장애가 발생했다.",
+      "title": "부산 동해선 일광∼월내 구간 나무 쓰러져…열차 지연 | 연합뉴스"
     },
     "title:324c6380946b892e4518fbfd": {
       "first_seen_kst": "2026-10-16T17:33:02+09:00",
@@ -1225490,6 +1227410,31 @@
       "telegram_core_fact": "올해는 SK실트론 지분 70.6%를 두산에 매각하는 계약을 체결하는 등 자산 포트폴리오 재편을 추진하고 있다. 고금리 환경에서 외부 차입 부담을 줄이는 동시에 인공지능(AI)·방산·이차전지·태양광 등 핵심 사업에 자금을 집중하기 위함으로 풀이된다.",
       "title": "차입 대신 지분으로 실탄 확보…기업들, AI·방산·배터리에 쏟는다"
     },
+    "title:8690711445892ee516fa8c3d": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01354646645616528",
+      "source": "이데일리",
+      "source_body_digest": "824329970ca065333e83b1dc0bf0a905bd641ca1eabf19662b9d6eee40da452a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:480caab346c22dc6d3234640068369dbe22cd5d2cbcc993013e455aa0e5b3b4e",
+      "source_fact_keys": [
+        "source_fact:v1:05888cee3e69db192ee6be92ea2a3e0b567cf069e34f43f97af358ec4ac50f08",
+        "source_fact:v1:37c3b28cac1a112d51f4e1a74d118d8743bebcb42c1f5b978d0d0bc93fed8175",
+        "source_fact:v1:85b00ae02aaad6d640103d459502e87e85f63d845783b5ebabd47d776c35dd31",
+        "source_fact:v1:96b14ada7d99cc17c2de770bb41e247aedb61d66c9c07c0f32bf8eced14a3730",
+        "source_fact:v1:adf14e178c1f2198945a8b6e020cbcb0682b45e090f900cd559496bbc0929eff",
+        "source_fact:v1:f9cccb9d8d1154a2e26447e775f18f590ae64ad1a0160d538d78eccc0abaa35a"
+      ],
+      "source_published_kst": "2026-10-25T10:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]",
+      "telegram_core_fact": "내년 2월 토큰증권 제도 시행에 맞춰 그동안 축적한 가축투자계약증권 발행·청산 경험을 바탕으로 STO 시장에 본격 진출하겠다는 구상이다.",
+      "title": "스탁키퍼 \"첫 STO 발행사 도전…한우토큰증권 수출\"[인터뷰]"
+    },
     "title:8690e74a79ab505ea2d804a7": {
       "first_seen_kst": "2026-10-21T22:34:18+09:00",
       "lanes": {
@@ -1237868,6 +1239813,37 @@
       "source_title": "하림, 김제·정읍 사료공장 20% 증설 완료…공급망 병목 해소",
       "telegram_core_fact": "하림은 김제·정읍 사료공장의 생산·저장 능력을 20% 확대하는 '사료 CAPA UP 20%' 프로젝트를 완료하고 지난 16일 준공식을 열었다고 19일 밝혔다.",
       "title": "하림, 김제·정읍 사료공장 20% 증설 완료…공급망 병목 해소"
+    },
+    "title:9b794ee9b6945e362508a21c": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645616528&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a33bb553be13e7b4c4a3e78a7198a81221c28696e4715a9cf2893c1a90e71830",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:768ece8cc37b2040d30125f884bef6ded4a3a1282a0cdf86ba948443b839727b",
+      "source_fact_keys": [
+        "source_fact:v1:09537b4418c1a3a219c789a9c5c56414411332ec623839fd8660cd88c5d3677e",
+        "source_fact:v1:11c0f0e0cebcb844fd56a95500eb72676c2442b1cf16b766593ba6a297dc9509",
+        "source_fact:v1:30b3671505a22180e64c56bfc745603b64b45a17fc5e41bd5d425597d0d2d1e3",
+        "source_fact:v1:384ba0c852f903ec9736b3ad6938462a121d560dbc85f887b1b9888fd3a157c8",
+        "source_fact:v1:668e3dc73dc7afa8b453e263ebcea61ab84fdb0ac7ec98ccd1573e373c828b26",
+        "source_fact:v1:7a04c0d99a722444e6987dded57bd30dc01148f78d07f7e29ff00d96826d417e",
+        "source_fact:v1:833fa8b5dac0ddf51328dc2ccc4042e7775028a3c54486e4e668a0d6c22ef05a",
+        "source_fact:v1:8edb83daf2edade58f6037b8eeadb8b24ecc70383513f265c49e61b4b77e12cd",
+        "source_fact:v1:a4b4adf3031a7aee6b1f76f759fd6ba8bdf6cee765ed8d8b2f95502f6cf87cac",
+        "source_fact:v1:aa62c65e8f6fa2b30e66c3d190518b72b9057adc47642cd26bd3b0a615e5a0fb",
+        "source_fact:v1:cc070d9d03e640e1ce48c93d16fb8d20e77e4d4423c867cc2295680434d6008b",
+        "source_fact:v1:e3e7c02ecf439acabb96aaaff0a1430bc60c79461d30e462090c857f71d23718"
+      ],
+      "source_published_kst": "2026-10-25T20:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다",
+      "telegram_core_fact": "이란 지도부는 미국과 이스라엘의 공격을 견뎌낼 수 있다는 입장을 유지하고 있으며 추가 공습이 이뤄질 경우 이전보다 강력하게 대응하겠다는 신호를 보내고 있다.",
+      "title": "美, 중간선거 후 이란 공습 검토…트럼프 최종 승인만 남았다"
     },
     "title:9b7af5e6c712c80bdb6c7c0d": {
       "first_seen_kst": "2026-10-21T01:36:25+09:00",
@@ -1252012,6 +1253988,32 @@
       "source": "디지털타임스",
       "title": "최태원, 9440억 SK지분 매각 추진…‘노소영 재산분할’ 소요 자금 마련"
     },
+    "title:b32a187c74e9e5639cfe2b33": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.etnews.com/20261023000244",
+      "source": "전자신문",
+      "source_body_digest": "5844446c87e2c6c25267279e9df72883631acdada3285a708546ec54cd5feccd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:976cbc8da46baee8c09ed56b8829c43e10182d94b427d9800f42ff5660b4f9a7",
+      "source_fact_keys": [
+        "source_fact:v1:32e1a23514609bfeb1bf46335efffb25d1ac39eb6d5342b28307e556e510f53b",
+        "source_fact:v1:90006908d8190432121e1273263af5e1d930d63ada55f8ccdbcde83653d0d12c",
+        "source_fact:v1:94f4e6817119ab575d1790241476c0ac4eb7727ddeb645a2c7470ae196b720e7",
+        "source_fact:v1:9a3a4b20a6d66af959739977272d3682f91294019ab2b5a3b12a3f94fbe6e1e6",
+        "source_fact:v1:c0845e11947aac81eb0f511c7712932b8ebcf1eea68dbc21fc455f1e7152be26",
+        "source_fact:v1:e33803498d649a1acf7db1e833f165752dfccc29728e2ebe936a201edb241a88",
+        "source_fact:v1:e9307bbe7f37ccc481bfed25bc77985bc5c56140e187a49bb300eb258ea92bc7"
+      ],
+      "source_published_kst": "2026-10-25T14:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장",
+      "telegram_core_fact": "산업 현장의 인공지능(AI) 활용이 확대되면서 로봇과 설비, 센서, AI 시스템을 안정적으로 연결하는 통신 인프라의 중요성이 커지는 만큼 관련 시장에 대한 축적된 경험을 바탕으로 이 시장을 공략한다는 복안이다.",
+      "title": "네이블, 산업용 5G 넘어 'AI 인프라' 시장 공략…반도체·철도·금융 레퍼런스 기반 사업 확장"
+    },
     "title:b32d64675b2007477d8f0404": {
       "first_seen_kst": "2026-10-12T15:02:00+09:00",
       "lanes": {
@@ -1252098,6 +1254100,31 @@
       "source_title": "경찰, '딸 의혹 무마' 한동훈 고발건 서울청 이관…검토 착수",
       "telegram_core_fact": "서울청 관계자는 \"내용을 면밀히 검토한 후 사건을 배당할 예정\"이라고 밝혔다.",
       "title": "경찰, '딸 의혹 무마' 한동훈 고발건 서울청 이관…검토 착수"
+    },
+    "title:b33322d58ccc537f11b8a316": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01111926645616528",
+      "source": "이데일리",
+      "source_body_digest": "9b48224208255d431691eeee143938120abc86415883e19a3a4c3425cc8d42ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79acd4cd9a3a301fdaf93c9af6c3deeb4f250886f9dafb1216ad0d33c7037458",
+      "source_fact_keys": [
+        "source_fact:v1:231f75b4417d1afa294001a7ad8699389bb26e6ec185fd252d618486b5c40025",
+        "source_fact:v1:522394c99e8c149e4839d6e673348a71b414b69e25e83bda499cafd1a61e69eb",
+        "source_fact:v1:56c3b0eef8263e3c4dd0b30eb9c4f93ba717d8780c6c71c218932662af8ce937",
+        "source_fact:v1:7fa3f5b67a2f3373901372690cb50afd76560f8c83091ec80680f77d327058ce",
+        "source_fact:v1:8a76813df04b34132c23abddc7ad91f791d9bb5d90994fb7da52959ec5159468",
+        "source_fact:v1:a77c094f8098dee83f309e6832a03e40701dd9502f27f5af61cf39337b3e30c4"
+      ],
+      "source_published_kst": "2026-10-25T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]",
+      "telegram_core_fact": "연방준비제도(Fed·연준)의 추가 금리 인상 가능성과 국제유가 급등이 달러 강세 압력을 높이는 가운데 반도체 수출 호조에 따른 국내 경기 개선과 원화 강세 흐름이 이어질지가 관건이다.",
+      "title": "고유가·美금리 변수…1320원대로 내려온 환율 '갈림길'[주간외환전망]"
     },
     "title:b3460327ae81747a3e5a67cb": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
@@ -1277766,6 +1279793,34 @@
       "telegram_core_fact": "최 이사는 “AI 붐이 내년이나 내후년에 당장 꺾일 것이냐에 대해서는 그렇게 되지 않을 것이라는 시각이 강하다”며 “기업들이 데이터센터를 경쟁적으로 짓고 있는데 건설에 10년 정도 걸릴 수도 있다고 한다”고 말했다.",
       "title": "최지영 IMF 이사 “韓, 선진국 중 유일하게 재정여력 확대…AI 붐 당장 안 꺾일 것”"
     },
+    "title:e1366ee56e3bf4c2387eb5a1": {
+      "first_seen_kst": "2026-10-25T20:53:01+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:53:01+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:53:01+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR20261025202617qRc",
+      "source": "연합뉴스TV",
+      "source_body_digest": "cb6ead74d846c860237a7eb69982ca1d81b038e9a753bce00c8fd1f66fb0b148",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae9cf68db00d1cf9c117d5e81739a78630b4a839bb52a238b46faa5260146d33",
+      "source_fact_keys": [
+        "source_fact:v1:062fc6e69892874adbe8f08ff10976e57d5ca6524587605940fb2a8a37048083",
+        "source_fact:v1:3a48b5137aba0800a849e9299af7b551c95f07bba5cd656d1ae938c70f8a0915",
+        "source_fact:v1:4c2a7a5476d04c1c8ecfaffe923d6bbe5084ec7ca33e8876222d32ada87f87b6",
+        "source_fact:v1:790bd824606dbf62478f8ba7c21cf131795c03c21879feb94428f58b82b00ad0",
+        "source_fact:v1:7d6869bcf6c76429cdc021c80fdf612eb141d7a1f94a4252155b7adbe2852b04",
+        "source_fact:v1:9bfd9e930d9ac2fa537e360ef7cbcecb62179dca6e9941d110f05c669b91d540",
+        "source_fact:v1:9eedf03383ae56fc834ea46b8414c0a1bd2d77bad5989b04448c47eca9dda649",
+        "source_fact:v1:bea4880b4393ed9dd5714ef70aa550ffb7c2dfa3797531ecfba72f3add96bced",
+        "source_fact:v1:ee786392d2b445b1eaeeee8fcd9824043c4ae62effb4a45bfdee104703e64e35"
+      ],
+      "source_published_kst": "2026-10-25T20:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“",
+      "telegram_core_fact": "지난 21일 기자들과 만난 트럼프 대통령은 이란과 협상하지 않고 있다며 \"무슨 일이 일어날 것이다. 대부분은 선거 이후일 것으로 생각하는 듯한데 어떻게 되는지 지켜보겠다\"고 말했습니다.",
+      "title": "美 매체 “미군, 중간선거 뒤 ’이란 공격안’ 국방장관에 보고…트럼프 결정 대기“"
+    },
     "title:e13e192fe29460a31f0f46bc": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
@@ -1294712,5 +1296767,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-25T20:05:03+09:00"
+  "updated_at_kst": "2026-10-25T20:53:01+09:00"
 }
