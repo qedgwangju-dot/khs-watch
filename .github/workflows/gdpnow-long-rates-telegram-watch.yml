@@ -45,6 +45,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check openpyxl==3.1.5
 
       - name: Validate watcher and formatters
+        id: regression_validation
         run: |
           python -m py_compile scripts/gdpnow_long_rates_watch.py
           python -m py_compile scripts/gdpnow_long_rates_reformat.py
@@ -218,6 +219,7 @@ jobs:
         id: health_check
         if: ${{ always() && !cancelled() }}
         env:
+          VALIDATION_OUTCOME: ${{ steps.regression_validation.outcome }}
           SOURCE_OUTCOME: ${{ steps.source_check.outcome }}
           EVENT_OUTCOME: ${{ steps.event_reaction.outcome }}
           FORMAT_OUTCOME: ${{ steps.rate_format.outcome }}
