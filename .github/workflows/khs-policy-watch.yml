@@ -215,6 +215,38 @@ jobs:
           print("nuclear_regression_tests=passed")
           PY
 
+      - name: Verify Korean crypto tax report sources without sending
+        continue-on-error: true
+        timeout-minutes: 2
+        env:
+          KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+          KHS_SOURCE_PROXY_FIRST: "true"
+          KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "12"
+          KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "7"
+        run: |
+          PYTHONPATH=./scripts python - <<'PY'
+          from khs_domestic_stablecoin_policy_watch import (
+              CRYPTO_TAX_PRIMARY_REPORT, CRYPTO_TAX_SECONDARY_REPORT,
+              CRYPTO_TAX_OFFICIAL_GUIDANCE, now_kst, fetch_text,
+              crypto_tax_report_candidate,
+          )
+          docs = {}
+          for key, url in (
+              ("primary", CRYPTO_TAX_PRIMARY_REPORT),
+              ("secondary", CRYPTO_TAX_SECONDARY_REPORT),
+              ("nts", CRYPTO_TAX_OFFICIAL_GUIDANCE),
+          ):
+              body, error = fetch_text(url, timeout=7, attempts=1)
+              docs[key] = body if error is None else None
+              print(f"crypto_tax_source_access={key} success={bool(body and error is None)} error={error or 'none'}")
+          event = crypto_tax_report_candidate(docs["primary"], docs["secondary"], docs["nts"], now_kst())
+          print(f"crypto_tax_live_candidate={bool(event)} legal_stage={(event or {}).get('crypto_tax_stage', 'unverified')}")
+          if event:
+              print(f"crypto_tax_legal_baseline_confirmed={event['crypto_tax_guidance_rechecked']}")
+          else:
+              raise RuntimeError("Crypto tax report could not be confirmed from live source; alert remains blocked")
+          PY
+
       - name: Validate new policy official-source access
         continue-on-error: true
         timeout-minutes: 3
