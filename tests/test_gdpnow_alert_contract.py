@@ -70,6 +70,7 @@ class WatchContractTests(unittest.TestCase):
             row=watch.fetch_contrib_rows_fred()[-1]
         self.assertAlmostEqual(row.gdp,3.6)
         self.assertEqual(row.date,today.isoformat())
+        self.assertEqual(row.quarter,f"{today.year}-Q{(qmonth-1)//3+1}")
         self.assertAlmostEqual(row.cipi,1.4)
 
     def test_stale_fred_timestamp_is_rejected_as_a_separate_test(self):
@@ -142,6 +143,22 @@ class WatchContractTests(unittest.TestCase):
                 self.assertIn("자동 회귀검증 실패",send.call_args.args[0])
                 self.assertNotIn("상태: GDPNow 공식 자료 조회 단계 실패",send.call_args.args[0])
                 self.assertEqual(json.loads(pending.read_text())["last_validation_outcome"],"failure")
+
+    def test_quarter_rollover_does_not_create_false_rate_pressure(self):
+        old=self.row("2026-10-28",3.6,1.8,pce=2.7)
+        new=self.row("2026-10-29",1.2,0.3,pce=0.8)
+        old.quarter="2026-Q3"; new.quarter="2026-Q4"
+        label, thesis, _=formatter.rate_signal(new, old)
+        self.assertIn("분기 전환",label)
+        self.assertIn("서로 다른 경제기간",thesis)
+        self.assertNotIn("하락 압력 강",label)
+
+    def test_same_quarter_change_is_still_classified(self):
+        old=self.row("2026-10-15",3.2,1.7,pce=2.2)
+        new=self.row("2026-10-20",3.7,1.7,pce=2.9)
+        old.quarter=new.quarter="2026-Q3"
+        label, _, _=formatter.rate_signal(new, old)
+        self.assertIn("상승",label)
 
     def test_yield_units_cboe_and_yahoo_normalized(self):
         self.assertAlmostEqual(intraday.normalize_yahoo_yield(52.94), 5.294)
