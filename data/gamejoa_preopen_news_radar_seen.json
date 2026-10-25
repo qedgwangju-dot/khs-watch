@@ -58593,6 +58593,26 @@
       "telegram_core_fact": "블룸버그통신과 니혼게이자이신문에 따르면 노키아의 3분기 순이익은 전년비 약 두 배인 1억 5200만 유로를 기록했다.",
       "title": "스마트폰 몰락 노키아, AI 데이터센터로 부활…3분기 순익 2배"
     },
+    "core:8dceb01d66b9227b50eab03a": {
+      "first_seen_kst": "2026-10-25T15:34:20+09:00",
+      "lanes": {
+        "live": "2026-10-25T15:34:20+09:00"
+      },
+      "last_seen_kst": "2026-10-25T15:34:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01964726645616528",
+      "source": "이데일리",
+      "source_body_digest": "4260806a6f777c7415bed49eac3619e4084bf1f2fbc6483722a9ebc9ed8a6e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a9a53a096125b64d4a1e30846154865dbbd6f0ae2ffecd08cf4cf5642b5d79",
+      "source_fact_keys": [
+        "source_fact:v1:0c6ffb68ba3fc7036ee610565d0c6dffb5b350d4715f5cb63f0f48b4ec5d3706"
+      ],
+      "source_published_kst": "2026-10-25T15:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증",
+      "telegram_core_fact": "고대역폭메모리(HBM) 관련 종목에 집중 투자하는 첫 ETF로, 그동안 미국 투자자들이 쉽게 사기 어려웠던 한국 기업 주식도 담았다.",
+      "title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증"
+    },
     "core:8de0f63233be07b15c3ba78c": {
       "first_seen_kst": "2026-10-21T13:57:06+09:00",
       "lanes": {
@@ -123826,27 +123846,22 @@
     "event:d3012615bed7bc0c90ae7054": {
       "first_seen_kst": "2026-10-25T06:23:11+09:00",
       "lanes": {
-        "live": "2026-10-25T06:23:11+09:00"
+        "live": "2026-10-25T15:34:20+09:00"
       },
-      "last_seen_kst": "2026-10-25T06:23:11+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/25/2026102213530160649",
-      "source": "머니투데이",
-      "source_body_digest": "873cf738bb91d540b944c54ca75e09af4c6959cb24ea82172eca7a95bf27b0cc",
+      "last_seen_kst": "2026-10-25T15:34:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01964726645616528",
+      "source": "이데일리",
+      "source_body_digest": "4260806a6f777c7415bed49eac3619e4084bf1f2fbc6483722a9ebc9ed8a6e1a",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2c3a6fceb40936c212ceec34042b6d5081e5d732ac4c3babb4daad9f759824ae",
+      "source_fact_identity": "source_facts:v1:e3a9a53a096125b64d4a1e30846154865dbbd6f0ae2ffecd08cf4cf5642b5d79",
       "source_fact_keys": [
-        "source_fact:v1:3a5dbe3767288443bb6599396f31f4eddee670ed2487e77d2e1eefdb702eb9e9",
-        "source_fact:v1:4c0995ac1dab8013281f8cff32c678ea686f0f85dcd2cb41c3262506921ab69c",
-        "source_fact:v1:596de06832d9d5c7210c86dae52c572c8bd7d13bff0cfdd7242bfa3ea0cbe38a",
-        "source_fact:v1:79dcb88c2ab7505d7108634bdcf111677118dec03cb012ca8c33e23a4eb5f3fe",
-        "source_fact:v1:9e201397c10c33d41539b731105ea1edbdef5a0a6ab2f378263a066c6ddad422",
-        "source_fact:v1:b475ef9965f11bae02b995dd84ac6da70c9d7d60555e0124ab9ef053ccc07cea"
+        "source_fact:v1:0c6ffb68ba3fc7036ee610565d0c6dffb5b350d4715f5cb63f0f48b4ec5d3706"
       ],
-      "source_published_kst": "2026-10-25T06:00+09:00",
+      "source_published_kst": "2026-10-25T15:01+09:00",
       "source_supply_terms": {},
-      "source_title": "IMF가 그린 AI 거품 조정 시나리오",
-      "telegram_core_fact": "IMF는 에너지 가격 충격, 인플레이션 재상승, 채권금리 급등, AI 주도 시장 조정이 동시에 닥치는 시나리오를 점검했다. AI가 약속한 생산성 향상이 나타나지 않아 투자가 줄고 금융시장이 조정받는 시나리오다.",
-      "title": "IMF가 그린 AI 거품 조정 시나리오"
+      "source_title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증",
+      "telegram_core_fact": "고대역폭메모리(HBM) 관련 종목에 집중 투자하는 첫 ETF로, 그동안 미국 투자자들이 쉽게 사기 어려웠던 한국 기업 주식도 담았다.",
+      "title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증"
     },
     "event:d3119acf47531913dd9a9e1a": {
       "first_seen_kst": "2026-10-24T09:19:28+09:00",
@@ -229776,6 +229791,26 @@
       "telegram_core_fact": "록히드마틴(LMT)이 3분기 매출액 207억1100만 달러로 전년비 11% 증가했고, GAAP 희석 주당순이익 7.97달러로 14.7% 늘었으며 2026년 연간 가이던스를 상향했다고 10월 22일 발표했다.",
       "title": "록히드마틴, 3분기 매출 207억달러·11%↑...연간 가이던스 상향"
     },
+    "fact:e33288ce17beb8fd778efa96": {
+      "first_seen_kst": "2026-10-25T15:34:20+09:00",
+      "lanes": {
+        "live": "2026-10-25T15:34:20+09:00"
+      },
+      "last_seen_kst": "2026-10-25T15:34:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01964726645616528",
+      "source": "이데일리",
+      "source_body_digest": "4260806a6f777c7415bed49eac3619e4084bf1f2fbc6483722a9ebc9ed8a6e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a9a53a096125b64d4a1e30846154865dbbd6f0ae2ffecd08cf4cf5642b5d79",
+      "source_fact_keys": [
+        "source_fact:v1:0c6ffb68ba3fc7036ee610565d0c6dffb5b350d4715f5cb63f0f48b4ec5d3706"
+      ],
+      "source_published_kst": "2026-10-25T15:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증",
+      "telegram_core_fact": "고대역폭메모리(HBM) 관련 종목에 집중 투자하는 첫 ETF로, 그동안 미국 투자자들이 쉽게 사기 어려웠던 한국 기업 주식도 담았다.",
+      "title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증"
+    },
     "fact:e33c7d8efe0ef7dab07de5f0": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
       "lanes": {
@@ -320266,6 +320301,26 @@
       "source_title": "삼성전기, 엔비디아와 AI 반도체 기판 동맹 강화…세종·부산에 전용 공장",
       "telegram_core_fact": "엔비디아가 삼성전기의 국내 생산시설 확충에 직접 자금을 투자하고, 삼성전기는 이를 기반으로 AI 반도체용 기판을 장기 공급하기로 했다.",
       "title": "삼성전기, 엔비디아와 AI 반도체 기판 동맹 강화…세종·부산에 전용 공장"
+    },
+    "link:85619700febb9cede4f457bc": {
+      "first_seen_kst": "2026-10-25T15:34:20+09:00",
+      "lanes": {
+        "live": "2026-10-25T15:34:20+09:00"
+      },
+      "last_seen_kst": "2026-10-25T15:34:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01964726645616528",
+      "source": "이데일리",
+      "source_body_digest": "4260806a6f777c7415bed49eac3619e4084bf1f2fbc6483722a9ebc9ed8a6e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a9a53a096125b64d4a1e30846154865dbbd6f0ae2ffecd08cf4cf5642b5d79",
+      "source_fact_keys": [
+        "source_fact:v1:0c6ffb68ba3fc7036ee610565d0c6dffb5b350d4715f5cb63f0f48b4ec5d3706"
+      ],
+      "source_published_kst": "2026-10-25T15:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증",
+      "telegram_core_fact": "고대역폭메모리(HBM) 관련 종목에 집중 투자하는 첫 ETF로, 그동안 미국 투자자들이 쉽게 사기 어려웠던 한국 기업 주식도 담았다.",
+      "title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증"
     },
     "link:857af9dbc1542227f7df031b": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -467908,6 +467963,26 @@
       ],
       "source_published_kst": "2026-10-07T08:54+09:00",
       "title": "LS에코에너지, 베트남에 80억 투자…에폭시 타입 버스덕트 신규 생산"
+    },
+    "original:8a49dfc6014bbafda6679dc0": {
+      "first_seen_kst": "2026-10-25T15:34:20+09:00",
+      "lanes": {
+        "live": "2026-10-25T15:34:20+09:00"
+      },
+      "last_seen_kst": "2026-10-25T15:34:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01964726645616528",
+      "source": "이데일리",
+      "source_body_digest": "4260806a6f777c7415bed49eac3619e4084bf1f2fbc6483722a9ebc9ed8a6e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a9a53a096125b64d4a1e30846154865dbbd6f0ae2ffecd08cf4cf5642b5d79",
+      "source_fact_keys": [
+        "source_fact:v1:0c6ffb68ba3fc7036ee610565d0c6dffb5b350d4715f5cb63f0f48b4ec5d3706"
+      ],
+      "source_published_kst": "2026-10-25T15:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증",
+      "telegram_core_fact": "고대역폭메모리(HBM) 관련 종목에 집중 투자하는 첫 ETF로, 그동안 미국 투자자들이 쉽게 사기 어려웠던 한국 기업 주식도 담았다.",
+      "title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증"
     },
     "original:8a4b8570e8e5ccf8ddab1ef0": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
@@ -981879,6 +981954,26 @@
       "telegram_core_fact": "오픈AI가 제약 부문 인공지능(AI) 기업을 인수하며 신약 개발사업에 속도를 내고 있다. 오픈AI는 신약 개발 공정을 조정·관리하는 인공지능(AI) 플랫폼 기업 ‘오케스트라 바이오’를 인수했다고 20일(현지시간) 밝혔다.",
       "title": "오픈AI, 제약 AI에이전트 기업 인수…신약개발 사업에 속도"
     },
+    "source_fact:bcbf1058584e4e900fc42f15": {
+      "first_seen_kst": "2026-10-25T15:34:20+09:00",
+      "lanes": {
+        "live": "2026-10-25T15:34:20+09:00"
+      },
+      "last_seen_kst": "2026-10-25T15:34:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01964726645616528",
+      "source": "이데일리",
+      "source_body_digest": "4260806a6f777c7415bed49eac3619e4084bf1f2fbc6483722a9ebc9ed8a6e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a9a53a096125b64d4a1e30846154865dbbd6f0ae2ffecd08cf4cf5642b5d79",
+      "source_fact_keys": [
+        "source_fact:v1:0c6ffb68ba3fc7036ee610565d0c6dffb5b350d4715f5cb63f0f48b4ec5d3706"
+      ],
+      "source_published_kst": "2026-10-25T15:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증",
+      "telegram_core_fact": "고대역폭메모리(HBM) 관련 종목에 집중 투자하는 첫 ETF로, 그동안 미국 투자자들이 쉽게 사기 어려웠던 한국 기업 주식도 담았다.",
+      "title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증"
+    },
     "source_fact:bcc15f5fcc63e4c61cbce687": {
       "first_seen_kst": "2026-10-17T02:26:33+09:00",
       "lanes": {
@@ -1220737,6 +1220832,26 @@
       "source_published_kst": "2026-10-07T08:54+09:00",
       "title": "LS에코에너지, 베트남에 80억 투자…에폭시 타입 버스덕트 신규 생산"
     },
+    "title:8a49dfc6014bbafda6679dc0": {
+      "first_seen_kst": "2026-10-25T15:34:20+09:00",
+      "lanes": {
+        "live": "2026-10-25T15:34:20+09:00"
+      },
+      "last_seen_kst": "2026-10-25T15:34:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01964726645616528",
+      "source": "이데일리",
+      "source_body_digest": "4260806a6f777c7415bed49eac3619e4084bf1f2fbc6483722a9ebc9ed8a6e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a9a53a096125b64d4a1e30846154865dbbd6f0ae2ffecd08cf4cf5642b5d79",
+      "source_fact_keys": [
+        "source_fact:v1:0c6ffb68ba3fc7036ee610565d0c6dffb5b350d4715f5cb63f0f48b4ec5d3706"
+      ],
+      "source_published_kst": "2026-10-25T15:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증",
+      "telegram_core_fact": "고대역폭메모리(HBM) 관련 종목에 집중 투자하는 첫 ETF로, 그동안 미국 투자자들이 쉽게 사기 어려웠던 한국 기업 주식도 담았다.",
+      "title": "韓메모리株 담은 ETF 대박에…美테마 ETF 올해 87% 급증"
+    },
     "title:8a4b8570e8e5ccf8ddab1ef0": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
       "lanes": {
@@ -1287257,5 +1287372,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-25T15:00:08+09:00"
+  "updated_at_kst": "2026-10-25T15:34:20+09:00"
 }
