@@ -1154,7 +1154,7 @@
   },
   "_delivery": {
     "id": "1e4f1e2790830a222cfd10d17454759e58120f35fed6ac5316c18c6cda10fcd8",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-10-25T20:07:20+09:00",
     "chunks": [
       "<b>MLCC 증설 일정 정정 — 필리핀 정부 공식</b>\n• 필리핀 정부 2025년 발표: 전장용 MLCC 신설시설 <b>2027년 7월까지 상업가동 목표</b>.\n• 2026년 8월 업계보도: 이르면 <b>2027년 1분기 말</b> 신공장 가동 예상.\n• 따라서 '2027년 이후에야 가동'을 확정 일정으로 쓰지 않습니다.\n• 2027년 가동 목표와 AI용 세부규격 양산·고객 인증·실제 출하는 별도 확인합니다.\n• 삼성전기 52주 및 일부 유통 61주 보도와 TrendForce 산업 35주 지표는 변경하지 않음.\n• 다음 확인: 10월 28일 3분기 실적, 필리핀 공장 시운전·제품별 생산·양품률.\n• <a href=\"https://pco.gov.ph/news_releases/samsungs-over-php50-b-investment-is-first-beneficiary-of-create-more-presidential-approval/\">필리핀 정부 발표</a> / <a href=\"https://en.sedaily.com/finance/2026/08/02/samsung-electro-mechanics-fast-tracks-philippine-mlcc-plant\">2026년 8월 조기 가동 보도</a>"
@@ -2323,6 +2323,7 @@
         "official_spec_url": "https://news.skhynix.co.kr/hbf-at-fms-2026/",
         "status": "reported_target_not_official_final_not_commercial"
       }
-    }
+    },
+    "attempt_at_kst": "2026-10-25T20:07:21+09:00"
   }
 }
