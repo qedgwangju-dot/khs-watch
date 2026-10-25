@@ -15449,6 +15449,31 @@
       "telegram_core_fact": "건화물선 전문 해운사 아이콘 에너지(ICON)가 대형 정기선사에 장기 용선된 1,800TEU급 컨테이너 피더선을 소유할 법인의 지분 약 2.8%를 인수하기로 합의했다고 14일(현지시간) 발표했다.",
       "title": "아이콘 에너지, 컨테이너선 지분 2.8% 인수 합의…선박 계약매출 1200만 달러"
     },
+    "core:2538457dd0809b51d2b40430": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838935",
+      "source": "뉴시스",
+      "source_body_digest": "c1b5cac196444795e48df57eda358b64068eb3cb1d11e1470f6b716330fa97e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccf1908a35682f16cccf86080748370468c56cfaf770a5b8c67605e25b24bec",
+      "source_fact_keys": [
+        "source_fact:v1:1d6a1677a1cce64c399343214d40d7855cfd9d60692aa069df674ff200412364",
+        "source_fact:v1:3850e9684fdfefaa1aa1faf960a24f2c4325fee0735a2e423a0cc93d6a886b24",
+        "source_fact:v1:836d42c017e124861d06aad879cff3ab3f3fbc11f8774b01cea3bdf06b1a6d39",
+        "source_fact:v1:99205f8a7c2ed3ba8457d6978bbf275a09541bc2889c1dcc5dd1c00d4abec90e",
+        "source_fact:v1:bbdd5eddec15cc2ba965bbb0ff185466d8d7174d7cf25078ee39e7e90e036049",
+        "source_fact:v1:e25bef75e757e25a03889fb76799a01bd212c2c23061e2d8ddebf105a7fe92c1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'",
+      "telegram_core_fact": "자본시장 관계자는 \"애프터마켓 내 거래대금 감소와 같은 부분은 KRX와의 경쟁과 같은 부분으로만 볼 수 없고, 증시 전반에 확산한 침체의 영향이 크다\"면서도 \"다만 15% 룰을 지키기 위한 거래 종목 제한 조치는 플랫폼의 성장성에 상당한 타격을 줄 수 밖에 없는 상황\"이라고 지적했다.",
+      "title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'"
+    },
     "core:2549c6f59ffd93a188e843b3": {
       "first_seen_kst": "2026-10-17T04:08:20+09:00",
       "lanes": {
@@ -28254,6 +28279,39 @@
       "source_title": "칼릭스, 자사주 매입 한도 1억달러 증액",
       "telegram_core_fact": "칼릭스(CALX)는 이사회가 기존 자사주 매입 프로그램의 승인 한도를 1억 달러 추가로 늘리기로 결정했다고 10월 8일 발표했다.",
       "title": "칼릭스, 자사주 매입 한도 1억달러 증액"
+    },
+    "core:443700af53ffe15c76305dc6": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
     },
     "core:4446202237ae00f569d8f1fd": {
       "first_seen_kst": "2026-10-19T07:05:38+09:00",
@@ -45966,6 +46024,26 @@
       "source_title": "현대차·SK키파운드리 등 24개 기업·기관 뭉쳤다…차량용 반도체 '원팀' 출범",
       "telegram_core_fact": "반도체 설계부터 생산, 패키징, 완성차 적용까지 이어지는 협력체계를 구축하고 국산 차량용 반도체의 상용화를 앞당긴다는 구상이다.",
       "title": "현대차·SK키파운드리 등 24개 기업·기관 뭉쳤다…차량용 반도체 '원팀' 출범"
+    },
+    "core:71cbfb151944c32874a468d6": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839152",
+      "source": "뉴시스",
+      "source_body_digest": "2f804161206c0312d2ef3a49fee51582b737b285d315441fc23e2f7b2473eae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:702849efbe06d73a3769bc2f7e94e824d1dc26329f1bdad4b6e9956a1d765990",
+      "source_fact_keys": [
+        "source_fact:v1:0fe7d288d7a18f01be36dc8c534d8a308733d3629360834021aefd1a8b7197e1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "경찰, 핼러윈 앞두고 '유사 경찰제복' 집중단속…온라인 검색도 차단",
+      "telegram_core_fact": "현행 '경찰제복 및 경찰장비의 규제에 관한 법률'은 경찰공무원이 아닌 사람이 경찰제복이나 유사 경찰제복·장비를 착용하거나 소지하는 행위를 금지하고 있다.",
+      "title": "경찰, 핼러윈 앞두고 '유사 경찰제복' 집중단속…온라인 검색도 차단"
     },
     "core:71d64337e4d5a1da2e57895a": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
@@ -73461,6 +73539,39 @@
       "telegram_core_fact": "올해 상반기 실적을 보면 KB금융은 전년비 4489억원(13.1%) 증가한 3조8846억원의 순이익을 기록했다. 금융정보업체 에프앤가이드에 따르면 증권사들이 추산한 신한금융의 3분기 순이익 전망치는 전년비 14.1% 증가한 1조6573억원으로 집계됐다.",
       "title": "롯데손보 인수한 신한금융…KB와 비은행 격차 좁히나"
     },
+    "core:b5e6767e33b8647acd31a29a": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
+    },
     "core:b6014197ef316a198efa26a0": {
       "first_seen_kst": "2026-10-22T01:19:26+09:00",
       "lanes": {
@@ -96132,6 +96243,30 @@
       "telegram_core_fact": "주병기 공정거래위원장이 12일 공정위 조사에 불응하는 기업에 대한 경제적 제재를 강화하고, 온라인 플랫폼의 불공정행위에 엄정 대응하겠다는 방침을 밝혔다.",
       "title": "주병기 \"공정위 조사 불응 제재 강화…플랫폼 불공정행위 엄단\""
     },
+    "core:ee0bedcb91ec62bf076bd5e2": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025011400053",
+      "source": "연합뉴스",
+      "source_body_digest": "cddf9ac38aaef4147bba7cc08091f25104b3b801224c7734ef1f59bf1ab0cc41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766107608aeac77cf609353361e46ffabb76f433cb84abd62ac3b94529dcf1cf",
+      "source_fact_keys": [
+        "source_fact:v1:03cbe373e8c7306365bcad587cc60e9c9f20fc2ebe9ed1578c5a8ea66c1a2685",
+        "source_fact:v1:098c404695e12b08f1710f344c3acbaaa453ce3e7d04678a99f6ec0f9245da16",
+        "source_fact:v1:53cc53bdfcac63ae121568519f812701429f33aafc90222115aa641b84c0d701",
+        "source_fact:v1:7aa0fdf0a5a846eda1896f0ef5cdbaee558ca79e3965e78959423f1a6266f235",
+        "source_fact:v1:a54077b0f675e016b6cea25bd94ea2ffc15e705fc6925cb183c90cc9f826f675"
+      ],
+      "source_published_kst": "2026-10-25T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
+      "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
+      "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
+    },
     "core:ee19db81df21111c7cd6f182": {
       "first_seen_kst": "2026-10-20T17:22:47+09:00",
       "lanes": {
@@ -109052,26 +109187,36 @@
     "event:380aa6a0bdbb488e14b12730": {
       "first_seen_kst": "2026-10-25T06:53:27+09:00",
       "lanes": {
+        "live": "2026-10-25T09:29:31+09:00",
         "preopen": "2026-10-25T06:53:27+09:00"
       },
-      "last_seen_kst": "2026-10-25T06:53:27+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261024025000008",
-      "source": "연합뉴스",
-      "source_body_digest": "4cabc179f3b8f6d3d9d7670592feea3b14e23687ee5b0b3a5138114aed725853",
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:e6b1233ad8ca1905d22f6aa89e3c9e85c5090b4e745bde147a3f99fab6415d8e",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
       "source_fact_keys": [
-        "source_fact:v1:7f52efc8e6521503361341f343497fc5b9400d3fe33a3a67ebb63ea077d8e23f",
-        "source_fact:v1:7fddbdbfd5f2c203393e449aa899b799df6cb6da3002ba6204bb58509f14f2b6",
-        "source_fact:v1:8138d0ca4db0fefdf09027e4c568f0939eefdb7294b0034c1069790e875550ef",
-        "source_fact:v1:93de3c59e53ac7e2004fcdb4b92362589cbff0ab2621f7ec74ed827d9d84ec43",
-        "source_fact:v1:df18214642cef1d60f1921ed0a5da5ed9c37e819dbcb02e641d6a7c8a7f318dc"
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
       ],
-      "source_published_kst": "2026-10-25T06:25+09:00",
+      "source_published_kst": "2026-10-25T09:06+09:00",
       "source_supply_terms": {},
-      "source_title": "'증시 부진에도 ETF는 산다'…올해 개인 80조, 외인 10조 순매수 | 연합뉴스",
-      "telegram_core_fact": "계속되는 국내 증시 부진에도 개인 투자자들이 상장지수펀드(ETF)를 사들이면서 올해 순매수 규모가 80조원을 돌파했다.",
-      "title": "'증시 부진에도 ETF는 산다'…올해 개인 80조, 외인 10조 순매수 | 연합뉴스"
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
     },
     "event:3916b390a6002b3d5cb5b447": {
       "first_seen_kst": "2026-09-18T16:49:31+09:00",
@@ -122812,25 +122957,35 @@
     "event:d802b72b513d09eaa0391956": {
       "first_seen_kst": "2026-10-25T03:16:17+09:00",
       "lanes": {
-        "live": "2026-10-25T08:02:53+09:00"
+        "live": "2026-10-25T09:29:31+09:00"
       },
-      "last_seen_kst": "2026-10-25T08:02:53+09:00",
-      "link": "https://www.news1.kr/world/usa-canada/6330855",
-      "source": "뉴스1",
-      "source_body_digest": "f7f963f5f2697ab699fbdab8090f4a55a9153c87e4bde5e06511a85821b1b33e",
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a581694fdde4599d0c37d888114bae4606a505f88bfe081d10c011809c73f7b8",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
       "source_fact_keys": [
-        "source_fact:v1:0c83aa1fd2efc78a1019c28deff01b16d2a757fb0a3bd5853e797026c1ede5af",
-        "source_fact:v1:1a882c60dd444defecf1281cdaf8bae29103ea52a836f0bc5b1e272797aa8b05",
-        "source_fact:v1:975eb5e473b0243e60ef795e04d5fd9b68d84ce891192367be6e68980a726d8f",
-        "source_fact:v1:d454d794dba11d853aa99606957cbc7e7fe884d44ac039983e3e374e23f3e92b"
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
       ],
-      "source_published_kst": "2026-10-25T07:15+09:00",
+      "source_published_kst": "2026-10-25T08:56+09:00",
       "source_supply_terms": {},
-      "source_title": "오바마 \"이란 전쟁·관세로 물가 폭등…트럼프, 백악관 금칠만 몰두\"",
-      "telegram_core_fact": "(클리블랜드=뉴스1) 이훈철 특파원 = 버락 오바마 전 미국 대통령이 11월 3일 중간선거를 열흘 앞둔 24일(현지시간) 경합지 오하이오주를 찾아 도널드 트럼프 대통령의 이란 전쟁과 관세 정책이 물가 상승을 초래했다며 맹공을 퍼부었다.",
-      "title": "오바마 \"이란 전쟁·관세로 물가 폭등…트럼프, 백악관 금칠만 몰두\""
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
     },
     "event:d812265cdfa6d6eb53781072": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -129302,6 +129457,39 @@
       "source_title": "승인 없이 해외투자 계약… 증권사 금융사고 '배임·사기' 집중 | 연합뉴스",
       "telegram_core_fact": "대표적으로 회사 내부 심사위원회에서 부결된 해외 투자 건을 담당자가 회사 승인 없이 임의로 계약하거나, 증권사 직원이 고객에게 공모주 투자금 명목으로 자금을 받은 뒤 개인 채무 변제 등에 사용한 경우가 있었다.",
       "title": "승인 없이 해외투자 계약… 증권사 금융사고 '배임·사기' 집중 | 연합뉴스"
+    },
+    "fact:0678bafc291c875154c637a9": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
     },
     "fact:06939bc3392a85465878fb45": {
       "first_seen_kst": "2026-10-14T06:09:46+09:00",
@@ -172166,6 +172354,30 @@
       "source_published_kst": "2026-10-06T12:29+09:00",
       "title": "권대영 \"레버리지 ETF 도입, 금융위가 최종 결정…투자자 손실 송구\""
     },
+    "fact:6bb566dd36bd37899f886f14": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025011400053",
+      "source": "연합뉴스",
+      "source_body_digest": "cddf9ac38aaef4147bba7cc08091f25104b3b801224c7734ef1f59bf1ab0cc41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766107608aeac77cf609353361e46ffabb76f433cb84abd62ac3b94529dcf1cf",
+      "source_fact_keys": [
+        "source_fact:v1:03cbe373e8c7306365bcad587cc60e9c9f20fc2ebe9ed1578c5a8ea66c1a2685",
+        "source_fact:v1:098c404695e12b08f1710f344c3acbaaa453ce3e7d04678a99f6ec0f9245da16",
+        "source_fact:v1:53cc53bdfcac63ae121568519f812701429f33aafc90222115aa641b84c0d701",
+        "source_fact:v1:7aa0fdf0a5a846eda1896f0ef5cdbaee558ca79e3965e78959423f1a6266f235",
+        "source_fact:v1:a54077b0f675e016b6cea25bd94ea2ffc15e705fc6925cb183c90cc9f826f675"
+      ],
+      "source_published_kst": "2026-10-25T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
+      "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
+      "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
+    },
     "fact:6bc3b70b40d0e4bad36e5eda": {
       "first_seen_kst": "2026-10-15T15:55:49+09:00",
       "lanes": {
@@ -194309,6 +194521,26 @@
       "telegram_core_fact": "SK하이닉스의 낸드플래시(이하 낸드) 손자회사 솔리다임이 미국 증시 상장을 추진할 가능성이 제기되고 있다. 기존 주주가 보유한 주식을 매각하는 구주매출과 달리 신주 발행은 조달 자금이 솔리다임에 직접 유입되기 때문에 낸드 사업 투자 재원 확보에 유리하다.",
       "title": "\"돈줄 하나 더 뚫어라\"…반도체 패권 전쟁 한복판, '솔리다임 상장' 의미"
     },
+    "fact:9b553f4640aed20d2479c569": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839152",
+      "source": "뉴시스",
+      "source_body_digest": "2f804161206c0312d2ef3a49fee51582b737b285d315441fc23e2f7b2473eae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:702849efbe06d73a3769bc2f7e94e824d1dc26329f1bdad4b6e9956a1d765990",
+      "source_fact_keys": [
+        "source_fact:v1:0fe7d288d7a18f01be36dc8c534d8a308733d3629360834021aefd1a8b7197e1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "경찰, 핼러윈 앞두고 '유사 경찰제복' 집중단속…온라인 검색도 차단",
+      "telegram_core_fact": "현행 '경찰제복 및 경찰장비의 규제에 관한 법률'은 경찰공무원이 아닌 사람이 경찰제복이나 유사 경찰제복·장비를 착용하거나 소지하는 행위를 금지하고 있다.",
+      "title": "경찰, 핼러윈 앞두고 '유사 경찰제복' 집중단속…온라인 검색도 차단"
+    },
     "fact:9b640232a51debffa642c4e7": {
       "first_seen_kst": "2026-10-16T21:59:28+09:00",
       "lanes": {
@@ -206305,6 +206537,39 @@
       "telegram_core_fact": "블룸버그(Bloomberg)에 따르면 앤트로픽은 이르면 11월 중순 기업공개(IPO)를 추진한다.",
       "title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표"
     },
+    "fact:b5a27156e5119f51d8b81446": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
+    },
     "fact:b5aa803fb14d6ac9ebaa1c48": {
       "first_seen_kst": "2026-10-20T09:12:50+09:00",
       "lanes": {
@@ -215270,6 +215535,31 @@
       "source_title": "LG전자, 실적 충격 속 이틀 새 14% 하락…AI 냉각·로봇에 쏠린 시선",
       "telegram_core_fact": "LG전자의 3분기 잠정 영업이익은 7818억원으로 전년비 13.5% 증가했지만 시장 기대치 약 1조301억원을 24.1% 밑돌았다.",
       "title": "LG전자, 실적 충격 속 이틀 새 14% 하락…AI 냉각·로봇에 쏠린 시선"
+    },
+    "fact:c9ff6455a9f1029b4b43ef52": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838935",
+      "source": "뉴시스",
+      "source_body_digest": "c1b5cac196444795e48df57eda358b64068eb3cb1d11e1470f6b716330fa97e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccf1908a35682f16cccf86080748370468c56cfaf770a5b8c67605e25b24bec",
+      "source_fact_keys": [
+        "source_fact:v1:1d6a1677a1cce64c399343214d40d7855cfd9d60692aa069df674ff200412364",
+        "source_fact:v1:3850e9684fdfefaa1aa1faf960a24f2c4325fee0735a2e423a0cc93d6a886b24",
+        "source_fact:v1:836d42c017e124861d06aad879cff3ab3f3fbc11f8774b01cea3bdf06b1a6d39",
+        "source_fact:v1:99205f8a7c2ed3ba8457d6978bbf275a09541bc2889c1dcc5dd1c00d4abec90e",
+        "source_fact:v1:bbdd5eddec15cc2ba965bbb0ff185466d8d7174d7cf25078ee39e7e90e036049",
+        "source_fact:v1:e25bef75e757e25a03889fb76799a01bd212c2c23061e2d8ddebf105a7fe92c1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'",
+      "telegram_core_fact": "자본시장 관계자는 \"애프터마켓 내 거래대금 감소와 같은 부분은 KRX와의 경쟁과 같은 부분으로만 볼 수 없고, 증시 전반에 확산한 침체의 영향이 크다\"면서도 \"다만 15% 룰을 지키기 위한 거래 종목 제한 조치는 플랫폼의 성장성에 상당한 타격을 줄 수 밖에 없는 상황\"이라고 지적했다.",
+      "title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'"
     },
     "fact:ca257ca28ebec48844638397": {
       "first_seen_kst": "2026-10-23T18:13:19+09:00",
@@ -278011,6 +278301,39 @@
       "source_event_identity": "",
       "title": "러 드론, 키이우 남부교 이틀새 4번 타격…차량'지하철 통행 끊겼다"
     },
+    "link:40c01c9d8fc7e0b7d56d1ef7": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
+    },
     "link:40cc368f28a73a4c9f0a05ab": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
       "lanes": {
@@ -284271,6 +284594,30 @@
       "source_title": "“오픈AI, 기업가치 1조2500억달러로 투자 유치⋯내주 확정 전망”",
       "telegram_core_fact": "22일(현지시간) 블룸버그통신이 인용한 소식통에 따르면 오픈AI는 300억달러 규모 신규 투자를 유치를 추진하고 있으며, 협상 막바지에 기업가치 목표치를 1조2500억달러로 잡았다. CNBC도 최근 오픈AI의 기업가치가 1조2500억달러로 책정될 것이라고 보도했다.",
       "title": "“오픈AI, 기업가치 1조2500억달러로 투자 유치⋯내주 확정 전망”"
+    },
+    "link:4ca68035f21a90c25a71ba19": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025011400053",
+      "source": "연합뉴스",
+      "source_body_digest": "cddf9ac38aaef4147bba7cc08091f25104b3b801224c7734ef1f59bf1ab0cc41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766107608aeac77cf609353361e46ffabb76f433cb84abd62ac3b94529dcf1cf",
+      "source_fact_keys": [
+        "source_fact:v1:03cbe373e8c7306365bcad587cc60e9c9f20fc2ebe9ed1578c5a8ea66c1a2685",
+        "source_fact:v1:098c404695e12b08f1710f344c3acbaaa453ce3e7d04678a99f6ec0f9245da16",
+        "source_fact:v1:53cc53bdfcac63ae121568519f812701429f33aafc90222115aa641b84c0d701",
+        "source_fact:v1:7aa0fdf0a5a846eda1896f0ef5cdbaee558ca79e3965e78959423f1a6266f235",
+        "source_fact:v1:a54077b0f675e016b6cea25bd94ea2ffc15e705fc6925cb183c90cc9f826f675"
+      ],
+      "source_published_kst": "2026-10-25T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
+      "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
+      "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
     },
     "link:4ca79cfae2e6d27ab6a6d365": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -295985,6 +296332,26 @@
       "source_title": "전국서 주목받는 충북반도체고, 내년 3개과 신입생 96명 모집 | 연합뉴스",
       "telegram_core_fact": "삼성전자와 SK하이닉스로 대표되는 반도체 업계의 유례없는 호황 속에 국내외의 관심을 받아 온 충북반도체고등학교(음성군 금왕읍)가 내년도 신입생을 모집한다. 충북반도체고는 삼성전자와 SK하이닉스를 비롯한 120여개 반도체 기업과 취업 협력을 이어가고 있으며, 매년 95% 이상의 취업률을 기록하고 있다.",
       "title": "전국서 주목받는 충북반도체고, 내년 3개과 신입생 96명 모집 | 연합뉴스"
+    },
+    "link:605c0cd0ad6e2e0ec17c4755": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839152",
+      "source": "뉴시스",
+      "source_body_digest": "2f804161206c0312d2ef3a49fee51582b737b285d315441fc23e2f7b2473eae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:702849efbe06d73a3769bc2f7e94e824d1dc26329f1bdad4b6e9956a1d765990",
+      "source_fact_keys": [
+        "source_fact:v1:0fe7d288d7a18f01be36dc8c534d8a308733d3629360834021aefd1a8b7197e1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "경찰, 핼러윈 앞두고 '유사 경찰제복' 집중단속…온라인 검색도 차단",
+      "telegram_core_fact": "현행 '경찰제복 및 경찰장비의 규제에 관한 법률'은 경찰공무원이 아닌 사람이 경찰제복이나 유사 경찰제복·장비를 착용하거나 소지하는 행위를 금지하고 있다.",
+      "title": "경찰, 핼러윈 앞두고 '유사 경찰제복' 집중단속…온라인 검색도 차단"
     },
     "link:606c4d3f94cc5e1950177646": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -350856,6 +351223,39 @@
       "telegram_core_fact": "갑작스러운 설비 고장으로 생산에 차질이 생기는 일을 줄일 수 있을 것으로 기대된다.",
       "title": "포스코퓨처엠, AI로 설비 고장 미리 잡는다…생산 현장 혁신"
     },
+    "link:c0eb116265cfcc79f2b0c240": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
+    },
     "link:c0ef19c2cd7d544cfe3762b6": {
       "first_seen_kst": "2026-10-22T11:47:17+09:00",
       "lanes": {
@@ -361842,6 +362242,31 @@
       "link": "https://www.yna.co.kr/view/AKR20260928011600009",
       "source": "연합뉴스",
       "title": "'메디케어 해킹' 호주상원, 올트먼 등에 청문회 출석 요구 | 연합뉴스"
+    },
+    "link:d44316daee796d7482866a79": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838935",
+      "source": "뉴시스",
+      "source_body_digest": "c1b5cac196444795e48df57eda358b64068eb3cb1d11e1470f6b716330fa97e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccf1908a35682f16cccf86080748370468c56cfaf770a5b8c67605e25b24bec",
+      "source_fact_keys": [
+        "source_fact:v1:1d6a1677a1cce64c399343214d40d7855cfd9d60692aa069df674ff200412364",
+        "source_fact:v1:3850e9684fdfefaa1aa1faf960a24f2c4325fee0735a2e423a0cc93d6a886b24",
+        "source_fact:v1:836d42c017e124861d06aad879cff3ab3f3fbc11f8774b01cea3bdf06b1a6d39",
+        "source_fact:v1:99205f8a7c2ed3ba8457d6978bbf275a09541bc2889c1dcc5dd1c00d4abec90e",
+        "source_fact:v1:bbdd5eddec15cc2ba965bbb0ff185466d8d7174d7cf25078ee39e7e90e036049",
+        "source_fact:v1:e25bef75e757e25a03889fb76799a01bd212c2c23061e2d8ddebf105a7fe92c1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'",
+      "telegram_core_fact": "자본시장 관계자는 \"애프터마켓 내 거래대금 감소와 같은 부분은 KRX와의 경쟁과 같은 부분으로만 볼 수 없고, 증시 전반에 확산한 침체의 영향이 크다\"면서도 \"다만 15% 룰을 지키기 위한 거래 종목 제한 조치는 플랫폼의 성장성에 상당한 타격을 줄 수 밖에 없는 상황\"이라고 지적했다.",
+      "title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'"
     },
     "link:d4447bc5e6d036b877309792": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
@@ -396209,6 +396634,39 @@
       "source_title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명",
       "telegram_core_fact": "협약에는 현지 인허가와 원주민 협정 체결, 시추장비 구매 등 과업을 완료한 뒤 연구비 잔금 50%를 지급하도록 명시됐으나 지난 2024년 7월 잔금 지급 당시 현지기업은 필수 인허가를 받지 못했고 원주민 협정도 체결하지 못한 상태였던 것으로 드러났다.",
       "title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명"
+    },
+    "original:145c5c1a0cc8624da70ee3af": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
     },
     "original:1470ae0ea379f715a1ced8c7": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -444047,6 +444505,31 @@
       "telegram_core_fact": "리쥬란과 아렌시아, 토리든 등 올리브영 K뷰티에딧 입점 브랜드의 지난달 말 기준 일평균 매출은 8월 대비 2배로 증가했다.",
       "title": "동남아도 'CJ올리브영'…세포라 48개 매장에 K뷰티 입점"
     },
+    "original:68dcd3ae735022eb4355264e": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838935",
+      "source": "뉴시스",
+      "source_body_digest": "c1b5cac196444795e48df57eda358b64068eb3cb1d11e1470f6b716330fa97e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccf1908a35682f16cccf86080748370468c56cfaf770a5b8c67605e25b24bec",
+      "source_fact_keys": [
+        "source_fact:v1:1d6a1677a1cce64c399343214d40d7855cfd9d60692aa069df674ff200412364",
+        "source_fact:v1:3850e9684fdfefaa1aa1faf960a24f2c4325fee0735a2e423a0cc93d6a886b24",
+        "source_fact:v1:836d42c017e124861d06aad879cff3ab3f3fbc11f8774b01cea3bdf06b1a6d39",
+        "source_fact:v1:99205f8a7c2ed3ba8457d6978bbf275a09541bc2889c1dcc5dd1c00d4abec90e",
+        "source_fact:v1:bbdd5eddec15cc2ba965bbb0ff185466d8d7174d7cf25078ee39e7e90e036049",
+        "source_fact:v1:e25bef75e757e25a03889fb76799a01bd212c2c23061e2d8ddebf105a7fe92c1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'",
+      "telegram_core_fact": "자본시장 관계자는 \"애프터마켓 내 거래대금 감소와 같은 부분은 KRX와의 경쟁과 같은 부분으로만 볼 수 없고, 증시 전반에 확산한 침체의 영향이 크다\"면서도 \"다만 15% 룰을 지키기 위한 거래 종목 제한 조치는 플랫폼의 성장성에 상당한 타격을 줄 수 밖에 없는 상황\"이라고 지적했다.",
+      "title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'"
+    },
     "original:68ed55d164e9a0ac7e4f208c": {
       "first_seen_kst": "2026-10-20T09:47:35+09:00",
       "lanes": {
@@ -449250,6 +449733,39 @@
       "source_title": "[계양전기 생존방정식]① 수천억 수주잔고에도 자본 고갈…수익성 해법은",
       "telegram_core_fact": "올해 상반기 말 자동차 모터·로보틱스 사업 수주잔고는 3531억원으로 집계됐다.",
       "title": "[계양전기 생존방정식]① 수천억 수주잔고에도 자본 고갈…수익성 해법은"
+    },
+    "original:72454dcd03bcf1f5cab0ddc6": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
     },
     "original:724652188b05fad0770619fd": {
       "first_seen_kst": "2026-09-17T23:20:33+09:00",
@@ -477501,6 +478017,30 @@
       ],
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
+    },
+    "original:a451a7462f9a606e185df6e0": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025011400053",
+      "source": "연합뉴스",
+      "source_body_digest": "cddf9ac38aaef4147bba7cc08091f25104b3b801224c7734ef1f59bf1ab0cc41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766107608aeac77cf609353361e46ffabb76f433cb84abd62ac3b94529dcf1cf",
+      "source_fact_keys": [
+        "source_fact:v1:03cbe373e8c7306365bcad587cc60e9c9f20fc2ebe9ed1578c5a8ea66c1a2685",
+        "source_fact:v1:098c404695e12b08f1710f344c3acbaaa453ce3e7d04678a99f6ec0f9245da16",
+        "source_fact:v1:53cc53bdfcac63ae121568519f812701429f33aafc90222115aa641b84c0d701",
+        "source_fact:v1:7aa0fdf0a5a846eda1896f0ef5cdbaee558ca79e3965e78959423f1a6266f235",
+        "source_fact:v1:a54077b0f675e016b6cea25bd94ea2ffc15e705fc6925cb183c90cc9f826f675"
+      ],
+      "source_published_kst": "2026-10-25T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
+      "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
+      "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
     },
     "original:a481c4c674bb5a5fdbf2a0d9": {
       "first_seen_kst": "2026-10-01T21:50:06+09:00",
@@ -522085,6 +522625,26 @@
       "telegram_core_fact": "우리나라와 미국, 영국, 프랑스, 독일, 일본 등 주요국이 7일(현지시간) '구조적 과잉생산 대응을 위한 공동 장관성명'을 발표했다.",
       "title": "中·러시아·인도 등 제외 G20, 과잉생산 대응 공동 성명"
     },
+    "original:f6c62449b34c58d8c0ab6147": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839152",
+      "source": "뉴시스",
+      "source_body_digest": "2f804161206c0312d2ef3a49fee51582b737b285d315441fc23e2f7b2473eae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:702849efbe06d73a3769bc2f7e94e824d1dc26329f1bdad4b6e9956a1d765990",
+      "source_fact_keys": [
+        "source_fact:v1:0fe7d288d7a18f01be36dc8c534d8a308733d3629360834021aefd1a8b7197e1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "경찰, 핼러윈 앞두고 '유사 경찰제복' 집중단속…온라인 검색도 차단",
+      "telegram_core_fact": "현행 '경찰제복 및 경찰장비의 규제에 관한 법률'은 경찰공무원이 아닌 사람이 경찰제복이나 유사 경찰제복·장비를 착용하거나 소지하는 행위를 금지하고 있다.",
+      "title": "경찰, 핼러윈 앞두고 '유사 경찰제복' 집중단속…온라인 검색도 차단"
+    },
     "original:f6d2271ddcbd36d48271b8d6": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -548591,6 +549151,39 @@
       "telegram_core_fact": "인공지능(AI) 산업의 자금조달 불안이 확산하면서 미국 데이터센터 관련 상장지수펀드(ETF)가 일주일 새 20% 가까이 급락했다. 가장 낙폭이 컸던 데이터센터 ETF와 소프트웨어 ETF의 수익률 격차는 19.20%포인트에 달했다.",
       "title": "AI데이터센터 ETF 20% 급락 '비명'…소프트웨어는 선방[ETF업&다운]"
     },
+    "source_fact:096382e2da94761e4faa0a33": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
+    },
     "source_fact:096dcd147db55e2ea1d96f5f": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -551487,6 +552080,39 @@
       "source_title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발",
       "telegram_core_fact": "통신반도체 전문기업 에티포스가 방산전자 기업 넥스윌과 손잡고 드론·무인체계용 통신기술 개발에 나선다. 서원기 넥스윌 대표는 “디지털 RF·방산장비 개발 및 양산 경험에 에티포스의 통신반도체 기술을 더해 미래 전장에 필요한 통신 솔루션을 개발하고 실질적인 사업 성과로 연결하겠다”고 밝혔다.",
       "title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발"
+    },
+    "source_fact:0ad2de6b0a90c6d30f49aa17": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
     },
     "source_fact:0ad5cb7c2af1d757b96d2783": {
       "first_seen_kst": "2026-10-24T09:49:05+09:00",
@@ -557951,6 +558577,39 @@
       "telegram_core_fact": "라이프존 메탈스(LZM)는 탄자니아 카방가 니켈 프로젝트의 주민 이주 실행계획(RAP)이 국제금융공사(IFC) 성능표준 5(PS5)에 중대한 측면에서 계속 부합한다는 독립 전문가 검토 결과가 나오면서, 호주 광산업체 BHP에 지급할 인수 대가의 상한이 800만 달러 자동 감액됐다고 7일 발표했다.",
       "title": "라이프존 메탈스, BHP 인수대가 800만달러 감액..이주계획 검증 통과"
     },
+    "source_fact:0d7b07cd8ce3bdea05b062b9": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
+    },
     "source_fact:0d7fb1ab1d62d6aa181e27de": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
       "lanes": {
@@ -560382,6 +561041,39 @@
       "source_title": "상장 첫날 개인 58억 샀다…SOL 글로벌DRAM반도체플러스, 하반기 반도체 ETF 1위",
       "telegram_core_fact": "신한자산운용은 'SOL 글로벌DRAM반도체플러스 ETF'가 올해 하반기 신규 상장한 반도체 ETF 가운데 상장 첫날 개인 순매수 1위를 기록했다고 8일 밝혔다.",
       "title": "상장 첫날 개인 58억 샀다…SOL 글로벌DRAM반도체플러스, 하반기 반도체 ETF 1위"
+    },
+    "source_fact:0e99ed6e418205d7ceaa5fc8": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
     },
     "source_fact:0e9e3cc621f2ded0d1ecbc10": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
@@ -564132,6 +564824,39 @@
       "source_title": "신동국, 한미사이언스 주식 가압류·자본시장법 위반 논란…대주단도 '촉각'",
       "telegram_core_fact": "위반 사실이 인정되면 관련 주식의 의결권 제한이나 처분명령 등의 제재 가능성이 거론된다.",
       "title": "신동국, 한미사이언스 주식 가압류·자본시장법 위반 논란…대주단도 '촉각'"
+    },
+    "source_fact:100ab0b34d2411ce81e5d227": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
     },
     "source_fact:100e067e7ba9911b3cd112d5": {
       "first_seen_kst": "2026-10-15T03:25:52+09:00",
@@ -576617,6 +577342,39 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "source_fact:1594adb6e9db61a12110d9b7": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
     },
     "source_fact:1599c918cd955233806f229d": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
@@ -593774,6 +594532,39 @@
       "source_title": "엔비디아 젠슨 황, 메모리 공급 과잉 우려에 \"많으면 좋다\"",
       "telegram_core_fact": "[파이낸셜뉴스] 미국의 인공지능(AI) 반도체 기업 엔비디아의 젠슨 황 최고경영자(CEO)가 AI 가속기 등에 쓰이는 메모리 반도체를 두고 과잉 공급을 걱정할 필요가 없다고 말했다.",
       "title": "엔비디아 젠슨 황, 메모리 공급 과잉 우려에 \"많으면 좋다\""
+    },
+    "source_fact:1cb1bc08a25a207f4fec6291": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
     },
     "source_fact:1cb317672d2f3e1bc03d6e7b": {
       "first_seen_kst": "2026-10-21T02:06:57+09:00",
@@ -635080,6 +635871,39 @@
       "telegram_core_fact": "CJ대한통운 건설부문이 KT클라우드의 안산 AI 데이터센터 신축공사를 수주하며 데이터센터 시공 사업 확대에 나선다.",
       "title": "CJ대한통운 건설부문, KT클라우드 안산 AIDC 공사 수주"
     },
+    "source_fact:2dc051f64ff3ab8d7c0e5988": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
+    },
     "source_fact:2dc2ecdf530cc5e5673ed5cc": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
       "lanes": {
@@ -637141,6 +637965,30 @@
       "source_title": "디오, 30억 규모 자사주 취득 결정",
       "telegram_core_fact": "디오는 2024년 약 270억원 자사주 소각과 100억원 취득 신탁계약을 체결했으며, 올해 2월에도 약 200억원 소각과 약 100억원 추가 취득을 결정했다.",
       "title": "디오, 30억 규모 자사주 취득 결정"
+    },
+    "source_fact:2ebd76e75bbcb54733fc24f5": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025011400053",
+      "source": "연합뉴스",
+      "source_body_digest": "cddf9ac38aaef4147bba7cc08091f25104b3b801224c7734ef1f59bf1ab0cc41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766107608aeac77cf609353361e46ffabb76f433cb84abd62ac3b94529dcf1cf",
+      "source_fact_keys": [
+        "source_fact:v1:03cbe373e8c7306365bcad587cc60e9c9f20fc2ebe9ed1578c5a8ea66c1a2685",
+        "source_fact:v1:098c404695e12b08f1710f344c3acbaaa453ce3e7d04678a99f6ec0f9245da16",
+        "source_fact:v1:53cc53bdfcac63ae121568519f812701429f33aafc90222115aa641b84c0d701",
+        "source_fact:v1:7aa0fdf0a5a846eda1896f0ef5cdbaee558ca79e3965e78959423f1a6266f235",
+        "source_fact:v1:a54077b0f675e016b6cea25bd94ea2ffc15e705fc6925cb183c90cc9f826f675"
+      ],
+      "source_published_kst": "2026-10-25T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
+      "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
+      "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
     },
     "source_fact:2ec491d2ee3a1b4cf0ba873a": {
       "first_seen_kst": "2026-10-23T19:28:19+09:00",
@@ -654742,6 +655590,39 @@
       "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
       "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
     },
+    "source_fact:3631984216c91fa816bd0f0e": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
+    },
     "source_fact:3631b06db03e1c07dced0eb3": {
       "first_seen_kst": "2026-10-23T11:57:46+09:00",
       "lanes": {
@@ -664050,6 +664931,39 @@
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
     },
+    "source_fact:3a4c08a3d2b9a14a2cc1ee42": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
+    },
     "source_fact:3a4d4c5481896cba767356ee": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
       "lanes": {
@@ -666283,6 +667197,31 @@
       "source_title": "에이플러스에셋, 2030년 ROE 15% 목표…자사주 35억 추가 매입",
       "telegram_core_fact": "에이플러스에셋이 2030년까지 자기자본이익률(ROE) 15% 이상을 유지하고 총주주환원율을 40% 이상으로 끌어올리겠다는 중장기 계획을 발표했다.",
       "title": "에이플러스에셋, 2030년 ROE 15% 목표…자사주 35억 추가 매입"
+    },
+    "source_fact:3b5aeaf806cd1f391e23166b": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838935",
+      "source": "뉴시스",
+      "source_body_digest": "c1b5cac196444795e48df57eda358b64068eb3cb1d11e1470f6b716330fa97e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccf1908a35682f16cccf86080748370468c56cfaf770a5b8c67605e25b24bec",
+      "source_fact_keys": [
+        "source_fact:v1:1d6a1677a1cce64c399343214d40d7855cfd9d60692aa069df674ff200412364",
+        "source_fact:v1:3850e9684fdfefaa1aa1faf960a24f2c4325fee0735a2e423a0cc93d6a886b24",
+        "source_fact:v1:836d42c017e124861d06aad879cff3ab3f3fbc11f8774b01cea3bdf06b1a6d39",
+        "source_fact:v1:99205f8a7c2ed3ba8457d6978bbf275a09541bc2889c1dcc5dd1c00d4abec90e",
+        "source_fact:v1:bbdd5eddec15cc2ba965bbb0ff185466d8d7174d7cf25078ee39e7e90e036049",
+        "source_fact:v1:e25bef75e757e25a03889fb76799a01bd212c2c23061e2d8ddebf105a7fe92c1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'",
+      "telegram_core_fact": "자본시장 관계자는 \"애프터마켓 내 거래대금 감소와 같은 부분은 KRX와의 경쟁과 같은 부분으로만 볼 수 없고, 증시 전반에 확산한 침체의 영향이 크다\"면서도 \"다만 15% 룰을 지키기 위한 거래 종목 제한 조치는 플랫폼의 성장성에 상당한 타격을 줄 수 밖에 없는 상황\"이라고 지적했다.",
+      "title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'"
     },
     "source_fact:3b5cdf163fbccc4d053b01be": {
       "first_seen_kst": "2026-10-22T22:28:15+09:00",
@@ -669898,6 +670837,39 @@
       "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
       "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
     },
+    "source_fact:3cb2e67cda8a826f0e4389d4": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
+    },
     "source_fact:3cb3a42d8d3aa75f759b25c4": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -672287,6 +673259,39 @@
       "source_title": "서울시 아동급식카드, 내달부터 '땡겨요'에서 결제 가능",
       "telegram_core_fact": "서울시는 아동 급식 지원 실효성을 높이기 위해 급식 지원 단가를 인상하는 동시에 민간 기업과의 협업을 통해 아동급식카드를 보다 편리하게 이용할 수 있도록 서비스를 개선하고 있다.",
       "title": "서울시 아동급식카드, 내달부터 '땡겨요'에서 결제 가능"
+    },
+    "source_fact:3de968d027548f442979f1b7": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
     },
     "source_fact:3dea6a10f8dd7ac91a472e46": {
       "first_seen_kst": "2026-10-21T21:09:15+09:00",
@@ -744451,6 +745456,39 @@
       "telegram_core_fact": "영풍과 MBK파트너스가 2년 전에 고려아연 경영권 확보를 위해 체결한 비공개 계약에서 영풍 측 고려아연 지분에 대한 콜옵션(주식매수선택권) 행사가격을 주당 70만원으로 정한 것으로 확인됐다.",
       "title": "\"영풍, MBK와 공개매수가보다 낮게 콜옵션 계약\""
     },
+    "source_fact:5b75e84c76b9fd82f1310cdd": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
+    },
     "source_fact:5b77acab2fb386da6d35ebac": {
       "first_seen_kst": "2026-10-15T02:55:21+09:00",
       "lanes": {
@@ -765311,6 +766349,39 @@
       "telegram_core_fact": "업계에 따르면 삼성전자 DS부문은 지난 7일 특별경영성과급 세부 기준과 지급 일정을 공지했다.",
       "title": "\"성과급 최소 30억, 서민 탈출한 듯\"…삼성전자 '사내부부' 직원 글"
     },
+    "source_fact:6495ce602d25c5177c0c0913": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
+    },
     "source_fact:64977361ec9e7ed4765067f4": {
       "first_seen_kst": "2026-10-22T00:31:22+09:00",
       "lanes": {
@@ -783643,6 +784714,39 @@
       "telegram_core_fact": "국민의힘 구자근 국회의원(경북 구미시갑)이 12일 한국제품안전관리원으로부터 제출받은 자료에 따르면 2021년부터 2026년 7월까지 해외 리콜제품 1만 9102개를 대상으로 해외 직구 플랫폼을 모니터링한 결과, 국내 판매가 확인된 사례는 총 1138건으로 집계됐다.",
       "title": "구자근 의원 \"해외서 리콜된 제품 국내서 버젓이 판매\""
     },
+    "source_fact:6c4fd39b533e9dacd873e9dd": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
+    },
     "source_fact:6c50d0e280da8ad59640187f": {
       "first_seen_kst": "2026-10-13T18:11:03+09:00",
       "lanes": {
@@ -788086,6 +789190,26 @@
       "telegram_core_fact": "넥스트에라 에너지(NEE)는 3분기 Non-GAAP 조정 주당순이익이 1.24달러로 전년 동기 1.13달러보다 9.7% 증가했고, Non-GAAP 조정 순이익은 25억9200만 달러로 10.4% 늘었다고 10월 21일 발표했다.",
       "title": "넥스트에라 에너지, 3분기 조정 EPS 1.24달러..전년비 9.7% 증가"
     },
+    "source_fact:6e319361ea3e202d41c185a7": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839152",
+      "source": "뉴시스",
+      "source_body_digest": "2f804161206c0312d2ef3a49fee51582b737b285d315441fc23e2f7b2473eae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:702849efbe06d73a3769bc2f7e94e824d1dc26329f1bdad4b6e9956a1d765990",
+      "source_fact_keys": [
+        "source_fact:v1:0fe7d288d7a18f01be36dc8c534d8a308733d3629360834021aefd1a8b7197e1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "경찰, 핼러윈 앞두고 '유사 경찰제복' 집중단속…온라인 검색도 차단",
+      "telegram_core_fact": "현행 '경찰제복 및 경찰장비의 규제에 관한 법률'은 경찰공무원이 아닌 사람이 경찰제복이나 유사 경찰제복·장비를 착용하거나 소지하는 행위를 금지하고 있다.",
+      "title": "경찰, 핼러윈 앞두고 '유사 경찰제복' 집중단속…온라인 검색도 차단"
+    },
     "source_fact:6e32bad29eff890aa9f3a351": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -789488,6 +790612,30 @@
       "source_title": "삼성전자 우선주 사볼까…소각 기대감에 본주와 괴리율 절반 축소",
       "telegram_core_fact": "김수현 DS투자증권 리서치센터장은 “보통주 소각 시 발생하는 금산법 문제를 고려하면 삼성전자 자사주 소각 재원에서 우선주의 자사주 매입·소각량이 늘어날 가능성을 배제할 수 없다”고 말했다.",
       "title": "삼성전자 우선주 사볼까…소각 기대감에 본주와 괴리율 절반 축소"
+    },
+    "source_fact:6ee68b2bc25e5d7d3cf66452": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025011400053",
+      "source": "연합뉴스",
+      "source_body_digest": "cddf9ac38aaef4147bba7cc08091f25104b3b801224c7734ef1f59bf1ab0cc41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766107608aeac77cf609353361e46ffabb76f433cb84abd62ac3b94529dcf1cf",
+      "source_fact_keys": [
+        "source_fact:v1:03cbe373e8c7306365bcad587cc60e9c9f20fc2ebe9ed1578c5a8ea66c1a2685",
+        "source_fact:v1:098c404695e12b08f1710f344c3acbaaa453ce3e7d04678a99f6ec0f9245da16",
+        "source_fact:v1:53cc53bdfcac63ae121568519f812701429f33aafc90222115aa641b84c0d701",
+        "source_fact:v1:7aa0fdf0a5a846eda1896f0ef5cdbaee558ca79e3965e78959423f1a6266f235",
+        "source_fact:v1:a54077b0f675e016b6cea25bd94ea2ffc15e705fc6925cb183c90cc9f826f675"
+      ],
+      "source_published_kst": "2026-10-25T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
+      "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
+      "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
     },
     "source_fact:6ee70cb53f94cfc7b5c3d792": {
       "first_seen_kst": "2026-10-12T19:07:06+09:00",
@@ -810457,6 +811605,39 @@
       "telegram_core_fact": "보고서는 \"바이오 원부자재는 원가, 품질, 공급 안전성을 좌우하는 전략 자산\"이라며 \"의약품 제조 품목 허가에 등록된 원부자재는 교체 시 재검증 비용이 막대해 안정적 매출의 원천이 된다\"고 짚었다.",
       "title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스"
     },
+    "source_fact:77f80cc775c3ec7552d7435c": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
+    },
     "source_fact:77fcf7dbcf93180983f96b78": {
       "first_seen_kst": "2026-10-11T23:29:08+09:00",
       "lanes": {
@@ -822654,6 +823835,39 @@
       "source_published_kst": "2026-10-06T08:34+09:00",
       "title": "한투증권, 산일전기 목표가↑…\"美·유럽, 중국산 규제 수혜\" | 연합뉴스"
     },
+    "source_fact:7d3cbe4e2aec7eddbbeab537": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
+    },
     "source_fact:7d436188eb57b30d3cb508fe": {
       "first_seen_kst": "2026-10-14T16:58:19+09:00",
       "lanes": {
@@ -831789,6 +833003,31 @@
       "source_title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스",
       "telegram_core_fact": "메리츠증권은 SK온이 3분기 매출 1조5천984억원에 적자 1천794억원(AMPC 900억원 포함)을 기록해 지난해 동기(매출 1조8천79억원·적자 1천248억원)보다 적자 폭이 커졌을 것으로 전망했다.",
       "title": "3분기 K배터리 실적전망은…LG엔솔·삼성SDI '맑음' SK온 '흐림' | 연합뉴스"
+    },
+    "source_fact:81600b8803f077c359e99ed6": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838935",
+      "source": "뉴시스",
+      "source_body_digest": "c1b5cac196444795e48df57eda358b64068eb3cb1d11e1470f6b716330fa97e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccf1908a35682f16cccf86080748370468c56cfaf770a5b8c67605e25b24bec",
+      "source_fact_keys": [
+        "source_fact:v1:1d6a1677a1cce64c399343214d40d7855cfd9d60692aa069df674ff200412364",
+        "source_fact:v1:3850e9684fdfefaa1aa1faf960a24f2c4325fee0735a2e423a0cc93d6a886b24",
+        "source_fact:v1:836d42c017e124861d06aad879cff3ab3f3fbc11f8774b01cea3bdf06b1a6d39",
+        "source_fact:v1:99205f8a7c2ed3ba8457d6978bbf275a09541bc2889c1dcc5dd1c00d4abec90e",
+        "source_fact:v1:bbdd5eddec15cc2ba965bbb0ff185466d8d7174d7cf25078ee39e7e90e036049",
+        "source_fact:v1:e25bef75e757e25a03889fb76799a01bd212c2c23061e2d8ddebf105a7fe92c1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'",
+      "telegram_core_fact": "자본시장 관계자는 \"애프터마켓 내 거래대금 감소와 같은 부분은 KRX와의 경쟁과 같은 부분으로만 볼 수 없고, 증시 전반에 확산한 침체의 영향이 크다\"면서도 \"다만 15% 룰을 지키기 위한 거래 종목 제한 조치는 플랫폼의 성장성에 상당한 타격을 줄 수 밖에 없는 상황\"이라고 지적했다.",
+      "title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'"
     },
     "source_fact:8160ed889bc89fb55d2eb45d": {
       "first_seen_kst": "2026-10-21T03:15:13+09:00",
@@ -844117,6 +845356,39 @@
       "source_published_kst": "2026-10-06T20:10+09:00",
       "title": "콘스텔레이션, 구글과 10억 달러 이상 원전 전력 계약 임박 소식에 강세"
     },
+    "source_fact:86a941d741a84c18cb323f9b": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
+    },
     "source_fact:86aa543ab51c1942be9b11ba": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
       "lanes": {
@@ -853178,6 +854450,39 @@
       ],
       "source_published_kst": "2026-10-06T17:52+09:00",
       "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
+    "source_fact:8ad7bb11bee0d2d69d45df0e": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
     },
     "source_fact:8adce23c4cd62fa9fb9bd9f7": {
       "first_seen_kst": "2026-10-15T08:51:43+09:00",
@@ -889943,6 +891248,31 @@
       "telegram_core_fact": "허 조사관은 \"스마트워치는 피해자를 아주 제한적으로 보호할 수 있는 조치\"라며 \"피해자 보호 조치에만 의존할 것이 아니라 가해자의 접근 여부를 실질적으로 감시하고 필요하면 격리하는 등 적극적으로 제재해야 한다\"고 말했다.",
       "title": "접근금지 공백, 스마트워치 미작동…'피해자 보호' 허점에 참극"
     },
+    "source_fact:9ad454ecfeaf27199e74916f": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838935",
+      "source": "뉴시스",
+      "source_body_digest": "c1b5cac196444795e48df57eda358b64068eb3cb1d11e1470f6b716330fa97e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccf1908a35682f16cccf86080748370468c56cfaf770a5b8c67605e25b24bec",
+      "source_fact_keys": [
+        "source_fact:v1:1d6a1677a1cce64c399343214d40d7855cfd9d60692aa069df674ff200412364",
+        "source_fact:v1:3850e9684fdfefaa1aa1faf960a24f2c4325fee0735a2e423a0cc93d6a886b24",
+        "source_fact:v1:836d42c017e124861d06aad879cff3ab3f3fbc11f8774b01cea3bdf06b1a6d39",
+        "source_fact:v1:99205f8a7c2ed3ba8457d6978bbf275a09541bc2889c1dcc5dd1c00d4abec90e",
+        "source_fact:v1:bbdd5eddec15cc2ba965bbb0ff185466d8d7174d7cf25078ee39e7e90e036049",
+        "source_fact:v1:e25bef75e757e25a03889fb76799a01bd212c2c23061e2d8ddebf105a7fe92c1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'",
+      "telegram_core_fact": "자본시장 관계자는 \"애프터마켓 내 거래대금 감소와 같은 부분은 KRX와의 경쟁과 같은 부분으로만 볼 수 없고, 증시 전반에 확산한 침체의 영향이 크다\"면서도 \"다만 15% 룰을 지키기 위한 거래 종목 제한 조치는 플랫폼의 성장성에 상당한 타격을 줄 수 밖에 없는 상황\"이라고 지적했다.",
+      "title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'"
+    },
     "source_fact:9ad4f4f19b3b119fbc94ae4b": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -895527,6 +896857,39 @@
       "source_title": "[美특징주]IBM, 3Q 소프트웨어·인프라 성장에 실적 예상치 상회…시간외 ↑",
       "telegram_core_fact": "21일(현지시간) CNBC에 따르면 IBM의 3분기 조정 주당순이익(EPS)은 2.95달러로 시장 예상치 2.86달러를 상회했다.",
       "title": "[美특징주]IBM, 3Q 소프트웨어·인프라 성장에 실적 예상치 상회…시간외 ↑"
+    },
+    "source_fact:9d0a88bc4ef38f7b24a30914": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
     },
     "source_fact:9d0c0f334d39860f2650a871": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -903443,6 +904806,31 @@
       "source_title": "농식품부, 포도 수출 1억달러 달성 추진…표준계약서 도입 | 연합뉴스",
       "telegram_core_fact": "농림축산식품부가 포도 수출 1억달러(약 1천351억원) 달성을 위해 생산자와 수출업체 간 표준거래계약서를 도입하고 검역·물류 지원을 확대한다. 농식품부는 경상북도와 함께 15일 경북 상주시의 포도 농장 도영농원에서 '포도 수출 1억달러 도약 현장 결의 행사'를 열었다고 밝혔다.",
       "title": "농식품부, 포도 수출 1억달러 달성 추진…표준계약서 도입 | 연합뉴스"
+    },
+    "source_fact:a05d6d79ae7f6d8686fa7003": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838935",
+      "source": "뉴시스",
+      "source_body_digest": "c1b5cac196444795e48df57eda358b64068eb3cb1d11e1470f6b716330fa97e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccf1908a35682f16cccf86080748370468c56cfaf770a5b8c67605e25b24bec",
+      "source_fact_keys": [
+        "source_fact:v1:1d6a1677a1cce64c399343214d40d7855cfd9d60692aa069df674ff200412364",
+        "source_fact:v1:3850e9684fdfefaa1aa1faf960a24f2c4325fee0735a2e423a0cc93d6a886b24",
+        "source_fact:v1:836d42c017e124861d06aad879cff3ab3f3fbc11f8774b01cea3bdf06b1a6d39",
+        "source_fact:v1:99205f8a7c2ed3ba8457d6978bbf275a09541bc2889c1dcc5dd1c00d4abec90e",
+        "source_fact:v1:bbdd5eddec15cc2ba965bbb0ff185466d8d7174d7cf25078ee39e7e90e036049",
+        "source_fact:v1:e25bef75e757e25a03889fb76799a01bd212c2c23061e2d8ddebf105a7fe92c1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'",
+      "telegram_core_fact": "자본시장 관계자는 \"애프터마켓 내 거래대금 감소와 같은 부분은 KRX와의 경쟁과 같은 부분으로만 볼 수 없고, 증시 전반에 확산한 침체의 영향이 크다\"면서도 \"다만 15% 룰을 지키기 위한 거래 종목 제한 조치는 플랫폼의 성장성에 상당한 타격을 줄 수 밖에 없는 상황\"이라고 지적했다.",
+      "title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'"
     },
     "source_fact:a060fdce9855d832485c513f": {
       "first_seen_kst": "2026-10-21T17:12:46+09:00",
@@ -952235,6 +953623,39 @@
       "telegram_core_fact": "국회 농림축산식품해양수산위원회 소속 문금주 더불어민주당 의원은 12일 해수부 국정감사에서 자급률 목표 하향 조정을 비판하며 국내 수산물 생산 확대를 위한 정책 전환을 촉구했다.",
       "title": "해수부 수산물 자급률 목표 하향…\"수입 의존 심화 우려\""
     },
+    "source_fact:b4797f2a9245723fd6319632": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
+    },
     "source_fact:b47af799b9d73eb6057d2d85": {
       "first_seen_kst": "2026-10-13T19:34:14+09:00",
       "lanes": {
@@ -975788,6 +977209,30 @@
       "telegram_core_fact": "산업통상부는 오는 17일 0시부터 향후 4주간 적용될 11차 석유 최고가격을 기존 10차 최고가격으로 동결한다고 16일 발표했다. 최고가격제를 시행한 3월 2주부터 10월 2주까지 누적 휘발유 및 경유 판매량은 전년대비 각각 1.7%, 7.6% 감소한 것으로 나타났다.",
       "title": "정부, 11차 석유 최고가격 동결…휘발유 1784원·경유 1773원"
     },
+    "source_fact:beba8223bf996f1638bbf18b": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025011400053",
+      "source": "연합뉴스",
+      "source_body_digest": "cddf9ac38aaef4147bba7cc08091f25104b3b801224c7734ef1f59bf1ab0cc41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766107608aeac77cf609353361e46ffabb76f433cb84abd62ac3b94529dcf1cf",
+      "source_fact_keys": [
+        "source_fact:v1:03cbe373e8c7306365bcad587cc60e9c9f20fc2ebe9ed1578c5a8ea66c1a2685",
+        "source_fact:v1:098c404695e12b08f1710f344c3acbaaa453ce3e7d04678a99f6ec0f9245da16",
+        "source_fact:v1:53cc53bdfcac63ae121568519f812701429f33aafc90222115aa641b84c0d701",
+        "source_fact:v1:7aa0fdf0a5a846eda1896f0ef5cdbaee558ca79e3965e78959423f1a6266f235",
+        "source_fact:v1:a54077b0f675e016b6cea25bd94ea2ffc15e705fc6925cb183c90cc9f826f675"
+      ],
+      "source_published_kst": "2026-10-25T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
+      "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
+      "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
+    },
     "source_fact:bebb72ad8e824051ebcbc59e": {
       "first_seen_kst": "2026-10-23T16:11:36+09:00",
       "lanes": {
@@ -983914,6 +985359,30 @@
       "telegram_core_fact": "엠플러스는 6일 유럽 글로벌 배터리 기업으로부터 각형 노칭 장비와 스태킹 장비 공급계약을 수주했다.",
       "title": "유안타증권 “엠플러스, 이차전지 장비업계 차별화된 수익성…로봇·전고체 사업 기대”"
     },
+    "source_fact:c2156a62cc3b6c2cee76cb6f": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025011400053",
+      "source": "연합뉴스",
+      "source_body_digest": "cddf9ac38aaef4147bba7cc08091f25104b3b801224c7734ef1f59bf1ab0cc41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766107608aeac77cf609353361e46ffabb76f433cb84abd62ac3b94529dcf1cf",
+      "source_fact_keys": [
+        "source_fact:v1:03cbe373e8c7306365bcad587cc60e9c9f20fc2ebe9ed1578c5a8ea66c1a2685",
+        "source_fact:v1:098c404695e12b08f1710f344c3acbaaa453ce3e7d04678a99f6ec0f9245da16",
+        "source_fact:v1:53cc53bdfcac63ae121568519f812701429f33aafc90222115aa641b84c0d701",
+        "source_fact:v1:7aa0fdf0a5a846eda1896f0ef5cdbaee558ca79e3965e78959423f1a6266f235",
+        "source_fact:v1:a54077b0f675e016b6cea25bd94ea2ffc15e705fc6925cb183c90cc9f826f675"
+      ],
+      "source_published_kst": "2026-10-25T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
+      "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
+      "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
+    },
     "source_fact:c216e34b8e9b62e3fe53a855": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
       "lanes": {
@@ -990329,6 +991798,39 @@
       "telegram_core_fact": "현재 경기도 화성에 50MW급 태양광 모듈 생산라인을 구축하고, 초경량·고출력 태양광 모듈과 건물일체형 태양광 모듈을 개발·생산하고 있다. 에이스인벤터는 아이템을 인정받아 한국건설기술연구원 스마트건설지원센터 보육기업으로 선정됐다.",
       "title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’"
     },
+    "source_fact:c49c42321c411bdd43fc11fe": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
+    },
     "source_fact:c49cb502569e7525fa673731": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -991491,6 +992993,39 @@
       "source_title": "김종철 방미통위 위원장 “불법스팸 부당이익 환수·통신시장 과징금 상향”",
       "telegram_core_fact": "통신시장 금지행위를 위반한 사업자에 대한 과징금도 높여 불공정행위 제재를 강화할 방침이다.",
       "title": "김종철 방미통위 위원장 “불법스팸 부당이익 환수·통신시장 과징금 상향”"
+    },
+    "source_fact:c5267e01d8822a425d99e2d7": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
     },
     "source_fact:c526a55b0ee02cdaaa5dd4c8": {
       "first_seen_kst": "2026-10-15T02:55:21+09:00",
@@ -997320,6 +998855,39 @@
       ],
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
+    },
+    "source_fact:c783b212d906689a9f69560a": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
     },
     "source_fact:c7858078a33e9f72e1ad1777": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
@@ -1027319,6 +1028887,39 @@
       "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
       "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
       "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
+    },
+    "source_fact:d4517727ea1b67e0944c3553": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
     },
     "source_fact:d452ce79473824f2b1125ed3": {
       "first_seen_kst": "2026-10-22T19:31:34+09:00",
@@ -1071175,6 +1072776,30 @@
       "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
       "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
     },
+    "source_fact:e6d1b814a3f77263d3ded39e": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025011400053",
+      "source": "연합뉴스",
+      "source_body_digest": "cddf9ac38aaef4147bba7cc08091f25104b3b801224c7734ef1f59bf1ab0cc41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766107608aeac77cf609353361e46ffabb76f433cb84abd62ac3b94529dcf1cf",
+      "source_fact_keys": [
+        "source_fact:v1:03cbe373e8c7306365bcad587cc60e9c9f20fc2ebe9ed1578c5a8ea66c1a2685",
+        "source_fact:v1:098c404695e12b08f1710f344c3acbaaa453ce3e7d04678a99f6ec0f9245da16",
+        "source_fact:v1:53cc53bdfcac63ae121568519f812701429f33aafc90222115aa641b84c0d701",
+        "source_fact:v1:7aa0fdf0a5a846eda1896f0ef5cdbaee558ca79e3965e78959423f1a6266f235",
+        "source_fact:v1:a54077b0f675e016b6cea25bd94ea2ffc15e705fc6925cb183c90cc9f826f675"
+      ],
+      "source_published_kst": "2026-10-25T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
+      "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
+      "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
+    },
     "source_fact:e6d36f83c50f930e618f1432": {
       "first_seen_kst": "2026-10-13T18:11:03+09:00",
       "lanes": {
@@ -1081843,6 +1083468,39 @@
       "telegram_core_fact": "글로벌 반도체 패키징 기업 앰코테크놀로지가 광주 공장에 대한 투자 규모를 애초 1조원에서 3조원으로 3배 확대한다. 앰코는 이날 2026년부터 2031년까지 총 3조원을 투자하고 2000명을 고용할 계획이라고 발표했다.",
       "title": "앰코, 광주에 3조 투자 … 패키징 거점 육성"
     },
+    "source_fact:eb64b4d76ef8a7c71c2ca6ea": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
+    },
     "source_fact:eb65363918802932981a3ab5": {
       "first_seen_kst": "2026-10-23T05:32:14+09:00",
       "lanes": {
@@ -1086346,6 +1088004,39 @@
       "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
       "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
       "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
+    "source_fact:ed4890e524ff0727af579be0": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
     },
     "source_fact:ed50cf839d98f9cf706a7673": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
@@ -1092563,6 +1094254,39 @@
       "source_title": "코스피 5% 급락…중국발 반도체 공급 우려·외인 순매도에 휘청",
       "telegram_core_fact": "코스피·코스닥은 각각 5.46%·1.43% 하락해 양 시장에 매도 사이드카가 발동됐다. 삼성전자·SK하이닉스는 각각 7.29%·10.09% 하락했다.",
       "title": "코스피 5% 급락…중국발 반도체 공급 우려·외인 순매도에 휘청"
+    },
+    "source_fact:eff12790b1542bc65fb68c84": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
     },
     "source_fact:eff152405515d736c7aef055": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -1121459,6 +1123183,31 @@
       "telegram_core_fact": "이날 정규 거래에서 4% 하락했던 스페이스X 주가는 주파수 인수 발표 이후 시간외 거래에서 약 2% 상승했다.",
       "title": "“이통사 정신 좀 들어?”…머스크 ‘美전역 주파수 인수’에 주가 우수수"
     },
+    "source_fact:fd00685b0ffc32371dacd59f": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838935",
+      "source": "뉴시스",
+      "source_body_digest": "c1b5cac196444795e48df57eda358b64068eb3cb1d11e1470f6b716330fa97e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccf1908a35682f16cccf86080748370468c56cfaf770a5b8c67605e25b24bec",
+      "source_fact_keys": [
+        "source_fact:v1:1d6a1677a1cce64c399343214d40d7855cfd9d60692aa069df674ff200412364",
+        "source_fact:v1:3850e9684fdfefaa1aa1faf960a24f2c4325fee0735a2e423a0cc93d6a886b24",
+        "source_fact:v1:836d42c017e124861d06aad879cff3ab3f3fbc11f8774b01cea3bdf06b1a6d39",
+        "source_fact:v1:99205f8a7c2ed3ba8457d6978bbf275a09541bc2889c1dcc5dd1c00d4abec90e",
+        "source_fact:v1:bbdd5eddec15cc2ba965bbb0ff185466d8d7174d7cf25078ee39e7e90e036049",
+        "source_fact:v1:e25bef75e757e25a03889fb76799a01bd212c2c23061e2d8ddebf105a7fe92c1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'",
+      "telegram_core_fact": "자본시장 관계자는 \"애프터마켓 내 거래대금 감소와 같은 부분은 KRX와의 경쟁과 같은 부분으로만 볼 수 없고, 증시 전반에 확산한 침체의 영향이 크다\"면서도 \"다만 15% 룰을 지키기 위한 거래 종목 제한 조치는 플랫폼의 성장성에 상당한 타격을 줄 수 밖에 없는 상황\"이라고 지적했다.",
+      "title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'"
+    },
     "source_fact:fd00f0a48e559777fe389e54": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -1127770,6 +1129519,31 @@
       "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
       "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
       "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
+    },
+    "source_fact:ffadbf8fc647f981dd9c0c32": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838935",
+      "source": "뉴시스",
+      "source_body_digest": "c1b5cac196444795e48df57eda358b64068eb3cb1d11e1470f6b716330fa97e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccf1908a35682f16cccf86080748370468c56cfaf770a5b8c67605e25b24bec",
+      "source_fact_keys": [
+        "source_fact:v1:1d6a1677a1cce64c399343214d40d7855cfd9d60692aa069df674ff200412364",
+        "source_fact:v1:3850e9684fdfefaa1aa1faf960a24f2c4325fee0735a2e423a0cc93d6a886b24",
+        "source_fact:v1:836d42c017e124861d06aad879cff3ab3f3fbc11f8774b01cea3bdf06b1a6d39",
+        "source_fact:v1:99205f8a7c2ed3ba8457d6978bbf275a09541bc2889c1dcc5dd1c00d4abec90e",
+        "source_fact:v1:bbdd5eddec15cc2ba965bbb0ff185466d8d7174d7cf25078ee39e7e90e036049",
+        "source_fact:v1:e25bef75e757e25a03889fb76799a01bd212c2c23061e2d8ddebf105a7fe92c1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'",
+      "telegram_core_fact": "자본시장 관계자는 \"애프터마켓 내 거래대금 감소와 같은 부분은 KRX와의 경쟁과 같은 부분으로만 볼 수 없고, 증시 전반에 확산한 침체의 영향이 크다\"면서도 \"다만 15% 룰을 지키기 위한 거래 종목 제한 조치는 플랫폼의 성장성에 상당한 타격을 줄 수 밖에 없는 상황\"이라고 지적했다.",
+      "title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'"
     },
     "source_fact:ffae0791deb9b2d3c8ed2524": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
@@ -1139403,6 +1141177,39 @@
       "source_title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명",
       "telegram_core_fact": "협약에는 현지 인허가와 원주민 협정 체결, 시추장비 구매 등 과업을 완료한 뒤 연구비 잔금 50%를 지급하도록 명시됐으나 지난 2024년 7월 잔금 지급 당시 현지기업은 필수 인허가를 받지 못했고 원주민 협정도 체결하지 못한 상태였던 것으로 드러났다.",
       "title": "과업 완료 안됐는데 연구비 모두 지급…지질연, 28억 환수 불투명"
+    },
+    "title:145c5c1a0cc8624da70ee3af": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639696",
+      "source": "이투데이",
+      "source_body_digest": "30d68e7da560d19b14572c07ee443306a2d50b83d2f7a6a237924049a2ff987b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a495820f4386fae5a4ecc42b88cd140f216422966047776402d2d01ede5e9cdd",
+      "source_fact_keys": [
+        "source_fact:v1:154e050e6bfb80417080c16528e4ede5eafa397d75416119926683dd32f000f3",
+        "source_fact:v1:157c17f09948a0b0bb91d631b41ff3ec9e25533259b2fcf27414a6ab14c95e12",
+        "source_fact:v1:2e4033307e3b4715cb1a11578cee8eaac2b6c0fe32b2a362c129fe060b5e5a55",
+        "source_fact:v1:2e8eabe7842315f8499e51530c713f395dd8770eec1c6f2ed266d398c5adf1c1",
+        "source_fact:v1:2f5db5992536bedb12e2ed50f1ba9f20c726182b312e9ca86df6a0834a90a086",
+        "source_fact:v1:43e20bca33047887afb45c246db99d16541504b793cc1c2badf37e91b0bee2e5",
+        "source_fact:v1:46483131e6a72d6d7e190ba59b17d1df3eebc046cc24af060755b0c579502bcb",
+        "source_fact:v1:598d900a8a44f0300cadc646461737167936488b3ba6e4ba2229453dfd31c403",
+        "source_fact:v1:5da8ed9438e9fbe60254953ce5b80949fe21ee3974be8a5b2c04f61cb3a527ab",
+        "source_fact:v1:74ef20a1857f518d14c9cb4d807d85c0d724518a796fb3e31c9a56d77efe73b7",
+        "source_fact:v1:7f3fd061210ddea0b70f3c885b70cc3a7aaaf5c7683a61aaa227d11ee52ec4fe",
+        "source_fact:v1:8a46aef6baeb2926f9151ff9f5600de74b090a52367d64fea8d2391b1ca8748d",
+        "source_fact:v1:8fe0cf6ae91b7942a92df80c001b837177534115c0cce528b2b500c5423c4853",
+        "source_fact:v1:e280013a934206826307d37bec779e315800bab6983f3a17017622c4cd8cae32"
+      ],
+      "source_published_kst": "2026-10-25T09:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
+      "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
+      "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
     },
     "title:1470ae0ea379f715a1ced8c7": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -1188227,6 +1190034,31 @@
       "telegram_core_fact": "리쥬란과 아렌시아, 토리든 등 올리브영 K뷰티에딧 입점 브랜드의 지난달 말 기준 일평균 매출은 8월 대비 2배로 증가했다.",
       "title": "동남아도 'CJ올리브영'…세포라 48개 매장에 K뷰티 입점"
     },
+    "title:68dcd3ae735022eb4355264e": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838935",
+      "source": "뉴시스",
+      "source_body_digest": "c1b5cac196444795e48df57eda358b64068eb3cb1d11e1470f6b716330fa97e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccf1908a35682f16cccf86080748370468c56cfaf770a5b8c67605e25b24bec",
+      "source_fact_keys": [
+        "source_fact:v1:1d6a1677a1cce64c399343214d40d7855cfd9d60692aa069df674ff200412364",
+        "source_fact:v1:3850e9684fdfefaa1aa1faf960a24f2c4325fee0735a2e423a0cc93d6a886b24",
+        "source_fact:v1:836d42c017e124861d06aad879cff3ab3f3fbc11f8774b01cea3bdf06b1a6d39",
+        "source_fact:v1:99205f8a7c2ed3ba8457d6978bbf275a09541bc2889c1dcc5dd1c00d4abec90e",
+        "source_fact:v1:bbdd5eddec15cc2ba965bbb0ff185466d8d7174d7cf25078ee39e7e90e036049",
+        "source_fact:v1:e25bef75e757e25a03889fb76799a01bd212c2c23061e2d8ddebf105a7fe92c1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'",
+      "telegram_core_fact": "자본시장 관계자는 \"애프터마켓 내 거래대금 감소와 같은 부분은 KRX와의 경쟁과 같은 부분으로만 볼 수 없고, 증시 전반에 확산한 침체의 영향이 크다\"면서도 \"다만 15% 룰을 지키기 위한 거래 종목 제한 조치는 플랫폼의 성장성에 상당한 타격을 줄 수 밖에 없는 상황\"이라고 지적했다.",
+      "title": "증시 침체에 규제 벽까지 '이중고'…넥스트레이드, 거래 '빙하기'"
+    },
     "title:68ed55d164e9a0ac7e4f208c": {
       "first_seen_kst": "2026-10-20T09:47:35+09:00",
       "lanes": {
@@ -1193516,6 +1195348,39 @@
       "source_title": "[계양전기 생존방정식]① 수천억 수주잔고에도 자본 고갈…수익성 해법은",
       "telegram_core_fact": "올해 상반기 말 자동차 모터·로보틱스 사업 수주잔고는 3531억원으로 집계됐다.",
       "title": "[계양전기 생존방정식]① 수천억 수주잔고에도 자본 고갈…수익성 해법은"
+    },
+    "title:72454dcd03bcf1f5cab0ddc6": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639690",
+      "source": "이투데이",
+      "source_body_digest": "8a601b82aa4d79383e7d455b6e42f9ed3ca3f53d9b7861e9cc3273971fbc03a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1cac17804b988adc84e748e5d043a9718dc1e859f8516d48eab3bf3078ad529f",
+      "source_fact_keys": [
+        "source_fact:v1:082fa4cb7789cf8456a9706cbe183300c2f40b4d24aa6012a6f4bca9281c8026",
+        "source_fact:v1:1cc77484d835e87b1074dda0025943813b08e930ca28b0fa14919143875a0f80",
+        "source_fact:v1:37ee03024e813f6ffb34f9439ae65b83f79b87c6298d877935bf6decef4e829e",
+        "source_fact:v1:3d80225167eb79ebd40c180721320d7d535f3afd6d3c0bfdd6c7a4d965c47078",
+        "source_fact:v1:5fe3884695d94de901ac76a0af7c435fcc0c1189cb52a0d737a879f1ff5da9cd",
+        "source_fact:v1:6c76cf567a7e552ce8f65600ef17c760350ffab28b54673d785742f9edf62a99",
+        "source_fact:v1:6dc68b197e87632463e60d04802ec0fd4b36021a7b5a1854ea88a7bf38e351ca",
+        "source_fact:v1:769d660b6e8d43ae1051f679d0508326d20b059360d96dd3ca39d0c65d786a83",
+        "source_fact:v1:820266716d3740818e21f874d455535035e790aa0ea8fc83accf7442a64dffff",
+        "source_fact:v1:8329cbab237e7af8037cc8123f58f35c30208a0be65b0912f9394b6c0857f49f",
+        "source_fact:v1:9273459f43e265b7a43dd6abd12bdfda7f3384bd0143a48b5e9bb42e627b0788",
+        "source_fact:v1:94cd3e857a31a2bb8a35539f83979e4ebde30459f17a30d7d82bd9e38fd863ac",
+        "source_fact:v1:ab80599ec4e16bb45d189b32f39cd6a42c12f8e17dd9d9c86c3f594a1c8ecfb5",
+        "source_fact:v1:d26f8dc46f5493b96f02dabaa699fcb5398025751c415b1147fbec5f59e4db72"
+      ],
+      "source_published_kst": "2026-10-25T08:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”",
+      "telegram_core_fact": "후티가 사우디의 핵심 원유 수출로를 공격 대상으로 삼으면서 중동 전쟁의 확전 우려도 커졌다.",
+      "title": "사우디·후티, 석유시설ㆍ군사기지 맞불⋯“예멘서 16명 사망”"
     },
     "title:724652188b05fad0770619fd": {
       "first_seen_kst": "2026-09-17T23:20:33+09:00",
@@ -1222442,6 +1224307,30 @@
       ],
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
+    },
+    "title:a451a7462f9a606e185df6e0": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261025011400053",
+      "source": "연합뉴스",
+      "source_body_digest": "cddf9ac38aaef4147bba7cc08091f25104b3b801224c7734ef1f59bf1ab0cc41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766107608aeac77cf609353361e46ffabb76f433cb84abd62ac3b94529dcf1cf",
+      "source_fact_keys": [
+        "source_fact:v1:03cbe373e8c7306365bcad587cc60e9c9f20fc2ebe9ed1578c5a8ea66c1a2685",
+        "source_fact:v1:098c404695e12b08f1710f344c3acbaaa453ce3e7d04678a99f6ec0f9245da16",
+        "source_fact:v1:53cc53bdfcac63ae121568519f812701429f33aafc90222115aa641b84c0d701",
+        "source_fact:v1:7aa0fdf0a5a846eda1896f0ef5cdbaee558ca79e3965e78959423f1a6266f235",
+        "source_fact:v1:a54077b0f675e016b6cea25bd94ea2ffc15e705fc6925cb183c90cc9f826f675"
+      ],
+      "source_published_kst": "2026-10-25T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
+      "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
+      "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
     },
     "title:a481c4c674bb5a5fdbf2a0d9": {
       "first_seen_kst": "2026-10-01T21:50:06+09:00",
@@ -1267958,6 +1269847,26 @@
       "telegram_core_fact": "우리나라와 미국, 영국, 프랑스, 독일, 일본 등 주요국이 7일(현지시간) '구조적 과잉생산 대응을 위한 공동 장관성명'을 발표했다.",
       "title": "中·러시아·인도 등 제외 G20, 과잉생산 대응 공동 성명"
     },
+    "title:f6c62449b34c58d8c0ab6147": {
+      "first_seen_kst": "2026-10-25T09:29:31+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:29:31+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:29:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003839152",
+      "source": "뉴시스",
+      "source_body_digest": "2f804161206c0312d2ef3a49fee51582b737b285d315441fc23e2f7b2473eae7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:702849efbe06d73a3769bc2f7e94e824d1dc26329f1bdad4b6e9956a1d765990",
+      "source_fact_keys": [
+        "source_fact:v1:0fe7d288d7a18f01be36dc8c534d8a308733d3629360834021aefd1a8b7197e1"
+      ],
+      "source_published_kst": "2026-10-25T09:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "경찰, 핼러윈 앞두고 '유사 경찰제복' 집중단속…온라인 검색도 차단",
+      "telegram_core_fact": "현행 '경찰제복 및 경찰장비의 규제에 관한 법률'은 경찰공무원이 아닌 사람이 경찰제복이나 유사 경찰제복·장비를 착용하거나 소지하는 행위를 금지하고 있다.",
+      "title": "경찰, 핼러윈 앞두고 '유사 경찰제복' 집중단속…온라인 검색도 차단"
+    },
     "title:f6d2271ddcbd36d48271b8d6": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -1273244,5 +1275153,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-25T08:54:30+09:00"
+  "updated_at_kst": "2026-10-25T09:29:31+09:00"
 }
