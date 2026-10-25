@@ -1698,7 +1698,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 if not has_required_terms(f"{rule.title} {body}", rule):
                     continue
                 print("trusted_policy_news=mofcom_tech_48_primary_verified notice=48")
-                return [{
+                items.append({
                     "title": rule.title,
                     "description": body[:45000],
                     "link": url,
@@ -1708,7 +1708,9 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                     "priority": 0,
                     "official_direct_verified": True,
                     "mofcom_tech_48_stage": "draft-with-registration-active",
-                }]
+                })
+                seen_links.add(url)
+                break
         # Keep trusted-publication fallbacks reachable if the Ministry blocks
         # the runner. A news item never inherits the official-verification flag.
 
@@ -3407,6 +3409,34 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
     if not items:
         return None
     if rule.key == MOFCOM_TECH_48["key"]:
+        semantic_stage = semantic_policy_event_key(items[0])
+        baseline = semantic_stage == "china-mofcom-2026-technology-48-draft-preregistration-2026-10-16"
+        if not baseline:
+            published = parse_kst_iso(str(items[0].get("published_kst") or ""))
+            published_date = published.strftime("%Y년 %m월 %d일") if published else "공개일 확인 필요"
+            return {
+                "title": rule.title + " · 후속 규제 변화",
+                "core": "중국 수출기술 목록의 최종 개정 또는 의견수렴 일정 변경 보도입니다. 10월 16일 임시 등록 공고와 다른 단계인지 공식 문서를 확인해야 합니다.",
+                "stage": "신규 후속 보도 단계·중국 공식 원문 확인 전",
+                "event_date": published_date,
+                "event_date_label": "후속 보도일",
+                "show_publication_date": False,
+                "actual_bullets": [
+                    "이전 제48호 공고의 40개 기술 목록은 제안 단계였고, 수출 전 임시 등록은 이미 시행 중이었습니다.",
+                    "최종 목록·시행일·등록 종료 여부·면제 또는 자동허가 적용 범위는 새로운 중국 공식 공고로 대조해야 합니다.",
+                ],
+                "timeline": "2026년 10월 16일 중국 제48호 공고·임시 등록 시행 → 2026년 11월 15일 기존 의견수렴 마감 → 공식 후속 공고·실제 시행 여부 확인",
+                "scope_note": rule.counter,
+                "korea_candidates": "중국 기술 이전·라이선스 계약과 국내 기업 실적의 직접 연결은 별도 확인 대상입니다.",
+                "next": rule.follow_up,
+                "investment": rule.point,
+                "priced_in": "후속 뉴스 제목만으로 최종 금지 시행·모든 라이선스 종료를 인정하지 않습니다.",
+                "counter": rule.counter,
+                "failure": "재게시를 신규 법령으로 오인하거나 등록·금지·자동허가를 혼동할 수 있습니다.",
+                "impacts": rule.impacts,
+                "paths": rule.paths,
+                "sectors": rule.sectors,
+            }
         official = any(
             item.get("official_direct_verified") is True
             and str(item.get("link") or "") in MOFCOM_TECH_48["urls"]
@@ -4527,6 +4557,11 @@ def _self_test_mofcom_tech_48() -> None:
     assert "금지 제안 14개" in " ".join(item_story_profile(rule, [item])["actual_bullets"])
     assert semantic_policy_event_key(item) != "china-mofcom-2026-notice-49-announced"
     assert rule.key in {r.key for r in STORY_RULES}
+    later = {**item, "title": "China adopts final catalogue for biotechnology and AI technology export",
+             "description": "China finalizes the technologies prohibited or restricted from export catalogue covering biotechnology and artificial intelligence.",
+             "source": "Reuters", "official_direct_verified": False, "mofcom_tech_48_stage": ""}
+    assert semantic_policy_event_key(later) != expected, "final export catalogue must not merge with the draft"
+    assert "후속 보도" in str(item_story_profile(rule, [later])["stage"])
 
 def _self_test_mofcom_2026_notices() -> None:
     _self_test_mofcom_tech_48()
