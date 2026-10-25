@@ -133,7 +133,8 @@ def render(latest,history,old,target,event,now,sample=False):
       f"풋 {latest['puts']:,}계약 / 콜 {latest['calls']:,}계약",
       f"풋 미결제약정 {latest['oi_puts']:,}계약",
       f"VIX(30일 예상 변동성) <b>{latest['vix']:.2f}</b>",
-      "풋 명목금액 최고치 주장: 산식·공식 원자료 불명, 경보 판단 제외",
+      "명목금액=풋 계약수×지수 수준×100의 추정 기초자산 규모",
+      "실제 지불 프리미엄·순매수액·사상최고 여부와 별개",
       "위험도는 풋/콜·VIX 동시 충족시에만 상승(자체 기준)",
     ])
     if old is not None and target!=old:
