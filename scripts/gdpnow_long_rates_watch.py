@@ -511,7 +511,7 @@ def main() -> int:
 
     # Migrate older baseline records to an explicit model quarter without
     # emitting a synthetic "new GDPNow" message.
-    metadata_upgrade = bool(same_core and latest.quarter and not old_row.get("quarter"))
+    metadata_upgrade = bool(same_core and latest.quarter and not (state.get("latest") or {}).get("quarter"))
     if same_core and not metadata_upgrade:
         pending = state
     else:
