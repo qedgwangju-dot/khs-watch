@@ -808,25 +808,10 @@ if should_alert:
         )
 
     if new_items:
-        msg += ["", "<b>🆕 핵심 신규 변화</b>"]
-        chosen = []
-        used_theme = set()
-        for item in new_items:
-            theme = item.get("theme")
-            if theme in used_theme:
-                continue
-            chosen.append(item)
-            used_theme.add(theme)
-            if len(chosen) >= 5:
-                break
-        if len(chosen) < 5:
-            for item in new_items:
-                if item in chosen:
-                    continue
-                chosen.append(item)
-                if len(chosen) >= 5:
-                    break
-        for idx, item in enumerate(chosen, 1):
+        msg += ["", f"<b>🆕 신규 확인 자료 │ 총 {len(new_items)}건</b>"]
+        msg.append("• 신뢰 출처에서 확인한 신규 자료를 생략하지 않고 모두 표시합니다.")
+        shown_ids = []
+        for idx, item in enumerate(new_items, 1):
             src = item.get("source", "")
             theme = item.get("theme", "기타")
             title_ko = (
@@ -837,11 +822,12 @@ if should_alert:
                 else translate_title(item.get("title", ""), theme, src)
             )
             suffix = money_suffix(item.get("title", ""), fx)
-            msg.append(f"{idx}. {a(title_ko, item.get('url',''))}{h(suffix)}")
-            msg.append(f"   {h(theme)} · {h(src)}")
-        if len(new_items) > len(chosen):
-            msg.append(f"• 나머지 {len(new_items)-len(chosen)}건은 중복·추적 상태에 저장해 다음 변화 판정에 반영")
-
+            msg.append(f"{idx}. <b>{h(theme)}</b>")
+            msg.append(f"   {a(title_ko, item.get('url', ''))}{h(suffix)}")
+            msg.append(f"   출처: {h(src)}")
+            shown_ids.append(item["id"])
+        if shown_ids != [item["id"] for item in new_items]:
+            raise RuntimeError("신규 기사 목록 표시 누락·순서 변경 감지")
 
     if credit_new:
         msg += ["", "<b>AI 회사채·시설 담보채 차별화 확인</b>"]
@@ -939,6 +925,15 @@ if should_alert:
         missing = [term for term in required if term not in complete]
         if missing:
             raise RuntimeError(f"금융·코로케이션 알림 원문 수치·출처 누락: {missing}")
+    if new_items:
+        full_report = "\n".join(msg)
+        missing_urls = [
+            item.get("url")
+            for item in new_items
+            if item.get("url") and h(item["url"]) not in full_report
+        ]
+        if missing_urls:
+            raise RuntimeError(f"신규 기사 링크 누락으로 Telegram 송출 차단: {len(missing_urls)}건")
     ALERT.write_text("\n".join(msg).strip() + "\n", encoding="utf-8")
 
 STATUS.write_text(
