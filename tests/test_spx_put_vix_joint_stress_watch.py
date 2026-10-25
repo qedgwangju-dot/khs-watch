@@ -74,11 +74,13 @@ class TestSpxOfficialAndRisks(unittest.TestCase):
         s=m.render(x,[data(date="2026-10-22",ratio=1.23),x],0,0,"유지",
              dt.datetime(2026,10,25,22,tzinfo=ZoneInfo("Asia/Seoul")),sample=True)
         for phrase in ("전송 양식 검증: 새 시장 경보 아님","2,745,718계약",
-            "풋 명목금액 최고치 주장: 산식·공식 원자료 불명","VIX(30일 예상 변동성)","Cboe 옵션:"):
+            "명목금액=풋 계약수×지수 수준×100의 추정 기초자산 규모","VIX(30일 예상 변동성)","Cboe 옵션:"):
             self.assertIn(phrase,s)
         self.assertLess(len(s),m.MAX_CHARS)
         self.assertEqual(s.count("<b>"),s.count("</b>"))
         self.assertNotIn("2008년 금융위기 재발 확정",s)
+        self.assertIn("실제 지불 프리미엄·순매수액·사상최고 여부와 별개",s)
+        self.assertNotIn("산식·공식 원자료 불명",s)
     def test_notional_is_not_misclassified_as_put_purchases(self):
         x=data(ratio=2.5,vix=19.45)
         self.assertEqual(m.stage(x["ratio"],x["vix"]),0)
