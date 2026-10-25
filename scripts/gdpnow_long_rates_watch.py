@@ -394,6 +394,31 @@ def load_state() -> dict[str, Any]:
         return {}
 
 
+def equivalent_gdpnow_observation(state: dict[str, Any], latest: GdpRow, current_private: float | None) -> bool:
+    """Compare economic content, not data-provider labels or display formatting.
+
+    Same headline and inventory figures can conceal meaningful changes in
+    consumption/fixed investment; such changes must alert ONCE, then advance
+    the persisted snapshot even though its headline key is unchanged.
+    """
+    old_key = str(state.get("observation_key") or "")
+    obs_key = f"{latest.date}|{latest.gdp:.4f}|{latest.cipi:.4f}"
+    if "|".join(old_key.split("|")[:3]) != obs_key:
+        return False
+    old_row = state.get("latest") or {}
+    if not old_row:
+        return True
+    fixed = [fnum(old_row.get(k)) for k in ("pce", "equipment", "ipp", "nonres", "residential")]
+    old_private = sum(fixed) if all(x is not None for x in fixed) else None
+    comparands = (
+        (fnum(old_row.get("pce")), latest.pce),
+        (fnum(old_row.get("net_exports")), latest.net_exports),
+        (fnum(old_row.get("govt")), latest.govt),
+        (old_private, current_private),
+    )
+    return not any(a is not None and b is not None and abs(a-b) > 0.0002 for a, b in comparands)
+
+
 def main() -> int:
     now = dt.datetime.now(KST)
     errors: list[str] = []
@@ -465,32 +490,13 @@ def main() -> int:
 
     state = load_state()
     prior_key = str(state.get("observation_key") or "")
-    # Stable values-only key. The data source and release-label may change
-    # without any economic observation changing (e.g. Fed workbook -> FRED).
-    # Do not trigger duplicate alerts merely because the source recovered.
+    # Economic values determine identity; a provider label change alone does not.
     obs_key = f"{latest.date}|{latest.gdp:.4f}|{latest.cipi:.4f}"
-    old_key_parts = prior_key.split("|")
-    same_core = ("|".join(old_key_parts[:3]) == obs_key)
-    old_row = state.get("latest") or {}
-    if same_core and old_row:
-        # Compare economically relevant components, not workbook layout
-        # (which can split fixed investment differently than FRED).
-        def old_component_sum() -> float | None:
-            v = [fnum(old_row.get(k)) for k in ("pce", "equipment", "ipp", "nonres", "residential")]
-            return sum(v) if all(t is not None for t in v) else None
-        current_private = private_final
-        old_private = old_component_sum()
-        comparands = [(fnum(old_row.get("pce")), latest.pce),
-                      (fnum(old_row.get("net_exports")), latest.net_exports),
-                      (fnum(old_row.get("govt")), latest.govt),
-                      (old_private, current_private)]
-        # Missing old components mean backward-compatible core comparison.
-        if any(a is not None and b is not None and abs(a-b) > 0.0002 for a,b in comparands):
-            same_core = False
+    same_core = equivalent_gdpnow_observation(state, latest, private_final)
     is_baseline = not prior_key
     is_new = bool(prior_key) and not same_core
 
-    if prior_key == obs_key:
+    if same_core:
         pending = state
     else:
         pending = {
