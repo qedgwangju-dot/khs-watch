@@ -105380,6 +105380,26 @@
       "telegram_core_fact": "코스피 상장사 LG에너지솔루션[373220]은 연결 기준 올해 3분기 영업이익이 7천560억원으로 지난해 동기보다 25.7% 증가한 것으로 잠정 집계됐다고 8일 공시했다.",
       "title": "LG에너지솔루션 3분기 영업이익 7천560억원…작년 대비 25.7%↑ | 연합뉴스"
     },
+    "core:ffb8cc5ebd98f9ca34954284": {
+      "first_seen_kst": "2026-10-25T20:05:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:05:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:05:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185237",
+      "source": "매일경제",
+      "source_body_digest": "4d5c4306eeb377805bd68a8a503138052fd20f8df93e1c67ed5c42eaa2491354",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd4cb17b7b6a4c1cfec39ff20f0bf3fbdb7ca3920cf12c856aebc28eb010ebdc",
+      "source_fact_keys": [
+        "source_fact:v1:1d6e7c011b8bb8d48928d941b779d9f0b45afc0622571e1f10f814269aa8dcb3"
+      ],
+      "source_published_kst": "2026-10-25T17:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "입찰 제한에 … LIG D&A 신규 수주 먹구름",
+      "telegram_core_fact": "처분 대상은 기소된 6개 사업(915억원) 중 방사청과 직접 계약한 소형 드론 대응체계 사업 1건이다. 군 관계자에 따르면 방사청은 방위사업계약심의위원회 개최에 앞서 올해 9월 소형 무인기 대응 체계개발 사업을 맡았던 LIG D&A에 대한 방산업체 지정 취소를 검토해달라고 산업부에 요청했다.",
+      "title": "입찰 제한에 … LIG D&A 신규 수주 먹구름"
+    },
     "core:ffcec5404e7c1c864a5f74d3": {
       "first_seen_kst": "2026-10-19T19:37:05+09:00",
       "lanes": {
@@ -116683,24 +116703,22 @@
     "event:78ae746b4619ef5090d91a42": {
       "first_seen_kst": "2026-10-25T10:27:47+09:00",
       "lanes": {
-        "live": "2026-10-25T19:13:35+09:00"
+        "live": "2026-10-25T20:05:03+09:00"
       },
-      "last_seen_kst": "2026-10-25T19:13:35+09:00",
-      "link": "https://www.newsis.com/view/NISX20261025_0003840144",
-      "source": "뉴시스",
-      "source_body_digest": "157d6ac0170d9f0349bc66120d4f07223df2aa37fae5c31e7051c770e3cf90b6",
+      "last_seen_kst": "2026-10-25T20:05:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185237",
+      "source": "매일경제",
+      "source_body_digest": "4d5c4306eeb377805bd68a8a503138052fd20f8df93e1c67ed5c42eaa2491354",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6e38e7984d2df1047e0013b1ecdfec5f0aaa6c30de6a689782f679b8516794ad",
+      "source_fact_identity": "source_facts:v1:fd4cb17b7b6a4c1cfec39ff20f0bf3fbdb7ca3920cf12c856aebc28eb010ebdc",
       "source_fact_keys": [
-        "source_fact:v1:08a8e34a6f002e3f313610c5673dc943762f8bd9cae3b0437148fa7dc6fb5232",
-        "source_fact:v1:779c5faa4e4f9e32833a44331822da86bfe1349605d0ceb08f2779334794a946",
-        "source_fact:v1:d3b145882d70830d9b6c623f445a36fb10a4b5c874344eeefe7d0542c7e2c936"
+        "source_fact:v1:1d6e7c011b8bb8d48928d941b779d9f0b45afc0622571e1f10f814269aa8dcb3"
       ],
-      "source_published_kst": "2026-10-25T17:26+09:00",
+      "source_published_kst": "2026-10-25T17:34+09:00",
       "source_supply_terms": {},
-      "source_title": "고려아연 \"영풍·MBK, 감사위 회신 자의적 해석\"…경영권 공방 격화",
-      "telegram_core_fact": "영풍·MBK 파트너스는 최 회장이 선행투자 사실과 이해상충 가능성을 이사회에 보고했는지, 고려아연의 펀드 출자와 후속 투자에 관여했거나 구체적인 투자처를 사전에 알고 있었는지 조사해야 한다고 요구했다.",
-      "title": "고려아연 \"영풍·MBK, 감사위 회신 자의적 해석\"…경영권 공방 격화"
+      "source_title": "입찰 제한에 … LIG D&A 신규 수주 먹구름",
+      "telegram_core_fact": "처분 대상은 기소된 6개 사업(915억원) 중 방사청과 직접 계약한 소형 드론 대응체계 사업 1건이다. 군 관계자에 따르면 방사청은 방위사업계약심의위원회 개최에 앞서 올해 9월 소형 무인기 대응 체계개발 사업을 맡았던 LIG D&A에 대한 방산업체 지정 취소를 검토해달라고 산업부에 요청했다.",
+      "title": "입찰 제한에 … LIG D&A 신규 수주 먹구름"
     },
     "event:78c48063ad6f5facdfb0aa71": {
       "first_seen_kst": "2026-10-05T14:14:24+09:00",
@@ -221407,6 +221425,26 @@
       "source_published_kst": "2026-10-07T14:43+09:00",
       "title": "HD건설기계, 엔진사업 속도…북미 데이터센터에 전력 공급"
     },
+    "fact:cefa7e80a7fe1df6c009d23f": {
+      "first_seen_kst": "2026-10-25T20:05:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:05:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:05:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185237",
+      "source": "매일경제",
+      "source_body_digest": "4d5c4306eeb377805bd68a8a503138052fd20f8df93e1c67ed5c42eaa2491354",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd4cb17b7b6a4c1cfec39ff20f0bf3fbdb7ca3920cf12c856aebc28eb010ebdc",
+      "source_fact_keys": [
+        "source_fact:v1:1d6e7c011b8bb8d48928d941b779d9f0b45afc0622571e1f10f814269aa8dcb3"
+      ],
+      "source_published_kst": "2026-10-25T17:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "입찰 제한에 … LIG D&A 신규 수주 먹구름",
+      "telegram_core_fact": "처분 대상은 기소된 6개 사업(915억원) 중 방사청과 직접 계약한 소형 드론 대응체계 사업 1건이다. 군 관계자에 따르면 방사청은 방위사업계약심의위원회 개최에 앞서 올해 9월 소형 무인기 대응 체계개발 사업을 맡았던 LIG D&A에 대한 방산업체 지정 취소를 검토해달라고 산업부에 요청했다.",
+      "title": "입찰 제한에 … LIG D&A 신규 수주 먹구름"
+    },
     "fact:cf0851d8b7e9404897bbca3b": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
       "lanes": {
@@ -255785,6 +255823,26 @@
       "source_title": "반도체 담고 바이오 뺐더니 코스닥 액티브 ETF 웃었다",
       "telegram_core_fact": "최근 액티브 ETF가 높은 성과를 낸 것은 변동성이 큰 제약·바이오주를 덜어내고 반도체 관련주를 적극 담아낸 결과로 풀이된다. 지난 7월 초 'DS 코스닥액티브'(이후 상장)를 제외한 5개 ETF 모두 주요 편입 종목에 제약·바이오를 포함했는데, 3개월 만에 포트폴리오가 크게 달라진 것이다.",
       "title": "반도체 담고 바이오 뺐더니 코스닥 액티브 ETF 웃었다"
+    },
+    "link:13793d66e702734588929839": {
+      "first_seen_kst": "2026-10-25T20:05:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:05:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:05:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185237",
+      "source": "매일경제",
+      "source_body_digest": "4d5c4306eeb377805bd68a8a503138052fd20f8df93e1c67ed5c42eaa2491354",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd4cb17b7b6a4c1cfec39ff20f0bf3fbdb7ca3920cf12c856aebc28eb010ebdc",
+      "source_fact_keys": [
+        "source_fact:v1:1d6e7c011b8bb8d48928d941b779d9f0b45afc0622571e1f10f814269aa8dcb3"
+      ],
+      "source_published_kst": "2026-10-25T17:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "입찰 제한에 … LIG D&A 신규 수주 먹구름",
+      "telegram_core_fact": "처분 대상은 기소된 6개 사업(915억원) 중 방사청과 직접 계약한 소형 드론 대응체계 사업 1건이다. 군 관계자에 따르면 방사청은 방위사업계약심의위원회 개최에 앞서 올해 9월 소형 무인기 대응 체계개발 사업을 맡았던 LIG D&A에 대한 방산업체 지정 취소를 검토해달라고 산업부에 요청했다.",
+      "title": "입찰 제한에 … LIG D&A 신규 수주 먹구름"
     },
     "link:1379e4b9bd9b1f2f6042c2bb": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
@@ -444174,6 +444232,26 @@
       "telegram_core_fact": "신현송 한국은행 총재는 1300원대 수준인 원·달러 환율에 대해 추가 하락 여지가 있다고 12일 밝혔다.",
       "title": "신현송 \"원·달러환율, 예년 대비 여전히 높아⋯추가 하락 여지 있다\" [국감]"
     },
+    "original:5c4179e70e4a3ab1b5b0c936": {
+      "first_seen_kst": "2026-10-25T20:05:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:05:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:05:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185237",
+      "source": "매일경제",
+      "source_body_digest": "4d5c4306eeb377805bd68a8a503138052fd20f8df93e1c67ed5c42eaa2491354",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd4cb17b7b6a4c1cfec39ff20f0bf3fbdb7ca3920cf12c856aebc28eb010ebdc",
+      "source_fact_keys": [
+        "source_fact:v1:1d6e7c011b8bb8d48928d941b779d9f0b45afc0622571e1f10f814269aa8dcb3"
+      ],
+      "source_published_kst": "2026-10-25T17:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "입찰 제한에 … LIG D&A 신규 수주 먹구름",
+      "telegram_core_fact": "처분 대상은 기소된 6개 사업(915억원) 중 방사청과 직접 계약한 소형 드론 대응체계 사업 1건이다. 군 관계자에 따르면 방사청은 방위사업계약심의위원회 개최에 앞서 올해 9월 소형 무인기 대응 체계개발 사업을 맡았던 LIG D&A에 대한 방산업체 지정 취소를 검토해달라고 산업부에 요청했다.",
+      "title": "입찰 제한에 … LIG D&A 신규 수주 먹구름"
+    },
     "original:5c54ada919d0fc4d4d763f42": {
       "first_seen_kst": "2026-10-22T08:28:20+09:00",
       "lanes": {
@@ -557459,6 +557537,26 @@
       "source_title": "전국 임산물유통센터 '만성 적자'…구례도 2년 전 폐업 | 연합뉴스",
       "telegram_core_fact": "사업실적도 2022년 8억4천만원에서 2023년 5억6천300만원으로 감소했고, 결국 이듬해 폐업했다. 구례 유통센터는 2021년 1천500만원, 2022년 9천700만원, 2023년 4천100만원 등 3년간 매출총이익 기준 1억5천300만원의 누적 적자를 기록했다.",
       "title": "전국 임산물유통센터 '만성 적자'…구례도 2년 전 폐업 | 연합뉴스"
+    },
+    "source_fact:095df292ba2cbc8cb2a15e80": {
+      "first_seen_kst": "2026-10-25T20:05:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:05:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:05:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185237",
+      "source": "매일경제",
+      "source_body_digest": "4d5c4306eeb377805bd68a8a503138052fd20f8df93e1c67ed5c42eaa2491354",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd4cb17b7b6a4c1cfec39ff20f0bf3fbdb7ca3920cf12c856aebc28eb010ebdc",
+      "source_fact_keys": [
+        "source_fact:v1:1d6e7c011b8bb8d48928d941b779d9f0b45afc0622571e1f10f814269aa8dcb3"
+      ],
+      "source_published_kst": "2026-10-25T17:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "입찰 제한에 … LIG D&A 신규 수주 먹구름",
+      "telegram_core_fact": "처분 대상은 기소된 6개 사업(915억원) 중 방사청과 직접 계약한 소형 드론 대응체계 사업 1건이다. 군 관계자에 따르면 방사청은 방위사업계약심의위원회 개최에 앞서 올해 9월 소형 무인기 대응 체계개발 사업을 맡았던 LIG D&A에 대한 방산업체 지정 취소를 검토해달라고 산업부에 요청했다.",
+      "title": "입찰 제한에 … LIG D&A 신규 수주 먹구름"
     },
     "source_fact:095e3290c4566aabc4d94667": {
       "first_seen_kst": "2026-10-20T10:42:42+09:00",
@@ -1200933,6 +1201031,26 @@
       "telegram_core_fact": "신현송 한국은행 총재는 1300원대 수준인 원·달러 환율에 대해 추가 하락 여지가 있다고 12일 밝혔다.",
       "title": "신현송 \"원·달러환율, 예년 대비 여전히 높아⋯추가 하락 여지 있다\" [국감]"
     },
+    "title:5c4179e70e4a3ab1b5b0c936": {
+      "first_seen_kst": "2026-10-25T20:05:03+09:00",
+      "lanes": {
+        "live": "2026-10-25T20:05:03+09:00"
+      },
+      "last_seen_kst": "2026-10-25T20:05:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185237",
+      "source": "매일경제",
+      "source_body_digest": "4d5c4306eeb377805bd68a8a503138052fd20f8df93e1c67ed5c42eaa2491354",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd4cb17b7b6a4c1cfec39ff20f0bf3fbdb7ca3920cf12c856aebc28eb010ebdc",
+      "source_fact_keys": [
+        "source_fact:v1:1d6e7c011b8bb8d48928d941b779d9f0b45afc0622571e1f10f814269aa8dcb3"
+      ],
+      "source_published_kst": "2026-10-25T17:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "입찰 제한에 … LIG D&A 신규 수주 먹구름",
+      "telegram_core_fact": "처분 대상은 기소된 6개 사업(915억원) 중 방사청과 직접 계약한 소형 드론 대응체계 사업 1건이다. 군 관계자에 따르면 방사청은 방위사업계약심의위원회 개최에 앞서 올해 9월 소형 무인기 대응 체계개발 사업을 맡았던 LIG D&A에 대한 방산업체 지정 취소를 검토해달라고 산업부에 요청했다.",
+      "title": "입찰 제한에 … LIG D&A 신규 수주 먹구름"
+    },
     "title:5c54ada919d0fc4d4d763f42": {
       "first_seen_kst": "2026-10-22T08:28:20+09:00",
       "lanes": {
@@ -1294594,5 +1294712,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-25T19:13:35+09:00"
+  "updated_at_kst": "2026-10-25T20:05:03+09:00"
 }
