@@ -1826,6 +1826,13 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         description = clean_text(str(matched_row.get("abstract") or matched_row.get("excerpt") or ""))
         link = clean_text(str(matched_row.get("html_url") or matched_row.get("pdf_url") or fetch_url))
         published = parse_pub_date(str(matched_row.get("publication_date") or ""))
+        if (
+            rule.key == "us_treasury_coins_biotechnology_outbound_nprm"
+            and published is not None
+            and published.date() > now.date()
+        ):
+            print("trusted_policy_news=coins_fr_deferred reason=future_register_publication_date")
+            continue
         if rule.key == "us_treasury_coins_biotechnology_outbound_nprm":
             full_text_url = str(matched_row.get("raw_text_url") or matched_row.get("html_url") or "")
             if not full_text_url.startswith("https://www.federalregister.gov/"):
