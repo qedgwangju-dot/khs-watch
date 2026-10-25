@@ -7997,6 +7997,11 @@ def _r27_match(text: str) -> str:
     if "microduck" in t or "마이크로덕" in t:
         return "micro"
     berlin = bool(re.search(r'giga[\s-]*berlin|기가\s*베를린|grünheide|gruenheide|grunheide',t,re.I))
+    # Earlier Optimus worker-motion data collection at Berlin can mention
+    # 4680 areas as background. It is NOT an actual battery-cell milestone.
+    if (berlin and re.search(r'optimus|옵티머스',t,re.I)
+        and re.search(r'worker|training|motion\s*data|collect\s*movement|camera-equipped|academy|파일럿|현장\s*학습|데이터\s*수집',t,re.I)):
+        return ""
     if berlin and re.search(r'4680|18\s*gwh|건식\s*전극|dry[-\s]*electrode', t, re.I):
         if re.search(r'실제\s*양산|양산\s*개시|first\s*cell\s*shipment|cell\s*production\s*started',t,re.I):
             return "cells"
