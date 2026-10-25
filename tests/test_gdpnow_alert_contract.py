@@ -107,6 +107,42 @@ class WatchContractTests(unittest.TestCase):
                 self.assertEqual(send.call_count,1)
 
 
+    def test_same_gdpnow_headline_with_changed_consumption_not_repeated(self):
+        old=self.row("2026-10-20",3.50,1.90,pce=2.0)
+        state={"observation_key":"2026-10-20|3.5000|1.9000",
+               "latest":old.__dict__}
+        self.assertTrue(watch.equivalent_gdpnow_observation(
+            state,old,formatter.private_final_contribution(old)))
+        changed=self.row("2026-10-20",3.50,1.90,pce=2.25)
+        self.assertFalse(watch.equivalent_gdpnow_observation(
+            state,changed,formatter.private_final_contribution(changed)))
+        # Once the component update has been sent and persisted, a 15-minute
+        # scheduled recheck must not re-send the same observation.
+        updated={"observation_key":state["observation_key"],"latest":changed.__dict__}
+        self.assertTrue(watch.equivalent_gdpnow_observation(
+            updated,changed,formatter.private_final_contribution(changed)))
+
+    def test_source_name_change_does_not_trigger_false_alert(self):
+        row=self.row("2026-10-20",3.50,1.90)
+        state={"observation_key":"2026-10-20|3.5000|1.9000|legacy source",
+               "latest":row.__dict__}
+        rerouted=self.row("2026-10-20",3.50,1.90)
+        rerouted.release="FRED restored"
+        self.assertTrue(watch.equivalent_gdpnow_observation(
+            state,rerouted,formatter.private_final_contribution(rerouted)))
+
+    def test_health_alert_identifies_preflight_failure_not_atlanta_data(self):
+        with tempfile.TemporaryDirectory() as t:
+            state=pathlib.Path(t)/"prior.json"; pending=pathlib.Path(t)/"pending.json"
+            env={"VALIDATION_OUTCOME":"failure","SOURCE_OUTCOME":"skipped",
+                 "HAS_ALERT":"no","SEND_OUTCOME":"skipped"}
+            with patch.object(health,"STATE",state),patch.object(health,"PENDING",pending),patch.dict("os.environ",env),patch.object(health,"send_message",return_value=541) as send:
+                self.assertEqual(health.main(),0)
+                self.assertEqual(send.call_count,1)
+                self.assertIn("자동 회귀검증 실패",send.call_args.args[0])
+                self.assertNotIn("상태: GDPNow 공식 자료 조회 단계 실패",send.call_args.args[0])
+                self.assertEqual(json.loads(pending.read_text())["last_validation_outcome"],"failure")
+
     def test_yield_units_cboe_and_yahoo_normalized(self):
         self.assertAlmostEqual(intraday.normalize_yahoo_yield(52.94), 5.294)
         self.assertAlmostEqual(intraday.normalize_yahoo_yield(5.294), 5.294)
