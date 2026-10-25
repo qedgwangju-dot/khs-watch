@@ -50841,6 +50841,34 @@
       "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
       "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
     },
+    "core:7d3a55f08ff8629051d61101": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
+    },
     "core:7d3c9e20da49ae78f751220d": {
       "first_seen_kst": "2026-10-23T20:28:32+09:00",
       "lanes": {
@@ -53431,6 +53459,27 @@
       "source_title": "MS, 엔스케일 영국 데이터센터 계약 철회…AI 인프라 확장 ‘적신호’",
       "telegram_core_fact": "전력 확보 문제로 시설 구축이 지연되는 가운데 핵심 고객의 이탈까지 겹치면서 최대 30억달러 조달을 목표로 하는 엔스케일의 기업공개(IPO)에 부담이 될 전망이다.",
       "title": "MS, 엔스케일 영국 데이터센터 계약 철회…AI 인프라 확장 ‘적신호’"
+    },
+    "core:830c8a3b70df16b5e9f0eeb4": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639710",
+      "source": "이투데이",
+      "source_body_digest": "f61d4733fecd752d0115d3f263505b43de81504b877553b565870d9f861d5559",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba7f49305065d4c03c8fc50fd5c5505d086f6021f9ce4457a19886250eb2d56",
+      "source_fact_keys": [
+        "source_fact:v1:e8168f03ddac4e03a630b13716ad136073b805d1ce6d14a62978c4911f69e1c2",
+        "source_fact:v1:f083738c302f0a0ae2b964e66c3e3b709996907df9d36e06f3139a83621c456d"
+      ],
+      "source_published_kst": "2026-10-25T09:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용",
+      "telegram_core_fact": "삼성물산 건설부문은 서울 서초구 반포푸르지오아파트 리모델링 시공사로 선정됐다고 25일 밝혔다.",
+      "title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용"
     },
     "core:83135bb4edac17ebfbf5aad0": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
@@ -58416,6 +58465,24 @@
       "source_title": "TI, 3분기 매출 60억달러 돌파… 데이터센터·산업용 수요 회복 확인",
       "telegram_core_fact": "TI는 21일(현지시간) 3분기 매출이 60억5500만달러로 전년비 28% 증가했다고 밝혔다.",
       "title": "TI, 3분기 매출 60억달러 돌파… 데이터센터·산업용 수요 회복 확인"
+    },
+    "core:8eaa38ba1b9ecd2704d1b8d2": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839817",
+      "source": "뉴시스",
+      "source_body_digest": "6871c3b022256bec2e508a14441e2b4661e42bb22a7666ab9b90d1d68aaaeb2f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-25T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 상업용 세탁가전 유럽 공략 가속…獨 '쉴링'에 공급",
+      "telegram_core_fact": "LG전자는 내달 독일 '쉴링(Schilling)'에 대용량 상업용 세탁가전 'LG 프로페셔널'을 공급한다고 25일 밝혔다.",
+      "title": "LG전자, 상업용 세탁가전 유럽 공략 가속…獨 '쉴링'에 공급"
     },
     "core:8eaec9eeece94bd00af9862c": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
@@ -67156,6 +67223,31 @@
       "source_title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\"",
       "telegram_core_fact": "23일(현지 시간) 월스트리트저널(WSJ)은 관련 작전 계획을 잘 아는 미국 당국자들을 인용해 미군이 향후 수주 내 트럼프 대통령의 이란 추가 공격 결정에 대비해 중동 지역에서 군사적 충돌이 확대될 가능성에 대비하고 있다고 보도했다.",
       "title": "\"美항모 조지워싱턴호 등 이란 추가 작전 대비 재무장\""
+    },
+    "core:a5275bf97f65e3427ed3ec0f": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.fnnews.com/news/202610250601113109",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2a18a5b1118b669b9dc3179926f0d5ed78126a47bdd5adcfe69fec3787c7f7c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b7c85c5e1381937964974cb3308571dbccbf89ca0e32824b9749a2e9abc2bc8",
+      "source_fact_keys": [
+        "source_fact:v1:0d06887409c471719455d91f1cbd2d5b07d08177b0404ef45bcd5f429aa25da8",
+        "source_fact:v1:188d75396a2489d11fa9b3f6377cb3289678876c4a20493793f7ab7d9955a84e",
+        "source_fact:v1:53de950ab6088f1498ff12d69dc618a1fa1727a910238240863a7fab52919eb0",
+        "source_fact:v1:54f549b8f93748204b7640362060aad796bd5a0ddfb637c067ddd0e997103858",
+        "source_fact:v1:65c089555ff11d2c9018e0f808765eaa2ebff3ca11a33c49ed0b88cdc84bb2bf",
+        "source_fact:v1:8e473fe037d074b7d5340edb42d59c5fb27f66a0fa3eb057b5331311b8f80b8b"
+      ],
+      "source_published_kst": "2026-10-25T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다",
+      "telegram_core_fact": "국내 증시 조정으로 미국 주식에 대한 관심이 커졌지만, 해외 상장사 실적발표(어닝콜) 서비스를 제공하는 증권사는 절반에도 못 미치는 것으로 나타났다.",
+      "title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다"
     },
     "core:a53424c50a9a676485ce0a46": {
       "first_seen_kst": "2026-10-21T10:25:18+09:00",
@@ -79213,6 +79305,30 @@
       "source_title": "TSMC, 순이익 65% 급증 전망…AI 반도체 호황 이어질까",
       "telegram_core_fact": "세계 최대 반도체 위탁생산(파운드리) 업체인 대만 TSMC가 올해 3분기 순이익이 65% 급증하는 사상 최대 실적을 거둘 것으로 전망된다.",
       "title": "TSMC, 순이익 65% 급증 전망…AI 반도체 호황 이어질까"
+    },
+    "core:c27b62bd503dcaadf22d2398": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01275926645616528",
+      "source": "이데일리",
+      "source_body_digest": "febbf2cef1621551339917d483077ff7c7731448ec65d2a309efffbe03c24ea2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acefa72e39a80c1227b9ea5328a73384a97edb15d77093d42d687cf258d977c5",
+      "source_fact_keys": [
+        "source_fact:v1:39d87a6aebf1c4535347dc3d26237b2d74fc02eaea97a9c2a9d5df67a26d2651",
+        "source_fact:v1:98dbf919750307b0a6adb345deab43ee9690bdaf0a0eb6fcfeadf15d54567078",
+        "source_fact:v1:9bb20c88cdaae28351aebb447f158d28b2b7d6bfc3f2623e63319d1a53a81ae2",
+        "source_fact:v1:a8d04744201ab604aa85e2f3613400324240def4d5ebd5ed917a9091ca802618",
+        "source_fact:v1:ea901af29b9de4afb5a7e8bb55b7767d13d60d6e105561b8fac0d7192cc98c92"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]",
+      "telegram_core_fact": "수신 기능이 없는 카드사는 채권 발행 등을 통해 자금 조달을 하는데 여전채 3년물(AA+·무보증·평가사 5사 평균) 금리 올해 1월 초 3.3%대에서 최근 4% 중반대까지 오르면서 약 1%포인트(p)가량 올랐다.",
+      "title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]"
     },
     "core:c27db74db6b6f3108e86680f": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
@@ -95858,6 +95974,34 @@
       "telegram_core_fact": "\"규제가 어느 정도 완화되더라도 금융과 공공 영역에서는 일정 부분 폐쇄망이 유지될 것이다.",
       "title": "보험약관 '표 안의 표' 읽는다…금융·공공 폐쇄망 파고든 AX 기업"
     },
+    "core:ed23fb07dde424ba34a20e7c": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
+    },
     "core:ed339261f68ab0dff0b92823": {
       "first_seen_kst": "2026-10-12T23:57:10+09:00",
       "lanes": {
@@ -96266,6 +96410,26 @@
       "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
       "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
       "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
+    },
+    "core:ee0fba3e7f4fc1ac29b6ad4c": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639712",
+      "source": "이투데이",
+      "source_body_digest": "0dc6b1119d6ab26266bc0cda69d6b0104723491a32adfcaafd3316214b5574c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a522d4c9826e4918402cbf67b36b264f028016edef3cec1a4de1ebe30ed4b412",
+      "source_fact_keys": [
+        "source_fact:v1:d8e609eb2ada9851ba7289479b0a8dd1cd4213b1021e582c3e3c71428eede956"
+      ],
+      "source_published_kst": "2026-10-25T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환",
+      "telegram_core_fact": "은행의 자금조달 비용 상승분이 시차를 두고 대출금리에 반영될 수 있는 만큼 가계대출 증가세와 차주 부담에 대한 우려도 이어질 전망이다.",
+      "title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환"
     },
     "core:ee19db81df21111c7cd6f182": {
       "first_seen_kst": "2026-10-20T17:22:47+09:00",
@@ -112705,6 +112869,26 @@
       "telegram_core_fact": "스테이트스트리트(STT)는 3분기 희석 주당순이익(EPS)이 3.69달러로 전년비 33% 증가했고, 총수익(Total revenue)은 40억400만 달러로 13%, 순이익은 10억9000만 달러로 27% 각각 늘었다고 10월 14일 발표했다.",
       "title": "스테이트스트리트, 3분기 EPS 3.69달러..전년비 33% 증가"
     },
+    "event:63d8e02a6fa1fc9f7e2d75cf": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639712",
+      "source": "이투데이",
+      "source_body_digest": "0dc6b1119d6ab26266bc0cda69d6b0104723491a32adfcaafd3316214b5574c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a522d4c9826e4918402cbf67b36b264f028016edef3cec1a4de1ebe30ed4b412",
+      "source_fact_keys": [
+        "source_fact:v1:d8e609eb2ada9851ba7289479b0a8dd1cd4213b1021e582c3e3c71428eede956"
+      ],
+      "source_published_kst": "2026-10-25T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환",
+      "telegram_core_fact": "은행의 자금조달 비용 상승분이 시차를 두고 대출금리에 반영될 수 있는 만큼 가계대출 증가세와 차주 부담에 대한 우려도 이어질 전망이다.",
+      "title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환"
+    },
     "event:6404e723444c03456fb4b15d": {
       "first_seen_kst": "2026-10-10T16:57:05+09:00",
       "lanes": {
@@ -123102,6 +123286,34 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:15+09:00",
       "title": "HBM에 호남까지 갈길 바쁜 SK하이닉스…솔리다임 자금조달 고심 | 연합뉴스"
+    },
+    "event:d8bd8787dcab157281583542": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
     },
     "event:d8e66c14e7ce4d6c30936da4": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
@@ -145294,6 +145506,34 @@
       "source_title": "누보, 수출입 안전관리 우수업체 인증 획득…30개국 수출 물류 경쟁력 강화",
       "telegram_core_fact": "AEO는 관세청이 수출입 기업의 법규준수도와 내부통제시스템, 재무건전성, 안전관리 역량 등을 종합적으로 심사해 공인하는 제도다.",
       "title": "누보, 수출입 안전관리 우수업체 인증 획득…30개국 수출 물류 경쟁력 강화"
+    },
+    "fact:2a4532c05b07bc8f5df7f130": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
     },
     "fact:2a57d5b02093b27fbfe11d3b": {
       "first_seen_kst": "2026-10-08T19:27:03+09:00",
@@ -170136,6 +170376,31 @@
       "telegram_core_fact": "제휴 카페 이용 고객에게는 무신사 스탠다드 롯데백화점 창원점 10% 할인 쿠폰을, 매장 구매 고객에게는 제휴 카페 할인 쿠폰북을 제공해 쇼핑과 지역 카페 방문을 잇는다. 롯데백화점 창원점의 올해 3분기 영패션·영캐주얼 매출은 전년비 약 20% 증가했고, 젊은 층의 방문도 꾸준히 늘고 있다.",
       "title": "롯데백화점, 창원 첫 '무신사 스탠다드' 매장 연다"
     },
+    "fact:671644f84cdfac5e95e41b84": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.fnnews.com/news/202610250601113109",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2a18a5b1118b669b9dc3179926f0d5ed78126a47bdd5adcfe69fec3787c7f7c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b7c85c5e1381937964974cb3308571dbccbf89ca0e32824b9749a2e9abc2bc8",
+      "source_fact_keys": [
+        "source_fact:v1:0d06887409c471719455d91f1cbd2d5b07d08177b0404ef45bcd5f429aa25da8",
+        "source_fact:v1:188d75396a2489d11fa9b3f6377cb3289678876c4a20493793f7ab7d9955a84e",
+        "source_fact:v1:53de950ab6088f1498ff12d69dc618a1fa1727a910238240863a7fab52919eb0",
+        "source_fact:v1:54f549b8f93748204b7640362060aad796bd5a0ddfb637c067ddd0e997103858",
+        "source_fact:v1:65c089555ff11d2c9018e0f808765eaa2ebff3ca11a33c49ed0b88cdc84bb2bf",
+        "source_fact:v1:8e473fe037d074b7d5340edb42d59c5fb27f66a0fa3eb057b5331311b8f80b8b"
+      ],
+      "source_published_kst": "2026-10-25T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다",
+      "telegram_core_fact": "국내 증시 조정으로 미국 주식에 대한 관심이 커졌지만, 해외 상장사 실적발표(어닝콜) 서비스를 제공하는 증권사는 절반에도 못 미치는 것으로 나타났다.",
+      "title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다"
+    },
     "fact:671ae00815dba2f58cd63416": {
       "first_seen_kst": "2026-10-11T07:07:11+09:00",
       "lanes": {
@@ -173101,6 +173366,34 @@
       ],
       "source_published_kst": "2026-10-06T09:16+09:00",
       "title": "비트코인, 1억1600만원대 강보합…美 고용 둔화에 금리 인상 부담 완화"
+    },
+    "fact:6d6d3f107bb1afa503df7fa6": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
     },
     "fact:6d7ac6cdd647870a7916065c": {
       "first_seen_kst": "2026-10-21T05:10:02+09:00",
@@ -177936,6 +178229,30 @@
       "source_title": "MS, 엔스케일 영국 데이터센터 계약 철회…AI 인프라 확장 ‘적신호’",
       "telegram_core_fact": "전력 확보 문제로 시설 구축이 지연되는 가운데 핵심 고객의 이탈까지 겹치면서 최대 30억달러 조달을 목표로 하는 엔스케일의 기업공개(IPO)에 부담이 될 전망이다.",
       "title": "MS, 엔스케일 영국 데이터센터 계약 철회…AI 인프라 확장 ‘적신호’"
+    },
+    "fact:77f25f1f5ba57e50e7ba79f3": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01275926645616528",
+      "source": "이데일리",
+      "source_body_digest": "febbf2cef1621551339917d483077ff7c7731448ec65d2a309efffbe03c24ea2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acefa72e39a80c1227b9ea5328a73384a97edb15d77093d42d687cf258d977c5",
+      "source_fact_keys": [
+        "source_fact:v1:39d87a6aebf1c4535347dc3d26237b2d74fc02eaea97a9c2a9d5df67a26d2651",
+        "source_fact:v1:98dbf919750307b0a6adb345deab43ee9690bdaf0a0eb6fcfeadf15d54567078",
+        "source_fact:v1:9bb20c88cdaae28351aebb447f158d28b2b7d6bfc3f2623e63319d1a53a81ae2",
+        "source_fact:v1:a8d04744201ab604aa85e2f3613400324240def4d5ebd5ed917a9091ca802618",
+        "source_fact:v1:ea901af29b9de4afb5a7e8bb55b7767d13d60d6e105561b8fac0d7192cc98c92"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]",
+      "telegram_core_fact": "수신 기능이 없는 카드사는 채권 발행 등을 통해 자금 조달을 하는데 여전채 3년물(AA+·무보증·평가사 5사 평균) 금리 올해 1월 초 3.3%대에서 최근 4% 중반대까지 오르면서 약 1%포인트(p)가량 올랐다.",
+      "title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]"
     },
     "fact:77f5f9dea7594d2591f8ca0c": {
       "first_seen_kst": "2026-10-11T12:55:39+09:00",
@@ -205057,6 +205374,27 @@
       "telegram_core_fact": "정부가 공공 주도의 대규모 주택공급 확대를 추진하면서 한국토지주택공사(LH)의 역할과 업무량이 크게 늘어날 예정이지만, 정작 LH는 저임금과 인력유출로 이중고를 겪고 있는 것으로 나타났다. 실제로 2024~2026년 가덕도신공항건설공단이 채용한 경력직 가운데 20~30%가 LH 출신인 것으로 나타났다.",
       "title": "[단독] “주택공급 늘리라”는데...LH는 저임금·인력유출 이중고"
     },
+    "fact:b22cd548be25ce87180b3099": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639710",
+      "source": "이투데이",
+      "source_body_digest": "f61d4733fecd752d0115d3f263505b43de81504b877553b565870d9f861d5559",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba7f49305065d4c03c8fc50fd5c5505d086f6021f9ce4457a19886250eb2d56",
+      "source_fact_keys": [
+        "source_fact:v1:e8168f03ddac4e03a630b13716ad136073b805d1ce6d14a62978c4911f69e1c2",
+        "source_fact:v1:f083738c302f0a0ae2b964e66c3e3b709996907df9d36e06f3139a83621c456d"
+      ],
+      "source_published_kst": "2026-10-25T09:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용",
+      "telegram_core_fact": "삼성물산 건설부문은 서울 서초구 반포푸르지오아파트 리모델링 시공사로 선정됐다고 25일 밝혔다.",
+      "title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용"
+    },
     "fact:b234b30fec60fe9555568c2a": {
       "first_seen_kst": "2026-10-09T18:57:38+09:00",
       "lanes": {
@@ -210005,6 +210343,26 @@
       "source_title": "꼬여만 가는 중동·러우戰 향방…글로벌 에너지 시장은 '안갯속'",
       "telegram_core_fact": "블룸버그통신에 따르면 국제에너지기구(IEA)는 최근 이사회를 열고 2000만 배럴 경유를 포함한 1억 배럴의 비축유를 신속히 방출하기로 결정했다. 일부 회원국이 당초 약속했던 물량보다 더 많은 비축유를 방출하면서, 최종적인 공급은 당초 목표였던 4억 배럴을 상회할 것으로 보인다.",
       "title": "꼬여만 가는 중동·러우戰 향방…글로벌 에너지 시장은 '안갯속'"
+    },
+    "fact:be21ef2cc43755371d7daffb": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639712",
+      "source": "이투데이",
+      "source_body_digest": "0dc6b1119d6ab26266bc0cda69d6b0104723491a32adfcaafd3316214b5574c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a522d4c9826e4918402cbf67b36b264f028016edef3cec1a4de1ebe30ed4b412",
+      "source_fact_keys": [
+        "source_fact:v1:d8e609eb2ada9851ba7289479b0a8dd1cd4213b1021e582c3e3c71428eede956"
+      ],
+      "source_published_kst": "2026-10-25T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환",
+      "telegram_core_fact": "은행의 자금조달 비용 상승분이 시차를 두고 대출금리에 반영될 수 있는 만큼 가계대출 증가세와 차주 부담에 대한 우려도 이어질 전망이다.",
+      "title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환"
     },
     "fact:be30d83b1247bf343ff50898": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -256094,6 +256452,34 @@
       "telegram_core_fact": "한미반도체는 고대역폭메모리(HBM) 제조의 핵심 장비인 열압착(TC) 본더를 비롯해 마이크로 쏘&비전 플레이스먼트(MSVP), 2.5D 패키징용 TC 본더와 플립칩(FC) 본더 등 다양한 반도체 장비를 공급하고 있다.",
       "title": "HBM 장비 최강자 한미반도체, 美 심장부에 전진기지 세웠다"
     },
+    "link:1ad69f28a84f9c3faa719472": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
+    },
     "link:1af53b17651f740da42f0ddd": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -278249,6 +278635,26 @@
       "source_title": "경북도, 피지컬 AI로 제조 혁신…메가특구 추진 | 연합뉴스",
       "telegram_core_fact": "양금희 경북도 경제부지사는 \"기업이 필요로 하는 제조 현장의 과제를 출발점으로 로봇개발과 부품공급, 양산과 도입까지 이어지는 사업을 함께 만들겠다\"고 말했다.",
       "title": "경북도, 피지컬 AI로 제조 혁신…메가특구 추진 | 연합뉴스"
+    },
+    "link:40aba415d7c658f22cd75466": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639712",
+      "source": "이투데이",
+      "source_body_digest": "0dc6b1119d6ab26266bc0cda69d6b0104723491a32adfcaafd3316214b5574c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a522d4c9826e4918402cbf67b36b264f028016edef3cec1a4de1ebe30ed4b412",
+      "source_fact_keys": [
+        "source_fact:v1:d8e609eb2ada9851ba7289479b0a8dd1cd4213b1021e582c3e3c71428eede956"
+      ],
+      "source_published_kst": "2026-10-25T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환",
+      "telegram_core_fact": "은행의 자금조달 비용 상승분이 시차를 두고 대출금리에 반영될 수 있는 만큼 가계대출 증가세와 차주 부담에 대한 우려도 이어질 전망이다.",
+      "title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환"
     },
     "link:40abc03bef4cc844a41704f0": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -315807,6 +316213,34 @@
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
+    "link:82f02fa3748cb59a502f8128": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
+    },
     "link:82f7a7886757452e8d641035": {
       "first_seen_kst": "2026-10-15T03:55:55+09:00",
       "lanes": {
@@ -329749,6 +330183,24 @@
       "telegram_core_fact": "범광진 KB자산운용 연금WM본부장은 \"국민참여형 국민성장펀드는 미래 핵심 산업에 장기 투자하면서 소득공제와 분리과세 혜택까지 받을 수 있는 절세상품\"이라며 \"2호 펀드는 후순위 출자 확대로 손실 완화 구조를 강화한 만큼 국민들의 장기 자산 형성에 도움이 될 수 있을 것\"이라고 말했다.",
       "title": "KB운용, 국민성장펀드 2호 일반 판매…후순위 출자 늘려 손실 방어 강화"
     },
+    "link:9c3a95c513b15eb8d0a35fe4": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839817",
+      "source": "뉴시스",
+      "source_body_digest": "6871c3b022256bec2e508a14441e2b4661e42bb22a7666ab9b90d1d68aaaeb2f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-25T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 상업용 세탁가전 유럽 공략 가속…獨 '쉴링'에 공급",
+      "telegram_core_fact": "LG전자는 내달 독일 '쉴링(Schilling)'에 대용량 상업용 세탁가전 'LG 프로페셔널'을 공급한다고 25일 밝혔다.",
+      "title": "LG전자, 상업용 세탁가전 유럽 공략 가속…獨 '쉴링'에 공급"
+    },
     "link:9c4401ab3d74d18b01b21dda": {
       "first_seen_kst": "2026-10-08T10:43:48+09:00",
       "lanes": {
@@ -329768,6 +330220,30 @@
       "source_title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 134.4억원 (매출액대비 13.42 %)",
       "telegram_core_fact": "윤성에프앤씨(372170)는 2차전지 믹싱시스템에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 134.4억원이다.",
       "title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 134.4억원 (매출액대비 13.42 %)"
+    },
+    "link:9c4d92ca3fac0602a6ee90db": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01275926645616528",
+      "source": "이데일리",
+      "source_body_digest": "febbf2cef1621551339917d483077ff7c7731448ec65d2a309efffbe03c24ea2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acefa72e39a80c1227b9ea5328a73384a97edb15d77093d42d687cf258d977c5",
+      "source_fact_keys": [
+        "source_fact:v1:39d87a6aebf1c4535347dc3d26237b2d74fc02eaea97a9c2a9d5df67a26d2651",
+        "source_fact:v1:98dbf919750307b0a6adb345deab43ee9690bdaf0a0eb6fcfeadf15d54567078",
+        "source_fact:v1:9bb20c88cdaae28351aebb447f158d28b2b7d6bfc3f2623e63319d1a53a81ae2",
+        "source_fact:v1:a8d04744201ab604aa85e2f3613400324240def4d5ebd5ed917a9091ca802618",
+        "source_fact:v1:ea901af29b9de4afb5a7e8bb55b7767d13d60d6e105561b8fac0d7192cc98c92"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]",
+      "telegram_core_fact": "수신 기능이 없는 카드사는 채권 발행 등을 통해 자금 조달을 하는데 여전채 3년물(AA+·무보증·평가사 5사 평균) 금리 올해 1월 초 3.3%대에서 최근 4% 중반대까지 오르면서 약 1%포인트(p)가량 올랐다.",
+      "title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]"
     },
     "link:9c5053ba7fcbc7eeacd85669": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
@@ -348409,6 +348885,31 @@
       "source": "지디넷코리아",
       "title": "[유미's 픽] 대기업 SI, AI 기술 내재화 가속…올 상반기 R&D 투자 가장 많이 한 기업은?"
     },
+    "link:bc0a7ac8991e4c10c0288b46": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.fnnews.com/news/202610250601113109",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2a18a5b1118b669b9dc3179926f0d5ed78126a47bdd5adcfe69fec3787c7f7c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b7c85c5e1381937964974cb3308571dbccbf89ca0e32824b9749a2e9abc2bc8",
+      "source_fact_keys": [
+        "source_fact:v1:0d06887409c471719455d91f1cbd2d5b07d08177b0404ef45bcd5f429aa25da8",
+        "source_fact:v1:188d75396a2489d11fa9b3f6377cb3289678876c4a20493793f7ab7d9955a84e",
+        "source_fact:v1:53de950ab6088f1498ff12d69dc618a1fa1727a910238240863a7fab52919eb0",
+        "source_fact:v1:54f549b8f93748204b7640362060aad796bd5a0ddfb637c067ddd0e997103858",
+        "source_fact:v1:65c089555ff11d2c9018e0f808765eaa2ebff3ca11a33c49ed0b88cdc84bb2bf",
+        "source_fact:v1:8e473fe037d074b7d5340edb42d59c5fb27f66a0fa3eb057b5331311b8f80b8b"
+      ],
+      "source_published_kst": "2026-10-25T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다",
+      "telegram_core_fact": "국내 증시 조정으로 미국 주식에 대한 관심이 커졌지만, 해외 상장사 실적발표(어닝콜) 서비스를 제공하는 증권사는 절반에도 못 미치는 것으로 나타났다.",
+      "title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다"
+    },
     "link:bc1c4a03c7bd2f58d2a0319b": {
       "first_seen_kst": "2026-10-16T16:35:36+09:00",
       "lanes": {
@@ -362242,6 +362743,27 @@
       "link": "https://www.yna.co.kr/view/AKR20260928011600009",
       "source": "연합뉴스",
       "title": "'메디케어 해킹' 호주상원, 올트먼 등에 청문회 출석 요구 | 연합뉴스"
+    },
+    "link:d43f62957839495c72f61c0a": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639710",
+      "source": "이투데이",
+      "source_body_digest": "f61d4733fecd752d0115d3f263505b43de81504b877553b565870d9f861d5559",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba7f49305065d4c03c8fc50fd5c5505d086f6021f9ce4457a19886250eb2d56",
+      "source_fact_keys": [
+        "source_fact:v1:e8168f03ddac4e03a630b13716ad136073b805d1ce6d14a62978c4911f69e1c2",
+        "source_fact:v1:f083738c302f0a0ae2b964e66c3e3b709996907df9d36e06f3139a83621c456d"
+      ],
+      "source_published_kst": "2026-10-25T09:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용",
+      "telegram_core_fact": "삼성물산 건설부문은 서울 서초구 반포푸르지오아파트 리모델링 시공사로 선정됐다고 25일 밝혔다.",
+      "title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용"
     },
     "link:d44316daee796d7482866a79": {
       "first_seen_kst": "2026-10-25T09:29:31+09:00",
@@ -396084,6 +396606,24 @@
       "source": "뉴시스",
       "title": "국힘, CPTPP 대응전략 토론회…\"정부, 농업에 입힐 피해 분명히 밝혀야\""
     },
+    "original:1343b3a9b65e8ae4300c0d01": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839817",
+      "source": "뉴시스",
+      "source_body_digest": "6871c3b022256bec2e508a14441e2b4661e42bb22a7666ab9b90d1d68aaaeb2f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-25T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 상업용 세탁가전 유럽 공략 가속…獨 '쉴링'에 공급",
+      "telegram_core_fact": "LG전자는 내달 독일 '쉴링(Schilling)'에 대용량 상업용 세탁가전 'LG 프로페셔널'을 공급한다고 25일 밝혔다.",
+      "title": "LG전자, 상업용 세탁가전 유럽 공략 가속…獨 '쉴링'에 공급"
+    },
     "original:1347e18a8b9c834f1e67042f": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
       "lanes": {
@@ -420446,6 +420986,27 @@
       "source": "전자신문",
       "title": "李대통령, 멕시코와 정상회담…“무역협정 체결 긴요”"
     },
+    "original:3e4a8c27f51cbfce53ac211f": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639710",
+      "source": "이투데이",
+      "source_body_digest": "f61d4733fecd752d0115d3f263505b43de81504b877553b565870d9f861d5559",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba7f49305065d4c03c8fc50fd5c5505d086f6021f9ce4457a19886250eb2d56",
+      "source_fact_keys": [
+        "source_fact:v1:e8168f03ddac4e03a630b13716ad136073b805d1ce6d14a62978c4911f69e1c2",
+        "source_fact:v1:f083738c302f0a0ae2b964e66c3e3b709996907df9d36e06f3139a83621c456d"
+      ],
+      "source_published_kst": "2026-10-25T09:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용",
+      "telegram_core_fact": "삼성물산 건설부문은 서울 서초구 반포푸르지오아파트 리모델링 시공사로 선정됐다고 25일 밝혔다.",
+      "title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용"
+    },
     "original:3e5bfff7842595b9cc64f8e1": {
       "first_seen_kst": "2026-10-21T03:15:13+09:00",
       "lanes": {
@@ -424761,6 +425322,26 @@
       "source_title": "이란군 \"호르무즈 동부 선박 주시…금지구역서 유조선 화재\" | 연합뉴스",
       "telegram_core_fact": "이란 해군이 항행 금지 구역으로 설정한 호르무즈 해협 동부 해역에서 모든 선박의 활동을 추적·감시하고 있으며, 이 구역에서 유조선 화재가 발생했다고 13일(현지시간) 밝혔다.",
       "title": "이란군 \"호르무즈 동부 선박 주시…금지구역서 유조선 화재\" | 연합뉴스"
+    },
+    "original:4540b78603e6a3d62160375c": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639712",
+      "source": "이투데이",
+      "source_body_digest": "0dc6b1119d6ab26266bc0cda69d6b0104723491a32adfcaafd3316214b5574c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a522d4c9826e4918402cbf67b36b264f028016edef3cec1a4de1ebe30ed4b412",
+      "source_fact_keys": [
+        "source_fact:v1:d8e609eb2ada9851ba7289479b0a8dd1cd4213b1021e582c3e3c71428eede956"
+      ],
+      "source_published_kst": "2026-10-25T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환",
+      "telegram_core_fact": "은행의 자금조달 비용 상승분이 시차를 두고 대출금리에 반영될 수 있는 만큼 가계대출 증가세와 차주 부담에 대한 우려도 이어질 전망이다.",
+      "title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환"
     },
     "original:4541d07c64df38956d2d2803": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
@@ -440740,6 +441321,31 @@
       "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
       "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
     },
+    "original:61b8e59ddbc31497358709cc": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.fnnews.com/news/202610250601113109",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2a18a5b1118b669b9dc3179926f0d5ed78126a47bdd5adcfe69fec3787c7f7c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b7c85c5e1381937964974cb3308571dbccbf89ca0e32824b9749a2e9abc2bc8",
+      "source_fact_keys": [
+        "source_fact:v1:0d06887409c471719455d91f1cbd2d5b07d08177b0404ef45bcd5f429aa25da8",
+        "source_fact:v1:188d75396a2489d11fa9b3f6377cb3289678876c4a20493793f7ab7d9955a84e",
+        "source_fact:v1:53de950ab6088f1498ff12d69dc618a1fa1727a910238240863a7fab52919eb0",
+        "source_fact:v1:54f549b8f93748204b7640362060aad796bd5a0ddfb637c067ddd0e997103858",
+        "source_fact:v1:65c089555ff11d2c9018e0f808765eaa2ebff3ca11a33c49ed0b88cdc84bb2bf",
+        "source_fact:v1:8e473fe037d074b7d5340edb42d59c5fb27f66a0fa3eb057b5331311b8f80b8b"
+      ],
+      "source_published_kst": "2026-10-25T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다",
+      "telegram_core_fact": "국내 증시 조정으로 미국 주식에 대한 관심이 커졌지만, 해외 상장사 실적발표(어닝콜) 서비스를 제공하는 증권사는 절반에도 못 미치는 것으로 나타났다.",
+      "title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다"
+    },
     "original:61bfc00caea60ff6d74433f6": {
       "first_seen_kst": "2026-10-20T20:22:43+09:00",
       "lanes": {
@@ -450723,6 +451329,34 @@
       "telegram_core_fact": "우선, 상장기업에 적용하던 ‘매출액 3000억 이상’ 요건을 삭제해 매출액 규모와 관계없이 유가증권시장(KOSPI, 코스피) 및 코스닥시장(KOSDAQ, 코스닥) 전체 상장법인을 공시 의무대상에 포함했다.",
       "title": "정보보호 공시 의무, 내년 전체 상장사(2648곳)로 확대"
     },
+    "original:73a877dcf13c48743324fd14": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
+    },
     "original:73afedc0ef60dea96b97b3d8": {
       "first_seen_kst": "2026-10-23T09:48:17+09:00",
       "lanes": {
@@ -455004,6 +455638,30 @@
       "link": "https://www.etnews.com/20260923000184",
       "source": "전자신문",
       "title": "“자본잠식 '딜라이브' 대주주 문제도 상당부분 귀책”…18년간 등기임원 MBK 김광일 역할은(?)"
+    },
+    "original:7bd03073159a9568d0b2105a": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01275926645616528",
+      "source": "이데일리",
+      "source_body_digest": "febbf2cef1621551339917d483077ff7c7731448ec65d2a309efffbe03c24ea2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acefa72e39a80c1227b9ea5328a73384a97edb15d77093d42d687cf258d977c5",
+      "source_fact_keys": [
+        "source_fact:v1:39d87a6aebf1c4535347dc3d26237b2d74fc02eaea97a9c2a9d5df67a26d2651",
+        "source_fact:v1:98dbf919750307b0a6adb345deab43ee9690bdaf0a0eb6fcfeadf15d54567078",
+        "source_fact:v1:9bb20c88cdaae28351aebb447f158d28b2b7d6bfc3f2623e63319d1a53a81ae2",
+        "source_fact:v1:a8d04744201ab604aa85e2f3613400324240def4d5ebd5ed917a9091ca802618",
+        "source_fact:v1:ea901af29b9de4afb5a7e8bb55b7767d13d60d6e105561b8fac0d7192cc98c92"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]",
+      "telegram_core_fact": "수신 기능이 없는 카드사는 채권 발행 등을 통해 자금 조달을 하는데 여전채 3년물(AA+·무보증·평가사 5사 평균) 금리 올해 1월 초 3.3%대에서 최근 4% 중반대까지 오르면서 약 1%포인트(p)가량 올랐다.",
+      "title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]"
     },
     "original:7bde3888fd521dc38e39456d": {
       "first_seen_kst": "2026-10-23T00:33:48+09:00",
@@ -473235,6 +473893,34 @@
       "source_title": "J&J ‘리브리반트·렉라자’ 병용, 3분기 매출 4300억원…전년比 62% 증가",
       "telegram_core_fact": "유한양행(000100)의 폐암 신약 '렉라자'와 미국 존슨앤드존슨(J&J)의 항암제 '리브리반트' 병용요법이 올해 3분기 글로벌 매출 3억2000만달러(한화 4300억원)를 기록했다.",
       "title": "J&J ‘리브리반트·렉라자’ 병용, 3분기 매출 4300억원…전년比 62% 증가"
+    },
+    "original:9bfcda68db72d2f0c593ed05": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
     },
     "original:9c022b54671bcff174c628c4": {
       "first_seen_kst": "2026-10-20T04:27:47+09:00",
@@ -557624,6 +558310,34 @@
       "telegram_core_fact": "생체인증 신원확인 솔루션 업체 오스아이디(AUID)가 최대 135만 달러 선순위 담보부 전환사채와 보통주 매수 워런트를 투자자에게 매각하는 사모 방식 자금 조달 계약을 체결하고, 2026년 4월 발행한 기존 선순위 담보부 채권의 만기를 2027년 2월 28일로 연장하기로 했다고 10월 5일 발표했다.",
       "title": "오스아이디, 최대 135만 달러 전환사채 조달..기존 채권 만기 연장"
     },
+    "source_fact:0d203187c822e62ec8cd98d5": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
+    },
     "source_fact:0d27e36d867690038cc660ff": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
       "lanes": {
@@ -566962,6 +567676,30 @@
       "source_title": "트럼프·푸틴 경유 합의 흔들리나…우크라 드론, 수개월 못 고칠 러 정제설비 노렸다",
       "telegram_core_fact": "합의에 따라 러시아가 세계 시장에 공급하기로 제시한 경유 물량은 10월 하루 평균 약 7만5000배럴, 11월 약 12만4000배럴이다.",
       "title": "트럼프·푸틴 경유 합의 흔들리나…우크라 드론, 수개월 못 고칠 러 정제설비 노렸다"
+    },
+    "source_fact:10bce75c9023ea33779651b6": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01275926645616528",
+      "source": "이데일리",
+      "source_body_digest": "febbf2cef1621551339917d483077ff7c7731448ec65d2a309efffbe03c24ea2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acefa72e39a80c1227b9ea5328a73384a97edb15d77093d42d687cf258d977c5",
+      "source_fact_keys": [
+        "source_fact:v1:39d87a6aebf1c4535347dc3d26237b2d74fc02eaea97a9c2a9d5df67a26d2651",
+        "source_fact:v1:98dbf919750307b0a6adb345deab43ee9690bdaf0a0eb6fcfeadf15d54567078",
+        "source_fact:v1:9bb20c88cdaae28351aebb447f158d28b2b7d6bfc3f2623e63319d1a53a81ae2",
+        "source_fact:v1:a8d04744201ab604aa85e2f3613400324240def4d5ebd5ed917a9091ca802618",
+        "source_fact:v1:ea901af29b9de4afb5a7e8bb55b7767d13d60d6e105561b8fac0d7192cc98c92"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]",
+      "telegram_core_fact": "수신 기능이 없는 카드사는 채권 발행 등을 통해 자금 조달을 하는데 여전채 3년물(AA+·무보증·평가사 5사 평균) 금리 올해 1월 초 3.3%대에서 최근 4% 중반대까지 오르면서 약 1%포인트(p)가량 올랐다.",
+      "title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]"
     },
     "source_fact:10bd305e8d2ff0c5edc637ad": {
       "first_seen_kst": "2026-10-21T06:23:27+09:00",
@@ -583283,6 +584021,34 @@
       "telegram_core_fact": "SK하이닉스는 이에 대해 정부의 중복상장 규제 강화가 상장 중단 결정의 직접적인 배경은 아니라면서 시장 상황과 주주 가치를 종합적으로 따진 결과라고 설명했다.",
       "title": "SK하이닉스, 솔리다임 상장 전격중단…"
     },
+    "source_fact:18382b6adf27d227457e6643": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
+    },
     "source_fact:1838ae8094bd8703a8d48fa5": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -586112,6 +586878,34 @@
       "source_title": "키움운용, 'MLCC&AI기판' ETF 상장…무라타·삼성전기 50% 투자 | 연합뉴스",
       "telegram_core_fact": "키움투자자산운용은 오는 13일 적층세라믹콘덴서(MLCC)와 인공지능(AI) 반도체 패키징 기판 관련 기업에 투자하는 'KIWOOM 글로벌MLCC&AI기판TOP4+' 상장지수펀드(ETF)를 상장한다고 12일 밝혔다.",
       "title": "키움운용, 'MLCC&AI기판' ETF 상장…무라타·삼성전기 50% 투자 | 연합뉴스"
+    },
+    "source_fact:196de107556e766712076322": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
     },
     "source_fact:196ec75c2574369cf0d3f1d3": {
       "first_seen_kst": "2026-10-20T19:03:19+09:00",
@@ -662600,6 +663394,34 @@
       "telegram_core_fact": "SK하이닉스는 이에 대해 정부의 중복상장 규제 강화가 상장 중단 결정의 직접적인 배경은 아니라면서 시장 상황과 주주 가치를 종합적으로 따진 결과라고 설명했다.",
       "title": "SK하이닉스, 솔리다임 상장 전격중단…"
     },
+    "source_fact:3948b0bb46bf67b2776ce4dc": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
+    },
     "source_fact:394bb98c0684e7cb1587325c": {
       "first_seen_kst": "2026-10-14T17:44:16+09:00",
       "lanes": {
@@ -677940,6 +678762,34 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
       "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
     },
+    "source_fact:3fe29414ba0be0d9ec39f97e": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
+    },
     "source_fact:3fe3bcdb8abe043937099a68": {
       "first_seen_kst": "2026-10-15T15:55:49+09:00",
       "lanes": {
@@ -682703,6 +683553,34 @@
       "source_title": "롤린스, 3분기 매출 10억9000만 달러·6%↑..희석 EPS 3%↓",
       "telegram_core_fact": "해충방제 서비스 업체 롤린스(ROL)가 2026년 3분기 매출액(GAAP 기준)이 10억8967만 달러로 전년비 6.2% 증가했지만, 희석 주당순이익(GAAP 기준)은 0.33달러로 2.9% 감소했다고 10월 21일 발표했다.",
       "title": "롤린스, 3분기 매출 10억9000만 달러·6%↑..희석 EPS 3%↓"
+    },
+    "source_fact:41fd448d0709ccf41808b653": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
     },
     "source_fact:41feb98364664a8481b3d030": {
       "first_seen_kst": "2026-10-23T06:00:11+09:00",
@@ -724895,6 +725773,34 @@
       "telegram_core_fact": "한국과 일본 경제계가 공동성명을 통해 한국의 포괄적·점진적 환태평양경제동반자협정(CPTPP) 가입을 지원하겠다는 뜻을 밝혔다. 보호무역 확산과 에너지 공급망 불안에 공동 대응하고 첨단산업과 제3국 시장에서도 협력을 확대하기로 했다.",
       "title": "한일 경제계 “한국 CPTPP 가입 협력”…통상·에너지 공동 대응"
     },
+    "source_fact:535927428f5a07823d47599d": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
+    },
     "source_fact:535ab096840312865a40e7d5": {
       "first_seen_kst": "2026-10-15T07:35:02+09:00",
       "lanes": {
@@ -729768,6 +730674,26 @@
       "source_title": "SK에너지, 석유제품 가격·거래관행 점검…내부통제 강화한다",
       "telegram_core_fact": "SK에너지는 △석유시장 가격체계 투명성 및 거래관행 개선 △공정거래 및 내부통제 체계 강화 △석유 유통고객과의 상생협력 강화 △안정적인 에너지 공급을 위한 역할 지속을 골자로 하는 ‘석유시장 가격구조 개편 및 내부통제 강화’ 조치를 마련했다고 8일 밝혔다.",
       "title": "SK에너지, 석유제품 가격·거래관행 점검…내부통제 강화한다"
+    },
+    "source_fact:556ac155a83bad08a9dfe5f2": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639712",
+      "source": "이투데이",
+      "source_body_digest": "0dc6b1119d6ab26266bc0cda69d6b0104723491a32adfcaafd3316214b5574c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a522d4c9826e4918402cbf67b36b264f028016edef3cec1a4de1ebe30ed4b412",
+      "source_fact_keys": [
+        "source_fact:v1:d8e609eb2ada9851ba7289479b0a8dd1cd4213b1021e582c3e3c71428eede956"
+      ],
+      "source_published_kst": "2026-10-25T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환",
+      "telegram_core_fact": "은행의 자금조달 비용 상승분이 시차를 두고 대출금리에 반영될 수 있는 만큼 가계대출 증가세와 차주 부담에 대한 우려도 이어질 전망이다.",
+      "title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환"
     },
     "source_fact:556acaf1984cedc9b96a064b": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -765989,6 +766915,31 @@
       "source_title": "대명화학의 기묘한 패션 재편…레이어 이어 마뗑킴도 ‘모회사 역합병’",
       "telegram_core_fact": "8월 핵심 계열사 레이어가 모회사인 어센틱브랜즈코리아를 흡수합병한 데 이어, 이번에는 간판 브랜드 마뗑킴이 모회사인 하고하우스를 역합병하기로 결정했다.",
       "title": "대명화학의 기묘한 패션 재편…레이어 이어 마뗑킴도 ‘모회사 역합병’"
+    },
+    "source_fact:646fa79e34797a2d797c9d2c": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.fnnews.com/news/202610250601113109",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2a18a5b1118b669b9dc3179926f0d5ed78126a47bdd5adcfe69fec3787c7f7c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b7c85c5e1381937964974cb3308571dbccbf89ca0e32824b9749a2e9abc2bc8",
+      "source_fact_keys": [
+        "source_fact:v1:0d06887409c471719455d91f1cbd2d5b07d08177b0404ef45bcd5f429aa25da8",
+        "source_fact:v1:188d75396a2489d11fa9b3f6377cb3289678876c4a20493793f7ab7d9955a84e",
+        "source_fact:v1:53de950ab6088f1498ff12d69dc618a1fa1727a910238240863a7fab52919eb0",
+        "source_fact:v1:54f549b8f93748204b7640362060aad796bd5a0ddfb637c067ddd0e997103858",
+        "source_fact:v1:65c089555ff11d2c9018e0f808765eaa2ebff3ca11a33c49ed0b88cdc84bb2bf",
+        "source_fact:v1:8e473fe037d074b7d5340edb42d59c5fb27f66a0fa3eb057b5331311b8f80b8b"
+      ],
+      "source_published_kst": "2026-10-25T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다",
+      "telegram_core_fact": "국내 증시 조정으로 미국 주식에 대한 관심이 커졌지만, 해외 상장사 실적발표(어닝콜) 서비스를 제공하는 증권사는 절반에도 못 미치는 것으로 나타났다.",
+      "title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다"
     },
     "source_fact:64732bcc49d40f998b1b8dfa": {
       "first_seen_kst": "2026-10-20T13:59:52+09:00",
@@ -804776,6 +805727,30 @@
       "telegram_core_fact": "앤트로픽은 당초 이달 중 상장을 추진했으나 일정이 연기되면서, 11월 미국 중간선거 이후 상장할 가능성이 커졌다.",
       "title": "“AI 일자리 충격 대응”…IPO 앞둔 앤트로픽, 지분 5% 공익기금에 출연"
     },
+    "source_fact:75121c4c8e65f5dc6860ec07": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01275926645616528",
+      "source": "이데일리",
+      "source_body_digest": "febbf2cef1621551339917d483077ff7c7731448ec65d2a309efffbe03c24ea2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acefa72e39a80c1227b9ea5328a73384a97edb15d77093d42d687cf258d977c5",
+      "source_fact_keys": [
+        "source_fact:v1:39d87a6aebf1c4535347dc3d26237b2d74fc02eaea97a9c2a9d5df67a26d2651",
+        "source_fact:v1:98dbf919750307b0a6adb345deab43ee9690bdaf0a0eb6fcfeadf15d54567078",
+        "source_fact:v1:9bb20c88cdaae28351aebb447f158d28b2b7d6bfc3f2623e63319d1a53a81ae2",
+        "source_fact:v1:a8d04744201ab604aa85e2f3613400324240def4d5ebd5ed917a9091ca802618",
+        "source_fact:v1:ea901af29b9de4afb5a7e8bb55b7767d13d60d6e105561b8fac0d7192cc98c92"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]",
+      "telegram_core_fact": "수신 기능이 없는 카드사는 채권 발행 등을 통해 자금 조달을 하는데 여전채 3년물(AA+·무보증·평가사 5사 평균) 금리 올해 1월 초 3.3%대에서 최근 4% 중반대까지 오르면서 약 1%포인트(p)가량 올랐다.",
+      "title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]"
+    },
     "source_fact:75127950eacfea034a716352": {
       "first_seen_kst": "2026-10-17T09:15:26+09:00",
       "lanes": {
@@ -807504,6 +808479,34 @@
       "source_title": "금융권서 교회·대학까지…해킹에 개인정보 100만건 넘게 노출 | 연합뉴스",
       "telegram_core_fact": "국가청렴권익교육원이 운영하는 청렴권익배움터에서는 이용자 10만여명의 개인정보가 유출됐다.",
       "title": "금융권서 교회·대학까지…해킹에 개인정보 100만건 넘게 노출 | 연합뉴스"
+    },
+    "source_fact:761ad5d34f6775327586868d": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
     },
     "source_fact:761b7e5b5d550e6f6fd09b39": {
       "first_seen_kst": "2026-10-21T01:36:25+09:00",
@@ -811275,6 +812278,34 @@
       "telegram_core_fact": "안 사장은 AI 추론 수요 확대에 따라 기존 메모리 계층에서 성능과 용량 측면의 병목이 나타나고 있다고 진단했다.",
       "title": "안현 SK하이닉스 사장 “AI 병목, 전체 메모리 계층 최적화로 풀어야”"
     },
+    "source_fact:77d4c23a2a60178e875dea68": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
+    },
     "source_fact:77d4f3e92ef8f45a0a19c337": {
       "first_seen_kst": "2026-10-24T11:50:33+09:00",
       "lanes": {
@@ -812309,6 +813340,34 @@
       "source_title": "뮬러 워터 프로덕츠, 분기배당 14% 인상·자사주 매입 3억달러 확대",
       "telegram_core_fact": "뮬러 워터 프로덕츠(MWA)가 분기 배당금을 주당 0.07달러에서 0.08달러로 14.3% 인상하고, 자사주 매입 승인 한도를 3억 달러 늘려 총 승인액을 3억3450만 달러로 확대한다고 10월 22일 발표했다.",
       "title": "뮬러 워터 프로덕츠, 분기배당 14% 인상·자사주 매입 3억달러 확대"
+    },
+    "source_fact:78570aa7533d1dee6de01665": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
     },
     "source_fact:7859d3d51b5a9dcbf80c95fc": {
       "first_seen_kst": "2026-10-14T14:53:15+09:00",
@@ -818720,6 +819779,27 @@
       "telegram_core_fact": "21일(현지시간) 오픈AI 공식 블로그에 따르면 오픈AI는 이날 자사 최첨단 AI 모델과 코딩 에이전트 '코덱스'를 구글클라우드 AI 모델 플랫폼 모델 가든에 공급한다고 발표했다.",
       "title": "[AI는 지금] 구글도 GPT 품었다…오픈AI, 3대 클라우드 확보로 기업 공략 가속"
     },
+    "source_fact:7af0480cd1914c2ea67fbe59": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639710",
+      "source": "이투데이",
+      "source_body_digest": "f61d4733fecd752d0115d3f263505b43de81504b877553b565870d9f861d5559",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba7f49305065d4c03c8fc50fd5c5505d086f6021f9ce4457a19886250eb2d56",
+      "source_fact_keys": [
+        "source_fact:v1:e8168f03ddac4e03a630b13716ad136073b805d1ce6d14a62978c4911f69e1c2",
+        "source_fact:v1:f083738c302f0a0ae2b964e66c3e3b709996907df9d36e06f3139a83621c456d"
+      ],
+      "source_published_kst": "2026-10-25T09:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용",
+      "telegram_core_fact": "삼성물산 건설부문은 서울 서초구 반포푸르지오아파트 리모델링 시공사로 선정됐다고 25일 밝혔다.",
+      "title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용"
+    },
     "source_fact:7af20b4ea75658328d4a026f": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -824090,6 +825170,30 @@
       ],
       "source_published_kst": "2026-10-07T08:44+09:00",
       "title": "에메라, 캐나디언유틸리티스 143억 달러 인수 합의"
+    },
+    "source_fact:7d5b80640bfa1233d53ebcb4": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01275926645616528",
+      "source": "이데일리",
+      "source_body_digest": "febbf2cef1621551339917d483077ff7c7731448ec65d2a309efffbe03c24ea2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acefa72e39a80c1227b9ea5328a73384a97edb15d77093d42d687cf258d977c5",
+      "source_fact_keys": [
+        "source_fact:v1:39d87a6aebf1c4535347dc3d26237b2d74fc02eaea97a9c2a9d5df67a26d2651",
+        "source_fact:v1:98dbf919750307b0a6adb345deab43ee9690bdaf0a0eb6fcfeadf15d54567078",
+        "source_fact:v1:9bb20c88cdaae28351aebb447f158d28b2b7d6bfc3f2623e63319d1a53a81ae2",
+        "source_fact:v1:a8d04744201ab604aa85e2f3613400324240def4d5ebd5ed917a9091ca802618",
+        "source_fact:v1:ea901af29b9de4afb5a7e8bb55b7767d13d60d6e105561b8fac0d7192cc98c92"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]",
+      "telegram_core_fact": "수신 기능이 없는 카드사는 채권 발행 등을 통해 자금 조달을 하는데 여전채 3년물(AA+·무보증·평가사 5사 평균) 금리 올해 1월 초 3.3%대에서 최근 4% 중반대까지 오르면서 약 1%포인트(p)가량 올랐다.",
+      "title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]"
     },
     "source_fact:7d5f9a80e8448c2490107597": {
       "first_seen_kst": "2026-10-22T15:30:56+09:00",
@@ -840622,6 +841726,30 @@
       "telegram_core_fact": "코스피지수가 5% 넘게 급락한 지난 13일 개인투자자들이 레버리지ETF(상장지수펀드)를 6000억원 넘게 순매수했다.",
       "title": "\"바겐세일이다\" 6000억 샀는데…\"또 떨어지네\" 레버리지 개미 어쩌나"
     },
+    "source_fact:84e62389aa7f339ed755050b": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01275926645616528",
+      "source": "이데일리",
+      "source_body_digest": "febbf2cef1621551339917d483077ff7c7731448ec65d2a309efffbe03c24ea2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acefa72e39a80c1227b9ea5328a73384a97edb15d77093d42d687cf258d977c5",
+      "source_fact_keys": [
+        "source_fact:v1:39d87a6aebf1c4535347dc3d26237b2d74fc02eaea97a9c2a9d5df67a26d2651",
+        "source_fact:v1:98dbf919750307b0a6adb345deab43ee9690bdaf0a0eb6fcfeadf15d54567078",
+        "source_fact:v1:9bb20c88cdaae28351aebb447f158d28b2b7d6bfc3f2623e63319d1a53a81ae2",
+        "source_fact:v1:a8d04744201ab604aa85e2f3613400324240def4d5ebd5ed917a9091ca802618",
+        "source_fact:v1:ea901af29b9de4afb5a7e8bb55b7767d13d60d6e105561b8fac0d7192cc98c92"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]",
+      "telegram_core_fact": "수신 기능이 없는 카드사는 채권 발행 등을 통해 자금 조달을 하는데 여전채 3년물(AA+·무보증·평가사 5사 평균) 금리 올해 1월 초 3.3%대에서 최근 4% 중반대까지 오르면서 약 1%포인트(p)가량 올랐다.",
+      "title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]"
+    },
     "source_fact:84e6fba9ee5b574d462a7091": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
       "lanes": {
@@ -850052,6 +851180,34 @@
       "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
       "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
       "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
+    },
+    "source_fact:88b65ce613b567e46291a3dd": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
     },
     "source_fact:88b6d15a55f50cf35efc9134": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -875650,6 +876806,30 @@
       ],
       "source_published_kst": "2026-10-07T07:38+09:00",
       "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
+    },
+    "source_fact:9425d81a844e9c2abc742fbe": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01275926645616528",
+      "source": "이데일리",
+      "source_body_digest": "febbf2cef1621551339917d483077ff7c7731448ec65d2a309efffbe03c24ea2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acefa72e39a80c1227b9ea5328a73384a97edb15d77093d42d687cf258d977c5",
+      "source_fact_keys": [
+        "source_fact:v1:39d87a6aebf1c4535347dc3d26237b2d74fc02eaea97a9c2a9d5df67a26d2651",
+        "source_fact:v1:98dbf919750307b0a6adb345deab43ee9690bdaf0a0eb6fcfeadf15d54567078",
+        "source_fact:v1:9bb20c88cdaae28351aebb447f158d28b2b7d6bfc3f2623e63319d1a53a81ae2",
+        "source_fact:v1:a8d04744201ab604aa85e2f3613400324240def4d5ebd5ed917a9091ca802618",
+        "source_fact:v1:ea901af29b9de4afb5a7e8bb55b7767d13d60d6e105561b8fac0d7192cc98c92"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]",
+      "telegram_core_fact": "수신 기능이 없는 카드사는 채권 발행 등을 통해 자금 조달을 하는데 여전채 3년물(AA+·무보증·평가사 5사 평균) 금리 올해 1월 초 3.3%대에서 최근 4% 중반대까지 오르면서 약 1%포인트(p)가량 올랐다.",
+      "title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]"
     },
     "source_fact:9425db3bd3b2f8f65bf041f7": {
       "first_seen_kst": "2026-10-15T07:08:31+09:00",
@@ -921541,6 +922721,34 @@
       "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
       "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
+    "source_fact:a70f4a5a3a1b11fdb2cf2c8f": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
+    },
     "source_fact:a7115498693358e339de8b03": {
       "first_seen_kst": "2026-10-14T18:43:50+09:00",
       "lanes": {
@@ -944160,6 +945368,27 @@
       "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
       "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
     },
+    "source_fact:b09edc93da29036afb372a9a": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639710",
+      "source": "이투데이",
+      "source_body_digest": "f61d4733fecd752d0115d3f263505b43de81504b877553b565870d9f861d5559",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba7f49305065d4c03c8fc50fd5c5505d086f6021f9ce4457a19886250eb2d56",
+      "source_fact_keys": [
+        "source_fact:v1:e8168f03ddac4e03a630b13716ad136073b805d1ce6d14a62978c4911f69e1c2",
+        "source_fact:v1:f083738c302f0a0ae2b964e66c3e3b709996907df9d36e06f3139a83621c456d"
+      ],
+      "source_published_kst": "2026-10-25T09:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용",
+      "telegram_core_fact": "삼성물산 건설부문은 서울 서초구 반포푸르지오아파트 리모델링 시공사로 선정됐다고 25일 밝혔다.",
+      "title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용"
+    },
     "source_fact:b09fec03ab1bca2e3b226ae1": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -951139,6 +952368,34 @@
       "source_title": "퀀텀 이모션, 플루리록 인수 계약 체결..1주당 신주 0.0763주",
       "telegram_core_fact": "퀀텀 이모션(QNC)이 캐나다 사이버보안 업체 플루리록 시큐리티(Plurilock Security)를 인수하는 계획 합병(Plan of Arrangement) 계약을 9월 28일 체결했으며, 플루리록 1주당 퀀텀 이모션 신주 0.0763주와 현금 0.084캐나다달러를 지급한다고 10월 13일 발표했다.",
       "title": "퀀텀 이모션, 플루리록 인수 계약 체결..1주당 신주 0.0763주"
+    },
+    "source_fact:b3727064177db1459afb7df6": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
     },
     "source_fact:b3752427c5d3b1e685b47c69": {
       "first_seen_kst": "2026-10-12T00:21:39+09:00",
@@ -984902,6 +986159,31 @@
       "telegram_core_fact": "로이터통신에 따르면 트럼프 대통령은 지난 9일(현지시간) 블라디미르 푸틴 러시아 대통령과의 통화 후 러시아가 즉시 30만톤(t) 이상의 경유를 미국과 글로벌 시장에 공급한다고 자신의 사회관계망서비스(SNS) ‘트루스소셜’을 통해 발표했다.",
       "title": "중간선거 앞둔 트럼프 ‘폭주’…꼬여만 가는 러-우크라戰"
     },
+    "source_fact:c1e67bf92edc2c333592f113": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.fnnews.com/news/202610250601113109",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2a18a5b1118b669b9dc3179926f0d5ed78126a47bdd5adcfe69fec3787c7f7c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b7c85c5e1381937964974cb3308571dbccbf89ca0e32824b9749a2e9abc2bc8",
+      "source_fact_keys": [
+        "source_fact:v1:0d06887409c471719455d91f1cbd2d5b07d08177b0404ef45bcd5f429aa25da8",
+        "source_fact:v1:188d75396a2489d11fa9b3f6377cb3289678876c4a20493793f7ab7d9955a84e",
+        "source_fact:v1:53de950ab6088f1498ff12d69dc618a1fa1727a910238240863a7fab52919eb0",
+        "source_fact:v1:54f549b8f93748204b7640362060aad796bd5a0ddfb637c067ddd0e997103858",
+        "source_fact:v1:65c089555ff11d2c9018e0f808765eaa2ebff3ca11a33c49ed0b88cdc84bb2bf",
+        "source_fact:v1:8e473fe037d074b7d5340edb42d59c5fb27f66a0fa3eb057b5331311b8f80b8b"
+      ],
+      "source_published_kst": "2026-10-25T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다",
+      "telegram_core_fact": "국내 증시 조정으로 미국 주식에 대한 관심이 커졌지만, 해외 상장사 실적발표(어닝콜) 서비스를 제공하는 증권사는 절반에도 못 미치는 것으로 나타났다.",
+      "title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다"
+    },
     "source_fact:c1e7f56181b16e7577869d9c": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -988146,6 +989428,34 @@
       ],
       "source_published_kst": "2026-10-06T10:04+09:00",
       "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
+    },
+    "source_fact:c337276d798379e40d5ae0f0": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
     },
     "source_fact:c337345bc4c70473544cdcd3": {
       "first_seen_kst": "2026-10-22T00:31:22+09:00",
@@ -1012850,6 +1014160,31 @@
       "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
       "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
     },
+    "source_fact:cdc65accf4d74e923f4d352a": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.fnnews.com/news/202610250601113109",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2a18a5b1118b669b9dc3179926f0d5ed78126a47bdd5adcfe69fec3787c7f7c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b7c85c5e1381937964974cb3308571dbccbf89ca0e32824b9749a2e9abc2bc8",
+      "source_fact_keys": [
+        "source_fact:v1:0d06887409c471719455d91f1cbd2d5b07d08177b0404ef45bcd5f429aa25da8",
+        "source_fact:v1:188d75396a2489d11fa9b3f6377cb3289678876c4a20493793f7ab7d9955a84e",
+        "source_fact:v1:53de950ab6088f1498ff12d69dc618a1fa1727a910238240863a7fab52919eb0",
+        "source_fact:v1:54f549b8f93748204b7640362060aad796bd5a0ddfb637c067ddd0e997103858",
+        "source_fact:v1:65c089555ff11d2c9018e0f808765eaa2ebff3ca11a33c49ed0b88cdc84bb2bf",
+        "source_fact:v1:8e473fe037d074b7d5340edb42d59c5fb27f66a0fa3eb057b5331311b8f80b8b"
+      ],
+      "source_published_kst": "2026-10-25T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다",
+      "telegram_core_fact": "국내 증시 조정으로 미국 주식에 대한 관심이 커졌지만, 해외 상장사 실적발표(어닝콜) 서비스를 제공하는 증권사는 절반에도 못 미치는 것으로 나타났다.",
+      "title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다"
+    },
     "source_fact:cdc6e5dcfa0d86141ee00b0e": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -1023121,6 +1024456,34 @@
       ],
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약"
+    },
+    "source_fact:d1d1b8666a62e7e1f0545f52": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
     },
     "source_fact:d1da7fbbe13dd16aea7e9b76": {
       "first_seen_kst": "2026-10-14T07:46:13+09:00",
@@ -1034441,6 +1035804,31 @@
       "source_title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨",
       "telegram_core_fact": "금융투자업계에 따르면 SK하이닉스는 이날 40조원 자사주 매입을 마무리했다.",
       "title": "SK하이닉스, 40조 규모 자사주 매입 완료…계획보다 한 달 당겨"
+    },
+    "source_fact:d68c6fdc835d2b600c7a51bc": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.fnnews.com/news/202610250601113109",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2a18a5b1118b669b9dc3179926f0d5ed78126a47bdd5adcfe69fec3787c7f7c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b7c85c5e1381937964974cb3308571dbccbf89ca0e32824b9749a2e9abc2bc8",
+      "source_fact_keys": [
+        "source_fact:v1:0d06887409c471719455d91f1cbd2d5b07d08177b0404ef45bcd5f429aa25da8",
+        "source_fact:v1:188d75396a2489d11fa9b3f6377cb3289678876c4a20493793f7ab7d9955a84e",
+        "source_fact:v1:53de950ab6088f1498ff12d69dc618a1fa1727a910238240863a7fab52919eb0",
+        "source_fact:v1:54f549b8f93748204b7640362060aad796bd5a0ddfb637c067ddd0e997103858",
+        "source_fact:v1:65c089555ff11d2c9018e0f808765eaa2ebff3ca11a33c49ed0b88cdc84bb2bf",
+        "source_fact:v1:8e473fe037d074b7d5340edb42d59c5fb27f66a0fa3eb057b5331311b8f80b8b"
+      ],
+      "source_published_kst": "2026-10-25T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다",
+      "telegram_core_fact": "국내 증시 조정으로 미국 주식에 대한 관심이 커졌지만, 해외 상장사 실적발표(어닝콜) 서비스를 제공하는 증권사는 절반에도 못 미치는 것으로 나타났다.",
+      "title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다"
     },
     "source_fact:d68d156a6de384b4ea42ec9b": {
       "first_seen_kst": "2026-10-25T08:54:30+09:00",
@@ -1073412,6 +1074800,31 @@
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "반도체 호황에 기업 여윳돈 67조…역대 최대"
     },
+    "source_fact:e71d1d28e3ce0ade9e2d6fc0": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.fnnews.com/news/202610250601113109",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2a18a5b1118b669b9dc3179926f0d5ed78126a47bdd5adcfe69fec3787c7f7c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b7c85c5e1381937964974cb3308571dbccbf89ca0e32824b9749a2e9abc2bc8",
+      "source_fact_keys": [
+        "source_fact:v1:0d06887409c471719455d91f1cbd2d5b07d08177b0404ef45bcd5f429aa25da8",
+        "source_fact:v1:188d75396a2489d11fa9b3f6377cb3289678876c4a20493793f7ab7d9955a84e",
+        "source_fact:v1:53de950ab6088f1498ff12d69dc618a1fa1727a910238240863a7fab52919eb0",
+        "source_fact:v1:54f549b8f93748204b7640362060aad796bd5a0ddfb637c067ddd0e997103858",
+        "source_fact:v1:65c089555ff11d2c9018e0f808765eaa2ebff3ca11a33c49ed0b88cdc84bb2bf",
+        "source_fact:v1:8e473fe037d074b7d5340edb42d59c5fb27f66a0fa3eb057b5331311b8f80b8b"
+      ],
+      "source_published_kst": "2026-10-25T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다",
+      "telegram_core_fact": "국내 증시 조정으로 미국 주식에 대한 관심이 커졌지만, 해외 상장사 실적발표(어닝콜) 서비스를 제공하는 증권사는 절반에도 못 미치는 것으로 나타났다.",
+      "title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다"
+    },
     "source_fact:e71f236b9dd8565b57be81c6": {
       "first_seen_kst": "2026-10-11T06:07:21+09:00",
       "lanes": {
@@ -1075734,6 +1077147,34 @@
       "source_title": "美 데이터센터 주변 기온 최대 2.2도 높았다…AI 전력·물 부담도 확대",
       "telegram_core_fact": "국제에너지기구(IEA)에 따르면 AI 전용 데이터센터의 전력 사용량은 2025년 전년보다 50% 증가했다. 국제 통계 분석 사이트 아워월드인데이터는 2025년 AI 전용 데이터센터가 전 세계 전력의 약 0.5%를 소비했다고 추산했다.",
       "title": "美 데이터센터 주변 기온 최대 2.2도 높았다…AI 전력·물 부담도 확대"
+    },
+    "source_fact:e83082dd0eb2172e1813ab1b": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
     },
     "source_fact:e831e2ae5313dfd7e4aebbda": {
       "first_seen_kst": "2026-10-18T15:46:48+09:00",
@@ -1082307,6 +1083748,34 @@
       "source_title": "완주군, 도시가스 취약 농촌에 LPG 소형 저장탱크 보급 | 연합뉴스",
       "telegram_core_fact": "유희태 군수는 \"사업을 통해 농촌 주민이 안전하고 편리하게 LPG를 사용하고 난방비 걱정도 덜 것\"이라며 \"도시가스 미공급 지역의 에너지 복지를 위해 소형 저장탱크 보급을 확대하겠다\"고 말했다.",
       "title": "완주군, 도시가스 취약 농촌에 LPG 소형 저장탱크 보급 | 연합뉴스"
+    },
+    "source_fact:eb0021a216602c3c6638e9f4": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
     },
     "source_fact:eb00ee88bfa952c2c9642a31": {
       "first_seen_kst": "2026-10-20T02:15:18+09:00",
@@ -1107984,6 +1109453,31 @@
       "telegram_core_fact": "엔스케일은 앞서 미국 증권거래위원회(SEC)에 제출한 IPO 신청서에서 모나크 데이터센터 단지가 완공 시 총 전력 용량을 8기가와트 이상으로 확대할 수 있도록 설계됐고, 앤트로픽과 446억달러 AI 인프라 공급 계약을 체결했다고 밝힌 바 있다.",
       "title": "\"英 엔스케일, 앤트로픽과 추가계약 논의\"…IPO 연기 우려 해소되나"
     },
+    "source_fact:f62970a67683f30be7c285f3": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.fnnews.com/news/202610250601113109",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2a18a5b1118b669b9dc3179926f0d5ed78126a47bdd5adcfe69fec3787c7f7c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b7c85c5e1381937964974cb3308571dbccbf89ca0e32824b9749a2e9abc2bc8",
+      "source_fact_keys": [
+        "source_fact:v1:0d06887409c471719455d91f1cbd2d5b07d08177b0404ef45bcd5f429aa25da8",
+        "source_fact:v1:188d75396a2489d11fa9b3f6377cb3289678876c4a20493793f7ab7d9955a84e",
+        "source_fact:v1:53de950ab6088f1498ff12d69dc618a1fa1727a910238240863a7fab52919eb0",
+        "source_fact:v1:54f549b8f93748204b7640362060aad796bd5a0ddfb637c067ddd0e997103858",
+        "source_fact:v1:65c089555ff11d2c9018e0f808765eaa2ebff3ca11a33c49ed0b88cdc84bb2bf",
+        "source_fact:v1:8e473fe037d074b7d5340edb42d59c5fb27f66a0fa3eb057b5331311b8f80b8b"
+      ],
+      "source_published_kst": "2026-10-25T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다",
+      "telegram_core_fact": "국내 증시 조정으로 미국 주식에 대한 관심이 커졌지만, 해외 상장사 실적발표(어닝콜) 서비스를 제공하는 증권사는 절반에도 못 미치는 것으로 나타났다.",
+      "title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다"
+    },
     "source_fact:f62f69097f7e7343d206cb75": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
       "lanes": {
@@ -1110621,6 +1112115,34 @@
       "source_title": "테슬라 “내년 2분기 고객차에 무감독 FSD 일부 적용…테라팹·옵티머스 양산 속도”",
       "telegram_core_fact": "테슬라가 이르면 내년 2분기 일반 고객 차량에 '무감독(Unsupervised)' 완전자율주행(FSD) 소프트웨어를 적용하고, 자체 반도체 공장 가동과 휴머노이드 로봇 양산에 속도를 낸다는 공격적인 미래 청사진을 내놓았다.",
       "title": "테슬라 “내년 2분기 고객차에 무감독 FSD 일부 적용…테라팹·옵티머스 양산 속도”"
+    },
+    "source_fact:f76e52c93e0340cfc2efa941": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
     },
     "source_fact:f779fd80f0496560a4bd2be7": {
       "first_seen_kst": "2026-10-14T04:09:16+09:00",
@@ -1140627,6 +1142149,24 @@
       "source": "뉴시스",
       "title": "국힘, CPTPP 대응전략 토론회…\"정부, 농업에 입힐 피해 분명히 밝혀야\""
     },
+    "title:1343b3a9b65e8ae4300c0d01": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261025_0003839817",
+      "source": "뉴시스",
+      "source_body_digest": "6871c3b022256bec2e508a14441e2b4661e42bb22a7666ab9b90d1d68aaaeb2f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-25T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG전자, 상업용 세탁가전 유럽 공략 가속…獨 '쉴링'에 공급",
+      "telegram_core_fact": "LG전자는 내달 독일 '쉴링(Schilling)'에 대용량 상업용 세탁가전 'LG 프로페셔널'을 공급한다고 25일 밝혔다.",
+      "title": "LG전자, 상업용 세탁가전 유럽 공략 가속…獨 '쉴링'에 공급"
+    },
     "title:1347e18a8b9c834f1e67042f": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
       "lanes": {
@@ -1165485,6 +1167025,27 @@
       "source": "전자신문",
       "title": "李대통령, 멕시코와 정상회담…“무역협정 체결 긴요”"
     },
+    "title:3e4a8c27f51cbfce53ac211f": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639710",
+      "source": "이투데이",
+      "source_body_digest": "f61d4733fecd752d0115d3f263505b43de81504b877553b565870d9f861d5559",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba7f49305065d4c03c8fc50fd5c5505d086f6021f9ce4457a19886250eb2d56",
+      "source_fact_keys": [
+        "source_fact:v1:e8168f03ddac4e03a630b13716ad136073b805d1ce6d14a62978c4911f69e1c2",
+        "source_fact:v1:f083738c302f0a0ae2b964e66c3e3b709996907df9d36e06f3139a83621c456d"
+      ],
+      "source_published_kst": "2026-10-25T09:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용",
+      "telegram_core_fact": "삼성물산 건설부문은 서울 서초구 반포푸르지오아파트 리모델링 시공사로 선정됐다고 25일 밝혔다.",
+      "title": "삼성물산, 반포푸르지오 리모델링 시공사 선정…'넥스트 리모델링' 첫 적용"
+    },
     "title:3e5bfff7842595b9cc64f8e1": {
       "first_seen_kst": "2026-10-21T03:15:13+09:00",
       "lanes": {
@@ -1169837,6 +1171398,26 @@
       "source_title": "이란군 \"호르무즈 동부 선박 주시…금지구역서 유조선 화재\" | 연합뉴스",
       "telegram_core_fact": "이란 해군이 항행 금지 구역으로 설정한 호르무즈 해협 동부 해역에서 모든 선박의 활동을 추적·감시하고 있으며, 이 구역에서 유조선 화재가 발생했다고 13일(현지시간) 밝혔다.",
       "title": "이란군 \"호르무즈 동부 선박 주시…금지구역서 유조선 화재\" | 연합뉴스"
+    },
+    "title:4540b78603e6a3d62160375c": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639712",
+      "source": "이투데이",
+      "source_body_digest": "0dc6b1119d6ab26266bc0cda69d6b0104723491a32adfcaafd3316214b5574c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a522d4c9826e4918402cbf67b36b264f028016edef3cec1a4de1ebe30ed4b412",
+      "source_fact_keys": [
+        "source_fact:v1:d8e609eb2ada9851ba7289479b0a8dd1cd4213b1021e582c3e3c71428eede956"
+      ],
+      "source_published_kst": "2026-10-25T09:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환",
+      "telegram_core_fact": "은행의 자금조달 비용 상승분이 시차를 두고 대출금리에 반영될 수 있는 만큼 가계대출 증가세와 차주 부담에 대한 우려도 이어질 전망이다.",
+      "title": "5대 은행 가계대출 이달 2.6조 증가⋯한 달 만에 증가 전환"
     },
     "title:4541d07c64df38956d2d2803": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
@@ -1186189,6 +1187770,31 @@
       "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
       "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
     },
+    "title:61b8e59ddbc31497358709cc": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.fnnews.com/news/202610250601113109",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2a18a5b1118b669b9dc3179926f0d5ed78126a47bdd5adcfe69fec3787c7f7c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b7c85c5e1381937964974cb3308571dbccbf89ca0e32824b9749a2e9abc2bc8",
+      "source_fact_keys": [
+        "source_fact:v1:0d06887409c471719455d91f1cbd2d5b07d08177b0404ef45bcd5f429aa25da8",
+        "source_fact:v1:188d75396a2489d11fa9b3f6377cb3289678876c4a20493793f7ab7d9955a84e",
+        "source_fact:v1:53de950ab6088f1498ff12d69dc618a1fa1727a910238240863a7fab52919eb0",
+        "source_fact:v1:54f549b8f93748204b7640362060aad796bd5a0ddfb637c067ddd0e997103858",
+        "source_fact:v1:65c089555ff11d2c9018e0f808765eaa2ebff3ca11a33c49ed0b88cdc84bb2bf",
+        "source_fact:v1:8e473fe037d074b7d5340edb42d59c5fb27f66a0fa3eb057b5331311b8f80b8b"
+      ],
+      "source_published_kst": "2026-10-25T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다",
+      "telegram_core_fact": "국내 증시 조정으로 미국 주식에 대한 관심이 커졌지만, 해외 상장사 실적발표(어닝콜) 서비스를 제공하는 증권사는 절반에도 못 미치는 것으로 나타났다.",
+      "title": "미장 투자 열기 뜨거운데…증권사 12곳 중 7곳 '어닝콜 서비스' 없다"
+    },
     "title:61bfc00caea60ff6d74433f6": {
       "first_seen_kst": "2026-10-20T20:22:43+09:00",
       "lanes": {
@@ -1196360,6 +1197966,34 @@
       "telegram_core_fact": "우선, 상장기업에 적용하던 ‘매출액 3000억 이상’ 요건을 삭제해 매출액 규모와 관계없이 유가증권시장(KOSPI, 코스피) 및 코스닥시장(KOSDAQ, 코스닥) 전체 상장법인을 공시 의무대상에 포함했다.",
       "title": "정보보호 공시 의무, 내년 전체 상장사(2648곳)로 확대"
     },
+    "title:73a877dcf13c48743324fd14": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01249686645616528",
+      "source": "이데일리",
+      "source_body_digest": "ce79710975c27ec545aa0e700cc5eec79424782f3b470aad639a07e531f2aaef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889d0134a94592c1a94a653317aa891ad0897c50be158a85592a077cd0552252",
+      "source_fact_keys": [
+        "source_fact:v1:0156dbe954554fa83b8e0ae4d19fa4925d9ed37154f324cd53e701dbfa8ee1b3",
+        "source_fact:v1:18293d7ee3a50b379b81ab8d170d9fba6c5cb608aa9fb9439c0d27ec308f8b25",
+        "source_fact:v1:20f1ac39c469fb3862404edd90c1de735adfe5480baa5056fe79db604ba2a2b8",
+        "source_fact:v1:2a163f19a233dd7a248b9ca3b8baab538809a0fcb8146040a007bb9dd1b578af",
+        "source_fact:v1:329f89b215185c709a3e7fdf93cd094f9ba5e73f60c40ae4995ac1e7180509d0",
+        "source_fact:v1:3f35ad9f501a75f99a68300c2ba01ce05b2eb37af06a0f7061b999344fd5c9f2",
+        "source_fact:v1:5f932fe478c8ee0fa4fd7ae75089a876ff2f5332cabf0ddb6ed234e29e19cec8",
+        "source_fact:v1:91208d327a690437d63e6e8421c7500556083287a2b975b26af55d1f6fcc0526",
+        "source_fact:v1:a1453e13bb4608fb4b2d9c673a10640d210e4fb2645c6f0e3e4795b19b629285"
+      ],
+      "source_published_kst": "2026-10-25T09:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까",
+      "telegram_core_fact": "하나증권이 국내 주식형 ETF 순자산 상위 20개 상품의 최근 정기 리밸런싱을 최대 4회씩 분석한 결과 신규 편입 종목은 지수 변경 적용 전일 평균 5.30% 상승했다. 한국거래소의 새로운 산업분류체계 도입을 앞두고 63조원 상장지수펀드(ETF) 시장에 수급 변화가 예상된다.",
+      "title": "63조 ETF 시장 흔들 변수…종목 교체에 매수세 몰릴까"
+    },
     "title:73afedc0ef60dea96b97b3d8": {
       "first_seen_kst": "2026-10-23T09:48:17+09:00",
       "lanes": {
@@ -1200719,6 +1202353,30 @@
       "link": "https://www.etnews.com/20260923000184",
       "source": "전자신문",
       "title": "“자본잠식 '딜라이브' 대주주 문제도 상당부분 귀책”…18년간 등기임원 MBK 김광일 역할은(?)"
+    },
+    "title:7bd03073159a9568d0b2105a": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01275926645616528",
+      "source": "이데일리",
+      "source_body_digest": "febbf2cef1621551339917d483077ff7c7731448ec65d2a309efffbe03c24ea2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acefa72e39a80c1227b9ea5328a73384a97edb15d77093d42d687cf258d977c5",
+      "source_fact_keys": [
+        "source_fact:v1:39d87a6aebf1c4535347dc3d26237b2d74fc02eaea97a9c2a9d5df67a26d2651",
+        "source_fact:v1:98dbf919750307b0a6adb345deab43ee9690bdaf0a0eb6fcfeadf15d54567078",
+        "source_fact:v1:9bb20c88cdaae28351aebb447f158d28b2b7d6bfc3f2623e63319d1a53a81ae2",
+        "source_fact:v1:a8d04744201ab604aa85e2f3613400324240def4d5ebd5ed917a9091ca802618",
+        "source_fact:v1:ea901af29b9de4afb5a7e8bb55b7767d13d60d6e105561b8fac0d7192cc98c92"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]",
+      "telegram_core_fact": "수신 기능이 없는 카드사는 채권 발행 등을 통해 자금 조달을 하는데 여전채 3년물(AA+·무보증·평가사 5사 평균) 금리 올해 1월 초 3.3%대에서 최근 4% 중반대까지 오르면서 약 1%포인트(p)가량 올랐다.",
+      "title": "중금리대출 총량 제외에 취급액 늘었지만 카드사 확대 신중[금융 인사이트]"
     },
     "title:7bde3888fd521dc38e39456d": {
       "first_seen_kst": "2026-10-23T00:33:48+09:00",
@@ -1219380,6 +1221038,34 @@
       "source_title": "J&J ‘리브리반트·렉라자’ 병용, 3분기 매출 4300억원…전년比 62% 증가",
       "telegram_core_fact": "유한양행(000100)의 폐암 신약 '렉라자'와 미국 존슨앤드존슨(J&J)의 항암제 '리브리반트' 병용요법이 올해 3분기 글로벌 매출 3억2000만달러(한화 4300억원)를 기록했다.",
       "title": "J&J ‘리브리반트·렉라자’ 병용, 3분기 매출 4300억원…전년比 62% 증가"
+    },
+    "title:9bfcda68db72d2f0c593ed05": {
+      "first_seen_kst": "2026-10-25T09:55:02+09:00",
+      "lanes": {
+        "live": "2026-10-25T09:55:02+09:00"
+      },
+      "last_seen_kst": "2026-10-25T09:55:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261023_0003838099",
+      "source": "뉴시스",
+      "source_body_digest": "c1023b66d7d9d741d1cec2d5b54f8e56b9f4fd3648bfd5369a4839a06f1e5bce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06161803e1ce559158f1ffb3f0d377fc969a1e1252517ed092054c00a2fd38ef",
+      "source_fact_keys": [
+        "source_fact:v1:1e49dde8194f6ea5d13950238731a043841830a48a48cb7d0b19fd4036fe3c03",
+        "source_fact:v1:2c37095366f3bec4735ac9f355d39474d47fab4c502c0ce62c9b8a2386a4cb22",
+        "source_fact:v1:36bc8f5b54e8789c4faa2d5603b018768e2b22e9ce2eb8c7db2504a2cb1ededf",
+        "source_fact:v1:4b4268283b93bd5217f5e7b22659af9739afd531a2f799cdb96bd605b9b11b82",
+        "source_fact:v1:4b9a26de69946a6a6a37ffc5473f486b43677134503a1444613415694b4e58bb",
+        "source_fact:v1:a741801f691f3f51ed3e5c519ca82fd71c3e5c7bcc07059f33fe4749320aba0b",
+        "source_fact:v1:afc62d54ff26525db04ef489b961de11ae1d5f11c23361002e814606ff580bbc",
+        "source_fact:v1:b0c280d423086863dd191bdff884b53294ea90db33200b1e80664402f09bcb58",
+        "source_fact:v1:b829a0fbbe876a5f5fdb0f2f2edd8f8309c512a7e407fab9ca69592cf749abc2"
+      ],
+      "source_published_kst": "2026-10-25T09:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화",
+      "telegram_core_fact": "인공지능(AI) 기술 급성장으로 '메모리 반도체'가 전체 반도체 시장의 성능 향상을 이끄는 핵심 요소로 떠오르고 있다.",
+      "title": "\"GPU 아닌 메모리가 발목 잡는다\"…AI가 바꾼 반도체 판도 변화"
     },
     "title:9c022b54671bcff174c628c4": {
       "first_seen_kst": "2026-10-20T04:27:47+09:00",
@@ -1275153,5 +1276839,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-25T09:29:31+09:00"
+  "updated_at_kst": "2026-10-25T09:55:02+09:00"
 }
