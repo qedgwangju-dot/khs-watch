@@ -79,9 +79,11 @@ WEEKLY_004_LOCK = {
 
 # Separate manufacturer's quoted order backlog from the TrendForce MLCC
 # industry composite (35 weeks on 2026-10-19). Never overwrite that composite.
-MLCC_VENDOR_VERSION = 1
+MLCC_VENDOR_VERSION = 2
 MLCC_VENDOR_URL = "https://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=772371"
 MLCC_OFFICIAL_LTA_URL = "https://sem.samsung.com/kr/newsroom/news/view.do?id=10501"
+PH_GOV_MLCC_TIMING_URL = "https://pco.gov.ph/news_releases/samsungs-over-php50-b-investment-is-first-beneficiary-of-create-more-presidential-approval/"
+PH_NEWS_MLCC_TIMING_URL = "https://en.sedaily.com/finance/2026/08/02/samsung-electro-mechanics-fast-tracks-philippine-mlcc-plant"
 MLCC_OFFICIAL_Q2_URL = "https://www.sem.samsung.com/kr/newsroom/news/view.do?id=10461"
 MLCC_OFFICIAL_FCBGA_URL = "https://www.sem.samsung.com/global/newsroom/news/view.do?id=10562"
 CASPA_ORIGINAL_URL = "https://newsletter.chipstrat.com/p/my-conversation-with-dylan-patel"
@@ -94,7 +96,7 @@ MLCC_VENDOR_QUERIES = (
 MLCC_VENDOR_HOSTS = ("digitimes.com.tw", "heraldcorp.com", "reuters.com",
                      "thelec.net", "trendforce.com", "sem.samsung.com")
 MLCC_VENDOR_BASELINE = {
-    "version": 1, "as_of": "2026-10-23", "manufacturer": "삼성전기",
+    "version": 2, "as_of": "2026-10-23", "manufacturer": "삼성전기",
     "maker_weeks": 52, "channel_max_weeks": 61,
     "scope": "manufacturer_order_vs_selected_distribution",
     "evidence": "신뢰 언론보도; 삼성전기 공식 납기표 아님",
@@ -108,6 +110,14 @@ MLCC_VENDOR_BASELINE = {
     "q2_2026_op_profit_eok": 4404,
     "h1_2026_utilization_pct_reported": 91,
     "q3_earnings_expected": "2026-10-28",
+    "philippines_factory": {
+        "official_government_goal": "2027-07",
+        "official_scope": "전장용 MLCC 신설시설",
+        "source_url": PH_GOV_MLCC_TIMING_URL,
+        "later_report_earliest": "2027-Q1말",
+        "later_report_source": PH_NEWS_MLCC_TIMING_URL,
+        "ai_grade_customer_mass_production_verified": False,
+    },
 }
 CASPA_PANEL_BASELINE = {
     "version": 1, "as_of": "2026-10-23", "source_url": CASPA_ORIGINAL_URL,
@@ -1009,9 +1019,16 @@ def mlcc_vendor_new_fact(item: dict) -> dict | None:
 def mlcc_vendor_update(previous: dict, incoming: list[dict]) -> tuple[dict, list[dict]]:
     record = copy.deepcopy(previous or {})
     events = []
-    if int(record.get("version") or 0) < MLCC_VENDOR_VERSION:
+    existing_version = int(record.get("version") or 0)
+    if existing_version == 0:
         record = copy.deepcopy(MLCC_VENDOR_BASELINE)
         events.append({"kind": "initial"})
+    elif existing_version < MLCC_VENDOR_VERSION:
+        # Preserve the already-reported 52/61-week baseline and its delivery
+        # identity; migrate only the additional government timeline evidence.
+        record["version"] = MLCC_VENDOR_VERSION
+        record["philippines_factory"] = copy.deepcopy(MLCC_VENDOR_BASELINE["philippines_factory"])
+        events.append({"kind": "philippines_timing_correction"})
     seen = set(record.get("seen_facts") or [])
     for item in sorted(incoming, key=lambda x: x.get("published_at_kst") or ""):
         obs = mlcc_vendor_new_fact(item)
@@ -1033,6 +1050,18 @@ def mlcc_vendor_update(previous: dict, incoming: list[dict]) -> tuple[dict, list
 
 
 def mlcc_vendor_notice(event: dict, record: dict, industry: dict) -> str:
+    if event["kind"] == "philippines_timing_correction":
+        return "\n".join([
+            "<b>MLCC 증설 일정 정정 — 필리핀 정부 공식</b>",
+            "• 필리핀 정부 2025년 발표: 전장용 MLCC 신설시설 <b>2027년 7월까지 상업가동 목표</b>.",
+            "• 2026년 8월 업계보도: 이르면 <b>2027년 1분기 말</b> 신공장 가동 예상.",
+            "• 따라서 '2027년 이후에야 가동'을 확정 일정으로 쓰지 않습니다.",
+            "• 2027년 가동 목표와 AI용 세부규격 양산·고객 인증·실제 출하는 별도 확인합니다.",
+            "• 삼성전기 52주 및 일부 유통 61주 보도와 TrendForce 산업 35주 지표는 변경하지 않음.",
+            "• 다음 확인: 10월 28일 3분기 실적, 필리핀 공장 시운전·제품별 생산·양품률.",
+            f'• <a href="{PH_GOV_MLCC_TIMING_URL}">필리핀 정부 발표</a>'
+            f' / <a href="{PH_NEWS_MLCC_TIMING_URL}">2026년 8월 조기 가동 보도</a>',
+        ])
     if event["kind"] == "revision":
         label = "삼성전기 제조사" if event["scope"] == "maker" else "일부 유통 채널"
         a, b = event["before"], event["weeks"]
@@ -1053,6 +1082,7 @@ def mlcc_vendor_notice(event: dict, record: dict, industry: dict) -> str:
         "• 삼성전기 공식: AI 서버용 MLCC <b>1조 722억원</b> 2027년 1~12월 공급계약.",
         "• 2Q26 컴포넌트 매출 1조6,494억원(분기), 전사 매출 3조4,572억원·영업이익 4,404억원.",
         "• 상반기 가동률 91%는 보도치. 제품별 생산·고객 단가와 다름.",
+        "• 필리핀 정부 전장용 MLCC 신공장 상업가동 목표는 2027년 7월까지; AI용 세부제품 양산은 별도 검증.",
         "• 세종·베트남 설비투자 6조7,800억원은 <b>FC-BGA 기판용</b>, MLCC와 분리.",
         "• 다음 확인: 10/28 3분기 잠정실적, MLCC 평균판매단가·생산능력·필리핀 공장 일정.",
         f'• <a href="{MLCC_VENDOR_URL}">납기 보도</a>'

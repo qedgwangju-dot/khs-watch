@@ -493,6 +493,37 @@ class VendorMLCCAndCASPAGuards(unittest.TestCase):
         self.assertEqual(e2, [])
         self.assertEqual(state2["maker_weeks"], 52)
 
+
+    def test_philippines_factory_official_july_2027_not_after_2027(self):
+        factory = w.MLCC_VENDOR_BASELINE["philippines_factory"]
+        self.assertEqual(factory["official_government_goal"], "2027-07")
+        self.assertEqual(factory["official_scope"], "전장용 MLCC 신설시설")
+        self.assertEqual(factory["later_report_earliest"], "2027-Q1말")
+        self.assertFalse(factory["ai_grade_customer_mass_production_verified"])
+        self.assertIn("pco.gov.ph", factory["source_url"])
+
+    def test_version_one_state_migration_preserves_quotes_and_corrects_once(self):
+        prev = {
+            "version": 1, "maker_weeks": 52, "channel_max_weeks": 61,
+            "seen_facts": ["maker|52|2026-10-25"],
+            "unique_existing_setting": "do not delete",
+        }
+        new, events = w.mlcc_vendor_update(prev, [])
+        self.assertEqual([x["kind"] for x in events], ["philippines_timing_correction"])
+        self.assertEqual(new["maker_weeks"], 52)
+        self.assertEqual(new["channel_max_weeks"], 61)
+        self.assertEqual(new["seen_facts"], prev["seen_facts"])
+        self.assertEqual(new["unique_existing_setting"], prev["unique_existing_setting"])
+        self.assertEqual(new["version"], w.MLCC_VENDOR_VERSION)
+        notice = w.mlcc_vendor_notice(events[0], new, {})
+        self.assertIn("2027년 7월까지", notice)
+        self.assertIn("2027년 1분기 말", notice)
+        self.assertIn("전장용", notice)
+        self.assertIn("AI용", notice)
+        quiet, repeated = w.mlcc_vendor_update(new, [])
+        self.assertEqual(repeated, [])
+        self.assertEqual(quiet, new)
+
     def test_untrusted_or_old_supplier_article_never_upgrades(self):
         item = {"title": "Samsung Electro Mechanics MLCC lead time 60 weeks",
                 "published_at_kst": "2026-10-24T06:00:00+09:00",
