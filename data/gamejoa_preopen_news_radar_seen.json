@@ -3106,6 +3106,32 @@
       "telegram_core_fact": "RTT 뉴스와 마켓워치, dpa 통신에 따르면 독일 연방통계청은 7일 2026년 8월 산업생산이 계절 조정치로 전월 대비 2.0% 증대했다고 발표했다. 유럽 최대 경제국 독일의 8월 산업생산은 건설과 기계·설비 생산 호조에 힘입어 17개월 만에 가장 큰 폭으로 증가했다.",
       "title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\""
     },
+    "core:08d4ce6ebb0a3b4d8e42a5c4": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.fnnews.com/news/202610260812158379",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1427f64863a316630a8ad2f0e0f4e6ee71745800f7375026383a4986a1262d12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a54b3dfabfb035dd6dc2d5b48e9a7f15f56e829302f9b07e3a148d0aa710d550",
+      "source_fact_keys": [
+        "source_fact:v1:2a7d5b532fddb28ffbd0ec99e4b578a77c7255b66fe15cee0b282f9cc9c41ed7",
+        "source_fact:v1:38806b910f7804498a06a70d068b6ce4363d006cf19a4a7c7aba2df14fcb125c",
+        "source_fact:v1:42cb5cdfb9d6854960102ad24b869c239d7dd257cd58b48f1e19f02489019777",
+        "source_fact:v1:633e1a02ba63be4a63a3a3e8d90c655c83ed9f8630d229d4199f3845fb37d871",
+        "source_fact:v1:6bd56d2e321a2785bed21d4c082d6b556fa3ea77689d961f4e68fef51de772ab",
+        "source_fact:v1:b49e5a38e52acfd349651628884c81174b605822f542319f95ea77f032f06832",
+        "source_fact:v1:b8f37b2dfa064ccabfbf8eb27402eb736522e7a024dde0f08af30657bb1f40af"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급",
+      "telegram_core_fact": "삼성SDI는 26일 미주법인 '삼성SDI 아메리카(SDI America, SDIA)가 미국 에너지 전문기업인 알파오메가파워(AOP)와 1GWh ESS 솔루션 공급 계약을 체결했다고 밝혔다.",
+      "title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급"
+    },
     "core:08e0de971099bf4be42a4cdc": {
       "first_seen_kst": "2026-10-12T14:17:50+09:00",
       "lanes": {
@@ -51232,6 +51258,29 @@
       "telegram_core_fact": "중국 지리홀딩그룹이 올해 3분기까지 누적 판매량 300만대를 돌파하며 역대 최대 실적을 달성했다.",
       "title": "지리홀딩그룹, 3분기 누적 판매 ‘역대 최대 ’300만대 돌파"
     },
+    "core:7b86aba7c7a013e717c3c476": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026018000008",
+      "source": "연합뉴스",
+      "source_body_digest": "f6cec46c4000d31dfb73e60e1e2ba679b381516e6b14ac39015303e873d49b87",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-26",
+      "source_fact_identity": "source_facts:v1:5183dc54d0c6b28933a8c3084ca43c4de762f713b23ed650b2b16d058ad4027c",
+      "source_fact_keys": [
+        "source_fact:v1:048ec7106b091d1a441d9a0dfdc666fc543528741f0897cbcc08e4782f12afdf",
+        "source_fact:v1:2ab508a9845bd98ce5df8c3bee0e7c59b0b5d74608569900c8a504bad21b1eb8",
+        "source_fact:v1:348dd11c94f41d4aabc0e7c6d9aa5486b62381baf525238c53786003d87dd222",
+        "source_fact:v1:e167611bc690333cef6c4ebb4130cfb853bf4fd6d2670d260e75bfcdbfcf2cb2"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스",
+      "telegram_core_fact": "특히 그는 국내 대형 반도체주에 대해 \"삼성전자는 3분기 약 30조원 현금배당 확정 여부와 내년 1월 예정된 주주환원 규모와 방식에, SK하이닉스는 솔리다임 상장 철회 이후 추가적인 주주환원책 구체화 여부가 관건\"이라고 짚었다.",
+      "title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스"
+    },
     "core:7b90380c067c74b7c42e0e9f": {
       "first_seen_kst": "2026-10-22T00:55:31+09:00",
       "lanes": {
@@ -65650,6 +65699,38 @@
       "telegram_core_fact": "산업통상부는 13일 \"10∼11월 원유 도입물량은 전년 평균 대비 100% 이상 확보하고 있다\"며 \"나프타는 10월 물량을 수요 대비 100% 이상, 11월 물량도 수요 대비 100% 수준으로 확보했다\"고 설명했다.",
       "title": "경유 공급 우려에 정부 \"물량 문제 없어…11월까지 원유 100%\" | 연합뉴스"
     },
+    "core:9d8078d8c687ab3d757a0522": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
+    },
     "core:9d8c23f440f832ba236c1b0b": {
       "first_seen_kst": "2026-10-19T10:00:18+09:00",
       "lanes": {
@@ -68991,6 +69072,32 @@
       "source_title": "美, 이란전 재개 가능성에…브렌트유, 4% 가까이 뛴 104달러",
       "telegram_core_fact": "CNBC 등에 따르면 유럽 ICE선물거래소에서 국제유가 기준인 브렌트유 12월 인도분은 한국 시간 8일 오후 4시45분께 전장 대비 3.96% 오른 배럴당 104.17달러를 기록하고 있다.",
       "title": "美, 이란전 재개 가능성에…브렌트유, 4% 가까이 뛴 104달러"
+    },
+    "core:a5a58899f47a6dc81cbae941": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01938486645616856",
+      "source": "이데일리",
+      "source_body_digest": "347dd1237fad1a1e74202a55696f08037c621a5dbc73afc9dc2d0e2c7a23068c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02f3d2caecaab9f535df0c2b4ba688ff91de67a366b4005cba31c6c85671c3ad",
+      "source_fact_keys": [
+        "source_fact:v1:12598f41dc0799efb4019ba5840b28a5ea873f369132d3cad7beae388904d7cc",
+        "source_fact:v1:2f3e4ccc32c5e51eba83fdc4f2353d3b7a674edcaa06c9799bf7f0c67deb6d0f",
+        "source_fact:v1:697a788bea85b23fb1fccc7884a44b1b2bc1d2fe25c5a9e5d297e33ebe20f209",
+        "source_fact:v1:81556d748a84a1ec4083ae7c76abc5c4bd832a2bb1e5bf8420124316ebfa16e5",
+        "source_fact:v1:ede5f7c86831d3c9ed83cef29fd60ac418b6d14798127f1431e47af3289ba2c6",
+        "source_fact:v1:f16c27c12ac8b9432acf3a455c12eb1b3a627eb8a150f5f06b448c1971832f55",
+        "source_fact:v1:f5053e8c09250fddf692fad89485ed7cdec929f5b0a1825a413480eb8f722de4"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐",
+      "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
+      "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
     },
     "core:a5c2bf73cfe7a5d58becf6c4": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
@@ -80946,6 +81053,26 @@
       "telegram_core_fact": "하이트진로는 국제표준화기구(ISO)가 제정한 ISO 37301이 기업의 법규·윤리 기준 준수와 경영활동에서 발생할 수 있는 준법 위험의 예방·관리를 위한 운영 기준을 제시한다고 설명했다.",
       "title": "[게시판] 하이트진로, 규범준수 경영시스템 국제표준 인증 취득 | 연합뉴스"
     },
+    "core:c1ff9fa9cf66baa1cab5a61a": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610264038i",
+      "source": "한국경제",
+      "source_body_digest": "2de6946483a0c550e789878d2e0bf22c69115622acdb5335e30b8dc140e03918",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b7f14183ac92ab915906c78ecaead20aa42f1f10bc032afcf6406431e03bf3f",
+      "source_fact_keys": [
+        "source_fact:v1:1b925e7352011cdfcde8a30d67a2158209ff432355d0694cd740385f8f50246a"
+      ],
+      "source_published_kst": "2026-10-26T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망",
+      "telegram_core_fact": "반면 흑해는 운송 수익성이 상대적으로 낮은 데다 공격 위험까지 훨씬 높아 선박 투입을 꺼리는 선사들이 늘고 있다고 해운업계는 전했다.",
+      "title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망"
+    },
     "core:c21659abb1892e46bc3146b8": {
       "first_seen_kst": "2026-10-20T19:25:45+09:00",
       "lanes": {
@@ -88142,6 +88269,26 @@
       "telegram_core_fact": "호남 반도체 클러스터 예정지인 광주 군공항에 최태원 SK그룹 회장에 이어 정부 관계부처 장관들의 발길이 이어지고 있다. 최 회장은 호남 반도체 공장 건설을 최대한 서두르고, 투자를 확대할 수 있다는 의지도 보였다.",
       "title": "최태원 이어 산업·국방·국토장관 군공항행…호남 반도체 점검 | 연합뉴스"
     },
+    "core:d42b05617e76ad12f8be70f8": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610167397i",
+      "source": "한국경제",
+      "source_body_digest": "e8f82f8a70cdccb5ce797c22d46f2db33d476870e56808fc9fa6b67de9e880ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0555df5713a2725f5ab5d8fb2937f5a3c03815b35ca5d90a546ee49639bd2dae",
+      "source_fact_keys": [
+        "source_fact:v1:7afa9d54cd2f337c097502d92ffd396cd1a4f2c69294cffdcda3834fd2d65892"
+      ],
+      "source_published_kst": "2026-10-25T16:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나",
+      "telegram_core_fact": "AI 기사요약 올해 하반기 글로벌 AI 투자 중심이 메모리 반도체에서 소프트웨어로 이동하면서, 메모리 반도체 의존도가 높은 한국 증시가 직격탄을 맞고 있으며 대체할 소프트웨어 기업 부재로 인해 투자 심리 회복에 시간이 걸릴 것으로 전망된다.",
+      "title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나"
+    },
     "core:d455522e89d655c798b7f038": {
       "first_seen_kst": "2026-10-19T21:09:10+09:00",
       "lanes": {
@@ -92460,6 +92607,32 @@
       "source_title": "[단독] 팀 코리아, 美웨스팅하우스 지분 인수 '兆단위 베팅'",
       "telegram_core_fact": "SK그룹이 조(兆) 단위 자금을 투입해 미국 원전 기업 웨스팅하우스 지분을 인수하는 방안을 검토 중인 것으로 파악됐다.",
       "title": "[단독] 팀 코리아, 美웨스팅하우스 지분 인수 '兆단위 베팅'"
+    },
+    "core:de1fe20418bb41b06ee38a51": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840326",
+      "source": "뉴시스",
+      "source_body_digest": "2d6ddace3f2ca752c8c330ff0f359ac9480bb45f8cdfb2992c09fe785ee3a987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb898bba1abac373e479f13bc029a2dd74b009b922562751a265dec36c8f32ee",
+      "source_fact_keys": [
+        "source_fact:v1:22fbda834198e62b8e33eed90737597f2405a88b921284ecbe40da752cc70c70",
+        "source_fact:v1:6b5cd1a83a29c229ce79e2f58f1bbce988468a1853cb1d094604e61b7940b467",
+        "source_fact:v1:77c2b5a6c10a33d9f74b4da9a29ca1908dbdaaf1991db4ad8149b960c567d934",
+        "source_fact:v1:7c1d69c2493c52194918eafec1412ee826ecdf2fe8e51b13269d1c793fcdaf1b",
+        "source_fact:v1:9d177650ac666cc2528db0c294106d4e7af31040d33592817806f5eb4ee88c83",
+        "source_fact:v1:d3ff00c9a61deafece04585f94b34b4786f25e9a6235af074f2cad8569bdd2f6",
+        "source_fact:v1:eb70218b35d65c4aeb0b9c5e398957df4e8ff252106544a76e4523fdeee076ce"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
+      "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
+      "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
     },
     "core:de30f0c7cf07c52d7b08293a": {
       "first_seen_kst": "2026-10-20T08:37:36+09:00",
@@ -122433,6 +122606,26 @@
       "source": "뉴시스",
       "title": "\"압도적 우위인데 왜 안 끝나나\"…이란 전쟁 길어지는 이유는"
     },
+    "event:ab83f4c5043bf38b3fa0149a": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610264038i",
+      "source": "한국경제",
+      "source_body_digest": "2de6946483a0c550e789878d2e0bf22c69115622acdb5335e30b8dc140e03918",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b7f14183ac92ab915906c78ecaead20aa42f1f10bc032afcf6406431e03bf3f",
+      "source_fact_keys": [
+        "source_fact:v1:1b925e7352011cdfcde8a30d67a2158209ff432355d0694cd740385f8f50246a"
+      ],
+      "source_published_kst": "2026-10-26T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망",
+      "telegram_core_fact": "반면 흑해는 운송 수익성이 상대적으로 낮은 데다 공격 위험까지 훨씬 높아 선박 투입을 꺼리는 선사들이 늘고 있다고 해운업계는 전했다.",
+      "title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망"
+    },
     "event:abe34a67b8c23614afff4e7e": {
       "first_seen_kst": "2026-10-23T10:22:46+09:00",
       "lanes": {
@@ -125951,32 +126144,22 @@
     "event:d3012615bed7bc0c90ae7054": {
       "first_seen_kst": "2026-10-25T06:23:11+09:00",
       "lanes": {
-        "live": "2026-10-25T18:34:20+09:00"
+        "live": "2026-10-26T08:28:58+09:00"
       },
-      "last_seen_kst": "2026-10-25T18:34:20+09:00",
-      "link": "https://biz.heraldcorp.com/article/10913638",
-      "source": "헤럴드경제",
-      "source_body_digest": "6d5152cbc2ef57fab016e74b4da20cf3d35f1d6950b06bc10ff4235619887dae",
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610167397i",
+      "source": "한국경제",
+      "source_body_digest": "e8f82f8a70cdccb5ce797c22d46f2db33d476870e56808fc9fa6b67de9e880ed",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4809999bd8c05012dda76a970d3d97b8d949599250d70f41673b86fd07d59f69",
+      "source_fact_identity": "source_facts:v1:0555df5713a2725f5ab5d8fb2937f5a3c03815b35ca5d90a546ee49639bd2dae",
       "source_fact_keys": [
-        "source_fact:v1:18f4755d386abddc3461fa9db4ca911bbe7f7dce6a50bbc0dccbe605af8927ae",
-        "source_fact:v1:1989dfbdc8cbf3c8f165b5478763769a890736299b357229b46e6976bd2c69a4",
-        "source_fact:v1:2aa321f3f3875c666b4259581246dac5e209783423771f9284f159d4604df404",
-        "source_fact:v1:363214b39144c9e57856db27d6ac2c9ea67df64dba18d5fef6c3220a3c2337e1",
-        "source_fact:v1:372f9fe185752d9c61900505a4fbf106ff2c10ed6d04ca578cdaa85353cf4073",
-        "source_fact:v1:878da58416e9fdfee8de9e9ac960b49606324170c656609877f22301d3956a8d",
-        "source_fact:v1:88c4d92f557b6367b2ce050cba782a1c99c55e10963832c8e84d17ad455b2514",
-        "source_fact:v1:98fc87d82ddecd3c587d4adc04004424c0e29ca86374ca220cee7a044872e05d",
-        "source_fact:v1:a44fda87eb62b0b1fda5f275978531118dcb384c173ebb1ae057b3d844e42f0d",
-        "source_fact:v1:abfdb4829b20779091c0f83b829569095404300bb64c06f76c8591ee42180684",
-        "source_fact:v1:bb1dbd152340b380dfdd50eeb67d84481f50125bac867207a2bd8f8ebb7b0c1b"
+        "source_fact:v1:7afa9d54cd2f337c097502d92ffd396cd1a4f2c69294cffdcda3834fd2d65892"
       ],
-      "source_published_kst": "2026-10-25T17:40+09:00",
+      "source_published_kst": "2026-10-25T16:31+09:00",
       "source_supply_terms": {},
-      "source_title": "美 중간선거 ‘민주 우세’…데이터센터株 울고 헬스케어·전력株 웃는다 [투자360]",
-      "telegram_core_fact": "데이터센터 사업자에게 전력 인프라 확충 비용을 부담시키려는 입법 시도가 늘고 주정부 차원의 규제도 강화될 수 있다.",
-      "title": "美 중간선거 ‘민주 우세’…데이터센터株 울고 헬스케어·전력株 웃는다 [투자360]"
+      "source_title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나",
+      "telegram_core_fact": "AI 기사요약 올해 하반기 글로벌 AI 투자 중심이 메모리 반도체에서 소프트웨어로 이동하면서, 메모리 반도체 의존도가 높은 한국 증시가 직격탄을 맞고 있으며 대체할 소프트웨어 기업 부재로 인해 투자 심리 회복에 시간이 걸릴 것으로 전망된다.",
+      "title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나"
     },
     "event:d3119acf47531913dd9a9e1a": {
       "first_seen_kst": "2026-10-24T09:19:28+09:00",
@@ -128809,6 +128992,29 @@
       "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
       "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
       "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
+    },
+    "event:f06dfe753d6c8cbd66744c2c": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026018000008",
+      "source": "연합뉴스",
+      "source_body_digest": "f6cec46c4000d31dfb73e60e1e2ba679b381516e6b14ac39015303e873d49b87",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-26",
+      "source_fact_identity": "source_facts:v1:5183dc54d0c6b28933a8c3084ca43c4de762f713b23ed650b2b16d058ad4027c",
+      "source_fact_keys": [
+        "source_fact:v1:048ec7106b091d1a441d9a0dfdc666fc543528741f0897cbcc08e4782f12afdf",
+        "source_fact:v1:2ab508a9845bd98ce5df8c3bee0e7c59b0b5d74608569900c8a504bad21b1eb8",
+        "source_fact:v1:348dd11c94f41d4aabc0e7c6d9aa5486b62381baf525238c53786003d87dd222",
+        "source_fact:v1:e167611bc690333cef6c4ebb4130cfb853bf4fd6d2670d260e75bfcdbfcf2cb2"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스",
+      "telegram_core_fact": "특히 그는 국내 대형 반도체주에 대해 \"삼성전자는 3분기 약 30조원 현금배당 확정 여부와 내년 1월 예정된 주주환원 규모와 방식에, SK하이닉스는 솔리다임 상장 철회 이후 추가적인 주주환원책 구체화 여부가 관건\"이라고 짚었다.",
+      "title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스"
     },
     "event:f07c6d0001ca348cb062a4ec": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -136651,6 +136857,29 @@
       ],
       "source_published_kst": "2026-10-07T06:25+09:00",
       "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
+    "fact:0e9b0b5bea4b9b8dfb05d220": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026018000008",
+      "source": "연합뉴스",
+      "source_body_digest": "f6cec46c4000d31dfb73e60e1e2ba679b381516e6b14ac39015303e873d49b87",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-26",
+      "source_fact_identity": "source_facts:v1:5183dc54d0c6b28933a8c3084ca43c4de762f713b23ed650b2b16d058ad4027c",
+      "source_fact_keys": [
+        "source_fact:v1:048ec7106b091d1a441d9a0dfdc666fc543528741f0897cbcc08e4782f12afdf",
+        "source_fact:v1:2ab508a9845bd98ce5df8c3bee0e7c59b0b5d74608569900c8a504bad21b1eb8",
+        "source_fact:v1:348dd11c94f41d4aabc0e7c6d9aa5486b62381baf525238c53786003d87dd222",
+        "source_fact:v1:e167611bc690333cef6c4ebb4130cfb853bf4fd6d2670d260e75bfcdbfcf2cb2"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스",
+      "telegram_core_fact": "특히 그는 국내 대형 반도체주에 대해 \"삼성전자는 3분기 약 30조원 현금배당 확정 여부와 내년 1월 예정된 주주환원 규모와 방식에, SK하이닉스는 솔리다임 상장 철회 이후 추가적인 주주환원책 구체화 여부가 관건\"이라고 짚었다.",
+      "title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스"
     },
     "fact:0ea69da4170487ae2e2a0fdd": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -173821,6 +174050,26 @@
       "telegram_core_fact": "중앙일보 인수 우선협상대상자에 선정된 다우키움·CJ그룹 컨소시엄에 신세계가 참여한 것으로 확인됐다.",
       "title": "CJ 이어 신세계도 중앙일보 인수 참여"
     },
+    "fact:65155f811e18ec3fd65099b3": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610264038i",
+      "source": "한국경제",
+      "source_body_digest": "2de6946483a0c550e789878d2e0bf22c69115622acdb5335e30b8dc140e03918",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b7f14183ac92ab915906c78ecaead20aa42f1f10bc032afcf6406431e03bf3f",
+      "source_fact_keys": [
+        "source_fact:v1:1b925e7352011cdfcde8a30d67a2158209ff432355d0694cd740385f8f50246a"
+      ],
+      "source_published_kst": "2026-10-26T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망",
+      "telegram_core_fact": "반면 흑해는 운송 수익성이 상대적으로 낮은 데다 공격 위험까지 훨씬 높아 선박 투입을 꺼리는 선사들이 늘고 있다고 해운업계는 전했다.",
+      "title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망"
+    },
     "fact:652489ed5024a488e9c49b99": {
       "first_seen_kst": "2026-10-15T06:45:50+09:00",
       "lanes": {
@@ -180601,6 +180850,38 @@
       "source_title": "“설마 더 떨어지겠어? 할수있다 나라면”…레버리지 ETF 줍는 개미들",
       "telegram_core_fact": "코스콤 ETF체크에 따르면 지난주 개인투자자들이 가장 많이 순매수한 ETF는 KODEX 레버리지(7733억원)였다. 윤재홍 미래에셋증권 연구원은 “레버리지 ETF는 지수 등락 폭이 커질수록 단기 차익을 노리는 투자자 수요가 커지는 경향이 있다”고 설명했다.",
       "title": "“설마 더 떨어지겠어? 할수있다 나라면”…레버리지 ETF 줍는 개미들"
+    },
+    "fact:7374b45dd1816ab134eb99a4": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
     },
     "fact:737c36747dc5979cb48f4f79": {
       "first_seen_kst": "2026-10-11T08:42:16+09:00",
@@ -187845,6 +188126,32 @@
       "telegram_core_fact": "자유시보와 공상시보 등 대만 언론에 따르면 시장조사업체 트렌드포스는 최근 AI 데이터센터 건설, 데이터센터 간 상호 연결, 대용량 백본망 구축에 따라 올해까지 글로벌 광섬유의 수요와 공급 격차가 1억8천만 코어 킬로미터(Core Kilometer)에 달할 것으로 내다봤다.",
       "title": "대만 시장조사업체 \"광섬유 부족 2028년까지 지속 가능성\" | 연합뉴스"
     },
+    "fact:838694af57e8193911cbf5b7": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840326",
+      "source": "뉴시스",
+      "source_body_digest": "2d6ddace3f2ca752c8c330ff0f359ac9480bb45f8cdfb2992c09fe785ee3a987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb898bba1abac373e479f13bc029a2dd74b009b922562751a265dec36c8f32ee",
+      "source_fact_keys": [
+        "source_fact:v1:22fbda834198e62b8e33eed90737597f2405a88b921284ecbe40da752cc70c70",
+        "source_fact:v1:6b5cd1a83a29c229ce79e2f58f1bbce988468a1853cb1d094604e61b7940b467",
+        "source_fact:v1:77c2b5a6c10a33d9f74b4da9a29ca1908dbdaaf1991db4ad8149b960c567d934",
+        "source_fact:v1:7c1d69c2493c52194918eafec1412ee826ecdf2fe8e51b13269d1c793fcdaf1b",
+        "source_fact:v1:9d177650ac666cc2528db0c294106d4e7af31040d33592817806f5eb4ee88c83",
+        "source_fact:v1:d3ff00c9a61deafece04585f94b34b4786f25e9a6235af074f2cad8569bdd2f6",
+        "source_fact:v1:eb70218b35d65c4aeb0b9c5e398957df4e8ff252106544a76e4523fdeee076ce"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
+      "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
+      "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
+    },
     "fact:8392913a97c0b1ed28889450": {
       "first_seen_kst": "2026-10-23T20:01:54+09:00",
       "lanes": {
@@ -191779,6 +192086,32 @@
       "source_title": "\"장비 없어서 못 팔아요\"…'슈퍼을', 반도체 열풍에 노났다",
       "telegram_core_fact": "인공지능(AI) 반도체 투자 열풍에 따라 세계 최대 반도체 노광장비 업체인 네덜란드 ASML이 생산능력을 추가로 늘리는 방안을 검토하고 있다.",
       "title": "\"장비 없어서 못 팔아요\"…'슈퍼을', 반도체 열풍에 노났다"
+    },
+    "fact:8a3d65bf1891cd232c3848f4": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01938486645616856",
+      "source": "이데일리",
+      "source_body_digest": "347dd1237fad1a1e74202a55696f08037c621a5dbc73afc9dc2d0e2c7a23068c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02f3d2caecaab9f535df0c2b4ba688ff91de67a366b4005cba31c6c85671c3ad",
+      "source_fact_keys": [
+        "source_fact:v1:12598f41dc0799efb4019ba5840b28a5ea873f369132d3cad7beae388904d7cc",
+        "source_fact:v1:2f3e4ccc32c5e51eba83fdc4f2353d3b7a674edcaa06c9799bf7f0c67deb6d0f",
+        "source_fact:v1:697a788bea85b23fb1fccc7884a44b1b2bc1d2fe25c5a9e5d297e33ebe20f209",
+        "source_fact:v1:81556d748a84a1ec4083ae7c76abc5c4bd832a2bb1e5bf8420124316ebfa16e5",
+        "source_fact:v1:ede5f7c86831d3c9ed83cef29fd60ac418b6d14798127f1431e47af3289ba2c6",
+        "source_fact:v1:f16c27c12ac8b9432acf3a455c12eb1b3a627eb8a150f5f06b448c1971832f55",
+        "source_fact:v1:f5053e8c09250fddf692fad89485ed7cdec929f5b0a1825a413480eb8f722de4"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐",
+      "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
+      "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
     },
     "fact:8a4e6bb7ed1603b5717d67c0": {
       "first_seen_kst": "2026-10-23T13:00:02+09:00",
@@ -204444,6 +204777,32 @@
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "뉴욕·상하이 증시, FOMC 의사록 공개…'S공포' 커지나"
     },
+    "fact:a6bb4e5fc5ae5c2ab8b69508": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.fnnews.com/news/202610260812158379",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1427f64863a316630a8ad2f0e0f4e6ee71745800f7375026383a4986a1262d12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a54b3dfabfb035dd6dc2d5b48e9a7f15f56e829302f9b07e3a148d0aa710d550",
+      "source_fact_keys": [
+        "source_fact:v1:2a7d5b532fddb28ffbd0ec99e4b578a77c7255b66fe15cee0b282f9cc9c41ed7",
+        "source_fact:v1:38806b910f7804498a06a70d068b6ce4363d006cf19a4a7c7aba2df14fcb125c",
+        "source_fact:v1:42cb5cdfb9d6854960102ad24b869c239d7dd257cd58b48f1e19f02489019777",
+        "source_fact:v1:633e1a02ba63be4a63a3a3e8d90c655c83ed9f8630d229d4199f3845fb37d871",
+        "source_fact:v1:6bd56d2e321a2785bed21d4c082d6b556fa3ea77689d961f4e68fef51de772ab",
+        "source_fact:v1:b49e5a38e52acfd349651628884c81174b605822f542319f95ea77f032f06832",
+        "source_fact:v1:b8f37b2dfa064ccabfbf8eb27402eb736522e7a024dde0f08af30657bb1f40af"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급",
+      "telegram_core_fact": "삼성SDI는 26일 미주법인 '삼성SDI 아메리카(SDI America, SDIA)가 미국 에너지 전문기업인 알파오메가파워(AOP)와 1GWh ESS 솔루션 공급 계약을 체결했다고 밝혔다.",
+      "title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급"
+    },
     "fact:a6c2c51d1980379adab53e42": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
@@ -205876,6 +206235,26 @@
       "source_title": "스틸리언, 인니 국영·지방은행 2곳에 앱 보안 제품 공급",
       "telegram_core_fact": "스틸리언은 인도네시아 국영은행 BTN과 북부수마트라 지방은행 수마트라은행에 모바일 앱 보안 솔루션 '앱수트'를 공급한다고 20일 밝혔다.",
       "title": "스틸리언, 인니 국영·지방은행 2곳에 앱 보안 제품 공급"
+    },
+    "fact:a9de0ab60e6c1c6e68984231": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610167397i",
+      "source": "한국경제",
+      "source_body_digest": "e8f82f8a70cdccb5ce797c22d46f2db33d476870e56808fc9fa6b67de9e880ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0555df5713a2725f5ab5d8fb2937f5a3c03815b35ca5d90a546ee49639bd2dae",
+      "source_fact_keys": [
+        "source_fact:v1:7afa9d54cd2f337c097502d92ffd396cd1a4f2c69294cffdcda3834fd2d65892"
+      ],
+      "source_published_kst": "2026-10-25T16:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나",
+      "telegram_core_fact": "AI 기사요약 올해 하반기 글로벌 AI 투자 중심이 메모리 반도체에서 소프트웨어로 이동하면서, 메모리 반도체 의존도가 높은 한국 증시가 직격탄을 맞고 있으며 대체할 소프트웨어 기업 부재로 인해 투자 심리 회복에 시간이 걸릴 것으로 전망된다.",
+      "title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나"
     },
     "fact:a9e371f2978c6dbe3b48fdb6": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -258913,6 +259292,32 @@
       "source_published_kst": "2026-10-05T08:01+09:00",
       "title": "[단독]브레인온 ‘세라큐’, 주요 거래처 거래 중단 통보…‘업계 퇴출 수순’"
     },
+    "link:14c5921d6653326d974d2209": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.fnnews.com/news/202610260812158379",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1427f64863a316630a8ad2f0e0f4e6ee71745800f7375026383a4986a1262d12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a54b3dfabfb035dd6dc2d5b48e9a7f15f56e829302f9b07e3a148d0aa710d550",
+      "source_fact_keys": [
+        "source_fact:v1:2a7d5b532fddb28ffbd0ec99e4b578a77c7255b66fe15cee0b282f9cc9c41ed7",
+        "source_fact:v1:38806b910f7804498a06a70d068b6ce4363d006cf19a4a7c7aba2df14fcb125c",
+        "source_fact:v1:42cb5cdfb9d6854960102ad24b869c239d7dd257cd58b48f1e19f02489019777",
+        "source_fact:v1:633e1a02ba63be4a63a3a3e8d90c655c83ed9f8630d229d4199f3845fb37d871",
+        "source_fact:v1:6bd56d2e321a2785bed21d4c082d6b556fa3ea77689d961f4e68fef51de772ab",
+        "source_fact:v1:b49e5a38e52acfd349651628884c81174b605822f542319f95ea77f032f06832",
+        "source_fact:v1:b8f37b2dfa064ccabfbf8eb27402eb736522e7a024dde0f08af30657bb1f40af"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급",
+      "telegram_core_fact": "삼성SDI는 26일 미주법인 '삼성SDI 아메리카(SDI America, SDIA)가 미국 에너지 전문기업인 알파오메가파워(AOP)와 1GWh ESS 솔루션 공급 계약을 체결했다고 밝혔다.",
+      "title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급"
+    },
     "link:14cb4d7cc7492cf7e2a703fa": {
       "first_seen_kst": "2026-10-22T03:57:32+09:00",
       "lanes": {
@@ -265429,6 +265834,32 @@
       "source_title": "서드 코스트 뱅크셰어스, 그레이트플레인스 2억4000만 달러 인수",
       "telegram_core_fact": "서드 코스트 뱅크셰어스(TCBX)가 오클라호마시티에 본사를 둔 그레이트플레인스 뱅크셰어스를 약 2억3960만 달러 전액 주식 거래로 인수하는 최종 합병계약을 체결했으며, 거래 종료 시 합산 총자산이 약 90억 달러를 넘어설 것으로 보인다고 10월 7일 발표했다.",
       "title": "서드 코스트 뱅크셰어스, 그레이트플레인스 2억4000만 달러 인수"
+    },
+    "link:2016f9e5eb7e139bc3b336dc": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01938486645616856",
+      "source": "이데일리",
+      "source_body_digest": "347dd1237fad1a1e74202a55696f08037c621a5dbc73afc9dc2d0e2c7a23068c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02f3d2caecaab9f535df0c2b4ba688ff91de67a366b4005cba31c6c85671c3ad",
+      "source_fact_keys": [
+        "source_fact:v1:12598f41dc0799efb4019ba5840b28a5ea873f369132d3cad7beae388904d7cc",
+        "source_fact:v1:2f3e4ccc32c5e51eba83fdc4f2353d3b7a674edcaa06c9799bf7f0c67deb6d0f",
+        "source_fact:v1:697a788bea85b23fb1fccc7884a44b1b2bc1d2fe25c5a9e5d297e33ebe20f209",
+        "source_fact:v1:81556d748a84a1ec4083ae7c76abc5c4bd832a2bb1e5bf8420124316ebfa16e5",
+        "source_fact:v1:ede5f7c86831d3c9ed83cef29fd60ac418b6d14798127f1431e47af3289ba2c6",
+        "source_fact:v1:f16c27c12ac8b9432acf3a455c12eb1b3a627eb8a150f5f06b448c1971832f55",
+        "source_fact:v1:f5053e8c09250fddf692fad89485ed7cdec929f5b0a1825a413480eb8f722de4"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐",
+      "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
+      "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
     },
     "link:2022c6ea42e7ac3afc2065b5": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
@@ -313872,6 +314303,26 @@
       "telegram_core_fact": "기존 예비입찰에 참여한 6개 업체가 모두 인수여력을 인정받아 숏리스트에 선정된 가운데 유력 원매자들이 컨소시엄을 통한 추가 입찰 의사를 전하면서 인수전에 불이 붙고 있다.",
       "title": "[단독] CJ, 중앙일보 인수전 뛰어든다…다우키움그룹과 컨소 구성 추진"
     },
+    "link:72239c6bc213e6cc02fd3ded": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610167397i",
+      "source": "한국경제",
+      "source_body_digest": "e8f82f8a70cdccb5ce797c22d46f2db33d476870e56808fc9fa6b67de9e880ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0555df5713a2725f5ab5d8fb2937f5a3c03815b35ca5d90a546ee49639bd2dae",
+      "source_fact_keys": [
+        "source_fact:v1:7afa9d54cd2f337c097502d92ffd396cd1a4f2c69294cffdcda3834fd2d65892"
+      ],
+      "source_published_kst": "2026-10-25T16:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나",
+      "telegram_core_fact": "AI 기사요약 올해 하반기 글로벌 AI 투자 중심이 메모리 반도체에서 소프트웨어로 이동하면서, 메모리 반도체 의존도가 높은 한국 증시가 직격탄을 맞고 있으며 대체할 소프트웨어 기업 부재로 인해 투자 심리 회복에 시간이 걸릴 것으로 전망된다.",
+      "title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나"
+    },
     "link:7223f53370d71b09775900df": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
       "lanes": {
@@ -319254,6 +319705,32 @@
       "link": "https://biz.heraldcorp.com/article/10890959",
       "source": "헤럴드경제",
       "title": "일본은행 “물가 더 오르면 금리인상 속도 높여야”…10월 추가 인상론"
+    },
+    "link:7bcf098d1c7a8aa9a942fa31": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840326",
+      "source": "뉴시스",
+      "source_body_digest": "2d6ddace3f2ca752c8c330ff0f359ac9480bb45f8cdfb2992c09fe785ee3a987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb898bba1abac373e479f13bc029a2dd74b009b922562751a265dec36c8f32ee",
+      "source_fact_keys": [
+        "source_fact:v1:22fbda834198e62b8e33eed90737597f2405a88b921284ecbe40da752cc70c70",
+        "source_fact:v1:6b5cd1a83a29c229ce79e2f58f1bbce988468a1853cb1d094604e61b7940b467",
+        "source_fact:v1:77c2b5a6c10a33d9f74b4da9a29ca1908dbdaaf1991db4ad8149b960c567d934",
+        "source_fact:v1:7c1d69c2493c52194918eafec1412ee826ecdf2fe8e51b13269d1c793fcdaf1b",
+        "source_fact:v1:9d177650ac666cc2528db0c294106d4e7af31040d33592817806f5eb4ee88c83",
+        "source_fact:v1:d3ff00c9a61deafece04585f94b34b4786f25e9a6235af074f2cad8569bdd2f6",
+        "source_fact:v1:eb70218b35d65c4aeb0b9c5e398957df4e8ff252106544a76e4523fdeee076ce"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
+      "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
+      "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
     },
     "link:7bda5dfb42941854164ee7a4": {
       "first_seen_kst": "2026-09-22T06:53:39+09:00",
@@ -328149,6 +328626,29 @@
       "source_title": "美 10년물 국채 입찰 호조…강한 수요 확인, 국채수익률 상승폭 축소",
       "telegram_core_fact": "30년물 국채수익률도 장 중 한 때 5.704%로 급등하며 2002년 5월 이후 최고 수준을 보였으나 10년물 국채 입찰 이후 상승폭을 축소해 전날 대비 0.028%포인트 오른 5.673%로 거래를 마쳤다.",
       "title": "美 10년물 국채 입찰 호조…강한 수요 확인, 국채수익률 상승폭 축소"
+    },
+    "link:8b63957b121a4730ae4b61f1": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026018000008",
+      "source": "연합뉴스",
+      "source_body_digest": "f6cec46c4000d31dfb73e60e1e2ba679b381516e6b14ac39015303e873d49b87",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-26",
+      "source_fact_identity": "source_facts:v1:5183dc54d0c6b28933a8c3084ca43c4de762f713b23ed650b2b16d058ad4027c",
+      "source_fact_keys": [
+        "source_fact:v1:048ec7106b091d1a441d9a0dfdc666fc543528741f0897cbcc08e4782f12afdf",
+        "source_fact:v1:2ab508a9845bd98ce5df8c3bee0e7c59b0b5d74608569900c8a504bad21b1eb8",
+        "source_fact:v1:348dd11c94f41d4aabc0e7c6d9aa5486b62381baf525238c53786003d87dd222",
+        "source_fact:v1:e167611bc690333cef6c4ebb4130cfb853bf4fd6d2670d260e75bfcdbfcf2cb2"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스",
+      "telegram_core_fact": "특히 그는 국내 대형 반도체주에 대해 \"삼성전자는 3분기 약 30조원 현금배당 확정 여부와 내년 1월 예정된 주주환원 규모와 방식에, SK하이닉스는 솔리다임 상장 철회 이후 추가적인 주주환원책 구체화 여부가 관건\"이라고 짚었다.",
+      "title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스"
     },
     "link:8b74c0fb8ad915ce46d49d1b": {
       "first_seen_kst": "2026-10-17T13:39:20+09:00",
@@ -349265,6 +349765,26 @@
       "source_title": "李대통령 “주택 공급, 무엇보다 속도…2030년까지 3기 신도시 공공주택 90% 착공”",
       "telegram_core_fact": "주택 공급의 기준도 착공이 아닌 국민이 체감할 수 있는 '입주'가 돼야 한다고 강조했다.",
       "title": "李대통령 “주택 공급, 무엇보다 속도…2030년까지 3기 신도시 공공주택 90% 착공”"
+    },
+    "link:ae41795f0a553cb9aa579d92": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610264038i",
+      "source": "한국경제",
+      "source_body_digest": "2de6946483a0c550e789878d2e0bf22c69115622acdb5335e30b8dc140e03918",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b7f14183ac92ab915906c78ecaead20aa42f1f10bc032afcf6406431e03bf3f",
+      "source_fact_keys": [
+        "source_fact:v1:1b925e7352011cdfcde8a30d67a2158209ff432355d0694cd740385f8f50246a"
+      ],
+      "source_published_kst": "2026-10-26T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망",
+      "telegram_core_fact": "반면 흑해는 운송 수익성이 상대적으로 낮은 데다 공격 위험까지 훨씬 높아 선박 투입을 꺼리는 선사들이 늘고 있다고 해운업계는 전했다.",
+      "title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망"
     },
     "link:ae4809e9db0279ea63d4503d": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -389626,6 +390146,38 @@
       "telegram_core_fact": "클라크 쳉 총괄은 “모든 반도체 제조사는 자체 전망을 면밀히 검토하고 있으며, 시장 둔화나 조정 조짐이 보이면 업계 스스로 계획을 유연하게 조정해 나갈 것”이라며 “현재는 오히려 수요를 따라잡기에 급급한 상황”이라고 설명했다.",
       "title": "미국, 반도체 제조 강국 복귀 가속…12인치 장비 지출 2배 이상으로 늘린다"
     },
+    "link:f5bcc90dcbd7a29f181fa6fa": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
+    },
     "link:f5cbf87c311867635e717674": {
       "first_seen_kst": "2026-10-08T11:06:13+09:00",
       "lanes": {
@@ -407466,6 +408018,38 @@
       "source_title": "국제유가, 미·이란 외교적 해결 기대에 하락…WTI 1.8%↓",
       "telegram_core_fact": "이날 뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI)는 전장 대비 1.8% 하락한 배럴당 101.79달러에 거래를 마쳤다.",
       "title": "국제유가, 미·이란 외교적 해결 기대에 하락…WTI 1.8%↓"
+    },
+    "original:161a1fbcedd7b723b925bf37": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
     },
     "original:16225e981cb235ca18f66b73": {
       "first_seen_kst": "2026-10-23T04:06:25+09:00",
@@ -426899,6 +427483,26 @@
       "telegram_core_fact": "에너지저장장치 부품 공급 확대는 매출 성장과 수주잔고 증가로 이어지고 있다. 북미 인공지능 데이터센터의 전력 수요가 늘면서 에너지저장장치 부품 기업의 공급 실적이 확대되고 있다.",
       "title": "저가매수 기회 찾는다면…ESS 부품 공급 소식에 주목"
     },
+    "original:386845636a92b165f7221fd8": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610264038i",
+      "source": "한국경제",
+      "source_body_digest": "2de6946483a0c550e789878d2e0bf22c69115622acdb5335e30b8dc140e03918",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b7f14183ac92ab915906c78ecaead20aa42f1f10bc032afcf6406431e03bf3f",
+      "source_fact_keys": [
+        "source_fact:v1:1b925e7352011cdfcde8a30d67a2158209ff432355d0694cd740385f8f50246a"
+      ],
+      "source_published_kst": "2026-10-26T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망",
+      "telegram_core_fact": "반면 흑해는 운송 수익성이 상대적으로 낮은 데다 공격 위험까지 훨씬 높아 선박 투입을 꺼리는 선사들이 늘고 있다고 해운업계는 전했다.",
+      "title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망"
+    },
     "original:3876ce51feb876fdd89bb0ea": {
       "first_seen_kst": "2026-09-17T22:43:57+09:00",
       "lanes": {
@@ -441565,6 +442169,32 @@
       "source_title": "상장 첫날 '따블' 달성…엠에스바이오 어떤 회사?",
       "telegram_core_fact": "엠에스바이오는 이번 상장으로 확보한 자금을 충북 오창 신공장 건설을 포함한 생산설비 확충, 신성장 동력 확보 등에 투자할 계획이다.",
       "title": "상장 첫날 '따블' 달성…엠에스바이오 어떤 회사?"
+    },
+    "original:4ffaf18b407fcb0b48ccd3f2": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01938486645616856",
+      "source": "이데일리",
+      "source_body_digest": "347dd1237fad1a1e74202a55696f08037c621a5dbc73afc9dc2d0e2c7a23068c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02f3d2caecaab9f535df0c2b4ba688ff91de67a366b4005cba31c6c85671c3ad",
+      "source_fact_keys": [
+        "source_fact:v1:12598f41dc0799efb4019ba5840b28a5ea873f369132d3cad7beae388904d7cc",
+        "source_fact:v1:2f3e4ccc32c5e51eba83fdc4f2353d3b7a674edcaa06c9799bf7f0c67deb6d0f",
+        "source_fact:v1:697a788bea85b23fb1fccc7884a44b1b2bc1d2fe25c5a9e5d297e33ebe20f209",
+        "source_fact:v1:81556d748a84a1ec4083ae7c76abc5c4bd832a2bb1e5bf8420124316ebfa16e5",
+        "source_fact:v1:ede5f7c86831d3c9ed83cef29fd60ac418b6d14798127f1431e47af3289ba2c6",
+        "source_fact:v1:f16c27c12ac8b9432acf3a455c12eb1b3a627eb8a150f5f06b448c1971832f55",
+        "source_fact:v1:f5053e8c09250fddf692fad89485ed7cdec929f5b0a1825a413480eb8f722de4"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐",
+      "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
+      "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
     },
     "original:5006fe0148ff2087407f103a": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -482382,6 +483012,26 @@
       "telegram_core_fact": "무보는 전국의 지사 네트워크를 가동해 지자체 및 지역별 수출지원기관이 공동으로 개최하는 수출지원 간담회에 지속적으로 참여하고 있다고 14일 밝혔다. 무보는 지난달 열린 '대구·경북 통상진흥기관협의회' 등 주요 지역 간담회에서 원자재 가격 상승, 환율 변동성 확대, 물류비 가중 등에 따른 현장 고충을 청취했다.",
       "title": "무보, 지역별 간담회 돌며 수출기업 현장 소통 강화"
     },
+    "original:98056c426ed51e341febe782": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610167397i",
+      "source": "한국경제",
+      "source_body_digest": "e8f82f8a70cdccb5ce797c22d46f2db33d476870e56808fc9fa6b67de9e880ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0555df5713a2725f5ab5d8fb2937f5a3c03815b35ca5d90a546ee49639bd2dae",
+      "source_fact_keys": [
+        "source_fact:v1:7afa9d54cd2f337c097502d92ffd396cd1a4f2c69294cffdcda3834fd2d65892"
+      ],
+      "source_published_kst": "2026-10-25T16:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나",
+      "telegram_core_fact": "AI 기사요약 올해 하반기 글로벌 AI 투자 중심이 메모리 반도체에서 소프트웨어로 이동하면서, 메모리 반도체 의존도가 높은 한국 증시가 직격탄을 맞고 있으며 대체할 소프트웨어 기업 부재로 인해 투자 심리 회복에 시간이 걸릴 것으로 전망된다.",
+      "title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나"
+    },
     "original:980862602e09a374f9816e0c": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -497208,6 +497858,32 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
       "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
+    "original:b17eff80bf356a17739dd774": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840326",
+      "source": "뉴시스",
+      "source_body_digest": "2d6ddace3f2ca752c8c330ff0f359ac9480bb45f8cdfb2992c09fe785ee3a987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb898bba1abac373e479f13bc029a2dd74b009b922562751a265dec36c8f32ee",
+      "source_fact_keys": [
+        "source_fact:v1:22fbda834198e62b8e33eed90737597f2405a88b921284ecbe40da752cc70c70",
+        "source_fact:v1:6b5cd1a83a29c229ce79e2f58f1bbce988468a1853cb1d094604e61b7940b467",
+        "source_fact:v1:77c2b5a6c10a33d9f74b4da9a29ca1908dbdaaf1991db4ad8149b960c567d934",
+        "source_fact:v1:7c1d69c2493c52194918eafec1412ee826ecdf2fe8e51b13269d1c793fcdaf1b",
+        "source_fact:v1:9d177650ac666cc2528db0c294106d4e7af31040d33592817806f5eb4ee88c83",
+        "source_fact:v1:d3ff00c9a61deafece04585f94b34b4786f25e9a6235af074f2cad8569bdd2f6",
+        "source_fact:v1:eb70218b35d65c4aeb0b9c5e398957df4e8ff252106544a76e4523fdeee076ce"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
+      "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
+      "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
+    },
     "original:b18679b05eda2f9ea8da388e": {
       "first_seen_kst": "2026-10-03T09:05:24+09:00",
       "lanes": {
@@ -510667,6 +511343,29 @@
       "telegram_core_fact": "최 회장은 현장 점검 직후 \"눈으로 직접 확인하고 어느 정도 속도에 지을 수 있는지를 점검하러 왔다\"면서 \"지금 (반도체) 수요가 늘기 때문에 그걸 쫓아가는 공급 속도를 더 빨리 당겨야 한다. 착공 시점은 답을 못하지만 '최대한 빨리 간다'고 이야기하고 싶다\"고 말했다.",
       "title": "'호남 반도체' 부지 둘러본 최태원 SK회장 \"빠르게 착공\"(종합)"
     },
+    "original:cb213517a24a5ee77b4d185d": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026018000008",
+      "source": "연합뉴스",
+      "source_body_digest": "f6cec46c4000d31dfb73e60e1e2ba679b381516e6b14ac39015303e873d49b87",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-26",
+      "source_fact_identity": "source_facts:v1:5183dc54d0c6b28933a8c3084ca43c4de762f713b23ed650b2b16d058ad4027c",
+      "source_fact_keys": [
+        "source_fact:v1:048ec7106b091d1a441d9a0dfdc666fc543528741f0897cbcc08e4782f12afdf",
+        "source_fact:v1:2ab508a9845bd98ce5df8c3bee0e7c59b0b5d74608569900c8a504bad21b1eb8",
+        "source_fact:v1:348dd11c94f41d4aabc0e7c6d9aa5486b62381baf525238c53786003d87dd222",
+        "source_fact:v1:e167611bc690333cef6c4ebb4130cfb853bf4fd6d2670d260e75bfcdbfcf2cb2"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스",
+      "telegram_core_fact": "특히 그는 국내 대형 반도체주에 대해 \"삼성전자는 3분기 약 30조원 현금배당 확정 여부와 내년 1월 예정된 주주환원 규모와 방식에, SK하이닉스는 솔리다임 상장 철회 이후 추가적인 주주환원책 구체화 여부가 관건\"이라고 짚었다.",
+      "title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스"
+    },
     "original:cb2c4c1c5701bc42869f84b9": {
       "first_seen_kst": "2026-10-02T10:30:30+09:00",
       "lanes": {
@@ -522016,6 +522715,32 @@
       "source_title": "LQR 하우스, 오픈AI 컴퓨팅 자원 최대 300만달러 구매 계약",
       "telegram_core_fact": "회사는 특정 단일 모델이나 기술 공급업체에 의존하지 않고, 플랫폼이 발전함에 따라 보완적인 모델과 컴퓨팅 자원을 유연하게 통합하는 멀티 모델 AI 인프라를 구축한다는 전략을 제시했다.",
       "title": "LQR 하우스, 오픈AI 컴퓨팅 자원 최대 300만달러 구매 계약"
+    },
+    "original:de260c4e43c763e9d910c2b7": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.fnnews.com/news/202610260812158379",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1427f64863a316630a8ad2f0e0f4e6ee71745800f7375026383a4986a1262d12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a54b3dfabfb035dd6dc2d5b48e9a7f15f56e829302f9b07e3a148d0aa710d550",
+      "source_fact_keys": [
+        "source_fact:v1:2a7d5b532fddb28ffbd0ec99e4b578a77c7255b66fe15cee0b282f9cc9c41ed7",
+        "source_fact:v1:38806b910f7804498a06a70d068b6ce4363d006cf19a4a7c7aba2df14fcb125c",
+        "source_fact:v1:42cb5cdfb9d6854960102ad24b869c239d7dd257cd58b48f1e19f02489019777",
+        "source_fact:v1:633e1a02ba63be4a63a3a3e8d90c655c83ed9f8630d229d4199f3845fb37d871",
+        "source_fact:v1:6bd56d2e321a2785bed21d4c082d6b556fa3ea77689d961f4e68fef51de772ab",
+        "source_fact:v1:b49e5a38e52acfd349651628884c81174b605822f542319f95ea77f032f06832",
+        "source_fact:v1:b8f37b2dfa064ccabfbf8eb27402eb736522e7a024dde0f08af30657bb1f40af"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급",
+      "telegram_core_fact": "삼성SDI는 26일 미주법인 '삼성SDI 아메리카(SDI America, SDIA)가 미국 에너지 전문기업인 알파오메가파워(AOP)와 1GWh ESS 솔루션 공급 계약을 체결했다고 밝혔다.",
+      "title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급"
     },
     "original:de2aea1cdabd6ac71afb3f27": {
       "first_seen_kst": "2026-10-24T10:14:54+09:00",
@@ -541324,6 +542049,38 @@
       "telegram_core_fact": "관계부처에 따르면 기후에너지환경부는 최근 국가하천 지정 효과를 분석하고 추가 지정안을 마련하기 위한 연구용역을 발주했다.",
       "title": "극한 호우에 국가하천 더 늘리나…기존 89곳 지정 효과부터 따진다"
     },
+    "source_fact:00812bae5340177505d718ca": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
+    },
     "source_fact:008195e87dff1c488e198f65": {
       "first_seen_kst": "2026-10-20T05:37:55+09:00",
       "lanes": {
@@ -545537,6 +546294,32 @@
       "source_title": "CJ대한통운, 베트남 동나이 물류센터 인수…현지 사업 가속 페달",
       "telegram_core_fact": "업계에 따르면 CJ대한통운은 최근 일본 다이와하우스로부터 베트남 동나이성에 있는 2만 843㎡ 규모 물류센터를 인수해 본격적인 가동에 들어갔다. 당시 CJ대한통운은 완전한 독립 경영을 기반으로 물류센터 등 자산 투자를 적극 검토하고, W&D(보관 및 배송) 사업 경쟁력을 현지에 이식하겠다고 강조했다.",
       "title": "CJ대한통운, 베트남 동나이 물류센터 인수…현지 사업 가속 페달"
+    },
+    "source_fact:0235d804dc61de62404b8d07": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.fnnews.com/news/202610260812158379",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1427f64863a316630a8ad2f0e0f4e6ee71745800f7375026383a4986a1262d12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a54b3dfabfb035dd6dc2d5b48e9a7f15f56e829302f9b07e3a148d0aa710d550",
+      "source_fact_keys": [
+        "source_fact:v1:2a7d5b532fddb28ffbd0ec99e4b578a77c7255b66fe15cee0b282f9cc9c41ed7",
+        "source_fact:v1:38806b910f7804498a06a70d068b6ce4363d006cf19a4a7c7aba2df14fcb125c",
+        "source_fact:v1:42cb5cdfb9d6854960102ad24b869c239d7dd257cd58b48f1e19f02489019777",
+        "source_fact:v1:633e1a02ba63be4a63a3a3e8d90c655c83ed9f8630d229d4199f3845fb37d871",
+        "source_fact:v1:6bd56d2e321a2785bed21d4c082d6b556fa3ea77689d961f4e68fef51de772ab",
+        "source_fact:v1:b49e5a38e52acfd349651628884c81174b605822f542319f95ea77f032f06832",
+        "source_fact:v1:b8f37b2dfa064ccabfbf8eb27402eb736522e7a024dde0f08af30657bb1f40af"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급",
+      "telegram_core_fact": "삼성SDI는 26일 미주법인 '삼성SDI 아메리카(SDI America, SDIA)가 미국 에너지 전문기업인 알파오메가파워(AOP)와 1GWh ESS 솔루션 공급 계약을 체결했다고 밝혔다.",
+      "title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급"
     },
     "source_fact:0236a5582b910cce8cd599f3": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
@@ -559842,6 +560625,32 @@
       "source_title": "트럼프, 선거용 \"에너지 휴전\" 일방발표…꿈쩍않는 러·우 공방 지속",
       "telegram_core_fact": "휴전 합의 발표에 앞서 트럼프 대통령은 러시아가 미국과 세계 시장에 경유 480만톤을 공급키로 했다고 밝혔다. 도널드 트럼프 대통령의 '러시아-우크라이나 에너지 휴전' 발표에도 러시아·우크라이나간 충돌이 계속되고 있다.",
       "title": "트럼프, 선거용 \"에너지 휴전\" 일방발표…꿈쩍않는 러·우 공방 지속"
+    },
+    "source_fact:0851214cda360601d7223515": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.fnnews.com/news/202610260812158379",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1427f64863a316630a8ad2f0e0f4e6ee71745800f7375026383a4986a1262d12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a54b3dfabfb035dd6dc2d5b48e9a7f15f56e829302f9b07e3a148d0aa710d550",
+      "source_fact_keys": [
+        "source_fact:v1:2a7d5b532fddb28ffbd0ec99e4b578a77c7255b66fe15cee0b282f9cc9c41ed7",
+        "source_fact:v1:38806b910f7804498a06a70d068b6ce4363d006cf19a4a7c7aba2df14fcb125c",
+        "source_fact:v1:42cb5cdfb9d6854960102ad24b869c239d7dd257cd58b48f1e19f02489019777",
+        "source_fact:v1:633e1a02ba63be4a63a3a3e8d90c655c83ed9f8630d229d4199f3845fb37d871",
+        "source_fact:v1:6bd56d2e321a2785bed21d4c082d6b556fa3ea77689d961f4e68fef51de772ab",
+        "source_fact:v1:b49e5a38e52acfd349651628884c81174b605822f542319f95ea77f032f06832",
+        "source_fact:v1:b8f37b2dfa064ccabfbf8eb27402eb736522e7a024dde0f08af30657bb1f40af"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급",
+      "telegram_core_fact": "삼성SDI는 26일 미주법인 '삼성SDI 아메리카(SDI America, SDIA)가 미국 에너지 전문기업인 알파오메가파워(AOP)와 1GWh ESS 솔루션 공급 계약을 체결했다고 밝혔다.",
+      "title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급"
     },
     "source_fact:0851e54fcf467918537844a8": {
       "first_seen_kst": "2026-10-22T00:31:22+09:00",
@@ -583744,6 +584553,29 @@
       "source_title": "UDR, 3분기 순이익 2억1500만 달러 448%↑..FFOA 전망 상향",
       "telegram_core_fact": "UDR(UDR)은 3분기(7~9월) 보통주주 귀속 순이익이 2억1487만 달러로 전년 동기 3920만 달러보다 448% 늘었고, GAAP 희석 주당순이익은 0.67달러, 희석 주당 조정 운영자금(FFOA)은 0.65달러를 기록했다고 10월 21일 발표했다.",
       "title": "UDR, 3분기 순이익 2억1500만 달러 448%↑..FFOA 전망 상향"
+    },
+    "source_fact:123dda64212e17559e132f78": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026018000008",
+      "source": "연합뉴스",
+      "source_body_digest": "f6cec46c4000d31dfb73e60e1e2ba679b381516e6b14ac39015303e873d49b87",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-26",
+      "source_fact_identity": "source_facts:v1:5183dc54d0c6b28933a8c3084ca43c4de762f713b23ed650b2b16d058ad4027c",
+      "source_fact_keys": [
+        "source_fact:v1:048ec7106b091d1a441d9a0dfdc666fc543528741f0897cbcc08e4782f12afdf",
+        "source_fact:v1:2ab508a9845bd98ce5df8c3bee0e7c59b0b5d74608569900c8a504bad21b1eb8",
+        "source_fact:v1:348dd11c94f41d4aabc0e7c6d9aa5486b62381baf525238c53786003d87dd222",
+        "source_fact:v1:e167611bc690333cef6c4ebb4130cfb853bf4fd6d2670d260e75bfcdbfcf2cb2"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스",
+      "telegram_core_fact": "특히 그는 국내 대형 반도체주에 대해 \"삼성전자는 3분기 약 30조원 현금배당 확정 여부와 내년 1월 예정된 주주환원 규모와 방식에, SK하이닉스는 솔리다임 상장 철회 이후 추가적인 주주환원책 구체화 여부가 관건\"이라고 짚었다.",
+      "title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스"
     },
     "source_fact:123e82c3ddafc5e22c634a1a": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
@@ -644202,6 +645034,32 @@
       "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
       "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
     },
+    "source_fact:2aee9f9cbd121ed84e6cc68f": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.fnnews.com/news/202610260812158379",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1427f64863a316630a8ad2f0e0f4e6ee71745800f7375026383a4986a1262d12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a54b3dfabfb035dd6dc2d5b48e9a7f15f56e829302f9b07e3a148d0aa710d550",
+      "source_fact_keys": [
+        "source_fact:v1:2a7d5b532fddb28ffbd0ec99e4b578a77c7255b66fe15cee0b282f9cc9c41ed7",
+        "source_fact:v1:38806b910f7804498a06a70d068b6ce4363d006cf19a4a7c7aba2df14fcb125c",
+        "source_fact:v1:42cb5cdfb9d6854960102ad24b869c239d7dd257cd58b48f1e19f02489019777",
+        "source_fact:v1:633e1a02ba63be4a63a3a3e8d90c655c83ed9f8630d229d4199f3845fb37d871",
+        "source_fact:v1:6bd56d2e321a2785bed21d4c082d6b556fa3ea77689d961f4e68fef51de772ab",
+        "source_fact:v1:b49e5a38e52acfd349651628884c81174b605822f542319f95ea77f032f06832",
+        "source_fact:v1:b8f37b2dfa064ccabfbf8eb27402eb736522e7a024dde0f08af30657bb1f40af"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급",
+      "telegram_core_fact": "삼성SDI는 26일 미주법인 '삼성SDI 아메리카(SDI America, SDIA)가 미국 에너지 전문기업인 알파오메가파워(AOP)와 1GWh ESS 솔루션 공급 계약을 체결했다고 밝혔다.",
+      "title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급"
+    },
     "source_fact:2aef304f8f3c8b43424fed7e": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
       "lanes": {
@@ -647519,6 +648377,32 @@
       "source_title": "반도체 소부장도 옥석 가리기…KB운용, 액티브 ETF 출시",
       "telegram_core_fact": "KB자산운용은 국내 반도체 소부장 기업에 투자하는 ‘RISE 반도체소부장액티브 ETF’를 20일 상장한다고 밝혔다.",
       "title": "반도체 소부장도 옥석 가리기…KB운용, 액티브 ETF 출시"
+    },
+    "source_fact:2c42c76569fc7c63190517f7": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01938486645616856",
+      "source": "이데일리",
+      "source_body_digest": "347dd1237fad1a1e74202a55696f08037c621a5dbc73afc9dc2d0e2c7a23068c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02f3d2caecaab9f535df0c2b4ba688ff91de67a366b4005cba31c6c85671c3ad",
+      "source_fact_keys": [
+        "source_fact:v1:12598f41dc0799efb4019ba5840b28a5ea873f369132d3cad7beae388904d7cc",
+        "source_fact:v1:2f3e4ccc32c5e51eba83fdc4f2353d3b7a674edcaa06c9799bf7f0c67deb6d0f",
+        "source_fact:v1:697a788bea85b23fb1fccc7884a44b1b2bc1d2fe25c5a9e5d297e33ebe20f209",
+        "source_fact:v1:81556d748a84a1ec4083ae7c76abc5c4bd832a2bb1e5bf8420124316ebfa16e5",
+        "source_fact:v1:ede5f7c86831d3c9ed83cef29fd60ac418b6d14798127f1431e47af3289ba2c6",
+        "source_fact:v1:f16c27c12ac8b9432acf3a455c12eb1b3a627eb8a150f5f06b448c1971832f55",
+        "source_fact:v1:f5053e8c09250fddf692fad89485ed7cdec929f5b0a1825a413480eb8f722de4"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐",
+      "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
+      "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
     },
     "source_fact:2c469e4b7db40b1b2ccc0faf": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
@@ -651777,6 +652661,32 @@
       "source_title": "\"서울 아파트 월세 거래 비중 50%↑…낙관 말고 '내 집 마련' 결단할 때\"",
       "telegram_core_fact": "너나위는 \"내년 서울 입주 물량이 올해의 반토막 수준으로 줄어드는 데다, 토지거래허가구역 규제 등으로 사서 임대를 놓는 물량 자체가 사라졌다\"며 \"전세 매물이 마르다 보니 보증금 인상분을 감당하지 못한 수요자들이 대출 이자 부담까지 겹쳐 월세로 내몰리고 있다\"고 분석했다.",
       "title": "\"서울 아파트 월세 거래 비중 50%↑…낙관 말고 '내 집 마련' 결단할 때\""
+    },
+    "source_fact:2e0f6091f4184565d2a42002": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840326",
+      "source": "뉴시스",
+      "source_body_digest": "2d6ddace3f2ca752c8c330ff0f359ac9480bb45f8cdfb2992c09fe785ee3a987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb898bba1abac373e479f13bc029a2dd74b009b922562751a265dec36c8f32ee",
+      "source_fact_keys": [
+        "source_fact:v1:22fbda834198e62b8e33eed90737597f2405a88b921284ecbe40da752cc70c70",
+        "source_fact:v1:6b5cd1a83a29c229ce79e2f58f1bbce988468a1853cb1d094604e61b7940b467",
+        "source_fact:v1:77c2b5a6c10a33d9f74b4da9a29ca1908dbdaaf1991db4ad8149b960c567d934",
+        "source_fact:v1:7c1d69c2493c52194918eafec1412ee826ecdf2fe8e51b13269d1c793fcdaf1b",
+        "source_fact:v1:9d177650ac666cc2528db0c294106d4e7af31040d33592817806f5eb4ee88c83",
+        "source_fact:v1:d3ff00c9a61deafece04585f94b34b4786f25e9a6235af074f2cad8569bdd2f6",
+        "source_fact:v1:eb70218b35d65c4aeb0b9c5e398957df4e8ff252106544a76e4523fdeee076ce"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
+      "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
+      "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
     },
     "source_fact:2e1478b099b515279fba8ad8": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -658674,6 +659584,26 @@
       "source_title": "中, 해외투자 관리규정 개편…민감지역·무기개발 투자 심사 강화",
       "telegram_core_fact": "중국 당국은 해외투자 규모가 커지는 동시에 대외 위험도 확대되고 있다는 점을 규정 개정의 배경으로 제시했다.",
       "title": "中, 해외투자 관리규정 개편…민감지역·무기개발 투자 심사 강화"
+    },
+    "source_fact:30ef49793c3379f6e8f0a712": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610167397i",
+      "source": "한국경제",
+      "source_body_digest": "e8f82f8a70cdccb5ce797c22d46f2db33d476870e56808fc9fa6b67de9e880ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0555df5713a2725f5ab5d8fb2937f5a3c03815b35ca5d90a546ee49639bd2dae",
+      "source_fact_keys": [
+        "source_fact:v1:7afa9d54cd2f337c097502d92ffd396cd1a4f2c69294cffdcda3834fd2d65892"
+      ],
+      "source_published_kst": "2026-10-25T16:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나",
+      "telegram_core_fact": "AI 기사요약 올해 하반기 글로벌 AI 투자 중심이 메모리 반도체에서 소프트웨어로 이동하면서, 메모리 반도체 의존도가 높은 한국 증시가 직격탄을 맞고 있으며 대체할 소프트웨어 기업 부재로 인해 투자 심리 회복에 시간이 걸릴 것으로 전망된다.",
+      "title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나"
     },
     "source_fact:30f09a1f16bce401c79068c5": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -679603,6 +680533,32 @@
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
+    "source_fact:39d02df6f61549e73fc7e45d": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840326",
+      "source": "뉴시스",
+      "source_body_digest": "2d6ddace3f2ca752c8c330ff0f359ac9480bb45f8cdfb2992c09fe785ee3a987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb898bba1abac373e479f13bc029a2dd74b009b922562751a265dec36c8f32ee",
+      "source_fact_keys": [
+        "source_fact:v1:22fbda834198e62b8e33eed90737597f2405a88b921284ecbe40da752cc70c70",
+        "source_fact:v1:6b5cd1a83a29c229ce79e2f58f1bbce988468a1853cb1d094604e61b7940b467",
+        "source_fact:v1:77c2b5a6c10a33d9f74b4da9a29ca1908dbdaaf1991db4ad8149b960c567d934",
+        "source_fact:v1:7c1d69c2493c52194918eafec1412ee826ecdf2fe8e51b13269d1c793fcdaf1b",
+        "source_fact:v1:9d177650ac666cc2528db0c294106d4e7af31040d33592817806f5eb4ee88c83",
+        "source_fact:v1:d3ff00c9a61deafece04585f94b34b4786f25e9a6235af074f2cad8569bdd2f6",
+        "source_fact:v1:eb70218b35d65c4aeb0b9c5e398957df4e8ff252106544a76e4523fdeee076ce"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
+      "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
+      "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
+    },
     "source_fact:39d0c9e1680e4cca20ef9768": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
       "lanes": {
@@ -688913,6 +689869,32 @@
       "source_title": "신안산선 붕괴 4662억 '청구서'…영업정지에도 수주는 계속",
       "telegram_core_fact": "기존 계약에 따른 공사는 영업정지 중에도 계속할 수 있는 만큼 신규 계약과 입찰 제한이 언제 시작되는지가 제재의 실효성을 좌우한다.",
       "title": "신안산선 붕괴 4662억 '청구서'…영업정지에도 수주는 계속"
+    },
+    "source_fact:3dc8c7e53ce3ed181ddd58ea": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01938486645616856",
+      "source": "이데일리",
+      "source_body_digest": "347dd1237fad1a1e74202a55696f08037c621a5dbc73afc9dc2d0e2c7a23068c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02f3d2caecaab9f535df0c2b4ba688ff91de67a366b4005cba31c6c85671c3ad",
+      "source_fact_keys": [
+        "source_fact:v1:12598f41dc0799efb4019ba5840b28a5ea873f369132d3cad7beae388904d7cc",
+        "source_fact:v1:2f3e4ccc32c5e51eba83fdc4f2353d3b7a674edcaa06c9799bf7f0c67deb6d0f",
+        "source_fact:v1:697a788bea85b23fb1fccc7884a44b1b2bc1d2fe25c5a9e5d297e33ebe20f209",
+        "source_fact:v1:81556d748a84a1ec4083ae7c76abc5c4bd832a2bb1e5bf8420124316ebfa16e5",
+        "source_fact:v1:ede5f7c86831d3c9ed83cef29fd60ac418b6d14798127f1431e47af3289ba2c6",
+        "source_fact:v1:f16c27c12ac8b9432acf3a455c12eb1b3a627eb8a150f5f06b448c1971832f55",
+        "source_fact:v1:f5053e8c09250fddf692fad89485ed7cdec929f5b0a1825a413480eb8f722de4"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐",
+      "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
+      "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
     },
     "source_fact:3dca64ee7bb3dbe69ffdf1ee": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -701985,6 +702967,38 @@
       "telegram_core_fact": "벨로시티 바이오웍스는 밸리온의 미국 내 바이오의약품 공급망 일부다.",
       "title": "밸리온 바이오, 임시 대표 3대 우선순위 제시..엔톨리모드·CDMO 가치 제고"
     },
+    "source_fact:430cdd489c9d857a3cda7e89": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
+    },
     "source_fact:430d94efd14d3c06ceddf101": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -703387,6 +704401,32 @@
       "source_title": "서던 퍼스트 뱅크셰어스, 3분기 희석 EPS 1.28달러..전년비 21% 증가",
       "telegram_core_fact": "서던 퍼스트 뱅크셰어스(SFST)는 3분기(7~9월) 희석 주당순이익이 1.28달러로 전년비 21% 증가했고, 보통주 귀속 순이익은 1220만 달러로 41% 늘었다고 10월 20일 발표했다.",
       "title": "서던 퍼스트 뱅크셰어스, 3분기 희석 EPS 1.28달러..전년비 21% 증가"
+    },
+    "source_fact:43998300152c34a081fb7329": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840326",
+      "source": "뉴시스",
+      "source_body_digest": "2d6ddace3f2ca752c8c330ff0f359ac9480bb45f8cdfb2992c09fe785ee3a987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb898bba1abac373e479f13bc029a2dd74b009b922562751a265dec36c8f32ee",
+      "source_fact_keys": [
+        "source_fact:v1:22fbda834198e62b8e33eed90737597f2405a88b921284ecbe40da752cc70c70",
+        "source_fact:v1:6b5cd1a83a29c229ce79e2f58f1bbce988468a1853cb1d094604e61b7940b467",
+        "source_fact:v1:77c2b5a6c10a33d9f74b4da9a29ca1908dbdaaf1991db4ad8149b960c567d934",
+        "source_fact:v1:7c1d69c2493c52194918eafec1412ee826ecdf2fe8e51b13269d1c793fcdaf1b",
+        "source_fact:v1:9d177650ac666cc2528db0c294106d4e7af31040d33592817806f5eb4ee88c83",
+        "source_fact:v1:d3ff00c9a61deafece04585f94b34b4786f25e9a6235af074f2cad8569bdd2f6",
+        "source_fact:v1:eb70218b35d65c4aeb0b9c5e398957df4e8ff252106544a76e4523fdeee076ce"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
+      "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
+      "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
     },
     "source_fact:439a43ceff761809c6f2e6c5": {
       "first_seen_kst": "2026-10-10T17:23:49+09:00",
@@ -723235,6 +724275,32 @@
       "telegram_core_fact": "WSFS 파이낸셜(WSFS)이 3분기 GAAP 기준 희석 주당순이익(EPS)이 1.75달러로 전년 동기(1.37달러) 대비 28% 증가했다고 10월 22일 발표했다.",
       "title": "WSFS 파이낸셜, 3분기 희석 EPS 1.75달러..전년비 28% 증가"
     },
+    "source_fact:4b8d4cf89885b63d9d963f8e": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01938486645616856",
+      "source": "이데일리",
+      "source_body_digest": "347dd1237fad1a1e74202a55696f08037c621a5dbc73afc9dc2d0e2c7a23068c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02f3d2caecaab9f535df0c2b4ba688ff91de67a366b4005cba31c6c85671c3ad",
+      "source_fact_keys": [
+        "source_fact:v1:12598f41dc0799efb4019ba5840b28a5ea873f369132d3cad7beae388904d7cc",
+        "source_fact:v1:2f3e4ccc32c5e51eba83fdc4f2353d3b7a674edcaa06c9799bf7f0c67deb6d0f",
+        "source_fact:v1:697a788bea85b23fb1fccc7884a44b1b2bc1d2fe25c5a9e5d297e33ebe20f209",
+        "source_fact:v1:81556d748a84a1ec4083ae7c76abc5c4bd832a2bb1e5bf8420124316ebfa16e5",
+        "source_fact:v1:ede5f7c86831d3c9ed83cef29fd60ac418b6d14798127f1431e47af3289ba2c6",
+        "source_fact:v1:f16c27c12ac8b9432acf3a455c12eb1b3a627eb8a150f5f06b448c1971832f55",
+        "source_fact:v1:f5053e8c09250fddf692fad89485ed7cdec929f5b0a1825a413480eb8f722de4"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐",
+      "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
+      "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
+    },
     "source_fact:4b8efc06e340be232b342ac2": {
       "first_seen_kst": "2026-10-25T18:34:20+09:00",
       "lanes": {
@@ -731519,6 +732585,38 @@
       "source_title": "도미노피자, 3분기 희석 EPS 4.60달러..전년비 12.7% 증가",
       "telegram_core_fact": "도미노피자(DPZ)가 2026 회계연도 3분기(9월 6일 종료) 총매출액 11억8560만 달러, 영업이익 2억4180만 달러, 희석 주당순이익(EPS) 4.60달러를 기록했다고 13일 발표했다.",
       "title": "도미노피자, 3분기 희석 EPS 4.60달러..전년비 12.7% 증가"
+    },
+    "source_fact:4efd7fe5dc5b2bb58b23d13a": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
     },
     "source_fact:4efd85c3a5834dbe90e7ff14": {
       "first_seen_kst": "2026-10-20T15:49:58+09:00",
@@ -750309,6 +751407,32 @@
       "source_title": "한전, 사채 한도 19조 초과 위기…전기요금 인상론 재점화 | 연합뉴스",
       "telegram_core_fact": "문제는 당시 정부가 전기요금 인상을 통한 원가 보전 대신 사채 발행 한도 확대를 우선하면서 한전의 사채 발행 잔액이 감당하기 어려운 수준까지 불어났다는 점이다.",
       "title": "한전, 사채 한도 19조 초과 위기…전기요금 인상론 재점화 | 연합뉴스"
+    },
+    "source_fact:567f0acf33deebf8682afe2b": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840326",
+      "source": "뉴시스",
+      "source_body_digest": "2d6ddace3f2ca752c8c330ff0f359ac9480bb45f8cdfb2992c09fe785ee3a987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb898bba1abac373e479f13bc029a2dd74b009b922562751a265dec36c8f32ee",
+      "source_fact_keys": [
+        "source_fact:v1:22fbda834198e62b8e33eed90737597f2405a88b921284ecbe40da752cc70c70",
+        "source_fact:v1:6b5cd1a83a29c229ce79e2f58f1bbce988468a1853cb1d094604e61b7940b467",
+        "source_fact:v1:77c2b5a6c10a33d9f74b4da9a29ca1908dbdaaf1991db4ad8149b960c567d934",
+        "source_fact:v1:7c1d69c2493c52194918eafec1412ee826ecdf2fe8e51b13269d1c793fcdaf1b",
+        "source_fact:v1:9d177650ac666cc2528db0c294106d4e7af31040d33592817806f5eb4ee88c83",
+        "source_fact:v1:d3ff00c9a61deafece04585f94b34b4786f25e9a6235af074f2cad8569bdd2f6",
+        "source_fact:v1:eb70218b35d65c4aeb0b9c5e398957df4e8ff252106544a76e4523fdeee076ce"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
+      "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
+      "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
     },
     "source_fact:567f9d3bec570e0b8a82eb83": {
       "first_seen_kst": "2026-10-21T15:05:59+09:00",
@@ -780986,6 +782110,38 @@
       "source_title": "애플 “모든 선택지 고려”…메모리 3사, ‘절대 갑’과 헤어질 결심? | 중앙일보",
       "telegram_core_fact": "전자업계에 따르면 삼성전자·SK하이닉스·마이크론 등 메모리 3사는 최근 애플과의 모바일 D램 가격 협상에서 기존 기가비트(Gb)당 약 1.4달러였던 제품에 2.4~2.6달러 수준을 제시한 것으로 파악됐다.",
       "title": "애플 “모든 선택지 고려”…메모리 3사, ‘절대 갑’과 헤어질 결심? | 중앙일보"
+    },
+    "source_fact:634bfcc672fdc6ca416b8719": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
     },
     "source_fact:634c7dcf3c48a872e706edae": {
       "first_seen_kst": "2026-10-10T01:24:21+09:00",
@@ -837783,6 +838939,32 @@
       "telegram_core_fact": "중국 상무부는 19일 오후 홈페이지에 질의응답 형태의 성명을 통해 “상무부는 수출통제법 등 관련 법률과 법규에 따라 드론 관련 품목의 수출통제 조치를 최적화·조정하는 공고를 발표했다”고 밝혔다.",
       "title": "중국 드론 제품·기술 수출 통제 조정, 분쟁국엔 굴착기 등 수출 제한"
     },
+    "source_fact:7acf4eb553c54a04034ce9d3": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.fnnews.com/news/202610260812158379",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1427f64863a316630a8ad2f0e0f4e6ee71745800f7375026383a4986a1262d12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a54b3dfabfb035dd6dc2d5b48e9a7f15f56e829302f9b07e3a148d0aa710d550",
+      "source_fact_keys": [
+        "source_fact:v1:2a7d5b532fddb28ffbd0ec99e4b578a77c7255b66fe15cee0b282f9cc9c41ed7",
+        "source_fact:v1:38806b910f7804498a06a70d068b6ce4363d006cf19a4a7c7aba2df14fcb125c",
+        "source_fact:v1:42cb5cdfb9d6854960102ad24b869c239d7dd257cd58b48f1e19f02489019777",
+        "source_fact:v1:633e1a02ba63be4a63a3a3e8d90c655c83ed9f8630d229d4199f3845fb37d871",
+        "source_fact:v1:6bd56d2e321a2785bed21d4c082d6b556fa3ea77689d961f4e68fef51de772ab",
+        "source_fact:v1:b49e5a38e52acfd349651628884c81174b605822f542319f95ea77f032f06832",
+        "source_fact:v1:b8f37b2dfa064ccabfbf8eb27402eb736522e7a024dde0f08af30657bb1f40af"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급",
+      "telegram_core_fact": "삼성SDI는 26일 미주법인 '삼성SDI 아메리카(SDI America, SDIA)가 미국 에너지 전문기업인 알파오메가파워(AOP)와 1GWh ESS 솔루션 공급 계약을 체결했다고 밝혔다.",
+      "title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급"
+    },
     "source_fact:7ad06cf65230ddc24f251b56": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
       "lanes": {
@@ -841131,6 +842313,29 @@
       "source_title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\"",
       "telegram_core_fact": "포럼 사무국인 한국정보통신진흥협회(KAIT)는 앞으로도 '디지털 인사이트 포럼'을 통해 AI·디지털 산업의 주요 기술·정책 이슈를 선제적으로 발굴하고, AI 인프라 경쟁력 강화를 위한 민관 협력을 지속적으로 확대해 나갈 계획이다.",
       "title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\""
+    },
+    "source_fact:7c3be458a0f4afe17fba5764": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026018000008",
+      "source": "연합뉴스",
+      "source_body_digest": "f6cec46c4000d31dfb73e60e1e2ba679b381516e6b14ac39015303e873d49b87",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-26",
+      "source_fact_identity": "source_facts:v1:5183dc54d0c6b28933a8c3084ca43c4de762f713b23ed650b2b16d058ad4027c",
+      "source_fact_keys": [
+        "source_fact:v1:048ec7106b091d1a441d9a0dfdc666fc543528741f0897cbcc08e4782f12afdf",
+        "source_fact:v1:2ab508a9845bd98ce5df8c3bee0e7c59b0b5d74608569900c8a504bad21b1eb8",
+        "source_fact:v1:348dd11c94f41d4aabc0e7c6d9aa5486b62381baf525238c53786003d87dd222",
+        "source_fact:v1:e167611bc690333cef6c4ebb4130cfb853bf4fd6d2670d260e75bfcdbfcf2cb2"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스",
+      "telegram_core_fact": "특히 그는 국내 대형 반도체주에 대해 \"삼성전자는 3분기 약 30조원 현금배당 확정 여부와 내년 1월 예정된 주주환원 규모와 방식에, SK하이닉스는 솔리다임 상장 철회 이후 추가적인 주주환원책 구체화 여부가 관건\"이라고 짚었다.",
+      "title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스"
     },
     "source_fact:7c3ed91cb445773ec73c9fea": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
@@ -847899,6 +849104,32 @@
       "source_title": "삼성SDI, ESS 성장 따른 3분기 호실적 전망에 강세",
       "telegram_core_fact": "이 증권사 이진명 연구원은 삼성SDI의 올해 3분기 영업이익이 2638억 원을 기록해 시장 컨센서스인 1654억 원을 크게 웃돌 것으로 추정했다.",
       "title": "삼성SDI, ESS 성장 따른 3분기 호실적 전망에 강세"
+    },
+    "source_fact:7f1fa817f2b2dfb5042cfc74": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.fnnews.com/news/202610260812158379",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1427f64863a316630a8ad2f0e0f4e6ee71745800f7375026383a4986a1262d12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a54b3dfabfb035dd6dc2d5b48e9a7f15f56e829302f9b07e3a148d0aa710d550",
+      "source_fact_keys": [
+        "source_fact:v1:2a7d5b532fddb28ffbd0ec99e4b578a77c7255b66fe15cee0b282f9cc9c41ed7",
+        "source_fact:v1:38806b910f7804498a06a70d068b6ce4363d006cf19a4a7c7aba2df14fcb125c",
+        "source_fact:v1:42cb5cdfb9d6854960102ad24b869c239d7dd257cd58b48f1e19f02489019777",
+        "source_fact:v1:633e1a02ba63be4a63a3a3e8d90c655c83ed9f8630d229d4199f3845fb37d871",
+        "source_fact:v1:6bd56d2e321a2785bed21d4c082d6b556fa3ea77689d961f4e68fef51de772ab",
+        "source_fact:v1:b49e5a38e52acfd349651628884c81174b605822f542319f95ea77f032f06832",
+        "source_fact:v1:b8f37b2dfa064ccabfbf8eb27402eb736522e7a024dde0f08af30657bb1f40af"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급",
+      "telegram_core_fact": "삼성SDI는 26일 미주법인 '삼성SDI 아메리카(SDI America, SDIA)가 미국 에너지 전문기업인 알파오메가파워(AOP)와 1GWh ESS 솔루션 공급 계약을 체결했다고 밝혔다.",
+      "title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급"
     },
     "source_fact:7f25361925a152e2281e2853": {
       "first_seen_kst": "2026-10-23T06:00:11+09:00",
@@ -856885,6 +858116,32 @@
       "telegram_core_fact": "대만 중시신문망에 따르면 현지 반도체 패키징 기판 제조업체 유니마이크론의 젠산제 회장은 AI 연산 수요가 폭발적으로 증가하면서 반도체 기판의 사양이 고도화하고 층수가 늘어나 생산설비 확충에 심각한 제약이 발생하고 있다고 지적했다.",
       "title": "대만, AI 호황에 수출주문 급증…9개월 만에 작년 연간치 추월 | 연합뉴스"
     },
+    "source_fact:82fc6671d0e0d6b919eac20b": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.fnnews.com/news/202610260812158379",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1427f64863a316630a8ad2f0e0f4e6ee71745800f7375026383a4986a1262d12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a54b3dfabfb035dd6dc2d5b48e9a7f15f56e829302f9b07e3a148d0aa710d550",
+      "source_fact_keys": [
+        "source_fact:v1:2a7d5b532fddb28ffbd0ec99e4b578a77c7255b66fe15cee0b282f9cc9c41ed7",
+        "source_fact:v1:38806b910f7804498a06a70d068b6ce4363d006cf19a4a7c7aba2df14fcb125c",
+        "source_fact:v1:42cb5cdfb9d6854960102ad24b869c239d7dd257cd58b48f1e19f02489019777",
+        "source_fact:v1:633e1a02ba63be4a63a3a3e8d90c655c83ed9f8630d229d4199f3845fb37d871",
+        "source_fact:v1:6bd56d2e321a2785bed21d4c082d6b556fa3ea77689d961f4e68fef51de772ab",
+        "source_fact:v1:b49e5a38e52acfd349651628884c81174b605822f542319f95ea77f032f06832",
+        "source_fact:v1:b8f37b2dfa064ccabfbf8eb27402eb736522e7a024dde0f08af30657bb1f40af"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급",
+      "telegram_core_fact": "삼성SDI는 26일 미주법인 '삼성SDI 아메리카(SDI America, SDIA)가 미국 에너지 전문기업인 알파오메가파워(AOP)와 1GWh ESS 솔루션 공급 계약을 체결했다고 밝혔다.",
+      "title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급"
+    },
     "source_fact:82fe20bd0572c97594849a06": {
       "first_seen_kst": "2026-10-23T08:04:49+09:00",
       "lanes": {
@@ -863145,6 +864402,32 @@
       ],
       "source_published_kst": "2026-10-06T00:04+09:00",
       "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
+    },
+    "source_fact:85be27ea9f2ec0d1058840d2": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01938486645616856",
+      "source": "이데일리",
+      "source_body_digest": "347dd1237fad1a1e74202a55696f08037c621a5dbc73afc9dc2d0e2c7a23068c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02f3d2caecaab9f535df0c2b4ba688ff91de67a366b4005cba31c6c85671c3ad",
+      "source_fact_keys": [
+        "source_fact:v1:12598f41dc0799efb4019ba5840b28a5ea873f369132d3cad7beae388904d7cc",
+        "source_fact:v1:2f3e4ccc32c5e51eba83fdc4f2353d3b7a674edcaa06c9799bf7f0c67deb6d0f",
+        "source_fact:v1:697a788bea85b23fb1fccc7884a44b1b2bc1d2fe25c5a9e5d297e33ebe20f209",
+        "source_fact:v1:81556d748a84a1ec4083ae7c76abc5c4bd832a2bb1e5bf8420124316ebfa16e5",
+        "source_fact:v1:ede5f7c86831d3c9ed83cef29fd60ac418b6d14798127f1431e47af3289ba2c6",
+        "source_fact:v1:f16c27c12ac8b9432acf3a455c12eb1b3a627eb8a150f5f06b448c1971832f55",
+        "source_fact:v1:f5053e8c09250fddf692fad89485ed7cdec929f5b0a1825a413480eb8f722de4"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐",
+      "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
+      "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
     },
     "source_fact:85be63adeb59ec613029d43f": {
       "first_seen_kst": "2026-10-22T18:58:18+09:00",
@@ -882387,6 +883670,38 @@
       "source_title": "日, 美 반도체 팹에 대규모 투자…삼성·SK하이닉스 '예의주시'",
       "telegram_core_fact": "업계와 외신 등에 따르면 미국 파운드리(반도체 위탁생산) 기업인 글로벌파운드리는 미일 관세 협상 합의에 따라 일본의 대미투자 일환으로 뉴욕주 몰타에 신규 팹을 건설할 것이라고 발표했다.",
       "title": "日, 美 반도체 팹에 대규모 투자…삼성·SK하이닉스 '예의주시'"
+    },
+    "source_fact:8e4705f4f0561587a0c238a8": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
     },
     "source_fact:8e488f48b582a8b2f7b4dec6": {
       "first_seen_kst": "2026-10-22T00:31:22+09:00",
@@ -904960,6 +906275,29 @@
       "telegram_core_fact": "허성우 하나증권 연구원은 20일 보고서에서 “1990년 이후 미국 10년물 금리 고점은 6차례 있었는데, 모든 사례에서 2년 뒤 금리는 더 낮았고 평균 하락폭은 164bp(1bp=0.01%포인트)였다”며 “고점은 ‘좋은 뉴스’로 꺾인 적이 없고 매번 고금리가 무언가를 부러뜨렸다”고 말했다.",
       "title": "증시 짓누르는 美 채권 금리 고점은?...\"올해 4분기~내년 1분기 형성\""
     },
+    "source_fact:9796b6165a619291024b2a12": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026018000008",
+      "source": "연합뉴스",
+      "source_body_digest": "f6cec46c4000d31dfb73e60e1e2ba679b381516e6b14ac39015303e873d49b87",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-26",
+      "source_fact_identity": "source_facts:v1:5183dc54d0c6b28933a8c3084ca43c4de762f713b23ed650b2b16d058ad4027c",
+      "source_fact_keys": [
+        "source_fact:v1:048ec7106b091d1a441d9a0dfdc666fc543528741f0897cbcc08e4782f12afdf",
+        "source_fact:v1:2ab508a9845bd98ce5df8c3bee0e7c59b0b5d74608569900c8a504bad21b1eb8",
+        "source_fact:v1:348dd11c94f41d4aabc0e7c6d9aa5486b62381baf525238c53786003d87dd222",
+        "source_fact:v1:e167611bc690333cef6c4ebb4130cfb853bf4fd6d2670d260e75bfcdbfcf2cb2"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스",
+      "telegram_core_fact": "특히 그는 국내 대형 반도체주에 대해 \"삼성전자는 3분기 약 30조원 현금배당 확정 여부와 내년 1월 예정된 주주환원 규모와 방식에, SK하이닉스는 솔리다임 상장 철회 이후 추가적인 주주환원책 구체화 여부가 관건\"이라고 짚었다.",
+      "title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스"
+    },
     "source_fact:97970f0af321c43074e18281": {
       "first_seen_kst": "2026-10-12T02:51:54+09:00",
       "lanes": {
@@ -905622,6 +906960,38 @@
       "source_title": "석 달 새 170원 내린 환율…수출 자동차 '긴장'·항공은 '안도'",
       "telegram_core_fact": "현대차는 올해 2분기 글로벌 도매 판매량이 전년 동기보다 6.9% 감소했지만, 평균 원·달러 환율이 1502원으로 7.0% 상승한 효과 등에 힘입어 역대 최대인 49조2153억원의 매출을 기록했다.",
       "title": "석 달 새 170원 내린 환율…수출 자동차 '긴장'·항공은 '안도'"
+    },
+    "source_fact:97da187ff3239a76db35b01e": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
     },
     "source_fact:97db57cb7cab20b0c8e0cd94": {
       "first_seen_kst": "2026-10-21T06:55:09+09:00",
@@ -925081,6 +926451,38 @@
       "telegram_core_fact": "\"한국 기업들이 반도체 공급망에 속한 소부장(소재·부품·장비) 업체 인수·합병(M&A)에 관심이 많습니다.",
       "title": "\"기술변화 뒤처질라 … 기업들, 반도체 소부장 M&A 문의 급증\""
     },
+    "source_fact:9fdabcd30adc22d4128a05d6": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
+    },
     "source_fact:9fdadf0460f3aadec1a0cec2": {
       "first_seen_kst": "2026-10-18T18:07:27+09:00",
       "lanes": {
@@ -940636,6 +942038,38 @@
       "source_title": "\"엔화 840원도 바닥 아닐 수도…엔·달러 모두 추가 하락 가능성\"",
       "telegram_core_fact": "원·달러 환율이 다음 주 1310원대까지 내려가고, 엔화는 100엔당 840원대에서도 추가 하락할 수 있다는 전문가 전망이 나왔다.",
       "title": "\"엔화 840원도 바닥 아닐 수도…엔·달러 모두 추가 하락 가능성\""
+    },
+    "source_fact:a5e3986ed91d862e44e24f12": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
     },
     "source_fact:a5e3f304811aa9286580592c": {
       "first_seen_kst": "2026-10-21T09:52:31+09:00",
@@ -959569,6 +961003,32 @@
       "source_published_kst": "2026-10-07T07:10+09:00",
       "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
     },
+    "source_fact:adb7f9733dcec5cd3d92087e": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840326",
+      "source": "뉴시스",
+      "source_body_digest": "2d6ddace3f2ca752c8c330ff0f359ac9480bb45f8cdfb2992c09fe785ee3a987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb898bba1abac373e479f13bc029a2dd74b009b922562751a265dec36c8f32ee",
+      "source_fact_keys": [
+        "source_fact:v1:22fbda834198e62b8e33eed90737597f2405a88b921284ecbe40da752cc70c70",
+        "source_fact:v1:6b5cd1a83a29c229ce79e2f58f1bbce988468a1853cb1d094604e61b7940b467",
+        "source_fact:v1:77c2b5a6c10a33d9f74b4da9a29ca1908dbdaaf1991db4ad8149b960c567d934",
+        "source_fact:v1:7c1d69c2493c52194918eafec1412ee826ecdf2fe8e51b13269d1c793fcdaf1b",
+        "source_fact:v1:9d177650ac666cc2528db0c294106d4e7af31040d33592817806f5eb4ee88c83",
+        "source_fact:v1:d3ff00c9a61deafece04585f94b34b4786f25e9a6235af074f2cad8569bdd2f6",
+        "source_fact:v1:eb70218b35d65c4aeb0b9c5e398957df4e8ff252106544a76e4523fdeee076ce"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
+      "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
+      "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
+    },
     "source_fact:adbab6bdb3265d0f4bb4656d": {
       "first_seen_kst": "2026-10-21T02:41:49+09:00",
       "lanes": {
@@ -970817,6 +972277,32 @@
       "source_title": "국제유가, 이란 전쟁 재격화 우려에 상승…브렌트유 117달러 돌파",
       "telegram_core_fact": "영국 파이낸셜타임스(FT)에 따르면 국제유가의 기준인 브렌트유는 이날 뉴욕 오후 거래에서 장중 최대 3.8% 상승한 배럴당 117.45달러를 기록했다.",
       "title": "국제유가, 이란 전쟁 재격화 우려에 상승…브렌트유 117달러 돌파"
+    },
+    "source_fact:b23de520c1581a2a7c2dc7aa": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.fnnews.com/news/202610260812158379",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1427f64863a316630a8ad2f0e0f4e6ee71745800f7375026383a4986a1262d12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a54b3dfabfb035dd6dc2d5b48e9a7f15f56e829302f9b07e3a148d0aa710d550",
+      "source_fact_keys": [
+        "source_fact:v1:2a7d5b532fddb28ffbd0ec99e4b578a77c7255b66fe15cee0b282f9cc9c41ed7",
+        "source_fact:v1:38806b910f7804498a06a70d068b6ce4363d006cf19a4a7c7aba2df14fcb125c",
+        "source_fact:v1:42cb5cdfb9d6854960102ad24b869c239d7dd257cd58b48f1e19f02489019777",
+        "source_fact:v1:633e1a02ba63be4a63a3a3e8d90c655c83ed9f8630d229d4199f3845fb37d871",
+        "source_fact:v1:6bd56d2e321a2785bed21d4c082d6b556fa3ea77689d961f4e68fef51de772ab",
+        "source_fact:v1:b49e5a38e52acfd349651628884c81174b605822f542319f95ea77f032f06832",
+        "source_fact:v1:b8f37b2dfa064ccabfbf8eb27402eb736522e7a024dde0f08af30657bb1f40af"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급",
+      "telegram_core_fact": "삼성SDI는 26일 미주법인 '삼성SDI 아메리카(SDI America, SDIA)가 미국 에너지 전문기업인 알파오메가파워(AOP)와 1GWh ESS 솔루션 공급 계약을 체결했다고 밝혔다.",
+      "title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급"
     },
     "source_fact:b243171f225315776deef7cc": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -982397,6 +983883,32 @@
       "telegram_core_fact": "대만 전력사업을 주도할 합작법인은 LS일렉트릭이 50%, 난야플라스틱 40%, KHI가 10%를 각각 출자해 설립했으며 사명은 ‘남아낙성(南亞樂星)’으로 정했다.",
       "title": "LS일렉트릭, 대만 최대 석화그룹과 합작법인…현지 사업 확대"
     },
+    "source_fact:b6f85302801a83a47ee82a26": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01938486645616856",
+      "source": "이데일리",
+      "source_body_digest": "347dd1237fad1a1e74202a55696f08037c621a5dbc73afc9dc2d0e2c7a23068c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02f3d2caecaab9f535df0c2b4ba688ff91de67a366b4005cba31c6c85671c3ad",
+      "source_fact_keys": [
+        "source_fact:v1:12598f41dc0799efb4019ba5840b28a5ea873f369132d3cad7beae388904d7cc",
+        "source_fact:v1:2f3e4ccc32c5e51eba83fdc4f2353d3b7a674edcaa06c9799bf7f0c67deb6d0f",
+        "source_fact:v1:697a788bea85b23fb1fccc7884a44b1b2bc1d2fe25c5a9e5d297e33ebe20f209",
+        "source_fact:v1:81556d748a84a1ec4083ae7c76abc5c4bd832a2bb1e5bf8420124316ebfa16e5",
+        "source_fact:v1:ede5f7c86831d3c9ed83cef29fd60ac418b6d14798127f1431e47af3289ba2c6",
+        "source_fact:v1:f16c27c12ac8b9432acf3a455c12eb1b3a627eb8a150f5f06b448c1971832f55",
+        "source_fact:v1:f5053e8c09250fddf692fad89485ed7cdec929f5b0a1825a413480eb8f722de4"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐",
+      "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
+      "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
+    },
     "source_fact:b6f9366571d110fe669fffd3": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
       "lanes": {
@@ -993409,6 +994921,32 @@
       ],
       "source_published_kst": "2026-10-07T06:15+09:00",
       "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
+    },
+    "source_fact:bb9dbca72f710974a8499129": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840326",
+      "source": "뉴시스",
+      "source_body_digest": "2d6ddace3f2ca752c8c330ff0f359ac9480bb45f8cdfb2992c09fe785ee3a987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb898bba1abac373e479f13bc029a2dd74b009b922562751a265dec36c8f32ee",
+      "source_fact_keys": [
+        "source_fact:v1:22fbda834198e62b8e33eed90737597f2405a88b921284ecbe40da752cc70c70",
+        "source_fact:v1:6b5cd1a83a29c229ce79e2f58f1bbce988468a1853cb1d094604e61b7940b467",
+        "source_fact:v1:77c2b5a6c10a33d9f74b4da9a29ca1908dbdaaf1991db4ad8149b960c567d934",
+        "source_fact:v1:7c1d69c2493c52194918eafec1412ee826ecdf2fe8e51b13269d1c793fcdaf1b",
+        "source_fact:v1:9d177650ac666cc2528db0c294106d4e7af31040d33592817806f5eb4ee88c83",
+        "source_fact:v1:d3ff00c9a61deafece04585f94b34b4786f25e9a6235af074f2cad8569bdd2f6",
+        "source_fact:v1:eb70218b35d65c4aeb0b9c5e398957df4e8ff252106544a76e4523fdeee076ce"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
+      "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
+      "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
     },
     "source_fact:bbaa1336fc2ff5186c1e425a": {
       "first_seen_kst": "2026-10-18T05:17:28+09:00",
@@ -1024998,6 +1026536,32 @@
       "telegram_core_fact": "미국의 30년 고정 주택담보대출(모기지) 금리가 7.28%로 2023년 11월 말 이후 최고 수준까지 치솟으면서, 불과 몇 주 남은 중간선거에서 도널드 트럼프 대통령과 공화당의 부담이 커지고 있다.",
       "title": "트럼프는 주담대 3% 내다봤는데…7.28%로 급등, 중간선거 부담"
     },
+    "source_fact:c8678cc13eb9d332636ff9b4": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01938486645616856",
+      "source": "이데일리",
+      "source_body_digest": "347dd1237fad1a1e74202a55696f08037c621a5dbc73afc9dc2d0e2c7a23068c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02f3d2caecaab9f535df0c2b4ba688ff91de67a366b4005cba31c6c85671c3ad",
+      "source_fact_keys": [
+        "source_fact:v1:12598f41dc0799efb4019ba5840b28a5ea873f369132d3cad7beae388904d7cc",
+        "source_fact:v1:2f3e4ccc32c5e51eba83fdc4f2353d3b7a674edcaa06c9799bf7f0c67deb6d0f",
+        "source_fact:v1:697a788bea85b23fb1fccc7884a44b1b2bc1d2fe25c5a9e5d297e33ebe20f209",
+        "source_fact:v1:81556d748a84a1ec4083ae7c76abc5c4bd832a2bb1e5bf8420124316ebfa16e5",
+        "source_fact:v1:ede5f7c86831d3c9ed83cef29fd60ac418b6d14798127f1431e47af3289ba2c6",
+        "source_fact:v1:f16c27c12ac8b9432acf3a455c12eb1b3a627eb8a150f5f06b448c1971832f55",
+        "source_fact:v1:f5053e8c09250fddf692fad89485ed7cdec929f5b0a1825a413480eb8f722de4"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐",
+      "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
+      "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
+    },
     "source_fact:c8696dfd7397242e88b5df0d": {
       "first_seen_kst": "2026-10-21T10:53:33+09:00",
       "lanes": {
@@ -1048231,6 +1049795,38 @@
       ],
       "source_published_kst": "2026-10-06T15:59+09:00",
       "title": "자사주 매입 막바지·솔리다임 상장설 악재? 삼전닉스 1~3%대↓(종합) | 연합뉴스"
+    },
+    "source_fact:d21f0b9655ae17bd69e27439": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
     },
     "source_fact:d220976590eb9e225065a37c": {
       "first_seen_kst": "2026-10-15T16:50:59+09:00",
@@ -1079581,6 +1081177,32 @@
       "telegram_core_fact": "문 연구원도 “반도체 기업들의 실적 호조에 따른 달러 공급이 내년에도 지속될 것으로 예상된다”며 “현재 1350원으로 제시한 내년 연평균 환율 전망치도 11월 연간 전망에서 하향 조정할 가능성이 높다”고 내다봤다.",
       "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
+    "source_fact:df5470f39653ef1cc8e6afa7": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01938486645616856",
+      "source": "이데일리",
+      "source_body_digest": "347dd1237fad1a1e74202a55696f08037c621a5dbc73afc9dc2d0e2c7a23068c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02f3d2caecaab9f535df0c2b4ba688ff91de67a366b4005cba31c6c85671c3ad",
+      "source_fact_keys": [
+        "source_fact:v1:12598f41dc0799efb4019ba5840b28a5ea873f369132d3cad7beae388904d7cc",
+        "source_fact:v1:2f3e4ccc32c5e51eba83fdc4f2353d3b7a674edcaa06c9799bf7f0c67deb6d0f",
+        "source_fact:v1:697a788bea85b23fb1fccc7884a44b1b2bc1d2fe25c5a9e5d297e33ebe20f209",
+        "source_fact:v1:81556d748a84a1ec4083ae7c76abc5c4bd832a2bb1e5bf8420124316ebfa16e5",
+        "source_fact:v1:ede5f7c86831d3c9ed83cef29fd60ac418b6d14798127f1431e47af3289ba2c6",
+        "source_fact:v1:f16c27c12ac8b9432acf3a455c12eb1b3a627eb8a150f5f06b448c1971832f55",
+        "source_fact:v1:f5053e8c09250fddf692fad89485ed7cdec929f5b0a1825a413480eb8f722de4"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐",
+      "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
+      "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
+    },
     "source_fact:df54bcb06c71364157fe80d7": {
       "first_seen_kst": "2026-10-18T01:53:22+09:00",
       "lanes": {
@@ -1088547,6 +1090169,32 @@
       "source_published_kst": "2026-10-07T10:21+09:00",
       "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
     },
+    "source_fact:e2cbc3e63dccd38277654884": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840326",
+      "source": "뉴시스",
+      "source_body_digest": "2d6ddace3f2ca752c8c330ff0f359ac9480bb45f8cdfb2992c09fe785ee3a987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb898bba1abac373e479f13bc029a2dd74b009b922562751a265dec36c8f32ee",
+      "source_fact_keys": [
+        "source_fact:v1:22fbda834198e62b8e33eed90737597f2405a88b921284ecbe40da752cc70c70",
+        "source_fact:v1:6b5cd1a83a29c229ce79e2f58f1bbce988468a1853cb1d094604e61b7940b467",
+        "source_fact:v1:77c2b5a6c10a33d9f74b4da9a29ca1908dbdaaf1991db4ad8149b960c567d934",
+        "source_fact:v1:7c1d69c2493c52194918eafec1412ee826ecdf2fe8e51b13269d1c793fcdaf1b",
+        "source_fact:v1:9d177650ac666cc2528db0c294106d4e7af31040d33592817806f5eb4ee88c83",
+        "source_fact:v1:d3ff00c9a61deafece04585f94b34b4786f25e9a6235af074f2cad8569bdd2f6",
+        "source_fact:v1:eb70218b35d65c4aeb0b9c5e398957df4e8ff252106544a76e4523fdeee076ce"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
+      "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
+      "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
+    },
     "source_fact:e2ce82a5ae98534d1e4a9ca1": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -1094196,6 +1095844,38 @@
       "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
       "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
       "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
+    },
+    "source_fact:e525c4d63738622d876c1d14": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
     },
     "source_fact:e52b50f06fb1614ad7401eaf": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
@@ -1107217,6 +1108897,38 @@
       ],
       "source_published_kst": "2026-10-06T08:48+09:00",
       "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
+    "source_fact:eaa4ff957b3cc6d4a5f5f483": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
     },
     "source_fact:eaa60c571b2fe95d1bd4a9c3": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
@@ -1120337,6 +1122049,38 @@
       "telegram_core_fact": "푸네 신공장의 본격 가동으로 현대차는 인도 현지에서 기존 첸나이 1·2공장(82만4천대)을 포함해 100만대에 가까운 연간 생산능력을 확보하게 됐다. 1996년 인도에 현지 법인을 설립한 현대차는 현지에서 연간 60만대 안팎을 판매하는 자동차 브랜드로 성장했다.",
       "title": "'제2도약' 현대차 푸네에 신공장…인도서 연간 100만대 생산체제 | 연합뉴스"
     },
+    "source_fact:efe9e252d47173c3d89aee71": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
+    },
     "source_fact:efebb613481a17fa33a112ff": {
       "first_seen_kst": "2026-10-10T20:05:57+09:00",
       "lanes": {
@@ -1129813,6 +1131557,29 @@
       "telegram_core_fact": "프로피던트 파이낸셜 홀딩스(PROV)가 이사회에서 발행 보통주의 최대 5%에 해당하는 약 30만5477주를 매입하는 신규 자사주 매입 계획을 승인했다고 22일(현지시간) 발표했다.",
       "title": "프로피던트 파이낸셜 홀딩, 자사주 5% 30만주 추가 매입 승인"
     },
+    "source_fact:f4196071450fa6fb8fd6d093": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026018000008",
+      "source": "연합뉴스",
+      "source_body_digest": "f6cec46c4000d31dfb73e60e1e2ba679b381516e6b14ac39015303e873d49b87",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-26",
+      "source_fact_identity": "source_facts:v1:5183dc54d0c6b28933a8c3084ca43c4de762f713b23ed650b2b16d058ad4027c",
+      "source_fact_keys": [
+        "source_fact:v1:048ec7106b091d1a441d9a0dfdc666fc543528741f0897cbcc08e4782f12afdf",
+        "source_fact:v1:2ab508a9845bd98ce5df8c3bee0e7c59b0b5d74608569900c8a504bad21b1eb8",
+        "source_fact:v1:348dd11c94f41d4aabc0e7c6d9aa5486b62381baf525238c53786003d87dd222",
+        "source_fact:v1:e167611bc690333cef6c4ebb4130cfb853bf4fd6d2670d260e75bfcdbfcf2cb2"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스",
+      "telegram_core_fact": "특히 그는 국내 대형 반도체주에 대해 \"삼성전자는 3분기 약 30조원 현금배당 확정 여부와 내년 1월 예정된 주주환원 규모와 방식에, SK하이닉스는 솔리다임 상장 철회 이후 추가적인 주주환원책 구체화 여부가 관건\"이라고 짚었다.",
+      "title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스"
+    },
     "source_fact:f41b7c39336bad0a10db39f1": {
       "first_seen_kst": "2026-10-20T08:37:36+09:00",
       "lanes": {
@@ -1136832,6 +1138599,26 @@
       "telegram_core_fact": "유럽연합(EU)은 미국 도널드 트럼프 대통령의 요청에도 러시아에 대한 경제 제재를 러시아가 전쟁을 중지하지 않는 한 결코 풀지 않을 것이라고 EU 집행위원장이 확고하게 말했다.",
       "title": "EU 집행위원장, \"전쟁 멈추면 모를까 러시아 제재 해제는 없어\""
     },
+    "source_fact:f757e6bda38ce1d853c181a6": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610264038i",
+      "source": "한국경제",
+      "source_body_digest": "2de6946483a0c550e789878d2e0bf22c69115622acdb5335e30b8dc140e03918",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b7f14183ac92ab915906c78ecaead20aa42f1f10bc032afcf6406431e03bf3f",
+      "source_fact_keys": [
+        "source_fact:v1:1b925e7352011cdfcde8a30d67a2158209ff432355d0694cd740385f8f50246a"
+      ],
+      "source_published_kst": "2026-10-26T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망",
+      "telegram_core_fact": "반면 흑해는 운송 수익성이 상대적으로 낮은 데다 공격 위험까지 훨씬 높아 선박 투입을 꺼리는 선사들이 늘고 있다고 해운업계는 전했다.",
+      "title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망"
+    },
     "source_fact:f7586281c68ca86cb60f4a24": {
       "first_seen_kst": "2026-10-20T20:52:32+09:00",
       "lanes": {
@@ -1143718,6 +1145505,38 @@
       "source_title": "“설마 더 떨어지겠어? 할수있다 나라면”…레버리지 ETF 줍는 개미들",
       "telegram_core_fact": "코스콤 ETF체크에 따르면 지난주 개인투자자들이 가장 많이 순매수한 ETF는 KODEX 레버리지(7733억원)였다. 윤재홍 미래에셋증권 연구원은 “레버리지 ETF는 지수 등락 폭이 커질수록 단기 차익을 노리는 투자자 수요가 커지는 경향이 있다”고 설명했다.",
       "title": "“설마 더 떨어지겠어? 할수있다 나라면”…레버리지 ETF 줍는 개미들"
+    },
+    "source_fact:faa2223c0f49d501b1a72917": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
     },
     "source_fact:faa406c05f5608e556a83d10": {
       "first_seen_kst": "2026-10-13T02:50:52+09:00",
@@ -1169609,6 +1171428,38 @@
       "telegram_core_fact": "이날 뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI)는 전장 대비 1.8% 하락한 배럴당 101.79달러에 거래를 마쳤다.",
       "title": "국제유가, 미·이란 외교적 해결 기대에 하락…WTI 1.8%↓"
     },
+    "title:161a1fbcedd7b723b925bf37": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01961446645616856",
+      "source": "이데일리",
+      "source_body_digest": "872f9996a327945fce96b82bed8b4fdb8c7c90c20949f693d84f9a7b9c840752",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:afe8476d7aa48e4b6b17cfc3d545b4fa447429128da2cfc1b8c2a38e8282c23f",
+      "source_fact_keys": [
+        "source_fact:v1:49e2195fc69a23e95009e70ba6d19f7687f2433ca30f3c73b77c063465ffdf85",
+        "source_fact:v1:63902cb628fccc32d3735167a4cd1b211012c234f470d7c372da96d78f6032f5",
+        "source_fact:v1:76e9c8ec49f3e963a000f5894de0910f262dd6722c2e28605321a206beffe102",
+        "source_fact:v1:9e502666667504d7efc5dab28f439eaef5d40f57f84d145c4d347013bb24baf9",
+        "source_fact:v1:a2cec7262b9a26a9086eab7aa83dec0aa541357a35640740ed06f924d8a1121d",
+        "source_fact:v1:aa074f97f34a3bd0f64083c21e8122ed598c4709fb9e85fabdf699f0d8cf5b89",
+        "source_fact:v1:b2ea226dff5f0a87395d3af8312b0b9e6c98cf531e3a1bd30734d80b8c275637",
+        "source_fact:v1:b2f739a3ff1d96d798cf6730cf85e7e68161cea6347fb884a0d4e49c9694c947",
+        "source_fact:v1:e35f49b3fdbc688fe6fdce959b00600166d0323f94b234f4e809d4f068e74943",
+        "source_fact:v1:e4f65b410aae194c7676634e5a58820196c96dc530c301061f7197338cd16f7b",
+        "source_fact:v1:e6e9523713dab0d3d92492e95f1344ef9e562f89a7a08ea9e252e907e1d8117a",
+        "source_fact:v1:f2a068866fd39ec014b7a24e6bf8e1385f93bdd5cdc11c8a4bf1315e494cc032",
+        "source_fact:v1:fa00b84e294b82a16c16d3cbe6858f1a3742df1d0f0bbc9823c95d25a6307d63"
+      ],
+      "source_published_kst": "2026-10-26T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’",
+      "telegram_core_fact": "미국 대표 자본시장 규제당국인 증권거래위원회(SEC)가 5년 간 한시적으로 허용한 토큰화주식 거래 제도가 시행 초기부터 난항을 겪고 있다.",
+      "title": "美상장사 22곳 “토큰화 안된다”…토큰주식 출발부터 ‘난항’"
+    },
     "title:16225e981cb235ca18f66b73": {
       "first_seen_kst": "2026-10-23T04:06:25+09:00",
       "lanes": {
@@ -1189435,6 +1191286,26 @@
       "telegram_core_fact": "에너지저장장치 부품 공급 확대는 매출 성장과 수주잔고 증가로 이어지고 있다. 북미 인공지능 데이터센터의 전력 수요가 늘면서 에너지저장장치 부품 기업의 공급 실적이 확대되고 있다.",
       "title": "저가매수 기회 찾는다면…ESS 부품 공급 소식에 주목"
     },
+    "title:386845636a92b165f7221fd8": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610264038i",
+      "source": "한국경제",
+      "source_body_digest": "2de6946483a0c550e789878d2e0bf22c69115622acdb5335e30b8dc140e03918",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b7f14183ac92ab915906c78ecaead20aa42f1f10bc032afcf6406431e03bf3f",
+      "source_fact_keys": [
+        "source_fact:v1:1b925e7352011cdfcde8a30d67a2158209ff432355d0694cd740385f8f50246a"
+      ],
+      "source_published_kst": "2026-10-26T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망",
+      "telegram_core_fact": "반면 흑해는 운송 수익성이 상대적으로 낮은 데다 공격 위험까지 훨씬 높아 선박 투입을 꺼리는 선사들이 늘고 있다고 해운업계는 전했다.",
+      "title": "호르무즈보다 위험한 '흑해'…선박 570척 피격·40명 사망"
+    },
     "title:387dc3b3aac7f7368b92ec57": {
       "first_seen_kst": "2026-10-16T18:28:57+09:00",
       "lanes": {
@@ -1204344,6 +1206215,32 @@
       "source_title": "상장 첫날 '따블' 달성…엠에스바이오 어떤 회사?",
       "telegram_core_fact": "엠에스바이오는 이번 상장으로 확보한 자금을 충북 오창 신공장 건설을 포함한 생산설비 확충, 신성장 동력 확보 등에 투자할 계획이다.",
       "title": "상장 첫날 '따블' 달성…엠에스바이오 어떤 회사?"
+    },
+    "title:4ffaf18b407fcb0b48ccd3f2": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01938486645616856",
+      "source": "이데일리",
+      "source_body_digest": "347dd1237fad1a1e74202a55696f08037c621a5dbc73afc9dc2d0e2c7a23068c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02f3d2caecaab9f535df0c2b4ba688ff91de67a366b4005cba31c6c85671c3ad",
+      "source_fact_keys": [
+        "source_fact:v1:12598f41dc0799efb4019ba5840b28a5ea873f369132d3cad7beae388904d7cc",
+        "source_fact:v1:2f3e4ccc32c5e51eba83fdc4f2353d3b7a674edcaa06c9799bf7f0c67deb6d0f",
+        "source_fact:v1:697a788bea85b23fb1fccc7884a44b1b2bc1d2fe25c5a9e5d297e33ebe20f209",
+        "source_fact:v1:81556d748a84a1ec4083ae7c76abc5c4bd832a2bb1e5bf8420124316ebfa16e5",
+        "source_fact:v1:ede5f7c86831d3c9ed83cef29fd60ac418b6d14798127f1431e47af3289ba2c6",
+        "source_fact:v1:f16c27c12ac8b9432acf3a455c12eb1b3a627eb8a150f5f06b448c1971832f55",
+        "source_fact:v1:f5053e8c09250fddf692fad89485ed7cdec929f5b0a1825a413480eb8f722de4"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐",
+      "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
+      "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
     },
     "title:5006fe0148ff2087407f103a": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -1246004,6 +1247901,26 @@
       "telegram_core_fact": "HD현대는 22일(현지시간) 미국 텍사스주 휴스턴에서 키윗과 조선 합작법인 설립 계약을 체결했다고 23일 밝혔다. 필리조선소를 인수한 한화에 이어 HD현대도 미국에 생산 거점을 구축하면서, 한미 조선협력 프로젝트 '마스가'(MASGA)를 겨냥한 국내 조선사들의 현지 진출이 가속하는 모양새다.",
       "title": "HD현대, 미국에 합작 조선소 설립…1천500불 마스가 승부수(종합)"
     },
+    "title:98056c426ed51e341febe782": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.hankyung.com/article/202610167397i",
+      "source": "한국경제",
+      "source_body_digest": "e8f82f8a70cdccb5ce797c22d46f2db33d476870e56808fc9fa6b67de9e880ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0555df5713a2725f5ab5d8fb2937f5a3c03815b35ca5d90a546ee49639bd2dae",
+      "source_fact_keys": [
+        "source_fact:v1:7afa9d54cd2f337c097502d92ffd396cd1a4f2c69294cffdcda3834fd2d65892"
+      ],
+      "source_published_kst": "2026-10-25T16:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나",
+      "telegram_core_fact": "AI 기사요약 올해 하반기 글로벌 AI 투자 중심이 메모리 반도체에서 소프트웨어로 이동하면서, 메모리 반도체 의존도가 높은 한국 증시가 직격탄을 맞고 있으며 대체할 소프트웨어 기업 부재로 인해 투자 심리 회복에 시간이 걸릴 것으로 전망된다.",
+      "title": "AI 돈, 메모리 떠나 소프트웨어로…삼전·하이닉스 '외톨이' 되나"
+    },
     "title:980862602e09a374f9816e0c": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -1261284,6 +1263201,32 @@
       "source_published_kst": "2026-10-06T22:35+09:00",
       "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
     },
+    "title:b17eff80bf356a17739dd774": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840326",
+      "source": "뉴시스",
+      "source_body_digest": "2d6ddace3f2ca752c8c330ff0f359ac9480bb45f8cdfb2992c09fe785ee3a987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb898bba1abac373e479f13bc029a2dd74b009b922562751a265dec36c8f32ee",
+      "source_fact_keys": [
+        "source_fact:v1:22fbda834198e62b8e33eed90737597f2405a88b921284ecbe40da752cc70c70",
+        "source_fact:v1:6b5cd1a83a29c229ce79e2f58f1bbce988468a1853cb1d094604e61b7940b467",
+        "source_fact:v1:77c2b5a6c10a33d9f74b4da9a29ca1908dbdaaf1991db4ad8149b960c567d934",
+        "source_fact:v1:7c1d69c2493c52194918eafec1412ee826ecdf2fe8e51b13269d1c793fcdaf1b",
+        "source_fact:v1:9d177650ac666cc2528db0c294106d4e7af31040d33592817806f5eb4ee88c83",
+        "source_fact:v1:d3ff00c9a61deafece04585f94b34b4786f25e9a6235af074f2cad8569bdd2f6",
+        "source_fact:v1:eb70218b35d65c4aeb0b9c5e398957df4e8ff252106544a76e4523fdeee076ce"
+      ],
+      "source_published_kst": "2026-10-26T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
+      "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
+      "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
+    },
     "title:b18679b05eda2f9ea8da388e": {
       "first_seen_kst": "2026-10-03T09:05:24+09:00",
       "lanes": {
@@ -1275075,6 +1277018,29 @@
       "telegram_core_fact": "최 회장은 현장 점검 직후 \"눈으로 직접 확인하고 어느 정도 속도에 지을 수 있는지를 점검하러 왔다\"면서 \"지금 (반도체) 수요가 늘기 때문에 그걸 쫓아가는 공급 속도를 더 빨리 당겨야 한다. 착공 시점은 답을 못하지만 '최대한 빨리 간다'고 이야기하고 싶다\"고 말했다.",
       "title": "'호남 반도체' 부지 둘러본 최태원 SK회장 \"빠르게 착공\"(종합)"
     },
+    "title:cb213517a24a5ee77b4d185d": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026018000008",
+      "source": "연합뉴스",
+      "source_body_digest": "f6cec46c4000d31dfb73e60e1e2ba679b381516e6b14ac39015303e873d49b87",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-26",
+      "source_fact_identity": "source_facts:v1:5183dc54d0c6b28933a8c3084ca43c4de762f713b23ed650b2b16d058ad4027c",
+      "source_fact_keys": [
+        "source_fact:v1:048ec7106b091d1a441d9a0dfdc666fc543528741f0897cbcc08e4782f12afdf",
+        "source_fact:v1:2ab508a9845bd98ce5df8c3bee0e7c59b0b5d74608569900c8a504bad21b1eb8",
+        "source_fact:v1:348dd11c94f41d4aabc0e7c6d9aa5486b62381baf525238c53786003d87dd222",
+        "source_fact:v1:e167611bc690333cef6c4ebb4130cfb853bf4fd6d2670d260e75bfcdbfcf2cb2"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스",
+      "telegram_core_fact": "특히 그는 국내 대형 반도체주에 대해 \"삼성전자는 3분기 약 30조원 현금배당 확정 여부와 내년 1월 예정된 주주환원 규모와 방식에, SK하이닉스는 솔리다임 상장 철회 이후 추가적인 주주환원책 구체화 여부가 관건\"이라고 짚었다.",
+      "title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스"
+    },
     "title:cb2c4c1c5701bc42869f84b9": {
       "first_seen_kst": "2026-10-02T10:30:30+09:00",
       "lanes": {
@@ -1286497,6 +1288463,32 @@
       "source_title": "LQR 하우스, 오픈AI 컴퓨팅 자원 최대 300만달러 구매 계약",
       "telegram_core_fact": "회사는 특정 단일 모델이나 기술 공급업체에 의존하지 않고, 플랫폼이 발전함에 따라 보완적인 모델과 컴퓨팅 자원을 유연하게 통합하는 멀티 모델 AI 인프라를 구축한다는 전략을 제시했다.",
       "title": "LQR 하우스, 오픈AI 컴퓨팅 자원 최대 300만달러 구매 계약"
+    },
+    "title:de260c4e43c763e9d910c2b7": {
+      "first_seen_kst": "2026-10-26T08:28:58+09:00",
+      "lanes": {
+        "live": "2026-10-26T08:28:58+09:00"
+      },
+      "last_seen_kst": "2026-10-26T08:28:58+09:00",
+      "link": "https://www.fnnews.com/news/202610260812158379",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1427f64863a316630a8ad2f0e0f4e6ee71745800f7375026383a4986a1262d12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a54b3dfabfb035dd6dc2d5b48e9a7f15f56e829302f9b07e3a148d0aa710d550",
+      "source_fact_keys": [
+        "source_fact:v1:2a7d5b532fddb28ffbd0ec99e4b578a77c7255b66fe15cee0b282f9cc9c41ed7",
+        "source_fact:v1:38806b910f7804498a06a70d068b6ce4363d006cf19a4a7c7aba2df14fcb125c",
+        "source_fact:v1:42cb5cdfb9d6854960102ad24b869c239d7dd257cd58b48f1e19f02489019777",
+        "source_fact:v1:633e1a02ba63be4a63a3a3e8d90c655c83ed9f8630d229d4199f3845fb37d871",
+        "source_fact:v1:6bd56d2e321a2785bed21d4c082d6b556fa3ea77689d961f4e68fef51de772ab",
+        "source_fact:v1:b49e5a38e52acfd349651628884c81174b605822f542319f95ea77f032f06832",
+        "source_fact:v1:b8f37b2dfa064ccabfbf8eb27402eb736522e7a024dde0f08af30657bb1f40af"
+      ],
+      "source_published_kst": "2026-10-26T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급",
+      "telegram_core_fact": "삼성SDI는 26일 미주법인 '삼성SDI 아메리카(SDI America, SDIA)가 미국 에너지 전문기업인 알파오메가파워(AOP)와 1GWh ESS 솔루션 공급 계약을 체결했다고 밝혔다.",
+      "title": "삼성SDI, 미국 에너지기업 AOP에 각형 ESS솔루션 대규모 공급"
     },
     "title:de2aea1cdabd6ac71afb3f27": {
       "first_seen_kst": "2026-10-24T10:14:54+09:00",
@@ -1305184,5 +1307176,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-26T07:52:33+09:00"
+  "updated_at_kst": "2026-10-26T08:28:58+09:00"
 }
