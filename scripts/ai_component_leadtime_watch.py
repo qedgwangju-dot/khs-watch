@@ -76,6 +76,50 @@ WEEKLY_004_LOCK = {
 }
 
 
+
+# Separate manufacturer's quoted order backlog from the TrendForce MLCC
+# industry composite (35 weeks on 2026-10-19). Never overwrite that composite.
+MLCC_VENDOR_VERSION = 1
+MLCC_VENDOR_URL = "https://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=772371"
+MLCC_OFFICIAL_LTA_URL = "https://sem.samsung.com/kr/newsroom/news/view.do?id=10501"
+MLCC_OFFICIAL_Q2_URL = "https://www.sem.samsung.com/kr/newsroom/news/view.do?id=10461"
+MLCC_OFFICIAL_FCBGA_URL = "https://www.sem.samsung.com/global/newsroom/news/view.do?id=10562"
+CASPA_ORIGINAL_URL = "https://newsletter.chipstrat.com/p/my-conversation-with-dylan-patel"
+CASPA_AGENDA_URL = "https://caspaceosummit.com/agenda/"
+SHARON_SEC_URL = "https://www.sec.gov/Archives/edgar/data/2068385/000149315226037203/forms-1a.htm"
+MLCC_VENDOR_QUERIES = (
+    "삼성전기 MLCC 납기 52주 61주 2026",
+    "Samsung Electro Mechanics MLCC lead time weeks 2026 supply",
+)
+MLCC_VENDOR_HOSTS = ("digitimes.com.tw", "heraldcorp.com", "reuters.com",
+                     "thelec.net", "trendforce.com", "sem.samsung.com")
+MLCC_VENDOR_BASELINE = {
+    "version": 1, "as_of": "2026-10-23", "manufacturer": "삼성전기",
+    "maker_weeks": 52, "channel_max_weeks": 61,
+    "scope": "manufacturer_order_vs_selected_distribution",
+    "evidence": "신뢰 언론보도; 삼성전기 공식 납기표 아님",
+    "source_url": MLCC_VENDOR_URL, "industry_reference_weeks": 35,
+    "industry_reference_date": "2026-10-19",
+    "sep_prior_claim": "30주 이상(정확한 직전값 공개되지 않음)",
+    "official_2027_lta_krw": 1_072_200_000_000,
+    "official_lta_url": MLCC_OFFICIAL_LTA_URL,
+    "q2_2026_component_revenue_eok": 16494,
+    "q2_2026_sales_eok": 34572,
+    "q2_2026_op_profit_eok": 4404,
+    "h1_2026_utilization_pct_reported": 91,
+    "q3_earnings_expected": "2026-10-28",
+}
+CASPA_PANEL_BASELINE = {
+    "version": 1, "as_of": "2026-10-23", "source_url": CASPA_ORIGINAL_URL,
+    "kind": "panel_opinion_not_signed_purchase_order",
+    "wafer_hbm_relative_ddr5_min": 3, "wafer_hbm_relative_ddr5_max": 4,
+    "dc_2024_1gw_usd_bn": 40, "dc_2026_1gw_usd_bn_over": 60,
+    "dc_components_without_design_margin_usd_bn": 20,
+    "capital_yield_example_pct": "13~15",
+    "sharon_nvidia_40k_gpu_72mw_sec_verified": True,
+    "sharon_sec_url": SHARON_SEC_URL,
+}
+
 # 2026-10-19 Weekly Radar 006: exact seven-row source image supplied by user.
 # Values and labels are evidence from that screenshot, NOT parsed from prose.
 # This issue-specific lock must never override Weekly Radar 007 or newer.
@@ -929,6 +973,131 @@ def repair_weekly_004_state(previous: dict) -> tuple[dict, list[str], list[str]]
 
 
 
+
+def mlcc_vendor_trusted_url(url: str) -> bool:
+    host = (urlparse(url).hostname or "").lower()
+    return any(host == x or host.endswith("." + x) for x in MLCC_VENDOR_HOSTS)
+
+
+def mlcc_vendor_new_fact(item: dict) -> dict | None:
+    url = str(item.get("direct_url") or item.get("link") or "")
+    if not mlcc_vendor_trusted_url(url):
+        return None
+    published = str(item.get("published_at_kst") or "")[:10]
+    if not published or published < "2026-10-25":
+        return None  # Historical syndicated 52-week baseline is not a fresh event.
+    title = clean_text(str(item.get("title") or ""))
+    text = (title + " " + clean_text(str(item.get("description") or ""))).lower()
+    if "mlcc" not in text and "적층세라믹" not in text and "積層陶瓷" not in text:
+        return None
+    if not any(x in text for x in ("samsung electro", "semco", "삼성전기", "三星電機", "三星电机")):
+        return None
+    if not any(x in text for x in ("lead time", "납기", "리드타임", "交期", "delivery wait")):
+        return None
+    vals = [int(x) for x in re.findall(r"(?<!\d)(\d{2,3})\s*(?:weeks?\b|w\b|주|週)", text)
+            if 15 <= int(x) <= 120]
+    if not vals:
+        return None
+    # Reporting both 52 and 61 means maker 52 / distribution peak 61.
+    if 52 in vals and 61 in vals:
+        return None  # Already covered by baseline, no time-series revision.
+    channel = any(x in text for x in ("distributor", "distribution", "유통", "通路", "代理"))
+    return {"scope": "channel" if channel else "maker", "weeks": vals[0],
+            "as_of": published, "url": url, "title": title}
+
+
+def mlcc_vendor_update(previous: dict, incoming: list[dict]) -> tuple[dict, list[dict]]:
+    record = copy.deepcopy(previous or {})
+    events = []
+    if int(record.get("version") or 0) < MLCC_VENDOR_VERSION:
+        record = copy.deepcopy(MLCC_VENDOR_BASELINE)
+        events.append({"kind": "initial"})
+    seen = set(record.get("seen_facts") or [])
+    for item in sorted(incoming, key=lambda x: x.get("published_at_kst") or ""):
+        obs = mlcc_vendor_new_fact(item)
+        if not obs:
+            continue
+        key = f"{obs['scope']}|{obs['weeks']}|{obs['as_of']}"
+        if key in seen:
+            continue
+        seen.add(key)
+        field = "maker_weeks" if obs["scope"] == "maker" else "channel_max_weeks"
+        old_value = int(record.get(field) or 0)
+        if abs(obs["weeks"] - old_value) < 4:
+            continue
+        record[field] = obs["weeks"]
+        record["as_of"] = obs["as_of"]
+        events.append({"kind": "revision", "before": old_value, **obs})
+    record["seen_facts"] = sorted(seen)[-120:]
+    return record, events
+
+
+def mlcc_vendor_notice(event: dict, record: dict, industry: dict) -> str:
+    if event["kind"] == "revision":
+        label = "삼성전기 제조사" if event["scope"] == "maker" else "일부 유통 채널"
+        a, b = event["before"], event["weeks"]
+        return "\n".join([
+            "<b>MLCC 업체별 납기 추가 변화 — 보도 단계</b>",
+            f"• {label}: <b>{a}주 → {b}주 ({abs(b-a)}주 {'연장' if b>a else '단축'})</b>",
+            "• 산업 통계와 제조사·유통 제품 납기를 동일 시계열로 합산하지 않음.",
+            f'• <a href="{html.escape(event["url"],quote=True)}">신규 보도</a>',
+        ])
+    industry_current = str((industry.get("MLCC") or {}).get("current") or "미확인").replace("-", "~")
+    return "\n".join([
+        "<b>MLCC 납기 악화 — 삼성전기 제조사·유통 별도 추적</b>",
+        "• 2026년 10월 삼성전기 주문 납기 <b>52주</b> (DIGITIMES 보도).",
+        "• 일부 유통 채널 제품은 최장 <b>61주</b> (같은 제조사 전체 제품 아님).",
+        f"• TrendForce 10/19 산업 지표: <b>{html.escape(industry_current)}주</b> (산업 공통 평균 범위).",
+        "• 중요: 35주→52주를 산업 리드타임 악화(+17주)로 계산하지 않음.",
+        "• 9월 '30주 이상'도 정확한 직전값이 없어 +22주 확정 계산 금지.",
+        "• 삼성전기 공식: AI 서버용 MLCC <b>1조 722억원</b> 2027년 1~12월 공급계약.",
+        "• 2Q26 컴포넌트 매출 1조6,494억원(분기), 전사 매출 3조4,572억원·영업이익 4,404억원.",
+        "• 상반기 가동률 91%는 보도치. 제품별 생산·고객 단가와 다름.",
+        "• 세종·베트남 설비투자 6조7,800억원은 <b>FC-BGA 기판용</b>, MLCC와 분리.",
+        "• 다음 확인: 10/28 3분기 잠정실적, MLCC 평균판매단가·생산능력·필리핀 공장 일정.",
+        f'• <a href="{MLCC_VENDOR_URL}">납기 보도</a>'
+        f' / <a href="{MLCC_OFFICIAL_LTA_URL}">공식 공급계약</a>',
+    ])
+
+
+def usd_bn_krw_text(bn: float, rate: float | None) -> str:
+    if rate is None or not (800 <= float(rate) <= 2500):
+        return ""
+    eok = round(bn * 1_000_000_000 * float(rate) / 100_000_000)
+    jo, rem = divmod(eok, 10000)
+    return f"약 {jo}조{rem:,}억원" if jo else f"약 {rem:,}억원"
+
+
+def caspa_panel_update(previous: dict, fx: dict) -> tuple[dict, str]:
+    if int((previous or {}).get("version") or 0) >= 1:
+        return previous, ""
+    record = copy.deepcopy(CASPA_PANEL_BASELINE)
+    rate = (fx or {}).get("rate")
+    a, b, c = [usd_bn_krw_text(x, rate) for x in (40, 60, 20)]
+    lines = [
+        "<b>CASPA 2026 반도체 공급·금융 병목 검증 알림</b>",
+        "• 10월 23일 Dylan Patel·Stacy Rasgon 대담. 계약 공시가 아닌 발언·전망.",
+        "• 기판·PCB 소재, HBM, 광학 연결이 주요 병목. 자금조달과 전력 접속은 별도 제약.",
+        "• HBM의 웨이퍼 사용량은 DDR5 같은 용량 대비 <b>3~4배</b>; 전달문 '34배'는 원문 오기.",
+        "• 네오클라우드 금융비용 13~15%는 대담에서 제시한 일부 사례이지 산업 전체 일률 금리 아님.",
+        "• NVIDIA·Sharon AI 수익배분과 신용지원 협력은 SEC 공시 확인. 최대 4만 GPU/72MW는 계획.",
+        "• 차세대 반도체 장비는 소재·밸브·질량유량제어기·PCB까지 병목 전이 가능.",
+    ]
+    if a and b and c:
+        lines.append(f"• 1GW 전체 구축비 추정: 400억달러({a})→600억달러 이상({b} 이상).")
+        lines.append(f"• 설계업체 마진 제외 부품비 추정 200억달러({c}); 건설·전력 포함 총비와 분모가 다름.")
+        lines.append(f"• 환율: 1달러={float(rate):,.2f}원 (기존 검증 환율 기준, 보조 추산).")
+    else:
+        lines.append("• 외화 구축비 추정치는 환율 검증 실패로 이번 Telegram 원화 계산에서 제외.")
+    lines += [
+        "• 수익배분율·GPU당 3.50달러는 대담 진술이며 계약상 정산단위 공개자료와 미대조.",
+        "• 다음 확인: 수주→발주→클린룸 설치·수율, 금융 종결·차입비용·실제 전원 인가.",
+        f'• <a href="{CASPA_ORIGINAL_URL}">진행자 공개 원문</a>'
+        f' / <a href="{SHARON_SEC_URL}">Sharon AI SEC 공시</a>',
+    ]
+    return record, "\n".join(lines)
+
+
 def repair_weekly_006_state(previous: dict) -> tuple[dict, list[str]]:
     """Repair the one mislabeled 10/19 issue without changing any other vintage."""
     if str(previous.get("source") or "").rstrip("/") != WEEKLY_006_LOCK["source"]:
@@ -1490,6 +1659,28 @@ def main() -> None:
         chain_alert = build_memory_storage_chain_alert(latest_chain, latest_components, str(latest_source or ""))
         notify_text = (notify_text.rstrip() + "\n\n" + chain_alert.strip()).strip() + "\n" if notify_text else chain_alert
 
+    vendor_items = []
+    for query in MLCC_VENDOR_QUERIES:
+        try:
+            for item in read_rss("google_news", query)[:12]:
+                url = candidate_url(item)
+                if url and mlcc_vendor_trusted_url(url):
+                    vendor_items.append({**item, "direct_url": url})
+        except Exception as exc:
+            errors.append("mlcc_vendor_source:" + type(exc).__name__)
+    vendor_state, vendor_events = mlcc_vendor_update(
+        previous.get("mlcc_vendor_watch") or {}, vendor_items,
+    )
+    for ev in vendor_events:
+        block = mlcc_vendor_notice(ev, vendor_state, latest_components)
+        notify_text = (notify_text.rstrip() + "\n\n" + block).strip() if notify_text else block
+    caspa_state, caspa_notice = caspa_panel_update(
+        previous.get("caspa_panel_watch") or {},
+        pending.get("usdkrw") or state.get("usdkrw") or {},
+    )
+    if caspa_notice:
+        notify_text = (notify_text.rstrip() + "\n\n" + caspa_notice).strip() if notify_text else caspa_notice
+
     pending["ai_component_leadtime"] = {
         "as_of": latest_as_of,
         "source": latest_source,
@@ -1500,6 +1691,8 @@ def main() -> None:
         "seen_urls": sorted(new_seen)[-120:],
         "last_checked_at_kst": now.isoformat(timespec="seconds"),
         "candidate_count": len(candidates),
+        "mlcc_vendor_watch": vendor_state,
+        "caspa_panel_watch": caspa_state,
         "image_verified_issue": "weekly-radar-006" if latest_source.rstrip("/") == WEEKLY_006_LOCK["source"] else "",
         "errors": errors[-10:],
     }

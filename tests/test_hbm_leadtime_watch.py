@@ -475,6 +475,74 @@ class Weekly006ScreenshotRegressionTests(unittest.TestCase):
                 w.main()
                 self.assertFalse(alert.exists())
 
+
+class VendorMLCCAndCASPAGuards(unittest.TestCase):
+    def test_vendor_report_not_merged_into_trendforce_average(self):
+        data = w.MLCC_VENDOR_BASELINE
+        self.assertEqual((data["maker_weeks"], data["channel_max_weeks"]), (52, 61))
+        self.assertEqual(w.WEEKLY_006_LOCK["components"]["MLCC"]["current"], "35")
+        self.assertEqual(data["official_2027_lta_krw"], 1072200000000)
+
+    def test_first_vendor_alert_has_source_separation_and_contract(self):
+        state, events = w.mlcc_vendor_update({}, [])
+        self.assertEqual([e["kind"] for e in events], ["initial"])
+        msg = w.mlcc_vendor_notice(events[0], state, w.WEEKLY_006_LOCK["components"])
+        for p in ("52주", "61주", "35주", "+17주", "+22주", "FC-BGA", "1조 722억원"):
+            self.assertIn(p, msg)
+        state2, e2 = w.mlcc_vendor_update(state, [])
+        self.assertEqual(e2, [])
+        self.assertEqual(state2["maker_weeks"], 52)
+
+    def test_untrusted_or_old_supplier_article_never_upgrades(self):
+        item = {"title": "Samsung Electro Mechanics MLCC lead time 60 weeks",
+                "published_at_kst": "2026-10-24T06:00:00+09:00",
+                "direct_url": "https://www.digitimes.com.tw/tech/new"}
+        self.assertIsNone(w.mlcc_vendor_new_fact(item))
+        item["published_at_kst"] = "2026-10-27T06:00:00+09:00"
+        item["direct_url"] = "https://digitimes.com.tw.fake.example/post"
+        self.assertIsNone(w.mlcc_vendor_new_fact(item))
+
+    def test_vendor_quote_material_change_only_with_named_source(self):
+        state, _ = w.mlcc_vendor_update({}, [])
+        source = "https://www.digitimes.com.tw/tech/new"
+        item = {"title": "Samsung Electro Mechanics MLCC lead time 60 weeks",
+                "published_at_kst": "2026-10-27T06:00:00+09:00",
+                "direct_url": source}
+        updated, events = w.mlcc_vendor_update(state, [item])
+        self.assertEqual(len(events), 1)
+        self.assertEqual(updated["maker_weeks"], 60)
+        self.assertIn("52주 → 60주", w.mlcc_vendor_notice(events[0], updated, {}))
+        _, repeat = w.mlcc_vendor_update(updated, [item])
+        self.assertEqual(repeat, [])
+
+    def test_vendor_channel_max_does_not_raise_maker_to_70(self):
+        state, _ = w.mlcc_vendor_update({}, [])
+        item = {"title": "Samsung Electro Mechanics MLCC distributor lead time 70 weeks",
+                "published_at_kst": "2026-10-27T06:00:00+09:00",
+                "direct_url": "https://www.digitimes.com.tw/tech/new"}
+        modified, events = w.mlcc_vendor_update(state, [item])
+        self.assertEqual(len(events), 1)
+        self.assertEqual(modified["maker_weeks"], 52)
+        self.assertEqual(modified["channel_max_weeks"], 70)
+
+    def test_caspa_correction_and_company_link_one_time(self):
+        state, text = w.caspa_panel_update({}, {"rate": 1324.6})
+        self.assertIn("3~4배", text)
+        self.assertIn("'34배'", text)
+        self.assertIn("Sharon AI", text)
+        self.assertIn("400억달러(약", text)
+        self.assertIn("600억달러 이상(약", text)
+        self.assertIn("200억달러(약", text)
+        self.assertEqual(state["version"], 1)
+        state2, alert2 = w.caspa_panel_update(state, {"rate": 1324.6})
+        self.assertEqual(alert2, "")
+        self.assertEqual(state2, state)
+
+    def test_caspa_without_fx_omits_unconverted_usd_amounts(self):
+        _, text = w.caspa_panel_update({}, {})
+        self.assertNotIn("400억달러", text)
+        self.assertIn("환율 검증 실패", text)
+
 class LeadTimeAlertTests(unittest.TestCase):
     def setUp(self):
         self.old = {
