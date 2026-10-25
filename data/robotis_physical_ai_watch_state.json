@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-24T23:42:24.688113+00:00",
+  "updated_at": "2026-10-25T01:10:14.631918+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -639,10 +639,7 @@
     "a1d1e389ec43a2ce9ceccfb6235bd54c787e70b0f8a3c9ddf8fc8a201f682600",
     "00091d86e5327e0b8fd4a31b75747be0eb9ac9e9977653913a24ddba7bda1e05"
   ],
-  "last_selected": [
-    "a1d1e389ec43a2ce9ceccfb6235bd54c787e70b0f8a3c9ddf8fc8a201f682600",
-    "00091d86e5327e0b8fd4a31b75747be0eb9ac9e9977653913a24ddba7bda1e05"
-  ],
+  "last_selected": [],
   "groups": [
     "airan",
     "alert_quality_246",
@@ -654,6 +651,7 @@
     "eka_dexterous_funding",
     "ess_battery",
     "ess_outdoor_policy",
+    "figure_ai",
     "humanoid_component_global",
     "hyundai_atlas_rollout",
     "hyundai_robot_rx_team",
