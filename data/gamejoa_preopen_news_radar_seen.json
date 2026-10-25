@@ -55519,6 +55519,34 @@
       "telegram_core_fact": "한국수입자동차협회(KAIDA)에 따르면 볼보자동차코리아의 9월 판매량은 1414대로 전월 대비 84% 증가했다.",
       "title": "볼보자동차코리아, 지난달 판매 61%가 전기차…EX30·EX90·ES90 앞세워 전동화 가속"
     },
+    "core:861838f9440325b9cf608034": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
+    },
     "core:861bffab4a01317c96bae474": {
       "first_seen_kst": "2026-10-23T10:58:03+09:00",
       "lanes": {
@@ -112449,6 +112477,34 @@
       "source_title": "외국인 38조 던졌는데도 내리는 환율, 여기까지 떨어진다고?[주末머니]",
       "telegram_core_fact": "최근 대외 악재 속에서 외국인 투자자들은 지난주에만 코스피를 약 11조2000억원 순매도했다.",
       "title": "외국인 38조 던졌는데도 내리는 환율, 여기까지 떨어진다고?[주末머니]"
+    },
+    "event:44db7e71ee18d07473325f59": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
     },
     "event:45128441b747c25a8c9980c7": {
       "first_seen_kst": "2026-10-22T08:49:50+09:00",
@@ -171124,6 +171180,34 @@
       "source_title": "영풍, 고려아연 상대 '자사주'-'한화지분' 소송 하루 2연패…\"즉각 항소\"(종합)",
       "telegram_core_fact": "영풍·MBK 측은 앞서 이날 고려아연의 자사주 공개매수 과정에서 회사에 손해가 발생했다며 제기한 별도의 주주대표소송 1심에서도 패소했다.",
       "title": "영풍, 고려아연 상대 '자사주'-'한화지분' 소송 하루 2연패…\"즉각 항소\"(종합)"
+    },
+    "fact:6153c30a5284ca69d1e9845c": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
     },
     "fact:6157cce9693d6c775358d454": {
       "first_seen_kst": "2026-10-21T03:15:13+09:00",
@@ -325068,6 +325152,34 @@
       "source": "뉴시스",
       "title": "\"폰 지금이라도 바꿔?\"…아이폰 이어 갤S26도 15만원 올랐다"
     },
+    "link:8902b4168af8243534907bdf": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
+    },
     "link:890935d1ba68f8cc0372f345": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
       "lanes": {
@@ -424070,6 +424182,34 @@
       ],
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'"
+    },
+    "original:3800edf64ad10d0ac0bf14ff": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
     },
     "original:38030063b3c42e894ff3a508": {
       "first_seen_kst": "2026-10-14T06:36:25+09:00",
@@ -646102,6 +646242,34 @@
       "telegram_core_fact": "증권가 컨센서스에 따르면 싸이큐리온의 2026년 예상 매출액은 1716만 달러로 전년 대비 13.37% 증가할 전망이다.",
       "title": "싸이큐리온, 예측 인텔리전스 전략 공개..서비스 매출 80%"
     },
+    "source_fact:2d2d0bb26a46c33e71227fe9": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
+    },
     "source_fact:2d2fb59619ec0d4af27cd3a0": {
       "first_seen_kst": "2026-10-21T07:24:03+09:00",
       "lanes": {
@@ -669481,6 +669649,34 @@
       ],
       "source_published_kst": "2026-10-06T12:29+09:00",
       "title": "권대영 \"레버리지 ETF 도입, 금융위가 최종 결정…투자자 손실 송구\""
+    },
+    "source_fact:3724707c1d17b25eaae636fb": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
     },
     "source_fact:37265bccdae8ddb33241d162": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
@@ -721544,6 +721740,34 @@
       "source_title": "일본 기업, 우크라에 '요격 드론' 납품…러 \"적대 행위, 대항 조치할 것\"",
       "telegram_core_fact": "일본의 드론 개발 대기업 테라드론은 지난 14일 우크라이나에 있는 자회사를 통해 요격 드론을 현지 정부에 납품했다고 발표했다.",
       "title": "일본 기업, 우크라에 '요격 드론' 납품…러 \"적대 행위, 대항 조치할 것\""
+    },
+    "source_fact:4cc3638d5666c1efc6c9f049": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
     },
     "source_fact:4cc443c79e5c8f5d6772b4f1": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
@@ -835179,6 +835403,34 @@
       "telegram_core_fact": "블룸버그통신에 따르면 국제에너지기구(IEA)는 최근 이사회를 열고 2000만 배럴 경유를 포함한 1억 배럴의 비축유를 신속히 방출하기로 결정했다. 일부 회원국이 당초 약속했던 물량보다 더 많은 비축유를 방출하면서, 최종적인 공급은 당초 목표였던 4억 배럴을 상회할 것으로 보인다.",
       "title": "꼬여만 가는 중동·러우戰 향방…글로벌 에너지 시장은 '안갯속'"
     },
+    "source_fact:7bcf44895a191cb1160236e8": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
+    },
     "source_fact:7bd1e66ec67218790e872ebb": {
       "first_seen_kst": "2026-10-24T06:52:10+09:00",
       "lanes": {
@@ -899897,6 +900149,34 @@
       "telegram_core_fact": "김 장관은 이날 광주 군공항 부지를 찾아 서남권 반도체 클러스터 조성 여건을 확인하고, 부지·전력·용수 등 핵심 기반 시설 공급 계획을 점검했다.",
       "title": "최태원 이어 산업장관 광주行… 서남권 반도체 현장 ‘탄력’"
     },
+    "source_fact:97a83fe6e204995ff16c1338": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
+    },
     "source_fact:97a9da9cd7c0e7cec1a7c876": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -915830,6 +916110,34 @@
       ],
       "source_published_kst": "2026-10-06T16:09+09:00",
       "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
+    "source_fact:9e30e2cfbb616016bebedeac": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
     },
     "source_fact:9e337deeec7202e8449a82ec": {
       "first_seen_kst": "2026-10-21T16:39:53+09:00",
@@ -937114,6 +937422,34 @@
       "source_title": "삼성전기, 엔비디아에 AI 반도체 기판 공급…역대 최대 규모",
       "telegram_core_fact": "삼성전기가 엔비디아에 인공지능(AI) 반도체 패키지 기판 플립칩 볼그리드어레이(FC-BGA)를 공급한다.",
       "title": "삼성전기, 엔비디아에 AI 반도체 기판 공급…역대 최대 규모"
+    },
+    "source_fact:a6a9889aea4a63446c7094ed": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
     },
     "source_fact:a6aa2ac322ffce2d2746bd5b": {
       "first_seen_kst": "2026-10-23T11:57:46+09:00",
@@ -992186,6 +992522,34 @@
       ],
       "source_published_kst": "2026-10-06T03:54+09:00",
       "title": "[美특징주]웰스파고, 모건스탠리 ‘매수’ 상향에 주가 2%↑"
+    },
+    "source_fact:bda03c8fdbe201d90c65ef68": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
     },
     "source_fact:bda2243bf74f98a56254cc37": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
@@ -1053415,6 +1053779,34 @@
       ],
       "source_published_kst": "2026-10-06T09:16+09:00",
       "title": "비트코인, 1억1600만원대 강보합…美 고용 둔화에 금리 인상 부담 완화"
+    },
+    "source_fact:d6b766ffcaf72678c5edd2e7": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
     },
     "source_fact:d6bcd8b0fb1dca511ad6d6b1": {
       "first_seen_kst": "2026-10-11T10:42:03+09:00",
@@ -1182244,6 +1182636,34 @@
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'"
     },
+    "title:3800edf64ad10d0ac0bf14ff": {
+      "first_seen_kst": "2026-10-26T02:31:49+09:00",
+      "lanes": {
+        "live": "2026-10-26T02:31:49+09:00"
+      },
+      "last_seen_kst": "2026-10-26T02:31:49+09:00",
+      "link": "https://www.mk.co.kr/news/business/12185139",
+      "source": "매일경제",
+      "source_body_digest": "d788c7c648f3fc0ba10781b4d20c64726dee4598e4c735badd684ee6450d36a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60e18bddba7e9bd4c2212fcd178bc6a63a34ee1e7bd3696204ad64f39c425e28",
+      "source_fact_keys": [
+        "source_fact:v1:1e35a7a8153ca1765e60b44d713a8b5ac8ce4887c35bd3f61b1d4a7597a438c2",
+        "source_fact:v1:20bd10802a9e1ed59d593e545a178dff9d663a8d4fc2cc360299f2c8104b2b12",
+        "source_fact:v1:20ce702dd4f2854ffde0375877bba8c4c073203807271eea7a884da80ff104ab",
+        "source_fact:v1:2a8a3ebf619470bbedf64899aebce624f1f7c3b50253677d0f0416277850f586",
+        "source_fact:v1:2ef21103f30ed16a446fe56f621ae2c7367ae750009c63a139dee7df64b1bcf5",
+        "source_fact:v1:7f81134b0f2ba074c9f501dd89cc60b73ccf58ee6bc337b539f26cbd0ec16c5e",
+        "source_fact:v1:8652f5bc9cecef60103d8ae373db24d9fd30e36fc0aead1d81d3536a6dec42e0",
+        "source_fact:v1:8d1d02521a7974f71f6c70dff0d45451a1874a6d76206151a7858e22a2e05927",
+        "source_fact:v1:d4abf6f0720990440535cd41b43428932f1d0155b0342c1f7a4fd8b841c5724e"
+      ],
+      "source_published_kst": "2026-10-25T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "日 선점 '정전척' 국산화…반도체시장 뚫는다",
+      "telegram_core_fact": "김 대표는 \"이에스티는 8.6세대 대면적 바이폴라(양극형) 정전척 기술을 세계 최초로 개발해 글로벌 디스플레이 공급망에서 독보적인 기술 우위를 선점했다\"고 설명했다.",
+      "title": "日 선점 '정전척' 국산화…반도체시장 뚫는다"
+    },
     "title:38030063b3c42e894ff3a508": {
       "first_seen_kst": "2026-10-14T06:36:25+09:00",
       "lanes": {
@@ -1297750,5 +1298170,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-26T00:36:26+09:00"
+  "updated_at_kst": "2026-10-26T02:31:49+09:00"
 }
