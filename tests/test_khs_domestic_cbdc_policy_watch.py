@@ -152,7 +152,7 @@ class CbdcOfficialPolicyWatch(unittest.TestCase):
         self.assertIn("2030", a["summary"])
         from khs_policy_alert_explainer import ensure_explained
         ensure_explained(a)
-        self.assertIn("국회", a["counter"])
+        self.assertIn("통과·공포", a["counter"])
         self.assertNotIn("원화 스테이블코인", a["policy_plain_summary"])
 
     def test_crypto_tax_report_missing_or_stale_sources_do_not_alert(self):
