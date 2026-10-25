@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "checked_at_kst": "2026-10-25T09:30:57+09:00",
+  "checked_at_kst": "2026-10-25T10:36:39+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -12,12 +12,12 @@
   "qlex_alert_present": false,
   "qlex_wac_alert_present": false,
   "intismeran_alert_present": true,
-  "jemperli_alert_present": true,
+  "jemperli_alert_present": false,
   "enhertu_alert_present": false,
   "qlex_send_outcome": "skipped",
   "qlex_wac_send_outcome": "skipped",
   "intismeran_send_outcome": "success",
-  "jemperli_send_outcome": "success",
+  "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "skipped",
   "halozyme_run_outcome": "success",
   "qlex_state_persisted": true,
@@ -42,6 +42,5 @@
   "last_qlex_telegram_sent_at_kst": "2026-10-21T22:32:27+09:00",
   "errors": [],
   "failed_component": "",
-  "error_signature": "",
-  "health_notice_message_id": 239
+  "error_signature": ""
 }
