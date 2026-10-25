@@ -91758,6 +91758,31 @@
       "telegram_core_fact": "삼성E&A[028050]는 연결 기준 올해 3분기 영업이익이 5천6억원으로 지난해 동기보다 183.6% 증가한 것으로 잠정 집계됐다고 22일 공시했다.",
       "title": "삼성E&A 3분기 영업이익 5천6억원…작년 대비 184%↑(종합) | 연합뉴스"
     },
+    "core:dc8b16485eb61abddaa4e4e1": {
+      "first_seen_kst": "2026-10-26T07:17:46+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:17:46+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:17:46+09:00",
+      "link": "https://www.fnnews.com/news/202610260634595255",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_keys": [
+        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
+        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
+        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
+        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
+        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
+        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+      ],
+      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
+      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
+      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
+    },
     "core:dc9106863b195e062ed449ec": {
       "first_seen_kst": "2026-10-24T10:38:38+09:00",
       "lanes": {
@@ -128496,6 +128521,31 @@
       "source_title": "삼전·닉스 주주환원 주목…증시 반등 탄력 강화[주간증시전망]",
       "telegram_core_fact": "나정환 NH투자증권 연구원도 \"SK하이닉스와 삼성전자의 실적발표에서 추가 자사주 매입 여부에 주목한다\"며 \"SK하이닉스의 추가 주주환원 재원은 30조원 이상으로 추정되는데, 대규모 자사주 매입이 확정될 경우 기타법인 매수세가 외국인 매도 물량을 일부 흡수하면서 코스피 수급 불균형을 완화할 것\"이라고 진단했다.",
       "title": "삼전·닉스 주주환원 주목…증시 반등 탄력 강화[주간증시전망]"
+    },
+    "event:ee14ca1398eb72eb9482cedb": {
+      "first_seen_kst": "2026-10-26T07:17:46+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:17:46+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:17:46+09:00",
+      "link": "https://www.fnnews.com/news/202610260634595255",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_keys": [
+        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
+        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
+        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
+        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
+        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
+        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+      ],
+      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
+      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
+      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
     },
     "event:ee2445b0912c043ab1270e54": {
       "first_seen_kst": "2026-10-05T15:39:46+09:00",
@@ -236867,6 +236917,31 @@
       "source_title": "\"위대한 전사 총리\" 트럼프의 지지 선언…네타냐후 총선 돕나",
       "telegram_core_fact": "이란 전쟁과 가자지구 휴전 문제를 둘러싼 갈등 속 나온 지지로 최근 지지율 부진을 겪고 있는 네타냐후 총리의 재선 도전에 영향을 줄지에 주목된다.",
       "title": "\"위대한 전사 총리\" 트럼프의 지지 선언…네타냐후 총선 돕나"
+    },
+    "fact:eaf8927c961ca4b7e7d70cb9": {
+      "first_seen_kst": "2026-10-26T07:17:46+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:17:46+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:17:46+09:00",
+      "link": "https://www.fnnews.com/news/202610260634595255",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_keys": [
+        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
+        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
+        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
+        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
+        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
+        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+      ],
+      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
+      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
+      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
     },
     "fact:eb0cfb29208218ac1af0d82a": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -388494,6 +388569,31 @@
       "telegram_core_fact": "프랑스와 독일이 유럽내 내연기관차 퇴출 규제를 완화하는 대신 역내 자동차 생산 규정을 강화하는 대타협에 나설 전망이라고 파이낸셜타임스(FT)가 12일(현지시간) 보도했다.",
       "title": "프랑스·독일, 내연기관차 규제 완화·역내 생산 확대 '대타협' 임박"
     },
+    "link:f45bf8505a7d152e0cc65f1e": {
+      "first_seen_kst": "2026-10-26T07:17:46+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:17:46+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:17:46+09:00",
+      "link": "https://www.fnnews.com/news/202610260634595255",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_keys": [
+        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
+        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
+        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
+        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
+        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
+        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+      ],
+      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
+      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
+      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
+    },
     "link:f45d0ee032447f9d9dcd3edb": {
       "first_seen_kst": "2026-10-10T01:47:39+09:00",
       "lanes": {
@@ -397269,6 +397369,31 @@
       "source_title": "노스이스트 커뮤니티 뱅코, 3분기 순이익 1070만 달러..전년비 10% 감소",
       "telegram_core_fact": "노스이스트 커뮤니티 뱅코프(NECB)가 3분기(7~9월) 순이익 1070만 달러, 희석 주당순이익 0.79달러를 기록해 전년비 각각 10.1%, 9.2% 감소했다고 23일 발표했다.",
       "title": "노스이스트 커뮤니티 뱅코, 3분기 순이익 1070만 달러..전년비 10% 감소"
+    },
+    "original:04ae3ffac429f354a7976762": {
+      "first_seen_kst": "2026-10-26T07:17:46+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:17:46+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:17:46+09:00",
+      "link": "https://www.fnnews.com/news/202610260634595255",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_keys": [
+        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
+        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
+        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
+        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
+        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
+        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+      ],
+      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
+      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
+      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
     },
     "original:04bbdf2ac9e22e58e313946e": {
       "first_seen_kst": "2026-10-14T21:45:21+09:00",
@@ -547878,6 +548003,31 @@
       "telegram_core_fact": "현재 경기도 화성에 50MW급 태양광 모듈 생산라인을 구축하고, 초경량·고출력 태양광 모듈과 건물일체형 태양광 모듈을 개발·생산하고 있다. 에이스인벤터는 아이템을 인정받아 한국건설기술연구원 스마트건설지원센터 보육기업으로 선정됐다.",
       "title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’"
     },
+    "source_fact:0388bb8dd8dc26c506f2b799": {
+      "first_seen_kst": "2026-10-26T07:17:46+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:17:46+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:17:46+09:00",
+      "link": "https://www.fnnews.com/news/202610260634595255",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_keys": [
+        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
+        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
+        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
+        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
+        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
+        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+      ],
+      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
+      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
+      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
+    },
     "source_fact:038c8d05bd198460f9651b3e": {
       "first_seen_kst": "2026-10-12T22:50:06+09:00",
       "lanes": {
@@ -565347,6 +565497,31 @@
       "source_title": "[올댓차이나] 대만 반도체 전력 소비 9월 사상 최대…연말 500억㎾h 돌파",
       "telegram_core_fact": "대만 반도체 산업의 전력 소비량이 인공지능(AI) 수요 확대로 9월 사상 처음 45억㎾h를 넘어 역대 최대를 기록했다. 9월 대만에서 산업 전체 전력 소비량은 최대 141억㎾h(추정치)에 달했다.",
       "title": "[올댓차이나] 대만 반도체 전력 소비 9월 사상 최대…연말 500억㎾h 돌파"
+    },
+    "source_fact:0b25615585d060bbb5bc47d1": {
+      "first_seen_kst": "2026-10-26T07:17:46+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:17:46+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:17:46+09:00",
+      "link": "https://www.fnnews.com/news/202610260634595255",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_keys": [
+        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
+        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
+        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
+        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
+        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
+        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+      ],
+      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
+      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
+      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
     },
     "source_fact:0b274e076cf7e17b5b52d6d5": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
@@ -769290,6 +769465,31 @@
       "source_title": "젤렌스키 \"내달 미·러·우 정상회담 목표 실무자 회담…러 입장 중요\"",
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령이 내달 초 미국, 러시아, 우크라이나 협상단이 아랍에미리트(UAE) 아부다비에서 종전 협상을 위한 실무자 회담을 진행한다고 23일(현지시간) 밝혔다. 젤렌스키 대통령은 실무진 회담을 토대로 정상회담을 성사시키는 것이 가장 중요하다면서 유럽도 회담에 참여해야 한다고 주장했다.",
       "title": "젤렌스키 \"내달 미·러·우 정상회담 목표 실무자 회담…러 입장 중요\""
+    },
+    "source_fact:5e3f00ede56caf36f36a16b5": {
+      "first_seen_kst": "2026-10-26T07:17:46+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:17:46+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:17:46+09:00",
+      "link": "https://www.fnnews.com/news/202610260634595255",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_keys": [
+        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
+        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
+        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
+        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
+        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
+        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+      ],
+      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
+      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
+      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
     },
     "source_fact:5e41c0c630968d68e981e5f4": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
@@ -975160,6 +975360,31 @@
       "telegram_core_fact": "포르쉐가 9000개 일자리를 감축하고 일부 사업을 정리하는 내용의 새로운 중장기 전략을 내놨다.",
       "title": "포르쉐, 새 중장기 전략 발표…9000명 감원·사업구조 재편"
     },
+    "source_fact:b456ad5859c8dff43eb8eb18": {
+      "first_seen_kst": "2026-10-26T07:17:46+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:17:46+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:17:46+09:00",
+      "link": "https://www.fnnews.com/news/202610260634595255",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_keys": [
+        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
+        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
+        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
+        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
+        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
+        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+      ],
+      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
+      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
+      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
+    },
     "source_fact:b4570600e8914e1fa1acee7c": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
       "lanes": {
@@ -1013087,6 +1013312,31 @@
       ],
       "source_published_kst": "2026-10-06T12:05+09:00",
       "title": "[2026 국감]호남반도체 결정 주체, 자료 불일치…김정관 “확인하겠다”"
+    },
+    "source_fact:c41071327dc24de4ada83051": {
+      "first_seen_kst": "2026-10-26T07:17:46+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:17:46+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:17:46+09:00",
+      "link": "https://www.fnnews.com/news/202610260634595255",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_keys": [
+        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
+        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
+        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
+        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
+        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
+        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+      ],
+      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
+      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
+      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
     },
     "source_fact:c4126caa867f2e064a49af04": {
       "first_seen_kst": "2026-10-21T20:02:19+09:00",
@@ -1104696,6 +1104946,31 @@
       "source_published_kst": "2026-10-06T17:22+09:00",
       "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
     },
+    "source_fact:ea1cfd33d1d7fbb166a41615": {
+      "first_seen_kst": "2026-10-26T07:17:46+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:17:46+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:17:46+09:00",
+      "link": "https://www.fnnews.com/news/202610260634595255",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_keys": [
+        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
+        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
+        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
+        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
+        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
+        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+      ],
+      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
+      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
+      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
+    },
     "source_fact:ea226776d26767c15cf7d9a1": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
       "lanes": {
@@ -1158354,6 +1158629,31 @@
       "source_title": "노스이스트 커뮤니티 뱅코, 3분기 순이익 1070만 달러..전년비 10% 감소",
       "telegram_core_fact": "노스이스트 커뮤니티 뱅코프(NECB)가 3분기(7~9월) 순이익 1070만 달러, 희석 주당순이익 0.79달러를 기록해 전년비 각각 10.1%, 9.2% 감소했다고 23일 발표했다.",
       "title": "노스이스트 커뮤니티 뱅코, 3분기 순이익 1070만 달러..전년비 10% 감소"
+    },
+    "title:04ae3ffac429f354a7976762": {
+      "first_seen_kst": "2026-10-26T07:17:46+09:00",
+      "lanes": {
+        "live": "2026-10-26T07:17:46+09:00"
+      },
+      "last_seen_kst": "2026-10-26T07:17:46+09:00",
+      "link": "https://www.fnnews.com/news/202610260634595255",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_keys": [
+        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
+        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
+        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
+        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
+        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
+        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+      ],
+      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
+      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
+      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
     },
     "title:04bbdf2ac9e22e58e313946e": {
       "first_seen_kst": "2026-10-14T21:45:21+09:00",
@@ -1303645,5 +1303945,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-26T06:42:55+09:00"
+  "updated_at_kst": "2026-10-26T07:17:46+09:00"
 }
