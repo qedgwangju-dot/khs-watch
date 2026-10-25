@@ -57,15 +57,35 @@ class WatchContractTests(unittest.TestCase):
               "CHNGNETINVENTCONTRIBNOW":1.4}
         self.assertAlmostEqual(sum(v for k,v in vals.items() if k!="GDPNOW"),3.6)
         head="observation_date,"+",".join(SERIES)+"\n"
-        data="2026-07-01,"+",".join(str(vals[x]) for x in SERIES)+"\n"
-        page="<p>Updated: Oct 8, 2026 11:02 AM CDT</p>"
+        # Use a rolling fixture date. Historical canned dates must not cause
+        # an otherwise healthy production pipeline to fail its preflight tests.
+        today=dt.datetime.now(watch.KST).date()
+        qmonth=((today.month-1)//3)*3+1
+        quarter_date=f"{today.year}-{qmonth:02d}-01"
+        data=quarter_date+","+",".join(str(vals[x]) for x in SERIES)+"\n"
+        page=f"<p>Updated: {today.strftime('%b')} {today.day}, {today.year} 11:02 AM CDT</p>"
         def fake_get(url,timeout=30):
             return (page if "/series/GDPNOW" in url else head+data).encode("utf-8")
         with patch.object(watch,"http_get",side_effect=fake_get),patch.object(watch,"load_state",return_value={}):
             row=watch.fetch_contrib_rows_fred()[-1]
         self.assertAlmostEqual(row.gdp,3.6)
-        self.assertEqual(row.date,"2026-10-08")
+        self.assertEqual(row.date,today.isoformat())
         self.assertAlmostEqual(row.cipi,1.4)
+
+    def test_stale_fred_timestamp_is_rejected_as_a_separate_test(self):
+        # Verify the REAL staleness guard with a deliberately old fixture,
+        # rather than allowing the normal success fixture to age and break CI.
+        old_date=dt.datetime.now(watch.KST).date()-dt.timedelta(days=20)
+        qmonth=((old_date.month-1)//3)*3+1
+        quarter_date=f"{old_date.year}-{qmonth:02d}-01"
+        values=["3.6","2.0",".6",".3",".1","-.1",".2","-.9","1.4"]
+        csv="observation_date,"+",".join(SERIES)+"\n"+quarter_date+","+",".join(values)+"\n"
+        page=f"<p>Updated: {old_date.strftime('%b')} {old_date.day}, {old_date.year} 11:02 AM CDT</p>"
+        def fake_get(url,timeout=30):
+            return (page if "/series/GDPNOW" in url else csv).encode("utf-8")
+        with patch.object(watch,"http_get",side_effect=fake_get),patch.object(watch,"load_state",return_value={}):
+            with self.assertRaisesRegex(RuntimeError,"stale"):
+                watch.fetch_contrib_rows_fred()
 
     def test_inconsistent_component_vintages_refused(self):
         values=["3.6","2.0",".6",".3",".1","-.1",".2","-.9",".1"]
