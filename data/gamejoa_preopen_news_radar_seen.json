@@ -47889,6 +47889,31 @@
       "telegram_core_fact": "대구경북첨단의료산업진흥재단(케이메디허브·이사장 박구선)의 연구과제 지원기업 스마틴바이오(대표 강병현·유제민)가 최근 한림제약으로부터 2억원의 투자를 유치했다. 스마틴바이오에 대한 한림제약의 이번 투자는 투자액을 떠나 스마틴바이오가 중견 제약사와 생산, 규제 대응역량 협력을 통해 기업 성장기반을 확대한 점에서 의미가 있다.",
       "title": "케이메디허브가 키운 스마틴바이오, 한림제약 투자 유치 성공"
     },
+    "core:746a7e0a8d227d8a685be98d": {
+      "first_seen_kst": "2026-10-26T04:34:28+09:00",
+      "lanes": {
+        "live": "2026-10-26T04:34:28+09:00"
+      },
+      "last_seen_kst": "2026-10-26T04:34:28+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261026040850S0K",
+      "source": "연합뉴스TV",
+      "source_body_digest": "b6458179e4af10292a7f5225e2404cc330a5ffdb0a7b4eb82a66dfec3d112fc3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01bcbbd702a164a6368a013e34089b7ca3d331e35c259cfedb4f9fc6bddc78a3",
+      "source_fact_keys": [
+        "source_fact:v1:10995b2a15a693604276655ae75c698af2e6e44f88e5a1cfeddbbfe35406ade6",
+        "source_fact:v1:2f7e505e1974bd20c73546de70f3148dde17dbe503a95af9ad903639dc8c319f",
+        "source_fact:v1:8ccb520723451988d39a66d0a257303715da4848ee913f0c67038a2157fd6746",
+        "source_fact:v1:8fd1f61caa31ff6a115d38f1cc1dd4aafbcb4a5f21093b5953e2f83ed1e416c9",
+        "source_fact:v1:dda19150d7988d649bf7e1954fe29936e0bf77e961727245b52b733668de384e",
+        "source_fact:v1:fb33761578799f28e17575b6fa189affda13dda665f2b26b0dd17ff18c521ac6"
+      ],
+      "source_published_kst": "2026-10-26T04:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
+      "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
+      "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
+    },
     "core:748a7f56445e34746eb5e471": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
       "lanes": {
@@ -128032,20 +128057,27 @@
     "event:f05a9c95ce22187610690abb": {
       "first_seen_kst": "2026-10-26T00:36:26+09:00",
       "lanes": {
-        "live": "2026-10-26T00:36:26+09:00"
+        "live": "2026-10-26T04:34:28+09:00"
       },
-      "last_seen_kst": "2026-10-26T00:36:26+09:00",
-      "link": "https://www.newsis.com/view/NISX20261025_0003840257",
-      "source": "뉴시스",
-      "source_body_digest": "a8d2b769ee2eb448afa464dd28d6153cf9830bd4f5f02ffdd1118a270079228b",
+      "last_seen_kst": "2026-10-26T04:34:28+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261026040850S0K",
+      "source": "연합뉴스TV",
+      "source_body_digest": "b6458179e4af10292a7f5225e2404cc330a5ffdb0a7b4eb82a66dfec3d112fc3",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-26T00:31+09:00",
+      "source_fact_identity": "source_facts:v1:01bcbbd702a164a6368a013e34089b7ca3d331e35c259cfedb4f9fc6bddc78a3",
+      "source_fact_keys": [
+        "source_fact:v1:10995b2a15a693604276655ae75c698af2e6e44f88e5a1cfeddbbfe35406ade6",
+        "source_fact:v1:2f7e505e1974bd20c73546de70f3148dde17dbe503a95af9ad903639dc8c319f",
+        "source_fact:v1:8ccb520723451988d39a66d0a257303715da4848ee913f0c67038a2157fd6746",
+        "source_fact:v1:8fd1f61caa31ff6a115d38f1cc1dd4aafbcb4a5f21093b5953e2f83ed1e416c9",
+        "source_fact:v1:dda19150d7988d649bf7e1954fe29936e0bf77e961727245b52b733668de384e",
+        "source_fact:v1:fb33761578799f28e17575b6fa189affda13dda665f2b26b0dd17ff18c521ac6"
+      ],
+      "source_published_kst": "2026-10-26T04:08+09:00",
       "source_supply_terms": {},
-      "source_title": "美, 이란 재공습 선택지 국방장관에 보고…내륙 공격도 거론",
-      "telegram_core_fact": "미군이 11월 중간선거 이후 이란에 대한 공격을 재개할 수 있도록 여러 군사작전 계획을 마련해 피트 헤그세스 국방장관에게 보고한 것으로 전해졌다. 그는 지난 4월 이후 미국이 사실상 이란 해안 지역의 표적만 공격했다며 내륙 공격을 자제한 것은 확전과 미군 항공기 격추 위험을 줄이기 위한 것으로 보인다고 설명했다.",
-      "title": "美, 이란 재공습 선택지 국방장관에 보고…내륙 공격도 거론"
+      "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
+      "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
+      "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
     },
     "event:f07c6d0001ca348cb062a4ec": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -210786,6 +210818,31 @@
       "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
       "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
       "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
+    },
+    "fact:b54c53e446e080a37ef41dfe": {
+      "first_seen_kst": "2026-10-26T04:34:28+09:00",
+      "lanes": {
+        "live": "2026-10-26T04:34:28+09:00"
+      },
+      "last_seen_kst": "2026-10-26T04:34:28+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261026040850S0K",
+      "source": "연합뉴스TV",
+      "source_body_digest": "b6458179e4af10292a7f5225e2404cc330a5ffdb0a7b4eb82a66dfec3d112fc3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01bcbbd702a164a6368a013e34089b7ca3d331e35c259cfedb4f9fc6bddc78a3",
+      "source_fact_keys": [
+        "source_fact:v1:10995b2a15a693604276655ae75c698af2e6e44f88e5a1cfeddbbfe35406ade6",
+        "source_fact:v1:2f7e505e1974bd20c73546de70f3148dde17dbe503a95af9ad903639dc8c319f",
+        "source_fact:v1:8ccb520723451988d39a66d0a257303715da4848ee913f0c67038a2157fd6746",
+        "source_fact:v1:8fd1f61caa31ff6a115d38f1cc1dd4aafbcb4a5f21093b5953e2f83ed1e416c9",
+        "source_fact:v1:dda19150d7988d649bf7e1954fe29936e0bf77e961727245b52b733668de384e",
+        "source_fact:v1:fb33761578799f28e17575b6fa189affda13dda665f2b26b0dd17ff18c521ac6"
+      ],
+      "source_published_kst": "2026-10-26T04:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
+      "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
+      "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
     },
     "fact:b567adbb42407b41dfe4bb29": {
       "first_seen_kst": "2026-10-11T15:29:02+09:00",
@@ -359928,6 +359985,31 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03594886645608656",
       "source": "이데일리",
       "title": "넷플릭스·SBS 계약 전 주식 산 직원…“일부 혐의만 인정”"
+    },
+    "link:c3cfa538c7c67bca0b310314": {
+      "first_seen_kst": "2026-10-26T04:34:28+09:00",
+      "lanes": {
+        "live": "2026-10-26T04:34:28+09:00"
+      },
+      "last_seen_kst": "2026-10-26T04:34:28+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261026040850S0K",
+      "source": "연합뉴스TV",
+      "source_body_digest": "b6458179e4af10292a7f5225e2404cc330a5ffdb0a7b4eb82a66dfec3d112fc3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01bcbbd702a164a6368a013e34089b7ca3d331e35c259cfedb4f9fc6bddc78a3",
+      "source_fact_keys": [
+        "source_fact:v1:10995b2a15a693604276655ae75c698af2e6e44f88e5a1cfeddbbfe35406ade6",
+        "source_fact:v1:2f7e505e1974bd20c73546de70f3148dde17dbe503a95af9ad903639dc8c319f",
+        "source_fact:v1:8ccb520723451988d39a66d0a257303715da4848ee913f0c67038a2157fd6746",
+        "source_fact:v1:8fd1f61caa31ff6a115d38f1cc1dd4aafbcb4a5f21093b5953e2f83ed1e416c9",
+        "source_fact:v1:dda19150d7988d649bf7e1954fe29936e0bf77e961727245b52b733668de384e",
+        "source_fact:v1:fb33761578799f28e17575b6fa189affda13dda665f2b26b0dd17ff18c521ac6"
+      ],
+      "source_published_kst": "2026-10-26T04:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
+      "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
+      "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
     },
     "link:c3d6960c564e8e78aa0c8af8": {
       "first_seen_kst": "2026-10-23T11:32:52+09:00",
@@ -511930,6 +512012,31 @@
       "telegram_core_fact": "한국지식재산서비스협회(회장 고기석)는 '정시 3회 IP중개사(ITA) 자격시험'을 오는 11월 7일 시행한다고 밝혔다. IP중개사는 특허·상표 등 IP 권리 확보를 넘어 기술과 시장을 연결하고, 기술이전과 라이선스 계약, 사업화 전략 수립 등을 지원하는 실무형 전문인력을 양성하기 위한 전문자격이다.",
       "title": "기술사업화 전문인력 수요 확대…한국지식재산서비스협회, 'IP중개사' 양성교육·자격시험 운영"
     },
+    "original:d1671602420dfc5618933150": {
+      "first_seen_kst": "2026-10-26T04:34:28+09:00",
+      "lanes": {
+        "live": "2026-10-26T04:34:28+09:00"
+      },
+      "last_seen_kst": "2026-10-26T04:34:28+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261026040850S0K",
+      "source": "연합뉴스TV",
+      "source_body_digest": "b6458179e4af10292a7f5225e2404cc330a5ffdb0a7b4eb82a66dfec3d112fc3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01bcbbd702a164a6368a013e34089b7ca3d331e35c259cfedb4f9fc6bddc78a3",
+      "source_fact_keys": [
+        "source_fact:v1:10995b2a15a693604276655ae75c698af2e6e44f88e5a1cfeddbbfe35406ade6",
+        "source_fact:v1:2f7e505e1974bd20c73546de70f3148dde17dbe503a95af9ad903639dc8c319f",
+        "source_fact:v1:8ccb520723451988d39a66d0a257303715da4848ee913f0c67038a2157fd6746",
+        "source_fact:v1:8fd1f61caa31ff6a115d38f1cc1dd4aafbcb4a5f21093b5953e2f83ed1e416c9",
+        "source_fact:v1:dda19150d7988d649bf7e1954fe29936e0bf77e961727245b52b733668de384e",
+        "source_fact:v1:fb33761578799f28e17575b6fa189affda13dda665f2b26b0dd17ff18c521ac6"
+      ],
+      "source_published_kst": "2026-10-26T04:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
+      "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
+      "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
+    },
     "original:d175d00f73ae525da065e916": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -554179,6 +554286,31 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
       "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
+    "source_fact:071ea173f07cf35de923b8d7": {
+      "first_seen_kst": "2026-10-26T04:34:28+09:00",
+      "lanes": {
+        "live": "2026-10-26T04:34:28+09:00"
+      },
+      "last_seen_kst": "2026-10-26T04:34:28+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261026040850S0K",
+      "source": "연합뉴스TV",
+      "source_body_digest": "b6458179e4af10292a7f5225e2404cc330a5ffdb0a7b4eb82a66dfec3d112fc3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01bcbbd702a164a6368a013e34089b7ca3d331e35c259cfedb4f9fc6bddc78a3",
+      "source_fact_keys": [
+        "source_fact:v1:10995b2a15a693604276655ae75c698af2e6e44f88e5a1cfeddbbfe35406ade6",
+        "source_fact:v1:2f7e505e1974bd20c73546de70f3148dde17dbe503a95af9ad903639dc8c319f",
+        "source_fact:v1:8ccb520723451988d39a66d0a257303715da4848ee913f0c67038a2157fd6746",
+        "source_fact:v1:8fd1f61caa31ff6a115d38f1cc1dd4aafbcb4a5f21093b5953e2f83ed1e416c9",
+        "source_fact:v1:dda19150d7988d649bf7e1954fe29936e0bf77e961727245b52b733668de384e",
+        "source_fact:v1:fb33761578799f28e17575b6fa189affda13dda665f2b26b0dd17ff18c521ac6"
+      ],
+      "source_published_kst": "2026-10-26T04:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
+      "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
+      "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
+    },
     "source_fact:07203e3788106bf9dd813768": {
       "first_seen_kst": "2026-10-14T14:53:15+09:00",
       "lanes": {
@@ -554654,6 +554786,31 @@
       ],
       "source_published_kst": "2026-10-06T16:27+09:00",
       "title": "[올댓차이나] 中 AI 스타트업 문샷, 내년 1분기 홍콩 상장…\"기업가치 500억＄\""
+    },
+    "source_fact:075298b00ba63f756cf9dbe0": {
+      "first_seen_kst": "2026-10-26T04:34:28+09:00",
+      "lanes": {
+        "live": "2026-10-26T04:34:28+09:00"
+      },
+      "last_seen_kst": "2026-10-26T04:34:28+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261026040850S0K",
+      "source": "연합뉴스TV",
+      "source_body_digest": "b6458179e4af10292a7f5225e2404cc330a5ffdb0a7b4eb82a66dfec3d112fc3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01bcbbd702a164a6368a013e34089b7ca3d331e35c259cfedb4f9fc6bddc78a3",
+      "source_fact_keys": [
+        "source_fact:v1:10995b2a15a693604276655ae75c698af2e6e44f88e5a1cfeddbbfe35406ade6",
+        "source_fact:v1:2f7e505e1974bd20c73546de70f3148dde17dbe503a95af9ad903639dc8c319f",
+        "source_fact:v1:8ccb520723451988d39a66d0a257303715da4848ee913f0c67038a2157fd6746",
+        "source_fact:v1:8fd1f61caa31ff6a115d38f1cc1dd4aafbcb4a5f21093b5953e2f83ed1e416c9",
+        "source_fact:v1:dda19150d7988d649bf7e1954fe29936e0bf77e961727245b52b733668de384e",
+        "source_fact:v1:fb33761578799f28e17575b6fa189affda13dda665f2b26b0dd17ff18c521ac6"
+      ],
+      "source_published_kst": "2026-10-26T04:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
+      "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
+      "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
     },
     "source_fact:0754b323fdad63144942fda0": {
       "first_seen_kst": "2026-10-08T18:24:19+09:00",
@@ -558151,6 +558308,31 @@
       "source_title": "유진로봇, AMR 넘어 휴머노이드 사업으로 본격 확장",
       "telegram_core_fact": "유진로봇 박성주 대표이사는 “유진로봇의 휴머노이드 사업은 기존 AMR 중심의 로보타이제이션 사업을 ‘작업 수행’ 영역까지 한 단계 확장하는 전략”이라며 “이번 국책과제를 중요한 실증 기반으로 삼아 현장에서 기술과 사업성을 검증하고 추후 휴머노이드와 피지컬 AI를 기업의 새로운 성장동력으로 육성해 나가겠다”고 밝혔다.",
       "title": "유진로봇, AMR 넘어 휴머노이드 사업으로 본격 확장"
+    },
+    "source_fact:08cd0177428378ec5e2ac7bb": {
+      "first_seen_kst": "2026-10-26T04:34:28+09:00",
+      "lanes": {
+        "live": "2026-10-26T04:34:28+09:00"
+      },
+      "last_seen_kst": "2026-10-26T04:34:28+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261026040850S0K",
+      "source": "연합뉴스TV",
+      "source_body_digest": "b6458179e4af10292a7f5225e2404cc330a5ffdb0a7b4eb82a66dfec3d112fc3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01bcbbd702a164a6368a013e34089b7ca3d331e35c259cfedb4f9fc6bddc78a3",
+      "source_fact_keys": [
+        "source_fact:v1:10995b2a15a693604276655ae75c698af2e6e44f88e5a1cfeddbbfe35406ade6",
+        "source_fact:v1:2f7e505e1974bd20c73546de70f3148dde17dbe503a95af9ad903639dc8c319f",
+        "source_fact:v1:8ccb520723451988d39a66d0a257303715da4848ee913f0c67038a2157fd6746",
+        "source_fact:v1:8fd1f61caa31ff6a115d38f1cc1dd4aafbcb4a5f21093b5953e2f83ed1e416c9",
+        "source_fact:v1:dda19150d7988d649bf7e1954fe29936e0bf77e961727245b52b733668de384e",
+        "source_fact:v1:fb33761578799f28e17575b6fa189affda13dda665f2b26b0dd17ff18c521ac6"
+      ],
+      "source_published_kst": "2026-10-26T04:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
+      "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
+      "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
     },
     "source_fact:08d30549dc684d8722d15781": {
       "first_seen_kst": "2026-10-20T03:18:10+09:00",
@@ -572992,6 +573174,31 @@
       "source_title": "SK ‘전력 자급자족’… 연료전지 인프라 구축에 속도",
       "telegram_core_fact": "인공지능(AI) 데이터센터 확대로 전력 확보 경쟁이 치열한 가운데 연료전지가 전력 공급의 대안으로 부상하고 있다.",
       "title": "SK ‘전력 자급자족’… 연료전지 인프라 구축에 속도"
+    },
+    "source_fact:0f477924e0a7dd4e28b19429": {
+      "first_seen_kst": "2026-10-26T04:34:28+09:00",
+      "lanes": {
+        "live": "2026-10-26T04:34:28+09:00"
+      },
+      "last_seen_kst": "2026-10-26T04:34:28+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261026040850S0K",
+      "source": "연합뉴스TV",
+      "source_body_digest": "b6458179e4af10292a7f5225e2404cc330a5ffdb0a7b4eb82a66dfec3d112fc3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01bcbbd702a164a6368a013e34089b7ca3d331e35c259cfedb4f9fc6bddc78a3",
+      "source_fact_keys": [
+        "source_fact:v1:10995b2a15a693604276655ae75c698af2e6e44f88e5a1cfeddbbfe35406ade6",
+        "source_fact:v1:2f7e505e1974bd20c73546de70f3148dde17dbe503a95af9ad903639dc8c319f",
+        "source_fact:v1:8ccb520723451988d39a66d0a257303715da4848ee913f0c67038a2157fd6746",
+        "source_fact:v1:8fd1f61caa31ff6a115d38f1cc1dd4aafbcb4a5f21093b5953e2f83ed1e416c9",
+        "source_fact:v1:dda19150d7988d649bf7e1954fe29936e0bf77e961727245b52b733668de384e",
+        "source_fact:v1:fb33761578799f28e17575b6fa189affda13dda665f2b26b0dd17ff18c521ac6"
+      ],
+      "source_published_kst": "2026-10-26T04:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
+      "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
+      "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
     },
     "source_fact:0f482402a403dc3a536aa763": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
@@ -593169,6 +593376,31 @@
       "source_title": "머스크 \"ASML, 테라팹에 장비 공급 앞당겨\" | 연합뉴스",
       "telegram_core_fact": "테슬라와 스페이스X에 필요한 반도체를 자체 생산하기 위한 일론 머스크 최고경영자(CEO)의 야심 찬 프로젝트인 테라팹 장비 공급이 앞당겨지고 있다고 머스크가 20일(현지시간) 밝혔다.",
       "title": "머스크 \"ASML, 테라팹에 장비 공급 앞당겨\" | 연합뉴스"
+    },
+    "source_fact:17c063e432b6e86252543890": {
+      "first_seen_kst": "2026-10-26T04:34:28+09:00",
+      "lanes": {
+        "live": "2026-10-26T04:34:28+09:00"
+      },
+      "last_seen_kst": "2026-10-26T04:34:28+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261026040850S0K",
+      "source": "연합뉴스TV",
+      "source_body_digest": "b6458179e4af10292a7f5225e2404cc330a5ffdb0a7b4eb82a66dfec3d112fc3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01bcbbd702a164a6368a013e34089b7ca3d331e35c259cfedb4f9fc6bddc78a3",
+      "source_fact_keys": [
+        "source_fact:v1:10995b2a15a693604276655ae75c698af2e6e44f88e5a1cfeddbbfe35406ade6",
+        "source_fact:v1:2f7e505e1974bd20c73546de70f3148dde17dbe503a95af9ad903639dc8c319f",
+        "source_fact:v1:8ccb520723451988d39a66d0a257303715da4848ee913f0c67038a2157fd6746",
+        "source_fact:v1:8fd1f61caa31ff6a115d38f1cc1dd4aafbcb4a5f21093b5953e2f83ed1e416c9",
+        "source_fact:v1:dda19150d7988d649bf7e1954fe29936e0bf77e961727245b52b733668de384e",
+        "source_fact:v1:fb33761578799f28e17575b6fa189affda13dda665f2b26b0dd17ff18c521ac6"
+      ],
+      "source_published_kst": "2026-10-26T04:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
+      "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
+      "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
     },
     "source_fact:17c0f37089786ae936f951dd": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
@@ -849740,6 +849972,31 @@
       "source_title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자",
       "telegram_core_fact": "대만 기업들은 AI 인프라 투자 확대에 따른 판매량 증가로 실적을 끌어올리고 있는 반면 한국 반도체 기업의 이익은 메모리 가격 상승에 대한 의존도가 높다. 코스콤 CHECK 등에 따르면 코스피는 올해 3분기 19.33% 하락했다.",
       "title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자"
+    },
+    "source_fact:81a7d0fd4b3f8cc6e6869d0a": {
+      "first_seen_kst": "2026-10-26T04:34:28+09:00",
+      "lanes": {
+        "live": "2026-10-26T04:34:28+09:00"
+      },
+      "last_seen_kst": "2026-10-26T04:34:28+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261026040850S0K",
+      "source": "연합뉴스TV",
+      "source_body_digest": "b6458179e4af10292a7f5225e2404cc330a5ffdb0a7b4eb82a66dfec3d112fc3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01bcbbd702a164a6368a013e34089b7ca3d331e35c259cfedb4f9fc6bddc78a3",
+      "source_fact_keys": [
+        "source_fact:v1:10995b2a15a693604276655ae75c698af2e6e44f88e5a1cfeddbbfe35406ade6",
+        "source_fact:v1:2f7e505e1974bd20c73546de70f3148dde17dbe503a95af9ad903639dc8c319f",
+        "source_fact:v1:8ccb520723451988d39a66d0a257303715da4848ee913f0c67038a2157fd6746",
+        "source_fact:v1:8fd1f61caa31ff6a115d38f1cc1dd4aafbcb4a5f21093b5953e2f83ed1e416c9",
+        "source_fact:v1:dda19150d7988d649bf7e1954fe29936e0bf77e961727245b52b733668de384e",
+        "source_fact:v1:fb33761578799f28e17575b6fa189affda13dda665f2b26b0dd17ff18c521ac6"
+      ],
+      "source_published_kst": "2026-10-26T04:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
+      "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
+      "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
     },
     "source_fact:81ac709cf894c7fb94648429": {
       "first_seen_kst": "2026-10-16T18:58:56+09:00",
@@ -1273019,6 +1273276,31 @@
       "telegram_core_fact": "한국지식재산서비스협회(회장 고기석)는 '정시 3회 IP중개사(ITA) 자격시험'을 오는 11월 7일 시행한다고 밝혔다. IP중개사는 특허·상표 등 IP 권리 확보를 넘어 기술과 시장을 연결하고, 기술이전과 라이선스 계약, 사업화 전략 수립 등을 지원하는 실무형 전문인력을 양성하기 위한 전문자격이다.",
       "title": "기술사업화 전문인력 수요 확대…한국지식재산서비스협회, 'IP중개사' 양성교육·자격시험 운영"
     },
+    "title:d1671602420dfc5618933150": {
+      "first_seen_kst": "2026-10-26T04:34:28+09:00",
+      "lanes": {
+        "live": "2026-10-26T04:34:28+09:00"
+      },
+      "last_seen_kst": "2026-10-26T04:34:28+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261026040850S0K",
+      "source": "연합뉴스TV",
+      "source_body_digest": "b6458179e4af10292a7f5225e2404cc330a5ffdb0a7b4eb82a66dfec3d112fc3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01bcbbd702a164a6368a013e34089b7ca3d331e35c259cfedb4f9fc6bddc78a3",
+      "source_fact_keys": [
+        "source_fact:v1:10995b2a15a693604276655ae75c698af2e6e44f88e5a1cfeddbbfe35406ade6",
+        "source_fact:v1:2f7e505e1974bd20c73546de70f3148dde17dbe503a95af9ad903639dc8c319f",
+        "source_fact:v1:8ccb520723451988d39a66d0a257303715da4848ee913f0c67038a2157fd6746",
+        "source_fact:v1:8fd1f61caa31ff6a115d38f1cc1dd4aafbcb4a5f21093b5953e2f83ed1e416c9",
+        "source_fact:v1:dda19150d7988d649bf7e1954fe29936e0bf77e961727245b52b733668de384e",
+        "source_fact:v1:fb33761578799f28e17575b6fa189affda13dda665f2b26b0dd17ff18c521ac6"
+      ],
+      "source_published_kst": "2026-10-26T04:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“",
+      "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
+      "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
+    },
     "title:d175d00f73ae525da065e916": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -1299367,5 +1299649,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-26T04:03:53+09:00"
+  "updated_at_kst": "2026-10-26T04:34:28+09:00"
 }
