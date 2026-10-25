@@ -1,0 +1,81 @@
+{
+  "history": [
+    {
+      "date": "2026-10-16",
+      "calls": 3013757,
+      "puts": 4402613,
+      "total": 7416370,
+      "ratio": 1.4608,
+      "oi_puts": 14864660,
+      "oi_calls": 10012398,
+      "source": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-16",
+      "vix": 19.99,
+      "vix_source": "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
+    },
+    {
+      "date": "2026-10-19",
+      "calls": 2177950,
+      "puts": 2590723,
+      "total": 4768673,
+      "ratio": 1.1895,
+      "oi_puts": 13407659,
+      "oi_calls": 9137908,
+      "source": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-19",
+      "vix": 18.44,
+      "vix_source": "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
+    },
+    {
+      "date": "2026-10-20",
+      "calls": 2464987,
+      "puts": 2844278,
+      "total": 5309265,
+      "ratio": 1.1539,
+      "oi_puts": 13460845,
+      "oi_calls": 9249312,
+      "source": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-20",
+      "vix": 17.31,
+      "vix_source": "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
+    },
+    {
+      "date": "2026-10-21",
+      "calls": 2589948,
+      "puts": 3023096,
+      "total": 5613044,
+      "ratio": 1.1672,
+      "oi_puts": 13706780,
+      "oi_calls": 9343307,
+      "source": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-21",
+      "vix": 16.68,
+      "vix_source": "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
+    },
+    {
+      "date": "2026-10-22",
+      "calls": 2680329,
+      "puts": 3309182,
+      "total": 5989511,
+      "ratio": 1.2346,
+      "oi_puts": 13917554,
+      "oi_calls": 9473557,
+      "source": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-22",
+      "vix": 19.03,
+      "vix_source": "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
+    },
+    {
+      "date": "2026-10-23",
+      "calls": 2199681,
+      "puts": 2745718,
+      "total": 4945399,
+      "ratio": 1.2482,
+      "oi_puts": 14117301,
+      "oi_calls": 9566355,
+      "source": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-23",
+      "vix": 19.45,
+      "vix_source": "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
+    }
+  ],
+  "alert_level": 0,
+  "last_source_date": "2026-10-23",
+  "last_checked_kst": "2026-10-25T22:49:06+09:00",
+  "last_was_revision": false,
+  "last_alert_key": null
+}
