@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 27,
+    "material_items": 28,
     "new_material_items": 0,
-    "raw_items": 344,
+    "raw_items": 352,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1129,6 +1129,16 @@
       "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPVmlsZkg4MjVmSXE4WDBLY29yUEZxZmo1SG9hcHlZdmRFLTF3V2lyWUpqbEZhNHF1aXpaWG9BdGdhREx6Tnk5Mjc4dWpkRUIyR0huejRDN29tM2hZQW1iNjJqM1FSdUF3cVJKS2VScUVNbG1mRFBjM3ZUV3RHeXV6TjNFM01EeW1vS2Q3SHc0TXJZcnNPb2JoMmNhNk5nQk9tTXprczFfbmlKeFBx?oc=5",
       "vendor": "Anthropic"
     },
+    "ea03d8412daacffa54292eca": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-25T02:48:14.168396+00:00",
+      "published_at": "2026-10-24T15:30:00+00:00",
+      "severity": 2,
+      "source": "TechCrunch",
+      "title": "PHP-ocalypse: How two critical web bugs almost broke the internet - TechCrunch",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQMEp4VjFiMF9oYllMcllnVzU1SmZqZWJxMm9nQ3loQ3NuNm1oc1JrWmg4MVVJWFNNeHlvOGpEOEJKLWZ1eU5KVDlscTZvOC15Qk51T01QYTltTHhNV2hCbVV0cmFDNTRlTzMteWFBbm1mYVlMdEJpOU03TTZ1X3V1QnBIWHY3NTBoSHdqTlNuYXdvVnFueTlwZGFYRkZxbTZM?oc=5",
+      "vendor": "PHP 재단"
+    },
     "ee3190de4fac008615a3adb2": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-14T10:28:58.272230+00:00",
@@ -1220,5 +1230,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-25T11:12:45+09:00"
+  "updated_at_kst": "2026-10-25T11:48:14+09:00"
 }
