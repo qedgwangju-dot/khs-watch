@@ -5845,7 +5845,7 @@ _r27_expected=(
 )
 _r27_baseline=[]
 for eid,group,category in _r27_expected:
-    row=watcher.query_news(watcher.R27_ROBOT_COMMERCE_PREFIX+eid)
+    row=base.query_news(watcher.R27_ROBOT_COMMERCE_PREFIX+eid)
     assert len(row)==1,(eid,row)
     g,s,c,k=classify(row[0])
     assert g==group and s>=11 and c==category,(eid,g,s,c)
