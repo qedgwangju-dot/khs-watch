@@ -324,9 +324,10 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
             }},
             "refined_risk": {"level": 1, "structural_floor": True},
         }
-        title, direction, _ = compact.direction_call(payload, pending)
-        self.assertIn("↔ 중립", title)
-        self.assertIn("방향 확인 대기", direction)
+        title, direction, impact = compact.direction_call(payload, pending)
+        self.assertIn("현재 방향 보류", title)
+        self.assertIn("실시간 방향 판정 보류", direction)
+        self.assertIn("실시간 영향 판정 보류", impact)
         self.assertIn("판정 보류", compact.live_fx_line(pending))
 
     def test_fx_volatility_minor_change_not_urgent(self):
