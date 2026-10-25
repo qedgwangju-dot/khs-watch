@@ -542,6 +542,76 @@ def crypto_tax_report_candidate(
     }
 
 
+def crypto_tax_guidance_stage(official_guidance: str | None) -> str | None:
+    """Extract explicitly posted virtual-asset tax dates, not CARF milestone dates."""
+    text = clean_text(official_guidance).lower()
+    if "가상자산" not in text or ("과세" not in text and "분리과세" not in text):
+        return None
+
+    for year in (2030, 2029, 2028, 2027):
+        short = str(year)[2:]
+        date_markers = (
+            f"{year}.1.1", f"'{short}.1.1", f"’{short}.1.1",
+            f"{year}년 1월 1일", f"{short}.1.1",
+        )
+        for m in re.finditer(r"(?:가상자산[^.]{0,70}|소득세법[^.]{0,70}|분리과세[^.]{0,70})", text):
+            snippet = text[m.start(): min(len(text),m.start()+230)]
+            if any(x in snippet for x in date_markers) and (
+                "시행" in snippet or "이후 양도" in snippet or "과세" in snippet
+            ):
+                return f"{year}-01-01"
+
+    # The NTS page often separates the words by HTML blocks and punctuation.
+    # A narrow clause match supports the published "'27.1.1. 이후" notation.
+    m = re.search(
+        r"(?:가상자산|가상자산소득)[^\n]{0,130}?"
+        r"(?:소득세법[^\n]{0,80})?"
+        r"(?:[’']?(?:20)?(27|28|29|30))\.\s*1\.\s*1\.?"
+        r"\s*이후\s*양도",
+        text,
+    )
+    return f"20{m.group(1)}-01-01" if m else None
+
+
+def crypto_tax_guidance_update_candidate(raw: str | None, now: dt.datetime) -> dict | None:
+    """Track the official *website wording*, never infer legislative enactment."""
+    effective = crypto_tax_guidance_stage(raw)
+    if not effective or effective == "2027-01-01":
+        return None
+    return {
+        "source": "국세청 가상자산소득 과세안내",
+        "title": f"국세청 가상자산 과세 안내 시행일 변경 확인 · {effective}",
+        "title_ko": f"국세청 가상자산 과세 안내 시행일 변경 확인 · {effective}",
+        "original_title": "거주자의 가상자산소득 과세 개요",
+        "link": CRYPTO_TAX_OFFICIAL_GUIDANCE,
+        "summary": (
+            f"국세청 가상자산소득 과세 공식 안내 페이지에 {effective} 시행일 표기가 확인됨. "
+            "이것은 안내문 갱신 사실이며, 소득세법 개정안의 국회 의결·공포를 "
+            "이 페이지 하나만으로 확인했다는 뜻이 아님. "
+            "국회 의안정보·국가법령정보센터 교차확인 필요."
+        ),
+        "published_kst": now.isoformat(),
+        "fingerprint": f"crypto-tax:nts-guidance:{effective}",
+        "matched": {"korea_crypto_tax_policy":["국세청 공식 안내 변경",f"시행일 표기 {effective}"]},
+        "status": "국세청 안내 변경 · 국회·공포 교차확인 전",
+        "importance": "상",
+        "impacts": ["할인율", "수급", "시간표"],
+        "paths": ["가상자산 소득세 시행일", "법률 공포 교차검증", "거래소 수급"],
+        "sectors": ["가상자산거래소/디지털자산"],
+        "domestic_stablecoin_policy_watch": True,
+        "crypto_tax_policy_watch": True,
+        "crypto_tax_stage": f"nts_guidance_changed_{effective}",
+        "crypto_tax_legal_effective_date": effective,
+        "crypto_tax_legal_links": [CRYPTO_TAX_OFFICIAL_GUIDANCE],
+        "policy_plain_summary": (
+            f"국세청 웹 안내의 과세 시행일 표기가 {effective}로 바뀌었습니다. "
+            "법률 최종 공포는 별도 국회·법령 확인 대상입니다."
+        ),
+        "counter": "관계기관 안내 정정 가능성, 국회 입법 완료 여부, 시행령 변동을 구분해야 합니다.",
+        "reflection": "미확정",
+    }
+
+
 def crypto_tax_news_candidates(now: dt.datetime) -> list[dict]:
     if not (-1 <= (age_hours(CRYPTO_TAX_REPORT_TIME, now) or -2) <= MAX_AGE_HOURS):
         return []
@@ -682,9 +752,15 @@ def main() -> int:
             print(f"domestic_stablecoin_source_failed source={source_name} error={error}")
             continue
         candidates.extend(parse_links(text or "", source_name, effective_url, now))
-    # Reported presidential policy direction is deliberately kept separate
-    # from BOK/CBDC official policy and from a law being enacted.
+    # Tax milestones are separate from BOK/CBDC and must never infer enactment.
     candidates.extend(crypto_tax_news_candidates(now))
+    tax_raw, tax_error = fetch_text(CRYPTO_TAX_OFFICIAL_GUIDANCE, timeout=7, attempts=1)
+    if tax_error:
+        print(f"crypto_tax_official_guidance_warning={tax_error}")
+    else:
+        official_tax_update = crypto_tax_guidance_update_candidate(tax_raw, now)
+        if official_tax_update:
+            candidates.append(official_tax_update)
     candidates = merge_policy_duplicates(candidates)
 
     seen = load_seen()
