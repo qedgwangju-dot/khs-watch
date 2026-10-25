@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-25T12:47:01.287569+00:00",
+  "updated_at": "2026-10-25T16:10:27.944844+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -641,27 +641,24 @@
     "12e061ee037f7d67f70f5ef1e378e59d1ead930721b0feea72d214f32ccd1f30",
     "b69eb8f4f6c74b275f501d57f7de34c22366fa7ae990355d102e39338be2584a",
     "8cfbc8d6664f8ff8254f989cdcd3455c958867f3570216718c43f8542864e54f",
-    "41dd56e66c7c3bbe0c9dc8b00e16189f3dba0202275b758f0ca63d344aa1553e"
+    "41dd56e66c7c3bbe0c9dc8b00e16189f3dba0202275b758f0ca63d344aa1553e",
+    "ea6d118aadf737020bf31aa6bdf7ed9091b2a58e7fa0b45cb66b77d3f09e199b"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "ea6d118aadf737020bf31aa6bdf7ed9091b2a58e7fa0b45cb66b77d3f09e199b"
+  ],
   "groups": [
     "airan",
-    "alert_quality_246",
     "alert_quality_fx_249",
-    "alert_quality_oct18",
     "atlas_actuator_bom",
     "bmw_gen6_pack",
-    "brils_us_localization",
     "eka_dexterous_funding",
     "ess_battery",
-    "ess_outdoor_policy",
     "hyundai_atlas_rollout",
-    "hyundai_robot_rx_team",
     "jpm_sri_2026",
     "lg_factory_loop",
     "lg_robotics",
     "lge_nvidia_hsb_robot_sensing",
-    "lge_robot_sw_platform",
     "microduck_pollen_robotis_orders",
     "mobilint_lge_humanoid_npu",
     "nvidia_flora_robot_data",
@@ -671,7 +668,6 @@
     "shanghai_physical_ai_2027_policy",
     "tesla_agm_2026",
     "tesla_giga_berlin_modely_week",
-    "tesla_optimus_q3_fremont",
-    "vw_europe_battery_recall"
+    "tesla_optimus_q3_fremont"
   ]
 }
