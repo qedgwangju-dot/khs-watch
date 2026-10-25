@@ -7901,6 +7901,319 @@ for _q in [*(R26_PREFIX + k for k in R26_EVENTS), *R26_SEARCHES]:
         base.QUERIES.append(_q)
 
 
+
+# 2026-10-25: two already verified commercial-production milestones.
+# No new workflow or state file. Baselines are one-shot, never replayed by
+# fresh articles; subsequent *actual* orders, shipment and permits are
+# independent stages. Plans and implied motor demand are never paid orders.
+R27_ROBOT_COMMERCE_PREFIX = "DIRECT_ROBOT_COMMERCE_20261025_"
+R27_ROBOT_COMMERCE = {
+    "microduck_20k": {
+        "group": "microduck_pollen_robotis_orders",
+        "stage": "executive_reported_20k_preorders",
+        "title": "Microduck · 젠슨 황 시연 후 사전주문 2만대 초과(실제 출하 전)",
+        "link": "https://techcrunch.com/2026/10/23/hottest-toy-for-christmas-nvidia-ceo-plays-with-adorable-microduck-robots-20000-sell/",
+        "source": "TechCrunch·Hugging Face 경영진 인용",
+        "description": (
+            "2026-10-21 NVIDIA GTC Berlin에서 Pollen Robotics·Hugging Face "
+            "Microduck 시연. 10월 23일 TechCrunch는 Hugging Face "
+            "Clem Delangue의 발언을 인용해 사전주문 20000대 초과를 보도. "
+            "직전 24시간 4000대, 출시 당일 3000대, 초기 누적 10000대는 "
+            "기존 판매 주장으로 20000대와 중복 합산하지 않는다. "
+            "공식 제품가격 399달러, 로봇 1대당 모터 15개, Pollen 공식 "
+            "제어 소스코드는 DYNAMIXEL XL330 사용을 명시. "
+            "20000대×15개=300000개 초과 잠재 소요. 150000개는 "
+            "10000대의 이론적 부품 수요이지 로보티즈 생산 확정 또는 "
+            "유상 발주 공시가 아니다. 15만개 실제 출하·고객 납품도 "
+            "미확인. 20,000대×399달러=798만달러는 할인·취소를 무시한 "
+            "소비자가격 기준 잠재 주문총액이며 기인식 매출이 아니다. "
+            "로보티즈 부품 매출, 도매 단가, 제조 수율, 실제 배송 물량은 "
+            "공개 확인 전. 2026년 크리스마스 전 배송은 회사 목표."
+        ),
+        "category": "Microduck · 회사 경영진 2만대 초과 사전주문",
+        "meaning": (
+            "대당 DYNAMIXEL XL330 계열 15개라는 공개 기술자료에 따라 "
+            "로봇 사전주문 2만대는 로보티즈 부품 30만개 초과의 "
+            "잠재 수요를 뜻합니다. 실제 계약·생산·납품·매출로 "
+            "전환됐다는 증거가 아니라는 점이 핵심입니다."
+        ),
+        "risk": (
+            "제조단가, 구동기 발열·전압, 수율, 납기, 품질·안전, "
+            "반품·교환 접수와 보증충당금. 12월 실제 출하대수 및 "
+            "로보티즈 수주 공시가 가장 빠른 조기경보입니다."
+        ),
+    },
+    "berlin_7000": {
+        "group": "tesla_giga_berlin_modely_week",
+        "stage": "company_reported_week_7000",
+        "title": "Tesla 기가 베를린 · Model Y 실제 주간 7000대 생산 발표",
+        "link": "https://teslanorth.com/2026/10/23/tesla-giga-berlin-7000-model-y-week/",
+        "source": "TeslaNorth·Tesla Manufacturing 발표 인용",
+        "description": (
+            "2026-10-23 Tesla Manufacturing 회사 계정의 공장 실적 발표를 "
+            "TeslaNorth·Drive Tesla Canada가 각각 인용: 기가 베를린 "
+            "Model Y 한 주 생산 7000대. 분기 감사 검증치가 아닌 "
+            "기업 주간 발표이며 7000×52=연 364000대는 기계적 "
+            "환산이지 연간 생산 확약이 아니다. 주 7500대는 "
+            "추가 목표로 아직 미달. 2027년 상반기 4680 건식 전극 "
+            "현지 생산, 연 18GWh 목표, 제2공장 536000㎡ 규모 "
+            "2026년 12월 인허가 신청 예정은 별도 계획. "
+            "새 공장의 Cybercab·Optimus 생산품목은 미확정."
+        ),
+        "category": "Tesla 베를린 · 회사 발표 주간 7000대 실제 생산",
+        "meaning": (
+            "한 주 7000대 생산은 기존 양산라인 물량과 가동률의 "
+            "검증 가능한 회사 발표입니다. 주당 7500대 목표, "
+            "연간 100만대 장기 증설 구상, 신제품 양산은 "
+            "현재 확정 실적과 분리합니다."
+        ),
+        "risk": (
+            "45초 공정 주기가 전 라인 생산으로 연결되지 않는 병목, "
+            "공급망 납기, 유럽 주문 지속성, 완성차 재고. "
+            "4680 전원·냉각·수율, 새 홀 인허가·전력·용수 "
+            "접속 및 2027 착공 지연을 별도로 추적합니다."
+        ),
+    },
+}
+R27_VERIFIED_SOURCES_MICRO = {
+    "Hugging Face", "Hugging Face CEO", "Pollen Robotics",
+    "Pollen Robotics SAS", "ROBOTIS", "로보티즈",
+}
+R27_VERIFIED_SOURCES_BERLIN = {
+    "Tesla", "Tesla Manufacturing", "Tesla Investor Relations",
+    "Tesla Germany", "Tesla Berlin-Brandenburg", "Brandenburg",
+    "브란덴부르크주",
+}
+R27_LIVE_QUERIES = (
+    '(Microduck OR 마이크로덕) (Pollen Robotics OR Hugging Face OR 로보티즈 OR ROBOTIS) (preorders OR 사전주문 OR 실제 배송 OR first shipments OR XL330 OR firm order OR production)',
+    '(ROBOTIS OR 로보티즈) (Microduck OR 마이크로덕 OR XL330) (고객 발주 OR 수주계약 OR 출하 OR 실제 납품 OR 대량생산)',
+    '(Tesla OR 테슬라) (Giga Berlin OR 기가 베를린 OR Grünheide) (7000 OR 7,000 OR 7500 OR 7,500) (produced OR built OR 생산 OR actual)',
+    '(Tesla OR 테슬라) (Berlin OR 베를린 OR Grünheide) (4680 OR dry electrode OR 건식 전극 OR 18GWh) (양산 개시 OR started production OR first cell shipment OR 실제 증설)',
+    '(Tesla OR 테슬라) (Giga Berlin OR 기가 베를린 OR Grünheide) (second hall OR 제2공장 OR 536000 OR 536,000) (permit filed OR 인허가 접수 OR permit granted OR 착공)',
+)
+
+def _r27_match(text: str) -> str:
+    t = text.casefold()
+    if "microduck" in t or "마이크로덕" in t:
+        return "micro"
+    berlin = bool(re.search(r'giga[\s-]*berlin|기가\s*베를린|grünheide|gruenheide|grunheide',t,re.I))
+    if berlin and re.search(r'4680|18\s*gwh|건식\s*전극|dry[-\s]*electrode', t, re.I):
+        if re.search(r'실제\s*양산|양산\s*개시|first\s*cell\s*shipment|cell\s*production\s*started',t,re.I):
+            return "cells"
+    if berlin and re.search(r'제2공장|second\s*(?:production\s*)?hall|536[,]?000',t,re.I):
+        if re.search(r'허가\s*신청\s*접수|permit\s*(?:filed|approved)|착공\s*개시|construction\s*started',t,re.I):
+            return "hall"
+    if berlin and re.search(r'model[\s-]*y|모델\s*y|주간\s*생산|weekly\s*(?:output|production)',t,re.I):
+        return "vehicles"
+    if berlin and re.search(r'제2공장|second\s*(?:production\s*)?hall|536[,]?000',t,re.I):
+        return "hall"
+    if berlin and re.search(r'4680|18\s*gwh|건식\s*전극|dry[-\s]*electrode',t,re.I):
+        return "cells"
+    return ""
+
+def _r27_primary(item: dict, eid: str) -> bool:
+    src = str(item.get("source") or "")
+    return src in (R27_VERIFIED_SOURCES_MICRO if eid == "micro" else R27_VERIFIED_SOURCES_BERLIN)
+
+def _r27_stage(item: dict, eid: str) -> str:
+    if item.get("r27_event_id") in R27_ROBOT_COMMERCE:
+        return R27_ROBOT_COMMERCE[item["r27_event_id"]]["stage"]
+    if not _r27_primary(item,eid):
+        return {"micro":"executive_reported_20k_preorders",
+                "vehicles":"company_reported_week_7000",
+                "cells":"18gwh_planned_only",
+                "hall":"permit_application_planned_only"}[eid]
+    t = " ".join(str(item.get(k) or "") for k in ("title","description")).casefold()
+    if eid == "micro":
+        if (re.search(r'xl330|dynamixel',t,re.I) and
+            re.search(r'구속력\s*있는\s*발주|유상\s*공급계약\s*체결|수주\s*공시|signed\s*firm\s*purchase\s*order',t,re.I) and
+            re.search(r'\d[\d,]*\s*(?:개|units|pcs)',t,re.I) and
+            not re.search(r'미확인|추정|가능성|not\s+confirmed|no\s+firm',t,re.I)):
+            return "robotis_binding_component_order_actual"
+        if (re.search(r'첫\s*배송\s*시작|실제\s*출하\s*완료|고객\s*배송\s*개시|first\s*orders\s*shipped|began\s*shipping',t,re.I)
+            and not re.search(r'예정|계획|목표|expected|targeted|will\s+ship',t,re.I)):
+            return "first_customer_shipments_actual"
+        if (re.search(r'(?:누적\s*사전주문|preorders?\s*(?:exceed|surpass|reach|passed)|사전주문\s*돌파).{0,45}(?:50[,]?000|5만)',t,re.I)
+            and not re.search(r'목표|예상|추정|target|aims|forecast',t,re.I)):
+            return "official_50k_preorders"
+        if (re.search(r'(?:누적\s*사전주문|preorders?\s*(?:exceed|surpass|reach|passed)|사전주문\s*돌파).{0,45}(?:30[,]?000|3만)',t,re.I)
+            and not re.search(r'목표|예상|추정|target|aims|forecast',t,re.I)):
+            return "official_30k_preorders"
+        return "executive_reported_20k_preorders"
+    if eid == "vehicles":
+        if (re.search(r'(?:7[,]?500|7500).{0,60}(?:실제\s*생산|생산\s*달성|built|produced)',t,re.I)
+            or re.search(r'(?:built|produced|실제\s*생산).{0,60}(?:7[,]?500|7500)',t,re.I)):
+            if not re.search(r'목표|계획|예정|target|aim|plan|hopes',t,re.I):
+                return "company_reported_week_7500_actual"
+        return "company_reported_week_7000"
+    if eid == "cells":
+        if re.search(r'첫\s*배터리\s*셀\s*출하\s*완료|first\s*cell\s*shipment\s*completed',t,re.I):
+            return "4680_first_customer_shipment_actual"
+        if (re.search(r'4680.{0,85}(?:양산\s*개시|생산\s*시작|started\s*(?:mass\s*)?production)',t,re.I)
+            and not re.search(r'예정|계획|목표|will\s*start|planned|expected',t,re.I)):
+            return "4680_cell_production_actual"
+        return "18gwh_planned_only"
+    if eid == "hall":
+        if re.search(r'제2공장.{0,80}착공\s*개시|second\s*hall.{0,80}construction\s*started',t,re.I):
+            return "new_hall_construction_actual"
+        if re.search(r'제2공장.{0,80}허가\s*승인|second\s*hall.{0,80}permit\s*approved',t,re.I):
+            return "new_hall_permit_approved"
+        if re.search(r'제2공장.{0,80}허가\s*신청\s*접수|second\s*hall.{0,80}permit\s*filed',t,re.I):
+            return "new_hall_permit_filed"
+        return "permit_application_planned_only"
+    return ""
+
+R27_GROUP = {
+    "micro":"microduck_pollen_robotis_orders",
+    "vehicles":"tesla_giga_berlin_modely_week",
+    "cells":"tesla_berlin_4680_cells",
+    "hall":"tesla_berlin_second_hall",
+}
+R27_LABELS = {
+    "official_30k_preorders":"Microduck · 회사 공식 사전주문 3만대 돌파",
+    "official_50k_preorders":"Microduck · 회사 공식 사전주문 5만대 돌파",
+    "first_customer_shipments_actual":"Microduck · 고객 대상 실제 첫 배송",
+    "robotis_binding_component_order_actual":"로보티즈 · Microduck 액추에이터 확정 유상 발주",
+    "company_reported_week_7500_actual":"Tesla 베를린 · Model Y 주간 7500대 실제 생산",
+    "4680_cell_production_actual":"Tesla 베를린 · 4680 셀 실제 생산 개시",
+    "4680_first_customer_shipment_actual":"Tesla 베를린 · 4680 셀 실제 초도 출하",
+    "new_hall_permit_filed":"Tesla 베를린 · 제2공장 인허가 실제 접수",
+    "new_hall_permit_approved":"Tesla 베를린 · 제2공장 건축허가 실제 승인",
+    "new_hall_construction_actual":"Tesla 베를린 · 제2공장 실제 착공",
+}
+R27_BASELABELS = {
+    "micro":R27_ROBOT_COMMERCE["microduck_20k"]["category"],
+    "vehicles":R27_ROBOT_COMMERCE["berlin_7000"]["category"],
+    "cells":"Tesla 베를린 · 4680 셀 연 18GWh 계획(실제 가동 미확인)",
+    "hall":"Tesla 베를린 · 제2공장 53.6만㎡ 인허가 신청 계획",
+}
+_r27_prev_query=base.query_news
+_r27_prev_group=base.topic_group
+_r27_prev_score=base.score
+_r27_prev_key=base.key
+_r27_prev_category=base.category
+_r27_prev_meaning=base.meaning
+_r27_prev_risk=base.risk
+_r27_prev_verification=base.verification
+_r27_prev_tag=base.tag_for
+_r27_prev_select=base.select_diverse
+
+def _r27_query(q: str) -> list[dict]:
+    if q.startswith(R27_ROBOT_COMMERCE_PREFIX):
+        name=q[len(R27_ROBOT_COMMERCE_PREFIX):]
+        if name not in R27_ROBOT_COMMERCE or base.NOW.astimezone(base.KST).date()>dt.date(2026,10,29):
+            return []
+        obj=R27_ROBOT_COMMERCE[name]
+        return [dict(title=obj["title"],description=obj["description"],
+                     link=obj["link"],source=obj["source"],published=None,
+                     r27_verified=True,r27_event_id=name)]
+    return _r27_prev_query(q)
+
+def _r27_group(text: str) -> str | None:
+    eid=_r27_match(text)
+    return R27_GROUP[eid] if eid else _r27_prev_group(text)
+
+def _r27_score(item: dict) -> int:
+    t=" ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    eid=_r27_match(t)
+    if not eid:
+        return _r27_prev_score(item)
+    if item.get("r27_verified") and item.get("r27_event_id") in R27_ROBOT_COMMERCE:
+        return 25
+    return 22 if (_r27_primary(item,eid)
+                  and _r27_stage(item,eid) not in {
+                    "executive_reported_20k_preorders","company_reported_week_7000",
+                    "18gwh_planned_only","permit_application_planned_only"}) else 0
+
+def _r27_key(item: dict) -> str:
+    text=" ".join(str(item.get(k) or "") for k in ("title","description","source"))
+    eid=_r27_match(text)
+    if not eid:
+        return _r27_prev_key(item)
+    return hashlib.sha256(
+        f"robot-20261025|{eid}|{_r27_stage(item,eid)}".encode("utf-8")
+    ).hexdigest()
+
+def _r27_category(text: str, group: str) -> str:
+    eid=next((k for k,v in R27_GROUP.items() if group==v),None)
+    if eid:
+        stage=_r27_stage({"title":text,"source":(
+            "Pollen Robotics" if eid=="micro" else "Tesla Manufacturing")},eid)
+        return R27_LABELS.get(stage,R27_BASELABELS[eid])
+    return _r27_prev_category(text,group)
+
+def _r27_meaning(category: str) -> str:
+    for ev in R27_ROBOT_COMMERCE.values():
+        if category==ev["category"]:
+            return ev["meaning"]
+    if category in R27_LABELS.values():
+        return (
+            "회사 공식 확인으로 계획 또는 사전주문에서 실제 "
+            "발주·출하·생산·인허가의 다음 이정표로 진전했습니다. "
+            "고객 실명, 물량×도매단가, 검수·가동률과 실제 매출을 "
+            "별도로 확인하고 초기 공시와 중복 합산하지 않습니다."
+        )
+    if category==R27_BASELABELS["cells"]:
+        return "연 18GWh는 기존 설비투자·생산 목표이지 실제 셀 생산량이 아닙니다."
+    if category==R27_BASELABELS["hall"]:
+        return "53.6만㎡ 제2공장 계획은 기존 증설 구상이며 건축허가·착공이 아닙니다."
+    return _r27_prev_meaning(category)
+
+def _r27_risk(category: str) -> str:
+    for ev in R27_ROBOT_COMMERCE.values():
+        if category==ev["category"]:
+            return ev["risk"]
+    if category in R27_LABELS.values():
+        return ("공식 발표라도 고객 검수·출하·대금 회수·수율·인증·"
+                "보증충당금 또는 인허가·전력·냉각이 남습니다. "
+                "실제 완료 문구와 일정만 보도된 계획을 구분합니다.")
+    if category in {R27_BASELABELS["cells"],R27_BASELABELS["hall"]}:
+        return "예산·발주·인허가·전력 접속과 공장 가동 전까지 잠재 수혜로 분류합니다."
+    return _r27_prev_risk(category)
+
+def _r27_verification(item:dict,group:str,text:str) -> str:
+    if group in R27_GROUP.values():
+        if item.get("r27_verified"):
+            return "회사 원자료·공식 기술자료·독립 신뢰 보도 교차확인; 계약·실출하는 별도"
+        return "회사의 실제 단계변화 1차 발표 확인; 업계 보도의 목표 반복은 알림 제외"
+    return _r27_prev_verification(item,group,text)
+
+def _r27_tag(group:str)->str:
+    return {
+        R27_GROUP["micro"]:"Microduck·로보티즈",
+        R27_GROUP["vehicles"]:"Tesla 베를린",
+        R27_GROUP["cells"]:"Tesla 4680",
+        R27_GROUP["hall"]:"Tesla 베를린 증설",
+    }.get(group) or _r27_prev_tag(group)
+
+def _r27_select(items:list[dict],seen:set[str],force:bool,limit:int)->list[dict]:
+    chosen=_r27_prev_select(items,seen,force,limit)
+    candidates=items if force else [x for x in items if x.get("key") not in seen]
+    added=[]
+    for name in ("microduck_20k","berlin_7000"):
+        hit=next((x for x in candidates
+                  if x.get("group")==R27_ROBOT_COMMERCE[name]["group"]
+                  and x.get("score",0)>=11
+                  and x.get("key") not in {y.get("key") for y in added}),None)
+        if hit and not any(x.get("key")==hit.get("key") for x in chosen):
+            added.append(hit)
+    return (added+[x for x in chosen if x.get("key") not in {z.get("key") for z in added}])[:limit]
+
+base.query_news=_r27_query
+base.topic_group=_r27_group
+base.score=_r27_score
+base.key=_r27_key
+base.category=_r27_category
+base.meaning=_r27_meaning
+base.risk=_r27_risk
+base.verification=_r27_verification
+base.tag_for=_r27_tag
+base.select_diverse=_r27_select
+for _q in [*(R27_ROBOT_COMMERCE_PREFIX+x for x in R27_ROBOT_COMMERCE),*R27_LIVE_QUERIES]:
+    if _q not in base.QUERIES:
+        base.QUERIES.append(_q)
+
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()

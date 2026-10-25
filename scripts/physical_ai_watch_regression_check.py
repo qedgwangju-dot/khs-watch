@@ -5834,4 +5834,79 @@ _ess_editorial = make("ESS 경쟁 격화…美·유럽 공급망 재편에 K-배
                       "에너지저장장치 가격 기대감과 공급망 재편 수혜 의견", "매일일보")
 assert classify(_ess_editorial)[1]<11, classify(_ess_editorial)
 
+
+# Microduck vs ROBOTIS actual order, and Giga Berlin car / battery / hall
+# are independent semantic stages. Historical article recaps stay silent.
+_r27_expected=(
+    ("microduck_20k","microduck_pollen_robotis_orders",
+     "Microduck · 회사 경영진 2만대 초과 사전주문"),
+    ("berlin_7000","tesla_giga_berlin_modely_week",
+     "Tesla 베를린 · 회사 발표 주간 7000대 실제 생산"),
+)
+_r27_baseline=[]
+for eid,group,category in _r27_expected:
+    row=watcher.query_news(watcher.R27_ROBOT_COMMERCE_PREFIX+eid)
+    assert len(row)==1,(eid,row)
+    g,s,c,k=classify(row[0])
+    assert g==group and s>=11 and c==category,(eid,g,s,c)
+    assert k not in {i[3] for i in _r27_baseline}
+    _r27_baseline.append((g,s,c,k,row[0]))
+assert len(watcher.R27_LIVE_QUERIES)==5
+_m_reprint=make("Microduck 4000 sales after NVIDIA keynote",
+                "Microduck 10000 earlier preorders, 15 motors",
+                "재인용언론")
+mg,ms,mc,mk=classify(_m_reprint)
+assert mg=="microduck_pollen_robotis_orders" and ms==0 and mk==_r27_baseline[0][3],(mg,ms,mk)
+_false_order=make("Microduck ROBOTIS XL330 150000 units confirmed",
+                  "These are 10000 robots times 15 servos, an estimated need, not a signed order",
+                  "증권사 자료")
+assert classify(_false_order)[1]==0
+_real_order=make("Microduck XL330 signed firm purchase order 300000 units",
+                 "Microduck DYNAMIXEL XL330 signed firm purchase order 300000 units",
+                 "ROBOTIS")
+og,os,oc,ok=classify(_real_order)
+assert og==mg and os>=11 and ok!=mk,(og,os,oc)
+_real_ship=make("Microduck first orders shipped", "Microduck first orders shipped today",
+                "Pollen Robotics")
+sg,ss,sc,sk=classify(_real_ship)
+assert sg==mg and ss>=11 and sk!=mk and sk!=ok,(sg,ss,sc)
+_preorder_target=make("Microduck preorders target 50000 units",
+                       "Microduck preorders target 50000 units in 2027",
+                       "Pollen Robotics")
+assert classify(_preorder_target)[1]==0
+_b_reprint=make("Tesla Giga Berlin built 7000 Model Y this week",
+                "Tesla built 7000 Model Y in one week, annualized 364000 is mathematical only",
+                "자동차기사")
+bg,bs,bc,bk=classify(_b_reprint)
+assert bg=="tesla_giga_berlin_modely_week" and bs==0 and bk==_r27_baseline[1][3]
+_b_actual=make("Tesla Giga Berlin 7500 Model Y actually produced in one week",
+               "Tesla Giga Berlin built 7500 Model Y in a week",
+               "Tesla Manufacturing")
+ag,ap,ac,ak=classify(_b_actual)
+assert ag==bg and ap>=11 and ak!=bk,(ag,ap,ac)
+_b_target=make("Tesla Giga Berlin target 7500 Model Y weekly production",
+               "Tesla aims for 7500 Model Y per week",
+               "Tesla Manufacturing")
+assert classify(_b_target)[1]==0
+_hall_planned=make("Tesla Giga Berlin second hall permit filing planned",
+                    "Tesla Giga Berlin second hall 536000 square metres, planned permit application",
+                    "Tesla Manufacturing")
+assert classify(_hall_planned)[1]==0
+_hall_filed=make("Tesla Giga Berlin second hall permit filed",
+                  "Tesla Giga Berlin second hall permit filed with Brandenburg authority",
+                  "Tesla Manufacturing")
+hg,hs,hc,hk=classify(_hall_filed)
+assert hg=="tesla_berlin_second_hall" and hs>=11,(hg,hs,hc)
+_cells_plan=make("Tesla Giga Berlin 4680 battery 18GWh planned",
+                  "Tesla Giga Berlin 4680 18GWh 2027 target, not started",
+                  "Tesla Manufacturing")
+assert classify(_cells_plan)[1]==0
+_cells_actual=make("Tesla Giga Berlin 4680 cell production started",
+                    "Tesla Giga Berlin 4680 cell production started this week",
+                    "Tesla Manufacturing")
+cg,cs,cc,ck=classify(_cells_actual)
+assert cg=="tesla_berlin_4680_cells" and cs>=11,(cg,cs,cc)
+_r27_selected=watcher._r27_select([_r27_baseline[1][4],_r27_baseline[0][4]],set(),False,8)
+assert len(_r27_selected)==2 and len({x["key"] for x in _r27_selected})==2,_r27_selected
+
 print("Physical-AI watcher regression guards: PASS")
