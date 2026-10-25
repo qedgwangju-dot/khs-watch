@@ -45,6 +45,7 @@ CRYPTO_TAX_CARF_OECD = "https://www.oecd.org/content/dam/oecd/en/networks/global
 CRYPTO_TAX_BILL_2029 = "https://community.lawmaking.go.kr/gcom/nsmLmSts/out/2220914/detailRP"
 CRYPTO_TAX_BILL_CARF = "https://lawwatch.kr/bills/22-2221923"
 CRYPTO_TAX_BILL_2030 = "https://lnp.nanet.go.kr/policy/assemblyBodo/detail.do?controlNo=196915"
+CRYPTO_TAX_BILL_2030_JEONG = "https://community.lawmaking.go.kr/gcom/nsmLmSts/out/2220515/detailRP"
 CRYPTO_TAX_REPORT_TIME = dt.datetime(2026, 10, 25, 12, 2, tzinfo=KST)
 
 SOURCES = [
@@ -495,7 +496,8 @@ def crypto_tax_report_candidate(
     summary = (
         "2026-10-25 청와대 관계자를 인용한 언론보도: 2027-01-01 예정 가상자산소득 과세를 "
         "추가 유예하는 방향으로 논의. 아직 시행일 변경 법률은 통과·공포되지 않음. "
-        "유예 방안은 2029년(김상훈안·박민규 CARF 연동안)과 2030년(김재섭안)으로 다름. "
+        "유예 방안은 2029년(김상훈안·박민규 CARF 연동안), 2030년(정성국·김재섭안), "
+        "별도 과세폐지안(송언석안)으로 갈림. "
         f"{legal_status}. {support}. "
         "언론 보도·당정 입장과 국회 의결·법률 공포는 구별."
     )
@@ -526,10 +528,11 @@ def crypto_tax_report_candidate(
         "crypto_tax_legal_effective_date": "2027-01-01",
         "crypto_tax_guidance_rechecked": nts_baseline_confirmed,
         "crypto_tax_support_reprint": secondary_ok,
-        "crypto_tax_bill_numbers": ["2220914", "2221570", "2221923"],
+        "crypto_tax_bill_numbers": ["2217609", "2220515", "2220914", "2221570", "2221923"],
         "crypto_tax_legal_links": [
             CRYPTO_TAX_OFFICIAL_GUIDANCE,
-            CRYPTO_TAX_BILL_2029, CRYPTO_TAX_BILL_CARF, CRYPTO_TAX_BILL_2030,
+            CRYPTO_TAX_BILL_2029, CRYPTO_TAX_BILL_CARF,
+            CRYPTO_TAX_BILL_2030_JEONG, CRYPTO_TAX_BILL_2030,
             CRYPTO_TAX_CARF_OECD,
         ],
         "policy_plain_summary": (
