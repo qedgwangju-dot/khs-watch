@@ -4,12 +4,12 @@
   "source_url": "https://epoch.ai/data/ai-data-centers",
   "data_url": "https://epoch.ai/data/data_centers/data_centers.csv",
   "timeline_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
-  "as_of_kst": "2026-10-25T23:39:20+09:00",
+  "as_of_kst": "2026-10-26T01:11:47+09:00",
   "site_count": 77,
-  "current_it_mw": 11978.3,
+  "current_it_mw": 12009.3,
   "planned_it_mw_2030": 33147.3,
-  "remaining_it_mw": 21169.0,
-  "execution_ratio_pct": 36.14,
+  "remaining_it_mw": 21138.0,
+  "execution_ratio_pct": 36.23,
   "top_remaining_sites": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -299,7 +299,7 @@
     },
     "Meta Los Lunas": {
       "planned": 218.0,
-      "current": 87.0
+      "current": 118.0
     },
     "Meta Montgomery": {
       "planned": 358.0,
