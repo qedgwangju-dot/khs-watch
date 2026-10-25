@@ -199,6 +199,16 @@ def direction_call(payload: dict, pending: dict | None = None) -> tuple[str, str
         unwind_score = carry_score = 0
     risk_emoji = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}.get(min(risk_level, 3), "🟡")
 
+    if not fresh_fx:
+        # A weekend/market closure or failed live request must not be called
+        # live neutral (or a live carry/unwind direction). Retain structural
+        # risk, but explicitly withhold the current directional assessment.
+        return (
+            f"{risk_emoji} 엔캐리 | 현재 방향 보류",
+            "현재 환율 확인 불가·휴장 가능 — 실시간 방향 판정 보류",
+            "⚪ 주식시장 실시간 영향 판정 보류 / 구조적 위험은 별도",
+        )
+
     if spread_opposes_unwind and unwind_score > carry_score and unwind_score < 4:
         direction = "↔ 신호 충돌 — 금리차 확대·청산 취약성 병존"
         title_dir = "↔ 신호 충돌"
