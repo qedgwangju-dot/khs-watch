@@ -193,6 +193,12 @@ def fetch_vix():
         raw=r.read()
     return parse_vix_csv(raw)
 
+def changed_metrics(previous, latest):
+    # 공식기관이 같은 거래일 통계를 정정하면 조용히 무시하지 않고 업데이트한다.
+    if not previous: return False
+    keys=("calls","puts","total","ratio","oi_puts","oi_calls","vix")
+    return any(previous.get(k)!=latest.get(k) for k in keys)
+
 def load_state():
     if not STATE.exists(): return {"history":[],"alert_level":0}
     obj=json.loads(STATE.read_text(encoding="utf-8"))
@@ -206,6 +212,7 @@ def prepare(now):
     old=int(state.get("alert_level",0))
     days=session_dates(now,6)
     by_date={x["date"]:x for x in state["history"]}
+    prior_latest=by_date.get(days[-1].isoformat())
     # Recheck latest day even if in history, to detect source corrections; backfill gaps.
     need=[d for d in days if d.isoformat() not in by_date or d==days[-1]]
     recent=browser_fetch(need)
@@ -227,23 +234,31 @@ def prepare(now):
     if old not in range(4): raise RuntimeError("경보 상태 손상")
     target,event=choose_stage(hist,old)
     fresh=state.get("last_source_date")!=latest["date"]
+    revised=changed_metrics(prior_latest,latest)
     sample=os.environ.get("FORMAT_SAMPLE_SEND","false").lower()=="true"
     preview=os.environ.get("FORMAT_PREVIEW","false").lower()=="true"
-    if not fresh and not sample and not preview:
+    if not fresh and not revised and not sample and not preview:
         REPORT.unlink(missing_ok=True)
-        print("spx_watch_same_date=true alert=false")
+        print("spx_watch_same_date=true unchanged=true alert=false")
         return
-    # Deduplication independently of GitHub event and fresh-data updates.
-    key=f"{latest['date']}:{old}:{target}:{event}"
-    fire=fresh and (target!=old) and key!=state.get("last_alert_key")
+    # Deduplication includes official corrected values, never the image's unknown notional.
+    revision_hash=hashlib.sha256(json.dumps({
+       k:latest[k] for k in ("calls","puts","ratio","vix","oi_puts")},
+       sort_keys=True).encode()).hexdigest()[:12]
+    if revised and target!=old:
+        event="공식 정정으로 "+event
+    key=f"{latest['date']}:{old}:{target}:{event}:{revision_hash}"
+    fire=(fresh or revised) and (target!=old) and key!=state.get("last_alert_key")
     msg=render(latest,hist,old,target,event,now,sample=sample)
     if not fire and not sample and not preview: msg=""
     new={**state,
         "history":hist,"alert_level":target if fire else old,
         "last_source_date":latest["date"],
         "last_checked_kst":now.isoformat(timespec="seconds"),
+        "last_was_revision":revised,
         "last_alert_key":key if fire else state.get("last_alert_key")}
-    AUDIT.write_text(json.dumps({"source_date":latest["date"],"is_new":fresh,"old_level":old,
+    AUDIT.write_text(json.dumps({"source_date":latest["date"],"is_new":fresh,
+        "official_revision":revised,"old_level":old,
         "actual_level":stage(latest["ratio"],latest["vix"]),"next_level":target,"event":event,
         "alert":fire,"sample":sample,"preview":preview,"urls":[latest["source"],VIX_URL],
         "data":latest},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
