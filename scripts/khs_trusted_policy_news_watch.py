@@ -4652,7 +4652,7 @@ def _self_test_deepseek_and_biotech_policy_events() -> None:
     assert story_event_fingerprint(bio, [b]) != story_event_fingerprint(bio, [final])
     assert len(alert_item_groups(bio, [b, final])) == 2
     assert "12월 7일" in str(item_story_profile(bio, [b])["timeline"])
-    assert "신고 전용 단계는" in bio.core
+    assert "단순 신고 단계가 없으며" in bio.core
     assert "금지 기술에만" in " ".join(item_story_profile(bio, [b])["actual_bullets"])
     _self_test_fcc_component_and_agv_cases()
 
