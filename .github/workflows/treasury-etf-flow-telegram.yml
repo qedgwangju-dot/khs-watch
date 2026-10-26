@@ -119,6 +119,8 @@ jobs:
 
       - name: Validate watcher
         if: steps.delivery_gate.outputs.should_run == 'true'
+        env:
+          TREASURY_DAILY_DIGEST: "0"
         run: |
           python -m py_compile scripts/treasury_etf_flow_watch.py
           python -m py_compile scripts/treasury_credit_flow_watch_ishares.py
