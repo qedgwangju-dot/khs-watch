@@ -33,7 +33,7 @@ from market_flow_channels import (
 )
 from market_program_close import collect as collect_program_close, render as render_program_close
 from market_alert_delivery import DeliveryUncertain, delivery_context, receipt_for, send_message
-from market_investors import ALERT_ACTORS, PRIMARY_ACTORS, LEADER_NOTE, TRUST_NOTE, actor_label, trust_direction_lines, trust_value
+from market_investors import ALERT_ACTORS, DISPLAY_ACTORS, PRIMARY_ACTORS, LEADER_NOTE, TRUST_NOTE, actor_label, trust_direction_lines, trust_value, subgroup_value, subgroup_direction_lines
 from market_supplementary_flow import enrich_snapshot, cash_lines
 
 KST = ZoneInfo("Asia/Seoul")
@@ -345,9 +345,13 @@ def investor_current(token: str, market: str, upcode: str, exchgubun: str = "K",
             "개인": fnum(row.get("sv_08")),
             "외국인": fnum(row.get("sv_17")), "기관": fnum(row.get("sv_18")),
             "투신": fnum(row.get("sv_03")),
+            "금융투자": fnum(row.get("sv_01")),
             "actor_quality": {"투신": {"parent": "기관", "amount_field": "sv_03",
                 "verified": fnum(row.get("sv_03")) is not None,
-                "reason": None if fnum(row.get("sv_03")) is not None else "투신 원값sv_03 미제공"}}}
+                "reason": None if fnum(row.get("sv_03")) is not None else "투신 원값sv_03 미제공"},
+                "금융투자": {"parent": "기관", "provider_label": "증권", "amount_field": "sv_01",
+                    "verified": fnum(row.get("sv_01")) is not None,
+                    "reason": None if fnum(row.get("sv_01")) is not None else "증권 원값sv_01 미제공"}}}
 
 
 def program_current(token: str, market: str = "KOSPI") -> dict[str, Any]:
@@ -569,9 +573,9 @@ def backfill_index_bars(token: str, max_rows: int = 500, upcode: str = "001") ->
 
 def _actor_delta(start: dict[str, Any] | None, end: dict[str, Any] | None) -> dict[str, float | None]:
     out: dict[str, float | None] = {}
-    for actor in ALERT_ACTORS:
-        a = trust_value(start) if actor == '투신' else fnum((start or {}).get(actor))
-        b = trust_value(end) if actor == '투신' else fnum((end or {}).get(actor))
+    for actor in DISPLAY_ACTORS:
+        a = subgroup_value(start, actor) if actor in {'투신', '금융투자'} else fnum((start or {}).get(actor))
+        b = subgroup_value(end, actor) if actor in {'투신', '금융투자'} else fnum((end or {}).get(actor))
         out[actor] = (b - a) if a is not None and b is not None else None
     return out
 
@@ -648,7 +652,7 @@ def market_attribution_lines(att: dict[str, Any], market: str, final: bool = Fal
         values = att.get(name)
         if values is not None:
             shown = " · ".join(f"{actor_label(actor)} <b>{formatter(values.get(actor))}</b>"
-                               for actor in ALERT_ACTORS)
+                               for actor in DISPLAY_ACTORS)
             suffix = " <i>(LS 순매수금액 원값·환산 단위 미확인)</i>" if formatter is fmt_raw else ""
             lines.append(f"• {label}: {shown}{suffix}")
             sellers = [(a, values.get(a)) for a in PRIMARY_ACTORS
@@ -666,7 +670,7 @@ def market_attribution_lines(att: dict[str, Any], market: str, final: bool = Fal
         lines.append(f"• 현물·선물 동시매도: <b>{html.escape(cross)}</b>")
     else:
         lines.append("• 현물·선물 동시매도: 판정 보류")
-    lines.extend(trust_direction_lines(att.get("spot"), att.get("futures") or {}))
+    lines.extend(subgroup_direction_lines(att.get("spot"), att.get("futures") or {}))
     lines.append("• " + LEADER_NOTE)
     p = att.get("program") or {}
     pgm_ok = (statuses.get("program") or {}).get("available", att.get("available"))

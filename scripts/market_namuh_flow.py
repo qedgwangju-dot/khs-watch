@@ -37,7 +37,7 @@ _TOKEN_UNTIL = 0.0
 _NEXT = 0.0
 _CODE_SHA = None
 _OBSERVATIONS = {}
-ACTORS = {"외국인계": "frgn_val", "기관": "orgn_val", "개인": "prsn_val", "투신": "ivtr_val"}
+ACTORS = {"외국인계": "frgn_val", "기관": "orgn_val", "개인": "prsn_val", "투신": "ivtr_val", "금융투자": "scrt_val"}
 SUBGROUPS = ("scrt_val", "insu_val", "ivtr_val", "bank_val", "mrbn_val", "fund_val", "pe_fund_val")
 PROGRAM_FIELDS = {"cha2": "arbt_seln_qty", "cha1": "arbt_shnu_qty", "cha3": "arbt_ntby_qty",
                   "bcha2": "nabt_seln_qty", "bcha1": "nabt_shnu_qty", "bcha3": "nabt_ntby_qty",
@@ -557,9 +557,9 @@ def lines(bundle: dict | None, market: str, now_ts=None) -> list[str]:
             if block.get("status") == "held":
                 result.append("• " + label + " 확인 보류")
                 continue
-            labels = ("전체", "차익", "비차익") if kind == "program" else ("외국인계", "기관", "개인", "투신")
+            labels = ("전체", "차익", "비차익") if kind == "program" else tuple(ACTORS)
             result.append("• " + label + " " + " / ".join(("외인계" if actor == "외국인계" else actor) + " " + number(block["values"][actor]) for actor in labels))
-        result.append("공표시각 미제공 · 투신⊂기관 · 구간수급 아님 · 프로그램 주체·선물금액 미확인")
+        result.append("공표시각 미제공 · 투신·금융투자⊂기관 · 구간수급 아님 · 프로그램 주체·선물금액 미확인")
         plain = html.unescape(re.sub(r"<[^>]+>", "", "\n".join(result)))
         if len(plain) > 290:
             raise ValueError("나무 보완 표시 예산 초과")

@@ -58,7 +58,7 @@ class SourceContract(unittest.TestCase):
             self.assertTrue(block["investor_quality"]["verified"])
             blocks[row["time"]] = block
         self.assertEqual(watch._actor_delta(blocks["104200"], blocks["104930"]),
-                         {"외국인": -77, "기관": 77, "개인": -2, "투신": 42})
+                         {"외국인": -77, "기관": 77, "개인": -2, "투신": 42, "금융투자": 34})
 
     def test_partial_zero_amount_row_cannot_create_false_buying_or_fall_back(self):
         # Synthetic corruption of the later readback, not a captured operating response.

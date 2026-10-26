@@ -150,6 +150,12 @@ def parse_futures(body: dict, market: str, received_ts: float) -> dict:
                    and trust_amount is not None and trust_volume is not None
                    and trust_volume.is_integer())
     values["투신"] = trust_amount if trust_valid else None
+    financial_amount = number(row.get("stomsamt"))
+    financial_volume = number(row.get("stomsvol"))
+    financial_valid = (str(summary.get("stocode") or "").strip() == "0001"
+                       and financial_amount is not None and financial_volume is not None
+                       and financial_volume.is_integer())
+    values["금융투자"] = financial_amount if financial_valid else None
     result = {"market": market, "asset": spec["asset"], "source_tr": "t8463",
             "source_scope_verified": True, "sample_ts": ts, "received_ts": received_ts,
             "timestamp_basis": "provider_date_time", "time": row["time"], "date": row["date"],
@@ -158,7 +164,11 @@ def parse_futures(body: dict, market: str, received_ts: float) -> dict:
             "actor_quality": {"투신": {"verified": trust_valid, "parent": "기관",
                 "code": summary.get("invcode"), "amount_field": "invmsamt",
                 "volume_field": "invmsvol", "included_in_reconciliation": False,
-                "reason": None if trust_valid else "투신 코드0003·금액·수량 확인 부족"}},
+                "reason": None if trust_valid else "투신 코드0003·금액·수량 확인 부족"},
+                "금융투자": {"verified": financial_valid, "parent": "기관", "provider_label": "증권",
+                    "code": summary.get("stocode"), "amount_field": "stomsamt", "volume_field": "stomsvol",
+                    "included_in_reconciliation": False,
+                    "reason": None if financial_valid else "증권 코드0001·금액·수량 확인 부족"}},
             "decoded_response_json_sha256": decoded_hash(body), **values}
     if market == "KOSDAQ":
         result["investor_quality"] = futures_investor_quality(summary, row)

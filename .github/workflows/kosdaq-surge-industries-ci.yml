@@ -16,6 +16,8 @@ on:
       - "scripts/market_flow_channels.py"
       - "scripts/market_investors.py"
       - "scripts/test_market_investment_trust.py"
+      - "scripts/test_market_financial_investment.py"
+      - "tests/fixtures/market_financial_source_contract_20261026.json"
       - "scripts/test_market_flow_channels.py"
       - "scripts/probe_market_flow_channels.py"
       - "scripts/kospi_unified_industry_collector.py"
@@ -38,6 +40,8 @@ on:
       - "scripts/market_flow_channels.py"
       - "scripts/market_investors.py"
       - "scripts/test_market_investment_trust.py"
+      - "scripts/test_market_financial_investment.py"
+      - "tests/fixtures/market_financial_source_contract_20261026.json"
       - "scripts/test_market_flow_channels.py"
       - "scripts/probe_market_flow_channels.py"
       - "scripts/kospi_unified_industry_collector.py"
@@ -77,6 +81,7 @@ jobs:
           python scripts/test_kosdaq_surge_industries.py
           python scripts/test_market_flow_channels.py
           python scripts/test_market_investment_trust.py
+          python scripts/test_market_financial_investment.py
           python scripts/test_market_alert_delivery.py
           python scripts/test_market_delivery_recovery.py
           python scripts/test_kospi_shock_episode.py
