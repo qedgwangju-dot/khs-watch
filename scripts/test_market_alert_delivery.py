@@ -145,6 +145,27 @@ class DeliveryTests(unittest.TestCase):
         with self.assertRaises(delivery.DeliveryUncertain): self.send()
         self.assertEqual(len(self.sends()), 1)
 
+    def test_unresolved_send_blocks_same_event_but_not_a_distinct_event(self):
+        def timeout(_request): raise TimeoutError("offline after possible acceptance")
+        self.send_effect = timeout
+        with self.assertRaises(delivery.DeliveryUncertain): self.send()
+        self.assertEqual(len(self.sends()), 1)
+
+        # The exact event identity stays fail-closed even if a later process
+        # renders a different body for it.
+        self.send_effect = None
+        with delivery.delivery_context(market="KOSPI", stage="start", event_start_ts=1000, actor=""):
+            with self.assertRaises(delivery.DeliveryUncertain):
+                delivery.send_message("re-rendered same event")
+        self.assertEqual(len(self.sends()), 1)
+
+        # A different event on the same verified route must not inherit the
+        # first event's uncertainty lock.
+        self.message.update(message_id=80002, text="different market event")
+        with delivery.delivery_context(market="KOSDAQ", stage="start", event_start_ts=2000, actor=""):
+            self.assertEqual(delivery.send_message("different market event"), 80002)
+        self.assertEqual(len(self.sends()), 2)
+
     def test_malformed_response_is_uncertain_and_blocks_replay(self):
         self.send_effect = lambda _r: Response(b"not JSON")
         with self.assertRaises(delivery.DeliveryUncertain): self.send()
@@ -179,9 +200,17 @@ class DeliveryTests(unittest.TestCase):
         self.assertEqual(delivery.receipt_for(80001)["telegram_rendered_text"], self.message["text"])
 
     def test_inflight_crash_marker_blocks_automatic_send(self):
-        delivery._append({"delivery_key": "interrupted", "status": "in_flight",
-                          "recipient_sha256": delivery.digest("-100888777666")})
-        with self.assertRaises(delivery.DeliveryUncertain): self.send()
+        with delivery.delivery_context(market="KOSPI", stage="start", event_start_ts=1000, actor=""):
+            route = delivery.verify_route()
+            identity = {k: delivery._context.get().get(k)
+                        for k in ("market", "stage", "actor", "event_start_ts", "expansion_from")}
+            key = delivery.digest(json.dumps(
+                [route["public"]["bot_username"], route["public"]["recipient_sha256"], identity],
+                sort_keys=True,
+            ))
+            delivery._append({"delivery_key": key, "status": "in_flight",
+                              "recipient_sha256": route["public"]["recipient_sha256"]})
+            with self.assertRaises(delivery.DeliveryUncertain): self.send()
         self.assertFalse(self.sends())
 
     def test_damaged_journal_blocks_send(self):
