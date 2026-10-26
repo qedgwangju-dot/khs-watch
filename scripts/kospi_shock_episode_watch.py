@@ -32,7 +32,7 @@ from market_flow_channels import (
     program_current as market_program_current,
 )
 from market_program_close import collect as collect_program_close, render as render_program_close
-from market_alert_delivery import delivery_context, receipt_for, send_message
+from market_alert_delivery import DeliveryUncertain, delivery_context, receipt_for, send_message
 from market_investors import ALERT_ACTORS, PRIMARY_ACTORS, LEADER_NOTE, TRUST_NOTE, actor_label, trust_direction_lines, trust_value
 from market_supplementary_flow import enrich_snapshot, cash_lines
 
@@ -1913,11 +1913,12 @@ class Watch:
                     "• "+link(KOSDAQ_URL,"코스닥 지수"),
                 ])
                 text += "\n" + "\n".join(cash_lines(self._cash_supplement("KOSDAQ", now_t), "KOSDAQ", now_t))
-                msg_id=await self._send_event("kosdaq_open_gap", {"market":"KOSDAQ","start_ts":self.session_open_ts}, now_t, text)
-                self.msg_ids.append(msg_id)
-                self.kosdaq_opening_gap_sent=True
-                self._record_delivery("kosdaq_open_gap",msg_id,
-                                      {"market":"KOSDAQ","start_ts":now_t,"low_ts":now_t},now_t)
+                msg_id=await self._try_send_event("kosdaq_open_gap", {"market":"KOSDAQ","start_ts":self.session_open_ts}, now_t, text)
+                if msg_id is not None:
+                    self.msg_ids.append(msg_id)
+                    self.kosdaq_opening_gap_sent=True
+                    self._record_delivery("kosdaq_open_gap",msg_id,
+                                          {"market":"KOSDAQ","start_ts":now_t,"low_ts":now_t},now_t)
         if self.kosdaq_episode is None:
             hit,info=self._kosdaq_trigger()
             if not hit:
@@ -1927,9 +1928,13 @@ class Watch:
                 "start_price":info["peak"],"low_ts":now_t,"low_price":price,
                 "sent_drop":abs(float(info["drop"])),"trigger":info,
             }
-            msg_id=await self._send_event("kosdaq_shock_start", ep, now_t, self.build_kosdaq_drop_alert("start",ep,now_t,price))
-            ep["sent_drop"]=self._approved_drop(msg_id, ep["sent_drop"])
+            msg_id=await self._try_send_event("kosdaq_shock_start", ep, now_t, self.build_kosdaq_drop_alert("start",ep,now_t,price))
             self.kosdaq_episode=ep
+            if msg_id is None:
+                ep["start_delivery_status"]="unconfirmed"
+                self._checkpoint_handoff(force=True)
+                return
+            ep["sent_drop"]=self._approved_drop(msg_id, ep["sent_drop"])
             self.msg_ids.append(msg_id)
             self._record_delivery("kosdaq_shock_start",msg_id,ep,now_t)
             return
@@ -1939,10 +1944,11 @@ class Watch:
             ep["low_ts"]=now_t
         total_drop=abs(pct(float(ep["start_price"]),price) or 0.0)
         if total_drop>=float(ep.get("sent_drop",0.0))+0.50:
-            msg_id=await self._send_event("kosdaq_shock_expand", ep, now_t, self.build_kosdaq_drop_alert("expand",ep,now_t,price))
-            ep["sent_drop"]=self._approved_drop(msg_id, total_drop)
-            self.msg_ids.append(msg_id)
-            self._record_delivery("kosdaq_shock_expand",msg_id,ep,now_t)
+            msg_id=await self._try_send_event("kosdaq_shock_expand", ep, now_t, self.build_kosdaq_drop_alert("expand",ep,now_t,price))
+            if msg_id is not None:
+                ep["sent_drop"]=self._approved_drop(msg_id, total_drop)
+                self.msg_ids.append(msg_id)
+                self._record_delivery("kosdaq_shock_expand",msg_id,ep,now_t)
         low_age=now_t-float(ep["low_ts"])
         full_drop=abs(pct(float(ep["start_price"]),float(ep["low_price"])) or 0.0)
         rebound=pct(float(ep["low_price"]),price) or 0.0
@@ -1957,10 +1963,15 @@ class Watch:
                or (now_t-float(ep["start_ts"])>=MAX_EPISODE_SEC and low_age>=600))
         if ended:
             final_att=self._kosdaq_attribution(float(ep["start_ts"]),float(ep["low_ts"]))
-            msg_id=await self._send_event("kosdaq_shock_end", ep, now_t, self.build_kosdaq_drop_alert("end",ep,now_t,price))
+            msg_id=await self._try_send_event("kosdaq_shock_end", ep, now_t, self.build_kosdaq_drop_alert("end",ep,now_t,price))
+            if msg_id is None:
+                ep["end_delivery_status"]="unconfirmed"
             self._remember_completed_episode("KOSDAQ", ep, final_att, now_t)
             self.kosdaq_episode=None
             self.kosdaq_last_episode_end_ts=now_t
+            if msg_id is None:
+                self._checkpoint_handoff(force=True)
+                return
             self.msg_ids.append(msg_id)
             self._record_delivery("kosdaq_shock_end",msg_id,ep,now_t)
             ep_copy=json.loads(json.dumps(ep))
@@ -2064,17 +2075,23 @@ class Watch:
             if not confirm_flow_surge(self.kosdaq_surge_pending, actor, sample_ts, now_ts,
                                       {"spot": end_value}):
                 continue
-            if now_ts - self.kosdaq_surge_sent_at.get(actor, 0.0) < SURGE_COOLDOWN_SEC:
+            last_attempt = max(self.kosdaq_surge_sent_at.get(actor, 0.0),
+                               self._surge_delivery_hold_at("KOSDAQ", actor))
+            if now_ts - last_attempt < SURGE_COOLDOWN_SEC:
                 continue
             industries = await self._surge_industry_context(
                 "KOSDAQ", actor, delta, (pair["start_ts"], pair["end_ts"]), start)
             text = self.build_kosdaq_flow_surge_alert(actor, delta, pair, now_ts, industries)
             confirmation_first = dict(self.kosdaq_surge_pending[actor])
-            msg_id = await self._send_event(
+            msg_id = await self._try_send_event(
                 "kosdaq_flow_surge", {"market": "KOSDAQ", "actor": actor,
                                       "start_ts": pair["start_ts"], "low_ts": pair["end_ts"]},
                 pair["end_ts"], text,
             )
+            if msg_id is None:
+                self.kosdaq_surge_pending.pop(actor, None)
+                self._checkpoint_handoff(force=True)
+                continue
             self.msg_ids.append(msg_id)
             self.kosdaq_surge_sent_at[actor] = now_ts
             self.kosdaq_surge_pending.pop(actor, None)
@@ -2174,17 +2191,23 @@ class Watch:
             end_values = {key: fnum(cand.get(key + "_end_cumulative")) for key in channels}
             if not confirm_flow_surge(self.surge_pending, actor, sample_ts, now_ts, end_values):
                 continue
-            if now_ts - self.surge_sent_at.get(actor, 0.0) < SURGE_COOLDOWN_SEC:
+            last_attempt = max(self.surge_sent_at.get(actor, 0.0),
+                               self._surge_delivery_hold_at("KOSPI", actor))
+            if now_ts - last_attempt < SURGE_COOLDOWN_SEC:
                 continue
             spot_window = cand.get("spot_window")
             industries = await self._surge_industry_context("KOSPI", actor, cand.get("spot"), spot_window, start)
             text = self.build_flow_surge_alert(cand, now_ts, industries)
             confirmation_first = dict(self.surge_pending[actor])
-            msg_id = await self._send_event(
+            msg_id = await self._try_send_event(
                 "flow_surge", {"market": "KOSPI", "actor": actor,
                                "start_ts": sample_ts - SURGE_WINDOW_SEC, "low_ts": sample_ts},
                 sample_ts, text,
             )
+            if msg_id is None:
+                self.surge_pending.pop(actor, None)
+                self._checkpoint_handoff(force=True)
+                continue
             self.msg_ids.append(msg_id)
             self.surge_sent_at[actor] = now_ts
             self.surge_pending.pop(actor, None)
@@ -2252,15 +2275,16 @@ class Watch:
             snap = self.raw.get("last_price_snapshot") or {}
             opct = fnum((snap.get("KOSPI") or {}).get("open_pct"))
             if opct is not None and opct <= OPEN_GAP_ALERT_PCT:
-                msg_id = await self._send_event("open_gap", {"start_ts":self.session_open_ts}, now_t, self.build_open_gap_alert(snap))
-                self.msg_ids.append(msg_id)
-                self.opening_gap_sent = True
-                self.raw["opening_gap_alert"] = {
-                    "message_id": msg_id, "open_pct": opct,
-                    "sent_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
-                }
-                self._record_delivery("open_gap", msg_id,
-                                      {"start_ts": self.session_open_ts, "low_ts": now_t}, now_t)
+                msg_id = await self._try_send_event("open_gap", {"start_ts":self.session_open_ts}, now_t, self.build_open_gap_alert(snap))
+                if msg_id is not None:
+                    self.msg_ids.append(msg_id)
+                    self.opening_gap_sent = True
+                    self.raw["opening_gap_alert"] = {
+                        "message_id": msg_id, "open_pct": opct,
+                        "sent_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
+                    }
+                    self._record_delivery("open_gap", msg_id,
+                                          {"start_ts": self.session_open_ts, "low_ts": now_t}, now_t)
         if self.episode is None:
             hit, info = self._trigger()
             if not hit:
@@ -2285,9 +2309,13 @@ class Watch:
                     "alerted": True, "trigger": info, "price_only": True,
                     "price_only_reason": "missing channel snapshot at/before event start",
                 }
-                msg_id = await self._send_event("price_only_start", ep, now_t, self.build_alert("start", ep, now_t, cur))
-                ep["sent_drop"] = self._approved_drop(msg_id, ep["sent_drop"])
+                msg_id = await self._try_send_event("price_only_start", ep, now_t, self.build_alert("start", ep, now_t, cur))
                 self.episode = ep
+                if msg_id is None:
+                    ep.update(alerted=False, start_delivery_status="unconfirmed")
+                    self._checkpoint_handoff(force=True)
+                    return
+                ep["sent_drop"] = self._approved_drop(msg_id, ep["sent_drop"])
                 self.msg_ids.append(msg_id)
                 self._record_delivery("price_only_start", msg_id, self.episode, now_t)
                 return
@@ -2306,9 +2334,13 @@ class Watch:
                     "alerted": True, "trigger": info, "price_only": True,
                     "price_only_reason": f"start channel alignment exceeds {MAX_FLOW_ALIGNMENT_SEC}s",
                 }
-                msg_id = await self._send_event("price_only_start", ep, now_t, self.build_alert("start", ep, now_t, cur))
-                ep["sent_drop"] = self._approved_drop(msg_id, ep["sent_drop"])
+                msg_id = await self._try_send_event("price_only_start", ep, now_t, self.build_alert("start", ep, now_t, cur))
                 self.episode = ep
+                if msg_id is None:
+                    ep.update(alerted=False, start_delivery_status="unconfirmed")
+                    self._checkpoint_handoff(force=True)
+                    return
+                ep["sent_drop"] = self._approved_drop(msg_id, ep["sent_drop"])
                 self.msg_ids.append(msg_id)
                 self._record_delivery("price_only_start", msg_id, self.episode, now_t)
                 return
@@ -2316,9 +2348,13 @@ class Watch:
             ep = {"start_ts": info["peak_ts"], "start_price": info["peak"],
                             "low_ts": now_t, "low_price": cur, "sent_drop": abs(float(info["drop"])),
                             "alerted": True, "trigger": info}
-            msg_id = await self._send_event("start", ep, now_t, self.build_alert("start", ep, now_t, cur))
-            ep["sent_drop"] = self._approved_drop(msg_id, ep["sent_drop"])
+            msg_id = await self._try_send_event("start", ep, now_t, self.build_alert("start", ep, now_t, cur))
             self.episode = ep
+            if msg_id is None:
+                ep.update(alerted=False, start_delivery_status="unconfirmed")
+                self._checkpoint_handoff(force=True)
+                return
+            ep["sent_drop"] = self._approved_drop(msg_id, ep["sent_drop"])
             self.msg_ids.append(msg_id)
             self._record_delivery("start", msg_id, self.episode, now_t)
             return
@@ -2327,10 +2363,11 @@ class Watch:
             ep["low_price"] = cur; ep["low_ts"] = now_t
         total_drop = abs(pct(float(ep["start_price"]), cur) or 0.0)
         if total_drop >= float(ep.get("sent_drop", 0.0)) + 0.50:
-            msg_id = await self._send_event("expand", ep, now_t, self.build_alert("expand", ep, now_t, cur))
-            ep["sent_drop"] = self._approved_drop(msg_id, total_drop)
-            self.msg_ids.append(msg_id)
-            self._record_delivery("expand", msg_id, ep, now_t)
+            msg_id = await self._try_send_event("expand", ep, now_t, self.build_alert("expand", ep, now_t, cur))
+            if msg_id is not None:
+                ep["sent_drop"] = self._approved_drop(msg_id, total_drop)
+                self.msg_ids.append(msg_id)
+                self._record_delivery("expand", msg_id, ep, now_t)
         low_age = now_t - float(ep["low_ts"])
         full_drop = abs(pct(float(ep["start_price"]), float(ep["low_price"])) or 0.0)
         rebound = pct(float(ep["low_price"]), cur) or 0.0
@@ -2343,13 +2380,18 @@ class Watch:
                  (now_t - float(ep["start_ts"]) >= MAX_EPISODE_SEC and low_age >= 600))
         if ended:
             final_att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
-            msg_id = await self._send_event("end", ep, now_t, self.build_end(ep, now_t, cur))
-            self.msg_ids.append(msg_id)
+            msg_id = await self._try_send_event("end", ep, now_t, self.build_end(ep, now_t, cur))
+            if msg_id is None:
+                ep["end_delivery_status"] = "unconfirmed"
             self._remember_completed_episode("KOSPI", ep, final_att, now_t)
-            # 완료 전송이 확인되면 활성 사건을 먼저 비워 인계 상태에 원상태가 남지 않게 한다.
-            # 기존 코드는 종료 전송 직후 체크포인트에 활성 사건을 저장할 수 있었다.
+            # Incident tracking may finish even when its Telegram receipt is
+            # held. Preserve the uncertainty without blocking the next incident.
             self.episode = None
             self.last_episode_end_ts = now_t
+            if msg_id is None:
+                self._checkpoint_handoff(force=True)
+                return
+            self.msg_ids.append(msg_id)
             self._record_delivery("end", msg_id, ep, now_t)
             ep_copy = json.loads(json.dumps(ep))
             task = asyncio.create_task(self._run_enrichment(ep_copy, final_att))
@@ -2365,8 +2407,7 @@ class Watch:
         self.save_handoff(self.handoff_path)
         self.last_handoff_save_ts = now
 
-    async def _send_event(self, stage: str, ep: dict[str, Any], observed_ts: float,
-                          text: str) -> int:
+    def _event_context(self, stage: str, ep: dict[str, Any], observed_ts: float) -> dict[str, Any]:
         market = str(ep.get("market") or ("KOSDAQ" if stage.startswith("kosdaq") else "KOSPI"))
         series = getattr(self, "kosdaq_idx" if market == "KOSDAQ" else "idx", [])
         current_price = series[-1][1] if series else None
@@ -2378,8 +2419,44 @@ class Watch:
         }
         if stage in {"expand", "kosdaq_shock_expand"}:
             context["expansion_from"] = ep.get("sent_drop", 0.0)
-        with delivery_context(**context):
+        return context
+
+    async def _send_event(self, stage: str, ep: dict[str, Any], observed_ts: float,
+                          text: str) -> int:
+        with delivery_context(**self._event_context(stage, ep, observed_ts)):
             return await asyncio.to_thread(telegram_send, text)
+
+    async def _try_send_event(self, stage: str, ep: dict[str, Any], observed_ts: float,
+                              text: str) -> int | None:
+        """Hold an ambiguous incident without terminating the market observer.
+
+        The sender's durable journal remains authoritative. A held incident is
+        never retried here and never receives a synthetic approval/message ID.
+        """
+        context = self._event_context(stage, ep, observed_ts)
+        identity = {k: context.get(k) for k in
+                    ("market", "stage", "actor", "event_start_ts", "expansion_from")}
+        key = hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()
+        holds = self.raw.setdefault("delivery_holds", {})
+        if key in holds:
+            return None
+        try:
+            return await self._send_event(stage, ep, observed_ts, text)
+        except DeliveryUncertain as exc:
+            holds[key] = {"status": "unconfirmed", "context": identity,
+                          "held_at_ts": time.time(), "observed_ts": observed_ts,
+                          "error": str(exc), "message_id": None}
+            print("market_alert_delivery_held=" + json.dumps(holds[key], ensure_ascii=False), flush=True)
+            self._checkpoint_handoff(force=True)
+            return None
+
+    def _surge_delivery_hold_at(self, market: str, actor: str) -> float:
+        return max((float(row.get("held_at_ts") or 0) for row in
+                    self.raw.get("delivery_holds", {}).values()
+                    if row.get("context", {}).get("market") == market
+                    and row.get("context", {}).get("actor") == actor
+                    and row.get("context", {}).get("stage") in {"flow_surge", "kosdaq_flow_surge"}),
+                   default=0.0)
 
     @staticmethod
     def _approved_drop(message_id: int, fallback: float) -> float:
@@ -2452,6 +2529,7 @@ class Watch:
             "kosdaq_price_age_sec": age(self.kosdaq_idx[-1][0] if self.kosdaq_idx else None),
             "kospi_episode_active": self.episode is not None,
             "kosdaq_episode_active": self.kosdaq_episode is not None,
+            "delivery_holds": len(self.raw.get("delivery_holds", {})),
         }
         print("market_watch_health=" + json.dumps(state, ensure_ascii=False), flush=True)
 
@@ -2485,6 +2563,7 @@ class Watch:
             "kosdaq_last_price_processed_ts": self.kosdaq_last_price_processed_ts,
             "kosdaq_last_price_snapshot": self.kosdaq_last_price_snapshot,
             "daily_close": getattr(self, "daily_close", {}),
+            "delivery_holds": self.raw.get("delivery_holds", {}),
         }
         p.parent.mkdir(parents=True, exist_ok=True)
         # 인계 파일을 직접 덮어쓰다 중단되면 손상된 JSON이 다음 작업에 넘어갈 수 있다.
@@ -2509,6 +2588,14 @@ class Watch:
             if str(data.get("date") or "") != today:
                 self.raw["handoff_loaded"] = {"path": str(p), "status": "stale_date"}
                 return
+            holds = data.get("delivery_holds")
+            if isinstance(holds, dict):
+                self.raw["delivery_holds"] = {
+                    key: row for key, row in holds.items()
+                    if isinstance(row, dict) and row.get("status") == "unconfirmed"
+                    and isinstance(row.get("context"), dict)
+                    and fnum(row.get("held_at_ts")) is not None
+                }
             daily_close = data.get("daily_close")
             if isinstance(daily_close, dict) and daily_close.get("date") == today:
                 self.daily_close = daily_close

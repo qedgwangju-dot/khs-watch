@@ -21,6 +21,9 @@ on:
       - "scripts/kospi_shock_episode_watch.py"
       - "scripts/market_alert_delivery.py"
       - "scripts/test_market_alert_delivery.py"
+      - "scripts/test_market_delivery_recovery.py"
+      - "tests/fixtures/market_delivery_timeout_20261026.json"
+      - ".github/workflows/market-alert-telegram-test.yml"
       - "scripts/kospi_shock_enrichment.py"
       - "scripts/test_kospi_shock_episode.py"
       - "scripts/test_kospi_shock_enrichment.py"
@@ -100,6 +103,7 @@ jobs:
           python scripts/test_market_program_close.py
           python scripts/test_market_close_pair.py
           python scripts/test_market_alert_delivery.py
+          python scripts/test_market_delivery_recovery.py
           python scripts/test_kospi_shock_episode.py
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
