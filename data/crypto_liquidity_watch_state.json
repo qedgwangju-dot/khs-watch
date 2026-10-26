@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-26T15:26:22+09:00",
+  "updated_at_kst": "2026-10-26T22:30:36+09:00",
   "correction_pending": false,
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
@@ -24,19 +24,17 @@
   "btc_etf": {
     "date": "2026-10-23",
     "total_usd_m": -137.9,
-    "status": "partial",
-    "reported_funds": 11,
-    "missing_funds": 1,
-    "missing_tickers": [
-      "HODL"
-    ],
+    "status": "complete",
+    "reported_funds": 12,
+    "missing_funds": 0,
+    "missing_tickers": [],
     "prev_date": "2026-10-22",
     "prev_total_usd_m": -635.6,
     "day_change_usd_m": 497.7,
     "day_change_pct": 78.3,
-    "source_latest_date": "2026-10-23",
-    "source_latest_status": "partial",
-    "pending_date": null,
+    "source_latest_date": "2026-10-26",
+    "source_latest_status": "pending",
+    "pending_date": "2026-10-26",
     "latest_recomputed_total_usd_m": -137.9,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
@@ -84,10 +82,8 @@
         "missing_trading_dates": [],
         "unexpected_trading_dates": [],
         "validation_issue": "",
-        "partial_days": 1,
-        "partial_dates": [
-          "2026-10-23"
-        ],
+        "partial_days": 0,
+        "partial_dates": [],
         "value_usd_m": -39.8,
         "prev_start": "2026-08-24",
         "prev_end": "2026-09-23",
@@ -99,7 +95,7 @@
         "prev_value_usd_m": 3515.2,
         "change_usd_m": -3555.0,
         "direction": "순유입→순유출 전환",
-        "status": "잠정",
+        "status": "집계완료(수정가능)",
         "avg_usd_m_per_session": -1.8,
         "prev_avg_usd_m_per_session": 159.8
       },
@@ -112,11 +108,10 @@
         "missing_trading_dates": [],
         "unexpected_trading_dates": [],
         "validation_issue": "",
-        "partial_days": 3,
+        "partial_days": 2,
         "partial_dates": [
           "2026-07-27",
-          "2026-08-07",
-          "2026-10-23"
+          "2026-08-07"
         ],
         "value_usd_m": 5571.7,
         "prev_start": "2026-04-24",
@@ -135,7 +130,7 @@
       }
     },
     "history_source": "https://farside.co.uk/bitcoin-etf-flow-all-data/",
-    "history_row_count": 1430,
+    "history_row_count": 1432,
     "history_error": "",
     "provisional_history": [
       {

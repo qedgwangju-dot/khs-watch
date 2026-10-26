@@ -31,6 +31,7 @@
     "bastion_partner_primary": false,
     "errors": [
       "wallet_patent_us: HTTP Error 403: Forbidden",
+      "solana_partner_primary: HTTP Error 502: Bad Gateway",
       "bastion_partner_primary: HTTP Error 403: Forbidden"
     ],
     "explicit_reversal_confirmed": false,
@@ -40,7 +41,7 @@
     "kbw_executive_primary_confirmed": true,
     "pilot_live_confirmed": false,
     "samsung_support_confirmed": true,
-    "solana_partner_primary": true,
+    "solana_partner_primary": false,
     "sui_partner_primary": true,
     "wallet_patent_family_confirmed": true,
     "wallet_patent_news_confirmed": true,
@@ -55,7 +56,6 @@
     "official_job_scope_now": false,
     "partner_primary_confirmed": true,
     "partner_primary_sources": [
-      "Solana",
       "Sui"
     ],
     "pilot_or_launch": false,
@@ -74,5 +74,5 @@
     "wallet_patent_publication": "US20260212355A1",
     "wallet_patent_publication_date": "2026-07-23"
   },
-  "updated_at_kst": "2026-10-26T15:26:54+09:00"
+  "updated_at_kst": "2026-10-26T22:31:09+09:00"
 }
