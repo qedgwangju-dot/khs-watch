@@ -10,6 +10,9 @@ on:
       - "scripts/kospi_shock_episode_watch.py"
       - "scripts/market_alert_delivery.py"
       - "scripts/test_market_alert_delivery.py"
+      - "scripts/test_market_delivery_recovery.py"
+      - "tests/fixtures/market_delivery_timeout_20261026.json"
+      - ".github/workflows/market-alert-telegram-test.yml"
       - "scripts/market_flow_channels.py"
       - "scripts/market_investors.py"
       - "scripts/test_market_investment_trust.py"
@@ -29,6 +32,9 @@ on:
       - "scripts/kospi_shock_episode_watch.py"
       - "scripts/market_alert_delivery.py"
       - "scripts/test_market_alert_delivery.py"
+      - "scripts/test_market_delivery_recovery.py"
+      - "tests/fixtures/market_delivery_timeout_20261026.json"
+      - ".github/workflows/market-alert-telegram-test.yml"
       - "scripts/market_flow_channels.py"
       - "scripts/market_investors.py"
       - "scripts/test_market_investment_trust.py"
@@ -72,6 +78,7 @@ jobs:
           python scripts/test_market_flow_channels.py
           python scripts/test_market_investment_trust.py
           python scripts/test_market_alert_delivery.py
+          python scripts/test_market_delivery_recovery.py
           python scripts/test_kospi_shock_episode.py
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py

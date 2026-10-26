@@ -1,0 +1,69 @@
+name: Market Alert Telegram Connection Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_test:
+        description: Send one clearly labelled test to the existing market alert recipient
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-alert-telegram-connection-test
+  cancel-in-progress: false
+
+jobs:
+  telegram-test:
+    if: github.event_name == 'workflow_dispatch' && inputs.confirm_test && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: khs887900887900008879_bot
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+      MARKET_ALERT_DELIVERY_DIR: out/market_alert_test_delivery
+      MARKET_ALERT_CODE_SHA: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Send one labelled test and preserve the returned receipt
+        run: |
+          python - <<'PY'
+          import datetime as dt, json, os, pathlib, sys
+          sys.path.insert(0, "scripts")
+          from market_alert_delivery import delivery_context, receipt_for, send_message
+
+          now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+          text = (
+              "🧪 <b>코스피·코스닥 알림 연결 테스트</b>\n"
+              f"<code>{now:%Y-%m-%d %H:%M:%S} KST</code>\n"
+              "기존 장중 시황 수신 경로의 실제 전송 점검입니다.\n"
+              "이 메시지에는 시장·수급 판정이 없습니다.\n"
+              f"실행 ID: {os.environ['GITHUB_RUN_ID']}"
+          )
+          with delivery_context(market="CONNECTION_TEST", stage="connection_test",
+                                event_start_ts=int(os.environ["GITHUB_RUN_ID"])):
+              message_id = send_message(text)
+          receipt = receipt_for(message_id)
+          assert receipt and receipt["status"] == "confirmed"
+          target = pathlib.Path("out/market_alert_test_receipt.json")
+          target.parent.mkdir(parents=True, exist_ok=True)
+          target.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+      - name: Preserve test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-alert-test-${{ github.run_id }}
+          path: |
+            out/market_alert_test_delivery
+            out/market_alert_test_receipt.json
+          if-no-files-found: warn
+          retention-days: 14
