@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-27T00:23:53+09:00",
+  "updated_at_kst": "2026-10-27T05:43:47+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -41,6 +41,7 @@
     "27f85e070f62c260de7cb002",
     "2b939f56287ecd7e580d3744",
     "2be3c9dce3ee541c0e8e9e37",
+    "2c8d0e3b6f70ed5720ba30bd",
     "2d27da4b09baa1d0f61ace3d",
     "2d9314e7dce8075fefab9289",
     "2dc1704a7586d7a72e6bb296",
@@ -271,20 +272,17 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 3,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1325.28,
-    "date": "2026-10-26 일일 기준 · ECB/Frankfurter · 조회 2026-10-27 00:24 KST · 보조 API 2026-10-26 · 차이 0.10% · 일중 기준시각 차이 가능",
+    "date": "2026-10-26 일일 기준 · ECB/Frankfurter · 조회 2026-10-27 05:44 KST · 보조 API 2026-10-26 · 차이 0.10% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [
-    "원문 URL 확인 실패: Wccftech | Samsung & SK hynix Reportedly Set To Ramp 8-Layer HBM4 Shipments For NVIDIA’s Rubin Ultra In Q2 2027, As Heat And Yield Issues Continue To Complicate 12-Layer Stack Manufacturing - Wccftech",
-    "원문 URL 확인 실패: Wccftech | Samsung & SK hynix Reportedly Set To Ramp 8-Layer HBM4 Shipments For NVIDIA’s Rubin Ultra In Q2 2027, As Heat And Yield Issues Continue To Complicate 12-Layer Stack Manufacturing - Wccftech"
-  ],
+  "errors": [],
   "ai_component_leadtime": {
     "as_of": "2026-10-19",
     "source": "https://insights.trendforce.com/p/weekly-radar-006",
@@ -410,7 +408,7 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-27T00:24:09+09:00",
+    "last_checked_at_kst": "2026-10-27T05:44:05+09:00",
     "candidate_count": 2,
     "mlcc_vendor_watch": {
       "version": 2,
@@ -460,7 +458,7 @@
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-27T00:24:44+09:00",
+    "checked_at_kst": "2026-10-27T05:44:47+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-26T13:51:20+09:00",
@@ -528,7 +526,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-27",
-    "last_checked_at_kst": "2026-10-27T00:24:12+09:00",
+    "last_checked_at_kst": "2026-10-27T05:44:31+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -587,7 +585,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-27T00:24:12+09:00",
+        "checked_at_kst": "2026-10-27T05:44:31+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -665,7 +663,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-27",
-    "last_checked_at_kst": "2026-10-27T00:24:37+09:00",
+    "last_checked_at_kst": "2026-10-27T05:44:40+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -709,7 +707,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-27T00:24:39+09:00",
+    "last_checked_at_kst": "2026-10-27T05:44:41+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -833,7 +831,7 @@
       "milestones": {}
     },
     "nvidia_substrate_source_checks": {
-      "checked_at_kst": "2026-10-27T00:24:39+09:00",
+      "checked_at_kst": "2026-10-27T05:44:41+09:00",
       "nvidia": "verified",
       "samsung": "verified",
       "fully_verified": true
