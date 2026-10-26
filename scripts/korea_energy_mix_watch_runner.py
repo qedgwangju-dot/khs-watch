@@ -47,6 +47,14 @@ def semantic_event_key(row: dict[str, Any]) -> str:
     """기사 날짜·언론사가 아니라 정책 주제와 실제 상태를 기준으로 묶는다."""
     title = watch.norm(str(row.get("title", ""))).lower()
 
+    # 2026-10-23 AIDC 수요 3~4GW 감액 검토는 10월 초의 일반 '과잉추계' 언급과 다른 사건.
+    # 기존 2040년 총 AIDC 전력수요 11.9GW와 신규 증가분 7.9GW의 분모도 구분한다.
+    aidc_load = any(term in title for term in ("aidc", "데이터센터", "ai 인프라", "ai인프라"))
+    demand_cut = any(term in title for term in ("전력수요", "전력 수요", "전력계획", "전기본"))
+    cut_marker = any(term in title for term in ("반토막", "3~4gw", "3∼4gw", "3-4gw", "3～4gw", "대폭 축소", "수요 축소"))
+    if (aidc_load and demand_cut and cut_marker) or ("정부 전력계획 반토막" in title):
+        return "12th-plan|aidc-demand|proposed-3to4gw-cut"
+
     if any(term in title for term in ("최종 확정", "최종안", "의결")):
         return "12th-plan|final"
     if "정부안" in title and any(term in title for term in ("발표", "공개", "확정")):
@@ -192,6 +200,10 @@ def semantic_event_level(row: dict[str, Any]) -> int:
         return 2 if bool(row.get("official")) else 1
 
     if key == "12th-plan|demand|datacenter-overestimate":
+        return 2 if bool(row.get("official")) else 1
+
+    if key == "12th-plan|aidc-demand|proposed-3to4gw-cut":
+        # 언론의 공식 발표 전 '검토'를 예산·전원 확정과 혼동하지 않는다.
         return 2 if bool(row.get("official")) else 1
 
     if key.startswith("12th-plan|fact|"):
