@@ -85,13 +85,13 @@ def semantic_key(row: dict[str, Any]) -> str:
     """URL·언론사·기사 제목 해시가 아니라 사업·법령의 의미 있는 상태로 분류."""
     title = base.norm(str(row.get("title", ""))).lower()
     aidc_topic = any(x in title for x in ("aidc", "인공지능 데이터센터", "ai 데이터센터"))
-    support_marker = any(x in title for x in ("생태계 지원", "규제합리화", "규제 완화", "국산화", "소부장"))
-    if aidc_topic and support_marker and any(x in title for x in ("생태계", "2천억", "2000억", "2,000억", "규제", "인허가", "국산화", "소부장")):
-        return "aidc|ecosystem-support|government-proposal"
     if aidc_topic and any(x in title for x in ("예산 최종 확정", "예산 국회 확정")) and any(
         x in title for x in ("국산화", "소부장", "2천억", "2000억")
     ):
         return "aidc|ecosystem-support|budget-enacted"
+    support_marker = any(x in title for x in ("생태계 지원", "규제합리화", "규제 완화", "국산화", "소부장"))
+    if aidc_topic and support_marker and any(x in title for x in ("생태계", "2천억", "2000억", "2,000억", "규제", "인허가", "국산화", "소부장")):
+        return "aidc|ecosystem-support|government-proposal"
     if ("sgc에너지" in title or "sgc ai 인프라" in title) and (
         "군산" in title or "300mw" in title or "60mw" in title
     ):
@@ -393,6 +393,31 @@ def verify_change(row: dict[str, Any]) -> tuple[bool, str]:
             return False, "공식 확정 본문 증거 없음"
         return True, "공식 법령 단계 확인"
 
+    if key == "aidc|ecosystem-support|government-proposal":
+        return (
+            [
+                "• 2026년 10월 23일 제2차 규제합리화위원회에서 AIDC 생태계 지원 방안을 발표",
+                "• 2027년 국산 소재·부품·장비·소프트웨어 개발·실증 신규사업 <b>약 2,000억원은 정부 예산안 단계</b>이며 배정·수주 확정액이 아님",
+                "• 인허가 일괄처리·전담창구·주차장 및 충전설비 규제 완화 추진, <b>2027년 상반기 특구 지정은 예정 단계</b>",
+                "• 전산실·전력·냉각 무인설비를 규제 면적에서 제외하는 시행령 방향과 지역 상생계획 의무화가 추진됨",
+            ],
+            [
+                "• 기존 AIDC 특별법 하위법령 설계에서 <b>구체적인 지원 예산·시설 규제·지역 특구 시간표를 함께 제시</b>한 새 정부 발표",
+                "• 지원 확대가 데이터센터의 전력 접속 승인·송전선 착공·실제 전원 인가까지 보장한다는 의미는 아님",
+            ],
+            [
+                "• 국산 냉각·UPS·배전·운영 소프트웨어는 정부 과제 공고→고객 검증→장비 조달을 확인해야 실제 매출 연결",
+                "• 관측 순서: 2026년 10월 말 시행령 입법예고→2027년 예산 확정·공모→2027년 상반기 특구 지정→개별 프로젝트 수전·착공",
+            ],
+        )
+
+    if key == "aidc|ecosystem-support|budget-enacted":
+        return (
+            ["• AIDC 국산화·실증 지원 예산이 국회·공식 문서에서 최종 확정된 상태"],
+            ["• 정부안 2,000억원 발표와 최종 예산 의결은 서로 다른 사건"],
+            ["• 세부 배정·수행기관·정부과제 공고·수혜기업 확정까지 별도 확인"],
+        )
+
     if key == "aidc|subordinate-rules-design":
         if not any(x in body for x in ("하위법령", "공개토론회", "연구반", "시행령")):
             return False, "하위법령 설계 공식·보도 근거 부족"
@@ -564,6 +589,8 @@ def source_link(row: dict[str, Any]) -> str:
 def render(row: dict[str, Any]) -> str:
     title = html.escape(base.norm(str(row.get("title", ""))))
     category = html.escape(str(row.get("category", "AIDC 특별법")))
+    if str(row.get("event_key", "")).startswith("aidc|ecosystem-support|"):
+        category = "AIDC 생태계 지원·정부안" if row["event_key"].endswith("government-proposal") else "AIDC 지원 예산 확정"
     if str(row.get("event_key")) == "aidc|tax-credit|eligibility":
         category = "공식 세제 변경" if verified_official_url(row) else "산업계 세제 개선 요구"
     new, changed, invest = fact_lines(row)
@@ -648,6 +675,12 @@ def main() -> int:
         if dt and now - dt.astimezone(timezone.utc) > timedelta(days=MAX_AGE_DAYS):
             continue
         recent.append(row)
+
+    # 공식 정책브리핑 원문을 검색엔진에 의존하지 않고 직접 재검증한다.
+    # 발행 후 21일 이내만 후보로 넣고, 본문 추출/증거 검증 실패 시 미전송.
+    baseline_date = base.parse_date(AIDC_ECOSYSTEM_OFFICIAL_BASELINE["published"])
+    if baseline_date and timedelta(0) <= now - baseline_date.astimezone(timezone.utc) <= timedelta(days=MAX_AGE_DAYS):
+        recent.append(dict(AIDC_ECOSYSTEM_OFFICIAL_BASELINE))
 
     events = collapse(recent)
     seen = {str(k): int(v) for k, v in dict(state.get("seen_events", {})).items()}
