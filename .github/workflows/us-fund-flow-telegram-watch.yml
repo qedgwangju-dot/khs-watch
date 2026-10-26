@@ -7,6 +7,8 @@ on:
       - ".github/workflows/us-fund-flow-telegram-watch.yml"
       - "scripts/us_fund_flow_watch.py"
       - "scripts/us_positioning_options_sox_watch.py"
+      - "scripts/us_tech_etf_proxy_watch.py"
+      - "tests/test_us_tech_etf_proxy_watch.py"
   schedule:
     - cron: "17 12,15,18,21 * * 1-5"
   pull_request:
