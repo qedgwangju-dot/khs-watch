@@ -725,3 +725,65 @@ def test_reindexed_old_original_is_suppressed_before_telegram(monkeypatch):
     )
     assert not found
     assert seen_events["12th-plan|gridform-old"] > 0
+
+
+def test_20261023_aidc_proposed_cut_key_and_roll_back(monkeypatch):
+    from scripts import korea_energy_mix_watch_runner as runner
+    media = {
+        "id": "mk-12184442",
+        "title": "AI 키운다더니…정부 전력계획 반토막 - 매일경제",
+        "publisher": "매일경제",
+        "official": False,
+        "published": "Fri, 23 Oct 2026 08:47:00 GMT",
+        "category": "전력수요 전망",
+        "plan_stage": "보도·검토",
+        "stage": 5,
+        "url": "https://www.mk.co.kr/news/all/12184442",
+    }
+    alt = dict(media, id="alternate-news", title="AIDC 데이터센터 전력수요 3~4GW 축소 검토")
+    key = "12th-plan|aidc-demand|proposed-3to4gw-cut"
+    assert runner.semantic_event_key(media) == key
+    assert runner.semantic_event_key(alt) == key
+    assert runner.semantic_event_key({
+        "title": "정부 AIDC 데이터센터 전력수요 과잉추계 재점검"
+    }) == "12th-plan|demand|datacenter-overestimate"
+
+    row = dict(media, event_key=key, members=[media])
+    monkeypatch.setattr(
+        runner,
+        "_ORIGINAL_SELECT_NOTIFY",
+        lambda rows, seen_ids, seen_events: ([row], {"mk-12184442"}, {key: 1}),
+    )
+    monkeypatch.setattr(runner, "fetch_article_body", lambda url, evidence: (url, "", "source error"))
+    notifications, ids, events = runner.verify_source_dates_before_notify([row], set(), {})
+    assert notifications == []
+    assert ids == set()
+    assert key not in events
+
+    full = (
+        "2026년 10월 23일 AIDC 인공지능 데이터센터의 전력수요를 "
+        "12차 전기본에서 7.9GW 반영하던 것에서 3~4GW가량 축소 검토 중이다. "
+        "정부의 2026년 8월 공식 전망은 기존 4.0GW에서 총 11.9GW로 바뀌었으며 "
+        "새로운 7.9GW는 전체가 아니라 증가분이다. 아직 최종 확정은 아니다. "
+    ) * 3
+    monkeypatch.setattr(runner, "fetch_article_body", lambda url, evidence: (url, full, ""))
+    notifications, ids, events = runner.verify_source_dates_before_notify([row], set(), {})
+    assert len(notifications) == 1
+    assert key in events and "mk-12184442" in ids
+    explanation = runner.interpret_article_body(row, full, "")
+    assert "총 11.9GW" in explanation
+    assert "7.9GW" in explanation
+    assert "3~4GW" in explanation
+    assert "확정" in explanation
+
+
+def test_aidc_electricity_press_is_not_final_approval():
+    from scripts import korea_energy_mix_watch_runner as runner
+    row = {
+        "title": "AIDC 데이터센터 전력수요 3~4GW 축소 검토",
+        "publisher": "매일경제",
+        "official": False,
+    }
+    assert runner.semantic_event_level(row) == 1
+    assert runner.semantic_event_level({**row, "official": True}) == 2
+    assert runner.semantic_event_key(row) != "12th-plan|final"
