@@ -361,6 +361,20 @@ def send_exact(text):
     return msg_id
 
 
+def previously_sent_signal_keys(state):
+    """Track date+signal rather than only the most recently sent composite alert."""
+    recorded = state.get("sent_signal_keys", [])
+    if not isinstance(recorded, list) or any(not isinstance(x, str) for x in recorded):
+        raise RuntimeError("Invalid ETF alert deduplication state")
+    keys = set(recorded)
+    prev = state.get("last_alert") or {}
+    if prev.get("message_id") and prev.get("alert_key"):
+        parts = str(prev["alert_key"]).split("|")
+        if len(parts) > 1:
+            keys.update(parts[0] + "|" + name for name in parts[1:])
+    return keys
+
+
 def run(validate_only=False, now=None, state_path=STATE, getter=collect):
     state=load_state(state_path)
     try:
@@ -370,8 +384,13 @@ def run(validate_only=False, now=None, state_path=STATE, getter=collect):
         return {"status":"source_withheld","reason":f"{type(e).__name__}: {str(e)[:220]}","telegram_sent":False}
     except Exception as e:
         return {"status":"source_withheld","reason":f"{type(e).__name__}: {str(e)[:220]}","telegram_sent":False}
+    sent_keys = previously_sent_signal_keys(state)
+    fresh_signals = [name for name in outcome["signals"]
+                     if outcome["date"] + "|" + name not in sent_keys]
+    if outcome["signals"] and not fresh_signals and not validate_only:
+        return {"status":"duplicate_suppressed","date":outcome["date"],"telegram_sent":False}
     fx,fx_date=None,None
-    if outcome["signals"]:
+    if fresh_signals:
         try:
             q=ishares.get_usdkrw()
             fx=float(q["rate"])
@@ -380,21 +399,23 @@ def run(validate_only=False, now=None, state_path=STATE, getter=collect):
                 raise ValueError("invalid USDKRW quote")
         except Exception as e:
             return {"status":"fx_withheld","reason":type(e).__name__,"telegram_sent":False}
-    last=state.get("last_alert") or {}
-    if outcome["signals"] and last.get("alert_key")==outcome["alert_key"] and last.get("message_id"):
-        return {"status":"duplicate_suppressed","date":outcome["date"],"telegram_sent":False}
-    if outcome["signals"]:
-        body=render(outcome,fx,fx_date)
+    new_outcome = {**outcome, "signals":fresh_signals,
+                   "alert_key":outcome["date"] + "|" + "|".join(sorted(fresh_signals))}
+    if fresh_signals:
+        body=render(new_outcome,fx,fx_date)
         OUT.mkdir(parents=True,exist_ok=True)
         CANDIDATE.write_text(body+"\n",encoding="utf-8")
     if validate_only:
         return {"status":"validated","date":outcome["date"],"signals":outcome["signals"],
                 "movements":outcome["movements"],"telegram_sent":False}
-    if outcome["signals"]:
+    if fresh_signals:
         message_id=send_exact(body)
+        sent_keys.update(outcome["date"] + "|" + name for name in fresh_signals)
+        state["sent_signal_keys"]=sorted(sent_keys)[-300:]
         state["last_alert"]={
-            "alert_key":outcome["alert_key"],"date":outcome["date"],
+            "alert_key":new_outcome["alert_key"],"date":outcome["date"],
             "message_id":message_id,"bot_username":EXPECTED_BOT,
+            "chat_id_verified":True,
             "sent_at_kst":dt.datetime.now(KST).isoformat(timespec="seconds"),
         }
         OUT.mkdir(parents=True,exist_ok=True)
@@ -402,10 +423,10 @@ def run(validate_only=False, now=None, state_path=STATE, getter=collect):
     state["history"]=outcome["new_history"]
     state["last_update_date"]=outcome["date"]
     save_state(state,state_path)
-    return {"status":"sent" if outcome["signals"] else "baseline_or_no_signal",
-            "date":outcome["date"],"signals":outcome["signals"],
-            "telegram_sent":bool(outcome["signals"]),
-            "message_id":(state.get("last_alert") or {}).get("message_id") if outcome["signals"] else None}
+    return {"status":"sent" if fresh_signals else "baseline_or_no_signal",
+            "date":outcome["date"],"signals":fresh_signals,
+            "telegram_sent":bool(fresh_signals),
+            "message_id":(state.get("last_alert") or {}).get("message_id") if fresh_signals else None}
 
 
 def main():
