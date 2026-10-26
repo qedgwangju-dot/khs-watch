@@ -1,5 +1,7 @@
 """Offline tests for the public tech ETF creations/redemptions proxy."""
 import datetime as dt
+import io
+import os
 import json
 import tempfile
 import unittest
@@ -256,6 +258,30 @@ class TechEtfProxyTests(unittest.TestCase):
         self.assertEqual(result["status"],"duplicate_suppressed")
         send.assert_not_called()
 
+
+
+    def test_telegram_response_wrong_chat_id_rejected(self):
+        identity={"ok":True,"result":{"username":w.EXPECTED_BOT}}
+        wrong={"ok":True,"result":{"message_id":1284,"chat":{"id":-1009999}}}
+        responses=[io.BytesIO(json.dumps(x).encode()) for x in (identity,wrong)]
+        env={"TELEGRAM_BOT_TOKEN":"test-token-not-secret",
+             "TELEGRAM_CHAT_ID":"-1001234",
+             "EXPECTED_TELEGRAM_BOT_USERNAME":w.EXPECTED_BOT}
+        with patch.dict(os.environ,env), patch.object(
+            w.urllib.request,"urlopen",side_effect=responses):
+            with self.assertRaisesRegex(RuntimeError,"unexpected chat"):
+                w.send_exact("testing recipient verification")
+
+    def test_telegram_response_correct_chat_id_is_acknowledged(self):
+        identity={"ok":True,"result":{"username":w.EXPECTED_BOT}}
+        correct={"ok":True,"result":{"message_id":1284,"chat":{"id":-1001234}}}
+        responses=[io.BytesIO(json.dumps(x).encode()) for x in (identity,correct)]
+        env={"TELEGRAM_BOT_TOKEN":"test-token-not-secret",
+             "TELEGRAM_CHAT_ID":"-1001234",
+             "EXPECTED_TELEGRAM_BOT_USERNAME":w.EXPECTED_BOT}
+        with patch.dict(os.environ,env), patch.object(
+            w.urllib.request,"urlopen",side_effect=responses):
+            self.assertEqual(w.send_exact("testing recipient verification"),1284)
 
 if __name__=="__main__":
     unittest.main()
