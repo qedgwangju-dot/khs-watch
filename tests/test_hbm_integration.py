@@ -417,4 +417,42 @@ class BernsteinReversalTests(unittest.TestCase):
         self.assertNotIn(row['key'],later['pending'])
 
 
+
+class NvidiaHBM4EightHiTests(unittest.TestCase):
+    def item(self,url):
+        return {'title':'HBM4 8단','direct_link':url,'source':'테스트',
+                'published_at_kst':'2026-10-26T12:00:00+09:00'}
+    def test_joint_media_not_two_confirmed_suppliers(self):
+        self.assertEqual(m.parse_nvidia_hbm4_8hi(self.item('https://zdnet.co.kr/a'),
+            '삼성전자와 SK하이닉스가 내년 2월 NVIDIA HBM4 8단을 양산 출하할 전망'),[])
+    def test_official_future_schedule_not_actual_delivery(self):
+        r=m.parse_nvidia_hbm4_8hi(self.item('https://news.samsung.com/global/a'),
+            'Samsung Electronics plans to begin shipping HBM4 8-Hi to NVIDIA in February 2027.')[0]
+        self.assertEqual(r['value']['target_month'],'2027-02')
+        self.assertTrue(r['value']['official_target'])
+        self.assertIsNone(r['value']['official_stage'])
+    def test_sk_hynix_official_8hi_qualification(self):
+        r=m.parse_nvidia_hbm4_8hi(self.item('https://news.skhynix.co.kr/a'),
+            'SK hynix has qualified HBM4 8-Hi for NVIDIA.')[0]
+        self.assertEqual(r['value']['official_stage'],'qualified')
+    def test_generic_hbm4_hbm4e_and_negated_no_promotion(self):
+        for msg in ('Samsung has begun shipping HBM4 to NVIDIA in 2026.',
+                    'Samsung has begun shipping HBM4E 8-Hi to NVIDIA.',
+                    'Samsung has NOT started shipping HBM4 8-Hi to NVIDIA.'):
+            self.assertEqual(m.parse_nvidia_hbm4_8hi(self.item('https://news.samsung.com/a'),msg),[])
+    def test_shipment_does_not_invent_revenue(self):
+        r=m.parse_nvidia_hbm4_8hi(self.item('https://news.samsung.com/a'),
+            'Samsung Electronics began shipping HBM4 8-Hi to NVIDIA in February 2027.')[0]
+        self.assertEqual(r['value']['official_stage'],'commercial_shipment')
+        self.assertIsNone(r['value']['recognized_revenue_krw'])
+        self.assertEqual(m.comparison(r,r),[])
+    def test_baseline_avoids_retroactive_alert(self):
+        import json
+        baseline=json.loads((pathlib.Path(__file__).resolve().parents[1]/'data/hbm_memory_baselines.json').read_text(encoding='utf-8'))
+        seeds=[x for x in baseline['records'] if x['axis']=='nvidia_hbm4_8hi_vendor']
+        self.assertEqual(len(seeds),2)
+        st=m.update_state({},[],datetime(2026,10,26,15),seeds)
+        self.assertNotIn(seeds[0]['key'],st['pending'])
+        self.assertEqual(st['nvidia_hbm4_8hi_track_version'],1)
+
 if __name__=='__main__':unittest.main()

@@ -23,6 +23,7 @@ GLASS_SUBSTRATE_TRACK_VERSION = 5
 NVIDIA_GLASS_TRACK_VERSION = 1
 FOPLP_TRACK_VERSION = 1
 HBF_TRACK_VERSION = 1
+NVIDIA_HBM4_8HI_TRACK_VERSION = 1
 HYNIX_FINANCE_VERSION = 1
 HYNIX_FINANCE_GOV = "https://www.korea.kr/news/policyNewsView.do?newsId=148973781"
 HYNIX_FINANCE_PRESS = "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156785695"
@@ -66,6 +67,8 @@ EXTRA_QUERIES = [
     '(site:nvidianews.nvidia.com OR site:investor.nvidia.com OR site:samsungsem.com OR site:skc.kr) (NVIDIA OR 엔비디아) ("glass core" OR "glass substrate" OR 유리기판) (qualification OR contract OR pilot OR production)',
     '(site:news.skhynix.co.kr OR site:news.skhynix.com OR site:sandisk.com) ("HBF" OR "High Bandwidth Flash") (standard OR specification OR final OR prototype OR pilot OR qualification OR contract OR shipment OR customer OR 규격 OR 양산 OR 2027)',
     '(site:opencompute.org OR site:news.skhynix.co.kr) "HBF" ("V0.7.0" OR "V1.0.0" OR 최종 OR updated)',
+    '(Samsung OR SK hynix OR 삼성전자 OR SK하이닉스) HBM4 (8-Hi OR 8단) NVIDIA (2027 OR February OR 2월 OR qualification OR mass production OR shipment)',
+    '(site:news.samsung.com OR site:news.skhynix.co.kr OR site:nvidianews.nvidia.com) HBM4 (8-Hi OR 8단) NVIDIA (contract OR shipment OR qualified OR 2027)',
     '(SK하이닉스 OR SK hynix) (수출공급망 강화보증 OR 상생 무역금융 OR 2조원 보증 OR 무역보험공사) (협약 OR 보증서 OR 발급 OR 지원) when:30d',
     '(SK하이닉스 OR SK hynix) (트리니티팹 OR Trinity Fab OR R&D 도전 보상제) (개소 OR 검증 OR 양산 OR 사업화) when:90d',
 
@@ -75,7 +78,7 @@ EXTRA_QUERIES = [
 COMPANIES = {'samsung': r'삼성(?:전자)?|Samsung(?: Electronics)?',
              'skhynix': r'SK\s?하이닉스|SK\s*hynix', 'micron': r'마이크론|Micron'}
 OFFICIAL = {'news.samsung.com': 'samsung', 'semiconductor.samsung.com': 'samsung',
-            'news.skhynix.com': 'skhynix', 'korea.kr':'motie', 'm.korea.kr':'motie',
+            'news.skhynix.com': 'skhynix', 'news.skhynix.co.kr': 'skhynix', 'korea.kr':'motie', 'm.korea.kr':'motie',
             'investors.micron.com': 'micron', 'micron.com': 'micron',
             'nvidianews.nvidia.com': 'nvidia', 'developer.nvidia.com': 'nvidia',
             'chemtronics.co.kr': 'chemtronics', 'www.chemtronics.co.kr': 'chemtronics',
@@ -223,6 +226,10 @@ def local_period(text, published):
 
 
 def is_axis_text(text):
+    if (re.search(r'\bHBM4\b',text,re.I) and
+        re.search(r'8[- ]?(?:Hi|high)|8\s*단',text,re.I) and
+        re.search(r'NVIDIA|엔비디아',text,re.I)):
+        return True
     if (re.search(r'\bNVIDIA\b|엔비디아|英伟达', text, re.I) and
             re.search(r'glass[- ]?(?:core|substrates?|interposer)|유리\s*기판|玻璃基板|玻璃芯|TGV', text, re.I)):
         return True
@@ -1852,6 +1859,1681 @@ def parse_nvidia_glass_adoption(item, body):
         scope='nvidia_glass_core_not_organic_ABF_not_optical_fiber')
     row['evidence']='official' if stage != 'reported_evaluation' and official_host else 'reported'
     return [row]
+
+
+
+NVIDIA_HBM4_8HI_STAGE={'unconfirmed':0,'qualified':1,'firm_order':2,'mass_production':3,'commercial_shipment':4}
+
+def parse_nvidia_hbm4_8hi(item,body):
+    """Issuer evidence only: never equate a generic 2026 HBM4 or HBM4E shipment with 8-Hi in 2027."""
+    owner=OFFICIAL.get(host(item.get('direct_link','')),'')
+    asof=(item.get('published_at_kst') or '')[:10]
+    if not re.match(r'^20\d{2}-\d{2}-\d{2}
+    records, gaps = [], []
+    published = item.get('published_at_kst', '')
+    malaysia = _malaysia_export_record(item, body)
+    if malaysia:
+        records.append(malaysia)
+    records.extend(parse_hbm_revenue_estimates(item, body))
+    records.extend(parse_bernstein_pair(item, body))
+    records.extend(parse_hbm_market_pricing(item, body))
+    records.extend(parse_hbm_generation_pricing(item, body))
+    records.extend(parse_postprocess_records(item, body))
+    records.extend(parse_foundry_recovery_records(item, body))
+    records.extend(parse_foundry_hbm_records(item, body))
+    records.extend(parse_glass_substrate_records(item, body))
+    records.extend(parse_nvidia_glass_adoption(item, body))
+    records.extend(parse_foplp_records(item, body))
+    records.extend(parse_hbf_ocp_version(item, body))
+    records.extend(parse_hbf_company_milestones(item, body))
+    records.extend(parse_nvidia_hbm4_8hi(item, body))
+    records.extend(parse_hynix_supplier_program(item, body))
+    paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
+    for original in paragraphs:
+        p = resolve_relative_years(original, published)
+        owners = [k for k, pat in COMPANIES.items() if re.search(pat, p, re.I)]
+        owner = owners[0] if len(owners) == 1 else OFFICIAL.get(host(item.get('direct_link', '')), '')
+        if not owner:
+            title_owners = [k for k, pat in COMPANIES.items() if re.search(pat, item.get('title', ''), re.I)]
+            owner = title_owners[0] if len(title_owners) == 1 and not owners else ''
+        for m in re.finditer(r'(?:DDR5\s+)?RDIMM\s+(\d+)GB|(?:DDR5\s+)?(\d+)GB\s+RDIMM', p):
+            gb = int(m[1] or m[2])
+            if len(re.findall(r'RDIMM', p)) > 1:
+                gaps.append('RDIMM 복수 규격 문장: 가격 귀속 보류'); continue
+            speed = re.search(r'((?:\d{4}/)*\d{4})\s*(?:MT/s|Mbps)', p, re.I)
+            asof = date_only(p)
+            a = re.search(r'(?:spot(?: price)?|현물(?:가격)?)\s*[:=]?\s*(?:\$|USD\s*)?([\d,]+(?:\.\d+)?)\s*(?:달러|USD|dollars)?', p, re.I)
+            b = re.search(r'(?:contract(?: price)?|고정거래(?:가격)?)\s*[:=]?\s*(?:\$|USD\s*)?([\d,]+(?:\.\d+)?)\s*(?:달러|USD|dollars)?', p, re.I)
+            contract_period = re.search(r'(?:contract period|고정거래 기준)\s*[:=]?\s*(20\d{2}[-./]\d{2}(?:[-./]\d{2})?)', p, re.I)
+            if re.search(r'유로|EUR|JPY|원화', p):
+                gaps.append('RDIMM 통화 혼재: 비교 보류'); continue
+            if not (a and b and speed and asof and contract_period and re.search(r'달러|USD|\$', p)):
+                gaps.append(f'RDIMM {gb}GB: 현물·고정거래 원값/규격/기준기간 미확보'); continue
+            s, c = float(a[1].replace(',', '')), float(b[1].replace(',', ''))
+            cp = contract_period[1].replace('/', '-').replace('.', '-')
+            if cp[:7] != asof[:7]:
+                gaps.append(f'RDIMM {gb}GB: 현물일과 고정거래 기준월 불일치'); continue
+            if min(s, c) <= 0:
+                continue
+            records.append(make_record('rdimm', [host(item['direct_link']), f'DDR5_{gb}GB', speed[1]],
+                {'spot': s, 'contract': c, 'premium_pct': premium(s, c), 'contract_period': cp},
+                'USD/module', asof[:7], item, original, as_of=asof, capacity_gb=gb, speed=speed[1]))
+        matches = list(re.finditer(r'(?<![A-Za-z0-9])(HBM4E|HBM4|HBM3E)(?![A-Za-z0-9])', p, re.I))
+        for i, match in enumerate(matches):
+            part = p[match.end():matches[i + 1].start() if i + 1 < len(matches) else len(p)]
+            density = re.findall(r'(?<!\d)(\d+)\s*Gb(?![A-Za-z])', part)
+            layers = re.findall(r'(?<!\d)(\d+)\s*(?:단|[Hh][Ii]|-[Hh][Ii]|[Hh](?![A-Za-z]))', part)
+            capacity = re.findall(r'(?<!\d)(\d+)\s*GB(?![A-Za-z])', part)
+            if owner and len(density) == len(layers) == len(capacity) == 1:
+                d, h, g = int(density[0]), int(layers[0]), int(capacity[0])
+                if product_capacity(d, h) != g:
+                    gaps.append('HBM 구성 산술 불일치: 발송 보류'); continue
+                product = match[1].upper()
+                records.append(make_record('hbm_config', [owner, product, str(h) + 'Hi', 'catalog'],
+                    {'die_gbit': d, 'layers': h, 'stack_gbyte': g}, 'GB/stack', local_period(part, published) or 'catalog',
+                    item, original, scope='product_capability_not_customer_contract'))
+        metric_patterns = (
+            ('wafer_share', r'(?:HBM.{0,70}(?:웨이퍼|wafer).{0,45}(?:비중|share)|(?:웨이퍼|wafer).{0,70}HBM.{0,50}(?:비중|share)|HBM wafer input)'),
+            ('bit_share', r'(?:HBM.{0,70}(?:비트|bit).{0,45}(?:비중|share)|(?:비트|bit).{0,70}HBM.{0,50}(?:비중|share)|HBM bit supply)'),
+        )
+        metric_hits = [(metric, pat) for metric, pat in metric_patterns if re.search(pat, p, re.I)]
+        if len(metric_hits) > 1:
+            gaps.append('웨이퍼·비트 분모 혼재 문장: 값 귀속 보류')
+            metric_hits = []
+        for metric, pat in metric_hits:
+            if not re.search(r'연말|년\s*말|\b(?:year[- ]end|end of|by the end)\b', p, re.I) or re.search(r'연평균|annual average', p, re.I):
+                gaps.append(metric + ': 연말 분모가 명확하지 않아 비교 보류'); continue
+            authority = 'trendforce' if re.search(r'TrendForce|트렌드포스', body, re.I) else owner
+            if not authority: continue
+            periods = re.findall(r'(20\d{2})\s*년?\s*(?:말|연말|year.end)?', p, re.I)
+            values = re.findall(r'(\d+(?:\.\d+)?)\s*%', p)
+            if len(periods) == len(values) and 1 <= len(periods) <= 4:
+                for y, v in zip(periods, values):
+                    if 0 <= float(v) <= 100:
+                        records.append(make_record(metric, [authority, 'industry', y + '-YE'], float(v), 'pct',
+                            y + '-YE', item, original, scope='year_end_forecast'))
+            else:
+                gaps.append(metric + ': 연도별 값 연결 불명확')
+        if owner and re.search(r'글라스 캐리어|유리 지지판|glass carrier', p, re.I) and re.search(r'세정|clean', p, re.I):
+            for y, n, tenk in re.findall(r'(20\d{2})\s*년?[^.\n]{0,12}?(?:월|monthly)\s*([\d,.]+)\s*(만)?\s*(?:장|pieces)', p, re.I):
+                value = float(n.replace(',', '')) * (10000 if tenk else 1)
+                records.append(make_record('carrier_cleaning', [owner, y], value, 'cleaning_passes/month', y,
+                    item, original, scope='reusable_carrier_service_not_wafer_output'))
+        if owner and re.search(r'P5', p, re.I) and re.search(r'Fab\s*1', p, re.I) and re.search(r'가동|양산|production|operation', p, re.I):
+            years = re.findall(r'(?<!\d)(20\d{2})(?!\d)', p)
+            if len(set(years)) == 1:
+                stage = 'cancelled' if re.search(r'취소|cancel', p, re.I) else ('delayed' if re.search(r'지연|delay', p, re.I) else ('plan' if re.search(r'목표|계획|예정|target|plan|expect', p, re.I) else 'reported_operation'))
+                records.append(make_record('fab_stage', [owner, 'P5_Fab1'], {'year': int(years[0]), 'stage': stage},
+                    'year/stage', years[0], item, original, scope='fab_start_not_full_output'))
+    return records, list(dict.fromkeys(gaps))
+
+
+def public_spot_quotes(raw, checked):
+    from selectolax.lexbor import LexborHTMLParser as HTMLParser
+    tree = HTMLParser(raw)
+    full = tree.body.text(separator=' ', strip=True) if tree.body else ''
+    result = []
+    for row in tree.css('tr'):
+        cells = row.css('td,th')
+        if len(cells) < 6:
+            continue
+        name = re.sub(r'\s+', ' ', cells[0].text(strip=True))
+        module = re.search(r'DDR5\s+RDIMM\s+(32|64|128|256)GB\s+([\d/]+)', name)
+        chip = re.search(r'DDR5\s+16Gb\s+\(2Gx8\)\s+([\d/]+)', name)
+        if not (module or chip):
+            continue
+        table = row.parent
+        while table and table.tag != 'table':
+            table = table.parent
+        if not table:
+            continue
+        headers = table.css_first('tr')
+        labels = [re.sub(r'\s+', '', x.text()).lower() for x in headers.css('td,th')] if headers else []
+        try:
+            index = labels.index('sessionaverage')
+            value = float(cells[index].text(strip=True).replace(',', ''))
+        except (ValueError, IndexError):
+            continue
+        offset = full.find(name)
+        if offset < 0:
+            continue
+        dates = list(re.finditer(r'Last\s*Update\s*:\s*([A-Za-z]{3})\.?\s*(\d{1,2})\s+(20\d{2})', full[:offset], re.I))
+        if not dates:
+            continue
+        dt = dates[-1]
+        try:
+            asof = datetime.strptime(f'{dt[1]} {dt[2]} {dt[3]}', '%b %d %Y').date().isoformat()
+        except ValueError:
+            continue
+        if asof > checked.date().isoformat() or value <= 0:
+            continue
+        capacity = int(module[1]) if module else 16
+        speed = module[2] if module else chip[1]
+        axis = 'rdimm_quote' if module else 'ddr5_chip_quote'
+        item = {'direct_link':'https://www.dramexchange.com/', 'source':'DRAMeXchange',
+                'published_at_kst':asof, 'title':name + ' 공개 현물가격'}
+        result.append(make_record(axis, ['dramexchange', str(capacity), speed], value,
+            'USD/module' if module else 'USD/chip', asof[:7], item,
+            name + ': Session Average (공개 화면)', as_of=asof, capacity_gb=capacity if module else None,
+            density_gbit=None if module else 16, speed=speed))
+    return result
+
+
+def comparison(old, new):
+    a, b = old['value'], new['value']
+    if new['axis'] == 'hbm_market_pricing':
+        reasons = []
+        av, bv = a.get('blended_asp_yoy_pct'), b.get('blended_asp_yoy_pct')
+        if av is not None and bv is not None and abs(float(bv) - float(av)) >= 10:
+            reasons.append(f"시장 Blended ASP 전망 {float(av):+.0f}%→{float(bv):+.0f}% YoY ({float(bv)-float(av):+.0f}%p)")
+        elif av is None and bv is not None:
+            reasons.append(f"시장 Blended ASP 전망 {float(bv):+.0f}% YoY 신규 확인")
+        for field, label in (
+            ('eight_hi_premium_min_pct','8단 Gb당 프리미엄 하단'),
+            ('eight_hi_premium_max_pct','8단 Gb당 프리미엄 상단'),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and abs(float(bv) - float(av)) >= 5:
+                reasons.append(f"{label} {float(av):.0f}%→{float(bv):.0f}%")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {float(bv):.0f}% 신규 확인")
+        av, bv = a.get('mainstream_layers'), b.get('mainstream_layers')
+        if av is not None and bv is not None and int(av) != int(bv):
+            reasons.append(f"시장 주류 적층 {int(av)}단→{int(bv)}단")
+        elif av is None and bv is not None:
+            reasons.append(f"시장 주류 적층 {int(bv)}단 신규 확인")
+        return reasons
+    if new['axis'] == 'hbm_generation_pricing':
+        reasons = []
+        amap, bmap = a.get('price_usd_per_gb') or {}, b.get('price_usd_per_gb') or {}
+        for key in sorted(set(amap) | set(bmap)):
+            av, bv = amap.get(key), bmap.get(key)
+            if av is not None and bv is not None:
+                pct = (float(bv) / float(av) - 1.0) * 100 if float(av) else 0
+                if abs(float(bv)-float(av)) >= 0.20 or abs(pct) >= 10:
+                    reasons.append(f"{key} {float(av):.2f}→{float(bv):.2f}달러/Gb ({pct:+.1f}%)")
+            elif av is None and bv is not None:
+                reasons.append(f"{key} {float(bv):.2f}달러/Gb 신규 확인")
+        if a.get('broad_step_up_2027') != b.get('broad_step_up_2027') and b.get('broad_step_up_2027') is not None:
+            reasons.append('2027 전 세대 동반 가격상승 신호 ' + ('확인' if b.get('broad_step_up_2027') else '해제'))
+        if a.get('legacy_generation_price_visible') != b.get('legacy_generation_price_visible') and b.get('legacy_generation_price_visible'):
+            reasons.append('HBM3/HBM3E 구세대 가격상승 숫자 확인')
+        av, bv = a.get('generation_count'), b.get('generation_count')
+        if av is not None and bv is not None and int(av) != int(bv):
+            reasons.append(f"가격 곡선 확인 세대 수 {int(av)}→{int(bv)}개")
+        return reasons
+    if new['axis'] == 'hynix_supplier_guarantee':
+        result=[]
+        if HYNIX_GUARANTEE_STAGE.get(b.get('stage'),0)>HYNIX_GUARANTEE_STAGE.get(a.get('stage'),0):
+            result.append(f"보증 단계 {a.get('stage')}→{b.get('stage')}")
+        for field,label in (('ceiling_krw','보증 한도'),('contribution_krw','출연 재원'),
+                            ('guaranteed_loan_drawn_krw','실제 대출 실행액')):
+            if b.get(field) is not None and a.get(field)!=b.get(field):
+                result.append(f"{label} {int((a.get(field) or 0)/1e8):,}→{int(b[field]/1e8):,}억원")
+        return result
+    if new['axis'] == 'hynix_trinity_fab':
+        result=[]
+        if HYNIX_TRINITY_STAGE.get(b.get('stage'),0)>HYNIX_TRINITY_STAGE.get(a.get('stage'),0):
+            result.append(f"트리니티 팹 {a.get('stage')}→{b.get('stage')}")
+        for field,label in (('national_budget_krw','국비'),
+                            ('local_budget_krw','지방비'),
+                            ('private_budget_krw','민자')):
+            if b.get(field) is not None and a.get(field)!=b.get(field):
+                result.append(f"{label} {int((a.get(field) or 0)/1e8):,}→{int(b[field]/1e8):,}억원")
+        return result
+    if new['axis'] == 'hynix_supplier_rnd':
+        if b.get('upfront_development_pct_max')!=a.get('upfront_development_pct_max'):
+            return [f"개발비 선지원 {a.get('upfront_development_pct_max')}→{b.get('upfront_development_pct_max')}%"]
+        return []
+    if new['axis']=='nvidia_hbm4_8hi_vendor':
+        result=[]
+        if b.get('target_month') and b.get('target_month')!=a.get('target_month'):
+            result.append(f"8단 공급 목표 {a.get('target_month')}→{b['target_month']}")
+        if not a.get('official_target') and b.get('official_target'):
+            result.append('NVIDIA향 8단 업체별 공식 일정 확인')
+        before=a.get('official_stage') or 'unconfirmed'
+        after=b.get('official_stage') or 'unconfirmed'
+        if NVIDIA_HBM4_8HI_STAGE.get(after,0)>NVIDIA_HBM4_8HI_STAGE.get(before,0):
+            result.append(f'8단 공식 단계 {before}→{after}')
+        return result
+    if new['axis'] == 'hbf_ocp_spec':
+        if a.get('version') == b.get('version'):
+            if not a.get('final_spec_officially_confirmed') and b.get('final_spec_officially_confirmed'):
+                return ['OCP HBF 규격 최종본 공식 확인']
+            return []
+        def parts(ver):
+            return tuple(int(x) for x in str(ver or '0.0.0').split('.'))
+        if parts(b.get('version')) <= parts(a.get('version')):
+            return []
+        return [f"OCP HBF 규격 {a.get('version')}→{b.get('version')}"
+                + (' · 최종본 공식 확인' if b.get('final_spec_officially_confirmed') else ' · 개정본 공개')]
+    if new['axis'] == 'hbf_issuer_milestone':
+        old_stage,new_stage=a.get('stage',''),b.get('stage','')
+        if HBF_STAGE_ORDER.get(new_stage,0)>HBF_STAGE_ORDER.get(old_stage,0):
+            return [f"HBF {b.get('supplier')} 단계 {old_stage or '미확인'}→{new_stage}"]
+        return []
+    if new['axis'] == 'hbf_reported_roadmap':
+        return []  # User-supplied dated article is a watch baseline, not an official specification.
+    if new['axis'] == 'foplp_mature_node_industry':
+        reasons = []
+        if (a.get('panel_width_mm'),a.get('panel_height_mm')) != (b.get('panel_width_mm'),b.get('panel_height_mm')):
+            reasons.append(f"성숙공정 FOPLP 패널 규격 {a.get('panel_width_mm')}×{a.get('panel_height_mm')}→{b.get('panel_width_mm')}×{b.get('panel_height_mm')}mm")
+        if a.get('stage') != b.get('stage'):
+            reasons.append(f"PMIC·RF FOPLP 생산 단계 {a.get('stage')}→{b.get('stage')}")
+        return reasons
+    if new['axis'] == 'foplp_company_ai_stage':
+        older, newer = a.get('stage',''), b.get('stage','')
+        if older == newer:
+            return ['FOPLP AI 단계 회사 공식 확인'] if not a.get('issuer_official') and b.get('issuer_official') else []
+        if FOPLP_STAGE_RANK.get(newer,0) < FOPLP_STAGE_RANK.get(older,0):
+            return []
+        return [f"AI 칩 FOPLP {b.get('manufacturer')} {older or '미확인'}→{newer}"]
+    if new['axis'] == 'glass_nvidia_adoption':
+        before,after=a.get('stage','reported_evaluation'),b.get('stage','reported_evaluation')
+        if (new.get('evidence') != 'official'
+                or NVIDIA_GLASS_STAGE_ORDER.get(after,0) <= NVIDIA_GLASS_STAGE_ORDER.get(before,0)):
+            return []
+        return [f'NVIDIA 유리 코어 기판 단계 {before}→{after} (공식 원문)']
+    if new['axis'] == 'glass_panel_standard':
+        reasons = []
+        if (a.get('width_mm'), a.get('height_mm')) != (b.get('width_mm'), b.get('height_mm')):
+            reasons.append(f"패널 규격 {a.get('width_mm')}×{a.get('height_mm')}→{b.get('width_mm')}×{b.get('height_mm')}mm")
+        av, bv = a.get('supplier_count'), b.get('supplier_count')
+        if av is not None and bv is not None and int(av) != int(bv):
+            reasons.append(f"510×515mm 수렴 소재사 {int(av)}→{int(bv)}곳")
+        old_status, new_status = a.get('tsmc_status','unconfirmed'), b.get('tsmc_status','unconfirmed')
+        if old_status != new_status:
+            reasons.append(f"TSMC 510×515 상태 {old_status}→{new_status}")
+        return reasons
+    if new['axis'] == 'glass_tsmc_roadmap':
+        reasons = []
+        for field, label in (
+            ('validation_year','CoPoS 장비·소재 검증'),
+            ('pilot_year','CoPoS 시험생산'),
+            ('mass_production_year','CoPoS 양산'),
+            ('glass_core_commercial_after_year','Glass Core 상업규모 기준'),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and int(av) != int(bv):
+                reasons.append(f"{label} {int(av)}→{int(bv)}년")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {int(bv)}년 신규 확인")
+        if (a.get('copos_width_mm'),a.get('copos_height_mm')) != (b.get('copos_width_mm'),b.get('copos_height_mm')):
+            reasons.append(f"CoPoS 패널 규격 {a.get('copos_width_mm')}×{a.get('copos_height_mm')}→{b.get('copos_width_mm')}×{b.get('copos_height_mm')}mm")
+        return reasons
+    if new['axis'] == 'glass_panel_yield':
+        av, bv = a.get('yield_pct'), b.get('yield_pct')
+        if av is None or bv is None:
+            return [f"패널·양산 수율 {float(bv):.1f}% 신규 확인"] if bv is not None else []
+        reasons = []
+        if abs(float(bv)-float(av)) >= 5:
+            reasons.append(f"패널·양산 수율 {float(av):.1f}%→{float(bv):.1f}%")
+        for threshold in (85,90):
+            if (float(av) < threshold <= float(bv)) or (float(av) >= threshold > float(bv)):
+                reasons.append(f"수율 {threshold}% 기준 {'상향 돌파' if float(bv)>=threshold else '하향 이탈'}")
+        return reasons
+    if new['axis'] == 'glass_process_cycle_time':
+        reasons = []
+        if a.get('process_name') != b.get('process_name') and b.get('process_name'):
+            reasons.append(f"핵심공정 식별 {a.get('process_name') or '미확인'}→{b.get('process_name')}")
+        av, bv = a.get('after_minutes_exact'), b.get('after_minutes_exact')
+        if av is None and bv is not None:
+            reasons.append(f"개선 후 정확한 공정시간 {float(bv):g}분 최초 공개")
+        elif av is not None and bv is not None and abs(float(bv)-float(av)) >= max(1.0, abs(float(av))*0.1):
+            reasons.append(f"개선 후 공정시간 {float(av):g}→{float(bv):g}분")
+        if a.get('after_time_class') != b.get('after_time_class') and b.get('after_time_class'):
+            reasons.append(f"공정시간 표현 {a.get('after_time_class') or '미확인'}→{b.get('after_time_class')}")
+        if a.get('body_direct_verified') is not True and b.get('body_direct_verified') is True:
+            reasons.append("기사 본문에서 공정명·시간 직접 검증 완료")
+        return reasons
+    if new['axis'] == 'glass_capex':
+        reasons = []
+        av, bv = a.get('investment_krw'), b.get('investment_krw')
+        if av is None and bv is not None:
+            reasons.append(f"김천 TGV 설비투자 {float(bv)/1e8:,.0f}억원 최초 확인")
+        elif av and bv:
+            pct = (float(bv)/float(av)-1)*100
+            if abs(pct) >= 10:
+                reasons.append(f"김천 TGV 설비투자 {float(av)/1e8:,.0f}→{float(bv)/1e8:,.0f}억원 ({pct:+.1f}%)")
+        for field, label in (
+            ('line_count_min_initial','초기 라인 수 하단'),
+            ('line_count_max_initial','초기 라인 수 상단'),
+            ('line_count_mass_ramp_min','대량양산 라인 수 하단'),
+            ('start_year','투자 시작'),('end_year','투자 종료'),
+            ('groundbreaking_period','착공 시점'),
+            ('initial_customer_commercialization_period','고객 초기 상용화 시점'),
+            ('employees','고용'),('site_area_pyeong','부지')
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and av != bv:
+                reasons.append(f"{label} {av}→{bv}")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {bv} 신규 확인")
+        av, bv = a.get('capacity_panels_per_month'), b.get('capacity_panels_per_month')
+        if av is None and bv is not None:
+            reasons.append(f"김천 실제 생산능력 월 {float(bv):,.0f}장 최초 공개")
+        elif av and bv:
+            pct=(float(bv)/float(av)-1)*100
+            if abs(pct)>=10:
+                reasons.append(f"김천 실제 생산능력 월 {float(av):,.0f}→{float(bv):,.0f}장 ({pct:+.1f}%)")
+        if a.get('stage') != b.get('stage') and b.get('stage'):
+            reasons.append(f"설비투자 단계 {a.get('stage') or '미확인'}→{b.get('stage')}")
+        return reasons
+    if new['axis'] == 'glass_jv_stage':
+        reasons = []
+        old_stage, new_stage = a.get('stage','mou'), b.get('stage','mou')
+        if old_stage != new_stage:
+            reasons.append(f"글라스코어 JV 단계 {old_stage}→{new_stage}")
+        av, bv = a.get('investment_krw'), b.get('investment_krw')
+        if av and bv:
+            pct = (float(bv)/float(av)-1.0)*100
+            if abs(pct) >= 10:
+                reasons.append(f"JV 출자금 {float(av)/1e8:,.0f}→{float(bv)/1e8:,.0f}억원 ({pct:+.1f}%)")
+        elif av is None and bv is not None:
+            reasons.append(f"JV 출자금 {float(bv)/1e8:,.0f}억원 최초 확인")
+        av, bv = a.get('equity_pct'), b.get('equity_pct')
+        if av is not None and bv is not None and abs(float(bv)-float(av)) >= 1:
+            reasons.append(f"삼성전기 JV 지분율 {float(av):.1f}%→{float(bv):.1f}%")
+        elif av is None and bv is not None:
+            reasons.append(f"삼성전기 JV 지분율 {float(bv):.1f}% 최초 확인")
+        av, bv = a.get('scheduled_acquisition_date'), b.get('scheduled_acquisition_date')
+        if av != bv and bv:
+            reasons.append(f"JV 출자 예정일 {av or '미확인'}→{bv}")
+        for field, label in (
+            ('cash_investment_krw','현금 출자'),
+            ('in_kind_investment_krw','현물 출자'),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and float(av) != float(bv):
+                reasons.append(f"{label} {float(av)/1e8:,.0f}→{float(bv)/1e8:,.0f}억원")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {float(bv)/1e8:,.0f}억원 최초 확인")
+        return reasons
+    if new['axis'] == 'glass_hvm_stage':
+        reasons = []
+        old_stage, new_stage = a.get('stage','sample'), b.get('stage','sample')
+        if old_stage != new_stage:
+            reasons.append(f"양산 전환 단계 {old_stage}→{new_stage}")
+        av, bv = a.get('mass_production_target_year'), b.get('mass_production_target_year')
+        if av is not None and bv is not None and int(av) != int(bv):
+            reasons.append(f"양산 목표 {int(av)}→{int(bv)}년")
+        elif av is None and bv is not None:
+            reasons.append(f"양산 목표 {int(bv)}년 신규 확인")
+        for field, label in (
+            ('sample_delivered','고객 샘플 납품'),
+            ('evaluation_ongoing','고객 평가 진행'),
+            ('issue_response_ongoing','평가 이슈 보완 대응'),
+            ('mass_production_supply_confirmed','양산 공급 확정'),
+        ):
+            if a.get(field) != b.get(field) and b.get(field) is not None:
+                reasons.append(label + (' 확인' if b.get(field) else ' 해소·철회'))
+        if a.get('customer') != b.get('customer') and b.get('customer'):
+            reasons.append(f"고객 실명 {a.get('customer') or '미확인'}→{b.get('customer')}")
+        if a.get('sample_process') != b.get('sample_process') and b.get('sample_process'):
+            reasons.append(f"샘플 공정 {a.get('sample_process') or '미확인'}→{b.get('sample_process')}")
+        if a.get('new_metal_fill_stage') != b.get('new_metal_fill_stage') and b.get('new_metal_fill_stage'):
+            reasons.append(f"신규 금속 충진 공정 {a.get('new_metal_fill_stage') or '미확인'}→{b.get('new_metal_fill_stage')}")
+        if a.get('new_metal_fill_sample_delivered') != b.get('new_metal_fill_sample_delivered') and b.get('new_metal_fill_sample_delivered') is not None:
+            reasons.append('신규 금속 충진 샘플 고객 전달' if b.get('new_metal_fill_sample_delivered') else '신규 금속 충진 샘플 미전달 확인')
+        for field, label in (
+            ('samsung_official_confirmation','삼성전자 공식 고객검증 확인'),
+            ('chemtronics_official_customer_confirmation','켐트로닉스 공식 삼성전자 고객검증 확인'),
+        ):
+            if a.get(field) != b.get(field) and b.get(field) is True:
+                reasons.append(label)
+        if a.get('independent_cross_verified') is not True and b.get('independent_cross_verified') is True:
+            reasons.append('독립 출처 2곳 이상 고객검증 교차확인')
+        for field, label in (
+            ('pilot_line_count','파일럿 라인 수'),
+            ('pilot_capacity_units_per_month_min','파일럿 월 생산능력 하단'),
+            ('pilot_capacity_units_per_month_max','파일럿 월 생산능력 상단'),
+            ('nda_customer_count','NDA 고객 수'),
+            ('end_customer_count','최종 수요기업 수'),
+            ('paid_sample_customer_count','유상 샘플 고객 수'),
+            ('initial_line_count_min','김천 초기 라인 수 하단'),
+            ('initial_line_count_max','김천 초기 라인 수 상단'),
+            ('mass_ramp_line_count_min','대량양산 라인 수 하단'),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and av != bv:
+                reasons.append(f"{label} {av}→{bv}")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {bv} 신규 확인")
+        for field, label in (
+            ('gimcheon_groundbreaking_period','김천 착공 시점'),
+            ('initial_customer_commercialization_period','고객 초기 상용화 시점'),
+            ('pilot_line_location','파일럿 라인 위치'),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av != bv and bv:
+                reasons.append(f"{label} {av or '미확인'}→{bv}")
+        for field, label in (
+            ('us_semiconductor_customer_validation_completed','미국 반도체 고객사 제품 검증 완료'),
+            ('taiwan_end_customer_validation_ongoing','대만 최종 고객사 2mm 검증 진행'),
+            ('additional_us_bigtech_collaboration_requested','추가 미국 빅테크 기술협력 요청'),
+            ('additional_us_bigtech_quality_recognized','추가 미국 빅테크 샘플 품질 인정'),
+            ('embedding_preliminary_evaluation_passed','Embedding 예비평가 통과'),
+            ('embedding_reliability_evaluation_ongoing','Embedding 신뢰성 평가 진행'),
+            ('non_embedding_supplier_selection_ongoing','Non-Embedding 공급사 선정 진행'),
+            ('prototype_production','시제품 생산'),
+            ('glass_core_metal_fill_showcased','글라스코어 금속 충진 기술 공개'),
+            ('precision_surface_processing_showcased','글라스코어 정밀 표면가공 기술 공개'),
+            ('uti_collaboration','UTI 유리기판 연구개발 협력'),
+        ):
+            if a.get(field) != b.get(field) and b.get(field) is True:
+                reasons.append(label)
+        av, bv = a.get('non_embedding_poc_target_year'), b.get('non_embedding_poc_target_year')
+        if av != bv and bv:
+            reasons.append(f"Non-Embedding PoC 목표 {av or '미확인'}→{bv}년")
+        for field, label in (
+            ('mass_production_earliest_year','양산 가능 최조 연도'),
+            ('commercialization_target_start_year','상용화 목표 시작'),
+            ('commercialization_target_end_year','상용화 목표 종료'),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and int(av) != int(bv):
+                reasons.append(f"{label} {int(av)}→{int(bv)}년")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {int(bv)}년 신규 확인")
+        return reasons
+    if new['axis'] == 'foundry_loss_outlook':
+        reasons = []
+        for field, label, threshold in (
+            ('loss_2026e_krw_trn','2026E 합산 영업손실',0.5),
+            ('q3_2026e_loss_krw_trn','3Q26E 합산 영업손실',0.2),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None:
+                pct = abs(float(bv) / float(av) - 1.0) * 100 if float(av) else 0
+                if abs(float(bv)-float(av)) >= threshold or pct >= 10:
+                    reasons.append(f"{label} {float(av):.3f}조→{float(bv):.3f}조")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {float(bv):.3f}조 신규 확인")
+        av, bv = a.get('loss_shrink_pct'), b.get('loss_shrink_pct')
+        if av is not None and bv is not None and abs(float(bv)-float(av)) >= 5:
+            reasons.append(f"연간 손실 축소율 {float(av):.1f}%→{float(bv):.1f}%")
+        elif av is None and bv is not None:
+            reasons.append(f"연간 손실 축소율 {float(bv):.1f}% 신규 확인")
+        return reasons
+    if new['axis'] == 'foundry_external_2nm':
+        reasons = []
+        old_stage, new_stage = a.get('stage','discussion'), b.get('stage','discussion')
+        if old_stage != new_stage:
+            reasons.append(f"외부 2나노 단계 {old_stage}→{new_stage}")
+        for field, label in (
+            ('hpc_design_win','2나노 HPC design win'),
+            ('us_orders_strong','미국 고객 수주 강세'),
+            ('gen2_mobile_ramp_plan','2나노 2세대 모바일 램프 계획'),
+        ):
+            if a.get(field) != b.get(field) and b.get(field) is not None:
+                reasons.append(label + (' 확인' if b.get(field) else ' 해소·철회'))
+        return reasons
+    if new['axis'] == 'foundry_taylor_schedule':
+        reasons = []
+        av, bv = a.get('mass_production_year'), b.get('mass_production_year')
+        if av is not None and bv is not None and int(av) != int(bv):
+            reasons.append(f"Taylor Fab1 양산 목표 {int(av)}→{int(bv)}년")
+        elif av is None and bv is not None:
+            reasons.append(f"Taylor Fab1 양산 목표 {int(bv)}년 신규 확인")
+        if a.get('external_customer_negotiations') != b.get('external_customer_negotiations') and b.get('external_customer_negotiations') is not None:
+            reasons.append('Taylor 외부 고객 협상 확인' if b.get('external_customer_negotiations') else 'Taylor 외부 고객 협상 약화·철회')
+        return reasons
+    if new['axis'] == 'foundry_base_die_allocation':
+        reasons = []
+        aw, bw = a.get('total_capacity_wpm'), b.get('total_capacity_wpm')
+        if aw and bw:
+            dp = (float(bw) / float(aw) - 1) * 100
+            if abs(dp) >= 10 or abs(float(bw)-float(aw)) >= 5000:
+                reasons.append(f"4나노 생산능력 {dp:+.1f}%")
+        for field, label in (('allocation_pct_min','HBM4 베이스다이 배정 하단'), ('allocation_pct_max','HBM4 베이스다이 배정 상단')):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and abs(float(bv)-float(av)) >= 5:
+                reasons.append(f"{label} {float(bv)-float(av):+.1f}%p")
+        if a.get('full_utilization') != b.get('full_utilization'):
+            reasons.append('4나노 풀가동 진입' if b.get('full_utilization') else '4나노 풀가동 완화')
+        return reasons
+    if new['axis'] == 'foundry_node_expansion':
+        old_stage = a.get('stage','mentioned')
+        new_stage = b.get('stage','mentioned')
+        return [f"4나노 증설 단계 {old_stage}→{new_stage}"] if old_stage != new_stage else []
+    if new['axis'] == 'foundry_pricing':
+        reasons = []
+        for field, label in (('new_order_price_up','4나노 신규수주 가격 인상'), ('base_die_price_up','HBM4 베이스다이 가격 인상')):
+            if a.get(field) != b.get(field):
+                reasons.append(label + (' 확인' if b.get(field) else ' 해소·철회'))
+        av, bv = a.get('price_change_pct'), b.get('price_change_pct')
+        if av is not None and bv is not None and abs(float(bv)-float(av)) >= 5:
+            reasons.append(f"가격 인상률 {float(bv)-float(av):+.1f}%p")
+        elif av is None and bv is not None:
+            reasons.append(f"가격 인상률 {float(bv):.1f}% 확인")
+        for field, label in (('price_change_pct_min','가격 인상 범위 하단'),('price_change_pct_max','가격 인상 범위 상단')):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and abs(float(bv)-float(av)) >= 5:
+                reasons.append(f"{label} {float(av):.1f}%→{float(bv):.1f}%")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {float(bv):.1f}% 신규 확인")
+        return reasons
+    if new['axis'] == 'foundry_hbm5_2nm':
+        reasons = []
+        old_stage = a.get('investment_stage','technology_plan')
+        new_stage = b.get('investment_stage','technology_plan')
+        if old_stage != new_stage:
+            reasons.append(f"HBM5 2나노 투자 단계 {old_stage}→{new_stage}")
+        av, bv = a.get('speed_uplift_target_pct'), b.get('speed_uplift_target_pct')
+        if av is not None and bv is not None and abs(float(bv)-float(av)) >= 10:
+            reasons.append(f"동작속도 향상 목표 {float(bv)-float(av):+.1f}%p")
+        return reasons
+    if new['axis'] == 'postprocess_capex':
+        reasons = []
+        if old.get('period') != new.get('period'):
+            reasons.append(f"새 설비투자 연도 {old.get('period')}→{new.get('period')}")
+        for field, label in (('total_capex_usd_min','설비투자 하단'), ('total_capex_usd_max','설비투자 상단'), ('total_capex_usd','설비투자')):
+            av, bv = a.get(field), b.get(field)
+            if av and bv:
+                dp = (bv / av - 1) * 100
+                if abs(dp) >= 10 or abs(bv-av) >= 1_000_000_000:
+                    reasons.append(f"{label} {dp:+.1f}%")
+        for field, label in (('backend_alloc_pct_min','후공정 배정 하단'), ('backend_alloc_pct_max','후공정 배정 상단')):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and abs(float(bv) - float(av)) >= 5:
+                reasons.append(f"{label} {float(bv)-float(av):+.1f}%p")
+        if a.get('tester_shortage') != b.get('tester_shortage'):
+            reasons.append('테스터 부족 확인' if b.get('tester_shortage') else '테스터 부족 해소·완화 확인')
+        return reasons
+    if new['axis'] == 'postprocess_order':
+        reasons = []
+        av, bv = float(a.get('amount_krw') or 0), float(b.get('amount_krw') or 0)
+        if av and bv:
+            dp = (bv / av - 1) * 100
+            if abs(dp) >= 10 or abs(bv-av) >= 10_000_000_000:
+                reasons.append(f"수주액 {dp:+.1f}%")
+        if a.get('stage') != b.get('stage'):
+            reasons.append(f"수주 단계 {a.get('stage')}→{b.get('stage')}")
+        return reasons
+    if new['axis'] == 'postprocess_stage':
+        old_stage, new_stage = a.get('stage','mentioned'), b.get('stage','mentioned')
+        if old_stage != new_stage:
+            return [f"검증·양산 단계 {old_stage}→{new_stage}"]
+        return []
+    if new['axis'] == 'hbm_revenue_estimate':
+        reasons = []
+        old_est = float(a.get('estimate_usd') or 0)
+        new_est = float(b.get('estimate_usd') or 0)
+        if old_est and new_est:
+            delta_usd = new_est - old_est
+            delta_pct = (new_est / old_est - 1) * 100
+            if abs(delta_usd) >= 1_000_000_000 or abs(delta_pct) >= 10:
+                reasons.append(f"분기 HBM 매출 추정 {delta_pct:+.1f}% ({delta_usd/1e9:+.1f}십억달러)")
+        old_q = a.get('qoq_pct')
+        new_q = b.get('qoq_pct')
+        if old_q is not None and new_q is not None and abs(new_q - old_q) >= 10:
+            reasons.append(f"전분기 증감률 전망 {new_q-old_q:+.1f}%p")
+        if a.get('method') != b.get('method'):
+            reasons.append(f"추정방법 {a.get('method')}→{b.get('method')}")
+        return reasons
+    if new['axis'] == 'malaysia_hsk10_export':
+        reasons = []
+        if old.get('period') != new.get('period'):
+            reasons.append(f"새 월 {old.get('period')}→{new.get('period')}")
+        if a.get('amount_usd') and b.get('amount_usd'):
+            change = (b['amount_usd'] / a['amount_usd'] - 1) * 100
+            if abs(change) >= 10 or old.get('period') != new.get('period'):
+                reasons.append(f"수출액 {change:+.1f}%")
+        if a.get('malaysia_vs_taiwan_pct') is not None and b.get('malaysia_vs_taiwan_pct') is not None:
+            dp = b['malaysia_vs_taiwan_pct'] - a['malaysia_vs_taiwan_pct']
+            if abs(dp) >= 10 or ((a['malaysia_vs_taiwan_pct'] < 50) != (b['malaysia_vs_taiwan_pct'] < 50)):
+                reasons.append(f"대만 대비 비중 {dp:+.1f}%p")
+        return reasons
+    if new['axis'] in ('rdimm_quote', 'ddr5_chip_quote'):
+        change = (b / a - 1) * 100
+        return [f'동일 규격 현물가격 {change:+.1f}%'] if abs(change) >= 5 else []
+    if new['axis'] == 'rdimm':
+        reasons = []
+        for field, label in (('spot', '현물가격'), ('contract', '고정거래가격')):
+            change = (b[field] / a[field] - 1) * 100
+            if abs(change) >= 5:
+                reasons.append(f'{label} {change:+.1f}%')
+        dp = b['premium_pct'] - a['premium_pct']
+        if abs(dp) >= 10 or ((a['premium_pct'] > 100) != (b['premium_pct'] > 100)):
+            reasons.append(f'현물 프리미엄 {dp:+.1f}%p')
+        if b['contract_period'] != a['contract_period']:
+            reasons.append('새 고정거래 기준기간')
+        if reasons:
+            reasons.append(rdimm_driver(a, b))
+        return reasons
+    return [] if a == b else ['동일 대상·동일 단위의 상태값 변경']
+
+
+def update_state(state, records, now, seeds=None):
+    state = copy.deepcopy(state or {})
+    for name in ('last_notified', 'latest', 'pending', 'coverage'):
+        state.setdefault(name, {})
+    if seeds:
+        for r in seeds:
+            state['last_notified'].setdefault(r['key'], r)
+            state['latest'].setdefault(r['key'], r)
+        if int(state.get('foundry_track_version') or 0) < FOUNDRY_TRACK_VERSION:
+            for r in seeds:
+                if str(r.get('axis','')).startswith('foundry_'):
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'], None)
+            state['foundry_track_version'] = FOUNDRY_TRACK_VERSION
+        if int(state.get('foundry_recovery_track_version') or 0) < FOUNDRY_RECOVERY_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') in ('foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule'):
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'], None)
+            state['foundry_recovery_track_version'] = FOUNDRY_RECOVERY_TRACK_VERSION
+        if int(state.get('foundry_pricing_range_track_version') or 0) < FOUNDRY_PRICING_RANGE_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') == 'foundry_pricing':
+                    current = state['last_notified'].get(r['key'])
+                    if current:
+                        merged = copy.deepcopy(current)
+                        merged_value = copy.deepcopy(current.get('value') or {})
+                        for field in ('price_change_pct_min','price_change_pct_max'):
+                            if (r.get('value') or {}).get(field) is not None:
+                                merged_value[field] = r['value'][field]
+                        merged['value'] = merged_value
+                        state['last_notified'][r['key']] = merged
+                        state['latest'][r['key']] = copy.deepcopy(merged)
+                        state['pending'].pop(r['key'], None)
+            state['foundry_pricing_range_track_version'] = FOUNDRY_PRICING_RANGE_TRACK_VERSION
+        if int(state.get('glass_substrate_track_version') or 0) < GLASS_SUBSTRATE_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') in ('glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex','glass_jv_stage'):
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'], None)
+            state['glass_substrate_track_version'] = GLASS_SUBSTRATE_TRACK_VERSION
+        if int(state.get('nvidia_glass_track_version') or 0) < NVIDIA_GLASS_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') == 'glass_nvidia_adoption':
+                    state['last_notified'].setdefault(r['key'], copy.deepcopy(r))
+                    state['latest'].setdefault(r['key'], copy.deepcopy(r))
+                    state['pending'].pop(r['key'],None)
+            state['nvidia_glass_track_version']=NVIDIA_GLASS_TRACK_VERSION
+        if int(state.get('foplp_track_version') or 0) < FOPLP_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') in ('foplp_mature_node_industry','foplp_company_ai_stage'):
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'], None)
+            state['foplp_track_version'] = FOPLP_TRACK_VERSION
+        if int(state.get('nvidia_hbm4_8hi_track_version') or 0) < NVIDIA_HBM4_8HI_TRACK_VERSION:
+            for row in seeds:
+                if row.get('axis')=='nvidia_hbm4_8hi_vendor':
+                    state['last_notified'].setdefault(row['key'],copy.deepcopy(row))
+                    state['latest'].setdefault(row['key'],copy.deepcopy(row))
+                    state['pending'].pop(row['key'],None)
+            state['nvidia_hbm4_8hi_track_version']=NVIDIA_HBM4_8HI_TRACK_VERSION
+        if int(state.get('hbf_track_version') or 0) < HBF_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') in ('hbf_ocp_spec','hbf_reported_roadmap'):
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'],None)
+            state['hbf_track_version'] = HBF_TRACK_VERSION
+        if int(state.get('hbm_generation_price_track_version') or 0) < HBM_GENERATION_PRICE_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') == 'hbm_generation_pricing':
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'], None)
+            state['hbm_generation_price_track_version'] = HBM_GENERATION_PRICE_TRACK_VERSION
+        if int(state.get('market_pricing_track_version') or 0) < MARKET_PRICING_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') == 'hbm_market_pricing':
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'], None)
+            state['market_pricing_track_version'] = MARKET_PRICING_TRACK_VERSION
+    state['version'] = VERSION
+    grouped = {}
+    for r in records:
+        if not r.get('as_of') or not r.get('source_url') or not r.get('period'):
+            continue
+        if r['as_of'][:10] > now.date().isoformat():
+            continue
+        grouped.setdefault(r['key'], []).append(r)
+    sparse_axes = {'hynix_supplier_guarantee','hynix_trinity_fab','hynix_supplier_rnd', 'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_nvidia_adoption', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'glass_jv_stage', 'foplp_mature_node_industry', 'foplp_company_ai_stage', 'hbf_ocp_spec','hbf_reported_roadmap','hbf_issuer_milestone','nvidia_hbm4_8hi_vendor','hbm_bernstein_q3_pair','hbm_generation_pricing', 'hbm_market_pricing'}
+    for key, rows in grouped.items():
+        rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
+        prior = state['latest'].get(key) or state['last_notified'].get(key)
+        if prior and rows and rows[-1].get('axis') in sparse_axes:
+            normalized = []
+            for row in rows:
+                merged = copy.deepcopy(row)
+                merged_value = copy.deepcopy(prior.get('value') or {})
+                incoming_value = row.get('value') or {}
+                prior_origins = set()
+                if row.get('key') == 'glass_hvm_stage|chemtronics|current':
+                    prior_origins.update(merged_value.get('fact_origin_sources') or [])
+                    if merged_value.get('fact_origin_source'):
+                        prior_origins.add(merged_value['fact_origin_source'])
+                for field, value in incoming_value.items():
+                    if value is not None and not (
+                        row.get('key') == 'glass_hvm_stage|chemtronics|current'
+                        and field == 'fact_origin_sources'
+                    ):
+                        merged_value[field] = value
+                if row.get('key') == 'glass_hvm_stage|chemtronics|current':
+                    origins = set(prior_origins)
+                    origins.update(incoming_value.get('fact_origin_sources') or [])
+                    if incoming_value.get('fact_origin_source'):
+                        origins.add(incoming_value['fact_origin_source'])
+                    origins.discard(None)
+                    origins.discard('')
+                    if origins:
+                        merged_value['fact_origin_sources'] = sorted(origins)
+                        merged_value['independent_source_count'] = len(origins)
+                        merged_value['independent_cross_verified'] = len(origins) >= 2
+                merged['value'] = merged_value
+                normalized.append(merged)
+            rows = normalized
+        r = rows[-1]
+        same = [x for x in rows if x['as_of'] == r['as_of'] and x['evidence'] == r['evidence']]
+        if len({fingerprint(x['value']) for x in same}) > 1:
+            state['coverage'][key] = '동일 기준일 원값 불일치: 발송 보류'
+            state['pending'].pop(key, None)
+            continue
+        previous_latest = state['latest'].get(key)
+        if previous_latest and r['as_of'] < previous_latest.get('as_of', ''):
+            continue
+        old = state['last_notified'].get(key)
+        if old and RANK.get(r['evidence'], 0) < RANK.get(old['evidence'], 0):
+            state['coverage'][key] = '하위 증거는 기존 확정값을 덮어쓰지 않음'
+            continue
+        state['latest'][key] = r
+        if r['axis'] in ('rdimm', 'rdimm_quote', 'ddr5_chip_quote') and r['as_of'] < (now - timedelta(days=10)).date().isoformat():
+            state['coverage'][key] = '지연 원자료: 현재 가격 알림 보류'
+            if not old:
+                state['last_notified'][key] = r
+            state['pending'].pop(key, None)
+            continue
+        reasons = comparison(old, r) if old else ['새 비교 가능한 상태']
+        if old and r['value'] == old['value'] and RANK.get(r['evidence'], 0) > RANK.get(old['evidence'], 0):
+            reasons.append('근거 등급 상향')
+        fresh = r['as_of'] >= (now - timedelta(days=14)).date().isoformat()
+        if not old and not fresh:
+            state['last_notified'][key] = r
+            continue
+        if not reasons:
+            state['pending'].pop(key, None)
+            continue
+        state['pending'][key] = {'record': r, 'old': old, 'reasons': reasons}
+    return state
+
+
+def render(change, rate=None):
+    r, old = change['record'], change.get('old')
+    names = {'rdimm_quote': '서버 RDIMM 공개 현물가격', 'ddr5_chip_quote': 'DDR5 16Gb 칩 현물가격', 'rdimm': '서버 DDR5 가격·프리미엄', 'hbm_config': 'HBM 칩 용량·적층 구성',
+             'wafer_share': 'HBM 웨이퍼 배분 전망', 'bit_share': 'HBM 비트 공급 비중 전망',
+             'carrier_cleaning': 'HBM 유리 지지판 세정 처리량', 'fab_stage': 'P5 Fab1 공급 일정',
+             'malaysia_hsk10_export': '한국→말레이시아 HBM 관련 HSK10 수출',
+             'hbm_revenue_estimate': '기관 HBM 분기 매출 추정 변화',
+             'hbm_bernstein_q3_pair': 'Bernstein 3분기 HBM 매출 추정·양사 상대변화',
+             'hbm_market_pricing': '시장 HBM 평균판매단가·8단/12단 구조 변화',
+             'postprocess_capex': 'HBM 후공정 설비투자·병목 변화',
+             'postprocess_order': 'HBM 후공정 장비 수주 변화',
+             'postprocess_stage': 'HBM 후공정 고객 검증·양산 단계 변화',
+             'hbm_generation_pricing': 'HBM 세대별 2027 가격 리셋',
+             'hynix_supplier_guarantee':'SK하이닉스 2조원 수출공급망 강화보증',
+             'hynix_trinity_fab':'트리니티 팹 실증시설 예산·개소 단계',
+             'hynix_supplier_rnd':'협력사 연구개발 도전 보상제',
+             'nvidia_hbm4_8hi_vendor':'삼성·SK NVIDIA향 HBM4 8단 공급 단계',
+             'hbf_ocp_spec':'SK하이닉스·Sandisk HBF OCP 표준 버전 변화',
+              'hbf_issuer_milestone':'HBF 고객검증·정식발주·양산·출하 단계',
+              'hbf_reported_roadmap':'HBF 2027년 1월 최종본 보도 일정',
+              'foplp_mature_node_industry': 'FOPLP 성숙공정 양산 기준선',
+              'foplp_company_ai_stage': 'FOPLP AI 칩 고객검증·양산 단계',
+              'glass_nvidia_adoption': 'NVIDIA AI 반도체 유리 코어 기판 실제 채택·양산 단계',
+             'glass_panel_standard': '유리기판 510×515mm 규격 수렴·TSMC 채택 상태',
+             'glass_tsmc_roadmap': 'TSMC CoPoS·Glass Core 양산 로드맵',
+             'glass_panel_yield': '유리기판 패널·양산 수율',
+             'glass_hvm_stage': '유리기판 고객검증→발주→HVM 전환 단계',
+             'glass_process_cycle_time': '제이앤티씨 TGV 핵심공정 시간 단축',
+             'glass_capex': '제이앤티씨 김천 TGV 설비투자',
+             'glass_jv_stage': '삼성전기 GlaSSEM 글라스코어 합작법인·출자 단계',
+             'foundry_loss_outlook': '삼성 파운드리+System LSI 손실 축소 전망',
+             'foundry_external_2nm': '삼성 외부 2나노 AI·HPC 수주·양산 전환',
+             'foundry_taylor_schedule': '삼성 Taylor Fab1 양산 일정·외부 고객 협상',
+             'foundry_base_die_allocation': '삼성 HBM4 베이스다이 4나노 배정·가동 변화',
+             'foundry_node_expansion': '삼성 HBM4 대응 4나노 증설 단계 변화',
+             'foundry_pricing': '삼성 4나노·HBM4 베이스다이 가격 변화',
+             'foundry_hbm5_2nm': '삼성 HBM5 2나노 베이스다이 투자 단계 변화'}
+    def fmt(record):
+        v = record['value']
+        if record['axis'] == 'rdimm':
+            def money(n):
+                return f'{n:,.2f}달러' + (f'(약 {n * rate:,.0f}원)' if rate else '(원화 환율 확인 불가)')
+            return f"현물 {money(v['spot'])} / 고정거래 {money(v['contract'])} / 프리미엄 {v['premium_pct']:.1f}%"
+        if record['axis'] in ('rdimm_quote', 'ddr5_chip_quote'):
+            return f'{v:,.3f}달러' + (f'(약 {v * rate:,.0f}원)' if rate else '(원화 환율 확인 불가)')
+        if record['axis'] == 'hbm_config':
+            return f"{v['die_gbit']}Gb × {v['layers']}단 ÷ 8 = {v['stack_gbyte']}GB"
+        if record['axis'] == 'fab_stage':
+            labels = {'plan': '계획', 'delayed': '지연', 'cancelled': '취소', 'reported_operation': '가동 보도'}
+            return f"{v['year']}년 · {labels.get(v['stage'], v['stage'])}"
+        if record['axis'] == 'hbm_generation_pricing':
+            parts = []
+            points = v.get('price_usd_per_gb') or {}
+            if points:
+                parts.append(' · '.join(f"{k} {float(val):.2f}달러/Gb" for k,val in sorted(points.items())))
+            if v.get('broad_step_up_2027'):
+                parts.append("전 세대 동반상승 신호")
+            if v.get('legacy_generation_price_visible'):
+                parts.append("HBM3/HBM3E 구세대 포함")
+            if not points:
+                parts.append("정확한 세대별 숫자 공개 확인 전")
+            return " / ".join(parts)
+        if record['axis'] == 'hynix_supplier_guarantee':
+            result=[f"대출보증 {int(v['ceiling_krw']/1e8):,}억원"]
+            if v.get('contribution_krw'):
+                result.append(f"출연 {int(v['contribution_krw']/1e8):,}억원")
+            if v.get('multiplier'):
+                result.append(f"보증배수 {v['multiplier']:g}배")
+            if v.get('max_rate_discount_pp'):
+                result.append(f"최대 금리 우대 {v['max_rate_discount_pp']:g}%p")
+            result.append(f"상태 {v.get('stage')}·실제 대출·수주·매출 별도 미확인")
+            return ' / '.join(result)
+        if record['axis'] == 'hynix_trinity_fab':
+            return (f"국비 {int(v['national_budget_krw']/1e8):,}억원 · "
+                    f"지방비 {int(v['local_budget_krw']/1e8):,}억원 · "
+                    f"민자 {int(v['private_budget_krw']/1e8):,}억원 "
+                    f"= 총 {int(v['total_budget_krw']/1e8):,}억원 / {v['stage']}")
+        if record['axis'] == 'hynix_supplier_rnd':
+            return f"개발비 최대 {v['upfront_development_pct_max']}% 선지원 · 실패 기여도 평가·정산"
+        if record['axis'] == 'nvidia_hbm4_8hi_vendor':
+            who='삼성전자' if v.get('vendor')=='samsung' else 'SK하이닉스'
+            basis='공식' if v.get('official_target') else '보도'
+            return f"{who} NVIDIA향 HBM4 8단 / 목표 {v.get('target_month') or '미공개'}({basis}) / 실제 단계 {v.get('official_stage') or '미확인'}"
+        if record['axis'] == 'hbf_ocp_spec':
+            stage='최종본 공식 확인' if v.get('final_spec_officially_confirmed') else '공개 규격(최종 여부 별도)'
+            if v.get('version') == v.get('spec_metrics_verified_for_version','0.7.0'):
+                return f"버전 {v.get('version')} · {stage} / 최대 {v.get('spec_capacity_max_gb')}GB / 대역폭 규격 {v.get('spec_bandwidth_min_tbps')}~{v.get('spec_bandwidth_max_tbps')}TB/s / UCIe"
+            return f"버전 {v.get('version')} · {stage} / 새 규격 용량·대역폭은 별도 공식 원문 확인 필요(기존 V0.7.0 수치 재사용 금지)"
+        if record['axis'] == 'hbf_issuer_milestone':
+            names={'customer_sample':'고객 샘플','customer_validation':'고객 검증',
+                   'customer_qualified':'고객 인증 완료','contract_signed':'공급계약 체결',
+                   'pilot_production':'시험생산','mass_production':'양산 개시',
+                   'commercial_shipment':'상용 출하'}
+            return f"{v.get('supplier')} HBF {names.get(v.get('stage'),v.get('stage'))}; 확정 매출·물량 별도 확인"
+        if record['axis'] == 'hbf_reported_roadmap':
+            return '2027년 1월 최종 규격 목표(뉴스핌 보도, 회사·OCP 공식 재확인 필요)'
+        if record['axis'] == 'foplp_mature_node_industry':
+            return f"PMIC·RF 양산 패널 최대 {v.get('panel_width_mm')}×{v.get('panel_height_mm')}mm · AI·CoPoS 양산 아님"
+        if record['axis'] == 'foplp_company_ai_stage':
+            names = {'customer_evaluation':'고객 평가','customer_qualified':'고객 검증 완료',
+                     'pilot_production':'시험생산','mass_production':'양산'}
+            return f"{v.get('manufacturer')} AI 칩 FOPLP {names.get(v.get('stage'),v.get('stage'))} · {'회사 공식' if v.get('issuer_official') else '업계 보도'}"
+        if record['axis'] == 'glass_nvidia_adoption':
+            labels={'reported_evaluation':'도입 평가 보도 단계',
+                    'official_evaluation':'NVIDIA 공식 평가 확인',
+                    'official_joint_development':'NVIDIA 공식 공동개발',
+                    'official_customer_qualification':'고객 인증 완료',
+                    'official_supply_contract':'유리 코어 기판 공급계약',
+                    'official_pilot':'유리 코어 시험생산',
+                    'official_mass_production':'유리 코어 양산'}
+            return labels.get(v.get('stage'),v.get('stage','미확인'))
+        if record['axis'] == 'glass_panel_standard':
+            suppliers = ', '.join(v.get('suppliers') or [])
+            return f"{v.get('width_mm')}×{v.get('height_mm')}mm / 소재사 {v.get('supplier_count')}곳 ({suppliers}) / TSMC {v.get('tsmc_status')}"
+        if record['axis'] == 'glass_tsmc_roadmap':
+            parts = []
+            if v.get('copos_width_mm'):
+                parts.append(f"현 CoPoS {v['copos_width_mm']}×{v['copos_height_mm']}mm")
+            if v.get('validation_year'):
+                parts.append(f"검증 {v['validation_year']}년")
+            if v.get('pilot_year'):
+                parts.append(f"시험생산 {v['pilot_year']}년")
+            if v.get('mass_production_year'):
+                half = v.get('mass_production_half') or ''
+                parts.append(f"양산 {v['mass_production_year']}년{half}")
+            if v.get('glass_core_commercial_after_year'):
+                parts.append(f"Glass Core 상업규모 {v['glass_core_commercial_after_year']}년 이후")
+            return " / ".join(parts)
+        if record['axis'] == 'glass_panel_yield':
+            return f"패널·양산 수율 {v.get('yield_pct'):.1f}%"
+        if record['axis'] == 'glass_process_cycle_time':
+            before = f"{float(v['before_minutes']):g}분" if v.get('before_minutes') is not None else "개선 전 미확인"
+            if v.get('after_minutes_exact') is not None:
+                after = f"{float(v['after_minutes_exact']):g}분"
+            elif v.get('after_time_class') == 'minute_scale':
+                after = "분 단위(정확한 분 수 미공개)"
+            else:
+                after = "개선 후 미확인"
+            process_label = {
+                'copper_fill_metallization': '구리 충진·금속화',
+                'metallization': '금속화',
+                'etching': '식각',
+                'via_formation': '비아 형성',
+                'unverified_core_process': '핵심공정(세부 공정 미확인)',
+            }.get(v.get('process_name'), v.get('process_name') or '공정 미확인')
+            return f"{process_label} / {before}→{after}"
+        if record['axis'] == 'glass_capex':
+            parts = []
+            if v.get('investment_krw') is not None:
+                parts.append(f"투자 {float(v['investment_krw'])/1e8:,.0f}억원")
+            if v.get('line_count_min_initial') is not None:
+                parts.append(f"초기 {int(v['line_count_min_initial'])}~{int(v.get('line_count_max_initial') or v['line_count_min_initial'])}개 라인")
+            if v.get('line_count_mass_ramp_min') is not None:
+                parts.append(f"대량양산 {int(v['line_count_mass_ramp_min'])}개 이상")
+            if v.get('groundbreaking_period'):
+                parts.append(f"착공 {v['groundbreaking_period']}")
+            if v.get('initial_customer_commercialization_period'):
+                parts.append(f"고객 초기 상용화 {v['initial_customer_commercialization_period']}")
+            if v.get('start_year') or v.get('end_year'):
+                parts.append(f"투자기간 {v.get('start_year') or '?'}~{v.get('end_year') or '?'}년")
+            if v.get('site_area_pyeong') is not None:
+                parts.append(f"부지 {int(v['site_area_pyeong']):,}평")
+            if v.get('employees') is not None:
+                parts.append(f"고용 {int(v['employees']):,}명")
+            parts.append(f"생산능력 월 {float(v['capacity_panels_per_month']):,.0f}장" if v.get('capacity_panels_per_month') is not None else "실제 물량 생산능력 미공개")
+            return " / ".join(parts)
+        if record['axis'] == 'glass_jv_stage':
+            labels = {
+                'mou':'합작 검토 MOU','share_acquisition_decided':'출자·주식취득 결정',
+                'jv_established':'합작법인 설립 완료','construction':'공장 착공',
+                'pilot':'파일럿','mass_production':'양산'
+            }
+            parts = [labels.get(v.get('stage'), v.get('stage',''))]
+            if v.get('investment_krw') is not None:
+                parts.append(f"출자 {float(v['investment_krw'])/1e8:,.0f}억원")
+            if v.get('equity_pct') is not None:
+                parts.append(f"삼성전기 지분 {float(v['equity_pct']):.1f}%")
+            if v.get('scheduled_acquisition_date'):
+                parts.append(f"출자 예정일 {v['scheduled_acquisition_date']}")
+            if v.get('partner'):
+                parts.append(f"파트너 {v['partner']}")
+            return " / ".join(parts)
+        if record['axis'] == 'glass_hvm_stage':
+            labels = {'sample':'샘플','customer_evaluation':'고객 검증','po_pending':'정식 발주 대기','po_signed':'정식 수주','pilot':'파일럿','mass_production':'양산'}
+            text = labels.get(v.get('stage'),v.get('stage',''))
+            if v.get('customer'):
+                text += f" / 고객 {v['customer']}"
+            if v.get('product') == 'glass_interposer':
+                text += " / 유리 인터포저"
+            if v.get('sample_delivered'):
+                text += " / 샘플 납품 확인"
+            if v.get('evaluation_ongoing'):
+                text += " / 평가 진행"
+            if v.get('mass_production_target_year'):
+                text += f" / 양산 목표 {int(v['mass_production_target_year'])}년"
+            if v.get('pilot_capacity_units_per_month_min') is not None:
+                text += f" / 파일럿 월 {int(v['pilot_capacity_units_per_month_min']):,}~{int(v.get('pilot_capacity_units_per_month_max') or v['pilot_capacity_units_per_month_min']):,}개"
+            if v.get('paid_sample_customer_count') is not None:
+                text += f" / 유상샘플 {int(v['paid_sample_customer_count'])}곳"
+            if v.get('nda_customer_count') is not None:
+                text += f" / NDA {int(v['nda_customer_count'])}곳"
+            if v.get('us_semiconductor_customer_validation_completed'):
+                text += " / 미국 반도체 고객 검증 완료(실명 미공개)"
+            if v.get('taiwan_end_customer_validation_ongoing'):
+                text += " / 대만 최종 고객 2mm 검증 중"
+            if v.get('additional_us_bigtech_collaboration_requested'):
+                text += " / 추가 미국 빅테크 기술협력 요청"
+            if v.get('pilot_line_location'):
+                text += f" / 파일럿 {v['pilot_line_location']}"
+            if v.get('mass_production_earliest_year'):
+                text += f" / 양산 최조 {int(v['mass_production_earliest_year'])}년 이후"
+            if v.get('commercialization_target_start_year') is not None and v.get('commercialization_target_end_year') is not None:
+                text += f" / 상용화 목표 {int(v['commercialization_target_start_year'])}~{int(v['commercialization_target_end_year'])}년"
+            if v.get('uti_collaboration'):
+                text += " / UTI 협력"
+            return text
+        if record['axis'] == 'foundry_loss_outlook':
+            parts = []
+            if v.get('loss_2025_krw_trn') is not None:
+                parts.append(f"2025 손실 {v['loss_2025_krw_trn']:.2f}조원")
+            if v.get('loss_2026e_krw_trn') is not None:
+                parts.append(f"2026E {v['loss_2026e_krw_trn']:.2f}조원")
+            if v.get('loss_shrink_pct') is not None:
+                parts.append(f"손실 축소 {v['loss_shrink_pct']:.1f}%")
+            if v.get('q3_2026e_loss_krw_trn') is not None:
+                parts.append(f"3Q26E {v['q3_2026e_loss_krw_trn']:.3f}조원")
+            return " / ".join(parts)
+        if record['axis'] == 'foundry_external_2nm':
+            labels = {'discussion':'협의·논의','design_win':'설계수주·프로젝트 확보','tapeout':'테이프아웃','qualification':'고객 인증','mass_production':'양산'}
+            parts = [labels.get(v.get('stage'), v.get('stage',''))]
+            if v.get('hpc_design_win'):
+                parts.append("2나노 HPC")
+            if v.get('us_orders_strong'):
+                parts.append("미국 고객 수주 강세")
+            if v.get('gen2_mobile_ramp_plan'):
+                parts.append("2나노 2세대 모바일 램프 계획")
+            return " / ".join(x for x in parts if x)
+        if record['axis'] == 'foundry_taylor_schedule':
+            parts = []
+            if v.get('mass_production_year'):
+                parts.append(f"Fab1 양산 목표 {int(v['mass_production_year'])}년")
+            if v.get('external_customer_negotiations'):
+                parts.append("외부 고객 협상")
+            return " / ".join(parts)
+        if record['axis'] == 'foundry_base_die_allocation':
+            parts = []
+            if v.get('total_capacity_wpm'):
+                parts.append(f"4나노 월 {v['total_capacity_wpm']/10000:.1f}만장")
+            if v.get('allocation_pct_min') is not None:
+                if v.get('allocation_pct_max') is not None:
+                    parts.append(f"HBM4 베이스다이 {v['allocation_pct_min']:.0f}~{v['allocation_pct_max']:.0f}%")
+                else:
+                    parts.append(f"HBM4 베이스다이 {v['allocation_pct_min']:.0f}% 이상")
+            if v.get('full_utilization'):
+                parts.append("풀가동")
+            return " / ".join(parts)
+        if record['axis'] == 'foundry_node_expansion':
+            labels = {'mentioned':'언급','review':'증설 검토','confirmed':'투자·증설 확정','equipment_order':'장비 발주','move_in':'장비 반입','trial_production':'시험생산','mass_production':'양산'}
+            return labels.get(v.get('stage'), v.get('stage',''))
+        if record['axis'] == 'foundry_pricing':
+            parts = []
+            if v.get('new_order_price_up'):
+                parts.append("4나노 신규수주 가격 인상")
+            if v.get('base_die_price_up'):
+                parts.append("HBM4 베이스다이 가격 인상")
+            if v.get('price_change_pct') is not None:
+                parts.append(f"{v['price_change_pct']:.1f}%")
+            elif v.get('price_change_pct_min') is not None:
+                parts.append(f"{v['price_change_pct_min']:.1f}~{v['price_change_pct_max']:.1f}%")
+            return " / ".join(parts)
+        if record['axis'] == 'foundry_hbm5_2nm':
+            labels = {'technology_plan':'2나노 기술 적용 계획','mentioned':'신규라인 언급','review':'신규라인 투자 검토','confirmed':'신규라인 투자 확정','equipment_order':'장비 발주','move_in':'장비 반입','trial_production':'시험생산','mass_production':'양산'}
+            text = labels.get(v.get('investment_stage'), v.get('investment_stage',''))
+            if v.get('speed_uplift_target_pct') is not None:
+                text += f" / 속도 +{v['speed_uplift_target_pct']:.0f}% 목표"
+            return text
+        if record['axis'] == 'postprocess_capex':
+            if 'total_capex_usd_min' in v and v.get('total_capex_usd_min'):
+                text = f"설비투자 {v['total_capex_usd_min']/1e9:.1f}~{v['total_capex_usd_max']/1e9:.1f}십억달러"
+                if v.get('backend_alloc_pct_min') is not None:
+                    text += f" / 후공정 묶음 {v['backend_alloc_pct_min']:.0f}~{v['backend_alloc_pct_max']:.0f}%"
+                if v.get('tester_shortage'):
+                    text += " / 테스터 부족 확인"
+                return text
+            amount = v.get('total_capex_usd') or 0
+            text = f"설비투자 {amount/1e9:.1f}십억달러"
+            if v.get('prior_capex_usd'):
+                text += f" / 직전 {v['prior_capex_usd']/1e9:.1f}십억달러"
+            return text
+        if record['axis'] == 'postprocess_order':
+            amount = v.get('amount_krw') or 0
+            text = f"수주 {amount/1e8:,.0f}억원"
+            if v.get('contract_count'):
+                text += f" / {v['contract_count']}건"
+            return text
+        if record['axis'] == 'postprocess_stage':
+            labels = {
+                'development':'개발', 'pilot':'파일럿', 'pilot_passed':'파일럿 품질검증 통과',
+                'po_pending':'정식 발주 대기', 'po_signed':'정식 수주', 'equipment_move_in':'장비 반입',
+                'mass_production':'양산'
+            }
+            return labels.get(v.get('stage'), v.get('stage',''))
+        if record['axis'] == 'hbm_market_pricing':
+            parts = []
+            if v.get('blended_asp_yoy_pct') is not None:
+                parts.append(f"2027 Blended ASP {v['blended_asp_yoy_pct']:+.0f}% YoY")
+            if v.get('mainstream_layers') is not None:
+                parts.append(f"주류 {int(v['mainstream_layers'])}단")
+            if v.get('eight_hi_premium_min_pct') is not None:
+                parts.append(f"8단 Gb당 프리미엄 {v['eight_hi_premium_min_pct']:.0f}~{v['eight_hi_premium_max_pct']:.0f}%")
+            return " / ".join(parts)
+        if record['axis']=='hbm_bernstein_q3_pair':
+            def price(n):
+                return f"{n/1e9:g}십억달러" + (
+                    f"(약 {n*rate/1e12:.2f}조원)" if rate else "(원화 환율 확인 불가)")
+            a,b=v['samsung_usd'],v['skhynix_usd']
+            olda,oldb=v['previous_model_samsung_usd'],v['previous_model_skhynix_usd']
+            return (f"삼성전자 {price(a)} (전분기 +33%) / "
+                    f"SK하이닉스 {price(b)} (전분기 +11%) / "
+                    f"삼성 추정 우위 {price(a-b)} / "
+                    f"9월 21일 모형 대비 삼성 {(a/olda-1)*100:+.1f}%, "
+                    f"SK하이닉스 {(b/oldb-1)*100:+.1f}%")
+        if record['axis'] == 'hbm_revenue_estimate':
+            amount = v.get('estimate_usd') or 0
+            text = f"분기 추정 {amount/1e9:.1f}십억달러"
+            if rate:
+                text += f"(약 {amount*rate/1e12:.2f}조원)"
+            if v.get('qoq_pct') is not None:
+                text += f" / 전분기 {v['qoq_pct']:+.1f}%"
+            if v.get('prior_formal_forecast_usd'):
+                text += f" / 기존 공식 전망 참조 {v['prior_formal_forecast_usd']/1e9:.1f}십억달러"
+            if v.get('alternative_usd'):
+                text += f" / 대안 시나리오 {v['alternative_usd']/1e9:.1f}십억달러"
+            return text
+        if record['axis'] == 'malaysia_hsk10_export':
+            amount = v.get('amount_usd') or 0
+            text = f"수출 {amount/1e9:.3f}십억달러"
+            if rate:
+                text += f"(약 {amount*rate/1e12:.2f}조원)"
+            if v.get('weight_kg'):
+                text += f" / 중량 약 {v['weight_kg']/1000:.1f}t"
+            if v.get('yoy_pct') is not None:
+                text += f" / 전년동월 +{v['yoy_pct']:.1f}%"
+            if v.get('malaysia_vs_taiwan_pct') is not None:
+                text += f" / 대만 대비 {v['malaysia_vs_taiwan_pct']:.1f}%"
+            return text
+        return str(v) + ('%' if record['unit'] == 'pct' else '회/월')
+    lines = [f"<b>{names[r['axis']]}</b>", f"• 현재: {html.escape(fmt(r))}"]
+    if old:
+        lines.append('• 직전 알림 기준: ' + html.escape(fmt(old)))
+    lines += ['• 변화: ' + html.escape(' / '.join(change['reasons'])),
+              f"• 대상기간: {html.escape(r['period'])} · 자료 기준일 {html.escape(r['as_of'])}"]
+    if r['axis'] == 'rdimm':
+        lines += [f"• 규격: {r['capacity_gb']}GB RDIMM · {html.escape(r['speed'])} MT/s",
+                  f"• 고정거래 기준: {r['value']['contract_period']} · 프리미엄은 이익률이 아님"]
+    if r['axis'] in ('rdimm_quote', 'ddr5_chip_quote'):
+        lines.append('• 고정거래 원값이 없으면 프리미엄을 추정하지 않으며, 16Gb 칩과 GB 모듈은 별도입니다.')
+    if r['axis'] == 'hbm_config':
+        lines.append('• 제품 사양과 고객 채택을 분리하며, 묶음 수 미확인 시 GPU 전체 용량을 추정하지 않습니다.')
+        if r['value']['stack_gbyte'] == 32:
+            lines.append('• 비교 시나리오: 36→32GB는 −11.1%·출하 +12.5% 상쇄 / 48→32GB는 −33.3%·출하 +50% 상쇄. 고객 실제 채택과 별개입니다.')
+        if old:
+            comp = capacity_comparison(old['value']['stack_gbyte'], r['value']['stack_gbyte'])
+            lines.append(f"• 동일 묶음 수 가정: 용량 {comp['capacity_change_pct']:+.1f}% · 총 비트 유지 출하 증감률 {comp['gpu_growth_break_even_pct']:+.1f}%")
+    if r['axis'] == 'carrier_cleaning':
+        lines.append('• 재사용 세정 처리량이며 웨이퍼 생산·칩 출하·수주금액으로 치환하지 않습니다.')
+    if r['axis'] in ('wafer_share', 'bit_share'):
+        lines.append('• 연말 전망이며 연간 평균·실제 확정 생산량과 비교하지 않습니다.')
+    if r['axis'] == 'hbm_generation_pricing':
+        lines.append('• 기관별 가격곡선을 서로 합치지 않습니다. 동일 기관·동일 세대·동일 적층 조건만 전후 비교합니다.')
+        lines.append('• 8단·12단 등 적층 높이가 다르면 별도 가격으로 저장하며 Blended ASP와 세대별 $/Gb를 합치지 않습니다.')
+        lines.append('• 사용자 캡처는 방향 기준선일 뿐, 판독이 모호한 숫자는 저장하지 않습니다. 공개 원문에서 확인되는 숫자만 가격 상태값으로 승격합니다.')
+    if r['axis'] == 'hynix_supplier_guarantee':
+        lines.append('• 2조원은 협력사 대출보증 공급 한도이며 보조금·양산 매출이 아닙니다.')
+        lines.append('• SK하이닉스 추천 및 무역보험공사 보증심사 뒤 협약 은행에서 대출받는 구조입니다.')
+        lines.append('• 보증발급→대출실행→공정검증→정식발주→양산매출을 구분하여 감시합니다.')
+        lines.append('• 출연재원 1,000억원과 납품대금지원 펀드 1,000억원은 별개입니다.')
+    if r['axis'] == 'hynix_trinity_fab':
+        lines.append('• 시설 구축비와 실증 수율·고객 인증·구매계약은 별도입니다.')
+    if r['axis'] == 'hynix_supplier_rnd':
+        lines.append('• 연구개발 실패 시 자동 전액 환급이 아니라 기술기여도 평가 후 정산합니다.')
+    if r['axis'] == 'nvidia_hbm4_8hi_vendor':
+        lines.append('• 2027년 2월 8단 목표 보도는 2026년 HBM4 일반 양산과 구별합니다.')
+        lines.append('• 고객 인증·정식 발주·8단 양산·상용 출하를 업체별 공식자료로만 확정합니다.')
+        lines.append('• HBM4E·Rubin Ultra와 분리합니다. 스택 수·가격·매출은 미확인입니다.')
+        lines.append('• 공정 병목: 수율·휨·발열·고온 동작 검사·신뢰성 검증·검사 시간.')
+    if r['axis'] == 'hbf_ocp_spec':
+        lines.append('• 최초 OCP V0.7.0은 2026년 8월 공개된 규격 초안이며, 최종본·실제 칩 성능·양산 매출과는 다릅니다.')
+        lines.append('• 규격 공개→고객 샘플→고객 검증→실제 공급계약→시험생산→양산→매출 발생을 별도로 확인합니다.')
+        lines.append('• 2027년 1월 최종본 목표는 뉴스핌 보도로만 확인돼 공식 OCP 게시·버전 개정을 별도로 검증합니다.')
+        lines.append('• 적층 수율·낸드 읽기 지연·발열·재기록 내구성·UCIe 호환성·소프트웨어 최적화가 핵심 위험입니다.')
+    if r['axis'] == 'hbf_issuer_milestone':
+        lines.append('• HBF는 낸드 기반 용량 계층이고, HBM 대역폭 매출이나 기존 기업용 SSD 양산과 별개입니다.')
+        lines.append('• 규격 공개→샘플→고객 검증→정식 공급계약→시험생산→양산→상용 출하·매출은 각각 별도 단계로 판단합니다.')
+        lines.append('• 구글·Tenstorrent의 표준화 참여는 제품 구매계약이나 양산 주문이 아닙니다.')
+    if r['axis'] == 'foplp_mature_node_industry':
+        lines.append('• PMIC·RF 기존 성숙공정 양산은 TSMC CoPoS나 AI 대형 칩·유리 코어 기판 양산이 아닙니다.')
+    if r['axis'] == 'foplp_company_ai_stage':
+        lines.append('• 같은 제조사·AI 응용처에서 고객 검증→시험생산→양산을 단계별 비교합니다. 업계 보도를 회사 공식 확인으로 승격하지 않습니다.')
+        lines.append('• 휨·RDL 정렬·고온 동작 검사·수율·신뢰성 검증이 실제 비용과 양산 시점을 결정합니다.')
+    if r['axis'] == 'glass_nvidia_adoption':
+        lines.append('• NVIDIA의 기존 삼성전기 ABF·IBIDEN·Unimicron 기판 계약 및 Corning 광섬유 계약은 유리 코어 기판 채택과 별도입니다.')
+        lines.append('• 보도상 2028년 가능성은 계약·양산 예정일 확정이 아니며, NVIDIA/공급사 공식 고객 검증·구매계약·시험생산·양산만 단계 상승으로 알립니다.')
+        lines.append('• 먼저 볼 지표: TGV 금속 충진·전체 패널 전기수율·휨·고온 동작 검사·고객 신뢰성 인증.')
+    if r['axis'] == 'glass_panel_standard':
+        lines.append('• 510×515mm 규격 수렴과 TSMC 공식 채택은 별개입니다. DIGITIMES의 공급망 추정은 reported_candidate로만 저장합니다.')
+    if r['axis'] == 'glass_tsmc_roadmap':
+        lines.append('• 현재 공개 로드맵은 CoPoS 310×310mm: 2026 검증→2027 시험생산→2028년 하반기 양산, Glass Core 상업규모는 2030년 이후입니다.')
+    if r['axis'] == 'glass_panel_yield':
+        lines.append('• TGV 홀 단일 불량률과 전체 패널 전기수율은 다른 지표입니다. 패널·양산 수율만 이 축에서 비교합니다.')
+        lines.append('• ±5%p 또는 85%·90% 기준선 돌파/이탈 시 재알림합니다.')
+    if r['axis'] == 'glass_process_cycle_time':
+        v = r['value']
+        lines.append('• 12시간=720분으로 환산합니다. “분 단위”만으로 개선 후 정확한 분 수나 속도배수를 임의 계산하지 않습니다.')
+        if v.get('process_name') == 'unverified_core_process':
+            lines.append('• 공정명이 직접 확인되기 전에는 도금·식각·레이저 중 특정 공정으로 단정하지 않습니다.')
+        if v.get('after_minutes_exact') is not None and v.get('before_minutes'):
+            speed = float(v['before_minutes']) / float(v['after_minutes_exact'])
+            lines.append(f"• 직접 확인 숫자 기준 공정시간 단축배수: {speed:.1f}배")
+    if r['axis'] == 'glass_capex':
+        lines.append('• 설비투자 총액과 라인 수를 실제 월 생산장수로 치환하지 않습니다. 토지·건물·기계장치·공통설비가 섞일 수 있습니다.')
+        lines.append('• 투자액·라인수와 실제 양산 수율·월 생산능력·고객 매출은 별도 상태로 추적합니다.')
+    if r['axis'] == 'glass_jv_stage':
+        lines.append('• 합작법인 출자·주식취득 결정은 유리기판 양산 개시나 고객 매출 발생과 같은 뜻이 아닙니다.')
+        lines.append('• 합작법인 설립 완료→공장·장비→파일럿→고객 검증→양산을 각각 별도 단계로 추적합니다.')
+    if r['axis'] == 'glass_hvm_stage':
+        lines.append('• 샘플→고객 검증→정식 발주 대기→정식 수주→파일럿→양산을 구분하며 기사상 기대감을 양산매출로 승격하지 않습니다.')
+        v = r['value']
+        if v.get('customer') == 'Samsung Electronics':
+            lines.append('• 고객 실명 삼성전자는 보도 단계로 저장합니다. 켐트로닉스·삼성전자 공식 확인 전에는 확정 공급계약·양산매출로 승격하지 않습니다.')
+            if v.get('digitimes_republisher'):
+                lines.append('• 출처 계보: DealSite 원보도 → DIGITIMES 재인용. 기사 수가 2개여도 독립된 2개 검증 출처로 계산하지 않습니다.')
+            if v.get('fact_origin_sources'):
+                lines.append('• 독립 사실 원천: ' + ', '.join(v.get('fact_origin_sources') or []) + f" · {int(v.get('independent_source_count') or 0)}곳")
+            lines.append(
+                '• 회사 공식 확인: 삼성전자 ' + ('확인' if v.get('samsung_official_confirmation') else '미확인')
+                + ' · 켐트로닉스 ' + ('확인' if v.get('chemtronics_official_customer_confirmation') else '미확인')
+            )
+        if v.get('sample_process') == 'existing_method':
+            lines.append('• 현재 삼성전자에 전달된 샘플은 보도상 기존 방식 제품입니다.')
+        if v.get('new_metal_fill_stage'):
+            status = '고객 샘플 전달' if v.get('new_metal_fill_sample_delivered') else '아직 고객 샘플 미전달'
+            lines.append(f"• 신규 금속 충진 방식: {v.get('new_metal_fill_stage')} · {status}")
+        if v.get('issue_response_ongoing'):
+            lines.append('• 현재는 평가 중 이슈 보완 대응 단계이며 평가 통과·정식 발주·양산 시점은 아직 확정되지 않았습니다.')
+    if r['axis'] == 'foundry_loss_outlook':
+        lines.append('• 주의: 파운드리 단독 손익이 아니라 파운드리+System LSI 합산 증권사 전망입니다. 회사 확정 실적과 분리합니다.')
+        lines.append('• 2026E 손실 ±0.5조원 또는 10% 이상, 3Q26E ±0.2조원 또는 10% 이상, 손실 축소율 ±5%p 이상을 재알림합니다.')
+    if r['axis'] == 'foundry_external_2nm':
+        lines.append('• 설계수주→테이프아웃→고객 인증→양산을 분리하며, 설계수주를 양산매출로 간주하지 않습니다.')
+    if r['axis'] == 'foundry_taylor_schedule':
+        lines.append('• Taylor 양산 일정과 외부 고객 협상은 삼성전자 공식자료·Reuters 등 확인된 변화만 반영하며 특정 고객을 2나노 양산으로 임의 연결하지 않습니다.')
+    if r['axis'] == 'foundry_base_die_allocation':
+        lines.append('• 4나노 웨이퍼 배정률은 HBM 완제품 출하량과 동일하지 않으며 수율·베이스다이 크기·패키징 수율을 별도로 봅니다.')
+    if r['axis'] == 'foundry_node_expansion':
+        lines.append('• 증설 검토와 투자 확정·장비 발주·장비 반입·시험생산·양산을 각각 다른 단계로 추적합니다.')
+    if r['axis'] == 'foundry_pricing':
+        lines.append('• 가격 인상 보도와 실제 평균판매단가를 구분하며 인상률이 공개되면 숫자 상태로 갱신합니다.')
+    if r['axis'] == 'foundry_hbm5_2nm':
+        lines.append('• 2나노 기술 적용 계획과 HBM5 전용 신규 생산라인 설비투자는 서로 다른 상태입니다.')
+    if r['axis'] == 'postprocess_capex':
+        lines.append('• 설비투자 총액과 후공정·테스트 배정액을 분리하며, TSMC 10~20% 묶음에는 패키징·테스트·마스크·기타가 함께 포함됩니다.')
+    if r['axis'] == 'postprocess_order':
+        lines.append('• 기사 관심종목이 아니라 고객·금액이 확인된 실제 수주만 상태값으로 올립니다.')
+    if r['axis'] == 'postprocess_stage':
+        lines.append('• 파일럿→품질검증→정식 발주→장비 반입→양산의 단계 상승만 신규 상태로 봅니다.')
+    if r['axis'] == 'hbm_market_pricing':
+        v = r['value']
+        if v.get('stack_bit_change_pct') is not None:
+            lines.append(f"• 12단→8단 동일 스택 수 가정: 스택당 비트 {v['stack_bit_change_pct']:+.1f}%")
+        if v.get('gpu_growth_break_even_min_pct') is not None:
+            lines.append(
+                f"• 8단 Gb당 프리미엄을 반영하면 기존 12단 매출 상쇄에 필요한 GPU·ASIC 출하 증가는 "
+                f"약 {v['gpu_growth_break_even_min_pct']:.1f}~{v['gpu_growth_break_even_max_pct']:.1f}%"
+            )
+        lines.append("• 시장 전체 TrendForce 전망이며 삼성전자·SK하이닉스·Micron 개별 ASP와 합치지 않습니다.")
+        lines.append("• +121%는 2026년=100일 때 2027년 가격 레벨 221을 뜻하며, 계약가 범위와 Blended ASP는 별도 상태입니다.")
+    if r['axis']=='hbm_bernstein_q3_pair':
+        lines.append('• 출처: Bernstein 수출 회귀모형을 재인용한 10월22일 보도. 회사 공식 HBM 매출이나 이익 역전 확정이 아닙니다.')
+        lines.append('• 9월21일 모형은 8월까지의 자료, 이번 모형은 7~9월 수출 기초입니다. 추정치 수정과 실제 기업 실적 변동을 구분합니다.')
+        lines.append('• 지역 HSK10에는 HBM 이외 복합 메모리도 들어갈 수 있으며 단가·수율·환율·제품혼합이 모형 오차 원인입니다.')
+        lines.append('• 2026년 2분기 Counterpoint 매출점유율은 SK하이닉스 50%·삼성 33%. 다른 기관·기간이므로 섞지 않습니다.')
+        lines.append('• 다음 검증: 10월28일 09:00 SK하이닉스, 10월29일 10:00 삼성전자 공식 3분기 실적발표(KST). HBM4 물량·마진을 별도 확인.')
+    if r['axis'] == 'hbm_revenue_estimate':
+        method_labels = {'regression_proxy':'수출 회귀식 대용지표', 'formal_forecast':'기관 공식 전망', 'reported_estimate':'보도 추정'}
+        lines.append('• 성격: ' + method_labels.get(r['value'].get('method'), r['value'].get('method','')) + '이며 회사 확정 매출이 아닙니다.')
+        lines.append('• 회귀식 추정치와 기관의 정식 실적 전망을 같은 값으로 합치지 않습니다.')
+    if r['axis'] == 'malaysia_hsk10_export':
+        lines.append('• HSK 8542323000은 HBM 포함 복합구조칩 집적회로로 HBM 전용 통계가 아닙니다.')
+        if r['value'].get('weight_rounded_from_public_text'):
+            lines.append('• 중량은 공개 보도 반올림값이면 중량당 단가를 정밀 계산하지 않습니다. 관세청 직접 원값 확인 시 갱신합니다.')
+    label = {'official': '회사 공식자료', 'research': '조사기관 자료', 'reported': '보도 단계', 'user_capture': '사용자 캡처 기준선'}[r['evidence']]
+    if r.get('axis') == 'malaysia_hsk10_export' and r['evidence'] == 'official':
+        label = '한국 관세청 공식 무역통계'
+    if r.get('axis') == 'hbf_ocp_spec' and r['evidence'] == 'official':
+        label = 'OCP 공식 표준 규격'
+    source_title = r.get('source_title','')
+    if not re.search(r'[가-힣]', source_title):
+        source_title = names.get(r['axis'], 'HBM 상태 변화') + ' 관련 보도'
+    lines += [f'• 근거 단계: {label}', '• 근거 제목(한국어): ' + html.escape(source_title) +
+              ' · <a href="' + html.escape(r['source_url'], quote=True) + '">원문</a>']
+    return '\n'.join(lines)
+
+
+def main():
+    import samsung_hbm_watch as legacy
+    now = datetime.now(ZoneInfo('Asia/Seoul'))
+    baseline = json.loads((ROOT / 'data/hbm_memory_baselines.json').read_text(encoding='utf-8'))
+    original_descriptor = legacy.event_state_descriptor
+    rejected_generic = []
+    def guarded_descriptor(e):
+        text = (e.get('title','') + ' ' + e.get('description','')).lower()
+        structured_revenue = (
+            'hbm' in text
+            and any(k in text for k in ('bernstein', '번스타인', 'j.p. morgan', 'jp morgan', 'ubs', 'morgan stanley', 'citi', 'bofa', 'goldman sachs'))
+            and any(k in text for k in ('revenue', '매출', 'qoq', '전분기', 'forecast', 'estimate', '회귀', 'regression'))
+            and not any(k in text for k in ('2배', 'double', '3배', 'triple', 'wafer', '웨이퍼', 'capacity', '생산능력', '캐파'))
+        )
+        structured_postprocess = (
+            any(k in text for k in (
+                'tsmc', 'ase', '디아이', '디지털 프론티어', '디지털프론티어', '와이씨',
+                '엑시콘', '인텍플러스', '펨트론', 'isc', '고영', '네오셈', '넥스틴'
+            ))
+            and any(k in text for k in (
+                'cowos', '후공정', '패키징', '검사', '테스트', 'tester',
+                '수주', '품질 검증', '정식 계약', '설비투자', 'capex'
+            ))
+        )
+        structured_market_pricing = (
+            ('trendforce' in text or '트렌드포스' in text)
+            and 'hbm' in text
+            and any(k in text for k in ('blended asp', '평균판매가격', '평균판매단가', '8-hi', '8hi', '8단', 'gb당'))
+        )
+        structured_foundry = (
+            ('samsung' in text or '삼성' in text)
+            and 'hbm' in text
+            and any(k in text for k in ('base die', '베이스다이', '베이스 다이', '4nm', '4나노', '2nm', '2나노'))
+            and any(k in text for k in ('full utilization', '풀가동', '증설', 'expand', 'price increase', '가격 인상', 'production line', '생산라인', 'investment', '투자'))
+        )
+        structured_generation_pricing = (
+            any(k in text for k in ('semianalysis','trendforce','micron','citi','j.p. morgan','jpmorgan','bofa'))
+            and ('2027' in text or '27e' in text)
+            and any(k in text for k in ('hbm3e','hbm4','hbm4e'))
+            and any(k in text for k in ('$/gb','per gb','price','pricing','asp','가격'))
+        )
+        structured_partner = (
+            any(x in text for x in ('sk하이닉스','sk hynix','하이닉스'))
+            and any(x in text for x in ('수출공급망 강화보증','상생 무역금융',
+                                        '트리니티팹','트리니티 팹','r&d 도전 보상제'))
+        )
+        structured_8hi = (
+            'hbm4' in text and 'hbm4e' not in text
+            and any(x in text for x in ('8-hi','8hi','8단'))
+            and any(x in text for x in ('nvidia','엔비디아'))
+        )
+        structured_hbf = (
+            'hbf' in text or 'high bandwidth flash' in text or '고대역폭 플래시' in text
+        )
+        structured_foplp = (
+            any(k in text for k in ('foplp','fan-out panel-level','扇出型面板級封裝','패널형 팬아웃'))
+            and any(k in text for k in ('tsmc','copos','pmic','rf','ai','hpc','pilot','양산','量產','量产','고객'))
+        )
+        structured_nvidia_glass = (
+            any(k in text for k in ('nvidia','엔비디아','英伟达'))
+            and any(k in text for k in ('glass substrate','glass core','glass package','glass interposer','유리기판','유리 기판','玻璃基板','tgv'))
+        )
+        structured_glass = (
+            any(k in text for k in ('glass substrate','glass core','glass panel','glass interposer','tgv','유리기판','유리 기판','유리 인터포저','글라스 코어'))
+            and any(k in text for k in ('510x515','510×515','515x510','515×510','copos','yield','수율','sample','샘플','customer evaluation','customer validation','고객 평가','고객 검증','purchase order','po ','pilot','양산','samsung','삼성전자','12시간','분 단위','cycle time','공정시간','3470억','김천','설비투자','investment'))
+        )
+        structured_foundry_recovery = (
+            ('samsung' in text or '삼성' in text)
+            and ('foundry' in text or '파운드리' in text)
+            and (
+                any(k in text for k in ('operating loss', '영업손실', '영업 손실', '적자', '41.8%', '42%'))
+                or (
+                    any(k in text for k in ('2nm', '2나노', 'taylor', '테일러'))
+                    and any(k in text for k in ('design win', 'hpc', 'csp', 'customer', 'contract', '수주', 'tapeout', 'qualification', 'mass production', '양산', 'negotiation', '협상'))
+                )
+            )
+        )
+        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass or structured_nvidia_glass or structured_foplp or structured_hbf or structured_partner or structured_8hi:
+            rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
+            return '', '', ''
+        if not concrete_state_evidence(e):
+            rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
+            return '', '', ''
+        return original_descriptor(e)
+    legacy.event_state_descriptor = guarded_descriptor
+    initial = legacy.load_state()
+    for e in baseline.get('recovered_deliveries', []):
+        key, signature, label = legacy.event_state_descriptor(e)
+        if key:
+            initial.setdefault('topic_states', {}).setdefault(key, {
+                'signature': signature, 'observed_at': e['published_at_kst'], 'state': label,
+                'recovered_message_id': e['message_id']})
+    legacy.save_state(initial)
+    original_read, original_relevant = legacy.read_events, legacy.relevant
+    legacy.QUERIES = list(dict.fromkeys(legacy.QUERIES + EXTRA_QUERIES))
+    legacy.TRUSTED += (
+        '글로벌이코노믹', 'g-enews', 'dramexchange', 'sk하이닉스', 'micron',
+        'futunn', 'futu news', 'bernstein', 'hilo research', 'xxquant',
+        '머니투데이', 'moneytoday', 'mt.co.kr', '한국경제tv', 'wowtv', 'v.daum.net',
+        'digitimes', 'semianalysis', 'newsletter.semianalysis', 'corning', 'agc', 'nippon electric glass', 'schott',
+        'philoptics', '필옵틱스', 'jntc', '제이앤티씨', 'absolics', '앱솔릭스',
+        'samsung electro-mechanics', '삼성전기', 'edaily', '이데일리',
+        'dealsite', '딜사이트', 'chemtronics', '켐트로닉스', 'kind.krx.co.kr',
+        'thelec', 'the elec', 'thelec.kr', '국민일보', 'kmib', 'kmib.co.kr',
+        'lg innotek', 'lginnotek', 'samsung electro-mechanics', 'samsungsem', 'skc',
+        'ctee.com.tw', '工商時報', 'tsmc.com', 'aseglobal.com', 'innolux.com', 'pti.com.tw', 'chipmos.com',
+        'opencompute.org', 'sandisk.com', 'news.skhynix.co.kr', 'news.skhynix.com',
+        'newspim', '뉴스핌', 'yna.co.kr', '연합뉴스', 'korea.kr',
+        'm.korea.kr', '산업통상부','gmt8press','gmt8press.com',
+        'schmid-group.com', 'nvidianews.nvidia.com','investor.nvidia.com'
+    )
+    legacy.relevant = lambda text: original_relevant(text) or is_axis_text(text)
+    observed, coverage = [], []
+    body_cache = {}
+    def gather():
+        events = original_read()
+        eligible = []
+        for e in events:
+            if not is_axis_text(e.get('title', '') + ' ' + e.get('description', '')):
+                continue
+            try:
+                published = datetime.fromisoformat(e.get('published_at_kst') or '')
+                if published.tzinfo is None or published < now - timedelta(hours=96) or published > now + timedelta(minutes=10):
+                    continue
+            except ValueError:
+                coverage.append('자료 게시일 미확인: 원문 상태 추출 보류')
+                continue
+            eligible.append(e)
+        eligible.sort(key=lambda e: (e.get('rank', 0), e.get('published_at_kst') or ''), reverse=True)
+        max_body_fetches = 32
+        if len(eligible) > max_body_fetches:
+            coverage.append(f'원문 조회 예산 적용: 후보 {len(eligible)}건 중 우선순위 상위 {max_body_fetches}건 정밀 확인')
+        for e in eligible[:max_body_fetches]:
+            url = e.get('direct_link', '')
+            try:
+                if url not in body_cache:
+                    raw = legacy.fetch(url, timeout=8).decode('utf-8', errors='replace')
+                    body_cache[url] = read_document(raw)
+                body, pub = body_cache[url]
+                source = dict(e)
+                if pub:
+                    source['published_at_kst'] = pub
+                rows, gaps = parse_records(source, body)
+                observed.extend(rows)
+                coverage.extend(gaps)
+            except Exception as exc:
+                coverage.append('원문 확인 실패: ' + host(url) + ' / ' + type(exc).__name__)
+        return [e for e in events if original_relevant(e.get('title', '') + ' ' + e.get('description', ''))]
+    legacy.read_events = gather
+    legacy.main()
+    # Recheck only until the verified reported pair has been acknowledged.
+    # A failed page read is a coverage gap; no HBM issuer revenue is invented.
+    prior_pairs=(initial.get('memory_axes') or {}).get('last_notified') or {}
+    if now.date().isoformat()>='2026-10-22' and BERNSTEIN_PAIR_KEY not in prior_pairs:
+        pair_found=False
+        for url in BERNSTEIN_PAIR_PAGES:
+            try:
+                raw=legacy.fetch(url,timeout=10).decode('utf-8',errors='replace')
+                body,_=read_document(raw)
+                item={'direct_link':url,'source':'Bernstein 재인용 보도',
+                      'title':'Bernstein 2026년 3분기 HBM 삼성·SK 매출 추정',
+                      'published_at_kst':'2026-10-22T18:50:00+09:00'}
+                rows=parse_bernstein_pair(item,body)
+                if rows:
+                    observed.extend(rows)
+                    pair_found=True
+                    break
+                coverage.append('Bernstein HBM 87억·76억달러 동일기사 검증 불가: '+host(url))
+            except Exception as exc:
+                coverage.append('Bernstein 재인용 조회 실패: '+host(url)+' / '+type(exc).__name__)
+        if not pair_found:
+            coverage.append('Bernstein 2026Q3 추정치 확인되지 않아 재조회 유지')
+    # Revisit the dated October 19 announcement until it is represented by
+    # verified state. Do not create a fresh alert from an old page each hour.
+    old_program=(initial.get('memory_axes') or {}).get('latest') or {}
+    if (now.date().isoformat()>='2026-10-19'
+            and 'hynix_supplier_guarantee|skhynix|2026' not in old_program):
+        for url,name in ((HYNIX_FINANCE_GOV,'산업통상부'),
+                         (HYNIX_FINANCE_PRESS,'산업통상부'),
+                         (HYNIX_FINANCE_YNA,'연합뉴스')):
+            try:
+                raw=legacy.fetch(url,timeout=12).decode('utf-8',errors='replace')
+                body,_=read_document(raw)
+                item={'direct_link':url,'source':name,
+                      'title':'SK하이닉스 수출공급망 강화보증 2조원 출범',
+                      'published_at_kst':'2026-10-19T15:00:00+09:00'}
+                found=parse_hynix_supplier_program(item,body)
+                if any(r['axis']=='hynix_supplier_guarantee' for r in found):
+                    observed.extend(found)
+                    break
+                coverage.append('2조원 공식 보증 본문 문구 확인 불가: '+host(url))
+            except Exception as exc:
+                coverage.append('2조원 공식 보증 조회 실패: '+host(url)+' / '+type(exc).__name__)
+    # OCP is the standards authority. A failed public listing request is a
+    # coverage gap, not permission to promote an article or stale number.
+    try:
+        raw = legacy.fetch(HBF_OCP_STORAGE_URL,timeout=10).decode('utf-8',errors='replace')
+        body, _ = read_document(raw)
+        item={'title':'OCP HBF 고대역폭 플래시 공식 규격 버전 목록',
+              'source':'Open Compute Project','direct_link':HBF_OCP_STORAGE_URL,
+              'published_at_kst':now.isoformat(timespec='seconds')}
+        found=parse_hbf_ocp_version(item,body)
+        if found:
+            observed.extend(found)
+        else:
+            coverage.append('OCP HBF 공식 규격 목록에서 정확한 버전 확인 불가: 갱신 보류')
+    except Exception as exc:
+        coverage.append('OCP HBF 공식 규격 조회 실패: '+type(exc).__name__+' / 다음 주기 재조회')
+    try:
+        raw = legacy.fetch('https://www.dramexchange.com/', timeout=14).decode('utf-8', errors='replace')
+        quotes = public_spot_quotes(raw, now)
+        observed.extend(quotes)
+        if not quotes:
+            coverage.append('DRAMeXchange 공개 원값·날짜 확인 불가: 회원가격을 추정하지 않음')
+        elif all(q['as_of'] < (now - timedelta(days=10)).date().isoformat() for q in quotes):
+            coverage.append('공개 현물 원자료 지연: 과거 값을 현재값으로 발송하지 않음')
+    except Exception as exc:
+        coverage.append('DRAMeXchange 공개 조회 실패: ' + type(exc).__name__)
+    paired = sum(r['axis'] == 'rdimm' for r in observed)
+    if not paired:
+        coverage.append('RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류')
+    candidate = legacy.load_state()
+    if (candidate.get('official_observed_this_run') and candidate.get('malaysia_public_available')
+            and candidate.get('malaysia_hsk10_amount_usd') is not None):
+        month = str(candidate.get('official_month') or '')
+        period = month[:4] + '-' + month[4:6] if len(month) == 6 else month
+        item = {
+            'direct_link': 'https://www.data.go.kr/data/15100475/openapi.do',
+            'source': '관세청 공공데이터포털',
+            'published_at_kst': now.isoformat(timespec='seconds'),
+            'title': '관세청 품목별 국가별 수출입실적 HSK 8542323000 말레이시아',
+        }
+        record = make_record(
+            'malaysia_hsk10_export', ['KR','MY','8542323000'],
+            {
+                'amount_usd': candidate.get('malaysia_hsk10_amount_usd'),
+                'weight_kg': candidate.get('malaysia_hsk10_weight_kg'),
+                'weight_kg_previous_yoy': None,
+                'yoy_pct': None,
+                'taiwan_amount_usd': None,
+                'malaysia_vs_taiwan_pct': None,
+                'jan_aug_amount_usd': None,
+                'weight_rounded_from_public_text': False,
+            },
+            'USD/kg', period, item, '관세청 국가별 HSK10 직접값',
+            as_of=now.date().isoformat(), scope='HBM_included_multichip_IC_not_HBM_only')
+        record['evidence'] = 'official'
+        observed.append(record)
+    state = update_state(initial.get('memory_axes'), observed, now, baseline.get('records', []))
+    state['reference_capture'] = baseline.get('user_capture', {})
+    state['calculation_cases'] = baseline.get('calculation_cases', [])
+    state['coverage'].update({'last_checked_at_kst': now.isoformat(timespec='seconds'),
+        'gaps': list(dict.fromkeys(coverage))[-40:], 'observations': len(observed),
+        'rdimm_paired_observations': paired, 'non_concrete_generic_evidence_suppressed': len(set(rejected_generic))})
+    chosen = list(state['pending'])[:3]
+    existing = legacy.ALERT.read_text(encoding='utf-8') if legacy.ALERT.exists() else ''
+    if chosen:
+        rate, basis = legacy.fx_quote()
+        foundry_axes = {'foundry_loss_outlook','foundry_external_2nm','foundry_taylor_schedule','foundry_base_die_allocation','foundry_node_expansion','foundry_pricing','foundry_hbm5_2nm'}
+        glass_axes = {'glass_nvidia_adoption','glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex','glass_jv_stage','foplp_mature_node_industry','foplp_company_ai_stage'}
+        generation_price_axes = {'hbm_generation_pricing'}
+        bernstein_axes={'hbm_bernstein_q3_pair'}
+        hbf_axes = {'hbf_ocp_spec','hbf_issuer_milestone','hbf_reported_roadmap'}
+        partner_axes = {'hynix_supplier_guarantee','hynix_trinity_fab','hynix_supplier_rnd'}
+        regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes | generation_price_axes | hbf_axes | partner_axes | bernstein_axes]
+        foundry = [k for k in chosen if state['pending'][k]['record']['axis'] in foundry_axes]
+        glass = [k for k in chosen if state['pending'][k]['record']['axis'] in glass_axes]
+        generation_price = [k for k in chosen if state['pending'][k]['record']['axis'] in generation_price_axes]
+        bernstein=[k for k in chosen if state['pending'][k]['record']['axis'] in bernstein_axes]
+        hbf = [k for k in chosen if state['pending'][k]['record']['axis'] in hbf_axes]
+        partner = [k for k in chosen if state['pending'][k]['record']['axis'] in partner_axes]
+        sections = []
+        if regular:
+            blocks = ['<b>HBM·서버 D램 연계 상태 변화</b>']
+            blocks.extend(render(state['pending'][key], rate) for key in regular)
+            sections.append('\n\n'.join(blocks))
+        if foundry:
+            blocks = ['<b>삼성 파운드리 HBM4·2나노 회복 감시</b>']
+            blocks.extend(render(state['pending'][key], rate) for key in foundry)
+            sections.append('\n\n'.join(blocks))
+        if glass:
+            blocks = ['<b>CoPoS·FOPLP·유리기판 고객검증·양산 전환 감시</b>']
+            blocks.extend(render(state['pending'][key], rate) for key in glass)
+            sections.append('\n\n'.join(blocks))
+        if partner:
+            blocks = ['<b>SK하이닉스 소부장 2조 보증·트리니티 팹·R&D 지원</b>']
+            blocks.extend(render(state['pending'][key],rate) for key in partner)
+            sections.append('\n\n'.join(blocks))
+        if hbf:
+            blocks = ['<b>SK하이닉스·Sandisk HBF 최종 규격·실제 양산 전환 감시</b>']
+            blocks.extend(render(state['pending'][key], rate) for key in hbf)
+            sections.append('\n\n'.join(blocks))
+        if bernstein:
+            blocks=['<b>Bernstein HBM 매출 추정 순위 변화(공식 확정 아님)</b>']
+            blocks.extend(render(state['pending'][key],rate) for key in bernstein)
+            sections.append('\n\n'.join(blocks))
+        if generation_price:
+            blocks = ['<b>HBM 전 세대 가격 리셋 감시</b>']
+            blocks.extend(render(state['pending'][key], rate) for key in generation_price)
+            sections.append('\n\n'.join(blocks))
+        if rate and sections:
+            sections[-1] += '\n\n환율 기준: ' + html.escape(basis)
+        payload = '\n\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n'.join(sections)
+        legacy.ALERT.write_text(existing.rstrip() + ('\n\n' if existing else '') + payload + '\n', encoding='utf-8')
+        for key in chosen:
+            state['last_notified'][key] = state['pending'][key]['record']
+            del state['pending'][key]
+    candidate['memory_axes'] = state
+    candidate['memory_axes_version'] = VERSION
+    legacy.save_state(candidate)
+    dump(OUT / 'hbm_memory_axes_status.json', {
+        'version': VERSION, 'observations': len(observed), 'alerts_prepared': len(chosen),
+        'pending_changes': len(state['pending']), 'rdimm_pairs': paired,
+        'non_concrete_generic_evidence_suppressed': len(set(rejected_generic)),
+        'gaps': state['coverage']['gaps'], 'checked_at_kst': now.isoformat(timespec='seconds')})
+    print(f'hbm_memory_axes=true observations={len(observed)} alerts_prepared={len(chosen)}')
+
+
+if __name__ == '__main__':
+    main()
+,asof): return []
+    rows=[]
+    for clause in re.split(r'[\r\n;；。！？]+|(?<=[.!?])\s+',body or ''):
+        if not (re.search(r'\bHBM4\b',clause,re.I) and
+                re.search(r'8[- ]?(?:Hi|high)|8\s*단',clause,re.I) and
+                re.search(r'NVIDIA|엔비디아',clause,re.I)): continue
+        vendors=[v for v,p in [('samsung',r'Samsung(?: Electronics)?|삼성전자'),
+                ('skhynix',r'SK\s*hynix|SK\s*하이닉스')] if re.search(p,clause,re.I)]
+        if len(vendors)>1: continue
+        vendor=vendors[0] if vendors else owner if owner in ('samsung','skhynix') else ''
+        if not vendor or owner in ('samsung','skhynix') and owner!=vendor: continue
+        official=owner in (vendor,'nvidia')
+        target=None
+        if re.search(r'2027\s*년\s*2\s*월|2027[-/.]0?2|Feb(?:ruary)?\s*2027|2027\s*Feb(?:ruary)?',clause,re.I):
+            target='2027-02'
+        elif re.search(r'내년\s*2월|next\s+February',clause,re.I) and asof[:4]=='2026':
+            target='2027-02'
+        future=bool(re.search(r'\b(?:will|plan|plans|expect|expected|target|scheduled)\b|계획|예정|전망|내년|목표',clause,re.I))
+        negative=bool(re.search(r'\bnot\b|\bnever\b|미출하|미양산|아직.{0,15}않',clause,re.I))
+        stage=None
+        if official and not future and not negative:
+            if re.search(r'(?:started|began|has\s+begun|has\s+started).{0,80}'
+                         r'(?:shipping|shipment|deliveries)|출하\s*(?:시작|개시)',clause,re.I):
+                stage='commercial_shipment'
+            elif re.search(r'(?:started|began|has\s+begun).{0,80}'
+                           r'(?:mass\s+production|volume\s+production)|양산\s*(?:시작|개시)',clause,re.I):
+                stage='mass_production'
+            elif re.search(r'(?:signed|confirmed|secured).{0,80}(?:purchase\s+order|supply\s+contract)|'
+                           r'정식\s*발주\s*확정|공급계약\s*체결',clause,re.I):
+                stage='firm_order'
+            elif re.search(r'\bqualified\b|qualification\s+completed|퀄\s*통과|인증\s*완료',clause,re.I):
+                stage='qualified'
+        if not target and not stage: continue
+        row=make_record('nvidia_hbm4_8hi_vendor',[vendor,'2027'],
+             {'vendor':vendor,'generation':'HBM4','layers':8,'customer':'NVIDIA',
+              'target_month':target,'official_target':True if official and target else None,
+              'official_stage':stage,'stacks_shipped':None,'recognized_revenue_krw':None},
+             'month,stage,count,KRW','2027',item,
+             '업체별 NVIDIA HBM4 8단 목표·고객 검증·발주·양산·출하',
+             as_of=asof,scope='not_HBM4E_not_2026_general_HBM4')
+        row['evidence']='official' if official else 'reported'
+        rows.append(row)
+    return rows
 
 
 def parse_records(item, body):
