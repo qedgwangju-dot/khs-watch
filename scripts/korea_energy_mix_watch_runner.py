@@ -454,6 +454,31 @@ def _interpret_renewable(body: str) -> list[str]:
     return lines
 
 
+def _interpret_aidc_power_cut(body: str) -> list[str]:
+    lower = body.lower()
+    if not (("데이터센터" in lower or "aidc" in lower) and "7.9" in lower and
+            re.search(r"3\s*[~～∼-]\s*4\s*(?:gw|기가와트)", lower) and
+            any(x in lower for x in ("축소", "줄이", "반토막"))):
+        return []
+    return [
+        "<b>전력계획 변화의 정확한 의미</b>",
+        "• 2026년 8월에 제시된 2040년 AI 데이터센터 전력수요 <b>총 11.9GW</b> 중 "
+        "<b>기존 4.0GW 대비 늘어난 7.9GW</b>가 이번 보도의 수요 증가분과 연결됨",
+        "• 10월 23일 보도에서 <b>3~4GW를 12차 전기본에 덜 반영하는 방안</b>이 거론됐으나 "
+        "이는 언론이 전한 정부 검토 내용이지 확정·고시가 아님",
+        "• 따라서 7.9GW를 전체 데이터센터 총수요로 취급하거나 "
+        "3.9~4.9GW를 정부의 새 최종 총수요로 단정하지 않음",
+        "• 최종안의 데이터센터 항목별 추가수요·기존수요, 실제 전력계통 접속 확약 및 "
+        "전원 인가 시점을 각각 확인해야 함",
+        "",
+        "<b>투자·실패 경로</b>",
+        "• 지원예산·인허가 간소화와 별개로 계통계획에 반영되지 않는 AIDC는 "
+        "송전·변전 발주와 서버 가동 일정이 밀릴 수 있음",
+        "• 조기 지표는 12차 전기본 정부안의 데이터센터 추가 GW와 "
+        "사업별 한전 공급확약·착공·전원 인가 GW",
+    ]
+
+
 def _interpret_datacenter_demand(body: str) -> list[str]:
     lower = body.lower()
     if not ("데이터센터" in lower and "전력" in lower and any(x in lower for x in ("11.9gw", "과잉", "과대", "불확실"))):
@@ -655,7 +680,8 @@ def interpret_article_body(row: dict[str, Any], body: str, error: str) -> str:
         return "\n".join(lines)
 
     specialized = (
-        _interpret_datacenter_demand(body)
+        _interpret_aidc_power_cut(body)
+        or _interpret_datacenter_demand(body)
         or _interpret_honam_semiconductor_infra(body)
         or _interpret_grid_innovation(body)
         or _interpret_nuclear_deliberation(body)
