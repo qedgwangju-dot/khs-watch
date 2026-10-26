@@ -938,6 +938,29 @@
       "telegram_core_fact": "KB국민·신한·하나·우리 등 4대 은행이 SK하이닉스, 한국무역보험공사와 함께 반도체 협력업체에 총 2조원 수출공급망 금융을 공급한다.",
       "title": "4대 은행, SK하이닉스와 반도체 공급망에 2조원 금융지원"
     },
+    "core:02cfc79425a0fcebb6ce8220": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12185285",
+      "source": "매일경제",
+      "source_body_digest": "fee5138c903445541725d55987866548ec6d49ccd01cef5c5982b58327fab800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f3b8966f606b6bc36f22f270fedfa7dae1aacd1315b5adf56d9a6663eb8086c",
+      "source_fact_keys": [
+        "source_fact:v1:07ab89fe518036d9afe59dbf64f94c84360fd45ea4e791fd3c8f104e66bc2394",
+        "source_fact:v1:2303c610ccb15d0eea14003037f6899bdc8e402d2b9683926e9f0253619ac136",
+        "source_fact:v1:470092632c88512a6a1131af409a0278ac5be10b451c2bd251dfd1e828898a94",
+        "source_fact:v1:87ed92e5f6c7109f3cee864c8098e16b4953541e85a70fa31ef893db8102bb70"
+      ],
+      "source_published_kst": "2026-10-25T18:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장",
+      "telegram_core_fact": "미생물군집(마이크로바이옴)으로 신약을 개발하는 바이오미(BioMe)의 윤상선 대표는 최근 매일경제와 만나 이르면 다음달부터 희귀질환인 ‘생선악취증후군’의 치료 후보물질 BM109를 유료로 공급할 계획이라고 밝혔다. 투자금에 의존할 수밖에 없는 신약 개발 단계에서 조기 매출을 확보해 연구개발을 이어가겠다는 전략이다.",
+      "title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장"
+    },
     "core:02d84b5a775f623b26e878d4": {
       "first_seen_kst": "2026-10-21T02:41:49+09:00",
       "lanes": {
@@ -6287,6 +6310,26 @@
       "source_title": "서울시립대 논술서 AI 안경 추가 적발…입시 부정행위 확산에 관리 허점 논란",
       "telegram_core_fact": "특히 한 대학에서 부정행위로 적발돼 수년간 응시 제한을 받더라도 다른 대학에는 제재가 적용되지 않는 것으로 확인되면서 입시 관리의 허점이 도마에 올랐다.",
       "title": "서울시립대 논술서 AI 안경 추가 적발…입시 부정행위 확산에 관리 허점 논란"
+    },
+    "core:0f62b77ab06fcf63fed788f2": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841036",
+      "source": "뉴시스",
+      "source_body_digest": "152748c1be3fc5c226c162aa75695649b1c56d02d7abfff68b31220bd53b89d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:548f973b58b784e0c55a2514d1fc16db8c58c5c2f43fa18a422adc46f430d18c",
+      "source_fact_keys": [
+        "source_fact:v1:41a18ca5e5f03cfa7cfd8c6002035dab998c9f8c4e5e0d8076035538c1ccad24"
+      ],
+      "source_published_kst": "2026-10-26T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범",
+      "telegram_core_fact": "제주자치경찰단은 감귤 수확철을 맞아 농가의 결실을 지키고 농산물 절도를 막기 위해 '감귤 수확기 맞춤형 특별방범 순찰'을 추진한다고 26일 밝혔다. 자치경찰에 따르면 올해 노지감귤 생산량은 44만3000t 안팎으로 지난해보다 7.8% 증가한 것으로 나타났다.",
+      "title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범"
     },
     "core:0f672a2fa45069dce4e37c13": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
@@ -20201,6 +20244,30 @@
       "source_title": "'불매운동 그 브랜드' 매출 33조 '역대 최대'…H&M 제치고 세계 2위 눈앞",
       "telegram_core_fact": "유니클로를 운영하는 일본 패스트리테일링이 연 매출 33조원을 기록하며 역대 최대 실적을 낸 가운데, 스웨덴 패션기업 H&M을 제치고 세계 의류 소매업계 매출 2위에 오를 가능성이 커졌다.",
       "title": "'불매운동 그 브랜드' 매출 33조 '역대 최대'…H&M 제치고 세계 2위 눈앞"
+    },
+    "core:2df3d2b24d60653384c4d7dc": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.fnnews.com/news/202610261620229507",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "957f0a728887642e15244e93b1902bce431e410a3b0e4e8593620c51b2c593fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cbd338e78792688bb440d09ffc0747efd3866a15ab525bac079acdbf17f28b4",
+      "source_fact_keys": [
+        "source_fact:v1:0f5d26dc6096855446cc2c6b0b32b8dbfca507033d796c6081ad0cc742af085b",
+        "source_fact:v1:2960de8d6dcc97b486ff22fccf8d24fc39fe5b66eb0fde34389dbd95dceaa5bc",
+        "source_fact:v1:43115d8e09412affaaa014423015e27da16cffbbc8271f51adb341ef3502ee7d",
+        "source_fact:v1:51e0f573aafb76ef4e4bb601b03a76459b63698a4ed42f899a0f25bfe6f6e5d5",
+        "source_fact:v1:abd9f762dd0b7ff048fbdd40ae0249b6804752082401ee6677e2c10445647776"
+      ],
+      "source_published_kst": "2026-10-26T16:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장",
+      "telegram_core_fact": "하나자산운용은 오는 27일 '1Q 미국AI테크플랫폼TOP10 ETF'를 신규 상장한다고 26일 밝혔다.",
+      "title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장"
     },
     "core:2df3d41fc3e55993bcdadfe8": {
       "first_seen_kst": "2026-10-14T04:36:31+09:00",
@@ -71124,6 +71191,29 @@
       "telegram_core_fact": "트럼프 대통령은 푸틴 대통령과 통화한 뒤 러시아가 미국과 세계 시장에 경유 30만t 이상을 즉시 공급하고 11월에 50만t을, 그 직후엔 100만t을 추가 공급하기로 했다고 발표했습니다.",
       "title": "“트럼프, 젤렌스키가 요청 무시하자 푸틴과 경유 거래 결정“"
     },
+    "core:a794642aa09a551af6d7821d": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/26/2026102616444630690",
+      "source": "머니투데이",
+      "source_body_digest": "0d27941f0989edc32eed258c4cd1feb19c69a7e2a88bf7a26d1d4be46b117614",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68d19ac8945ce93a71ea3960b5478573bda02e264c1f0c58ec8a9148d7e243a7",
+      "source_fact_keys": [
+        "source_fact:v1:5a6caf3d5c680671cbf4f7211cf8933e4a5d96dcada8e336d07551cc47be21b9",
+        "source_fact:v1:8c4afc77c16c9d714c2e6124f03f2d280a2a35d14bb8f494a5424044e3b85607",
+        "source_fact:v1:91c42a724031162c1fe16beb7bde4d15f7102955abbca7af3e13e7d86abd471e",
+        "source_fact:v1:ca4a21a8adc4509a9674754150289a8c207912fd017d57a80fa3e3f56c7a1700"
+      ],
+      "source_published_kst": "2026-10-26T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다",
+      "telegram_core_fact": "국민연금이 지분 5% 이상을 보유한 상장사 287곳의 주식 평가액도 6월 말 515조9293억원에서 10월15일 333조5330억원으로 182조3963억원 줄어든 것으로 관측된다.보유주식 평가액이 급감하면서 국민연금이 매도 속도를 높여 위험을 분산했어야 한다는 비판으로 이어졌다.",
+      "title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다"
+    },
     "core:a79db21c4b9332b25a80bf67": {
       "first_seen_kst": "2026-10-25T19:13:35+09:00",
       "lanes": {
@@ -72982,6 +73072,29 @@
       "source_title": "광주 '올 뉴 챔피언스시티' 20일 무순위 청약⋯729가구 재공급",
       "telegram_core_fact": "광주광역시 북구 임동에 들어서는 '올 뉴 챔피언스시티 1차'가 전체 공급 물량의 약 23%에 달하는 729가구를 무순위 청약으로 20일 재공급한다.",
       "title": "광주 '올 뉴 챔피언스시티' 20일 무순위 청약⋯729가구 재공급"
+    },
+    "core:ab7a0fde2c26777c4d879230": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.hankyung.com/article/202610265752i",
+      "source": "한국경제",
+      "source_body_digest": "818551fa5db0cc65c5e0904f44686a472b542b594c821452e7259a24e7a3bbbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:187ff64ce8b244462e0b2c81be5ba8ad14a487b750686c890ea1f300b58dfa21",
+      "source_fact_keys": [
+        "source_fact:v1:54020c2e7782c274c9911293738e8eeddb18a446d37942e6917c32aa52eb19a7",
+        "source_fact:v1:679969651e3111ca9525d9e1598e6f96ba9b38fdd19a63c9a6d53c0c62b2e906",
+        "source_fact:v1:d74247db899dc62a51f9eed756de6fb9847eba8d0a3a47826a9b46a8d8221243",
+        "source_fact:v1:ececb51f28716eabad1333e6d19e23517a8a7b8f5e69bfd69780ceee28673300"
+      ],
+      "source_published_kst": "2026-10-26T16:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅",
+      "telegram_core_fact": "한국투자신탁운용에 따르면 중국 차이나유니버설자산운용 홍콩법인(CUAM HK), 만든 ‘CUAM 솔액티브 차이나&글로벌 세미컨덕터 ETF’가 지난 23일 홍콩증권거래소에 상장했다.",
+      "title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅"
     },
     "core:ab829a4f2399539f58321cc5": {
       "first_seen_kst": "2026-10-17T11:11:58+09:00",
@@ -98158,6 +98271,27 @@
       "telegram_core_fact": "희토류와 전력장비, 반도체 등 주요 5개 분야에서 세계 시장 점유율이 각각 50%를 넘는 것으로 나타났다.",
       "title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어"
     },
+    "core:e67daa4839d8044f56218d92": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026085800527",
+      "source": "연합뉴스",
+      "source_body_digest": "b2e9cf05cb489f84192a2f6e0e6cb86c1b451ed8a5ffdae422913a5599392fd8",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3f5e5f6ba2aec767a1125f74e0ee171f82587d4fcc75888c8b4da797702270f7",
+      "source_fact_identity": "source_facts:v1:406d125248e5e59df4d094808c81ba35c65ea762e65cd9049e9a271c00b4a83f",
+      "source_fact_keys": [
+        "source_fact:v1:38477d9814e0ad5febe8b06741482ee2ee00db7ca781d2d571cc216d42f2ef25",
+        "source_fact:v1:90515e2e63346e8b537f7449b4ccc94f3e2c1f4c3d6fb28bb9fb5e6005d2e546"
+      ],
+      "source_published_kst": "2026-10-26T12:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 연결 기준 올해 3분기 영업이익이 2천395억원으로 지난해 동기보다 37% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스"
+    },
     "core:e6874c41ec534a72b2a17c7e": {
       "first_seen_kst": "2026-10-20T21:48:37+09:00",
       "lanes": {
@@ -99073,6 +99207,30 @@
       "source_title": "美 관세·中 기술통제…’비중국 공급망' 韓 태양광 몸값 오른다",
       "telegram_core_fact": "중국이 미국의 규제를 피해 동남아시아에 생산 거점을 마련하고 태양광 제품 물량을 쏟아내자 미국은 지난해 6월 캄보디아, 말레이시아, 태국, 베트남산 태양광 제품에 반덤핑·상계관세를 부과했다.",
       "title": "美 관세·中 기술통제…’비중국 공급망' 韓 태양광 몸값 오른다"
+    },
+    "core:e8d16548858545fcaa16f780": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.inews24.com/view/2018901",
+      "source": "아이뉴스24",
+      "source_body_digest": "4e32b16b1d5ec38a5876caaa8be9ffa54723e9337af32187f3c7855a8cce6405",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ff2a75f5842b97473947136ee9c6356dbfa0a6714ec79794fe35d5aadd543be",
+      "source_fact_keys": [
+        "source_fact:v1:08082618be7aa1f45d636a89aa2b66156405a69704d83288cdfeb6a4b7e7ce6a",
+        "source_fact:v1:62e9f9b74873f2d94212def786d1cc8a092a054b7de5714c9bf0032ef69aa8df",
+        "source_fact:v1:903795315883332d184c7afc365be571f4b4d6de31924d33ea847a4e25b1e397",
+        "source_fact:v1:9f3494c028eed5df8be92e17d1610646f20b2cd85cabe31d7c094212e4c763d0",
+        "source_fact:v1:da279718d40812daab00e035d0850ea41c8163b189d3bee59c6f6c48b884ebf4"
+      ],
+      "source_published_kst": "2026-10-26T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각",
+      "telegram_core_fact": "SK하이닉스는 이날 키옥시아 지분 매각 차익을 활용한 16조원 특별배당 추진 보도와 관련해 해명공시를 내고 \"주주가치 제고를 위해 다양한 주주환원 방안을 검토하고 있으나 현재까지 확정된 사항은 없다\"고 밝혔다.",
+      "title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각"
     },
     "core:e8d3ac374b6249764fe55d05": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
@@ -116296,23 +116454,26 @@
     "event:4cec3db04d3be9dd9e8961b8": {
       "first_seen_kst": "2026-10-26T10:56:52+09:00",
       "lanes": {
-        "live": "2026-10-26T16:00:15+09:00"
+        "live": "2026-10-26T17:12:13+09:00"
       },
-      "last_seen_kst": "2026-10-26T16:00:15+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12185370",
-      "source": "매일경제",
-      "source_body_digest": "649a676bfb584611f5889727243a00c898526480ab1852c591b3f29bfead0126",
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.inews24.com/view/2018901",
+      "source": "아이뉴스24",
+      "source_body_digest": "4e32b16b1d5ec38a5876caaa8be9ffa54723e9337af32187f3c7855a8cce6405",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:18f30fd9ec8076390d94b63b540404d31ba6a51db2f10f864ba28ee5e4e0f657",
+      "source_fact_identity": "source_facts:v1:5ff2a75f5842b97473947136ee9c6356dbfa0a6714ec79794fe35d5aadd543be",
       "source_fact_keys": [
-        "source_fact:v1:a0a7150c78c7397ae9c8b359ddfe1e4575a2eaa9a2c37537ea768a1bc6e37c4c",
-        "source_fact:v1:e10f4db6a7a2e1086bdfd36ecdc465437bd36149a2748d4880188b9ae781e081"
+        "source_fact:v1:08082618be7aa1f45d636a89aa2b66156405a69704d83288cdfeb6a4b7e7ce6a",
+        "source_fact:v1:62e9f9b74873f2d94212def786d1cc8a092a054b7de5714c9bf0032ef69aa8df",
+        "source_fact:v1:903795315883332d184c7afc365be571f4b4d6de31924d33ea847a4e25b1e397",
+        "source_fact:v1:9f3494c028eed5df8be92e17d1610646f20b2cd85cabe31d7c094212e4c763d0",
+        "source_fact:v1:da279718d40812daab00e035d0850ea41c8163b189d3bee59c6f6c48b884ebf4"
       ],
-      "source_published_kst": "2026-10-26T08:37+09:00",
+      "source_published_kst": "2026-10-26T14:10+09:00",
       "source_supply_terms": {},
-      "source_title": "5500선 시험대 오른 코스피…삼전닉스 주주환원·FOMC·빅테크 실적 주목",
-      "telegram_core_fact": "나 연구원은 “SK하이닉스와 삼성전자의 실적발표에서 추가 자사주 매입 여부에 주목한다”며 “SK하이닉스의 추가 주주환원 재원은 30조원 이상으로 추정되는데, 대규모 자사주 매입이 확정될 경우 기타법인 매수세가 외국인 매도 물량을 일부 흡수하면서 코스피 수급 불균형을 완화할 것”이라고 말했다.",
-      "title": "5500선 시험대 오른 코스피…삼전닉스 주주환원·FOMC·빅테크 실적 주목"
+      "source_title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각",
+      "telegram_core_fact": "SK하이닉스는 이날 키옥시아 지분 매각 차익을 활용한 16조원 특별배당 추진 보도와 관련해 해명공시를 내고 \"주주가치 제고를 위해 다양한 주주환원 방안을 검토하고 있으나 현재까지 확정된 사항은 없다\"고 밝혔다.",
+      "title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각"
     },
     "event:4d3aba300f8df5bae87f544c": {
       "first_seen_kst": "2026-10-20T10:42:42+09:00",
@@ -116374,6 +116535,29 @@
       "source_title": "SK하이퍼, AI 데이터센터 투자 유치 추진… 첫 5GW 구축에 463조원 예상",
       "telegram_core_fact": "사업은 울산 AI 데이터센터를 출발점으로 영남권에 2GW 이상 클러스터를 조성하고, 충청권과 서남권으로 확대한다.",
       "title": "SK하이퍼, AI 데이터센터 투자 유치 추진… 첫 5GW 구축에 463조원 예상"
+    },
+    "event:4de0b152a3c890abb323dec4": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.hankyung.com/article/202610265752i",
+      "source": "한국경제",
+      "source_body_digest": "818551fa5db0cc65c5e0904f44686a472b542b594c821452e7259a24e7a3bbbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:187ff64ce8b244462e0b2c81be5ba8ad14a487b750686c890ea1f300b58dfa21",
+      "source_fact_keys": [
+        "source_fact:v1:54020c2e7782c274c9911293738e8eeddb18a446d37942e6917c32aa52eb19a7",
+        "source_fact:v1:679969651e3111ca9525d9e1598e6f96ba9b38fdd19a63c9a6d53c0c62b2e906",
+        "source_fact:v1:d74247db899dc62a51f9eed756de6fb9847eba8d0a3a47826a9b46a8d8221243",
+        "source_fact:v1:ececb51f28716eabad1333e6d19e23517a8a7b8f5e69bfd69780ceee28673300"
+      ],
+      "source_published_kst": "2026-10-26T16:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅",
+      "telegram_core_fact": "한국투자신탁운용에 따르면 중국 차이나유니버설자산운용 홍콩법인(CUAM HK), 만든 ‘CUAM 솔액티브 차이나&글로벌 세미컨덕터 ETF’가 지난 23일 홍콩증권거래소에 상장했다.",
+      "title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅"
     },
     "event:4e03d8e4eda6ce71275b84d3": {
       "first_seen_kst": "2026-10-23T12:26:30+09:00",
@@ -120943,6 +121127,27 @@
       "source_title": "기판 20%·동박판 30% 껑충 … 日·대만 소부장 영향력 커져",
       "telegram_core_fact": "일본 주요 전자재료 업체인 레조낙은 지난 3월부터 기판에 필수적인 동박적층판(CCL)과 프리프레그 전 제품의 가격을 30% 이상 인상했다. 세계 최대 반도체 조립·검사 전문 기업인 대만 ASE는 첨단 패키징 공급 견적 가격을 20% 이상 높인 것으로 알려졌다.",
       "title": "기판 20%·동박판 30% 껑충 … 日·대만 소부장 영향력 커져"
+    },
+    "event:7e04605871ce6b265c76a3d6": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026085800527",
+      "source": "연합뉴스",
+      "source_body_digest": "b2e9cf05cb489f84192a2f6e0e6cb86c1b451ed8a5ffdae422913a5599392fd8",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3f5e5f6ba2aec767a1125f74e0ee171f82587d4fcc75888c8b4da797702270f7",
+      "source_fact_identity": "source_facts:v1:406d125248e5e59df4d094808c81ba35c65ea762e65cd9049e9a271c00b4a83f",
+      "source_fact_keys": [
+        "source_fact:v1:38477d9814e0ad5febe8b06741482ee2ee00db7ca781d2d571cc216d42f2ef25",
+        "source_fact:v1:90515e2e63346e8b537f7449b4ccc94f3e2c1f4c3d6fb28bb9fb5e6005d2e546"
+      ],
+      "source_published_kst": "2026-10-26T12:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 연결 기준 올해 3분기 영업이익이 2천395억원으로 지난해 동기보다 37% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스"
     },
     "event:7e3069cf32ab92e164cf3871": {
       "first_seen_kst": "2026-10-11T08:42:16+09:00",
@@ -150060,6 +150265,29 @@
       "telegram_core_fact": "로봇·반도체·AI 데이터센터·자율주행차·바이오 등 5극3특 주요 성장엔진과 관련해 산업 현장에서 제기된 규제 애로 해소 방안을 관계 부처가 발표한다.",
       "title": "李대통령, 23일 규제합리화회의 주재…반도체·AI·로봇 규제혁신 논의"
     },
+    "fact:2495c6365099110b283c7783": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12185285",
+      "source": "매일경제",
+      "source_body_digest": "fee5138c903445541725d55987866548ec6d49ccd01cef5c5982b58327fab800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f3b8966f606b6bc36f22f270fedfa7dae1aacd1315b5adf56d9a6663eb8086c",
+      "source_fact_keys": [
+        "source_fact:v1:07ab89fe518036d9afe59dbf64f94c84360fd45ea4e791fd3c8f104e66bc2394",
+        "source_fact:v1:2303c610ccb15d0eea14003037f6899bdc8e402d2b9683926e9f0253619ac136",
+        "source_fact:v1:470092632c88512a6a1131af409a0278ac5be10b451c2bd251dfd1e828898a94",
+        "source_fact:v1:87ed92e5f6c7109f3cee864c8098e16b4953541e85a70fa31ef893db8102bb70"
+      ],
+      "source_published_kst": "2026-10-25T18:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장",
+      "telegram_core_fact": "미생물군집(마이크로바이옴)으로 신약을 개발하는 바이오미(BioMe)의 윤상선 대표는 최근 매일경제와 만나 이르면 다음달부터 희귀질환인 ‘생선악취증후군’의 치료 후보물질 BM109를 유료로 공급할 계획이라고 밝혔다. 투자금에 의존할 수밖에 없는 신약 개발 단계에서 조기 매출을 확보해 연구개발을 이어가겠다는 전략이다.",
+      "title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장"
+    },
     "fact:249af8eba61e7c0487a7ee11": {
       "first_seen_kst": "2026-10-19T15:46:20+09:00",
       "lanes": {
@@ -156670,6 +156898,26 @@
       "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
       "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
       "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
+    },
+    "fact:3401520b28ca509b85bb4d7a": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841036",
+      "source": "뉴시스",
+      "source_body_digest": "152748c1be3fc5c226c162aa75695649b1c56d02d7abfff68b31220bd53b89d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:548f973b58b784e0c55a2514d1fc16db8c58c5c2f43fa18a422adc46f430d18c",
+      "source_fact_keys": [
+        "source_fact:v1:41a18ca5e5f03cfa7cfd8c6002035dab998c9f8c4e5e0d8076035538c1ccad24"
+      ],
+      "source_published_kst": "2026-10-26T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범",
+      "telegram_core_fact": "제주자치경찰단은 감귤 수확철을 맞아 농가의 결실을 지키고 농산물 절도를 막기 위해 '감귤 수확기 맞춤형 특별방범 순찰'을 추진한다고 26일 밝혔다. 자치경찰에 따르면 올해 노지감귤 생산량은 44만3000t 안팎으로 지난해보다 7.8% 증가한 것으로 나타났다.",
+      "title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범"
     },
     "fact:342cebe4f2504a4b924e31ac": {
       "first_seen_kst": "2026-10-16T06:50:52+09:00",
@@ -182752,6 +183000,27 @@
       "telegram_core_fact": "올해 8~9월 롯데호텔앤리조트의 어메니티 매출은 지난해 같은 기간의 약 4.5배를 기록했다.",
       "title": "롯데호텔, PB 어메니티 유통망 확대…'시시호시' 입점"
     },
+    "fact:6f80ced78d3470ce29f0403e": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026085800527",
+      "source": "연합뉴스",
+      "source_body_digest": "b2e9cf05cb489f84192a2f6e0e6cb86c1b451ed8a5ffdae422913a5599392fd8",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3f5e5f6ba2aec767a1125f74e0ee171f82587d4fcc75888c8b4da797702270f7",
+      "source_fact_identity": "source_facts:v1:406d125248e5e59df4d094808c81ba35c65ea762e65cd9049e9a271c00b4a83f",
+      "source_fact_keys": [
+        "source_fact:v1:38477d9814e0ad5febe8b06741482ee2ee00db7ca781d2d571cc216d42f2ef25",
+        "source_fact:v1:90515e2e63346e8b537f7449b4ccc94f3e2c1f4c3d6fb28bb9fb5e6005d2e546"
+      ],
+      "source_published_kst": "2026-10-26T12:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 연결 기준 올해 3분기 영업이익이 2천395억원으로 지난해 동기보다 37% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스"
+    },
     "fact:6f848352c66b0cf747626760": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
       "lanes": {
@@ -183577,6 +183846,29 @@
       "source_title": "[테크 차이나] 폐배터리는 누가 확보하나…중국 '역공급망' 진짜 경쟁",
       "telegram_core_fact": "이 역공급망을 누가 조직하느냐가 제조사 책임과 재활용기업 가동률, 원료조달 안정성을 함께 결정한다. 재활용 산업 경쟁력은 금속을 잘 추출하는 기술뿐만 아니라 이 흩어진 자원을 합법적이고 경제적으로 모으는 능력에서 시작한다.",
       "title": "[테크 차이나] 폐배터리는 누가 확보하나…중국 '역공급망' 진짜 경쟁"
+    },
+    "fact:7164bc1affd01675f7149838": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.hankyung.com/article/202610265752i",
+      "source": "한국경제",
+      "source_body_digest": "818551fa5db0cc65c5e0904f44686a472b542b594c821452e7259a24e7a3bbbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:187ff64ce8b244462e0b2c81be5ba8ad14a487b750686c890ea1f300b58dfa21",
+      "source_fact_keys": [
+        "source_fact:v1:54020c2e7782c274c9911293738e8eeddb18a446d37942e6917c32aa52eb19a7",
+        "source_fact:v1:679969651e3111ca9525d9e1598e6f96ba9b38fdd19a63c9a6d53c0c62b2e906",
+        "source_fact:v1:d74247db899dc62a51f9eed756de6fb9847eba8d0a3a47826a9b46a8d8221243",
+        "source_fact:v1:ececb51f28716eabad1333e6d19e23517a8a7b8f5e69bfd69780ceee28673300"
+      ],
+      "source_published_kst": "2026-10-26T16:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅",
+      "telegram_core_fact": "한국투자신탁운용에 따르면 중국 차이나유니버설자산운용 홍콩법인(CUAM HK), 만든 ‘CUAM 솔액티브 차이나&글로벌 세미컨덕터 ETF’가 지난 23일 홍콩증권거래소에 상장했다.",
+      "title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅"
     },
     "fact:7167ab5cb19ada50a419d53b": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
@@ -185562,6 +185854,30 @@
       "source_title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스",
       "telegram_core_fact": "특히 고객 방문 증가와 수익성 개선을 통해 확보한 자금을 재투자하면서 지속적인 매출 성장과 시장점유율 확대를 이끄는 선순환 구조가 형성되고 있다고 설명했다.",
       "title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스"
+    },
+    "fact:7627f1a4c85c68ab119159f0": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.inews24.com/view/2018901",
+      "source": "아이뉴스24",
+      "source_body_digest": "4e32b16b1d5ec38a5876caaa8be9ffa54723e9337af32187f3c7855a8cce6405",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ff2a75f5842b97473947136ee9c6356dbfa0a6714ec79794fe35d5aadd543be",
+      "source_fact_keys": [
+        "source_fact:v1:08082618be7aa1f45d636a89aa2b66156405a69704d83288cdfeb6a4b7e7ce6a",
+        "source_fact:v1:62e9f9b74873f2d94212def786d1cc8a092a054b7de5714c9bf0032ef69aa8df",
+        "source_fact:v1:903795315883332d184c7afc365be571f4b4d6de31924d33ea847a4e25b1e397",
+        "source_fact:v1:9f3494c028eed5df8be92e17d1610646f20b2cd85cabe31d7c094212e4c763d0",
+        "source_fact:v1:da279718d40812daab00e035d0850ea41c8163b189d3bee59c6f6c48b884ebf4"
+      ],
+      "source_published_kst": "2026-10-26T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각",
+      "telegram_core_fact": "SK하이닉스는 이날 키옥시아 지분 매각 차익을 활용한 16조원 특별배당 추진 보도와 관련해 해명공시를 내고 \"주주가치 제고를 위해 다양한 주주환원 방안을 검토하고 있으나 현재까지 확정된 사항은 없다\"고 밝혔다.",
+      "title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각"
     },
     "fact:7636b28617eec69f6aca208e": {
       "first_seen_kst": "2026-10-17T18:59:01+09:00",
@@ -193843,6 +194159,29 @@
       "source_title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수",
       "telegram_core_fact": "올해 외국인의 국내 상장 ETF 순매수액은 10조6808억원으로, 지난해 연간 순매수액(1조6622억원)보다 약 9조원 증가했다. 한국거래소에 따르면 올해 들어 지난 23일까지 개인의 국내 상장 ETF 순매수액은 80조191억원에 달했다.",
       "title": "코스피 9000→5500 추락했지만…개미들, ETF 80조 순매수"
+    },
+    "fact:86764508aa66689dd33b425f": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/26/2026102616444630690",
+      "source": "머니투데이",
+      "source_body_digest": "0d27941f0989edc32eed258c4cd1feb19c69a7e2a88bf7a26d1d4be46b117614",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68d19ac8945ce93a71ea3960b5478573bda02e264c1f0c58ec8a9148d7e243a7",
+      "source_fact_keys": [
+        "source_fact:v1:5a6caf3d5c680671cbf4f7211cf8933e4a5d96dcada8e336d07551cc47be21b9",
+        "source_fact:v1:8c4afc77c16c9d714c2e6124f03f2d280a2a35d14bb8f494a5424044e3b85607",
+        "source_fact:v1:91c42a724031162c1fe16beb7bde4d15f7102955abbca7af3e13e7d86abd471e",
+        "source_fact:v1:ca4a21a8adc4509a9674754150289a8c207912fd017d57a80fa3e3f56c7a1700"
+      ],
+      "source_published_kst": "2026-10-26T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다",
+      "telegram_core_fact": "국민연금이 지분 5% 이상을 보유한 상장사 287곳의 주식 평가액도 6월 말 515조9293억원에서 10월15일 333조5330억원으로 182조3963억원 줄어든 것으로 관측된다.보유주식 평가액이 급감하면서 국민연금이 매도 속도를 높여 위험을 분산했어야 한다는 비판으로 이어졌다.",
+      "title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다"
     },
     "fact:8682b92b8a6b99d90bed2b77": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -242523,6 +242862,30 @@
       "source_published_kst": "2026-10-05T22:21+09:00",
       "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
     },
+    "fact:ec07e8ad9cbbf82788c94fac": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.fnnews.com/news/202610261620229507",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "957f0a728887642e15244e93b1902bce431e410a3b0e4e8593620c51b2c593fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cbd338e78792688bb440d09ffc0747efd3866a15ab525bac079acdbf17f28b4",
+      "source_fact_keys": [
+        "source_fact:v1:0f5d26dc6096855446cc2c6b0b32b8dbfca507033d796c6081ad0cc742af085b",
+        "source_fact:v1:2960de8d6dcc97b486ff22fccf8d24fc39fe5b66eb0fde34389dbd95dceaa5bc",
+        "source_fact:v1:43115d8e09412affaaa014423015e27da16cffbbc8271f51adb341ef3502ee7d",
+        "source_fact:v1:51e0f573aafb76ef4e4bb601b03a76459b63698a4ed42f899a0f25bfe6f6e5d5",
+        "source_fact:v1:abd9f762dd0b7ff048fbdd40ae0249b6804752082401ee6677e2c10445647776"
+      ],
+      "source_published_kst": "2026-10-26T16:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장",
+      "telegram_core_fact": "하나자산운용은 오는 27일 '1Q 미국AI테크플랫폼TOP10 ETF'를 신규 상장한다고 26일 밝혔다.",
+      "title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장"
+    },
     "fact:ec110cd84bc9676b92438527": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
       "lanes": {
@@ -253531,6 +253894,29 @@
       "source_published_kst": "2026-10-06T08:37+09:00",
       "title": "한미반도체, 삼성전기서 245억 규모 장비 수주…\"삼성그룹 환영\" | 연합뉴스"
     },
+    "link:02cd989418462510468ac278": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.hankyung.com/article/202610265752i",
+      "source": "한국경제",
+      "source_body_digest": "818551fa5db0cc65c5e0904f44686a472b542b594c821452e7259a24e7a3bbbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:187ff64ce8b244462e0b2c81be5ba8ad14a487b750686c890ea1f300b58dfa21",
+      "source_fact_keys": [
+        "source_fact:v1:54020c2e7782c274c9911293738e8eeddb18a446d37942e6917c32aa52eb19a7",
+        "source_fact:v1:679969651e3111ca9525d9e1598e6f96ba9b38fdd19a63c9a6d53c0c62b2e906",
+        "source_fact:v1:d74247db899dc62a51f9eed756de6fb9847eba8d0a3a47826a9b46a8d8221243",
+        "source_fact:v1:ececb51f28716eabad1333e6d19e23517a8a7b8f5e69bfd69780ceee28673300"
+      ],
+      "source_published_kst": "2026-10-26T16:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅",
+      "telegram_core_fact": "한국투자신탁운용에 따르면 중국 차이나유니버설자산운용 홍콩법인(CUAM HK), 만든 ‘CUAM 솔액티브 차이나&글로벌 세미컨덕터 ETF’가 지난 23일 홍콩증권거래소에 상장했다.",
+      "title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅"
+    },
     "link:02e5ebeda13a1eb5a545779e": {
       "first_seen_kst": "2026-10-25T07:27:35+09:00",
       "lanes": {
@@ -255054,6 +255440,30 @@
       "source_title": "한·이집트, 에너지·AI·첨단제조 협력 확대…수에즈 생산거점 논의",
       "telegram_core_fact": "넥센타이어는 이집트를 중장기 생산거점 후보로 검토하고 있다고 설명했다.",
       "title": "한·이집트, 에너지·AI·첨단제조 협력 확대…수에즈 생산거점 논의"
+    },
+    "link:052a2128fef589edec6b2de9": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.inews24.com/view/2018901",
+      "source": "아이뉴스24",
+      "source_body_digest": "4e32b16b1d5ec38a5876caaa8be9ffa54723e9337af32187f3c7855a8cce6405",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ff2a75f5842b97473947136ee9c6356dbfa0a6714ec79794fe35d5aadd543be",
+      "source_fact_keys": [
+        "source_fact:v1:08082618be7aa1f45d636a89aa2b66156405a69704d83288cdfeb6a4b7e7ce6a",
+        "source_fact:v1:62e9f9b74873f2d94212def786d1cc8a092a054b7de5714c9bf0032ef69aa8df",
+        "source_fact:v1:903795315883332d184c7afc365be571f4b4d6de31924d33ea847a4e25b1e397",
+        "source_fact:v1:9f3494c028eed5df8be92e17d1610646f20b2cd85cabe31d7c094212e4c763d0",
+        "source_fact:v1:da279718d40812daab00e035d0850ea41c8163b189d3bee59c6f6c48b884ebf4"
+      ],
+      "source_published_kst": "2026-10-26T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각",
+      "telegram_core_fact": "SK하이닉스는 이날 키옥시아 지분 매각 차익을 활용한 16조원 특별배당 추진 보도와 관련해 해명공시를 내고 \"주주가치 제고를 위해 다양한 주주환원 방안을 검토하고 있으나 현재까지 확정된 사항은 없다\"고 밝혔다.",
+      "title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각"
     },
     "link:053729f9e4838caa8c7c6b58": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -334682,6 +335092,30 @@
       "telegram_core_fact": "특히 그는 국내 대형 반도체주에 대해 \"삼성전자는 3분기 약 30조원 현금배당 확정 여부와 내년 1월 예정된 주주환원 규모와 방식에, SK하이닉스는 솔리다임 상장 철회 이후 추가적인 주주환원책 구체화 여부가 관건\"이라고 짚었다.",
       "title": "[마켓뷰] 코스피 출렁임 계속되나…삼전닉스 추가 주주환원 여부 주시 | 연합뉴스"
     },
+    "link:8b70048b7d24d10fa6672334": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.fnnews.com/news/202610261620229507",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "957f0a728887642e15244e93b1902bce431e410a3b0e4e8593620c51b2c593fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cbd338e78792688bb440d09ffc0747efd3866a15ab525bac079acdbf17f28b4",
+      "source_fact_keys": [
+        "source_fact:v1:0f5d26dc6096855446cc2c6b0b32b8dbfca507033d796c6081ad0cc742af085b",
+        "source_fact:v1:2960de8d6dcc97b486ff22fccf8d24fc39fe5b66eb0fde34389dbd95dceaa5bc",
+        "source_fact:v1:43115d8e09412affaaa014423015e27da16cffbbc8271f51adb341ef3502ee7d",
+        "source_fact:v1:51e0f573aafb76ef4e4bb601b03a76459b63698a4ed42f899a0f25bfe6f6e5d5",
+        "source_fact:v1:abd9f762dd0b7ff048fbdd40ae0249b6804752082401ee6677e2c10445647776"
+      ],
+      "source_published_kst": "2026-10-26T16:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장",
+      "telegram_core_fact": "하나자산운용은 오는 27일 '1Q 미국AI테크플랫폼TOP10 ETF'를 신규 상장한다고 26일 밝혔다.",
+      "title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장"
+    },
     "link:8b74c0fb8ad915ce46d49d1b": {
       "first_seen_kst": "2026-10-17T13:39:20+09:00",
       "lanes": {
@@ -346790,6 +347224,26 @@
       "source_title": "신통기획·모아주택에 서울 주택 공급 속도…연내 3만호 착공",
       "telegram_core_fact": "올해 7월부터는 행정2부시장 주재 특별공정회의로 격상해 2028년까지 착공을 목표로 하는 85개 핵심공급 전략사업, 약 8만5000호를 점검하고 있다.",
       "title": "신통기획·모아주택에 서울 주택 공급 속도…연내 3만호 착공"
+    },
+    "link:9f82c6ac9f0d47d4cda98a73": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841036",
+      "source": "뉴시스",
+      "source_body_digest": "152748c1be3fc5c226c162aa75695649b1c56d02d7abfff68b31220bd53b89d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:548f973b58b784e0c55a2514d1fc16db8c58c5c2f43fa18a422adc46f430d18c",
+      "source_fact_keys": [
+        "source_fact:v1:41a18ca5e5f03cfa7cfd8c6002035dab998c9f8c4e5e0d8076035538c1ccad24"
+      ],
+      "source_published_kst": "2026-10-26T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범",
+      "telegram_core_fact": "제주자치경찰단은 감귤 수확철을 맞아 농가의 결실을 지키고 농산물 절도를 막기 위해 '감귤 수확기 맞춤형 특별방범 순찰'을 추진한다고 26일 밝혔다. 자치경찰에 따르면 올해 노지감귤 생산량은 44만3000t 안팎으로 지난해보다 7.8% 증가한 것으로 나타났다.",
+      "title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범"
     },
     "link:9f8378567ff0174912dc6a6c": {
       "first_seen_kst": "2026-10-12T18:21:27+09:00",
@@ -365854,6 +366308,29 @@
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
       "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
     },
+    "link:bf220a11bc9b26e618f87606": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/26/2026102616444630690",
+      "source": "머니투데이",
+      "source_body_digest": "0d27941f0989edc32eed258c4cd1feb19c69a7e2a88bf7a26d1d4be46b117614",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68d19ac8945ce93a71ea3960b5478573bda02e264c1f0c58ec8a9148d7e243a7",
+      "source_fact_keys": [
+        "source_fact:v1:5a6caf3d5c680671cbf4f7211cf8933e4a5d96dcada8e336d07551cc47be21b9",
+        "source_fact:v1:8c4afc77c16c9d714c2e6124f03f2d280a2a35d14bb8f494a5424044e3b85607",
+        "source_fact:v1:91c42a724031162c1fe16beb7bde4d15f7102955abbca7af3e13e7d86abd471e",
+        "source_fact:v1:ca4a21a8adc4509a9674754150289a8c207912fd017d57a80fa3e3f56c7a1700"
+      ],
+      "source_published_kst": "2026-10-26T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다",
+      "telegram_core_fact": "국민연금이 지분 5% 이상을 보유한 상장사 287곳의 주식 평가액도 6월 말 515조9293억원에서 10월15일 333조5330억원으로 182조3963억원 줄어든 것으로 관측된다.보유주식 평가액이 급감하면서 국민연금이 매도 속도를 높여 위험을 분산했어야 한다는 비판으로 이어졌다.",
+      "title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다"
+    },
     "link:bf2483d649cf2a96b4ceb182": {
       "first_seen_kst": "2026-10-24T07:28:21+09:00",
       "lanes": {
@@ -378665,6 +379142,29 @@
       "source_title": "대한전선, 미국서 대규모 초고압 전력망 프로젝트 턴키 수주 | 연합뉴스",
       "telegram_core_fact": "이를 위해 대한전선 본사와 미국 법인은 1천200억원 자재 공급 계약을 체결했다.",
       "title": "대한전선, 미국서 대규모 초고압 전력망 프로젝트 턴키 수주 | 연합뉴스"
+    },
+    "link:d4a72cdde51982ce412b48b7": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12185285",
+      "source": "매일경제",
+      "source_body_digest": "fee5138c903445541725d55987866548ec6d49ccd01cef5c5982b58327fab800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f3b8966f606b6bc36f22f270fedfa7dae1aacd1315b5adf56d9a6663eb8086c",
+      "source_fact_keys": [
+        "source_fact:v1:07ab89fe518036d9afe59dbf64f94c84360fd45ea4e791fd3c8f104e66bc2394",
+        "source_fact:v1:2303c610ccb15d0eea14003037f6899bdc8e402d2b9683926e9f0253619ac136",
+        "source_fact:v1:470092632c88512a6a1131af409a0278ac5be10b451c2bd251dfd1e828898a94",
+        "source_fact:v1:87ed92e5f6c7109f3cee864c8098e16b4953541e85a70fa31ef893db8102bb70"
+      ],
+      "source_published_kst": "2026-10-25T18:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장",
+      "telegram_core_fact": "미생물군집(마이크로바이옴)으로 신약을 개발하는 바이오미(BioMe)의 윤상선 대표는 최근 매일경제와 만나 이르면 다음달부터 희귀질환인 ‘생선악취증후군’의 치료 후보물질 BM109를 유료로 공급할 계획이라고 밝혔다. 투자금에 의존할 수밖에 없는 신약 개발 단계에서 조기 매출을 확보해 연구개발을 이어가겠다는 전략이다.",
+      "title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장"
     },
     "link:d4b0b26f161cd2205472515c": {
       "first_seen_kst": "2026-10-01T21:33:24+09:00",
@@ -399266,6 +399766,27 @@
       "source": "연합뉴스",
       "title": "SK하이닉스, TSMC 행사서 AI 메모리 공개…2년 연속 파트너상 | 연합뉴스"
     },
+    "link:fa0ce30d82ed0a07d58cdf23": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026085800527",
+      "source": "연합뉴스",
+      "source_body_digest": "b2e9cf05cb489f84192a2f6e0e6cb86c1b451ed8a5ffdae422913a5599392fd8",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3f5e5f6ba2aec767a1125f74e0ee171f82587d4fcc75888c8b4da797702270f7",
+      "source_fact_identity": "source_facts:v1:406d125248e5e59df4d094808c81ba35c65ea762e65cd9049e9a271c00b4a83f",
+      "source_fact_keys": [
+        "source_fact:v1:38477d9814e0ad5febe8b06741482ee2ee00db7ca781d2d571cc216d42f2ef25",
+        "source_fact:v1:90515e2e63346e8b537f7449b4ccc94f3e2c1f4c3d6fb28bb9fb5e6005d2e546"
+      ],
+      "source_published_kst": "2026-10-26T12:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 연결 기준 올해 3분기 영업이익이 2천395억원으로 지난해 동기보다 37% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스"
+    },
     "link:fa2a39c1f32867ea33d1180a": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
       "lanes": {
@@ -405333,6 +405854,27 @@
       "source_title": "배민, ‘K-GX’ 프로젝트 참여…전기 이륜차 보급 확대 나선다",
       "telegram_core_fact": "현재 국토부 규제샌드박스 승인을 받아 서울 강남·서초·송파·강동구에서 약 80대 규모로 운영 중인 전기 이륜차 LED 배달통 광고 실증사업도 민관협력 사례로 발전시킬 계획이다.",
       "title": "배민, ‘K-GX’ 프로젝트 참여…전기 이륜차 보급 확대 나선다"
+    },
+    "original:04982647e08fc4f125c6d40b": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026085800527",
+      "source": "연합뉴스",
+      "source_body_digest": "b2e9cf05cb489f84192a2f6e0e6cb86c1b451ed8a5ffdae422913a5599392fd8",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3f5e5f6ba2aec767a1125f74e0ee171f82587d4fcc75888c8b4da797702270f7",
+      "source_fact_identity": "source_facts:v1:406d125248e5e59df4d094808c81ba35c65ea762e65cd9049e9a271c00b4a83f",
+      "source_fact_keys": [
+        "source_fact:v1:38477d9814e0ad5febe8b06741482ee2ee00db7ca781d2d571cc216d42f2ef25",
+        "source_fact:v1:90515e2e63346e8b537f7449b4ccc94f3e2c1f4c3d6fb28bb9fb5e6005d2e546"
+      ],
+      "source_published_kst": "2026-10-26T12:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 연결 기준 올해 3분기 영업이익이 2천395억원으로 지난해 동기보다 37% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스"
     },
     "original:0499a84873dee46a5bf463f0": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -413866,6 +414408,29 @@
       "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
       "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
     },
+    "original:1405e8ca0c2e381ce3a349b4": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12185285",
+      "source": "매일경제",
+      "source_body_digest": "fee5138c903445541725d55987866548ec6d49ccd01cef5c5982b58327fab800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f3b8966f606b6bc36f22f270fedfa7dae1aacd1315b5adf56d9a6663eb8086c",
+      "source_fact_keys": [
+        "source_fact:v1:07ab89fe518036d9afe59dbf64f94c84360fd45ea4e791fd3c8f104e66bc2394",
+        "source_fact:v1:2303c610ccb15d0eea14003037f6899bdc8e402d2b9683926e9f0253619ac136",
+        "source_fact:v1:470092632c88512a6a1131af409a0278ac5be10b451c2bd251dfd1e828898a94",
+        "source_fact:v1:87ed92e5f6c7109f3cee864c8098e16b4953541e85a70fa31ef893db8102bb70"
+      ],
+      "source_published_kst": "2026-10-25T18:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장",
+      "telegram_core_fact": "미생물군집(마이크로바이옴)으로 신약을 개발하는 바이오미(BioMe)의 윤상선 대표는 최근 매일경제와 만나 이르면 다음달부터 희귀질환인 ‘생선악취증후군’의 치료 후보물질 BM109를 유료로 공급할 계획이라고 밝혔다. 투자금에 의존할 수밖에 없는 신약 개발 단계에서 조기 매출을 확보해 연구개발을 이어가겠다는 전략이다.",
+      "title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장"
+    },
     "original:140718df4038e3689d0422e0": {
       "first_seen_kst": "2026-10-20T21:25:35+09:00",
       "lanes": {
@@ -419142,6 +419707,29 @@
       "link": "https://www.yna.co.kr/view/AKR20260920036700009",
       "source": "연합뉴스",
       "title": "CXMT, 5세대 D램 공정 양산 돌입…삼성·하이닉스 추격 가속 | 연합뉴스"
+    },
+    "original:1d331ad2d719ed573f062dd8": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.hankyung.com/article/202610265752i",
+      "source": "한국경제",
+      "source_body_digest": "818551fa5db0cc65c5e0904f44686a472b542b594c821452e7259a24e7a3bbbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:187ff64ce8b244462e0b2c81be5ba8ad14a487b750686c890ea1f300b58dfa21",
+      "source_fact_keys": [
+        "source_fact:v1:54020c2e7782c274c9911293738e8eeddb18a446d37942e6917c32aa52eb19a7",
+        "source_fact:v1:679969651e3111ca9525d9e1598e6f96ba9b38fdd19a63c9a6d53c0c62b2e906",
+        "source_fact:v1:d74247db899dc62a51f9eed756de6fb9847eba8d0a3a47826a9b46a8d8221243",
+        "source_fact:v1:ececb51f28716eabad1333e6d19e23517a8a7b8f5e69bfd69780ceee28673300"
+      ],
+      "source_published_kst": "2026-10-26T16:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅",
+      "telegram_core_fact": "한국투자신탁운용에 따르면 중국 차이나유니버설자산운용 홍콩법인(CUAM HK), 만든 ‘CUAM 솔액티브 차이나&글로벌 세미컨덕터 ETF’가 지난 23일 홍콩증권거래소에 상장했다.",
+      "title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅"
     },
     "original:1d3b1b4e57e706e4d7ce1d0e": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
@@ -445034,6 +445622,26 @@
       "telegram_core_fact": "국내 메모리 반도체 업체들의 HBM 생산량이 늘어날수록 일본 소부장 기업들의 수주도 늘어나는 상호보완적 구조인 동시에, 양국의 소부장 기업 간 주도권 다툼도 한층 치열해지고 있다는 이유에서다.",
       "title": "토스증권 리서치센터 “AI 시대, 일본 반도체 소부장의 저력 조명”"
     },
+    "original:47c11e4071577bc1aa87d322": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841036",
+      "source": "뉴시스",
+      "source_body_digest": "152748c1be3fc5c226c162aa75695649b1c56d02d7abfff68b31220bd53b89d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:548f973b58b784e0c55a2514d1fc16db8c58c5c2f43fa18a422adc46f430d18c",
+      "source_fact_keys": [
+        "source_fact:v1:41a18ca5e5f03cfa7cfd8c6002035dab998c9f8c4e5e0d8076035538c1ccad24"
+      ],
+      "source_published_kst": "2026-10-26T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범",
+      "telegram_core_fact": "제주자치경찰단은 감귤 수확철을 맞아 농가의 결실을 지키고 농산물 절도를 막기 위해 '감귤 수확기 맞춤형 특별방범 순찰'을 추진한다고 26일 밝혔다. 자치경찰에 따르면 올해 노지감귤 생산량은 44만3000t 안팎으로 지난해보다 7.8% 증가한 것으로 나타났다.",
+      "title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범"
+    },
     "original:47c9f994f36d32480d6f9558": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -463811,6 +464419,30 @@
       "source_published_kst": "2026-10-07T05:22+09:00",
       "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
     },
+    "original:68b370dcee8a1a715a7de4f5": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.fnnews.com/news/202610261620229507",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "957f0a728887642e15244e93b1902bce431e410a3b0e4e8593620c51b2c593fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cbd338e78792688bb440d09ffc0747efd3866a15ab525bac079acdbf17f28b4",
+      "source_fact_keys": [
+        "source_fact:v1:0f5d26dc6096855446cc2c6b0b32b8dbfca507033d796c6081ad0cc742af085b",
+        "source_fact:v1:2960de8d6dcc97b486ff22fccf8d24fc39fe5b66eb0fde34389dbd95dceaa5bc",
+        "source_fact:v1:43115d8e09412affaaa014423015e27da16cffbbc8271f51adb341ef3502ee7d",
+        "source_fact:v1:51e0f573aafb76ef4e4bb601b03a76459b63698a4ed42f899a0f25bfe6f6e5d5",
+        "source_fact:v1:abd9f762dd0b7ff048fbdd40ae0249b6804752082401ee6677e2c10445647776"
+      ],
+      "source_published_kst": "2026-10-26T16:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장",
+      "telegram_core_fact": "하나자산운용은 오는 27일 '1Q 미국AI테크플랫폼TOP10 ETF'를 신규 상장한다고 26일 밝혔다.",
+      "title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장"
+    },
     "original:68b814169a5ff7c7855c97d0": {
       "first_seen_kst": "2026-10-23T06:00:11+09:00",
       "lanes": {
@@ -479467,6 +480099,29 @@
       "source_title": "라온피플, 3분기 누적 영업익 12억…전년比 흑자 전환",
       "telegram_core_fact": "인공지능(AI) 전문기업 라온피플은 별도재무제표 기준 3분기 누적 영업이익이 11억8000만원을 기록해 전년비 흑자 전환했다고 21일 공시했다.",
       "title": "라온피플, 3분기 누적 영업익 12억…전년比 흑자 전환"
+    },
+    "original:8422943b88041b00896b86ef": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/26/2026102616444630690",
+      "source": "머니투데이",
+      "source_body_digest": "0d27941f0989edc32eed258c4cd1feb19c69a7e2a88bf7a26d1d4be46b117614",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68d19ac8945ce93a71ea3960b5478573bda02e264c1f0c58ec8a9148d7e243a7",
+      "source_fact_keys": [
+        "source_fact:v1:5a6caf3d5c680671cbf4f7211cf8933e4a5d96dcada8e336d07551cc47be21b9",
+        "source_fact:v1:8c4afc77c16c9d714c2e6124f03f2d280a2a35d14bb8f494a5424044e3b85607",
+        "source_fact:v1:91c42a724031162c1fe16beb7bde4d15f7102955abbca7af3e13e7d86abd471e",
+        "source_fact:v1:ca4a21a8adc4509a9674754150289a8c207912fd017d57a80fa3e3f56c7a1700"
+      ],
+      "source_published_kst": "2026-10-26T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다",
+      "telegram_core_fact": "국민연금이 지분 5% 이상을 보유한 상장사 287곳의 주식 평가액도 6월 말 515조9293억원에서 10월15일 333조5330억원으로 182조3963억원 줄어든 것으로 관측된다.보유주식 평가액이 급감하면서 국민연금이 매도 속도를 높여 위험을 분산했어야 한다는 비판으로 이어졌다.",
+      "title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다"
     },
     "original:8425ebc67d115f27824c42da": {
       "first_seen_kst": "2026-10-25T11:31:11+09:00",
@@ -536334,6 +536989,30 @@
       "source": "이데일리",
       "title": "투모로로보틱스, 스케일업 팁스 선정…피지컬 AI 상용화 속도"
     },
+    "original:e663666c94100701032ef6d3": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.inews24.com/view/2018901",
+      "source": "아이뉴스24",
+      "source_body_digest": "4e32b16b1d5ec38a5876caaa8be9ffa54723e9337af32187f3c7855a8cce6405",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ff2a75f5842b97473947136ee9c6356dbfa0a6714ec79794fe35d5aadd543be",
+      "source_fact_keys": [
+        "source_fact:v1:08082618be7aa1f45d636a89aa2b66156405a69704d83288cdfeb6a4b7e7ce6a",
+        "source_fact:v1:62e9f9b74873f2d94212def786d1cc8a092a054b7de5714c9bf0032ef69aa8df",
+        "source_fact:v1:903795315883332d184c7afc365be571f4b4d6de31924d33ea847a4e25b1e397",
+        "source_fact:v1:9f3494c028eed5df8be92e17d1610646f20b2cd85cabe31d7c094212e4c763d0",
+        "source_fact:v1:da279718d40812daab00e035d0850ea41c8163b189d3bee59c6f6c48b884ebf4"
+      ],
+      "source_published_kst": "2026-10-26T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각",
+      "telegram_core_fact": "SK하이닉스는 이날 키옥시아 지분 매각 차익을 활용한 16조원 특별배당 추진 보도와 관련해 해명공시를 내고 \"주주가치 제고를 위해 다양한 주주환원 방안을 검토하고 있으나 현재까지 확정된 사항은 없다\"고 밝혔다.",
+      "title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각"
+    },
     "original:e66c45f387086882a1c0d9d4": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
       "lanes": {
@@ -574428,6 +575107,30 @@
       "telegram_core_fact": "[파이낸셜뉴스] 독일 과학기술 기업 머크가 충북 음성에 몰리브덴 전구체 생산설비를 구축하고 차세대 반도체 소재의 국내 공급을 강화한다. 회사 에 따르면 이 솔루션은 99% 이상의 소재 사용 효율과 안정적인 공급을 바탕으로 대량생산을 지원하도록 설계됐다.",
       "title": "머크, 충북에 몰리브덴 생산설비 구축...차세대 반도체 소재 공급 강화"
     },
+    "source_fact:0a073913e00c9c8d02cbdfc6": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.inews24.com/view/2018901",
+      "source": "아이뉴스24",
+      "source_body_digest": "4e32b16b1d5ec38a5876caaa8be9ffa54723e9337af32187f3c7855a8cce6405",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ff2a75f5842b97473947136ee9c6356dbfa0a6714ec79794fe35d5aadd543be",
+      "source_fact_keys": [
+        "source_fact:v1:08082618be7aa1f45d636a89aa2b66156405a69704d83288cdfeb6a4b7e7ce6a",
+        "source_fact:v1:62e9f9b74873f2d94212def786d1cc8a092a054b7de5714c9bf0032ef69aa8df",
+        "source_fact:v1:903795315883332d184c7afc365be571f4b4d6de31924d33ea847a4e25b1e397",
+        "source_fact:v1:9f3494c028eed5df8be92e17d1610646f20b2cd85cabe31d7c094212e4c763d0",
+        "source_fact:v1:da279718d40812daab00e035d0850ea41c8163b189d3bee59c6f6c48b884ebf4"
+      ],
+      "source_published_kst": "2026-10-26T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각",
+      "telegram_core_fact": "SK하이닉스는 이날 키옥시아 지분 매각 차익을 활용한 16조원 특별배당 추진 보도와 관련해 해명공시를 내고 \"주주가치 제고를 위해 다양한 주주환원 방안을 검토하고 있으나 현재까지 확정된 사항은 없다\"고 밝혔다.",
+      "title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각"
+    },
     "source_fact:0a082b72833bf7e60511f3aa": {
       "first_seen_kst": "2026-10-24T05:26:28+09:00",
       "lanes": {
@@ -590427,6 +591130,29 @@
       "telegram_core_fact": "최근 정부·여권에서 서울의 주택공급 부족책임을 오세훈 서울시장에게 돌리는 주장이 나오는 가운데 이번 백서는 이에 대한 서울시의 반박 성격도 가진 것으로 평가된다.",
       "title": "서울시, 주택정책 20년 되짚는 백서…\"박원순 시정기 43만호 증발\" | 연합뉴스"
     },
+    "source_fact:107a1c20c79d056a0994bf92": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.hankyung.com/article/202610265752i",
+      "source": "한국경제",
+      "source_body_digest": "818551fa5db0cc65c5e0904f44686a472b542b594c821452e7259a24e7a3bbbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:187ff64ce8b244462e0b2c81be5ba8ad14a487b750686c890ea1f300b58dfa21",
+      "source_fact_keys": [
+        "source_fact:v1:54020c2e7782c274c9911293738e8eeddb18a446d37942e6917c32aa52eb19a7",
+        "source_fact:v1:679969651e3111ca9525d9e1598e6f96ba9b38fdd19a63c9a6d53c0c62b2e906",
+        "source_fact:v1:d74247db899dc62a51f9eed756de6fb9847eba8d0a3a47826a9b46a8d8221243",
+        "source_fact:v1:ececb51f28716eabad1333e6d19e23517a8a7b8f5e69bfd69780ceee28673300"
+      ],
+      "source_published_kst": "2026-10-26T16:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅",
+      "telegram_core_fact": "한국투자신탁운용에 따르면 중국 차이나유니버설자산운용 홍콩법인(CUAM HK), 만든 ‘CUAM 솔액티브 차이나&글로벌 세미컨덕터 ETF’가 지난 23일 홍콩증권거래소에 상장했다.",
+      "title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅"
+    },
     "source_fact:107c8b12d1abad827a35bc89": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
       "lanes": {
@@ -594006,6 +594732,29 @@
       "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
       "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
       "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
+    },
+    "source_fact:11d3d4e6209d9ecb6dd5339f": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/26/2026102616444630690",
+      "source": "머니투데이",
+      "source_body_digest": "0d27941f0989edc32eed258c4cd1feb19c69a7e2a88bf7a26d1d4be46b117614",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68d19ac8945ce93a71ea3960b5478573bda02e264c1f0c58ec8a9148d7e243a7",
+      "source_fact_keys": [
+        "source_fact:v1:5a6caf3d5c680671cbf4f7211cf8933e4a5d96dcada8e336d07551cc47be21b9",
+        "source_fact:v1:8c4afc77c16c9d714c2e6124f03f2d280a2a35d14bb8f494a5424044e3b85607",
+        "source_fact:v1:91c42a724031162c1fe16beb7bde4d15f7102955abbca7af3e13e7d86abd471e",
+        "source_fact:v1:ca4a21a8adc4509a9674754150289a8c207912fd017d57a80fa3e3f56c7a1700"
+      ],
+      "source_published_kst": "2026-10-26T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다",
+      "telegram_core_fact": "국민연금이 지분 5% 이상을 보유한 상장사 287곳의 주식 평가액도 6월 말 515조9293억원에서 10월15일 333조5330억원으로 182조3963억원 줄어든 것으로 관측된다.보유주식 평가액이 급감하면서 국민연금이 매도 속도를 높여 위험을 분산했어야 한다는 비판으로 이어졌다.",
+      "title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다"
     },
     "source_fact:11d8296c3e07335474c0fce9": {
       "first_seen_kst": "2026-10-14T06:58:10+09:00",
@@ -598718,6 +599467,29 @@
       ],
       "source_published_kst": "2026-10-05T10:35+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 바이오 ‘10대 거래’ 선정"
+    },
+    "source_fact:13ea4c2810125e5c9634d3d6": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/26/2026102616444630690",
+      "source": "머니투데이",
+      "source_body_digest": "0d27941f0989edc32eed258c4cd1feb19c69a7e2a88bf7a26d1d4be46b117614",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68d19ac8945ce93a71ea3960b5478573bda02e264c1f0c58ec8a9148d7e243a7",
+      "source_fact_keys": [
+        "source_fact:v1:5a6caf3d5c680671cbf4f7211cf8933e4a5d96dcada8e336d07551cc47be21b9",
+        "source_fact:v1:8c4afc77c16c9d714c2e6124f03f2d280a2a35d14bb8f494a5424044e3b85607",
+        "source_fact:v1:91c42a724031162c1fe16beb7bde4d15f7102955abbca7af3e13e7d86abd471e",
+        "source_fact:v1:ca4a21a8adc4509a9674754150289a8c207912fd017d57a80fa3e3f56c7a1700"
+      ],
+      "source_published_kst": "2026-10-26T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다",
+      "telegram_core_fact": "국민연금이 지분 5% 이상을 보유한 상장사 287곳의 주식 평가액도 6월 말 515조9293억원에서 10월15일 333조5330억원으로 182조3963억원 줄어든 것으로 관측된다.보유주식 평가액이 급감하면서 국민연금이 매도 속도를 높여 위험을 분산했어야 한다는 비판으로 이어졌다.",
+      "title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다"
     },
     "source_fact:13ebdd002f9b625ebf530695": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
@@ -635614,6 +636386,30 @@
       "telegram_core_fact": "홍지선(왼쪽) 국토부 장관과 오세훈(오른쪽) 서울시장의 면담에 앞서 차관·부시장급 회동을 추진해 정비사업 규제 완화 논의,주택공급 방안 등 의제를 세부조율할 전망이다.",
       "title": "김이탁 국토차관·김성보 서울시 부시장부터 회동…정비사업 완화·주택공급 협의 재개"
     },
+    "source_fact:231881d0879a4670ebcb9406": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.fnnews.com/news/202610261620229507",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "957f0a728887642e15244e93b1902bce431e410a3b0e4e8593620c51b2c593fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cbd338e78792688bb440d09ffc0747efd3866a15ab525bac079acdbf17f28b4",
+      "source_fact_keys": [
+        "source_fact:v1:0f5d26dc6096855446cc2c6b0b32b8dbfca507033d796c6081ad0cc742af085b",
+        "source_fact:v1:2960de8d6dcc97b486ff22fccf8d24fc39fe5b66eb0fde34389dbd95dceaa5bc",
+        "source_fact:v1:43115d8e09412affaaa014423015e27da16cffbbc8271f51adb341ef3502ee7d",
+        "source_fact:v1:51e0f573aafb76ef4e4bb601b03a76459b63698a4ed42f899a0f25bfe6f6e5d5",
+        "source_fact:v1:abd9f762dd0b7ff048fbdd40ae0249b6804752082401ee6677e2c10445647776"
+      ],
+      "source_published_kst": "2026-10-26T16:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장",
+      "telegram_core_fact": "하나자산운용은 오는 27일 '1Q 미국AI테크플랫폼TOP10 ETF'를 신규 상장한다고 26일 밝혔다.",
+      "title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장"
+    },
     "source_fact:2320721394c251d71a1019d6": {
       "first_seen_kst": "2026-10-20T13:59:52+09:00",
       "lanes": {
@@ -636391,6 +637187,30 @@
       "source_title": "국장 탈출해 '미장 3배 레버리지' 탔더니…'SOXL' 열흘 새 -43%",
       "telegram_core_fact": "코스피가 열흘간 19% 급락하는 동안 S&P500(-1.5%)과 나스닥(-4.9%)의 낙폭이 상대적으로 작았던 데다, 원·달러 환율이 1300원대 초반까지 내려서며 투자자들의 환율 부담을 줄여준 점도 매수세를 부추겼다. 'SOXL'는 순매수액만 32억9208만 달러(약 4조4000억원)에 달했다.",
       "title": "국장 탈출해 '미장 3배 레버리지' 탔더니…'SOXL' 열흘 새 -43%"
+    },
+    "source_fact:2366b4cb6909f01005e67b82": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.inews24.com/view/2018901",
+      "source": "아이뉴스24",
+      "source_body_digest": "4e32b16b1d5ec38a5876caaa8be9ffa54723e9337af32187f3c7855a8cce6405",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ff2a75f5842b97473947136ee9c6356dbfa0a6714ec79794fe35d5aadd543be",
+      "source_fact_keys": [
+        "source_fact:v1:08082618be7aa1f45d636a89aa2b66156405a69704d83288cdfeb6a4b7e7ce6a",
+        "source_fact:v1:62e9f9b74873f2d94212def786d1cc8a092a054b7de5714c9bf0032ef69aa8df",
+        "source_fact:v1:903795315883332d184c7afc365be571f4b4d6de31924d33ea847a4e25b1e397",
+        "source_fact:v1:9f3494c028eed5df8be92e17d1610646f20b2cd85cabe31d7c094212e4c763d0",
+        "source_fact:v1:da279718d40812daab00e035d0850ea41c8163b189d3bee59c6f6c48b884ebf4"
+      ],
+      "source_published_kst": "2026-10-26T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각",
+      "telegram_core_fact": "SK하이닉스는 이날 키옥시아 지분 매각 차익을 활용한 16조원 특별배당 추진 보도와 관련해 해명공시를 내고 \"주주가치 제고를 위해 다양한 주주환원 방안을 검토하고 있으나 현재까지 확정된 사항은 없다\"고 밝혔다.",
+      "title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각"
     },
     "source_fact:23676306e45fa979d421cabe": {
       "first_seen_kst": "2026-10-19T19:37:05+09:00",
@@ -665780,6 +666600,26 @@
       "telegram_core_fact": "방한한 리사 수 AMD 회장 겸 최고경영자(CEO)가 삼성과 SK의 반도체 수장을 만나 AI 협력 강화 방안을 논의한다. 약 7개월 만에 다시 성사된 전 부회장과 수 회장의 이번 회동으로 삼성전자와 AMD는 고대역폭메모리(HBM)를 포함한 AI 반도체 협력을 강화할 전망이다.",
       "title": "AMD 리사수, 삼성 전영현·SK 곽노정 만나 AI 협력방안 논의(종합)"
     },
+    "source_fact:2ef000306217760818f3899e": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841036",
+      "source": "뉴시스",
+      "source_body_digest": "152748c1be3fc5c226c162aa75695649b1c56d02d7abfff68b31220bd53b89d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:548f973b58b784e0c55a2514d1fc16db8c58c5c2f43fa18a422adc46f430d18c",
+      "source_fact_keys": [
+        "source_fact:v1:41a18ca5e5f03cfa7cfd8c6002035dab998c9f8c4e5e0d8076035538c1ccad24"
+      ],
+      "source_published_kst": "2026-10-26T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범",
+      "telegram_core_fact": "제주자치경찰단은 감귤 수확철을 맞아 농가의 결실을 지키고 농산물 절도를 막기 위해 '감귤 수확기 맞춤형 특별방범 순찰'을 추진한다고 26일 밝혔다. 자치경찰에 따르면 올해 노지감귤 생산량은 44만3000t 안팎으로 지난해보다 7.8% 증가한 것으로 나타났다.",
+      "title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범"
+    },
     "source_fact:2ef4c8d6ba23f25553541a69": {
       "first_seen_kst": "2026-10-21T11:24:12+09:00",
       "lanes": {
@@ -668370,6 +669210,30 @@
       "source_title": "호남 반도체 ‘2030년 시간표’…노동특례·인허가, 29일 당정 시험대",
       "telegram_core_fact": "산업통상부가 지난 23일 발표한 반도체 13개 규제 개선과제는 순차적으로 진행하던 인허가·보상·설계를 한꺼번에 병행하는 데 초점을 맞췄다.",
       "title": "호남 반도체 ‘2030년 시간표’…노동특례·인허가, 29일 당정 시험대"
+    },
+    "source_fact:3031baffaa5557b0d3d9b84f": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.fnnews.com/news/202610261620229507",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "957f0a728887642e15244e93b1902bce431e410a3b0e4e8593620c51b2c593fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cbd338e78792688bb440d09ffc0747efd3866a15ab525bac079acdbf17f28b4",
+      "source_fact_keys": [
+        "source_fact:v1:0f5d26dc6096855446cc2c6b0b32b8dbfca507033d796c6081ad0cc742af085b",
+        "source_fact:v1:2960de8d6dcc97b486ff22fccf8d24fc39fe5b66eb0fde34389dbd95dceaa5bc",
+        "source_fact:v1:43115d8e09412affaaa014423015e27da16cffbbc8271f51adb341ef3502ee7d",
+        "source_fact:v1:51e0f573aafb76ef4e4bb601b03a76459b63698a4ed42f899a0f25bfe6f6e5d5",
+        "source_fact:v1:abd9f762dd0b7ff048fbdd40ae0249b6804752082401ee6677e2c10445647776"
+      ],
+      "source_published_kst": "2026-10-26T16:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장",
+      "telegram_core_fact": "하나자산운용은 오는 27일 '1Q 미국AI테크플랫폼TOP10 ETF'를 신규 상장한다고 26일 밝혔다.",
+      "title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장"
     },
     "source_fact:3031cff40ccfdd32864ca55f": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
@@ -722198,6 +723062,30 @@
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
       "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
     },
+    "source_fact:462b73cb46ce64218b20cb51": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.inews24.com/view/2018901",
+      "source": "아이뉴스24",
+      "source_body_digest": "4e32b16b1d5ec38a5876caaa8be9ffa54723e9337af32187f3c7855a8cce6405",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ff2a75f5842b97473947136ee9c6356dbfa0a6714ec79794fe35d5aadd543be",
+      "source_fact_keys": [
+        "source_fact:v1:08082618be7aa1f45d636a89aa2b66156405a69704d83288cdfeb6a4b7e7ce6a",
+        "source_fact:v1:62e9f9b74873f2d94212def786d1cc8a092a054b7de5714c9bf0032ef69aa8df",
+        "source_fact:v1:903795315883332d184c7afc365be571f4b4d6de31924d33ea847a4e25b1e397",
+        "source_fact:v1:9f3494c028eed5df8be92e17d1610646f20b2cd85cabe31d7c094212e4c763d0",
+        "source_fact:v1:da279718d40812daab00e035d0850ea41c8163b189d3bee59c6f6c48b884ebf4"
+      ],
+      "source_published_kst": "2026-10-26T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각",
+      "telegram_core_fact": "SK하이닉스는 이날 키옥시아 지분 매각 차익을 활용한 16조원 특별배당 추진 보도와 관련해 해명공시를 내고 \"주주가치 제고를 위해 다양한 주주환원 방안을 검토하고 있으나 현재까지 확정된 사항은 없다\"고 밝혔다.",
+      "title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각"
+    },
     "source_fact:462f50f036602026aca2bfdb": {
       "first_seen_kst": "2026-10-19T07:05:38+09:00",
       "lanes": {
@@ -726487,6 +727375,27 @@
       "source_title": "‘탈엔비디아’ 나선 빅테크…삼성·SK HBM 판 더 커진다",
       "telegram_core_fact": "삼성전자와 SK하이닉스는 지난해 전세계 HBM 시장을 각 39%, 48%를 차지할 정도로 압도적인 점유율을 보이고 있다.",
       "title": "‘탈엔비디아’ 나선 빅테크…삼성·SK HBM 판 더 커진다"
+    },
+    "source_fact:47a37b13e4741f96d74d9ffe": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026085800527",
+      "source": "연합뉴스",
+      "source_body_digest": "b2e9cf05cb489f84192a2f6e0e6cb86c1b451ed8a5ffdae422913a5599392fd8",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3f5e5f6ba2aec767a1125f74e0ee171f82587d4fcc75888c8b4da797702270f7",
+      "source_fact_identity": "source_facts:v1:406d125248e5e59df4d094808c81ba35c65ea762e65cd9049e9a271c00b4a83f",
+      "source_fact_keys": [
+        "source_fact:v1:38477d9814e0ad5febe8b06741482ee2ee00db7ca781d2d571cc216d42f2ef25",
+        "source_fact:v1:90515e2e63346e8b537f7449b4ccc94f3e2c1f4c3d6fb28bb9fb5e6005d2e546"
+      ],
+      "source_published_kst": "2026-10-26T12:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 연결 기준 올해 3분기 영업이익이 2천395억원으로 지난해 동기보다 37% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스"
     },
     "source_fact:47a3dae49ca76bf4f10db5af": {
       "first_seen_kst": "2026-10-22T23:34:47+09:00",
@@ -764787,6 +765696,27 @@
       "source_title": "트럼프 \"푸틴과 러시아 경유 미국·세계 시장 공급 합의\"",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 8일(현지 시간) 블라디미르 푸틴 러시아 대통령과 통화에서 \"러시아가 즉시 30만톤 이상의 디젤 연료(경유)를 미국과 세계시장에 공급하기로 합의됐다\"고 발표했다.",
       "title": "트럼프 \"푸틴과 러시아 경유 미국·세계 시장 공급 합의\""
+    },
+    "source_fact:56d9ae16c53f78e7f7db72f5": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026085800527",
+      "source": "연합뉴스",
+      "source_body_digest": "b2e9cf05cb489f84192a2f6e0e6cb86c1b451ed8a5ffdae422913a5599392fd8",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3f5e5f6ba2aec767a1125f74e0ee171f82587d4fcc75888c8b4da797702270f7",
+      "source_fact_identity": "source_facts:v1:406d125248e5e59df4d094808c81ba35c65ea762e65cd9049e9a271c00b4a83f",
+      "source_fact_keys": [
+        "source_fact:v1:38477d9814e0ad5febe8b06741482ee2ee00db7ca781d2d571cc216d42f2ef25",
+        "source_fact:v1:90515e2e63346e8b537f7449b4ccc94f3e2c1f4c3d6fb28bb9fb5e6005d2e546"
+      ],
+      "source_published_kst": "2026-10-26T12:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 연결 기준 올해 3분기 영업이익이 2천395억원으로 지난해 동기보다 37% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스"
     },
     "source_fact:56da2ff1b9564dfb89fe3c7f": {
       "first_seen_kst": "2026-10-18T06:15:10+09:00",
@@ -850011,6 +850941,29 @@
       "telegram_core_fact": "정부가 연내 도입을 추진 중인 인공지능(AI) 데이터센터 전용 '그리드코드(전력망 접속 규칙)'가 투자 현장에 새로운 규제로 작용할 수 있다는 지적이 나왔다.",
       "title": "[AI픽] \"전기는 국가망에서 받으라더니\"…AI 데이터센터 새 규제 논란 | 연합뉴스"
     },
+    "source_fact:7999ca62a3982d9f71e45bc7": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/26/2026102616444630690",
+      "source": "머니투데이",
+      "source_body_digest": "0d27941f0989edc32eed258c4cd1feb19c69a7e2a88bf7a26d1d4be46b117614",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68d19ac8945ce93a71ea3960b5478573bda02e264c1f0c58ec8a9148d7e243a7",
+      "source_fact_keys": [
+        "source_fact:v1:5a6caf3d5c680671cbf4f7211cf8933e4a5d96dcada8e336d07551cc47be21b9",
+        "source_fact:v1:8c4afc77c16c9d714c2e6124f03f2d280a2a35d14bb8f494a5424044e3b85607",
+        "source_fact:v1:91c42a724031162c1fe16beb7bde4d15f7102955abbca7af3e13e7d86abd471e",
+        "source_fact:v1:ca4a21a8adc4509a9674754150289a8c207912fd017d57a80fa3e3f56c7a1700"
+      ],
+      "source_published_kst": "2026-10-26T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다",
+      "telegram_core_fact": "국민연금이 지분 5% 이상을 보유한 상장사 287곳의 주식 평가액도 6월 말 515조9293억원에서 10월15일 333조5330억원으로 182조3963억원 줄어든 것으로 관측된다.보유주식 평가액이 급감하면서 국민연금이 매도 속도를 높여 위험을 분산했어야 한다는 비판으로 이어졌다.",
+      "title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다"
+    },
     "source_fact:799b9cb9d70b7b0327fa03e5": {
       "first_seen_kst": "2026-10-11T15:10:51+09:00",
       "lanes": {
@@ -894604,6 +895557,29 @@
       "source_title": "재개발 임대 사업 따낸 뒤 SPC로 넘겨도 관리는 '사각지대'",
       "telegram_core_fact": "재개발·재건축 임대주택 사업자가 입찰로 선정된 뒤 별도 특수목적법인(SPC)에 소유권을 넘겨도 정부가 이를 관리할 규정이 없는 것으로 드러났다.",
       "title": "재개발 임대 사업 따낸 뒤 SPC로 넘겨도 관리는 '사각지대'"
+    },
+    "source_fact:8c7afbd67cccc28a5bbc2de1": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12185285",
+      "source": "매일경제",
+      "source_body_digest": "fee5138c903445541725d55987866548ec6d49ccd01cef5c5982b58327fab800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f3b8966f606b6bc36f22f270fedfa7dae1aacd1315b5adf56d9a6663eb8086c",
+      "source_fact_keys": [
+        "source_fact:v1:07ab89fe518036d9afe59dbf64f94c84360fd45ea4e791fd3c8f104e66bc2394",
+        "source_fact:v1:2303c610ccb15d0eea14003037f6899bdc8e402d2b9683926e9f0253619ac136",
+        "source_fact:v1:470092632c88512a6a1131af409a0278ac5be10b451c2bd251dfd1e828898a94",
+        "source_fact:v1:87ed92e5f6c7109f3cee864c8098e16b4953541e85a70fa31ef893db8102bb70"
+      ],
+      "source_published_kst": "2026-10-25T18:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장",
+      "telegram_core_fact": "미생물군집(마이크로바이옴)으로 신약을 개발하는 바이오미(BioMe)의 윤상선 대표는 최근 매일경제와 만나 이르면 다음달부터 희귀질환인 ‘생선악취증후군’의 치료 후보물질 BM109를 유료로 공급할 계획이라고 밝혔다. 투자금에 의존할 수밖에 없는 신약 개발 단계에서 조기 매출을 확보해 연구개발을 이어가겠다는 전략이다.",
+      "title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장"
     },
     "source_fact:8c7d71f9794b240fcdf77a1b": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -977662,6 +978638,29 @@
       "source_published_kst": "2026-10-06T16:30+09:00",
       "title": "고려아연, 故 최창걸 명예회장 1주기 추모…“사람·신뢰 철학으로 미래 50년”"
     },
+    "source_fact:ae06d311cf6525a04a9fabbd": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/26/2026102616444630690",
+      "source": "머니투데이",
+      "source_body_digest": "0d27941f0989edc32eed258c4cd1feb19c69a7e2a88bf7a26d1d4be46b117614",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68d19ac8945ce93a71ea3960b5478573bda02e264c1f0c58ec8a9148d7e243a7",
+      "source_fact_keys": [
+        "source_fact:v1:5a6caf3d5c680671cbf4f7211cf8933e4a5d96dcada8e336d07551cc47be21b9",
+        "source_fact:v1:8c4afc77c16c9d714c2e6124f03f2d280a2a35d14bb8f494a5424044e3b85607",
+        "source_fact:v1:91c42a724031162c1fe16beb7bde4d15f7102955abbca7af3e13e7d86abd471e",
+        "source_fact:v1:ca4a21a8adc4509a9674754150289a8c207912fd017d57a80fa3e3f56c7a1700"
+      ],
+      "source_published_kst": "2026-10-26T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다",
+      "telegram_core_fact": "국민연금이 지분 5% 이상을 보유한 상장사 287곳의 주식 평가액도 6월 말 515조9293억원에서 10월15일 333조5330억원으로 182조3963억원 줄어든 것으로 관측된다.보유주식 평가액이 급감하면서 국민연금이 매도 속도를 높여 위험을 분산했어야 한다는 비판으로 이어졌다.",
+      "title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다"
+    },
     "source_fact:ae0aaa74df53fd97827d5025": {
       "first_seen_kst": "2026-10-22T03:57:32+09:00",
       "lanes": {
@@ -978948,6 +979947,29 @@
       "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
       "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
       "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
+    },
+    "source_fact:ae92b7d956e12e2e9a056b02": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.hankyung.com/article/202610265752i",
+      "source": "한국경제",
+      "source_body_digest": "818551fa5db0cc65c5e0904f44686a472b542b594c821452e7259a24e7a3bbbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:187ff64ce8b244462e0b2c81be5ba8ad14a487b750686c890ea1f300b58dfa21",
+      "source_fact_keys": [
+        "source_fact:v1:54020c2e7782c274c9911293738e8eeddb18a446d37942e6917c32aa52eb19a7",
+        "source_fact:v1:679969651e3111ca9525d9e1598e6f96ba9b38fdd19a63c9a6d53c0c62b2e906",
+        "source_fact:v1:d74247db899dc62a51f9eed756de6fb9847eba8d0a3a47826a9b46a8d8221243",
+        "source_fact:v1:ececb51f28716eabad1333e6d19e23517a8a7b8f5e69bfd69780ceee28673300"
+      ],
+      "source_published_kst": "2026-10-26T16:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅",
+      "telegram_core_fact": "한국투자신탁운용에 따르면 중국 차이나유니버설자산운용 홍콩법인(CUAM HK), 만든 ‘CUAM 솔액티브 차이나&글로벌 세미컨덕터 ETF’가 지난 23일 홍콩증권거래소에 상장했다.",
+      "title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅"
     },
     "source_fact:ae9445386d0f9f890cc7bc18": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
@@ -1028577,6 +1029599,29 @@
       "telegram_core_fact": "산재 사망사고 발생 기업에 대한 경제적 제재를 강화하는 산업안전보건법 개정안도 함께 의결됐다.",
       "title": "민간임대 관리비도 신고 의무화…국무회의서 시행령 개정안 의결"
     },
+    "source_fact:c2c3fecc1e482b6a093cf906": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.hankyung.com/article/202610265752i",
+      "source": "한국경제",
+      "source_body_digest": "818551fa5db0cc65c5e0904f44686a472b542b594c821452e7259a24e7a3bbbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:187ff64ce8b244462e0b2c81be5ba8ad14a487b750686c890ea1f300b58dfa21",
+      "source_fact_keys": [
+        "source_fact:v1:54020c2e7782c274c9911293738e8eeddb18a446d37942e6917c32aa52eb19a7",
+        "source_fact:v1:679969651e3111ca9525d9e1598e6f96ba9b38fdd19a63c9a6d53c0c62b2e906",
+        "source_fact:v1:d74247db899dc62a51f9eed756de6fb9847eba8d0a3a47826a9b46a8d8221243",
+        "source_fact:v1:ececb51f28716eabad1333e6d19e23517a8a7b8f5e69bfd69780ceee28673300"
+      ],
+      "source_published_kst": "2026-10-26T16:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅",
+      "telegram_core_fact": "한국투자신탁운용에 따르면 중국 차이나유니버설자산운용 홍콩법인(CUAM HK), 만든 ‘CUAM 솔액티브 차이나&글로벌 세미컨덕터 ETF’가 지난 23일 홍콩증권거래소에 상장했다.",
+      "title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅"
+    },
     "source_fact:c2c48154aab9d1735719fd76": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -1064532,6 +1065577,30 @@
       "telegram_core_fact": "아자이 방가 세계은행(WB) 총재는 중동전쟁 이후 이란이 호르무즈 해협을 봉쇄해 전 세계 석유 공급량의 20%가량이 차단됐을 때 세계 경제 성장세가 우려했던 것보다는 안정적으로 유지됐지만 최근 다시 압박이 가중되고 있다고 진단했다.",
       "title": "IMF·WB 연차총회 태국서 개막…중동전쟁·공공부채·AI 논의 | 연합뉴스"
     },
+    "source_fact:d129c998ccdb9bebe8d8cce1": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.fnnews.com/news/202610261620229507",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "957f0a728887642e15244e93b1902bce431e410a3b0e4e8593620c51b2c593fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cbd338e78792688bb440d09ffc0747efd3866a15ab525bac079acdbf17f28b4",
+      "source_fact_keys": [
+        "source_fact:v1:0f5d26dc6096855446cc2c6b0b32b8dbfca507033d796c6081ad0cc742af085b",
+        "source_fact:v1:2960de8d6dcc97b486ff22fccf8d24fc39fe5b66eb0fde34389dbd95dceaa5bc",
+        "source_fact:v1:43115d8e09412affaaa014423015e27da16cffbbc8271f51adb341ef3502ee7d",
+        "source_fact:v1:51e0f573aafb76ef4e4bb601b03a76459b63698a4ed42f899a0f25bfe6f6e5d5",
+        "source_fact:v1:abd9f762dd0b7ff048fbdd40ae0249b6804752082401ee6677e2c10445647776"
+      ],
+      "source_published_kst": "2026-10-26T16:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장",
+      "telegram_core_fact": "하나자산운용은 오는 27일 '1Q 미국AI테크플랫폼TOP10 ETF'를 신규 상장한다고 26일 밝혔다.",
+      "title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장"
+    },
     "source_fact:d12cb7c80252f7daa4c6cbef": {
       "first_seen_kst": "2026-10-24T07:28:21+09:00",
       "lanes": {
@@ -1074184,6 +1075253,30 @@
       "source_title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다",
       "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
       "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
+    },
+    "source_fact:d5376759b909e800765704a5": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.inews24.com/view/2018901",
+      "source": "아이뉴스24",
+      "source_body_digest": "4e32b16b1d5ec38a5876caaa8be9ffa54723e9337af32187f3c7855a8cce6405",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ff2a75f5842b97473947136ee9c6356dbfa0a6714ec79794fe35d5aadd543be",
+      "source_fact_keys": [
+        "source_fact:v1:08082618be7aa1f45d636a89aa2b66156405a69704d83288cdfeb6a4b7e7ce6a",
+        "source_fact:v1:62e9f9b74873f2d94212def786d1cc8a092a054b7de5714c9bf0032ef69aa8df",
+        "source_fact:v1:903795315883332d184c7afc365be571f4b4d6de31924d33ea847a4e25b1e397",
+        "source_fact:v1:9f3494c028eed5df8be92e17d1610646f20b2cd85cabe31d7c094212e4c763d0",
+        "source_fact:v1:da279718d40812daab00e035d0850ea41c8163b189d3bee59c6f6c48b884ebf4"
+      ],
+      "source_published_kst": "2026-10-26T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각",
+      "telegram_core_fact": "SK하이닉스는 이날 키옥시아 지분 매각 차익을 활용한 16조원 특별배당 추진 보도와 관련해 해명공시를 내고 \"주주가치 제고를 위해 다양한 주주환원 방안을 검토하고 있으나 현재까지 확정된 사항은 없다\"고 밝혔다.",
+      "title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각"
     },
     "source_fact:d538675b96cf00c271894d88": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
@@ -1085812,6 +1086905,29 @@
       "telegram_core_fact": "이번 속도 저하는 트럼프와 머스크가 볼로디미르 젤렌스키 대통령이 러시아 디젤(경유) 정유소를 공격한 것에 대해 공개적으로 비판한 지 며칠 만에 시작됐다.",
       "title": "트럼프 요청에 머스크 '스타링크' 속도 제한 해제"
     },
+    "source_fact:d9e4fca1f879bdaf840c3aec": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12185285",
+      "source": "매일경제",
+      "source_body_digest": "fee5138c903445541725d55987866548ec6d49ccd01cef5c5982b58327fab800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f3b8966f606b6bc36f22f270fedfa7dae1aacd1315b5adf56d9a6663eb8086c",
+      "source_fact_keys": [
+        "source_fact:v1:07ab89fe518036d9afe59dbf64f94c84360fd45ea4e791fd3c8f104e66bc2394",
+        "source_fact:v1:2303c610ccb15d0eea14003037f6899bdc8e402d2b9683926e9f0253619ac136",
+        "source_fact:v1:470092632c88512a6a1131af409a0278ac5be10b451c2bd251dfd1e828898a94",
+        "source_fact:v1:87ed92e5f6c7109f3cee864c8098e16b4953541e85a70fa31ef893db8102bb70"
+      ],
+      "source_published_kst": "2026-10-25T18:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장",
+      "telegram_core_fact": "미생물군집(마이크로바이옴)으로 신약을 개발하는 바이오미(BioMe)의 윤상선 대표는 최근 매일경제와 만나 이르면 다음달부터 희귀질환인 ‘생선악취증후군’의 치료 후보물질 BM109를 유료로 공급할 계획이라고 밝혔다. 투자금에 의존할 수밖에 없는 신약 개발 단계에서 조기 매출을 확보해 연구개발을 이어가겠다는 전략이다.",
+      "title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장"
+    },
     "source_fact:d9e76f49723bc44bd91089e8": {
       "first_seen_kst": "2026-10-20T00:33:17+09:00",
       "lanes": {
@@ -1088061,6 +1089177,30 @@
       "source_title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등",
       "telegram_core_fact": "트럼프 대통령의 발언이 나온 이후 유가 상승폭은 일부 줄었지만, 중동의 원유 공급 불안이 이어지면서 국제유가는 결국 4% 넘게 오른 채 거래를 마쳤다.",
       "title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등"
+    },
+    "source_fact:dac52d6ad4aa0b0c9299418d": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.inews24.com/view/2018901",
+      "source": "아이뉴스24",
+      "source_body_digest": "4e32b16b1d5ec38a5876caaa8be9ffa54723e9337af32187f3c7855a8cce6405",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ff2a75f5842b97473947136ee9c6356dbfa0a6714ec79794fe35d5aadd543be",
+      "source_fact_keys": [
+        "source_fact:v1:08082618be7aa1f45d636a89aa2b66156405a69704d83288cdfeb6a4b7e7ce6a",
+        "source_fact:v1:62e9f9b74873f2d94212def786d1cc8a092a054b7de5714c9bf0032ef69aa8df",
+        "source_fact:v1:903795315883332d184c7afc365be571f4b4d6de31924d33ea847a4e25b1e397",
+        "source_fact:v1:9f3494c028eed5df8be92e17d1610646f20b2cd85cabe31d7c094212e4c763d0",
+        "source_fact:v1:da279718d40812daab00e035d0850ea41c8163b189d3bee59c6f6c48b884ebf4"
+      ],
+      "source_published_kst": "2026-10-26T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각",
+      "telegram_core_fact": "SK하이닉스는 이날 키옥시아 지분 매각 차익을 활용한 16조원 특별배당 추진 보도와 관련해 해명공시를 내고 \"주주가치 제고를 위해 다양한 주주환원 방안을 검토하고 있으나 현재까지 확정된 사항은 없다\"고 밝혔다.",
+      "title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각"
     },
     "source_fact:dac55cc77cc04d45bcc35bfa": {
       "first_seen_kst": "2026-10-24T20:02:24+09:00",
@@ -1091958,6 +1093098,29 @@
       "source_title": "비타 코코 컴퍼니, 3분기 매출 2억4400만 달러..연간 전망 상향",
       "telegram_core_fact": "비타 코코 컴퍼니(COCO)는 올해 3분기(7~9월) 매출액이 2억4380만 달러로 전년비 34% 증가했고, 순이익은 3500만 달러로 46% 늘었으며 희석 주당순이익은 0.58달러로 전년 동기 0.40달러에서 증가했다고 10월 22일 발표했다.",
       "title": "비타 코코 컴퍼니, 3분기 매출 2억4400만 달러..연간 전망 상향"
+    },
+    "source_fact:dcab4a1a596a7327d1e1e512": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12185285",
+      "source": "매일경제",
+      "source_body_digest": "fee5138c903445541725d55987866548ec6d49ccd01cef5c5982b58327fab800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f3b8966f606b6bc36f22f270fedfa7dae1aacd1315b5adf56d9a6663eb8086c",
+      "source_fact_keys": [
+        "source_fact:v1:07ab89fe518036d9afe59dbf64f94c84360fd45ea4e791fd3c8f104e66bc2394",
+        "source_fact:v1:2303c610ccb15d0eea14003037f6899bdc8e402d2b9683926e9f0253619ac136",
+        "source_fact:v1:470092632c88512a6a1131af409a0278ac5be10b451c2bd251dfd1e828898a94",
+        "source_fact:v1:87ed92e5f6c7109f3cee864c8098e16b4953541e85a70fa31ef893db8102bb70"
+      ],
+      "source_published_kst": "2026-10-25T18:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장",
+      "telegram_core_fact": "미생물군집(마이크로바이옴)으로 신약을 개발하는 바이오미(BioMe)의 윤상선 대표는 최근 매일경제와 만나 이르면 다음달부터 희귀질환인 ‘생선악취증후군’의 치료 후보물질 BM109를 유료로 공급할 계획이라고 밝혔다. 투자금에 의존할 수밖에 없는 신약 개발 단계에서 조기 매출을 확보해 연구개발을 이어가겠다는 전략이다.",
+      "title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장"
     },
     "source_fact:dcad51ad28124df9941f271d": {
       "first_seen_kst": "2026-10-15T02:27:03+09:00",
@@ -1115359,6 +1116522,30 @@
       "telegram_core_fact": "터톤 캐피탈에 따르면 오리온의 식품사업은 약 22%의 자기자본이익률(ROE)을 기록하고 있지만, 중앙일보 인수는 상각전영업이익(EBITDA)의 약 23배를 지급하면서 세전 수익률은 4% 수준에 그치는 거래다.",
       "title": "오리온, 중앙일보 인수 추진에 주주 반발…해외 투자사도 \"즉각 중단\" 요구"
     },
+    "source_fact:e5dc1ef371adeecb9389444e": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.fnnews.com/news/202610261620229507",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "957f0a728887642e15244e93b1902bce431e410a3b0e4e8593620c51b2c593fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cbd338e78792688bb440d09ffc0747efd3866a15ab525bac079acdbf17f28b4",
+      "source_fact_keys": [
+        "source_fact:v1:0f5d26dc6096855446cc2c6b0b32b8dbfca507033d796c6081ad0cc742af085b",
+        "source_fact:v1:2960de8d6dcc97b486ff22fccf8d24fc39fe5b66eb0fde34389dbd95dceaa5bc",
+        "source_fact:v1:43115d8e09412affaaa014423015e27da16cffbbc8271f51adb341ef3502ee7d",
+        "source_fact:v1:51e0f573aafb76ef4e4bb601b03a76459b63698a4ed42f899a0f25bfe6f6e5d5",
+        "source_fact:v1:abd9f762dd0b7ff048fbdd40ae0249b6804752082401ee6677e2c10445647776"
+      ],
+      "source_published_kst": "2026-10-26T16:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장",
+      "telegram_core_fact": "하나자산운용은 오는 27일 '1Q 미국AI테크플랫폼TOP10 ETF'를 신규 상장한다고 26일 밝혔다.",
+      "title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장"
+    },
     "source_fact:e5ddaba32393d058175e5f39": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
       "lanes": {
@@ -1128416,6 +1129603,30 @@
       "source_title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가",
       "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 순이익이 20억9700만 달러로 전년비 15.1% 증가했고, 일반회계기준(GAAP) 희석 주당순이익(EPS)은 4.97달러로 전년 동기(4.35달러)보다 14.3% 늘었다고 10월 15일 발표했다.",
       "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
+    },
+    "source_fact:eb3854d2a673b5d185bcc4f0": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.fnnews.com/news/202610261620229507",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "957f0a728887642e15244e93b1902bce431e410a3b0e4e8593620c51b2c593fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cbd338e78792688bb440d09ffc0747efd3866a15ab525bac079acdbf17f28b4",
+      "source_fact_keys": [
+        "source_fact:v1:0f5d26dc6096855446cc2c6b0b32b8dbfca507033d796c6081ad0cc742af085b",
+        "source_fact:v1:2960de8d6dcc97b486ff22fccf8d24fc39fe5b66eb0fde34389dbd95dceaa5bc",
+        "source_fact:v1:43115d8e09412affaaa014423015e27da16cffbbc8271f51adb341ef3502ee7d",
+        "source_fact:v1:51e0f573aafb76ef4e4bb601b03a76459b63698a4ed42f899a0f25bfe6f6e5d5",
+        "source_fact:v1:abd9f762dd0b7ff048fbdd40ae0249b6804752082401ee6677e2c10445647776"
+      ],
+      "source_published_kst": "2026-10-26T16:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장",
+      "telegram_core_fact": "하나자산운용은 오는 27일 '1Q 미국AI테크플랫폼TOP10 ETF'를 신규 상장한다고 26일 밝혔다.",
+      "title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장"
     },
     "source_fact:eb39b85a95a1790446d405eb": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -1143375,6 +1144586,29 @@
       "source_title": "日정부, 반도체 기업 라피더스에 3조3000억원 추가 투입",
       "telegram_core_fact": "일본 정부가 자국의 첨단 반도체 업체 라피더스에 4000억 엔(약 3조3500억 원)을 추가 투입하기로 했다. 일본 정부는 라피더스에 2026년까지 총 2500억 엔을 출자했으며, 2027년 예산 개산요구안에는 추가 출자금으로 1500억 엔을 반영했다.",
       "title": "日정부, 반도체 기업 라피더스에 3조3000억원 추가 투입"
+    },
+    "source_fact:f142e4089841877538a5dfe9": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12185285",
+      "source": "매일경제",
+      "source_body_digest": "fee5138c903445541725d55987866548ec6d49ccd01cef5c5982b58327fab800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f3b8966f606b6bc36f22f270fedfa7dae1aacd1315b5adf56d9a6663eb8086c",
+      "source_fact_keys": [
+        "source_fact:v1:07ab89fe518036d9afe59dbf64f94c84360fd45ea4e791fd3c8f104e66bc2394",
+        "source_fact:v1:2303c610ccb15d0eea14003037f6899bdc8e402d2b9683926e9f0253619ac136",
+        "source_fact:v1:470092632c88512a6a1131af409a0278ac5be10b451c2bd251dfd1e828898a94",
+        "source_fact:v1:87ed92e5f6c7109f3cee864c8098e16b4953541e85a70fa31ef893db8102bb70"
+      ],
+      "source_published_kst": "2026-10-25T18:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장",
+      "telegram_core_fact": "미생물군집(마이크로바이옴)으로 신약을 개발하는 바이오미(BioMe)의 윤상선 대표는 최근 매일경제와 만나 이르면 다음달부터 희귀질환인 ‘생선악취증후군’의 치료 후보물질 BM109를 유료로 공급할 계획이라고 밝혔다. 투자금에 의존할 수밖에 없는 신약 개발 단계에서 조기 매출을 확보해 연구개발을 이어가겠다는 전략이다.",
+      "title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장"
     },
     "source_fact:f145fe735fc7e38d7d34a4d1": {
       "first_seen_kst": "2026-10-18T13:51:17+09:00",
@@ -1160247,6 +1161481,29 @@
       "source_title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\"",
       "telegram_core_fact": "키움증권이 LG디스플레이에 대해 낮은 환율과 칩플레이션(반도체 가격 상승) 등으로 비우호적인 대외환경이 이어지고 있으나 주요 거래선향 물량을 바탕으로 향후 반등 여건을 갖춰나가고 있다며, 투자의견 '매수'를 유지하고 목표주가는 1만1000원으로 유지했다.",
       "title": "키움證 \"LG디스플레이, 칩플레이션·환율 여파 겪지만…북미 물량 기반 흑자 기조 기대\""
+    },
+    "source_fact:f8e018e00339fb3b08396da4": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.hankyung.com/article/202610265752i",
+      "source": "한국경제",
+      "source_body_digest": "818551fa5db0cc65c5e0904f44686a472b542b594c821452e7259a24e7a3bbbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:187ff64ce8b244462e0b2c81be5ba8ad14a487b750686c890ea1f300b58dfa21",
+      "source_fact_keys": [
+        "source_fact:v1:54020c2e7782c274c9911293738e8eeddb18a446d37942e6917c32aa52eb19a7",
+        "source_fact:v1:679969651e3111ca9525d9e1598e6f96ba9b38fdd19a63c9a6d53c0c62b2e906",
+        "source_fact:v1:d74247db899dc62a51f9eed756de6fb9847eba8d0a3a47826a9b46a8d8221243",
+        "source_fact:v1:ececb51f28716eabad1333e6d19e23517a8a7b8f5e69bfd69780ceee28673300"
+      ],
+      "source_published_kst": "2026-10-26T16:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅",
+      "telegram_core_fact": "한국투자신탁운용에 따르면 중국 차이나유니버설자산운용 홍콩법인(CUAM HK), 만든 ‘CUAM 솔액티브 차이나&글로벌 세미컨덕터 ETF’가 지난 23일 홍콩증권거래소에 상장했다.",
+      "title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅"
     },
     "source_fact:f8e19832ae08eea77afee0fa": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
@@ -1180271,6 +1181528,27 @@
       "telegram_core_fact": "현재 국토부 규제샌드박스 승인을 받아 서울 강남·서초·송파·강동구에서 약 80대 규모로 운영 중인 전기 이륜차 LED 배달통 광고 실증사업도 민관협력 사례로 발전시킬 계획이다.",
       "title": "배민, ‘K-GX’ 프로젝트 참여…전기 이륜차 보급 확대 나선다"
     },
+    "title:04982647e08fc4f125c6d40b": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026085800527",
+      "source": "연합뉴스",
+      "source_body_digest": "b2e9cf05cb489f84192a2f6e0e6cb86c1b451ed8a5ffdae422913a5599392fd8",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3f5e5f6ba2aec767a1125f74e0ee171f82587d4fcc75888c8b4da797702270f7",
+      "source_fact_identity": "source_facts:v1:406d125248e5e59df4d094808c81ba35c65ea762e65cd9049e9a271c00b4a83f",
+      "source_fact_keys": [
+        "source_fact:v1:38477d9814e0ad5febe8b06741482ee2ee00db7ca781d2d571cc216d42f2ef25",
+        "source_fact:v1:90515e2e63346e8b537f7449b4ccc94f3e2c1f4c3d6fb28bb9fb5e6005d2e546"
+      ],
+      "source_published_kst": "2026-10-26T12:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 연결 기준 올해 3분기 영업이익이 2천395억원으로 지난해 동기보다 37% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK금융지주 3분기 영업이익 2천395억원…작년 동기 대비 37%↓ | 연합뉴스"
+    },
     "title:0499a84873dee46a5bf463f0": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -1188875,6 +1190153,29 @@
       "telegram_core_fact": "현지언론에서는 트럼프 행정부가 유럽의 러시아산 천연가스 수입 재개 등 대러제재 완화를 마중물로 삼아 교착에 빠진 종전협상의 물꼬를 트려고 한다는 보도도 나오고 있다.",
       "title": "트럼프, 대러제재 관련해 \"미국·세계에 좋은 결정 있을 것\" | 연합뉴스"
     },
+    "title:1405e8ca0c2e381ce3a349b4": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12185285",
+      "source": "매일경제",
+      "source_body_digest": "fee5138c903445541725d55987866548ec6d49ccd01cef5c5982b58327fab800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f3b8966f606b6bc36f22f270fedfa7dae1aacd1315b5adf56d9a6663eb8086c",
+      "source_fact_keys": [
+        "source_fact:v1:07ab89fe518036d9afe59dbf64f94c84360fd45ea4e791fd3c8f104e66bc2394",
+        "source_fact:v1:2303c610ccb15d0eea14003037f6899bdc8e402d2b9683926e9f0253619ac136",
+        "source_fact:v1:470092632c88512a6a1131af409a0278ac5be10b451c2bd251dfd1e828898a94",
+        "source_fact:v1:87ed92e5f6c7109f3cee864c8098e16b4953541e85a70fa31ef893db8102bb70"
+      ],
+      "source_published_kst": "2026-10-25T18:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장",
+      "telegram_core_fact": "미생물군집(마이크로바이옴)으로 신약을 개발하는 바이오미(BioMe)의 윤상선 대표는 최근 매일경제와 만나 이르면 다음달부터 희귀질환인 ‘생선악취증후군’의 치료 후보물질 BM109를 유료로 공급할 계획이라고 밝혔다. 투자금에 의존할 수밖에 없는 신약 개발 단계에서 조기 매출을 확보해 연구개발을 이어가겠다는 전략이다.",
+      "title": "“몸에서 생선 썩은 내가 나요”…일상생활 어려운 희귀질환, K바이오서 도전장"
+    },
     "title:140718df4038e3689d0422e0": {
       "first_seen_kst": "2026-10-20T21:25:35+09:00",
       "lanes": {
@@ -1194292,6 +1195593,29 @@
       "link": "https://www.yna.co.kr/view/AKR20260920036700009",
       "source": "연합뉴스",
       "title": "CXMT, 5세대 D램 공정 양산 돌입…삼성·하이닉스 추격 가속 | 연합뉴스"
+    },
+    "title:1d331ad2d719ed573f062dd8": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.hankyung.com/article/202610265752i",
+      "source": "한국경제",
+      "source_body_digest": "818551fa5db0cc65c5e0904f44686a472b542b594c821452e7259a24e7a3bbbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:187ff64ce8b244462e0b2c81be5ba8ad14a487b750686c890ea1f300b58dfa21",
+      "source_fact_keys": [
+        "source_fact:v1:54020c2e7782c274c9911293738e8eeddb18a446d37942e6917c32aa52eb19a7",
+        "source_fact:v1:679969651e3111ca9525d9e1598e6f96ba9b38fdd19a63c9a6d53c0c62b2e906",
+        "source_fact:v1:d74247db899dc62a51f9eed756de6fb9847eba8d0a3a47826a9b46a8d8221243",
+        "source_fact:v1:ececb51f28716eabad1333e6d19e23517a8a7b8f5e69bfd69780ceee28673300"
+      ],
+      "source_published_kst": "2026-10-26T16:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅",
+      "telegram_core_fact": "한국투자신탁운용에 따르면 중국 차이나유니버설자산운용 홍콩법인(CUAM HK), 만든 ‘CUAM 솔액티브 차이나&글로벌 세미컨덕터 ETF’가 지난 23일 홍콩증권거래소에 상장했다.",
+      "title": "한투운용, 홍콩 ETF 첫발…중국 반도체에 60% 베팅"
     },
     "title:1d3b1b4e57e706e4d7ce1d0e": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
@@ -1220576,6 +1221900,26 @@
       "telegram_core_fact": "국내 메모리 반도체 업체들의 HBM 생산량이 늘어날수록 일본 소부장 기업들의 수주도 늘어나는 상호보완적 구조인 동시에, 양국의 소부장 기업 간 주도권 다툼도 한층 치열해지고 있다는 이유에서다.",
       "title": "토스증권 리서치센터 “AI 시대, 일본 반도체 소부장의 저력 조명”"
     },
+    "title:47c11e4071577bc1aa87d322": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841036",
+      "source": "뉴시스",
+      "source_body_digest": "152748c1be3fc5c226c162aa75695649b1c56d02d7abfff68b31220bd53b89d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:548f973b58b784e0c55a2514d1fc16db8c58c5c2f43fa18a422adc46f430d18c",
+      "source_fact_keys": [
+        "source_fact:v1:41a18ca5e5f03cfa7cfd8c6002035dab998c9f8c4e5e0d8076035538c1ccad24"
+      ],
+      "source_published_kst": "2026-10-26T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범",
+      "telegram_core_fact": "제주자치경찰단은 감귤 수확철을 맞아 농가의 결실을 지키고 농산물 절도를 막기 위해 '감귤 수확기 맞춤형 특별방범 순찰'을 추진한다고 26일 밝혔다. 자치경찰에 따르면 올해 노지감귤 생산량은 44만3000t 안팎으로 지난해보다 7.8% 증가한 것으로 나타났다.",
+      "title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범"
+    },
     "title:47c9f994f36d32480d6f9558": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -1239806,6 +1241150,30 @@
       "source_published_kst": "2026-10-07T05:22+09:00",
       "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
     },
+    "title:68b370dcee8a1a715a7de4f5": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.fnnews.com/news/202610261620229507",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "957f0a728887642e15244e93b1902bce431e410a3b0e4e8593620c51b2c593fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cbd338e78792688bb440d09ffc0747efd3866a15ab525bac079acdbf17f28b4",
+      "source_fact_keys": [
+        "source_fact:v1:0f5d26dc6096855446cc2c6b0b32b8dbfca507033d796c6081ad0cc742af085b",
+        "source_fact:v1:2960de8d6dcc97b486ff22fccf8d24fc39fe5b66eb0fde34389dbd95dceaa5bc",
+        "source_fact:v1:43115d8e09412affaaa014423015e27da16cffbbc8271f51adb341ef3502ee7d",
+        "source_fact:v1:51e0f573aafb76ef4e4bb601b03a76459b63698a4ed42f899a0f25bfe6f6e5d5",
+        "source_fact:v1:abd9f762dd0b7ff048fbdd40ae0249b6804752082401ee6677e2c10445647776"
+      ],
+      "source_published_kst": "2026-10-26T16:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장",
+      "telegram_core_fact": "하나자산운용은 오는 27일 '1Q 미국AI테크플랫폼TOP10 ETF'를 신규 상장한다고 26일 밝혔다.",
+      "title": "알파벳·MS·아마존 한 번에…하나운용, AI 플랫폼 ETF 상장"
+    },
     "title:68b814169a5ff7c7855c97d0": {
       "first_seen_kst": "2026-10-23T06:00:11+09:00",
       "lanes": {
@@ -1255739,6 +1257107,29 @@
       "source_title": "라온피플, 3분기 누적 영업익 12억…전년比 흑자 전환",
       "telegram_core_fact": "인공지능(AI) 전문기업 라온피플은 별도재무제표 기준 3분기 누적 영업이익이 11억8000만원을 기록해 전년비 흑자 전환했다고 21일 공시했다.",
       "title": "라온피플, 3분기 누적 영업익 12억…전년比 흑자 전환"
+    },
+    "title:8422943b88041b00896b86ef": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/26/2026102616444630690",
+      "source": "머니투데이",
+      "source_body_digest": "0d27941f0989edc32eed258c4cd1feb19c69a7e2a88bf7a26d1d4be46b117614",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68d19ac8945ce93a71ea3960b5478573bda02e264c1f0c58ec8a9148d7e243a7",
+      "source_fact_keys": [
+        "source_fact:v1:5a6caf3d5c680671cbf4f7211cf8933e4a5d96dcada8e336d07551cc47be21b9",
+        "source_fact:v1:8c4afc77c16c9d714c2e6124f03f2d280a2a35d14bb8f494a5424044e3b85607",
+        "source_fact:v1:91c42a724031162c1fe16beb7bde4d15f7102955abbca7af3e13e7d86abd471e",
+        "source_fact:v1:ca4a21a8adc4509a9674754150289a8c207912fd017d57a80fa3e3f56c7a1700"
+      ],
+      "source_published_kst": "2026-10-26T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다",
+      "telegram_core_fact": "국민연금이 지분 5% 이상을 보유한 상장사 287곳의 주식 평가액도 6월 말 515조9293억원에서 10월15일 333조5330억원으로 182조3963억원 줄어든 것으로 관측된다.보유주식 평가액이 급감하면서 국민연금이 매도 속도를 높여 위험을 분산했어야 한다는 비판으로 이어졌다.",
+      "title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다"
     },
     "title:8425ebc67d115f27824c42da": {
       "first_seen_kst": "2026-10-25T11:31:11+09:00",
@@ -1313787,6 +1315178,30 @@
       "source": "이데일리",
       "title": "투모로로보틱스, 스케일업 팁스 선정…피지컬 AI 상용화 속도"
     },
+    "title:e663666c94100701032ef6d3": {
+      "first_seen_kst": "2026-10-26T17:12:13+09:00",
+      "lanes": {
+        "live": "2026-10-26T17:12:13+09:00"
+      },
+      "last_seen_kst": "2026-10-26T17:12:13+09:00",
+      "link": "https://www.inews24.com/view/2018901",
+      "source": "아이뉴스24",
+      "source_body_digest": "4e32b16b1d5ec38a5876caaa8be9ffa54723e9337af32187f3c7855a8cce6405",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ff2a75f5842b97473947136ee9c6356dbfa0a6714ec79794fe35d5aadd543be",
+      "source_fact_keys": [
+        "source_fact:v1:08082618be7aa1f45d636a89aa2b66156405a69704d83288cdfeb6a4b7e7ce6a",
+        "source_fact:v1:62e9f9b74873f2d94212def786d1cc8a092a054b7de5714c9bf0032ef69aa8df",
+        "source_fact:v1:903795315883332d184c7afc365be571f4b4d6de31924d33ea847a4e25b1e397",
+        "source_fact:v1:9f3494c028eed5df8be92e17d1610646f20b2cd85cabe31d7c094212e4c763d0",
+        "source_fact:v1:da279718d40812daab00e035d0850ea41c8163b189d3bee59c6f6c48b884ebf4"
+      ],
+      "source_published_kst": "2026-10-26T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각",
+      "telegram_core_fact": "SK하이닉스는 이날 키옥시아 지분 매각 차익을 활용한 16조원 특별배당 추진 보도와 관련해 해명공시를 내고 \"주주가치 제고를 위해 다양한 주주환원 방안을 검토하고 있으나 현재까지 확정된 사항은 없다\"고 밝혔다.",
+      "title": "키옥시아 매각 차익 20조...SK하이닉스 '16조 특별배당' 촉각"
+    },
     "title:e66c45f387086882a1c0d9d4": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
       "lanes": {
@@ -1328306,5 +1329721,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-26T16:36:06+09:00"
+  "updated_at_kst": "2026-10-26T17:12:13+09:00"
 }
