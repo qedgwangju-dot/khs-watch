@@ -1019,6 +1019,53 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertFalse(w.CHINA_DRAM_CYCLE_BASELINE["cxmt_hbm3_official_customer_qualification"])
         self.assertFalse(w.CHINA_DRAM_CYCLE_BASELINE["cxmt_4f2_rdimm_official_mass_production"])
 
+    def test_cxmt_apple_and_taiwan_ddr5_news_have_separate_evidence_status(self):
+        b=w.CHINA_DRAM_CYCLE_BASELINE
+        self.assertEqual(b["cxmt_apple_discount_refusal_first_report_date"],"2026-08-05")
+        self.assertTrue(b["cxmt_taiwan_ddr5_refusal_press_reported"])
+        self.assertFalse(b["cxmt_taiwan_ddr5_customer_named"])
+        self.assertFalse(b["cxmt_taiwan_ddr5_refusal_official_confirmed"])
+        self.assertFalse(b["cxmt_apple_discount_refusal_official_confirmed"])
+        self.assertFalse(b["cxmt_domestic_allocation_policy_official_confirmed"])
+        self.assertEqual(b["cxmt_now_wafer_per_month_industry_est"],320000)
+        self.assertEqual(b["cxmt_2027_wafer_per_month_industry_est"],420000)
+
+    def test_cxmt_taiwan_republications_do_not_create_confirmed_contracts(self):
+        for url in (
+            "https://finance.ifeng.com/c/8xX3tRT7vfr",
+            "https://wccftech.com/cxmt-dram-pricing-apple-china-self-sufficiency/",
+            "https://cxmt.com.evil.example/news/fake",
+        ):
+            item={"title":"CXMT refused Taiwanese server DDR5 order",
+                  "description":"CXMT rejected Apple cheaper memory quote.",
+                  "link":url,"source":"Wccftech","published_kst":"2026-10-26T10:09:23+09:00"}
+            self.assertEqual(w._cxmt_official_foreign_allocation_status(item),{})
+            self.assertIsNone(w._extract_china_dram_cycle(item))
+        self.assertFalse(w.CHINA_DRAM_CYCLE_BASELINE["cxmt_taiwan_ddr5_refusal_official_confirmed"])
+
+    def test_cxmt_direct_taiwan_ddr5_statement_has_distinct_once_only_change(self):
+        direct={"title":"CXMT officially confirmed refused Taiwanese server DDR5 order",
+                "description":"CXMT says domestic Chinese customers receive priority allocation.",
+                "link":"https://www.cxmt.com/en/news/official_example.html",
+                "source":"CXMT","published_kst":"2026-10-27T10:00:00+09:00"}
+        obs=w._extract_china_dram_cycle(direct)
+        self.assertTrue(obs["cxmt_taiwan_ddr5_refusal_official_confirmed"])
+        self.assertTrue(obs["cxmt_domestic_allocation_policy_official_confirmed"])
+        updated=w._merge_typed_state(w.CHINA_DRAM_CYCLE_BASELINE, obs)
+        changes=w._china_dram_cycle_changes(w.CHINA_DRAM_CYCLE_BASELINE,updated)
+        self.assertTrue(any("대만 서버" in x for x in changes))
+        self.assertEqual(w._china_dram_cycle_changes(updated,updated),[])
+        self.assertFalse(updated["cxmt_apple_discount_refusal_official_confirmed"])
+
+    def test_cxmt_xiaomi_lpddr6_does_not_prove_apple_customer(self):
+        page={"title":"CXMT LPDDR6 mass production for Xiaomi 18 Fold",
+              "description":"16GB LPDDR6 for XRING O3",
+              "link":"https://www.cxmt.com/en/news/info_21.html",
+              "source":"CXMT","published_kst":"2026-09-07T10:00:00+09:00"}
+        self.assertEqual(w._cxmt_official_foreign_allocation_status(page),{})
+        self.assertTrue(w.CHINA_DRAM_CYCLE_BASELINE["cxmt_lpddr6_xiaomi_18fold_official_mass_production"])
+
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \

@@ -339,6 +339,17 @@ CHINA_DRAM_CYCLE_BASELINE = {
     "cxmt_now_wafer_per_month_industry_est": 320000,
     "cxmt_2027_wafer_per_month_industry_est": 420000,
     "cxmt_capacity_estimate_official": False,
+    "cxmt_apple_discount_refusal_first_report_date": "2026-08-05",
+    "cxmt_apple_discount_refusal_official_confirmed": False,
+    "cxmt_taiwan_ddr5_refusal_press_reported": True,
+    "cxmt_taiwan_ddr5_customer_named": False,
+    "cxmt_taiwan_ddr5_refusal_official_confirmed": False,
+    "cxmt_domestic_allocation_policy_official_confirmed": False,
+    "cxmt_taiwan_ddr5_press_root": "https://wccftech.com/cxmt-dram-pricing-apple-china-self-sufficiency/",
+    "cxmt_taiwan_ddr5_syndication": "https://finance.ifeng.com/c/8xX3tRT7vfr",
+    "cxmt_lpddr6_xiaomi_18fold_official_mass_production": True,
+    "cxmt_lpddr6_16gb_source": "https://www.cxmt.com/en/news/info_21.html",
+    "cxmt_overseas_ddr5_refusal_status": "단일 정보원 업계 보도, 익명 대만 업체 및 거절 사유 미확인",
     "ark_quote_url": "https://www.stheadline.com/realtime-finance/3625651/",
     "cxmt_g5_official_url": "https://www.cxmt.com/en/news/info_22.html",
     "cxmt_4f2_report_url": "https://www.trendforce.com/news/2026/10/12/news-cxmt-accelerates-4f%C2%B2-dram-push-eyes-year-end-server-ddr5-rdimm-launch/",
@@ -376,6 +387,9 @@ QUERIES = [
     ("ko", '캐시 우드 ARK 중국 CXMT DRAM 메모리 공급과잉 홍콩 10월 13일'),
     ("ko", '창신메모리 CXMT 4F² 서버 DDR5 RDIMM 실제 양산 고객 검증 2027'),
     ("ko", 'CXMT DRAM 웨이퍼 월 생산능력 2027 32만 42만 4F2'),
+    ("ko", 'CXMT 창신메모리 대만 서버 DDR5 주문 거절 공식 확인 고객 실명'),
+    ("en", 'CXMT Taiwanese server maker DDR5 rejected confirmed order domestic allocation'),
+    ("en", 'CXMT Apple quote refusal 2026 independent confirmation supplier allocation'),
     ("ko", '노트북 출하량 전망 2027 CPU DRAM SSD 가격 원가 전가 TrendForce 소비 수요'),
     ("ko", '중국 메모리 품귀 폐휴대폰 재활용 칩 화창베이 스마트폰 제조사'),
     ("ko", '중국 선전 화창베이 회수 메모리칩 제조사 공식 구매 확인 품질 불량'),
@@ -2758,10 +2772,39 @@ def _china_dram_cycle_rank(item: dict) -> int:
 
 def _is_china_dram_cycle_item(item: dict) -> bool:
     text = _clean(f"{item.get('title', '')} {item.get('description', '')}").lower()
-    company = any(x in text for x in ("cxmt", "changxin", "长鑫", "창신메모리"))
+    company = any(x in text for x in ("cxmt", "changxin", "长鑫", "長鑫", "창신메모리"))
     investor = any(x in text for x in ("cathie wood", "캐시 우드", "ark invest"))
     product = any(x in text for x in ("dram", "ddr5", "hbm", "memory", "메모리", "4f²", "4f2", "4f square"))
     return product and (company or investor)
+
+
+def _cxmt_official_foreign_allocation_status(item: dict) -> dict:
+    """Confirm new export-allocation facts only in CXMT's own direct releases."""
+    host = (urllib.parse.urlparse(str(item.get("link") or "")).hostname or "").lower()
+    if not (host == "cxmt.com" or host.endswith(".cxmt.com")):
+        return {}
+    content = _clean(str(item.get("title") or "")) + ". " + _clean(str(item.get("description") or ""))
+    obs: dict = {}
+    for clause in re.split(r"[.!?;。；\n]+", content):
+        low = clause.lower()
+        if len(clause) > 450 or not any(
+            x in low for x in ("cxmt", "changxin", "长鑫", "長鑫", "창신메모리")
+        ):
+            continue
+        refusal = any(x in low for x in ("refused", "rejected", "declined",
+                                         "拒绝", "拒單", "拒单", "거절"))
+        if (refusal and "ddr5" in low
+                and any(x in low for x in ("taiwan", "taiwanese", "台湾", "臺灣", "대만"))
+                and any(x in low for x in ("server", "服务器", "伺服器", "서버"))):
+            obs["cxmt_taiwan_ddr5_refusal_official_confirmed"] = True
+        if (refusal and any(x in low for x in ("apple", "苹果", "애플"))
+                and any(x in low for x in ("price", "discount", "报价", "降价", "压价", "단가", "할인"))):
+            obs["cxmt_apple_discount_refusal_official_confirmed"] = True
+        if (any(x in low for x in ("domestic", "chinese customers", "中国客户", "国内客户", "중국 고객"))
+                and any(x in low for x in ("priority allocation", "prioritize", "allocation policy",
+                                            "优先分配", "优先供货", "우선 배정", "우선 공급"))):
+            obs["cxmt_domestic_allocation_policy_official_confirmed"] = True
+    return obs
 
 
 def _extract_china_dram_cycle(item: dict) -> dict | None:
@@ -2773,7 +2816,7 @@ def _extract_china_dram_cycle(item: dict) -> dict | None:
     official = host == "cxmt.com" or host.endswith(".cxmt.com")
     cxmt = any(k in low for k in ("cxmt", "changxin", "长鑫", "창신메모리"))
     ark = any(k in low for k in ("cathie wood", "캐시 우드", "ark invest"))
-    obs: dict = {}
+    obs: dict = _cxmt_official_foreign_allocation_status(item)
     if ark and any(k in low for k in (
         "avoids traditional memory", "avoiding traditional memory",
         "steers clear of traditional memory", "메모리 업체를 회피",
@@ -2830,6 +2873,9 @@ def _china_dram_cycle_changes(old: dict, new: dict) -> list[str]:
         ("cxmt_g5_lpddr5x_official_mass_production", "CXMT G5 LPDDR5X 양산"),
         ("cxmt_4f2_rdimm_official_mass_production", "CXMT 4F² 서버 RDIMM 양산"),
         ("cxmt_hbm3_official_customer_qualification", "CXMT HBM3 고객 승인"),
+        ("cxmt_apple_discount_refusal_official_confirmed", "CXMT·애플 가격 거절: 회사 공식 확인"),
+        ("cxmt_taiwan_ddr5_refusal_official_confirmed", "CXMT의 대만 서버 DDR5 주문 거절: 회사 공식 확인"),
+        ("cxmt_domestic_allocation_policy_official_confirmed", "CXMT 중국 내수 우선 공급정책: 회사 공식 확인"),
     ):
         if new.get(key) is True and old.get(key) is not True:
             changes.append(label + ": 공식 확인")
@@ -4162,6 +4208,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         )
         lines.append(
             "  CXMT HBM3: 연구·검증 단계. 고객 승인·양산·HBM 매출 확인 전 기존 3사와 직접 동급으로 계산 금지"
+        )
+        lines.append(
+            "  근거 구분: 애플 단가 인하 거절은 8월 5일 보도의 재인용. 대만 서버 업체 DDR5 거절은"
+            " 10월 25일 Wccftech 단일 정보원 보도이고 ifeng는 재인용."
+            " 상대방 실명·계약금액·정부 지시 여부는 공식 미확인"
         )
         a = china_cycle_state.get("cxmt_now_wafer_per_month_industry_est")
         b = china_cycle_state.get("cxmt_2027_wafer_per_month_industry_est")
