@@ -229,5 +229,33 @@ class TechEtfProxyTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError,"malformed"):
             w.load_state(self.state)
 
+    def test_old_composite_receipt_upgrades_to_per_signal_keys(self):
+        prior=prior_state()
+        prior["last_alert"]={"alert_key":"2026-10-21|IYW 발행좌수 당일 +1% 이상|SOXX 발행좌수 당일 -1% 이하",
+                             "message_id":1284}
+        keys=w.previously_sent_signal_keys(prior)
+        self.assertIn("2026-10-21|IYW 발행좌수 당일 +1% 이상",keys)
+        self.assertIn("2026-10-21|SOXX 발행좌수 당일 -1% 이하",keys)
+
+    def test_duplicate_does_not_need_second_fx_or_second_send(self):
+        prior=prior_state()
+        prior["last_alert"]={"alert_key":"2026-10-21|IYW 발행좌수 당일 +1% 이상","message_id":1284}
+        w.save_state(prior,self.state)
+        with patch.object(w.ishares,"get_usdkrw",side_effect=RuntimeError("fx offline")) as fx, patch.object(w,"send_exact") as send:
+            result=w.run(state_path=self.state,getter=lambda now:snap())
+        self.assertEqual(result["status"],"duplicate_suppressed")
+        fx.assert_not_called()
+        send.assert_not_called()
+
+    def test_converted_per_signal_state_blocks_repeat_of_older_signal(self):
+        prior=prior_state()
+        prior["sent_signal_keys"]=["2026-10-21|IYW 발행좌수 당일 +1% 이상"]
+        w.save_state(prior,self.state)
+        with patch.object(w,"send_exact") as send:
+            result=w.run(state_path=self.state,getter=lambda now:snap())
+        self.assertEqual(result["status"],"duplicate_suppressed")
+        send.assert_not_called()
+
+
 if __name__=="__main__":
     unittest.main()
