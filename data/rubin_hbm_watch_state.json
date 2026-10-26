@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-26T17:01:23+09:00",
+  "updated_at_kst": "2026-10-27T00:23:53+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -17,6 +17,7 @@
     "11b0887a69d7d15b6128314d",
     "1202365a1778261a06c785b3",
     "128e2c1a79000b5cc361d4e6",
+    "13f96efe731aca32f088e790",
     "160b71780027009949391286",
     "171462b92b4f33a8c0aab2b6",
     "1914475064f5fc1fb3b5041f",
@@ -117,6 +118,7 @@
     "7c4fab38f3ac9aeca880db5a",
     "7e3036adf1559a2f0b773ca9",
     "7ec329ad054e1250a990a70f",
+    "7ed837d03c65d3bac0cb8487",
     "803642bbab38b08bd4211a9d",
     "817f217f23561cc348f4159b",
     "85957bb968971de6dd69c14f",
@@ -173,6 +175,7 @@
     "bb3a941f15a9af91d4135098",
     "bc36972bfd79436e7ad41fd1",
     "bc729f22764a877ce9ee7d93",
+    "bcaa1be884582f7a30d54f7f",
     "bdc3ea73dd7176bfb58bfea1",
     "c0f6a791c6182ed3a1771a7b",
     "c1b542c6c9cf3b1e5f5eec1a",
@@ -268,17 +271,20 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 3,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1324.45,
-    "date": "2026-10-23 일일 기준 · ECB/Frankfurter · 조회 2026-10-26 17:01 KST · 보조 API 2026-10-26 · 차이 0.04% · 일중 기준시각 차이 가능",
+    "rate": 1325.28,
+    "date": "2026-10-26 일일 기준 · ECB/Frankfurter · 조회 2026-10-27 00:24 KST · 보조 API 2026-10-26 · 차이 0.10% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [],
+  "errors": [
+    "원문 URL 확인 실패: Wccftech | Samsung & SK hynix Reportedly Set To Ramp 8-Layer HBM4 Shipments For NVIDIA’s Rubin Ultra In Q2 2027, As Heat And Yield Issues Continue To Complicate 12-Layer Stack Manufacturing - Wccftech",
+    "원문 URL 확인 실패: Wccftech | Samsung & SK hynix Reportedly Set To Ramp 8-Layer HBM4 Shipments For NVIDIA’s Rubin Ultra In Q2 2027, As Heat And Yield Issues Continue To Complicate 12-Layer Stack Manufacturing - Wccftech"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-10-19",
     "source": "https://insights.trendforce.com/p/weekly-radar-006",
@@ -404,8 +410,8 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-26T17:01:44+09:00",
-    "candidate_count": 3,
+    "last_checked_at_kst": "2026-10-27T00:24:09+09:00",
+    "candidate_count": 2,
     "mlcc_vendor_watch": {
       "version": 2,
       "as_of": "2026-10-23",
@@ -454,7 +460,7 @@
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-26T17:02:23+09:00",
+    "checked_at_kst": "2026-10-27T00:24:44+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-26T13:51:20+09:00",
@@ -521,8 +527,8 @@
       "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
-    "last_validation_cutoff": "2026-10-26",
-    "last_checked_at_kst": "2026-10-26T17:02:06+09:00",
+    "last_validation_cutoff": "2026-10-27",
+    "last_checked_at_kst": "2026-10-27T00:24:12+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -581,7 +587,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-26T17:02:06+09:00",
+        "checked_at_kst": "2026-10-27T00:24:12+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -590,7 +596,7 @@
         "rss_coverage_unavailable": false
       },
       "primary_source_audit": {
-        "checked_at_kst": "2026-10-26T12:00:51+09:00",
+        "checked_at_kst": "2026-10-27T00:24:12+09:00",
         "sources": {
           "bnpp_public": {
             "status": "retrieval_unavailable",
@@ -658,8 +664,8 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10461",
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
-    "last_checked_cutoff": "2026-10-26",
-    "last_checked_at_kst": "2026-10-26T17:02:14+09:00",
+    "last_checked_cutoff": "2026-10-27",
+    "last_checked_at_kst": "2026-10-27T00:24:37+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -703,7 +709,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-26T17:02:16+09:00",
+    "last_checked_at_kst": "2026-10-27T00:24:39+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -827,7 +833,7 @@
       "milestones": {}
     },
     "nvidia_substrate_source_checks": {
-      "checked_at_kst": "2026-10-26T17:02:16+09:00",
+      "checked_at_kst": "2026-10-27T00:24:39+09:00",
       "nvidia": "verified",
       "samsung": "verified",
       "fully_verified": true
