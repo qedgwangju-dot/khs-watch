@@ -8374,6 +8374,7 @@ _atlas26_old_meaning=base.meaning
 _atlas26_old_risk=base.risk
 _atlas26_old_verify=base.verification
 _atlas26_old_select=base.select_diverse
+_atlas26_old_tag=base.tag_for
 
 def _atlas26_actor(item:dict)->str:
   src=str(item.get("source") or "").strip()
@@ -8427,7 +8428,7 @@ def _atlas26_group(text:str)->str|None:
 
 def _atlas26_score(item:dict)->int:
   if item.get("atlas26_report"):return 29
-  if _atlas26_actor(item):return max(23,_atlas26_old_score(item))
+  if _atlas26_actor(item):return 23  # New group is not yet part of older score tables.
   if _atlas26_aop_reprint(item):return 0
   text=str(item.get("title") or "")+" "+str(item.get("description") or "")
   if _atlas26_map_text(text):return 0
@@ -8459,12 +8460,19 @@ def _atlas26_meaning(cat:str)->str:
     return "공급사 직접 발표에 나온 새 발주·검수·양산·초도 출하의 실적 연결을 추적합니다."
   return _atlas26_old_meaning(cat)
 
+def _atlas26_tag(group:str)->str:
+  if group==ATLAS26_REPORT_GROUP:return "현대차 Atlas 공급망(보도)"
+  if group==ATLAS26_OFFICIAL_GROUP:return "Atlas 공급사 공식 단계"
+  return _atlas26_old_tag(group)
+
 def _atlas26_risk(cat:str)->str:
   if cat==ATLAS26_REPORT_LABEL:
     return ("언론 취재 명단을 확정 납품으로 오해하는 위험. "
             "21mm 배터리 셀 안전·열폭주, 손 카메라 동기화·품질·신뢰성, "
             "미국 액추에이터 양산 수율 및 공급사 변경이 6~24개월 병목. "
             "조기 지표는 고객 발주서·초도 출하·실제 월 양산대수입니다.")
+  if cat=="Atlas 부품 공급사 · 공식 실물 계약·양산 단계":
+    return "공급사 고객 승인·검수·양산 수율·실제 납품과 계약 해지 가능성을 확인합니다."
   return _atlas26_old_risk(cat)
 
 def _atlas26_verify(item:dict,group:str,text:str)->str:
@@ -8494,6 +8502,7 @@ base.meaning=_atlas26_meaning
 base.risk=_atlas26_risk
 base.verification=_atlas26_verify
 base.select_diverse=_atlas26_select
+base.tag_for=_atlas26_tag
 for _q in (
  ATLAS26_REPORT_QUERY,
  '(Atlas OR 아틀라스) (나무가 OR 엠씨넥스 OR 캠시스 OR 비에이치EVS) '

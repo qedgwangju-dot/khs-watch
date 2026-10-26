@@ -5918,6 +5918,7 @@ try:
   assert len(ar)==1,ar
   ag,ass,ac,ak=classify(ar[0])
   assert ag=="atlas_etnews_parts_report" and ass>=11 and "업계 취재" in ac,(ag,ass,ac)
+  assert base.tag_for(ag)=="현대차 Atlas 공급망(보도)"
   assert "공식 확인 전" in base.meaning(ac)
   known=[dict(ar[0],key=ak,group=ag,score=ass)]
   assert watcher._atlas26_select(known,set(),False,8)[0]["key"]==ak
@@ -5934,6 +5935,8 @@ try:
   )
   ug,us,uc,uk=classify(actual)
   assert ug=="atlas_part_supplier_official_upgrade" and us>=11 and uk!=ak,(ug,us,uc)
+  assert base.tag_for(ug)=="Atlas 공급사 공식 단계"
+  assert "검수" in base.risk(uc)
   replay=make(
     "삼성SDI 美 AOP ESS 1GWh 2차 공급 보도",
     "삼성SDI 미국 알파오메가 ESS 1GWh 추가 공급 1.5GWh 누적",
