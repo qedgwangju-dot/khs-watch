@@ -1166,13 +1166,15 @@
   },
   "_delivery": {
     "id": "c5851d193767dd02da81fb23a63cc56ee8071f4e68225ef7d3eef07bb2f13ae5",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-26T13:51:15+09:00",
     "chunks": [
       "<b>삼성전기·NVIDIA ABF 기판 공식 공급계약 감시</b>\n\n• 확정: 삼성전기·NVIDIA 2026년 10월 21일 다년 공급 파트너십. AI 연산 칩셋·네트워크 스위치용 FC-BGA/ABF 공급.\n• 2026년부터 공급 예정·세종/부산 전용 생산라인 추진. 실제 고객별 출하 수량·매출·계약금액은 미공개.\n• NVIDIA의 3년간 기판 능력 2.5배 확대는 IBIDEN·Unimicron·삼성전기를 포함한 전체 공급망 목표이며 삼성전기 단독 2.5배가 아님.\n• IBIDEN Ono는 2028년 1분기부터 증설, Unimicron KF는 2027년 2분기 추가 능력·2028년 중반 완전 가동 목표.\n• Kinsus는 공급망 진입 추진 보도. 10월 21일 공식 발표의 확정 기판 공급사 명단에 포함되지 않았음.\n• 과거 설비투자: 세종 4조2,700억원, 베트남 2조5,100억원. 고객 지원금과 동일 금액을 중복 합산하지 않음.\n• 10월 19일 3,605억원 메모리 기판 계약은 별개. 이번 NVIDIA 계약액으로 간주하지 않음.\n• 병목: SAP 미세회로·ABF 적층·기판 휨·수율·고온 동작 검사 및 고객 신뢰성 검증.\n• 다음 확인: 실제 납품·고객 검수·계약금액·생산능력·Kinsus 공식 수주·가격·마진.\n\n• <a href=\"https://nvidianews.nvidia.com/news/nvidia-and-supply-chain-partners-expand-capacity-to-accelerate-ai-infrastructure-buildout\">NVIDIA 공식 발표</a>\n• <a href=\"https://samsungsem.com/kr/newsroom/news/view.do?id=10613\">삼성전기 공식 발표</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      340
+    ],
     "candidate": {
       "updated_at_kst": "2026-10-26T13:50:25+09:00",
       "seen_ids": [
