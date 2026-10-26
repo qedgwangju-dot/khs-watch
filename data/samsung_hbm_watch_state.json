@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-26T13:51:40+09:00",
+  "updated_at_kst": "2026-10-26T15:48:08+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -1585,6 +1585,54 @@
         "source": "TrendForce",
         "scope": "reported_nvidia_glass_evaluation_not_approved_customer_not_organic_ABF",
         "excerpt": "공급망 보도: NVIDIA가 차세대 AI 칩 유리 코어 기판을 평가 중. 독일 SCHMID는 NVIDIA·AMD·Intel 공급망 기업과 협업한다고 밝혔으나 NVIDIA 직접 공급계약·고객인증·양산은 확인되지 않음. 2028년은 보도상 가능성."
+      },
+      "nvidia_hbm4_8hi_vendor|samsung|2027": {
+        "key": "nvidia_hbm4_8hi_vendor|samsung|2027",
+        "axis": "nvidia_hbm4_8hi_vendor",
+        "value": {
+          "vendor": "samsung",
+          "generation": "HBM4",
+          "layers": 8,
+          "customer": "NVIDIA",
+          "target_month": "2027-02",
+          "official_target": false,
+          "official_stage": "unconfirmed",
+          "stacks_shipped": null,
+          "recognized_revenue_krw": null
+        },
+        "unit": "month,stage,count,KRW",
+        "period": "2027",
+        "as_of": "2026-10-26",
+        "evidence": "reported",
+        "source_url": "https://n.news.naver.com/article/092/0002442377?type=main",
+        "source_title": "사용자 제공 ZDNet 기사 제목: 삼성·SK 내년 2월 HBM4 8단 양산 출하",
+        "source": "ZDNet 보도 제목(원문 직접 열람 제한)",
+        "excerpt": "기사 원문 미열람. 2026-10-26 기준 내년 2월은 2027-02. 업체별 공식 출하·계약·매출 확정 아님.",
+        "scope": "reported_8hi_2027_target_not_2026_generic_hbm4"
+      },
+      "nvidia_hbm4_8hi_vendor|skhynix|2027": {
+        "key": "nvidia_hbm4_8hi_vendor|skhynix|2027",
+        "axis": "nvidia_hbm4_8hi_vendor",
+        "value": {
+          "vendor": "skhynix",
+          "generation": "HBM4",
+          "layers": 8,
+          "customer": "NVIDIA",
+          "target_month": "2027-02",
+          "official_target": false,
+          "official_stage": "unconfirmed",
+          "stacks_shipped": null,
+          "recognized_revenue_krw": null
+        },
+        "unit": "month,stage,count,KRW",
+        "period": "2027",
+        "as_of": "2026-10-26",
+        "evidence": "reported",
+        "source_url": "https://n.news.naver.com/article/092/0002442377?type=main",
+        "source_title": "사용자 제공 ZDNet 기사 제목: 삼성·SK 내년 2월 HBM4 8단 양산 출하",
+        "source": "ZDNet 보도 제목(원문 직접 열람 제한)",
+        "excerpt": "기사 원문 미열람. 2026-10-26 기준 내년 2월은 2027-02. 업체별 공식 출하·계약·매출 확정 아님.",
+        "scope": "reported_8hi_2027_target_not_2026_generic_hbm4"
       }
     },
     "latest": {
@@ -1746,7 +1794,7 @@
       "ddr5_chip_quote|dramexchange|16|4800/5600": {
         "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
         "axis": "ddr5_chip_quote",
-        "value": 61.3,
+        "value": 61.333,
         "unit": "USD/chip",
         "period": "2026-10",
         "as_of": "2026-10-26",
@@ -1762,10 +1810,10 @@
       "rdimm_quote|dramexchange|32|4800/5600": {
         "key": "rdimm_quote|dramexchange|32|4800/5600",
         "axis": "rdimm_quote",
-        "value": 2185.0,
+        "value": 2165.0,
         "unit": "USD/module",
         "period": "2026-10",
-        "as_of": "2026-10-12",
+        "as_of": "2026-10-26",
         "evidence": "research",
         "source_url": "https://www.dramexchange.com/",
         "source_title": "DDR5 RDIMM 32GB 4800/5600 공개 현물가격",
@@ -2679,11 +2727,59 @@
         "source": "TrendForce",
         "scope": "reported_nvidia_glass_evaluation_not_approved_customer_not_organic_ABF",
         "excerpt": "공급망 보도: NVIDIA가 차세대 AI 칩 유리 코어 기판을 평가 중. 독일 SCHMID는 NVIDIA·AMD·Intel 공급망 기업과 협업한다고 밝혔으나 NVIDIA 직접 공급계약·고객인증·양산은 확인되지 않음. 2028년은 보도상 가능성."
+      },
+      "nvidia_hbm4_8hi_vendor|samsung|2027": {
+        "key": "nvidia_hbm4_8hi_vendor|samsung|2027",
+        "axis": "nvidia_hbm4_8hi_vendor",
+        "value": {
+          "vendor": "samsung",
+          "generation": "HBM4",
+          "layers": 8,
+          "customer": "NVIDIA",
+          "target_month": "2027-02",
+          "official_target": false,
+          "official_stage": "unconfirmed",
+          "stacks_shipped": null,
+          "recognized_revenue_krw": null
+        },
+        "unit": "month,stage,count,KRW",
+        "period": "2027",
+        "as_of": "2026-10-26",
+        "evidence": "reported",
+        "source_url": "https://n.news.naver.com/article/092/0002442377?type=main",
+        "source_title": "사용자 제공 ZDNet 기사 제목: 삼성·SK 내년 2월 HBM4 8단 양산 출하",
+        "source": "ZDNet 보도 제목(원문 직접 열람 제한)",
+        "excerpt": "기사 원문 미열람. 2026-10-26 기준 내년 2월은 2027-02. 업체별 공식 출하·계약·매출 확정 아님.",
+        "scope": "reported_8hi_2027_target_not_2026_generic_hbm4"
+      },
+      "nvidia_hbm4_8hi_vendor|skhynix|2027": {
+        "key": "nvidia_hbm4_8hi_vendor|skhynix|2027",
+        "axis": "nvidia_hbm4_8hi_vendor",
+        "value": {
+          "vendor": "skhynix",
+          "generation": "HBM4",
+          "layers": 8,
+          "customer": "NVIDIA",
+          "target_month": "2027-02",
+          "official_target": false,
+          "official_stage": "unconfirmed",
+          "stacks_shipped": null,
+          "recognized_revenue_krw": null
+        },
+        "unit": "month,stage,count,KRW",
+        "period": "2027",
+        "as_of": "2026-10-26",
+        "evidence": "reported",
+        "source_url": "https://n.news.naver.com/article/092/0002442377?type=main",
+        "source_title": "사용자 제공 ZDNet 기사 제목: 삼성·SK 내년 2월 HBM4 8단 양산 출하",
+        "source": "ZDNet 보도 제목(원문 직접 열람 제한)",
+        "excerpt": "기사 원문 미열람. 2026-10-26 기준 내년 2월은 2027-02. 업체별 공식 출하·계약·매출 확정 아님.",
+        "scope": "reported_8hi_2027_target_not_2026_generic_hbm4"
       }
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-26T13:51:40+09:00",
+      "last_checked_at_kst": "2026-10-26T15:48:08+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -2742,7 +2838,8 @@
     "hbm_generation_price_track_version": 1,
     "foplp_track_version": 1,
     "hbf_track_version": 1,
-    "nvidia_glass_track_version": 1
+    "nvidia_glass_track_version": 1,
+    "nvidia_hbm4_8hi_track_version": 1
   },
   "memory_axes_version": 1,
   "telegram_message_ids": [
@@ -2758,7 +2855,7 @@
     "payload_hash": "08c94d7d5f106ad04399827011a0052b881cd709068e4702216b313bba084d6b"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-26T13:52:28+09:00",
+    "checked_at_kst": "2026-10-26T15:48:58+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": 4756.0,
