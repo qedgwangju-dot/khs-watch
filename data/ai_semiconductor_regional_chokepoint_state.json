@@ -69,7 +69,7 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-26T23:14:00+09:00",
+  "updated_at_kst": "2026-10-27T04:56:27+09:00",
   "last_scan_count": 4,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
@@ -104,7 +104,7 @@
     "construction_2028_usd_b": 68.4,
     "americas_2026_usd_b": 18.1,
     "americas_2029_usd_b": 40.6,
-    "source_url": "https://www.prnewswire.com/in/news-releases/global-300mm-fab-equipment-spending-to-reach-227-billion-in-2029-as-buildout-accelerates-semi-projects-302906649.html",
+    "source_url": "https://www.prnewswire.com/news-releases/global-300mm-fab-equipment-spending-to-reach-227-billion-in-2029-as-buildout-accelerates-semi-projects-302906628.html",
     "source_kind": "SEMI 발행 PR Newswire 원문·실제 주문 확정액 아님",
     "starts_2026": 20,
     "starts_2027": 18,
@@ -114,7 +114,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 1,
+  "last_held_count": 0,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -148,14 +148,7 @@
     "f3274f98949ddbb5ad284b00"
   ],
   "delivered_event_keys": [],
-  "last_held": [
-    {
-      "event_key": "korea|capacity|SK hynix|hbm4",
-      "source": "XenoSpectrum",
-      "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-10-26T10:54:42+09:00"
-    }
-  ],
+  "last_held": [],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
   "telegram_message_ids": [
     292
