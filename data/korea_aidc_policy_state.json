@@ -22,12 +22,14 @@
     "aidc|fact|05238e6b0fd5e5c6": 20
   },
   "material_signatures": {},
-  "updated_at": "2026-10-26T01:50:41.413255+00:00",
+  "updated_at": "2026-10-26T02:59:58.092708+00:00",
   "source_errors": [],
   "dedupe_version": 4,
-  "held_for_verification_count": 1,
+  "held_for_verification_count": 3,
   "held_examples": [
-    "aidc|tax-credit|eligibility: Google News 원문 링크 복원 실패"
+    "aidc|ecosystem-support|government-proposal: 본문 추출량 부족(278자); Google News 원문 링크 복원 실패",
+    "aidc|tax-credit|eligibility: Google News 원문 링크 복원 실패",
+    "미분류: 구체적인 사업·정책 상태 추출 필요"
   ],
   "eligible_backlog_count": 0,
   "legacy_suppressed_count": 0
