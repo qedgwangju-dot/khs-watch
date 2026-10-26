@@ -19164,6 +19164,35 @@
       "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
       "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
+    "core:2b6b39234ca4e586ecb0c948": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
+    },
     "core:2b7b1c87dd33599f03c6d03e": {
       "first_seen_kst": "2026-10-23T01:49:43+09:00",
       "lanes": {
@@ -237935,6 +237964,35 @@
       "telegram_core_fact": "외국인들은 올들어 지난 8일까지 코스피시장에서 92조5477억원에 이르는 삼성전자 주식을 순매도했다.",
       "title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저"
     },
+    "fact:e01be640c297b308aefe9dee": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
+    },
     "fact:e0213175379c057aae109d6d": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -297314,6 +297372,35 @@
       "link": "https://www.mk.co.kr/news/stock/12165422",
       "source": "매일경제",
       "title": "젠디지털, 대형 인수 부담 줄고 자사주 매입 기대 커지며 주목받고 있습니다"
+    },
+    "link:497a8849e203bd30f2c19912": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
     },
     "link:4984ce712905c7bdf9af3b14": {
       "first_seen_kst": "2026-10-03T10:28:46+09:00",
@@ -470274,6 +470361,35 @@
       "source_published_kst": "2026-10-05T12:01+09:00",
       "title": "지재처, 메가프로젝트 분야 신규 상품명 72개 추가한다"
     },
+    "original:70117b3c375df0abab228ea9": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
+    },
     "original:7025396fcb8297a4d80352aa": {
       "first_seen_kst": "2026-10-20T09:47:35+09:00",
       "lanes": {
@@ -617994,6 +618110,35 @@
       "telegram_core_fact": "엑스와이지(XYZ)가 엔비디아의 피지컬 인공지능(AI) 로보틱스 교육 과정에 휴머노이드 로봇을 공급했다.",
       "title": "엑스와이지, 엔비디아 교육과정에 휴머노이드 10대 공급"
     },
+    "source_fact:1aec69f452b01017a0c9fc69": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
+    },
     "source_fact:1af28d936229b79142818fa1": {
       "first_seen_kst": "2026-10-14T00:59:56+09:00",
       "lanes": {
@@ -619637,6 +619782,35 @@
       "source_title": "트럼프 “이란, 美 중간선거 앞 유가 올리려 모든 것 꾸며내“",
       "telegram_core_fact": "\"그들은 심지어 (유조선에) 공격이 적중했다는 가짜 주장, 기뢰, 그리고 그 밖의 모든 것까지 꾸며내고 있다. 왜냐하면 현재 호르무즈 해협을 통과하는 석유의 양이 분쟁이 시작되기 이전보다도 더 많기 때문\"이라고 강조했습니다.",
       "title": "트럼프 “이란, 美 중간선거 앞 유가 올리려 모든 것 꾸며내“"
+    },
+    "source_fact:1b9a53b7320104bb80afb08d": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
     },
     "source_fact:1b9b1807431aa81982443169": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -623895,6 +624069,35 @@
       ],
       "source_published_kst": "2026-10-07T06:22+09:00",
       "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
+    "source_fact:1d1c6550c39b828a358454e5": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
     },
     "source_fact:1d2029c0f5133dbf0ec58ed7": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
@@ -693645,6 +693848,35 @@
       "telegram_core_fact": "올해 2분기 중국 낸드 시장에서 YMTC의 점유율은 38.7%로 삼성전자(33.4%)를 앞질렀다.",
       "title": "中 낸드 추격에 맞불…삼전닉스, 중국 공장 고도화 착수"
     },
+    "source_fact:3907b82710c4b49098f4e20d": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
+    },
     "source_fact:390c20b52c3ddad395d5328a": {
       "first_seen_kst": "2026-10-25T06:53:27+09:00",
       "lanes": {
@@ -751348,6 +751580,35 @@
       "telegram_core_fact": "한국거래소에 따르면 미국 원유·천연가스 탐사·생산 기업에 투자하는 ‘RISE 미국S&P원유생산기업(합성 H)’은 이달 들어 전날까지 12.42% 상승했다.",
       "title": "중동 불안 장기화…원유 ETF 강세"
     },
+    "source_fact:502786353328f55f74e72732": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
+    },
     "source_fact:5030d7d16fd837e0fc8e3a7e": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -790713,6 +790974,35 @@
       "source_title": "밸류업 공시 제각각 … \"핵심지표 표준화해야\"",
       "telegram_core_fact": "기업가치 제고(밸류업) 계획을 공시한 상장사가 760곳을 넘어섰지만 공시의 분량과 주주환원 계획의 구체성까지 기업마다 차이가 커 투자자들이 기업별 밸류업 가능성을 평가하기 쉽지 않다는 지적이 나온다.",
       "title": "밸류업 공시 제각각 … \"핵심지표 표준화해야\""
+    },
+    "source_fact:5f7f21e8e64f58e8d31dabf8": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
     },
     "source_fact:5f80cae423f23fe9dc666b4a": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
@@ -852300,6 +852590,35 @@
       "source_title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들",
       "telegram_core_fact": "김록호 하나증권 연구원은 \"잉여현금흐름을 기반으로 최소 30조원 이상의 추가 주주환원 재원을 예상한다\"며 \"배당금보다는 자사주 매입 및 소각이 중용될 것\"이라고 전망했다.",
       "title": "SK하닉 '버팀목' 자사주 매입 끝났다… 불안한 개미들"
+    },
+    "source_fact:78fc27e8239c85eceb0f3a66": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
     },
     "source_fact:78fe1f25dbf6588ba22d29cc": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -925300,6 +925619,35 @@
       "source_title": "계약 한방에 수년치 먹거리 확보…삼성·LG, ‘AIDC 칠러’서 기회",
       "telegram_core_fact": "LG전자는 이번 계약에 따라 북미에서 구축되는 여러 AIDC에 총 5GW 고효율 칠러를 순차적으로 공급한다.",
       "title": "계약 한방에 수년치 먹거리 확보…삼성·LG, ‘AIDC 칠러’서 기회"
+    },
+    "source_fact:9787424e8294ed4a48ac05c5": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
     },
     "source_fact:97891c5539ee08a451a3ebfc": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
@@ -1011097,6 +1011445,35 @@
       "source_title": "D램값 상승·주주환원 기대감… 삼성전자 주가 끌어올릴까",
       "telegram_core_fact": "이영곤 토스증권 리서치센터장도 \"투자자들은 앞으로도 이러한 높은 이익 성장세가 얼마만큼 더 이어질 수 있는 지 주목하고 있다\"며 \"확정실적을 통해 메모리 수급과 가격, HBM, 내년 실적 전망, 주주환원 등에 대한 회사의 구체적인 설명을 확인하는 것이 필요하다\"고 전했다.",
       "title": "D램값 상승·주주환원 기대감… 삼성전자 주가 끌어올릴까"
+    },
+    "source_fact:b9acb45f48c3d9717178f13c": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
     },
     "source_fact:b9b2268b3384883d9e489381": {
       "first_seen_kst": "2026-10-14T19:42:07+09:00",
@@ -1120556,6 +1120933,35 @@
       "source_title": "바오준, 자사주 4만달러 매입..한도 2.5% 소진",
       "telegram_core_fact": "바오준(BZUN)이 9일 미국 나스닥 글로벌 셀렉트 시장에서 자사 복수의결권(WVR) 보통주 3만6576주를 주당 1.10~1.11달러, 총 4만352달러에 매입해 자기주식(treasury shares)으로 보유하기로 했다고 12일 발표했다.",
       "title": "바오준, 자사주 4만달러 매입..한도 2.5% 소진"
+    },
+    "source_fact:e5e539de2b4d53b2fb17fe5e": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
     },
     "source_fact:e5e773284ac6060c594b59ae": {
       "first_seen_kst": "2026-10-21T15:40:18+09:00",
@@ -1249707,6 +1250113,35 @@
       "source_published_kst": "2026-10-05T12:01+09:00",
       "title": "지재처, 메가프로젝트 분야 신규 상품명 72개 추가한다"
     },
+    "title:70117b3c375df0abab228ea9": {
+      "first_seen_kst": "2026-10-26T19:26:23+09:00",
+      "lanes": {
+        "live": "2026-10-26T19:26:23+09:00"
+      },
+      "last_seen_kst": "2026-10-26T19:26:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640109",
+      "source": "이투데이",
+      "source_body_digest": "bb790ac007b815d317b6853a7561025d54fec11aad654173f942021a0a38929c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b193a822243b55f21f6746efcc4007acc405d11e0357c55505b78851f63d8a0",
+      "source_fact_keys": [
+        "source_fact:v1:0f5e6bb643440a85c3c2bc0bc326a3332315ee2572b456d144c09444b5b05b18",
+        "source_fact:v1:0f8456c0e517c600172affb7e8b8e809d1dad4504564132bc4e45f5acda6e7e5",
+        "source_fact:v1:10fd5d1f0fb5c5f59862df7048d67a3416ed190f01d512d62e5bc6a7ba42861e",
+        "source_fact:v1:250f07e99a2b9bdb266df85e0c015db6d46ff1810c1345a4e0b0acb8b434af62",
+        "source_fact:v1:38871b819e9eaf99af1f30f8e6ec77a4edaf354abb89db90adffa8d4ed208aff",
+        "source_fact:v1:3fb43ac4797b502392568e6eb3a7b3c88133fd0ae6e0fc572d3daae77f387f3b",
+        "source_fact:v1:9f7fe3d03cbdbde50387cdf9876ecd842f3f88c4ef8b78f15878454d5109751b",
+        "source_fact:v1:b9647bbac4039cabc42569574d1d3d1a377e711f3ff706b73a10123e03bd254f",
+        "source_fact:v1:e1963474c888a75b830739346906f1e3a3c58e4e2b5ea17121b8db25c45c6f5f",
+        "source_fact:v1:feaa5c5a0f69ab73e2529730395236a68edfae9f3a135dc97056be3cc4947d47"
+      ],
+      "source_published_kst": "2026-10-26T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\"",
+      "telegram_core_fact": "오송공장은 첫 실사만에 세계에서 가장 엄격한 규제기관 중 하나인 EMA의 품질 및 GMP 기준을 충족하며 GMP 승인을 획득했다고 덧붙였다.",
+      "title": "[BioS]바이넥스, 'CDMO' 오송공장 \"EMA 실사 통과\""
+    },
     "title:7025396fcb8297a4d80352aa": {
       "first_seen_kst": "2026-10-20T09:47:35+09:00",
       "lanes": {
@@ -1334334,5 +1334769,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-26T18:53:23+09:00"
+  "updated_at_kst": "2026-10-26T19:26:23+09:00"
 }
