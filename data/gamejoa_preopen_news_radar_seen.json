@@ -15688,6 +15688,28 @@
       "telegram_core_fact": "점검 대상 현장에서는 원자재 가격 상승과 사업 여건 변화, 각종 인허가와 행정절차 지연 등 사업 추진에 영향을 미치는 요인을 살핀다.",
       "title": "해수부, 2조원 규모 항만·연안 정비사업 집행 점검…전국 16곳 현장 찾아"
     },
+    "core:240ac6385b79f75fc28b4964": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181432",
+      "source": "매일경제",
+      "source_body_digest": "b6b4c8b267e70ad982c44ce2a08ab88f72ba36091ad9e3ed68071b569df02828",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:915328ddd1af0f812013c2e51f9cf8648a57c536e8d3e755797d2623fbe81117",
+      "source_fact_keys": [
+        "source_fact:v1:4c2d7cc66166bc8fef11cfe861079d747df914a4d4cb0cc565cf6f2ee148627e",
+        "source_fact:v1:79368e5621dabab3136e3a0e0e0ea466676e90fb69e39fab9d7e297636251358",
+        "source_fact:v1:a11e04522d9d4cd0c3aecf819196f5adecefaefb4773ff350491390f0c0e332e"
+      ],
+      "source_published_kst": "2026-10-26T21:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가",
+      "telegram_core_fact": "뱅크 오브 하와이(BOH)가 3분기 희석 주당순이익(EPS)이 1.49달러로 전년 동기 1.20달러보다 24.2% 증가했고, 순이익은 6430만 달러로 20.5% 늘었다고 10월 26일 발표했다. 3분기 말 종가는 68.92달러로 6월 말 81.49달러에서 하락했다.",
+      "title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가"
+    },
     "core:240cc24fab436badefd273d2": {
       "first_seen_kst": "2026-10-18T09:00:24+09:00",
       "lanes": {
@@ -18966,6 +18988,26 @@
       "source_title": "BENDING SPOONS SPA, 버크셔 3억3000만 달러 추가 투자 유치",
       "telegram_core_fact": "BENDING SPOONS SPA(BSP)가 워런 버핏이 이끄는 버크셔 해서웨이를 대상으로 3억3000만 달러 사모 방식 신주 발행에 나서 버크셔의 지분율이 4%로 높아진다고 14일 발표했다.",
       "title": "BENDING SPOONS SPA, 버크셔 3억3000만 달러 추가 투자 유치"
+    },
+    "core:2b11a9ef06c8cb3fae462ce0": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026083500527",
+      "source": "연합뉴스",
+      "source_body_digest": "e6939f93de8dd21eace3e7ee07e15f8e3a0f84afb404676f33d270680c881305",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:563d0944c240908f8276927cef665ee78b1e24746c30470fccd4572a87ac6d95",
+      "source_fact_identity": "source_facts:v1:3c227c68227eb57c5d25c852b9e3b29bc4ba54c7d4e585ffaa70bfbf98125022",
+      "source_fact_keys": [
+        "source_fact:v1:979cea1cce58f899359276a5c72a3ad3056504823e9b715cb56c3b072d08d6e7"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 BNK투자증권이 연결 기준 올해 3분기 영업이익 33억원으로 지난해 동기보다 46.3% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스"
     },
     "core:2b218972e90a50d81bf15b6f": {
       "first_seen_kst": "2026-10-12T21:44:29+09:00",
@@ -33769,6 +33811,36 @@
       "source_title": "머스크 \"마이크론 빼고 메모리 가격 지나쳐\"…삼전닉스 겨냥? [IT썰]",
       "telegram_core_fact": "JP모건은 메모리 공급 부족률이 2026년 약 20%, 2027년 19%, 2028년에도 15%에 달할 것으로 전망했다.",
       "title": "머스크 \"마이크론 빼고 메모리 가격 지나쳐\"…삼전닉스 겨냥? [IT썰]"
+    },
+    "core:4e520b2a74f53d58251fcd5c": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
     },
     "core:4e5a25bdd50e7a9be9811c92": {
       "first_seen_kst": "2026-10-20T01:42:36+09:00",
@@ -67361,6 +67433,26 @@
       "telegram_core_fact": "처브(CB)는 3분기(7~9월) 희석 주당순이익이 7.30달러로 전년비 4.4% 증가했고, Chubb 순이익은 28억4400만 달러로 1.5% 늘었다고 10월 20일 발표했다.",
       "title": "처브, 3분기 EPS 7.30달러..전년비 4.4% 증가"
     },
+    "core:9cabfc9a113aae8d9bcb9fa8": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841420",
+      "source": "뉴시스",
+      "source_body_digest": "b01f7642959bd9397eeeae296de9e04f425baf9dd514d7f9b070e2827e917b16",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a74a194183c93b87ddd243e7948d39faf16caf40bafda457f661fa0324ac9a9",
+      "source_fact_keys": [
+        "source_fact:v1:c2f6f00aac188a1d959ec8102e325e04551bb3db60c2f8a19fa9291cbbaab690"
+      ],
+      "source_published_kst": "2026-10-26T15:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"지슨, 망분리 완화 속도조절론 수혜주…올해 흑자전환 전망\"",
+      "telegram_core_fact": "김학준 키움증권 연구원은 최근 보고서를 통해 \"최근 금융권을 비롯한 해킹 이슈 확대로 인해 망분리 완화와 관련된 속도조절론이 대두되고 있다\"며 \"결국 폐쇄망 보안의 대안으로 물리적 보안 수요가 늘어날 수밖에 없다\"고 진단했다.",
+      "title": "키움證 \"지슨, 망분리 완화 속도조절론 수혜주…올해 흑자전환 전망\""
+    },
     "core:9cc6baa815790129a7488d70": {
       "first_seen_kst": "2026-10-15T12:05:16+09:00",
       "lanes": {
@@ -93407,6 +93499,30 @@
       "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
       "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
     },
+    "core:d922a725119e56b8833cb8ad": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026120751527",
+      "source": "연합뉴스",
+      "source_body_digest": "91eb2ff631691a8733c22eb32ee20f92a02340914f5fd6db9b8d97e1fc9e38fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86ba3a284e90103c4e594135113e105ec91580ca337811c6d2bc0b1646aad205",
+      "source_fact_keys": [
+        "source_fact:v1:3327d39031531220a3251211ebbb20012989afdf29abed3f4e1e9407b9feb75a",
+        "source_fact:v1:3dfaed5fd0c8777138eb9fbc9c0ff14f1ef3c09d0d2afb970d039b90f4a82564",
+        "source_fact:v1:57933ae74410c7f6ba4ccad3d28d64e45d468185900d8407d17d366c65dc9215",
+        "source_fact:v1:9d0f7878c22d89de808d1f6b94af77d288426b9210e2c33e2ee5b5f4cdfd2949",
+        "source_fact:v1:e072f7a92135cf2993e33f511bb6c086f1d4b9f83bc929ff3284b0f3d3f91c6c"
+      ],
+      "source_published_kst": "2026-10-26T15:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스"
+    },
     "core:d939eff769ad830efce4870c": {
       "first_seen_kst": "2026-10-23T21:02:19+09:00",
       "lanes": {
@@ -118267,6 +118383,26 @@
       "telegram_core_fact": "위성에 탑재되는 반도체가 지상에서 사용되는 제품보다 훨씬 엄격한 검증을 거쳐야 하는 이유다.",
       "title": "40년 ‘반도체 검증’ 큐알티, AI·우주 타고 ‘퀀텀점프’ [그 회사 어때?]"
     },
+    "event:56c0d0fe4d0b8d6388e6121e": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026083500527",
+      "source": "연합뉴스",
+      "source_body_digest": "e6939f93de8dd21eace3e7ee07e15f8e3a0f84afb404676f33d270680c881305",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:563d0944c240908f8276927cef665ee78b1e24746c30470fccd4572a87ac6d95",
+      "source_fact_identity": "source_facts:v1:3c227c68227eb57c5d25c852b9e3b29bc4ba54c7d4e585ffaa70bfbf98125022",
+      "source_fact_keys": [
+        "source_fact:v1:979cea1cce58f899359276a5c72a3ad3056504823e9b715cb56c3b072d08d6e7"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 BNK투자증권이 연결 기준 올해 3분기 영업이익 33억원으로 지난해 동기보다 46.3% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스"
+    },
     "event:56df9679f780a42fb032a816": {
       "first_seen_kst": "2026-10-21T02:41:49+09:00",
       "lanes": {
@@ -132738,35 +132874,32 @@
     "event:f05a9c95ce22187610690abb": {
       "first_seen_kst": "2026-10-26T00:36:26+09:00",
       "lanes": {
-        "live": "2026-10-26T14:29:10+09:00"
+        "live": "2026-10-26T22:12:35+09:00"
       },
-      "last_seen_kst": "2026-10-26T14:29:10+09:00",
-      "link": "https://www.news1.kr/world/usa-canada/6331331",
-      "source": "뉴스1",
-      "source_body_digest": "0a72a373904c79bdb5d29f1cd912f12c069545e83150dacc096dd84d0215e16a",
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:8024653946bc57a33b9f046d87342171461241662990103cd7cdde605ae2e69c",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
       "source_fact_keys": [
-        "source_fact:v1:4db5adde87a7cd50ce2947630244b20cebbd45d98922f49c1092f05b69c08b0c",
-        "source_fact:v1:559a354e24c9182b9dc66fa0c80efaf057b3f80801c57094ba32669d0c41af02",
-        "source_fact:v1:575d18e58287134bc1890be280e4463854a53f2ed63e9d23990771d47abb15c8",
-        "source_fact:v1:5e6c456dea906308466f3c7ededcb06b79388241df0bdcb6ab3dba73e7b3384a",
-        "source_fact:v1:85157a847c00ad03acbeccae588b76b9f999c84c19b2ba6eddfc4e72141d56c9",
-        "source_fact:v1:91a8850aa02717abeb375b7cf42e1c1a553ffbabf7f8b9e6a47084f646f70434",
-        "source_fact:v1:a9793bc0e6d772b5f1332617eef47e50d49a1e9e62e0560521dac2ae7e01a701",
-        "source_fact:v1:ae213fd484f48c71f4deae334050d91721b1a67441a8402f13761d3cd968b05d",
-        "source_fact:v1:bd4dd7c54405f557370909b372768644dc08b6078365e22be7095f21f6855b51",
-        "source_fact:v1:c930d121d08e3c8d327a9adc7ab0d67e1eb5e6dbb2131309515088f8ed15e23d",
-        "source_fact:v1:dfc6fdf23ef21e83c1984df7f00f4a6544c442cfe814d32d7fc91bb6952dfdd2",
-        "source_fact:v1:ece2ecd976a26a47bfc8d8d86be7ad5581e22e854b0f85e6322c31f0331bb983",
-        "source_fact:v1:efb0bb2aaa60eb1af500f44719ed1e60a8570295e18af37857ce210de4dfe408",
-        "source_fact:v1:f7ef57bcea8aa413382d8b01d0aed6b1b72b11a0353968b6ef400fe58e6647eb"
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
       ],
-      "source_published_kst": "2026-10-26T10:13+09:00",
+      "source_published_kst": "2026-10-26T06:30+09:00",
       "source_supply_terms": {},
-      "source_title": "'선거' 美·이스라엘, 이란 공격 준비 정황…NYT \"전면전 위기감\"",
-      "telegram_core_fact": "미국이 공격을 재개할 경우 이란이 강하게 대응할 뜻을 공공연히 드러냈다는 점도 전면전 재발 우려를 키우고 있다.",
-      "title": "'선거' 美·이스라엘, 이란 공격 준비 정황…NYT \"전면전 위기감\""
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
     },
     "event:f06dfe753d6c8cbd66744c2c": {
       "first_seen_kst": "2026-10-26T08:28:58+09:00",
@@ -175165,6 +175298,28 @@
       "telegram_core_fact": "이들 종목은 올해 주당순이익(EPS)이 2011년 이후 최고치를 기록할 것으로 전망되지만 주가는 과거 최고가보다 최대 20%가량 낮은 수준에 머물러 있다는 분석이다.",
       "title": "“실적은 역대 최대인데 주가는 아직”…눈여겨볼 6개 종목"
     },
+    "fact:5b2950f48c2418ee2263e677": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181432",
+      "source": "매일경제",
+      "source_body_digest": "b6b4c8b267e70ad982c44ce2a08ab88f72ba36091ad9e3ed68071b569df02828",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:915328ddd1af0f812013c2e51f9cf8648a57c536e8d3e755797d2623fbe81117",
+      "source_fact_keys": [
+        "source_fact:v1:4c2d7cc66166bc8fef11cfe861079d747df914a4d4cb0cc565cf6f2ee148627e",
+        "source_fact:v1:79368e5621dabab3136e3a0e0e0ea466676e90fb69e39fab9d7e297636251358",
+        "source_fact:v1:a11e04522d9d4cd0c3aecf819196f5adecefaefb4773ff350491390f0c0e332e"
+      ],
+      "source_published_kst": "2026-10-26T21:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가",
+      "telegram_core_fact": "뱅크 오브 하와이(BOH)가 3분기 희석 주당순이익(EPS)이 1.49달러로 전년 동기 1.20달러보다 24.2% 증가했고, 순이익은 6430만 달러로 20.5% 늘었다고 10월 26일 발표했다. 3분기 말 종가는 68.92달러로 6월 말 81.49달러에서 하락했다.",
+      "title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가"
+    },
     "fact:5b3226a48706e53e0b3d6cbd": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -185627,6 +185782,26 @@
       "source_title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원",
       "telegram_core_fact": "법조계에 따르면 의정부지법 형사3단독 김희동 판사는 약사법 위반 혐의로 기소된 약사 A씨에게 벌금 50만원을 선고했다. 약사 면허가 없는 종업원이 의약품을 판매해 해당 약국을 운영하는 약사가 벌금형을 선고 받았다.",
       "title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원"
+    },
+    "fact:725a60e8a06a5e9fa4f647a2": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026083500527",
+      "source": "연합뉴스",
+      "source_body_digest": "e6939f93de8dd21eace3e7ee07e15f8e3a0f84afb404676f33d270680c881305",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:563d0944c240908f8276927cef665ee78b1e24746c30470fccd4572a87ac6d95",
+      "source_fact_identity": "source_facts:v1:3c227c68227eb57c5d25c852b9e3b29bc4ba54c7d4e585ffaa70bfbf98125022",
+      "source_fact_keys": [
+        "source_fact:v1:979cea1cce58f899359276a5c72a3ad3056504823e9b715cb56c3b072d08d6e7"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 BNK투자증권이 연결 기준 올해 3분기 영업이익 33억원으로 지난해 동기보다 46.3% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스"
     },
     "fact:725db9c218e92c7c7ae57912": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
@@ -215975,6 +216150,30 @@
       "source_published_kst": "2026-10-06T17:50+09:00",
       "title": "고금리 덮치자 … 국민연금, 보험株 사고 증권株 팔아"
     },
+    "fact:b0ebd8dcb50345bdfa5287a1": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026120751527",
+      "source": "연합뉴스",
+      "source_body_digest": "91eb2ff631691a8733c22eb32ee20f92a02340914f5fd6db9b8d97e1fc9e38fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86ba3a284e90103c4e594135113e105ec91580ca337811c6d2bc0b1646aad205",
+      "source_fact_keys": [
+        "source_fact:v1:3327d39031531220a3251211ebbb20012989afdf29abed3f4e1e9407b9feb75a",
+        "source_fact:v1:3dfaed5fd0c8777138eb9fbc9c0ff14f1ef3c09d0d2afb970d039b90f4a82564",
+        "source_fact:v1:57933ae74410c7f6ba4ccad3d28d64e45d468185900d8407d17d366c65dc9215",
+        "source_fact:v1:9d0f7878c22d89de808d1f6b94af77d288426b9210e2c33e2ee5b5f4cdfd2949",
+        "source_fact:v1:e072f7a92135cf2993e33f511bb6c086f1d4b9f83bc929ff3284b0f3d3f91c6c"
+      ],
+      "source_published_kst": "2026-10-26T15:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스"
+    },
     "fact:b10210959560a7f213bb62e0": {
       "first_seen_kst": "2026-10-26T12:23:44+09:00",
       "lanes": {
@@ -223469,6 +223668,36 @@
       "telegram_core_fact": "신한투자증권 김상인 연구원은 \"올해 은행채 발행은 시중은행채보다 특수은행채를 중심으로 늘어난 흐름\"이라며 \"정책 금융 확대와 기업 대출 수요 등에 따라 산업은행과 기업은행 등의 자금 조달 수요가 커진 영향이 반영된 것으로 보인다\"고 말했다.",
       "title": "올해 크레딧물 발행 24%↑…은행채 늘고 회사채는 줄고"
     },
+    "fact:c09f224144d82c1c0cd0cf75": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
+    },
     "fact:c0a6311b21c496127edc2989": {
       "first_seen_kst": "2026-10-17T08:00:41+09:00",
       "lanes": {
@@ -226257,6 +226486,26 @@
       "source_title": "\"아이돌 상품이 매출 효자\" 편의점 '팬덤' 공략 나섰다",
       "telegram_core_fact": "유통업계에 따르면 BGF리테일이 운영하는 편의점 CU의 앱인 포켓CU에서 팔린 올해 1~9월 K팝 아이돌 앨범 매출이 20억원을 돌파한 것으로 알려졌다.",
       "title": "\"아이돌 상품이 매출 효자\" 편의점 '팬덤' 공략 나섰다"
+    },
+    "fact:c6b527065c9f905f4fd21fac": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841420",
+      "source": "뉴시스",
+      "source_body_digest": "b01f7642959bd9397eeeae296de9e04f425baf9dd514d7f9b070e2827e917b16",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a74a194183c93b87ddd243e7948d39faf16caf40bafda457f661fa0324ac9a9",
+      "source_fact_keys": [
+        "source_fact:v1:c2f6f00aac188a1d959ec8102e325e04551bb3db60c2f8a19fa9291cbbaab690"
+      ],
+      "source_published_kst": "2026-10-26T15:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"지슨, 망분리 완화 속도조절론 수혜주…올해 흑자전환 전망\"",
+      "telegram_core_fact": "김학준 키움증권 연구원은 최근 보고서를 통해 \"최근 금융권을 비롯한 해킹 이슈 확대로 인해 망분리 완화와 관련된 속도조절론이 대두되고 있다\"며 \"결국 폐쇄망 보안의 대안으로 물리적 보안 수요가 늘어날 수밖에 없다\"고 진단했다.",
+      "title": "키움證 \"지슨, 망분리 완화 속도조절론 수혜주…올해 흑자전환 전망\""
     },
     "fact:c6cd7deb947805324fd9a546": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
@@ -291069,6 +291318,30 @@
       "source_published_kst": "2026-10-07T16:09+09:00",
       "title": "코스피, 美금리 반등·삼전 실적 경계에 하락…6,800선 턱걸이(종합) | 연합뉴스"
     },
+    "link:3cb6ba6d05997c7f97022765": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026120751527",
+      "source": "연합뉴스",
+      "source_body_digest": "91eb2ff631691a8733c22eb32ee20f92a02340914f5fd6db9b8d97e1fc9e38fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86ba3a284e90103c4e594135113e105ec91580ca337811c6d2bc0b1646aad205",
+      "source_fact_keys": [
+        "source_fact:v1:3327d39031531220a3251211ebbb20012989afdf29abed3f4e1e9407b9feb75a",
+        "source_fact:v1:3dfaed5fd0c8777138eb9fbc9c0ff14f1ef3c09d0d2afb970d039b90f4a82564",
+        "source_fact:v1:57933ae74410c7f6ba4ccad3d28d64e45d468185900d8407d17d366c65dc9215",
+        "source_fact:v1:9d0f7878c22d89de808d1f6b94af77d288426b9210e2c33e2ee5b5f4cdfd2949",
+        "source_fact:v1:e072f7a92135cf2993e33f511bb6c086f1d4b9f83bc929ff3284b0f3d3f91c6c"
+      ],
+      "source_published_kst": "2026-10-26T15:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스"
+    },
     "link:3cbc5708d12c8705547f8490": {
       "first_seen_kst": "2026-10-23T06:00:11+09:00",
       "lanes": {
@@ -296638,6 +296911,26 @@
       ],
       "source_published_kst": "2026-10-07T08:36+09:00",
       "title": "롯데바이오로직스, 알보텍 바이오시밀러 생산 수주"
+    },
+    "link:468e5339996919ebdbbc433f": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841420",
+      "source": "뉴시스",
+      "source_body_digest": "b01f7642959bd9397eeeae296de9e04f425baf9dd514d7f9b070e2827e917b16",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a74a194183c93b87ddd243e7948d39faf16caf40bafda457f661fa0324ac9a9",
+      "source_fact_keys": [
+        "source_fact:v1:c2f6f00aac188a1d959ec8102e325e04551bb3db60c2f8a19fa9291cbbaab690"
+      ],
+      "source_published_kst": "2026-10-26T15:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"지슨, 망분리 완화 속도조절론 수혜주…올해 흑자전환 전망\"",
+      "telegram_core_fact": "김학준 키움증권 연구원은 최근 보고서를 통해 \"최근 금융권을 비롯한 해킹 이슈 확대로 인해 망분리 완화와 관련된 속도조절론이 대두되고 있다\"며 \"결국 폐쇄망 보안의 대안으로 물리적 보안 수요가 늘어날 수밖에 없다\"고 진단했다.",
+      "title": "키움證 \"지슨, 망분리 완화 속도조절론 수혜주…올해 흑자전환 전망\""
     },
     "link:469143f37771983919760f73": {
       "first_seen_kst": "2026-10-05T08:24:29+09:00",
@@ -326496,6 +326789,26 @@
       "telegram_core_fact": "현재 일본 중앙은행의 정책금리는 31년 만의 최고 수준이다.",
       "title": "일본 은행·보험, 해외채권 팔고 일본 국채 사들여 | 연합뉴스"
     },
+    "link:791dedc1d6f86e709975ab27": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026083500527",
+      "source": "연합뉴스",
+      "source_body_digest": "e6939f93de8dd21eace3e7ee07e15f8e3a0f84afb404676f33d270680c881305",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:563d0944c240908f8276927cef665ee78b1e24746c30470fccd4572a87ac6d95",
+      "source_fact_identity": "source_facts:v1:3c227c68227eb57c5d25c852b9e3b29bc4ba54c7d4e585ffaa70bfbf98125022",
+      "source_fact_keys": [
+        "source_fact:v1:979cea1cce58f899359276a5c72a3ad3056504823e9b715cb56c3b072d08d6e7"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 BNK투자증권이 연결 기준 올해 3분기 영업이익 33억원으로 지난해 동기보다 46.3% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스"
+    },
     "link:792c25411418e46558700342": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
       "lanes": {
@@ -343948,6 +344261,36 @@
       "source_title": "삼성전자·SK하이닉스 5%대 강세에 코스피 5700선 회복 [포토]",
       "telegram_core_fact": "코스피가 3.29% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
       "title": "삼성전자·SK하이닉스 5%대 강세에 코스피 5700선 회복 [포토]"
+    },
+    "link:965547d1f9cbdd48d216efff": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
     },
     "link:965d5edeae2d775a793817f6": {
       "first_seen_kst": "2026-10-20T17:57:17+09:00",
@@ -367611,6 +367954,28 @@
       "source_title": "효성重, 2GW급 제어기 성능검증 시스템 국내 최초 구축",
       "telegram_core_fact": "효성중공업 관계자는 “이번 HILS 구축은 단순한 시험설비 확보를 넘어, 당사가 자체 개발한 2GW급 HVDC 제어기를 더욱 고도화할 수 있는 독자적인 기술 기반을 확보했다는 데 의미가 있다”며 “이를 바탕으로 국산 독자기술을 통한 글로벌 HVDC 시장 진출을 지속 확대해 나가겠다”고 밝혔다.",
       "title": "효성重, 2GW급 제어기 성능검증 시스템 국내 최초 구축"
+    },
+    "link:bcd261c10b775214e11884fb": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181432",
+      "source": "매일경제",
+      "source_body_digest": "b6b4c8b267e70ad982c44ce2a08ab88f72ba36091ad9e3ed68071b569df02828",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:915328ddd1af0f812013c2e51f9cf8648a57c536e8d3e755797d2623fbe81117",
+      "source_fact_keys": [
+        "source_fact:v1:4c2d7cc66166bc8fef11cfe861079d747df914a4d4cb0cc565cf6f2ee148627e",
+        "source_fact:v1:79368e5621dabab3136e3a0e0e0ea466676e90fb69e39fab9d7e297636251358",
+        "source_fact:v1:a11e04522d9d4cd0c3aecf819196f5adecefaefb4773ff350491390f0c0e332e"
+      ],
+      "source_published_kst": "2026-10-26T21:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가",
+      "telegram_core_fact": "뱅크 오브 하와이(BOH)가 3분기 희석 주당순이익(EPS)이 1.49달러로 전년 동기 1.20달러보다 24.2% 증가했고, 순이익은 6430만 달러로 20.5% 늘었다고 10월 26일 발표했다. 3분기 말 종가는 68.92달러로 6월 말 81.49달러에서 하락했다.",
+      "title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가"
     },
     "link:bcdacc1b9e94df1680fbdf7b": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -449563,6 +449928,36 @@
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련' | 연합뉴스"
     },
+    "original:48f2e9ac1dc0185ebf2415a6": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
+    },
     "original:490082f8c8bcdbff8fbd56a9": {
       "first_seen_kst": "2026-10-16T18:58:56+09:00",
       "lanes": {
@@ -478968,6 +479363,26 @@
       "source_published_kst": "2026-10-07T01:30+09:00",
       "title": "이더리움 20개 중 1개 쓸어가…비트마인 '5% 확보' 눈앞"
     },
+    "original:7c46366f5646566a380ddc1b": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841420",
+      "source": "뉴시스",
+      "source_body_digest": "b01f7642959bd9397eeeae296de9e04f425baf9dd514d7f9b070e2827e917b16",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a74a194183c93b87ddd243e7948d39faf16caf40bafda457f661fa0324ac9a9",
+      "source_fact_keys": [
+        "source_fact:v1:c2f6f00aac188a1d959ec8102e325e04551bb3db60c2f8a19fa9291cbbaab690"
+      ],
+      "source_published_kst": "2026-10-26T15:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"지슨, 망분리 완화 속도조절론 수혜주…올해 흑자전환 전망\"",
+      "telegram_core_fact": "김학준 키움증권 연구원은 최근 보고서를 통해 \"최근 금융권을 비롯한 해킹 이슈 확대로 인해 망분리 완화와 관련된 속도조절론이 대두되고 있다\"며 \"결국 폐쇄망 보안의 대안으로 물리적 보안 수요가 늘어날 수밖에 없다\"고 진단했다.",
+      "title": "키움證 \"지슨, 망분리 완화 속도조절론 수혜주…올해 흑자전환 전망\""
+    },
     "original:7c4eff5fc5cdf8448657b888": {
       "first_seen_kst": "2026-10-25T17:53:48+09:00",
       "lanes": {
@@ -501071,6 +501486,30 @@
       "telegram_core_fact": "배당 기준일은 11월 2일 영업 종료 시점이며, 이 시점에 주주명부에 오른 주주가 대상이다.",
       "title": "웨스트아메리카 뱅코프, 분기배당 주당 0.48달러 결정..11월 13일 지급"
     },
+    "original:a0ed05d39aca646cd0703019": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026120751527",
+      "source": "연합뉴스",
+      "source_body_digest": "91eb2ff631691a8733c22eb32ee20f92a02340914f5fd6db9b8d97e1fc9e38fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86ba3a284e90103c4e594135113e105ec91580ca337811c6d2bc0b1646aad205",
+      "source_fact_keys": [
+        "source_fact:v1:3327d39031531220a3251211ebbb20012989afdf29abed3f4e1e9407b9feb75a",
+        "source_fact:v1:3dfaed5fd0c8777138eb9fbc9c0ff14f1ef3c09d0d2afb970d039b90f4a82564",
+        "source_fact:v1:57933ae74410c7f6ba4ccad3d28d64e45d468185900d8407d17d366c65dc9215",
+        "source_fact:v1:9d0f7878c22d89de808d1f6b94af77d288426b9210e2c33e2ee5b5f4cdfd2949",
+        "source_fact:v1:e072f7a92135cf2993e33f511bb6c086f1d4b9f83bc929ff3284b0f3d3f91c6c"
+      ],
+      "source_published_kst": "2026-10-26T15:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스"
+    },
     "original:a10099e9c1be44a9e0fafa95": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
       "lanes": {
@@ -512222,6 +512661,26 @@
       "source_title": "2조 규모 공공수요·표준화 추진…\"중국산 가성비 장벽 넘는다\"[K드론 경고등③]",
       "telegram_core_fact": "우리 정부도 지난 6월 발표한 '드론·대(對)드론 대전환 추진전략(K드론 도미넌스)'을 통해 오는 2030년까지 약 2조원 공공수요를 창출하기로 했다. 실제로 정부가 진행 중인 농지 전수조사에 투입된 드론의 90% 이상이 중국산인 것으로 알려졌다.",
       "title": "2조 규모 공공수요·표준화 추진…\"중국산 가성비 장벽 넘는다\"[K드론 경고등③]"
+    },
+    "original:b3f87fad6abb522701895fbf": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026083500527",
+      "source": "연합뉴스",
+      "source_body_digest": "e6939f93de8dd21eace3e7ee07e15f8e3a0f84afb404676f33d270680c881305",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:563d0944c240908f8276927cef665ee78b1e24746c30470fccd4572a87ac6d95",
+      "source_fact_identity": "source_facts:v1:3c227c68227eb57c5d25c852b9e3b29bc4ba54c7d4e585ffaa70bfbf98125022",
+      "source_fact_keys": [
+        "source_fact:v1:979cea1cce58f899359276a5c72a3ad3056504823e9b715cb56c3b072d08d6e7"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 BNK투자증권이 연결 기준 올해 3분기 영업이익 33억원으로 지난해 동기보다 46.3% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스"
     },
     "original:b3fcf4c4e2f6dc38571330f9": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
@@ -527573,6 +528032,28 @@
       "source_title": "롯데百, LA에 K-뷰티 전초기지…유망 브랜드 글로벌 진출 지원",
       "telegram_core_fact": "롯데백화점이 미국 로스앤젤레스(LA)에서 K-뷰티 팝업을 열고 국내 뷰티 브랜드의 글로벌 시장 진출 지원에 나선다고 8일 밝혔다. 롯데백화점의 K-뷰티 상품군 외국인 매출은 최근 3개월간 전년 대비 110% 증가했다.",
       "title": "롯데百, LA에 K-뷰티 전초기지…유망 브랜드 글로벌 진출 지원"
+    },
+    "original:cfb600d40f8d3c7d1114f163": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181432",
+      "source": "매일경제",
+      "source_body_digest": "b6b4c8b267e70ad982c44ce2a08ab88f72ba36091ad9e3ed68071b569df02828",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:915328ddd1af0f812013c2e51f9cf8648a57c536e8d3e755797d2623fbe81117",
+      "source_fact_keys": [
+        "source_fact:v1:4c2d7cc66166bc8fef11cfe861079d747df914a4d4cb0cc565cf6f2ee148627e",
+        "source_fact:v1:79368e5621dabab3136e3a0e0e0ea466676e90fb69e39fab9d7e297636251358",
+        "source_fact:v1:a11e04522d9d4cd0c3aecf819196f5adecefaefb4773ff350491390f0c0e332e"
+      ],
+      "source_published_kst": "2026-10-26T21:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가",
+      "telegram_core_fact": "뱅크 오브 하와이(BOH)가 3분기 희석 주당순이익(EPS)이 1.49달러로 전년 동기 1.20달러보다 24.2% 증가했고, 순이익은 6430만 달러로 20.5% 늘었다고 10월 26일 발표했다. 3분기 말 종가는 68.92달러로 6월 말 81.49달러에서 하락했다.",
+      "title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가"
     },
     "original:cfba29633045770a30fa5812": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
@@ -571090,6 +571571,36 @@
       "telegram_core_fact": "제조업·건설업 등에서 고용이 줄고 보건·복지업이 증가세를 떠받치면서 성장 성과를 폭넓은 일자리 확대로 연결하는 것이 과제로 꼽힌다.",
       "title": "잠재성장률 반등 전망에도 고용은 주춤…성장 온기 확산이 관건"
     },
+    "source_fact:06cbe22b779d97b0e395c51b": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
+    },
     "source_fact:06cf03fa6d4f78a959a42e99": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
       "lanes": {
@@ -574669,6 +575180,36 @@
       "source_title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력",
       "telegram_core_fact": "AI 데이터센터 투자 경쟁이 가속화하면서 기존 회사채 시장을 넘어 사모대출과 구조화금융까지 조달 범위가 확대되고 있다.",
       "title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력"
+    },
+    "source_fact:0827b5cad45fc17d43197a96": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
     },
     "source_fact:082adff0c9beb8d86ac46203": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
@@ -629688,6 +630229,28 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령의 관세 부과 가능성에 기대 사상 최고치를 달려온 구리 강세장에 균열 조짐이 나타나고 있다.",
       "title": "\"트럼프 한 사람에 달렸다\"…구리 강세장, 관세 불발 땐 '거품 붕괴'"
     },
+    "source_fact:1ed6f47ee12ee7cfa644ee3f": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181432",
+      "source": "매일경제",
+      "source_body_digest": "b6b4c8b267e70ad982c44ce2a08ab88f72ba36091ad9e3ed68071b569df02828",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:915328ddd1af0f812013c2e51f9cf8648a57c536e8d3e755797d2623fbe81117",
+      "source_fact_keys": [
+        "source_fact:v1:4c2d7cc66166bc8fef11cfe861079d747df914a4d4cb0cc565cf6f2ee148627e",
+        "source_fact:v1:79368e5621dabab3136e3a0e0e0ea466676e90fb69e39fab9d7e297636251358",
+        "source_fact:v1:a11e04522d9d4cd0c3aecf819196f5adecefaefb4773ff350491390f0c0e332e"
+      ],
+      "source_published_kst": "2026-10-26T21:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가",
+      "telegram_core_fact": "뱅크 오브 하와이(BOH)가 3분기 희석 주당순이익(EPS)이 1.49달러로 전년 동기 1.20달러보다 24.2% 증가했고, 순이익은 6430만 달러로 20.5% 늘었다고 10월 26일 발표했다. 3분기 말 종가는 68.92달러로 6월 말 81.49달러에서 하락했다.",
+      "title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가"
+    },
     "source_fact:1edb0e269cae85be707e4f02": {
       "first_seen_kst": "2026-10-20T23:53:36+09:00",
       "lanes": {
@@ -640297,6 +640860,36 @@
       "source_title": "“5년치 전기료 미리 내달라”…‘삼전닉스’에 손 벌린 한전 , 전기료 인상 현실화?",
       "telegram_core_fact": "연합인포맥스가 최근 증권사들의 실적 전망을 집계한 결과, 한전의 올해 3분기 영업이익은 2조6966억원으로 전년 동기보다 52.29% 감소할 것으로 예상됐다. 같은 기간 매출은 27조6057억원으로 0.12% 증가하는 데 그칠 전망이다.",
       "title": "“5년치 전기료 미리 내달라”…‘삼전닉스’에 손 벌린 한전 , 전기료 인상 현실화?"
+    },
+    "source_fact:22fb9f5c09147e2ac5e2fbc1": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
     },
     "source_fact:22fcd616b98f509eb2ef6109": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
@@ -661404,6 +661997,30 @@
       "source_title": "금리 vs 실적…코스피, 7000선 재도전 나설까[주간증시전망]",
       "telegram_core_fact": "삼성전자가 107조원대 3분기 영업이익으로 어닝 서프라이즈를 기록했지만 채권 금리와 국제 유가 부담을 이겨내지 못하며 7000선 안착에 실패했다.",
       "title": "금리 vs 실적…코스피, 7000선 재도전 나설까[주간증시전망]"
+    },
+    "source_fact:2af3e18fa5041315715bd26c": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026120751527",
+      "source": "연합뉴스",
+      "source_body_digest": "91eb2ff631691a8733c22eb32ee20f92a02340914f5fd6db9b8d97e1fc9e38fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86ba3a284e90103c4e594135113e105ec91580ca337811c6d2bc0b1646aad205",
+      "source_fact_keys": [
+        "source_fact:v1:3327d39031531220a3251211ebbb20012989afdf29abed3f4e1e9407b9feb75a",
+        "source_fact:v1:3dfaed5fd0c8777138eb9fbc9c0ff14f1ef3c09d0d2afb970d039b90f4a82564",
+        "source_fact:v1:57933ae74410c7f6ba4ccad3d28d64e45d468185900d8407d17d366c65dc9215",
+        "source_fact:v1:9d0f7878c22d89de808d1f6b94af77d288426b9210e2c33e2ee5b5f4cdfd2949",
+        "source_fact:v1:e072f7a92135cf2993e33f511bb6c086f1d4b9f83bc929ff3284b0f3d3f91c6c"
+      ],
+      "source_published_kst": "2026-10-26T15:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스"
     },
     "source_fact:2af6827adef9cb61caa15348": {
       "first_seen_kst": "2026-10-16T19:25:42+09:00",
@@ -747823,6 +748440,36 @@
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
+    "source_fact:4de758e592787883344e2344": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
+    },
     "source_fact:4de8fba1f53ae4c9b6ef28dc": {
       "first_seen_kst": "2026-10-20T03:18:10+09:00",
       "lanes": {
@@ -781047,6 +781694,36 @@
       "source_title": "수출 5억달러 눈앞 'K-톡신' 족쇄 풀리나…국가핵심기술 해제 '속도'",
       "telegram_core_fact": "국내 기업은 톡신 해외 기술수출이나 현지 생산시설·합작법인 설립, 투자 유치 때마다 정부 승인을 필수로 거쳐야 했다.",
       "title": "수출 5억달러 눈앞 'K-톡신' 족쇄 풀리나…국가핵심기술 해제 '속도'"
+    },
+    "source_fact:5a88b8b04eb4138cdc22b34b": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
     },
     "source_fact:5a8a00c85b6d2564ef025d09": {
       "first_seen_kst": "2026-10-13T02:27:34+09:00",
@@ -866289,6 +866966,30 @@
       "telegram_core_fact": "최근 대외 악재 속에서 외국인 투자자들은 지난주에만 코스피를 약 11조2000억원 순매도했다.",
       "title": "외국인 38조 던졌는데도 내리는 환율, 여기까지 떨어진다고?[주末머니]"
     },
+    "source_fact:7da3e4590ded90e46ba9585d": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026120751527",
+      "source": "연합뉴스",
+      "source_body_digest": "91eb2ff631691a8733c22eb32ee20f92a02340914f5fd6db9b8d97e1fc9e38fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86ba3a284e90103c4e594135113e105ec91580ca337811c6d2bc0b1646aad205",
+      "source_fact_keys": [
+        "source_fact:v1:3327d39031531220a3251211ebbb20012989afdf29abed3f4e1e9407b9feb75a",
+        "source_fact:v1:3dfaed5fd0c8777138eb9fbc9c0ff14f1ef3c09d0d2afb970d039b90f4a82564",
+        "source_fact:v1:57933ae74410c7f6ba4ccad3d28d64e45d468185900d8407d17d366c65dc9215",
+        "source_fact:v1:9d0f7878c22d89de808d1f6b94af77d288426b9210e2c33e2ee5b5f4cdfd2949",
+        "source_fact:v1:e072f7a92135cf2993e33f511bb6c086f1d4b9f83bc929ff3284b0f3d3f91c6c"
+      ],
+      "source_published_kst": "2026-10-26T15:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스"
+    },
     "source_fact:7da4b94ba49b8182990cdb20": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
       "lanes": {
@@ -868480,6 +869181,26 @@
       ],
       "source_published_kst": "2026-10-06T14:33+09:00",
       "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
+    },
+    "source_fact:7e84fcd02ada14b3bbe767af": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841420",
+      "source": "뉴시스",
+      "source_body_digest": "b01f7642959bd9397eeeae296de9e04f425baf9dd514d7f9b070e2827e917b16",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a74a194183c93b87ddd243e7948d39faf16caf40bafda457f661fa0324ac9a9",
+      "source_fact_keys": [
+        "source_fact:v1:c2f6f00aac188a1d959ec8102e325e04551bb3db60c2f8a19fa9291cbbaab690"
+      ],
+      "source_published_kst": "2026-10-26T15:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"지슨, 망분리 완화 속도조절론 수혜주…올해 흑자전환 전망\"",
+      "telegram_core_fact": "김학준 키움증권 연구원은 최근 보고서를 통해 \"최근 금융권을 비롯한 해킹 이슈 확대로 인해 망분리 완화와 관련된 속도조절론이 대두되고 있다\"며 \"결국 폐쇄망 보안의 대안으로 물리적 보안 수요가 늘어날 수밖에 없다\"고 진단했다.",
+      "title": "키움證 \"지슨, 망분리 완화 속도조절론 수혜주…올해 흑자전환 전망\""
     },
     "source_fact:7e85945c38d25997e479b1e7": {
       "first_seen_kst": "2026-10-23T20:01:54+09:00",
@@ -880605,6 +881326,30 @@
       "telegram_core_fact": "일부 의약품은 공급 차질이 반복되고 있지만 식품의약품안전처가 상당수 사례를 별도 조치가 필요하지 않은 것으로 판단하면서 공급 안정화를 위한 관리체계 개선이 필요하다는 지적이 나온다. 그가 제시한 자료에서는 국가필수의약품 공급 중단·부족 보고 56건 가운데 38건이 '조치 불필요'로 분류됐다.",
       "title": "국가필수의약품 공급 차질 4년 새 2.8배…식약처는 상당수 '조치 불필요'"
     },
+    "source_fact:83bb7245855cc793a0979768": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026120751527",
+      "source": "연합뉴스",
+      "source_body_digest": "91eb2ff631691a8733c22eb32ee20f92a02340914f5fd6db9b8d97e1fc9e38fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86ba3a284e90103c4e594135113e105ec91580ca337811c6d2bc0b1646aad205",
+      "source_fact_keys": [
+        "source_fact:v1:3327d39031531220a3251211ebbb20012989afdf29abed3f4e1e9407b9feb75a",
+        "source_fact:v1:3dfaed5fd0c8777138eb9fbc9c0ff14f1ef3c09d0d2afb970d039b90f4a82564",
+        "source_fact:v1:57933ae74410c7f6ba4ccad3d28d64e45d468185900d8407d17d366c65dc9215",
+        "source_fact:v1:9d0f7878c22d89de808d1f6b94af77d288426b9210e2c33e2ee5b5f4cdfd2949",
+        "source_fact:v1:e072f7a92135cf2993e33f511bb6c086f1d4b9f83bc929ff3284b0f3d3f91c6c"
+      ],
+      "source_published_kst": "2026-10-26T15:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스"
+    },
     "source_fact:83be1edc8e6618dc48d89650": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
       "lanes": {
@@ -890888,6 +891633,28 @@
       "telegram_core_fact": "비바코(VIVK)가 텍사스 미들랜드에 본사를 둔 퍼미안 분지 수처리 업체 다이렉트 미드스트림(Direct Midstream) 지분 100%를 총매입가 4000만 달러에 인수하는 구속력 없는 의향서(LOI)를 체결했다고 10월 9일 발표했다.",
       "title": "비바코, 다이렉트 미드스트림 4000만 달러 인수 의향서 체결"
     },
+    "source_fact:8807517961be8c11c8ada21f": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181432",
+      "source": "매일경제",
+      "source_body_digest": "b6b4c8b267e70ad982c44ce2a08ab88f72ba36091ad9e3ed68071b569df02828",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:915328ddd1af0f812013c2e51f9cf8648a57c536e8d3e755797d2623fbe81117",
+      "source_fact_keys": [
+        "source_fact:v1:4c2d7cc66166bc8fef11cfe861079d747df914a4d4cb0cc565cf6f2ee148627e",
+        "source_fact:v1:79368e5621dabab3136e3a0e0e0ea466676e90fb69e39fab9d7e297636251358",
+        "source_fact:v1:a11e04522d9d4cd0c3aecf819196f5adecefaefb4773ff350491390f0c0e332e"
+      ],
+      "source_published_kst": "2026-10-26T21:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가",
+      "telegram_core_fact": "뱅크 오브 하와이(BOH)가 3분기 희석 주당순이익(EPS)이 1.49달러로 전년 동기 1.20달러보다 24.2% 증가했고, 순이익은 6430만 달러로 20.5% 늘었다고 10월 26일 발표했다. 3분기 말 종가는 68.92달러로 6월 말 81.49달러에서 하락했다.",
+      "title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가"
+    },
     "source_fact:8809c24e8c1eefb6d9fadf93": {
       "first_seen_kst": "2026-10-21T20:02:19+09:00",
       "lanes": {
@@ -892738,6 +893505,36 @@
       "source_title": "엔비디아·앰코, 韓 패키징 증설에 13억달러 계약…美도 확대",
       "telegram_core_fact": "미국 반도체 패키징 기업 앰코테크놀로지와 한국 내 생산시설 확충을 지원하는 13억달러 신규 계약을 체결하고, 미국에서는 반도체 검사시설 구축에 11억달러를 지원한다.",
       "title": "엔비디아·앰코, 韓 패키징 증설에 13억달러 계약…美도 확대"
+    },
+    "source_fact:88bfd90c535184ad90c22fa9": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
     },
     "source_fact:88c328d6a84976cbc63048fe": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -938379,23 +939176,26 @@
     "source_fact:9bc384e83aed4feceec8b2e0": {
       "first_seen_kst": "2026-10-26T15:29:43+09:00",
       "lanes": {
-        "live": "2026-10-26T15:29:43+09:00"
+        "live": "2026-10-26T22:12:35+09:00"
       },
-      "last_seen_kst": "2026-10-26T15:29:43+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261026120700527",
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026120751527",
       "source": "연합뉴스",
-      "source_body_digest": "ea997a0be6a2dfcee7f970a92ed8dcea196f27ff44a77b7d14b23be72497c7fe",
-      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3d520e14c438694ecb21d9536db6fda88fa0d0ebf3851f3827183e6cf9bfb242",
-      "source_fact_identity": "source_facts:v1:c859e4d41844fa7dc0fce630bf6c0f7031d23c7e5664840f5314e3a0e73dd163",
+      "source_body_digest": "91eb2ff631691a8733c22eb32ee20f92a02340914f5fd6db9b8d97e1fc9e38fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86ba3a284e90103c4e594135113e105ec91580ca337811c6d2bc0b1646aad205",
       "source_fact_keys": [
+        "source_fact:v1:3327d39031531220a3251211ebbb20012989afdf29abed3f4e1e9407b9feb75a",
+        "source_fact:v1:3dfaed5fd0c8777138eb9fbc9c0ff14f1ef3c09d0d2afb970d039b90f4a82564",
         "source_fact:v1:57933ae74410c7f6ba4ccad3d28d64e45d468185900d8407d17d366c65dc9215",
-        "source_fact:v1:d4c25bdb574b9b09a0140004f85b19724da4d5bcfcae4cd4d1b817286fb587bd"
+        "source_fact:v1:9d0f7878c22d89de808d1f6b94af77d288426b9210e2c33e2ee5b5f4cdfd2949",
+        "source_fact:v1:e072f7a92135cf2993e33f511bb6c086f1d4b9f83bc929ff3284b0f3d3f91c6c"
       ],
-      "source_published_kst": "2026-10-26T15:19+09:00",
+      "source_published_kst": "2026-10-26T15:42+09:00",
       "source_supply_terms": {},
-      "source_title": "NH투자증권 3분기 영업익 5천211억원…전년비 33.2%↑ | 연합뉴스",
-      "telegram_core_fact": "코스피 상장사 NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
-      "title": "NH투자증권 3분기 영업익 5천211억원…전년비 33.2%↑ | 연합뉴스"
+      "source_title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스"
     },
     "source_fact:9bc55dc197dbc40402e1ffa4": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -971159,6 +971959,28 @@
       "telegram_core_fact": "햇반 브랜드는 2023년 국내외 합산 매출 1조원을 처음 돌파한 데 이어, 지난해에는 약 1조1000억 원 이상으로 역대 최대 성과를 거뒀다.",
       "title": "[현장]서른살 된 CJ제일제당 '햇반'…목표는 2028년 연매출 1조5000억원"
     },
+    "source_fact:a880f093886a48a4f3738d5b": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181432",
+      "source": "매일경제",
+      "source_body_digest": "b6b4c8b267e70ad982c44ce2a08ab88f72ba36091ad9e3ed68071b569df02828",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:915328ddd1af0f812013c2e51f9cf8648a57c536e8d3e755797d2623fbe81117",
+      "source_fact_keys": [
+        "source_fact:v1:4c2d7cc66166bc8fef11cfe861079d747df914a4d4cb0cc565cf6f2ee148627e",
+        "source_fact:v1:79368e5621dabab3136e3a0e0e0ea466676e90fb69e39fab9d7e297636251358",
+        "source_fact:v1:a11e04522d9d4cd0c3aecf819196f5adecefaefb4773ff350491390f0c0e332e"
+      ],
+      "source_published_kst": "2026-10-26T21:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가",
+      "telegram_core_fact": "뱅크 오브 하와이(BOH)가 3분기 희석 주당순이익(EPS)이 1.49달러로 전년 동기 1.20달러보다 24.2% 증가했고, 순이익은 6430만 달러로 20.5% 늘었다고 10월 26일 발표했다. 3분기 말 종가는 68.92달러로 6월 말 81.49달러에서 하락했다.",
+      "title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가"
+    },
     "source_fact:a8850f98f1216817834d996a": {
       "first_seen_kst": "2026-10-14T17:44:16+09:00",
       "lanes": {
@@ -983356,6 +984178,36 @@
       "telegram_core_fact": "세계 최대 독립 광고 판매 플랫폼 기업 매그나이트(MGNI)가 3억5800만 달러 규모 선순위 담보부 텀론B의 금리를 50bp(0.5%포인트) 낮추는 세 번째 리프라이싱을 완료해 연간 약 180만 달러의 현금 이자 비용을 절감하게 됐다고 7일(현지시간) 발표했다.",
       "title": "매그나이트, 텀론 금리 0.5%p 인하..연 180만 달러 절감"
     },
+    "source_fact:ad6cadd5a17d679a5ea2581b": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
+    },
     "source_fact:ad6f086f2d425451c53b6051": {
       "first_seen_kst": "2026-10-09T19:43:36+09:00",
       "lanes": {
@@ -986399,6 +987251,30 @@
       "telegram_core_fact": "2028년 6월 결산 매출액은 2억9380만 달러로 59.00% 증가하고, 2029년 6월 결산 매출액은 4억9958만 달러로 70.05% 늘어날 것으로 예상된다.",
       "title": "메소블라스트, 1분기 순매출 2800만달러..전년비 44% 증가"
     },
+    "source_fact:ae987de74ebb124254e46132": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026120751527",
+      "source": "연합뉴스",
+      "source_body_digest": "91eb2ff631691a8733c22eb32ee20f92a02340914f5fd6db9b8d97e1fc9e38fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86ba3a284e90103c4e594135113e105ec91580ca337811c6d2bc0b1646aad205",
+      "source_fact_keys": [
+        "source_fact:v1:3327d39031531220a3251211ebbb20012989afdf29abed3f4e1e9407b9feb75a",
+        "source_fact:v1:3dfaed5fd0c8777138eb9fbc9c0ff14f1ef3c09d0d2afb970d039b90f4a82564",
+        "source_fact:v1:57933ae74410c7f6ba4ccad3d28d64e45d468185900d8407d17d366c65dc9215",
+        "source_fact:v1:9d0f7878c22d89de808d1f6b94af77d288426b9210e2c33e2ee5b5f4cdfd2949",
+        "source_fact:v1:e072f7a92135cf2993e33f511bb6c086f1d4b9f83bc929ff3284b0f3d3f91c6c"
+      ],
+      "source_published_kst": "2026-10-26T15:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스"
+    },
     "source_fact:ae98d626bd6bde29ae9672e5": {
       "first_seen_kst": "2026-10-11T16:16:50+09:00",
       "lanes": {
@@ -988018,6 +988894,36 @@
       "telegram_core_fact": "에프엔비(FNB)는 3분기 순이익이 1억5290만 달러, 희석 주당순이익이 0.43달러로 전년 동기 0.41달러 대비 4.9% 증가했다고 19일(현지시간) 발표했다.",
       "title": "에프엔비, 3분기 희석 EPS 0.43달러..순이자수익 역대 최대"
     },
+    "source_fact:af4b892ee47f192e9dc5daa5": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
+    },
     "source_fact:af4b94647e50cd5500c18873": {
       "first_seen_kst": "2026-10-23T04:40:39+09:00",
       "lanes": {
@@ -989545,6 +990451,36 @@
       "source_title": "커뮤니티 트러스트 뱅코프, 3분기 희석 EPS 1.43달러..전년비 8.3% 증가",
       "telegram_core_fact": "커뮤니티 트러스트 뱅코프(CTBI)는 올해 3분기(7~9월) 희석 주당순이익이 1.43달러로 전년 동기 1.32달러보다 8.3% 늘었고, 순이익은 2589만 달러로 전년 동기 2391만 달러 대비 8.3% 증가했다고 10월 21일 발표했다.",
       "title": "커뮤니티 트러스트 뱅코프, 3분기 희석 EPS 1.43달러..전년비 8.3% 증가"
+    },
+    "source_fact:aff40c6eeda0306a98cdda23": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
     },
     "source_fact:aff51f63a0c0dde7a04ee077": {
       "first_seen_kst": "2026-10-23T21:02:19+09:00",
@@ -1099545,6 +1100481,36 @@
       "telegram_core_fact": "블룸버그에 따르면 상장 이후 공동창업자인 이들의 총 주식 매각 규모는 총 33억달러 규모인 것으로 집계됐다. 클라우드 서비스 기업 '코어위브'의 공동 창업자 3명이 올해에만 약 24억달러(약 3조2000억원) 회사 주식을 매각했다고 15일(현지시간) 블룸버그통신이 보도했다.",
       "title": "코어위브 창업자 3인, 33억달러 현금화…주가 폭락 전 팔아치웠다"
     },
+    "source_fact:dc488aaeda9160a9784c985a": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
+    },
     "source_fact:dc509b62ad9e3e4285610439": {
       "first_seen_kst": "2026-10-25T06:23:11+09:00",
       "lanes": {
@@ -1108593,6 +1109559,36 @@
       "source_title": "[정선소식]친환경 미생물 자동분주 시스템 구축 추진 등",
       "telegram_core_fact": "이경천 농업기술센터 소장은 \"자동분주 시스템 구축으로 농업인이 보다 쉽고 편리하게 미생물을 공급받을 수 있는 환경을 조성하고, 농업인이 체감할 수 있는 친환경 농업 지원을 지속적으로 확대해 나가겠다\"고 전했다.",
       "title": "[정선소식]친환경 미생물 자동분주 시스템 구축 추진 등"
+    },
+    "source_fact:e0003a575182a3e1efba5926": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
     },
     "source_fact:e000f6c9a727e82a239efafe": {
       "first_seen_kst": "2026-10-23T16:42:18+09:00",
@@ -1170819,6 +1171815,26 @@
       "telegram_core_fact": "일본 시장조사업계는 기존 2위인 H&M의 2025년 11월기(2024년 12월~2025년 11월) 매출이 3조6000억엔(약 30조5600억원)을 기록한 이후 감소세를 보인 점을 근거로 패스트리테일링이 H&M의 매출 규모를 넘어섰을 가능성이 있다고 분석했다.",
       "title": "유니클로, 매출 17% 늘어 역대 최대…H&M 제치고 세계 2위 전망"
     },
+    "source_fact:f9dc9b2f54ede31c9d424863": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026083500527",
+      "source": "연합뉴스",
+      "source_body_digest": "e6939f93de8dd21eace3e7ee07e15f8e3a0f84afb404676f33d270680c881305",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:563d0944c240908f8276927cef665ee78b1e24746c30470fccd4572a87ac6d95",
+      "source_fact_identity": "source_facts:v1:3c227c68227eb57c5d25c852b9e3b29bc4ba54c7d4e585ffaa70bfbf98125022",
+      "source_fact_keys": [
+        "source_fact:v1:979cea1cce58f899359276a5c72a3ad3056504823e9b715cb56c3b072d08d6e7"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 BNK투자증권이 연결 기준 올해 3분기 영업이익 33억원으로 지난해 동기보다 46.3% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스"
+    },
     "source_fact:f9dd31004461ada1bb25b313": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
       "lanes": {
@@ -1230437,6 +1231453,36 @@
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련' | 연합뉴스"
     },
+    "title:48f2e9ac1dc0185ebf2415a6": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102605145070444",
+      "source": "머니투데이",
+      "source_body_digest": "3ef0e883ec0fc4772d53d8c53a3c8bd46c60ff24f760777f803b5125815a3aa2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ba243f389df7e03f3b72264f136172cd8648ddb8c617a1e8da6a842f7141be02",
+      "source_fact_keys": [
+        "source_fact:v1:0c2dcb1febfe2710fbf2b53108d40c2405c3446537bb0159d7b511b56a0fe67c",
+        "source_fact:v1:15142d2bb55dbf2c89da763c3a82d35fc393941e8cc3e0e22ddfbe1da9c6c8db",
+        "source_fact:v1:3a211b0f5feb6e4545e814980bcbb556d9bc132287129e82f4e96d7ae219f19b",
+        "source_fact:v1:3b4690964b8776018cca3c939978bf3165c8faa25ae204e05113d48da439dbbd",
+        "source_fact:v1:5d507d32694bae1d64cd075a8ab6903571a34c7f89aefbea55495ff2bac4e7b5",
+        "source_fact:v1:68ce01b2e35baddb438f8ae52471c416edab6dcbda2b11a9c87931098f47a541",
+        "source_fact:v1:8787c67f053e4482acf6949a5828d79e8ba1f3ab49374e04a6d0cb1b0dd40c4f",
+        "source_fact:v1:c2d5ae9021a145b057744d88f3e40002ee83208ea918a91e1276e68cea5ae8d5",
+        "source_fact:v1:c63bc537e1587f6358b456b660771bf3f72d7423297d869d50b3c920811d82d3",
+        "source_fact:v1:f5d79618fa05dd6c7e43eed90b1d651433d0cdb88c850907bc6f6c728c0bae2c",
+        "source_fact:v1:f6b95c363f7257e48930b928753b6e752296f0ab677166547ba5b947d4a29bbe"
+      ],
+      "source_published_kst": "2026-10-26T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사",
+      "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
+      "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
+    },
     "title:490082f8c8bcdbff8fbd56a9": {
       "first_seen_kst": "2026-10-16T18:58:56+09:00",
       "lanes": {
@@ -1260477,6 +1261523,26 @@
       "source_published_kst": "2026-10-07T01:30+09:00",
       "title": "이더리움 20개 중 1개 쓸어가…비트마인 '5% 확보' 눈앞"
     },
+    "title:7c46366f5646566a380ddc1b": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841420",
+      "source": "뉴시스",
+      "source_body_digest": "b01f7642959bd9397eeeae296de9e04f425baf9dd514d7f9b070e2827e917b16",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a74a194183c93b87ddd243e7948d39faf16caf40bafda457f661fa0324ac9a9",
+      "source_fact_keys": [
+        "source_fact:v1:c2f6f00aac188a1d959ec8102e325e04551bb3db60c2f8a19fa9291cbbaab690"
+      ],
+      "source_published_kst": "2026-10-26T15:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "키움證 \"지슨, 망분리 완화 속도조절론 수혜주…올해 흑자전환 전망\"",
+      "telegram_core_fact": "김학준 키움증권 연구원은 최근 보고서를 통해 \"최근 금융권을 비롯한 해킹 이슈 확대로 인해 망분리 완화와 관련된 속도조절론이 대두되고 있다\"며 \"결국 폐쇄망 보안의 대안으로 물리적 보안 수요가 늘어날 수밖에 없다\"고 진단했다.",
+      "title": "키움證 \"지슨, 망분리 완화 속도조절론 수혜주…올해 흑자전환 전망\""
+    },
     "title:7c4eff5fc5cdf8448657b888": {
       "first_seen_kst": "2026-10-25T17:53:48+09:00",
       "lanes": {
@@ -1283101,6 +1284167,30 @@
       "telegram_core_fact": "배당 기준일은 11월 2일 영업 종료 시점이며, 이 시점에 주주명부에 오른 주주가 대상이다.",
       "title": "웨스트아메리카 뱅코프, 분기배당 주당 0.48달러 결정..11월 13일 지급"
     },
+    "title:a0ed05d39aca646cd0703019": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026120751527",
+      "source": "연합뉴스",
+      "source_body_digest": "91eb2ff631691a8733c22eb32ee20f92a02340914f5fd6db9b8d97e1fc9e38fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86ba3a284e90103c4e594135113e105ec91580ca337811c6d2bc0b1646aad205",
+      "source_fact_keys": [
+        "source_fact:v1:3327d39031531220a3251211ebbb20012989afdf29abed3f4e1e9407b9feb75a",
+        "source_fact:v1:3dfaed5fd0c8777138eb9fbc9c0ff14f1ef3c09d0d2afb970d039b90f4a82564",
+        "source_fact:v1:57933ae74410c7f6ba4ccad3d28d64e45d468185900d8407d17d366c65dc9215",
+        "source_fact:v1:9d0f7878c22d89de808d1f6b94af77d288426b9210e2c33e2ee5b5f4cdfd2949",
+        "source_fact:v1:e072f7a92135cf2993e33f511bb6c086f1d4b9f83bc929ff3284b0f3d3f91c6c"
+      ],
+      "source_published_kst": "2026-10-26T15:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "증권사 3분기 실적 개시…NH증권, 전분기 대비 23.5%↓(종합) | 연합뉴스"
+    },
     "title:a10099e9c1be44a9e0fafa95": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
       "lanes": {
@@ -1294569,6 +1295659,26 @@
       "source_title": "2조 규모 공공수요·표준화 추진…\"중국산 가성비 장벽 넘는다\"[K드론 경고등③]",
       "telegram_core_fact": "우리 정부도 지난 6월 발표한 '드론·대(對)드론 대전환 추진전략(K드론 도미넌스)'을 통해 오는 2030년까지 약 2조원 공공수요를 창출하기로 했다. 실제로 정부가 진행 중인 농지 전수조사에 투입된 드론의 90% 이상이 중국산인 것으로 알려졌다.",
       "title": "2조 규모 공공수요·표준화 추진…\"중국산 가성비 장벽 넘는다\"[K드론 경고등③]"
+    },
+    "title:b3f87fad6abb522701895fbf": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026083500527",
+      "source": "연합뉴스",
+      "source_body_digest": "e6939f93de8dd21eace3e7ee07e15f8e3a0f84afb404676f33d270680c881305",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:563d0944c240908f8276927cef665ee78b1e24746c30470fccd4572a87ac6d95",
+      "source_fact_identity": "source_facts:v1:3c227c68227eb57c5d25c852b9e3b29bc4ba54c7d4e585ffaa70bfbf98125022",
+      "source_fact_keys": [
+        "source_fact:v1:979cea1cce58f899359276a5c72a3ad3056504823e9b715cb56c3b072d08d6e7"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 BNK투자증권이 연결 기준 올해 3분기 영업이익 33억원으로 지난해 동기보다 46.3% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스"
     },
     "title:b3fcf4c4e2f6dc38571330f9": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
@@ -1310231,6 +1311341,28 @@
       "source_title": "롯데百, LA에 K-뷰티 전초기지…유망 브랜드 글로벌 진출 지원",
       "telegram_core_fact": "롯데백화점이 미국 로스앤젤레스(LA)에서 K-뷰티 팝업을 열고 국내 뷰티 브랜드의 글로벌 시장 진출 지원에 나선다고 8일 밝혔다. 롯데백화점의 K-뷰티 상품군 외국인 매출은 최근 3개월간 전년 대비 110% 증가했다.",
       "title": "롯데百, LA에 K-뷰티 전초기지…유망 브랜드 글로벌 진출 지원"
+    },
+    "title:cfb600d40f8d3c7d1114f163": {
+      "first_seen_kst": "2026-10-26T22:12:35+09:00",
+      "lanes": {
+        "live": "2026-10-26T22:12:35+09:00"
+      },
+      "last_seen_kst": "2026-10-26T22:12:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181432",
+      "source": "매일경제",
+      "source_body_digest": "b6b4c8b267e70ad982c44ce2a08ab88f72ba36091ad9e3ed68071b569df02828",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:915328ddd1af0f812013c2e51f9cf8648a57c536e8d3e755797d2623fbe81117",
+      "source_fact_keys": [
+        "source_fact:v1:4c2d7cc66166bc8fef11cfe861079d747df914a4d4cb0cc565cf6f2ee148627e",
+        "source_fact:v1:79368e5621dabab3136e3a0e0e0ea466676e90fb69e39fab9d7e297636251358",
+        "source_fact:v1:a11e04522d9d4cd0c3aecf819196f5adecefaefb4773ff350491390f0c0e332e"
+      ],
+      "source_published_kst": "2026-10-26T21:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가",
+      "telegram_core_fact": "뱅크 오브 하와이(BOH)가 3분기 희석 주당순이익(EPS)이 1.49달러로 전년 동기 1.20달러보다 24.2% 증가했고, 순이익은 6430만 달러로 20.5% 늘었다고 10월 26일 발표했다. 3분기 말 종가는 68.92달러로 6월 말 81.49달러에서 하락했다.",
+      "title": "뱅크 오브 하와이, 3분기 희석 EPS 1.49달러..전년비 24% 증가"
     },
     "title:cfba29633045770a30fa5812": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
@@ -1338115,5 +1339247,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-26T21:36:43+09:00"
+  "updated_at_kst": "2026-10-26T22:12:35+09:00"
 }
