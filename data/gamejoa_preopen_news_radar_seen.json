@@ -388,6 +388,27 @@
       "telegram_core_fact": "주요 생산국의 이상기후나 전쟁·분쟁, 수출제한 조치가 발생하면 수입 의존도가 높은 우리나라의 원료 확보에도 부담이 커질 수밖에 없다.",
       "title": "옥수수 90% 이상 수입…공급망 불안, 고기·가공식품값으로 번진다"
     },
+    "core:011ccf7e441a474944421304": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026136800527",
+      "source": "연합뉴스",
+      "source_body_digest": "924b66604d49d07ce415e33e09373522010ff4338ce825da78ec4aa9778fb6a3",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ed0f2c8523389f958739c8f7920d44b7b95bd5724009ed5db628ec2b513c3147",
+      "source_fact_identity": "source_facts:v1:40cc98118cc6a64df0ab92ad2fcfd58b1f721ac9b2964817f7694fda326b1002",
+      "source_fact_keys": [
+        "source_fact:v1:3419be9d8e5b361e22a0b2bf1fbaa744594e5f5dd4b880059791522c39a76aed",
+        "source_fact:v1:6688ae7c00afb8abee4f8a24fbaec7f6cb325e8616851d776a9fd84b8766819f"
+      ],
+      "source_published_kst": "2026-10-26T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 기업은행[024110]은 연결 기준 올해 3분기 영업이익이 1조313억원으로, 지난해 동기보다 5.6% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스"
+    },
     "core:012a605a88ea73d43dcade66": {
       "first_seen_kst": "2026-10-17T00:21:55+09:00",
       "lanes": {
@@ -2935,6 +2956,39 @@
       "source_title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파",
       "telegram_core_fact": "8일(현지시간) 파이낸셜타임스를 비롯한 주요 외신들에 따르면 개발사인 오픈AI는 투자자들에게 연간 환산 매출이 500억 달러 수준으로 예상된다고 말했다.",
       "title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파"
+    },
+    "core:07e43dfad7846b9f270a21f6": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "core:0809ab581c53ef6b76df090d": {
       "first_seen_kst": "2026-10-09T21:11:52+09:00",
@@ -14722,6 +14776,29 @@
       "source_title": "\"배당성장·초과성과 잡는다\" KODEX 미국배당다우존스액티브 상장",
       "telegram_core_fact": "삼성자산운용은 'KODEX 미국배당다우존스액티브' ETF를 오는 20일 신규 상장한다고 19일 밝혔다.",
       "title": "\"배당성장·초과성과 잡는다\" KODEX 미국배당다우존스액티브 상장"
+    },
+    "core:22563d23f73fb467e241cc1f": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639450",
+      "source": "이투데이",
+      "source_body_digest": "4e81069b89418eec1c0af5b8ba844113a59ba8f20670bf7a8e0ad3c670819f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:046fe8cb9a33157170d3160412ee2f4e5769c866fef44824f2cce04106bb158e",
+      "source_fact_keys": [
+        "source_fact:v1:5756b109502b7a31a60cbfa5d0fa3558e8219af3a825fac3fb14fb4c89fb4299",
+        "source_fact:v1:609b3ac4a95d6201cf6c1c79a1552c2e92c65864a8d5172a427ca066ed3d0c26",
+        "source_fact:v1:6f62ce994573bf0b3e7cc85380bc1a4e40d51bf0de5beece3f5232fa4f2481e4",
+        "source_fact:v1:a31b243f715225ccac960af1ab3938e206bdcc32c01c80670f7d16b170810120"
+      ],
+      "source_published_kst": "2026-10-26T16:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아",
+      "telegram_core_fact": "“재경부의 최종 판단이 남아 있는 만큼 관세 부과와 함께 HGI 우회 수입을 막기 위한 보완 조치도 신속히 이뤄져야 한다”고 말했다.",
+      "title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아"
     },
     "core:2261649420979b2c48abac02": {
       "first_seen_kst": "2026-10-20T05:02:52+09:00",
@@ -29480,6 +29557,30 @@
       "source_title": "개미, 주식 7조 던지고 채권 10조 담았다",
       "telegram_core_fact": "금융투자협회와 한국거래소에 따르면 올 3분기(7~9월) 개인투자자의 장외채권 순매수액은 10조4028억원으로 집계됐다. 지난 3분기에 개인들은 유가증권시장에서 7조원 넘게 순매도하면서 채권은 10조원 넘게 사들였다.",
       "title": "개미, 주식 7조 던지고 채권 10조 담았다"
+    },
+    "core:42c1f9024ad9ba288ae84cd3": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026133400530",
+      "source": "연합뉴스",
+      "source_body_digest": "f6aa07e4501c6acf24c5c4518fc6a95fb02410cfd4f3b8d2dad5655d43fdc3ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de21002eeab9e803e801ea3354cefd6b9e9889cf3c76f5ba8c980f0ed077cb3",
+      "source_fact_keys": [
+        "source_fact:v1:22201228d5bd5941c4e8947bd7833e5c97117646139bb49595658690e2d282e1",
+        "source_fact:v1:380645146179ae325a4540b7a08f053fc3c5690253f37b0364a20a603c030a97",
+        "source_fact:v1:7cedb49cffcc6b5eae89044dd4b358e049229c1a654b41a004ca0ccb78071a18",
+        "source_fact:v1:ae2f5fd7c1d955fb1ad1440434620a27a1c5c554348b41715a38497374bfe845",
+        "source_fact:v1:d05cc4362e29efdb80416dddfa7817d90a08f07c5464338d1799a2e0d5bc9d62"
+      ],
+      "source_published_kst": "2026-10-26T16:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스",
+      "telegram_core_fact": "정부가 호남 반도체 산업단지에 전기를 공급할 송전망을 계획보다 1년 앞당겨 구축하기 위해 다른 지역에 설치하려던 변압기를 가져다 쓰기로 했다.",
+      "title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스"
     },
     "core:42c54fd80536c7926f056fe5": {
       "first_seen_kst": "2026-10-12T18:02:18+09:00",
@@ -73955,6 +74056,26 @@
       "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
       "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
     },
+    "core:ab8fd916cd45dbc1fb237e51": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026125000002",
+      "source": "연합뉴스",
+      "source_body_digest": "ab894e4fedf56e78acfa957e322162c1090ba3179257fd03af6220dce4e2e22a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:45d224b898b2bc5d9428e5eef0c916562754f5f316b9a72e146911f89229090d",
+      "source_fact_keys": [
+        "source_fact:v1:fb7ac5a7b58edc0f3a25372f5ed3aa093c79285202d9cdeefb214762b18e139b"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 순익 7천712억원…1년 전보다 2.7%↑(종합) | 연합뉴스",
+      "telegram_core_fact": "IBK기업은행은 올해 3분기 연결 기준 당기순이익이 7천712억원으로, 작년 동기보다 2.7% 증가했다고 26일 공시했다.",
+      "title": "기업은행 3분기 순익 7천712억원…1년 전보다 2.7%↑(종합) | 연합뉴스"
+    },
     "core:ab966c941404c8d0c1fcad4c": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
       "lanes": {
@@ -100516,6 +100637,27 @@
       "telegram_core_fact": "전통주 기업 지평주조는 올해 3분기 누적 수출액이 전년비 50% 증가했다고 20일 밝혔다.",
       "title": "지평주조, 3분기 누적 수출액 50% 증가…연내 18개국 진출 목표 | 연합뉴스"
     },
+    "core:e8f9833880a74fa5ee2389e3": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640194",
+      "source": "이투데이",
+      "source_body_digest": "36d4935ed9a838c1911be88df9ff581c28a95d92a39917e310acec66057bb624",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29889e135c0a9196fb777875062bbc0a91be9ff1f4fb2bc26e7792b1a4fb2937",
+      "source_fact_keys": [
+        "source_fact:v1:73117162407846ba15376eb7e939e73070c642c509e067929b3e4ca1a9bc743b",
+        "source_fact:v1:76fe0da0a77870bfe4f7adcd5007fe3114e848c3106558f53a4c6fa9ac511018"
+      ],
+      "source_published_kst": "2026-10-26T16:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파",
+      "telegram_core_fact": "NH투자증권이 올해 3분기 누적 순이익 1조3489억원을 기록하며 지난해 연간 실적을 조기에 넘어섰다.",
+      "title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파"
+    },
     "core:e919df60a8ca514665709e80": {
       "first_seen_kst": "2026-10-14T16:26:08+09:00",
       "lanes": {
@@ -106141,6 +106283,26 @@
       "source_title": "스바루, 2020년대후반 '소프트웨어중심車' 출시…개발 기간 단축",
       "telegram_core_fact": "이밖에도 기존 시제품 제작, 설계, 개발 차량 확인, 양산 준비 순으로 진행된 개발 공정을 단축해 신차 개발 기간을 줄이고, 단축된 시간은 차량 성능과 품질을 다듬는 데 투입한다는 목표다.",
       "title": "스바루, 2020년대후반 '소프트웨어중심車' 출시…개발 기간 단축"
+    },
+    "core:f6031a45119e72e0ed2b4ed8": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026084700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2b2731236df6db50f24d9540733bdac62a9f5bb0a3b6cbc93e3b1ac86fb35264",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:544f064a0e1e3a3ae125dc031eb93853ed98ba92c68efab2ef8cdd136ba687b0",
+      "source_fact_identity": "source_facts:v1:781430310c529990ab5b63a7ac78c4e05df677817b30bee43956dc2543d88eb0",
+      "source_fact_keys": [
+        "source_fact:v1:2bfe7d22f588b3b617e6dc944f6e44e2abfb79432d80921788d5e7bb0261989c"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 부산은행이 연결 기준 올해 3분기 영업이익 1천459억원으로 지난해 동기보다 34.5% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스"
     },
     "core:f60d704d7dd5610cea2bac88": {
       "first_seen_kst": "2026-10-11T06:36:16+09:00",
@@ -125144,25 +125306,35 @@
     "event:9b2a30dc55dbfa3fbed426d4": {
       "first_seen_kst": "2026-10-26T22:48:11+09:00",
       "lanes": {
-        "live": "2026-10-26T22:48:11+09:00"
+        "live": "2026-10-26T23:18:52+09:00"
       },
-      "last_seen_kst": "2026-10-26T22:48:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261026_0003841502",
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
       "source": "뉴시스",
-      "source_body_digest": "6fca910bd394721260e4791a6245173439e1f11f777fbefaf1edc52f46b8d797",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:5ed293948a4f2ebf042562057d107e58fe1b2d48e23d4575fa482455c051d680",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
       "source_fact_keys": [
-        "source_fact:v1:38185552b31925c57628db497f845e23e147f3a243145aa1b68182276f09edb3",
-        "source_fact:v1:4efb23322c9ff0a1d22a715b3293094b0a01433959b240f6bc1a6ccd07c0b575",
-        "source_fact:v1:d70feb6f2b6f53bb989e9e77b632bcfbd5bb78b539a0cb7c707b17b2fcda3768",
-        "source_fact:v1:d9684729651818e9702ad92bbb7fe08c6cd98b9cbbcbd944cf1d966c7a081a31"
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
       ],
-      "source_published_kst": "2026-10-26T18:19+09:00",
+      "source_published_kst": "2026-10-26T16:15+09:00",
       "source_supply_terms": {},
-      "source_title": "NH투자증권 3분기 순이익 3836억…전년比 35.5%↑",
-      "telegram_core_fact": "NH투자증권은 3분기 연결 재무제표 기준 순이익이 3836억원으로 잠정 집계됐다고 26일 공시했다.",
-      "title": "NH투자증권 3분기 순이익 3836억…전년比 35.5%↑"
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "event:9b99ccfa3ffda809dea240fc": {
       "first_seen_kst": "2026-10-14T23:19:07+09:00",
@@ -132759,6 +132931,27 @@
       "telegram_core_fact": "엔비디아가 차세대 인공지능(AI) 서버 플랫폼인 베라 루빈을 본격 양산하며 AI 인프라 공급 확대에 나섰다.",
       "title": "젠슨황 \"베라 루빈 본격 양산\"… 삼성·SK 파트너십 강화할듯"
     },
+    "event:ec8ae5a3284254208c08c1c6": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026136800527",
+      "source": "연합뉴스",
+      "source_body_digest": "924b66604d49d07ce415e33e09373522010ff4338ce825da78ec4aa9778fb6a3",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ed0f2c8523389f958739c8f7920d44b7b95bd5724009ed5db628ec2b513c3147",
+      "source_fact_identity": "source_facts:v1:40cc98118cc6a64df0ab92ad2fcfd58b1f721ac9b2964817f7694fda326b1002",
+      "source_fact_keys": [
+        "source_fact:v1:3419be9d8e5b361e22a0b2bf1fbaa744594e5f5dd4b880059791522c39a76aed",
+        "source_fact:v1:6688ae7c00afb8abee4f8a24fbaec7f6cb325e8616851d776a9fd84b8766819f"
+      ],
+      "source_published_kst": "2026-10-26T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 기업은행[024110]은 연결 기준 올해 3분기 영업이익이 1조313억원으로, 지난해 동기보다 5.6% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스"
+    },
     "event:ecc106662168368bdcad2f92": {
       "first_seen_kst": "2026-10-10T03:00:37+09:00",
       "lanes": {
@@ -134235,6 +134428,26 @@
       "source_title": "한투운용, 홍콩 시장 공략…현지 운용사와 협력해 1호 ETF 상장",
       "telegram_core_fact": "중국 차이나유니버설자산운용의 홍콩 현지법인(China Universal Asset Management Hong Kong, 이하 CUAM HK)과 협력해 개발한 첫 ETF가 홍콩증권거래소(HKEX)에 상장했다.",
       "title": "한투운용, 홍콩 시장 공략…현지 운용사와 협력해 1호 ETF 상장"
+    },
+    "event:fbc81b45aef133b453f83224": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026084700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2b2731236df6db50f24d9540733bdac62a9f5bb0a3b6cbc93e3b1ac86fb35264",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:544f064a0e1e3a3ae125dc031eb93853ed98ba92c68efab2ef8cdd136ba687b0",
+      "source_fact_identity": "source_facts:v1:781430310c529990ab5b63a7ac78c4e05df677817b30bee43956dc2543d88eb0",
+      "source_fact_keys": [
+        "source_fact:v1:2bfe7d22f588b3b617e6dc944f6e44e2abfb79432d80921788d5e7bb0261989c"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 부산은행이 연결 기준 올해 3분기 영업이익 1천459억원으로 지난해 동기보다 34.5% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스"
     },
     "event:fbdc07cc840136fe89a3651b": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
@@ -147478,6 +147691,30 @@
       "source_title": "코스피, 낙폭 줄여 5490선…SK하이닉스 2%대 반등",
       "telegram_core_fact": "엠피닥터에 따르면 이날 오후 1시38분 현재 코스피는 전거래일 대비 41.87포인트(0.76%) 내린 5491.90에 거래 중이다. 코스피가 23일 오후 들어 낙폭을 크게 줄이며 5490선에서 움직이고 있다.",
       "title": "코스피, 낙폭 줄여 5490선…SK하이닉스 2%대 반등"
+    },
+    "fact:1ae05e7f27f486a399649e24": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026133400530",
+      "source": "연합뉴스",
+      "source_body_digest": "f6aa07e4501c6acf24c5c4518fc6a95fb02410cfd4f3b8d2dad5655d43fdc3ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de21002eeab9e803e801ea3354cefd6b9e9889cf3c76f5ba8c980f0ed077cb3",
+      "source_fact_keys": [
+        "source_fact:v1:22201228d5bd5941c4e8947bd7833e5c97117646139bb49595658690e2d282e1",
+        "source_fact:v1:380645146179ae325a4540b7a08f053fc3c5690253f37b0364a20a603c030a97",
+        "source_fact:v1:7cedb49cffcc6b5eae89044dd4b358e049229c1a654b41a004ca0ccb78071a18",
+        "source_fact:v1:ae2f5fd7c1d955fb1ad1440434620a27a1c5c554348b41715a38497374bfe845",
+        "source_fact:v1:d05cc4362e29efdb80416dddfa7817d90a08f07c5464338d1799a2e0d5bc9d62"
+      ],
+      "source_published_kst": "2026-10-26T16:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스",
+      "telegram_core_fact": "정부가 호남 반도체 산업단지에 전기를 공급할 송전망을 계획보다 1년 앞당겨 구축하기 위해 다른 지역에 설치하려던 변압기를 가져다 쓰기로 했다.",
+      "title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스"
     },
     "fact:1ae67d10431ded552c6ef3ee": {
       "first_seen_kst": "2026-10-12T18:02:18+09:00",
@@ -162944,6 +163181,26 @@
       "telegram_core_fact": "OK금융그룹이 예별손해보험 인수 본계약을 체결한 가운데 KDB생명은 우선협상대상자 선정 이후 두 달째 주식매매계약(SPA) 단계로 나아가지 못하고 있다.",
       "title": "지지부진 KDB생명·기사회생 케이조선…매각전 ‘마침표’ 찍을까 [M&A복덕방]"
     },
+    "fact:3e9010694bfcf4edfcff48de": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026084700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2b2731236df6db50f24d9540733bdac62a9f5bb0a3b6cbc93e3b1ac86fb35264",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:544f064a0e1e3a3ae125dc031eb93853ed98ba92c68efab2ef8cdd136ba687b0",
+      "source_fact_identity": "source_facts:v1:781430310c529990ab5b63a7ac78c4e05df677817b30bee43956dc2543d88eb0",
+      "source_fact_keys": [
+        "source_fact:v1:2bfe7d22f588b3b617e6dc944f6e44e2abfb79432d80921788d5e7bb0261989c"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 부산은행이 연결 기준 올해 3분기 영업이익 1천459억원으로 지난해 동기보다 34.5% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스"
+    },
     "fact:3e934aad56d871816219d08d": {
       "first_seen_kst": "2026-10-20T05:02:52+09:00",
       "lanes": {
@@ -174969,6 +175226,27 @@
       "telegram_core_fact": "기아의 첫 전용 PBV 모델인 PV5는 지난 7월 말 기준 글로벌 누적 판매량 5만3530대를 기록했다.",
       "title": "기아, 글로벌 17개국 PBV 딜러 한국 초청…\"해외 판매망 강화\""
     },
+    "fact:598dbf7a9e415de058b20200": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640194",
+      "source": "이투데이",
+      "source_body_digest": "36d4935ed9a838c1911be88df9ff581c28a95d92a39917e310acec66057bb624",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29889e135c0a9196fb777875062bbc0a91be9ff1f4fb2bc26e7792b1a4fb2937",
+      "source_fact_keys": [
+        "source_fact:v1:73117162407846ba15376eb7e939e73070c642c509e067929b3e4ca1a9bc743b",
+        "source_fact:v1:76fe0da0a77870bfe4f7adcd5007fe3114e848c3106558f53a4c6fa9ac511018"
+      ],
+      "source_published_kst": "2026-10-26T16:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파",
+      "telegram_core_fact": "NH투자증권이 올해 3분기 누적 순이익 1조3489억원을 기록하며 지난해 연간 실적을 조기에 넘어섰다.",
+      "title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파"
+    },
     "fact:59b04ebff347ba92b7cc12ff": {
       "first_seen_kst": "2026-10-19T16:05:04+09:00",
       "lanes": {
@@ -180870,6 +181148,26 @@
       "source_title": "중동·우크라 '쌍끌이 악재'에 유가 급등…WTI 100달러 돌파",
       "telegram_core_fact": "뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI) 역시 3.51% 급등한 배럴당 101.41달러를 기록, 7거래일 연속 상승세를 이어가며 지난 9월17일 이후 최고가를 경신했다.",
       "title": "중동·우크라 '쌍끌이 악재'에 유가 급등…WTI 100달러 돌파"
+    },
+    "fact:67dff9a43784b6451eaf6373": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026125000002",
+      "source": "연합뉴스",
+      "source_body_digest": "ab894e4fedf56e78acfa957e322162c1090ba3179257fd03af6220dce4e2e22a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:45d224b898b2bc5d9428e5eef0c916562754f5f316b9a72e146911f89229090d",
+      "source_fact_keys": [
+        "source_fact:v1:fb7ac5a7b58edc0f3a25372f5ed3aa093c79285202d9cdeefb214762b18e139b"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 순익 7천712억원…1년 전보다 2.7%↑(종합) | 연합뉴스",
+      "telegram_core_fact": "IBK기업은행은 올해 3분기 연결 기준 당기순이익이 7천712억원으로, 작년 동기보다 2.7% 증가했다고 26일 공시했다.",
+      "title": "기업은행 3분기 순익 7천712억원…1년 전보다 2.7%↑(종합) | 연합뉴스"
     },
     "fact:67e8a71893cf8b621b524dc2": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -226934,6 +227232,29 @@
       "telegram_core_fact": "이번 모집은 올해 마지막으로 진행되는 스타트업 발굴 사업으로, 창업한 지 3년이 되지 않은 기업 및 예비 창업자들에게 기업당 최대 5억원 투자를 집행하는 식이다.",
       "title": "한투AC, 스타트업 지원 프로그램 '바른동행' 4차 참가사 모집 | 연합뉴스"
     },
+    "fact:c6f52044c40fcc8adece6aca": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639450",
+      "source": "이투데이",
+      "source_body_digest": "4e81069b89418eec1c0af5b8ba844113a59ba8f20670bf7a8e0ad3c670819f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:046fe8cb9a33157170d3160412ee2f4e5769c866fef44824f2cce04106bb158e",
+      "source_fact_keys": [
+        "source_fact:v1:5756b109502b7a31a60cbfa5d0fa3558e8219af3a825fac3fb14fb4c89fb4299",
+        "source_fact:v1:609b3ac4a95d6201cf6c1c79a1552c2e92c65864a8d5172a427ca066ed3d0c26",
+        "source_fact:v1:6f62ce994573bf0b3e7cc85380bc1a4e40d51bf0de5beece3f5232fa4f2481e4",
+        "source_fact:v1:a31b243f715225ccac960af1ab3938e206bdcc32c01c80670f7d16b170810120"
+      ],
+      "source_published_kst": "2026-10-26T16:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아",
+      "telegram_core_fact": "“재경부의 최종 판단이 남아 있는 만큼 관세 부과와 함께 HGI 우회 수입을 막기 위한 보완 조치도 신속히 이뤄져야 한다”고 말했다.",
+      "title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아"
+    },
     "fact:c6f63dd224c805835a73c394": {
       "first_seen_kst": "2026-10-23T22:50:49+09:00",
       "lanes": {
@@ -229778,6 +230099,39 @@
       "source_title": "\"벤처투자 늘어도 회수는 제자리…세컨더리 시장 활성화 시급\"",
       "telegram_core_fact": "\"세컨더리 시장은 자금만 공급한다고 거래가 이뤄지는 구조가 아니다\"라며 \"실제 매도 물량과 매수자의 가격 제시, 거래 성사 사례가 축적돼 시장에서 신뢰할 수 있는 가격 정보가 형성돼야 한다\"고 강조했다.",
       "title": "\"벤처투자 늘어도 회수는 제자리…세컨더리 시장 활성화 시급\""
+    },
+    "fact:ccda41ef870a9717f7577b23": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "fact:ccea8b9cab33d41d11f96774": {
       "first_seen_kst": "2026-10-26T05:29:29+09:00",
@@ -247852,6 +248206,27 @@
       ],
       "source_published_kst": "2026-10-06T14:33+09:00",
       "title": "IPARK현대산업개발, 부산 연산13구역 수주…2812억원 규모"
+    },
+    "fact:f155babc90a27236dd8efaf3": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026136800527",
+      "source": "연합뉴스",
+      "source_body_digest": "924b66604d49d07ce415e33e09373522010ff4338ce825da78ec4aa9778fb6a3",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ed0f2c8523389f958739c8f7920d44b7b95bd5724009ed5db628ec2b513c3147",
+      "source_fact_identity": "source_facts:v1:40cc98118cc6a64df0ab92ad2fcfd58b1f721ac9b2964817f7694fda326b1002",
+      "source_fact_keys": [
+        "source_fact:v1:3419be9d8e5b361e22a0b2bf1fbaa744594e5f5dd4b880059791522c39a76aed",
+        "source_fact:v1:6688ae7c00afb8abee4f8a24fbaec7f6cb325e8616851d776a9fd84b8766819f"
+      ],
+      "source_published_kst": "2026-10-26T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 기업은행[024110]은 연결 기준 올해 3분기 영업이익이 1조313억원으로, 지난해 동기보다 5.6% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스"
     },
     "fact:f166e2cdfc94aff757080b54": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
@@ -293647,6 +294022,29 @@
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
     },
+    "link:3fb256fd7c4b9077b9eb27aa": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639450",
+      "source": "이투데이",
+      "source_body_digest": "4e81069b89418eec1c0af5b8ba844113a59ba8f20670bf7a8e0ad3c670819f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:046fe8cb9a33157170d3160412ee2f4e5769c866fef44824f2cce04106bb158e",
+      "source_fact_keys": [
+        "source_fact:v1:5756b109502b7a31a60cbfa5d0fa3558e8219af3a825fac3fb14fb4c89fb4299",
+        "source_fact:v1:609b3ac4a95d6201cf6c1c79a1552c2e92c65864a8d5172a427ca066ed3d0c26",
+        "source_fact:v1:6f62ce994573bf0b3e7cc85380bc1a4e40d51bf0de5beece3f5232fa4f2481e4",
+        "source_fact:v1:a31b243f715225ccac960af1ab3938e206bdcc32c01c80670f7d16b170810120"
+      ],
+      "source_published_kst": "2026-10-26T16:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아",
+      "telegram_core_fact": "“재경부의 최종 판단이 남아 있는 만큼 관세 부과와 함께 HGI 우회 수입을 막기 위한 보완 조치도 신속히 이뤄져야 한다”고 말했다.",
+      "title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아"
+    },
     "link:3fc8cfe17183a1b2c9c4717b": {
       "first_seen_kst": "2026-10-20T16:22:04+09:00",
       "lanes": {
@@ -320407,6 +320805,30 @@
       "telegram_core_fact": "OK금융그룹이 예별손해보험 인수를 위한 본계약을 체결했다.",
       "title": "OK금융, 예별손보 인수 본계약 체결…종합금융그룹 도약 ‘첫발’"
     },
+    "link:6cc2073ff5532033fed7bbc6": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026133400530",
+      "source": "연합뉴스",
+      "source_body_digest": "f6aa07e4501c6acf24c5c4518fc6a95fb02410cfd4f3b8d2dad5655d43fdc3ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de21002eeab9e803e801ea3354cefd6b9e9889cf3c76f5ba8c980f0ed077cb3",
+      "source_fact_keys": [
+        "source_fact:v1:22201228d5bd5941c4e8947bd7833e5c97117646139bb49595658690e2d282e1",
+        "source_fact:v1:380645146179ae325a4540b7a08f053fc3c5690253f37b0364a20a603c030a97",
+        "source_fact:v1:7cedb49cffcc6b5eae89044dd4b358e049229c1a654b41a004ca0ccb78071a18",
+        "source_fact:v1:ae2f5fd7c1d955fb1ad1440434620a27a1c5c554348b41715a38497374bfe845",
+        "source_fact:v1:d05cc4362e29efdb80416dddfa7817d90a08f07c5464338d1799a2e0d5bc9d62"
+      ],
+      "source_published_kst": "2026-10-26T16:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스",
+      "telegram_core_fact": "정부가 호남 반도체 산업단지에 전기를 공급할 송전망을 계획보다 1년 앞당겨 구축하기 위해 다른 지역에 설치하려던 변압기를 가져다 쓰기로 했다.",
+      "title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스"
+    },
     "link:6ccc4fd9cd7e159f393a9f72": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -331253,6 +331675,39 @@
       "telegram_core_fact": "[파이낸셜뉴스] SK하이닉스가 일본 키옥시아 지분 차익을 활용한 16조원 특별배당 추진 보도에 대해 확정된 사항이 없다고 밝혔다.",
       "title": "SK하이닉스, '16조 특별배당' 보도에 \"확정된 사항 없어\" [공시]"
     },
+    "link:7f0c94bb06e3822447a33869": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
+    },
     "link:7f0d2e198636cfcf98d27692": {
       "first_seen_kst": "2026-10-14T06:58:10+09:00",
       "lanes": {
@@ -334636,6 +335091,27 @@
       ],
       "source_published_kst": "2026-10-06T17:22+09:00",
       "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
+    },
+    "link:84ed892e27febf3e85ae13e4": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640194",
+      "source": "이투데이",
+      "source_body_digest": "36d4935ed9a838c1911be88df9ff581c28a95d92a39917e310acec66057bb624",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29889e135c0a9196fb777875062bbc0a91be9ff1f4fb2bc26e7792b1a4fb2937",
+      "source_fact_keys": [
+        "source_fact:v1:73117162407846ba15376eb7e939e73070c642c509e067929b3e4ca1a9bc743b",
+        "source_fact:v1:76fe0da0a77870bfe4f7adcd5007fe3114e848c3106558f53a4c6fa9ac511018"
+      ],
+      "source_published_kst": "2026-10-26T16:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파",
+      "telegram_core_fact": "NH투자증권이 올해 3분기 누적 순이익 1조3489억원을 기록하며 지난해 연간 실적을 조기에 넘어섰다.",
+      "title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파"
     },
     "link:84f95a8448ea996e99aef931": {
       "first_seen_kst": "2026-10-21T09:03:35+09:00",
@@ -340604,6 +341080,27 @@
       "source_title": "\"S&P500 최고치인데 내 계좌는 왜 이래\"…답은 '국채금리 5%'",
       "telegram_core_fact": "반대로 물가 상승 압력이 계속되고 국채금리가 5% 위에서 머무는 가운데 일부 대형 기술주만 S&P500을 끌어올린다면 시장 경계감을 높여야 한다고 봤다.",
       "title": "\"S&P500 최고치인데 내 계좌는 왜 이래\"…답은 '국채금리 5%'"
+    },
+    "link:8fc780ec8a020f5378331038": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026136800527",
+      "source": "연합뉴스",
+      "source_body_digest": "924b66604d49d07ce415e33e09373522010ff4338ce825da78ec4aa9778fb6a3",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ed0f2c8523389f958739c8f7920d44b7b95bd5724009ed5db628ec2b513c3147",
+      "source_fact_identity": "source_facts:v1:40cc98118cc6a64df0ab92ad2fcfd58b1f721ac9b2964817f7694fda326b1002",
+      "source_fact_keys": [
+        "source_fact:v1:3419be9d8e5b361e22a0b2bf1fbaa744594e5f5dd4b880059791522c39a76aed",
+        "source_fact:v1:6688ae7c00afb8abee4f8a24fbaec7f6cb325e8616851d776a9fd84b8766819f"
+      ],
+      "source_published_kst": "2026-10-26T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 기업은행[024110]은 연결 기준 올해 3분기 영업이익이 1조313억원으로, 지난해 동기보다 5.6% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스"
     },
     "link:8fcbde5662d4d0354fc8191a": {
       "first_seen_kst": "2026-10-04T01:14:42+09:00",
@@ -370310,6 +370807,26 @@
       "source_title": "‘할당관세’ 2653억원 지원해도…농축산물 물가 인하 효과는 0.00272%",
       "telegram_core_fact": "하지만 29개 할당관세 품목의 관세 인하가 국내 최종재 물가에 미친 영향은 0.00272%에 그쳤다.",
       "title": "‘할당관세’ 2653억원 지원해도…농축산물 물가 인하 효과는 0.00272%"
+    },
+    "link:c0289ccb51c97c79b3c7b25a": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026125000002",
+      "source": "연합뉴스",
+      "source_body_digest": "ab894e4fedf56e78acfa957e322162c1090ba3179257fd03af6220dce4e2e22a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:45d224b898b2bc5d9428e5eef0c916562754f5f316b9a72e146911f89229090d",
+      "source_fact_keys": [
+        "source_fact:v1:fb7ac5a7b58edc0f3a25372f5ed3aa093c79285202d9cdeefb214762b18e139b"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 순익 7천712억원…1년 전보다 2.7%↑(종합) | 연합뉴스",
+      "telegram_core_fact": "IBK기업은행은 올해 3분기 연결 기준 당기순이익이 7천712억원으로, 작년 동기보다 2.7% 증가했다고 26일 공시했다.",
+      "title": "기업은행 3분기 순익 7천712억원…1년 전보다 2.7%↑(종합) | 연합뉴스"
     },
     "link:c033035039ce1c9c3e0feb67": {
       "first_seen_kst": "2026-10-11T10:42:03+09:00",
@@ -404699,6 +405216,26 @@
       "telegram_core_fact": "정부의 8·3 세제개편안 발표 이후 복잡해진 부동산 세금 제도와 재건축에 대한 구민들의 궁금증을 해소하기 위해 마련됐다.",
       "title": "서초구, 20일 세제개편안·재건축 세무설명회 | 연합뉴스"
     },
+    "link:fc61875cd10bea6fccb20ca9": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026084700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2b2731236df6db50f24d9540733bdac62a9f5bb0a3b6cbc93e3b1ac86fb35264",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:544f064a0e1e3a3ae125dc031eb93853ed98ba92c68efab2ef8cdd136ba687b0",
+      "source_fact_identity": "source_facts:v1:781430310c529990ab5b63a7ac78c4e05df677817b30bee43956dc2543d88eb0",
+      "source_fact_keys": [
+        "source_fact:v1:2bfe7d22f588b3b617e6dc944f6e44e2abfb79432d80921788d5e7bb0261989c"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 부산은행이 연결 기준 올해 3분기 영업이익 1천459억원으로 지난해 동기보다 34.5% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스"
+    },
     "link:fc67fbd1da6a612b216ba646": {
       "first_seen_kst": "2026-10-20T05:37:55+09:00",
       "lanes": {
@@ -421563,6 +422100,27 @@
       "source_published_kst": "2026-10-06T09:29+09:00",
       "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
     },
+    "original:198bd0f38640bc4bb4a839a4": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026136800527",
+      "source": "연합뉴스",
+      "source_body_digest": "924b66604d49d07ce415e33e09373522010ff4338ce825da78ec4aa9778fb6a3",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ed0f2c8523389f958739c8f7920d44b7b95bd5724009ed5db628ec2b513c3147",
+      "source_fact_identity": "source_facts:v1:40cc98118cc6a64df0ab92ad2fcfd58b1f721ac9b2964817f7694fda326b1002",
+      "source_fact_keys": [
+        "source_fact:v1:3419be9d8e5b361e22a0b2bf1fbaa744594e5f5dd4b880059791522c39a76aed",
+        "source_fact:v1:6688ae7c00afb8abee4f8a24fbaec7f6cb325e8616851d776a9fd84b8766819f"
+      ],
+      "source_published_kst": "2026-10-26T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 기업은행[024110]은 연결 기준 올해 3분기 영업이익이 1조313억원으로, 지난해 동기보다 5.6% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스"
+    },
     "original:198f374b4374c17b85f4636a": {
       "first_seen_kst": "2026-10-17T00:51:19+09:00",
       "lanes": {
@@ -426235,6 +426793,26 @@
       "telegram_core_fact": "브릿지워터 뱅크쉐어즈(BWB)가 2026년 3분기 순이익 1500만 달러, 희석 주당순이익 0.49달러를 기록해 전년비 각각 29.5%, 28.9% 증가했다고 10월 20일 발표했다. Non-GAAP 조정 희석 주당순이익은 0.49달러로 전년 동기 0.39달러에서 증가했다.",
       "title": "브릿지워터 뱅크쉐어즈, 3분기 희석 EPS 0.49달러..전년비 29% 증가"
     },
+    "original:2180f7018ab1b448080fb9a5": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026125000002",
+      "source": "연합뉴스",
+      "source_body_digest": "ab894e4fedf56e78acfa957e322162c1090ba3179257fd03af6220dce4e2e22a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:45d224b898b2bc5d9428e5eef0c916562754f5f316b9a72e146911f89229090d",
+      "source_fact_keys": [
+        "source_fact:v1:fb7ac5a7b58edc0f3a25372f5ed3aa093c79285202d9cdeefb214762b18e139b"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 순익 7천712억원…1년 전보다 2.7%↑(종합) | 연합뉴스",
+      "telegram_core_fact": "IBK기업은행은 올해 3분기 연결 기준 당기순이익이 7천712억원으로, 작년 동기보다 2.7% 증가했다고 26일 공시했다.",
+      "title": "기업은행 3분기 순익 7천712억원…1년 전보다 2.7%↑(종합) | 연합뉴스"
+    },
     "original:218a2dc6d064fae0e34ab2ae": {
       "first_seen_kst": "2026-09-29T09:48:13+09:00",
       "lanes": {
@@ -429674,6 +430252,39 @@
       ],
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
+    },
+    "original:275043de55d4e20cdad02088": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "original:2753267a93b37cdf43636d8b": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
@@ -473887,6 +474498,27 @@
       "telegram_core_fact": "한국가스공사(KOGAS)가 엣지 AI 기술을 도입해 무인으로 운영되는 천연가스 공급관리소의 안전·방호체계 고도화에 나선다. 가스공사 대구경북지역본부는 엣지 AI CCTV 전문기업인 트루엔과 'AI CCTV 실증사업'을 추진한다고 12일 밝혔다.",
       "title": "가스公, '엣지 AI CCTV'로 무인 공급관리소 방호·안전 강화"
     },
+    "original:71b65ddab1231d449bacd21d": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640194",
+      "source": "이투데이",
+      "source_body_digest": "36d4935ed9a838c1911be88df9ff581c28a95d92a39917e310acec66057bb624",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29889e135c0a9196fb777875062bbc0a91be9ff1f4fb2bc26e7792b1a4fb2937",
+      "source_fact_keys": [
+        "source_fact:v1:73117162407846ba15376eb7e939e73070c642c509e067929b3e4ca1a9bc743b",
+        "source_fact:v1:76fe0da0a77870bfe4f7adcd5007fe3114e848c3106558f53a4c6fa9ac511018"
+      ],
+      "source_published_kst": "2026-10-26T16:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파",
+      "telegram_core_fact": "NH투자증권이 올해 3분기 누적 순이익 1조3489억원을 기록하며 지난해 연간 실적을 조기에 넘어섰다.",
+      "title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파"
+    },
     "original:71b692d828b4c094a6311e99": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
@@ -514440,6 +515072,26 @@
       "telegram_core_fact": "서울 여의도 최대 재건축 사업지로 꼽히는 시범아파트 재건축 시공사로 삼성물산 건설부문이 선정됐다.",
       "title": "삼성물산, 2조원 '여의도 시범' 시공사 선정…한강변에 래미안 벨트"
     },
+    "original:b69f0621203ffe83316f4126": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026084700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2b2731236df6db50f24d9540733bdac62a9f5bb0a3b6cbc93e3b1ac86fb35264",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:544f064a0e1e3a3ae125dc031eb93853ed98ba92c68efab2ef8cdd136ba687b0",
+      "source_fact_identity": "source_facts:v1:781430310c529990ab5b63a7ac78c4e05df677817b30bee43956dc2543d88eb0",
+      "source_fact_keys": [
+        "source_fact:v1:2bfe7d22f588b3b617e6dc944f6e44e2abfb79432d80921788d5e7bb0261989c"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 부산은행이 연결 기준 올해 3분기 영업이익 1천459억원으로 지난해 동기보다 34.5% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스"
+    },
     "original:b6a473e2762ee2222c44c96a": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -517255,6 +517907,29 @@
       "source_title": "김여정, 의료장비 지원계획에 또 반발…\"한국 인간쓰레기 무시할 것\"",
       "telegram_core_fact": "“제재 면제 신청 및 언론 공개라는 ‘공개적 방식’으로 추진한 점이 김여정의 극렬한 반발을 끌어낸 핵심 포인트”라며 “이번 사태로 불신이 배가 될 것”이라고 우려했다.",
       "title": "김여정, 의료장비 지원계획에 또 반발…\"한국 인간쓰레기 무시할 것\""
+    },
+    "original:bc0cebfcde999bcc4b68ce32": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639450",
+      "source": "이투데이",
+      "source_body_digest": "4e81069b89418eec1c0af5b8ba844113a59ba8f20670bf7a8e0ad3c670819f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:046fe8cb9a33157170d3160412ee2f4e5769c866fef44824f2cce04106bb158e",
+      "source_fact_keys": [
+        "source_fact:v1:5756b109502b7a31a60cbfa5d0fa3558e8219af3a825fac3fb14fb4c89fb4299",
+        "source_fact:v1:609b3ac4a95d6201cf6c1c79a1552c2e92c65864a8d5172a427ca066ed3d0c26",
+        "source_fact:v1:6f62ce994573bf0b3e7cc85380bc1a4e40d51bf0de5beece3f5232fa4f2481e4",
+        "source_fact:v1:a31b243f715225ccac960af1ab3938e206bdcc32c01c80670f7d16b170810120"
+      ],
+      "source_published_kst": "2026-10-26T16:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아",
+      "telegram_core_fact": "“재경부의 최종 판단이 남아 있는 만큼 관세 부과와 함께 HGI 우회 수입을 막기 위한 보완 조치도 신속히 이뤄져야 한다”고 말했다.",
+      "title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아"
     },
     "original:bc18d88fc1e521bf1ee4cb2e": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
@@ -529726,6 +530401,30 @@
       "source_title": "아메리칸항공 \"유가 내려도 항공료 안 내려\"…내년 추가인상 전망도",
       "telegram_core_fact": "미국 아메리칸항공이 국제 유가가 떨어지더라도 항공 운임은 이란 전쟁 이전 수준으로 돌아가지 않을 것이라고 경고했다.",
       "title": "아메리칸항공 \"유가 내려도 항공료 안 내려\"…내년 추가인상 전망도"
+    },
+    "original:d1cd05078edc114243841064": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026133400530",
+      "source": "연합뉴스",
+      "source_body_digest": "f6aa07e4501c6acf24c5c4518fc6a95fb02410cfd4f3b8d2dad5655d43fdc3ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de21002eeab9e803e801ea3354cefd6b9e9889cf3c76f5ba8c980f0ed077cb3",
+      "source_fact_keys": [
+        "source_fact:v1:22201228d5bd5941c4e8947bd7833e5c97117646139bb49595658690e2d282e1",
+        "source_fact:v1:380645146179ae325a4540b7a08f053fc3c5690253f37b0364a20a603c030a97",
+        "source_fact:v1:7cedb49cffcc6b5eae89044dd4b358e049229c1a654b41a004ca0ccb78071a18",
+        "source_fact:v1:ae2f5fd7c1d955fb1ad1440434620a27a1c5c554348b41715a38497374bfe845",
+        "source_fact:v1:d05cc4362e29efdb80416dddfa7817d90a08f07c5464338d1799a2e0d5bc9d62"
+      ],
+      "source_published_kst": "2026-10-26T16:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스",
+      "telegram_core_fact": "정부가 호남 반도체 산업단지에 전기를 공급할 송전망을 계획보다 1년 앞당겨 구축하기 위해 다른 지역에 설치하려던 변압기를 가져다 쓰기로 했다.",
+      "title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스"
     },
     "original:d1cdab6fb2012a3e0b787158": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
@@ -563707,6 +564406,39 @@
       "telegram_core_fact": "트럼프 대통령은 자신의 소셜미디어 트루스소셜에 \"러시아가 미국과 세계 시장에 즉시 30만톤 이상 경유 공급하기로 했고 11월에 50만톤을, 그 후 100만톤을 공급하기로 했다\"며 푸틴 러시아 대통령과 총 480만톤의 경유 공급에 합의했다고 밝혔다.",
       "title": "트럼프 \"우크라, 새 대통령 뽑아야\"…'경유딜' 젤렌스키 반발에 '발끈'"
     },
+    "source_fact:03165549a06a3049fccc29c6": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
+    },
     "source_fact:031705a43f51a6cc5271aa89": {
       "first_seen_kst": "2026-10-13T08:34:55+09:00",
       "lanes": {
@@ -576506,6 +577238,39 @@
       "telegram_core_fact": "LG CNS(LG씨엔에스)가 국내 기업 최초로 인도네시아 AI 데이터센터 구축 사업을 수주했다.",
       "title": "인도네시아에 AI 데이터센터 태극기 꽂은 LG CNS…동남아 영토 확장"
     },
+    "source_fact:085920b055ededcf587d6369": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
+    },
     "source_fact:085d4a16b83d869b0ec454ce": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
       "lanes": {
@@ -581355,6 +582120,29 @@
       "source_title": "현대차證 \"삼양식품, 우려에도 실적 이상 無\"",
       "telegram_core_fact": "하희지 현대차증권 연구원은 \"삼양식품의 2026년 3분기 연결 기준 매출액은 8201억원으로 전년비 29.8% 증가하고 영업이익은 1870억원으로 42.8% 늘어날 것으로 추정된다\"며 \"영업이익률은 22.8%를 기록해 원화 강세에 따른 시장 우려에도 시장 기대치에 부합할 전망\"이라고 말했다.",
       "title": "현대차證 \"삼양식품, 우려에도 실적 이상 無\""
+    },
+    "source_fact:0a893ad4fb1c371560121ec6": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639450",
+      "source": "이투데이",
+      "source_body_digest": "4e81069b89418eec1c0af5b8ba844113a59ba8f20670bf7a8e0ad3c670819f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:046fe8cb9a33157170d3160412ee2f4e5769c866fef44824f2cce04106bb158e",
+      "source_fact_keys": [
+        "source_fact:v1:5756b109502b7a31a60cbfa5d0fa3558e8219af3a825fac3fb14fb4c89fb4299",
+        "source_fact:v1:609b3ac4a95d6201cf6c1c79a1552c2e92c65864a8d5172a427ca066ed3d0c26",
+        "source_fact:v1:6f62ce994573bf0b3e7cc85380bc1a4e40d51bf0de5beece3f5232fa4f2481e4",
+        "source_fact:v1:a31b243f715225ccac960af1ab3938e206bdcc32c01c80670f7d16b170810120"
+      ],
+      "source_published_kst": "2026-10-26T16:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아",
+      "telegram_core_fact": "“재경부의 최종 판단이 남아 있는 만큼 관세 부과와 함께 HGI 우회 수입을 막기 위한 보완 조치도 신속히 이뤄져야 한다”고 말했다.",
+      "title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아"
     },
     "source_fact:0a8af9673e06a0eb3aff87b4": {
       "first_seen_kst": "2026-10-13T19:06:12+09:00",
@@ -615088,6 +615876,30 @@
       "telegram_core_fact": "허니웰 인터내셔널(HON)이 3분기 매출액 49억9400만 달러로 전년비 1%(자체 성장률 7%) 증가하고, 비GAAP 조정 희석 주당순이익(EPS) 2.27달러로 34% 증가했으며 연간 가이던스를 상향했다고 10월 22일 발표했다.",
       "title": "허니웰 인터내셔널, 3분기 조정 EPS 2.27달러..가이던스 상향"
     },
+    "source_fact:187283eae3df3c4c410c4562": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026133400530",
+      "source": "연합뉴스",
+      "source_body_digest": "f6aa07e4501c6acf24c5c4518fc6a95fb02410cfd4f3b8d2dad5655d43fdc3ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de21002eeab9e803e801ea3354cefd6b9e9889cf3c76f5ba8c980f0ed077cb3",
+      "source_fact_keys": [
+        "source_fact:v1:22201228d5bd5941c4e8947bd7833e5c97117646139bb49595658690e2d282e1",
+        "source_fact:v1:380645146179ae325a4540b7a08f053fc3c5690253f37b0364a20a603c030a97",
+        "source_fact:v1:7cedb49cffcc6b5eae89044dd4b358e049229c1a654b41a004ca0ccb78071a18",
+        "source_fact:v1:ae2f5fd7c1d955fb1ad1440434620a27a1c5c554348b41715a38497374bfe845",
+        "source_fact:v1:d05cc4362e29efdb80416dddfa7817d90a08f07c5464338d1799a2e0d5bc9d62"
+      ],
+      "source_published_kst": "2026-10-26T16:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스",
+      "telegram_core_fact": "정부가 호남 반도체 산업단지에 전기를 공급할 송전망을 계획보다 1년 앞당겨 구축하기 위해 다른 지역에 설치하려던 변압기를 가져다 쓰기로 했다.",
+      "title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스"
+    },
     "source_fact:1873ae946196a60c265dc540": {
       "first_seen_kst": "2026-10-22T03:23:27+09:00",
       "lanes": {
@@ -615814,6 +616626,26 @@
       "source_title": "쓰리엠, 3분기 GAAP 희석 EPS 2.63달러..전년비 70% 증가",
       "telegram_core_fact": "쓰리엠(MMM)은 3분기 GAAP 기준 매출액이 65억8400만 달러로 전년비 1.0% 증가했고, GAAP 희석 주당순이익(EPS)은 2.63달러로 70% 늘었다고 10월 20일 발표했다.",
       "title": "쓰리엠, 3분기 GAAP 희석 EPS 2.63달러..전년비 70% 증가"
+    },
+    "source_fact:18affb382de3f965c7a49156": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026125000002",
+      "source": "연합뉴스",
+      "source_body_digest": "ab894e4fedf56e78acfa957e322162c1090ba3179257fd03af6220dce4e2e22a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:45d224b898b2bc5d9428e5eef0c916562754f5f316b9a72e146911f89229090d",
+      "source_fact_keys": [
+        "source_fact:v1:fb7ac5a7b58edc0f3a25372f5ed3aa093c79285202d9cdeefb214762b18e139b"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 순익 7천712억원…1년 전보다 2.7%↑(종합) | 연합뉴스",
+      "telegram_core_fact": "IBK기업은행은 올해 3분기 연결 기준 당기순이익이 7천712억원으로, 작년 동기보다 2.7% 증가했다고 26일 공시했다.",
+      "title": "기업은행 3분기 순익 7천712억원…1년 전보다 2.7%↑(종합) | 연합뉴스"
     },
     "source_fact:18b5a78999cadd4a9f671246": {
       "first_seen_kst": "2026-10-24T00:05:28+09:00",
@@ -617330,6 +618162,30 @@
       "source_title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'",
       "telegram_core_fact": "딜로이트안진의 경영자문 매출은 3개 사업연도 동안 2600억원에서 2200억원대로 감소세를 보였다.",
       "title": "'회계 빅4' 경영자문 매출…삼일PwC '독주'"
+    },
+    "source_fact:194fa3888fb6d3e98636823d": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026133400530",
+      "source": "연합뉴스",
+      "source_body_digest": "f6aa07e4501c6acf24c5c4518fc6a95fb02410cfd4f3b8d2dad5655d43fdc3ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de21002eeab9e803e801ea3354cefd6b9e9889cf3c76f5ba8c980f0ed077cb3",
+      "source_fact_keys": [
+        "source_fact:v1:22201228d5bd5941c4e8947bd7833e5c97117646139bb49595658690e2d282e1",
+        "source_fact:v1:380645146179ae325a4540b7a08f053fc3c5690253f37b0364a20a603c030a97",
+        "source_fact:v1:7cedb49cffcc6b5eae89044dd4b358e049229c1a654b41a004ca0ccb78071a18",
+        "source_fact:v1:ae2f5fd7c1d955fb1ad1440434620a27a1c5c554348b41715a38497374bfe845",
+        "source_fact:v1:d05cc4362e29efdb80416dddfa7817d90a08f07c5464338d1799a2e0d5bc9d62"
+      ],
+      "source_published_kst": "2026-10-26T16:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스",
+      "telegram_core_fact": "정부가 호남 반도체 산업단지에 전기를 공급할 송전망을 계획보다 1년 앞당겨 구축하기 위해 다른 지역에 설치하려던 변압기를 가져다 쓰기로 했다.",
+      "title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스"
     },
     "source_fact:1950927a572dfc05571b4915": {
       "first_seen_kst": "2026-10-16T16:08:38+09:00",
@@ -657061,6 +657917,39 @@
       "source_title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스",
       "telegram_core_fact": "도널드 트럼프 미 대통령은 지난 9일 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
       "title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스"
+    },
+    "source_fact:28d243ee112dd95b6306decf": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "source_fact:28d2d139592dd4914c5065ea": {
       "first_seen_kst": "2026-10-21T18:05:45+09:00",
@@ -718965,6 +719854,30 @@
       "telegram_core_fact": "유니버셜 인슈어런스 홀딩스(UVE)는 3분기 총수익(GAAP 기준 매출액)이 4억3930만 달러로 전년비 9.6% 증가했고, GAAP 희석 주당순이익(EPS)은 1.80달러로 30.4% 늘었다고 10월 22일 발표했다.",
       "title": "유니버셜 인슈어런스 홀딩, 3분기 희석 EPS 1.80달러..전년비 30% 증가"
     },
+    "source_fact:41ff10f9a7dbe80ee1603ebb": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026133400530",
+      "source": "연합뉴스",
+      "source_body_digest": "f6aa07e4501c6acf24c5c4518fc6a95fb02410cfd4f3b8d2dad5655d43fdc3ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de21002eeab9e803e801ea3354cefd6b9e9889cf3c76f5ba8c980f0ed077cb3",
+      "source_fact_keys": [
+        "source_fact:v1:22201228d5bd5941c4e8947bd7833e5c97117646139bb49595658690e2d282e1",
+        "source_fact:v1:380645146179ae325a4540b7a08f053fc3c5690253f37b0364a20a603c030a97",
+        "source_fact:v1:7cedb49cffcc6b5eae89044dd4b358e049229c1a654b41a004ca0ccb78071a18",
+        "source_fact:v1:ae2f5fd7c1d955fb1ad1440434620a27a1c5c554348b41715a38497374bfe845",
+        "source_fact:v1:d05cc4362e29efdb80416dddfa7817d90a08f07c5464338d1799a2e0d5bc9d62"
+      ],
+      "source_published_kst": "2026-10-26T16:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스",
+      "telegram_core_fact": "정부가 호남 반도체 산업단지에 전기를 공급할 송전망을 계획보다 1년 앞당겨 구축하기 위해 다른 지역에 설치하려던 변압기를 가져다 쓰기로 했다.",
+      "title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스"
+    },
     "source_fact:42016141c2383538112b4b2c": {
       "first_seen_kst": "2026-10-18T11:40:04+09:00",
       "lanes": {
@@ -738763,6 +739676,27 @@
       "source_title": "삼기에너지솔루션즈, 美서 1000억원 규모 하이브리드 부품 수주",
       "telegram_core_fact": "삼기에너지솔루션즈는 미국 법인 삼기아메리카가 글로벌 완성차 업체를 대상으로 총 7440만달러(약 995억원) 하이브리드 부품 공급 프로젝트를 수주했다고 20일 밝혔다.",
       "title": "삼기에너지솔루션즈, 美서 1000억원 규모 하이브리드 부품 수주"
+    },
+    "source_fact:4986c8c4d9af815f3e6648f7": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026136800527",
+      "source": "연합뉴스",
+      "source_body_digest": "924b66604d49d07ce415e33e09373522010ff4338ce825da78ec4aa9778fb6a3",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ed0f2c8523389f958739c8f7920d44b7b95bd5724009ed5db628ec2b513c3147",
+      "source_fact_identity": "source_facts:v1:40cc98118cc6a64df0ab92ad2fcfd58b1f721ac9b2964817f7694fda326b1002",
+      "source_fact_keys": [
+        "source_fact:v1:3419be9d8e5b361e22a0b2bf1fbaa744594e5f5dd4b880059791522c39a76aed",
+        "source_fact:v1:6688ae7c00afb8abee4f8a24fbaec7f6cb325e8616851d776a9fd84b8766819f"
+      ],
+      "source_published_kst": "2026-10-26T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 기업은행[024110]은 연결 기준 올해 3분기 영업이익이 1조313억원으로, 지난해 동기보다 5.6% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스"
     },
     "source_fact:49888f1748498836724cd537": {
       "first_seen_kst": "2026-10-21T10:25:18+09:00",
@@ -766332,6 +767266,39 @@
       "source_title": "미, 우크라에 \"러 정유설비 공격하면 핵심 정보 끊겠다\" 경고",
       "telegram_core_fact": "협상에서 트럼프 특사인 스티브 윗코프와 사위 재러드 쿠슈너는 우크라이나가 미국의 러시아 정유설비 공습 중단 경고를 무시하면 정보 공유를 중단할 수 있다고 경고했다. 우크라이나는 미국이 제공하는 정보의 도움을 받아 러시아 전쟁비용의 핵심 원천인 석유 산업을 공격해왔다.",
       "title": "미, 우크라에 \"러 정유설비 공격하면 핵심 정보 끊겠다\" 경고"
+    },
+    "source_fact:5486595c6ce97cab15f187db": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "source_fact:548696a2ef74f77155da009a": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -798783,6 +799750,29 @@
       "source_published_kst": "2026-10-06T09:32+09:00",
       "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
     },
+    "source_fact:61631a8d8a40f52a3b34e767": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639450",
+      "source": "이투데이",
+      "source_body_digest": "4e81069b89418eec1c0af5b8ba844113a59ba8f20670bf7a8e0ad3c670819f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:046fe8cb9a33157170d3160412ee2f4e5769c866fef44824f2cce04106bb158e",
+      "source_fact_keys": [
+        "source_fact:v1:5756b109502b7a31a60cbfa5d0fa3558e8219af3a825fac3fb14fb4c89fb4299",
+        "source_fact:v1:609b3ac4a95d6201cf6c1c79a1552c2e92c65864a8d5172a427ca066ed3d0c26",
+        "source_fact:v1:6f62ce994573bf0b3e7cc85380bc1a4e40d51bf0de5beece3f5232fa4f2481e4",
+        "source_fact:v1:a31b243f715225ccac960af1ab3938e206bdcc32c01c80670f7d16b170810120"
+      ],
+      "source_published_kst": "2026-10-26T16:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아",
+      "telegram_core_fact": "“재경부의 최종 판단이 남아 있는 만큼 관세 부과와 함께 HGI 우회 수입을 막기 위한 보완 조치도 신속히 이뤄져야 한다”고 말했다.",
+      "title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아"
+    },
     "source_fact:616eb42c2e80358d67c26e37": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
       "lanes": {
@@ -809695,6 +810685,39 @@
       "telegram_core_fact": "다음 달 중간선거를 앞두고 경윳값이 오르자 도널드 트럼프 미국 대통령이 러시아와 이란의 '그림자 선단'에 대한 제재를 완화하는 방안도 검토 중이라고 파이낸셜타임스(FT)가 15일(현지시간) 보도했다.",
       "title": "\"美, 경윳값 잡으려 러·이란 '그림자 선단' 제재완화도 검토\" | 연합뉴스"
     },
+    "source_fact:65fb9354dfcfe42ad1bd44c4": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
+    },
     "source_fact:65ff20bcff27b660c3de40a2": {
       "first_seen_kst": "2026-10-20T08:05:53+09:00",
       "lanes": {
@@ -812561,6 +813584,39 @@
       "source_title": "“韓 장금상선 관련 유조선 또 피격”…호르무즈서 2주간 24척이 당했다 [배틀라인]",
       "telegram_core_fact": "● 장금상선과 연관된 초대형 원유운반선 ‘앙골라 프로스페리티호’가 호르무즈 해협에서 공격받아 좌현이 손상됐지만, 선원은 모두 안전한 것으로 전해졌다.",
       "title": "“韓 장금상선 관련 유조선 또 피격”…호르무즈서 2주간 24척이 당했다 [배틀라인]"
+    },
+    "source_fact:672cba9b423ce849af9f93d2": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "source_fact:672cee0def93c9e9b346255a": {
       "first_seen_kst": "2026-10-18T08:31:39+09:00",
@@ -840005,6 +841061,39 @@
       "source_title": "8300억 손배소송서 고려아연 이사진 승소…MBK·영풍 청구 기각",
       "telegram_core_fact": "고려아연의 자사주 공개매수를 둘러싸고 MBK파트너스·영풍 측이 최윤범 회장 등 이사진을 상대로 제기한 약 8300억원 주주대표소송에서 법원이 원고 청구를 모두 기각했다. MBK·영풍 측은 당시 자사주 공개매수에 관여한 이사들이 선관주의의무를 위반해 회사에 손해를 끼쳤다고 주장하며 손해배상을 청구했다.",
       "title": "8300억 손배소송서 고려아연 이사진 승소…MBK·영풍 청구 기각"
+    },
+    "source_fact:7294116818c730c9e1c6cc94": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "source_fact:7296acdf999eb9450635899e": {
       "first_seen_kst": "2026-10-24T09:49:05+09:00",
@@ -871325,6 +872414,39 @@
       "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
       "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
     },
+    "source_fact:7f0c1f9fe92b6d3973e67cc6": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
+    },
     "source_fact:7f0d21c3662556df9a0fa1d9": {
       "first_seen_kst": "2026-10-20T15:49:58+09:00",
       "lanes": {
@@ -871907,6 +873029,30 @@
       "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
       "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
       "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
+    },
+    "source_fact:7f5bdc6bb9c3f8d08e9ad412": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026133400530",
+      "source": "연합뉴스",
+      "source_body_digest": "f6aa07e4501c6acf24c5c4518fc6a95fb02410cfd4f3b8d2dad5655d43fdc3ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de21002eeab9e803e801ea3354cefd6b9e9889cf3c76f5ba8c980f0ed077cb3",
+      "source_fact_keys": [
+        "source_fact:v1:22201228d5bd5941c4e8947bd7833e5c97117646139bb49595658690e2d282e1",
+        "source_fact:v1:380645146179ae325a4540b7a08f053fc3c5690253f37b0364a20a603c030a97",
+        "source_fact:v1:7cedb49cffcc6b5eae89044dd4b358e049229c1a654b41a004ca0ccb78071a18",
+        "source_fact:v1:ae2f5fd7c1d955fb1ad1440434620a27a1c5c554348b41715a38497374bfe845",
+        "source_fact:v1:d05cc4362e29efdb80416dddfa7817d90a08f07c5464338d1799a2e0d5bc9d62"
+      ],
+      "source_published_kst": "2026-10-26T16:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스",
+      "telegram_core_fact": "정부가 호남 반도체 산업단지에 전기를 공급할 송전망을 계획보다 1년 앞당겨 구축하기 위해 다른 지역에 설치하려던 변압기를 가져다 쓰기로 했다.",
+      "title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스"
     },
     "source_fact:7f5d7316fd7228c9f68a042e": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -879657,6 +880803,39 @@
       "source_title": "AI 서버 몸값까지 끌어올린 메모리 호황…삼성·SK엔 ‘양날의 검’",
       "telegram_core_fact": "트렌드포스는 AI 서버 수요 확대뿐 아니라 서버 완제품과 메모리 등 핵심 부품 가격 상승, 공급 물량 확보를 위한 선급금 증가 등이 투자비 확대에 영향을 미치고 있다고 분석했다.",
       "title": "AI 서버 몸값까지 끌어올린 메모리 호황…삼성·SK엔 ‘양날의 검’"
+    },
+    "source_fact:829a1c5e9c64c85e06268895": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "source_fact:829ae6f1397a5301d6ae89da": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
@@ -935021,6 +936200,30 @@
       "telegram_core_fact": "이날 삼성그룹 초기업노동조합 삼성지부(이하 초기업노조)는 올해 영업이익 컨센서스(시장 평균 전망치) 370조원을 전제로, 연봉 8천만원대 초반 직원 1인당 세전 기준 ▲ 메모리사업부 약 7억5천만원 ▲ 공통 조직 약 5억3천만원 ▲ 시스템LSI·파운드리사업부 약 2억4천만원의 성과급이 예상된다고 밝혔다.",
       "title": "삼성전자 성과급 내년 3월말 지급…8천만원 연봉시 최대 7.5억원(종합)"
     },
+    "source_fact:9997887c7f39af47ed11efa2": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026133400530",
+      "source": "연합뉴스",
+      "source_body_digest": "f6aa07e4501c6acf24c5c4518fc6a95fb02410cfd4f3b8d2dad5655d43fdc3ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de21002eeab9e803e801ea3354cefd6b9e9889cf3c76f5ba8c980f0ed077cb3",
+      "source_fact_keys": [
+        "source_fact:v1:22201228d5bd5941c4e8947bd7833e5c97117646139bb49595658690e2d282e1",
+        "source_fact:v1:380645146179ae325a4540b7a08f053fc3c5690253f37b0364a20a603c030a97",
+        "source_fact:v1:7cedb49cffcc6b5eae89044dd4b358e049229c1a654b41a004ca0ccb78071a18",
+        "source_fact:v1:ae2f5fd7c1d955fb1ad1440434620a27a1c5c554348b41715a38497374bfe845",
+        "source_fact:v1:d05cc4362e29efdb80416dddfa7817d90a08f07c5464338d1799a2e0d5bc9d62"
+      ],
+      "source_published_kst": "2026-10-26T16:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스",
+      "telegram_core_fact": "정부가 호남 반도체 산업단지에 전기를 공급할 송전망을 계획보다 1년 앞당겨 구축하기 위해 다른 지역에 설치하려던 변압기를 가져다 쓰기로 했다.",
+      "title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스"
+    },
     "source_fact:9999de0880f3e483dbec79fc": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -935811,6 +937014,39 @@
       "source_title": "이달 수출액 261억달러 ‘역대 최대’ 기록…전체 중 절반은 반도체",
       "telegram_core_fact": "이달 1일부터 10일까지 수출액(통관 기준 잠정치)은 261억달러로, 전년비 102.0% 증가했다.",
       "title": "이달 수출액 261억달러 ‘역대 최대’ 기록…전체 중 절반은 반도체"
+    },
+    "source_fact:99ea9aa47f91c984a3304706": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "source_fact:99eb5b98baa7f3d0f8150806": {
       "first_seen_kst": "2026-10-14T21:14:31+09:00",
@@ -948302,6 +949538,27 @@
       "source_title": "오세문 에스지바이오사이언스 대표 “신제품으로 매출 2000억 시대 열 것”",
       "telegram_core_fact": "“씨젠 네트워크라는 울타리를 넘어 독보적인 기술력으로 글로벌 체외진단 무대에서 정당한 가치를 평가받겠다”며 “신제품을 성공시켜 머지않은 시점에 연결 매출 2000억원을 돌파하는 강소 바이오 기업으로 도약하겠다”고 덧붙였다.",
       "title": "오세문 에스지바이오사이언스 대표 “신제품으로 매출 2000억 시대 열 것”"
+    },
+    "source_fact:9ee28be7841753fde4bb0b2c": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640194",
+      "source": "이투데이",
+      "source_body_digest": "36d4935ed9a838c1911be88df9ff581c28a95d92a39917e310acec66057bb624",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29889e135c0a9196fb777875062bbc0a91be9ff1f4fb2bc26e7792b1a4fb2937",
+      "source_fact_keys": [
+        "source_fact:v1:73117162407846ba15376eb7e939e73070c642c509e067929b3e4ca1a9bc743b",
+        "source_fact:v1:76fe0da0a77870bfe4f7adcd5007fe3114e848c3106558f53a4c6fa9ac511018"
+      ],
+      "source_published_kst": "2026-10-26T16:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파",
+      "telegram_core_fact": "NH투자증권이 올해 3분기 누적 순이익 1조3489억원을 기록하며 지난해 연간 실적을 조기에 넘어섰다.",
+      "title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파"
     },
     "source_fact:9ee2ef1fa72763f59d1821f4": {
       "first_seen_kst": "2026-10-18T18:07:27+09:00",
@@ -961169,6 +962426,39 @@
       "source_title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복",
       "telegram_core_fact": "엔비디아와 AMD, 마이크론 등 주요 반도체주가 동반 상승했고, 필라델피아 반도체지수는 2% 가까이 오르며 3대 지수를 웃도는 상승폭을 기록했다.스페이스X의 3분기 매출은 전년비 161% 증가한 146억 달러를 기록했다.",
       "title": "[마켓무버] 뉴욕증시 동반 상승…스페이스X·슈퍼마이크로 호재에 AI 투심 회복"
+    },
+    "source_fact:a3e1d17615456f50b5ece80b": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "source_fact:a3e4cbe93f99ec1c9d8e47a8": {
       "first_seen_kst": "2026-10-13T05:27:22+09:00",
@@ -984959,6 +986249,27 @@
       "source_title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]",
       "telegram_core_fact": "우선 LH는 올해 모듈러주택 연간 발주 물량을 당초 목표치(2000가구)를 웃도는 2100가구 수준으로 확대해 초기 시장 공급을 견인할 방침이다.",
       "title": "LH, 2030년까지 모듈러 1.6만가구 발주…주택 공급 속도 높인다 [부동산360]"
+    },
+    "source_fact:ad629e694e0ca177b4261858": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026136800527",
+      "source": "연합뉴스",
+      "source_body_digest": "924b66604d49d07ce415e33e09373522010ff4338ce825da78ec4aa9778fb6a3",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ed0f2c8523389f958739c8f7920d44b7b95bd5724009ed5db628ec2b513c3147",
+      "source_fact_identity": "source_facts:v1:40cc98118cc6a64df0ab92ad2fcfd58b1f721ac9b2964817f7694fda326b1002",
+      "source_fact_keys": [
+        "source_fact:v1:3419be9d8e5b361e22a0b2bf1fbaa744594e5f5dd4b880059791522c39a76aed",
+        "source_fact:v1:6688ae7c00afb8abee4f8a24fbaec7f6cb325e8616851d776a9fd84b8766819f"
+      ],
+      "source_published_kst": "2026-10-26T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 기업은행[024110]은 연결 기준 올해 3분기 영업이익이 1조313억원으로, 지난해 동기보다 5.6% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스"
     },
     "source_fact:ad632d60e6888aed7af99b2d": {
       "first_seen_kst": "2026-10-12T16:29:45+09:00",
@@ -1023992,6 +1025303,27 @@
       "telegram_core_fact": "비타 코코 컴퍼니(COCO)는 올해 3분기(7~9월) 매출액이 2억4380만 달러로 전년비 34% 증가했고, 순이익은 3500만 달러로 46% 늘었으며 희석 주당순이익은 0.58달러로 전년 동기 0.40달러에서 증가했다고 10월 22일 발표했다.",
       "title": "비타 코코 컴퍼니, 3분기 매출 2억4400만 달러..연간 전망 상향"
     },
+    "source_fact:bd24426ef01d8cf89a6c53d7": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640194",
+      "source": "이투데이",
+      "source_body_digest": "36d4935ed9a838c1911be88df9ff581c28a95d92a39917e310acec66057bb624",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29889e135c0a9196fb777875062bbc0a91be9ff1f4fb2bc26e7792b1a4fb2937",
+      "source_fact_keys": [
+        "source_fact:v1:73117162407846ba15376eb7e939e73070c642c509e067929b3e4ca1a9bc743b",
+        "source_fact:v1:76fe0da0a77870bfe4f7adcd5007fe3114e848c3106558f53a4c6fa9ac511018"
+      ],
+      "source_published_kst": "2026-10-26T16:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파",
+      "telegram_core_fact": "NH투자증권이 올해 3분기 누적 순이익 1조3489억원을 기록하며 지난해 연간 실적을 조기에 넘어섰다.",
+      "title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파"
+    },
     "source_fact:bd27afea322203ab8b5396bd": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
       "lanes": {
@@ -1027667,6 +1028999,39 @@
       "telegram_core_fact": "반도체 실적 개선으로 대규모 특별성과급 지급이 예고되면서 삼성전자 직원들의 보상 규모에도 관심이 쏠리고 있다.",
       "title": "“삼성전자 들어온게 인생 최대 업적”…성과급 30억 부부 “진지하게 서민 탈출한 것 같다”"
     },
+    "source_fact:be89c59df7cccc3e9421e748": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
+    },
     "source_fact:be8e8d4034a384ff6c9fcf77": {
       "first_seen_kst": "2026-10-13T11:35:08+09:00",
       "lanes": {
@@ -1030292,6 +1031657,39 @@
       "source_title": "머스크 \"내년 말 옵티머스 외부 공급\"…테슬라, AI·로봇 승부수",
       "telegram_core_fact": "머스크 CEO는 21일(현지시간) 3분기 실적 발표 후 진행한 어닝 콜에서 옵티머스의 생산 및 상용화 계획을 공개했다.",
       "title": "머스크 \"내년 말 옵티머스 외부 공급\"…테슬라, AI·로봇 승부수"
+    },
+    "source_fact:bf9744c8b1a3cde236561d93": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "source_fact:bf9a40acca90014be2674fd6": {
       "first_seen_kst": "2026-10-15T01:29:03+09:00",
@@ -1033964,6 +1035362,26 @@
       "telegram_core_fact": "코스피 상장사 국도화학[007690]은 화학제품 제조ㆍ도매ㆍ무역업 계열사 국도인터내셔널에 500억원을 출자한다고 26일 공시했다. 출자 후 국도화학의 국도인터내셔널 지분율은 50%가 된다.",
       "title": "국도화학 \"계열사 국도인터내셔널에 500억원 출자\" | 연합뉴스"
     },
+    "source_fact:c11238e011d680c4c338889d": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026084700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2b2731236df6db50f24d9540733bdac62a9f5bb0a3b6cbc93e3b1ac86fb35264",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:544f064a0e1e3a3ae125dc031eb93853ed98ba92c68efab2ef8cdd136ba687b0",
+      "source_fact_identity": "source_facts:v1:781430310c529990ab5b63a7ac78c4e05df677817b30bee43956dc2543d88eb0",
+      "source_fact_keys": [
+        "source_fact:v1:2bfe7d22f588b3b617e6dc944f6e44e2abfb79432d80921788d5e7bb0261989c"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 부산은행이 연결 기준 올해 3분기 영업이익 1천459억원으로 지난해 동기보다 34.5% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스"
+    },
     "source_fact:c116cd24ff8af94dfd9928d5": {
       "first_seen_kst": "2026-10-17T06:31:57+09:00",
       "lanes": {
@@ -1034767,6 +1036185,29 @@
       "source_title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가",
       "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 순이익이 20억9700만 달러로 전년비 15.1% 증가했고, 일반회계기준(GAAP) 희석 주당순이익(EPS)은 4.97달러로 전년 동기(4.35달러)보다 14.3% 늘었다고 10월 15일 발표했다.",
       "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
+    },
+    "source_fact:c15c9ffd70bacfebde323d5f": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639450",
+      "source": "이투데이",
+      "source_body_digest": "4e81069b89418eec1c0af5b8ba844113a59ba8f20670bf7a8e0ad3c670819f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:046fe8cb9a33157170d3160412ee2f4e5769c866fef44824f2cce04106bb158e",
+      "source_fact_keys": [
+        "source_fact:v1:5756b109502b7a31a60cbfa5d0fa3558e8219af3a825fac3fb14fb4c89fb4299",
+        "source_fact:v1:609b3ac4a95d6201cf6c1c79a1552c2e92c65864a8d5172a427ca066ed3d0c26",
+        "source_fact:v1:6f62ce994573bf0b3e7cc85380bc1a4e40d51bf0de5beece3f5232fa4f2481e4",
+        "source_fact:v1:a31b243f715225ccac960af1ab3938e206bdcc32c01c80670f7d16b170810120"
+      ],
+      "source_published_kst": "2026-10-26T16:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아",
+      "telegram_core_fact": "“재경부의 최종 판단이 남아 있는 만큼 관세 부과와 함께 HGI 우회 수입을 막기 위한 보완 조치도 신속히 이뤄져야 한다”고 말했다.",
+      "title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아"
     },
     "source_fact:c15d1ddb055a43c4b94d7798": {
       "first_seen_kst": "2026-10-18T09:49:30+09:00",
@@ -1129330,6 +1130771,29 @@
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
     },
+    "source_fact:e76c24da62b35f7c2dfabc0b": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639450",
+      "source": "이투데이",
+      "source_body_digest": "4e81069b89418eec1c0af5b8ba844113a59ba8f20670bf7a8e0ad3c670819f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:046fe8cb9a33157170d3160412ee2f4e5769c866fef44824f2cce04106bb158e",
+      "source_fact_keys": [
+        "source_fact:v1:5756b109502b7a31a60cbfa5d0fa3558e8219af3a825fac3fb14fb4c89fb4299",
+        "source_fact:v1:609b3ac4a95d6201cf6c1c79a1552c2e92c65864a8d5172a427ca066ed3d0c26",
+        "source_fact:v1:6f62ce994573bf0b3e7cc85380bc1a4e40d51bf0de5beece3f5232fa4f2481e4",
+        "source_fact:v1:a31b243f715225ccac960af1ab3938e206bdcc32c01c80670f7d16b170810120"
+      ],
+      "source_published_kst": "2026-10-26T16:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아",
+      "telegram_core_fact": "“재경부의 최종 판단이 남아 있는 만큼 관세 부과와 함께 HGI 우회 수입을 막기 위한 보완 조치도 신속히 이뤄져야 한다”고 말했다.",
+      "title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아"
+    },
     "source_fact:e76c5978ed8db779a8a1f4c7": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
       "lanes": {
@@ -1160114,6 +1161578,39 @@
       "source_title": "오리엔트정공, 전기차용 우레탄 접착제 개발 완료…양산 검증 착수",
       "telegram_core_fact": "오리엔트정공은 자체 기술로 전기차용 우레탄 접착제 개발을 완료하고 고객사 공급을 위한 본격적인 양산 테스트에 착수했다고 7일 밝혔다.",
       "title": "오리엔트정공, 전기차용 우레탄 접착제 개발 완료…양산 검증 착수"
+    },
+    "source_fact:f3e045a753b3b1f088097a89": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "source_fact:f3e4ceba4c47640774f80c16": {
       "first_seen_kst": "2026-10-20T10:11:13+09:00",
@@ -1203327,6 +1204824,27 @@
       "source_published_kst": "2026-10-06T09:29+09:00",
       "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
     },
+    "title:198bd0f38640bc4bb4a839a4": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026136800527",
+      "source": "연합뉴스",
+      "source_body_digest": "924b66604d49d07ce415e33e09373522010ff4338ce825da78ec4aa9778fb6a3",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ed0f2c8523389f958739c8f7920d44b7b95bd5724009ed5db628ec2b513c3147",
+      "source_fact_identity": "source_facts:v1:40cc98118cc6a64df0ab92ad2fcfd58b1f721ac9b2964817f7694fda326b1002",
+      "source_fact_keys": [
+        "source_fact:v1:3419be9d8e5b361e22a0b2bf1fbaa744594e5f5dd4b880059791522c39a76aed",
+        "source_fact:v1:6688ae7c00afb8abee4f8a24fbaec7f6cb325e8616851d776a9fd84b8766819f"
+      ],
+      "source_published_kst": "2026-10-26T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 기업은행[024110]은 연결 기준 올해 3분기 영업이익이 1조313억원으로, 지난해 동기보다 5.6% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "기업은행 3분기 영업이익 1조313억원…작년 동기 대비 5.6%↑ | 연합뉴스"
+    },
     "title:198f374b4374c17b85f4636a": {
       "first_seen_kst": "2026-10-17T00:51:19+09:00",
       "lanes": {
@@ -1208043,6 +1209561,26 @@
       "telegram_core_fact": "브릿지워터 뱅크쉐어즈(BWB)가 2026년 3분기 순이익 1500만 달러, 희석 주당순이익 0.49달러를 기록해 전년비 각각 29.5%, 28.9% 증가했다고 10월 20일 발표했다. Non-GAAP 조정 희석 주당순이익은 0.49달러로 전년 동기 0.39달러에서 증가했다.",
       "title": "브릿지워터 뱅크쉐어즈, 3분기 희석 EPS 0.49달러..전년비 29% 증가"
     },
+    "title:2180f7018ab1b448080fb9a5": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026125000002",
+      "source": "연합뉴스",
+      "source_body_digest": "ab894e4fedf56e78acfa957e322162c1090ba3179257fd03af6220dce4e2e22a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:45d224b898b2bc5d9428e5eef0c916562754f5f316b9a72e146911f89229090d",
+      "source_fact_keys": [
+        "source_fact:v1:fb7ac5a7b58edc0f3a25372f5ed3aa093c79285202d9cdeefb214762b18e139b"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "기업은행 3분기 순익 7천712억원…1년 전보다 2.7%↑(종합) | 연합뉴스",
+      "telegram_core_fact": "IBK기업은행은 올해 3분기 연결 기준 당기순이익이 7천712억원으로, 작년 동기보다 2.7% 증가했다고 26일 공시했다.",
+      "title": "기업은행 3분기 순익 7천712억원…1년 전보다 2.7%↑(종합) | 연합뉴스"
+    },
     "title:218a2dc6d064fae0e34ab2ae": {
       "first_seen_kst": "2026-09-29T09:48:13+09:00",
       "lanes": {
@@ -1211569,6 +1213107,39 @@
       ],
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
+    },
+    "title:275043de55d4e20cdad02088": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841546",
+      "source": "뉴시스",
+      "source_body_digest": "fc725f3339c019c255a14158cb70d296cf448342512dcaae497f850e55b97053",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f74fef6b9781b92686e99d714e30fee9660a4909b1ddcfeb7c90c523aff8005c",
+      "source_fact_keys": [
+        "source_fact:v1:0125e3a4a5cd2c24bd28084ff274134870098c1983114f0bce8391476ec01d8a",
+        "source_fact:v1:01cb5e479b74d81a1d57aba6864403414645a4651baa0f686d2febfdb11e0c5a",
+        "source_fact:v1:19bb2ecd06e02adcc8db7ee85f5e8bf8b04119701245f31e4829e17e99a8d1ff",
+        "source_fact:v1:2d5ec0114751454b5aa8be9829f11cd8b93b5970fe410663aa8fae38568094e3",
+        "source_fact:v1:35c79841e07becddca7a7a5c72da33675124169fac8e778c80d981ca64e1a46e",
+        "source_fact:v1:5526885b21d159efd85b618dc76f7578ad9d1981d2562070d4b6c1e173060327",
+        "source_fact:v1:59451268bd89a4692f4b694324c67fd1b34e25e3b10c03bfe3eb388fb371867f",
+        "source_fact:v1:64d21f0e838767e744281737ec2b9890b93dfbf18f0bbc9cc94a41e85312427b",
+        "source_fact:v1:89c52af56da4925242c8962efacbaf573ca38032fc789ca90a9c58b18fec3761",
+        "source_fact:v1:8c6333bad3cbda82f810094af17b1f969ea692c3403b275d2a89cf2803e7d57c",
+        "source_fact:v1:90b114d2dd7201b96a66cf0e97541157bcf1fd5e833c6fadee4fe4787571328b",
+        "source_fact:v1:bd90c1287214a24309b2f9e54677c79632ea09eddd9fed6d4357b5da6f1c9390",
+        "source_fact:v1:d2f7600806b4d6f0a091da25dcc29abba9af579fbb782b6fd9015d0a5c175aba",
+        "source_fact:v1:fb747c4fa072bac3544c0968ddf58e6f7fc3d2df71d43c94f968508d8b5b921e"
+      ],
+      "source_published_kst": "2026-10-26T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치",
+      "telegram_core_fact": "마켓워치와 홍콩경제일보, 동방재부망에 따르면 상하이 외환시장에서 위안화 현물 환율은 이날 장중 1달러=6.6682위안까지 뛰어올랐다. 역외(옵쇼어) 위안화 환율은 일시 전장 대비 0.01% 오른 1달러=6.6688위안에 이르렀다.",
+      "title": "[올댓차이나] 위안화 1달러=6.66위안대…4년4개월 만에 최고치"
     },
     "title:2753267a93b37cdf43636d8b": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
@@ -1256602,6 +1258173,27 @@
       "telegram_core_fact": "한국가스공사(KOGAS)가 엣지 AI 기술을 도입해 무인으로 운영되는 천연가스 공급관리소의 안전·방호체계 고도화에 나선다. 가스공사 대구경북지역본부는 엣지 AI CCTV 전문기업인 트루엔과 'AI CCTV 실증사업'을 추진한다고 12일 밝혔다.",
       "title": "가스公, '엣지 AI CCTV'로 무인 공급관리소 방호·안전 강화"
     },
+    "title:71b65ddab1231d449bacd21d": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640194",
+      "source": "이투데이",
+      "source_body_digest": "36d4935ed9a838c1911be88df9ff581c28a95d92a39917e310acec66057bb624",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29889e135c0a9196fb777875062bbc0a91be9ff1f4fb2bc26e7792b1a4fb2937",
+      "source_fact_keys": [
+        "source_fact:v1:73117162407846ba15376eb7e939e73070c642c509e067929b3e4ca1a9bc743b",
+        "source_fact:v1:76fe0da0a77870bfe4f7adcd5007fe3114e848c3106558f53a4c6fa9ac511018"
+      ],
+      "source_published_kst": "2026-10-26T16:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파",
+      "telegram_core_fact": "NH투자증권이 올해 3분기 누적 순이익 1조3489억원을 기록하며 지난해 연간 실적을 조기에 넘어섰다.",
+      "title": "증권가 실적 포문 연 NH투자증권…3분기 누적 순익 1조 돌파"
+    },
     "title:71b692d828b4c094a6311e99": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
@@ -1298149,6 +1299741,26 @@
       "telegram_core_fact": "서울 여의도 최대 재건축 사업지로 꼽히는 시범아파트 재건축 시공사로 삼성물산 건설부문이 선정됐다.",
       "title": "삼성물산, 2조원 '여의도 시범' 시공사 선정…한강변에 래미안 벨트"
     },
+    "title:b69f0621203ffe83316f4126": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026084700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2b2731236df6db50f24d9540733bdac62a9f5bb0a3b6cbc93e3b1ac86fb35264",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:544f064a0e1e3a3ae125dc031eb93853ed98ba92c68efab2ef8cdd136ba687b0",
+      "source_fact_identity": "source_facts:v1:781430310c529990ab5b63a7ac78c4e05df677817b30bee43956dc2543d88eb0",
+      "source_fact_keys": [
+        "source_fact:v1:2bfe7d22f588b3b617e6dc944f6e44e2abfb79432d80921788d5e7bb0261989c"
+      ],
+      "source_published_kst": "2026-10-26T13:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 부산은행이 연결 기준 올해 3분기 영업이익 1천459억원으로 지난해 동기보다 34.5% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
+      "title": "부산은행 3분기 영업이익 1천459억원…작년 동기 대비 34.5%↓ | 연합뉴스"
+    },
     "title:b6a473e2762ee2222c44c96a": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -1300974,6 +1302586,29 @@
       "source_title": "김여정, 의료장비 지원계획에 또 반발…\"한국 인간쓰레기 무시할 것\"",
       "telegram_core_fact": "“제재 면제 신청 및 언론 공개라는 ‘공개적 방식’으로 추진한 점이 김여정의 극렬한 반발을 끌어낸 핵심 포인트”라며 “이번 사태로 불신이 배가 될 것”이라고 우려했다.",
       "title": "김여정, 의료장비 지원계획에 또 반발…\"한국 인간쓰레기 무시할 것\""
+    },
+    "title:bc0cebfcde999bcc4b68ce32": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639450",
+      "source": "이투데이",
+      "source_body_digest": "4e81069b89418eec1c0af5b8ba844113a59ba8f20670bf7a8e0ad3c670819f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:046fe8cb9a33157170d3160412ee2f4e5769c866fef44824f2cce04106bb158e",
+      "source_fact_keys": [
+        "source_fact:v1:5756b109502b7a31a60cbfa5d0fa3558e8219af3a825fac3fb14fb4c89fb4299",
+        "source_fact:v1:609b3ac4a95d6201cf6c1c79a1552c2e92c65864a8d5172a427ca066ed3d0c26",
+        "source_fact:v1:6f62ce994573bf0b3e7cc85380bc1a4e40d51bf0de5beece3f5232fa4f2481e4",
+        "source_fact:v1:a31b243f715225ccac960af1ab3938e206bdcc32c01c80670f7d16b170810120"
+      ],
+      "source_published_kst": "2026-10-26T16:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아",
+      "telegram_core_fact": "“재경부의 최종 판단이 남아 있는 만큼 관세 부과와 함께 HGI 우회 수입을 막기 위한 보완 조치도 신속히 이뤄져야 한다”고 말했다.",
+      "title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아"
     },
     "title:bc18d88fc1e521bf1ee4cb2e": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
@@ -1313708,6 +1315343,30 @@
       "source_title": "아메리칸항공 \"유가 내려도 항공료 안 내려\"…내년 추가인상 전망도",
       "telegram_core_fact": "미국 아메리칸항공이 국제 유가가 떨어지더라도 항공 운임은 이란 전쟁 이전 수준으로 돌아가지 않을 것이라고 경고했다.",
       "title": "아메리칸항공 \"유가 내려도 항공료 안 내려\"…내년 추가인상 전망도"
+    },
+    "title:d1cd05078edc114243841064": {
+      "first_seen_kst": "2026-10-26T23:18:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T23:18:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T23:18:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261026133400530",
+      "source": "연합뉴스",
+      "source_body_digest": "f6aa07e4501c6acf24c5c4518fc6a95fb02410cfd4f3b8d2dad5655d43fdc3ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de21002eeab9e803e801ea3354cefd6b9e9889cf3c76f5ba8c980f0ed077cb3",
+      "source_fact_keys": [
+        "source_fact:v1:22201228d5bd5941c4e8947bd7833e5c97117646139bb49595658690e2d282e1",
+        "source_fact:v1:380645146179ae325a4540b7a08f053fc3c5690253f37b0364a20a603c030a97",
+        "source_fact:v1:7cedb49cffcc6b5eae89044dd4b358e049229c1a654b41a004ca0ccb78071a18",
+        "source_fact:v1:ae2f5fd7c1d955fb1ad1440434620a27a1c5c554348b41715a38497374bfe845",
+        "source_fact:v1:d05cc4362e29efdb80416dddfa7817d90a08f07c5464338d1799a2e0d5bc9d62"
+      ],
+      "source_published_kst": "2026-10-26T16:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스",
+      "telegram_core_fact": "정부가 호남 반도체 산업단지에 전기를 공급할 송전망을 계획보다 1년 앞당겨 구축하기 위해 다른 지역에 설치하려던 변압기를 가져다 쓰기로 했다.",
+      "title": "호남 반도체 송전망 조기 구축 위해 타지역 변압기 쓰기로 | 연합뉴스"
     },
     "title:d1cdab6fb2012a3e0b787158": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
@@ -1340588,5 +1342247,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-26T22:48:11+09:00"
+  "updated_at_kst": "2026-10-26T23:18:52+09:00"
 }
