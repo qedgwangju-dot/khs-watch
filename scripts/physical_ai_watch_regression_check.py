@@ -5914,7 +5914,7 @@ assert len(_r27_selected)==2 and len({x["key"] for x in _r27_selected})==2,_r27_
 _atlas_save_now=base.NOW
 try:
   base.NOW=dt.datetime(2026,10,27,0,0,tzinfo=dt.timezone.utc)
-  ar=watcher.query_news(watcher.ATLAS26_REPORT_QUERY)
+  ar=base.query_news(watcher.ATLAS26_REPORT_QUERY)
   assert len(ar)==1,ar
   ag,ass,ac,ak=classify(ar[0])
   assert ag=="atlas_etnews_parts_report" and ass>=11 and "업계 취재" in ac,(ag,ass,ac)
@@ -5948,7 +5948,7 @@ try:
   )
   assert not watcher._atlas26_aop_reprint(distinct)
   base.NOW=dt.datetime(2026,11,2,0,0,tzinfo=dt.timezone.utc)
-  assert watcher.query_news(watcher.ATLAS26_REPORT_QUERY)==[]
+  assert base.query_news(watcher.ATLAS26_REPORT_QUERY)==[]
 finally:
   base.NOW=_atlas_save_now
 
