@@ -695,6 +695,31 @@ def verify_source_dates_before_notify(
     for row in notify:
         evidence: dict[str, str] = {}
         resolved, body, error = fetch_article_body(str(row.get("url", "")), evidence)
+        key = str(row.get("event_key", ""))
+        if key == "12th-plan|aidc-demand|proposed-3to4gw-cut":
+            import re
+            normalized = " ".join(str(body or "").lower().split())
+            numeric_cut = bool(re.search(r"3\s*[~～∼-]\s*4\s*(?:gw|기가와트)", normalized))
+            evidence_ok = (
+                len(normalized) >= 350
+                and any(x in normalized for x in ("데이터센터", "aidc"))
+                and any(x in normalized for x in ("전력수요", "전력 수요"))
+                and "7.9" in normalized
+                and numeric_cut
+                and any(x in normalized for x in ("검토", "논의", "추진"))
+            )
+            if not evidence_ok:
+                # 수집장애·본문 없는 기사로 송출하지 않고, 중복키도 소비하지 않는다.
+                if key in seen_events:
+                    next_events[key] = seen_events[key]
+                else:
+                    next_events.pop(key, None)
+                for member in row.get("members") or [row]:
+                    member_id = str(member.get("id", ""))
+                    if member_id and member_id not in seen_ids:
+                        next_ids.discard(member_id)
+                print("aidc_power_cut_held=true reason=insufficient_original_text retained_for_retry=true")
+                continue
         age = verified_age_days(evidence)
         modified = parse_timestamp(evidence.get("modified", ""))
         modified_age_hours = None
