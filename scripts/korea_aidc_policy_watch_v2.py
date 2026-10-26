@@ -63,6 +63,17 @@ EXTRA_RSS_SOURCES = (
 
 # 검색엔진이 누락해도 원문을 직접 다시 확인한다. 이 URL은 정책 기준선일 뿐
 # 검증 성공·신규 상태 상승이 없으면 알림으로 만들지 않는다.
+AIDC_ECOSYSTEM_MEDIA_BASELINE = {
+    "id": "aidc-20261023-media-news1",
+    "title": "AIDC 인허가 절차 줄인다…내년 국산화에 2000억 원 투입 - 뉴스1",
+    "publisher": "뉴스1",
+    "source": "국내 주요 언론",
+    "official": False,
+    "url": "https://www.news1.kr/it-science/internet-platform/6329899",
+    "published": "Fri, 23 Oct 2026 05:00:00 GMT",
+    "category": "AIDC 생태계 지원 방안",
+    "stage": 3,
+}
 AIDC_ECOSYSTEM_OFFICIAL_BASELINE = {
     "id": "aidc-20261023-official",
     "title": "인공지능 데이터센터(AIDC) 생태계 지원 방안 발표",
@@ -324,6 +335,7 @@ def verify_change(row: dict[str, Any]) -> tuple[bool, str]:
     """검증 실패 또는 제목만으로 만든 상태 변화를 알림에서 거부."""
     key = str(row.get("event_key") or semantic_key(row))
     body = " ".join(str(row.get("article_body") or "").lower().split())
+    body = body.replace("인·허가", "인허가").replace("인ㆍ허가", "인허가").replace("인-허가", "인허가")
     title = str(row.get("title") or "").lower()
     official = verified_official_url(row)
 
@@ -681,6 +693,7 @@ def main() -> int:
     baseline_date = base.parse_date(AIDC_ECOSYSTEM_OFFICIAL_BASELINE["published"])
     if baseline_date and timedelta(0) <= now - baseline_date.astimezone(timezone.utc) <= timedelta(days=MAX_AGE_DAYS):
         recent.append(dict(AIDC_ECOSYSTEM_OFFICIAL_BASELINE))
+        recent.append(dict(AIDC_ECOSYSTEM_MEDIA_BASELINE))
 
     events = collapse(recent)
     seen = {str(k): int(v) for k, v in dict(state.get("seen_events", {})).items()}
@@ -717,7 +730,9 @@ def main() -> int:
         )
         verified = None
         reject_reasons: list[str] = []
-        for candidate in candidates[:3]:
+        # 정부 종합자료·언론 원문 양쪽을 확인할 수 있도록 이 사건만 최대 5개 출처 확인.
+        max_candidates = 5 if key == "aidc|ecosystem-support|government-proposal" else 3
+        for candidate in candidates[:max_candidates]:
             enriched = enrich(candidate, session)
             enriched["event_key"] = key
             ok, reason = verify_change(enriched)
