@@ -2277,6 +2277,28 @@
       "source_published_kst": "2026-10-07T14:24+09:00",
       "title": "KT&G, 인니 신공장 가동 시작…‘글로벌 5각 생산체제’ 구축"
     },
+    "core:0631fe701cafb499a27ca040": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12186552",
+      "source": "매일경제",
+      "source_body_digest": "a5b1a7ece47f97dddc8c2d292c4538f7b031faf9cb196b339db7929672f1dafc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e0151917c52a09bbde328633f19310bf050d274c30d68a33c8ea4ba1ecc009c",
+      "source_fact_keys": [
+        "source_fact:v1:277c21d4f84f84323e9d0d717722aa0b3b2638be87ee78d7b532bd65d44a8ebb",
+        "source_fact:v1:b23cca3da8922fdd82edb8e813536c756b3aba2039cc0cbc569c6246fd6b9b3d",
+        "source_fact:v1:fdaeb89a9fc7a620b13629095adafd98b617974b3aaaff5661932905a223c485"
+      ],
+      "source_published_kst": "2026-10-27T07:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진",
+      "telegram_core_fact": "올해 상반기 매출은 162억8600만달러로 지난해 같은 기간의 약 12억달러보다 14배 가까이 증가했다.",
+      "title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진"
+    },
     "core:0636458dbf753154874bcf55": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
       "lanes": {
@@ -7926,6 +7948,37 @@
       "source_title": "브룩필드, 우선주 1억5000만 캐나다달러 발행..연 5.65% 배당",
       "telegram_core_fact": "브룩필드(BN)가 시리즈 56 클래스A 우선주 600만 주를 주당 25캐나다달러에 발행해 총 1억5000만 캐나다달러를 조달하기로 하고, 연 5.65%의 누적 분기 고정배당을 제시했다고 10월 15일 발표했다.",
       "title": "브룩필드, 우선주 1억5000만 캐나다달러 발행..연 5.65% 배당"
+    },
+    "core:12c414d669259a7a496a33be": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
     },
     "core:12dc84fad326b589a683a1e2": {
       "first_seen_kst": "2026-10-18T08:31:39+09:00",
@@ -27997,6 +28050,37 @@
       "source_title": "미러 '경유딜'에…EU \"제재 중단, 전쟁자금 대는 것\" | 연합뉴스",
       "telegram_core_fact": "전날 도널드 트럼프 미국 대통령은 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔고, 미 정부는 러시아산 경유의 미국 수입 등을 허용하는 한시적인 대러 제재 완화 조치를 발표했다.",
       "title": "미러 '경유딜'에…EU \"제재 중단, 전쟁자금 대는 것\" | 연합뉴스"
+    },
+    "core:3da4e1d5d1787bab031b2e78": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
     },
     "core:3da4f569483237dcf2d48d6f": {
       "first_seen_kst": "2026-10-13T07:02:46+09:00",
@@ -67423,6 +67507,33 @@
       "telegram_core_fact": "기업공개(IPO)를 앞둔 앤트로픽이 회사 지분 5%를 새로 만드는 공익기금에 출연하기로 했다. 앤트로픽은 18일(현지시간) 공식 블로그를 통해 주주 승인을 거쳐 지분 5%를 '앤트로픽 공익기금'에 출연한다고 밝혔다.",
       "title": "앤트로픽, 지분 5% 공익기금에 출연…\"AI 일자리 충격 대응\" | 연합뉴스"
     },
+    "core:994c730cbdd7bd07a257c2a4": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
+    },
     "core:994debf226560acefcbf11b3": {
       "first_seen_kst": "2026-10-16T15:46:25+09:00",
       "lanes": {
@@ -69514,6 +69625,36 @@
       "source_title": "LS에코에너지, 3분기 영업익 222억…'유럽·북미향 수출 확대'에 사상 최대 실적",
       "telegram_core_fact": "LS에코에너지는 연결 기준 3분기 잠정 실적으로 매출 3515억원, 영업이익 222억원, 순이익 140억원을 기록했다고 20일 밝혔다.",
       "title": "LS에코에너지, 3분기 영업익 222억…'유럽·북미향 수출 확대'에 사상 최대 실적"
+    },
+    "core:9dfad07a3b7b3a5208f63423": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
     },
     "core:9e0abb85baa075dc74e80dba": {
       "first_seen_kst": "2026-10-23T22:50:49+09:00",
@@ -78229,6 +78370,29 @@
       "source_title": "\"투자유치 성과 구체화\"…세종시장, 100여일만 시청 집무실 복귀 | 연합뉴스",
       "telegram_core_fact": "취임 100일을 기점으로 기업의 투자 계획이 구체화한 것이 시청 집무실 복귀를 결정한 배경이 됐다. 세종시는 삼성전기의 8조원대 투자계획, 다이소 물류센터 확장계획, 8조8천억원대 인공지능 데이터센터 유치 등을 조 시장 취임 후 주요 투자유치 성과로 꼽았다.",
       "title": "\"투자유치 성과 구체화\"…세종시장, 100여일만 시청 집무실 복귀 | 연합뉴스"
+    },
+    "core:b1db5534e9f3a0ab56700449": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639988",
+      "source": "이투데이",
+      "source_body_digest": "8eb70401182879efb7ed21f6eca3a6ee37db04010845ce775f97f3b950a7d721",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d5f43b938f00124ece839ba59b113c449a0d6f1b55b0c3416056d9a1cb28e8",
+      "source_fact_keys": [
+        "source_fact:v1:15dd41940da861395bfe05dd396852fe547877b475ba353c73961938ef7844d5",
+        "source_fact:v1:44c1521ad8650a6482eff5fc2daf88bd3af5c746afcf8988ee7549065b807a66",
+        "source_fact:v1:46f452881342a1d6a1824b6669afca2b781b6b3769bc1d2053fb54240623a883",
+        "source_fact:v1:aae1645142adb74fc99a0b1e62f8c45815e24ca0a913c57c1f4135d3f6d9c26f"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]",
+      "telegram_core_fact": "테슬라의 중국 상하이 생산 차량과 비야디(BYD)가 2000만~5000만원대 전기차를 앞세워 판매를 확대하자 볼보와 메르세데스-벤츠, 폴스타 등 기존 프리미엄 브랜드들도 한국 판매가격을 낮추거나 가격 경쟁력을 높인 모델을 잇달아 투입하고 있다.",
+      "title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]"
     },
     "core:b1f05074ddc9270571996599": {
       "first_seen_kst": "2026-10-21T20:37:27+09:00",
@@ -116792,6 +116956,37 @@
       "telegram_core_fact": "코스콤 ETF체크에 따르면 지난주 개인투자자들이 가장 많이 사들인 ETF는 KODEX 레버리지(7733억원)였다. KODEX 코스닥150레버리지(3791억원)와 KODEX 반도체레버리지(2023억원)도 각각 순매수 3위와 5위를 차지했다.",
       "title": "겁도 없이, 지르는 개미들 … 레버리지 ETF가 순매수 1위"
     },
+    "event:26deeab581155361010ffa0f": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
+    },
     "event:26fd6e26134f34d456387ce6": {
       "first_seen_kst": "2026-10-14T00:12:03+09:00",
       "lanes": {
@@ -127397,26 +127592,24 @@
     "event:98aeb775f2876f8ead61b3ab": {
       "first_seen_kst": "2026-10-27T04:53:25+09:00",
       "lanes": {
-        "live": "2026-10-27T04:53:25+09:00"
+        "live": "2026-10-27T08:49:21+09:00"
       },
-      "last_seen_kst": "2026-10-27T04:53:25+09:00",
-      "link": "https://www.bloter.net/news/articleView.html?idxno=676775",
-      "source": "블로터",
-      "source_body_digest": "9ddfa88fd7b1ad6478e341ad0f205cba3d6d6d54a5485f811ec91b4eb7aef83b",
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12186552",
+      "source": "매일경제",
+      "source_body_digest": "a5b1a7ece47f97dddc8c2d292c4538f7b031faf9cb196b339db7929672f1dafc",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:5adc4effbbe357dc39a11daef615d9c7ecdec3479692a5911e280fd78e6bdab0",
+      "source_fact_identity": "source_facts:v1:6e0151917c52a09bbde328633f19310bf050d274c30d68a33c8ea4ba1ecc009c",
       "source_fact_keys": [
-        "source_fact:v1:58afd36e909cfc67bdd0a2f7c746d64e3fbfb682421819ed5e1d739dc3a8842f",
-        "source_fact:v1:5a456d8605d16f754d72ea09d1c78f561962309c620e16908db1ba6906f84aa2",
-        "source_fact:v1:637b6f04fb7a158c61e6235022f4f85db75f71554ea17ff752373d8991c74236",
-        "source_fact:v1:810192b8189313c079f0a74e9689e076f595d5f64faab0eade13920bc682d1a1",
-        "source_fact:v1:baee84b5a8c4536d9587103989fd38aa624090a72b1282222b2524ef9f71d79f"
+        "source_fact:v1:277c21d4f84f84323e9d0d717722aa0b3b2638be87ee78d7b532bd65d44a8ebb",
+        "source_fact:v1:b23cca3da8922fdd82edb8e813536c756b3aba2039cc0cbc569c6246fd6b9b3d",
+        "source_fact:v1:fdaeb89a9fc7a620b13629095adafd98b617974b3aaaff5661932905a223c485"
       ],
-      "source_published_kst": "2026-10-27T03:05+09:00",
+      "source_published_kst": "2026-10-27T07:45+09:00",
       "source_supply_terms": {},
-      "source_title": "앤트로픽 IPO 본격화…매출 폭증·손실 확대에 AI 기업가치 시험대",
-      "telegram_core_fact": "IPO 관련 리서치 및 상장지수펀드(ETF) 제공업체 르네상스캐피털의 맷 케네디 선임 전략가는 “앤트로픽은 여름보다 훨씬 어려워진 IPO 시장에 진입하고 있다”며 “몇 달 전만 해도 투자자들은 지금과 같은 방식으로 기업가치에 의문을 제기하지 않았다”고 설명했다.",
-      "title": "앤트로픽 IPO 본격화…매출 폭증·손실 확대에 AI 기업가치 시험대"
+      "source_title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진",
+      "telegram_core_fact": "올해 상반기 매출은 162억8600만달러로 지난해 같은 기간의 약 12억달러보다 14배 가까이 증가했다.",
+      "title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진"
     },
     "event:98c673d95db36e31391a3e2f": {
       "first_seen_kst": "2026-09-28T09:32:57+09:00",
@@ -129332,24 +129525,34 @@
     "event:acc17c4edf2795851c2a1fdb": {
       "first_seen_kst": "2026-10-27T07:04:47+09:00",
       "lanes": {
-        "live": "2026-10-27T07:40:55+09:00",
+        "live": "2026-10-27T08:49:21+09:00",
         "preopen": "2026-10-27T07:04:47+09:00"
       },
-      "last_seen_kst": "2026-10-27T07:40:55+09:00",
-      "link": "https://biz.heraldcorp.com/article/10915452",
-      "source": "헤럴드경제",
-      "source_body_digest": "3913796ba59e782c634d71c4f7f05d0876db7e0d0351c0c783fb7602dcc4e7c7",
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:1887b1ba2a9fd340dfe0f4d814778f1fd9e5f8656c67d75d36dc79b96604ce56",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
       "source_fact_keys": [
-        "source_fact:v1:c3880c3d735c460478ea68555c30819d64d4102621b9d91a523bdfb0f1efbd94",
-        "source_fact:v1:d6ba756695f591d7e2d8514dc3af90f959dbc11139fbf7be093c2247df030cc9"
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
       ],
-      "source_published_kst": "2026-10-27T06:37+09:00",
+      "source_published_kst": "2026-10-27T07:39+09:00",
       "source_supply_terms": {},
-      "source_title": "‘앤트로픽 IPO’ 공식화에 美반도체주 일제 상승…엔비디아 2.39%↑",
-      "telegram_core_fact": "앤트로픽의 상장 추진은 최근 월가를 짓눌렀던 AI 거품론을 가늠할 시험대로 주목받고 있다.",
-      "title": "‘앤트로픽 IPO’ 공식화에 美반도체주 일제 상승…엔비디아 2.39%↑"
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
     },
     "event:accd5bd4adc4ae46e1b8f486": {
       "first_seen_kst": "2026-10-15T15:55:49+09:00",
@@ -131909,6 +132112,36 @@
       "link": "https://www.yna.co.kr/view/AKR20260921028300008",
       "source": "연합뉴스",
       "title": "삼성운용 KODEX 미국반도체, SK하이닉스 ADR 신규 편입 | 연합뉴스"
+    },
+    "event:c8cf4d683663511c372ff61b": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
     },
     "event:c8d6783d828107b69f6e4986": {
       "first_seen_kst": "2026-09-29T11:15:34+09:00",
@@ -178057,6 +178290,37 @@
       "telegram_core_fact": "외국인은 연초부터 지난 12일까지 국내 상장 ETF를 총 9조6595억원 순매수했다.",
       "title": "외국인, 코스피 199조 팔고 ETF 9.6조 매수"
     },
+    "fact:58c27581fdc68935c7384ec2": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
+    },
     "fact:58cbf9a65f5aa36a64588e58": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
       "lanes": {
@@ -179800,6 +180064,36 @@
       "source_title": "경기도, AI 집적단지 지정 기준 마련…전석훈 의원, 조례안 6일 입법예고",
       "telegram_core_fact": "전 의원은 수도권에 있는 경기도가 규제자유특구 지정 대상에서도 제외된다는 점을 조례 추진 배경으로 들었다.",
       "title": "경기도, AI 집적단지 지정 기준 마련…전석훈 의원, 조례안 6일 입법예고"
+    },
+    "fact:5cc83d540713a19b64479cd4": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
     },
     "fact:5cce90b934677d009210342c": {
       "first_seen_kst": "2026-10-08T09:17:31+09:00",
@@ -222945,6 +223239,29 @@
       "telegram_core_fact": "론스타 측은 이에 불복해 소송을 제기했고, 2017년 대법원에서 세금 부과를 취소하라는 판결이 확정됐다.",
       "title": "정부, 론스타 1682억 세금 반환 소송 파기환송심서 승소"
     },
+    "fact:b508a636d4d2ca535c1e57ce": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639988",
+      "source": "이투데이",
+      "source_body_digest": "8eb70401182879efb7ed21f6eca3a6ee37db04010845ce775f97f3b950a7d721",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d5f43b938f00124ece839ba59b113c449a0d6f1b55b0c3416056d9a1cb28e8",
+      "source_fact_keys": [
+        "source_fact:v1:15dd41940da861395bfe05dd396852fe547877b475ba353c73961938ef7844d5",
+        "source_fact:v1:44c1521ad8650a6482eff5fc2daf88bd3af5c746afcf8988ee7549065b807a66",
+        "source_fact:v1:46f452881342a1d6a1824b6669afca2b781b6b3769bc1d2053fb54240623a883",
+        "source_fact:v1:aae1645142adb74fc99a0b1e62f8c45815e24ca0a913c57c1f4135d3f6d9c26f"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]",
+      "telegram_core_fact": "테슬라의 중국 상하이 생산 차량과 비야디(BYD)가 2000만~5000만원대 전기차를 앞세워 판매를 확대하자 볼보와 메르세데스-벤츠, 폴스타 등 기존 프리미엄 브랜드들도 한국 판매가격을 낮추거나 가격 경쟁력을 높인 모델을 잇달아 투입하고 있다.",
+      "title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]"
+    },
     "fact:b52bd7065414cb231a60ed4b": {
       "first_seen_kst": "2026-10-18T09:00:24+09:00",
       "lanes": {
@@ -235047,6 +235364,37 @@
       "source_title": "앤트로픽 3분기 매출 168억달러…영업이익률 11% 넘어",
       "telegram_core_fact": "인공지능(AI) 기업 앤트로픽이 올해 3분기 매출 168억달러를 기록하고 조정 영업이익률 11% 이상을 달성했다.",
       "title": "앤트로픽 3분기 매출 168억달러…영업이익률 11% 넘어"
+    },
+    "fact:cea48353e8b5074517a427b8": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
     },
     "fact:ceabadcc4ee47c52deacd3e0": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
@@ -249311,6 +249659,33 @@
       "telegram_core_fact": "유나이티드 렌탈(URI)이 3분기 매출액 48억9300만 달러로 전년비 15.7% 증가했고, GAAP 기준 희석 주당순이익은 14.77달러로 35.4% 늘며 분기 최대 실적을 기록했다고 10월 21일 발표했다.",
       "title": "유나이티드 렌탈, 3분기 매출 49억 달러..연간 가이던스 상향"
     },
+    "fact:eadc5e0a827687a932ba5d3a": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
+    },
     "fact:eadd2401812256f9758f6f64": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
       "lanes": {
@@ -252135,6 +252510,28 @@
       "source_title": "트럼프 \"11월 3일 중간선거 전까지 이란 공격 안 해\" | 연합뉴스",
       "telegram_core_fact": "또 트럼프 대통령은 소셜미디어를 통해 \"우리는 이란과 생산적인 논의를 진행하고 있다\"며 \"이란은 경제적으로나 군사적으로 매우 나쁜 상황에 처해 있고, 봉쇄 조치는 전면적으로 유지될 것\"이라고도 말했습니다.",
       "title": "트럼프 \"11월 3일 중간선거 전까지 이란 공격 안 해\" | 연합뉴스"
+    },
+    "fact:f085a51da4d2bb67a43be679": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12186552",
+      "source": "매일경제",
+      "source_body_digest": "a5b1a7ece47f97dddc8c2d292c4538f7b031faf9cb196b339db7929672f1dafc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e0151917c52a09bbde328633f19310bf050d274c30d68a33c8ea4ba1ecc009c",
+      "source_fact_keys": [
+        "source_fact:v1:277c21d4f84f84323e9d0d717722aa0b3b2638be87ee78d7b532bd65d44a8ebb",
+        "source_fact:v1:b23cca3da8922fdd82edb8e813536c756b3aba2039cc0cbc569c6246fd6b9b3d",
+        "source_fact:v1:fdaeb89a9fc7a620b13629095adafd98b617974b3aaaff5661932905a223c485"
+      ],
+      "source_published_kst": "2026-10-27T07:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진",
+      "telegram_core_fact": "올해 상반기 매출은 162억8600만달러로 지난해 같은 기간의 약 12억달러보다 14배 가까이 증가했다.",
+      "title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진"
     },
     "fact:f08c43cc9d342e790644e87d": {
       "first_seen_kst": "2026-10-27T07:04:47+09:00",
@@ -279739,6 +280136,33 @@
       ],
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, 2900억원 AI 서버용 MLCC 공급 계약…“AI 부품 '4조 클럽' 달성”"
+    },
+    "link:21337bfbb2157282917cca25": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
     },
     "link:2148fb400154d2e793e9650a": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
@@ -320485,6 +320909,36 @@
       "source_title": "‘K-뷰티·반도체 날개’…3분기 中企 수출 334억달러 ‘역대 최대’",
       "telegram_core_fact": "특히 아랍에미리트(UAE) 수출이 66.6% 감소하는 등 중동 지역의 수출 차질이 영향을 미쳤다.",
       "title": "‘K-뷰티·반도체 날개’…3분기 中企 수출 334억달러 ‘역대 최대’"
+    },
+    "link:6371416d8d605ae16d7beac2": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
     },
     "link:637ad5e9c4e7b6560c6fab59": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -362795,6 +363249,37 @@
       "telegram_core_fact": "업계에 따르면 CJ대한통운은 최근 일본 다이와하우스로부터 베트남 동나이성에 있는 2만 843㎡ 규모 물류센터를 인수해 본격적인 가동에 들어갔다. 당시 CJ대한통운은 완전한 독립 경영을 기반으로 물류센터 등 자산 투자를 적극 검토하고, W&D(보관 및 배송) 사업 경쟁력을 현지에 이식하겠다고 강조했다.",
       "title": "CJ대한통운, 베트남 동나이 물류센터 인수…현지 사업 가속 페달"
     },
+    "link:a8e781e1545aa9257c8f82ac": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
+    },
     "link:a8ed6496283ea894c58c6348": {
       "first_seen_kst": "2026-10-07T04:29:18+09:00",
       "lanes": {
@@ -369338,6 +369823,37 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T15:22+09:00",
       "title": "웰컴저축은행도 해킹으로 정보유출…법인고객 정보 2200건 추정"
+    },
+    "link:b3efd23fa13dc94339ed8a39": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
     },
     "link:b3f56ee45db331f3157977ca": {
       "first_seen_kst": "2026-10-20T09:47:35+09:00",
@@ -382930,6 +383446,29 @@
       "telegram_core_fact": "16일 국회 농림축산식품해양수산위원회 소속 국민의힘 이성권(부산사하갑) 의원에 따르면 연휴와 경주 일정 차이도 영향을 미쳤겠지만, 부산경남 경주를 영천에 배분한 상황에서 실제 매출 감소가 나타났다고 밝혔다.",
       "title": "이성권 의원 \"부산·경남 내년 경마 레저세 213억 감소 전망\""
     },
+    "link:c960afea9297d1e52450e9a4": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639988",
+      "source": "이투데이",
+      "source_body_digest": "8eb70401182879efb7ed21f6eca3a6ee37db04010845ce775f97f3b950a7d721",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d5f43b938f00124ece839ba59b113c449a0d6f1b55b0c3416056d9a1cb28e8",
+      "source_fact_keys": [
+        "source_fact:v1:15dd41940da861395bfe05dd396852fe547877b475ba353c73961938ef7844d5",
+        "source_fact:v1:44c1521ad8650a6482eff5fc2daf88bd3af5c746afcf8988ee7549065b807a66",
+        "source_fact:v1:46f452881342a1d6a1824b6669afca2b781b6b3769bc1d2053fb54240623a883",
+        "source_fact:v1:aae1645142adb74fc99a0b1e62f8c45815e24ca0a913c57c1f4135d3f6d9c26f"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]",
+      "telegram_core_fact": "테슬라의 중국 상하이 생산 차량과 비야디(BYD)가 2000만~5000만원대 전기차를 앞세워 판매를 확대하자 볼보와 메르세데스-벤츠, 폴스타 등 기존 프리미엄 브랜드들도 한국 판매가격을 낮추거나 가격 경쟁력을 높인 모델을 잇달아 투입하고 있다.",
+      "title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]"
+    },
     "link:c96167d8f1b6392af9541318": {
       "first_seen_kst": "2026-10-12T20:59:01+09:00",
       "lanes": {
@@ -392774,6 +393313,28 @@
       ],
       "source_published_kst": "2026-10-05T15:17+09:00",
       "title": "자사주 '버팀목' 빠지는 삼성전자… 100조원대 영업익으로 극복할까?"
+    },
+    "link:da8f0b14e80dabbf05e9030b": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12186552",
+      "source": "매일경제",
+      "source_body_digest": "a5b1a7ece47f97dddc8c2d292c4538f7b031faf9cb196b339db7929672f1dafc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e0151917c52a09bbde328633f19310bf050d274c30d68a33c8ea4ba1ecc009c",
+      "source_fact_keys": [
+        "source_fact:v1:277c21d4f84f84323e9d0d717722aa0b3b2638be87ee78d7b532bd65d44a8ebb",
+        "source_fact:v1:b23cca3da8922fdd82edb8e813536c756b3aba2039cc0cbc569c6246fd6b9b3d",
+        "source_fact:v1:fdaeb89a9fc7a620b13629095adafd98b617974b3aaaff5661932905a223c485"
+      ],
+      "source_published_kst": "2026-10-27T07:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진",
+      "telegram_core_fact": "올해 상반기 매출은 162억8600만달러로 지난해 같은 기간의 약 12억달러보다 14배 가까이 증가했다.",
+      "title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진"
     },
     "link:daaef6baea4b1b5b0f256a02": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
@@ -410136,6 +410697,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:18+09:00",
       "title": "고금리 버티는 AI 랠리…\"美10년물 6%땐 랠리 붕괴\""
+    },
+    "link:f96d800b8937d005d31178d6": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102619382416407",
+      "source": "머니투데이",
+      "source_body_digest": "b8047e49dc9695cdc643d8a9024caf0c12cd4d425e05aca22e5f9435d11b6e9e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T20:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"이렇게 빨리 성장할 줄이야\"...중국 자동차, 유럽서 일본 제쳤다",
+      "telegram_core_fact": "유럽연합(EU)은 중국 자동차 업체들의 시장 확대를 견제하기 위해 규제 강화에 나섰다.",
+      "title": "\"이렇게 빨리 성장할 줄이야\"...중국 자동차, 유럽서 일본 제쳤다"
     },
     "link:f970064796a81df0cd075d3f": {
       "first_seen_kst": "2026-10-13T01:37:36+09:00",
@@ -428654,6 +429233,24 @@
       "telegram_core_fact": "전년비 각각 126.6%, 782.5% 증가한 수치로, 메모리 가격 상승이 실적 개선의 핵심 동력으로 꼽혔다.",
       "title": "메모리 호황의 역설…저가폰 2.3억대 줄고 프리미엄폰 뜬다"
     },
+    "original:18b6130cbf0dfd64a0790c3e": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102619382416407",
+      "source": "머니투데이",
+      "source_body_digest": "b8047e49dc9695cdc643d8a9024caf0c12cd4d425e05aca22e5f9435d11b6e9e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T20:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"이렇게 빨리 성장할 줄이야\"...중국 자동차, 유럽서 일본 제쳤다",
+      "telegram_core_fact": "유럽연합(EU)은 중국 자동차 업체들의 시장 확대를 견제하기 위해 규제 강화에 나섰다.",
+      "title": "\"이렇게 빨리 성장할 줄이야\"...중국 자동차, 유럽서 일본 제쳤다"
+    },
     "original:18bd5d134ac9dc6f9784bf68": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
       "lanes": {
@@ -444172,6 +444769,36 @@
       "source_published_kst": "2026-10-07T14:58+09:00",
       "title": "송미령 \"산란계협회, 경고에도 가격 고시…농가 짓밟았다는 비판 과해\""
     },
+    "original:327fd21a290701773d0febfb": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
+    },
     "original:328af3d85f4f2774a491b643": {
       "first_seen_kst": "2026-10-17T19:47:24+09:00",
       "lanes": {
@@ -451033,6 +451660,37 @@
       "source": "아시아경제",
       "title": "[누리호, 발사를 넘어]①더 싣고, 싸게 쏜다…누리호 '상업 발사체'로 진화"
     },
+    "original:3de1496b6fc54a9051679ef9": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
+    },
     "original:3ded791c1832e86ab466250c": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
       "lanes": {
@@ -451223,6 +451881,29 @@
       "source_title": "김동선, 한화M&S 공개매수 물량 1천만주 늘려…보통주 31% 수준",
       "telegram_core_fact": "김 사장은 이번 공개매수를 통해 보통주 지분 31%를 추가로 확보하게 된다. 김동선 한화머시너리앤서비스홀딩스(한화M&S) 미래전략총괄사장이 한화M&S 보통주 공개매수 물량을 1천만주 가량 늘리기로 했다.",
       "title": "김동선, 한화M&S 공개매수 물량 1천만주 늘려…보통주 31% 수준"
+    },
+    "original:3e2b5851e6a13f4f56139ad3": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639988",
+      "source": "이투데이",
+      "source_body_digest": "8eb70401182879efb7ed21f6eca3a6ee37db04010845ce775f97f3b950a7d721",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d5f43b938f00124ece839ba59b113c449a0d6f1b55b0c3416056d9a1cb28e8",
+      "source_fact_keys": [
+        "source_fact:v1:15dd41940da861395bfe05dd396852fe547877b475ba353c73961938ef7844d5",
+        "source_fact:v1:44c1521ad8650a6482eff5fc2daf88bd3af5c746afcf8988ee7549065b807a66",
+        "source_fact:v1:46f452881342a1d6a1824b6669afca2b781b6b3769bc1d2053fb54240623a883",
+        "source_fact:v1:aae1645142adb74fc99a0b1e62f8c45815e24ca0a913c57c1f4135d3f6d9c26f"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]",
+      "telegram_core_fact": "테슬라의 중국 상하이 생산 차량과 비야디(BYD)가 2000만~5000만원대 전기차를 앞세워 판매를 확대하자 볼보와 메르세데스-벤츠, 폴스타 등 기존 프리미엄 브랜드들도 한국 판매가격을 낮추거나 가격 경쟁력을 높인 모델을 잇달아 투입하고 있다.",
+      "title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]"
     },
     "original:3e4374b4374172ef538789e1": {
       "first_seen_kst": "2026-10-22T08:01:37+09:00",
@@ -451434,6 +452115,37 @@
       "source_title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉",
       "telegram_core_fact": "조달청이 평가위원의 사전접촉 행위가 확인되면 해촉하고 비위행위 사전 조회를 기존 건설분야에서 모든 평가분야로 확대하는 등 평가위원 제재기준을 대폭 강화했다.",
       "title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉"
+    },
+    "original:3ea735d8c8b23f472cdd7152": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
     },
     "original:3ea9a9fcb67467957e738b68": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -516003,6 +516715,28 @@
       "telegram_core_fact": "제조·생산 현장뿐 아니라 연구·영업·기획 등 전 업무 영역으로 활용 범위를 넓혀 전방위적인 AI 활용 체계를 구축한다.",
       "title": "콜마, 사내 AI 에이전트 도입…생산부터 연구까지 전사 AX 가속"
     },
+    "original:a9d31244100374aea58cf53c": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12186552",
+      "source": "매일경제",
+      "source_body_digest": "a5b1a7ece47f97dddc8c2d292c4538f7b031faf9cb196b339db7929672f1dafc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e0151917c52a09bbde328633f19310bf050d274c30d68a33c8ea4ba1ecc009c",
+      "source_fact_keys": [
+        "source_fact:v1:277c21d4f84f84323e9d0d717722aa0b3b2638be87ee78d7b532bd65d44a8ebb",
+        "source_fact:v1:b23cca3da8922fdd82edb8e813536c756b3aba2039cc0cbc569c6246fd6b9b3d",
+        "source_fact:v1:fdaeb89a9fc7a620b13629095adafd98b617974b3aaaff5661932905a223c485"
+      ],
+      "source_published_kst": "2026-10-27T07:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진",
+      "telegram_core_fact": "올해 상반기 매출은 162억8600만달러로 지난해 같은 기간의 약 12억달러보다 14배 가까이 증가했다.",
+      "title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진"
+    },
     "original:a9deb91255b86a019050c736": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
       "lanes": {
@@ -520224,6 +520958,33 @@
       ],
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "두산에너빌, 스페이스XAI에 가스터빈 1호 출하…첫 해외 수출 | 연합뉴스"
+    },
+    "original:b0b221e8cd4711b65e285ce3": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
     },
     "original:b0b886611160d4986a9c6aad": {
       "first_seen_kst": "2026-10-16T20:49:03+09:00",
@@ -572441,6 +573202,29 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:02a2ca647b5f9ba12c3645fe": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639988",
+      "source": "이투데이",
+      "source_body_digest": "8eb70401182879efb7ed21f6eca3a6ee37db04010845ce775f97f3b950a7d721",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d5f43b938f00124ece839ba59b113c449a0d6f1b55b0c3416056d9a1cb28e8",
+      "source_fact_keys": [
+        "source_fact:v1:15dd41940da861395bfe05dd396852fe547877b475ba353c73961938ef7844d5",
+        "source_fact:v1:44c1521ad8650a6482eff5fc2daf88bd3af5c746afcf8988ee7549065b807a66",
+        "source_fact:v1:46f452881342a1d6a1824b6669afca2b781b6b3769bc1d2053fb54240623a883",
+        "source_fact:v1:aae1645142adb74fc99a0b1e62f8c45815e24ca0a913c57c1f4135d3f6d9c26f"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]",
+      "telegram_core_fact": "테슬라의 중국 상하이 생산 차량과 비야디(BYD)가 2000만~5000만원대 전기차를 앞세워 판매를 확대하자 볼보와 메르세데스-벤츠, 폴스타 등 기존 프리미엄 브랜드들도 한국 판매가격을 낮추거나 가격 경쟁력을 높인 모델을 잇달아 투입하고 있다.",
+      "title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]"
+    },
     "source_fact:02a640a4cef444b0f4e3dc79": {
       "first_seen_kst": "2026-10-21T11:24:12+09:00",
       "lanes": {
@@ -573658,6 +574442,36 @@
       "source_title": "美 재무부, 中 겨냥 첨단기술 투자 규제 확대…AI·초고성능 컴퓨팅 포함",
       "telegram_core_fact": "인공지능(AI)과 초고성능 컴퓨팅, 극초음속 시스템, 생명공학 분야를 규제 대상에 추가해 미국 자본이 경쟁국의 군사·기술 역량 강화에 활용되는 것을 막겠다는 취지다.",
       "title": "美 재무부, 中 겨냥 첨단기술 투자 규제 확대…AI·초고성능 컴퓨팅 포함"
+    },
+    "source_fact:031d929d826225ea4daa4437": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
     },
     "source_fact:0323220767bca9e935d6e129": {
       "first_seen_kst": "2026-10-06T02:00:06+09:00",
@@ -575613,6 +576427,37 @@
       "source_title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스",
       "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
       "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
+    },
+    "source_fact:04169f9315c1134e99cf1a7c": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
     },
     "source_fact:04196566fcbb2d8934ca9701": {
       "first_seen_kst": "2026-10-22T03:57:32+09:00",
@@ -590237,6 +591082,37 @@
       "telegram_core_fact": "나스닥(NDAQ)은 3분기 순매출(매출액에서 거래기반비용을 뺀 금액)이 14억8100만 달러로 전년비 13% 증가했고, 비일반회계기준(non-GAAP) 희석 주당순이익은 1.04달러로 18% 늘었다고 10월 22일 발표했다.",
       "title": "나스닥, 3분기 순매출 14억8100만 달러..전년비 13% 증가"
     },
+    "source_fact:09e6ec616216b27fd39e0523": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
+    },
     "source_fact:09e9d6fb45e5c6f573d09042": {
       "first_seen_kst": "2026-10-18T01:53:22+09:00",
       "lanes": {
@@ -599778,6 +600654,29 @@
       "telegram_core_fact": "대만 기업들은 AI 인프라 투자 확대에 따른 판매량 증가로 실적을 끌어올리고 있는 반면 한국 반도체 기업의 이익은 메모리 가격 상승에 대한 의존도가 높다. 코스콤 CHECK 등에 따르면 코스피는 올해 3분기 19.33% 하락했다.",
       "title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자"
     },
+    "source_fact:0dc3f874e887a7c997e79ea9": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639988",
+      "source": "이투데이",
+      "source_body_digest": "8eb70401182879efb7ed21f6eca3a6ee37db04010845ce775f97f3b950a7d721",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d5f43b938f00124ece839ba59b113c449a0d6f1b55b0c3416056d9a1cb28e8",
+      "source_fact_keys": [
+        "source_fact:v1:15dd41940da861395bfe05dd396852fe547877b475ba353c73961938ef7844d5",
+        "source_fact:v1:44c1521ad8650a6482eff5fc2daf88bd3af5c746afcf8988ee7549065b807a66",
+        "source_fact:v1:46f452881342a1d6a1824b6669afca2b781b6b3769bc1d2053fb54240623a883",
+        "source_fact:v1:aae1645142adb74fc99a0b1e62f8c45815e24ca0a913c57c1f4135d3f6d9c26f"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]",
+      "telegram_core_fact": "테슬라의 중국 상하이 생산 차량과 비야디(BYD)가 2000만~5000만원대 전기차를 앞세워 판매를 확대하자 볼보와 메르세데스-벤츠, 폴스타 등 기존 프리미엄 브랜드들도 한국 판매가격을 낮추거나 가격 경쟁력을 높인 모델을 잇달아 투입하고 있다.",
+      "title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]"
+    },
     "source_fact:0dc7ea3e0e5453cc9cdfd81a": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -600097,6 +600996,33 @@
       "source_title": "[美특징주]펭귄솔루션스, 4Q 호실적에 주가 14%↑…AI인프라 사업 기대",
       "telegram_core_fact": "CNBC에 따르면 펭귄솔루션스의 4분기 조정 주당순이익(EPS)은 1달러로 집계되며 시장예상치 0.77달러를 크게 웃돌았다.",
       "title": "[美특징주]펭귄솔루션스, 4Q 호실적에 주가 14%↑…AI인프라 사업 기대"
+    },
+    "source_fact:0df1dddbc10ec3cb7bc8d365": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
     },
     "source_fact:0df2cad1c7106d1ab52f1442": {
       "first_seen_kst": "2026-10-22T23:34:47+09:00",
@@ -618689,6 +619615,29 @@
       "source_title": "백사이트 ‘31가’ 3상 성공…SK바사 ‘21가’ 나오기 전 경쟁↑",
       "telegram_core_fact": "최근 업계에 따르면 미국 백신 개발사 백사이트는 최근 폐렴구균 단백접합백신(PCV) 후보물질인 VAX-31의 임상 3상에서 긍정적인 결과를 얻었다고 발표했다.",
       "title": "백사이트 ‘31가’ 3상 성공…SK바사 ‘21가’ 나오기 전 경쟁↑"
+    },
+    "source_fact:158be0b23bdd510f65542510": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639988",
+      "source": "이투데이",
+      "source_body_digest": "8eb70401182879efb7ed21f6eca3a6ee37db04010845ce775f97f3b950a7d721",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d5f43b938f00124ece839ba59b113c449a0d6f1b55b0c3416056d9a1cb28e8",
+      "source_fact_keys": [
+        "source_fact:v1:15dd41940da861395bfe05dd396852fe547877b475ba353c73961938ef7844d5",
+        "source_fact:v1:44c1521ad8650a6482eff5fc2daf88bd3af5c746afcf8988ee7549065b807a66",
+        "source_fact:v1:46f452881342a1d6a1824b6669afca2b781b6b3769bc1d2053fb54240623a883",
+        "source_fact:v1:aae1645142adb74fc99a0b1e62f8c45815e24ca0a913c57c1f4135d3f6d9c26f"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]",
+      "telegram_core_fact": "테슬라의 중국 상하이 생산 차량과 비야디(BYD)가 2000만~5000만원대 전기차를 앞세워 판매를 확대하자 볼보와 메르세데스-벤츠, 폴스타 등 기존 프리미엄 브랜드들도 한국 판매가격을 낮추거나 가격 경쟁력을 높인 모델을 잇달아 투입하고 있다.",
+      "title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]"
     },
     "source_fact:158d0b86a233fc9371b51d46": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -637494,6 +638443,37 @@
       "telegram_core_fact": "미 재무부는 곧바로 러시아 경유에 대한 제재 해제를 발표했는데, 중간선거를 앞두고 미국 내 경유가격 급등에 대한 불만이 커지자 트럼프 대통령이 푸틴 대통령에게 손을 내민 모양새다.",
       "title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\""
     },
+    "source_fact:1ced8cac72e824a5ed39a146": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
+    },
     "source_fact:1ceeae3e6f3407a703772921": {
       "first_seen_kst": "2026-10-12T17:17:29+09:00",
       "lanes": {
@@ -639058,6 +640038,37 @@
       "telegram_core_fact": "12일 관세청이 발표한 '2026년 10월 1~10일 수출입 현황(잠정치)'에 따르면 이 기간 수출액은 261억400만달러로 전년비 102.0% 증가했다.",
       "title": "10월 초순 수출 261억불 '역대 최대'⋯반도체 171% 급증[상보]"
     },
+    "source_fact:1d786f8a8aa76835d12da6ee": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
+    },
     "source_fact:1d78d39a9217c99450dbfd35": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
       "lanes": {
@@ -639236,6 +640247,36 @@
       ],
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
+    },
+    "source_fact:1d9d6869a6f800ef4958240a": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
     },
     "source_fact:1da07f24cebaffe3cd57d202": {
       "first_seen_kst": "2026-10-13T03:37:13+09:00",
@@ -640306,6 +641347,33 @@
       "source_title": "대웅제약, 마이크로니들 무균 제조시설 구축…내년 상반기 GMP 승인 추진",
       "telegram_core_fact": "대웅제약은 경기 화성시 향남읍에 위치한 대웅바이오 3공장에 마이크로니들 전용 무균 제조시설을 구축하고 있다고 14일 밝혔다.",
       "title": "대웅제약, 마이크로니들 무균 제조시설 구축…내년 상반기 GMP 승인 추진"
+    },
+    "source_fact:1e174cd54590981e30e5be36": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
     },
     "source_fact:1e1aae181ea69acdffa03f62": {
       "first_seen_kst": "2026-10-20T21:48:37+09:00",
@@ -648842,6 +649910,36 @@
       "telegram_core_fact": "미국과 이스라엘이 오는 11월 미국 중간선거 직후 이란에 대한 군사 공격을 재개할 수 있다는 관측이 확산하면서 국제유가가 배럴당 117달러를 넘어섰다.",
       "title": "美 중간선거 후 이란 공습설에…유가 117달러 뚫었다"
     },
+    "source_fact:2194e61f89ba6e699a9eec99": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
+    },
     "source_fact:219591f1e44ccd948face47c": {
       "first_seen_kst": "2026-10-23T09:14:52+09:00",
       "lanes": {
@@ -650361,6 +651459,37 @@
       ],
       "source_published_kst": "2026-10-06T09:09+09:00",
       "title": "스페이스X 우주 모멘텀에…센서뷰·스피어 장 초반 강세"
+    },
+    "source_fact:221675d4f167e19e66313892": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
     },
     "source_fact:221705cbdad5ce0eb4511360": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -698782,6 +699911,37 @@
       "telegram_core_fact": "미국의 첨단 반도체 기술 통제에도 글로벌 반도체 공급 부족과 가격 급등에 힘입어 중국의 지난달 반도체 수출액은 전년비 136% 폭증했다. 중국 해관총서와 홍콩 사우스차이나모닝포스트(SCMP)에 따르면 올 9월 중국의 집적회로(IC) 수출액은 449억5100만달러로 전년비 136% 증가했다.",
       "title": "美가 때릴수록 더 잘나가네…中 반도체 수출 136% 폭증 [차이나 워치]"
     },
+    "source_fact:35119f6effd31f8267d16173": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
+    },
     "source_fact:3514a4ff3ef0d840b07b70a1": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -708009,6 +709169,37 @@
       "source_title": "대미투자 송금까지 했는데 … 한미 안보협의체 공회전",
       "telegram_core_fact": "한국이 대미투자 1호 사업을 공식 발표하고 일부 투자금까지 미국으로 송금했지만, 한미 안보 협의체가 전혀 가동되지 않고 있는 것으로 알려졌다.",
       "title": "대미투자 송금까지 했는데 … 한미 안보협의체 공회전"
+    },
+    "source_fact:38a26360c4a8c827660cf92c": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
     },
     "source_fact:38a6bbc42a44fc996f1a5711": {
       "first_seen_kst": "2026-10-19T06:02:38+09:00",
@@ -762912,6 +764103,37 @@
       "telegram_core_fact": "노조는 국내 사업 축소 가능성을 우려하며 신차 배정 조기 확정과 하이브리드차 생산을 요구했지만 GM 측은 신중한 입장을 보였다.",
       "title": "한국 찾은 GM 본사 경영진…차세대 신차 배정엔 '신중 모드'"
     },
+    "source_fact:4e639685cba07e5f39ea9b2e": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
+    },
     "source_fact:4e63c58072c714f716e7e6c2": {
       "first_seen_kst": "2026-10-25T18:34:20+09:00",
       "lanes": {
@@ -765427,6 +766649,36 @@
       "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
       "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
+    "source_fact:4f486175bd7d236cc73068bf": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
+    },
     "source_fact:4f4a9f60a76dbe17cb4d10c8": {
       "first_seen_kst": "2026-10-22T06:35:46+09:00",
       "lanes": {
@@ -766759,6 +768011,37 @@
       "source_title": "[인터뷰]심재국 평창군수 \"평창형 기본소득으로 군민 삶 변화\"",
       "telegram_core_fact": "농업인은 생산비와 일손 걱정을 덜고 소상공인은 관광객 증가가 매출로 이어지는 변화를 느끼고 청년은 일자리와 주거 때문에 고향을 떠나지 않아도 되는 평창을 만들겠다.",
       "title": "[인터뷰]심재국 평창군수 \"평창형 기본소득으로 군민 삶 변화\""
+    },
+    "source_fact:4fc87cdc6022f00fe38341b9": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
     },
     "source_fact:4fce7be91c900a968fce1c45": {
       "first_seen_kst": "2026-10-19T17:39:56+09:00",
@@ -773354,6 +774637,37 @@
       ],
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
+    },
+    "source_fact:52557f1c68910204ab34d795": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
     },
     "source_fact:5255870c8a3017dc8f3c4299": {
       "first_seen_kst": "2026-10-11T06:36:16+09:00",
@@ -782391,6 +783705,37 @@
       "source_title": "[단독] JKL, 메가존클라우드 잔여지분 회수…IRR 20%대 기록",
       "telegram_core_fact": "JKL이 상장을 앞둔 메가존클라우드 지분을 모두 정리한 것은 IPO 일정과 몸값이 불확실해지는 시점에 투자 성과를 확정수익으로 전환했다는 점에서 의미가 있다는 평가다.",
       "title": "[단독] JKL, 메가존클라우드 잔여지분 회수…IRR 20%대 기록"
+    },
+    "source_fact:55d305c63a82fcb64451b4cd": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
     },
     "source_fact:55d65fc2492fc8d58c09c019": {
       "first_seen_kst": "2026-10-12T15:43:01+09:00",
@@ -804774,6 +806119,37 @@
       "telegram_core_fact": "파업 당일엔 마이크론과 대만 최대 사업장인 타이중 공장의 별도 노조 간 조정 회의도 열린다.",
       "title": "마이크론 대만 노조 22일 파업…\"삼전닉스처럼 성과급 달라\""
     },
+    "source_fact:5e1ee5f7fce3539efc1090ff": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
+    },
     "source_fact:5e2143a25ee5253026b5d01c": {
       "first_seen_kst": "2026-10-15T16:50:59+09:00",
       "lanes": {
@@ -818246,6 +819622,37 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "source_fact:64000316d73b14e592079f50": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
+    },
     "source_fact:64001740dfc408141b23e5e5": {
       "first_seen_kst": "2026-10-14T02:21:39+09:00",
       "lanes": {
@@ -820565,6 +821972,28 @@
       "source_title": "SL 그린 리얼티, 3분기 총수익 2억7300만 달러..FFO 전망 상향",
       "telegram_core_fact": "연간 FFO 가이던스 상향분의 상당 부분이 지분 매각 수익에서 나온 만큼 향후 이익의 지속성은 별도로 따져볼 필요가 있다.",
       "title": "SL 그린 리얼티, 3분기 총수익 2억7300만 달러..FFO 전망 상향"
+    },
+    "source_fact:650813fec6b73420accd780d": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12186552",
+      "source": "매일경제",
+      "source_body_digest": "a5b1a7ece47f97dddc8c2d292c4538f7b031faf9cb196b339db7929672f1dafc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e0151917c52a09bbde328633f19310bf050d274c30d68a33c8ea4ba1ecc009c",
+      "source_fact_keys": [
+        "source_fact:v1:277c21d4f84f84323e9d0d717722aa0b3b2638be87ee78d7b532bd65d44a8ebb",
+        "source_fact:v1:b23cca3da8922fdd82edb8e813536c756b3aba2039cc0cbc569c6246fd6b9b3d",
+        "source_fact:v1:fdaeb89a9fc7a620b13629095adafd98b617974b3aaaff5661932905a223c485"
+      ],
+      "source_published_kst": "2026-10-27T07:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진",
+      "telegram_core_fact": "올해 상반기 매출은 162억8600만달러로 지난해 같은 기간의 약 12억달러보다 14배 가까이 증가했다.",
+      "title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진"
     },
     "source_fact:650b03bbda7d7434d5d4b170": {
       "first_seen_kst": "2026-10-20T19:58:15+09:00",
@@ -823873,6 +825302,36 @@
       "source_title": "푸르덴셜 파이낸셜, 日 자회사 신규영업 2027년 1월까지 정지",
       "telegram_core_fact": "증권가 컨센서스에 따르면 푸르덴셜 파이낸셜의 매출액은 2026년 594억 달러로 전년 대비 2.2% 감소한 뒤 2027년 605억 달러(+1.81%), 2028년 619억 달러(+2.27%)로 소폭 늘어날 전망이다.",
       "title": "푸르덴셜 파이낸셜, 日 자회사 신규영업 2027년 1월까지 정지"
+    },
+    "source_fact:6674d5f7270420dadc9733e7": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
     },
     "source_fact:66760ec8febc259d101e56d1": {
       "first_seen_kst": "2026-10-24T11:50:33+09:00",
@@ -835476,6 +836935,37 @@
       "source_title": "엔비디아·앰코, 韓 패키징 증설에 13억달러 계약…美도 확대",
       "telegram_core_fact": "미국 반도체 패키징 기업 앰코테크놀로지와 한국 내 생산시설 확충을 지원하는 13억달러 신규 계약을 체결하고, 미국에서는 반도체 검사시설 구축에 11억달러를 지원한다.",
       "title": "엔비디아·앰코, 韓 패키징 증설에 13억달러 계약…美도 확대"
+    },
+    "source_fact:6ae64c3dc154ee8a6d40eddb": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
     },
     "source_fact:6ae821b37f2ad5579be93cfa": {
       "first_seen_kst": "2026-10-13T22:04:42+09:00",
@@ -855649,6 +857139,33 @@
       "source_title": "얼라이드 골드, 쿠르무크 아샤시레 고품위 금맥 확인..가동 임박",
       "telegram_core_fact": "쿠르무크 가동 직전에 고품위 시추 결과가 나와 초기 고품위 구간 이후 생산 지속성에 대한 우려를 덜어줘요.",
       "title": "얼라이드 골드, 쿠르무크 아샤시레 고품위 금맥 확인..가동 임박"
+    },
+    "source_fact:734476ce9960f312f3ef53b6": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
     },
     "source_fact:734587a2d462b55ed611974b": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
@@ -882563,6 +884080,36 @@
       "source_title": "이번엔 위험관리…블랙록, 하방손실 낮춘 비트코인 ETF 출시",
       "telegram_core_fact": "세계 최대 자산운용사인 블랙록(BlackRock)이 투자 위험관리에 방점을 찍으면서 비트코인 가격 하락에 따른 손실을 완화할 수 있는 새로운 상장지수펀드(ETF)를 출시할 계획이다.",
       "title": "이번엔 위험관리…블랙록, 하방손실 낮춘 비트코인 ETF 출시"
+    },
+    "source_fact:7dded48d1af10bd7bbce2fd8": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
     },
     "source_fact:7de1298514d7d162adcc1323": {
       "first_seen_kst": "2026-10-21T07:55:35+09:00",
@@ -916530,6 +918077,33 @@
       "telegram_core_fact": "시장조사업체 카운터포인트에 따르면 YMTC의 올 2분기 글로벌 낸드 출하량 점유율은 비트 기준 약 17％로 지난해 1분기(11％)보다 6%포인트 올랐다.",
       "title": "中 YMTC, 기업용 SSD 낸드 출하량 2년간 8배 전망…삼전닉스 '맹추격'"
     },
+    "source_fact:8be0dde7ec7873c17a856776": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
+    },
     "source_fact:8be525dd0bc029bec37fb0ae": {
       "first_seen_kst": "2026-10-26T16:00:15+09:00",
       "lanes": {
@@ -932006,6 +933580,37 @@
       "telegram_core_fact": "범용 D램 가격 강세가 메모리 사업의 수익성을 뒷받침하는 동시에, 장기계약을 통한 판매 물량 확보는 생산 및 투자 계획의 예측 가능성을 높일 수 있다는 분석이다.",
       "title": "범용D램 공급난 내년 지속… 삼전닉스 가격협상력 커진다"
     },
+    "source_fact:922d0935eac8ce2e9fe419f6": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
+    },
     "source_fact:9230ca7a8e1d032ac4578553": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
       "lanes": {
@@ -939422,6 +941027,37 @@
       "source_title": "전기안전公, AI 기반 '비송전대안' 기술 연구 착수⋯전력망 확충 부담 던다",
       "telegram_core_fact": "이번 협약은 ESS와 AI를 결합해 기존 전력망의 운영 효율을 끌어올리고, 송전선로와 변전소 등 대규모 전력설비의 신·증설을 최소화할 수 있는 NWA 기술을 공동 연구·개발하기 위해 추진됐다.",
       "title": "전기안전公, AI 기반 '비송전대안' 기술 연구 착수⋯전력망 확충 부담 던다"
+    },
+    "source_fact:95661e17022ae2576d38272d": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
     },
     "source_fact:95671bc49d911af0315e2ffe": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
@@ -970129,6 +971765,37 @@
       "telegram_core_fact": "반도체 공급 초과 규모가 과거보다 제한적인 데다 HBM을 비롯한 고부가 제품 비중 확대가 수익성을 방어할 수 있다는 판단이다.",
       "title": "DS투자증권 “반도체, 2028년 불황 우려 과도…HBM 수익성 개선에 비중확대”"
     },
+    "source_fact:a16af5deb6bd85f50819523e": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
+    },
     "source_fact:a16b00b714ff6595ae275b81": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
       "lanes": {
@@ -978320,6 +979987,37 @@
       "telegram_core_fact": "10년 만기 미국 국채금리는 장중 연 5.36%까지 상승해 2002년 이후 최고치를 기록했다.",
       "title": "뉴욕증시, 국채금리 24년래 최고에 휘청⋯3대 지수 동반 하락[종합]"
     },
+    "source_fact:a45852b8a1ece65d49fa841e": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
+    },
     "source_fact:a459b1379c0b9073711ad3cc": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -981368,6 +983066,28 @@
       "telegram_core_fact": "프루프포인트는 15일(현지시간) 전액 현금 거래 방식의 베로니스 인수 계약을 체결했다고 밝혔다. 사이버보안 기업 프루프포인트가 데이터 보안 전문기업 베로니스를 약 63억달러(약 8조4000억원)에 인수한다.",
       "title": "프루프포인트, 데이터·AI 보안기업 베로니스 8.4조원에 인수"
     },
+    "source_fact:a596867759993772ea9f4fe0": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12186552",
+      "source": "매일경제",
+      "source_body_digest": "a5b1a7ece47f97dddc8c2d292c4538f7b031faf9cb196b339db7929672f1dafc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e0151917c52a09bbde328633f19310bf050d274c30d68a33c8ea4ba1ecc009c",
+      "source_fact_keys": [
+        "source_fact:v1:277c21d4f84f84323e9d0d717722aa0b3b2638be87ee78d7b532bd65d44a8ebb",
+        "source_fact:v1:b23cca3da8922fdd82edb8e813536c756b3aba2039cc0cbc569c6246fd6b9b3d",
+        "source_fact:v1:fdaeb89a9fc7a620b13629095adafd98b617974b3aaaff5661932905a223c485"
+      ],
+      "source_published_kst": "2026-10-27T07:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진",
+      "telegram_core_fact": "올해 상반기 매출은 162억8600만달러로 지난해 같은 기간의 약 12억달러보다 14배 가까이 증가했다.",
+      "title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진"
+    },
     "source_fact:a59862c3745cc1f9a2873d00": {
       "first_seen_kst": "2026-10-13T13:27:52+09:00",
       "lanes": {
@@ -983177,6 +984897,33 @@
       "source_title": "\"美기업들, AI 패권 경쟁 벌이면서도 中 공급망 의존\"",
       "telegram_core_fact": "챈은 \"데이터센터 구축, 미국 모델 훈련은 중국에서 수입되는 수많은 데이터센터 부품에 의존한다\"며 미국 공급망 전반에 걸쳐서도 중국산 부품과 연결고리가 나타난다고 평가했다.",
       "title": "\"美기업들, AI 패권 경쟁 벌이면서도 中 공급망 의존\""
+    },
+    "source_fact:a63c275d8975a5309bf5da31": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
     },
     "source_fact:a63e8b46066c75acd01a71f7": {
       "first_seen_kst": "2026-10-20T09:47:35+09:00",
@@ -996383,6 +998130,36 @@
       "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
       "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
     },
+    "source_fact:ab826ef7aebe800792c7560f": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
+    },
     "source_fact:ab8b08d742123c6848cb6d61": {
       "first_seen_kst": "2026-10-21T16:39:53+09:00",
       "lanes": {
@@ -1000057,6 +1001834,28 @@
       ],
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
+    },
+    "source_fact:ace5a007eed61717fc5ecb32": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12186552",
+      "source": "매일경제",
+      "source_body_digest": "a5b1a7ece47f97dddc8c2d292c4538f7b031faf9cb196b339db7929672f1dafc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e0151917c52a09bbde328633f19310bf050d274c30d68a33c8ea4ba1ecc009c",
+      "source_fact_keys": [
+        "source_fact:v1:277c21d4f84f84323e9d0d717722aa0b3b2638be87ee78d7b532bd65d44a8ebb",
+        "source_fact:v1:b23cca3da8922fdd82edb8e813536c756b3aba2039cc0cbc569c6246fd6b9b3d",
+        "source_fact:v1:fdaeb89a9fc7a620b13629095adafd98b617974b3aaaff5661932905a223c485"
+      ],
+      "source_published_kst": "2026-10-27T07:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진",
+      "telegram_core_fact": "올해 상반기 매출은 162억8600만달러로 지난해 같은 기간의 약 12억달러보다 14배 가까이 증가했다.",
+      "title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진"
     },
     "source_fact:ace662bee3631d2d1ca6e93d": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -1013212,6 +1015011,33 @@
       "source_title": "삼성바이오로직스 노조, 파업 제한 결정에 재항고…28일 교섭 재개",
       "telegram_core_fact": "노조는 바이오의약품 생산 공정의 특수성을 이유로 주요 공정을 정상 가동하도록 한 결정이 단체행동권을 과도하게 제한한다고 주장했다.",
       "title": "삼성바이오로직스 노조, 파업 제한 결정에 재항고…28일 교섭 재개"
+    },
+    "source_fact:b203d77217f2b13270766911": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
     },
     "source_fact:b2050d84ce50a1fc41a4f6b4": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -1040099,6 +1041925,36 @@
       "source_title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음",
       "telegram_core_fact": "AI 데이터센터 투자 확대로 반도체 수요가 이어지는 가운데 D램 가격 상승세와 중국 메모리 업체의 공급 확대가 향후 시장의 주요 변수로 작용할 것이라는 전망이 나왔다.",
       "title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음"
+    },
+    "source_fact:bce6c490ade8401bb366d6af": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
     },
     "source_fact:bce6c5f00379eda4ebf3ba3c": {
       "first_seen_kst": "2026-10-23T07:02:23+09:00",
@@ -1077011,6 +1078867,37 @@
       "telegram_core_fact": "벤데트는 \"얀덱스 등 피격된 데이터센터의 피해가 러시아의 AI 개발을 상당히 지연시킬 것\"이라고 내다봤다.",
       "title": "데이터센터 먼저 친 러시아…우크라 '맞불 드론'에 군사용 AI까지 위협"
     },
+    "source_fact:cb4faf338c49ae696370d37d": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
+    },
     "source_fact:cb5015957ecbb912d0e06fc9": {
       "first_seen_kst": "2026-10-18T05:50:47+09:00",
       "lanes": {
@@ -1093176,6 +1095063,29 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
       "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
+    "source_fact:d1a6ba5abe34757edb6b3746": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639988",
+      "source": "이투데이",
+      "source_body_digest": "8eb70401182879efb7ed21f6eca3a6ee37db04010845ce775f97f3b950a7d721",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d5f43b938f00124ece839ba59b113c449a0d6f1b55b0c3416056d9a1cb28e8",
+      "source_fact_keys": [
+        "source_fact:v1:15dd41940da861395bfe05dd396852fe547877b475ba353c73961938ef7844d5",
+        "source_fact:v1:44c1521ad8650a6482eff5fc2daf88bd3af5c746afcf8988ee7549065b807a66",
+        "source_fact:v1:46f452881342a1d6a1824b6669afca2b781b6b3769bc1d2053fb54240623a883",
+        "source_fact:v1:aae1645142adb74fc99a0b1e62f8c45815e24ca0a913c57c1f4135d3f6d9c26f"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]",
+      "telegram_core_fact": "테슬라의 중국 상하이 생산 차량과 비야디(BYD)가 2000만~5000만원대 전기차를 앞세워 판매를 확대하자 볼보와 메르세데스-벤츠, 폴스타 등 기존 프리미엄 브랜드들도 한국 판매가격을 낮추거나 가격 경쟁력을 높인 모델을 잇달아 투입하고 있다.",
+      "title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]"
+    },
     "source_fact:d1aca8573dd9ff84cb6336bd": {
       "first_seen_kst": "2026-10-24T20:02:24+09:00",
       "lanes": {
@@ -1096949,6 +1098859,36 @@
       "source_title": "멜라르 애퀴지션 I, 에벌리 합병 주총 승인..EVRL 나스닥 거래 예정",
       "telegram_core_fact": "기업인수목적회사(SPAC) 멜라르 애퀴지션 I(MACI)가 이탈리아 온라인 식료품 플랫폼 에벌리 글로벌(Everli Global Inc.)과의 기업결합안이 임시 주주총회에서 가결됐다고 22일(현지시간) 발표했다.",
       "title": "멜라르 애퀴지션 I, 에벌리 합병 주총 승인..EVRL 나스닥 거래 예정"
+    },
+    "source_fact:d33705576291695ea4af0881": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
     },
     "source_fact:d33808e605fe81dea5db8f49": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -1107046,6 +1108986,33 @@
       "telegram_core_fact": "코스피·코스닥은 각각 5.46%·1.43% 하락해 양 시장에 매도 사이드카가 발동됐다.",
       "title": "[속보]코스피, 中 반도체 쇼크에 6000선 턱걸이…외국인 4.5조 팔자"
     },
+    "source_fact:d706a49b4c136d1ed8899102": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
+    },
     "source_fact:d707d4e809aff78a1b8e98e2": {
       "first_seen_kst": "2026-10-07T23:50:27+09:00",
       "lanes": {
@@ -1113547,6 +1115514,37 @@
       ],
       "source_published_kst": "2026-10-06T19:47+09:00",
       "title": "[마켓인]운용사에 직접 돈 댄다…글로벌 GP솔루션 펀드 20조 돌파"
+    },
+    "source_fact:d9c0126f3d84dbffeeabb1c1": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
     },
     "source_fact:d9c555b082807a42ae7567ce": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -1131054,6 +1133052,36 @@
       "telegram_core_fact": "코레일의 철도 안전 AI 프로젝트에서는 열차의 전력 공급 장치인 판토그래프 점검과 열차·작업자 감지 기능을 검토하고 있다.",
       "title": "딥엑스, 초저전력 AI 반도체로 교통사고·역주행 감지… 스마트 교통시장 공략"
     },
+    "source_fact:e0dd9f745b22199a62cd11b6": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
+    },
     "source_fact:e0de7bcd8f507ea7d39d4f7c": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
@@ -1137189,6 +1139217,36 @@
       "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
       "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
       "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
+    },
+    "source_fact:e3414226119459fe24a44dca": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
     },
     "source_fact:e344fadb40f4556c6fadf1f0": {
       "first_seen_kst": "2026-10-24T02:25:22+09:00",
@@ -1145605,6 +1147663,37 @@
       "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
       "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
+    "source_fact:e68e25475a709199f897a2eb": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
+    },
     "source_fact:e68e9e04941da04db6f103e5": {
       "first_seen_kst": "2026-10-20T03:18:10+09:00",
       "lanes": {
@@ -1149661,6 +1151750,37 @@
       ],
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
+    },
+    "source_fact:e83687229c9077e3b6e158c0": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
     },
     "source_fact:e838aa3c843675e3030588af": {
       "first_seen_kst": "2026-10-21T15:40:18+09:00",
@@ -1162728,6 +1164848,37 @@
       "telegram_core_fact": "주병기 공정거래위원장이 12일 공정위 조사에 불응하는 기업에 대한 경제적 제재를 강화하고, 온라인 플랫폼의 불공정행위에 엄정 대응하겠다는 방침을 밝혔다.",
       "title": "주병기 \"공정위 조사 불응 제재 강화…플랫폼 불공정행위 엄단\""
     },
+    "source_fact:ed51ce36a51e51dcd3132b1b": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
+    },
     "source_fact:ed57f55e01b00d68cd9b4aa6": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
       "lanes": {
@@ -1175467,6 +1177618,33 @@
       "source_published_kst": "2026-10-07T08:30+09:00",
       "title": "인천시, 글로벌캠퍼스에 피지컬 AI 실증센터 구축 | 연합뉴스"
     },
+    "source_fact:f2850921254afedcc246abca": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
+    },
     "source_fact:f28666c453614b1713a948ae": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
       "lanes": {
@@ -1177927,6 +1180105,37 @@
       "source_title": "KB證 “마이크론 파업 예고⋯삼성전자·SK하이닉스 반사이익 기대”",
       "telegram_core_fact": "KB증권은 마이크론 대만 공장의 파업이 현실화될 경우 글로벌 D램 공급 부족이 심화되면서 삼성전자와 SK하이닉스의 가격 결정력과 공급 협상력이 강화될 수 있다고 21일 밝혔다.",
       "title": "KB證 “마이크론 파업 예고⋯삼성전자·SK하이닉스 반사이익 기대”"
+    },
+    "source_fact:f3a2c803ac671882797f5570": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
     },
     "source_fact:f3a7060c5937d61f3f089728": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
@@ -1221984,6 +1224193,24 @@
       "telegram_core_fact": "전년비 각각 126.6%, 782.5% 증가한 수치로, 메모리 가격 상승이 실적 개선의 핵심 동력으로 꼽혔다.",
       "title": "메모리 호황의 역설…저가폰 2.3억대 줄고 프리미엄폰 뜬다"
     },
+    "title:18b6130cbf0dfd64a0790c3e": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/26/2026102619382416407",
+      "source": "머니투데이",
+      "source_body_digest": "b8047e49dc9695cdc643d8a9024caf0c12cd4d425e05aca22e5f9435d11b6e9e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T20:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"이렇게 빨리 성장할 줄이야\"...중국 자동차, 유럽서 일본 제쳤다",
+      "telegram_core_fact": "유럽연합(EU)은 중국 자동차 업체들의 시장 확대를 견제하기 위해 규제 강화에 나섰다.",
+      "title": "\"이렇게 빨리 성장할 줄이야\"...중국 자동차, 유럽서 일본 제쳤다"
+    },
     "title:18bd5d134ac9dc6f9784bf68": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
       "lanes": {
@@ -1237729,6 +1239956,36 @@
       "source_published_kst": "2026-10-07T14:58+09:00",
       "title": "송미령 \"산란계협회, 경고에도 가격 고시…농가 짓밟았다는 비판 과해\""
     },
+    "title:327fd21a290701773d0febfb": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639986",
+      "source": "이투데이",
+      "source_body_digest": "50c65c9fb6028c8de9ef019ab1c420877feaf765f98ca75e3b994d19460c50fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cab2cea4ce3be41d6ee5576e3c537dc6a126268523b2343254274940f36dcd39",
+      "source_fact_keys": [
+        "source_fact:v1:07efb6a927ec115f6d3d51957e6f9e7f9ac756b83e385fead0891c9d7285a1c9",
+        "source_fact:v1:089063942d4c48a51a82a50bc0ae8079a0a52d39494afaca0006c3a034f4ed28",
+        "source_fact:v1:8c8dd450822e490ab7916af22cf6dd7c5ae80e47d4aa9cc92346db1c0a2f4a20",
+        "source_fact:v1:9236ad206367301ab852d147723800d8309838e9667e8a5588eff13f9fcda2ba",
+        "source_fact:v1:97ac8b0f6fcd3020784355a1a69cfb885f9f6d53b49a9eb56201721db7a439e7",
+        "source_fact:v1:ab115767dbfc9d672ee2bf95bb44dd840deee6feb430987515ddb9e827bc46c3",
+        "source_fact:v1:b3f8c99e7175375f90bc19dc083bbbd81fc7378786484f634f68824c51f639f6",
+        "source_fact:v1:c3f912c314348f9bd745b2688298e8a261dfdfa5d68f6d5d2ec7959c019c8677",
+        "source_fact:v1:cce17c26b5d4428a4e31b7f05da7983c7dcad18766bee2a0a53372917602df97",
+        "source_fact:v1:d963b9568013cf4984316195aec7ac45a4dde16907cd51353fb323b8a4d707bb",
+        "source_fact:v1:e4bb4afc35ace7f81d3e2f43597980703a2b9989632da40e1b0fb27b62f209f9"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]",
+      "telegram_core_fact": "한국자동차모빌리티산업협회(KAMA)에 따르면 지난달 국내 자동차 판매는 전년 동월보다 14.3% 감소한 13만5396대에 그쳤다. 한국 자동차산업이 미국의 관세 압박과 중국 완성차 업체의 공세, 유럽의 역내 생산 우대 움직임이라는 ‘3중고’에 직면했다.",
+      "title": "美관세ㆍ中공세ㆍ유럽벽…한국 자동차 산업 ‘생존의 갈림길’ [韓 자동차 생태계 빨간불 中]"
+    },
     "title:328af3d85f4f2774a491b643": {
       "first_seen_kst": "2026-10-17T19:47:24+09:00",
       "lanes": {
@@ -1244748,6 +1247005,37 @@
       "source": "아시아경제",
       "title": "[누리호, 발사를 넘어]①더 싣고, 싸게 쏜다…누리호 '상업 발사체'로 진화"
     },
+    "title:3de1496b6fc54a9051679ef9": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842043",
+      "source": "뉴시스",
+      "source_body_digest": "77c81f1a5a6e469c12d39291db6674998021e2d18dac38dd29529fcda5f6b88c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ae3a9b43f8e2384cffaeffc1eb9dca47fafa96af52f6dcecc8794b238f19893",
+      "source_fact_keys": [
+        "source_fact:v1:13f88b279b523dd1deb6f7165d2458973eab868079776cb4b424243ab9d4df14",
+        "source_fact:v1:18e8c4240d6166898364dcb642a5afbee6b4850e7a763a39856a793466a6b084",
+        "source_fact:v1:290339cce11f8590b45d1f1c3e5fb86e7a23162837842e85e21a6bfb361ff5da",
+        "source_fact:v1:2baa674aee0169609583c2f5e4400f8576a76bb6c911b585ea1a1cacc6867f99",
+        "source_fact:v1:80b3959b2656aea98782ffc5ca9066428529acebfc7090225f4a821daf8d48ae",
+        "source_fact:v1:8b65a7cedf39aa6c5c22150c568ca90d4601fb924ee0a47503523506fc3b6288",
+        "source_fact:v1:a767c2b1a056e387c6fce85bd6979b3506ebceaac3dd5ec6e5bb0c567ae06499",
+        "source_fact:v1:b34e0f5edcafba2aa94a0585f1ae9980e66994b696d9e02e932b17600cd6fc89",
+        "source_fact:v1:bca06e457dcdbf65199d7717f8306cb8d0c7cc098d3bb66d72a0b508335ccc4a",
+        "source_fact:v1:c8479a1d01e96f1fba78de6c1767a247c37d08f5cbd7a80bfa16579192783468",
+        "source_fact:v1:dfae3cc186853b8b2197aeed56d34160d86ca7a8ac1e697249607d4c5f42a8e0",
+        "source_fact:v1:f5cb2c1e57a4b40f3dc01ebb78a7e87298f98551ece1ff9e8108df6f92c31c7f"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑",
+      "telegram_core_fact": "코스피 지수가 미국 인공지능(AI) 기업 앤트로픽의 기업공개(IPO) 추진과 뉴욕증시 반도체주 강세에 힘입어 27일 강한 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 반등 기대감…앤트로픽 IPO에 美반도체지수 2.8%↑"
+    },
     "title:3de935f1679a442fcc67071e": {
       "first_seen_kst": "2026-10-02T10:30:30+09:00",
       "lanes": {
@@ -1244948,6 +1247236,29 @@
       "source_title": "김동선, 한화M&S 공개매수 물량 1천만주 늘려…보통주 31% 수준",
       "telegram_core_fact": "김 사장은 이번 공개매수를 통해 보통주 지분 31%를 추가로 확보하게 된다. 김동선 한화머시너리앤서비스홀딩스(한화M&S) 미래전략총괄사장이 한화M&S 보통주 공개매수 물량을 1천만주 가량 늘리기로 했다.",
       "title": "김동선, 한화M&S 공개매수 물량 1천만주 늘려…보통주 31% 수준"
+    },
+    "title:3e2b5851e6a13f4f56139ad3": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639988",
+      "source": "이투데이",
+      "source_body_digest": "8eb70401182879efb7ed21f6eca3a6ee37db04010845ce775f97f3b950a7d721",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d5f43b938f00124ece839ba59b113c449a0d6f1b55b0c3416056d9a1cb28e8",
+      "source_fact_keys": [
+        "source_fact:v1:15dd41940da861395bfe05dd396852fe547877b475ba353c73961938ef7844d5",
+        "source_fact:v1:44c1521ad8650a6482eff5fc2daf88bd3af5c746afcf8988ee7549065b807a66",
+        "source_fact:v1:46f452881342a1d6a1824b6669afca2b781b6b3769bc1d2053fb54240623a883",
+        "source_fact:v1:aae1645142adb74fc99a0b1e62f8c45815e24ca0a913c57c1f4135d3f6d9c26f"
+      ],
+      "source_published_kst": "2026-10-27T05:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]",
+      "telegram_core_fact": "테슬라의 중국 상하이 생산 차량과 비야디(BYD)가 2000만~5000만원대 전기차를 앞세워 판매를 확대하자 볼보와 메르세데스-벤츠, 폴스타 등 기존 프리미엄 브랜드들도 한국 판매가격을 낮추거나 가격 경쟁력을 높인 모델을 잇달아 투입하고 있다.",
+      "title": "프리미엄 브랜드로 번진 가격 공세…한국車 전방위 위협 [韓 자동차 생태계 빨간불中]"
     },
     "title:3e4374b4374172ef538789e1": {
       "first_seen_kst": "2026-10-22T08:01:37+09:00",
@@ -1245159,6 +1247470,37 @@
       "source_title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉",
       "telegram_core_fact": "조달청이 평가위원의 사전접촉 행위가 확인되면 해촉하고 비위행위 사전 조회를 기존 건설분야에서 모든 평가분야로 확대하는 등 평가위원 제재기준을 대폭 강화했다.",
       "title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉"
+    },
+    "title:3ea735d8c8b23f472cdd7152": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.fnnews.com/news/202610270733520579",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f141947192a4cd0f5e2d98891eeab64a629371fc32e11b8f6e21889b82fa17d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:512f1e8ddf9334cf2351ce8b618453570fc2301f0ae73a25f06f6d971c63e2bd",
+      "source_fact_keys": [
+        "source_fact:v1:16d65864c95f354f261759036dc4c2bf6928a19a5d1e10818b70f3972856a4a7",
+        "source_fact:v1:193ad13281072e6f57c16fc81f6d859b8a9ade99408ff2db42db99346943d701",
+        "source_fact:v1:2cdc9b38546cd6df966229298473c8c805e5f45dc9ef875d82da7f31eaa537f6",
+        "source_fact:v1:35b3454e1cc75d2b944b1a7bd52cca8181b82ea586bb2fad788bc91bb4231bc1",
+        "source_fact:v1:4c2c04a0962fd053fd8c3572653c9cd6f0764e75e192c36de17c288a3ae2c0be",
+        "source_fact:v1:63f9d95e0dc91720336737d447d354eec6962e7a25586e127f1784a05a374a02",
+        "source_fact:v1:9fb409a53b57a74b252bc78e3888263890008b4ce1af9c3ceb85c0d89edbc012",
+        "source_fact:v1:a5679b0a533bac278e0e45c1d030b72f4d454486076a78c6366ed64a556dd4e0",
+        "source_fact:v1:b227fa484cdd5c76c6b6e27053ef94e5fcf7efe15c60d8d5b56503ffdb940ea0",
+        "source_fact:v1:b2fa19702c416e0fca423e5bcbfb80c53d406a5692aaee4a023541c67c646e29",
+        "source_fact:v1:ef7359c01b53b9ab692e481d0f98319a0ecaaa0165d83fc8603426d34ca83ec9",
+        "source_fact:v1:fdc965b458b4e2f6d97f0f501fbdfe00d3dcd4cd84539ed0c173ff9ecaeb19c1"
+      ],
+      "source_published_kst": "2026-10-27T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수",
+      "telegram_core_fact": "[파이낸셜뉴스] 사상 최대 실적에도 불구하고 주가 하락세를 면치 못하고 있는 삼성전자와 SK하이닉스가 이번 주 3분기 확정 실적 발표를 계기로 대규모 추가 주주환원책을 내놓을지 시장의 이목이 쏠리고 있다.",
+      "title": "\"50조 풀릴까?\"…주가 떨어진 삼성전자·SK하이닉스의 승부수"
     },
     "title:3ea9a9fcb67467957e738b68": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -1311062,6 +1313404,28 @@
       "telegram_core_fact": "제조·생산 현장뿐 아니라 연구·영업·기획 등 전 업무 영역으로 활용 범위를 넓혀 전방위적인 AI 활용 체계를 구축한다.",
       "title": "콜마, 사내 AI 에이전트 도입…생산부터 연구까지 전사 AX 가속"
     },
+    "title:a9d31244100374aea58cf53c": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12186552",
+      "source": "매일경제",
+      "source_body_digest": "a5b1a7ece47f97dddc8c2d292c4538f7b031faf9cb196b339db7929672f1dafc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e0151917c52a09bbde328633f19310bf050d274c30d68a33c8ea4ba1ecc009c",
+      "source_fact_keys": [
+        "source_fact:v1:277c21d4f84f84323e9d0d717722aa0b3b2638be87ee78d7b532bd65d44a8ebb",
+        "source_fact:v1:b23cca3da8922fdd82edb8e813536c756b3aba2039cc0cbc569c6246fd6b9b3d",
+        "source_fact:v1:fdaeb89a9fc7a620b13629095adafd98b617974b3aaaff5661932905a223c485"
+      ],
+      "source_published_kst": "2026-10-27T07:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진",
+      "telegram_core_fact": "올해 상반기 매출은 162억8600만달러로 지난해 같은 기간의 약 12억달러보다 14배 가까이 증가했다.",
+      "title": "“나 정도면 몸값 2조달러는 되겠지?”…매출 14배 뛴 앤트로픽 상장 추진"
+    },
     "title:a9dc274dc218a7bb2c656bbd": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
       "lanes": {
@@ -1315444,6 +1317808,33 @@
       ],
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "두산에너빌, 스페이스XAI에 가스터빈 1호 출하…첫 해외 수출 | 연합뉴스"
+    },
+    "title:b0b221e8cd4711b65e285ce3": {
+      "first_seen_kst": "2026-10-27T08:49:21+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:49:21+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:49:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841963",
+      "source": "뉴시스",
+      "source_body_digest": "ceeb022a3350b0c48857eb410359d52c1e8fc0eabd6066313cb47004d169b96a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15e992b2293bbf66eca23d56efde0fa921b16e0938b680567e7b68daf2b2fd2e",
+      "source_fact_keys": [
+        "source_fact:v1:1dceb334979caf7c73fac6c23ee7ac3a44170b3053899f11cba09c42b3cbac0b",
+        "source_fact:v1:45559b0c230d50a1b5e850d360ed3cc4123210b4b8c5cad9bb3ab6a54184758f",
+        "source_fact:v1:48364864344650b4489dcceb3493ace3cb7b8c741762290d446ef7509cbc70d0",
+        "source_fact:v1:4d9bf5a0ca139bd1e3523c2c06699ea1149c3926678440560af00d63eb45e83c",
+        "source_fact:v1:6a1f0183c2471a66b10842fa97e4a0d78b58e88894a00c5b50f9390a08a11df7",
+        "source_fact:v1:98fcad0742cc0bd397f3971e5e08eb3669c5bd2d4d48887a3a49314ee2799bc6",
+        "source_fact:v1:a3e2d1469f97e4434e6ea2c3dd519c9f5636b78c5ca75db421ab773dcecd5456",
+        "source_fact:v1:e69d0711a85b6208076f8bf69483904803bf111ab171d5bcd9019dc7ec999205"
+      ],
+      "source_published_kst": "2026-10-27T00:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진",
+      "telegram_core_fact": "최근 제재 면제 조치를 활용해 러시아산 경유를 다른 시장으로 수출하는 거래를 지원해서도 안 된다고 강조했다.",
+      "title": "美민주당, 의회 탈환 시 트럼프-러시아 경유 합의 조사 추진"
     },
     "title:b0b886611160d4986a9c6aad": {
       "first_seen_kst": "2026-10-16T20:49:03+09:00",
@@ -1361950,5 +1364341,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-27T08:27:48+09:00"
+  "updated_at_kst": "2026-10-27T08:49:21+09:00"
 }
