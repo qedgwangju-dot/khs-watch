@@ -6319,6 +6319,30 @@
       "source_published_kst": "2026-10-07T11:36+09:00",
       "title": "우상호 지사 \"취임 100일, 강원 변화 시작…기업 투자 가시화\" | 연합뉴스"
     },
+    "core:0f1602a7d76119fdadd52f0a": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186207",
+      "source": "매일경제",
+      "source_body_digest": "64b711099ef32a85c5e07c807b5313fd8bef29fd8acef3d6d7e02f11e4555cc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e30bfa815b19e14b2ec0caf9e1547274b4f31ecddcb6e25adee4bb565de2e832",
+      "source_fact_keys": [
+        "source_fact:v1:1008669fbcf47be41dda413d26bfd41fe84dbaac57df6be97914ac55caeca389",
+        "source_fact:v1:373f84be1b1d7c9ca837c9777150e2198031741242d104c51b7fac4dbc5f5c62",
+        "source_fact:v1:6816104ac9a4923d6aa9c37e03dba3ffdde4ff749d63cd28e0ec4ca8eab720a7",
+        "source_fact:v1:8098697558025f34fd9ffb601f3b2333681537a4898be32415c73a543187e480",
+        "source_fact:v1:c3df099a11682d776bb95848251caa61cd812232e9446991c7a24614981af771"
+      ],
+      "source_published_kst": "2026-10-26T19:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과",
+      "telegram_core_fact": "미국 천연가스 생산업체 이큐티(EQT)가 경쟁사 레인지 리소시스(RRC)를 전액 주식 교환 방식으로 인수하는 최종 합병계약을 체결하고, 합병 후 기업가치(pro forma enterprise value) 500억 달러를 넘는 미국 최대 천연가스 기업을 출범시키겠다고 10월 26일 발표했다.",
+      "title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과"
+    },
     "core:0f223df7c1962be283e8380a": {
       "first_seen_kst": "2026-10-10T19:45:57+09:00",
       "lanes": {
@@ -24638,6 +24662,28 @@
       "source_title": "삼성전자 ‘서버 메모리 용량 수백TB 확장’ CXL·이더넷 결합 ‘메모리 월’ 극복 신기술 [기업 해외상장 변수]",
       "telegram_core_fact": "CPU(중앙처리장치)와 GPU(그래픽처리장치), 메모리를 유기적으로 연결해 대역폭과 용량을 키운다.",
       "title": "삼성전자 ‘서버 메모리 용량 수백TB 확장’ CXL·이더넷 결합 ‘메모리 월’ 극복 신기술 [기업 해외상장 변수]"
+    },
+    "core:36fd68f4dfa705c19d747f64": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841847",
+      "source": "뉴시스",
+      "source_body_digest": "b1cac2376330be15146a33bdff11399bd707e0b0a14bff47527987e5e1995219",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12e888199c275612ae985b07f95ec17fddc71d279f0de931eb4717081dc80667",
+      "source_fact_keys": [
+        "source_fact:v1:9bc042aac0df1fcb8faee671e5b7d4828e0dafd03c233553a01a1c377d837798",
+        "source_fact:v1:be6b79c7b343502e147f7dccd093cadb5865776f7acedb5d74267e86552557c6",
+        "source_fact:v1:da16721fa24118b501ef2d5264da81a44cbfcebda0882ee6609b376bb75d38fa"
+      ],
+      "source_published_kst": "2026-10-26T20:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기",
+      "telegram_core_fact": "두 연구원은 또 해당 위성을 인수한 창광공사가 위성 영상을 이란과 후티 무장조직에 제공해 미국으로부터 제재를 받았다는 점을 들면서 위성 정보가 중국이 동맹국과 협력을 강화하는 수단이 되고 있다는 주장도 내놨다.",
+      "title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기"
     },
     "core:370bacd9d7bbb4146d12d44d": {
       "first_seen_kst": "2026-10-19T14:20:34+09:00",
@@ -57784,6 +57830,26 @@
       "telegram_core_fact": "메타는 올해 3분기에만 AI 모델 개발과 이를 뒷받침할 데이터센터 구축 등에 349억1000만달러의 자본지출(Capex)을 집행했다.",
       "title": "‘그래도 믿을 건 AI’ 스페이스X 이어 메타도 주가 쑥쑥…투자 심리 개선 기대 [투자360]"
     },
+    "core:845df057afa4d800d63b95d4": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841675",
+      "source": "뉴시스",
+      "source_body_digest": "fea0dd686e7dc05757dfb0b4e3b54abc7c25d7578b3f9576b35638ed3816b2e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b56c213720d1183cc0b626ca965c30c867d25779cd596ce1676bc7c1708c0206",
+      "source_fact_keys": [
+        "source_fact:v1:412d59654daf864787990bee5b44605d1d1f4885553f0cf5ca25e05c42558033"
+      ],
+      "source_published_kst": "2026-10-26T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG헬로, CJ ENM 4개 채널 송출 중단…사용료 갈등 끝내 파국으로",
+      "telegram_core_fact": "LG헬로비전은 케이블TV 가입자와 방송매출이 줄어드는 상황에서 시청률 등 콘텐츠 가치 하락까지 고려하면 사용료 인하가 불가피하다는 입장이다.",
+      "title": "LG헬로, CJ ENM 4개 채널 송출 중단…사용료 갈등 끝내 파국으로"
+    },
     "core:846950ff7998f201d24cd411": {
       "first_seen_kst": "2026-10-13T02:27:34+09:00",
       "lanes": {
@@ -78357,6 +78423,27 @@
       "telegram_core_fact": "해당 사업단은 민화협의 대북 소금지원 사업을 위탁받아 수행하면서, 계약금 명목으로 지방보조금 중 4억7500만원을 받았다.",
       "title": "북한 소금 지원사업 보조금 횡령…1·2심 판단은?[죄와벌]"
     },
+    "core:b4df21d725cbbe95e3abf6fb": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186435",
+      "source": "매일경제",
+      "source_body_digest": "209157b0741fdf9b6fa877a4b5db49888c7314e50021a3524876067e86f72eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61c584179ddcf3ff58d4bfa16f3083eeb7e24eb1829873b93e22d19cea99dc4",
+      "source_fact_keys": [
+        "source_fact:v1:75f3b0cce0099ff70f416b9e52a862a0c1533626601c2976e5e821a85f40bd0f",
+        "source_fact:v1:ead37286ac2ee60c1e91626f31e4f451ed3d7b8763327e318773eb17cc5c4ff0"
+      ],
+      "source_published_kst": "2026-10-27T03:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속",
+      "telegram_core_fact": "캔자스주 기반 지역은행 지주사 랜드마크 뱅코프(LARK)가 이사회에서 보통주 1주당 0.21달러의 현금배당과 5% 주식배당을 결의했다고 10월 26일 발표했다.",
+      "title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속"
+    },
     "core:b50c49e401ab6d11702a788a": {
       "first_seen_kst": "2026-10-20T19:03:19+09:00",
       "lanes": {
@@ -83208,6 +83295,28 @@
       "source_published_kst": "2026-10-07T16:09+09:00",
       "title": "코스피, 美금리 반등·삼전 실적 경계에 하락…6,800선 턱걸이(종합) | 연합뉴스"
     },
+    "core:bf42f5ffdef49f104dce9000": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.hankyung.com/article/202610264720L",
+      "source": "한국경제",
+      "source_body_digest": "04987e45e9e3b3ca762593da618ad2cb93b47522706712afb0ff944e04ad82b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c1e216516ba5f29dc69f1a770909db29b26adc2fc65013aee976b71f3e4d69",
+      "source_fact_keys": [
+        "source_fact:v1:4bd8614c088ef6109f53337ea53d650178badb00d28226f11a575ee4a5e9308c",
+        "source_fact:v1:8ad751081a3e85ae8788cda22f0d755f5bee5f06fd1fc42aff898b4b0e9ea6dd",
+        "source_fact:v1:e249c3bf64c12aab373d7022b8774c074b467729aab90e580d1559c93856c58a"
+      ],
+      "source_published_kst": "2026-10-26T10:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)",
+      "telegram_core_fact": "토마토시스템(393210)은 DGIST 차세대 통합정보시스템 구축 용역에 관한 단일판매ㆍ공급계약체결 을 26일에 공시했다.",
+      "title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)"
+    },
     "core:bf48deebd1005cb6d1dbff8a": {
       "first_seen_kst": "2026-10-24T15:44:19+09:00",
       "lanes": {
@@ -85463,6 +85572,24 @@
       "source_title": "한화투자증권, 일본 GI캐피털매니지먼트 증권 부문 주식 취득 계약",
       "telegram_core_fact": "한화투자증권이 일본 종합금융투자회사 GI캐피털매니지먼트의 증권 부문 지분을 인수하는 주식매매계약을 체결했다. 한화투자증권에 따르면 회사는 지난달 이사회에서 GI캐피털매니지먼트 증권 부문 지분 인수를 결의한 데 이어 일본 도쿄에서 계약식을 열었다.",
       "title": "한화투자증권, 일본 GI캐피털매니지먼트 증권 부문 주식 취득 계약"
+    },
+    "core:c451da637b63b549ef1e6d07": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186231",
+      "source": "매일경제",
+      "source_body_digest": "8cb335782fea75c77e9b2c07c6655e97a4ff23c6086d8aca8c0e0489037ca975",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T19:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "버티브 홀딩스, 아일랜드 KES 인수 완료..EMEA 서비스 확대",
+      "telegram_core_fact": "버티브 홀딩스(VRT)가 고밀도 액체냉각 데이터센터용 유체 관리·시운전·부하 테스트 서비스 업체인 아일랜드 킹 인바이런멘탈 서비시스(King Environmental Services Ltd., KES)의 인수를 마무리하고 유럽·중동·아프리카(EMEA) 열관리 서비스 사업을 확장한다고 10월 26일 발표했다.",
+      "title": "버티브 홀딩스, 아일랜드 KES 인수 완료..EMEA 서비스 확대"
     },
     "core:c46453d662f0becdb049ecc0": {
       "first_seen_kst": "2026-10-13T12:38:24+09:00",
@@ -122489,28 +122616,24 @@
     "event:748f6728011bb26ea5f32a84": {
       "first_seen_kst": "2026-10-26T03:39:39+09:00",
       "lanes": {
-        "live": "2026-10-26T11:28:23+09:00"
+        "live": "2026-10-27T03:50:22+09:00"
       },
-      "last_seen_kst": "2026-10-26T11:28:23+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02069686645616856",
-      "source": "이데일리",
-      "source_body_digest": "84226f3ef63385d1c9f36badbd6c3f994564a669cac244ea84fb9a42ccf38720",
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.hankyung.com/article/202610264720L",
+      "source": "한국경제",
+      "source_body_digest": "04987e45e9e3b3ca762593da618ad2cb93b47522706712afb0ff944e04ad82b4",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:ff51e440e303c1312711b1353f4241371f2796bcf1486258c342b3875ce7c2a5",
+      "source_fact_identity": "source_facts:v1:80c1e216516ba5f29dc69f1a770909db29b26adc2fc65013aee976b71f3e4d69",
       "source_fact_keys": [
-        "source_fact:v1:503eb98d8a89d024d0f88ff2bba6af72d2c3ccdc3280d08b3669e516fe879cd7",
-        "source_fact:v1:651d2010af9159501e0dbca1291a38838603208f8768700c3c465ce3513c5d8b",
-        "source_fact:v1:aa470f3d74e3b27ad60275e8fa2c94d33386e94513d34f2c717e2bca6b59e404",
-        "source_fact:v1:bbba8c54f21483fe9dcd10abd97a46a6c2c55cf5442c6ad5c263475610b827d9",
-        "source_fact:v1:c7799e44bdaf1a352476f4b8ac890f8bde37a428caebd64cb23282bc3b489fd2",
-        "source_fact:v1:d9383aae7766929de38c17d705d549ba19e82884f16eeb414b3949c52446fb30",
-        "source_fact:v1:ef1de429eaced266f93ff12a9e01e45c017eab459009d066312b37e055010da2"
+        "source_fact:v1:4bd8614c088ef6109f53337ea53d650178badb00d28226f11a575ee4a5e9308c",
+        "source_fact:v1:8ad751081a3e85ae8788cda22f0d755f5bee5f06fd1fc42aff898b4b0e9ea6dd",
+        "source_fact:v1:e249c3bf64c12aab373d7022b8774c074b467729aab90e580d1559c93856c58a"
       ],
-      "source_published_kst": "2026-10-26T08:38+09:00",
+      "source_published_kst": "2026-10-26T10:30+09:00",
       "source_supply_terms": {},
-      "source_title": "한투운용, 홍콩 ETF 시장 진출…中 본토까지 영토 넓힌다",
-      "telegram_core_fact": "양사는 지난해 4월부터 협력 방안을 논의해 같은 해 11월 홍콩 ETF 시장 공동 진출을 위한 전략적 협력 계약을 체결했다. 한국투자신탁운용이 중국 자산운용사와 손잡고 홍콩 상장지수펀드(ETF) 시장에 진출했다.",
-      "title": "한투운용, 홍콩 ETF 시장 진출…中 본토까지 영토 넓힌다"
+      "source_title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)",
+      "telegram_core_fact": "토마토시스템(393210)은 DGIST 차세대 통합정보시스템 구축 용역에 관한 단일판매ㆍ공급계약체결 을 26일에 공시했다.",
+      "title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)"
     },
     "event:7495240dae27fac180c14947": {
       "first_seen_kst": "2026-09-29T20:35:29+09:00",
@@ -198053,6 +198176,30 @@
       "telegram_core_fact": "금융당국과 한국은행의 무위험 지표금리 코파(KOFR·Korea Overnight Financing Repo rate) 활성화 계획이 목표치를 초과 달성하며 '순항' 중인 것으로 나타났다.",
       "title": "금융권 이자율 스왑거래 KOFR 비중 12.1%…목표 초과 달성 | 연합뉴스"
     },
+    "fact:874afa2135cb1f0b4002c920": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186207",
+      "source": "매일경제",
+      "source_body_digest": "64b711099ef32a85c5e07c807b5313fd8bef29fd8acef3d6d7e02f11e4555cc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e30bfa815b19e14b2ec0caf9e1547274b4f31ecddcb6e25adee4bb565de2e832",
+      "source_fact_keys": [
+        "source_fact:v1:1008669fbcf47be41dda413d26bfd41fe84dbaac57df6be97914ac55caeca389",
+        "source_fact:v1:373f84be1b1d7c9ca837c9777150e2198031741242d104c51b7fac4dbc5f5c62",
+        "source_fact:v1:6816104ac9a4923d6aa9c37e03dba3ffdde4ff749d63cd28e0ec4ca8eab720a7",
+        "source_fact:v1:8098697558025f34fd9ffb601f3b2333681537a4898be32415c73a543187e480",
+        "source_fact:v1:c3df099a11682d776bb95848251caa61cd812232e9446991c7a24614981af771"
+      ],
+      "source_published_kst": "2026-10-26T19:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과",
+      "telegram_core_fact": "미국 천연가스 생산업체 이큐티(EQT)가 경쟁사 레인지 리소시스(RRC)를 전액 주식 교환 방식으로 인수하는 최종 합병계약을 체결하고, 합병 후 기업가치(pro forma enterprise value) 500억 달러를 넘는 미국 최대 천연가스 기업을 출범시키겠다고 10월 26일 발표했다.",
+      "title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과"
+    },
     "fact:87593c7bdc6972b096232d0f": {
       "first_seen_kst": "2026-10-20T06:39:46+09:00",
       "lanes": {
@@ -222878,6 +223025,28 @@
       "telegram_core_fact": "리사 수 AMD 최고경영자(CEO)가 한국을 인공지능(AI)과 반도체 공급망에서 핵심적인 파트너로 꼽았다. 최근 수 CEO가 한국을 잇따라 찾는 배경에도 장기적인 공급망 협력이 있다고 설명했다.",
       "title": "리사 수 AMD CEO “반도체는 팀 스포츠, 한국은 핵심 파트너”"
     },
+    "fact:bab6739c8b2d9af4dbfdb372": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841847",
+      "source": "뉴시스",
+      "source_body_digest": "b1cac2376330be15146a33bdff11399bd707e0b0a14bff47527987e5e1995219",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12e888199c275612ae985b07f95ec17fddc71d279f0de931eb4717081dc80667",
+      "source_fact_keys": [
+        "source_fact:v1:9bc042aac0df1fcb8faee671e5b7d4828e0dafd03c233553a01a1c377d837798",
+        "source_fact:v1:be6b79c7b343502e147f7dccd093cadb5865776f7acedb5d74267e86552557c6",
+        "source_fact:v1:da16721fa24118b501ef2d5264da81a44cbfcebda0882ee6609b376bb75d38fa"
+      ],
+      "source_published_kst": "2026-10-26T20:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기",
+      "telegram_core_fact": "두 연구원은 또 해당 위성을 인수한 창광공사가 위성 영상을 이란과 후티 무장조직에 제공해 미국으로부터 제재를 받았다는 점을 들면서 위성 정보가 중국이 동맹국과 협력을 강화하는 수단이 되고 있다는 주장도 내놨다.",
+      "title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기"
+    },
     "fact:baba9feabd7b772d31fd7e44": {
       "first_seen_kst": "2026-10-23T15:44:53+09:00",
       "lanes": {
@@ -232167,6 +232336,26 @@
       "telegram_core_fact": "[파이낸셜뉴스] 러시아가 이르면 이달부터 미국을 포함한 세계 시장에 경유를 추가 공급하기 위해 수출 제한 조치를 풀기로 했다.",
       "title": "러시아 \"경유 수출 제한 즉시 해제\"…이달 30만t 공급 방침"
     },
+    "fact:ce1ad72e2edf18ba15934f7d": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841675",
+      "source": "뉴시스",
+      "source_body_digest": "fea0dd686e7dc05757dfb0b4e3b54abc7c25d7578b3f9576b35638ed3816b2e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b56c213720d1183cc0b626ca965c30c867d25779cd596ce1676bc7c1708c0206",
+      "source_fact_keys": [
+        "source_fact:v1:412d59654daf864787990bee5b44605d1d1f4885553f0cf5ca25e05c42558033"
+      ],
+      "source_published_kst": "2026-10-26T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG헬로, CJ ENM 4개 채널 송출 중단…사용료 갈등 끝내 파국으로",
+      "telegram_core_fact": "LG헬로비전은 케이블TV 가입자와 방송매출이 줄어드는 상황에서 시청률 등 콘텐츠 가치 하락까지 고려하면 사용료 인하가 불가피하다는 입장이다.",
+      "title": "LG헬로, CJ ENM 4개 채널 송출 중단…사용료 갈등 끝내 파국으로"
+    },
     "fact:ce22b54e8f0083e9c50c78a8": {
       "first_seen_kst": "2026-10-21T00:19:28+09:00",
       "lanes": {
@@ -236650,6 +236839,27 @@
       ],
       "source_published_kst": "2026-10-06T13:06+09:00",
       "title": "美 소비자신뢰지수 12년 최저인데 가계지출 6.1%↑…실질소비도 늘었다"
+    },
+    "fact:d6412c20cb4755e6c03e58a6": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186435",
+      "source": "매일경제",
+      "source_body_digest": "209157b0741fdf9b6fa877a4b5db49888c7314e50021a3524876067e86f72eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61c584179ddcf3ff58d4bfa16f3083eeb7e24eb1829873b93e22d19cea99dc4",
+      "source_fact_keys": [
+        "source_fact:v1:75f3b0cce0099ff70f416b9e52a862a0c1533626601c2976e5e821a85f40bd0f",
+        "source_fact:v1:ead37286ac2ee60c1e91626f31e4f451ed3d7b8763327e318773eb17cc5c4ff0"
+      ],
+      "source_published_kst": "2026-10-27T03:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속",
+      "telegram_core_fact": "캔자스주 기반 지역은행 지주사 랜드마크 뱅코프(LARK)가 이사회에서 보통주 1주당 0.21달러의 현금배당과 5% 주식배당을 결의했다고 10월 26일 발표했다.",
+      "title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속"
     },
     "fact:d64cd04ca21f2f23309ab687": {
       "first_seen_kst": "2026-10-18T06:15:10+09:00",
@@ -248636,6 +248846,28 @@
       "source_title": "호남 반도체 ‘2030년 시간표’…노동특례·인허가, 29일 당정 시험대",
       "telegram_core_fact": "산업통상부가 지난 23일 발표한 반도체 13개 규제 개선과제는 순차적으로 진행하던 인허가·보상·설계를 한꺼번에 병행하는 데 초점을 맞췄다.",
       "title": "호남 반도체 ‘2030년 시간표’…노동특례·인허가, 29일 당정 시험대"
+    },
+    "fact:ef1d5d0e21d8b90c44c851f3": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.hankyung.com/article/202610264720L",
+      "source": "한국경제",
+      "source_body_digest": "04987e45e9e3b3ca762593da618ad2cb93b47522706712afb0ff944e04ad82b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c1e216516ba5f29dc69f1a770909db29b26adc2fc65013aee976b71f3e4d69",
+      "source_fact_keys": [
+        "source_fact:v1:4bd8614c088ef6109f53337ea53d650178badb00d28226f11a575ee4a5e9308c",
+        "source_fact:v1:8ad751081a3e85ae8788cda22f0d755f5bee5f06fd1fc42aff898b4b0e9ea6dd",
+        "source_fact:v1:e249c3bf64c12aab373d7022b8774c074b467729aab90e580d1559c93856c58a"
+      ],
+      "source_published_kst": "2026-10-26T10:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)",
+      "telegram_core_fact": "토마토시스템(393210)은 DGIST 차세대 통합정보시스템 구축 용역에 관한 단일판매ㆍ공급계약체결 을 26일에 공시했다.",
+      "title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)"
     },
     "fact:ef24fb62610e0b4972188fcd": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
@@ -273591,6 +273823,26 @@
       "telegram_core_fact": "대만 전력사업을 주도할 합작법인은 LS일렉트릭이 50%, 난야플라스틱 40%, KHI가 10%를 각각 출자해 설립했으며 사명은 ‘남아낙성(南亞樂星)’으로 정했다.",
       "title": "LS일렉트릭, 대만 최대 석화그룹과 합작법인…현지 사업 확대"
     },
+    "link:1b88decd0179a474f1631fa6": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841675",
+      "source": "뉴시스",
+      "source_body_digest": "fea0dd686e7dc05757dfb0b4e3b54abc7c25d7578b3f9576b35638ed3816b2e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b56c213720d1183cc0b626ca965c30c867d25779cd596ce1676bc7c1708c0206",
+      "source_fact_keys": [
+        "source_fact:v1:412d59654daf864787990bee5b44605d1d1f4885553f0cf5ca25e05c42558033"
+      ],
+      "source_published_kst": "2026-10-26T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG헬로, CJ ENM 4개 채널 송출 중단…사용료 갈등 끝내 파국으로",
+      "telegram_core_fact": "LG헬로비전은 케이블TV 가입자와 방송매출이 줄어드는 상황에서 시청률 등 콘텐츠 가치 하락까지 고려하면 사용료 인하가 불가피하다는 입장이다.",
+      "title": "LG헬로, CJ ENM 4개 채널 송출 중단…사용료 갈등 끝내 파국으로"
+    },
     "link:1b94c2b4b6729f7f713aa13e": {
       "first_seen_kst": "2026-10-16T17:05:45+09:00",
       "lanes": {
@@ -295088,6 +295340,27 @@
       "source_title": "李 대통령 \"한일 첨단산업 공급망 협력 필수…경제협력 확대해야\"",
       "telegram_core_fact": "이재명 대통령이 한국과 일본의 첨단산업 공급망 협력 필요성을 강조하며 양국 경제계에 미래지향적인 협력 확대를 당부했다. 특히 한국과 일본은 첨단산업 공급망 측면에서 상호 협력이 필수적인 국가라고 강조했다.",
       "title": "李 대통령 \"한일 첨단산업 공급망 협력 필수…경제협력 확대해야\""
+    },
+    "link:3e99e4542e68c0fb265d47a1": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186435",
+      "source": "매일경제",
+      "source_body_digest": "209157b0741fdf9b6fa877a4b5db49888c7314e50021a3524876067e86f72eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61c584179ddcf3ff58d4bfa16f3083eeb7e24eb1829873b93e22d19cea99dc4",
+      "source_fact_keys": [
+        "source_fact:v1:75f3b0cce0099ff70f416b9e52a862a0c1533626601c2976e5e821a85f40bd0f",
+        "source_fact:v1:ead37286ac2ee60c1e91626f31e4f451ed3d7b8763327e318773eb17cc5c4ff0"
+      ],
+      "source_published_kst": "2026-10-27T03:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속",
+      "telegram_core_fact": "캔자스주 기반 지역은행 지주사 랜드마크 뱅코프(LARK)가 이사회에서 보통주 1주당 0.21달러의 현금배당과 5% 주식배당을 결의했다고 10월 26일 발표했다.",
+      "title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속"
     },
     "link:3e9ff6b040017f60776024b8": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
@@ -341072,6 +341345,24 @@
       "telegram_core_fact": "와이즈그룹(WSE)은 2026년 9월 30일 종료된 2027회계연도 2분기 순매출(net revenue)이 7억3910만 달러로 전년 동기(6억1050만 달러) 대비 21% 증가했다고 10월 15일 발표했다.",
       "title": "와이즈그룹, 2분기 순매출 7억3910만 달러..전년비 21% 증가"
     },
+    "link:8bb18929880339462780fa51": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186231",
+      "source": "매일경제",
+      "source_body_digest": "8cb335782fea75c77e9b2c07c6655e97a4ff23c6086d8aca8c0e0489037ca975",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T19:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "버티브 홀딩스, 아일랜드 KES 인수 완료..EMEA 서비스 확대",
+      "telegram_core_fact": "버티브 홀딩스(VRT)가 고밀도 액체냉각 데이터센터용 유체 관리·시운전·부하 테스트 서비스 업체인 아일랜드 킹 인바이런멘탈 서비시스(King Environmental Services Ltd., KES)의 인수를 마무리하고 유럽·중동·아프리카(EMEA) 열관리 서비스 사업을 확장한다고 10월 26일 발표했다.",
+      "title": "버티브 홀딩스, 아일랜드 KES 인수 완료..EMEA 서비스 확대"
+    },
     "link:8bb7e597320325b6f0c0e34e": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -343717,6 +344008,30 @@
       "link": "https://www.yna.co.kr/view/AKR20260922149500030",
       "source": "연합뉴스",
       "title": "KT&G, 3천600억원 규모 자사주 매입·소각 결정 | 연합뉴스"
+    },
+    "link:909881781b131fb0a89eb6df": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186207",
+      "source": "매일경제",
+      "source_body_digest": "64b711099ef32a85c5e07c807b5313fd8bef29fd8acef3d6d7e02f11e4555cc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e30bfa815b19e14b2ec0caf9e1547274b4f31ecddcb6e25adee4bb565de2e832",
+      "source_fact_keys": [
+        "source_fact:v1:1008669fbcf47be41dda413d26bfd41fe84dbaac57df6be97914ac55caeca389",
+        "source_fact:v1:373f84be1b1d7c9ca837c9777150e2198031741242d104c51b7fac4dbc5f5c62",
+        "source_fact:v1:6816104ac9a4923d6aa9c37e03dba3ffdde4ff749d63cd28e0ec4ca8eab720a7",
+        "source_fact:v1:8098697558025f34fd9ffb601f3b2333681537a4898be32415c73a543187e480",
+        "source_fact:v1:c3df099a11682d776bb95848251caa61cd812232e9446991c7a24614981af771"
+      ],
+      "source_published_kst": "2026-10-26T19:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과",
+      "telegram_core_fact": "미국 천연가스 생산업체 이큐티(EQT)가 경쟁사 레인지 리소시스(RRC)를 전액 주식 교환 방식으로 인수하는 최종 합병계약을 체결하고, 합병 후 기업가치(pro forma enterprise value) 500억 달러를 넘는 미국 최대 천연가스 기업을 출범시키겠다고 10월 26일 발표했다.",
+      "title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과"
     },
     "link:90adfa293783104427959434": {
       "first_seen_kst": "2026-10-05T18:29:33+09:00",
@@ -375066,6 +375381,28 @@
       "telegram_core_fact": "KT는 K-PATH 참여 스타트업의 후속 성장을 돕기 위해 AWS, Google Cloud 등 글로벌 IT 기업의 스타트업 지원 프로그램을 연결하고, 벤처·산업계 관계자들과의 비즈니스 미팅을 통한 투자 유치 및 신규 사업 모색 자리를 마련했다.",
       "title": "KT, ‘K-PATH 2026’서 AI 스타트업과 AX 협업 결실 공개"
     },
+    "link:c2f73152f3d67225d05a6486": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841847",
+      "source": "뉴시스",
+      "source_body_digest": "b1cac2376330be15146a33bdff11399bd707e0b0a14bff47527987e5e1995219",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12e888199c275612ae985b07f95ec17fddc71d279f0de931eb4717081dc80667",
+      "source_fact_keys": [
+        "source_fact:v1:9bc042aac0df1fcb8faee671e5b7d4828e0dafd03c233553a01a1c377d837798",
+        "source_fact:v1:be6b79c7b343502e147f7dccd093cadb5865776f7acedb5d74267e86552557c6",
+        "source_fact:v1:da16721fa24118b501ef2d5264da81a44cbfcebda0882ee6609b376bb75d38fa"
+      ],
+      "source_published_kst": "2026-10-26T20:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기",
+      "telegram_core_fact": "두 연구원은 또 해당 위성을 인수한 창광공사가 위성 영상을 이란과 후티 무장조직에 제공해 미국으로부터 제재를 받았다는 점을 들면서 위성 정보가 중국이 동맹국과 협력을 강화하는 수단이 되고 있다는 주장도 내놨다.",
+      "title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기"
+    },
     "link:c305718da84039d559783684": {
       "first_seen_kst": "2026-10-23T19:28:19+09:00",
       "lanes": {
@@ -391078,6 +391415,28 @@
       ],
       "source_published_kst": "2026-10-07T08:51+09:00",
       "title": "트럼프 “한국에 관세 인하 ‘대가’ 요구했다”…대미 투자 거듭 압박"
+    },
+    "link:df7ee62309622763594b565f": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.hankyung.com/article/202610264720L",
+      "source": "한국경제",
+      "source_body_digest": "04987e45e9e3b3ca762593da618ad2cb93b47522706712afb0ff944e04ad82b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c1e216516ba5f29dc69f1a770909db29b26adc2fc65013aee976b71f3e4d69",
+      "source_fact_keys": [
+        "source_fact:v1:4bd8614c088ef6109f53337ea53d650178badb00d28226f11a575ee4a5e9308c",
+        "source_fact:v1:8ad751081a3e85ae8788cda22f0d755f5bee5f06fd1fc42aff898b4b0e9ea6dd",
+        "source_fact:v1:e249c3bf64c12aab373d7022b8774c074b467729aab90e580d1559c93856c58a"
+      ],
+      "source_published_kst": "2026-10-26T10:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)",
+      "telegram_core_fact": "토마토시스템(393210)은 DGIST 차세대 통합정보시스템 구축 용역에 관한 단일판매ㆍ공급계약체결 을 26일에 공시했다.",
+      "title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)"
     },
     "link:df8d99bf74b997a001d8a266": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
@@ -458728,6 +459087,28 @@
       "telegram_core_fact": "효성중공업 관계자는 “이번 HILS 구축은 단순한 시험설비 확보를 넘어, 당사가 자체 개발한 2GW급 HVDC 제어기를 더욱 고도화할 수 있는 독자적인 기술 기반을 확보했다는 데 의미가 있다”며 “이를 바탕으로 국산 독자기술을 통한 글로벌 HVDC 시장 진출을 지속 확대해 나가겠다”고 밝혔다.",
       "title": "효성重, 2GW급 제어기 성능검증 시스템 국내 최초 구축"
     },
+    "original:51cc8afe78edcc19bb185c6d": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.hankyung.com/article/202610264720L",
+      "source": "한국경제",
+      "source_body_digest": "04987e45e9e3b3ca762593da618ad2cb93b47522706712afb0ff944e04ad82b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c1e216516ba5f29dc69f1a770909db29b26adc2fc65013aee976b71f3e4d69",
+      "source_fact_keys": [
+        "source_fact:v1:4bd8614c088ef6109f53337ea53d650178badb00d28226f11a575ee4a5e9308c",
+        "source_fact:v1:8ad751081a3e85ae8788cda22f0d755f5bee5f06fd1fc42aff898b4b0e9ea6dd",
+        "source_fact:v1:e249c3bf64c12aab373d7022b8774c074b467729aab90e580d1559c93856c58a"
+      ],
+      "source_published_kst": "2026-10-26T10:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)",
+      "telegram_core_fact": "토마토시스템(393210)은 DGIST 차세대 통합정보시스템 구축 용역에 관한 단일판매ㆍ공급계약체결 을 26일에 공시했다.",
+      "title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)"
+    },
     "original:51cc8ff1f8650669cc284adf": {
       "first_seen_kst": "2026-10-14T06:36:25+09:00",
       "lanes": {
@@ -466650,6 +467031,30 @@
       "telegram_core_fact": "대만 전력사업을 주도할 합작법인은 LS일렉트릭이 50%, 난야플라스틱 40%, KHI가 10%를 각각 출자해 설립했으며 사명은 ‘남아낙성(南亞樂星)’으로 정했다.",
       "title": "LS일렉트릭, 대만 최대 석화그룹과 합작법인…현지 사업 확대"
     },
+    "original:5f8a725df8ab61ffb248e42c": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186207",
+      "source": "매일경제",
+      "source_body_digest": "64b711099ef32a85c5e07c807b5313fd8bef29fd8acef3d6d7e02f11e4555cc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e30bfa815b19e14b2ec0caf9e1547274b4f31ecddcb6e25adee4bb565de2e832",
+      "source_fact_keys": [
+        "source_fact:v1:1008669fbcf47be41dda413d26bfd41fe84dbaac57df6be97914ac55caeca389",
+        "source_fact:v1:373f84be1b1d7c9ca837c9777150e2198031741242d104c51b7fac4dbc5f5c62",
+        "source_fact:v1:6816104ac9a4923d6aa9c37e03dba3ffdde4ff749d63cd28e0ec4ca8eab720a7",
+        "source_fact:v1:8098697558025f34fd9ffb601f3b2333681537a4898be32415c73a543187e480",
+        "source_fact:v1:c3df099a11682d776bb95848251caa61cd812232e9446991c7a24614981af771"
+      ],
+      "source_published_kst": "2026-10-26T19:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과",
+      "telegram_core_fact": "미국 천연가스 생산업체 이큐티(EQT)가 경쟁사 레인지 리소시스(RRC)를 전액 주식 교환 방식으로 인수하는 최종 합병계약을 체결하고, 합병 후 기업가치(pro forma enterprise value) 500억 달러를 넘는 미국 최대 천연가스 기업을 출범시키겠다고 10월 26일 발표했다.",
+      "title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과"
+    },
     "original:5f8d22aa25aaa19c9fb62411": {
       "first_seen_kst": "2026-10-19T20:10:12+09:00",
       "lanes": {
@@ -471796,6 +472201,27 @@
       "source": "이투데이",
       "title": "이형일 “10월 국고채 발행 5조원 축소…필요시 추가 축소 검토”"
     },
+    "original:684f0aba556ffc330890cfaf": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186435",
+      "source": "매일경제",
+      "source_body_digest": "209157b0741fdf9b6fa877a4b5db49888c7314e50021a3524876067e86f72eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61c584179ddcf3ff58d4bfa16f3083eeb7e24eb1829873b93e22d19cea99dc4",
+      "source_fact_keys": [
+        "source_fact:v1:75f3b0cce0099ff70f416b9e52a862a0c1533626601c2976e5e821a85f40bd0f",
+        "source_fact:v1:ead37286ac2ee60c1e91626f31e4f451ed3d7b8763327e318773eb17cc5c4ff0"
+      ],
+      "source_published_kst": "2026-10-27T03:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속",
+      "telegram_core_fact": "캔자스주 기반 지역은행 지주사 랜드마크 뱅코프(LARK)가 이사회에서 보통주 1주당 0.21달러의 현금배당과 5% 주식배당을 결의했다고 10월 26일 발표했다.",
+      "title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속"
+    },
     "original:685836beb23a38fbedcead7a": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -473366,6 +473792,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "우리은행, '우다페' 연계 최고 9% 적금 출시"
+    },
+    "original:6b214acd6a53b3669b6abf7f": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186231",
+      "source": "매일경제",
+      "source_body_digest": "8cb335782fea75c77e9b2c07c6655e97a4ff23c6086d8aca8c0e0489037ca975",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T19:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "버티브 홀딩스, 아일랜드 KES 인수 완료..EMEA 서비스 확대",
+      "telegram_core_fact": "버티브 홀딩스(VRT)가 고밀도 액체냉각 데이터센터용 유체 관리·시운전·부하 테스트 서비스 업체인 아일랜드 킹 인바이런멘탈 서비시스(King Environmental Services Ltd., KES)의 인수를 마무리하고 유럽·중동·아프리카(EMEA) 열관리 서비스 사업을 확장한다고 10월 26일 발표했다.",
+      "title": "버티브 홀딩스, 아일랜드 KES 인수 완료..EMEA 서비스 확대"
     },
     "original:6b25ba8caf54558bc1b2f1f1": {
       "first_seen_kst": "2026-10-23T04:40:39+09:00",
@@ -477321,6 +477765,28 @@
       "link": "https://www.yna.co.kr/view/AKR20261002120900053",
       "source": "연합뉴스",
       "title": "[구미소식] AI 데이터센터 건설, 지역업체 참여 길 찾는다 | 연합뉴스"
+    },
+    "original:71bedd20448accf828594e22": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841847",
+      "source": "뉴시스",
+      "source_body_digest": "b1cac2376330be15146a33bdff11399bd707e0b0a14bff47527987e5e1995219",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12e888199c275612ae985b07f95ec17fddc71d279f0de931eb4717081dc80667",
+      "source_fact_keys": [
+        "source_fact:v1:9bc042aac0df1fcb8faee671e5b7d4828e0dafd03c233553a01a1c377d837798",
+        "source_fact:v1:be6b79c7b343502e147f7dccd093cadb5865776f7acedb5d74267e86552557c6",
+        "source_fact:v1:da16721fa24118b501ef2d5264da81a44cbfcebda0882ee6609b376bb75d38fa"
+      ],
+      "source_published_kst": "2026-10-26T20:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기",
+      "telegram_core_fact": "두 연구원은 또 해당 위성을 인수한 창광공사가 위성 영상을 이란과 후티 무장조직에 제공해 미국으로부터 제재를 받았다는 점을 들면서 위성 정보가 중국이 동맹국과 협력을 강화하는 수단이 되고 있다는 주장도 내놨다.",
+      "title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기"
     },
     "original:71c1518b25ca63fcd3cb690d": {
       "first_seen_kst": "2026-10-18T17:16:37+09:00",
@@ -544267,6 +544733,26 @@
       "source_published_kst": "2026-10-06T08:30+09:00",
       "title": "환율 12% 빠지자…순이익 쇼크 주의보 떴다"
     },
+    "original:e3cd6b291066fe4e3c6931df": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841675",
+      "source": "뉴시스",
+      "source_body_digest": "fea0dd686e7dc05757dfb0b4e3b54abc7c25d7578b3f9576b35638ed3816b2e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b56c213720d1183cc0b626ca965c30c867d25779cd596ce1676bc7c1708c0206",
+      "source_fact_keys": [
+        "source_fact:v1:412d59654daf864787990bee5b44605d1d1f4885553f0cf5ca25e05c42558033"
+      ],
+      "source_published_kst": "2026-10-26T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG헬로, CJ ENM 4개 채널 송출 중단…사용료 갈등 끝내 파국으로",
+      "telegram_core_fact": "LG헬로비전은 케이블TV 가입자와 방송매출이 줄어드는 상황에서 시청률 등 콘텐츠 가치 하락까지 고려하면 사용료 인하가 불가피하다는 입장이다.",
+      "title": "LG헬로, CJ ENM 4개 채널 송출 중단…사용료 갈등 끝내 파국으로"
+    },
     "original:e3d250ea89d2842264ff375a": {
       "first_seen_kst": "2026-10-02T07:53:13+09:00",
       "lanes": {
@@ -568378,6 +568864,30 @@
       "source_title": "정부, 양자통신 실증망 전국 확대…올해 74억원 투입",
       "telegram_core_fact": "올해 74억원을 투입해 국산 양자통신 장비의 성능을 검증하고 해외 시장 진출을 위한 시험 환경도 구축한다.",
       "title": "정부, 양자통신 실증망 전국 확대…올해 74억원 투입"
+    },
+    "source_fact:035758cd759744f8edba5bf6": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186207",
+      "source": "매일경제",
+      "source_body_digest": "64b711099ef32a85c5e07c807b5313fd8bef29fd8acef3d6d7e02f11e4555cc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e30bfa815b19e14b2ec0caf9e1547274b4f31ecddcb6e25adee4bb565de2e832",
+      "source_fact_keys": [
+        "source_fact:v1:1008669fbcf47be41dda413d26bfd41fe84dbaac57df6be97914ac55caeca389",
+        "source_fact:v1:373f84be1b1d7c9ca837c9777150e2198031741242d104c51b7fac4dbc5f5c62",
+        "source_fact:v1:6816104ac9a4923d6aa9c37e03dba3ffdde4ff749d63cd28e0ec4ca8eab720a7",
+        "source_fact:v1:8098697558025f34fd9ffb601f3b2333681537a4898be32415c73a543187e480",
+        "source_fact:v1:c3df099a11682d776bb95848251caa61cd812232e9446991c7a24614981af771"
+      ],
+      "source_published_kst": "2026-10-26T19:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과",
+      "telegram_core_fact": "미국 천연가스 생산업체 이큐티(EQT)가 경쟁사 레인지 리소시스(RRC)를 전액 주식 교환 방식으로 인수하는 최종 합병계약을 체결하고, 합병 후 기업가치(pro forma enterprise value) 500억 달러를 넘는 미국 최대 천연가스 기업을 출범시키겠다고 10월 26일 발표했다.",
+      "title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과"
     },
     "source_fact:0357bf5c5dba1382393aca27": {
       "first_seen_kst": "2026-10-21T22:01:46+09:00",
@@ -596088,6 +596598,27 @@
       "source_published_kst": "2026-10-06T13:06+09:00",
       "title": "美 소비자신뢰지수 12년 최저인데 가계지출 6.1%↑…실질소비도 늘었다"
     },
+    "source_fact:0ed191c72cb9d00201dfcde2": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186435",
+      "source": "매일경제",
+      "source_body_digest": "209157b0741fdf9b6fa877a4b5db49888c7314e50021a3524876067e86f72eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61c584179ddcf3ff58d4bfa16f3083eeb7e24eb1829873b93e22d19cea99dc4",
+      "source_fact_keys": [
+        "source_fact:v1:75f3b0cce0099ff70f416b9e52a862a0c1533626601c2976e5e821a85f40bd0f",
+        "source_fact:v1:ead37286ac2ee60c1e91626f31e4f451ed3d7b8763327e318773eb17cc5c4ff0"
+      ],
+      "source_published_kst": "2026-10-27T03:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속",
+      "telegram_core_fact": "캔자스주 기반 지역은행 지주사 랜드마크 뱅코프(LARK)가 이사회에서 보통주 1주당 0.21달러의 현금배당과 5% 주식배당을 결의했다고 10월 26일 발표했다.",
+      "title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속"
+    },
     "source_fact:0ed2d5aef4341f436e98cc94": {
       "first_seen_kst": "2026-10-23T03:32:06+09:00",
       "lanes": {
@@ -620503,6 +621034,28 @@
       ],
       "source_published_kst": "2026-10-06T19:08+09:00",
       "title": "국제약품 승계 속도…남영우 회장 지분 전량 3세 증여"
+    },
+    "source_fact:18c9b90ea674d92c8a19de6e": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.hankyung.com/article/202610264720L",
+      "source": "한국경제",
+      "source_body_digest": "04987e45e9e3b3ca762593da618ad2cb93b47522706712afb0ff944e04ad82b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c1e216516ba5f29dc69f1a770909db29b26adc2fc65013aee976b71f3e4d69",
+      "source_fact_keys": [
+        "source_fact:v1:4bd8614c088ef6109f53337ea53d650178badb00d28226f11a575ee4a5e9308c",
+        "source_fact:v1:8ad751081a3e85ae8788cda22f0d755f5bee5f06fd1fc42aff898b4b0e9ea6dd",
+        "source_fact:v1:e249c3bf64c12aab373d7022b8774c074b467729aab90e580d1559c93856c58a"
+      ],
+      "source_published_kst": "2026-10-26T10:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)",
+      "telegram_core_fact": "토마토시스템(393210)은 DGIST 차세대 통합정보시스템 구축 용역에 관한 단일판매ㆍ공급계약체결 을 26일에 공시했다.",
+      "title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)"
     },
     "source_fact:18c9bf6dfba615c36590100a": {
       "first_seen_kst": "2026-10-22T19:31:34+09:00",
@@ -655992,6 +656545,28 @@
       ],
       "source_published_kst": "2026-10-07T10:36+09:00",
       "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
+    },
+    "source_fact:2686a9b7242af4fde3127e8e": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.hankyung.com/article/202610264720L",
+      "source": "한국경제",
+      "source_body_digest": "04987e45e9e3b3ca762593da618ad2cb93b47522706712afb0ff944e04ad82b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c1e216516ba5f29dc69f1a770909db29b26adc2fc65013aee976b71f3e4d69",
+      "source_fact_keys": [
+        "source_fact:v1:4bd8614c088ef6109f53337ea53d650178badb00d28226f11a575ee4a5e9308c",
+        "source_fact:v1:8ad751081a3e85ae8788cda22f0d755f5bee5f06fd1fc42aff898b4b0e9ea6dd",
+        "source_fact:v1:e249c3bf64c12aab373d7022b8774c074b467729aab90e580d1559c93856c58a"
+      ],
+      "source_published_kst": "2026-10-26T10:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)",
+      "telegram_core_fact": "토마토시스템(393210)은 DGIST 차세대 통합정보시스템 구축 용역에 관한 단일판매ㆍ공급계약체결 을 26일에 공시했다.",
+      "title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)"
     },
     "source_fact:268c0a5fd87e238d39a7976a": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
@@ -815358,6 +815933,28 @@
       "telegram_core_fact": "CNBC에 따르면 오픈AI는 투자자 설명자료에서 올해 3분기 전체 연환산 매출 증가율이 77%에 달했다고 밝혔다.",
       "title": "오픈AI 매출 200억달러 ‘착시’에…엔비디아·오라클 등 AI주 급락"
     },
+    "source_fact:661c49bd2356b5b5cd5eaeda": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841847",
+      "source": "뉴시스",
+      "source_body_digest": "b1cac2376330be15146a33bdff11399bd707e0b0a14bff47527987e5e1995219",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12e888199c275612ae985b07f95ec17fddc71d279f0de931eb4717081dc80667",
+      "source_fact_keys": [
+        "source_fact:v1:9bc042aac0df1fcb8faee671e5b7d4828e0dafd03c233553a01a1c377d837798",
+        "source_fact:v1:be6b79c7b343502e147f7dccd093cadb5865776f7acedb5d74267e86552557c6",
+        "source_fact:v1:da16721fa24118b501ef2d5264da81a44cbfcebda0882ee6609b376bb75d38fa"
+      ],
+      "source_published_kst": "2026-10-26T20:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기",
+      "telegram_core_fact": "두 연구원은 또 해당 위성을 인수한 창광공사가 위성 영상을 이란과 후티 무장조직에 제공해 미국으로부터 제재를 받았다는 점을 들면서 위성 정보가 중국이 동맹국과 협력을 강화하는 수단이 되고 있다는 주장도 내놨다.",
+      "title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기"
+    },
     "source_fact:6622d328955d3cd5edfa553e": {
       "first_seen_kst": "2026-10-19T14:48:42+09:00",
       "lanes": {
@@ -916711,6 +917308,30 @@
       "telegram_core_fact": "컴테크 커뮤니케이션(CMTL)은 7월 31일 종료된 2026 회계연도 4분기(계속사업 기준) 매출액이 6620만 달러로 전년비 12.1% 감소했으나, 조정 EBITDA(비GAAP)는 920만 달러로 22.3% 증가했다고 10월 14일 발표했다.",
       "title": "컴테크 커뮤니케이션, 4분기 조정 EBITDA 920만달러..22% 증가"
     },
+    "source_fact:8fcb559fc3e6d159b795c8c9": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186207",
+      "source": "매일경제",
+      "source_body_digest": "64b711099ef32a85c5e07c807b5313fd8bef29fd8acef3d6d7e02f11e4555cc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e30bfa815b19e14b2ec0caf9e1547274b4f31ecddcb6e25adee4bb565de2e832",
+      "source_fact_keys": [
+        "source_fact:v1:1008669fbcf47be41dda413d26bfd41fe84dbaac57df6be97914ac55caeca389",
+        "source_fact:v1:373f84be1b1d7c9ca837c9777150e2198031741242d104c51b7fac4dbc5f5c62",
+        "source_fact:v1:6816104ac9a4923d6aa9c37e03dba3ffdde4ff749d63cd28e0ec4ca8eab720a7",
+        "source_fact:v1:8098697558025f34fd9ffb601f3b2333681537a4898be32415c73a543187e480",
+        "source_fact:v1:c3df099a11682d776bb95848251caa61cd812232e9446991c7a24614981af771"
+      ],
+      "source_published_kst": "2026-10-26T19:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과",
+      "telegram_core_fact": "미국 천연가스 생산업체 이큐티(EQT)가 경쟁사 레인지 리소시스(RRC)를 전액 주식 교환 방식으로 인수하는 최종 합병계약을 체결하고, 합병 후 기업가치(pro forma enterprise value) 500억 달러를 넘는 미국 최대 천연가스 기업을 출범시키겠다고 10월 26일 발표했다.",
+      "title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과"
+    },
     "source_fact:8fcd4473ea201c6621566618": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
@@ -955695,6 +956316,30 @@
       "source_published_kst": "2026-10-07T09:52+09:00",
       "title": "한화 AI 에너지 관리 시스템, 美 ‘차세대 신기술’ 선정…전력비 최대 25% 절감"
     },
+    "source_fact:9f676f12e5eddf21bfc8cdb4": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186207",
+      "source": "매일경제",
+      "source_body_digest": "64b711099ef32a85c5e07c807b5313fd8bef29fd8acef3d6d7e02f11e4555cc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e30bfa815b19e14b2ec0caf9e1547274b4f31ecddcb6e25adee4bb565de2e832",
+      "source_fact_keys": [
+        "source_fact:v1:1008669fbcf47be41dda413d26bfd41fe84dbaac57df6be97914ac55caeca389",
+        "source_fact:v1:373f84be1b1d7c9ca837c9777150e2198031741242d104c51b7fac4dbc5f5c62",
+        "source_fact:v1:6816104ac9a4923d6aa9c37e03dba3ffdde4ff749d63cd28e0ec4ca8eab720a7",
+        "source_fact:v1:8098697558025f34fd9ffb601f3b2333681537a4898be32415c73a543187e480",
+        "source_fact:v1:c3df099a11682d776bb95848251caa61cd812232e9446991c7a24614981af771"
+      ],
+      "source_published_kst": "2026-10-26T19:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과",
+      "telegram_core_fact": "미국 천연가스 생산업체 이큐티(EQT)가 경쟁사 레인지 리소시스(RRC)를 전액 주식 교환 방식으로 인수하는 최종 합병계약을 체결하고, 합병 후 기업가치(pro forma enterprise value) 500억 달러를 넘는 미국 최대 천연가스 기업을 출범시키겠다고 10월 26일 발표했다.",
+      "title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과"
+    },
     "source_fact:9f67b670354cf97ff73b319a": {
       "first_seen_kst": "2026-10-23T15:44:53+09:00",
       "lanes": {
@@ -960148,6 +960793,26 @@
       ],
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
+    },
+    "source_fact:a11e81d3cf2b8c6e8671f313": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841675",
+      "source": "뉴시스",
+      "source_body_digest": "fea0dd686e7dc05757dfb0b4e3b54abc7c25d7578b3f9576b35638ed3816b2e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b56c213720d1183cc0b626ca965c30c867d25779cd596ce1676bc7c1708c0206",
+      "source_fact_keys": [
+        "source_fact:v1:412d59654daf864787990bee5b44605d1d1f4885553f0cf5ca25e05c42558033"
+      ],
+      "source_published_kst": "2026-10-26T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG헬로, CJ ENM 4개 채널 송출 중단…사용료 갈등 끝내 파국으로",
+      "telegram_core_fact": "LG헬로비전은 케이블TV 가입자와 방송매출이 줄어드는 상황에서 시청률 등 콘텐츠 가치 하락까지 고려하면 사용료 인하가 불가피하다는 입장이다.",
+      "title": "LG헬로, CJ ENM 4개 채널 송출 중단…사용료 갈등 끝내 파국으로"
     },
     "source_fact:a12084faa82f7d9feec092ed": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
@@ -969820,6 +970485,27 @@
       "source_title": "[제2서울핀테크랩 스타트업 CEO] 난방약자와 기후투자자를 연결하는 히트펌프 열 구독서비스 운영 기업 ‘모닥불 에너지’",
       "telegram_core_fact": "소상공인, 단독주택, 공장·시설 등 전문성과 자본이 부족한 소비자가 구독료만 납부하면 히트펌프의 금융 및 설치부터 운영 및 에너지 거래까지 통합 서비스를 누릴 수 있는 데이터 기반 재생열에너지 플랫폼을 구축하고 있다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 난방약자와 기후투자자를 연결하는 히트펌프 열 구독서비스 운영 기업 ‘모닥불 에너지’"
+    },
+    "source_fact:a4a1254f5f3a01e317dc16fa": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186435",
+      "source": "매일경제",
+      "source_body_digest": "209157b0741fdf9b6fa877a4b5db49888c7314e50021a3524876067e86f72eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61c584179ddcf3ff58d4bfa16f3083eeb7e24eb1829873b93e22d19cea99dc4",
+      "source_fact_keys": [
+        "source_fact:v1:75f3b0cce0099ff70f416b9e52a862a0c1533626601c2976e5e821a85f40bd0f",
+        "source_fact:v1:ead37286ac2ee60c1e91626f31e4f451ed3d7b8763327e318773eb17cc5c4ff0"
+      ],
+      "source_published_kst": "2026-10-27T03:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속",
+      "telegram_core_fact": "캔자스주 기반 지역은행 지주사 랜드마크 뱅코프(LARK)가 이사회에서 보통주 1주당 0.21달러의 현금배당과 5% 주식배당을 결의했다고 10월 26일 발표했다.",
+      "title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속"
     },
     "source_fact:a4a9e3100f910a93eaa68d20": {
       "first_seen_kst": "2026-10-16T19:48:28+09:00",
@@ -1000506,6 +1001192,28 @@
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
+    "source_fact:b0df93714f4689a1a3fdb336": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841847",
+      "source": "뉴시스",
+      "source_body_digest": "b1cac2376330be15146a33bdff11399bd707e0b0a14bff47527987e5e1995219",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12e888199c275612ae985b07f95ec17fddc71d279f0de931eb4717081dc80667",
+      "source_fact_keys": [
+        "source_fact:v1:9bc042aac0df1fcb8faee671e5b7d4828e0dafd03c233553a01a1c377d837798",
+        "source_fact:v1:be6b79c7b343502e147f7dccd093cadb5865776f7acedb5d74267e86552557c6",
+        "source_fact:v1:da16721fa24118b501ef2d5264da81a44cbfcebda0882ee6609b376bb75d38fa"
+      ],
+      "source_published_kst": "2026-10-26T20:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기",
+      "telegram_core_fact": "두 연구원은 또 해당 위성을 인수한 창광공사가 위성 영상을 이란과 후티 무장조직에 제공해 미국으로부터 제재를 받았다는 점을 들면서 위성 정보가 중국이 동맹국과 협력을 강화하는 수단이 되고 있다는 주장도 내놨다.",
+      "title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기"
+    },
     "source_fact:b0e20adb5f0593918a539568": {
       "first_seen_kst": "2026-10-21T12:08:47+09:00",
       "lanes": {
@@ -1008750,6 +1009458,30 @@
       "source_title": "코스피, 연휴 후 3% 급락…두달만 6,300선 후퇴 | 연합뉴스",
       "telegram_core_fact": "한글날 연휴 이후 첫 거래일, 코스피가 3% 넘게 급락했습니다. 코스피는 외국인의 매도세와 반도체주 약세에 6,400선을 내줬고, 코스닥도 4% 넘게 급락했습니다.",
       "title": "코스피, 연휴 후 3% 급락…두달만 6,300선 후퇴 | 연합뉴스"
+    },
+    "source_fact:b408eb8dd26b2f7e2d69791c": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186207",
+      "source": "매일경제",
+      "source_body_digest": "64b711099ef32a85c5e07c807b5313fd8bef29fd8acef3d6d7e02f11e4555cc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e30bfa815b19e14b2ec0caf9e1547274b4f31ecddcb6e25adee4bb565de2e832",
+      "source_fact_keys": [
+        "source_fact:v1:1008669fbcf47be41dda413d26bfd41fe84dbaac57df6be97914ac55caeca389",
+        "source_fact:v1:373f84be1b1d7c9ca837c9777150e2198031741242d104c51b7fac4dbc5f5c62",
+        "source_fact:v1:6816104ac9a4923d6aa9c37e03dba3ffdde4ff749d63cd28e0ec4ca8eab720a7",
+        "source_fact:v1:8098697558025f34fd9ffb601f3b2333681537a4898be32415c73a543187e480",
+        "source_fact:v1:c3df099a11682d776bb95848251caa61cd812232e9446991c7a24614981af771"
+      ],
+      "source_published_kst": "2026-10-26T19:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과",
+      "telegram_core_fact": "미국 천연가스 생산업체 이큐티(EQT)가 경쟁사 레인지 리소시스(RRC)를 전액 주식 교환 방식으로 인수하는 최종 합병계약을 체결하고, 합병 후 기업가치(pro forma enterprise value) 500억 달러를 넘는 미국 최대 천연가스 기업을 출범시키겠다고 10월 26일 발표했다.",
+      "title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과"
     },
     "source_fact:b40a2123a50d045028f8a8ec": {
       "first_seen_kst": "2026-10-20T02:43:34+09:00",
@@ -1030690,6 +1031422,28 @@
       "source_title": "비타 코코 컴퍼니, 3분기 매출 2억4400만 달러..연간 전망 상향",
       "telegram_core_fact": "비타 코코 컴퍼니(COCO)는 올해 3분기(7~9월) 매출액이 2억4380만 달러로 전년비 34% 증가했고, 순이익은 3500만 달러로 46% 늘었으며 희석 주당순이익은 0.58달러로 전년 동기 0.40달러에서 증가했다고 10월 22일 발표했다.",
       "title": "비타 코코 컴퍼니, 3분기 매출 2억4400만 달러..연간 전망 상향"
+    },
+    "source_fact:bd229ce4cb0d8fd01f2ff052": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.hankyung.com/article/202610264720L",
+      "source": "한국경제",
+      "source_body_digest": "04987e45e9e3b3ca762593da618ad2cb93b47522706712afb0ff944e04ad82b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c1e216516ba5f29dc69f1a770909db29b26adc2fc65013aee976b71f3e4d69",
+      "source_fact_keys": [
+        "source_fact:v1:4bd8614c088ef6109f53337ea53d650178badb00d28226f11a575ee4a5e9308c",
+        "source_fact:v1:8ad751081a3e85ae8788cda22f0d755f5bee5f06fd1fc42aff898b4b0e9ea6dd",
+        "source_fact:v1:e249c3bf64c12aab373d7022b8774c074b467729aab90e580d1559c93856c58a"
+      ],
+      "source_published_kst": "2026-10-26T10:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)",
+      "telegram_core_fact": "토마토시스템(393210)은 DGIST 차세대 통합정보시스템 구축 용역에 관한 단일판매ㆍ공급계약체결 을 26일에 공시했다.",
+      "title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)"
     },
     "source_fact:bd24426ef01d8cf89a6c53d7": {
       "first_seen_kst": "2026-10-26T23:18:52+09:00",
@@ -1093543,6 +1094297,30 @@
       "telegram_core_fact": "카카오게임즈[293490]가 신작 2.5D 다중접속역할수행게임(MMORPG) '도깨비의세계'로 구글플레이 매출 순위 1위를 기록했다.",
       "title": "카카오게임즈 '도깨비의 세계' 구글플레이 매출 1위 | 연합뉴스"
     },
+    "source_fact:d5fe8ad2dd5a25f1ab457b51": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186207",
+      "source": "매일경제",
+      "source_body_digest": "64b711099ef32a85c5e07c807b5313fd8bef29fd8acef3d6d7e02f11e4555cc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e30bfa815b19e14b2ec0caf9e1547274b4f31ecddcb6e25adee4bb565de2e832",
+      "source_fact_keys": [
+        "source_fact:v1:1008669fbcf47be41dda413d26bfd41fe84dbaac57df6be97914ac55caeca389",
+        "source_fact:v1:373f84be1b1d7c9ca837c9777150e2198031741242d104c51b7fac4dbc5f5c62",
+        "source_fact:v1:6816104ac9a4923d6aa9c37e03dba3ffdde4ff749d63cd28e0ec4ca8eab720a7",
+        "source_fact:v1:8098697558025f34fd9ffb601f3b2333681537a4898be32415c73a543187e480",
+        "source_fact:v1:c3df099a11682d776bb95848251caa61cd812232e9446991c7a24614981af771"
+      ],
+      "source_published_kst": "2026-10-26T19:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과",
+      "telegram_core_fact": "미국 천연가스 생산업체 이큐티(EQT)가 경쟁사 레인지 리소시스(RRC)를 전액 주식 교환 방식으로 인수하는 최종 합병계약을 체결하고, 합병 후 기업가치(pro forma enterprise value) 500억 달러를 넘는 미국 최대 천연가스 기업을 출범시키겠다고 10월 26일 발표했다.",
+      "title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과"
+    },
     "source_fact:d5ff92d6f58a0bd508df7b82": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -1137291,6 +1138069,28 @@
       "source_title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표",
       "telegram_core_fact": "블룸버그(Bloomberg)에 따르면 앤트로픽은 이르면 11월 중순 기업공개(IPO)를 추진한다.",
       "title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표"
+    },
+    "source_fact:e7c9136262e91252424fdf1a": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841847",
+      "source": "뉴시스",
+      "source_body_digest": "b1cac2376330be15146a33bdff11399bd707e0b0a14bff47527987e5e1995219",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12e888199c275612ae985b07f95ec17fddc71d279f0de931eb4717081dc80667",
+      "source_fact_keys": [
+        "source_fact:v1:9bc042aac0df1fcb8faee671e5b7d4828e0dafd03c233553a01a1c377d837798",
+        "source_fact:v1:be6b79c7b343502e147f7dccd093cadb5865776f7acedb5d74267e86552557c6",
+        "source_fact:v1:da16721fa24118b501ef2d5264da81a44cbfcebda0882ee6609b376bb75d38fa"
+      ],
+      "source_published_kst": "2026-10-26T20:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기",
+      "telegram_core_fact": "두 연구원은 또 해당 위성을 인수한 창광공사가 위성 영상을 이란과 후티 무장조직에 제공해 미국으로부터 제재를 받았다는 점을 들면서 위성 정보가 중국이 동맹국과 협력을 강화하는 수단이 되고 있다는 주장도 내놨다.",
+      "title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기"
     },
     "source_fact:e7cbafc2763cb1a6db4f8cc9": {
       "first_seen_kst": "2026-10-22T10:04:49+09:00",
@@ -1245479,6 +1246279,28 @@
       "telegram_core_fact": "효성중공업 관계자는 “이번 HILS 구축은 단순한 시험설비 확보를 넘어, 당사가 자체 개발한 2GW급 HVDC 제어기를 더욱 고도화할 수 있는 독자적인 기술 기반을 확보했다는 데 의미가 있다”며 “이를 바탕으로 국산 독자기술을 통한 글로벌 HVDC 시장 진출을 지속 확대해 나가겠다”고 밝혔다.",
       "title": "효성重, 2GW급 제어기 성능검증 시스템 국내 최초 구축"
     },
+    "title:51cc8afe78edcc19bb185c6d": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.hankyung.com/article/202610264720L",
+      "source": "한국경제",
+      "source_body_digest": "04987e45e9e3b3ca762593da618ad2cb93b47522706712afb0ff944e04ad82b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c1e216516ba5f29dc69f1a770909db29b26adc2fc65013aee976b71f3e4d69",
+      "source_fact_keys": [
+        "source_fact:v1:4bd8614c088ef6109f53337ea53d650178badb00d28226f11a575ee4a5e9308c",
+        "source_fact:v1:8ad751081a3e85ae8788cda22f0d755f5bee5f06fd1fc42aff898b4b0e9ea6dd",
+        "source_fact:v1:e249c3bf64c12aab373d7022b8774c074b467729aab90e580d1559c93856c58a"
+      ],
+      "source_published_kst": "2026-10-26T10:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)",
+      "telegram_core_fact": "토마토시스템(393210)은 DGIST 차세대 통합정보시스템 구축 용역에 관한 단일판매ㆍ공급계약체결 을 26일에 공시했다.",
+      "title": "토마토시스템 수주공시 - DGIST 차세대 통합정보시스템 구축 용역 72.7억원 (매출액대비 27.67 %)"
+    },
     "title:51cc8ff1f8650669cc284adf": {
       "first_seen_kst": "2026-10-14T06:36:25+09:00",
       "lanes": {
@@ -1253596,6 +1254418,30 @@
       "telegram_core_fact": "대만 전력사업을 주도할 합작법인은 LS일렉트릭이 50%, 난야플라스틱 40%, KHI가 10%를 각각 출자해 설립했으며 사명은 ‘남아낙성(南亞樂星)’으로 정했다.",
       "title": "LS일렉트릭, 대만 최대 석화그룹과 합작법인…현지 사업 확대"
     },
+    "title:5f8a725df8ab61ffb248e42c": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186207",
+      "source": "매일경제",
+      "source_body_digest": "64b711099ef32a85c5e07c807b5313fd8bef29fd8acef3d6d7e02f11e4555cc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e30bfa815b19e14b2ec0caf9e1547274b4f31ecddcb6e25adee4bb565de2e832",
+      "source_fact_keys": [
+        "source_fact:v1:1008669fbcf47be41dda413d26bfd41fe84dbaac57df6be97914ac55caeca389",
+        "source_fact:v1:373f84be1b1d7c9ca837c9777150e2198031741242d104c51b7fac4dbc5f5c62",
+        "source_fact:v1:6816104ac9a4923d6aa9c37e03dba3ffdde4ff749d63cd28e0ec4ca8eab720a7",
+        "source_fact:v1:8098697558025f34fd9ffb601f3b2333681537a4898be32415c73a543187e480",
+        "source_fact:v1:c3df099a11682d776bb95848251caa61cd812232e9446991c7a24614981af771"
+      ],
+      "source_published_kst": "2026-10-26T19:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과",
+      "telegram_core_fact": "미국 천연가스 생산업체 이큐티(EQT)가 경쟁사 레인지 리소시스(RRC)를 전액 주식 교환 방식으로 인수하는 최종 합병계약을 체결하고, 합병 후 기업가치(pro forma enterprise value) 500억 달러를 넘는 미국 최대 천연가스 기업을 출범시키겠다고 10월 26일 발표했다.",
+      "title": "이큐티, 레인지 인수 합의..합병 기업가치 500억달러 초과"
+    },
     "title:5f8d22aa25aaa19c9fb62411": {
       "first_seen_kst": "2026-10-19T20:10:12+09:00",
       "lanes": {
@@ -1258822,6 +1259668,27 @@
       "source": "이투데이",
       "title": "이형일 “10월 국고채 발행 5조원 축소…필요시 추가 축소 검토”"
     },
+    "title:684f0aba556ffc330890cfaf": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186435",
+      "source": "매일경제",
+      "source_body_digest": "209157b0741fdf9b6fa877a4b5db49888c7314e50021a3524876067e86f72eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61c584179ddcf3ff58d4bfa16f3083eeb7e24eb1829873b93e22d19cea99dc4",
+      "source_fact_keys": [
+        "source_fact:v1:75f3b0cce0099ff70f416b9e52a862a0c1533626601c2976e5e821a85f40bd0f",
+        "source_fact:v1:ead37286ac2ee60c1e91626f31e4f451ed3d7b8763327e318773eb17cc5c4ff0"
+      ],
+      "source_published_kst": "2026-10-27T03:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속",
+      "telegram_core_fact": "캔자스주 기반 지역은행 지주사 랜드마크 뱅코프(LARK)가 이사회에서 보통주 1주당 0.21달러의 현금배당과 5% 주식배당을 결의했다고 10월 26일 발표했다.",
+      "title": "랜드마크 뱅코프, 현금배당 0.21달러·5% 주식배당 26년 연속"
+    },
     "title:685836beb23a38fbedcead7a": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -1260414,6 +1261281,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "우리은행, '우다페' 연계 최고 9% 적금 출시"
+    },
+    "title:6b214acd6a53b3669b6abf7f": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12186231",
+      "source": "매일경제",
+      "source_body_digest": "8cb335782fea75c77e9b2c07c6655e97a4ff23c6086d8aca8c0e0489037ca975",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T19:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "버티브 홀딩스, 아일랜드 KES 인수 완료..EMEA 서비스 확대",
+      "telegram_core_fact": "버티브 홀딩스(VRT)가 고밀도 액체냉각 데이터센터용 유체 관리·시운전·부하 테스트 서비스 업체인 아일랜드 킹 인바이런멘탈 서비시스(King Environmental Services Ltd., KES)의 인수를 마무리하고 유럽·중동·아프리카(EMEA) 열관리 서비스 사업을 확장한다고 10월 26일 발표했다.",
+      "title": "버티브 홀딩스, 아일랜드 KES 인수 완료..EMEA 서비스 확대"
     },
     "title:6b25ba8caf54558bc1b2f1f1": {
       "first_seen_kst": "2026-10-23T04:40:39+09:00",
@@ -1264433,6 +1265318,28 @@
       "link": "https://www.yna.co.kr/view/AKR20261002120900053",
       "source": "연합뉴스",
       "title": "[구미소식] AI 데이터센터 건설, 지역업체 참여 길 찾는다 | 연합뉴스"
+    },
+    "title:71bedd20448accf828594e22": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841847",
+      "source": "뉴시스",
+      "source_body_digest": "b1cac2376330be15146a33bdff11399bd707e0b0a14bff47527987e5e1995219",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:12e888199c275612ae985b07f95ec17fddc71d279f0de931eb4717081dc80667",
+      "source_fact_keys": [
+        "source_fact:v1:9bc042aac0df1fcb8faee671e5b7d4828e0dafd03c233553a01a1c377d837798",
+        "source_fact:v1:be6b79c7b343502e147f7dccd093cadb5865776f7acedb5d74267e86552557c6",
+        "source_fact:v1:da16721fa24118b501ef2d5264da81a44cbfcebda0882ee6609b376bb75d38fa"
+      ],
+      "source_published_kst": "2026-10-26T20:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기",
+      "telegram_core_fact": "두 연구원은 또 해당 위성을 인수한 창광공사가 위성 영상을 이란과 후티 무장조직에 제공해 미국으로부터 제재를 받았다는 점을 들면서 위성 정보가 중국이 동맹국과 협력을 강화하는 수단이 되고 있다는 주장도 내놨다.",
+      "title": "\"中위성, 대만 실시간 감시 가능성\"…대만 전문가, 우려 제기"
     },
     "title:71c1518b25ca63fcd3cb690d": {
       "first_seen_kst": "2026-10-18T17:16:37+09:00",
@@ -1332746,6 +1333653,26 @@
       "source_published_kst": "2026-10-06T08:30+09:00",
       "title": "환율 12% 빠지자…순이익 쇼크 주의보 떴다"
     },
+    "title:e3cd6b291066fe4e3c6931df": {
+      "first_seen_kst": "2026-10-27T03:50:22+09:00",
+      "lanes": {
+        "live": "2026-10-27T03:50:22+09:00"
+      },
+      "last_seen_kst": "2026-10-27T03:50:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841675",
+      "source": "뉴시스",
+      "source_body_digest": "fea0dd686e7dc05757dfb0b4e3b54abc7c25d7578b3f9576b35638ed3816b2e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b56c213720d1183cc0b626ca965c30c867d25779cd596ce1676bc7c1708c0206",
+      "source_fact_keys": [
+        "source_fact:v1:412d59654daf864787990bee5b44605d1d1f4885553f0cf5ca25e05c42558033"
+      ],
+      "source_published_kst": "2026-10-26T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG헬로, CJ ENM 4개 채널 송출 중단…사용료 갈등 끝내 파국으로",
+      "telegram_core_fact": "LG헬로비전은 케이블TV 가입자와 방송매출이 줄어드는 상황에서 시청률 등 콘텐츠 가치 하락까지 고려하면 사용료 인하가 불가피하다는 입장이다.",
+      "title": "LG헬로, CJ ENM 4개 채널 송출 중단…사용료 갈등 끝내 파국으로"
+    },
     "title:e3d250ea89d2842264ff375a": {
       "first_seen_kst": "2026-10-02T07:53:13+09:00",
       "lanes": {
@@ -1349014,5 +1349941,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-27T03:17:25+09:00"
+  "updated_at_kst": "2026-10-27T03:50:22+09:00"
 }
