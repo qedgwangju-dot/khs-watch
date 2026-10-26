@@ -8227,12 +8227,12 @@ MICRODUCK_OCT26_ID="DIRECT_MICRODUCK_POLLEN_ROBOTIS_PROCUREMENT_20261026"
 MICRODUCK_OCT26_EVENT={
     "title":"로보티즈–Pollen Robotics MicroDuck XL330 공급계약 체결·초기 요청 75만개",
     "link":"https://search.newspim.com/news/view/20261026000539",
-    "source":"뉴스핌·조선비즈·서울경제",
+    "source":"뉴스핌·조선비즈",
     "description":(
         "2026-10-26 로보티즈 서울 본사에서 Pollen Robotics와 MicroDuck "
         "액추에이터 XL330 공급·조달 계약 체결식을 진행. "
         "초기 고객 요청 로봇 50000대×관절 구동기 15개=750000개 소요. "
-        "서울경제 보도 계약 규모 약 35억원. 이는 계약·조달 협력 발표이며 "
+        "시장 보도에 약 35억원이 언급됐으나 공식 계약서·공시에서 확인되지 않은 미확정 참고치다. 이는 계약·조달 협력 발표이며 "
         "750000개 전량의 구속력 있는 취소불가 발주, 기출하·기인식 매출이 아님. "
         "실제 확정 발주서 물량·평균판매단가·선수금·납품 시점은 별도 확인. "
         "로보티즈 측은 공급능력 증강을 추진하며 2027년 2~3분기 "
@@ -8302,7 +8302,7 @@ def _md_risk(cat:str)->str:
 
 def _md_verification(item:dict,group:str,text:str)->str:
     if item.get("microduck_oct26_verified"):
-        return ("2026-10-26 현장 계약식·당사자 발언, 뉴스핌·조선비즈·서울경제 "
+        return ("2026-10-26 현장 계약식·당사자 발언, 뉴스핌·조선비즈 "
                 "교차확인; 구속력 발주서·기출하·매출인식은 아직 별도 검증")
     return _md_prev_verify(item,group,text)
 
@@ -8326,6 +8326,182 @@ base.verification=_md_verification
 base.select_diverse=_md_select
 if MICRODUCK_OCT26_ID not in base.QUERIES:
     base.QUERIES.append(MICRODUCK_OCT26_ID)
+
+
+# Atlas 2026-10-26 supply map: newsroom evidence is separate from official
+# customer awards, customer validation, first production, shipment and revenue.
+ATLAS26_REPORT_QUERY="DIRECT_ATLAS_ETNEWS_SUPPLYCHAIN_REPORT_20261026"
+ATLAS26_REPORT_GROUP="atlas_etnews_parts_report"
+ATLAS26_OFFICIAL_GROUP="atlas_part_supplier_official_upgrade"
+ATLAS26_REPORT_LABEL="현대차 Atlas · 공급망 업계 취재(공식 계약 구분)"
+ATLAS26_TEXT={
+  "title":"Atlas 공급망 취재 20261026: 현대모비스·삼성SDI·나무가·엠씨넥스·캠시스",
+  "link":"https://www.etnews.com/20261026000283",
+  "source":"전자신문",
+  "description":(
+     "2026-10-26 전자신문 취재로 보도된 아틀라스 부품 공급사 명단. "
+     "현대모비스 액추에이터 전량 담당 보도; 다만 Boston Dynamics와의 "
+     "액추에이터 협력 자체는 현대모비스가 2026년 1월 공식 발표. "
+     "배터리는 삼성SDI 말레이시아·LG에너지솔루션 미국 조지아 공장의 "
+     "지름 21mm 원통형 셀 공급 예정이라는 취재 내용. "
+     "비에이치EVS 충전 솔루션, 현대모비스·나무가 머리 카메라, "
+     "엠씨넥스·캠시스 손 카메라, NVIDIA Jetson Thor 사용 보도. "
+     "LG이노텍은 과거 협력 후보이나 이번 기사상 공급사 명단과 구분. "
+     "연 30000대·2028년은 현대차그룹 미국 양산능력 목표이지 "
+     "양산 실적이 아니다. 각 회사의 계약금액, 실제 발주 물량, "
+     "고객 승인, 초도 출하, 2026년 확정 매출은 공개 확인되지 않았다. "
+     "언론 보도의 명단과 각 공급사의 공식 발표를 혼동하지 않는다."
+  )
+}
+ATLAS26_PRIMARY={
+  "현대모비스","Hyundai Mobis","현대자동차그룹","Hyundai Motor Group",
+  "삼성SDI","Samsung SDI","LG에너지솔루션","LG Energy Solution",
+  "비에이치","BH","나무가","Namuga","엠씨넥스","MCNEX",
+  "캠시스","Cammsys","NVIDIA","NVIDIA Newsroom"
+}
+ATLAS26_UPGRADE_RE=re.compile(
+ r"공급\s*계약\s*체결|구매\s*발주서\s*확정|고객\s*승인\s*완료|"
+ r"실제\s*(?:양산\s*개시|초도\s*출하|납품\s*완료)|"
+ r"signed\s+(?:supply|purchase)\s+(?:contract|order)|"
+ r"first\s+shipment\s+completed",re.I
+)
+_atlas26_old_query=base.query_news
+_atlas26_old_group=base.topic_group
+_atlas26_old_score=base.score
+_atlas26_old_key=base.key
+_atlas26_old_category=base.category
+_atlas26_old_meaning=base.meaning
+_atlas26_old_risk=base.risk
+_atlas26_old_verify=base.verification
+_atlas26_old_select=base.select_diverse
+
+def _atlas26_actor(item:dict)->str:
+  src=str(item.get("source") or "").strip()
+  if src not in ATLAS26_PRIMARY:
+    return ""
+  text=str(item.get("title") or "")+" "+str(item.get("description") or "")
+  if not re.search(r"\bAtlas\b|아틀라스",text,re.I):
+    return ""
+  if not ATLAS26_UPGRADE_RE.search(text):
+    return ""
+  if re.search(r"계약\s*미확인|계약\s*예정|계획일\s*뿐|사실무근",text,re.I):
+    return ""
+  return src
+
+def _atlas26_map_text(text:str)->bool:
+  return bool(
+   re.search(r"\bAtlas\b|아틀라스",text,re.I)
+   and ("나무가" in text or "Namuga" in text)
+   and ("엠씨넥스" in text or "MCNEX" in text)
+   and ("캠시스" in text or "Cammsys" in text)
+   and ("삼성SDI" in text or "Samsung SDI" in text)
+  )
+
+def _atlas26_aop_reprint(item:dict)->bool:
+  pub=str(item.get("published") or "")
+  if not ("2026-10-25"<=pub[:10]<="2026-10-30"):
+    return False
+  text=" ".join(str(item.get(k) or "") for k in ("title","description"))
+  return bool(
+   re.search(r"삼성SDI|Samsung\s*SDI",text,re.I)
+   and re.search(r"\bESS\b|에너지저장",text,re.I)
+   and re.search(r"미국|美|U\.S\.|북미",text,re.I)
+   and re.search(r"알파오메가|Alpha\s*Omega|\bAOP\b|1(?:[.,]5)?\s*GWh|2차\s*공급",text,re.I)
+  )
+
+def _atlas26_query(q:str)->list[dict]:
+  if q==ATLAS26_REPORT_QUERY:
+    if base.NOW.astimezone(base.KST).date()>dt.date(2026,11,1):
+      return []
+    return [{**ATLAS26_TEXT,"published":None,"atlas26_report":True}]
+  return _atlas26_old_query(q)
+
+def _atlas26_group(text:str)->str|None:
+  if _atlas26_map_text(text):
+    return ATLAS26_REPORT_GROUP
+  if (re.search(r"\bAtlas\b|아틀라스",text,re.I)
+      and ATLAS26_UPGRADE_RE.search(text)
+      and re.search(r"나무가|엠씨넥스|캠시스|삼성SDI|LG에너지솔루션|비에이치EVS",text,re.I)):
+    return ATLAS26_OFFICIAL_GROUP
+  return _atlas26_old_group(text)
+
+def _atlas26_score(item:dict)->int:
+  if item.get("atlas26_report"):return 29
+  if _atlas26_actor(item):return max(23,_atlas26_old_score(item))
+  if _atlas26_aop_reprint(item):return 0
+  text=str(item.get("title") or "")+" "+str(item.get("description") or "")
+  if _atlas26_map_text(text):return 0
+  return _atlas26_old_score(item)
+
+def _atlas26_key(item:dict)->str:
+  if item.get("atlas26_report"):
+    return hashlib.sha256(b"atlas|etnews|20261026|press-supplier-map").hexdigest()
+  actor=_atlas26_actor(item)
+  if actor:
+    t=str(item.get("title") or "")+" "+str(item.get("description") or "")
+    stage=("shipment" if re.search(r"출하|납품|shipment",t,re.I)
+           else "approval" if re.search(r"검수|승인",t,re.I)
+           else "production" if re.search(r"양산",t,re.I) else "order")
+    return hashlib.sha256(f"atlas|supplier-official|{actor.casefold()}|{stage}".encode()).hexdigest()
+  return _atlas26_old_key(item)
+
+def _atlas26_category(text:str,group:str)->str:
+  if group==ATLAS26_REPORT_GROUP:return ATLAS26_REPORT_LABEL
+  if group==ATLAS26_OFFICIAL_GROUP:return "Atlas 부품 공급사 · 공식 실물 계약·양산 단계"
+  return _atlas26_old_category(text,group)
+
+def _atlas26_meaning(cat:str)->str:
+  if cat==ATLAS26_REPORT_LABEL:
+    return ("현대모비스의 기존 공식 액추에이터 협력에서 부품별 언론 취재 공급사 "
+            "명단으로 확장됐습니다. 다만 배터리·카메라·충전 개별 계약·매출은 "
+            "공식 확인 전이며 2028년 연 3만대는 목표 생산능력입니다.")
+  if cat=="Atlas 부품 공급사 · 공식 실물 계약·양산 단계":
+    return "공급사 직접 발표에 나온 새 발주·검수·양산·초도 출하의 실적 연결을 추적합니다."
+  return _atlas26_old_meaning(cat)
+
+def _atlas26_risk(cat:str)->str:
+  if cat==ATLAS26_REPORT_LABEL:
+    return ("언론 취재 명단을 확정 납품으로 오해하는 위험. "
+            "21mm 배터리 셀 안전·열폭주, 손 카메라 동기화·품질·신뢰성, "
+            "미국 액추에이터 양산 수율 및 공급사 변경이 6~24개월 병목. "
+            "조기 지표는 고객 발주서·초도 출하·실제 월 양산대수입니다.")
+  return _atlas26_old_risk(cat)
+
+def _atlas26_verify(item:dict,group:str,text:str)->str:
+  if item.get("atlas26_report"):
+    return ("전자신문 검색본문(2026-10-26)·현대모비스 1월 공식 협력 발표 "
+            "교차검증. 현대모비스 외 부품사 공식 계약·발주·매출 미확인")
+  if _atlas26_actor(item):
+    return "공급사 공식자료 주장: 공급계약 원문과 고객사 반대편 자료 추가 확인 필요"
+  return _atlas26_old_verify(item,group,text)
+
+def _atlas26_select(items:list[dict],seen:set[str],force:bool,limit:int)->list[dict]:
+  chosen=_atlas26_old_select(items,seen,force,limit)
+  available=items if force else [x for x in items if x.get("key") not in seen]
+  for item in available:
+    if item.get("atlas26_report") and item.get("score",0)>=11:
+      if not any(v.get("key")==item.get("key") for v in chosen):
+        chosen=[item,*chosen][:limit]
+      break
+  return chosen
+
+base.query_news=_atlas26_query
+base.topic_group=_atlas26_group
+base.score=_atlas26_score
+base.key=_atlas26_key
+base.category=_atlas26_category
+base.meaning=_atlas26_meaning
+base.risk=_atlas26_risk
+base.verification=_atlas26_verify
+base.select_diverse=_atlas26_select
+for _q in (
+ ATLAS26_REPORT_QUERY,
+ '(Atlas OR 아틀라스) (나무가 OR 엠씨넥스 OR 캠시스 OR 비에이치EVS) '
+ '(공식 계약 OR 첫 출하 OR 양산 개시 OR 고객 승인)',
+ '(Atlas OR 아틀라스) (삼성SDI OR LG에너지솔루션) '
+ '(원통형 셀 OR 2170) (공급계약 OR 생산개시 OR 초도출하)',
+):
+  if _q not in base.QUERIES:base.QUERIES.append(_q)
 
 
 if __name__ == '__main__':

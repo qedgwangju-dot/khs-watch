@@ -5909,4 +5909,47 @@ assert cg=="tesla_berlin_4680_cells" and cs>=11,(cg,cs,cc)
 _r27_selected=watcher._r27_select([_r27_baseline[1][4],_r27_baseline[0][4]],set(),False,8)
 assert len(_r27_selected)==2 and len({x["key"] for x in _r27_selected})==2,_r27_selected
 
+
+# Oct-26 Atlas ETNews supplier report is distinct from confirmed contracts.
+_atlas_save_now=base.NOW
+try:
+  base.NOW=dt.datetime(2026,10,27,0,0,tzinfo=dt.timezone.utc)
+  ar=watcher.query_news(watcher.ATLAS26_REPORT_QUERY)
+  assert len(ar)==1,ar
+  ag,ass,ac,ak=classify(ar[0])
+  assert ag=="atlas_etnews_parts_report" and ass>=11 and "업계 취재" in ac,(ag,ass,ac)
+  assert "공식 확인 전" in base.meaning(ac)
+  known=[dict(ar[0],key=ak,group=ag,score=ass)]
+  assert watcher._atlas26_select(known,set(),False,8)[0]["key"]==ak
+  syndicated=make(
+    "Atlas 공급망 현대모비스·삼성SDI·나무가·엠씨넥스·캠시스",
+    "Atlas 카메라 나무가 엠씨넥스 캠시스 삼성SDI 배터리 보도 재인용",
+    "일반 언론"
+  )
+  assert classify(syndicated)[1]==0, "Reprint is not new vendor confirmation"
+  actual=make(
+    "Atlas 카메라 공급계약 체결 공식 확인",
+    "나무가 Atlas 카메라 공급계약 체결 및 구매 발주서 확정",
+    "나무가"
+  )
+  ug,us,uc,uk=classify(actual)
+  assert ug=="atlas_part_supplier_official_upgrade" and us>=11 and uk!=ak,(ug,us,uc)
+  replay=make(
+    "삼성SDI 美 AOP ESS 1GWh 2차 공급 보도",
+    "삼성SDI 미국 알파오메가 ESS 1GWh 추가 공급 1.5GWh 누적",
+    "기존 기사"
+  )
+  replay["published"]="2026-10-26T09:00:00+09:00"
+  assert classify(replay)[1]==0, "AOP October 26 repeat should stay silent"
+  distinct=make(
+    "삼성SDI 미국 다른 고객 ESS 2GWh 공급계약",
+    "삼성SDI 새로운 미국 고객과 ESS 2GWh 신규 공급계약",
+    "삼성SDI"
+  )
+  assert not watcher._atlas26_aop_reprint(distinct)
+  base.NOW=dt.datetime(2026,11,2,0,0,tzinfo=dt.timezone.utc)
+  assert watcher.query_news(watcher.ATLAS26_REPORT_QUERY)==[]
+finally:
+  base.NOW=_atlas_save_now
+
 print("Physical-AI watcher regression guards: PASS")
