@@ -1700,6 +1700,33 @@
       "telegram_core_fact": "12일 한국거래소 신규상장 기업현황을 분석한 결과 올해 1~9월 유가증권시장(코스피)과 코스닥시장 신규 상장사는 33곳으로 전년 동기 55곳보다 40% 감소했다.",
       "title": "신규 상장 40% 줄었는데 예심 승인 반등…연말 IPO '속도전' 관측"
     },
+    "core:0509be3b58f5734505444166": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
+    },
     "core:050bc3199f5ddd7655697953": {
       "first_seen_kst": "2026-10-13T01:37:36+09:00",
       "lanes": {
@@ -7044,6 +7071,26 @@
       "source_title": "론스타 ‘1682억 세금 반환’ 파기환송심 패소…法 “환급청구권은 원천징수의무자에”",
       "telegram_core_fact": "과세당국은 론스타가 국내에 고정 사업장을 두고 있다며 관련 소득에 대해 8000억원대의 세금을 부과했다.",
       "title": "론스타 ‘1682억 세금 반환’ 파기환송심 패소…法 “환급청구권은 원천징수의무자에”"
+    },
+    "core:11af088190d2760ebbda63cb": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840595",
+      "source": "뉴시스",
+      "source_body_digest": "72ab2ad278c2268bd2226e4c15783bb9440335f7af5018236c0a0d9fa6605fed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd3444fcf0003436d687ecb58fe827bca436331de28e58a408a85a2ed02d01bb",
+      "source_fact_keys": [
+        "source_fact:v1:939caee423a572357ebd3ad02200e1eceac11bb0bf6d6e295092b0ccaaf77055"
+      ],
+      "source_published_kst": "2026-10-26T09:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "대보건설, 대전 가오동1구역 재건축 수주…올해 누적 1조원 돌파",
+      "telegram_core_fact": "대보건설이 공사비 약 2107억원 대전 가오동 1구역 재건축정비사업을 수주하며 올해 누적 수주액 1조원을 돌파했다.",
+      "title": "대보건설, 대전 가오동1구역 재건축 수주…올해 누적 1조원 돌파"
     },
     "core:11c5f45011118f2b9c82b9ad": {
       "first_seen_kst": "2026-10-24T13:13:38+09:00",
@@ -23022,6 +23069,24 @@
       ],
       "source_published_kst": "2026-10-07T09:38+09:00",
       "title": "BMW 코리아, 전동화차 판매 1만대 돌파…프리미엄 수입차 첫 기록"
+    },
+    "core:34da8ea34a40dc31f06eca5e": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639940",
+      "source": "이투데이",
+      "source_body_digest": "c793255b249edbc41ea7593fc0c0df6b34bcce946db0b1dba8df0bdecdb4fda4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T09:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "경남제약, 유상증자 철회 후 신규 자금조달 검토…2027년 사업계획 조정",
+      "telegram_core_fact": "경남제약은 주주배정 유상증자 철회 이후 향후 사업 추진에 필요한 신규 자금조달 방안을 검토하고 있다고 26일 밝혔다.",
+      "title": "경남제약, 유상증자 철회 후 신규 자금조달 검토…2027년 사업계획 조정"
     },
     "core:34e4088133b2490a2a2f3bb2": {
       "first_seen_kst": "2026-10-24T00:43:35+09:00",
@@ -51539,6 +51604,24 @@
       "source_title": "신데카바이오 \"후보물질 공급\"…사업 방향 제시",
       "telegram_core_fact": "특히 개량신약과 약물재창출 분야에서는 이미 검증된 약물을 기반으로 해 개발 위험은 낮고 시장성은 높다는 점에 주목해 제약사가 곧바로 개발에 착수할 수 있는 후보물질을 공급한다는 방침이다.",
       "title": "신데카바이오 \"후보물질 공급\"…사업 방향 제시"
+    },
+    "core:7b4d234faf5d7ce4b3f67d94": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02545286645616856&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a0e1af0f4a5443f9a29bd3c46d730ba0f77e8180461e5a797a8d55a7ab1454da",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T10:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 키옥시아 차익 배당?…\"추가 주주환원 방안 28일 발표\"",
+      "telegram_core_fact": "이날 일부 매체에서 SK하이닉스가 일본 키옥시아 지분 투자로 발생한 16조원 차익을 활용해 특별배당을 추진한다는 보도가 나오자 해명 공시한 것이다.",
+      "title": "SK하이닉스, 키옥시아 차익 배당?…\"추가 주주환원 방안 28일 발표\""
     },
     "core:7b4fbf01f6e6df46f7490e66": {
       "first_seen_kst": "2026-10-23T02:21:19+09:00",
@@ -81904,6 +81987,34 @@
       "telegram_core_fact": "이형일 경제부총리 겸 재정경제부 장관은 12일 “공급망의 취약한 고리를 선제적으로 찾아 단단히 보강함으로써 외부 충격에도 흔들리지 않는 공급망을 구축하는 데 정책 역량을 집중하겠다”고 밝혔다.",
       "title": "이형일 “공급망 취약한 고리 보강”…경제안보품목 340개로 확대"
     },
+    "core:c2b09d0d2e2079ea6bbd0fd1": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
+    },
     "core:c2b5507b54fb1d41c7d914a5": {
       "first_seen_kst": "2026-10-25T12:43:25+09:00",
       "lanes": {
@@ -106499,6 +106610,24 @@
       "telegram_core_fact": "무보는 전국의 지사 네트워크를 가동해 지자체 및 지역별 수출지원기관이 공동으로 개최하는 수출지원 간담회에 지속적으로 참여하고 있다고 14일 밝혔다. 무보는 지난달 열린 '대구·경북 통상진흥기관협의회' 등 주요 지역 간담회에서 원자재 가격 상승, 환율 변동성 확대, 물류비 가중 등에 따른 현장 고충을 청취했다.",
       "title": "무보, 지역별 간담회 돌며 수출기업 현장 소통 강화"
     },
+    "core:fe4639cc54b278da260f2f81": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.hankyung.com/article/202610253146i",
+      "source": "한국경제",
+      "source_body_digest": "3a449416629a65f71de76f709e9ced536e0fedc364c26a671df8b8385409cbc5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-25T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "연매출 30% 쑥쑥…미국인 홀린 '이 즉석밥' 정체",
+      "telegram_core_fact": "햇반 즉석밥의 국내 매출 중 잡곡밥 비중은 2019년 10%대에서 지난해 30% 이상 크게 증가했다.",
+      "title": "연매출 30% 쑥쑥…미국인 홀린 '이 즉석밥' 정체"
+    },
     "core:fe4e3050fa428d0e562568df": {
       "first_seen_kst": "2026-10-08T06:42:50+09:00",
       "lanes": {
@@ -114611,6 +114740,24 @@
       "telegram_core_fact": "미용 의료기기 전문기업 클래시스가 창사 이래 처음으로 분기 매출 1000억원을 돌파한 가운데 올해 상반기 누적 기부금은 50만원에 그친 것으로 나타났다.",
       "title": "'분기 매출 1000억' 클래시스…기부금은 50만원"
     },
+    "event:4cec3db04d3be9dd9e8961b8": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02545286645616856&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a0e1af0f4a5443f9a29bd3c46d730ba0f77e8180461e5a797a8d55a7ab1454da",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T10:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 키옥시아 차익 배당?…\"추가 주주환원 방안 28일 발표\"",
+      "telegram_core_fact": "이날 일부 매체에서 SK하이닉스가 일본 키옥시아 지분 투자로 발생한 16조원 차익을 활용해 특별배당을 추진한다는 보도가 나오자 해명 공시한 것이다.",
+      "title": "SK하이닉스, 키옥시아 차익 배당?…\"추가 주주환원 방안 28일 발표\""
+    },
     "event:4d3aba300f8df5bae87f544c": {
       "first_seen_kst": "2026-10-20T10:42:42+09:00",
       "lanes": {
@@ -119764,6 +119911,24 @@
       "telegram_core_fact": "기업가치 제고(밸류업) 계획을 공시한 상장사가 760곳을 넘어섰지만 공시의 분량과 주주환원 계획의 구체성까지 기업마다 차이가 커 투자자들이 기업별 밸류업 가능성을 평가하기 쉽지 않다는 지적이 나온다.",
       "title": "밸류업 공시 제각각 … \"핵심지표 표준화해야\""
     },
+    "event:836299e139084c22d223f20d": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.hankyung.com/article/202610264590i",
+      "source": "한국경제",
+      "source_body_digest": "01d2da96d6e7a1a87015b58cf0db7f6039004aac76f67e57e4cdbc63915a13de",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "화우, '2년 연속 두 자릿수 성장' 이명수 대표 연임",
+      "telegram_core_fact": "취임 이후 2년 연속 두 자릿수 매출 증가율을 기록한 경영 성과를 인정받았다는 평가다.",
+      "title": "화우, '2년 연속 두 자릿수 성장' 이명수 대표 연임"
+    },
     "event:837c251fe9674bc02ac501c3": {
       "first_seen_kst": "2026-09-25T14:18:58+09:00",
       "lanes": {
@@ -123601,6 +123766,33 @@
       "link": "https://www.dailian.co.kr/news/view/1697609/2026-%EA%B5%AD%EA%B0%90-%EA%B8%88%EC%9C%B5%EB%8B%B9%EA%B5%AD%EA%B8%88%ED%88%AC%EC%97%85%EA%B3%84-%EC%82%BC%EC%A0%84%EB%8B%89-2026",
       "source": "데일리안",
       "title": "[2026 국감] 금융당국·금투업계, 삼전닉스 레버리지 소비자보호 뒷전?"
+    },
+    "event:adbdbae9d3df8b651fe83c99": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
     },
     "event:adc2026c34a18914ce5dd718": {
       "first_seen_kst": "2026-09-27T07:38:21+09:00",
@@ -129560,27 +129752,30 @@
     "event:ee14ca1398eb72eb9482cedb": {
       "first_seen_kst": "2026-10-26T07:17:46+09:00",
       "lanes": {
-        "live": "2026-10-26T07:17:46+09:00"
+        "live": "2026-10-26T10:56:52+09:00"
       },
-      "last_seen_kst": "2026-10-26T07:17:46+09:00",
-      "link": "https://www.fnnews.com/news/202610260634595255",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "fa16afd0f0b002e6e3fa235c845835fe6a2f14a59c67e250cad986194060e79d",
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:908c9bdf0cb031a62e021ff32e4d108da59daf8d9c50507ee661f1eeeda2cf16",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
       "source_fact_keys": [
-        "source_fact:v1:1635ad05ea5496765646adcb3c58dcb6a3441826a9d62c3925cd42e6832cc9c9",
-        "source_fact:v1:2bb74c2e44dbb3e0d4c4e7f77023c1d424e4887258b0b61d96ea261aa31b5bbc",
-        "source_fact:v1:4a1cb4f9e4fde06f0a48f3f036f3b7124677ea93596321b1f385c4f74f111653",
-        "source_fact:v1:d82572b141d87b47206871ea2bfcc08bdff58c6b166f42f3877bc8e612762fe6",
-        "source_fact:v1:e544c74e1b562f4181651feb0c6a74ff49d11f38c4195391cdb6f1ada6b000ce",
-        "source_fact:v1:f48bed454f690856c5787304a808463d57cfa7ae648c856269b8812f9c042144"
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
       ],
-      "source_published_kst": "2026-10-26T06:35+09:00",
+      "source_published_kst": "2026-10-26T09:20+09:00",
       "source_supply_terms": {},
-      "source_title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어",
-      "telegram_core_fact": "국내 증시의 급격한 조정으로 투자 대기 자금이 감소하는 사이 은행들이 최고 연 4%에 달하는 특판 상품으로 예금 확보에 나선 영향으로 풀이된다. 국내 5대 은행의 정기예금 잔액이 이달 들어 11조 원 넘게 늘어나며 1017조 원을 돌파했다.",
-      "title": "증시 조정에 예금 '밀물'…5대 은행 정기예금 한 달 새 11조 늘어"
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
     },
     "event:ee2445b0912c043ab1270e54": {
       "first_seen_kst": "2026-10-05T15:39:46+09:00",
@@ -157446,6 +157641,33 @@
       "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
       "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
     },
+    "fact:3b28787619cef0e4349ad3d4": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
+    },
     "fact:3b32c124142fe03790804524": {
       "first_seen_kst": "2026-10-20T13:30:14+09:00",
       "lanes": {
@@ -157529,6 +157751,34 @@
       "source_title": "\"미래기금으로 한전·관사·공연관람·농어촌 기본소득 지원\"",
       "telegram_core_fact": "반도체 산업 호황에 따른 추가 세수를 미래 세대를 위한 투자 재원으로 활용하는 정부의 미래대응기금의 사용 계획에 한국전력 지원 등의 내용이 포함돼 있다고 국회 재정경제기획위원회 소속 국민의힘 박수영 의원이 7일 밝혔다.",
       "title": "\"미래기금으로 한전·관사·공연관람·농어촌 기본소득 지원\""
+    },
+    "fact:3b4c14bfca23770fb84785b5": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
     },
     "fact:3b5e552bb2c97ec9fca2f337": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
@@ -173787,6 +174037,26 @@
       "source_title": "삼전 D램·낸드플래시 이어 SK하이닉스도 우주검증",
       "telegram_core_fact": "SK하이닉스의 D램과 낸드플래시를 비롯해 인세라솔루션의 고속 정밀 조정 거울, 모멘텀스페이스의 반작용휠, KAIST(한국과학기술원)의 자세결정 및 시스템 모듈, 코스모비의 전기추력기용 1A급 할로우음극, 인터그래비티 테크놀로지스의 궤도 수송선 항전 장비 등이 실제 우주환경에서 성능을 검증한다.",
       "title": "삼전 D램·낸드플래시 이어 SK하이닉스도 우주검증"
+    },
+    "fact:61ad77f2d4611e4610a49b8e": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840595",
+      "source": "뉴시스",
+      "source_body_digest": "72ab2ad278c2268bd2226e4c15783bb9440335f7af5018236c0a0d9fa6605fed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd3444fcf0003436d687ecb58fe827bca436331de28e58a408a85a2ed02d01bb",
+      "source_fact_keys": [
+        "source_fact:v1:939caee423a572357ebd3ad02200e1eceac11bb0bf6d6e295092b0ccaaf77055"
+      ],
+      "source_published_kst": "2026-10-26T09:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "대보건설, 대전 가오동1구역 재건축 수주…올해 누적 1조원 돌파",
+      "telegram_core_fact": "대보건설이 공사비 약 2107억원 대전 가오동 1구역 재건축정비사업을 수주하며 올해 누적 수주액 1조원을 돌파했다.",
+      "title": "대보건설, 대전 가오동1구역 재건축 수주…올해 누적 1조원 돌파"
     },
     "fact:61c022a1d5e7c2df0517df5f": {
       "first_seen_kst": "2026-10-21T16:09:03+09:00",
@@ -278040,6 +278310,33 @@
       "telegram_core_fact": "코스피가 5.22% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
       "title": "[속보]코스피 급등에 매수 사이드카…삼전닉스 6%대 상승"
     },
+    "link:3111e765b14cb479525f22dd": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
+    },
     "link:3129fca71836c064bd098109": {
       "first_seen_kst": "2026-10-18T08:31:39+09:00",
       "lanes": {
@@ -301490,6 +301787,26 @@
       "source_title": "청년주택드림 청약통장 가입 소득기준 5천만→7천만원 완화 | 연합뉴스",
       "telegram_core_fact": "청년주택드림 청약통장에 가입할 수 있는 청년의 연 소득기준이 기존 5천만원에서 7천만원으로 완화된다. 국토교통부는 청년층의 청약통장 가입 기회를 확대하기 위해 이달 중 관련 고시를 개정해 청년주택드림 청약통장의 소득기준을 완화할 계획이라고 12일 밝혔다.",
       "title": "청년주택드림 청약통장 가입 소득기준 5천만→7천만원 완화 | 연합뉴스"
+    },
+    "link:5938e1acd2e809dcb7b2ed9c": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840595",
+      "source": "뉴시스",
+      "source_body_digest": "72ab2ad278c2268bd2226e4c15783bb9440335f7af5018236c0a0d9fa6605fed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd3444fcf0003436d687ecb58fe827bca436331de28e58a408a85a2ed02d01bb",
+      "source_fact_keys": [
+        "source_fact:v1:939caee423a572357ebd3ad02200e1eceac11bb0bf6d6e295092b0ccaaf77055"
+      ],
+      "source_published_kst": "2026-10-26T09:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "대보건설, 대전 가오동1구역 재건축 수주…올해 누적 1조원 돌파",
+      "telegram_core_fact": "대보건설이 공사비 약 2107억원 대전 가오동 1구역 재건축정비사업을 수주하며 올해 누적 수주액 1조원을 돌파했다.",
+      "title": "대보건설, 대전 가오동1구역 재건축 수주…올해 누적 1조원 돌파"
     },
     "link:59491a99d014c28e1a29991c": {
       "first_seen_kst": "2026-10-19T08:00:35+09:00",
@@ -338414,6 +338731,24 @@
       "telegram_core_fact": "김동원 KB증권 리서치본부장은 이날 보고서를 통해 \"메모리 경쟁력은 단순 신공정 개발이 아닌 안정적인 대량 양산과 수율 확보, 고객사 인증 능력으로 결정된다\"며 \"중국의 기술 추격에 대한 시장의 우려는 과도하다\"고 분석했다.",
       "title": "\"中창신메모리 위협, 종이호랑이 수준\"…아직 삼전·닉스 추월 어려운 이유는"
     },
+    "link:98efa283bf63b6a296530c7c": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02545286645616856&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a0e1af0f4a5443f9a29bd3c46d730ba0f77e8180461e5a797a8d55a7ab1454da",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T10:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 키옥시아 차익 배당?…\"추가 주주환원 방안 28일 발표\"",
+      "telegram_core_fact": "이날 일부 매체에서 SK하이닉스가 일본 키옥시아 지분 투자로 발생한 16조원 차익을 활용해 특별배당을 추진한다는 보도가 나오자 해명 공시한 것이다.",
+      "title": "SK하이닉스, 키옥시아 차익 배당?…\"추가 주주환원 방안 28일 발표\""
+    },
     "link:98f34fefb7203c2b2fade838": {
       "first_seen_kst": "2026-09-19T08:53:16+09:00",
       "lanes": {
@@ -345200,6 +345535,24 @@
       "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
       "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
       "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
+    },
+    "link:a3f2576e06bf2378b406cec6": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.hankyung.com/article/202610253146i",
+      "source": "한국경제",
+      "source_body_digest": "3a449416629a65f71de76f709e9ced536e0fedc364c26a671df8b8385409cbc5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-25T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "연매출 30% 쑥쑥…미국인 홀린 '이 즉석밥' 정체",
+      "telegram_core_fact": "햇반 즉석밥의 국내 매출 중 잡곡밥 비중은 2019년 10%대에서 지난해 30% 이상 크게 증가했다.",
+      "title": "연매출 30% 쑥쑥…미국인 홀린 '이 즉석밥' 정체"
     },
     "link:a3fcd3c5a0b038a8eb947ed9": {
       "first_seen_kst": "2026-09-29T08:30:42+09:00",
@@ -354514,6 +354867,24 @@
       "link": "https://www.fnnews.com/news/202609230919540789",
       "source": "파이낸셜뉴스",
       "title": "수익률·개인 매수·연금 활용까지…한투운용, 추석 ETF 4종 제안"
+    },
+    "link:b418a77506370653643b7217": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02545286645616856&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a0e1af0f4a5443f9a29bd3c46d730ba0f77e8180461e5a797a8d55a7ab1454da",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T10:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 키옥시아 차익 배당?…\"추가 주주환원 방안 28일 발표\"",
+      "telegram_core_fact": "이날 일부 매체에서 SK하이닉스가 일본 키옥시아 지분 투자로 발생한 16조원 차익을 활용해 특별배당을 추진한다는 보도가 나오자 해명 공시한 것이다.",
+      "title": "SK하이닉스, 키옥시아 차익 배당?…\"추가 주주환원 방안 28일 발표\""
     },
     "link:b4196614f0c21259aa0add12": {
       "first_seen_kst": "2026-10-12T16:29:45+09:00",
@@ -378734,6 +379105,24 @@
       "telegram_core_fact": "채용 분야는 ▲원자력·추진체계 연동 설계 ▲배관 배치 및 응력해석 엔지니어링 ▲계측제어(I&C) 연동설계 ▲원자력 인허가 및 안전규제 ▲원자력 품질 등이다.",
       "title": "한화오션, 핵추진잠수함 개발체계 구축 시동…5개 분야 경력 채용"
     },
+    "link:de887ba389cd8684323eb75c": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.hankyung.com/article/202610264590i",
+      "source": "한국경제",
+      "source_body_digest": "01d2da96d6e7a1a87015b58cf0db7f6039004aac76f67e57e4cdbc63915a13de",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "화우, '2년 연속 두 자릿수 성장' 이명수 대표 연임",
+      "telegram_core_fact": "취임 이후 2년 연속 두 자릿수 매출 증가율을 기록한 경영 성과를 인정받았다는 평가다.",
+      "title": "화우, '2년 연속 두 자릿수 성장' 이명수 대표 연임"
+    },
     "link:de8ab06a196ff1c6a6d7e59f": {
       "first_seen_kst": "2026-10-22T11:13:08+09:00",
       "lanes": {
@@ -382276,6 +382665,24 @@
       "link": "https://www.asiae.co.kr/article/2026093014173142269",
       "source": "아시아경제",
       "title": "신규 상장주 움직임에 관심…최대 4배까지 활용 가능한 기회 잡으려면"
+    },
+    "link:e4f6ee55a694e66471babf2a": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639940",
+      "source": "이투데이",
+      "source_body_digest": "c793255b249edbc41ea7593fc0c0df6b34bcce946db0b1dba8df0bdecdb4fda4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T09:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "경남제약, 유상증자 철회 후 신규 자금조달 검토…2027년 사업계획 조정",
+      "telegram_core_fact": "경남제약은 주주배정 유상증자 철회 이후 향후 사업 추진에 필요한 신규 자금조달 방안을 검토하고 있다고 26일 밝혔다.",
+      "title": "경남제약, 유상증자 철회 후 신규 자금조달 검토…2027년 사업계획 조정"
     },
     "link:e4f821e36eff1503425607a3": {
       "first_seen_kst": "2026-09-27T03:23:09+09:00",
@@ -392801,6 +393208,34 @@
       ],
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
+    },
+    "link:f7f624adfb068cd0d29e507c": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
     },
     "link:f807b720754d6cb252f10e34": {
       "first_seen_kst": "2026-10-22T09:39:54+09:00",
@@ -417296,6 +417731,26 @@
       "telegram_core_fact": "제품 인허가와 공급 계약을 초도 판매에 그치지 않고, 반복 주문과 누적 매출로 연결해 해외 매출의 안정성을 높이는 한편 ODM 제품군과 공급 지역도 점진적으로 확대해 나갈 방침이다.",
       "title": "파인메딕스, 英 크레오 메디컬과 3년간 210만달러 규모 ODM 계약 체결"
     },
+    "original:231df6cd2835a8759079ad48": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840595",
+      "source": "뉴시스",
+      "source_body_digest": "72ab2ad278c2268bd2226e4c15783bb9440335f7af5018236c0a0d9fa6605fed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd3444fcf0003436d687ecb58fe827bca436331de28e58a408a85a2ed02d01bb",
+      "source_fact_keys": [
+        "source_fact:v1:939caee423a572357ebd3ad02200e1eceac11bb0bf6d6e295092b0ccaaf77055"
+      ],
+      "source_published_kst": "2026-10-26T09:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "대보건설, 대전 가오동1구역 재건축 수주…올해 누적 1조원 돌파",
+      "telegram_core_fact": "대보건설이 공사비 약 2107억원 대전 가오동 1구역 재건축정비사업을 수주하며 올해 누적 수주액 1조원을 돌파했다.",
+      "title": "대보건설, 대전 가오동1구역 재건축 수주…올해 누적 1조원 돌파"
+    },
     "original:23206b612eab7e9741074a58": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -426894,6 +427349,24 @@
       "source_title": "미국, ICC에 대규모 제재…“위협 멈추지 않으면 끝장”",
       "telegram_core_fact": "도널드 트럼프 미국 행정부가 9일(현지시간) 국제형사재판소(ICC)에 대한 대규모 제재를 발표했다.",
       "title": "미국, ICC에 대규모 제재…“위협 멈추지 않으면 끝장”"
+    },
+    "original:338a9a3b107fdc39ee4025e1": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.hankyung.com/article/202610253146i",
+      "source": "한국경제",
+      "source_body_digest": "3a449416629a65f71de76f709e9ced536e0fedc364c26a671df8b8385409cbc5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-25T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "연매출 30% 쑥쑥…미국인 홀린 '이 즉석밥' 정체",
+      "telegram_core_fact": "햇반 즉석밥의 국내 매출 중 잡곡밥 비중은 2019년 10%대에서 지난해 30% 이상 크게 증가했다.",
+      "title": "연매출 30% 쑥쑥…미국인 홀린 '이 즉석밥' 정체"
     },
     "original:338cbebfe4f096cf89245c2c": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
@@ -449798,6 +450271,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261001171200003",
       "source": "연합뉴스",
       "title": "한전 사장, 거제 수해지역·도서지역 전력공급 현장 점검 | 연합뉴스"
+    },
+    "original:5a50f6e1c67334c376903b82": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02545286645616856&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a0e1af0f4a5443f9a29bd3c46d730ba0f77e8180461e5a797a8d55a7ab1454da",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T10:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 키옥시아 차익 배당?…\"추가 주주환원 방안 28일 발표\"",
+      "telegram_core_fact": "이날 일부 매체에서 SK하이닉스가 일본 키옥시아 지분 투자로 발생한 16조원 차익을 활용해 특별배당을 추진한다는 보도가 나오자 해명 공시한 것이다.",
+      "title": "SK하이닉스, 키옥시아 차익 배당?…\"추가 주주환원 방안 28일 발표\""
     },
     "original:5a58bfdc25c27e94d5dff9b6": {
       "first_seen_kst": "2026-09-22T02:48:50+09:00",
@@ -485350,6 +485841,33 @@
       "source": "뉴시스",
       "title": "[주간 뉴욕증시] 마이크론 실적·美고용 주목…AI 수요·금리 향방 가늠"
     },
+    "original:982b94d67b41d8c37d6ac662": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
+    },
     "original:9838bfc9a4a29fd237daef98": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
       "lanes": {
@@ -497163,6 +497681,24 @@
       "link": "https://biz.heraldcorp.com/article/10892565",
       "source": "헤럴드경제",
       "title": "“삼전닉스, CAPEX 규모 믿어도 된다”…AI 투자 내년 1.2조달러 [헤럴드머니페스타2026]"
+    },
+    "original:ac3eddbbd8b504b656504ef7": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639940",
+      "source": "이투데이",
+      "source_body_digest": "c793255b249edbc41ea7593fc0c0df6b34bcce946db0b1dba8df0bdecdb4fda4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T09:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "경남제약, 유상증자 철회 후 신규 자금조달 검토…2027년 사업계획 조정",
+      "telegram_core_fact": "경남제약은 주주배정 유상증자 철회 이후 향후 사업 추진에 필요한 신규 자금조달 방안을 검토하고 있다고 26일 밝혔다.",
+      "title": "경남제약, 유상증자 철회 후 신규 자금조달 검토…2027년 사업계획 조정"
     },
     "original:ac478d9a67ca0c37c2a52237": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
@@ -519160,6 +519696,34 @@
       "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
       "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
     },
+    "original:d425381327063191ad064857": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
+    },
     "original:d425df9d1cac2a58f5198956": {
       "first_seen_kst": "2026-10-10T16:38:23+09:00",
       "lanes": {
@@ -539330,6 +539894,24 @@
       "source_title": "\"코인 과세 폐지·유예하자\" 여야 한목소리⋯ 국세청장 공백속 과세고시 유보",
       "telegram_core_fact": "과세 시행 주체인 국세청이 수장 공백 속에 과세 기준이 되는 가격 고시를 유보하는 발언을 하면서 공정과세 체계가 충분히 마련됐는지에 대한 물음표가 제기된다.",
       "title": "\"코인 과세 폐지·유예하자\" 여야 한목소리⋯ 국세청장 공백속 과세고시 유보"
+    },
+    "original:f833e9503a8a3dfb69a00cec": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.hankyung.com/article/202610264590i",
+      "source": "한국경제",
+      "source_body_digest": "01d2da96d6e7a1a87015b58cf0db7f6039004aac76f67e57e4cdbc63915a13de",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "화우, '2년 연속 두 자릿수 성장' 이명수 대표 연임",
+      "telegram_core_fact": "취임 이후 2년 연속 두 자릿수 매출 증가율을 기록한 경영 성과를 인정받았다는 평가다.",
+      "title": "화우, '2년 연속 두 자릿수 성장' 이명수 대표 연임"
     },
     "original:f8467d6d63155900762880cb": {
       "first_seen_kst": "2026-10-13T02:50:52+09:00",
@@ -562258,6 +562840,33 @@
       "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
       "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
       "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
+    },
+    "source_fact:07fd0771211bb943265578f6": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
     },
     "source_fact:08001e56f6b5a44f61ad1d39": {
       "first_seen_kst": "2026-10-22T14:38:13+09:00",
@@ -628870,6 +629479,26 @@
       "telegram_core_fact": "최은옥 교육부 차관은 “대학이 자율적인 구조개선을 통해 특성화 분야에 역량을 집중해 학생들에게 수준 높은 교육을 제공할 수 있는 기회가 될 것”이라며 “사립대학이 특성화를 추진해 경쟁력을 강화할 수 있도록 재정 지원과 규제 완화로 뒷받침하겠다”고 말했다.",
       "title": "교육부, 반도체·피지컬AI 특성화 선도대학 지원…5년간 6000억"
     },
+    "source_fact:2380d1024c759207b3a83e48": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840595",
+      "source": "뉴시스",
+      "source_body_digest": "72ab2ad278c2268bd2226e4c15783bb9440335f7af5018236c0a0d9fa6605fed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd3444fcf0003436d687ecb58fe827bca436331de28e58a408a85a2ed02d01bb",
+      "source_fact_keys": [
+        "source_fact:v1:939caee423a572357ebd3ad02200e1eceac11bb0bf6d6e295092b0ccaaf77055"
+      ],
+      "source_published_kst": "2026-10-26T09:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "대보건설, 대전 가오동1구역 재건축 수주…올해 누적 1조원 돌파",
+      "telegram_core_fact": "대보건설이 공사비 약 2107억원 대전 가오동 1구역 재건축정비사업을 수주하며 올해 누적 수주액 1조원을 돌파했다.",
+      "title": "대보건설, 대전 가오동1구역 재건축 수주…올해 누적 1조원 돌파"
+    },
     "source_fact:238362c7985e12f7367fd317": {
       "first_seen_kst": "2026-10-25T17:53:48+09:00",
       "lanes": {
@@ -650804,6 +651433,33 @@
       "telegram_core_fact": "한 정유업계 관계자는 \"경유를 더 생산하려면 원유를 더 투입해야 하고, 그 과정에서 휘발유와 등유 등 다른 제품도 함께 생산된다\"며 \"경유뿐 아니라 휘발유·등유의 수출 제한도 함께 완화하는 것이 필요하다\"고 말했다.",
       "title": "국내 경유 판매 7.6% 줄자…정부, 수출 빗장 먼저 푼다"
     },
+    "source_fact:2bf863e267df5eaf145f6f36": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
+    },
     "source_fact:2bf87ff2173893f6c7b6c5fd": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
@@ -658773,6 +659429,34 @@
       "telegram_core_fact": "스페이스X가 20일(현지시간) 발표한 3분기 실적에서 인공지능(AI) 컴퓨팅 수요가 공급을 압도하고 있다며 신규 컴퓨팅 투자금을 1년 안에 회수할 수 있다고 밝혔다.",
       "title": "스페이스X “AI 컴퓨터 수요가 공급 압도…신규 컴퓨팅 투자금 1년내 회수”"
     },
+    "source_fact:2f60d465b6c5377679e8b13c": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
+    },
     "source_fact:2f65c93c2944f27067544974": {
       "first_seen_kst": "2026-10-20T12:12:43+09:00",
       "lanes": {
@@ -665565,6 +666249,34 @@
       "source_title": "KB證 \"마이크론 파업하면 삼전·닉스 반사이익…가격결정력 강화\"",
       "telegram_core_fact": "\"향후 파업 규모와 실제 생산 감소 여부는 메모리 수급에 직접적 영향을 미치는 핵심 변수로 판단된다\"며 \"메모리 공급 부족이 지속되는 상황에서 마이크론의 생산 차질이 현실화된다면 삼성전자와 SK하이닉스의 가격 결정력과 공급 협상력은 한층 강화될 것\"이라고 전망했다.",
       "title": "KB證 \"마이크론 파업하면 삼전·닉스 반사이익…가격결정력 강화\""
+    },
+    "source_fact:31eabf5e48eecf42e58125c3": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
     },
     "source_fact:31ef1aa361e237ae4246d59c": {
       "first_seen_kst": "2026-10-20T22:10:05+09:00",
@@ -693223,6 +693935,34 @@
       "telegram_core_fact": "정부가 경쟁입찰을 통해 선정한 액화천연가스(LNG) 열병합발전소 두 곳이 약 2년이 지나도록 제대로 착공과정을 밟지 못한 것으로 파악됐다.",
       "title": "[단독] 전력 수요 느는데…낙찰된 LNG 열병합발전소 2년째 삽도 못 떠"
     },
+    "source_fact:3dd12d480c0258d04cac129a": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
+    },
     "source_fact:3dd17fc9c46403b9ebd85ecb": {
       "first_seen_kst": "2026-10-19T09:33:44+09:00",
       "lanes": {
@@ -718897,6 +719637,34 @@
       "telegram_core_fact": "글로브 라이프(GL)는 9월 30일 종료된 3분기 일반회계기준(GAAP) 총수익이 15억9594만 달러로 전년비 5.5% 증가했고, GAAP 희석 주당순이익은 4.62달러로 전년 동기(4.73달러)보다 2.3% 감소했다고 10월 21일 발표했다.",
       "title": "글로브 라이프, 3분기 총수익 16억 달러..전년비 5.5% 증가"
     },
+    "source_fact:4815202db501821c5a3adcf8": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
+    },
     "source_fact:481a23590a618906fffa2e6e": {
       "first_seen_kst": "2026-10-17T06:31:57+09:00",
       "lanes": {
@@ -741445,6 +742213,34 @@
       ],
       "source_published_kst": "2026-10-06T09:01+09:00",
       "title": "“코스피, 11월부터 연말 랠리…외국인 돌아온다”"
+    },
+    "source_fact:5144b413e428e676fc284557": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
     },
     "source_fact:514545a7d89143ccb6d6ae07": {
       "first_seen_kst": "2026-10-14T17:21:42+09:00",
@@ -777462,6 +778258,34 @@
       "source_published_kst": "2026-10-06T09:55+09:00",
       "title": "어기구 \"5년간 2천억원 썼는데 연간 조류 정전 2배로\" | 연합뉴스"
     },
+    "source_fact:5f8e3b2da04a04744b8bf860": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
+    },
     "source_fact:5f91f642a35dc7e8d7476d06": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -788479,6 +789303,33 @@
       "source_title": "커뮤니티 트러스트 뱅코프, 3분기 희석 EPS 1.43달러..전년비 8.3% 증가",
       "telegram_core_fact": "커뮤니티 트러스트 뱅코프(CTBI)는 올해 3분기(7~9월) 희석 주당순이익이 1.43달러로 전년 동기 1.32달러보다 8.3% 늘었고, 순이익은 2589만 달러로 전년 동기 2391만 달러 대비 8.3% 증가했다고 10월 21일 발표했다.",
       "title": "커뮤니티 트러스트 뱅코프, 3분기 희석 EPS 1.43달러..전년비 8.3% 증가"
+    },
+    "source_fact:6457980c420d4bcb1f9113f9": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
     },
     "source_fact:6457d5d2104f24ca0ef47e88": {
       "first_seen_kst": "2026-10-20T11:16:24+09:00",
@@ -852957,6 +853808,33 @@
       "telegram_core_fact": "이 증권사 이진명 연구원은 삼성SDI의 올해 3분기 영업이익이 2638억 원을 기록해 시장 컨센서스인 1654억 원을 크게 웃돌 것으로 추정했다.",
       "title": "삼성SDI, ESS 성장 따른 3분기 호실적 전망에 강세"
     },
+    "source_fact:7f1bdb2ee0c13bea9c713e62": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
+    },
     "source_fact:7f1fa817f2b2dfb5042cfc74": {
       "first_seen_kst": "2026-10-26T08:28:58+09:00",
       "lanes": {
@@ -888855,6 +889733,33 @@
       "source_title": "인튜이티브 서지컬, 3분기 매출 30억4900만 달러..전년비 22% 증가",
       "telegram_core_fact": "인튜이티브 서지컬(ISRG)은 3분기 매출액이 30억4870만 달러로 전년비 22% 증가했고, Non-GAAP 희석 주당순이익은 3.00달러로 전년 동기(2.40달러)보다 25% 늘었다고 10월 20일 발표했다.",
       "title": "인튜이티브 서지컬, 3분기 매출 30억4900만 달러..전년비 22% 증가"
+    },
+    "source_fact:8ed5d6adc580961a02eb4cbf": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
     },
     "source_fact:8ed5dfd2216282dbd7a5525a": {
       "first_seen_kst": "2026-10-24T10:38:38+09:00",
@@ -951719,6 +952624,33 @@
       "source_published_kst": "2026-10-07T06:26+09:00",
       "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
     },
+    "source_fact:a7e6042aed57961bb34fc3ec": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
+    },
     "source_fact:a7e83d20f5cd6fa95fd9149e": {
       "first_seen_kst": "2026-10-15T07:08:31+09:00",
       "lanes": {
@@ -957289,6 +958221,33 @@
       "source_title": "우리은행, SK하이닉스 협력사에 7500억원 금융지원…반도체 공급망 강화",
       "telegram_core_fact": "20배인 7500억원 금융지원을 진행하며, 약 124억원 상당의 보증료도 함께 지원해 기업의 금융 부담을 낮춘다. 우리은행이 19일 용인 반도체클러스터에서 SK하이닉스, 한국무역보험공사, 주요 시중은행과 '반도체 산업 수출공급망 강화를 위한 금융지원 업무협약'을 체결하고 SK하이닉스 협력기업 지원에 나선다.",
       "title": "우리은행, SK하이닉스 협력사에 7500억원 금융지원…반도체 공급망 강화"
+    },
+    "source_fact:aa871979dbfad3d502c19502": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
     },
     "source_fact:aa89c99cedd21c976951e931": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -1031623,6 +1032582,33 @@
       "source_title": "\"솔리다임 상장 철회했는데 20조는?\"…하이닉스 '플랜B' 뭐길래",
       "telegram_core_fact": "상장 추진 소식이 전해진 이후 SK하이닉스 주가는 급락세를 타 이달 들어 지난달 말 대비 30%가량 폭락했다.",
       "title": "\"솔리다임 상장 철회했는데 20조는?\"…하이닉스 '플랜B' 뭐길래"
+    },
+    "source_fact:c88e9aca8a5a883d6086a2ae": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
     },
     "source_fact:c893c4df416384465a6d0073": {
       "first_seen_kst": "2026-10-19T21:40:31+09:00",
@@ -1111038,6 +1112024,34 @@
       "telegram_core_fact": "두나무는 네이버 종속회사인 네이버파이낸셜과의 주식교환일을 올해 12월 31일에서 내년 3월 31일로 변경했다고 7일 공시했다. 네이버파이낸셜이 두나무를 완전 자회사로 편입하기 위한 포괄적 주식교환 일정이 내년 3월로 다시 미뤄졌다.",
       "title": "네이버파이낸셜·두나무 주식교환 또다시 연기…“내년 3월에 시행”"
     },
+    "source_fact:e961e5671b7e0a4b5648856a": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
+    },
     "source_fact:e9678f1453e92f0896d6b1c8": {
       "first_seen_kst": "2026-10-22T22:04:33+09:00",
       "lanes": {
@@ -1142470,6 +1143484,34 @@
       "telegram_core_fact": "운전자 의무 규정을 완화하고 차량 운행허가 절차를 줄여 내년부터 실증도시에 자율주행차 3000대 이상을 투입한다.",
       "title": "무인 로보택시 상용화 속도…내년 실증차 3000대 투입"
     },
+    "source_fact:f69c5c884ea201d3e1cff6de": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
+    },
     "source_fact:f69ca5fa2cae3c2f87db2791": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
       "lanes": {
@@ -1161867,6 +1162909,34 @@
       "source_title": "\"SK하이닉스, HBM·범용 메모리 동반 호조..내년도 성장\"-유진證",
       "telegram_core_fact": "실적 개선의 핵심은 메모리 가격으로, 유진투자증권은 3·4분기 D램의 평균판매가격이 전 분기 대비 20%, 출하량은 저장용량 기준으로 12% 증가할 것으로 예상했다.",
       "title": "\"SK하이닉스, HBM·범용 메모리 동반 호조..내년도 성장\"-유진證"
+    },
+    "source_fact:fef195d426195cc4d987fc2c": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
     },
     "source_fact:fef27a4bfc7a70c5f75c94e8": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -1184290,6 +1185360,26 @@
       "telegram_core_fact": "제품 인허가와 공급 계약을 초도 판매에 그치지 않고, 반복 주문과 누적 매출로 연결해 해외 매출의 안정성을 높이는 한편 ODM 제품군과 공급 지역도 점진적으로 확대해 나갈 방침이다.",
       "title": "파인메딕스, 英 크레오 메디컬과 3년간 210만달러 규모 ODM 계약 체결"
     },
+    "title:231df6cd2835a8759079ad48": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003840595",
+      "source": "뉴시스",
+      "source_body_digest": "72ab2ad278c2268bd2226e4c15783bb9440335f7af5018236c0a0d9fa6605fed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd3444fcf0003436d687ecb58fe827bca436331de28e58a408a85a2ed02d01bb",
+      "source_fact_keys": [
+        "source_fact:v1:939caee423a572357ebd3ad02200e1eceac11bb0bf6d6e295092b0ccaaf77055"
+      ],
+      "source_published_kst": "2026-10-26T09:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "대보건설, 대전 가오동1구역 재건축 수주…올해 누적 1조원 돌파",
+      "telegram_core_fact": "대보건설이 공사비 약 2107억원 대전 가오동 1구역 재건축정비사업을 수주하며 올해 누적 수주액 1조원을 돌파했다.",
+      "title": "대보건설, 대전 가오동1구역 재건축 수주…올해 누적 1조원 돌파"
+    },
     "title:23206b612eab7e9741074a58": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -1194073,6 +1195163,24 @@
       "source_title": "미국, ICC에 대규모 제재…“위협 멈추지 않으면 끝장”",
       "telegram_core_fact": "도널드 트럼프 미국 행정부가 9일(현지시간) 국제형사재판소(ICC)에 대한 대규모 제재를 발표했다.",
       "title": "미국, ICC에 대규모 제재…“위협 멈추지 않으면 끝장”"
+    },
+    "title:338a9a3b107fdc39ee4025e1": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.hankyung.com/article/202610253146i",
+      "source": "한국경제",
+      "source_body_digest": "3a449416629a65f71de76f709e9ced536e0fedc364c26a671df8b8385409cbc5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-25T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "연매출 30% 쑥쑥…미국인 홀린 '이 즉석밥' 정체",
+      "telegram_core_fact": "햇반 즉석밥의 국내 매출 중 잡곡밥 비중은 2019년 10%대에서 지난해 30% 이상 크게 증가했다.",
+      "title": "연매출 30% 쑥쑥…미국인 홀린 '이 즉석밥' 정체"
     },
     "title:338cbebfe4f096cf89245c2c": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
@@ -1217442,6 +1218550,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261001171200003",
       "source": "연합뉴스",
       "title": "한전 사장, 거제 수해지역·도서지역 전력공급 현장 점검 | 연합뉴스"
+    },
+    "title:5a50f6e1c67334c376903b82": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02545286645616856&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a0e1af0f4a5443f9a29bd3c46d730ba0f77e8180461e5a797a8d55a7ab1454da",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T10:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 키옥시아 차익 배당?…\"추가 주주환원 방안 28일 발표\"",
+      "telegram_core_fact": "이날 일부 매체에서 SK하이닉스가 일본 키옥시아 지분 투자로 발생한 16조원 차익을 활용해 특별배당을 추진한다는 보도가 나오자 해명 공시한 것이다.",
+      "title": "SK하이닉스, 키옥시아 차익 배당?…\"추가 주주환원 방안 28일 발표\""
     },
     "title:5a58bfdc25c27e94d5dff9b6": {
       "first_seen_kst": "2026-09-22T02:48:50+09:00",
@@ -1253710,6 +1254836,33 @@
       "source": "뉴시스",
       "title": "[주간 뉴욕증시] 마이크론 실적·美고용 주목…AI 수요·금리 향방 가늠"
     },
+    "title:982b94d67b41d8c37d6ac662": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.fnnews.com/news/202610260602536496",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "8b62b0295ea5c1aa15a3ef11309b123bf73892186799f2fda30cee487a943c97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a8714b5eee3c013b3c6a5b91079f9e7f2f12ef137f7fb0519e744b458fc2578",
+      "source_fact_keys": [
+        "source_fact:v1:0edf8f0f71770e533e6a1744eea7ff975b993e000cfb806e0dd6d38389a88319",
+        "source_fact:v1:1058e925c9330a2a522094ecd8ec3998c4dea8253e03b5fe7fba3e218c2e8eac",
+        "source_fact:v1:3745efcb1ba5e3ecb61766c8b0197b00fd826aea72a1189a22566e1d29c1da14",
+        "source_fact:v1:5248bcd9c448792646b3418d5309a7b53a7d45a883a65909c891fc24fb8e61b6",
+        "source_fact:v1:528f7bdcea666c3fb9b3c94484ca2ca5f78090c64a3713e65a9731cab036f699",
+        "source_fact:v1:556b0375de325666801b143dae6a8e61706640d36ce6ac610868be8f478a89d9",
+        "source_fact:v1:683ab51b3aa9b0d9467b7678a5deb133f9dfe21776f6eb367f042e644d82863b",
+        "source_fact:v1:761c97cf5bf6b3469830da121398e28e5dc1ff970efd563c6f4426a3e7a5f013"
+      ],
+      "source_published_kst": "2026-10-26T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차",
+      "telegram_core_fact": "업계 관계자는 \"3분기에는 신제품 공급이 늘었지만 환율 하락에 따른 원가 부담으로 수익성 개선이 제한됐다\"며 \"4분기에는 낮아진 환율에 매입한 원재료가 반영되면서 비용 부담이 점차 줄어들 것으로 보인다\"고 말했다.",
+      "title": "삼성전기 'AI 훈풍'·LG이노텍 '환율 역풍'…3분기 실적 온도 차"
+    },
     "title:9838bfc9a4a29fd237daef98": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
       "lanes": {
@@ -1265847,6 +1267000,24 @@
       "link": "https://biz.heraldcorp.com/article/10892565",
       "source": "헤럴드경제",
       "title": "“삼전닉스, CAPEX 규모 믿어도 된다”…AI 투자 내년 1.2조달러 [헤럴드머니페스타2026]"
+    },
+    "title:ac3eddbbd8b504b656504ef7": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639940",
+      "source": "이투데이",
+      "source_body_digest": "c793255b249edbc41ea7593fc0c0df6b34bcce946db0b1dba8df0bdecdb4fda4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T09:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "경남제약, 유상증자 철회 후 신규 자금조달 검토…2027년 사업계획 조정",
+      "telegram_core_fact": "경남제약은 주주배정 유상증자 철회 이후 향후 사업 추진에 필요한 신규 자금조달 방안을 검토하고 있다고 26일 밝혔다.",
+      "title": "경남제약, 유상증자 철회 후 신규 자금조달 검토…2027년 사업계획 조정"
     },
     "title:ac478d9a67ca0c37c2a52237": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
@@ -1288328,6 +1289499,34 @@
       "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
       "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
     },
+    "title:d425381327063191ad064857": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2639909",
+      "source": "이투데이",
+      "source_body_digest": "c7c68395b0982b0f2a6026a5d13d8fc569e7e0e841fa563675ecf3427a672502",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca07ef3e5e4992760c6ab8793e22afe72878e87707786243fcc4f4c539daeff5",
+      "source_fact_keys": [
+        "source_fact:v1:207414e24e2bc4e0b4e63c95b952dece7a7e0b903dcea45601ab583c1d23e1f4",
+        "source_fact:v1:22d77519ed25a2109730d05d8b2a73f4ed910735d901c9782ce34f5012de8af6",
+        "source_fact:v1:37b24776f4c2899d8e8cd303dfd78dd1f76895f19f3e13b8878bfc8093d96196",
+        "source_fact:v1:5fbbcf706fd7593f4d93fac47e7471f786c5fa97c19c152678aa13473a30b6fd",
+        "source_fact:v1:60c1c87cbb32bda50d402c0f983202cf01dc46cde346e15c2522a6c00c464dff",
+        "source_fact:v1:961711e405f26b4ba2f107ab2e28cfb4d5c32356b270200c5b42182b1742cc00",
+        "source_fact:v1:b20c72248271f351aab2e347f154ea917a6ff281a00ddee5f5e45685a2dc71af",
+        "source_fact:v1:b5eb08524ed9b89b8d2ba6e420a21378dc307c2a0a91f40ea9bca52480862e21",
+        "source_fact:v1:c97b37285cab44569d818011a3f196c5753fb2314a6e8825f37029f8be60dd5b"
+      ],
+      "source_published_kst": "2026-10-26T09:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]",
+      "telegram_core_fact": "글로벌 금융시장이 저금리ㆍ저물가ㆍ저성장에 기반한 ‘자금 잉여 시대’를 지나 설비투자 확대와 구조적 고금리가 맞물린 ‘자금 부족 시대’로 이동하고 있다는 진단이 나왔다.",
+      "title": "“자금 부족 시대 본격화⋯투자 전략도 달라져야” [찐코노미]"
+    },
     "title:d425df9d1cac2a58f5198956": {
       "first_seen_kst": "2026-10-10T16:38:23+09:00",
       "lanes": {
@@ -1308854,6 +1310053,24 @@
       "telegram_core_fact": "과세 시행 주체인 국세청이 수장 공백 속에 과세 기준이 되는 가격 고시를 유보하는 발언을 하면서 공정과세 체계가 충분히 마련됐는지에 대한 물음표가 제기된다.",
       "title": "\"코인 과세 폐지·유예하자\" 여야 한목소리⋯ 국세청장 공백속 과세고시 유보"
     },
+    "title:f833e9503a8a3dfb69a00cec": {
+      "first_seen_kst": "2026-10-26T10:56:52+09:00",
+      "lanes": {
+        "live": "2026-10-26T10:56:52+09:00"
+      },
+      "last_seen_kst": "2026-10-26T10:56:52+09:00",
+      "link": "https://www.hankyung.com/article/202610264590i",
+      "source": "한국경제",
+      "source_body_digest": "01d2da96d6e7a1a87015b58cf0db7f6039004aac76f67e57e4cdbc63915a13de",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-26T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "화우, '2년 연속 두 자릿수 성장' 이명수 대표 연임",
+      "telegram_core_fact": "취임 이후 2년 연속 두 자릿수 매출 증가율을 기록한 경영 성과를 인정받았다는 평가다.",
+      "title": "화우, '2년 연속 두 자릿수 성장' 이명수 대표 연임"
+    },
     "title:f8467d6d63155900762880cb": {
       "first_seen_kst": "2026-10-13T02:50:52+09:00",
       "lanes": {
@@ -1313173,5 +1314390,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-26T10:36:30+09:00"
+  "updated_at_kst": "2026-10-26T10:56:52+09:00"
 }
