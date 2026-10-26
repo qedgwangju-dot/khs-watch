@@ -757,5 +757,89 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertTrue(w.is_axis_text("HBF 2027년 1월 최종 규격 일정 발표"))
 
 
+    def test_nvidia_glass_reported_supplier_interest_stays_at_baseline(self):
+        item={"title":"NVIDIA increases its bet on glass substrates",
+              "source":"GMT EIGHT","description":"",
+              "published_at_kst":"2026-10-25T08:00:00+09:00",
+              "direct_link":"https://gmt8press.com/flash/detail/1531939"}
+        body=("NVIDIA is evaluating glass substrates for future AI GPU packages. "
+              "SCHMID works with companies in NVIDIA, Intel and AMD supply chains.")
+        rows=w.parse_nvidia_glass_adoption(item,body)
+        self.assertEqual(len(rows),1)
+        self.assertEqual(rows[0]["value"]["stage"],"reported_evaluation")
+        self.assertEqual(rows[0]["evidence"],"reported")
+        self.assertFalse(rows[0]["value"]["nvidia_glass_contract_confirmed"])
+
+    def test_nvidia_organic_abf_substrate_contract_is_not_glass_core(self):
+        item={"direct_link":"https://nvidianews.nvidia.com/news/substrate-expansion",
+              "source":"NVIDIA","title":"Partnership",
+              "published_at_kst":"2026-10-21T10:00:00+09:00"}
+        body=("NVIDIA and Samsung Electro-Mechanics signed a multiyear ABF package substrate "
+              "supply agreement beginning in 2026. IBIDEN and Unimicron will increase substrate "
+              "capacity 2.5x over the next three years.")
+        self.assertEqual(w.parse_nvidia_glass_adoption(item,body),[])
+
+    def test_nvidia_corning_optical_fiber_glass_is_not_glass_core(self):
+        item={"direct_link":"https://nvidianews.nvidia.com/news/nvidia-and-corning",
+              "source":"NVIDIA","title":"NVIDIA Corning",
+              "published_at_kst":"2026-05-06T10:00:00+09:00"}
+        body="NVIDIA and Corning expand optical fiber glass connectivity plants by 10x."
+        self.assertEqual(w.parse_nvidia_glass_adoption(item,body),[])
+
+    def test_nvidia_glass_true_official_contract_requires_explicit_same_clause(self):
+        item={"direct_link":"https://nvidianews.nvidia.com/news/nvidia-glass-core",
+              "source":"NVIDIA","title":"Official NVIDIA announcement",
+              "published_at_kst":"2027-08-01T11:00:00+09:00"}
+        body="NVIDIA signed a supply agreement for glass-core substrates with Example Semiconductor."
+        rows=w.parse_nvidia_glass_adoption(item,body)
+        self.assertEqual(len(rows),1)
+        self.assertEqual(rows[0]["evidence"],"official")
+        self.assertEqual(rows[0]["value"]["stage"],"official_supply_contract")
+        seed={"axis":"glass_nvidia_adoption",
+              "value":{"stage":"reported_evaluation"},"evidence":"reported"}
+        self.assertTrue(w.comparison(seed,rows[0]))
+
+    def test_nvidia_glass_roadmap_forecast_is_not_official_mass_production(self):
+        item={"direct_link":"https://nvidianews.nvidia.com/news/glass-core",
+              "source":"NVIDIA","title":"Future roadmap",
+              "published_at_kst":"2027-01-01T11:00:00+09:00"}
+        body="NVIDIA plans to begin mass production using glass-core substrates in 2028."
+        rows=w.parse_nvidia_glass_adoption(item,body)
+        self.assertEqual(rows[0]["value"]["stage"],"reported_evaluation")
+
+    def test_nvidia_supplier_chain_reference_is_not_joint_development(self):
+        item={"direct_link":"https://www.schmid-group.com/en/press/nvidia-suppliers",
+              "source":"SCHMID","title":"Supply chain",
+              "published_at_kst":"2026-10-25T12:00:00+09:00"}
+        body="SCHMID jointly develops glass-core substrates with companies in NVIDIA's supply chain."
+        rows=w.parse_nvidia_glass_adoption(item,body)
+        self.assertEqual(rows[0]["value"]["stage"],"reported_evaluation")
+
+    def test_nvidia_glass_initial_seed_is_silent_and_duplicate_reprint_silent(self):
+        import json
+        from datetime import datetime
+        seed=next(x for x in json.loads(
+            (pathlib.Path(__file__).resolve().parents[1]/"data/hbm_memory_baselines.json")
+            .read_text(encoding="utf-8"))["records"]
+            if x["axis"]=="glass_nvidia_adoption")
+        now=datetime(2026,10,26,12,0,0)
+        state=w.update_state({},[seed],now,[seed])
+        self.assertEqual(state["nvidia_glass_track_version"],1)
+        self.assertNotIn(seed["key"],state["pending"])
+        reprint=dict(seed,as_of="2026-10-25",
+                     source_url="https://gmt8press.com/flash/detail/1531939")
+        again=w.update_state(state,[reprint],now,[seed])
+        self.assertNotIn(seed["key"],again["pending"])
+
+    def test_nvidia_glass_company_stage_not_promoted_by_media_reprint(self):
+        official={"axis":"glass_nvidia_adoption",
+                  "value":{"stage":"official_customer_qualification"},"evidence":"official"}
+        media={"axis":"glass_nvidia_adoption",
+               "value":{"stage":"reported_evaluation"},"evidence":"reported"}
+        self.assertEqual(w.comparison(official,media),[])
+        self.assertTrue(w.is_axis_text("NVIDIA increases its bet on glass substrates"))
+        self.assertTrue(w.is_axis_text("英伟达玻璃基板客户认证待确认"))
+
+
 if __name__ == "__main__":
     unittest.main()

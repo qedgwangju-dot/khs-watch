@@ -20,6 +20,7 @@ FOUNDRY_TRACK_VERSION = 1
 FOUNDRY_RECOVERY_TRACK_VERSION = 1
 FOUNDRY_PRICING_RANGE_TRACK_VERSION = 1
 GLASS_SUBSTRATE_TRACK_VERSION = 5
+NVIDIA_GLASS_TRACK_VERSION = 1
 FOPLP_TRACK_VERSION = 1
 HBF_TRACK_VERSION = 1
 HYNIX_FINANCE_VERSION = 1
@@ -61,6 +62,8 @@ EXTRA_QUERIES = [
     '(Chemtronics OR 켐트로닉스) (Samsung OR 삼성전자) ("glass interposer" OR 유리 인터포저) (sample OR 샘플 OR evaluation OR 평가 OR qualification OR 검증 OR contract OR 계약 OR mass production OR 양산)',
     '(FOPLP OR "fan-out panel-level packaging" OR 扇出型面板級封裝 OR 패널형 팬아웃 패키징) (TSMC OR CoPoS OR ASE OR Innolux OR PTI OR ChipMOS OR PMIC OR RF OR AI) (customer OR pilot OR qualification OR production OR 量產 OR 양산 OR 수율)',
     '(TSMC OR 台積電) (CoPoS OR "Chip-on-Panel-on-Substrate") (pilot OR 試產 OR 驗證 OR mass production OR 양산 OR 2027 OR 2028)',
+    '(NVIDIA OR 엔비디아 OR 英伟达) (glass core OR glass substrate OR 玻璃基板 OR 유리기판 OR TGV) (qualification OR joint development OR contract OR supply OR pilot OR mass production OR 고객인증 OR 양산 OR 도입)',
+    '(site:nvidianews.nvidia.com OR site:investor.nvidia.com OR site:samsungsem.com OR site:skc.kr) (NVIDIA OR 엔비디아) ("glass core" OR "glass substrate" OR 유리기판) (qualification OR contract OR pilot OR production)',
     '(site:news.skhynix.co.kr OR site:news.skhynix.com OR site:sandisk.com) ("HBF" OR "High Bandwidth Flash") (standard OR specification OR final OR prototype OR pilot OR qualification OR contract OR shipment OR customer OR 규격 OR 양산 OR 2027)',
     '(site:opencompute.org OR site:news.skhynix.co.kr) "HBF" ("V0.7.0" OR "V1.0.0" OR 최종 OR updated)',
     '(SK하이닉스 OR SK hynix) (수출공급망 강화보증 OR 상생 무역금융 OR 2조원 보증 OR 무역보험공사) (협약 OR 보증서 OR 발급 OR 지원) when:30d',
@@ -220,6 +223,9 @@ def local_period(text, published):
 
 
 def is_axis_text(text):
+    if (re.search(r'\bNVIDIA\b|엔비디아|英伟达', text, re.I) and
+            re.search(r'glass[- ]?(?:core|substrates?|interposer)|유리\s*기판|玻璃基板|玻璃芯|TGV', text, re.I)):
+        return True
     if (re.search(r'SK\s*하이닉스|SK\s*hynix|하이닉스', text, re.I)
             and re.search(r'수출공급망\s*강화보증|상생\s*무역금융|트리니티\s*팹|Trinity\s*Fab|'
                           r'R&D\s*도전\s*보상제|협력사.{0,35}(?:보증|대출|실증|검증)', text, re.I)):
@@ -1744,6 +1750,110 @@ def parse_bernstein_pair(item, body):
     return [row]
 
 
+
+# The reported NVIDIA glass-core evaluation and its commercial contracts have
+# different evidence requirements. NVIDIA/Corning optical glass and NVIDIA/SEM
+# ABF FC-BGA supply do not establish glass-core adoption.
+NVIDIA_GLASS_STAGE_ORDER = {
+    'reported_evaluation':0,
+    'official_evaluation':1,
+    'official_joint_development':2,
+    'official_customer_qualification':3,
+    'official_supply_contract':4,
+    'official_pilot':5,
+    'official_mass_production':6,
+}
+NVIDIA_GLASS_OFFICIAL_HOSTS = (
+    'nvidianews.nvidia.com', 'investor.nvidia.com', 'nvidia.com',
+    'skc.kr','samsungsem.com','samsungsem.co.kr',
+    'schmid-group.com','absolicsinc.com','thejntc.com',
+    'philoptics.com','lginnotek.com',
+)
+
+
+def _nvidia_glass_scope(text):
+    return (bool(re.search(r'\bNVIDIA\b|엔비디아|英伟达',text,re.I))
+            and bool(re.search(
+                r'glass(?:[- ]?core|[- ]?(?:package|packaging))?[- ]?substrates?|'
+                r'glass[- ]?core|glass[- ]?interposer|'
+                r'유리\s*(?:코어\s*)?(?:기판|인터포저)|玻璃(?:芯)?基板|TGV[^.;]{0,80}glass',
+                text,re.I)))
+
+
+def parse_nvidia_glass_adoption(item, body):
+    """Same-clause, proof-scoped NVIDIA *semiconductor* glass-core milestones.
+
+    News reports stay at a seeded evaluation stage. Only an issuer-owned page
+    identifying an actual NVIDIA glass-core milestone may advance this axis.
+    """
+    text = str(body or '')
+    if not _nvidia_glass_scope(text):
+        return []
+    source_host = host(item.get('direct_link',''))
+    official_host = any(source_host == d or source_host.endswith('.'+d)
+                        for d in NVIDIA_GLASS_OFFICIAL_HOSTS)
+    nvidia_owned = source_host in ('nvidia.com','nvidianews.nvidia.com','investor.nvidia.com') or (
+        source_host.endswith('.nvidia.com'))
+    stage = 'reported_evaluation'
+    for clause in re.split(r'[。！？；;\r\n]+|(?<=[.!?])\s+',text):
+        snippet = re.sub(r'\s+',' ',clause).strip()
+        if not _nvidia_glass_scope(snippet):
+            continue
+        # Avoid unrelated paragraphs that mention optical-fiber Corning glass or
+        # the confirmed organic ABF package substrate separately.
+        if re.search(r'optical\s*(?:fiber|fibre)|fiber[- ]?optic|광섬유|光纤|'
+                     r'\bABF\b|FC[- ]?BGA',snippet,re.I):
+            continue
+        if not official_host:
+            continue
+        prospective = bool(re.search(r'\b(?:would|will|may|might|could|plans?|'
+                        r'expected|targets?|aims?)\b|예정|계획|목표|예상|预计|計畫',snippet,re.I))
+        # Forward-looking statements are never promoted to completed milestones.
+        if prospective:
+            continue
+        nextstage = None
+        if re.search(r'(?:has\s+(?:begun|started)|began|commenced|이미|개시|시작|'
+                     r'已开始|已经启动).{0,130}(?:mass\s+production|volume\s+production|'
+                     r'양산|量产|量產)',snippet,re.I):
+            nextstage='official_mass_production'
+        elif re.search(r'(?:has\s+(?:begun|started)|began|commenced|이미|개시|시작).{0,120}'
+                       r'(?:pilot\s+production|trial\s+production|파일럿|시험생산|试产)',snippet,re.I):
+            nextstage='official_pilot'
+        elif re.search(r'\b(?:signed|executed|inked)\b.{0,100}'
+                       r'(?:supply\s+(?:agreement|contract)|purchase\s+order|'
+                       r'계약|供货合同)|(?:공급계약|采购合同)[^.]{0,30}체결',snippet,re.I):
+            nextstage='official_supply_contract'
+        elif re.search(r'(?:customer|NVIDIA|고객|客户).{0,120}'
+                       r'(?:qualification\s+completed|qualified\s+for|'
+                       r'certification\s+completed|검증\s+완료|인증\s+완료|认证通过)',snippet,re.I):
+            nextstage='official_customer_qualification'
+        elif re.search(r'(?:jointly\s+develop|joint\s+development|'
+                       r'共同开发|공동\s*개발|공동\s*연구)',snippet,re.I):
+            # A supplier merely saying it serves "NVIDIA's supply chain" does
+            # not establish a named NVIDIA joint development agreement.
+            if nvidia_owned or re.search(r'with\s+NVIDIA|NVIDIA\s+and|'
+                                          r'with\s+엔비디아|엔비디아와',snippet,re.I):
+                nextstage='official_joint_development'
+        elif nvidia_owned and re.search(r'\b(?:evaluat(?:e|ing)|test(?:ing)?|'
+                                         r'explor(?:e|ing))\b|평가\s*중|검토\s*중',snippet,re.I):
+            nextstage='official_evaluation'
+        if nextstage and NVIDIA_GLASS_STAGE_ORDER[nextstage] > NVIDIA_GLASS_STAGE_ORDER[stage]:
+            stage=nextstage
+    val={'stage':stage,'product_scope':'ai_semiconductor_glass_core_package_substrate',
+         'nvidia_glass_contract_confirmed':NVIDIA_GLASS_STAGE_ORDER[stage] >= 4,
+         'nvidia_glass_mass_production_confirmed':stage=='official_mass_production',
+         'abf_organic_supply_is_separate':True,
+         'corning_optical_fiber_is_separate':True,
+         'reported_earliest_adoption_year':2028}
+    row=make_record('glass_nvidia_adoption',['nvidia','glass_core_AI'],val,
+        'stage,year','roadmap',item,
+        'NVIDIA 유리 코어 기판 평가→고객 검증→실제 계약→시험생산→양산 단계',
+        as_of=(item.get('published_at_kst') or '')[:10],
+        scope='nvidia_glass_core_not_organic_ABF_not_optical_fiber')
+    row['evidence']='official' if stage != 'reported_evaluation' and official_host else 'reported'
+    return [row]
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
@@ -1758,6 +1868,7 @@ def parse_records(item, body):
     records.extend(parse_foundry_recovery_records(item, body))
     records.extend(parse_foundry_hbm_records(item, body))
     records.extend(parse_glass_substrate_records(item, body))
+    records.extend(parse_nvidia_glass_adoption(item, body))
     records.extend(parse_foplp_records(item, body))
     records.extend(parse_hbf_ocp_version(item, body))
     records.extend(parse_hbf_company_milestones(item, body))
@@ -1991,6 +2102,12 @@ def comparison(old, new):
         if FOPLP_STAGE_RANK.get(newer,0) < FOPLP_STAGE_RANK.get(older,0):
             return []
         return [f"AI 칩 FOPLP {b.get('manufacturer')} {older or '미확인'}→{newer}"]
+    if new['axis'] == 'glass_nvidia_adoption':
+        before,after=a.get('stage','reported_evaluation'),b.get('stage','reported_evaluation')
+        if (new.get('evidence') != 'official'
+                or NVIDIA_GLASS_STAGE_ORDER.get(after,0) <= NVIDIA_GLASS_STAGE_ORDER.get(before,0)):
+            return []
+        return [f'NVIDIA 유리 코어 기판 단계 {before}→{after} (공식 원문)']
     if new['axis'] == 'glass_panel_standard':
         reasons = []
         if (a.get('width_mm'), a.get('height_mm')) != (b.get('width_mm'), b.get('height_mm')):
@@ -2405,6 +2522,13 @@ def update_state(state, records, now, seeds=None):
                     state['latest'][r['key']] = copy.deepcopy(r)
                     state['pending'].pop(r['key'], None)
             state['glass_substrate_track_version'] = GLASS_SUBSTRATE_TRACK_VERSION
+        if int(state.get('nvidia_glass_track_version') or 0) < NVIDIA_GLASS_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') == 'glass_nvidia_adoption':
+                    state['last_notified'].setdefault(r['key'], copy.deepcopy(r))
+                    state['latest'].setdefault(r['key'], copy.deepcopy(r))
+                    state['pending'].pop(r['key'],None)
+            state['nvidia_glass_track_version']=NVIDIA_GLASS_TRACK_VERSION
         if int(state.get('foplp_track_version') or 0) < FOPLP_TRACK_VERSION:
             for r in seeds:
                 if r.get('axis') in ('foplp_mature_node_industry','foplp_company_ai_stage'):
@@ -2441,7 +2565,7 @@ def update_state(state, records, now, seeds=None):
         if r['as_of'][:10] > now.date().isoformat():
             continue
         grouped.setdefault(r['key'], []).append(r)
-    sparse_axes = {'hynix_supplier_guarantee','hynix_trinity_fab','hynix_supplier_rnd', 'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'glass_jv_stage', 'foplp_mature_node_industry', 'foplp_company_ai_stage', 'hbf_ocp_spec','hbf_reported_roadmap','hbf_issuer_milestone','hbm_bernstein_q3_pair','hbm_generation_pricing', 'hbm_market_pricing'}
+    sparse_axes = {'hynix_supplier_guarantee','hynix_trinity_fab','hynix_supplier_rnd', 'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_nvidia_adoption', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'glass_jv_stage', 'foplp_mature_node_industry', 'foplp_company_ai_stage', 'hbf_ocp_spec','hbf_reported_roadmap','hbf_issuer_milestone','hbm_bernstein_q3_pair','hbm_generation_pricing', 'hbm_market_pricing'}
     for key, rows in grouped.items():
         rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
         prior = state['latest'].get(key) or state['last_notified'].get(key)
@@ -2531,7 +2655,8 @@ def render(change, rate=None):
               'hbf_reported_roadmap':'HBF 2027년 1월 최종본 보도 일정',
               'foplp_mature_node_industry': 'FOPLP 성숙공정 양산 기준선',
               'foplp_company_ai_stage': 'FOPLP AI 칩 고객검증·양산 단계',
-              'glass_panel_standard': '유리기판 510×515mm 규격 수렴·TSMC 채택 상태',
+              'glass_nvidia_adoption': 'NVIDIA AI 반도체 유리 코어 기판 실제 채택·양산 단계',
+             'glass_panel_standard': '유리기판 510×515mm 규격 수렴·TSMC 채택 상태',
              'glass_tsmc_roadmap': 'TSMC CoPoS·Glass Core 양산 로드맵',
              'glass_panel_yield': '유리기판 패널·양산 수율',
              'glass_hvm_stage': '유리기판 고객검증→발주→HVM 전환 단계',
@@ -2606,6 +2731,15 @@ def render(change, rate=None):
             names = {'customer_evaluation':'고객 평가','customer_qualified':'고객 검증 완료',
                      'pilot_production':'시험생산','mass_production':'양산'}
             return f"{v.get('manufacturer')} AI 칩 FOPLP {names.get(v.get('stage'),v.get('stage'))} · {'회사 공식' if v.get('issuer_official') else '업계 보도'}"
+        if record['axis'] == 'glass_nvidia_adoption':
+            labels={'reported_evaluation':'도입 평가 보도 단계',
+                    'official_evaluation':'NVIDIA 공식 평가 확인',
+                    'official_joint_development':'NVIDIA 공식 공동개발',
+                    'official_customer_qualification':'고객 인증 완료',
+                    'official_supply_contract':'유리 코어 기판 공급계약',
+                    'official_pilot':'유리 코어 시험생산',
+                    'official_mass_production':'유리 코어 양산'}
+            return labels.get(v.get('stage'),v.get('stage','미확인'))
         if record['axis'] == 'glass_panel_standard':
             suppliers = ', '.join(v.get('suppliers') or [])
             return f"{v.get('width_mm')}×{v.get('height_mm')}mm / 소재사 {v.get('supplier_count')}곳 ({suppliers}) / TSMC {v.get('tsmc_status')}"
@@ -2890,6 +3024,10 @@ def render(change, rate=None):
     if r['axis'] == 'foplp_company_ai_stage':
         lines.append('• 같은 제조사·AI 응용처에서 고객 검증→시험생산→양산을 단계별 비교합니다. 업계 보도를 회사 공식 확인으로 승격하지 않습니다.')
         lines.append('• 휨·RDL 정렬·고온 동작 검사·수율·신뢰성 검증이 실제 비용과 양산 시점을 결정합니다.')
+    if r['axis'] == 'glass_nvidia_adoption':
+        lines.append('• NVIDIA의 기존 삼성전기 ABF·IBIDEN·Unimicron 기판 계약 및 Corning 광섬유 계약은 유리 코어 기판 채택과 별도입니다.')
+        lines.append('• 보도상 2028년 가능성은 계약·양산 예정일 확정이 아니며, NVIDIA/공급사 공식 고객 검증·구매계약·시험생산·양산만 단계 상승으로 알립니다.')
+        lines.append('• 먼저 볼 지표: TGV 금속 충진·전체 패널 전기수율·휨·고온 동작 검사·고객 신뢰성 인증.')
     if r['axis'] == 'glass_panel_standard':
         lines.append('• 510×515mm 규격 수렴과 TSMC 공식 채택은 별개입니다. DIGITIMES의 공급망 추정은 reported_candidate로만 저장합니다.')
     if r['axis'] == 'glass_tsmc_roadmap':
@@ -3043,6 +3181,10 @@ def main():
             any(k in text for k in ('foplp','fan-out panel-level','扇出型面板級封裝','패널형 팬아웃'))
             and any(k in text for k in ('tsmc','copos','pmic','rf','ai','hpc','pilot','양산','量產','量产','고객'))
         )
+        structured_nvidia_glass = (
+            any(k in text for k in ('nvidia','엔비디아','英伟达'))
+            and any(k in text for k in ('glass substrate','glass core','glass package','glass interposer','유리기판','유리 기판','玻璃基板','tgv'))
+        )
         structured_glass = (
             any(k in text for k in ('glass substrate','glass core','glass panel','glass interposer','tgv','유리기판','유리 기판','유리 인터포저','글라스 코어'))
             and any(k in text for k in ('510x515','510×515','515x510','515×510','copos','yield','수율','sample','샘플','customer evaluation','customer validation','고객 평가','고객 검증','purchase order','po ','pilot','양산','samsung','삼성전자','12시간','분 단위','cycle time','공정시간','3470억','김천','설비투자','investment'))
@@ -3058,7 +3200,7 @@ def main():
                 )
             )
         )
-        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass or structured_foplp or structured_hbf or structured_partner:
+        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass or structured_nvidia_glass or structured_foplp or structured_hbf or structured_partner:
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
         if not concrete_state_evidence(e):
@@ -3089,7 +3231,8 @@ def main():
         'ctee.com.tw', '工商時報', 'tsmc.com', 'aseglobal.com', 'innolux.com', 'pti.com.tw', 'chipmos.com',
         'opencompute.org', 'sandisk.com', 'news.skhynix.co.kr', 'news.skhynix.com',
         'newspim', '뉴스핌', 'yna.co.kr', '연합뉴스', 'korea.kr',
-        'm.korea.kr', '산업통상부'
+        'm.korea.kr', '산업통상부','gmt8press','gmt8press.com',
+        'schmid-group.com', 'nvidianews.nvidia.com','investor.nvidia.com'
     )
     legacy.relevant = lambda text: original_relevant(text) or is_axis_text(text)
     observed, coverage = [], []
@@ -3239,7 +3382,7 @@ def main():
     if chosen:
         rate, basis = legacy.fx_quote()
         foundry_axes = {'foundry_loss_outlook','foundry_external_2nm','foundry_taylor_schedule','foundry_base_die_allocation','foundry_node_expansion','foundry_pricing','foundry_hbm5_2nm'}
-        glass_axes = {'glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex','glass_jv_stage','foplp_mature_node_industry','foplp_company_ai_stage'}
+        glass_axes = {'glass_nvidia_adoption','glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex','glass_jv_stage','foplp_mature_node_industry','foplp_company_ai_stage'}
         generation_price_axes = {'hbm_generation_pricing'}
         bernstein_axes={'hbm_bernstein_q3_pair'}
         hbf_axes = {'hbf_ocp_spec','hbf_issuer_milestone','hbf_reported_roadmap'}

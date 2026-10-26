@@ -988,6 +988,28 @@
       "source": "산업통상부",
       "scope": "validation_facility_2025_2031_budget_not_20261019_new_2T_cash_grant",
       "excerpt": "트리니티 팹 총사업비 8,746억원, 2025~2031년. 금융보증 2조원과 별도의 실증 설비투자."
+    },
+    {
+      "key": "glass_nvidia_adoption|nvidia|glass_core_AI",
+      "axis": "glass_nvidia_adoption",
+      "value": {
+        "stage": "reported_evaluation",
+        "product_scope": "ai_semiconductor_glass_core_package_substrate",
+        "nvidia_glass_contract_confirmed": false,
+        "nvidia_glass_mass_production_confirmed": false,
+        "abf_organic_supply_is_separate": true,
+        "corning_optical_fiber_is_separate": true,
+        "reported_earliest_adoption_year": 2028
+      },
+      "unit": "stage,year",
+      "period": "roadmap",
+      "as_of": "2026-09-30",
+      "evidence": "reported",
+      "source_url": "https://www.trendforce.com/news/2026/09/30/news-nvidia-reportedly-explores-glass-substrates-2028-adoption-possible-as-taiwan-suppliers-step-up/",
+      "source_title": "TrendForce NVIDIA 유리 코어 기판 도입 검토·2028년 채택 가능성 보도",
+      "source": "TrendForce",
+      "scope": "reported_nvidia_glass_evaluation_not_approved_customer_not_organic_ABF",
+      "excerpt": "공급망 보도: NVIDIA가 차세대 AI 칩 유리 코어 기판을 평가 중. 독일 SCHMID는 NVIDIA·AMD·Intel 공급망 기업과 협업한다고 밝혔으나 NVIDIA 직접 공급계약·고객인증·양산은 확인되지 않음. 2028년은 보도상 가능성."
     }
   ],
   "user_capture": {
