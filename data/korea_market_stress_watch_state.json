@@ -1,85 +1,76 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-10-26T20:23:14+09:00",
+  "updated_at_kst": "2026-10-26T23:07:55+09:00",
   "seen_event_keys": [
-    "foreign3d_neg:2026-09-18:final",
-    "foreign1d_neg:2026-09-14:final",
-    "foreign1d_neg:2026-08-31",
-    "foreign1d_neg:2026-09-02:postclose",
-    "kosdaq_foreign1d_pos:2026-09-09:final",
-    "foreign3d_neg:2026-08-27",
-    "foreign3d_neg:2026-09-14:final",
-    "foreign3d_neg:2026-10-16:final",
-    "ust10_up:2026-09-10",
-    "foreign1d_neg:2026-09-30:final",
-    "foreign3d_neg:2026-09-30:final",
-    "kosdaq_foreign3d_neg:2026-09-14:final",
-    "fx_daily_down_stage1:2026-10-16",
-    "foreign3d_pos:2026-09-08:final",
+    "fx_daily_up:2026-09-15",
+    "fx_daily_down_stage1:2026-09-22",
     "policy_spread:2026-08-27:0.75",
-    "fx_1350_down:2026-10-02",
+    "foreign1d_neg:2026-09-14:final",
     "foreign3d_neg:2026-10-06:final",
-    "foreign3d_neg:2026-09-02:final",
-    "fx_daily_down_stage2:2026-09-22",
-    "foreign1d_neg:2026-09-17:final",
-    "ust10_up:2026-09-23",
+    "foreign1d_neg:2026-09-02:final",
+    "capex:13cbe150930d23d8",
+    "foreign1d_pos:2026-09-07:final",
     "fx_daily_down:2026-09-02",
-    "foreign1d_neg:2026-10-06:final",
-    "fx_1350_down:2026-09-07",
+    "fx_1350_down:2026-09-04",
+    "foreign3d_neg:2026-09-28:final",
+    "ust10_up:2026-09-23",
+    "foreign3d_neg:2026-09-02:final",
+    "foreign3d_neg:2026-10-16:final",
+    "kosdaq_foreign3d_neg:2026-09-14:final",
+    "foreign1d_neg:2026-09-17:final",
+    "foreign3d_neg:2026-09-11:final",
+    "kosdaq_foreign1d_pos:2026-09-09:final",
+    "fx_1350_down:2026-10-02",
+    "kosdaq_foreign3d_neg:2026-09-11:final",
+    "foreign1d_neg:2026-09-02:postclose",
+    "kosdaq_foreign3d_neg:2026-10-21:final",
+    "fx_daily_up:2026-09-17",
+    "fx_daily_down_stage1:2026-10-16",
+    "kosdaq_foreign1d_neg:2026-09-10:final",
+    "foreign3d_pos:2026-09-07:final",
+    "foreign3d_neg:2026-09-14:final",
+    "ust10_down:2026-10-22",
+    "kosdaq_foreign1d_neg:2026-09-11:final",
+    "foreign3d_neg:2026-09-02:postclose",
+    "fx_daily_up_stage1:2026-09-17",
     "capex:8c316cbbe125ec4c",
-    "foreign1d_neg:2026-09-28:final",
-    "fx_1350_down:2026-10-06",
-    "capex:c77504fb6c1cca66",
-    "foreign1d_neg:2026-09-10:final",
-    "foreign3d_neg:2026-09-17:final",
+    "foreign1d_neg:2026-09-11:final",
     "policy_spread:2026-09-17:1.00",
     "fx_1350_down:2026-09-11",
-    "fx_daily_up:2026-09-17",
-    "foreign3d_neg:2026-09-02:postclose",
-    "fx_daily_down_stage1:2026-09-22",
-    "kosdaq_foreign3d_neg:2026-09-11:final",
-    "kosdaq_foreign3d_neg:2026-10-21:final",
-    "kosdaq_foreign3d_neg:2026-09-10:final",
-    "foreign1d_neg:2026-09-02:final",
-    "fx_daily_up:2026-09-15",
-    "capex:13cbe150930d23d8",
-    "fx_1350_down:2026-09-04",
+    "foreign3d_pos:2026-09-08:final",
+    "foreign1d_neg:2026-09-30:final",
+    "fx_1350_down:2026-10-06",
+    "foreign3d_neg:2026-09-30:final",
+    "fx_1350_down:2026-09-07",
+    "foreign1d_neg:2026-10-06:final",
+    "foreign3d_neg:2026-09-18:final",
+    "foreign3d_neg:2026-08-27",
+    "ust10_up:2026-09-10",
+    "foreign1d_neg:2026-08-31",
+    "foreign1d_neg:2026-09-10:final",
     "fx_daily_up_stage1:2026-09-23",
-    "kosdaq_foreign1d_neg:2026-09-11:final",
-    "foreign3d_pos:2026-09-07:final",
-    "foreign3d_neg:2026-09-11:final",
-    "ust10_down:2026-10-22",
-    "foreign1d_pos:2026-09-07:final",
-    "fx_daily_up_stage1:2026-09-17",
-    "foreign1d_neg:2026-09-11:final",
-    "kosdaq_foreign1d_neg:2026-09-10:final",
-    "foreign3d_neg:2026-09-28:final"
+    "foreign1d_neg:2026-09-28:final",
+    "foreign3d_neg:2026-09-17:final",
+    "kosdaq_foreign3d_neg:2026-09-10:final",
+    "fx_daily_down_stage2:2026-09-22",
+    "capex:c77504fb6c1cca66"
   ],
   "active_keys": [
     "fx_1350_down:2026-10-26",
     "ust10_down:2026-10-22"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-10-26T20:23:14+09:00",
+    "checked_at_kst": "2026-10-26T23:07:55+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-10-26",
-      "value": 1325.2,
+      "value": 1327.1,
       "prev_date": "2026-10-23",
       "prev_value": 1324.6,
-      "change_krw": 0.6,
-      "change_pct": 0.0453,
+      "change_krw": 2.5,
+      "change_pct": 0.1887,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
-      "ecos_official": {
-        "date": "2026-10-26",
-        "value": 1324.3,
-        "item_name": "원/미국달러(매매기준율)",
-        "unit": "원",
-        "stat_code": "731Y001",
-        "item_code": "0000001",
-        "source": "https://ecos.bok.or.kr/api/",
-        "role": "한국은행 공식 일일 검증값(장중 경보 판정에는 사용하지 않음)"
-      },
+      "ecos_error": "ConnectTimeout: ECOS 공식 일일값 조회 실패(인증정보 비노출)",
       "naver_prev_date": "2026-10-23",
       "naver_prev_value": 1326.0,
       "comparison_valid": true,
@@ -96,7 +87,7 @@
       "source": "https://fred.stlouisfed.org/series/DGS10"
     },
     "policy_spread": {
-      "date": "2026-10-25",
+      "date": "2026-10-26",
       "fed_upper": 4.0,
       "bok_base": 3.0,
       "spread_pp": 1.0,
@@ -111,7 +102,7 @@
       "three_day_krw": null,
       "three_day_available": false,
       "source": "https://openapi.ls-sec.co.kr/apiservice",
-      "source_label": "LS증권 t1601 잠정 대체값",
+      "source_label": "LS증권 t1601 확정 대체값",
       "phase": "LS증권 t1601 대체값 · 실제 거래일 2026-10-26 기준",
       "ls_validation": {
         "status": "ls_fallback",
@@ -124,7 +115,7 @@
         "source": "https://openapi.ls-sec.co.kr/apiservice",
         "canonical_trade_date": "2026-10-26"
       },
-      "finality": "잠정",
+      "finality": "확정",
       "three_day_unavailable_reason": "실제 최근 3거래일의 확정 일별수급이 전부 있어야 누적 판정 가능"
     },
     "global_wave_news": [],
@@ -163,7 +154,7 @@
       "three_day_krw": null,
       "three_day_available": false,
       "source": "https://openapi.ls-sec.co.kr/apiservice",
-      "source_label": "LS증권 t1601 잠정 대체값",
+      "source_label": "LS증권 t1601 확정 대체값",
       "phase": "LS증권 t1601 대체값 · 실제 거래일 2026-10-26 기준",
       "ls_validation": {
         "status": "ls_fallback",
@@ -176,7 +167,7 @@
         "source": "https://openapi.ls-sec.co.kr/apiservice",
         "canonical_trade_date": "2026-10-26"
       },
-      "finality": "잠정",
+      "finality": "확정",
       "three_day_unavailable_reason": "실제 최근 3거래일의 확정 일별수급이 전부 있어야 누적 판정 가능"
     },
     "flow_source_note": "KOSPI·KOSDAQ 장마감 외국인 수급은 네이버 장마감값과 LS증권 OpenAPI t1601 투자자별종합을 교차검증. 네이버 실패 시 LS t1601 대체값 사용, 유의한 불일치 시 수급 임계치 판정 보류. KRX는 공식 원천 재확인 링크로 제공.",
@@ -208,30 +199,26 @@
     "KOSPI": {
       "market": "KOSPI",
       "date": "2026-10-26",
-      "checked_at": "2026-10-26T20:23:38+09:00",
+      "checked_at": "2026-10-26T23:08:49+09:00",
       "status": "ls_fallback",
-      "stable": false,
-      "observations": 1,
-      "reason": "네이버 조회 실패 · 20:10 이후 LS t1601 2회 연속 확인 대기",
+      "stable": true,
+      "observations": 2,
+      "reason": "네이버 조회 실패 · 20:10 이후 LS t1601 단독값 2회 연속 안정성 확인 완료",
       "value_eok": -6507.0
     },
     "KOSDAQ": {
       "market": "KOSDAQ",
       "date": "2026-10-26",
-      "checked_at": "2026-10-26T20:23:38+09:00",
+      "checked_at": "2026-10-26T23:08:49+09:00",
       "status": "ls_fallback",
-      "stable": false,
-      "observations": 1,
-      "reason": "네이버 조회 실패 · 20:10 이후 LS t1601 2회 연속 확인 대기",
+      "stable": true,
+      "observations": 2,
+      "reason": "네이버 조회 실패 · 20:10 이후 LS t1601 단독값 2회 연속 안정성 확인 완료",
       "value_eok": 442.0
     }
   },
   "final_flow_history": {
     "KOSPI": [
-      {
-        "date": "2026-09-21",
-        "daily_eok": 71.0
-      },
       {
         "date": "2026-09-22",
         "daily_eok": 479.0
@@ -267,13 +254,13 @@
       {
         "date": "2026-10-21",
         "daily_eok": 6498.0
+      },
+      {
+        "date": "2026-10-26",
+        "daily_eok": -6507.0
       }
     ],
     "KOSDAQ": [
-      {
-        "date": "2026-09-21",
-        "daily_eok": -995.0
-      },
       {
         "date": "2026-09-22",
         "daily_eok": -566.0
@@ -309,6 +296,10 @@
       {
         "date": "2026-10-21",
         "daily_eok": -1756.0
+      },
+      {
+        "date": "2026-10-26",
+        "daily_eok": 442.0
       }
     ]
   }
