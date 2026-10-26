@@ -1,0 +1,29 @@
+{
+  "provenance": [
+    {
+      "code": "t1602",
+      "url": "https://openapi.ls-sec.co.kr/guide/api/ljzky5tm-285v-a0bq-76u6-5z0hxddzyo8w?type=rest&api=c148a42f-51a7-4446-b6df-10d6056dd75b",
+      "queried_at_kst": "2026-10-26T15:51:26.607251+09:00",
+      "status": 200,
+      "sha256": "cbd16fe80e7d65c875426333c3c07159e18b83e4bcf3d2c9e717f990569e9168",
+      "bytes": 37155
+    },
+    {
+      "code": "t8463",
+      "url": "https://openapi.ls-sec.co.kr/guide/api/futroptn-0000-0000-0000-0000000t8463?type=rest&api=47005ce6-8500-4a3d-ad6c-f96ec3251669",
+      "queried_at_kst": "2026-10-26T15:51:27.129411+09:00",
+      "status": 200,
+      "sha256": "a5c52264eb95a10b082ec085352e5c6a16cfccd94079d9b8d24bfef80bd21d08",
+      "bytes": 29858
+    }
+  ],
+  "t1602": {
+    "sv_01": "증권순매수"
+  },
+  "t8463": {
+    "stocode": "증권투자자코드",
+    "stomsvol": "증권순매수거래량",
+    "stomsamt": "증권순매수거래대금",
+    "stocode_example": "0001"
+  }
+}

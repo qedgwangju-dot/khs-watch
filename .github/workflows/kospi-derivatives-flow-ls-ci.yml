@@ -38,6 +38,8 @@ on:
       - "scripts/market_flow_channels.py"
       - "scripts/market_investors.py"
       - "scripts/test_market_investment_trust.py"
+      - "scripts/test_market_financial_investment.py"
+      - "tests/fixtures/market_financial_source_contract_20261026.json"
       - "scripts/market_program_close.py"
       - "scripts/test_market_program_close.py"
       - "scripts/test_market_close_pair.py"
@@ -110,6 +112,7 @@ jobs:
           python scripts/test_kosdaq_surge_industries.py
           python scripts/test_market_flow_channels.py
           python scripts/test_market_investment_trust.py
+          python scripts/test_market_financial_investment.py
 
       - name: Verify KOSPI scheduled CI isolation
         run: |

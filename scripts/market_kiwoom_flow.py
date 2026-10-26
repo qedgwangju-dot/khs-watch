@@ -399,9 +399,9 @@ def cash_lines(block: dict | None, market: str, now_ts=None) -> list[str]:
         stamp = dt.datetime.fromtimestamp(block['received_ts'], KST)
         lines = ["", "<b>키움 당일 누적 현물 수급 · KRX+NXT</b>",
                  f"• 요청일 {block['date']} · 조회 {stamp:%H:%M:%S} KST · 억원"]
-        for actor in ("외국인", "기관", "개인", "투신"):
+        for actor in ("외국인", "기관", "개인", "투신", "금융투자"):
             value = values.get(actor)
-            label = "투신(기관 내)" if actor == "투신" else actor
+            label = actor + "(기관 내)" if actor in {"투신", "금융투자"} else actor
             lines.append(f"• {label} " + (f"<b>{value:+,}억원</b>" if value is not None else "확인 보류(원값 없음)"))
         lines.append("• 원자료 날짜·시각 미제공. 사건 구간·5분 수급을 대신하지 않습니다.")
         # Existing structured enrichment compacts to 3800 visible characters.

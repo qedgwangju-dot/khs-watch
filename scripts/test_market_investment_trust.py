@@ -14,7 +14,7 @@ import kospi_shock_episode_watch as watch
 import kospi_shock_enrichment as enrichment
 import kospi_flow_attribution_ls as legacy
 import market_flow_channels as channels
-from market_investors import TRUST_NOTE, trust_value
+from market_investors import TRUST_NOTE, SUBGROUP_NOTE, trust_value
 from kosdaq_surge_industries import industry_buy_context, industry_context_lines
 
 NOW=dt.datetime(2026,10,20,14,10,tzinfo=watch.KST).timestamp()
@@ -152,7 +152,7 @@ class IntervalAndRendering(Offline):
                     self.assertIn('투신(기관 내)',text)
                     self.assertIn('-80억원',text)
                     self.assertIn('LS 순매수금액 원값',text)
-                    self.assertIn(TRUST_NOTE,text)
+                    self.assertIn(SUBGROUP_NOTE,text)
 
     def test_missing_subgroup_is_visible_in_message(self):
         a=self.w._market_attribution(START,NOW,'KOSPI');a['spot']['투신']=None
