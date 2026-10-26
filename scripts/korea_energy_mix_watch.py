@@ -14,6 +14,7 @@ from typing import Any
 
 import requests
 import time
+from urllib.parse import quote_plus
 
 STATE_PATH = Path("data/korea_energy_mix_state.json")
 OUT_DIR = Path("out")
@@ -84,6 +85,24 @@ RSS_SOURCES = (
             "%22%EB%B9%84%EC%A6%9D%EC%84%A4+%EB%8C%80%EC%95%88%22+OR+"
             "%22%EC%9E%AC%EC%83%9D%EC%97%90%EB%84%88%EC%A7%80+100GW%22%29+when%3A7d"
             "&hl=ko&gl=KR&ceid=KR%3Ako"
+        ),
+    },
+    {
+        "name": "AIDC 전력수요 재산정 언론",
+        "official": False,
+        "url": (
+            "https://news.google.com/rss/search?q="
+            + quote_plus('("AIDC" OR "데이터센터" OR "AI 인프라") ("전력수요" OR "전력계획" OR "전기본") ("축소" OR "반토막" OR "하향" OR "3~4GW")')
+            + "&hl=ko&gl=KR&ceid=KR:ko"
+        ),
+    },
+    {
+        "name": "AIDC 전력수요 재산정 공식",
+        "official": True,
+        "url": (
+            "https://news.google.com/rss/search?q="
+            + quote_plus('site:mcee.go.kr ("데이터센터" OR "AIDC") ("전력수요" OR "12차 전기본" OR "수요전망")')
+            + "&hl=ko&gl=KR&ceid=KR:ko"
         ),
     },
 )
