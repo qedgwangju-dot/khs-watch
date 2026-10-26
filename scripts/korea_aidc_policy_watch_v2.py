@@ -66,10 +66,10 @@ EXTRA_RSS_SOURCES = (
 AIDC_ECOSYSTEM_MEDIA_BASELINE = {
     "id": "aidc-20261023-media-news1",
     "title": "AIDC 인허가 절차 줄인다…내년 국산화에 2000억 원 투입 - 뉴스1",
-    "publisher": "뉴스1",
+    "publisher": "전자신문",
     "source": "국내 주요 언론",
     "official": False,
-    "url": "https://www.news1.kr/it-science/internet-platform/6329899",
+    "url": "https://www.etnews.com/20261023000261",
     "published": "Fri, 23 Oct 2026 05:00:00 GMT",
     "category": "AIDC 생태계 지원 방안",
     "stage": 3,
