@@ -23,6 +23,10 @@ STATE_PATH = ROOT / "data" / "rubin_hbm_watch_state.json"
 PENDING_PATH = ROOT / "out" / "rubin_hbm_pending_state.json"
 ALERT_PATH = ROOT / "out" / "rubin_hbm_alert.md"
 UA = "Mozilla/5.0 (compatible; khs-watch/4.1; +https://github.com/qedgwangju-dot/khs-watch)"
+NVIDIA_ABF_SOURCE = "https://nvidianews.nvidia.com/news/nvidia-and-supply-chain-partners-expand-capacity-to-accelerate-ai-infrastructure-buildout"
+SAMSUNG_ABF_SOURCE = "https://samsungsem.com/kr/newsroom/news/view.do?id=10613"
+NVIDIA_ABF_ARTICLE = "https://english.cw.com.tw/article/article.action?id=5082"
+
 
 BASELINE = {
     "as_of": "2026-09-27",
@@ -169,6 +173,8 @@ ABF_AREA_STRUCTURE_BASELINE = {
 }
 
 SEARCHES = [
+    ("google", 'site:nvidianews.nvidia.com NVIDIA Kinsus ABF substrate official signed supply agreement'),
+    ("google", 'site:samsungsem.com 삼성전기 NVIDIA FC-BGA 기판 출하 양산'),
     ("google", 'site:ibiden.com 2026 CPU customer IC package substrate SAP capacity Gama Ono pricing'),
     ("google", 'site:ibiden.com 2026 Intel AMD NVIDIA package substrate customer sales'),
     ("google", 'site:ibiden.com 2026 server CPU demand IC package substrate price operating margin'),
@@ -188,7 +194,7 @@ SEARCHES = [
 ]
 
 OFFICIAL_DOMAINS = (
-    "ibiden.com", "unimicron.com", "samsungsem.com", "ajinomoto.com", "ajinomoto.co.jp",
+    "ibiden.com", "unimicron.com", "samsungsem.com", "nvidianews.nvidia.com", "ajinomoto.com", "ajinomoto.co.jp",
 )
 TRUSTED_DOMAINS = (
     "reuters.com", "hankyung.com", "mt.co.kr", "biz.chosun.com", "sedaily.com",
@@ -553,6 +559,120 @@ def parse_research_update(text: str, url: str) -> dict:
             out["feynman_2028_area_vs_2026_max_multiple"] = 5.0
 
     return out if len(out) > 1 else {}
+
+
+def parse_nvidia_abf_official(body: str, url: str) -> dict:
+    """Issuer-bound proof: joint official announcements, not a news reprint."""
+    h=host_of(url)
+    low=clean_text(body or "").lower()
+    if h=="nvidianews.nvidia.com" and url.rstrip("/")==NVIDIA_ABF_SOURCE:
+        if not all(w in low for w in ("nvidia and supply chain partners expand capacity",
+                                      "samsung electro-mechanics","ibiden","unimicron",
+                                      "2.5x","capacity reservation agreement")):
+            return {}
+        return {"issuer":"nvidia","global_capacity_3yr_multiple":2.5,
+                "official_substrate_suppliers":["IBIDEN","Samsung Electro-Mechanics","Unimicron"],
+                "ibiden_ono_ramp_year":2028,"unimicron_start_year":2027,
+                "unimicron_start_quarter":2,"unimicron_full_ramp_year":2028,
+                "kinsus_in_oct21_supplier_list":False}
+    if h in ("samsungsem.com","www.samsungsem.com") and url.rstrip("/")==SAMSUNG_ABF_SOURCE:
+        if not all(w in low for w in ("삼성전기","엔비디아","전략적 비즈니스 파트너십",
+                                      "2026년부터","다년간","세종","부산")):
+            return {}
+        return {"issuer":"samsung","official_multiyear_agreement":True,
+                "first_supply_plan_year":2026,"sites":["세종","부산"],
+                "compute_substrates":True,"network_switch_substrates":True,
+                "nvidia_volume_growth_double_digit_forecast":True,
+                "nvidia_2028_capacity_share_numeric":None,
+                "shipments_completed_verified":False,
+                "nvidia_contract_amount_krw":None,
+                "customer_capex_support_exact_krw":None}
+    return {}
+
+
+def verify_nvidia_abf_press(reader=None) -> tuple[dict,dict]:
+    reader = reader or article_text
+    proofs,status={},{}
+    for issuer,url in (("nvidia",NVIDIA_ABF_SOURCE),("samsung",SAMSUNG_ABF_SOURCE)):
+        try:
+            parsed=parse_nvidia_abf_official(reader(url),url)
+            status[issuer]="verified" if parsed else "body_unverified"
+            if parsed: proofs[issuer]=parsed
+        except Exception as exc:
+            status[issuer]="error_"+type(exc).__name__
+    if len(proofs)!=2:
+        return {},status
+    return {"verified_by_two_issuers":True,"fact_date":"2026-10-21",
+            "global_supply_capacity_3yr_multiple":2.5,"samsung_supply_plan_year":2026,
+            "samsung_multiyear_signed":True,"samsung_sites":["세종","부산"],
+            "compute_and_switch_fc_bga":True,
+            "unimicron_capacity_reservation":True,"ibiden_capacity_reservation":True,
+            "unimicron_extra_capacity_quarter":"2027Q2","unimicron_full_ramp":"2028_mid",
+            "ibiden_ono_ramp":"2028Q1","samsung_2028_capacity_share":"significant_no_pct",
+            "kinsus_stage":"industry_candidate_not_oct21_official_partner",
+            "customer_shipments_confirmed":False,
+            "nvidia_specific_contract_amount_krw":None,
+            "samsung_preexisting_sejong_capex_eok_krw":42700,
+            "samsung_preexisting_vietnam_capex_eok_krw":25100,
+            "oct19_other_memory_substrate_contract_eok_krw":3605,
+            "oct19_contract_attributed_to_nvidia":False,
+            "source_urls":[NVIDIA_ABF_SOURCE,SAMSUNG_ABF_SOURCE]},status
+
+
+def parse_future_nvidia_abf_milestone(body: str, url: str) -> str:
+    if host_of(url) not in ("nvidianews.nvidia.com","samsungsem.com","www.samsungsem.com"):
+        return ""
+    for clause in re.split(r"(?<=[.!?])\s+|[。；;\r\n]+",clean_text(body or "")):
+        if re.search(r"\b(?:plan|plans|will|expected|expect|target|aim)\b|계획|예정|전망|목표",clause,re.I):
+            continue
+        if (re.search("NVIDIA|엔비디아",clause,re.I) and re.search("Kinsus|景碩|景硕",clause,re.I)
+                and re.search("ABF|FC.?BGA|substrate|기판",clause,re.I)
+                and re.search("has signed|signed a.*agreement|계약.*체결",clause,re.I)):
+            return "kinsus_official_contract"
+        if (re.search("NVIDIA|엔비디아",clause,re.I)
+                and re.search("Samsung Electro.Mechanics|삼성전기",clause,re.I)
+                and re.search("ABF|FC.?BGA|substrate|기판",clause,re.I)
+                and re.search("began shipping|has started shipments|began deliveries|출하.*시작|납품.*개시",clause,re.I)):
+            return "samsung_actual_shipments"
+    return ""
+
+
+def nvidia_abf_changes(prior: dict, current: dict, future: list[str]) -> list[str]:
+    changes=[]
+    if current and not prior.get("verified_by_two_issuers"):
+        changes.append("official_20261021")
+    if current and prior.get("verified_by_two_issuers"):
+        old=prior.get("global_supply_capacity_3yr_multiple")
+        new=current.get("global_supply_capacity_3yr_multiple")
+        if old is not None and new is not None and abs(float(new)-float(old))>=0.2:
+            changes.append("global_capacity_revised")
+    for event in future:
+        if not (prior.get("milestones") or {}).get(event) and event not in changes:
+            changes.append(event)
+    return changes
+
+
+def build_nvidia_abf_alert(changes: list[str], progress: dict) -> str:
+    lines=["<b>삼성전기·NVIDIA ABF 기판 공식 공급계약 감시</b>","",
+      "• 확정: 삼성전기·NVIDIA 2026년 10월 21일 다년 공급 파트너십. AI 연산 칩셋·네트워크 스위치용 FC-BGA/ABF 공급.",
+      "• 2026년부터 공급 예정·세종/부산 전용 생산라인 추진. 실제 고객별 출하 수량·매출·계약금액은 미공개.",
+      "• NVIDIA의 3년간 기판 능력 2.5배 확대는 IBIDEN·Unimicron·삼성전기를 포함한 전체 공급망 목표이며 삼성전기 단독 2.5배가 아님.",
+      "• IBIDEN Ono는 2028년 1분기부터 증설, Unimicron KF는 2027년 2분기 추가 능력·2028년 중반 완전 가동 목표.",
+      "• Kinsus는 공급망 진입 추진 보도. 10월 21일 공식 발표의 확정 기판 공급사 명단에 포함되지 않았음.",
+      "• 과거 설비투자: 세종 4조2,700억원, 베트남 2조5,100억원. 고객 지원금과 동일 금액을 중복 합산하지 않음.",
+      "• 10월 19일 3,605억원 메모리 기판 계약은 별개. 이번 NVIDIA 계약액으로 간주하지 않음.",
+      "• 병목: SAP 미세회로·ABF 적층·기판 휨·수율·고온 동작 검사 및 고객 신뢰성 검증.",
+      "• 다음 확인: 실제 납품·고객 검수·계약금액·생산능력·Kinsus 공식 수주·가격·마진."]
+    if "global_capacity_revised" in changes:
+        lines.append("• NVIDIA 공식 전체 기판 공급능력 목표 변경 확인(최신 공식자료 재검증 필요).")
+    if "kinsus_official_contract" in changes:
+        lines.append("• 신규 확정: Kinsus NVIDIA 기판 계약 원문 확인.")
+    if "samsung_actual_shipments" in changes:
+        lines.append("• 신규 확정: 삼성전기 NVIDIA 기판 실제 출하 원문 확인.")
+    lines += ["",f'• <a href="{NVIDIA_ABF_SOURCE}">NVIDIA 공식 발표</a>',
+              f'• <a href="{SAMSUNG_ABF_SOURCE}">삼성전기 공식 발표</a>']
+    return "\n".join(lines)+"\n"
+
 
 def material_events(previous: dict, updates: list[dict]) -> list[dict]:
     official = previous.get("official") or {}
@@ -938,7 +1058,9 @@ def discover(now: datetime, seen_urls: set[str]) -> list[dict]:
                 continue
             fetched += 1
             text = clean_text(f"{base} {article_text(url)}")
-            parsed = parse_official_update(text, url) if source_rank(url) == 3 else parse_research_update(text, url)
+            milestone = parse_future_nvidia_abf_milestone(text,url) if source_rank(url)==3 else ""
+            parsed = ({"kind":"nvidia_abf_milestone","milestone":milestone} if milestone else
+                      (parse_official_update(text,url) if source_rank(url)==3 else parse_research_update(text,url)))
             if parsed:
                 out.append({
                     "url": url,
@@ -959,29 +1081,51 @@ def main() -> None:
 
     updates = discover(now, seen_urls)
     events = material_events(previous, updates)
+    verified, source_checks = verify_nvidia_abf_press()
+    old_partner = previous.get("nvidia_substrate_supply") or {}
+    future = [e["parsed"]["milestone"] for e in updates if e.get("parsed",{}).get("kind")=="nvidia_abf_milestone"]
+    new_partner_events = nvidia_abf_changes(old_partner,verified,future)
     structure_upgrade = int((previous.get("area_structure") or {}).get("version") or 0) < int(ABF_AREA_STRUCTURE_BASELINE["version"])
     if structure_upgrade:
         upgrade_url = ABF_AREA_STRUCTURE_BASELINE["bofa_model"]["current_public_recap"]["source"] if int(ABF_AREA_STRUCTURE_BASELINE["version"]) >= 3 else ABF_AREA_STRUCTURE_BASELINE["official"]["ibiden_sap_load_source"]
         events.insert(0, {"type": "area_structure_baseline", "key": f"area_structure_v{ABF_AREA_STRUCTURE_BASELINE['version']}", "url": upgrade_url})
     latest = merge_state(previous, updates, events)
+    partner = copy.deepcopy(old_partner)
+    if verified:
+        partner.update(verified)
+    partner.setdefault("milestones",{})
+    for evt in future:
+        partner["milestones"][evt]=True
+    latest["nvidia_substrate_supply"] = partner
+    latest["nvidia_substrate_source_checks"] = {
+        "checked_at_kst":now.isoformat(timespec="seconds"),
+        "nvidia":source_checks.get("nvidia"),
+        "samsung":source_checks.get("samsung"),
+        "fully_verified":bool(verified),
+    }
     if structure_upgrade:
         latest["area_structure"] = copy.deepcopy(ABF_AREA_STRUCTURE_BASELINE)
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
     latest["candidate_count"] = len(updates)
-    latest["event_count"] = len(events)
+    latest["event_count"] = len(events) + len(new_partner_events)
 
     pending["abf_cpu_monetization"] = latest
     write_json(PENDING_PATH, pending)
 
-    if events:
-        block = build_alert(events, latest)
+    if events or new_partner_events:
+        blocks = []
+        if events:
+            blocks.append(build_alert(events,latest).strip())
+        if new_partner_events:
+            blocks.append(build_nvidia_abf_alert(new_partner_events,partner).strip())
+        block = "\n\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n".join(blocks)
         existing = ALERT_PATH.read_text(encoding="utf-8").strip() if ALERT_PATH.exists() else ""
-        merged = (existing + "\n\n" + block.strip()).strip() if existing else block.strip()
-        ALERT_PATH.write_text(merged + "\n", encoding="utf-8")
+        merged = (existing + "\n\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n" + block).strip() if existing else block
+        ALERT_PATH.write_text(merged + "\n",encoding="utf-8")
 
     print(
         "abf_cpu_monetization_watch=true "
-        f"candidates={len(updates)} events={len(events)} notify={str(bool(events)).lower()}"
+        f"candidates={len(updates)} events={len(events)+len(new_partner_events)} notify={str(bool(events or new_partner_events)).lower()} official_checks={source_checks}"
     )
 
 if __name__ == "__main__":

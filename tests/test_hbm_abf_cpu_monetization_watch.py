@@ -237,5 +237,68 @@ class AbfCpuMonetizationAlertTests(unittest.TestCase):
         self.assertIn("2021 역사 기준", alert)
 
 
+class NvidiaSamsungPackageSubstrateTests(unittest.TestCase):
+    def nvidia_body(self):
+        return ("NVIDIA and Supply Chain Partners Expand Capacity to Accelerate AI Infrastructure Buildout. "
+                "NVIDIA plans substrate capacity 2.5x for the next three years. "
+                "NVIDIA confirms IBIDEN, Samsung Electro-Mechanics and Unimicron. "
+                "NVIDIA signed a capacity reservation agreement with Unimicron for KF substrate expansion.")
+    def samsung_body(self):
+        return ("삼성전기와 엔비디아(NVIDIA)는 2026년부터 다년간 공급을 위한 "
+                "전략적 비즈니스 파트너십을 발표했다. 세종 및 부산 전용 생산라인을 구축한다.")
+    def test_both_issuer_primary_originals(self):
+        a=w.parse_nvidia_abf_official(self.nvidia_body(),w.NVIDIA_ABF_SOURCE)
+        b=w.parse_nvidia_abf_official(self.samsung_body(),w.SAMSUNG_ABF_SOURCE)
+        self.assertEqual(a["global_capacity_3yr_multiple"],2.5)
+        self.assertEqual(a["official_substrate_suppliers"],["IBIDEN","Samsung Electro-Mechanics","Unimicron"])
+        self.assertFalse(a["kinsus_in_oct21_supplier_list"])
+        self.assertTrue(b["official_multiyear_agreement"])
+        self.assertFalse(b["shipments_completed_verified"])
+    def test_media_reprint_and_forged_domain_never_official(self):
+        self.assertEqual(w.parse_nvidia_abf_official(self.nvidia_body(),w.NVIDIA_ABF_ARTICLE),{})
+        self.assertEqual(w.parse_nvidia_abf_official(self.nvidia_body(),"https://fake.example.com/official"),{})
+    def test_missing_one_issuer_cannot_send_verified_contract(self):
+        snap,checks=w.verify_nvidia_abf_press(reader=lambda u:self.nvidia_body() if u==w.NVIDIA_ABF_SOURCE else "")
+        self.assertEqual(snap,{})
+        self.assertEqual(checks["samsung"],"body_unverified")
+        self.assertEqual(w.nvidia_abf_changes({},snap,[]),[])
+    def test_correct_scope_funding_and_contract_exclusion(self):
+        snap,checks=w.verify_nvidia_abf_press(
+            reader=lambda u:self.nvidia_body() if u==w.NVIDIA_ABF_SOURCE else self.samsung_body())
+        self.assertTrue(snap["verified_by_two_issuers"])
+        self.assertIsNone(snap["nvidia_specific_contract_amount_krw"])
+        self.assertFalse(snap["oct19_contract_attributed_to_nvidia"])
+        self.assertEqual(snap["samsung_preexisting_sejong_capex_eok_krw"],42700)
+        self.assertEqual(snap["samsung_preexisting_vietnam_capex_eok_krw"],25100)
+        self.assertEqual(checks["nvidia"],"verified")
+    def test_first_notice_and_republished_silence(self):
+        s,_=w.verify_nvidia_abf_press(
+            reader=lambda u:self.nvidia_body() if u==w.NVIDIA_ABF_SOURCE else self.samsung_body())
+        self.assertEqual(w.nvidia_abf_changes({},s,[]),["official_20261021"])
+        self.assertEqual(w.nvidia_abf_changes(s,s,[]),[])
+    def test_kinsus_rumor_not_official_contract(self):
+        text="NVIDIA is grooming Kinsus as a potential ABF substrate supplier."
+        self.assertEqual(w.parse_future_nvidia_abf_milestone(text,w.NVIDIA_ABF_ARTICLE),"")
+        self.assertEqual(w.parse_future_nvidia_abf_milestone(text,w.NVIDIA_ABF_SOURCE),"")
+    def test_achieved_milestone_vs_future_targets(self):
+        u="https://nvidianews.nvidia.com/news/kinsus-2027"
+        self.assertEqual(w.parse_future_nvidia_abf_milestone(
+            "NVIDIA has signed a supply agreement with Kinsus for ABF substrate products.",u),
+            "kinsus_official_contract")
+        u2="https://samsungsem.com/kr/newsroom/news/view.do?id=10999"
+        self.assertEqual(w.parse_future_nvidia_abf_milestone(
+            "Samsung Electro-Mechanics and NVIDIA began shipping ABF substrates.",u2),
+            "samsung_actual_shipments")
+        self.assertEqual(w.parse_future_nvidia_abf_milestone(
+            "Samsung Electro-Mechanics and NVIDIA plan to start shipments of ABF substrates in 2027.",u2),"")
+    def test_alert_has_no_samsung_specific_2_5x_or_memory_contract_mislabel(self):
+        a=w.build_nvidia_abf_alert(["official_20261021"],{})
+        self.assertIn("삼성전기 단독 2.5배가 아님",a)
+        self.assertIn("3,605억원",a)
+        self.assertIn("별개",a)
+        self.assertIn(w.NVIDIA_ABF_SOURCE,a)
+
+
+
 if __name__ == "__main__":
     unittest.main()
