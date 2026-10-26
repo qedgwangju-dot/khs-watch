@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-27T06:47:55+09:00",
+  "last_checked_kst": "2026-10-27T08:00:09+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3492,6 +3492,15 @@
       "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE00TWdKc21oaEJOQjRxcy1KV2pwVTNPS0tSZGtvN00tZHdWemlyR1B1YmphOVFWb2xYaEFLaHJnc1BEbUNJb1hHUjBWeVpwMDVqNUgzejRXdEx3WHRGdC1DRTVydFNNWm04Qmc?oc=5",
       "first_seen_kst": "2026-10-27T06:47:55+09:00",
       "suppressed_stale": true
+    },
+    "f5b0dad416e86fe2effa02a1": {
+      "title": "[Tech & Now] 리벨리온, 스퀴즈비츠 인수…노타, K-엑사원 NPU 최적화 등 - www.ebn.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA3UlRDU3RVMks0cTBEWmd6MWlCem1NSEhLT1BleEdSMl9Jak1xcExHWGMzb2MxVGxYRVBVTVYybmZJUG03S2QyR21GTnpTdEhFS1V5MDRFM1dtSUd1aGdNS29aV2trRUF6?oc=5",
+      "summary": "[Tech & Now] 리벨리온, 스퀴즈비츠 인수…노타, K-엑사원 NPU 최적화 등 www.ebn.co.kr",
+      "event_signature": "squeezebits|capital|acquisition",
+      "material_stage": 5,
+      "first_seen_kst": "2026-10-27T08:00:09+09:00",
+      "suppressed_duplicate": "same_url"
     }
   }
 }
