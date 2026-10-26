@@ -29,6 +29,12 @@ HYNIX_FINANCE_YNA = "https://www.yna.co.kr/view/AKR20261019072200003"
 HBF_OCP_STORAGE_URL = "https://www.opencompute.org/contribution-family/storage/"
 HBF_FIRST_SPEC_URL = "https://www.opencompute.org/contribution-family/storage/"
 HBF_REPORT_URL = "https://newspim.com/news/view/20261014000748"
+BERNSTEIN_PAIR_KEY = 'hbm_bernstein_q3_pair|bernstein|2026Q3'
+BERNSTEIN_PAIR_PAGES = (
+    'https://kr.investing.com/news/stock-market-news/article-93CH-2136806',
+    'https://uk.investing.com/news/stock-market-news/bernstein-says-samsung-overtook-sk-hynix-in-hbm-revenue-in-3q26-93CH-4924676',
+    'https://www.vlsi.kr/ko/bernstein-hbm-crossover-ko/',
+)
 HBM_GENERATION_PRICE_TRACK_VERSION = 1
 MARKET_PRICING_TRACK_VERSION = 1
 EXTRA_QUERIES = [
@@ -37,6 +43,7 @@ EXTRA_QUERIES = [
     '(HBM OR DDR5) (wafer OR 웨이퍼 OR "glass carrier" OR 글라스 캐리어 OR P5) (allocation OR 비중 OR 세정 OR 가동)',
     '(Malaysia OR 말레이시아) 8542323000 HBM (Intel OR ASE OR "TF-AMD" OR MAPC OR packaging)',
     '(Bernstein OR "J.P. Morgan" OR UBS OR Citi OR "Morgan Stanley") HBM (revenue OR 매출 OR share OR 점유율)',
+    '(Bernstein OR 번스타인) (Samsung OR 삼성전자) (SK hynix OR SK하이닉스) HBM (3Q26 OR Q3 2026 OR 3분기) (revenue OR 매출)',
     '(J.P. Morgan OR JPMorgan OR UBS OR Citi OR "Morgan Stanley" OR BofA OR "Goldman Sachs") Samsung HBM (ASP OR "average selling price" OR 8-Hi OR 12-Hi OR 16-Hi OR 평균판매단가 OR 8단 OR 12단 OR 16단)',
     'TrendForce 2027 HBM (Blended ASP OR 평균판매가격 OR 8-Hi OR 8단 OR per-Gb OR Gb당) (121 OR 10 OR 20)',
     '(TSMC OR ASE) (advanced packaging OR CoWoS OR 후공정) (testing OR tester OR capex OR 설비투자)',
@@ -1703,6 +1710,40 @@ def parse_hynix_supplier_program(item,body):
     return out
 
 
+
+def parse_bernstein_pair(item, body):
+    """Corroborated secondary report of one Bernstein 3Q26 sales model; not issuer actuals."""
+    h=host(item.get('direct_link',''))
+    if not (h=='investing.com' or h.endswith('.investing.com')
+            or h=='vlsi.kr' or h.endswith('.vlsi.kr')
+            or h=='finance.biggo.com'):
+        return []
+    text=re.sub(r'\s+', ' ',str(body or ''))
+    if not (re.search(r'Bernstein|번스타인',text,re.I)
+            and re.search(r'\bHBM\b',text,re.I)
+            and re.search(r'3Q\s*26|Q3\s*2026|2026\s*년?\s*3\s*분기|third\s+quarter\s+(?:of\s+)?2026',text,re.I)):
+        return []
+    sam=re.search(r'(?:Samsung(?:\s+Electronics)?|삼성전자)[^.!?]{0,280}?'
+                  r'(?:\$\s*8[.]7\s*(?:billion|B\b)|\b(?:USD|US\$)\s*8[.]7\s*B\b|87\s*억\s*달러)',text,re.I)
+    sk=re.search(r'(?:SK\s*hynix|SK하이닉스)[^.!?]{0,350}?'
+                 r'(?:\$\s*7[.]6\s*(?:billion|B\b)|\b(?:USD|US\$)\s*7[.]6\s*B\b|76\s*억\s*달러)',text,re.I)
+    if not sam or not sk:
+        return []
+    v={'samsung_usd':8700000000,'skhynix_usd':7600000000,
+       'samsung_qoq_pct':33,'skhynix_qoq_pct':11,'difference_usd':1100000000,
+       'previous_model_samsung_usd':11400000000,
+       'previous_model_skhynix_usd':5900000000,
+       'previous_model_date':'2026-09-21','model_date':'2026-10-22',
+       'underlying_source':'Bernstein (one analyst); cited by secondary outlets',
+       'company_reported':False,'profit_leadership_confirmed':False}
+    row=make_record('hbm_bernstein_q3_pair',['bernstein','2026Q3'],v,
+                    'USD/quarter,estimate','2026Q3',item,
+                    'Bernstein 10월22일 HBM 매출 추정: 삼성 87억달러, SK하이닉스 76억달러',
+                    as_of='2026-10-22',scope='single_analyst_estimate_not_company_sales')
+    row['evidence']='reported'
+    return [row]
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
@@ -1710,6 +1751,7 @@ def parse_records(item, body):
     if malaysia:
         records.append(malaysia)
     records.extend(parse_hbm_revenue_estimates(item, body))
+    records.extend(parse_bernstein_pair(item, body))
     records.extend(parse_hbm_market_pricing(item, body))
     records.extend(parse_hbm_generation_pricing(item, body))
     records.extend(parse_postprocess_records(item, body))
@@ -2399,7 +2441,7 @@ def update_state(state, records, now, seeds=None):
         if r['as_of'][:10] > now.date().isoformat():
             continue
         grouped.setdefault(r['key'], []).append(r)
-    sparse_axes = {'hynix_supplier_guarantee','hynix_trinity_fab','hynix_supplier_rnd', 'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'glass_jv_stage', 'foplp_mature_node_industry', 'foplp_company_ai_stage', 'hbf_ocp_spec','hbf_reported_roadmap','hbf_issuer_milestone','hbm_generation_pricing', 'hbm_market_pricing'}
+    sparse_axes = {'hynix_supplier_guarantee','hynix_trinity_fab','hynix_supplier_rnd', 'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'glass_jv_stage', 'foplp_mature_node_industry', 'foplp_company_ai_stage', 'hbf_ocp_spec','hbf_reported_roadmap','hbf_issuer_milestone','hbm_bernstein_q3_pair','hbm_generation_pricing', 'hbm_market_pricing'}
     for key, rows in grouped.items():
         rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
         prior = state['latest'].get(key) or state['last_notified'].get(key)
@@ -2475,6 +2517,7 @@ def render(change, rate=None):
              'carrier_cleaning': 'HBM 유리 지지판 세정 처리량', 'fab_stage': 'P5 Fab1 공급 일정',
              'malaysia_hsk10_export': '한국→말레이시아 HBM 관련 HSK10 수출',
              'hbm_revenue_estimate': '기관 HBM 분기 매출 추정 변화',
+             'hbm_bernstein_q3_pair': 'Bernstein 3분기 HBM 매출 추정·양사 상대변화',
              'hbm_market_pricing': '시장 HBM 평균판매단가·8단/12단 구조 변화',
              'postprocess_capex': 'HBM 후공정 설비투자·병목 변화',
              'postprocess_order': 'HBM 후공정 장비 수주 변화',
@@ -2763,6 +2806,17 @@ def render(change, rate=None):
             if v.get('eight_hi_premium_min_pct') is not None:
                 parts.append(f"8단 Gb당 프리미엄 {v['eight_hi_premium_min_pct']:.0f}~{v['eight_hi_premium_max_pct']:.0f}%")
             return " / ".join(parts)
+        if record['axis']=='hbm_bernstein_q3_pair':
+            def price(n):
+                return f"{n/1e9:g}십억달러" + (
+                    f"(약 {n*rate/1e12:.2f}조원)" if rate else "(원화 환율 확인 불가)")
+            a,b=v['samsung_usd'],v['skhynix_usd']
+            olda,oldb=v['previous_model_samsung_usd'],v['previous_model_skhynix_usd']
+            return (f"삼성전자 {price(a)} (전분기 +33%) / "
+                    f"SK하이닉스 {price(b)} (전분기 +11%) / "
+                    f"삼성 추정 우위 {price(a-b)} / "
+                    f"9월 21일 모형 대비 삼성 {(a/olda-1)*100:+.1f}%, "
+                    f"SK하이닉스 {(b/oldb-1)*100:+.1f}%")
         if record['axis'] == 'hbm_revenue_estimate':
             amount = v.get('estimate_usd') or 0
             text = f"분기 추정 {amount/1e9:.1f}십억달러"
@@ -2909,6 +2963,12 @@ def render(change, rate=None):
             )
         lines.append("• 시장 전체 TrendForce 전망이며 삼성전자·SK하이닉스·Micron 개별 ASP와 합치지 않습니다.")
         lines.append("• +121%는 2026년=100일 때 2027년 가격 레벨 221을 뜻하며, 계약가 범위와 Blended ASP는 별도 상태입니다.")
+    if r['axis']=='hbm_bernstein_q3_pair':
+        lines.append('• 출처: Bernstein 수출 회귀모형을 재인용한 10월22일 보도. 회사 공식 HBM 매출이나 이익 역전 확정이 아닙니다.')
+        lines.append('• 9월21일 모형은 8월까지의 자료, 이번 모형은 7~9월 수출 기초입니다. 추정치 수정과 실제 기업 실적 변동을 구분합니다.')
+        lines.append('• 지역 HSK10에는 HBM 이외 복합 메모리도 들어갈 수 있으며 단가·수율·환율·제품혼합이 모형 오차 원인입니다.')
+        lines.append('• 2026년 2분기 Counterpoint 매출점유율은 SK하이닉스 50%·삼성 33%. 다른 기관·기간이므로 섞지 않습니다.')
+        lines.append('• 다음 검증: 10월28일 09:00 SK하이닉스, 10월29일 10:00 삼성전자 공식 3분기 실적발표(KST). HBM4 물량·마진을 별도 확인.')
     if r['axis'] == 'hbm_revenue_estimate':
         method_labels = {'regression_proxy':'수출 회귀식 대용지표', 'formal_forecast':'기관 공식 전망', 'reported_estimate':'보도 추정'}
         lines.append('• 성격: ' + method_labels.get(r['value'].get('method'), r['value'].get('method','')) + '이며 회사 확정 매출이 아닙니다.')
@@ -3070,6 +3130,28 @@ def main():
         return [e for e in events if original_relevant(e.get('title', '') + ' ' + e.get('description', ''))]
     legacy.read_events = gather
     legacy.main()
+    # Recheck only until the verified reported pair has been acknowledged.
+    # A failed page read is a coverage gap; no HBM issuer revenue is invented.
+    prior_pairs=(initial.get('memory_axes') or {}).get('last_notified') or {}
+    if now.date().isoformat()>='2026-10-22' and BERNSTEIN_PAIR_KEY not in prior_pairs:
+        pair_found=False
+        for url in BERNSTEIN_PAIR_PAGES:
+            try:
+                raw=legacy.fetch(url,timeout=10).decode('utf-8',errors='replace')
+                body,_=read_document(raw)
+                item={'direct_link':url,'source':'Bernstein 재인용 보도',
+                      'title':'Bernstein 2026년 3분기 HBM 삼성·SK 매출 추정',
+                      'published_at_kst':'2026-10-22T18:50:00+09:00'}
+                rows=parse_bernstein_pair(item,body)
+                if rows:
+                    observed.extend(rows)
+                    pair_found=True
+                    break
+                coverage.append('Bernstein HBM 87억·76억달러 동일기사 검증 불가: '+host(url))
+            except Exception as exc:
+                coverage.append('Bernstein 재인용 조회 실패: '+host(url)+' / '+type(exc).__name__)
+        if not pair_found:
+            coverage.append('Bernstein 2026Q3 추정치 확인되지 않아 재조회 유지')
     # Revisit the dated October 19 announcement until it is represented by
     # verified state. Do not create a fresh alert from an old page each hour.
     old_program=(initial.get('memory_axes') or {}).get('latest') or {}
@@ -3159,12 +3241,14 @@ def main():
         foundry_axes = {'foundry_loss_outlook','foundry_external_2nm','foundry_taylor_schedule','foundry_base_die_allocation','foundry_node_expansion','foundry_pricing','foundry_hbm5_2nm'}
         glass_axes = {'glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex','glass_jv_stage','foplp_mature_node_industry','foplp_company_ai_stage'}
         generation_price_axes = {'hbm_generation_pricing'}
+        bernstein_axes={'hbm_bernstein_q3_pair'}
         hbf_axes = {'hbf_ocp_spec','hbf_issuer_milestone','hbf_reported_roadmap'}
         partner_axes = {'hynix_supplier_guarantee','hynix_trinity_fab','hynix_supplier_rnd'}
-        regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes | generation_price_axes | hbf_axes | partner_axes]
+        regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes | generation_price_axes | hbf_axes | partner_axes | bernstein_axes]
         foundry = [k for k in chosen if state['pending'][k]['record']['axis'] in foundry_axes]
         glass = [k for k in chosen if state['pending'][k]['record']['axis'] in glass_axes]
         generation_price = [k for k in chosen if state['pending'][k]['record']['axis'] in generation_price_axes]
+        bernstein=[k for k in chosen if state['pending'][k]['record']['axis'] in bernstein_axes]
         hbf = [k for k in chosen if state['pending'][k]['record']['axis'] in hbf_axes]
         partner = [k for k in chosen if state['pending'][k]['record']['axis'] in partner_axes]
         sections = []
@@ -3187,6 +3271,10 @@ def main():
         if hbf:
             blocks = ['<b>SK하이닉스·Sandisk HBF 최종 규격·실제 양산 전환 감시</b>']
             blocks.extend(render(state['pending'][key], rate) for key in hbf)
+            sections.append('\n\n'.join(blocks))
+        if bernstein:
+            blocks=['<b>Bernstein HBM 매출 추정 순위 변화(공식 확정 아님)</b>']
+            blocks.extend(render(state['pending'][key],rate) for key in bernstein)
             sections.append('\n\n'.join(blocks))
         if generation_price:
             blocks = ['<b>HBM 전 세대 가격 리셋 감시</b>']

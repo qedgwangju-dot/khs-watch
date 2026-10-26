@@ -364,4 +364,57 @@ class DeliveryTests(unittest.TestCase):
         state={'value':1,'_delivery':{'status':'in_flight'}};repo=FakeRepo(state)
         with self.assertRaises(RuntimeError):d.resume_one(repo,'x',state,lambda *x:self.fail('sent'))
 
+
+class BernsteinReversalTests(unittest.TestCase):
+    def mk(self,url,body):
+        item=dict(ITEM);item['direct_link']=url
+        return m.parse_bernstein_pair(item,body)
+
+    def test_reported_english_pair_only(self):
+        body=("Bernstein Q3 2026 HBM forecast. "
+              "Samsung's third quarter 2026 HBM revenue at $8.7 billion, up 33% QoQ. "
+              "SK hynix's HBM revenue for 3Q26 at $7.6 billion, up 11% QoQ.")
+        r=self.mk('https://uk.investing.com/news/stock-market-news/example',body)
+        self.assertEqual(len(r),1)
+        self.assertEqual(r[0]['key'],m.BERNSTEIN_PAIR_KEY)
+        self.assertEqual(r[0]['value']['difference_usd'],1100000000)
+        self.assertEqual(r[0]['evidence'],'reported')
+        self.assertFalse(r[0]['value']['company_reported'])
+
+    def test_korean_source_and_canonical_event_key(self):
+        body=('번스타인 2026년 3분기 HBM 분석. '
+              '삼성전자의 2026년 3분기 HBM 매출은 87억 달러. '
+              'SK하이닉스의 3분기 HBM 매출은 76억 달러.')
+        r=self.mk('https://kr.investing.com/news/stock-market-news/article-93CH-2136806',body)
+        self.assertEqual(r[0]['key'],m.BERNSTEIN_PAIR_KEY)
+
+    def test_headline_only_prior_model_and_reversed_attribution_fail_closed(self):
+        url='https://www.vlsi.kr/ko/bernstein-hbm-crossover-ko/'
+        cases=('Bernstein Samsung overtook SK hynix in 3Q26 HBM revenue.',
+               'Bernstein HBM 3Q26 Samsung revenue $11.4B, SK hynix $5.9B.',
+               'Bernstein HBM 3Q26 Samsung revenue $7.6B, SK hynix $8.7B.')
+        for body in cases:
+            self.assertEqual(self.mk(url,body),[])
+
+    def test_render_has_prices_revisions_and_scope(self):
+        body=('Bernstein Q3 2026 HBM. Samsung Q3 2026 HBM revenue USD 8.7B '
+              'and SK hynix Q3 2026 HBM revenue USD 7.6B.')
+        row=self.mk('https://www.vlsi.kr/en/bernstein-hbm-crossover-en/',body)[0]
+        out=m.render({'record':row,'old':None,'reasons':['새 비교 가능한 상태']},1322.22)
+        for needle in ('8.7십억달러','7.6십억달러','1.1십억달러','-23.7%','+28.8%',
+                       '공식 HBM 매출'):
+            self.assertIn(needle,out)
+
+    def test_first_event_and_repeat_do_not_duplicate(self):
+        item='https://kr.investing.com/news/stock-market-news/article-93CH-2136806'
+        body='번스타인 2026년 3분기 HBM: 삼성전자 87억 달러, SK하이닉스 76억 달러.'
+        row=self.mk(item,body)[0]
+        first=m.update_state({},[row],datetime(2026,10,26,12),[])
+        self.assertIn(row['key'],first['pending'])
+        first['last_notified'][row['key']]=row
+        first['pending'].pop(row['key'])
+        later=m.update_state(first,[row],datetime(2026,10,26,13),[])
+        self.assertNotIn(row['key'],later['pending'])
+
+
 if __name__=='__main__':unittest.main()
