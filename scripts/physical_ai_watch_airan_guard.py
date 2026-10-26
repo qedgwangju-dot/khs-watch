@@ -8219,6 +8219,115 @@ for _q in [*(R27_ROBOT_COMMERCE_PREFIX+x for x in R27_ROBOT_COMMERCE),*R27_LIVE_
         base.QUERIES.append(_q)
 
 
+
+# 2026-10-26 MicroDuck procurement agreement: a distinct commercial stage.
+# 50k robots x 15 XL330 = 750k indicated actuators, NOT proven
+# delivered volume or an irrevocable purchase order. Monitor those later.
+MICRODUCK_OCT26_ID="DIRECT_MICRODUCK_POLLEN_ROBOTIS_PROCUREMENT_20261026"
+MICRODUCK_OCT26_EVENT={
+    "title":"로보티즈–Pollen Robotics MicroDuck XL330 공급계약 체결·초기 요청 75만개",
+    "link":"https://search.newspim.com/news/view/20261026000539",
+    "source":"뉴스핌·조선비즈·서울경제",
+    "description":(
+        "2026-10-26 로보티즈 서울 본사에서 Pollen Robotics와 MicroDuck "
+        "액추에이터 XL330 공급·조달 계약 체결식을 진행. "
+        "초기 고객 요청 로봇 50000대×관절 구동기 15개=750000개 소요. "
+        "서울경제 보도 계약 규모 약 35억원. 이는 계약·조달 협력 발표이며 "
+        "750000개 전량의 구속력 있는 취소불가 발주, 기출하·기인식 매출이 아님. "
+        "실제 확정 발주서 물량·평균판매단가·선수금·납품 시점은 별도 확인. "
+        "로보티즈 측은 공급능력 증강을 추진하며 2027년 2~3분기 "
+        "대응 가능성을 언급. 수요 전망은 확정 주문으로 합산 금지."
+    ),
+}
+_md_prev_query=base.query_news
+_md_prev_group=base.topic_group
+_md_prev_score=base.score
+_md_prev_key=base.key
+_md_prev_category=base.category
+_md_prev_meaning=base.meaning
+_md_prev_risk=base.risk
+_md_prev_verify=base.verification
+_md_prev_select=base.select_diverse
+_MD_GROUP=R27_GROUP["micro"]
+_MD_STAGE="signed_procurement_framework_750k_requested"
+_MD_CAT="로보티즈–Pollen · XL330 공급계약·초기 75만개 조달 수요"
+
+def _md_query(q:str)->list[dict]:
+    if q == MICRODUCK_OCT26_ID:
+        if base.NOW.astimezone(base.KST).date()>dt.date(2026,10,30):
+            return []
+        return [{
+          **MICRODUCK_OCT26_EVENT,
+          "published":None,
+          "microduck_oct26_verified":True,
+        }]
+    return _md_prev_query(q)
+
+def _md_group(text:str)->str|None:
+    if ("MicroDuck" in text or "마이크로덕" in text) and (
+      "Pollen" in text or "폴렌" in text or "로보티즈" in text):
+        return _MD_GROUP
+    return _md_prev_group(text)
+
+def _md_score(item:dict)->int:
+    if item.get("microduck_oct26_verified"):
+        return 26
+    return _md_prev_score(item)
+
+def _md_key(item:dict)->str:
+    if item.get("microduck_oct26_verified"):
+        return hashlib.sha256(
+          b"microduck|pollen|robotis|20261026|signed-procurement-framework-750k"
+        ).hexdigest()
+    return _md_prev_key(item)
+
+def _md_category(text:str,group:str)->str:
+    if group==_MD_GROUP and "750000개" in text and "35억원" in text and "공급계약 체결" in text:
+        return _MD_CAT
+    return _md_prev_category(text,group)
+
+def _md_meaning(cat:str)->str:
+    if cat==_MD_CAT:
+        return ("MicroDuck 로봇 5만대에 XL330 15개씩 초기 75만개 조달 수요가 "
+                "실제 양사 공급계약 체결로 진전했습니다. 보도된 약 35억원은 "
+                "납품 완료 매출이 아니며 발주서·인도·검수·매출인식을 구분합니다.")
+    return _md_prev_meaning(cat)
+
+def _md_risk(cat:str)->str:
+    if cat==_MD_CAT:
+        return ("실제 확정 발주서·선수금 확인, 2027년 2~3분기 양산 처리량, "
+                "액추에이터 수율·발열·신뢰성·반품·교환 접수 및 "
+                "고객 취소 가능성이 병목. 조기 지표는 납품·검수와 회사 매출공시.")
+    return _md_prev_risk(cat)
+
+def _md_verification(item:dict,group:str,text:str)->str:
+    if item.get("microduck_oct26_verified"):
+        return ("2026-10-26 현장 계약식·당사자 발언, 뉴스핌·조선비즈·서울경제 "
+                "교차확인; 구속력 발주서·기출하·매출인식은 아직 별도 검증")
+    return _md_prev_verify(item,group,text)
+
+def _md_select(items:list[dict],seen:set[str],force:bool,limit:int)->list[dict]:
+    chosen=_md_prev_select(items,seen,force,limit)
+    candidates=items if force else [x for x in items if x.get("key") not in seen]
+    hit=next((x for x in candidates if x.get("microduck_oct26_verified")
+              and x.get("score",0)>=11),None)
+    if hit and not any(x.get("key")==hit.get("key") for x in chosen):
+        chosen=([hit,*chosen] if len(chosen)<limit else [hit,*chosen[:-1]])
+    return chosen
+
+base.query_news=_md_query
+base.topic_group=_md_group
+base.score=_md_score
+base.key=_md_key
+base.category=_md_category
+base.meaning=_md_meaning
+base.risk=_md_risk
+base.verification=_md_verification
+base.select_diverse=_md_select
+if MICRODUCK_OCT26_ID not in base.QUERIES:
+    base.QUERIES.append(MICRODUCK_OCT26_ID)
+
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()
