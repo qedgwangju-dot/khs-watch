@@ -4186,6 +4186,28 @@
       "telegram_core_fact": "정부가 집값을 잡겠다며 대출 문턱을 높이고 아파트 거래 규제를 강화한 지 1년, 부동산 전문가 30명이 현 정부의 부동산 정책에 매긴 성적표다.",
       "title": "10·15 대책 1년 성적표 ‘50.4점’…전문가 90% “규제 풀어야”"
     },
+    "core:0b26d6b24d1b9047c79abd39": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841539",
+      "source": "뉴시스",
+      "source_body_digest": "9c4dadd2487e75c5c5fba21af31ae79aca21a92f7f47bb760c8a47a0a2f39047",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d89bc375f1961f14ba7aab3e6cf57c728a84ca79f5102f22e48ec663e91467d",
+      "source_fact_keys": [
+        "source_fact:v1:363bb9b8687117927c2f6b1860c40ba91402240c4b1ab668e824041dd3c71374",
+        "source_fact:v1:d458b494569d30f38e0d15be5d5785c66aa3a6b7c1798b8ab3079de4b31e86ff",
+        "source_fact:v1:d9296b153bfd9c58c882926146d5b6320bb55f5e2a9f7e8819a48eb9cd9bbf7f"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓",
+      "telegram_core_fact": "BNK금융그룹은 26일 실적공시를 통해 올 1~3분기 누적 그룹 연결 당기순이익(지배기업지분)이 6223억원으로, 전년 대비 1477억원(19.2%) 감소했다고 밝혔다.",
+      "title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓"
+    },
     "core:0b613d96c5ee313c07ebc4da": {
       "first_seen_kst": "2026-10-12T22:29:29+09:00",
       "lanes": {
@@ -17482,6 +17504,29 @@
       "telegram_core_fact": "LG CNS(LG씨엔에스)가 국내 기업 최초로 인도네시아 AI 데이터센터 구축 사업을 수주했다.",
       "title": "인도네시아에 AI 데이터센터 태극기 꽂은 LG CNS…동남아 영토 확장"
     },
+    "core:2711e2ca6a8350e42d0604f8": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102764867",
+      "source": "한국경제",
+      "source_body_digest": "a7f618811f51e6e444a009d6d871dfbe05a6a356a160d31680c15b2cd64f2fd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2bc5a2c78e536ecbbc97e4bb0241ae15cb311a3cb24c0f483b14f1378bf216d",
+      "source_fact_keys": [
+        "source_fact:v1:09ed7c3f0bf516f1f7766e05d00dbb9b30370252253eeb43e4cba5799e41f79e",
+        "source_fact:v1:12b3b6f06feef7cb75d49eda981cb37762ff0f50ddb4e970779c0e45a8e6e93d",
+        "source_fact:v1:89bab5d8e332eb53a0bde3ff98ab5e43b1b5ceb4aed8cdfda1325cc0e257388c",
+        "source_fact:v1:ea2b1d1b19f919b59e646e15f049dad32c46993da5d428a66145ece98c0794ce"
+      ],
+      "source_published_kst": "2026-10-27T07:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락",
+      "telegram_core_fact": "현지 투자은행 BTG 팍투알 역시 보고서를 통해 향후 수주간 매도세가 이어지며 보베스파 지수가 17만선 안팎에서 공방을 벌일 가능성이 높다고 전망했다. 이날 브라질 증시의 대표 지수인 보베스파 지수는 개장과 동시에 전장 대비 17.00% 하락한 16만9893포인트로 밀려났다.",
+      "title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락"
+    },
     "core:2727cbd5104fc5afb967d255": {
       "first_seen_kst": "2026-10-23T00:33:48+09:00",
       "lanes": {
@@ -24118,6 +24163,24 @@
       "source_title": "롯데百, LA에 K-뷰티 전초기지…유망 브랜드 글로벌 진출 지원",
       "telegram_core_fact": "롯데백화점이 미국 로스앤젤레스(LA)에서 K-뷰티 팝업을 열고 국내 뷰티 브랜드의 글로벌 시장 진출 지원에 나선다고 8일 밝혔다. 롯데백화점의 K-뷰티 상품군 외국인 매출은 최근 3개월간 전년 대비 110% 증가했다.",
       "title": "롯데百, LA에 K-뷰티 전초기지…유망 브랜드 글로벌 진출 지원"
+    },
+    "core:357e7879cabc26aec989ea1b": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027018100002",
+      "source": "연합뉴스",
+      "source_body_digest": "cffcb3632bd61ac1b333bc80b26a695a6ced37091e426e59fdc7a557a2f8056f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 3분기 한국 경제 1.0% '깜짝 성장' | 연합뉴스",
+      "telegram_core_fact": "올해 3분기 한국 경제는 반도체 호황이 지속되는 가운데 정부소비와 설비투자 증가세에 힘입어 '깜짝 성장'을 이뤘다.",
+      "title": "반도체 수출 호조에 3분기 한국 경제 1.0% '깜짝 성장' | 연합뉴스"
     },
     "core:357ec2c81dceee8a729adf9e": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
@@ -38222,6 +38285,28 @@
       "source_title": "트럼프, 네타냐후 재선 막판 지지…이란 재공격 시사",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 이스라엘 총선을 9일 앞두고 베냐민 네타냐후 총리의 재선을 공개 지지했다. 이란 전쟁과 가자지구 휴전 문제를 둘러싼 갈등으로 수개월간 지지 선언을 미뤄온 트럼프 대통령은 이란에 대한 군사공격 재개 가능성도 시사했다.",
       "title": "트럼프, 네타냐후 재선 막판 지지…이란 재공격 시사"
+    },
+    "core:576be26dc6102dbae4c80b7e": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640305?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "4931a78161ffb12425c5e4522b4e77ffdb7ce0eaefd3bd74b8d4a889d275c9a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0936d607e91cddfff2b353e17942de5f8c11dfe475dd3d2edf69379802f44ed7",
+      "source_fact_keys": [
+        "source_fact:v1:0c4dcb929e62d3c6d7fc66e83bfba97e82470adfbb77975054756d4519d6980e",
+        "source_fact:v1:90351abd40fb0ff9e4d38999d34eb0e3f97856096ade20fabf4af6840021559a",
+        "source_fact:v1:dd14844fa23468898f6d495dd0bf70a63de3f29f653cb6efb209d8ff59bf3a32"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”",
+      "telegram_core_fact": "일본 기업과 수소연료전지·에너지저장장치(ESS)를 결합한 독립형 전력공급 시스템 구축을 협의하는 가운데 국내 발전 공기업과의 계약도 확대되고 있다는 설명이다.",
+      "title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”"
     },
     "core:5773320ba797054f5bd99e82": {
       "first_seen_kst": "2026-10-20T22:42:26+09:00",
@@ -83350,6 +83435,35 @@
       "telegram_core_fact": "테슬라(TSLA)는 9월 30일 종료된 2026년 3분기 매출액이 280억4600만 달러로 전년비 0.2% 감소했고, GAAP 영업이익은 7억1800만 달러로 55.8% 줄었으며 GAAP 희석 주당순이익은 0.22달러로 43.6% 감소했다고 21일 발표했다.",
       "title": "테슬라, 3분기 매출 280억달러 보합·영업익 56% 급감"
     },
+    "core:be2301aa3f342bdc95c5353e": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
+    },
     "core:be2e9588a7c997b440a155fb": {
       "first_seen_kst": "2026-10-16T19:25:42+09:00",
       "lanes": {
@@ -95994,6 +96108,34 @@
       "telegram_core_fact": "알루코는 국내 알루미늄 압출 시장 점유율 1위 기업으로 한화큐셀 미국법인과 태양광 프레임 장기 공급 계약을 체결했다.",
       "title": "[고래사냥] '지앤비에스 에코·성호전자·알루코! 내일장 고래 종목은?!"
     },
+    "core:daad4b172007b3c25ea129ee": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
+    },
     "core:dab657e3154eb38730cf07d2": {
       "first_seen_kst": "2026-10-23T19:07:25+09:00",
       "lanes": {
@@ -102282,6 +102424,29 @@
       "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
       "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
       "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
+    },
+    "core:e92e57ed1e524418ed01aa44": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842072",
+      "source": "뉴시스",
+      "source_body_digest": "bc7fce9fa30257814f65772fe1fd0403f87b464d4c422012e0e0ec66138cac5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f69862e44cc0a7a806b67a7f88d78b6d947d97587607431559a8e4225b9d60",
+      "source_fact_keys": [
+        "source_fact:v1:0615409d98de23d1f905d6b0a88592df869a2996d33c514f1efd32340ac969c9",
+        "source_fact:v1:1b3f8c78dab75bf977417441413f8a7538dc973ee13d4c4dd79924fb5437fff6",
+        "source_fact:v1:9128fc83d83397b3cac6da51d266597235bef5556fec59203420797adccea995",
+        "source_fact:v1:fc90916f9c478b142d4925e7480220792e4aa45e380e20fbdb570fdbce00f8a3"
+      ],
+      "source_published_kst": "2026-10-27T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\"",
+      "telegram_core_fact": "키움증권에 따르면 이달 넷째주까지의 국내 증시 일평균 거래대금은 38조7000억원으로, 최고치를 기록했던 지난 5월(106조2000억원)에 비해 64% 감소했다.",
+      "title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\""
     },
     "core:e935f0a3e4b2b9a0c95aa0b5": {
       "first_seen_kst": "2026-10-22T12:56:15+09:00",
@@ -114392,6 +114557,29 @@
       "telegram_core_fact": "한국거래소에 따르면 미국 원유·천연가스 탐사·생산 기업에 투자하는 ‘RISE 미국S&P원유생산기업(합성 H)’은 이달 들어 전날까지 12.42% 상승했다.",
       "title": "중동 불안 장기화…원유 ETF 강세"
     },
+    "event:1596e6331e212bac0db9984b": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102764867",
+      "source": "한국경제",
+      "source_body_digest": "a7f618811f51e6e444a009d6d871dfbe05a6a356a160d31680c15b2cd64f2fd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2bc5a2c78e536ecbbc97e4bb0241ae15cb311a3cb24c0f483b14f1378bf216d",
+      "source_fact_keys": [
+        "source_fact:v1:09ed7c3f0bf516f1f7766e05d00dbb9b30370252253eeb43e4cba5799e41f79e",
+        "source_fact:v1:12b3b6f06feef7cb75d49eda981cb37762ff0f50ddb4e970779c0e45a8e6e93d",
+        "source_fact:v1:89bab5d8e332eb53a0bde3ff98ab5e43b1b5ceb4aed8cdfda1325cc0e257388c",
+        "source_fact:v1:ea2b1d1b19f919b59e646e15f049dad32c46993da5d428a66145ece98c0794ce"
+      ],
+      "source_published_kst": "2026-10-27T07:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락",
+      "telegram_core_fact": "현지 투자은행 BTG 팍투알 역시 보고서를 통해 향후 수주간 매도세가 이어지며 보베스파 지수가 17만선 안팎에서 공방을 벌일 가능성이 높다고 전망했다. 이날 브라질 증시의 대표 지수인 보베스파 지수는 개장과 동시에 전장 대비 17.00% 하락한 16만9893포인트로 밀려났다.",
+      "title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락"
+    },
     "event:15edc2f42a80e86acbd68ebd": {
       "first_seen_kst": "2026-10-21T09:27:16+09:00",
       "lanes": {
@@ -124962,25 +125150,30 @@
     "event:826d0eabde7d95f6430cdfc3": {
       "first_seen_kst": "2026-10-27T06:29:31+09:00",
       "lanes": {
-        "live": "2026-10-27T06:29:31+09:00"
+        "live": "2026-10-27T08:06:35+09:00"
       },
-      "last_seen_kst": "2026-10-27T06:29:31+09:00",
-      "link": "https://www.newsis.com/view/NISX20261026_0003841461",
-      "source": "뉴시스",
-      "source_body_digest": "e35cd10c4c6a6d4b2deca63fa3c97b8ef2b81257034a5947cde8d3caa598f00e",
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f379178b8bd0fbd393e5ca45d250299f431f037cf8f0f65f864692adfc9e8eb7",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
       "source_fact_keys": [
-        "source_fact:v1:39fd1ecfc7c463398535f4f4612d2d3b7d71498e8816ebc2ea0901c54848ce90",
-        "source_fact:v1:469121ad8ee89db35837bf722521de3e6a02969f3cecd6d96b8fee1d0218bbeb",
-        "source_fact:v1:46e291c0f84b49840736de90fcce2e6cd7e6a65bb62df80b30fc67983bc4a225",
-        "source_fact:v1:5204b4a43b92c92c0e2a464755d4f40c7ef18331a9031ab2cbba1346823897b9"
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
       ],
-      "source_published_kst": "2026-10-27T06:00+09:00",
+      "source_published_kst": "2026-10-27T07:55+09:00",
       "source_supply_terms": {},
-      "source_title": "9월 회사채 발행 77.5% 급증…주식 발행은 15.3% 감소",
-      "telegram_core_fact": "27일 금융감독원이 발표한 '2026년 9월 중 기업의 직접금융 조달실적'에 따르면 지난달 주식과 회사채 공모발행액은 총 28조5578억원으로 전월(16조3311억원) 대비 12조2267억원(74.9%) 증가했다.",
-      "title": "9월 회사채 발행 77.5% 급증…주식 발행은 15.3% 감소"
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
     },
     "event:82e5f83928e45bef188ba718": {
       "first_seen_kst": "2026-10-04T01:08:35+09:00",
@@ -126893,6 +127086,24 @@
       "source_title": "\"1600조 메가 프로젝트, 투자 넘어 산업판 바꿔야\"",
       "telegram_core_fact": "향후 10년간 1600조원 대형 투자 계획이 담긴 메가 프로젝트가 메모리 반도체와 첨단 패키징, 컴퓨팅 인프라, 제조 데이터, 피지컬 AI로 이어지는 전략적 AI 회랑을 구축하는 승부수라는 분석이다.",
       "title": "\"1600조 메가 프로젝트, 투자 넘어 산업판 바꿔야\""
+    },
+    "event:97a76fe3adfbcc2c9665d94f": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027018100002",
+      "source": "연합뉴스",
+      "source_body_digest": "cffcb3632bd61ac1b333bc80b26a695a6ced37091e426e59fdc7a557a2f8056f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 3분기 한국 경제 1.0% '깜짝 성장' | 연합뉴스",
+      "telegram_core_fact": "올해 3분기 한국 경제는 반도체 호황이 지속되는 가운데 정부소비와 설비투자 증가세에 힘입어 '깜짝 성장'을 이뤘다.",
+      "title": "반도체 수출 호조에 3분기 한국 경제 1.0% '깜짝 성장' | 연합뉴스"
     },
     "event:980ccf3b293cc89a0be143f8": {
       "first_seen_kst": "2026-10-27T05:52:29+09:00",
@@ -142588,6 +142799,29 @@
       "telegram_core_fact": "부광약품[003000]은 올해 인수한 한국유니온제약[080720]의 사명을 '부광유니파마'로 변경했다고 8일 밝혔다. 부광약품은 5월 하순 신주 인수 대금 300억원을 납입해 회생 절차 중이던 한국유니온제약의 최대 주주가 됐으며, 지난달 회생 절차가 종결됐다고 밝혔다.",
       "title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스"
     },
+    "fact:0b93a96e5a317e36ddea5fc0": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102764867",
+      "source": "한국경제",
+      "source_body_digest": "a7f618811f51e6e444a009d6d871dfbe05a6a356a160d31680c15b2cd64f2fd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2bc5a2c78e536ecbbc97e4bb0241ae15cb311a3cb24c0f483b14f1378bf216d",
+      "source_fact_keys": [
+        "source_fact:v1:09ed7c3f0bf516f1f7766e05d00dbb9b30370252253eeb43e4cba5799e41f79e",
+        "source_fact:v1:12b3b6f06feef7cb75d49eda981cb37762ff0f50ddb4e970779c0e45a8e6e93d",
+        "source_fact:v1:89bab5d8e332eb53a0bde3ff98ab5e43b1b5ceb4aed8cdfda1325cc0e257388c",
+        "source_fact:v1:ea2b1d1b19f919b59e646e15f049dad32c46993da5d428a66145ece98c0794ce"
+      ],
+      "source_published_kst": "2026-10-27T07:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락",
+      "telegram_core_fact": "현지 투자은행 BTG 팍투알 역시 보고서를 통해 향후 수주간 매도세가 이어지며 보베스파 지수가 17만선 안팎에서 공방을 벌일 가능성이 높다고 전망했다. 이날 브라질 증시의 대표 지수인 보베스파 지수는 개장과 동시에 전장 대비 17.00% 하락한 16만9893포인트로 밀려났다.",
+      "title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락"
+    },
     "fact:0ba8996886c7612f91a66571": {
       "first_seen_kst": "2026-10-18T17:16:37+09:00",
       "lanes": {
@@ -150318,6 +150552,34 @@
       "source_title": "‘AI발 먹구름’ 美 반도체지수, 금융위기 이후 최장 하락",
       "telegram_core_fact": "필라델피아 반도체 지수는 8거래일 연속 하락세를 이어가며 글로벌 금융위기 당시인 2008년 이후 최장기 연속 하락을 기록했다. 인공지능(AI) 인프라 투자 기업의 부채 우려와 유가 급등 여파로 16일(현지시간) 미국 뉴욕 증시의 주요 지수가 일제히 하락했다.",
       "title": "‘AI발 먹구름’ 美 반도체지수, 금융위기 이후 최장 하락"
+    },
+    "fact:1b2166125e0fc31841989810": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
     },
     "fact:1b256286ebc9efc059cb948f": {
       "first_seen_kst": "2026-10-20T10:42:42+09:00",
@@ -170774,6 +171036,28 @@
       "telegram_core_fact": "한은에 따르면 신 총재는 지난 주 태국 방콕에서 진행된 크리슈나 스리니바산 국제통화기금(IMF) 아시아·태평양국장과의 대담에서 AI가 중립금리(자연이자율, R*)에 미치는 영향에 대해 \"한국은 AI 공급망 중심에 있고 확대된 투자와 자금 조달 수요가 장기금리 상승에 기여하고 있다\"고 밝혔다.",
       "title": "고금리가 뉴노멀 될까⋯성장률이 끌어올린 '중립금리' 청사진"
     },
+    "fact:49c6e77adf5b68ea6f4998b1": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841539",
+      "source": "뉴시스",
+      "source_body_digest": "9c4dadd2487e75c5c5fba21af31ae79aca21a92f7f47bb760c8a47a0a2f39047",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d89bc375f1961f14ba7aab3e6cf57c728a84ca79f5102f22e48ec663e91467d",
+      "source_fact_keys": [
+        "source_fact:v1:363bb9b8687117927c2f6b1860c40ba91402240c4b1ab668e824041dd3c71374",
+        "source_fact:v1:d458b494569d30f38e0d15be5d5785c66aa3a6b7c1798b8ab3079de4b31e86ff",
+        "source_fact:v1:d9296b153bfd9c58c882926146d5b6320bb55f5e2a9f7e8819a48eb9cd9bbf7f"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓",
+      "telegram_core_fact": "BNK금융그룹은 26일 실적공시를 통해 올 1~3분기 누적 그룹 연결 당기순이익(지배기업지분)이 6223억원으로, 전년 대비 1477억원(19.2%) 감소했다고 밝혔다.",
+      "title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓"
+    },
     "fact:49def57d541e1c045a1cd44a": {
       "first_seen_kst": "2026-10-22T00:55:31+09:00",
       "lanes": {
@@ -176403,6 +176687,35 @@
       "source_title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치",
       "telegram_core_fact": "글로벌 기준유인 브렌트유 선물은 3.94달러(3.72%) 상승한 109.86달러에 마감했다.",
       "title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치"
+    },
+    "fact:5683cab3e81ff9c868c79a51": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
     },
     "fact:568cdc9a64080125401e4d75": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -246087,6 +246400,29 @@
       "telegram_core_fact": "대한과학(131220)은 QC 분석기기 공급계약에 관한 단일판매ㆍ공급계약체결(자율공시) 을 23일에 공시했다.",
       "title": "대한과학 수주공시 - QC 분석기기 공급계약 51.3억원 (매출액대비 6.32 %)"
     },
+    "fact:e5536aa89b422a679b63a397": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842072",
+      "source": "뉴시스",
+      "source_body_digest": "bc7fce9fa30257814f65772fe1fd0403f87b464d4c422012e0e0ec66138cac5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f69862e44cc0a7a806b67a7f88d78b6d947d97587607431559a8e4225b9d60",
+      "source_fact_keys": [
+        "source_fact:v1:0615409d98de23d1f905d6b0a88592df869a2996d33c514f1efd32340ac969c9",
+        "source_fact:v1:1b3f8c78dab75bf977417441413f8a7538dc973ee13d4c4dd79924fb5437fff6",
+        "source_fact:v1:9128fc83d83397b3cac6da51d266597235bef5556fec59203420797adccea995",
+        "source_fact:v1:fc90916f9c478b142d4925e7480220792e4aa45e380e20fbdb570fdbce00f8a3"
+      ],
+      "source_published_kst": "2026-10-27T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\"",
+      "telegram_core_fact": "키움증권에 따르면 이달 넷째주까지의 국내 증시 일평균 거래대금은 38조7000억원으로, 최고치를 기록했던 지난 5월(106조2000억원)에 비해 64% 감소했다.",
+      "title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\""
+    },
     "fact:e55c40158fb226f6f045706e": {
       "first_seen_kst": "2026-10-12T16:08:52+09:00",
       "lanes": {
@@ -249079,6 +249415,28 @@
       "source_title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\"",
       "telegram_core_fact": "미 재무부는 곧바로 러시아 경유에 대한 제재 해제를 발표했는데, 중간선거를 앞두고 미국 내 경유가격 급등에 대한 불만이 커지자 트럼프 대통령이 푸틴 대통령에게 손을 내민 모양새다.",
       "title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\""
+    },
+    "fact:eba6e34f7bcf9031412a8c04": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640305?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "4931a78161ffb12425c5e4522b4e77ffdb7ce0eaefd3bd74b8d4a889d275c9a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0936d607e91cddfff2b353e17942de5f8c11dfe475dd3d2edf69379802f44ed7",
+      "source_fact_keys": [
+        "source_fact:v1:0c4dcb929e62d3c6d7fc66e83bfba97e82470adfbb77975054756d4519d6980e",
+        "source_fact:v1:90351abd40fb0ff9e4d38999d34eb0e3f97856096ade20fabf4af6840021559a",
+        "source_fact:v1:dd14844fa23468898f6d495dd0bf70a63de3f29f653cb6efb209d8ff59bf3a32"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”",
+      "telegram_core_fact": "일본 기업과 수소연료전지·에너지저장장치(ESS)를 결합한 독립형 전력공급 시스템 구축을 협의하는 가운데 국내 발전 공기업과의 계약도 확대되고 있다는 설명이다.",
+      "title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”"
     },
     "fact:eba73ed0da548926a7a2e994": {
       "first_seen_kst": "2026-10-08T17:42:30+09:00",
@@ -329042,6 +329400,28 @@
       "source": "서울신문",
       "title": "경기도, 전국 최초 온실가스 관측 ‘경기기후위성 2호기’ 발사 성공"
     },
+    "link:72b6d1d7334adb5b29ca9a9f": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841539",
+      "source": "뉴시스",
+      "source_body_digest": "9c4dadd2487e75c5c5fba21af31ae79aca21a92f7f47bb760c8a47a0a2f39047",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d89bc375f1961f14ba7aab3e6cf57c728a84ca79f5102f22e48ec663e91467d",
+      "source_fact_keys": [
+        "source_fact:v1:363bb9b8687117927c2f6b1860c40ba91402240c4b1ab668e824041dd3c71374",
+        "source_fact:v1:d458b494569d30f38e0d15be5d5785c66aa3a6b7c1798b8ab3079de4b31e86ff",
+        "source_fact:v1:d9296b153bfd9c58c882926146d5b6320bb55f5e2a9f7e8819a48eb9cd9bbf7f"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓",
+      "telegram_core_fact": "BNK금융그룹은 26일 실적공시를 통해 올 1~3분기 누적 그룹 연결 당기순이익(지배기업지분)이 6223억원으로, 전년 대비 1477억원(19.2%) 감소했다고 밝혔다.",
+      "title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓"
+    },
     "link:72c6dd433b99fe8ab994f629": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
       "lanes": {
@@ -345101,6 +345481,24 @@
       "source_published_kst": "2026-10-07T11:52+09:00",
       "title": "美안두릴, 66억불 첨단 잠수함 조선소 계획…트럼프 \"2차대전 이후 최대\""
     },
+    "link:8e677b2c6ad88a01d1e02373": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027018100002",
+      "source": "연합뉴스",
+      "source_body_digest": "cffcb3632bd61ac1b333bc80b26a695a6ced37091e426e59fdc7a557a2f8056f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 3분기 한국 경제 1.0% '깜짝 성장' | 연합뉴스",
+      "telegram_core_fact": "올해 3분기 한국 경제는 반도체 호황이 지속되는 가운데 정부소비와 설비투자 증가세에 힘입어 '깜짝 성장'을 이뤘다.",
+      "title": "반도체 수출 호조에 3분기 한국 경제 1.0% '깜짝 성장' | 연합뉴스"
+    },
     "link:8e6ff80cb8ef1df6b7ae8f66": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -353359,6 +353757,28 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "link:9b7f8bede29c212150fb74a1": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640305?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "4931a78161ffb12425c5e4522b4e77ffdb7ce0eaefd3bd74b8d4a889d275c9a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0936d607e91cddfff2b353e17942de5f8c11dfe475dd3d2edf69379802f44ed7",
+      "source_fact_keys": [
+        "source_fact:v1:0c4dcb929e62d3c6d7fc66e83bfba97e82470adfbb77975054756d4519d6980e",
+        "source_fact:v1:90351abd40fb0ff9e4d38999d34eb0e3f97856096ade20fabf4af6840021559a",
+        "source_fact:v1:dd14844fa23468898f6d495dd0bf70a63de3f29f653cb6efb209d8ff59bf3a32"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”",
+      "telegram_core_fact": "일본 기업과 수소연료전지·에너지저장장치(ESS)를 결합한 독립형 전력공급 시스템 구축을 협의하는 가운데 국내 발전 공기업과의 계약도 확대되고 있다는 설명이다.",
+      "title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”"
     },
     "link:9b8a99a1cde677cebe67eecc": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
@@ -366618,6 +367038,29 @@
       "telegram_core_fact": "상온 및 저온 고활성 나노촉매 전문 딥테크 기업 퀀텀캣(대표 강신현)은 50억원 브릿지 투자를 유치했다고 16일 밝혔다. 이번 투자 유치로 퀀텀캣의 누적 투자유치금은 약 200억원에 달하게 됐다.",
       "title": "퀀텀캣, 미국 NASCAR·반도체 성과 잇달아…50억원 브릿지 투자 유치"
     },
+    "link:b08e254439ff8d4d864c26a5": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102764867",
+      "source": "한국경제",
+      "source_body_digest": "a7f618811f51e6e444a009d6d871dfbe05a6a356a160d31680c15b2cd64f2fd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2bc5a2c78e536ecbbc97e4bb0241ae15cb311a3cb24c0f483b14f1378bf216d",
+      "source_fact_keys": [
+        "source_fact:v1:09ed7c3f0bf516f1f7766e05d00dbb9b30370252253eeb43e4cba5799e41f79e",
+        "source_fact:v1:12b3b6f06feef7cb75d49eda981cb37762ff0f50ddb4e970779c0e45a8e6e93d",
+        "source_fact:v1:89bab5d8e332eb53a0bde3ff98ab5e43b1b5ceb4aed8cdfda1325cc0e257388c",
+        "source_fact:v1:ea2b1d1b19f919b59e646e15f049dad32c46993da5d428a66145ece98c0794ce"
+      ],
+      "source_published_kst": "2026-10-27T07:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락",
+      "telegram_core_fact": "현지 투자은행 BTG 팍투알 역시 보고서를 통해 향후 수주간 매도세가 이어지며 보베스파 지수가 17만선 안팎에서 공방을 벌일 가능성이 높다고 전망했다. 이날 브라질 증시의 대표 지수인 보베스파 지수는 개장과 동시에 전장 대비 17.00% 하락한 16만9893포인트로 밀려났다.",
+      "title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락"
+    },
     "link:b0948e12d1570e8cf781d729": {
       "first_seen_kst": "2026-10-22T19:31:34+09:00",
       "lanes": {
@@ -366747,6 +367190,35 @@
       "source_title": "3700억원 아리랑 6호, 5년 가까이 지상 대기…발사 지연에 예산 부담 가중",
       "telegram_core_fact": "이 의원 역시 \"앞으로 국가위성 해외 발사계약을 체결할 때 장기 지연에 따른 위험과 비용을 제대로 반영해야 한다\"며 지연배상과 실손보전, 대체발사, 계약해지권 등을 명시한 표준 가이드라인 마련을 촉구했다.",
       "title": "3700억원 아리랑 6호, 5년 가까이 지상 대기…발사 지연에 예산 부담 가중"
+    },
+    "link:b0db56e549c2d415292554af": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
     },
     "link:b0e290867e429868cff320d9": {
       "first_seen_kst": "2026-10-22T20:05:56+09:00",
@@ -373603,6 +374075,29 @@
       "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
       "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
       "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
+    },
+    "link:bbf97190b591c7b5da681018": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842072",
+      "source": "뉴시스",
+      "source_body_digest": "bc7fce9fa30257814f65772fe1fd0403f87b464d4c422012e0e0ec66138cac5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f69862e44cc0a7a806b67a7f88d78b6d947d97587607431559a8e4225b9d60",
+      "source_fact_keys": [
+        "source_fact:v1:0615409d98de23d1f905d6b0a88592df869a2996d33c514f1efd32340ac969c9",
+        "source_fact:v1:1b3f8c78dab75bf977417441413f8a7538dc973ee13d4c4dd79924fb5437fff6",
+        "source_fact:v1:9128fc83d83397b3cac6da51d266597235bef5556fec59203420797adccea995",
+        "source_fact:v1:fc90916f9c478b142d4925e7480220792e4aa45e380e20fbdb570fdbce00f8a3"
+      ],
+      "source_published_kst": "2026-10-27T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\"",
+      "telegram_core_fact": "키움증권에 따르면 이달 넷째주까지의 국내 증시 일평균 거래대금은 38조7000억원으로, 최고치를 기록했던 지난 5월(106조2000억원)에 비해 64% 감소했다.",
+      "title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\""
     },
     "link:bc029c930ed9dd57a7c30b60": {
       "first_seen_kst": "2026-10-19T11:13:29+09:00",
@@ -387129,6 +387624,34 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T07:00+09:00",
       "title": "한국 바람에 20년 투자, 외국 투자자는 무엇을 보나 [지평 기후에너지리포트]"
+    },
+    "link:d245a3fe7fa321aa3db9d7c5": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
     },
     "link:d251c4a041a96a5811ceab5a": {
       "first_seen_kst": "2026-10-10T15:30:56+09:00",
@@ -414353,6 +414876,24 @@
       "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
       "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
     },
+    "original:01e5e07c98780ad0068a4bf5": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027018100002",
+      "source": "연합뉴스",
+      "source_body_digest": "cffcb3632bd61ac1b333bc80b26a695a6ced37091e426e59fdc7a557a2f8056f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 3분기 한국 경제 1.0% '깜짝 성장' | 연합뉴스",
+      "telegram_core_fact": "올해 3분기 한국 경제는 반도체 호황이 지속되는 가운데 정부소비와 설비투자 증가세에 힘입어 '깜짝 성장'을 이뤘다.",
+      "title": "반도체 수출 호조에 3분기 한국 경제 1.0% '깜짝 성장' | 연합뉴스"
+    },
     "original:01e91b46963e6aa32612b9d6": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
       "lanes": {
@@ -435817,6 +436358,29 @@
       "telegram_core_fact": "삼성전기와 엔비디아가 세종과 부산사업장에 전용 반도체 기판 공장을 함께 구축한다. 삼성전기는 세종과 부산사업장에 엔비디아 전용 반도체 기판 생산라인을 새롭게 구축한다.",
       "title": "삼성전기, 엔비디아 전용 반도체기판 공장 구축"
     },
+    "original:26939a3f5b4baef9776793e5": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102764867",
+      "source": "한국경제",
+      "source_body_digest": "a7f618811f51e6e444a009d6d871dfbe05a6a356a160d31680c15b2cd64f2fd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2bc5a2c78e536ecbbc97e4bb0241ae15cb311a3cb24c0f483b14f1378bf216d",
+      "source_fact_keys": [
+        "source_fact:v1:09ed7c3f0bf516f1f7766e05d00dbb9b30370252253eeb43e4cba5799e41f79e",
+        "source_fact:v1:12b3b6f06feef7cb75d49eda981cb37762ff0f50ddb4e970779c0e45a8e6e93d",
+        "source_fact:v1:89bab5d8e332eb53a0bde3ff98ab5e43b1b5ceb4aed8cdfda1325cc0e257388c",
+        "source_fact:v1:ea2b1d1b19f919b59e646e15f049dad32c46993da5d428a66145ece98c0794ce"
+      ],
+      "source_published_kst": "2026-10-27T07:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락",
+      "telegram_core_fact": "현지 투자은행 BTG 팍투알 역시 보고서를 통해 향후 수주간 매도세가 이어지며 보베스파 지수가 17만선 안팎에서 공방을 벌일 가능성이 높다고 전망했다. 이날 브라질 증시의 대표 지수인 보베스파 지수는 개장과 동시에 전장 대비 17.00% 하락한 16만9893포인트로 밀려났다.",
+      "title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락"
+    },
     "original:2693b76bc7169b8f14de0560": {
       "first_seen_kst": "2026-10-12T20:14:14+09:00",
       "lanes": {
@@ -441478,6 +442042,29 @@
       "source_title": "서울시, 테헤란로서 스타트업 투자 도울 벤처투자사 등 9곳 모집 | 연합뉴스",
       "telegram_core_fact": "서울시는 강남구 테헤란로의 '서울창업허브 스케일업센터'에 입주해 유망 스타트업 발굴과 투자유치를 지원할 전문 투자기관 9곳을 다음 달 2일까지 모집한다고 26일 밝혔다. 김현우 서울시 경제실장은 \"전문 투자기관과의 협력을 강화해 서울의 유망 스타트업이 더 많은 투자유치와 성장 기회를 얻도록 지원하겠다\"고 말했다.",
       "title": "서울시, 테헤란로서 스타트업 투자 도울 벤처투자사 등 9곳 모집 | 연합뉴스"
+    },
+    "original:2f6bf373ec9fb7e6049251d2": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842072",
+      "source": "뉴시스",
+      "source_body_digest": "bc7fce9fa30257814f65772fe1fd0403f87b464d4c422012e0e0ec66138cac5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f69862e44cc0a7a806b67a7f88d78b6d947d97587607431559a8e4225b9d60",
+      "source_fact_keys": [
+        "source_fact:v1:0615409d98de23d1f905d6b0a88592df869a2996d33c514f1efd32340ac969c9",
+        "source_fact:v1:1b3f8c78dab75bf977417441413f8a7538dc973ee13d4c4dd79924fb5437fff6",
+        "source_fact:v1:9128fc83d83397b3cac6da51d266597235bef5556fec59203420797adccea995",
+        "source_fact:v1:fc90916f9c478b142d4925e7480220792e4aa45e380e20fbdb570fdbce00f8a3"
+      ],
+      "source_published_kst": "2026-10-27T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\"",
+      "telegram_core_fact": "키움증권에 따르면 이달 넷째주까지의 국내 증시 일평균 거래대금은 38조7000억원으로, 최고치를 기록했던 지난 5월(106조2000억원)에 비해 64% 감소했다.",
+      "title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\""
     },
     "original:2f72fdd82ddf3adefdd2f1ab": {
       "first_seen_kst": "2026-10-13T19:34:14+09:00",
@@ -454504,6 +455091,28 @@
       "telegram_core_fact": "해양수산부가 연간 약 2조원 항만·연안정비 사업 예산이 차질 없이 집행될 수 있도록 전국 주요 사업장을 대상으로 현장점검에 나선다.",
       "title": "해수부, 2조원 항만·연안정비 예산 집행 현장점검"
     },
+    "original:44e8afcc2f0e279f4aacc76f": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640305?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "4931a78161ffb12425c5e4522b4e77ffdb7ce0eaefd3bd74b8d4a889d275c9a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0936d607e91cddfff2b353e17942de5f8c11dfe475dd3d2edf69379802f44ed7",
+      "source_fact_keys": [
+        "source_fact:v1:0c4dcb929e62d3c6d7fc66e83bfba97e82470adfbb77975054756d4519d6980e",
+        "source_fact:v1:90351abd40fb0ff9e4d38999d34eb0e3f97856096ade20fabf4af6840021559a",
+        "source_fact:v1:dd14844fa23468898f6d495dd0bf70a63de3f29f653cb6efb209d8ff59bf3a32"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”",
+      "telegram_core_fact": "일본 기업과 수소연료전지·에너지저장장치(ESS)를 결합한 독립형 전력공급 시스템 구축을 협의하는 가운데 국내 발전 공기업과의 계약도 확대되고 있다는 설명이다.",
+      "title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”"
+    },
     "original:44e9cdc0f395567be6583214": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
       "lanes": {
@@ -457510,6 +458119,34 @@
       "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
       "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
       "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
+    },
+    "original:498cb4c2229791f6b4552ca0": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
     },
     "original:49907af8b471c537c02b54ed": {
       "first_seen_kst": "2026-09-19T11:08:27+09:00",
@@ -554211,6 +554848,28 @@
       "telegram_core_fact": "“과징금이 처벌이 아닌 기업의 영업비용으로 전락해서는 안 된다”며 “반복적인 소비자 기만행위를 막을 수 있도록 공정위의 제재 실효성을 강화해야 한다”고 강조했다.",
       "title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’"
     },
+    "original:edcb6b2460df9ca444d1fc2e": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841539",
+      "source": "뉴시스",
+      "source_body_digest": "9c4dadd2487e75c5c5fba21af31ae79aca21a92f7f47bb760c8a47a0a2f39047",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d89bc375f1961f14ba7aab3e6cf57c728a84ca79f5102f22e48ec663e91467d",
+      "source_fact_keys": [
+        "source_fact:v1:363bb9b8687117927c2f6b1860c40ba91402240c4b1ab668e824041dd3c71374",
+        "source_fact:v1:d458b494569d30f38e0d15be5d5785c66aa3a6b7c1798b8ab3079de4b31e86ff",
+        "source_fact:v1:d9296b153bfd9c58c882926146d5b6320bb55f5e2a9f7e8819a48eb9cd9bbf7f"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓",
+      "telegram_core_fact": "BNK금융그룹은 26일 실적공시를 통해 올 1~3분기 누적 그룹 연결 당기순이익(지배기업지분)이 6223억원으로, 전년 대비 1477억원(19.2%) 감소했다고 밝혔다.",
+      "title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓"
+    },
     "original:edec30cdc2a2224e6f9d8eb4": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -555755,6 +556414,35 @@
       "source_title": "“3개월 뒤 HBM 가격 2배로”…‘삼전닉스’ 실적 자신감 커진다",
       "telegram_core_fact": "업계에 따르면 미국 투자은행 키뱅크 캐피털 마켓츠는 최근 아시아 현지 조사 결과를 바탕으로 작성한 보고서에서 2027년 1분기 HBM 가격이 전 분기 대비 80~100% 상승할 것으로 내다봤다.",
       "title": "“3개월 뒤 HBM 가격 2배로”…‘삼전닉스’ 실적 자신감 커진다"
+    },
+    "original:f0e897116ce332fe46e02835": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
     },
     "original:f0f5e9a75acdef13d8ec1efd": {
       "first_seen_kst": "2026-10-25T07:27:35+09:00",
@@ -578567,6 +579255,34 @@
       "telegram_core_fact": "한국은행 금융통화위원회가 22일 기준 금리를 3.00%로 동결한 가운데 글로벌 자산운용사 스테이트 스트리트는 금통위가 다음 달 기준금리를 한 차례 더 인상해 내년 말까지 최종 금리 3.25%를 유지할 것으로 내다봤다.",
       "title": "스테이트 스트리트 \"한은, 11월 금리 인상 예상…최종금리 3.25%\""
     },
+    "source_fact:05dc87b71dd9b96ab664fcb7": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
+    },
     "source_fact:05dd59cc478dd7deaf411c6c": {
       "first_seen_kst": "2026-10-15T11:36:50+09:00",
       "lanes": {
@@ -587698,6 +588414,29 @@
       "source_title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망",
       "telegram_core_fact": "국내 증시의 부진에도 개인투자자의 상장지수펀드(ETF) 매수세가 이어지면서 올해 누적 순매수액이 처음으로 80조원을 넘어섰다. 외국인도 10조원 이상을 순매수하며 ETF 투자를 늘렸다.",
       "title": "개미 ETF 순매수, 벌써 작년 두 배…연말 100조 전망"
+    },
+    "source_fact:09686c18a8de07b55283d3c5": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102764867",
+      "source": "한국경제",
+      "source_body_digest": "a7f618811f51e6e444a009d6d871dfbe05a6a356a160d31680c15b2cd64f2fd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2bc5a2c78e536ecbbc97e4bb0241ae15cb311a3cb24c0f483b14f1378bf216d",
+      "source_fact_keys": [
+        "source_fact:v1:09ed7c3f0bf516f1f7766e05d00dbb9b30370252253eeb43e4cba5799e41f79e",
+        "source_fact:v1:12b3b6f06feef7cb75d49eda981cb37762ff0f50ddb4e970779c0e45a8e6e93d",
+        "source_fact:v1:89bab5d8e332eb53a0bde3ff98ab5e43b1b5ceb4aed8cdfda1325cc0e257388c",
+        "source_fact:v1:ea2b1d1b19f919b59e646e15f049dad32c46993da5d428a66145ece98c0794ce"
+      ],
+      "source_published_kst": "2026-10-27T07:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락",
+      "telegram_core_fact": "현지 투자은행 BTG 팍투알 역시 보고서를 통해 향후 수주간 매도세가 이어지며 보베스파 지수가 17만선 안팎에서 공방을 벌일 가능성이 높다고 전망했다. 이날 브라질 증시의 대표 지수인 보베스파 지수는 개장과 동시에 전장 대비 17.00% 하락한 16만9893포인트로 밀려났다.",
+      "title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락"
     },
     "source_fact:096dcd147db55e2ea1d96f5f": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -610049,6 +610788,28 @@
       "telegram_core_fact": "재무 실적을 보면 2025년 연간 매출액은 2,700만 달러로 전년(730만 달러) 대비 271% 증가했다.",
       "title": "듀오스 테크놀러지스 그룹, 올 매출 5000만달러 초과 재확인..55MW 계약"
     },
+    "source_fact:1258444b82199f2a0010c15e": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841539",
+      "source": "뉴시스",
+      "source_body_digest": "9c4dadd2487e75c5c5fba21af31ae79aca21a92f7f47bb760c8a47a0a2f39047",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d89bc375f1961f14ba7aab3e6cf57c728a84ca79f5102f22e48ec663e91467d",
+      "source_fact_keys": [
+        "source_fact:v1:363bb9b8687117927c2f6b1860c40ba91402240c4b1ab668e824041dd3c71374",
+        "source_fact:v1:d458b494569d30f38e0d15be5d5785c66aa3a6b7c1798b8ab3079de4b31e86ff",
+        "source_fact:v1:d9296b153bfd9c58c882926146d5b6320bb55f5e2a9f7e8819a48eb9cd9bbf7f"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓",
+      "telegram_core_fact": "BNK금융그룹은 26일 실적공시를 통해 올 1~3분기 누적 그룹 연결 당기순이익(지배기업지분)이 6223억원으로, 전년 대비 1477억원(19.2%) 감소했다고 밝혔다.",
+      "title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓"
+    },
     "source_fact:126150867a6348201cc10800": {
       "first_seen_kst": "2026-10-14T22:15:19+09:00",
       "lanes": {
@@ -627673,6 +628434,29 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
     },
+    "source_fact:19d026d2f5811247b8017a82": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102764867",
+      "source": "한국경제",
+      "source_body_digest": "a7f618811f51e6e444a009d6d871dfbe05a6a356a160d31680c15b2cd64f2fd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2bc5a2c78e536ecbbc97e4bb0241ae15cb311a3cb24c0f483b14f1378bf216d",
+      "source_fact_keys": [
+        "source_fact:v1:09ed7c3f0bf516f1f7766e05d00dbb9b30370252253eeb43e4cba5799e41f79e",
+        "source_fact:v1:12b3b6f06feef7cb75d49eda981cb37762ff0f50ddb4e970779c0e45a8e6e93d",
+        "source_fact:v1:89bab5d8e332eb53a0bde3ff98ab5e43b1b5ceb4aed8cdfda1325cc0e257388c",
+        "source_fact:v1:ea2b1d1b19f919b59e646e15f049dad32c46993da5d428a66145ece98c0794ce"
+      ],
+      "source_published_kst": "2026-10-27T07:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락",
+      "telegram_core_fact": "현지 투자은행 BTG 팍투알 역시 보고서를 통해 향후 수주간 매도세가 이어지며 보베스파 지수가 17만선 안팎에서 공방을 벌일 가능성이 높다고 전망했다. 이날 브라질 증시의 대표 지수인 보베스파 지수는 개장과 동시에 전장 대비 17.00% 하락한 16만9893포인트로 밀려났다.",
+      "title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락"
+    },
     "source_fact:19d68797fab054fb83c21e57": {
       "first_seen_kst": "2026-10-22T00:55:31+09:00",
       "lanes": {
@@ -637037,6 +637821,35 @@
       "telegram_core_fact": "국제유가는 3거래일 연속 상승해 간밤 12월 인도분 브렌트유는 전장보다 1.84% 오른 배럴당 106.65달러에, 11월 인도분 미 서부 텍사스산 원유(WTI)는 2.06% 오른 93.74달러에 거래를 마쳤다.",
       "title": "중동발 유가상승·증시 급락에…환율 10원 오른 1,345.1원 | 연합뉴스"
     },
+    "source_fact:1d425fdb96fa6fa379323ee3": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
+    },
     "source_fact:1d42f1844e76cdbb915f9c7f": {
       "first_seen_kst": "2026-10-22T16:21:26+09:00",
       "lanes": {
@@ -644629,6 +645442,35 @@
       "source_title": "[증시키워드] 삼전 잠정 실적에 쏠린 눈…바이오는 희비",
       "telegram_core_fact": "SK하이닉스는 3분기 실적 시즌 진입을 앞두고 영업이익 전망치가 77조원대까지 상향되는 등 엔비디아 공급망 핵심인 고대역폭메모리(HBM) 지배력과 메모리 가격 강세가 부각되며 투자자들의 관심을 모았다.",
       "title": "[증시키워드] 삼전 잠정 실적에 쏠린 눈…바이오는 희비"
+    },
+    "source_fact:207e37a318d056ee92be1f7a": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
     },
     "source_fact:207fdf86ebf869ce69830a44": {
       "first_seen_kst": "2026-10-17T19:47:24+09:00",
@@ -683031,6 +683873,35 @@
       "telegram_core_fact": "SK하이닉스에 따르면 회사는 이날 유가증권시장(코스피)에서 두 달에 걸친 40조원 자사주 매입을 마무리했다.",
       "title": "SK하이닉스, 40조원 규모 자사주 매입 완료"
     },
+    "source_fact:2f45d9d09f0dfcbd982c8b08": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
+    },
     "source_fact:2f48492ba74f9d3f2ac9228c": {
       "first_seen_kst": "2026-10-13T06:17:31+09:00",
       "lanes": {
@@ -685082,6 +685953,29 @@
       "source_title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진",
       "telegram_core_fact": "형지엘리트가 2027시즌 상품부터 무선주파수식별(RFID) 기술을 도입해 물류 관리 체계의 디지털 전환에 나선다. 형지엘리트는 전일 형지글로벌패션복합센터에서 글로벌 스마트태그 기업 비온택과 RFID 시스템 도입을 위한 업무협약(MOU)을 체결했다고 16일 밝혔다.",
       "title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진"
+    },
+    "source_fact:3040208830607fe89cd2fc23": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102764867",
+      "source": "한국경제",
+      "source_body_digest": "a7f618811f51e6e444a009d6d871dfbe05a6a356a160d31680c15b2cd64f2fd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2bc5a2c78e536ecbbc97e4bb0241ae15cb311a3cb24c0f483b14f1378bf216d",
+      "source_fact_keys": [
+        "source_fact:v1:09ed7c3f0bf516f1f7766e05d00dbb9b30370252253eeb43e4cba5799e41f79e",
+        "source_fact:v1:12b3b6f06feef7cb75d49eda981cb37762ff0f50ddb4e970779c0e45a8e6e93d",
+        "source_fact:v1:89bab5d8e332eb53a0bde3ff98ab5e43b1b5ceb4aed8cdfda1325cc0e257388c",
+        "source_fact:v1:ea2b1d1b19f919b59e646e15f049dad32c46993da5d428a66145ece98c0794ce"
+      ],
+      "source_published_kst": "2026-10-27T07:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락",
+      "telegram_core_fact": "현지 투자은행 BTG 팍투알 역시 보고서를 통해 향후 수주간 매도세가 이어지며 보베스파 지수가 17만선 안팎에서 공방을 벌일 가능성이 높다고 전망했다. 이날 브라질 증시의 대표 지수인 보베스파 지수는 개장과 동시에 전장 대비 17.00% 하락한 16만9893포인트로 밀려났다.",
+      "title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락"
     },
     "source_fact:30426b45c03e68eba1bbf8b4": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
@@ -701862,6 +702756,34 @@
       "telegram_core_fact": "링스에쿼티스트래터지스의 KC 라즈쿠마르 애널리스트는 지난 8월 보고서에서 \"공급 한계와 고객사 인증 요건 때문에 최근 언론보도만큼 위협이 임박하지는 않다\"며 \"애플이 직면한 D램 수급 부족 사태를 눈에 띄게 줄이지 못할 것\"이라고 지적했다.",
       "title": "中 차세대 D램 실체 있나 \"임박한 위협 아냐\"…\"1년후 다를수도\""
     },
+    "source_fact:36e912c694efab833b5ab69a": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
+    },
     "source_fact:36e9fdb27ab86ace773075a2": {
       "first_seen_kst": "2026-10-22T08:49:50+09:00",
       "lanes": {
@@ -709486,6 +710408,34 @@
       "telegram_core_fact": "양금희 경북도 경제부지사는 \"기업이 필요로 하는 제조 현장의 과제를 출발점으로 로봇개발과 부품공급, 양산과 도입까지 이어지는 사업을 함께 만들겠다\"고 말했다.",
       "title": "경북도, 피지컬 AI로 제조 혁신…메가특구 추진 | 연합뉴스"
     },
+    "source_fact:39ee27d4c55e0616520fcef8": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
+    },
     "source_fact:39f07c81aabb3cb823b95edc": {
       "first_seen_kst": "2026-10-13T10:49:34+09:00",
       "lanes": {
@@ -709760,6 +710710,35 @@
       "source_title": "한국 반도체 소부장 기업 15곳, 'SEMICON West 2026'서 북미시장 공략",
       "telegram_core_fact": "글로벌 반도체 시장이 인공지능(AI) 수요 확대와 첨단 제조 투자에 힘입어 연간 매출 1조 달러 시대를 향해 성장하는 가운데, 국내 반도체 소재·부품·장비(소부장) 기업들이 북미시장 공략에 나섰다.",
       "title": "한국 반도체 소부장 기업 15곳, 'SEMICON West 2026'서 북미시장 공략"
+    },
+    "source_fact:3a1b761241f780f2553aa9ed": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
     },
     "source_fact:3a1e73bce020bea588369a78": {
       "first_seen_kst": "2026-10-18T09:49:30+09:00",
@@ -715250,6 +716229,29 @@
       "telegram_core_fact": "관세청이 북극항로 개척에 필요한 쇄빙선·내빙선을 보세공장 밖에서도 건조할 수 있도록 규제 개선을 추진한다.",
       "title": "관세청, 쇄빙선·내빙선 장외 건조 허용 추진…북극항로 규제 개선"
     },
+    "source_fact:3c48b6d9f88936a55329732c": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842072",
+      "source": "뉴시스",
+      "source_body_digest": "bc7fce9fa30257814f65772fe1fd0403f87b464d4c422012e0e0ec66138cac5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f69862e44cc0a7a806b67a7f88d78b6d947d97587607431559a8e4225b9d60",
+      "source_fact_keys": [
+        "source_fact:v1:0615409d98de23d1f905d6b0a88592df869a2996d33c514f1efd32340ac969c9",
+        "source_fact:v1:1b3f8c78dab75bf977417441413f8a7538dc973ee13d4c4dd79924fb5437fff6",
+        "source_fact:v1:9128fc83d83397b3cac6da51d266597235bef5556fec59203420797adccea995",
+        "source_fact:v1:fc90916f9c478b142d4925e7480220792e4aa45e380e20fbdb570fdbce00f8a3"
+      ],
+      "source_published_kst": "2026-10-27T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\"",
+      "telegram_core_fact": "키움증권에 따르면 이달 넷째주까지의 국내 증시 일평균 거래대금은 38조7000억원으로, 최고치를 기록했던 지난 5월(106조2000억원)에 비해 64% 감소했다.",
+      "title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\""
+    },
     "source_fact:3c4b2b47515bab72ef75ae0a": {
       "first_seen_kst": "2026-10-18T18:58:34+09:00",
       "lanes": {
@@ -718346,6 +719348,34 @@
       ],
       "source_published_kst": "2026-10-07T16:50+09:00",
       "title": "“외국인 지역여행 편리하게”…관광공사, 지방공항·항만 연계 캠페인"
+    },
+    "source_fact:3db4ebb1388181c6e0e84bcb": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
     },
     "source_fact:3db77309704285416090bfd1": {
       "first_seen_kst": "2026-10-23T08:39:33+09:00",
@@ -721519,6 +722549,29 @@
       ],
       "source_published_kst": "2026-10-06T17:00+09:00",
       "title": "금감원, '2.5만명 정보유출' 신한은행 현장검사 전환…점검 착수 엿새 만(종합)"
+    },
+    "source_fact:3ec7d4aced8e485ffcfd0412": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842072",
+      "source": "뉴시스",
+      "source_body_digest": "bc7fce9fa30257814f65772fe1fd0403f87b464d4c422012e0e0ec66138cac5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f69862e44cc0a7a806b67a7f88d78b6d947d97587607431559a8e4225b9d60",
+      "source_fact_keys": [
+        "source_fact:v1:0615409d98de23d1f905d6b0a88592df869a2996d33c514f1efd32340ac969c9",
+        "source_fact:v1:1b3f8c78dab75bf977417441413f8a7538dc973ee13d4c4dd79924fb5437fff6",
+        "source_fact:v1:9128fc83d83397b3cac6da51d266597235bef5556fec59203420797adccea995",
+        "source_fact:v1:fc90916f9c478b142d4925e7480220792e4aa45e380e20fbdb570fdbce00f8a3"
+      ],
+      "source_published_kst": "2026-10-27T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\"",
+      "telegram_core_fact": "키움증권에 따르면 이달 넷째주까지의 국내 증시 일평균 거래대금은 38조7000억원으로, 최고치를 기록했던 지난 5월(106조2000억원)에 비해 64% 감소했다.",
+      "title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\""
     },
     "source_fact:3ec8b6931c664a8f19370193": {
       "first_seen_kst": "2026-10-21T06:55:09+09:00",
@@ -729618,6 +730671,28 @@
       ],
       "source_published_kst": "2026-10-06T09:17+09:00",
       "title": "\"라떼 한 잔도 더 맛있게\" 빽다방, 신메뉴 라인업 강화"
+    },
+    "source_fact:421d6be995235f4c6939efa1": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841539",
+      "source": "뉴시스",
+      "source_body_digest": "9c4dadd2487e75c5c5fba21af31ae79aca21a92f7f47bb760c8a47a0a2f39047",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d89bc375f1961f14ba7aab3e6cf57c728a84ca79f5102f22e48ec663e91467d",
+      "source_fact_keys": [
+        "source_fact:v1:363bb9b8687117927c2f6b1860c40ba91402240c4b1ab668e824041dd3c71374",
+        "source_fact:v1:d458b494569d30f38e0d15be5d5785c66aa3a6b7c1798b8ab3079de4b31e86ff",
+        "source_fact:v1:d9296b153bfd9c58c882926146d5b6320bb55f5e2a9f7e8819a48eb9cd9bbf7f"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓",
+      "telegram_core_fact": "BNK금융그룹은 26일 실적공시를 통해 올 1~3분기 누적 그룹 연결 당기순이익(지배기업지분)이 6223억원으로, 전년 대비 1477억원(19.2%) 감소했다고 밝혔다.",
+      "title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓"
     },
     "source_fact:421d753848d94df05cb1a6e4": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -766996,6 +768071,34 @@
       "telegram_core_fact": "골만럽(GRC)이 3분기(9월 30일 종료) 매출액 1억9325만 달러로 전년비 11.8% 증가했고, GAAP 기준 주당순이익(EPS) 0.86달러로 전년 동기 0.43달러의 두 배를 기록했다고 10월 23일 발표했다.",
       "title": "골만럽, 3분기 EPS 0.86달러 두 배..매출 12% 증가"
     },
+    "source_fact:50a802ba2bd711e4679144fc": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
+    },
     "source_fact:50a8e027aaf491755d6a0c95": {
       "first_seen_kst": "2026-10-14T00:59:56+09:00",
       "lanes": {
@@ -771391,6 +772494,28 @@
       "source_title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스",
       "telegram_core_fact": "22일 국회 농림축산식품해양수산위원회 소속 더불어민주당 임미애 의원이 재정경제부에서 제출받은 '2025년 할당관세 지원실적 및 효과분석' 보고서에 따르면 지난해 할당관세가 적용된 식료품 10개 품목 가운데 소비자가격 인하 효과가 확인된 품목은 파인애플·망고·오렌지 등 3개에 그쳤다.",
       "title": "\"할당관세 1천586억원 감면했지만…가격 인하효과 제한적\" | 연합뉴스"
+    },
+    "source_fact:524a6e8025f56dab4d94a849": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640305?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "4931a78161ffb12425c5e4522b4e77ffdb7ce0eaefd3bd74b8d4a889d275c9a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0936d607e91cddfff2b353e17942de5f8c11dfe475dd3d2edf69379802f44ed7",
+      "source_fact_keys": [
+        "source_fact:v1:0c4dcb929e62d3c6d7fc66e83bfba97e82470adfbb77975054756d4519d6980e",
+        "source_fact:v1:90351abd40fb0ff9e4d38999d34eb0e3f97856096ade20fabf4af6840021559a",
+        "source_fact:v1:dd14844fa23468898f6d495dd0bf70a63de3f29f653cb6efb209d8ff59bf3a32"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”",
+      "telegram_core_fact": "일본 기업과 수소연료전지·에너지저장장치(ESS)를 결합한 독립형 전력공급 시스템 구축을 협의하는 가운데 국내 발전 공기업과의 계약도 확대되고 있다는 설명이다.",
+      "title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”"
     },
     "source_fact:524ccc44d9e0245e8cacfa64": {
       "first_seen_kst": "2026-10-20T12:12:43+09:00",
@@ -791205,6 +792330,35 @@
       "source_title": "삼전닉스 '낸드' 잭팟 터진다… 로봇용 D램도 기대감 솔솔",
       "telegram_core_fact": "시장조사업체 트렌드포스는 올해 4·4분기 모든 낸드 플래시 제품군의 계약 가격이 전 분기 대비 15~20% 상승할 것으로 예상했다.",
       "title": "삼전닉스 '낸드' 잭팟 터진다… 로봇용 D램도 기대감 솔솔"
+    },
+    "source_fact:59d1f2059dd3512b11da311a": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
     },
     "source_fact:59d5060c9bb24d0f79dc8bef": {
       "first_seen_kst": "2026-10-15T01:00:58+09:00",
@@ -812159,6 +813313,29 @@
       "telegram_core_fact": "이날 기준 올해 외국인의 코스피 누적 순매도는 약 227조원에 이른다. 하나증권 집계에 따르면 코스피 7000~9000 구간에서 개인의 누적 순매수는 약 83조6000억원이다.",
       "title": "“코스피 오르기만 기다렸는데”…개미가 산 83조, 반등 발목 잡나"
     },
+    "source_fact:6276e33948b0e31457cb0594": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842072",
+      "source": "뉴시스",
+      "source_body_digest": "bc7fce9fa30257814f65772fe1fd0403f87b464d4c422012e0e0ec66138cac5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f69862e44cc0a7a806b67a7f88d78b6d947d97587607431559a8e4225b9d60",
+      "source_fact_keys": [
+        "source_fact:v1:0615409d98de23d1f905d6b0a88592df869a2996d33c514f1efd32340ac969c9",
+        "source_fact:v1:1b3f8c78dab75bf977417441413f8a7538dc973ee13d4c4dd79924fb5437fff6",
+        "source_fact:v1:9128fc83d83397b3cac6da51d266597235bef5556fec59203420797adccea995",
+        "source_fact:v1:fc90916f9c478b142d4925e7480220792e4aa45e380e20fbdb570fdbce00f8a3"
+      ],
+      "source_published_kst": "2026-10-27T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\"",
+      "telegram_core_fact": "키움증권에 따르면 이달 넷째주까지의 국내 증시 일평균 거래대금은 38조7000억원으로, 최고치를 기록했던 지난 5월(106조2000억원)에 비해 64% 감소했다.",
+      "title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\""
+    },
     "source_fact:6279654aec63fb9e200abf5c": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
       "lanes": {
@@ -813293,6 +814470,34 @@
       "source_title": "엔화, 美 장기금리 상승 주춤에 1달러=158엔 소폭 상승 출발",
       "telegram_core_fact": "엔화 환율은 8일 그간 상승세를 보인 미국 장기금리가 주춤하면서 엔 매수, 달러 매도 선행으로 1달러=158엔으로 소폭 올라 시작했다.",
       "title": "엔화, 美 장기금리 상승 주춤에 1달러=158엔 소폭 상승 출발"
+    },
+    "source_fact:62f67d1f910d63935e5d163f": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
     },
     "source_fact:62f6b14bac14a289cee7baae": {
       "first_seen_kst": "2026-10-16T19:48:28+09:00",
@@ -828602,6 +829807,28 @@
       "telegram_core_fact": "미국 반도체 패키징 기업 앰코테크놀로지와 한국 내 생산시설 확충을 지원하는 13억달러 신규 계약을 체결하고, 미국에서는 반도체 검사시설 구축에 11억달러를 지원한다.",
       "title": "엔비디아·앰코, 韓 패키징 증설에 13억달러 계약…美도 확대"
     },
+    "source_fact:68e77c2bf8ec80e64eb6b5ea": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841539",
+      "source": "뉴시스",
+      "source_body_digest": "9c4dadd2487e75c5c5fba21af31ae79aca21a92f7f47bb760c8a47a0a2f39047",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d89bc375f1961f14ba7aab3e6cf57c728a84ca79f5102f22e48ec663e91467d",
+      "source_fact_keys": [
+        "source_fact:v1:363bb9b8687117927c2f6b1860c40ba91402240c4b1ab668e824041dd3c71374",
+        "source_fact:v1:d458b494569d30f38e0d15be5d5785c66aa3a6b7c1798b8ab3079de4b31e86ff",
+        "source_fact:v1:d9296b153bfd9c58c882926146d5b6320bb55f5e2a9f7e8819a48eb9cd9bbf7f"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓",
+      "telegram_core_fact": "BNK금융그룹은 26일 실적공시를 통해 올 1~3분기 누적 그룹 연결 당기순이익(지배기업지분)이 6223억원으로, 전년 대비 1477억원(19.2%) 감소했다고 밝혔다.",
+      "title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓"
+    },
     "source_fact:68e8d203c24d32bfbf21dc4d": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
       "lanes": {
@@ -833818,6 +835045,34 @@
       "source_title": "800% 부채 털어내는 티케이지엠켐…TKG휴켐스, 467억원 들여 ‘홀로서기’ 마침표",
       "telegram_core_fact": "티케이지(TKG)그룹의 핵심 상장사인 티케이지휴켐스가 반도체·디스플레이 소재 자회사인 티케이지엠켐(옛 제이엘켐) 지분을 추가 인수하며 지배구조 정비를 매듭지었다.",
       "title": "800% 부채 털어내는 티케이지엠켐…TKG휴켐스, 467억원 들여 ‘홀로서기’ 마침표"
+    },
+    "source_fact:6b10da8f9b5c96359a5bdeb2": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
     },
     "source_fact:6b118e96ad26152595d54cfd": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -877132,6 +878387,29 @@
       "source_published_kst": "2026-10-07T06:15+09:00",
       "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
     },
+    "source_fact:7c8cc1a593347917d9cfea3d": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102764867",
+      "source": "한국경제",
+      "source_body_digest": "a7f618811f51e6e444a009d6d871dfbe05a6a356a160d31680c15b2cd64f2fd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2bc5a2c78e536ecbbc97e4bb0241ae15cb311a3cb24c0f483b14f1378bf216d",
+      "source_fact_keys": [
+        "source_fact:v1:09ed7c3f0bf516f1f7766e05d00dbb9b30370252253eeb43e4cba5799e41f79e",
+        "source_fact:v1:12b3b6f06feef7cb75d49eda981cb37762ff0f50ddb4e970779c0e45a8e6e93d",
+        "source_fact:v1:89bab5d8e332eb53a0bde3ff98ab5e43b1b5ceb4aed8cdfda1325cc0e257388c",
+        "source_fact:v1:ea2b1d1b19f919b59e646e15f049dad32c46993da5d428a66145ece98c0794ce"
+      ],
+      "source_published_kst": "2026-10-27T07:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락",
+      "telegram_core_fact": "현지 투자은행 BTG 팍투알 역시 보고서를 통해 향후 수주간 매도세가 이어지며 보베스파 지수가 17만선 안팎에서 공방을 벌일 가능성이 높다고 전망했다. 이날 브라질 증시의 대표 지수인 보베스파 지수는 개장과 동시에 전장 대비 17.00% 하락한 16만9893포인트로 밀려났다.",
+      "title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락"
+    },
     "source_fact:7c8cd41438978acbc853a179": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
       "lanes": {
@@ -888137,6 +889415,34 @@
       ],
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
+    },
+    "source_fact:814b8f9b8ef1b6c6274498c8": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
     },
     "source_fact:814faffea4fea9453068836f": {
       "first_seen_kst": "2026-10-21T17:12:46+09:00",
@@ -916551,6 +917857,35 @@
       "telegram_core_fact": "플래그스타 파이낸셜(FLG)은 3분기(7~9월) GAAP 기준 보통주주 귀속 순이익이 300만 달러, 희석 주당순이익이 0.01달러로 전년 동기 주당순손실 0.11달러에서 흑자전환했으며, 순이자이익은 4억6000만 달러로 전년비 8% 증가했다고 10월 23일 발표했다.",
       "title": "플래그스타 파이낸셜, 3분기 EPS 0.01달러 흑자전환..목표 2028년 연기"
     },
+    "source_fact:8ce5b65748113e5ae0b60cd8": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
+    },
     "source_fact:8ce6ca198c3eb45c69dc0b6b": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
       "lanes": {
@@ -928726,6 +930061,35 @@
       ],
       "source_published_kst": "2026-10-05T22:55+09:00",
       "title": "美국채금리 5.3%에 다우 ‘주춤’… 뉴욕증시 혼조 출발"
+    },
+    "source_fact:91e0d10851c6d69b3394842d": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
     },
     "source_fact:91e1a7b498d8f128d7c5db3e": {
       "first_seen_kst": "2026-10-19T12:07:04+09:00",
@@ -982816,6 +984180,35 @@
       "telegram_core_fact": "이 사장은 '생애최초 주택구입자에 대한 대출 규제를 강화해야 한다'는 기존 발언에 대해 질문을 받자 \"앞으로 집값이 급락할 가능성이 있기 때문에 그 점을 고려해서 드린 말씀\"이라며 \"급락할 가능성이 좀 많다. 지금 저희가 공급을 열심히 하고 있다\"고 답했습니다.",
       "title": "자고 나면 집값 오르는데 \"급락 가능성\"…근거 살펴보니 [시장톡]"
     },
+    "source_fact:a6f3a26f4dbd8538c87eaf72": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
+    },
     "source_fact:a6f5b720c837f296282fd4ac": {
       "first_seen_kst": "2026-10-11T16:16:50+09:00",
       "lanes": {
@@ -997971,6 +999364,28 @@
       "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
       "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
       "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
+    },
+    "source_fact:acf539f7be1628931289c5ef": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640305?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "4931a78161ffb12425c5e4522b4e77ffdb7ce0eaefd3bd74b8d4a889d275c9a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0936d607e91cddfff2b353e17942de5f8c11dfe475dd3d2edf69379802f44ed7",
+      "source_fact_keys": [
+        "source_fact:v1:0c4dcb929e62d3c6d7fc66e83bfba97e82470adfbb77975054756d4519d6980e",
+        "source_fact:v1:90351abd40fb0ff9e4d38999d34eb0e3f97856096ade20fabf4af6840021559a",
+        "source_fact:v1:dd14844fa23468898f6d495dd0bf70a63de3f29f653cb6efb209d8ff59bf3a32"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”",
+      "telegram_core_fact": "일본 기업과 수소연료전지·에너지저장장치(ESS)를 결합한 독립형 전력공급 시스템 구축을 협의하는 가운데 국내 발전 공기업과의 계약도 확대되고 있다는 설명이다.",
+      "title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”"
     },
     "source_fact:acf86568bbbe9b208dff62cf": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
@@ -1040281,6 +1041696,28 @@
       "source_title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑",
       "telegram_core_fact": "호르무즈 해협의 선박 통항량은 전쟁 이전의 약 4분의 1 수준에 머무른 것으로 나타났다.",
       "title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑"
+    },
+    "source_fact:bdca2671ccf9940a88a1dd80": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640305?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "4931a78161ffb12425c5e4522b4e77ffdb7ce0eaefd3bd74b8d4a889d275c9a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0936d607e91cddfff2b353e17942de5f8c11dfe475dd3d2edf69379802f44ed7",
+      "source_fact_keys": [
+        "source_fact:v1:0c4dcb929e62d3c6d7fc66e83bfba97e82470adfbb77975054756d4519d6980e",
+        "source_fact:v1:90351abd40fb0ff9e4d38999d34eb0e3f97856096ade20fabf4af6840021559a",
+        "source_fact:v1:dd14844fa23468898f6d495dd0bf70a63de3f29f653cb6efb209d8ff59bf3a32"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”",
+      "telegram_core_fact": "일본 기업과 수소연료전지·에너지저장장치(ESS)를 결합한 독립형 전력공급 시스템 구축을 협의하는 가운데 국내 발전 공기업과의 계약도 확대되고 있다는 설명이다.",
+      "title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”"
     },
     "source_fact:bdcaf3864a4fa38e49bec7ac": {
       "first_seen_kst": "2026-10-16T18:58:56+09:00",
@@ -1127790,6 +1129227,29 @@
       "telegram_core_fact": "스마트비즈엑스포는 삼성전자의 스마트공장 구축 지원사업을 받은 중소기업의 제품 및 기술을 전시하는 행사로, 2018년부터 현재까지 약 1793억원을 투입해 중소기업 2700여 곳의 제조 혁신을 지원했다.",
       "title": "'스마트공장' 지원하는 삼성…이소영 \"진정성 느껴져\""
     },
+    "source_fact:e0a2ee6236ea2f6b8520922e": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842072",
+      "source": "뉴시스",
+      "source_body_digest": "bc7fce9fa30257814f65772fe1fd0403f87b464d4c422012e0e0ec66138cac5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f69862e44cc0a7a806b67a7f88d78b6d947d97587607431559a8e4225b9d60",
+      "source_fact_keys": [
+        "source_fact:v1:0615409d98de23d1f905d6b0a88592df869a2996d33c514f1efd32340ac969c9",
+        "source_fact:v1:1b3f8c78dab75bf977417441413f8a7538dc973ee13d4c4dd79924fb5437fff6",
+        "source_fact:v1:9128fc83d83397b3cac6da51d266597235bef5556fec59203420797adccea995",
+        "source_fact:v1:fc90916f9c478b142d4925e7480220792e4aa45e380e20fbdb570fdbce00f8a3"
+      ],
+      "source_published_kst": "2026-10-27T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\"",
+      "telegram_core_fact": "키움증권에 따르면 이달 넷째주까지의 국내 증시 일평균 거래대금은 38조7000억원으로, 최고치를 기록했던 지난 5월(106조2000억원)에 비해 64% 감소했다.",
+      "title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\""
+    },
     "source_fact:e0a2f56f8e28f4685af2c278": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
       "lanes": {
@@ -1139141,6 +1140601,35 @@
       "telegram_core_fact": "홈 뱅코프(HBCP)는 3분기 순이익이 1010만 달러, 희석 주당순이익(EPS)이 1.28달러로 집계돼 전년비 각각 18.3%, 19.5% 감소했다고 19일 발표했다. 2026년 예상 주당배당금은 1.28달러, 예상 시가배당률은 1.94%다.",
       "title": "홈 뱅코프, 3분기 EPS 1.28달러..전년비 19.5% 감소"
     },
+    "source_fact:e506513099ec949030bde3c9": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
+    },
     "source_fact:e50665ada2d6121a58bf3578": {
       "first_seen_kst": "2026-10-20T01:09:59+09:00",
       "lanes": {
@@ -1142244,6 +1143733,35 @@
       "source_title": "스몰인사이트 \"이노메트리, 배터리 검사장비 반등⋯유리기판ㆍHBM까지 영역 확대\"",
       "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 배터리 검사장비 본업의 회복과 유리기판·고대역폭메모리(HBM) 등 신사업 확대가 향후 성장의 핵심이라고 평가했다.",
       "title": "스몰인사이트 \"이노메트리, 배터리 검사장비 반등⋯유리기판ㆍHBM까지 영역 확대\""
+    },
+    "source_fact:e63beb4d24326cacdcd65afb": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
     },
     "source_fact:e63cc858293f2b1321ad97f8": {
       "first_seen_kst": "2026-10-24T10:14:54+09:00",
@@ -1146826,6 +1148344,34 @@
       "source_title": "러 공습에 키이우 일부 단수…겨울 정전 길어지면 오수 범람 우려",
       "telegram_core_fact": "러시아의 에너지시설 공습으로 우크라이나 수도 키이우 일부 지역에서 수돗물 공급이 끊긴 가운데, 겨울철 정전이 길어지면 하수가 넘쳐 공중보건 위기로 번질 수 있다는 경고가 나왔다.",
       "title": "러 공습에 키이우 일부 단수…겨울 정전 길어지면 오수 범람 우려"
+    },
+    "source_fact:e82418c41e9424014281cf61": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
     },
     "source_fact:e824b5d54d45a9d91a5517ea": {
       "first_seen_kst": "2026-10-12T14:17:50+09:00",
@@ -1205711,6 +1207257,24 @@
       "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
       "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
     },
+    "title:01e5e07c98780ad0068a4bf5": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027018100002",
+      "source": "연합뉴스",
+      "source_body_digest": "cffcb3632bd61ac1b333bc80b26a695a6ced37091e426e59fdc7a557a2f8056f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 수출 호조에 3분기 한국 경제 1.0% '깜짝 성장' | 연합뉴스",
+      "telegram_core_fact": "올해 3분기 한국 경제는 반도체 호황이 지속되는 가운데 정부소비와 설비투자 증가세에 힘입어 '깜짝 성장'을 이뤘다.",
+      "title": "반도체 수출 호조에 3분기 한국 경제 1.0% '깜짝 성장' | 연합뉴스"
+    },
     "title:01e91b46963e6aa32612b9d6": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
       "lanes": {
@@ -1227553,6 +1229117,29 @@
       "telegram_core_fact": "삼성전기와 엔비디아가 세종과 부산사업장에 전용 반도체 기판 공장을 함께 구축한다. 삼성전기는 세종과 부산사업장에 엔비디아 전용 반도체 기판 생산라인을 새롭게 구축한다.",
       "title": "삼성전기, 엔비디아 전용 반도체기판 공장 구축"
     },
+    "title:26939a3f5b4baef9776793e5": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.hankyung.com/article/2026102764867",
+      "source": "한국경제",
+      "source_body_digest": "a7f618811f51e6e444a009d6d871dfbe05a6a356a160d31680c15b2cd64f2fd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2bc5a2c78e536ecbbc97e4bb0241ae15cb311a3cb24c0f483b14f1378bf216d",
+      "source_fact_keys": [
+        "source_fact:v1:09ed7c3f0bf516f1f7766e05d00dbb9b30370252253eeb43e4cba5799e41f79e",
+        "source_fact:v1:12b3b6f06feef7cb75d49eda981cb37762ff0f50ddb4e970779c0e45a8e6e93d",
+        "source_fact:v1:89bab5d8e332eb53a0bde3ff98ab5e43b1b5ceb4aed8cdfda1325cc0e257388c",
+        "source_fact:v1:ea2b1d1b19f919b59e646e15f049dad32c46993da5d428a66145ece98c0794ce"
+      ],
+      "source_published_kst": "2026-10-27T07:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락",
+      "telegram_core_fact": "현지 투자은행 BTG 팍투알 역시 보고서를 통해 향후 수주간 매도세가 이어지며 보베스파 지수가 17만선 안팎에서 공방을 벌일 가능성이 높다고 전망했다. 이날 브라질 증시의 대표 지수인 보베스파 지수는 개장과 동시에 전장 대비 17.00% 하락한 16만9893포인트로 밀려났다.",
+      "title": "'보조금 터진다'…룰라 재집권에 브라질 증시 17% 폭락"
+    },
     "title:2693b76bc7169b8f14de0560": {
       "first_seen_kst": "2026-10-12T20:14:14+09:00",
       "lanes": {
@@ -1233258,6 +1234845,29 @@
       "source_title": "서울시, 테헤란로서 스타트업 투자 도울 벤처투자사 등 9곳 모집 | 연합뉴스",
       "telegram_core_fact": "서울시는 강남구 테헤란로의 '서울창업허브 스케일업센터'에 입주해 유망 스타트업 발굴과 투자유치를 지원할 전문 투자기관 9곳을 다음 달 2일까지 모집한다고 26일 밝혔다. 김현우 서울시 경제실장은 \"전문 투자기관과의 협력을 강화해 서울의 유망 스타트업이 더 많은 투자유치와 성장 기회를 얻도록 지원하겠다\"고 말했다.",
       "title": "서울시, 테헤란로서 스타트업 투자 도울 벤처투자사 등 9곳 모집 | 연합뉴스"
+    },
+    "title:2f6bf373ec9fb7e6049251d2": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842072",
+      "source": "뉴시스",
+      "source_body_digest": "bc7fce9fa30257814f65772fe1fd0403f87b464d4c422012e0e0ec66138cac5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f69862e44cc0a7a806b67a7f88d78b6d947d97587607431559a8e4225b9d60",
+      "source_fact_keys": [
+        "source_fact:v1:0615409d98de23d1f905d6b0a88592df869a2996d33c514f1efd32340ac969c9",
+        "source_fact:v1:1b3f8c78dab75bf977417441413f8a7538dc973ee13d4c4dd79924fb5437fff6",
+        "source_fact:v1:9128fc83d83397b3cac6da51d266597235bef5556fec59203420797adccea995",
+        "source_fact:v1:fc90916f9c478b142d4925e7480220792e4aa45e380e20fbdb570fdbce00f8a3"
+      ],
+      "source_published_kst": "2026-10-27T08:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\"",
+      "telegram_core_fact": "키움증권에 따르면 이달 넷째주까지의 국내 증시 일평균 거래대금은 38조7000억원으로, 최고치를 기록했던 지난 5월(106조2000억원)에 비해 64% 감소했다.",
+      "title": "증시 거래대금 106조→39조…\"증권업종, 바닥 찍었다\""
     },
     "title:2f72fdd82ddf3adefdd2f1ab": {
       "first_seen_kst": "2026-10-13T19:34:14+09:00",
@@ -1246521,6 +1248131,28 @@
       "telegram_core_fact": "해양수산부가 연간 약 2조원 항만·연안정비 사업 예산이 차질 없이 집행될 수 있도록 전국 주요 사업장을 대상으로 현장점검에 나선다.",
       "title": "해수부, 2조원 항만·연안정비 예산 집행 현장점검"
     },
+    "title:44e8afcc2f0e279f4aacc76f": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640305?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "4931a78161ffb12425c5e4522b4e77ffdb7ce0eaefd3bd74b8d4a889d275c9a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0936d607e91cddfff2b353e17942de5f8c11dfe475dd3d2edf69379802f44ed7",
+      "source_fact_keys": [
+        "source_fact:v1:0c4dcb929e62d3c6d7fc66e83bfba97e82470adfbb77975054756d4519d6980e",
+        "source_fact:v1:90351abd40fb0ff9e4d38999d34eb0e3f97856096ade20fabf4af6840021559a",
+        "source_fact:v1:dd14844fa23468898f6d495dd0bf70a63de3f29f653cb6efb209d8ff59bf3a32"
+      ],
+      "source_published_kst": "2026-10-27T07:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”",
+      "telegram_core_fact": "일본 기업과 수소연료전지·에너지저장장치(ESS)를 결합한 독립형 전력공급 시스템 구축을 협의하는 가운데 국내 발전 공기업과의 계약도 확대되고 있다는 설명이다.",
+      "title": "밸류파인더 “에스에너지, 일본 AI 데이터센터 전력시장 진출 추진…110억 태양광 수주”"
+    },
     "title:44e9cdc0f395567be6583214": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
       "lanes": {
@@ -1249598,6 +1251230,34 @@
       "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
       "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
       "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
+    },
+    "title:498cb4c2229791f6b4552ca0": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640315",
+      "source": "이투데이",
+      "source_body_digest": "f457294d41df95779dd81319922af89d35b60b250f303a760b4e941adb97118a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d40abb4c4e77d3b42bda4bc11759580c9a02b5be5628f5753061af364192b911",
+      "source_fact_keys": [
+        "source_fact:v1:2c229a126aedc1ee206090ac58d69bad90f64506d23e36692d3e68087b44f3cd",
+        "source_fact:v1:384b4ff1e40eb2f95e7d1688e88176eb06618ea1038810d2e5d7fa82b47c05c3",
+        "source_fact:v1:5ef66b036e1e6cf520d518cd82d131835380cde04aa4fac1e64a014dd61c9743",
+        "source_fact:v1:7034c19a1e1eca126a5a95bc4a06e33890862d23f6e3e4d37805c85345ac4a31",
+        "source_fact:v1:8179be77e940077759baa7d9b5058814dbbcd454065716fd2ddb99dd34089989",
+        "source_fact:v1:82a414d6cffbde56a14c85adf49cdd30a3eb85479031b1c3abc6c755337345f9",
+        "source_fact:v1:b9b5132ab401f65cc605b6325e1bf9c90e6fa63eb2fc4a2086c4381aeb1e38b7",
+        "source_fact:v1:c00daa87fb32cf57f7a4bc9bebd5f6f001bf5e9c6e650f03098eb36c3d5f7f08",
+        "source_fact:v1:e0b3546beaaadb604decc45fcfcb5f6bdf385c54077bd902e714a239bcdf59be"
+      ],
+      "source_published_kst": "2026-10-27T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’",
+      "telegram_core_fact": "26일(현지시간) 블룸버그통신에 따르면 미국 투자등급 회사채 발행액은 올해 들어 1조7600억달러(약 2336조원)에 이르렀다.",
+      "title": "빅테크 AI 차입 러시⋯美 우량 회사채 발행 1조7600억달러 ‘사상 최대’"
     },
     "title:49907af8b471c537c02b54ed": {
       "first_seen_kst": "2026-09-19T11:08:27+09:00",
@@ -1348273,6 +1349933,28 @@
       "telegram_core_fact": "“과징금이 처벌이 아닌 기업의 영업비용으로 전락해서는 안 된다”며 “반복적인 소비자 기만행위를 막을 수 있도록 공정위의 제재 실효성을 강화해야 한다”고 강조했다.",
       "title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’"
     },
+    "title:edcb6b2460df9ca444d1fc2e": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://www.newsis.com/view/NISX20261026_0003841539",
+      "source": "뉴시스",
+      "source_body_digest": "9c4dadd2487e75c5c5fba21af31ae79aca21a92f7f47bb760c8a47a0a2f39047",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d89bc375f1961f14ba7aab3e6cf57c728a84ca79f5102f22e48ec663e91467d",
+      "source_fact_keys": [
+        "source_fact:v1:363bb9b8687117927c2f6b1860c40ba91402240c4b1ab668e824041dd3c71374",
+        "source_fact:v1:d458b494569d30f38e0d15be5d5785c66aa3a6b7c1798b8ab3079de4b31e86ff",
+        "source_fact:v1:d9296b153bfd9c58c882926146d5b6320bb55f5e2a9f7e8819a48eb9cd9bbf7f"
+      ],
+      "source_published_kst": "2026-10-26T16:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓",
+      "telegram_core_fact": "BNK금융그룹은 26일 실적공시를 통해 올 1~3분기 누적 그룹 연결 당기순이익(지배기업지분)이 6223억원으로, 전년 대비 1477억원(19.2%) 감소했다고 밝혔다.",
+      "title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓"
+    },
     "title:edec30cdc2a2224e6f9d8eb4": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -1349817,6 +1351499,35 @@
       "source_title": "“3개월 뒤 HBM 가격 2배로”…‘삼전닉스’ 실적 자신감 커진다",
       "telegram_core_fact": "업계에 따르면 미국 투자은행 키뱅크 캐피털 마켓츠는 최근 아시아 현지 조사 결과를 바탕으로 작성한 보고서에서 2027년 1분기 HBM 가격이 전 분기 대비 80~100% 상승할 것으로 내다봤다.",
       "title": "“3개월 뒤 HBM 가격 2배로”…‘삼전닉스’ 실적 자신감 커진다"
+    },
+    "title:f0e897116ce332fe46e02835": {
+      "first_seen_kst": "2026-10-27T08:06:35+09:00",
+      "lanes": {
+        "live": "2026-10-27T08:06:35+09:00"
+      },
+      "last_seen_kst": "2026-10-27T08:06:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181531",
+      "source": "매일경제",
+      "source_body_digest": "43578f6faae386509ceb635f61352ad79101b247c461446c5f3bb7653528093f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d2412203a8442677b63d706c2907959fc6b3d3830e8f4feb7a2d45b446e1c54",
+      "source_fact_keys": [
+        "source_fact:v1:0db6970b99aef22cc3003afac8281379d47dcdbdbb594a71f8598879b81acb33",
+        "source_fact:v1:434684d85f3eda6629611f375359ba86545b8578f960761a0b5bba5ffc10bf01",
+        "source_fact:v1:4e38a80d3b6c645cbbc6b81725bc24a9e69f98fd44d7138073cc518a331497f2",
+        "source_fact:v1:5569f87c53fcea66355a72d1938864950aa765770ca80c94a17aa7806ddde401",
+        "source_fact:v1:61697bbe751abb026d78987df40ceee0d5c04a6ca7ceba7d7defa2bc388c6d6f",
+        "source_fact:v1:6af646e0948d30b077a88c49b76d5a763afd6c50fca26cfce8227a930926bc32",
+        "source_fact:v1:82ec88057448de565a48cdb8b95d923ea4357cb7bbc4073b1657ea795aba9bf4",
+        "source_fact:v1:8a31072c51103efe1736b11dd05ed780e162abc67f00adcf592bf0710d804348",
+        "source_fact:v1:b5db1a4ff504ddd922037dd876e07e9fabd2838732536ee107f168b46a700e4a",
+        "source_fact:v1:dc28ee32f21979e4312060509f136a7a0d7bbbb78de30e29898bbd61b659516c"
+      ],
+      "source_published_kst": "2026-10-27T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환",
+      "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
+      "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
     },
     "title:f0f5e9a75acdef13d8ec1efd": {
       "first_seen_kst": "2026-10-25T07:27:35+09:00",
@@ -1358885,5 +1360596,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-27T07:40:55+09:00"
+  "updated_at_kst": "2026-10-27T08:06:35+09:00"
 }
