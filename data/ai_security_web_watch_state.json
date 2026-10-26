@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 17,
-    "new_material_items": 0,
-    "raw_items": 271,
+    "material_items": 18,
+    "new_material_items": 1,
+    "raw_items": 257,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -24,6 +24,12 @@
       "source": "PHP Security Team",
       "source_url": "https://www.php.net/archive/2026.php#2026-10-21-5",
       "status": "official_release"
+    },
+    "reported_exploitation": {
+      "first_seen_at": "2026-10-26T12:17:12.986969+00:00",
+      "source": "BleepingComputer",
+      "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPM2ZSQjVSbHNOcHVZSk1Sel80SDZMbG5hbnVhLWgyZVp3Q3QtcVdicndvWERVOVJEa3I2aDVIMFpDUmNseElsLV91RS03VEt3S3IyVmFkd3ktZnhyQVNVcE5kZzVoSEkxMkdMd3ZQR0lINzVjVjdlUnNUVW9yWEJWQ21NZldmYjNNN2k3MnU2dEdYYWV4Q3ZzSEVxeXFxWXB0TVV6WjI3OVhCQ3lHNGUzWU5XdTDSAbQBQVVfeXFMTzNmUkI1UmxzTnB1WUpNUnpfNEg2TGxuYW51YS1oMmVad0N0LXFXYnJ3b1hEVTlSRGtyNmg1SDBaQ1JjbHhJbC1fdUUtN1RLd0tyMlZhZHd5LWZ4ckFTVXBOZGc1aEhJMTJHTHd2UEdJSDc1Y1Y3ZVJzVFVvclhCVkNtTWZXZmIzTTdpNzJ1NnRHWGFleEN2c0hFcXlxcVlwdE1VeloyNzlYQkN5RzRlM1lOV3Uw?oc=5",
+      "status": "reported_followup"
     },
     "session_advisory": {
       "source_url": "https://www.php.net/archive/2026.php#2026-10-23-1",
@@ -969,6 +975,16 @@
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBaSXRUMkVsWkF3TjhoV29oTXdyZHhrMGZINFBHNVVrNmZubTA4SkFzMzlWMlNMLW15ZWdISDJYeURJbVdpTFB5ZzNTU21aazFfTmc4R0VkLWVyMVY4S1JRYTZ5UjJqWk82SlR5Q0ZMOTJrNEJVeXNV?oc=5",
       "vendor": "PHP 재단"
     },
+    "c69db8c6d73f7c1a0eddbd65": {
+      "category": "PHP 취약점 실전 악용 보도·추가 검증",
+      "first_seen_at": "2026-10-26T12:17:12.986969+00:00",
+      "published_at": "2026-10-26T09:19:57+00:00",
+      "severity": 3,
+      "source": "BleepingComputer",
+      "title": "PHP2Shell security flaws now sucessfully exploited in the wild - BleepingComputer",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPM2ZSQjVSbHNOcHVZSk1Sel80SDZMbG5hbnVhLWgyZVp3Q3QtcVdicndvWERVOVJEa3I2aDVIMFpDUmNseElsLV91RS03VEt3S3IyVmFkd3ktZnhyQVNVcE5kZzVoSEkxMkdMd3ZQR0lINzVjVjdlUnNUVW9yWEJWQ21NZldmYjNNN2k3MnU2dEdYYWV4Q3ZzSEVxeXFxWXB0TVV6WjI3OVhCQ3lHNGUzWU5XdTDSAbQBQVVfeXFMTzNmUkI1UmxzTnB1WUpNUnpfNEg2TGxuYW51YS1oMmVad0N0LXFXYnJ3b1hEVTlSRGtyNmg1SDBaQ1JjbHhJbC1fdUUtN1RLd0tyMlZhZHd5LWZ4ckFTVXBOZGc1aEhJMTJHTHd2UEdJSDc1Y1Y3ZVJzVFVvclhCVkNtTWZXZmIzTTdpNzJ1NnRHWGFleEN2c0hFcXlxcVlwdE1VeloyNzlYQkN5RzRlM1lOV3Uw?oc=5",
+      "vendor": "PHP 재단"
+    },
     "c7faa761acd4b22fa2e714bf": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-19T21:27:39.983933+00:00",
@@ -1280,5 +1296,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-26T20:49:53+09:00"
+  "updated_at_kst": "2026-10-26T21:17:12+09:00"
 }
