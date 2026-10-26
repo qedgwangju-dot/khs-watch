@@ -187,11 +187,9 @@ def send_message(text: str) -> int:
             identity = {"request_body_sha256": request_hash}
         key = digest(json.dumps([public["bot_username"], public["recipient_sha256"], identity], sort_keys=True))
         states = _states()
-        pending = [r for r in states.values() if r.get("status") in {"in_flight", "uncertain"}
-                   and r.get("recipient_sha256") == public["recipient_sha256"]]
-        if pending:
-            raise DeliveryUncertain("Unresolved Telegram send exists on this market route; automatic resend blocked")
         previous = states.get(key)
+        if previous and previous.get("status") in {"in_flight", "uncertain"}:
+            raise DeliveryUncertain("Unresolved Telegram send exists for this market event; automatic resend blocked")
         if previous and previous.get("status") == "confirmed":
             _receipts[int(previous["message_id"])] = previous
             print(f"market_alert_delivery_reused=true stage={context.get('stage')} message_id={previous['message_id']}", flush=True)
