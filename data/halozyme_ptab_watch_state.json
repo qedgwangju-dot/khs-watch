@@ -3,6 +3,7 @@
   "seen_events": [
     "0ee5b69fd526297010d7ee4d",
     "11f48eb8a2b96c1b3845fd02",
+    "15250d27c48a2fcb77cd5866",
     "1f3df1ee0ac6a5946bcc3248",
     "36c8dc198c272bbeb5f0df2f",
     "397fd23021765b9ec6fe83a7",
@@ -16,19 +17,22 @@
     "e31d5765026f8260f0f76578",
     "ec2b004cd91a18e18feeeb55",
     "ee71c800bbbfc903a324c27f",
+    "f504f69ebcdccef74c51c5de",
     "fb0c3c6521bf1eafc74dbaa2",
     "fe820a4eae44b8edc69d3618"
   ],
   "seen_urls": [
     "http://the-biz.co.kr/news/articleView.html?idxno=728392",
     "http://the-biz.co.kr/news/articleView.html?idxno=728392#pgr2025-00039",
+    "https://ai-lab.exparte.com/case/ptab/IPR2026-00312/doc/26",
     "https://ir.halozyme.com/news/news-details/2026/Halozyme-Wins-Injunction-Stopping-Manufacture-and-Sale-of-Mercks-Keytruda-SC-in-Multiple-European-Markets/default.aspx",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557268",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557365",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557766",
-    "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959"
+    "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959",
+    "https://www.pearceip.law/2026/09/09/update-on-msds-challenges-to-us-halozyme-patents-in-sc-keytruda-pembrolizumab-dispute/"
   ],
-  "last_check_kst": "2026-10-26T20:02:50+09:00",
+  "last_check_kst": "2026-10-26T20:30:59+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -77,7 +81,11 @@
     "PGR2025-00052": "12,264,345",
     "PGR2025-00046": "12,091,692",
     "PGR2025-00024": "12,060,590",
-    "PGR2025-00030": "12,054,758"
+    "PGR2025-00030": "12,054,758",
+    "IPR2026-00313": "11,041,149",
+    "IPR2026-00316": "",
+    "IPR2026-00312": "10,865,400",
+    "PGR2025-00050": "12,077,791"
   },
   "district_case": "2:25-cv-03179",
   "legal_v3_initialized": true,
@@ -88,7 +96,10 @@
   ],
   "legal_v4_initialized": true,
   "search_mode": "개별 사건번호 + 미국/한국 뉴스 + Bing 웹",
-  "last_sent_message_ids": [],
+  "last_sent_message_ids": [
+    251,
+    252
+  ],
   "final_decision_classification_version": 2,
   "seen_portfolio_updates": [
     "38543e8786807a5007ba4efd",
@@ -275,12 +286,24 @@
         "kind": "",
         "label": "최종서면결정"
       }
+    ],
+    "IPR2026-00312": [
+      {
+        "date": "2026-10-21",
+        "kind": "director_review",
+        "label": "국장 재검토"
+      },
+      {
+        "date": "2026-10-24",
+        "kind": "final_decision",
+        "label": "최종서면결정"
+      }
     ]
   },
   "search_query_count": 39,
   "search_task_count": 78,
   "search_workers": 8,
-  "search_elapsed_seconds": 1.913,
+  "search_elapsed_seconds": 2.038,
   "search_completed_tasks": 78,
   "search_failed_tasks": 0,
   "search_completed_by_engine": {
