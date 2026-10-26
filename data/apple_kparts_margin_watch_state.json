@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-26T14:29:04+09:00",
+  "updated_at_kst": "2026-10-26T16:13:38+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
   "baseline": {
@@ -57,6 +57,7 @@
     "3d4a30411c274b22896d32a7",
     "3e514526c5a794af9e5011e8",
     "3eea8d685a6a2ec1221413c0",
+    "409e18247b0f8c3f221d6c08",
     "41187bce6efa74554f66a7a1",
     "4162ef063a91d37847ee9e21",
     "41a0cb4387ff1e17e9d60a22",
@@ -226,7 +227,7 @@
     "bucket": "orange",
     "average_source": "Fed H.10/FRED"
   },
-  "last_scan_items": 23,
+  "last_scan_items": 25,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-10-22T15:49:31+09:00",

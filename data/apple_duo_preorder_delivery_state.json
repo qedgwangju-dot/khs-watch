@@ -119,7 +119,7 @@
     "at_kst": "2026-10-18T15:15:07+09:00",
     "kind": "correction"
   },
-  "updated_at_kst": "2026-10-26T14:28:58+09:00",
+  "updated_at_kst": "2026-10-26T16:13:31+09:00",
   "errors": [
     "2026-10-19 preorder improvement original publisher texts unavailable"
   ],
@@ -145,5 +145,19 @@
   "false_august_correction_sent": true,
   "august_false_alert_corrected_at_kst": "2026-10-18T15:15:07+09:00",
   "seen_improvement_fact_keys": [],
-  "verified_extended_months": []
+  "verified_extended_months": [],
+  "retail_launch_benchmark": {
+    "as_of": "2026-10-23",
+    "market": "미국",
+    "mean_online_wait_days_reported": 92,
+    "mean_wait_source_kind": "Navi 조사·WSJ/연합뉴스 재인용, Apple 공식 납기 아님",
+    "us_store_initial_allocation_units_reported": [
+      50,
+      200
+    ],
+    "allocation_source_kind": "연합뉴스가 인용한 출시 첫날 미국 매장별 배정 보도",
+    "source": "https://www.yna.co.kr/view/AKR20261024007600075",
+    "confirmed_total_sales_units": null,
+    "sku_specific_delivery_date": null
+  }
 }
