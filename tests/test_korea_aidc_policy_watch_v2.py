@@ -145,5 +145,58 @@ class AIDCSemanticRegression(unittest.TestCase):
             self.assertTrue((Path(td) / "alert.txt").exists())
 
 
+    def test_20261023_ecosystem_source_titles_share_one_event(self):
+        a = row("AIDC 생태계 지원 방안 발표…인허가 간소화와 2000억원 신규사업")
+        b = row("막히던 인허가 한꺼번에…정부 AIDC 규제 완화·2000억원 투입",
+                day="Sat, 24 Oct 2026 07:00:00 GMT")
+        a["official"] = True
+        a["url"] = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156786291"
+        self.assertEqual(v2.semantic_key(a), "aidc|ecosystem-support|government-proposal")
+        self.assertEqual(v2.semantic_key(a), v2.semantic_key(b))
+        self.assertEqual(v2.event_level(a), v2.event_level(b))
+        self.assertEqual(v2.event_level(a), 30)
+
+    def test_ecosystem_policy_requires_full_evidence_and_not_budget_approval(self):
+        a = row("인공지능 데이터센터(AIDC) 생태계 지원 방안 발표", official=True,
+                url="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156786291")
+        a["event_key"] = v2.semantic_key(a)
+        a["article_body"] = (
+            "2026년 10월 23일 대통령 주재 제2차 규제합리화위원회가 AIDC 인공지능 데이터센터 "
+            "생태계 지원방안을 발표하였다. 2027년 정부안으로 2,000억원 신규 국산화 연구개발·실증을 "
+            "추진하며 과학기술정보통신부가 인허가 일괄처리와 전담 창구 개선을 추진한다. "
+            "2027년 상반기 AIDC 특구 지정을 추진하고 주민 상생계획을 필수요건으로 포함할 예정이다. "
+            "전산실·냉각·전력 무인설비 규제 완화를 추진하나 예산안은 아직 국회 최종 확정 단계가 아니다. "
+            "AIDC 구축 사업자의 지역 인허가를 간소화하고 국산 소부장 기술의 검증·실증을 도울 계획이다."
+        )
+        self.assertTrue(v2.verify_change(a)[0])
+        news, delta, invest = v2.fact_lines(a)
+        self.assertIn("정부 예산안", " ".join(news))
+        self.assertIn("전원 인가", " ".join(delta))
+        self.assertIn("2,000억원", v2.render(a))
+
+        b = dict(a, article_body="AIDC 사업 지원이 활발하다." * 3)
+        self.assertFalse(v2.verify_change(b)[0])
+
+    def test_zone_future_plan_never_equals_real_designation(self):
+        a = row("AIDC 특구 지정 계획 발표", official=True,
+                url="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156786291")
+        a["event_key"] = v2.semantic_key(a)
+        a["article_body"] = BODY + " 정부는 2027년 상반기 AIDC 특구를 지정할 예정이다."
+        self.assertEqual(a["event_key"], "aidc|special-zone")
+        self.assertFalse(v2.verify_change(a)[0])
+        a["article_body"] = BODY + " 정부는 전남 지역을 AIDC 특구로 지정했다. 지정 고시를 공표했다."
+        self.assertTrue(v2.verify_change(a)[0])
+
+    def test_budget_draft_not_misclassified_as_enacted(self):
+        draft = row("AIDC 국산화 2000억 예산안 추진")
+        self.assertNotEqual(v2.semantic_key(draft), "aidc|ecosystem-support|budget-enacted")
+        enacted = row("AIDC 국산화 2000억 예산 국회 확정", official=True,
+                      url="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156786291")
+        enacted["event_key"] = v2.semantic_key(enacted)
+        enacted["article_body"] = BODY + " 국회 본회의 통과 및 예산 확정으로 AIDC 국산화 사업비 2000억원이 최종 확정됐다."
+        self.assertEqual(enacted["event_key"], "aidc|ecosystem-support|budget-enacted")
+        self.assertTrue(v2.verify_change(enacted)[0])
+
+
 if __name__ == "__main__":
     unittest.main()
