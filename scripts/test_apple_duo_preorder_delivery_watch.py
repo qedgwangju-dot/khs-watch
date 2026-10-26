@@ -497,6 +497,17 @@ class DuoPreorderTests(unittest.TestCase):
         self.assertEqual(len(m._new_preorder_improvements(items,{})),1)
 
 
+    def test_launch_average_wait_is_not_a_specific_shipping_date_or_sales(self):
+        benchmark=m.RETAIL_LAUNCH_BENCHMARK
+        self.assertEqual(benchmark["mean_online_wait_days_reported"],92)
+        self.assertEqual(benchmark["us_store_initial_allocation_units_reported"],[50,200])
+        self.assertIsNone(benchmark["confirmed_total_sales_units"])
+        self.assertIsNone(benchmark["sku_specific_delivery_date"])
+        sample=("iPhone Duo U.S. launch stock 50 to 200 units per store; "
+                "Navi reports average online wait 92 days.")
+        self.assertIsNone(m._shipping_event(sample,self.pub()))
+
+
 if __name__=="__main__":
     result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(DuoPreorderTests))
     if not result.wasSuccessful():

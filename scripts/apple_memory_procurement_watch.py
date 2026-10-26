@@ -42,6 +42,7 @@ KST = ZoneInfo("Asia/Seoul")
 BASELINE_AT_KST = dt.datetime(2026, 9, 15, 9, 0, tzinfo=KST)
 BASELINE_SOURCE = "https://www.jiemian.com/article/15094732.html"
 BASELINE_FACT_KEY = "apple_samsung_1q27_dram2.0gb_nand0.33gb_up30_40"
+CXMT_APPLE_REFUSAL_BASELINE_KEY = "apple_cxmt_discount_refusal_first_reported_2026_08_05"
 BASELINE = {
     "quarter": "2027Q1",
     "supplier": "삼성전자",
@@ -60,6 +61,9 @@ SEARCHES = [
     ("google_en", '"Apple" Samsung DRAM NAND 2027 Q1 price 2.0 0.33'),
     ("google_en", '"Apple" memory procurement LTA Samsung SK hynix Micron DRAM NAND'),
     ("google_en", '"Apple" 2027 Q2 DRAM NAND contract price supplier allocation'),
+    ("google_ko", '"CXMT" "애플" LPDDR5X 가격 장기계약 공급계약'),
+    ("google_en", '"CXMT" "Apple" DRAM LPDDR5X pricing supplier contract'),
+    ("bing", '"CXMT" "Apple" DRAM signed supply agreement qualification'),
     ("bing", '"Apple" Samsung DRAM NAND 2027 Q1 2.0 0.33'),
     ("bing", '"Apple" memory procurement LTA Samsung SK hynix Micron'),
     ("bing", '"Apple" 2027 Q2 DRAM NAND contract price'),
@@ -68,7 +72,7 @@ SEARCHES = [
 HIGH_SOURCES = (
     "apple", "samsung", "samsung electronics", "삼성전자", "sk hynix", "sk하이닉스",
     "micron", "reuters", "bloomberg", "financial times", "wall street journal", "wsj",
-    "trendforce", "counterpoint", "omdia", "digitimes", "jiemian", "界面新闻",
+    "trendforce", "counterpoint", "omdia", "digitimes", "jiemian", "界面新闻", "cxmt",
 )
 MID_SOURCES = (
     "macrumors", "9to5mac", "the elec", "전자신문", "etnews", "zdnet",
@@ -85,6 +89,7 @@ PROCURE_MARKERS = (
     "报价", "采购", "合同", "长期协议", "供应商", "订单", "议价",
 )
 SUPPLIER_MARKERS = {
+    "CXMT": ("cxmt", "changxin", "长鑫", "長鑫", "창신메모리"),
     "삼성전자": ("samsung", "삼성전자", "三星"),
     "SK하이닉스": ("sk hynix", "sk하이닉스", "海力士"),
     "Micron": ("micron", "마이크론", "美光"),
@@ -141,6 +146,53 @@ def _rss_url(kind: str, query: str) -> str:
 
 def _fingerprint(title: str, source: str) -> str:
     return hashlib.sha256(f"{_norm(title)}|{_norm(source)}".encode()).hexdigest()[:24]
+
+def _apple_cxmt_pair(text: str) -> bool:
+    low = text.lower()
+    return (any(x in low for x in ("cxmt", "changxin", "长鑫", "長鑫", "창신메모리"))
+            and any(x in low for x in APPLE_MARKERS))
+
+
+def _apple_cxmt_discount_reprint(text: str) -> bool:
+    """Reject a repeat of the already-reported August 5, 2026 price refusal."""
+    low = text.lower()
+    if not _apple_cxmt_pair(low):
+        return False
+    if not any(x in low for x in ("price", "discount", "报价", "采购", "压价", "砍价",
+                                  "降价", "单价", "가격", "단가", "할인")):
+        return False
+    if any(x in low for x in ("has signed with apple", "signed a contract with apple",
+                              "与苹果签署", "애플과 공급계약 체결")):
+        return False
+    return any(x in low for x in ("refuse", "refused", "reject", "rejected",
+                                  "won't discount", "no discount", "拒绝", "拒降",
+                                  "거절", "퇴짜", "갱신 거부"))
+
+
+def _verified_apple_cxmt_supply_event(event: dict) -> bool:
+    """Require a direct original outlet and specific signed/qualified business."""
+    blob = f"{event.get('title','')} {event.get('description','')}"
+    if not _apple_cxmt_pair(blob) or _apple_cxmt_discount_reprint(blob):
+        return False
+    host = (urlparse(event.get("link") or "").hostname or "").lower().removeprefix("www.")
+    verified_hosts = {"apple.com", "cxmt.com", "reuters.com", "bloomberg.com"}
+    if not any(host == h or host.endswith("." + h) for h in verified_hosts):
+        return False
+    low = blob.lower()
+    a = re.search(
+        r"(?:apple|애플|苹果)[^.!?\n]{0,95}(?:cxmt|changxin|长鑫|長鑫|창신메모리)"
+        r"[^.!?\n]{0,105}(?:signed|signs|supply agreement|contract signed|approved supplier|"
+        r"customer qualified|正式供货|供货协议|签署协议|认证完成|공급계약 체결|양산 공급 확정)",
+        low, re.I,
+    )
+    b = re.search(
+        r"(?:cxmt|changxin|长鑫|長鑫|창신메모리)[^.!?\n]{0,100}"
+        r"(?:signed|began supplying|approved supplier|供货协议|签署协议|"
+        r"正式供货|납품 계약|공급계약 체결)[^.!?\n]{0,75}"
+        r"(?:apple|애플|苹果)", low, re.I,
+    )
+    return bool(a or b)
+
 
 def _extract_numbers(text: str) -> dict:
     low = text.lower().replace(",", "")
@@ -310,6 +362,8 @@ def _event_block(event: dict, nums: dict, fact_key: str) -> str:
         "━━━━━━━━━━━━━━━━",
         f"• {html.escape(event.get('title') or '신규 변화')}",
         f"• 공급사: <b>{html.escape(suppliers)}</b>",
+        *([("• CXMT: 직접 출처의 신규 계약·고객 검증 변화입니다. "
+             "보도와 양측 공식 확인은 구분해야 합니다.")] if _apple_cxmt_pair(blob) else []),
         f"• 숫자: {html.escape(number_line)}",
         f"• 출처: {html.escape(event.get('source') or '출처 미표시')} · {html.escape(event.get('published_at_kst') or '시각 확인 불가')}",
         "",
@@ -327,6 +381,7 @@ def main() -> None:
     state = _load_state()
     seen_ids = set(state.get("seen_ids") or [])
     seen_fact_keys = set(state.get("seen_fact_keys") or [])
+    seen_fact_keys.add(CXMT_APPLE_REFUSAL_BASELINE_KEY)
     events = _collect()
 
     alert_blocks: list[str] = []
@@ -351,6 +406,14 @@ def main() -> None:
         if e["id"] in seen_ids:
             continue
         seen_ids.add(e["id"])
+        if _apple_cxmt_pair(blob):
+            if _apple_cxmt_discount_reprint(blob):
+                # The original August refusal cannot become a fresh October deal.
+                seen_fact_keys.add(CXMT_APPLE_REFUSAL_BASELINE_KEY)
+                continue
+            if not _verified_apple_cxmt_supply_event(e):
+                # Price discussion, samples and open-to-talk comments are not contracts.
+                continue
         # Suppress baseline republications even if title/source differs.
         baseline_like = (
             any(x in blob.lower() for x in Q1_MARKERS)

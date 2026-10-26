@@ -1027,5 +1027,46 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         guard.assert_called_once_with(w.ALERT_PATH)
 
 
+class AppleCXMTPriceIntegrityTests(unittest.TestCase):
+    def test_august_refusal_and_october_reprints_share_semantic_event(self):
+        import apple_memory_procurement_watch as applewatch
+        texts = (
+            "CXMT refuses Apple's request for lower LPDDR5X DRAM prices.",
+            "长鑫存储拒绝苹果低价采购要求，优先满足中国内需。",
+            "애플의 메모리 단가 인하 요구를 창신메모리가 거절했다.",
+        )
+        for item in texts:
+            with self.subTest(item=item):
+                self.assertTrue(applewatch._apple_cxmt_discount_reprint(item))
+        self.assertFalse(applewatch._verified_apple_cxmt_supply_event({
+            "title":texts[0], "description":"", "link":"https://www.reuters.com/test"
+        }))
+
+    def test_xiaomi_lpddr6_or_open_talk_is_not_apple_supply_contract(self):
+        import apple_memory_procurement_watch as applewatch
+        self.assertFalse(applewatch._apple_cxmt_pair(
+            "CXMT LPDDR6 mass produced for Xiaomi 18 Fold with Xring O3"))
+        self.assertFalse(applewatch._verified_apple_cxmt_supply_event({
+            "title":"Apple open to working with CXMT on memory",
+            "description":"", "link":"https://www.cxmt.com/en/news/info_21.html"
+        }))
+
+    def test_new_cxmt_apple_contract_requires_direct_publisher(self):
+        import apple_memory_procurement_watch as applewatch
+        item={"title":"Apple and CXMT signed a supply agreement for LPDDR memory",
+              "description":"", "link":"https://www.cxmt.com/en/news/agreement.html"}
+        self.assertTrue(applewatch._verified_apple_cxmt_supply_event(item))
+        item["link"]="https://cxmt.com.evil.example/news"
+        self.assertFalse(applewatch._verified_apple_cxmt_supply_event(item))
+        item["link"]="https://news.google.com/rss/articles/example"
+        self.assertFalse(applewatch._verified_apple_cxmt_supply_event(item))
+
+    def test_cxmt_supplier_has_a_distinct_fingerprint(self):
+        import apple_memory_procurement_watch as applewatch
+        key=applewatch._fact_key("Apple CXMT LPDDR5X memory contract 2027 Q2",{})
+        self.assertIn("cxmt",key)
+        self.assertNotIn("samsung",key)
+
+
 if __name__ == "__main__":
     unittest.main()

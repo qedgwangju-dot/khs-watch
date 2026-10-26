@@ -39,6 +39,18 @@ MR = "https://www.macrumors.com/2026/10/16/iphone-duo-preorder-shipping-wait-tim
 VERGE = "https://www.theverge.com/tech/1012805/apple-iphone-duo-preorder-delay"
 OCT19_IMPROVEMENT = "https://www.macrumors.com/2026/10/19/apple-starts-moving-up-iphone-duo-delivery-dates/"
 OCT19_ALTERNATIVE = "https://9to5mac.com/2026/10/19/some-iphone-duo-orders-getting-moved-up-to-earlier-dates/"
+RETAIL_LAUNCH_BENCHMARK = {
+    "as_of": "2026-10-23",
+    "market": "미국",
+    "mean_online_wait_days_reported": 92,
+    "mean_wait_source_kind": "Navi 조사·WSJ/연합뉴스 재인용, Apple 공식 납기 아님",
+    "us_store_initial_allocation_units_reported": [50, 200],
+    "allocation_source_kind": "연합뉴스가 인용한 출시 첫날 미국 매장별 배정 보도",
+    "source": "https://www.yna.co.kr/view/AKR20261024007600075",
+    "confirmed_total_sales_units": None,
+    "sku_specific_delivery_date": None,
+}
+
 QUERY = [
     ("ko", '"아이폰 듀오" 사전 예약 품절 배송 예정일'),
     ("ko", '"아이폰 듀오" 배송 지연 11월 12월 2027년'),
@@ -866,6 +878,7 @@ def _append(alert: str) -> None:
 def main() -> None:
     now=dt.datetime.now(KST)
     state=_load()
+    state.setdefault("retail_launch_benchmark", RETAIL_LAUNCH_BENCHMARK)
     rows,errors=_collect()
     if state.get("initial_alert_sent") and not state.get("seen_improvement_fact_keys"):
         rows=_recover_verified_oct19_advance(rows,errors)
