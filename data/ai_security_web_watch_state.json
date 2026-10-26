@@ -8,7 +8,7 @@
     "errors": [],
     "material_items": 17,
     "new_material_items": 0,
-    "raw_items": 263,
+    "raw_items": 265,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1225,6 +1225,16 @@
       "url": "https://news.google.com/rss/articles/CBMi4gJBVV95cUxNYkZVLThDR3RveUFiV0puYVBScDZ5SkRMeUtZdFFxb0xEeWYyWnlUMTN0ZjNhR3ZtMklFb2J1TGxvVmIwbHBBRFBQemVfblprbzh4Yjl6U0RTNGdnb1V2NnJKbWlYTVJDX0d3THVhSXY1NlkwMG1zNE9vSlFwcUx6M2luS3VuSjRNLUEtYUVXTm91b0NhUnlFY3U2VEw4YXR3UUFKX1VGaE1pVEJQVFlUNy1kS3Z5ZGNtV0hQb1d2ZHRvbTRPSi1YT2JoNDN4aUxLQzhzN3hzWk9Rb2hkcHkwc29xd29wdFBNQTFSTzFuTUZMemZsTF8xZFhOWUF1NVFmcGZ4MlBVQm11SzZqZExNRHA5Mzh2Tnhsb1BMb3RteFhqbE5MMjJFa1dFZF9zOXBuRENITGlzUXZXSm5LeXJtaVpCeHVlRnNGbk4zbnd0Vm5ZV0drb25hNHF3dzI3eDVCdXfSAecCQVVfeXFMTTBxaUk1dk9udy1CeXFEeFNGOWxpVkpBLUk0bDA3UUR3OXhkcWcyclZSb2ZudnZWRWIxdVhYd2pwS0lGeGh0d1VlLUxRVFl1Z2tWRXg4b2p2dF9zak82UTFVZWpKQlJ5RnZyOE5fUzBHc0ZNMHNmYzlxOFRsejBZS28zWFVmTXNtRDVqUHh0RXRiOUZ3UUUzb3Bxb2xGWlV2emhYS2pxcUpWNzNDa29ibWNTMFZ1VGhQdk1IdXpQLTV0ZXhnRDVvaDJnQzBlSExpZEFFbTA3WmJ2M29hNFQ3YWI0NGtlaTdsV0pweU9uek5tV1M2RTdQQUxMRUtaUkFyWkRmYlJSUXlmcnRUZXFsVGl5TkNzeHlnNUJZaWw1RjZ5YVF4TzdSY2xWaGlyZlNaYWJ0QV8wSTJMZmI4TW1WdTZlbXJSZ1d0c19ZSU9BOVRrWkJaRkJvZi11VGlJenN3MllVSTlzNk0?oc=5",
       "vendor": "OpenAI"
     },
+    "f035a835bc8b19826d2588c2": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-26T14:05:51.693743+00:00",
+      "published_at": "2026-10-26T13:30:10+00:00",
+      "severity": 2,
+      "source": "SecurityWeek",
+      "title": "PHP2Shell Exploitation Moves From Probes to Working Shells - SecurityWeek",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQT0xvcDZrOXl1MlFybDBjbGIwTW5pUFNwQ0pRMkpubUp2ak13cDR5V1dPR2FEMXcxRm1pUUE1NXNEVjBoMmxpX2pBV0V0UTJlTHdYYzE5SDZ4V001bTVhb203TUgwRV90a293Ql9ZNTVGRnlKeDlWMWJLTndfMGVLem1yY2pNc3ltbzR2QWswUUR5QdIBlwFBVV95cUxOWjBYX2hQRGVrOXlQNDhZNzRXZWkwdzV4UEV6RWtLRnhJbElBNmt3bGlKYndtOGg2Sm5tUTVuaUdsY21tRkNmeXhGMlAxQTVQLW4zcVQwaEl2cW1lUmFKUDVvWS1jMkwtM2VPQlVQVnBqWDY5YmtFbVBBOV9kU05xQjRibHVwY0RXMlc5bnEzWmEtRXA2TmhZ?oc=5",
+      "vendor": "PHP 재단"
+    },
     "f1693a69d948a827f36e55e1": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-14T12:57:27.575329+00:00",
@@ -1306,5 +1316,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-26T22:29:26+09:00"
+  "updated_at_kst": "2026-10-26T23:05:51+09:00"
 }
