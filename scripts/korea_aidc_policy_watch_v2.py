@@ -64,7 +64,7 @@ EXTRA_RSS_SOURCES = (
 # 검색엔진이 누락해도 원문을 직접 다시 확인한다. 이 URL은 정책 기준선일 뿐
 # 검증 성공·신규 상태 상승이 없으면 알림으로 만들지 않는다.
 AIDC_ECOSYSTEM_OFFICIAL_BASELINE = {
-    "id": digest("2026-10-23|aidc-ecosystem-government-brief") if "digest" in globals() else "aidc-20261023-official",
+    "id": "aidc-20261023-official",
     "title": "인공지능 데이터센터(AIDC) 생태계 지원 방안 발표",
     "publisher": "국무조정실",
     "source": "대한민국 정책브리핑",
@@ -84,6 +84,14 @@ def digest(value: str) -> str:
 def semantic_key(row: dict[str, Any]) -> str:
     """URL·언론사·기사 제목 해시가 아니라 사업·법령의 의미 있는 상태로 분류."""
     title = base.norm(str(row.get("title", ""))).lower()
+    aidc_topic = any(x in title for x in ("aidc", "인공지능 데이터센터", "ai 데이터센터"))
+    support_marker = any(x in title for x in ("생태계 지원", "규제합리화", "규제 완화", "국산화", "소부장"))
+    if aidc_topic and support_marker and any(x in title for x in ("생태계", "2천억", "2000억", "2,000억", "규제", "인허가", "국산화", "소부장")):
+        return "aidc|ecosystem-support|government-proposal"
+    if aidc_topic and any(x in title for x in ("예산 최종 확정", "예산 국회 확정")) and any(
+        x in title for x in ("국산화", "소부장", "2천억", "2000억")
+    ):
+        return "aidc|ecosystem-support|budget-enacted"
     if ("sgc에너지" in title or "sgc ai 인프라" in title) and (
         "군산" in title or "300mw" in title or "60mw" in title
     ):
@@ -122,6 +130,11 @@ def semantic_key(row: dict[str, Any]) -> str:
 
 def event_level(row: dict[str, Any]) -> int:
     key = semantic_key(row)
+    if key == "aidc|ecosystem-support|government-proposal":
+        # 정부 발표를 다른 매체가 재인용해도 같은 사건 단계다.
+        return 30
+    if key == "aidc|ecosystem-support|budget-enacted":
+        return 65 if verified_official_url(row) else 0
     if key.startswith("aidc|sgc-gunsan|"):
         stage = key.rsplit("|", 1)[-1]
         return {"plan": 31, "operator-partner": 41, "contract": 51,
@@ -323,6 +336,19 @@ def verify_change(row: dict[str, Any]) -> tuple[bool, str]:
     if not ("aidc" in body or "인공지능 데이터센터" in body or "ai 데이터센터" in body):
         return False, "본문의 AIDC 관련성을 검증하지 못함"
 
+    if key == "aidc|ecosystem-support|government-proposal":
+        if not (all(x in body for x in ("인허가", "특구")) and any(x in body for x in ("2000억", "2,000억", "2천억", "2천억원", "2,000억원"))
+                and any(x in body for x in ("국산화", "소부장", "소재·부품·장비"))):
+            return False, "2000억원 정부안·인허가·특구·국산화 필수 근거 불충분"
+        if not any(x in body for x in ("규제합리화위원회", "규제 합리화위원회", "규제합리화 위원회")):
+            return False, "제2차 규제합리화위원회 정책 발표 근거 확인 실패"
+        return True, "2027년 2000억원 정부안 및 인허가·특구 지원 정책 발표"
+
+    if key == "aidc|ecosystem-support|budget-enacted":
+        if not official or not any(x in body for x in ("국회 의결", "본회의 통과", "예산 확정", "예산안 의결")):
+            return False, "정부 예산안과 최종 예산확정을 구분해야 함"
+        return True, "국회 예산 확정 공식 근거"
+
     if key == "aidc|tax-credit|eligibility":
         if not any(x in body for x in ("세액공제", "세액 공제")):
             return False, "세액공제 조건을 본문에서 확인하지 못함"
@@ -372,10 +398,17 @@ def verify_change(row: dict[str, Any]) -> tuple[bool, str]:
             return False, "하위법령 설계 공식·보도 근거 부족"
         return True, "하위법령 설계 관련 사실 확인"
 
-    if key in ("aidc|power-special", "aidc|grid-code|requirements", "aidc|special-zone"):
+    if key == "aidc|special-zone":
         if not official:
-            return False, "의견·보도는 확정 전력 특례/특구/계통 규칙 변경이 아님"
-        if not any(x in body for x in ("확정", "고시", "의결", "공포", "입법예고", "지정", "시행")):
+            return False, "특구 계획 보도는 실제 지정이 아님"
+        if not any(x in body for x in ("지정 고시", "특구 지정 완료", "특구로 지정했다", "특구로 확정", "최종 지정")):
+            return False, "향후 특구 지정 계획과 실제 지정·고시를 구분"
+        return True, "AIDC 특구 실제 지정 공식 근거"
+
+    if key in ("aidc|power-special", "aidc|grid-code|requirements"):
+        if not official:
+            return False, "의견·보도는 확정 전력 특례/계통 규칙 변경이 아님"
+        if not any(x in body for x in ("확정", "고시", "의결", "공포", "입법예고", "시행")):
             return False, "공식 내용의 실질적 변화 근거 부족"
         return True, "공식 적용 규정 확인"
 
