@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 19,
+    "material_items": 17,
     "new_material_items": 0,
-    "raw_items": 268,
+    "raw_items": 267,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -447,6 +447,16 @@
       "source": "Unit 42",
       "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 23) - Unit 42",
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBaSXRUMkVsWkF3TjhoV29oTXdyZHhrMGZINFBHNVVrNmZubTA4SkFzMzlWMlNMLW15ZWdISDJYeURJbVdpTFB5ZzNTU21aazFfTmc4R0VkLWVyMVY4S1JRYTZ5UjJqWk82SlR5Q0ZMOTJrNEJVeXNV?oc=5",
+      "vendor": "PHP 재단"
+    },
+    "51c3e23218edf3d20d6c8d7e": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-26T05:30:11.844785+00:00",
+      "published_at": "2026-10-25T17:19:00+00:00",
+      "severity": 2,
+      "source": "The Hacker News",
+      "title": "PHP2Shell Exploitation Attempts Continue Amid Suspected N. Korea Global Scanning Activity - The Hacker News",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOVFFXYm02enI1TjBPck84cXZpOEl0WDlkdERoOThDcGRFajFPNjV1SFpSeUxNWXd5ajJuSmctSjVMb2FFeEZIV0VfWkNFVVpITUVQdV9xaVRfX1ZEN0FwSk1jWFh3dWRxTnpTYVRSa2dZRGQ0d2FGNDFaRDBwMmZhWnhGVQ?oc=5",
       "vendor": "PHP 재단"
     },
     "57492a5e01b86ca4b5e7f086": {
@@ -1260,5 +1270,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-26T14:09:10+09:00"
+  "updated_at_kst": "2026-10-26T14:30:11+09:00"
 }
