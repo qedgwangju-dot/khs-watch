@@ -146,7 +146,7 @@ def parse_rss(xml_text: str, source: str, official: bool) -> list[dict[str, Any]
         if node.tag.split("}")[-1].lower() != "item":
             continue
         title = tag_text(node, "title")
-        if not ("aidc" in title.lower() or "인공지능 데이터센터" in title):
+        if not any(term in title.lower() for term in ("aidc", "인공지능 데이터센터", "ai 데이터센터")):
             continue
         publisher = tag_text(node, "source") or source
         if not official and not any(x in publisher for x in TRUSTED_MEDIA):
