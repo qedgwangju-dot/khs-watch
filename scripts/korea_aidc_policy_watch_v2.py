@@ -45,7 +45,36 @@ SGC_GUNSAN_RSS = (
     + quote_plus('("SGC에너지" OR "SGC AI 인프라") ("AIDC" OR "AI 데이터센터") (군산 OR "60MW" OR "300MW" OR 착공 OR 운영 OR 본계약 OR KT클라우드)')
     + "&hl=ko&gl=KR&ceid=KR:ko"
 )
-EXTRA_RSS_SOURCES = (("국내 AIDC 사업 실행", False, SGC_GUNSAN_RSS),)
+AIDC_ECOSYSTEM_RSS = (
+    "https://news.google.com/rss/search?q="
+    + quote_plus('("AIDC 생태계" OR "인공지능 데이터센터 생태계" OR "AI 데이터센터 규제") ("규제합리화" OR "인허가" OR "소부장" OR "2000억원" OR "2천억원" OR "특구")')
+    + "&hl=ko&gl=KR&ceid=KR:ko"
+)
+AIDC_ECOSYSTEM_OFFICIAL_RSS = (
+    "https://news.google.com/rss/search?q="
+    + quote_plus('site:korea.kr ("AIDC" OR "인공지능 데이터센터") ("규제합리화" OR "생태계 지원" OR "2000억원")')
+    + "&hl=ko&gl=KR&ceid=KR:ko"
+)
+EXTRA_RSS_SOURCES = (
+    ("국내 AIDC 사업 실행", False, SGC_GUNSAN_RSS),
+    ("AIDC 생태계 지원 언론", False, AIDC_ECOSYSTEM_RSS),
+    ("AIDC 생태계 공식자료", True, AIDC_ECOSYSTEM_OFFICIAL_RSS),
+)
+
+# 검색엔진이 누락해도 원문을 직접 다시 확인한다. 이 URL은 정책 기준선일 뿐
+# 검증 성공·신규 상태 상승이 없으면 알림으로 만들지 않는다.
+AIDC_ECOSYSTEM_OFFICIAL_BASELINE = {
+    "id": digest("2026-10-23|aidc-ecosystem-government-brief") if "digest" in globals() else "aidc-20261023-official",
+    "title": "인공지능 데이터센터(AIDC) 생태계 지원 방안 발표",
+    "publisher": "국무조정실",
+    "source": "대한민국 정책브리핑",
+    "official": True,
+    "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156786291",
+    "published": "Fri, 23 Oct 2026 05:00:00 GMT",
+    "category": "AIDC 생태계 지원 방안",
+    "stage": 3,
+}
+
 
 
 def digest(value: str) -> str:
