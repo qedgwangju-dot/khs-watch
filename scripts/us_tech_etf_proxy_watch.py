@@ -343,9 +343,21 @@ def send_exact(text):
     )
     with urllib.request.urlopen(request,timeout=25) as response:
         returned=json.load(response)
-    msg_id=(returned.get("result") or {}).get("message_id")
-    if not returned.get("ok") or not isinstance(msg_id,int) or msg_id<1:
+    result = returned.get("result") or {}
+    msg_id = result.get("message_id")
+    actual_chat = result.get("chat") or {}
+    if not returned.get("ok") or type(msg_id) is not int or msg_id < 1:
         raise RuntimeError("Telegram send acknowledgement missing message_id")
+    if type(actual_chat.get("id")) is not int:
+        raise RuntimeError("Telegram response missing actual chat.id")
+    if chat_id.lstrip("-").isdigit():
+        matching_chat = actual_chat["id"] == int(chat_id)
+    elif chat_id.startswith("@"):
+        matching_chat = str(actual_chat.get("username") or "").casefold() == chat_id[1:].casefold()
+    else:
+        raise RuntimeError("Unrecognized Telegram chat destination")
+    if not matching_chat:
+        raise RuntimeError("Telegram acknowledged unexpected chat; do not advance state")
     return msg_id
 
 
